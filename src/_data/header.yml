@@ -1,0 +1,7 @@
+- name: GitHub
+  github: true
+- name: Blog
+  blogurl: true
+- name: Docs
+  href:
+  docsurl: true

@@ -1,0 +1,181 @@
+@charset "utf-8";
+
+/**
+ * Reset some basic elements
+ */
+body, h1, h2, h3, h4, h5, h6,
+p, blockquote, pre, hr,
+dl, dd, ol, ul, figure {
+  margin: 0;
+  padding: 0;
+}
+
+/**
+ * Make the scrollbar always visible
+ * so that the header doesn't shift on pagenav
+ */
+html {
+  overflow-y:scroll;
+}
+
+
+/**
+ * Basic styling
+ */
+body {
+  font-weight: $body-font-weight;
+  font-family: $body-font-family;
+  font-size: $body-font-size;
+  line-height: $body-line-height;
+  letter-spacing: 0.02em;
+  color: $text-color;
+  background-color: $background-color;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-feature-settings: "kern" 1;
+     -moz-font-feature-settings: "kern" 1;
+       -o-font-feature-settings: "kern" 1;
+          font-feature-settings: "kern" 1;
+  font-kerning: normal;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: subpixel-antialiased;
+  -moz-osx-font-smoothing: auto;
+}
+
+
+
+/**
+ * Set `margin-bottom` to maintain vertical rhythm
+ */
+h1, h2, h3, h4, h5, h6,
+p, blockquote, pre,
+ul, ol, dl, figure,
+%vertical-rhythm {
+  margin-bottom: $spacing-unit / 2;
+}
+
+
+
+/**
+ * `main` element
+ */
+main {
+  display: block; /* Default value of `display` of `main` element is 'inline' in IE 11. */
+}
+
+
+
+/**
+ * Images
+ */
+img {
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+
+
+/**
+ * Figures
+ */
+figure > img {
+  display: block;
+}
+
+
+
+/**
+ * Lists
+ */
+ul, ol {
+  margin-left: $spacing-unit;
+}
+
+li {
+  > ul,
+  > ol {
+    margin-bottom: 0;
+  }
+}
+
+
+
+/**
+ * Headings
+ */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: $body-font-weight;
+}
+
+
+
+/**
+ * Links
+ */
+a {
+  color: $color-red;
+  text-decoration: none;
+  transition: color 0.2s, background-color 0.2s;
+}
+
+
+/**
+ * Code formatting
+ */
+pre,
+code {
+  font-family: $mono-font-family;
+  font-size: $mono-font-size;
+  font-weight: $mono-font-weight;
+  line-height: $mono-line-height;
+  font-variant-ligatures: none;
+  border: 1px solid $color-grey-light;
+  border-radius: 3px;
+  background-color: $color-grey-lightest;
+}
+
+code {
+  border: none;
+  background-color: transparent;
+  padding: 0;
+  font-size: $mono-font-size + 2px;
+}
+
+/**
+ * Wrapper
+ */
+.wrapper {
+  margin-right: auto;
+  margin-left: auto;
+  position: relative;
+  @extend %clearfix;
+}
+.wrapper {
+  max-width: $content-width;
+}
+/**
+ * Clearfix
+ */
+%clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/**
+ * Icons
+ */
+
+.grey {
+  color: $color-grey;
+}
+
+svg {
+  overflow: visible;
+}
+
+input, textarea {
+  box-sizing: border-box;
+}

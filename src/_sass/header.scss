@@ -1,0 +1,199 @@
+.siteHeader2 {
+  width: 100%;
+  display: flex;
+  margin-right: auto;
+  margin-left: auto;
+
+  @include mobileAndAbove {
+    max-width: $earth-header-width;
+    padding-top: $spacing-unit * 2;
+    padding-bottom: $spacing-unit;
+  }
+}
+
+.siteHeader-logoLink {
+  opacity: 1;
+
+  &:hover {
+    background-color: transparent;
+  }
+  &:active {
+    opacity: 0.8;
+  }
+}
+.siteHeader-logoLink-svg {
+
+  .siteHeader-logoLink:hover & {
+    transform: scale(1.05);
+  }
+}
+
+.siteHeader-nav {
+  @include mobileAndAbove {
+    flex: 1;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+  }
+}
+
+.siteHeader-navList {
+  list-style-type: none;
+  margin-bottom: 0; 
+
+  @include mobileAndAbove {
+    display: flex;
+    justify-content: flex-end;
+
+    li + li {
+      margin-left: $spacing-unit / 4;
+    }
+  }
+}
+
+.siteHeader-navLink {
+  font-family: $earth-font-sans;
+  font-size: $earth-button-font-size; 
+  height: $earth-button-height;
+  line-height: $earth-button-height;
+  padding-left: $spacing-unit / 4;
+  padding-right: $spacing-unit / 4;
+  border-radius: $earth-border-radius;
+  color: $earth-color-gray;
+  display: flex;
+  justify-content: center;
+  border: 1px solid $earth-color-gray;
+  
+  &:hover {
+    color: $color-white;
+    background-color: $earth-color-gray;
+  }
+}
+
+.siteHeader-navLink--primary {
+  color: $color-green;
+  border-color: $color-green;
+
+  &:hover {
+    color: $color-white;
+    background-color: $color-green;
+  }
+}
+
+.siteHeader-navLink--github {
+  color: $earth-color-gray;
+  border-color: $earth-color-gray-lighter;
+  margin-left: $spacing-unit / 2;
+  margin-right: $spacing-unit / 2;
+
+  &:hover {
+    color: $color-white;
+    background-color: $earth-color-gray;
+  }
+}
+
+
+.siteHeader-navLink-icon {
+  border-right: 1px solid $earth-color-gray-lighter;
+  margin-right:  $spacing-unit / 4;
+}
+
+.siteHeader-navLink {
+  padding-left: $spacing-unit / 4;
+  padding-right: $spacing-unit / 4;
+  
+  .fillStd {
+    fill: $color-yellow;
+  }
+}
+
+// --------------------------------------------------
+// MOBILE LAYOUT
+
+.siteHeader2 {
+  @include mobileAndBelow {
+    height: 100px; // Push initial content below mobile nav
+  }
+}
+
+.siteHeader-navList {
+  @include mobileAndBelow {
+    li + li {
+      margin-top: $spacing-unit * 0.75;
+    }
+  }
+}
+
+.siteHeader-logoAndMenuButton {
+  @include mobileAndBelow {
+    position: fixed;
+    left: 0;
+    right: 0;
+    background-color: $color-white;
+    padding-left: $spacing-unit / 2;
+    padding-right: $spacing-unit / 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+.siteHeader-logoLink-svg {
+  @include mobileAndBelow {
+    width: 85px; // Eyeballed
+  }
+}
+
+.siteHeader-nav {
+  @include mobileAndBelow {
+    transform: translateY(-1000px); // Should be taller than any reasonable screen height
+    opacity: 0;
+
+    .siteHeader2.has-openMenu & {
+      background-color: $color-white;
+      position: fixed;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+}
+
+
+.siteHeader-menuButton {
+  @include reset-button-style;
+  cursor: pointer;
+  
+  @include mobileAndAbove {
+    display: none;
+  }
+
+  .fillStd {
+    fill: $earth-color-gray;
+  }
+
+  &:hover {
+    .fillStd {
+      fill: $color-blue;
+    }
+  }
+}
+
+.siteHeader-menuButton-close {
+  display: none;
+  .siteHeader2.has-openMenu & {
+    display: inline;  
+  }
+}
+
+.siteHeader-menuButton-menu {
+  display: inline;
+  .siteHeader2.has-openMenu & {
+    display: none;
+  }
+}

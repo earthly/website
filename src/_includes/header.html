@@ -1,0 +1,36 @@
+<header class="siteHeader2">
+  <div class="siteHeader-logoAndMenuButton">
+    <a class="siteHeader-logoLink" href="{{site.landingurl}}/">
+      {% svg assets/svg/white-logo.svg class="siteHeader-logoLink-svg" height=100 %}
+    </a>
+  </div>
+
+  <nav class="siteHeader-nav">
+    <ul class="siteHeader-navList">
+      {% for link in site.data.header %}
+        {% assign href = link.href %}
+        {% if link.docsurl %}
+          {% assign href = (href | prepend: "/" | prepend: site.docsurl) %}
+        {% elsif link.blogurl %}
+          {% assign href = (href | prepend: "/" | prepend: site.blogurl) %}
+        {% endif %}
+
+        {% if link.github %}
+          <li class="siteHeader-navItem">
+            <a class="siteHeader-navLink siteHeader-navLink--github" href="{{site.data.github.href}}">
+              {{link.name}}
+              <span class="siteHeader-navLink-icon">{% svg assets/svg/github-star.svg%}</span>
+              <span>{{site.data.github.stars}}</span>
+            </a>
+          </li>
+        {% else %}
+          <li class="siteHeader-navItem">
+            <a class="siteHeader-navLink {% if link.primary %}siteHeader-navLink--primary{% endif %}" href="{{href}}">
+              {{ link.name }}
+            </a>
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </nav>
+</header>

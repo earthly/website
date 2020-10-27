@@ -1,0 +1,165 @@
+.siteFooter2 {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: auto;
+  margin-left: auto;
+  
+  @include mobileAndAbove {
+    max-width: $earth-footer-width;
+    margin-bottom: $spacing-unit * 2;
+  }
+}
+
+.siteFooter-links {
+  display: flex;
+
+  @include mobileAndBelow {
+    flex-direction: column;
+    width: 100%;
+  }
+  @include mobileAndAbove {
+    margin-bottom: $spacing-unit;
+  }
+}
+.siteFooter-links-navList {
+  @include reset-list-style;
+  display: flex;
+  align-items: center;
+
+  @include mobileAndBelow {
+    margin-bottom: $spacing-unit / 2;
+  }
+}
+.siteFooter-links-navItem {
+  & + & {
+    margin-left: $spacing-unit / 4;
+
+    @include mobileAndAbove {
+      margin-left: $spacing-unit / 2;
+    }
+  }
+}
+
+.siteFooter-links-navLink {
+  font-family: $earth-font-sans;
+  font-size: $earth-button-font-size--small;
+  padding-left: $spacing-unit / 4;
+  padding-right: $spacing-unit / 4;
+  height: $earth-button-height--small;
+  line-height: $earth-button-height--small;
+  border-radius: $earth-border-radius;
+  color: $earth-color-gray;
+  display: flex;
+  justify-content: center;
+  border: 1px solid $earth-color-gray;
+  
+  &:hover {
+    color: $color-white;
+    background-color: $earth-color-gray;
+  }
+}
+
+.siteFooter-links-navLink--primary {
+  color: $color-green;
+
+  &:hover {
+    color: $color-white;
+    background-color: $color-green;
+  }
+
+  @include mobileAndAbove {
+    border-color: $color-green;
+  }
+}
+
+.siteFooter-links-navLink--github {
+  color: $earth-color-gray;
+  border-color: $earth-color-gray-lighter;
+  margin-left: $spacing-unit / 2;
+  margin-right: $spacing-unit / 2;
+
+  &:hover {
+    color: $color-white;
+    background-color: $earth-color-gray;
+  }
+}
+
+.siteFooter-links-navItem--github {
+  @include mobileAndBelow {
+    display: none;
+  }
+}
+.siteFooter-links-socialItem--github { 
+  @include mobileAndAbove {
+    display: none;
+  }
+}
+
+.siteFooter-links-socialItem--github > .siteFooter-links-navLink--github {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.siteHeader-navLink-icon {  
+  border-right: 1px solid $earth-color-gray-lighter;
+  padding-left: $spacing-unit / 4;
+  padding-right: $spacing-unit / 4;
+  margin-right:  $spacing-unit / 4;
+  
+  .fillStd {
+    fill: $color-yellow;
+  }
+}
+
+.siteFooter-links-socialList {
+  @include reset-list-style;
+  display: flex;
+  align-items: center;
+  
+  @include mobileAndBelow {
+    margin-bottom: $spacing-unit / 2;
+  }
+  @include mobileAndAbove {
+    margin-left: $spacing-unit;
+  }
+}
+.siteFooter-links-socialItem {
+  & + & {
+    margin-left: $spacing-unit / 2;
+  }
+}
+.siteFooter-links-socialLink {
+  display: flex;
+  align-items: center;
+
+  &:hover {
+    background-color: transparent;
+
+    .fillStd {
+      fill: $color-blue;
+    }
+  }
+  
+  .fillStd {
+    fill: $earth-color-gray-lighter;
+  }
+
+  svg {
+    width: 25px;
+    height: auto;
+  }
+}
+
+
+
+// About the Team --------------------------------------------------
+.siteFooter-about {
+  @include font-body-small;
+  text-align: center;
+}
+
+.siteFooter-about-cloud {
+  font-size: 150%; // Emoji clouds are unexpectedly small
+}

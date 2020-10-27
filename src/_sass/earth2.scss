@@ -1,0 +1,147 @@
+$earth-page-width: 1080px;
+$earth-header-width: $earth-page-width;
+$earth-footer-width: $earth-page-width;
+
+
+// COLOR
+// --------------------------------------------------
+$earth-color-gray-lightest: #EEF1F1;
+$earth-color-gray-lighter: #CCDADE;
+$earth-color-gray: #586E75;
+$earth-color-gray-dark: #073642;
+
+$earth-color-text: $earth-color-gray-dark;
+
+// TYPOGRAPHY
+// --------------------------------------------------
+$earth-font-sans: noto-sans, sans-serif;
+$earth-font-serif: merriweather, serif;
+$earth-font-mono: 'Fira Code', monospace;
+
+$earth-font-weight-sans-light: 300;
+$earth-font-weight-sans-bold: 700;
+$earth-font-weight-sans-black: 900;
+
+$earth-font-size-hero: 48px;
+$earth-font-size-hero-small: 32px;
+$earth-font-size-hero-smallest: 28px;
+$earth-line-height-hero: 1.35;
+
+$earth-font-size-heading: 28px;
+$earth-font-size-heading-small: 24px;
+
+$earth-font-size-body-small: 16px;
+$earth-font-size-body: 18px;
+$earth-font-size-body-large: 28px;
+$earth-line-height-body: 1.4;
+$earth-line-height-body-large: 1.45;
+
+$earth-font-size-mono: 16px;
+$earth-line-height-mono: 1.3;
+
+$earth-font-size-body-serif: 22px;
+$earth-line-height-body-serif: 1.6;
+
+@mixin font-hero {
+  font-family: $earth-font-sans;
+  font-weight: $earth-font-weight-sans-black;
+  line-height: $earth-line-height-hero;
+  font-size: $earth-font-size-hero-small;
+  color: $earth-color-text;
+  
+  @include mobileAndAbove {
+    font-size: $earth-font-size-hero;
+  }
+}
+
+@mixin font-hero-subhead {
+  font-family: $earth-font-sans;
+  font-weight: $earth-font-weight-sans-light;
+  line-height: $earth-line-height-body-large;
+
+  @include mobileAndAbove {
+    font-size: $earth-font-size-body-large;
+  }
+}
+
+@mixin font-heading {
+  font-family: $earth-font-sans;
+  font-weight: $earth-font-weight-sans-bold;
+  font-size: $earth-font-size-heading;
+  color: $earth-color-gray;
+  margin-bottom: $spacing-unit;
+}
+@mixin font-heading-small {
+  font-family: $earth-font-sans;
+  font-weight: $earth-font-weight-sans-bold;
+  font-size: $earth-font-size-heading-small;
+  color: $earth-color-gray;
+  margin-bottom: $spacing-unit / 4;
+}
+
+@mixin font-body {
+  font-family: $earth-font-sans;
+  font-size: $earth-font-size-body;
+  font-weight: $earth-font-weight-sans-light;
+  line-height: $earth-line-height-body;
+}
+@mixin font-body-small {
+  font-family: $earth-font-sans;
+  font-size: $earth-font-size-body-small;
+  font-weight: $earth-font-weight-sans-light;
+  line-height: $earth-line-height-body;
+}
+
+// Buttons
+$earth-button-font-size--large: 26px;
+$earth-button-height--large: 50px;
+
+$earth-button-font-size: 16px;
+$earth-button-height: 30px;
+
+$earth-button-font-size--small: 14px;
+$earth-button-height--small: 26px;
+
+
+$earth-input-height--large: $earth-button-height--large;
+
+// "EFFECTS"
+// --------------------------------------------------
+
+$earth-border-radius: 2px;
+$earth-border-radius-large: 4px;
+
+@mixin shadow {
+  box-shadow: 0px 0px ($spacing-unit / 2) 0px rgba(0, 0, 0, $alpha-transparent);
+}
+
+@mixin shadow-small {
+  box-shadow: 0px 0px ($spacing-unit / 8) 0px rgba(0, 0, 0, $alpha-transparent);
+}
+
+
+// RESETS
+// --------------------------------------------------
+@mixin reset-button-style {
+  font-family: inherit;
+  font-size: inherit;
+  background-color: transparent;
+  border: 0 none;
+  text-align: left;
+  padding: 0;
+  margin: 0;
+}
+
+@mixin reset-list-style {
+  list-style: none;
+  margin: 0;
+}
+
+
+
+
+@mixin font-mono {
+  font-family: $earth-font-mono;
+  font-size: $earth-font-size-mono;
+  line-height: $earth-line-height-mono;
+}

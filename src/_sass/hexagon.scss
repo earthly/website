@@ -1,0 +1,102 @@
+/* General Button Style */
+.hbutton{
+    position: relative;
+      display:block;
+      background: transparent;
+      width:200px;
+      height:60px;
+      line-height:60px;
+      text-align:center;
+      font-size:15px;
+      text-decoration:none;
+      text-transform:uppercase;
+      margin:40px auto;
+  }
+  .hbutton:before, .hbutton:after {
+      width:200px;
+    left: 0px;
+      height:27px;
+    z-index: -1;
+  }
+  .violet{ color: violet; }
+  .indigo{ color: indigo; }
+  .slateblue{ color: slateblue; }
+  .mediumseagreen{ color: mediumseagreen; }
+  .yellowgreen{ color: yellowgreen; }
+  .orange{ color: orange; }
+  .indianred{ color: indianred; }
+  /* Button Border Style */
+  .violet:before,.violet:after {
+      border: 3px solid violet;
+  }
+  .indigo:before,.indigo:after {
+      border: 3px solid indigo;
+  }
+  .slateblue:before,.slateblue:after {
+      border: 3px solid slateblue;
+  }
+  .mediumseagreen:before,.mediumseagreen:after {
+      border: 3px solid mediumseagreen;
+  }
+  .yellowgreen:before,.yellowgreen:after {
+      border: 3px solid yellowgreen;
+  }
+  .orange:before,.orange:after {
+      border: 3px solid orange;
+  }
+  .indianred:before,.indianred:after {
+      border: 3px solid indianred;
+  }
+  
+  .hbutton:before{
+    position: absolute;
+    content: '';
+    border-bottom: none;
+    -webkit-transform: perspective(15px) rotateX(5deg);
+    -moz-transform: perspective(15px) rotateX(5deg);
+    transform: perspective(15px) rotateX(5deg);  
+  }
+  .hbutton:after{
+    position: absolute;
+    top: 32px;
+    content: '';
+    border-top: none;
+    -webkit-transform: perspective(15px) rotateX(-5deg);
+    -moz-transform: perspective(15px) rotateX(-5deg);
+    transform: perspective(15px) rotateX(-5deg);
+  }
+  
+  /* Button Hover Style */
+  .violet:hover:before, .violet:hover:after {
+      background: violet;
+  }
+  .indigo:hover:before, .indigo:hover:after {
+      background: indigo;
+  }
+  .mediumseagreen:hover:before, .mediumseagreen:hover:after {
+      background: mediumseagreen;
+  }
+  .slateblue:hover:before, .slateblue:hover:after {
+      background: slateblue;
+  }
+  .yellowgreen:hover:before, .yellowgreen:hover:after {
+      background: yellowgreen;
+  }
+  .orange:hover:before, .orange:hover:after {
+      background: orange;
+  }
+  .indianred:hover:before, .indianred:hover:after {
+      background: indianred;
+  }
+  
+  .hbutton:hover{
+      color:#fff;
+  }
+  
+  /* Just for presentation */
+  body{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: aliceblue;
+  }

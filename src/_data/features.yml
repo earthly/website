@@ -1,0 +1,15 @@
+- title: 🔁 Reproduce CI failures
+  pillar: 3
+  description: Earthly builds are self-contained, isolated and reproducible. Regardless of whether Earthly runs in your CI or on your laptop, there is a degree of guarantee that the build will run the same way. This allows for faster iteration on the build scripts and easier debugging when something goes wrong. No more git commit -m "try again".
+- title: 🤲 Builds that run the same for everyone
+  pillar: 3
+  description: Reproducible builds also means that your build will run the same on your colleagues laptop without any additional project-specific or language-specific setup. This fosters better developer collaboration and mitigates works-for-me type of issues.
+- title: 🚀 From zero to working build in minutes
+  pillar: 3
+  description: Jump from project to project with ease, regardless of the language they are written in. Running the project's test suites is simply a matter of running an Earthly target (without fiddling with project configuration to make it compile and run on your system). Contribute across teams with confidence.
+- title: 📦 Reusability
+  pillar: 3
+  description: A simple, yet powerful import system allows for reusability of builds across directories or even across repositories. Importing other builds does not have hidden environment-specific implications - it just works. 
+- title: ❤️ It's like Makefile and Dockerfile had a baby
+  pillar: 3
+  description: Taking some of the best ideas from Makefiles and Dockerfiles, Earthly combines two build specifications into one.

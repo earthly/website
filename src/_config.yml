@@ -1,0 +1,22 @@
+title: Earthly
+email: support@earthly.dev
+description: >-
+  Better Builds
+baseurl: ""
+url: "https://earthly.dev"
+docsurl: "https://docs.earthly.dev"
+landingurl: "https://earthly.dev"
+blogurl: "https://blog.earthly.dev"
+twitter_username: earthlytech
+github_username:  earthly
+google_tag_manager: 
+optimize_anti_flicker_id: 
+include:
+  - _redirects
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+plugins:
+  - jekyll-feed
+  - jekyll-inline-svg
