@@ -1,0 +1,12 @@
+- title: All Builds Are Containerized
+  description: Earthly is built on top of modern container technologies. The same way Docker has paved the way towards development-production reproducibility, Earthly enables development-CI reproducibility.
+- title: Parallelization That Just Works
+  description: In Earthly, nothing is shared between targets other than clearly declared dependencies. This allows Earthly to automatically decide which parts of your build to run in parallel and which parts to run sequentially. For you, as a user, this means that you don’t have to worry about race conditions or dead locks. You just define the build and get parallelization for free.
+- title: Secrets Support Built-In
+  description: Secrets have first-class support in Earthly. They are not cached, written to disk or stored with a resulting Docker image. Secrets can be used as temporary files or as environment variables during builds.
+- title: Project Interdependencies
+  description: Take advantage of reusability that just works. Reference builds, images or artifacts across repositories and import them within your own builds. The system is aware of the Git hash and is able to make effective use of the cache in complex setups.
+- title: Mono Repos or Poly Repos
+  description: No matter if your team is a fan of mono repos or of poly repos, Earthly supports both. Create vast build hierarchies to control sprawling setups that span projects and subprojects across directories and repositories.
+- title: Programming Language Agnostic
+  description: "Earthly is not specific to any programming language. In fact, a key design decision of Earthly is that it allows you to use the language specific tooling that you are already familiar with: Maven, Gradle, NPM, PyPI or any other tool you can imagine. Earthly acts as the glue between builds. Taking some of the best ideas from Makefiles and Dockerfiles, Earthly combines two build specifications into one."

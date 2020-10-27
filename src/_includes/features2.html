@@ -1,0 +1,14 @@
+<h3 class="Home-sectionHeading Home-sectionHeading--features">Why Use Earthly?</h3>
+<section class="Home-features">
+  <ul class="Home-features-contentList">
+    {% for feature in site.data.features2 %}
+      <li class="Home-features-contentItem js-featuresContentItem" 
+          data-feature-id="{{ forloop.index }}">
+          <h3>{{feature.title}}</h3>
+        <div>
+          {{feature.description}}
+        </div>
+      </li>
+    {% endfor %}
+  </ul>
+</section>
