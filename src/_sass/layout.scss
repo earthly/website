@@ -251,6 +251,9 @@ label, .formItem-label {
   max-width: $col-3of4-width;
 }
 
+.col-2of2 {
+  float: right;
+}
 .col-1of2,
 .wrapper--blog .col-1of3 {
   display: block;

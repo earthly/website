@@ -58,6 +58,11 @@
   }
 }
 
+.Home-heroText-title2 {
+  @extend .Home-heroText-title;
+  font-size: 32px;
+}
+
 .Home-heroText-subtitle {
   @include font-hero-subhead;
   

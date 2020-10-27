@@ -1,0 +1,8 @@
+- title: REPRODUCE CI FAILURES WITH EASE
+  description: No more git commit -m "try again" to fix that CI issue. Earthly uses containers to isolate builds and make them reproducible on your laptop. A single command can execute the same build locally for debugging purposes.
+- title: BUILDS THAT RUN THE SAME FOR EVERYONE
+  description: Regardless of the operating system your colleagues use, your builds will run the same on any platform, as long as it can run Docker.
+- title: FROM ZERO TO WORKING BUILD IN MINUTES
+  description: Eliminate complex project setup, which allows anyone to run your test suite with ease. Earthly builds are self-contained, requiring no additional dependencies or programming language stacks to be installed. This promotes cross-team collaboration and quick onboarding.
+- title: REUSABILITY THAT EVERYONE UNDERSTANDS
+  description: Earthly comes with the ability to reference targets from projects that may exist in different directories, or even different repositories. Git hash awareness allows Earthly to cache results effectively. 

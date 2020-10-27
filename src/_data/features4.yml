@@ -1,0 +1,11 @@
+- title: The Main Thing
+  description: "Earthly is a build automation tool for the container era.
+
+  ​
+  
+  It builds upon technologies like Docker and BuildKit to deliver builds that are self-sufficient, reproducible, portable and parallel. You can use Earthly to create Docker images, output artifacts or to run tests. Earthly is meant not to replace build systems, but rather to act as the glue layer between them.
+  
+  ​
+  
+  Run Earthly on your laptop, in your current CI, or across a cluster via Earthly Cloud Build.
+"  

@@ -58,7 +58,7 @@ $earth-line-height-body-serif: 1.6;
   font-family: $earth-font-sans;
   font-weight: $earth-font-weight-sans-light;
   line-height: $earth-line-height-body-large;
-
+  font-size: $earth-font-size-hero-small;
   @include mobileAndAbove {
     font-size: $earth-font-size-body-large;
   }

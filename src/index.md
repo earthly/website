@@ -19,15 +19,11 @@ layout: home
 </section>
 {% include index_cta.html %}
 
+{% include teraform.html %}
+
 {% include features.html %}
 
 {% include index_cta.html %}
-<section class="Home-product">
-  <div class="Home-product-UI">
-    <img src="/assets/img/screen2.png">
-  </div>
-  <p class="Home-product-caption">Earthly is like if a dockerfile and a makefile had a baby (replace pic)</p>
-</section>
 
  <section class="Home-featuresIntro">
   <p class="Home-featuresIntro-text">
