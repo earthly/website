@@ -33,3 +33,5 @@ layout: home
 </section>
 
 {% include features2.html %}
+
+{% include index_cta.html %}

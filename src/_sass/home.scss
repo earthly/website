@@ -278,20 +278,10 @@
 }
 .Home-product-Earthfile {
   @include shadow;
-  background-color: $color-white;
+  // border-style: solid;
+  background-color: $color-grey-darkest;
   border-radius: $earth-border-radius-large;
   overflow: hidden;
-  
-  @include mobileAndBelow {
-    margin-top: $spacing-unit;
-  }
-  
-  @include mobileAndAbove {
-    position: absolute;
-    top: 0;
-    right: 0;
-    transform: translate(10%, 80%);
-  }
 }
 .Home-product-Earthfile-header {
   position: relative;
@@ -311,26 +301,27 @@
 
 .Home-product-Earthfile-code {
   display: block;
-  padding: $spacing-unit;
+  padding: $spacing-unit / 2 ;
   @include font-mono;  
 
   p {
+    color: $earth-color-gray-lightest;
     margin: 0;
     min-height: $spacing-unit / 2; // Preserve blank lines
   }
-
-  p + p {
-    margin-top: $spacing-unit / 8;
-  }
 }
 
+
+.indent {
+    padding-left: 50px;
+}
 .earthfile-comment {
   color: $earth-color-gray-lighter;
 }
-.earthfile-arg {
+.earthfile-term {
   color: $color-blue;
 }
-.earthfile-arg-value {
+.earthfile-target {
   color: $color-pink;
 }
 

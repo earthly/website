@@ -5,8 +5,8 @@
         </div>
         <div style="display:flex">
             <div style="display:flex;width:50%;">
-                <div>
-                    <h3>Write declarative configuration files</h3>
+                <div style="padding:20px;">
+                    <h3>❤️ It's like Makefile and Dockerfile had a baby</h3>
                     <div>
                         <ul >
                             <li>Collaborate and share configurations</li>
@@ -14,31 +14,55 @@
                             <li>Automate provisioning</li>
                         </ul>
                     </div>
-                    <p>Define infrastructure as code to manage the full lifecycle — create new resources, manage existing ones, and destroy those no longer needed.</p>
+                    <p>Taking some of the best ideas from Makefiles and Dockerfiles, Earthly combines two build specifications into one.</p>
                 </div>
             </div>
             <div style="display:flex;width:50%;">
-                <div>
-                    <div>
-                        <div>
-                                <img src="http://placekitten.com/g/600/400" alt="Write Declarative Configuration Files">
+                <div style="padding:20px;">
+                    <div class="Home-product-Earthfile">
+                    <header class="Home-product-Earthfile-header">
+                        <div class="Home-product-Earthfile-header-chromeDecoration">
+                          {% svg assets/svg/chrome-button.svg class="chrome-button1" %}
+                          {% svg assets/svg/chrome-button.svg class="chrome-button2" %}
+                          {% svg assets/svg/chrome-button.svg class="chrome-button3" %}
                         </div>
+                        Earthfile
+                    </header>
+                    <code class="Home-product-Earthfile-code">
+                        <p><span class="earthfile-term">FROM</span> golang:1.13-alpine3.11</p>
+                        <p><span class="earthfile-term">RUN</span> apk --update --no-cache add git</p>
+                        <p><span class="earthfile-term">WORKDIR</span> /go-example</p>                                    
+                        <p></p>
+                        <p><span class="earthfile-target">all:</span></p>
+                        <p class="indent"><span class="earthfile-term">BUILD</span> +lint</p>
+                        <p class="indent"><span class="earthfile-term">BUILD</span> +docker</p>
+                        <p></p>
+                        <p><span class="earthfile-target">build:</span></p>
+                        <p class="indent"><span class="earthfile-term">COPY</span> main.go .</p>
+                        <p class="indent"><span class="earthfile-term">RUN</span> go build -o build/go-example main.go</p>
+                        <p class="indent"><span class="earthfile-term">SAVE</span> ARTIFACT build/go-example AS LOCAL build/go-example</p>
+                        <p></p>
+                        <p><span class="earthfile-target">lint:</span></p>
+                        <p class="indent"><span class="earthfile-term">RUN</span> go get golang.org/x/lint/golint</p>
+                        <p class="indent"><span class="earthfile-term">COPY</span> main.go .</p>
+                        <p class="indent"><span class="earthfile-term">RUN</span> golint -set_exit_status ./...</p>
+                    </code> 
                     </div>
                 </div>
             </div>
         </div>
         <div style="display:flex">
             <div style="display:flex;width:50%;">
-                <div>
+                <div style="padding:20px;">
                     <div>
                         <div>
-                                <img src="http://placekitten.com/g/600/400" alt="Write Declarative Configuration Files">
+                                <img src="https://raw.githubusercontent.com/earthly/earthly/main/img/demo-351683.gif" alt="Building things">
                         </div>
                     </div>
                 </div>
             </div>
             <div style="display:flex;width:50%;">
-                <div>
+                <div style="padding:20px;">
                     <div>
                         <h3 class="g-type-display-3">Plan and predict changes</h3>
 
@@ -58,26 +82,26 @@
         </div>
         <div style="display:flex">
             <div style="display:flex;width:50%;">
-                <div>
-                    <h3>Create reproducible infrastructure</h3>
+                <div style="padding:20px;">
+                    <h3>Strong Community</h3>
                     <div>
                         <ul >
-                            <li>Reproducible production, staging, and development environments</li>
-                            <li>Shared modules for common infrastructure patterns</li>
-                            <li>Combine multiple providers consistently</li>
+                            <li>1300+ Commits</li>
+                            <li>500+ Commits</li>
+                            <li>50+ forks</li>
+                            <li>25+ contributors</li>
 
                         </ul>
                     </div>
-                    <p>Terraform makes it easy to re-use configurations for similar infrastructure, helping you
-                        avoid mistakes and save time.</p>
-                    <a href="https://registry.terraform.io/browse/providers">View All Providers</a>
+                    <p>Open Source projects benefit from an open and collobarative community.  Earthly encourages contributions.</p>
                 </div>
             </div>
             <div style="display:flex;width:50%;">
-                <div>
+                <div style="padding:20px;">
                 <div>
                 <div>
                         <img src="http://placekitten.com/g/600/400" alt="Terraform Overview Infrastucture Providers">
+                        Picture of Github contributions
                 </div>
                 </div>
                 </div>
