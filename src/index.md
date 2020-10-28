@@ -3,7 +3,7 @@ title: Earthly
 layout: home
 ---
 
-<section class="Home-hero">
+<section class="Home-hero" style="background: aliceblue;">
   <div class="Home-heroText">
     <h2 class="Home-heroText-title">Reproducible Builds</h2>
     <p class="Home-heroText-subtitle">
@@ -18,12 +18,12 @@ layout: home
   </div>
 </section>
 {% include index_cta.html %}
-
-{% include teraform.html %}
-
-{% include features.html %}
-
+{% include understandable.html %}
 {% include index_cta.html %}
+{% include why.html %}
+
+<!-- {% include features.html %} -->
+
 
  <section class="Home-featuresIntro">
   <p class="Home-featuresIntro-text">
@@ -32,35 +32,9 @@ layout: home
   </p>
 </section>
 
-<h2 class="Home-heroText-title2">Quick Start</h2>
-<h3>Here are some resources to get you started with Earthly</h3>
- <div style="display:flex">
-            <div style="display:flex;width:50%;">
-                <div style="padding:20px;" markdown="1">
-* 🏁 [Getting started guide](https://docs.earthly.dev/guides/basics)
-* 👀 [Examples](https://docs.earthly.dev/examples)
-  * [Go](https://docs.earthly.dev/examples/go)
-  * [Java](https://docs.earthly.dev/examples/java)
-  * [JS](https://docs.earthly.dev/examples/js)
-  * [C++](https://docs.earthly.dev/examples/cpp)
-  * [Mono-repo](https://docs.earthly.dev/examples/monorepo)
-  * [Multi-repo](https://docs.earthly.dev/examples/multirepo)
-  * The [examples](./examples) dir
-* 🔍 Explore [Earthly's own build](https://docs.earthly.dev/examples/earthly)
-</div>
-</div>
-<div style="display:flex;width:50%;">
-                <div style="padding:20px;" markdown="1">
-Reference pages
+<!-- {% include gettingstarted.html %} -->
 
-* 📑 [Earthfile reference](https://docs.earthly.dev/earthfile)
-* #️⃣ [Earth command reference](https://docs.earthly.dev/earth-command)
-* ⚙️ [Configuration reference](https://docs.earthly.dev/earth-config)
-</div>
-</div>
-</div>
-See also the [full documentation](https://docs.earthly.dev).
 
-{% include features2.html %}
+<!-- {% include features2.html %} -->
 
 {% include index_cta.html %}
