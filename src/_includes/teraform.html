@@ -6,15 +6,16 @@
         <div style="display:flex">
             <div style="display:flex;width:50%;">
                 <div style="padding:20px;">
-                    <h3>❤️ It's like Makefile and Dockerfile had a baby</h3>
+                    <h3>❤️ Makefile + Dockerfile = Earthfile</h3>
+                    <p> It's like Makefile and Dockerfile had a baby.  Earthly takes some of the best ideas from Makefiles and Dockerfiles and combines them into one specification.</p>
                     <div>
+                        <h4>Benefits</h4>
                         <ul >
-                            <li>Collaborate and share configurations</li>
-                            <li>Evolve and version your infrastructure</li>
-                            <li>Automate provisioning</li>
+                            <li>Reproducible builds</li>
+                            <li>A familiar syntax</li>
+                            <li>Caching for more speed</li>
                         </ul>
                     </div>
-                    <p>Taking some of the best ideas from Makefiles and Dockerfiles, Earthly combines two build specifications into one.</p>
                 </div>
             </div>
             <div style="display:flex;width:50%;">
@@ -48,6 +49,7 @@
                         <p class="indent"><span class="earthfile-term">RUN</span> golint -set_exit_status ./...</p>
                     </code> 
                     </div>
+                    <p style="text-align:center">A simple GO <a href="https://docs.earthly.dev/examples">example</a></p>
                 </div>
             </div>
         </div>
@@ -58,25 +60,27 @@
                         <div>
                                 <img src="https://raw.githubusercontent.com/earthly/earthly/main/img/demo-351683.gif" alt="Building things">
                         </div>
+                        <p style="text-align:center">Invoke a build using <code>earth +all.</code></p>
                     </div>
                 </div>
             </div>
             <div style="display:flex;width:50%;">
                 <div style="padding:20px;">
                     <div>
-                        <h3 class="g-type-display-3">Plan and predict changes</h3>
+                        <h3 class="g-type-display-3">Reproduce CI failures</h3>
 
-                        <div class="check">
+                        <!-- <div class="check">
                             <ul class="g-type-body">
                                 <li>Clearly mapped resource dependencies</li>
                                 <li>Separation of plan and apply</li>
                                 <li>Consistent, repeatable workflow</li>
                             </ul>
-                        </div>
-                        <p class="g-type-body">Terraform provides an elegant user experience for operators to safely and predictably make
-                            changes to
-                            infrastructure.</p>
+                        </div> -->
+                        <p>Earthly builds are self-contained, isolated and reproducible.</p>
+                        <p>Regardless of whether Earthly runs in your CI or on your laptop, a the build will run the same way.</p>
+                        <p>This allows for faster iteration on the build scripts and easier debugging.</p>
                     </div>
+                    <p>No more <code>git commit -m "try again" </code> .  </p>
                 </div>
             </div>
         </div>
@@ -98,12 +102,8 @@
             </div>
             <div style="display:flex;width:50%;">
                 <div style="padding:20px;">
-                <div>
-                <div>
-                        <img src="http://placekitten.com/g/600/400" alt="Terraform Overview Infrastucture Providers">
-                        Picture of Github contributions
-                </div>
-                </div>
+                        <!-- <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3900&q=80" alt="Terraform Overview Infrastucture Providers"> -->
+                        <img src="https://images.unsplash.com/photo-1532619675605-1ede6c2ed2b0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3900&q=80" />
                 </div>
             </div>
         </div>
