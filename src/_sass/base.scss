@@ -29,7 +29,7 @@ body {
   line-height: $body-line-height;
   letter-spacing: 0.02em;
   color: $text-color;
-  background-color: $background-color;
+  // background-color: $background-color;
   -webkit-text-size-adjust: 100%;
   -webkit-font-feature-settings: "kern" 1;
      -moz-font-feature-settings: "kern" 1;
@@ -151,6 +151,12 @@ code {
   margin-left: auto;
   position: relative;
   @extend %clearfix;
+  width: 100%;
+  max-width: $earth-page-width;
+  font-family: $earth-font-sans;
+  font-size: $earth-font-size-body;
+  font-weight: $earth-font-weight-sans-light;
+  line-height: $earth-line-height-body;
 }
 .wrapper {
   max-width: $content-width;

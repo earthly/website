@@ -3,7 +3,7 @@ title: Earthly
 layout: home
 ---
 
-<section class="Home-hero" style="background: aliceblue;">
+<section class="Home-hero">
   <div class="Home-heroText">
     <h2 class="Home-heroText-title">Reproducible Builds</h2>
     <p class="Home-heroText-subtitle">

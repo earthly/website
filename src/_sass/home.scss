@@ -8,15 +8,6 @@
   }
 }
 
-.wrapper--home {
-  width: 100%;
-  max-width: $earth-page-width;
-  font-family: $earth-font-sans;
-  font-size: $earth-font-size-body;
-  font-weight: $earth-font-weight-sans-light;
-  line-height: $earth-line-height-body;
-}
-
 .Home-sectionHeading {
   @include font-heading;
 }
@@ -800,4 +791,15 @@ $Home-feature-navList-width: 35%;
   &::placeholder {
     color: $earth-color-gray;
   }
+}
+
+.wrapper{
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+.color1 {
+  background-color:#f7f8fa;
+}
+.color2 {
+  background-color:#ffffff;
 }
