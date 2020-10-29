@@ -8,21 +8,116 @@
                 <div class="pad">
                     <div>
                         <div>
-                                <img src="https://raw.githubusercontent.com/earthly/earthly/main/img/demo-351683.gif" alt="Building things">
+                                <img src="https://raw.githubusercontent.com/earthly/earthly/main/img/demo-351674.gif" alt="Caching">
                         </div>
-                        <p style="text-align:center">Invoke a build using <code>earth +all.</code></p>
+                        <p style="text-align:center">Cache build steps automatically</p>
                     </div>
                 </div>
             </div>
             <div class="half">
                 <div class="pad">
                     <div>
-                        <h3 class="g-type-display-3">Some Reason</h3>
-                        <p>Earthly builds are self-contained, isolated and reproducible.</p>
-                        <p>Regardless of whether Earthly runs in your CI or on your laptop, a the build will run the same way.</p>
-                        <p>This allows for faster iteration on the build scripts and easier debugging.</p>
+                        <h3 class="g-type-display-3">Caching that just works</h3>
+                        <p>Earthly uses the same caching technology as docker builds.</p>
+                        <p>If a step of your build would produce the same output as a previously cached run, it uses the cache.</p>
+                        <p>Earthly cache is persisted in a docker volume called earthly-cache on your system.</p>
                     </div>
-                    <p>No more <code>git commit -m "try again" </code> .  </p>
+                    <p>No more slow rebuilds</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="half">
+                <div class="pad">
+                    <h3>Builds that work everywhere</h3>
+                    <p>No need to ask your team to install protoc, a specific version of Python, Java 1.6 or the .NET Core ecosystem. You only install once, in your Earthfile, and it works for everyone. Or even better, you can just make use of the rich Docker Hub ecosystem.</p>
+                </div>
+            </div>
+            <div class="half">
+                <div class="pad">
+                    <div class="Home-product-Earthfile">
+                        <header class="Home-product-Earthfile-header">
+                            <div class="Home-product-Earthfile-header-chromeDecoration">
+                              {% svg assets/svg/chrome-button.svg class="chrome-button1" %}
+                              {% svg assets/svg/chrome-button.svg class="chrome-button2" %}
+                              {% svg assets/svg/chrome-button.svg class="chrome-button3" %}
+                            </div>
+                            Earthfile
+                        </header>
+                        <code class="Home-product-Earthfile-code">
+                            <p><span class="earthfile-term">FROM</span> golang:1.13-alpine3.11</p>
+                            <p><span class="earthfile-term">WORKDIR</span> /proto-example</p>                                    
+                            <p></p>
+
+                            <p><span class="earthfile-target">proto:</span></p>
+                            <p class="indent"><span class="earthfile-term">FROM</span> namely/protoc-all:1.29_4</p>
+                            <p class="indent"><span class="earthfile-term">COPY</span> api.proto /defs</p>
+                            <p class="indent"><span class="earthfile-term">RUN</span> --entrypoint -- -f api.proto -l go</p>
+                            <p class="indent"><span class="earthfile-term">SAVE ARTIFACT</span> ./gen/pb-go /pb <span class="earthfile-term">AS LOCAL</span> pb</p>
+                            <p></p>
+                            <p><span class="earthfile-target">build:</span></p>
+                            <p class="indent"><span class="earthfile-term">COPY</span> go.mod go.sum . </p>
+                            <p class="indent"><span class="earthfile-term">RUN</span> go mod download </p> 
+                            <p class="indent"><span class="earthfile-term">COPY</span> +proto/pb pb </p> 
+                            <p class="indent"><span class="earthfile-term">COPY</span> main.go ./ </p> 
+                            <p class="indent"><span class="earthfile-term">RUN</span> go build -o build/proto-example main.go </p> 
+                            <p class="indent"><span class="earthfile-term">SAVE ARTIFACT</span> build/proto-example </p> 
+                        </code> 
+                        </div>
+                        <p style="text-align:center">A simple proto <a href="https://docs.earthly.dev/examples">example</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="half">
+                <div class="pad">
+                    <div>
+                        <h3 class="g-type-display-3">Parallelization that just works</h3>
+                        <div>
+                                <img src="https://raw.githubusercontent.com/earthly/earthly/main/img/demo-351678.gif" alt="Caching">
+                        </div>
+                        <p style="text-align:center">Whenever possible, Earthly automatically executes targets in parallel. </p>
+                    </div>
+                </div>
+            </div>
+            <div class="half">
+                <div class="pad">
+                    <div>
+                        <h3 class="g-type-display-3">Modern import system</h3>
+                        <p>Earthly can be used to reference and build targets from other directories or even other repositories.</p>
+                    </div>
+                    <p></p>
+                    <p><b>Try it yourself! No need to clone:</b></p>
+                    <div class="Home-product-Earthfile">
+                        <header class="Home-product-Earthfile-header">
+                            <div class="Home-product-Earthfile-header-chromeDecoration">
+                              {% svg assets/svg/chrome-button.svg class="chrome-button1" %}
+                              {% svg assets/svg/chrome-button.svg class="chrome-button2" %}
+                              {% svg assets/svg/chrome-button.svg class="chrome-button3" %}
+                            </div>
+                            Earthfile
+                        </header>
+                        <code class="Home-product-Earthfile-code">
+                            <p>$> earth github.com/earthly/earthly/examples/go:main+docker</p>
+                            <p></p>
+                        </code> 
+                    </div>
+                    <p></p>
+                    <p><b>Run the resulting image:</b></p>
+                    <div class="Home-product-Earthfile">
+                        <header class="Home-product-Earthfile-header">
+                            <div class="Home-product-Earthfile-header-chromeDecoration">
+                              {% svg assets/svg/chrome-button.svg class="chrome-button1" %}
+                              {% svg assets/svg/chrome-button.svg class="chrome-button2" %}
+                              {% svg assets/svg/chrome-button.svg class="chrome-button3" %}
+                            </div>
+                            Earthfile
+                        </header>
+                        <code class="Home-product-Earthfile-code">
+                            <p>$> docker run --rm go-example:latest</p>
+                            <p></p>
+                        </code> 
+                    </div>
                 </div>
             </div>
         </div>
@@ -30,7 +125,7 @@
             <div class="half">
                 <div class="pad">
                     <h3>Strong Community</h3>
-                    <div>
+                    <div class="check">
                         <ul >
                             <li>1300+ Commits</li>
                             <li>500+ Commits</li>
@@ -44,7 +139,6 @@
             </div>
             <div class="half">
                 <div class="pad">
-                        <!-- <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3900&q=80" alt=""> -->
                         <img src="https://images.unsplash.com/photo-1532619675605-1ede6c2ed2b0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3900&q=80" />
                 </div>
             </div>

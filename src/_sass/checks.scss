@@ -1,0 +1,26 @@
+.check ul {
+    text-align: left;
+    list-style: none;
+    padding-left: 32px;
+
+    & > li {
+      position: relative;
+      margin: 8px 0;
+
+      &:before {
+        position: absolute;
+        background: url("/assets/svg/check-circle-purple.svg")
+          no-repeat;
+        content: "";
+        left: 10px;
+        float: left;
+        height: 19px;
+        left: 0;
+        margin: 6px 0 0 -32px;
+        width: 18px;
+      }
+      & > span.shrink {
+        font-size: 14px;
+      }
+    }
+  }
