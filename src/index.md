@@ -1,8 +1,10 @@
 ---
 title: Earthly
-layout: home
+layout: default
 ---
 
+<div class="color2">
+<div class="wrapper">
 <section class="Home-hero">
   <div class="Home-heroText">
     <h2 class="Home-heroText-title">Reproducible Builds</h2>
@@ -14,12 +16,19 @@ layout: home
   <div class="Home-heroIllustration">
 
     {% svg assets/svg/symbol-only.svg %}
-
   </div>
 </section>
 {% include index_cta.html %}
+</div>
+</div>
+<div class="color1">
+<div class="wrapper">
 {% include understandable.html %}
 {% include index_cta.html %}
+</div>
+</div>
+<div class="color2">
+<div class="wrapper">
 {% include why.html %}
 
 <!-- {% include features.html %} -->
@@ -31,10 +40,11 @@ layout: home
     <button class="Home-featuresIntro-text-button Home-featuresIntro-text-button--pillar-1">containerized</button> and <button class="Home-featuresIntro-text-button Home-featuresIntro-text-button--pillar2">reproducible</button> and <button class="Home-featuresIntro-text-button Home-featuresIntro-text-button--pillar3">langauge agnostic</button>
   </p>
 </section>
-
+{% include index_cta.html %}
+</div>
+</div>
 <!-- {% include gettingstarted.html %} -->
 
 
 <!-- {% include features2.html %} -->
 
-{% include index_cta.html %}
