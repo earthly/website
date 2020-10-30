@@ -1,0 +1,12 @@
+- name: Adam Gordon Bell
+  position: Developer Relations Director
+  quote: Earthly builds are self-contained, isolated and reproducible. Regardless of whether Earthly runs in your CI or on your laptop, there is a degree of guarantee that the build will run the same way. This allows for faster iteration on the build scripts and easier debugging when something goes wrong. No more git commit -m "try again".
+  profile: bla.png
+  companybio: Adam works at twitter where bla bla bla.
+  companylogo: twitter.svg
+- name: John Someone
+  position: Developer Relations Director
+  quote: Earthly builds are self-contained, isolated and reproducible. Regardless of whether Earthly runs in your CI or on your laptop, there is a degree of guarantee that the build will run the same way. This allows for faster iteration on the build scripts and easier debugging when something goes wrong. No more git commit -m "try again".
+  profile: bla.png
+  companybio: something
+  companylogo: twitter.svg

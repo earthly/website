@@ -17,8 +17,18 @@ layout: default
 </div>
 <div class="color2">
   <div class="wrapper">
+    {% include testimonials.html data=site.data.testimonials1 %} 
+  </div>
+</div>
+<div class="color1">
+  <div class="wrapper">
     {% include why.html %}
     {% include ourslogan.html %}
     {% include index_cta.html %}
+  </div>
+</div>
+<div class="color2">
+  <div class="wrapper">
+    {% include testimonials.html data=site.data.testimonials2 %} 
   </div>
 </div>

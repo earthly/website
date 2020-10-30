@@ -1,0 +1,23 @@
+{% for t in include.data %}
+  <div class="Home-testimonialBlock">
+  <ul class="Home-testimonialList">
+    <li class="Home-testimonial">
+      <div class="Home-testimonial-profile">
+        <div class="Home-testimonial-profile-photo"><img src="/assets/img/{{t.profile}}"></div>
+        <div class="Home-testimonial-profileInfo">
+          <p class="Home-testimonial-profileInfo-name">{{t.name}}</p>
+          <p class="Home-testimonial-profileInfo-role">{{t.position}}</p>
+        </div>
+      </div>
+      <div class="Home-testimonial-content">
+        <p class="Home-testimonial-content-quote">{{t.quote}}</p>
+        <div class="Home-testimonial-content-meta">
+          {% svg assets/svg/{{t.companylogo}} class="Home-testimonial-content-meta-svg" %}
+          <p class="Home-testimonial-content-meta-text">{{t.companybio}}</p>
+        </div>
+      </div>
+    </li>
+    </ul>
+    </div>
+{% endfor %}
+    
