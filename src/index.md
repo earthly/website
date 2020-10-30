@@ -35,6 +35,12 @@ layout: default
 </div>
 <div class="color1">
   <div class="wrapper">
+    {% include more.html %}
+
+  </div>
+</div>
+<div class="color2">
+  <div class="wrapper">
     {% include testimonials.html data=site.data.testimonials2 %} 
   </div>
 </div>
