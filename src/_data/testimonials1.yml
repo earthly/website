@@ -1,9 +1,10 @@
-- name: Adam Gordon Bell
-  position: Developer Relations Director
-  quote: Earthly builds are self-contained, isolated and reproducible. Regardless of whether Earthly runs in your CI or on your laptop, there is a degree of guarantee that the build will run the same way. This allows for faster iteration on the build scripts and easier debugging when something goes wrong. No more git commit -m "try again".
-  profile: bla.png
-  companybio: Adam works at twitter where bla bla bla.
-  companylogo: twitter.svg
+- name: Matt Klein
+  position: Creator of Envoy Proxy
+  quote: Earthly is a pragmatic and incremental solution to a thorny problem that all organizations face. I'm extremely excited about Earthly bringing this functionality to existing container based build systems without requiring an extremely expensive retooling effort on top of something like Bazel.
+  profile: Matt-Klein.jpg
+  companybio: Envoy is an open source edge and service proxy, designed for cloud-native applications.
+  companylogo1: twitter.svg
+  companylogo: envoy-logo.svg
 - name: John Someone
   position: Developer Relations Director
   quote: Earthly builds are self-contained, isolated and reproducible. Regardless of whether Earthly runs in your CI or on your laptop, there is a degree of guarantee that the build will run the same way. This allows for faster iteration on the build scripts and easier debugging when something goes wrong. No more git commit -m "try again".
