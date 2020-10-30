@@ -6,8 +6,8 @@
   companylogo1: twitter.svg
   companylogo: envoy-logo.svg
 - name: John Someone
-  position: Developer Relations Director
-  quote: Earthly builds are self-contained, isolated and reproducible. Regardless of whether Earthly runs in your CI or on your laptop, there is a degree of guarantee that the build will run the same way. This allows for faster iteration on the build scripts and easier debugging when something goes wrong. No more git commit -m "try again".
+  position: Creator of X
+  quote: Large organizations like Google or Twitter have solved these problems internally in a way that is idiosyncratic to their engineering processes.  Earthly is the first solution to bring the power of reproducible builds at scale to market in a packaging that can fit all organizations. 
   profile: bla.png
   companybio: something
   companylogo: twitter.svg

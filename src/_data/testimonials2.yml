@@ -1,6 +1,6 @@
-- name: Tom Something
-  position: Developer Relations Director
-  quote: Earthly builds are self-contained, isolated and reproducible. Regardless of whether Earthly runs in your CI or on your laptop, there is a degree of guarantee that the build will run the same way. This allows for faster iteration on the build scripts and easier debugging when something goes wrong. No more git commit -m "try again".
+- name: Tom Someone
+  position: Somebody
+  quote: By reducing the friction inherent in build tools, Earthly is enabling SaaS companies to move quickly and reduce the context switching overhead in their engineering organizations.
   profile: bla.png
   companybio: something
   companylogo: twitter.svg
