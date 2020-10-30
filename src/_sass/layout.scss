@@ -93,3 +93,8 @@ h4 {
 .pad {
   padding: $spacing-unit / 1.5 ;
 }
+
+// prevent horizontal scroll
+body {
+  overflow-x: hidden !important;
+}
