@@ -41,7 +41,7 @@
                         <p><span class="earthfile-target">build:</span></p>
                         <p class="indent"><span class="earthfile-term">COPY</span> main.go .</p>
                         <p class="indent"><span class="earthfile-term">RUN</span> go build -o build/go-example main.go</p>
-                        <p class="indent"><span class="earthfile-term">SAVE</span> ARTIFACT build/go-example AS LOCAL build/go-example</p>
+                        <p class="indent"><span class="earthfile-term">SAVE ARTIFACT</span> build/go-example AS LOCAL build/go-example</p>
                         <p></p>
                         <p><span class="earthfile-target">lint:</span></p>
                         <p class="indent"><span class="earthfile-term">RUN</span> go get golang.org/x/lint/golint</p>
@@ -67,7 +67,7 @@
                     <div>
                         <h3 class="g-type-display-3">Reproduce CI failures</h3>
                         <p>Earthly builds are self-contained, isolated and reproducible.</p>
-                        <p>Regardless of whether Earthly runs in your CI or on your laptop, a the build will run the same way.</p>
+                        <p>Regardless of whether Earthly runs in your CI or on your laptop, the build will run the same way.</p>
                         <p>This allows for faster iteration on the build scripts and easier debugging.</p>
                     </div>
                     <p>No more <code>git commit -m "try again" </code> .  </p>
