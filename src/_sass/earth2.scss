@@ -6,7 +6,7 @@ $earth-footer-width: $earth-page-width;
 // COLOR
 // --------------------------------------------------
 //used in borders, and iterm headings
-$earth-color-gray-lightest: #EEF1F1;
+$earth-color-gray-lightest: #eef1f1d5;
 
 //used in buton borders and links
 $earth-color-gray-lighter: #CCDADE;
@@ -116,15 +116,15 @@ $earth-input-height--large: $earth-button-height--large;
 // "EFFECTS"
 // --------------------------------------------------
 
-$earth-border-radius: 2px;
+$earth-border-radius: 4px;
 $earth-border-radius-large: 4px;
 
 @mixin shadow {
-  box-shadow: 0px 0px ($spacing-unit / 2) 0px rgba(0, 0, 0, $alpha-transparent);
+  box-shadow: 0px 0px ($spacing-unit * 4) 0px rgba(0, 0, 0, $alpha-transparent);
 }
 
 @mixin shadow-small {
-  box-shadow: 0px 0px ($spacing-unit / 8) 0px rgba(0, 0, 0, $alpha-transparent);
+  box-shadow: 0px 0px ($spacing-unit * 8) 0px rgba(0, 0, 0, $alpha-transparent);
 }
 
 
