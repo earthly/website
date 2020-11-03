@@ -103,7 +103,6 @@
 }
 
 .Home-cta-button {
-  background-color: transparent;
   font-family: $earth-font-sans;
   font-size: $earth-button-font-size--large;
   font-weight: $earth-font-weight-sans-bold;
@@ -114,14 +113,16 @@
   justify-content: center;
   border-radius: $earth-border-radius;
   border: 2px solid $earth-color-gray-lighter;
-  color: $earth-color-gray;
   box-sizing: border-box;
   cursor: pointer;
   white-space: nowrap;
+  color: $color-white;
+  background-color: $earth-color-gray;
 
   &:hover {
-    color: $color-white;
-    background-color: $earth-color-gray;
+    color: $earth-color-gray;
+    background-color: transparent;
+    border: 2px solid $earth-color-gray;
   }
 }
 
@@ -755,11 +756,13 @@ $Home-feature-navList-width: 35%;
   border-radius: $earth-border-radius;
   border: 1px solid $earth-color-gray;
   text-align: center;
-  color: $earth-color-gray;
+  color: $color-white;
+  background-color: $earth-color-gray;
 
   &:hover {
-    color: $color-white;
-    background-color: $earth-color-gray;
+    color: $earth-color-gray;
+    background-color: transparent;
+    border: 3px solid $earth-color-gray;
   }
   &:active {
     background-color: $color-blue-light;

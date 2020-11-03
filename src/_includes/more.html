@@ -1,21 +1,20 @@
 <h3 class="Home-heroText-title2">More Earthly</h3>
 <section class="Home-resources">
   <ul class="Home-resources-list">
-    <li class="Home-resources-listItem">
+    <!-- <li class="Home-resources-listItem">
       <div class="Home-resources-listItem-text">
         <h4 class="Home-subsectionHeading Home-subsectionHeading--resources">
           {% svg assets/svg/resources-docs.svg class="Home-resources-svg" %}
           Getting Started
         </h4>
-        <p>If you are ready to start using earthly.  Head over to our documentation for examples and guides.</p>
-       <!-- <div markdown="1">Hello</div> -->
+        <p>If you are ready to start using earthly. Head over to our documentation for examples and guides.</p>
       </div>
       <a href="{{site.docsurl}}/" class="Home-resources-link">Check out Docs</a>
-    </li>
+    </li> -->
     <li class="Home-resources-listItem">
       <div class="Home-resources-listItem-text">
         <h4 class="Home-subsectionHeading Home-subsectionHeading--resources">
-        {% svg assets/svg/social-slack.svg class="Home-resources-svg" %}
+          {% svg assets/svg/social-slack.svg class="Home-resources-svg" %}
           Questions?
         </h4>
         <p>Join our slack channel. We are on there Monday through Friday and happy to answer questions.</p>
@@ -28,15 +27,49 @@
           {% svg assets/svg/resources-github.svg class="Home-resources-svg" %}
           GitHub
         </h4>
-        <p>Want to see the source?  Have you found and issue?  Do you have an idea for a Feature or what to contribute?  Head over to our github repo.</p>
+        <p>Want to see the source? Have you found and issue? Do you have an idea for a Feature or what to contribute?
+          Head over to our github repo.</p>
       </div>
-      <a href="https://github.com/earthly/earthly" rel="noopener noreferrer" target="_blank" class="Home-resources-link">Earth on GitHub</a>
+      <a href="https://github.com/earthly/earthly" rel="noopener noreferrer" target="_blank"
+        class="Home-resources-link">Earth on GitHub</a>
     </li>
     <li class="Home-resources-listItem">
-      <div class="Home-resources-listItem-text">
-          
-      </div> 
-      <a href="https://github.com/earthly/earthly" rel="noopener noreferrer" target="_blank" class="Home-resources-link">Subscribe</a>
+          <h4 class="Home-subsectionHeading Home-subsectionHeading--resources">
+            {% svg assets/svg/resources-mailing-list.svg class="Home-resources-svg" %}
+            Subscribe
+          </h4>
+          <p>Want to hear about new features?  What the latest updates?  What to hear about our plans for Earthly Cloud Builds?</p>
+      <script src="https://f.convertkit.com/ckjs/ck.5.js"></script>
+      <form action="https://app.convertkit.com/forms/1789458/subscriptions" class="seva-form formkit-form" method="post"
+        data-sv-form="1789458" data-uid="08f64c741e" data-format="inline" data-version="5"
+        data-options="{&quot;settings&quot;:{&quot;after_subscribe&quot;:{&quot;action&quot;:&quot;message&quot;,&quot;success_message&quot;:&quot;Success! Now check your email to confirm your subscription.&quot;,&quot;redirect_url&quot;:&quot;&quot;},&quot;analytics&quot;:{&quot;google&quot;:null,&quot;facebook&quot;:null,&quot;segment&quot;:null,&quot;pinterest&quot;:null},&quot;modal&quot;:{&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15},&quot;powered_by&quot;:{&quot;show&quot;:true,&quot;url&quot;:&quot;https://convertkit.com?utm_source=dynamic&amp;utm_medium=referral&amp;utm_campaign=poweredby&amp;utm_content=form&quot;},&quot;recaptcha&quot;:{&quot;enabled&quot;:false},&quot;return_visitor&quot;:{&quot;action&quot;:&quot;show&quot;,&quot;custom_content&quot;:&quot;&quot;},&quot;slide_in&quot;:{&quot;display_in&quot;:&quot;bottom_right&quot;,&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15},&quot;sticky_bar&quot;:{&quot;display_in&quot;:&quot;top&quot;,&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15}},&quot;version&quot;:&quot;5&quot;}"
+        min-width="400 500 600 700 800">
+        <div class="Home-resources-listItem-text">
+          <div data-style="clean">
+            <ul class="formkit-alert formkit-alert-error" data-element="errors" data-group="alert"></ul>
+            <div data-element="fields" data-stacked="false" class="seva-fields formkit-fields">
+              <div class="formkit-field"><input class="formkit-input" aria-label="Your first name"
+                  name="fields[first_name]" placeholder="Your first name" type="text"
+                  style="color: rgb(0, 0, 0); border-color: rgb(227, 227, 227); border-radius: 4px; font-weight: 400;">
+              </div>
+              <div class="formkit-field"><input class="formkit-input" name="email_address"
+                  aria-label="Your email address" placeholder="Your email address" required="" type="email"
+                  style="color: rgb(0, 0, 0); border-color: rgb(227, 227, 227); border-radius: 4px; font-weight: 400;">
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <button data-element="submit" class="Home-resources-button">
+          <div class="formkit-spinner">
+            <div></div>
+            <div></div>
+            <div></div>
+          </div><span class="">Subscribe</span>
+        </button>
+      </form>
+
+     
     </li>
   </ul>
 </section>
