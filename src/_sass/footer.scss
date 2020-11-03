@@ -14,14 +14,7 @@
 
 .siteFooter-links {
   display: flex;
-
-  @include mobileAndBelow {
-    flex-direction: column;
-    width: 100%;
-  }
-  @include mobileAndAbove {
     margin-bottom: $spacing-unit;
-  }
 }
 .siteFooter-links-navList {
   @include reset-list-style;
@@ -138,7 +131,7 @@
     background-color: transparent;
 
     .fillStd {
-      fill: $color-blue;
+      fill: $earth-color-gray;
     }
   }
   

@@ -5,9 +5,17 @@ $earth-footer-width: $earth-page-width;
 
 // COLOR
 // --------------------------------------------------
+//used in borders, and iterm headings
 $earth-color-gray-lightest: #EEF1F1;
+
+//used in buton borders and links
 $earth-color-gray-lighter: #CCDADE;
-$earth-color-gray: #586E75;
+
+//used in Button Text, Button hover, and some sections headings
+// $earth-color-gray: #04C7D3; //#586E75;
+$earth-color-gray: #24626D; //#586E75;
+
+//Hero headings color  
 $earth-color-gray-dark: #073642;
 
 $earth-color-text: $earth-color-gray-dark;

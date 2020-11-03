@@ -48,7 +48,7 @@ h2, h1 {
   font-weight: 300;
   letter-spacing: 0;
   margin-bottom: $spacing-unit;
-  color: $color-blue;
+  color: $earth-color-gray;
 
   @include mobile {
     font-size: 28px;
@@ -60,7 +60,7 @@ h3 {
   font-variant-ligatures: none;
   font-size: 24px;
   letter-spacing: 0;
-  color: $color-blue;
+  color: $earth-color-gray;
   font-weight: 700;
   margin-bottom: $spacing-unit / 2;
   letter-spacing: 0;
@@ -76,20 +76,25 @@ h4 {
   font-variant-ligatures: none;
   font-size: 18px;
   line-height: normal;
-  color: $color-blue;
+  color: $earth-color-gray;
   font-weight: 700;
   letter-spacing: 0;
 }
+@media (min-width: 768px){
+  .row {
+    display: flex;
+  }
 
-.row {
-  display: flex;
+  .half {
+    display: flex;
+    width: 50%;
+  }
 }
-
-.half {
-  display: flex;
-  width: 50%;
+@media (max-width: 768px) {
+  .no-mobile{
+    display:none;
+  }
 }
-
 .pad {
   padding: $spacing-unit / 1.5 ;
 }

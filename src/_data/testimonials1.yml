@@ -5,9 +5,9 @@
   companybio: Envoy is an open source edge and service proxy, designed for cloud-native applications.
   companylogo1: twitter.svg
   companylogo: envoy-logo.svg
-- name: John Someone
-  position: Creator of X
+- name: Florian Leibert
+  position: Founder of D2iQ
   quote: Large organizations like Google or Twitter have solved these problems internally in a way that is idiosyncratic to their engineering processes.  Earthly is the first solution to bring the power of reproducible builds at scale to market in a packaging that can fit all organizations. 
-  profile: bla.png
-  companybio: something
-  companylogo: twitter.svg
+  profile: Florian-Leibert.jpg
+  companybio: D2iQ (formerly Mesosphere) simplifies enterprise Kubernetes in production at scale. 
+  companylogo: d2iq.svg

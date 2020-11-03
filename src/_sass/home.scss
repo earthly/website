@@ -310,7 +310,7 @@
   color: $earth-color-gray-lighter;
 }
 .earthfile-term {
-  color: $color-blue;
+  color: $earth-color-gray;
 }
 .earthfile-target {
   color: $color-pink;
@@ -344,7 +344,7 @@
   color: $color-pink;
 }
 .Home-featuresIntro-text-button--pillar2 {
-  color: $color-blue;
+  color: $earth-color-gray;
 }
 .Home-featuresIntro-text-button--pillar3 {
   color: $color-purple;
@@ -399,7 +399,7 @@ $Home-feature-navList-width: 35%;
     border-color: $color-pink;
   }
   .Home-features-navItem--pillar2.is-active & {
-    border-color: $color-blue;
+    border-color: $earth-color-gray;
   }
   .Home-features-navItem--pillar3.is-active & {
     border-color: $color-purple;
@@ -445,14 +445,14 @@ $Home-feature-navList-width: 35%;
 
 .Home-features-navItem-button {
   .Home-features-navItem--pillar2 & {
-    color: $color-blue;
+    color: $earth-color-gray;
   }
   
   .Home-features-navItem--pillar2:hover &,
   .Home-features-navItem--pillar2.is-active & {
     color: $color-white;
-    background-color: $color-blue;
-    border-color: $color-blue;
+    background-color: $earth-color-gray;
+    border-color: $earth-color-gray;
   }
 }
 
@@ -565,7 +565,7 @@ $Home-feature-navList-width: 35%;
 
   &:hover .fillStd,
   &.is-selected .fillStd {
-    fill: $color-blue;
+    fill: $earth-color-gray;
   }
 }
 .Home-testimonials-navItem-svg--clusterApi {
@@ -652,7 +652,7 @@ $Home-feature-navList-width: 35%;
 
 .Home-testimonial-profileSocial-link--twitter {
   .primaryStroke {
-    stroke: $color-blue
+    stroke: $earth-color-gray
   }
   .fillStd {
     fill: transparent;
@@ -660,7 +660,7 @@ $Home-feature-navList-width: 35%;
 }
 .Home-testimonial-profileSocial-link--web {
   .fillStd {
-    fill: $color-blue;
+    fill: $earth-color-gray;
   }
 }
 
@@ -735,7 +735,7 @@ $Home-feature-navList-width: 35%;
 
 .Home-resources-svg {
   margin-right: $spacing-unit / 2;
-  fill: $color-blue;
+  fill: $earth-color-gray;
 }
 .Home-resources-button {
   @include reset-button-style;
@@ -753,13 +753,13 @@ $Home-feature-navList-width: 35%;
   padding-top: $spacing-unit / 4;
   padding-bottom: $spacing-unit / 4;
   border-radius: $earth-border-radius;
-  border: 1px solid $color-blue;
+  border: 1px solid $earth-color-gray;
   text-align: center;
-  color: $color-blue;
+  color: $earth-color-gray;
 
   &:hover {
     color: $color-white;
-    background-color: $color-blue;
+    background-color: $earth-color-gray;
   }
   &:active {
     background-color: $color-blue-light;

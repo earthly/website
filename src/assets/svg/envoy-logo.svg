@@ -13,7 +13,7 @@
    viewBox="0 0 222 50"
    version="1.1"
    id="svg432"
-   sodipodi:docname="envoy-logo1.svg"
+   sodipodi:docname="envoy-logo.svg"
    inkscape:version="1.0.1 (c497b03c, 2020-09-10)">
   <metadata
      id="metadata436">
@@ -36,18 +36,19 @@
      guidetolerance="10"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:window-width="1195"
-     inkscape:window-height="621"
+     inkscape:window-width="1920"
+     inkscape:window-height="1035"
      id="namedview434"
      showgrid="false"
      inkscape:pagecheckerboard="true"
      inkscape:zoom="2.0153257"
      inkscape:cx="114.62167"
      inkscape:cy="82.515209"
-     inkscape:window-x="192"
-     inkscape:window-y="715"
+     inkscape:window-x="0"
+     inkscape:window-y="534"
      inkscape:window-maximized="0"
-     inkscape:current-layer="svg432" />
+     inkscape:current-layer="svg432"
+     inkscape:document-rotation="0" />
   <!-- Generator: Sketch 45 (43475) - http://www.bohemiancoding.com/sketch -->
   <title
      id="title401">Envoy_Logo_Final_PANTONE-REVERSE</title>
@@ -67,7 +68,8 @@
      stroke="none"
      stroke-width="1"
      fill="none"
-     fill-rule="evenodd">
+     fill-rule="evenodd"
+     transform="translate(0,-68)">
     <g
        id="Envoy_Logo_Final_PANTONE-REVERSE">
       <polyline
