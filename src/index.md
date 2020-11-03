@@ -7,6 +7,7 @@ layout: default
   <div class="wrapper">
     {% include hero.html %}
     {% include index_cta.html %}
+     {% include signup_cta.html %}
   </div>
 </div>
 <div class="color1">
