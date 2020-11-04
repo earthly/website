@@ -153,3 +153,12 @@ $earth-border-radius-large: 4px;
   font-size: $earth-font-size-mono;
   line-height: $earth-line-height-mono;
 }
+
+// Github buttons
+// --------------
+.widget-lg .btn {
+  height: 25px !important;
+  padding: 3px 10px !important;
+  font-size: 14px !important;
+  line-height: 26px !important;
+}
