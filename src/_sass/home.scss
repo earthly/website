@@ -76,7 +76,7 @@
 
 .Home-heroIllustration {
   width: 80%;
-  max-width: 130px;
+  max-width: 370px;
 }
 
 
@@ -723,6 +723,7 @@ $Home-feature-navList-width: 35%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  background-color: $color-off-white;
 
   @include mobileAndBelow {
     & + & {
@@ -801,8 +802,8 @@ $Home-feature-navList-width: 35%;
   padding-bottom: 30px;
 }
 .color1 {
-  background-color:#f7f8fa;
+  background-color: #80e8ff28; //#889bc2;
 }
 .color2 {
-  background-color:#ffffff;
+  background-color: $background-color;//#ffffff;
 }

@@ -1,0 +1,18 @@
+<div class="Home-product-Earthfile">
+    <header class="Home-product-Earthfile-header">
+        <div class="Home-product-Earthfile-header-chromeDecoration">
+          {% svg assets/svg/chrome-button.svg class="chrome-button1" %}
+          {% svg assets/svg/chrome-button.svg class="chrome-button2" %}
+          {% svg assets/svg/chrome-button.svg class="chrome-button3" %}
+        </div>
+        Earthfile
+    </header>
+    <code class="Home-product-Earthfile-code">
+        <p><span class="earthfile-term">FROM</span> golang:1.13-alpine3.11</p>
+        <p></p>
+        <p><span class="earthfile-target">build:</span></p>
+        <p class="indent"><span class="earthfile-term">COPY</span> main.go . </p>
+        <p class="indent"><span class="earthfile-term">RUN</span> go build main.go </p> 
+        <p class="indent"><span class="earthfile-term">SAVE ARTIFACT</span> main AS LOCAL main</p>
+    </code>
+ </div>

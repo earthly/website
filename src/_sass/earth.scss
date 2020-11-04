@@ -73,7 +73,11 @@ $color-grey-dark: #606060;
 $color-grey-darkest: #434343;
 
 $text-color:       $color-grey-dark;
-$background-color: #ffffff;
+$background-color: #F0F8FF;//#ffffff;
+
+body {
+  background-color: $background-color;
+}
 
 $brand-color: $color-green;
 

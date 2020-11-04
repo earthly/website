@@ -120,7 +120,7 @@ $earth-border-radius: 4px;
 $earth-border-radius-large: 4px;
 
 @mixin shadow {
-  box-shadow: 0px 0px ($spacing-unit * 4) 0px rgba(0, 0, 0, $alpha-transparent);
+  box-shadow: 0px 0px ($spacing-unit) 0px rgba(0, 0, 0, $alpha-transparent);
 }
 
 @mixin shadow-small {
