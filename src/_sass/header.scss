@@ -126,12 +126,12 @@
 
 .siteHeader-logoAndMenuButton {
   @include mobileAndBelow {
-    position: fixed;
+    // position: fixed;
     left: 0;
     right: 0;
-    background-color: $color-white;
-    padding-left: $spacing-unit / 2;
-    padding-right: $spacing-unit / 2;
+    // background-color: $color-white;
+    padding-left: $spacing-unit * 2 ;
+    padding-right: $spacing-unit;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -139,7 +139,7 @@
 }
 .siteHeader-logoLink-svg {
   @include mobileAndBelow {
-    width: 85px; // Eyeballed
+    width: 185px; // Eyeballed
   }
 }
 
