@@ -295,7 +295,7 @@
   display: block;
   padding: $spacing-unit / 2 ;
   @include font-mono;  
-
+  font-size: 12px;
   p {
     color: $earth-color-gray-lightest;
     margin: 0;
