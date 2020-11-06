@@ -146,10 +146,24 @@ $earth-border-radius-large: 4px;
 }
 
 
-
-
 @mixin font-mono {
   font-family: $earth-font-mono;
   font-size: $earth-font-size-mono;
   line-height: $earth-line-height-mono;
+}
+
+@mixin boxshadow {
+  box-shadow: 0px 0px 5px 0px #000000;
+}
+
+.boxshadow {
+  @include boxshadow;
+}
+
+@mixin dropshadow {
+  filter: drop-shadow(2px 2px 10px #00000077);
+}
+
+.dropshadow {
+  @include dropshadow;
 }

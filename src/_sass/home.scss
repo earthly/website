@@ -269,8 +269,9 @@
   @include shadow;
 }
 .Home-product-Earthfile {
-  @include shadow;
+  // @include shadow;
   // border-style: solid;
+  @include boxshadow;
   background-color: $color-grey-darkest;
   border-radius: $earth-border-radius-large;
   overflow: hidden;
@@ -589,14 +590,15 @@ $Home-feature-navList-width: 35%;
 .Home-testimonial {
   margin-bottom: $spacing-unit;
   background-color: $color-off-white;
-  border-radius: $earth-border-radius;
-  border: 1px solid $earth-color-gray-lightest;
+  // border-radius: $earth-border-radius;
+  // border: 1px solid $earth-color-gray-lightest;
   color: $earth-color-gray;
   padding: $spacing-unit / 2;
   margin-right: $spacing-unit * 2;
   width: 100%;
   box-sizing: border-box;
   flex-shrink: 0;
+  @include boxshadow;
 
   @include mobileAndAbove {
     display: grid;
