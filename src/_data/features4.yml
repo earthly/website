@@ -3,7 +3,7 @@
 
   ​
   
-  It builds upon technologies like Docker and BuildKit to deliver builds that are self-sufficient, reproducible, portable and parallel. You can use Earthly to create Docker images, output artifacts or to run tests. Earthly is meant not to replace build systems, but rather to act as the glue layer between them.
+  It builds upon technologies like Docker and BuildKit to deliver builds that are self-sufficient, repeatable, portable and parallel. You can use Earthly to create Docker images, output artifacts or to run tests. Earthly is meant not to replace build systems, but rather to act as the glue layer between them.
   
   ​
   

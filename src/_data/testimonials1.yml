@@ -7,7 +7,7 @@
   companylogo: envoy-logo.svg
 - name: Florian Leibert
   position: Founder of D2iQ
-  quote: Large organizations like Google or Twitter have solved these problems internally in a way that is idiosyncratic to their engineering processes.  Earthly is the first solution to bring the power of reproducible builds at scale to market in a packaging that can fit all organizations. 
+  quote: Large organizations like Google or Twitter have solved these problems internally in a way that is idiosyncratic to their engineering processes.  Earthly is the first solution to bring the power of repeatable builds at scale to market in a packaging that can fit all organizations. 
   profile: Florian-Leibert.jpg
   companybio: D2iQ (formerly Mesosphere) simplifies enterprise Kubernetes in production at scale. 
   companylogo: d2iq.svg
