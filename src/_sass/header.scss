@@ -1,5 +1,5 @@
 .siteHeader2 {
-  width: 100%;
+  width: 80%;
   display: flex;
   margin-right: auto;
   margin-left: auto;
@@ -7,7 +7,7 @@
   @include mobileAndAbove {
     max-width: $earth-header-width;
     padding-top: $spacing-unit * 2;
-    padding-bottom: $spacing-unit;
+    padding: $spacing-unit
   }
 }
 
@@ -148,20 +148,6 @@
   @include mobileAndBelow {
     transform: translateY(-1000px); // Should be taller than any reasonable screen height
     opacity: 0;
-
-    .siteHeader2.has-openMenu & {
-      background-color: $color-white;
-      position: fixed;
-      left: 0;
-      right: 0;
-      top: 0;
-      bottom: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transform: translateY(0);
-      opacity: 1;
-    }
   }
 }
 
@@ -182,19 +168,5 @@
     .fillStd {
       fill: $earth-color-gray;
     }
-  }
-}
-
-.siteHeader-menuButton-close {
-  display: none;
-  .siteHeader2.has-openMenu & {
-    display: inline;  
-  }
-}
-
-.siteHeader-menuButton-menu {
-  display: inline;
-  .siteHeader2.has-openMenu & {
-    display: none;
   }
 }
