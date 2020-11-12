@@ -112,7 +112,7 @@
   align-items: center;
   
   @include mobileAndBelow {
-    margin-bottom: $spacing-unit / 2;
+    display: none;
   }
   @include mobileAndAbove {
     margin-left: $spacing-unit;
