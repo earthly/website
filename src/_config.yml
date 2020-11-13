@@ -6,6 +6,7 @@ blogurl: "https://blog.earthly.dev"
 twitter_username: earthlytech
 github_username:  earthly
 google_analytics: "UA-161831101-3"
+google_analytics_rollup: "UA-161831101-5"
 description: "Better Builds"
 include:
   - _redirects
