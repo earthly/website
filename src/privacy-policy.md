@@ -1,3 +1,8 @@
+---
+title: Earthly Privacy Policy
+layout: default
+---
+
 # Earthly Privacy Policy
 
 *2020-12-01*
