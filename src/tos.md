@@ -1,9 +1,7 @@
 ---
 title: Earthly Terms of Service
-layout: default
+layout: page
 ---
-
-# Earthly Terms of Service
 
 *2020-12-01*
 
@@ -15,7 +13,7 @@ Welcome, and thank you for your interest in Earthly Technologies Inc. ("**Earthl
 
 **ARBITRATION NOTICE**. Except for certain kinds of disputes described in Section 17, you agree that disputes arising under these Terms will be resolved by binding, individual arbitration, and BY ACCEPTING THESE TERMS, YOU AND EARTHLY TECHNOLOGIES ARE EACH WAIVING THE RIGHT TO A TRIAL BY JURY OR TO PARTICIPATE IN ANY CLASS ACTION OR REPRESENTATIVE PROCEEDING. YOU AGREE TO GIVE UP YOUR RIGHT TO GO TO COURT to assert or defend your rights under this contract (except for matters that may be taken to small claims court). Your rights will be determined by a NEUTRAL ARBITRATOR and NOT a judge or jury. (See Section 17.)
 
-1. **Service Overview**. Earthly Technologies offers developer tooling. The Service may make available source-available products and services (the "**Source-Available Offering**"), application programming interface (the "**API**"), a Software-as-a-Service solution (the "**SaaS Offering**"), or any other products or services we choose to offer from time to time. The Service may also allow users to view, share, and use certain developer materials such as build logs or artifacts provided by other users (collectively, the "**Community Software Components**"). Your access to and use of the Service in connection with the Source-Available Offering may be subject to additional terms, such as open source or source-available license(s) (more information here: [https://github.com/earthly/earthly](https://github.com/earthly/earthly)) or our Contributor License Agreement [https://www.earthly.dev/cla-clickthrough](https://www.earthly.dev/cla-clickthrough). Your use of the API will be subject to our API Terms [https://www.earthly.dev/api-terms](https://www.earthly.dev/api-terms).
+1. **Service Overview**. Earthly Technologies offers developer tooling. The Service may make available source-available products and services (the "**Source-Available Offering**"), application programming interface (the "**API**"), a Software-as-a-Service solution (the "**SaaS Offering**"), or any other products or services we choose to offer from time to time. The Service may also allow users to view, share, and use certain developer materials such as build logs or artifacts provided by other users (collectively, the "**Community Software Components**"). Your access to and use of the Service in connection with the Source-Available Offering may be subject to additional terms, such as open source or source-available license(s) (more information here: [https://github.com/earthly/earthly](https://github.com/earthly/earthly)) or our Contributor License Agreement [https://www.earthly.dev/cla-form](https://www.earthly.dev/cla-form). Your use of the API will be subject to our API Terms [https://www.earthly.dev/api-terms](https://www.earthly.dev/api-terms).
 
 2. **Eligibility**. You must be at least 18 years old to use the Service. By agreeing to these Terms, you represent and warrant to us that: (a) you are at least 18 years old; (b) you have not previously been suspended or removed from the Service; and (c) your registration and your use of the Service is in compliance with any and all applicable laws and regulations. If you are an entity, organization, or company, the individual accepting these Terms on your behalf represents and warrants that they have authority to bind you to these Terms and you agree to be bound by these Terms. 
 
