@@ -1,5 +1,10 @@
 <script src="{{'/node_modules/hello-bar/build/index.js' | prepend: site.baseurl}}"></script>
 <link href="{{'/node_modules/hello-bar/build/index.css' | prepend: site.baseurl}}" rel="stylesheet"/>
+<style>
+  .hello-bar .hello-bar-container {
+    height: 2.5rem;
+  }
+</style>
 <script>
   new HelloBar.default({
                 id: "github",
