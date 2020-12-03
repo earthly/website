@@ -10,7 +10,13 @@ google_analytics_rollup: "UA-161831101-5"
 description: "Better Builds"
 include:
   - _redirects
+sass:
+    load_paths:
+        - _sass
+        - node_modules
 
+# force include node_modules
+exclude: []
 # Build settings
 plugins:
   - jekyll-feed
