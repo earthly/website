@@ -39,6 +39,7 @@ $earth-font-size-heading: 28px;
 $earth-font-size-heading-small: 24px;
 
 $earth-font-size-body-small: 16px;
+$earth-font-size-body-very-small: 12px;
 $earth-font-size-body: 18px;
 $earth-font-size-body-large: 28px;
 $earth-line-height-body: 1.4;
@@ -96,6 +97,12 @@ $earth-line-height-body-serif: 1.6;
 @mixin font-body-small {
   font-family: $earth-font-sans;
   font-size: $earth-font-size-body-small;
+  font-weight: $earth-font-weight-sans-light;
+  line-height: $earth-line-height-body;
+}
+@mixin font-body-very-small {
+  font-family: $earth-font-sans;
+  font-size: $earth-font-size-body-very-small;
   font-weight: $earth-font-weight-sans-light;
   line-height: $earth-line-height-body;
 }

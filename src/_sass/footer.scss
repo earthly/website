@@ -14,7 +14,7 @@
 
 .siteFooter-links {
   display: flex;
-    margin-bottom: $spacing-unit;
+    margin-bottom: $spacing-unit / 2;
 }
 .siteFooter-links-navList {
   @include reset-list-style;
@@ -150,6 +150,12 @@
 // About the Team --------------------------------------------------
 .siteFooter-about {
   @include font-body-small;
+  text-align: center;
+  margin: $spacing-unit / 2;
+}
+
+.siteFooter-terms {
+  @include font-body-very-small;
   text-align: center;
 }
 
