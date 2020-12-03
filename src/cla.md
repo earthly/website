@@ -9,7 +9,7 @@ layout: default
 
 In order to clarify the intellectual property license granted with Contributions from any person or entity (such person, "**Individual Contributor**," such entity, "**Entity Contributor**" and each a "**Contributor**"), Earthly Technologies Inc., ("**Earthly**") must have a Contributor License Agreement ("**CLA**") on file that has been signed by each Contributor, indicating agreement to the license terms below. This license is for Your protection as a Contributor as well as the protection of Earthly; it does not change Your rights to use Your own Contributions for any other purpose.
 
-## PLEASE READ THE FOLLOWING TERMS CAREFULLY:
+**PLEASE READ THE FOLLOWING TERMS CAREFULLY:**
 
 BY SUBMITTING ANY CONTRIBUTIONS (AS DEFINED BELOW) OR BY CONFIRMING YOUR SIGNOFF OF ANY CONTRIBUTIONS, YOU AGREE THAT YOU HAVE READ AND UNDERSTOOD, AND YOU AGREE TO BE BOUND BY, THE FOLLOWING TERMS AND CONDITIONS FOR ALL OF YOUR CONTRIBUTIONS SUBMITTED TO EARTHLY (THIS "**CLA**"). IF YOU DO NOT AGREE TO THIS CLA, THEN YOU SHOULD NOT SUBMIT ANY CONTRIBUTION TO EARTHLY. YOUR SUBMISSION AND EARTHLY’S ACCEPTANCE OF YOUR CONTRIBUTIONS, CONSTITUTES AN AGREEMENT BY EARTHLY AND BY YOU TO BE BOUND BY THIS CLA. If You are an Entity Contributor, the individual accepting this CLA on Your behalf represents and warrants that they have authority to bind You to, and You agree to be bound by, this CLA.
 
