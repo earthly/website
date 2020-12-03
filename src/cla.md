@@ -3,7 +3,7 @@ title: Earthly Contributor License Agreement
 layout: default
 ---
 
-# Contributor License Agreement
+# Earthly Contributor License Agreement
 
 *2020-12-01*
 
