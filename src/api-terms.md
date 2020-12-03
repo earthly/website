@@ -1,9 +1,7 @@
 ---
 title: Earthly API Terms
-layout: default
+layout: page
 ---
-
-# Earthly API Terms
 
 *2020-12-01*
 

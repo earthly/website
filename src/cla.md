@@ -1,9 +1,7 @@
 ---
 title: Earthly Contributor License Agreement
-layout: default
+layout: page
 ---
-
-# Earthly Contributor License Agreement
 
 *2020-12-01*
 
