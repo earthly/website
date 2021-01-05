@@ -21,7 +21,7 @@ os:
                     </div>
                     Terminal
                 </header>
-                <code class="Home-product-Earthfile-code">
+                <code class="Home-product-Earthfile-code on-download-listen">
                     <p>sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/latest/download/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly && /usr/local/bin/earthly bootstrap'</p>
                 </code>
             </div>
@@ -44,7 +44,7 @@ os:
                     </div>
                     Terminal
                 </header>
-                <code class="Home-product-Earthfile-code">
+                <code class="Home-product-Earthfile-code on-download-listen">
                     <p>brew install earthly</p>
                 </code>
             </div>
@@ -68,7 +68,7 @@ os:
                     </div>
                     Terminal
                 </header>
-                <code class="Home-product-Earthfile-code">
+                <code class="Home-product-Earthfile-code on-download-listen">
                     <p>sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/latest/download/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly && /usr/local/bin/earthly bootstrap'</p>
                 </code>
             </div>
@@ -103,6 +103,48 @@ ide:
 {% include tabs.html tabs=page.os id="os" %}
 
 For alternative installation options see the [installation page in the Earthly docs](https://docs.earthly.dev/installation). To install Earthly from source, see the [contributing page in GitHub](https://github.com/earthly/earthly/blob/main/CONTRIBUTING.md).
+
+<p>
+<div class="on-download-show-wrap">
+<div class="on-download-show">
+<div class="on-download-show-content">
+<p class="on-download-show-content-quote">
+<div markdown="1">
+
+#### 📢 Get involved 📢
+
+Thank you for giving Earthly a shot. Come and be part of the Earthly movement!
+
+<!-- Twitter button code -->
+<script>window.twttr = (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0],
+    t = window.twttr || {};
+  if (d.getElementById(id)) return t;
+  js = d.createElement(s);
+  js.id = id;
+  js.src = "https://platform.twitter.com/widgets.js";
+  fjs.parentNode.insertBefore(js, fjs);
+
+  t._e = [];
+  t.ready = function(f) {
+    t._e.push(f);
+  };
+
+  return t;
+}(document, "script", "twitter-wjs"));</script>
+
+<!-- Social buttons -->
+<p class="get-involved-social">
+<a class="github-button" href="https://github.com/earthly/earthly" data-size="large" data-show-count="true" aria-label="Star earthly/earthly on GitHub">Star</a>
+<a class="twitter-share-button" href="https://twitter.com/intent/tweet?text=I%27m%20trying%20out%20%F0%9F%8C%8D%20%40EarthlyTech%2C%20a%20fully%20containerized%20build%20tool%0A%0AIt%27s%20like%20Makefile%20and%20Dockerfile%20had%20a%20baby%20%F0%9F%8D%BC%0A%0AWish%20me%20luck!%0A%0Ahttps%3A%2F%2Fearthly.dev" target="_blank" data-size="large">Tweet</a>
+<!-- <a class="twitter-follow-button" href="https://twitter.com/EarthlyTech" target="_blank" data-show-count="false" data-size="large">Follow @EarthlyTech</a> -->
+</p>
+</div>
+</p>
+</div>
+</div>
+</div>
+</p>
 
 ### Verify installation
 
