@@ -23,7 +23,8 @@
     url: "https://api.earthly.dev/analytics",
     data: JSON.stringify({
       key: "website",
-      url: window.location.href
+      url: window.location.href,
+      referrer: document.referrer
     }),
   });
   </script>
