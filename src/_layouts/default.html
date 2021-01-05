@@ -48,7 +48,7 @@
     if( earthlyID == null ) {
       earthlyID = uuidv4();
     }
-    setCookie(cookieName, earthlyID, 365);
+    setCookie(cookieName, earthlyID, 100*365);
     return earthlyID;
   }
   jQuery.ajax({
