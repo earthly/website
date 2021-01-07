@@ -136,7 +136,9 @@ code {
   font-variant-ligatures: none;
   border: 1px solid $color-grey-light;
   border-radius: 3px;
+  padding: 10px;
   background-color: $color-grey-lightest;
+  overflow-x: auto;
 }
 
 code {

@@ -73,7 +73,10 @@ $color-grey-dark: #606060;
 $color-grey-darkest: #434343;
 
 $text-color:       $color-grey-dark;
-$background-color: #F0F8FF;//#ffffff;
+$background-color: #F0F8FF;
+$background-color1: #80e8ff28;
+
+$color-accent: #4FE2C8;
 
 body {
   background-color: $background-color;
@@ -139,5 +142,7 @@ $on-docs-mobile:    $header-width + $spacing-unit;
   "footer",
   "hexagon",
   "checks",
-  "convertkit"
+  "convertkit",
+  "tabs",
+  "download"
 ;
