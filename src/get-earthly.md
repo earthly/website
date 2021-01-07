@@ -57,7 +57,7 @@ os:
             ### Pre-requisites
 
             * [WSL 2](https://docs.microsoft.com/en-us/windows/wsl/install-win10)
-            * [Docker Desktop WSL2 backend](https://docs.docker.com/docker-for-windows/wsl/)
+            * [Docker Desktop with WSL2 backend](https://docs.docker.com/docker-for-windows/wsl/)
             * [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 
             ### Installation
