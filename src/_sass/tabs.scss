@@ -1,19 +1,24 @@
 ul.tabcontrol.tabs {
+    display: flex;
+    flex-direction: row;
+    padding: 4px 0;
     margin: 0;
     height: 40px;
     box-sizing: border-box;
     border-bottom: 1px solid $color-grey;
+    overflow-x: auto;
+    overflow-y: hidden;
 }
 
 ul.tabcontrol.tabs li.tab {
-    float: left;
+    white-space: nowrap;
     padding: 5px 13px;
     cursor: pointer;
     list-style-type: none;
     border: 1px solid $color-grey;
     border-bottom: none;
     box-sizing: border-box;
-    height: 38px;
+    min-height: 38px;
     background: white;
     margin-right: 2px;
     font-family: $body-font-family !important;
@@ -24,7 +29,7 @@ ul.tabcontrol.tabs li.tab {
 }
 
 ul.tabcontrol.tabs li.tabcontrol.tab.active {
-    height: 42px;
+    min-height: 42px;
     font-weight: bold !important;
     margin-top: -3px;
     border-top: 3px solid $color-accent;
