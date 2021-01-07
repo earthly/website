@@ -38,8 +38,17 @@ h2 a:hover {
   background-color: transparent;
 }
 
+h1 {
+  @include font-hero;
 
-h2, h1 {
+  @include mobileAndAbove {
+    max-width: 90%;
+    margin-bottom: $spacing-unit * 2;
+  }
+}
+
+
+h2 {
   font-family: $header-font-family;
   font-variant-ligatures: none;
   font-size: 32px;
