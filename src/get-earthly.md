@@ -62,6 +62,8 @@ os:
 
             ### Installation
 
+            Under `wsl`, run the following to install `earthly`.
+
             <div class="Home-product-Earthfile">
                 <header class="Home-product-Earthfile-header">
                     <div class="Home-product-Earthfile-header-chromeDecoration">
@@ -97,12 +99,13 @@ ide:
         title: Sublime Text
         source: source3
         content: |
-            Visit [sublimetext-earthly-syntax on GitHub](https://github.com/earthly/sublimetext-earthly-syntax) for details.
+            Add the [Earthly Earthfile package](https://packagecontrol.io/packages/Earthly%20Earthfile) via Package Control:
+
+            1. Press `Ctrl+Shift+P` (or `Cmd+Shift+P` on Mac) to bring up the Command Palette, and select **Install Package control** (if you haven't already installed Package Control).
+            2. Press `Ctrl+Shift+P` (or `Cmd+Shift+P` on Mac) again, select "Package Control: Install Package" and select **Earthly Earthfile** to install.
 ---
 
-{% include tabs.html tabs=page.os id="os" %}
-
-For alternative installation options see the [installation page in the Earthly docs](https://docs.earthly.dev/installation). To install Earthly from source, see the [contributing page in GitHub](https://github.com/earthly/earthly/blob/main/CONTRIBUTING.md).
+{% include tabs.html tabs=page.os id="os" bodyclass="fullborder" %}
 
 <p>
 <div class="on-download-show-wrap">
@@ -146,7 +149,9 @@ Thank you for giving Earthly a shot. Come and be part of the Earthly movement!
 </div>
 </p>
 
-### Verify installation
+For alternative installation options see the [installation page in the Earthly docs](https://docs.earthly.dev/installation). To install Earthly from source, see the [contributing page in GitHub](https://github.com/earthly/earthly/blob/main/CONTRIBUTING.md).
+
+## Verify installation
 
 <p>
     <div class="Home-product-Earthfile">
@@ -161,15 +166,15 @@ Thank you for giving Earthly a shot. Come and be part of the Earthly movement!
     </div>
 </p>
 
-### Syntax highlighting
+## Syntax highlighting
 
-{% include tabs.html tabs=page.ide id="ide" %}
+{% include tabs.html tabs=page.ide id="ide" bodyclass="fullborder" %}
 
-### Installing Earthly in CI
+## Installing Earthly in CI
 
 See the [CI integration guide](https://docs.earthly.dev/guides/ci-integration).
 
-### Next steps
+## Next steps
 
 To learn how to use Earthly, try
 
