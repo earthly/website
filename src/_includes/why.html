@@ -7,7 +7,7 @@
             <div class="half">
                 <div class="pad">
                     <div>
-                        {% include iterm.html number=351674 %} 
+                        <p>{% include iterm.html number=351674 %}</p>
                         <p style="text-align:center">Cache build steps automatically</p>
                     </div>
                 </div>
@@ -32,45 +32,47 @@
             </div>
             <div class="half">
                 <div class="pad">
-                    <div class="Home-product-Earthfile">
-                        <header class="Home-product-Earthfile-header">
-                            <div class="Home-product-Earthfile-header-chromeDecoration">
-                              {% svg assets/svg/chrome-button.svg class="chrome-button1" %}
-                              {% svg assets/svg/chrome-button.svg class="chrome-button2" %}
-                              {% svg assets/svg/chrome-button.svg class="chrome-button3" %}
-                            </div>
-                            Earthfile
-                        </header>
-                        <code class="Home-product-Earthfile-code">
-                            <p><span class="earthfile-term">FROM</span> golang:1.13-alpine3.11</p>
-                            <p><span class="earthfile-term">WORKDIR</span> /proto-example</p>                                    
-                            <p></p>
+                    <p>
+                        <div class="Home-product-Earthfile">
+                            <header class="Home-product-Earthfile-header">
+                                <div class="Home-product-Earthfile-header-chromeDecoration">
+                                {% svg assets/svg/chrome-button.svg class="chrome-button1" %}
+                                {% svg assets/svg/chrome-button.svg class="chrome-button2" %}
+                                {% svg assets/svg/chrome-button.svg class="chrome-button3" %}
+                                </div>
+                                Earthfile
+                            </header>
+                            <code class="Home-product-Earthfile-code">
+                                <p><span class="earthfile-term">FROM</span> golang:1.13-alpine3.11</p>
+                                <p><span class="earthfile-term">WORKDIR</span> /proto-example</p>                                    
+                                <p></p>
 
-                            <p><span class="earthfile-target">proto:</span></p>
-                            <p class="indent"><span class="earthfile-term">FROM</span> namely/protoc-all:1.29_4</p>
-                            <p class="indent"><span class="earthfile-term">COPY</span> api.proto /defs</p>
-                            <p class="indent"><span class="earthfile-term">RUN</span> --entrypoint -- -f api.proto -l go</p>
-                            <p class="indent"><span class="earthfile-term">SAVE ARTIFACT</span> ./gen/pb-go /pb <span class="earthfile-term">AS LOCAL</span> pb</p>
-                            <p></p>
-                            <p><span class="earthfile-target">build:</span></p>
-                            <p class="indent"><span class="earthfile-term">COPY</span> go.mod go.sum . </p>
-                            <p class="indent"><span class="earthfile-term">RUN</span> go mod download </p> 
-                            <p class="indent"><span class="earthfile-term">COPY</span> +proto/pb pb </p> 
-                            <p class="indent"><span class="earthfile-term">COPY</span> main.go ./ </p> 
-                            <p class="indent"><span class="earthfile-term">RUN</span> go build -o build/proto-example main.go </p> 
-                            <p class="indent"><span class="earthfile-term">SAVE ARTIFACT</span> build/proto-example </p> 
-                        </code> 
+                                <p><span class="earthfile-target">proto:</span></p>
+                                <p class="indent"><span class="earthfile-term">FROM</span> namely/protoc-all:1.29_4</p>
+                                <p class="indent"><span class="earthfile-term">COPY</span> api.proto /defs</p>
+                                <p class="indent"><span class="earthfile-term">RUN</span> --entrypoint -- -f api.proto -l go</p>
+                                <p class="indent"><span class="earthfile-term">SAVE ARTIFACT</span> ./gen/pb-go /pb <span class="earthfile-term">AS LOCAL</span> pb</p>
+                                <p></p>
+                                <p><span class="earthfile-target">build:</span></p>
+                                <p class="indent"><span class="earthfile-term">COPY</span> go.mod go.sum . </p>
+                                <p class="indent"><span class="earthfile-term">RUN</span> go mod download </p> 
+                                <p class="indent"><span class="earthfile-term">COPY</span> +proto/pb pb </p> 
+                                <p class="indent"><span class="earthfile-term">COPY</span> main.go ./ </p> 
+                                <p class="indent"><span class="earthfile-term">RUN</span> go build -o build/proto-example main.go </p> 
+                                <p class="indent"><span class="earthfile-term">SAVE ARTIFACT</span> build/proto-example </p> 
+                            </code> 
                         </div>
-                        <p style="text-align:center">A simple proto <a class="default" href="https://docs.earthly.dev/examples">example</a></p>
+                    </p>
+                    <p style="text-align:center">A simple proto <a class="default" href="https://docs.earthly.dev/examples">example</a></p>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="half">
                 <div class="pad">
-                    <div>
+                    <p>
                         {% include iterm.html number=351678 %} 
-                    </div>
+                    </p>
                 </div>
             </div>
             <div class="half">
@@ -104,29 +106,31 @@
                 <div class="pad">
                     <p></p>
                     <p><b>Try it yourself! No need to clone:</b></p>
-                    <div class="Home-product-Earthfile">
-                        <header class="Home-product-Earthfile-header">
-                            <div class="Home-product-Earthfile-header-chromeDecoration">
-                              {% svg assets/svg/chrome-button.svg class="chrome-button1" %}
-                              {% svg assets/svg/chrome-button.svg class="chrome-button2" %}
-                              {% svg assets/svg/chrome-button.svg class="chrome-button3" %}
-                            </div>
-                            Terminal
-                        </header>
-                        <code class="Home-product-Earthfile-code">
-                            <p>$> earthly github.com/earthly/earthly/examples/go:main+docker</p>
-                            <p></p>
-                            <p>$> docker run --rm go-example:latest</p>
-                            <p></p>
-                        </code> 
-                    </div>
+                    <p>
+                        <div class="Home-product-Earthfile">
+                            <header class="Home-product-Earthfile-header">
+                                <div class="Home-product-Earthfile-header-chromeDecoration">
+                                {% svg assets/svg/chrome-button.svg class="chrome-button1" %}
+                                {% svg assets/svg/chrome-button.svg class="chrome-button2" %}
+                                {% svg assets/svg/chrome-button.svg class="chrome-button3" %}
+                                </div>
+                                Terminal
+                            </header>
+                            <code class="Home-product-Earthfile-code">
+                                <p>$> earthly github.com/earthly/earthly/examples/go:main+docker</p>
+                                <p></p>
+                                <p>$> docker run --rm go-example:latest</p>
+                                <p></p>
+                            </code> 
+                        </div>
+                    </p>
                 </div>
             </div>
         </div>
         <div class="row"> 
             <div class="half">
                 <div class="pad">
-                        <img src="https://images.unsplash.com/photo-1532619675605-1ede6c2ed2b0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3900&q=80" alt="Engineers brainstorming on a whiteboard" />
+                        <p><img src="https://images.unsplash.com/photo-1532619675605-1ede6c2ed2b0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3900&q=80" alt="Engineers brainstorming on a whiteboard" /></p>
                         <p style="text-align:center">Earthly is open source and we welcome your contributions</p>
                 </div>
             </div>
@@ -135,12 +139,12 @@
                     <h3>Strong Community</h3>
                     <div class="check">
                         <ul>
-                            <li>500+ Commits</li>
-                            <li>50+ forks</li>
+                            <li>600+ Commits</li>
+                            <li>70+ forks</li>
                             <li>25+ contributors</li>
                         </ul>
                     </div>
-                    <p>Open Source projects benefit from an open and collobarative community.  Earthly encourages contributions.</p>
+                    <p>Open Source projects benefit from an open and collaborative community.  Earthly encourages contributions.</p>
                 </div>
             </div>
            

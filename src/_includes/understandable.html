@@ -20,35 +20,37 @@
             </div>
             <div class="half">
                 <div class="pad">
-                    <div class="Home-product-Earthfile">
-                    <header class="Home-product-Earthfile-header">
-                        <div class="Home-product-Earthfile-header-chromeDecoration">
-                          {% svg assets/svg/chrome-button.svg class="chrome-button1" %}
-                          {% svg assets/svg/chrome-button.svg class="chrome-button2" %}
-                          {% svg assets/svg/chrome-button.svg class="chrome-button3" %}
+                    <p>
+                        <div class="Home-product-Earthfile">
+                            <header class="Home-product-Earthfile-header">
+                                <div class="Home-product-Earthfile-header-chromeDecoration">
+                                {% svg assets/svg/chrome-button.svg class="chrome-button1" %}
+                                {% svg assets/svg/chrome-button.svg class="chrome-button2" %}
+                                {% svg assets/svg/chrome-button.svg class="chrome-button3" %}
+                                </div>
+                                Earthfile
+                            </header>
+                            <code class="Home-product-Earthfile-code">
+                                <p><span class="earthfile-term">FROM</span> golang:1.13-alpine3.11</p>
+                                <p><span class="earthfile-term">RUN</span> apk --update --no-cache add git</p>
+                                <p><span class="earthfile-term">WORKDIR</span> /go-example</p>                                    
+                                <p></p>
+                                <p><span class="earthfile-target">all:</span></p>
+                                <p class="indent"><span class="earthfile-term">BUILD</span> +lint</p>
+                                <p class="indent"><span class="earthfile-term">BUILD</span> +docker</p>
+                                <p></p>
+                                <p><span class="earthfile-target">build:</span></p>
+                                <p class="indent"><span class="earthfile-term">COPY</span> main.go .</p>
+                                <p class="indent"><span class="earthfile-term">RUN</span> go build -o build/go-example main.go</p>
+                                <p class="indent"><span class="earthfile-term">SAVE ARTIFACT</span> build/go-example AS LOCAL build/go-example</p>
+                                <p></p>
+                                <p><span class="earthfile-target">lint:</span></p>
+                                <p class="indent"><span class="earthfile-term">RUN</span> go get golang.org/x/lint/golint</p>
+                                <p class="indent"><span class="earthfile-term">COPY</span> main.go .</p>
+                                <p class="indent"><span class="earthfile-term">RUN</span> golint -set_exit_status ./...</p>
+                            </code>
                         </div>
-                        Earthfile
-                    </header>
-                    <code class="Home-product-Earthfile-code">
-                        <p><span class="earthfile-term">FROM</span> golang:1.13-alpine3.11</p>
-                        <p><span class="earthfile-term">RUN</span> apk --update --no-cache add git</p>
-                        <p><span class="earthfile-term">WORKDIR</span> /go-example</p>                                    
-                        <p></p>
-                        <p><span class="earthfile-target">all:</span></p>
-                        <p class="indent"><span class="earthfile-term">BUILD</span> +lint</p>
-                        <p class="indent"><span class="earthfile-term">BUILD</span> +docker</p>
-                        <p></p>
-                        <p><span class="earthfile-target">build:</span></p>
-                        <p class="indent"><span class="earthfile-term">COPY</span> main.go .</p>
-                        <p class="indent"><span class="earthfile-term">RUN</span> go build -o build/go-example main.go</p>
-                        <p class="indent"><span class="earthfile-term">SAVE ARTIFACT</span> build/go-example AS LOCAL build/go-example</p>
-                        <p></p>
-                        <p><span class="earthfile-target">lint:</span></p>
-                        <p class="indent"><span class="earthfile-term">RUN</span> go get golang.org/x/lint/golint</p>
-                        <p class="indent"><span class="earthfile-term">COPY</span> main.go .</p>
-                        <p class="indent"><span class="earthfile-term">RUN</span> golint -set_exit_status ./...</p>
-                    </code> 
-                    </div>
+                    </p>
                     <p style="text-align:center">A simple GO <a href="https://docs.earthly.dev/examples">example</a></p>
                 </div>
             </div>
@@ -57,7 +59,9 @@
             <div class="half">
                 <div class="pad">
                     <div>
-                        {% include iterm.html number=351683 %} 
+                        <p>
+                            {% include iterm.html number=351683 %}
+                        </p>
                         <p style="text-align:center">Invoke a build using <code>earthly +all.</code></p>
                     </div>
                 </div>

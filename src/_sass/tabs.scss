@@ -1,0 +1,63 @@
+ul.tabcontrol.tabs {
+    display: flex;
+    flex-direction: row;
+    padding: 4px 0;
+    margin: 0;
+    height: 40px;
+    box-sizing: border-box;
+    border-bottom: 1px solid $color-grey;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+ul.tabcontrol.tabs li.tab {
+    white-space: nowrap;
+    padding: 5px 13px;
+    cursor: pointer;
+    list-style-type: none;
+    border: 1px solid $color-grey;
+    border-bottom: none;
+    box-sizing: border-box;
+    min-height: 38px;
+    background: white;
+    margin-right: 2px;
+    font-family: $body-font-family !important;
+    font-size: 17pt !important;
+    line-height: 100% !important;
+    border-radius: 2px 2px 0 0;
+    box-shadow: 1px 1px 1px 0px #00000033;
+}
+
+ul.tabcontrol.tabs li.tabcontrol.tab.active {
+    min-height: 42px;
+    font-weight: bold !important;
+    margin-top: -3px;
+    border-top: 3px solid $color-accent;
+}
+
+ul.tabcontrol.tabs li.tabcontrol.tab:first-child {
+    border-left: 1px solid $color-grey;
+}
+
+div.tabcontrol.body {
+    padding: 0;
+    margin-bottom: 16px;
+    background-color: $background-color1;
+}
+
+div.tabcontrol.body.fullborder {
+    border: 1px solid $color-grey;
+    border-top: none;
+    padding: 10px;
+    box-sizing: border-box;
+    box-shadow: 1px 1px 2px 0px #00000077;
+}
+
+div.tabcontrol.body p:last-child,
+div.tabcontrol.body ul:last-child {
+    margin-bottom: 0;
+}
+
+div.hidden {
+    display: none !important;
+}
