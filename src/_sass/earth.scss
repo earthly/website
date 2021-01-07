@@ -63,6 +63,7 @@ $color-skyBlue: #227CE4;
 $color-green-light: #70D37B;
 $opacity-light: 0.64;
 
+$color-black: #000000;
 $color-white: #ffffff;
 $color-off-white: #FAFBFC;
 
@@ -135,6 +136,7 @@ $on-docs-mobile:    $header-width + $spacing-unit;
 @import
   "earth2",
   "base",
+  "balloon",
   "layout",
   "syntax",
   "home",
