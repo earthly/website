@@ -34,6 +34,7 @@
     display: flex;
     align-items: flex-end;
     justify-content: flex-end;
+    padding-bottom: 20px;
   }
 }
 
@@ -112,20 +113,24 @@
 
 .siteHeader2 {
   @include mobileAndBelow {
-    height: 100px; // Push initial content below mobile nav
+    flex-flow: row wrap;
+
+    max-width: $earth-header-width;
+    padding-top: $spacing-unit * 2;
+    padding: $spacing-unit
   }
 }
 
 .siteHeader-navList {
   @include mobileAndBelow {
-    li + li {
-      margin-top: $spacing-unit * 0.75;
-    }
+    margin-left: 0;
   }
 }
 
 .siteHeader-logoAndMenuButton {
   @include mobileAndBelow {
+    flex: 1;
+    box-sizing: border-box;
     // position: fixed;
     left: 0;
     right: 0;
@@ -136,6 +141,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-basis: 100%;
   }
 }
 .siteHeader-logoLink-svg {
@@ -146,11 +152,16 @@
 
 .siteHeader-nav {
   @include mobileAndBelow {
-    transform: translateY(-1000px); // Should be taller than any reasonable screen height
-    opacity: 0;
+    flex: 1;
+    box-sizing: border-box;
+    flex-basis: 100%;
+    margin-top: 20px;
   }
 }
 
+.siteHeader-navItem {
+  text-align: center;
+}
 
 .siteHeader-menuButton {
   @include reset-button-style;
