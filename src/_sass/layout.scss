@@ -21,7 +21,7 @@ li {
   flex: 1 0 auto;
 
   @include mobile {
-    padding-top: $spacing-unit;
+    padding-top: 0;
   }
 }
 

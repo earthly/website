@@ -29,10 +29,14 @@ function triggerStarCta() {
         return;
     }
 
+    var position = "left";
+    if ($(window).width() <= 768) {
+        position = "up";
+    }
     $('.star-cta').attr({
         "data-balloon-visible": "",
         "aria-label": "Bookmark me for later!",
-        "data-balloon-pos": "down",
+        "data-balloon-pos": position,
     });
     if (localStorage) {
         localStorage.setItem('earthly-star-cta-shown', 'true')
