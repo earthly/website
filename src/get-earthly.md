@@ -139,7 +139,7 @@ Thank you for giving Earthly a shot. Come and be part of the Earthly movement!
 <!-- Social buttons -->
 <p class="get-involved-social">
 <a class="github-button" href="https://github.com/earthly/earthly" data-size="large" data-show-count="true" aria-label="Star earthly/earthly on GitHub">Star</a>
-<a class="twitter-share-button" href="https://twitter.com/intent/tweet?text=I%27m%20trying%20out%20%F0%9F%8C%8D%20%40EarthlyTech%2C%20a%20fully%20containerized%20build%20tool%0A%0AIt%27s%20like%20Makefile%20and%20Dockerfile%20had%20a%20baby%20%F0%9F%8D%BC%0A%0AWish%20me%20luck!%0A%0Ahttps%3A%2F%2Fearthly.dev" target="_blank" data-size="large">Tweet</a>
+<a class="twitter-share-button" href="https://twitter.com/intent/tweet?text=I%27m%20trying%20out%20%F0%9F%8C%8D%20%40EarthlyTech%2C%20a%20fully%20containerized%20build%20tool%0A%0AIt%27s%20like%20Makefile%20and%20Dockerfile%20had%20a%20baby%20%F0%9F%8D%BC%0A%0AWish%20me%20luck!%0A%0A&url=https%3A%2F%2Fearthly.dev" target="_blank" data-size="large">Tweet</a>
 <!-- <a class="twitter-follow-button" href="https://twitter.com/EarthlyTech" target="_blank" data-show-count="false" data-size="large">Follow @EarthlyTech</a> -->
 </p>
 </div>
