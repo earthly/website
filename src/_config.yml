@@ -7,7 +7,7 @@ twitter_username: earthlytech
 github_username:  earthly
 google_analytics: "UA-161831101-3"
 google_analytics_rollup: "UA-161831101-5"
-slack_url: "https://join.slack.com/t/earthlycommunity/shared_invite/zt-kl6n2ak2-KrMzO2rWwjXx2cJOyEtXwA"
+slack_url: "/slack"
 description: "Better Builds"
 include:
   - _redirects
