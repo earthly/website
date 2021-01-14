@@ -7,12 +7,10 @@
         </div>
         Earthfile
     </header>
-    <code class="Home-product-Earthfile-code">
-        <p><span class="earthfile-term">FROM</span> golang:1.13-alpine3.11</p>
-        <p></p>
-        <p><span class="earthfile-target">build:</span></p>
-        <p class="indent"><span class="earthfile-term">COPY</span> main.go . </p>
-        <p class="indent"><span class="earthfile-term">RUN</span> go build main.go </p> 
-        <p class="indent"><span class="earthfile-term">SAVE ARTIFACT</span> main <span class="earthfile-term">AS LOCAL</span> main</p>
-    </code>
+<code class="Home-product-Earthfile-code"><span class="earthfile-term">FROM</span> golang:1.13-alpine3.11
+
+<span class="earthfile-target">build:</span>
+    <span class="earthfile-term">COPY</span> main.go . 
+    <span class="earthfile-term">RUN</span> go build main.go  
+    <span class="earthfile-term">SAVE ARTIFACT</span> main <span class="earthfile-term">AS LOCAL</span> main</code>
  </div>

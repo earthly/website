@@ -21,9 +21,7 @@ os:
                     </div>
                     Terminal
                 </header>
-                <code class="Home-product-Earthfile-code on-download-listen">
-                    <p>sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/latest/download/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly && /usr/local/bin/earthly bootstrap'</p>
-                </code>
+                <code class="Home-product-Earthfile-code on-download-listen">sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/latest/download/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly && /usr/local/bin/earthly bootstrap'</code>
             </div>
 
     tab2:
@@ -44,9 +42,7 @@ os:
                     </div>
                     Terminal
                 </header>
-                <code class="Home-product-Earthfile-code on-download-listen">
-                    <p>brew install earthly</p>
-                </code>
+                <code class="Home-product-Earthfile-code on-download-listen">brew install earthly</code>
             </div>
 
     tab3:
@@ -70,9 +66,7 @@ os:
                     </div>
                     Terminal
                 </header>
-                <code class="Home-product-Earthfile-code on-download-listen">
-                    <p>sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/latest/download/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly && /usr/local/bin/earthly bootstrap'</p>
-                </code>
+                <code class="Home-product-Earthfile-code on-download-listen">sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/latest/download/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly && /usr/local/bin/earthly bootstrap'</code>
             </div>
 ide: 
     tab1:
@@ -160,9 +154,7 @@ For alternative installation options see the [installation page in the Earthly d
             </div>
             Terminal
         </header>
-        <code class="Home-product-Earthfile-code">
-            <p>earthly github.com/earthly/hello-world:main+hello</p>
-        </code>
+        <code class="Home-product-Earthfile-code">earthly github.com/earthly/hello-world:main+hello</code>
     </div>
 </p>
 

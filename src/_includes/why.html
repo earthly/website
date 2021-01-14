@@ -42,25 +42,22 @@
                                 </div>
                                 Earthfile
                             </header>
-                            <code class="Home-product-Earthfile-code">
-                                <p><span class="earthfile-term">FROM</span> golang:1.13-alpine3.11</p>
-                                <p><span class="earthfile-term">WORKDIR</span> /proto-example</p>                                    
-                                <p></p>
+<code class="Home-product-Earthfile-code"><span class="earthfile-term">FROM</span> golang:1.13-alpine3.11
+<span class="earthfile-term">WORKDIR</span> /proto-example
 
-                                <p><span class="earthfile-target">proto:</span></p>
-                                <p class="indent"><span class="earthfile-term">FROM</span> namely/protoc-all:1.29_4</p>
-                                <p class="indent"><span class="earthfile-term">COPY</span> api.proto /defs</p>
-                                <p class="indent"><span class="earthfile-term">RUN</span> --entrypoint -- -f api.proto -l go</p>
-                                <p class="indent"><span class="earthfile-term">SAVE ARTIFACT</span> ./gen/pb-go /pb <span class="earthfile-term">AS LOCAL</span> pb</p>
-                                <p></p>
-                                <p><span class="earthfile-target">build:</span></p>
-                                <p class="indent"><span class="earthfile-term">COPY</span> go.mod go.sum . </p>
-                                <p class="indent"><span class="earthfile-term">RUN</span> go mod download </p> 
-                                <p class="indent"><span class="earthfile-term">COPY</span> +proto/pb pb </p> 
-                                <p class="indent"><span class="earthfile-term">COPY</span> main.go ./ </p> 
-                                <p class="indent"><span class="earthfile-term">RUN</span> go build -o build/proto-example main.go </p> 
-                                <p class="indent"><span class="earthfile-term">SAVE ARTIFACT</span> build/proto-example </p> 
-                            </code> 
+<span class="earthfile-target">proto:</span>
+    <span class="earthfile-term">FROM</span> namely/protoc-all:1.29_4
+    <span class="earthfile-term">COPY</span> api.proto /defs
+    <span class="earthfile-term">RUN</span> --entrypoint -- -f api.proto -l go
+    <span class="earthfile-term">SAVE ARTIFACT</span> ./gen/pb-go /pb <span class="earthfile-term">AS LOCAL</span> pb
+
+<span class="earthfile-target">build:</span>
+    <span class="earthfile-term">COPY</span> go.mod go.sum .
+    <span class="earthfile-term">RUN</span> go mod download
+    <span class="earthfile-term">COPY</span> +proto/pb pb
+    <span class="earthfile-term">COPY</span> main.go ./
+    <span class="earthfile-term">RUN</span> go build -o build/proto-example main.go
+    <span class="earthfile-term">SAVE ARTIFACT</span> build/proto-example</code>
                         </div>
                     </p>
                     <p style="text-align:center">A simple proto <a class="default" href="https://docs.earthly.dev/examples">example</a></p>
@@ -71,7 +68,7 @@
             <div class="half">
                 <div class="pad">
                     <p>
-                        {% include iterm.html number=351678 %} 
+                        {% include iterm.html number=351678 %}
                     </p>
                 </div>
             </div>
@@ -117,25 +114,23 @@
                                 </div>
                                 Earthfile
                             </header>
-                            <code class="Home-product-Earthfile-code">
-                                <p><span class="earthfile-term">FROM</span> node:13.10.1-alpine3.11</p>
-                                <p><span class="earthfile-term">WORKDIR</span> /example-multirepo</p>                                    
-                                <p></p>
-                                <p><span class="earthfile-target">docker:</span></p>
-                                <p class="indent"><span class="earthfile-term">RUN</span> npm install -g http-server</p>
-                                <p class="indent"><span class="earthfile-term">COPY</span> github.com/earthly/earthly-example-multirepo-static:main+html/* ./</p>
-                                <p class="indent"><span class="earthfile-term">COPY</span> github.com/earthly/earthly-example-multirepo-js:main+build/* ./</p>
-                                <p class="indent"><span class="earthfile-term">EXPOSE</span> 8080</p>
-                                <p class="indent"><span class="earthfile-term">ENTRYPOINT</span> ["http-server", "."]</p>
-                                <p class="indent"><span class="earthfile-term">SAVE IMAGE</span> --push earthly/examples:multirepo</p>
-                            </code> 
+<code class="Home-product-Earthfile-code"><span class="earthfile-term">FROM</span> node:13.10.1-alpine3.11
+<span class="earthfile-term">WORKDIR</span> /example-multirepo
+
+<span class="earthfile-target">docker:</span>
+    <span class="earthfile-term">RUN</span> npm install -g http-server
+    <span class="earthfile-term">COPY</span> github.com/earthly/earthly-example-multirepo-static:main+html/* ./
+    <span class="earthfile-term">COPY</span> github.com/earthly/earthly-example-multirepo-js:main+build/* ./
+    <span class="earthfile-term">EXPOSE</span> 8080
+    <span class="earthfile-term">ENTRYPOINT</span> ["http-server", "."]
+    <span class="earthfile-term">SAVE IMAGE</span> --push earthly/examples:multirepo</code>
                         </div>
                     </p>
                     <p style="text-align:center">A simple multirepo <a class="default" href="https://docs.earthly.dev/examples/multirepo">example</a></p>
                 </div>
             </div>
         </div>
-        <div class="row"> 
+        <div class="row">
             <div class="half">
                 <div class="pad">
                         <p><img src="https://images.unsplash.com/photo-1532619675605-1ede6c2ed2b0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3900&q=80" alt="Engineers brainstorming on a whiteboard" /></p>
@@ -155,7 +150,7 @@
                     <p>Open Source projects benefit from an open and collaborative community.  Earthly encourages contributions.</p>
                 </div>
             </div>
-           
+
         </div>
     </div>
 </section>
