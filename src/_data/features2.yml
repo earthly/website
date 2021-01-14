@@ -1,6 +1,6 @@
 - title: All Builds Are Containerized
   description: Earthly is built on top of modern container technologies. The same way Docker has paved the way towards development-production reproducibility, Earthly enables development-CI reproducibility.
-- title: Parallelization That Just Works
+- title: Parallelization With No Strings Attached
   description: In Earthly, nothing is shared between targets other than clearly declared dependencies. This allows Earthly to automatically decide which parts of your build to run in parallel and which parts to run sequentially. For you, as a user, this means that you don’t have to worry about race conditions or dead locks. You just define the build and get parallelization for free.
 - title: Secrets Support Built-In
   description: Secrets have first-class support in Earthly. They are not cached, written to disk or stored with a resulting Docker image. Secrets can be used as temporary files or as environment variables during builds.

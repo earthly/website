@@ -295,13 +295,11 @@
 .Home-product-Earthfile-code {
   display: block;
   padding: $spacing-unit / 2 ;
-  @include font-mono;  
+  @include font-mono;
+  line-height: 1.4;
   font-size: 12px;
-  p {
-    color: $earth-color-gray-lightest;
-    margin: 0;
-    min-height: $spacing-unit / 2; // Preserve blank lines
-  }
+  color: $earth-color-gray-lightest;
+  white-space: pre;
 }
 
 
