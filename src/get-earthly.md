@@ -173,3 +173,5 @@ To learn how to use Earthly, try
 * [The getting started guide](https://docs.earthly.dev/guides/basics).
 * [An introductory video](https://www.youtube.com/watch?v=B7Q7S2lpshw)
 * [The full documentation](https://docs.earthly.dev/)
+
+Need some inspiration to get started with your project? Check out [examples on GitHub](https://github.com/earthly/earthly/tree/main/examples).
