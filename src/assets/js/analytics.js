@@ -1,4 +1,4 @@
-function setCookie(name,value,days) {
+function setCookie(name, value, days) {
     var expires = "";
     if (days) {
         var date = new Date();
@@ -11,7 +11,7 @@ function setCookie(name,value,days) {
 function getCookie(name) {
     var nameEQ = name + "=";
     var ca = document.cookie.split(';');
-    for(var i=0;i < ca.length;i++) {
+    for(var i=0; i < ca.length; i++) {
         var c = ca[i];
         while (c.charAt(0)==' ') c = c.substring(1,c.length);
         if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
@@ -20,29 +20,32 @@ function getCookie(name) {
 }
 
 function uuidv4() {
-  return ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>
-    (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
-  );
+    return ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>
+      (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+    );
 }
 
 function getAnalyticCookie() {
-  cookieName = "earthlyID";
-  var earthlyID = getCookie(cookieName);
-  if( earthlyID == null ) {
-    earthlyID = uuidv4();
-  }
-  setCookie(cookieName, earthlyID, 100*365);
-  return earthlyID;
+    var earthlyID = getCookie('earthlyID');
+    if (!earthlyID) {
+        earthlyID = uuidv4();
+    }
+    setCookie(cookieName, earthlyID, 100*365);
+    return earthlyID;
 }
 
-jQuery.ajax({
-  type: "POST",
-  url: "https://api.earthly.dev/analytics",
-  data: JSON.stringify({
-    key: "website",
-    url: window.location.href,
-    referrer: document.referrer,
-    earthlyID: getAnalyticCookie()
-  }),
-});
+$(document).ready(function() {
+    var sid = getAnalyticCookie();
+    $.ajax({
+        type: "POST",
+        url: "https://api.earthly.dev/analytics",
+        data: JSON.stringify({
+            key: "website",
+            url: window.location.href,
+            referrer: document.referrer,
+            earthlyID: sid,
+        }),
+    });
 
+    analytics.identify(sid);
+});
