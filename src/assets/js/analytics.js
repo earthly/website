@@ -26,7 +26,8 @@ function uuidv4() {
 }
 
 function getAnalyticCookie() {
-    var earthlyID = getCookie('earthlyID');
+    var cookieName = 'earthlyID';
+    var earthlyID = getCookie(cookieName);
     if (!earthlyID) {
         earthlyID = uuidv4();
     }
