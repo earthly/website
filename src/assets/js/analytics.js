@@ -25,18 +25,22 @@ function uuidv4() {
     );
 }
 
+var newVisitor = false;
+
 function getAnalyticCookie() {
     var cookieName = 'earthlyID';
     var earthlyID = getCookie(cookieName);
     if (!earthlyID) {
+        // Generate new cookie.
         earthlyID = uuidv4();
+        newVisitor = true;
     }
     setCookie(cookieName, earthlyID, 100*365);
     return earthlyID;
 }
 
 $(document).ready(function() {
-    var sid = getAnalyticCookie();
+    var earthlyID = getAnalyticCookie();
     $.ajax({
         type: "POST",
         url: "https://api.earthly.dev/analytics",
@@ -44,9 +48,12 @@ $(document).ready(function() {
             key: "website",
             url: window.location.href,
             referrer: document.referrer,
-            earthlyID: sid,
+            earthlyID: earthlyID,
         }),
     });
 
-    analytics.identify(sid);
+    analytics.identify(earthlyID);
+    if (newVisitor) {
+        analytics.track('Cookie created');
+    }
 });
