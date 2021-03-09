@@ -22,3 +22,11 @@ exclude: []
 plugins:
   - jekyll-feed
   - jekyll-inline-svg
+
+
+collections:
+  blog:
+    output: true
+    permalink: /blog/:slug/
+
+
