@@ -12,8 +12,8 @@
 
  ## serve
  ```
- cd src
- bundle exec jekyll serve --watch
- browse http://127.0.0.1:4000/
+ earthly +docker
+ earthly +run
  ```
- 
+ navagate to localhost:4001
+
