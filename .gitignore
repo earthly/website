@@ -54,3 +54,4 @@ build-iPhoneSimulator/
 
 # Local Netlify folder
 .netlify
+.history
