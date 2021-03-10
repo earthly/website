@@ -1,0 +1,9 @@
+I"<p>Changes:</p>
+
+<ul>
+  <li>fixes macOS-specific bug introduced in v0.2.1 related to handling of symlink SSH sockets (<a href="https://github.com/earthly/earthly/issues/61">#61</a>)</li>
+</ul>
+
+<p><a href="https://github.com/earthly/earthly/releases/tag/v0.2.2">Release Page</a></p>
+
+:ET

@@ -1,0 +1,10 @@
+I"<p>Earthly v0.1.3 Released.</p>
+
+<p>Release Notes:</p>
+
+<ul>
+  <li>Support for <code class="language-plaintext highlighter-rouge">FROM scratch</code></li>
+  <li>Ability to configure whether to use a loop device for cache storage</li>
+  <li>Improved installation one-liner</li>
+</ul>
+:ET

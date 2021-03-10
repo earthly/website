@@ -1,0 +1,28 @@
+I"�<p>Changes:</p>
+
+<ul>
+  <li><strong>New</strong> Interactive mode debugger via <code class="language-plaintext highlighter-rouge">-i</code> option (Experimental). Drops you into a shell in the container, if the build fails.</li>
+  <li><strong>New</strong> Support for Dockerfiles via FROM DOCKERFILE command (Beta).<a href="https://docs.earthly.dev/earthfile#from-dockerfile-beta">Docs</a>. <a href="https://github.com/earthly/buildkit/blob/earthly-master/Earthfile">Example</a>.</li>
+  <li><strong>New</strong> Significant speed improvement on Mac (builds are now almost 3x faster).</li>
+  <li><strong>New</strong> Built-in arg <code class="language-plaintext highlighter-rouge">EARTHLY_TARGET_TAG_DOCKER</code>. It is similar to <code class="language-plaintext highlighter-rouge">EARTHLY_TARGET_TAG</code>, except that it will produce a valid Docker tag. <a href="https://docs.earthly.dev/earthfile/builtin-args">See Documentation</a>.</li>
+  <li>Improved error display in case of build failure</li>
+  <li>Reduced repetitive progress output</li>
+  <li>Fixed an issue where leftover socket files would cause the build to fail<br />
+​</li>
+</ul>
+
+<p>Upgrading:<br />
+​<br />
+The location of the Earthly cache has moved to a Docker volume. You may remove your previous cache to free up space via</p>
+
+<ul>
+  <li>Upgrading from <code class="language-plaintext highlighter-rouge">0.1.x</code>docker rm -f earthly-buildkitd sudo rm -rf /tmp/earthly</li>
+  <li>Upgrading from <code class="language-plaintext highlighter-rouge">0.2.x</code>docker rm -f earthly-buildkitd sudo rm -rf /var/cache/earthly</li>
+</ul>
+
+<p>​ <br />
+In addition, the earth option <code class="language-plaintext highlighter-rouge">-i</code> has been repurposed. If you were using it to produce images, you will need to change those to <code class="language-plaintext highlighter-rouge">earth --image</code> instead.</p>
+
+<p><a href="https://github.com/earthly/earthly/releases/tag/v0.3.0">Release Pages</a></p>
+
+:ET
