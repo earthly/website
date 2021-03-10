@@ -14,7 +14,7 @@ jekyll-install:
 
 docker:
     FROM +jekyll-install
-    CMD [ "bundle", "exec", "jekyll", "serve", "--incremental", "-H", "0.0.0.0", "-P", "4001" ]
+    CMD RUBYOPT='-W0' bundle exec jekyll serve --incremental -H 0.0.0.0 -P 4001
     SAVE IMAGE earthly-website
 
 run:
