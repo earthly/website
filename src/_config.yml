@@ -30,4 +30,16 @@ collections:
     output: true
     permalink: /blog/:slug/
 
+pagination:
+  enabled: true
+  collection: 'blog'
+  per_page: 4
+  permalink: '/blog/:num/'
+  title: ':title - page :num'
+  trail: 
+    before: 2
+    after: 2
+  sort_field: 'date'
+  sort_reverse: true
+
 

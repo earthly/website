@@ -1,9 +1,72 @@
 ---
-title: Blog
-layout: page
+title: Earthly Blog
+layout: blog-list
+pagination:
+  enabled: true
+  collection: blog
+permalink: '/blog/'
 ---
-{%- assign posts = site.blog | sort: date | reverse -%}
+<div class="row row--flexStart u-marginBottom2_5 u-marginBottomUnitOnMobile">
+<div class="col--blogHeader">
+<h2>Tilting at Cloud-Based Developer Tools.</h2>
+</div>
 
-{% for post in posts %}
-  <h2><a href="{{post.url}}">{{ post.title }}</a></h2>
+<div class="col--blogDescription">
+Thoughts on how to make services easier to run, debug, and collaborate on locally
+</div>
+</div>
+
+{% if paginator.previous_page %}
+<div class="pagination pagination--top u-maxWidthContent">
+   <div class="pagination-previous">
+     <span class="pagination-icon">&lt;&nbsp;</span>
+     <a class="pagination-link" href="{{ paginator.previous_page_path }}">Newer Posts</a>
+   </div>
+    
+   {% if paginator.next_page %}
+   <div class="pagination-next">
+     <a class="pagination-link" href="{{ paginator.next_page_path }}">Older Posts</a>
+     <span class="pagination-icon">&nbsp;&gt;</span>
+   </div>
+   {% endif %}
+</div>
+{% endif %}
+
+{% assign post = paginator.posts[0] %}
+{% include preview.html post=post previewType="hero" %}
+
+{% if paginator.posts.size > 1 %}
+{% assign post = paginator.posts[1] %}
+{% include preview.html post=post previewType="normal" %}
+{% endif %}
+
+{% if paginator.posts.size > 2 %}
+{% assign post = paginator.posts[2] %}
+{% include preview.html post=post previewType="normal" %}
+
+<!-- % include cta_subscribe_blog_list.html % -->
+{% endif %}
+
+{% for post in paginator.posts offset:3 %}
+
+{% include preview.html post=post previewType="normal" %}
+
 {% endfor %}
+
+<div class="pagination pagination--bottom u-maxWidthContent">
+   {% if paginator.previous_page %}
+   <div class="pagination-previous">
+     <span class="pagination-icon">&lt;&nbsp;</span>
+     <a class="pagination-link" href="{{ paginator.previous_page_path }}">Newer Posts</a>
+   </div>
+   {% else %}
+     <div>&nbsp;</div>
+   {% endif %}
+    
+   {% if paginator.next_page %}
+   <div class="pagination-next">
+     <a class="pagination-link" href="{{ paginator.next_page_path }}">Older Posts</a>
+     <span class="pagination-icon">&nbsp;&gt;</span>
+   </div>
+   {% endif %}
+</div>

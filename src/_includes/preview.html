@@ -1,0 +1,50 @@
+{% assign post = include.post %}
+{% assign previewType = include.previewType %}
+
+{% assign imageType = 'defaultImage' %}
+{% if post.image_type %}
+{% assign imageType = post.image_type | append: "Image" %}
+{% endif %}
+
+{% assign postImage = "" %}
+{% if post.image %}
+{% assign postImage = post.image %}
+{% elsif post.images[0] %}
+{% assign postImage = post.images[0] %}
+{% else %}
+{% assign imageType = 'containImage' %}
+{% endif %}
+
+<div class="postPreview postPreview--{{previewType}} postPreview--{{imageType}} 
+            row row--flexStart">
+  <a class="postPreview-imageLink" href="{{post.url}}">
+    {% if postImage != "" %}
+    {% assign imageUrl = postImage %}
+    {% if post.image_needs_slug %}
+    {% assign imageUrl = "/assets/images/" | append: post.slug | append: "/" | append: postImage %}
+    {% endif %}
+    <img class="postPreview-image" src="{{ imageUrl }}">
+    {% else %}
+    <img class="postPreview-image" src="/assets/img/blog-default-preview.png">
+    {% endif %}
+  </a>
+
+  <div class="postPreview-text">
+    <h3 class="postPreview-title"><a href="{{ post.url }}">{{ post.title }}</a></h3>
+    <div class="postPreview-description">
+      {% assign content = post.content %}
+      {% if post.description %}
+      {% assign content = post.description %}
+      {% endif %}
+
+      {% assign words = 50 %}
+      {{ content | strip_html | truncatewords: words }}
+    </div>
+    
+    <div class="postPreview-credit">
+      {% assign author = site.data.people[post.author] %}
+      <img class="postPreview-creditImg" src="/assets/img/{{ post.author }}.jpg">
+      <div><a href="{{ site.landingurl }}/about">{{ author.name }}</a></div>
+    </div>
+  </div>
+</div>
