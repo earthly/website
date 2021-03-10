@@ -21,3 +21,8 @@ run:
   LOCALLY
   BUILD +docker
   RUN docker run -p 4001:4001 -v $(pwd)/src:/site earthly-website
+
+shell: 
+  LOCALLY    
+  BUILD +docker
+  RUN --interactive docker run -p 4001:4001 -v $(pwd)/src:/site -it --entrypoint=/bin/bash earthly-website
