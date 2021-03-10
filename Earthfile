@@ -26,7 +26,18 @@ clean:
   LOCALLY
   RUN rm -r src/_site || True
 
+# doesn't work
 shell: 
   LOCALLY    
   BUILD +docker
   RUN --interactive docker run -p 4001:4001 -v $(pwd)/src:/site -it --entrypoint=/bin/bash earthly-website
+
+# get shell, but no volume mount
+static-shell:
+  FROM +jekyll-install
+  COPY src .
+  RUN --interactive /bin/bash
+
+update:
+  FROM +jekyll-install
+  RUN 
