@@ -10,7 +10,7 @@ jekyll-install:
     FROM +deps
     COPY src/Gemfile .
     COPY src/Gemfile.lock .
-    RUN bundle instal --retry 5 --jobs 20
+    RUN bundle install --retry 5 --jobs 20
 
 docker:
     FROM +jekyll-install
@@ -21,6 +21,10 @@ run:
   LOCALLY
   BUILD +docker
   RUN docker run -p 4001:4001 -v $(pwd)/src:/site earthly-website
+
+clean:
+  LOCALLY
+  RUN rm -r src/_site || True
 
 shell: 
   LOCALLY    
