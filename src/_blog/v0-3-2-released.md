@@ -1,5 +1,5 @@
 ---
-layout: blog
+layout: blog/post
 title: v0.3.2 Released
 date: '2020-08-25 18:12:00'
 tags:

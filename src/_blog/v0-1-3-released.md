@@ -1,7 +1,7 @@
 ---
 title: v0.1.3 Released
 slug: v0-1-3-released
-layout: blog
+layout: blog/post
 date: '2020-06-01 15:29:00'
 tags:
 - news
