@@ -1,72 +1,43 @@
 ---
-title: Earthly Blog
-layout: blog-list
+layout: blog/default
+current: home
+class: 'home-template'
+navigation: True
 pagination:
   enabled: true
   collection: blog
 permalink: '/blog/'
 ---
-<div class="row row--flexStart u-marginBottom2_5 u-marginBottomUnitOnMobile">
-<div class="col--blogHeader">
-<h2>Tilting at Cloud-Based Developer Tools.</h2>
-</div>
 
-<div class="col--blogDescription">
-Thoughts on how to make services easier to run, debug, and collaborate on locally
-</div>
-</div>
+<!-- < default -->
+<!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template -->
 
-{% if paginator.previous_page %}
-<div class="pagination pagination--top u-maxWidthContent">
-   <div class="pagination-previous">
-     <span class="pagination-icon">&lt;&nbsp;</span>
-     <a class="pagination-link" href="{{ paginator.previous_page_path }}">Newer Posts</a>
-   </div>
-    
-   {% if paginator.next_page %}
-   <div class="pagination-next">
-     <a class="pagination-link" href="{{ paginator.next_page_path }}">Older Posts</a>
-     <span class="pagination-icon">&nbsp;&gt;</span>
-   </div>
-   {% endif %}
-</div>
-{% endif %}
+<!-- The big featured header, it uses blog cover image as a BG if available -->
+<header class="site-header outer {% if page.cover or site.cover %}" style="background-image:  url({{ site.baseurl }}{% if page.cover %}{{ page.cover }}{% elsif site.cover %}{{ site.cover }}{% endif %}) {% else %}no-cover{% endif %}">
+    <div class="inner">
+        <div class="site-header-content">
+            <h1 class="site-title">
+                {% if site.logo %}
+                    <img class="site-logo" src="{{ site.baseurl }}{{ site.logo }}" alt="{{ site.title }}"/>
+                {% else %}
+                    {{ site.title }}
+                {% endif %}
+            </h1>
+            <h2 class="site-description">{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}</h2>
+        </div>
+        {% include blog/site-nav.html %}
+    </div>
+</header>
 
-{% assign post = paginator.posts[0] %}
-{% include preview.html post=post previewType="hero" %}
+<!-- The main content area -->
+<main id="site-main" class="site-main outer" role="main">
+    <div class="inner">
 
-{% if paginator.posts.size > 1 %}
-{% assign post = paginator.posts[1] %}
-{% include preview.html post=post previewType="normal" %}
-{% endif %}
+        <div class="post-feed">
+            <!-- The tag below includes the markup for each post - partials/post-card.hbs -->
+            {%  include blog/post-card.html %}
+        </div>
 
-{% if paginator.posts.size > 2 %}
-{% assign post = paginator.posts[2] %}
-{% include preview.html post=post previewType="normal" %}
-
-<!-- % include cta_subscribe_blog_list.html % -->
-{% endif %}
-
-{% for post in paginator.posts offset:3 %}
-
-{% include preview.html post=post previewType="normal" %}
-
-{% endfor %}
-
-<div class="pagination pagination--bottom u-maxWidthContent">
-   {% if paginator.previous_page %}
-   <div class="pagination-previous">
-     <span class="pagination-icon">&lt;&nbsp;</span>
-     <a class="pagination-link" href="{{ paginator.previous_page_path }}">Newer Posts</a>
-   </div>
-   {% else %}
-     <div>&nbsp;</div>
-   {% endif %}
-    
-   {% if paginator.next_page %}
-   <div class="pagination-next">
-     <a class="pagination-link" href="{{ paginator.next_page_path }}">Older Posts</a>
-     <span class="pagination-icon">&nbsp;&gt;</span>
-   </div>
-   {% endif %}
-</div>
+    </div>
+</main>
