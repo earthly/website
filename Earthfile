@@ -24,6 +24,7 @@ run:
 
 clean:
   LOCALLY
+  RUN rm -r src/_site src/.sass-cache src/.jekyll-metadata src/.jekyll-cache || True
   RUN rm -r src/_site || True
 
 # doesn't work
@@ -40,4 +41,8 @@ static-shell:
 
 update:
   FROM +jekyll-install
-  RUN 
+  COPY src .
+  RUN rm Gemfile.lock
+  RUN bundle install
+  RUN bundle update
+  SAVE ARTIFACT Gemfile.lock AS LOCAL src/Gemfile.loc
