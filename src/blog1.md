@@ -1,6 +1,6 @@
 ---
 title: Earthly Blog
-layout: blog-list
+layout: blog/blog-list
 pagination:
   enabled: true
   collection: blog
