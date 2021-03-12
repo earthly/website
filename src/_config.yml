@@ -3,6 +3,7 @@ url: "https://earthly.dev"
 docsurl: "https://docs.earthly.dev"
 landingurl: "https://earthly.dev"
 blogurl: "https://blog.earthly.dev"
+githuburl: "https://github.com/earthly/earthly"
 twitter_username: earthlytech
 github_username:  earthly
 google_analytics: "UA-161831101-3"
@@ -17,6 +18,7 @@ sass:
         - node_modules
 
 # force include node_modules
+include: [node_modules]
 exclude: []
 # Build settings
 plugins:
