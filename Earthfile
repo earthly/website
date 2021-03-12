@@ -40,7 +40,7 @@ static-shell:
   RUN --interactive /bin/bash
 
 update:
-  FROM +jekyll-install
+  FROM +deps
   COPY src .
   RUN rm Gemfile.lock
   RUN bundle install
