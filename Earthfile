@@ -27,6 +27,10 @@ build:
   RUN RUBYOPT='-W0' bundle exec jekyll build
   SAVE ARTIFACT _site AS LOCAL build/site
 
+deploy:
+  FROM +build
+  RUN echo "Here we should deploy the contents of build/site to S3 or wherever prod earthly.dev is served from"
+
 docker:
     FROM +jekyll-install
     CMD RUBYOPT='-W0' bundle exec jekyll serve --incremental -H 0.0.0.0 -P 4001
