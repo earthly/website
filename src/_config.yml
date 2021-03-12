@@ -18,6 +18,7 @@ sass:
         - node_modules
 
 # force include node_modules
+include: [node_modules]
 exclude: []
 # Build settings
 plugins:
