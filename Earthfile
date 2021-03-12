@@ -6,11 +6,26 @@ deps:
     RUN apk --update add imagemagick
     RUN gem install bundler -v "~>1.0" && gem install bundler jekyll
 
+
+update:
+  FROM +deps
+  COPY src .
+  RUN rm Gemfile.lock
+  RUN bundle install
+  RUN bundle update
+  SAVE ARTIFACT Gemfile.lock AS LOCAL src/Gemfile.lock
+
 jekyll-install:
     FROM +deps
     COPY src/Gemfile .
     COPY src/Gemfile.lock .
     RUN bundle install --retry 5 --jobs 20
+
+build:
+  FROM +jekyll-install
+  COPY src .
+  RUN RUBYOPT='-W0' bundle exec jekyll build
+  SAVE ARTIFACT _site AS LOCAL build/site
 
 docker:
     FROM +jekyll-install
@@ -24,8 +39,7 @@ run:
 
 clean:
   LOCALLY
-  RUN rm -r src/_site src/.sass-cache src/.jekyll-metadata src/.jekyll-cache || True
-  RUN rm -r src/_site || True
+  RUN rm -r build src/_site src/.sass-cache src/.jekyll-metadata src/.jekyll-cache || True
 
 # doesn't work
 shell: 
@@ -38,11 +52,3 @@ static-shell:
   FROM +jekyll-install
   COPY src .
   RUN --interactive /bin/bash
-
-update:
-  FROM +deps
-  COPY src .
-  RUN rm Gemfile.lock
-  RUN bundle install
-  RUN bundle update
-  SAVE ARTIFACT Gemfile.lock AS LOCAL src/Gemfile.lock
