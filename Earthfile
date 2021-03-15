@@ -9,7 +9,7 @@ deps:
 
 update:
   FROM +deps
-  COPY src .
+  COPY website .
   RUN rm Gemfile.lock
   RUN bundle install
   RUN bundle update
@@ -17,13 +17,13 @@ update:
 
 jekyll-install:
     FROM +deps
-    COPY src/Gemfile .
-    COPY src/Gemfile.lock .
+    COPY website/Gemfile .
+    COPY website/Gemfile.lock .
     RUN bundle install --retry 5 --jobs 20
 
 build:
   FROM +jekyll-install
-  COPY src .
+  COPY website .
   RUN RUBYOPT='-W0' bundle exec jekyll build
   SAVE ARTIFACT _site AS LOCAL build/site
 
@@ -39,20 +39,20 @@ docker:
 run:
   LOCALLY
   BUILD +docker
-  RUN docker run -p 4001:4001 -v $(pwd)/src:/site earthly-website
+  RUN docker run -p 4001:4001 -v $(pwd)/website:/site earthly-website
 
 clean:
   LOCALLY
-  RUN rm -r build src/_site src/.sass-cache src/.jekyll-metadata src/.jekyll-cache || True
+  RUN rm -r build website/_site website/.sass-cache website/.jekyll-metadata website/.jekyll-cache || True
 
 # doesn't work
 shell: 
   LOCALLY    
   BUILD +docker
-  RUN --interactive docker run -p 4001:4001 -v $(pwd)/src:/site -it --entrypoint=/bin/bash earthly-website
+  RUN --interactive docker run -p 4001:4001 -v $(pwd)/website:/site -it --entrypoint=/bin/bash earthly-website
 
 # get shell, but no volume mount
 static-shell:
   FROM +jekyll-install
-  COPY src .
+  COPY website .
   RUN --interactive /bin/bash
