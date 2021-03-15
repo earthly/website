@@ -1,0 +1,24 @@
+source "https://rubygems.org"
+gem "jekyll", "~> 4.1.1"
+
+group :jekyll_plugins do
+  gem "jekyll-feed"
+  gem "jekyll-sitemap"
+  gem "jekyll-seo-tag"
+end
+
+platforms :mingw, :x64_mingw, :mswin, :jruby do
+  gem "tzinfo", "~> 1.2"
+  gem "tzinfo-data"
+end
+
+# required by theme
+# gem 'octopress'
+gem "jekyll-paginate"
+gem 'jekyll-include-cache'
+gem 'jekyll-gist'
+
+
+gem "jekyll-inline-svg"
+gem "rouge"
+gem "jekyll-tagging-related_posts"
