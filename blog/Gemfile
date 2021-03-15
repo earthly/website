@@ -12,8 +12,13 @@ platforms :mingw, :x64_mingw, :mswin, :jruby do
   gem "tzinfo-data"
 end
 
-# required by theme
-# gem 'octopress'
+# required by theme:
+# "jekyll", ">= 3.7", "< 5.0"
+# "jekyll-paginate", "~> 1.1"
+# "jekyll-sitemap", "~> 1.3"
+# "jekyll-gist", "~> 1.5"
+# "jekyll-feed", "~> 0.1"
+# "jekyll-include-cache", "~> 0.1"
 gem "jekyll-paginate"
 gem 'jekyll-include-cache'
 gem 'jekyll-gist'
