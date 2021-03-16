@@ -63,8 +63,7 @@ blog-build:
 
 blog-docker:
   FROM +blog-install
-  # CMD RUBYOPT='-W0' bundle exec jekyll serve --incremental -H 0.0.0.0 -P 4002
-  CMD RUBYOPT='-W0' bundle exec jekyll serve -H 0.0.0.0 -P 4002
+  CMD RUBYOPT='-W0' bundle exec jekyll serve -H 0.0.0.0 --future -P 4002
   SAVE IMAGE earthly-blog
 
 blog-run:
