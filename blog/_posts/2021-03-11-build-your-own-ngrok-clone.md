@@ -13,7 +13,8 @@ However, it can be hard to trust fancy tools like `ngrok` until you experience h
 
 To understand why `ngrok` is so cool, you'll need to first understand how you would normally get traffic from the broader internet into your local machine. A typical flow would be something like this:
 
-<!--kg-card-end: markdown--><figure class="kg-card kg-image-card kg-width-wide"><img src="/content/images/2021/02/without_ngrok-2.png" class="kg-image" alt="Diagram showing the flow of traffic from a users web browser, through the internet, a home router, and finally the users computer. It points out that the user controls the DNS lookup, router, and their machine." srcset="/content/images/size/w600/2021/02/without_ngrok-2.png 600w, /content/images/size/w1000/2021/02/without_ngrok-2.png 1000w, /content/images/size/w1600/2021/02/without_ngrok-2.png 1600w, /content/images/2021/02/without_ngrok-2.png 1664w" sizes="(min-width: 1200px) 1200px"></figure><!--kg-card-begin: markdown-->
+![Diagram showing the flow of traffic from a users web browser, through the internet, a home router, and finally the users computer. It points out that the user controls the DNS lookup, router, and their machine.](/blog/assets/images/build-your-own-ngrok-clone/without_ngrok.png)
+
 
 This flow is normal for most of the machines on the internet today, but it has its downsides for local development. For instance, most home and non-commerical internet connections do not have a [Static IP](https://whatismyipaddress.com/dynamic-static) - which means you need to double-check your IP address before sending it out, or (more often) install and configure additional software to keep your DNS records up to date.
 
@@ -21,7 +22,8 @@ Additionally, you'll need to configure your router to forward that traffic to yo
 
 With this foundation, you can now understand why `ngrok` (and our DIY one) is so cool! It removes the need for all this additional configuration, while also providing better security. All you need to do is add an extra computer into the mix, like this:
 
-<!--kg-card-end: markdown--><figure class="kg-card kg-image-card kg-width-wide"><img src="/content/images/2021/02/with_ngrok-1.png" class="kg-image" alt="Diagram showing the flow of traffic from a users web browser, through the internet, a cloud-based reverse proxy, and finally the users computer. It points out that the only thing the user controls is their machine." srcset="/content/images/size/w600/2021/02/with_ngrok-1.png 600w, /content/images/size/w1000/2021/02/with_ngrok-1.png 1000w, /content/images/size/w1600/2021/02/with_ngrok-1.png 1600w, /content/images/2021/02/with_ngrok-1.png 1662w" sizes="(min-width: 1200px) 1200px"></figure><!--kg-card-begin: markdown-->
+![Diagram showing the flow of traffic from a users web browser, through the internet, a home router, and finally the users computer. It points out that the user controls the DNS lookup, router, and their machine.](/blog/assets/images/build-your-own-ngrok-clone/with_ngrok.png)
+
 
 Because you are using a [Reverse Proxy](https://en.wikipedia.org/wiki/Reverse_proxy) to get the traffic from the extra computer to yours, no additional configuration is required on your end. And, when you are done, you can simply shut down the extra machine, and there are no loose ends or open ports left to close!
 

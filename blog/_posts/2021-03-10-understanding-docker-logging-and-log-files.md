@@ -150,13 +150,9 @@ Modify the `daemon.json` file, to pass the address of the splunk host to the dri
 
 Docker provides two modes for delivering log messages:
 
-- 
+- **Blocking (default):** The container interrupts the application every time it needs to deliver a message to the driver. This will add latency in the performance of your application (for some drivers), but it'll guarantee that all the messages will be sent to the driver. Case in point, the json-file driver writes logs very quickly, therefore it's unlikely to cause latency. But drivers like `gcplogs` and `awslogs` open a connection to a remote server and so are more likely to block and cause latency.
 
-**Blocking (default):** The container interrupts the application every time it needs to deliver a message to the driver. This will add latency in the performance of your application (for some drivers), but it'll guarantee that all the messages will be sent to the driver. Case in point, the json-file driver writes logs very quickly, therefore it's unlikely to cause latency. But drivers like `gcplogs` and `awslogs` open a connection to a remote server and so are more likely to block and cause latency.
-
-- 
-
-**Non-Blocking:** The container writes and stores its logs to an in-memory ring buffer until the logging driver is available to process them. This ensures that a high rate of logging will not affect application performance. It does not guarantee that all the messages will be sent to the driver. In cases where log broadcasts are faster than the driver processor, the ring buffer will soon run out of space. As a result, buffered logs are deleted to make space for the next set of incoming logs. The default value for `max-buffer-size` is 1 MB.
+- **Non-Blocking:** The container writes and stores its logs to an in-memory ring buffer until the logging driver is available to process them. This ensures that a high rate of logging will not affect application performance. It does not guarantee that all the messages will be sent to the driver. In cases where log broadcasts are faster than the driver processor, the ring buffer will soon run out of space. As a result, buffered logs are deleted to make space for the next set of incoming logs. The default value for `max-buffer-size` is 1 MB.
 
 To change the mode:
 
