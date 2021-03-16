@@ -1,8 +1,15 @@
 ---
 layout: default
 ---
+{% comment %}
+    Default header image
+{% endcomment %}
+{% assign header = "assets/images/" | append: page.slug | append: "/header.jpg" %}
+{% capture header_default %}{% file_exists {{ header }} %}{% endcapture %}
 
 {% if page.header.overlay_color or page.header.overlay_image or page.header.image %}
+  {% include page__hero.html %}
+{% elsif header_default == "true" %}
   {% include page__hero.html %}
 {% elsif page.header.video.id and page.header.video.provider %}
   {% include page__hero_video.html %}
