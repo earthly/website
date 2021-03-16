@@ -282,5 +282,5 @@ defaults:
       toc: false
       read_time: true
       comments: false
-      share: true
+      share: false
       related: true

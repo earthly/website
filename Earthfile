@@ -57,13 +57,14 @@ blog-install:
 blog-build:
   FROM +blog-install
   COPY blog .
-  RUN RUBYOPT='-W0' bundle exec jekyll build
+  RUN RUBYOPT='-W0' bundle exec jekyll build 
   SAVE ARTIFACT _site AS LOCAL build/site/blog
 
 
 blog-docker:
   FROM +blog-install
-  CMD RUBYOPT='-W0' bundle exec jekyll serve --incremental -H 0.0.0.0 -P 4002
+  # CMD RUBYOPT='-W0' bundle exec jekyll serve --incremental -H 0.0.0.0 -P 4002
+  CMD RUBYOPT='-W0' bundle exec jekyll serve -H 0.0.0.0 -P 4002
   SAVE IMAGE earthly-blog
 
 blog-run:
