@@ -1,0 +1,30 @@
+---
+title: v0.3.0 Released
+date: '2020-08-18 18:08:00'
+tags:
+- news
+---
+
+Changes:
+
+- **New** Interactive mode debugger via `-i` option (Experimental). Drops you into a shell in the container, if the build fails.
+- **New** Support for Dockerfiles via FROM DOCKERFILE command (Beta).[Docs](https://docs.earthly.dev/earthfile#from-dockerfile-beta). [Example](https://github.com/earthly/buildkit/blob/earthly-master/Earthfile).
+- **New** Significant speed improvement on Mac (builds are now almost 3x faster).
+- **New** Built-in arg `EARTHLY_TARGET_TAG_DOCKER`. It is similar to `EARTHLY_TARGET_TAG`, except that it will produce a valid Docker tag. [See Documentation](https://docs.earthly.dev/earthfile/builtin-args).
+- Improved error display in case of build failure
+- Reduced repetitive progress output
+- Fixed an issue where leftover socket files would cause the build to fail  
+​
+
+Upgrading:  
+​  
+The location of the Earthly cache has moved to a Docker volume. You may remove your previous cache to free up space via
+
+- Upgrading from `0.1.x`docker rm -f earthly-buildkitd sudo rm -rf /tmp/earthly
+- Upgrading from `0.2.x`docker rm -f earthly-buildkitd sudo rm -rf /var/cache/earthly
+
+​   
+In addition, the earth option `-i` has been repurposed. If you were using it to produce images, you will need to change those to `earth --image` instead.
+
+[Release Pages](https://github.com/earthly/earthly/releases/tag/v0.3.0)
+

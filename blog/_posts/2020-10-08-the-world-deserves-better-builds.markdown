@@ -1,0 +1,46 @@
+---
+title: The world deserves better builds
+featured: true
+date: '2020-10-08 16:00:00'
+---
+
+Hello, developers of planet Earth! Earlier this year, we at Earthly embarked on a journey to bring better builds to the world. We started with a deep belief that builds should be self-contained, reproducible, portable, and parallel. In addition, we think build tools should be friendly, accessible, and down to earth - hence our name.
+
+Today, we are pleased to announce that a number of well-respected industry veterans also share our vision and have joined Earthly’s seed round of funding to fuel our growth.
+
+We have partnered with [468 Capital](https://www.ft.com/content/b93d120e-5c04-458b-bfbc-b147e2e399fa), the fund of [Florian Leibert](https://www.linkedin.com/in/florianleibert/) (Mesosphere), as well as a number of creators of large developer ecosystems, such as [Spencer Kimball](https://www.linkedin.com/in/spencerwkimball/) (Cockroach Labs), [Olivier Pomel](https://www.linkedin.com/in/olivierpomel) (DataDog), [Mitch Wainer](https://www.linkedin.com/in/mitchwainer/) (DigitalOcean), [Matt Klein](https://www.linkedin.com/in/mattklein123/) (Envoy proxy), [Mirko Novakovic](https://www.linkedin.com/in/mirkonovakovic/) (Instana, [NewForge](https://newforge.de/)), [David Cramer](https://www.linkedin.com/in/dmcramer/) (Sentry.io), [Cristian Strat](https://www.linkedin.com/in/cristiangeorgestrat/) (head of trading platform Coinbase) and [David Aronchick](https://www.davidaronchick.com/) (Kubernetes, GKE). In addition, a number of institutional investors with deep experience in developer platforms have joined the round, including [Salil Deshpande](https://www.linkedin.com/in/salil/) of Bain Capital-backed fund [Uncorrelated Ventures](https://uncorrelated.com/), [Jeremy Levine](https://www.linkedin.com/in/jeremyl/) of [Bessemer Venture Partners](https://www.bvp.com/) and [Ed Roman](https://www.linkedin.com/in/ed-roman-19686/) of [Hack VC](https://hack-vc.com/).
+
+## The general sentiment around builds
+
+Since our initial product launch, we've talked to several engineers, build gurus and industry experts about traditional build tooling, and we discovered that nobody likes their build process. Builds are always a source of frustration one way or another. They’re slow, brittle, too difficult to understand, inconsistent and difficult to iterate on.
+
+In contrast, we found out that the number one reason people love Earthly so much is its ability to reproduce failures. Reproducibility is key, because it allows people to iterate on builds quickly on their laptops without having to worry that they will break when they push to CI.
+
+Earthfiles represent a reproducibility guarantee, ensuring that your build will run the same way on all platforms - CI, your colleague’s laptop, Linux, Mac, Windows, etc. - regardless of any local specific toolchain.
+
+People who have sought out reproducibility before Earthly have developed their own docker-based build scripts that essentially run most of the build within makeshift containers. The common problem with this approach is that the build requires constant fiddling to get right, still breaks occasionally on a colleague’s computer, and is poorly understood across wider teams.
+
+Did you know that sed on a Mac is different from the sed on Linux distributions? So is find. And so is make. And a number of other tools we take for granted. Even on Linux alone, can you be sure that your colleagues are running the same version of Python or of Java? Is JDK even installed? If all of us were build gurus, experts in the likes of bash, makefile, and cross-system compatibility, maybe this wouldn’t be such a big issue. But we’re not.
+
+These incompatibilities lead to significant inefficiencies in the software development lifecycle. Too often, teams don’t even run integration tests, because they have no idea how to build the projects belonging to other teams. Beyond the typical build scripts, there are often too many unwritten assumptions, so they just give up and leave it to be caught down the pipeline, in CI, UAT… or perhaps in production.
+
+With Earthly, we believe we can make this process an order of magnitude better.
+
+## How does it work?
+
+Docker made containers friendlier to use and widely accessible, bringing container isolation into mainstream usage. In a similar spirit, Earthly follows in Docker’s footsteps, bringing together a number of important innovations into an easy-to-use package. We bring together Buildkit and OCI images and inspiration from Dockerfiles and Makefiles to make reproducible builds easier to get right and harder to get wrong.
+
+Earthly is somewhat like a Makefile, where each target is fully isolated from one another - and, more importantly, isolated from the host environment. As they’re isolated, there is no way to depend on anything you have installed locally. To bring in OS-level dependencies, you install them as part of the build, the same way you would install them in a Dockerfile. In fact, the entire Docker Hub ecosystem can be leveraged in the build process.
+
+In a way, Earthly completes Dockerfiles. While Dockerfiles allow you to define the make-up of Docker images, Earthfiles go beyond and also allow you to run unit tests, integration tests, or to output arbitrary files (eg binaries, artifacts, jars), not just images - all of which runs within a containerized environment, thus maintaining consistency of execution.
+
+<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="/content/images/2020/09/Where-does-Earthly-fit---horizontal-v2--1-.png" class="kg-image" alt="Diagram of how Earthly integrates as a distinct layer between build systems and CI. It replaces traditional glue scripts formed of Dockerfiles, Makefiles and Bash files. These traditional scripts are DIY, clunky and easy to get wrong. " srcset="/content/images/size/w600/2020/09/Where-does-Earthly-fit---horizontal-v2--1-.png 600w, /content/images/size/w1000/2020/09/Where-does-Earthly-fit---horizontal-v2--1-.png 1000w, /content/images/2020/09/Where-does-Earthly-fit---horizontal-v2--1-.png 1402w" sizes="(min-width: 1200px) 1200px"><figcaption>Earthly replaces the scripting glue layer</figcaption></figure>
+
+There are lots of other goodies that Earthly does beyond this, such as automatically running everything in parallel, bringing a modern import system and having native secrets and SSH agent support.
+
+## What’s next?
+
+Having reproducible builds is the first step in our journey. We plan to build shared caching and highly parallel cloud-based builds next. We have a deep belief that builds can create bridges between engineering teams - not roadblocks. This has become our mission, and we will not stop until we’ve achieved it!  
+Since our launch, we’ve worked with our users to address their needs and make the experience as pleasant and friendly as possible. We love feedback - check out [Earthly on GitHub](https://github.com/earthly/earthly), drop by our [Gitter channel](https://gitter.im/earthly-room/community) or open a GitHub [issue](https://github.com/earthly/earthly/issues/new) - tell us what you’re building and how your experience can be improved. We’re excited to have you join us on our journey!
+
+<figure class="kg-card kg-image-card"><img src="/content/images/2020/09/Screen-Shot-2020-09-23-at-1.46.53-PM.png" class="kg-image" alt="“Reproducible and parallelizable build and continuous integration, as well as explicit dependency management, are critical to scaling any organization. I'm extremely excited about Earthly bringing this functionality to existing container based build systems without requiring an extremely expensive retooling effort on top of something like Bazel. Earthly is a pragmatic and incremental solution to a thorny problem that all organizations face.” -- Matt Klein, creator of Envoy Proxy" srcset="/content/images/size/w600/2020/09/Screen-Shot-2020-09-23-at-1.46.53-PM.png 600w, /content/images/size/w1000/2020/09/Screen-Shot-2020-09-23-at-1.46.53-PM.png 1000w, /content/images/size/w1600/2020/09/Screen-Shot-2020-09-23-at-1.46.53-PM.png 1600w, /content/images/size/w2400/2020/09/Screen-Shot-2020-09-23-at-1.46.53-PM.png 2400w" sizes="(min-width: 720px) 720px"></figure>
