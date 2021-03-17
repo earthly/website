@@ -1,8 +1,8 @@
 ---
 title: How to Man in the Middle HTTPS Using mitmproxy
 date: '2021-02-11 13:30:00'
+bla: *slug
 ---
-
 ## 
 
 Have you ever wanted to see what kinds of requests a service or application on your machine is making and what kind of responses it is getting back? &nbsp;Have you ever tried and failed to capture this traffic or modify it to investigate how something works (or doesn't work). &nbsp;If you have, then mitmproxy might be what you need. Being able to scan through and observe HTTP protocol traffic easily is a great debugging aid.

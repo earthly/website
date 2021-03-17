@@ -94,6 +94,8 @@ analytics:
     anonymize_ip         : # true, false (default)
 
 
+# custom
+images: "/blog/assets/images/"
 # Site Author
 author:
   name             : *name

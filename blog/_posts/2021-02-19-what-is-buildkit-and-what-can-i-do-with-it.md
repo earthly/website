@@ -295,7 +295,7 @@ buildctl build --frontend dockerfile.v0 --local context=. --local dockerfile=. -
 This filesystem output could be useful if we were trying to trim our image down.  We could look through the output and find things to remove and use a multi-stage build to remove them. [broot](https://github.com/Canop/broot) is pretty handy for this:
 
 
-![tree view of alpine image showing space used in each directory](/blog/assets/images/what-is-buildkit-and-what-can-i-do-with-it/4.png)
+![tree view of alpine image showing space used in each directory]({{site.images}}{{page.slug}}/4.png)
 
 ## What is in `FROM scratch`
 One thing we can do with our newfound powers is investigate the `scratch` keyword.  The scratch keyword doesn't correspond to an actual image. We can't run it:
