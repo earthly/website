@@ -5,8 +5,6 @@ tags:
 - article
 ---
 
-# 
-
 The public release of Scala was [17 years ago](https://en.wikipedia.org/wiki/Scala_(programming_language)#History) today. &nbsp;The language and its community are certainly not standing still, so I've put together a list of my favorite active Scala blogs.
 
 Blogs are a great way to stay on top of what is happening in the language. &nbsp;Many important figures in the Scala community are active on Twitter, and many projects have excellent documentation. Still, if you want in-depth coverage of a topic, a blog is the best place to look.
