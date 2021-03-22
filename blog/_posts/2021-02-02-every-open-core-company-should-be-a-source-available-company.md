@@ -32,7 +32,7 @@ We believe that this model has been battle-tested and is becoming the norm in th
 
 ## Why is a license change needed?
 
-!["We believe in a model where both the creator and the society can win."](/content/images/2021/01/Styled-quote--3-.png)
+> "We believe in a model where both the creator and the society can win."
 
 We live in a world where the power of supporting innovation is concentrated within a handful of companies. These companies have many orders of magnitude more resources than the average entrepreneur, and have the upper hand when it comes to delivering new technology to large audiences.
 
@@ -48,7 +48,7 @@ Without stable revenue and an exciting-enough story to tell Wall Street, such cr
 
 ## What then?
 
-!["Those who cannot remember the past are condemned to repeat it" -- George Santayana](/content/images/2021/01/Styled-quote--2-.png)
+> "Those who cannot remember the past are condemned to repeat it" -- George Santayana
 
 In response to this behavior, innovators have adapted by introducing limitations to their licenses. The licenses are no longer open-source in the purest form, however, the source code is made available (hence the name "source-available license") to be used in wide applications, with certain limitations. Examples of notable switches include [MongoDB](https://techcrunch.com/2018/10/16/mongodb-switches-up-its-open-source-license/), [CockroachDB](https://www.cockroachlabs.com/blog/oss-relicensing-cockroachdb/), [Timescale](https://blog.timescale.com/blog/how-we-are-building-an-open-source-business-a7701516a480/), [Elastic](https://www.elastic.co/blog/why-license-change-AWS), [and many others](https://techcrunch.com/2019/05/30/lack-of-leadership-in-open-source-results-in-source-available-licenses/).
 
