@@ -6,7 +6,8 @@ date: '2021-01-07 14:19:25'
 
 Starting in early December, a mad dash has been underway to migrate open-source projects off of Travis CI. What happened and where should you move your project to?
 
-<figure class="kg-card kg-image-card kg-card-hascaption"><img src="/content/images/2021/01/Screen-Shot-2021-01-05-at-3.42.32-PM.png" class="kg-image" alt><figcaption><a href="https://twitter.com/james_hilliard/status/1336081776691843072">Jame's Hilliard on Twitter</a></figcaption></figure>
+
+{% include imgf src="quote1.png" alt="TravisCI is no longer providing open source credits" caption="Jame's Hilliard on Twitter" %}
 
 If you're not familiar with Travis CI, it's a build company that has been powering the continuous integration (CI) of many open source projects since it launched in 2011. &nbsp;It was the first build solution that was free for open source use and that easily integrated into GitHub.
 
@@ -14,11 +15,10 @@ If you're not familiar with Travis CI, it's a build company that has been poweri
 
 In 2019 Travis was acquired by a private equity group and many engineers were let go.
 
-<figure class="kg-card kg-embed-card"><blockquote class="twitter-tweet" data-width="550">
+<blockquote class="twitter-tweet" data-width="550">
 <p lang="en" dir="ltr">So apparently Travis CI is being strip-mined immediately after their acquisition by Idera. Sorry, I mean after "joining the Idera family" 🙄 <a href="https://t.co/CE5ERp1RsY">https://t.co/CE5ERp1RsY</a> A bunch of talented people are waking up to termination letters. Absolutely shameful. <a href="https://t.co/BbBRPdnswe">https://t.co/BbBRPdnswe</a></p>— Senior Oops Engineer (@ReinH) <a href="https://twitter.com/ReinH/status/1098663375985229825?ref_src=twsrc%5Etfw">February 21, 2019</a>
 </blockquote>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-</figure>
 
 Then, on Nov 2, 2020, Travis CI announced the end of its unlimited support for open-source projects:
 
@@ -41,7 +41,7 @@ However, many feel the real reason is that the acquirer is aiming for profitabil
 Many open-source projects are still using Travis and open-source maintainers are notoriously overworked. &nbsp;Time spent migrating builds is time not spent on other things. &nbsp;Large well-maintained projects will likely quickly transition but for many smaller projects, an abrupt change in a service they depend on is a huge challenge.
 
 ## Where To Move To
-<figure class="kg-card kg-image-card"><img src="/content/images/2021/01/Screen-Shot-2021-01-06-at-4.53.01-PM.png" class="kg-image" alt srcset="/content/images/size/w600/2021/01/Screen-Shot-2021-01-06-at-4.53.01-PM.png 600w, /content/images/size/w1000/2021/01/Screen-Shot-2021-01-06-at-4.53.01-PM.png 1000w, /content/images/size/w1600/2021/01/Screen-Shot-2021-01-06-at-4.53.01-PM.png 1600w, /content/images/size/w2400/2021/01/Screen-Shot-2021-01-06-at-4.53.01-PM.png 2400w" sizes="(min-width: 720px) 720px"></figure>
+![Pins on a Map]({{site.images}}{{page.slug}}/dartboard.png)
 
 If you maintain an open-source project that uses TravisCI and are hoping to get off it, then assuming you have the time to migrate, there are actually many viable options.
 
@@ -60,7 +60,7 @@ Circle CI offers 400,000 build credits per month to any open-source public repos
 They also allow use of the free plan with private repositories. This makes it a great choice if your project is not actually open-source. More details [can be found here](https://circleci.com/open-source/).
 
 ### Best Option: Github Actions
-<figure class="kg-card kg-image-card"><img src="/content/images/2021/01/Screen-Shot-2021-01-06-at-5.12.18-PM.png" class="kg-image" alt srcset="/content/images/size/w600/2021/01/Screen-Shot-2021-01-06-at-5.12.18-PM.png 600w, /content/images/size/w1000/2021/01/Screen-Shot-2021-01-06-at-5.12.18-PM.png 1000w, /content/images/size/w1600/2021/01/Screen-Shot-2021-01-06-at-5.12.18-PM.png 1600w, /content/images/size/w2400/2021/01/Screen-Shot-2021-01-06-at-5.12.18-PM.png 2400w" sizes="(min-width: 720px) 720px"></figure>
+![First place trophy]({{site.images}}{{page.slug}}/trophy.png)
 
 An even better option is Github Actions, a cloud CI system directly from GitHub. &nbsp;Github is at the center of many open source projects and this makes it a natural choice for CI. &nbsp;
 
@@ -71,7 +71,6 @@ GHA offers very generous build credits, 20 concurrent build jobs per project and
 If your project is hosted on GitHub, then to me, GHA seems like the best bet right now. More details about the open-source plan can [be found here](https://docs.github.com/en/free-pro-team@latest/actions/reference/usage-limits-billing-and-administration).
 
 ### Summary of Open Source Plans
-<!--kg-card-begin: html-->
 
 | Service | Open Source Offering |
 | --- | --- |
@@ -79,14 +78,12 @@ If your project is hosted on GitHub, then to me, GHA seems like the best bet rig
 | Circle CI | [1 concurrent build at a time](https://circleci.com/open-source/) |
 | GitHub Actions | [20 concurrent build jobs per project](https://docs.github.com/en/free-pro-team@latest/actions/reference/usage-limits-billing-and-administration) |
 
-<!--kg-card-end: html-->
 ## Don't Let This Happen Again
 
 So GitHub has a generous build plan, but moving your CI process is not easy or free. &nbsp;The more complex your build, the harder porting from one cloud CI to another is going to be. &nbsp;If you move to GHA and then GHA stops being a viable option in the future then this whole effort will have to be repeated. &nbsp;
 
 ## Neutral Build Specifications
-<figure class="kg-card kg-image-card"><img src="/content/images/2021/01/Screen-Shot-2021-01-06-at-4.58.54-PM.png" class="kg-image" alt srcset="/content/images/size/w600/2021/01/Screen-Shot-2021-01-06-at-4.58.54-PM.png 600w, /content/images/size/w1000/2021/01/Screen-Shot-2021-01-06-at-4.58.54-PM.png 1000w, /content/images/size/w1600/2021/01/Screen-Shot-2021-01-06-at-4.58.54-PM.png 1600w, /content/images/size/w2400/2021/01/Screen-Shot-2021-01-06-at-4.58.54-PM.png 2400w" sizes="(min-width: 720px) 720px"></figure>
-
+![Open Sign]({{site.images}}{{page.slug}}/opensign.png)
 How can you minimize the effort of moving from build platform to another?
 
 My suggestion is to keep as much logic as possible out of the proprietary build definition. Instead, define it in an open-source format that you can execute anywhere.
@@ -95,21 +92,24 @@ My suggestion is to keep as much logic as possible out of the proprietary build 
 
 One way to build a CI neutral build definition is to use a makefile and a dockerfile. &nbsp;The makefile contains the various steps of your build pipeline and you run it inside a docker container which installs any needed dependencies. &nbsp;[QMK](https://github.com/qmk/qmk_firmware) is a popular open-source project that uses this approach.
 
-<figure class="kg-card kg-code-card"><pre><code class="language-docker">FROM qmkfm/base_container
+```dockerfile
+FROM qmkfm/base_container
 
 VOLUME /qmk_firmware
 WORKDIR /qmk_firmware
 COPY . .
 
-CMD make all:default</code></pre>
-<figcaption><a href="https://github.com/qmk/qmk_firmware/blob/master/Dockerfile">QMK</a> Docker File for executing the full build</figcaption></figure>
+CMD make all:default
+```
+<a href="https://github.com/qmk/qmk_firmware/blob/master/Dockerfile">QMK</a> Docker File for executing the full build
 ### Earthly
 
 This is the Earthly blog, and I am an Earthly contributor, but in my totally biased opinion, it deserves a mention as an neurtal format for defining a build. The Elixir web framework [Phoenix is a great example to take a look at](https://github.com/phoenixframework/phoenix/blob/master/Earthfile).
 
 Earthly is like a makefile where each step is containerized and dependencies are explicitly declared. &nbsp;
 
-<figure class="kg-card kg-code-card"><pre><code class="language-dockerfile">FROM golang:1.13-alpine3.11
+``` dockerfile
+FROM golang:1.13-alpine3.11
 
 build:
 	COPY main.go .
@@ -117,8 +117,9 @@ build:
 	SAVE ARTIFACT main AS LOCAL main
     
 lint: 
-	...</code></pre>
-<figcaption>Example build steps for a <a href="https://github.com/earthly/earthly/blob/main/examples/go/Earthfile">go application</a></figcaption></figure>
+	...
+```
+Example build steps for a <a href="https://github.com/earthly/earthly/blob/main/examples/go/Earthfile">go application
 
 ## Other Interesting Options
 
