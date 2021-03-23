@@ -23,7 +23,7 @@ In 2019 Travis was acquired by a private equity group and many engineers were le
 Then, on Nov 2, 2020, Travis CI announced the end of its unlimited support for open-source projects:
 
 > For those of you who have been building on public repositories (on travis-ci.com, with no paid subscription), we will upgrade you to our trial (free) plan with a 10K credit allotment.
-
+>
 > **When your credit allotment runs out - we’d love for you to consider which of our plans will meet your needs.** - [Travis CI blogpost](https://blog.travis-ci.com/2020-11-02-travis-ci-new-billing)
 
 The reason behind the change is stated to be abuse by crypto-miners:

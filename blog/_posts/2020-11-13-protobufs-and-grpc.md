@@ -15,12 +15,11 @@ Let’s write an in-memory key/value micro-service in Go, and some clients in bo
 
 Our server will allow users to set and get data from a key/value store.
 
-<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://lh6.googleusercontent.com/j5GJXSGmbWrM3XjklTTLaAvwti4HTX-tOnz-9mmqbvTGVBTmdHAX85hmds52DLdtfLq8l6FugcCNHzfLVate_lq6hc1vAj8N62B0hjzV3j9UN3a_D8r1l3ZFJlhHRD_DfLGVfOt6" class="kg-image" alt><figcaption>Interacting with the server</figcaption></figure>
+{% include imgf src="server.png" alt="handddrawn cartoon for a person talking to a computer server" caption="Interacting with the server" %}
 
 First let’s design our API in a proto file:
 
-<!--kg-card-begin: markdown-->
-
+``` go
     syntax = "proto3";
     package simplekeyvalue;
     option go_package = "kvapi";
@@ -51,14 +50,13 @@ First let’s design our API in a proto file:
       string value = 1;
     }
 
-<!--kg-card-end: markdown-->
+```
 
 Next we need to compile this proto file into Go code. On a Mac one might be tempted to run _brew install protobuf_, or if you're on linux you might want to see if _apt-get install protoc_ will magically work, but rather than do that, we will use earthly to containerize these tools. This will allow you to share this code with other developers, and ensure everyone can compile proto files across multiple platforms using the same version to eliminate compatibility issues.
 
 Here's what an Earthfile would look like for installing Google protobufs inside an Ubuntu image, and generating the protobuf code using the protoc-gen-go-grpc tool:
 
-<!--kg-card-begin: markdown-->
-
+``` go
     FROM ubuntu:20.10
     WORKDIR /defs
     
@@ -80,24 +78,21 @@ Here's what an Earthfile would look like for installing Google protobufs inside 
           --go-grpc_out=/defs/go-api /defs/api.proto
       SAVE ARTIFACT ./go-api /go-pb AS LOCAL go-pb
 
-<!--kg-card-end: markdown-->
+```
 
 This will then produce two go files under the go-pb directory: api.pb.go and api\_grpc.pb.go which contains the auto generated protobuf and grpc code respectively.
 
 At this point, assuming that earth is already [installed](https://docs.earthly.dev/installation), give it a try for yourself with code from our [example repo](https://github.com/earthly/example-grpc-key-value-store):
 
-<!--kg-card-begin: markdown-->
-
+``` bash
     git clone https://github.com/earthly/example-grpc-key-value-store.git
     cd example-grpc-key-value-store/proto
     earth +proto-go
-
-<!--kg-card-end: markdown-->
+```
 
 The next step is to write the server code that will implement the set and get methods:
 
-<!--kg-card-begin: markdown-->
-
+``` go
     package main
     
     import (
@@ -166,13 +161,11 @@ The next step is to write the server code that will implement the set and get me
     		log.Fatalf("failed to serve: %v", err)
     	}
     }
-
-<!--kg-card-end: markdown-->
+```
 
 Next we will compile the go code and save it as a docker image with the following Earthfile:
 
-<!--kg-card-begin: markdown-->
-
+``` go
     FROM golang:1.13-alpine3.11
     
     WORKDIR /kvserver
@@ -190,35 +183,29 @@ Next we will compile the go code and save it as a docker image with the followin
         COPY +kvserver/kvserver /kvserver
         ENTRYPOINT /kvserver
         SAVE IMAGE as kvserver:latest
-        ```
+```
 
-<!--kg-card-end: markdown-->
 
 You can give it a try on your own by using our example code in our GitHub repo, just run:
 
-<!--kg-card-begin: markdown-->
-
+```
     git clone https://github.com/earthly/example-grpc-key-value-store.git
     cd example-grpc-key-value-store/go-server
     earth +kvserver-docker
-
-<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
+```
 
 Then start up the server in Docker, by running:
 
-<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
-
+```
     docker run --rm --network=host kvserver:latest
-
-<!--kg-card-end: markdown-->
+```
 * * *
 
 **Next step: Implementing a gRPC client using Python**
 
 Now that we've built and launched our Go-based key-value-store server, we'll cover how to talk to it using a Python client. Remember that initial Earthfile that generated the Go code? We'll extend it to _pip install grpc_ tooling, and generate Python code:
 
-<!--kg-card-begin: markdown-->
-
+``` dockerfile
     proto-py:
       RUN apt-get install -y python3 python3-pip
       RUN pip3 install grpcio grpcio-tools
@@ -227,13 +214,11 @@ Now that we've built and launched our Go-based key-value-store server, we'll cov
       RUN python3 -m grpc_tools.protoc -I /defs --python_out=/defs/py-api \
           --grpc_python_out=/defs/py-api /defs/api.proto
       SAVE ARTIFACT ./py-api /py-pb AS LOCAL py-pb
-
-<!--kg-card-end: markdown-->
+```
 
 Then we'll create a client that reads command line arguments, and if the argument contains an equals sign, it will store the value in the server, and otherwise it will retrieve the value from the server:
 
-<!--kg-card-begin: markdown-->
-
+``` go
     import sys
     import grpc
     
@@ -272,12 +257,11 @@ Then we'll create a client that reads command line arguments, and if the argumen
                 value = get_response.value
                 print(f'server returned value "{value}" for key "{key}"')
 
-<!--kg-card-end: markdown-->
+``` 
 
 We then store this python code, along with the generated gRPC protobuf code with the following Earthfile:
 
-<!--kg-card-begin: markdown-->
-
+``` dockerfile
     FROM python:3
     
     RUN pip install grpcio protobuf pycodestyle
@@ -300,46 +284,39 @@ We then store this python code, along with the generated gRPC protobuf code with
         BUILD +lint
         BUILD +kvclient-docker
 
-<!--kg-card-end: markdown-->
+```
 
 You can give it a try for yourself with the example code:
 
-<!--kg-card-begin: markdown-->
-
+``` 
     git clone https://github.com/earthly/example-grpc-key-value-store.git
     cd example-grpc-key-value-store/python-client
     earth +kvclient-docker
-
-<!--kg-card-end: markdown-->
+```
 
 Then you can run it and set the weather to sunny with:
 
-<!--kg-card-begin: markdown-->
-
+```
     docker run --rm --network=host python-kvclient:latest python3 /kvclient/client.py weather=sunny
-
-<!--kg-card-end: markdown-->
+```
 
 And if all went well, you should see some output on both the client and server consoles:
 
-<!--kg-card-begin: markdown-->
-
+```
     # client output
     sent "weather" to server
     
     # server output
     2020/11/12 23:15:18 Listening on :50051
     2020/11/12 23:15:34 serving set request for key "weather" and value "sunny"
-
-<!--kg-card-end: markdown-->
+```
 * * *
 
 **Final step: Implementing a gRPC client using Ruby**
 
 We've come a long ways with our Go and Python gRPC examples, but what if you also wanted to include a Ruby gRPC client implementation too? Well let's extend our proto Earthfile to generate Ruby protobufs too:
 
-<!--kg-card-begin: markdown-->
-
+``` dockerfile
     proto-rb:
       RUN apt-get install -y ruby
       RUN gem install grpc grpc-tools
@@ -348,12 +325,11 @@ We've come a long ways with our Go and Python gRPC examples, but what if you als
       RUN grpc_tools_ruby_protoc -I /defs --ruby_out=/defs/rb-api --grpc_out=/defs/rb-api /defs/api.proto
       SAVE ARTIFACT ./rb-api /rb-pb AS LOCAL rb-pb
 
-<!--kg-card-end: markdown-->
+```
 
 We can then use this generated Ruby gRPC code with a simple ruby client example that performs a get request for keys listed as command line arguments:
 
-<!--kg-card-begin: markdown-->
-
+``` go
     $LOAD_PATH.unshift '.'
     
     require 'grpc'
@@ -369,25 +345,22 @@ We can then use this generated Ruby gRPC code with a simple ruby client example 
       response = stub.get(request)
       puts response.value
     end
+```
 
-<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
-
+```
     git clone https://github.com/earthly/example-grpc-key-value-store.git
     cd example-grpc-key-value-store/ruby-client
     earth +kvclient-docker
-
-<!--kg-card-end: markdown-->
+```
 
 Then you can try querying the server to see what the weather was set to:
 
-<!--kg-card-begin: markdown-->
-
+```
     docker run --rm --network=host ruby-kvclient:latest ruby /kvclient/client.rb weather
-
-<!--kg-card-end: markdown-->
+```
 
 And if all went well, it'll tell you that it's sunny outside.
-
+{% include imgf src="sun.png" alt="drawing of the sunn" caption="It's Sunny Outside"%}
 <figure class="kg-card kg-image-card"><img src="/content/images/2020/11/image-1.png" class="kg-image" alt srcset="/content/images/size/w600/2020/11/image-1.png 600w, /content/images/size/w1000/2020/11/image-1.png 1000w, /content/images/size/w1600/2020/11/image-1.png 1600w, /content/images/2020/11/image-1.png 1625w" sizes="(min-width: 720px) 720px"></figure>
 
 So there we go. &nbsp;You can find the code for the server and the two clients in [github here](https://github.com/earthly/example-grpc-key-value-store).

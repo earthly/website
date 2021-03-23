@@ -25,15 +25,15 @@ Let's start with what I knew, generating a new RSA key with ssh-keygen
     SHA256:7N/cMpD6ou4tdPDYfQKq6Xa7m2sEYl0nIIonf1+3kvg alex@mah
     The key's randomart image is:
     +---[RSA 3072]----+
-    | . .. |
-    |.. . o . |
-    |+ .. . o |
-    | +o o ... |
-    | ..... *So.. |
-    | . .=++o=.. |
-    | =o.+..+ |
-    | + ++oo oo. |
-    | o.=XBEoo oo. |
+    |  . ..           |
+    |.. .  o .        |
+    |+ .. . o         |
+    | +o o ...        |
+    | ..... *So..     |
+    |   . .=++o=..    |
+    |     =o.+..+     |
+    |    + ++oo oo.   |
+    |   o.=XBEoo oo.  |
     +----[SHA256]-----+
 ```
 

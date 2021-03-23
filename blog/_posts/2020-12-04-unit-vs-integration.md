@@ -1,6 +1,7 @@
 ---
 title: Unit Testing vs Integration Testing
 date: '2020-12-04 17:16:14'
+toc: true
 ---
 
 In 1998, Kent Beck wrote sUnit, a unit testing framework for SmallTalk. &nbsp;Beck later ported this framework to Java as jUnit. &nbsp;From there, xUnit frameworks spread to the most popular languages. Newer languages, like Golang and Rust, have incorporated testing into the compiler and standard library directly.
@@ -8,7 +9,7 @@ In 1998, Kent Beck wrote sUnit, a unit testing framework for SmallTalk. &nbsp;Be
 But unit testing is not the only game in town. &nbsp;There are also integration tests and performance tests and much more. &nbsp;In my mind, though, Integration tests and unit tests are the foundations of resilient software. So today let's look at the differences between the two and when you might prefer one or the other.
 
 ## What Is a Unit?
-<figure class="kg-card kg-image-card kg-card-hascaption"><img src="/content/images/2020/11/Screen-Shot-2020-11-27-at-11.06.16-AM.png" class="kg-image" alt srcset="/content/images/size/w600/2020/11/Screen-Shot-2020-11-27-at-11.06.16-AM.png 600w, /content/images/size/w1000/2020/11/Screen-Shot-2020-11-27-at-11.06.16-AM.png 1000w, /content/images/2020/11/Screen-Shot-2020-11-27-at-11.06.16-AM.png 1034w" sizes="(min-width: 720px) 720px"><figcaption>A unit is the smallest piece of code that is logically separate </figcaption></figure>
+{% include imgf src="unit.png" alt="A unit is the smallest piece of code that is logically separate" caption="A unit is the smallest piece of code that is logically separate" %}
 
 A unit test is a test that is testing the smallest possible pieces of code in isolation. What then is a unit? &nbsp;
 
@@ -27,7 +28,7 @@ In comparison to other forms of testing, the execution time of unit tests is qui
 A key assumption of unit testing is that the software under test easily separates into distinct units. &nbsp;In software written without unit testing in mind, this assumption rarely holds. &nbsp;Adding unit tests to existing software is often a great way to stabilize it and prevent future regressions, but refactoring the code to support easy unit testing may require substantial effort and could even introduce new defects. &nbsp;When considering an effort to add unit tests to existing software, costs, as well as benefits, need to be considered. &nbsp;If you have working code, and if the code rarely needs to change, and if the code is not easily unit-testable the benefits may not warrant the costs. In such cases, consider leaning on integration tests to prevent defects in that area.
 
 ## What Is an Integration Test?
-<figure class="kg-card kg-image-card kg-card-hascaption"><img src="/content/images/2020/11/Screen-Shot-2020-11-27-at-11.40.01-AM.png" class="kg-image" alt srcset="/content/images/size/w600/2020/11/Screen-Shot-2020-11-27-at-11.40.01-AM.png 600w, /content/images/size/w1000/2020/11/Screen-Shot-2020-11-27-at-11.40.01-AM.png 1000w, /content/images/2020/11/Screen-Shot-2020-11-27-at-11.40.01-AM.png 1036w" sizes="(min-width: 720px) 720px"><figcaption>Integration tests focus on the whole of the software stack</figcaption></figure>
+{% include imgf src="integration.png" alt="Integration tests focus on the whole of the software stack" caption="Integration tests focus on the whole of the software stack" %}
 
 If the philosophy of unit testing is based on the insight that testing small independent pieces of code is a great way to prevent regressions then integration tests are based on the understanding that things often go wrong at the edges. &nbsp;The outside world is a messy place, and where it interacts with your code is usually where surprises happen.
 
@@ -45,7 +46,6 @@ Many external systems will have a documented way to use them in an integration t
 
 The closer integration tests are to real-world interactions the more likely they are to catch problems and provide real value.
 
-<!--kg-card-begin: html-->
 
 | Service | Integration Test Strategy |
 | --- | --- |
@@ -53,7 +53,6 @@ The closer integration tests are to real-world interactions the more likely they
 | Paypal | [Test credit card numbers](https://developer.paypal.com/docs/payflow/payflow-pro/payflow-pro-testing/) |
 | UPS | [Test api mode](https://www.ups.com/us/en/help-center/sri/developer-instruct.page) |
 
-<!--kg-card-end: html-->
 # An E-commerce Example
 
 Imagine you are coding a simple e-commerce site, a simple miniature amazon.com. The details matter here so let's assume that you are going to use PostgreSQL as your datastore, PayPal for payments, UPS for shipping, and Amazon Simple Email Service for emailing invoices. &nbsp;
@@ -80,11 +79,9 @@ Your integration testing on the other hand will focus on testing where your e-co
 Each of these will likely be verified by one or two integration tests. These tests will be slower to run and probably involve some setup and teardown steps. &nbsp;The payoff is that the code coverage of each test will be quite large. &nbsp;These tests will generate value by catching problems that unit tests could never catch. &nbsp;However, the maintenance cost and execution time will be likely higher.
 
 # Integration Tests vs Unit Tests
-<figure class="kg-card kg-image-card kg-card-hascaption"><img src="/content/images/2020/11/Screen-Shot-2020-11-27-at-11.44.36-AM-1.png" class="kg-image" alt srcset="/content/images/size/w600/2020/11/Screen-Shot-2020-11-27-at-11.44.36-AM-1.png 600w, /content/images/size/w1000/2020/11/Screen-Shot-2020-11-27-at-11.44.36-AM-1.png 1000w, /content/images/size/w1600/2020/11/Screen-Shot-2020-11-27-at-11.44.36-AM-1.png 1600w, /content/images/2020/11/Screen-Shot-2020-11-27-at-11.44.36-AM-1.png 2020w" sizes="(min-width: 720px) 720px"><figcaption>Time for a head to head comparison</figcaption></figure>
+{% include imgf src="unit-vs-integration.png" alt="comparing unit tests to integrations tests" caption="Time for a head to head comparison" %}
 
 So which type of test should be preferred? Neither alone is sufficient. &nbsp; Both are parts of a comprehensive testing plan. Let's compare them directly:
-
-<!--kg-card-begin: html-->
 
 | Unit Tests | Integration Tests |
 | --- | --- |
@@ -97,7 +94,6 @@ So which type of test should be preferred? Neither alone is sufficient. &nbsp; B
 | Minimal setup and teardown | May involve extensive setup and teardown of external resources like file systems of database state |
 | Stateless | Possibly Stateful |
 
-<!--kg-card-end: html-->
 ## Working Software Over Idealized Testing
 
 > Each situation is unique and advice that is written based on what works in other contexts should be not followed blindly.
