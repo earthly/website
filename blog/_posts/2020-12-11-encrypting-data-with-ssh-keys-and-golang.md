@@ -13,8 +13,7 @@ Here's a short tutorial with some sample code for experimenting with public/priv
 
 Let's start with what I knew, generating a new RSA key with ssh-keygen
 
-<!--kg-card-begin: markdown-->
-
+```
     alex@earthly:~/$ ssh-keygen
     Generating public/private rsa key pair.
     Enter file in which to save the key (/home/alex/.ssh/id_rsa): /tmp/testkey
@@ -36,14 +35,16 @@ Let's start with what I knew, generating a new RSA key with ssh-keygen
     | + ++oo oo. |
     | o.=XBEoo oo. |
     +----[SHA256]-----+
+```
 
 Perfect, we can then display my public key with:
 
+```
     alex@earthly:~/$ cat /tmp/testkey.pub 
     ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDBRl0U4mwO/jQ7kYJidSnQy0ci45j1QZ1do7NEC/08cG0jbNCSX6mblFr0JWruLpp6Z1WA/BL+GngCwATBeEt7dSAHNpOvT0fJ4roWv6/KmOLOCjKq26a0MvMf1g/YFa5tP5Zi7UW5Hp4vGCTXRPyywNJvh1/cHKuq2j79fUX+4cG9p01a1Y89/a3Q7L5UkB4JoFuaA9sVzVg4H5A2vRVR/pEIRRFuPuxHDVcNblA6CsKFf0zBoLatXv+aBn86dX8EtwB13HdRsKq+XmBwnWJiS+Cz1GBhnKf4LM/Ca46qy2ExQnOOt49COUOoU6DI7P5bf4I33pNDDLoTvFFKzyXWTRgwg1tiyiRzfIjO+mg0kQM/dZ7+M8W49AQv+MR8Uh0bykECXn6u8yEibEgInYlj0ziWXtf6lPEg+505hDTLlvPWXpo8nLluR5COwgFVSbNcMnY9o3KHeog598mQxiqrXWWbGmra7SgXrKmqJGqUbkZqH1z8l6QfFo9nTBlYI0k= alex@earthly
-
+```
 and since we're all friends here, I'll share my example private key (you should never share your key with anyone, I'm only sharing this as an example -- I won't ever be using this key anywhere).
-
+```
     alex@earthly:~/$ cat /tmp/testkey
     -----BEGIN OPENSSH PRIVATE KEY-----
     b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAABlwAAAAdzc2gtcn
@@ -83,13 +84,11 @@ and since we're all friends here, I'll share my example private key (you should 
     N/XMfHMt7FAdUIeNCZWA0tmvy3aZlTUzFF5LEx0/cHmpNgHdz7tshshGG5NvW3ct2AKKmB
     nuAwC6Meoqs1kAAAAIYWxleEBtYWgBAgM=
     -----END OPENSSH PRIVATE KEY-----
-
-<!--kg-card-end: markdown-->
+```
 
 Ok great, now how do we do that with go?
 
-<!--kg-card-begin: markdown-->
-
+``` go
     package main
     
     import (
@@ -134,9 +133,10 @@ Ok great, now how do we do that with go?
     	fmt.Println("my private key is...")
     	fmt.Println(privKey)
     }
+```
 
 Try it out in the [go playground](https://play.golang.org/p/chkKzvcGJcV), you should see something like this:
-
+```
     my public key is...
     ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC97wOspXmARcUFThWVlNMnwxIiDIW7CrshmPRDfBV7RYlRtiNuSLlFaAIeXUGPWFnKzivScpBntrFqqj+aJRQ27/tsM/n5jT6ERnoJTbyF+jYCx5BxST5lssVSRrXJQ0dLKSD6OEvTKHK50RrxVtdU2E1cknwQWsYC2514xwmWYwEiNfFkO0QrU27BunPO/Gam+GJNTLt7o7diM0GawuqVI1S/hf0T7goMTA9wX7KaIDg5Q1x+/0MJa1kT7LswG8Rw2TFXRqI9Q+4UmmWN1MxBpeVK8VWx7NY9ngXnHUnJdzrXB4+E95SnKyhzaTlBnWDs9Em606SRb+g+tSYXl8DD
     
@@ -168,15 +168,14 @@ Try it out in the [go playground](https://play.golang.org/p/chkKzvcGJcV), you sh
     QjQOuFshp/TZ5jGkv7t2iVBh1whOOpaOmODMKAhueey+NGU47/Ww5vUgwVX/+WJQ
     HddCttBCyHl0vj+Ok4U4JjH05La+7Yrm/5q9wG2KptFe8c+RbeE=
     -----END RSA PRIVATE KEY-----
-
-<!--kg-card-end: markdown-->
+```
 
 Perfect! Now I can generate a public and private key via Go. I wonder how I can encrypt a message using a public key which can only be decrypted by someone with the private key. Let's try out some more code:
 
-<!--kg-card-begin: markdown-->
 
 I want to keep my function signature as basic as possible for the purpose of learning, so we will pass in the public key as the regular base64-encoded id\_rsa keyformat, and let that function handle parsing it:
 
+``` go
     func encrypt(msg, publicKey string) (string, error) {
     	parsed, _, _, _, err := ssh.ParseAuthorizedKey([]byte(publicKey))
     	if err != nil {
@@ -203,15 +202,13 @@ I want to keep my function signature as basic as possible for the purpose of lea
     	}
     	return base64.StdEncoding.EncodeToString(encryptedBytes), nil
     }
+```
 
 Try out the complete example [here](https://play.golang.org/p/KjvwPoJ6wT4)
 
-<!--kg-card-end: markdown-->
-
 Finally, how do we decrypt it?
 
-<!--kg-card-begin: markdown-->
-
+``` go
     func decrypt(data, priv string) (string, error) {
     	data2, err := base64.StdEncoding.DecodeString(data)
     	if err != nil {
@@ -230,10 +227,9 @@ Finally, how do we decrypt it?
     	}
     	return string(decrypted), nil
     }
-
+```
 Try it out [here](https://play.golang.org/p/a5u9PYWEjgs)
 
-<!--kg-card-end: markdown-->
 
 So there we have a end-to-end example of how to generate a new public/private key, and encrypt and decrypt data all in golang.
 

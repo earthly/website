@@ -24,12 +24,9 @@ We have heard that
 
 Following many feedback sessions, we have come up with a number of possible improvements and directions for the Earthly project. We have summarized this in a **roadmap** , which we plan to maintain on an ongoing basis.
 
-<!--kg-card-begin: markdown-->
-
 [![Roadmap (click to view)](/content/images/2020/12/Screen-Shot-2020-12-07-at-4.49.19-PM-1.png)](https://github.com/earthly/earthly/projects/1)  
 _Roadmap (click to view)_
 
-<!--kg-card-end: markdown-->
 ## What Earthly needs from YOU
 
 Feedback, feedback, feedback!

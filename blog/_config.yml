@@ -192,17 +192,25 @@ excerpt_separator: "\n\n"
 incremental: false
 
 
-# Markdown Processing
-kramdown:
-  input: GFM
-  hard_wrap: false
-  auto_ids: true
-  footnote_nr: 1
-  entity_output: as_char
-  toc_levels: 1..6
-  smart_quotes: lsquo,rsquo,ldquo,rdquo
-  enable_coderay: false
+# # Markdown Processing
+# kramdown:
+#   input: GFM
+#   hard_wrap: false
+#   auto_ids: true
+#   footnote_nr: 1
+#   entity_output: as_char
+#   toc_levels: 1..6
+#   smart_quotes: lsquo,rsquo,ldquo,rdquo
+#   enable_coderay: false
 
+markdown: Pandoc
+
+pandoc:
+  extensions:
+    # - smart
+    # - mathjax
+    # - csl: _styles/apa.csl
+    # - bibliography: bibliography/references.bib
 
 # Sass/SCSS
 sass:
@@ -225,6 +233,7 @@ plugins:
   - jekyll-feed
   - jekyll-include-cache
   - jekyll-archives
+  # - jekyll-pandoc
   # - file-exists
 
 # mimic GitHub Pages with --safe

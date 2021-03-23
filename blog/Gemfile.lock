@@ -59,7 +59,7 @@ GEM
       jekyll-tagging (~> 1.0)
     jekyll-watch (2.2.1)
       listen (~> 3.0)
-    kramdown (2.3.0)
+    kramdown (2.3.1)
       rexml
     kramdown-parser-gfm (1.1.0)
       kramdown (~> 2.0)
@@ -75,6 +75,7 @@ GEM
     octokit (4.20.0)
       faraday (>= 0.9)
       sawyer (~> 0.8.0, >= 0.5.3)
+    pandoc-ruby (2.1.4)
     pathutil (0.16.2)
       forwardable-extended (~> 2.6)
     public_suffix (4.0.6)
@@ -98,7 +99,7 @@ GEM
     unicode-display_width (1.7.0)
 
 PLATFORMS
-  x86_64-linux-musl
+  x86_64-linux
 
 DEPENDENCIES
   jekyll (~> 4.1.1)
@@ -111,9 +112,10 @@ DEPENDENCIES
   jekyll-seo-tag
   jekyll-sitemap
   jekyll-tagging-related_posts
+  pandoc-ruby
   rouge
   tzinfo (~> 1.2)
   tzinfo-data
 
 BUNDLED WITH
-   2.2.14
+   2.2.15

@@ -28,3 +28,5 @@ gem 'jekyll-archives'
 gem "jekyll-inline-svg"
 gem "rouge"
 gem "jekyll-tagging-related_posts"
+# gem "jekyll-pandoc"
+gem 'pandoc-ruby'

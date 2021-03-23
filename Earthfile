@@ -1,11 +1,18 @@
-FROM ruby:2.7-alpine
+FROM ruby:2.7
 WORKDIR /site
 
 ## Base Image
 deps:
-    RUN apk add --no-cache build-base gcc bash cmake git
-    RUN apk --update add imagemagick
+    RUN apt-get update 
+    RUN apt-get install gcc cmake imagemagick -y
     RUN gem install bundler -v "~>1.0" && gem install bundler jekyll
+    # diagrams and stuff
+    RUN apt-get install cabal-install -y
+    RUN cabal update
+    RUN cabal install pandoc-plot --force-reinstalls
+    RUN cp /root/.cabal/bin/* /usr/bin/
+    RUN apt-get install python3-matplotlib -y
+
 
 ## Website
 website-update:
@@ -57,18 +64,21 @@ blog-install:
 blog-build:
   FROM +blog-install
   COPY blog .
-  RUN RUBYOPT='-W0' bundle exec jekyll build 
+  RUN RUBYOPT='-W0' bundle exec jekyll build --future
   SAVE ARTIFACT _site AS LOCAL build/site/blog
-
 
 blog-docker:
   FROM +blog-install
   CMD RUBYOPT='-W0' bundle exec jekyll serve -H 0.0.0.0 --future -P 4002
   SAVE IMAGE earthly-blog
 
+blog-interactive:
+  FROM +blog-install
+  RUN --interactive /bin/bash
+
 blog-run:
   LOCALLY
-  BUILD +website-docker
+  BUILD +blog-docker
   RUN docker run -p 4002:4002 -v $(pwd)/blog:/site earthly-blog
 
 ## Utils
