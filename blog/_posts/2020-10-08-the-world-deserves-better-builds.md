@@ -2,6 +2,8 @@
 title: The world deserves better builds
 featured: true
 date: '2020-10-08 16:00:00'
+categories:
+  - News
 ---
 
 Hello, developers of planet Earth! Earlier this year, we at Earthly embarked on a journey to bring better builds to the world. We started with a deep belief that builds should be self-contained, reproducible, portable, and parallel. In addition, we think build tools should be friendly, accessible, and down to earth - hence our name.

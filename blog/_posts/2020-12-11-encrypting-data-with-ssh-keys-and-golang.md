@@ -1,8 +1,9 @@
 ---
 title: Encrypting Data With SSH Keys and Golang
 date: '2020-12-11 17:11:02'
-tags:
-- tutorials
+toc: true
+categories:
+  - Tutorials
 ---
 
 We're currently working on a server for sharing secrets between developers and CI systems, and one of the features we decided to support is passwordless login via ssh keys. I had never used any of the public/private key encryption libraries in Go before, so I wanted to spend some time experimenting with them to familiarise myself with the libraries.

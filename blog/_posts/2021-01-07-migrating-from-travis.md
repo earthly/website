@@ -2,6 +2,8 @@
 title: Migrating Your Open Source Builds Off Of Travis CI
 featured: true
 date: '2021-01-07 14:19:25'
+categories:
+  - Articles
 ---
 
 Starting in early December, a mad dash has been underway to migrate open-source projects off of Travis CI. What happened and where should you move your project to?

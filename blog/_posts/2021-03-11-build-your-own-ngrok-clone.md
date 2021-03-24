@@ -1,6 +1,9 @@
 ---
 title: Build Your Own Ngrok Clone With AWS
 date: '2021-03-11 13:00:00'
+categories:
+  - Tutorials
+toc: true
 ---
 
 # Introduction

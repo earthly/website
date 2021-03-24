@@ -2,6 +2,8 @@
 title: On YAML Discussions
 tags:
 - news
+categories:
+  - Articles
 ---
 ## Highlights From The Comments On The YAML Article
 

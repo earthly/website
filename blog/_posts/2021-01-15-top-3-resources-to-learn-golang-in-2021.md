@@ -1,8 +1,8 @@
 ---
 title: Top 3 Resources For Learning GoLang in 2021
 date: '2021-01-15 20:00:09'
-tags:
-- article
+categories:
+  - Articles
 ---
 
 ## Why Learn Go

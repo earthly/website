@@ -2,6 +2,8 @@
 title: Monorepo vs Polyrepo
 featured: true
 date: '2021-01-26 17:00:00'
+categories:
+  - Articles
 tags:
 - monorepo
 - polyrepo

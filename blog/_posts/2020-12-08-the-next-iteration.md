@@ -2,6 +2,8 @@
 title: The Next Iteration of Earthly
 featured: true
 date: '2020-12-08 17:20:02'
+categories:
+  - News
 ---
 
 Dear Earthly community,

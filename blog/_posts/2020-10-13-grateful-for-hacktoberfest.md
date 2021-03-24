@@ -2,6 +2,8 @@
 title: Grateful for Hacktoberfest!
 featured: true
 date: '2020-10-13 13:04:56'
+categories:
+  - News
 ---
 
 Since Hacktoberfest started two weeks ago, we’ve seen a spike in traffic to [Earthly](https://github.com/earthly/earthly). We saw developers of all levels coming together to improve our project in one way or another. Many developers didn’t know what Earthly was, so this was a great occasion for them to also get familiar with our reproducible builds.

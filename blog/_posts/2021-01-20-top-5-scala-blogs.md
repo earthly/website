@@ -1,8 +1,8 @@
 ---
 title: 5 Blogs for Scala's Birthday
 date: '2021-01-20 20:13:15'
-tags:
-- article
+categories:
+  - Articles
 ---
 
 The public release of Scala was [17 years ago](https://en.wikipedia.org/wiki/Scala_(programming_language)#History) today. &nbsp;The language and its community are certainly not standing still, so I've put together a list of my favorite active Scala blogs.

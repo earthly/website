@@ -2,8 +2,8 @@
 title: How to Setup and Use Amazon's Elastic Container Registry
 date: '2021-03-05 13:00:00'
 toc: true
-tags:
-- tutorials
+categories:
+  - Tutorials
 ---
 A container is a simple unit that packages all your code and its dependencies so your application can run quickly and reliably from any computing environment. That means you could quickly move from your local environment to your staging and into production. Due to their portability, small size, and convenience, containers are becoming [a method of choice](https://www.cio.com/article/3434010/more-enterprises-are-using-containers-here-s-why.html) for shipping modern applications.
 

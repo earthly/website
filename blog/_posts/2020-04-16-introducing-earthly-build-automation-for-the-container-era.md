@@ -2,12 +2,8 @@
 title: 'Introducing Earthly: build automation for the container era'
 featured: true
 date: '2020-04-16 19:08:00'
-header:
-#   image: assets/images/introducing-earthly-build-automation-for-the-container-era/header.jpg 
-  teaser: assets/images/introducing-earthly-build-automation-for-the-container-era/header.jpg 
-tags:
-- news
-- article
+categories:
+  - News
 ---
 
 

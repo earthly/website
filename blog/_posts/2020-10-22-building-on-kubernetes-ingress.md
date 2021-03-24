@@ -1,6 +1,10 @@
 ---
 title: 'Building on Kubernetes: Ingress'
 date: '2020-10-22 18:40:39'
+categories:
+  - Articles
+tags:
+  - Interview
 ---
 
  **What is an internal platform?**

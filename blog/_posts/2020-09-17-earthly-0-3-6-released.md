@@ -1,6 +1,8 @@
 ---
 title: Earthly 0.3.6 Released
 date: '2020-09-17 20:58:18'
+categories:
+  - News
 ---
 
 Release Notes:

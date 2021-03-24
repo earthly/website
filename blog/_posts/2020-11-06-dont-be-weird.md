@@ -1,6 +1,10 @@
 ---
 title: Technology choice? Don’t be weird
 date: '2020-11-06 18:50:39'
+categories:
+  - Articles
+tags:
+  - Interview
 ---
 
 _Here at Earthly, we are building an internal platform on AWS using EKS. &nbsp;I talked to our lead architect Corey Larson about the decisions and trade offs he is making as he designs our platform._
