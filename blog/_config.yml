@@ -233,6 +233,7 @@ plugins:
   - jekyll-feed
   - jekyll-include-cache
   - jekyll-archives
+  - jekyll_picture_tag
   # - jekyll-pandoc
   # - file-exists
 
@@ -296,3 +297,9 @@ defaults:
       comments: false
       share: false
       related: true
+
+# picture:
+  # source: "assets/images/"
+  # output: "assets/generated/"
+  # suppress_warnings: true
+  # ignore_missing_images: true

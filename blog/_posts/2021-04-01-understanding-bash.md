@@ -1,9 +1,6 @@
 ---
 title: 'Understanding Bash'
 date: '2021-04-01'
-header:
-  image: https://i.imgur.com/Tr76qMg.jpg
-  teaser: https://i.imgur.com/Tr76qMg.jpg
 categories:
   - Tutorials
 toc: true

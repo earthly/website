@@ -179,6 +179,10 @@ body {
     -webkit-animation-delay: 0.25s;
     animation-delay: 0.25s;
 
+    max-width: 1600px; 
+	  margin: 0 auto !important; 
+	  float: none !important; 
+
     a {
       color: #fff;
     }
@@ -216,8 +220,11 @@ body {
 
 .page__hero-image {
   width: 100%;
+  max-width: 1600px;
   height: auto;
   -ms-interpolation-mode: bicubic;
+  display: block;
+  margin: 0 auto;
 }
 
 .page__hero-caption {

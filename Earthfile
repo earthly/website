@@ -12,6 +12,7 @@ deps:
     RUN cabal install pandoc-plot --force-reinstalls
     RUN cp /root/.cabal/bin/* /usr/bin/
     RUN apt-get install python3-matplotlib -y
+    RUN apt-get install libvips -y
 
 ## Website
 website-update:

@@ -47,9 +47,9 @@
       {% endif %}
     </div>
   {% elsif page.header.image %}
-    <img src="{{ page.header.image | relative_url }}" alt="{{ image_description }}" class="page__hero-image">
+      {% picture header {{page.header.image}}  --picture class="page__hero-image" --alt {{ image_description }} %}
   {% else %}
-      <img src="{{site.baseurl}}/assets/images/{{ page.slug }}/header.jpg" alt="{{ image_description }}" class="page__hero-image">
+      {% picture header /assets/images/{{ page.slug }}/header.jpg  --picture class="page__hero-image" --alt {{ image_description }} %}
   {% endif %}
   {% if page.header.caption %}
     <span class="page__hero-caption">{{ page.header.caption | markdownify | remove: "<p>" | remove: "</p>" }}</span>
