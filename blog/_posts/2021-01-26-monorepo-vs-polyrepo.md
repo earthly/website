@@ -121,7 +121,7 @@ When viewing changes to a single project, it is easier to visualize the history 
 **Verdict**: Managing contributions within the same project is easier with a polyrepo layout, as it is easier to track the history of changes per-repository rather than per-directory.
 
 ### Contributions across projects
-![Two people working at a whiteboard](i{site.images}}{{page.slug}}/26MJGnCM0Wc.jpg)
+![Two people working at a whiteboard]({{site.images}}{{page.slug}}/26MJGnCM0Wc.jpg)
 
 When making contributions across multiple projects, there is a significant distinction. Arguably, this is one of the main reasons to use the monorepo layout. When everything is in a single repository, many cross-cutting concerns can be modified and submitted as a single, atomic PR. For example, you could write code for a new feature and make adjustments end-to-end: UI, backend, API, DB schema migration, documentation, etc. The simplicity of the dev-test and contribution process really shines in monorepos, when done right [^2]. Atomic PRs also help to visualize changes for review. It is easier to see a feature take shape when the changes across projects are visible in one place.
 
