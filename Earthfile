@@ -13,7 +13,6 @@ deps:
     RUN cp /root/.cabal/bin/* /usr/bin/
     RUN apt-get install python3-matplotlib -y
 
-
 ## Website
 website-update:
   FROM +deps
