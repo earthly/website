@@ -46,6 +46,8 @@
         {% endfor %}
       {% endif %}
     </div>
+  {% elsif page.header.image and page.header.raw %}
+      <img src="{{ page.header.image | relative_url }}" alt="{{ image_description }}" class="page__hero-image">
   {% elsif page.header.image %}
       {% picture header {{page.header.image}}  --picture class="page__hero-image" --alt {{ image_description }} %}
   {% else %}
