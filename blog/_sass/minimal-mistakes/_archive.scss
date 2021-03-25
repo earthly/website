@@ -154,7 +154,8 @@
 
   @include breakpoint($small) {
     float: left;
-    width: span(5 of 10);
+    width: 45%;
+    //width: span(5 of 10);
 
     &:nth-child(2n + 1) {
       clear: both;
@@ -170,7 +171,8 @@
   @include breakpoint($medium) {
     margin-left: 0; /* override margin*/
     margin-right: 0; /* override margin*/
-    width: span(3 of 12);
+    width: 45%
+    //width: span(6 of 12) - 30px;
 
     &:nth-child(2n + 1) {
       clear: none;
@@ -229,7 +231,7 @@
     }
 
     @include breakpoint($medium) {
-      max-height: 120px;
+      max-height: 200px;
     }
   }
 }

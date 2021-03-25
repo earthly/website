@@ -10,11 +10,17 @@ presets:
     dimension_attributes: false
     strip_metadata: true
 
-  list:
+  grid:
     formats: [webp, original]
     widths: [245]
     gravity: Center
     crop: '1:1'
+
+  2up:
+    formats: [webp, original]
+    widths: [245]
+    gravity: Center
+    crop: '2:1'
 
   header:
     formats: [webp, original]
