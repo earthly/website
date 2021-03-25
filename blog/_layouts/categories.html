@@ -25,7 +25,7 @@ layout: archive
   {% endfor %}
 </ul>
 
-{% assign entries_layout = page.entries_layout | default: 'list' %}
+{% assign entries_layout = page.entries_layout | default: 'grid' %}
 {% for i in (1..categories_max) reversed %}
   {% for category in site.categories %}
     {% if category[1].size == i %}

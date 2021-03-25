@@ -79,6 +79,7 @@ blog-interactive:
 blog-run:
   LOCALLY
   BUILD +blog-docker
+  # RUN docker kill $(docker ps -q) # Don't ask
   RUN docker run -p 4002:4002 -v $(pwd)/blog:/site earthly-blog
 
 ## Utils
