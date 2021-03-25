@@ -1,6 +1,5 @@
 ---
 layout: default
-author_profile: false
 ---
 
 {% if page.header.overlay_color or page.header.overlay_image or page.header.image %}
@@ -14,7 +13,6 @@ author_profile: false
     {% include breadcrumbs.html %}
   {% endunless %}
 {% endif %}
-
 <div id="main" role="main">
   {% include sidebar.html %}
 
@@ -22,6 +20,7 @@ author_profile: false
     {% unless page.header.overlay_color or page.header.overlay_image %}
       <h1 id="page-title" class="page__title">{{ page.title }}</h1>
     {% endunless %}
+    <h2 class="archive__subtitle">Archive of {{ page.title }}</h2>
     <div class="entries-{{ entries_layout }}">
     {% for post in page.posts %}
       {% include archive-single.html type="grid" %}

@@ -263,13 +263,10 @@ tag_archive:
 jekyll-archives:
   enabled:
     - categories
-    # - tags
   layouts:
     category: archive-taxonomy
-    tag: archive-taxonomy
   permalinks:
     category: /categories/:name/
-    tag: /tags/:name/
 
 
 # HTML Compression
@@ -294,6 +291,11 @@ defaults:
       comments: false
       share: false
       related: true
+  - scope:
+      type: "category"
+    values:
+      header:
+        overlay_image: /assets/images/default-header.jpg
 
 # picture:
   # source: "assets/images/"
