@@ -34,7 +34,7 @@ docker build . -t test
 
 But what is happening when you call `docker build`? To understand that, we will need a little background.
 
-# Background
+## Background
  A docker image is made up of layers. Those layers form an immutable filesystem.  A container image also has some descriptive data, such as the start-up command, the ports to expose, and volumes to mount. When you `docker run` an image, it starts up inside a container runtime.
  
  I like to think about images and containers by analogy. If an image is like an executable, then a container is like a process. You can run multiple containers from one image, and a running image isn't an image at all but a container.  
