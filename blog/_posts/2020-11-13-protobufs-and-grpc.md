@@ -12,6 +12,8 @@ Following this success, in 2016 Google released gRPC. &nbsp; gRPC offered a way 
 
 gRPC is a great solution for communicating between internal microservices. There’s [plenty](https://phenopackets-schema.readthedocs.io/en/latest/protobuf.html) [of](https://www.ionos.ca/digitalguide/websites/web-development/protocol-buffers-explained/) [articles](https://www.baeldung.com/google-protocol-buffer) and documentation that covers [protobufs](https://developers.google.com/protocol-buffers) and [gRPC](https://grpc.io/), but when I am considering a new technology, I learn best by seeing a working example. &nbsp;In this blog post I'm going build an example using Go, Python and Ruby.
 
+## First Step: Implementing a gRPC client using Go
+
 Let’s write an in-memory key/value micro-service in Go, and some clients in both Python and Ruby.
 
 Our server will allow users to set and get data from a key/value store.
@@ -20,7 +22,7 @@ Our server will allow users to set and get data from a key/value store.
 
 First let’s design our API in a proto file:
 
-``` go
+``` protobuf
     syntax = "proto3";
     package simplekeyvalue;
     option go_package = "kvapi";
@@ -57,7 +59,7 @@ Next we need to compile this proto file into Go code. On a Mac one might be temp
 
 Here's what an Earthfile would look like for installing Google protobufs inside an Ubuntu image, and generating the protobuf code using the protoc-gen-go-grpc tool:
 
-``` go
+``` dockerfile
     FROM ubuntu:20.10
     WORKDIR /defs
     
@@ -85,7 +87,7 @@ This will then produce two go files under the go-pb directory: api.pb.go and api
 
 At this point, assuming that earth is already [installed](https://docs.earthly.dev/installation), give it a try for yourself with code from our [example repo](https://github.com/earthly/example-grpc-key-value-store):
 
-``` bash
+```
     git clone https://github.com/earthly/example-grpc-key-value-store.git
     cd example-grpc-key-value-store/proto
     earth +proto-go
@@ -166,7 +168,7 @@ The next step is to write the server code that will implement the set and get me
 
 Next we will compile the go code and save it as a docker image with the following Earthfile:
 
-``` go
+``` dockerfile
     FROM golang:1.13-alpine3.11
     
     WORKDIR /kvserver
@@ -189,7 +191,7 @@ Next we will compile the go code and save it as a docker image with the followin
 
 You can give it a try on your own by using our example code in our GitHub repo, just run:
 
-```
+``` bash
     git clone https://github.com/earthly/example-grpc-key-value-store.git
     cd example-grpc-key-value-store/go-server
     earth +kvserver-docker
@@ -197,12 +199,12 @@ You can give it a try on your own by using our example code in our GitHub repo, 
 
 Then start up the server in Docker, by running:
 
-```
+``` bash
     docker run --rm --network=host kvserver:latest
 ```
 * * *
 
-**Next step: Implementing a gRPC client using Python**
+## Next step: Implementing a gRPC client using Python
 
 Now that we've built and launched our Go-based key-value-store server, we'll cover how to talk to it using a Python client. Remember that initial Earthfile that generated the Go code? We'll extend it to _pip install grpc_ tooling, and generate Python code:
 
@@ -219,7 +221,7 @@ Now that we've built and launched our Go-based key-value-store server, we'll cov
 
 Then we'll create a client that reads command line arguments, and if the argument contains an equals sign, it will store the value in the server, and otherwise it will retrieve the value from the server:
 
-``` go
+``` python
     import sys
     import grpc
     
@@ -289,7 +291,7 @@ We then store this python code, along with the generated gRPC protobuf code with
 
 You can give it a try for yourself with the example code:
 
-``` 
+``` bash
     git clone https://github.com/earthly/example-grpc-key-value-store.git
     cd example-grpc-key-value-store/python-client
     earth +kvclient-docker
@@ -313,7 +315,7 @@ And if all went well, you should see some output on both the client and server c
 ```
 * * *
 
-**Final step: Implementing a gRPC client using Ruby**
+## Final step: Implementing a gRPC client using Ruby
 
 We've come a long ways with our Go and Python gRPC examples, but what if you also wanted to include a Ruby gRPC client implementation too? Well let's extend our proto Earthfile to generate Ruby protobufs too:
 
@@ -330,7 +332,7 @@ We've come a long ways with our Go and Python gRPC examples, but what if you als
 
 We can then use this generated Ruby gRPC code with a simple ruby client example that performs a get request for keys listed as command line arguments:
 
-``` go
+``` ruby
     $LOAD_PATH.unshift '.'
     
     require 'grpc'
@@ -362,7 +364,6 @@ Then you can try querying the server to see what the weather was set to:
 
 And if all went well, it'll tell you that it's sunny outside.
 {% include imgf src="sun.png" alt="drawing of the sunn" caption="It's Sunny Outside"%}
-<figure class="kg-card kg-image-card"><img src="/content/images/2020/11/image-1.png" class="kg-image" alt srcset="/content/images/size/w600/2020/11/image-1.png 600w, /content/images/size/w1000/2020/11/image-1.png 1000w, /content/images/size/w1600/2020/11/image-1.png 1600w, /content/images/2020/11/image-1.png 1625w" sizes="(min-width: 720px) 720px"></figure>
 
 So there we go. &nbsp;You can find the code for the server and the two clients in [github here](https://github.com/earthly/example-grpc-key-value-store).
 

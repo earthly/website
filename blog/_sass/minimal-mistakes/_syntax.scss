@@ -3,7 +3,11 @@
    ========================================================================== */
 
 div.highlighter-rouge,
-figure.highlight {
+figure.highlight, 
+figure.sourceCode, 
+div.sourceCode,
+pre:not([class^="sourceCode"]) 
+{
   position: relative;
   margin-bottom: 1em;
   background: $base00;
@@ -22,13 +26,18 @@ figure.highlight {
   }
 
   > pre,
-  pre.highlight {
+  pre.highlight, 
+  pre.sourceCode, 
+  pre {
     margin: 0;
     padding: 1em;
   }
 }
+pre:not([class^="sourceCode"]) {
+  padding: 1em;
+}
 
-.highlight table {
+.highlight table, .sourceCode table {
   margin-bottom: 0;
   font-size: 1em;
   border: 0;
@@ -60,11 +69,11 @@ figure.highlight {
   }
 }
 
-.highlight pre {
+.highlight pre, .sourceCode pre {
   width: 100%;
 }
 
-.highlight .hll {
+.highlight .hll, .sourceCode .hll {
   background-color: $base06;
 }
 .highlight {
@@ -330,3 +339,33 @@ figure.highlight {
     border-bottom: 0;
   }
 }
+
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color:$base0d; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+// code span.bu { } /* BuiltIn */
+code span.cf { color: $base0e; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: $base08; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: $base0e; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+// code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: $base0e;  } /* Function */
+// code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: $base0e; font-weight: bold; } /* Keyword */
+code span.op { color: $base0c; } /* Operator */
+code span.ot { color: $base08; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: $base0b; } /* String */
+code span.va { color: $base0e; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */

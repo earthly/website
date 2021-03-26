@@ -20,7 +20,7 @@ How are containers made? Usually, from a series of statements like `RUN`, `FROM`
 We can create container images in several ways. We can use Buildpacks, we can use build tools like Bazel or sbt, but by far, the most common way images are built is using `docker build` with a Dockerfile.  The familiar base images Alpine, Ubuntu, and Debian are all created this way.     
 
 Here is an example Dockerfile:
-```
+``` {.dockerfile .numberLines startFrom="100"}
 FROM alpine
 COPY README.md README.md
 RUN echo "standard docker build" > /built.txt"
