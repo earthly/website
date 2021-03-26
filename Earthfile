@@ -6,11 +6,13 @@ deps:
     RUN apt-get update 
     RUN apt-get install gcc cmake imagemagick -y
     RUN gem install bundler -v "~>1.0" && gem install bundler jekyll
-    # diagrams and stuff
-    RUN apt-get install cabal-install -y
-    RUN cabal update
-    RUN cabal install pandoc-plot --force-reinstalls
-    RUN cp /root/.cabal/bin/* /usr/bin/
+
+    # # diagrams and stuff
+    # RUN apt-get install cabal-install -y
+    # RUN cabal update
+    # RUN cabal install pandoc-plot --force-reinstalls
+    # RUN cp /root/.cabal/bin/* /usr/bin/
+
     RUN apt-get install python3-matplotlib -y
     RUN apt-get install libvips -y
     SAVE IMAGE --push agbell/website-cache
@@ -64,7 +66,7 @@ blog-install:
 blog-build:
   FROM +blog-install
   COPY blog .
-  RUN RUBYOPT='-W0' bundle exec jekyll build --future
+  RUN RUBYOPT='-W0' bundle exec jekyll build 
   SAVE ARTIFACT _site AS LOCAL build/site/blog
 
 blog-docker:
@@ -109,6 +111,8 @@ deploy:
   BUILD +blog-build
   RUN echo "Here we should deploy the contents of build/site to S3 or wherever prod earthly.dev is served from"
 
+# Publish by pushing published site to seperate git repo
+# works for now
 hack-publish:
   LOCALLY
   BUILD +website-build

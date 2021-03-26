@@ -2,8 +2,8 @@ name: Deploy Website
 
 on:
   push:
-    branches:
-      - main
+#     branches:
+#       - main
 
 jobs:
   build-website:
@@ -11,10 +11,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - uses: FranzDiebold/github-env-vars-action@v2
       - name: Checkout code
         uses: actions/checkout@v2
+      - name: Setup Git
+        run: |-
+          git config user.name "Automated"
+          git config user.email "actions@users.noreply.github.com"
       - name: Download released earth
         run: "sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/download/v0.4.1/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly'"
       - name: Deploy It
-        run: earthly --ci +deploy
+        run: |-
+          earthly --ci +deploy
+          earthly --ci --build-arg branch="CI_ACTION_REF_NAME"	+hack-publish
       
