@@ -13,6 +13,7 @@ deps:
     RUN cp /root/.cabal/bin/* /usr/bin/
     RUN apt-get install python3-matplotlib -y
     RUN apt-get install libvips -y
+    SAVE IMAGE --push agbell/website-cache
 
 ## Website
 website-update:
@@ -34,7 +35,6 @@ website-build:
   COPY website .
   RUN RUBYOPT='-W0' bundle exec jekyll build
   SAVE ARTIFACT _site AS LOCAL build/site
-
 
 website-docker:
     FROM +website-install
@@ -79,8 +79,9 @@ blog-interactive:
 blog-run:
   LOCALLY
   BUILD +blog-docker
-  # RUN docker kill $(docker ps -q) # Don't ask
-  RUN docker run -p 4002:4002 -v $(pwd)/blog:/site earthly-blog
+  # WITH DOCKER --load=blog-docker
+    RUN docker run -p 4002:4002 -v $(pwd)/blog:/site earthly-blog
+  # END
 
 ## Utils
 
@@ -107,3 +108,21 @@ deploy:
   BUILD +website-build
   BUILD +blog-build
   RUN echo "Here we should deploy the contents of build/site to S3 or wherever prod earthly.dev is served from"
+
+hack-publish:
+  LOCALLY
+  BUILD +website-build
+  BUILD +blog-build
+  ARG branch=main
+  RUN git clone https://github.com/earthly/website-output.git || true
+  RUN cd website-output \
+       && git checkout -b $branch || true \
+       && git rm -rf . || true \
+       && git clean -fxd 
+  RUN cp -a build/site/. website-output/
+  RUN cd website-output && ls
+  RUN cd website-output \
+    && git add -A \
+    && git commit -m "Latest data: ${timestamp}" || exit 0 \ 
+    && git push 
+   
