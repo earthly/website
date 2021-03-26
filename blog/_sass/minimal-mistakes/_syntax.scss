@@ -76,6 +76,8 @@ pre:not([class^="sourceCode"]) {
 .highlight .hll, .sourceCode .hll {
   background-color: $base06;
 }
+
+//styles for kramdown - not in use
 .highlight {
   .c {
     /* Comment */
@@ -340,6 +342,7 @@ pre:not([class^="sourceCode"]) {
   }
 }
 
+//from https://gist.github.com/mike-ward/df355b23f4ee6c8cff05118c907c2cbf and adjusted to taste
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color:$base0d; } /* Attribute */
