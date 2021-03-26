@@ -23,7 +23,9 @@ The original BuildKit proposal is found in the moby project:
 > "One of the main design goals of BuildKit is to separate frontend and backend concerns during a build process" - [Intial BuildKit Proposal](https://github.com/moby/moby/issues/32925) 
 
 ## Install BuildKit 
+
 #### buildctl
+
 BuildKit has two primary components: buildctl and buildkitd.  buildctl is the BuildKit controller, and it communicates with `buildkitd`. Though designed for Linux, it can run on macOS and Windows under WSL2.  
 
 On macOS, you can install buildctl with brew.  
@@ -95,6 +97,7 @@ export BUILDKIT_HOST=docker-container://buildkit
 *On Linux, you can substitute these steps with just running `buildkitd` to avoid the container.*
 
 ## Building an Image
+
 Now that we have all dependencies we need, let's build an image using BuildKit:
 ```
 cat .\DockerFile
@@ -153,6 +156,7 @@ built with BuildKit!
 ```
 
 ## Tangent: Where are `FROM's from
+
 If we have an image locally on our machine, can we use it in a `FROM` to build something based on it? Let's find out by altering our `FROM` to use a local image:
 ```
 FROM agbell/test:local
@@ -195,9 +199,11 @@ We can see a `404`, and this confirms buildkitd is expecting registry that it ca
 
 
 ## Watching It Build
+
 Buildkitd is responsible for building the image, but `runc` does the actual execution of each step. runc executes each `RUN` command in your dockerfile in a separate process.  runc requires Linux kernel 5.2  or later with support for cgroups, and is why buildkitd can't run natively on macOS or Windows.
 
 ### What is runc
+
 > "Please note that runc is a low-level tool not designed with an end-user in mind. It is mostly employed by other higher-level container software. Therefore, unless there is some specific use case that prevents the use of tools like Docker or Podman, it is not recommended to use runc directly." - [runc readme](https://github.com/opencontainers/runc)
 
 We can watch the execution of our build by using `pstree` and `watch`. Open two side by side terminals, run `docker exec -it buildkit "/bin/watch" "-n1" "pstree -p" ` in one and call `buildctl build ...` in the other. You will see `buildkitd` start a `buildkit-runc` process and then a separate process for each `RUN` command.
@@ -205,6 +211,7 @@ We can watch the execution of our build by using `pstree` and `watch`. Open two 
 ![Diagram of buildkit running and pstree showing the process tree of buildkitd](/blog/assets/images/what-is-buildkit-and-what-can-i-do-with-it/3.png)
 
 ## How to see Docker Processes on macOS and Windows
+
 On macOS and Windows, Docker processes run on a separate virtual machine (VM). If you're using the default and recommended Docker Desktop, this VM is the Linux container host.  
 
 *Note: Docker Machine is an earlier approach to running Docker on macOS and Windows where the Docker VM runs in VirtualBox or VMware. Docker Machine steps may differ.*
@@ -247,6 +254,7 @@ docker-desktop:/# watch -n 1 pstree -p 2522
 ```
 
 # BuildKit Output Types
+
 So far, we have only used `output type=image,` but BuildKit supports several types of outputs.
 
 We can output a tar:
@@ -301,6 +309,7 @@ This filesystem output could be useful if we were trying to trim our image down.
 ![tree view of alpine image showing space used in each directory]({{site.images}}{{page.slug}}/4.png)
 
 ## What is in `FROM scratch`
+
 One thing we can do with our newfound powers is investigate the `scratch` keyword.  The scratch keyword doesn't correspond to an actual image. We can't run it:
 
 ```
@@ -329,6 +338,7 @@ FROM scratch
 It's empty! The scratch keyword indicates a completely empty docker layer. The more you know! *(The more you know is a trademark of The National Broadcasting Company, who in no way endorse this article 😀 )*
 
 ## Conclusion
+
 Alright, we have now covered some ways to use BuildKit directly.  BuildKit is used internally by `docker build` in modern docker versions, but using it directly unlocks some extra options. 
 
 One use we covered was changing the output type. We can use BuildKit to export tars and local file systems. We also use `pstree` and `mitmProxy` to watch how buildkitd forks processes and make network requests.  

@@ -60,7 +60,7 @@ There are several steps involved in the build process for this project:
 
 Let's encapsulate these into an Earthfile, so that I can run the exact same build process locally and eliminate any reproducibility issues.
 
-## Setup
+### Setup
 
 The first step is to create a new Earthfile and copy in our build files and dependencies: &nbsp;
 
@@ -84,7 +84,7 @@ We can test out the deps step like this:
 
 {% include imgf src="run.gif" alt="running earthly at command line" caption="Running `earthly +deps`" %}
 
-## Build It
+### Build It
 
 Next, we create a `build` target. This is our Earthfile equivalent of `sbt compile`.
 
@@ -102,7 +102,7 @@ We can run the build like this:
 
 {% include imgf src="run2.gif" alt="running earthly at command line" caption="Running `earthly +build`"%}
 
-## Test It
+### Test It
 
 We can similarly create a target for running tests:
 
@@ -118,7 +118,7 @@ We can then run our tests like this:
 
 {% include imgf src="run3.gif" alt="running earthly +test" caption="Running `earthly +test`" %}
 
-## Containerize It
+### Containerize It
 
 The final step in our build is to build a docker container, so we can send this application off to run in Kuberenetes or EKS or whatever production happens to look like.
 
@@ -139,7 +139,7 @@ We can test out our docker image as follows:
 
 You can find the [full example here](https://github.com/earthly/earthly-example-scala/blob/simple/simple/earthfile). Now we can adjust our build process to call earthly and containerization ensures our builds are not effected by environmental issues either locally or on the build server. &nbsp;
 
-## Did we solve it?
+### Did we solve it?
 
 We now have our `deps`, `build`, `test` and `docker` targets in our Earthfile. All together these give us a reproducible process for running our build locally and in our CI builds. &nbsp;We used earthly to encapsulate the build steps.
 

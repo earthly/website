@@ -1,7 +1,6 @@
 ---
 title: Encrypting Data With SSH Keys and Golang
 date: '2020-12-11 17:11:02'
-toc: true
 categories:
   - Tutorials
 ---

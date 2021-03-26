@@ -3,19 +3,23 @@ WORKDIR /site
 
 ## Base Image
 deps:
-    RUN apt-get update 
-    RUN apt-get install gcc cmake imagemagick -y
-    RUN gem install bundler -v "~>1.0" && gem install bundler jekyll
+    # RUN apt-get update 
+    # RUN apt-get install gcc cmake imagemagick -y
+    # RUN gem install bundler -v "~>1.0" && gem install bundler jekyll
 
-    # # diagrams and stuff
-    # RUN apt-get install cabal-install -y
-    # RUN cabal update
-    # RUN cabal install pandoc-plot --force-reinstalls
-    # RUN cp /root/.cabal/bin/* /usr/bin/
+    # # # diagrams and stuff
+    # # RUN apt-get install cabal-install -y
+    # # RUN cabal update
+    # # RUN cabal install pandoc-plot --force-reinstalls
+    # # RUN cp /root/.cabal/bin/* /usr/bin/
 
-    RUN apt-get install python3-matplotlib -y
-    RUN apt-get install libvips -y
-    SAVE IMAGE --push agbell/website-cache
+    # RUN apt-get install python3-matplotlib -y
+    # RUN apt-get install pandoc -y
+    # RUN apt-get install libvips -y
+    # SAVE IMAGE --push agbell/website-cache
+
+    ## moved to dockerfile for build speed
+    FROM agbell/website-base:latest
 
 ## Website
 website-update:
@@ -103,7 +107,6 @@ static-shell:
   FROM +jekyll-install
   COPY website .
   RUN --interactive /bin/bash
-
 
 ## Prod
 deploy:

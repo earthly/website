@@ -5,13 +5,13 @@ categories:
   - Tutorials
 toc: true
 ---
-# Introduction
+## Introduction
 
 Have you ever wanted to see what kinds of requests a service or application on your machine is making and what kind of responses it is getting back?  Have you ever tried and failed to capture this traffic or modify it to investigate how something works (or doesn't work).  If you have, then mitmproxy might be what you need. Being able to scan through and observe HTTP protocol traffic easily is a great debugging aid.
 
 This guide will walk you through installing and using mitmproxy to capture HTTPS requests.  We will start with macOS traffic capture, then touch on Linux and Windows and then finally show how to capture docker daemon traffic and docker container traffic.  
 
-## What is mitmproxy
+## What is mitmproxy?
 
 mitmproxy is a command-line tool that acts as a HTTP and HTTPS proxy and records all the traffic.  You can easily see what requests are being made and even replay them.  It's great for diagnosing problems.
 
@@ -74,7 +74,7 @@ This is great for protecting online communication but problematic for our debugg
 
 {% include imgf src="9.png" alt="Getting a Certificate signed by an unknown certificate authority" caption="Getting a Certificate signed by an unknown certificate authority" %}
 
-# How to add a Trusted Certificate Authority Certificate
+## How to add a Trusted Certificate Authority Certificate
 
 mitmproxy generated a certificate and private key the first time you ran it. The certificate generated is specific to your machine and is located in `~/.mitmproxy/mitmproxy-ca-cert.cer`
 
@@ -121,7 +121,7 @@ QyVJfmCmjt2i=
 
 *Note: Once we instruct our machine to trust this certificate, someone with the private key who controlled your internet connection, like your ISP, could use it to MITM your connection. For this reason, don't share your MITM private key, or any private key, with others.*
 
-# Add the Cert On MacOS
+## Add the Cert On MacOS
 
 On macOS, the easiest way to add a new CA is to copy it to the desktop and then double-click it.
 ```
@@ -236,7 +236,7 @@ We can even see the binary payload of the layer requests and the fact that docke
  ## *Troubleshooting*
 *If `docker pull` fails with a certificate error or the requests don't get proxied, make sure you have restarted docker at least once and that the proxy settings are in place.* 
 
-# Capturing Docker Container Traffic
+## Capturing Docker Container Traffic
 
 We now know how to capture traffic on our host machine and the Linux container host. But what happens when we make requests from inside a running container?
 ```
