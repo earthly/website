@@ -23,7 +23,7 @@ jobs:
       - name: Earthly
         run: earthly --use-inline-cache +deploy
       - name: Clone
-        # run: git clone https://github.com/earthly/website-output.git || true
+        # see https://github.community/t/push-from-action-to-different-remote-repo/17848
         run: git clone git@github.com:earthly/website-output.git || true
       - name: checkout branch
         run: |-
@@ -40,8 +40,6 @@ jobs:
       - name: "cp -a build/site/. website-output/"
         run: |- 
           cp -a build/site/. website-output/ || true
-      # - name: "git config"
-        # run: git config user.name "Automated" && git config user.email "actions@users.noreply.github.com"
       - name: git add
         run: |-
           cd website-output
@@ -51,11 +49,5 @@ jobs:
           git config user.email "actions@users.noreply.github.com"
           git commit -m "Latest data: ${timestamp}"
           git push --set-upstream origin $CI_ACTION_REF_NAME
-      # # - name: git commit
-      #   run: |-
-      #     cd website-output
-      # - name: git push
-      #   run: |-
-      #     cd website-output
 
       
