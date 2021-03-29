@@ -51,3 +51,10 @@ jobs:
           git push --set-upstream origin $CI_ACTION_REF_NAME
 
       
+
+
+      <blockquote class="twitter-tweet">
+      <p lang="en" dir="ltr">A friend has just shown me this book &quot;Calculus made easy&quot;, published in 1914, and I think it&#39;s got one of the best prologues I&#39;ve ever seen. This is *exactly* what textbooks should be doing. And they should all be honest about how terrifying the topic names are too. 
+      <a href="https://t.co/8Qodx8dLaq">pic.twitter.com/8Qodx8dLaq</a></p>&mdash; Helen Czerski (@helenczerski)
+       <a href="https://twitter.com/helenczerski/status/1375915057905856513?ref_src=twsrc%5Etfw">March 27, 2021</a></blockquote> 
+       <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>

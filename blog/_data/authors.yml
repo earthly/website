@@ -1,0 +1,39 @@
+
+Billy Rick:
+  name        : "Billy Rick"
+  bio         : "What do you want, jewels? I am a very extravagant man."
+  avatar      : "/assets/images/bio-photo-2.jpg"
+  links:
+    - label: "Email"
+      icon: "fas fa-fw fa-envelope-square"
+      url: "mailto:billyrick@rick.com"
+    - label: "Website"
+      icon: "fas fa-fw fa-link"
+      url: "https://thewhip.com"
+    - label: "Twitter"
+      icon: "fab fa-fw fa-twitter-square" 
+      url: "https://twitter.com/extravagantman"
+
+Corey:
+    name    : "Cory Larson"
+    bio     : "Eats, runs, and codes. Dad. Engineer. Progressive. LDS. DisneyLand fanatic."
+    avatar  : "/assets/images/authors/corylarson.jpg"
+    # links:
+    #  - label: "Website"
+    #    icon: "fas fa-fw fa-link"
+    #    url: "http://eatrunco.de/"
+    #  - label: "Twitter"
+    #    icon: "fab fa-fw fa-twitter-square" 
+    #    url: "https://twitter.com/dchw"
+Vlad:
+    name    : "Vlad A Ionescu"
+    bio     : " Founder of Earthly. Founder of ShiftLeft Inc. Ex Google. Ex VMware."
+    avatar  : "/assets/images/authors/vladaionescu.jpg"
+Alex:
+    name    : "Alex Couture-Beil"
+    bio     : "Something"
+    avatar  : "/assets/images/authors/alexcouturebeil.jpg"
+Adam:
+    name    : "Adam Gordon Bell"
+    bio     : "Something"
+    avatar  : "/assets/images/authors/adamgordonbell.png"

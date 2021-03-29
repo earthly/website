@@ -2,6 +2,7 @@
 title: Grateful for Hacktoberfest!
 featured: true
 date: '2020-10-13 13:04:56'
+author: Vlad
 categories:
   - News
 ---

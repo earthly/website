@@ -5,8 +5,8 @@ categories:
   - Articles
 tags:
   - Interview
+author: Corey
 ---
-
 _Here at Earthly, we are building an internal platform on AWS using EKS. &nbsp;I talked to our lead architect Corey Larson about the decisions and trade offs he is making as he designs our platform._
 
 **The plan for the earthly internal platform says, "One thing to keep in mind as you read this is plan is `don't be weird.`" What does that mean?**

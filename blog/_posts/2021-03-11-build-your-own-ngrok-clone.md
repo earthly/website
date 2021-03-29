@@ -4,9 +4,12 @@ date: '2021-03-11 13:00:00'
 categories:
   - Tutorials
 toc: true
+author: Corey
+author_profile: true
 ---
 
-# Introduction
+
+## Introduction
 
 [Ngrok](https://ngrok.com/) is a tool that allows you to create secure, publically accessible URLs for your locally running code. Just a simple `./ngrok http 3000`, and your tunnel is up and running! It also comes with an inspector for all traffic traveling over its tunnels. Pretty slick right? However, for a stable domain it costs _at least_ $5/month, and it only goes up from there. Additionally, you're limited in the number of connections and tunnels that you can make.
 
@@ -17,7 +20,7 @@ However, it can be hard to trust fancy tools like `ngrok` until you experience h
 To understand why `ngrok` is so cool, you'll need to first understand how you would normally get traffic from the broader internet into your local machine. A typical flow would be something like this:
 
 <div class="wide" markdown="1">
-![Diagram showing the flow of traffic from a users web browser, through the internet, a home router, and finally the users computer. It points out that the user controls the DNS lookup, router, and their machine.](/blog/assets/images/build-your-own-ngrok-clone/without_ngrok.png)
+![Diagram showing the flow of traffic from a users web browser, through the internet, a home router, and finally the users computer. It points out that the user controls the DNS lookup, router, and their machine.]({{site.images}}{{page.slug}}/without_ngrok.png)\
 </div>
 
 This flow is normal for most of the machines on the internet today, but it has its downsides for local development. For instance, most home and non-commerical internet connections do not have a [Static IP](https://whatismyipaddress.com/dynamic-static) - which means you need to double-check your IP address before sending it out, or (more often) install and configure additional software to keep your DNS records up to date.
@@ -26,7 +29,7 @@ Additionally, you'll need to configure your router to forward that traffic to yo
 
 With this foundation, you can now understand why `ngrok` (and our DIY one) is so cool! It removes the need for all this additional configuration, while also providing better security. All you need to do is add an extra computer into the mix, like this:
 <div class="wide" markdown="1">
-![Diagram showing the flow of traffic from a users web browser, through the internet, a home router, and finally the users computer. It points out that the user controls the DNS lookup, router, and their machine.](/blog/assets/images/build-your-own-ngrok-clone/with_ngrok.png)
+![Diagram showing the flow of traffic from a users web browser, through the internet, a home router, and finally the users computer. It points out that the user controls the DNS lookup, router, and their machine.]({{site.images}}{{page.slug}}/with_ngrok.png)\
 </div>
 
 Because you are using a [Reverse Proxy](https://en.wikipedia.org/wiki/Reverse_proxy) to get the traffic from the extra computer to yours, no additional configuration is required on your end. And, when you are done, you can simply shut down the extra machine, and there are no loose ends or open ports left to close!

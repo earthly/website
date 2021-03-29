@@ -4,6 +4,7 @@ date: '2020-11-13 18:06:52'
 toc: true
 categories:
   - Tutorials
+author: Alex
 ---
 
 I was surprised to learn that Google protocol buffers (protobufs), were first introduced nearly two decades ago. They were used internally at google as early as 2001 and were open sourced 2008.

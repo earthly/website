@@ -1,7 +1,8 @@
 {% assign author = page.author | default: page.authors[0] | default: site.author %}
 {% assign author = site.data.authors[author] | default: author %}
-
+{% if author %}
 <div itemscope itemtype="https://schema.org/Person">
+  <h5>About The Author</h5>
 
   {% if author.avatar %}
     <div class="author__avatar">
@@ -250,3 +251,4 @@
     </ul>
   </div>
 </div>
+{% endif %}
