@@ -8,6 +8,7 @@ tags:
 - monorepo
 - polyrepo
 - tech-strategy
+author: Vlad
 ---
 The decision of whether to use a monorepo or a polyrepo structure for your source code can be a very emotional (maybe even religious!) battle. On its surface, it's not much different than "tabs vs spaces" or "vim vs emacs". Or is it?
 

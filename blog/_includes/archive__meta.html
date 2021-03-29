@@ -24,23 +24,7 @@
         {% else %}
           {{ words | divided_by: words_per_minute }} {{ site.data.ui-text[site.locale].minute_read | default: "minute read" }}
         {% endif %}
-        {% if page.last_modified_at %}
-        &nbsp;	&nbsp;<i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].date_label | default: "Updated:" }}</strong> <time datetime="{{ page.last_modified_at | date: "%Y-%m-%d" }}">{{ page.last_modified_at | date: "%B %-d, %Y" }}</time>
-        {% elsif page.date %}
-        &nbsp;	&nbsp;<i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].date_label | default: "Updated:" }}</strong> <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time>
-        {% endif %}
-
       </span>
     {% endif %}
-    <span>
-      {% assign author = page.author | default: page.authors[0] | default: site.author %}
-      {% assign author = site.data.authors[author] | default: author %}
-      {% if author.avatar %}
-      <div class="author__avatar_top">
-          <img src="{{ author.avatar | relative_url }}" alt="{{ author.name }}" itemprop="image">&nbsp;	&nbsp;
-          {{ author.name }}
-      </div>
-      {% endif %}
-    </span>
   </p>
 {% endif %}

@@ -37,3 +37,13 @@ Adam:
     name    : "Adam Gordon Bell"
     bio     : "Something"
     avatar  : "/assets/images/authors/adamgordonbell.png"
+Vivek Sonar:
+    name    : "Vivek Sonar"
+    bio     : "Vivek Sonar is a full-stack engineer who loves to solve complex infrastructure problems and work with public cloud platforms like AWS and GCP."
+    avatar  : "/assets/images/authors/viveksonar.png"
+Sanket Makhija:
+    name    : "Sanket Makhija"
+    bio     : "Sanket Makhija is a full-stack developer who loves building apps, and has been coding for a dozen years."
+Kasper Siig:
+    name    : "Kasper Siig"
+    bio     : "As a DevOps engineer, Kasper Siig is used to working with a variety of exciting technologies, from automating simple tasks to CI/CD to Docker."

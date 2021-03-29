@@ -4,6 +4,7 @@ tags:
 - news
 categories:
   - Articles
+author: Adam
 ---
 ## Highlights From The Comments On The YAML Article
 

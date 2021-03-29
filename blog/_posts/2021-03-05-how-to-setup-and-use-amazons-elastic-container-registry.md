@@ -4,7 +4,9 @@ date: '2021-03-05 13:00:00'
 toc: true
 categories:
   - Tutorials
+author: Vivek Sonar
 ---
+
 A container is a simple unit that packages all your code and its dependencies so your application can run quickly and reliably from any computing environment. That means you could quickly move from your local environment to your staging and into production. Due to their portability, small size, and convenience, containers are becoming [a method of choice](https://www.cio.com/article/3434010/more-enterprises-are-using-containers-here-s-why.html) for shipping modern applications.
 
 Containers are created from a read-only template called an *Image*. These images need to be stored somewhere so they can be retrieved by any machine authorized to use them. That's where a container registry comes in.

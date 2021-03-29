@@ -4,6 +4,7 @@ date: '2020-12-04 17:16:14'
 toc: true
 categories:
   - Articles
+author: Adam
 ---
 
 In 1998, Kent Beck wrote sUnit, a unit testing framework for SmallTalk. &nbsp;Beck later ported this framework to Java as jUnit. &nbsp;From there, xUnit frameworks spread to the most popular languages. Newer languages, like Golang and Rust, have incorporated testing into the compiler and standard library directly.

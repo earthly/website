@@ -2,6 +2,7 @@
 title: INTERCAL, YAML, And Other Horrible Programming Languages
 categories:
   - Articles
+author: Adam
 ---
 ## PROGRAM REJECTED FOR MENTAL HEALTH REASONS
 

@@ -10,6 +10,7 @@ tags:
 - m1
 - arm64
 - aarch64
+author: Vlad
 ---
 
 So I've been using my new M1-based MacBook Pro for a couple of months for a mix of development, email, and other things an [open-source maintainer](https://github.com/earthly/earthly) does day-to-day.

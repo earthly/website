@@ -5,7 +5,6 @@ categories:
   - Tutorials
 toc: true
 author: Corey
-author_profile: true
 ---
 
 

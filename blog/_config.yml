@@ -291,6 +291,7 @@ defaults:
       comments: false
       share: false
       related: true
+      last_modified_at: '2021-03-29'
   - scope:
       type: "category"
     values:

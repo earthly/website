@@ -4,7 +4,7 @@
 
 .archive {
   margin-top: 1em;
-  margin-bottom: 2em;
+  margin-bottom: 1em;
 
   @include breakpoint($large) {
     float: right;
@@ -155,6 +155,7 @@
   @include breakpoint($small) {
     float: left;
     width: 45%;
+    height: 330px;
     //width: span(5 of 10);
 
     &:nth-child(2n + 1) {
@@ -172,30 +173,16 @@
     margin-left: 0; /* override margin*/
     margin-right: 0; /* override margin*/
     width: 45%
-    //width: span(6 of 12) - 30px;
 
     &:nth-child(2n + 1) {
-      clear: none;
-    }
-
-    &:nth-child(4n + 1) {
       clear: both;
     }
 
-    &:nth-child(4n + 2) {
+    &:nth-child(2n + 2) {
       clear: none;
       margin-left: gutter(1 of 12);
     }
 
-    &:nth-child(4n + 3) {
-      clear: none;
-      margin-left: gutter(1 of 12);
-    }
-
-    &:nth-child(4n + 4) {
-      clear: none;
-      margin-left: gutter(1 of 12);
-    }
   }
 
   .page__meta {

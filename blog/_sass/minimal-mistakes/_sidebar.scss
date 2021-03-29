@@ -137,6 +137,25 @@
   }
 }
 
+
+.author__avatar_top {
+  display: table-cell;
+  vertical-align: top;
+  width: 24px;
+  height: 24px;
+
+  @include breakpoint($large) {
+    display: block;
+    width: auto;
+    height: auto;
+  }
+
+  img {
+    max-width: 50px;
+    border-radius: 50%;
+  }
+}
+
 .author__content {
   display: table-cell;
   vertical-align: top;

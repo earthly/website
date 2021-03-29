@@ -8,6 +8,7 @@ tags:
 - license
 - news
 - bsl
+author: Vlad
 ---
 
 Earthly users and prospective users - today we are announcing our switch to Business Source License 1.1 (BSL).

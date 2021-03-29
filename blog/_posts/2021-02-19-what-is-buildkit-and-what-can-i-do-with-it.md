@@ -4,6 +4,7 @@ date: '2021-02-19 14:00:00'
 categories:
   - Tutorials
 toc: true
+author: Adam
 ---
 There is an excellent open-source project that you have probably used without realizing it. It's called BuildKit, and it is what turns a Dockerfile into a Docker image.  And it doesn't just build Docker images; it can build OCI images and several other output formats. [OpenFasS](https://www.openfaas.com/) uses it to turn functions into full containers, and here at Earthly, we use it to create complete continuous integration pipelines.  
 
