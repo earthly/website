@@ -9,7 +9,9 @@ https://blog.earthly.dev/tag/* http://earthly.dev/blog/tags/
 
 #Everything else:
 # just need to 301 redirect to the identical new url in /blog
-https://blog.earthly.dev/*  http://earthly.dev/blog{1}
+# so https://blog.earthly.dev/better-builds/ 301s to  https://earthly.dev/blog/better-builds/
+https://blog.earthly.dev/*  http://earthly.dev/blog/{1}
+
 
 #Here is the full list just in case needed 
 https://blog.earthly.dev/better-builds/
