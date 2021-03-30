@@ -18,9 +18,9 @@ sass:
         - node_modules
 
 # force include node_modules
-include: [node_modules]
-exclude: []
-# Build settings
+include: 
+  - node_modules
+  - _redirects
 plugins:
   - jekyll-feed
   - jekyll-inline-svg
