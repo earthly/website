@@ -1,5 +1,6 @@
 FROM ruby:2.7
 WORKDIR /site
+ARG FLAGS=""
 
 ## Base Image
 base-image:
@@ -40,7 +41,7 @@ website-install:
 website-build:
   FROM +website-install
   COPY website .
-  RUN RUBYOPT='-W0' bundle exec jekyll build
+  RUN RUBYOPT='-W0' bundle exec jekyll build $FLAGS
   SAVE ARTIFACT _site AS LOCAL build/site
 
 website-docker:
@@ -71,7 +72,7 @@ blog-install:
 blog-build:
   FROM +blog-install
   COPY blog .
-  RUN RUBYOPT='-W0' JEKYLL_ENV=production bundle exec jekyll build 
+  RUN RUBYOPT='-W0' JEKYLL_ENV=production bundle exec jekyll build $FLAGS
   SAVE ARTIFACT _site AS LOCAL build/site/blog
 
 blog-docker:
@@ -81,6 +82,7 @@ blog-docker:
 
 blog-interactive:
   FROM +blog-install
+  COPY blog .
   RUN --interactive /bin/bash
 
 blog-run:
@@ -109,10 +111,15 @@ static-shell:
   COPY website .
   RUN --interactive /bin/bash
 
-## Prod
+## Dev Build
+dev-build:
+  BUILD --build-arg FLAGS="--future" +website-build 
+  BUILD --build-arg FLAGS="--future" +blog-build
+
+# Prod Build
 build:
   BUILD +website-build
-  BUILD +blog-build
+  BUILD +blog-buil
 
 # Publish by pushing published site to seperate git repo
 manual-publish:
