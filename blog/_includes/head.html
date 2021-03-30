@@ -32,8 +32,9 @@
   </style>
 <![endif]-->
 
-{% if site.head_scripts %}
-  {% for script in site.head_scripts %}
-    <script src="{{ script | relative_url }}"></script>
-  {% endfor %}
+{% if jekyll.environment == "production" %}
+  {% include_cached head/google-analytics.html %}
+  {% include_cached head/facebookpixel.html %}
+  {% include_cached head/segment.html %}
+  {% include_cached head/twitterpixel.html %}
 {% endif %}

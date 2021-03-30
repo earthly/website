@@ -1,9 +1,6 @@
-{% if site.footer_scripts %}
-  {% for script in site.footer_scripts %}
-    <script src="{{ script | relative_url }}"></script>
-  {% endfor %}
-{% else %}
-  <script src="{{ '/assets/js/main.min.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/main.min.js' | relative_url }}"></script>
+{% if jekyll.environment == "production" %}
+  {% include_cached footer/earthly-cookie.html %}
 {% endif %}
 
 {% if site.search == true or page.layout == "search" %}
@@ -16,13 +13,4 @@
     {%- when "algolia" -%}
       {% include_cached search/algolia-search-scripts.html %}
   {%- endcase -%}
-{% endif %}
-
-{% include analytics.html %}
-{% include /comments-providers/scripts.html %}
-
-{% if site.after_footer_scripts %}
-  {% for script in site.after_footer_scripts %}
-    <script src="{{ script | relative_url }}"></script>
-  {% endfor %}
 {% endif %}
