@@ -16,8 +16,6 @@ sass:
     load_paths:
         - _sass
         - node_modules
-
-# force include node_modules
 include: 
   - _redirects
   - robots.txt
