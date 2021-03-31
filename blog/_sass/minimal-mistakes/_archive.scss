@@ -64,6 +64,11 @@
   }
 }
 
+/* hack to fix h2 pushing to far down page */
+section.page__content {
+  margin-top: -50px;
+}
+
 /* remove border*/
 .page__content {
   .archive__item-title {

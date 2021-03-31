@@ -31,11 +31,11 @@ Vlad:
     avatar  : "/assets/images/authors/vladaionescu.jpg"
 Alex:
     name    : "Alex Couture-Beil"
-    bio     : "Something"
+    bio     : "Linux and Legumes"
     avatar  : "/assets/images/authors/alexcouturebeil.jpg"
 Adam:
     name    : "Adam Gordon Bell"
-    bio     : "Something"
+    bio     : "Spreading the word about open source builds at Earthly. Host of CoRecursive podcast."
     avatar  : "/assets/images/authors/adamgordonbell.png"
 Vivek Sonar:
     name    : "Vivek Sonar"
