@@ -13,8 +13,9 @@ Mac setup:
   * `pip3 install matplotlib` for matplotlib 
 
 ## How to run pandoc-plot
-* 
-
+```
+ pandoc blog/_posts/2029-01-01-example-plot.md --filter pandoc-plot -f markdown -t html -s -o plot.html
+```
 
 ### graph (not working)
 ```{
