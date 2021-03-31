@@ -17,6 +17,9 @@ base-image:
 
   RUN apt-get install python3-matplotlib -y
   RUN apt-get install libvips -y
+  RUN apt-get update
+  RUN apt-get install python3-pip -y
+  RUN pip3 install pandocfilters
   SAVE IMAGE --push agbell/website-base:latest
 
 deps:
