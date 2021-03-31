@@ -1,6 +1,5 @@
 ---
 title: You’re using docker-compose wrong
-date: '2020-11-27 17:00:00'
 categories:
   - Articles
 author: Vlad

@@ -3,7 +3,7 @@ title: "Example Overlay Headline"
 categories: 
   - Tutorials
 toc: true # Include for tutorials
-last_modified_at: 2020-01-07T13:05:25-05:00
+last_modified_at: 2020-01-07
 ---
 ## How to use pandoc-plot
 Mac setup:

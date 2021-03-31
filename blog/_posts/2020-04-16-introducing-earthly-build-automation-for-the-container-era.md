@@ -1,7 +1,6 @@
 ---
 title: 'Introducing Earthly: build automation for the container era'
 featured: true
-date: '2020-04-16 19:08:00'
 author: Vlad
 categories:
   - News

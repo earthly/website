@@ -1,6 +1,5 @@
 ---
 title: Technology choice? Don’t be weird
-date: '2020-11-06 18:50:39'
 categories:
   - Articles
 tags:

@@ -1,6 +1,5 @@
 ---
 title: Using gRPC with Golang, Python, and Ruby
-date: '2020-11-13 18:06:52'
 toc: true
 categories:
   - Tutorials

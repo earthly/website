@@ -1,6 +1,5 @@
 ---
 title: 5 Blogs for Scala's Birthday
-date: '2021-01-20 20:13:15'
 categories:
   - Articles
 author: Adam

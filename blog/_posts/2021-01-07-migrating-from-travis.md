@@ -1,7 +1,6 @@
 ---
 title: Migrating Your Open Source Builds Off Of Travis CI
 featured: true
-date: '2021-01-07 14:19:25'
 categories:
   - Articles
 author: Adam

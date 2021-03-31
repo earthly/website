@@ -1,6 +1,5 @@
 ---
 title: How to Man in the Middle HTTPS Using mitmproxy
-date: '2021-02-11 13:30:00'
 categories:
   - Tutorials
 toc: true

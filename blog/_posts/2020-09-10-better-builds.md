@@ -1,6 +1,5 @@
 ---
 title: Can We Build Better?
-date: '2020-09-10 19:46:37'
 toc: true
 author: Adam
 categories:

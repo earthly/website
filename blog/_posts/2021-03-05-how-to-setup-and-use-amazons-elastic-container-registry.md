@@ -1,6 +1,5 @@
 ---
 title: How to Setup and Use Amazon's Elastic Container Registry
-date: '2021-03-05 13:00:00'
 toc: true
 categories:
   - Tutorials

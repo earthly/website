@@ -1,7 +1,6 @@
 ---
 title: The world deserves better builds
 featured: true
-date: '2020-10-08 16:00:00'
 author: Vlad
 categories:
   - News

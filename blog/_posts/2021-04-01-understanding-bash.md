@@ -1,6 +1,5 @@
 ---
 title: 'Understanding Bash'
-date: '2021-04-01'
 categories:
   - Tutorials
 toc: true

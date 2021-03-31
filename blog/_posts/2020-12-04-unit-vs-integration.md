@@ -1,6 +1,5 @@
 ---
 title: Unit Testing vs Integration Testing
-date: '2020-12-04 17:16:14'
 toc: true
 categories:
   - Articles

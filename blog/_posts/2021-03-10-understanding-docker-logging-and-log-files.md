@@ -1,6 +1,5 @@
 ---
 title: Understanding Docker Logging and Log Files
-date: '2021-03-10 13:00:00'
 toc: true
 categories:
   - Tutorials

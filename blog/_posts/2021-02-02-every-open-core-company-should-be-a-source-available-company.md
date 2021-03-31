@@ -1,7 +1,6 @@
 ---
 title: Every open-core company should be a source-available company
 featured: true
-date: '2021-02-02 00:12:00'
 categories:
  - News
 tags:

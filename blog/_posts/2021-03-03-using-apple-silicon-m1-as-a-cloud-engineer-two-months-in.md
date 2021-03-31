@@ -1,7 +1,6 @@
 ---
 title: Using Apple Silicon (M1) as a cloud engineer, two months in
 featured: true
-date: '2021-03-03 17:00:00'
 categories:
   - Articles
 tags:
