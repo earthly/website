@@ -16,7 +16,7 @@ Jenkins is a Java-based, open-source tool that is leveraged by [tens of thousand
 Jenkins brought a lot of interesting paradigms to CI workflows, including:
 
 - **Faster deployment.** Gone are the days when a build was tested and deployed once after all the developers committed their code. With Jenkins’ automated CI/CD pipeline, whenever a developer commits code, it’s built and tested throughout the day across multiple cycles. 
-- **[Scalable master-agent architecture](https://www.jenkins.io/doc/book/scaling/architecting-for-scale/).** When it comes to managing distributed builds at scale, Jenkins can be a good. Jenkins' primary server is the master that schedules build jobs and assigns them to agents (formerly, slaves) for execution. This pattern allows you to run Jenkins on one or hundreds of servers to speed up your builds.
+- **[Scalable master-agent architecture](https://www.jenkins.io/doc/book/scaling/architecting-for-scale/).** When it comes to managing distributed builds at scale, Jenkins can be a good choice. Jenkins' primary server is the master that schedules build jobs and assigns them to agents (formerly, slaves) for execution. This pattern allows you to run Jenkins on one or hundreds of servers to speed up your builds.
 - **Thousands of plugins:** Being an open-source platform, Jenkins provides a plethora of plugins for continuous integration built by other developers. This allows you to extend the base functionality without writing or maintaining much extra code in-house.
 
 ## Overcoming Common Jenkins Performance Issues
@@ -123,4 +123,6 @@ This can help you assess the effectiveness of your performance tweaks and guide 
 
 Jenkins’ responsiveness issues are common, especially when dealing with heavier builds. Broken Jenkins CI/CD pipelines can stall your development teams and create unnecessary dependencies. The tips discussed in this article should help you boost the performance of your Jenkins CI/CD pipeline significantly.
 
-Looking to make your builds more repeatable? [Earthly](https://earthly.dev/) replaces clunky bash scripts and makefiles by giving you a single understandable, consistent definition for your CI/CD builds. Learn more [at Earthly.dev](https://earthly.dev/).
+Looking to make your builds more repeatable? [Earthly](https://earthly.dev/) replaces clunky bash scripts and makefiles by giving you a single understandable, consistent definition for your CI/CD builds and it works great with Jekyll. Learn more [at Earthly.dev](https://earthly.dev/).
+
+You might also consider running Jenkins inside a [docker container](https://devopscube.com/docker-containers-as-build-slaves-jenkins/) in a compute cluster like Kubernetes or Rancher where scaling agents is simple.
