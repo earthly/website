@@ -2,8 +2,6 @@ name: Deploy Website
 
 on:
   push:
-    branches:
-      - main
 
 jobs:
   build-website:
@@ -11,10 +9,38 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - uses: FranzDiebold/github-env-vars-action@v2
       - name: Checkout code
         uses: actions/checkout@v2
+      - uses: actions/cache@v2
+        id: cache
+        with:
+          path: .jekyll-cache
+          key: ${{ runner.os }}
       - name: Download released earth
-        run: "sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/download/v0.4.1/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly'"
-      - name: Deploy It
-        run: earthly --ci +deploy
-      
+        run: "sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/download/v0.5.8/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly'"
+      - name: Build Site
+        run: earthly --use-inline-cache +build
+      - name: checkout branch in repo website-output
+        run: |-
+          git clone --depth 1 https://x-access-token:${{ secrets.PUSH_SECRET }}@github.com/earthly/website-output.git
+          cd website-output
+          git checkout $CI_ACTION_REF_NAME 2>/dev/null || git checkout -b $CI_ACTION_REF_NAME
+          git rm -rf .
+          git clean -fxd 
+      - name: "copy files"
+        run: |- 
+          cp -a build/site/. website-output/ || true
+      - name: git push
+        run: |-
+          cd website-output
+          git config user.name "Automated"
+          git config user.email "actions@users.noreply.github.com"
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "Clean!"
+          else
+            git add -A
+            git commit -m "Latest data: ${timestamp}"
+            git push --force --set-upstream origin $CI_ACTION_REF_NAME
+          fi
+          

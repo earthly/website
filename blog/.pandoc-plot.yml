@@ -1,0 +1,6 @@
+format: SVG
+source: false
+directory: /site/_site/assets/images/
+strict: true
+logging:
+  verbosity: info

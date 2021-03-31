@@ -1,0 +1,44 @@
+{% comment %}
+    Default teaser image to teaser.jpg
+{% endcomment %}
+{% assign teaser1 = "assets/images/" | append: post.slug | append: "/teaser.jpg" %}
+{% capture teaser_default %}{% file_exists {{ teaser1 }} %}{% endcapture %}
+
+{% assign header1 = "assets/images/" | append: post.slug | append: "/header.jpg" %}
+{% capture header_default %}{% file_exists {{ header1 }} %}{% endcapture %}
+
+
+{% if post.header.teaser %}
+  {% capture teaser %}{{ post.header.teaser }}{% endcapture %}
+{% elsif teaser_default == "true" %}
+  {% assign teaser = teaser1 %}
+{% elsif header_default == "true" %}
+  {% assign teaser = header1 %}
+{% else %}
+  {% assign teaser = site.teaser %}
+{% endif %}
+
+{% if post.id %}
+  {% assign title = post.title | markdownify | remove: "<p>" | remove: "</p>" %}
+{% else %}
+  {% assign title = post.title %}
+{% endif %}
+
+<div class="{{ include.type | default: 'grid' }}__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    {% if include.type == "grid" and teaser %}
+      <div class="archive__item-teaser">
+        {% picture 2up {{teaser}} %}
+      </div>
+    {% endif %}
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      {% if post.link %}
+        <a href="{{ post.link }}">{{ title }}</a> <a href="{{ post.url | relative_url }}" rel="permalink"><i class="fas fa-link" aria-hidden="true" title="permalink"></i><span class="sr-only">Permalink</span></a>
+      {% else %}
+        <a href="{{ post.url | relative_url }}" rel="permalink">{{ title }}</a>
+      {% endif %}
+    </h2>
+    {% include archive__meta.html type=include.type %}
+    {% if post.excerpt %}<p class="archive__item-excerpt" itemprop="description">{{ post.excerpt | markdownify | strip_html | truncate: 160 }}</p>{% endif %}
+  </article>
+</div>

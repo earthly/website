@@ -1,0 +1,27 @@
+presets:
+  default:
+    link_source: false
+    fallback_width: 800
+    fallback_format: original
+    noscript: false
+    quality: 75
+    data_sizes: true
+    gravity: center
+    dimension_attributes: false
+    strip_metadata: true
+
+  grid:
+    formats: [webp, original]
+    widths: [245]
+    gravity: Center
+    crop: '1:1'
+
+  2up:
+    formats: [webp, original]
+    widths: [245]
+    gravity: Center
+    crop: '2:1'
+
+  header:
+    formats: [webp, original]
+    crop: '4:1'

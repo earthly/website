@@ -1,0 +1,52 @@
+
+Billy Rick:
+  name        : "Billy Rick"
+  bio         : "What do you want, jewels? I am a very extravagant man."
+  avatar      : "/assets/images/bio-photo-2.jpg"
+  links:
+    - label: "Email"
+      icon: "fas fa-fw fa-envelope-square"
+      url: "mailto:billyrick@rick.com"
+    - label: "Website"
+      icon: "fas fa-fw fa-link"
+      url: "https://thewhip.com"
+    - label: "Twitter"
+      icon: "fab fa-fw fa-twitter-square" 
+      url: "https://twitter.com/extravagantman"
+
+Corey:
+    name    : "Cory Larson"
+    bio     : "Eats, runs, and codes. Dad. Engineer. Progressive. LDS. DisneyLand fanatic."
+    avatar  : "/assets/images/authors/corylarson.jpg"
+    # links:
+    #  - label: "Website"
+    #    icon: "fas fa-fw fa-link"
+    #    url: "http://eatrunco.de/"
+    #  - label: "Twitter"
+    #    icon: "fab fa-fw fa-twitter-square" 
+    #    url: "https://twitter.com/dchw"
+Vlad:
+    name    : "Vlad A Ionescu"
+    bio     : " Founder of Earthly. Founder of ShiftLeft Inc. Ex Google. Ex VMware."
+    avatar  : "/assets/images/authors/vladaionescu.jpg"
+Alex:
+    name    : "Alex Couture-Beil"
+    bio     : "Something"
+    avatar  : "/assets/images/authors/alexcouturebeil.jpg"
+Adam:
+    name    : "Adam Gordon Bell"
+    bio     : "Something"
+    avatar  : "/assets/images/authors/adamgordonbell.png"
+Vivek Sonar:
+    name    : "Vivek Sonar"
+    bio     : "Vivek Sonar is a full-stack engineer who loves to solve complex infrastructure problems and work with public cloud platforms like AWS and GCP."
+    avatar  : "/assets/images/authors/viveksonar.png"
+Sanket Makhija:
+    name    : "Sanket Makhija"
+    bio     : "Sanket Makhija is a full-stack developer who loves building apps, and has been coding for a dozen years."
+Kasper Siig:
+    name    : "Kasper Siig"
+    bio     : "As a DevOps engineer, Kasper Siig is used to working with a variety of exciting technologies, from automating simple tasks to CI/CD to Docker."
+Milan Bhardwaj:
+    name    : "Milan Bhardwaj"
+    bio     : "Milan is a software engineer in AI/ML, driving development cycles from conception to completion. He has a knack for solving real-world challenges with scalable solutions."
