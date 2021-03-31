@@ -1,0 +1,3 @@
+# block new blog until we switch over
+User-agent: * 
+Disallow: /blog

@@ -119,7 +119,7 @@ dev-build:
 # Prod Build
 build:
   BUILD +website-build
-  BUILD +blog-buil
+  BUILD +blog-build
 
 # Publish by pushing published site to seperate git repo
 manual-publish:
