@@ -1,0 +1,25 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: blog
+  namespace: applications
+  labels:
+      app: blog
+spec:
+  entryPoints:
+    - websecure
+  tls:
+      secretName: blog
+  routes:
+    - match: "Host(`blogtest.earthly.dev`)"
+      kind: Rule
+      middlewares:
+        - name: blog-rss
+        - name: blog-author
+        - name: blog-categories
+        - name: blog-tags
+        - name: blog-base
+        - name: blog-fallback
+      services:
+        - name: blog
+          port: 443

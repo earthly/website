@@ -1,0 +1,77 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: blog-base
+  namespace: applications
+  labels:
+    app: blog
+spec:
+  redirectRegex:
+    permanent: true
+    regex: ^https://blogtest\.earthly\.dev/(.*)
+    replacement: https://earthly.dev/blog/${1}
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: blog-rss
+  namespace: applications
+  labels:
+    app: blog
+spec:
+  redirectRegex:
+    permanent: true
+    regex: ^https://blogtest\.earthly\.dev/rss/?
+    replacement: https://earthly.dev/blog/feed.xml
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: blog-author
+  namespace: applications
+  labels:
+    app: blog
+spec:
+  redirectRegex:
+    permanent: true
+    regex: ^https://blogtest\.earthly\.dev/author/.*
+    replacement: https://earthly.dev/blog/
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: blog-categories
+  namespace: applications
+  labels:
+    app: blog
+spec:
+  redirectRegex:
+    permanent: true
+    regex: ^https://blogtest\.earthly\.dev/tag/(article|new|tutorial)s?/? # This is cheating, but works
+    replacement: https://earthly.dev/blog/categories/${1}s
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: blog-tags
+  namespace: applications
+  labels:
+    app: blog
+spec:
+  redirectRegex:
+    permanent: true
+    regex: ^https://blogtest\.earthly\.dev/tag/([^/]*)/?
+    replacement: https://earthly.dev/blog/tags/#${1}
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: blog-fallback
+  namespace: applications
+  labels:
+    app: blog
+spec:
+  redirectRegex:
+    permanent: true
+    regex: ^.*
+    replacement: https://earthly.dev/blog/
