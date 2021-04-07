@@ -5,6 +5,7 @@ title: Compiling Containers - Dockerfiles, LLVM, and BuildKit
 categories:
   - Tutorials
 toc: true
+excerpt: How are containers made? Usually, from a series of statements like RUN, FROM, and COPY, which are put into a Dockerfile and built. But how are those commands turned into a container image and then a running container? 
 author: Adam
 ---
 

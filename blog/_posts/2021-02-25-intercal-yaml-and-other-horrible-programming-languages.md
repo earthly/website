@@ -3,6 +3,7 @@ title: INTERCAL, YAML, And Other Horrible Programming Languages
 categories:
   - Articles
 author: Adam
+excerpt: In 1972, two students learning FORTRAN came up with a fantastic new programming language called INTERCAL. 
 ---
 ## PROGRAM REJECTED FOR MENTAL HEALTH REASONS
 
