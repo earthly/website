@@ -17,6 +17,9 @@ base-image:
 
   RUN apt-get install python3-matplotlib -y
   RUN apt-get install libvips -y
+  RUN apt-get update
+  RUN apt-get install python3-pip -y
+  RUN pip3 install pandocfilters
   SAVE IMAGE --push agbell/website-base:latest
 
 deps:
@@ -87,9 +90,9 @@ blog-interactive:
 
 blog-run:
   LOCALLY
-  BUILD +blog-docker
+  # BUILD +blog-docker
   # WITH DOCKER --load=blog-docker
-    RUN docker run -p 4002:4002 -v $(pwd)/blog:/site earthly-blog
+  RUN docker run -p 4002:4002 -v $(pwd)/blog:/site earthly-blog
   # END
 
 ## Utils
