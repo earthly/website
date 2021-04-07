@@ -15,9 +15,9 @@ Billy Rick:
       url: "https://twitter.com/extravagantman"
 
 Corey:
-    name    : "Cory Larson"
-    bio     : "Eats, runs, and codes. Dad. Engineer. Progressive. LDS. DisneyLand fanatic."
-    avatar  : "/assets/images/authors/corylarson.jpg"
+    name    : "Corey Larson"
+    bio     : "Eats, runs, and codes. Dad. Engineer. Progressive. LDS. Disneyland fanatic."
+    avatar  : "/assets/images/authors/coreylarson.jpg"
     # links:
     #  - label: "Website"
     #    icon: "fas fa-fw fa-link"
