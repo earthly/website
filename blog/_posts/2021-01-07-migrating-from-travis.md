@@ -43,7 +43,7 @@ However, many feel the real reason is that the acquirer is aiming for profitabil
 Many open-source projects are still using Travis and open-source maintainers are notoriously overworked. &nbsp;Time spent migrating builds is time not spent on other things. &nbsp;Large well-maintained projects will likely quickly transition but for many smaller projects, an abrupt change in a service they depend on is a huge challenge.
 
 ## Where To Move To
-![Pins on a Map]({{site.images}}{{page.slug}}/dartboard.png)
+![Pins on a Map]({{site.images}}{{page.slug}}/dartboard.png)\
 
 If you maintain an open-source project that uses TravisCI and are hoping to get off it, then assuming you have the time to migrate, there are actually many viable options.
 
@@ -62,7 +62,7 @@ Circle CI offers 400,000 build credits per month to any open-source public repos
 They also allow use of the free plan with private repositories. This makes it a great choice if your project is not actually open-source. More details [can be found here](https://circleci.com/open-source/).
 
 ### Best Option: Github Actions
-![First place trophy]({{site.images}}{{page.slug}}/trophy.png)
+![First place trophy]({{site.images}}{{page.slug}}/trophy.png)\
 
 An even better option is Github Actions, a cloud CI system directly from GitHub. &nbsp;Github is at the center of many open source projects and this makes it a natural choice for CI. &nbsp;
 
@@ -85,7 +85,7 @@ If your project is hosted on GitHub, then to me, GHA seems like the best bet rig
 So GitHub has a generous build plan, but moving your CI process is not easy or free. &nbsp;The more complex your build, the harder porting from one cloud CI to another is going to be. &nbsp;If you move to GHA and then GHA stops being a viable option in the future then this whole effort will have to be repeated. &nbsp;
 
 ## Neutral Build Specifications
-![Open Sign]({{site.images}}{{page.slug}}/opensign.png)
+![Open Sign]({{site.images}}{{page.slug}}/opensign.png)\
 How can you minimize the effort of moving from build platform to another?
 
 My suggestion is to keep as much logic as possible out of the proprietary build definition. Instead, define it in an open-source format that you can execute anywhere.

@@ -527,12 +527,12 @@ body:hover .visually-hidden button {
   li,
   p {
     margin-bottom: 0;
-    font-size: $type-size-6;
+    font-size: $type-size-5p5;
   }
 }
 
 a.reversefootnote {
-  color: $gray;
+  color: $dark-gray;
   text-decoration: none;
 
   &:hover {

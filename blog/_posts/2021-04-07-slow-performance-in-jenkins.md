@@ -5,7 +5,6 @@ categories:
 toc: true
 author: Milan Bhardwaj
 ---
-
 There’s nothing more frustrating than a sluggish continuous integration system. It slows down feedback loops and prevents code from reaching production quickly. While quick fixes like using a bigger CI server can buy you time, you ultimately have to invest in maintaining the performance of your continuous integration workflow.
 
 Jenkins is one of the most popular CI/CD tools out there, but its users often [experience lagging and responsiveness issues over time](https://issues.jenkins.io/browse/JENKINS-56243?page=com.atlassian.jira.plugin.system.issuetabpanels%3Aall-tabpanel). In this guide, I’ll share an overview of some of the biggest Jenkins performance issues and some tips for significantly improving performance without necessarily upgrading your hardware.
@@ -38,13 +37,11 @@ The most common Groovy methods to avoid in Jenkins are JsonSlurper, Jenkins.getI
 
 ### 2. Keep Builds Minimal at the Master Node
 
-Jenkins’ master node sits at the epicenter of the whole CI/CD process, where the application runs. Hence, the number of builds on the master node significantly affects resource usage. Keeping fewer builds at the master will leave enough CPU and memory for agent nodes to schedule and trigger jobs. 
+Jenkins’ master node sits at the epicenter of the whole CI/CD process, where the application runs. Hence, the number of builds on the master node significantly affects resource usage. Keeping fewer builds on the master node will leave enough CPU and memory for agent nodes to schedule and trigger jobs.
 
-You can use the following command to set or update the build number:
+You can use the “[Restrict where project can be run](https://stackoverflow.com/questions/13946929/ci-with-jenkins-how-to-force-building-happen-on-slaves-instead-of-master)” option in your job. While Jenkins will still run [a flyweight executor](https://support.cloudbees.com/hc/en-us/articles/360012808951-Pipeline-Difference-between-flyweight-and-heavyweight-Executors) on the master node, your heavyweight executors will run on the agent nodes.
 
-```
-Jenkins.instance.getItemByFullName("YourJobName").updateNextBuildNumber(45)
-```
+Think of the master node as the brain of your Jenkins. Unlike agents, the master node can't be purged or replaced. So, to ensure optimum CI/CD functioning, consider doing some performance tuning on your Jenkins and free up the master node from unnecessary tasks. This will leave you with ample memory and CPU for effective scheduling and build triggers over agents.
 
 ### 3. Don’t Bloat the Jenkins Master Installation
 
@@ -54,25 +51,21 @@ Moreover, rather than setting up a long build that might fail anywhere in the cy
 
 ### 4. Make Agent Management Effortless
 
-While setting up Jenkins, it’s important to set up agents correctly. You want to make sure that when the time comes, you can add new agents or replace existing ones without hassle. To achieve this, consider creating virtual images to install directly. You might also put agents in the cloud and [activate them with a Docker container](https://devopscube.com/docker-containers-as-build-slaves-jenkins/) to ensure automatic scaling.
+While setting up Jenkins, it’s important to set up the agents correctly. You want to make sure that when the time comes, you can add new agents or replace existing ones easily. To achieve this, consider creating a virtual machine image for the agent. You might also consider running Jenkins inside a [Docker container](https://devopscube.com/docker-containers-as-build-slaves-jenkins/) in a scalable cluster like Kubernetes or Amazon EKS where scaling agents is simple.
 
 It’s also a good idea to make agents generic and versatile; an agent should run multiple different jobs and utilize resources to the fullest extent.
 
 ### 5. Remove Older Builds
 
-After a while, Jenkins builds can pile up, and disk consumption may get out of hand. Developers often overlook the Jenkins’ [Discard Old Builds](https://plugins.jenkins.io/discard-old-build/) option. Set metrics, such as the number of builds and days to keep builds and artifacts under the Jenkins Log Rotation menu. 
+After a while, Jenkins builds can pile up, and disk consumption may get out of hand. Developers often overlook Jenkins’ [Discard Old Builds](https://plugins.jenkins.io/discard-old-build/) option. Set metrics, such as the number of builds and days to keep builds and artifacts are under the Jenkins Log Rotation menu.
 
 Rather than letting old builds accumulate and consume a file system, developers can enable _Discard Old Builds_ and enjoy automated resource usage cleanup once a Jenkins job finishes. You can also use the [G1 garbage collector](https://docs.oracle.com/javase/8/docs/technotes/guides/vm/gctuning/g1_gc.html) instead of Java 8's default [Parallel GC](https://docs.oracle.com/javase/8/docs/technotes/guides/vm/gctuning/parallel.html) since the former is a server-style garbage collector with a lower GC pause time.
 
-To remove older builds, use the command: 
+Builds can also be removed [manually](https://superuser.com/a/1418896/92661) via the Jenkins command line or using a [cron job](https://opensource.com/article/17/11/how-use-cron-linux) that periodically cleans up old builds. You can find other options for discarding old build data [in this reference post](https://support.cloudbees.com/hc/en-us/articles/215549798-Deleting-Old-Builds-Best-Strategy-for-Cleanup-and-disk-space-management).
 
-```
-rm -rf jobs/${JOB_NAME}/builds/${BUILD_NUM}*
-```
+##### Prevent Resource Collision in Parallel Jobs
 
-### Prevent Resource Collision in Parallel Jobs
-
-Jobs running in parallel might want exclusive access to ports or resources. This may cause a collision and further bleed out your Jenkins pipeline. For example, if you run multiple builds in parallel, there’s a high chance they might collide while accessing a resource, say, Postgres's database port 5432.
+Jobs running in parallel might want exclusive access to ports or resources. This may cause a collision, fail a build and further slow down your Jenkins pipeline. For example, if you run multiple builds in parallel, there’s a high chance they might collide while accessing a resource, say, Postgres's database port 5432.
 
 Jenkins offers the [Throttle Concurrent Builds](https://plugins.jenkins.io/throttle-concurrents/) plugin to help regulate the number of concurrent builds on Jenkins nodes:
 
@@ -90,7 +83,7 @@ You’ll need to do some testing to see how many parallel builds your system can
 
 ### 6. Lower Heap Size
 
-Do you want to create CI/CD pipelines that are performance-oriented and never fail with a memory leak or out-of-memory errors? Pay attention to the _heap size_. As the number of Jenkins builds grows, the default heap size can slow down the whole pipeline and throw an out-of-memory error if not attended to.
+Do you want to create CI/CD pipelines that are performance-oriented and never fail with a memory leak or out-of-memory errors? Pay attention to the _heap size_. As the number of Jenkins builds grows, the default heap size can be a limiting factor leading to out-of-memory errors if not attended to.
 
 A majority of modern Java applications start with the maximum heap size configuration during startup. For Jenkins to run smoothly, lower the maximum heap size property to a maximum of [4 GB](https://docs.cloudbees.com/docs/admin-resources/latest/jvm-troubleshooting/#_heap_size) for starters. You can increase the heap size over time, depending on the Jenkins builds.
 
@@ -101,9 +94,14 @@ To set the heap size to 4 GB:
 
 ### 7. Avoid Plugin Overload
 
-With over a thousand plugins available, Jenkins offers its users many capabilities for empowering their CI/CD pipelines. However, keep performance in mind when adding plugins and external services to your pipeline. Integrating Jenkins with external services will often slow down the Jenkins UI and lead to adverse effects, like dropped agents or disconnections. 
+With over a thousand plugins available, Jenkins offers its users many capabilities for empowering their CI/CD pipelines. However, keep performance in mind when adding plugins and external services to your pipeline. Integrating Jenkins with external services will often slow down the Jenkins UI and lead to adverse effects, like dropped agents or disconnections.
 
-The key here is to divide the workload by increasing the number of masters through horizontal scaling. You might consider using the Jenkins Helm chart through `helm repo add jenkins https://charts.jenkins.io`. The [Jenkins Helm chart](https://github.com/jenkinsci/helm-charts) provides configurations to scale up by distributing the load, automatically spinning up agents, and running multiple build plans in parallel.
+In order to determine if a plugin is causing your builds to slow down, you can try running your builds with all or some plugins disabled. Gradually add each back to determine which is causing the bottleneck. Once you find the plugin (or combination of plugins) causing the performance issue, you have a few options:
+
+1. **Find a replacement plugin** by searching the [Jenkins Plugin Index](https://plugins.jenkins.io/).
+2. **See if Jenkins has added native support** for this feature by checking [the changelog](https://www.jenkins.io/changelog/). You may have to upgrade Jenkins to get the latest features, but this is generally a good idea for performance anyway.
+3. **Replace the plugin with a custom script** bearing in mind that this could introduce new performance issues. Still, if you install a complex plugin, but only use one or two small features, a script might be more efficient.
+4. **Remove the plugin** if you can live without it. Sometimes this is a worthwhile tradeoff.
 
 ## Tracking Jenkins Performance
 
@@ -124,5 +122,3 @@ This can help you assess the effectiveness of your performance tweaks and guide 
 Jenkins’ responsiveness issues are common, especially when dealing with heavier builds. Broken Jenkins CI/CD pipelines can stall your development teams and create unnecessary dependencies. The tips discussed in this article should help you boost the performance of your Jenkins CI/CD pipeline significantly.
 
 Looking to make your builds more repeatable? [Earthly](https://earthly.dev/) replaces clunky bash scripts and makefiles by giving you a single understandable, consistent definition for your CI/CD builds and it works great with Jekyll. Learn more [at Earthly.dev](https://earthly.dev/).
-
-You might also consider running Jenkins inside a [docker container](https://devopscube.com/docker-containers-as-build-slaves-jenkins/) in a compute cluster like Kubernetes or Rancher where scaling agents is simple.

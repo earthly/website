@@ -29,7 +29,7 @@ With the purpose of bringing these modern capabilities to people out in the real
 
 **But most importantly, all builds are completely reproducible**. You get a guarantee that the build succeeds on its own and not because of your local dependencies or some environmental config that you’re not aware of. Thus, it becomes an order of magnitude easier to iterate on and debug broken CI builds.
 
-![Screenshot of commmits for a failing build]({{site.images}}{{page.slug}}/commits.png)
+![Screenshot of commmits for a failing build]({{site.images}}{{page.slug}}/commits.png)\
 
 **A familiar Dockerfile-like syntax is used** , to help new users get up-to-speed quickly. It’s like Dockerfile and Makefile had a baby. However, in contrast to Dockerfiles, you can also output regular artifacts (jars, packages, binaries, arbitrary files), in addition to Docker images.
 

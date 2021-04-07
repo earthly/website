@@ -64,9 +64,9 @@
   }
 }
 
-/* hack to fix h2 pushing to far down page */
-section.page__content {
-  margin-top: -50px;
+//hack for not having too much margin at top of articles with an Introduction heading
+h2:first-of-type{
+  margin-top: 0px;
 }
 
 /* remove border*/

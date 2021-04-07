@@ -5,7 +5,6 @@ categories:
 toc: true
 author: Kasper Siig
 ---
-
 Bash scripts give you the ability to turn a tedious series of commands into an easily runnable and repeatable script. With many real-world use cases, like using a bash script to run a continuous deployment process, create a series of files in a folder, or download the contents of several URLs, it’s worth your time to make sure bash scripting is in your programming toolbox. 
 
 When you're done with this article, you’ll not only be able to write bash scripts, but you'll be able to write them using today’s accepted best practices.
@@ -26,19 +25,19 @@ Essentially it tells your terminal that when you run the script it should use `b
 
 ### #!/user/bin/env bash
 
-If you use the previous shebang, it’s crucial that you give the executable's absolute path. You should be aware of this since there is an alternative where you use the `bash` executable found in the `$PATH`. You can do so by writing:
+If you use the previous shebang, it’s crucial that you give the executable's absolute path. You should be aware of this since there is an alternative, where you use the `bash` executable found in the `$PATH`. You can do so by writing:
 
 ```bash
 #!/user/bin/env bash
 ```
-# ToDo: rephrase
-There are those who like to customize their systems, either their personal system or production servers, resulting in the `bash` executable not being located in `/bin/bash` every time. Use the above line if you can't be sure that the `bash` executable will be located in the same path when this script is run. 
+
+Some people like to customize their systems, either their personal system or production servers, resulting in the `bash` executable not being located in `/bin/bash` every time. Use the above line if you can't be sure that the `bash` executable will be located in the same path when this script is run. 
 
 ## Understand Common Sets
 
 When you run a bash script, it will always run in a new _subshell_. This means that any unique configurations you have in your current setup will not be used within the script execution. It also means that you can customize the environment that the script is running in without worrying about how your terminal will be affected.
 
-One way to change this environment is to use the `set` command. I’ll go over the four most common ones and where they're useful.
+One way to change this environment is to use the `set` command. I’ll go over the four most common ones and where they're useful. I’ll show the short form for these sets in the examples throughout this article, but keep in mind that there are also long-form versions. I’ll mention those briefly.
 
 ### set -u
 
@@ -56,7 +55,7 @@ If you run the script as shown above, it’ll give you the following output:
 Hello World
 ```
 
-See how it doesn't complain that the `$TEST` variable is not set? You can change that. Setting the `set -u` command initially, you’re telling bash that you want it to fail if a variable is not set. 
+See how it doesn't complain that the `$TEST` variable is not set? You can change that. Setting the `set -u` (short form of `set -o nounset`) command initially, you’re telling bash that you want it to fail if a variable is not set.
 
 **Script:**
 
@@ -77,7 +76,7 @@ Without `set -u`, bash will use an empty string instead of the unset variable. W
 
 ### set -x
 
-You'll likely at some point have a big script where it's tough to keep track of not just which commands are running what, but also which commands are outputting what. This is where `set -x` comes to the rescue.
+You'll likely at some point have a big script where it's tough to keep track of not just which commands are running what, but also which commands are outputting what. This is where `set -x` comes to the rescue. Alternatively, you can write this as its long form, `set -o xtrace`.
 
 When using `set -x`, you get the following script and output.
 
@@ -100,10 +99,10 @@ Hello World
 ```
 
 ### set -e
-#Todo "Very clean"
-Sometimes you want to make sure that the entire script fails if one of the commands fails. This is not the default behavior in bash. You can see [here](https://www.gnu.org/software/bash/manual/html_node/The-Set-Builtin.html) that without any set options, bash is running in a very clean way, without much in terms of error handling.
 
-To make sure the script fails, you should use `set -e`, probably the most common one.
+Sometimes you want to make sure that the entire script fails if one of the commands fails. This is not the default behavior in bash. You can see [here](https://www.gnu.org/software/bash/manual/html_node/The-Set-Builtin.html) that without any set options, bash is running without much error handling.
+
+To make sure the script fails, you should use `set -e` (also known as `set -o errexit`), probably the most common one.
 
 **Script:**
 
@@ -121,8 +120,8 @@ line 3: foo: command not found
 ```
 
 ### set -eo pipefail
-# todo simplify
-Finally, we have the ability to make the script fail if a command in a pipeline fails. Usually, bash only looks for the exit code from the last command in a pipeline. If that’s 0, it'll continue just fine. Exit code 0 is what we want, since in bash that means success.
+
+Finally, we can make the script fail if a command in a pipeline fails. Usually, bash only looks for the exit code from the last command in a pipeline. If that’s 0, it'll continue just fine. Exit code 0 is what we want, since in bash that means success.
 
 Let's use the following script as an example:
 
@@ -158,13 +157,57 @@ _Note: `sed` is a search-and-replace command. In this case it replaces underscor
 
 The intention is that `/tmp/path.txt` contains `tmp_file.txt`. Assume that the file `/tmp-file.txt` exists on the system. In this case the script will work perfectly and delete `/tmp-file.txt`. But what if `/tmp/path.txt` doesn’t exist? `cat /tmp/path.txt` will fail, but the script won’t. Now you’ve deleted your entire filesystem, but `set -eo pipefail` will prevent this.
 
+### Sets in Summary
+
+| Set | Long form | Description |
+|-|-|-|
+| set -u | set -o nounset | Exits script on undefined variables |
+| set -x | set -o xtrace | Shows command currently executing |
+| set -e | set -o errexit | Exits script on error |
+| set -eo pipefail | set -eo pipefail | Exits script on pipeline fail |
+
+
 ## Use Error Checking Tools
 
-As with anything, it would be nice to have someone verify that something is working before you even run it. While that may not be 100 percent possible, there are some tools available to help you check your bash script. One of these is [ShellCheck](https://www.shellcheck.net/#).
+Although you may be familiar with all the best practices, it can be tough to remember them all when your script is coming to life. Luckily there are tools available to help, like [ShellCheck](https://www.shellcheck.net/#). ShellCheck has both a browser version and a command-line tool, but for this article, let’s work with the command-line version. You can find [installation instructions here](https://github.com/koalaman/shellcheck#installing).
 
-Navigate to ShellCheck and paste in the contents of your script (or download the tool), and it will tell you whether there are improvements that can be made. These improvements can range from syntax improvements like linting to actual errors.
+We’ll use the following script as an example:
 
-If you’re curious to see examples of how it can help, simply click _Load random example_ on [the home page](https://www.shellcheck.net/).
+```bash
+echo "What's your name?"
+read NAME
+echo Hello $NAME
+```
+
+By saving this in a script in a file called `greeting.sh` and running `shellcheck greeting.sh`, you get the following output in your terminal:
+
+```
+In greeting.sh line 1:
+echo "What's your name?"
+^-- SC2148: Tips depend on target shell and yours is unknown. Add a shebang or a 'shell' directive.
+
+
+In greeting.sh line 2:
+read NAME
+^--^ SC2162: read without -r will mangle backslashes.
+
+
+In greeting.sh line 3:
+echo Hello $NAME
+           ^---^ SC2086: Double quote to prevent globbing and word splitting.
+
+```
+
+As you can see, `shellcheck` doesn’t just tell you what you need to change, but also why it needs to be changed. This is a valuable resource, not just for improving your scripts, but also to get better at writing them in the first place.
+
+With these tips, you’ll end up with the following script:
+
+```bash
+#!/bin/bash
+echo “What’s your name?”
+read -r NAME
+echo Hello “$NAME”
+```
 
 ## Understand Variable Naming and Declaration
 
@@ -189,6 +232,7 @@ There are multiple ways to use a variable that you've assigned a value. As an ex
 If you want to echo the contents of a variable, then use double quotes. It will expand what's inside the variable and print that to the screen.
 
 ```bash
+$ foo=”uname”
 $ echo "$foo"
 uname
 ```
@@ -198,6 +242,7 @@ uname
 In some cases, you don't want to output a variable's contents, but maybe write an explanation of what that variable is used for. To avoid expansion, use single quotes:
 
 ```bash
+$ foo=”uname”
 $ echo '$foo'
 $foo
 ```
@@ -209,6 +254,7 @@ This also means that you don't have to manually escape the `$` symbol, which you
 The third option for using a variable is backticks. Use this when you want the contents of the variable to be run as a shell command:
 
 ```bash
+$ foo=”uname”
 $ echo `$foo`
 Linux
 ```
@@ -245,7 +291,7 @@ One of the biggest pitfalls that newcomers run into is forgetting about readabil
 
 When it comes to scripts, you want to make sure that you can still easily remember what’s happening six months down the line. An easy way to do this is by using more extended options (`--quiet` instead of `-q`), using longer variable names (`MESSAGE` instead of `MSG`), and writing comments.
 
-You can write commands using a hashtag, after which you can write your comment, like so:
+You can write commands using a hash mark, after which you can write your comment, like so:
 
 ```
 # Below line will echo “Hello World!”
@@ -263,5 +309,6 @@ For example, if you set `TEST=”hello”` in your shell and run `echo $TEST` in
 ## Conclusion
 
 At this point, you should be ready to venture into the exciting world of bash scripting. You've learned about common shebangs, what `set` does, and how it can improve the error handling of your scripts, as well as understanding some general pitfalls developers run into with bash.
-'
-You can now go ahead and automate those annoying commands you’ve been typing out every day. Tired of manually going into your browser and finding the git repo you're working on? Make a script to parse the remote git URL and open it automatically. Maybe you have to rename a bunch of files. Make a script that can loop through them and rename them. The world is your oyster.
+
+So go ahead and automate those annoying commands you’ve been typing out every day. Tired of manually going into your browser and finding the git repo you're working on? Make a script to parse the remote git URL and open it automatically. Maybe you have to rename a bunch of files. Make a script that can loop through them and rename them. The world is your oyster.
+

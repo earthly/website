@@ -68,13 +68,13 @@ It's extremely easy to mistake the kind of architecture you run as. Rosetta 2 is
 
 The easiest way to tell the difference is by opening Activity Monitor and looking at the Architecture column: if it says `Apple`, it's ARM. If it says `Intel`, it's X86_64. Here's how I can tell that Zoom is an ARM process, while Spotify is an X86_64 process.
 
-![Activity Monitor showing Zoom as an Apple process](/blog/assets/images/using-apple-silicon-m1-as-a-cloud-engineer-two-months-in/img1.png)
+![Activity Monitor showing Zoom as an Apple process]({{site.images}}{{page.slug}}/img1.png)
 
-![Activity Monitor showing Spotify as an Intel process](/blog/assets/images/using-apple-silicon-m1-as-a-cloud-engineer-two-months-in/img2.png)
+![Activity Monitor showing Spotify as an Intel process]({{site.images}}{{page.slug}}/img2.png)
 
 If you're not sure about the terminal you're using, you can type `uname -m`. It'll say either `X86_64`, `arm64` (mac) or `aarch64` (linux). `arm64` and `aarch64` are both ARM - `uname` on Mac just reports it differently compared to Linux.
 
-![Terminal showing the output of `uname -m` as `arm64`](/blog/assets/images/using-apple-silicon-m1-as-a-cloud-engineer-two-months-in/img3.png)
+![Terminal showing the output of `uname -m` as `arm64`]({{site.images}}{{page.slug}}/img3.png)
 
 ## Brew issues
 
@@ -96,7 +96,7 @@ If you `docker pull` an image from the registry, it will again default to your n
 
 If you `docker run` an image, it will default to whatever version of the image you have available locally or it will attempt to pull the arm64 version from the registry. You can also override the platform via `--platform=linux/amd64` if you'd like to run the amd64 version specifically.
 
-![Terminal showing the output of `uname -m` for different container platforms](./apple-m1-images/img4.png)
+![Terminal showing the output of `uname -m` for different container platforms]({{site.images}}{{page.slug}}/img4.png)
 
 Docker Compose will happily run a mixture of various architectures. The same rules apply with regards to pulling and running. You can also specify `platform: linux/amd64` for the service definition in `docker-compose.yml` if you'd like to be specific.
 

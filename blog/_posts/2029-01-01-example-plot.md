@@ -1,5 +1,6 @@
 ---
 title: "Example Graphs"
+
 categories: 
   - Tutorials
 toc: true # Include for tutorials

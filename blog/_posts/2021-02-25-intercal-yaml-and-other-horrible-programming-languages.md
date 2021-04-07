@@ -15,7 +15,7 @@ The compiler errors are where the authors got genuinely creative. Errors include
 Yes, this is a parody language, and reading the manual, you get the sense that no one has yet had as much fun writing technical documentation as Lyon and Woods did writing this.
 
 The language itself looks less fun.  Here is [Hello World](http://www.rosettacode.org/wiki/Category:Intercal):
-```
+``` fortran
        NOTE THIS IS INTERCAL
        PLEASE ,1 <- #5
        DO ,1 SUB #1 <- #54
@@ -31,7 +31,7 @@ The language itself looks less fun.  Here is [Hello World](http://www.rosettacod
 
 One of the exciting innovations of INTERCAL is the `COMEFROM` [instruction](https://en.wikipedia.org/wiki/COMEFROM#Examples), seen here in a variant of BASIC.  
 
-```
+``` qwbasic
 10 COMEFROM 40
 20 INPUT "WHAT IS YOUR NAME? "; A$
 30 PRINT "HELLO, "; A$
@@ -192,7 +192,7 @@ The line between configuration and programming languages is not some bright divi
 
 I like YAML more than XML, but for control flow, you know what would be better than YAML? Anything else!  Maybe even INTERCAL? I mean, how bad could a joke programming language be?
 
-``` 
+``` fortran
 (100)  PLEASE NOTE THIS IS THE FIZZBUZZ FUNCTION	
 
 	PLEASE NOTE: IS THE INPUT DIVISIBLE BY #15?

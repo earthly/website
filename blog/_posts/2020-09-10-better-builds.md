@@ -143,7 +143,7 @@ You can find the [full example here](https://github.com/earthly/earthly-example-
 
 We now have our `deps`, `build`, `test` and `docker` targets in our Earthfile. All together these give us a reproducible process for running our build locally and in our CI builds. &nbsp;We used earthly to encapsulate the build steps.
 
-{% include imgf src="diagram.png" alt="diagram of earthly usage" caption="Encapsulation build steps" %}
+{% include imgf src="diagram.png" alt="diagram of earthly usage" caption="Encapsulating the Build Steps" %}
 
 If a build fails in CI, we can run the same process locally and reproduce the failure. &nbsp;Reproducibility solved, in a familiar dockerfile-like syntax .
 

@@ -159,7 +159,7 @@ Again, you'll need to be authenticated if you want to build an image off a priva
 ### Using ECR Images in Production Deployments
 To use your images from ECR in a container management platform like ECS or EKS, simply add the name and tag of the image you want to use to the relevant configuration file.
 
-#### EKS Manifest
+##### EKS Manifest
 For example, you can use the following EKS manifest to deploy a NodeJS image stored in ECR:
 
 ```
@@ -182,7 +182,7 @@ spec: template:
 
 When deployed, it will create a job with the name `eks-iam-test-s3` using the `123456789012.dkr.ecr.us-west-2.amazonaws.com/aws-nodejs-sample:v1` image. To see the complete step-by-step process for deploying this job to EKS, see [the AWS documentation here](https://docs.amazonaws.cn/en_us/AmazonECR/latest/userguide/ECR_on_EKS.html).
 
-#### ECS Task Definition
+##### ECS Task Definition
 ECR images can also be used in ECS task definition files to define your containers:
 
 ```
