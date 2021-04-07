@@ -1,22 +1,12 @@
 ---
-title: "Example Overlay Headline"
+title: "Example Graphs"
 categories: 
   - Tutorials
 toc: true # Include for tutorials
 last_modified_at: 2020-01-07
+author: Adam
 ---
-## How to use pandoc-plot
-Mac setup:
-
-* `brew install pandoc`
-* `brew install pandoc-plot`
-* install specific libs: `pandoc-plot toolkits` to list
-  * `pip3 install matplotlib` for matplotlib 
-
-## How to run pandoc-plot
-```
- pandoc blog/_posts/2029-01-01-example-plot.md --filter pandoc-plot -f markdown -t html -s -o plot.html
-```
+You can embedded graphs into the markdown like this:
 
 ### Simple Graph
 ``` matplotlib
@@ -72,4 +62,18 @@ def update(changed_image):
 for im in images:
     im.callbacksSM.connect('changed', update)
 
+```
+
+## How to use pandoc-plot
+Mac setup:
+
+* `brew install pandoc`
+* `brew install pandoc-plot`
+* install specific libs: `pandoc-plot toolkits` to list
+  * `pip3 install matplotlib` for matplotlib 
+
+## How to run pandoc-plot
+The site will run pandoc-plot itself, but if you want to run it manually here is how:
+```
+ pandoc blog/_posts/2029-01-01-example-plot.md --filter pandoc-plot -f markdown -t html -s -o plot.html
 ```
