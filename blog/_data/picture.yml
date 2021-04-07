@@ -4,7 +4,7 @@ presets:
     fallback_width: 800
     fallback_format: original
     noscript: false
-    quality: 75
+    quality: 80
     data_sizes: true
     gravity: center
     dimension_attributes: false
@@ -18,7 +18,7 @@ presets:
 
   2up:
     formats: [webp, original]
-    widths: [245]
+    widths: [480]
     gravity: Center
     crop: '2:1'
 

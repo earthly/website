@@ -92,7 +92,7 @@ blog-run:
   LOCALLY
   # BUILD +blog-docker
   # WITH DOCKER --load=blog-docker
-  RUN docker run -p 4002:4002 -v $(pwd)/blog:/site earthly-blog
+  RUN docker run -p 4002:4002 -v $(pwd)/blog:/site --rm --name earthly-blog earthly-blog
   # END
 
 ## Utils
