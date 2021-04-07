@@ -65,8 +65,10 @@ for im in images:
 
 ```
 
-## How to use pandoc-plot
-Mac setup:
+## How to install pandoc-plot
+If you are using the docker container and jekyll, it should just work.  
+
+Manual Mac setup:
 
 * `brew install pandoc`
 * `brew install pandoc-plot`
