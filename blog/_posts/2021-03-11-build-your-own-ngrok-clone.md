@@ -4,6 +4,7 @@ categories:
   - Tutorials
 toc: true
 author: Corey
+excerpt: Ngrok is a tool that allows you to create secure, publically accessible URLs for your locally running code.
 ---
 
 

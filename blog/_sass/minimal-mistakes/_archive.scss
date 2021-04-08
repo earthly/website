@@ -24,6 +24,7 @@
   a {
     position: relative;
     z-index: 10;
+    text-decoration: none;
   }
 
   a[rel="permalink"] {
@@ -159,7 +160,7 @@ h2:first-of-type{
 
   @include breakpoint($small) {
     float: left;
-    width: 45%;
+    width: 49%;
     height: 330px;
     //width: span(5 of 10);
 
@@ -420,7 +421,7 @@ h2:first-of-type{
   .feature__wrapper {
     .archive__item-title {
       margin-top: 0.25em;
-      font-size: 1em;
+      font-size: 1.2em;
     }
   }
 

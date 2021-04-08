@@ -4,6 +4,7 @@ featured: true
 categories:
   - News
 author: Vlad
+excerpt: We’ve been working with many of you to better understand your pains and use-cases when it comes to builds.
 ---
 
 Dear Earthly community,
