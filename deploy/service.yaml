@@ -6,5 +6,5 @@ metadata:
   labels:
     app: blog
 spec:
-  externalName: blogtest.earthly.dev
+  externalName: blog.earthly.dev
   type: ExternalName
