@@ -11,7 +11,7 @@ spec:
   tls:
       secretName: blog
   routes:
-    - match: "Host(`blogtest.earthly.dev`)"
+    - match: "Host(`blog.earthly.dev`)"
       kind: Rule
       middlewares:
         - name: blog-rss

@@ -8,7 +8,7 @@ metadata:
 spec:
   redirectRegex:
     permanent: true
-    regex: ^https://blogtest\.earthly\.dev/(.*)
+    regex: ^https://blog\.earthly\.dev/(.*)
     replacement: https://earthly.dev/blog/${1}
 ---
 apiVersion: traefik.containo.us/v1alpha1
@@ -21,7 +21,7 @@ metadata:
 spec:
   redirectRegex:
     permanent: true
-    regex: ^https://blogtest\.earthly\.dev/rss/?
+    regex: ^https://blog\.earthly\.dev/rss/?
     replacement: https://earthly.dev/blog/feed.xml
 ---
 apiVersion: traefik.containo.us/v1alpha1
@@ -34,7 +34,7 @@ metadata:
 spec:
   redirectRegex:
     permanent: true
-    regex: ^https://blogtest\.earthly\.dev/author/.*
+    regex: ^https://blog\.earthly\.dev/author/.*
     replacement: https://earthly.dev/blog/
 ---
 apiVersion: traefik.containo.us/v1alpha1
@@ -47,7 +47,7 @@ metadata:
 spec:
   redirectRegex:
     permanent: true
-    regex: ^https://blogtest\.earthly\.dev/tag/(article|new|tutorial)s?/? # This is cheating, but works
+    regex: ^https://blog\.earthly\.dev/tag/(article|new|tutorial)s?/? # This is cheating, but works
     replacement: https://earthly.dev/blog/categories/${1}s
 ---
 apiVersion: traefik.containo.us/v1alpha1
@@ -60,7 +60,7 @@ metadata:
 spec:
   redirectRegex:
     permanent: true
-    regex: ^https://blogtest\.earthly\.dev/tag/([^/]*)/?
+    regex: ^https://blog\.earthly\.dev/tag/([^/]*)/?
     replacement: https://earthly.dev/blog/tags/#${1}
 ---
 apiVersion: traefik.containo.us/v1alpha1
