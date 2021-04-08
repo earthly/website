@@ -26,8 +26,8 @@ Corey:
     #    icon: "fab fa-fw fa-twitter-square" 
     #    url: "https://twitter.com/dchw"
 Vlad:
-    name    : "Vlad A Ionescu"
-    bio     : " Founder of Earthly. Founder of ShiftLeft Inc. Ex Google. Ex VMware."
+    name    : "Vlad A. Ionescu"
+    bio     : " Founder of Earthly. Founder of ShiftLeft. Ex Google. Ex VMware. Co-author RabbitMQ Erlang Client."
     avatar  : "/assets/images/authors/vladaionescu.jpg"
 Alex:
     name    : "Alex Couture-Beil"

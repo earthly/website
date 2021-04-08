@@ -7,7 +7,6 @@
         {% unless logo_path == empty %}
           <a class="site-logo" href="/"><img src="{{ logo_path | relative_url }}" alt="Earthly"></a>
         {% endunless %}
-        <a class="site-title" href="/">Home</a>
         <ul class="visible-links">
           {%- for link in site.data.navigation.main -%}
             <li class="masthead__menu-item">
