@@ -43,16 +43,22 @@ But what is happening when you call `docker build`? To understand that, we will 
  
  I like to think about images and containers by analogy. If an image is like an executable, then a container is like a process. You can run multiple containers from one image, and a running image isn't an image at all but a container.  
 
+<div class="wide">
  ![An image is like an executable]({{site.images}}{{page.slug}}/1-2.png)
+ </div>
  
 Continuing our analogy, [BuildKit](https://github.com/moby/buildkit) is a compiler, just like [LLVM](https://en.wikipedia.org/wiki/LLVM).  But whereas a compiler takes source code and libraries and produces an executable, BuildKit takes a Dockerfile and a file path and creates a container image. 
 
+<div class="wide">
 ![BuildKit is like a compiler for Docker images]({{site.images}}{{page.slug}}/099.png)
+</div>
 
 
 Docker build uses BuildKit, to turn a Dockerfile into a docker image, OCI image, or another image format.  In this walk-through, we will primarily use BuildKit directly.  
 
+<div class="wide">
 ![Docker Daemon with BuildKit Daemon inside it]({{site.images}}{{page.slug}}/buildctl-2.png)
+</div>
 
 This [primer on using buildkit](https://blog.earthly.dev/what-is-buildkit-and-what-can-i-do-with-it/) supplies some helpful background on using BuildKit, `buildkitd`, and `buildctl` via the command-line. However, the only prerequisite for today is running `brew install buildkit` or the appropriate OS [equivalent](https://github.com/moby/buildkit#quick-start) steps.
 
@@ -60,18 +66,23 @@ This [primer on using buildkit](https://blog.earthly.dev/what-is-buildkit-and-wh
 ## How Do Compilers Work?
 A traditional compiler takes code in a high-level language and lowers it to a lower-level language.  In most conventional ahead-of-time compilers, the final target is machine code. Machine code is a low-level programming language that your CPU understands[^1].  
 
-| ℹ️ Fun Fact: Machine Code VS. Assembly       |
-|-----------------------------------|
-| Machine code is written in binary. This makes it hard for a human to understand.  Assembly code is a plain-text representation of machine code that is designed to be somewhat human-readable. There is generally a 1-1 mapping between instructions the machine understands (in machine code) and the OpCodes in Assembly  |
+<div class="notice--info">
+**ℹ️ Fun Fact: Machine Code VS. Assembly**
 
+Machine code is written in binary. This makes it hard for a human to understand.  Assembly code is a plain-text representation of machine code that is designed to be somewhat human-readable. There is generally a 1-1 mapping between instructions the machine understands (in machine code) and the OpCodes in Assembly
+</div>
 
 Compiling the classic c "Hello, World" into x86 assembly code using the CLANG frontend for LLVM looks like this:
 
+<div class="wide">
 ![Compiling Hello World to X86 assembly]({{site.images}}{{page.slug}}/compilingc.png)
+</div>
 
 Creating an image from a dockerfile works a similar way:
 
+<div class="wide">
 ![Compiling Docker Image]({{site.images}}{{page.slug}}/build-an-image.png)
+</div>
 
 BuildKit is passed the Dockerfile and the build context, which is the present working directory in the above diagram. In simplified terms, each line in the dockerfile is turned into a layer in the resulting image.  One significant way image building differs from compiling is this build context.  A compiler's input is limited to source code, whereas `docker build` takes a reference to the host filesystem as an input and uses it to perform actions such as `COPY`.
 
@@ -81,19 +92,25 @@ The earlier diagram of compiling "Hello, World" in a single step missed a vital 
 Compiler authors have overcome this challenge by splitting compilation into phases.  The traditional phases are the frontend, the backend, and the middle. The middle phase is sometimes called the optimizer, and it deals primarily with an internal representation (IR).
 
 
+<div class="wide">
 ![Three stage build process]({{site.images}}{{page.slug}}/3stagebuild.png)
+</div>
 
 This staged approach means you don't need a new compiler for each new machine architecture.  Instead, you just need a new backend. Here is an example of what that looks like in [LLVM](https://llvm.org/):
 
 
+<div class="wide">
 ![Backends of LLVM]({{site.images}}{{page.slug}}/backends.png)
+</div>
  
 ## Intermediate Representations
 This multiple backend approach allows LLVM to target ARM, X86, and many other machine architectures using LLVM Intermediate Representation (IR) as a standard protocol.  LLVM IR is a human-readable programming language that backends need to be able to take as input. To create a new backend, you need to write a translator from LLVM IR to your target machine code. That translation is the primary job of each backend.
 
 Once you have this IR, you have a protocol that various phases of the compiler can use as an interface, and you can build not just many backends but many frontends as well. LLVM has frontends for numerous languages, including C++, Julia, Objective-C, Rust, and Swift.  
 
+<div class="wide">
 ![One compiler, with many frontend and backends]({{site.images}}{{page.slug}}/frontends-2.png)
+</div>
 
 If you can write a translation from your language to LLVM IR, LLVM can translate that IR into machine code for all the backends it supports. This translation function is the primary job of a compiler frontend.
  
@@ -107,22 +124,26 @@ Images, unlike executables, have their own isolated filesystem. Nevertheless, th
 
 This similarity was not lost on the BuildKit creators.  BuildKit has its own intermediate representation, LLB.  And where LLVM IR has things like function calls and garbage-collection strategies, LLB has mounting filesystems and executing statements.
 
+<div class="wide">
 ![LLVM IR VS. LLB]({{site.images}}{{page.slug}}/LLBIR-fixed.png)
+</div>
 
 [LLB](https://github.com/moby/buildkit/blob/ebd98bcbe600c662a72ce9725417540f277be4d6/solver/pb/ops.proto) is defined as a protocol buffer, and this means that BuildKit frontends can make GRPC requests against buildkitd to build a container directly.
 
+<div class="wide">
 ![LLVM IR VS. LLB]({{site.images}}{{page.slug}}/Send-LLB.png)
+</div>
 
 
 
 
 ## Programmatically Making An Image
 Alright, enough background.  Let's programmatically generate the LLB for an image and then build an image.  
+<div class="notice--info">
+ ℹ️ Using Go
 
-| ℹ️ Using Go      |
-|-----------------------------------|
-| In this example, we will be using Go which lets us leverage existing BuildKit libraries, but it's possible to accomplish this in any language with Protocol Buffer support. |
-
+In this example, we will be using Go which lets us leverage existing BuildKit libraries, but it's possible to accomplish this in any language with Protocol Buffer support.
+</div>
 
 Import LLB defintions:
 ```
@@ -350,10 +371,12 @@ buildctl build \
 ```
 The output flag lets us specify what backend we want BuildKit to use.  We will ask it to build an OCI image and push it to docker.io. 
 
-| ℹ️ Real-World Usage     |
-|-----------------------------------|
-| In the real-world tool, we might want to programmatically make sure `buildkitd` is running and send the RPC request directly to it, as well as provide friendly error messages. For tutorial purposes, we will skip all that. |
+<div class="notice--info">
 
+ ℹ️ Real-World Usage
+
+ In the real-world tool, we might want to programmatically make sure `buildkitd` is running and send the RPC request directly to it, as well as provide friendly error messages. For tutorial purposes, we will skip all that.
+</div>
 
 We can run it like this:
 
@@ -409,7 +432,9 @@ So far, we've only used the docker commands `FROM`, `RUN` and `COPY`.  At a surf
 
 The modules in the dockerfile frontend split the parsing of the input file into several discreet steps, with execution flowing this way:
 
+<div class="wide">
 ![ControlFlow from main.go to Dockerfile2LLB to Parser to Command.go]({{site.images}}{{page.slug}}/controlflow.png)
+</div>
 
 For this tutorial, we are only going to make trivial changes to the frontend.  We will leave all the stages intact and focus on customizing the existing commands to our tastes.  To do this, all we need to do is change `command.go`:
 
@@ -456,10 +481,11 @@ README.md
 ```
 I've pushed this image to dockerhub.  Anyone can start building images using our `ickfile` format by adding `#syntax=agbell/ick` to an existing Dockerfile. No manual installation is required!
 
-| ℹ️ Enabling BuildKit      |
-|-----------------------------------|
-| BuildKit is included but not enabled by default in the current version of Docker (`version 20.10.2`). To instruct `docker build` to use BuildKit set the following environment variable `DOCKER_BUILDKIT=1`. This will not be necessary once BuildKit reaches general availability.  |
+<div class="notice--info">
+ ℹ️ Enabling BuildKit  
 
+ BuildKit is included but not enabled by default in the current version of Docker (`version 20.10.2`). To instruct `docker build` to use BuildKit set the following environment variable `DOCKER_BUILDKIT=1`. This will not be necessary once BuildKit reaches general availability.
+</div>
 
 
 ## Conclusion
