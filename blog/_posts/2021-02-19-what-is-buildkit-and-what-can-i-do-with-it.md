@@ -67,8 +67,8 @@ GLOBAL OPTIONS:
    --help, -h             show help
    --version, -v          print the version
 ```
-[comment]: <> (insert link to mitmproxy article)
- ***Other Tools**: In this guide, we will use [pstree](https://linux.die.net/man/1/pstree), [br](https://github.com/Canop/broot), and [mitmproxy](blog.earthly.dev/mitmproxy/). They are not required to use BuildKit or to follow this guide, but they help us demonstrate how BuildKit works.*
+
+ ***Other Tools**: In this guide, we will use [pstree](https://linux.die.net/man/1/pstree), [br](https://github.com/Canop/broot), and [mitmproxy](earthly.dev/blog/mitmproxy/). They are not required to use BuildKit or to follow this guide, but they help us demonstrate how BuildKit works.*
 
 #### buildkitd
 
@@ -179,7 +179,7 @@ error: failed to solve: rpc error: code = Unknown desc = failed to solve with fr
 ```
 It doesn't work. It looks like it is trying to fetch the image from docker.io, the default docker hub registry.  
 
-We can verify this by quickly [capturing requests](blog.earthly.dev/mitmproxy/) from buildkitd:
+We can verify this by quickly [capturing requests](earthly.dev/blog/mitmproxy/) from buildkitd:
 ```
 ➜ cat ~\Dockerfile
 FROM moby/buildkit 

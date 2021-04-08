@@ -60,7 +60,7 @@ Docker build uses BuildKit, to turn a Dockerfile into a docker image, OCI image,
 ![Docker Daemon with BuildKit Daemon inside it]({{site.images}}{{page.slug}}/buildctl-2.png)
 </div>
 
-This [primer on using buildkit](https://blog.earthly.dev/what-is-buildkit-and-what-can-i-do-with-it/) supplies some helpful background on using BuildKit, `buildkitd`, and `buildctl` via the command-line. However, the only prerequisite for today is running `brew install buildkit` or the appropriate OS [equivalent](https://github.com/moby/buildkit#quick-start) steps.
+This [primer on using buildkit](https://earthly.dev/blog/what-is-buildkit-and-what-can-i-do-with-it/) supplies some helpful background on using BuildKit, `buildkitd`, and `buildctl` via the command-line. However, the only prerequisite for today is running `brew install buildkit` or the appropriate OS [equivalent](https://github.com/moby/buildkit#quick-start) steps.
 
 
 ## How Do Compilers Work?
@@ -421,7 +421,7 @@ To support the #syntax command, all that is needed is to put the frontend in a d
 
 Building a tokenizer and a parser as a GRPC service is beyond the scope of this article. But we can get our feet wet by extracting and modifying an existing frontend. The standard [dockerfile frontend](https://github.com/moby/buildkit/tree/master/frontend/dockerfile) is easy to disentangle from the moby project.  I've pulled the relevant parts out into a [stand-alone repo](https://github.com/agbell/compiling-containers/tree/main/ickfile).  Let's make some trivial modifications to it and test it out.
 
-So far, we've only used the docker commands `FROM`, `RUN` and `COPY`.  At a surface level, with its capitalized commands, Dockerfile syntax looks a lot like the programming language [INTERCAL](https://blog.earthly.dev/intercal-yaml-and-other-horrible-programming-languages/). Let change these commands to their INTERCAL equivalent and develop our own Ickfile format [^2].
+So far, we've only used the docker commands `FROM`, `RUN` and `COPY`.  At a surface level, with its capitalized commands, Dockerfile syntax looks a lot like the programming language [INTERCAL](https://earthly.dev/blog/intercal-yaml-and-other-horrible-programming-languages/). Let change these commands to their INTERCAL equivalent and develop our own Ickfile format [^2].
 
 | Dockerfile        | Ickfile           |
 | ------------- |:-------------:| 

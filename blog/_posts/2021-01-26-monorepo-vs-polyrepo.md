@@ -177,7 +177,7 @@ A third possibility also exists, which I call the *hybrid layout*. Because monor
 
 #### A note on Earthly
 
-[Earthly](https://earthly.dev) supports cross-project builds for either monorepo and polyrepo layouts. It solves for some of the challenges outlined above. In fact, these challenges were the main [source of inspiration](https://blog.earthly.dev/introducing-earthly-build-automation-for-the-container-era/) when Earthly was started.
+[Earthly](https://earthly.dev) supports cross-project builds for either monorepo and polyrepo layouts. It solves for some of the challenges outlined above. In fact, these challenges were the main [source of inspiration](https://earthly.dev/blog/introducing-earthly-build-automation-for-the-container-era/) when Earthly was started.
 
 ### Code ownership
 
