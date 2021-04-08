@@ -1,8 +1,9 @@
 # main links
 main:
-  - title: "Home"
+  # - title: "Home"
+  #   url: https://earthly.dev
+  - title: "Blog home"
     url: /
-    # url: https://earthly.dev
   - title: "Articles"
     url: /categories/articles/
   - title: "News"
