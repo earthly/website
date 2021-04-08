@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: blog
+  namespace: applications
+  labels:
+    app: blog
+spec:
+  externalName: blog.earthly.dev
+  type: ExternalName
