@@ -53,6 +53,7 @@ Then browse to http://0.0.0.0:4002/blog/
 ### Run
 ```
 cd blog
+RUBYOPT='-W0' bundle exec jekyll serve -H 0.0.0.0 --future --incremental -P 4002
 
 ```
 
