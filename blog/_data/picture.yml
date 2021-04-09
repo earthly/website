@@ -34,4 +34,4 @@ presets:
   small-twitter-card:
     markup: direct_url
     crop: '1:1'
-    fallback_width: 240
+    fallback_width: 600
