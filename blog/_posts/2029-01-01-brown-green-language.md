@@ -1,8 +1,6 @@
 ---
-title: "Brown Vs Green Programming Languages"
+title: "Green Vs Brown Programming Languages"
 author: Adam
-tags:
-- news
 categories:
   - Articles
 author: Adam
@@ -133,6 +131,9 @@ The top 15 Dreaded languages, minus HTML and CSS, are almost all are brown langu
 ## Dreaded Outliers?
 Haskell and Scala are the only two green languages in the dreaded list.  Does this mean they are most dreaded for the qualities of the language alone or are they in the wrong category and this just noise?  I'm not sure. The people dreading Scala and Haskell are either working on an existing code base, in which case its a brown langauge to them, or they are working on a new project and its not going well. Probably its some of both.  Both langauges have a reputation for complexity: does that make the maintance burden particularly acute? It's probably just noise based on my somewhat arbitrary dividing line, but I'd love to hear from you if you are working in these languages but want to leave them behind.
 
+Other ideas:
+* people who use these languagse are early adopters, so on to the next thing
+* FP 
 ## The Loved Greens
 ``` matplotlib
 import matplotlib.pyplot as plt
