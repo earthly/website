@@ -32,13 +32,13 @@
   {%- assign author_twitter = author.twitter | replace: "@", "" -%}
 {%- endif -%}
 
-{%- assign page_large_image = page.header.og_image | default: page.header.overlay_image | default: page.header.image | absolute_url -%}
+{%- assign page_large_image = page.header.og_image | default: page.header.overlay_image | default: page.header.image -%}
 {%- assign page_large_image = page_large_image | escape -%}
 
-{%- assign page_teaser_image = page.header.teaser | default: site.og_image | absolute_url -%}
+{%- assign page_teaser_image = page.header.teaser | default: site.og_image -%}
 {%- assign page_teaser_image = page_teaser_image | escape -%}
 
-{%- assign site_og_image = site.og_image | absolute_url -%}
+{%- assign site_og_image = site.og_image -%}
 {%- assign site_og_image = site_og_image | escape -%}
 
 {%- if page.date -%}
@@ -68,9 +68,9 @@
 {% endif %}
 
 {% if page_large_image %}
-  <meta property="og:image" content="{{ page_large_image }}">
+  <meta property="og:image" content="{% picture card {{page_large_image}} %}">
 {% elsif page_teaser_image %}
-  <meta property="og:image" content="{{ page_teaser_image }}">
+  <meta property="og:image" content="{% picture card {{page_teaser_image}} %}">
 {% endif %}
 
 {% if site.twitter.username %}
@@ -81,11 +81,11 @@
 
   {% if page_large_image %}
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="{{ page_large_image }}">
+    <meta name="twitter:image" content="{% picture card {{page_large_image}} %}">
   {% else %}
     <meta name="twitter:card" content="summary">
     {% if page_teaser_image %}
-      <meta name="twitter:image" content="{{ page_teaser_image }}">
+      <meta name="twitter:image" content="{% picture card {{page_teaser_image}} %}">
     {% endif %}
   {% endif %}
 

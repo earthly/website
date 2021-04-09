@@ -25,3 +25,8 @@ presets:
   header:
     formats: [webp, original]
     crop: '4:1'
+
+  card:
+    markup: direct_url
+    crop: '1.91:1'
+    fallback_width: 800
