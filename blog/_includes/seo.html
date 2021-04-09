@@ -32,11 +32,39 @@
   {%- assign author_twitter = author.twitter | replace: "@", "" -%}
 {%- endif -%}
 
-{%- assign page_large_image = page.header.og_image | default: page.header.overlay_image | default: page.header.image -%}
-{%- assign page_large_image = page_large_image | escape -%}
+{% comment %}
+User twitter.jpg if it exists
+{% endcomment %}
+{% assign twitter_image = "assets/images/" | append: page.slug | append: "/twitter.jpg" %}
+{% capture twitter_default %}{% file_exists {{ twitter_image }} %}{% endcapture %}
+{% if twitter_default == "true" %}
+    {%- assign page_large_image = twitter_image -%}
+{% else %}
+  {% comment %}
+  Defaults for pages with manually set header images.
+  Like index.html and the category pages
+  {% endcomment %}
 
-{%- assign page_teaser_image = page.header.teaser | default: site.og_image -%}
-{%- assign page_teaser_image = page_teaser_image | escape -%}
+  {%- assign page_large_image = page.header.og_image | default: page.header.overlay_image | default: page.header.image -%}
+  {%- assign page_large_image = page_large_image | escape -%}
+
+  {% comment %}
+  Else default to header.jpg if it exists
+  {% endcomment %}
+  {% if page_large_image == nil %}
+    {% assign header = "assets/images/" | append: page.slug | append: "/header.jpg" %}
+    {% capture header_default %}{% file_exists {{ header }} %}{% endcapture %}
+    {% if header_default == "true" %}
+      {%- assign page_large_image = header -%}
+    {% endif %}
+  {% endif %}
+
+  {% comment %}
+  Else default to teaser image or site twitter image
+  {% endcomment %}
+  {%- assign page_teaser_image = page.header.teaser | default: site.og_image -%}
+  {%- assign page_teaser_image = page_teaser_image | escape -%}
+{% endif %}
 
 {%- assign site_og_image = site.og_image -%}
 {%- assign site_og_image = site_og_image | escape -%}
@@ -68,9 +96,9 @@
 {% endif %}
 
 {% if page_large_image %}
-  <meta property="og:image" content="{% picture card {{page_large_image}} %}">
+  <meta property="og:image" content="{% picture large-twitter-card {{page_large_image}} %}">
 {% elsif page_teaser_image %}
-  <meta property="og:image" content="{% picture card {{page_teaser_image}} %}">
+  <meta property="og:image" content="{% picture large-twitter-card {{page_teaser_image}} %}">
 {% endif %}
 
 {% if site.twitter.username %}
@@ -81,11 +109,11 @@
 
   {% if page_large_image %}
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="{% picture card {{page_large_image}} %}">
+    <meta name="twitter:image" content="{% picture large-twitter-card {{page_large_image}} %}">
   {% else %}
     <meta name="twitter:card" content="summary">
     {% if page_teaser_image %}
-      <meta name="twitter:image" content="{% picture card {{page_teaser_image}} %}">
+      <meta name="twitter:image" content="{% picture small-twitter-card {{page_teaser_image}} %}">
     {% endif %}
   {% endif %}
 

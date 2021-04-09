@@ -57,7 +57,7 @@ facebook:
   username               :
   app_id                 :
   publisher              :
-og_image                 : /assets/images/white-logo.png # Open Graph/Twitter default site image
+og_image                 : /assets/images/logo.png # Open Graph/Twitter default site image
 social:
   type                   : Organization # Person or Organization (defaults to Person)
   name                   : # If the user or organization name differs from the site's name
@@ -192,9 +192,12 @@ defaults:
       comments: false
       share: false
       related: true
-      # last_modified_at: '2021-03-29'
   - scope:
       type: "category"
     values:
       header:
         overlay_image: /assets/images/default-header.jpg
+      
+picture: 
+  ignore_missing_images: 
+    true

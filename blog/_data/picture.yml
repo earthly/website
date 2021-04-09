@@ -26,7 +26,12 @@ presets:
     formats: [webp, original]
     crop: '4:1'
 
-  card:
+  large-twitter-card:
     markup: direct_url
     crop: '1.91:1'
     fallback_width: 800
+
+  small-twitter-card:
+    markup: direct_url
+    crop: '1:1'
+    fallback_width: 240
