@@ -197,7 +197,3 @@ defaults:
     values:
       header:
         overlay_image: /assets/images/default-header.jpg
-      
-picture: 
-  ignore_missing_images: 
-    true
