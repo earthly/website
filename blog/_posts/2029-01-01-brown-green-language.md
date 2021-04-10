@@ -206,6 +206,7 @@ There are probably lot of other ways to measure this but I think this captures s
 
 TIOBE and StackOverflow have different ideas of what a programming lanague is.  I removed items from the top 15 lists where TIOBE didn't measure them the same way.  This includes: HTML/CSS (not considered a programming language by tiobe), Shell Scripts (TIOBE seems to measure these differently), VBA (not included in TIOBE).
 
+https://www.goodreads.com/quotes/276615-another-flaw-in-the-human-character-is-that-everybody-wants
 
 
 To Do:
