@@ -41,7 +41,7 @@ Then browse to http://0.0.0.0:4002/blog/
 ## Run Blog native on macos
 ### Install deps
 ```
- brew updatpe
+ brew update
  brew upgrade ruby-build
  rbenv install 2.7.0
  rbenv global 2.7.0
