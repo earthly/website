@@ -42,6 +42,7 @@ presets:
     fallback_width: 600
 
   wide:
-   formats: [webp, original]
-   crop: '3:1'
-   keep: center
+      formats: [webp, original]
+      widths: [800]
+      keep: center
+      crop: '2:1'
