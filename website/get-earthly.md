@@ -43,7 +43,7 @@ os:
                     Terminal
                 </header>
                 <code class="Home-product-Earthfile-code on-download-listen">brew install earthly
-            earthly bootstrap</code>
+            sudo earthly bootstrap</code>
             </div>
 
     tab3:
