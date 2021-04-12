@@ -7,23 +7,22 @@ author: Adam
 toc: true
 ---
 ## The Data
-The Stack Overflow Developer Survey[^1] results are a great source of information about how developer work.  I was looking at the 2020 results for some ideas on what programming language we should next add to our [documentation](https://docs.earthly.dev/basics/part-1-a-simple-earthfile) on containerized builds and I noticed something interesting about the types of programming langauges people like. It's something that doesn't seem to come up in various discussions of programming language preferences.
+The Stack Overflow Developer Survey[^1] results are a great source of information about how developers work.  I was looking at the 2020 results for some ideas on what programming languages we should add to our [documentation](https://docs.earthly.dev/basics/part-1-a-simple-earthfile) on containerized builds, and I noticed something interesting about the types of programming languages people like. It's something that doesn't seem to come up in various discussions of programming language preferences.
 
-The survey results have rankings for **The Most Dreaded Programming Languages** and **The Most Loved Programming Langauge**. Both results come from this question:
+The survey results have rankings for **The Most Dreaded Programming Languages** and **The Most Loved Programming Langauge**. Both rankings come from this question:
 
 > Which programming, scripting, and markup languages have you done
 extensive development work in over the past year, and which do you want to work
 in over the next year? (If you both worked with the language and want to continue
 to do so, please check both boxes in that row.)
 
-A dreaded langauge is one people work with extensively in the current year but don't want to continue to use.  A loved language is one that again is used extensively but in this case you'd like that to continue.  The results are interesting because they reflect the opions of people who are using the langauge extensively: there should be no I-heard-X-is-cool effect, where people rank highly things they don't actually use because it is the new hottness.  The inverse should also be true: People who put something on the **Dreaded** list are actually using it. They are not dreading a langague because they heard its complex, but because they have to work it and feel a real pain.
+A dreaded language is one people work with extensively in the current year but don't want to continue to use.  A loved language you use extensively and wish to continue using.  The results are interesting because they reflect the opinions of people who are using the language extensively. There should be no I-heard-X-is-cool effect, where people rank highly things they don't actually use because it is the new hotness.  The inverse should also be true: People who put something on the **Dreaded** list are using it. They are not dreading a language because they heard it was complex, but because they have to work it and feel real pain.
 
 <div class="notice--warning notice--big">
 **The TOP 15 Dreaded Programming Languages:**
 
 VBA, Objective-C, Perl, Assembly, C, PHP, Ruby, C++, Java, R, Haskell, Scala, HTML, Shell, and SQL. 
 </div>
-
 
 <div class="notice--success notice--big">
 **The TOP 15 Loved Programming Languages:**
@@ -35,27 +34,26 @@ There actually is a pattern in this list.  Can you see what it is?
 
 ## Code Written Before I was Hired Is the Worst
 
-Old code is the worst.  Find me a file in a code base that has been under active development for more than 3 years and it will be hard to follow.  What starts out as a simple access layer develops special cases to check for, and performance optimzations and configuration options that must be considered.  Real world code evolves to fits its niche and as it does so it becomes more complex and harder to quickly understand.  The reason for this is simple and I first heard about it from Joel Spolsky. 
+Old code is the worst.  Find me a file in a codebase that has been under active development for more than three years, and it will be hard to follow.  What starts as a simple file access layer develops special cases to check for, and performance optimizations and various branches controlled by configuration options.  Real-world code evolves to fits its niche, and as it does so, it becomes more complex and harder to understand.  The reason for this is simple, and I first heard about it from Joel Spolsky. 
 
 > The reason that [ developers ] think the old code is a mess is because of a cardinal, fundamental law of programming: **It’s harder to read code than to write it.**
 >
 > Joel Spolsky - [Things you should never do](https://www.joelonsoftware.com/2000/04/06/things-you-should-never-do-part-i/)
 
-Let's call this Joel's Law. Joel's thinks a lot of a lot of things follow from this premise.  Why do most developers think the code they inherited is a mess and want to throw it out and start again? It's because writing something new is cognitively less demaning than starting from scratch. Why are many rewrites doomed to fail? Becasuse all the cruft that makes the code messy are actually important little improvements accreted overtime, and without some plan for simplifying them you will end up back where you started.  
+Let's call this Joel's Law. A lot of things follow from this premise.  Why do most developers think the code they inherited is a mess and want to throw it out and start again? It's because writing something new is cognitively less demanding than starting from scratch, at least intially. Why are many rewrites doomed to fail? Because all that cruft that makes the code messy is actually necessary little improvements accreted over time, and without some plan for simplifying them you will end up back where you started.  
 
 ![Scott Adams Understood]({{site.images}}{{page.slug}}/dt140812.gif)
 
-Its easy to build up an understanding of code as you write it, but its hard to build up an understanding of code by reading it.  If you return to code you wrote and think its garbadge, it could be because you have grown as a developer, but it also could be because you have just forgotten how it works and you are intepreting the pain of reading the code as a code quality problem. Could this be why growing PR backlogs are a persistent problem.  PR Reviews are a read only activity and they are really hard to do well if you don't already have a working model of the code in your head.
+It's easy to build up an understanding of code as you write it, but it's hard to build up an understanding of code by reading it.  If you return to code you wrote and think it's garbage, it could be because you have grown as a developer, but it also could be because you have just forgotten how it works and it is inherently a complex problem. You are interpreting the pain of reading the code as a code quality problem. Could this be why growing PR backlogs are a persistent problem?  PR Reviews are a read-only activity, and they are hard to do well if you don't already have a working model of the code in your head.
 
 ## This is Why You Dread It
-
-If developers think real world code they don't understand is a mess, it should mean that langauges used in software maintanance, where people are forced to do much more reading and understanding then writing, that those languages will be viewed unfavorably: Software maintenace is just less fun than a greenfield rewrite.  My hypothesis is this effect is actually stronger than the pros and cons of various languages in many cases. I think this is actually what the survey question is measuring: dreaded langauges are likely to be those used in existing brown field projects and loved langauges are those being used in realiveily new projects.  Let's test this.[^2]
+If all real-world code is a mess than languages used to maintain that code could be viewed unfavorably. If you build new things in Go, but have to maintain a sprawling 20-year-old C++ codebase can you really rank them fairly? I think this is actually what the survey question is measuring: dreaded langauges are likely to be those used in existing brown field projects and loved languages are those being used in relatively new projects.  Let's test this.[^2]
 
 ## Measuring Brown VS Green Languages
 
-The Tiobe index claims to measure the "the number of skilled engineers, courses and jobs worldwide" for programming languages. There are probably some problems with how they measure this, but its accurate enough for our purposes.  We use the July 2016 TIObe [index]( https://web.archive.org/web/20160801213334/https://www.tiobe.com/tiobe-index/), the oldest available in way back machine, as a proxy for a language having accumulated lots of code to maintain.  If something was big in 2016 its more likely people now are maintaining code written in it than if it wasn't popular in 2016. 
+The Tiobe index claims to measure "the number of skilled engineers, courses and jobs worldwide" for programming languages. There are probably some problems with how they measure this, but it's accurate enough for our purposes.  We use the July 2016 TIObe [index]( https://web.archive.org/web/20160801213334/https://www.tiobe.com/tiobe-index/), the oldest available in way back machine, as a proxy for a language having accumulated lots of code to maintain.  If something was big in 2016, it's more likely people are maintaining code written in it than if it wasn't popular in 2016. 
 
-The top 20 programming languages on their list as of July 2016 are: Java, C, C++, Python, C#, PHP, JavaScript, VB .Net, Perl, Assembly, Ruby, Pascal, Swift, Objective-C, MATLAB, R, SQL, COBOL and Groovy.  We can use this as our list of languages more likely to be used in mainteance work.  Let's call them brown languages. Languages not in the top 20 in 20016 are more likely to be used in new projects and we will call them green langauges. 
+The top 20 programming languages on their list as of July 2016 are Java, C, C++, Python, C#, PHP, JavaScript, VB .Net, Perl, Assembly, Ruby, Pascal, Swift, Objective-C, MATLAB, R, SQL, COBOL, and Groovy.  We can use this as our list of languages more likely to be used in maintenance work.  Let's call them brown languages. Languages not in the top 20 in 20016 are more likely to be used in new projects. We will refer to these as green languages. 
 
 ``` matplotlib
 import matplotlib.pyplot as plt
@@ -82,23 +80,23 @@ ax1.axis('equal')
 ```
 
 <figcaption>
-Out of 22 Languages in the dreaded/loved list 63% are Brown
+Out of 22 Languages in the dreaded/loved list, 63% are Brown
 </figcaption>
 
 <div class="notice--warning notice--big">
-**Brown Langauage:** A language that you are more likely to use in existing software maintanence (ie. brown field projects).
+**Brown Language:** A language that you are more likely to use in existing software maintanence (ie. brown field projects).
 
 Java, C, C++, C#, Python, PHP, JavaScript, Swift, Perl, Ruby, Assembly, R, Objective-C,  SQL 
 </div>
 
 <div class="notice--success notice--big">
-**Green Langauage:** A language that you are more likely to use in a new project (ie. green field projects).
+**Green Language:** A language that you are more likely to use in a new project (ie. green field projects).
 
 Go, Rust, TypeScript, Kotlin, Julia, Dart, Scala, Haskell, 
 </div>
 
 
-TIOBE and StackOverflow have different ideas of what a programming lanugage is so we have to normalize the two lists a bit by removing HTML/CSS, Shell Scrips and VBA.[^3] 
+TIOBE and StackOverflow have different ideas of what a programming language is.  To overcome this, we have to normalize the two lists by removing HTML/CSS, Shell Scrips, and VBA.[^3] 
 
 <div class="notice--info">
 **Removed Langauage:** Not measured the same by TIOBE and StackOverflow
@@ -106,9 +104,9 @@ TIOBE and StackOverflow have different ideas of what a programming lanugage is s
 VBA, Shell, HTML/CSS
 </div>
 
-There are obviously lots of nuances that a simple green / brown split misses - I expect that more green field projects start with Swift than with ObjectiveC, but its not a bad split. There are far more brown langauges in this list than green, but that is what I would expect given that year on year turn-over in programming languages is realively low.  
+There are many nuances that a simple green / brown split misses - I expect that more greenfield projects start with Swift than with Objective-C, but it does seem sufficient to capture what we need. There are far more brown languages in this list than green, but that is what I would expect given that year-on-year turn-over in programming languages is relatively low.  
 
-Now we can answer the question: Do people love and dread the languages they state, in that stackoverflow survey, or are they really just dreading legacy code? Or put another way: If Java and Ruby appeared today, without piles of old rails apps and old enterprise Java applications to maintain, would they still be dreaded?
+Now we can answer the question: Do people love and dread the languages they state or are they just dreading legacy code? Or to put it another way: If Java and Ruby appeared today, without piles of old rails apps and old enterprise Java applications to maintain, would they still be dreaded or would they be more likely to show up on the loved list?
 
 ## The Dreaded Brown Programming Languages
 
@@ -140,7 +138,7 @@ ax1.axis('equal')
 Dreaded Langauges 83% Brown
 </figcaption>
 
-The Top Dreaded languages are almost all are brown languages. 68% of the langauges in our full list are brown while 83% of the dreaded langagues are brown. This is higher than we would expect by chance.  
+The Top Dreaded languages are almost all are brown languages. 68% of the languages in our complete list are brown while 83% of the dreaded languages are brown, which is higher than we would expect by chance.  
 
 ## The Loved Green Programming Languages
 
@@ -170,18 +168,19 @@ ax2.axis('equal')
 Loved Langauges 54% Green
 </figcaption>
 
-In the top loved langauges 54% are green. 17% of the langauges in our list are brown, so this is much higher than we would expect by chance. In fact every single green language is in the loved list. 
+In the top loved languages, 54% are green. Only 17% of the languages in our list are green and every single green language showed up somewhere in the loved list. 
 
 > Another flaw in the human character is that everybody wants to build and nobody wants to do maintenance.
 >
 > ― Kurt Vonnegut
+This probably isn't enough evidence to say for sure that having to use a langauge in a maintance project is the cause behind people dreading it but it shows that the languages people love are languages that are too new or too historically unpopular to have giant big ball of mud projects to maintain.  
 
-This seems like it confirms the hypothesis: the languages people love are languages that are too new or too historically unpopular to have giant big ball of mud projects to maintain.  Rust, Kotlin and the rest may still be in a honeymoon phase with many people.  Peoples love for working for them may have as much to do with not having to work in 20 year old code bases than that the code bases are written in those particular languages.
+In otherwords, Rust, Kotlin and the rest may still be in a honeymoon phase.  Peoples love for working for them may have as much to do with not having to work in 20 year old code bases than that the code bases are written in those particular languages.
 
 ## Overcoming Bias
  {% picture {{site.images1}}{{page.slug}}/angel-devil-wide.png  --picture class="wide" --alt {{ Angel and Devil by Gan Khoon Lay from the Noun Project }} %}
 
-Some newer or historically less popular programming langauges might be better than older or more mainstream langauges but our ability to judge that seems like it is quite biased.  In particular, it seems like when deciding if they like a programmign language, software engineers in the stackoverflow survey are giving a halo to languages they have used in a green field project and giving horns to languages where they have to do mainteance work and the reason for this is Joel's Law: reading real world is code hard because it has accumulated special conditions and optimzations for corner cases and so on. Building something new is more fun, and new languages are more likely to be used to build something new.
+Some newer or historically less popular programming langauges might be better than older or more mainstream langauges but our ability to judge that seems like it is quite biased.  In particular, it seems like when deciding if they like a programmign language, software engineers in the stackoverflow survey are giving a halo to languages that are newer or were not used commonly in the past and they are giving horns to languages where that have been around longer.  I think this is because of nobody likes maintaining someone elses code and because of Joel's Law: reading real world is code hard because it has accumulated special conditions and optimzations for corner cases and so on. Building something new is more fun, and new languages are more likely to be used to build something new.
 
 ## The Lifecycle of Programming Language Hype
 
@@ -191,8 +190,6 @@ I orginally started digging into these numbers to get a clear ranking for what l
  {% picture {{site.images1}}{{page.slug}}/hype-wide.png  --alt A graph showing hype decreasing overtime for a langauge %}
 <figcaption>The lifecycle of programming language hype</figcaption>
 </div>
-
-
 
 I don't have data for this, but I distinctly remember Ruby being the hottest language back in 2007 and although it does have more competition today, Ruby is a better language now then it was then. Yet now it is dreaded. The difference, it seems to me, is that now people have 14 years worth of rails apps to maintain. That makes Ruby is a lot less fun than when it was all new projects and also makes claims of ruby being 10X more productive than Java hard to swallow.  So watch out Rust and Kotlin and Julia and Go, you too will eventually lose your halo.
 
