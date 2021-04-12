@@ -43,7 +43,7 @@ os:
                     Terminal
                 </header>
                 <code class="Home-product-Earthfile-code on-download-listen">brew install earthly
-            earthly bootstrap</code>
+            sudo earthly bootstrap</code>
             </div>
 
     tab3:
@@ -144,7 +144,7 @@ Thank you for giving Earthly a shot. Come and be part of the Earthly movement!
 </div>
 </p>
 
-For alternative installation options see the [installation page in the Earthly docs](https://docs.earthly.dev/installation). To install Earthly from source, see the [contributing page in GitHub](https://github.com/earthly/earthly/blob/main/CONTRIBUTING.md).
+For alternative installation options see the [alternative installation page in the Earthly docs](https://docs.earthly.dev/docs/misc/alt-installation). To install Earthly from source, see the [contributing page in GitHub](https://github.com/earthly/earthly/blob/main/CONTRIBUTING.md).
 
 ## Verify installation
 
