@@ -40,3 +40,8 @@ presets:
     crop: '1:1'
     keep: center
     fallback_width: 600
+
+  wide:
+   formats: [webp, original]
+   crop: '3:1'
+   keep: center
