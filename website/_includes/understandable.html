@@ -41,7 +41,7 @@
 <span class="earthfile-target">build:</span>
     <span class="earthfile-term">COPY</span> main.go .
     <span class="earthfile-term">RUN</span> go build -o build/go-example main.go
-    <span class="earthfile-term">SAVE ARTIFACT</span> build/go-example AS LOCAL build/go-example
+    <span class="earthfile-term">SAVE ARTIFACT</span> build/go-example <span class="earthfile-term">AS LOCAL</span> build/go-example
 
 <span class="earthfile-target">lint:</span>
     <span class="earthfile-term">RUN</span> go get golang.org/x/lint/golint
