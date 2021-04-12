@@ -168,33 +168,37 @@ ax2.axis('equal')
 Loved Langauges 54% Green
 </figcaption>
 
-In the top loved languages, 54% are green. Only 17% of the languages in our list are green and every single green language showed up somewhere in the loved list. 
+In the top loved languages, 54% are green. Only 17% of the languages in our list are green, and every single green language showed up somewhere in the loved list. 
 
 > Another flaw in the human character is that everybody wants to build and nobody wants to do maintenance.
 >
 > ― Kurt Vonnegut
-This probably isn't enough evidence to say for sure that having to use a langauge in a maintance project is the cause behind people dreading it but it shows that the languages people love are languages that are too new or too historically unpopular to have giant big ball of mud projects to maintain.  
+This probably isn't quite enough evidence to say for sure that having to use a language in a maintenance project is the cause behind people dreading it but it certainly looks like its very likely.  The languages people love are all too new or too historically unpopular to have many big big-ball-of-mud projects to maintain.  
 
-In otherwords, Rust, Kotlin and the rest may still be in a honeymoon phase.  Peoples love for working for them may have as much to do with not having to work in 20 year old code bases than that the code bases are written in those particular languages.
+In other words, Rust, Kotlin, and the other green langauges may still be in a honeymoon phase.  People's love for working with them may have as much to do with not working in 20-year-old codebases as it does with the particular languages.
 
 ## Overcoming Bias
  {% picture {{site.images1}}{{page.slug}}/angel-devil-wide.png  --picture class="wide" --alt {{ Angel and Devil by Gan Khoon Lay from the Noun Project }} %}
 
-Some newer or historically less popular programming langauges might be better than older or more mainstream langauges but our ability to judge that seems like it is quite biased.  In particular, it seems like when deciding if they like a programmign language, software engineers in the stackoverflow survey are giving a halo to languages that are newer or were not used commonly in the past and they are giving horns to languages where that have been around longer.  I think this is because of nobody likes maintaining someone elses code and because of Joel's Law: reading real world is code hard because it has accumulated special conditions and optimzations for corner cases and so on. Building something new is more fun, and new languages are more likely to be used to build something new.
+Some newer or historically less popular programming languages might be better than older or more mainstream languages, but our ability to judge seems quite biased.  In particular, when deciding a language developers are giving a halo to languages that are newer or were not used commonly in the past, and they are giving horns to languages that have been around longer.  I think this is because nobody likes maintaining someone else's code. And also, because of Joel's Law: reading real-world is code hard. Building something new is fun, and new languages are used for that more often.
 
 ## The Lifecycle of Programming Language Hype
 
-I orginally started digging into these numbers to get a clear ranking for what languages were most used and loved by software developers so that I could add more examples to our [docs](https://docs.earthly.dev/) and our [build examples](https://github.com/earthly/earthly/tree/main/examples).  What I came away with was the idea that loved programming languages get used a lot, which leads to a lot of code to maintain, which leads people to dislike them and look for greener pastures. There are probably other factors beside just software maintenace costs. If a langauge or paradigm was sold as a silver bullet for software developement eventually expectation need to fall in line with the reality of using the langague.  
+I originally started digging into these numbers to get a clear ranking for what languages were most used and loved by software developers so that I could add more examples to our [docs](https://docs.earthly.dev/) and our [build examples](https://github.com/earthly/earthly/tree/main/examples).  What I came away with was the idea of a language life cycle: loved programming languages get used a lot, which leads to code maintenance, which causes people to dislike them, which leads to people looking for greener pastures. 
 
 <div class="wide">
  {% picture {{site.images1}}{{page.slug}}/hype-wide.png  --alt A graph showing hype decreasing overtime for a langauge %}
 <figcaption>The lifecycle of programming language hype</figcaption>
 </div>
 
-I don't have data for this, but I distinctly remember Ruby being the hottest language back in 2007 and although it does have more competition today, Ruby is a better language now then it was then. Yet now it is dreaded. The difference, it seems to me, is that now people have 14 years worth of rails apps to maintain. That makes Ruby is a lot less fun than when it was all new projects and also makes claims of ruby being 10X more productive than Java hard to swallow.  So watch out Rust and Kotlin and Julia and Go, you too will eventually lose your halo.
+I don't have data for this, but I distinctly remember Ruby being the hottest language back in 2007, and although it does have more competition today, Ruby is a better language now than it was then. Yet now it is dreaded. Part of the difference, it seems to me, is that now people have 14 years worth of rails apps to maintain. That makes Ruby is a lot less fun than when it was all new projects.  So watch out Rust and Kotlin and Julia and Go: you too will eventually lose your halo.
 
  [^1]: 2020 [Graphical](https://insights.stackoverflow.com/survey/2020) and [Raw](https://drive.google.com/file/d/1dfGerWeWkcyQ9GX9x20rdSGj7WtEpzBB/view) results.
- [^2]: I came up with this measurement criteria first, I'm not working backwards from data and explaining it, rather testing a hypothesis, although you'll have to take my work for it. I did consider using langauge creation date to determine gren vs brown status, but some langauages have been around for some time but only realively recently been used outside of academia. Tiobe is measured like [this](https://www.tiobe.com/tiobe-index/programming-languages-definition/) and their historical data is only available if you pay, so I am using the wayback machine.  
- [^3]: TIOBE doesn't include HTML/CSS because it doesn't consider them turning complete and therefore not a programming language.  Shell scripts are measured seperately by TIOBE and VBA is not in the list of languages measured at all as far as I can see.
+ [^2]: I came up with this measurement criteria. First, I'm not working backward from data and explaining it, instead I'm testing a hypothesis, although you'll have to take my word for it. 
+ 
+        I did consider using language creation date to determine green vs. brown status, but some languages have been around for some time but only found usage relatively recently. 
+        
+        Tiobe is measured like [this](https://www.tiobe.com/tiobe-index/programming-languages-definition/) and their historical data is only available if you pay, so I am using the Wayback Machine.  
+ [^3]: TIOBE doesn't include HTML/CSS because it doesn't consider them turning complete and therefore not a programming language.  Shell scripts are measured separately by TIOBE, and VBA is not in the list of languages measured at all as far as I can see.
 
 
