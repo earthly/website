@@ -200,5 +200,5 @@ I don't have data for this, but I distinctly remember Ruby being the hottest lan
 
      I did consider using language creation date to determine green vs. brown status, but some languages have been around for some time but only found usage relatively recently. 
 
-     Tiobe is measured like [this](https://www.tiobe.com/tiobe-index/programming-languages-definition/) and their historical data is only available if you pay, so I am using the Wayback Machine.  
+     TIOBE is measured like [this](https://www.tiobe.com/tiobe-index/programming-languages-definition/) and their historical data is only available if you pay, so I am using the Wayback Machine.  
  [^3]: TIOBE doesn't include HTML/CSS because it doesn't consider them turning complete and therefore not a programming language.  Shell scripts are measured separately by TIOBE, and VBA is not in the list of languages measured at all, as far as I can see.
