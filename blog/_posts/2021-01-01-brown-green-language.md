@@ -181,7 +181,7 @@ In other words, Rust, Kotlin, and the other green languages may still be in a ho
 ## Overcoming Bias
  {% picture {{site.pimages}}{{page.slug}}/angel-devil-wide.png  --picture class="wide" --alt {{ Angel and Devil by Gan Khoon Lay from the Noun Project }} %}
 
-Some newer or historically less popular programming languages might be better than older or more mainstream languages, but our ability to judge seems quite biased.  In particular,developers are giving a halo to languages that are newer or were not used commonly in the past, and they are giving horns to languages that have been around longer.  I think this is because nobody likes maintaining someone else's code. And also, because of Joel's Law: reading real-world is code hard. Building something new is fun, and new languages are used for that more often.
+Some newer or historically less popular programming languages might be better than older or more mainstream languages, but our ability to judge seems quite biased.  In particular, developers are giving a halo to languages that are newer or were not used commonly in the past, and they are giving horns to languages that have been around longer.  I think this is because nobody likes maintaining someone else's code. And also, because of Joel's Law: reading real-world is code hard. Building something new is fun, and new languages are used for that more often.
 
 ## The Lifecycle of Programming Language Hype
 
@@ -202,5 +202,4 @@ I don't have data for this, but I distinctly remember Ruby being the hottest lan
 
      Tiobe is measured like [this](https://www.tiobe.com/tiobe-index/programming-languages-definition/) and their historical data is only available if you pay, so I am using the Wayback Machine.  
  [^3]: TIOBE doesn't include HTML/CSS because it doesn't consider them turning complete and therefore not a programming language.  Shell scripts are measured separately by TIOBE, and VBA is not in the list of languages measured at all, as far as I can see.
-
 
