@@ -96,7 +96,7 @@ Go, Rust, TypeScript, Kotlin, Julia, Dart, Scala, and Haskell
 </div>
 
 
-TIOBE and StackOverflow have different ideas of what a programming language is.  To overcome this, we have to normalize the two lists by removing HTML/CSS, Shell Scrips, and VBA.[^3] 
+TIOBE and StackOverflow have different ideas of what a programming language is.  To overcome this, we have to normalize the two lists by removing HTML/CSS, Shell Scripts, and VBA.[^3] 
 
 <div class="notice--info">
 **Removed Language:** Not measured the same by TIOBE and StackOverflow
@@ -202,4 +202,3 @@ I don't have data for this, but I distinctly remember Ruby being the hottest lan
 
      Tiobe is measured like [this](https://www.tiobe.com/tiobe-index/programming-languages-definition/) and their historical data is only available if you pay, so I am using the Wayback Machine.  
  [^3]: TIOBE doesn't include HTML/CSS because it doesn't consider them turning complete and therefore not a programming language.  Shell scripts are measured separately by TIOBE, and VBA is not in the list of languages measured at all, as far as I can see.
-
