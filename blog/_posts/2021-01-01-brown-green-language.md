@@ -40,7 +40,7 @@ Old code is the worst.  Find me a file in a codebase that has been under active 
 >
 > Joel Spolsky - [Things you should never do](https://www.joelonsoftware.com/2000/04/06/things-you-should-never-do-part-i/)
 
-Let's call this Joel's Law. A lot of things follow from this premise.  Why do most developers think the code they inherited is a mess and want to throw it out and start again? It's because writing something new is cognitively less demanding than starting from scratch, at least initially. Why are many rewrites doomed to fail? Because much of what makes the code seem messy is vital little improvements that accreted over time. Without some plan for simplifying them, you will end up back where you started.  
+Let's call this Joel's Law. A lot of things follow from this premise.  Why do most developers think the code they inherited is a mess and want to throw it out and start again? It's because writing something new is cognitively less demanding than starting from scratch, at least initially. Why are many rewrites doomed to fail? Because much of what makes the code seem messy are vital little improvements that accreted over time. Without some plan for simplifying them, you will end up back where you started.  
 
 ![Scott Adams Understood]({{site.images}}{{page.slug}}/dt140812.gif)
 
