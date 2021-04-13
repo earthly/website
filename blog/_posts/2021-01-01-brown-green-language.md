@@ -80,7 +80,7 @@ ax1.axis('equal')
 ```
 
 <figcaption>
-Out of 22 Languages in the dreaded/loved list, 63% are Brown
+Out of 22 Languages in the combined dreaded/loved list, 63% are Brown
 </figcaption>
 
 <div class="notice--warning notice--big">
