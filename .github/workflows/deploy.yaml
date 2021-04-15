@@ -4,6 +4,7 @@ on:
   # run everyday at 6:15 to roll out new posts
   schedule:
     - cron: '15 06 * * *' 
+  workflow_dispatch:
   push:
 
 jobs:
