@@ -24,7 +24,15 @@ jobs:
       - name: Download released earth
         run: "sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/download/v0.5.8/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly'"
       - name: Build Site
-        run: earthly --use-inline-cache +build
+        run: |-
+          if [ "$CI_ACTION_REF_NAME" == "main" ]; then
+            echo "Main Build - going to prod!"
+            earthly --use-inline-cache +build
+          else
+            echo "Branch Build - only for preview"
+            earthly --use-inline-cache +dev-build 
+          fi
+          
       - name: checkout branch in repo website-output
         run: |-
           git clone --depth 1 https://x-access-token:${{ secrets.PUSH_SECRET }}@github.com/earthly/website-output.git
