@@ -275,6 +275,7 @@
   background-color: $color-grey-darkest;
   border-radius: $earth-border-radius-large;
   overflow: hidden;
+  margin-bottom: $spacing-unit / 2;
 }
 .Home-product-Earthfile-header {
   position: relative;
@@ -300,6 +301,27 @@
   font-size: 12px;
   color: $earth-color-gray-lightest;
   white-space: pre-wrap;
+}
+
+.Home-product-note {
+  font-size: 14px;
+  margin-left: $spacing-unit / 2;
+  margin-bottom: $spacing-unit / 2;
+
+  p {
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+  }
+
+  li {
+    margin: 0;
+    padding: 0;
+  }
+
+  code {
+    font-size: 14px;
+  }
 }
 
 
