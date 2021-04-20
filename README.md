@@ -46,6 +46,7 @@ Then browse to http://0.0.0.0:4002/blog/
  rbenv install 2.7.0
  rbenv global 2.7.0
  ruby -v
+ brew install vips
  brew install pandoc
  brew install pandoc-plot
  pip3 install matplotlib
