@@ -56,6 +56,11 @@ cd blog
 RUBYOPT='-W0' bundle exec jekyll serve -H 0.0.0.0 --future --incremental -P 4002
 
 ```
+### Clear html cache
+sometimes things seem to be cached when they shouldn't. So delete everything:
+```
+find ./_site -type f -name '*.html' -print -delete
+```
 
 ## Build Site (blog and website):
 Build this site into a folder of static files:

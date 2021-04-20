@@ -113,7 +113,7 @@ User twitter.jpg if it exists
   {% else %}
     <meta name="twitter:card" content="summary">
     {% if page_teaser_image %}
-      <meta name="twitter:image" content="{% picture small-twitter-card {{page_teaser_image}} %}">
+      <meta name="twitter:image" content="{{site.url}}{% picture small-twitter-card {{page_teaser_image}} %}">
     {% endif %}
   {% endif %}
 
