@@ -4,7 +4,9 @@ presets:
     fallback_width: 800
     fallback_format: original
     noscript: false
-    quality: 80
+    quality: 100
+    format_quality:
+      webp: 80
     data_sizes: true
     keep: center
     dimension_attributes: false
@@ -26,6 +28,8 @@ presets:
     formats: [webp, png]
     widths: [400, 600, 800, 1000, 1200]
     quality: 100
+    format_quality:
+      webp: 100
     crop: '4:1'
     keep: center
 
