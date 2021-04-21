@@ -12,13 +12,11 @@ base-image:
   RUN apt-get install cabal-install -y
   RUN cabal update
   # ToDo: This takes forever, and there is a static binary offered
+  RUN cabal install pandoc-plot --dependencies-only --force-reinstalls
   RUN cabal install pandoc-plot --force-reinstalls
   RUN cp /root/.cabal/bin/* /usr/bin/
 
-  RUN apt-get install python3-matplotlib -y
-  RUN apt-get install libvips -y
-  RUN apt-get update
-  RUN apt-get install python3-pip -y
+  RUN apt-get install python3-matplotlib libvips-dev python3-pip -y
   RUN pip3 install pandocfilters
   SAVE IMAGE --push agbell/website-base:latest
 

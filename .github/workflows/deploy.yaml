@@ -1,9 +1,9 @@
 name: Deploy Website
 
 on:
-  # run everyday at 6:15 to roll out new posts
+  # run everyday at 1:15 utf ( 9:15 am est) to roll out new posts
   schedule:
-    - cron: '15 06 * * *' 
+    - cron: '15 13 * * *' 
   workflow_dispatch:
   push:
 
