@@ -18,13 +18,6 @@ Corey:
     name    : "Corey Larson"
     bio     : "Eats, runs, and codes. Dad. Engineer. Progressive. LDS. Disneyland fanatic."
     avatar  : "/assets/images/authors/coreylarson.jpg"
-    # links:
-    #  - label: "Website"
-    #    icon: "fas fa-fw fa-link"
-    #    url: "http://eatrunco.de/"
-    #  - label: "Twitter"
-    #    icon: "fab fa-fw fa-twitter-square" 
-    #    url: "https://twitter.com/dchw"
 Vlad:
     name    : "Vlad A. Ionescu"
     bio     : " Founder of Earthly. Founder of ShiftLeft. Ex Google. Ex VMware. Co-author RabbitMQ Erlang Client."
@@ -47,9 +40,11 @@ Sanket Makhija:
 Kasper Siig:
     name    : "Kasper Siig"
     bio     : "As a DevOps engineer, Kasper Siig is used to working with a variety of exciting technologies, from automating simple tasks to CI/CD to Docker."
+    avatar  : "/assets/images/authors/kaspersiig.jpg"
 Milan Bhardwaj:
     name    : "Milan Bhardwaj"
     bio     : "Milan is a software engineer in AI/ML, driving development cycles from conception to completion. He has a knack for solving real-world challenges with scalable solutions."
+    avatar  : "/assets/images/authors/milanbhardwaj.jpg"
 Allan MacGregor:
     name    : "Allan MacGregor"
     bio     : "Allan MacGregor is a software engineer and entrepreneur based in Toronto, with experience in building projects and developing innovative solutions."
