@@ -56,7 +56,8 @@ The TIOBE index claims to measure "the number of skilled engineers, courses and 
 The top 20 programming languages on their list as of July 2016 are Java, C, C++, Python, C#, PHP, JavaScript, VB.NET, Perl, Assembly, Ruby, Pascal, Swift, Objective-C, MATLAB, R, SQL, COBOL, and Groovy.  We can use this as our list of languages more likely to be used in maintenance work.  Let's call them brown languages. Languages not in the top 20 in 2016 are more likely to be used in new projects. We will refer to these as green languages. 
 
 
-``` matplotlib
+![Out of 22 Languages in the combined dreaded/loved list, 63% are Brown]({{site.images}}{{page.slug}}/graph1.svg)
+<!-- ```
 import matplotlib.pyplot as plt
 
 labels = 'Brown', 'Green'
@@ -78,7 +79,7 @@ ax1.pie(overall_languages, explode=explode, labels=labels,
         colors=colors)
 ax1.axis('equal') 
 
-```
+``` -->
 
 <figcaption>
 Out of 22 Languages in the combined dreaded/loved list, 63% are Brown
@@ -111,7 +112,9 @@ Now we can answer the question: Do people love and dread the languages they stat
 
 ## The Dreaded Brown Programming Languages
 
-``` matplotlib
+![Dreaded Languages: 83% Brown]({{site.images}}{{page.slug}}/graph2.svg)
+
+<!-- ```
 import matplotlib.pyplot as plt
 
 labels = 'Brown', 'Green'
@@ -137,13 +140,15 @@ ax1.axis('equal')
 ```
 <figcaption>
 Dreaded Languages: 83% Brown
-</figcaption>
+</figcaption> -->
 
 The Top Dreaded languages are almost all are brown languages. 68% of the languages in our complete list are brown, while 83% of the dreaded languages are brown, which is higher than we would expect by chance.  
 
 ## The Loved Green Programming Languages
 
-``` matplotlib
+![Loved Languages 54% Green]({{site.images}}{{page.slug}}/graph3.svg)
+
+<!-- ```
 import matplotlib.pyplot as plt
 
 labels = 'Brown', 'Green'
@@ -167,7 +172,7 @@ ax2.axis('equal')
 ```
 <figcaption>
 Loved Languages 54% Green
-</figcaption>
+</figcaption> -->
 
 In the top loved languages, 54% are green. Only 36% of the languages in our list are green, and every single green language showed up somewhere in the loved list. 
 
@@ -193,7 +198,7 @@ I originally started digging into these numbers to establish a ranking for what 
 <figcaption>The lifecycle of programming language hype</figcaption>
 </div>
 
-I don't have data for this, but I distinctly remember Ruby being the hottest language back in 2007, and although it does have more competition today, Ruby is a better language now than it was then. Yet now it is dreaded. Part of the difference, it seems to me, is that now people have 14 years' worth of rails apps to maintain. That makes Ruby is a lot less fun than when it was all new projects.  So watch out Rust and Kotlin and Julia and Go: you too will eventually lose your halo.
+I don't have data for this, but I distinctly remember Ruby being the hottest language back in 2007, and although it does have more competition today, Ruby is a better language now than it was then. Yet now it is dreaded. Part of the difference, it seems to me, is that now people have 14 years' worth of rails apps to maintain. That makes Ruby is a lot less fun than when it was all new projects.  So watch out Rust and Kotlin and Julia and Go: you too will eventually lose your halo.[^4]
 
  [^1]: 2020 [Graphical](https://insights.stackoverflow.com/survey/2020) and [Raw](https://drive.google.com/file/d/1dfGerWeWkcyQ9GX9x20rdSGj7WtEpzBB/view) results.
  [^2]: 
@@ -203,3 +208,5 @@ I don't have data for this, but I distinctly remember Ruby being the hottest lan
 
      TIOBE is measured like [this](https://www.tiobe.com/tiobe-index/programming-languages-definition/) and their historical data is only available if you pay, so I am using the Wayback Machine.  
  [^3]: TIOBE doesn't include HTML/CSS because it doesn't consider them turning complete and therefore not a programming language.  Shell scripts are measured separately by TIOBE, and VBA is not in the list of languages measured at all, as far as I can see.
+
+ [^4]: Not all brown languages are dreaded however: Python, C#, Swift, JavaScript and SQL remain loved and I would love to hear if anyone has theories on why.  Also Scala and Haskell, two languages I have a soft spot for, are the only green languages on the dreaded list. Is this just noise or is there something else going on there?
