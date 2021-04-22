@@ -66,8 +66,12 @@ social:
     - "https://github.com/earthly/earthly"
 
 
-# custom
+# used for markdown {{site.images}}{{page.slug}} 
 images: "/blog/assets/images/"
+
+# used for picture tag: {% picture {{site.pimages}}{{page.slug}}
+# todo: find way to simplify picture tag
+pimages: "/assets/images/"
 
 
 # Site Footer

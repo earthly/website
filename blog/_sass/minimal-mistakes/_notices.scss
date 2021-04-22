@@ -103,3 +103,7 @@
 .notice--danger {
   @include notice($danger-color);
 }
+
+.notice--big {
+  font-size: $type-size-5 !important;
+}

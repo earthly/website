@@ -4,3 +4,4 @@ directory: ./_site/assets/images/
 strict: true
 logging:
   verbosity: info
+  filepath: log.txt
