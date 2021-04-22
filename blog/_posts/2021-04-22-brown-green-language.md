@@ -5,6 +5,7 @@ categories:
   - Articles
 author: Adam
 toc: true
+excerpt: "I've noticed something interesting about the types of programming languages people like. It's something that doesn't seem to come up in various discussions of programming language preferences."
 ---
 ## The Data
 The Stack Overflow Developer Survey[^1] results are a great source of information about how developers work.  I was looking at the 2020 results for some ideas on what programming languages we should add to our [documentation](https://docs.earthly.dev/basics/part-1-a-simple-earthfile) on containerized builds, and I noticed something interesting about the types of programming languages people like. It's something that doesn't seem to come up in various discussions of programming language preferences.
