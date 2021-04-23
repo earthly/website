@@ -6,8 +6,7 @@ blogurl: "https://earthly.dev/blog/"
 githuburl: "https://github.com/earthly/earthly"
 twitter_username: earthlytech
 github_username:  earthly
-google_analytics: "UA-161831101-3"
-google_analytics_rollup: "UA-161831101-5"
+google_analytics: "UA-161831101-5"
 slack_url: "/slack"
 description: "Better Builds"
 include:
