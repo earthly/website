@@ -58,7 +58,7 @@ Nothing executes the YAML. It only offers some information to the blogging platf
 
 I suspect a lot of it was build and deployment scripts in the form of YAML. It was the type of configuration that encoded the control flow of some external system.  YAML like that lives in this grey zone between declarative configuration and a full-blown programming language. 
 
-I'll show you what I mean. Let's look at an example from [shellcheck](https://github.com/koalaman/shellcheck/blob/master/.travis.yml)'s build script. 
+I'll show you what I mean. Let's look at an example from [shellcheck](https://github.com/koalaman/shellcheck/blob/bd3299edd3b517f92f74c2e3327c9f6b72b31f7c/.travis.yml)'s build script. 
 
 
 ``` yaml
