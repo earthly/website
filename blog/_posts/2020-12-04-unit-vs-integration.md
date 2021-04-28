@@ -108,6 +108,6 @@ The thing is that each situation is unique and advice that is written based on w
 
 ## See Also
 
-- [You are using Docker Compose wrong](/youre-using-docker-compose-wrong/)
+- [You are using Docker Compose wrong](/blog/youre-using-docker-compose-wrong/)
 - [Integration testing guide](https://docs.earthly.dev/guides/integration)
 - [Making Integration tests less flaky](https://dev.to/adamgordonbell/how-to-make-integration-tests-less-flaky-bel)

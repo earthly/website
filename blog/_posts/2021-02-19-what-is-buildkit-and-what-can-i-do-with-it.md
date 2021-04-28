@@ -179,7 +179,7 @@ error: failed to solve: rpc error: code = Unknown desc = failed to solve with fr
 ```
 It doesn't work. It looks like it is trying to fetch the image from docker.io, the default docker hub registry.  
 
-We can verify this by quickly [capturing requests](earthly.dev/blog/mitmproxy/) from buildkitd:
+We can verify this by quickly [capturing requests](https://earthly.dev/blog/mitmproxy/) from buildkitd:
 ```
 ➜ cat ~\Dockerfile
 FROM moby/buildkit 
