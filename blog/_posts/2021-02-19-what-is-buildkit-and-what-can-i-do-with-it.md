@@ -26,7 +26,7 @@ The original BuildKit proposal is found in the moby project:
 
 ## Install BuildKit 
 
-#### buildctl
+### buildctl
 
 BuildKit has two primary components: buildctl and buildkitd.  buildctl is the BuildKit controller, and it communicates with `buildkitd`. Though designed for Linux, it can run on macOS and Windows under WSL2.  
 
@@ -72,7 +72,7 @@ GLOBAL OPTIONS:
 
  ***Other Tools**: In this guide, we will use [pstree](https://linux.die.net/man/1/pstree), [br](https://github.com/Canop/broot), and [mitmproxy](earthly.dev/blog/mitmproxy/). They are not required to use BuildKit or to follow this guide, but they help us demonstrate how BuildKit works.*
 
-#### buildkitd
+### buildkitd
 
 buildkitd does the actual work of transforming a build definition into some output. It is designed to be a long-running process. It also isn't possible to run it on macOS or Windows.  For this tutorial, we will run it as a docker container. That will work regardless of your host OS.
 
