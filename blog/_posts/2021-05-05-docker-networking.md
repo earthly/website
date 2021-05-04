@@ -4,8 +4,9 @@ categories:
   - Tutorials
 toc: true
 author: Ashish Choudhary
+sidebar:
+  nav: "docker"
 ---
-
 Docker is the de facto model for building and running containers at scale in most enterprise organizations today. At a very high level, Docker is a combination of CLI and a daemon process that solves common software problems like installing, publishing, removing, and managing containers. It’s perfect for microservices, where you have many services handling a typical business functionality; Docker makes the packaging easier, enabling you to encapsulate those services in containers.
 
 Once the application is inside a container, it’s easier to scale and even runs on different cloud platforms, like AWS, GCP, and Azure. In this article, let’s focus on the [networking aspect of Docker](https://docs.docker.com/network/).

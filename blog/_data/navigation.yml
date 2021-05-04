@@ -1,7 +1,5 @@
 # main links
 main:
-  # - title: "Home"
-  #   url: https://earthly.dev
   - title: "Blog home"
     url: /
   - title: "Articles"
@@ -12,3 +10,20 @@ main:
     url: /categories/tutorials/
   - title: "GitHub"
     url: https://github.com/earthly/earthly
+docker:
+  - title: Container Tutorials
+    children:
+      - title: "Docker Logging"
+        url: /understanding-docker-logging-and-log-files/
+      - title: "Docker Networking"
+        url: /docker-networking/
+      - title: "AWS ECR"
+        url: /how-to-setup-and-use-amazons-elastic-container-registry/
+  - title: Best Practices
+    children:
+      - title: "Docker Compose"
+        url: /youre-using-docker-compose-wrong/
+      - title: "What Is BuildKit?"
+        url: /what-is-buildkit-and-what-can-i-do-with-it/
+      - title: "Compiling Containers"
+        url: /compiling-containers-dockerfiles-llvm-and-buildkit/

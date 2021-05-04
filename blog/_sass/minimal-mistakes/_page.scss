@@ -35,6 +35,11 @@ body {
   flex: 1 0 auto;
 }
 
+p.page__meta {
+  @include breakpoint(max-width $medium) {
+    display: none;
+  }
+}
 .page {
   @include breakpoint($large) {
     float: right;
