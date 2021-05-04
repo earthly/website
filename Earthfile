@@ -141,3 +141,9 @@ manual-publish:
     && git commit -m "Latest website - manual publish" || exit 0 \ 
     && git push 
    
+new-post:
+  LOCALLY
+  ARG name="one-two-three"
+  RUN cat ./blog/_posts/2029-01-01-example.md > ./blog/_posts/$(date +"%Y-%m-%d")-$name.md
+  RUN mkdir ./blog/assets/images/$name
+  RUN cp ./blog/assets/images/default-header.jpg ./blog/assets/images/$name/header.jpg
