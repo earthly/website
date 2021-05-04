@@ -159,4 +159,4 @@ Make sure you replace the tag, URL, and args as appropriate.
 
 ## Conclusion
 
-Its neat that we can make independent, offline bundles, similar to those shareware floppy disks from back in the day. To see the project as a whole, check out our [repository](). Thanks for reading!
+Its neat that we can make independent, offline bundles, similar to those shareware floppy disks from back in the day. To see the project as a whole, check out our [repository](https://github.com/earthly/example-dos-gaming). Thanks for reading!
