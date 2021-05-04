@@ -140,9 +140,20 @@ play:
 
 We also have a couple pre-made targets that wrap this for you, and all you need to do is have [Earthly installed](https://earthly.dev/get-earthly):
 
-* `earthly github.com/dchw/earthly-dos-gaming:main+doom`
-* `earthly github.com/dchw/earthly-dos-gaming:main+cosmo`
-* `earthly github.com/dchw/earthly-dos-gaming:main+secretagent`
+![Screenshot of id's Doom running in a web browser.]({{site.images}}{{page.slug}}/doom.png)
+<figcaption>
+`earthly github.com/dchw/earthly-dos-gaming:main+doom`
+</figcaption>
+
+![Screenshot of Apogee's Secret Agent running in a web browser.]({{site.images}}{{page.slug}}/agent.png)
+<figcaption>
+`earthly github.com/dchw/earthly-dos-gaming:main+cosmo`
+</figcaption>
+
+![Screenshot of Apogee's Cosmos Cosmic Adventure running in a web browser.]({{site.images}}{{page.slug}}/cosmo.png)
+<figcaption>
+`earthly github.com/dchw/earthly-dos-gaming:main+secretagent`
+</figcaption>
 
 Running any of these commands will start the game. Just navigate on over to [localhost:8000](http://localhost:8000) and start playing! Additionally, you will find a Docker image on your system named `jsdos:$GAME_TAG` for when you want to play later.
 
