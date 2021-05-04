@@ -21,11 +21,11 @@ $(document).ready(function() {
     }
   };
 
-  stickySideBar();
+  // stickySideBar();
 
-  $(window).resize(function() {
-    stickySideBar();
-  });
+  // $(window).resize(function() {
+  //   stickySideBar();
+  // });
 
   // Follow menu drop down
   $(".author__urls-wrapper button").on("click", function() {
