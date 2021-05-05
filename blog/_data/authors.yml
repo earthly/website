@@ -55,3 +55,7 @@ Deborah Ruck:
     name    : "Deborah Ruck"
     bio     : "Deborah Ruck is a software developer turned freelance writer. She enjoys using her two decades of experience to create engaging, well-researched, educational content. When she’s not working, you can find her learning something new or just relaxing at home on the sunny island of Barbados. Connect with her on her [website](https://deborahruck.com/ “Deborah Ruck’s website”) or on [LinkedIn](http://www.linkedin.com/in/deborah-ruck-44105623 “Deborah Ruck’s LinkedIn profile”)."
     avatar  : "/assets/images/authors/deborahruck.jpg"
+Lukonde Mwila:
+    name    : "Lukonde Mwila"
+    bio     : "Lukonde Mwila specializes in cloud and DevOps engineering, cloud architecture designs, and cloud security at an enterprise level in the AWS landscape. He is passionate about sharing knowledge through various media such as meetups, tech conferences, and technical articles."
+    avatar  : "/assets/images/authors/lukondemwila.png"

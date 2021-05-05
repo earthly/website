@@ -50,3 +50,10 @@ presets:
       widths: [800]
       keep: center
       crop: '2:1'
+
+  author:
+      formats: [webp, original]
+      widths: [800]
+      keep: center
+      crop: '1:1'
+
