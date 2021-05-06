@@ -9,7 +9,7 @@ sidebar:
 ---
 # Understanding Docker Multistage Builds
 
-At first glance, writing Dockerfiles appears to be a straightforward process. After all, most basic examples reflect the same set of steps. However, not all Dockerfiles are created equal. There is an optimal way of writing these files to produce the kind of Docker images you want for your final product. If you were to pop the hood, you’d see that Docker images actually consist of filesystem layers that correlate to the individual build steps involved in the creation of the image. 
+At first glance, writing Dockerfiles appears to be a straightforward process. After all, most basic examples reflect the same set of steps. However, not all Dockerfiles are created equal. There is an optimal way of writing these files to produce the kind of Docker images you want for your final product. If you were to pop the hood, you’d see that Docker images actually consist of file system layers that correlate to the individual build steps involved in the creation of the image. 
 
 To build an efficient Docker image, you want to eliminate some of these layers from the final output. Optimizing an image can take a lot of effort as you attempt to filter out what you don't need. Building these kinds of images has a lot to do with keeping them as small as possible, because large images lead to a host of other issues. 
 
@@ -123,8 +123,7 @@ COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
 COPY --from=build /app/build /usr/share/nginx/html
 ```
 
-That being said, following such an approach for every stage can create an increasingly verbose process every stage that you have. Another way of solving this issue is to make use of [BuildKit](https://github.com/moby/buildkit). BuildKit came about to address issues and improve on the build features in the [Moby Engine](https://mobyproject.org/). It allows for better cache efficiency and control when building. To enable BuildKit builds, follow the steps outlined in [Docker’s documentation](https://docs.docker.com/develop/develop-images/build_enhancements/#to-enable-buildkit-builds).
-
+That being said, following such an approach for every stage can create an increasingly verbose process every stage that you have. Another way of solving this issue is to make use of [BuildKit](https://earthly.dev/blog/what-is-buildkit-and-what-can-i-do-with-it/). BuildKit came about to address issues and improve on the build features in the [Moby Engine](https://mobyproject.org/). It allows for better cache efficiency and control when building. To enable BuildKit builds, follow the steps outlined in [Docker’s documentation](https://docs.docker.com/develop/develop-images/build_enhancements/#to-enable-buildkit-builds).
 
 ## More Stages
 As your multi-stage build grows in complexity, comprehending how each step follows from the next can become a challenge.  If the number of stages extends beyond two or if caching is becoming a challenge, you may want to consider using [Earthly](http://earthly.dev/) to produce your docker images. Earthly mirrors the dockerfile syntax but allows for naming the stages and for more fine-grained caching.
@@ -146,9 +145,8 @@ final:
   COPY  +build/app/build /usr/share/nginx/html
 ```
 
-
 ## Conclusion
 
 While creating Docker images the right way is not a small task, the final outcome does a great deal of good for the speed and security of your application delivery. Larger images have a high number of security vulnerabilities that shouldn't be overlooked for the sake of speed. The reality is that quality images take time and care. 
 
-The builder pattern has evolved over time in its implementation, with multistage builds coming to the rescue from the tedious steps that previously had to be followed. Though not foolproof, multistage builds have made it much easier to create optimized images that you can be more pleased and confident to have running in your production environment.
+The builder pattern has evolved over time in its implementation, with multistage builds coming to the rescue from the tedious steps that previously had to be followed. Tools like BuildKit and Earthly further improve on this process. Though not foolproof, multistage builds have made it much easier to create optimized images that you can be more pleased and confident to have running in your production environment.
