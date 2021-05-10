@@ -23,28 +23,19 @@ Turns out you can!
 * A copy of a Shareware game
 * [NodeJS](https://hub.docker.com/_/node)
 * [Docker](https://www.docker.com/get-started)
-* [Earthly](https://earthly.dev/)
+* [Earthly](https://earthly.dev/) (Optional, but we think its neat!)
 
 ## Putting It Together
 
-First, we will need to acquire JS-DOS. You can get the latest versions of the files [here](https://js-dos.com/#js-dos-622-archives). Download and place these files into a project directory. Here's how I'm doing it, using Earthly:
+First, we will need to acquire JS-DOS. You can get the latest versions of the files [here](https://js-dos.com/#js-dos-622-archives). Download and place these files into a project directory. Here's how I'm doing it, using Docker:
 
 ```Dockerfile
-jsdos:
-    FROM node:16-alpine
-
-    WORKDIR site
-    RUN wget https://js-dos.com/6.22/current/js-dos.js && \
-        wget https://js-dos.com/6.22/current/wdosbox.js && \
-        wget https://js-dos.com/6.22/current/wdosbox.wasm.js
-    RUN npm install -g serve
+WORKDIR site
+RUN wget https://js-dos.com/6.22/current/js-dos.js && \
+    wget https://js-dos.com/6.22/current/wdosbox.js && \
+    wget https://js-dos.com/6.22/current/wdosbox.wasm.js
+RUN npm install -g serve
 ```
-
-<div class="notice--info" markdown="1">
-**ℹ️  About Earthly**
-
-Earthly makes creating Docker images easier. [Take it for a spin!](https://docs.earthly.dev/basics)
-</div>
 
 JS-DOS is nice, but it’s nothing without a game to play in it. For our example purposes, we’ll use one of my childhood favorites: [Secret Agent](https://3drealms.com/catalog/secret-agent_39/).
 
@@ -62,12 +53,8 @@ A couple things to note when you are looking for games:
 Heres how I add the game to our image:
 
 ```Dockerfile
-game:
-    FROM +jsdos
-
-    ARG GAME_URL
-    
-    RUN wget -O game.zip $GAME_URL
+ARG GAME_URL
+RUN wget -O game.zip $GAME_URL
 ```
 
 <div class="notice--info" markdown="1">
@@ -76,7 +63,7 @@ game:
 You may note that we don't preserve the name of the downloaded file here. This is to make our job easier, when we make the game accessible to play later.
 </div>
 
-If you ran the `+game` target at this point, you would have an image containing Node, JS-DOS, and a zip file of your beloved game; but no way to play it! To make it playable, we need to create a webpage which loads JS-DOS, loads our game, and provides a canvas for JS-DOS to render its output to. Here is my tiny webpage:
+If you built and ran the Dockerfile at this point, you would have an image containing Node, JS-DOS, and a zip file of your beloved game; but no way to play it! To make it playable, we need to create a webpage which loads JS-DOS, loads our game, and provides a canvas for JS-DOS to render its output to. Here is my tiny webpage:
 
 ```html
 <html>
@@ -113,18 +100,64 @@ If you ran the `+game` target at this point, you would have an image containing 
 Copy this html file into the same directory as your JS-DOS files and your game. Now all you need to do is start a server within our Docker container to serve this webpage. For this, I used [`serve`](https://www.npmjs.com/package/serve), because it was quick and easy to script (you may have noticed installing this dependency alongside JS-DOS earlier). Heres how I add the server to the container:
 
 ```Dockerfile
-web:
+ARG GAME_ARGS
+COPY index.html .
+RUN sed -i s/GAME_ARGS/$GAME_ARGS/ index.html
+
+ENTRYPOINT npx serve -l tcp://0.0.0.0:8000
+```
+
+And now we have a shareable Docker container, with playable shareware inside! You can now play the game by:
+
+```bash
+$ docker build \
+  --build-arg GAME_URL=https://archive.org/download/msdos_festival_SCORCH15/SCORCH15.ZIP \
+  --build-arg GAME_ARGS=\"SCORCH.EXE\" \
+  -p 127.0.0.1:8000:8000 \
+  -t mycool:dosgame .
+
+... 
+
+$ docker run --rm -p 127.0.0.1:8000:8000 mycool:dosgame
+```
+
+## Going Further
+
+Using Earthly, we can even go a step further! Earhly lets us separate some of the concerns within the Dockerfile:
+
+<div class="notice--info" markdown="1">
+**ℹ️  About Earthly**
+
+Earthly makes creating Docker images easier. [Take it for a spin!](https://docs.earthly.dev/basics)
+</div>
+
+```Dockerfile
+jsdos:
+    FROM node:16-alpine
+
+    WORKDIR site
+    RUN wget https://js-dos.com/6.22/current/js-dos.js && \
+        wget https://js-dos.com/6.22/current/wdosbox.js && \
+        wget https://js-dos.com/6.22/current/wdosbox.wasm.js
+    RUN npm install -g serve
+
+game:
     FROM +jsdos
 
-    ARG GAME_ARGS
+    ARG GAME_URL
+    RUN wget -O game.zip $GAME_URL
 
+web:
+    FROM +game
+
+    ARG GAME_ARGS
     COPY index.html .
     RUN sed -i s/GAME_ARGS/$GAME_ARGS/ index.html
 
     ENTRYPOINT npx serve -l tcp://0.0.0.0:8000
 ```
 
-And now we have a shareable Docker container, with playable shareware inside! This example also contains an Earthly target that launches the game for you, and saves the image at the same time:
+But it also lets us build _and launch_ the game with a single command. It will also end up saving the game for you as an image on your local system! Here is the additional target that I added to accomplish this:
 
 ```Dockerfile
 play:
@@ -138,7 +171,7 @@ play:
     END
 ```
 
-We also have a couple pre-made targets that wrap this for you, and all you need to do is have [Earthly installed](https://earthly.dev/get-earthly):
+We also have a couple pre-made targets that wrap this all up for you, and all you need to do is have [Earthly installed](https://earthly.dev/get-earthly)! Running any of these commands will start the game. Just navigate on over to [localhost:8000](http://localhost:8000) and start playing! Additionally, you will find a Docker image on your system named `jsdos:$GAME_TAG` for when you want to play later.
 
 ![Screenshot of id's Doom running in a web browser.]({{site.images}}{{page.slug}}/doom.png)
 <figcaption>
@@ -155,14 +188,13 @@ We also have a couple pre-made targets that wrap this for you, and all you need 
 `earthly github.com/dchw/earthly-dos-gaming:main+secretagent`
 </figcaption>
 
-Running any of these commands will start the game. Just navigate on over to [localhost:8000](http://localhost:8000) and start playing! Additionally, you will find a Docker image on your system named `jsdos:$GAME_TAG` for when you want to play later.
 
 You can run your own dos games by running:
 ```
 earthly \
-    --build-arg GAME_TAG=mytag \
-    --build-arg GAME_URL=http://my-cool-game.com/download.zip \
-    --build-arg GAME_ARGS=\"THEGAME.EXE\" \
+    --build-arg GAME_TAG=doom \
+    --build-arg GAME_URL=https://archive.org/download/DoomsharewareEpisode/doom.ZIP \
+    --build-arg GAME_ARGS=\"DOOM.EXE\" \
     github.com/dchw/earthly-dos-gaming:main+play
 ```
 
