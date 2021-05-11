@@ -23,7 +23,7 @@ Turns out you can!
 * A copy of a Shareware game
 * [NodeJS](https://hub.docker.com/_/node)
 * [Docker](https://www.docker.com/get-started)
-* [Earthly](https://earthly.dev/) (Optional, but we think its neat!)
+* [Earthly](https://earthly.dev/) (Optional, but I think it's neat!)
 
 ## Putting It Together
 
