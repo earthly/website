@@ -53,7 +53,9 @@ presets:
 
   author:
       formats: [webp, original]
-      widths: [800]
+      fallback_width: 240
+      fallback_format: original
+      widths: [240]
       keep: center
       crop: '1:1'
 
