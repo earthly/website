@@ -27,7 +27,7 @@ Turns out you can!
 
 ## Putting It Together
 
-First, we will need to acquire JS-DOS. You can get the latest versions of the files [here](https://js-dos.com/#js-dos-622-archives). Download and place these files into a project directory. Here's how I'm doing it, using Docker:
+First, we will need to acquire JS-DOS. JS-DOS is a wrapper around an Emscripten-compiled version of [DOSBox](https://www.dosbox.com), so it can run in a browser.  You can get the latest versions of the files [here](https://js-dos.com/#js-dos-622-archives). Download and place these files into a project directory. Here's how I'm doing it, using Docker:
 
 ```Dockerfile
 WORKDIR site
@@ -202,4 +202,4 @@ Make sure you replace the tag, URL, and args as appropriate.
 
 ## Conclusion
 
-Its neat that we can make independent, offline bundles, similar to those shareware floppy disks from back in the day. To see the project as a whole, check out our [repository](https://github.com/earthly/example-dos-gaming). Thanks for reading!
+It's neat that we can make independent, offline bundles, similar to those shareware floppy disks from back in the day. To see the project as a whole, check out the [repository](https://github.com/earthly/example-dos-gaming). Thanks for reading!
