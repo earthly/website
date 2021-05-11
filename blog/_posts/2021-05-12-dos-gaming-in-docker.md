@@ -128,7 +128,7 @@ Using Earthly, we can even go a step further! Earhly lets us separate some of th
 <div class="notice--info" markdown="1">
 **ℹ️  About Earthly**
 
-Earthly makes creating Docker images easier. [Take it for a spin!](https://docs.earthly.dev/basics)
+[Earthly](https://earthly.dev/) makes creating Docker images easier. [Take it for a spin!](https://docs.earthly.dev/basics)
 </div>
 
 ```Dockerfile
