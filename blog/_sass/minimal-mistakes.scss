@@ -52,3 +52,10 @@
     transform: translateX(-50%);
   }
 }
+
+// for centering a markdown table by wrapping in div.center
+div .center > table {
+  width: auto;
+  margin-left: auto;
+  margin-right: auto;
+}

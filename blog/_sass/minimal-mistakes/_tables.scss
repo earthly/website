@@ -3,7 +3,9 @@
    ========================================================================== */
 
 table {
-  display: block;
+  // I need to remove this to get <div class="center"> to center a markdown table
+  // hopefully it is not breaking anything
+  // display: block;
   margin-bottom: 1em;
   width: 100%;
   font-family: $global-font-family;
