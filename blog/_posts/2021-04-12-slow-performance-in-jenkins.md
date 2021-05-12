@@ -10,11 +10,12 @@ There's nothing more frustrating than a sluggish continuous integration system. 
 Jenkins is one of the most popular CI/CD tools out there, but its users often [experience lagging and responsiveness issues over time](https://issues.jenkins.io/browse/JENKINS-56243?page=com.atlassian.jira.plugin.system.issuetabpanels%3Aall-tabpanel). In this guide, I'll share an overview of some of the biggest Jenkins performance issues and some tips for significantly improving performance without necessarily upgrading your hardware.
 
 ## Why Is Jenkins Such a Popular Option for CI/CD?
+
 Jenkins is a Java-based, open-source tool that is leveraged by [tens of thousands](https://www.businesswire.com/news/home/20181024005509/en/Jenkins-Community-Achieves-Record-Growth-Driven-by-Major-Innovation) of developers on hundreds of thousands of installations, making it the most popular automation server. This widespread use means that it's easy to find support and tips for Jenkins, but that's not the only reason it's so widely used.
 
 Jenkins brought a lot of interesting paradigms to CI workflows, including:
 
-- **Faster deployment.** Gone are the days when a build was tested and deployed once after all the developers committed their code. With Jenkins' automated CI/CD pipeline, whenever a developer commits code, it's built and tested throughout the day across multiple cycles. 
+- **Faster deployment.** Gone are the days when a build was tested and deployed once after all the developers committed their code. With Jenkins' automated CI/CD pipeline, whenever a developer commits code, it's built and tested throughout the day across multiple cycles.
 - **[Scalable master-agent architecture](https://www.jenkins.io/doc/book/scaling/architecting-for-scale/).** When it comes to managing distributed builds at scale, Jenkins can be a good choice. Jenkins' primary server is the master that schedules build jobs and assigns them to agents (formerly, slaves) for execution. This pattern allows you to run Jenkins on one or hundreds of servers to speed up your builds.
 - **Thousands of plugins:** Being an open-source platform, Jenkins provides a plethora of plugins for continuous integration built by other developers. This allows you to extend the base functionality without writing or maintaining much extra code in-house.
 
@@ -113,7 +114,7 @@ As you start tuning your Jenkins performance, you might be interested in adding 
 - Detailed statistics for build time and build steps
 - Aggregated heap histogram for all nodes
 
-![Jenkins Performance Monitoring Tool](https://i.imgur.com/mE6fSdy.png) 
+![Jenkins Performance Monitoring Tool](https://i.imgur.com/mE6fSdy.png)
 
 This can help you assess the effectiveness of your performance tweaks and guide you as you continue to improve your Jenkins installation.
 

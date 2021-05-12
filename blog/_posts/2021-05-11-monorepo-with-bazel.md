@@ -15,9 +15,9 @@ Google is one of the most notable adopters of the monorepo pattern, and [compani
 
 If you're from a JavaScript or [npm](https://www.npmjs.com/) background, you can think of a monorepo as a project having a single `package.json` file for managing all your project dependencies. It also allows you to easily share code between multiple environments using isolated modules as published packages. You can configure a single bundler for performing unit tests, integration tests, and other configurations without worrying about language and ecosystem-specific configurations.
 
-## The Efficiency of Building a Monorepo with Bazel 
+## The Efficiency of Building a Monorepo with Bazel
 
-[Bazel](https://docs.bazel.build/versions/4.0.0/bazel-overview.html) is an open-source build tool developed by Google to give power and life to your monorepo. It's similar to other build tools like [Maven](https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html), [Gradle](https://gradle.org/), and [Buck](https://buck.build/), but it has a number of advantages: 
+[Bazel](https://docs.bazel.build/versions/4.0.0/bazel-overview.html) is an open-source build tool developed by Google to give power and life to your monorepo. It's similar to other build tools like [Maven](https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html), [Gradle](https://gradle.org/), and [Buck](https://buck.build/), but it has a number of advantages:
 
 1. Bazel supports multiple languages (Java, JavaScript, Go, C++, to name a few) and platforms (Linux, macOS, and Windows).
 2. It's built with [Starlark](https://docs.rs/starlark/0.3.1/starlark/), a high-level language similar to Python that allows it to perform complex operations on binaries, scripts, and data sets.
@@ -108,11 +108,11 @@ npm install --global @bazel/ibazel
 
 ### Configuring the `bazel.rc` File
 
-You can write build options in a [`bazel.rc` file](https://docs.bazel.build/versions/master/guide.html#bazelrc) to apply them on every build. You can use the same settings for your project by creating a `tools/bazel.rc` file at the root of your Bazel workspace. 
+You can write build options in a [`bazel.rc` file](https://docs.bazel.build/versions/master/guide.html#bazelrc) to apply them on every build. You can use the same settings for your project by creating a `tools/bazel.rc` file at the root of your Bazel workspace.
 
 If you don't want to share these settings, you can move out the `.bazel.rc` file to the root directory and add it to your `.gitignore` list instead. You can also personalize these settings locally by moving it in your home directory.
 
-The following is a generic `bazel.rc` file that you can modify according to your needs: 
+The following is a generic `bazel.rc` file that you can modify according to your needs:
 
 ```.rc
 ###############################
@@ -155,7 +155,7 @@ Buildifier is a formatting tool that ensures all `BUILD` files are formatted in 
 
 ```shell
 npm install --save-dev @bazel/buildifier
-``` 
+```
 
 or Yarn:
 
@@ -187,7 +187,7 @@ In this example, you'll start from a new empty directory and build and compile a
   
 ```  
   
-Instead of manually configuring everything, you can use the following commands to get started:   
+Instead of manually configuring everything, you can use the following commands to get started:
   
 ```sh  
 npm init @bazel bazel_build_nodejs  
@@ -199,11 +199,11 @@ Or if you're using Yarn:
 yarn create @bazel bazel_build_nodejs  
 ```  
   
-The previous commands use [`@bazel/create`](https://www.npmjs.com/package/@bazel/create) under the hood to set up your monorepo with some minimal configurations. This means that it automatically creates `package.json`, `WORKSPACE`, and `BUILD.bazel` files for you.   
+The previous commands use [`@bazel/create`](https://www.npmjs.com/package/@bazel/create) under the hood to set up your monorepo with some minimal configurations. This means that it automatically creates `package.json`, `WORKSPACE`, and `BUILD.bazel` files for you.
   
 The `package.json` is exactly how it's created when you're initializing any Node.js project using the `npm init` command. It contains some development time dependencies and some scripts through which you can run your build.
 
-Also notice how it automatically adds `buildifier` to your project so you can avoid manually setting it up. This is only a starting point though, and you would need to manually set up a `buildifier` depending on the requirements of your project.   
+Also notice how it automatically adds `buildifier` to your project so you can avoid manually setting it up. This is only a starting point though, and you would need to manually set up a `buildifier` depending on the requirements of your project.
   
 ```json  
 {  
@@ -223,7 +223,7 @@ Also notice how it automatically adds `buildifier` to your project so you can av
   
 ```  
   
-Let's install these packages and a few more like [Babel](https://babeljs.io/) to [transpile](https://scotch.io/tutorials/javascript-transpilers-what-they-are-why-we-need-them) your JavaScript code.   
+Let's install these packages and a few more like [Babel](https://babeljs.io/) to [transpile](https://scotch.io/tutorials/javascript-transpilers-what-they-are-why-we-need-them) your JavaScript code.
   
 ```shell  
 npm install @babel/core @babel/cli @babel/preset-env  
@@ -271,8 +271,7 @@ It basically tells Bazel where to pull the tools for running your project and fe
 load("@npm//@babel/cli:index.bzl", "babel")  
 ```  
 
-  
-Let's add a simple console statement inside `app.js`:   
+Let's add a simple console statement inside `app.js`:
   
 ```javascript  
 console.log('NodeJS Built using Bazel!');  
@@ -294,7 +293,7 @@ Next add the following code inside `es5.babelrc` to configure Babel for transpil
   }  
 ```  
   
-Finally, you need to tell Bazel how to take JavaScript inputs and convert them to transpiled or [ES5](https://johnpapa.net/es5-es2015-typescript/) output. Add the following code inside `BUILD.bazel` file after the previous load statement: 
+Finally, you need to tell Bazel how to take JavaScript inputs and convert them to transpiled or [ES5](https://johnpapa.net/es5-es2015-typescript/) output. Add the following code inside `BUILD.bazel` file after the previous load statement:
   
 ```bazel  
 babel(  
@@ -350,7 +349,7 @@ Bazel recommends using container environments like the [ngcontainer Docker image
 
 If you're using [CircleCI](https://circleci.com/), you can use [this example](https://github.com/angular/angular-bazel-example/blob/master/.circleci/config.yml) as a reference. If you're using GitLab, you can set up CI in minutes using the following scripts:
 
-``` 
+```
 variables:  
   BAZEL_DIGEST_VERSION: "f670e9aec235aa23a5f068566352c5850a67eb93de8d7a2350240c68fcec3b25" # Bazel 3.4.1  
   

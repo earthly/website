@@ -8,7 +8,6 @@ author: Adam
 
 Starting in early December, a mad dash has been underway to migrate open-source projects off of Travis CI. What happened and where should you move your project to?
 
-
 {% include imgf src="quote1.png" alt="TravisCI is no longer providing open source credits" caption="Jame's Hilliard on Twitter" %}
 
 If you're not familiar with Travis CI, it's a build company that has been powering the continuous integration (CI) of many open source projects since it launched in 2011. &nbsp;It was the first build solution that was free for open source use and that easily integrated into GitHub.
@@ -43,6 +42,7 @@ However, many feel the real reason is that the acquirer is aiming for profitabil
 Many open-source projects are still using Travis and open-source maintainers are notoriously overworked. &nbsp;Time spent migrating builds is time not spent on other things. &nbsp;Large well-maintained projects will likely quickly transition but for many smaller projects, an abrupt change in a service they depend on is a huge challenge.
 
 ## Where To Move To
+
 ![Pins on a Map]({{site.images}}{{page.slug}}/dartboard.png)\
 
 If you maintain an open-source project that uses TravisCI and are hoping to get off it, then assuming you have the time to migrate, there are actually many viable options.
@@ -62,6 +62,7 @@ Circle CI offers 400,000 build credits per month to any open-source public repos
 They also allow use of the free plan with private repositories. This makes it a great choice if your project is not actually open-source. More details [can be found here](https://circleci.com/open-source/).
 
 ### Best Option: Github Actions
+
 ![First place trophy]({{site.images}}{{page.slug}}/trophy.png)\
 
 An even better option is Github Actions, a cloud CI system directly from GitHub. &nbsp;Github is at the center of many open source projects and this makes it a natural choice for CI. &nbsp;
@@ -85,6 +86,7 @@ If your project is hosted on GitHub, then to me, GHA seems like the best bet rig
 So GitHub has a generous build plan, but moving your CI process is not easy or free. &nbsp;The more complex your build, the harder porting from one cloud CI to another is going to be. &nbsp;If you move to GHA and then GHA stops being a viable option in the future then this whole effort will have to be repeated. &nbsp;
 
 ## Neutral Build Specifications
+
 ![Open Sign]({{site.images}}{{page.slug}}/opensign.png)\
 How can you minimize the effort of moving from build platform to another?
 
@@ -103,7 +105,9 @@ COPY . .
 
 CMD make all:default
 ```
+
 <a href="https://github.com/qmk/qmk_firmware/blob/master/Dockerfile">QMK</a> Docker File for executing the full build
+
 ### Earthly
 
 This is the Earthly blog, and I am an Earthly contributor, but in my totally biased opinion, it deserves a mention as an neurtal format for defining a build. The Elixir web framework [Phoenix is a great example to take a look at](https://github.com/phoenixframework/phoenix/blob/master/Earthfile).
@@ -114,13 +118,14 @@ Earthly is like a makefile where each step is containerized and dependencies are
 FROM golang:1.13-alpine3.11
 
 build:
-	COPY main.go .
-	RUN go build main.go
-	SAVE ARTIFACT main AS LOCAL main
+ COPY main.go .
+ RUN go build main.go
+ SAVE ARTIFACT main AS LOCAL main
     
 lint: 
-	...
+ ...
 ```
+
 Example build steps for a <a href="https://github.com/earthly/earthly/blob/main/examples/go/Earthfile">go application
 
 ## Other Interesting Options
@@ -142,4 +147,3 @@ You probably need to move your open-source project's builds off of Travis CI. If
 There is a risk that the GHA offer will disappear as well. &nbsp;You can protect yourself from that by defining your build in an open format that is easy to move around. &nbsp;All build problems can be solved by another layer of abstraction.
 
 If you are going that route, I think [Earthly](https://earthly.dev/) is a great option, but as I said, I am biased.
-

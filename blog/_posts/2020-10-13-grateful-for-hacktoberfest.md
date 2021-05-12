@@ -22,4 +22,3 @@ Here are some things that Hacktoberfest did for Earthly:
 One of the reasons why contributions were very successful for us was also that we really took care about managing them. We replied within minutes to comments and pull requests (during work hours anyway), we set expectations about the required level of knowledge (you want to avoid beginners jumping on the gnarliest of issues) and we were welcoming in general.
 
 Hacktoberfest is just getting started and we are looking forward to [more contributions](https://github.com/earthly/earthly/issues?q=is%3Aissue+is%3Aopen+label%3Ahacktoberfest)!
-

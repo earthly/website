@@ -16,4 +16,3 @@ Documentation:
 [`--ssh` documentation](https://docs.earthly.dev/earthfile#ssh)
 
 [Release Page](https://github.com/earthly/earthly/releases/tag/v0.3.6)
-
