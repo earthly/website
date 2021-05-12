@@ -16,7 +16,7 @@ base-image:
   RUN cabal install pandoc-plot --force-reinstalls
   RUN cp /root/.cabal/bin/* /usr/bin/
 
-  RUN apt-get install python3-matplotlib libvips-dev python3-pip -y
+  RUN apt-get install python3-matplotlib libvips-dev python3-pip npm -y
   RUN pip3 install pandocfilters
   SAVE IMAGE --push agbell/website-base:latest
 
@@ -71,10 +71,13 @@ blog-install:
   RUN bundle install --retry 5 --jobs 20
 
 blog-lint:
-  LOCALLY
+  FROM +blog-install
+  RUN apt-get install npm -y
+  RUN npm install -g markdownlint-cli 
   IF grep '[“”‘’]' ./blog/_posts/*.md
     RUN echo "Fail: Remove curly quotes and use straight quotes instead" && false
   END  
+  RUN markdownlint '**/*.md' && true
 
 blog-lint-apply:
   LOCALLY
