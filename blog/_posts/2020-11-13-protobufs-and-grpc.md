@@ -8,19 +8,19 @@ author: Alex
 
 I was surprised to learn that Google protocol buffers (protobufs), were first introduced nearly two decades ago. They were used internally at google as early as 2001 and were open sourced 2008.
 
-Following this success, in 2016 Google released gRPC. &nbsp; gRPC offered a way to define remote procedure calls using protobufs for serialization. Due to protobuf’s binary serialization format, it offered a significant speed up compared to using JSON over HTTP. The use of proto files for a precise definition of a service’s API. This was a big innovation. &nbsp;
+Following this success, in 2016 Google released gRPC. &nbsp; gRPC offered a way to define remote procedure calls using protobufs for serialization. Due to protobuf's binary serialization format, it offered a significant speed up compared to using JSON over HTTP. The use of proto files for a precise definition of a service's API. This was a big innovation. &nbsp;
 
-gRPC is a great solution for communicating between internal microservices. There’s [plenty](https://phenopackets-schema.readthedocs.io/en/latest/protobuf.html) [of](https://www.ionos.ca/digitalguide/websites/web-development/protocol-buffers-explained/) [articles](https://www.baeldung.com/google-protocol-buffer) and documentation that covers [protobufs](https://developers.google.com/protocol-buffers) and [gRPC](https://grpc.io/), but when I am considering a new technology, I learn best by seeing a working example. &nbsp;In this blog post I'm going build an example using Go, Python and Ruby.
+gRPC is a great solution for communicating between internal microservices. There's [plenty](https://phenopackets-schema.readthedocs.io/en/latest/protobuf.html) [of](https://www.ionos.ca/digitalguide/websites/web-development/protocol-buffers-explained/) [articles](https://www.baeldung.com/google-protocol-buffer) and documentation that covers [protobufs](https://developers.google.com/protocol-buffers) and [gRPC](https://grpc.io/), but when I am considering a new technology, I learn best by seeing a working example. &nbsp;In this blog post I'm going build an example using Go, Python and Ruby.
 
 ## First Step: Implementing a gRPC client using Go
 
-Let’s write an in-memory key/value micro-service in Go, and some clients in both Python and Ruby.
+Let's write an in-memory key/value micro-service in Go, and some clients in both Python and Ruby.
 
 Our server will allow users to set and get data from a key/value store.
 
 {% include imgf src="server.png" alt="handddrawn cartoon for a person talking to a computer server" caption="Interacting with the server" %}
 
-First let’s design our API in a proto file:
+First let's design our API in a proto file:
 
 ``` protobuf
     syntax = "proto3";
