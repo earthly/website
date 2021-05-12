@@ -98,6 +98,7 @@ Further, we will make certain assumptions about the underlying technologies used
 ## Let's take a look
 
 ### Imports
+
 ![Overhead view of shipping containers]({{site.images}}{{page.slug}}/kyCNGGKCvyw.jpg)\
 
 You can't talk about the code layout, without looking primarily at how code can be imported and reused. Different languages can vary wildly in the way code can be imported.
@@ -123,6 +124,7 @@ When viewing changes to a single project, it is easier to visualize the history 
 **Verdict**: Managing contributions within the same project is easier with a polyrepo layout, as it is easier to track the history of changes per-repository rather than per-directory.
 
 ### Contributions across projects
+
 ![Two people working at a whiteboard]({{site.images}}{{page.slug}}/26MJGnCM0Wc.jpg)\
 
 When making contributions across multiple projects, there is a significant distinction. Arguably, this is one of the main reasons to use the monorepo layout. When everything is in a single repository, many cross-cutting concerns can be modified and submitted as a single, atomic PR. For example, you could write code for a new feature and make adjustments end-to-end: UI, backend, API, DB schema migration, documentation, etc. The simplicity of the dev-test and contribution process really shines in monorepos, when done right [^2]. Atomic PRs also help to visualize changes for review. It is easier to see a feature take shape when the changes across projects are visible in one place.
@@ -142,6 +144,7 @@ Finally, in polyrepo setups developers have the option to use staggered dependen
 **Verdict**: Managing contributions across projects is usually easier in a monorepo layout, as PRs can make changes across several components at the same time and there is no need to constantly update the referenced version of dependencies. In addition, integration breakages are obvious immediately.
 
 ### Releases
+
 ![Container Ship At Sea]({{site.images}}{{page.slug}}/y8TMoCzw87E.jpg)\
 
 One of the key deciding factors of the source code layout is the structure of the releases. Depending on the deliverable type (library, app), the release might have multiple forms: an artifact, a language-specific package, a Docker image, an installer, etc.
@@ -159,6 +162,7 @@ Of course, with any set of related changes that go out independently across mult
 **Verdict**: Multiple factors can influence your decision here: team layout, release frequency requirements, MTTR requirements, level of cohesion of separate projects, and so on. Generally, polyrepos have the added benefit that the better engineering process decisions fall in place more naturally. In addition, the collection of tags usually make more sense for polyrepos.
 
 ### Builds and CI
+
 ![Cranes building skyscraper]({{site.images}}{{page.slug}}/8Gg2Ne_uTcM.jpg)\
 
 The Achilles' heel of the monorepo is often the build. Most open-source build tooling handles builds project-by-project and does not deal with cross-project builds out of the box. For this reason, building multiple projects in a monorepo setup usually ends up in a complex do-it-yourself scripting endeavor. Where this usually falls apart is the ability to scale the size of the monorepo while maintaining reasonable build times (say less than 15 minutes).
@@ -206,6 +210,7 @@ On the other hand, in a monorepo setup, all issues are mixed in a single pool. T
 **Verdict**: For medium and large organizations, monorepo issue tracking does not scale well. For small organizations, monorepo issue tracking helps the team coordinate better.
 
 ### Open-source
+
 ![People's hands placed together]({{site.images}}{{page.slug}}/fkFNBCQ6kQA.jpg)\
 
 If your organization develops a mix of closed source and open-source code, there is absolutely no way to make a monorepo work. It is impossible to only show a subdirectory of the code to the outside world. You might think you could perhaps create a mirror of a subdirectory from the monorepo to a public repo, however, this does not go truly with the open-source spirit. How would you merge external contributions back to the main repository?

@@ -8,13 +8,13 @@ author: Allan MacGregor
 
 The Elixir language, along with the [Phoenix framework](https://phoenixframework.org/), has been growing in popularity at a quick pace, and with good reason. Phoenix offers productivity levels comparable to frameworks like Ruby on Rails while being one of the [fastest web frameworks](https://github.com/mroth/phoenix-showdown/blob/master/RESULTS_v3.md) available.
 
-If you're currently working with a web framework like Ruby on Rails or even Laravel, you should definitely give Phoenix some attention due to the performance gains it promises. Additionally, Phoenix also has the capability to build highly responsive real-time applications. 
+If you're currently working with a web framework like Ruby on Rails or even Laravel, you should definitely give Phoenix some attention due to the performance gains it promises. Additionally, Phoenix also has the capability to build highly responsive real-time applications.
 
 ## Introducing Phoenix LiveView
 
 [Phoenix LiveView](https://github.com/phoenixframework/phoenix_live_view) is a relatively new library added to the Phoenix stack. Developers can build rich, real-time user experience with purely server-rendered HTML.
 
-Phoenix LiveView adds bi-directional communication via WebSockets between the server and the client, without needing dedicated JavaScript code on the frontend. This allows you to implement real-time functionality on your applications with ease. 
+Phoenix LiveView adds bi-directional communication via WebSockets between the server and the client, without needing dedicated JavaScript code on the frontend. This allows you to implement real-time functionality on your applications with ease.
 
 ## Explaining Today's Tutorial
 
@@ -23,8 +23,8 @@ For this tutorial, we are going to be building a crowdfunding application that w
 The goal of this application is not to build a fully-featured crowdfunding platform but to get your feet wet with LiveView:
 
 - How LiveView views works and renders
-- How Phoenix leverages WebSockets for communication 
-- How to implement real-time updates on your application 
+- How Phoenix leverages WebSockets for communication
+- How to implement real-time updates on your application
 - How the LiveView life cycle works
 
 Here's a sample of how the final application will work:
@@ -36,7 +36,7 @@ Here's a sample of how the final application will work:
 For this tutorial, make sure you have a good working Elixir environment. The easiest way to do this is to follow the [official Elixir instructions](https://elixir-lang.org/install.html), which will give you a couple of options for:
 
 - Local installation on Linux, Windows, and macOS
-- Dockerized versions of Elixir 
+- Dockerized versions of Elixir
 - Package manager versions setups
 
 I would recommend focusing on the local install for this tutorial, as it might be the easiest one to get started. Additionally, you will need to have [npm](https://www.npmjs.com/) installed locally and a running version of PostgreSQL.
@@ -59,14 +59,15 @@ You can easily install Node.js from their [official instructions](https://nodejs
 
 ```bash
 $ docker run -d \
-	--name phoenix-psql \
-	-e POSTGRES_PASSWORD=Phoenix1234 \
-	-v ${HOME}/phoenix-postgres-data/:/var/lib/postgresql/data \
-	-p 5432:5432 \
-	postgres
+ --name phoenix-psql \
+ -e POSTGRES_PASSWORD=Phoenix1234 \
+ -v ${HOME}/phoenix-postgres-data/:/var/lib/postgresql/data \
+ -p 5432:5432 \
+ postgres
 ```
 
 3. Validate that the container is running.
+
 ```bash
 > docker ps
 
@@ -188,7 +189,7 @@ Fetch and install dependencies? [Yn]
 
 ```
 
-`mix phx.new` will create the basic skeleton for your new Phoenix LiveView app and download all the dependencies on the Elixir and Node.js side of things. 
+`mix phx.new` will create the basic skeleton for your new Phoenix LiveView app and download all the dependencies on the Elixir and Node.js side of things.
 
 Next, provision your database and start the local Phoenix server:
 
@@ -259,49 +260,49 @@ Now that you have a project up with the base styling, you can start working on a
 This is the scaffold code that was generated when you generated the application. You want to add a new route for your actions, and you can do that easily by using the `live` macro:
 
 ```elixir
-	...
-	live "/auction", AuctionLive
+ ...
+ live "/auction", AuctionLive
 ```
-   
-It's important to highlight that `AuctionLive` is not a Phoenix controller. Rather, it's a long-running LiveView process in charge of managing and tracking the state for that particular route. 
 
-Go ahead and define your new module under `lib/phoenix_fund_web/live/auction_live.ex`. By convention, the LiveView modules are placed under the `live` directory. 
+It's important to highlight that `AuctionLive` is not a Phoenix controller. Rather, it's a long-running LiveView process in charge of managing and tracking the state for that particular route.
+
+Go ahead and define your new module under `lib/phoenix_fund_web/live/auction_live.ex`. By convention, the LiveView modules are placed under the `live` directory.
 
 ```elixir
 defmodule PhoenixFundWeb.AuctionLive do 
-	use PhoenixFundWeb, :live_view
-	
-	def mount(params, session, socket) do
-		{:ok, assign(socket, :raised, 0)}
-	end
+ use PhoenixFundWeb, :live_view
+ 
+ def mount(params, session, socket) do
+  {:ok, assign(socket, :raised, 0)}
+ end
 end
 ```
 
 This is the core of a LiveView module. `mount/3` is the entry point for each LiveView, and it will be invoked twice:
 
-- Once on the initial page load 
-- Once to establish a live socket 
+- Once on the initial page load
+- Once to establish a live socket
 
 It expects three parameters:
 
-- `params`: A map of string keys with the query params 
+- `params`: A map of string keys with the query params
 - `session`: The connection session
 - `socket`: The LiveView socket struct
 
-In your `mount/3` function, assign the initial status for your LiveView so it can be rendered. Next, define a `render/1` function that will render your LiveView HTML. 
+In your `mount/3` function, assign the initial status for your LiveView so it can be rendered. Next, define a `render/1` function that will render your LiveView HTML.
 
-```elixir 
+```elixir
 defmodule PhoenixFundWeb.AuctionLive do 
 ...
   def render(assigns) do
     ~L"""
-    	  <h1>Cabinet of Curiosities</h1>
-    	  <div id="auction">
-	          <div class="meter">
-	            <span style="width: <%= @raised %>%">
-	              $<%= @raised %> USD
-	            </span>
-	          </div>
+       <h1>Cabinet of Curiosities</h1>
+       <div id="auction">
+           <div class="meter">
+             <span style="width: <%= @raised %>%">
+               $<%= @raised %> USD
+             </span>
+           </div>
         </div>
     """
   end
@@ -314,7 +315,7 @@ Start your Phoenix server and let's try to load [/auction](http://localhost:4000
 
 ![Auction View]({{site.images}}{{page.slug}}/6gnnM9k.png)
 
-Excellent! Your new route is now being rendered by your LiveView. Now it's time to make it do something useful by adding a couple of buttons to allow people to donate. 
+Excellent! Your new route is now being rendered by your LiveView. Now it's time to make it do something useful by adding a couple of buttons to allow people to donate.
 
 ```elixir
 ```elixir 
@@ -322,18 +323,18 @@ defmodule PhoenixFundWeb.AuctionLive do
 ...
   def render(assigns) do
     ~L"""
-    	  <h1>Cabinet of Curiosities</h1>
-    	  <div id="auction">
-	          <div class="meter">
-	            <span style="width: <%= @raised %>%">
-	              $<%= @raised %> USD
-	            </span>
-	          </div>
-	          
-		      <button phx-click="donate-1"> $1 </button>
-	          <button phx-click="donate-5"> $5 </button>
-	          <button phx-click="donate-10"> $10 </button>
-	          <button phx-click="donate-100"> $100 </button>
+       <h1>Cabinet of Curiosities</h1>
+       <div id="auction">
+           <div class="meter">
+             <span style="width: <%= @raised %>%">
+               $<%= @raised %> USD
+             </span>
+           </div>
+           
+        <button phx-click="donate-1"> $1 </button>
+           <button phx-click="donate-5"> $5 </button>
+           <button phx-click="donate-10"> $10 </button>
+           <button phx-click="donate-100"> $100 </button>
         </div>
     """
   end
@@ -362,7 +363,7 @@ State: %{components: {%{}, %{}, 0}, join_ref: "4", serializer: Phoenix.Socket.V2
 
 ## Handling Events
 
-As you can see from the error, the Auction LiveView doesn't currently know how to handle an event. As part of your button code, you added `phx-click`; this is a **binding** that sends a particular event like `donate-1` back to your LiveView. 
+As you can see from the error, the Auction LiveView doesn't currently know how to handle an event. As part of your button code, you added `phx-click`; this is a **binding** that sends a particular event like `donate-1` back to your LiveView.
 
 Your next step is adding a new definition of `handle_event/3` for each one of your events. Go ahead and add the first function definition to the handle of the $1 donation button event:
 
@@ -385,15 +386,15 @@ The `handle_event/3` function takes three parameters:
 Inside your `handle_event/3`, you're doing two things:
 
 - Retrieving the current `raised` value from the `socket.assigns` and increment it by `1`
-- Assigning the new value back to the socket 
+- Assigning the new value back to the socket
 
-If you reload your page and click on the $1 donation button, you should see the value correctly incrementing. 
+If you reload your page and click on the $1 donation button, you should see the value correctly incrementing.
 
 ![Button working]({{site.images}}{{page.slug}}/WA1gHtv.gif)
 
 Make sure to add the following code to handle the remaining events:
 
-```elixir 
+```elixir
 defmodule PhoenixFundWeb.AuctionLive do 
 ...
   def handle_event("donate-5", _, socket) do
@@ -425,9 +426,9 @@ Let's recap what you've done so far to better understand the LiveView life cycle
 4. Opening a LiveView socket will pass the rendered HTML.
 5. The socket will remain open to receive events and handle updates on the LiveView process state.
 
-It is in this life cycle where one of the more powerful and interesting features of LiveView lies. As mentioned, LiveView is listening to your socket for updates but _it will only rerender the portions of the page that needed updating_. In the case of this tutorial, the meter is the only piece that gets an update. 
+It is in this life cycle where one of the more powerful and interesting features of LiveView lies. As mentioned, LiveView is listening to your socket for updates but _it will only rerender the portions of the page that needed updating_. In the case of this tutorial, the meter is the only piece that gets an update.
 
-This is one of the key features that makes Phoenix and LiveView extremely well suited for real-time applications. 
+This is one of the key features that makes Phoenix and LiveView extremely well suited for real-time applications.
 
 ## Broadcasting with PubSub
 
@@ -435,7 +436,7 @@ So far, you've built an app that can leverage Phoenix LiveView to allow users to
 
 Next, you'll leverage [PubSub](https://github.com/phoenixframework/phoenix_pubsub) to broadcast real-time updates to all LiveView clients, not just the one that triggers the event.
 
->  "Publish-subscribe is a messaging pattern where senders of messages, called publishers, do not program the messages to be sent directly to specific receivers, called subscribers, but instead categorize published messages into classes without knowledge of which subscribers, if any, there may be. Similarly, subscribers express interest in one or more classes and only receive messages that are of interest, without knowledge of which publishers, if any, there are." –[Wikipedia](https://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern)
+> "Publish-subscribe is a messaging pattern where senders of messages, called publishers, do not program the messages to be sent directly to specific receivers, called subscribers, but instead categorize published messages into classes without knowledge of which subscribers, if any, there may be. Similarly, subscribers express interest in one or more classes and only receive messages that are of interest, without knowledge of which publishers, if any, there are." –[Wikipedia](https://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern)
 
 In short, PubSub is a messaging pattern that will allow us to implement real-time asynchronous communication with any clients listening for events in our application. In the case of this tutorial, that will be every user with a fundraising page open.
 
@@ -458,7 +459,7 @@ defmodule PhoenixFundWeb.AuctionLive do
   @topic "auction"
 
   def mount(params, session, socket) do
-  	PhoenixFundWeb.Endpoint.subscribe(@topic)
+   PhoenixFundWeb.Endpoint.subscribe(@topic)
     {:ok, assign(socket, :raised, 0)}
   end
 ...
@@ -513,9 +514,9 @@ If you start up your application and open two browser windows side by side, you 
 
 ## In Summary
 
-As you've learned, Phoenix offers a powerful set of libraries, making it relatively easy to create real-time applications with very little code and, even more surprisingly, no JavaScript at all. With LiveView, you can create fully fledged real-time features using only server-side code, and when you add Phoenix PubSub, you can open those same features to all app users in real time. 
+As you've learned, Phoenix offers a powerful set of libraries, making it relatively easy to create real-time applications with very little code and, even more surprisingly, no JavaScript at all. With LiveView, you can create fully fledged real-time features using only server-side code, and when you add Phoenix PubSub, you can open those same features to all app users in real time.
 
-Of course, we've only begun to scratch the surface here of what you can do with Phoenix, LiveView, and PubSub. If you want to keep going with this project, I would recommend tackling adding persistence next, and the ability to create multiple auctions with [Ecto](https://hexdocs.pm/ecto/getting-started.html). 
+Of course, we've only begun to scratch the surface here of what you can do with Phoenix, LiveView, and PubSub. If you want to keep going with this project, I would recommend tackling adding persistence next, and the ability to create multiple auctions with [Ecto](https://hexdocs.pm/ecto/getting-started.html).
 
 Both Ecto and the Phoenix project use [Earthly](https://earthly.dev) for defining their continuous integration process, so examining [those](https://github.com/elixir-ecto/ecto/blob/master/Earthfile) [projects](https://github.com/phoenixframework/phoenix/blob/master/Earthfile) can be a great way to learn more about Earthly.
 

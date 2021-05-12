@@ -37,4 +37,3 @@ Yes. I would want some justification if we were choosing Docker Swarm or, Ranche
 You've seen that CNCF landscape chart, right? &nbsp;There's tons of combinations out there that still haven't been tried before. It gets real easy, real fast, to get weird.
 
 Whether you want to or not, you're going to end up in a place where nobody else has been. So you want to try to contain that.
-

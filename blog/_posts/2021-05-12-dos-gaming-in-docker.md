@@ -46,8 +46,9 @@ A couple things to note when you are looking for games:
 
 * Make sure that the game you choose is _actually_ shareware. [Don't copy that floppy!](https://www.youtube.com/watch?v=up863eQKGUI)
 * Make sure that it is the actual game files, not just the installer.
-    * While you _can_ install and _then_ run the game via DOSBox, you'll have to install it on every visit to the webpage. The installation is also fairly slow.
+  * While you _can_ install and _then_ run the game via DOSBox, you'll have to install it on every visit to the webpage. The installation is also fairly slow.
 * Make sure that it is a `zip` file. This is what JS-DOS wants to load for us.
+
 </div>
 
 Heres how I add the game to our image:
@@ -188,8 +189,8 @@ We also have a couple pre-made targets that wrap this all up for you, and all yo
 `earthly github.com/dchw/earthly-dos-gaming:main+secretagent`
 </figcaption>
 
-
 You can run your own dos games by running:
+
 ```
 earthly \
     --build-arg GAME_TAG=doom \

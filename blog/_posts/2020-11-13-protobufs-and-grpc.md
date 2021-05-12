@@ -99,70 +99,70 @@ The next step is to write the server code that will implement the set and get me
     package main
     
     import (
-    	"context"
-    	"fmt"
-    	"log"
-    	"net"
+     "context"
+     "fmt"
+     "log"
+     "net"
     
-    	pb "github.com/earthly/example-grpc-key-value-store/go-server/kvapi"
+     pb "github.com/earthly/example-grpc-key-value-store/go-server/kvapi"
     
-    	"google.golang.org/grpc"
+     "google.golang.org/grpc"
     )
     
     const (
-    	port = ":50051"
+     port = ":50051"
     )
     
     var errKeyNotFound = fmt.Errorf("key not found")
     
     // server is used to implement kvapi.KeyValueServer
     type server struct {
-    	pb.UnimplementedKeyValueServer
-    	data map[string]string
+     pb.UnimplementedKeyValueServer
+     data map[string]string
     }
     
     // Set stores a given value under a given key
     func (s *server) Set(ctx context.Context, in *pb.SetRequest) (*pb.SetReply, error) {
-    	key := in.GetKey()
-    	value := in.GetValue()
-    	log.Printf("serving set request for key %q and value %q", key, value)
+     key := in.GetKey()
+     value := in.GetValue()
+     log.Printf("serving set request for key %q and value %q", key, value)
     
-    	s.data[key] = value
+     s.data[key] = value
     
-    	reply := &pb.SetReply{}
-    	return reply, nil
+     reply := &pb.SetReply{}
+     return reply, nil
     }
     
     // Get returns a value associated with a key to the client
     func (s *server) Get(ctx context.Context, in *pb.GetRequest) (*pb.GetReply, error) {
-    	key := in.GetKey()
-    	log.Printf("serving get request for key %q", key)
+     key := in.GetKey()
+     log.Printf("serving get request for key %q", key)
     
-    	value, ok := s.data[key]
-    	if !ok {
-    		return nil, errKeyNotFound
-    	}
+     value, ok := s.data[key]
+     if !ok {
+      return nil, errKeyNotFound
+     }
     
-    	reply := &pb.GetReply{
-    		Value: value,
-    	}
-    	return reply, nil
+     reply := &pb.GetReply{
+      Value: value,
+     }
+     return reply, nil
     }
     
     func main() {
-    	lis, err := net.Listen("tcp", port)
-    	if err != nil {
-    		log.Fatalf("failed to listen: %v", err)
-    	}
-    	log.Printf("Listening on %s", port)
-    	serverInstance := server{
-    		data: make(map[string]string),
-    	}
-    	s := grpc.NewServer()
-    	pb.RegisterKeyValueServer(s, &serverInstance)
-    	if err := s.Serve(lis); err != nil {
-    		log.Fatalf("failed to serve: %v", err)
-    	}
+     lis, err := net.Listen("tcp", port)
+     if err != nil {
+      log.Fatalf("failed to listen: %v", err)
+     }
+     log.Printf("Listening on %s", port)
+     serverInstance := server{
+      data: make(map[string]string),
+     }
+     s := grpc.NewServer()
+     pb.RegisterKeyValueServer(s, &serverInstance)
+     if err := s.Serve(lis); err != nil {
+      log.Fatalf("failed to serve: %v", err)
+     }
     }
 ```
 
@@ -188,7 +188,6 @@ Next we will compile the go code and save it as a docker image with the followin
         SAVE IMAGE as kvserver:latest
 ```
 
-
 You can give it a try on your own by using our example code in our GitHub repo, just run:
 
 ``` bash
@@ -202,6 +201,7 @@ Then start up the server in Docker, by running:
 ``` bash
     docker run --rm --network=host kvserver:latest
 ```
+
 * * *
 
 ## Next step: Implementing a gRPC client using Python
@@ -260,7 +260,7 @@ Then we'll create a client that reads command line arguments, and if the argumen
                 value = get_response.value
                 print(f'server returned value "{value}" for key "{key}"')
 
-``` 
+```
 
 We then store this python code, along with the generated gRPC protobuf code with the following Earthfile:
 
@@ -313,6 +313,7 @@ And if all went well, you should see some output on both the client and server c
     2020/11/12 23:15:18 Listening on :50051
     2020/11/12 23:15:34 serving set request for key "weather" and value "sunny"
 ```
+
 * * *
 
 ## Final step: Implementing a gRPC client using Ruby
@@ -366,4 +367,3 @@ And if all went well, it'll tell you that it's sunny outside.
 {% include imgf src="sun.png" alt="drawing of the sunn" caption="It's Sunny Outside"%}
 
 So there we go. &nbsp;You can find the code for the server and the two clients in [github here](https://github.com/earthly/example-grpc-key-value-store).
-

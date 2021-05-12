@@ -34,4 +34,3 @@ If you have any questions, or if you need any assistance, we are on the [gitter 
 Questions about a specific issue or PR are best left on that issue or PR.
 
 Happy hacking!
-

@@ -20,7 +20,6 @@ Earthly uses Earthfiles to encapsulate your build. &nbsp;If you imagine a docker
 
 Let's walk through creating an Earthfile for a scala project:
 
-
 ```
 ├── build.sbt 
 └── src/main
@@ -36,8 +35,8 @@ object Main extends App {
   println("Hello, World!")
 }
 ```
-<figcaption>Main.scala</figcaption>
 
+<figcaption>Main.scala</figcaption>
 
 And some unit tests we would like to run as part of the build:
 
@@ -50,6 +49,7 @@ class ListFlatSpec extends FlatSpec {
   }
 }
 ```
+
 <figcaption>Test.scala</figcaption>
 
 There are several steps involved in the build process for this project:
@@ -74,6 +74,7 @@ deps:
     RUN sbt update
     SAVE IMAGE
 ```
+
 <figcaption>Earthfile</figcaption>
 
 The first line is declaring the base docker image our build steps will run inside. &nbsp;All earthly builds take place within the context of a docker container. &nbsp;This is how we ensure reproducibility. &nbsp;After that, we set a working directory and declare our first target `deps` and copy our project files into the build context.
@@ -93,7 +94,8 @@ build:
     FROM +deps
     COPY src src
     RUN sbt compile
-```    
+```
+
 <figcaption>earthfile continued</figcaption>
 
 Inside the `build:` target we copy in our source files, and run our familiar `sbt compile`. &nbsp;We use `FROM +deps` to tell earthly that this step is dependent upon the output of our `deps` step above.
@@ -112,6 +114,7 @@ test:
     COPY src src
     RUN sbt test</code></pre>
 ```
+
 <figcaption>Earthfile continued</figcaption>
 
 We can then run our tests like this:
@@ -124,11 +127,12 @@ The final step in our build is to build a docker container, so we can send this 
 
 ``` dockerfile
 docker:
-	COPY src src
-	RUN sbt assembly
-	ENTRYPOINT ["java","-cp","build/bin/scala-example-assembly-1.0.jar","Main"]
- 	SAVE IMAGE scala-example:latest
+ COPY src src
+ RUN sbt assembly
+ ENTRYPOINT ["java","-cp","build/bin/scala-example-assembly-1.0.jar","Main"]
+  SAVE IMAGE scala-example:latest
 ```
+
 <figcaption>Earthfile continued</figcaption>
 
 Here we are using `sbt assembly` to create a fat jar that we run as our docker container's entry point.
@@ -147,9 +151,8 @@ We now have our `deps`, `build`, `test` and `docker` targets in our Earthfile. A
 
 If a build fails in CI, we can run the same process locally and reproduce the failure. &nbsp;Reproducibility solved, in a familiar dockerfile-like syntax .
 
-## But wait there's more 
+## But wait there's more
 
 We haven't solved all the problems of CI, however. &nbsp;What about build parallelization? &nbsp;What about caching intermediate steps? &nbsp;How about multi-language builds with complicated interdependencies? &nbsp;Earthly has some solutions for those problems as well and I'll cover them in future tutorials. &nbsp;
 
 For now, you can find more details, such as how to install earthly and many more examples on **[github](https://github.com/earthly/earthly/blob/master/README.md). &nbsp;**
-

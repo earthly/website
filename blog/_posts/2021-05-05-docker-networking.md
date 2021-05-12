@@ -49,8 +49,8 @@ NETWORK ID     NAME      DRIVER    SCOPE
 ```
 
 ```shell
-$ docker run -dit --name busybox1 busybox /bin/sh
-$ docker run -dit --name busybox2 busybox /bin/sh
+docker run -dit --name busybox1 busybox /bin/sh
+docker run -dit --name busybox2 busybox /bin/sh
 ```
 
 3. Run the `docker ps` command to verify that containers are up and running.
@@ -152,16 +152,17 @@ One limitation with the host driver is that it doesn't work on Docker desktop: y
 The following command will start an NGINX image and listen to port 80 on the host machine:
 
 ```shell
-$ docker run --rm -d --network host --name my_nginx nginx
+docker run --rm -d --network host --name my_nginx nginx
 
 ```
+
 You can access NGINX by hitting the `http://localhost:80/ url`.
 
 The downside with the host network is that you can't run multiple containers on the same host having the same port. Ports are shared by all containers on the host machine network.
 
 ### The None Driver
 
-The none network driver does not attach containers to any network. Containers do not access the external network or communicate with other containers. You can use it when you want to disable the networking on a container. 
+The none network driver does not attach containers to any network. Containers do not access the external network or communicate with other containers. You can use it when you want to disable the networking on a container.
 
 ### The Overlay Driver
 
@@ -170,13 +171,13 @@ The Overlay driver is for multi-host network communication, as with [Docker Swar
 To create an overlay network for Docker Swarm services, use the following command:
 
 ```
-$ docker network create -d overlay my-overlay-network
+docker network create -d overlay my-overlay-network
 ```
 
 To create an overlay network so that standalone containers can communicate with each other, use this command:
 
 ```
-$ docker network create -d overlay --attachable my-attachable-overlay
+docker network create -d overlay --attachable my-attachable-overlay
 ```
 
 ### The Macvlan Driver
@@ -248,6 +249,7 @@ Run the `docker network connect 0f8d7a833f42` command to connect the container n
                     "DriverOpts": {}
                 }
 ```
+
 ### Creating a Network
 
 You can use `docker network create mynetwork` to create a Docker network. Here, we've created a network named `mynetwork`. Let's run `docker network ls` to verify that the network is created successfully.
@@ -263,13 +265,12 @@ b995772ac197   bridge      bridge    local
 
 Now we have a new custom network named `mynetwork`, and its type is bridge.
 
-
 ### Disconnecting a Container from the Network
 
 This command disconnects a Docker container from the custom `mynetwork`:
 
 ```shell
-$ docker network disconnect mynetwork 0f8d7a833f42
+docker network disconnect mynetwork 0f8d7a833f42
 ```
 
 ### Inspecting the Network
@@ -400,7 +401,7 @@ Commercial support is available at
 ```
 
 Let me briefly mention DNS configuration for containers. Docker provides your containers with the ability to make basic name resolutions:
- 
+
 ```shell
 $ docker exec busybox2 ping www.google.com
 PING www.google.com (216.58.216.196): 56 data bytes
@@ -415,7 +416,7 @@ Docker containers inherit DNS settings from the host when using a bridge network
 
 ## Docker Compose Networking
 
-[Docker Compose](https://docs.docker.com/compose/) is a tool for running multi-container applications on Docker, which are defined using the compose YAML file. You can start your applications with a single command: `docker-compose up`. 
+[Docker Compose](https://docs.docker.com/compose/) is a tool for running multi-container applications on Docker, which are defined using the compose YAML file. You can start your applications with a single command: `docker-compose up`.
 
 By default, Docker Compose creates a single network for each container defined in the compose file. All the containers defined in the compose file connect and communicate through the default network.
 
@@ -454,7 +455,7 @@ Use "docker compose [command] --help" for more information about a command.
 
 Let's understand this with an example. In the following `docker-compose.yaml` file, we have a WordPress and a MySQL image.
 
-When deploying this setup, `docker-compose` maps the WordPress container port 80 to port 80 of the host as specified in the compose file. We haven't defined any custom network, so it should create one for you. Run ` docker-compose up -d` to bring up the services defined in the YAML file:
+When deploying this setup, `docker-compose` maps the WordPress container port 80 to port 80 of the host as specified in the compose file. We haven't defined any custom network, so it should create one for you. Run `docker-compose up -d` to bring up the services defined in the YAML file:
 
 ```
 version: '3.7'
@@ -505,7 +506,7 @@ f68265cd6219   wordpress:latest   "docker-entrypoint.s…"   6 minutes ago   Up 
 
 Navigate to `http://localhost:80` in your web browser to access WordPress.
 
-Now let's inspect this network with the `docker network inspect` command. The following is the output: 
+Now let's inspect this network with the `docker network inspect` command. The following is the output:
 
 ```shell
 $ docker network inspect downloads_default

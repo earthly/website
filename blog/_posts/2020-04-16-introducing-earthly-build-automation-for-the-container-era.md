@@ -8,8 +8,8 @@ categories:
 
 We live in an era of continuous delivery, containers, automation, rich set of programming languages, varying code structures (mono/poly-repos) and open-source. And yet, our most popular CI/CD platform was started 15 years ago when the industry looked very different. CI systems have not changed much since — they are still largely glorified bash scripts, and the limitations are starting to show their age. For context, Docker's first release was 7 years ago and Kubernetes is only 5 years old. There is no way Jenkins ("Hudson" back then) could have been built with containers in mind, as Docker didn't even exist at the time.
 
-{% include imgf src="adoption.png" alt="graph of CI usage" 
-caption="Source [Lawrence Hecht](https://medium.com/u/d3b222569e15?source=post_page-----55619c63c3e----------------------), Source [CNCF 2019 Survey](https://www.cncf.io/wp-content/uploads/2020/03/CNCF_Survey_Report.pdf)" 
+{% include imgf src="adoption.png" alt="graph of CI usage"
+caption="Source [Lawrence Hecht](https://medium.com/u/d3b222569e15?source=post_page-----55619c63c3e----------------------), Source [CNCF 2019 Survey](https://www.cncf.io/wp-content/uploads/2020/03/CNCF_Survey_Report.pdf)"
 %}
 
 During this time, tech giants have innovated in parallel and have open-sourced tools like [Bazel](https://bazel.build/) and [Pants](https://www.pantsbuild.org/). They bring modern features, like reproducibility, determinism, the ability to scale in a monorepo and the ability to use cloud-based cache and parallelization.
@@ -17,6 +17,7 @@ During this time, tech giants have innovated in parallel and have open-sourced t
 Although these systems are probably some of the most advanced build automation tools the world has seen, they come at a significant cost: the build config is not compatible with any of the popular open-source tooling that the language communities have gotten so used to. It's like they come from a parallel universe. For most teams, adopting these tools means completely rewriting all the build configs from scratch and giving up on an entire ecosystem of tooling that they have become so dependent on. As advanced as they are, these solutions have not seen significant adoption beyond tech giants.
 
 # Introducing Earthly
+
 ![]({{site.images}}{{page.slug}}/logo.png)
 
 With the purpose of bringing these modern capabilities to people out in the real world, today we are announcing the release of [Earthly: a build automation tool for the container era](https://www.earthly.dev/).
@@ -47,6 +48,7 @@ docker:
   ENTRYPOINT ["/go-example/go-example"]
   SAVE IMAGE go-example:latest
 ```
+
 Earthly in the future will be about much more: for example, cloud-based build parallelization that has never been possible before. For now, you can run it on top of your existing CI, and you can run it locally for development. You still get the other benefits mentioned above.
 
 There are many other goodies that Earthly provides. For more information and also installation instructions, see the [**Earthly Readme on GitHub**](https://github.com/vladaionescu/earthly#earthly---build-automation-for-the-container-era).
