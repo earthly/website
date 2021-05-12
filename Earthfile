@@ -82,7 +82,7 @@ blog-lint-apply:
   LOCALLY
   # RUN sed -i -E 's/“|”/"/g' ./blog/_posts/*.md
   RUN sed -i -E "s/‘|’/'/g" ./blog/_posts/*.md
-  RUN cd blog && markdownlint --fix ./blog/_posts/*.md
+  RUN cd blog && markdownlint --fix "./_posts/*.md"
 
 blog-build:
   FROM +blog-install

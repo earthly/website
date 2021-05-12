@@ -2,6 +2,5 @@
   "default": true,
   "line-length": false,
   "MD033": false,
-  "MD040": false,
-  "MD033": false
+  "MD040": false
 }
