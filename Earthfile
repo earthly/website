@@ -94,6 +94,10 @@ blog-run:
   RUN docker run -p 4002:4002 -v $(pwd)/blog:/site --rm --name earthly-blog earthly-blog
   # END
 
+blog-local:
+  LOCALLY
+  RUN cd blog && bundle exec jekyll serve --profile -H 0.0.0.0 -P 4000
+
 ## Utils
 
 clean:
