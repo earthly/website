@@ -24,7 +24,7 @@ gem "jekyll-paginate"
 gem 'jekyll-include-cache'
 gem 'jekyll-gist'
 gem 'jekyll-archives'
-
+gem "liquid-c"
 
 gem "jekyll-inline-svg"
 gem "rouge"
