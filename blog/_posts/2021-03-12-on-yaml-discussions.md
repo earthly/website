@@ -30,7 +30,7 @@ Here are some highlights, lightly edited:
 ## DHALL is Strange
 [AndyC](https://lobste.rs/s/1nxt6g/intercal_yaml_other_horrible#c_pc0dt6) thought that Dhall was not the right answer to the YAML problem:
 
-> I agree with the problem, but disagree with the solution. Total languages don’t give you any useful engineering properties, but lack of side effects do (and Dhall also offers that).
+> I agree with the problem, but disagree with the solution. Total languages don't give you any useful engineering properties, but lack of side effects do (and Dhall also offers that).
 >
 > From the surface, it seems like HCL, jsonnet, and Cue, are just as suitable as Dhall, and probably more familiar (to varying degrees).
 
@@ -64,7 +64,7 @@ Many readers pointed out that their development community skipped right by this 
 ## Writing a Parser
 Hillel Wayne wrote a [great newsletter](https://buttondown.email/hillelwayne/archive/a3fe2688-464d-4f98-ae6b-207e7b5a1255) on YAML, and the ways it's abused. He pointed out that the main competition for embedding your DSL into YAML is writing a parser, and using YAML is just easier.
 
->[YAML] preparses the content for us. This isn’t a big enough draw to YAMLize complex programming languages, but it’s a huge huge deal for small DSLs. I suspect that’s the main reason why semgrep uses YAML for its rules and why so many technologies jury-rig it into a configuration language
+>[YAML] preparses the content for us. This isn't a big enough draw to YAMLize complex programming languages, but it's a huge huge deal for small DSLs. I suspect that's the main reason why semgrep uses YAML for its rules and why so many technologies jury-rig it into a configuration language
 
 You can see the full commentary on the orginal article on [Reddit](https://www.reddit.com/r/programming/comments/ls6tgm/intercal_yaml_and_other_horrible_programming/), on [Hacker News](https://news.ycombinator.com/item?id=26271582) and on [Lobste.rs](https://lobste.rs/s/1nxt6g/intercal_yaml_other_horrible).
 

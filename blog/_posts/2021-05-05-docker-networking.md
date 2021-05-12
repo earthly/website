@@ -7,27 +7,27 @@ author: Ashish Choudhary
 sidebar:
   nav: "docker"
 ---
-Docker is the de facto model for building and running containers at scale in most enterprise organizations today. At a very high level, Docker is a combination of CLI and a daemon process that solves common software problems like installing, publishing, removing, and managing containers. It’s perfect for microservices, where you have many services handling a typical business functionality; Docker makes the packaging easier, enabling you to encapsulate those services in containers.
+Docker is the de facto model for building and running containers at scale in most enterprise organizations today. At a very high level, Docker is a combination of CLI and a daemon process that solves common software problems like installing, publishing, removing, and managing containers. It's perfect for microservices, where you have many services handling a typical business functionality; Docker makes the packaging easier, enabling you to encapsulate those services in containers.
 
-Once the application is inside a container, it’s easier to scale and even runs on different cloud platforms, like AWS, GCP, and Azure. In this article, let’s focus on the [networking aspect of Docker](https://docs.docker.com/network/).
+Once the application is inside a container, it's easier to scale and even runs on different cloud platforms, like AWS, GCP, and Azure. In this article, let's focus on the [networking aspect of Docker](https://docs.docker.com/network/).
 
 ## What Is a Docker Network?
 
 Networking is about communication among processes, and Docker's networking is no different. Docker networking is primarily used to establish communication between Docker containers and the outside world via the host machine where the Docker daemon is running.
 
-Docker supports different types of networks, each fit for certain use cases. We’ll be exploring the network drivers supported by Docker in general, along with some coding examples.
+Docker supports different types of networks, each fit for certain use cases. We'll be exploring the network drivers supported by Docker in general, along with some coding examples.
 
 Docker networking differs from virtual machine (VM) or physical machine networking in a few ways:
 
 1. Virtual machines are more flexible in some ways as they can support configurations like [NAT and host networking](https://superuser.com/questions/227505/what-is-the-difference-between-nat-bridged-host-only-networking). Docker typically uses a bridge network, and while it can support host networking, that option is [only available on Linux](https://docs.docker.com/network/host/).
 2. When using Docker containers, network isolation is achieved using a network namespace, not an entirely separate networking stack.
-3. You can run hundreds of containers on a single-node Docker host, so it’s required that the host can support networking at this scale. VMs usually don’t run into these network limits as they typically run fewer processes per VM.
+3. You can run hundreds of containers on a single-node Docker host, so it's required that the host can support networking at this scale. VMs usually don't run into these network limits as they typically run fewer processes per VM.
 
 ## What Are Docker Network Drivers?
 
 Docker handles communication between containers by creating a default bridge network, so you often don't have to deal with networking and can instead focus on creating and running containers. This default bridge network works in most cases, but it's not the only option you have.
 
-Docker allows you to create three different types of network drivers out-of-the-box: bridge, host, and none. However, they may not fit every use case, so we’ll also explore user-defined networks such as overlay and macvlan. Let's take a closer look at each one.
+Docker allows you to create three different types of network drivers out-of-the-box: bridge, host, and none. However, they may not fit every use case, so we'll also explore user-defined networks such as overlay and macvlan. Let's take a closer look at each one.
 
 ### The Bridge Driver
 
@@ -139,15 +139,15 @@ ping: bad address 'busybox2'
 
 6. Observe that the ping works by passing the IP address of `busybox2` but fails when the container name is passed instead.
 
-The downside with the bridge driver is that it’s not recommended for production; the containers communicate via IP address instead of automatic service discovery to resolve an IP address to the container name. Every time you run a container, a different IP address gets assigned to it. It may work well for local development or CI/CD, but it’s definitely not a sustainable approach for applications running in production.
+The downside with the bridge driver is that it's not recommended for production; the containers communicate via IP address instead of automatic service discovery to resolve an IP address to the container name. Every time you run a container, a different IP address gets assigned to it. It may work well for local development or CI/CD, but it's definitely not a sustainable approach for applications running in production.
 
-Another reason not to use it in production is that it will allow unrelated containers to communicate with each other, which could be a security risk. I’ll cover how you can create custom bridge networks later.
+Another reason not to use it in production is that it will allow unrelated containers to communicate with each other, which could be a security risk. I'll cover how you can create custom bridge networks later.
 
 ### The Host Driver
 
 As the name suggests, host drivers use the networking provided by the host machine. And it removes network isolation between the container and the host machine where Docker is running. For example, If you run a container that binds to port 80 and uses host networking, the container's application is available on port 80 on the host's IP address. You can use the host network if you don't want to rely on Docker's networking but instead rely on the host machine networking.
 
-One limitation with the host driver is that it doesn't work on Docker desktop: you need a Linux host to use it. This article focuses on Docker desktop, but I’ll show you the commands required to work with the Linux host.
+One limitation with the host driver is that it doesn't work on Docker desktop: you need a Linux host to use it. This article focuses on Docker desktop, but I'll show you the commands required to work with the Linux host.
 
 The following command will start an NGINX image and listen to port 80 on the host machine:
 
@@ -157,7 +157,7 @@ $ docker run --rm -d --network host --name my_nginx nginx
 ```
 You can access NGINX by hitting the `http://localhost:80/ url`.
 
-The downside with the host network is that you can’t run multiple containers on the same host having the same port. Ports are shared by all containers on the host machine network.
+The downside with the host network is that you can't run multiple containers on the same host having the same port. Ports are shared by all containers on the host machine network.
 
 ### The None Driver
 
@@ -165,7 +165,7 @@ The none network driver does not attach containers to any network. Containers do
 
 ### The Overlay Driver
 
-The Overlay driver is for multi-host network communication, as with [Docker Swarm](https://docs.docker.com/engine/swarm/) or [Kubernetes](https://kubernetes.io/). It allows containers across the host to communicate with each other without worrying about the setup. Think of an overlay network as a distributed virtualized network that’s built on top of an existing computer network.
+The Overlay driver is for multi-host network communication, as with [Docker Swarm](https://docs.docker.com/engine/swarm/) or [Kubernetes](https://kubernetes.io/). It allows containers across the host to communicate with each other without worrying about the setup. Think of an overlay network as a distributed virtualized network that's built on top of an existing computer network.
 
 To create an overlay network for Docker Swarm services, use the following command:
 
@@ -183,7 +183,7 @@ $ docker network create -d overlay --attachable my-attachable-overlay
 
 This driver connects Docker containers directly to the physical host network. As per [the Docker documentation](https://docs.docker.com/network/#network-drivers):
 
-> “Macvlan networks allow you to assign a MAC address to a container, making it appear as a physical device on your network. The Docker daemon routes traffic to containers by their MAC addresses. Using the `macvlan` driver is sometimes the best choice when dealing with legacy applications that expect to be directly connected to the physical network, rather than routed through the Docker host’s network stack.”
+> "Macvlan networks allow you to assign a MAC address to a container, making it appear as a physical device on your network. The Docker daemon routes traffic to containers by their MAC addresses. Using the `macvlan` driver is sometimes the best choice when dealing with legacy applications that expect to be directly connected to the physical network, rather than routed through the Docker host's network stack."
 
 Macvlan networks are best for legacy applications that need to be modernized by containerizing them and running them on the cloud because they need to be attached to a physical network for performance reasons. [A macvlan network is also not supported on Docker desktop for macOS](https://github.com/docker/for-mac/issues/3926).
 
@@ -250,7 +250,7 @@ Run the `docker network connect 0f8d7a833f42` command to connect the container n
 ```
 ### Creating a Network
 
-You can use `docker network create mynetwork` to create a Docker network. Here, we’ve created a network named `mynetwork`. Let's run `docker network ls` to verify that the network is created successfully.
+You can use `docker network create mynetwork` to create a Docker network. Here, we've created a network named `mynetwork`. Let's run `docker network ls` to verify that the network is created successfully.
 
 ```shell
 $ docker network ls
@@ -353,15 +353,15 @@ Are you sure you want to continue? [y/N]
 
 ## Public Networking
 
-Let’s talk about how to publish a container port and IP addresses to the outside world. When you start a container using the `docker run` command, none of its ports are exposed. Your Docker container can connect to the outside world, but the outside world cannot connect to the container. To make the ports accessible for external use or with other containers not on the same network, you will have to use the `-P` (publish all available ports) or `-p` (publish specific ports) flag.
+Let's talk about how to publish a container port and IP addresses to the outside world. When you start a container using the `docker run` command, none of its ports are exposed. Your Docker container can connect to the outside world, but the outside world cannot connect to the container. To make the ports accessible for external use or with other containers not on the same network, you will have to use the `-P` (publish all available ports) or `-p` (publish specific ports) flag.
 
-For example, here we’ve mapped the TCP port 80 of the container to port 8080 on the Docker host:
+For example, here we've mapped the TCP port 80 of the container to port 8080 on the Docker host:
 
 ```
 docker run -it --rm nginx -p 8080:80
 ```
 
-Here, we’ve mapped container TCP port 80 to port 8080 on the Docker host for connections to host IP 192.168.1.100:
+Here, we've mapped container TCP port 80 to port 8080 on the Docker host for connections to host IP 192.168.1.100:
 
 ```
 docker run -p 192.168.1.100:8085:80 nginx
@@ -411,7 +411,7 @@ PING www.google.com (216.58.216.196): 56 data bytes
 64 bytes from 216.58.216.196: icmp_seq=0 ttl=118 time=4.722 ms
 ```
 
-Docker containers inherit DNS settings from the host when using a bridge network, so the container will resolve DNS names just like the host by default. To add custom host records to your container, you’ll need to use the [relevant `--dns*` flags outlined here](https://docs.docker.com/config/containers/container-networking/#dns-services).
+Docker containers inherit DNS settings from the host when using a bridge network, so the container will resolve DNS names just like the host by default. To add custom host records to your container, you'll need to use the [relevant `--dns*` flags outlined here](https://docs.docker.com/config/containers/container-networking/#dns-services).
 
 ## Docker Compose Networking
 
@@ -454,7 +454,7 @@ Use "docker compose [command] --help" for more information about a command.
 
 Let's understand this with an example. In the following `docker-compose.yaml` file, we have a WordPress and a MySQL image.
 
-When deploying this setup, `docker-compose` maps the WordPress container port 80 to port 80 of the host as specified in the compose file. We haven’t defined any custom network, so it should create one for you. Run ` docker-compose up -d` to bring up the services defined in the YAML file:
+When deploying this setup, `docker-compose` maps the WordPress container port 80 to port 80 of the host as specified in the compose file. We haven't defined any custom network, so it should create one for you. Run ` docker-compose up -d` to bring up the services defined in the YAML file:
 
 ```
 version: '3.7'
@@ -582,7 +582,7 @@ Removing volume downloads_db_data
 
 The volume created earlier is deleted, and since the network is already deleted after running the previous command, it shows a warning that the default network is not found. That's fine.
 
-The example we’ve looked at so far covers the default network created by Compose, but what if we want to create our custom network and connect services to it? You will define the user-defined networks using the Compose file. The following is the `docker-compose` YAML file:
+The example we've looked at so far covers the default network created by Compose, but what if we want to create our custom network and connect services to it? You will define the user-defined networks using the Compose file. The following is the `docker-compose` YAML file:
 
 ```
 version: '3.7'
@@ -619,9 +619,9 @@ networks:
   mynetwork:
 ```
 
-I’ve defined a user-defined network under the top-level networks section at the end of the file and called the network `mynetwork`. It’s a bridge type, meaning it’s a network on the host machine separated from the rest of the host network stack. Following each service, I added the network key to specify that these services should connect to `mynetwork`.
+I've defined a user-defined network under the top-level networks section at the end of the file and called the network `mynetwork`. It's a bridge type, meaning it's a network on the host machine separated from the rest of the host network stack. Following each service, I added the network key to specify that these services should connect to `mynetwork`.
 
-Let’s bring up the services again after the changing the Docker Compose YAML file:
+Let's bring up the services again after the changing the Docker Compose YAML file:
 
 ```shell
 $ docker-compose up -d                    
@@ -690,6 +690,6 @@ Inspecting the network, you can see there are now two containers connected to th
 
 ## Conclusion
 
-In this article, we’ve covered the what and how of Docker networking in detail, starting with Docker's network drivers available out-of-the-box and then some advanced concepts such as overlay and macvlan. We ran through some examples of the most common Docker network commands, and then discussed some common use cases and general pitfalls of the available network drivers. We also covered port publishing, which allows the outside world to connect with containers, and how Docker resolves DNS names. Finally, we explored Docker Compose networking with some examples.
+In this article, we've covered the what and how of Docker networking in detail, starting with Docker's network drivers available out-of-the-box and then some advanced concepts such as overlay and macvlan. We ran through some examples of the most common Docker network commands, and then discussed some common use cases and general pitfalls of the available network drivers. We also covered port publishing, which allows the outside world to connect with containers, and how Docker resolves DNS names. Finally, we explored Docker Compose networking with some examples.
 
 That should provide you with a decent overview of how Docker networking provides different modes of network drivers so that your containers can communicate on a single or multi-host setup. With this knowledge, you can pick and choose a network driver that fits your use case.

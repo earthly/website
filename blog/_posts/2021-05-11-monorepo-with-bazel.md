@@ -175,7 +175,7 @@ You will need the following scripts inside your `package.json` file to run the `
 
 ### Building/Compiling Code  
   
-In this example, you'll start from a new empty directory and build and compile a simple Node.js application using Bazel. You’ll end up with the following structure:  
+In this example, you'll start from a new empty directory and build and compile a simple Node.js application using Bazel. You'll end up with the following structure:  
   
 ```  
   WORKSPACE     
@@ -378,14 +378,14 @@ The monorepo pattern is trendy these days, but there are some trade-offs you sho
 
 Besides someone messing things up accidentally, keeping open access to all your config files, API keys, and so on might pose an issue from a security standpoint. On similar lines, you can understand why open-source projects aren't living inside monorepos yet.
 
-While Bazel definitely does some magic to ease out this pain for developers, it doesn’t have a large open-source community backing it yet. Having all your source code in one place could slow down the general process of approving pull requests and running the build scripts every now and then.
+While Bazel definitely does some magic to ease out this pain for developers, it doesn't have a large open-source community backing it yet. Having all your source code in one place could slow down the general process of approving pull requests and running the build scripts every now and then.
 
 Bazel also promotes a strict demarcation between your dependencies and source code, while modern languages and frameworks have dedicated directories for bookkeeping dependencies. For instance, an npm project will always have its dependencies in a `node_modules` directory inside the root directory. Diverging away from that pattern can present a steep learning curve, or at minimum an uncomfortable change.
 
 ## Conclusion
 
-Due to better structured configurational files and multiple language support, Bazel is a viable option for your large multi-language project deployed on multiple platforms. It's fast, and you can even optimize your slow builds [using your own build cache](https://docs.bazel.build/versions/master/remote-caching.html). Google has tried and tested Bazel’s core features to validate its stability, and their extensive documentation is some compensation for the small community.
+Due to better structured configurational files and multiple language support, Bazel is a viable option for your large multi-language project deployed on multiple platforms. It's fast, and you can even optimize your slow builds [using your own build cache](https://docs.bazel.build/versions/master/remote-caching.html). Google has tried and tested Bazel's core features to validate its stability, and their extensive documentation is some compensation for the small community.
 
-If you’d like to explore further, you can build your own React or Angular app using Bazel to see how it treats different environments of the same language. You can also try out their [tutorials for different languages](https://docs.bazel.build/versions/0.17.2/build-javascript.html#tutorials) to get a bigger picture of how Bazel works. And if today’s the day you're welcoming Bazel into your project, definitely take a moment to familiarize yourself with its documented [best practices](https://docs.bazel.build/versions/master/best-practices.html).
+If you'd like to explore further, you can build your own React or Angular app using Bazel to see how it treats different environments of the same language. You can also try out their [tutorials for different languages](https://docs.bazel.build/versions/0.17.2/build-javascript.html#tutorials) to get a bigger picture of how Bazel works. And if today's the day you're welcoming Bazel into your project, definitely take a moment to familiarize yourself with its documented [best practices](https://docs.bazel.build/versions/master/best-practices.html).
 
 If the benefits of Bazel look promising but the downsides prevent you from adopting it, then take a look at [Earthly](https://earthly.dev/). It supports monorepo and poly repos and has a gentler learning curve.

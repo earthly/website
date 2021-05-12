@@ -8,7 +8,7 @@ author: Allan MacGregor
 
 The Elixir language, along with the [Phoenix framework](https://phoenixframework.org/), has been growing in popularity at a quick pace, and with good reason. Phoenix offers productivity levels comparable to frameworks like Ruby on Rails while being one of the [fastest web frameworks](https://github.com/mroth/phoenix-showdown/blob/master/RESULTS_v3.md) available.
 
-If you’re currently working with a web framework like Ruby on Rails or even Laravel, you should definitely give Phoenix some attention due to the performance gains it promises. Additionally, Phoenix also has the capability to build highly responsive real-time applications. 
+If you're currently working with a web framework like Ruby on Rails or even Laravel, you should definitely give Phoenix some attention due to the performance gains it promises. Additionally, Phoenix also has the capability to build highly responsive real-time applications. 
 
 ## Introducing Phoenix LiveView
 
@@ -16,9 +16,9 @@ If you’re currently working with a web framework like Ruby on Rails or even La
 
 Phoenix LiveView adds bi-directional communication via WebSockets between the server and the client, without needing dedicated JavaScript code on the frontend. This allows you to implement real-time functionality on your applications with ease. 
 
-## Explaining Today’s Tutorial
+## Explaining Today's Tutorial
 
-For this tutorial, we are going to be building a crowdfunding application that will leverage the real-time capabilities of Phoenix LiveView. Our application will allow users to support a funding goal in real-time and see the funding goal update as other users also commit to a specific amount. We’ll call it Phoenix Fund.
+For this tutorial, we are going to be building a crowdfunding application that will leverage the real-time capabilities of Phoenix LiveView. Our application will allow users to support a funding goal in real-time and see the funding goal update as other users also commit to a specific amount. We'll call it Phoenix Fund.
 
 The goal of this application is not to build a fully-featured crowdfunding platform but to get your feet wet with LiveView:
 
@@ -27,7 +27,7 @@ The goal of this application is not to build a fully-featured crowdfunding platf
 - How to implement real-time updates on your application 
 - How the LiveView life cycle works
 
-Here’s a sample of how the final application will work:
+Here's a sample of how the final application will work:
 
 ![The Crowdfunding App]({{site.images}}{{page.slug}}/q0L1xth.gif)
 
@@ -43,11 +43,11 @@ I would recommend focusing on the local install for this tutorial, as it might b
 
 ### npm
 
-You can easily install Node.js from their [official instructions](https://nodejs.org/en/), but in most cases, it’s possible your system might already have Node preinstalled.
+You can easily install Node.js from their [official instructions](https://nodejs.org/en/), but in most cases, it's possible your system might already have Node preinstalled.
 
 ### Postgres
 
-[Postgres](https://www.postgresql.org/) can be a little tricky to install depending on the operating system you’re using. For this tutorial, you can leverage Docker and get a local version running by taking the following steps:
+[Postgres](https://www.postgresql.org/) can be a little tricky to install depending on the operating system you're using. For this tutorial, you can leverage Docker and get a local version running by taking the following steps:
 
 1. Create a folder to persist the DB data.
 
@@ -131,7 +131,7 @@ mix phx.routes            # Prints all routes
 mix phx.server            # Starts applications and their servers
 ```
 
-Running `mix phx.new` from any directory will create a new Phoenix application. But before you dive in, it’s crucial that you understand the options available when making a Phoenix project. Let's take a look by running the following command:
+Running `mix phx.new` from any directory will create a new Phoenix application. But before you dive in, it's crucial that you understand the options available when making a Phoenix project. Let's take a look by running the following command:
 
 ```bash
 > mix help phx.new
@@ -166,7 +166,7 @@ Running `mix phx.new` from any directory will create a new Phoenix application. 
 
 ```
 
-Let's pay attention to the first option, `--live`. As mentioned at the beginning of this tutorial, you’ll be building a fundraising application, so make sure to set up your Phoenix application to allow for real-time functionality from the get-go:
+Let's pay attention to the first option, `--live`. As mentioned at the beginning of this tutorial, you'll be building a fundraising application, so make sure to set up your Phoenix application to allow for real-time functionality from the get-go:
 
 ```bash
 > mix phx.new --live phoenix_fund
@@ -200,7 +200,7 @@ If everything is working correctly, you should be able to visit [localhost:4000]
 
 ![Out of the box installation]({{site.images}}{{page.slug}}/0N5VpNv.png)
 
-Now the app generated has the default Phoenix styling and setup, but let’s add a little polish for this exercise. You’re going to add [TailwindCSS](https://tailwindcss.com/) and some premade boilerplate CSS.
+Now the app generated has the default Phoenix styling and setup, but let's add a little polish for this exercise. You're going to add [TailwindCSS](https://tailwindcss.com/) and some premade boilerplate CSS.
 
 1. First, add the following dependencies to your `assets/package.json` file, to install Tailwind and the necessary node libraries:
 
@@ -263,7 +263,7 @@ This is the scaffold code that was generated when you generated the application.
 	live "/auction", AuctionLive
 ```
    
-It's important to highlight that `AuctionLive` is not a Phoenix controller. Rather, it’s a long-running LiveView process in charge of managing and tracking the state for that particular route. 
+It's important to highlight that `AuctionLive` is not a Phoenix controller. Rather, it's a long-running LiveView process in charge of managing and tracking the state for that particular route. 
 
 Go ahead and define your new module under `lib/phoenix_fund_web/live/auction_live.ex`. By convention, the LiveView modules are placed under the `live` directory. 
 
@@ -308,13 +308,13 @@ defmodule PhoenixFundWeb.AuctionLive do
 end
 ```
 
-For now, you’ll provide the HTML directly on your function. Note that the `~L` is a special syntax called a sigil; it’s used to represent Live EEx content.
+For now, you'll provide the HTML directly on your function. Note that the `~L` is a special syntax called a sigil; it's used to represent Live EEx content.
 
 Start your Phoenix server and let's try to load [/auction](http://localhost:4000/auction). If everything was set up correctly, you should see the following:
 
 ![Auction View]({{site.images}}{{page.slug}}/6gnnM9k.png)
 
-Excellent! Your new route is now being rendered by your LiveView. Now it’s time to make it do something useful by adding a couple of buttons to allow people to donate. 
+Excellent! Your new route is now being rendered by your LiveView. Now it's time to make it do something useful by adding a couple of buttons to allow people to donate. 
 
 ```elixir
 ```elixir 
@@ -344,7 +344,7 @@ The page should look as follows:
 
 ![Buttons added]({{site.images}}{{page.slug}}/kI2Zchu.png)
 
-However, if you try to click any of your new buttons, you’re going to get an error like so:
+However, if you try to click any of your new buttons, you're going to get an error like so:
 
 ```
 {% raw %}
@@ -382,7 +382,7 @@ The `handle_event/3` function takes three parameters:
 - The `metadata` about the event, that you can safely ignore for now
 - The `socket`, which, if you remember, holds the state of your LiveView process
 
-Inside your `handle_event/3`, you’re doing two things:
+Inside your `handle_event/3`, you're doing two things:
 
 - Retrieving the current `raised` value from the `socket.assigns` and increment it by `1`
 - Assigning the new value back to the socket 
@@ -417,7 +417,7 @@ end
 
 ![LiveView Life Cycle]({{site.images}}{{page.slug}}/rk4dJHg.png)
 
-Let's recap what you’ve done so far to better understand the LiveView life cycle:
+Let's recap what you've done so far to better understand the LiveView life cycle:
 
 1. Your application receives a request for a LiveView route.
 2. Your app will invoke that view `mount/2` function and set the initial socket state.
@@ -431,11 +431,11 @@ This is one of the key features that makes Phoenix and LiveView extremely well s
 
 ## Broadcasting with PubSub
 
-So far, you’ve built an app that can leverage Phoenix LiveView to allow users to donate in real time, but so far, there’s a caveat: updates are not shared across users or even tabs. Wouldn't it be nice to get the donations to show in real time for everyone who has the page open?
+So far, you've built an app that can leverage Phoenix LiveView to allow users to donate in real time, but so far, there's a caveat: updates are not shared across users or even tabs. Wouldn't it be nice to get the donations to show in real time for everyone who has the page open?
 
-Next, you’ll leverage [PubSub](https://github.com/phoenixframework/phoenix_pubsub) to broadcast real-time updates to all LiveView clients, not just the one that triggers the event.
+Next, you'll leverage [PubSub](https://github.com/phoenixframework/phoenix_pubsub) to broadcast real-time updates to all LiveView clients, not just the one that triggers the event.
 
->  “Publish-subscribe is a messaging pattern where senders of messages, called publishers, do not program the messages to be sent directly to specific receivers, called subscribers, but instead categorize published messages into classes without knowledge of which subscribers, if any, there may be. Similarly, subscribers express interest in one or more classes and only receive messages that are of interest, without knowledge of which publishers, if any, there are.” –[Wikipedia](https://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern)
+>  "Publish-subscribe is a messaging pattern where senders of messages, called publishers, do not program the messages to be sent directly to specific receivers, called subscribers, but instead categorize published messages into classes without knowledge of which subscribers, if any, there may be. Similarly, subscribers express interest in one or more classes and only receive messages that are of interest, without knowledge of which publishers, if any, there are." –[Wikipedia](https://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern)
 
 In short, PubSub is a messaging pattern that will allow us to implement real-time asynchronous communication with any clients listening for events in our application. In the case of this tutorial, that will be every user with a fundraising page open.
 
@@ -465,7 +465,7 @@ defmodule PhoenixFundWeb.AuctionLive do
 end
 ```
 
-You’ll use a generic `auction` topic, as you’re only dealing with a single auction.
+You'll use a generic `auction` topic, as you're only dealing with a single auction.
 
 ### Broadcasting to All Subscribers
 
@@ -497,9 +497,9 @@ Your next step is to modify each of your `handle_event/3` definitions to broadca
   end
 ```
 
-You’re using the `Phoenix.PubSub.broadcast_from/4` function, which allows you to broadcast a message describing a new socket state to all the LiveView clients that are subscribed to a topic. Notice that you’re not triggering the click event on the other clients, just letting them know that the socket state has changed.
+You're using the `Phoenix.PubSub.broadcast_from/4` function, which allows you to broadcast a message describing a new socket state to all the LiveView clients that are subscribed to a topic. Notice that you're not triggering the click event on the other clients, just letting them know that the socket state has changed.
 
-Finally, now that you’re broadcasting the socket updates, you need to tell your LiveView process how to handle the incoming broadcasts. For this, add a `handle_info/2` that will pattern match against the broadcast struct:
+Finally, now that you're broadcasting the socket updates, you need to tell your LiveView process how to handle the incoming broadcasts. For this, add a `handle_info/2` that will pattern match against the broadcast struct:
 
 ```elixir
   def handle_info(%{topic: @topic, payload: raised}, socket) do
@@ -513,9 +513,9 @@ If you start up your application and open two browser windows side by side, you 
 
 ## In Summary
 
-As you’ve learned, Phoenix offers a powerful set of libraries, making it relatively easy to create real-time applications with very little code and, even more surprisingly, no JavaScript at all. With LiveView, you can create fully fledged real-time features using only server-side code, and when you add Phoenix PubSub, you can open those same features to all app users in real time. 
+As you've learned, Phoenix offers a powerful set of libraries, making it relatively easy to create real-time applications with very little code and, even more surprisingly, no JavaScript at all. With LiveView, you can create fully fledged real-time features using only server-side code, and when you add Phoenix PubSub, you can open those same features to all app users in real time. 
 
-Of course, we’ve only begun to scratch the surface here of what you can do with Phoenix, LiveView, and PubSub. If you want to keep going with this project, I would recommend tackling adding persistence next, and the ability to create multiple auctions with [Ecto](https://hexdocs.pm/ecto/getting-started.html). 
+Of course, we've only begun to scratch the surface here of what you can do with Phoenix, LiveView, and PubSub. If you want to keep going with this project, I would recommend tackling adding persistence next, and the ability to create multiple auctions with [Ecto](https://hexdocs.pm/ecto/getting-started.html). 
 
 Both Ecto and the Phoenix project use [Earthly](https://earthly.dev) for defining their continuous integration process, so examining [those](https://github.com/elixir-ecto/ecto/blob/master/Earthfile) [projects](https://github.com/phoenixframework/phoenix/blob/master/Earthfile) can be a great way to learn more about Earthly.
 

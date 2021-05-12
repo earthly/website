@@ -37,7 +37,7 @@ RUN wget https://js-dos.com/6.22/current/js-dos.js && \
 RUN npm install -g serve
 ```
 
-JS-DOS is nice, but it’s nothing without a game to play in it. For our example purposes, we’ll use one of my childhood favorites: [Secret Agent](https://3drealms.com/catalog/secret-agent_39/).
+JS-DOS is nice, but it's nothing without a game to play in it. For our example purposes, we'll use one of my childhood favorites: [Secret Agent](https://3drealms.com/catalog/secret-agent_39/).
 
 <div class="notice--warning" markdown="1">
 **❗ Warning**

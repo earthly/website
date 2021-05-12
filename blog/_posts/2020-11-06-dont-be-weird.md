@@ -1,5 +1,5 @@
 ---
-title: Technology choice? Don’t be weird
+title: Technology choice? Don't be weird
 categories:
   - Articles
 tags:
@@ -10,7 +10,7 @@ _Here at Earthly, we are building an internal platform on AWS using EKS. &nbsp;I
 
 **The plan for the earthly internal platform says, "One thing to keep in mind as you read this is plan is `don't be weird.`" What does that mean?**
 
-Don’t be weird is the short version. &nbsp;The slightly less short version is: “You only have so many weirdness points you can spend. The less weird you are, the more community support you can get because you're still on the beaten path.” &nbsp;it's just a real conscious decision you need to make.
+Don't be weird is the short version. &nbsp;The slightly less short version is: "You only have so many weirdness points you can spend. The less weird you are, the more community support you can get because you're still on the beaten path." &nbsp;it's just a real conscious decision you need to make.
 
 **Do you have an example?**
 
@@ -34,7 +34,7 @@ There are starting to be some winners. Kubernetes itself used to be weirdness po
 
 Yes. I would want some justification if we were choosing Docker Swarm or, Rancher 1.6 or whatever. Yeah, it's not wrong to make those choices. It's just, the weirder it is, the better justification you better have.
 
-You’ve seen that CNCF landscape chart, right? &nbsp;There's tons of combinations out there that still haven't been tried before. It gets real easy, real fast, to get weird.
+You've seen that CNCF landscape chart, right? &nbsp;There's tons of combinations out there that still haven't been tried before. It gets real easy, real fast, to get weird.
 
 Whether you want to or not, you're going to end up in a place where nobody else has been. So you want to try to contain that.
 

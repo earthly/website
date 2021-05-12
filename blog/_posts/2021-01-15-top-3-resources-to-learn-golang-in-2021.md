@@ -102,7 +102,7 @@ The Stephen Grider course its on my todo list specifically because I did Stephen
 
 Everything covered so far fits into the beginner and language intro category. &nbsp;But I mentioned at the beginning my interest in go was related to all the great cloud and distributed computing happening in Go. &nbsp;That is what got me interested in [Distributed Services with Go](https://pragprog.com/titles/tjgo/distributed-services-with-go/) by Travis Jeffery.
 
-> "Go has become the most popular language for building distributed services as shown by projects like Docker, Etcd, Vault, CockroachDB, Prometheus, and Kubernetes. Despite the number of prominent projects such as these, however, there’s no resource that teaches you why or how you can extend these projects or build your own." - Distributed Services with Go
+> "Go has become the most popular language for building distributed services as shown by projects like Docker, Etcd, Vault, CockroachDB, Prometheus, and Kubernetes. Despite the number of prominent projects such as these, however, there's no resource that teaches you why or how you can extend these projects or build your own." - Distributed Services with Go
 
 At the time of writing the book is only in beta and I have only read the free 1st chapter but it looks like exactly the type of book I need.
 
