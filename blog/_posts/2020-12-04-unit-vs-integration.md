@@ -11,6 +11,7 @@ In 1998, Kent Beck wrote sUnit, a unit testing framework for SmallTalk. &nbsp;Be
 But unit testing is not the only game in town. &nbsp;There are also integration tests and performance tests and much more. &nbsp;In my mind, though, Integration tests and unit tests are the foundations of resilient software. So today let's look at the differences between the two and when you might prefer one or the other.
 
 ## What Is a Unit?
+
 {% include imgf src="unit.png" alt="A unit is the smallest piece of code that is logically separate" caption="A unit is the smallest piece of code that is logically separate" %}
 
 A unit test is a test that is testing the smallest possible pieces of code in isolation. What then is a unit? &nbsp;
@@ -30,6 +31,7 @@ In comparison to other forms of testing, the execution time of unit tests is qui
 A key assumption of unit testing is that the software under test easily separates into distinct units. &nbsp;In software written without unit testing in mind, this assumption rarely holds. &nbsp;Adding unit tests to existing software is often a great way to stabilize it and prevent future regressions, but refactoring the code to support easy unit testing may require substantial effort and could even introduce new defects. &nbsp;When considering an effort to add unit tests to existing software, costs, as well as benefits, need to be considered. &nbsp;If you have working code, and if the code rarely needs to change, and if the code is not easily unit-testable the benefits may not warrant the costs. In such cases, consider leaning on integration tests to prevent defects in that area.
 
 ## What Is an Integration Test?
+
 {% include imgf src="integration.png" alt="Integration tests focus on the whole of the software stack" caption="Integration tests focus on the whole of the software stack" %}
 
 If the philosophy of unit testing is based on the insight that testing small independent pieces of code is a great way to prevent regressions then integration tests are based on the understanding that things often go wrong at the edges. &nbsp;The outside world is a messy place, and where it interacts with your code is usually where surprises happen.
@@ -48,7 +50,6 @@ Many external systems will have a documented way to use them in an integration t
 
 The closer integration tests are to real-world interactions the more likely they are to catch problems and provide real value.
 
-
 | Service | Integration Test Strategy |
 | --- | --- |
 | Amazon SES | [Test email addresses](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-simulator.html) |
@@ -59,17 +60,17 @@ The closer integration tests are to real-world interactions the more likely they
 
 Imagine you are coding a simple e-commerce site, a simple miniature amazon.com. The details matter here so let's assume that you are going to use PostgreSQL as your datastore, PayPal for payments, UPS for shipping, and Amazon Simple Email Service for emailing invoices. &nbsp;
 
-### Unit Testing:
+### Unit Testing
 
 Your unit testing strategy will be testing the logic of your application, in an isolated fashion. &nbsp;This may include:
 
-- Testing that the tax calculating logic correctly calculates the taxes for various jurisdictions. &nbsp; 
+- Testing that the tax calculating logic correctly calculates the taxes for various jurisdictions. &nbsp;
 - Testing that items placed into a cart data structure are correctly added up.
 - Testing that discount codes are properly applied.
 
 Each of these areas will likely have several tests. Each test will verify a small piece of functionality. Unit testing power comes from their number, simplicity, and their speed and ease of execution.
 
-### Integration Testing:
+### Integration Testing
 
 Your integration testing on the other hand will focus on testing where your e-commerce code interacts with other systems. &nbsp;This means testing not just the integration with the data store but also with email sending services, payment services and more. These may include:
 
@@ -81,6 +82,7 @@ Your integration testing on the other hand will focus on testing where your e-co
 Each of these will likely be verified by one or two integration tests. These tests will be slower to run and probably involve some setup and teardown steps. &nbsp;The payoff is that the code coverage of each test will be quite large. &nbsp;These tests will generate value by catching problems that unit tests could never catch. &nbsp;However, the maintenance cost and execution time will be likely higher.
 
 # Integration Tests vs Unit Tests
+
 {% include imgf src="unit-vs-integration.png" alt="comparing unit tests to integrations tests" caption="Time for a head to head comparison" %}
 
 So which type of test should be preferred? Neither alone is sufficient. &nbsp; Both are parts of a comprehensive testing plan. Let's compare them directly:

@@ -19,20 +19,25 @@ mitmproxy is a command-line tool that acts as a HTTP and HTTPS proxy and records
 ## Installing it
 
 On Mac, mitmproxy is easy to install with brew:
+
 ```
 brew install mitmproxy
 ```
+
 On Windows and Linux, [download the binary release](https://docs.mitmproxy.org/stable/overview-installation/) and place it somewhere in your path.
 
 ## #1 Start it up
+
 To start up mitmproxy, type `mitmproxy`, and it will start up bound to port 8080.
+
 ```
 >mitmproxy
 ```
+
 The command-line interface (CLI) has VIM-like keybindings. `q` will quit, and arrow keys or `h`, `j`, `k`, `l` will move you up and down through the request list. `?` will load the help, and `<<enter>>` will drill in on a specific request.
 {% include imgf src="1.png" alt="Help menu for mitmproxy" caption="Help Menu for mitmproxy" %}
 
-mitmproxy also has a web interface if you prefer the mouse over VIM keybindings. The advanced functionality is a bit more discoverable in the web interface, but the CLI version is convenient for quick capture sessions. 
+mitmproxy also has a web interface if you prefer the mouse over VIM keybindings. The advanced functionality is a bit more discoverable in the web interface, but the CLI version is convenient for quick capture sessions.
 
 {% include imgf src="2.png" alt="mitmproxy starting up" %}
 {% include imgf src="3.png" alt="mitmweb starting up" %}
@@ -40,6 +45,7 @@ mitmproxy also has a web interface if you prefer the mouse over VIM keybindings.
 We will use both throughout the tutorial.  Whichever you choose, start it up and leave it running.
 
 ## #2 Proxy Our Connection
+
 Let's set up our internet connection to use this proxy. On macOS, Under `Setting -> Network`, select your connection and click advanced.
 
 {% include imgf src="4.png" alt="Setting -> Network on macOS" caption="`Setting -> Network` on macOS" %}
@@ -48,7 +54,7 @@ Under proxies, enable both HTTP and HTTPS proxies and choose port 8080:
 
 {% include imgf src="5.png" alt="Setup Proxy under Setting -> Network-> Advanced on macOS" caption="Setup Proxy under `Setting -> Network-> Advanced` on macOS" %}
 
-*On Windows, [follow these steps](https://www.howtogeek.com/tips/how-to-set-your-proxy-settings-in-windows-8.1/) to set up a proxy.* 
+*On Windows, [follow these steps](https://www.howtogeek.com/tips/how-to-set-your-proxy-settings-in-windows-8.1/) to set up a proxy.*
 
 *On Linux, MITM supports a [transparent proxying](https://docs.mitmproxy.org/stable/howto-transparent/) at the network layer.*
 
@@ -61,7 +67,8 @@ We now have our connection proxied to go through our instance of mitmproxy.  How
 Chrome is warning us that we might be subject to a man in the middle attack.
 
 ### What is a man in the middle
-A man in middle attack (MITM) is a security threat where an attacker can get between incoming and outgoing requests.  You think you are talking to Twitter.com, but you are talking to the man in the middle, who is talking to Twitter for you.  This MITM can view everything you send and even change what you receive. 
+
+A man in middle attack (MITM) is a security threat where an attacker can get between incoming and outgoing requests.  You think you are talking to Twitter.com, but you are talking to the man in the middle, who is talking to Twitter for you.  This MITM can view everything you send and even change what you receive.
 
 {% include imgf src="7.png" alt="Diagram of Man in the middle" %}
 
@@ -125,9 +132,11 @@ QyVJfmCmjt2i=
 ## Add the Cert On MacOS
 
 On macOS, the easiest way to add a new CA is to copy it to the desktop and then double-click it.
+
 ```
 cp ~/.mitmproxy/mitmproxy-ca-cert.cer ~/Desktop
 ```
+
 {% include imgf src="10.png" alt="Getting a Certificate signed by an unknown certificate authority" %}
 
 You will be prompted for your credentials, and the certificate will be added as 'untrusted'.
@@ -141,20 +150,24 @@ You will then be prompted for your password again, and then your certificate wil
 {% include imgf src="13.png" alt="mitmproxy certificate proxy always trusted" %}
 
 ## Installing The Trusted Root Certificate On Windows
+
 If you are on Windows, follow this guide [to add the MITM root certificate as a trusted root certificate authority](https://docs.microsoft.com/en-us/skype-sdk/sdn/articles/installing-the-trusted-root-certificate).
 
 ## Installing The Cert on Debian Based Linux Distributions
 
-On Debian-based Linux distributions, follow these steps: 
+On Debian-based Linux distributions, follow these steps:
+
 ```
 > mkdir /usr/local/share/ca-certificates/extra
 > cp ~/.mitmproxy/mitmproxy-ca-cert.cer /usr/local/share/ca-certificates/extra/mitmproxy-ca-cert.crt
 > update-ca-certificates
 ```
+
 *We will be using these steps later when we work with docker containers on macOS and Windows.*
 
-## Great Success!
-At this point, assuming you still have mitmproxy running and you still have your network interface setup to proxy through `localhost:8080`, you should be able to view all the HTTP and HTTPS network requests your machine is making in the mitmproxy (or MITMWeb) window. 
+## Great Success
+
+At this point, assuming you still have mitmproxy running and you still have your network interface setup to proxy through `localhost:8080`, you should be able to view all the HTTP and HTTPS network requests your machine is making in the mitmproxy (or MITMWeb) window.
 
 Here is Slack making requests:
 {% include imgf src="14.png" alt="mitmweb has captured a request from the slack application" caption="mitmweb has captured a request from the slack application" %}
@@ -173,7 +186,6 @@ On macOS and Windows, Linux containers do not run on the host OS. They can't bec
 
 To see the docker daemon's incoming and outgoing requests, we need to get our proxy settings and our certificate authority into that VM.
 > Before we proceed, we need to clear the proxy settings on the host network connection. We can leave mitmproxy (or MITMWeb running).
-
 
 On Windows and macOS, the easiest way to configure a proxy is via `Docker Desktop.`  Configure the proxy settings under `Preferences -> Resources -> Proxies.`
 
@@ -198,13 +210,16 @@ On Linux, we can add a proxy by editing the docker client config and then restar
  }
 }
 ```
+
 ```
 > sudo service docker restart
 
 ```
 
 ### Test it
+
 After restarting, we can test the proxying by performing a docker pull for a random image
+
 ```
 ➜  ~ docker pull couchbase:7.0.0-beta
 7.0.0-beta: Pulling from library/couchbase
@@ -226,6 +241,7 @@ Digest: sha256:290a7a0623b62e02438e6f0cd03adf116ac465f70fc4254a4059bcf51e8fa040
 Status: Downloaded newer image for couchbase:7.0.0-beta
 docker.io/library/couchbase:7.0.0-beta
 ```
+
 We can then see the requests and responses in our proxy:
 
 {% include imgf src="19.png" alt="mitmproxy request for docker.io" %}
@@ -234,12 +250,14 @@ We can even see the binary payload of the layer requests and the fact that docke
 
 {% include imgf src="20.png" alt="" caption="mitmweb request for cloudflare.docker.com" %}
 
- ## *Troubleshooting*
-*If `docker pull` fails with a certificate error or the requests don't get proxied, make sure you have restarted docker at least once and that the proxy settings are in place.* 
+## *Troubleshooting*
+
+*If `docker pull` fails with a certificate error or the requests don't get proxied, make sure you have restarted docker at least once and that the proxy settings are in place.*
 
 ## Capturing Docker Container Traffic
 
 We now know how to capture traffic on our host machine and the Linux container host. But what happens when we make requests from inside a running container?
+
 ```
 > docker run -it ubuntu
 root@ca43de1bb8b1:/# apt upgrade & apt update & apt install curl
@@ -252,10 +270,12 @@ The document has moved
 <A HREF="http://www.google.com/">here</A>.
 </BODY></HTML>
 ```
+
 We are successfully capturing the requests and responses:
 {% include imgf src="21.png" alt="" caption="" %}
 
 However, we hit problems when we try to use HTTPS:
+
 ```
 root@ca43de1bb8b1:/# curl https://google.com/
 curl: (60) server certificate verification failed. CAfile: /etc/ssl/certs/ca-certificates.crt CRLfile: none
@@ -273,14 +293,19 @@ If you'd like to turn off curl's verification of the certificate, use
  the -k (or --insecure) option.
  > exit
 ```
+
 ## Adding the CA Cert to our Linux Container
-The solution here is a familiar one.  We need to follow the steps we used above for configuring Linux to trust a certificate authority, but we need to do it inside our container. 
+
+The solution here is a familiar one.  We need to follow the steps we used above for configuring Linux to trust a certificate authority, but we need to do it inside our container.
 
 There are several ways to accomplish this.
 
 ## Solution #1: Volume Mount The Cert
+
 The simplest solution is to mount the certificate into the proper spot in our container and run `update-ca-certificates`.
-### Alpine:
+
+### Alpine
+
 ```
 # Run container and mount in our CA Cert
 > docker run -it -v ~/.mitmproxy/mitmproxy-ca-cert.cer:/usr/local/share/ca-certificates/mitmproxy-ca-cert.cer alpine
@@ -306,7 +331,9 @@ The document has moved
 
 # Success!
 ```
+
 ### Ubuntu
+
 The general pattern with some small modifications works on Ubuntu-based images as well.
 
 ```
@@ -332,10 +359,13 @@ The document has moved
 ```
 
 ## Solution #2: Extend the Image
-Volume mounting the certificate and manually running `update-ca-certificates` is an excellent proof of concept, but if you want to run a docker container in the background and have all traffic proxied, then interactive mode won't cut it. In that case, extending the image is the way to go. 
+
+Volume mounting the certificate and manually running `update-ca-certificates` is an excellent proof of concept, but if you want to run a docker container in the background and have all traffic proxied, then interactive mode won't cut it. In that case, extending the image is the way to go.
 
 ## Extending an Alpine Image to Add a Certificate Authority
+
 We can create a new Dockerfile that extends the image we want to proxy and add in the certificate.
+
 ```
 FROM alpine # or any alpine based image
 RUN apk update && apk add curl
@@ -343,7 +373,9 @@ WORKDIR /usr/local/share/ca-certificates
 COPY mitmproxy.crt mitmproxy.crt
 RUN update-ca-certificates
 ```
+
 We can then build it and tag it with a `:mitm` tag.
+
 ```
 > docker build --tag alpine:mitm .
 [+] Building 1.9s (10/10) FINISHED                             
@@ -364,7 +396,9 @@ We can then build it and tag it with a `:mitm` tag.
  => => writing image sha256:ca5be16f3d19c34ea5e29ac1774b  0.0s 
  => => naming to docker.io/library/alpine:mitm            0.0s
 ```
-Now anytime we run this image, it will be ready to accept responses signed by our certificate authority. And because we didn't change the entry point, we can use it wherever we would use the base image. 
+
+Now anytime we run this image, it will be ready to accept responses signed by our certificate authority. And because we didn't change the entry point, we can use it wherever we would use the base image.
+
 ```
 > docker run -it alpine:mitm      
 \> curl https://google.com
@@ -375,10 +409,13 @@ The document has moved
 <A HREF="https://www.google.com/">here</A>.
 </BODY></HTML>
 ```
+
 Any requests by anything running inside the container will be transparently proxied. If you are trying to debug what a service you depend on is doing this will come in handy.  
 
 ## Extending an Ubuntu Image to Add a Certificate Authority
+
 A similar process will work with Ubuntu-based images:
+
 ```
 FROM ubuntu
 RUN apt update -y && apt upgrade -y && apt install ca-certificates curl -y
@@ -386,6 +423,7 @@ WORKDIR /usr/local/share/ca-certificates
 COPY mitmproxy.crt mitmproxy.crt
 RUN update-ca-certificates 
 ```
+
 ```
 > docker build --tag ubuntu:mitm .
 [+] Building 36.4s (10/10) FINISHED                            
@@ -407,7 +445,7 @@ RUN update-ca-certificates
  => => naming to docker.io/library/ubuntu:mitm            0.0s
 ```
 
-```                      
+```
 > docker run -it ubuntu:mitm    
 root> curl https://google.com
 <HTML><HEAD><meta http-equiv="content-type" content="text/html;charset=utf-8">
@@ -420,6 +458,7 @@ The document has moved
 ```
 
 ## But wait, there's more
+
 {% include imgf src="22.png" alt="man in the middle diagram" %}
 
 There we go. We can now capture HTTPS traffic made by any containers we run. Combined with the previous steps, we can now intercept and inspect HTTP and HTTPS protocol traffic on our host machine, on a Linux virtual machine running in a hypervisor, and in the actual running containers.  

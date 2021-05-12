@@ -30,9 +30,9 @@ In this article, you'll learn about different logging strategies you can use in 
 
 `docker logs` is a command that shows all the information logged by a running container. The `docker service logs` command shows information logged by all the containers participating in a service. By default, the output of these commands, as it would appear if you run the command in a terminal, opens up three I/O streams: STDIN, STDOUT, and STDERR. And the default is set to show only STDOUT and STDERR.
 
-- STDIN is the command's input stream, which may include input from the keyboard or input from another command. 
-- STDOUT is usually a command's normal output. 
-- STDERR is typically used to output error messages. 
+- STDIN is the command's input stream, which may include input from the keyboard or input from another command.
+- STDOUT is usually a command's normal output.
+- STDERR is typically used to output error messages.
 
 The `docker logs` command may not be useful in cases when a logging driver is configured to send logs to a file, database, or an external host/backend, or if the image is configured to send logs to a file instead of STDOUT and STDERR. With `docker logs <CONTAINER_ID>`, you can see all the logs broadcasted by a specific container identified by a unique ID.
 
@@ -51,19 +51,19 @@ Tue 06 Feb 2020 00:00:02 UTC
 For example, here's the JSON log created by the [hello-world](https://hub.docker.com/_/hello-world) Docker image using the json-file driver:
 
 ```bash
-$ {"log":"Hello from Docker!\n","stream":"stdout","time":"2021-02-10T00:00:00.000000000Z"}
+{"log":"Hello from Docker!\n","stream":"stdout","time":"2021-02-10T00:00:00.000000000Z"}
 ```
 
-As you can see, the log follows a pattern of printing: 
+As you can see, the log follows a pattern of printing:
 
-- Log's origin 
-- Either `stdout` or `stderr` 
-- A timestamp 
+- Log's origin
+- Either `stdout` or `stderr`
+- A timestamp
 
 You can find this log in your Docker host at:
 
 ```bash
-$ /var/lib/docker/containers/<container id>/<container id>-json.log  
+/var/lib/docker/containers/<container id>/<container id>-json.log  
 ```
 
 These Docker logs are stored in a host container and will build up over time. To address that, you can implement log rotation, which will remove a chunk of logs at specified intervals, and a log aggregator, which can be used to push them into a centralized location for a permanent log repository. You can use this repository for further analysis and improvements in the system down the road.
@@ -79,31 +79,31 @@ cg95e1yqk810   bar_image  "node index.js"     Y min ago           Up Y min      
 Then, the `docker logs container_id` lists the logs for a particular container.
 
 ```bash
-$ docker logs <container_id>
+docker logs <container_id>
 ```
 
 If you want to follow the Docker container logs:
 
 ```bash
-$ docker logs <container_id> -f
+docker logs <container_id> -f
 ```
 
 If you want to see the last N log lines:
 
 ```bash
-$ docker logs <container_id> --tail N
+docker logs <container_id> --tail N
 ```
 
 If you only want to see any specific logs, use `grep`:
 
 ```bash
-$ docker logs <container_id> | grep node
+docker logs <container_id> | grep node
 ```
 
-If you want to check errors: 
+If you want to check errors:
 
 ```bash
-$ docker logs <container_id> | grep -i error
+docker logs <container_id> | grep -i error
 ```
 
 ## Logging Drivers Supported by Docker
@@ -127,7 +127,6 @@ Currently, Docker supports the following logging drivers:
 |    **[etwlogs](https://docs.docker.com/config/containers/logging/etwlogs/)**    |   Writes log messages as Event Tracing for Windows (ETW) events. Only available on Windows platforms.   |
 | **[logentries](https://docs.docker.com/config/containers/logging/logentries/)** |                                Writes log messages to Rapid7 Logentries.                                |
 
-
 ### Configuring the Logging Driver
 
 To configure the Docker daemon to a logging driver, you need to set the value of `log-driver` to the name of the logging driver in the daemon.json configuration file. Then you need to restart Docker for the changes to take effect for all the newly created containers. All the existing containers will remain as they are.
@@ -146,7 +145,7 @@ For example, let's set up a default logging driver with some additional options.
 }
 ```
 
-To find the current logging driver for the Docker daemon: 
+To find the current logging driver for the Docker daemon:
 
 ```bash
   {% raw %}
@@ -156,7 +155,7 @@ json-file
 {% endraw %}
 ```
 
-You can override the default driver by adding the `--log-driver` option to the docker run command that creates a container. 
+You can override the default driver by adding the `--log-driver` option to the docker run command that creates a container.
 
 The following command will start using the Splunk driver:
 
@@ -211,9 +210,10 @@ Docker logging effectively means logging the events of an application, host OS, 
 
 In this logging strategy, the application running in the containers will have its own logging framework. For example, a Node.js app could use a [`winston`](https://www.npmjs.com/package/winston) library to format and send the logs. With this approach, you have complete control over the logging event.
 
-If you have multiple containers, you need to add an identifier at each container level, so you can uniquely determine the container and its respective logs. But as the size of the logs increases, this will start creating a load on the application process. Due to the transient nature of containers, the logs will be wiped out when a container is terminated or shut down. 
+If you have multiple containers, you need to add an identifier at each container level, so you can uniquely determine the container and its respective logs. But as the size of the logs increases, this will start creating a load on the application process. Due to the transient nature of containers, the logs will be wiped out when a container is terminated or shut down.
 
 To address this, you have two options:
+
 - Configure steady storage to hold these logs, i.e. disks/data volumes.
 - Forward these logs to a log management solution.
 
@@ -233,7 +233,7 @@ Note that the `docker log` command will not work if you use anything other than 
 
 Here, you need to set up a dedicated container whose only job is to collect and manage logs within a Docker ecosystem. It'll aggregate, monitor, and analyze logs from containers and forward them to a central repository. The log dependency on the host machine is no longer an issue, and it's best suited for microservices architecture.
 
-This strategy gives you the freedom to: 
+This strategy gives you the freedom to:
 
 - Move containers between the hosts.
 - Scale up by just adding a new container.
@@ -263,12 +263,12 @@ Docker makes containerized application deployment easier, faster, and streamline
 
 The json-file driver is the only one that works with the `docker logs` command, a limitation of Docker logs. When you start using any other logging drivers, such as Fluentd or Splunk, the `docker logs` command shows an error and the Docker logs API calls will fail. Also, you won't be able to check the container logs in this situation.
 
-### Docker Syslog Impacts Container Deployment 
+### Docker Syslog Impacts Container Deployment
 
 The reliable way to deliver logs is via Docker Syslog with TCP or TLS. But this driver needs an established TCP connection to the Syslog server whenever a container starts up. And the container will fail ife a connection is not made.
 
   ```bash
-  $ docker: Error response from daemon: Failed to initialize logging driver: dial tcp
+  docker: Error response from daemon: Failed to initialize logging driver: dial tcp
   ```
 
 Your container deployment will be affected if you face network problems or latency issues. And it's not recommended that you restart the Syslog server because this will drop all the connections from the containers to a central Syslog server.
@@ -280,16 +280,18 @@ The Docker syslog driver needs an established TCP or TLS connection to deliver l
 ### Multiline Logs Not Supported
   
 Generally, either of two patterns is followed for logging: single-line per log or multiple lines with extended information per log, like stack traces or exceptions. But with Docker logging, this is a moot point, because containers always broadcast logs to the same output: `stdout`.
+
 ### Multiple Logging Drivers Not Supported
+
 It's mandatory that you use only a single driver for all of your logging needs. Scenarios where you can store logs locally and push it to remote servers are not supported.
 
 ### Logs Can Miss or Skip
   
-There's a rate limitation setting at the Docker end for journald drivers that takes care of the rate that logs get pushed. If it exceeds, then the driver might skip some logs. To prevent such issues, increase the rate limitation settings according to your logging needs. 
+There's a rate limitation setting at the Docker end for journald drivers that takes care of the rate that logs get pushed. If it exceeds, then the driver might skip some logs. To prevent such issues, increase the rate limitation settings according to your logging needs.
 
 ## Conclusion
 
-While Docker containerization allows developers to encapsulate a program and its file system into a single portable package, that certainly doesn't mean containerization is free of maintenance. Docker Logging is a bit more complex than traditional methods, so teams using Docker must familiarize themselves with the Docker logging to support full-stack visibility, troubleshooting, performance improvements, root cause analysis, etc. 
+While Docker containerization allows developers to encapsulate a program and its file system into a single portable package, that certainly doesn't mean containerization is free of maintenance. Docker Logging is a bit more complex than traditional methods, so teams using Docker must familiarize themselves with the Docker logging to support full-stack visibility, troubleshooting, performance improvements, root cause analysis, etc.
 
 As we have seen in this post, to facilitate logging, Docker offers logging drivers and commands in the platform which gives you the mechanisms for accessing the performance data and also provides plugins to integrate with third-party logging tools as well. To maximize the logging capabilities there are several methods and strategies which help in designing your logging infrastructure, but each comes with its advantages and disadvantages.
 

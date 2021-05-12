@@ -10,6 +10,7 @@ author: Adam
 You can embedded graphs into the markdown like this:
 
 ### Simple Graph
+
 ``` matplotlib
 import matplotlib.pyplot as plt
 
@@ -19,6 +20,7 @@ plt.title('This is an example figure')
 ```
 
 ### More Complex
+
 ``` matplotlib
 from matplotlib import colors
 import matplotlib.pyplot as plt
@@ -66,6 +68,7 @@ for im in images:
 ```
 
 ## How to install pandoc-plot
+
 If you are using the docker container and jekyll, it should just work.  
 
 Manual Mac setup:
@@ -73,10 +76,12 @@ Manual Mac setup:
 * `brew install pandoc`
 * `brew install pandoc-plot`
 * install specific libs: `pandoc-plot toolkits` to list
-  * `pip3 install matplotlib` for matplotlib 
+  * `pip3 install matplotlib` for matplotlib
 
 ## How to run pandoc-plot
+
 The site will run pandoc-plot itself, but if you want to run it manually here is how:
+
 ```
  pandoc blog/_posts/2029-01-01-example-plot.md --filter pandoc-plot -f markdown -t html -s -o plot.html
 ```

@@ -67,4 +67,3 @@ But, my favorite post by Li is [How an Optimizing Compiler Works](https://www.li
 ## Conclusion
 
 Blogs are a great way to keep up on what is new and exciting in the Scala community, and I hope this list of some of my favorites is helpful. If you want to get notified about new Scala blogposts, [The Scala Times](http://scalatimes.com/) is a great option. It's how I found many of these articles.
-

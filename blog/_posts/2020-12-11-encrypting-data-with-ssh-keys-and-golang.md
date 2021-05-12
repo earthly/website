@@ -43,7 +43,9 @@ Perfect, we can then display my public key with:
     alex@earthly:~/$ cat /tmp/testkey.pub 
     ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDBRl0U4mwO/jQ7kYJidSnQy0ci45j1QZ1do7NEC/08cG0jbNCSX6mblFr0JWruLpp6Z1WA/BL+GngCwATBeEt7dSAHNpOvT0fJ4roWv6/KmOLOCjKq26a0MvMf1g/YFa5tP5Zi7UW5Hp4vGCTXRPyywNJvh1/cHKuq2j79fUX+4cG9p01a1Y89/a3Q7L5UkB4JoFuaA9sVzVg4H5A2vRVR/pEIRRFuPuxHDVcNblA6CsKFf0zBoLatXv+aBn86dX8EtwB13HdRsKq+XmBwnWJiS+Cz1GBhnKf4LM/Ca46qy2ExQnOOt49COUOoU6DI7P5bf4I33pNDDLoTvFFKzyXWTRgwg1tiyiRzfIjO+mg0kQM/dZ7+M8W49AQv+MR8Uh0bykECXn6u8yEibEgInYlj0ziWXtf6lPEg+505hDTLlvPWXpo8nLluR5COwgFVSbNcMnY9o3KHeog598mQxiqrXWWbGmra7SgXrKmqJGqUbkZqH1z8l6QfFo9nTBlYI0k= alex@earthly
 ```
+
 and since we're all friends here, I'll share my example private key (you should never share your key with anyone, I'm only sharing this as an example -- I won't ever be using this key anywhere).
+
 ```
     alex@earthly:~/$ cat /tmp/testkey
     -----BEGIN OPENSSH PRIVATE KEY-----
@@ -92,50 +94,51 @@ Ok great, now how do we do that with go?
     package main
     
     import (
-    	"crypto/rand"
-    	"crypto/rsa"
-    	"encoding/pem"
-    	"crypto/x509"
-    	"fmt"
+     "crypto/rand"
+     "crypto/rsa"
+     "encoding/pem"
+     "crypto/x509"
+     "fmt"
     
-    	"golang.org/x/crypto/ssh"
+     "golang.org/x/crypto/ssh"
     )
     
     func marshalRSAPrivate(priv *rsa.PrivateKey) string {
-    	return string(pem.EncodeToMemory(&pem.Block{
-    		Type: "RSA PRIVATE KEY", Bytes: x509.MarshalPKCS1PrivateKey(priv),
-    	}))
+     return string(pem.EncodeToMemory(&pem.Block{
+      Type: "RSA PRIVATE KEY", Bytes: x509.MarshalPKCS1PrivateKey(priv),
+     }))
     }
     
     func generateKey() (string, string, error) {
-    	reader := rand.Reader
-    	bitSize := 2048
+     reader := rand.Reader
+     bitSize := 2048
     
-    	key, err := rsa.GenerateKey(reader, bitSize)
-    	if err != nil {
-    		return "", "", err
-    	}
+     key, err := rsa.GenerateKey(reader, bitSize)
+     if err != nil {
+      return "", "", err
+     }
     
-    	pub, err := ssh.NewPublicKey(key.Public())
-    	if err != nil {
-    		return "", "", err
-    	}
-    	pubKeyStr := string(ssh.MarshalAuthorizedKey(pub))
-    	privKeyStr := marshalRSAPrivate(key)
+     pub, err := ssh.NewPublicKey(key.Public())
+     if err != nil {
+      return "", "", err
+     }
+     pubKeyStr := string(ssh.MarshalAuthorizedKey(pub))
+     privKeyStr := marshalRSAPrivate(key)
     
-    	return pubKeyStr, privKeyStr, nil
+     return pubKeyStr, privKeyStr, nil
     }
     
     func main() {
-    	pubKey, privKey, _ := generateKey()
-    	fmt.Println("my public key is...")
-    	fmt.Println(pubKey)
-    	fmt.Println("my private key is...")
-    	fmt.Println(privKey)
+     pubKey, privKey, _ := generateKey()
+     fmt.Println("my public key is...")
+     fmt.Println(pubKey)
+     fmt.Println("my private key is...")
+     fmt.Println(privKey)
     }
 ```
 
 Try it out in the [go playground](https://play.golang.org/p/chkKzvcGJcV), you should see something like this:
+
 ```
     my public key is...
     ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC97wOspXmARcUFThWVlNMnwxIiDIW7CrshmPRDfBV7RYlRtiNuSLlFaAIeXUGPWFnKzivScpBntrFqqj+aJRQ27/tsM/n5jT6ERnoJTbyF+jYCx5BxST5lssVSRrXJQ0dLKSD6OEvTKHK50RrxVtdU2E1cknwQWsYC2514xwmWYwEiNfFkO0QrU27BunPO/Gam+GJNTLt7o7diM0GawuqVI1S/hf0T7goMTA9wX7KaIDg5Q1x+/0MJa1kT7LswG8Rw2TFXRqI9Q+4UmmWN1MxBpeVK8VWx7NY9ngXnHUnJdzrXB4+E95SnKyhzaTlBnWDs9Em606SRb+g+tSYXl8DD
@@ -172,35 +175,34 @@ Try it out in the [go playground](https://play.golang.org/p/chkKzvcGJcV), you sh
 
 Perfect! Now I can generate a public and private key via Go. I wonder how I can encrypt a message using a public key which can only be decrypted by someone with the private key. Let's try out some more code:
 
-
 I want to keep my function signature as basic as possible for the purpose of learning, so we will pass in the public key as the regular base64-encoded id\_rsa keyformat, and let that function handle parsing it:
 
 ``` go
     func encrypt(msg, publicKey string) (string, error) {
-    	parsed, _, _, _, err := ssh.ParseAuthorizedKey([]byte(publicKey))
-    	if err != nil {
-    		return "", err
-    	}
-    	// To get back to an *rsa.PublicKey, we need to first upgrade to the
-    	// ssh.CryptoPublicKey interface
-    	parsedCryptoKey := parsed.(ssh.CryptoPublicKey)
+     parsed, _, _, _, err := ssh.ParseAuthorizedKey([]byte(publicKey))
+     if err != nil {
+      return "", err
+     }
+     // To get back to an *rsa.PublicKey, we need to first upgrade to the
+     // ssh.CryptoPublicKey interface
+     parsedCryptoKey := parsed.(ssh.CryptoPublicKey)
     
-    	// Then, we can call CryptoPublicKey() to get the actual crypto.PublicKey
-    	pubCrypto := parsedCryptoKey.CryptoPublicKey()
+     // Then, we can call CryptoPublicKey() to get the actual crypto.PublicKey
+     pubCrypto := parsedCryptoKey.CryptoPublicKey()
     
-    	// Finally, we can convert back to an *rsa.PublicKey
-    	pub := pubCrypto.(*rsa.PublicKey)
+     // Finally, we can convert back to an *rsa.PublicKey
+     pub := pubCrypto.(*rsa.PublicKey)
     
-    	encryptedBytes, err := rsa.EncryptOAEP(
-    		sha256.New(),
-    		rand.Reader,
-    		pub,
-    		[]byte(msg),
-    		nil)
-    	if err != nil {
-    		return "", err
-    	}
-    	return base64.StdEncoding.EncodeToString(encryptedBytes), nil
+     encryptedBytes, err := rsa.EncryptOAEP(
+      sha256.New(),
+      rand.Reader,
+      pub,
+      []byte(msg),
+      nil)
+     if err != nil {
+      return "", err
+     }
+     return base64.StdEncoding.EncodeToString(encryptedBytes), nil
     }
 ```
 
@@ -210,30 +212,29 @@ Finally, how do we decrypt it?
 
 ``` go
     func decrypt(data, priv string) (string, error) {
-    	data2, err := base64.StdEncoding.DecodeString(data)
-    	if err != nil {
-    		return "", err
-    	}
+     data2, err := base64.StdEncoding.DecodeString(data)
+     if err != nil {
+      return "", err
+     }
     
-    	block, _ := pem.Decode([]byte(priv))
-    	key, err := x509.ParsePKCS1PrivateKey(block.Bytes)
-    	if err != nil {
-    		return "", err
-    	}
+     block, _ := pem.Decode([]byte(priv))
+     key, err := x509.ParsePKCS1PrivateKey(block.Bytes)
+     if err != nil {
+      return "", err
+     }
     
-    	decrypted, err := rsa.DecryptOAEP(sha256.New(), rand.Reader, key, data2, nil)
-    	if err != nil {
-    		return "", err
-    	}
-    	return string(decrypted), nil
+     decrypted, err := rsa.DecryptOAEP(sha256.New(), rand.Reader, key, data2, nil)
+     if err != nil {
+      return "", err
+     }
+     return string(decrypted), nil
     }
 ```
-Try it out [here](https://play.golang.org/p/a5u9PYWEjgs)
 
+Try it out [here](https://play.golang.org/p/a5u9PYWEjgs)
 
 So there we have a end-to-end example of how to generate a new public/private key, and encrypt and decrypt data all in golang.
 
 Based on my experimentation with private/public key encryption in go, I put together a small program that allows users to share encrypted data between parties using a rather simple [command line tool on my personal repo](https://github.com/alexcb/secretshare)
 
 Our server's authentication process is slightly different from the above code – we create a digital signature using the private key, which I'll be covering in a future blog post.
-

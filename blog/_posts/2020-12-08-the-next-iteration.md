@@ -41,4 +41,3 @@ If you're feeling like you'd like to bounce some ideas, find us on [Slack](https
 Our #1 priority is making our users happy and productive. There is no other way to achieve this without constant iteration and feedback.
 
 Thank you for being part of the Earthly community!
-

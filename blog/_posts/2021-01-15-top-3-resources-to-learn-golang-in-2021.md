@@ -6,6 +6,7 @@ author: Adam
 ---
 
 ## Why Learn Go
+
 <blockquote class="twitter-tweet" data-width="550">
 <p lang="en" dir="ltr">If I were a system administrator looking to learn a new programming language it would be Go.<br><br>So many of our tools including Kubernetes, Prometheus, and Terraform are written, and extended, in Go that it's almost a requirement next to learning Bash. <a href="https://t.co/OfZmGo4uP5">https://t.co/OfZmGo4uP5</a></p>— Kelsey Hightower (@kelseyhightower) <a href="https://twitter.com/kelseyhightower/status/1336097427586129920?ref_src=twsrc%5Etfw">December 7, 2020</a>
 </blockquote>
@@ -26,9 +27,10 @@ I've been a developer for over a decade and I've learned a lot of languages over
 The list is shorter than I expected it to be, coming from Scala. I'm pretty certain some of Go's success is due to that simplicity.
 
 ## #1 A Tour of Go
+
 ![Screenshot of tour of go]({{site.images}}{{page.slug}}/pN9WHj_jvb.png)\
 
-> "Honestly, for me I had a background in C, so simply going through various tutorials like [https://tour.golang.org/list](https://tour.golang.org/list) is how I learned." 
+> "Honestly, for me I had a background in C, so simply going through various tutorials like [https://tour.golang.org/list](https://tour.golang.org/list) is how I learned."
 >
 > — Alex Couture-Beil
 
@@ -40,7 +42,7 @@ It's great because it gets you running and then writing code very quickly. &nbsp
 
 ![Go By Example Screenshot]({{site.images}}{{page.slug}}/D1dOytb5di.png)\
 
-> "I found that hitting gobyexample.com when I needed practical examples helped a ton" 
+> "I found that hitting gobyexample.com when I needed practical examples helped a ton"
 > — [Corey Larson](https://twitter.com/dchw)
 
 After reading the tour, you're probably ready to start playing around. If you have a side project, perhaps try reimplementing it in Go. If you'd like a more structured approach start with [Codewars](https://www.codewars.com/) or [Exercism](https://exercism.io/tracks/go).
@@ -48,6 +50,7 @@ After reading the tour, you're probably ready to start playing around. If you ha
 Either way, Writing and running some actual code is a great way to build up familiarity. &nbsp;As you do this G[o by Example](https://gobyexample.com/) is a great reference. Personally, I hadn't written a C style for loop in a long time and I'm not sure if I had ever used the `continue` keyword before. The side by side examples provided really helped cement things.
 
 ## #3 Effective Go
+
 ![Effective Go Screenshot]({{site.images}}{{page.slug}}/Od6ESpAy3U.png)\
 
 Effective Go is next up. &nbsp;This document written by the language authors and explains a lot of the idioms of the language. &nbsp;It is dense but very informative. &nbsp;If you use a language enough, the syntax and semantics of it become second nature but I'm not there yet and for me, its very helpful to grasp the reasons behind some features. &nbsp;This backstory gives me a hook that helps strengthen my understanding.
@@ -63,6 +66,7 @@ I hadn't seen semicolons yet because I hadn't seen multiple statements on a sing
 That is just one example of something I learned from reading this document. &nbsp;For someone who is an experience programmer, but a Go newbie, Effective Go is a treasure trove of insights.
 
 ## Start Coding
+
 <blockquote class="twitter-tweet" data-width="550">
 <p lang="en" dir="ltr">4 strategies for learning a new programming language:<br><br>1. Use it in a fun side project<br>2. Use it in a fun side project<br>3. Use it in a fun side project<br>4. Use it in a fun side project</p>— Adam Gordon Bell 🤓 (@adamgordonbell) <a href="https://twitter.com/adamgordonbell/status/1335613480641159170?ref_src=twsrc%5Etfw">December 6, 2020</a>
 </blockquote>
@@ -96,6 +100,7 @@ At my previous employer, I had an all-you-can-eat Udemy package and I used it qu
 The Stephen Grider course its on my todo list specifically because I did Stephen's [Docker and Kubernetes course](https://www.udemy.com/course/docker-and-kubernetes-the-complete-guide/) in the past and enjoyed it. &nbsp;I like his approach to teaching, which involves having you typing out and running code as you go.
 
 ## Bonus #2: Distributed Services with Go
+
 ![]({{site.images}}{{page.slug}}/images.jpeg)\
 
 > "For me the main motivator for learning go was that it was kinda like Erlang with regards to goroutines / message-passing concurrency model, but with none of the performance drawbacks." [Vlad A. Ionescu](https://twitter.com/VladAIonescu)
@@ -106,7 +111,7 @@ Everything covered so far fits into the beginner and language intro category. &n
 
 At the time of writing the book is only in beta and I have only read the free 1st chapter but it looks like exactly the type of book I need.
 
-## Bonus 3 to N: More Resources:
+## Bonus 3 to N: More Resources
 
 ### Web Resources
 
