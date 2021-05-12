@@ -72,9 +72,13 @@ blog-install:
 
 blog-lint:
   LOCALLY
-  IF grep -r '[“”‘’]' ./blog/_posts
+  IF grep '[“”‘’]' ./blog/_posts/*.md
     RUN echo "Fail: Remove curly quotes and use straight quotes instead" && false
   END  
+
+blog-lint-apply:
+  LOCALLY
+  grep '[“”‘’]' ./blog/_posts/*.md
 
 blog-build:
   FROM +blog-install
