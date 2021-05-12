@@ -73,11 +73,12 @@ blog-install:
 blog-lint:
   FROM +blog-install
   RUN apt-get install npm -y
+  COPY blog .
   RUN npm install -g markdownlint-cli 
   IF grep '[“”‘’]' ./blog/_posts/*.md
     RUN echo "Fail: Remove curly quotes and use straight quotes instead" && false
   END  
-  RUN markdownlint '**/*.md' && true
+  RUN markdownlint '**/*.md' & true
 
 blog-lint-apply:
   LOCALLY
