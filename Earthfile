@@ -70,6 +70,12 @@ blog-install:
   COPY blog/Gemfile.lock .
   RUN bundle install --retry 5 --jobs 20
 
+blog-lint:
+  LOCALLY
+  IF grep -r '[“”‘’]' ./blog/_posts
+    RUN echo "Fail: Remove curly quotes and use straight quotes instead" && false
+  END  
+
 blog-build:
   FROM +blog-install
   COPY blog .
@@ -119,11 +125,13 @@ static-shell:
 
 ## Dev Build
 dev-build:
+  BUILD +blog-lint
   BUILD --build-arg FLAGS="--future" +website-build 
   BUILD --build-arg FLAGS="--future" +blog-build
 
 # Prod Build
 build:
+  BUILD +blog-lint
   BUILD +website-build
   BUILD +blog-build
 
