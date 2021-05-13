@@ -46,7 +46,7 @@ I would recommend focusing on the local install for this tutorial, as it might b
 You can easily install Node.js from their [official instructions](https://nodejs.org/en/), but in most cases, it's possible your system might already have Node preinstalled.
 
 ### Postgres
-
+<!-- markdownlint-disable MD029 -->
 [Postgres](https://www.postgresql.org/) can be a little tricky to install depending on the operating system you're using. For this tutorial, you can leverage Docker and get a local version running by taking the following steps:
 
 1. Create a folder to persist the DB data.

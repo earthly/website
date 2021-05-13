@@ -64,7 +64,7 @@ Rather than letting old builds accumulate and consume a file system, developers 
 
 Builds can also be removed [manually](https://superuser.com/a/1418896/92661) via the Jenkins command line or using a [cron job](https://opensource.com/article/17/11/how-use-cron-linux) that periodically cleans up old builds. You can find other options for discarding old build data [in this reference post](https://support.cloudbees.com/hc/en-us/articles/215549798-Deleting-Old-Builds-Best-Strategy-for-Cleanup-and-disk-space-management).
 
-##### Prevent Resource Collision in Parallel Jobs
+#### Prevent Resource Collision in Parallel Jobs
 
 Jobs running in parallel might want exclusive access to ports or resources. This may cause a collision, fail a build and further slow down your Jenkins pipeline. For example, if you run multiple builds in parallel, there's a high chance they might collide while accessing a resource, say, Postgres's database port 5432.
 

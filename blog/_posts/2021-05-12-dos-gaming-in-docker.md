@@ -39,7 +39,7 @@ RUN npm install -g serve
 
 JS-DOS is nice, but it's nothing without a game to play in it. For our example purposes, we'll use one of my childhood favorites: [Secret Agent](https://3drealms.com/catalog/secret-agent_39/).
 
-<div class="notice--warning" markdown="1">
+<div class="notice--warning">
 **❗ Warning**
 
 A couple things to note when you are looking for games:
@@ -58,7 +58,7 @@ ARG GAME_URL
 RUN wget -O game.zip $GAME_URL
 ```
 
-<div class="notice--info" markdown="1">
+<div class="notice--info">
 **ℹ️  Note**
 
 You may note that we don't preserve the name of the downloaded file here. This is to make our job easier, when we make the game accessible to play later.
@@ -92,7 +92,7 @@ If you built and ran the Dockerfile at this point, you would have an image conta
 </html>
 ```
 
-<div class="notice--info" markdown="1">
+<div class="notice--info">
 **ℹ️  Note**
 
 `GAME_ARGS` is the command for DOSBox (which is inside JS-DOS) to start once it is loaded. The CLI arguments should line up with what a regular installation of DOSBox would expect. If your game requires additional arguments, please provide them in a comma-separated list.
@@ -126,7 +126,7 @@ $ docker run --rm -p 127.0.0.1:8000:8000 mycool:dosgame
 
 Using Earthly, we can even go a step further! Earhly lets us separate some of the concerns within the Dockerfile:
 
-<div class="notice--info" markdown="1">
+<div class="notice--info">
 **ℹ️  About Earthly**
 
 [Earthly](https://earthly.dev/) makes creating Docker images easier. [Take it for a spin!](https://docs.earthly.dev/basics)

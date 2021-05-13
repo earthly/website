@@ -32,7 +32,7 @@ If you use the previous shebang, it's crucial that you give the executable's abs
 #!/user/bin/env bash
 ```
 
-Some people like to customize their systems, either their personal system or production servers, resulting in the `bash` executable not being located in `/bin/bash` every time. Use the above line if you can't be sure that the `bash` executable will be located in the same path when this script is run. 
+Some people like to customize their systems, either their personal system or production servers, resulting in the `bash` executable not being located in `/bin/bash` every time. Use the above line if you can't be sure that the `bash` executable will be located in the same path when this script is run.
 
 ## Understand Common Sets
 
@@ -140,7 +140,7 @@ line 2: foo: command not found
 Hi
 ```
 
-into: 
+into:
 
 ```bash
 Hello World
@@ -166,7 +166,6 @@ The intention is that `/tmp/path.txt` contains `tmp_file.txt`. Assume that the f
 | set -x | set -o xtrace | Shows command currently executing |
 | set -e | set -o errexit | Exits script on error |
 | set -eo pipefail | set -eo pipefail | Exits script on pipeline fail |
-
 
 ## Use Error Checking Tools
 
@@ -264,16 +263,19 @@ Linux
 
 You can get away with merely referring to a variable by writing `$FOO`. However, you may want to refer to a variable inside a string or concatenate it with another. Take a look at the following example:
 
+<!-- markdownlint-disable MD014 -->
 ```bash
 $ FOO="Hel"
-$ echo "$FOOlo world"
+$ echo "$FOOlo World"
+Hello World
 ```
 
 In this case, bash would try to find the variable `$FOOlo`, but we just wanted to print "Hello world." To make this work, you will have to do the following:
 
 ```bash
 $ FOO="Hel"
-$ echo "${FOO}lo world"
+$ echo "${FOO}lo World"
+Hello World
 ```
 
 This is most likely useful when you want to use a variable to define a path, like `/opt/${ENVIRONMENT}_build.txt`. Without curly brackets, the script would try to look up `$ENVIRONMENT_build`.
@@ -303,7 +305,7 @@ echo "Hello World!"
 
 When reading this article, you may have noticed that many code examples are being run straight in the terminal rather than written as a bash script. There's a good reason for that! You can write everything you write in a bash script directly in the terminal.
 
-There is one significant difference between executing a script and typing the commands in your terminal. When you run a script, it'll start up a new, clean shell in which the script will run. This means that no variables set in your terminal will interfere with your script. 
+There is one significant difference between executing a script and typing the commands in your terminal. When you run a script, it'll start up a new, clean shell in which the script will run. This means that no variables set in your terminal will interfere with your script.
 
 For example, if you set `TEST="hello"` in your shell and run `echo $TEST` inside a script, it will print nothing to your screen.
 
@@ -312,4 +314,3 @@ For example, if you set `TEST="hello"` in your shell and run `echo $TEST` inside
 At this point, you should be ready to venture into the exciting world of bash scripting. You've learned about common shebangs, what `set` does, and how it can improve the error handling of your scripts, as well as understanding some general pitfalls developers run into with bash.
 
 So go ahead and automate those annoying commands you've been typing out every day. Tired of manually going into your browser and finding the git repo you're working on? Make a script to parse the remote git URL and open it automatically. Maybe you have to rename a bunch of files. Make a script that can loop through them and rename them. The world is your oyster.
-

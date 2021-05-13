@@ -23,7 +23,7 @@ Kubernetes doesn't do monitoring. Kubernetes generates logs, but doesn't do anyt
 
 The platform should cover from the moment source code is pushed to get all the way up to this code is running in production.
 
-### Kubernetes Ingest Strategies
+## Kubernetes Ingest Strategies
 
 **What is Ingress and how do requests get to a service inside of Kubernetes?**  
 Ingress is the networking layer of how you get requests to your services from the outside. And Kubernetes doesn't really ship with an Ingress controller by default that actually performs all those liftings, they want you to bring your own. And there's a ton of really interesting ones out there. There's nginx that does that, there's people who use Caddy to do some of that stuff. There's newer ones that are cloud native. They're in that giant behemoth of a chart, the cloud native compute foundation puts up, that gets memed all the time on Twitter.
@@ -66,7 +66,7 @@ Kubernetes will handle that, "Hey, no more traffic comes to this node." And then
 
 But, there's more to it than that because there's the whole adventure that takes place before it's live in production taking traffic.
 
-**Testing in production**
+## Testing in production
 
 What I'm hoping to do for us as we're going forward here is, that we can stick new deployments out on production in some small way, and then use our Ingress controller to send it some traffic. Then we can actually test the new version of the code in production without affecting anybody as a canary before we choose to roll that actually out to everybody.
 

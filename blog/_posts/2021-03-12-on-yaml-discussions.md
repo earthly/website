@@ -54,7 +54,7 @@ Reddit user [XANi_](https://www.reddit.com/r/programming/comments/ls6tgm/interca
 >If you need conditions and flexibility, picking existing language is by FAR superior choice.
 
 ## Rake, Webpack, and Groovy
-
+<!-- markdownlint-disable MD028 -->
 Many readers pointed out that their development community skipped right by this DSL dead end by using a full programming language for build and config needs:
 
 > I always thought it was weird that a lot of web technologies take config files that are executable javascript. (Thinking of webpack). But it makes a lot of sense now, and I much prefer that approach. - [Bunny](https://www.reddit.com/r/programming/comments/ls6tgm/intercal_yaml_and_other_horrible_programming/gopq0uv/?utm_source=reddit&utm_medium=web2x&context=3)

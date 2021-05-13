@@ -101,7 +101,7 @@ The Stephen Grider course its on my todo list specifically because I did Stephen
 
 ## Bonus #2: Distributed Services with Go
 
-![]({{site.images}}{{page.slug}}/images.jpeg)\
+![Distributed Services With Go Book]({{site.images}}{{page.slug}}/images.jpeg)\
 
 > "For me the main motivator for learning go was that it was kinda like Erlang with regards to goroutines / message-passing concurrency model, but with none of the performance drawbacks." [Vlad A. Ionescu](https://twitter.com/VladAIonescu)
 

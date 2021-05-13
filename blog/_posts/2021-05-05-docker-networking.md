@@ -35,6 +35,7 @@ This is the default. Whenever you start Docker, a bridge network gets created an
 
 You can use this whenever you want your containers running in isolation to connect and communicate with each other. Since containers run in isolation, the bridge network solves the port conflict problem. Containers running in the same bridge network can communicate with each other, and Docker [uses iptables](https://docs.docker.com/network/iptables/) on the host machine to prevent access outside of the bridge.
 
+<!-- markdownlint-disable MD029 -->
 Let's look at some examples of how a bridge network driver works.
 
 1. Check the available network by running the `docker network ls` command

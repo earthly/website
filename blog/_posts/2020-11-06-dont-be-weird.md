@@ -18,7 +18,7 @@ If you go to great lengths to work around some default of Kuberenetes or one of 
 
 In the past, I've worked on code with services that people made, and they hated a bunch of the defaults that Postgres was pushing on them. So they had this giant, 200 and something line init script that laid down how they wanted the database to act before you could even do anything. And personally I'm just like, "Dude, just create some freaking tables, and let's get on with our life." Why are you changing all of these defaults and stuff everywhere?
 
-**Also Postgres defaults are pretty sane**
+**Also Postgres defaults are pretty sane right?**
 
 I've always thought it was sane, but apparently he didn't think so. But, yeah, it's just, spend your weirdness points in the place where you're going to get the most mileage out of it, and spend them very wisely. Choosing to stay on the beaten path is just going to pay you dividends in the long run.
 

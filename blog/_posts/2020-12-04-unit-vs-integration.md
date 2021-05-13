@@ -56,7 +56,7 @@ The closer integration tests are to real-world interactions the more likely they
 | Paypal | [Test credit card numbers](https://developer.paypal.com/docs/payflow/payflow-pro/payflow-pro-testing/) |
 | UPS | [Test api mode](https://www.ups.com/us/en/help-center/sri/developer-instruct.page) |
 
-# An E-commerce Example
+## An E-commerce Example
 
 Imagine you are coding a simple e-commerce site, a simple miniature amazon.com. The details matter here so let's assume that you are going to use PostgreSQL as your datastore, PayPal for payments, UPS for shipping, and Amazon Simple Email Service for emailing invoices. &nbsp;
 
@@ -81,7 +81,7 @@ Your integration testing on the other hand will focus on testing where your e-co
 
 Each of these will likely be verified by one or two integration tests. These tests will be slower to run and probably involve some setup and teardown steps. &nbsp;The payoff is that the code coverage of each test will be quite large. &nbsp;These tests will generate value by catching problems that unit tests could never catch. &nbsp;However, the maintenance cost and execution time will be likely higher.
 
-# Integration Tests vs Unit Tests
+## Integration Tests vs Unit Tests
 
 {% include imgf src="unit-vs-integration.png" alt="comparing unit tests to integrations tests" caption="Time for a head to head comparison" %}
 

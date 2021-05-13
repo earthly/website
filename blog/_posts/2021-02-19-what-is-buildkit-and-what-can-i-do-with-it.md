@@ -20,6 +20,7 @@ Tõnis Tiigi,  a Docker employee and BuildKit's primary developer, created Build
 ![animation of buildctl building a dockerfile](/blog/assets/images/what-is-buildkit-and-what-can-i-do-with-it/1.gif)
 
 The original BuildKit proposal is found in the moby project:
+<!-- markdownlint-disable MD028 -->
 
 > "Buildkit is a proposal to separate out docker build experience into a separate project, allowing different users to collaborate on the underlying technology and reuse and customize it in different ways."
 
@@ -267,7 +268,7 @@ We can use pstree with a process id (pid) while a build is running to focus on j
 docker-desktop:/# watch -n 1 pstree -p 2522 
 ```
 
-# BuildKit Output Types
+## BuildKit Output Types
 
 So far, we have only used `output type=image,` but BuildKit supports several types of outputs.
 
