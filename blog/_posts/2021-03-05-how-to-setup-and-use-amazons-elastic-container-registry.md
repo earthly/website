@@ -178,7 +178,7 @@ Again, you'll need to be authenticated if you want to build an image off a priva
 
 To use your images from ECR in a container management platform like ECS or EKS, simply add the name and tag of the image you want to use to the relevant configuration file.
 
-##### EKS Manifest
+#### EKS Manifest
 
 For example, you can use the following EKS manifest to deploy a NodeJS image stored in ECR:
 

@@ -16,9 +16,9 @@ During this time, tech giants have innovated in parallel and have open-sourced t
 
 Although these systems are probably some of the most advanced build automation tools the world has seen, they come at a significant cost: the build config is not compatible with any of the popular open-source tooling that the language communities have gotten so used to. It's like they come from a parallel universe. For most teams, adopting these tools means completely rewriting all the build configs from scratch and giving up on an entire ecosystem of tooling that they have become so dependent on. As advanced as they are, these solutions have not seen significant adoption beyond tech giants.
 
-# Introducing Earthly
+## Introducing Earthly
 
-![]({{site.images}}{{page.slug}}/logo.png)
+![Earthly Logo]({{site.images}}{{page.slug}}/logo.png)\
 
 With the purpose of bringing these modern capabilities to people out in the real world, today we are announcing the release of [Earthly: a build automation tool for the container era](https://www.earthly.dev/).
 

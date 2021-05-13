@@ -18,6 +18,7 @@ base-image:
 
   RUN apt-get install python3-matplotlib libvips-dev python3-pip npm -y
   RUN pip3 install pandocfilters
+  RUN npm install -g markdownlint-cli 
   SAVE IMAGE --push agbell/website-base:latest
 
 deps:

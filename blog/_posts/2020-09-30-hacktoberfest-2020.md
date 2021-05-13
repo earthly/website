@@ -9,7 +9,7 @@ We're excited to announce that Earthly is participating in Hacktoberfest this Oc
 
 Last year's fest saw more than 400,000 pull requests opened and this year should prove to be even larger.
 
-# What is it
+## What is it
 
 The hosting provider DigitalOcean is once again hosting the [Hacktoberfest](https://hacktoberfest.digitalocean.com/) to celebrate open source. The Hacktoberfest invites you to submit pull requests to open source projects. People who submit four or more pull requests, get a free t-shirt from DigitalOcean.
 
