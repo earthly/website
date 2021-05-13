@@ -74,7 +74,7 @@ blog-install:
 blog-lint:
   FROM +blog-install
   COPY blog .
-  IF grep '[“”‘’]' ./blog/_posts/*.md
+  IF grep '[“”‘’]' ./_posts/*.md
     RUN echo "Fail: Remove curly quotes and use straight quotes instead" && false
   END  
   RUN markdownlint "./_posts/*.md"

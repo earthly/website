@@ -38,6 +38,11 @@ docker run -p 4002:4002 -v $(pwd)/blog:/site earthly-blog
 ```
 Then browse to http://0.0.0.0:4002/blog/
 
+## Create a new blog post helper
+```
+earthly --build-arg name="continuous-integration" +new-post
+```
+
 ## Run Blog native on macos
 ### Install deps
 ```
@@ -54,7 +59,7 @@ Then browse to http://0.0.0.0:4002/blog/
 ### Run
 ```
 cd blog
-RUBYOPT='-W0' bundle exec jekyll serve -H 0.0.0.0 --future --incremental -P 4002
+RUBYOPT='-W0' bundle exec jekyll serve -H 0.0.0.0 --future --watch -P 4002
 
 ```
 ### Clear html cache
