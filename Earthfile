@@ -77,7 +77,7 @@ blog-lint:
   IF grep '[“”‘’]' ./blog/_posts/*.md
     RUN echo "Fail: Remove curly quotes and use straight quotes instead" && false
   END  
-  RUN markdownlint '**/*.md' & true
+  RUN markdownlint "./_posts/*.md"
 
 blog-lint-apply:
   LOCALLY
