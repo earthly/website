@@ -4,6 +4,10 @@ featured: true
 categories:
   - Articles
 author: Adam
+internal-links:
+   - travis
+   - travis ci
+   - travisci
 ---
 
 Starting in early December, a mad dash has been underway to migrate open-source projects off of Travis CI. What happened and where should you move your project to?
@@ -55,7 +59,7 @@ A better option, if you want to run the builds on your own hardware is to look a
 
 ### Option: Circle CI
 
-A better option is Circle CI, a Travis CI competitor which still offers a free plan. &nbsp;
+A better option is [Circle CI](/blog/continuous-integration#circleci) , a Travis CI competitor which still offers a free plan. &nbsp;
 
 Circle CI offers 400,000 build credits per month to any open-source public repository. &nbsp;This is their free plan and limits concurrency to 1 job at a time. They also have an easy GitHub integration and no application process. &nbsp;
 
@@ -65,7 +69,7 @@ They also allow use of the free plan with private repositories. This makes it a 
 
 ![First place trophy]({{site.images}}{{page.slug}}/trophy.png)\
 
-An even better option is Github Actions, a cloud CI system directly from GitHub. &nbsp;Github is at the center of many open source projects and this makes it a natural choice for CI. &nbsp;
+An even better option is [Github Actions](/blog/continuous-integration##github-actions), a cloud CI system directly from GitHub. &nbsp;Github is at the center of many open source projects and this makes it a natural choice for CI. &nbsp;
 
 Github Actions (GHA) is newer than either TravisCI or Circle CI, having launched in late 2018.
 

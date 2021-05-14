@@ -4,6 +4,9 @@ categories:
   - Articles
 author: Adam
 excerpt: In 1972, two students learning FORTRAN came up with a fantastic new programming language called INTERCAL. 
+internal-links:
+  - yaml
+  - intercal
 ---
 ## PROGRAM REJECTED FOR MENTAL HEALTH REASONS
 
@@ -46,9 +49,9 @@ One of the exciting innovations of INTERCAL is the `COMEFROM` [instruction](http
 
 ## VARIABLES MAY NOT BE STORED IN WEST HYPERSPACE
 
-At Twitter, they have a giant monorepo with lots of services in it.  And somebody at Twitter wanted to know which language was most prevalent.  Which language does Twitter use the most?  
+At Twitter, they have a giant [monorepo](/blog/monorepo-vs-polyrepo) with lots of services in it.  And somebody at Twitter wanted to know which language was most prevalent.  Which language does Twitter use the most?  
 
-Java came in 3rd, and Scala came in 2nd. But 1st was a surprise.  The number one programming language used at Twitter was YAML[^1].
+Java came in 3rd, and [Scala](/blog/top-5-scala-blogs) came in 2nd. But 1st was a surprise.  The number one programming language used at Twitter was YAML[^1].
 
 YAML usually doesn't feel like a programming language to me.  The file I'm currently writing in is in markdown with some YAML at the top to set the title and associated fields.
 
@@ -107,7 +110,7 @@ Now the YAML has just devolved into specifying how to execute a grab bag of comm
 
 There we go, branching. It's an if statement in a YAML file!
 
-And this isn't TravisCI, or CI specific.  Here is a simple example from Ansible:
+And this isn't [TravisCI](/blog/migrating-from-travis), or CI specific.  Here is a simple example from Ansible:
 
 ``` yaml
 - hosts: all

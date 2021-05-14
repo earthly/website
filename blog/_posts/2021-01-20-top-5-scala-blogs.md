@@ -3,6 +3,10 @@ title: 5 Blogs for Scala's Birthday
 categories:
   - Articles
 author: Adam
+internal-links:
+  - scala
+  - blog
+  - blogs
 ---
 
 

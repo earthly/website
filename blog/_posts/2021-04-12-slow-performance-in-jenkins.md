@@ -4,6 +4,8 @@ categories:
   - Tutorials
 toc: true
 author: Milan Bhardwaj
+internal-links:
+    - jenkins
 ---
 There's nothing more frustrating than a sluggish continuous integration system. It slows down feedback loops and prevents code from reaching production quickly. While quick fixes like using a bigger CI server can buy you time, you ultimately have to invest in maintaining the performance of your continuous integration workflow.
 
@@ -52,7 +54,7 @@ Moreover, rather than setting up a long build that might fail anywhere in the cy
 
 ### 4. Make Agent Management Effortless
 
-While setting up Jenkins, it's important to set up the agents correctly. You want to make sure that when the time comes, you can add new agents or replace existing ones easily. To achieve this, consider creating a virtual machine image for the agent. You might also consider running Jenkins inside a [Docker container](https://devopscube.com/docker-containers-as-build-slaves-jenkins/) in a scalable cluster like Kubernetes or Amazon EKS where scaling agents is simple.
+While setting up Jenkins, it's important to set up the agents correctly. You want to make sure that when the time comes, you can add new agents or replace existing ones easily. To achieve this, consider creating a virtual machine image for the agent. You might also consider running Jenkins inside a [Docker container](https://devopscube.com/docker-containers-as-build-slaves-jenkins/) in a scalable cluster like Kubernetes or [Amazon EKS](/blog/how-to-setup-and-use-amazons-elastic-container-registry) where scaling agents is simple.
 
 It's also a good idea to make agents generic and versatile; an agent should run multiple different jobs and utilize resources to the fullest extent.
 
@@ -122,4 +124,4 @@ This can help you assess the effectiveness of your performance tweaks and guide 
 
 Jenkins' responsiveness issues are common, especially when dealing with heavier builds. Broken Jenkins CI/CD pipelines can stall your development teams and create unnecessary dependencies. The tips discussed in this article should help you boost the performance of your Jenkins CI/CD pipeline significantly.
 
-Looking to make your builds more repeatable? [Earthly](https://earthly.dev/) replaces clunky bash scripts and makefiles by giving you a single understandable, consistent definition for your CI/CD builds and it works great with Jekyll. Learn more [at Earthly.dev](https://earthly.dev/).
+Looking to make your builds more repeatable? [Earthly](https://earthly.dev/) replaces clunky [bash scripts](/blog/understanding-bash) and makefiles by giving you a single understandable, consistent definition for your CI/CD builds and it works great with Jekyll. Learn more [at Earthly.dev](https://earthly.dev/).

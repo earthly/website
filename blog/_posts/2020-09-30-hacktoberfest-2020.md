@@ -3,6 +3,9 @@ title: Hacktoberfest 2020
 author: Vlad
 categories:
   - News
+internal-links:
+   - hacktoberfest
+   - contributor
 ---
 
 We're excited to announce that Earthly is participating in Hacktoberfest this October.

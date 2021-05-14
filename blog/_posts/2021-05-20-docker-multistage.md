@@ -6,6 +6,11 @@ toc: true
 author: Lukonde Mwila
 sidebar:
   nav: "docker"
+internal-links:
+ - multistage build
+ - docker multistage build
+ - docker multi-stage builds
+ - multistage
 ---
 
 At first glance, writing Dockerfiles appears to be a straightforward process. After all, most basic examples reflect the same set of steps. However, not all Dockerfiles are created equal. There is an optimal way of writing these files to produce the kind of Docker images you want for your final product. If you were to pop the hood, you'd see that Docker images actually consist of file system layers that correlate to the individual build steps involved in the creation of the image.
@@ -26,7 +31,7 @@ As for the implications, you typically end up with bigger images. The reason big
 
 One way of reducing the size of your Docker images is through the use of what is informally known as the [builder pattern](https://en.wikipedia.org/wiki/Builder_pattern "builder design pattern entry at Wikipedia"). The builder pattern uses two Docker images to create a base image for building assets and the second to run it. This pattern was previously implemented through the use of multiple Dockerfiles. It has become an uncommon practice since the introduction and support of multistage builds in [Docker 17.06 CE](https://www.docker.com/blog/multi-stage-builds/ "Multi-Stage Builds").
 
-For context, it's good to understand how this was typically done before multistage builds. The following example makes use of a basic React application that is first built and then has its static content served by an [Nginx virtual server](https://www.nginx.com/ "Nginx web servers"). Following are the two Dockerfiles used to create the optimized image. In addition, you'll see a shell script that demonstrates the Docker CLI commands that have to be run in order to achieve this outcome. You can find the source code for this example in [this repository](https://github.com/LukeMwila/builder-pattern-example "builder pattern example in Lukonde Mwila's GitHub repository").
+For context, it's good to understand how this was typically done before multistage builds. The following example makes use of a basic React application that is first built and then has its static content served by an [Nginx virtual server](https://www.nginx.com/ "Nginx web servers"). Following are the two Dockerfiles used to create the optimized image. In addition, you'll see a [shell script](/blog/understanding-bash) that demonstrates the Docker CLI commands that have to be run in order to achieve this outcome. You can find the source code for this example in [this repository](https://github.com/LukeMwila/builder-pattern-example "builder pattern example in Lukonde Mwila's GitHub repository").
 
 ```
 Dockerfile.build

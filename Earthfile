@@ -168,3 +168,10 @@ new-post:
   RUN cat ./blog/_posts/2029-01-01-example.md > ./blog/_posts/$(date +"%Y-%m-%d")-$name.md
   RUN mkdir ./blog/assets/images/$name
   RUN cp ./blog/assets/images/default-header.jpg ./blog/assets/images/$name/header.jpg
+
+# this looks for places you can manually add links to your page
+# eventually this could be driven off internal-links in the post frontmatter
+link-opportunity:
+  LOCALLY
+  ARG NAME="2020-09-10-better-builds.md"
+  RUN python3 ./blog/_util/suggest-links.py ./blog/_posts/$NAME 

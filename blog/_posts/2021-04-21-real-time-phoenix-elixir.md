@@ -4,6 +4,10 @@ categories:
   - Tutorials
 toc: true
 author: Allan MacGregor
+internal-links:
+    - phoenix
+    - elixir
+    - liveview
 ---
 
 The Elixir language, along with the [Phoenix framework](https://phoenixframework.org/), has been growing in popularity at a quick pace, and with good reason. Phoenix offers productivity levels comparable to frameworks like Ruby on Rails while being one of the [fastest web frameworks](https://github.com/mroth/phoenix-showdown/blob/master/RESULTS_v3.md) available.

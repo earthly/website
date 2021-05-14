@@ -9,6 +9,16 @@ excerpt: How are containers made? Usually, from a series of statements like RUN,
 author: Adam
 sidebar:
   nav: "docker"
+internal-links:
+  - llvm
+  - dockerfile
+  - compiler
+  - frontend
+  - front end
+  - docker build
+  - ir
+  - assembly
+  - machine code
 ---
 ## Introduction
 
@@ -24,7 +34,7 @@ How are containers made? Usually, from a series of statements like `RUN`, `FROM`
 
 ## On `Docker Build`
 
-We can create container images in several ways. We can use Buildpacks, we can use build tools like Bazel or sbt, but by far, the most common way images are built is using `docker build` with a Dockerfile.  The familiar base images Alpine, Ubuntu, and Debian are all created this way.
+We can create container images in several ways. We can use Buildpacks, we can use build tools like [Bazel](/blog/monorepo-with-bazel) or sbt, but by far, the most common way images are built is using `docker build` with a Dockerfile.  The familiar base images Alpine, Ubuntu, and Debian are all created this way.
 
 Here is an example Dockerfile:
 
@@ -134,7 +144,7 @@ This similarity was not lost on the BuildKit creators.  BuildKit has its own int
 ![LLVM IR VS. LLB]({{site.images}}{{page.slug}}/LLBIR-fixed.png)
 </div>
 
-[LLB](https://github.com/moby/buildkit/blob/ebd98bcbe600c662a72ce9725417540f277be4d6/solver/pb/ops.proto) is defined as a protocol buffer, and this means that BuildKit frontends can make GRPC requests against buildkitd to build a container directly.
+[LLB](https://github.com/moby/buildkit/blob/ebd98bcbe600c662a72ce9725417540f277be4d6/solver/pb/ops.proto) is defined as a protocol buffer, and this means that BuildKit frontends can make [GRPC](/blog/protobufs-and-grpc)  requests against buildkitd to build a container directly.
 
 <div class="wide">
 ![LLVM IR VS. LLB]({{site.images}}{{page.slug}}/Send-LLB.png)

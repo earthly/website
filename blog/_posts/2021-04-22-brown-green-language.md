@@ -208,6 +208,6 @@ I don't have data for this, but I distinctly remember Ruby being the hottest lan
      I did consider using language creation date to determine green vs. brown status, but some languages have been around for some time but only found usage relatively recently. 
 
      TIOBE is measured like [this](https://www.tiobe.com/tiobe-index/programming-languages-definition/) and their historical data is only available if you pay, so I am using the Wayback Machine.  
- [^3]: TIOBE doesn't include HTML/CSS because it doesn't consider them turning complete and therefore not a programming language.  Shell scripts are measured separately by TIOBE, and VBA is not in the list of languages measured at all, as far as I can see.
+ [^3]: TIOBE doesn't include HTML/CSS because it doesn't consider them turing complete and therefore not a programming language.  [Shell scripts](/blog/understanding-bash) are measured separately by TIOBE, and VBA is not in the list of languages measured at all, as far as I can see.
 
- [^4]: Not all brown languages are dreaded however: Python, C#, Swift, JavaScript and SQL remain loved and I would love to hear if anyone has theories on why.  Also Scala and Haskell, two languages I have a soft spot for, are the only green languages on the dreaded list. Is this just noise or is there something else going on there?
+ [^4]: Not all brown languages are dreaded however: Python, C#, Swift, JavaScript and SQL remain loved and I would love to hear if anyone has theories on why.  Also [Scala](/blog/top-5-scala-blogs) and Haskell, two languages I have a soft spot for, are the only green languages on the dreaded list. Is this just noise or is there something else going on there?
