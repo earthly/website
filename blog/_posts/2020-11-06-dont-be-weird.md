@@ -5,6 +5,9 @@ categories:
 tags:
   - Interview
 author: Corey
+internal-links:
+   - weird
+   - design decision
 ---
 _Here at Earthly, we are building an internal platform on AWS using EKS. &nbsp;I talked to our lead architect Corey Larson about the decisions and trade offs he is making as he designs our platform._
 
@@ -28,7 +31,7 @@ I wouldn't even go that far. I'd say that there's a gradient here, it's not blac
 
 **Does the Kuberenetes space have beaten paths?**
 
-There are starting to be some winners. Kubernetes itself used to be weirdness points, but it's not anymore. Kubernetes is now the lingua franca of the cloud. Who doesn't have a Kubernetes-managed platform that we could just pack up and move to, assuming we haven't chosen to spend weirdness points on platform lock-in features. &nbsp;
+There are starting to be some winners. [Kubernetes](/blog/building-on-kubernetes-ingress) itself used to be weirdness points, but it's not anymore. Kubernetes is now the lingua franca of the cloud. Who doesn't have a Kubernetes-managed platform that we could just pack up and move to, assuming we haven't chosen to spend weirdness points on platform lock-in features. &nbsp;
 
 **So if we chose Docker Swarm or something, we'd have to have a really good reason.**
 

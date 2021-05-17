@@ -9,6 +9,15 @@ tags:
 author: Sanket Makhija
 sidebar:
   nav: "docker"
+internal-links:
+  - docker log
+  - container log
+  - docker logging
+  - logging
+  - log driver
+  - logging driver
+  - side car logging
+  - side-car logging
 ---
 Docker logging and its management are an important part of the containerization of your application. Once you've deployed your application, logging is one of the best tools to help reveal errors, aid in debugging, and optimize your application's performance.
 

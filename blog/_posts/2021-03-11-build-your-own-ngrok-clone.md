@@ -5,6 +5,12 @@ categories:
 toc: true
 author: Corey
 excerpt: Ngrok is a tool that allows you to create secure, publically accessible URLs for your locally running code.
+internal-links:
+  - ngrok
+  - ec2
+  - tunnel
+  - local tunnel
+  - tunnel proxy
 ---
 
 
@@ -150,7 +156,7 @@ Now that you have keys, and a security group configured in AWS, you're finally r
 Although AWS can provision instances very quickly, it can _still_ take a couple minutes for the instance to come up, so be patient! You can wait for the instance on the CLI (if desired) by running the following command: `aws ec2 wait instance-status-ok --instance-ids $EC2_ID`, where `$EC2_ID` is the instance ID from the prior step.
 </div>
 
-Creating the instance isn't the end of our work, however. You'll still need to configure it to actually reverse proxy the traffic coming in from the internet to our local development machine. To that end, NGINX is a fantastic,battle-tested option. As soon the instance is ready, SSH into the box and install NGINX.
+Creating the instance isn't the end of our work, however. You'll still need to configure it to actually reverse proxy the traffic coming in from the internet to our local development machine. To that end, NGINX is a fantastic,battle-tested option. As soon the instance is ready, [SSH](/blog/encrypting-data-with-ssh-keys-and-golang) into the box and install NGINX.
 
     ❯ sudo amazon-linux-extras install nginx1
 

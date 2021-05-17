@@ -5,6 +5,9 @@ categories:
 toc: true
 author: Adam
 excerpt: Have you ever wanted to see what kinds of requests a service or application on your machine is making and what kind of responses it is getting back?
+internal-links:
+   - mitmproxy
+   - proxy
 ---
 ## Introduction
 
@@ -185,7 +188,8 @@ At this point,  we can successfully capture traffic on our host operating system
 On macOS and Windows, Linux containers do not run on the host OS. They can't because they need a Linux host to run.  Instead, they run on the Linux Container Host, a VM that Docker Desktop manages.  
 
 To see the docker daemon's incoming and outgoing requests, we need to get our proxy settings and our certificate authority into that VM.
-> Before we proceed, we need to clear the proxy settings on the host network connection. We can leave mitmproxy (or MITMWeb running).
+
+Before we proceed, we need to clear the proxy settings on the [host network](/blog/docker-networking) connection. We can leave mitmproxy (or MITMWeb running).
 
 On Windows and macOS, the easiest way to configure a proxy is via `Docker Desktop.`  Configure the proxy settings under `Preferences -> Resources -> Proxies.`
 

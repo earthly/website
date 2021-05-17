@@ -13,6 +13,9 @@ toc: false
 last_modified_at: 2020-04-15
 author: Vlad
 excerpt: "\"When I learned about Earthly, I was excited to see innovative work happening in containerized build and testing automation.\""
+internal-links:
+    - pandas
+    - data engineering
 ---
 
 In our journey to bring repeatable builds to the world, we have had the pleasure to talk to a number of industry veterans about the challenges surrounding CIs today. One person that was particularly excited about our mission is [Wes McKinney](https://en.wikipedia.org/wiki/Wes_McKinney), the author of [Python for Data Analysis](https://www.oreilly.com/library/view/python-for-data/9781449323592/), the creator of the very popular [pandas](https://github.com/pandas-dev/pandas) Python package, co-creator of [Apache Arrow](https://arrow.apache.org/), and CEO of [Ursa Computing](https://ursacomputing.com/).

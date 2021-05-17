@@ -3,6 +3,11 @@ title: Encrypting Data With SSH Keys and Golang
 categories:
   - Tutorials
 author: Alex
+internal-links:
+  - ssh
+  - rsa
+  - encrypting
+  - encryption
 ---
 
 We're currently working on a server for sharing secrets between developers and CI systems, and one of the features we decided to support is passwordless login via ssh keys. I had never used any of the public/private key encryption libraries in Go before, so I wanted to spend some time experimenting with them to familiarise myself with the libraries.
@@ -233,7 +238,7 @@ Finally, how do we decrypt it?
 
 Try it out [here](https://play.golang.org/p/a5u9PYWEjgs)
 
-So there we have a end-to-end example of how to generate a new public/private key, and encrypt and decrypt data all in golang.
+So there we have a end-to-end example of how to generate a new public/private key, and encrypt and decrypt data all in [GoLang](/blog/top-3-resources-to-learn-golang-in-2021).
 
 Based on my experimentation with private/public key encryption in go, I put together a small program that allows users to share encrypted data between parties using a rather simple [command line tool on my personal repo](https://github.com/alexcb/secretshare)
 

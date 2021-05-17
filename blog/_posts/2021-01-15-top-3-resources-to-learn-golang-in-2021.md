@@ -3,6 +3,8 @@ title: Top 3 Resources For Learning GoLang in 2021
 categories:
   - Articles
 author: Adam
+internal-links:
+   - golang
 ---
 
 ## Why Learn Go
@@ -14,7 +16,7 @@ author: Adam
 
 I know I am a bit late to the game here, with Go being over 10 years old, but the main reason I am learning Go is that it's the language used here at Earthly.
 
-Why should you learn Go though? &nbsp;The big reason is that the cloud world seems to be running on Go. Kubernetes, Docker, CockroachDB, Prometheus, Etcd, Traefik, Istio, InfluxDB, and many many more are written in Go.
+Why should you learn Go though? &nbsp;The big reason is that the cloud world seems to be running on Go. [Kubernetes](/blog/building-on-kubernetes-ingress), Docker, CockroachDB, Prometheus, Etcd, Traefik, Istio, InfluxDB, and many many more are written in Go.
 
 ## Who This List is For
 

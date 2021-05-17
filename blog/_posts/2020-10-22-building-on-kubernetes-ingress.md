@@ -5,6 +5,9 @@ categories:
 tags:
   - Interview
 author: Corey
+internal-links:
+   - kubernetes
+   - ingress
 ---
 *Here at Earthly, we are building an internal platform on AWS using EKS.  I talked to our lead architect Corey Larson about the decisions and trade offs he is making as he designs our platform.*
 
@@ -46,7 +49,7 @@ But we tried Traefik, and it just kind of worked, and all of the options of thin
 
 **Have you ever used nginx Lua scripting?**
 
-Infrastructure should be declarative, at least in my book. I don't want a program that I have to then debug to figure out what my configuration actually is. For better or worse, a pile of YAML is not going to change on you once you ship it somewhere else, and it's not going to have bugs. It's all there, it's all declarative. You can put it in Git, and see who did what, when, to your infrastructure.
+Infrastructure should be declarative, at least in my book. I don't want a program that I have to then debug to figure out what my configuration actually is. For better or worse, a pile of [YAML](/blog/intercal-yaml-and-other-horrible-programming-languages) is not going to change on you once you ship it somewhere else, and it's not going to have bugs. It's all there, it's all declarative. You can put it in Git, and see who did what, when, to your infrastructure.
 
 **When do you think we would consider using a service mesh?**
 
@@ -68,6 +71,6 @@ But, there's more to it than that because there's the whole adventure that takes
 
 ## Testing in production
 
-What I'm hoping to do for us as we're going forward here is, that we can stick new deployments out on production in some small way, and then use our Ingress controller to send it some traffic. Then we can actually test the new version of the code in production without affecting anybody as a canary before we choose to roll that actually out to everybody.
+What I'm hoping to do for us as we're going forward here is, that we can stick new deployments out on production in some small way, and then use our Ingress controller to send it some traffic. Then we can actually [test](/blog/unit-vs-integration) the new version of the code in production without affecting anybody as a canary before we choose to roll that actually out to everybody.
 
 Service meshes are a little bit better at this, then simple ingress controllers. This is one place that service meshes do succeed, but Traefik can do it well enough too, where you actually split percentages of your request volume to one deployment versus the other.

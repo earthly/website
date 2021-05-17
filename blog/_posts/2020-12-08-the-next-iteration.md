@@ -5,6 +5,9 @@ categories:
   - News
 author: Vlad
 excerpt: We've been working with many of you to better understand your pains and use-cases when it comes to builds.
+internal-links:
+  - road map
+  - roadmap
 ---
 
 Dear Earthly community,
@@ -15,7 +18,7 @@ We have heard that
 
 - Repeatable builds are key
 - You like the idea of combining a Makefile with a Dockerfile (the ethos of Earthfiles)
-- Integration tests are painful, in general - especially if they only fail in CI
+- Integration tests are painful, in general - especially if they only fail in [CI](/blog/continuous-integration)
 - Performance is important to you
 - Migrating between CI vendors is a pain. However, it's much easier via Earthly, as it can be used as a lift-and-shift framework for builds.
 - You would like to complete all your local development flows through Earthly, but for some of you, this is not yet possible (eg run commands directly on the host, use the host Docker daemon, support watch mode)
