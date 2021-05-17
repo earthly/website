@@ -169,9 +169,10 @@ new-post:
   RUN mkdir ./blog/assets/images/$name
   RUN cp ./blog/assets/images/default-header.jpg ./blog/assets/images/$name/header.jpg
 
-# this looks for places you can manually add links to your page
-# eventually this could be driven off internal-links in the post frontmatter
+# this looks for places you can manually add links to your page using internal-links in the post frontmatter
 link-opportunity:
-  LOCALLY
+  FROM +base-image
+  COPY blog blog 
   ARG NAME="2020-09-10-better-builds.md"
+  RUN pip3 install python-frontmatter
   RUN python3 ./blog/_util/suggest-links.py ./blog/_posts/$NAME 
