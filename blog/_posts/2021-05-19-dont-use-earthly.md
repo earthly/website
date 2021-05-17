@@ -213,7 +213,7 @@ This technique outputs files owned by the right user, however sometimes the fact
 
 **Option d. Generate the file(s) as the contents of an image during `docker build` then extract them using `docker cp`**: This technique is somewhat similar to **option b.** except that no `docker run` is used.
 
-```
+```bash
 docker build -t my-image:latest .
 docker create --name output-artifact my-image:latest
 docker cp output-artifact:/output/my-artifact ./output/my-artifact
