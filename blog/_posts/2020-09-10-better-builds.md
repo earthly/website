@@ -4,19 +4,22 @@ toc: true
 author: Adam
 categories:
   - Tutorials
+internal-links:
+   - scala build
+   - scala builds
 ---
 
 Have you ever had a test fail in the build but not locally? I have. Have you ever then burnt half a day pushing small changes and waiting for your build to get queued so that you could see if you had isolated the breaking change? &nbsp;Well I have, and I find the slow feedback process to be painful and I'd like to propose a solution.
 
 ## Solving Reproducible Builds
 
-Whenever I have some failure in the build pipeline that I can't reproduce locally the culprit ends up being something environmental. &nbsp; That is there is some difference between running the test suite in Jenkins vs running in locally.
+Whenever I have some failure in the build pipeline that I can't reproduce locally the culprit ends up being something environmental. &nbsp; That is there is some difference between running the test suite in [Jenkins](/blog/slow-performance-in-jenkins) vs running in locally.
 
 Earthly is an open-source tool designed to solve this problem. &nbsp;It's also pretty easy to use. &nbsp;You might be able to get it in place in your current build process in the time you'd normally spend tracking down problems with a flaky build.
 
 ## A Scala Example
 
-Earthly uses Earthfiles to encapsulate your build. &nbsp;If you imagine a dockerfile mixed with a makefile you wouldn't be far off. &nbsp;
+Earthly uses Earthfiles to encapsulate your build. &nbsp;If you imagine a [dockerfile](/blog/compiling-containers-dockerfiles-llvm-and-buildkit) mixed with a makefile you wouldn't be far off. &nbsp;
 
 Let's walk through creating an Earthfile for a scala project:
 
@@ -145,7 +148,7 @@ You can find the [full example here](https://github.com/earthly/earthly-example-
 
 ### Did we solve it?
 
-We now have our `deps`, `build`, `test` and `docker` targets in our Earthfile. All together these give us a reproducible process for running our build locally and in our CI builds. &nbsp;We used earthly to encapsulate the build steps.
+We now have our `deps`, `build`, `test` and `docker` targets in our Earthfile. All together these give us a reproducible process for running our build locally and in our [CI](/blog/continuous-integration)  builds. &nbsp;We used earthly to encapsulate the build steps.
 
 {% include imgf src="diagram.png" alt="diagram of earthly usage" caption="Encapsulating the Build Steps" %}
 

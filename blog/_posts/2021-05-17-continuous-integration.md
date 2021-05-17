@@ -4,6 +4,12 @@ categories:
   - Articles
 toc: true 
 author: Deborah Ruck
+internal-links:
+ - continuous integration
+ - ci
+ - circleci
+ - github actions
+ - azure
 ---
 Continuous integration has become prevalent in software development, but it's still a complex and wide-ranging topic. In this post, we'll cover the basics of continuous integration, the differences between CI and CD, and common CI tools. You'll also find some tips for the best way to set up CI in your environment.
 
@@ -11,13 +17,13 @@ Continuous integration has become prevalent in software development, but it's st
 
 Continuous integration (CI) is a set of operating principles and practices in the DevOps process that helps software development teams release faster and more reliable application updates. With the advancement of modern tooling, most CI processes center around automated tests, static analysis, and building releasable software. This process is helpful for teams that want to ensure each update to their software is working, stable, and ready to deploy before they integrate it into their production environment.
 
-For example, if a team member makes a change to a project, they might make updates on a new branch (assuming they're using [git for version control](https://git-scm.com/)). When complete, they _push_ these changes to a shared repository where a continuous integration workflow will automatically install dependencies, run tests, and check for linting errors before merging the changes into the main branch.
+For example, if a team member makes a change to a project, they might make updates on a new branch (assuming they're using [git for version control](https://git-scm.com/)). When complete, they _push_ these changes to a shared [repository](/blog/monorepo-vs-polyrepo) where a continuous integration workflow will automatically install dependencies, run tests, and check for linting errors before merging the changes into the main branch.
 
 ## The Relationship Between Continuous Integration and Continuous Delivery/Deployment
 
 Continuous integration is the first part of the CI/CD process. The *CD* stands for either *continuous delivery* or *continuous deployment*. Although these terms are sometimes used interchangeably, they are not quite the same.
 
-In both cases, code is released in short cycles. However, with continuous delivery, code changes are automatically deployed through the development and testing stages, but must be manually reviewed and approved before being batched and released to production.
+In both cases, code is released in short cycles. However, with continuous delivery, code changes are automatically deployed through the development and [testing stages](/blog/unit-vs-integration), but must be manually reviewed and approved before being batched and released to production.
 
 With continuous deployment, code changes that successfully pass through all stages of the development process are automatically released to production without human intervention. A failed test along the pipeline is the only event that will prevent a change from reaching production.
 

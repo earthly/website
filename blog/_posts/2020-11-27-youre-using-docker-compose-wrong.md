@@ -5,11 +5,13 @@ categories:
 author: Vlad
 sidebar:
   nav: "docker"
+internal-links:
+   - docker compose
 ---
 
 Tell me if this sounds familiar? You were introduced to docker-compose either by choice or by force. You've been using it for a while, but you find it clunky. I'm here to tell you, you are probably using it wrong.
 
-Ok, that might be an exaggeration. I don't think there's actually a 100% right or wrong way to use it: home-grown build and dev setups tend to have all kinds of weird requirements and so the standard doesn't always match the needs. Please take the article with the appropriate skepticism if your situation doesn't quite fit.
+Ok, that might be an exaggeration. I don't think there's actually a 100% right or wrong way to use it: home-grown build and dev setups tend to have all kinds of [weird](/blog/dont-be-weird) requirements and so the standard doesn't always match the needs. Please take the article with the appropriate skepticism if your situation doesn't quite fit.
 
 I, myself, have been guilty of each of these in the past and I might be in the future as well!!
 
@@ -19,7 +21,7 @@ In this article, I'll be focusing on use-cases related to **integration testing*
 
 ## Problem #1: You're using the host network
 
-One of the first things new-comers find cumbersome is the use of Docker networks. It's yet another layer of knowledge to add to your repertoire after you get used to the basics of **docker build** and **docker run** … and frankly, why do you even need to understand these Docker networks? Everything works fine via the host network, right? Wrong!
+One of the first things new-comers find cumbersome is the use of [Docker networks](/blog/docker-networking). It's yet another layer of knowledge to add to your repertoire after you get used to the basics of **docker build** and **docker run** … and frankly, why do you even need to understand these Docker networks? Everything works fine via the host network, right? Wrong!
 
 Using the host network means that you have to reserve specific ports for the various microservices that you use. If you happen to bring up two stacks that collide on ports, tough luck. If you want to bring up two versions of the same stack, tough luck. You want to test the behavior of a certain service when it has multiple replicas? Tough... luck!
 
@@ -60,7 +62,7 @@ For such cases, you need something that waits for services to be ready. Docker r
 
 Here is a situation: you want to run some unit tests but those tests depend on some external services. Maybe a database, maybe a Redis, maybe another API. Easy: let's put those dependencies in a docker-compose and have the unit test connect to those.
 
-That's great - but note that your tests aren't exactly just unit tests anymore. They are now integration tests. Besides the nomenclature, there is an important distinction to take into account now: you'll need to account for a setup of the test environment and a teardown. Usually, it's best for the setup/teardown to be performed outside of the test code - main reason being that there may be multiple distinct packages depending on these external services. But YMMV.
+That's great - but note that your tests aren't exactly just unit tests anymore. They are now [integration tests](/blog/unit-vs-integration). Besides the nomenclature, there is an important distinction to take into account now: you'll need to account for a setup of the test environment and a teardown. Usually, it's best for the setup/teardown to be performed outside of the test code - main reason being that there may be multiple distinct packages depending on these external services. But YMMV.
 
 If you do end up separating test setup and teardown, you could go the extra mile and containerize your integration test. Hear me out!
 

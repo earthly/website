@@ -6,6 +6,12 @@ categories:
 author: Vivek Sonar
 sidebar:
   nav: "docker"
+internal-links:
+  - ecr
+  - amazon elastic container registry
+  - container registry
+  - ecs
+  - eks
 ---
 
 A container is a simple unit that packages all your code and its dependencies so your application can run quickly and reliably from any computing environment. That means you could quickly move from your local environment to your staging and into production. Due to their portability, small size, and convenience, containers are becoming [a method of choice](https://www.cio.com/article/3434010/more-enterprises-are-using-containers-here-s-why.html) for shipping modern applications.
@@ -43,7 +49,7 @@ If you're already bought into the Amazon ecosystem, ECR is an obvious choice for
 
 ### [EKS (Elastic Kubernetes Service)](https://aws.amazon.com/eks)
 
-Kubernetes is a widely used container orchestration technology for automating deployments, networking, and scaling your application. Elastic Kubernetes Service is the AWS-managed Kubernetes platform.
+[Kubernetes](/blog/building-on-kubernetes-ingress) is a widely used container orchestration technology for automating deployments, networking, and scaling your application. Elastic Kubernetes Service is the AWS-managed Kubernetes platform.
 
 EKS allows you to run Kubernetes on AWS without maintaining your own [Kubernetes control plane](https://kubernetes.io/docs/concepts/overview/components/#control-plane-components). You define a manifest file, and the Kubernetes master node will schedule and run the deployments. As you'll see later, you can use images hosted in ECR in this manifest file to easily deploy your workloads from your public or private repositories.
 
@@ -97,7 +103,7 @@ Once your repository is configured, click *Create repository* to initialize your
 
 ### Pushing an Image to the Repository
 
-Before publishing the Image to ECR, make sure you have Docker installed on your workstation and a project with a Dockerfile that's ready to be built and pushed to ECR.
+Before publishing the Image to ECR, make sure you have Docker installed on your workstation and a project with a [Dockerfile](/blog/compiling-containers-dockerfiles-llvm-and-buildkit) that's ready to be built and pushed to ECR.
 
 If you don't have a project ready, create a new file called `Dockerfile` and enter the following (this is based on the official [Docker `alpine:3.7` image](https://hub.docker.com/_/alpine)):
 
@@ -130,7 +136,7 @@ aws ecr get-login-password \
 
 After authentication, you will see `Login Succeeded` as a response. Now you'll be able to push tagged images to your ECR repository.
 
-If you are pushing or pulling images from this machine regularly, you may not want to go through this login process every time. Instead of using `docker login`, you can configure the [Amazon ECR Docker Credential Helper](https://github.com/awslabs/amazon-ecr-credential-helper) to give the Docker daemon direct access to your AWS credentials. This method is also convenient for CI environments because it automates the authentication process and caches tokens to minimize your risk of being throttled.
+If you are pushing or pulling images from this machine regularly, you may not want to go through this login process every time. Instead of using `docker login`, you can configure the [Amazon ECR Docker Credential Helper](https://github.com/awslabs/amazon-ecr-credential-helper) to give the [Docker daemon](/blog/what-is-buildkit-and-what-can-i-do-with-it) direct access to your AWS credentials. This method is also convenient for CI environments because it automates the authentication process and caches tokens to minimize your risk of being throttled.
 
 ### Pushing an Image to ECR
 

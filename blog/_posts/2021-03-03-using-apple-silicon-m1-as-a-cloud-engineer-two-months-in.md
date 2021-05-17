@@ -10,6 +10,9 @@ tags:
 - arm64
 - aarch64
 author: Vlad
+internal-links:
+  - m1
+  - arm
 ---
 
 So I've been using my new M1-based MacBook Pro for a couple of months for a mix of development, email, and other things an [open-source maintainer](https://github.com/earthly/earthly) does day-to-day.
@@ -39,7 +42,7 @@ The tools you use for development are likely still catching up to this architect
 * ✅ Signal (emulated)
 * ✅ Spotify (emulated)
 * ✅ VS Code. The amd64 version works perfectly well, however, the terminal will be an amd64 process, which may cause some programs to also run as amd64. The arm64 native version is available on the [VS Code Insiders](https://code.visualstudio.com/insiders/) and works really well.
-* ✅ Docker. M1 native version is a must. Emulation doesn't have virtualization features, which the Docker app requires. You can download the [Docker App for M1](https://docs.docker.com/docker-for-mac/apple-m1/), which is in preview. As mentioned on the documentation page, there are some limitations currently related to HTTP proxy, VPN clients, and performance, but the Docker team is making progress fast. (A month or two ago Kubernetes wasn't working, but now it is!).
+* ✅ Docker. M1 native version is a must. Emulation doesn't have virtualization features, which the Docker app requires. You can download the [Docker App for M1](https://docs.docker.com/docker-for-mac/apple-m1/), which is in preview. As mentioned on the documentation page, there are some limitations currently related to HTTP proxy, VPN clients, and performance, but the Docker team is making progress fast. (A month or two ago [Kubernetes](/blog/building-on-kubernetes-ingress) wasn't working, but now it is!).
 * ✅ Brew (native, encountered some issues with git, but was able to fix them)
 * ✅ iTerm (native)
 * ✅ Earthly (`v0.5.1+` now supports M1 natively - just `brew install earthly`)
@@ -51,11 +54,11 @@ I also use a ✅ YubiKey 5C Nano and a bunch of random peripherals like a ✅ US
 Languages and frameworks I've tested - most of them in Docker containers:
 
 * ✅ Go. [1.16 RC adds support for building darwin/arm64 binaries](https://golang.org/doc/go1.16#darwin). I built binaries in Docker and ran them natively. Works great.
-* 🟡 Java and Scala. I had issues with the JVM, experiencing random process hangs. It seems that there are no official OpenJDK builds for aarch64, however there are some community options. See more info below.
+* 🟡 Java and [Scala](/blog/top-5-scala-blogs). I had issues with the JVM, experiencing random process hangs. It seems that there are no official OpenJDK builds for aarch64, however there are some community options. See more info below.
 * ✅ C++ works fine on native architecture in Docker. Minimal testing though.
 * 🟡 .Net works fine when emulated as amd64 in a container. Did not immediately work natively (and I did not investigate).
-* ✅ Elixir works fine on native architecture in Docker. Minimal testing though.
-* ✅ gRPC works fine on native architecture in Docker. Minimal testing though.
+* ✅ [Elixir](/blog/real-time-phoenix-elixir) works fine on native architecture in Docker. Minimal testing though.
+* ✅ [gRPC](/blog/protobufs-and-grpc)  works fine on native architecture in Docker. Minimal testing though.
 * ✅ JavaScript / Node works fine on native architecture in Docker. Minimal testing though.
 * ✅ Python works fine on native architecture in Docker. Minimal testing though.
 * ✅ Ruby and Ruby on Rails works fine on native architecture in Docker. Minimal testing though.
@@ -98,7 +101,7 @@ If you `docker run` an image, it will default to whatever version of the image y
 
 ![Terminal showing the output of `uname -m` for different container platforms]({{site.images}}{{page.slug}}/img4.png)
 
-Docker Compose will happily run a mixture of various architectures. The same rules apply with regards to pulling and running. You can also specify `platform: linux/amd64` for the service definition in `docker-compose.yml` if you'd like to be specific.
+[Docker Compose](/blog/youre-using-docker-compose-wrong) will happily run a mixture of various architectures. The same rules apply with regards to pulling and running. You can also specify `platform: linux/amd64` for the service definition in `docker-compose.yml` if you'd like to be specific.
 
 One thing to note is that Docker-in-Docker is not supported by QEMU ([abandoned PR here](https://github.com/moby/qemu/pull/7)). So you cannot run an arm64 Docker in an amd64 Docker or vice-versa. **However**, if you run your natively-supported Docker-in-Docker, the inner Docker can still run multi-platform images fine.
 

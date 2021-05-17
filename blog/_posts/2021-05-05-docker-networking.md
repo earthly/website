@@ -6,6 +6,9 @@ toc: true
 author: Ashish Choudhary
 sidebar:
   nav: "docker"
+internal-links:
+    - docker networking
+    - host network
 ---
 Docker is the de facto model for building and running containers at scale in most enterprise organizations today. At a very high level, Docker is a combination of CLI and a daemon process that solves common software problems like installing, publishing, removing, and managing containers. It's perfect for microservices, where you have many services handling a typical business functionality; Docker makes the packaging easier, enabling you to encapsulate those services in containers.
 
@@ -417,7 +420,7 @@ Docker containers inherit DNS settings from the host when using a bridge network
 
 ## Docker Compose Networking
 
-[Docker Compose](https://docs.docker.com/compose/) is a tool for running multi-container applications on Docker, which are defined using the compose YAML file. You can start your applications with a single command: `docker-compose up`.
+[Docker Compose](/blog/youre-using-docker-compose-wrong) is a tool for running multi-container applications on Docker, which are defined using the compose YAML file. You can start your applications with a single command: `docker-compose up`.
 
 By default, Docker Compose creates a single network for each container defined in the compose file. All the containers defined in the compose file connect and communicate through the default network.
 

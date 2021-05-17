@@ -5,6 +5,11 @@ categories:
 - Tutorials
 author: Corey
 excerpt: Distributing shareware from the 90's in modern Docker images.
+internal-links:
+ - gaming
+ - doom
+ - js-dos
+ - js dos
 ---
 
 Its been three decades since the height of the DOS era, and look how far we've come! A machine that used to cost $2,000 can be emulated - _down to the processor!_ — in our [_web browsers_](https://bellard.org/jslinux/) while also checking email or watching a YouTube video. However, amidst these advancements, our old software falls by the wayside and stops working. Games are especially prone to this, since they often relied on incompatible tricks to eke out every ounce of performance from these old machines.
