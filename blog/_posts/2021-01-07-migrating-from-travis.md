@@ -69,7 +69,7 @@ They also allow use of the free plan with private repositories. This makes it a 
 
 ![First place trophy]({{site.images}}{{page.slug}}/trophy.png)\
 
-An even better option is [Github Actions](/blog/continuous-integration##github-actions), a cloud CI system directly from GitHub. &nbsp;Github is at the center of many open source projects and this makes it a natural choice for CI. &nbsp;
+An even better option is [Github Actions](/blog/continuous-integration#github-actions), a cloud CI system directly from GitHub. &nbsp;Github is at the center of many open source projects and this makes it a natural choice for CI. &nbsp;
 
 Github Actions (GHA) is newer than either TravisCI or Circle CI, having launched in late 2018.
 
