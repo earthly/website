@@ -54,7 +54,7 @@ Another option might be to use bash + Dockerfile, where a collection scripts for
 
 Yet another, more exotic, option is to use another scripting language, such as Python or JavaScript (see, for example the [zx](https://github.com/google/zx) library). Keep in mind, however, that it's best when most of the engineers are able to read and write the build scripts with ease. Sometimes too much flexibility of the programming language can make it harder for others to read and understand the scripts. This is an especially important point as the build scripts will likely be read much more often than they will be written.
 
-For this guide we'll use Makefile + Dockerfile, as an arbitrary choice. Note, however, that neither Bash nor Makefile are very intuitive at first glance and you will need to help out junior developers, or developers that simply haven't had the opportunity to learn these yet. And also, these are purely arbitrary choices, based on what we see as popular technologies used in this area. You own choice may vary for good reasons. This guide is not saying that Makefile / Bash / Dockerfile are the only right choices.
+For this guide we'll use Makefile + Dockerfile, as an arbitrary choice. Note, however, that neither Bash nor Makefile are very intuitive at first glance and you will need to help out junior developers, or developers that simply haven't had the opportunity to learn these yet. And also, these are purely arbitrary choices, based on what we see as popular technologies used in this area. Your own choice may vary for good reasons. This guide is not saying that Makefile / Bash / Dockerfile are the only right choices.
 
 ## Tips for taming Makefiles in large teams
 
