@@ -103,11 +103,10 @@ blog-interactive:
 
 blog-run:
   LOCALLY
-  # BUILD +blog-docker
-  # WITH DOCKER --load=blog-docker
-  RUN docker rm -f earthly-blog
-  RUN docker run -p 4002:4002 -v $(pwd)/blog:/site --rm --name earthly-blog earthly-blog
-  # END
+  WITH DOCKER --load=+blog-docker
+    RUN docker rm -f earthly-blog && \
+      docker run -p 4002:4002 -v $(pwd)/blog:/site --rm --name earthly-blog earthly-blog
+  END
 
 blog-local:
   LOCALLY
@@ -117,8 +116,8 @@ blog-local:
 
 clean:
   LOCALLY
-  RUN rm -r build website/_site website/.sass-cache website/.jekyll-metadata website/.jekyll-cache || True
-  RUN rm -r build blog/_site blog/.sass-cache blog/.jekyll-metadata blog/.jekyll-cache || True
+  RUN rm -rf build website/_site website/.sass-cache website/.jekyll-metadata website/.jekyll-cache
+  RUN rm -rf build blog/_site blog/.sass-cache blog/.jekyll-metadata blog/.jekyll-cache
 
 # doesn't work
 shell: 
