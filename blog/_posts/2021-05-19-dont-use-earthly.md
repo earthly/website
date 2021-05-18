@@ -1,10 +1,11 @@
 ---
-title: "Don't Use Earthly"
+title: "How to Not Use Our Build Tool"
 categories:
   - Articles
 tags:
   - Makefile
   - Dockerfile
+  - Bash
   - Build scripts
   - Build strategy
   - Repeatable builds
@@ -13,15 +14,11 @@ toc: true
 author: Vlad
 ---
 
-I'm here to tell you how not to use Earthly. Why? Well, maybe you just don't feel like using Earthly.
+In our journey to becoming better software engineers we have learned of various ways in which the team's productivity could be improved. We noticed that a focus on build repeatability and maintainability goes a long way towards keeping the team focused on what really matters: delivering great software. Many of these ideas helped shape what Earthly is today. In fact, the complexity of the matter is what got us to [start Earthly in the first place](https://earthly.dev/blog/the-world-deserves-better-builds/).
 
-While reading this article, you might even realize that patching your existing build scripts here and there is all you need and there's absolutely no point in understanding what Earthly is whatsoever. So there's no reason for me trying to shove Earthly down your throat. This article attempts to level the playing field.
+I wanted to sit down and write about all the tricks we learned and that we used every day to help make builds more manageable in the absence of Earthly. It's kinda like a "what would you do if you couldn't use Earthly" article. This will hopefully give you some ideas on best practices around build script maintenance, or it might help you decide on whether Earthly is something for you (or if the alternative is preferrable).
 
-Is it really? It's also kinda like a publicity stunt, right? Yeah, whatever. Who cares? Hopefully, this guide will teach you some build engineering regardless.
-
-If you're using Earthly, you can stop reading now. You are already a lost cause.
-
-In this article, we will walk through the 10,000 feet view of your build strategy, then dive into some specific tricks, tools, and techniques you might use to keep your builds effective and reproducible.
+In this article, we will walk through the 10,000 feet view of your build strategy, then dive into some specific tricks, tools, and techniques you might use to keep your builds effective and reproducible, with other off-the-shelf tools.
 
 ## Putting Together Complex Builds - Assumptions
 
@@ -42,7 +39,7 @@ This is a diagram we sometimes use to describe the glue layer. In this article, 
 
 ![The glue layer]({{site.images}}{{page.slug}}/glue-layer.png)\
 
-The glue layer is the layer between the various projects that need to be built and will act as the common denominator - [a vendor-neutral build specification](https://earthly.dev/blog/migrating-from-travis/#neutral-build-specifications). If we don't choose such a glue layer, then the CI YAML (or groovy?) becomes the glue layer and that would mean that it's more difficult to run it locally for fast iteration.
+The glue layer is the layer between the various projects that need to be built and will act as the common denominator - [a vendor-neutral build specification](https://earthly.dev/blog/migrating-from-travis/#neutral-build-specifications). If we don't choose such a glue layer, then the CI YAML (or Groovy?) becomes the glue layer and that would mean that it's more difficult to run it locally for fast iteration.
 
 Because we want to encourage cross-team collaboration, we want to standardize the tooling across teams as much as possible. Different language ecosystems will have different tools and we want to keep using those. You can't tell the frontend team not to use package.json / NPM / Yarn etc - that would be terribly cumbersome for them. So we're not touching the language-specific build layer.
 
@@ -479,18 +476,8 @@ If you'd like to get started exploring these, we have previously written about [
 
 ## Parting Words and Mandatory Plug
 
-Getting everyone to write containerized builds is difficult in a growing organization. As you can see from this article, certain operations within containerized builds are not trivial to achieve and the wheel may be reinvented many times across the different teams in your organization.
+Getting everyone to write containerized builds is difficult in a growing organization. As you can see from this article, certain operations within containerized builds are not trivial to achieve and the wheel may be reinvented many times across the different teams.
 
 For these reasons, we have built Earthly. Through Earthly, we wanted to give containerized builds to the world, for the sake of reproducibility. From our own experience, we saw that Dockerfiles alone are not meant as build scripts, but rather as container image definitions. In true Unix philosophy, they are a great tool for that specific job - they do one thing and they do it well. To go the extra step and have containerized builds scripts (not just image definitions), a number of tricks and wrappers are necessary. Earthly takes the best ideas from Dockerfiles and Makefiles and puts them into a unified syntax that anyone can understand at-a-glance.
 
 Give Earthly a try and tell us what you think via our [Slack](https://earthly.dev/slack) or our [GitHub issue tracker](https://github.com/earthly/earthly/issues).
-
-<!--
-I couldn't find a good place to fit this in, so I ended up leaving it out.
-
-## Don't Use Docker
-
-![We need to go deeper]({{site.images}}{{page.slug}}/meme-deeper.jpg)\
-
-If you like this kind of article, you can also go one step further and read this gem about how to do [containers from scratch](https://ericchiang.github.io/post/containers-from-scratch/) (no Docker). It's probably not something anyone would actually do, but it's an interesting journey to understanding the innards of how containers work.
--->
