@@ -17,11 +17,11 @@ I'm here to tell you how not to use Earthly. Why? Well, maybe you just don't fee
 
 While reading this article, you might even realize that patching your existing build scripts here and there is all you need and there's absolutely no point in understanding what Earthly is whatsoever. So there's no reason for me trying to shove Earthly down your throat. This article attempts to level the playing field.
 
-Is it really? It's also kinda like a publicity stunt, right? Yeah, whatever. Who cares? Hopefully this guide will teach you some build engineering regardless.
+Is it really? It's also kinda like a publicity stunt, right? Yeah, whatever. Who cares? Hopefully, this guide will teach you some build engineering regardless.
 
 If you're using Earthly, you can stop reading now. You are already a lost cause.
 
-In this article, we will walk through the 10,000 feet view of your build strategy, then dive into some specific tricks, tools and techniques you might use to keep your builds effective and reproducible.
+In this article, we will walk through the 10,000 feet view of your build strategy, then dive into some specific tricks, tools, and techniques you might use to keep your builds effective and reproducible.
 
 ## Putting Together Complex Builds - Assumptions
 
@@ -38,11 +38,11 @@ Since this is a guide about how not to use Earthly, we'll try to achieve the sam
 
 We will focus primarily on the glue layer of your builds. The stuff that brings everything together - maybe it packages things up for releases, or maybe it prepares packages for deployment, or perhaps it is simply a script that the CI definition calls into.
 
-This is a diagram we sometimes use to describe the glue layer. In this article we'll be focusing on the Dockerfile, Makefile and Bash parts of that glue layer. Not having a glue layer can make CI failures difficult to reproduce, or for other teams unfamiliar with the language-specific build tooling to effectively create the right environment to run builds.
+This is a diagram we sometimes use to describe the glue layer. In this article, we'll be focusing on the Dockerfile, Makefile, and Bash parts of that glue layer. Not having a glue layer can make CI failures difficult to reproduce, or for other teams unfamiliar with the language-specific build tooling to effectively create the right environment to run builds.
 
 ![The glue layer]({{site.images}}{{page.slug}}/glue-layer.png)\
 
-The glue layer is the layer between the various projects that need to be built and will act as the common denominator - [a vendor neutral build specification](https://earthly.dev/blog/migrating-from-travis/#neutral-build-specifications). If we don't choose such a glue layer, then the CI yaml (or groovy?) becomes the glue layer and that would mean that it's more difficult to run it locally for fast iteration.
+The glue layer is the layer between the various projects that need to be built and will act as the common denominator - [a vendor-neutral build specification](https://earthly.dev/blog/migrating-from-travis/#neutral-build-specifications). If we don't choose such a glue layer, then the CI YAML (or groovy?) becomes the glue layer and that would mean that it's more difficult to run it locally for fast iteration.
 
 Because we want to encourage cross-team collaboration, we want to standardize the tooling across teams as much as possible. Different language ecosystems will have different tools and we want to keep using those. You can't tell the frontend team not to use package.json / NPM / Yarn etc - that would be terribly cumbersome for them. So we're not touching the language-specific build layer.
 
@@ -52,17 +52,17 @@ A popular choice for the glue layer is to use Makefile + Dockerfile. Makefiles a
 
 Another option might be to use bash + Dockerfile, where a collection scripts for everyday tasks exist under a `hack` or `scripts` directory (`./hack/build`, `./hack/test`, `./hack/release`).
 
-Yet another, more exotic, option is to use another scripting language, such as Python or JavaScript (see, for example the [zx](https://github.com/google/zx) library). Keep in mind, however, that it's best when most of the engineers are able to read and write the build scripts with ease. Sometimes too much flexibility of the programming language can make it harder for others to read and understand the scripts. This is an especially important point as the build scripts will likely be read much more often than they will be written.
+Yet another, more exotic, option is to use another scripting language, such as Python or JavaScript (see, for example, the [zx](https://github.com/google/zx) library). Keep in mind, however, that it's best when most of the engineers can read and write the build scripts with ease. Sometimes too much flexibility of the programming language can make it harder for others to read and understand the scripts. This is an especially important point as the build scripts will likely be read much more often than they will be written.
 
-For this guide we'll use Makefile + Dockerfile, as an arbitrary choice. Note, however, that neither Bash nor Makefile are very intuitive at first glance and you will need to help out junior developers, or developers that simply haven't had the opportunity to learn these yet. And also, these are purely arbitrary choices, based on what we see as popular technologies used in this area. Your own choice may vary for good reasons. This guide is not saying that Makefile / Bash / Dockerfile are the only right choices.
+For this guide, we'll use Makefile + Dockerfile, as an arbitrary choice. Note, however, that neither Bash nor Makefile is very intuitive at first glance and you will need to help out junior developers, or developers that simply haven't had the opportunity to learn these yet. And also, these are purely arbitrary choices, based on what we see as popular technologies used in this area. Your own choice may vary for good reasons. This guide is not saying that Makefile / Bash / Dockerfile are the only right choices.
 
 ## Tips for Taming Makefiles in Large Teams
 
 While there is [shellcheck](https://www.shellcheck.net/) for linting shell scripts and avoiding the typical pitfalls, there is currently no linter for Makefiles. Part of the reason is that there are multiple styles or philosophies as to how to write Makefiles that it is hard to enforce specific rules that prevent human errors. For example, take a look at this [particularly opinionated approach](https://tech.davis-hansson.com/p/make/).
 
-Makefiles have the ability to manage the chain of dependencies and avoid duplicate work. However, this feature is heavily based on file creation time (if an input is newer than the output, then rebuild the target) and in most cases that is not enough. If you really want to, it is possible to force everything into that model. However, that tends to create very complicated Makefiles that often only one person on the team understands. This person becomes the "Build Guru" and all build maintenance works flows through them. This "Build Guru" dynamic is very common but best avoided. With Makefiles, using a limited subset of the Makefile language can help avoid this pattern and keep everything more maintainable for the entire team.
+Makefiles have the ability to manage the chain of dependencies and avoid duplicate work. However, this feature is heavily based on file creation time (if an input is newer than the output, then rebuild the target), and in most cases that is not enough. If you really want to, it is possible to force everything into that model. However, that tends to create very complicated Makefiles that often only one person on the team understands. This person becomes the "Build Guru" and all build maintenance works flow through them. This "Build Guru" dynamic is very common but best avoided. With Makefiles, using a limited subset of the Makefile language can help avoid this pattern and keep everything more maintainable for the entire team.
 
-If the Makefile wraps an existing build (for example, a gradle-based or NPM-based build), it might make more sense to avoid Makefile's more advanced features in those particular projects, to help the team be comfortable with making changes to the Makefile, with limited knowledge. In such cases, the caching would be handled by the wrapped build system and not by the Makefile itself.
+If the Makefile wraps an existing build (for example, a Gradle-based or NPM-based build), it might make more sense to avoid Makefile's more advanced features in those particular projects, to help the team be comfortable with making changes to the Makefile, with limited knowledge. In such cases, the caching would be handled by the wrapped build system and not by the Makefile itself.
 
 Here are some guidelines to help keep Makefiles simple and understandable, when the Makefile wraps another build system.
 
@@ -89,7 +89,7 @@ Makefile:273: *** missing separator.  Stop.
 
 To help keep builds reproducible, it's useful to have a version of the build in containerized form. If performance allows, this might be the day-to-day form that everyone uses. If not, at the very least, it's the form that is used to debug CI failures.
 
-Dockerfiles are the bread and butter of containerized builds. However, they have an important limitation: they can only output Docker images. They weren't designed to run unit tests or to output regular artifacts (binaries, jars, packages etc). However, with some wrapper code, it is possible to extract regular files from images, or to execute unit tests too. The following will illustrate how.
+Dockerfiles are the bread and butter of containerized builds. However, they have an important limitation: they can only output Docker images. They weren't designed to run unit tests or to output regular artifacts (binaries, jars, packages, etc). However, with some wrapper code, it is possible to extract regular files from images or to execute unit tests too. The following will illustrate how.
 
 ### Use Multi-stage Dockerfiles or Multiple Dockerfiles
 
@@ -111,7 +111,7 @@ FROM my-target-name AS yet-another-target-name
 ...
 ```
 
-A target can be used in another `FROM` command or in a `COPY` command (`COPY --from=my-target-name <file-from> <file-to>`) to copy resulting files from one target into another. This flexibility allows your definition to be more modular, and possibly also more efficient in cache, or more efficient in the size of the final image.
+A target can be used in another `FROM` command or a `COPY` command (`COPY --from=my-target-name <file-from> <file-to>`) to copy resulting files from one target into another. This flexibility allows your definition to be more modular, and possibly also more efficient in cache, or more efficient in the size of the final image.
 
 To invoke a specific Dockerfile target, you can use the `--target` flag of `docker build`.
 
@@ -142,7 +142,7 @@ docker build .
 
 ### Running Integration Tests
 
-When running containerized integration tests that depend on additional services, only **option b.** above is available. In such cases you might want to make use of docker-compose in order to manage multiple containers running together. Even if your setup is small, it's just easier to be able to kill everything at once if your tests hang.
+When running containerized integration tests that depend on additional services, only **option b.** above is available. In such cases, you might want to make use of docker-compose to manage multiple containers running together. Even if your setup is small, it's just easier to be able to kill everything at once if your tests hang.
 
 Another option is to use [testcontainers](https://github.com/testcontainers) - a language-specific library that allows you to bring up containerized helper services during integration testing. This can be a great abstraction, however, if you want to keep the integration tests containerized too, you'll need to mount `/var/run/docker.sock` (this is sometimes referred to as "docker-out-of-docker"). This will allow the integration test code to bring up the necessary helper services via testcontainers.
 
@@ -154,10 +154,10 @@ Either way, to keep your test suite as easy to use as possible, it's great if yo
 
 ### Outputting Regular Files
 
-Even the most containerized of builds benefit from being able to occasionally output regular files. Here are some possible situations:
+Even the most containerized builds benefit from being able to occasionally output regular files. Here are some possible situations:
 
 * Binaries / Packages / Library archives
-* Releaseables (deb packages, source code tar balls)
+* Releaseables (deb packages, source code tarballs)
 * Screenshots from UI tests
 * Test coverage reports
 * Performance profile reports
@@ -185,7 +185,7 @@ ls /output
 
 The typical issue with this approach is that the resulting artifacts are owned by `root`. Getting rid of them or moving them around then requires `sudo`. There are, of course, ways to generate the files as a different user within the container, but this can be cumbersome.
 
-**Option b. Generate the file(s) as part of `docker run` and then extract them using `docker cp`**: This option involves executing the `docker run` and then afterwards issuing `docker cp` to extract the resulting artifact. Here's an example:
+**Option b. Generate the file(s) as part of `docker run` and then extract them using `docker cp`**: This option involves executing the `docker run` and then afterward issuing `docker cp` to extract the resulting artifact. Here's an example:
 
 ```bash
 docker run --name build-artifact my-image:latest
@@ -195,7 +195,7 @@ docker rm build-artifact
 
 This option will produce results owned by the right user. The one possible downside of this approach is that if the `docker run` fails, a hanging `build-artifact` container remains, which will cause the next run to fail due to naming conflict. This can be easily fixed, however, by adding `docker rm -f build-artifact` at the beginning of the script.
 
-**Option c. Generate the file(s) as the contents of an image during `docker build` then extract them using the `docker build -o` option**: This is a lesser known technique particularly suited for outputting entire directories. It essentially outputs the root directory of an entire image to the host. Here's how this might be used.
+**Option c. Generate the file(s) as the contents of an image during `docker build` then extract them using the `docker build -o` option**: This is a lesser-known technique particularly suited for outputting entire directories. It essentially outputs the root directory of an entire image to the host. Here's how this might be used.
 
 ```Dockerfile
 FROM alpine AS base
@@ -233,7 +233,7 @@ Regardless of the build setup, bash scripts are sometimes inevitable, especially
 If you're new to bash scripting, I'll run through a few of the more useful beginner tricks from our [understanding bash article](https://earthly.dev/blog/understanding-bash/).
 
 * Spaces are surprisingly important. `A=B` is different from `A = B`. Also `if[$A=$B]` does not work - it has to be `if [ $A = $B ]`.
-* Variables can cause really weird things if they are not wrapped in double quotes. The reason is that a variable which contains spaces can expand across multiple command parameters, unless it's within quotes. To prevent any surprises, a good rule is to never expand a variable outside of double quotes. So use `"$ABC"` always and not simply `$ABC`.
+* Variables can cause really weird things if they are not wrapped in double-quotes. The reason is that a variable that contains spaces can expand across multiple command parameters unless it's within quotes. To prevent any surprises, a good rule is to never expand a variable outside of double-quotes. So use `"$ABC"` always and not simply `$ABC`.
 * A really good tool to check for some common errors like the above is [`shellcheck`](https://www.shellcheck.net/).
 * If there is an error in a bash script, by default, the script simply continues without a worry. This is very often not what you want - you want to terminate immediately so that the user is aware that something has failed. To enable this, put `set -e` at the top of the file.
 * A series of piped commands can also fail and bash doesn't terminate by default. To terminate immediately in such cases, you can enable `set -o pipefail`.
@@ -265,20 +265,20 @@ There are multiple ways to achieve importing on your own. In general, if the lan
 my-dep: ./deps/my-dep
 
 ./deps/my-dep:
-	mkdir -p deps
-	rm -rf ./deps/my-dep
-	git clone --branch v1.2.3 <clone-url> ./deps/my-dep
+  mkdir -p deps
+  rm -rf ./deps/my-dep
+  git clone --branch v1.2.3 <clone-url> ./deps/my-dep
 
 clean:
-	rm -rf ./deps
+  rm -rf ./deps
 ```
 <!-- markdownlint-enable no-hard-tabs -->
 
 Although it's relatively crude in that it wipes the whole dir and re-clones it when necessary, it's also pretty robust because there's nothing assumed about the state of that directory. (Just make sure you're not making important changes in that directory as those may be lost!)
 
-The `--branch` setting takes any git tag, sha or branch, or, in general a git ref. This helps pin the dependency to something specific, if that is needed.
+The `--branch` setting takes any git tag, sha, or branch, or, in general, a git ref. This helps pin the dependency to something specific if that is needed.
 
-You'll need to be careful about how you use the `<clone-url>` as some engineers will use https auth, while others will use `ssh` auth. You might want to standardize on only one of the two options and use git's `insteadof` feature if an individual developer would like to switch to the other URL.
+You'll need to be careful about how you use the `<clone-url>` as some engineers will use HTTPS auth, while others will use `ssh` auth. You might want to standardize on only one of the two options and use git's `insteadof` feature if an individual developer would like to switch to the other URL.
 
 For example, if a developer wants to dynamically switch from `https://` to SSH GitHub URLs, they can do:
 
@@ -312,11 +312,11 @@ There is much more to submodules than is in scope for this guide, but a good run
 
 The advantage of this technique is that Docker images support tags, which allow for embedding into a release-process-based workflow. This technique is especially useful when artifacts beyond the source code itself are needed. Things like binaries, or generated files.
 
-However, this option does require for repo A to execute a build which packages up the image before it can be used in repo B. If **options a.** and **b.** are simply **commit to repo A** -> **use in repo B**, for **option c.** the sequence is **commit to repo A** -> **wait for CI build of repo A to complete** -> **use in repo B**.
+However, this option does require repo A to execute a build that packages up the image before it can be used in repo B. If **options a.** and **b.** are simply **commit to repo A** -> **use in repo B**, for **option c.** the sequence is **commit to repo A** -> **wait for CI build of repo A to complete** -> **use in repo B**.
 
 <div class="notice--info" markdown="1">
 
-**Side Note**. If the CI is slow, this can be a productivity hog. To counter for this situation, make sure that the individual engineer on the team can build the image independently from the CI, in order to be able to iterate locally quickly.
+**Side Note**. If the CI is slow, this can be a productivity hog. To counter this situation, make sure that the individual engineer on the team can build the image independently from the CI, in order to be able to iterate locally quickly.
 
 </div>
 
@@ -364,10 +364,10 @@ If you need dependencies to be built in a specific order, a great way to achieve
 <!-- markdownlint-disable no-hard-tabs -->
 ```Makefile
 build:
-	$(MAKE) dep1
-	$(MAKE) dep2
-	$(MAKE) dep3
-	actually build
+  $(MAKE) dep1
+  $(MAKE) dep2
+  $(MAKE) dep3
+  actually build
 ```
 <!-- markdownlint-enable no-hard-tabs -->
 
@@ -376,7 +376,7 @@ If dependencies can execute in any order, then declaring them as regular target 
 <!-- markdownlint-disable no-hard-tabs -->
 ```Makefile
 build: dep1 dep2 dep3
-	actually build
+  actually build
 ```
 <!-- markdownlint-enable no-hard-tabs -->
 
@@ -392,7 +392,7 @@ COPY --from=dep3 /output/artifact3 ./
 RUN actually build
 ```
 
-Then `dep1`, `dep2` and `dep3` will be executed in parallel. The nice thing about this is that there is nothing shared between these three targets (unlike the Makefile case) and they will just work in parallel. No special considerations are necessary.
+Then `dep1`, `dep2`, and `dep3` will be executed in parallel. The nice thing about this is that there is nothing shared between these three targets (unlike the Makefile case) and they will just work in parallel. No special considerations are necessary.
 
 ## Shared Caching
 
@@ -426,15 +426,15 @@ If the image does not already exist (or if it does not have a cache manifest emb
 
 ## Managing Secrets
 
-Mature CI/CD setups often hold more secrets than there are available in the production environment. That's because they often need access to registries, artifactories, git repositories, as well as staging environments where additional testing can be performed, and also the production environment itself, where live releases are deployed to, together with schema write access to DBs for upgrades, and also possibly S3 access. Wow - that's a mouthfull.
+Mature CI/CD setups often hold more secrets than there are available in the production environment. That's because they often need access to registries, artifactories, git repositories, as well as staging environments where additional testing can be performed, and also the production environment itself, where live releases are deployed to, together with schema write access to DBs for upgrades, and also possibly S3 access. Wow - that's a mouthful.
 
 Oh, did I also mention that the CI runs a ton of code imported from the web? That `npm install` one of your colleagues ran in CI will download half the internet. And not all of it is particularly [trust-worthy](https://www.zdnet.com/article/codecov-breach-impacted-hundreds-of-customer-networks/).
 
 This whole thing makes for an incredibly risky attack surface. Giving access to build secrets to every developer adds an unnecessary extra dimension to the whole risk.
 
-However, in order to be able to reproduce some of the builds, you really need to give at least *some* access. At the very least, developers need read access to most Docker registries and package artifactories / package repositories. In fact, if you want to ensure that artifacts and images that make it to production are never created on a developer's computer (because you don't know if their specific environment will produce the releasable correctly consistently), you can simply not give out write access to any Docker repository and make it a rule that only the CI may have write access. (You might still need separate, non-production repos for local testing, though).
+However, to be able to reproduce some of the builds, you really need to give at least *some* access. At the very least, developers need read access to most Docker registries and package artifactories / package repositories. In fact, if you want to ensure that artifacts and images that make it to production are never created on a developer's computer (because you don't know if their specific environment will produce the releasable correctly consistently), you can simply not give out write access to any Docker repository and make it a rule that only the CI may have write access. (You might still need separate, non-production repos for local testing, though).
 
-For the read access, it's best if each engineer gets their own account and credentials. In case someone is terminated, you can simply revoke access for that engineer's account and know that all other credentials are not compromised.
+For the read access, it's best if each engineer gets their own account and credentials. In case someone is terminated, you can simply revoke access from that engineer's account and know that all other credentials are not compromised.
 
 For reproducing CI/CD failures in pipelines with more sensitive access, you will need to maintain a small list of employees who will receive more privileged production access.
 
@@ -446,11 +446,11 @@ For a seamless setup, you can also store build credentials in HashiCorp Vault an
 vault read -field=foo secret/my-secret
 ```
 
-This may be helpful in setups where extensive use of build credentials is required. Managing a [Vault installation](https://www.vaultproject.io/docs/install), however, is a whole project of its own and going into those details is perhaps a story for another day.
+This may be helpful in setups where extensive use of build credentials is required. Managing a [Vault installation](https://www.vaultproject.io/docs/install), however, is a whole project of its own, and going into those details is perhaps a story for another day.
 
 ## Maintaining Consistency
 
-Now to turn to a more philosophical aspect of builds. A great build setup is one where every engineer can understand what it does fairly quickly and where every engineer can contribute to with minimal to no help at all. Although these principles are obvious goals to have, the norm is quite the opposite.
+Now to turn to a more philosophical aspect of builds. A great build setup is one where every engineer can understand what it does fairly quickly and where every engineer can contribute with minimal to no help at all. Although these principles are obvious goals to have, the norm is quite the opposite.
 
 Engineers don't have an innate need to mess things up. It's not like we wake up in the morning trying to make builds cumbersome and complex for everyone else. The issue is usually that builds simply grow organically into an eventual big hairball of mess.
 
@@ -471,7 +471,7 @@ Then your engineers will be able to build another team's codebase in their sleep
 
 ## Other Options
 
-This article wouldn't be complete without mentioning that if you're a large organization (thousands of engineers), you can also take a look at some large scale build systems as popular alternatives to in-house scripts. The names that come to mind are [Bazel](https://bazel.build/), [Buck](https://buck.build/) and [Pants](https://v1.pantsbuild.org/). These systems imply heavy organization buy-in and well-staffed build engineering teams to manage them.
+This article wouldn't be complete without mentioning that if you're a large organization (thousands of engineers), you can also take a look at some large-scale build systems as popular alternatives to in-house scripts. The names that come to mind are [Bazel](https://bazel.build/), [Buck](https://buck.build/) and [Pants](https://v1.pantsbuild.org/). These systems imply heavy organization buy-in and well-staffed build engineering teams to manage them.
 
 Some of these can provide some of the most advanced capabilities available on planet Earth, however, they do come with the tradeoff that they don't integrate well with most open-source tooling and so all projects need to be adapted to fit the paradigm.
 
@@ -481,7 +481,7 @@ If you'd like to get started exploring these, we have previously written about [
 
 Getting everyone to write containerized builds is difficult in a growing organization. As you can see from this article, certain operations within containerized builds are not trivial to achieve and the wheel may be reinvented many times across the different teams in your organization.
 
-For these reasons, we have built Earthly. Through Earthly, we wanted to give containerized builds to the world, for the sake of reproducibility. From our own experience, we saw that Dockerfiles alone are not meant as build scripts, but rather as container image definitions. In true unix philosophy, they are a great tool for that specific job - they do one thing and they do it well. To go the extra step and have containerized builds scripts (not just image definitions), a number of tricks and wrappers are necessary. Earthly takes the best ideas from Dockerfiles and Makefiles and puts them into a unified syntax that anyone can understand at-a-glance.
+For these reasons, we have built Earthly. Through Earthly, we wanted to give containerized builds to the world, for the sake of reproducibility. From our own experience, we saw that Dockerfiles alone are not meant as build scripts, but rather as container image definitions. In true Unix philosophy, they are a great tool for that specific job - they do one thing and they do it well. To go the extra step and have containerized builds scripts (not just image definitions), a number of tricks and wrappers are necessary. Earthly takes the best ideas from Dockerfiles and Makefiles and puts them into a unified syntax that anyone can understand at-a-glance.
 
 Give Earthly a try and tell us what you think via our [Slack](https://earthly.dev/slack) or our [GitHub issue tracker](https://github.com/earthly/earthly/issues).
 
