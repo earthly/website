@@ -77,13 +77,12 @@ Another thing to consider is that certain UNIX commands vary from platform to pl
 
 <div class="notice--info" markdown="1">
 
-##### Remember The Tab
-
-Use of the tab character is mandatory in Makefiles or you'll get this error. This usually catches newbies off-guard.
+**Remember The Tab**. Use of the tab character is mandatory in Makefiles or you'll get this error. This usually catches newbies off-guard.
 
 ```
 Makefile:273: *** missing separator.  Stop.
 ```
+
 </div>
 
 ## Tips for Dockerfiles
@@ -317,9 +316,7 @@ However, this option does require for repo A to execute a build which packages u
 
 <div class="notice--info" markdown="1">
 
-##### Side Note
-
-If the CI is slow, this can be a productivity hog. To counter for this situation, make sure that the individual engineer on the team can build the image independently from the CI, in order to be able to iterate locally quickly.
+**Side Note**. If the CI is slow, this can be a productivity hog. To counter for this situation, make sure that the individual engineer on the team can build the image independently from the CI, in order to be able to iterate locally quickly.
 
 </div>
 
