@@ -175,4 +175,3 @@ link-opportunity:
   ARG NAME="2020-09-10-better-builds.md"
   RUN pip3 install python-frontmatter
   RUN python3 ./blog/_util/suggest-links.py ./blog/_posts/$NAME
-

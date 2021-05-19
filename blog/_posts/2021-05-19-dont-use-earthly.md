@@ -1,5 +1,5 @@
 ---
-title: "How to Not Use Our Build Tool"
+title: "Getting a Repeatable Build, Every Time"
 categories:
   - Articles
 tags:
@@ -13,6 +13,8 @@ tags:
 toc: true
 author: Vlad
 ---
+
+*EDIT This post used to be titled **How to not use our build tool**. Thanks to Reddit user [musman](https://www.reddit.com/user/musman) for suggesting the current updated title*
 
 In our journey to becoming better software engineers we have learned of various ways in which the team's productivity could be improved. We noticed that a focus on build repeatability and maintainability goes a long way towards keeping the team focused on what really matters: delivering great software. Many of these ideas helped shape what Earthly is today. In fact, the complexity of the matter is what got us to [start Earthly in the first place](https://earthly.dev/blog/the-world-deserves-better-builds/).
 
