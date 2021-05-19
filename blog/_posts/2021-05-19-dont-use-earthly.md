@@ -12,7 +12,7 @@ tags:
   - Glue layer
 toc: true
 author: Vlad
-excerpt: "I wanted to sit down and write about all the tricks we learned and that we used every day to help make builds more manageable in the absence of Earthly. It's kinda like a "what would you do if you couldn't use Earthly" article. This will hopefully give you some ideas on best practices around build script maintenance, or it might help you decide on whether Earthly is something for you (or if the alternative is preferrable)."
+excerpt: "I wanted to sit down and write about all the tricks we learned and that we used every day to help make builds more manageable in the absence of Earthly. It's kinda like a \"what would you do if you couldn't use Earthly\" article. This will hopefully give you some ideas on best practices around build script maintenance, or it might help you decide on whether Earthly is something for you (or if the alternative is preferrable)."
 ---
 
 *EDIT This post used to be titled **How to not use our build tool**. Thanks to Reddit user [musman](https://www.reddit.com/user/musman) for suggesting the current updated title*
