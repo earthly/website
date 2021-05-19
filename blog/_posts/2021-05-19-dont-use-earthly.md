@@ -37,9 +37,7 @@ We will focus primarily on the glue layer of your builds. The stuff that brings 
 
 This is a diagram we sometimes use to describe the glue layer. In this article, we'll be focusing on the Dockerfile, Makefile, and Bash parts of that glue layer. Not having a glue layer can make CI failures difficult to reproduce, or for other teams unfamiliar with the language-specific build tooling to effectively create the right environment to run builds.
 
-<div class="wide">
 ![The glue layer]({{site.images}}{{page.slug}}/glue-layer.png)\
-</div>
 
 The glue layer is the layer between the various projects that need to be built and will act as the common denominator - [a vendor-neutral build specification](https://earthly.dev/blog/migrating-from-travis/#neutral-build-specifications). If we don't choose such a glue layer, then the CI YAML (or Groovy?) becomes the glue layer and that would mean that it's more difficult to run it locally for fast iteration.
 
