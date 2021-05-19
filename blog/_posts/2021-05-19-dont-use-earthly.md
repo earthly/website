@@ -37,7 +37,9 @@ We will focus primarily on the glue layer of your builds. The stuff that brings 
 
 This is a diagram we sometimes use to describe the glue layer. In this article, we'll be focusing on the Dockerfile, Makefile, and Bash parts of that glue layer. Not having a glue layer can make CI failures difficult to reproduce, or for other teams unfamiliar with the language-specific build tooling to effectively create the right environment to run builds.
 
+<div class="wide">
 ![The glue layer]({{site.images}}{{page.slug}}/glue-layer.png)\
+</div>
 
 The glue layer is the layer between the various projects that need to be built and will act as the common denominator - [a vendor-neutral build specification](https://earthly.dev/blog/migrating-from-travis/#neutral-build-specifications). If we don't choose such a glue layer, then the CI YAML (or Groovy?) becomes the glue layer and that would mean that it's more difficult to run it locally for fast iteration.
 
@@ -72,13 +74,13 @@ In other words, try not to be too smart about Makefiles. Note, however, that if 
 
 Another thing to consider is that certain UNIX commands vary from platform to platform. For example, `sed` and `find` have important differences between GNU/Linux and macOS, and while Windows can behave very much like Linux through WSL 2, testing is needed to verify everything you are using will work the same. Ask a colleague to test out your scripts on their platform if in doubt.
 
-<div class="notice--info" markdown="1">
+<div class="notice--info">
 
-**Remember The Tab**. Use of the tab character is mandatory in Makefiles or you'll get this error. This usually catches newbies off-guard.
+**Remember The Tab**.
 
-```
-Makefile:273: *** missing separator.  Stop.
-```
+Use of the tab character is mandatory in Makefiles or you'll get this error. This usually catches newbies off-guard.
+
+*`Makefile:273: *** missing separator.  Stop.`*
 
 </div>
 
@@ -165,10 +167,10 @@ Even the most containerized builds benefit from being able to occasionally outpu
 To output regular files as part of a containerized build, there are a few options.
 
 <ol type="a">
-<li markdown="1">Generate the file(s) into a host-mounted volume as part of `docker run`.</li>
-<li markdown="1">Generate the file(s) as part of `docker run` and then extract them using `docker cp`.</li>
-<li markdown="1">Generate the file(s) as the contents of an image during `docker build` then extract them using the `docker build -o`option.</li>
-<li markdown="1">Generate the file(s) as the contents of an image during `docker build` then extract them using `docker cp`.</li>
+<li>Generate the file(s) into a host-mounted volume as part of `docker run`.</li>
+<li>Generate the file(s) as part of `docker run` and then extract them using `docker cp`.</li>
+<li>Generate the file(s) as the contents of an image during `docker build` then extract them using the `docker build -o`option.</li>
+<li>Generate the file(s) as the contents of an image during `docker build` then extract them using `docker cp`.</li>
 </ol>
 
 Let's take these one at a time:
@@ -311,7 +313,7 @@ The advantage of this technique is that Docker images support tags, which allow 
 
 However, this option does require repo A to execute a build that packages up the image before it can be used in repo B. If **options a.** and **b.** are simply **commit to repo A** -> **use in repo B**, for **option c.** the sequence is **commit to repo A** -> **wait for CI build of repo A to complete** -> **use in repo B**.
 
-<div class="notice--info" markdown="1">
+<div class="notice--info">
 
 **Side Note**. If the CI is slow, this can be a productivity hog. To counter this situation, make sure that the individual engineer on the team can build the image independently from the CI, in order to be able to iterate locally quickly.
 
