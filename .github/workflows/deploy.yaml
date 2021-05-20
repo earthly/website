@@ -23,6 +23,12 @@ jobs:
           key: ${{ runner.os }}
       - name: Download released earth
         run: "sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/download/v0.5.8/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly'"
+      - name: cache images
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/blog/_site/generated/
+          key: ${{ runner.os }}
       - name: Build Site
         run: |-
           if [ "$CI_ACTION_REF_NAME" == "main" ]; then
