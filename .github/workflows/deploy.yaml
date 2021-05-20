@@ -19,6 +19,7 @@ jobs:
       - name: "create key"
         run: |- 
           date "+%Y-%d-%m %Hh" > time.txt
+          mkdir -p build/site/blog/generated/
       - name: Download released earth
         run: "sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/download/v0.5.8/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly'"
       - name: cache images
