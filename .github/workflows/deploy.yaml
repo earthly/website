@@ -16,13 +16,26 @@ jobs:
       - uses: FranzDiebold/github-env-vars-action@v2
       - name: Checkout code
         uses: actions/checkout@v2
-      - uses: actions/cache@v2
-        id: cache
-        with:
-          path: .jekyll-cache
-          key: ${{ runner.os }}
+      - name: "create key"
+        run: |- 
+          date "+%Y-%d-%m" > today.txt
+          date --date="yesterday" "+%Y-%d-%m" > yesterday.txt
+          mkdir -p build/site/blog/generated/
       - name: Download released earth
         run: "sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/download/v0.5.8/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly'"
+      - name: cache images
+        uses: actions/cache@v2
+        with:
+          path: |
+              .jekyll-cache
+              build/site/blog/generated
+          key: ${{ hashFiles('today.txt')  }}
+          restore-keys: |
+            ${{ hashFiles('yesterday.txt') }}
+      - name: copy cache
+        run: |-
+          mkdir -p blog/_site/generated/
+          cp -a build/site/blog/generated/. blog/_site/generated/
       - name: Build Site
         run: |-
           if [ "$CI_ACTION_REF_NAME" == "main" ]; then
