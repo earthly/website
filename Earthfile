@@ -75,7 +75,8 @@ blog-install:
   SAVE IMAGE --push agbell/blog-install:latest #Acts as a cache
 
 blog-lint:
-  FROM +blog-install
+  #FROM +blog-install
+  FROM agbell/blog-install
   COPY blog .
   IF grep '[“”‘’]' ./_posts/*.md
     RUN echo "Fail: Remove curly quotes and use straight quotes instead" && false
