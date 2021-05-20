@@ -27,7 +27,7 @@ jobs:
           path: |
               .jekyll-cache
               build/site/blog/generated
-          key: ${{ time.txt }}
+          key: ${{ hashFiles('time.txt')  }}
       - name: copy cache
         run: |-
           cp -a build/site/blog/generated/. blog/_site/generated/
