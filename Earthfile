@@ -19,7 +19,7 @@ base-image:
   RUN apt-get install python3-matplotlib libvips-dev python3-pip npm -y
   RUN pip3 install pandocfilters
   RUN npm install -g markdownlint-cli 
-  SAVE IMAGE --push agbell/website-base:latest
+  SAVE IMAGE --push agbell/website-base:latest #Acts as a cache
 
 deps:
     ## moved to dockerfile for build speed
@@ -39,9 +39,11 @@ website-install:
     COPY website/Gemfile .
     COPY website/Gemfile.lock .
     RUN bundle install --retry 5 --jobs 20
+    SAVE IMAGE --push agbell/website-install:latest #Acts as a cache
 
 website-build:
-  FROM +website-install
+  #FROM +website-install
+  FROM agbell/website-install
   COPY website .
   RUN RUBYOPT='-W0' bundle exec jekyll build $FLAGS
   SAVE ARTIFACT _site AS LOCAL build/site
@@ -70,6 +72,7 @@ blog-install:
   COPY blog/Gemfile .
   COPY blog/Gemfile.lock .
   RUN bundle install --retry 5 --jobs 20
+  SAVE IMAGE --push agbell/blog-install:latest #Acts as a cache
 
 blog-lint:
   FROM +blog-install
@@ -86,7 +89,8 @@ blog-lint-apply:
   RUN cd blog && markdownlint --fix "./_posts/*.md"
 
 blog-build:
-  FROM +blog-install
+  #FROM +blog-install
+  FROM agbell/blog-install
   COPY blog .
   RUN RUBYOPT='-W0' JEKYLL_ENV=production bundle exec jekyll build $FLAGS
   SAVE ARTIFACT _site AS LOCAL build/site/blog
