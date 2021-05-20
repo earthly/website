@@ -27,7 +27,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: |
-            /blog/_site/generated/
+            blog/_site/generated/
           key: ${{ runner.os }}
       - name: Build Site
         run: |-
