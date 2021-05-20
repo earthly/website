@@ -31,6 +31,7 @@ jobs:
           key: ${{ hashFiles('time.txt')  }}
       - name: copy cache
         run: |-
+          mkdir -p blog/_site/generated/
           cp -a build/site/blog/generated/. blog/_site/generated/
       - name: Build Site
         run: |-
