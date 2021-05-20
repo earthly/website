@@ -27,8 +27,11 @@ jobs:
         uses: actions/cache@v2
         with:
           path: |
-            blog/_site/generated/
-          key: ${{ runner.os }}
+              build/site/blog/generated
+          key: ${{ date "+%Y-%d-%m %Hh" }}
+      - name: copy cache
+        run: |-
+          cp -a build/site/blog/generated/. blog/_site/generated/
       - name: Build Site
         run: |-
           if [ "$CI_ACTION_REF_NAME" == "main" ]; then
