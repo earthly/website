@@ -81,11 +81,14 @@ blog-lint:
   IF grep '[“”‘’]' ./_posts/*.md
     RUN echo "Fail: Remove curly quotes and use straight quotes instead" && false
   END  
+  IF grep 'imgur.com' ./_posts/*.md
+    RUN echo "Fail: external image link" && false
+  END
   RUN markdownlint "./_posts/*.md"
 
 blog-lint-apply:
   LOCALLY
-  # RUN sed -i -E 's/“|”/"/g' ./blog/_posts/*.md
+  RUN sed -i -E "s/“|”/\"/g" ./blog/_posts/*.md
   RUN sed -i -E "s/‘|’/'/g" ./blog/_posts/*.md
   RUN cd blog && markdownlint --fix "./_posts/*.md"
 

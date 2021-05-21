@@ -9,19 +9,19 @@ internal-links:
  - just an example
 ---
 
-> In software engineering, continuous integration is the practice of merging all developers' working copies to a shared mainline several times a day. Grady Booch first proposed the term CI in his 1991 method, although he did not advocate integrating several times a day. —[Wikipedia](https://en.wikipedia.org/wiki/Continuous_integration “Wikipedia article on continuous integration”)
+> In software engineering, continuous integration is the practice of merging all developers' working copies to a shared mainline several times a day. Grady Booch first proposed the term CI in his 1991 method, although he did not advocate integrating several times a day. —[Wikipedia](https://en.wikipedia.org/wiki/Continuous_integration "Wikipedia article on continuous integration")
 
-Continuous Integration (CI) and continuous delivery (CD) are some of the best practices that any DevOps team can implement. You could argue that they’re necessary for teams looking to ship quality products fast and with confidence. 
+Continuous Integration (CI) and continuous delivery (CD) are some of the best practices that any DevOps team can implement. You could argue that they're necessary for teams looking to ship quality products fast and with confidence.
 
-CI and CD are two pieces of a whole, the former dealing with the task to automate the process of building, testing, and integrating new features and code changes into the codebase mainline; and the latter dealing with automating the process of delivering the changes to the defined environments. 
+CI and CD are two pieces of a whole, the former dealing with the task to automate the process of building, testing, and integrating new features and code changes into the codebase mainline; and the latter dealing with automating the process of delivering the changes to the defined environments.
 
 The implementation of both methodologies is often referred to as a **CI/CD pipeline**; it is worth noting that both for CI and CD, the operating principles and coding philosophy are equally as important as the technical aspect of the implementation.
 
 CI's technical goal is to provide consistent and automated results to build, package, and test applications. This repeatable flow and process allows teams to commit and merge changes more frequently, thus reducing the risk of conflicts or getting stuck in **Integration Hell**.
 
-> Integration Hell refers to the point in production when members on a delivery team integrate their individual code. In traditional software development environments, this integration process is rarely smooth and seamless, instead resulting in hours or perhaps days of fixing the code so that it can finally integrate. Continuous Integration (CI) aims to avoid this completely by enabling and encouraging team members to integrate frequently (e.g., hourly, or at least daily).  —[SolutionsIQ](https://www.solutionsiq.com/agile-glossary/integration-hell/ “Accenture | SolutionsIQ’s definition of Integration Hell”)
+> Integration Hell refers to the point in production when members on a delivery team integrate their individual code. In traditional software development environments, this integration process is rarely smooth and seamless, instead resulting in hours or perhaps days of fixing the code so that it can finally integrate. Continuous Integration (CI) aims to avoid this completely by enabling and encouraging team members to integrate frequently (e.g., hourly, or at least daily).  —[SolutionsIQ](https://www.solutionsiq.com/agile-glossary/integration-hell/ "Accenture | SolutionsIQ's definition of Integration Hell")
 
-This article focuses on the concepts, tools, and best practices that will allow you to achieve a high degree of repeatability and consistency on your CI/CD pipeline. 
+This article focuses on the concepts, tools, and best practices that will allow you to achieve a high degree of repeatability and consistency on your CI/CD pipeline.
 
 ## CI Repeatability Principles
 
@@ -42,25 +42,25 @@ Reliability gives the confidence to deliver shippable working code at any time d
 
 CI infrastructure and pipelines can be—and more often than not, are—software assets on their own. The work done to create and implement CI runners and pipelines for our software projects can also be built, tested, and packaged just like any other software build.
 
-Examples of this are containerizing the environments used to run your test suites, including dependencies such as a database or ancillary applications for the end-to-end test suites. 
+Examples of this are containerizing the environments used to run your test suites, including dependencies such as a database or ancillary applications for the end-to-end test suites.
 
 Treating the CI pipelines as another software project also allows the development team to reproduce the same results from the CI pipeline locally and shorten the feedback loop.
 
-### Reusability 
+### Reusability
 
 With reproducible builds, we can achieve reusability, meaning that the same tools and process can be used in more than one project. Having a system in which we are not building a special custom CI pipeline for each project allows us to find patterns that we can apply to many projects.
 
 The type of reusable resources greatly varies depending on the type of applications and tests on each organization, from simple reusable scripts to containerized environments.
 
-### Speed 
+### Speed
 
-One of the primary benefits of a good and effective CI process is the feedback loop it provides to the developers working on a project. Feedback loops start losing their value and [detract from developer effectiveness as they get slower](https://martinfowler.com/articles/developer-effectiveness.html “Tim Cochran’s article on maximizing developer effectiveness at MartinFowler.com”).
+One of the primary benefits of a good and effective CI process is the feedback loop it provides to the developers working on a project. Feedback loops start losing their value and [detract from developer effectiveness as they get slower](https://martinfowler.com/articles/developer-effectiveness.html "Tim Cochran's article on maximizing developer effectiveness at MartinFowler.com").
 
-We need to consider several factors when building a support CI pipeline, from the underlying hardware and test runners to the structure of the unit tests themselves as a larger unit. Integration tests do add to the overall testing time, and it’s important to keep that time short to make the value of the tests high.
+We need to consider several factors when building a support CI pipeline, from the underlying hardware and test runners to the structure of the unit tests themselves as a larger unit. Integration tests do add to the overall testing time, and it's important to keep that time short to make the value of the tests high.
 
 ## Best Practices
 
-Now that we understand why **reusability**, **reproducibility**, **reliability**, and ** speed** are important for building repeatable and effective continuous integration pipelines, let's talk about specific practices and processes that can help achieve them.
+Now that we understand why **reusability**, **reproducibility**, **reliability**, and **speed** are important for building repeatable and effective continuous integration pipelines, let's talk about specific practices and processes that can help achieve them.
 
 ### Test Automation and Coverage
 
@@ -79,36 +79,36 @@ While automation and observability of our pipelines are important, the cultural 
 
 A crucial cultural aspect of continuous integration is building the habit and cadence of the team committing their code every day and multiple times per day. By pushing their code frequently, developers can quickly find conflicts between two changes and also become aware of other work.
 
-Additionally, pushing their commits often allows developers to get feedback from the full CI pipeline running and allow them to identify defects in the code much sooner. 
+Additionally, pushing their commits often allows developers to get feedback from the full CI pipeline running and allow them to identify defects in the code much sooner.
 
 The rule of thumb is that developers should commit their code every day, whether it is to the mainline branch on a feature branch. The more frequently you commit, the less opportunity there will be for conflict, errors, or broken tests, significantly increasing the team's speed.
 
-#### Fail Early and Fail Fast 
+#### Fail Early and Fail Fast
 
-The whole point of continuous integration is providing rapid feedback. Nothing is more frustrating than a build that takes hours to complete, only to fail because of errors in some of the initial test suites. 
+The whole point of continuous integration is providing rapid feedback. Nothing is more frustrating than a build that takes hours to complete, only to fail because of errors in some of the initial test suites.
 
 It is possible that due to the size of the application, the complete set of tests (unit, integration, end-to-end) might take a while to run. To help things go smoothly, you should consider the following processes:
 
 - Breaking tests into groups (per module, per domain, and so forth) and running them in parallel
 - Run critical path tests first (core or fundamental logic)
 - Fail and stop the entire build if critical tests fail
-- Integrate with notifications systems (Slack, email) to let developers know as soon things fail 
+- Integrate with notifications systems (Slack, email) to let developers know as soon things fail
 
 #### Make It Visible
 
-A core tenet of continuous integration is communication, so you want to ensure that everyone can easily see the state of the system and the changes that have been made to it. 
+A core tenet of continuous integration is communication, so you want to ensure that everyone can easily see the state of the system and the changes that have been made to it.
 
-Information such as the states of integration branches and the state of the mainline build become a priority. Back in the day, engineering teams would go as far as hooking up physical traffic lights to signal the state of the mainline branch. 
+Information such as the states of integration branches and the state of the mainline build become a priority. Back in the day, engineering teams would go as far as hooking up physical traffic lights to signal the state of the mainline branch.
 
 ![Semaphore CI](https://imgur.com/anBo2up.png)
 
-Nowadays, with cloud solutions being more prevalent and deeply integrated with source control systems, it’s much easier to give all developers a high degree of visibility. A perfect example is CI pipelines with [GitHub Actions](https://github.com/features/actions “GitHub Actions workflow automation”), which provides feedback directly on pull requests and allows you to visualize the state of a pipeline at every given step.
+Nowadays, with cloud solutions being more prevalent and deeply integrated with source control systems, it's much easier to give all developers a high degree of visibility. A perfect example is CI pipelines with [GitHub Actions](https://github.com/features/actions "GitHub Actions workflow automation"), which provides feedback directly on pull requests and allows you to visualize the state of a pipeline at every given step.
 
 ![Github Actions CI](https://imgur.com/twM26E6.png)
 
 #### Fix Broken Builds Immediately
 
-A crucial part of implementing continuous integrations is that if the mainline build fails, it needs to be fixed right away. One of the key points of working with CI is having a trusted, stable code base to develop against. 
+A crucial part of implementing continuous integrations is that if the mainline build fails, it needs to be fixed right away. One of the key points of working with CI is having a trusted, stable code base to develop against.
 
 The mainline build breaking is not necessarily a bad thing on its own. Still, it might highlight gaps in how the team works, like people not being careful enough about updating and building locally before committing.
 
@@ -120,10 +120,10 @@ Continuous integration reduces risk by eliminating long integration efforts and 
 
 - Allows identifying bugs and software defects faster
 - Reduces the feedback loop for engineers
-- Removes blind spots that can occur with deferred integration 
+- Removes blind spots that can occur with deferred integration
 - Improves communication and velocity of the engineering teams
 
-To achieve repeatability in a CI/CD pipeline, it’s essential to keep in mind the following principles:
+To achieve repeatability in a CI/CD pipeline, it's essential to keep in mind the following principles:
 
 - **Reliable** continuous integration environments help us avoid slowing down the feedback loops for the developers and maintain **speed** of development.
 - **Reproducible** builds give our developers confidence to keep momentum and keep building with confidence.
@@ -132,6 +132,6 @@ To achieve repeatability in a CI/CD pipeline, it’s essential to keep in mind t
 
 Finally, having continuous integration and continuous delivery removes one of the biggest barriers to implementing **continuous deployment**. Continuous deployment extends this flow and enables fully automated deployments into production.
 
-The combination of continuous integration, continuous delivery, and continuous deployment allows teams to ship features faster and get them in front of customers faster, shortening the feedback loop and increasing value generation. 
+The combination of continuous integration, continuous delivery, and continuous deployment allows teams to ship features faster and get them in front of customers faster, shortening the feedback loop and increasing value generation.
 
-For anyone looking to learn more about continuous integration, I highly recommend [Martin Fowler's](https://martinfowler.com/) book [Continuous Integration](https://www.martinfowler.com/books/duvall.html “Continuous Integration by Martin Fowler”).
+For anyone looking to learn more about continuous integration, I highly recommend [Martin Fowler's](https://martinfowler.com/) book [Continuous Integration](https://www.martinfowler.com/books/duvall.html "Continuous Integration by Martin Fowler").
