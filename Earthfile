@@ -45,12 +45,12 @@ website-build:
   #FROM +website-install
   FROM agbell/website-install
   COPY website .
-  RUN RUBYOPT='-W0' bundle exec jekyll build $FLAGS
+  RUN bundle exec jekyll build $FLAGS
   SAVE ARTIFACT _site AS LOCAL build/site
 
 website-docker:
     FROM +website-install
-    CMD RUBYOPT='-W0' JEKYLL_ENV=production bundle exec jekyll serve --incremental -H 0.0.0.0 -P 4001
+    CMD JEKYLL_ENV=production bundle exec jekyll serve --incremental -H 0.0.0.0 -P 4001
     SAVE IMAGE earthly-website
 
 website-run:
@@ -93,12 +93,12 @@ blog-build:
   #FROM +blog-install
   FROM agbell/blog-install
   COPY blog .
-  RUN RUBYOPT='-W0' JEKYLL_ENV=production bundle exec jekyll build $FLAGS
+  RUN JEKYLL_ENV=production bundle exec jekyll build $FLAGS
   SAVE ARTIFACT _site AS LOCAL build/site/blog
 
 blog-docker:
   FROM +blog-install
-  CMD RUBYOPT='-W0' bundle exec jekyll serve -H 0.0.0.0 --future --incremental -P 4002
+  CMD bundle exec jekyll serve -H 0.0.0.0 --future --incremental -P 4002
   SAVE IMAGE earthly-blog
 
 blog-interactive:
