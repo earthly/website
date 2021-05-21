@@ -81,3 +81,8 @@ earthly +dev-build
 
 # How to Deploy
 Anything merged into main is deployed using `earthly +build` in github actions.
+
+## FAQS
+
+Question: A page is not updating - what did I do wrong?
+Answer: Clear the cache with `earthly +clean`
