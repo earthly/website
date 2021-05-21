@@ -5,8 +5,9 @@ categories:
 toc: true
 author: Allan MacGregor
 internal-links:
- - dont link to me
- - just an example
+ - repeatability
+ - reusability
+ - reliability
 ---
 
 > In software engineering, continuous integration is the practice of merging all developers' working copies to a shared mainline several times a day. Grady Booch first proposed the term CI in his 1991 method, although he did not advocate integrating several times a day. —[Wikipedia](https://en.wikipedia.org/wiki/Continuous_integration "Wikipedia article on continuous integration")
