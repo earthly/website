@@ -116,7 +116,7 @@ As you start tuning your Jenkins performance, you might be interested in adding 
 - Detailed statistics for build time and build steps
 - Aggregated heap histogram for all nodes
 
-![Jenkins Performance Monitoring Tool](https://i.imgur.com/mE6fSdy.png)
+![Jenkins Performance Monitoring Tool]({{site.images}}{{page.slug}}/mE6fSdy.png)
 
 This can help you assess the effectiveness of your performance tweaks and guide you as you continue to improve your Jenkins installation.
 

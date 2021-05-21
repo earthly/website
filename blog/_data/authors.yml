@@ -33,7 +33,7 @@ Adam:
 Vivek Sonar:
     name    : "Vivek Sonar"
     bio     : "Vivek Sonar is a full-stack engineer who loves to solve complex infrastructure problems and work with public cloud platforms like AWS and GCP."
-    # avatar  : "/assets/images/authors/viveksonar.png"
+    avatar  : "/assets/images/authors/viveksonar.png"
 Sanket Makhija:
     name    : "Sanket Makhija"
     bio     : "Sanket Makhija is a full-stack developer who loves building apps, and has been coding for a dozen years."
@@ -48,6 +48,7 @@ Milan Bhardwaj:
 Allan MacGregor:
     name    : "Allan MacGregor"
     bio     : "Allan MacGregor is a software engineer and entrepreneur based in Toronto, with experience in building projects and developing innovative solutions."
+    avatar  : "/assets/images/authors/allanmcgregor.jpg"
 Ashish Choudhary:
     name    : "Ashish Choudhary"
     bio     : "Ashish Choudhary is a software engineer with over 10 years of experience in tech, including design, development, and web apps. He’s an active blogger and technical writer who loves Java, Spring Boot, DevOps, and the cloud, and is a strong advocate for open source."
@@ -63,3 +64,8 @@ Lukonde Mwila:
 Siddhant Varma:
     name    : "Siddhant Varma"
     bio     : "Siddhant Varma is a frontend engineer who loves writing about tech and educating the community."
+    avatar  : "/assets/images/authors/siddhantvarma.jpg"
+John Gramila:
+    name    : "John Gramila"
+    bio     : "John Gramila is a coder and writer living in Chicago."
+    avatar  : "/assets/images/authors/johngrimila.jpg"
