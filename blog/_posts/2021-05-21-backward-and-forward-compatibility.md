@@ -5,8 +5,10 @@ categories:
 toc: true
 author: John Gramila
 internal-links:
- - dont link to me
- - just an example
+ - protocal buffers
+ - backward compatibility
+ - backwards compatibility
+ - forwards compatibility
 ---
 [Protocol Buffers](https://developers.google.com/protocol-buffers "Protocol Buffers Documentation") serialize structured data so it can be efficiently stored or shared over a network. They were designed for internal use at Google in 2001 and released to the public under an open-source license in 2008.
 
@@ -53,7 +55,7 @@ message Sample{
 }
 ```
 
-These declarations in the `.proto` file are shared with both the message sender and receiver to construct immutable getters and setters that allow data to be read into and accessed from binary using a compiler, then accessed in a variety of programming languages.
+These declarations in the `.proto` file are shared with both the message sender and receiver to construct immutable getters and setters that allow data to be read into and accessed from binary using a [compiler](/blog/compiling-containers-dockerfiles-llvm-and-buildkit), then accessed in a variety of programming languages.
 
 ## Tips for Maintaining Compatibility
 
