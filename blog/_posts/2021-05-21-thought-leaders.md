@@ -53,18 +53,22 @@ At its worse the conversations tended to go something like this:
 I think you get the idea. If we adapt to all the feedback and we will avoid the pitfalls of the recent past but also the scope of the project will drastically grow and the project will likely never get completed.  Its like a [second-system effect](https://en.wikipedia.org/wiki/Second-system_effect) but brought forward in time. 
 
 ## The Solution
-Thankfully, not all the advice I received was bad.  One person in particular asked very pointed questions about the problems be solved and identified some potential blindspots in our plan.  They also offered some great advice for dealing with others concerns that, after consideration, didn't seem relevant: Create a product roadmap and put those items at least a year off into the future "and if they don't seem relevant then you can just adjust the roadmap again." 
+<div class="align-right">
+ {% picture grid {{site.pimages}}{{page.slug}}/hearnoevil.png  --picture --img width="200px" --alt {{ Hear No Evil }} %}
+<figcaption>The solution sort of</figcaption>
+</div>
+Thankfully, not all the advice I received was bad.  One person in particular asked very pointed questions about the problems be solved and identified some potential blindspots in our plan.  They also offered some great advice for dealing with advice that didn't seem relevant to the projects success: Create a product roadmap and put those items at least a year off into the future "and as long as they don't seem relevant you can just keep pushing them into the future." Perversely this plan made everyone happy -- everyone's feedback is on the roadmap, now its all just a question of priorites. 
 
-With that advice the project got off the ground. But there was something that always bothered me about the feedback I got during this process that I had never been able to put my finger on until recently.
+With that advice the project got off the ground. But there was something that always bothered me about this process and I had never been able to put my finger on until recently.
 
 ## Contingent Advice
 
 > “All bad advice is alike but all good advice is unique to the problem at hand.”
 ― Leo Tolstoy misquoted
 
-The problem with all the bad advice was that same: it was unrelated to the problem I was going to solve.  The unit-testing person will always be advocating for more unit tests.  The distributed database person will always want things to go into beetleDB. 
+The problem with all the bad advice was that same: it was unrelated to the problem I was going to solve.  The unit-testing person will always be advocating for more unit tests.  The distributed database person will always want things to go into beetleDB (at least until they hear about floraDB). 
 
-It is sort of like Minh's cooking advice from King of The Hill: She tastes something and then says "Add Nutmeg". I want to ask her if there conditions underwhich you wouldn't want to more nutmeg.  When would nutmeg not be a good fit?  Doesn't all advice need to be contigent?
+It is sort of like Minh's cooking advice from King of The Hill: She tastes something and then says "Add Nutmeg". When would nutmeg not be a good fit?  Doesn't all advice need to be contigent?
 
 
 <div class="align-right">
@@ -74,7 +78,7 @@ It is sort of like Minh's cooking advice from King of The Hill: She tastes somet
 
 This is what I think of when I hear the term thought-leader - someone has a single solution that seems to fit every problem. Whatever problem you face the answer is test driven development or stream architectures or 'being truly agile' or so on.
 
-But is that actually wrong? Unit testing, streaming architectures, agile are all good things.  I don't write code in a test-driven style but I did try it out a bit when it was the hot thing and I learned things from the process.  All of the thought-leaders are trying to move the industry forward. Can we really say that people offering uncontigent advice are worse at giving advice then those with more nuanced and complicated advice? I think that, yes, we can say that and there's evidence from the from the field of decision-making to back me up.
+I get frustrated by advice like that but is the advice actually wrong? Unit testing, streaming architectures, agile are all good things.  I don't write code in a test-driven style but I did try it out a bit when it was the hot thing and I learned things from the process.  All of the thought-leaders are trying to move the industry forward. Can we really say that people offering uncontigent advice are worse at giving advice then those with more nuanced and complicated advice? I think that, yes, we can say that and there's evidence from the from the field of decision-making to back me up.
 
 ## Decision-Making Research
 {% picture content-wide {{site.pimages}}{{page.slug}}/fork.png  --picture --alt {{ Add Nutmeg }} %}
