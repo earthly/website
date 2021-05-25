@@ -75,3 +75,9 @@ presets:
       keep: center
       crop: '1:1'
 
+  content-wide:
+      formats: [webp, original]
+      widths: [800]
+      keep: center
+      crop: '3:1'
+
