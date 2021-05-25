@@ -7,15 +7,15 @@ internal-links:
  - dont link to me
  - just an example
 ---
-Here is a somewhat fictionalized personal story.  I was a new engineering manager starting a new ambitous project at a SAAS company. The company had several hundred developers. 
+Here is a somewhat fictionalized personal story. The names of the people and the technology have been changed. 
 
 ## Raising Objections
 
-The project was approved and it was time to start work.  A design document and development plan existed, a working prototype had been created, and several talented people were executing on the plan. All that was left to do was to 'reach alignment'. 
+I was a new engineering manager who's team was starting a new ambitous project at a SAAS company. The company had several hundred developers and the project was approved. A design document and development plan existed, a working prototype had been created, and several talented people were executing on the plan. All that was left to do from, my perspective, was to 'reach alignment.'
 
-I'm not sure if reaching alignment is a universal term that I was unfamilar with but for me and this project it worked like this: The project was approved but there were all kinds of people vaguely horizontal to me in the organization who could 'raise objections'. 
+I'm not sure if reaching alignment is a universal term that I was previously unfamilar with or if its company specific but for this project it worked like this: The project was approved but there were all kinds of people vaguely horizontal to me in the organization who could 'raise objections' about it. 
 
-Raising objections is you telling someone above me, my boss or my bosses boss or so on, that you have concerns about the projects success.  An easy way to report concerns can be a really good idea. If the SRE manager heard we were using bongoDB and had dealt with bongoDB data lose in the past then there is no better time to speak than at the beginning of the project.  And because the CTO doesn't want to spend time mediating discussions about database preferences, or whatever the lastest concerns are, as an engineering manageer part of my job was to meet with people ahead of time and make sure that they won't raise objections. 
+Raising objections is you telling someone above me, my boss or my bosses boss or so on, that you have concerns about the projects success.  An easy way to report concerns can be a really good idea. If the SRE manager heard we were using bongoDB and had dealt with bongoDB data lose in the past then there is no better time to speak than at the beginning of the project. And because the CTO doesn't want to spend time mediating discussions about database preferences, or whatever the lastest concerns are, as an engineering manageer part of my job was to make sure there were no objections to be raised. 
 
 ## Seeking Alignment
 Preventing the raising of objections is was called 'reaching alignment.' The idea is to find the people who might have concerns or advice, get feedback from them, and work with the developers on the team to adjust the plan based on that. It ends up feeling a lot like the episode of the office where Andy and Kevin must meet with the heads of every company in the the office park about the parking situation.
@@ -26,13 +26,13 @@ Preventing the raising of objections is was called 'reaching alignment.' The ide
 </div>
 
 
-This is where it gets tricky. At its worse, conversations tend to go something like this:
+At its worse the conversations tended to go something like this:
 
 ### The Quality Person Meeting
 
 > **Adam:** You've had a chance to read the design doc.  What are your thoughts.
 >
-> **Quality Person:** There is nothing in here about unit-test coverage and taking a look at my dashboard your other services are below the the 80% level we set as a H2 goal. Can you add a unit-testing strategy to the plan and set a specific coverage goal? 
+> **Quality Person:** There is nothing in here about unit-test coverage and taking a look at your other services they are below the the 80% level we set as a H2 engineering goal. Can you add a unit-testing strategy to the plan and set a specific coverage goal? 
 
 ### The Data Person Meeting
 
@@ -50,7 +50,7 @@ This is where it gets tricky. At its worse, conversations tend to go something l
 >
 > **Micro-Services Person:** I would recommend seperating the read side from write side. I think you should put them in serparte services so that they can be scaled independently. That was our number one secret to scaling when I was at warble: the finer grain the services, the easier they are to scale.
 
-You get the idea. Adapt to all the feedback and I will avoid the pitfalls of the recent past but also the scope of the project will drastically grow and the project will likely never get completed.  Its like a [second-system effect](https://en.wikipedia.org/wiki/Second-system_effect) but brought forward in time. 
+I think you get the idea. If we adapt to all the feedback and we will avoid the pitfalls of the recent past but also the scope of the project will drastically grow and the project will likely never get completed.  Its like a [second-system effect](https://en.wikipedia.org/wiki/Second-system_effect) but brought forward in time. 
 
 ## The Solution
 Thankfully, not all the advice I received was bad.  One person in particular asked very pointed questions about the problems be solved and identified some potential blindspots in our plan.  They also offered some great advice for dealing with others concerns that, after consideration, didn't seem relevant: Create a product roadmap and put those items at least a year off into the future "and if they don't seem relevant then you can just adjust the roadmap again." 
