@@ -48,7 +48,7 @@ os:
                     </div>
                     Terminal
                 </header>
-                <code class="Home-product-Earthfile-code on-download-listen">brew install earthly && sudo earthly bootstrap</code>
+                <code class="Home-product-Earthfile-code on-download-listen">brew install earthly && earthly bootstrap</code>
             </div>
 
     tab3:
