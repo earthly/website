@@ -118,7 +118,7 @@ blog-run:
 
 blog-local:
   LOCALLY
-  RUN cd blog && bundle exec jekyll serve --profile -H 0.0.0.0 -P 4002
+  RUN cd blog && bundle exec jekyll serve --future --incremental --profile -H 0.0.0.0 -P 4002
 
 ## Utils
 
