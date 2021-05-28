@@ -21,7 +21,7 @@ os:
                     </div>
                     Terminal
                 </header>
-                <code class="Home-product-Earthfile-code on-download-listen">sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/latest/download/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly && /usr/local/bin/earthly bootstrap'</code>
+                <code class="Home-product-Earthfile-code on-download-listen">sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/latest/download/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly && /usr/local/bin/earthly bootstrap --with-autocomplete'</code>
             </div>
 
             <div class="Home-product-note" markdown="1">
@@ -48,12 +48,8 @@ os:
                     </div>
                     Terminal
                 </header>
-                <code class="Home-product-Earthfile-code on-download-listen">brew install earthly && sudo earthly bootstrap</code>
+                <code class="Home-product-Earthfile-code on-download-listen">brew install earthly && earthly bootstrap</code>
             </div>
-
-            <div class="Home-product-note" markdown="1">
-            `sudo` is needed for setting up auto-completion for your shell.
-            <div>
 
     tab3:
         name: windows
@@ -76,7 +72,7 @@ os:
                     </div>
                     Terminal
                 </header>
-                <code class="Home-product-Earthfile-code on-download-listen">sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/latest/download/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly && /usr/local/bin/earthly bootstrap'</code>
+                <code class="Home-product-Earthfile-code on-download-listen">sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/latest/download/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly && /usr/local/bin/earthly bootstrap  --with-autocomplete'</code>
             </div>
 
             <div class="Home-product-note" markdown="1">
