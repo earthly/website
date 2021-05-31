@@ -47,7 +47,7 @@ Many open-source projects are still using Travis and open-source maintainers are
 
 ## Where To Move To
 
-![Pins on a Map]({{site.images}}{{page.slug}}/dartboard.png)\
+{% picture content-wide {{site.pimages}}{{page.slug}}/dartboard.png  --picture --img width="1200px" --alt {{ Pins on a Map }} %}
 
 If you maintain an open-source project that uses TravisCI and are hoping to get off it, then assuming you have the time to migrate, there are actually many viable options.
 

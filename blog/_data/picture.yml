@@ -63,6 +63,10 @@ presets:
       keep: center
       crop: '3:1'
 
+  content-nocrop:
+      formats: [webp, original]
+      widths: [800]
+
   author:
       formats: [webp, original]
       fallback_width: 240

@@ -141,13 +141,14 @@ Images, unlike executables, have their own isolated filesystem. Nevertheless, th
 This similarity was not lost on the BuildKit creators.  BuildKit has its own intermediate representation, LLB.  And where LLVM IR has things like function calls and garbage-collection strategies, LLB has mounting filesystems and executing statements.
 
 <div class="wide">
-![LLVM IR VS. LLB]({{site.images}}{{page.slug}}/LLBIR-fixed.png)
+{% picture content-nocrop {{site.pimages}}{{page.slug}}/LLBIR-fixed.png  --picture --img width="1200px" --alt {{ LLVM IR VS. LLB }} %}
+<figcaption>LLVM IR VS. LLB</figcaption>
 </div>
 
 [LLB](https://github.com/moby/buildkit/blob/ebd98bcbe600c662a72ce9725417540f277be4d6/solver/pb/ops.proto) is defined as a protocol buffer, and this means that BuildKit frontends can make [GRPC](/blog/protobufs-and-grpc)  requests against buildkitd to build a container directly.
 
 <div class="wide">
-![LLVM IR VS. LLB]({{site.images}}{{page.slug}}/Send-LLB.png)
+![Send LLB Directly]({{site.images}}{{page.slug}}/Send-LLB.png)
 </div>
 
 ## Programmatically Making An Image
