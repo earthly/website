@@ -67,7 +67,7 @@ They also allow use of the free plan with private repositories. This makes it a 
 
 ### Best Option: Github Actions
 
-![First place trophy]({{site.images}}{{page.slug}}/trophy.png)\
+{% picture content {{site.pimages}}{{page.slug}}/trophy.png  --picture --img width="800px" --alt {{ A Trophy }} %}
 
 An even better option is [Github Actions](/blog/continuous-integration#github-actions), a cloud CI system directly from GitHub. &nbsp;Github is at the center of many open source projects and this makes it a natural choice for CI. &nbsp;
 
@@ -90,8 +90,8 @@ If your project is hosted on GitHub, then to me, GHA seems like the best bet rig
 So GitHub has a generous build plan, but moving your CI process is not easy or free. &nbsp;The more complex your build, the harder porting from one cloud CI to another is going to be. &nbsp;If you move to GHA and then GHA stops being a viable option in the future then this whole effort will have to be repeated. &nbsp;
 
 ## Neutral Build Specifications
+{% picture content-wide {{site.pimages}}{{page.slug}}/opensign.png  --picture --img width="1200px" --alt {{ Open Sign }} %}
 
-![Open Sign]({{site.images}}{{page.slug}}/opensign.png)\
 How can you minimize the effort of moving from build platform to another?
 
 My suggestion is to keep as much logic as possible out of the proprietary build definition. Instead, define it in an open-source format that you can execute anywhere.
@@ -130,7 +130,7 @@ lint:
  ...
 ```
 
-Example build steps for a <a href="https://github.com/earthly/earthly/blob/main/examples/go/Earthfile">go application
+Example build steps for a <a href="https://github.com/earthly/earthly/blob/main/examples/go/Earthfile">go application</a>
 
 ## Other Interesting Options
 
