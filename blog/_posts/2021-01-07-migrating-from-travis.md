@@ -90,6 +90,7 @@ If your project is hosted on GitHub, then to me, GHA seems like the best bet rig
 So GitHub has a generous build plan, but moving your CI process is not easy or free. &nbsp;The more complex your build, the harder porting from one cloud CI to another is going to be. &nbsp;If you move to GHA and then GHA stops being a viable option in the future then this whole effort will have to be repeated. &nbsp;
 
 ## Neutral Build Specifications
+
 {% picture content-wide {{site.pimages}}{{page.slug}}/opensign.png  --picture --img width="1200px" --alt {{ Open Sign }} %}
 
 How can you minimize the effort of moving from build platform to another?

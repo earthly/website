@@ -133,7 +133,7 @@ steps:
 {% endraw %}
 ```
 
-Here is part of a Grafana [Helm Chart](deployment.yaml):
+Here is part of a Grafana [Helm Chart](https://github.com/grafana/helm-charts/blob/main/charts/grafana/templates/deployment.yaml):
 
 ``` liquid
   {% raw %}

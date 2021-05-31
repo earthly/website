@@ -79,7 +79,7 @@ GLOBAL OPTIONS:
    --version, -v          print the version
 ```
 
- ***Other Tools**: In this guide, we will use [pstree](https://linux.die.net/man/1/pstree), [br](https://github.com/Canop/broot), and [mitmproxy](earthly.dev/blog/mitmproxy/). They are not required to use BuildKit or to follow this guide, but they help us demonstrate how BuildKit works.*
+ ***Other Tools**: In this guide, we will use [pstree](https://linux.die.net/man/1/pstree), [br](https://github.com/Canop/broot), and [mitmproxy](/blog/mitmproxy/). They are not required to use BuildKit or to follow this guide, but they help us demonstrate how BuildKit works.*
 
 ### buildkitd
 
