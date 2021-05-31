@@ -8,8 +8,8 @@ main:
     url: /categories/news/
   - title: "Tutorials"
     url: /categories/tutorials/
-  - title: "GitHub"
-    url: https://github.com/earthly/earthly
+  - title: "Reference"
+    url: /categories/reference/
 docker:
   - title: Container Tutorials
     children:
@@ -26,4 +26,4 @@ docker:
       - title: "What Is BuildKit?"
         url: /what-is-buildkit-and-what-can-i-do-with-it/
       - title: "Compiling Containers"
-        url: /compiling-containers-dockerfiles-llvm-and-buildkit/
+        url: /compiling-containers-dockerfiles-llvm-and-buildkit/https://github.com/earthly/earthly
