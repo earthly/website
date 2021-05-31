@@ -48,17 +48,18 @@ Continuous Integration terminology can seem foreign or confusing at first glance
   <h3>{{ term.title }}</h3>
   <p>{{ term.description }}</p>
   {% if term.link  %}
-  <p>{{ term.link }}</p> 
+  <p>{{ term.link }}</p>
   {% endif %}
 {% endfor %}
 
 ## Deployment Terms
+
 {% assign terms = page.deployment | to_title_order %}
 {% for term in terms %}
   <h3>{{ term.title }}</h3>
   <p>{{ term.description }}</p>
   {% if term.link  %}
-  <p>{{ term.link }}</p> 
+  <p>{{ term.link }}</p>
   {% endif %}
 {% endfor %}
 
