@@ -32,7 +32,7 @@ This tutorial assumes you are using ubuntu, and that the following packages are 
 
 ## Step 0: creating a simple hello world program
 
-Before getting started with packaging, lets create a basic hello world program
+Before getting started with packaging, let's create a basic hello world program
 under `~/example/hello-world-program`. To do this, you can copy and paste the following commands
 into your terminal:
 
@@ -85,7 +85,7 @@ This directory will be the root of the package. Since we want our `hello-world` 
     mkdir -p usr/bin
     cp ~/example/hello-world-program/hello-world usr/bin/.
 
-Each package requires a `control` file which needs to be located under the DEBIAN directory. You can copy and paste
+Each package requires a `control` file which needs to be located under the `DEBIAN` directory. You can copy and paste
 the following to create one:
 
     mkdir -p ~/example/hello-world_0.0.1-1_amd64/DEBIAN
@@ -171,7 +171,7 @@ the deb to the repository maintainer, and call it a day.
 
 In this step, we will show how to create your own apt repository which can be used to host one or more deb packages.
 
-Lets start with creating a directory to hold our debs:
+Let's start with creating a directory to hold our debs:
 
     mkdir -p ~/example/apt-repo/pool/main/
 
@@ -301,7 +301,7 @@ Just copy and paste the following in your terminal to get a copy of the script:
     do_hash "SHA256" "sha256sum"
     ' > ~/example/generate-release.sh && chmod +x ~/example/generate-release.sh
 
-Next lets run the `generate-release.sh` script with:
+Next let's run the `generate-release.sh` script with:
 
     cd ~/example/apt-repo/dists/stable
     ~/example/generate-release.sh > Release
@@ -474,7 +474,7 @@ and checking that only a single `:public key packet:` entry exists. It should lo
 
 Next let's export the private key so we can back it up somewhere safe.
 
-   gpg --armor --export-secret-keys example > ~/example/pgp-key.private
+    gpg --armor --export-secret-keys example > ~/example/pgp-key.private
 
 You should never share this key with anyone. If you look at the output file, it should look similar to this:
 
