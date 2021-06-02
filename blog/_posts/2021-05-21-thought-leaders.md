@@ -13,9 +13,9 @@ Here is a somewhat fictionalized personal story. I've changed the names of the p
 
 I was a new engineering manager who's team was starting a new small but ambitious project at a SAAS company. The company had several hundred developers, and the project was approved. A design document and development plan existed, a working prototype had been created, and several talented people were executing the plan. All that was left to do, from my perspective, was to 'reach alignment.'
 
-I'm not sure if reaching alignment is a universal term that I was previously unfamilar with or if its company-specific. But for this project, it worked like this: The project was approved, but there were all kinds of people vaguely horizontal to me in the organization who could 'raise objections' about it.
+I'm not sure if reaching alignment is a universal term that I was previously unfamiliar with or if it's company-specific. But for this project, it worked like this: The project was approved, but there were all kinds of people vaguely horizontal to me in the organization who could 'raise objections' about it.
 
-Raising objections is a process where you tell someone above me, my boss or my bosses boss or so on, that you have concerns about the project's success.  An easy way to report concerns can be a really good idea. If the SRE manager heard we were using bongoDB and had dealt with bongoDB data loss in the past, then there is no better time to speak than at the beginning of the project. And because the CTO doesn't want to spend time mediating discussions about database preferences, or whatever the lastest concerns are, part of my job was to make sure there were no objections to be raised.
+Raising objections is a process where you tell someone above me, my boss or my bosses boss or so on, that you have concerns about the project's success.  An easy way to report concerns can be a really good idea. If the SRE manager heard we were using bongoDB and had dealt with bongoDB data loss in the past, then there is no better time to speak than at the beginning of the project. And because the head of engineering doesn't want to spend time mediating discussions about database preferences, or whatever the latest concerns are, part of my job was to make sure there were no objections to be raised.
 
 ## Seeking Alignment
 
@@ -37,11 +37,11 @@ At its worse, the conversations tended to go something like this:
 
 > **Adam:** You've had a chance to read the design doc.  What are your thoughts?
 >
-> **Data Person:** We are currently migrating all data in Important-Project-A from springy search to beetleDB and it is a multi-year project. All new projects should follow this, so the effort doesn't need to be repeated.
+> **Data Person:** We are currently migrating all data in Important-Project-A from springy search to beetleDB, and it is a multi-year project. All new projects should follow this, so the effort doesn't need to be repeated.
 >
 > **Adam:** We weren't going to use springy search, just a relational database. So I think we should be good.
 >
-> **Data Person:** BeetleDB is relational database equivalent so I would recommend using that so that you can scale.
+> **Data Person:** BeetleDB is relational database equivalent, so I would recommend using that so that you can scale.
 
 ### The Micro-Services Person
 
@@ -57,7 +57,7 @@ I think you get the idea. If we adapt to all the feedback and we will avoid the 
  {% picture grid {{site.pimages}}{{page.slug}}/hearnoevil.png  --picture --img width="200px" --alt {{ Hear No Evil }} %}
 <figcaption>The Solution</figcaption>
 </div>
-Thankfully, not all the advice I received was bad.  One person in particular asked very pointed questions about the problems be solved and identified some potential blind spots in our plan.  They also offered a great tip for dealing with advice that didn't seem relevant to the projects success: Create an extended product roadmap and put those items at least a year off into the future "and as long as they don't seem relevant, you can just keep pushing them into the future." Perversely this plan made everyone happy -- everyone's feedback is on the roadmap, and now it's all just a question of priorities.
+Thankfully, not all the advice I received was bad.  One person, in particular, asked very pointed questions about the problems be solved and identified some potential blind spots in our plan.  They also offered a great tip for dealing with advice that didn't seem relevant to the project's success: Create an extended product roadmap and put those items at least a year off into the future "and as long as they don't seem relevant, you can just keep pushing them into the future." Perversely this plan made everyone happy -- everyone's feedback is on the roadmap, and now it's all just a question of priorities.
 
 With that bureaucratic judo trick, the project got off the ground. But the experience stayed with me. What made the good advice valuable and the bad advice problematic? Was there some general principle behind expert advice?
 
@@ -83,7 +83,7 @@ I get frustrated by advice like that but is it wrong? Unit testing, streaming ar
 
 {% picture content-wide {{site.pimages}}{{page.slug}}/fork.png  --picture --alt {{ Add Nutmeg }} %}
 
-One way to think about advice is as a prediction.  Advocating for TDD can be viewed as a prediction that if you don't write tests before you write code, your project will be less well-designed and harder to maintain. Stream-Process-All-Things similarly predicts that if you approach a problem as one of streams you'll get a better result than if you didn't. Obviously not all advice is tied to specific and explicit predictions, and many thought-leaders would object to the idea that just because they are always talking about a thing, that is the most critical thing in every case. But I do think it's fair to say that if your proposed solution is always a variation of "use the actor system to model concurrency" or "you need a stronger allegiance to SOLID principles" then you beleive those solutions would strongly increase desired project outcomes.
+One way to think about advice is as a prediction.  Advocating for TDD can be viewed as a prediction that if you don't write tests before you write code, your project will be less well-designed and harder to maintain. Stream-Process-All-Things similarly predicts that if you approach a problem as one of streams you'll get a better result than if you didn't. Obviously, not all advice is tied to specific and explicit predictions, and many thought-leaders would object to the idea that just because they are always talking about a thing, that is the most critical thing in every case. But I do think it's fair to say that if your proposed solution is always a variation of "use the actor system to model concurrency" or "you need a stronger allegiance to SOLID principles" then you beleive those solutions would strongly increase desired project outcomes.
 
 ## Tetlock's Hedgehogs
 
@@ -93,7 +93,7 @@ It turns out that [Philip E. Tetlock](https://scholar.google.com/citations?user=
 
 Tetlock's earliest work was the study of political experts. He solicited political advice and predictions from 284 experts between 1984 and 2004, and once enough time had passed to determine the accuracy of their forecasts, he scored the results. Political punditry is different from tech thought-leadership -- none of my advice-givers were explicitly predicting a project outcome  --  but I think his findings have a lot to teach us.
 
-He found that experts could be split into two broad categories, the first of which he called Hedgehogs. A Hedgehog had one big idea like free-market capitalism (or nordic model capitalism or demand-side economics), which they used as a lens to look at many issues. They applied this big idea to every situation, which resulted in noncontigent and straightforward advice.  You always need more freedom, nutmeg, and unit tests. Hedgehogs are "Confident forecasters".
+He found that experts could be split into two broad categories, the first of which he called Hedgehogs. A Hedgehog had one big idea like free-market capitalism (or nordic model capitalism or demand-side economics), which they used as a lens to look at many issues. They applied this big idea to every situation, which resulted in noncontingent and straightforward advice.  You always need more freedom, nutmeg, and unit tests. Hedgehogs are "Confident forecasters".
 
 ## The Foxes
 
@@ -109,7 +109,7 @@ Hedgehogs with predictions about the 2003 Iraq war existed on both sides of the 
 
 Tetlock's [talk](https://longnow.org/seminars/02007/jan/26/why-foxes-are-better-forecasters-than-hedgehogs/) on this is subtitled "Ignore Confident Forecasters," which I think is an excellent summary of his findings.  
 
-Software development is full of confident forecasters. We are a pretty new field, and yet everyone seems so sure that they have the best solution to whatever problem is at hand. I'd like to hear more people saying things like, "in this specific context, test-coverage seem like an important metric", or "StopLang is great if you can afford the GC, but if you can't then you should look at IronOre." A great tool is not a universal tool it's a tool well suited to a specific problem.
+Software development is full of confident forecasters. We are a pretty new field, and yet everyone seems so sure that they have the best solution to whatever problem is at hand. I'd like to hear more people saying things like, "in this specific context, test-coverage seem like an important metric," or "StopLang is great if you can afford the GC, but if you can't then you should look at IronOre." A great tool is not a universal tool it's a tool well suited to a specific problem.
 
 The more universal a solution someone claims to have to whatever software engineering problem exists, and the more confident they are that it is a fully generalized solution, the more you should question them. The more specific and contingent the advice - the more someone says 'it depends' or 'YourSQL works well in a read-heavy context with the following constraints' the more likely they are to be leading you in the right direction. At least that's what I have found.
 
