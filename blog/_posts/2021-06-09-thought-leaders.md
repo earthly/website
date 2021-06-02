@@ -1,11 +1,12 @@
 ---
-title: "Please Don't Listen to the Thought Leaders"
+title: "Don't Feed the Thought Leaders"
 categories:
   - Articles
 author: Adam
 internal-links:
- - dont link to me
- - just an example
+ - thought leaders
+ - hedgehog
+ - advice
 ---
 Here is a somewhat fictionalized personal story. I've changed the names of the people and the technology used.
 
