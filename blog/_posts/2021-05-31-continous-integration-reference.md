@@ -11,7 +11,7 @@ deployment:
    description: 
     A technique where a new version of the software is released to a subset of users, usually a small percentage. This allows the team to monitor the new version for adverse effects. It is named after the canary in the coal mine which allowed miners to tell if it was safe to continue deeper into the mine.
  - title: Red-Black Deployment
-   description: A deployment strategy in which you deploy to a new environment, verify that it works, and then switch all traffic to the new environment. This is a synonym for Blue-Green Deployment that had its origins at Netflix.  
+   description: A deployment strategy in which you deploy to a new environment, verify that it works, and then switch all traffic to the new environment. This is a synonym for Blue-Green Deployment that had its origins at Netflix. Prefer using the term Blue-Green Deployment.
  - title: Rolling Update Deployment Strategy
    description: A term commonly used in Kubernetes where instances of a new version of the service are added gradually, and instances of the old services are gradually and gracefully terminated.  
  - title: Shadow Deployment
