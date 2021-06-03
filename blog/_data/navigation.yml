@@ -26,4 +26,4 @@ docker:
       - title: "What Is BuildKit?"
         url: /what-is-buildkit-and-what-can-i-do-with-it/
       - title: "Compiling Containers"
-        url: /compiling-containers-dockerfiles-llvm-and-buildkit/https://github.com/earthly/earthly
+        url: /compiling-containers-dockerfiles-llvm-and-buildkit/
