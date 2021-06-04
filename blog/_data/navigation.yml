@@ -8,8 +8,8 @@ main:
     url: /categories/news/
   - title: "Tutorials"
     url: /categories/tutorials/
-  - title: "Reference"
-    url: /categories/reference/
+  # - title: "Reference"
+  #   url: /categories/reference/
 docker:
   - title: Container Tutorials
     children:

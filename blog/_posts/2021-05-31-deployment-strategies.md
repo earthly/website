@@ -1,53 +1,61 @@
 ---
 title: "Deployment Strategies"
 categories:
-  - Reference
+  - Tutorial
 author: Adam
+toc: true 
 internal-links:
  - deployment strategies
  - deployment
  - deploy
 ---
+
 There are many ways to deploy applications to a production server environment, and the terminology around deploy strategies is often confusing.  In this short guide, I'll review software deployment options starting from the most basic and straightforward and moving towards the more complex.  
 
 ## Recreate Deployment Strategy
 
-This is the most straightforward deployment strategy. It's been the default strategy in enterprise IT for a long time and works well when updates are very infrequent and maintenance windows plentiful. You stop the old service and then start up the new service.  During the teardown and spin-up process, the service is down. 
+This is the most straightforward deployment strategy. It's been the default strategy in enterprise IT for a long time and works well when updates are very infrequent and maintenance windows plentiful. You stop the old service and then start up the new service.  During the teardown and spin-up process, the service is down.
 
 In a software-as-a-service world, with frequent updates, this strategy can really only work with the use of queues and async messaging architectures. For example, when upgrading a service that sends email, the mail will queue in an outbox waiting for the upgraded version to start up.
 
 Pros:
- * Easy
- * Works excellent with queues and async message buffers
- * Never need to run more than one version of the service in parallel 
+
+* Easy
+* Works excellent with queues and async message buffers
+* Never need to run more than one version of the service in parallel
 
 Cons:
- * Downtime to upgrade
- * Downtime to rollback
+
+* Downtime to upgrade
+* Downtime to rollback
 
 ## Rolling Update Deployment Strategy
 
 The recreate strategy above assumes you only have one instance of your service running at a time. But if you have several with a load balancer in front, you can improve the downtime story with a rolling update strategy.  You start an instance of the new version, and once it's up, gracefully terminate one instance of the old version. Then continue this pattern until only new versions of the service are running. This strategy is ubiquitous in Kubernetes and other containerized production environments.
 
 Pros:
- * Easy on Kubernetes 
- * No Downtime on upgrade
+
+* Easy on Kubernetes
+* No Downtime on upgrade
 
 Cons:
- * Multiple versions of same service active during the overlap
- * No warm rollback services
+
+* Multiple versions of same service active during the overlap
+* No warm rollback services
 
 ## Blue-Green Deployment
 
 A blue-green deployment requires a bit more resources: you need two identical production environments and a load balancer. One of these environments always receives 100% of the traffic while the other version sits idle.  Updates are deployed to inactive version, and once it is successfully upgraded, traffic is switched over to it. These two environments are named blue and green, respectively, and traffic alternates back and forth from green to blue and then blue to green and so on.  This means that the previously deployed version is always running on the idle environment, which simplifies rollbacks.
 
 Pros:
- * Eliminates upgrade downtime
- * Very quick rollbacks
+
+* Eliminates upgrade downtime
+* Very quick rollbacks
 
 Cons:
- * More Resources
- * More Deployment complexity
+
+* More Resources
+* More Deployment complexity
 
 ## Canary Deployment
 
@@ -58,11 +66,13 @@ In the same way, a canary deployment does not prevent downtime, but limits its i
 Depending on canary traffic is chosen, a downside to this approach is that a specific subset of users may experience most of the production issues.
 
 Pros:
- * Catch Problems Early
+
+* Catch Problems Early
 
 Cons:
- * Deployment complexity
- * Canary users bear the brunt of production issues
+
+* Deployment complexity
+* Canary users bear the brunt of production issues
 
 ## Shadow Deployment
 
@@ -70,17 +80,21 @@ If the problems a canary deployment finds can genuinely be found with metrics al
 
 In a shadow deployment, the new version of the service is started, and all traffic is mirrored by the load balancer. That is, requests are sent to the current version and the new version, but all responses come only from the existing stable version.  In this way, you can monitor the latest version under load without any possibility of customer impact. This strategy is sometimes called a mirrored canary deployment.
 
-The cost of this approach is in the implementation.  A service mesh like Istio is probably needed to perform the actual request mirroring, and it gets more complex from there.  If a new version of a user service backed by a relational database was shadow deployed, all users might be created twice, leading to untold ramifications.  To embrace a shadow or mirrored deployment strategy, you have to think about the implications of duplicated requests, and any non-idempotent actions on downstream services may need to be mocked. 
+The cost of this approach is in the implementation.  A service mesh like Istio is probably needed to perform the actual request mirroring, and it gets more complex from there.  If a new version of a user service backed by a relational database was shadow deployed, all users might be created twice, leading to untold ramifications.  To embrace a shadow or mirrored deployment strategy, you have to think about the implications of duplicated requests, and any non-idempotent actions on downstream services may need to be mocked.
 
 Pros:
- * Catch production problems without custom impact
+
+* Catch production problems without custom impact
 
 Cons:
- * Deployment complexity
- * Architectural complexity
 
+* Deployment complexity
+* Architectural complexity
+
+<div class="no_toc_section"
 ## Summary
+</div>
 
-There are many deployment methods, from the very simple to the very complex.  The deployment strategy the works best for any given situation depends on many factors. When choosing a deployment strategy balancing the cost of downtime versus the cost of deployment complexity is essential. 
+There are many deployment methods, from the very simple to the very complex.  The deployment strategy the works best for any given situation depends on many factors. When choosing a deployment strategy balancing the cost of downtime versus the cost of deployment complexity is essential.
 
 If there are other deployment strategies or other continuous deployment terms you would like to see covered, please reach out to us on [Twitter](https://twitter.com/earthlytech) or via [email](adam@earthly.dev).
