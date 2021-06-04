@@ -74,7 +74,7 @@ A canary deployment strategy looks a lot like a blue-green deployment -- a new v
 
 In the same way, a canary deployment does not prevent downtime, but limits its impact by giving an early warning. It limits access to the new version to a subset of users. If metrics indicate that the new service is not responding well to this fraction of requests, then the roll-out can be aborted, lessening its impact. If everything looks OK, request volume is slowly ramped up until its being entirely served by the new version.
 
-Depending on canary traffic is chosen, a downside to this approach is that a specific subset of users may experience most of the production issues.
+Depending on how the canary traffic is chosen, a downside to this approach is that a specific subset of users may experience most of the production issues.
 
 <div class="no_toc_section">
 ### Pros
