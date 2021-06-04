@@ -10,6 +10,8 @@ main:
     url: /categories/tutorials/
   - title: "GitHub"
     url: https://github.com/earthly/earthly
+  # - title: "Reference"
+  #   url: /categories/reference/
 docker:
   - title: Container Tutorials
     children:
