@@ -70,7 +70,7 @@ A blue-green deployment requires a bit more resources: you need two identical pr
 
 ## Canary Deployment
 
-a canary deployment strategy looks a lot like a blue-green deployment -- a new version of the service starts up parallel to the existing version -- with a slight improvement made: instead of switching all traffic over to the new version, only a percentage of traffic is initially sent.  This traffic is the canary in the coal mine. Canaries were used in mining to measure air quality. The miners would bring a canary with them as they traveled down into the mine. If there was an air quality problem, the canary would die before the miners and act as an early warning signal.
+A canary deployment strategy looks a lot like a blue-green deployment -- a new version of the service starts up parallel to the existing version -- with a slight improvement made: instead of switching all traffic over to the new version, only a percentage of traffic is initially sent.  This traffic is the canary in the coal mine. Canaries were used in mining to measure air quality. The miners would bring a canary with them as they traveled down into the mine. If there was an air quality problem, the canary would die before the miners and act as an early warning signal.
 
 In the same way, a canary deployment does not prevent downtime, but limits its impact by giving an early warning. It limits access to the new version to a subset of users. If metrics indicate that the new service is not responding well to this fraction of requests, then the roll-out can be aborted, lessening its impact. If everything looks OK, request volume is slowly ramped up until its being entirely served by the new version.
 
