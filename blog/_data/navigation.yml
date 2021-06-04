@@ -8,6 +8,8 @@ main:
     url: /categories/news/
   - title: "Tutorials"
     url: /categories/tutorials/
+  - title: "GitHub"
+    url: https://github.com/earthly/earthly
   # - title: "Reference"
   #   url: /categories/reference/
 docker:
