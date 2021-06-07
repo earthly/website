@@ -114,7 +114,7 @@ MTTA highlights this difference.  It is a metric for measuring the responsivenes
 
 <div class="notice--big--primary">
 
-### ️Calculating Mean Time To Recovery
+### ️Calculating Mean Time To Acknowledge
 
 | Incident #5   |          |
 | -------------------- | -------- |
