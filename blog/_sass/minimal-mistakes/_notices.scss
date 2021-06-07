@@ -107,3 +107,8 @@
 .notice--big {
   font-size: $type-size-5 !important;
 }
+
+.notice--big--primary {
+  @include notice($primary-color);
+  font-size: $type-size-5 !important;
+}
