@@ -17,7 +17,7 @@ We released new software onto these production servers monthly and measured qual
 
 Occasionally, when something went wrong, we would do a stability release and spend a month only fixing bugs.  Testing was not a part of our build process but a part of our team: every feature team had quality assurance people who tested each feature before it was released.
 
-This wasn't actually that long ago but cloud software development has matured a lot since this time. Incident management has become standard practice, and many great metrics and kpis exist for measuring release quality.  Let's review some of them.
+This wasn't actually that long ago but cloud software development has matured a lot since this time. Incident management has become standard practice, and many great metrics and Key Performance Indicators (KPIs) exist for measuring release quality.  Let's review some of them.
 
 ## MTBF: Mean Time Between Failures
 
