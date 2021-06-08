@@ -136,10 +136,6 @@ Mean Time To Acknowledge =
 
 </div>
 
-Incident #1 =
-Mean time to acknowledge
-calculating
-
 ## Summary
 
 There are many ways to measure the quality of your software as a service product. MTBF, MTTR, MTTRe, and MTTA can each offer a different lens for viewing your software release life cycle. As you improve your SDLC, find ways to collect aggregate metrics like these and choose one or two to target for improvement.
