@@ -11,7 +11,7 @@ internal-links:
  - metrics
  - incident management
 ---
-In 2008, I got my first job at a software-as-a-service company. We built learning management software and ran it on servers in the small datacenter connected to our office. 
+In 2008, I got my first job at a software-as-a-service company. We built learning management software and ran it on servers in the small data center connected to our office. 
 
 We released new software onto these production servers monthly and measured quality by counting bugs per release. We also had account managers who kept us informed of how many large clients seemed upset about the last release.  
 
