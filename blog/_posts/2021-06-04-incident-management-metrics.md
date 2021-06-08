@@ -17,11 +17,11 @@ We released new software onto these production servers monthly and measured qual
 
 Occasionally, when something went wrong, we would do a stability release and spend a month only fixing bugs.  Testing was not a part of our build process but a part of our team: every feature team had quality assurance people who tested each feature before it was released.
 
-This wasn't actually that long ago but cloud software development has matured a lot since this time. Incident management has become standard practice, and many great metrics and Key Performance Indicators (KPIs) exist for measuring release quality.  Let's review some of them.
+This wasn't that long ago, but cloud software development has matured a lot since this time. Incident management has become standard practice, and many great metrics and Key Performance Indicators (KPIs) exist for measuring release quality.  Let's review some of them.
 
 ## MTBF: Mean Time Between Failures
 
-When the software was being released on a fixed timeline, counting the number of bugs per release may have worked. But if it's released many times per week or per day, then this won't work, and another way to measure is required.
+When software is being released only once a month, on a fixed timeline, with extensive manual testing, counting the number of bugs might work. But once you start releasing many times per week or per day, this won't work, and another way to measure software quality is required.
 
 Mean time between failures is a metric from the field of reliability engineering.  Calculating it is simple: it is time over the number of failures that occurred during that time. If in the last 30 days you have had two production incidents, then the mean time between failure is 15 days.
 
@@ -44,7 +44,7 @@ Mean Time Between Failures =
 
 Something funny happens when you start releasing more frequently. You may end up with a higher count of issues in production, but resolving them will happen much faster. If each change is released separately using a continuous delivery model, then recovering gets easier -- often, all that is required is hitting a rollback button.
 
-If you are measuring MTBF, your software may be getting much better, but your numbers will be getting worse. Enter mean time to recovery. Mean time to recovery is just what it sounds like, you start a timer when the incident begins and stop it when production is healthy again - even a simple rollback counts. Average this number across incidents, and you have MTTR. You now have a metric that captures the health of your incidence response process.
+If you are measuring MTBF, your software may be getting much better, but your numbers will be getting worse. Enter mean time to recovery. Mean time to recovery is just what it sounds like: you start a timer when the incident begins and stop it when production is healthy again - even a simple rollback counts. Average this number across incidents, and you have MTTR. You now have a metric that captures the health of your incidence response process.
 
 <div class="notice--big--primary">
 
@@ -73,10 +73,10 @@ Mean Time To Recovery =
 <div class="notice--info">
 ℹ️  Acronyms Collision Alert
 
-Mean Time To Resolve, MTTRe, is different and distinct from Mean Time To Recover, MTTR, but some resources use MTTR for both. To avoid confusion, ensure you are using the right terminology for your metric.
+Mean Time To Resolve, MTTRe, differs from Mean Time To Recover, MTTR, but some resources use MTTR for both. To avoid confusion, ensure you are using the correct terminology for your metric.
 </div>
 
-Rolling back to address an incident is a great idea: it's often the quickest way to get things back in a good place.  But there are other types of incidents. Imagine your application deadlocks every once in a while, and you have to restart it to unlock. You may have a really great mean time to recovery, but you've never actually addressed the root cause. This is what MTTRe measures, not the time to get the service back up and running but to resolve the root cause and ensure the problem never happens again.  
+Rolling back to address an incident is a great idea: it's often the quickest way to get things back in a good place.  But there are other types of incidents. Imagine your application deadlocks every once in a while, and you have to restart it to unlock. You may have an excellent mean time to recovery, but you've never actually addressed the root cause. This is what MTTRe measures, not the time to get the service back up and running but to resolve the root cause and ensure the problem never happens again.  
 
 The never-happens-again part is hard to achieve but vital. If you are responding quickly but never getting to the root cause, you will be living in a stressful world of constant fire fighting. However, if you are resolving the root cause of each incident, then quality will increase over time.
 
