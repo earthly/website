@@ -20,7 +20,7 @@ internal-links:
 - [ ] Verify look of article locally
 - [ ] Run mark down linter (`earthly +blog-lint-apply`)
 - [ ] Add keywords for internal links to frontmatter
-- [ ] Run `earthly +link-opportunity` and find 1-5 places to incorporate links to other articles
+- [ ] Run `earthly --build-arg NAME=2020-09-10-better-builds.md +link-opportunity` and find 1-5 places to incorporate links to other articles
 - [ ] Raise PR
 
 ## Draft.dev Article Checklist
