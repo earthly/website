@@ -23,11 +23,11 @@ internal-links:
 - [ ] Run `earthly +link-opportunity` and find 1-5 places to incorporate links to other articles
 - [ ] Raise PR
 
-
 ## Draft.dev Article Checklist
+
 - [ ] Create header image in canva
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
 - [ ] Run mark down linter (`earthly +blog-lint-apply`)
 - [ ] Add keywords for internal links to frontmatter
-- [ ] Run `earthly +link-opportunity` and find 1-5 places to incorporate links 
+- [ ] Run `earthly +link-opportunity` and find 1-5 places to incorporate links
