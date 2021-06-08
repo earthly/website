@@ -11,7 +11,8 @@ internal-links:
  - metrics
  - incident management
 ---
-In 2008, I got my first job at a software-as-a-service company. We built learning management software and ran it on servers in the small data center connected to our office. 
+<!-- markdownlint-disable MD024 -->
+In 2008, I got my first job at a software-as-a-service company. We built learning management software and ran it on servers in the small data center connected to our office.
 
 We released new software onto these production servers monthly and measured quality by counting bugs per release. We also had account managers who kept us informed of how many large clients seemed upset about the last release.  
 
@@ -33,7 +34,6 @@ Mean time between failures is a metric from the field of reliability engineering
 | ------------- | -------- |
 | #1      | Jan 3rd |
 | #2     | Jan 25 |
-
 
 Mean Time Between Failures =
 
@@ -82,7 +82,7 @@ The never-happens-again part is hard to achieve but vital. If you are responding
 
 <div class="notice--big--primary">
 
-### Calculating Mean Time To Recovery
+### Calculating Mean Time To Resolve
 
 | Incident #3   |          |
 | -------------------- | -------- |
@@ -123,7 +123,6 @@ MTTA highlights this difference.  It is a metric for measuring the responsivenes
 | Recovered            | 12:00 pm   |
 | **Acknowledge Time**       | **5 minutes**  |
 
-
 | Incident #6   |          |
 | -------------------- | -------- |
 | Reported             | 10 am    |
@@ -143,8 +142,8 @@ calculating
 
 ## Summary
 
-There are many ways to measure the quality of your software as a service product. MTBF, MTTR, MTTRe, and MTTA can each offer a different lens for viewing your software release life cycle. As you improve your SDLC, find ways to collect aggregate metrics like these and choose one or two to target for improvement. 
+There are many ways to measure the quality of your software as a service product. MTBF, MTTR, MTTRe, and MTTA can each offer a different lens for viewing your software release life cycle. As you improve your SDLC, find ways to collect aggregate metrics like these and choose one or two to target for improvement.
 
-Invest in improving these metrics and you'll make up for it in time saved fighting fires. Also focusing on aggregate metrics can be an effective way to move the discussion from blame about specific incidents to a higher-level debate around changing the process to better support the company's goals. 
+Invest in improving these metrics and you'll make up for it in time saved fighting fires. Also focusing on aggregate metrics can be an effective way to move the discussion from blame about specific incidents to a higher-level debate around changing the process to better support the company's goals.
 
 If your build pipeline is taking more than 15 minutes and therefore negatively affecting your metrics, then take a look at Earthly's [free and open build tool](http://earthly.dev/).
