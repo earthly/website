@@ -12,7 +12,7 @@ Here is a somewhat fictionalized personal story. I've changed the names of the p
 
 ## Raising Objections
 
-I was a new engineering manager who's team was starting a new small but ambitious project at a SAAS company. The company had several hundred developers, and the project was approved. A design document and development plan existed, a working prototype had been created, and several talented people were executing the plan. All that was left to do, from my perspective, was to 'reach alignment.'
+I was a new engineering manager whose team was starting a new small but ambitious project at a SAAS company. The company had several hundred developers, and the project was approved. A design document and development plan existed, a working prototype had been created, and several talented people were executing the plan. All that was left to do, from my perspective, was to 'reach alignment.'
 
 I'm not sure if reaching alignment is a universal term that I was previously unfamiliar with or if it's company-specific. But for this project, it worked like this: The project was approved, but there were all kinds of people vaguely horizontal to me in the organization who could 'raise objections' about it.
 
@@ -101,7 +101,7 @@ He found that experts could be split into two broad categories, the first of whi
 
  {% picture content-wide {{site.pimages}}{{page.slug}}/foxes.png  --picture --img width="1200px" --alt {{ A Fox }} %}
 
-When all the predictions were added up and scored hedgehogs lost out to his second category: Foxes. Foxes were the opposite of hedgehogs. They had complicated advice and were skeptical of even their own predictions.  Tetlock also found that foxes were less likely to be famous because contingent advice is harder to explain in a sound bite.
+When all the predictions were added up and scored, hedgehogs lost out to his second category: Foxes. Foxes were the opposite of hedgehogs. They had complicated advice and were skeptical of even their own predictions.  Tetlock also found that foxes were less likely to be famous because contingent advice is harder to explain in a sound bite.
 
 Hedgehogs with predictions about the 2003 Iraq war existed on both sides of the political spectrum. They had theories based on over-arching political philosophy, but the best predictors of the outcomes were foxes who had in-depth knowledge of the region, not big theories.
 
@@ -111,7 +111,7 @@ Hedgehogs with predictions about the 2003 Iraq war existed on both sides of the 
 
 Tetlock's [talk](https://longnow.org/seminars/02007/jan/26/why-foxes-are-better-forecasters-than-hedgehogs/) on this is subtitled "Ignore Confident Forecasters," which I think is an excellent summary of his findings.  
 
-Software development is full of confident forecasters. We are a pretty new field, and yet everyone seems so sure that they have the best solution to whatever problem is at hand. I'd like to hear more people saying things like, "in this specific context, test-coverage seem like an important metric," or "StopLang is great if you can afford the GC, but if you can't then you should look at IronOre." A great tool is not a universal tool it's a tool well suited to a specific problem.
+Software development is full of confident forecasters. We are a pretty new field, and yet everyone seems so sure that they have the best solution to whatever problem is at hand. I'd like to hear more people saying things like, "in this specific context, test-coverage seem like an important metric," or "StopLang is great if you can afford the GC, but if you can't, then you should look at IronOre." A great tool is not a universal tool it's a tool well suited to a specific problem.
 
 The more universal a solution someone claims to have to whatever software engineering problem exists, and the more confident they are that it is a fully generalized solution, the more you should question them. The more specific and contingent the advice - the more someone says 'it depends' or 'YourSQL works well in a read-heavy context with the following constraints' the more likely they are to be leading you in the right direction. At least that's what I have found.
 
