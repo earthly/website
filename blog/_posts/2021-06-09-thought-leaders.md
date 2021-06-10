@@ -23,7 +23,8 @@ Raising objections is a process where you tell someone above me, my boss or my b
 Preventing the raising of objections was called 'reaching alignment.' I find the people who might have concerns or advice, get feedback from them, and work with the developers on the team to adjust the plan based on that. It ends up feeling a lot like the office episode where Andy and Kevin must meet with the heads of every company in the office park to reach a decision about the parking spaces.
 
 <div class="wide">
-![Everybody has advice about how to build your project]({{site.images}}{{page.slug}}/4-families.png)
+ {% picture {{site.pimages}}{{page.slug}}/4-families.png  --picture --img width="1200px" --alt {{ Everybody has advice about how to build your project }} %}
+<figcaption>Everybody has advice about how to build your project</figcaption>
 </div>
 
 At its worse, the conversations tended to go something like this:
