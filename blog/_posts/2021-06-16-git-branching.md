@@ -125,6 +125,18 @@ But some software has moved to the cloud and yet hasn't yet embrassed the simpli
 
 ## Death To Develop
 
+<<The Parthenon>>
+
+The Parthenon was built in ancient greece using columns of marble. Theses columns of marble help hold it up. 
+
+<<Greek Revival Style>>
+
+This is a greek revival style house. These columns don't do anything.  
+
+If you don't need to maintain and support multiple versions of your software and if your software only runs on your own servers then you might have a purely decorative develop branch. You may be using a git branching model that is very effective for software development practises that you are doing. Those are not load bearing columns, you are copying the visual appearnce of ancient greeks, not there architectural insights. 
+<!-- 
+
+don't have some testing process that is too expensive to do on each PR, then you probably just have a decorative develop branch and not a load baring develop branch. The cost may be small, but 
 
 
 -----
@@ -149,6 +161,6 @@ Note: Tags vs Branches. Tags and branches are different, very slightly. They are
 # GitFlow
 # GitHub Flow
 # Releasing stuff
-  use a blue - green deploy, or rolloing deploy or canary deplot
+  use a blue - green deploy, or rolloing deploy or canary deplot -->
 
 
