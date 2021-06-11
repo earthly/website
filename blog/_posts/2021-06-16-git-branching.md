@@ -137,5 +137,6 @@ This is a greek revival style house. These columns don't do anything.
 
 If you don't need to maintain and support multiple versions of your software and if your software only runs on your own servers then you might have a purely decorative develop branch. You may be using a git branching model that is very effective for software development practises that you yourself are not infact practising. Those are not load bearing columns, you are copying the visual appearnce of ancient greeks, not there architectural insights.
 
-Probably more likely than that though is that you have a branching process that works for you but could be simplified if you fully embraced small batches, and frequent releases. Your columns are partially ornamental and partially load bearing but you could improve things with some effort.  ccccccvuvrvjiikfgjrhebfdgtvejdijlufvruvfhfcn
-ccccccvuvrvjbijbvlutdlbgvhlkdvdcvnigjhtbjkcj
+Probably more likely than that though is that you have a branching process that works for you but could be simplified if you fully embraced small batches, and frequent releases. Your columns are partially ornamental and partially load bearing but you could improve things with some effort. 
+
+The closer you can stay to trunk based or mainline development the less overhead you will have and the smaller batches you'll be able to release in which should improve reliability, so every extra branch and extra merge step added should be weighted against its costs.
