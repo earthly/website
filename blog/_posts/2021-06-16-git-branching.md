@@ -31,19 +31,17 @@ internal-links:
 
 Some things about modern development are just left overs from earlier eras. They are ways to do things that were suited to a particular time and place and now times have changed but no one has noticed yet.
 
-I'm going to explain git branching strategies starting with something very simple and moving to add complexity as we go.  Eventaully we will end up back simple again. My hope is that you can find whereever you best fit along this continum and if your practises are more complicated then I describe then hopefully you have a good reason for it.
+I'm going to explain various git branching strategies with a story. We will start with something very simple and add complexity as we go.  Eventaully we will end up back simple again. 
 
-You almost certainly know more about the best way to branch things in your project then I do, since I know nothing about your situation, but sometimes all it takes is random nudging from someone on the internet to cause the you to reconsider your workflow.  
+My hope is that explaining things this way will give an intuition for the whys behind certain practises.  Instead of telling you how cherry-pick a bug into a hotfix branch using gitflow or someother complicated process I can describe the thinking behind various branching strategies and once you understand the why the hows will be easier. 
 
-And if your workflow involves a develop branch and you build SAAS software, I hope I can convince you to ditch it.
+I also think that once you understand the whys you may want to ditch your develop branch if you haven't already. If you are doing cloud hosted stuff and you have a develop branch you might be following some historical process that no longer serves a purpose.
 
-The develop branch, if you are doing cloud hosted stuff and don't need to patch bad versions is probably not what you want. You might be following some historical process that no longer serves a purpose.
-
-## The Story
+## AshelySoft 2006
 
 The year is 2006 and Ashely starts a software business. She builds and sells a ecommerce solution she wrote in PHP. It's just her building an selling it but she uses a new source control solution called git to store her software. She starts out with Trunk based development.
 
-## Trunk Based Development - Mainline Development
+## Trunk Based Development
 
 Trunk based development is working on a main, or trunk branch. Ashely commits her code right into the main branch and pushed it to the server where see setup her git remote.  
 
@@ -137,6 +135,10 @@ This is a greek revival style house. These columns don't do anything.
 
 If you don't need to maintain and support multiple versions of your software and if your software only runs on your own servers then you might have a purely decorative develop branch. You may be using a git branching model that is very effective for software development practises that you yourself are not infact practising. Those are not load bearing columns, you are copying the visual appearnce of ancient greeks, not there architectural insights.
 
-Probably more likely than that though is that you have a branching process that works for you but could be simplified if you fully embraced small batches, and frequent releases. Your columns are partially ornamental and partially load bearing but you could improve things with some effort. 
+Probably more likely than that though is that you have a branching process that works for you but could be simplified if you fully embraced small batches, and frequent releases. Your columns are partially ornamental and partially load bearing - it will take you time to remove them but you won't regret it. 
+
+>  Web apps are typically continuously delivered, not rolled back, and you don't have to support multiple versions of the software running in the wild.
+>  If your team is doing continuous delivery of software, I would suggest to adopt a much simpler workflow (like GitHub flow) instead of trying to shoehorn git-flow into your team.
+>  Vincent Driessen Gitflow Creator
 
 The closer you can stay to trunk based or mainline development the less overhead you will have and the smaller batches you'll be able to release in which should improve reliability, so every extra branch and extra merge step added should be weighted against its costs.
