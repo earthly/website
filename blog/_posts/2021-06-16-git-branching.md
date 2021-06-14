@@ -2,7 +2,6 @@
 title: "Git Branching Strategies and The Greek Revival"
 categories:
   - Tutorials
-toc: true
 author: Adam
 internal-links:
  - merging
@@ -11,23 +10,6 @@ internal-links:
  - git
  - branch
 ---
-
-## Writing Article Checklist
-
-- [x] Write Outline
-- [x] Write Draft
-- [x] Read Outloud
-- [x] Fix Grammarly Errors
-- [ ] Write 5 or more titles and pick the best on
-- [x] Create header image in canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-- [ ] Run mark down linter (`earthly +blog-lint-apply`)
-- [ ] Add keywords for internal links to frontmatter
-- [ ] Run `earthly --build-arg NAME=2020-09-10-better-builds.md +link-opportunity` and find 1-5 places to incorporate links to other articles
-- [ ] Raise PR
-
-## Introduction
 
 Some modern development practices are easiest to understand from a historical perspective: things started a certain way, and then steps were added or removed as conditions changed. Git branching, for example, is like that.
 
@@ -60,7 +42,7 @@ Her customers then install her software on their web servers, where they use it 
 If Ashely had chosen subversion or CVS, which were more prevalent in 2006, she would have called her branch `trunk` because every branch is branched off the trunk like a real-world tree. This is where the term trunk-based development comes from. However, Ashely uses `main`, so she may prefer the term mainline development. It's the same thing, just a different name.
 </div>
 
-## Release Branches / Cutting a Release
+## Release Branches 
 
 Ashely's business succeeds. She acquires many more customers and hires more developers and a customer-support person.  Support becomes problematic, though, as some customers are very slow to upgrade, and it's unclear what version any given customer is on. Additionally, customers can't keep up with the latest version when every commit is a new version, and there are no version numbers.
 
@@ -68,7 +50,20 @@ So she decides to batch up the changes into monthly releases and create a new re
 
 Now her support people can ask customers what version they are on. If it's more than two releases back, they ask them to upgrade. That is, AshelySoft only supports the current release and the two previous versions.
 
-## HotFixing and The Multiverse
+<div class="notice--info">
+
+## Cutting a Releaase
+
+There was a time before modern source control when creating a release branch was an expensive process that had to be planned.  "Cutting a Release" was the name for this process, which involved locking down the source and starting the lengthy process of 'cutting a release branch off the trunk`. People still use the phrase today.
+
+> "Well, the performance was so bad that when they wanted to cut a branch, they would announce it ahead of time. They would schedule the branching because you didn’t want anybody else committing while you were branching, because that would totally screw things up. Right? And I said, “Okay, Friday at 2:00 PM, we’re going to cut the branch.” Then all activity would stop, access to the server would be cut off."
+>
+> And it would take 45 minutes to cut this branch. And then you’d say, “Okay, we’ve opened up the branch. Everybody can start working again.” 
+>
+> [Jim Blandy](https://corecursive.com/software-that-doesnt-suck-with-jim-blandy/) creator of Subversion 
+</div>
+
+## Hot Fixes and The Multiverse
 
 This is all working great. Ashely starts scaling the development team, and they start shipping more features. Unfortunately, while each monthly release now contains more cool new features, more regressions and bugs start slipping into the releases as well.
 
@@ -82,7 +77,7 @@ If you've seen any time travel movies, you probably realize that this can get co
 
 Nevertheless, release branches are an enormous help for AshelySoft. They help customers stay on a version that works for them, while AshelySoft can still push new features. However, it does increase the amount of effort that fixing bugs requires, and dealing with that will lead to Ashelysoft's next innovation.
 
-## Develop Branch and Fixing things
+## The `develop` Branch
 
 The cost of shipping bugs has now increased for AshelySoft. In the worse case, a bug isn't discovered until it's in all active versions of the software and the code between versions has changed enough that the fix is slightly different in each version, tripling the bug fix cost.
 
@@ -98,7 +93,7 @@ A popular branching method called [GitFlow](https://nvie.com/posts/a-successful-
 >
 > GitFlow Explanation
 
-This whole process adds more overhead to the branching and release process, but it's a fixed cost overhead, and it saves a lot of HotFixing bugs on release branches. AshelySoft, following the git-flow model, also adds a continuous integration service. When new code shows up in `develop`, automated tests are run.
+This whole process adds more overhead to the branching and release process, but it's a fixed cost overhead, and it saves a lot of HotFixing bugs on release branches. AshelySoft, following the git-flow model, also adds a [continuous integration](/blog/continuous-integration) service. When new code shows up in `develop`, [automated tests](/blog/unit-vs-integration) are run.
 
 This setup, git-flow and CI on develop branch, with release branches and hot fixing serves AshelySoft for several years. However, it is a complicated process. Thankfully, from here on out, AshelySoft's process will only get simpler. The first thing that helps to simplify things is `The Cloud`™️.
 
@@ -112,9 +107,9 @@ There are downsides to this SAAS model. AshelySoft now owns the uptime of all th
 
 Around this time, GitHub private repositories appear, and AshelySoft moves from their own git hosting to GitHub and starts following a Pull Request process. Instead of pushing code straight into `develop` and then ensuring they didn't break the build, developers now create pull-requests.  Other team members review the pull-requests, and the continuous integration service runs its suite of tests right on the PR. As a result, the speed of getting code into `develop` has decreased, but with each PR being manually reviewed and automatically tested, the quality of code that makes it into the `develop` branch is way up.  
 
-## Death to Develop
+## Death to `develop`
 
-With the quality of `develop` now increased, AshelySoft can increase its release velocity.  They even adopt a continuous deployment model where a merge into `main` causes the software to be automatically deployed.  From there, they move to a Canary deployment model where a new release is tested on a small portion of web traffic before it's fully deployed.  Once a PR is merged, Ashely just has to merge `develop` into `main` to perform a release.
+With the quality of `develop` now increased, AshelySoft can increase its release velocity.  They even adopt a continuous deployment model where a merge into `main` causes the software to be automatically deployed.  From there, they move to a [Canary deployment model](/blog/deployment-strategies/#canary-deployment) where a new release is tested on a small portion of web traffic before it's fully deployed.  Once a PR is merged, Ashely just has to merge `develop` into `main` to perform a release.
 
 But what is the point of having `develop` and merging it into `main`? It was introduced to prevent the release of bugs by giving the software time to 'integrate', but AshelySoft is doing all the integration as part of the PR process. So they drop the `develop` branch.  
 
@@ -140,7 +135,7 @@ The Parthenon was built in ancient Greece using columns of marble. These columns
 
 This is a greek-revival style house. These columns are not about function but form -- they are unnecessary and were chosen for aesthetics purposes.  
 
-If you don't need to maintain and support multiple versions of your software and it only runs on servers you control, then you might have a purely decorative `develop` branch. You may be using a git branching model that is very effective for a software lifecycle that you yourself are not in fact practicing. Those might not be load-bearing functional columns -- you might be copying the visual appearance of the ancients without understanding the purpose they had in mind.
+If you don't need to maintain and support multiple versions of your software and it only runs on your servers, then you might have a purely decorative `develop` branch. You may be using a git branching model that is very effective for a software lifecycle that you yourself are not in fact practicing. Those might not be load-bearing functional columns -- you might be copying the visual appearance of the ancients without understanding the purpose they had in mind.
 
 The creator of GitFlow offers similar thoughts:
 
