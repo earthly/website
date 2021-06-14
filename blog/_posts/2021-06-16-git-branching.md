@@ -42,7 +42,7 @@ Her customers then install her software on their web servers, where they use it 
 If Ashely had chosen subversion or CVS, which were more prevalent in 2006, she would have called her branch `trunk` because every branch is branched off the trunk like a real-world tree. This is where the term trunk-based development comes from. However, Ashely uses `main`, so she may prefer the term mainline development. It's the same thing, just a different name.
 </div>
 
-## Release Branches 
+## Release Branches
 
 Ashely's business succeeds. She acquires many more customers and hires more developers and a customer-support person.  Support becomes problematic, though, as some customers are very slow to upgrade, and it's unclear what version any given customer is on. Additionally, customers can't keep up with the latest version when every commit is a new version, and there are no version numbers.
 
@@ -56,11 +56,11 @@ Now her support people can ask customers what version they are on. If it's more 
 
 There was a time before modern source control when creating a release branch was an expensive process that had to be planned.  "Cutting a Release" was the name for this process, which involved locking down the source and starting the lengthy process of 'cutting a release branch off the trunk'. People still use the phrase today.
 
-> "Well, the performance was so bad that when they wanted to cut a branch, they would announce it ahead of time. They would schedule the branching because you didn’t want anybody else committing while you were branching, because that would totally screw things up. Right? And I said, “Okay, Friday at 2:00 PM, we’re going to cut the branch.” Then all activity would stop, access to the server would be cut off."
+> "Well, the performance was so bad that when they wanted to cut a branch, they would announce it ahead of time. They would schedule the branching because you didn't want anybody else committing while you were branching, because that would totally screw things up. Right? And I said, "Okay, Friday at 2:00 PM, we're going to cut the branch." Then all activity would stop, access to the server would be cut off."
 >
-> And it would take 45 minutes to cut this branch. And then you’d say, “Okay, we’ve opened up the branch. Everybody can start working again.” 
+> And it would take 45 minutes to cut this branch. And then you'd say, "Okay, we've opened up the branch. Everybody can start working again."
 >
-> [Jim Blandy](https://corecursive.com/software-that-doesnt-suck-with-jim-blandy/) creator of Subversion 
+> [Jim Blandy](https://corecursive.com/software-that-doesnt-suck-with-jim-blandy/) creator of Subversion
 </div>
 
 ## Hot Fixes and The Multiverse
