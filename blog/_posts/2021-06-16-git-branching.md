@@ -27,13 +27,13 @@ internal-links:
 - [ ] Run `earthly --build-arg NAME=2020-09-10-better-builds.md +link-opportunity` and find 1-5 places to incorporate links to other articles
 - [ ] Raise PR
 
-## Introduction 
+## Introduction
 
 Some modern development practices are easiest to understand from a historical perspective: things started a certain way, and then steps were added or removed as conditions changed. Git branching, for example, is like that.
 
-I'm going to explain various git branching strategies with a story. We will start with something straightforward and add complexity as we go.  Eventually, we will end up back simple again. 
+I'm going to explain various git branching strategies with a story. We will start with something straightforward and add complexity as we go.  Eventually, we will end up back simple again.
 
-I hope that explaining things this way will give you a deeper understanding of when to use specific branching and merging strategies.  So instead of telling you how to cherry-pick a bug fix into a hotfix branch using gitflow work, I can describe the conditions that would lead to adopting that process. Once you understand the whys, the hows will be easier. 
+I hope that explaining things this way will give you a deeper understanding of when to use specific branching and merging strategies.  So instead of telling you how to cherry-pick a bug fix into a hotfix branch using gitflow work, I can describe the conditions that would lead to adopting that process. Once you understand the whys, the hows will be easier.
 
 ## AshelySoft 2006
 
@@ -55,7 +55,7 @@ Her customers then install her software on their web servers, where they use it 
 
 ## MainLine Development
 
-**ℹ️ Fun Fact: Trunk VS. Main**
+### ℹ️ Fun Fact: Trunk VS. Main
 
 If Ashely had chosen subversion or CVS, which were more prevalent in 2006, she would have called her branch `trunk` because every branch is branched off the trunk like a real-world tree. This is where the term trunk-based development comes from. However, Ashely uses `main`, so she may prefer the term mainline development. It's the same thing, just a different name.
 </div>
@@ -96,10 +96,9 @@ A popular branching method called [GitFlow](https://nvie.com/posts/a-successful-
 >
 > "When the source code in the develop branch reaches a stable point and is ready to be released, all of the changes should be merged back into master somehow and then tagged with a release number."
 >
-> GitFlow Explanation 
+> GitFlow Explanation
 
 This whole process adds more overhead to the branching and release process, but it's a fixed cost overhead, and it saves a lot of HotFixing bugs on release branches. AshelySoft, following the git-flow model, also adds a continuous integration service. When new code shows up in `develop`, automated tests are run.
-
 
 This setup, git-flow and CI on develop branch, with release branches and hot fixing serves AshelySoft for several years. However, it is a complicated process. Thankfully, from here on out, AshelySoft's process will only get simpler. The first thing that helps to simplify things is `The Cloud`™️.
 
@@ -133,7 +132,6 @@ Some software always had an extensive review process, and much software will nev
 
 ## Appendix: Develop and The Greek Revival Style
 
-
 {% picture content-wide {{site.pimages}}{{page.slug}}/greek-columns.jpg --picture --alt {{ The Parthenon }} %}
 
 The Parthenon was built in ancient Greece using columns of marble. These columns of marble held it up.
@@ -146,10 +144,10 @@ If you don't need to maintain and support multiple versions of your software and
 
 The creator of GitFlow offers similar thoughts:
 
->  Web apps are typically continuously delivered, not rolled back, and you don't have to support multiple versions of the software running in the wild.
+> Web apps are typically continuously delivered, not rolled back, and you don't have to support multiple versions of the software running in the wild.
 >
->  If your team is doing continuous delivery of software, I would suggest to adopt a much simpler workflow (like GitHub flow) instead of trying to shoehorn git-flow into your team.
+> If your team is doing continuous delivery of software, I would suggest to adopt a much simpler workflow (like GitHub flow) instead of trying to shoehorn git-flow into your team.
 >
->  Vincent Driessen Gitflow Creator
+> Vincent Driessen Gitflow Creator
 
-The closer you can stay to trunk-based or mainline development, the less overhead you will have and the smaller the batches you'll be able to release. 
+The closer you can stay to trunk-based or mainline development, the less overhead you will have and the smaller the batches you'll be able to release.
