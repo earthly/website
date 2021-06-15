@@ -99,7 +99,7 @@ This setup, git-flow and CI on develop branch, with release branches and hot fix
 
 ## The Cloud
 
-AshelySoft customers want to run an eCommerce store. However, they don't want to run a web server.  After repeatedly getting this feedback, Ashely shifts the company to be a sass product company.  It takes some extensive work, but AshelySoft eCommerce becomes a multi-tenant eCommerce platform.  No more `git archive` releases. Now the release process is deploying the latest version of the main branch onto the production server.
+AshelySoft customers want to run an eCommerce store. However, they don't want to run a web server.  After repeatedly getting this feedback, Ashely shifts the company to be a SAAS product company.  It takes some extensive work, but AshelySoft eCommerce becomes a multi-tenant eCommerce platform.  No more `git archive` releases. Now the release process is deploying the latest version of the main branch onto the production server.
 
 There are downsides to this SAAS model. AshelySoft now owns the uptime of all their customers, and this is eCommerce, so real money is lost when things go down. But, the customers are willing to pay more for AshelySoft to worry about these problems. They no longer have to support multi releases at a time - no more hot fixing bugs back into old versions, no more multiverse of drifting branches to update, and no more release branches.  To make this work, AshelySoft works off a simple rule: `main` must be releasable.  Before anyone can merge `develop` into `main` they must make sure the continuous integration build is passing, and if they find problems that the CI process missed, they do their best to make sure CI will catch it in the future.
 
