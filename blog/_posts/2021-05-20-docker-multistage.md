@@ -1,11 +1,11 @@
 ---
 title: "Understanding Docker Multistage Builds"
 categories: 
- - Tutorials
+  - Tutorials
 toc: true 
 author: Lukonde Mwila
 sidebar:
- nav: "docker"
+  nav: "docker"
 internal-links:
  - multistage build
  - docker multistage build
@@ -130,23 +130,23 @@ That being said, following such an approach for every stage can create an increa
 
 ## More Stages
 
-As your multi-stage build grows in complexity, comprehending how each step follows from the next can become a challenge. If the number of stages extends beyond two or if caching is becoming a challenge, you may want to consider using [Earthly](http://earthly.dev/) to produce your docker images. Earthly mirrors the dockerfile syntax but allows for naming the stages and for more fine-grained caching.
+As your multi-stage build grows in complexity, comprehending how each step follows from the next can become a challenge.  If the number of stages extends beyond two or if caching is becoming a challenge, you may want to consider using [Earthly](http://earthly.dev/) to produce your docker images. Earthly mirrors the dockerfile syntax but allows for naming the stages and for more fine-grained caching.
 
 ```
 FROM node:12.13.0-alpine as build
 WORKDIR /app
 
 build:
- COPY package*.json ./
- RUN npm install
- COPY . .
- RUN npm run build
+  COPY package*.json ./
+  RUN npm install
+  COPY . .
+  RUN npm run build
 
 final:
- FROM nginx
- EXPOSE 3000
- COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
- COPY +build/app/build /usr/share/nginx/html
+  FROM nginx
+  EXPOSE 3000
+  COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
+  COPY  +build/app/build /usr/share/nginx/html
 ```
 
 ## Conclusion

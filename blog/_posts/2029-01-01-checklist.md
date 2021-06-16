@@ -1,7 +1,7 @@
 ---
 title: "Put Your Best Title Here"
 categories:
- - Tutorials
+  - Tutorials
 toc: true
 author: Adam
 internal-links:

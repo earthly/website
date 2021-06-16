@@ -1,7 +1,7 @@
 ---
 title: "Achieving Repeatability in Continuous Integration"
 categories:
- - Tutorials
+  - Tutorials
 toc: true
 author: Allan MacGregor
 internal-links:
@@ -20,7 +20,7 @@ The implementation of both methodologies is often referred to as a **CI/CD pipel
 
 CI's technical goal is to provide consistent and automated results to build, package, and test applications. This repeatable flow and process allows teams to commit and merge changes more frequently, thus reducing the risk of conflicts or getting stuck in **Integration Hell**.
 
-> Integration Hell refers to the point in production when members on a delivery team integrate their individual code. In traditional software development environments, this integration process is rarely smooth and seamless, instead resulting in hours or perhaps days of fixing the code so that it can finally integrate. Continuous Integration (CI) aims to avoid this completely by enabling and encouraging team members to integrate frequently (e.g., hourly, or at least daily). —[SolutionsIQ](https://www.solutionsiq.com/agile-glossary/integration-hell/ "Accenture | SolutionsIQ's definition of Integration Hell")
+> Integration Hell refers to the point in production when members on a delivery team integrate their individual code. In traditional software development environments, this integration process is rarely smooth and seamless, instead resulting in hours or perhaps days of fixing the code so that it can finally integrate. Continuous Integration (CI) aims to avoid this completely by enabling and encouraging team members to integrate frequently (e.g., hourly, or at least daily).  —[SolutionsIQ](https://www.solutionsiq.com/agile-glossary/integration-hell/ "Accenture | SolutionsIQ's definition of Integration Hell")
 
 This article focuses on the concepts, tools, and best practices that will allow you to achieve a high degree of repeatability and consistency on your CI/CD pipeline.
 
@@ -39,7 +39,7 @@ Reliability in continuous integration comes from knowing that the systems involv
 
 Reliability gives the confidence to deliver shippable working code at any time during the application lifetime.
 
-### Reproducibility 
+### Reproducibility  
 
 CI infrastructure and pipelines can be—and more often than not, are—software assets on their own. The work done to create and implement CI runners and pipelines for our software projects can also be built, tested, and packaged just like any other software build.
 

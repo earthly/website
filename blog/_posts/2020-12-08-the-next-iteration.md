@@ -2,12 +2,12 @@
 title: The Next Iteration of Earthly
 featured: true
 categories:
- - News
+  - News
 author: Vlad
 excerpt: We've been working with many of you to better understand your pains and use-cases when it comes to builds.
 internal-links:
- - road map
- - roadmap
+  - road map
+  - roadmap
 ---
 
 Dear Earthly community,
@@ -30,7 +30,7 @@ We have heard that
 
 Following many feedback sessions, we have come up with a number of possible improvements and directions for the Earthly project. We have summarized this in a **roadmap** , which we plan to maintain on an ongoing basis.
 
-[![Roadmap (click to view)]({{site.images}}{{page.slug}}/roadmap.png)](https://github.com/earthly/earthly/projects/1) 
+[![Roadmap (click to view)]({{site.images}}{{page.slug}}/roadmap.png)](https://github.com/earthly/earthly/projects/1)  
 _Roadmap (click to view)_
 
 ## What Earthly needs from YOU

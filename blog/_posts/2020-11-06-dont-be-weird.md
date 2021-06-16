@@ -1,13 +1,13 @@
 ---
 title: Technology choice? Don't be weird
 categories:
- - Articles
+  - Articles
 tags:
- - Interview
+  - Interview
 author: Corey
 internal-links:
-  - weird
-  - design decision
+   - weird
+   - design decision
 ---
 _Here at Earthly, we are building an internal platform on AWS using EKS. &nbsp;I talked to our lead architect Corey Larson about the decisions and trade offs he is making as he designs our platform._
 

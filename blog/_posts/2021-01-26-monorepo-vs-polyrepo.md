@@ -2,19 +2,19 @@
 title: Monorepo vs Polyrepo
 featured: true
 categories:
- - Articles
+  - Articles
 tags:
 - monorepo
 - polyrepo
 - tech-strategy
 author: Vlad
 internal-links:
- - mono repo
- - poly repo
- - repository
- - source code
- - monorepo
- - polyrepo
+  - mono repo
+  - poly repo
+  - repository
+  - source code
+  - monorepo
+  - polyrepo
 ---
 The decision of whether to use a monorepo or a polyrepo structure for your source code can be a very emotional (maybe even religious!) battle. On its surface, it's not much different than "tabs vs spaces" or "vim vs emacs". Or is it?
 
@@ -26,33 +26,33 @@ The **monorepo layout** consists of a single code repository where multiple proj
 
 ```
 ├── lib
-|  ├── lib
-|  └── lib
+|   ├── lib
+|   └── lib
 ├── lib
 ├── lib
 ├── lib
 ├── app
-|  ├── lib
-|  └── lib
-|    ├── lib
-|    └── lib
+|   ├── lib
+|   └── lib
+|       ├── lib
+|       └── lib
 ├── app
-|  └── lib
+|   └── lib
 └── big-project
-|  ├── lib
-|  ├── app
-|  |  ├── lib
-|  |  └── lib
-|  └── app
-|    └── lib
+|   ├── lib
+|   ├── app
+|   |   ├── lib
+|   |   └── lib
+|   └── app
+|       └── lib
 └── big-project
-  ├── lib
-  ├── lib
-  ├── app
-  |  └── lib
-  └── app
     ├── lib
-    └── lib
+    ├── lib
+    ├── app
+    |   └── lib
+    └── app
+        ├── lib
+        └── lib
 ```
 
 Each `lib` and each `app` would contain various other sub-directories to house the source code itself, depending on the language it is written in. You get the idea.
@@ -74,11 +74,11 @@ github.com/myorg/app2
 
 github.com/myorg/app3
 ├── lib
-|  └── src
+|   └── src
 ├── lib
-|  └── src
+|   └── src
 └── lib
-  └── src
+    └── src
 
 github.com/myorg/lib1
 └── src

@@ -3,7 +3,7 @@ title: On YAML Discussions
 tags:
 - news
 categories:
- - Articles
+  - Articles
 author: Adam
 ---
 My article about how [YAML makes a bad programming language](https://earthly.dev/blog/intercal-yaml-and-other-horrible-programming-languages/) [^1] generated a lot of great discussions online.
@@ -36,7 +36,7 @@ Here are some highlights, lightly edited:
 >
 > From the surface, it seems like HCL, jsonnet, and Cue, are just as suitable as Dhall, and probably more familiar (to varying degrees).
 
-This is an excellent point. [HCL](https://github.com/hashicorp/hcl) does look a bit less strange to outsiders, and Hashicorp already has mindshare in the DevOps community, and it certainly beats config templates.
+This is an excellent point.  [HCL](https://github.com/hashicorp/hcl) does look a bit less strange to outsiders, and Hashicorp already has mindshare in the DevOps community, and it certainly beats config templates.
 
 ## DSL Creation Story
 

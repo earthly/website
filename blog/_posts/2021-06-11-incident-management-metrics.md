@@ -1,7 +1,7 @@
 ---
 title: "Incident Management Metrics and Key Performance Indicators"
 categories:
- - Tutorial
+  - Tutorial
 toc: true
 author: Adam
 internal-links:
@@ -14,30 +14,30 @@ internal-links:
 <!-- markdownlint-disable MD024 -->
 In 2008, I got my first job at a software-as-a-service company. We built learning management software and ran it on servers in the small data center connected to our office.
 
-We released new software onto these production servers monthly and measured quality by counting bugs per release. We also had account managers who kept us informed of how many large clients seemed upset about the last release. 
+We released new software onto these production servers monthly and measured quality by counting bugs per release. We also had account managers who kept us informed of how many large clients seemed upset about the last release.  
 
-Occasionally, when something went wrong, we would do a stability release and spend a month only fixing bugs. [Testing](/blog/unit-vs-integration) was not a part of our build process but a part of our team: every feature team had quality assurance people who tested each feature before it was released.
+Occasionally, when something went wrong, we would do a stability release and spend a month only fixing bugs.  [Testing](/blog/unit-vs-integration) was not a part of our build process but a part of our team: every feature team had quality assurance people who tested each feature before it was released.
 
-This wasn't that long ago, but cloud software development has matured a lot since this time. Incident management has become standard practice, and many great metrics and Key Performance Indicators (KPIs) exist for measuring release quality. Let's review some of them.
+This wasn't that long ago, but cloud software development has matured a lot since this time. Incident management has become standard practice, and many great metrics and Key Performance Indicators (KPIs) exist for measuring release quality.  Let's review some of them.
 
 ## MTBF: Mean Time Between Failures
 
 When software is being released only once a month, on a fixed timeline, with extensive manual testing, counting the number of bugs might work. But once you start releasing many times per week or per day, this won't work, and another way to measure software quality is required.
 
-Mean time between failures is a metric from the field of [reliability](/blog/achieving-repeatability) engineering. Calculating it is simple: it is time over the number of failures that occurred during that time. If in the last 30 days you have had two production incidents, then the mean time between failure is 15 days.
+Mean time between failures is a metric from the field of [reliability](/blog/achieving-repeatability) engineering.  Calculating it is simple: it is time over the number of failures that occurred during that time. If in the last 30 days you have had two production incidents, then the mean time between failure is 15 days.
 
 <div class="notice--big--primary">
 
 ### Calculating MTBF
 
-| Incidents in last 30 days  |     |
+| Incidents in last 30 days   |          |
 | ------------- | -------- |
-| #1   | Jan 3rd |
-| #2   | Jan 25 |
+| #1      | Jan 3rd |
+| #2     | Jan 25 |
 
 Mean Time Between Failures =
 
- : 30 days / 2 Incidents = 15 days
+  : 30 days / 2 Incidents  = 15 days
 </div>
 
 ## MTTR: Mean Time To Recovery
@@ -50,33 +50,33 @@ If you are measuring MTBF, your software may be getting much better, but your nu
 
 ### Calculating Mean Time To Recovery
 
-| Incident #1  |     |
+| Incident #1   |          |
 | ------------- | -------- |
-| Reported   | 10:00 AM |
-| Recovered   | 12:00 PM |
-| Recovery Time | 2 Hours |
+| Reported      | 10:00 AM |
+| Recovered     | 12:00 PM |
+| Recovery Time | 2 Hours  |
 
-| Incident #2  |     |
+| Incident #2   |          |
 | ------------- | -------- |
-| Reported   | 10:00 AM |
-| Recovered   | 2 days later at 10:00 am |
-| Recovery Time | 48 Hours |
+| Reported      | 10:00 AM |
+| Recovered     | 2 days later at 10:00 am |
+| Recovery Time | 48 Hours  |
 
 Mean Time To Recovery =
 
- : 2 hour + 48 hours / 2 failures = 25 hours
+  : 2 hour + 48 hours / 2 failures = 25 hours
 
 </div>
 
 ## MTTRe: Mean Time To Resolve
 
 <div class="notice--info">
-ℹ️ Acronyms Collision Alert
+ℹ️  Acronyms Collision Alert
 
 Mean Time To Resolve, MTTRe, differs from Mean Time To Recover, MTTR, but some resources use MTTR for both. To avoid confusion, ensure you are using the correct terminology for your metric.
 </div>
 
-Rolling back to address an incident is a great idea: it's often the quickest way to get things back in a good place. But there are other types of incidents. Imagine your application deadlocks every once in a while, and you have to restart it to unlock. You may have an excellent mean time to recovery, but you've never actually addressed the root cause. This is what MTTRe measures, not the time to get the service back up and running but to resolve the root cause and ensure the problem never happens again. 
+Rolling back to address an incident is a great idea: it's often the quickest way to get things back in a good place.  But there are other types of incidents. Imagine your application deadlocks every once in a while, and you have to restart it to unlock. You may have an excellent mean time to recovery, but you've never actually addressed the root cause. This is what MTTRe measures, not the time to get the service back up and running but to resolve the root cause and ensure the problem never happens again.  
 
 The never-happens-again part is hard to achieve but vital. If you are responding quickly but never getting to the root cause, you will be living in a stressful world of constant fire fighting. However, if you are resolving the root cause of each incident, then quality will increase over time.
 
@@ -84,21 +84,21 @@ The never-happens-again part is hard to achieve but vital. If you are responding
 
 ### Calculating Mean Time To Resolve
 
-| Incident #3  |     |
+| Incident #3   |          |
 | -------------------- | -------- |
-| Reported       | day 1  |
-| Addressed      | day 1  |
-| Root Cause Analysis | day 2  |
-| Root Cause Addressed | day 31  |
-| **Resolve Time**    | **30 days** |
+| Reported             | day 1    |
+| Addressed            | day 1    |
+| Root Cause Analysis  | day 2    |
+| Root Cause Addressed | day 31   |
+| **Resolve Time**       | **30 days**  |
 
-| Incident #4  |     |
+| Incident #4   |          |
 | -------------------- | -------- |
-| Reported       | day 1  |
-| Addressed      | day 1  |
-| Root Cause Analysis | day 2  |
-| Root Cause Addressed | day 11  |
-| **Resolve Time**    | **10 days** ||
+| Reported             | day 1    |
+| Addressed            | day 1    |
+| Root Cause Analysis  | day 2    |
+| Root Cause Addressed | day 11   |
+| **Resolve Time**       | **10 days**  ||
 
 Mean Time To Resolve =
 
@@ -108,27 +108,27 @@ Mean Time To Resolve =
 
 ## MTTA: Mean Time To Acknowledge
 
-An essential part of good incident management is an on-call rotation. You need someone around to respond to incidents when they occur. Our previous metrics would be unable to differentiate between an incident that took 3 hours to recover from and one that was recoverable in 5 minutes but took two hours and 55 minutes to be acknowledged. 
+An essential part of good incident management is an on-call rotation. You need someone around to respond to incidents when they occur.  Our previous metrics would be unable to differentiate between an incident that took 3 hours to recover from and one that was recoverable in 5 minutes but took two hours and 55 minutes to be acknowledged.  
 
-MTTA highlights this difference. It is a metric for measuring the responsiveness of the on-call person to any alerts.
+MTTA highlights this difference.  It is a metric for measuring the responsiveness of the on-call person to any alerts.
 
 <div class="notice--big--primary">
 
 ### ️Calculating Mean Time To Acknowledge
 
-| Incident #5  |     |
+| Incident #5   |          |
 | -------------------- | -------- |
-| Reported       | 10 am  |
-| Acknowledged     | 10: 05 am  |
-| Recovered      | 12:00 pm  |
-| **Acknowledge Time**    | **5 minutes** |
+| Reported             | 10 am    |
+| Acknowledged         | 10: 05 am    |
+| Recovered            | 12:00 pm   |
+| **Acknowledge Time**       | **5 minutes**  |
 
-| Incident #6  |     |
+| Incident #6   |          |
 | -------------------- | -------- |
-| Reported       | 10 am  |
-| Acknowledged     | 11: 55 am  |
-| Recovered      | 12:00 pm  |
-| **Acknowledge Time**    | **115 minutes** |
+| Reported             | 10 am    |
+| Acknowledged         | 11: 55 am    |
+| Recovered            | 12:00 pm   |
+| **Acknowledge Time**       | **115 minutes**  |
 
 Mean Time To Acknowledge =
 

@@ -1,15 +1,15 @@
 ---
 title: 'Building on Kubernetes: Ingress'
 categories:
- - Articles
+  - Articles
 tags:
- - Interview
+  - Interview
 author: Corey
 internal-links:
-  - kubernetes
-  - ingress
+   - kubernetes
+   - ingress
 ---
-*Here at Earthly, we are building an internal platform on AWS using EKS. I talked to our lead architect Corey Larson about the decisions and trade offs he is making as he designs our platform.*
+*Here at Earthly, we are building an internal platform on AWS using EKS.  I talked to our lead architect Corey Larson about the decisions and trade offs he is making as he designs our platform.*
 
  **What is an internal platform?**
 
@@ -19,7 +19,7 @@ A way to think of it is your own company's internal cloud. What is the set of re
 
 We're using AWS, we're using Kubernetes. We're hiding some parts of Kubernetes that we don't want to use from everyday usage, so we don't go there. We're making some trade-offs as to where we choose platform lock-in and where we're not. &nbsp;It's things like that. And as we add more services the platform should develop to accommodate those things in the way we choose to work.
 
-**Isn't Kubernetes supposed to be the platform?** 
+**Isn't Kubernetes supposed to be the platform?**  
 It can be, if you don't want to customize it. But the problem space there is just so large. There're so many API objects, and so many different ways to do things that you don't want to necessarily use them all. &nbsp;Otherwise your platform just gets really complicated. So, you need to choose the bits and pieces that you want to use there. And, tons of the plugins that you use will also have custom resource definitions, their own custom definitions of API objects, that's on top of the ones that already exist. So, you likely want to use those instead of the native Kubernetes ones if your software you're choosing uses those. And so it's all of that, but then there's even more.
 
 Kubernetes doesn't do monitoring. Kubernetes generates logs, but doesn't do anything with them. Kubernetes doesn't necessarily force a deployment process or an integration kind of a process onto you as well. So Kubernetes is really just an arrow in your toolkit that kind of lets you build the rest of that, in a really nice way.
@@ -28,7 +28,7 @@ The platform should cover from the moment source code is pushed to get all the w
 
 ## Kubernetes Ingest Strategies
 
-**What is Ingress and how do requests get to a service inside of Kubernetes?** 
+**What is Ingress and how do requests get to a service inside of Kubernetes?**  
 Ingress is the networking layer of how you get requests to your services from the outside. And Kubernetes doesn't really ship with an Ingress controller by default that actually performs all those liftings, they want you to bring your own. And there's a ton of really interesting ones out there. There's nginx that does that, there's people who use Caddy to do some of that stuff. There's newer ones that are cloud native. They're in that giant behemoth of a chart, the cloud native compute foundation puts up, that gets memed all the time on Twitter.
 
 The way it works is a request comes from the internet and it's going to hit some kind of a load balancer usually. We're using one of Amazon's application load balancers, but in the past I've just used even regular HAProxy or things like that. And from there, it bounces into your cluster. Your Ingress controller is going to pick it up, figure out where it should go, which services it should get routed to and route it to that service. And then, your service will generate a response and it follows these layers of the onion back out.

@@ -1,7 +1,7 @@
 ---
 title: "What Is Continuous Integration?"
 categories: 
- - Articles
+  - Articles
 toc: true 
 author: Deborah Ruck
 internal-links:
@@ -29,7 +29,7 @@ With continuous deployment, code changes that successfully pass through all stag
 
 ### Why CI Is Important to Software Development
 
-> "Continuous integration doesn't get rid of bugs, but it does make them dramatically easier to find and remove." – [Martin Fowler](http://www.thoughtworks.com/continuous-integration?utm_source=Codeship&utm_medium=CI-Guide "CI explainer at ThoughtWorks"), Chief Scientist, ThoughtWorks
+> "Continuous integration doesn't get rid of bugs, but it does make them dramatically easier to find and remove." – [Martin Fowler](http://www.thoughtworks.com/continuous-integration?utm_source=Codeship&utm_medium=CI-Guide  "CI explainer at ThoughtWorks"), Chief Scientist, ThoughtWorks
 
 Before continuous integration became an industry standard, developers' changes were tested less frequently, often only when it was time to release a new version of the software. This meant the team had to spend unnecessary hours fixing bugs that could have been caught earlier in the process with a robust continuous integration process.
 

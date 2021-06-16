@@ -1,23 +1,23 @@
 ---
 title: How to Man in the Middle HTTPS Using mitmproxy
 categories:
- - Tutorials
+  - Tutorials
 toc: true
 author: Adam
 excerpt: Have you ever wanted to see what kinds of requests a service or application on your machine is making and what kind of responses it is getting back?
 internal-links:
-  - mitmproxy
-  - proxy
+   - mitmproxy
+   - proxy
 ---
 ## Introduction
 
-Have you ever wanted to see what kinds of requests a service or application on your machine is making and what kind of responses it is getting back? Have you ever tried and failed to capture this traffic or modify it to investigate how something works (or doesn't work). If you have, then mitmproxy might be what you need. Being able to scan through and observe HTTP protocol traffic easily is a great debugging aid.
+Have you ever wanted to see what kinds of requests a service or application on your machine is making and what kind of responses it is getting back?  Have you ever tried and failed to capture this traffic or modify it to investigate how something works (or doesn't work).  If you have, then mitmproxy might be what you need. Being able to scan through and observe HTTP protocol traffic easily is a great debugging aid.
 
-This guide will walk you through installing and using mitmproxy to capture HTTPS requests. We will start with macOS traffic capture, then touch on Linux and Windows and then finally show how to capture docker daemon traffic and docker container traffic. 
+This guide will walk you through installing and using mitmproxy to capture HTTPS requests.  We will start with macOS traffic capture, then touch on Linux and Windows and then finally show how to capture docker daemon traffic and docker container traffic.  
 
 ## What is mitmproxy?
 
-mitmproxy is a command-line tool that acts as a HTTP and HTTPS proxy and records all the traffic. You can easily see what requests are being made and even replay them. It's great for diagnosing problems.
+mitmproxy is a command-line tool that acts as a HTTP and HTTPS proxy and records all the traffic.  You can easily see what requests are being made and even replay them.  It's great for diagnosing problems.
 
 ## Installing it
 
@@ -45,7 +45,7 @@ mitmproxy also has a web interface if you prefer the mouse over VIM keybindings.
 {% include imgf src="2.png" alt="mitmproxy starting up" %}
 {% include imgf src="3.png" alt="mitmweb starting up" %}
 
-We will use both throughout the tutorial. Whichever you choose, start it up and leave it running.
+We will use both throughout the tutorial.  Whichever you choose, start it up and leave it running.
 
 ## #2 Proxy Our Connection
 
@@ -63,7 +63,7 @@ Under proxies, enable both HTTP and HTTPS proxies and choose port 8080:
 
 ## Adding mitmproxy as A Certificate Authority
 
-We now have our connection proxied to go through our instance of mitmproxy. However, if we attempt to make a HTTPS-based request in a web browser (loading twitter.com for example), something interesting happens.
+We now have our connection proxied to go through our instance of mitmproxy.  However, if we attempt to make a HTTPS-based request in a web browser (loading twitter.com for example), something interesting happens.
 
 {% include imgf src="6.png" alt="Chrome does not recognize the certificate" caption="Chrome does not recognize the certificate" %}
 
@@ -71,17 +71,17 @@ Chrome is warning us that we might be subject to a man in the middle attack.
 
 ### What is a man in the middle
 
-A man in middle attack (MITM) is a security threat where an attacker can get between incoming and outgoing requests. You think you are talking to Twitter.com, but you are talking to the man in the middle, who is talking to Twitter for you. This MITM can view everything you send and even change what you receive.
+A man in middle attack (MITM) is a security threat where an attacker can get between incoming and outgoing requests.  You think you are talking to Twitter.com, but you are talking to the man in the middle, who is talking to Twitter for you.  This MITM can view everything you send and even change what you receive.
 
 {% include imgf src="7.png" alt="Diagram of Man in the middle" %}
 
-The HTTPS protocol prevents MITM attacks. The HTTPS protocol is pretty complex, but all we need to know is that HTTPS uses a trusted Certificate Authority (CA) to sign a certificate. Our browsers assume that if a trusted CA signs the certificate, we are talking directly to who we think we are.
+The HTTPS protocol prevents MITM attacks.  The HTTPS protocol is pretty complex, but all we need to know is that HTTPS uses a trusted Certificate Authority (CA) to sign a certificate. Our browsers assume that if a trusted CA signs the certificate, we are talking directly to who we think we are.
 
 You can view what CA signed the certificate of the website you are viewing in your browser.
 
 {% include imgf src="8.png" alt="Viewing a certificate in your browser" caption="Viewing a certificate in your browser" %}
 
-This is great for protecting online communication but problematic for our debugging purposes. We are trying to man in the middle our own requests. To help overcome this, mitmproxy has generated a certificate. All we need is to get our machine to trust it.
+This is great for protecting online communication but problematic for our debugging purposes. We are trying to man in the middle our own requests.  To help overcome this, mitmproxy has generated a certificate. All we need is to get our machine to trust it.
 
 {% include imgf src="9.png" alt="Getting a Certificate signed by an unknown certificate authority" caption="Getting a Certificate signed by an unknown certificate authority" %}
 
@@ -183,34 +183,34 @@ All HTTPS connections now have certificates signed by mitmproxy, which your mach
 
 {% include imgf src="16.png" alt="Diagram of docker runtime on macOS and Windows" caption="Docker containers run differently on macOS and Windows" %}
 
-At this point, we can successfully capture traffic on our host operating system. Unfortunately, this is insufficient for capturing docker container traffic on macOS and Windows. So let's move on to proxying traffic on the Linux Container Host. 
+At this point,  we can successfully capture traffic on our host operating system. Unfortunately, this is insufficient for capturing docker container traffic on macOS and Windows. So let's move on to proxying traffic on the Linux Container Host.  
 
-On macOS and Windows, Linux containers do not run on the host OS. They can't because they need a Linux host to run. Instead, they run on the Linux Container Host, a VM that Docker Desktop manages. 
+On macOS and Windows, Linux containers do not run on the host OS. They can't because they need a Linux host to run.  Instead, they run on the Linux Container Host, a VM that Docker Desktop manages.  
 
 To see the docker daemon's incoming and outgoing requests, we need to get our proxy settings and our certificate authority into that VM.
 
 Before we proceed, we need to clear the proxy settings on the [host network](/blog/docker-networking) connection. We can leave mitmproxy (or MITMWeb running).
 
-On Windows and macOS, the easiest way to configure a proxy is via `Docker Desktop.` Configure the proxy settings under `Preferences -> Resources -> Proxies.`
+On Windows and macOS, the easiest way to configure a proxy is via `Docker Desktop.`  Configure the proxy settings under `Preferences -> Resources -> Proxies.`
 
 {% include imgf src="18.png" alt="Configure the proxy settings under Preferences -> Resources -> Proxies." caption="Configure the proxy settings under `Preferences -> Resources -> Proxies.`" %}
 
-With that done, the network interface will be proxied. All that is left to do is get our certificate trusted by the Linux container host. Thankfully, Docker Desktop takes care of this for us. On startup, Docker Desktop loads the trusted root certificates from the host machine into the Docker VM, so all we need to do is restart docker. (`Restart Docker` in Docker Desktop).
+With that done, the network interface will be proxied.  All that is left to do is get our certificate trusted by the Linux container host. Thankfully, Docker Desktop takes care of this for us.  On startup, Docker Desktop loads the trusted root certificates from the host machine into the Docker VM, so all we need to do is restart docker. (`Restart Docker` in Docker Desktop).
 
 ## Docker MITM on Linux
 
-On Linux, we can add a proxy by editing the docker client config and then restarting. 
+On Linux, we can add a proxy by editing the docker client config and then restarting.  
 
 ```
 > cat ~/.docker/config.json
 {
  "proxies":
  {
-  "default":
-  {
-   "httpProxy": "http://127.0.0.1:8080",
-   "httpsProxy": "http://127.0.0.1:8080"
-  }
+   "default":
+   {
+     "httpProxy": "http://127.0.0.1:8080",
+     "httpsProxy": "http://127.0.0.1:8080"
+   }
  }
 }
 ```
@@ -225,7 +225,7 @@ On Linux, we can add a proxy by editing the docker client config and then restar
 After restarting, we can test the proxying by performing a docker pull for a random image
 
 ```
-➜ ~ docker pull couchbase:7.0.0-beta
+➜  ~ docker pull couchbase:7.0.0-beta
 7.0.0-beta: Pulling from library/couchbase
 83ee3a23efb7: Pull complete
 db98fc6f11f0: Pull complete
@@ -300,7 +300,7 @@ If you'd like to turn off curl's verification of the certificate, use
 
 ## Adding the CA Cert to our Linux Container
 
-The solution here is a familiar one. We need to follow the steps we used above for configuring Linux to trust a certificate authority, but we need to do it inside our container.
+The solution here is a familiar one.  We need to follow the steps we used above for configuring Linux to trust a certificate authority, but we need to do it inside our container.
 
 There are several ways to accomplish this.
 
@@ -382,29 +382,29 @@ We can then build it and tag it with a `:mitm` tag.
 
 ```
 > docker build --tag alpine:mitm .
-[+] Building 1.9s (10/10) FINISHED               
- => [internal] load build definition from Dockerfile   0.0s
- => => transferring dockerfile: 200B           0.0s
- => [internal] load .dockerignore             0.0s
- => => transferring context: 2B              0.0s
- => [internal] load metadata for docker.io/library/alpin 0.0s
- => CACHED [1/5] FROM docker.io/library/alpine      0.0s
- => [internal] load build context             0.2s
- => => transferring context: 1.36kB            0.2s
- => [2/5] RUN apk update && apk add curl         1.4s
- => [3/5] WORKDIR /usr/local/share/ca-certificates    0.0s
- => [4/5] COPY mitmproxy.crt mitmproxy.crt        0.0s 
- => [5/5] RUN /usr/sbin/update-ca-certificates      0.3s 
- => exporting to image                  0.1s 
- => => exporting layers                  0.1s 
- => => writing image sha256:ca5be16f3d19c34ea5e29ac1774b 0.0s 
- => => naming to docker.io/library/alpine:mitm      0.0s
+[+] Building 1.9s (10/10) FINISHED                             
+ => [internal] load build definition from Dockerfile      0.0s
+ => => transferring dockerfile: 200B                      0.0s
+ => [internal] load .dockerignore                         0.0s
+ => => transferring context: 2B                           0.0s
+ => [internal] load metadata for docker.io/library/alpin  0.0s
+ => CACHED [1/5] FROM docker.io/library/alpine            0.0s
+ => [internal] load build context                         0.2s
+ => => transferring context: 1.36kB                       0.2s
+ => [2/5] RUN apk update && apk add curl                  1.4s
+ => [3/5] WORKDIR /usr/local/share/ca-certificates        0.0s
+ => [4/5] COPY mitmproxy.crt mitmproxy.crt                0.0s 
+ => [5/5] RUN /usr/sbin/update-ca-certificates            0.3s 
+ => exporting to image                                    0.1s 
+ => => exporting layers                                   0.1s 
+ => => writing image sha256:ca5be16f3d19c34ea5e29ac1774b  0.0s 
+ => => naming to docker.io/library/alpine:mitm            0.0s
 ```
 
 Now anytime we run this image, it will be ready to accept responses signed by our certificate authority. And because we didn't change the entry point, we can use it wherever we would use the base image.
 
 ```
-> docker run -it alpine:mitm   
+> docker run -it alpine:mitm      
 \> curl https://google.com
 <HTML><HEAD><meta http-equiv="content-type" content="text/html;charset=utf-8">
 <TITLE>301 Moved</TITLE></HEAD><BODY>
@@ -414,7 +414,7 @@ The document has moved
 </BODY></HTML>
 ```
 
-Any requests by anything running inside the container will be transparently proxied. If you are trying to debug what a service you depend on is doing this will come in handy. 
+Any requests by anything running inside the container will be transparently proxied. If you are trying to debug what a service you depend on is doing this will come in handy.  
 
 ## Extending an Ubuntu Image to Add a Certificate Authority
 
@@ -430,27 +430,27 @@ RUN update-ca-certificates
 
 ```
 > docker build --tag ubuntu:mitm .
-[+] Building 36.4s (10/10) FINISHED              
- => [internal] load build definition from Dockerfile   0.0s
- => => transferring dockerfile: 234B           0.0s
- => [internal] load .dockerignore             0.0s
- => => transferring context: 2B              0.0s
- => [internal] load metadata for docker.io/library/ubunt 0.0s
- => CACHED [1/5] FROM docker.io/library/ubuntu      0.0s
- => [internal] load build context             0.0s
- => => transferring context: 35B             0.0s
- => [2/5] RUN apt update -y && apt upgrade -y && apt in 35.0s
- => [3/5] WORKDIR /usr/local/share/ca-certificates    0.0s
- => [4/5] COPY mitmproxy.crt mitmproxy.crt        0.0s
- => [5/5] RUN update-ca-certificates           0.9s 
- => exporting to image                  0.4s 
- => => exporting layers                  0.3s 
- => => writing image sha256:06fbbeea728364e3bacef503f7c2 0.0s 
- => => naming to docker.io/library/ubuntu:mitm      0.0s
+[+] Building 36.4s (10/10) FINISHED                            
+ => [internal] load build definition from Dockerfile      0.0s
+ => => transferring dockerfile: 234B                      0.0s
+ => [internal] load .dockerignore                         0.0s
+ => => transferring context: 2B                           0.0s
+ => [internal] load metadata for docker.io/library/ubunt  0.0s
+ => CACHED [1/5] FROM docker.io/library/ubuntu            0.0s
+ => [internal] load build context                         0.0s
+ => => transferring context: 35B                          0.0s
+ => [2/5] RUN apt update -y && apt upgrade -y && apt in  35.0s
+ => [3/5] WORKDIR /usr/local/share/ca-certificates        0.0s
+ => [4/5] COPY mitmproxy.crt mitmproxy.crt                0.0s
+ => [5/5] RUN update-ca-certificates                      0.9s 
+ => exporting to image                                    0.4s 
+ => => exporting layers                                   0.3s 
+ => => writing image sha256:06fbbeea728364e3bacef503f7c2  0.0s 
+ => => naming to docker.io/library/ubuntu:mitm            0.0s
 ```
 
 ```
-> docker run -it ubuntu:mitm  
+> docker run -it ubuntu:mitm    
 root> curl https://google.com
 <HTML><HEAD><meta http-equiv="content-type" content="text/html;charset=utf-8">
 <TITLE>301 Moved</TITLE></HEAD><BODY>
@@ -465,8 +465,8 @@ The document has moved
 
 {% include imgf src="22.png" alt="man in the middle diagram" %}
 
-There we go. We can now capture HTTPS traffic made by any containers we run. Combined with the previous steps, we can now intercept and inspect HTTP and HTTPS protocol traffic on our host machine, on a Linux virtual machine running in a hypervisor, and in the actual running containers. 
+There we go. We can now capture HTTPS traffic made by any containers we run. Combined with the previous steps, we can now intercept and inspect HTTP and HTTPS protocol traffic on our host machine, on a Linux virtual machine running in a hypervisor, and in the actual running containers.  
 
 If you can get something running on your local machine, you can now capture and inspect its network requests. This can be very handy for debugging problems and building up an understanding of how something works without digging into the source code. The setup can be a bit complicated, but I hope you can see why mitmproxy is a great tool to keep in your toolkit.
 
-The fun doesn't stop here, though. [mitmproxy](https://mitmproxy.org/) can modify and replay requests and has an active ecosystem, including [mastermind](https://github.com/ustwo/mastermind) which lets you build mock services based on captured requests and [BDFProxy](https://github.com/secretsquirrel/BDFProxy), which uses mitmproxy to modify common security updates for <del>nefarious reasons</del> security research projects, and much more. 
+The fun doesn't stop here, though.  [mitmproxy](https://mitmproxy.org/) can modify and replay requests and has an active ecosystem, including [mastermind](https://github.com/ustwo/mastermind) which lets you build mock services based on captured requests and [BDFProxy](https://github.com/secretsquirrel/BDFProxy), which uses mitmproxy to modify common security updates for <del>nefarious reasons</del> security research projects, and much more.  

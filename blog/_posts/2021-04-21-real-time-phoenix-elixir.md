@@ -1,13 +1,13 @@
 ---
 title: 'Building a Real-Time Application in the Phoenix Framework with Elixir'
 categories:
- - Tutorials
+  - Tutorials
 toc: true
 author: Allan MacGregor
 internal-links:
-  - phoenix
-  - elixir
-  - liveview
+    - phoenix
+    - elixir
+    - liveview
 ---
 
 The Elixir language, along with the [Phoenix framework](https://phoenixframework.org/), has been growing in popularity at a quick pace, and with good reason. Phoenix offers productivity levels comparable to frameworks like Ruby on Rails while being one of the [fastest web frameworks](https://github.com/mroth/phoenix-showdown/blob/master/RESULTS_v3.md) available.
@@ -75,8 +75,8 @@ $ docker run -d \
 ```bash
 > docker ps
 
-CONTAINER ID  IMAGE   COMMAND         CREATED     STATUS    PORTS                 NAMES
-11cbe1d2bc2f  postgres  "docker-entrypoint.s…"  6 seconds ago  Up 5 seconds 5432/tcp, 0.0.0.0:5432->5432/tcp    phoenix-psql
+CONTAINER ID   IMAGE      COMMAND                  CREATED         STATUS        PORTS                                  NAMES
+11cbe1d2bc2f   postgres   "docker-entrypoint.s…"   6 seconds ago   Up 5 seconds  5432/tcp, 0.0.0.0:5432->5432/tcp       phoenix-psql
 I can
 that was
 ```
@@ -92,10 +92,10 @@ psql (13.2 (Debian 13.2-1.pgdg100+1))
 Type "help" for help.
 
 postgres=# \l
-                 List of databases
-  Name  | Owner  | Encoding | Collate  |  Ctype  |  Access privileges  
+                                 List of databases
+   Name    |  Owner   | Encoding |  Collate   |   Ctype    |   Access privileges   
 -----------+----------+----------+------------+------------+-----------------------
- postgres | postgres | UTF8   | en_US.utf8 | en_US.utf8 | ...
+ postgres  | postgres | UTF8     | en_US.utf8 | en_US.utf8 | ...
 
 ```
 
@@ -116,24 +116,24 @@ Mix archives are essentially `.zip` files of an Elixir project following the [Er
 Now that the Phoenix archive is installed locally if you run `mix help`, you should see a new set of mix commands available in your system:
 
 ```bash
-mix phx          # Prints Phoenix help information
-mix phx.digest      # Digests and compresses static files
-mix phx.digest.clean   # Removes old versions of static assets
-mix phx.gen.cert     # Generates a self-signed certificate for HTTPS testing
-mix phx.gen.channel    # Generates a Phoenix channel
-mix phx.gen.context    # Generates a context with functions around an Ecto schema
-mix phx.gen.embedded   # Generates an embedded Ecto schema file
-mix phx.gen.html     # Generates controller, views, and context for an HTML resource
-mix phx.gen.json     # Generates controller, views, and context for a JSON resource
-mix phx.gen.live     # Generates LiveView, templates, and context for a resource
-mix phx.gen.presence   # Generates a Presence tracker
-mix phx.gen.schema    # Generates an Ecto schema and migration file
-mix phx.gen.secret    # Generates a secret
-mix phx.new        # Creates a new Phoenix v1.5.4 application
-mix phx.new.ecto     # Creates a new Ecto project within an umbrella project
-mix phx.new.web      # Creates a new Phoenix web project within an umbrella project
-mix phx.routes      # Prints all routes
-mix phx.server      # Starts applications and their servers
+mix phx                   # Prints Phoenix help information
+mix phx.digest            # Digests and compresses static files
+mix phx.digest.clean      # Removes old versions of static assets
+mix phx.gen.cert          # Generates a self-signed certificate for HTTPS testing
+mix phx.gen.channel       # Generates a Phoenix channel
+mix phx.gen.context       # Generates a context with functions around an Ecto schema
+mix phx.gen.embedded      # Generates an embedded Ecto schema file
+mix phx.gen.html          # Generates controller, views, and context for an HTML resource
+mix phx.gen.json          # Generates controller, views, and context for a JSON resource
+mix phx.gen.live          # Generates LiveView, templates, and context for a resource
+mix phx.gen.presence      # Generates a Presence tracker
+mix phx.gen.schema        # Generates an Ecto schema and migration file
+mix phx.gen.secret        # Generates a secret
+mix phx.new               # Creates a new Phoenix v1.5.4 application
+mix phx.new.ecto          # Creates a new Ecto project within an umbrella project
+mix phx.new.web           # Creates a new Phoenix web project within an umbrella project
+mix phx.routes            # Prints all routes
+mix phx.server            # Starts applications and their servers
 ```
 
 Running `mix phx.new` from any directory will create a new Phoenix application. But before you dive in, it's crucial that you understand the options available when making a Phoenix project. Let's take a look by running the following command:
@@ -143,30 +143,30 @@ Running `mix phx.new` from any directory will create a new Phoenix application. 
 
 ...
 
- • --live - include Phoenix.LiveView to make it easier than ever to build
-  interactive, real-time applications
- • --umbrella - generate an umbrella project, with one application for
-  your domain and a second application for the web interface
- • --app - the name of the OTP application
- • --module - the name of the base module in the generated skeleton
- • --database - specify the database adapter for Ecto. One of:
-  • postgres - via https://github.com/elixir-ecto/postgrex
-  • mysql - via https://github.com/elixir-ecto/myxql
-  • mssql - via https://github.com/livehelpnow/tds
+  • --live - include Phoenix.LiveView to make it easier than ever to build
+    interactive, real-time applications
+  • --umbrella - generate an umbrella project, with one application for
+    your domain and a second application for the web interface
+  • --app - the name of the OTP application
+  • --module - the name of the base module in the generated skeleton
+  • --database - specify the database adapter for Ecto. One of:
+    • postgres - via https://github.com/elixir-ecto/postgrex
+    • mysql - via https://github.com/elixir-ecto/myxql
+    • mssql - via https://github.com/livehelpnow/tds
 
-  Please check the driver docs for more information and requirements.
-  Defaults to "postgres".
+    Please check the driver docs for more information and requirements.
+    Defaults to "postgres".
 
- • --no-webpack - do not generate webpack files for static asset building.
-  When choosing this option, you will need to manually handle JavaScript
-  dependencies if building HTML apps
- • --no-ecto - do not generate Ecto files
- • --no-html - do not generate HTML views
- • --no-gettext - do not generate gettext files
- • --no-dashboard - do not include Phoenix.LiveDashboard
- • --binary-id - use binary_id as primary key type in Ecto schemas
- • --verbose - use verbose output
- 
+  • --no-webpack - do not generate webpack files for static asset building.
+    When choosing this option, you will need to manually handle JavaScript
+    dependencies if building HTML apps
+  • --no-ecto - do not generate Ecto files
+  • --no-html - do not generate HTML views
+  • --no-gettext - do not generate gettext files
+  • --no-dashboard - do not include Phoenix.LiveDashboard
+  • --binary-id - use binary_id as primary key type in Ecto schemas
+  • --verbose - use verbose output
+  
 ...
 
 ```
@@ -211,15 +211,15 @@ Now the app generated has the default Phoenix styling and setup, but let's add a
 
 ```json
 ...
- "devDependencies": {
+  "devDependencies": {
 ...
-  "postcss": "^8.1.10",
-  "postcss-import": "^13.0.0",
-  "postcss-loader": "^4.1.0",
-  "postcss-nested": "^4.2.1",
-  "tailwindcss": "^2.0.1",
+    "postcss": "^8.1.10",
+    "postcss-import": "^13.0.0",
+    "postcss-loader": "^4.1.0",
+    "postcss-nested": "^4.2.1",
+    "tailwindcss": "^2.0.1",
 ...
-  }
+    }
 ```
 
 2. Next, make sure to install your new dependencies:
@@ -254,11 +254,11 @@ import "../css/app.css"
 Now that you have a project up with the base styling, you can start working on adding the routes and logic to show the auctions. Open your `lib/phoenix_fund_web/router.ex` file and look for the following chunk of code:
 
 ```elixir
- scope "/", PhoenixFundWeb do
-  pipe_through :browser
+  scope "/", PhoenixFundWeb do
+    pipe_through :browser
 
-  live "/", PageLive, :index
- end
+    live "/", PageLive, :index
+  end
 ```
 
 This is the scaffold code that was generated when you generated the application. You want to add a new route for your actions, and you can do that easily by using the `live` macro:
@@ -277,7 +277,7 @@ defmodule PhoenixFundWeb.AuctionLive do
  use PhoenixFundWeb, :live_view
  
  def mount(params, session, socket) do
- {:ok, assign(socket, :raised, 0)}
+  {:ok, assign(socket, :raised, 0)}
  end
 end
 ```
@@ -298,18 +298,18 @@ In your `mount/3` function, assign the initial status for your LiveView so it ca
 ```elixir
 defmodule PhoenixFundWeb.AuctionLive do 
 ...
- def render(assigns) do
-  ~L"""
-    <h1>Cabinet of Curiosities</h1>
-    <div id="auction">
-      <div class="meter">
-       <span style="width: <%= @raised %>%">
-        $<%= @raised %> USD
-       </span>
-      </div>
-    </div>
-  """
- end
+  def render(assigns) do
+    ~L"""
+       <h1>Cabinet of Curiosities</h1>
+       <div id="auction">
+           <div class="meter">
+             <span style="width: <%= @raised %>%">
+               $<%= @raised %> USD
+             </span>
+           </div>
+        </div>
+    """
+  end
 end
 ```
 
@@ -325,23 +325,23 @@ Excellent! Your new route is now being rendered by your LiveView. Now it's time 
 ```elixir 
 defmodule PhoenixFundWeb.AuctionLive do 
 ...
- def render(assigns) do
-  ~L"""
-    <h1>Cabinet of Curiosities</h1>
-    <div id="auction">
-      <div class="meter">
-       <span style="width: <%= @raised %>%">
-        $<%= @raised %> USD
-       </span>
-      </div>
-      
-    <button phx-click="donate-1"> $1 </button>
-      <button phx-click="donate-5"> $5 </button>
-      <button phx-click="donate-10"> $10 </button>
-      <button phx-click="donate-100"> $100 </button>
-    </div>
-  """
- end
+  def render(assigns) do
+    ~L"""
+       <h1>Cabinet of Curiosities</h1>
+       <div id="auction">
+           <div class="meter">
+             <span style="width: <%= @raised %>%">
+               $<%= @raised %> USD
+             </span>
+           </div>
+           
+        <button phx-click="donate-1"> $1 </button>
+           <button phx-click="donate-5"> $5 </button>
+           <button phx-click="donate-10"> $10 </button>
+           <button phx-click="donate-100"> $100 </button>
+        </div>
+    """
+  end
 end
 ```
 
@@ -355,11 +355,11 @@ However, if you try to click any of your new buttons, you're going to get an err
 {% raw %}
 [error] GenServer #PID<0.935.0> terminating
 ** (FunctionClauseError) no function clause matching in PhoenixFundWeb.AuctionLive.handle_event/3
-  (phoenix_fund 0.1.0) lib/phoenix_fund_web/live/auction_live.ex:26: PhoenixFundWeb.AuctionLive.handle_event("donate-5", %{"value" => ""}, #Phoenix.LiveView.Socket<assigns: %{flash: %{}, live_action: nil, live_module: PhoenixFundWeb.AuctionLive, raised: 34}, changed: %{}, endpoint: PhoenixFundWeb.Endpoint, id: "phx-FmnbLK6vHaXG9gIk", parent_pid: nil, root_pid: #PID<0.935.0>, router: PhoenixFundWeb.Router, view: PhoenixFundWeb.AuctionLive, ...>)
-  (phoenix_live_view 0.13.0) lib/phoenix_live_view/channel.ex:102: Phoenix.LiveView.Channel.handle_info/2
-  (stdlib 3.14) gen_server.erl:689: :gen_server.try_dispatch/4
-  (stdlib 3.14) gen_server.erl:765: :gen_server.handle_msg/6
-  (stdlib 3.14) proc_lib.erl:226: :proc_lib.init_p_do_apply/3
+    (phoenix_fund 0.1.0) lib/phoenix_fund_web/live/auction_live.ex:26: PhoenixFundWeb.AuctionLive.handle_event("donate-5", %{"value" => ""}, #Phoenix.LiveView.Socket<assigns: %{flash: %{}, live_action: nil, live_module: PhoenixFundWeb.AuctionLive, raised: 34}, changed: %{}, endpoint: PhoenixFundWeb.Endpoint, id: "phx-FmnbLK6vHaXG9gIk", parent_pid: nil, root_pid: #PID<0.935.0>, router: PhoenixFundWeb.Router, view: PhoenixFundWeb.AuctionLive, ...>)
+    (phoenix_live_view 0.13.0) lib/phoenix_live_view/channel.ex:102: Phoenix.LiveView.Channel.handle_info/2
+    (stdlib 3.14) gen_server.erl:689: :gen_server.try_dispatch/4
+    (stdlib 3.14) gen_server.erl:765: :gen_server.handle_msg/6
+    (stdlib 3.14) proc_lib.erl:226: :proc_lib.init_p_do_apply/3
 Last message: %Phoenix.Socket.Message{event: "event", join_ref: "4", payload: %{"event" => "donate-5", "type" => "click", "value" => %{"value" => ""}}, ref: "39", topic: "lv:phx-FmnbLK6vHaXG9gIk"}
 State: %{components: {%{}, %{}, 0}, join_ref: "4", serializer: Phoenix.Socket.V2.JSONSerializer, socket: #Phoenix.LiveView.Socket<assigns: %{flash: %{}, live_action: nil, live_module: PhoenixFundWeb.AuctionLive, raised: 34}, changed: %{}, endpoint: PhoenixFundWeb.Endpoint, id: "phx-FmnbLK6vHaXG9gIk", parent_pid: nil, root_pid: #PID<0.935.0>, router: PhoenixFundWeb.Router, view: PhoenixFundWeb.AuctionLive, ...>, topic: "lv:phx-FmnbLK6vHaXG9gIk", transport_pid: #PID<0.929.0>}
 {% endraw %}
@@ -374,10 +374,10 @@ Your next step is adding a new definition of `handle_event/3` for each one of yo
 ```elixir
 defmodule PhoenixFundWeb.AuctionLive do 
 ...
- def handle_event("donate-1", _, socket) do
-  raised = socket.assigns.raised + 1
-  {:noreply, assign(socket, :raised, raised)}
- end
+  def handle_event("donate-1", _, socket) do
+    raised = socket.assigns.raised + 1
+    {:noreply, assign(socket, :raised, raised)}
+  end
 end
 ```
 
@@ -401,20 +401,20 @@ Make sure to add the following code to handle the remaining events:
 ```elixir
 defmodule PhoenixFundWeb.AuctionLive do 
 ...
- def handle_event("donate-5", _, socket) do
-  raised = socket.assigns.raised + 5
-  {:noreply, assign(socket, :raised, raised)}
- end
+  def handle_event("donate-5", _, socket) do
+    raised = socket.assigns.raised + 5
+    {:noreply, assign(socket, :raised, raised)}
+  end
 
- def handle_event("donate-10", _, socket) do
-  raised = socket.assigns.raised + 10
-  {:noreply, assign(socket, :raised, raised)}
- end
+  def handle_event("donate-10", _, socket) do
+    raised = socket.assigns.raised + 10
+    {:noreply, assign(socket, :raised, raised)}
+  end
 
- def handle_event("donate-100", _, socket) do
-  raised = socket.assigns.raised + 100
-  {:noreply, assign(socket, :raised, raised)}
- end 
+  def handle_event("donate-100", _, socket) do
+    raised = socket.assigns.raised + 100
+    {:noreply, assign(socket, :raised, raised)}
+  end  
 end
 ```
 
@@ -458,14 +458,14 @@ Next, tell your LiveView process to subscribe to a specific topic when the LiveV
 
 ```elixir
 defmodule PhoenixFundWeb.AuctionLive do
- use PhoenixFundWeb, :live_view
- 
- @topic "auction"
+  use PhoenixFundWeb, :live_view
+  
+  @topic "auction"
 
- def mount(params, session, socket) do
-  PhoenixFundWeb.Endpoint.subscribe(@topic)
-  {:ok, assign(socket, :raised, 0)}
- end
+  def mount(params, session, socket) do
+   PhoenixFundWeb.Endpoint.subscribe(@topic)
+    {:ok, assign(socket, :raised, 0)}
+  end
 ...
 end
 ```
@@ -477,29 +477,29 @@ You'll use a generic `auction` topic, as you're only dealing with a single aucti
 Your next step is to modify each of your `handle_event/3` definitions to broadcast. The updated code looks like:
 
 ```elixir
- def handle_event("donate-1", _, socket) do
-  raised = socket.assigns.raised + 1
-  PhoenixFundWeb.Endpoint.broadcast_from(self(), @topic, "donate_event", raised)
-  {:noreply, assign(socket, :raised, raised)}
- end
+  def handle_event("donate-1", _, socket) do
+    raised = socket.assigns.raised + 1
+    PhoenixFundWeb.Endpoint.broadcast_from(self(), @topic, "donate_event", raised)
+    {:noreply, assign(socket, :raised, raised)}
+  end
 
- def handle_event("donate-5", _, socket) do
-  raised = socket.assigns.raised + 5
-  PhoenixFundWeb.Endpoint.broadcast_from(self(), @topic, "donate_event", raised)
-  {:noreply, assign(socket, :raised, raised)}
- end
+  def handle_event("donate-5", _, socket) do
+    raised = socket.assigns.raised + 5
+    PhoenixFundWeb.Endpoint.broadcast_from(self(), @topic, "donate_event", raised)
+    {:noreply, assign(socket, :raised, raised)}
+  end
 
- def handle_event("donate-10", _, socket) do
-  raised = socket.assigns.raised + 10
-  PhoenixFundWeb.Endpoint.broadcast_from(self(), @topic, "donate_event", raised)
-  {:noreply, assign(socket, :raised, raised)}
- end
+  def handle_event("donate-10", _, socket) do
+    raised = socket.assigns.raised + 10
+    PhoenixFundWeb.Endpoint.broadcast_from(self(), @topic, "donate_event", raised)
+    {:noreply, assign(socket, :raised, raised)}
+  end
 
- def handle_event("donate-100", _, socket) do
-  raised = socket.assigns.raised + 100
-  PhoenixFundWeb.Endpoint.broadcast_from(self(), @topic, "donate_event", raised)
-  {:noreply, assign(socket, :raised, raised)}
- end
+  def handle_event("donate-100", _, socket) do
+    raised = socket.assigns.raised + 100
+    PhoenixFundWeb.Endpoint.broadcast_from(self(), @topic, "donate_event", raised)
+    {:noreply, assign(socket, :raised, raised)}
+  end
 ```
 
 You're using the `Phoenix.PubSub.broadcast_from/4` function, which allows you to broadcast a message describing a new socket state to all the LiveView clients that are subscribed to a topic. Notice that you're not triggering the click event on the other clients, just letting them know that the socket state has changed.
@@ -507,9 +507,9 @@ You're using the `Phoenix.PubSub.broadcast_from/4` function, which allows you to
 Finally, now that you're broadcasting the socket updates, you need to tell your LiveView process how to handle the incoming broadcasts. For this, add a `handle_info/2` that will pattern match against the broadcast struct:
 
 ```elixir
- def handle_info(%{topic: @topic, payload: raised}, socket) do
-  {:noreply, assign(socket, :raised, raised)}
- end
+  def handle_info(%{topic: @topic, payload: raised}, socket) do
+    {:noreply, assign(socket, :raised, raised)}
+  end
 ```
 
 If you start up your application and open two browser windows side by side, you should see the donation meter updating on all windows as soon anyone clicks any of the donation buttons.

@@ -3,9 +3,9 @@ title: 'Introducing Earthly: build automation for the container era'
 featured: true
 author: Vlad
 categories:
- - News
+  - News
 internal-links:
-  - build automation
+   - build automation
 ---
 
 We live in an era of continuous delivery, containers, automation, rich set of programming languages, varying code structures (mono/poly-repos) and open-source. And yet, our most popular CI/CD platform was started 15 years ago when the industry looked very different. CI systems have not changed much since — they are still largely glorified bash scripts, and the limitations are starting to show their age. For context, Docker's first release was 7 years ago and Kubernetes is only 5 years old. There is no way Jenkins ("Hudson" back then) could have been built with containers in mind, as Docker didn't even exist at the time.
@@ -41,14 +41,14 @@ FROM golang:1.13-alpine3.11
 WORKDIR /go-example
 
 build:
- COPY main.go .
- RUN go build -o build/go-example main.go
- SAVE ARTIFACT build/go-example AS LOCAL build/go-example
+  COPY main.go .
+  RUN go build -o build/go-example main.go
+  SAVE ARTIFACT build/go-example AS LOCAL build/go-example
 
 docker:
- COPY +build/go-example .
- ENTRYPOINT ["/go-example/go-example"]
- SAVE IMAGE go-example:latest
+  COPY +build/go-example .
+  ENTRYPOINT ["/go-example/go-example"]
+  SAVE IMAGE go-example:latest
 ```
 
 Earthly in the future will be about much more: for example, cloud-based build parallelization that has never been possible before. For now, you can run it on top of your existing CI, and you can run it locally for development. You still get the other benefits mentioned above.
