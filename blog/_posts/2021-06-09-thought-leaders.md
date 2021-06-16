@@ -16,7 +16,7 @@ I was a new engineering manager whose team was starting a new small but ambitiou
 
 I'm not sure if reaching alignment is a universal term that I was previously unfamiliar with or if it's company-specific. But for this project, it worked like this: The project was approved, but there were all kinds of people vaguely horizontal to me in the organization who could 'raise objections' about it.
 
-Raising objections is a process where you tell someone above me, my boss or my boss's boss, or so on, that you have concerns about the project's success.  An easy way to report concerns can be an excellent idea. If the SRE manager heard we were using bongoDB and had dealt with bongoDB data loss in the past, then there is no better time to speak than at the beginning of the project. And because the head of engineering doesn't want to spend time mediating discussions about database preferences, or whatever the latest concerns are, part of my job was to make sure there were no objections to be raised.
+Raising objections is a process where you tell someone above me, my boss or my boss's boss, or so on, that you have concerns about the project's success. An easy way to report concerns can be an excellent idea. If the SRE manager heard we were using bongoDB and had dealt with bongoDB data loss in the past, then there is no better time to speak than at the beginning of the project. And because the head of engineering doesn't want to spend time mediating discussions about database preferences, or whatever the latest concerns are, part of my job was to make sure there were no objections to be raised.
 
 ## Seeking Alignment
 
@@ -31,13 +31,13 @@ At its worse, the conversations tended to go something like this:
 
 ### The Quality Person Meeting
 
-> **Adam:** You've had a chance to read the design doc.  What are your thoughts?
+> **Adam:** You've had a chance to read the design doc. What are your thoughts?
 >
 > **Quality Person:** There is nothing in here about unit-test coverage, and taking a look at your other services, they are below the 80% level we set as an H2 goal. Can you add a unit-testing strategy to the plan and set a specific coverage goal?
 
 ### The Data Person Meeting
 
-> **Adam:** You've had a chance to read the design doc.  What are your thoughts?
+> **Adam:** You've had a chance to read the design doc. What are your thoughts?
 >
 > **Data Person:** We are currently migrating all data in Important-Project-A from springy search to beetleDB, and it is a multi-year project. All new projects should follow this, so the effort doesn't need to be repeated.
 >
@@ -47,11 +47,11 @@ At its worse, the conversations tended to go something like this:
 
 ### The Micro-Services Person
 
-> **Adam:** You've had a chance to read the design doc.  What are your thoughts?
+> **Adam:** You've had a chance to read the design doc. What are your thoughts?
 >
 > **Micro-Services Person:** I would recommend separating the read-side from the write-side. Put them in separate services so that they can be scaled independently. That was our number one secret to scaling when I was at warble: the finer grain the services, the easier they are to scale.
 
-I think you get the idea. If we adapt to all the feedback, then we will avoid the pitfalls of the recent past.  But also, the scope of the project will drastically grow, and the project will likely never get completed.  It's like a [second-system effect](https://en.wikipedia.org/wiki/Second-system_effect) but brought forward in time.
+I think you get the idea. If we adapt to all the feedback, then we will avoid the pitfalls of the recent past. But also, the scope of the project will drastically grow, and the project will likely never get completed. It's like a [second-system effect](https://en.wikipedia.org/wiki/Second-system_effect) but brought forward in time.
 
 ## The Solution
 
@@ -59,7 +59,7 @@ I think you get the idea. If we adapt to all the feedback, then we will avoid th
  {% picture grid {{site.pimages}}{{page.slug}}/hearnoevil.png  --picture --img width="200px" --alt {{ Hear No Evil }} %}
 <figcaption>The Solution</figcaption>
 </div>
-Thankfully, not all the advice I received was bad.  One person, in particular, asked very pointed questions about the problems be solved and identified some potential blind spots in our plan.  They also offered a great tip for dealing with advice that didn't seem relevant to the project's success: Create an extended product roadmap and put those items at least a year off into the future "and as long as they don't seem relevant, you can just keep pushing them into the future." Perversely this plan made everyone happy -- everyone's feedback is on the roadmap, and now it's all just a question of priorities.
+Thankfully, not all the advice I received was bad. One person, in particular, asked very pointed questions about the problems be solved and identified some potential blind spots in our plan. They also offered a great tip for dealing with advice that didn't seem relevant to the project's success: Create an extended product roadmap and put those items at least a year off into the future "and as long as they don't seem relevant, you can just keep pushing them into the future." Perversely this plan made everyone happy -- everyone's feedback is on the roadmap, and now it's all just a question of priorities.
 
 With that bureaucratic judo trick, the project got off the ground. But the experience stayed with me. What made some advice valuable and some advice problematic? Was there some general principle behind expert advice?
 
@@ -68,7 +68,7 @@ With that bureaucratic judo trick, the project got off the ground. But the exper
 > "All bad advice is alike, but all good advice is unique to the problem at hand."
 ― Leo Tolstoy misquoted
 
-The problem with all the bad advice was that it was unrelated to the problem we were trying to solve.  The unit-testing person will always be advocating for more unit tests.  The distributed database person will always want things to go into their favorite database.
+The problem with all the bad advice was that it was unrelated to the problem we were trying to solve. The unit-testing person will always be advocating for more unit tests. The distributed database person will always want things to go into their favorite database.
 
 It's sort of like Minh's cooking advice from King of The Hill: She tastes something and then says, "Add Nutmeg". When would nutmeg not be a good fit?  Doesn't all advice need to be contingent?
 
@@ -79,13 +79,13 @@ It's sort of like Minh's cooking advice from King of The Hill: She tastes someth
 
 Uncontingent advice is what I think of when I hear the term thought-leader - someone has a single solution that seems to fit every problem. Whatever problem you face, the answer is test-driven-development or stream-architectures or being-really-truly-agile.
 
-I get frustrated by advice like that but is it wrong? Unit testing, streaming architectures, agile are all good things.  I don't write code in a test-driven style, but I did try it out a bit when it was the hot-thing™, and I learned a lot from the process.  All of the thought-leaders are trying to move the industry forward. Still, there is some evidence that noncontingent, one-big-idea advice is less valuable than more nuanced, complicated advice.
+I get frustrated by advice like that but is it wrong? Unit testing, streaming architectures, agile are all good things. I don't write code in a test-driven style, but I did try it out a bit when it was the hot-thing™, and I learned a lot from the process. All of the thought-leaders are trying to move the industry forward. Still, there is some evidence that noncontingent, one-big-idea advice is less valuable than more nuanced, complicated advice.
 
 ## Decision-Making Research
 
 {% picture content-wide {{site.pimages}}{{page.slug}}/fork.png  --picture --alt {{ Add Nutmeg }} %}
 
-One way to think about advice is as a prediction.  Advocating for TDD can be viewed as a prediction that if you don't write tests before you write code, your project will be less well-designed and harder to maintain. Stream-Process-All-Things similarly predicts that if you approach a problem as one of streams you'll get a better result than if you didn't. Obviously, not all advice is tied to specific and explicit predictions, and many thought-leaders would object to the idea that just because they are always talking about a thing, that is the most critical thing in every case. But I do think it's fair to say that if your proposed solution is always a variation of "use the actor system to model concurrency" or "you need a stronger allegiance to SOLID principles" then you believe those solutions would strongly increase desired project outcomes.
+One way to think about advice is as a prediction. Advocating for TDD can be viewed as a prediction that if you don't write tests before you write code, your project will be less well-designed and harder to maintain. Stream-Process-All-Things similarly predicts that if you approach a problem as one of streams you'll get a better result than if you didn't. Obviously, not all advice is tied to specific and explicit predictions, and many thought-leaders would object to the idea that just because they are always talking about a thing, that is the most critical thing in every case. But I do think it's fair to say that if your proposed solution is always a variation of "use the actor system to model concurrency" or "you need a stronger allegiance to SOLID principles" then you believe those solutions would strongly increase desired project outcomes.
 
 ## Tetlock's Hedgehogs
 
@@ -95,13 +95,13 @@ It turns out that [Philip E. Tetlock](https://scholar.google.com/citations?user=
 
 Tetlock's earliest work was the study of political experts. He solicited political advice and predictions from 284 experts between 1984 and 2004, and once enough time had passed to determine the accuracy of their forecasts, he scored the results. Political punditry is different from tech thought-leadership -- none of my advice-givers were explicitly predicting a project outcome  --  but I think his findings have a lot to teach us.
 
-He found that experts could be split into two broad categories, the first of which he called Hedgehogs. A Hedgehog had one big idea like free-market capitalism (or nordic model capitalism or demand-side economics), which they used as a lens to look at many issues. They applied this big idea to every situation, which resulted in noncontingent and straightforward advice.  You always need more freedom, nutmeg, and unit tests. Hedgehogs are "Confident forecasters".
+He found that experts could be split into two broad categories, the first of which he called Hedgehogs. A Hedgehog had one big idea like free-market capitalism (or nordic model capitalism or demand-side economics), which they used as a lens to look at many issues. They applied this big idea to every situation, which resulted in noncontingent and straightforward advice. You always need more freedom, nutmeg, and unit tests. Hedgehogs are "Confident forecasters".
 
 ## The Foxes
 
  {% picture content-wide {{site.pimages}}{{page.slug}}/foxes.png  --picture --img width="1200px" --alt {{ A Fox }} %}
 
-When all the predictions were added up and scored, hedgehogs lost out to his second category: Foxes. Foxes were the opposite of hedgehogs. They had complicated advice and were skeptical of even their own predictions.  Tetlock also found that foxes were less likely to be famous because contingent advice is harder to explain in a sound bite.
+When all the predictions were added up and scored, hedgehogs lost out to his second category: Foxes. Foxes were the opposite of hedgehogs. They had complicated advice and were skeptical of even their own predictions. Tetlock also found that foxes were less likely to be famous because contingent advice is harder to explain in a sound bite.
 
 Hedgehogs with predictions about the 2003 Iraq war existed on both sides of the political spectrum. They had theories based on over-arching political philosophy, but the best predictors of the outcomes were foxes who had in-depth knowledge of the region, not big theories.
 
@@ -115,4 +115,4 @@ Software development is full of confident forecasters. We are a pretty new field
 
 The more universal a solution someone claims to have to whatever software engineering problem exists, and the more confident they are that it is a fully generalized solution, the more you should question them. The more specific and contingent the advice - the more someone says 'it depends' or 'YourSQL works well in a read-heavy context with the following constraints' the more likely they are to be leading you in the right direction. At least that's what I have found.
 
-Here at Earthly, we've been talking to a lot of people about how they build software and doing a lot of writing.  When meeting with someone or [writing down advice](/blog/unit-vs-integration), I try to keep in mind Tetlock's findings. I really think [repeatable builds](https://earthly.dev) are important, but if it's my solution to every problem, then I think I'm probably falling into the same trap. So this post is my reminder to myself: Don't be a ~~hedgehog~~ thought-leader.
+Here at Earthly, we've been talking to a lot of people about how they build software and doing a lot of writing. When meeting with someone or [writing down advice](/blog/unit-vs-integration), I try to keep in mind Tetlock's findings. I really think [repeatable builds](https://earthly.dev) are important, but if it's my solution to every problem, then I think I'm probably falling into the same trap. So this post is my reminder to myself: Don't be a ~~hedgehog~~ thought-leader.

@@ -154,7 +154,7 @@ test:debug --test_arg=--node_options=--inspect-brk --test_output=streamed --test
 
 ### Adding the `buildifier` Dependency to Your Project
 
-Buildifier is a formatting tool that ensures all `BUILD` files are formatted in a similar fashion. It creates a standardized formatting for all your `BUILD` and `.bzl` files.  It also has a linter out of the box to help you detect issues in your code and automatically fix them. You can add the `buildifier` dependency to your project either using npm:
+Buildifier is a formatting tool that ensures all `BUILD` files are formatted in a similar fashion. It creates a standardized formatting for all your `BUILD` and `.bzl` files. It also has a linter out of the box to help you detect issues in your code and automatically fix them. You can add the `buildifier` dependency to your project either using npm:
 
 ```shell
 npm install --save-dev @bazel/buildifier

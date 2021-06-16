@@ -10,7 +10,7 @@ internal-links:
 ---
 ## PROGRAM REJECTED FOR MENTAL HEALTH REASONS
 
-In 1972, two students learning FORTRAN came up with a fantastic new programming language called INTERCAL.  INTERCAL is a bit unusual. For example, single quotes are called *sparks*, and double quotes are called *rabbit ears*, less than (<) is an *angle*, and a dash (-) is a *worm*.  This makes the manual read like a word puzzle combined with an extended in-joke.
+In 1972, two students learning FORTRAN came up with a fantastic new programming language called INTERCAL. INTERCAL is a bit unusual. For example, single quotes are called *sparks*, and double quotes are called *rabbit ears*, less than (<) is an *angle*, and a dash (-) is a *worm*. This makes the manual read like a word puzzle combined with an extended in-joke.
 
 > One final comment about sparks and rabbit-ears; if the next character in the program is a spot, as often happens because onespot variables are common choices for operands, a spark and the following spot can be combined into a wow (!). - [INTERCAL Manual](http://www.catb.org/~esr/intercal/ick.htm).
 
@@ -18,7 +18,7 @@ The compiler errors are where the authors got genuinely creative. Errors include
 
 Yes, this is a parody language, and reading the manual, you get the sense that no one has yet had as much fun writing technical documentation as Lyon and Woods did writing this.
 
-The language itself looks less fun.  Here is [Hello World](http://www.rosettacode.org/wiki/Category:Intercal):
+The language itself looks less fun. Here is [Hello World](http://www.rosettacode.org/wiki/Category:Intercal):
 
 ``` fortran
        NOTE THIS IS INTERCAL
@@ -49,11 +49,11 @@ One of the exciting innovations of INTERCAL is the `COMEFROM` [instruction](http
 
 ## VARIABLES MAY NOT BE STORED IN WEST HYPERSPACE
 
-At Twitter, they have a giant [monorepo](/blog/monorepo-vs-polyrepo) with lots of services in it.  And somebody at Twitter wanted to know which language was most prevalent.  Which language does Twitter use the most?  
+At Twitter, they have a giant [monorepo](/blog/monorepo-vs-polyrepo) with lots of services in it. And somebody at Twitter wanted to know which language was most prevalent. Which language does Twitter use the most?  
 
-Java came in 3rd, and [Scala](/blog/top-5-scala-blogs) came in 2nd. But 1st was a surprise.  The number one programming language used at Twitter was YAML[^1].
+Java came in 3rd, and [Scala](/blog/top-5-scala-blogs) came in 2nd. But 1st was a surprise. The number one programming language used at Twitter was YAML[^1].
 
-YAML usually doesn't feel like a programming language to me.  The file I'm currently writing in is in markdown with some YAML at the top to set the title and associated fields.
+YAML usually doesn't feel like a programming language to me. The file I'm currently writing in is in markdown with some YAML at the top to set the title and associated fields.
 
 ``` yaml
 title: INTERCAL, YAML, And Other Horrible Programming Languages
@@ -62,7 +62,7 @@ author: Adam
 
 Nothing executes the YAML. It only offers some information to the blogging platform. But I don't think that is the type of YAML that made up the volume of config at Twitter.
 
-I suspect a lot of it was build and deployment scripts in the form of YAML. It was the type of configuration that encoded the control flow of some external system.  YAML like that lives in this grey zone between declarative configuration and a full-blown programming language.
+I suspect a lot of it was build and deployment scripts in the form of YAML. It was the type of configuration that encoded the control flow of some external system. YAML like that lives in this grey zone between declarative configuration and a full-blown programming language.
 
 I'll show you what I mean. Let's look at an example from [shellcheck](https://github.com/koalaman/shellcheck/blob/bd3299edd3b517f92f74c2e3327c9f6b72b31f7c/.travis.yml)'s build script.
 
@@ -99,7 +99,7 @@ jobs:
   {% endraw %}
 ```
 
-Now the YAML has just devolved into specifying how to execute a grab bag of commands.  We haven't seen control-flow yet, but it's coming.
+Now the YAML has just devolved into specifying how to execute a grab bag of commands. We haven't seen control-flow yet, but it's coming.
 
 ``` yaml
       if: type = push
@@ -110,7 +110,7 @@ Now the YAML has just devolved into specifying how to execute a grab bag of comm
 
 There we go, branching. It's an if statement in a YAML file!
 
-And this isn't [TravisCI](/blog/migrating-from-travis), or CI specific.  Here is a simple example from Ansible:
+And this isn't [TravisCI](/blog/migrating-from-travis), or CI specific. Here is a simple example from Ansible:
 
 ``` yaml
 - hosts: all
@@ -196,9 +196,9 @@ That is `FizzBuzz` in [XSLT](https://gist.github.com/JustinPealing/6f619a2372972
 
 It burns my eyes to look at it, but at least XSLT was intended to be used as a programming language. That is something we can't say about YAML or INTERCAL.
 
-The problem with these languages embedded into YAML is they are all one-off implementations.  TravisCI conditionals have a TravisCI specific syntax, usage, and features. You can't use Travis's `concat` function or conditional regex in the YAML configuration for your ansible playbooks.
+The problem with these languages embedded into YAML is they are all one-off implementations. TravisCI conditionals have a TravisCI specific syntax, usage, and features. You can't use Travis's `concat` function or conditional regex in the YAML configuration for your ansible playbooks.
 
-In a vague way, this YAML problem is like the `COMEFROM` problem. If you know yaml, you can't just open a .yml file and start reading file line by line.  You need to understand how the configuration controls the execution of the specific system it's for.  And that is hard.
+In a vague way, this YAML problem is like the `COMEFROM` problem. If you know yaml, you can't just open a .yml file and start reading file line by line. You need to understand how the configuration controls the execution of the specific system it's for. And that is hard.
 
 <!-- If it's `title: bla` that is easy enough, but once we hit conditionals and filters, it feels like we are using the wrong tool. -->
 
@@ -272,4 +272,4 @@ Well, ok, maybe not INTERCAL but anything else. [^3]
 
 [^2]: Ansible and Helm are actually templating languages built on top of YAML, which is better than embedded control flow, but the point still stands.
 
-[^3]: Practically, you may have to use tools that encode a DSL into config, but you can use them while recognizing that we can do better.  I think something like [Dhall](https://dhall-lang.org/#) for complicated config and something like [pulumi](https://www.pulumi.com/) for complex configuration as code should be where we aim for as an industry.
+[^3]: Practically, you may have to use tools that encode a DSL into config, but you can use them while recognizing that we can do better. I think something like [Dhall](https://dhall-lang.org/#) for complicated config and something like [pulumi](https://www.pulumi.com/) for complex configuration as code should be where we aim for as an industry.

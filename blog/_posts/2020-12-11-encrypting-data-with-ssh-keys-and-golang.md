@@ -31,7 +31,7 @@ Let's start with what I knew, generating a new RSA key with ssh-keygen
     The key's randomart image is:
     +---[RSA 3072]----+
     |  . ..           |
-    |.. .  o .        |
+    |.. . o .        |
     |+ .. . o         |
     | +o o ...        |
     | ..... *So..     |
