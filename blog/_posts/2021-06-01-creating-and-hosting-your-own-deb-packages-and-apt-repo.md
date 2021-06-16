@@ -234,7 +234,7 @@ If you want to support multiple architectures, make a directory above for each t
 </div>
 
 Next, we will generate a `Packages` file, which will contain a list of all availables packes
-in this repository.  We will use the `dpkg-scanpackages` program to generate it, by running:
+in this repository. We will use the `dpkg-scanpackages` program to generate it, by running:
 
 ```bash
 cd ~/example/apt-repo

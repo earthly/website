@@ -81,7 +81,7 @@ Another thing to consider is that certain UNIX commands vary from platform to pl
 
 Use of the tab character is mandatory in Makefiles or you'll get this error. This usually catches newbies off-guard.
 
-*`Makefile:273: *** missing separator.  Stop.`*
+*`Makefile:273: *** missing separator. Stop.`*
 
 </div>
 

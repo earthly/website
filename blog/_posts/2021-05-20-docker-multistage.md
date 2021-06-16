@@ -130,7 +130,7 @@ That being said, following such an approach for every stage can create an increa
 
 ## More Stages
 
-As your multi-stage build grows in complexity, comprehending how each step follows from the next can become a challenge.  If the number of stages extends beyond two or if caching is becoming a challenge, you may want to consider using [Earthly](http://earthly.dev/) to produce your docker images. Earthly mirrors the dockerfile syntax but allows for naming the stages and for more fine-grained caching.
+As your multi-stage build grows in complexity, comprehending how each step follows from the next can become a challenge. If the number of stages extends beyond two or if caching is becoming a challenge, you may want to consider using [Earthly](http://earthly.dev/) to produce your docker images. Earthly mirrors the dockerfile syntax but allows for naming the stages and for more fine-grained caching.
 
 ```
 FROM node:12.13.0-alpine as build
