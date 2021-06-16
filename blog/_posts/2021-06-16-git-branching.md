@@ -133,7 +133,7 @@ The Parthenon was built in ancient Greece using columns of marble. These columns
 
 {% picture content-wide {{site.pimages}}{{page.slug}}/greek-revival.jpg --picture --alt {{ A Greek Revival House }} %}
 
-This is a greek-revival style house. These columns are not about function but form -- they are unnecessary and were chosen for aesthetics purposes.  
+This is a greek-revival style house. These columns are not about function but form -- they are unnecessary and were chosen for aesthetic purposes.  
 
 If you don't need to maintain and support multiple versions of your software and it only runs on your servers, then you might have a purely decorative `develop` branch. You may be using a git branching model that is very effective for a software lifecycle that you yourself are not in fact practicing. Those might not be load-bearing functional columns -- you might be copying the visual appearance of the ancients without understanding the purpose they had in mind.
 
