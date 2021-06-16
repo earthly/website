@@ -13,6 +13,7 @@ Makefile
 ReadMe
 monorepos?
 Gradle
+stdout
 
 ## Should not be needed
 imgf
