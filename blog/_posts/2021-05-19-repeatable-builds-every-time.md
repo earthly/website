@@ -1,15 +1,15 @@
 ---
 title: "Getting a Repeatable Build, Every Time"
 categories:
-  - Articles
+ - Articles
 tags:
-  - Makefile
-  - Dockerfile
-  - Bash
-  - Build scripts
-  - Build strategy
-  - Repeatable builds
-  - Glue layer
+ - Makefile
+ - Dockerfile
+ - Bash
+ - Build scripts
+ - Build strategy
+ - Repeatable builds
+ - Glue layer
 toc: true
 author: Vlad
 excerpt: "I wanted to sit down and write about all the tricks we learned and that we used every day to help make builds more manageable in the absence of Earthly. It's kinda like a \"what would you do if you couldn't use Earthly\" article. This will hopefully give you some ideas on best practices around build script maintenance, or it might help you decide on whether Earthly is something for you (or if the alternative is preferrable)."
@@ -81,7 +81,7 @@ Another thing to consider is that certain UNIX commands vary from platform to pl
 
 Use of the tab character is mandatory in Makefiles or you'll get this error. This usually catches newbies off-guard.
 
-*`Makefile:273: *** missing separator.  Stop.`*
+*`Makefile:273: *** missing separator. Stop.`*
 
 </div>
 
@@ -126,8 +126,8 @@ If a target is not specified, `docker build` will simply build the last target i
 In order to run unit tests in containers, you might take either of the following strategies:
 
 <ol type="a">
-  <li>Run the test as a Dockerfile target</li>
-  <li>Build a container with all the necessary code and set the entrypoint to execute the unit tests, then run that container.</li>
+ <li>Run the test as a Dockerfile target</li>
+ <li>Build a container with all the necessary code and set the entrypoint to execute the unit tests, then run that container.</li>
 </ol>
 
 A third, less recommended, option is to execute tests as additional layers of the final image. This is not a great option because it unnecessarily bloats your image size and also, there's no way to skip them. If you just want an image quickly this option will end up getting in your way.
@@ -265,12 +265,12 @@ There are multiple ways to achieve importing on your own. In general, if the lan
 my-dep: ./deps/my-dep
 
 ./deps/my-dep:
-  mkdir -p deps
-  rm -rf ./deps/my-dep
-  git clone --branch v1.2.3 <clone-url> ./deps/my-dep
+ mkdir -p deps
+ rm -rf ./deps/my-dep
+ git clone --branch v1.2.3 <clone-url> ./deps/my-dep
 
 clean:
-  rm -rf ./deps
+ rm -rf ./deps
 ```
 <!-- markdownlint-enable no-hard-tabs -->
 
@@ -298,8 +298,8 @@ This command clones the referenced repository into that path and also adds a `.g
 
 ```toml
 [submodule "<name>"]
-        path = <path>
-        url = <clone-url>
+    path = <path>
+    url = <clone-url>
 ```
 
 Besides this entry, git internally also stores the git sha of the submoduled repository, so it is tied strongly to a specific version of it.
@@ -364,10 +364,10 @@ If you need dependencies to be built in a specific order, a great way to achieve
 <!-- markdownlint-disable no-hard-tabs -->
 ```Makefile
 build:
-  $(MAKE) dep1
-  $(MAKE) dep2
-  $(MAKE) dep3
-  actually build
+ $(MAKE) dep1
+ $(MAKE) dep2
+ $(MAKE) dep3
+ actually build
 ```
 <!-- markdownlint-enable no-hard-tabs -->
 
@@ -376,7 +376,7 @@ If dependencies can execute in any order, then declaring them as regular target 
 <!-- markdownlint-disable no-hard-tabs -->
 ```Makefile
 build: dep1 dep2 dep3
-  actually build
+ actually build
 ```
 <!-- markdownlint-enable no-hard-tabs -->
 

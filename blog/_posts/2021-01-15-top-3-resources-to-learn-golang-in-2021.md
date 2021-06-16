@@ -1,10 +1,10 @@
 ---
 title: Top 3 Resources For Learning GoLang in 2021
 categories:
-  - Articles
+ - Articles
 author: Adam
 internal-links:
-   - golang
+  - golang
 ---
 
 ## Why Learn Go

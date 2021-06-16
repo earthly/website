@@ -2,16 +2,16 @@
 title: How to Setup and Use Amazon's Elastic Container Registry
 toc: true
 categories:
-  - Tutorials
+ - Tutorials
 author: Vivek Sonar
 sidebar:
-  nav: "docker"
+ nav: "docker"
 internal-links:
-  - ecr
-  - amazon elastic container registry
-  - container registry
-  - ecs
-  - eks
+ - ecr
+ - amazon elastic container registry
+ - container registry
+ - ecs
+ - eks
 ---
 
 A container is a simple unit that packages all your code and its dependencies so your application can run quickly and reliably from any computing environment. That means you could quickly move from your local environment to your staging and into production. Due to their portability, small size, and convenience, containers are becoming [a method of choice](https://www.cio.com/article/3434010/more-enterprises-are-using-containers-here-s-why.html) for shipping modern applications.
@@ -128,10 +128,10 @@ Next, you need Docker to be able to push images to your ECR repository. The [`do
 
 ```
 aws ecr get-login-password \
-    --region <account-region> \
+  --region <account-region> \
 | docker login \
-    --username AWS \
-    --password-stdin <account-id>.dkr.ecr.<account-region>.amazonaws.com/<repository-name>
+  --username AWS \
+  --password-stdin <account-id>.dkr.ecr.<account-region>.amazonaws.com/<repository-name>
 ```
 
 After authentication, you will see `Login Succeeded` as a response. Now you'll be able to push tagged images to your ECR repository.
@@ -192,18 +192,18 @@ For example, you can use the following EKS manifest to deploy a NodeJS image sto
 apiVersion: batch/v1 
 kind: Job 
 metadata: 
-    name: eks-iam-test-s3 
+  name: eks-iam-test-s3 
 spec: template: 
-    metadata: 
-      labels: 
-        app: eks-iam-test-s3 
-    spec: 
-      serviceAccountName: iam-test 
-      containers: 
-        - name: eks-iam-test 
-          image: 123456789012.dkr.ecr.us-west-2.amazonaws.com/aws-nodejs-sample:v1 
-          args: ["s3", "ls"] 
-      restartPolicy: Never
+  metadata: 
+   labels: 
+    app: eks-iam-test-s3 
+  spec: 
+   serviceAccountName: iam-test 
+   containers: 
+    - name: eks-iam-test 
+     image: 123456789012.dkr.ecr.us-west-2.amazonaws.com/aws-nodejs-sample:v1 
+     args: ["s3", "ls"] 
+   restartPolicy: Never
 ```
 
 When deployed, it will create a job with the name `eks-iam-test-s3` using the `123456789012.dkr.ecr.us-west-2.amazonaws.com/aws-nodejs-sample:v1` image. To see the complete step-by-step process for deploying this job to EKS, see [the AWS documentation here](https://docs.amazonaws.cn/en_us/AmazonECR/latest/userguide/ECR_on_EKS.html).
@@ -214,17 +214,17 @@ ECR images can also be used in ECS task definition files to define your containe
 
 ```
 {
-  "containerDefinitions": [
-    {
-      "name": "sample-app",
-      "image": "123456789012.dkr.ecr.us-west-2.amazonaws.com/aws-nodejs-sample:v1",
-      "memory": 200,
-      "cpu": 10,
-      "essential": true
-    }
-  ],
-  "family": "example_task_3",
-  "taskRoleArn": "arn:aws:iam::123456789012:role/AmazonECSTaskS3BucketRole"
+ "containerDefinitions": [
+  {
+   "name": "sample-app",
+   "image": "123456789012.dkr.ecr.us-west-2.amazonaws.com/aws-nodejs-sample:v1",
+   "memory": 200,
+   "cpu": 10,
+   "essential": true
+  }
+ ],
+ "family": "example_task_3",
+ "taskRoleArn": "arn:aws:iam::123456789012:role/AmazonECSTaskS3BucketRole"
 }
 ```
 

@@ -1,7 +1,7 @@
 ---
 title: "Deployment Strategies"
 categories:
-  - Tutorial
+ - Tutorial
 author: Adam
 toc: true 
 internal-links:
@@ -9,11 +9,11 @@ internal-links:
  - deployment
  - deploy
 ---
-There are many ways to deploy applications to a production server environment, and the terminology around deploy strategies is often confusing.  In this short guide, I'll review software deployment options starting from the most basic and straightforward and moving towards the more complex.  
+There are many ways to deploy applications to a production server environment, and the terminology around deploy strategies is often confusing. In this short guide, I'll review software deployment options starting from the most basic and straightforward and moving towards the more complex. 
 
 ## Recreate Deployment Strategy
 
-This is the most straightforward deployment strategy. It's been the default strategy in enterprise IT for a long time and works well when updates are very infrequent and maintenance windows plentiful. You stop the old service and then start up the new service.  During the teardown and spin-up process, the service is down.
+This is the most straightforward deployment strategy. It's been the default strategy in enterprise IT for a long time and works well when updates are very infrequent and maintenance windows plentiful. You stop the old service and then start up the new service. During the teardown and spin-up process, the service is down.
 
 In a software-as-a-service world, with frequent updates, this strategy can really only work with the use of queues and async messaging architectures. For example, when upgrading a service that sends email, the mail will queue in an outbox waiting for the upgraded version to start up.
 
@@ -34,7 +34,7 @@ In a software-as-a-service world, with frequent updates, this strategy can reall
 
 ## Rolling Update Deployment Strategy
 
-The recreate strategy above assumes you only have one instance of your service running at a time. But if you have several with a load balancer in front, you can improve the downtime story with a rolling update strategy.  You start an instance of the new version, and once it's up, gracefully terminate one instance of the old version. Then continue this pattern until only new versions of the service are running. This strategy is ubiquitous in [Kubernetes](/blog/building-on-kubernetes-ingress) and other containerized production environments.
+The recreate strategy above assumes you only have one instance of your service running at a time. But if you have several with a load balancer in front, you can improve the downtime story with a rolling update strategy. You start an instance of the new version, and once it's up, gracefully terminate one instance of the old version. Then continue this pattern until only new versions of the service are running. This strategy is ubiquitous in [Kubernetes](/blog/building-on-kubernetes-ingress) and other containerized production environments.
 
 <div class="no_toc_section">
 ### Pros
@@ -52,7 +52,7 @@ The recreate strategy above assumes you only have one instance of your service r
 
 ## Blue-Green Deployment
 
-A blue-green deployment requires a bit more resources: you need two identical production environments and a load balancer. One of these environments always receives 100% of the traffic while the other version sits idle.  Updates are deployed to inactive version, and once it is successfully upgraded, traffic is switched over to it. These two environments are named blue and green, respectively, and traffic alternates back and forth from green to blue and then blue to green and so on.  This means that the previously deployed version is always running on the idle environment, which simplifies rollbacks.
+A blue-green deployment requires a bit more resources: you need two identical production environments and a load balancer. One of these environments always receives 100% of the traffic while the other version sits idle. Updates are deployed to inactive version, and once it is successfully upgraded, traffic is switched over to it. These two environments are named blue and green, respectively, and traffic alternates back and forth from green to blue and then blue to green and so on. This means that the previously deployed version is always running on the idle environment, which simplifies rollbacks.
 
 <div class="no_toc_section">
 ### Pros
@@ -70,7 +70,7 @@ A blue-green deployment requires a bit more resources: you need two identical pr
 
 ## Canary Deployment
 
-A canary deployment strategy looks a lot like a blue-green deployment -- a new version of the service starts up parallel to the existing version -- with a slight improvement made: instead of switching all traffic over to the new version, only a percentage of traffic is initially sent.  This traffic is the canary in the coal mine. Canaries were used in mining to measure air quality. The miners would bring a canary with them as they traveled down into the mine. If there was an air quality problem, the canary would die before the miners and act as an early warning signal.
+A canary deployment strategy looks a lot like a blue-green deployment -- a new version of the service starts up parallel to the existing version -- with a slight improvement made: instead of switching all traffic over to the new version, only a percentage of traffic is initially sent. This traffic is the canary in the coal mine. Canaries were used in mining to measure air quality. The miners would bring a canary with them as they traveled down into the mine. If there was an air quality problem, the canary would die before the miners and act as an early warning signal.
 
 In the same way, a canary deployment does not prevent downtime, but limits its impact by giving an early warning. It limits access to the new version to a subset of users. If [metrics](/blog/incident-management-metrics) indicate that the new service is not responding well to this fraction of requests, then the roll-out can be aborted, lessening its impact. If everything looks OK, request volume is slowly ramped up until its being entirely served by the new version.
 
@@ -93,9 +93,9 @@ Depending on how the canary traffic is chosen, a downside to this approach is th
 
 If the problems a canary deployment finds can genuinely be found with metrics alone, and if the cost of incidents is very high, then a shadow or mirrored deployment is worth considering.
 
-In a shadow deployment, the new version of the service is started, and all traffic is mirrored by the load balancer. That is, requests are sent to the current version and the new version, but all responses come only from the existing stable version.  In this way, you can monitor the latest version under load without any possibility of customer impact. This strategy is sometimes called a mirrored canary deployment.
+In a shadow deployment, the new version of the service is started, and all traffic is mirrored by the load balancer. That is, requests are sent to the current version and the new version, but all responses come only from the existing stable version. In this way, you can monitor the latest version under load without any possibility of customer impact. This strategy is sometimes called a mirrored canary deployment.
 
-The cost of this approach is in the implementation.  A service mesh like Istio is probably needed to perform the actual request mirroring, and it gets more complex from there.  If a new version of a user service backed by a relational database was shadow deployed, all users might be created twice, leading to untold ramifications.  To embrace a shadow or mirrored deployment strategy, you have to think about the implications of duplicated requests, and any non-idempotent actions on downstream services may need to be mocked.
+The cost of this approach is in the implementation. A service mesh like Istio is probably needed to perform the actual request mirroring, and it gets more complex from there. If a new version of a user service backed by a relational database was shadow deployed, all users might be created twice, leading to untold ramifications. To embrace a shadow or mirrored deployment strategy, you have to think about the implications of duplicated requests, and any non-idempotent actions on downstream services may need to be mocked.
 
 <div class="no_toc_section">
 ### Pros
@@ -114,6 +114,6 @@ The cost of this approach is in the implementation.  A service mesh like Istio i
 ## Summary
 </div>
 
-There are many deployment methods, from the very simple to the very complex.  The deployment strategy the works best for any given situation depends on many factors. When choosing a deployment strategy balancing the cost of downtime versus the cost of deployment complexity is essential.
+There are many deployment methods, from the very simple to the very complex. The deployment strategy the works best for any given situation depends on many factors. When choosing a deployment strategy balancing the cost of downtime versus the cost of deployment complexity is essential.
 
 If there are other deployment strategies or other continuous deployment terms you would like to see covered, please reach out to us on [Twitter](https://twitter.com/earthlytech) or via [email](adam@earthly.dev).

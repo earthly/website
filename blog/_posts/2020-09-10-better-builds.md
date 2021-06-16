@@ -3,10 +3,10 @@ title: Can We Build Better?
 toc: true
 author: Adam
 categories:
-  - Tutorials
+ - Tutorials
 internal-links:
-   - scala build
-   - scala builds
+  - scala build
+  - scala builds
 ---
 
 Have you ever had a test fail in the build but not locally? I have. Have you ever then burnt half a day pushing small changes and waiting for your build to get queued so that you could see if you had isolated the breaking change? &nbsp;Well I have, and I find the slow feedback process to be painful and I'd like to propose a solution.
@@ -26,16 +26,16 @@ Let's walk through creating an Earthfile for a scala project:
 ```
 ├── build.sbt 
 └── src/main
-    ├── Main.scala
+  ├── Main.scala
 └── src/test
-    ├── Test.scala </code></pre>
+  ├── Test.scala </code></pre>
 ```
 
 We have a main that we would like to run on startup:
 
 ``` scala
 object Main extends App {
-  println("Hello, World!")
+ println("Hello, World!")
 }
 ```
 
@@ -47,9 +47,9 @@ And some unit tests we would like to run as part of the build:
 import org.scalatest.FlatSpec
 
 class ListFlatSpec extends FlatSpec {
-  "An empty List" should "have size 0" in {
-    assert(List.empty.size == 0)
-  }
+ "An empty List" should "have size 0" in {
+  assert(List.empty.size == 0)
+ }
 }
 ```
 
@@ -72,10 +72,10 @@ FROM hseeberger/scala-sbt:11.0.6_1.3.10_2.13.1
 WORKDIR /scala-example
 
 deps:
-    COPY build.sbt ./
-    COPY project project
-    RUN sbt update
-    SAVE IMAGE
+  COPY build.sbt ./
+  COPY project project
+  RUN sbt update
+  SAVE IMAGE
 ```
 
 <figcaption>Earthfile</figcaption>
@@ -94,9 +94,9 @@ Next, we create a `build` target. This is our Earthfile equivalent of `sbt compi
 
 ``` dockerfile
 build:
-    FROM +deps
-    COPY src src
-    RUN sbt compile
+  FROM +deps
+  COPY src src
+  RUN sbt compile
 ```
 
 <figcaption>earthfile continued</figcaption>
@@ -113,9 +113,9 @@ We can similarly create a target for running tests:
 
 ``` dockerfile
 test:
-    FROM +deps
-    COPY src src
-    RUN sbt test</code></pre>
+  FROM +deps
+  COPY src src
+  RUN sbt test</code></pre>
 ```
 
 <figcaption>Earthfile continued</figcaption>
@@ -133,7 +133,7 @@ docker:
  COPY src src
  RUN sbt assembly
  ENTRYPOINT ["java","-cp","build/bin/scala-example-assembly-1.0.jar","Main"]
-  SAVE IMAGE scala-example:latest
+ SAVE IMAGE scala-example:latest
 ```
 
 <figcaption>Earthfile continued</figcaption>
@@ -148,7 +148,7 @@ You can find the [full example here](https://github.com/earthly/earthly-example-
 
 ### Did we solve it?
 
-We now have our `deps`, `build`, `test` and `docker` targets in our Earthfile. All together these give us a reproducible process for running our build locally and in our [CI](/blog/continuous-integration)  builds. &nbsp;We used earthly to encapsulate the build steps.
+We now have our `deps`, `build`, `test` and `docker` targets in our Earthfile. All together these give us a reproducible process for running our build locally and in our [CI](/blog/continuous-integration) builds. &nbsp;We used earthly to encapsulate the build steps.
 
 {% include imgf src="diagram.png" alt="diagram of earthly usage" caption="Encapsulating the Build Steps" %}
 

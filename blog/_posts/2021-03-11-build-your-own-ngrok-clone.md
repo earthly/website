@@ -1,16 +1,16 @@
 ---
 title: Build Your Own Ngrok Clone With AWS
 categories:
-  - Tutorials
+ - Tutorials
 toc: true
 author: Corey
 excerpt: Ngrok is a tool that allows you to create secure, publically accessible URLs for your locally running code.
 internal-links:
-  - ngrok
-  - ec2
-  - tunnel
-  - local tunnel
-  - tunnel proxy
+ - ngrok
+ - ec2
+ - tunnel
+ - local tunnel
+ - tunnel proxy
 ---
 
 
@@ -63,10 +63,10 @@ Before creating anything in the cloud, you'll need to make sure that you have so
 
 If your cloud is like most peoples, you likely have quite a few of these lying around, which makes it difficult to find the one you want to place your proxy in. I like to add `jq` into the mix to make it easier to parse, like this:
 
-    ❯ aws ec2 describe-subnets \
-        | jq -r '.Subnets[] \
-        | "\(.AvailabilityZone)\t\(.CidrBlock)\t\(.SubnetId)\t\(.VpcId)"' \
-        | sort
+  ❯ aws ec2 describe-subnets \
+    | jq -r '.Subnets[] \
+    | "\(.AvailabilityZone)\t\(.CidrBlock)\t\(.SubnetId)\t\(.VpcId)"' \
+    | sort
 
 When selecting a subnet, ensure that the one you choose assigns public IP addresses, as you will need to accept traffic from the general internet later.
 
@@ -74,9 +74,9 @@ When selecting a subnet, ensure that the one you choose assigns public IP addres
 
 The first thing to create is your EC2 SSH keypair. This is simple to do, especially because the `aws` tool can generate on for you.
 
-    ❯ aws ec2 create-key-pair \
-        --key-name proxy-key-pair \
-        > key-output.json
+  ❯ aws ec2 create-key-pair \
+    --key-name proxy-key-pair \
+    > key-output.json
 
 <div class="notice">
 **❗ About the AWS CLI output**
@@ -91,11 +91,11 @@ You can get the key directly with `jq` by `jq -r .KeyPairId key-output.json`, or
 
 Now that you have a key pair, you will also need to create a security group for the instance to reside in. To oversimplify, a security group is essentially a firewall for your instance, constraining what ports traffic is allowed to enter or leave on. [You can read more about security groups here, for a longer and more complete explanation.](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html#VPCSecurityGroups) Getting this right is important, so your proxy is less likely to be compromised.
 
-    ❯ aws ec2 create-security-group \
-        --group-name reverse-proxy \
-        --description reverse-proxy \
-        --vpc-id $VPC_ID \
-        > sg-output.json
+  ❯ aws ec2 create-security-group \
+    --group-name reverse-proxy \
+    --description reverse-proxy \
+    --vpc-id $VPC_ID \
+    > sg-output.json
 
 <div class="notice">
 **❗ Don't Forget**
@@ -105,19 +105,19 @@ Make sure you replace `$VPC_ID` with the ID for the [VPC you identified earlier]
 
 By default, AWS security groups are configured to disallow all traffic coming in (ingress), and to allow all traffic out (egress). While an instance that doesn't allow traffic in is fairly secure, it also doesn't do you much good. You will need to open up port 22 (ssh) for traffic from our current IP only, and port 80 (http) for traffic from the internet at large. By restricting SSH to your current IP address, you prevent external entities from attempting to SSH into your proxy.
 
-    ❯ aws ec2 authorize-security-group-ingress \
-        --group-id $SG_ID \
-        --protocol tcp \
-        --port 22 \
-        --cidr $IP/32 \
-        --no-cli-pager
-    
-    ❯ aws ec2 authorize-security-group-ingress \
-        --group-id $SG_ID \
-        --protocol tcp \
-        --port 80 \
-        --cidr 0.0.0.0/0 \
-        --no-cli-pager
+  ❯ aws ec2 authorize-security-group-ingress \
+    --group-id $SG_ID \
+    --protocol tcp \
+    --port 22 \
+    --cidr $IP/32 \
+    --no-cli-pager
+  
+  ❯ aws ec2 authorize-security-group-ingress \
+    --group-id $SG_ID \
+    --protocol tcp \
+    --port 80 \
+    --cidr 0.0.0.0/0 \
+    --no-cli-pager
 
 <div class="notice">
  **ℹ️ Find your public IP from the command line**
@@ -135,14 +135,14 @@ By default, AWS security groups are configured to disallow all traffic coming in
 
 Now that you have keys, and a security group configured in AWS, you're finally ready to create your EC2 instance! Its easiest for this kind of work to use a `t2.micro`, since that is available on AWS' free tier. If your account is older than 1 year, this instance is still among the cheapest to provision. If a `t2.micro` is too expensive, you may want to size down to a `t2.nano`, or consider [spot instances](https://aws.amazon.com/ec2/spot/), which are beyond the scope of this tutorial. The instance will be provisioned with an AMI using Amazon Linux 2, to keep things as simple as possible.
 
-    ❯ aws ec2 run-instances \
-        --image-id resolve:ssm:/aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2 \
-        --count 1 \
-        --instance-type t2.micro \
-        --key-name $KEY_NAME \
-        --security-group-ids $SG_ID \
-        --subnet-id $SUBNET_ID \
-        > ec2-output.json
+  ❯ aws ec2 run-instances \
+    --image-id resolve:ssm:/aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2 \
+    --count 1 \
+    --instance-type t2.micro \
+    --key-name $KEY_NAME \
+    --security-group-ids $SG_ID \
+    --subnet-id $SUBNET_ID \
+    > ec2-output.json
 
 <div class="notice--warning">
 **❗ Don't Forget**
@@ -158,26 +158,26 @@ Although AWS can provision instances very quickly, it can _still_ take a couple 
 
 Creating the instance isn't the end of our work, however. You'll still need to configure it to actually reverse proxy the traffic coming in from the internet to our local development machine. To that end, NGINX is a fantastic,battle-tested option. As soon the instance is ready, [SSH](/blog/encrypting-data-with-ssh-keys-and-golang) into the box and install NGINX.
 
-    ❯ sudo amazon-linux-extras install nginx1
+  ❯ sudo amazon-linux-extras install nginx1
 
 NGINX needs to be configured to use the AWS-assigned public DNS name, and proxy traffic from port 80 to you. Heres a sample config you can use:
 
-    upstream tunnel {
-      server 127.0.0.1:8080;
-    }
+  upstream tunnel {
+   server 127.0.0.1:8080;
+  }
+  
+  server {
+   server_name PUBLIC_DNS;
+   
+   location / {
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header Host $http_host;
+    proxy_redirect off;
     
-    server {
-      server_name PUBLIC_DNS;
-      
-      location / {
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header Host $http_host;
-        proxy_redirect off;
-        
-        proxy_pass http://tunnel;
-      }
-    }
+    proxy_pass http://tunnel;
+   }
+  }
 
 <div class="notice--warning">
 **❗ Don't Forget**
@@ -191,17 +191,17 @@ Additionally, NGINX doesn't quite handle the lengthy public DNS names that AWS h
 
 Now that NGINX is configured, start it, and exit your SSH session.
 
-    ❯ sudo service nginx start
-    
-    ...
-    
-    ❯ exit
+  ❯ sudo service nginx start
+  
+  ...
+  
+  ❯ exit
 
 ### Using the Proxy
 
 Now that the instance is configured, all you will need to do to allow the internet at large to connect to a service running on your local box is to use an `ssh` reverse proxy to get data from AWS to your local machine! Start one up like this:
 
-    ❯ ssh -i key.pem -R 8080:localhost:$LOCAL_PORT ec2-user@$PUBLIC_DNS
+  ❯ ssh -i key.pem -R 8080:localhost:$LOCAL_PORT ec2-user@$PUBLIC_DNS
 
 <div class="notice--warning">
 **❗ Don't Forget**
@@ -215,10 +215,10 @@ Once that is up, all you need to do is simply share the AWS public DNS name with
 
 Although you can leave the proxy up for as long as you like, you'll likely need to tear it down eventually. If you have AWS console access, simply terminate the instance, delete the security group, and delete the keypair. If you saved the IDs of these resources (they are in the JSON responses from earlier), you can also do it via the command line:
 
-    ❯ aws ec2 terminate-instances --no-cli-pager --instance-ids $EC2_ID > /dev/null
-    
-    ❯ aws ec2 delete-key-pair --no-cli-pager --key-pair-id $KEY_ID && \
-      aws ec2 delete-security-group --no-cli-pager --group-id $SG_ID
+  ❯ aws ec2 terminate-instances --no-cli-pager --instance-ids $EC2_ID > /dev/null
+  
+  ❯ aws ec2 delete-key-pair --no-cli-pager --key-pair-id $KEY_ID && \
+   aws ec2 delete-security-group --no-cli-pager --group-id $SG_ID
 
 Note that the instance could take a couple minutes to finish terminating. You will not be able to remove the key or security group before the instance has been terminated.
 
@@ -226,12 +226,12 @@ Note that the instance could take a couple minutes to finish terminating. You wi
 
 If you don't want to deal with manual setup or teardown, we've created an `Earthfile` that should automate all of this for you. It can create a proxy just like this, from scratch, in under five minutes! To start up a proxy using `earthly`, execute this _single_ command.
 
-    ❯ earthly \
-      --secret-file config=/home/user/.aws/config \
-      --secret-file credentials=/home/dchw/.aws/credentials \
-      --build-arg AWS_REGION=my_region \
-      --build-arg SUBNET_ID=my_subnet \
-      github.com/earthly/example-diy-ngrok:main+build-proxy
+  ❯ earthly \
+   --secret-file config=/home/user/.aws/config \
+   --secret-file credentials=/home/dchw/.aws/credentials \
+   --build-arg AWS_REGION=my_region \
+   --build-arg SUBNET_ID=my_subnet \
+   github.com/earthly/example-diy-ngrok:main+build-proxy
 
 <div class="notice">
 **ℹ️ AWS Credentials**
@@ -242,12 +242,12 @@ The reason you'll need to pass the credentials, is so that our scripts can use t
 <div class="notice--warning">
 **❗ Don't Forget**
 
-Replace the following:  
-  
-`/home/user` with the directory of the AWS configuration directory (`.aws`)  
-`my-region` with the AWS region you use.  
-`my-subnet` with the ID of the subnet you would like to use.  
-  
+Replace the following: 
+ 
+`/home/user` with the directory of the AWS configuration directory (`.aws`) 
+`my-region` with the AWS region you use. 
+`my-subnet` with the ID of the subnet you would like to use. 
+ 
 If you need to use temporary role-based credentials, add `--build-arg AWS_PROFILE=my_profile`, where the profile is the one to assume when creating the resources.
 </div>
 

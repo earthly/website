@@ -1,12 +1,12 @@
 ---
 title: You're using docker-compose wrong
 categories:
-  - Articles
+ - Articles
 author: Vlad
 sidebar:
-  nav: "docker"
+ nav: "docker"
 internal-links:
-   - docker compose
+  - docker compose
 ---
 
 Tell me if this sounds familiar? You were introduced to docker-compose either by choice or by force. You've been using it for a while, but you find it clunky. I'm here to tell you, you are probably using it wrong.

@@ -2,7 +2,7 @@
 title: Using Apple Silicon (M1) as a cloud engineer, two months in
 featured: true
 categories:
-  - Articles
+ - Articles
 tags:
 - docker
 - apple-silicon
@@ -11,8 +11,8 @@ tags:
 - aarch64
 author: Vlad
 internal-links:
-  - m1
-  - arm
+ - m1
+ - arm
 ---
 
 So I've been using my new M1-based MacBook Pro for a couple of months for a mix of development, email, and other things an [open-source maintainer](https://github.com/earthly/earthly) does day-to-day.
@@ -58,7 +58,7 @@ Languages and frameworks I've tested - most of them in Docker containers:
 * ✅ C++ works fine on native architecture in Docker. Minimal testing though.
 * 🟡 .Net works fine when emulated as amd64 in a container. Did not immediately work natively (and I did not investigate).
 * ✅ [Elixir](/blog/real-time-phoenix-elixir) works fine on native architecture in Docker. Minimal testing though.
-* ✅ [gRPC](/blog/protobufs-and-grpc)  works fine on native architecture in Docker. Minimal testing though.
+* ✅ [gRPC](/blog/protobufs-and-grpc) works fine on native architecture in Docker. Minimal testing though.
 * ✅ JavaScript / Node works fine on native architecture in Docker. Minimal testing though.
 * ✅ Python works fine on native architecture in Docker. Minimal testing though.
 * ✅ Ruby and Ruby on Rails works fine on native architecture in Docker. Minimal testing though.

@@ -1,20 +1,20 @@
 ---
 title: "Creating and hosting your own deb packages and apt repo"
 categories:
-  - Tutorials
+ - Tutorials
 toc: true
 author: Alex
 internal-links:
-  - apt
-  - pgp
-  - gpg
-  - deb
-  - signing
-  - digital signature
-  - apt repo
-  - public key
-  - private key
-  - rsa
+ - apt
+ - pgp
+ - gpg
+ - deb
+ - signing
+ - digital signature
+ - apt repo
+ - public key
+ - private key
+ - rsa
 ---
 
 <!-- markdownlint-disable MD032 -->
@@ -43,8 +43,8 @@ mkdir -p ~/example/hello-world-program
 
 echo '#include <stdio.h>
 int main() {
-    printf("hello packaged world\n");
-    return 0;
+  printf("hello packaged world\n");
+  return 0;
 }' > ~/example/hello-world-program/hello.c
 ```
 
@@ -72,10 +72,10 @@ where the
 - `package-name` is the name of our package, `hello-world` in our case,
 - `version` is the version of the software, `0.0.1` in our case,
 - `release-number` is used to track different releases of the same software version; it's usually set to `1`, but hypothetically if there
-  was an error in the packaging (e.g. a file was missed, or the description had an error in it, or a post-install script was wrong), this number
-  would be increased to track the change, and
+ was an error in the packaging (e.g. a file was missed, or the description had an error in it, or a post-install script was wrong), this number
+ would be increased to track the change, and
 - `architecture` is the target architecture of the platform, `amd64` in this example; however if your package is architecture-independent (e.g. a python script),
-  then you can set this to `all`.
+ then you can set this to `all`.
 
 <div class="notice--info">
 Theoretically, the directory doesn't have to follow this naming convention; however some of the tools we will use later in the tutorial
@@ -142,7 +142,7 @@ which will show:
 ```bash
 new Debian package, version 2.0.
 size 2832 bytes: control archive=336 bytes.
-    182 bytes,     7 lines      control
+  182 bytes,   7 lines   control
 Package: hello-world
 Version: 0.0.1
 Maintainer: example <example@example.com>
@@ -161,10 +161,10 @@ dpkg-deb --contents ~/example/hello-world_0.0.1.deb
 which will show:
 
 ```
-drwxrwxr-x alex/alex         0 2021-05-17 16:21 ./
-drwxrwxr-x alex/alex         0 2021-05-17 16:18 ./usr/
-drwxrwxr-x alex/alex         0 2021-05-17 16:18 ./usr/bin/
--rwxrwxr-x alex/alex     16696 2021-05-17 16:18 ./usr/bin/hello-world
+drwxrwxr-x alex/alex     0 2021-05-17 16:21 ./
+drwxrwxr-x alex/alex     0 2021-05-17 16:18 ./usr/
+drwxrwxr-x alex/alex     0 2021-05-17 16:18 ./usr/bin/
+-rwxrwxr-x alex/alex   16696 2021-05-17 16:18 ./usr/bin/hello-world
 ```
 
 <div class="notice--info">
@@ -234,7 +234,7 @@ If you want to support multiple architectures, make a directory above for each t
 </div>
 
 Next, we will generate a `Packages` file, which will contain a list of all availables packes
-in this repository.  We will use the `dpkg-scanpackages` program to generate it, by running:
+in this repository. We will use the `dpkg-scanpackages` program to generate it, by running:
 
 ```bash
 cd ~/example/apt-repo
@@ -279,42 +279,42 @@ First let's look at an example of a Release file, which can be broken up into tw
 
 1. Metadata about the repository, for example:
 
-    ```
-    Origin: Example Repository
-    Label: Example
-    Suite: stable
-    Codename: stable
-    Version: 1.0
-    Architectures: amd64 arm64 arm7
-    Components: main
-    Description: An example software repository
-    ```
+  ```
+  Origin: Example Repository
+  Label: Example
+  Suite: stable
+  Codename: stable
+  Version: 1.0
+  Architectures: amd64 arm64 arm7
+  Components: main
+  Description: An example software repository
+  ```
 
 2. A list of all `Packages` files and their corresponding hashes and file size, for example:
 
-    ```
-    MD5Sum:
-     9eb0c0528a0647daf18c7e225ac68f45 667 main/binary-amd64/Packages.gz
-     628682afa8a0208e08b5a208a4c4c85b 1685 main/binary-amd64/Packages
-     b5bef2199e86a43ae02adc0b7b38bc8a 556 main/binary-arm7/Packages.gz
-     81c53db3b9c5e9de44d3ca9fc4487995 1289 main/binary-arm7/Packages
-     15258b054124639f0641c399f291af17 557 main/binary-arm64/Packages.gz
-     dc597a0815aebb56b25a4ad979682f49 1292 main/binary-arm64/Packages
-    SHA1:
-     a4074284eb528e5d16c2c94e203d61dd825fa774 667 main/binary-amd64/Packages.gz
-     ee86dd9061967232e6e68104a695f7d45d191b41 1685 main/binary-amd64/Packages
-     a6f4897bcf6a4b068c5b8fafca01fc89761106dc 556 main/binary-arm7/Packages.gz
-     43171192ce84dcb43bba99828fe7493ff23e0b0e 1289 main/binary-arm7/Packages
-     9f353a909a9a3dab0a9cae1a3c7ccb879ff18d32 557 main/binary-arm64/Packages.gz
-     da15c24e51a028ff591656eef0d1da0dbb85ba97 1292 main/binary-arm64/Packages
-    SHA256:
-     dee57f6f4a2209b63301984acb4b279f694648915fd559287a414365884c1842 667 main/binary-amd64/Packages.gz
-     7d82e5929d909d10d9f2d7129df3f6754946397caf1c08e9e4a65713f4ac39ff 1685 main/binary-amd64/Packages
-     2b3c611305e096ef246d77d2bc5fcfa807034dd200f8f99005ab640cf2c014a4 556 main/binary-arm7/Packages.gz
-     d03d5192e24e098a91465ab37d34e0a2c539f50a430eb3262a543e7bd11212a1 1289 main/binary-arm7/Packages
-     f96316ff77e96d246447f0ca8383472acefc0744d9b49d2be1d214d174bba38a 557 main/binary-arm64/Packages.gz
-     58120a7b5ceb57ab4faca01adac3d62009a52962e0d0a6f4b7ceb1b8faedf280 1292 main/binary-arm64/Packages
-    ```
+  ```
+  MD5Sum:
+   9eb0c0528a0647daf18c7e225ac68f45 667 main/binary-amd64/Packages.gz
+   628682afa8a0208e08b5a208a4c4c85b 1685 main/binary-amd64/Packages
+   b5bef2199e86a43ae02adc0b7b38bc8a 556 main/binary-arm7/Packages.gz
+   81c53db3b9c5e9de44d3ca9fc4487995 1289 main/binary-arm7/Packages
+   15258b054124639f0641c399f291af17 557 main/binary-arm64/Packages.gz
+   dc597a0815aebb56b25a4ad979682f49 1292 main/binary-arm64/Packages
+  SHA1:
+   a4074284eb528e5d16c2c94e203d61dd825fa774 667 main/binary-amd64/Packages.gz
+   ee86dd9061967232e6e68104a695f7d45d191b41 1685 main/binary-amd64/Packages
+   a6f4897bcf6a4b068c5b8fafca01fc89761106dc 556 main/binary-arm7/Packages.gz
+   43171192ce84dcb43bba99828fe7493ff23e0b0e 1289 main/binary-arm7/Packages
+   9f353a909a9a3dab0a9cae1a3c7ccb879ff18d32 557 main/binary-arm64/Packages.gz
+   da15c24e51a028ff591656eef0d1da0dbb85ba97 1292 main/binary-arm64/Packages
+  SHA256:
+   dee57f6f4a2209b63301984acb4b279f694648915fd559287a414365884c1842 667 main/binary-amd64/Packages.gz
+   7d82e5929d909d10d9f2d7129df3f6754946397caf1c08e9e4a65713f4ac39ff 1685 main/binary-amd64/Packages
+   2b3c611305e096ef246d77d2bc5fcfa807034dd200f8f99005ab640cf2c014a4 556 main/binary-arm7/Packages.gz
+   d03d5192e24e098a91465ab37d34e0a2c539f50a430eb3262a543e7bd11212a1 1289 main/binary-arm7/Packages
+   f96316ff77e96d246447f0ca8383472acefc0744d9b49d2be1d214d174bba38a 557 main/binary-arm64/Packages.gz
+   58120a7b5ceb57ab4faca01adac3d62009a52962e0d0a6f4b7ceb1b8faedf280 1292 main/binary-arm64/Packages
+  ```
 
 And that's it for what a `Release` file looks like. How hard could it be? let's [write some bash](/blog/understanding-bash).
 Just copy and paste the following in your terminal to get a copy of the script:
@@ -324,16 +324,16 @@ echo '#!/bin/sh
 set -e
 
 do_hash() {
-    HASH_NAME=$1
-    HASH_CMD=$2
-    echo "${HASH_NAME}:"
-    for f in $(find -type f); do
-        f=$(echo $f | cut -c3-) # remove ./ prefix
-        if [ "$f" = "Release" ]; then
-            continue
-        fi
-        echo " $(${HASH_CMD} ${f}  | cut -d" " -f1) $(wc -c $f)"
-    done
+  HASH_NAME=$1
+  HASH_CMD=$2
+  echo "${HASH_NAME}:"
+  for f in $(find -type f); do
+    f=$(echo $f | cut -c3-) # remove ./ prefix
+    if [ "$f" = "Release" ]; then
+      continue
+    fi
+    echo " $(${HASH_CMD} ${f} | cut -d" " -f1) $(wc -c $f)"
+  done
 }
 
 cat << EOF
@@ -395,7 +395,7 @@ an un-authenticated package:
 
 ```
 WARNING: The following packages cannot be authenticated!
-  hello-world
+ hello-world
 Install these packages without verification? [y/N]
 ```
 
@@ -475,9 +475,9 @@ which will show something similar to
 ```
 /home/alex/example/pgpkeys-pyml86/pubring.kbx
 -------------------------------
-pub   rsa4096 2021-05-18 [SCEA]
-      B4D5C8B003C50A38A7E85B5989376CAC59892E72
-uid           [ultimate] example <example@example.com>
+pub  rsa4096 2021-05-18 [SCEA]
+   B4D5C8B003C50A38A7E85B5989376CAC59892E72
+uid      [ultimate] example <example@example.com>
 ```
 
 This PGP key is comprised of both a public key, and a private key. Let's start with exporting the public key:
@@ -534,26 +534,26 @@ and checking that only a single `:public key packet:` entry exists. It should lo
 ```
 # off=0 ctb=99 tag=6 hlen=3 plen=525
 :public key packet:
-    version 4, algo 1, created 1621374567, expires 0
-    pkey[0]: [4096 bits]
-    pkey[1]: [17 bits]
-    keyid: 89376CAC59892E72
+  version 4, algo 1, created 1621374567, expires 0
+  pkey[0]: [4096 bits]
+  pkey[1]: [17 bits]
+  keyid: 89376CAC59892E72
 # off=528 ctb=b4 tag=13 hlen=2 plen=29
 :user ID packet: "example <example@example.com>"
 # off=559 ctb=89 tag=2 hlen=3 plen=590
 :signature packet: algo 1, keyid 89376CAC59892E72
-    version 4, created 1621374567, md5len 0, sigclass 0x13
-    digest algo 10, begin of digest 4d 43
-    hashed subpkt 33 len 21 (issuer fpr v4 B4D5C8B003C50A38A7E85B5989376CAC59892E72)
-    hashed subpkt 2 len 4 (sig created 2021-05-18)
-    hashed subpkt 27 len 1 (key flags: 2F)
-    hashed subpkt 11 len 4 (pref-sym-algos: 9 8 7 2)
-    hashed subpkt 21 len 5 (pref-hash-algos: 10 9 8 11 2)
-    hashed subpkt 22 len 3 (pref-zip-algos: 2 3 1)
-    hashed subpkt 30 len 1 (features: 01)
-    hashed subpkt 23 len 1 (keyserver preferences: 80)
-    subpkt 16 len 8 (issuer key ID 89376CAC59892E72)
-    data: [4095 bits]
+  version 4, created 1621374567, md5len 0, sigclass 0x13
+  digest algo 10, begin of digest 4d 43
+  hashed subpkt 33 len 21 (issuer fpr v4 B4D5C8B003C50A38A7E85B5989376CAC59892E72)
+  hashed subpkt 2 len 4 (sig created 2021-05-18)
+  hashed subpkt 27 len 1 (key flags: 2F)
+  hashed subpkt 11 len 4 (pref-sym-algos: 9 8 7 2)
+  hashed subpkt 21 len 5 (pref-hash-algos: 10 9 8 11 2)
+  hashed subpkt 22 len 3 (pref-zip-algos: 2 3 1)
+  hashed subpkt 30 len 1 (features: 01)
+  hashed subpkt 23 len 1 (keyserver preferences: 80)
+  subpkt 16 len 8 (issuer key ID 89376CAC59892E72)
+  data: [4095 bits]
 ```
 
 Next let's export the private key so we can back it up somewhere safe.
@@ -664,9 +664,9 @@ which should show a similar imported message:
 gpg: key 4E793BC948F34C6F: public key "example <example@example.com>" imported
 gpg: key 4E793BC948F34C6F: secret key imported
 gpg: Total number processed: 1
-gpg:               imported: 1
-gpg:       secret keys read: 1
-gpg:   secret keys imported: 1
+gpg:        imported: 1
+gpg:    secret keys read: 1
+gpg:  secret keys imported: 1
 ```
 
 and now if we run `gpg --list-keys`, we should see it is now available:
@@ -674,9 +674,9 @@ and now if we run `gpg --list-keys`, we should see it is now available:
 ```
 /home/alex/example/pgpkeys-e7u1Ad/pubring.kbx
 ---------------------------------------------
-pub   rsa4096 2021-05-18 [SCEA]
-      CFBFFC9CCD163CC7E1768BFF4E793BC948F34C6F
-uid           [ unknown] example <example@example.com>
+pub  rsa4096 2021-05-18 [SCEA]
+   CFBFFC9CCD163CC7E1768BFF4E793BC948F34C6F
+uid      [ unknown] example <example@example.com>
 ```
 
 Ok, let's get around to signing the `Release` file now.

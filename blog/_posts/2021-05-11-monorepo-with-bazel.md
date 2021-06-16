@@ -1,7 +1,7 @@
 ---
 title: 'Building a Monorepo with Bazel'
 categories:
-  - Tutorials
+ - Tutorials
 toc: true
 author: Siddhant Varma
 internal-links:
@@ -90,7 +90,7 @@ $ bazel help
 Usage: bazel <command> <options> ...
 
 Available commands:
-  analyze-profile     Analyzes build profile data.
+ analyze-profile   Analyzes build profile data.
 ...
 ```
 
@@ -119,7 +119,7 @@ The following is a generic `bazel.rc` file that you can modify according to your
 
 ```.rc
 ###############################
-# Directory structure         #
+# Directory structure     #
 ###############################
 
 # Artifacts are typically placed in a directory called "dist"
@@ -129,7 +129,7 @@ The following is a generic `bazel.rc` file that you can modify according to your
 build --symlink_prefix=dist/
 
 ###############################
-# Output                      #
+# Output           #
 ###############################
 
 # A more useful default output mode for bazel query, which
@@ -154,7 +154,7 @@ test:debug --test_arg=--node_options=--inspect-brk --test_output=streamed --test
 
 ### Adding the `buildifier` Dependency to Your Project
 
-Buildifier is a formatting tool that ensures all `BUILD` files are formatted in a similar fashion. It creates a standardized formatting for all your `BUILD` and `.bzl` files.  It also has a linter out of the box to help you detect issues in your code and automatically fix them. You can add the `buildifier` dependency to your project either using npm:
+Buildifier is a formatting tool that ensures all `BUILD` files are formatted in a similar fashion. It creates a standardized formatting for all your `BUILD` and `.bzl` files. It also has a linter out of the box to help you detect issues in your code and automatically fix them. You can add the `buildifier` dependency to your project either using npm:
 
 ```shell
 npm install --save-dev @bazel/buildifier
@@ -169,182 +169,182 @@ yarn add -D @bazel/buildifier
 You will need the following scripts inside your `package.json` file to run the `buildifier`:
 
 ```json
-"scripts": {  
-        "bazel:format": "find . -type f \\( -name \"*.bzl\" -or -name WORKSPACE -or -name BUILD -or -name BUILD.bazel \\) ! -path \"*/node_modules/*\" | xargs buildifier -v --warnings=attr-cfg,attr-license,attr-non-empty,attr-output-default,attr-single-file,constant-glob,ctx-actions,ctx-args,depset-iteration,depset-union,dict-concatenation,duplicated-name,filetype,git-repository,http-archive,integer-division,load,load-on-top,native-build,native-package,out-of-order-load,output-group,package-name,package-on-top,positional-args,redefined-variable,repository-name,same-origin-load,string-iteration,unsorted-dict-items,unused-variable",  
-        "bazel:lint": "yarn bazel:format --lint=warn",  
-        "bazel:lint-fix": "yarn bazel:format --lint=fix"  
-}  
+"scripts": { 
+    "bazel:format": "find . -type f \\( -name \"*.bzl\" -or -name WORKSPACE -or -name BUILD -or -name BUILD.bazel \\) ! -path \"*/node_modules/*\" | xargs buildifier -v --warnings=attr-cfg,attr-license,attr-non-empty,attr-output-default,attr-single-file,constant-glob,ctx-actions,ctx-args,depset-iteration,depset-union,dict-concatenation,duplicated-name,filetype,git-repository,http-archive,integer-division,load,load-on-top,native-build,native-package,out-of-order-load,output-group,package-name,package-on-top,positional-args,redefined-variable,repository-name,same-origin-load,string-iteration,unsorted-dict-items,unused-variable", 
+    "bazel:lint": "yarn bazel:format --lint=warn", 
+    "bazel:lint-fix": "yarn bazel:format --lint=fix" 
+} 
 ```
 
-### Building/Compiling Code  
-  
-In this example, you'll start from a new empty directory and build and compile a simple Node.js application using Bazel. You'll end up with the following structure:  
-  
-```  
-  WORKSPACE     
-  BUILD.bazel    
-  es5.babelrc  
-  app.js    
-  package-lock.json  
-  package.json    
-  
-```  
-  
+### Building/Compiling Code 
+ 
+In this example, you'll start from a new empty directory and build and compile a simple Node.js application using Bazel. You'll end up with the following structure: 
+ 
+``` 
+ WORKSPACE   
+ BUILD.bazel  
+ es5.babelrc 
+ app.js  
+ package-lock.json 
+ package.json  
+ 
+``` 
+ 
 Instead of manually configuring everything, you can use the following commands to get started:
-  
-```sh  
-npm init @bazel bazel_build_nodejs  
-```  
-  
-Or if you're using Yarn:  
-  
-```shell  
-yarn create @bazel bazel_build_nodejs  
-```  
-  
+ 
+```sh 
+npm init @bazel bazel_build_nodejs 
+``` 
+ 
+Or if you're using Yarn: 
+ 
+```shell 
+yarn create @bazel bazel_build_nodejs 
+``` 
+ 
 The previous commands use [`@bazel/create`](https://www.npmjs.com/package/@bazel/create) under the hood to set up your monorepo with some minimal configurations. This means that it automatically creates `package.json`, `WORKSPACE`, and `BUILD.bazel` files for you.
-  
+ 
 The `package.json` is exactly how it's created when you're initializing any Node.js project using the `npm init` command. It contains some development time dependencies and some scripts through which you can run your build.
 
 Also notice how it automatically adds `buildifier` to your project so you can avoid manually setting it up. This is only a starting point though, and you would need to manually set up a `buildifier` depending on the requirements of your project.
-  
-```json  
-{  
-    "name": "bazel_build_nodejs",  
-    "version": "0.1.0",  
-    "private": true,  
-    "devDependencies": {  
-        "@bazel/bazelisk": "latest",  
-        "@bazel/ibazel": "latest",  
-        "@bazel/buildifier": "latest"  
-    },  
-    "scripts": {  
-        "build": "bazel build //...",  
-        "test": "bazel test //..."  
-    }  
-}  
-  
-```  
-  
+ 
+```json 
+{ 
+  "name": "bazel_build_nodejs", 
+  "version": "0.1.0", 
+  "private": true, 
+  "devDependencies": { 
+    "@bazel/bazelisk": "latest", 
+    "@bazel/ibazel": "latest", 
+    "@bazel/buildifier": "latest" 
+  }, 
+  "scripts": { 
+    "build": "bazel build //...", 
+    "test": "bazel test //..." 
+  } 
+} 
+ 
+``` 
+ 
 Let's install these packages and a few more like [Babel](https://babeljs.io/) to [transpile](https://scotch.io/tutorials/javascript-transpilers-what-they-are-why-we-need-them) your JavaScript code.
-  
-```shell  
-npm install @babel/core @babel/cli @babel/preset-env  
-```  
-  
+ 
+```shell 
+npm install @babel/core @babel/cli @babel/preset-env 
+``` 
+ 
 A `package-lock.json` file will also be automatically created for you. Your `WORKSPACE.bazel` file should look like this:
-  
-```text  
-# Bazel workspace created by @bazel/create 3.4.1  
-  
-# Declares that this directory is the root of a Bazel workspace.  
-# See https://docs.bazel.build/versions/master/build-ref.html#workspace  
-workspace(  
-    # How this workspace would be referenced with absolute labels from another workspace  
-    name = "bazel_build_nodejs",  
-    # Map the @npm bazel workspace to the node_modules directory.  
-    # This lets Bazel use the same node_modules as other local tooling.  
-    managed_directories = {"@npm": ["node_modules"]},  
-)  
-  
-# Install the nodejs "bootstrap" package  
-# This provides the basic tools for running and packaging Node.js programs in Bazel  
-load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")  
-http_archive(  
-    name = "build_bazel_rules_nodejs",  
-    sha256 = "a160d9ac88f2aebda2aa995de3fa3171300c076f06ad1d7c2e1385728b8442fa",  
-    urls = ["https://github.com/bazelbuild/rules_nodejs/releases/download/3.4.1/rules_nodejs-3.4.1.tar.gz"],  
-)  
-  
-# The npm_install rule runs Yarn anytime the package.json or package-lock.json file changes.  
-# It also extracts any Bazel rules distributed in an npm package.  
-load("@build_bazel_rules_nodejs//:index.bzl", "npm_install")  
-npm_install(  
-    # Name this npm so that Bazel Label references look like @npm//package  
-    name = "npm",  
-    package_json = "//:package.json",  
-    package_lock_json = "//:package-lock.json",  
-)  
-  
-```  
-  
+ 
+```text 
+# Bazel workspace created by @bazel/create 3.4.1 
+ 
+# Declares that this directory is the root of a Bazel workspace. 
+# See https://docs.bazel.build/versions/master/build-ref.html#workspace 
+workspace( 
+  # How this workspace would be referenced with absolute labels from another workspace 
+  name = "bazel_build_nodejs", 
+  # Map the @npm bazel workspace to the node_modules directory. 
+  # This lets Bazel use the same node_modules as other local tooling. 
+  managed_directories = {"@npm": ["node_modules"]}, 
+) 
+ 
+# Install the nodejs "bootstrap" package 
+# This provides the basic tools for running and packaging Node.js programs in Bazel 
+load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive") 
+http_archive( 
+  name = "build_bazel_rules_nodejs", 
+  sha256 = "a160d9ac88f2aebda2aa995de3fa3171300c076f06ad1d7c2e1385728b8442fa", 
+  urls = ["https://github.com/bazelbuild/rules_nodejs/releases/download/3.4.1/rules_nodejs-3.4.1.tar.gz"], 
+) 
+ 
+# The npm_install rule runs Yarn anytime the package.json or package-lock.json file changes. 
+# It also extracts any Bazel rules distributed in an npm package. 
+load("@build_bazel_rules_nodejs//:index.bzl", "npm_install") 
+npm_install( 
+  # Name this npm so that Bazel Label references look like @npm//package 
+  name = "npm", 
+  package_json = "//:package.json", 
+  package_lock_json = "//:package-lock.json", 
+) 
+ 
+``` 
+ 
 It basically tells Bazel where to pull the tools for running your project and fetches all the required rules to create a build. You also need to tell Bazel to use auto-generated rules. Add the following line to the top of your `BUILD.bazel`:
-  
-```  
-load("@npm//@babel/cli:index.bzl", "babel")  
-```  
+ 
+``` 
+load("@npm//@babel/cli:index.bzl", "babel") 
+``` 
 
 Let's add a simple console statement inside `app.js`:
-  
-```javascript  
-console.log('NodeJS Built using Bazel!');  
-```  
-  
-Next add the following code inside `es5.babelrc` to configure Babel for transpiling JavaScript code:  
-  
-```babelrc  
-{  
-    "sourceMaps": "inline",  
-    "presets": [  
-      [  
-        "@babel/preset-env",  
-        {  
-          "modules": "systemjs"  
-        }  
-      ]  
-    ]  
-  }  
-```  
-  
+ 
+```javascript 
+console.log('NodeJS Built using Bazel!'); 
+``` 
+ 
+Next add the following code inside `es5.babelrc` to configure Babel for transpiling JavaScript code: 
+ 
+```babelrc 
+{ 
+  "sourceMaps": "inline", 
+  "presets": [ 
+   [ 
+    "@babel/preset-env", 
+    { 
+     "modules": "systemjs" 
+    } 
+   ] 
+  ] 
+ } 
+``` 
+ 
 Finally, you need to tell Bazel how to take JavaScript inputs and convert them to transpiled or [ES5](https://johnpapa.net/es5-es2015-typescript/) output. Add the following code inside `BUILD.bazel` file after the previous load statement:
-  
-```bazel  
-babel(  
-    name = "compile",  
-    data = [  
-        "app.js",  
-        "es5.babelrc",  
-        "@npm//@babel/preset-env",  
-    ],  
-    outs = ["app.es5.js"],  
-    args = [  
-        "app.js",  
-        "--config-file",  
-        "./$(execpath es5.babelrc)",  
-        "--out-file",  
-        "$(execpath app.es5.js)",  
-    ],  
-)  
-```  
-  
-Run the following command to build and compile your JavaScript code:  
-  
-```  
-npm run build  
-```  
-  
-In case you run into an error, try renaming your `WORKSPACE.bazel` file to simply `WORKSPACE`. If all goes well, you should see something similar to the following screenshot on your terminal:  
-  
-![Terminal log of the build command]({{site.images}}{{page.slug}}/RhmR1Xx.png)  
-  
+ 
+```bazel 
+babel( 
+  name = "compile", 
+  data = [ 
+    "app.js", 
+    "es5.babelrc", 
+    "@npm//@babel/preset-env", 
+  ], 
+  outs = ["app.es5.js"], 
+  args = [ 
+    "app.js", 
+    "--config-file", 
+    "./$(execpath es5.babelrc)", 
+    "--out-file", 
+    "$(execpath app.es5.js)", 
+  ], 
+) 
+``` 
+ 
+Run the following command to build and compile your JavaScript code: 
+ 
+``` 
+npm run build 
+``` 
+ 
+In case you run into an error, try renaming your `WORKSPACE.bazel` file to simply `WORKSPACE`. If all goes well, you should see something similar to the following screenshot on your terminal: 
+ 
+![Terminal log of the build command]({{site.images}}{{page.slug}}/RhmR1Xx.png) 
+ 
 You will see `bazel-out` and a `dist` directory where your output files will be present.
-  
+ 
 ![Output directories]({{site.images}}{{page.slug}}/Ffu5zoQ.png){ height=400px}\
-  
-If you check inside `dist/bin/app.es5.js`, you should see your transpiled ES5 JavaScript code as shown:  
-  
-```javascript  
-System.register([], function (_export, _context) {  
-  "use strict";  
-  
-  return {  
-    setters: [],  
-    execute: function () {  
-      console.log('NodeJS Built using Bazel!');  
-    }  
-  };  
-});  
-```  
+ 
+If you check inside `dist/bin/app.es5.js`, you should see your transpiled ES5 JavaScript code as shown: 
+ 
+```javascript 
+System.register([], function (_export, _context) { 
+ "use strict"; 
+ 
+ return { 
+  setters: [], 
+  execute: function () { 
+   console.log('NodeJS Built using Bazel!'); 
+  } 
+ }; 
+}); 
+``` 
 
 ### Setting Up Continuous Integration
 
@@ -353,23 +353,23 @@ Bazel recommends using container environments like the [ngcontainer Docker image
 If you're using [CircleCI](/blog/continuous-integration#circleci), you can use [this example](https://github.com/angular/angular-bazel-example/blob/master/.circleci/config.yml) as a reference. If you're using GitLab, you can set up CI in minutes using the following scripts:
 
 ```
-variables:  
-  BAZEL_DIGEST_VERSION: "f670e9aec235aa23a5f068566352c5850a67eb93de8d7a2350240c68fcec3b25" # Bazel 3.4.1  
-  
-build:  
-  image:  
-    name: gcr.io/cloud-marketplace-containers/google/bazel@sha256:$BAZEL_DIGEST_VERSION  
-    entrypoint: [""]  
-  stage: build  
-  script:  
-    - bazel --output_base output build //main/...  
-  artifacts:  
-    paths:  
-      - bazel-bin/main/hello-world  
-  cache:  
-    key: $BAZEL_DIGEST_VERSION  
-    paths:  
-      - output  
+variables: 
+ BAZEL_DIGEST_VERSION: "f670e9aec235aa23a5f068566352c5850a67eb93de8d7a2350240c68fcec3b25" # Bazel 3.4.1 
+ 
+build: 
+ image: 
+  name: gcr.io/cloud-marketplace-containers/google/bazel@sha256:$BAZEL_DIGEST_VERSION 
+  entrypoint: [""] 
+ stage: build 
+ script: 
+  - bazel --output_base output build //main/... 
+ artifacts: 
+  paths: 
+   - bazel-bin/main/hello-world 
+ cache: 
+  key: $BAZEL_DIGEST_VERSION 
+  paths: 
+   - output 
 ```
 
 The above scripts define the build outputs and cache directory and also ensures immutability. Luckily the GitLab team has a [dedicated article](https://about.gitlab.com/blog/2020/09/01/using-bazel-to-speed-up-gitlab-ci-builds/) on this for the best reference.

@@ -9,10 +9,10 @@ tags:
 - bsl
 author: Vlad
 internal-links:
-  - opencore
-  - bsl
-  - source-available
-  - open core
+ - opencore
+ - bsl
+ - source-available
+ - open core
 ---
 
 Earthly users and prospective users - today we are announcing our switch to Business Source License 1.1 (BSL).

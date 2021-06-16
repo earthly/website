@@ -1,7 +1,7 @@
 ---
 title: "Protocol Buffers Best Practices for Backward and Forward Compatibility"
 categories:
-  - Tutorials
+ - Tutorials
 toc: true
 author: John Gramila
 internal-links:
@@ -49,9 +49,9 @@ syntax = "proto3";
 package tutorial;
 
 message Sample{
-  string content = 1;
-  int32 id = 2;
-  string situation = 3;
+ string content = 1;
+ int32 id = 2;
+ string situation = 3;
 }
 ```
 
@@ -77,9 +77,9 @@ To get around these compatibility issues, you can reserve identifiers. You can a
 
 ``` protobuf
 message Sample{
-  reserved 1, 5 to 8;
-  int32 id = 2;
-  string text = 3;
+ reserved 1, 5 to 8;
+ int32 id = 2;
+ string text = 3;
 }
 ```
 
@@ -98,10 +98,10 @@ The recommended way to nest messages is to nest them, then call them:
 ``` protobuf
 message SampleContainer {
 message Sample{
-  optional int32 id = 2;
-  optional string text = 3;
+ optional int32 id = 2;
+ optional string text = 3;
 }
-   repeated Sample samples = 1;
+  repeated Sample samples = 1;
 }
 ```
 

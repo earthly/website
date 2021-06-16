@@ -2,13 +2,13 @@
 title: Unit Testing vs Integration Testing
 toc: true
 categories:
-  - Articles
+ - Articles
 author: Adam
 internal-links:
-  - integration testing
-  - testing
-  - unit test
-  - unit testing
+ - integration testing
+ - testing
+ - unit test
+ - unit testing
 ---
 
 In 1998, Kent Beck wrote sUnit, a unit testing framework for SmallTalk. &nbsp;Beck later ported this framework to Java as jUnit. &nbsp;From there, xUnit frameworks spread to the most popular languages. Newer languages, like [GoLang](/blog/top-3-resources-to-learn-golang-in-2021) and Rust, have incorporated testing into the compiler and standard library directly.

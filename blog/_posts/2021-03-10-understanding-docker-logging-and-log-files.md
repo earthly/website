@@ -2,22 +2,22 @@
 title: Understanding Docker Logging and Log Files
 toc: true
 categories:
-  - Tutorials
+ - Tutorials
 tags:
 - docker
 - tutorials
 author: Sanket Makhija
 sidebar:
-  nav: "docker"
+ nav: "docker"
 internal-links:
-  - docker log
-  - container log
-  - docker logging
-  - logging
-  - log driver
-  - logging driver
-  - side car logging
-  - side-car logging
+ - docker log
+ - container log
+ - docker logging
+ - logging
+ - log driver
+ - logging driver
+ - side car logging
+ - side-car logging
 ---
 Docker logging and its management are an important part of the containerization of your application. Once you've deployed your application, logging is one of the best tools to help reveal errors, aid in debugging, and optimize your application's performance.
 
@@ -72,7 +72,7 @@ As you can see, the log follows a pattern of printing:
 You can find this log in your Docker host at:
 
 ```bash
-/var/lib/docker/containers/<container id>/<container id>-json.log  
+/var/lib/docker/containers/<container id>/<container id>-json.log 
 ```
 
 These Docker logs are stored in a host container and will build up over time. To address that, you can implement log rotation, which will remove a chunk of logs at specified intervals, and a log aggregator, which can be used to push them into a centralized location for a permanent log repository. You can use this repository for further analysis and improvements in the system down the road.
@@ -81,8 +81,8 @@ To find `container_id`, run the `docker ps` command. It'll list all the running 
 
 ```bash
 $ docker ps
-CONTAINER ID   IMAGE       COMMAND             CREATED             STATUS              PORTS     NAMES
-cg95e1yqk810   bar_image  "node index.js"     Y min ago           Up Y min            80/tcp     bar_app
+CONTAINER ID  IMAGE    COMMAND       CREATED       STATUS       PORTS   NAMES
+cg95e1yqk810  bar_image "node index.js"   Y min ago      Up Y min      80/tcp   bar_app
 ```
 
 Then, the `docker logs container_id` lists the logs for a particular container.
@@ -121,20 +121,20 @@ Logging drivers, or log-drivers, are mechanisms for getting information from run
 
 Currently, Docker supports the following logging drivers:
 
-|                                     Driver                                      |                                               Description                                               |
+|                   Driver                   |                        Description                        |
 | :-----------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------: |
-|                                    **none**                                     |            No logs are available for the container and Docker logs do not return any output.            |
-|      **[local](https://docs.docker.com/config/containers/logging/local/)**      |                    Logs are stored in a custom format designed for minimal overhead.                    |
-|  **[json-file](https://docs.docker.com/config/containers/logging/json-file/)**  |                 Logs are formatted as JSON. The default logging driver for Docker.                  |
-|     **[syslog](https://docs.docker.com/config/containers/logging/syslog/)**     | Writes logging messages to the Syslog facility. The Syslog daemon must be running on the host machine.  |
-|   **[journald](https://docs.docker.com/config/containers/logging/journald/)**   |        Writes log messages to journald. The journald daemon must be running on the host machine.         |
-|    **[gcplogs](https://docs.docker.com/config/containers/logging/gcplogs/)**    |                       Writes log messages to Google Cloud Platform (GCP) logging.                       |
-|    **[awslogs](https://docs.docker.com/config/containers/logging/awslogs/)**    |                             Writes log messages to Amazon CloudWatch logs.                              |
-|     **[splunk](https://docs.docker.com/config/containers/logging/splunk/)**     |                      Writes log messages to Splunk using the HTTP Event Collector.                      |
-|       **[gelf](https://docs.docker.com/config/containers/logging/gelf/)**       |    Writes log messages to a Graylog Extended Log Format (GELF) endpoint, such as Graylog or Logstash.    |
-|    **[fluentd](https://docs.docker.com/config/containers/logging/fluentd/)**    | Writes log messages to fluentd (forward input). The fluentd daemon must be running on the host machine. |
-|    **[etwlogs](https://docs.docker.com/config/containers/logging/etwlogs/)**    |   Writes log messages as Event Tracing for Windows (ETW) events. Only available on Windows platforms.   |
-| **[logentries](https://docs.docker.com/config/containers/logging/logentries/)** |                                Writes log messages to Rapid7 Logentries.                                |
+|                  **none**                   |      No logs are available for the container and Docker logs do not return any output.      |
+|   **[local](https://docs.docker.com/config/containers/logging/local/)**   |          Logs are stored in a custom format designed for minimal overhead.          |
+| **[json-file](https://docs.docker.com/config/containers/logging/json-file/)** |         Logs are formatted as JSON. The default logging driver for Docker.         |
+|   **[syslog](https://docs.docker.com/config/containers/logging/syslog/)**   | Writes logging messages to the Syslog facility. The Syslog daemon must be running on the host machine. |
+|  **[journald](https://docs.docker.com/config/containers/logging/journald/)**  |    Writes log messages to journald. The journald daemon must be running on the host machine.     |
+|  **[gcplogs](https://docs.docker.com/config/containers/logging/gcplogs/)**  |            Writes log messages to Google Cloud Platform (GCP) logging.            |
+|  **[awslogs](https://docs.docker.com/config/containers/logging/awslogs/)**  |               Writes log messages to Amazon CloudWatch logs.               |
+|   **[splunk](https://docs.docker.com/config/containers/logging/splunk/)**   |           Writes log messages to Splunk using the HTTP Event Collector.           |
+|    **[gelf](https://docs.docker.com/config/containers/logging/gelf/)**    |  Writes log messages to a Graylog Extended Log Format (GELF) endpoint, such as Graylog or Logstash.  |
+|  **[fluentd](https://docs.docker.com/config/containers/logging/fluentd/)**  | Writes log messages to fluentd (forward input). The fluentd daemon must be running on the host machine. |
+|  **[etwlogs](https://docs.docker.com/config/containers/logging/etwlogs/)**  |  Writes log messages as Event Tracing for Windows (ETW) events. Only available on Windows platforms.  |
+| **[logentries](https://docs.docker.com/config/containers/logging/logentries/)** |                Writes log messages to Rapid7 Logentries.                |
 
 ### Configuring the Logging Driver
 
@@ -144,20 +144,20 @@ For example, let's set up a default logging driver with some additional options.
 
 ```json
 {
-  "log-driver": "json-file",
-  "log-opts": {
-    "max-size": "25m",
-    "max-file": "10",
-    "labels": "production_bind",
-    "env": "os,customer"
-  }
+ "log-driver": "json-file",
+ "log-opts": {
+  "max-size": "25m",
+  "max-file": "10",
+  "labels": "production_bind",
+  "env": "os,customer"
+ }
 }
 ```
 
 To find the current logging driver for the Docker daemon:
 
 ```bash
-  {% raw %}
+ {% raw %}
 $ docker info --format '{{.LoggingDriver}}'
 
 json-file
@@ -176,10 +176,10 @@ Modify the `daemon.json` file, to pass the address of the splunk host to the dri
 
 ```json
 {
-    "log-driver": "splunk",
-    "log-opts": {
-        "splunk-url": "172.1.1.1:11111"
-    }
+  "log-driver": "splunk",
+  "log-opts": {
+    "splunk-url": "172.1.1.1:11111"
+  }
 }
 ```
 
@@ -203,11 +203,11 @@ To change the mode:
 
 ```json
 {
-    "log-driver": "splunk",
-    "log-opts": {
-        "splunk-url": "172.1.1.1:11111",
-        "mode": "non-blocking"
-    }
+  "log-driver": "splunk",
+  "log-opts": {
+    "splunk-url": "172.1.1.1:11111",
+    "mode": "non-blocking"
+  }
 }
 ```
 
@@ -276,9 +276,9 @@ The json-file driver is the only one that works with the `docker logs` command, 
 
 The reliable way to deliver logs is via Docker Syslog with TCP or TLS. But this driver needs an established TCP connection to the Syslog server whenever a container starts up. And the container will fail ife a connection is not made.
 
-  ```bash
-  docker: Error response from daemon: Failed to initialize logging driver: dial tcp
-  ```
+ ```bash
+ docker: Error response from daemon: Failed to initialize logging driver: dial tcp
+ ```
 
 Your container deployment will be affected if you face network problems or latency issues. And it's not recommended that you restart the Syslog server because this will drop all the connections from the containers to a central Syslog server.
 
@@ -287,7 +287,7 @@ Your container deployment will be affected if you face network problems or laten
 The Docker syslog driver needs an established TCP or TLS connection to deliver logs. Note that when the connection is down or not reachable, you'll start losing the logs until the connection reestablished.
 
 ### Multiline Logs Not Supported
-  
+ 
 Generally, either of two patterns is followed for logging: single-line per log or multiple lines with extended information per log, like stack traces or exceptions. But with Docker logging, this is a moot point, because containers always broadcast logs to the same output: `stdout`.
 
 ### Multiple Logging Drivers Not Supported
@@ -295,7 +295,7 @@ Generally, either of two patterns is followed for logging: single-line per log o
 It's mandatory that you use only a single driver for all of your logging needs. Scenarios where you can store logs locally and push it to remote servers are not supported.
 
 ### Logs Can Miss or Skip
-  
+ 
 There's a rate limitation setting at the Docker end for journald drivers that takes care of the rate that logs get pushed. If it exceeds, then the driver might skip some logs. To prevent such issues, increase the rate limitation settings according to your logging needs.
 
 ## Conclusion

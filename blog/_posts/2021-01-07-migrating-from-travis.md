@@ -2,12 +2,12 @@
 title: Migrating Your Open Source Builds Off Of Travis CI
 featured: true
 categories:
-  - Articles
+ - Articles
 author: Adam
 internal-links:
-   - travis
-   - travis ci
-   - travisci
+  - travis
+  - travis ci
+  - travisci
 ---
 
 Starting in early December, a mad dash has been underway to migrate open-source projects off of Travis CI. What happened and where should you move your project to?
@@ -47,7 +47,7 @@ Many open-source projects are still using Travis and open-source maintainers are
 
 ## Where To Move To
 
-{% picture content-wide {{site.pimages}}{{page.slug}}/dartboard.png  --picture --img width="1200px" --alt {{ Pins on a Map }} %}
+{% picture content-wide {{site.pimages}}{{page.slug}}/dartboard.png --picture --img width="1200px" --alt {{ Pins on a Map }} %}
 
 If you maintain an open-source project that uses TravisCI and are hoping to get off it, then assuming you have the time to migrate, there are actually many viable options.
 
@@ -67,7 +67,7 @@ They also allow use of the free plan with private repositories. This makes it a 
 
 ### Best Option: Github Actions
 
-{% picture content {{site.pimages}}{{page.slug}}/trophy.png  --picture --img width="800px" --alt {{ A Trophy }} %}
+{% picture content {{site.pimages}}{{page.slug}}/trophy.png --picture --img width="800px" --alt {{ A Trophy }} %}
 
 An even better option is [Github Actions](/blog/continuous-integration#github-actions), a cloud CI system directly from GitHub. &nbsp;Github is at the center of many open source projects and this makes it a natural choice for CI. &nbsp;
 
@@ -91,7 +91,7 @@ So GitHub has a generous build plan, but moving your CI process is not easy or f
 
 ## Neutral Build Specifications
 
-{% picture content-wide {{site.pimages}}{{page.slug}}/opensign.png  --picture --img width="1200px" --alt {{ Open Sign }} %}
+{% picture content-wide {{site.pimages}}{{page.slug}}/opensign.png --picture --img width="1200px" --alt {{ Open Sign }} %}
 
 How can you minimize the effort of moving from build platform to another?
 
@@ -126,7 +126,7 @@ build:
  COPY main.go .
  RUN go build main.go
  SAVE ARTIFACT main AS LOCAL main
-    
+  
 lint: 
  ...
 ```

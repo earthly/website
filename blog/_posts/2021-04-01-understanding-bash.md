@@ -1,17 +1,17 @@
 ---
 title: 'Understanding Bash'
 categories:
-  - Tutorials
+ - Tutorials
 toc: true
 author: Kasper Siig
 internal-links:
-  - bash
-  - shell
-  - shellcheck
-  - bash script
-  - shebang
-  - environment variables
-  - environment variable
+ - bash
+ - shell
+ - shellcheck
+ - bash script
+ - shebang
+ - environment variables
+ - environment variable
 ---
 
 Bash scripts give you the ability to turn a tedious series of commands into an easily runnable and repeatable script. With many real-world use cases, like using a bash script to run a continuous deployment process, create a series of files in a folder, or download the contents of several URLs, it's worth your time to make sure bash scripting is in your programming toolbox.
@@ -202,7 +202,7 @@ read NAME
 
 In greeting.sh line 3:
 echo Hello $NAME
-           ^---^ SC2086: Double quote to prevent globbing and word splitting.
+      ^---^ SC2086: Double quote to prevent globbing and word splitting.
 
 ```
 
