@@ -26,12 +26,25 @@ sandboxed
 tokenizer
 proxying
 proxied
+performantly
+[cC]omonads?
+[bB]ootcamp
+incentivized
+discoverability
 
 
 # lingua franca
 franca
 
 #Names
+emacs
+pstree
+cgroups
+buildctl
+buildkitd
+mitmproxy
+mitmweb
+Lerna
 reddit
 RAMDisk
 ShellCheck
@@ -85,7 +98,6 @@ Autoconf
 Automake
 Autotools
 Backblaze
-Comonads
 Dhall
 Ecto
 JRuby
@@ -107,6 +119,8 @@ Kibana
 Mockerfiles
 Pulumi
 AshelySoft
+hlb
+runc
 
 
 #People
@@ -118,7 +132,8 @@ Warski
 Wes
 Zimmermann
 Blandy
-Booc
+Booch
+Haoyi
 
 # things that are actually code or should not be in here 
 # they arne't full words but bla.scala or x.yml

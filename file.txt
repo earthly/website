@@ -1,3 +1,5 @@
+# vale --output JSON  blog/_posts/*.md | grep "Match" | sort | uniq > file.txt
+
       "Match": "Aclocal"
       "Match": "Akihiro"
       "Match": "Ashely"

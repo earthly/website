@@ -57,7 +57,7 @@ The **monorepo layout** consists of a single code repository where multiple proj
 
 Each `lib` and each `app` would contain various other sub-directories to house the source code itself, depending on the language it is written in. You get the idea.
 
-In **polyrepo layout** (sometimes also called **multirepo layout**), on the other hand, the code is spread across... well multiple repositories. The degree to which the separation between logical pieces of code can vary from language to language and from style to style. [^1]
+In **polyrepo layout** (sometimes also called **multi-repo layout**), on the other hand, the code is spread across... well multiple repositories. The degree to which the separation between logical pieces of code can vary from language to language and from style to style. [^1]
 
 Here's an example possible structure.
 
@@ -112,11 +112,11 @@ You can't talk about the code layout, without looking primarily at how code can 
 
 For example, in Go, you have the freedom to reference just about any package (directory) in any repository with ease. There are mechanisms to automatically download any remote code and use it, via the new [modules features](https://blog.golang.org/using-go-modules). For Go, it is just as easy to use monorepos or polyrepos for code imports.
 
-In Java, on the other hand, you cannot simply import a GitHub repository - you have to first publish a JAR to an artifactory, and then reference that JAR in your Java-specific build file. So it becomes far easier to reference a package in the same repository than across repositories setup-wise. But the code can become unwieldy. For this reason, some Java monorepo layouts tend to stick with segmenting the code across separate modules, each possibly producing separate artifacts. See for example [multi-module Maven builds](https://maven.apache.org/guides/mini/guide-multiple-modules.html).
+In Java, on the other hand, you cannot simply import a GitHub repository - you have to first publish a JAR to an repository, and then reference that JAR in your Java-specific build file. So it becomes far easier to reference a package in the same repository than across repositories setup-wise. But the code can become unwieldy. For this reason, some Java monorepo layouts tend to stick with segmenting the code across separate modules, each possibly producing separate artifacts. See for example [multi-module Maven builds](https://maven.apache.org/guides/mini/guide-multiple-modules.html).
 
 JavaScript tends to be spread across multiple repositories typically. To use a package from one repository to another, however, the package needs to be published to NPM. It's less popular to use a monorepo layout with JavaScript, however, if you would like to experiment, there are a number of tools to help out with the directory organization, such that each project gets its own separate `package.json`. [Lerna](https://github.com/lerna/lerna) is one such tool.
 
-**Verdict**: It depends heavily on the language. Even if the language requires an artifactory or a package repository in the middle when referencing code across repositories, it still seems like polyrepos are more popular. When using a monorepo layout, it's often preferable to create distinct modules of each project and some communities have developed tools to help with that.
+**Verdict**: It depends heavily on the language. Even if the language requires a package repository in the middle when referencing code across source repositories, it still seems like polyrepos are more popular. When using a monorepo layout, it's often preferable to create distinct modules of each project and some communities have developed tools to help with that.
 
 ### Contributions within the same project
 
@@ -162,7 +162,7 @@ In monorepo layouts, a typical tendency is to release everything at the same tim
 
 An alternative approach to monolithic releases is for each project in a monorepo to have its own release cycle, despite coexisting in the same repository. This is key to allowing releases in monorepos to work properly. This might mean that you have independent tags for each project (e.g. `projecta-v1.2.3`, `projectb-v4.5.6`, `projectc-v7.8.9`) or no tags at all - just use `main` branch commit hashes - or a global auto-incrementing tag, that increases the version number on each commit (really, this last option is similar to using `main` commit hashes, except that more human-readable tags are used instead). In this case, each project executes a release based on the tags on independent schedules. This strategy relies on every merge to `main` to be considered as "ready for production", however, this is generally a good practice anyway.
 
-The takeaway here is that for monorepos, you should not think that atomic PRs mean atomic releases. That is unrealistic in typical production environments. At the development level, yes you get to group together cross-cutting changes and merge as an atomic unit. At the release and production level, however, you still need another layer of indirection for allowing services to be updated independently. A very common such layer is the Docker image repository (or in more traditional environments, the artifactory). If each `main` branch build produces tagged Docker images, then these images can be pushed to production separately, according to independent schedules.
+The takeaway here is that for monorepos, you should not think that atomic PRs mean atomic releases. That is unrealistic in typical production environments. At the development level, yes you get to group together cross-cutting changes and merge as an atomic unit. At the release and production level, however, you still need another layer of indirection for allowing services to be updated independently. A very common such layer is the Docker image repository (or in more traditional environments, a package repository). If each `main` branch build produces tagged Docker images, then these images can be pushed to production separately, according to independent schedules.
 
 Of course, with any set of related changes that go out independently across multiple microservices, care must be taken such that the changes are forwards and backwards compatible. In a polyrepo setup, the need for such compatibility guarantees is typically more intuitive to the developer. In a monorepo setup, however, the developer needs to be aware, again, that an atomic PR does not mean an atomic release.
 
@@ -220,7 +220,7 @@ On the other hand, in a monorepo setup, all issues are mixed in a single pool. T
 
 ![People's hands placed together]({{site.images}}{{page.slug}}/fkFNBCQ6kQA.jpg)\
 
-If your organization develops a mix of closed source and open-source code, there is absolutely no way to make a monorepo work. It is impossible to only show a subdirectory of the code to the outside world. You might think you could perhaps create a mirror of a subdirectory from the monorepo to a public repo, however, this does not go truly with the open-source spirit. How would you merge external contributions back to the main repository?
+If your organization develops a mix of closed source and open-source code, there is absolutely no way to make a monorepo work. It is impossible to only show a subdirectory of the code to the outside world. You might think you could perhaps create a mirror of a subdirectory from the monorepo to a public repository, however, this does not go truly with the open-source spirit. How would you merge external contributions back to the main repository?
 
 If you are hell-bent on monorepo, perhaps a hybrid approach is more appropriate for you: the open-source parts are separated in public repositories, while the closed source parts remain as part of the monorepo.
 

@@ -21,16 +21,16 @@ You may not know you've used BuildKit because other applications wrap it. Modern
 
 > BuildKit is a new project under the Moby umbrella for building and packaging software using containers. It's a new codebase meant to replace the internals of the current build features in the Moby Engine. - [Introducing BuildKit](https://blog.mobyproject.org/introducing-buildkit-17e056cc5317)
 
-Tõnis Tiigi,  a Docker employee and BuildKit's primary developer, created BuildKit to separate the logic of building images from the main moby project and to enable future development. BuildKit has support for pluggable frontends, which allow it to make more than just docker images using dockerfiles. With BuildKit, we can substitute the dockerfile syntax for [hlb](https://github.com/openllb/hlb) and replace the docker image format for a pure tar file output. That is just one of the possible combinations BuildKit, with its pluggable backends and frontends, unlocks.
+Tõnis Tiigi,  a Docker employee and BuildKit's primary developer, created BuildKit to separate the logic of building images from the main Moby project and to enable future development. BuildKit has support for pluggable frontends, which allow it to make more than just docker images using dockerfiles. With BuildKit, we can substitute the dockerfile syntax for [hlb](https://github.com/openllb/hlb) and replace the docker image format for a pure tar file output. That is just one of the possible combinations BuildKit, with its pluggable backends and frontends, unlocks.
 
-![animation of buildctl building a dockerfile](/blog/assets/images/what-is-buildkit-and-what-can-i-do-with-it/1.gif)
+![animation of `buildctl` building a dockerfile](/blog/assets/images/what-is-buildkit-and-what-can-i-do-with-it/1.gif)
 
-The original BuildKit proposal is found in the moby project:
+The original BuildKit proposal is found in the Moby project:
 <!-- markdownlint-disable MD028 -->
 
-> "Buildkit is a proposal to separate out docker build experience into a separate project, allowing different users to collaborate on the underlying technology and reuse and customize it in different ways."
+> "BuildKit is a proposal to separate out docker build experience into a separate project, allowing different users to collaborate on the underlying technology and reuse and customize it in different ways."
 
-> "One of the main design goals of BuildKit is to separate frontend and backend concerns during a build process" - [Intial BuildKit Proposal](https://github.com/moby/moby/issues/32925)
+> "One of the main design goals of BuildKit is to separate frontend and backend concerns during a build process" - [Initial BuildKit Proposal](https://github.com/moby/moby/issues/32925)
 
 ## Install BuildKit
 
@@ -44,7 +44,7 @@ On macOS, you can install buildctl with brew.
 brew install buildkit
 ```
 
-On Linux and Windows, grab a release from [Github](https://github.com/moby/buildkit/releases).
+On Linux and Windows, grab a release from [GitHub](https://github.com/moby/buildkit/releases).
 
 Afterward, you should be able to call buildctl
 
@@ -79,7 +79,7 @@ GLOBAL OPTIONS:
    --version, -v          print the version
 ```
 
- ***Other Tools**: In this guide, we will use [pstree](https://linux.die.net/man/1/pstree), [br](https://github.com/Canop/broot), and [mitmproxy](/blog/mitmproxy/). They are not required to use BuildKit or to follow this guide, but they help us demonstrate how BuildKit works.*
+ ***Other Tools**: In this guide, we will use [pstree](https://linux.die.net/man/1/pstree), [br](https://github.com/Canop/broot), and [mitmproxy](/blog/mitmproxy/). They are not required to use BuildKit or to follow this guide, but they help us demonstrate how BuildKit works.m
 
 ### buildkitd
 
@@ -213,21 +213,21 @@ RUN update-ca-certificates
 6676dc0109eb3f5f09f7380d697005b6aae401bb72a4ee366f0bb279c0be137b
 ```
 
-![404 on mitm proxy](/blog/assets/images/what-is-buildkit-and-what-can-i-do-with-it/2.png)
+![404 on mitmproxy](/blog/assets/images/what-is-buildkit-and-what-can-i-do-with-it/2.png)
 
 We can see a `404`, and this confirms buildkitd is expecting registry that it can access over the network using the docker registry v2 api.
 
 ## Watching It Build
 
-Buildkitd is responsible for building the image, but `runc` does the actual execution of each step. runc executes each `RUN` command in your dockerfile in a separate process. runc requires Linux kernel 5.2  or later with support for cgroups, and is why buildkitd can't run natively on macOS or Windows.
+`buildkitd` is responsible for building the image, but `runc` does the actual execution of each step. `runc` executes each `RUN` command in your dockerfile in a separate process. runc requires Linux kernel 5.2  or later with support for cgroups, and is why buildkitd can't run natively on macOS or Windows.
 
-### What is runc
+### What is `runc`?
 
 > "Please note that runc is a low-level tool not designed with an end-user in mind. It is mostly employed by other higher-level container software. Therefore, unless there is some specific use case that prevents the use of tools like Docker or Podman, it is not recommended to use runc directly." - [runc readme](https://github.com/opencontainers/runc)
 
 We can watch the execution of our build by using `pstree` and `watch`. Open two side by side terminals, run `docker exec -it buildkit "/bin/watch" "-n1" "pstree -p"` in one and call `buildctl build ...` in the other. You will see `buildkitd` start a `buildkit-runc` process and then a separate process for each `RUN` command.
 
-![Diagram of buildkit running and pstree showing the process tree of buildkitd](/blog/assets/images/what-is-buildkit-and-what-can-i-do-with-it/3.png)
+![Diagram of BuildKit running and pstree showing the process tree of buildkitd](/blog/assets/images/what-is-buildkit-and-what-can-i-do-with-it/3.png)
 
 ## How to see Docker Processes on macOS and Windows
 

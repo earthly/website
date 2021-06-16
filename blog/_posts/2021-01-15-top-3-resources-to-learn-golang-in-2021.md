@@ -78,7 +78,7 @@ At this point, if you haven't started building something using the language you 
 
 ## Bonus Resources
 
-When I was looking for learning recommendations from my coworkers and on [Reddit](https://www.reddit.com/r/programming/) there were a lot of great links shared. Here are some of the things on my future learning list.
+When I was looking for learning recommendations from my coworkers and on [reddit](https://www.reddit.com/r/programming/) there were a lot of great links shared. Here are some of the things on my future learning list.
 
 ## Bonus #1 Go - The Complete Developers Guide
 
