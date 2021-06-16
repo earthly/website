@@ -1,0 +1,19 @@
+Dockerfiles
+Dockerfile
+dockerfile
+Moby
+Nginx
+Hecht
+Bazel
+config
+configs
+parallelization
+webpack
+Makefile
+ReadMe
+monorepos?
+Gradle
+
+## Should not be needed
+imgf
+src
