@@ -29,7 +29,7 @@ Then, on Nov 2, 2020, Travis CI announced the end of its unlimited support for o
 
 > For those of you who have been building on public repositories (on travis-ci.com, with no paid subscription), we will upgrade you to our trial (free) plan with a 10K credit allotment.
 >
-> **When your credit allotment runs out - we'd love for you to consider which of our plans will meet your needs.** - [Travis CI blogpost](https://blog.travis-ci.com/2020-11-02-travis-ci-new-billing)
+> **When your credit allotment runs out - we'd love for you to consider which of our plans will meet your needs.** - [Travis CI blog post](https://blog.travis-ci.com/2020-11-02-travis-ci-new-billing)
 
 The reason behind the change is stated to be abuse by crypto-miners:
 
@@ -65,13 +65,13 @@ Circle CI offers 400,000 build credits per month to any open-source public repos
 
 They also allow use of the free plan with private repositories. This makes it a great choice if your project is not actually open-source. More details [can be found here](https://circleci.com/open-source/).
 
-### Best Option: Github Actions
+### Best Option: GitHub Actions
 
 {% picture content {{site.pimages}}{{page.slug}}/trophy.png  --picture --img width="800px" --alt {{ A Trophy }} %}
 
-An even better option is [Github Actions](/blog/continuous-integration#github-actions), a cloud CI system directly from GitHub. &nbsp;Github is at the center of many open source projects and this makes it a natural choice for CI. &nbsp;
+An even better option is [GitHub Actions](/blog/continuous-integration#github-actions), a cloud CI system directly from GitHub. &nbsp;GitHub is at the center of many open source projects and this makes it a natural choice for CI. &nbsp;
 
-Github Actions (GHA) is newer than either TravisCI or Circle CI, having launched in late 2018.
+GitHub Actions (GHA) is newer than either TravisCI or Circle CI, having launched in late 2018.
 
 GHA offers very generous build credits, 20 concurrent build jobs per project and no limit on build time used. &nbsp; If your pipeline can be run in parallel this concurrency can really be a great enabler. &nbsp;The only limitation I was able to find is that the build may last no longer than 6 hours in total.
 
@@ -99,7 +99,7 @@ My suggestion is to keep as much logic as possible out of the proprietary build 
 
 ### Makefiles and Dockerfiles
 
-One way to build a CI neutral build definition is to use a makefile and a dockerfile. &nbsp;The makefile contains the various steps of your build pipeline and you run it inside a docker container which installs any needed dependencies. &nbsp;[QMK](https://github.com/qmk/qmk_firmware) is a popular open-source project that uses this approach.
+One way to build a CI neutral build definition is to use a Makefile and a dockerfile. &nbsp;The Makefile contains the various steps of your build pipeline and you run it inside a docker container which installs any needed dependencies. &nbsp;[QMK](https://github.com/qmk/qmk_firmware) is a popular open-source project that uses this approach.
 
 ```dockerfile
 FROM qmkfm/base_container
@@ -115,9 +115,9 @@ CMD make all:default
 
 ### Earthly
 
-This is the Earthly blog, and I am an Earthly contributor, but in my totally biased opinion, it deserves a mention as an neurtal format for defining a build. The Elixir web framework [Phoenix is a great example to take a look at](https://github.com/phoenixframework/phoenix/blob/master/Earthfile).
+This is the Earthly blog, and I am an Earthly contributor, but in my totally biased opinion, it deserves a mention as an neutral format for defining a build. The Elixir web framework [Phoenix is a great example to take a look at](https://github.com/phoenixframework/phoenix/blob/master/Earthfile).
 
-Earthly is like a makefile where each step is containerized and dependencies are explicitly declared. &nbsp;
+Earthly is like a Makefile where each step is containerized and dependencies are explicitly declared. &nbsp;
 
 ``` dockerfile
 FROM golang:1.13-alpine3.11
@@ -145,7 +145,7 @@ Migrating your build out of Travis might take a little work. &nbsp;If you aren't
 
 Another interesting option if you are feeling adventurous is using AWS lambda as your build executor. &nbsp;I have no idea how feasible this is, however, [the gg project](https://github.com/StanfordSNR/gg) from Stanford looks interesting. &nbsp;It attempts to use AWS lambdas for running builds at the maximum possible parallelism. &nbsp;
 
-## Take Aways
+## Take-Aways
 
 You probably need to move your open-source project's builds off of Travis CI. If you host it on GitHub, GitHub Actions is probably a good choice.
 

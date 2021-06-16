@@ -37,7 +37,7 @@ _Roadmap (click to view)_
 
 Feedback, feedback, feedback!
 
-Tell us which of these proposals you would like to see implemented first by upvoting them. Tell us if we're on the right track or if you'd like to suggest improvements. Tell us if there is something else that is bothering you that none of the proposals address.
+Tell us which of these proposals you would like to see implemented first by up-voting them. Tell us if we're on the right track or if you'd like to suggest improvements. Tell us if there is something else that is bothering you that none of the proposals address.
 
 If you're feeling like you'd like to bounce some ideas, find us on [Slack](https://join.slack.com/t/earthlycommunity/shared_invite/zt-ix9rtuv8-DUFl8uxe5bFULxyCGGbqJQ).
 

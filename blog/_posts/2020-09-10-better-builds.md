@@ -19,9 +19,9 @@ Earthly is an open-source tool designed to solve this problem. &nbsp;It's also p
 
 ## A Scala Example
 
-Earthly uses Earthfiles to encapsulate your build. &nbsp;If you imagine a [dockerfile](/blog/compiling-containers-dockerfiles-llvm-and-buildkit) mixed with a makefile you wouldn't be far off. &nbsp;
+Earthly uses Earthfiles to encapsulate your build. &nbsp;If you imagine a [dockerfile](/blog/compiling-containers-dockerfiles-llvm-and-buildkit) mixed with a Makefile you wouldn't be far off. &nbsp;
 
-Let's walk through creating an Earthfile for a scala project:
+Let's walk through creating an Earthfile for a Scala project:
 
 ```
 ├── build.sbt 
@@ -84,7 +84,7 @@ The first line is declaring the base docker image our build steps will run insid
 
 > You may have noticed the first time you build an sbt project, it takes a while to pull down all the project dependencies. &nbsp;This `deps` target is helping us avoid paying that cost every build. &nbsp; Calling `sbt update` and then `SAVE IMAGE` ensures that these steps are cached and can be used in further build steps. &nbsp;Earthly will only need to be rerun this step if our build files change.
 
-We can test out the deps step like this:
+We can test out the `deps` step like this:
 
 {% include imgf src="run.gif" alt="running earthly at command line" caption="Running `earthly +deps`" %}
 
@@ -126,7 +126,7 @@ We can then run our tests like this:
 
 ### Containerize It
 
-The final step in our build is to build a docker container, so we can send this application off to run in Kuberenetes or EKS or whatever production happens to look like.
+The final step in our build is to build a docker container, so we can send this application off to run in Kubernetes or EKS or whatever production happens to look like.
 
 ``` dockerfile
 docker:
@@ -158,4 +158,4 @@ If a build fails in CI, we can run the same process locally and reproduce the fa
 
 We haven't solved all the problems of CI, however. &nbsp;What about build parallelization? &nbsp;What about caching intermediate steps? &nbsp;How about multi-language builds with complicated interdependencies? &nbsp;Earthly has some solutions for those problems as well and I'll cover them in future tutorials. &nbsp;
 
-For now, you can find more details, such as how to install earthly and many more examples on **[github](https://github.com/earthly/earthly/blob/master/README.md). &nbsp;**
+For now, you can find more details, such as how to install earthly and many more examples on **[GitHub](https://github.com/earthly/earthly/blob/master/README.md). &nbsp;**
