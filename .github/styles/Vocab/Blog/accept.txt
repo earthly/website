@@ -16,6 +16,8 @@ cryptocurrency
 goroutines
 reimplementing
 todo
+reusability
+transpilers
 
 
 # lingua franca
@@ -63,9 +65,38 @@ Vallee
 Ionescu
 Alexandru
 Monix
+Ansible
+Autoconf
+Automake
+Autotools
+Backblaze
+Comonads
+Dhall
+Ecto
+JRuby
+GitFlow
+Graal
+Grafana
+HashiCorp
+Laravel
+Logstash
+ngrok
+Nvidia
+Podman
+Splunk
+Starlark
+Typelevel
+Uber
+
 
 #People
 Hecht
+Spolsky
+Tetlock
+Tiigi
+Warski
+Wes
+Zimmermann
 
 # things that are actually code or should not be in here 
 # they arne't full words but bla.scala or x.yml
