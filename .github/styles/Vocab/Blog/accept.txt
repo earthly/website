@@ -17,13 +17,28 @@ goroutines
 reimplementing
 todo
 reusability
-transpilers
+[tT]ranspilers
+transpiled
+polyrepos?
+backporting
+[bB]ikeshedding
+sandboxed
+tokenizer
+proxying
+proxied
 
 
 # lingua franca
 franca
 
 #Names
+reddit
+RAMDisk
+ShellCheck
+[uU]nix
+Turing
+Ubuntu
+[aA]utotools
 Earthfiles?
 Makefile
 Traefik
@@ -87,6 +102,11 @@ Splunk
 Starlark
 Typelevel
 Uber
+Fluentd
+Kibana
+Mockerfiles
+Pulumi
+AshelySoft
 
 
 #People
@@ -97,6 +117,8 @@ Tiigi
 Warski
 Wes
 Zimmermann
+Blandy
+Booc
 
 # things that are actually code or should not be in here 
 # they arne't full words but bla.scala or x.yml
