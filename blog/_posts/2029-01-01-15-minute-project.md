@@ -1,4 +1,15 @@
-# The 15 Minute Project
+---
+#header:
+title: The 15-Minute Project
+categories:
+  - Articles
+author: Corey
+excerpt: Applying city planning to software development
+toc: true
+internal-links:
+  - planning
+  - project-management
+---
 
 Like many others, 2020 encouraged me to find some new interests and hobbies to fill the time spent at home. At risk of sounding terribly boring, one of my newfound interests is that of city planning.
 
@@ -80,4 +91,4 @@ By keeping this shared infrastructure well maintained and right-sized for the pr
 
 At this point, I think we've mined this analogy for almost all its worth. It really is fascinating how applicable some of these concepts are to two domains that initially appear entirely separate. For me, it has certainly opened my eyes and changed how I approach new and existing projects, and I hope it will for you too.
 
-[^1] You would be surprised at how many [beautiful](https://www.youtube.com/channel/UCGc8ZVCsrR3dAuhvUbkbToQ) [channels](https://www.youtube.com/channel/UC0intLFzLaudFG-xAvUEO-A) [there](https://www.youtube.com/channel/UCqdUXv9yQiIhspWPYgp8_XA) [are](https://www.youtube.com/user/strongtowns) in this space!
+[^1]: You would be surprised at how many [beautiful](https://www.youtube.com/channel/UCGc8ZVCsrR3dAuhvUbkbToQ) [channels](https://www.youtube.com/channel/UC0intLFzLaudFG-xAvUEO-A) [there](https://www.youtube.com/channel/UCqdUXv9yQiIhspWPYgp8_XA) [are](https://www.youtube.com/user/strongtowns) in this space!
