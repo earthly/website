@@ -46,11 +46,11 @@ Let's call this Joel's Law. A lot of things follow from this premise. Why do mos
 
 ![Scott Adams Understood]({{site.images}}{{page.slug}}/dt140812.gif)
 
-It's easy to understand code as you are writing it. You are executing it and refining it as you go. But it's hard to understand code just by reading it after the fact. If you return to old code you wrote and find it hard to follow, it could be because you have grown as a developer and would write it better today. But its also possible that the code is inherently complex, and you are interpreting the pain of understanding that complexity as a code quality problem. Could this be why growing PR backlogs are a persistent problem?  PR Reviews are a read-only activity, and they are hard to do well if you don't already have a working model of the code in your head.
+It's easy to understand code as you are writing it. You are executing it and refining it as you go. But it's hard to understand code just by reading it after the fact. If you return to old code you wrote and find it hard to follow, it could be because you have grown as a developer and would write it better today. But its also possible that the code is inherently complex, and you are interpreting the pain of understanding that complexity as a code quality problem. Could this be why growing PR backlogs are a persistent problem? PR Reviews are a read-only activity, and they are hard to do well if you don't already have a working model of the code in your head.
 
 ## This is Why You Dread It
 
-If much real-world code is unfairly considered a mess, could programming languages also be unfairly judged?  If you build new things in Go but have to maintain a sprawling 20-year-old C++ codebase, can you rank them fairly? I think this is actually what the survey question is measuring: dreaded languages are likely to be used in existing brown-field projects. Loved languages are more often used in new green-field projects. Let's test this.[^2]
+If much real-world code is unfairly considered a mess, could programming languages also be unfairly judged? If you build new things in Go but have to maintain a sprawling 20-year-old C++ codebase, can you rank them fairly? I think this is actually what the survey question is measuring: dreaded languages are likely to be used in existing brown-field projects. Loved languages are more often used in new green-field projects. Let's test this.[^2]
 
 ## Measuring Brown vs. Green Languages
 

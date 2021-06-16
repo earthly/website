@@ -70,7 +70,7 @@ With that bureaucratic judo trick, the project got off the ground. But the exper
 
 The problem with all the bad advice was that it was unrelated to the problem we were trying to solve. The unit-testing person will always be advocating for more unit tests. The distributed database person will always want things to go into their favorite database.
 
-It's sort of like Minh's cooking advice from King of The Hill: She tastes something and then says, "Add Nutmeg". When would nutmeg not be a good fit?  Doesn't all advice need to be contingent?
+It's sort of like Minh's cooking advice from King of The Hill: She tastes something and then says, "Add Nutmeg". When would nutmeg not be a good fit? Doesn't all advice need to be contingent?
 
 <div class="align-right">
  {% picture grid {{site.pimages}}{{page.slug}}/nutmeg.png  --picture --img width="400px" --alt {{ Add Nutmeg }} %}

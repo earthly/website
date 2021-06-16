@@ -344,7 +344,7 @@ Unable to find image' scratch:latest' locally
 docker: Error response from daemon: 'scratch' is a reserved name.
 ```
 
-However, does it actually contain anything?  Is a `FROM scratch` image literally empty or are there certain required elements of unix filesystem that `scratch` provides?  Let's find out:
+However, does it actually contain anything? Is a `FROM scratch` image literally empty or are there certain required elements of unix filesystem that `scratch` provides? Let's find out:
 
 ```
 > mkdir scratch
