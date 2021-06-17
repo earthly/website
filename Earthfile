@@ -81,6 +81,8 @@ blog-install:
 blog-lint:
   #FROM +blog-install
   FROM agbell/blog-install
+  COPY .vale.ini .
+  COPY .github .github
   COPY blog .
   IF grep '[“”‘’]' ./_posts/*.md
     RUN echo "Fail: Remove curly quotes and use straight quotes instead" && false
