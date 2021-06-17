@@ -52,14 +52,14 @@ If you are measuring MTBF, your software may be getting much better, but your nu
 
 | Incident #1   |          |
 | ------------- | -------- |
-| Reported      | 10:00 AM |
-| Recovered     | 12:00 PM |
+| Reported      | 10:00 am. |
+| Recovered     | 12:00 pm. |
 | Recovery Time | 2 Hours  |
 
 | Incident #2   |          |
 | ------------- | -------- |
-| Reported      | 10:00 AM |
-| Recovered     | 2 days later at 10:00 am |
+| Reported      | 10:00 am. |
+| Recovered     | 2 days later at 10:00 am. |
 | Recovery Time | 48 Hours  |
 
 Mean Time To Recovery =

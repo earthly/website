@@ -1,8 +1,8 @@
 ---
 extends: existence
-message: "Consider removing '%s'"
+message: "'%s' is hedging."
 ignorecase: true
-level: warning
+level: suggestion
 tokens:
   - appear to be
   - arguably
@@ -27,3 +27,6 @@ tokens:
   - to my knowledge
   - unlikely
   - usually
+  - I would argue that
+  - ', so to speak'
+  - to a certain degree
