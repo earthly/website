@@ -78,6 +78,7 @@ getters
 submoduled
 sha
 [rR]eleasables
+rerender
 
 
 # lingua franca
@@ -207,6 +208,9 @@ Kong
 testcontainers
 [gG][Pp][gG]
 [pP][gG][pP]
+Grammarly
+Canva
+matplotlib
 
 #ToDo - please remove
 repos?

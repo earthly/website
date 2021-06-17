@@ -75,7 +75,7 @@ Manual Mac setup:
 
 * `brew install pandoc`
 * `brew install pandoc-plot`
-* install specific libs: `pandoc-plot toolkits` to list
+* install specific libraries: `pandoc-plot toolkits` to list
   * `pip3 install matplotlib` for matplotlib
 
 ## How to run pandoc-plot

@@ -430,7 +430,7 @@ Let's recap what you've done so far to better understand the LiveView life cycle
 4. Opening a LiveView socket will pass the rendered HTML.
 5. The socket will remain open to receive events and handle updates on the LiveView process state.
 
-It is in this life cycle where one of the more powerful and interesting features of LiveView lies. As mentioned, LiveView is listening to your socket for updates but _it will only re-render the portions of the page that needed updating_. In the case of this tutorial, the meter is the only piece that gets an update.
+It is in this life cycle where one of the more powerful and interesting features of LiveView lies. As mentioned, LiveView is listening to your socket for updates but _it will only rerender the portions of the page that needed updating_. In the case of this tutorial, the meter is the only piece that gets an update.
 
 This is one of the key features that makes Phoenix and LiveView extremely well suited for real-time applications.
 

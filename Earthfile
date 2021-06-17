@@ -85,6 +85,7 @@ blog-lint:
     RUN echo "Fail: external image link" && false
   END
   RUN markdownlint "./_posts/*.md"
+  RUN vale --output line blog/_posts/*.md
 
 blog-lint-apply:
   LOCALLY
