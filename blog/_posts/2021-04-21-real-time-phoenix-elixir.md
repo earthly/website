@@ -35,7 +35,7 @@ Here's a sample of how the final application will work:
 
 ![The Crowdfunding App]({{site.images}}{{page.slug}}/q0L1xth.gif)
 
-## Prebuild Setup
+## Pre-build Setup
 
 For this tutorial, make sure you have a good working Elixir environment. The easiest way to do this is to follow the [official Elixir instructions](https://elixir-lang.org/install.html), which will give you a couple of options for:
 
@@ -205,7 +205,7 @@ If everything is working correctly, you should be able to visit [localhost:4000]
 
 ![Out of the box installation]({{site.images}}{{page.slug}}/0N5VpNv.png)
 
-Now the app generated has the default Phoenix styling and setup, but let's add a little polish for this exercise. You're going to add [TailwindCSS](https://tailwindcss.com/) and some premade boilerplate CSS.
+Now the app generated has the default Phoenix styling and setup, but let's add a little polish for this exercise. You're going to add [TailwindCSS](https://tailwindcss.com/) and some pre-made boilerplate CSS.
 
 1. First, add the following dependencies to your `assets/package.json` file, to install Tailwind and the necessary node libraries:
 

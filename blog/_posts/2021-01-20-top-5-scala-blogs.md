@@ -56,7 +56,7 @@ For Kotlin users, 47 Degrees is also behind the great [Arrow project](https://gi
 
 ## #1 [Haoyi's Programming Blog](https://www.lihaoyi.com/)
 
-The #1 Scala blog in this list is Li Haoyi's Blog. &nbsp;Li is a staff engineer at Databricks and author of the new book [Hands-on Scala Programming](https://www.handsonscala.com/).
+The #1 Scala blog in this list is Li Haoyi's Blog. &nbsp;Li is a staff engineer at DataBricks and author of the new book [Hands-on Scala Programming](https://www.handsonscala.com/).
 
 The depth of detail that goes into each post by Li is outstanding! &nbsp;When Li writes about a topic, even the language creator slides into the comment section to provide his commentary.
 
@@ -70,4 +70,4 @@ But, my favorite post by Li is [How an Optimizing Compiler Works](https://www.li
 
 ## Conclusion
 
-Blogs are a great way to keep up on what is new and exciting in the Scala community, and I hope this list of some of my favorites is helpful. If you want to get notified about new Scala blogposts, [The Scala Times](http://scalatimes.com/) is a great option. It's how I found many of these articles.
+Blogs are a great way to keep up on what is new and exciting in the Scala community, and I hope this list of some of my favorites is helpful. If you want to get notified about new Scala blog posts, [The Scala Times](http://scalatimes.com/) is a great option. It's how I found many of these articles.

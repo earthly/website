@@ -58,7 +58,7 @@ The closer integration tests are to real-world interactions the more likely they
 | Service | Integration Test Strategy |
 | --- | --- |
 | Amazon SES | [Test email addresses](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-simulator.html) |
-| Paypal | [Test credit card numbers](https://developer.paypal.com/docs/payflow/payflow-pro/payflow-pro-testing/) |
+| PayPal | [Test credit card numbers](https://developer.paypal.com/docs/payflow/payflow-pro/payflow-pro-testing/) |
 | UPS | [Test api mode](https://www.ups.com/us/en/help-center/sri/developer-instruct.page) |
 
 ## An E-commerce Example
@@ -94,12 +94,12 @@ So which type of test should be preferred? Neither alone is sufficient. &nbsp; B
 
 | Unit Tests | Integration Tests |
 | --- | --- |
-| The goal is to make sure a peice of code works as expected | The goal is to make sure pieces of code, including external interfaces work together, as expected |
+| The goal is to make sure a piece of code works as expected | The goal is to make sure pieces of code, including external interfaces work together, as expected |
 | Isolated | Integrated |
 | Quick to run | Slower to run |
 | Many in number | Fewer in number |
 | No access to file system, database or external services | Directly testing areas where software interacts with external systems |
-| Tests a single piece of functionality | Tests the interaction of several peices of functionality |
+| Tests a single piece of functionality | Tests the interaction of several pieces of functionality |
 | Minimal setup and teardown | May involve extensive setup and teardown of external resources like file systems of database state |
 | Stateless | Possibly Stateful |
 

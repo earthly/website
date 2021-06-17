@@ -16,7 +16,7 @@ internal-links:
 
 I know I am a bit late to the game here, with Go being over 10 years old, but the main reason I am learning Go is that it's the language used here at Earthly.
 
-Why should you learn Go though? &nbsp;The big reason is that the cloud world seems to be running on Go. [Kubernetes](/blog/building-on-kubernetes-ingress), Docker, CockroachDB, Prometheus, Etcd, Traefik, Istio, InfluxDB, and many many more are written in Go.
+Why should you learn Go though? &nbsp;The big reason is that the cloud world seems to be running on Go. [Kubernetes](/blog/building-on-kubernetes-ingress), Docker, CockroachDB, Prometheus, etcd, Traefik, Istio, InfluxDB, and many more are written in Go.
 
 ## Who This List is For
 
@@ -78,7 +78,7 @@ At this point, if you haven't started building something using the language you 
 
 ## Bonus Resources
 
-When I was looking for learning recommendations from my coworkers and on [Reddit](https://www.reddit.com/r/programming/) there were a lot of great links shared. Here are some of the things on my future learning list.
+When I was looking for learning recommendations from my coworkers and on [reddit](https://www.reddit.com/r/programming/) there were a lot of great links shared. Here are some of the things on my future learning list.
 
 ## Bonus #1 Go - The Complete Developers Guide
 
@@ -109,7 +109,7 @@ The Stephen Grider course its on my todo list specifically because I did Stephen
 
 Everything covered so far fits into the beginner and language intro category. &nbsp;But I mentioned at the beginning my interest in go was related to all the great cloud and distributed computing happening in Go. &nbsp;That is what got me interested in [Distributed Services with Go](https://pragprog.com/titles/tjgo/distributed-services-with-go/) by Travis Jeffery.
 
-> "Go has become the most popular language for building distributed services as shown by projects like Docker, Etcd, Vault, CockroachDB, Prometheus, and Kubernetes. Despite the number of prominent projects such as these, however, there's no resource that teaches you why or how you can extend these projects or build your own." - Distributed Services with Go
+> "Go has become the most popular language for building distributed services as shown by projects like Docker, etcd, Vault, CockroachDB, Prometheus, and Kubernetes. Despite the number of prominent projects such as these, however, there's no resource that teaches you why or how you can extend these projects or build your own." - Distributed Services with Go
 
 At the time of writing the book is only in beta and I have only read the free 1st chapter but it looks like exactly the type of book I need.
 
@@ -120,7 +120,7 @@ At the time of writing the book is only in beta and I have only read the free 1s
 - [Go Lang Bootcamp](http://www.golangbootcamp.com/book/intro#cid1)
 - [Learn Go with Tests](https://github.com/quii/learn-go-with-tests)
 
-### Youtube Talks
+### YouTube Talks
 
 - [Go Concurrency Patterns by Rob Pike](https://www.youtube.com/watch?v=f6kdp27TYZs)
 - [Golang University 101 Playlist](https://www.youtube.com/watch?v=rFejpH_tAHM&list=PLEcwzBXTPUE9V1o8mZdC9tNnRZaTgI-1P)

@@ -15,11 +15,11 @@ author: Vlad
 excerpt: "I wanted to sit down and write about all the tricks we learned and that we used every day to help make builds more manageable in the absence of Earthly. It's kinda like a \"what would you do if you couldn't use Earthly\" article. This will hopefully give you some ideas on best practices around build script maintenance, or it might help you decide on whether Earthly is something for you (or if the alternative is preferrable)."
 ---
 
-*EDIT This post used to be titled **How to not use our build tool**. Thanks to Reddit user [musman](https://www.reddit.com/user/musman) for suggesting the current updated title*
+*EDIT This post used to be titled **How to not use our build tool**. Thanks to reddit user [musman](https://www.reddit.com/user/musman) for suggesting the current updated title*
 
 In our journey to becoming better software engineers we have learned of various ways in which the team's productivity could be improved. We noticed that a focus on build repeatability and maintainability goes a long way towards keeping the team focused on what really matters: delivering great software. Many of these ideas helped shape what Earthly is today. In fact, the complexity of the matter is what got us to [start Earthly in the first place](https://earthly.dev/blog/the-world-deserves-better-builds/).
 
-I wanted to sit down and write about all the tricks we learned and that we used every day to help make builds more manageable in the absence of Earthly. It's kinda like a "what would you do if you couldn't use Earthly" article. This will hopefully give you some ideas on best practices around build script maintenance, or it might help you decide on whether Earthly is something for you (or if the alternative is preferrable).
+I wanted to sit down and write about all the tricks we learned and that we used every day to help make builds more manageable in the absence of Earthly. It's kinda like a "what would you do if you couldn't use Earthly" article. This will hopefully give you some ideas on best practices around build script maintenance, or it might help you decide on whether Earthly is something for you (or if the alternative is preferable).
 
 In this article, we will walk through the 10,000 feet view of your build strategy, then dive into some specific tricks, tools, and techniques you might use to keep your builds effective and reproducible, with other off-the-shelf tools.
 
@@ -44,7 +44,7 @@ This is a diagram we sometimes use to describe the glue layer. In this article, 
 
 The glue layer is the layer between the various projects that need to be built and will act as the common denominator - [a vendor-neutral build specification](https://earthly.dev/blog/migrating-from-travis/#neutral-build-specifications). If we don't choose such a glue layer, then the CI YAML (or Groovy?) becomes the glue layer and that would mean that it's more difficult to run it locally for fast iteration.
 
-Because we want to encourage cross-team collaboration, we want to standardize the tooling across teams as much as possible. Different language ecosystems will have different tools and we want to keep using those. You can't tell the frontend team not to use package.json / NPM / Yarn etc - that would be terribly cumbersome for them. So we're not touching the language-specific build layer.
+Because we want to encourage cross-team collaboration, we want to standardize the tooling across teams as much as possible. Different language ecosystems will have different tools and we want to keep using those. You can't tell the frontend team not to use package.json / npm / Yarn etc - that would be terribly cumbersome for them. So we're not touching the language-specific build layer.
 
 In addition, because we want to be able to iterate quickly when there are CI failures, we will containerize the build as much as possible. If the failure is part of a containerized script, then it will be easier to reproduce it locally.
 
@@ -58,11 +58,11 @@ For this guide, we'll use Makefile + Dockerfile, as an arbitrary choice. Note, h
 
 ## Tips for Taming Makefiles in Large Teams
 
-While there is [shellcheck](https://www.shellcheck.net/) for linting shell scripts and avoiding the typical pitfalls, there is currently no linter for Makefiles. Part of the reason is that there are multiple styles or philosophies as to how to write Makefiles that it is hard to enforce specific rules that prevent human errors. For example, take a look at this [particularly opinionated approach](https://tech.davis-hansson.com/p/make/).
+While there is [ShellCheck](https://www.shellcheck.net/) for linting shell scripts and avoiding the typical pitfalls, there is currently no linter for Makefiles. Part of the reason is that there are multiple styles or philosophies as to how to write Makefiles that it is hard to enforce specific rules that prevent human errors. For example, take a look at this [particularly opinionated approach](https://tech.davis-hansson.com/p/make/).
 
 Makefiles have the ability to manage the chain of dependencies and avoid duplicate work. However, this feature is heavily based on file creation time (if an input is newer than the output, then rebuild the target), and in most cases that is not enough. If you really want to, it is possible to force everything into that model. However, that tends to create very complicated Makefiles that often only one person on the team understands. This person becomes the "Build Guru" and all build maintenance works flow through them. This "Build Guru" dynamic is very common but best avoided. With Makefiles, using a limited subset of the Makefile language can help avoid this pattern and keep everything more maintainable for the entire team.
 
-If the Makefile wraps an existing build (for example, a Gradle-based or NPM-based build), it might make more sense to avoid Makefile's more advanced features in those particular projects, to help the team be comfortable with making changes to the Makefile, with limited knowledge. In such cases, the caching would be handled by the wrapped build system and not by the Makefile itself.
+If the Makefile wraps an existing build (for example, a Gradle-based or npm-based build), it might make more sense to avoid Makefile's more advanced features in those particular projects, to help the team be comfortable with making changes to the Makefile, with limited knowledge. In such cases, the caching would be handled by the wrapped build system and not by the Makefile itself.
 
 Here are some guidelines to help keep Makefiles simple and understandable, when the Makefile wraps another build system.
 
@@ -138,7 +138,9 @@ A third, less recommended, option is to execute tests as additional layers of th
 docker build .
 ```
 
+<!-- vale Vale.Spelling = NO -->
 **Option b.** requires managing an extra image, but might make them look more like the integration tests. Plus, if you want to mount in the source code instead of `COPY`ing it (faster on Linux), this option allows that.
+<!-- vale Vale.Spelling = YES -->
 
 ### Running Integration Tests
 
@@ -157,7 +159,7 @@ Either way, to keep your test suite as easy to use as possible, it's great if yo
 Even the most containerized builds benefit from being able to occasionally output regular files. Here are some possible situations:
 
 * Binaries / Packages / Library archives
-* Releaseables (deb packages, source code tarballs)
+* Releasables (deb packages, source code tarballs)
 * Screenshots from UI tests
 * Test coverage reports
 * Performance profile reports
@@ -244,7 +246,7 @@ If you're new to bash scripting, I'll run through a few of the more useful begin
 
 Sometimes it's useful to import the result of one build from repo A into the build of repo B. Here are some examples of situations where this is needed:
 
-* Building some binaries in a core repo and packaging the release in a "build-tooling" repo (example in [kong](https://github.com/Kong/kong-build-tools))
+* Building some binaries in a core repo and packaging the release in a "build-tooling" repo (example in [Kong](https://github.com/Kong/kong-build-tools))
 * Generating protobuf files in one repo and reusing those files in multiple other repos (client(s) and server)
 * Pre-computing some initialization data in one repo and using it in another repo
 * Cases where the language-specific tooling offers little or no support for importing code from another repository
@@ -382,7 +384,7 @@ build: dep1 dep2 dep3
 
 Note that these principles may be difficult to uphold in a large team, as not all engineers will be running the build with the parallel option turned on. So a lot of times the parallelism capability is not tested, and as a result, it can break often. Keep these things in mind as you may need to reinforce the use of parallelism in project READMEs to hopefully be better supported by individual PRs.
 
-Another, either alternative or complementary option, is to make use of Dockerfile parallelism. With [Buildkit](https://github.com/moby/buildkit) turned on (`DOCKER_BUILDKIT=1 docker build ...`), Dockerfiles are built with parallelism automatically, if they involve multiple targets. So for example, if you have targets `dep1`, `dep2` and `dep3` and you `COPY` files from them like so:
+Another, either alternative or complementary option, is to make use of Dockerfile parallelism. With [BuildKit](https://github.com/moby/buildkit) turned on (`DOCKER_BUILDKIT=1 docker build ...`), Dockerfiles are built with parallelism automatically, if they involve multiple targets. So for example, if you have targets `dep1`, `dep2` and `dep3` and you `COPY` files from them like so:
 
 ```Dockerfile
 FROM alpine AS build
@@ -400,7 +402,7 @@ Another way to speed up builds is to make use of shared caching. Shared caching 
 
 There are, of course, CI-supported cache saving features. However, those features are not usable when testing locally. And in the end, all that CI caching does is just upload a file or directory to cloud storage, which can be downloaded later in another instance of the build.
 
-Dockerfile builds have pretty powerful cache saving and importing capabilities, thanks to the new [Buildkit](https://github.com/moby/buildkit) engine. To use these capabilities, you need to first enable Buildkit (`DOCKER_BUILDKIT=1 docker build ...`) and then pass the right arguments to turn these features on.
+Dockerfile builds have pretty powerful cache saving and importing capabilities, thanks to the new [BuildKit](https://github.com/moby/buildkit) engine. To use these capabilities, you need to first enable BuildKit (`DOCKER_BUILDKIT=1 docker build ...`) and then pass the right arguments to turn these features on.
 
 First, you need to push images together with the cache manifest:
 

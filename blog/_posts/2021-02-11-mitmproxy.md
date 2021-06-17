@@ -142,7 +142,7 @@ cp ~/.mitmproxy/mitmproxy-ca-cert.cer ~/Desktop
 
 {% include imgf src="10.png" alt="Getting a Certificate signed by an unknown certificate authority" %}
 
-You will be prompted for your credentials, and the certificate will be added as 'untrusted'.
+You will be prompted for your credentials, and the certificate will be added as `untrusted`.
 
 Double-click on the certificate in the Keychain list and set the 'Secure Sockets Layer' drop down to 'Always Trust'
 
@@ -170,7 +170,7 @@ On Debian-based Linux distributions, follow these steps:
 
 ## Great Success
 
-At this point, assuming you still have mitmproxy running and you still have your network interface setup to proxy through `localhost:8080`, you should be able to view all the HTTP and HTTPS network requests your machine is making in the mitmproxy (or MITMWeb) window.
+At this point, assuming you still have mitmproxy running and you still have your network interface setup to proxy through `localhost:8080`, you should be able to view all the HTTP and HTTPS network requests your machine is making in the mitmproxy (or mitmweb) window.
 
 Here is Slack making requests:
 {% include imgf src="14.png" alt="mitmweb has captured a request from the slack application" caption="mitmweb has captured a request from the slack application" %}
@@ -189,7 +189,7 @@ On macOS and Windows, Linux containers do not run on the host OS. They can't bec
 
 To see the docker daemon's incoming and outgoing requests, we need to get our proxy settings and our certificate authority into that VM.
 
-Before we proceed, we need to clear the proxy settings on the [host network](/blog/docker-networking) connection. We can leave mitmproxy (or MITMWeb running).
+Before we proceed, we need to clear the proxy settings on the [host network](/blog/docker-networking) connection. We can leave mitmproxy (or mitmweb running).
 
 On Windows and macOS, the easiest way to configure a proxy is via `Docker Desktop.`  Configure the proxy settings under `Preferences -> Resources -> Proxies.`
 
@@ -252,7 +252,7 @@ We can then see the requests and responses in our proxy:
 
 We can even see the binary payload of the layer requests and the fact that docker uses Cloudflare as a CDN.
 
-{% include imgf src="20.png" alt="" caption="mitmweb request for cloudflare.docker.com" %}
+{% include imgf src="20.png" alt="" caption="mitmweb request for Cloudflare.docker.com" %}
 
 ## *Troubleshooting*
 

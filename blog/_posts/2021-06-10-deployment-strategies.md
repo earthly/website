@@ -15,14 +15,14 @@ There are many ways to deploy applications to a production server environment, a
 
 This is the most straightforward deployment strategy. It's been the default strategy in enterprise IT for a long time and works well when updates are very infrequent and maintenance windows plentiful. You stop the old service and then start up the new service. During the teardown and spin-up process, the service is down.
 
-In a software-as-a-service world, with frequent updates, this strategy can really only work with the use of queues and async messaging architectures. For example, when upgrading a service that sends email, the mail will queue in an outbox waiting for the upgraded version to start up.
+In a software-as-a-service world, with frequent updates, this strategy can really only work with the use of queues and asynchronous messaging architectures. For example, when upgrading a service that sends email, the mail will queue in an outbox waiting for the upgraded version to start up.
 
 <div class="no_toc_section">
 ### Pros
 </div>
 
 * Easy
-* Works excellent with queues and async message buffers
+* Works excellent with queues and asynchronous message buffers
 * Never need to run more than one version of the service in parallel
 
 <div class="no_toc_section">

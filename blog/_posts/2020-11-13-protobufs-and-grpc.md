@@ -20,7 +20,7 @@ Let's write an in-memory key/value micro-service in Go, and some clients in both
 
 Our server will allow users to set and get data from a key/value store.
 
-{% include imgf src="server.png" alt="handddrawn cartoon for a person talking to a computer server" caption="Interacting with the server" %}
+{% include imgf src="server.png" alt="hand drawn cartoon for a person talking to a computer server" caption="Interacting with the server" %}
 
 First let's design our API in a proto file:
 
@@ -57,7 +57,7 @@ First let's design our API in a proto file:
 
 ```
 
-Next we need to compile this proto file into Go code. On a Mac one might be tempted to run _brew install protobuf_, or if you're on linux you might want to see if _apt-get install protoc_ will magically work, but rather than do that, we will use earthly to containerize these tools. This will allow you to share this code with other developers, and ensure everyone can compile proto files across multiple platforms using the same version to eliminate compatibility issues.
+Next we need to compile this proto file into Go code. On a Mac one might be tempted to run _brew install protobuf_, or if you're on Linux you might want to see if _apt-get install protoc_ will magically work, but rather than do that, we will use earthly to containerize these tools. This will allow you to share this code with other developers, and ensure everyone can compile proto files across multiple platforms using the same version to eliminate compatibility issues.
 
 Here's what an Earthfile would look like for installing Google protobufs inside an Ubuntu image, and generating the protobuf code using the protoc-gen-go-grpc tool:
 
@@ -87,7 +87,7 @@ Here's what an Earthfile would look like for installing Google protobufs inside 
 
 This will then produce two go files under the go-pb directory: api.pb.go and api\_grpc.pb.go which contains the auto generated protobuf and grpc code respectively.
 
-At this point, assuming that earth is already [installed](https://docs.earthly.dev/installation), give it a try for yourself with code from our [example repo](https://github.com/earthly/example-grpc-key-value-store):
+At this point, assuming that earth is already [installed](https://docs.earthly.dev/installation), give it a try for yourself with code from our [example repository](https://github.com/earthly/example-grpc-key-value-store):
 
 ```
     git clone https://github.com/earthly/example-grpc-key-value-store.git
@@ -190,7 +190,7 @@ Next we will compile the go code and save it as a docker image with the followin
         SAVE IMAGE as kvserver:latest
 ```
 
-You can give it a try on your own by using our example code in our GitHub repo, just run:
+You can give it a try on your own by using our example code in our GitHub repository, just run:
 
 ``` bash
     git clone https://github.com/earthly/example-grpc-key-value-store.git
@@ -368,4 +368,4 @@ Then you can try querying the server to see what the weather was set to:
 And if all went well, it'll tell you that it's sunny outside.
 {% include imgf src="sun.png" alt="drawing of the sunn" caption="It's Sunny Outside"%}
 
-So there we go. &nbsp;You can find the code for the server and the two clients in [github here](https://github.com/earthly/example-grpc-key-value-store).
+So there we go. &nbsp;You can find the code for the server and the two clients in [GitHub here](https://github.com/earthly/example-grpc-key-value-store).

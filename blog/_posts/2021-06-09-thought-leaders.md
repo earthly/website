@@ -77,9 +77,9 @@ It's sort of like Minh's cooking advice from King of The Hill: She tastes someth
 <figcaption>The solution to every problem can't be the same</figcaption>
 </div>
 
-Uncontingent advice is what I think of when I hear the term thought-leader - someone has a single solution that seems to fit every problem. Whatever problem you face, the answer is test-driven-development or stream-architectures or being-really-truly-agile.
+Non-contingent advice is what I think of when I hear the term thought-leader - someone has a single solution that seems to fit every problem. Whatever problem you face, the answer is test-driven-development or stream-architectures or being-really-truly-agile.
 
-I get frustrated by advice like that but is it wrong? Unit testing, streaming architectures, agile are all good things. I don't write code in a test-driven style, but I did try it out a bit when it was the hot-thing™, and I learned a lot from the process. All of the thought-leaders are trying to move the industry forward. Still, there is some evidence that noncontingent, one-big-idea advice is less valuable than more nuanced, complicated advice.
+I get frustrated by advice like that but is it wrong? Unit testing, streaming architectures, agile are all good things. I don't write code in a test-driven style, but I did try it out a bit when it was the hot-thing™, and I learned a lot from the process. All of the thought-leaders are trying to move the industry forward. Still, there is some evidence that non-contingent, one-big-idea advice is less valuable than more nuanced, complicated advice.
 
 ## Decision-Making Research
 
@@ -95,7 +95,7 @@ It turns out that [Philip E. Tetlock](https://scholar.google.com/citations?user=
 
 Tetlock's earliest work was the study of political experts. He solicited political advice and predictions from 284 experts between 1984 and 2004, and once enough time had passed to determine the accuracy of their forecasts, he scored the results. Political punditry is different from tech thought-leadership -- none of my advice-givers were explicitly predicting a project outcome  --  but I think his findings have a lot to teach us.
 
-He found that experts could be split into two broad categories, the first of which he called Hedgehogs. A Hedgehog had one big idea like free-market capitalism (or nordic model capitalism or demand-side economics), which they used as a lens to look at many issues. They applied this big idea to every situation, which resulted in noncontingent and straightforward advice. You always need more freedom, nutmeg, and unit tests. Hedgehogs are "Confident forecasters".
+He found that experts could be split into two broad categories, the first of which he called Hedgehogs. A Hedgehog had one big idea like free-market capitalism (or Nordic model capitalism or demand-side economics), which they used as a lens to look at many issues. They applied this big idea to every situation, which resulted in non-contingent and straightforward advice. You always need more freedom, nutmeg, and unit tests. Hedgehogs are "Confident forecasters".
 
 ## The Foxes
 

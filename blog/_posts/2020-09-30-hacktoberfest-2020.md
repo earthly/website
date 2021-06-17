@@ -22,9 +22,9 @@ In addition to this official event, Earthly would also like to kick in some rewa
 
 Earthly is an open-source build tool. &nbsp;It lets you build everything using containers.
 
-The first 40 participants who submit at least one pull request that is accepted [Earthly's GitHub repo](https://github.com/earthly/earthly) between October 1, 2020 and November 1, 2020, will get an earthly sticker. &nbsp;We have labeled many issues '[hacktoberfest](https://github.com/earthly/earthly/issues?q=is%3Aissue+is%3Aopen+label%3Ahacktoberfest)' to get you started.
+The first 40 participants who submit at least one pull request that is accepted [Earthly's GitHub Repository](https://github.com/earthly/earthly) between October 1, 2020 and November 1, 2020, will get an earthly sticker. &nbsp;We have labeled many issues '[Hacktoberfest](https://github.com/earthly/earthly/issues?q=is%3Aissue+is%3Aopen+label%3Ahacktoberfest)' to get you started.
 
-You can also qualify for the sticker by adding a working Earthfile file to another opensource project, including your own personal project. &nbsp;Check with the project maintainers first.
+You can also qualify for the sticker by adding a working Earthfile file to another open-source project, including your own personal project. &nbsp;Check with the project maintainers first.
 
 ## How do I claim my sticker?
 
@@ -32,7 +32,7 @@ Send an email to adam@earthly.com, with your address and link to your merged PRs
 
 ## Questions / Help ?
 
-If you have any questions, or if you need any assistance, we are on the [gitter channel](https://gitter.im/earthly-room/community) to answer questions. &nbsp;Feel free to also email adam@earthly.dev. &nbsp;
+If you have any questions, or if you need any assistance, we are on the [Gitter channel](https://gitter.im/earthly-room/community) to answer questions. &nbsp;Feel free to also email adam@earthly.dev. &nbsp;
 
 Questions about a specific issue or PR are best left on that issue or PR.
 

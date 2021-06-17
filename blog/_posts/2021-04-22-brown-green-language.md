@@ -11,7 +11,7 @@ excerpt: "I've noticed something interesting about the types of programming lang
 
 The Stack Overflow Developer Survey[^1] results are a great source of information about how developers work. I was looking at the 2020 results for some ideas on what programming languages we should add to our [documentation](https://docs.earthly.dev/basics/part-1-a-simple-earthfile) on containerized builds, and I noticed something interesting about the types of programming languages people like. It's something that doesn't seem to come up in various discussions of programming language preferences.
 
-The survey results have rankings for **The Most Dreaded Programming Languages** and **The Most Loved Programming Langauge**. Both rankings come from this question:
+The survey results have rankings for **The Most Dreaded Programming Languages** and **The Most Loved Programming Language**. Both rankings come from this question:
 
 > Which programming, scripting, and markup languages have you done
 extensive development work in over the past year, and which do you want to work
@@ -186,7 +186,7 @@ In other words, Rust, Kotlin, and the other green languages may still be in a ho
 
 ## Overcoming Bias
 
- {% picture {{site.pimages}}{{page.slug}}/angel-devil-wide.png  --picture class="wide" --alt {{ Angel and Devil by Gan Khoon Lay from the Noun Project }} %}
+ {% picture {{site.pimages}}{{page.slug}}/angel-devil-wide.png  --picture class="wide" --alt {{ Angel and Devil from the Noun Project }} %}
 
 Some newer or historically less popular programming languages might be better than older or more mainstream languages, but our ability to judge seems quite biased. In particular, developers are giving a halo to languages that are newer or were not used commonly in the past, and they are giving horns to languages that have been around longer. I think this is because nobody likes maintaining someone else's code. And also, because of Joel's Law: reading real-world is code hard. Building something new is fun, and new languages are used for that more often.
 
@@ -195,7 +195,7 @@ Some newer or historically less popular programming languages might be better th
 I originally started digging into these numbers to establish a ranking for what languages were most used and loved by software developers. I was going to use this to guide adding more examples to our [docs](https://docs.earthly.dev/) and our [build examples](https://github.com/earthly/earthly/tree/main/examples). What I came away with instead was the idea of a programming language life cycle: loved programming languages get used a lot, which leads to code maintenance, which causes people to dislike them, which leads to people looking for greener pastures and trying out a newer language. Popular frameworks probably follow this lifecycle as well.
 
 <div class="wide">
- {% picture {{site.pimages}}{{page.slug}}/hype-wide.png  --alt A graph showing hype decreasing overtime for a langauge %}
+ {% picture {{site.pimages}}{{page.slug}}/hype-wide.png  --alt A graph showing hype decreasing overtime for a language %}
 <figcaption>The lifecycle of programming language hype</figcaption>
 </div>
 
@@ -208,6 +208,6 @@ I don't have data for this, but I distinctly remember Ruby being the hottest lan
      I did consider using language creation date to determine green vs. brown status, but some languages have been around for some time but only found usage relatively recently. 
 
      TIOBE is measured like [this](https://www.tiobe.com/tiobe-index/programming-languages-definition/) and their historical data is only available if you pay, so I am using the Wayback Machine.  
- [^3]: TIOBE doesn't include HTML/CSS because it doesn't consider them turing complete and therefore not a programming language.  [Shell scripts](/blog/understanding-bash) are measured separately by TIOBE, and VBA is not in the list of languages measured at all, as far as I can see.
+ [^3]: TIOBE doesn't include HTML/CSS because it doesn't consider them Turing complete and therefore not a programming language.  [Shell scripts](/blog/understanding-bash) are measured separately by TIOBE, and VBA is not in the list of languages measured at all, as far as I can see.
 
  [^4]: Not all brown languages are dreaded however: Python, C#, Swift, JavaScript and SQL remain loved and I would love to hear if anyone has theories on why. Also [Scala](/blog/top-5-scala-blogs) and Haskell, two languages I have a soft spot for, are the only green languages on the dreaded list. Is this just noise or is there something else going on there?

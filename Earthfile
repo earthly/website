@@ -19,6 +19,10 @@ base-image:
   RUN apt-get install python3-matplotlib libvips-dev python3-pip npm -y
   RUN pip3 install pandocfilters
   RUN npm install -g markdownlint-cli 
+
+  # Vale
+  RUN curl -sfL https://install.goreleaser.com/github.com/ValeLint/vale.sh | sh -s v2.10.3
+  RUN cp /site/bin/vale /bin
   SAVE IMAGE --push agbell/website-base:latest #Acts as a cache
 
 deps:
@@ -77,6 +81,8 @@ blog-install:
 blog-lint:
   #FROM +blog-install
   FROM agbell/blog-install
+  COPY .vale.ini .
+  COPY .github .github
   COPY blog .
   IF grep '[“”‘’]' ./_posts/*.md
     RUN echo "Fail: Remove curly quotes and use straight quotes instead" && false
@@ -85,6 +91,7 @@ blog-lint:
     RUN echo "Fail: external image link" && false
   END
   RUN markdownlint "./_posts/*.md"
+  RUN vale --output line blog/_posts/*.md
 
 blog-lint-apply:
   LOCALLY
