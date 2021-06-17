@@ -45,7 +45,7 @@ However, many feel the real reason is that the acquirer is aiming for profitabil
 
 Many open-source projects are still using Travis and open-source maintainers are notoriously overworked. &nbsp;Time spent migrating builds is time not spent on other things. &nbsp;Large well-maintained projects will likely quickly transition but for many smaller projects, an abrupt change in a service they depend on is a huge challenge.
 
-## Where To Move To
+## Where to Move To
 
 {% picture content-wide {{site.pimages}}{{page.slug}}/dartboard.png  --picture --img width="1200px" --alt {{ Pins on a Map }} %}
 
@@ -115,7 +115,7 @@ CMD make all:default
 
 ### Earthly
 
-This is the Earthly blog, and I am an Earthly contributor, but in my totally biased opinion, it deserves a mention as an neutral format for defining a build. The Elixir web framework [Phoenix is a great example to take a look at](https://github.com/phoenixframework/phoenix/blob/master/Earthfile).
+I am an Earthly contributor and this is the Earthly blog, but in my totally biased opinion, it deserves a mention as an neutral format for defining a build. The Elixir web framework [Phoenix is a great example to take a look at](https://github.com/phoenixframework/phoenix/blob/master/Earthfile).
 
 Earthly is like a Makefile where each step is containerized and dependencies are explicitly declared. &nbsp;
 
@@ -147,8 +147,6 @@ Another interesting option if you are feeling adventurous is using AWS lambda as
 
 ## Take-Aways
 
-You probably need to move your open-source project's builds off of Travis CI. If you host it on GitHub, GitHub Actions is probably a good choice.
-
-There is a risk that the GHA offer will disappear as well. &nbsp;You can protect yourself from that by defining your build in an open format that is easy to move around. &nbsp;All build problems can be solved by another layer of abstraction.
+You probably need to move your open-source project's builds off of Travis CI. If you host it on GitHub, GitHub Actions is probably a good choice. There is a risk that the GHA offer will disappear as well. &nbsp;You can protect yourself from that by defining your build in an open format that is easy to move around. &nbsp;All build problems can be solved by another layer of abstraction.
 
 If you are going that route, I think [Earthly](https://earthly.dev/) is a great option, but as I said, I am biased.

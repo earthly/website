@@ -43,8 +43,8 @@ Then browse to http://0.0.0.0:4002/blog/
 earthly --build-arg name="continuous-integration" +new-post
 ```
 
-## Run Blog native on macos
-### Install deps
+## Run Blog native on MacOS
+### Install Dependencies
 ```
  brew update
  brew upgrade ruby-build
@@ -62,7 +62,7 @@ cd blog
 RUBYOPT='-W0' bundle exec jekyll serve -H 0.0.0.0 --future --watch -P 4002
 
 ```
-### Clear html cache
+### Clear HTML cache
 sometimes things seem to be cached when they shouldn't. So delete everything:
 ```
 find ./_site -type f -name '*.html' -print -delete
@@ -73,14 +73,14 @@ Build this site into a folder of static files:
 ```
 earthly +build
 ```
-Results will be outputed to `build` and future dated posts will not be included.
+Results will be output to `build` and future dated posts will not be included.
 To include future dated posts use:
 ```
 earthly +dev-build
 ```
 
 # How to Deploy
-Anything merged into main is deployed using `earthly +build` in github actions.
+Anything merged into main is deployed using `earthly +build` in GitHub actions.
 
 ## FAQS
 
