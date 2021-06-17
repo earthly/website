@@ -242,9 +242,9 @@ secretagent
 lesspipe
 
 ## Should not be needed
-imgf
-src
-png
-pimages
-img
-jpg
+#imgf
+#src
+#png
+#pimages
+#img
+#jpg
