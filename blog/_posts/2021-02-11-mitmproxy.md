@@ -142,7 +142,7 @@ cp ~/.mitmproxy/mitmproxy-ca-cert.cer ~/Desktop
 
 {% include imgf src="10.png" alt="Getting a Certificate signed by an unknown certificate authority" %}
 
-You will be prompted for your credentials, and the certificate will be added as 'untrusted'.
+You will be prompted for your credentials, and the certificate will be added as `untrusted`.
 
 Double-click on the certificate in the Keychain list and set the 'Secure Sockets Layer' drop down to 'Always Trust'
 
@@ -252,7 +252,7 @@ We can then see the requests and responses in our proxy:
 
 We can even see the binary payload of the layer requests and the fact that docker uses Cloudflare as a CDN.
 
-{% include imgf src="20.png" alt="" caption="mitmweb request for cloudflare.docker.com" %}
+{% include imgf src="20.png" alt="" caption="mitmweb request for Cloudflare.docker.com" %}
 
 ## *Troubleshooting*
 

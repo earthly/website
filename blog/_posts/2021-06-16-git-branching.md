@@ -15,19 +15,19 @@ Some modern development practices are easiest to understand from a historical pe
 
 I'm going to explain various git branching strategies with a story. We will start with something straightforward and add complexity as we go.  Eventually, we will end up back simple again.
 
-I hope that explaining things this way will give you a deeper understanding of when to use specific branching and merging strategies.  So instead of telling you how to cherry-pick a bug fix into a hotfix branch using gitflow work, I can describe the conditions that would lead to adopting that process. Once you understand the whys, the hows will be easier.
+I hope that explaining things this way will give you a deeper understanding of when to use specific branching and merging strategies.  So instead of telling you how to cherry-pick a bug fix into a hotfix branch using GitFlow work, I can describe the conditions that would lead to adopting that process. Once you understand the whys, the hows will be easier.
 
 ## AshelySoft 2006
 
-The year is 2006, and Ashely Protagonist starts a software business. She builds and sells an eCommerce solution she wrote in PHP. It's just her building and selling it, but she uses a new source control solution called git to store her software. She starts with trunk-based development.
+The year is 2006, and Ashley Protagonist starts a software business. She builds and sells an eCommerce solution she wrote in PHP. It's just her building and selling it, but she uses a new source control solution called git to store her software. She starts with trunk-based development.
 
 ## Trunk Based Development
 
-Trunk-based development is working on the main, or trunk branch. Ashely commits her code right into the main branch on her local machine and, when she has complete a feature, she pushes her code to the source control server.  
+Trunk-based development is working on the main, or trunk branch. Ashley commits her code right into the main branch on her local machine and, when she has complete a feature, she pushes her code to the source control server.  
 
 Customers pay for her software, and she emails them a link to the current version as an archive file using [git archive](https://git-scm.com/docs/git-archive). She is a PHP developer, so she whips up a simple PHP script that returns the git archive for the branch requested.
 
-{% picture content-wide {{site.pimages}}{{page.slug}}/email2.png --picture --alt {{ grab you copy of ashelysoft }} %}
+{% picture content-wide {{site.pimages}}{{page.slug}}/email2.png --picture --alt {{ grab your copy of AshelySoft }} %}
 
 <figcaption>Simple Release Distribution</figcaption>
 
@@ -39,12 +39,12 @@ Her customers then install her software on their web servers, where they use it 
 
 ### ℹ️ Fun Fact: Trunk VS. Main
 
-If Ashely had chosen subversion or CVS, which were more prevalent in 2006, she would have called her branch `trunk` because every branch is branched off the trunk like a real-world tree. This is where the term trunk-based development comes from. However, Ashely uses `main`, so she may prefer the term mainline development. It's the same thing, just a different name.
+If Ashley had chosen subversion or CVS, which were more prevalent in 2006, she would have called her branch `trunk` because every branch is branched off the trunk like a real-world tree. This is where the term trunk-based development comes from. However, Ashley uses `main`, so she may prefer the term mainline development. It's the same thing, just a different name.
 </div>
 
 ## Release Branches
 
-Ashely's business succeeds. She acquires many more customers and hires more developers and a customer-support person.  Support becomes problematic, though, as some customers are very slow to upgrade, and it's unclear what version any given customer is on. Additionally, customers can't keep up with the latest version when every commit is a new version, and there are no version numbers.
+Ashley's business succeeds. She acquires many more customers and hires more developers and a customer-support person.  Support becomes problematic, though, as some customers are very slow to upgrade, and it's unclear what version any given customer is on. Additionally, customers can't keep up with the latest version when every commit is a new version, and there are no version numbers.
 
 So she decides to batch up the changes into monthly releases and create a new release branch for each revision. Of course, she could use tags for these releases, but branches and tags are pretty similar, and she already has her release script in place.  
 
@@ -52,7 +52,7 @@ Now her support people can ask customers what version they are on. If it's more 
 
 <div class="notice--info">
 
-## Cutting a Releaase
+## Cutting a Release
 
 There was a time before modern source control when creating a release branch was an expensive process that had to be planned.  "Cutting a Release" was the name for this process, which involved locking down the source and starting the lengthy process of 'cutting a release branch off the trunk'. People still use the phrase today.
 
@@ -65,7 +65,7 @@ There was a time before modern source control when creating a release branch was
 
 ## Hot Fixes and The Multiverse
 
-This is all working great. Ashely starts scaling the development team, and they start shipping more features. Unfortunately, while each monthly release now contains more cool new features, more regressions and bugs start slipping into the releases as well.
+This is all working great. Ashley starts scaling the development team, and they start shipping more features. Unfortunately, while each monthly release now contains more cool new features, more regressions and bugs start slipping into the releases as well.
 
 Some customers respond to this by not upgrading right away. If they are well-served by the current product, they can stay two releases back and get active support while giving the latest release time to stabilize. Bugs do show up in the old versions, though, and this is where things get interesting.
 
@@ -75,13 +75,13 @@ You are now in the hot fixing multiverse. AshelySoft has to fix bugs in the late
 
 If you've seen any time travel movies, you probably realize that this can get complex. What if a bug fix to back release introduces a bug of its own?  Thankfully AshelySoft is only supporting two active versions back and only supporting them for a couple of months. Suppose they were supporting back versions for several years. In that case, they might find themselves spending more and more time maintaining all these versions, and the various versions would slowly drift away from each other.
 
-Nevertheless, release branches are an enormous help for AshelySoft. They help customers stay on a version that works for them, while AshelySoft can still push new features. However, it does increase the amount of effort that fixing bugs requires, and dealing with that will lead to Ashelysoft's next innovation.
+Nevertheless, release branches are an enormous help for AshelySoft. They help customers stay on a version that works for them, while AshelySoft can still push new features. However, it does increase the amount of effort that fixing bugs requires, and dealing with that will lead to AshelySoft's next innovation.
 
 ## The `develop` Branch
 
 The cost of shipping bugs has now increased for AshelySoft. In the worse case, a bug isn't discovered until it's in all active versions of the software and the code between versions has changed enough that the fix is slightly different in each version, tripling the bug fix cost.
 
-Fortunately, a solution for this does exist: Continuing with our time travel/multiverse analogy, we need to travel back in time and stop the bug before our releases branches off the main timeline. Unfortunately, AshelySoft does not have access to literal time travel machines, but Ashely has a more straightforward idea: Catch the bugs before they are released.
+Fortunately, a solution for this does exist: Continuing with our time travel/multiverse analogy, we need to travel back in time and stop the bug before our releases branches off the main timeline. Unfortunately, AshelySoft does not have access to literal time travel machines, but Ashley has a more straightforward idea: Catch the bugs before they are released.
 
 ## GitFlow To The Rescue
 
@@ -99,7 +99,7 @@ This setup, git-flow and CI on develop branch, with release branches and hot fix
 
 ## The Cloud
 
-AshelySoft customers want to run an eCommerce store. However, they don't want to run a web server.  After repeatedly getting this feedback, Ashely shifts the company to be a SAAS product company.  It takes some extensive work, but AshelySoft eCommerce becomes a multi-tenant eCommerce platform.  No more `git archive` releases. Now the release process is deploying the latest version of the main branch onto the production server.
+AshelySoft customers want to run an eCommerce store. However, they don't want to run a web server.  After repeatedly getting this feedback, Ashley shifts the company to be a SAAS product company.  It takes some extensive work, but AshelySoft eCommerce becomes a multi-tenant eCommerce platform.  No more `git archive` releases. Now the release process is deploying the latest version of the main branch onto the production server.
 
 There are downsides to this SAAS model. AshelySoft now owns the uptime of all their customers, and this is eCommerce, so real money is lost when things go down. But, the customers are willing to pay more for AshelySoft to worry about these problems. They no longer have to support multi releases at a time - no more hot fixing bugs back into old versions, no more multiverse of drifting branches to update, and no more release branches.  To make this work, AshelySoft works off a simple rule: `main` must be releasable.  Before anyone can merge `develop` into `main` they must make sure the continuous integration build is passing, and if they find problems that the CI process missed, they do their best to make sure CI will catch it in the future.
 
@@ -109,11 +109,11 @@ Around this time, GitHub private repositories appear, and AshelySoft moves from 
 
 ## Death to `develop`
 
-With the quality of `develop` now increased, AshelySoft can increase its release velocity.  They even adopt a continuous deployment model where a merge into `main` causes the software to be automatically deployed.  From there, they move to a [Canary deployment model](/blog/deployment-strategies/#canary-deployment) where a new release is tested on a small portion of web traffic before it's fully deployed.  Once a PR is merged, Ashely just has to merge `develop` into `main` to perform a release.
+With the quality of `develop` now increased, AshelySoft can increase its release velocity.  They even adopt a continuous deployment model where a merge into `main` causes the software to be automatically deployed.  From there, they move to a [Canary deployment model](/blog/deployment-strategies/#canary-deployment) where a new release is tested on a small portion of web traffic before it's fully deployed.  Once a PR is merged, Ashley just has to merge `develop` into `main` to perform a release.
 
 But what is the point of having `develop` and merging it into `main`? It was introduced to prevent the release of bugs by giving the software time to 'integrate', but AshelySoft is doing all the integration as part of the PR process. So they drop the `develop` branch.  
 
-Ashely has come a long way but sometimes what is old is new again. She is now back to doing trunk-based or mainline development. Just like when she built the first version: features go into `main`, and the HEAD of `main` is constantly released.
+Ashley has come a long way but sometimes what is old is new again. She is now back to doing trunk-based or mainline development. Just like when she built the first version: features go into `main`, and the HEAD of `main` is constantly released.
 
 ## Lessons Learned
 
@@ -143,6 +143,6 @@ The creator of GitFlow offers similar thoughts:
 >
 > If your team is doing continuous delivery of software, I would suggest to adopt a much simpler workflow (like GitHub flow) instead of trying to shoehorn git-flow into your team.
 >
-> Vincent Driessen Gitflow Creator
+> GitFlow Creator Vincent Driessen 
 
 The closer you can stay to trunk-based or mainline development, the less overhead you will have and the smaller the batches you'll be able to release.

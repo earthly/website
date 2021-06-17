@@ -1,8 +1,7 @@
 dockerfiles?
-config
-configs
+[Cc]onfigs?
 parallelization
-ReadMe
+[rR]ead[mM]e
 monorepos?
 stdout
 interdependencies
@@ -16,7 +15,7 @@ cryptocurrency
 goroutines
 reimplementing
 todo
-reusability
+[rR]eusability
 [tT]ranspilers
 transpiled
 polyrepos?
@@ -31,12 +30,40 @@ performantly
 [bB]ootcamp
 incentivized
 discoverability
-
+hotfix
+HTTPS?
+subnet
+stdin
+stderr
+stdout
+journald
+awslogs
+broadcasted
+Pythonland
+pid
+broot
+onespot
+gcc
+cron
+npm
+livewire
+subshell
+params
+performant
+transcompiler
+transpiler
+uname
+tokenizes
 
 # lingua franca
 franca
 
 #Names
+dkarl
+[sS]yslog
+jsonnet
+semgrep
+TruffleRuby
 emacs
 pstree
 cgroups
@@ -63,7 +90,7 @@ Moby
 Nginx
 Bazel
 Caddy
-webpack
+[wW]ebpack
 Lua
 Istio
 Postgres
@@ -74,7 +101,7 @@ ufw
 gg
 loopback
 healthcheck
-teardown
+[Tt]eardown
 toolchain
 datastore
 # Ardan Labs
@@ -118,12 +145,25 @@ Fluentd
 Kibana
 Mockerfiles
 Pulumi
-AshelySoft
+AshleySoft
 hlb
 runc
+Xeon
+Spotify
+Buildpacks
+Ick
+Ickfile
+Nano
+Xcode
+darwin
+jq
+crakers
+Akihiro
+
 
 
 #People
+Driessen
 Hecht
 Spolsky
 Tetlock

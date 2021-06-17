@@ -32,7 +32,7 @@ The most common shebang is the one referring to the `bash` executable:
 
 Essentially it tells your terminal that when you run the script it should use `bash` to execute it. It can be vital since you may be using a different shell in your machine (`zsh`, `fish`, `sh`, etc.), but you designed the script to work specifically with bash. In many cases, it doesn't matter what shell you're using, but there can be some very noteworthy differences in how they work, leading a script to work in `bash` but not `sh`, for example.
 
-### #!/user/bin/env bash
+### `#!/user/bin/env bash`
 
 If you use the previous shebang, it's crucial that you give the executable's absolute path. You should be aware of this since there is an alternative, where you use the `bash` executable found in the `$PATH`. You can do so by writing:
 
@@ -128,7 +128,7 @@ echo Hello World
 line 3: foo: command not found
 ```
 
-### set -eo pipefail
+### `set -eo pipefail`
 
 Finally, we can make the script fail if a command in a pipeline fails. Usually, bash only looks for the exit code from the last command in a pipeline. If that's 0, it'll continue just fine. Exit code 0 is what we want, since in bash that means success.
 
@@ -168,12 +168,14 @@ The intention is that `/tmp/path.txt` contains `tmp_file.txt`. Assume that the f
 
 ### Sets in Summary
 
+<!-- vale Vale.Spelling = NO -->
 | Set | Long form | Description |
 |-|-|-|
 | set -u | set -o nounset | Exits script on undefined variables |
 | set -x | set -o xtrace | Shows command currently executing |
 | set -e | set -o errexit | Exits script on error |
 | set -eo pipefail | set -eo pipefail | Exits script on pipeline fail |
+<!-- vale Vale.Spelling = YES -->
 
 ## Use Error Checking Tools
 
@@ -321,4 +323,4 @@ For example, if you set `TEST="hello"` in your shell and run `echo $TEST` inside
 
 At this point, you should be ready to venture into the exciting world of bash scripting. You've learned about common shebangs, what `set` does, and how it can improve the error handling of your scripts, as well as understanding some general pitfalls developers run into with bash.
 
-So go ahead and automate those annoying commands you've been typing out every day. Tired of manually going into your browser and finding the git repo you're working on? Make a script to parse the remote git URL and open it automatically. Maybe you have to rename a bunch of files. Make a script that can loop through them and rename them. The world is your oyster.
+So go ahead and automate those annoying commands you've been typing out every day. Tired of manually going into your browser and finding the git repository you're working on? Make a script to parse the remote git URL and open it automatically. Maybe you have to rename a bunch of files. Make a script that can loop through them and rename them. The world is your oyster.

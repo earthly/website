@@ -31,19 +31,19 @@ In [Docker](https://www.docker.com/), containers are isolated and bundled with s
 
 **1. Containers are transient.** When a Docker container broadcasts logs, it sends them to the application's `stdout` and `stderr` output streams. The underlying container logging driver can start accessing these streams, and the logs are stored on the Docker host in JSON files ([`json-file` is the default logging driver used by Docker](https://docs.docker.com/config/containers/logging/json-file/)). It writes JSON-formatted logs to a file on the host where the container is running. Any logs stored in the container will be deleted when it is terminated or shut down.
 
-**2. Containers are multileveled.** There are two levels of aggregation in Docker logging. One refers to the logs from inside the container in your Dockerized application, and the second refers to the logs from the host servers (eg, system logs, Docker daemon logs), which are generally located in `/var/log`. A log aggregator that has access to the host pulls application log files and accesses the file system inside the container to collect the logs. Later, you'd need to correlate these log events for analysis.
+**2. Containers are multi-leveled.** There are two levels of aggregation in Docker logging. One refers to the logs from inside the container in your Dockerized application, and the second refers to the logs from the host servers (eg, system logs, Docker daemon logs), which are generally located in `/var/log`. A log aggregator that has access to the host pulls application log files and accesses the file system inside the container to collect the logs. Later, you'd need to correlate these log events for analysis.
 
 In this article, you'll learn about different logging strategies you can use in a Dockerized application—how you can access logs and understand Docker logging commands, drivers, configuration, and management to build a highly performant and reliable infrastructure.
 
 ## Docker Logging Commands
 
-`docker logs` is a command that shows all the information logged by a running container. The `docker service logs` command shows information logged by all the containers participating in a service. By default, the output of these commands, as it would appear if you run the command in a terminal, opens up three I/O streams: STDIN, STDOUT, and STDERR. And the default is set to show only STDOUT and STDERR.
+`docker logs` is a command that shows all the information logged by a running container. The `docker service logs` command shows information logged by all the containers participating in a service. By default, the output of these commands, as it would appear if you run the command in a terminal, opens up three I/O streams: stdin, stdout, and stderr. And the default is set to show only stdout and stdout.
 
-- STDIN is the command's input stream, which may include input from the keyboard or input from another command.
-- STDOUT is usually a command's normal output.
-- STDERR is typically used to output error messages.
+- stdin is the command's input stream, which may include input from the keyboard or input from another command.
+- stdout is usually a command's normal output.
+- stderr is typically used to output error messages.
 
-The `docker logs` command may not be useful in cases when a logging driver is configured to send logs to a file, database, or an external host/backend, or if the image is configured to send logs to a file instead of STDOUT and STDERR. With `docker logs <CONTAINER_ID>`, you can see all the logs broadcasted by a specific container identified by a unique ID.
+The `docker logs` command may not be useful in cases when a logging driver is configured to send logs to a file, database, or an external host/backend, or if the image is configured to send logs to a file instead of stdout and stderr. With `docker logs <CONTAINER_ID>`, you can see all the logs broadcast by a specific container identified by a unique ID.
 
 ```bash
 $ docker run --name test -d busybox sh -c "while true; do $(echo date); sleep 1; done"
@@ -121,6 +121,7 @@ Logging drivers, or log-drivers, are mechanisms for getting information from run
 
 Currently, Docker supports the following logging drivers:
 
+<!-- vale off -->
 |                                     Driver                                      |                                               Description                                               |
 | :-----------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------: |
 |                                    **none**                                     |            No logs are available for the container and Docker logs do not return any output.            |
@@ -135,6 +136,7 @@ Currently, Docker supports the following logging drivers:
 |    **[fluentd](https://docs.docker.com/config/containers/logging/fluentd/)**    | Writes log messages to fluentd (forward input). The fluentd daemon must be running on the host machine. |
 |    **[etwlogs](https://docs.docker.com/config/containers/logging/etwlogs/)**    |   Writes log messages as Event Tracing for Windows (ETW) events. Only available on Windows platforms.   |
 | **[logentries](https://docs.docker.com/config/containers/logging/logentries/)** |                                Writes log messages to Rapid7 Logentries.                                |
+<!-- vale on -->
 
 ### Configuring the Logging Driver
 
@@ -172,7 +174,7 @@ The following command will start using the Splunk driver:
 docker run --log-driver splunk httpd
 ```
 
-Modify the `daemon.json` file, to pass the address of the splunk host to the driver:
+Modify the `daemon.json` file, to pass the address of the Splunk host to the driver:
 
 ```json
 {
@@ -234,7 +236,7 @@ A regular backup is a good idea in order to prevent data corruption or loss in c
 
 ### 3. Docker Logging Driver
 
-Docker has a bunch of logging drivers that can be used in your logging strategy. The configured driver reads the data broadcast by the container's `stdout` or `stderr` streams and writes it to a file on the host machine. By default, the host machine holds the log files, but you can forward these events using the available drivers, like fluentd, Splunk, and awslogs.
+Docker has a bunch of logging drivers that can be used in your logging strategy. The configured driver reads the data broadcast by the container's `stdout` or `stderr` streams and writes it to a file on the host machine. By default, the host machine holds the log files, but you can forward these events using the available drivers, like Fluentd, Splunk, and awslogs.
 
 Note that the `docker log` command will not work if you use anything other than the `json-file` driver. And if log forwarding over a TCP connection fails or becomes unreachable, the containers will shut down.
 
@@ -274,7 +276,7 @@ The json-file driver is the only one that works with the `docker logs` command, 
 
 ### Docker Syslog Impacts Container Deployment
 
-The reliable way to deliver logs is via Docker Syslog with TCP or TLS. But this driver needs an established TCP connection to the Syslog server whenever a container starts up. And the container will fail ife a connection is not made.
+The reliable way to deliver logs is via Docker Syslog with TCP or TLS. But this driver needs an established TCP connection to the Syslog server whenever a container starts up. And the container will fail if a connection is not made.
 
   ```bash
   docker: Error response from daemon: Failed to initialize logging driver: dial tcp
@@ -286,7 +288,7 @@ Your container deployment will be affected if you face network problems or laten
 
 The Docker syslog driver needs an established TCP or TLS connection to deliver logs. Note that when the connection is down or not reachable, you'll start losing the logs until the connection reestablished.
 
-### Multiline Logs Not Supported
+### Multi-line Logs Not Supported
   
 Generally, either of two patterns is followed for logging: single-line per log or multiple lines with extended information per log, like stack traces or exceptions. But with Docker logging, this is a moot point, because containers always broadcast logs to the same output: `stdout`.
 

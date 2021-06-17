@@ -15,7 +15,7 @@ author: Vlad
 excerpt: "I wanted to sit down and write about all the tricks we learned and that we used every day to help make builds more manageable in the absence of Earthly. It's kinda like a \"what would you do if you couldn't use Earthly\" article. This will hopefully give you some ideas on best practices around build script maintenance, or it might help you decide on whether Earthly is something for you (or if the alternative is preferrable)."
 ---
 
-*EDIT This post used to be titled **How to not use our build tool**. Thanks to Reddit user [musman](https://www.reddit.com/user/musman) for suggesting the current updated title*
+*EDIT This post used to be titled **How to not use our build tool**. Thanks to reddit user [musman](https://www.reddit.com/user/musman) for suggesting the current updated title*
 
 In our journey to becoming better software engineers we have learned of various ways in which the team's productivity could be improved. We noticed that a focus on build repeatability and maintainability goes a long way towards keeping the team focused on what really matters: delivering great software. Many of these ideas helped shape what Earthly is today. In fact, the complexity of the matter is what got us to [start Earthly in the first place](https://earthly.dev/blog/the-world-deserves-better-builds/).
 
@@ -58,7 +58,7 @@ For this guide, we'll use Makefile + Dockerfile, as an arbitrary choice. Note, h
 
 ## Tips for Taming Makefiles in Large Teams
 
-While there is [shellcheck](https://www.shellcheck.net/) for linting shell scripts and avoiding the typical pitfalls, there is currently no linter for Makefiles. Part of the reason is that there are multiple styles or philosophies as to how to write Makefiles that it is hard to enforce specific rules that prevent human errors. For example, take a look at this [particularly opinionated approach](https://tech.davis-hansson.com/p/make/).
+While there is [ShellCheck](https://www.shellcheck.net/) for linting shell scripts and avoiding the typical pitfalls, there is currently no linter for Makefiles. Part of the reason is that there are multiple styles or philosophies as to how to write Makefiles that it is hard to enforce specific rules that prevent human errors. For example, take a look at this [particularly opinionated approach](https://tech.davis-hansson.com/p/make/).
 
 Makefiles have the ability to manage the chain of dependencies and avoid duplicate work. However, this feature is heavily based on file creation time (if an input is newer than the output, then rebuild the target), and in most cases that is not enough. If you really want to, it is possible to force everything into that model. However, that tends to create very complicated Makefiles that often only one person on the team understands. This person becomes the "Build Guru" and all build maintenance works flow through them. This "Build Guru" dynamic is very common but best avoided. With Makefiles, using a limited subset of the Makefile language can help avoid this pattern and keep everything more maintainable for the entire team.
 
@@ -382,7 +382,7 @@ build: dep1 dep2 dep3
 
 Note that these principles may be difficult to uphold in a large team, as not all engineers will be running the build with the parallel option turned on. So a lot of times the parallelism capability is not tested, and as a result, it can break often. Keep these things in mind as you may need to reinforce the use of parallelism in project READMEs to hopefully be better supported by individual PRs.
 
-Another, either alternative or complementary option, is to make use of Dockerfile parallelism. With [Buildkit](https://github.com/moby/buildkit) turned on (`DOCKER_BUILDKIT=1 docker build ...`), Dockerfiles are built with parallelism automatically, if they involve multiple targets. So for example, if you have targets `dep1`, `dep2` and `dep3` and you `COPY` files from them like so:
+Another, either alternative or complementary option, is to make use of Dockerfile parallelism. With [BuildKit](https://github.com/moby/buildkit) turned on (`DOCKER_BUILDKIT=1 docker build ...`), Dockerfiles are built with parallelism automatically, if they involve multiple targets. So for example, if you have targets `dep1`, `dep2` and `dep3` and you `COPY` files from them like so:
 
 ```Dockerfile
 FROM alpine AS build
@@ -400,7 +400,7 @@ Another way to speed up builds is to make use of shared caching. Shared caching 
 
 There are, of course, CI-supported cache saving features. However, those features are not usable when testing locally. And in the end, all that CI caching does is just upload a file or directory to cloud storage, which can be downloaded later in another instance of the build.
 
-Dockerfile builds have pretty powerful cache saving and importing capabilities, thanks to the new [Buildkit](https://github.com/moby/buildkit) engine. To use these capabilities, you need to first enable Buildkit (`DOCKER_BUILDKIT=1 docker build ...`) and then pass the right arguments to turn these features on.
+Dockerfile builds have pretty powerful cache saving and importing capabilities, thanks to the new [BuildKit](https://github.com/moby/buildkit) engine. To use these capabilities, you need to first enable BuildKit (`DOCKER_BUILDKIT=1 docker build ...`) and then pass the right arguments to turn these features on.
 
 First, you need to push images together with the cache manifest:
 

@@ -371,6 +371,6 @@ Alright, we have now covered some ways to use BuildKit directly. BuildKit is use
 
 One use we covered was changing the output type. We can use BuildKit to export tars and local file systems. We also use `pstree` and `mitmProxy` to watch how buildkitd forks processes and make network requests.  
 
-There is much more to learn, though. BuildKit is behind the `docker buildx` multiplatform build feature and supports the ability to have multiple workers execute builds in parallel. BuildKit also supports caching, different frontends, docker-compose builds, faster multi-stage builds, and several other features.
+There is much more to learn, though. BuildKit is behind the `docker buildx` multi-platform build feature and supports the ability to have multiple workers execute builds in parallel. BuildKit also supports caching, different frontends, docker-compose builds, faster multi-stage builds, and several other features.
 
 In a future article, we will cover creating a custom frontend and leaving the Dockerfile syntax behind.

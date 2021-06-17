@@ -76,7 +76,7 @@ Docker build uses BuildKit, to turn a Dockerfile into a docker image, OCI image,
 ![Docker Daemon with BuildKit Daemon inside it]({{site.images}}{{page.slug}}/buildctl-2.png)
 </div>
 
-This [primer on using buildkit](https://earthly.dev/blog/what-is-buildkit-and-what-can-i-do-with-it/) supplies some helpful background on using BuildKit, `buildkitd`, and `buildctl` via the command-line. However, the only prerequisite for today is running `brew install buildkit` or the appropriate OS [equivalent](https://github.com/moby/buildkit#quick-start) steps.
+This [primer on using BuildKit](https://earthly.dev/blog/what-is-buildkit-and-what-can-i-do-with-it/) supplies some helpful background on using BuildKit, `buildkitd`, and `buildctl` via the command-line. However, the only prerequisite for today is running `brew install buildkit` or the appropriate OS [equivalent](https://github.com/moby/buildkit#quick-start) steps.
 
 ## How Do Compilers Work?
 
@@ -160,7 +160,7 @@ Alright, enough background. Let's programmatically generate the LLB for an image
 In this example, we will be using Go which lets us leverage existing BuildKit libraries, but it's possible to accomplish this in any language with Protocol Buffer support.
 </div>
 
-Import LLB defintions:
+Import LLB definitions:
 
 ```
 import (
@@ -427,7 +427,7 @@ There we go! The [full code example](https://github.com/agbell/compiling-contain
 
 ## A True Frontend for BuildKit
 
-A true compiler front end does more than just emit hardcoded IR. A proper frontend takes in files, tokenizes them, parses them, generates a syntax tree, and then lowers that syntax tree into the internal representation.  [Mockerfiles](https://matt-rickard.com/building-a-new-dockerfile-frontend/) are an example of such a frontend:
+A true compiler front end does more than just emit hard coded IR. A proper frontend takes in files, tokenizes them, parses them, generates a syntax tree, and then lowers that syntax tree into the internal representation.  [Mockerfiles](https://matt-rickard.com/building-a-new-dockerfile-frontend/) are an example of such a frontend:
 
 ```
 #syntax=r2d4/mocker
@@ -452,7 +452,7 @@ To support the #syntax command, all that is needed is to put the frontend in a d
 
 ## Building Our Own Example Frontend for `Docker build`
 
-Building a tokenizer and a parser as a GRPC service is beyond the scope of this article. But we can get our feet wet by extracting and modifying an existing frontend. The standard [dockerfile frontend](https://github.com/moby/buildkit/tree/master/frontend/dockerfile) is easy to disentangle from the moby project. I've pulled the relevant parts out into a [stand-alone repo](https://github.com/agbell/compiling-containers/tree/main/ickfile). Let's make some trivial modifications to it and test it out.
+Building a tokenizer and a parser as a GRPC service is beyond the scope of this article. But we can get our feet wet by extracting and modifying an existing frontend. The standard [dockerfile frontend](https://github.com/moby/buildkit/tree/master/frontend/dockerfile) is easy to disentangle from the Moby project. I've pulled the relevant parts out into a [stand-alone repository](https://github.com/agbell/compiling-containers/tree/main/ickfile). Let's make some trivial modifications to it and test it out.
 
 So far, we've only used the docker commands `FROM`, `RUN` and `COPY`. At a surface level, with its capitalized commands, Dockerfile syntax looks a lot like the programming language [INTERCAL](https://earthly.dev/blog/intercal-yaml-and-other-horrible-programming-languages/). Let change these commands to their INTERCAL equivalent and develop our own Ickfile format [^2].
 
@@ -517,7 +517,7 @@ custom frontend built
 README.md
 ```
 
-I've pushed this image to dockerhub. Anyone can start building images using our `ickfile` format by adding `#syntax=agbell/ick` to an existing Dockerfile. No manual installation is required!
+I've pushed this image to Docker Hub. Anyone can start building images using our `ickfile` format by adding `#syntax=agbell/ick` to an existing Dockerfile. No manual installation is required!
 
 <div class="notice--info">
  ℹ️ Enabling BuildKit  

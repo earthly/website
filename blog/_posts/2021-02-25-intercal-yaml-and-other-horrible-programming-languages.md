@@ -14,7 +14,9 @@ In 1972, two students learning FORTRAN came up with a fantastic new programming 
 
 > One final comment about sparks and rabbit-ears; if the next character in the program is a spot, as often happens because onespot variables are common choices for operands, a spark and the following spot can be combined into a wow (!). - [INTERCAL Manual](http://www.catb.org/~esr/intercal/ick.htm).
 
+<!-- vale Vale.Repetition = NO -->
 The compiler errors are where the authors got genuinely creative. Errors include `VARIABLES MAY NOT BE STORED IN WEST HYPERSPACE` for accessing an array incorrectly, `IT CAME FROM BEYOND SPACE` for invalid control flow, `PROGRAM REJECTED FOR MENTAL HEALTH REASONS` for threading issues, `I HAVE NO FILE AND I MUST SCREAM` for file not found, and [many many more](http://www.catb.org/~esr/intercal/ick.htm#Errors).
+<!-- vale Vale.Repetition = YES -->
 
 Yes, this is a parody language, and reading the manual, you get the sense that no one has yet had as much fun writing technical documentation as Lyon and Woods did writing this.
 
@@ -64,7 +66,7 @@ Nothing executes the YAML. It only offers some information to the blogging platf
 
 I suspect a lot of it was build and deployment scripts in the form of YAML. It was the type of configuration that encoded the control flow of some external system. YAML like that lives in this grey zone between declarative configuration and a full-blown programming language.
 
-I'll show you what I mean. Let's look at an example from [shellcheck](https://github.com/koalaman/shellcheck/blob/bd3299edd3b517f92f74c2e3327c9f6b72b31f7c/.travis.yml)'s build script.
+I'll show you what I mean. Let's look at an example from [ShellCheck](https://github.com/koalaman/shellcheck/blob/bd3299edd3b517f92f74c2e3327c9f6b72b31f7c/.travis.yml)'s build script.
 
 ``` yaml
 language: shell
@@ -196,9 +198,9 @@ That is `FizzBuzz` in [XSLT](https://gist.github.com/JustinPealing/6f619a2372972
 
 It burns my eyes to look at it, but at least XSLT was intended to be used as a programming language. That is something we can't say about YAML or INTERCAL.
 
-The problem with these languages embedded into YAML is they are all one-off implementations. TravisCI conditionals have a TravisCI specific syntax, usage, and features. You can't use Travis's `concat` function or conditional regex in the YAML configuration for your ansible playbooks.
+The problem with these languages embedded into YAML is they are all one-off implementations. TravisCI conditionals have a TravisCI specific syntax, usage, and features. You can't use Travis's `concat` function or conditional regex in the YAML configuration for your Ansible playbooks.
 
-In a vague way, this YAML problem is like the `COMEFROM` problem. If you know yaml, you can't just open a .yml file and start reading file line by line. You need to understand how the configuration controls the execution of the specific system it's for. And that is hard.
+In a vague way, this YAML problem is like the `COMEFROM` problem. If you know YAML, you can't just open a .yml file and start reading file line by line. You need to understand how the configuration controls the execution of the specific system it's for. And that is hard.
 
 <!-- If it's `title: bla` that is easy enough, but once we hit conditionals and filters, it feels like we are using the wrong tool. -->
 
@@ -272,4 +274,4 @@ Well, ok, maybe not INTERCAL but anything else. [^3]
 
 [^2]: Ansible and Helm are actually templating languages built on top of YAML, which is better than embedded control flow, but the point still stands.
 
-[^3]: Practically, you may have to use tools that encode a DSL into config, but you can use them while recognizing that we can do better. I think something like [Dhall](https://dhall-lang.org/#) for complicated config and something like [pulumi](https://www.pulumi.com/) for complex configuration as code should be where we aim for as an industry.
+[^3]: Practically, you may have to use tools that encode a DSL into config, but you can use them while recognizing that we can do better. I think something like [Dhall](https://dhall-lang.org/#) for complicated config and something like [Pulumi](https://www.pulumi.com/) for complex configuration as code should be where we aim for as an industry.

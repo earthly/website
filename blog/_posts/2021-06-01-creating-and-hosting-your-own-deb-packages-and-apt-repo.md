@@ -26,7 +26,7 @@ with some tests.
 
 ## Prerequisites
 
-This tutorial assumes you are using ubuntu, and that the following packages are installed:
+This tutorial assumes you are using Ubuntu, and that the following packages are installed:
 
 ```bash
 sudo apt-get install -y gcc dpkg-dev gpg
@@ -218,7 +218,7 @@ cp ~/example/hello-world_0.0.1-1_amd64.deb ~/example/apt-repo/pool/main/.
 ```
 
 <div class="notice--info">
-Larger apt repositories create sub-directories for each program or project. For example, the official ubuntu apt repo stores all vim
+Larger apt repositories create sub-directories for each program or project. For example, the official Ubuntu apt repository stores all vim
 related packages under `/ubuntu/pool/main/v/vim/`.
 </div>
 
