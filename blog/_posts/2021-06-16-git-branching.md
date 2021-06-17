@@ -13,9 +13,9 @@ internal-links:
 
 Some modern development practices are easiest to understand from a historical perspective: things started a certain way, and then steps were added or removed as conditions changed. Git branching, for example, is like that.
 
-I'm going to explain various git branching strategies with a story. We will start with something straightforward and add complexity as we go.  Eventually, we will end up back simple again.
+I'm going to explain various git branching strategies with a story. We will start with something straightforward and add complexity as we go. Eventually, we will end up back simple again.
 
-I hope that explaining things this way will give you a deeper understanding of when to use specific branching and merging strategies.  So instead of telling you how to cherry-pick a bug fix into a hotfix branch using GitFlow work, I can describe the conditions that would lead to adopting that process. Once you understand the whys, the hows will be easier.
+I hope that explaining things this way will give you a deeper understanding of when to use specific branching and merging strategies. So instead of telling you how to cherry-pick a bug fix into a hotfix branch using GitFlow work, I can describe the conditions that would lead to adopting that process. Once you understand the whys, the hows will be easier.
 
 ## AshelySoft 2006
 
@@ -44,7 +44,7 @@ If Ashley had chosen subversion or CVS, which were more prevalent in 2006, she w
 
 ## Release Branches
 
-Ashley's business succeeds. She acquires many more customers and hires more developers and a customer-support person.  Support becomes problematic, though, as some customers are very slow to upgrade, and it's unclear what version any given customer is on. Additionally, customers can't keep up with the latest version when every commit is a new version, and there are no version numbers.
+Ashley's business succeeds. She acquires many more customers and hires more developers and a customer-support person. Support becomes problematic, though, as some customers are very slow to upgrade, and it's unclear what version any given customer is on. Additionally, customers can't keep up with the latest version when every commit is a new version, and there are no version numbers.
 
 So she decides to batch up the changes into monthly releases and create a new release branch for each revision. Of course, she could use tags for these releases, but branches and tags are pretty similar, and she already has her release script in place.  
 
@@ -69,11 +69,11 @@ This is all working great. Ashley starts scaling the development team, and they 
 
 Some customers respond to this by not upgrading right away. If they are well-served by the current product, they can stay two releases back and get active support while giving the latest release time to stabilize. Bugs do show up in the old versions, though, and this is where things get interesting.
 
-Up until now, time, as viewed by AshelySoft's source control, moves forward in a single line. There is one `main` branch that represents one linear release timeline. But now, when bugs are found, they need to be addressed in multiple versions of the product. And you can't simply ask people to upgrade because they are still on a supported version, and they are correctly worried about the quality of the latest release.  They want the version they have plus the bug fixes, with no new development.
+Up until now, time, as viewed by AshelySoft's source control, moves forward in a single line. There is one `main` branch that represents one linear release timeline. But now, when bugs are found, they need to be addressed in multiple versions of the product. And you can't simply ask people to upgrade because they are still on a supported version, and they are correctly worried about the quality of the latest release. They want the version they have plus the bug fixes, with no new development.
 
 You are now in the hot fixing multiverse. AshelySoft has to fix bugs in the latest version and all other active versions. Each release is a separate timeline where active development ceased at the release date, but bugs continued to be fixed.
 
-If you've seen any time travel movies, you probably realize that this can get complex. What if a bug fix to back release introduces a bug of its own?  Thankfully AshelySoft is only supporting two active versions back and only supporting them for a couple of months. Suppose they were supporting back versions for several years. In that case, they might find themselves spending more and more time maintaining all these versions, and the various versions would slowly drift away from each other.
+If you've seen any time travel movies, you probably realize that this can get complex. What if a bug fix to back release introduces a bug of its own? Thankfully AshelySoft is only supporting two active versions back and only supporting them for a couple of months. Suppose they were supporting back versions for several years. In that case, they might find themselves spending more and more time maintaining all these versions, and the various versions would slowly drift away from each other.
 
 Nevertheless, release branches are an enormous help for AshelySoft. They help customers stay on a version that works for them, while AshelySoft can still push new features. However, it does increase the amount of effort that fixing bugs requires, and dealing with that will lead to AshelySoft's next innovation.
 
@@ -99,17 +99,17 @@ This setup, git-flow and CI on develop branch, with release branches and hot fix
 
 ## The Cloud
 
-AshelySoft customers want to run an eCommerce store. However, they don't want to run a web server.  After repeatedly getting this feedback, Ashley shifts the company to be a SAAS product company.  It takes some extensive work, but AshelySoft eCommerce becomes a multi-tenant eCommerce platform.  No more `git archive` releases. Now the release process is deploying the latest version of the main branch onto the production server.
+AshelySoft customers want to run an eCommerce store. However, they don't want to run a web server. After repeatedly getting this feedback, Ashley shifts the company to be a SAAS product company. It takes some extensive work, but AshelySoft eCommerce becomes a multi-tenant eCommerce platform. No more `git archive` releases. Now the release process is deploying the latest version of the main branch onto the production server.
 
-There are downsides to this SAAS model. AshelySoft now owns the uptime of all their customers, and this is eCommerce, so real money is lost when things go down. But, the customers are willing to pay more for AshelySoft to worry about these problems. They no longer have to support multi releases at a time - no more hot fixing bugs back into old versions, no more multiverse of drifting branches to update, and no more release branches.  To make this work, AshelySoft works off a simple rule: `main` must be releasable.  Before anyone can merge `develop` into `main` they must make sure the continuous integration build is passing, and if they find problems that the CI process missed, they do their best to make sure CI will catch it in the future.
+There are downsides to this SAAS model. AshelySoft now owns the uptime of all their customers, and this is eCommerce, so real money is lost when things go down. But, the customers are willing to pay more for AshelySoft to worry about these problems. They no longer have to support multi releases at a time - no more hot fixing bugs back into old versions, no more multiverse of drifting branches to update, and no more release branches. To make this work, AshelySoft works off a simple rule: `main` must be releasable. Before anyone can merge `develop` into `main` they must make sure the continuous integration build is passing, and if they find problems that the CI process missed, they do their best to make sure CI will catch it in the future.
 
 ## GitHub Flow
 
-Around this time, GitHub private repositories appear, and AshelySoft moves from their own git hosting to GitHub and starts following a Pull Request process. Instead of pushing code straight into `develop` and then ensuring they didn't break the build, developers now create pull-requests.  Other team members review the pull-requests, and the continuous integration service runs its suite of tests right on the PR. As a result, the speed of getting code into `develop` has decreased, but with each PR being manually reviewed and automatically tested, the quality of code that makes it into the `develop` branch is way up.  
+Around this time, GitHub private repositories appear, and AshelySoft moves from their own git hosting to GitHub and starts following a Pull Request process. Instead of pushing code straight into `develop` and then ensuring they didn't break the build, developers now create pull-requests. Other team members review the pull-requests, and the continuous integration service runs its suite of tests right on the PR. As a result, the speed of getting code into `develop` has decreased, but with each PR being manually reviewed and automatically tested, the quality of code that makes it into the `develop` branch is way up.  
 
 ## Death to `develop`
 
-With the quality of `develop` now increased, AshelySoft can increase its release velocity.  They even adopt a continuous deployment model where a merge into `main` causes the software to be automatically deployed.  From there, they move to a [Canary deployment model](/blog/deployment-strategies/#canary-deployment) where a new release is tested on a small portion of web traffic before it's fully deployed.  Once a PR is merged, Ashley just has to merge `develop` into `main` to perform a release.
+With the quality of `develop` now increased, AshelySoft can increase its release velocity. They even adopt a continuous deployment model where a merge into `main` causes the software to be automatically deployed. From there, they move to a [Canary deployment model](/blog/deployment-strategies/#canary-deployment) where a new release is tested on a small portion of web traffic before it's fully deployed. Once a PR is merged, Ashley just has to merge `develop` into `main` to perform a release.
 
 But what is the point of having `develop` and merging it into `main`? It was introduced to prevent the release of bugs by giving the software time to 'integrate', but AshelySoft is doing all the integration as part of the PR process. So they drop the `develop` branch.  
 
@@ -143,6 +143,6 @@ The creator of GitFlow offers similar thoughts:
 >
 > If your team is doing continuous delivery of software, I would suggest to adopt a much simpler workflow (like GitHub flow) instead of trying to shoehorn git-flow into your team.
 >
-> GitFlow Creator Vincent Driessen 
+> GitFlow Creator Vincent Driessen
 
 The closer you can stay to trunk-based or mainline development, the less overhead you will have and the smaller the batches you'll be able to release.
