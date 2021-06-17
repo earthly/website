@@ -30,7 +30,7 @@ Docker networking differs from virtual machine (VM) or physical machine networki
 
 Docker handles communication between containers by creating a default bridge network, so you often don't have to deal with networking and can instead focus on creating and running containers. This default bridge network works in most cases, but it's not the only option you have.
 
-Docker allows you to create three different types of network drivers out-of-the-box: bridge, host, and none. However, they may not fit every use case, so we'll also explore user-defined networks such as overlay and macvlan. Let's take a closer look at each one.
+Docker allows you to create three different types of network drivers out-of-the-box: bridge, host, and none. However, they may not fit every use case, so we'll also explore user-defined networks such as `overlay` and `macvlan`. Let's take a closer look at each one.
 
 ### The Bridge Driver
 

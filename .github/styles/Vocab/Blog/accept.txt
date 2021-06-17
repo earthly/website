@@ -17,7 +17,8 @@ reimplementing
 todo
 [rR]eusability
 [tT]ranspilers
-transpiled
+transpiled?
+transpiling
 polyrepos?
 backporting
 [bB]ikeshedding
@@ -54,11 +55,43 @@ transcompiler
 transpiler
 uname
 tokenizes
+blazingly
+bundler
+bool
+buildspec
+busybox
+iptables
+namespaced?
+profilers
+rbenv
+reimplement
+runtimes
+subpackage
+subpackages
+subprocesses
+virtualized
+[Mm]acvlan
+args
+hissy
+untrusted
+getters
+submoduled
+sha
+[rR]eleasables
+
 
 # lingua franca
 franca
 
+#de facto
+facto
+
+# ad hoc
+hoc
+
 #Names
+ngcontainer
+zx
 dkarl
 [sS]yslog
 jsonnet
@@ -159,7 +192,24 @@ darwin
 jq
 crakers
 Akihiro
+Jekyll
+Benoit
+Buildifier
+Daloze
+backtrace
+headius
+hugo
+cogman
+MRI
+[jJ][iI][tT]
+musman
+Kong
+testcontainers
+[gG][Pp][gG]
+[pP][gG][pP]
 
+#ToDo - please remove
+repos?
 
 
 #People
@@ -185,9 +235,16 @@ dev
 yml
 eg
 
+## In backticks
+cosmo
+dchw
+secretagent
+lesspipe
+
 ## Should not be needed
 imgf
 src
 png
 pimages
 img
+jpg

@@ -67,7 +67,7 @@ From a compatibility perspective, unique field numbers are the most vital piece 
 
 The unique field number is combined with a wire type corresponding to the data type of the field. This identifier and type combination form the key of every field in a message. These fields combined give the receiver the ability to uniquely identify fields and determine the length of the field, so it knows when to start looking for the next field.
 
-This means once a unique field number or length is set, it cannot be changed. Any program consuming or serizalizing protobuf data needs the number to be fixed forever, or both the sender and all the receivers must be updated.
+This means once a unique field number or length is set, it cannot be changed. Any program consuming or serializing protobuf data needs the number to be fixed forever, or both the sender and all the receivers must be updated.
 
 Encoding the numbers 1 through 15 takes one byte to encode, 16 through 2047 take two bytes, and so on. In situations where the size of messages is important, the most frequently exchanged data should have the smallest field numbers. The language is designed to effectively handle new fields, but because you can't change the identifier of fields, it may be wise to leave yourself a couple gaps in these high-efficiency identifier ranges in case a very common field pops up in the future.
 
@@ -123,6 +123,7 @@ Protocol Buffer compatibility problems generally start when you need to change t
 
 Largely, maintaining backward and forward compatibility comes down to maintaining a consistent wire type. You can't change the wire type or alter the length of fields and expect old code to properly send or receive messages—the sender's and receiver's understanding of the exact length of each element in the transmitted messages needs to be precise.
 
+<!-- vale Vale.Spelling = NO -->
 |Type|Meaning|Used For|
 |--- |--- |--- |
 |0|Varint|int32, int64, uint32, uint64, sint32, sint64, bool, enum|
@@ -131,6 +132,7 @@ Largely, maintaining backward and forward compatibility comes down to maintainin
 |3|Start group|groups (deprecated)|
 |4|End group|groups (deprecated)|
 |5|32-bit|fixed32, sfixed32, float|
+<!-- vale Vale.Spelling = YES -->
 <figcaption>Protobuf Wire Types</figcaption>
 
 ## Conclusion

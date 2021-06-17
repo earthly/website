@@ -60,7 +60,7 @@ It's the binary we will be distributing in our deb package.
 
 ## Step 1: Creating a deb package
 
-Debian, and Debian-based linux distributions use `.deb` packages to package and distribute programs.
+Debian, and Debian-based Linux distributions use `.deb` packages to package and distribute programs.
 To start we will create a directory in the form:
 
 ```
@@ -233,7 +233,7 @@ mkdir -p ~/example/apt-repo/dists/stable/main/binary-amd64
 If you want to support multiple architectures, make a directory above for each type (e.g. `i386`, `amd64`, etc).
 </div>
 
-Next, we will generate a `Packages` file, which will contain a list of all availables packes
+Next, we will generate a `Packages` file, which will contain a list of all available packages
 in this repository. We will use the `dpkg-scanpackages` program to generate it, by running:
 
 ```bash
@@ -427,10 +427,10 @@ OpenPGP is only a specification, that's where GNU Privacy Guard (GPG) fits in: G
 or a GPG key? I don't know, I've seen it called both, I'm going to call it a PGP because that's what is contained in the first line of
 the armoured text: `-----BEGIN PGP PUBLIC KEY BLOCK-----`.
 
-#### Creating a new public/private PGP keypair
+#### Creating a new public/private PGP key pair
 
-Let's start with generating a PGP keypair. We will use the `--batch` feature of `gpg` rather than using the interactive prompt.
-This has the benefit of generating keys in a repeatible way. First create a batch template by copying and pasting the following into your terminal:
+Let's start with generating a PGP key pair. We will use the `--batch` feature of `gpg` rather than using the interactive prompt.
+This has the benefit of generating keys in a repeatable way. First create a batch template by copying and pasting the following into your terminal:
 
 ```bash
 echo "%echo Generating an example PGP key
@@ -451,7 +451,7 @@ export GNUPGHOME="$(mktemp -d ~/example/pgpkeys-XXXXXX)"
 gpg --no-tty --batch --gen-key /tmp/example-pgp-key.batch
 ```
 
-Since we overrode the GNUPGHOME to a temporary directory, we can keep this key seperate from our other keys.
+Since we overrode the GNUPGHOME to a temporary directory, we can keep this key separate from our other keys.
 Let's take a quick look at the contents of the directory:
 
 ```bash
@@ -628,7 +628,7 @@ for anything aside from this article. You should be generating your own key,
 don't use this one.
 </div>
 
-Now that we've generated a PGP keypair, let's move on to signing files with them.
+Now that we've generated a PGP key pair, let's move on to signing files with them.
 
 #### Signing the Release file
 
@@ -768,7 +768,7 @@ echo "deb [arch=amd64 signed-by=$HOME/example/pgp-key.public] http://127.0.0.1:8
 note that `$HOME` should be expanded to the absolute path of the pgp key.
 </div>
 
-Next start back up your webserver:
+Next start back up your web server:
 
 ```bash
 cd ~/example
@@ -787,7 +787,7 @@ This time you shouldn't see any security warnings.
 
 #### Keeping your private key secure
 
-If you followed this tutorial to the tee, and your webserver is still running, what happens if we try running:
+If you followed this tutorial to the tee, and your web server is still running, what happens if we try running:
 
 ```bash
 curl http://127.0.0.1:8000/pgp-key.private

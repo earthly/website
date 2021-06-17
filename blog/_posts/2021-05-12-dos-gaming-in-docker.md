@@ -103,7 +103,7 @@ If you built and ran the Dockerfile at this point, you would have an image conta
 `GAME_ARGS` is the command for DOSBox (which is inside JS-DOS) to start once it is loaded. The CLI arguments should line up with what a regular installation of DOSBox would expect. If your game requires additional arguments, please provide them in a comma-separated list.
 </div>
 
-Copy this html file into the same directory as your JS-DOS files and your game. Now all you need to do is start a server within our Docker container to serve this webpage. For this, I used [`serve`](https://www.npmjs.com/package/serve), because it was quick and easy to script (you may have noticed installing this dependency alongside JS-DOS earlier). Heres how I add the server to the container:
+Copy this HTML file into the same directory as your JS-DOS files and your game. Now all you need to do is start a server within our Docker container to serve this webpage. For this, I used [`serve`](https://www.npmjs.com/package/serve), because it was quick and easy to script (you may have noticed installing this dependency alongside JS-DOS earlier). Heres how I add the server to the container:
 
 ```Dockerfile
 ARG GAME_ARGS
@@ -129,7 +129,7 @@ $ docker run --rm -p 127.0.0.1:8000:8000 mycool:dosgame
 
 ## Going Further
 
-Using Earthly, we can even go a step further! Earhly lets us separate some of the concerns within the Dockerfile:
+Using Earthly, we can even go a step further! Earthly lets us separate some of the concerns within the Dockerfile:
 
 <div class="notice--info">
 **ℹ️  About Earthly**
@@ -186,7 +186,7 @@ We also have a couple pre-made targets that wrap this all up for you, and all yo
 
 ![Screenshot of Apogee's Secret Agent running in a web browser.]({{site.images}}{{page.slug}}/agent.png)
 <figcaption>
-`earthly github.com/dchw/earthly-dos-gaming:main+cosmo`
+`earthly github.com/cosmo/earthly-dos-gaming:main+cosmo`
 </figcaption>
 
 ![Screenshot of Apogee's Cosmos Cosmic Adventure running in a web browser.]({{site.images}}{{page.slug}}/cosmo.png)
