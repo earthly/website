@@ -37,7 +37,7 @@ Generally, public repositories are suitable for open-source developers sharing t
 - **Private Repositories**: As a part of the AWS free tier, you get 500 MB of storage for one year for private repositories. Beyond that, the storage cost is $0.10 per GB-month of data storage for private repositories.
 - **Public Repositories**: ECR offers 50 GB-month of free storage and 500 GB to 5 TB (depending on whether you authenticate with AWS or not) for public repositories. Beyond that, the storage cost is $0.10 per GB-month of data storage.
 
-There may be additional costs depending on your region and usage, so be sure to check the pricing [here](https://aws.amazon.com/ecr/pricing/).
+There may be additional costs depending on your region and usage, so be sure to check the [pricing](https://aws.amazon.com/ecr/pricing/).
 
 ### Why ECR?
 

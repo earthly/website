@@ -49,7 +49,7 @@ We will use both throughout the tutorial. Whichever you choose, start it up and 
 
 ## #2 Proxy Our Connection
 
-Let's set up our internet connection to use this proxy. On macOS, Under `Setting -> Network`, select your connection and click advanced.
+Let's set up our internet connection to use this proxy. On macOS, Under `Setting -> Network`, choose your connection and select advanced.
 
 {% include imgf src="4.png" alt="Setting -> Network on macOS" caption="`Setting -> Network` on macOS" %}
 

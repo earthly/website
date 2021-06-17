@@ -47,7 +47,7 @@ One elephant in the room to address before moving on is the inevitable "Why not 
 
 You will need the following to complete the rest of this tutorial:
 
-- An active AWS account [(If you don't have one, you can sign up here)](https://portal.aws.amazon.com/billing/signup#/start)
+- An active AWS account [(If you don't have one, you can sign up on aws)](https://portal.aws.amazon.com/billing/signup#/start)
 - [Installed the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html)
 - [Configured AWS credentials](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html)
 
@@ -89,7 +89,7 @@ You can get the key directly with `jq` by `jq -r .KeyPairId key-output.json`, or
 
 ### Security Group
 
-Now that you have a key pair, you will also need to create a security group for the instance to reside in. To oversimplify, a security group is essentially a firewall for your instance, constraining what ports traffic is allowed to enter or leave on. [You can read more about security groups here, for a longer and more complete explanation.](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html#VPCSecurityGroups) Getting this right is important, so your proxy is less likely to be compromised.
+Now that you have a key pair, you will also need to create a security group for the instance to reside in. To oversimplify, a security group is essentially a firewall for your instance, constraining what ports traffic is allowed to enter or leave on. [You can read more about security groups on aws, for a longer and more complete explanation.](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html#VPCSecurityGroups) Getting this right is important, so your proxy is less likely to be compromised.
 
     ❯ aws ec2 create-security-group \
         --group-name reverse-proxy \

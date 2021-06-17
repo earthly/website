@@ -368,4 +368,4 @@ Then you can try querying the server to see what the weather was set to:
 And if all went well, it'll tell you that it's sunny outside.
 {% include imgf src="sun.png" alt="drawing of the sunn" caption="It's Sunny Outside"%}
 
-So there we go. &nbsp;You can find the code for the server and the two clients in [GitHub here](https://github.com/earthly/example-grpc-key-value-store).
+So there we go. &nbsp;You can find the code for the server and the two clients in [GitHub](https://github.com/earthly/example-grpc-key-value-store).

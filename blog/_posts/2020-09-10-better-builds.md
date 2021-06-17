@@ -144,7 +144,7 @@ We can test out our docker image as follows:
 
 {% include imgf src="run4.gif" alt="building docker image using earthly" caption="Running `earthly +docker`" %}
 
-You can find the [full example here](https://github.com/earthly/earthly-example-scala/blob/simple/simple/earthfile). Now we can adjust our build process to call earthly and containerization ensures our builds are not effected by environmental issues either locally or on the build server. &nbsp;
+You can find the [full example on GitHub](https://github.com/earthly/earthly-example-scala/blob/simple/simple/earthfile). Now we can adjust our build process to call earthly and containerization ensures our builds are not effected by environmental issues either locally or on the build server. &nbsp;
 
 ### Did we solve it?
 

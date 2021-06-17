@@ -212,7 +212,7 @@ I want to keep my function signature as basic as possible for the purpose of lea
     }
 ```
 
-Try out the complete example [here](https://play.golang.org/p/KjvwPoJ6wT4)
+Try out the [complete example](https://play.golang.org/p/KjvwPoJ6wT4)
 
 Finally, how do we decrypt it?
 
@@ -237,7 +237,7 @@ Finally, how do we decrypt it?
     }
 ```
 
-Try it out [here](https://play.golang.org/p/a5u9PYWEjgs)
+[Try it out](https://play.golang.org/p/a5u9PYWEjgs)
 
 So there we have a end-to-end example of how to generate a new public/private key, and encrypt and decrypt data all in [GoLang](/blog/top-3-resources-to-learn-golang-in-2021).
 
