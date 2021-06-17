@@ -110,7 +110,7 @@ RAMDisk
 ShellCheck
 [uU]nix
 Turing
-Ubuntu
+#Ubuntu
 [aA]utotools
 Earthfiles?
 Makefile
@@ -192,7 +192,7 @@ darwin
 jq
 crakers
 Akihiro
-Jekyll
+#Jekyll
 Benoit
 Buildifier
 Daloze
@@ -236,15 +236,18 @@ yml
 eg
 
 ## In backticks
+#Should not be needed (but having block ignore and token ignore problems)
 cosmo
 dchw
 secretagent
 lesspipe
 
-## Should not be needed
-#imgf
-#src
-#png
-#pimages
-#img
-#jpg
+## Should not be needed (but having block ignore and token ignore problems)
+[Jj]ekyll
+[uU]buntu
+imgf
+src
+png
+pimages
+img
+jpg
