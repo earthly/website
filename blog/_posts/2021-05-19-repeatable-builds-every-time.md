@@ -138,9 +138,9 @@ A third, less recommended, option is to execute tests as additional layers of th
 docker build .
 ```
 
-<!-- vale Vale.Spelling = NO -->
+<!-- vale HouseStyle.Spelling = NO -->
 **Option b.** requires managing an extra image, but might make them look more like the integration tests. Plus, if you want to mount in the source code instead of `COPY`ing it (faster on Linux), this option allows that.
-<!-- vale Vale.Spelling = YES -->
+<!-- vale HouseStyle.Spelling = YES -->
 
 ### Running Integration Tests
 

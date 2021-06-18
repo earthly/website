@@ -18,3 +18,5 @@ dns
 orm
 wget
 httpie
+pluggable
+protoc

@@ -28,7 +28,7 @@ Finally, the free Docker Hub plan has added a restrictive retention policy. They
 
 ## Introducing Amazon Elastic Container Registry (ECR)
 
-Amazon ECR is a fully managed container registry offered as part of the AWS suite. Like Docker Hub, it makes storing, sharing, managing, and deploying your images easier, but it's also likely to save you money - especially if you're already using AWS. Simply push your images to ECR and pull the images using container management tool: [Kuberenetes](https://kubernetes.io/), [Docker Compose](https://docs.docker.com/compose/), [ECS](https://aws.amazon.com/ecs), [EKS](https://aws.amazon.com/eks), etc.
+Amazon ECR is a fully managed container registry offered as part of the AWS suite. Like Docker Hub, it makes storing, sharing, managing, and deploying your images easier, but it's also likely to save you money - especially if you're already using AWS. Simply push your images to ECR and pull the images using container management tool: [Kubernetes](https://kubernetes.io/), [Docker Compose](https://docs.docker.com/compose/), [ECS](https://aws.amazon.com/ecs), [EKS](https://aws.amazon.com/eks), etc.
 
 ### Pricing
 

@@ -99,7 +99,7 @@ build:
     RUN sbt compile
 ```
 
-<figcaption>earthfile continued</figcaption>
+<figcaption>Earthfile continued</figcaption>
 
 Inside the `build:` target we copy in our source files, and run our familiar `sbt compile`. &nbsp;We use `FROM +deps` to tell earthly that this step is dependent upon the output of our `deps` step above.
 
