@@ -31,7 +31,7 @@ In [Docker](https://www.docker.com/), containers are isolated and bundled with s
 
 **1. Containers are transient.** When a Docker container broadcasts logs, it sends them to the application's `stdout` and `stderr` output streams. The underlying container logging driver can start accessing these streams, and the logs are stored on the Docker host in JSON files ([`json-file` is the default logging driver used by Docker](https://docs.docker.com/config/containers/logging/json-file/)). It writes JSON-formatted logs to a file on the host where the container is running. Any logs stored in the container will be deleted when it is terminated or shut down.
 
-**2. Containers are multi-leveled.** There are two levels of aggregation in Docker logging. One refers to the logs from inside the container in your Dockerized application, and the second refers to the logs from the host servers (eg, system logs, Docker daemon logs), which are generally located in `/var/log`. A log aggregator that has access to the host pulls application log files and accesses the file system inside the container to collect the logs. Later, you'd need to correlate these log events for analysis.
+**2. Containers are multi-leveled.** There are two levels of aggregation in Docker logging. One refers to the logs from inside the container in your Dockerized application, and the second refers to the logs from the host servers (that is system logs or Docker daemon logs), which are generally located in `/var/log`. A log aggregator that has access to the host pulls application log files and accesses the file system inside the container to collect the logs. Later, you'd need to correlate these log events for analysis.
 
 In this article, you'll learn about different logging strategies you can use in a Dockerized application—how you can access logs and understand Docker logging commands, drivers, configuration, and management to build a highly performant and reliable infrastructure.
 
@@ -225,7 +225,7 @@ If you have multiple containers, you need to add an identifier at each container
 
 To address this, you have two options:
 
-- Configure steady storage to hold these logs, i.e. disks/data volumes.
+- Configure steady storage to hold these logs, for example, disks/data volumes.
 - Forward these logs to a log management solution.
 
 ### 2. Data Volumes

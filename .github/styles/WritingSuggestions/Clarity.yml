@@ -1,7 +1,7 @@
 ---
 extends: substitution
 message: Consider using '%s' instead of '%s'
-level: warning
+level: suggestion
 ignorecase: false
 # swap maps tokens in form of bad: good
 swap:

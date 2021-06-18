@@ -1,7 +1,7 @@
 ---
 extends: existence
 ignorecase: true
-level: warning
+level: suggestion
 message: "Don't attribute human qualities to software or hardware."
 raw:
   - \b(?:PC|computer|object|machine|software|hardware|data|database|engine|message|command|interface)\b\s*

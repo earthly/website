@@ -20,7 +20,7 @@ Occasionally, when something went wrong, we would do a stability release and spe
 
 This wasn't that long ago, but cloud software development has matured a lot since this time. Incident management has become standard practice, and many great metrics and Key Performance Indicators (KPIs) exist for measuring release quality. Let's review some of them.
 
-## MTBF: Mean Time Between Failures
+## Mean Time Between Failures (MTBF)
 
 When software is being released only once a month, on a fixed timeline, with extensive manual testing, counting the number of bugs might work. But once you start releasing many times per week or per day, this won't work, and another way to measure software quality is required.
 
@@ -40,7 +40,7 @@ Mean Time Between Failures =
   : 30 days / 2 Incidents  = 15 days
 </div>
 
-## MTTR: Mean Time to Recovery
+## Mean Time to Recovery (MTTR)
 
 Something funny happens when you start releasing more frequently. You may end up with a higher count of issues in production, but resolving them will happen much faster. If each change is released separately using a continuous delivery model, then recovering gets easier -- often, all that is required is hitting a rollback button.
 
@@ -68,7 +68,7 @@ Mean Time To Recovery =
 
 </div>
 
-## MTTRe: Mean Time to Resolve
+## Mean Time to Resolve (MTTRe)
 
 <div class="notice--info">
 ℹ️  Acronyms Collision Alert
@@ -106,7 +106,7 @@ Mean Time To Resolve =
 
 </div>
 
-## MTTA: Mean Time to Acknowledge
+## Mean Time to Acknowledge (MTTA)
 
 An essential part of good incident management is an on-call rotation. You need someone around to respond to incidents when they occur. Our previous metrics would be unable to differentiate between an incident that took 3 hours to recover from and one that was recoverable in 5 minutes but took two hours and 55 minutes to be acknowledged.  
 
@@ -138,8 +138,8 @@ Mean Time To Acknowledge =
 
 ## Summary
 
-There are many ways to measure the quality of your software as a service product. MTBF, MTTR, MTTRe, and MTTA can each offer a different lens for viewing your software release life cycle. As you improve your SDLC, find ways to collect aggregate metrics like these and choose one or two to target for improvement.
+There are many ways to measure the quality of your software as a service product. MTBF, MTTR, MTTRe, and MTTA can each offer a different lens for viewing your software release life cycle. As you improve your Software Development Life Cycle, find ways to collect aggregate metrics like these and choose one or two to target for improvement.
 
-Invest in improving these metrics and you'll make up for it in time saved fighting fires. Also focusing on aggregate metrics can be an effective way to move the discussion from blame about specific incidents to a higher-level debate around changing the process to better support the company's goals.
+Invest in improving these metrics, and you'll make up for it in time saved fighting fires. Also, focusing on aggregate metrics can be an effective way to move the discussion from blame about specific incidents to a higher-level debate around changing the process to better support the company's goals.
 
 If your build pipeline is taking more than 15 minutes and therefore negatively affecting your metrics, then take a look at Earthly's [free and open build tool](http://earthly.dev/).

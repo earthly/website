@@ -121,7 +121,7 @@ There is a lot about git merging strategies, continuous integration, and deploym
 
 For instance, calling software that builds and tests code a continuous integration process only makes sense when you understand what non-continuous integration was. It was spending time manually testing the upcoming release for days or even weeks before feeling confident enough to release it.
 
-Ashely's story is fictional, and history didn't necessarily unfold this way for all or even most software shops, but I think it's helpful to understand where we are coming from and how cloud and SAAS workflows influence branching models.
+Ashely's story is fictional, and history didn't necessarily unfold this way for all or even most software shops, but I think it's helpful to understand where we are coming from and how cloud and Software-As-A-Service (SAAS) workflows influence branching models.
 
 Some software always had an extensive review process, and much software will never be cloud-based and will continue to deal with release branches and backporting fixes. But some software has moved to the cloud and yet hasn't embraced the simplified workflows that cloud deployment can enable.
 

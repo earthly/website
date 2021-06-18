@@ -2,6 +2,6 @@
 extends: existence
 message: "'%s' is an unclear antecedent"
 ignorecase: true
-level: warning
+level: suggestion
 raw:
   - '(?:^[^\w]*|[;-]\s)This\b\s(is|are)\b'

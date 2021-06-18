@@ -1,7 +1,7 @@
 extends: existence
 message: "Possible future tense."
 ignorecase: true
-level: warning
+level: suggestion
 tokens:
   - '[\w][ll]'
   - we are going
