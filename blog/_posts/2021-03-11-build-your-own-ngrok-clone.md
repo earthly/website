@@ -53,7 +53,7 @@ You will need the following to complete the rest of this tutorial:
 
 Optionally, you may also want to install:
 
-- [jq](https://stedolan.github.io/jq/)
+- [`jq`](https://stedolan.github.io/jq/)
 
 With those in hand, it's time to get started!
 
@@ -264,7 +264,7 @@ To see everything it can do, run `docker run proxy:latest` for a list.
 
 This approach to a free, simple ngrok alternative isn't without its shortcomings. For instance, it can't do `https` without a self-signed certificate, because issuers like Let's Encrypt won't issue certificates for AWS public DNS names. Also, it can't handle a ton of traffic since its a small `t2.micro` capped at low bandwidth.
 
-It also requires non-trivial IAM permissions in AWS to setup and teardown. If you don't have that kind of access to an account, you may end up waiting on others to set it up for you.
+It also requires non-trivial IAM permissions in AWS to set up and tear down. If you don't have that kind of access to an account, you may end up waiting on others to set it up for you.
 
 ## Conclusion
 

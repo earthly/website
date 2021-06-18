@@ -104,6 +104,15 @@ blog-lint-apply:
   RUN vale --output line --minAlertLevel error ./blog/_posts/*.md
   RUN cd blog && markdownlint --fix "./_posts/*.md"
 
+
+blog-writing-suggestions:
+  FROM agbell/blog-install
+  COPY .vale.ini .
+  COPY blog/.markdownlintrc .
+  COPY .github .github
+  COPY blog blog
+  RUN vale ./blog/_posts/*.md
+
 blog-build:
   #FROM +blog-install
   FROM agbell/blog-install

@@ -21,7 +21,7 @@ We have heard that
 - Integration tests are painful, in general - especially if they only fail in [CI](/blog/continuous-integration)
 - Performance is important to you
 - Migrating between CI vendors is a pain. However, it's much easier via Earthly, as it can be used as a lift-and-shift framework for builds.
-- You would like to complete all your local development flows through Earthly, but for some of you, this is not yet possible (eg run commands directly on the host, use the host Docker daemon, support watch mode)
+- You would like to complete all your local development flows through Earthly, but for some of you, this is not yet possible (for example, running commands directly on the host or using the host Docker daemon or supporting watch mode)
 - You would like it if GitHub Actions + Earthly had some sort of cache, to prevent repeating steps on every build.
 - New Apple Silicon launch spurred interest in multi-platform builds
 - Many other, finer points
