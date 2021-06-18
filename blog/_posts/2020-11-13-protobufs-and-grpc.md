@@ -14,7 +14,7 @@ Following this success, in 2016 Google released gRPC. &nbsp; gRPC offered a way 
 
 gRPC is a great solution for communicating between internal microservices. There's [plenty](https://phenopackets-schema.readthedocs.io/en/latest/protobuf.html) [of](https://www.ionos.ca/digitalguide/websites/web-development/protocol-buffers-explained/) [articles](https://www.baeldung.com/google-protocol-buffer) and documentation that covers [protobufs](https://developers.google.com/protocol-buffers) and [gRPC](https://grpc.io/), but when I am considering a new technology, I learn best by seeing a working example. &nbsp;In this blog post I'm going build an example using Go, Python and Ruby.
 
-## First Step: Implementing a gRPC client using Go
+## First Step: Implementing a gRPC Client using Go
 
 Let's write an in-memory key/value micro-service in Go, and some clients in both Python and Ruby.
 
@@ -206,7 +206,7 @@ Then start up the server in Docker, by running:
 
 * * *
 
-## Next step: Implementing a gRPC client using Python
+## Next step: Implementing a gRPC Client Using Python
 
 Now that we've built and launched our Go-based key-value-store server, we'll cover how to talk to it using a Python client. Remember that initial Earthfile that generated the Go code? We'll extend it to _pip install grpc_ tooling, and generate Python code:
 
@@ -318,7 +318,7 @@ And if all went well, you should see some output on both the client and server c
 
 * * *
 
-## Final step: Implementing a gRPC client using Ruby
+## Final Step: Implementing a gRPC Client Using Ruby
 
 We've come a long ways with our Go and Python gRPC examples, but what if you also wanted to include a Ruby gRPC client implementation too? Well let's extend our proto Earthfile to generate Ruby protobufs too:
 

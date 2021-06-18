@@ -100,7 +100,7 @@ blog-lint-apply:
   # remove double spaces
   RUN sed -i -E "s/\.\s\s(\w)/. \1/g" ./blog/_posts/*.md
   RUN sed -i -E "s/\?\s\s(\w)/? \1/g" ./blog/_posts/*.md
-  RUN vale --output line --minAlertLevel error ./blog/_posts/2021*.md
+  RUN vale --output line --minAlertLevel error ./blog/_posts/2020*.md
   RUN cd blog && markdownlint --fix "./_posts/*.md"
 
 blog-build:

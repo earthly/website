@@ -13,7 +13,7 @@ Today, we are pleased to announce that a number of well-respected industry veter
 We have partnered with [468 Capital](https://www.ft.com/content/b93d120e-5c04-458b-bfbc-b147e2e399fa), the fund of [Florian Leibert](https://www.linkedin.com/in/florianleibert/) (Mesosphere), as well as a number of creators of large developer ecosystems, such as [Spencer Kimball](https://www.linkedin.com/in/spencerwkimball/) (Cockroach Labs), [Olivier Pomel](https://www.linkedin.com/in/olivierpomel) (DataDog), [Mitch Wainer](https://www.linkedin.com/in/mitchwainer/) (DigitalOcean), [Matt Klein](https://www.linkedin.com/in/mattklein123/) (Envoy proxy), [Mirko Novakovic](https://www.linkedin.com/in/mirkonovakovic/) (Instana, [NewForge](https://newforge.de/)), [David Cramer](https://www.linkedin.com/in/dmcramer/) (Sentry.io), [Cristian Strat](https://www.linkedin.com/in/cristiangeorgestrat/) (head of trading platform Coinbase) and [David Aronchick](https://www.davidaronchick.com/) (Kubernetes, GKE). In addition, a number of institutional investors with deep experience in developer platforms have joined the round, including [Salil Deshpande](https://www.linkedin.com/in/salil/) of Bain Capital-backed fund [Uncorrelated Ventures](https://uncorrelated.com/), [Jeremy Levine](https://www.linkedin.com/in/jeremyl/) of [Bessemer Venture Partners](https://www.bvp.com/) and [Ed Roman](https://www.linkedin.com/in/ed-roman-19686/) of [Hack VC](https://hack-vc.com/).
 <!-- vale on -->
 
-## The general sentiment around builds
+## The General Sentiment Around Builds
 
 Since our initial product launch, we've talked to several engineers, build gurus and industry experts about traditional build tooling, and we discovered that nobody likes their build process. Builds are always a source of frustration one way or another. They're slow, brittle, too difficult to understand, inconsistent and difficult to iterate on.
 
@@ -29,7 +29,7 @@ These incompatibilities lead to significant inefficiencies in the software devel
 
 With Earthly, we believe we can make this process an order of magnitude better.
 
-## How does it work?
+## How Does It Work?
 
 Docker made containers friendlier to use and widely accessible, bringing container isolation into mainstream usage. In a similar spirit, Earthly follows in Docker's footsteps, bringing together a number of important innovations into an easy-to-use package. We bring together BuildKit and OCI images and inspiration from Dockerfiles and Makefiles to make reproducible builds easier to get right and harder to get wrong.
 
@@ -41,7 +41,7 @@ In a way, Earthly completes Dockerfiles. While Dockerfiles allow you to define t
 
 There are lots of other goodies that Earthly does beyond this, such as automatically running everything in parallel, bringing a modern import system and having native secrets and SSH agent support.
 
-## What's next?
+## What's Next?
 
 Having reproducible builds is the first step in our journey. We plan to build shared caching and highly parallel cloud-based builds next. We have a deep belief that builds can create bridges between engineering teams - not roadblocks. This has become our mission, and we will not stop until we've achieved it!  
 Since our launch, we've worked with our users to address their needs and make the experience as pleasant and friendly as possible. We love feedback - check out [Earthly on GitHub](https://github.com/earthly/earthly), drop by our [Gitter channel](https://gitter.im/earthly-room/community) or open a GitHub [issue](https://github.com/earthly/earthly/issues/new) - tell us what you're building and how your experience can be improved. We're excited to have you join us on our journey!

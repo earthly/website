@@ -146,7 +146,7 @@ We can test out our docker image as follows:
 
 You can find the [full example on GitHub](https://github.com/earthly/earthly-example-scala/blob/simple/simple/earthfile). Now we can adjust our build process to call earthly and containerization ensures our builds are not effected by environmental issues either locally or on the build server. &nbsp;
 
-### Did we solve it?
+### Did We Solve It?
 
 We now have our `deps`, `build`, `test` and `docker` targets in our Earthfile. All together these give us a reproducible process for running our build locally and in our [CI](/blog/continuous-integration)  builds. &nbsp;We used earthly to encapsulate the build steps.
 

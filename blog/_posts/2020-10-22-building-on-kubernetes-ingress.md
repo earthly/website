@@ -69,7 +69,7 @@ Kubernetes will handle that, "Hey, no more traffic comes to this node." And then
 
 But, there's more to it than that because there's the whole adventure that takes place before it's live in production taking traffic.
 
-## Testing in production
+## Testing in Production
 
 What I'm hoping to do for us as we're going forward here is, that we can stick new deployments out on production in some small way, and then use our Ingress controller to send it some traffic. Then we can actually [test](/blog/unit-vs-integration) the new version of the code in production without affecting anybody as a canary before we choose to roll that actually out to everybody.
 
