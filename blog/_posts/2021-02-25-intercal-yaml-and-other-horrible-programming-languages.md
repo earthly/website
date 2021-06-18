@@ -14,9 +14,9 @@ In 1972, two students learning FORTRAN came up with a fantastic new programming 
 
 > One final comment about sparks and rabbit-ears; if the next character in the program is a spot, as often happens because onespot variables are common choices for operands, a spark and the following spot can be combined into a wow (!). - [INTERCAL Manual](http://www.catb.org/~esr/intercal/ick.htm).
 
-<!-- vale Vale.Repetition = NO -->
+<!-- vale HouseStyle.Repetition = NO -->
 The compiler errors are where the authors got genuinely creative. Errors include `VARIABLES MAY NOT BE STORED IN WEST HYPERSPACE` for accessing an array incorrectly, `IT CAME FROM BEYOND SPACE` for invalid control flow, `PROGRAM REJECTED FOR MENTAL HEALTH REASONS` for threading issues, `I HAVE NO FILE AND I MUST SCREAM` for file not found, and [many many more](http://www.catb.org/~esr/intercal/ick.htm#Errors).
-<!-- vale Vale.Repetition = YES -->
+<!-- vale HouseStyle.Repetition = YES -->
 
 Yes, this is a parody language, and reading the manual, you get the sense that no one has yet had as much fun writing technical documentation as Lyon and Woods did writing this.
 

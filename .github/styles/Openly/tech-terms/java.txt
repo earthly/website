@@ -1,4 +1,0 @@
-gradle
-maven
-jvm
-akka

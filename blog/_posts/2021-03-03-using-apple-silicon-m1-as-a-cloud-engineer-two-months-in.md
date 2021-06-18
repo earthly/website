@@ -139,9 +139,9 @@ Docker is currently slower, however, as mentioned above, due to the multi-core i
 
 ## Battery Life
 
-<!-- vale Vale.Repetition = NO -->
+<!-- vale HouseStyle.Repetition = NO -->
 Battery life on the M1 is really really really good - half a day of Zoom meetings + email only took 20% of my battery. I work from home a lot, so I don't use this much. But it's great to know it really lasts for a serious coding session if I needed it on the go.
-<!-- vale Vale.Repetition = YES -->
+<!-- vale HouseStyle.Repetition = YES -->
 
 ## Cost
 
