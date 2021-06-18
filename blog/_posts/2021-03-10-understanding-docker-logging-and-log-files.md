@@ -39,9 +39,9 @@ In this article, you'll learn about different logging strategies you can use in 
 
 `docker logs` is a command that shows all the information logged by a running container. The `docker service logs` command shows information logged by all the containers participating in a service. By default, the output of these commands, as it would appear if you run the command in a terminal, opens up three I/O streams: stdin, stdout, and stderr. And the default is set to show only stdout and stdout.
 
-- stdin is the command's input stream, which may include input from the keyboard or input from another command.
-- stdout is usually a command's normal output.
-- stderr is typically used to output error messages.
+- `stdin` is the command's input stream, which may include input from the keyboard or input from another command.
+- `stdout` is usually a command's normal output.
+- `stderr` is typically used to output error messages.
 
 The `docker logs` command may not be useful in cases when a logging driver is configured to send logs to a file, database, or an external host/backend, or if the image is configured to send logs to a file instead of stdout and stderr. With `docker logs <CONTAINER_ID>`, you can see all the logs broadcast by a specific container identified by a unique ID.
 

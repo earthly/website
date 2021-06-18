@@ -53,7 +53,7 @@ You will need the following to complete the rest of this tutorial:
 
 Optionally, you may also want to install:
 
-- [jq](https://stedolan.github.io/jq/)
+- [`jq`](https://stedolan.github.io/jq/)
 
 With those in hand, it's time to get started!
 
