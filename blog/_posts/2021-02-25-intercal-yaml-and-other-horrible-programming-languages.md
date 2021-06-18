@@ -210,7 +210,7 @@ The line between configuration and programming languages is not some bright divi
 
  That is the worst of both worlds, and so much YAML seems to drift into this area.  
 
-I like YAML more than XML, but for control flow, you know what would be better than YAML? Anything else!  Maybe even INTERCAL? I mean, how bad could a joke programming language be?
+I like YAML more than XML, but for control flow, you know what would be better than YAML? Anything else! Maybe even INTERCAL? I mean, how bad could a joke programming language be?
 
 ``` fortran
 (100)  PLEASE NOTE THIS IS THE FIZZBUZZ FUNCTION 
