@@ -10,4 +10,7 @@ ignore:
   - HouseStyle/tech-terms/linux.txt
   - HouseStyle/tech-terms/monitoring.txt
   - HouseStyle/tech-terms/names.txt
+  - HouseStyle/tech-terms/phrases.txt
   - HouseStyle/tech-terms/security.txt
+  - HouseStyle/tech-terms/people.txt
+  - HouseStyle/tech-terms/nonsense.txt

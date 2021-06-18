@@ -103,7 +103,7 @@ Now that you have a key pair, you will also need to create a security group for 
 Make sure you replace `$VPC_ID` with the ID for the [VPC you identified earlier](#where-will-the-instance-live).
 </div>
 
-By default, AWS security groups are configured to disallow all traffic coming in (ingress), and to allow all traffic out (egress). While an instance that doesn't allow traffic in is fairly secure, it also doesn't do you much good. You will need to open up port 22 (ssh) for traffic from our current IP only, and port 80 (http) for traffic from the internet at large. By restricting SSH to your current IP address, you prevent external entities from attempting to SSH into your proxy.
+By default, AWS security groups are configured to disallow all traffic coming in (ingress), and to allow all traffic out (egress). While an instance that doesn't allow traffic in is fairly secure, it also doesn't do you much good. You will need to open up port 22 (ssh) for traffic from our current IP only, and port 80 (HTTP) for traffic from the internet at large. By restricting SSH to your current IP address, you prevent external entities from attempting to SSH into your proxy.
 
     ❯ aws ec2 authorize-security-group-ingress \
         --group-id $SG_ID \

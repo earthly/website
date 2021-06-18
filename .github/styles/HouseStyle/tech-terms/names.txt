@@ -125,3 +125,4 @@ Canva
 matplotlib
 aws
 Loggly
+mitmproxy

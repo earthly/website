@@ -428,13 +428,13 @@ If the image does not already exist (or if it does not have a cache manifest emb
 
 ## Managing Secrets
 
-Mature CI/CD setups often hold more secrets than there are available in the production environment. That's because they often need access to registries, artifactories, git repositories, as well as staging environments where additional testing can be performed, and also the production environment itself, where live releases are deployed to, together with schema write access to DBs for upgrades, and also possibly S3 access. Wow - that's a mouthful.
+Mature CI/CD setups often hold more secrets than there are available in the production environment. That's because they often need access to registries, artifact repositories, git repositories, as well as staging environments where additional testing can be performed, and also the production environment itself, where live releases are deployed to, together with schema write access to DBs for upgrades, and also possibly S3 access. Wow - that's a mouthful.
 
 Oh, did I also mention that the CI runs a ton of code imported from the web? That `npm install` one of your colleagues ran in CI will download half the internet. And not all of it is particularly [trust-worthy](https://www.zdnet.com/article/codecov-breach-impacted-hundreds-of-customer-networks/).
 
 This whole thing makes for an incredibly risky attack surface. Giving access to build secrets to every developer adds an unnecessary extra dimension to the whole risk.
 
-However, to be able to reproduce some of the builds, you really need to give at least *some* access. At the very least, developers need read access to most Docker registries and package artifactories / package repositories. In fact, if you want to ensure that artifacts and images that make it to production are never created on a developer's computer (because you don't know if their specific environment will produce the releasable correctly consistently), you can simply not give out write access to any Docker repository and make it a rule that only the CI may have write access. (You might still need separate, non-production repos for local testing, though).
+However, to be able to reproduce some of the builds, you really need to give at least *some* access. At the very least, developers need read access to most Docker registries and artifact repositories / package repositories. In fact, if you want to ensure that artifacts and images that make it to production are never created on a developer's computer (because you don't know if their specific environment will produce the releasable correctly consistently), you can simply not give out write access to any Docker repository and make it a rule that only the CI may have write access. (You might still need separate, non-production repos for local testing, though).
 
 For the read access, it's best if each engineer gets their own account and credentials. In case someone is terminated, you can simply revoke access from that engineer's account and know that all other credentials are not compromised.
 

@@ -1,0 +1,22 @@
+## Should not be needed
+# found inside backtics and code blocks that are matching for some reason
+
+sbt
+scala
+dev
+grpc
+api
+yml
+eg
+cosmo
+dchw
+secretagent
+lesspipe
+jekyll
+ubuntu
+imgf
+src
+png
+pimages
+img
+jpg
