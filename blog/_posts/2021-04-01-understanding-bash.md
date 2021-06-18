@@ -168,14 +168,14 @@ The intention is that `/tmp/path.txt` contains `tmp_file.txt`. Assume that the f
 
 ### Sets in Summary
 
-<!-- vale Vale.Spelling = NO -->
+<!-- vale HouseStyle.Spelling = NO -->
 | Set | Long form | Description |
 |-|-|-|
 | set -u | set -o nounset | Exits script on undefined variables |
 | set -x | set -o xtrace | Shows command currently executing |
 | set -e | set -o errexit | Exits script on error |
 | set -eo pipefail | set -eo pipefail | Exits script on pipeline fail |
-<!-- vale Vale.Spelling = YES -->
+<!-- vale HouseStyle.Spelling = YES -->
 
 ## Use Error Checking Tools
 

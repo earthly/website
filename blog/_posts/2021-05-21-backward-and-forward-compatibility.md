@@ -123,7 +123,7 @@ Protocol Buffer compatibility problems generally start when you need to change t
 
 Largely, maintaining backward and forward compatibility comes down to maintaining a consistent wire type. You can't change the wire type or alter the length of fields and expect old code to properly send or receive messages—the sender's and receiver's understanding of the exact length of each element in the transmitted messages needs to be precise.
 
-<!-- vale Vale.Spelling = NO -->
+<!-- vale HouseStyle.Spelling = NO -->
 |Type|Meaning|Used For|
 |--- |--- |--- |
 |0|Varint|int32, int64, uint32, uint64, sint32, sint64, bool, enum|
@@ -132,7 +132,7 @@ Largely, maintaining backward and forward compatibility comes down to maintainin
 |3|Start group|groups (deprecated)|
 |4|End group|groups (deprecated)|
 |5|32-bit|fixed32, sfixed32, float|
-<!-- vale Vale.Spelling = YES -->
+<!-- vale HouseStyle.Spelling = YES -->
 <figcaption>Protobuf Wire Types</figcaption>
 
 ## Conclusion

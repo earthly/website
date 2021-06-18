@@ -270,7 +270,7 @@ if you had multiple deb files, you would have an entry for each package
 </div>
 
 The contents of the Packages file is a list of all available packages along with metadata from the `DEBIAN/control` file, and some hashes which can be used to
-validate the integrety of the package.
+validate the integrity of the package.
 
 Next we will create a Release file. Unfortunately `dpkg-scanpackages` does not create Release files. Some people use programs like `apt-ftparchive`;
 however in this example I'll cover an alternative to `apt-ftparchive` by using a small bash script.
@@ -360,7 +360,7 @@ cd ~/example/apt-repo/dists/stable
 ~/example/generate-release.sh > Release
 ```
 
-At this point, you can try hosting this repo for yourself. In this example we'll use python's simple http server; however in practice you'll want
+At this point, you can try hosting this repo for yourself. In this example we'll use python's simple HTTP server; however in practice you'll want
 to use a production-ready server. Here's how you can start it up for testing:
 
 ```bash
@@ -419,7 +419,7 @@ In order to sign the apt repo, all we must do is sign the Release file.
 
 *PGP, OpenPGP, GnuPG, GPG, (and careful not to typo PHP).*
 
-Software has a lot of accronyms, and this extends into digital signatures.
+Software has a lot of acronyms, and this extends into digital signatures.
 "Pretty Good Privacy" (PGP), was created in 1991 by Phil Zimmermann and eventually became the main product of non other than PGP Inc.
 To encourage adoption of PGP, the company created an open standard unsurprisingly called OpenPGP.
 
