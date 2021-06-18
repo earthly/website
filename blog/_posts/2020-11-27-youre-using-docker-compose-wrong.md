@@ -71,7 +71,7 @@ Containerized tests mean:
 - You are on the same Docker network, so the connectivity setup is the same you would use for running your service in compose anyway. Configuration becomes cleaner.
 - You may be able to reuse the code used to wait for other services to be ready in your setup/teardown.
 - The integration test does not depend on any other local system configuration or environment setup, such as say… your JFrog credentials, or any build dependencies. A container is isolated.
-- If another team needs to run your tests against an updated version of a service the tests depend on, you can just share the integration testing image - no need for them to compile or to setup a build toolchain.
+- If another team needs to run your tests against an updated version of a service the tests depend on, you can just share the integration testing image - no need for them to compile or to set up a build toolchain.
 - If you end up with multiple separate integration test containers, you can typically run all of them at the same time in parallel.
 
 A tip for using containerized integration tests is to use a separate docker-compose definition for them. For example, if most of your services exist in **docker-compose.yml** , you could add **docker-compose.test.yml** with integration test definitions. This means that **docker-compose up** brings up your usual services, while **docker-compose -f docker-compose.yml -f docker-compose.test.yml up** starts your integration tests. For a full example on how to achieve this, see this excellent [docker-compose integration testing](https://github.com/george-e-shaw-iv/integration-tests-example) repository from Ardan Labs.
