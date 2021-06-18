@@ -40,7 +40,7 @@ Mean Time Between Failures =
   : 30 days / 2 Incidents  = 15 days
 </div>
 
-## MTTR: Mean Time To Recovery
+## MTTR: Mean Time to Recovery
 
 Something funny happens when you start releasing more frequently. You may end up with a higher count of issues in production, but resolving them will happen much faster. If each change is released separately using a continuous delivery model, then recovering gets easier -- often, all that is required is hitting a rollback button.
 
@@ -48,7 +48,7 @@ If you are measuring MTBF, your software may be getting much better, but your nu
 
 <div class="notice--big--primary">
 
-### Calculating Mean Time To Recovery
+### Calculating Mean Time to Recovery
 
 | Incident #1   |          |
 | ------------- | -------- |
@@ -68,7 +68,7 @@ Mean Time To Recovery =
 
 </div>
 
-## MTTRe: Mean Time To Resolve
+## MTTRe: Mean Time to Resolve
 
 <div class="notice--info">
 ℹ️  Acronyms Collision Alert
@@ -82,7 +82,7 @@ The never-happens-again part is hard to achieve but vital. If you are responding
 
 <div class="notice--big--primary">
 
-### Calculating Mean Time To Resolve
+### Calculating Mean Time to Resolve
 
 | Incident #3   |          |
 | -------------------- | -------- |
@@ -106,7 +106,7 @@ Mean Time To Resolve =
 
 </div>
 
-## MTTA: Mean Time To Acknowledge
+## MTTA: Mean Time to Acknowledge
 
 An essential part of good incident management is an on-call rotation. You need someone around to respond to incidents when they occur. Our previous metrics would be unable to differentiate between an incident that took 3 hours to recover from and one that was recoverable in 5 minutes but took two hours and 55 minutes to be acknowledged.  
 
@@ -114,7 +114,7 @@ MTTA highlights this difference. It is a metric for measuring the responsiveness
 
 <div class="notice--big--primary">
 
-### ️Calculating Mean Time To Acknowledge
+### ️Calculating Mean Time to Acknowledge
 
 | Incident #5   |          |
 | -------------------- | -------- |

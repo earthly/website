@@ -63,7 +63,7 @@ There was a time before modern source control when creating a release branch was
 > [Jim Blandy](https://corecursive.com/software-that-doesnt-suck-with-jim-blandy/) creator of Subversion
 </div>
 
-## Hot Fixes and The Multiverse
+## Hot Fixes and the Multiverse
 
 This is all working great. Ashley starts scaling the development team, and they start shipping more features. Unfortunately, while each monthly release now contains more cool new features, more regressions and bugs start slipping into the releases as well.
 
@@ -83,7 +83,7 @@ The cost of shipping bugs has now increased for AshelySoft. In the worse case, a
 
 Fortunately, a solution for this does exist: Continuing with our time travel/multiverse analogy, we need to travel back in time and stop the bug before our releases branches off the main timeline. Unfortunately, AshelySoft does not have access to literal time travel machines, but Ashley has a more straightforward idea: Catch the bugs before they are released.
 
-## GitFlow To The Rescue
+## GitFlow to the Rescue
 
 A popular branching method called [GitFlow](https://nvie.com/posts/a-successful-git-branching-model/) has excellent suggestions for achieving this: you create a `develop` branch. So now all new work goes into `develop,` and instead of 4 weeks of development in each release, you spend the last week stabilizing `develop`. You make sure `develop` has no bugs as best you can, and when it seems stable, you merge it into main and then cut a release branch off main.
 

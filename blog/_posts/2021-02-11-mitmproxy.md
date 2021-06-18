@@ -15,11 +15,11 @@ Have you ever wanted to see what kinds of requests a service or application on y
 
 This guide will walk you through installing and using mitmproxy to capture HTTPS requests. We will start with macOS traffic capture, then touch on Linux and Windows and then finally show how to capture docker daemon traffic and docker container traffic.  
 
-## What is mitmproxy?
+## What Is mitmproxy?
 
 mitmproxy is a command-line tool that acts as a HTTP and HTTPS proxy and records all the traffic. You can easily see what requests are being made and even replay them. It's great for diagnosing problems.
 
-## Installing it
+## Installing It
 
 On Mac, mitmproxy is easy to install with brew:
 
@@ -29,7 +29,7 @@ brew install mitmproxy
 
 On Windows and Linux, [download the binary release](https://docs.mitmproxy.org/stable/overview-installation/) and place it somewhere in your path.
 
-## #1 Start it up
+## #1 Start It Up
 
 To start up mitmproxy, type `mitmproxy`, and it will start up bound to port 8080.
 
@@ -69,7 +69,7 @@ We now have our connection proxied to go through our instance of mitmproxy. Howe
 
 Chrome is warning us that we might be subject to a man in the middle attack.
 
-### What is a man in the middle
+### What Is a Man in the Middle?
 
 A man in middle attack (MITM) is a security threat where an attacker can get between incoming and outgoing requests. You think you are talking to Twitter.com, but you are talking to the man in the middle, who is talking to Twitter for you. This MITM can view everything you send and even change what you receive.
 
@@ -132,7 +132,7 @@ QyVJfmCmjt2i=
 
 *Note: Once we instruct our machine to trust this certificate, someone with the private key who controlled your internet connection, like your ISP, could use it to MITM your connection. For this reason, don't share your MITM private key, or any private key, with others.*
 
-## Add the Cert On MacOS
+## Add the Cert on MacOS
 
 On macOS, the easiest way to add a new CA is to copy it to the desktop and then double-click it.
 
@@ -152,7 +152,7 @@ You will then be prompted for your password again, and then your certificate wil
 
 {% include imgf src="13.png" alt="mitmproxy certificate proxy always trusted" %}
 
-## Installing The Trusted Root Certificate On Windows
+## Installing the Trusted Root Certificate On Windows
 
 If you are on Windows, follow this guide [to add the MITM root certificate as a trusted root certificate authority](https://docs.microsoft.com/en-us/skype-sdk/sdn/articles/installing-the-trusted-root-certificate).
 
@@ -179,7 +179,7 @@ All HTTPS connections now have certificates signed by mitmproxy, which your mach
 
 {% include imgf src="15.png" alt="Google.com now shows a mitmproxy signed certificate" caption="Google.com now shows a mitmproxy signed certificate" %}
 
-## MITM The Docker Linux Container Host on macOS & Windows
+## MITM the Docker Linux Container Host on macOS & Windows
 
 {% include imgf src="16.png" alt="Diagram of docker runtime on macOS and Windows" caption="Docker containers run differently on macOS and Windows" %}
 
@@ -220,7 +220,7 @@ On Linux, we can add a proxy by editing the docker client config and then restar
 
 ```
 
-### Test it
+### Test It
 
 After restarting, we can test the proxying by performing a docker pull for a random image
 
@@ -461,7 +461,7 @@ The document has moved
 # Success
 ```
 
-## But wait, there's more
+## But Wait, There's More
 
 {% include imgf src="22.png" alt="man in the middle diagram" %}
 

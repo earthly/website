@@ -160,7 +160,7 @@ docker push <account-id>.dkr.ecr.<account-region>.amazonaws.com/<repository-name
 
 And just like that, you have pushed our first image to a repository on Elastic Container Registry. In the next section, you'll see how you can use these images for local or remote deployments.
 
-### Pulling an Image from ECR
+### Pulling a Image From ECR
 
 Whether you want to pull an image from a public ECR repository or your company has private images stored in ECR, pulling works in the same way it does in any container registry. After you've authenticated (using the same steps above), you can use [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/):
 
@@ -206,7 +206,7 @@ spec: template:
       restartPolicy: Never
 ```
 
-When deployed, it will create a job with the name `eks-iam-test-s3` using the `123456789012.dkr.ecr.us-west-2.amazonaws.com/aws-nodejs-sample:v1` image. To see the complete step-by-step process for deploying this job to EKS, see [the AWS documentation here](https://docs.amazonaws.cn/en_us/AmazonECR/latest/userguide/ECR_on_EKS.html).
+When deployed, it will create a job with the name `eks-iam-test-s3` using the `123456789012.dkr.ecr.us-west-2.amazonaws.com/aws-nodejs-sample:v1` image. To see the complete step-by-step process for deploying this job to EKS, see [the AWS documentation](https://docs.amazonaws.cn/en_us/AmazonECR/latest/userguide/ECR_on_EKS.html).
 
 ##### ECS Task Definition
 
@@ -228,7 +228,7 @@ ECR images can also be used in ECS task definition files to define your containe
 }
 ```
 
-This definition will deploy a container named `sample-app` using image `123456789012.dkr.ecr.us-west-2.amazonaws.com/aws-nodejs-sample:v1`. More detailed steps are [available in the ECS documentation here](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/create-task-definition.html).
+This definition will deploy a container named `sample-app` using image `123456789012.dkr.ecr.us-west-2.amazonaws.com/aws-nodejs-sample:v1`. More detailed steps are [available in the ECS documentation](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/create-task-definition.html).
 
 ## Conclusion
 

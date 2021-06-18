@@ -35,7 +35,7 @@ Here's a sample of how the final application will work:
 
 ![The Crowdfunding App]({{site.images}}{{page.slug}}/q0L1xth.gif)
 
-## Pre-build Setup
+## Pre-Build Setup
 
 For this tutorial, make sure you have a good working Elixir environment. The easiest way to do this is to follow the [official Elixir instructions](https://elixir-lang.org/install.html), which will give you a couple of options for:
 
@@ -228,7 +228,7 @@ Now the app generated has the default Phoenix styling and setup, but let's add a
 npm install
 ```
 
-3. Copy [the webpack and Tailwind configuration from here](https://gist.github.com/amacgregor/1369927cb4555803fa359c5ad9104fa9) into your assets directory:
+3. Copy [the webpack and Tailwind configuration from this gist](https://gist.github.com/amacgregor/1369927cb4555803fa359c5ad9104fa9) into your assets directory:
 
 ```
 assets/tailwind.config.js
@@ -434,7 +434,7 @@ It is in this life cycle where one of the more powerful and interesting features
 
 This is one of the key features that makes Phoenix and LiveView extremely well suited for real-time applications.
 
-## Broadcasting with PubSub
+## Broadcasting With PubSub
 
 So far, you've built an app that can leverage Phoenix LiveView to allow users to donate in real time, but so far, there's a caveat: updates are not shared across users or even tabs. Wouldn't it be nice to get the donations to show in real time for everyone who has the page open?
 

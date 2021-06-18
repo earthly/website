@@ -40,7 +40,7 @@ If a message is changed and a non-updated client can still understand and proces
 
 With Protocol buffers, if a sender is upgraded, the receiver can still understand messages if it is forward compatible. It can accept input crafted by later versions of protobuf. The sender is backward compatible because it's creating output that can be consumed by earlier versions. So long as you're careful about when and how you change and remove fields, your protobuf will be forward and backward compatible.
 
-### Getting Started with Buffers
+### Getting Started With Buffers
 
 The first step to making a Protocol Buffer is to define data structures in a `.proto` file. For each data structure you want to create, you'll make a `message` that contains a name and data type for each field it contains.
 

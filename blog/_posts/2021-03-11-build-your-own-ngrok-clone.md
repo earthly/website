@@ -57,7 +57,7 @@ Optionally, you may also want to install:
 
 With those in hand, it's time to get started!
 
-### Where will the instance live?
+### Where Will the Instance Live?
 
 Before creating anything in the cloud, you'll need to make sure that you have some information about the VPC and subnet the instance will be assigned to. This information can be found in the console, or on the command-line via `aws ec2 describe-subnets`. It will list all your subnets, and the VPCs they belong to.
 
@@ -222,7 +222,7 @@ Although you can leave the proxy up for as long as you like, you'll likely need 
 
 Note that the instance could take a couple minutes to finish terminating. You will not be able to remove the key or security group before the instance has been terminated.
 
-## Create using Earthly
+## Create Using Earthly
 
 If you don't want to deal with manual setup or teardown, we've created an `Earthfile` that should automate all of this for you. It can create a proxy just like this, from scratch, in under five minutes! To start up a proxy using `earthly`, execute this _single_ command.
 
@@ -270,6 +270,6 @@ It also requires non-trivial IAM permissions in AWS to setup and teardown. If yo
 
 Turns out it's pretty simple to get something basic up and running, just like `ngrok` does. But, if you find yourself relying on this kind of tooling every day, it may be better to pay for a service that can do it better.
 
-Thanks for following along with us! [Visit the example repository, with all scripts available here.](https://github.com/earthly/example-diy-ngrok)
+Thanks for following along with us! [Visit the example repository, with all scripts available on GitHub.](https://github.com/earthly/example-diy-ngrok)
 
 <!--kg-card-end: markdown-->

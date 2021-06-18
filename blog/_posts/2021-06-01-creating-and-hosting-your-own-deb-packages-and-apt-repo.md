@@ -32,7 +32,7 @@ This tutorial assumes you are using Ubuntu, and that the following packages are 
 sudo apt-get install -y gcc dpkg-dev gpg
 ```
 
-## Step 0: creating a simple hello world program
+## Step 0: Creating a Simple Hello World Program
 
 Before getting started with packaging, let's create a basic hello world program
 under `~/example/hello-world-program`. To do this, you can copy and paste the following commands
@@ -58,7 +58,7 @@ gcc -o hello-world hello.c
 There's no technical reason for picking C for this example -- the language doesn't matter.
 It's the binary we will be distributing in our deb package.
 
-## Step 1: Creating a deb package
+## Step 1: Creating a `deb` Package
 
 Debian, and Debian-based Linux distributions use `.deb` packages to package and distribute programs.
 To start we will create a directory in the form:
@@ -201,7 +201,7 @@ This concludes the first step of building a `.deb` package.
 If you have access to an existing apt repository, you could submit
 the deb to the repository maintainer, and call it a day.
 
-## Step 2: Creating an apt repository
+## Step 2: Creating an `apt` Repository
 
 In this step, we will show how to create your own apt repository which can be used to host one or more deb packages.
 
@@ -402,7 +402,7 @@ Install these packages without verification? [y/N]
 Fortunately in the next section we'll cover generating a PGP key, and signing our repository with it, which will
 allow users to verify the repository contents have not been tampered with.
 
-## Step 3: Signing your apt repository with GPG
+## Step 3: Signing your `apt` Repository With GPG
 
 In the previous step, we generated a `Release` file, which referenced one or more `Packages` files
 along with it's corresponding md5, sha1, and sha256 hashes. The `Packages` file in turns references a
@@ -427,7 +427,7 @@ OpenPGP is only a specification, that's where GNU Privacy Guard (GPG) fits in: G
 or a GPG key? I don't know, I've seen it called both, I'm going to call it a PGP because that's what is contained in the first line of
 the armoured text: `-----BEGIN PGP PUBLIC KEY BLOCK-----`.
 
-#### Creating a new public/private PGP key pair
+#### Creating a New Public/Private PGP Key Pair
 
 Let's start with generating a PGP key pair. We will use the `--batch` feature of `gpg` rather than using the interactive prompt.
 This has the benefit of generating keys in a repeatable way. First create a batch template by copying and pasting the following into your terminal:
@@ -630,7 +630,7 @@ don't use this one.
 
 Now that we've generated a PGP key pair, let's move on to signing files with them.
 
-#### Signing the Release file
+#### Signing the Release File
 
 Before we start signing with out keys, let's make sure that we can import the backup we made.
 To do that, we will create a new GPG keyring location:
@@ -755,7 +755,7 @@ BKaAtOSl2Jcb4eA=
 -----END PGP SIGNATURE-----
 ```
 
-#### Testing it out
+#### Testing It Out
 
 We need to tell apt which public pgp key to use when verifying the apt repository. We will add a new `signed-by` attribute
 to our apt config:
@@ -785,7 +785,7 @@ sudo apt-get install hello-world
 
 This time you shouldn't see any security warnings.
 
-#### Keeping your private key secure
+#### Keeping Your Private Key Secure
 
 If you followed this tutorial to the tee, and your web server is still running, what happens if we try running:
 
@@ -796,7 +796,7 @@ curl http://127.0.0.1:8000/pgp-key.private
 Oh no! we just leaked our private key. Now's the time to regenerate it but using a real name and email address other than `example@example.com`.
 Maybe you can store it in earthly's [secret store](https://docs.earthly.dev/docs/guides/cloud-secrets) instead?
 
-## Appendix A: A complete example using Earthly
+## Appendix A: A Complete Example using Earthly
 
 A complete example has been created under [github.com/earthly/example-apt-repo/Earthfile](https://github.com/earthly/example-apt-repo/blob/main/Earthfile).
 

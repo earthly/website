@@ -63,7 +63,7 @@ A better option is [Circle CI](/blog/continuous-integration#circleci) , a Travis
 
 Circle CI offers 400,000 build credits per month to any open-source public repository. &nbsp;This is their free plan and limits concurrency to 1 job at a time. They also have an easy GitHub integration and no application process. &nbsp;
 
-They also allow use of the [free plan](https://circleci.com/open-source/) with private repositories. This makes it a great choice if your project is not actually open-source. 
+They also allow use of the [free plan](https://circleci.com/open-source/) with private repositories. This makes it a great choice if your project is not actually open-source.
 
 ### Best Option: GitHub Actions
 
@@ -147,6 +147,6 @@ Another interesting option if you are feeling adventurous is using AWS lambda as
 
 ## Take-Aways
 
-You probably need to move your open-source project's builds off of Travis CI. If you host it on GitHub, GitHub Actions is probably a good choice. There is a risk that the GHA offer will disappear as well. &nbsp;You can protect yourself from that by defining your build in an open format that is easy to move around. &nbsp;All build problems can be solved by another layer of abstraction.
+You probablyneed to move your open-source project's builds off of Travis CI. If you host it on GitHub, GitHub Actions is probably a good choice. There is a risk that the GHA offer will disappear as well. &nbsp;You can protect yourself from that by defining your build in an open format that is easy to move around. &nbsp;All build problems can be solved by another layer of abstraction.
 
 If you are going that route, I think [Earthly](https://earthly.dev/) is a great option, but as I said, I am biased.

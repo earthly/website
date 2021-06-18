@@ -83,15 +83,15 @@ blog-lint:
   FROM agbell/blog-install
   COPY .vale.ini .
   COPY .github .github
-  COPY blog .
-  IF grep '[“”‘’]' ./_posts/*.md
+  COPY blog blog
+  RUN vale --output line --minAlertLevel error ./blog/_posts/2021*.md
+  IF grep '[“”‘’]' ./blog/_posts/*.md
     RUN echo "Fail: Remove curly quotes and use straight quotes instead" && false
   END  
-  IF grep 'imgur.com' ./_posts/*.md
+  IF grep 'imgur.com' ./blog/_posts/*.md
     RUN echo "Fail: external image link" && false
   END
-  RUN markdownlint "./_posts/*.md"
-  RUN vale --output line blog/_posts/*.md
+  RUN markdownlint "./blog/_posts/*.md"
 
 blog-lint-apply:
   LOCALLY
@@ -100,6 +100,7 @@ blog-lint-apply:
   # remove double spaces
   RUN sed -i -E "s/\.\s\s(\w)/. \1/g" ./blog/_posts/*.md
   RUN sed -i -E "s/\?\s\s(\w)/? \1/g" ./blog/_posts/*.md
+  RUN vale --output line --minAlertLevel error ./blog/_posts/2021*.md
   RUN cd blog && markdownlint --fix "./_posts/*.md"
 
 blog-build:

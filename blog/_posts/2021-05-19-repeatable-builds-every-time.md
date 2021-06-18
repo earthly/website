@@ -351,7 +351,7 @@ The nice thing about this approach is that Docker will use its cache if an artif
 
 Although I've heard this being used as a viable alternative, I've never seen this in action myself. With the wide range of Docker registries available out there, I don't think this option is necessarily better. If, however, your company for whatever reason cannot provide you with a Docker registry repository, just know that using S3 (or any other cloud blob store) is also a possibility.
 
-## Parallelism with Makefiles and Dockerfiles
+## Parallelism With Makefiles and Dockerfiles
 
 The bread and butter of improving build speed are caching and parallelism. We will look at each of these topics in the context of Makefiles and Dockerfiles.
 

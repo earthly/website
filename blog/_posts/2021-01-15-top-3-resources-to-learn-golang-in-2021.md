@@ -18,7 +18,7 @@ I know I am a bit late to the game here, with Go being over 10 years old, but th
 
 Why should you learn Go though? &nbsp;The big reason is that the cloud world seems to be running on Go. [Kubernetes](/blog/building-on-kubernetes-ingress), Docker, CockroachDB, Prometheus, etcd, Traefik, Istio, InfluxDB, and many more are written in Go.
 
-## Who This List is For
+## Who This List Is For
 
 > "Before you learn Go, learn some C" -- [Alex Couture-Beil](https://github.com/alexcb)
 

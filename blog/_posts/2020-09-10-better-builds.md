@@ -154,7 +154,7 @@ We now have our `deps`, `build`, `test` and `docker` targets in our Earthfile. A
 
 If a build fails in CI, we can run the same process locally and reproduce the failure. &nbsp;Reproducibility solved, in a familiar dockerfile-like syntax .
 
-## But wait there's more
+## But Wait There's More
 
 We haven't solved all the problems of CI, however. &nbsp;What about build parallelization? &nbsp;What about caching intermediate steps? &nbsp;How about multi-language builds with complicated interdependencies? &nbsp;Earthly has some solutions for those problems as well and I'll cover them in future tutorials. &nbsp;
 

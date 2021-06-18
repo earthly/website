@@ -172,7 +172,7 @@ After that, we can pull it and run it:
 built with BuildKit!
 ```
 
-## Tangent: Where are `FROM's from
+## Tangent: Where Are `FROM`'s From?
 
 If we have an image locally on our machine, can we use it in a `FROM` to build something based on it? Let's find out by altering our `FROM` to use a local image:
 
@@ -221,7 +221,7 @@ We can see a `404`, and this confirms buildkitd is expecting registry that it ca
 
 `buildkitd` is responsible for building the image, but `runc` does the actual execution of each step. `runc` executes each `RUN` command in your dockerfile in a separate process. runc requires Linux kernel 5.2  or later with support for cgroups, and is why buildkitd can't run natively on macOS or Windows.
 
-### What is `runc`?
+### What Is `runc`?
 
 > "Please note that runc is a low-level tool not designed with an end-user in mind. It is mostly employed by other higher-level container software. Therefore, unless there is some specific use case that prevents the use of tools like Docker or Podman, it is not recommended to use runc directly." - [runc readme](https://github.com/opencontainers/runc)
 
@@ -229,7 +229,7 @@ We can watch the execution of our build by using `pstree` and `watch`. Open two 
 
 ![Diagram of BuildKit running and pstree showing the process tree of buildkitd](/blog/assets/images/what-is-buildkit-and-what-can-i-do-with-it/3.png)
 
-## How to see Docker Processes on macOS and Windows
+## How to See Docker Processes on macOS and Windows
 
 On macOS and Windows, Docker processes run on a separate virtual machine (VM). If you're using the default and recommended Docker Desktop, this VM is the Linux container host.  
 
@@ -334,7 +334,7 @@ This filesystem output could be useful if we were trying to trim our image down.
 
 ![tree view of alpine image showing space used in each directory]({{site.images}}{{page.slug}}/4.png)
 
-## What is in `FROM scratch`
+## What Is in `FROM scratch`
 
 One thing we can do with our newfound powers is investigate the `scratch` keyword. The scratch keyword doesn't correspond to an actual image. We can't run it:
 
