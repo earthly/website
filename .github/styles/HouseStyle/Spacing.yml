@@ -1,0 +1,7 @@
+extends: existence
+message: "Don't Double Space: '%s' should have one space"
+level: error
+scope: paragraph
+nonword: true
+tokens:
+  - '[.?!]\s{2,}[A-Z]'

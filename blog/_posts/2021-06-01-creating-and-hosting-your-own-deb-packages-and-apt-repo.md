@@ -17,6 +17,7 @@ internal-links:
   - rsa
 ---
 
+<!-- vale HouseStyle.TLA = NO -->
 <!-- markdownlint-disable MD032 -->
 As an Ubuntu user, I find myself typing `apt install ...` frequently as a way to install software on my system.
 But what if I wanted to distribute my code to others via an apt repository? In this post I'll cover how to
@@ -807,3 +808,4 @@ earthly -P github.com/earthly/example-apt-repo+test
 ```
 
 Alternatively, you can clone the repo and run `+test` directly.
+<!-- vale HouseStyle.TLA = YES -->

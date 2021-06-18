@@ -15,7 +15,7 @@ We have partnered with [468 Capital](https://www.ft.com/content/b93d120e-5c04-45
 
 ## The General Sentiment Around Builds
 
-Since our initial product launch, we've talked to several engineers, build gurus and industry experts about traditional build tooling, and we discovered that nobody likes their build process. Builds are always a source of frustration one way or another. They're slow, brittle, too difficult to understand, inconsistent and difficult to iterate on.
+Since our initial product launch, we've talked to several engineers, build gurus, and industry experts about traditional build tooling, and we discovered that nobody likes their build process. Builds are always a source of frustration one way or another. They're slow, brittle, too difficult to understand, inconsistent, and difficult to iterate on.
 
 In contrast, we found out that the number one reason people love Earthly so much is its ability to reproduce failures. Reproducibility is key, because it allows people to iterate on builds quickly on their laptops without having to worry that they will break when they push to CI.
 
