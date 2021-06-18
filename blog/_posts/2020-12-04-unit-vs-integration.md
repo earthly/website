@@ -61,7 +61,7 @@ The closer integration tests are to real-world interactions the more likely they
 | PayPal | [Test credit card numbers](https://developer.paypal.com/docs/payflow/payflow-pro/payflow-pro-testing/) |
 | UPS | [Test api mode](https://www.ups.com/us/en/help-center/sri/developer-instruct.page) |
 
-## An E-commerce Example
+## An E-Commerce Example
 
 Imagine you are coding a simple e-commerce site, a simple miniature amazon.com. The details matter here so let's assume that you are going to use PostgreSQL as your datastore, PayPal for payments, UPS for shipping, and Amazon Simple Email Service for emailing invoices. &nbsp;
 

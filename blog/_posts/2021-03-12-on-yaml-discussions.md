@@ -28,7 +28,7 @@ Here are some highlights, lightly edited:
 >
 > **Reality check:** the DSL you embedded in your config file isn't as "human readable" as you think it is.
 
-## Dhall is Strange
+## Dhall Is Strange
 
 [AndyC](https://lobste.rs/s/1nxt6g/intercal_yaml_other_horrible#c_pc0dt6) thought that Dhall was not the right answer to the YAML problem:
 

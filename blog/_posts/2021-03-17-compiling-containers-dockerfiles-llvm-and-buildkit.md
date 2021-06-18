@@ -151,7 +151,7 @@ This similarity was not lost on the BuildKit creators. BuildKit has its own inte
 ![Send LLB Directly]({{site.images}}{{page.slug}}/Send-LLB.png)
 </div>
 
-## Programmatically Making An Image
+## Programmatically Making a Image
 
 Alright, enough background. Let's programmatically generate the LLB for an image and then build an image.  
 <div class="notice--info">

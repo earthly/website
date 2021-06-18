@@ -20,7 +20,7 @@ The decision of whether to use a monorepo or a polyrepo structure for your sourc
 
 In the following, I will attempt to draw objective, logical arguments for both approaches and also throw in a very popular third option: the hybrid.
 
-## Quick intro
+## Quick Intro
 
 The **monorepo layout** consists of a single code repository where multiple projects coexist in a hierarchical directory structure. For example:
 
@@ -88,7 +88,7 @@ Each repository is focused on specific functionality. The structure of the repos
 
 A third alternative that some people use is the **hybrid repository layout**, whereby some components coexist in one or more monorepos, while others are separated in their own isolated, smaller repositories. Deciding which component goes where may be influenced by team ownership, the language of the code, whether the component is open or closed source, and other factors.
 
-## Judging criteria
+## Judging Criteria
 
 The structure of your source code empowers or impedes various engineering processes. It is the lifeblood of your technical product and it needs to account for all the possible ways it can be used. To avoid boiling the ocean with this article, however, we will focus on the most popular use-cases and characteristics:
 
@@ -102,7 +102,7 @@ The structure of your source code empowers or impedes various engineering proces
 
 Further, we will make certain assumptions about the underlying technologies used: for example, we will assume that you are using GitHub for the repositories and the issue tracking. The considerations typically apply to most other setups that do not necessarily use these technologies. They work similarly.
 
-## Let's take a look
+## Let's Take a Look
 
 ### Imports
 
@@ -118,7 +118,7 @@ JavaScript tends to be spread across multiple repositories typically. To use a p
 
 **Verdict**: It depends heavily on the language. Even if the language requires a package repository in the middle when referencing code across source repositories, it still seems like polyrepos are more popular. When using a monorepo layout, it's often preferable to create distinct modules of each project and some communities have developed tools to help with that.
 
-### Contributions within the same project
+### Contributions Within the Same Project
 
 ![People talking around a table]({{site.images}}{{page.slug}}/cKQkMFzXHAI.jpg)\
 
@@ -130,7 +130,7 @@ When viewing changes to a single project, it is easier to visualize the history 
 
 **Verdict**: Managing contributions within the same project is easier with a polyrepo layout, as it is easier to track the history of changes per-repository rather than per-directory.
 
-### Contributions across projects
+### Contributions Across Projects
 
 ![Two people working at a whiteboard]({{site.images}}{{page.slug}}/26MJGnCM0Wc.jpg)\
 
@@ -186,11 +186,11 @@ A third possibility also exists, which I call the *hybrid layout*. Because monor
 
 **Verdict**: If you are a very large organization, systems like Bazel and others can offer a platform for very advanced build features in a monorepo setup - assuming that the entire engineering team adopts it. Small and medium organizations, or large organizations with fragmented builds generally benefit from polyrepo setups more, due to the existing build ecosystem available as open-source or commercial-off-the-shelf (COTS). Hybrid setups could also be used as a compromise, assuming the monorepo(s) are not too large to require special build considerations.
 
-#### A note on Earthly
+#### A Note on Earthly
 
 [Earthly](https://earthly.dev) supports cross-project builds for either monorepo and polyrepo layouts. It solves for some of the challenges outlined above. In fact, these challenges were the main [source of inspiration](https://earthly.dev/blog/introducing-earthly-build-automation-for-the-container-era/) when Earthly was started.
 
-### Code ownership
+### Code Ownership
 
 > "Any organization that designs a system (defined broadly) will produce a design whose structure is a copy of the organization's communication structure." — [Melvin E. Conway](https://en.wikipedia.org/wiki/Conway%27s_law)
 
@@ -206,7 +206,7 @@ If for any reason certain parts of your codebase are highly confidential, there 
 
 **Verdict**: It depends. If you would like to leave control of the engineering process enforcement to the individual teams, then polyrepo gives the most granular permission flexibility. If, on the other hand, you would like to enforce certain rules for everyone, a monorepo setup makes that the easiest.
 
-### Issue tracking
+### Issue Tracking
 
 ![Team sprint planning in front of a white board]({{site.images}}{{page.slug}}/Oalh2MojUuk.jpg)\
 
@@ -216,7 +216,7 @@ On the other hand, in a monorepo setup, all issues are mixed in a single pool. T
 
 **Verdict**: For medium and large organizations, monorepo issue tracking does not scale well. For small organizations, monorepo issue tracking helps the team coordinate better.
 
-### Open-source
+### Open-Source
 
 ![People's hands placed together]({{site.images}}{{page.slug}}/fkFNBCQ6kQA.jpg)\
 
@@ -238,7 +238,7 @@ Although the tooling to work with monorepos is more limited or sometimes more di
 
 Hybrid setups tend to come as a compromise between the two approaches. They can be useful when a few projects present a higher level of cohesion: usually when they need to evolve together quickly and they are written in the same language. Hybrid setups can also be the answer when some parts need to be open-sourced and thus cannot be part of the main monorepo.
 
-### My own take
+### My Own Take
 
 As a bit of personal opinion, I have always aimed to optimize for cross-team collaboration in my engineering teams. Developers don't naturally gravitate towards unknown code or unknown technologies, so anything you can do to encourage close collaboration helps bridge this gap. The result can be a really agile engineering organization.
 

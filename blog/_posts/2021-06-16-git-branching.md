@@ -56,14 +56,14 @@ Now her support people can ask customers what version they are on. If it's more 
 
 There was a time before modern source control when creating a release branch was an expensive process that had to be planned.  "Cutting a Release" was the name for this process, which involved locking down the source and starting the lengthy process of 'cutting a release branch off the trunk'. People still use the phrase today.
 
-> "Well, the performance was so bad that when they wanted to cut a branch, they would announce it ahead of time. They would schedule the branching because you didn't want anybody else committing while you were branching, because that would totally screw things up. Right? And I said, "Okay, Friday at 2:00 PM, we're going to cut the branch." Then all activity would stop, access to the server would be cut off."
+> "Well, the performance was so bad that when they wanted to cut a branch, they would announce it ahead of time. They would schedule the branching because you didn't want anybody else committing while you were branching, because that would totally screw things up. Right? And I said, "Okay, Friday at 2:00 pm., we're going to cut the branch." Then all activity would stop, access to the server would be cut off."
 >
 > And it would take 45 minutes to cut this branch. And then you'd say, "Okay, we've opened up the branch. Everybody can start working again."
 >
 > [Jim Blandy](https://corecursive.com/software-that-doesnt-suck-with-jim-blandy/) creator of Subversion
 </div>
 
-## Hot Fixes and The Multiverse
+## Hot Fixes and the Multiverse
 
 This is all working great. Ashley starts scaling the development team, and they start shipping more features. Unfortunately, while each monthly release now contains more cool new features, more regressions and bugs start slipping into the releases as well.
 
@@ -83,7 +83,7 @@ The cost of shipping bugs has now increased for AshelySoft. In the worse case, a
 
 Fortunately, a solution for this does exist: Continuing with our time travel/multiverse analogy, we need to travel back in time and stop the bug before our releases branches off the main timeline. Unfortunately, AshelySoft does not have access to literal time travel machines, but Ashley has a more straightforward idea: Catch the bugs before they are released.
 
-## GitFlow To The Rescue
+## GitFlow to the Rescue
 
 A popular branching method called [GitFlow](https://nvie.com/posts/a-successful-git-branching-model/) has excellent suggestions for achieving this: you create a `develop` branch. So now all new work goes into `develop,` and instead of 4 weeks of development in each release, you spend the last week stabilizing `develop`. You make sure `develop` has no bugs as best you can, and when it seems stable, you merge it into main and then cut a release branch off main.
 

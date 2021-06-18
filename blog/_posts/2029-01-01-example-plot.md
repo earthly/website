@@ -67,7 +67,7 @@ for im in images:
 
 ```
 
-## How to install pandoc-plot
+## How to Install `pandoc-plot`
 
 If you are using the docker container and jekyll, it should just work.  
 
@@ -78,7 +78,7 @@ Manual Mac setup:
 * install specific libraries: `pandoc-plot toolkits` to list
   * `pip3 install matplotlib` for matplotlib
 
-## How to run pandoc-plot
+## How to Run `pandoc-plot`
 
 The site will run pandoc-plot itself, but if you want to run it manually here is how:
 

@@ -13,7 +13,7 @@ internal-links:
 
 Like many others, 2020 encouraged me to find some new interests and hobbies to fill the time spent at home. At risk of sounding terribly boring, one of my newfound interests is that of city planning.
 
-## What is City Planning?
+## What Is City Planning?
 
 According to Wikipedia, city planning is ["...a technical and political process that is focused on the development and design of land use and the built environment..."](https://en.wikipedia.org/wiki/Urban_planning). It includes basically everything, from air, and water to transportation and accessibility. Seems like a fairly broad and ill-specified discipline!
 

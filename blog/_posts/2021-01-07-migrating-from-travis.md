@@ -39,13 +39,13 @@ However, many feel the real reason is that the acquirer is aiming for profitabil
 
 > My previous company was on Travis, and as soon as I saw that Travis was purchased by private equity, I knew the downward spiral had begun and I recommended we move to something else. Not surprised that this is happening a couple of years later...my understanding is that private equity will tend towards slowing/stopping development after acquisition to cut costs/headcount, and then squeeze the remaining value from what's left, so this is in-line with that playbook. &nbsp;- [rpdillion on hacker news](https://news.ycombinator.com/item?id=25340486)
 
-## Why it Matters
+## Why It Matters
 
 > The open source movement runs on the heroic efforts of not enough people doing too much work. They need help. - [CLIVE THOMPSON](https://www.wired.com/author/clive-thompson)
 
 Many open-source projects are still using Travis and open-source maintainers are notoriously overworked. &nbsp;Time spent migrating builds is time not spent on other things. &nbsp;Large well-maintained projects will likely quickly transition but for many smaller projects, an abrupt change in a service they depend on is a huge challenge.
 
-## Where To Move To
+## Where to Move To
 
 {% picture content-wide {{site.pimages}}{{page.slug}}/dartboard.png  --picture --img width="1200px" --alt {{ Pins on a Map }} %}
 
@@ -63,7 +63,7 @@ A better option is [Circle CI](/blog/continuous-integration#circleci) , a Travis
 
 Circle CI offers 400,000 build credits per month to any open-source public repository. &nbsp;This is their free plan and limits concurrency to 1 job at a time. They also have an easy GitHub integration and no application process. &nbsp;
 
-They also allow use of the free plan with private repositories. This makes it a great choice if your project is not actually open-source. More details [can be found here](https://circleci.com/open-source/).
+They also allow use of the [free plan](https://circleci.com/open-source/) with private repositories. This makes it a great choice if your project is not actually open-source.
 
 ### Best Option: GitHub Actions
 
@@ -75,7 +75,7 @@ GitHub Actions (GHA) is newer than either TravisCI or Circle CI, having launched
 
 GHA offers very generous build credits, 20 concurrent build jobs per project and no limit on build time used. &nbsp; If your pipeline can be run in parallel this concurrency can really be a great enabler. &nbsp;The only limitation I was able to find is that the build may last no longer than 6 hours in total.
 
-If your project is hosted on GitHub, then to me, GHA seems like the best bet right now. More details about the open-source plan can [be found here](https://docs.github.com/en/free-pro-team@latest/actions/reference/usage-limits-billing-and-administration).
+If your project is hosted on GitHub and is open source then the [GHA open source plan](https://docs.github.com/en/free-pro-team@latest/actions/reference/usage-limits-billing-and-administration) seems like the best bet right now.
 
 ### Summary of Open Source Plans
 
@@ -115,7 +115,7 @@ CMD make all:default
 
 ### Earthly
 
-This is the Earthly blog, and I am an Earthly contributor, but in my totally biased opinion, it deserves a mention as an neutral format for defining a build. The Elixir web framework [Phoenix is a great example to take a look at](https://github.com/phoenixframework/phoenix/blob/master/Earthfile).
+I am an Earthly contributor and this is the Earthly blog, but in my totally biased opinion, it deserves a mention as an neutral format for defining a build. The Elixir web framework [Phoenix is a great example to take a look at](https://github.com/phoenixframework/phoenix/blob/master/Earthfile).
 
 Earthly is like a Makefile where each step is containerized and dependencies are explicitly declared. &nbsp;
 
@@ -137,7 +137,7 @@ Example build steps for a <a href="https://github.com/earthly/earthly/blob/main/
 
 ### Easier Migration from Travis to GHA
 
-Migrating your build out of Travis might take a little work. &nbsp;If you aren't interested in a neutral format, [this GHA action](https://github.com/marketplace/actions/run-travis-yml) might make it easier. &nbsp;
+Migrating your build out of Travis will take a little work. &nbsp;If you aren't interested in a neutral format, [this GHA action](https://github.com/marketplace/actions/run-travis-yml) might make it easier. &nbsp;
 
 > This action setups environment variables specified in the `.travis.yml` file and then runs _one_ of the (potentially) many build jobs within the test build stage.
 
@@ -147,8 +147,6 @@ Another interesting option if you are feeling adventurous is using AWS lambda as
 
 ## Take-Aways
 
-You probably need to move your open-source project's builds off of Travis CI. If you host it on GitHub, GitHub Actions is probably a good choice.
-
-There is a risk that the GHA offer will disappear as well. &nbsp;You can protect yourself from that by defining your build in an open format that is easy to move around. &nbsp;All build problems can be solved by another layer of abstraction.
+You probablyneed to move your open-source project's builds off of Travis CI. If you host it on GitHub, GitHub Actions is probably a good choice. There is a risk that the GHA offer will disappear as well. &nbsp;You can protect yourself from that by defining your build in an open format that is easy to move around. &nbsp;All build problems can be solved by another layer of abstraction.
 
 If you are going that route, I think [Earthly](https://earthly.dev/) is a great option, but as I said, I am biased.

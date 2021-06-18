@@ -33,7 +33,7 @@ Following many feedback sessions, we have come up with a number of possible impr
 [![Roadmap (click to view)]({{site.images}}{{page.slug}}/roadmap.png)](https://github.com/earthly/earthly/projects/1)  
 _Roadmap (click to view)_
 
-## What Earthly needs from YOU
+## What Earthly Needs From You
 
 Feedback, feedback, feedback!
 

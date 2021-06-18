@@ -256,7 +256,7 @@ This logging strategy is similar to dedicated logging in that you have a contain
 
 This is best suited for a complex system where each entity customizes the logs, making it popular in microservices deployment. Maintaining a container per application level will require additional resources for management and setup, so it's complex to implement. Also, you may end up losing data when a container from the unit becomes unserviceable.
 
-### 6. Third-party Logging Services
+### 6. Third-Party Logging Services
 
 There are a lot of third-party logging services you can use according to your infrastructure and application needs, enabling you to aggregate, manage, and analyze logs and take proactive preventative actions as a result.
 
@@ -288,7 +288,7 @@ Your container deployment will be affected if you face network problems or laten
 
 The Docker syslog driver needs an established TCP or TLS connection to deliver logs. Note that when the connection is down or not reachable, you'll start losing the logs until the connection reestablished.
 
-### Multi-line Logs Not Supported
+### Multi-Line Logs Not Supported
   
 Generally, either of two patterns is followed for logging: single-line per log or multiple lines with extended information per log, like stack traces or exceptions. But with Docker logging, this is a moot point, because containers always broadcast logs to the same output: `stdout`.
 

@@ -68,7 +68,7 @@ Each label has two parts: a package name (`app/main`) and a target name (`app_bi
 
 ### Dependencies
 
-Target X is considered a dependency for target Y, if Y needs X at build or execution time. The dependency relation produces a [Directed Acyclic Graph](https://en.wikipedia.org/wiki/Directed_acyclic_graph) (DAG) called a *dependency graph*, which is used to classify these dependencies further. You can read more about [these types and their definitions here](https://docs.bazel.build/versions/4.0.0/build-ref.html#dependencies).
+Target X is considered a dependency for target Y, if Y needs X at build or execution time. The dependency relation produces a [Directed Acyclic Graph](https://en.wikipedia.org/wiki/Directed_acyclic_graph) (DAG) called a *dependency graph*, which is used to classify these dependencies further. You can read more about [these types and their definitions](https://docs.bazel.build/versions/4.0.0/build-ref.html#dependencies).
 
 ### Build Files
 

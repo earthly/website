@@ -12,7 +12,7 @@ We're excited to announce that Earthly is participating in Hacktoberfest this Oc
 
 Last year's fest saw more than 400,000 pull requests opened and this year should prove to be even larger.
 
-## What is it
+## What Is It?
 
 The hosting provider DigitalOcean is once again hosting the [Hacktoberfest](https://hacktoberfest.digitalocean.com/) to celebrate open source. The Hacktoberfest invites you to submit pull requests to open source projects. People who submit four or more pull requests, get a free t-shirt from DigitalOcean.
 
@@ -26,7 +26,7 @@ The first 40 participants who submit at least one pull request that is accepted 
 
 You can also qualify for the sticker by adding a working Earthfile file to another open-source project, including your own personal project. &nbsp;Check with the project maintainers first.
 
-## How do I claim my sticker?
+## How Do I Claim my Sticker?
 
 Send an email to adam@earthly.com, with your address and link to your merged PRs. We reserve the right to decide whether a PR is contributing value. &nbsp;
 
