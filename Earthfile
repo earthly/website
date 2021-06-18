@@ -82,9 +82,10 @@ blog-lint:
   #FROM +blog-install
   FROM agbell/blog-install
   COPY .vale.ini .
+  COPY blog/.markdownlintrc .
   COPY .github .github
   COPY blog blog
-  RUN vale --output line --minAlertLevel error ./blog/_posts/2021*.md
+  RUN vale --output line --minAlertLevel error ./blog/_posts/*.md
   IF grep '[“”‘’]' ./blog/_posts/*.md
     RUN echo "Fail: Remove curly quotes and use straight quotes instead" && false
   END  
@@ -100,7 +101,7 @@ blog-lint-apply:
   # remove double spaces
   RUN sed -i -E "s/\.\s\s(\w)/. \1/g" ./blog/_posts/*.md
   RUN sed -i -E "s/\?\s\s(\w)/? \1/g" ./blog/_posts/*.md
-  RUN vale --output line --minAlertLevel error ./blog/_posts/2020*.md
+  RUN vale --output line --minAlertLevel error ./blog/_posts/*.md
   RUN cd blog && markdownlint --fix "./_posts/*.md"
 
 blog-build:
