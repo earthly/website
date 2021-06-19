@@ -92,8 +92,8 @@ Back to fixing the issue now. Using `brew doctor` I was able to find out that Xc
 The Docker preview worked almost flawlessly for me from day 1. Making use of multi-platform images seems daunting at first, but really it's actually pretty simple.
 
 <!-- vale HouseStyle.Spelling = NO -->
+
 The Docker for Mac app comes packed with [QEMU](https://www.qemu.org/) out of the box - so Docker is able to run either arm64 and amd64 images. Most official images are now supported on arm64 too. If you're building an image, by default it'll use your native architecture to execute the build (arm64) and most things will magically just work. Your mileage may vary, however, if you are `curl`ing some binary that may need to switch from `X86_64` to `aarch64` in its URL, or if you're doing lower-level stuff. I also noticed that some alpine packages are also not available for ARM (eg `shellcheck`).
-<!-- vale HouseStyle.Spelling = YES -->
 
 To build an image for a different architecture, you can use `docker buildx build --platform=linux/amd64 .` instead of the usual `docker build .`. For more details on building multi-platform images see [Akihiro Suda's blog](https://medium.com/nttlabs/buildx-multiarch-2c6c2df00ca2).
 
@@ -139,9 +139,9 @@ Docker is currently slower, however, as mentioned above, due to the multi-core i
 
 ## Battery Life
 
-<!-- vale Vale.Repetition = NO -->
+<!-- vale HouseStyle.Repetition = NO -->
 Battery life on the M1 is really really really good - half a day of Zoom meetings + email only took 20% of my battery. I work from home a lot, so I don't use this much. But it's great to know it really lasts for a serious coding session if I needed it on the go.
-<!-- vale Vale.Repetition = YES -->
+<!-- vale HouseStyle.Repetition = YES -->
 
 ## Cost
 

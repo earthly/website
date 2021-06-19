@@ -1,9 +1,0 @@
-extends: existence
-message: "Possible future tense."
-ignorecase: true
-level: warning
-tokens:
-  - '[\w][ll]'
-  - we are going
-  - would-be
-  - would be

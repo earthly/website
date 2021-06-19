@@ -53,7 +53,7 @@ If you maintain an open-source project that uses TravisCI and are hoping to get 
 
 ### Option: Run Your Own Builds
 
-You can find some [scattered](https://medium.com/google-developers/how-to-run-travisci-locally-on-docker-822fc6b2db2e) [instructions](https://stackoverflow.com/a/35972902) [online](https://stackoverflow.com/a/35972902) for running Travis builds yourself. There are mixed reports on the stability and feasibility of this approach, but if your adventurous you could try to setup your own Travis CI build executor on your own hardware.
+You can find some [scattered](https://medium.com/google-developers/how-to-run-travisci-locally-on-docker-822fc6b2db2e) [instructions](https://stackoverflow.com/a/35972902) [online](https://stackoverflow.com/a/35972902) for running Travis builds yourself. There are mixed reports on the stability and feasibility of this approach, but if your adventurous, you could try to set up your own Travis CI build executor on your own hardware.
 
 A better option, if you want to run the builds on your own hardware is to look at something like [Buildkite](https://buildkite.com/) or [GitLab CI](https://about.gitlab.com/stages-devops-lifecycle/continuous-integration/https://about.gitlab.com/stages-devops-lifecycle/continuous-integration/).
 
