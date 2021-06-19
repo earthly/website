@@ -11,19 +11,24 @@ internal-links:
 ---
 
 This tutorial is a follow up to [creating and hosting your own deb and apt repo](/blog/creating-and-hosting-your-own-deb-and-apt-repo), but
-is written for creating rpm pacakges for redhat-based linux distros such as Fedora, CentOS, and Rocky Linux.
+is written for creating rpm packages for redhat-based Linux distributions such as Fedora, CentOS, and Rocky Linux.
 
 ## Prerequisites
 
-This tutorial assumes you are using Centos 8, and that the following packages are installed:
+This tutorial assumes you are using CentOS 8, and that the following packages are installed:
 
 ```bash
 sudo yum install -y createrepo rpm-build rpm-sign wget gcc python3 yum-utils
 ```
 
 <div class="notice--info">
-If you don't have a centos machine, you can still follow along using docker, just run `docker run -ti --rm centos:8 /bin/bash` to
-create a temporary centos environment to follow along with.
+If you don't have a CentOS machine, you can still follow along using docker, just run
+
+```bash
+docker run -ti --rm centos:8 /bin/bash
+```
+
+to create a temporary CentOS environment to follow along with.
 </div>
 
 ## Step 0: Creating a Simple Hello World Program
@@ -35,12 +40,17 @@ To quickly create a hello world binary using C, run:
 
 ```bash
 mkdir -p ~/example/hello-world-program
-echo -e '#include <stdio.h>\nint main() { printf("Hello World!\\n"); return 0; }' | gcc -o ~/example/hello-world-program/hello-world -x c -
+echo '#include <stdio.h>
+int main() {
+    printf("Hello World!\\n");
+    return 0;
+}' | gcc -o ~/example/hello-world-program/hello-world -x c -
 ```
 
-<div class="notice--info">
-this tutorial will only cover distributing binaries in rpm packages and will not cover creating source-based rpms.
-</div>
+This tutorial will only cover distributing binaries in rpm packages and will not cover creating source-based `rpm`s.
+There's other [tutorials](https://www.thegeekstuff.com/2015/02/rpm-build-package-example/) that cover creating spec files --
+the main goal of this tutorial is to document how to package a pre-compiled binary, and show how to generate your own self-hosted
+yum repository.
 
 ## Step 1: Creating a `rpm` Package
 
@@ -82,6 +92,7 @@ cp ~/example/hello-world-program/hello-world %{buildroot}/usr/bin/hello-world
 - initial example
 " > hello-world.spec
 ```
+
 Next, we will use `rpmbuild` to produce the `rpm`:
 
 ```bash
@@ -127,9 +138,10 @@ lrwxrwxrwx    1 root    root                       31 Jun 18 21:21 /usr/lib/.bui
 ```
 
 <div class="notice--info">
+
 You can also inspect the content via `less /root/rpmbuild/RPMS/x86_64/hello-world-1.0.0-1.x86_64.rpm`.
-Under the hood `less` will invoke `/usr/bin/lesspipe.sh`. You can perform a global regular expression print
-against script to find the same command being used:
+Under the hood `less` will invoke `/usr/bin/lesspipe.sh`. You can perform a global regular expression print (grep)
+against the script to find the same command being used:
 
 ```bash
 grep rpm /usr/bin/lesspipe.sh
@@ -140,6 +152,7 @@ This should print the line where the same `rpm -qpivl ...` command is being invo
 ```
 *.rpm) rpm -qpivl --changelog --nomanifest -- "$1"; exit $? ;;
 ```
+
 </div>
 
 Next, we can install our `rpm` via:
@@ -218,8 +231,10 @@ rpm --addsign ~/example/packages/*.rpm
 ```
 
 <div class="notice--info">
+
 If you forgot to create `/root/.rpmmacros`, or forgot to update the key ID, you might see an error such as
 `You must set "%_gpg_name" in your macro file` or `gpg: signing failed: No secret key`.
+
 </div>
 
 Once all the packages are signed, we will use `createrepo` to create the repository:
@@ -237,7 +252,7 @@ gpg --detach-sign --armor repodata/repomd.xml
 
 ## Step 3: Testing the Repository
 
-We are going to use python to temporarily create a webserver to serve the contents of our repository:
+We are going to use python to temporarily create a web server to serve the contents of our repository:
 
 ```bash
 cd ~/example
