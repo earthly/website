@@ -11,19 +11,17 @@ internal-links:
 ### Writing Article Checklist
 
 * [x] Write Outline
-* [ ] Write Draft
+* [x] Write Draft
 * [ ] Fix Grammarly Errors
-* [ ] Read Outloud
+* [ ] Read Out loud
 * [ ] Write 5 or more titles and pick the best on
-* [ ] Create header image in canva
+* [ ] Create header image
 * [ ] Optional: Find ways to break up content with quotes or images
 * [ ] Verify look of article locally
 * [ ] Run mark down linter (`earthly +blog-lint-apply`)
-* [ ] Add keywords for internal links to frontmatter
+* [ ] Add keywords for internal links to front matter
 * [ ] Run `earthly --build-arg NAME=2020-09-10-better-builds.md +link-opportunity` and find 1-5 places to incorporate links to other articles
 * [ ] Raise PR
-
-## Outline
 
 ## Intro
 
@@ -31,21 +29,21 @@ Many linting, code formatting and static analysis tools exist for code. You can 
 
 Many tools exist for checking text files. This list is a place to start to find the best tool for your markdown and prose linting needs. The movement behind testing and linting prose is known as [Docs as Code](https://www.writethedocs.org/guide/docs-as-code/).
 
-## Criteria 
+## Criteria
 
 For Ease of skimming I'll rate each tool based on this criteria:
 
- * Formatting: The ability to find errors in the formatting of text files (markdown, txt, asciidoc).
- * Spelling: The ability to find spelling mistakes.
- * Grammar: The ability to detect grammar errors.
- * Clarity: The ability to suggest changes that can improve writing clarity.
+* Formatting: The ability to find errors in the formatting of text files (markdown, txt, asciidoc).
+* Spelling: The ability to find spelling mistakes.
+* Grammar: The ability to detect grammar errors.
+* Clarity: The ability to suggest changes that can improve writing clarity.
 
 Additionally I will rate tools based on their feature set:
 
- * Remediation: The ability to fix errors without manual intervention.
- * Customization: How well the tool can be customized to fit your use case.  If you can't exclude a rule or disable a warning CI usage may be hard. The strongest tool support custom rules and documentation style guides.
- * Integrated Developer Environment (IDE) support: Ability to use in common code editors
- *  Continuous Integration (CI) / Command Line Interface (CLI) Usage: Ability to be used at the command line and in a continuous integration environment.
+* Remediation: The ability to fix errors without manual intervention.
+* Customization: How well the tool can be customized to fit your use case. If you can't exclude a rule or disable a warning CI usage may be hard. The strongest tool support custom rules and documentation style guides.
+* Integrated Developer Environment (IDE) support: Ability to use in common code editors
+* Continuous Integration (CI) / Command Line Interface (CLI) Usage: Ability to be used at the command line and in a continuous integration environment.
 
 ## [Markdown Lint](https://github.com/DavidAnson/markdownlint)
 
@@ -59,14 +57,14 @@ markdownlint --fix "./_posts/*.md"
 
 It doesn't handle spelling or grammar or sentence structure but for dealing with markdown structure it can't be beat.
 
-## Coverage
+### Coverage
 
 * Formatting: 5
 * Spelling: 0
 * Grammar: 0
 * Clarity: 0
 
-## Features
+### Features
 
 * Ease of Use: 5
 * Remediation: 5
@@ -90,14 +88,14 @@ mdspell -n -a --en-us  ./blog/_posts/2021-02-11-mitmproxy.md
 
 The downsides of `mdspell` are that the dictionary will likely trigger on lots of words that are quite common but not found it its default dictionary and it make take some time to build up a list of exceptions. As a shortcut you might be able to find some larger `.spelling` files on GitHub.
 
-## Coverage
+### Coverage
 
 * Formatting: 0
 * Spelling: 5
 * Grammar: 0
 * Clarity: 0
 
-## Features
+### Features
 
 * Ease of Use: 5
 * Remediation: 5
@@ -105,18 +103,18 @@ The downsides of `mdspell` are that the dictionary will likely trigger on lots o
 * IDE support: 5
 * CI / CLI Support: 5
 
-## [alex](https://alexjs.com/) 
+## [alex](https://alexjs.com/)
 
 `alex` does one thing: catches insensitive, and inconsiderate writing. It supports markdown files, and works via command-line and has various IDE integrations. The specificity of `alex` is its strength. For my rubric I am scoring it under clarity as catching insensitive writing certainly improves clarity.
 
-## Coverage
+### Coverage
 
 * Formatting: 0
 * Spelling: 0
 * Grammar: 0
 * Clarity: 3
 
-## Features
+### Features
 
 * Ease of Use: 5
 * Remediation: 5
@@ -126,7 +124,7 @@ The downsides of `mdspell` are that the dictionary will likely trigger on lots o
 
 ## [`write-good`](https://github.com/btford/write-good)
 
-`write-good` is designed for "developers who can't write good and wanna learn to do other stuff good too." The tools focus is on improving the clarity of writing. 
+`write-good` is designed for "developers who can't write good and wanna learn to do other stuff good too." The tools focus is on improving the clarity of writing.
 
 Install:
 
@@ -149,14 +147,14 @@ e-ca-certificates` is an excellent proof of concept, but if you want to run a do
 
 `write-good` has many interesting suggestions. It will highlight passive voice, cliches, weak adverbs and much more. Unfortunately, it's not easy to exclude items or configure rules. It might be useful as a writing suggestion tool but this lack of configurability means it can't be used in a continuous integration process.
 
-## Coverage
+### Coverage
 
 * Formatting: 0
 * Spelling: 0
 * Grammar: 0
 * Clarity: 2
 
-## Features
+### Features
 
 * Ease of Use: 5
 * Remediation: 0
@@ -164,9 +162,9 @@ e-ca-certificates` is an excellent proof of concept, but if you want to run a do
 * IDE support: 2
 * CI / CLI Support: 2
 
-## [`textlint`](https://textlint.github.io/)
+## [textlint](https://textlint.github.io/)
 
-`textlint` is a pluggable linting tool that supports markdown, plaintext, and HTML. The plug-in architecture means that it can offer the features of other tools by wrapping them. It has a [plug-in](https://github.com/textlint/textlint/wiki/Collection-of-textlint-rule#rules-english) for `alex`, `write-good`, and for many spell checkers and grammar checkers. The downside of this flexibility is that it is a bit harder to set up and configure: each plug-in must be install separately.
+`textlint` is a pluggable linting tool that supports markdown, plain text, and HTML. The plug-in architecture means that it can offer the features of other tools by wrapping them. It has a [plug-in](https://github.com/textlint/textlint/wiki/Collection-of-textlint-rule#rules-english) for `alex`, `write-good`, and for many spell checkers and grammar checkers. The downside of this flexibility is that it is a bit harder to set up and configure: each plug-in must be install separately.
 
 Install
 
@@ -186,14 +184,14 @@ textlint "docs/**"
 
 `textlint` is configurable via an `textlintrc` and has inline exclude rules ( `<!-- textlint-disable ruleA,ruleB -->` ) -- which may make it a interesting way to use `write-good` or other tools that lack this functionality.
 
-## Coverage
+### Coverage
 
 * Formatting: 0
 * Spelling: 3
 * Grammar: 3
 * Clarity: 4
 
-## Features
+### Features
 
 * Ease of Use: 1
 * Remediation: 3
@@ -201,11 +199,11 @@ textlint "docs/**"
 * IDE support: 5
 * CI / CLI Support: 2
 
-## [`proselint`](http://proselint.com/)
+## [proselint](http://proselint.com/)
 
 `proselint` goes deep on writing clarity improvements in the same way the `alex` goes deep on inclusive writing:
 
-> `proselint` places the world’s greatest writers and editors by your side, where they whisper suggestions on how to improve your prose. You’ll be guided by advice inspired by Bryan Garner, David Foster Wallace, Chuck Palahniuk, Steve Pinker, Mary Norris, Mark Twain, Elmore Leonard, George Orwell, Matthew Butterick, William Strunk, E. B. White, Philip Corbett, Ernest Gowers, and the editorial staff of the world’s finest literary magazines and newspapers, among others. Our goal is to aggregate knowledge about best practices in writing and to make that knowledge immediately accessible to all authors in the form of a linter for prose.
+> `proselint` places the world's greatest writers and editors by your side, where they whisper suggestions on how to improve your prose. You'll be guided by advice inspired by Bryan Garner, David Foster Wallace, Chuck Palahniuk, Steve Pinker, Mary Norris, Mark Twain, Elmore Leonard, George Orwell, Matthew Butterick, William Strunk, E. B. White, Philip Corbett, Ernest Gowers, and the editorial staff of the world's finest literary magazines and newspapers, among others. Our goal is to aggregate knowledge about best practices in writing and to make that knowledge immediately accessible to all authors in the form of a linter for prose.
 
 Some of the writing advice is really good:
 
@@ -238,14 +236,14 @@ echo "thought leaders" | proselint
 
 Learning from all the best writers is a very lofty goal and `proselint` has several interesting sources of rules but they fall sort of the goal of collecting all the worlds writing advice in a parsable form. Ignoring and excluding rules are also not fully supported.
 
-## Coverage
+### Coverage
 
 * Formatting: 0
 * Spelling: 0
 * Grammar: 0
 * Clarity: 5
 
-## Features
+### Features
 
 * Ease of Use: 5
 * Remediation: 0
@@ -255,7 +253,7 @@ Learning from all the best writers is a very lofty goal and `proselint` has seve
 
 ## [Vale](https://github.com/errata-ai/vale)
 
-Vale, created by Joseph Kato, supports spelling, grammar, and clarity checks. It is extendable using a YAML rule format and is designed around the idea of a style guide, that is a specific house style that you put together and vale enforces. It has an implementation of most `proselint` as a style guide, most of `write-good` as well as an implementation of the [Microsoft Writing Style Guide](https://docs.microsoft.com/en-us/style-guide/welcome/) and the google 
+Vale, created by Joseph Kato, supports spelling, grammar, and clarity checks. It is extendable using a YAML rule format and is designed around the idea of a style guide, that is a specific house style that you put together and vale enforces. It has an implementation of most `proselint` as a style guide, most of `write-good` as well as an implementation of the [Microsoft Writing Style Guide](https://docs.microsoft.com/en-us/style-guide/welcome/) and the google
 [developer documentation style guide](https://developers.google.com/style/). Vale is targeted directly at the Docs as Code community and targets documentation teams who take the writing style of documents very serious.
 
 Vale is fast and configurable but not necessarily easy to get started with. Initially, I couldn't get it to find any problems until I realized that it needs a config file to run:
@@ -266,22 +264,23 @@ MinAlertLevel = suggestion
 [*]
 BasedOnStyles = Vale
 ```
+
 <figcaption>.vale.ini</figcaption>
 
 Additionally to use it effectively you will need to copy an existing style-guide into your repository and customize it to your needs. Separating the styles completely from the tool is Vale's biggest strength. It's also could be a weakness as the rules you build up are specific to your repository . It is easy to write and customize rules but hard to share them back as they need to live in your source code repository.
 
- Besides the official Vale style guides [Buildkite](https://buildkite.com/blog/linting-the-buildkite-docs), [Linode](https://github.com/linode/docs/tree/develop/ci/vale/styles), and [Write The Docs](https://github.com/testthedocs/vale-styles) have rules online that you can copy into your repo or use as inspiration for your own rules. 
+ Besides the official Vale style guides [Buildkite](https://buildkite.com/blog/linting-the-buildkite-docs), [Linode](https://github.com/linode/docs/tree/develop/ci/vale/styles), and [Write The Docs](https://github.com/testthedocs/vale-styles) have rules online that you can copy into your repo or use as inspiration for your own rules.
 
 If you are taking linting documentation seriously and can take the time to set up a style that works for you then Vale is the way to go. The rules of most other tools can be implemented inside value and many already are.
 
-## Coverage
+### Coverage
 
 * Formatting: 2
 * Spelling: 5
 * Grammar: 5
 * Clarity: 5
 
-## Features
+### Features
 
 * Ease of Use: 1
 * Remediation: 0
@@ -289,10 +288,11 @@ If you are taking linting documentation seriously and can take the time to set u
 * IDE support: 5
 * CI / CLI Support: 5
 
-## Styles
- * [Official Styles](https://github.com/topics/vale-linter-style)\
- * [Write The Docs Styles](https://github.com/search?q=topic%3Avale-linter-style+org%3Atestthedocs+fork%3Atrue)
+### Vale Styles
+
+* [Official Styles](https://github.com/topics/vale-linter-style)\
+* [Write The Docs Styles](https://github.com/search?q=topic%3Avale-linter-style+org%3Atestthedocs+fork%3Atrue)
 
 ## Summary
 
-Whether its a simple readme, or complex technical documentation, a myriad of tools exist for testing and linting english prose. Vale, with its flexible rules, is the clear leader. Combining Vale with `markdownlint` and running both in a continuous integration build should ensure that documents are spelling correctly, grammatically correct and written in a properly formatted and exclusive way. 
+Whether its a simple readme, or complex technical documentation, a myriad of tools exist for testing and linting english prose. Vale, with its flexible rules, is the clear leader. Combining Vale with `markdownlint` and running both in a continuous integration build should ensure that documents are spelling correctly, grammatically correct and written in a properly formatted and exclusive way.
