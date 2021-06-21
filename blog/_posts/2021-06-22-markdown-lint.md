@@ -8,54 +8,44 @@ internal-links:
  - just an example
 ---
 
-### Writing Article Checklist
+Many linting, code formatting, and static analysis tools exist for code. You can use `eslint`, `gofmt`, or many other static analysis tools, combined with a great continuous integration process, and ensure that your code stays in good shape. But what about markdown files and documentation? How do you ensure you aren't committing spelling and grammar mistakes? How do you ensure your files are valid markdown and that the language you are using is clear and correct? You can do this and more with a documentation linter.
 
-* [x] Write Outline
-* [x] Write Draft
-* [ ] Fix Grammarly Errors
-* [ ] Read Out loud
-* [ ] Write 5 or more titles and pick the best on
-* [ ] Create header image
-* [ ] Optional: Find ways to break up content with quotes or images
-* [ ] Verify look of article locally
-* [ ] Run mark down linter (`earthly +blog-lint-apply`)
-* [ ] Add keywords for internal links to front matter
-* [ ] Run `earthly --build-arg NAME=2020-09-10-better-builds.md +link-opportunity` and find 1-5 places to incorporate links to other articles
-* [ ] Raise PR
+Many tools exist for finding problems in text files. You can use this list as a starting point for finding the markdown and prose linting tools that best fit your needs.
 
-## Intro
+<div class="notice--success notice--big">
+**Docs as Code**
 
-Many linting, code formatting and static analysis tools exist for code. You can use `eslint`, `gofmt`, or many other static analysis tools to ensure your code stays in good shape. Combine these tools with a great continuous integration process and you can ensure that your code stays in good shape. But what about markdown files and documentation? How do you ensure you aren't committing spelling and grammar mistakes? How do you ensure your files are valid markdown and that the language you are using is clear and correct? You can do this and more with a documentation linter.
+The movement behind testing and linting prose is known as [Docs as Code](https://www.writethedocs.org/guide/docs-as-code/), and the [Writing The Docs](https://www.writethedocs.org/) website is a great place to learn more.
 
-Many tools exist for checking text files. This list is a place to start to find the best tool for your markdown and prose linting needs. The movement behind testing and linting prose is known as [Docs as Code](https://www.writethedocs.org/guide/docs-as-code/).
+</div>
 
 ## Criteria
 
-For Ease of skimming I'll rate each tool based on this criteria:
+For Ease of skimming, I'll rate each tool based on this criteria:
 
 * Formatting: The ability to find errors in the formatting of text files (markdown, txt, asciidoc).
 * Spelling: The ability to find spelling mistakes.
 * Grammar: The ability to detect grammar errors.
 * Clarity: The ability to suggest changes that can improve writing clarity.
 
-Additionally I will rate tools based on their feature set:
+Additionally, I will rate tools based on their feature set:
 
 * Remediation: The ability to fix errors without manual intervention.
-* Customization: How well the tool can be customized to fit your use case. If you can't exclude a rule or disable a warning CI usage may be hard. The strongest tool support custom rules and documentation style guides.
+* Customization: How well the tool can be customized to fit your use case. If you can't exclude a rule or disable a warning, CI usage may be challenging. The most robust tools support custom rules and documentation style guides.
 * Integrated Developer Environment (IDE) support: Ability to use in common code editors
 * Continuous Integration (CI) / Command Line Interface (CLI) Usage: Ability to be used at the command line and in a continuous integration environment.
 
 ## [Markdown Lint](https://github.com/DavidAnson/markdownlint)
 
-`markdownlint` is a node.js markdown linter which is easy to install and easy to customize. It is based on an earlier Ruby tool also called [markdownlint](https://github.com/markdownlint/markdownlint). Both are great, but the Node.js tool is easy to install and easy to customize.  
+`markdownlint` is a node.js markdown linter that is easy to install and easy to customize. It is based on an earlier Ruby tool, also called [markdownlint](https://github.com/markdownlint/markdownlint). Both are great, but the Node.js tool is easy to install and easy to customize.  
 
-You can disable specific rules inline ( `<!-- markdownlint-disable-file MD001 -->` ), and also set up a per project config in an `.markdownlintrc` file. It also supports writing custom rules in JavaScript and is able to remediate many problems itself with the `fix` option:
+You can disable specific rules inline ( `<!-- markdownlint-disable-file MD001 -->` ) and set up a per-project config in a `.markdownlintrc` file. It also supports writing custom rules in JavaScript and can remediate many problems itself with the `fix` option:
 
 ```
 markdownlint --fix "./_posts/*.md"
 ```
 
-It doesn't handle spelling or grammar or sentence structure but for dealing with markdown structure it can't be beat.
+It doesn't handle spelling, grammar, or sentence structure, but it can't be beaten for dealing with markdown structure.
 
 ### Coverage
 
@@ -74,19 +64,19 @@ It doesn't handle spelling or grammar or sentence structure but for dealing with
 
 ## [mdspell](https://www.npmjs.com/package/markdown-spellcheck)
 
-`mdspell` is a tool specifically for spelling checking markdown documents. It can be installed like this:
+`mdspell` is a tool specifically for spelling checking markdown documents. Install it like this:
 
 ```
 npm i markdown-spellcheck -g    
 ```
 
-It can be run on markdown files in an interactive mode that builds up a custom dictionary of exceptions that can then be used in CI.
+You can run it on markdown files in an interactive mode that builds up a custom dictionary of exceptions. You can then use that list later in a continuous integration process.
 
 ```
 mdspell -n -a --en-us  ./blog/_posts/2021-02-11-mitmproxy.md
 ```
 
-The downsides of `mdspell` are that the dictionary will likely trigger on lots of words that are quite common but not found it its default dictionary and it make take some time to build up a list of exceptions. As a shortcut you might be able to find some larger `.spelling` files on GitHub.
+The downsides of `mdspell` are that the dictionary will likely complain about lots of words that are quite common. It may take some time to build up a list of exceptions. As a shortcut, you might be able to find some more extensive `.spelling` files on GitHub.
 
 ### Coverage
 
@@ -105,7 +95,7 @@ The downsides of `mdspell` are that the dictionary will likely trigger on lots o
 
 ## [alex](https://alexjs.com/)
 
-`alex` does one thing: catches insensitive, and inconsiderate writing. It supports markdown files, and works via command-line and has various IDE integrations. The specificity of `alex` is its strength. For my rubric I am scoring it under clarity as catching insensitive writing certainly improves clarity.
+`alex` does one thing: catches insensitive and inconsiderate writing. It supports markdown files, and works via command-line, and has various IDE integrations. The specificity of `alex` is its strength. For my rubric, I am scoring it under clarity as catching insensitive writing certainly improves clarity.
 
 ### Coverage
 
@@ -124,7 +114,7 @@ The downsides of `mdspell` are that the dictionary will likely trigger on lots o
 
 ## [`write-good`](https://github.com/btford/write-good)
 
-`write-good` is designed for "developers who can't write good and wanna learn to do other stuff good too." The tools focus is on improving the clarity of writing.
+`write-good` is designed for "developers who can't write good and wanna learn to do other stuff good too." The tool's focus is on improving the clarity of writing.
 
 Install:
 
@@ -145,7 +135,7 @@ e-ca-certificates` is an excellent proof of concept, but if you want to run a do
 "excellent" is a weasel word on line 367 at column 84
 ```
 
-`write-good` has many interesting suggestions. It will highlight passive voice, cliches, weak adverbs and much more. Unfortunately, it's not easy to exclude items or configure rules. It might be useful as a writing suggestion tool but this lack of configurability means it can't be used in a continuous integration process.
+`write-good` has many exciting suggestions. It will highlight passive voice, cliches, weak adverbs, and much more. Unfortunately, it's not easy to exclude items or configure rules. It might be helpful as a writing suggestion tool, but this lack of configurability means you will have difficulty using it in a continuous integration process.
 
 ### Coverage
 
@@ -164,9 +154,9 @@ e-ca-certificates` is an excellent proof of concept, but if you want to run a do
 
 ## [textlint](https://textlint.github.io/)
 
-`textlint` is a pluggable linting tool that supports markdown, plain text, and HTML. The plug-in architecture means that it can offer the features of other tools by wrapping them. It has a [plug-in](https://github.com/textlint/textlint/wiki/Collection-of-textlint-rule#rules-english) for `alex`, `write-good`, and for many spell checkers and grammar checkers. The downside of this flexibility is that it is a bit harder to set up and configure: each plug-in must be install separately.
+`textlint` is a pluggable linting tool that supports markdown, plain text, and HTML. The plug-in architecture means that it can offer the features of some of the previous items by wrapping them up as a plug-in. It has a [plug-in](https://github.com/textlint/textlint/wiki/Collection-of-textlint-rule#rules-english) for `alex`, `write-good`, and for many spell checkers and grammar checkers. The downside of this flexibility is that it is a bit harder to set up and configure: you have to install each plug-in separately.
 
-Install
+Install:
 
 ```
 $ npm install textlint --global
@@ -182,7 +172,7 @@ Run:
 textlint "docs/**"
 ```
 
-`textlint` is configurable via an `textlintrc` and has inline exclude rules ( `<!-- textlint-disable ruleA,ruleB -->` ) -- which may make it a interesting way to use `write-good` or other tools that lack this functionality.
+`textlint` is configurable via an `textlintrc` and has inline exclude rules ( `<!-- textlint-disable ruleA,ruleB -->` ) -- which may make it a possible way to use `write-good` or other tools that lack this functionality.
 
 ### Coverage
 
@@ -205,7 +195,7 @@ textlint "docs/**"
 
 > `proselint` places the world's greatest writers and editors by your side, where they whisper suggestions on how to improve your prose. You'll be guided by advice inspired by Bryan Garner, David Foster Wallace, Chuck Palahniuk, Steve Pinker, Mary Norris, Mark Twain, Elmore Leonard, George Orwell, Matthew Butterick, William Strunk, E. B. White, Philip Corbett, Ernest Gowers, and the editorial staff of the world's finest literary magazines and newspapers, among others. Our goal is to aggregate knowledge about best practices in writing and to make that knowledge immediately accessible to all authors in the form of a linter for prose.
 
-Some of the writing advice is really good:
+Some of the writing advice included is great:
 
 ```
 echo "The very first thing you'll see at the top of every (well-written) bash script " | proselint
@@ -234,7 +224,7 @@ echo "thought leaders" | proselint
 <stdin>:1:5: corporate_speak.misc Minimize your use of corporate catchphrases like this one.
 ```
 
-Learning from all the best writers is a very lofty goal and `proselint` has several interesting sources of rules but they fall sort of the goal of collecting all the worlds writing advice in a parsable form. Ignoring and excluding rules are also not fully supported.
+Learning from all the best writers is a very lofty objective, and `proselint` has accumulated some valuable rules, but it falls short of its goal of collecting all the worlds writing advice in a parsable form. Ignoring and excluding rules are also not fully supported.
 
 ### Coverage
 
@@ -253,8 +243,8 @@ Learning from all the best writers is a very lofty goal and `proselint` has seve
 
 ## [Vale](https://github.com/errata-ai/vale)
 
-Vale, created by Joseph Kato, supports spelling, grammar, and clarity checks. It is extendable using a YAML rule format and is designed around the idea of a style guide, that is a specific house style that you put together and vale enforces. It has an implementation of most `proselint` as a style guide, most of `write-good` as well as an implementation of the [Microsoft Writing Style Guide](https://docs.microsoft.com/en-us/style-guide/welcome/) and the google
-[developer documentation style guide](https://developers.google.com/style/). Vale is targeted directly at the Docs as Code community and targets documentation teams who take the writing style of documents very serious.
+Vale, created by Joseph Kato, supports spelling, grammar, and clarity checks. It is extendable using a YAML rule format and is designed around the idea of a style guide -- a specific house style that you put together and vale enforces. It has an implementation of most `proselint` as a style guide, most of `write-good`, as well as the [Microsoft Writing Style Guide](https://docs.microsoft.com/en-us/style-guide/welcome/) and the Google
+[developer documentation style guide](https://developers.google.com/style/). Vale is targeted directly at the Docs-as-Code community and documentation teams, who take the writing style of documents very seriously.
 
 Vale is fast and configurable but not necessarily easy to get started with. Initially, I couldn't get it to find any problems until I realized that it needs a config file to run:
 
@@ -267,11 +257,11 @@ BasedOnStyles = Vale
 
 <figcaption>.vale.ini</figcaption>
 
-Additionally to use it effectively you will need to copy an existing style-guide into your repository and customize it to your needs. Separating the styles completely from the tool is Vale's biggest strength. It's also could be a weakness as the rules you build up are specific to your repository . It is easy to write and customize rules but hard to share them back as they need to live in your source code repository.
+Additionally, to use it effectively, you will need to copy an existing style-guide into your repository. Separating the styles from the tool is Vale's biggest strength. It's also could be a weakness as the rules you build up are specific to your repository. It is easy to write and customize rules but hard to share them back as they need to live in your source code repository.
 
  Besides the official Vale style guides [Buildkite](https://buildkite.com/blog/linting-the-buildkite-docs), [Linode](https://github.com/linode/docs/tree/develop/ci/vale/styles), and [Write The Docs](https://github.com/testthedocs/vale-styles) have rules online that you can copy into your repo or use as inspiration for your own rules.
 
-If you are taking linting documentation seriously and can take the time to set up a style that works for you then Vale is the way to go. The rules of most other tools can be implemented inside value and many already are.
+If you are taking linting documentation seriously and can take the time to set up a style that works for you, then Vale is the way to go. The rules of most other tools can be implemented inside value, and many already are.
 
 ### Coverage
 
@@ -292,7 +282,12 @@ If you are taking linting documentation seriously and can take the time to set u
 
 * [Official Styles](https://github.com/topics/vale-linter-style)\
 * [Write The Docs Styles](https://github.com/search?q=topic%3Avale-linter-style+org%3Atestthedocs+fork%3Atrue)
+* [Grammarly Clone in Vale](https://github.com/testthedocs/Openly)
 
 ## Summary
 
-Whether its a simple readme, or complex technical documentation, a myriad of tools exist for testing and linting english prose. Vale, with its flexible rules, is the clear leader. Combining Vale with `markdownlint` and running both in a continuous integration build should ensure that documents are spelling correctly, grammatically correct and written in a properly formatted and exclusive way.
+Many tools exist for testing and linting English prose. You can start as simply as just spelling checking your readme before you commit it or go as complex as a full style guide running on every change to your software documentation. 
+
+If you are willing to invest the time, then Vale, with its flexible rules, is the clear leader. Combining Vale with `markdownlint` and running both in a continuous integration build should ensure that documents are spelling correctly, grammatically correct, and written in a properly formatted and exclusive way.
+
+If you're looking for a more accessible place to start or don't need the grammar and clarity suggestions, then mdspell and markdownlint make a great combination.
