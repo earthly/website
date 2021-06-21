@@ -111,3 +111,5 @@ rerender
 comonads
 subnets
 flamegraph
+configurability
+parsable

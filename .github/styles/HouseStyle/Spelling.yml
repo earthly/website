@@ -14,3 +14,4 @@ ignore:
   - HouseStyle/tech-terms/security.txt
   - HouseStyle/tech-terms/people.txt
   - HouseStyle/tech-terms/nonsense.txt
+  - HouseStyle/tech-terms/fileformats.txt

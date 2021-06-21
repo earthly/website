@@ -10,3 +10,10 @@ Blandy
 Booch
 Haoyi
 eregontp
+Palahniuk
+Elmore
+Butterick
+Strunk
+Corbett
+Gowers
+Kato
