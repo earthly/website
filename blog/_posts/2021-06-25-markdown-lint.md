@@ -129,7 +129,7 @@ The downsides of `mdspell` are that the dictionary will likely complain about lo
  {% picture content2 {{site.pimages}}{{page.slug}}/write-good.png  --picture --img width="1200px" --alt {{ write-good on GitHub }} %}
  </div>
 
-`write-good` is designed for "developers who can't write good and wanna learn to do other stuff good too." The tool's focus is on improving the clarity of writing.
+`write-good` is designed for "developers who can't write good and wanna learn to do other stuff good too." The tool's focus is on improving the clarity of writing (and helping developers write well).
 
 Install:
 
