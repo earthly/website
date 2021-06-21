@@ -1,0 +1,10 @@
+extends: substitution
+message: Overused Word - try one of these - '%s' instead of '%s'
+ignorecase: true
+action:
+  name: replace
+swap:
+  'larger': 'more significant'
+  'interesting' : 'exciting'
+  'useful': 'helpful / valuable'
+ 
