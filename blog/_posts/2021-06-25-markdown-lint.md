@@ -65,7 +65,6 @@ It doesn't handle spelling, grammar, or sentence structure, but it can't be beat
 * IDE support: 5
 * CI / CLI Support: 5
 
-
 ## [mdspell](https://www.npmjs.com/package/markdown-spellcheck)
 
 <div class="wide">
@@ -282,6 +281,7 @@ MinAlertLevel = suggestion
 [*]
 BasedOnStyles = Vale
 ```
+
 <figcaption>.vale.ini</figcaption>
 
 Additionally, to use it effectively, you will need to copy an existing style-guide into your repository. Separating the styles from the tool is Vale's biggest strength. It's also could be a weakness as the rules you build up are specific to your repository. It is easy to write and customize rules but hard to share them back as they need to live in your source code repository.
@@ -313,7 +313,7 @@ If you are taking linting documentation seriously and can take the time to set u
 
 ## Summary
 
-Many tools exist for testing and linting English prose. You can start as simply as just spelling checking your readme before you commit it or go as complex as a full style guide running on every change to your software documentation. 
+Many tools exist for testing and linting English prose. You can start as simply as just spelling checking your readme before you commit it or go as complex as a full style guide running on every change to your software documentation.
 
 If you are willing to invest the time, then `Vale`, with its flexible rules, is the clear leader. Combining `Vale` with `markdownlint` and running both in a continuous integration build should ensure that documents are spelling correctly, grammatically correct, and written in a properly formatted and exclusive way.
 
