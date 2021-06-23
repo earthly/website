@@ -10,6 +10,8 @@ internal-links:
   - dnf
 ---
 
+<div class="narrow-code">
+
 This tutorial is a follow up to [creating and hosting your own deb and apt repo](/blog/creating-and-hosting-your-own-deb-and-apt-repo), but
 is written for creating rpm packages for redhat-based Linux distributions such as Fedora, CentOS, and Rocky Linux.
 
@@ -149,7 +151,7 @@ grep rpm /usr/bin/lesspipe.sh
 
 This should print the line where the same `rpm -qpivl ...` command is being invoked:
 
-```
+```bash
 *.rpm) rpm -qpivl --changelog --nomanifest -- "$1"; exit $? ;;
 ```
 
@@ -299,3 +301,5 @@ earthly -P github.com/earthly/example-yum-repo:main+test
 ```
 
 Alternatively, you can clone the repo and run `+test` directly.
+
+</div>
