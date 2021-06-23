@@ -805,7 +805,7 @@ A complete example has been created under [github.com/earthly/example-apt-repo/E
 This Earthfile contains all the above steps from this tutorial in a single location, which can be run directly in a single shot with:
 
 ```bash
-earthly -P github.com/earthly/example-apt-repo+test
+earthly -P github.com/earthly/example-apt-repo:main+test
 ```
 
 Alternatively, you can clone the repo and run `+test` directly.
