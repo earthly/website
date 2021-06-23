@@ -200,3 +200,7 @@ defaults:
     values:
       header:
         overlay_image: /assets/images/default-header.jpg
+  - scope:
+      path: "/_posts/*example*.md"
+    values: 
+      published: False

@@ -194,6 +194,7 @@ new-post:
   LOCALLY
   ARG name="one-two-three"
   RUN cat ./blog/_posts/2029-01-01-checklist.md > ./blog/_posts/$(date -v +7d +"%Y-%m-%d")-$name.md
+  RUN sed -i -E "s/published: False//g" ./blog/_posts/$(date -v +7d +"%Y-%m-%d")-$name.md
   RUN mkdir ./blog/assets/images/$name
   RUN cp ./blog/assets/images/default-header.jpg ./blog/assets/images/$name/header.jpg
 
