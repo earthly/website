@@ -2,11 +2,12 @@
 title: "Put Your Best Title Here"
 categories:
   - Articles
-toc: true
 author: Adam
 internal-links:
  - just an example
 ---
+
+<div class="wide">
 
 Some years ago, when I worked in a physical office, I was having trouble with a new report I was developing. The fairly complex SQL that generated the report would sometimes be missing a single row and then if a ran things again the row would be back.
 
@@ -107,3 +108,5 @@ You see I was inserting records in order, but then selecting them out without an
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `earthly --build-arg NAME=2020-09-10-better-builds.md +link-opportunity` and find 1-5 places to incorporate links to other articles
 - [ ] Raise PR
+
+</div>
