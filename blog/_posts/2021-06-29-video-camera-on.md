@@ -39,7 +39,7 @@ internal-links:
 - people as simulators 
 
 
-I was having trouble with a new report I was developing. The fairly complex SQL that generated it would sometimes be missing a single row and then if a ran things again the row would be back.
+Some years ago, when I worked in a physical office, I was having trouble with a new report I was developing. The fairly complex SQL that generated it would sometimes be missing a single row and then if a ran things again the row would be back.
 
 The SQL looked something like this:
 ```
@@ -79,15 +79,15 @@ FROM
 
 SELECT top 3 * FROM Report;
 ```
-Usually this would output 
+Most of the time this would output: 
 
 ``
 one
 two
 three
 ```
-But occasionally it would output 
 
+But occasionally it would output:
 ```
 one
 two
@@ -95,9 +95,9 @@ four
 ```
 
 
-I was going to spend the morning tracking this down. That was my standup update for that day. But when I gave it I caught a look from someone else on the team. The look helped me solve the problem. We'll get to the solution in a moment but what I really want to talk about is that look --  I am always on the look out for this look.
+I was going to spend the morning tracking this down. That was my standup update for that day. But when I gave it I caught a look from my teammate Isabella (not her real name). The look helped me solve the problem. We'll get to the solution in a moment but what I really want to talk about is that look --  I am always on the look out for this look.
 
- I once saw someone go up to post office box and confidently empty their lunch garbadge into it - like it was a food court garbage pale. I think I made the look then - I could feel my lips pull to one side and my eyes narrow in confusion. Am I seeing this wrong? 
+I once saw someone go up to post office box and confidently empty their lunch garbadge into it - like it was a food court garbage pale. I think I made the look then - I could feel my lips pull to one side and my eyes narrow in confusion. Am I seeing this wrong? 
 
 I've seen this look, usually is very fleeting, in so many daily stand ups since then. When you see it don't less it pass by unremarked, this facial expression is gold.  
 
@@ -111,11 +111,15 @@ I don't understand how our brains work, but I think we are always running a simu
 
 That is why a standup can be valuable, in person or screen to screen. You can tell your update of your progress and you can watch for that failed simulation face. Then ask them what they are thinking. Chances are they know where you missed a step or have a false assumption or at the very least you've violated their intuition about the problem and unpacking feeling is a good idea.
 
-I've heard many times before that 70% of communication is non-verbal. This doesn't seem right to me. I am probably bad at non-verbal queues but I am getting way less than 70% of my communication from facial expressions and body langauge. This whole confused-face could be replaced with chin-scratching emoji. However, when I do get a verbal signal its incredibly valuable and I don't think you can easily replicate it in async. One reason is that these non-verbal queues represent thoughts not words. Someone can hear your update and think to themselves "That doesn't sound right" but they may not be comfortable enough or care enough to say it out loud.
+I've heard many times before that 70% of communication is non-verbal. This doesn't seem right to me. I am probably bad at non-verbal queues but I am getting way less than 70% of my communication from facial expressions and body langauge. This whole confused-face could be replaced with chin-scratching emoji. However, when I do get a verbal signal its incredibly valuable. It's a low big rate signal, but the bits are incredbily valuable.  I don't think you can easily replicate this signal async communication. One reason is that these non-verbal queues represent thoughts not words. Someone can hear your update and think to themselves "That doesn't sound right" but they may not be comfortable enough or care enough to say it out loud. Or it could just be a fleeting though before they start their update - you have to catch these expressions and you can't do it without seeing the person.  
 
-So about the SQL. I got the look because a select statement, especially one like I was describing should be determinstic. It should be determinstic that is if you are ordering everything. I was inserting records in order, but then selecting them out without an explicit order. 
+People find zoom meetings fatiguing and I get that, but sometimes audio just won't do. Whenever I talk to someone who works remotely and doesn't use video it surprizes me. If you're not seeing your team mates faces when you describe a problem you are missing out on important information.  Maybe not all the time, but when that information is valuable -- man is it valuable.
 
-Also my simple recounting of the report's logic (and my code snippet above) was missing an important wrinkle -- an important detail I had forgotten about.Sometimes there were duplicate keys and they needed to be deleted from the report table, so there was some logic like this:
+
+
+So about the SQL. I got `the look` from Isabella because a select statement, especially one like I was describing should be determinstic. Isabella's spidey sense was telling her either I was wrong about results changing or I was doing something really wrong with SQL.  It turned out to be the latter.  
+
+You see I was inserting records in order, but then selecting them out without an explicit order. Also my simple recounting of the report's logic (and my code snippet above) was missing an important wrinkle -- an important detail I had forgotten about. Sometimes there were duplicate keys and they needed to be deleted from the report table, so there was some logic like this:
 ```
 delete top(1) from Report where name in 
 (
@@ -129,3 +133,4 @@ having count(*) > 1
 Guess what happens when you insert things in order into a table with deleted rows? Its implementation specific but probably invisible spaces left by the deleted rows will be filled in by the inserted data, undoing the ordering.
 
 
+Generally .... 
