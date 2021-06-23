@@ -7,7 +7,7 @@ internal-links:
  - just an example
 ---
 
-<div class="wide">
+<div class="narrow-code">
 
 Some years ago, when I worked in a physical office, I was having trouble with a new report I was developing. The fairly complex SQL that generated the report would sometimes be missing a single row and then if a ran things again the row would be back.
 
@@ -92,7 +92,7 @@ People find zoom meetings fatiguing and I get that, but sometimes audio just won
 
 So about the SQL. I got `the look` from Isabella because a select statement, especially one like I was describing should be determinstic. Isabella's spidey sense was telling her either I was wrong about results changing or I was doing something really wrong with SQL.  It turned out to be the latter.  
 
-You see I was inserting records in order, but then selecting them out without an explicit order. Also my simple recounting of the report's logic (and my code snippet above) was missing an important wrinkle -- an important detail I had forgotten about. Sometimes there were duplicate keys and they needed to be deleted from the report table. Guess what happens when you insert things in-order into a table with deleted rows? Its implementation specific but probably the invisible spaces left by the deleted rows will be filled in by the inserted data, undoing the ordering. So my row wasn't missing, it was just wasn't ordered properly.  Add in an order by clause and the mystery is solved[^1].
+You see I was inserting records in order, but then selecting them out without an explicit order. Also my simple recounting of the report's logic (and my code snippet above) was missing an important wrinkle -- an important detail I had forgotten about. Sometimes there were duplicate keys and they needed to be deleted from the report table. Guess what happens when you insert things in-order into a table with deleted rows? Its implementation specific but probably the invisible spaces left by the deleted rows will be filled in by the inserted data, undoing the ordering. So my row wasn't missing, it was just wasn't ordered properly. Add in an order by clause and the mystery is solved[^1].
 
 ### Writing Article Checklist
 
