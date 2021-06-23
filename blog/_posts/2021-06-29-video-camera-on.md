@@ -1,7 +1,7 @@
 ---
 title: "Put Your Best Title Here"
 categories:
-  - Tutorials
+  - Articles
 toc: true
 author: Adam
 internal-links:
@@ -11,56 +11,34 @@ internal-links:
 Some years ago, when I worked in a physical office, I was having trouble with a new report I was developing. The fairly complex SQL that generated the report would sometimes be missing a single row and then if a ran things again the row would be back.
 
 The SQL looked something like this:
-```
-CREATE TABLE input1([name] varchar(13), [val] bigint);
-
-INSERT INTO input1
-VALUES
-    ('one', 1),
-    ('two', 2),
-    ('three', 3);
-
-CREATE TABLE input2 ([name] varchar(13), [val] bigint);
-
-INSERT INTO input2
-VALUES
-    ('four', 4),
-    ('five', 5),
-    ('six', 6);
-
-CREATE TABLE Report (
-  [name] varchar(13)
-);
+``` sql
 
 INSERT INTO Report
-SELECT
-  name
-FROM
-  input1 
- ORDER BY val;
+SELECT name FROM input1 
+ORDER BY val;
  
+SELECT * FROM Report;
+one
+two
+three -- yep
+
 INSERT INTO Report
-SELECT
-name
-FROM
-  input2 
- ORDER BY val;
+SELECT name FROM input2 
+ORDER BY val;
 
-SELECT top 3 * FROM Report;
-```
-Most of the time this would output: 
-
-```
+SELECT * FROM Report;
 one
 two
 three
-```
+four 
+five 
+six -- yep
 
-But occasionally it would output:
-```
+SELECT top 3 * FROM Report;
 one
 two
-four
+four -- wait, what?
+
 ```
 
 I was going to spend the morning tracking this down. That was my standup update for that day. But when I gave it I caught a look from my teammate Isabella (not her real name). The look helped me solve the problem. We'll get to the solution in a moment but what I really want to talk about is that look --  I am always on the look out for this look.
