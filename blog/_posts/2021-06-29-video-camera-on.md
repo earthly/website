@@ -13,7 +13,7 @@ Some years ago, when I worked in a physical office, I was having trouble with a 
 
 The SQL looked something like this:
 ``` sql
-
+-- sort and insert first partition into repo
 INSERT INTO Report
 SELECT name FROM input1 
 ORDER BY val;
@@ -23,6 +23,7 @@ one
 two
 three -- yep
 
+-- sort and insert second partition into repo
 INSERT INTO Report
 SELECT name FROM input2 
 ORDER BY val;
@@ -74,7 +75,9 @@ That is why a stand-up can be valuable, in person or screen to screen. You can g
  {% picture grid {{site.pimages}}{{page.slug}}/confused3.png  --picture --img width="260px" --alt {{ Confused Women }} %}
 <figcaption>"All users were created on a Thursday in 1970"</figcaption>
 </div>
-I've heard many times before that 70% of communication is non-verbal. This doesn't seem right to me. I am probably bad at non-verbal queues, but I am getting way less than 70% of my communication from facial expressions and body language: this whole confused-face signal could be replaced with chin-scratching emoji or a sign that said: "Wait, What?". But, when I do get a non-verbal signal, it can save me hours and days of time. I don't think you can easily replicate this signal with asynchronous communication. One reason is that these non-verbal cues often represent subtle feelings. Someone can hear your update and think to themselves, "That doesn't sound right", but they may not be comfortable enough or care enough to say it out loud. Or it's just fleeting thought before they start their own update. You have to catch these expressions, and you can't do it without seeing the person.
+I've heard many times before that 70% of communication is non-verbal. This seems to oversell non-verbals or maybe I'm just not great at reading them. This whole confused-face signal could be replaced with chin-scratching emoji or a sign that said: "Wait, What?". But, when I do get a non-verbal signal, it can save me hours and days of time. I don't think you can easily replicate this signal with asynchronous communication. One reason is that these non-verbal cues often represent subtle feelings. Someone can hear your update and think to themselves, "That doesn't sound right", but they may not be comfortable enough or care enough to say it out loud. Or it's just fleeting thought before they start their own update. You have to catch these expressions, and you can't do it without seeing the person.
+
+This obviously doesn't mean that everyone should always be able to see everyone. If you are joining a large meeting that is basically a presentation and everyone has their camera off then I think it makes sense to follow suit and if you are eating your lunch in a meeting, please I don't need to see or hear you chew.
 
 People find zoom meetings fatiguing, and I get that, but sometimes audio won't do. Whenever I talk to someone who works remotely and doesn't use video, it surprises me. If you're not seeing your teammates face when you describe a problem, who knows what you are missing.
 
@@ -96,6 +99,10 @@ You see, I was inserting records sorted but selecting them out without an explic
 - [x] Fix Grammarly Errors
 - [ ] Read out loud
 - [ ] Write 5 or more titles and pick the best on
+ - Video On
+ - Wait What - Video Cameras On
+ - Video Cameras and SQL Errors
+ - Vidoe Cameras, SQL Errors and Rabbit Holes
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
@@ -103,5 +110,56 @@ You see, I was inserting records sorted but selecting them out without an explic
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `earthly --build-arg NAME=2020-09-10-better-builds.md +link-opportunity` and find 1-5 places to incorporate links to other articles
 - [ ] Raise PR
+
+
+[^1]: 
+  Here is a minimal reproduction in Postgres (the actual problem was more complex, involved abusing row_number() and was in SQL SERVER).
+
+  ``` sql
+  -- simplified tables
+  CREATE TABLE Report (name varchar(13));
+  CREATE TABLE input1(name varchar(13), val bigint);
+  CREATE TABLE input2(name varchar(13), val bigint);
+
+  -- which, per user, had summary data something like this
+  INSERT INTO input1
+  VALUES
+      ('one', 1),
+      ('two', 2),
+      ('three', 3),
+      ('three', 3);
+
+  INSERT INTO input2
+  VALUES
+      ('four', 4),
+      ('five', 5),
+      ('six', 6);
+
+
+  -- sort and insert first partition
+  INSERT INTO Report
+  SELECT name FROM input1 
+  ORDER BY val;
+  
+  -- delete duplicate records 
+  DELETE FROM Report where name in ( 
+    select name
+    from Report 
+    group by name 
+    having count(*) > 1
+  );
+
+  -- sort and insert second partition
+  INSERT INTO Report
+  SELECT name FROM input2 
+  ORDER BY val;
+
+  -- show Top N report
+  SELECT * FROM Report limit 3;
+  one
+  two
+  four
+
+  ```
 
 </div>
