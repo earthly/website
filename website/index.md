@@ -2,7 +2,6 @@
 title: Earthly
 layout: default
 ---
-
 <div class="color2">
   <div class="wrapper">
     {% include hero.html %}

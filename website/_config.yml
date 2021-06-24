@@ -2,7 +2,7 @@ email: support@earthly.dev
 url: "https://earthly.dev"
 docsurl: "https://docs.earthly.dev"
 landingurl: "https://earthly.dev"
-blogurl: "https://earthly.dev/blog/"
+blogurl: "/blog/"
 githuburl: "https://github.com/earthly/earthly"
 twitter_username: earthlytech
 github_username:  earthly
