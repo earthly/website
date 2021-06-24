@@ -126,3 +126,7 @@ matplotlib
 aws
 Loggly
 mitmproxy
+Linode
+markdownlint
+mdspell
+alex

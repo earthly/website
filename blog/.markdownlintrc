@@ -3,5 +3,8 @@
   "line-length": false,
   "MD033": false,
   "MD040": false,
-  "MD048": false
+  "MD048": false,
+  "MD024": {
+    "siblings_only": true
+  }
 }
