@@ -93,7 +93,7 @@ You see, I was inserting records sorted but selecting them out without an explic
 
 - [x] Write Outline
 - [x] Write Draft
-- [ ] Fix Grammarly Errors
+- [x] Fix Grammarly Errors
 - [ ] Read out loud
 - [ ] Write 5 or more titles and pick the best on
 - [ ] Create header image in Canva
