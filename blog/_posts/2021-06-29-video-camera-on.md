@@ -6,12 +6,12 @@ author: Adam
 internal-links:
  - just an example
 ---
-
 <div class="narrow-code">
 
 Some years ago, when I worked in a physical office, I was having trouble with a new report I was developing. The reasonably complex SQL that generated the report would sometimes be missing a single row that would reappear if I reran things.
 
 The SQL looked something like this:
+
 ``` sql
 -- sort and insert first partition into repo
 INSERT INTO Report
@@ -52,7 +52,7 @@ I was going to spend the morning tracking this down. That was my daily stand-up 
 <figcaption>"I've traced it to a bug in the SMTP protocol"</figcaption>
 </div>
 
-I once saw someone go up to a post-office box and confidently empty their lunch garbage into it - like it was a food court garbage bin. I made the facial expression then - I could feel my lips pull to one side and my eyes narrow in confusion. Am I seeing this correctly? 
+I once saw someone go up to a post-office box and confidently empty their lunch garbage into it - like it was a food court garbage bin. I made the facial expression then - I could feel my lips pull to one side and my eyes narrow in confusion. Am I seeing this correctly?
 
 I've spotted this look in so many daily stand-ups since then. Usually, it's very fleeting, but I try not to let it pass by unremarked because unpacking it can save so much time. It easy to thrash on a problem and forget some simple assumption you've made. This face is a sign you've overlooked something important.
 
@@ -85,18 +85,22 @@ People find zoom meetings fatiguing, and I get that. The world contains too many
 
 <div class="align-left">
  {% picture grid {{site.pimages}}{{page.slug}}/confused4.png  --picture --img width="260px" --alt {{ Confused Women }} %}
-<figcaption>"the max message size in \n the queue is now 2 gb"</figcaption>
+<figcaption>"the max message size in \n the queue is now 2 gigabytes"</figcaption>
 </div>
 
 So about the SQL. I got `the look` from Isabella because a select statement like I was describing should be deterministic. Isabella's spidey-sense told her either I was wrong about results changing or I was misusing SQL. It turned out to be the latter.  
 
 You see, I was inserting records sorted and selecting them out without an explicit order. Also, my simple recounting of the report's logic (and my code snippet above) was missing a critical detail -- one I had forgotten about[^2]. Sometimes I had to delete duplicate keys from the report table. Guess what happens when you insert things in-order into a table with deleted rows? Its implementation-specific, but sometimes, the invisible spaces left by the deleted rows will be filled in by the inserted data, undoing the insertion order. My row wasn't missing. My data just wasn't sorted correctly. Once I added in an `order by` everything worked.
+
 </div>
-[^1]: [Like everything](http://localhost:4002/blog/thought-leaders/), they work will in some contexts and not in others. If they aren't helpful, change them format or drop them.
+<!-- markdownlint-disable MD046 -->
+
+[^1]: [Like everything](http://localhost:4002/blog/thought-leaders/), they work well in some contexts and not in others. If they aren't helpful, drop them and try something else.
 [^2]: Here is a minimal reproduction in Postgres.
       <div class="narrow-code">
 
       I have some tables with summary data in it:
+    
 
       ``` sql
       -- simplified tables
@@ -161,4 +165,5 @@ You see, I was inserting records sorted and selecting them out without an explic
       three
       ```      
       SQL makes no guarantees about tables being in insertion order. 
+      <!-- markdownlint-enable MD046 -->
       </div>
