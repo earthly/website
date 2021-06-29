@@ -14,7 +14,7 @@ presets:
 
   grid:
     formats: [webp, original]
-    widths: [245]
+    widths: [500]
     keep: center
     crop: '1:1'
 

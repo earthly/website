@@ -58,12 +58,12 @@ I've spotted this look in so many daily stand-ups since then. Usually, it's very
 
 Are daily stand-ups valuable? Sometimes they are, and sometimes they aren't[^1]. If you're blocked on something, then telling the team is essential, but you shouldn't wait for the next stand-up to share that. There are also all kinds of social reasons why a stand-up is healthy. I work from my home office and have for many years, and a video stand-up is a great way to actually have some small talk, screen to screen, with my teammates. Some parts of a daily stand-up are just a status report, and I'm not sure that 'what I did yesterday and what I'm doing today part' is always valuable. But the actual off-topic parts of a stand-up -- the part where I complain about how difficult it is to get a permit for building my deck, and where Alex explains about foraging for mushrooms -- those parts help keep me sane and happy.
 
+## That's Not Quite Right
+
 <div class="align-left">
  {% picture grid {{site.pimages}}{{page.slug}}/confused2.png  --picture --img width="260px" --alt {{ Confused Women }} %}
 <figcaption>"I'm inserting 'foo' but retrieving 'disk is full'"</figcaption>
 </div>
-
-## That's Not Quite Right
 
 We are always simulating the world around us on some subconscious level. It helps us predict what is going to happen next. For example, my neighbor is out watering his grass right now -- I can see him out my office window. If his hose wasn't on, I'm not sure I would notice because I'm not paying that much attention. But if he casually jumped from the ground to the second-story roof of his house, it would become the center of my attention. It would trigger some that's-not-quite-right effect, and I would unconsciously make that confused face.
 
@@ -79,13 +79,13 @@ I've heard many times before that 70% of communication is non-verbal. This seems
 
 This doesn't mean that everyone should always be able to see everyone in every meeting. If you are joining a 50 person meeting with a single presenter and everyone has their camera off, then follow suit. If you are eating your lunch in a meeting, I don't need to see or hear you chew. But if you are seeking help or giving help or pairing on an issue with me, then I want to see your face. The examples and facial expressions here are extreme but even just seeing that I've gone too fast and lost you, or that you're starting to say something, can improve the fidelity of the conversation.
 
-People find zoom meetings fatiguing, and I get that. The world contains too many meetings. But I'm shocked when I talk to someone on a remote team that never uses video. If you're not seeing your teammate's face when you describe a problem, who knows what you are missing.
+People find zoom meetings fatiguing, and I get that. The world contains too many meetings. But I'm shocked when I talk to someone on a remote team that never uses video. If you're not seeing your teammate's face when you describe a problem, who knows what you are missing[^2].
 
 ## The SQL Solution
 
 <div class="align-left">
  {% picture grid {{site.pimages}}{{page.slug}}/confused4.png  --picture --img width="260px" --alt {{ Confused Women }} %}
-<figcaption>"the max message size in \n the queue is now 2 gigabytes"</figcaption>
+<figcaption>"the max message size in the queue<br/> is now 2 gigabytes"</figcaption>
 </div>
 
 So about the SQL. I got `the look` from Isabella because a select statement like I was describing should be deterministic. Isabella's spidey-sense told her either I was wrong about results changing or I was misusing SQL. It turned out to be the latter.  
@@ -96,7 +96,8 @@ You see, I was inserting records sorted and selecting them out without an explic
 <!-- markdownlint-disable MD046 -->
 
 [^1]: [Like everything](http://localhost:4002/blog/thought-leaders/), they work well in some contexts and not in others. If they aren't helpful, drop them and try something else.
-[^2]: Here is a minimal reproduction in Postgres.
+[^2]: I've run this idea by people I know who work remotely and never turn their camera on. Not everyone is convinced, and I find that genuinely confusing. Maybe they have a lot of useless meetings? Perhaps the local culture is against cameras? Or maybe they always know what they are doing, and I never do?
+[^3]: Here is a minimal reproduction in Postgres.
       <div class="narrow-code">
 
       I have some tables with summary data in it:
