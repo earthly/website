@@ -90,7 +90,7 @@ People find zoom meetings fatiguing, and I get that. The world contains too many
 
 So about the SQL. I got `the look` from Isabella because a select statement like I was describing should be deterministic. Isabella's spidey-sense told her either I was wrong about results changing or I was misusing SQL. It turned out to be the latter.  
 
-You see, I was inserting records sorted and selecting them out without an explicit order. Also, my simple recounting of the report's logic (and my code snippet above) was missing a critical detail -- one I had forgotten about[^2]. Sometimes I had to delete duplicate keys from the report table. Guess what happens when you insert things in-order into a table with deleted rows? Its implementation-specific, but sometimes, the invisible spaces left by the deleted rows will be filled in by the inserted data, undoing the insertion order. My row wasn't missing. My data just wasn't sorted correctly. Once I added in an `order by` everything worked.
+You see, I was inserting records sorted and selecting them out without an explicit order. Also, my simple recounting of the report's logic (and my code snippet above) was missing a critical detail -- one I had forgotten about[^3]. Sometimes I had to delete duplicate keys from the report table. Guess what happens when you insert things in-order into a table with deleted rows? Its implementation-specific, but sometimes, the invisible spaces left by the deleted rows will be filled in by the inserted data, undoing the insertion order. My row wasn't missing. My data just wasn't sorted correctly. Once I added in an `order by` everything worked.
 
 </div>
 <!-- markdownlint-disable MD046 -->

@@ -18,10 +18,22 @@
 
   <div class="author__content">
     {% if author.home %}
-      <a href="{{ author.home | relative_url }}"><h3 class="author__name" itemprop="name">{{ author.name }}</h3></a>
+      <a href="{{ author.home | relative_url }}"><h3 class="author__name" itemprop="name">
+        {{ author.name }}
+      </h3>
+      </a>
     {% else %}
-      <h4 class="author__name" itemprop="name">{{ author.name }}</h3>
+      <h4 class="author__name" itemprop="name">
+        {{ author.name }}
     {% endif %}
+    {% if author.links %}
+      {% for link in author.links %}
+        {% if link.label and link.url %}
+          <a href="{{ link.url }}" rel="nofollow noopener noreferrer"><i class="{{ link.icon | default: 'fas fa-link' }}" aria-hidden="true"></i><span class="label">{{ link.label }}</span></a>
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+    </h4>
     {% if author.bio %}
       <div class="author__bio" itemprop="description">
         {{ author.bio | markdownify }}
@@ -38,13 +50,7 @@
         </li>
       {% endif %}
 
-      {% if author.links %}
-        {% for link in author.links %}
-          {% if link.label and link.url %}
-            <li><a href="{{ link.url }}" rel="nofollow noopener noreferrer"><i class="{{ link.icon | default: 'fas fa-link' }}" aria-hidden="true"></i><span class="label">{{ link.label }}</span></a></li>
-          {% endif %}
-        {% endfor %}
-      {% endif %}
+     
 
       {% if author.uri %}
         <li>
