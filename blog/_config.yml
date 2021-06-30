@@ -125,7 +125,7 @@ markdown_ext: "md"
 markdown: Pandoc
 highlighter: rouge
 lsi: false
-excerpt_separator: "\n\n"
+excerpt_separator: "</p>"
 incremental: false
 
 pandoc:
