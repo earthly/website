@@ -8,10 +8,10 @@ author: Adam
 internal-links:
  - just an example
 ---
-### Writing Article Checklist
+<div class="narrow-code">
 
-- [ ] Write Outline
-- [ ] Write Draft
+- [x] Write Outline
+- [x] Write Draft
 - [ ] Fix Grammarly Errors
 - [ ] Read out loud
 - [ ] Write 5 or more titles and pick the best on
@@ -23,27 +23,220 @@ internal-links:
 - [ ] Run `earthly --build-arg NAME=2020-09-10-better-builds.md +link-opportunity` and find 1-5 places to incorporate links to other articles
 - [ ] Raise PR
 
-## Draft.dev Article Checklist
+## How to Concatenate Two Lists
+**Problem:** You have two lists and you'd like to join them into a new list.
+Solution:
+``` python
+Python 3.8.2
+>>> one = ["one","two", "three"]
+>>> two = ["four","five"]
+>>> one + two
+['one', 'two', 'three', 'four', 'five']
+```
+<div class="notice--warning notice--big">
+**📢 TLDR: Use `+`**
 
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-- [ ] Run mark down linter (`earthly +blog-lint-apply`)
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `earthly +link-opportunity` and find 1-5 places to incorporate links
-
-## Outline
-
-## How to concantenate two lists
-- add two lists
+In almost all simple situations, **using `list1 + list2` is the way you want to concatenate lists**. 
+</div>
+The special cases below are better in some situations, but `+` is generally the best choice. All options covered work in Python 2.3, Python 2.7 and all versions of Python 3[^1].
 
 ## How to add two lists in place
+**Problem:** You have a large list and you want to add a smaller list on the end while minimizing memory usage. 
 
-## How to add N lists
- 
-## Related: How to flatten a list of lists
+In this case, it may be best to append to the existing list, reusing it instead of recreating a new list.
+``` python
+>>>longlist = ["one","two", "three"] * 1000
+['one', 'two', 'three', 'one', 'two', 'three', ... ]
+>>>shortlist = ["four","five"]
+["four","five"]
+>>> x.extend(y)
+>>> x
+['one', 'two', 'three', 'one',  ..., "four","five"]
+```
 
-## How to add two sorted lists
+As with any optimization, you should verify that this actually reduces memory thrash in your specific case and stick to the simple idiomatic `x + y` if it doesn't. 
 
-## how to add two sorted lists, removing duplicates
+Let's use the [`timeit`](https://docs.python.org/3/library/timeit.html) module to check some performance numbers.
 
+``` python
+# Performance Check
+>>> setup = """\
+x = ["one","two","three"] * 1000 
+y = ["four","five","six"]
+"""
+# x + y with large x
+>>> timeit.timeit('x + y', setup=setup, number=1000000)
+3.6260274310000113
+# x.extend(y) with large x
+>>> timeit.timeit('x.extend(y)', setup=setup, number=1000000)
+0.06857255800002804
+```
+In this example, where x is 3000 elements, extend is around 50x faster.
+
+<div class="notice--info">
+**❗ Concatenate Lists With Large Elements is Different**
+
+If the elements in your list are large, but the list size is not, the previous solution `x + y` will work just fine. This is because Python stores references to the values in a list, not the values themselves.
+
+``` python
+>>> x = ["one" * 1000, "two" * 1000, "three" * 1000]
+>>> y = ["four" * 1000, "five" * 1000]
+>>> #This is fine
+>>> z = x + y
+>>> #Performance Testing (extend is slower for large elements)
+>>>  setup = """\
+x = ["one" * 1000, "two" * 1000, "three" * 1000]
+y = ["four" * 1000, "five" * 1000]
+"""
+>>> timeit.timeit('x + y', setup=setup, number=1000000)
+0.05397573999994165
+>>> timeit.timeit('x.extend(y)', setup=setup, number=1000000)
+0.06511967799997365
+```
+In this case, `extend` does not have an advantage.
+
+</div>
+
+### Don't Use Chain For Two Lists
+
+It is possible to use `chain` from `itertools` to create an iterable of two lists. 
+
+``` python
+>>>longlist = ["one","two", "three"] * 1000
+['one', 'two', 'three', 'one', 'two', 'three',, .......... ]
+>>>shortlist = ["four","five"]
+["four","five"]
+>>> from itertools import chain
+>>> z = list(chain(longlist, shortlist)
+['one', 'two', 'three', 'one', , .........., "four","five"]
+```
+We can check the performance of using chain:
+``` python
+>>> setup = """\
+from itertools import chain
+x = ["one","two","three"] * 1000 
+y = ["four","five","six"]
+"""
+# x + y with large x
+# x.extend(y) with large x
+>>> timeit.timeit('x.extend(y)', setup=setup, number=1000000)
+0.06857255800002804
+>>> timeit.timeit('list(chain(x, y))', setup=setup, number=1000000)
+16.810488051999982
+```
+
+Using `chain` with two lists is slower in all cases tested and `x + y` is easier to understand.
+
+## How to Add N Lists
+
+If you need to add three or even ten lists together and the lists are statically known then addition for concatenate works great.
+
+``` python
+>>> one = ["one","two", "three"]
+>>> two = ["four","five"]
+>>> three = []
+>>> z = one + two + three
+```
+
+## How To Flatten a List of Lists
+
+However, if the number of lists to added together is dynamic, `chain` becomes a great option. Chain can take a list of lists and flatten it into a single list.
+
+``` python
+>>> l = [["one","two", "three"],["four","five"],[]] * 99
+[['one', 'two', 'three'], ['four', 'five'], [], ...
+>>> list(chain.from_iterable(l))
+['one', 'two', 'three', 'four', 'five', 'one', 'two', ... ]
+``` 
+
+### Performance of Flattening a List of Lists
+Performance doesn't always matter. The vast majority of time readability is far more important and the chain method is very readable for combining lists of lists. That said, lets see what the most performant way to add N lists is.
+
+One option to test is iterating ourselves:
+``` python
+result = []
+for nestedlist in l:
+    result.extend(nestedlist)
+```
+Let's check its performance vs chain:
+``` python
+>>> setup = """\
+from itertools import chain
+l = [["one","two", "three"],["four","five"],[]] * 99
+"""
+>>> # Add Nested Lists using chain.from_iterable
+>>> timeit.timeit('list(chain.from_iterable(l))', setup=setup, number=100000)
+1.0384087909997106
+>>> ### Add using our own iteration
+>>> run = """\
+result = []
+for nestedlist in l:
+    result.extend(nestedlist)  
+"""
+>>> timeit.timeit(run, setup=setup, number=100000)
+1.8619721710001613
+
+```
+This shows that `chain.from_iterable` is faster than extend.
+
+## Flattening and Merging Lists With One Big List
+
+What about adding a list of lists to existing large list? We have seen earlier that using extend can be faster in the case of large existing lists. Let's test it.
+First we use our standard `chain.from_iterable`.
+``` python
+>>> # Method 1 - chain.from_iterable 
+>>> longlist = ["one","two", "three"] * 1000
+>>> nestedlist = [longlist, ["one","two", "three"],["four","five"],[]]
+>>> list(chain.from_iterable(nestedlist))
+```
+Test its performance:
+``` python
+>>> setup = """\
+from itertools import chain
+longlist = ["one","two", "three"] * 1000;
+combinedlist = [longlist, ["one","two", "three"],["four","five"],[]]
+"""
+>>> timeit.timeit('list(chain.from_iterable(combinedlist))', setup=setup, number=100000)
+1.8676087710009597
+```
+
+Next, lets try adding onto the long list:
+
+``` python 
+>>> # Method 2 - extend
+>>>  longlist = ["one","two", "three"] * 1000
+>>>  nestedlist = [["one","two", "three"],["four","five"],[]]
+>>>  for item in nestedlist:
+>>>     longlist.extent(item)
+```
+Performance Test:
+``` python
+>>> setup = """\
+from itertools import chain
+longlist = ["one","two", "three"] * 1000;
+nestedlist = [["one","two", "three"],["four","five"],[]]
+"""
+>>> run = """\
+for item in nestedlist:
+   longlist.extend(item)
+   """
+>>> timeit.timeit(run, setup=setup, number=100000) 
+0.02403609199973289
+```
+It's much faster.  
+
+When flattening lists or concatenating many lists, one big list can dominate. In those cases using `extend` to add the others lists to the big list can decrease the work that has to be done and increase performance.
+
+## Summary
+|  Condition 	|  Solution 	| Performance Optimization[^2]  	|
+|---	|---	|:-:	|
+| 2 lists  	| `x + y`  	|   No 	| 
+| 1 large list, 1 small list  	| `x.extend(y)` 	|   Yes  	| 
+| Known number of N lists  	| `x + y + z`  	|   No 	|
+| Unknown number of N lists | `list(chain.from_iterable(l))`  	|   No 	| 
+| List of Lists   	|  `list(chain.from_iterable(l))` 	  	|  No 	|
+| 1 large list, many small lists   	|  `for l1 in l: x.extend(...)` 	|   Yes 	|
+
+[^1]: All performance testing was done on Python 3.9.5 on MacOS. 
+[^2]: Performance solutions should only be used if needed. If you don't have a performance bottleneck then clarity trumps performance.
+</div>

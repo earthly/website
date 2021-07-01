@@ -1,7 +1,7 @@
 
 from itertools import chain
 import perfplot
-import numpy
+import numpy as np
 
 def add(L):
   x, y = L
