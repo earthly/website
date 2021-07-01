@@ -63,3 +63,4 @@ exceptions:
   - YAML
   - XML
   - XXX
+  - GCC

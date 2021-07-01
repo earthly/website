@@ -17,3 +17,4 @@ Strunk
 Corbett
 Gowers
 Kato
+Stallman
