@@ -3,7 +3,7 @@ title: "Put Your Best Title Here"
 categories:
   - Tutorials
 toc: true
-author: Adam
+author: Aniket Bhattacharyea
 published: False
 internal-links:
  - just an example
@@ -25,6 +25,8 @@ internal-links:
 
 ## Draft.dev Article Checklist
 
+- [ ] Add in author page
+- [ ] Add in Author page
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
