@@ -6,24 +6,19 @@ toc: true
 author: Adam
 
 internal-links:
- - just an example
+ - python list
+ - python concatenate
+ - concatenate
+ - concate
 ---
 <div class="narrow-code">
 
-- [x] Write Outline
-- [x] Write Draft
-- [ ] Fix Grammarly Errors
-- [ ] Read out loud
-- [ ] Write 5 or more titles and pick the best on
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
 - [ ] Run mark down linter (`earthly +blog-lint-apply`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `earthly --build-arg NAME=2020-09-10-better-builds.md +link-opportunity` and find 1-5 places to incorporate links to other articles
 - [ ] Raise PR
 
-## How to Concatenate Two Lists
+## Concatenate Two Lists in Python
 
 **Problem:** You have two lists and you'd like to join them into a new list.
 Solution:
@@ -43,7 +38,7 @@ In almost all simple situations, **using `list1 + list2` is the way you want to 
 </div>
 The edge cases below are better in some situations, but `+` is generally the best choice. All options covered work in Python 2.3, Python 2.7, and all versions of Python 3[^1].
 
-## How to add two lists in place
+## Combine Lists In Place In Python
 
 **Problem:** You have a huge list, and you want to add a smaller list on the end while minimizing memory usage.
 
@@ -104,7 +99,7 @@ In this case, `extend` does not have an advantage.
 
 </div>
 
-### Don't Use Chain For Two Lists
+### Avoid Chain From `itertools` For Two Lists
 
 It is possible to use `chain` from `itertools` to create an iterable of two lists.
 
@@ -136,7 +131,7 @@ y = ["four","five","six"]
 
 Using `chain` with two lists is slower in all cases tested, and `x + y` is easier to understand.
 
-## How to Add N Lists
+## Combining N Lists in Python
 
 If you need to add three or even ten lists together and the lists are statically known, then `+` for concatenate works great.
 
@@ -147,9 +142,9 @@ If you need to add three or even ten lists together and the lists are statically
 >>> z = one + two + three
 ```
 
-## How To Flatten a List of Lists
+## Flatten a List of Lists in Python
 
-However, if the number of lists is dynamic and unknown until runtime, `chain` becomes a great option. Chain takes a list of lists and flattens it into a single list.
+However, if the number of lists is dynamic and unknown until runtime, `chain` from `itertools` becomes a great option. Chain takes a list of lists and flattens it into a single list.
 
 ``` python
 >>> l = [["one","two", "three"],["four","five"],[]] * 99
