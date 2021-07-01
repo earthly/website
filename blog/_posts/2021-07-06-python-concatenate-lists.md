@@ -13,11 +13,6 @@ internal-links:
 ---
 <div class="narrow-code">
 
-- [ ] Run mark down linter (`earthly +blog-lint-apply`)
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `earthly --build-arg NAME=2020-09-10-better-builds.md +link-opportunity` and find 1-5 places to incorporate links to other articles
-- [ ] Raise PR
-
 ## Concatenate Two Lists in Python
 
 **Problem:** You have two lists and you'd like to join them into a new list.
