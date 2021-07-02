@@ -119,7 +119,6 @@ And now we have a shareable Docker container, with playable shareware inside! Yo
 $ docker build \
   --build-arg GAME_URL=https://archive.org/download/msdos_festival_SCORCH15/SCORCH15.ZIP \
   --build-arg GAME_ARGS=\"SCORCH.EXE\" \
-  -p 127.0.0.1:8000:8000 \
   -t mycool:dosgame .
 
 ... 
@@ -129,7 +128,7 @@ $ docker run --rm -p 127.0.0.1:8000:8000 mycool:dosgame
 
 ## Going Further
 
-Using Earthly, we can even go a step further! Earhly lets us separate some of the concerns within the Dockerfile:
+Using Earthly, we can even go a step further! Earthly lets us separate some of the concerns within the Dockerfile:
 
 <div class="notice--info">
 **ℹ️  About Earthly**
@@ -186,12 +185,12 @@ We also have a couple pre-made targets that wrap this all up for you, and all yo
 
 ![Screenshot of Apogee's Secret Agent running in a web browser.]({{site.images}}{{page.slug}}/agent.png)
 <figcaption>
-`earthly github.com/dchw/earthly-dos-gaming:main+cosmo`
+`earthly github.com/dchw/earthly-dos-gaming:main+secretagent`
 </figcaption>
 
 ![Screenshot of Apogee's Cosmos Cosmic Adventure running in a web browser.]({{site.images}}{{page.slug}}/cosmo.png)
 <figcaption>
-`earthly github.com/dchw/earthly-dos-gaming:main+secretagent`
+`earthly github.com/dchw/earthly-dos-gaming:main+cosmo`
 </figcaption>
 
 You can run your own dos games by running:
