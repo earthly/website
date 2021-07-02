@@ -32,7 +32,7 @@ Turns out you can!
 
 ## Putting It Together
 
-First, we will need to acquire JS-DOS. JS-DOS is a wrapper around an Emscripten-compiled version of [DOSBox](https://www.dosbox.com), so it can run in a browser.  You can get the latest versions of the files [here](https://js-dos.com/#js-dos-622-archives). Download and place these files into a project directory. Here's how I'm doing it, using Docker:
+First, we will need to acquire JS-DOS. JS-DOS is a wrapper around an Emscripten-compiled version of [DOSBox](https://www.dosbox.com), so it can run in a browser.  You can get the latest versions of the files [on js-dos.com](https://js-dos.com/#js-dos-622-archives). Download and place these files into a project directory. Here's how I'm doing it, using Docker:
 
 ```Dockerfile
 WORKDIR site
@@ -103,7 +103,7 @@ If you built and ran the Dockerfile at this point, you would have an image conta
 `GAME_ARGS` is the command for DOSBox (which is inside JS-DOS) to start once it is loaded. The CLI arguments should line up with what a regular installation of DOSBox would expect. If your game requires additional arguments, please provide them in a comma-separated list.
 </div>
 
-Copy this html file into the same directory as your JS-DOS files and your game. Now all you need to do is start a server within our Docker container to serve this webpage. For this, I used [`serve`](https://www.npmjs.com/package/serve), because it was quick and easy to script (you may have noticed installing this dependency alongside JS-DOS earlier). Heres how I add the server to the container:
+Copy this HTML file into the same directory as your JS-DOS files and your game. Now all you need to do is start a server within our Docker container to serve this webpage. For this, I used [`serve`](https://www.npmjs.com/package/serve), because it was quick and easy to script (you may have noticed installing this dependency alongside JS-DOS earlier). Heres how I add the server to the container:
 
 ```Dockerfile
 ARG GAME_ARGS
