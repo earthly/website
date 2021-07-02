@@ -30,7 +30,7 @@ Docker networking differs from virtual machine (VM) or physical machine networki
 
 Docker handles communication between containers by creating a default bridge network, so you often don't have to deal with networking and can instead focus on creating and running containers. This default bridge network works in most cases, but it's not the only option you have.
 
-Docker allows you to create three different types of network drivers out-of-the-box: bridge, host, and none. However, they may not fit every use case, so we'll also explore user-defined networks such as overlay and macvlan. Let's take a closer look at each one.
+Docker allows you to create three different types of network drivers out-of-the-box: bridge, host, and none. However, they may not fit every use case, so we'll also explore user-defined networks such as `overlay` and `macvlan`. Let's take a closer look at each one.
 
 ### The Bridge Driver
 
@@ -153,14 +153,14 @@ As the name suggests, host drivers use the networking provided by the host machi
 
 One limitation with the host driver is that it doesn't work on Docker desktop: you need a Linux host to use it. This article focuses on Docker desktop, but I'll show you the commands required to work with the Linux host.
 
-The following command will start an NGINX image and listen to port 80 on the host machine:
+The following command will start an Nginx image and listen to port 80 on the host machine:
 
 ```shell
 docker run --rm -d --network host --name my_nginx nginx
 
 ```
 
-You can access NGINX by hitting the `http://localhost:80/ url`.
+You can access Nginx by hitting the `http://localhost:80/ url`.
 
 The downside with the host network is that you can't run multiple containers on the same host having the same port. Ports are shared by all containers on the host machine network.
 

@@ -31,7 +31,7 @@ Let's start with what I knew, generating a new RSA key with ssh-keygen
     The key's randomart image is:
     +---[RSA 3072]----+
     |  . ..           |
-    |.. .  o .        |
+    |.. . o .        |
     |+ .. . o         |
     | +o o ...        |
     | ..... *So..     |
@@ -179,8 +179,9 @@ Try it out in the [go playground](https://play.golang.org/p/chkKzvcGJcV), you sh
 ```
 
 Perfect! Now I can generate a public and private key via Go. I wonder how I can encrypt a message using a public key which can only be decrypted by someone with the private key. Let's try out some more code:
-
+<!-- vale off -->
 I want to keep my function signature as basic as possible for the purpose of learning, so we will pass in the public key as the regular base64-encoded id\_rsa keyformat, and let that function handle parsing it:
+<!-- vale on -->
 
 ``` go
     func encrypt(msg, publicKey string) (string, error) {
@@ -211,7 +212,7 @@ I want to keep my function signature as basic as possible for the purpose of lea
     }
 ```
 
-Try out the complete example [here](https://play.golang.org/p/KjvwPoJ6wT4)
+Try out the [complete example](https://play.golang.org/p/KjvwPoJ6wT4)
 
 Finally, how do we decrypt it?
 
@@ -236,10 +237,10 @@ Finally, how do we decrypt it?
     }
 ```
 
-Try it out [here](https://play.golang.org/p/a5u9PYWEjgs)
+[Try it out](https://play.golang.org/p/a5u9PYWEjgs)
 
 So there we have a end-to-end example of how to generate a new public/private key, and encrypt and decrypt data all in [GoLang](/blog/top-3-resources-to-learn-golang-in-2021).
 
-Based on my experimentation with private/public key encryption in go, I put together a small program that allows users to share encrypted data between parties using a rather simple [command line tool on my personal repo](https://github.com/alexcb/secretshare)
+Based on my experimentation with private/public key encryption in go, I put together a small program that allows users to share encrypted data between parties using a rather simple [command line tool on my personal repository](https://github.com/alexcb/secretshare)
 
 Our server's authentication process is slightly different from the above code – we create a digital signature using the private key, which I'll be covering in a future blog post.

@@ -24,12 +24,22 @@ Vlad:
     avatar  : "/assets/images/authors/vladaionescu.jpg"
 Alex:
     name    : "Alex Couture-Beil"
-    bio     : "Alex enjoys writting code, growing vegetables, and the great outdoors."
+    bio     : "Alex enjoys writing code, growing vegetables, and the great outdoors."
     avatar  : "/assets/images/authors/alexcouturebeil.jpg"
 Adam:
     name    : "Adam Gordon Bell"
     bio     : "Spreading the word about open source builds at Earthly. Host of CoRecursive podcast. Physical Embodiment of Cunningham's Law"
     avatar  : "/assets/images/authors/adamgordonbell.png"
+    links:
+        - label: ""
+          icon: "fab fa-fw fa-twitter-square" 
+          url: "https://twitter.com/adamgordonbell"
+        - label: ""
+          icon: "fas fa-fw fa-envelope-square"
+          url: "mailto:adam+website@earthly.dev"
+        - label: ""
+          icon: "fas fa-fw fa-link"
+          url: "https://corecursive.com"
 Vivek Sonar:
     name    : "Vivek Sonar"
     bio     : "Vivek Sonar is a full-stack engineer who loves to solve complex infrastructure problems and work with public cloud platforms like AWS and GCP."
@@ -69,3 +79,9 @@ John Gramila:
     name    : "John Gramila"
     bio     : "John Gramila is a coder and writer living in Chicago."
     avatar  : "/assets/images/authors/johngrimila.jpg"
+Aniket Bhattacharyea:
+    name    : "Aniket Bhattacharyea"
+    bio     : "Aniket is a student doing a Master's in Mathematics and has a passion for computers and software."
+    avatar  : "/assets/images/authors/aniket.jpg"
+
+

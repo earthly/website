@@ -105,7 +105,7 @@ Information such as the states of integration branches and the state of the main
 
 Nowadays, with cloud solutions being more prevalent and deeply integrated with source control systems, it's much easier to give all developers a high degree of visibility. A perfect example is CI pipelines with [GitHub Actions](https://github.com/features/actions "GitHub Actions workflow automation"), which provides feedback directly on pull requests and allows you to visualize the state of a pipeline at every given step.
 
-![Github Actions CI]({{site.images}}{{page.slug}}/twM26E6.png)
+![GitHub Actions CI]({{site.images}}{{page.slug}}/twM26E6.png)
 
 #### Fix Broken Builds Immediately
 

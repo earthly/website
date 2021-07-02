@@ -17,6 +17,8 @@ internal-links:
   - rsa
 ---
 
+<!-- vale HouseStyle.TLA = NO -->
+<!-- vale HouseStyle.ListStart = NO -->
 <!-- markdownlint-disable MD032 -->
 As an Ubuntu user, I find myself typing `apt install ...` frequently as a way to install software on my system.
 But what if I wanted to distribute my code to others via an apt repository? In this post I'll cover how to
@@ -26,13 +28,13 @@ with some tests.
 
 ## Prerequisites
 
-This tutorial assumes you are using ubuntu, and that the following packages are installed:
+This tutorial assumes you are using Ubuntu, and that the following packages are installed:
 
 ```bash
 sudo apt-get install -y gcc dpkg-dev gpg
 ```
 
-## Step 0: creating a simple hello world program
+## Step 0: Creating a Simple Hello World Program
 
 Before getting started with packaging, let's create a basic hello world program
 under `~/example/hello-world-program`. To do this, you can copy and paste the following commands
@@ -58,9 +60,9 @@ gcc -o hello-world hello.c
 There's no technical reason for picking C for this example -- the language doesn't matter.
 It's the binary we will be distributing in our deb package.
 
-## Step 1: Creating a deb package
+## Step 1: Creating a `deb` Package
 
-Debian, and Debian-based linux distributions use `.deb` packages to package and distribute programs.
+Debian, and Debian-based Linux distributions use `.deb` packages to package and distribute programs.
 To start we will create a directory in the form:
 
 ```
@@ -201,7 +203,7 @@ This concludes the first step of building a `.deb` package.
 If you have access to an existing apt repository, you could submit
 the deb to the repository maintainer, and call it a day.
 
-## Step 2: Creating an apt repository
+## Step 2: Creating an `apt` Repository
 
 In this step, we will show how to create your own apt repository which can be used to host one or more deb packages.
 
@@ -218,7 +220,7 @@ cp ~/example/hello-world_0.0.1-1_amd64.deb ~/example/apt-repo/pool/main/.
 ```
 
 <div class="notice--info">
-Larger apt repositories create sub-directories for each program or project. For example, the official ubuntu apt repo stores all vim
+Larger apt repositories create sub-directories for each program or project. For example, the official Ubuntu apt repository stores all vim
 related packages under `/ubuntu/pool/main/v/vim/`.
 </div>
 
@@ -233,8 +235,8 @@ mkdir -p ~/example/apt-repo/dists/stable/main/binary-amd64
 If you want to support multiple architectures, make a directory above for each type (e.g. `i386`, `amd64`, etc).
 </div>
 
-Next, we will generate a `Packages` file, which will contain a list of all availables packes
-in this repository.  We will use the `dpkg-scanpackages` program to generate it, by running:
+Next, we will generate a `Packages` file, which will contain a list of all available packages
+in this repository. We will use the `dpkg-scanpackages` program to generate it, by running:
 
 ```bash
 cd ~/example/apt-repo
@@ -270,7 +272,7 @@ if you had multiple deb files, you would have an entry for each package
 </div>
 
 The contents of the Packages file is a list of all available packages along with metadata from the `DEBIAN/control` file, and some hashes which can be used to
-validate the integrety of the package.
+validate the integrity of the package.
 
 Next we will create a Release file. Unfortunately `dpkg-scanpackages` does not create Release files. Some people use programs like `apt-ftparchive`;
 however in this example I'll cover an alternative to `apt-ftparchive` by using a small bash script.
@@ -360,7 +362,7 @@ cd ~/example/apt-repo/dists/stable
 ~/example/generate-release.sh > Release
 ```
 
-At this point, you can try hosting this repo for yourself. In this example we'll use python's simple http server; however in practice you'll want
+At this point, you can try hosting this repo for yourself. In this example we'll use python's simple HTTP server; however in practice you'll want
 to use a production-ready server. Here's how you can start it up for testing:
 
 ```bash
@@ -402,7 +404,7 @@ Install these packages without verification? [y/N]
 Fortunately in the next section we'll cover generating a PGP key, and signing our repository with it, which will
 allow users to verify the repository contents have not been tampered with.
 
-## Step 3: Signing your apt repository with GPG
+## Step 3: Signing your `apt` Repository With GPG
 
 In the previous step, we generated a `Release` file, which referenced one or more `Packages` files
 along with it's corresponding md5, sha1, and sha256 hashes. The `Packages` file in turns references a
@@ -419,7 +421,7 @@ In order to sign the apt repo, all we must do is sign the Release file.
 
 *PGP, OpenPGP, GnuPG, GPG, (and careful not to typo PHP).*
 
-Software has a lot of accronyms, and this extends into digital signatures.
+Software has a lot of acronyms, and this extends into digital signatures.
 "Pretty Good Privacy" (PGP), was created in 1991 by Phil Zimmermann and eventually became the main product of non other than PGP Inc.
 To encourage adoption of PGP, the company created an open standard unsurprisingly called OpenPGP.
 
@@ -427,10 +429,10 @@ OpenPGP is only a specification, that's where GNU Privacy Guard (GPG) fits in: G
 or a GPG key? I don't know, I've seen it called both, I'm going to call it a PGP because that's what is contained in the first line of
 the armoured text: `-----BEGIN PGP PUBLIC KEY BLOCK-----`.
 
-#### Creating a new public/private PGP keypair
+#### Creating a New Public/Private PGP Key Pair
 
-Let's start with generating a PGP keypair. We will use the `--batch` feature of `gpg` rather than using the interactive prompt.
-This has the benefit of generating keys in a repeatible way. First create a batch template by copying and pasting the following into your terminal:
+Let's start with generating a PGP key pair. We will use the `--batch` feature of `gpg` rather than using the interactive prompt.
+This has the benefit of generating keys in a repeatable way. First create a batch template by copying and pasting the following into your terminal:
 
 ```bash
 echo "%echo Generating an example PGP key
@@ -451,7 +453,7 @@ export GNUPGHOME="$(mktemp -d ~/example/pgpkeys-XXXXXX)"
 gpg --no-tty --batch --gen-key /tmp/example-pgp-key.batch
 ```
 
-Since we overrode the GNUPGHOME to a temporary directory, we can keep this key seperate from our other keys.
+Since we overrode the GNUPGHOME to a temporary directory, we can keep this key separate from our other keys.
 Let's take a quick look at the contents of the directory:
 
 ```bash
@@ -628,9 +630,9 @@ for anything aside from this article. You should be generating your own key,
 don't use this one.
 </div>
 
-Now that we've generated a PGP keypair, let's move on to signing files with them.
+Now that we've generated a PGP key pair, let's move on to signing files with them.
 
-#### Signing the Release file
+#### Signing the Release File
 
 Before we start signing with out keys, let's make sure that we can import the backup we made.
 To do that, we will create a new GPG keyring location:
@@ -755,7 +757,7 @@ BKaAtOSl2Jcb4eA=
 -----END PGP SIGNATURE-----
 ```
 
-#### Testing it out
+#### Testing It Out
 
 We need to tell apt which public pgp key to use when verifying the apt repository. We will add a new `signed-by` attribute
 to our apt config:
@@ -768,7 +770,7 @@ echo "deb [arch=amd64 signed-by=$HOME/example/pgp-key.public] http://127.0.0.1:8
 note that `$HOME` should be expanded to the absolute path of the pgp key.
 </div>
 
-Next start back up your webserver:
+Next start back up your web server:
 
 ```bash
 cd ~/example
@@ -785,9 +787,9 @@ sudo apt-get install hello-world
 
 This time you shouldn't see any security warnings.
 
-#### Keeping your private key secure
+#### Keeping Your Private Key Secure
 
-If you followed this tutorial to the tee, and your webserver is still running, what happens if we try running:
+If you followed this tutorial to the tee, and your web server is still running, what happens if we try running:
 
 ```bash
 curl http://127.0.0.1:8000/pgp-key.private
@@ -796,14 +798,16 @@ curl http://127.0.0.1:8000/pgp-key.private
 Oh no! we just leaked our private key. Now's the time to regenerate it but using a real name and email address other than `example@example.com`.
 Maybe you can store it in earthly's [secret store](https://docs.earthly.dev/docs/guides/cloud-secrets) instead?
 
-## Appendix A: A complete example using Earthly
+## Appendix A: A Complete Example using Earthly
 
 A complete example has been created under [github.com/earthly/example-apt-repo/Earthfile](https://github.com/earthly/example-apt-repo/blob/main/Earthfile).
 
 This Earthfile contains all the above steps from this tutorial in a single location, which can be run directly in a single shot with:
 
 ```bash
-earthly -P github.com/earthly/example-apt-repo+test
+earthly -P github.com/earthly/example-apt-repo:main+test
 ```
 
 Alternatively, you can clone the repo and run `+test` directly.
+<!-- vale HouseStyle.TLA = YES -->
+<!-- vale HouseStyle.ListStart = YES -->

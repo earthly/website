@@ -22,7 +22,7 @@ When you're done with this article, you'll not only be able to write bash script
 
 The very first thing you'll see at the top of every (well-written) bash script is what's called a [_shebang_](https://www.in-ulm.de/~mascheck/various/shebang/). I'll walk you through a couple of them here.
 
-### #!/bin/bash
+### `#!/bin/bash`
 
 The most common shebang is the one referring to the `bash` executable:
 
@@ -32,7 +32,7 @@ The most common shebang is the one referring to the `bash` executable:
 
 Essentially it tells your terminal that when you run the script it should use `bash` to execute it. It can be vital since you may be using a different shell in your machine (`zsh`, `fish`, `sh`, etc.), but you designed the script to work specifically with bash. In many cases, it doesn't matter what shell you're using, but there can be some very noteworthy differences in how they work, leading a script to work in `bash` but not `sh`, for example.
 
-### #!/user/bin/env bash
+### `#!/user/bin/env bash`
 
 If you use the previous shebang, it's crucial that you give the executable's absolute path. You should be aware of this since there is an alternative, where you use the `bash` executable found in the `$PATH`. You can do so by writing:
 
@@ -48,7 +48,7 @@ When you run a bash script, it will always run in a new _subshell_. This means t
 
 One way to change this environment is to use the `set` command. I'll go over the four most common ones and where they're useful. I'll show the short form for these sets in the examples throughout this article, but keep in mind that there are also long-form versions. I'll mention those briefly.
 
-### set -u
+### `set -u`
 
 By default, bash doesn't do a lot of error handling. That's left up to you. So if you want to have your script exit at a certain point, you have to define it. For example, you may have the following script:
 
@@ -83,7 +83,7 @@ line 3: TEST: unbound variable
 
 Without `set -u`, bash will use an empty string instead of the unset variable. When running `echo $TEST`, that isn't too dangerous. However, you may be running a command like `rm -rf /$TEST` to define a path you want to delete. In this case, without `set -u`, you would end up deleting your entire file system (which there's no way to recover by default).
 
-### set -x
+### `set -x`
 
 You'll likely at some point have a big script where it's tough to keep track of not just which commands are running what, but also which commands are outputting what. This is where `set -x` comes to the rescue. Alternatively, you can write this as its long form, `set -o xtrace`.
 
@@ -107,9 +107,9 @@ Hi
 Hello World
 ```
 
-### set -e
+### `set -e`
 
-Sometimes you want to make sure that the entire script fails if one of the commands fails. This is not the default behavior in bash. You can see [here](https://www.gnu.org/software/bash/manual/html_node/The-Set-Builtin.html) that without any set options, bash is running without much error handling.
+Sometimes you want to make sure that the entire script fails if one of the commands fails. This is not the default behavior in bash. You can see [in the manual](https://www.gnu.org/software/bash/manual/html_node/The-Set-Builtin.html) that without any set options, bash is running without much error handling.
 
 To make sure the script fails, you should use `set -e` (also known as `set -o errexit`), probably the most common one.
 
@@ -128,7 +128,7 @@ echo Hello World
 line 3: foo: command not found
 ```
 
-### set -eo pipefail
+### `set -eo pipefail`
 
 Finally, we can make the script fail if a command in a pipeline fails. Usually, bash only looks for the exit code from the last command in a pipeline. If that's 0, it'll continue just fine. Exit code 0 is what we want, since in bash that means success.
 
@@ -168,16 +168,18 @@ The intention is that `/tmp/path.txt` contains `tmp_file.txt`. Assume that the f
 
 ### Sets in Summary
 
+<!-- vale HouseStyle.Spelling = NO -->
 | Set | Long form | Description |
 |-|-|-|
 | set -u | set -o nounset | Exits script on undefined variables |
 | set -x | set -o xtrace | Shows command currently executing |
 | set -e | set -o errexit | Exits script on error |
 | set -eo pipefail | set -eo pipefail | Exits script on pipeline fail |
+<!-- vale HouseStyle.Spelling = YES -->
 
 ## Use Error Checking Tools
 
-Although you may be familiar with all the best practices, it can be tough to remember them all when your script is coming to life. Luckily there are tools available to help, like [ShellCheck](https://www.shellcheck.net/#). ShellCheck has both a browser version and a command-line tool, but for this article, let's work with the command-line version. You can find [installation instructions here](https://github.com/koalaman/shellcheck#installing).
+Although you may be familiar with all the best practices, it can be tough to remember them all when your script is coming to life. Luckily there are tools available to help, like [ShellCheck](https://www.shellcheck.net/#). ShellCheck has both a browser version and a command-line tool, but for this article, let's work with the command-line version. You can find [installation instructions on GitHub](https://github.com/koalaman/shellcheck#installing).
 
 We'll use the following script as an example:
 
@@ -321,4 +323,4 @@ For example, if you set `TEST="hello"` in your shell and run `echo $TEST` inside
 
 At this point, you should be ready to venture into the exciting world of bash scripting. You've learned about common shebangs, what `set` does, and how it can improve the error handling of your scripts, as well as understanding some general pitfalls developers run into with bash.
 
-So go ahead and automate those annoying commands you've been typing out every day. Tired of manually going into your browser and finding the git repo you're working on? Make a script to parse the remote git URL and open it automatically. Maybe you have to rename a bunch of files. Make a script that can loop through them and rename them. The world is your oyster.
+So go ahead and automate those annoying commands you've been typing out every day. Tired of manually going into your browser and finding the git repository you're working on? Make a script to parse the remote git URL and open it automatically. Maybe you have to rename a bunch of files. Make a script that can loop through them and rename them. The world is your oyster.

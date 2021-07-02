@@ -17,7 +17,7 @@ Don't be weird is the short version. &nbsp;The slightly less short version is: "
 
 **Do you have an example?**
 
-If you go to great lengths to work around some default of Kuberenetes or one of the tools you're using, the trouble is you've severely limited the amount of support you can get from the community.
+If you go to great lengths to work around some default of Kubernetes or one of the tools you're using, the trouble is you've severely limited the amount of support you can get from the community.
 
 In the past, I've worked on code with services that people made, and they hated a bunch of the defaults that Postgres was pushing on them. So they had this giant, 200 and something line init script that laid down how they wanted the database to act before you could even do anything. And personally I'm just like, "Dude, just create some freaking tables, and let's get on with our life." Why are you changing all of these defaults and stuff everywhere?
 
@@ -29,7 +29,7 @@ I've always thought it was sane, but apparently he didn't think so. But, yeah, i
 
 I wouldn't even go that far. I'd say that there's a gradient here, it's not black and white. Stay on the beaten path until you have a good reason to get off. And then, document your good reason and get off the path, and consciously acknowledge the maintenance and oversight burden that you're taking on there.
 
-**Does the Kuberenetes space have beaten paths?**
+**Does the Kubernetes space have beaten paths?**
 
 There are starting to be some winners. [Kubernetes](/blog/building-on-kubernetes-ingress) itself used to be weirdness points, but it's not anymore. Kubernetes is now the lingua franca of the cloud. Who doesn't have a Kubernetes-managed platform that we could just pack up and move to, assuming we haven't chosen to spend weirdness points on platform lock-in features. &nbsp;
 

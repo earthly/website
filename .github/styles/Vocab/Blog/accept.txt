@@ -1,0 +1,14 @@
+# Ignoring 'X' should be in title case 
+buildctl
+buildkitd
+npm
+mitmproxy
+gRPC
+https
+alex
+mdspell
+textlint
+proselint
+
+# probably not a real world and should remove, but for now
+repos?

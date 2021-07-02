@@ -8,7 +8,7 @@ sidebar:
 internal-links:
    - docker compose
 ---
-
+<!-- vale HouseStyle.H2 = NO -->
 Tell me if this sounds familiar? You were introduced to docker-compose either by choice or by force. You've been using it for a while, but you find it clunky. I'm here to tell you, you are probably using it wrong.
 
 Ok, that might be an exaggeration. I don't think there's actually a 100% right or wrong way to use it: home-grown build and dev setups tend to have all kinds of [weird](/blog/dont-be-weird) requirements and so the standard doesn't always match the needs. Please take the article with the appropriate skepticism if your situation doesn't quite fit.
@@ -54,7 +54,7 @@ The main reason this is such a complicated issue is that there is no support fro
 
 Docker's docs basically [recommend](https://docs.docker.com/compose/startup-order/) that your service is made resilient to other services not being around for a while because that's what might happen in production anyway, if there's a short network bleep, or if a service restarts. Can't argue with that logic.
 
-Where it gets a bit more cumbersome is when you run an integration test and the routines meant for initializing the test environment (eg pre-populating the database with some test data) end up not being resilient to starting before the other service is ready. So the argument about "it should be resilient in production anyway" doesn't quite apply here, because the code to populate the DB with test data is never used in production.
+Where it gets a bit more cumbersome is when you run an integration test and the routines meant for initializing the test environment (for example pre-populating the database with some test data) end up not being resilient to starting before the other service is ready. So the argument about "it should be resilient in production anyway" doesn't quite apply here, because the code to populate the DB with test data is never used in production.
 
 For such cases, you need something that waits for services to be ready. Docker recommends using [wait-for-it](https://github.com/vishnubob/wait-for-it), [Dockerize](https://github.com/jwilder/dockerize) or [wait-for](https://github.com/Eficode/wait-for). Note, however, that a port being ready isn't always a sign that the service is ready to be used. For example, in an integration test using a certain SQL DB with a certain schema, the port becomes available when the DB is initialized, however, the test might only work after a certain schema migration has been applied. You may need application-specific checks on top.
 
@@ -71,7 +71,7 @@ Containerized tests mean:
 - You are on the same Docker network, so the connectivity setup is the same you would use for running your service in compose anyway. Configuration becomes cleaner.
 - You may be able to reuse the code used to wait for other services to be ready in your setup/teardown.
 - The integration test does not depend on any other local system configuration or environment setup, such as say… your JFrog credentials, or any build dependencies. A container is isolated.
-- If another team needs to run your tests against an updated version of a service the tests depend on, you can just share the integration testing image - no need for them to compile or to setup a build toolchain.
+- If another team needs to run your tests against an updated version of a service the tests depend on, you can just share the integration testing image - no need for them to compile or to set up a build toolchain.
 - If you end up with multiple separate integration test containers, you can typically run all of them at the same time in parallel.
 
 A tip for using containerized integration tests is to use a separate docker-compose definition for them. For example, if most of your services exist in **docker-compose.yml** , you could add **docker-compose.test.yml** with integration test definitions. This means that **docker-compose up** brings up your usual services, while **docker-compose -f docker-compose.yml -f docker-compose.test.yml up** starts your integration tests. For a full example on how to achieve this, see this excellent [docker-compose integration testing](https://github.com/george-e-shaw-iv/integration-tests-example) repository from Ardan Labs.
@@ -83,3 +83,4 @@ Ok, ok - calling this out as being wrong isn't entirely fair. There are many sit
 Docker Compose can be an amazing tool for local development purposes. Although it has a few gotchas, it usually brings a lot of productivity benefits to many engineering teams, especially when used in conjunction with integration tests.
 
 If you're looking for more flexibility in defining containerized tests than docker-compose alone can provide, take a [look](https://github.com/earthly/earthly/blob/0f48f14/examples/integration-test/Earthfile#L38-L44) at [integration test support](https://docs.earthly.dev/guides/integration) in [Earthly](https://earthly.dev/).
+<!-- vale HouseStyle.H2 = YES -->

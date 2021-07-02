@@ -19,9 +19,9 @@ Earthly is an open-source tool designed to solve this problem. &nbsp;It's also p
 
 ## A Scala Example
 
-Earthly uses Earthfiles to encapsulate your build. &nbsp;If you imagine a [dockerfile](/blog/compiling-containers-dockerfiles-llvm-and-buildkit) mixed with a makefile you wouldn't be far off. &nbsp;
+Earthly uses Earthfiles to encapsulate your build. &nbsp;If you imagine a [dockerfile](/blog/compiling-containers-dockerfiles-llvm-and-buildkit) mixed with a Makefile you wouldn't be far off. &nbsp;
 
-Let's walk through creating an Earthfile for a scala project:
+Let's walk through creating an Earthfile for a Scala project:
 
 ```
 ├── build.sbt 
@@ -84,7 +84,7 @@ The first line is declaring the base docker image our build steps will run insid
 
 > You may have noticed the first time you build an sbt project, it takes a while to pull down all the project dependencies. &nbsp;This `deps` target is helping us avoid paying that cost every build. &nbsp; Calling `sbt update` and then `SAVE IMAGE` ensures that these steps are cached and can be used in further build steps. &nbsp;Earthly will only need to be rerun this step if our build files change.
 
-We can test out the deps step like this:
+We can test out the `deps` step like this:
 
 {% include imgf src="run.gif" alt="running earthly at command line" caption="Running `earthly +deps`" %}
 
@@ -99,7 +99,7 @@ build:
     RUN sbt compile
 ```
 
-<figcaption>earthfile continued</figcaption>
+<figcaption>Earthfile continued</figcaption>
 
 Inside the `build:` target we copy in our source files, and run our familiar `sbt compile`. &nbsp;We use `FROM +deps` to tell earthly that this step is dependent upon the output of our `deps` step above.
 
@@ -126,7 +126,7 @@ We can then run our tests like this:
 
 ### Containerize It
 
-The final step in our build is to build a docker container, so we can send this application off to run in Kuberenetes or EKS or whatever production happens to look like.
+The final step in our build is to build a docker container, so we can send this application off to run in Kubernetes or EKS or whatever production happens to look like.
 
 ``` dockerfile
 docker:
@@ -144,9 +144,9 @@ We can test out our docker image as follows:
 
 {% include imgf src="run4.gif" alt="building docker image using earthly" caption="Running `earthly +docker`" %}
 
-You can find the [full example here](https://github.com/earthly/earthly-example-scala/blob/simple/simple/earthfile). Now we can adjust our build process to call earthly and containerization ensures our builds are not effected by environmental issues either locally or on the build server. &nbsp;
+You can find the [full example on GitHub](https://github.com/earthly/earthly-example-scala/blob/simple/simple/earthfile). Now we can adjust our build process to call earthly and containerization ensures our builds are not effected by environmental issues either locally or on the build server. &nbsp;
 
-### Did we solve it?
+### Did We Solve It?
 
 We now have our `deps`, `build`, `test` and `docker` targets in our Earthfile. All together these give us a reproducible process for running our build locally and in our [CI](/blog/continuous-integration)  builds. &nbsp;We used earthly to encapsulate the build steps.
 
@@ -154,8 +154,8 @@ We now have our `deps`, `build`, `test` and `docker` targets in our Earthfile. A
 
 If a build fails in CI, we can run the same process locally and reproduce the failure. &nbsp;Reproducibility solved, in a familiar dockerfile-like syntax .
 
-## But wait there's more
+## But Wait There's More
 
 We haven't solved all the problems of CI, however. &nbsp;What about build parallelization? &nbsp;What about caching intermediate steps? &nbsp;How about multi-language builds with complicated interdependencies? &nbsp;Earthly has some solutions for those problems as well and I'll cover them in future tutorials. &nbsp;
 
-For now, you can find more details, such as how to install earthly and many more examples on **[github](https://github.com/earthly/earthly/blob/master/README.md). &nbsp;**
+For now, you can find more details, such as how to install earthly and many more examples on **[GitHub](https://github.com/earthly/earthly/blob/master/README.md). &nbsp;**

@@ -9,13 +9,13 @@ internal-links:
    - kubernetes
    - ingress
 ---
-*Here at Earthly, we are building an internal platform on AWS using EKS.  I talked to our lead architect Corey Larson about the decisions and trade offs he is making as he designs our platform.*
+*Here at Earthly, we are building an internal platform on AWS using EKS. I talked to our lead architect Corey Larson about the decisions and trade offs he is making as he designs our platform.*
 
  **What is an internal platform?**
 
 The internal platform is really the phrase I've always used in other places. &nbsp;It's the product that's not really the product that you're shipping.
 
-A way to think of it is your own company's internal cloud. What is the set of resources, toolings, workflows that you use to ship software to your company, which itself should really be a product that you ship to yourselves. So for Earthly, that means a whole stack of technology.
+A way to think of it is your own company's internal cloud. What is the set of resources, tooling, workflows that you use to ship software to your company, which itself should really be a product that you ship to yourselves. So for Earthly, that means a whole stack of technology.
 
 We're using AWS, we're using Kubernetes. We're hiding some parts of Kubernetes that we don't want to use from everyday usage, so we don't go there. We're making some trade-offs as to where we choose platform lock-in and where we're not. &nbsp;It's things like that. And as we add more services the platform should develop to accommodate those things in the way we choose to work.
 
@@ -29,7 +29,7 @@ The platform should cover from the moment source code is pushed to get all the w
 ## Kubernetes Ingest Strategies
 
 **What is Ingress and how do requests get to a service inside of Kubernetes?**  
-Ingress is the networking layer of how you get requests to your services from the outside. And Kubernetes doesn't really ship with an Ingress controller by default that actually performs all those liftings, they want you to bring your own. And there's a ton of really interesting ones out there. There's nginx that does that, there's people who use Caddy to do some of that stuff. There's newer ones that are cloud native. They're in that giant behemoth of a chart, the cloud native compute foundation puts up, that gets memed all the time on Twitter.
+Ingress is the networking layer of how you get requests to your services from the outside. And Kubernetes doesn't really ship with an Ingress controller by default that actually performs all those functions, they want you to bring your own. And there's a ton of really interesting ones out there. There's Nginx that does that, there's people who use Caddy to do some of that stuff. There's newer ones that are cloud native. They're in that giant behemoth of a chart, the cloud native compute foundation puts up, that gets memed all the time on Twitter.
 
 The way it works is a request comes from the internet and it's going to hit some kind of a load balancer usually. We're using one of Amazon's application load balancers, but in the past I've just used even regular HAProxy or things like that. And from there, it bounces into your cluster. Your Ingress controller is going to pick it up, figure out where it should go, which services it should get routed to and route it to that service. And then, your service will generate a response and it follows these layers of the onion back out.
 
@@ -41,13 +41,13 @@ The one's like Traefik. It's still like a traditional ingress controller. And I 
 
 People took the opportunity with it being a new landscape with lots of containers in a large, orchestrated environment to build service meshes. Istio is out there, as one example there, and they have their own huge API with all their CRDs and everything else to create these service meshes that route things around and figure out who's where. I personally find them pretty complex, and I like to avoid them. I like more standard comprehendible routing approaches.
 
-**I've usually seen people use nginx. So why not nginx, and why Traefik?**
+**I've usually seen people use Nginx. So why not Nginx, and why Traefik?**
 
-Back when I first was doing some Kubernetes work, we were spinning up our first cluster. We were in Azure and we were, they didn't have a managed offering at the time we were using some deployment script from Azure team to get it up and running. And, I don't remember what we were using for Ingress. I remember there was the Calico networking layer in there, but... We would do things, and then suddenly the cluster would just stop routing traffic entirely. And, among other things, we chose to move off of Azure. So we went to AWS, and we actually started trying to work with the nginx proxy. And it uses your standard nginx server configuration to do a lot of configuration. Personally, I always have to Google a lot on those configuration files, cause they can get pretty complex
+Back when I first was doing some Kubernetes work, we were spinning up our first cluster. We were in Azure and we were, they didn't have a managed offering at the time we were using some deployment script from Azure team to get it up and running. And, I don't remember what we were using for Ingress. I remember there was the Calico networking layer in there, but... We would do things, and then suddenly the cluster would just stop routing traffic entirely. And, among other things, we chose to move off of Azure. So we went to AWS, and we actually started trying to work with the Nginx proxy. And it uses your standard Nginx server configuration to do a lot of configuration. Personally, I always have to Google a lot on those configuration files, cause they can get pretty complex
 
-But we tried Traefik, and it just kind of worked, and all of the options of things we wanted to do were first class citizens, in terms of route matching and everything else to get the Traefik where it needed to go. And so, we just stuck with it. At the time, the guy I was working with, he would make fun of me a lot, cause I liked to use Go. And I hesitated to suggest Traefik to them early on, because their mascot's the go gopher with the traffic cones and everything else. And I didn't want them to think I was more of a fan boy than I actually was. So I held off suggesting it to him for a while. So we spun our tires a little longer on nginx than we should have. And I think it's gotten better since then, but I just have enough knowledge around how Traefik works in it.
+But we tried Traefik, and it just kind of worked, and all of the options of things we wanted to do were first class citizens, in terms of route matching and everything else to get the Traefik where it needed to go. And so, we just stuck with it. At the time, the guy I was working with, he would make fun of me a lot, cause I liked to use Go. And I hesitated to suggest Traefik to them early on, because their mascot's the go gopher with the traffic cones and everything else. And I didn't want them to think I was more of a fan boy than I actually was. So I held off suggesting it to him for a while. So we spun our tires a little longer on Nginx than we should have. And I think it's gotten better since then, but I just have enough knowledge around how Traefik works in it.
 
-**Have you ever used nginx Lua scripting?**
+**Have you ever used Nginx Lua scripting?**
 
 Infrastructure should be declarative, at least in my book. I don't want a program that I have to then debug to figure out what my configuration actually is. For better or worse, a pile of [YAML](/blog/intercal-yaml-and-other-horrible-programming-languages) is not going to change on you once you ship it somewhere else, and it's not going to have bugs. It's all there, it's all declarative. You can put it in Git, and see who did what, when, to your infrastructure.
 
@@ -69,7 +69,7 @@ Kubernetes will handle that, "Hey, no more traffic comes to this node." And then
 
 But, there's more to it than that because there's the whole adventure that takes place before it's live in production taking traffic.
 
-## Testing in production
+## Testing in Production
 
 What I'm hoping to do for us as we're going forward here is, that we can stick new deployments out on production in some small way, and then use our Ingress controller to send it some traffic. Then we can actually [test](/blog/unit-vs-integration) the new version of the code in production without affecting anybody as a canary before we choose to roll that actually out to everybody.
 

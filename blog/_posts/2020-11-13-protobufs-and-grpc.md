@@ -14,13 +14,13 @@ Following this success, in 2016 Google released gRPC. &nbsp; gRPC offered a way 
 
 gRPC is a great solution for communicating between internal microservices. There's [plenty](https://phenopackets-schema.readthedocs.io/en/latest/protobuf.html) [of](https://www.ionos.ca/digitalguide/websites/web-development/protocol-buffers-explained/) [articles](https://www.baeldung.com/google-protocol-buffer) and documentation that covers [protobufs](https://developers.google.com/protocol-buffers) and [gRPC](https://grpc.io/), but when I am considering a new technology, I learn best by seeing a working example. &nbsp;In this blog post I'm going build an example using Go, Python and Ruby.
 
-## First Step: Implementing a gRPC client using Go
+## First Step: Implementing a gRPC Client using Go
 
 Let's write an in-memory key/value micro-service in Go, and some clients in both Python and Ruby.
 
 Our server will allow users to set and get data from a key/value store.
 
-{% include imgf src="server.png" alt="handddrawn cartoon for a person talking to a computer server" caption="Interacting with the server" %}
+{% include imgf src="server.png" alt="hand drawn cartoon for a person talking to a computer server" caption="Interacting with the server" %}
 
 First let's design our API in a proto file:
 
@@ -57,7 +57,7 @@ First let's design our API in a proto file:
 
 ```
 
-Next we need to compile this proto file into Go code. On a Mac one might be tempted to run _brew install protobuf_, or if you're on linux you might want to see if _apt-get install protoc_ will magically work, but rather than do that, we will use earthly to containerize these tools. This will allow you to share this code with other developers, and ensure everyone can compile proto files across multiple platforms using the same version to eliminate compatibility issues.
+Next we need to compile this proto file into Go code. On a Mac one might be tempted to run _brew install protobuf_, or if you're on Linux you might want to see if _apt-get install protoc_ will magically work, but rather than do that, we will use earthly to containerize these tools. This will allow you to share this code with other developers, and ensure everyone can compile proto files across multiple platforms using the same version to eliminate compatibility issues.
 
 Here's what an Earthfile would look like for installing Google protobufs inside an Ubuntu image, and generating the protobuf code using the protoc-gen-go-grpc tool:
 
@@ -87,7 +87,7 @@ Here's what an Earthfile would look like for installing Google protobufs inside 
 
 This will then produce two go files under the go-pb directory: api.pb.go and api\_grpc.pb.go which contains the auto generated protobuf and grpc code respectively.
 
-At this point, assuming that earth is already [installed](https://docs.earthly.dev/installation), give it a try for yourself with code from our [example repo](https://github.com/earthly/example-grpc-key-value-store):
+At this point, assuming that earth is already [installed](https://docs.earthly.dev/installation), give it a try for yourself with code from our [example repository](https://github.com/earthly/example-grpc-key-value-store):
 
 ```
     git clone https://github.com/earthly/example-grpc-key-value-store.git
@@ -190,7 +190,7 @@ Next we will compile the go code and save it as a docker image with the followin
         SAVE IMAGE as kvserver:latest
 ```
 
-You can give it a try on your own by using our example code in our GitHub repo, just run:
+You can give it a try on your own by using our example code in our GitHub repository, just run:
 
 ``` bash
     git clone https://github.com/earthly/example-grpc-key-value-store.git
@@ -206,7 +206,7 @@ Then start up the server in Docker, by running:
 
 * * *
 
-## Next step: Implementing a gRPC client using Python
+## Next step: Implementing a gRPC Client Using Python
 
 Now that we've built and launched our Go-based key-value-store server, we'll cover how to talk to it using a Python client. Remember that initial Earthfile that generated the Go code? We'll extend it to _pip install grpc_ tooling, and generate Python code:
 
@@ -318,7 +318,7 @@ And if all went well, you should see some output on both the client and server c
 
 * * *
 
-## Final step: Implementing a gRPC client using Ruby
+## Final Step: Implementing a gRPC Client Using Ruby
 
 We've come a long ways with our Go and Python gRPC examples, but what if you also wanted to include a Ruby gRPC client implementation too? Well let's extend our proto Earthfile to generate Ruby protobufs too:
 
@@ -368,4 +368,4 @@ Then you can try querying the server to see what the weather was set to:
 And if all went well, it'll tell you that it's sunny outside.
 {% include imgf src="sun.png" alt="drawing of the sunn" caption="It's Sunny Outside"%}
 
-So there we go. &nbsp;You can find the code for the server and the two clients in [github here](https://github.com/earthly/example-grpc-key-value-store).
+So there we go. &nbsp;You can find the code for the server and the two clients in [GitHub](https://github.com/earthly/example-grpc-key-value-store).

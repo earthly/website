@@ -11,15 +11,15 @@ internal-links:
 ---
 ## Introduction
 
-Have you ever wanted to see what kinds of requests a service or application on your machine is making and what kind of responses it is getting back?  Have you ever tried and failed to capture this traffic or modify it to investigate how something works (or doesn't work).  If you have, then mitmproxy might be what you need. Being able to scan through and observe HTTP protocol traffic easily is a great debugging aid.
+Have you ever wanted to see what kinds of requests a service or application on your machine is making and what kind of responses it is getting back? Have you ever tried and failed to capture this traffic or modify it to investigate how something works (or doesn't work). If you have, then mitmproxy might be what you need. Being able to scan through and observe HTTP protocol traffic easily is a great debugging aid.
 
-This guide will walk you through installing and using mitmproxy to capture HTTPS requests.  We will start with macOS traffic capture, then touch on Linux and Windows and then finally show how to capture docker daemon traffic and docker container traffic.  
+This guide will walk you through installing and using mitmproxy to capture HTTPS requests. We will start with macOS traffic capture, then touch on Linux and Windows and then finally show how to capture docker daemon traffic and docker container traffic.  
 
-## What is mitmproxy?
+## What Is mitmproxy?
 
-mitmproxy is a command-line tool that acts as a HTTP and HTTPS proxy and records all the traffic.  You can easily see what requests are being made and even replay them.  It's great for diagnosing problems.
+mitmproxy is a command-line tool that acts as a HTTP and HTTPS proxy and records all the traffic. You can easily see what requests are being made and even replay them. It's great for diagnosing problems.
 
-## Installing it
+## Installing It
 
 On Mac, mitmproxy is easy to install with brew:
 
@@ -29,7 +29,7 @@ brew install mitmproxy
 
 On Windows and Linux, [download the binary release](https://docs.mitmproxy.org/stable/overview-installation/) and place it somewhere in your path.
 
-## #1 Start it up
+## #1 Start It Up
 
 To start up mitmproxy, type `mitmproxy`, and it will start up bound to port 8080.
 
@@ -45,11 +45,11 @@ mitmproxy also has a web interface if you prefer the mouse over VIM keybindings.
 {% include imgf src="2.png" alt="mitmproxy starting up" %}
 {% include imgf src="3.png" alt="mitmweb starting up" %}
 
-We will use both throughout the tutorial.  Whichever you choose, start it up and leave it running.
+We will use both throughout the tutorial. Whichever you choose, start it up and leave it running.
 
 ## #2 Proxy Our Connection
 
-Let's set up our internet connection to use this proxy. On macOS, Under `Setting -> Network`, select your connection and click advanced.
+Let's set up our internet connection to use this proxy. On macOS, Under `Setting -> Network`, choose your connection and select advanced.
 
 {% include imgf src="4.png" alt="Setting -> Network on macOS" caption="`Setting -> Network` on macOS" %}
 
@@ -63,25 +63,25 @@ Under proxies, enable both HTTP and HTTPS proxies and choose port 8080:
 
 ## Adding mitmproxy as A Certificate Authority
 
-We now have our connection proxied to go through our instance of mitmproxy.  However, if we attempt to make a HTTPS-based request in a web browser (loading twitter.com for example), something interesting happens.
+We now have our connection proxied to go through our instance of mitmproxy. However, if we attempt to make a HTTPS-based request in a web browser (loading twitter.com for example), something interesting happens.
 
 {% include imgf src="6.png" alt="Chrome does not recognize the certificate" caption="Chrome does not recognize the certificate" %}
 
 Chrome is warning us that we might be subject to a man in the middle attack.
 
-### What is a man in the middle
+### What Is a Man in the Middle?
 
-A man in middle attack (MITM) is a security threat where an attacker can get between incoming and outgoing requests.  You think you are talking to Twitter.com, but you are talking to the man in the middle, who is talking to Twitter for you.  This MITM can view everything you send and even change what you receive.
+A man in middle attack (MITM) is a security threat where an attacker can get between incoming and outgoing requests. You think you are talking to Twitter.com, but you are talking to the man in the middle, who is talking to Twitter for you. This MITM can view everything you send and even change what you receive.
 
 {% include imgf src="7.png" alt="Diagram of Man in the middle" %}
 
-The HTTPS protocol prevents MITM attacks.  The HTTPS protocol is pretty complex, but all we need to know is that HTTPS uses a trusted Certificate Authority (CA) to sign a certificate. Our browsers assume that if a trusted CA signs the certificate, we are talking directly to who we think we are.
+The HTTPS protocol prevents MITM attacks. The HTTPS protocol is pretty complex, but all we need to know is that HTTPS uses a trusted Certificate Authority (CA) to sign a certificate. Our browsers assume that if a trusted CA signs the certificate, we are talking directly to who we think we are.
 
 You can view what CA signed the certificate of the website you are viewing in your browser.
 
 {% include imgf src="8.png" alt="Viewing a certificate in your browser" caption="Viewing a certificate in your browser" %}
 
-This is great for protecting online communication but problematic for our debugging purposes. We are trying to man in the middle our own requests.  To help overcome this, mitmproxy has generated a certificate. All we need is to get our machine to trust it.
+This is great for protecting online communication but problematic for our debugging purposes. We are trying to man in the middle our own requests. To help overcome this, mitmproxy has generated a certificate. All we need is to get our machine to trust it.
 
 {% include imgf src="9.png" alt="Getting a Certificate signed by an unknown certificate authority" caption="Getting a Certificate signed by an unknown certificate authority" %}
 
@@ -132,7 +132,7 @@ QyVJfmCmjt2i=
 
 *Note: Once we instruct our machine to trust this certificate, someone with the private key who controlled your internet connection, like your ISP, could use it to MITM your connection. For this reason, don't share your MITM private key, or any private key, with others.*
 
-## Add the Cert On MacOS
+## Add the Cert on MacOS
 
 On macOS, the easiest way to add a new CA is to copy it to the desktop and then double-click it.
 
@@ -142,7 +142,7 @@ cp ~/.mitmproxy/mitmproxy-ca-cert.cer ~/Desktop
 
 {% include imgf src="10.png" alt="Getting a Certificate signed by an unknown certificate authority" %}
 
-You will be prompted for your credentials, and the certificate will be added as 'untrusted'.
+You will be prompted for your credentials, and the certificate will be added as `untrusted`.
 
 Double-click on the certificate in the Keychain list and set the 'Secure Sockets Layer' drop down to 'Always Trust'
 
@@ -152,7 +152,7 @@ You will then be prompted for your password again, and then your certificate wil
 
 {% include imgf src="13.png" alt="mitmproxy certificate proxy always trusted" %}
 
-## Installing The Trusted Root Certificate On Windows
+## Installing the Trusted Root Certificate On Windows
 
 If you are on Windows, follow this guide [to add the MITM root certificate as a trusted root certificate authority](https://docs.microsoft.com/en-us/skype-sdk/sdn/articles/installing-the-trusted-root-certificate).
 
@@ -170,7 +170,7 @@ On Debian-based Linux distributions, follow these steps:
 
 ## Great Success
 
-At this point, assuming you still have mitmproxy running and you still have your network interface setup to proxy through `localhost:8080`, you should be able to view all the HTTP and HTTPS network requests your machine is making in the mitmproxy (or MITMWeb) window.
+At this point, assuming you still have mitmproxy running and you still have your network interface setup to proxy through `localhost:8080`, you should be able to view all the HTTP and HTTPS network requests your machine is making in the mitmproxy (or mitmweb) window.
 
 Here is Slack making requests:
 {% include imgf src="14.png" alt="mitmweb has captured a request from the slack application" caption="mitmweb has captured a request from the slack application" %}
@@ -179,23 +179,23 @@ All HTTPS connections now have certificates signed by mitmproxy, which your mach
 
 {% include imgf src="15.png" alt="Google.com now shows a mitmproxy signed certificate" caption="Google.com now shows a mitmproxy signed certificate" %}
 
-## MITM The Docker Linux Container Host on macOS & Windows
+## MITM the Docker Linux Container Host on macOS & Windows
 
 {% include imgf src="16.png" alt="Diagram of docker runtime on macOS and Windows" caption="Docker containers run differently on macOS and Windows" %}
 
 At this point,  we can successfully capture traffic on our host operating system. Unfortunately, this is insufficient for capturing docker container traffic on macOS and Windows. So let's move on to proxying traffic on the Linux Container Host.  
 
-On macOS and Windows, Linux containers do not run on the host OS. They can't because they need a Linux host to run.  Instead, they run on the Linux Container Host, a VM that Docker Desktop manages.  
+On macOS and Windows, Linux containers do not run on the host OS. They can't because they need a Linux host to run. Instead, they run on the Linux Container Host, a VM that Docker Desktop manages.  
 
 To see the docker daemon's incoming and outgoing requests, we need to get our proxy settings and our certificate authority into that VM.
 
-Before we proceed, we need to clear the proxy settings on the [host network](/blog/docker-networking) connection. We can leave mitmproxy (or MITMWeb running).
+Before we proceed, we need to clear the proxy settings on the [host network](/blog/docker-networking) connection. We can leave mitmproxy (or mitmweb running).
 
 On Windows and macOS, the easiest way to configure a proxy is via `Docker Desktop.`  Configure the proxy settings under `Preferences -> Resources -> Proxies.`
 
 {% include imgf src="18.png" alt="Configure the proxy settings under Preferences -> Resources -> Proxies." caption="Configure the proxy settings under `Preferences -> Resources -> Proxies.`" %}
 
-With that done, the network interface will be proxied.  All that is left to do is get our certificate trusted by the Linux container host. Thankfully, Docker Desktop takes care of this for us.  On startup, Docker Desktop loads the trusted root certificates from the host machine into the Docker VM, so all we need to do is restart docker. (`Restart Docker` in Docker Desktop).
+With that done, the network interface will be proxied. All that is left to do is get our certificate trusted by the Linux container host. Thankfully, Docker Desktop takes care of this for us. On startup, Docker Desktop loads the trusted root certificates from the host machine into the Docker VM, so all we need to do is restart docker. (`Restart Docker` in Docker Desktop).
 
 ## Docker MITM on Linux
 
@@ -220,7 +220,7 @@ On Linux, we can add a proxy by editing the docker client config and then restar
 
 ```
 
-### Test it
+### Test It
 
 After restarting, we can test the proxying by performing a docker pull for a random image
 
@@ -252,7 +252,7 @@ We can then see the requests and responses in our proxy:
 
 We can even see the binary payload of the layer requests and the fact that docker uses Cloudflare as a CDN.
 
-{% include imgf src="20.png" alt="" caption="mitmweb request for cloudflare.docker.com" %}
+{% include imgf src="20.png" alt="" caption="mitmweb request for Cloudflare.docker.com" %}
 
 ## *Troubleshooting*
 
@@ -300,7 +300,7 @@ If you'd like to turn off curl's verification of the certificate, use
 
 ## Adding the CA Cert to our Linux Container
 
-The solution here is a familiar one.  We need to follow the steps we used above for configuring Linux to trust a certificate authority, but we need to do it inside our container.
+The solution here is a familiar one. We need to follow the steps we used above for configuring Linux to trust a certificate authority, but we need to do it inside our container.
 
 There are several ways to accomplish this.
 
@@ -461,7 +461,7 @@ The document has moved
 # Success
 ```
 
-## But wait, there's more
+## But Wait, There's More
 
 {% include imgf src="22.png" alt="man in the middle diagram" %}
 

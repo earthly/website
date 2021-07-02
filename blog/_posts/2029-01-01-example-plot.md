@@ -5,6 +5,7 @@ categories:
   - Tutorials
 toc: true # Include for tutorials
 last_modified_at: 2020-01-07
+published: False
 author: Adam
 ---
 You can embedded graphs into the markdown like this:
@@ -67,7 +68,7 @@ for im in images:
 
 ```
 
-## How to install pandoc-plot
+## How to Install `pandoc-plot`
 
 If you are using the docker container and jekyll, it should just work.  
 
@@ -75,10 +76,10 @@ Manual Mac setup:
 
 * `brew install pandoc`
 * `brew install pandoc-plot`
-* install specific libs: `pandoc-plot toolkits` to list
+* install specific libraries: `pandoc-plot toolkits` to list
   * `pip3 install matplotlib` for matplotlib
 
-## How to run pandoc-plot
+## How to Run `pandoc-plot`
 
 The site will run pandoc-plot itself, but if you want to run it manually here is how:
 

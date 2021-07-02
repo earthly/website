@@ -28,7 +28,7 @@ Here are some highlights, lightly edited:
 >
 > **Reality check:** the DSL you embedded in your config file isn't as "human readable" as you think it is.
 
-## DHALL is Strange
+## Dhall Is Strange
 
 [AndyC](https://lobste.rs/s/1nxt6g/intercal_yaml_other_horrible#c_pc0dt6) thought that Dhall was not the right answer to the YAML problem:
 
@@ -36,14 +36,14 @@ Here are some highlights, lightly edited:
 >
 > From the surface, it seems like HCL, jsonnet, and Cue, are just as suitable as Dhall, and probably more familiar (to varying degrees).
 
-This is an excellent point.  [HCL](https://github.com/hashicorp/hcl) does look a bit less strange to outsiders, and Hashicorp already has mindshare in the DevOps community, and it certainly beats config templates.
+This is an excellent point.  [HCL](https://github.com/hashicorp/hcl) does look a bit less strange to outsiders, and HashiCorp already has mind share in the DevOps community, and it certainly beats config templates.
 
 ## DSL Creation Story
 
-Reddit user [XANi_](https://www.reddit.com/r/programming/comments/ls6tgm/intercal_yaml_and_other_horrible_programming/gopf8fj/?utm_source=reddit&utm_medium=web2x&context=3) explained how DSL's embedded in YAML keep getting created:
+reddit user [XANi_](https://www.reddit.com/r/programming/comments/ls6tgm/intercal_yaml_and_other_horrible_programming/gopf8fj/?utm_source=reddit&utm_medium=web2x&context=3) explained how DSL's embedded in YAML keep getting created:
 > The vicious cycle of
 >
-> * We don't want config to be turing complete, we just need to declare some initial setup
+> * We don't want config to be Turing complete, we just need to declare some initial setup
 >
 > * Oops, we need to add some conditions. Just code it as data, changing config format is too much work
 >
@@ -57,7 +57,7 @@ Reddit user [XANi_](https://www.reddit.com/r/programming/comments/ls6tgm/interca
 <!-- markdownlint-disable MD028 -->
 Many readers pointed out that their development community skipped right by this DSL dead end by using a full programming language for build and config needs:
 
-> I always thought it was weird that a lot of web technologies take config files that are executable javascript. (Thinking of webpack). But it makes a lot of sense now, and I much prefer that approach. - [Bunny](https://www.reddit.com/r/programming/comments/ls6tgm/intercal_yaml_and_other_horrible_programming/gopq0uv/?utm_source=reddit&utm_medium=web2x&context=3)
+> I always thought it was weird that a lot of web technologies take config files that are executable JavaScript. (Thinking of webpack). But it makes a lot of sense now, and I much prefer that approach. - [Bunny](https://www.reddit.com/r/programming/comments/ls6tgm/intercal_yaml_and_other_horrible_programming/gopq0uv/?utm_source=reddit&utm_medium=web2x&context=3)
 
 > It's fairly common in Pythonland \[ to just use Python\] ...
 >
@@ -69,8 +69,8 @@ Many readers pointed out that their development community skipped right by this 
 
 Hillel Wayne wrote a [great newsletter](https://buttondown.email/hillelwayne/archive/a3fe2688-464d-4f98-ae6b-207e7b5a1255) on YAML, and the ways it's abused. He pointed out that the main competition for embedding your DSL into YAML is writing a parser, and using YAML is just easier.
 
->[YAML] preparses the content for us. This isn't a big enough draw to YAMLize complex programming languages, but it's a huge huge deal for small DSLs. I suspect that's the main reason why semgrep uses YAML for its rules and why so many technologies jury-rig it into a configuration language
+>[YAML] pre-parses the content for us. This isn't a big enough draw to YAMLize complex programming languages, but it's a huge deal for small DSLs. I suspect that's the main reason why semgrep uses YAML for its rules and why so many technologies jury-rig it into a configuration language
 
-You can see the full commentary on the orginal article on [Reddit](https://www.reddit.com/r/programming/comments/ls6tgm/intercal_yaml_and_other_horrible_programming/), on [Hacker News](https://news.ycombinator.com/item?id=26271582) and on [Lobste.rs](https://lobste.rs/s/1nxt6g/intercal_yaml_other_horrible).
+You can see the full commentary on the original article on [reddit](https://www.reddit.com/r/programming/comments/ls6tgm/intercal_yaml_and_other_horrible_programming/), on [Hacker News](https://news.ycombinator.com/item?id=26271582) and on [Lobste.rs](https://lobste.rs/s/1nxt6g/intercal_yaml_other_horrible).
 
 [^1]: To clarify, YAML, when used as the syntax frontend for a domain-specific, vendor-specific, programming language is a bad idea. I am aware YAML is not a programming language itself.

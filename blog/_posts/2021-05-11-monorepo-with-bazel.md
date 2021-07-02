@@ -68,7 +68,7 @@ Each label has two parts: a package name (`app/main`) and a target name (`app_bi
 
 ### Dependencies
 
-Target X is considered a dependency for target Y, if Y needs X at build or execution time. The dependency relation produces a [Directed Acyclic Graph](https://en.wikipedia.org/wiki/Directed_acyclic_graph) (DAG) called a *dependency graph*, which is used to classify these dependencies further. You can read more about [these types and their definitions here](https://docs.bazel.build/versions/4.0.0/build-ref.html#dependencies).
+Target X is considered a dependency for target Y, if Y needs X at build or execution time. The dependency relation produces a [Directed Acyclic Graph](https://en.wikipedia.org/wiki/Directed_acyclic_graph) (DAG) called a *dependency graph*, which is used to classify these dependencies further. You can read more about [these types and their definitions](https://docs.bazel.build/versions/4.0.0/build-ref.html#dependencies).
 
 ### Build Files
 
@@ -154,7 +154,7 @@ test:debug --test_arg=--node_options=--inspect-brk --test_output=streamed --test
 
 ### Adding the `buildifier` Dependency to Your Project
 
-Buildifier is a formatting tool that ensures all `BUILD` files are formatted in a similar fashion. It creates a standardized formatting for all your `BUILD` and `.bzl` files.  It also has a linter out of the box to help you detect issues in your code and automatically fix them. You can add the `buildifier` dependency to your project either using npm:
+Buildifier is a formatting tool that ensures all `BUILD` files are formatted in a similar fashion. It creates a standardized formatting for all your `BUILD` and `.bzl` files. It also has a linter out of the box to help you detect issues in your code and automatically fix them. You can add the `buildifier` dependency to your project either using npm:
 
 ```shell
 npm install --save-dev @bazel/buildifier

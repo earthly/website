@@ -98,9 +98,9 @@ exclude:
   - .bundle
   - .jekyll-assets-cache
   - .sass-cache
-  - assets/js/plugins
-  - assets/js/_main.js
-  - assets/js/vendor
+  # - assets/js/plugins
+  # - assets/js/_main.js
+  # - assets/js/vendor
   - Capfile
   - CHANGELOG
   - config
@@ -125,7 +125,7 @@ markdown_ext: "md"
 markdown: Pandoc
 highlighter: rouge
 lsi: false
-excerpt_separator: "\n\n"
+excerpt_separator: "</p>"
 incremental: false
 
 pandoc:
@@ -200,3 +200,7 @@ defaults:
     values:
       header:
         overlay_image: /assets/images/default-header.jpg
+  - scope:
+      path: "/_posts/*example*.md"
+    values: 
+      published: False

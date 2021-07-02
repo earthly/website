@@ -19,6 +19,10 @@ base-image:
   RUN apt-get install python3-matplotlib libvips-dev python3-pip npm -y
   RUN pip3 install pandocfilters
   RUN npm install -g markdownlint-cli 
+
+  # Vale
+  RUN curl -sfL https://install.goreleaser.com/github.com/ValeLint/vale.sh | sh -s v2.10.3
+  RUN cp /site/bin/vale /bin
   SAVE IMAGE --push agbell/website-base:latest #Acts as a cache
 
 deps:
@@ -77,20 +81,37 @@ blog-install:
 blog-lint:
   #FROM +blog-install
   FROM agbell/blog-install
-  COPY blog .
-  IF grep '[“”‘’]' ./_posts/*.md
+  COPY .vale.ini .
+  COPY blog/.markdownlintrc .
+  COPY .github .github
+  COPY blog blog
+  RUN vale --output line --minAlertLevel error ./blog/_posts/*.md
+  IF grep '[“”‘’]' ./blog/_posts/*.md
     RUN echo "Fail: Remove curly quotes and use straight quotes instead" && false
   END  
-  IF grep 'imgur.com' ./_posts/*.md
+  IF grep 'imgur.com' ./blog/_posts/*.md
     RUN echo "Fail: external image link" && false
   END
-  RUN markdownlint "./_posts/*.md"
+  RUN markdownlint "./blog/_posts/*.md"
 
 blog-lint-apply:
   LOCALLY
   RUN sed -i -E "s/“|”/\"/g" ./blog/_posts/*.md
   RUN sed -i -E "s/‘|’/'/g" ./blog/_posts/*.md
+  # remove double spaces
+  RUN sed -i -E "s/\.\s\s(\w)/. \1/g" ./blog/_posts/*.md
+  RUN sed -i -E "s/\?\s\s(\w)/? \1/g" ./blog/_posts/*.md
+  RUN vale --output line --minAlertLevel error ./blog/_posts/*.md
   RUN cd blog && markdownlint --fix "./_posts/*.md"
+
+
+blog-writing-suggestions:
+  FROM agbell/blog-install
+  COPY .vale.ini .
+  COPY blog/.markdownlintrc .
+  COPY .github .github
+  COPY blog blog
+  RUN vale ./blog/_posts/*.md
 
 blog-build:
   #FROM +blog-install
@@ -173,6 +194,7 @@ new-post:
   LOCALLY
   ARG name="one-two-three"
   RUN cat ./blog/_posts/2029-01-01-checklist.md > ./blog/_posts/$(date -v +7d +"%Y-%m-%d")-$name.md
+  RUN sed -i -E "s/published: False//g" ./blog/_posts/$(date -v +7d +"%Y-%m-%d")-$name.md
   RUN mkdir ./blog/assets/images/$name
   RUN cp ./blog/assets/images/default-header.jpg ./blog/assets/images/$name/header.jpg
 

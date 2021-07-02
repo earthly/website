@@ -10,9 +10,7 @@ internal-links:
 
 We live in an era of continuous delivery, containers, automation, rich set of programming languages, varying code structures (mono/poly-repos) and open-source. And yet, our most popular CI/CD platform was started 15 years ago when the industry looked very different. CI systems have not changed much since — they are still largely glorified bash scripts, and the limitations are starting to show their age. For context, Docker's first release was 7 years ago and Kubernetes is only 5 years old. There is no way Jenkins ("Hudson" back then) could have been built with containers in mind, as Docker didn't even exist at the time.
 
-{% include imgf src="adoption.png" alt="graph of CI usage"
-caption="Source [Lawrence Hecht](https://medium.com/u/d3b222569e15?source=post_page-----55619c63c3e----------------------), Source [CNCF 2019 Survey](https://www.cncf.io/wp-content/uploads/2020/03/CNCF_Survey_Report.pdf)"
-%}
+{% include imgf src="adoption.png" alt="graph of CI usage" caption="Source [Lawrence Hecht](https://medium.com/u/d3b222569e15?source=post_page-----55619c63c3e----------------------), Source [CNCF 2019 Survey](https://www.cncf.io/wp-content/uploads/2020/03/CNCF_Survey_Report.pdf)" %}
 
 During this time, tech giants have innovated in parallel and have open-sourced tools like [Bazel](https://bazel.build/) and [Pants](https://www.pantsbuild.org/). They bring modern features, like reproducibility, determinism, the ability to scale in a monorepo and the ability to use cloud-based cache and parallelization.
 
@@ -24,7 +22,7 @@ Although these systems are probably some of the most advanced build automation t
 
 With the purpose of bringing these modern capabilities to people out in the real world, today we are announcing the release of [Earthly: a build automation tool for the container era](https://www.earthly.dev/).
 
-**Earthly is not meant to replace your existing open-source tooling, but rather to leverage and augment it**. It does not replace your Gradle, your Maven, your NPM, your webpack — you don't need to rewrite your build. Instead, it leverages these popular technologies and builds on top of them, acting more like the glue.
+**Earthly is not meant to replace your existing open-source tooling, but rather to leverage and augment it**. It does not replace your Gradle, your Maven, your npm, your webpack — you don't need to rewrite your build. Instead, it leverages these popular technologies and builds on top of them, acting more like the glue.
 
 **Earthly runs all build targets containerized: they get container isolation and layer caching**. Nothing is shared between build targets, other than clearly defined, immutable build artifacts and Docker images.
 
@@ -32,7 +30,7 @@ With the purpose of bringing these modern capabilities to people out in the real
 
 **But most importantly, all builds are completely reproducible**. You get a guarantee that the build succeeds on its own and not because of your local dependencies or some environmental config that you're not aware of. Thus, it becomes an order of magnitude easier to iterate on and debug broken CI builds.
 
-![Screenshot of commmits for a failing build]({{site.images}}{{page.slug}}/commits.png)\
+![Screenshot of commits for a failing build]({{site.images}}{{page.slug}}/commits.png)\
 
 **A familiar Dockerfile-like syntax is used** , to help new users get up-to-speed quickly. It's like Dockerfile and Makefile had a baby. However, in contrast to Dockerfiles, you can also output regular artifacts (jars, packages, binaries, arbitrary files), in addition to Docker images.
 
@@ -53,7 +51,7 @@ docker:
 
 Earthly in the future will be about much more: for example, cloud-based build parallelization that has never been possible before. For now, you can run it on top of your existing CI, and you can run it locally for development. You still get the other benefits mentioned above.
 
-There are many other goodies that Earthly provides. For more information and also installation instructions, see the [**Earthly Readme on GitHub**](https://github.com/vladaionescu/earthly#earthly---build-automation-for-the-container-era).
+There are many other goodies that Earthly provides. For more information and also installation instructions, see the [**Earthly ReadMe on GitHub**](https://github.com/vladaionescu/earthly#earthly---build-automation-for-the-container-era).
 
 This is the first release of Earthly. We will continue to iterate, make improvements and, most importantly, incorporate user feedback. We can't wait to see what you build with it!
 

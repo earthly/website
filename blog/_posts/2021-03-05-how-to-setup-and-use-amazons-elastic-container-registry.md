@@ -28,7 +28,7 @@ Finally, the free Docker Hub plan has added a restrictive retention policy. They
 
 ## Introducing Amazon Elastic Container Registry (ECR)
 
-Amazon ECR is a fully managed container registry offered as part of the AWS suite. Like Docker Hub, it makes storing, sharing, managing, and deploying your images easier, but it's also likely to save you money - especially if you're already using AWS. Simply push your images to ECR and pull the images using container management tool: [Kuberenetes](https://kubernetes.io/), [Docker Compose](https://docs.docker.com/compose/), [ECS](https://aws.amazon.com/ecs), [EKS](https://aws.amazon.com/eks), etc.
+Amazon ECR is a fully managed container registry offered as part of the AWS suite. Like Docker Hub, it makes storing, sharing, managing, and deploying your images easier, but it's also likely to save you money - especially if you're already using AWS. Simply push your images to ECR and pull the images using container management tool: [Kubernetes](https://kubernetes.io/), [Docker Compose](https://docs.docker.com/compose/), [ECS](https://aws.amazon.com/ecs), [EKS](https://aws.amazon.com/eks), etc.
 
 ### Pricing
 
@@ -37,7 +37,7 @@ Generally, public repositories are suitable for open-source developers sharing t
 - **Private Repositories**: As a part of the AWS free tier, you get 500 MB of storage for one year for private repositories. Beyond that, the storage cost is $0.10 per GB-month of data storage for private repositories.
 - **Public Repositories**: ECR offers 50 GB-month of free storage and 500 GB to 5 TB (depending on whether you authenticate with AWS or not) for public repositories. Beyond that, the storage cost is $0.10 per GB-month of data storage.
 
-There may be additional costs depending on your region and usage, so be sure to check the pricing [here](https://aws.amazon.com/ecr/pricing/).
+There may be additional costs depending on your region and usage, so be sure to check the [pricing](https://aws.amazon.com/ecr/pricing/).
 
 ### Why ECR?
 
@@ -160,7 +160,7 @@ docker push <account-id>.dkr.ecr.<account-region>.amazonaws.com/<repository-name
 
 And just like that, you have pushed our first image to a repository on Elastic Container Registry. In the next section, you'll see how you can use these images for local or remote deployments.
 
-### Pulling an Image from ECR
+### Pulling a Image From ECR
 
 Whether you want to pull an image from a public ECR repository or your company has private images stored in ECR, pulling works in the same way it does in any container registry. After you've authenticated (using the same steps above), you can use [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/):
 
@@ -206,7 +206,7 @@ spec: template:
       restartPolicy: Never
 ```
 
-When deployed, it will create a job with the name `eks-iam-test-s3` using the `123456789012.dkr.ecr.us-west-2.amazonaws.com/aws-nodejs-sample:v1` image. To see the complete step-by-step process for deploying this job to EKS, see [the AWS documentation here](https://docs.amazonaws.cn/en_us/AmazonECR/latest/userguide/ECR_on_EKS.html).
+When deployed, it will create a job with the name `eks-iam-test-s3` using the `123456789012.dkr.ecr.us-west-2.amazonaws.com/aws-nodejs-sample:v1` image. To see the complete step-by-step process for deploying this job to EKS, see [the AWS documentation](https://docs.amazonaws.cn/en_us/AmazonECR/latest/userguide/ECR_on_EKS.html).
 
 ##### ECS Task Definition
 
@@ -228,7 +228,7 @@ ECR images can also be used in ECS task definition files to define your containe
 }
 ```
 
-This definition will deploy a container named `sample-app` using image `123456789012.dkr.ecr.us-west-2.amazonaws.com/aws-nodejs-sample:v1`. More detailed steps are [available in the ECS documentation here](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/create-task-definition.html).
+This definition will deploy a container named `sample-app` using image `123456789012.dkr.ecr.us-west-2.amazonaws.com/aws-nodejs-sample:v1`. More detailed steps are [available in the ECS documentation](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/create-task-definition.html).
 
 ## Conclusion
 

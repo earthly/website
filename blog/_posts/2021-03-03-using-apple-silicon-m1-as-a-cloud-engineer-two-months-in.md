@@ -47,7 +47,7 @@ The tools you use for development are likely still catching up to this architect
 * ✅ iTerm (native)
 * ✅ Earthly (`v0.5.1+` now supports M1 natively - just `brew install earthly`)
 
-I should also mention that during the first few weeks I had some issues with audio skips when using Bluetooth, but an OS update fixed it (just like [Apple promissed](https://www.imore.com/fix-way-m1-mac-bluetooth-problems)).
+I should also mention that during the first few weeks I had some issues with audio skips when using Bluetooth, but an OS update fixed it (just like [Apple promised](https://www.imore.com/fix-way-m1-mac-bluetooth-problems)).
 
 I also use a ✅ YubiKey 5C Nano and a bunch of random peripherals like a ✅ USB microphone and a ✅ dock plugged into Ethernet.
 
@@ -65,7 +65,7 @@ Languages and frameworks I've tested - most of them in Docker containers:
 * ✅ Cobol (yes, really) works fine on native architecture in Docker. Minimal testing though.
 * ✅ Rust works fine on native architecture in Docker. Minimal testing though.
 
-## How to tell what architecture a program is running as
+## How to Tell What Architecture a Program Is Running As
 
 It's extremely easy to mistake the kind of architecture you run as. Rosetta 2 is that good.
 
@@ -75,11 +75,11 @@ The easiest way to tell the difference is by opening Activity Monitor and lookin
 
 ![Activity Monitor showing Spotify as an Intel process]({{site.images}}{{page.slug}}/img2.png)
 
-If you're not sure about the terminal you're using, you can type `uname -m`. It'll say either `X86_64`, `arm64` (mac) or `aarch64` (linux). `arm64` and `aarch64` are both ARM - `uname` on Mac just reports it differently compared to Linux.
+If you're not sure about the terminal you're using, you can type `uname -m`. It'll say either `X86_64`, `arm64` (Mac) or `aarch64` (Linux). `arm64` and `aarch64` are both ARM - `uname` on Mac just reports it differently compared to Linux.
 
 ![Terminal showing the output of `uname -m` as `arm64`]({{site.images}}{{page.slug}}/img3.png)
 
-## Brew issues
+## Brew Issues
 
 One issue I encountered on both my M1 laptop and also a [MacStadium MacMini](https://www.macstadium.com/m1-mini) instance that we use for Mac testing is that Brew randomly started to complain about git missing. Not sure what the cause of this is, but it could be the fact that brew has been adding native arm support for many packages in the last few months and it's possible that this migration resulted in some inconsistencies. This is pure speculation, however, I've not researched this.
 
@@ -90,6 +90,8 @@ Back to fixing the issue now. Using `brew doctor` I was able to find out that Xc
 ## Using Docker
 
 The Docker preview worked almost flawlessly for me from day 1. Making use of multi-platform images seems daunting at first, but really it's actually pretty simple.
+
+<!-- vale HouseStyle.Spelling = NO -->
 
 The Docker for Mac app comes packed with [QEMU](https://www.qemu.org/) out of the box - so Docker is able to run either arm64 and amd64 images. Most official images are now supported on arm64 too. If you're building an image, by default it'll use your native architecture to execute the build (arm64) and most things will magically just work. Your mileage may vary, however, if you are `curl`ing some binary that may need to switch from `X86_64` to `aarch64` in its URL, or if you're doing lower-level stuff. I also noticed that some alpine packages are also not available for ARM (eg `shellcheck`).
 
@@ -103,7 +105,7 @@ If you `docker run` an image, it will default to whatever version of the image y
 
 [Docker Compose](/blog/youre-using-docker-compose-wrong) will happily run a mixture of various architectures. The same rules apply with regards to pulling and running. You can also specify `platform: linux/amd64` for the service definition in `docker-compose.yml` if you'd like to be specific.
 
-One thing to note is that Docker-in-Docker is not supported by QEMU ([abandoned PR here](https://github.com/moby/qemu/pull/7)). So you cannot run an arm64 Docker in an amd64 Docker or vice-versa. **However**, if you run your natively-supported Docker-in-Docker, the inner Docker can still run multi-platform images fine.
+One thing to note is that Docker-in-Docker is not supported by QEMU ([abandoned PR on GitHub](https://github.com/moby/qemu/pull/7)). So you cannot run an arm64 Docker in an amd64 Docker or vice-versa. **However**, if you run your natively-supported Docker-in-Docker, the inner Docker can still run multi-platform images fine.
 
 There are currently performance issues with multi-processor use - so much so that performance using a single core is sometimes slightly better than the performance of using 8 cores. Or at least that's what [@jasmas claims](https://github.com/docker/roadmap/issues/142#issuecomment-772732443).
 
@@ -123,7 +125,7 @@ One useful Earthly trick I've used a lot is that if one part of your build has n
 
 You don't necessarily need to build `darwin/arm64` binaries to run them on M1. Rosetta 2 emulation works great on Intel ones. If you want to, however, [Go 1.16 RC just added support for this](https://golang.org/doc/go1.16#darwin).
 
-## Java / Scala / JVM issues
+## Java / Scala / JVM Issues
 
 I ran into issues when using the JVM. After investigating online, it seems that OpenJDK is not yet available for the M1. The way this was manifesting for me was that the JVM process would just hang randomly. By using `--platform=linux/amd64` in Docker or in Earthly builds, I was able to get OpenJDK to work most of the time, but I'm still seeing random hangs.
 
@@ -135,9 +137,11 @@ One of the things I noticed about my new laptop is that everything opens up real
 
 Docker is currently slower, however, as mentioned above, due to the multi-core issue. As far as I can tell the difference is approximately 1.75X compared to an Intel MacBook Pro. I would assume that this will be fixed in a future preview of the Docker for Mac app.
 
-## Battery life
+## Battery Life
 
+<!-- vale HouseStyle.Repetition = NO -->
 Battery life on the M1 is really really really good - half a day of Zoom meetings + email only took 20% of my battery. I work from home a lot, so I don't use this much. But it's great to know it really lasts for a serious coding session if I needed it on the go.
+<!-- vale HouseStyle.Repetition = YES -->
 
 ## Cost
 

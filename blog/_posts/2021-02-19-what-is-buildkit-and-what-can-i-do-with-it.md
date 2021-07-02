@@ -13,30 +13,30 @@ internal-links:
    - runc
    - docker daemon
 ---
-There is an excellent open-source project that you have probably used without realizing it. It's called BuildKit, and it is what turns a Dockerfile into a Docker image.  And it doesn't just build Docker images; it can build OCI images and several other output formats. [OpenFasS](https://www.openfaas.com/) uses it to turn functions into full containers, and here at Earthly, we use it to create complete continuous integration pipelines.  
+There is an excellent open-source project that you have probably used without realizing it. It's called BuildKit, and it is what turns a Dockerfile into a Docker image. And it doesn't just build Docker images; it can build OCI images and several other output formats. [OpenFasS](https://www.openfaas.com/) uses it to turn functions into full containers, and here at Earthly, we use it to create complete continuous integration pipelines.  
 
-You may not know you've used BuildKit because other applications wrap it.  Modern versions of `docker build` can use BuildKit and it will soon be enabled by default.  Today let's look at how to use BuildKit directly.
+You may not know you've used BuildKit because other applications wrap it. Modern versions of `docker build` can use BuildKit and it will soon be enabled by default. Today let's look at how to use BuildKit directly.
 
 ## History
 
 > BuildKit is a new project under the Moby umbrella for building and packaging software using containers. It's a new codebase meant to replace the internals of the current build features in the Moby Engine. - [Introducing BuildKit](https://blog.mobyproject.org/introducing-buildkit-17e056cc5317)
 
-Tõnis Tiigi,  a Docker employee and BuildKit's primary developer, created BuildKit to separate the logic of building images from the main moby project and to enable future development. BuildKit has support for pluggable frontends, which allow it to make more than just docker images using dockerfiles. With BuildKit, we can substitute the dockerfile syntax for [hlb](https://github.com/openllb/hlb) and replace the docker image format for a pure tar file output. That is just one of the possible combinations BuildKit, with its pluggable backends and frontends, unlocks.
+Tõnis Tiigi,  a Docker employee and BuildKit's primary developer, created BuildKit to separate the logic of building images from the main Moby project and to enable future development. BuildKit has support for pluggable frontends, which allow it to make more than just docker images using dockerfiles. With BuildKit, we can substitute the dockerfile syntax for [hlb](https://github.com/openllb/hlb) and replace the docker image format for a pure tar file output. That is just one of the possible combinations BuildKit, with its pluggable backends and frontends, unlocks.
 
-![animation of buildctl building a dockerfile](/blog/assets/images/what-is-buildkit-and-what-can-i-do-with-it/1.gif)
+![animation of `buildctl` building a dockerfile](/blog/assets/images/what-is-buildkit-and-what-can-i-do-with-it/1.gif)
 
-The original BuildKit proposal is found in the moby project:
+The original BuildKit proposal is found in the Moby project:
 <!-- markdownlint-disable MD028 -->
 
-> "Buildkit is a proposal to separate out docker build experience into a separate project, allowing different users to collaborate on the underlying technology and reuse and customize it in different ways."
+> "BuildKit is a proposal to separate out docker build experience into a separate project, allowing different users to collaborate on the underlying technology and reuse and customize it in different ways."
 
-> "One of the main design goals of BuildKit is to separate frontend and backend concerns during a build process" - [Intial BuildKit Proposal](https://github.com/moby/moby/issues/32925)
+> "One of the main design goals of BuildKit is to separate frontend and backend concerns during a build process" - [Initial BuildKit Proposal](https://github.com/moby/moby/issues/32925)
 
 ## Install BuildKit
 
 ### buildctl
 
-BuildKit has two primary components: buildctl and buildkitd.  buildctl is the BuildKit controller, and it communicates with `buildkitd`. Though designed for Linux, it can run on macOS and Windows under WSL2.  
+BuildKit has two primary components: buildctl and buildkitd. buildctl is the BuildKit controller, and it communicates with `buildkitd`. Though designed for Linux, it can run on macOS and Windows under WSL2.  
 
 On macOS, you can install buildctl with brew.  
 
@@ -44,7 +44,7 @@ On macOS, you can install buildctl with brew.
 brew install buildkit
 ```
 
-On Linux and Windows, grab a release from [Github](https://github.com/moby/buildkit/releases).
+On Linux and Windows, grab a release from [GitHub](https://github.com/moby/buildkit/releases).
 
 Afterward, you should be able to call buildctl
 
@@ -79,11 +79,11 @@ GLOBAL OPTIONS:
    --version, -v          print the version
 ```
 
- ***Other Tools**: In this guide, we will use [pstree](https://linux.die.net/man/1/pstree), [br](https://github.com/Canop/broot), and [mitmproxy](/blog/mitmproxy/). They are not required to use BuildKit or to follow this guide, but they help us demonstrate how BuildKit works.*
+ ***Other Tools**: In this guide, we will use [pstree](https://linux.die.net/man/1/pstree), [br](https://github.com/Canop/broot), and [mitmproxy](/blog/mitmproxy/). They are not required to use BuildKit or to follow this guide, but they help us demonstrate how BuildKit works.m
 
 ### buildkitd
 
-buildkitd does the actual work of transforming a build definition into some output. It is designed to be a long-running process. It also isn't possible to run it on macOS or Windows.  For this tutorial, we will run it as a docker container. That will work regardless of your host OS.
+buildkitd does the actual work of transforming a build definition into some output. It is designed to be a long-running process. It also isn't possible to run it on macOS or Windows. For this tutorial, we will run it as a docker container. That will work regardless of your host OS.
 
 ```
 ➜ docker run --rm --privileged -d --name buildkit moby/buildkit
@@ -172,7 +172,7 @@ After that, we can pull it and run it:
 built with BuildKit!
 ```
 
-## Tangent: Where are `FROM's from
+## Tangent: Where Are `FROM`'s From?
 
 If we have an image locally on our machine, can we use it in a `FROM` to build something based on it? Let's find out by altering our `FROM` to use a local image:
 
@@ -213,23 +213,23 @@ RUN update-ca-certificates
 6676dc0109eb3f5f09f7380d697005b6aae401bb72a4ee366f0bb279c0be137b
 ```
 
-![404 on mitm proxy](/blog/assets/images/what-is-buildkit-and-what-can-i-do-with-it/2.png)
+![404 on mitmproxy](/blog/assets/images/what-is-buildkit-and-what-can-i-do-with-it/2.png)
 
 We can see a `404`, and this confirms buildkitd is expecting registry that it can access over the network using the docker registry v2 api.
 
 ## Watching It Build
 
-Buildkitd is responsible for building the image, but `runc` does the actual execution of each step. runc executes each `RUN` command in your dockerfile in a separate process.  runc requires Linux kernel 5.2  or later with support for cgroups, and is why buildkitd can't run natively on macOS or Windows.
+`buildkitd` is responsible for building the image, but `runc` does the actual execution of each step. `runc` executes each `RUN` command in your dockerfile in a separate process. runc requires Linux kernel 5.2  or later with support for cgroups, and is why buildkitd can't run natively on macOS or Windows.
 
-### What is runc
+### What Is `runc`?
 
 > "Please note that runc is a low-level tool not designed with an end-user in mind. It is mostly employed by other higher-level container software. Therefore, unless there is some specific use case that prevents the use of tools like Docker or Podman, it is not recommended to use runc directly." - [runc readme](https://github.com/opencontainers/runc)
 
 We can watch the execution of our build by using `pstree` and `watch`. Open two side by side terminals, run `docker exec -it buildkit "/bin/watch" "-n1" "pstree -p"` in one and call `buildctl build ...` in the other. You will see `buildkitd` start a `buildkit-runc` process and then a separate process for each `RUN` command.
 
-![Diagram of buildkit running and pstree showing the process tree of buildkitd](/blog/assets/images/what-is-buildkit-and-what-can-i-do-with-it/3.png)
+![Diagram of BuildKit running and pstree showing the process tree of buildkitd](/blog/assets/images/what-is-buildkit-and-what-can-i-do-with-it/3.png)
 
-## How to see Docker Processes on macOS and Windows
+## How to See Docker Processes on macOS and Windows
 
 On macOS and Windows, Docker processes run on a separate virtual machine (VM). If you're using the default and recommended Docker Desktop, this VM is the Linux container host.  
 
@@ -330,13 +330,13 @@ buildctl build --frontend dockerfile.v0 --local context=. --local dockerfile=. -
  => => copying files 121.14MB                             1.9sr
 ```
 
-This filesystem output could be useful if we were trying to trim our image down.  We could look through the output and find things to remove and use a multi-stage build to remove them. [broot](https://github.com/Canop/broot) is pretty handy for this:
+This filesystem output could be useful if we were trying to trim our image down. We could look through the output and find things to remove and use a multi-stage build to remove them. [broot](https://github.com/Canop/broot) is pretty handy for this:
 
 ![tree view of alpine image showing space used in each directory]({{site.images}}{{page.slug}}/4.png)
 
-## What is in `FROM scratch`
+## What Is in `FROM scratch`
 
-One thing we can do with our newfound powers is investigate the `scratch` keyword.  The scratch keyword doesn't correspond to an actual image. We can't run it:
+One thing we can do with our newfound powers is investigate the `scratch` keyword. The scratch keyword doesn't correspond to an actual image. We can't run it:
 
 ```
 docker run scratch
@@ -344,7 +344,7 @@ Unable to find image' scratch:latest' locally
 docker: Error response from daemon: 'scratch' is a reserved name.
 ```
 
-However, does it actually contain anything?  Is a `FROM scratch` image literally empty or are there certain required elements of unix filesystem that `scratch` provides?  Let's find out:
+However, does it actually contain anything? Is a `FROM scratch` image literally empty or are there certain required elements of unix filesystem that `scratch` provides? Let's find out:
 
 ```
 > mkdir scratch
@@ -367,10 +367,10 @@ It's empty! The scratch keyword indicates a completely empty docker layer. The m
 
 ## Conclusion
 
-Alright, we have now covered some ways to use BuildKit directly.  BuildKit is used internally by `docker build` in modern docker versions, but using it directly unlocks some extra options.
+Alright, we have now covered some ways to use BuildKit directly. BuildKit is used internally by `docker build` in modern docker versions, but using it directly unlocks some extra options.
 
 One use we covered was changing the output type. We can use BuildKit to export tars and local file systems. We also use `pstree` and `mitmProxy` to watch how buildkitd forks processes and make network requests.  
 
-There is much more to learn, though. BuildKit is behind the `docker buildx` multiplatform build feature and supports the ability to have multiple workers execute builds in parallel. BuildKit also supports caching, different frontends, docker-compose builds, faster multi-stage builds, and several other features.
+There is much more to learn, though. BuildKit is behind the `docker buildx` multi-platform build feature and supports the ability to have multiple workers execute builds in parallel. BuildKit also supports caching, different frontends, docker-compose builds, faster multi-stage builds, and several other features.
 
 In a future article, we will cover creating a custom frontend and leaving the Dockerfile syntax behind.

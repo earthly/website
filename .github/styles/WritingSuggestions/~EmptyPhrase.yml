@@ -1,0 +1,9 @@
+extends: existence
+message: Possible empty phrase '%s'
+ignorecase: true
+level: suggestion
+ignorecase: true
+tokens:
+ - really
+ - very
+ 
