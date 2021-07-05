@@ -195,7 +195,7 @@ This shows that `chain.from_iterable` is faster than extend.
 
 ## Flattening and Merging Lists With One Big List
 
-What about adding a list of lists to an existing and large list? We saw that using extend can be faster with two lists when one is significantly longer then other so let's test the performance of `extend` with N lists.
+What about adding a list of lists to an existing and large list? We saw that using extend can be faster with two lists when one is significantly longer than the other so let's test the performance of `extend` with N lists.
 
 First, we use our standard `chain.from_iterable`.
 
@@ -250,7 +250,7 @@ There we go, `extend` is much faster when flattening lists or concatenating many
 
 These are the main variants of combining lists in python. Use this table to guide you in the future.
 
-Also, if you are looking for nice way to standardize the processes around your python projects, running tests, installing dependencies, linting code take a look at Earthly for [Repeatable Builds](https://earthly.dev/).
+Also, if you are looking for a nice way to standardize the processes around your python projects -- running tests, installing dependencies, and linting code -- take a look at Earthly for [Repeatable Builds](https://earthly.dev/).
 
 |  Condition  |  Solution  | Performance Optimization[^2]   |
 |--- |--- |:-: |
