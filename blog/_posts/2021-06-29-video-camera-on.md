@@ -43,12 +43,12 @@ four -- wait, what?
 
 ```
 
-I was going to spend the morning tracking this down. That was my daily stand-up update. But when I gave it, I caught a look from my teammate Isabella (not her real name). The look helped me solve the problem. We'll get to the solution in a moment, but I want to talk about that facial expression --  I am always on the lookout for it now.
+I was going to spend the morning tracking this down. That was my daily stand-up update. But when I gave it, I caught a look from my teammate Isabella (not her real name). The look helped me solve the problem. We'll get to the solution in a moment, but I want to talk about that facial expression -- I am always on the lookout for it now.
 
 ## The Wait-What? Look
 
 <div class="align-right">
- {% picture grid {{site.pimages}}{{page.slug}}/confused1.png  --picture --img width="260px" --alt {{ Confused Women }} %}
+ {% picture grid {{site.pimages}}{{page.slug}}/confused1.png --picture --img width="260px" --alt {{ Confused Women }} %}
 <figcaption>"I've traced it to a bug in the SMTP protocol"</figcaption>
 </div>
 
@@ -61,7 +61,7 @@ Are daily stand-ups valuable? Sometimes they are, and sometimes they aren't[^1].
 ## That's Not Quite Right
 
 <div class="align-left">
- {% picture grid {{site.pimages}}{{page.slug}}/confused2.png  --picture --img width="260px" --alt {{ Confused Women }} %}
+ {% picture grid {{site.pimages}}{{page.slug}}/confused2.png --picture --img width="260px" --alt {{ Confused Women }} %}
 <figcaption>"I'm inserting 'foo' but retrieving 'disk is full'"</figcaption>
 </div>
 
@@ -72,7 +72,7 @@ That is why a stand-up can be valuable, in person or screen to screen. You can g
 ## Non-Verbal Communication Requires Cameras On
 
 <div class="align-right">
- {% picture grid {{site.pimages}}{{page.slug}}/confused3.png  --picture --img width="260px" --alt {{ Confused Women }} %}
+ {% picture grid {{site.pimages}}{{page.slug}}/confused3.png --picture --img width="260px" --alt {{ Confused Women }} %}
 <figcaption>"All users were created on a Thursday in 1970"</figcaption>
 </div>
 I've heard many times before that 70% of communication is non-verbal. This seems to oversell non-verbals or maybe I'm just not great at reading them. This whole confused-face signal could be replaced with chin-scratching emoji or a sign that said: "Wait, What?". But, when I do get a non-verbal signal, it can save me hours and days of time. I don't think you can easily replicate this signal with asynchronous communication. One reason is that these non-verbal cues often represent subtle feelings. Someone can hear your update and think to themselves, "That doesn't sound right", but they may not be comfortable enough or care enough to say it out loud. Or it's just fleeting thought before they start their own update. You have to catch these expressions, and you can't do it without seeing the person.
@@ -84,7 +84,7 @@ People find zoom meetings fatiguing, and I get that. The world contains too many
 ## The SQL Solution
 
 <div class="align-left">
- {% picture grid {{site.pimages}}{{page.slug}}/confused4.png  --picture --img width="260px" --alt {{ Confused Women }} %}
+ {% picture grid {{site.pimages}}{{page.slug}}/confused4.png --picture --img width="260px" --alt {{ Confused Women }} %}
 <figcaption>"the max message size in the queue<br/> is now 2 gigabytes"</figcaption>
 </div>
 

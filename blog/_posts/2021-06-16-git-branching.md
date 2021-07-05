@@ -54,7 +54,7 @@ Now her support people can ask customers what version they are on. If it's more 
 
 ## Cutting a Release
 
-There was a time before modern source control when creating a release branch was an expensive process that had to be planned.  "Cutting a Release" was the name for this process, which involved locking down the source and starting the lengthy process of 'cutting a release branch off the trunk'. People still use the phrase today.
+There was a time before modern source control when creating a release branch was an expensive process that had to be planned. "Cutting a Release" was the name for this process, which involved locking down the source and starting the lengthy process of 'cutting a release branch off the trunk'. People still use the phrase today.
 
 > "Well, the performance was so bad that when they wanted to cut a branch, they would announce it ahead of time. They would schedule the branching because you didn't want anybody else committing while you were branching, because that would totally screw things up. Right? And I said, "Okay, Friday at 2:00 pm., we're going to cut the branch." Then all activity would stop, access to the server would be cut off."
 >

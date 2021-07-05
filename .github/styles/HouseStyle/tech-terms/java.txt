@@ -2,3 +2,7 @@ gradle
 maven
 jvm
 akka
+
+#python
+iterable
+itertools

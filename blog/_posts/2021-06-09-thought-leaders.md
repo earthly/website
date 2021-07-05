@@ -23,7 +23,7 @@ Raising objections is a process where you tell someone above me, my boss or my b
 Preventing the raising of objections was called 'reaching alignment.' I find the people who might have concerns or advice, get feedback from them, and work with the developers on the team to adjust the plan based on that. It ends up feeling a lot like the office episode where Andy and Kevin must meet with the heads of every company in the office park to reach a decision about the parking spaces.
 
 <div class="wide">
- {% picture {{site.pimages}}{{page.slug}}/4-families.png  --picture --img width="1200px" --alt {{ Everybody has advice about how to build your project }} %}
+ {% picture {{site.pimages}}{{page.slug}}/4-families.png --picture --img width="1200px" --alt {{ Everybody has advice about how to build your project }} %}
 <figcaption>Everybody has advice about how to build your project</figcaption>
 </div>
 
@@ -56,7 +56,7 @@ I think you get the idea. If we adapt to all the feedback, then we will avoid th
 ## The Solution
 
 <div class="align-right">
- {% picture grid {{site.pimages}}{{page.slug}}/hearnoevil.png  --picture --img width="200px" --alt {{ Hear No Evil }} %}
+ {% picture grid {{site.pimages}}{{page.slug}}/hearnoevil.png --picture --img width="200px" --alt {{ Hear No Evil }} %}
 <figcaption>The Solution</figcaption>
 </div>
 Thankfully, not all the advice I received was bad. One person, in particular, asked very pointed questions about the problems be solved and identified some potential blind spots in our plan. They also offered a great tip for dealing with advice that didn't seem relevant to the project's success: Create an extended product roadmap and put those items at least a year off into the future "and as long as they don't seem relevant, you can just keep pushing them into the future." Perversely this plan made everyone happy -- everyone's feedback is on the roadmap, and now it's all just a question of priorities.
@@ -73,7 +73,7 @@ The problem with all the bad advice was that it was unrelated to the problem we 
 It's sort of like Minh's cooking advice from King of The Hill: She tastes something and then says "Add Nutmeg". When would nutmeg not be a good fit? Doesn't all advice need to be contingent?
 
 <div class="align-right">
- {% picture grid {{site.pimages}}{{page.slug}}/nutmeg.png  --picture --img width="400px" --alt {{ Add Nutmeg }} %}
+ {% picture grid {{site.pimages}}{{page.slug}}/nutmeg.png --picture --img width="400px" --alt {{ Add Nutmeg }} %}
 <figcaption>The solution to every problem can't be the same</figcaption>
 </div>
 
@@ -83,23 +83,23 @@ I get frustrated by advice like that but is it wrong? Unit testing, streaming ar
 
 ## Decision-Making Research
 
-{% picture content-wide {{site.pimages}}{{page.slug}}/fork.png  --picture --alt {{ Add Nutmeg }} %}
+{% picture content-wide {{site.pimages}}{{page.slug}}/fork.png --picture --alt {{ Add Nutmeg }} %}
 
 One way to think about advice is as a prediction. Advocating for Test-Driven-Development can be viewed as a prediction that if you don't write tests before you write code, your project will be less well-designed and harder to maintain. Stream-Process-All-Things similarly predicts that if you approach a problem as one of streams you'll get a better result than if you didn't. Obviously, not all advice is tied to specific and explicit predictions, and many thought-leaders would object to the idea that just because they are always talking about a thing, that is the most critical thing in every case. But I do think it's fair to say that if your proposed solution is always a variation of "use the actor system to model concurrency" or "you need a stronger allegiance to SOLID principles" then you believe those solutions would strongly increase desired project outcomes.
 
 ## Tetlock's Hedgehogs
 
- {% picture content-wide {{site.pimages}}{{page.slug}}/hedgehog.png  --picture --img width="1200px" --alt {{ A hedgehog }} %}
+ {% picture content-wide {{site.pimages}}{{page.slug}}/hedgehog.png --picture --img width="1200px" --alt {{ A hedgehog }} %}
 
 It turns out that [Philip E. Tetlock](https://scholar.google.com/citations?user=CJjf6H0AAAAJ&hl=en) from the University of Pennsylvania, who has been studying the judgment and decision making of experts for most of his career, has something to say about those types of predictions. And Tetlock is an expert on experts: his [Good Judgement Project](https://en.wikipedia.org/wiki/The_Good_Judgment_Project) was able to beat CIA analysts by 30% at predicting geo-political events. And the intelligence officers had access to classified information.  
 
-Tetlock's earliest work was the study of political experts. He solicited political advice and predictions from 284 experts between 1984 and 2004, and once enough time had passed to determine the accuracy of their forecasts, he scored the results. Political punditry is different from tech thought-leadership -- none of my advice-givers were explicitly predicting a project outcome  --  but I think his findings have a lot to teach us.
+Tetlock's earliest work was the study of political experts. He solicited political advice and predictions from 284 experts between 1984 and 2004, and once enough time had passed to determine the accuracy of their forecasts, he scored the results. Political punditry is different from tech thought-leadership -- none of my advice-givers were explicitly predicting a project outcome -- but I think his findings have a lot to teach us.
 
 He found that experts could be split into two broad categories, the first of which he called Hedgehogs. A Hedgehog had one big idea like free-market capitalism (or Nordic model capitalism or demand-side economics), which they used as a lens to look at many issues. They applied this big idea to every situation, which resulted in non-contingent and straightforward advice. You always need more freedom, nutmeg, and unit tests. Hedgehogs are "Confident forecasters".
 
 ## The Foxes
 
- {% picture content-wide {{site.pimages}}{{page.slug}}/foxes.png  --picture --img width="1200px" --alt {{ A Fox }} %}
+ {% picture content-wide {{site.pimages}}{{page.slug}}/foxes.png --picture --img width="1200px" --alt {{ A Fox }} %}
 
 When all the predictions were added up and scored, hedgehogs lost out to his second category: Foxes. Foxes were the opposite of hedgehogs. They had complicated advice and were skeptical of even their own predictions. Tetlock also found that foxes were less likely to be famous because contingent advice is harder to explain in a sound bite.
 
@@ -107,7 +107,7 @@ Hedgehogs with predictions about the 2003 Iraq war existed on both sides of the 
 
 ### Ignore Universal Solutions
 
- {% picture content-wide {{site.pimages}}{{page.slug}}/tools.png  --picture --img width="1200px" --alt {{ A Tool Board }} %}
+ {% picture content-wide {{site.pimages}}{{page.slug}}/tools.png --picture --img width="1200px" --alt {{ A Tool Board }} %}
 
 Tetlock's [talk](https://longnow.org/seminars/02007/jan/26/why-foxes-are-better-forecasters-than-hedgehogs/) on this is subtitled "Ignore Confident Forecasters," which I think is an excellent summary of his findings.  
 
