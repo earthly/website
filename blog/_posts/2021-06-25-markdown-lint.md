@@ -37,7 +37,7 @@ Additionally, I will rate tools based on their feature set:
 ## [Markdown Lint](https://github.com/DavidAnson/markdownlint)
 
 <div class="wide">
- {% picture content2 {{site.pimages}}{{page.slug}}/markdownlint4.png  --picture --img width="1200px" --alt {{ markdown lint GitHub Readme }} %}
+ {% picture content2 {{site.pimages}}{{page.slug}}/markdownlint4.png --picture --img width="1200px" --alt {{ markdown lint GitHub Readme }} %}
  </div>
 
 `markdownlint` is a node.js markdown linter that is easy to install and easy to customize. It is based on an earlier Ruby tool, also called [markdownlint](https://github.com/markdownlint/markdownlint). Both are great, but the Node.js tool is easy to install and easy to customize.  
@@ -68,7 +68,7 @@ It doesn't handle spelling, grammar, or sentence structure, but it can't be beat
 ## [mdspell](https://www.npmjs.com/package/markdown-spellcheck)
 
 <div class="wide">
- {% picture content2 {{site.pimages}}{{page.slug}}/mdspell1.png  --picture --img width="1200px" --alt {{ mdspell readme }} %}
+ {% picture content2 {{site.pimages}}{{page.slug}}/mdspell1.png --picture --img width="1200px" --alt {{ mdspell readme }} %}
  </div>
 
 `mdspell` is a tool specifically for spelling checking markdown documents. Install it like this:
@@ -103,7 +103,7 @@ The downsides of `mdspell` are that the dictionary will likely complain about lo
 ## [alex](https://alexjs.com/)
 
 <div class="wide">
- {% picture content2 {{site.pimages}}{{page.slug}}/alex.png  --picture --img width="1200px" --alt {{ alex.js readme }} %}
+ {% picture content2 {{site.pimages}}{{page.slug}}/alex.png --picture --img width="1200px" --alt {{ alex.js readme }} %}
 </div>
 
 `alex` does one thing: catches insensitive and inconsiderate writing. It supports markdown files, and works via command-line, and has various IDE integrations. The specificity of `alex` is its strength. For my rubric, I am scoring it under clarity as catching insensitive writing certainly improves clarity.
@@ -126,7 +126,7 @@ The downsides of `mdspell` are that the dictionary will likely complain about lo
 ## [`write-good`](https://github.com/btford/write-good)
 
 <div class="wide">
- {% picture content2 {{site.pimages}}{{page.slug}}/write-good.png  --picture --img width="1200px" --alt {{ write-good on GitHub }} %}
+ {% picture content2 {{site.pimages}}{{page.slug}}/write-good.png --picture --img width="1200px" --alt {{ write-good on GitHub }} %}
  </div>
 
 `write-good` is designed for "developers who can't write good and wanna learn to do other stuff good too." The tool's focus is on improving the clarity of writing (and helping developers write well).
@@ -170,7 +170,7 @@ e-ca-certificates` is an excellent proof of concept, but if you want to run a do
 ## [textlint](https://textlint.github.io/)
 
 <div class="wide">
- {% picture content2 {{site.pimages}}{{page.slug}}/textlint.png  --picture --img width="1200px" --alt {{ textlint website }} %}
+ {% picture content2 {{site.pimages}}{{page.slug}}/textlint.png --picture --img width="1200px" --alt {{ textlint website }} %}
 </div>
 
 `textlint` is a pluggable linting tool that supports markdown, plain text, and HTML. The plug-in architecture means that it can offer the features of some of the previous items by wrapping them up as a plug-in. It has a [plug-in](https://github.com/textlint/textlint/wiki/Collection-of-textlint-rule#rules-english) for `alex`, `write-good`, and for many spell checkers and grammar checkers. The downside of this flexibility is that it is a bit harder to set up and configure: you have to install each plug-in separately.
@@ -211,7 +211,7 @@ textlint "docs/**"
 ## [proselint](http://proselint.com/)
 
 <div class="wide">
- {% picture content2 {{site.pimages}}{{page.slug}}/proselint.png  --picture --img width="1200px" --alt {{ Prose Lint }} %}
+ {% picture content2 {{site.pimages}}{{page.slug}}/proselint.png --picture --img width="1200px" --alt {{ Prose Lint }} %}
 </div>
 
 `proselint` goes deep on writing clarity improvements in the same way the `alex` goes deep on inclusive writing:
@@ -267,7 +267,7 @@ Learning from all the best writers is a very lofty objective, and `proselint` ha
 ## [Vale](https://github.com/errata-ai/vale)
 
 <div class="wide">
- {% picture content2 {{site.pimages}}{{page.slug}}/vale.png  --picture --img width="1200px" --alt {{ Vale Website }} %}
+ {% picture content2 {{site.pimages}}{{page.slug}}/vale.png --picture --img width="1200px" --alt {{ Vale Website }} %}
  </div>
 
 Vale, created by Joseph Kato, supports spelling, grammar, and clarity checks. It is extendable using a YAML rule format and is designed around the idea of a style guide -- a specific house style that you put together and vale enforces. It has an implementation of most `proselint` as a style guide, most of `write-good`, as well as the [Microsoft Writing Style Guide](https://docs.microsoft.com/en-us/style-guide/welcome/) and the Google

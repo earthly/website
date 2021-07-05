@@ -37,7 +37,7 @@ Mean time between failures is a metric from the field of [reliability](/blog/ach
 
 Mean Time Between Failures =
 
-  : 30 days / 2 Incidents  = 15 days
+  : 30 days / 2 Incidents = 15 days
 </div>
 
 ## Mean Time to Recovery (MTTR)
@@ -71,7 +71,7 @@ Mean Time To Recovery =
 ## Mean Time to Resolve (MTTRe)
 
 <div class="notice--info">
-ℹ️  Acronyms Collision Alert
+ℹ️ Acronyms Collision Alert
 
 Mean Time To Resolve, MTTRe, differs from Mean Time To Recover, MTTR, but some resources use MTTR for both. To avoid confusion, ensure you are using the correct terminology for your metric.
 </div>

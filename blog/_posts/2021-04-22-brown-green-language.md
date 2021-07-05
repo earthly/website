@@ -90,7 +90,7 @@ Out of 22 Languages in the combined dreaded/loved list, 63% are Brown
 <div class="notice--warning notice--big">
 **Brown Language:** A language that you are more likely to use in existing software maintenance (i.e. brown-field projects).
 
-Java, C, C++, C#, Python, PHP, JavaScript, Swift, Perl, Ruby, Assembly, R, Objective-C,  SQL
+Java, C, C++, C#, Python, PHP, JavaScript, Swift, Perl, Ruby, Assembly, R, Objective-C, SQL
 </div>
 
 <div class="notice--success notice--big">
@@ -186,7 +186,7 @@ In other words, Rust, Kotlin, and the other green languages may still be in a ho
 
 ## Overcoming Bias
 
- {% picture {{site.pimages}}{{page.slug}}/angel-devil-wide.png  --picture class="wide" --alt {{ Angel and Devil from the Noun Project }} %}
+ {% picture {{site.pimages}}{{page.slug}}/angel-devil-wide.png --picture class="wide" --alt {{ Angel and Devil from the Noun Project }} %}
 
 Some newer or historically less popular programming languages might be better than older or more mainstream languages, but our ability to judge seems quite biased. In particular, developers are giving a halo to languages that are newer or were not used commonly in the past, and they are giving horns to languages that have been around longer. I think this is because nobody likes maintaining someone else's code. And also, because of Joel's Law: reading real-world is code hard. Building something new is fun, and new languages are used for that more often.
 
@@ -195,7 +195,7 @@ Some newer or historically less popular programming languages might be better th
 I originally started digging into these numbers to establish a ranking for what languages were most used and loved by software developers. I was going to use this to guide adding more examples to our [docs](https://docs.earthly.dev/) and our [build examples](https://github.com/earthly/earthly/tree/main/examples). What I came away with instead was the idea of a programming language life cycle: loved programming languages get used a lot, which leads to code maintenance, which causes people to dislike them, which leads to people looking for greener pastures and trying out a newer language. Popular frameworks probably follow this lifecycle as well.
 
 <div class="wide">
- {% picture {{site.pimages}}{{page.slug}}/hype-wide.png  --alt A graph showing hype decreasing overtime for a language %}
+ {% picture {{site.pimages}}{{page.slug}}/hype-wide.png --alt A graph showing hype decreasing overtime for a language %}
 <figcaption>The lifecycle of programming language hype</figcaption>
 </div>
 

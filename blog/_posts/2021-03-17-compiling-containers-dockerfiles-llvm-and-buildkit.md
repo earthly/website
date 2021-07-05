@@ -141,7 +141,7 @@ Images, unlike executables, have their own isolated filesystem. Nevertheless, th
 This similarity was not lost on the BuildKit creators. BuildKit has its own intermediate representation, LLB. And where LLVM IR has things like function calls and garbage-collection strategies, LLB has mounting filesystems and executing statements.
 
 <div class="wide">
-{% picture content-nocrop {{site.pimages}}{{page.slug}}/LLBIR-fixed.png  --picture --img width="1200px" --alt {{ LLVM IR VS. LLB }} %}
+{% picture content-nocrop {{site.pimages}}{{page.slug}}/LLBIR-fixed.png --picture --img width="1200px" --alt {{ LLVM IR VS. LLB }} %}
 <figcaption>LLVM IR VS. LLB</figcaption>
 </div>
 

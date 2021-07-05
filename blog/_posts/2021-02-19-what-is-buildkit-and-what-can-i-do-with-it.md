@@ -21,7 +21,7 @@ You may not know you've used BuildKit because other applications wrap it. Modern
 
 > BuildKit is a new project under the Moby umbrella for building and packaging software using containers. It's a new codebase meant to replace the internals of the current build features in the Moby Engine. - [Introducing BuildKit](https://blog.mobyproject.org/introducing-buildkit-17e056cc5317)
 
-Tõnis Tiigi,  a Docker employee and BuildKit's primary developer, created BuildKit to separate the logic of building images from the main Moby project and to enable future development. BuildKit has support for pluggable frontends, which allow it to make more than just docker images using dockerfiles. With BuildKit, we can substitute the dockerfile syntax for [hlb](https://github.com/openllb/hlb) and replace the docker image format for a pure tar file output. That is just one of the possible combinations BuildKit, with its pluggable backends and frontends, unlocks.
+Tõnis Tiigi, a Docker employee and BuildKit's primary developer, created BuildKit to separate the logic of building images from the main Moby project and to enable future development. BuildKit has support for pluggable frontends, which allow it to make more than just docker images using dockerfiles. With BuildKit, we can substitute the dockerfile syntax for [hlb](https://github.com/openllb/hlb) and replace the docker image format for a pure tar file output. That is just one of the possible combinations BuildKit, with its pluggable backends and frontends, unlocks.
 
 ![animation of `buildctl` building a dockerfile](/blog/assets/images/what-is-buildkit-and-what-can-i-do-with-it/1.gif)
 
@@ -219,7 +219,7 @@ We can see a `404`, and this confirms buildkitd is expecting registry that it ca
 
 ## Watching It Build
 
-`buildkitd` is responsible for building the image, but `runc` does the actual execution of each step. `runc` executes each `RUN` command in your dockerfile in a separate process. runc requires Linux kernel 5.2  or later with support for cgroups, and is why buildkitd can't run natively on macOS or Windows.
+`buildkitd` is responsible for building the image, but `runc` does the actual execution of each step. `runc` executes each `RUN` command in your dockerfile in a separate process. runc requires Linux kernel 5.2 or later with support for cgroups, and is why buildkitd can't run natively on macOS or Windows.
 
 ### What Is `runc`?
 

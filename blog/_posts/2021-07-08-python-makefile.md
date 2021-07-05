@@ -216,7 +216,7 @@ Now if you run `make run`, the virtual environment will be recreated and then th
 
 ### Using Variables
 
-Observe that in our Makefile, we have references to the `venv` directory in multiple places. In future, if we want to change the directory name to something else, we have to remember to perform the change in all the places. Also there isn't any way for the user to customize the directory name without editing the Makefile. To overcome this, we can use variables. The variables not only make the Makefile cleaner, they can be overridden by the user  without editing Makefile.
+Observe that in our Makefile, we have references to the `venv` directory in multiple places. In future, if we want to change the directory name to something else, we have to remember to perform the change in all the places. Also there isn't any way for the user to customize the directory name without editing the Makefile. To overcome this, we can use variables. The variables not only make the Makefile cleaner, they can be overridden by the user without editing Makefile.
 
 A variable in Makefile starts with a $ and is enclosed in parentheses () or braces {}, unless its a single character variable.
 

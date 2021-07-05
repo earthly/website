@@ -183,7 +183,7 @@ All HTTPS connections now have certificates signed by mitmproxy, which your mach
 
 {% include imgf src="16.png" alt="Diagram of docker runtime on macOS and Windows" caption="Docker containers run differently on macOS and Windows" %}
 
-At this point,  we can successfully capture traffic on our host operating system. Unfortunately, this is insufficient for capturing docker container traffic on macOS and Windows. So let's move on to proxying traffic on the Linux Container Host.  
+At this point, we can successfully capture traffic on our host operating system. Unfortunately, this is insufficient for capturing docker container traffic on macOS and Windows. So let's move on to proxying traffic on the Linux Container Host.  
 
 On macOS and Windows, Linux containers do not run on the host OS. They can't because they need a Linux host to run. Instead, they run on the Linux Container Host, a VM that Docker Desktop manages.  
 

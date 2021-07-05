@@ -9,11 +9,11 @@ internal-links:
    - weird
    - design decision
 ---
-_Here at Earthly, we are building an internal platform on AWS using EKS. &nbsp;I talked to our lead architect Corey Larson about the decisions and trade offs he is making as he designs our platform._
+_Here at Earthly, we are building an internal platform on AWS using EKS. I talked to our lead architect Corey Larson about the decisions and trade offs he is making as he designs our platform._
 
 **The plan for the earthly internal platform says, "One thing to keep in mind as you read this is plan is `don't be weird.`" What does that mean?**
 
-Don't be weird is the short version. &nbsp;The slightly less short version is: "You only have so many weirdness points you can spend. The less weird you are, the more community support you can get because you're still on the beaten path." &nbsp;it's just a real conscious decision you need to make.
+Don't be weird is the short version. The slightly less short version is: "You only have so many weirdness points you can spend. The less weird you are, the more community support you can get because you're still on the beaten path." it's just a real conscious decision you need to make.
 
 **Do you have an example?**
 
@@ -31,12 +31,12 @@ I wouldn't even go that far. I'd say that there's a gradient here, it's not blac
 
 **Does the Kubernetes space have beaten paths?**
 
-There are starting to be some winners. [Kubernetes](/blog/building-on-kubernetes-ingress) itself used to be weirdness points, but it's not anymore. Kubernetes is now the lingua franca of the cloud. Who doesn't have a Kubernetes-managed platform that we could just pack up and move to, assuming we haven't chosen to spend weirdness points on platform lock-in features. &nbsp;
+There are starting to be some winners. [Kubernetes](/blog/building-on-kubernetes-ingress) itself used to be weirdness points, but it's not anymore. Kubernetes is now the lingua franca of the cloud. Who doesn't have a Kubernetes-managed platform that we could just pack up and move to, assuming we haven't chosen to spend weirdness points on platform lock-in features.
 
 **So if we chose Docker Swarm or something, we'd have to have a really good reason.**
 
 Yes. I would want some justification if we were choosing Docker Swarm or, Rancher 1.6 or whatever. Yeah, it's not wrong to make those choices. It's just, the weirder it is, the better justification you better have.
 
-You've seen that CNCF landscape chart, right? &nbsp;There's tons of combinations out there that still haven't been tried before. It gets real easy, real fast, to get weird.
+You've seen that CNCF landscape chart, right? There's tons of combinations out there that still haven't been tried before. It gets real easy, real fast, to get weird.
 
 Whether you want to or not, you're going to end up in a place where nobody else has been. So you want to try to contain that.
