@@ -7,6 +7,7 @@ ignore:
   - HouseStyle/tech-terms/general.txt
   - HouseStyle/tech-terms/mobile.txt
   - HouseStyle/tech-terms/java.txt
+  - HouseStyle/tech-terms/python.txt
   - HouseStyle/tech-terms/linux.txt
   - HouseStyle/tech-terms/monitoring.txt
   - HouseStyle/tech-terms/names.txt

@@ -20,3 +20,4 @@ png
 pimages
 img
 jpg
+func

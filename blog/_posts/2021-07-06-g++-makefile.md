@@ -17,19 +17,19 @@ C++ is one of the [most dominant programming languages](https://www.tiobe.com/ti
 
 [GNU Compiler Collection](http://gcc.gnu.org/), also known as GCC, started as a C compiler, created by Richard Stallman in 1984 as a part of his GNU project. GCC now supports many languages, including C++, Objective C, Java, Fortran, and Go. The latest version as of writing this article is GCC 11.1, released April 27, 2021.
 
-The C++ compiler of GCC is known as `g++`. The `g++` utility supports almost all mainstream C++ standards, including `c++98`, `c++03`, `c++11`, `c++14`, `c++17`, and experimentally `c++20` and `c++23`. It also provides some GNU extensions to the standard to enable more useful features. You can check out the detailed standard support [here](https://gcc.gnu.org/projects/cxx-status.html).
+The C++ compiler of GCC is known as `g++`. The `g++` utility supports almost all mainstream C++ standards, including `c++98`, `c++03`, `c++11`, `c++14`, `c++17`, and experimentally `c++20` and `c++23`. It also provides some GNU extensions to the standard to enable more useful features. You can check out the detailed standard support [on gnu.org](https://gcc.gnu.org/projects/cxx-status.html).
 
 In this tutorial, you will learn how to compile C++ programs with the `g++` compiler provided by GCC, and how to use [Make](https://www.gnu.org/software/make/) to automate the compilation process.
 
 ## Installing GCC
 
-I’ll touch briefly on installing for Linux, Mac, and Windows.
+I'll touch briefly on installing for Linux, Mac, and Windows.
 
 ### Linux
 
 GCC is one of the most common tools in the unix world, and is available in every single Linux distribution. Here, I show you how to install the GNU toolchain for some famous distributions.
 
-For Ubuntu, you need to run the following command: 
+For Ubuntu, you need to run the following command:
 
 ```bash
 sudo apt update && sudo apt install build-essentials
@@ -41,7 +41,7 @@ For Arch Linux, run:
 sudo pacman -S base-devel
 ```
 
-For [Fedora](/blog/creating-and-hosting-your-own-rpm-packages-and-yum-repo), run: 
+For [Fedora](/blog/creating-and-hosting-your-own-rpm-packages-and-yum-repo), run:
 
 ```bash
 dnf groupinstall 'Development Tools'
@@ -59,7 +59,7 @@ To use GCC in Windows, use [WSL2](https://docs.microsoft.com/en-us/windows/wsl/i
 
 ## Compiling With G++
 
-Let's take a look at how the compilation with G++ works. You will compile a simple `Hello, World!` program. Save the following file as `hello.cpp`: 
+Let's take a look at how the compilation with G++ works. You will compile a simple `Hello, World!` program. Save the following file as `hello.cpp`:
 
 ```c++
 #include<iostream>
@@ -71,19 +71,19 @@ int main() {
 }
 ```
 
-To compile this file, simply pass this file to `g++`: 
+To compile this file, simply pass this file to `g++`:
 
 ```bash
 g++ hello.cpp
 ```
 
-By default, `g++` will create an executable file named `a.out`. You can change the output file name by passing the name to the `-o` flag. 
+By default, `g++` will create an executable file named `a.out`. You can change the output file name by passing the name to the `-o` flag.
 
 ```bash
 g++ -o hello hello.cpp
 ```
 
-This will compile `hello.cpp` to an executable named `hello`. You can run the executable and see the output: 
+This will compile `hello.cpp` to an executable named `hello`. You can run the executable and see the output:
 
 ```bash
 ./hello
@@ -91,7 +91,7 @@ This will compile `hello.cpp` to an executable named `hello`. You can run the ex
 
 ## The Compilation Process
 
-Although the compilation can be done with one command, the compilation process can be divided into four distinct phases: 
+Although the compilation can be done with one command, the compilation process can be divided into four distinct phases:
 
 1. Preprocessing
 2. Compilation
@@ -106,7 +106,7 @@ cpp hello.cpp > hello.i
 
 The file `hello.i` contains the preprocessed source code.
 
-In the next phase, the `g++` compiler compiles the preprocessed source code to assembly language. You can run this step manually with the following command: 
+In the next phase, the `g++` compiler compiles the preprocessed source code to assembly language. You can run this step manually with the following command:
 
 ```bash
 g++ -S hello.i
@@ -120,7 +120,7 @@ In the next step, the assembler `as` converts the assembly to machine code.
 as -o hello.o hello.s
 ```
 
-Finally, the linker `ld` links the object ocde with the library code to produce an executable.
+Finally, the linker `ld` links the object code with the library code to produce an executable.
 
 ```bash
 ld -o hello hello.o ...libraries...
@@ -148,9 +148,10 @@ int main() {
     return 0;
 }
 ```
+
 <figcaption>`hello.cpp`</figcaption>
 
-This file includes `func.h`, which contains the declaration for a simple function: 
+This file includes `func.h`, which contains the declaration for a simple function:
 
 ```c++
 #ifndef MAKE_GPP_FUNC
@@ -162,9 +163,10 @@ void func(int i);
 
 #endif
 ```
+
 <figcaption>`func.h`</figcaption>
 
-Finally, the definition of `func` resides in `func.cpp`: 
+Finally, the definition of `func` resides in `func.cpp`:
 
 ```c++
 #include "func.h"
@@ -173,15 +175,16 @@ void func(int i) {
     std::cout << "You passed: " << i << std::endl;
 }
 ```
+
 <figcaption>`func.c`</figcaption>
 
-In order to compile your program, you need to compile both `hello.cpp` and `func.cpp`, since the former depends on the latter. 
+In order to compile your program, you need to compile both `hello.cpp` and `func.cpp`, since the former depends on the latter.
 
 ```bash
 g++ -o hello hello.cpp func.cpp
 ```
 
-If you have more files, then you need to list all of them, while taking care to set the correct include paths and library paths. Moreover, if your code uses any library, you need to list those libraries, too. The resultant command is likely massive and difficult to remember and type. Also, the compilation command will compile all of the source files every time it is executed. But if some of the source files haven’t been modified since the last compilation, it’s a waste of time and resources to compile all the files. But keeping track of what has changed manually is also a difficult task.
+If you have more files, then you need to list all of them, while taking care to set the correct include paths and library paths. Moreover, if your code uses any library, you need to list those libraries, too. The resultant command is likely massive and difficult to remember and type. Also, the compilation command will compile all of the source files every time it is executed. But if some of the source files haven't been modified since the last compilation, it's a waste of time and resources to compile all the files. But keeping track of what has changed manually is also a difficult task.
 
 This is where the `make` utility helps. `make` lets you define your target, and how to reach the target and what are the dependencies. Then it automatically keeps track of which dependencies have changed and recompiles only the necessary parts.
 
@@ -189,17 +192,17 @@ So let's see how you can utilize `make`.
 
 ## The Makefile
 
-In order to let `make` know what to do, you need to create a file named `Makefile` in the root of your project. This file can also be named `makefile` but is traditionally named `Makefile` so that it appears near other important files such as `README`. 
+In order to let `make` know what to do, you need to create a file named `Makefile` in the root of your project. This file can also be named `makefile` but is traditionally named `Makefile` so that it appears near other important files such as `README`.
 
-Create an empty `Makefile` in the project root and run the command `make` from the project directory. You should see the following output: 
+Create an empty `Makefile` in the project root and run the command `make` from the project directory. You should see the following output:
 
 ```
-make: *** No targets.  Stop.
+make: *** No targets. Stop.
 ```
 
-It means `make` has found the Makefile, but since it is empty, it doesn't know what to do. 
+It means `make` has found the Makefile, but since it is empty, it doesn't know what to do.
 
-Now let's see how you can utilize Makefile to tell `make` what to do. The Makefile consists of a set of rules. Each rule has three parts—a target, a list of prerequisites, and a recipe—like this: 
+Now let's see how you can utilize Makefile to tell `make` what to do. The Makefile consists of a set of rules. Each rule has three parts—a target, a list of prerequisites, and a recipe—like this:
 
 ```Makefile
 target: pre-req1 pre-req2 pre-req3 ...
@@ -211,22 +214,22 @@ target: pre-req1 pre-req2 pre-req3 ...
 
 When `make` executes a target, it looks at its prerequisites. If those prerequisites have their own recipes, `make` executes them and when all the prerequisites are ready for a target, it executes the corresponding recipe for the current target. For each target, the recipes are executed only if the target doesn't exist or the prerequisites are newer than the target.
 
-Let's update the `Makefile` for the example program: 
+Let's update the `Makefile` for the example program:
 
 ```Makefile
 all: hello
 
 hello: hello.o func.o
-	g++ -o hello hello.o func.o
+ g++ -o hello hello.o func.o
 
 func.o: func.cpp func.h
-	g++ -c func.cpp
+ g++ -c func.cpp
 
 hello.o: hello.cpp
-	g++ -c hello.cpp
+ g++ -c hello.cpp
 ```
 
-Now, run the `make` command again. You should see the commands being run by `make`: 
+Now, run the `make` command again. You should see the commands being run by `make`:
 
 ```
 g++ -c hello.cpp
@@ -240,7 +243,7 @@ When you run `make` without any arguments, it executes the first target. In the 
 
 Now `make` starts resolving `func.o`. Both of its pre-requisites exist and are newer than the target. So `make` executes the command `g++ -c func.cpp`. Now that the target `hello` has both the prerequisites satisfied, its recipe can be executed and the `hello` file is created.
 
-Now what happens if one of the files is changed? Let's change the `hello.cpp` file and change the `func(10)` line to `func(20)`: 
+Now what happens if one of the files is changed? Let's change the `hello.cpp` file and change the `func(10)` line to `func(20)`:
 
 ```c++
 #include "func.h"
@@ -253,16 +256,16 @@ int main() {
 }
 ```
 
-Now if you run `make`, you'll notice that it does not execute all the steps: 
+Now if you run `make`, you'll notice that it does not execute all the steps:
 
 ```
 g++ -c hello.cpp
 g++ -o hello hello.o func.o
 ```
 
-This time, `make` does not compile `func.c` because the file `func.o` exists, and its prerequisites are not newer than itself. This is because you have not changed `func.cpp` or `func.h`. 
+This time, `make` does not compile `func.c` because the file `func.o` exists, and its prerequisites are not newer than itself. This is because you have not changed `func.cpp` or `func.h`.
 
-On the other hand, the file `hello.cpp` is newer than `hello.o`. So it needs to be recompiled, and when `hello.o` is re-created, the target `hello` needs to be executed, since it depends on `hello.o`. 
+On the other hand, the file `hello.cpp` is newer than `hello.o`. So it needs to be recompiled, and when `hello.o` is re-created, the target `hello` needs to be executed, since it depends on `hello.o`.
 
 You can also call `make` with the name of a specific rule. For example, running `make func.o` will only run the rule for `func.o`
 
@@ -279,17 +282,18 @@ hello: hello.o
 
 ## Using Variables
 
-Observe that in your Makefile, there are quite a lot of repetitions. For example: 
+Observe that in your Makefile, there are quite a lot of repetitions. For example:
 
 ```Makefile
 func.o: func.cpp func.h
-	g++ -c func.cpp
+ g++ -c func.cpp
 ```
-In this rule, we have the string "func" repeated four times. Since here the base name of the source file and the compiled file are the same (`func`), we can use variables to tidy up the rules. The variables not only make the Makefile cleaner, they can be overridden by the user so that they can customize the Makefile without editing it.
+
+In this rule, we have the string `func` repeated four times. Since here the base name of the source file and the compiled file are the same (`func`), we can use variables to tidy up the rules. The variables not only make the Makefile cleaner, they can be overridden by the user so that they can customize the Makefile without editing it.
 
 A variable in Makefile starts with a `$` and is enclosed in parentheses `()`or braces `{}`, unless it's a single character variable.
 
-To set a variable, write a line starting with a variable name followed by `=`, `:=` or `::=`, followed by the value of the variable: 
+To set a variable, write a line starting with a variable name followed by `=`, `:=` or `::=`, followed by the value of the variable:
 
 ```Makefile
 objects = hello.o func.o
@@ -316,7 +320,7 @@ hello: hello.o func.o
 
 There is another way of defining variables using the `?=` operator. This defines the variable only if it has not been defined before.
 
-When you invoke `make`, it converts all the environment variables available to it with a `make` variable with the same name and value. This means you can set variables using environment variables. Also, you can override any variable by passing them while invoking make. For example, the `g++` command can be invoked through a variable. 
+When you invoke `make`, it converts all the environment variables available to it with a `make` variable with the same name and value. This means you can set variables using environment variables. Also, you can override any variable by passing them while invoking make. For example, the `g++` command can be invoked through a variable.
 
 ```Makefile
 CXX = g++
@@ -328,7 +332,7 @@ hello: $(objects)
     $(CXX) -o $(objects)
 ```
 
-Now running `make` will compile the files with `g++`. However, the user can now substitute alternative if they want to. 
+Now running `make` will compile the files with `g++`. However, the user can now substitute alternative if they want to.
 
 ```bash
 make CXX=clang++
@@ -340,7 +344,7 @@ Now the files will be compiled by `clang++` since `CXX=clang++` overrides the va
 
 So far, you have only created files, but `make` can also "clean" files. Usually it's a good idea to have a `clean` target to delete all the generated files, basically returning the project to a clean slate.
 
-Here is an example for your Makefile: 
+Here is an example for your Makefile:
 
 ```Makefile
 clean:
@@ -351,7 +355,7 @@ You can run it via `make clean`. This cleans all the `.o` files and the `hello` 
 
 But if you ever create a file called `clean` in the directory, `make` will get confused. Since the `clean` file is there, and the `clean` target has no prerequisites, it is always considered to be newer than its prerequisites. Therefore, the recipe will not run.
 
-The same problem will arise with the `all` target if there is ever a file named `all`. To fix this, you can declare the targets to be "phony". 
+The same problem will arise with the `all` target if there is ever a file named `all`. To fix this, you can declare the targets to be "phony".
 
 ```Makefile
 .PHONY: all clean

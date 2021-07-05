@@ -206,7 +206,6 @@ Let's test this all out. First, delete the `venv` directory if you have one. Now
 
 ![`make run` for Python `venv`]({{site.images}}{{page.slug}}/makerun.png)
 
-
 If you run `make run` once again, only the app will be run and the virtual environment will not be refreshed. You can use the `touch` command to stimulate a change in the `requiremenst.txt` file which will cause `make` to run the setup step again -
 
 ```
