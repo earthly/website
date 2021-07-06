@@ -185,20 +185,39 @@ PyObject* merge_latin( PyObject*, PyObject* )
 ```
 <figcaption>merge.h</figcaption>
 
-We don't want to do a full pass over the list, or we will lose our advantage, so we can just specialize our merge by offering seperate calls for longs, floats, and latin alphabet strings. The default `merge` beats Timsort for hetrogenius lists and approximately as performant on large lists. The specialized versions are there for when you have uniform types in your list and they are fast. 
+We don't want to do a full pass over the list, or we will lose our advantage, so we can just specialize our merge by offering seperate calls for longs, floats, and latin alphabet strings. 
 
 ## Beating TimSort
 
 Doing that, we now can finally beat Timsort at merging sorted lists, not just when the list is a heterogeneous mix of elements, but also when its all integers, or floating point numbers or one byte per char strings.
 
+<div class="wide">
+{% picture {{site.pimages}}{{page.slug}}/summary1-int.png --picture --alt {{ Our Merge beating TimSort }} %}
+<figcaption>merge vs TimSort for `int`.</figcaption>
+</div>
+
+<div class="wide">
+{% picture {{site.pimages}}{{page.slug}}/summary1-float.png --picture --alt {{ Our Merge beating TimSort }} %}
+<figcaption>merge vs TimSort for `float`.</figcaption>
+</div>
+
+<div class="wide">
+{% picture {{site.pimages}}{{page.slug}}/summary1-latin.png --picture --alt {{ Our Merge beating TimSort }} %}
+<figcaption>merge vs TimSort for latin alphabet strings.</figcaption>
+</div>
+
+<div class="wide">
+{% picture {{site.pimages}}{{page.slug}}/summary4-else.png --picture --alt {{ Our Merge beating TimSort }} %}
+<figcaption>merge vs TimSort for everything without a specialized compare.</figcaption>
+</div>
 
 
-
-....
-....
+The default `merge` beats Timsort for heterogeneous lists and approximately as performant on large lists. The specialized versions are there for when you have uniform types in your list and they are fast. 
 
 ## TimSort Is Good
-In this case, where we have more information, we can beat TimSort. The surprising thing though is how good timsort still is, it wasn't really designed for merging sorted lists, but for sorting real-world data. In the real world, data is not as randomly distributed and worst case performance is often less important than median performance. It's no wonder then that since its first creation TimSort has spread from Python to JavaScript, Swift, and Rust. Good job Tim Peters!
+There, I have beat Timsort for merging sorting lists, although I had to pull in some code from merge sort to get here.
+
+The surprising thing though is how good Timsort still is, it wasn't designed for merging sorted lists, but for sorting real-world data and its clearly great at that. In its worst case, it is n log n, but the worse case is less important than the median case and here it excels. It's no wonder then that since its first creation TimSort has spread from Python to JavaScript, Swift, and Rust. Good job Tim Peters!
 
 [^1]: It was easier because my team mate Alex has experience writing C extensions for Python so by the time I had found the Python header files, Alex had already put together a working solution, including a full earthfile. I refined some things but all the credit goes to him.
 
