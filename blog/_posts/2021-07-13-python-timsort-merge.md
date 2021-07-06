@@ -8,23 +8,8 @@ author: Adam
 internal-links:
  - just an example
 ---
-### Writing Article Checklist
+<div class="narrow-code">
 
-- [ ] Write Outline
-- [ ] Write Draft
-- [ ] Fix Grammarly Errors
-- [ ] Read out loud
-- [ ] Write 5 or more titles and pick the best on
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-- [ ] Run mark down linter (`earthly +blog-lint-apply`)
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `earthly --build-arg NAME=2020-09-10-better-builds.md +link-opportunity` and find 1-5 places to incorporate links to other articles
-- [ ] Raise PR
-
-# Outline
-## Imagine the problem
 Here is a problem. You are tasked with improving the hot loop of a python program. Maybe it is an in-memory sequential index of some sort. The slow part is the updating where add a new sorted list of items to add to the already sorted index. How do you do that update?
 
 Yes, this sounds like a leetcode problem and maybe in the realworld you would reach for some existing but [sortedset]() [datastructure]() but if you were working with python lists you might do somehting like this :
@@ -41,29 +26,36 @@ Repeat until done
 We should get something like this:
 ```
 n3 = [1,3,4,7,8,9,12.24 ...]
+
 ```
 Python has a builtin method that does with in [heapq.merge](https://github.com/python/cpython/blob/3.7/Lib/heapq.py#L314). It nicely takes advantage of the fact that both our lists are already sorted so we can get a new sorted list linear time rather then the n log n time it would take for combining unsorted lists.
 
 Imagine my surprise then when I saw this performance graph from Stack Overflow:
 
-Python sort is beating merge
+<div class="wide">
+{% picture content-wide {{site.pimages}}{{page.slug}}/performance-sort1.png --picture --alt {{ Python sort is beating merge }} %}
+<figcaption>Python's sort is beating merge at merging sorted lists!</figcaption>
+</div>
+
+As Stack Overflow user [JFS](https://stackoverflow.com/users/4279/jfs) puts it:
+
+> Long story short, unless len(l1 + l2) ~ 1000000 use sort
+
 ## TimSort
 
-Python's list.sort is the original implementation of a hybrid sorting algorithm called TimSort which is named after its author Tim Peters.
+Python's `list.sort` is the original implementation of a hybrid sorting algorithm called TimSort which is named after its author Tim Peters.
 
-> This describes an adaptive, stable, natural mergesort, modestly called
+> \[Here is\] stable, natural mergesort, modestly called
 timsort (hey, I earned it <wink>).  It has supernatural performance on many
 kinds of partially ordered arrays (less than lg(N!) comparisons needed, and
 as few as N-1), yet as fast as Python's previous highly tuned samplesort
 hybrid on random arrays.
->
 
-<figcaption>Tim Peters explaining [TimSort](https://github.com/python/cpython/commit/92f81f2e63b5eaa6d748d51a10e32108517bf3bf#diff-6d09fc0f0b57214c2e3a838d366425836c296fa931fe9dc430f604b7e3950c29)<figcaption>
-
+<figcaption>Tim Peters explaining [TimSort](https://github.com/python/cpython/commit/92f81f2e63b5eaa6d748d51a10e32108517bf3bf#diff-6d09fc0f0b57214c2e3a838d366425836c296fa931fe9dc430f604b7e3950c29)</figcaption>
 
 Timsort is designed to find runs of sequential numbers and merge them together:
 
-> In a nutshell, the main routine marches over the array once, left to right,
+> The main routine marches over the array once, left to right,
 alternately identifying the next run, then merging it into the previous
 runs "intelligently".  Everything else is complication for speed, and some
 hard-won measure of memory efficiency.
@@ -73,14 +65,14 @@ This is why `list(x + y).sort()` can be surprizingly fast: once it finds the seq
 Timsort does have less information than our merge algorith though. It needs to do a pass over the data to find these sequential runs where we know them ahead of time. It overcomes this advantage though by being written in C.
 
 >  CPython's list.sort is implemented in C (avoiding interpreter overhead), while heapq.merge is mostly implemented in Python, and optimizes for the "many iterables" case in a way that slows the "two iterables" case. 
+
 <figcaption>ShadowRanger on StackOverflow</figcaption>
 
-This mean that is should be possible to beat Timsort for list merging if we write our own c extension.
+This means that is should be possible for me to write a merge that beats Timsort if I drop down to C and write a c extension. This turned out to be easier than I thougth[^1]. 
 
-## Building A C Extension
-My team mate Alex has experience writing C extensions for Python so by the time I had found the Python headerfiles, Alex had already put together a working solution.
+## The C Extension
 
-The bulk of the algorithm is just the merge process we discussed above:
+The bulk of the C Extension, whose performance I'm going to cover in a minute, was just the stack alogirthm discussed before:
 
 ``` c
   //New List
@@ -114,7 +106,7 @@ The bulk of the algorithm is just the merge process we discussed above:
 ```
 <figcaption>C merge ([full and final version on github]())</figcaption>
 
-Once we have that extension compiled we can easily use it from python after a `pip install bla`:
+The nice thing about C Extentions, is they are just pips. Once I had it compiledd and published to pipy I could easily use it like this: `pip install bla`:
 
 ``` python
 import merge
@@ -128,7 +120,7 @@ merge.merge(a, b)
 ```
 
 ## Testing It
-Testing this with a lists of ints and floats we can see that we are beating timsort, though not by much in some cases:
+Testing my new merge with a lists of ints and floats, we can see that we are beating timsort, though not by much in some cases:
 ``` python
 import merge
 import timeit
@@ -156,21 +148,51 @@ merge took 3.0547665259999994 seconds
 ```
 
 Graphing the performance we get this:
-....
-But if we switch to a list of only integers we are losing again:
-....
 
-Timsort has some extra tricks up its sleves in the case of a list of integers. In that intial pass over the list, checks the types of the elements and if they are all of the same type it uses a cheap comparison operation.
+<div class="wide">
+{% picture {{site.pimages}}{{page.slug}}/beating-with-hetro1.png --picture --alt {{ Our Merge beating TimSort }} %}
+<figcaption>We are beating timsort with our merge</figcaption>
+</div>
 
-Specifically, if you list is all [longs](https://github.com/python/cpython/blob/main/Objects/listobject.c#L2085), [floats](https://github.com/python/cpython/blob/main/Objects/listobject.c#L2113), or [latin strings](https://github.com/python/cpython/blob/main/Objects/listobject.c#L2061) timsort will save a lot of cycles on the comparison operations.
+But if we switch to a list of only integers `sort` is beating us for small lists and even on big lists our performance improvement is thin at best:
 
-## Special Comparisons
+<div class="wide">
+{% picture {{site.pimages}}{{page.slug}}/losing-with-homo.png --picture --alt {{ Our Merge beating TimSort }} %}
+<figcaption>With lists of all `int` or all `float` we lose our advantage.</figcaption>
+</div>
+What is going on here?
 
-Learning from timsort we can bring in these comparison operations ourselves.  We don't want to actually do a full pass over the lists, or we will lose our theoritical advantage but we can just specialize our merge by offer seperate calls for longs, floats and latin strings.  
+## Timsort's Special Comparisons
 
-## Beatin TimSort
+It turns out that Timsort has some extra tricks up its sleves in the case of a list of integers. In that initial pass over the list it, checks the types of the elements and if they are all of the uniform it tries to use a cheaper comparison operation.
 
-Doing that, we now can beat Timsort, not just when the list is a hetrogenius mix of elements, but also when its all integers, or floating point numbers or one byte per char strings.
+Specifically, if your list is all [longs](https://github.com/python/cpython/blob/main/Objects/listobject.c#L2085), [floats](https://github.com/python/cpython/blob/main/Objects/listobject.c#L2113), or [latin strings](https://github.com/python/cpython/blob/main/Objects/listobject.c#L2061) timsort will save a lot of cycles on the comparison operations.
+
+Learning from timsort we can bring in these comparison operations ourselves like so:
+
+``` c
+//Default comparison
+PyObject* merge( PyObject*, PyObject* );
+
+//Compare assuming ints
+PyObject* merge_int( PyObject*, PyObject* );
+
+//Compare assuming floats
+PyObject* merge_float( PyObject*, PyObject* );
+
+//Compare assuming latin
+PyObject* merge_latin( PyObject*, PyObject* )
+```
+<figcaption>merge.h</figcaption>
+
+We don't want to do a full pass over the list, or we will lose our advantage, so we can just specialize our merge by offering seperate calls for longs, floats, and latin alphabet strings. The default `merge` beats Timsort for hetrogenius lists and approximately as performant on large lists. The specialized versions are there for when you have uniform types in your list and they are fast. 
+
+## Beating TimSort
+
+Doing that, we now can finally beat Timsort at merging sorted lists, not just when the list is a heterogeneous mix of elements, but also when its all integers, or floating point numbers or one byte per char strings.
+
+
+
 
 ....
 ....
@@ -178,4 +200,19 @@ Doing that, we now can beat Timsort, not just when the list is a hetrogenius mix
 ## TimSort Is Good
 In this case, where we have more information, we can beat TimSort. The surprising thing though is how good timsort still is, it wasn't really designed for merging sorted lists, but for sorting real-world data. In the real world, data is not as randomly distributed and worst case performance is often less important than median performance. It's no wonder then that since its first creation TimSort has spread from Python to JavaScript, Swift, and Rust. Good job Tim Peters!
 
+[^1]: It was easier because my team mate Alex has experience writing C extensions for Python so by the time I had found the Python header files, Alex had already put together a working solution, including a full earthfile. I refined some things but all the credit goes to him.
 
+### Writing Article Checklist
+
+- [ ] Fix Grammarly Errors
+- [ ] Read out loud
+- [ ] Write 5 or more titles and pick the best on
+- [ ] Create header image in Canva
+- [ ] Optional: Find ways to break up content with quotes or images
+- [ ] Verify look of article locally
+- [ ] Run mark down linter (`earthly +blog-lint-apply`)
+- [ ] Add keywords for internal links to front-matter
+- [ ] Run `earthly --build-arg NAME=2020-09-10-better-builds.md +link-opportunity` and find 1-5 places to incorporate links to other articles
+- [ ] Raise PR
+
+</div>
