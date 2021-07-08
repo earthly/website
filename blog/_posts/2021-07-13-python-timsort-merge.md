@@ -33,7 +33,7 @@ def merge_sorted_lists(l1, l2):
 
 ```
 
-Python has a built-in method in [`heapq.merge`](https://github.com/python/cpython/blob/3.7/Lib/heapq.py#L314) that does this. It takes advantage of the fact that our lists are already sorted, so we can get a new sorted list linear time rather than the n log n time it would take for combining and sorting two unsorted lists.
+Python has a built-in method in [`heapq.merge`](https://github.com/python/cpython/blob/3.7/Lib/heapq.py#L314) that does this. It takes advantage of the fact that our lists are already sorted, so we can get a new sorted list linear time rather than the `n*log(n)` time it would take for combining and sorting two unsorted lists.
 
 Imagine my surprise then when I saw this performance graph from Stack Overflow:
 
