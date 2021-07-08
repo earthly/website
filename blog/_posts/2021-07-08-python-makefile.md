@@ -8,7 +8,6 @@ internal-links:
  - python make
  - make python
 ---
-
 Even though Python is regarded as an interpreted language and the files need not be compiled separately, many developers are unaware that you can still use `make` to automate different parts of developing a Python project, like running tests, cleaning builds, and installing dependencies. It's honestly an underutilized function, and by integrating it into your routine, you can save time and avoid errors.
 
 `make` is a commonplace tool in the world of software development, especially compiled languages like C or C++. It is a tool which controls the generation of executable and other non-source files from a program's source file. It can automate the process of building software by tracking its dependencies and compiling the program only when the dependencies change.

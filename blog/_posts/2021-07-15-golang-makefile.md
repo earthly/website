@@ -9,18 +9,16 @@ internal-links:
  - go makefile
  - golang make
 ---
+<div class="narrow-code">
+Building and testing any large codebase is time-consuming, error-prone, and repetitive. Golang supports multi-platform builds, which is excellent, but it needs multiple commands to build the binaries for different platforms, which means more time-consuming and repetitive steps when building binaries. If that's not enough, most projects have some dependencies that need to be installed before building the binary, and you probably want to run tests and ensure the code quality with linters and code coverage tools.
 
-Building and testing any large codebase is time-consuming, error-prone, and repetitive. Golang supports multi-platform builds, which is excellent, but it needs multiple commands to build the binaries for different platforms, which means more time-consuming and repetitive steps when building binaries. If that’s not enough, most projects have some dependencies that need to be installed before building the binary, and you probably want to run tests and ensure the code quality wth linters and code coverage tools.
-
-If this is starting to sound like a nightmare, rest assured: there is an easier way. The utility tool [Make](https://en.wikipedia.org/wiki/Make_(software)) is used to automate tasks. It streamlines development and automates repetitive tasks with a single command. Make helps with testing, building, cleaning, and installing Go projects. In this tutorial, you will learn how you can leverage make and makefiles to automate all those frustrating and repetitive Golang tasks.
-
-In this tutorial, you will learn how to build, clean, and test a Go sample project using the make utility and `Makefile`.
+If this is starting to sound like a nightmare, rest assured: there is an easier way. The utility tool [Make](https://en.wikipedia.org/wiki/Make_(software)) is used to automate tasks. It streamlines development and automates repetitive tasks with a single command. Make helps with testing, building, cleaning, and installing Go projects. In this tutorial, you will learn how you can leverage make and makefiles to automate all those frustrating and repetitive Golang tasks. You will learn how to build, clean, and test a Go sample project using make and a `Makefile`.
 
 ## Adding a Makefile To Your Project
 
-To start using make commands, you first need to create a Makefile in the root directory of your project. Let’s create a simple `hello world` project with a Makefile in it.
+To start using make commands, you first need to create a `Makefile` in the root directory of your project. Let's create a simple `hello world` project with a `Makefile` in it.
 
-### main.go
+### `main.go`
 
 ```go
 package main
@@ -28,19 +26,19 @@ package main
 import "fmt"
 
 func main() {
-	fmt.Println("hello world")
+ fmt.Println("hello world")
 }
 ```
 
 To run this project, you would normally need to build the project and run the binary:
 
-```
+``` bash
 go build main.go
 ```
 
 If you want a different binary name and also want to create a build for a specific OS, you can specify this during the build:
 
-```
+``` bash
 GOARCH=amd64 GOOS=darwin go build -o hello-world main.go
 ```
 
@@ -64,20 +62,20 @@ The above commands can be simplified using Makefile. You can specify rules to a 
 BINARY_NAME=hello-world
 
 build:
-	GOARCH=amd64 GOOS=darwin go build -o ${BINARY_NAME}-darwin main.go
-	GOARCH=amd64 GOOS=linux go build -o ${BINARY_NAME}-linux main.go
-	GOARCH=amd64 GOOS=window go build -o ${BINARY_NAME}-windows main.go
+ GOARCH=amd64 GOOS=darwin go build -o ${BINARY_NAME}-darwin main.go
+ GOARCH=amd64 GOOS=linux go build -o ${BINARY_NAME}-linux main.go
+ GOARCH=amd64 GOOS=window go build -o ${BINARY_NAME}-windows main.go
 
 run:
-	./${BINARY_NAME}
+ ./${BINARY_NAME}
 
 build_and_run: build run
 
 clean:
-	go clean
-	rm ${BINARY_NAME}-darwin
-	rm ${BINARY_NAME}-linux
-	rm ${BINARY_NAME}-windows
+ go clean
+ rm ${BINARY_NAME}-darwin
+ rm ${BINARY_NAME}-linux
+ rm ${BINARY_NAME}-windows
 ```
 
 Now with these simple commands, you can build and run the Go project:
@@ -103,17 +101,17 @@ These commands are very handy and help to streamline the development process. No
 
 ## Improving the Development Experience with Makefiles
 
-The make util uses theMakefile as its source file to execute commands. These commands are defined as a *rule* in the Makefile. A single rule defines target, dependencies, and the recipe of the Makefile.
+`make` uses the Makefile as its source of commands to execute and these commands are defined as a *rules* in the Makefile. A single rule defines target, dependencies, and the recipe of the Makefile.
 
-### Terminologies
+### Terminology
 
-- **Target:** Targets are the main component of a Makefile. The make command I use executes the recipe using these targets. As you saw in the last section, I used commands like `build`, `run`, and `build_and_clean`. These are called *targets*. Targets are the interface to the commands I want to execute.
-- **Dependencies:** A target can have dependencies that need to be executed before running the target. The example here is the `build_and_clean` command. In this command, you can see that there are two dependencies: `build` and `run`.
-- **Recipe:** Recipes are the actual commands that will be executed when the target is run using the make command. A recipe can be a single command or a collection of commands. You can specify multiple commands in a target using a line break. In the example above, the recipe for the run target is `./${BINARY_NAME}`. A recipe should always contain a tab at the start.
+- **Target:** Targets are the main component of a Makefile. The make command executes the recipe by its target name. As you saw in the last section, I used commands like `build`, `run`, and `build_and_clean`. These are called *targets*. Targets are the interface to the commands I want to execute.
+- **Dependencies:** A target can have dependencies that need to be executed before running the target. For example, the `build_and_clean` command has two dependencies: `build` and `run`.
+- **Recipe:** Recipes are the actual commands that will be executed when the target is run. A recipe can be a single command or a collection of commands. You can specify multiple commands in a target using a line break. In the example above, the recipe for the run target is `./${BINARY_NAME}`. A recipe should always contain a tab at the start.
 
 ### Variables
 
-Variables are essential to any kind of script you write. The Makefile also has a mechanism to use variables. These are very useful when you want the same configs or outputs to be used for different targets. In the example above I have added the `BINARY_NAME` variable which is reused across different targets.
+Variables are essential to any kind of script you write. So Makefiles also have a mechanism to use variables. These are useful when you want the same configs or outputs to be used for different targets. In the example above, I have added the `BINARY_NAME` variable, which is reused across different targets.
 
 The variable can be substituted by enclosing it `${<variable_name>}`. I have used the variable in the run command to execute the binary that was created from the build command:
 
@@ -121,7 +119,7 @@ The variable can be substituted by enclosing it `${<variable_name>}`. I have use
 BINARY_NAME=hello-world
 
 run:
-	./${BINARY_NAME}
+ ./${BINARY_NAME}
 ```
 
 Variables can be defined either by using `=` or `:=`. `=` will recursively expand the variable. This will replace the value at the point when it is substituted. For example:
@@ -132,7 +130,7 @@ y = $(x) bar
 x = later
 
 all:
-	echo $(y)
+ echo $(y)
 ```
 
 When you run the `all` command, it will replace the value of `x` with the last updated value. The value has been changed to `later`, so it will print:
@@ -149,7 +147,7 @@ y := $(x) bar
 x := later
 
 all:
-	echo $(y)
+ echo $(y)
 ```
 
 ```
@@ -163,7 +161,7 @@ all:
 - Use the `SHELL` variable to define the shell to execute the recipe.
 - Define the `.DEFAULT_GOAL` with the name of the target.
 
-You can also define functions or loops in the Makefile. You can find more details on it [here](https://makefiletutorial.com).
+You can also define functions or loops in the Makefile. You can find more details on it [in this make file tutorial](https://makefiletutorial.com).
 
 ## Automating Tasks Using Makefile
 
@@ -173,38 +171,38 @@ While developing a project, you will have a lot of repetitive tasks that you mig
 BINARY_NAME=hello-world
 
 build:
-	GOARCH=amd64 GOOS=darwin go build -o ${BINARY_NAME}-darwin main.go
-	GOARCH=amd64 GOOS=linux go build -o ${BINARY_NAME}-linux main.go
-	GOARCH=amd64 GOOS=window go build -o ${BINARY_NAME}-windows main.go
+ GOARCH=amd64 GOOS=darwin go build -o ${BINARY_NAME}-darwin main.go
+ GOARCH=amd64 GOOS=linux go build -o ${BINARY_NAME}-linux main.go
+ GOARCH=amd64 GOOS=window go build -o ${BINARY_NAME}-windows main.go
 
 run:
-	./${BINARY_NAME}
+ ./${BINARY_NAME}
 
 build_and_run: build run
 
 clean:
-	go clean
-	rm ${BINARY_NAME}-darwin
-	rm ${BINARY_NAME}-linux
-	rm ${BINARY_NAME}-windows
+ go clean
+ rm ${BINARY_NAME}-darwin
+ rm ${BINARY_NAME}-linux
+ rm ${BINARY_NAME}-windows
 
 test:
-	go test ./...
+ go test ./...
 
 test_coverage:
-	go test ./... -coverprofile=coverage.out
+ go test ./... -coverprofile=coverage.out
 
 dep:
-	go mod download
+ go mod download
 
 vet:
-	go vet
+ go vet
 
 lint:
-	golangci-lint run --enable-all
+ golangci-lint run --enable-all
 ```
 
-With this simple Makefile, you can now run a few commands to automate the tasks:
+With this simple Makefile, you can now easily execute commands to run tasks:
 
 ```
 make test
@@ -216,20 +214,11 @@ make lint
 
 **Note:** I am using an external package, [`golangci-lint`](https://github.com/golangci/golangci-lint), for linting. If you are using `go mod`, make sure to add it to your `go.mod` file.
 
-Any CI/CD tool that you are using can now simply use these targets. These commands will be consistent across any developer machine or a CI/CD tool.
+Any CI/CD tool that you are using can now simply use these targets.
 
 ## Conclusion
 
-Golang is a very popular language for developing large-scale projects. Larger projects have multiple developers and require continuous automation to scale. Streamlining the development process is very important. Automating the tasks that are required during development, testing, and release will aid with faster and reliable development, as well as the release of the project.
+Golang is a popular language for developing large-scale projects. Larger projects have multiple developers and require continuous automation to scale. Streamlining the development process by automating the tasks that are required during development, testing, and release will pay off with a faster and more reliable development process and a easier release process.
 
-For next-level automation and to further improve the automation, tools like [Earthly.dev](https://earthly.dev/) can be helpful. If you are also using Docker along with Makefile, Earthly can help make your development smoother, taking some of the best ideas from Makefiles and Dockerfiles and combining them into one specification.
-
-## Draft.dev Article Checklist
-
-- [x] Add in author page
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-- [ ] Run mark down linter (`earthly +blog-lint-apply`)
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `earthly +link-opportunity` and find 1-5 places to incorporate links
+For next-level automation and to further improve the automation, tools like [Earthly.dev](https://earthly.dev/) can be helpful. If you are also using Docker along with Makefile, Earthly can help make your development process smoother, taking some of the best ideas from Makefiles and Dockerfiles and combining them into one specification.
+</div>
