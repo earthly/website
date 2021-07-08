@@ -25,7 +25,6 @@ internal-links:
 
 ## Draft.dev Article Checklist
 
-- [ ] Add in author page
 - [ ] Add in Author page
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
