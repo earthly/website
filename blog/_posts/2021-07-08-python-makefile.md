@@ -3,7 +3,7 @@ title: "Creating a Python Makefile"
 categories:
   - Tutorials
 toc: true
-author: Adam
+author: Aniket Bhattacharyea
 internal-links:
  - python make
  - make python

@@ -1,0 +1,1 @@
+{"new-post": "earthly --build-arg name=\"$1\" +new-post", "lint": "earthly +blog-lint-apply \"$@\""}
