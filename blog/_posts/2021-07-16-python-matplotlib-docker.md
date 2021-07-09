@@ -1,34 +1,52 @@
 ---
-title: "Put Your Best Title Here"
+title: "Install `matplotlib` In A Docker Container"
 categories:
   - Tutorials
-toc: true
-author: Aniket Bhattacharyea
-
+author: Adam
 internal-links:
- - just an example
+ - matplotlib
 ---
-### Writing Article Checklist
 
-- [ ] Write Outline
-- [ ] Write Draft
-- [ ] Fix Grammarly Errors
-- [ ] Read out loud
-- [ ] Write 5 or more titles and pick the best on
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-- [ ] Run mark down linter (`earthly +blog-lint-apply`)
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `earthly --build-arg NAME=2020-09-10-better-builds.md +link-opportunity` and find 1-5 places to incorporate links to other articles
-- [ ] Raise PR
+`matplotlib` is an excellent library for creating graphs and visualizations in Python. For example, I used it to generate the performance graphs in [my merging article](/blog/python-timsort-merge), and internally, we use it now and again for visualizing any metrics we produce. It is a bit hard to install inside a docker container, though.
 
-## Draft.dev Article Checklist
+## Installing Matplotlib in Alpine Linux
 
-- [ ] Add in Author page
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-- [ ] Run mark down linter (`earthly +blog-lint-apply`)
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `earthly +link-opportunity` and find 1-5 places to incorporate links
+On Alpine, or an Alpine-based docker image, installing `matplotlib` involves compiling it from source, and you need to have its dependencies in place to make this work:
+
+``` Docker
+ FROM python:3.6-alpine
+ RUN apk add g++ jpeg-dev zlib-dev libjpeg make
+ RUN pip3 install matplotlib
+```
+
+## Installing Matplotlib in Ubuntu
+
+On Ubuntu, or a Ubuntu-based docker image, the process is much simpler:
+
+``` Docker
+ FROM ubuntu:20.10
+ RUN apt-get update && apt-get install -y python3 python3-pip
+ RUN pip3 install matplotlib
+```
+
+In either case, after you've installed it, you can quickly generate great graphs and visualizations:
+
+``` Python
+import numpy as np
+from scipy.interpolate import splprep, splev
+
+import matplotlib.pyplot as plt
+from matplotlib.path import Path
+from matplotlib.patches import PathPatch
+
+N = 400
+t = np.linspace(0, 3 * np.pi, N)
+r = 0.5 + np.cos(t)
+x, y = r * np.cos(t), r * np.sin(t)
+
+fig, ax = plt.subplots()
+ax.plot(x, y)
+plt.savefig('1.png')
+```
+
+![Simple Graph]({{site.images}}{{page.slug}}/1.png)\
