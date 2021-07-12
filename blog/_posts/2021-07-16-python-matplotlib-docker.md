@@ -11,7 +11,7 @@ internal-links:
 
 ## Installing Matplotlib in Alpine Linux
 
-On Alpine, or an Alpine-based docker image, installing `matplotlib` involves compiling it from source, and you need to have its dependencies in place to make this work:
+On Alpine, or an Alpine-based docker image, it's _possible_ to install `matplotlib`; however it will involve compiling it from source as pip does not provide any pre-compiled binaries -- this will take quite a bit of time. If you don't mind compiling from source, you will need to have its dependencies in place to make this work:
 
 ``` Docker
  FROM python:3.6-alpine
