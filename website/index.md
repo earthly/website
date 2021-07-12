@@ -47,8 +47,3 @@ layout: default
     {% include testimonials.html data=site.data.testimonials2 %} 
   </div>
 </div>
-<div class="color2">
-  <div class="wrapper">
-    {% include more2.html %}
-  </div>
-</div>

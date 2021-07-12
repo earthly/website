@@ -60,8 +60,7 @@ website-docker:
 website-run:
   LOCALLY
   # BUILD +website-docker
-  RUN docker rm -f earthly-website && \
-      docker run -p 4001:4001 -v $(pwd)/website:/site --rm --name earthly-website earthly-website
+  RUN docker run -p 4001:4001 -v $(pwd)/website:/site earthly-website
 
 ## Blog
 blog-update:
