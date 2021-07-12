@@ -8,7 +8,12 @@ layout: page
 
 [Dockerfiles](https://docs.docker.com/engine/reference/builder/) were designed for specifying the make-up of Docker images and that's where Dockerfiles stop. Earthly takes some key principles of Dockerfiles (like layer caching), but expands on the use-cases. For example, Earthly can output regular artifacts, run unit and integration tests, and create several Docker images at a time - all outside the scope of Dockerfiles.
 
-It is possible to use Dockerfiles in combination with other technologies (e.g., Makefiles or bash files) to solve such use-cases. However, these combinations are difficult to parallelize, challenging to scale across repositories as they lack a robust import system and also they often vary in style from one team to another. Earthly does not have these limitations as it was designed as a general-purpose build system.
+##  Why not just use docker and bash/make/python/ruby/etc?
+Sure, you can do that. That's how earthly started.
+
+Earthly grew out of a wrapper around dockerfiles. As your project grows, your build and testing requirements will grow too. You might end up with multiple dockerfiles, you might need to support running tests and builds on both Linux, MacOS, and Windows, you might run into parallelisation issues, you might need to scale across multiple repositories. Earthly grew out of all of these requirements and is supported by a growing user-base, which (most likely) offers a more battle-tested code-base than your custom in-house wrapper.
+
+Still think you should just write your own wrapper? [Here are some tips](https://earthly.dev/blog/repeatable-builds-every-time/)
 
 For example, Earthly introduces a richer target, artifact and image [referencing system](https://docs.earthly.dev/guides/target-ref), allowing for better reuse in complex builds spanning a single large repository or multiple repositories. Because Dockerfiles are only meant to describe one image at a time, such features are outside the scope of applicability of Dockerfiles.
 
