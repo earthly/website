@@ -27,7 +27,7 @@ However Earthly is not only a tool for producing docker containers. Earthly is a
 
 ## Can I use Earthly with my continuous integration system?
 
-Yes, if you install Earthly where your builds run, then you can use Earthly with your continuous integration system. We have documented integrations for some [popular CI systems](https://docs.earthly.dev/docs/ci-integration) but it is likely that you will be able to get earthly working with your existing CI System. Hope in our [Slack channel](/slack) and you may find others using your CI system of choice.  
+Yes, if you install Earthly where your builds run, then you can use Earthly with your continuous integration system. We have documented integrations for some [popular CI systems](https://docs.earthly.dev/docs/ci-integration) but it is likely that you will be able to get earthly working with your existing CI System. Hop in our [Slack channel](/slack) and you may find others using your CI system of choice.  
 
 ## Can I use Earthly with my programming language or command line build tools?
 
