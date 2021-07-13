@@ -67,7 +67,7 @@ alternately identifying the next run, then merging it into the previous
 runs "intelligently". Everything else is complication for speed, and some
 hard-won measure of memory efficiency.
 
-This is why `list(x + y).sort()` can be surprisingly fast: once it finds the sequential runs of numbers, it functions like our merge algorithm: combining the two sorted lists in linear time.
+This is why `(x + y).sort()` can be surprisingly fast: once it finds the sequential runs of numbers, it functions like our merge algorithm: combining the two sorted lists in linear time.
 
 Timsort does have to do extra work, though. It needs to do a pass over the data to find these sequential runs, and `heapq.merge` knows where the runs are ahead of time. Timsort overcomes this disadvantage by being written in C rather than Python. Or as ShawdowRanger on Stack Overflow explains it:
 
@@ -140,7 +140,7 @@ def merge_test():
    m1 = merge.merge(a, b)
 
 def sort_test():
-   m2 = list(a + b)
+   m2 = a + b
    m2.sort()
 
 sort_time = timeit.timeit("sort_test()", setup="from __main__ import sort_test", number=100000)
