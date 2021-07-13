@@ -11,7 +11,7 @@ layout: page
 ##  Why not just use docker and bash/make/python/ruby/etc?
 Sure, you can do that. That's how earthly started.
 
-Earthly grew out of a wrapper around dockerfiles. As your project grows, your build and testing requirements will grow too. You might end up with multiple dockerfiles, you might need to support running tests and builds on both Linux, MacOS, and Windows, you might run into parallelisation issues, you might need to scale across multiple repositories. Earthly grew out of all of these requirements and is supported by a growing user-base, which (most likely) offers a more battle-tested code-base than your custom in-house wrapper.
+Earthly grew out of a wrapper around Dockerfiles. As your project grows, your build and testing requirements will grow too. You might end up with multiple Dockerfiles, you might need to support running tests and builds on both Linux, MacOS, and Windows, you might run into parallelisation issues, you might need to scale across multiple repositories. Earthly grew out of all of these requirements and is supported by a growing user-base, which (most likely) offers a more battle-tested code-base than your custom in-house wrapper.
 
 Still think you should just write your own wrapper? [Here are some tips](https://earthly.dev/blog/repeatable-builds-every-time/)
 
