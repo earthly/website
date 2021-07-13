@@ -83,28 +83,28 @@ The bulk of the C Extension, whose performance I'm going to cover in a minute, i
   //New List
   PyObject* mergedList = PyList_New( n1 + n2 );
 
- for( i = 0;; ) {
-  elem1 = PyList_GetItem( listObj1, i1 );
-  elem2 = PyList_GetItem( listObj2, i2 );
-  result = PyObject_RichCompareBool(v, w, Py_LT);
-  switch( result ) {
-    // List1 has smallest, Pop from list 1
-  case 1:
-   PyList_SetItem( mergedList, i++, elem1 );
-   i1++;
-   break;
+  for( i = 0;; ) {
+    elem1 = PyList_GetItem( listObj1, i1 );
+    elem2 = PyList_GetItem( listObj2, i2 );
+    result = PyObject_RichCompareBool(v, w, Py_LT);
+    switch( result ) {
+      // List1 has smallest, Pop from list 1
+      case 1:
+        PyList_SetItem( mergedList, i++, elem1 );
+        i1++;
+        break;
 
-  case 0:
-      // List2 has smallest, Pop from list 2
-   PyList_SetItem( mergedList, i++, elem2 );
-   i2++;
-   break;
-  }
-  if( i2 >= n2 || i1 >= n1 )) {
-   //One list is empty, add remainder of other list to result
-   ...
-   break;
-  }
+      case 0:
+          // List2 has smallest, Pop from list 2
+        PyList_SetItem( mergedList, i++, elem2 );
+        i2++;
+        break;
+    }
+    if( i2 >= n2 || i1 >= n1 )) {
+    //One list is empty, add remainder of other list to result
+    ...
+    break;
+    }
  }
  return mergedList;
 
@@ -222,7 +222,7 @@ The default `merge` beats Timsort for heterogeneous lists, and the specialized v
 
 ## TimSort Is Good
 
-There, I have beat Timsort for merging sorting lists, although I had to pull in some code from it to get here.
+There, I have beat Timsort for merging sorting lists, although I had to pull in some code from TimSort itself to get here. I'm not sure how valuable this is: if you need to go fast, you might not choose Python, but it was a fun learning project.
 
 Also, I learned that dropping down to C isn't as scary as it sounds. The build steps are a bit more involved, but with the included [Earthfile](https://github.com/earthly/pymerge/blob/main/Earthfile), the build is a one-liner and works cross-platform. You can find the code [on GitHub](https://github.com/earthly/pymerge) and an intro to [Earthly](https://earthly.dev/) on this very site, and with that example, you can build your own C extension reasonably quickly.
 
