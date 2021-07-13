@@ -51,7 +51,7 @@ You may also optionally port your Dockerfiles to Earthly entirely. Translating D
 
 Both Nix and Earthly are focusing on improving the way that software is built but we believe they have different goals. 
 
-At a technical level, both Nix and Earthly use Linux namespaces to provide file system isolation. Earthly uses namespaces via runC, using buildkit whereas Nix uses them directly. 
+At a technical level, both Nix and Earthly use Linux namespaces to provide file system isolation. Earthly uses namespaces via Runc, using Buildkit whereas Nix uses them directly. 
 
 At a higher level, though, Earthly is focused on providing an easy to write language for declaring all the steps of a complex build pipeline. This often includes things that may not be a good fix of the Nix build model, such as code linting, starting up and tearing down dependent services, making network calls and running integration tests. 
 
