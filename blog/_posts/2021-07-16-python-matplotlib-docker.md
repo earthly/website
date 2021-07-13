@@ -43,10 +43,23 @@ N = 400
 t = np.linspace(0, 3 * np.pi, N)
 r = 0.5 + np.cos(t)
 x, y = r * np.cos(t), r * np.sin(t)
-
 fig, ax = plt.subplots()
 ax.plot(x, y)
+plt.xlabel("X value")
+plt.ylabel("Y value")
 plt.savefig('1.png')
 ```
 
 ![Simple Graph]({{site.images}}{{page.slug}}/1.png)\
+
+## Appendix: Alpine vs Ubuntu Pip Install
+
+Why is the Ubuntu process fast and simple and the Alpine process slow? The reason is `glibc`. The pip wheels for `matplotlib` are compiled c/c++ programs that dynamically link to `glibc` and Alpine does not have `glibc`.  
+
+Alpine tries to stay small and so uses `musl-libc` instead. Unfortunately, this means compiling from source on Alpine, which can be a lengthy process.  
+
+[ThisGuyCantEven](https://stackoverflow.com/questions/49037742/why-does-it-take-ages-to-install-pandas-on-alpine-linux/58210701#58210701) on Stack Overflow has more details:
+
+> Pip looks first for a wheel with the correct binaries, if it can't find one, it tries to compile the binaries from the c/c++ source and links them against `musl`. In many cases, this won't even work unless you have the python headers from python3-dev or build tools like make.
+>
+> Now the silver lining, as others have mentioned, there are `apk` packages with the proper binaries provided by the community, using these will save you the (sometimes lengthy) process of building the binaries.
