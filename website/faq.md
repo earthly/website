@@ -3,12 +3,23 @@ title: Frequently Asked Questions
 layout: page
 ---
 <!-- vale HouseStyle.H2 = NO -->
+<style>
+span {
+    display: none;
+    white-space:nowrap;
+    width: max-content;
+}
+    
+h2:hover span {
+    display: inline-block;
+}
+</style>
 
-<h2>How is Earthly different from Dockerfiles?<a href="#dockerFile" name="dockerfile"><i>🔗</i></a></h2>
+<h2>How is Earthly different from Dockerfiles?<span><a href="#dockerFile" name="dockerfile"><i>¶</i></a></span></h2>
 
 [Dockerfiles](https://docs.docker.com/engine/reference/builder/) were designed for specifying the make-up of Docker images and that's where Dockerfiles stop. Earthly takes some key principles of Dockerfiles (like layer caching), but expands on the use-cases. For example, Earthly can output regular artifacts, run unit and integration tests, and create several Docker images at a time - all outside the scope of Dockerfiles.
 
-<h2>Why not just use docker and bash/make/python/ruby/etc?<a href="#usedocker" name="usedocker"><i>🔗</i></a></h2>
+<h2>Why not just use docker and bash/make/python/ruby/etc?<span><a href="#usedocker" name="usedocker"><i>¶</i></a></span></h2>
 
 Sure, you can do that. That's how earthly started.
 
@@ -18,7 +29,7 @@ Still think you should just write your own wrapper? [Here are some tips](https:/
 
 For example, Earthly introduces a richer target, artifact and image [referencing system](https://docs.earthly.dev/guides/target-ref), allowing for better reuse in complex builds spanning a single large repository or multiple repositories. Because Dockerfiles are only meant to describe one image at a time, such features are outside the scope of applicability of Dockerfiles.
 
-<h2>Is Earthly a way to define a Docker multi-stage build?<a href="#multistage" name="multistage"><i>🔗</i></a></h2>
+<h2>Is Earthly a way to define a Docker multi-stage build?<span><a href="#multistage" name="multistage"><i>¶</i></a></span></h2>
 
 Yes, that is one of its uses.  
 
@@ -26,17 +37,17 @@ Docker Multi-stage builds can get complex and hard to follow as they accumulate 
 
 However Earthly is not only a tool for producing docker containers. Earthly is a tool for building cross platform build specifications. It can produce docker images but it can also be used to produce binary artifacts, to run tests, to lint code, and anything else you would normally do inside of build pipeline in Jenkins, GitHub Actions, Travis CI or your-continous-integration-system-of-choice.
 
-<h2>Can I use Earthly with my continuous integration system?<a href="#ci" name="ci"><i>🔗</i></a></h2>
+<h2>Can I use Earthly with my continuous integration system?<span><a href="#ci" name="ci"><i>¶</i></a></span></h2>
 
 Yes, if you install Earthly where your builds run, then you can use Earthly with your continuous integration system. We have documented integrations for some [popular CI systems](https://docs.earthly.dev/docs/ci-integration) but it is likely that you will be able to get earthly working with your existing CI System. Hop in our [Slack channel](/slack) and you may find others using your CI system of choice.  
 
-<h2>Can I use Earthly with my programming language or command line build tools?<a href="#pl" name="pl"><i>🔗</i></a></h2>
+<h2>Can I use Earthly with my programming language or command line build tools?<span><a href="#pl" name="pl"><i>¶</i></a></span></h2>
 
 Yes. If it's possible to create a docker image with your programming language, compiler, and tools of choice installed then its possible to use these with Earthly.
 
 Earthly is especially popular with those who need to work with several languages or tools in a single build pipeline. Earthly can act as a glue layer that holds the various tools together and provides caching and parallelism across them. 
 
-<h2>Can Earthly build Dockerfiles?<a href="#build" name="build"><i>🔗</i></a></h2>
+<h2>Can Earthly build Dockerfiles?<span><a href="#build" name="build"><i>¶</i></a></span></h2>
 
 Yes! You can use the command `FROM DOCKERFILE` to inherit the commands in an existing Dockerfile.
 
@@ -48,7 +59,7 @@ build:
 
 You may also optionally port your Dockerfiles to Earthly entirely. Translating Dockerfiles to Earthfiles is usually a matter of copy-pasting and making minor adjustments. See the [getting started page](/get-earthly) for some Earthfile examples.
 
-<h2>How does Earthly compare to Nix?<a href="#nix" name="nix"><i>🔗</i></a></h2>
+<h2>How does Earthly compare to Nix?<span><a href="#nix" name="nix"><i>¶</i></a></span></h2>
 
 Both [Nix](https://nixos.org/) and Earthly are focusing on improving the way that software is built but we believe they have different goals. 
 
@@ -56,7 +67,7 @@ At a technical level, both Nix and Earthly use Linux namespaces to provide file 
 
 At a higher level, though, Earthly is focused on providing an easy to write language for declaring all the steps of a complex build pipeline. This often includes things that may not be a good fix of the Nix build model, such as code linting, starting up and tearing down dependent services, making network calls and running integration tests. 
 
-<h2>How is Earthly different from Bazel?<a href="#bazel" name="bazel"><i>🔗</i></a></h2>
+<h2>How is Earthly different from Bazel?<span><a href="#bazel" name="bazel"><i>¶</i></a></span></h2>
 
 [Bazel](https://bazel.build) is a build tool developed by Google to optimize the speed, correctness, and reproducibility of their internal monorepo codebase. Earthly draws inspiration from some of the principles of Bazel (mainly the idea of repeatable builds), but it is different in a few key ways:
 
