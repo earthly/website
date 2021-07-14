@@ -180,6 +180,9 @@ compress_html:
   ignore:
     envs: development
 
+collections:
+  authors:
+    output: true
 
 # Defaults
 defaults:
@@ -204,3 +207,10 @@ defaults:
       path: "/_posts/*example*.md"
     values: 
       published: False
+  - scope:
+      path: ""
+      type: "authors"
+    values:
+      layout: "author"
+      header:
+        overlay_image: /assets/images/default-header.jpg

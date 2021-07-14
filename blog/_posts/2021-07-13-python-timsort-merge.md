@@ -3,6 +3,7 @@ title: "Beating TimSort at Merging"
 categories:
   - Tutorials
 author: Adam
+featured: true
 internal-links:
  - python
  - timsort
