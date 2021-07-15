@@ -2,7 +2,6 @@
 {% assign author = site.data.authors[author] | default: author %}
 {% if author %}
 <div itemscope itemtype="https://schema.org/Person">
-  <!-- <h5>About The Author</h5> -->
 
   {% if author.avatar %}
     <div class="author__avatar">
@@ -15,7 +14,6 @@
       {% endif %}
     </div>
   {% endif %}
-
   <div class="author__content">
     {% if author.home %}
       <a href="{{ author.home | relative_url }}"><h3 class="author__name" itemprop="name">

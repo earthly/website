@@ -17,3 +17,13 @@
     </span>
   </p>
 {% endif %}
+{% assign author = site.authors | where: 'short_name', page.author | first %}
+{% assign author_data = site.data.authors[page.author] %}
+{% if author %}
+<p class="page__taxonomy">
+  <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i>Author:</strong>
+  <span itemprop="keywords">
+    <a href="{{ author.url | relative_url}}" class="page__taxonomy-item" rel="tag">{{ author_data.name }}</a>
+  </span>
+</p>
+{% endif %}

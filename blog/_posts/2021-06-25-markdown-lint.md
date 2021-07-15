@@ -1,7 +1,7 @@
 ---
 title: "Linting Markdown And Documentation"
 categories:
-  + Tutorials
+  - Tutorials
 author: Adam
 internal-links:
  - just an example

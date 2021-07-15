@@ -1,0 +1,24 @@
+---
+layout: single
+---
+{% assign author_data = site.data.authors[page.short_name] %}
+{% include author-profile.html %}
+{{ content }}
+
+{% assign filtered_posts = site.posts | where: 'author', page.short_name | where:'featured', true  %}
+{% if filtered_posts.size != 0 %}
+<h2>Featured</h2>
+<ul>
+  {% for post in filtered_posts %}
+    <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
+  {% endfor %}
+</ul>
+{% endif %}
+
+<h2>All</h2>
+<ul>
+  {% assign filtered_posts = site.posts | where: 'author', page.short_name %}
+  {% for post in filtered_posts %}
+    <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
+  {% endfor %}
+</ul>

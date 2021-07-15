@@ -3,6 +3,7 @@ title: "Don't Feed the Thought Leaders"
 categories:
   - Articles
 author: Adam
+featured: true
 internal-links:
  - thought leaders
  - hedgehog
