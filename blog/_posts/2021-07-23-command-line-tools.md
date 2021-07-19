@@ -1,5 +1,5 @@
 ---
-title: "6 Command Line Tools That make me more Productive"
+title: "6 Productive Command Line Tools"
 categories:
   - Tutorials
 author: Adam
@@ -14,7 +14,7 @@ Lately I have been adding some tools to my MacOS command-line toolbox. Many expe
 
 ## `broot`
 
-I'm not sure how Interesting I came across `broot`, but it's pretty handy. If you are in a small directory and want to see the lay of the land, `tree` is excellent.
+I'm not sure how I came across `broot`, but it's pretty handy. If you are in a small directory and want to see the lay of the land, `tree` is excellent.
 
 ```
 ✗ tree
