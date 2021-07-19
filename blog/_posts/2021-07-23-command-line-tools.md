@@ -201,8 +201,26 @@ eval "$(zoxide init zsh --cmd cd)"
 
 ## GitUpdate
 
+This tool is another find from the [Lobste.rs] thread. When working on a git branch, I like to commit my work frequently - before I try to delete some large block of text in a blog post or try to refactor some code, I commit so that I can easily rollback to a good state. But I usually don't want to bother to create meaningful commite messages, becuase these commits will just be squashed later on. To work with this I have a git alias called 'wip' which stands for 'work in progress.
+```
+git wip = !git add --all; git ci -m WIP
+```
+
+[`gitupdate`](https://github.com/nikitavoloboev/gitupdate) is a simple improvement on this idea. `gitupdate .` commits your files but uses the file names (but not extentions) of the changed files to create a more meaningful commit message.
+
+<div class="notice--info">
+**ℹ️ Install GitUpdate **
+
+``` bash
+git clone https://github.com/nikitavoloboev/gitupdate
+go build
+sudo cp gitupdate /usr/local/bin
+```
+</div>
+
 
 ## Other Tools
+
 There are many other helpful command line tools. More than can be covered well in a single article. JQ, MITMProxy, Vale, Pandoc, and PSTree are some I use frequently. There is also a whole class of Rust rewrites of common POSIX tools that warrant an article of their own.  
 
 Of course, [Earthly](https://earthly.dev/) itself is a command line tool and one I use constantly for gluing together various bits of development into repeated steps that I can call locally or on a build server. It has definitely become a standard part of how I do things at the command line. 
