@@ -3,9 +3,13 @@ title: "6 Productive Command Line Tools"
 categories:
   - Tutorials
 author: Adam
-
 internal-links:
- - just an example
+ - broot
+ - funky
+ - fzf
+ - mcfly
+ - gitupdate
+ - zoxide
 ---
 
 Tools are powerful. A good tool makes work easier and faster, and a great tool unlocks new abilities: Previously impossible things -- or at least so things so complicated that it wasn't worth the effort -- become possible and sometimes easy.
