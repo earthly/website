@@ -20,3 +20,5 @@ Kato
 Stallman
 JFS
 Jez
+Freemasen
+Samoshkin

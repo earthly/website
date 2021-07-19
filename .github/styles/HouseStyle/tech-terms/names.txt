@@ -133,3 +133,5 @@ alex
 Fortran
 Timsort
 Codecov
+zoxide
+Pandoc

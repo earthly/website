@@ -4,7 +4,11 @@ categories:
   - Tutorials
 author: Adam
 internal-links:
- - just an example
+ - vale
+ - markdown lint
+ - markdown
+ - spell
+ - spelling
 ---
 
 Many linting, code formatting, and static analysis tools exist for code. You can use `eslint`, `gofmt`, or many other static analysis tools, combined with a great continuous integration process, and ensure that your code stays in good shape. But what about markdown files and documentation? How do you ensure you aren't committing spelling and grammar mistakes? How do you ensure your files are valid markdown and that the language you are using is clear and correct? You can do this and more with a documentation linter.
