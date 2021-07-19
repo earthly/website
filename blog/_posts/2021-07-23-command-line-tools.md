@@ -1,33 +1,20 @@
 ---
-title: "Command Line Tools"
+title: "6 Command Line Tools That make me more Productive"
 categories:
   - Tutorials
-toc: true
 author: Adam
 
 internal-links:
  - just an example
 ---
-### Writing Article Checklist
-
-- [ ] Fix Grammarly Errors
-- [ ] Read out loud
-- [ ] Write 5 or more titles and pick the best on
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-- [ ] Run mark down linter (`earthly +blog-lint-apply`)
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `earthly --build-arg NAME=2020-09-10-better-builds.md +link-opportunity` and find 1-5 places to incorporate links to other articles
-- [ ] Raise PR
 
 Tools are powerful. A good tool makes work easier and faster, and a great tool unlocks new abilities: Previously impossible things -- or at least so things so complicated that it wasn't worth the effort -- become possible and sometimes easy.
 
-Here are some command-line tools I've found useful.
+Lately I have been adding some tools to my MacOS command-line toolbox. Many experienced command-line users stick strictly to the POSIX standard [command-line tools](https://en.wikipedia.org/wiki/List_of_Unix_commands) like `grep`,`awk` and `cat` but there are many powerful tools beyond those. Here are a few I'm finding valuable.
 
 ## `broot`
 
-I'm not sure how I came across `broot`, but it's pretty handy. If you are in a small directory and want to see the lay of the land, `tree` is excellent.
+I'm not sure how Interesting I came across `broot`, but it's pretty handy. If you are in a small directory and want to see the lay of the land, `tree` is excellent.
 
 ```
 ✗ tree
@@ -79,7 +66,7 @@ brew install broot
 
 ## Funky
 
-If you live in the terminal, and you want to [use your terminal as an IDE](https://blog.sanctum.geek.nz/unix-as-ide-files/), then it's helpful to have your terminal change based on the current directory. There are many ways to do this.  [`DirEnv`](https://direnv.net/) loads and unloads `.env` files as you enter directories.  [`smartcd`](https://github.com/cxreg/smartcd) is similar. It lets you run a shell script as you enter and leave each directory -- you can start and stop services, change the prompt, or anything else you want.  
+If you live in the terminal, and you want to [use your terminal as an IDE](https://blog.sanctum.geek.nz/unix-as-ide-files/), then it's helpful to have your terminal change based on the current directory. There are many ways to do this.  [`DirEnv`](https://direnv.net/) loads and unloads `.env` files as you enter directories.  [`smartcd`](https://github.com/cxreg/smartcd) is similar. It lets you run a shell script whenever you change to a certain path -- you can start and stop services, change the prompt, or anything else you want.  
 
 However, my favorite of this genre is the strangely named [`funky`](https://github.com/bbugyi200/funky), which "takes shell functions to the next level by making them easier to define, more flexible, and more interactive."
 
@@ -152,15 +139,15 @@ source ~/.fzf.bash
 
 What extra information? To start with, McFly considers these options in its ranking heuristics:
 
-- The commands you typed before the command
-- How often you run the command
-- How recently you ran the command
+- The commands you typed before the command.
+- How often you run the command.
+- How recently you ran the command.
 
 It tracks all this in a SQLite database where it also tracks and weighs suggestions by:
 
-- The commands exit status
-- The directory you ran the command in
-- If you have selected it in McFly before
+- The commands exit status.
+- The directory you ran the command in.
+- If you have selected it in McFly before.
 
 Being suggested failed commands is a pet peeve of mine, but I never considered narrowing the choice based on the current directory or down-ranking items that are never selected.
 
@@ -218,7 +205,7 @@ eval "$(zoxide init zsh --cmd cd)"
 
 ## GitUpdate
 
-This tool is another find from the [Lobste.rs] thread. When working on a git branch, I like to commit my work frequently. For example, before I try to delete some large block of text in a blog post or before I attempt to refactor some piece of code, I commit my work. I'll squash, or restructure, these commits later on, but for convenience I have a git alias called `wip` ('work in progress`).
+This tool is another find from the [Lobste.rs] thread. When working on a git branch, I like to commit my work frequently. For example, before I try to delete some large block of text in a blog post, or before I attempt to refactor some piece of code, I commit my work. Of course, I'll squash, or restructure, these commits later on, but for convenience, I have a git alias called `wip` ('work in progress`) which gives me a low effort way to commit.
 
 ```
 git wip = !git add --all; git ci -m WIP
@@ -239,8 +226,8 @@ sudo cp gitupdate /usr/local/bin
 
 ## Other Tools
 
-There are many other helpful command line tools. More than can be covered well in a single article. JQ, [`mitmproxy`](/blog/mitmproxy), [Pandoc](https://pandoc.org/), and [PSTree](https://man7.org/linux/man-pages/man1/pstree.1.html) are some I use frequently. There is also a whole class of Rust rewrites of common POSIX tools that warrant an article of their own.  
+There are many other helpful command-line tools. More than can be covered well in a single article. JQ, [`mitmproxy`](/blog/mitmproxy), [Pandoc](https://pandoc.org/), and [PSTree](https://man7.org/linux/man-pages/man1/pstree.1.html) are some I use frequently. There is also a whole class of Rust rewrites of common POSIX tools that warrant an article of their own.  
 
-Of course, [Earthly](https://earthly.dev/) itself is a command line tool and one I use constantly for gluing together various bits of development into repeated steps that I can call locally or on a build server. It and the tools I use for [linting prose](/blog/markdown-lint) have become a standard part of how I do things at the command line.
+Of course, [Earthly](https://earthly.dev/) itself is a command-line tool, and one I constantly use for gluing together various development steps together. It, and the tools I use for [linting prose](/blog/markdown-lint) have become a standard part of how I work.
 
-What less common command line tools do you use? If you have tool suggestions I'd love to hear them. You can find my twitter account and email below.
+What less common command-line tools do you use? If you have tool suggestions, I'd love to hear them. You can find my Twitter account and email below and I'd love to hear what you are using.
