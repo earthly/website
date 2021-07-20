@@ -6,7 +6,6 @@ categories:
 author: Adam
 internal-links:
   - integration testing
-  - testing
   - unit test
   - unit testing
 ---

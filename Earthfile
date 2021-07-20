@@ -206,3 +206,23 @@ link-opportunity:
   ARG NAME="2020-09-10-better-builds.md"
   RUN pip3 install python-frontmatter
   RUN python3 ./blog/_util/suggest-links.py ./blog/_posts/$NAME
+
+test1:
+  FROM alpine
+  ARG S="$(date +%s)"
+  RUN echo "s=$S"
+  BUILD --build-arg S="$S" +test2
+
+test2:
+  FROM alpine
+  ARG S
+  RUN echo "s=$S"
+
+test3:
+  FROM alpine
+  ARG S
+  RUN echo "s=$S"
+
+test4:
+ FROM +test1
+ RUN echo "s=$S"

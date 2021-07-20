@@ -132,3 +132,4 @@ mdspell
 alex
 Fortran
 Timsort
+Codecov

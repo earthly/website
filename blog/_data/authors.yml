@@ -71,5 +71,8 @@ Milap Neupane:
     name    : "Milap Neupane"
     bio     : "Milap is a Sr. Software engineer working with ruby/rails, Golang, and cloud-native technologies with AWS. He believes in the community and is the organizer of Golang Kathmandu. In his free time, Milap likes doing street photography."
     avatar  : "/assets/images/authors/milapneupane.jpg"
-
+Alexandre Couedelo:
+    name    : "Alexandre Couëdelo"
+    bio     : "Alexandre is a Complex Systems Engineering and Management Specialist. He has been embracing the DevOps culture since he started his career by contributing to the digital transformation of a leading financial institution in Canada"
+    avator  : "blog/assets/images/authors/alexcoudelo.jpg"
 
