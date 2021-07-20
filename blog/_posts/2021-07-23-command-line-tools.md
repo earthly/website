@@ -11,7 +11,6 @@ internal-links:
  - gitupdate
  - zoxide
 ---
-
 Tools are powerful. A good tool makes work easier and faster, and a great tool unlocks new abilities: Previously impossible things -- or at least so things so complicated that it wasn't worth the effort -- become possible and sometimes easy.
 
 Lately I have been adding some tools to my MacOS command-line toolbox. Many experienced command-line users stick strictly to the POSIX standard [command-line tools](https://en.wikipedia.org/wiki/List_of_Unix_commands) like `grep`,`awk` and `cat` but there are many powerful tools beyond those. Here are a few I'm finding valuable.
@@ -45,15 +44,11 @@ $ tree
 
 `broot` solves this problem by being aware of the size of your terminal window and sizing to fit it.
 
-<div class="wide">
 {% picture {{site.pimages}}{{page.slug}}/broot.png --picture --alt {{ bRoot }} %}
-</div>
 
 You can navigate around using the arrow keys in `broot` and it is also helpful for tracking down disk space usage by passing in the `-w` flag (`broot -w`):
 
-<div class="wide">
 {% picture {{site.pimages}}{{page.slug}}/broot2.png --picture --alt {{ broot -w }} %}
-</div>
 
 It can do lots of other things, so take a look at the [GitHub guide](https://github.com/Canop/broot) but for me its just a better `tree`.
 
@@ -78,10 +73,11 @@ The way `funky` works is simple: as you enter a directory, `funky` looks for a `
 
 This means when I'm in the directory for this Jekyll blog, I have aliases loaded for creating a new post, linting my markdown, pulling in images, and so on. I can list these by typing `funky`
 
-```
+``` bash
 $ funky
 lint() { markdownlint --fix "./_posts/*.md"; }
-new-post() {  cat ./blog/_posts/2029-01-01-checklist.md > ./blog/_posts/$(date -v +7d +"%Y-%m-%d")-$1.md }
+set-header() { cp "$(latest-image)" "$(image-folder)/header.jpg"; }
+set-image() { cp "$(latest-image)" "$(image-folder)/$(date +%s).png"; }
 ```
 
 `funky` can do more than this, though. It has features for interactively adding and editing functions, and for registering global functions and aliases. What I like, though, is just being able to quickly give a command, in a specific context, a short alias.
@@ -105,6 +101,9 @@ source /usr/local/lib/python3.9/site-packages/scripts/shell/funky.sh
 </div>
 
 ## Fuzzy Finder (FZF)
+
+{% picture {{site.pimages}}{{page.slug}}/1626788538.png --picture --alt {{ Using `fzf` to locate generated images. }} %}
+<figcaption>Using `fzf` to locate the generated images for this post.</figcaption>
 
 If `funky` and `broot` improved my productivity then more tools could only improve it more, right? So I headed over to [Lobste.rs](https://lobste.rs/s/yfgwjr/what_interesting_command_line_tools_do) and asked what other tools people were using.  `FZF` came up quite a bit, and I've started using it myself now.
 
@@ -138,6 +137,8 @@ source ~/.fzf.bash
 </div>
 
 ## McFly
+{% picture {{site.pimages}}{{page.slug}}/1626788971.png --picture --alt {{ Using `fzf` to locate generated images. }} %}
+<figcaption>Using McFly to suggest common earthly commands in this path.</figcaption>
 
 `FZF` is excellent for filtering file paths in a command line when you want to open a file (`vim **`), but for command-line completion, there is more information available than the raw history file. [`McFly`](https://github.com/cantino/mcfly/) attempts to use this extra information to provide more relevant results.
 
@@ -182,6 +183,9 @@ I found that `FZF` was interfering with the `CTRL-R` of McFly and had to comment
 
 ## Better CD
 
+{% picture {{site.pimages}}{{page.slug}}/1626789626.png --picture --alt {{ Using `zoxide` as a cd replacement. }} %}
+<figcaption>Using `zoxide` as a `cd` replacement.</figcaption>
+
 `FZF` works nicely for some path completions, but I didn't find it helpful when changing directories with `cd`: After typing `cd **TAB` from my home directory, it takes a while for `FZF` to build up the full list options. It was much faster to use my existing ZSH completions of `cd TAB <choose a dir> TAB <choose a dir>` to navigate to a folder.  
 
 However, many tools exist which attempt to improve upon `cd`. [`autojump`](https://github.com/wting/autojump), [`z`](https://github.com/rupa/z), and [`Fasd`](https://github.com/clvv/fasd) all track directory usage and give you a single key shortcut for changing to commonly accessed directories. [`r/commandline`](https://www.reddit.com/r/commandline/comments/4v5nlt/what_cd_tool_do_you_use_if_any_autojump_j_z_etc/) has an detailed discussion of these various `cd` replacements, but the one that has the most momentum is `zoxide`. [zoxide](https://github.com/ajeetdsouza/zoxide) is a rewrite of z in Rust and promises improved speed.
@@ -209,7 +213,10 @@ eval "$(zoxide init zsh --cmd cd)"
 
 ## GitUpdate
 
-This tool is another find from the [Lobste.rs] thread. When working on a git branch, I like to commit my work frequently. For example, before I try to delete some large block of text in a blog post, or before I attempt to refactor some piece of code, I commit my work. Of course, I'll squash, or restructure, these commits later on, but for convenience, I have a git alias called `wip` ('work in progress`) which gives me a low effort way to commit.
+{% picture {{site.pimages}}{{page.slug}}/1626790555.png --picture --alt {{ GitUpdate generates a commit message, commits, and pushes}} %}
+<figcaption>GitUpdate generates a commit message, commits, and pushes.</figcaption>
+
+This tool is another find from the [Lobste.rs](https://lobste.rs/s/yfgwjr/what_interesting_command_line_tools_do) thread. When working on a git branch, I like to commit my work frequently. For example, before I try to delete some large block of text in a blog post, or before I attempt to refactor some piece of code, I commit my work. Of course, I'll squash, or restructure, these commits later on, but for convenience, I have a git alias called `wip` ('work in progress`) which gives me a low effort way to commit.
 
 ```
 git wip = !git add --all; git ci -m WIP
