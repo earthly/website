@@ -137,6 +137,7 @@ source ~/.fzf.bash
 </div>
 
 ## McFly
+
 {% picture {{site.pimages}}{{page.slug}}/1626788971.png --picture --alt {{ Using `fzf` to locate generated images. }} %}
 <figcaption>Using McFly to suggest common earthly commands in this path.</figcaption>
 
