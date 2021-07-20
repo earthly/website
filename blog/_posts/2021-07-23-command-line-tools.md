@@ -11,7 +11,7 @@ internal-links:
  - gitupdate
  - zoxide
 ---
-Tools are powerful. A good tool makes work easier and faster, and a great tool unlocks new abilities: Previously impossible things -- or at least so things so complicated that it wasn't worth the effort -- become possible and sometimes easy.
+Tools are powerful. A good tool makes work easier and faster, and a great tool unlocks new abilities: Previously impossible things -- or at least things so complicated that they weren't worth the effort -- become possible and sometimes easy.
 
 Lately I have been adding some tools to my MacOS command-line toolbox. Many experienced command-line users stick strictly to the POSIX standard [command-line tools](https://en.wikipedia.org/wiki/List_of_Unix_commands) like `grep`,`awk` and `cat` but there are many powerful tools beyond those. Here are a few I'm finding valuable.
 
