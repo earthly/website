@@ -73,6 +73,5 @@ Milap Neupane:
     avatar  : "/assets/images/authors/milapneupane.jpg"
 Alexandre Couedelo:
     name    : "Alexandre Couëdelo"
-    bio     : "Alexandre is a Complex Systems Engineering and Management Specialist. He has been embracing the DevOps culture since he started his career by contributing to the digital transformation of a leading financial institution in Canada"
-    avator  : "blog/assets/images/authors/alexcoudelo.jpg"
-
+    bio     : "Alexandre is a Complex Systems Engineering and Management Specialist. He has been embracing the DevOps culture since he started his career by contributing to the digital transformation of a leading financial institution in Canada."
+    avatar  : "/assets/images/authors/alexcoudelo.jpg"

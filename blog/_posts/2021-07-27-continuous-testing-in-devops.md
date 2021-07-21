@@ -127,6 +127,7 @@ But let's not rely on a third party yet. Instead, generate a badge to display in
 - Create a new job called `gating` and download the coverage report. This job must be executed after `build`; therefore, you must declare `needs: build` in your configuration.
 - Parse the coverage report to extract the coverage value. I provided a small script that does just that.
 - Generate the badge and add it to your README. Follow the setup step in the documentation of [schneegans/dynamic-badges-action@v1.1.0](https://github.com/Schneegans/dynamic-badges-action).
+{% raw %}
 
 ```yml
 # This workflow will install Python dependencies, run tests, and lint with a single version of Python
@@ -199,6 +200,8 @@ jobs:
         message: ${{ env.COVERAGE }}
         color: ${{ env.COLOR }}
 ```
+
+{% endraw %}
 
 This is what your updated workflow looks like:
 
