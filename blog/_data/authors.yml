@@ -75,3 +75,7 @@ Alexandre Couedelo:
     name    : "Alexandre Couëdelo"
     bio     : "Alexandre is a Complex Systems Engineering and Management Specialist. He has been embracing the DevOps culture since he started his career by contributing to the digital transformation of a leading financial institution in Canada."
     avatar  : "/assets/images/authors/alexcoudelo.jpg"
+Nicolas Bohorquez:
+    name    : "Nicolas Bohorquez"
+    bio     : "Nicolas Bohorquez is a data architect at Merqueo, has been part of development teams in a handful of startups, and has founded three companies in the Americas. He is passionate about the modeling of complexity and the use of data science to improve the world."
+    avatar  : "/assets/images/authors/nicolasbohorquez.jpg"
