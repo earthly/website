@@ -400,7 +400,7 @@ Your final workflow must look like this:
 
 Continuous testing is the next step after you successfully implement [continuous integration](/blog/continuous-integration). It further improves the speed of your application development process and adds a quality control layer to it.
 
-GitHub Actions is a fantastic tool for implementing CI/CT pipelines, thanks to the community's contribution to the Marketplace that offers all you need to get started. In my experience, no other CI/CT tools let me create a workflow that easily. It feels effortless to have a complex pipeline with many jobs.
+<!-- GitHub Actions is a fantastic tool for implementing CI/CT pipelines, thanks to the community's contribution to the Marketplace that offers all you need to get started. In my experience, no other CI/CT tools let me create a workflow that easily. It feels effortless to have a complex pipeline with many jobs. -->
 
 Remember, there are three essential stages in a continuous testing workflow, each testing your system from a different perspective:
 
@@ -410,4 +410,6 @@ Remember, there are three essential stages in a continuous testing workflow, eac
 
 Adding performance tests as well can help you track important metrics and ensure that changes do not negatively impact your users.
 
-Finally, to succeed in implementing CT, remember that testing should become part of your team's DNA and share the same five pillars as DevOps: culture, automation, lean, measurement, and sharing).
+Finally, to succeed in implementing CT, remember that testing should become part of your team's DNA and share the same five pillars as DevOps: culture, automation, lean, measurement, and sharing.
+
+If you want an easy way to introduce continuous testing to your GitHub Actions, take a look at [Earthly's](https://earthly.dev/) ability to produce a repeatable build process.
