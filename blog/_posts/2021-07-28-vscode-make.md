@@ -2,21 +2,10 @@
 title: "Building in Visual Studio Code with a Makefile"
 categories:
   - Tutorials
-toc: true
 author: Nicolas Bohorquez
 internal-links:
  - vscode
 ---
-## Draft.dev Article Checklist
-
-- [x] Add in Author page
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-- [ ] Run mark down linter (`earthly +blog-lint-apply`)
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `earthly +link-opportunity` and find 1-5 places to incorporate links
-
 Microsoft announced [recently](https://devblogs.microsoft.com/cppblog/now-announcing-makefile-support-in-visual-studio-code/) a new Visual Studio Code extension to handle Makefiles. This extension provides a set of commands to the editor that will facilitate working with projects that rely on a Makefile to speed up the build.
 
 In this tutorial, you'll set up a simple C++ project that depends on a well-known Python library to produce some sample charts. This is not a deep tutorial about [make and Makefiles](/blog/g++-makefile/), but to get the most out of the extension you will need to have some concepts clear.
@@ -49,19 +38,19 @@ int flip_coins(int iters) {
   int heads, tails = 0;
 
   for(int i=0;i < iters;i++){
-  	(rand() % 10 + 1) <= 5 ? heads++ : tails++;
+   (rand() % 10 + 1) <= 5 ? heads++ : tails++;
   }
   printf("%d Heads, %d Tails\n",heads, tails);
   return abs(tails-heads);
 }
 
 int main(int argc,char* argv[]) {
-	assert (argc == 2);
-	int iters = atoi(argv[1]);
-	int diff = flip_coins(iters);
-	if(100 < iters) {
-    		printf("With enough trials Heads should be equal to Tails\n");
-	}
+ assert (argc == 2);
+ int iters = atoi(argv[1]);
+ int diff = flip_coins(iters);
+ if(100 < iters) {
+      printf("With enough trials Heads should be equal to Tails\n");
+ }
 }
 ```
 
@@ -71,17 +60,17 @@ This code will be compiled and linked with a simple Makefile that also will prov
 
 The [VS Code extension **Makefile Tools**](https://marketplace.visualstudio.com/items?itemName=ms-vscode.makefile-tools) is still in preview but is actively developed. The installation process is similar to any other extension in VS Code:
 
-![Makefile VSCode extension](https://i.imgur.com/jlFXYQK.png)
+![Makefile VSCode extension]({{site.images}}{{page.slug}}/9360.png)
 
 After installing the extension, verify the availability of the `make` command in the system.
 
 The most common implementation is [GNU Make](https://www.gnu.org/software/make/), which includes some non-standard extensions. If your installation of `make` is not available in the default path, you can configure it in VS Code at **File > Preferences > Settings > Extensions makefile**.
 
-![Make path](https://i.imgur.com/ShlHAs1.png)
+![Make path]({{site.images}}{{page.slug}}/9380.png)
 
 To compile and link the project, you can add a Makefile to the root of the project folder. It will be detected automatically by the extension. If you have a different structure, with a Makefile in another location, you can configure it at **File > Preferences > Settings > Extensions > makefile**.
 
-![Makefile path](https://i.imgur.com/yolT8Nu.png)
+![Makefile path]({{site.images}}{{page.slug}}/9450.png)
 
 This sample Makefile defines five simple rules:
 
@@ -118,42 +107,44 @@ clean:
 
 The Makefile Tools Extension provides a new "perspective" to the Visual Studio Code IDE. This contains three different commands and three different project configurations to run the Makefile:
 
-![Makefile tools perspective](https://i.imgur.com/8I8YD50.png)
+![Makefile tools perspective]({{site.images}}{{page.slug}}/9480.png)
 
 The `Configuration:[Default]` refers to the make command configurations defined in the `.vscode/settings.json` file. This configuration is used to pass arguments to the make utility.
 
 In the following example, two configurations are defined:
+
 - `Default`
 - `Print make version`
 
-`Print make versions` adds the `--version` argument to the make utility every time the project is built using the Makefile extension. This argument is not especially useful but you can explore different arguments to fit your case. 
+`Print make versions` adds the `--version` argument to the make utility every time the project is built using the Makefile extension. This argument is not especially useful but you can explore different arguments to fit your case.
 
 ```json
 {
-	"makefile.configurations": [
-    	{
-        	"name": "Default",
-        	"makeArgs": []
-    	},
-    	{
-        	"name": "Print make version",
-        	"makeArgs": ["--version"]
-    	}
-	]
+ "makefile.configurations": [
+     {
+         "name": "Default",
+         "makeArgs": []
+     },
+     {
+         "name": "Print make version",
+         "makeArgs": ["--version"]
+     }
+ ]
 }
 ```
 
 The second configuration is the default build target rule for the make utility, which is equivalent to running `make [target]` directly. The IDE will let show you a list of target rules defined in the Makefile configured for the project:
 
-![config build target](https://i.imgur.com/AO9kRO0.png)
+![config build target]({{site.images}}{{page.slug}}/9540.png)
 
 Finally, the third configuration available in the perspective is the `Launch target`. This shows you a list of compiled files that can be run from the perspective using the commands `Debug` and `Run`. This is useful if you want to debug your source code with GDB or LLDB debuggers.
 
 In this example, the only file runnable is `CoinFlipper.out`, compiled from the source code.
 
-![make launch target](https://i.imgur.com/koyYQIg.png)
+![make launch target]({{site.images}}{{page.slug}}/9560.png)
 
 The commands in the Makefile are self-explanatory:
+
 - `Build` runs make with the target configured previously.
 - `all` instead of `default` passes no arguments to the make utility.
 - `Debug` and `Run in terminal` commands launch the target (`CoinFlipper.out` in the example) with/without the debug support.
@@ -174,24 +165,24 @@ As you can see from the previous image, the target was built successfully after 
 
 The following image shows the commands available for the Makefile in the sample project:
 
-![makefile-commands-palette](https://i.imgur.com/l9X5sHc.png)
+![The makefile commands palette.]({{site.images}}{{page.slug}}/9630.png)
 
 ## Building Complex Projects
 
 Makefiles are more complex than this. Many projects have several levels of dependencies, configurations, and quirks that make supports easily. For example, the [FFmpeg](https://github.com/FFmpeg/FFmpeg) project is a collection of libraries to work with audio, video, and subtitles among other utilities. To build it, you can download the source from GitHub and examine the Makefile:
 
-![makefile ffmpeg](https://i.imgur.com/hJRjbhD.png)
+![The makefile for FFmpeg.]({{site.images}}{{page.slug}}/9680.png)
 
 The [developer documentation](https://trac.ffmpeg.org/wiki/CompilationGuide/Generic) for the project states that before building the source code with the provided Makefile, you need to run the [`configure`](/blog/autoconf/) script located at the root of the project's source code. Fortunately, the Makefile Tools Extension provides a setting to define the preconfiguration files required to run before executing the make commands, again in  **File > Preferences > Settings**.
 
-![makefile-preconfiguration](https://i.imgur.com/mlLWpf8.png)
+![The makefile preconfiguration.]({{site.images}}{{page.slug}}/9730.png)
 
 In the **Commands** section of the Makefile Tools Extension perspective, you can run the preconfigure command. This will run the configure script, and then you're ready to experiment with the Makefile through the extension.
 
 ## Conclusion
-    
+
 Large codebase projects need a build system to keep them under the development team's control, and Makefiles are one the most ubiquitous and flexible ways to define building these complex software projects.
 
-With the new [Makefile Tools Extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.makefile-tools), Visual Studio Code greatly simplifies access for new developers. Though it is still tagged as in preview, this extension has been thoroughly tested by the Microsoft Team, building over seventy open-source projects written in different languages (including C, C++, and Python) successfully. 
+With the new [Makefile Tools Extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.makefile-tools), Visual Studio Code greatly simplifies access for new developers. Though it is still tagged as in preview, this extension has been thoroughly tested by the Microsoft Team, building over seventy open-source projects written in different languages (including C, C++, and Python) successfully.
 
 If you want to learn about the power of make and Makefile, consider checking out the [Makefile Tutorial](https://makefiletutorial.com/#include-makefiles), and if you want the simplicity of a Makefile with the isolation of containers take a look at [Earthly](https://earthly.dev/).
