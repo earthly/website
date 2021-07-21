@@ -10,11 +10,11 @@ internal-links:
  - performance testing
 ---
 
-Automation testing is a crucial element to speed up your delivery process. Its aim is to flush out any potential regressions. The more you automate, the more confidence you gain in the quality of your software because the quality of each release of your application or library is measurable. Additionally, you reduce cost and save time and effort by reducing manual testing.
+Automation testing is a crucial element to speed up your delivery process. It aims to flush out any potential regressions. The more you automate, the more confidence you gain in the quality of your software because the quality of each release of your application or library is measurable. Additionally, you reduce costs and save time and effort by reducing manual testing.
 
 The caveat is that automated tests have no value if they are not executed regularly alongside your continuous integration (CI) pipeline. CI refers to frequently merging developer code changes and building and creating an artifact that can later be tested and deployed.
 
-Extending the CI process by adding automated tests is referred to as continuous testing (CT). CT enables you to apply the fail-fast principle. Each code change, build, and deployment must be tested against several layers of automated tests. Thus, it results in rapid feedback on the quality of your product and the state of the development process.
+Extending the CI process by adding automated tests is referred to as continuous testing (CT). CT enables you to apply the fail-fast principle. You test each code change, build, and deployment against several layers of automated tests. Thus, it results in rapid feedback on the quality of your product and the state of the development process.
 
 [GitHub Actions](https://github.com/actions) is a great first step for implementing CT. It's flexible and powerful enough to bring every step of the CI/CT process into a single place. Your application, tests, and workflow configuration lives with your code in your repository. Furthermore, the learning curve for GitHub Actions is relatively smooth thanks to the [Marketplace](https://github.com/marketplace?type=actions) that provides thousands of Actions ready to use out of the box.
 
@@ -35,7 +35,7 @@ In this article, I assume you'll deploy to a `dev` environment and focus on impl
 
 ![Final GitHub Action Workflow]({{site.images}}{{page.slug}}/1626807599.png)
 
-Implementing continuous testing can be challenging. It may create frustration for teams that are not used to the fail-fast approach. In addition, seeing builds or pipelines failing can be overwhelming at the beginning. Prioritizing fixing tests instead of focusing on new features might also be a significant change.
+Implementing continuous testing can be challenging. If you are on a team that is new to this fail-fast approach, it may be a frustrating transition. In addition, seeing builds or pipelines failing can be overwhelming at the beginning. I suggest prioritizing fixing tests over focusing on new features. This may also be a significant change.
 
 To remediate those challenges, you should rely on the five DevOps principles described by [Jez Humble](https://twitter.com/jezhumble) in *The DevOps Handbook*:
 
@@ -46,15 +46,14 @@ To remediate those challenges, you should rely on the five DevOps principles des
 5. Sharing
 
 Implementing continuous testing is first a change in **culture**. Selecting the right tools for CI/CT can greatly improve collaboration.
-<!-- GitHub Actions is a great choice with that concern in mind. -->
 
-Keep your process **lean**. Testing should not slow down your process. Instead, select the right amount of tests at the right time in the process. Keep an eye on your [job execution time](https://docs.github.com/en/actions/managing-workflow-runs/viewing-job-execution-time). Prefer small tasks that can fail fast and provide rapid feedback instead of long-running ones.
+Keep your process **lean**. Testing should not slow down your process. Instead, select the right amount of tests at the right time in the process. Monitor your [job execution time](https://docs.github.com/en/actions/managing-workflow-runs/viewing-job-execution-time), prefer small tasks that can fail fast, and provide rapid feedback instead of long-running ones.
 
 **Automate** as much and as early as possible because it helps validate that the integration is successful. Delaying test implementation is counterproductive.
 
 **Measure** your improvement and build a baseline for the quality of your software. For example, collect your code coverage, number of successful vs. failed tests, and performance metric.
 
-Don't forget to encourage knowledge **sharing**. Test automation is not a single person's job. Everyone in the team should know how the test suites work and be able to fix simple errors when the workflows fail.
+Don't forget to encourage knowledge **sharing**. Test automation is not a single person's job: everyone on the team should know how the test suites work and learn how to fix simple errors when the workflows fail.
 
 ## Implementing CI/CT With GitHub Actions
 
@@ -70,13 +69,13 @@ Right away, you should see your workflow starting to build and test your applica
 
 ![Get Started with GitHub Action Workflow]({{site.images}}{{page.slug}}/1626808569.png)
 
-A GitHub Actions workflow is made up of three elements:
+A GitHub Actions workflow contains three elements:
 
 - **Triggers** (`on`) specify when the workflow must be executed. The most common use case is to run a workflow on [push and pull-request on the `main` branch](https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#on).
 - **Jobs** determine sets of actions composing your pipeline and are executed in parallel unless dependencies between jobs are specified.
 - **Steps** are the individual components of a job and can be of two types: `Scripts` or `Actions`. Steps defining a `run` attribute execute a command on the host defined by `runs-on` at the beginning of a job. Steps containing `uses` execute an [Action](https://docs.github.com/en/actions/creating-actions), a reusable automation script.
 
-It's straightforward to extend a workflow once you understand those three concepts. Here's a sample workflow that was recommended to me for a Python application:
+It's straightforward to extend a workflow once you understand those three concepts. Here's a sample workflow for a Python application:
 
 ```yaml
 name: Python application
@@ -120,7 +119,7 @@ This what a basic workflow looks like:
 
 On GitHub, most users rely on third parties to get coverage reports (such as [SonarQube](https://www.sonarqube.org/) or [Codecov](https://about.codecov.io/)). Integrating those SaaS into your workflow is simple, thanks to the GitHub Actions Marketplace. Most third parties providing code coverage reports have created an Action to make the integration seamless.
 
-But let's not rely on a third party yet. Instead, generate a badge to display in your `Readme.md`. You're putting in place the very first step toward tracking code quality.
+But let's not rely on a third party yet. Instead, generate a badge to display in your `Readme.md`. You're putting in place the first step toward tracking code quality.
 
 - Edit your existing `Test with xxx` step to generate a coverage report.
 - Save the coverage report as an artifact. [Storing workflow data as artifacts](https://docs.github.com/en/actions/guides/storing-workflow-data-as-artifacts).
@@ -225,7 +224,7 @@ API testing is part of [integration testing](/blog/unit-vs-integration). Integra
 
 While you could write an API test in the same language as your application, you should also consider a tool like [Postman/Newman](https://blog.scottlogic.com/2020/02/04/GraduateGuideToAPITesting.html). Postman lets you define a sequence of HTTPS calls and validate each of them using their JavaScript test framework. This makes it easy to share integration test suites. Other developers can use them to facilitate their development process, for instance, mobile developers working with a different stack than backend developers. Newman is the command-line interface that lets you run the Postman tests.
 
-Now that you have selected an API testing framework, go to GitHub [Actions Marketplace](https://github.com/marketplace?type=actions) and look for an Action that meets your demands. For instance, [Newman Action](https://github.com/marketplace/actions/newman-action).
+Now that you have selected an API testing framework go to GitHub [Actions Marketplace](https://github.com/marketplace?type=actions) and look for an Action that meets your demands. For instance, [Newman Action](https://github.com/marketplace/actions/newman-action).
 
 Now edit your workflow configuration:
 
@@ -329,7 +328,7 @@ jobs:
 
 ### Add Performance Testing
 
-Performance testing is a broad topic because there is not one but rather multiple types of performance testing. Most online sources agree on six types:
+Performance testing is a broad topic because there are multiple types of performance testing. Most online sources agree on six types:
 
 - Load testing
 - Stress testing
@@ -403,16 +402,14 @@ Your final workflow must look like this:
 
 Continuous testing is the next step after you successfully implement [continuous integration](/blog/continuous-integration). It further improves the speed of your application development process and adds a quality control layer to it.
 
-<!-- GitHub Actions is a fantastic tool for implementing CI/CT pipelines, thanks to the community's contribution to the Marketplace that offers all you need to get started. In my experience, no other CI/CT tools let me create a workflow that easily. It feels effortless to have a complex pipeline with many jobs. -->
-
 Remember, there are three essential stages in a continuous testing workflow, each testing your system from a different perspective:
 
 1. Unit tests validate the internal logic.
 2. Integration tests validate the response of the system from its boundary.
 3. End-to-end tests validate the system from the user's perspective.
 
-Adding performance tests as well can help you track important metrics and ensure that changes do not negatively impact your users.
+Adding performance tests can help you track important metrics and ensure that changes do not negatively impact your users.
 
 Finally, to succeed in implementing CT, remember that testing should become part of your team's DNA and share the same five pillars as DevOps: culture, automation, lean, measurement, and sharing.
 
-If you want an easy way to introduce continuous testing to your GitHub Actions, take a look at [Earthly's](https://earthly.dev/) ability to produce a repeatable build process.
+As your CT process grows and becomes more ingrained in how you work, take a look at [Earthly's](https://earthly.dev/) ability to produce a repeatable build process. It can help make testing in GitHub Actions a more straightforward process.
