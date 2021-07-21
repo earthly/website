@@ -90,7 +90,7 @@ blog-lint:
   IF grep '[“”‘’]' ./blog/_posts/*.md
     RUN echo "Fail: Remove curly quotes and use straight quotes instead" && false
   END  
-  IF grep 'imgur.com' ./blog/_posts/*.md
+  IF grep -n 'imgur.com' ./blog/_posts/*.md
     RUN echo "Fail: external image link" && false
   END
   RUN markdownlint "./blog/_posts/*.md"
@@ -103,6 +103,9 @@ blog-lint-apply:
   RUN sed -i -E "s/\.\s\s(\w)/. \1/g" ./blog/_posts/*.md
   RUN sed -i -E "s/\?\s\s(\w)/? \1/g" ./blog/_posts/*.md
   RUN vale --output line --minAlertLevel error ./blog/_posts/*.md
+  IF grep -n 'imgur.com' ./blog/_posts/*.md
+    RUN echo "Fail: external image link" && false
+  END
   RUN cd blog && markdownlint --fix "./_posts/*.md"
 
 

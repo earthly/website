@@ -204,11 +204,11 @@ jobs:
 
 This is what your updated workflow looks like:
 
-![GitHub Action workflow including code coverage badge](https://i.imgur.com/bDhN9m8.png)
+![GitHub Action workflow including code coverage badge]({{site.images}}{{page.slug}}/1626877878.png)
 
 And you got a badge to decorate your `readme.md`.
 
-![GitHub code coverage badge](https://i.imgur.com/myy7lkm.png)
+![GitHub code coverage badge]({{site.images}}{{page.slug}}/1626878146.png)
 
 ## Extending CT with Other Types of Testing
 
@@ -262,7 +262,7 @@ jobs:
 
 Now your workflow should contain four sequential jobs:
 
-![GitHub Actions workflow including API tests](https://i.imgur.com/uL4ezUc.png)
+![GitHub Actions workflow including API tests]({{site.images}}{{page.slug}}/1626878353.png)
 
 ### Add End-to-End Testing
 
@@ -280,7 +280,7 @@ Add a new job called `test_e2e` to the workflow configuration. This job must be 
 
 Have a look at the result:
 
-![GitHub Actions workflow including end-to-end tests](https://i.imgur.com/YM2tjbK.png)
+![GitHub Actions workflow including end-to-end tests]({{site.images}}{{page.slug}}/1626878240.png)
 
 Your configuration should look along those lines to achieve this workflow:
 
@@ -396,7 +396,7 @@ jobs:
 
 Your final workflow must look like this:
 
-![GitHub Actions workflow including performances tests](https://i.imgur.com/40nOj1F.png)
+![GitHub Actions workflow including performances tests]({{site.images}}{{page.slug}}/1626878379.png)
 
 ## Conclusion
 
