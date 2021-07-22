@@ -120,7 +120,7 @@ If `funky` and `broot` improved my productivity then more tools could only impro
 
 If you install the included shortcuts (`/usr/local/opt/fzf/install`), you can use `**` anywhere and get an interactive fuzzy finder to narrow down to the desired path. `FZF` also makes searching your `history` much faster.
 
-It's a unix filter that reads in input, shows you an interactive list that you filter down and then sends the selected item out the other side but describing that way undersells its usefulness. 
+It's a unix filter that reads in input, shows you an interactive list that you filter down and then sends the selected item out the other side but describing that way undersells its usefulness.
 
 I recommend watching this video where Alexey Samoshkin walks through many possible uses for `FZF` with a soothing piano playing in the background:
 
