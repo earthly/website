@@ -1,5 +1,5 @@
 ---
-title: "6 Productive Command Line Tools"
+title: "6 Command Line Tools for Productive Programmers"
 categories:
   - Tutorials
 author: Adam
@@ -111,10 +111,11 @@ If `funky` and `broot` improved my productivity then more tools could only impro
 
 If you install the included shortcuts (`/usr/local/opt/fzf/install`), you can use `**` anywhere and get an interactive fuzzy finder to narrow down to the desired path. `FZF` also makes searching your `history` much faster.
 
-> This `fzf` video is pretty amazing. The man's voice is so calm and pleasant and the piano that keeps fading up and down just makes everything feel very relaxing
-> [Freemasen](https://freemasen.com/blog/) on CoRecursive Slack Channel
+It's a unix filter that reads in input, shows you an interactive list that you filter down and then sends the selected item out the other side but describing that way undersells its usefulness. 
 
-It's a unix filter that reads in input, shows you an interactive list that you filter down and then sends the selected item out the other side but describing that way undersells its usefulness. I recommend watching this [video](https://www.youtube.com/watch?v=qgG5Jhi_Els) where Alexey Samoshkin walks through many possible uses for `FZF` with a soothing piano playing in the background.
+I recommend watching this video where Alexey Samoshkin walks through many possible uses for `FZF` with a soothing piano playing in the background:
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/qgG5Jhi_Els" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 <div class="notice--info">
 **ℹ️ Install FZF**
@@ -214,9 +215,6 @@ eval "$(zoxide init zsh --cmd cd)"
 
 ## GitUpdate
 
-{% picture {{site.pimages}}{{page.slug}}/1626790555.png --picture --alt {{ GitUpdate generates a commit message, commits, and pushes}} %}
-<figcaption>GitUpdate generates a commit message, commits, and pushes.</figcaption>
-
 This tool is another find from the [Lobste.rs](https://lobste.rs/s/yfgwjr/what_interesting_command_line_tools_do) thread. When working on a git branch, I like to commit my work frequently. For example, before I try to delete some large block of text in a blog post, or before I attempt to refactor some piece of code, I commit my work. Of course, I'll squash, or restructure, these commits later on, but for convenience, I have a git alias called `wip` ('work in progress`) which gives me a low effort way to commit.
 
 ```
@@ -224,6 +222,9 @@ git wip = !git add --all; git ci -m WIP
 ```
 
 [`gitupdate`](https://github.com/nikitavoloboev/gitupdate) is a simple improvement on this idea. `gitupdate .` commits your files but uses the file names (but not extensions) of the changed files to create a more meaningful commit message. It's great for times when the commit message doesn't matter.
+
+{% picture {{site.pimages}}{{page.slug}}/1626790555.png --picture --alt {{ GitUpdate generates a commit message, commits, and pushes}} %}
+<figcaption>GitUpdate generates a commit message, commits, and pushes.</figcaption>
 
 <div class="notice--info">
 **ℹ️ Install GitUpdate**
