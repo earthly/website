@@ -12,7 +12,7 @@ Alex:
     avatar  : "/assets/images/authors/alexcouturebeil.jpg"
 Adam:
     name    : "Adam Gordon Bell"
-    bio     : "Spreading the word about open source builds at Earthly. Host of CoRecursive podcast. Physical Embodiment of Cunningham's Law"
+    bio     : "Spreading the word about Earthly. Host of CoRecursive podcast. Physical Embodiment of Cunningham's Law"
     avatar  : "/assets/images/authors/adamgordonbell.png"
     links:
         - label: ""

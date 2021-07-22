@@ -1,5 +1,6 @@
 ## Should not be needed
-# found inside backtics and code blocks that are matching for some reason
+# All of these are found in areas that should not be spell checked. They represent a parsing problem in VALE.
+# IE. inside backtics and code blocks and link urls
 
 sbt
 scala
@@ -26,3 +27,4 @@ pymerge
 schneegans
 endraw
 makefile
+fzf
