@@ -11,9 +11,12 @@ internal-links:
  - gitupdate
  - zoxide
 ---
-Tools are powerful. A good tool makes work easier and faster, and a great tool unlocks new abilities: Previously impossible things -- or at least things so complicated that they weren't worth the effort -- become possible and sometimes easy.
 
-Lately I have been adding some tools to my MacOS command-line toolbox. Many experienced command-line users stick strictly to the POSIX standard [command-line tools](https://en.wikipedia.org/wiki/List_of_Unix_commands) like `grep`,`awk` and `cat` but there are many powerful tools beyond those. Here are a few I'm finding valuable.
+Lately, I've been doing a lot more things at the command line. I'm not a hard-core terminal guy -- I use VSCode more than Vim -- but I'm always surprised at the number of complex tasks that can be done using just the POSIX standard command-line tools like `grep`,`cat` and `sort`.
+
+Tools are powerful. A good tool makes work easier and faster, and a great tool unlocks new abilities: Previously impossible things become possible and sometimes easy.
+
+As I've learned more I've been adding some new tools to my command-line toolbox, and in this article I'd like to share some I've found valuable.
 
 ## `broot`
 
@@ -44,11 +47,15 @@ $ tree
 
 `broot` solves this problem by being aware of the size of your terminal window and sizing to fit it.
 
+<div class="wide-code">
 {% picture {{site.pimages}}{{page.slug}}/broot.png --picture --alt {{ bRoot }} %}
+</div>
 
 You can navigate around using the arrow keys in `broot` and it is also helpful for tracking down disk space usage by passing in the `-w` flag (`broot -w`):
 
+<div class="wide-code">
 {% picture {{site.pimages}}{{page.slug}}/broot2.png --picture --alt {{ broot -w }} %}
+</div>
 
 It can do lots of other things, so take a look at the [GitHub guide](https://github.com/Canop/broot) but for me its just a better `tree`.
 
@@ -102,8 +109,10 @@ source /usr/local/lib/python3.9/site-packages/scripts/shell/funky.sh
 
 ## Fuzzy Finder (FZF)
 
+<div class="wide-code">
 {% picture {{site.pimages}}{{page.slug}}/1626788538.png --picture --alt {{ Using `fzf` to locate generated images. }} %}
 <figcaption>Using `fzf` to locate the generated images for this post.</figcaption>
+</div>
 
 If `funky` and `broot` improved my productivity then more tools could only improve it more, right? So I headed over to [Lobste.rs](https://lobste.rs/s/yfgwjr/what_interesting_command_line_tools_do) and asked what other tools people were using.  `FZF` came up quite a bit, and I've started using it myself now.
 
@@ -139,8 +148,10 @@ source ~/.fzf.bash
 
 ## McFly
 
+<div class="wide-code">
 {% picture {{site.pimages}}{{page.slug}}/1626788971.png --picture --alt {{ Using `fzf` to locate generated images. }} %}
 <figcaption>Using McFly to suggest common earthly commands in this path.</figcaption>
+</div>
 
 `FZF` is excellent for filtering file paths in a command line when you want to open a file (`vim **`), but for command-line completion, there is more information available than the raw history file. [`McFly`](https://github.com/cantino/mcfly/) attempts to use this extra information to provide more relevant results.
 
@@ -185,8 +196,10 @@ I found that `FZF` was interfering with the `CTRL-R` of McFly and had to comment
 
 ## Better CD
 
+<div class="wide-code">
 {% picture {{site.pimages}}{{page.slug}}/1626789626.png --picture --alt {{ Using `zoxide` as a cd replacement. }} %}
 <figcaption>Using `zoxide` as a `cd` replacement.</figcaption>
+</div>
 
 `FZF` works nicely for some path completions, but I didn't find it helpful when changing directories with `cd`: After typing `cd **TAB` from my home directory, it takes a while for `FZF` to build up the full list options. It was much faster to use my existing ZSH completions of `cd TAB <choose a dir> TAB <choose a dir>` to navigate to a folder.  
 
@@ -223,8 +236,10 @@ git wip = !git add --all; git ci -m WIP
 
 [`gitupdate`](https://github.com/nikitavoloboev/gitupdate) is a simple improvement on this idea. `gitupdate .` commits your files but uses the file names (but not extensions) of the changed files to create a more meaningful commit message. It's great for times when the commit message doesn't matter.
 
+<div class="wide-code">
 {% picture {{site.pimages}}{{page.slug}}/1626790555.png --picture --alt {{ GitUpdate generates a commit message, commits, and pushes}} %}
 <figcaption>GitUpdate generates a commit message, commits, and pushes.</figcaption>
+</div>
 
 <div class="notice--info">
 **ℹ️ Install GitUpdate**

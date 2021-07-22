@@ -53,6 +53,17 @@
   }
 }
 
+//code screenshots
+.wide-code {
+    width: 120%;
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+
+div .wide-code img {
+  border-radius: 4px;
+}
+
 // for centering a markdown table by wrapping in div.center
 div .center > table {
   width: auto;
