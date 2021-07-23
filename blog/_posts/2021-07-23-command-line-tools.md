@@ -12,11 +12,11 @@ internal-links:
  - zoxide
 ---
 
-Lately, I've been doing a lot more things at the command line. I'm not a hard-core terminal guy -- I use VSCode more than Vim -- but I'm always surprised at the number of complex tasks that can be done using just the POSIX standard command-line tools like `grep`,`cat` and `sort`.
+Lately, I've been doing a lot more things at the command line. I'm not a hard-core terminal guy -- I use VSCode more than Vim -- but I'm always surprised at the number of complex tasks that can be done using just the POSIX standard command-line tools like `grep`, `cat` and `sort`.
 
 Tools are powerful. A good tool makes work easier and faster, and a great tool unlocks new abilities: Previously impossible things become possible and sometimes easy.
 
-As I've learned more I've been adding some new tools to my command-line toolbox, and in this article I'd like to share some I've found valuable.
+As I've learned more, I've been adding some new tools to my command-line toolbox, and in this article, I'd like to share some I've found valuable.
 
 ## `broot`
 
@@ -45,7 +45,7 @@ $ tree
 328 directories, 2028 files
 ```
 
-`broot` solves this problem by being aware of the size of your terminal window and sizing to fit it.
+`broot` solves this problem by being aware of the size of your terminal window and adapting its output to fit it.
 
 <div class="wide-code">
 {% picture {{site.pimages}}{{page.slug}}/broot.png --picture --alt {{ bRoot }} %}
@@ -57,7 +57,7 @@ You can navigate around using the arrow keys in `broot` and it is also helpful f
 {% picture {{site.pimages}}{{page.slug}}/broot2.png --picture --alt {{ broot -w }} %}
 </div>
 
-It can do lots of other things, so take a look at the [GitHub guide](https://github.com/Canop/broot) but for me its just a better `tree`.
+It can do lots of other things, so take a look at the [GitHub guide](https://github.com/Canop/broot), but for me, its just a better `tree`.
 
 <div class="notice--info">
 **ℹ️ Install BRoot**
@@ -72,13 +72,13 @@ brew install broot
 
 ## Funky
 
-If you live in the terminal, and you want to [use your terminal as an IDE](https://blog.sanctum.geek.nz/unix-as-ide-files/), then it's helpful to have your terminal change based on the current directory. There are many ways to do this.  [`DirEnv`](https://direnv.net/) loads and unloads `.env` files as you enter directories.  [`smartcd`](https://github.com/cxreg/smartcd) is similar. It lets you run a shell script whenever you change to a certain path -- you can start and stop services, change the prompt, or anything else you want.  
+If you live in the terminal, and you want to [use your terminal as an IDE](https://blog.sanctum.geek.nz/unix-as-ide-files/), then it's helpful to have your terminal change based on the current directory. There are many ways to do this.  [`DirEnv`](https://direnv.net/) loads and unloads `.env` files as you enter directories.  [`smartcd`](https://github.com/cxreg/smartcd) is similar. It lets you run a shell script whenever you change to a particular path -- you can start and stop services, change the prompt, or anything else you want.  
 
 However, my favorite of this genre is the strangely named [`funky`](https://github.com/bbugyi200/funky), which "takes shell functions to the next level by making them easier to define, more flexible, and more interactive."
 
 The way `funky` works is simple: as you enter a directory, `funky` looks for a `.funky` file which contains a list of bash functions. It loads them, and when you leave, it unloads them.
 
-This means when I'm in the directory for this Jekyll blog, I have aliases loaded for creating a new post, linting my markdown, pulling in images, and so on. I can list these by typing `funky`
+This means that when I'm in the directory for this Jekyll blog, I have aliases loaded for creating a new post, linting my markdown, pulling in images, and so on. I can list these by typing `funky`
 
 ``` bash
 $ funky
@@ -87,7 +87,7 @@ set-header() { cp "$(latest-image)" "$(image-folder)/header.jpg"; }
 set-image() { cp "$(latest-image)" "$(image-folder)/$(date +%s).png"; }
 ```
 
-`funky` can do more than this, though. It has features for interactively adding and editing functions, and for registering global functions and aliases. What I like, though, is just being able to quickly give a command, in a specific context, a short alias.
+`funky` can do more than this, though. It has features for interactively adding and editing functions and for registering global functions and aliases. What I like, though, is just being able to quickly give a command, in a specific context, a short alias.
 
 <div class="notice--info">
 **ℹ️ Install Funky**
@@ -114,13 +114,13 @@ source /usr/local/lib/python3.9/site-packages/scripts/shell/funky.sh
 <figcaption>Using `fzf` to locate the generated images for this post.</figcaption>
 </div>
 
-If `funky` and `broot` improved my productivity then more tools could only improve it more, right? So I headed over to [Lobste.rs](https://lobste.rs/s/yfgwjr/what_interesting_command_line_tools_do) and asked what other tools people were using.  `FZF` came up quite a bit, and I've started using it myself now.
+If `funky` and `broot` improved my productivity, then more tools could only improve it more. So I headed over to [Lobste.rs](https://lobste.rs/s/yfgwjr/what_interesting_command_line_tools_do) and asked what other tools people were using.  `FZF` came up quite a bit, and I've started using it myself now.
 
 [FZF](https://github.com/junegunn/fzf) is a command-line fuzzy finder. It's fast, and it interactively lets you filter options down based on a fuzzy keyword match in many places where you need to input a value at the command-line.
 
 If you install the included shortcuts (`/usr/local/opt/fzf/install`), you can use `**` anywhere and get an interactive fuzzy finder to narrow down to the desired path. `FZF` also makes searching your `history` much faster.
 
-It's a unix filter that reads in input, shows you an interactive list that you filter down and then sends the selected item out the other side but describing that way undersells its usefulness.
+It's a UNIX filter that reads in input, shows you an interactive list that you filter down, and then sends the selected item out the other side but describing that way undersells its usefulness.
 
 I recommend watching this video where Alexey Samoshkin walks through many possible uses for `FZF` with a soothing piano playing in the background:
 
@@ -159,11 +159,11 @@ What extra information? To start with, McFly considers these options in its rank
 
 - The commands you typed before the command.
 - How often you run the command.
-- How recently you ran the command.
+- How recently have you run the command.
 
 It tracks all this in a SQLite database where it also tracks and weighs suggestions by:
 
-- The commands exit status.
+- The command's exit status.
 - The directory you ran the command in.
 - If you have selected it in McFly before.
 
@@ -228,7 +228,7 @@ eval "$(zoxide init zsh --cmd cd)"
 
 ## GitUpdate
 
-This tool is another find from the [Lobste.rs](https://lobste.rs/s/yfgwjr/what_interesting_command_line_tools_do) thread. When working on a git branch, I like to commit my work frequently. For example, before I try to delete some large block of text in a blog post, or before I attempt to refactor some piece of code, I commit my work. Of course, I'll squash, or restructure, these commits later on, but for convenience, I have a git alias called `wip` ('work in progress`) which gives me a low effort way to commit.
+This tool is another find from the [Lobste.rs](https://lobste.rs/s/yfgwjr/what_interesting_command_line_tools_do) thread. When working on a git branch, I like to commit my work frequently. For example, before I try to delete some huge block of text in a blog post, or before I attempt to refactor some piece of code, I commit my work. Of course, I'll squash, or restructure, these commits later on, but for convenience, I have a git alias called `wip` ('work in progress`) which gives me a low effort way to commit.
 
 ```
 git wip = !git add --all; git ci -m WIP
@@ -256,6 +256,6 @@ sudo cp gitupdate /usr/local/bin
 
 There are many other helpful command-line tools. More than can be covered well in a single article. JQ, [`mitmproxy`](/blog/mitmproxy), [Pandoc](https://pandoc.org/), and [PSTree](https://man7.org/linux/man-pages/man1/pstree.1.html) are some I use frequently. There is also a whole class of Rust rewrites of common POSIX tools that warrant an article of their own.  
 
-Of course, [Earthly](https://earthly.dev/) itself is a command-line tool, and one I constantly use for gluing together various development steps together. It, and the tools I use for [linting prose](/blog/markdown-lint) have become a standard part of how I work.
+Of course, [Earthly](https://earthly.dev/) itself is a command-line tool, and one I constantly use for gluing together various development steps together. It, and the tools I use for [linting prose](/blog/markdown-lint), have become a standard part of how I work.
 
-What less common command-line tools do you use? If you have tool suggestions, I'd love to hear them. You can find my Twitter account and email below and I'd love to hear what you are using.
+What less common command-line tools do you use? If you have tool suggestions, I'd love to hear them. You can find my Twitter account and email below, and I'd love to hear what you are using.
