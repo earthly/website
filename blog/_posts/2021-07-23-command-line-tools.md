@@ -129,7 +129,7 @@ I recommend watching this video where Alexey Samoshkin walks through many possib
 <div class="notice--info">
 **ℹ️ Install FZF**
 
-Install Funky using your [package manager of choice](https://github.com/junegunn/fzf#using-linux-package-managers):
+Install FZF using your [package manager of choice](https://github.com/junegunn/fzf#using-linux-package-managers):
 
 ``` bash
 brew install fzf
