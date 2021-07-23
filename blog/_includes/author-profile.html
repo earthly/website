@@ -20,7 +20,7 @@
       </h3>
       </a>
     {% else %}
-      <h4 class="author__name" itemprop="name">
+      <div class="author__name heading" itemprop="name">
         {{ author.name }}
     {% endif %}
     {% if author.links %}
@@ -30,7 +30,7 @@
         {% endif %}
       {% endfor %}
     {% endif %}
-    </h4>
+      </div>
     {% if author.bio %}
       <div class="author__bio" itemprop="description">
         {{ author.bio | markdownify }}
