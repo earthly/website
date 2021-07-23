@@ -71,6 +71,7 @@ brew install broot
 </div>
 
 ## Funky
+
 If you live in the terminal, and you want to [use your terminal as an IDE](https://blog.sanctum.geek.nz/unix-as-ide-files/), then it's helpful to have your terminal change based on the current directory. There are many ways to do this.  [`DirEnv`](https://direnv.net/) loads and unloads `.env` files as you enter directories.  [`smartcd`](https://github.com/cxreg/smartcd) is similar. It lets you run a shell script whenever you change to a particular path -- you can start and stop services, change the prompt, or anything else you want.  
 
 However, my favorite of this genre is the strangely named [`funky`](https://github.com/bbugyi200/funky), which "takes shell functions to the next level by making them easier to define, more flexible, and more interactive."
