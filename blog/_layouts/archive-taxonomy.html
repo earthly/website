@@ -23,7 +23,7 @@ layout: default
     <h2 class="archive__subtitle">Archive of {{ page.title }}</h2>
     <div class="entries-{{ entries_layout }}">
     {% for post in page.posts %}
-      {% include archive-single.html type="grid" %}
+      {% include archive-single.html type="grid"  heading="heading" %}
     {% endfor %}
     </div>
   </div>
