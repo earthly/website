@@ -19,7 +19,7 @@ Each step requires more work to set up and has some additional benefits. I moved
 
 If you had shown step-1-me what a simple REST service looks like in step 5, I would have been shocked. The metrics counters and distributed tracing spans, and various operational concerns make the service more complex. I would have thought that whoever wrote the service was obsessed with operational issues, to the detriment of solving the problems at hand. I would have thought the service author was an observability maniac.
 
-On the other hand, if step-5-me were to get paged because a service written by step-1-me was down, he would not be happy. He would have a hard time figuring out what was wrong, and he'd be pretty sure the service author by an idiot who had never been paged in the middle of the night.
+On the other hand, if step-5-me were to get paged because a service written by step-1-me was down, he would not be happy. He would have a hard time figuring out what was wrong, and he'd be pretty sure the service author was an idiot who had never been paged in the middle of the night.
 
 It reminds me a lot of driving when it first snows here in Peterborough.
 
