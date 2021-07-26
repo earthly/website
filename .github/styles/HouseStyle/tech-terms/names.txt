@@ -135,3 +135,4 @@ Timsort
 Codecov
 zoxide
 Pandoc
+Datadog

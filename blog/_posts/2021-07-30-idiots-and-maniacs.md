@@ -1,61 +1,72 @@
 ---
 title: "Idiots And Maniacs"
 categories:
-  - Tutorials
-toc: true
-author: Aniket Bhattacharyea
-
-internal-links:
- - just an example
+  - Articles
+author: Adam
 ---
-### Writing Article Checklist
-
-- [ ] Fix Grammarly Errors
-- [ ] Read out loud
-- [ ] Write 5 or more titles and pick the best on
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-- [ ] Run mark down linter (`earthly +blog-lint-apply`)
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `earthly --build-arg NAME=2020-09-10-better-builds.md +link-opportunity` and find 1-5 places to incorporate links to other articles
-- [ ] Raise PR
-
 ## Observability
 
-If you do software as a service stuff, and you have paying clients you at some point learn about the need for monitoring and observability. Personally I went through a transitory process something like this:
+If you do software-as-a-service development and you have paying customers, you at some point learn about the need for operational monitoring and observability. Personally, I went through a process something like this:
 
-1. Service has some basic logging and an uptime alert
-1. Service has a healthcheck endpoint, is deployed in triplicate and is behind a load balancer
-1. Logs are real time shipped to Splunk / Elk Stack
-1. Metrics set up in Datadog / Prometheus with paging 
-1. Distributed Tracing set up
-1. and so on
+1. Service has some basic [logging](/blog/understanding-docker-logging-and-log-files) and an uptime alert
+1. Service has a health-check endpoint, is deployed in triplicate behind a load balancer
+1. Logs are real-time shipped to Splunk / ELK Stack
+1. Metrics set up in Datadog / Prometheus with paging
+1. Distributed Tracing set up for debugging across services
+1. And so on
 
-Each step requires more work to set up and has some additional benefits. It took me a while to move through these steps. If you would have shown the me in step 1 what a simple REST service looks like in step 5, with metrics and feeding request ids through to child services and distributed tracing spans, I would not have reacted well. I would have thought whoever wrote this is obsessed with operational issues, to the detriment of solving the actual problems at hand. He is an Observability maniac.
+Each step requires more work to set up and has some additional benefits. I moved through each step by necessity as my service handled more requests and became more important to customers.
 
-If step 5 me were to get paged because a service written by step 1 me were down then I would not be happy. I would have a hard time figuring out what was wrong and be pretty certain the service was written by an idiot who had no way of telling what was going on with his service. It reminds me a lot of driving my car when it first snows hear in Peterborough.
+If you had shown step-1-me what a simple REST service looks like in step 5, I would have been shocked. The metrics counters and distributed tracing spans, and various operational concerns make the service more complex. I would have thought that whoever wrote the service was obsessed with operational issues, to the detriment of solving the problems at hand. I would have thought the service author was an observability maniac.
+
+On the other hand, if step-5-me were to get paged because a service written by step-1-me was down, he would not be happy. He would have a hard time figuring out what was wrong, and he'd be pretty sure the service author by an idiot who had never been paged in the middle of the night.
+
+It reminds me a lot of driving when it first snows here in Peterborough.
 
 ## Driving
 
-In the winter we get snow and people are generally used to but on the first substantial snowfall people struggle to remember how to drive. Some will drive slow and slow down traffic for everyone -- they are idiots in the snow. Others get frustrated by the slow drivers and drive too fast for the road conditions -- don't they know there is snow on the road? 
+ {% picture content-wide {{site.pimages}}{{page.slug}}/9580.png --picture --img width="1200px" --alt {{ Driving in the snow }} %}
+
+In the winter, we get snow. It's just a fact of life, and people learn how to drive in snowy conditions. But on the first substantial snowfall of the year, people struggle to remember how to drive.
+
+Some will drive way below the speed limit and slow down traffic for everyone. They are idiots in the snow. Others get frustrated by the slow drivers and go too fast for the road conditions. Don't they know there is snow on the road?
 
 Everyone driving slower than me is an idiot, but everyone going faster than me is a maniac.
 
-So it is with software development. Everyone who takes an idea further then you have is a maniac and people who haven't seen the benefits of taking it as far as you are idiots.
+So it is with software development. Everyone who takes an idea further than I have is a maniac, and people who haven't taken it as far as me are idiots.
 
 ## Testing
 
-There was a time when I thought all code should have 80% unit test code coverage minimum. Anything less was practically unethical and if you didn't think so then you hadn't read Clean Code (TM) enough times.
+There was a time when I thought all code should have 80% unit test code coverage as a minimum. Anything less was practically unethical, and if you didn't think so, then you hadn't read Clean Code™️ enough times.
 
-On the other hand, Richard Hipp -- who tests to 100% code coverage at the machine code level, covering every branch by running billions of tests each release -- he is a testing maniac.
+<div class="align-right">
+ {% picture grid {{site.pimages}}{{page.slug}}/9770.png --picture --img width="300px" --alt {{ SQLite }} %}
+</div>
 
-I hope you see where I'm going. This idiot to maniac gradient feels right but it makes no sense: wherever you find yourself along the spectrum is more a reflection of the context in which you work then anything else. 
+On the other hand, Richard Hipp -- who tests to 100% code coverage at the machine code level, covering every branch by running billions of tests each release[^1] -- is a testing maniac.
 
-Here are some totally made up examples:
+I hope you see where I'm going. This idiot to maniac gradient feels right, but it makes no sense. Wherever you find yourself along the spectrum is more a reflection of the context in which you work than anything else.
 
-* Typescript Developer: JavaScript developers are idiots, don't they know how many bugs the type system could be catching for them.  Elm developers though are obsessed with types. They are maniacs about pure functions and types.
-*  Go Developers: The JVM is so heavy weight and uses so much memory. Rust though is so complex and who wants to manually manage memory.  Use a GC, you maniacs!
-* Kotlin Developers: Java is so verbose and ugly. Welcome to 2021. Kotlin has a lot of sugar and type improvements that makes writing correct code simpler.  Scala though is for maniacs. There is so much syntactic sugar and advanced type stuff that although I never looked into it - I heard somewhere its not worth learning about.
+## More Examples
 
-I'm not trying to pick on any of these languages - Typescript, Go, and Kotlin are all fantasticly well suited to the context they are most often used in. I'm trying to point out that contexts vary and it takes mental effort to see that people making other trade offs sometimes have good reasons for it. That doesn't mean that other people are never wrong - people choose the wrong tool for the job all the time. If I were doing SQLite's level of testing for a low reliability, low traffic, stateless web service when a couple of integration tests would do then that'd be a mistake but you have to know the context to make that call.
+Here are some made-up and exaggerated examples:
+
+- **Typescript Developer:** JavaScript developers are **idiots**. Don't they know how many bugs the type system could have caught for them.  
+- **Typescript Developer:** Elm developers are obsessed with types. They are **maniacs** about using types to catch things at compile time.
+- **Go Developer:** The JVM is such a heavyweight runtime and uses so much memory.
+- **Go Developer:** Rust is so complex! Who wants to manage memory manually. Use a GC, you **maniacs**!
+- **Kotlin Developer:** Java is so verbose and ugly. Welcome to 2021. Kotlin has a lot of sugar and type improvements that make writing correct code simpler.
+- **Kotlin Developer:** Scala is for **maniacs**. There is so much syntactic sugar and type stuff that it's not worth learning about.
+
+I'm not trying to pick on any of these languages - Typescript, Go, and Kotlin are all exceptionally well suited to the context they are used in. But contexts vary[^2], and it takes mental effort to see that people making other trade-offs sometimes have good reasons for it.
+
+That doesn't mean that other people are never wrong, though. People choose the wrong tool for the job all the time. If I were doing SQLite's level of testing for a low reliability, low traffic, stateless web service when a couple of integration tests would do, then that'd be a mistake, but you'd have to know the context to make that call.
+
+<div class="notice--info notice--big">
+**While you are here: **
+
+<a href="https://earthly.dev/">Earthly</a> is a syntax for defining your build. It works with your existing build system. Get repeatable and understandable builds today.
+</div>
+
+[^1]: Richard is the creator of SQLite. See this [interview](https://corecursive.com/066-sqlite-with-richard-hipp/#billions-of-tests) for a discussion of his testing approach.
+[^2]: Personal and team familiarity can also be part of the context. PHP may not seem to be the best choice for building a command-line tool, but if it's a small tool used by a team of PHP developers, then it might be the best choice.
