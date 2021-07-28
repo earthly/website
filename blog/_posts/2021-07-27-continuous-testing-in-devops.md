@@ -33,7 +33,7 @@ The Build steps include code compilation and unit tests. Also, note that it's co
 
 In this article, I assume you'll deploy to a `dev` environment and focus on implementing different types of tests. Here is a visual of the final workflow for this tutorial:
 
-![Final GitHub Action Workflow]({{site.images}}{{page.slug}}/1626807599.png)
+![Final GitHub Action Workflow]({{site.images}}{{page.slug}}/40nOj1F.png)
 
 Implementing continuous testing can be challenging. If you are on a team that is new to this fail-fast approach, it may be a frustrating transition. In addition, seeing builds or pipelines failing can be overwhelming at the beginning. I suggest prioritizing fixing tests over focusing on new features. This may also be a significant change.
 
@@ -67,7 +67,7 @@ Select one of them by clicking **Set up this workflow**, review the workflow ste
 
 Right away, you should see your workflow starting to build and test your application. Many starting workflows also include linting that validates the formatting and detects potential errors.
 
-![Get Started with GitHub Action Workflow]({{site.images}}{{page.slug}}/1626808569.png)
+![Get Started with GitHub Action Workflow]({{site.images}}{{page.slug}}/043P3GAA.png)
 
 A GitHub Actions workflow contains three elements:
 
@@ -113,7 +113,7 @@ jobs:
 
 This what a basic workflow looks like:
 
-![Most basic GitHub Actions workflow]({{site.images}}{{page.slug}}/1626808638.png)
+![Most basic GitHub Actions workflow]({{site.images}}{{page.slug}}/KVnFfF4.png)
 
 ### Add Code Coverage Reports
 
