@@ -470,3 +470,5 @@ There we go. We can now capture HTTPS traffic made by any containers we run. Com
 If you can get something running on your local machine, you can now capture and inspect its network requests. This can be very handy for debugging problems and building up an understanding of how something works without digging into the source code. The setup can be a bit complicated, but I hope you can see why mitmproxy is a great tool to keep in your toolkit.
 
 The fun doesn't stop here, though.  [mitmproxy](https://mitmproxy.org/) can modify and replay requests and has an active ecosystem, including [mastermind](https://github.com/ustwo/mastermind) which lets you build mock services based on captured requests and [BDFProxy](https://github.com/secretsquirrel/BDFProxy), which uses mitmproxy to modify common security updates for <del>nefarious reasons</del> security research projects, and much more.  
+
+{% include cta/cta1.html %}

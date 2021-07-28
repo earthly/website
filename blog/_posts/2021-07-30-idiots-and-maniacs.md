@@ -62,11 +62,7 @@ I'm not trying to pick on any of these languages - Typescript, Go, and Kotlin ar
 
 That doesn't mean that other people are never wrong, though. People choose the wrong tool for the job all the time. If I were doing SQLite's level of testing for a low reliability, low traffic, stateless web service when a couple of integration tests would do, then that'd be a mistake, but you'd have to know the context to make that call.
 
-<div class="notice--info notice--big">
-**While you are here:**
-
-<a href="https://earthly.dev/">Earthly</a> is a syntax for defining your build. It works with your existing build system. Get repeatable and understandable builds today.
-</div>
+{% include cta/cta1.html %}
 
 [^1]: Richard is the creator of SQLite. See this [interview](https://corecursive.com/066-sqlite-with-richard-hipp/#billions-of-tests) for a discussion of his testing approach.
 [^2]: Personal and team familiarity can also be part of the context. PHP may not seem to be the best choice for building a command-line tool, but if it's a small tool used by a team of PHP developers, then it might be the best choice.

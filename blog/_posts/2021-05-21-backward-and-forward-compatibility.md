@@ -142,3 +142,5 @@ The biggest problems when upgrading are mismatching required fields or a need to
 Protocol Buffers are a relatively young technology, so changes now will have long-lasting implications. Compatibility issues do exist between versions, but they're possible to step around if you're careful. As always, make life simpler by planning out your data structures in advance. Once things eventually do change, the safest method for modifying fields is to add a new one and deprecate the old field.
 
 To deprecate a field, you can change the name to something deprecated or remove it and reserve the identifier. If you really want to change a field type, and you're able to follow the correct version of [the rules](https://developers.google.com/protocol-buffers/docs/proto3#updating "Updating messages"), remember to never change the numerical identifier for that field. Plan well, and it'll be easy to maintain backward and forward compatibility for your Protocol Buffer deployment.
+
+{% include cta/cta1.html %}
