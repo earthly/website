@@ -134,8 +134,8 @@ Testing my new merge with a list of integers and floats, we can see that we are 
 import merge
 import timeit
 
-a = list(range(-100, 1700)) + [0.1]
-b = list(range(1400, 1800))
+a = list(range(-100, 1700)) 
+b = [0.1] + list(range(1400, 1800))
 
 def merge_test():
    m1 = merge.merge(a, b)
