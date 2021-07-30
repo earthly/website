@@ -44,7 +44,7 @@ The reason sort beats merge in most cases is because of a man named Tim Peters.
 
 ## TimSort
 
-Python's `list.sort` is the original implementation of a hybrid sorting algorithm called TimSort, named after its author, Tim Peters.
+Python's `list.sort` is the original implementation of a hybrid sorting algorithm called TimSort, named after its author, [Tim](https://github.com/python/cpython/commit/92f81f2e63b5eaa6d748d51a10e32108517bf3bf#diff-6d09fc0f0b57214c2e3a838d366425836c296fa931fe9dc430f604b7e3950c29) Peters.
 
 > \[Here is\] stable, natural merge sort, modestly called
 Timsort (hey, I earned it <wink>). It has supernatural performance on many
@@ -52,7 +52,7 @@ kinds of partially ordered arrays (less than lg(N!) comparisons needed, and
 as few as N-1), yet as fast as Python's previous highly tuned sample sort
 hybrid on random arrays.
 
-<figcaption>Tim Peters explaining [TimSort](https://github.com/python/cpython/commit/92f81f2e63b5eaa6d748d51a10e32108517bf3bf#diff-6d09fc0f0b57214c2e3a838d366425836c296fa931fe9dc430f604b7e3950c29)</figcaption>
+<figcaption>Tim Peters explaining TimSort</figcaption>
 
 Timsort is designed to find runs of sequential numbers and merge them together:
 
@@ -71,7 +71,7 @@ This means that if I drop down to C and write a C extension I should be able to 
 
 ## The C Extension
 
-The bulk of the C Extension, whose performance I'm going to cover in a minute, is just the pop the stack algorithm discussed before, but using an index to point to the head of the stack:
+The bulk of the C Extension, whose performance I'm going to cover in a minute, is just the pop the stack algorithm discussed before, but using an index to point to the head of the stack ([full version](https://github.com/earthly/pymerge/blob/main/merge.c)):
 
 ``` c
   //New List
@@ -104,7 +104,7 @@ The bulk of the C Extension, whose performance I'm going to cover in a minute, i
 
 ```
 
-<figcaption>C merge ([full and final version on GitHub](https://github.com/earthly/pymerge/blob/main/merge.c))</figcaption>
+<figcaption>C merge</figcaption>
 
 The nice thing about C extensions in Python is that they are easy to use. Once compiled, I can just `import merge` and use my new merge method:
 
