@@ -58,9 +58,9 @@ Here are some made-up and exaggerated examples:
 - **Kotlin Developer:** Java is so verbose and ugly. Welcome to 2021. Kotlin has a lot of sugar and type improvements that make writing correct code simpler.
 - **Kotlin Developer:** Scala is for **maniacs**. There is so much syntactic sugar and type stuff that it's not worth learning about.
 
-I'm not trying to pick on any of these languages - Typescript, Go, and Kotlin are all exceptionally well suited to the context they are used in. But contexts vary[^2], and it takes mental effort to see that people making other trade-offs sometimes have good reasons for it.
+I'm not trying to pick on any of these languages - Typescript, Go, and Kotlin are exceptionally well suited to their niche. But contexts vary[^2], and it takes mental effort to see that people making other trade-offs sometimes have good reasons for it.
 
-That doesn't mean that other people are never wrong, though. People choose the wrong tool for the job all the time. If I were doing SQLite's level of testing for a low reliability, low traffic, stateless web service when a couple of integration tests would do, then that'd be a mistake, but you'd have to know the context to make that call.
+That doesn't mean that other people are never wrong, though. People choose the wrong tool for the job all the time. For example, if I were doing SQLite's level of testing for a low-reliability, low-traffic, state-less web service when a couple of integration tests would do, then that'd be a mistake, but you'd have to know the context to make that call.
 
 {% include cta/cta1.html %}
 
