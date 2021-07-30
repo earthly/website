@@ -8,12 +8,12 @@ author: Adam
 
 If you do software-as-a-service development and you have paying customers, you at some point learn about the need for operational monitoring and observability. Personally, I went through a process something like this:
 
-1. Service has some basic [logging](/blog/understanding-docker-logging-and-log-files) and an uptime alert
-1. Service has a health-check endpoint, is deployed in triplicate behind a load balancer
-1. Logs are real-time shipped to Splunk / ELK Stack
-1. Metrics set up in Datadog / Prometheus with paging
-1. Distributed Tracing set up for debugging across services
-1. And so on
+1. Service has some basic [logging](/blog/understanding-docker-logging-and-log-files) and an uptime alert.
+1. Service has a health-check endpoint, is deployed in triplicate behind a load balancer.
+1. Logs are real-time shipped to Splunk / ELK Stack.
+1. Metrics set up in Datadog / Prometheus with paging.
+1. Distributed Tracing set up for debugging across services.
+1. And so on.
 
 Each step requires more work to set up and has some additional benefits. I moved through each step by necessity as my service handled more requests and became more important to customers.
 
@@ -64,5 +64,5 @@ That doesn't mean that other people are never wrong, though. People choose the w
 
 {% include cta/cta1.html %}
 
-[^1]: Richard is the creator of SQLite. See this [interview](https://corecursive.com/066-sqlite-with-richard-hipp/#billions-of-tests) for a discussion of his testing approach.
+[^1]: Richard is the creator of SQLite. See my [interview](https://corecursive.com/066-sqlite-with-richard-hipp/#billions-of-tests) with him for a discussion of his testing approach.
 [^2]: Personal and team familiarity can also be part of the context. PHP may not seem to be the best choice for building a command-line tool, but if it's a small tool used by a team of PHP developers, then it might be the best choice.
