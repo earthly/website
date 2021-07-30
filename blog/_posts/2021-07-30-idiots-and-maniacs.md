@@ -27,7 +27,7 @@ It reminds me a lot of driving when it first snows here in Peterborough.
 
  {% picture content-wide {{site.pimages}}{{page.slug}}/9580.png --picture --img width="1200px" --alt {{ Driving in the snow }} %}
 
-In the winter, we get snow. It's just a fact of life, and people learn how to drive in snowy conditions. But on the first substantial snowfall of the year, people struggle to remember how to drive.
+In the winter, in Peterborough, we get snow. It's just a fact of life, and people learn how to drive in snowy conditions. But on the first substantial snowfall of the year, people struggle to remember how to drive.
 
 Some will drive way below the speed limit and slow down traffic for everyone. They are idiots in the snow. Others get frustrated by the slow drivers and go too fast for the road conditions. Don't they know there is snow on the road?
 
