@@ -45,7 +45,7 @@ There was a time when I thought all code should have 80% unit test code coverage
 
 On the other hand, Richard Hipp -- who tests to 100% code coverage at the machine code level, covering every branch by running billions of tests each release[^1] -- is a testing maniac.
 
-I hope you see where I'm going. This idiot to maniac gradient feels right, but it makes no sense. Wherever you find yourself along the spectrum is more a reflection of the context in which you work than anything else.
+I hope you see where I'm going. This idiot to maniac gradient feels right, but it makes no sense. How can I be the only the person driving the right speed? Wherever you find yourself along the spectrum is more a reflection of the context in which you work than anything else.
 
 ## More Examples
 
