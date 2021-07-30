@@ -45,7 +45,7 @@ There was a time when I thought all code should have 80% unit test code coverage
 
 On the other hand, Richard Hipp -- who tests to 100% code coverage at the machine code level, covering every branch by running billions of tests each release[^1] -- is a testing maniac.
 
-I hope you see where I'm going. This idiot to maniac gradient feels right, but it makes no sense. How can I be the only the person driving the right speed? Wherever you find yourself along the spectrum is more a reflection of the context in which you work than anything else.
+I hope you see where I'm going. This idiot to maniac gradient feels right, but it makes no sense[^2]. How can I be the only the person driving the right speed? Wherever you find yourself along the spectrum is more a reflection of the context in which you work than anything else.
 
 ## More Examples
 
@@ -58,11 +58,13 @@ Here are some made-up and exaggerated examples:
 - **Kotlin Developer:** Java is so verbose and ugly. Welcome to 2021. Kotlin has a lot of sugar and type improvements that make writing correct code simpler.
 - **Kotlin Developer:** Scala is for **maniacs**. There is so much syntactic sugar and type stuff that it's not worth learning about.
 
-I'm not trying to pick on any of these languages - Typescript, Go, and Kotlin are exceptionally well suited to their niche. But contexts vary[^2], and it takes mental effort to see that people making other trade-offs sometimes have good reasons for it.
+I'm not trying to pick on any of these languages - Typescript, Go, and Kotlin are exceptionally well suited to their niche. But contexts vary[^3], and it takes mental effort to see that people making other trade-offs sometimes have good reasons for it.
 
 That doesn't mean that other people are never wrong, though. People choose the wrong tool for the job all the time. For example, if I were doing SQLite's level of testing for a low-reliability, low-traffic, state-less web service when a couple of integration tests would do, then that'd be a mistake, but you'd have to know the context to make that call.
 
 {% include cta/cta1.html %}
 
 [^1]: Richard is the creator of SQLite. See my [interview](https://corecursive.com/066-sqlite-with-richard-hipp/#billions-of-tests) with him for a discussion of his testing approach.
-[^2]: Personal and team familiarity can also be part of the context. PHP may not seem to be the best choice for building a command-line tool, but if it's a small tool used by a team of PHP developers, then it might be the best choice.
+[^2]: Article Update: Apparently I've unintentionally stolen this idiot to maniac spectrum idea from [George Carlin](https://www.youtube.com/watch?v=XWPCE2tTLZQ). Thanks to tjones21xx on Reddit for pointing this out. All credit for this idea goes to Carlin.
+
+[^3]: Personal and team familiarity can also be part of the context. PHP may not seem to be the best choice for building a command-line tool, but if it's a small tool used by a team of PHP developers, then it might be the best choice.
