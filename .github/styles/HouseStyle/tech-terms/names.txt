@@ -136,3 +136,5 @@ Codecov
 zoxide
 Pandoc
 Datadog
+Wercker
+Nevercode
