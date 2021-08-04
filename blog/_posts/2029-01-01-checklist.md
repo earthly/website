@@ -15,6 +15,7 @@ internal-links:
 - [ ] Fix Grammarly Errors
 - [ ] Read out loud
 - [ ] Write 5 or more titles and pick the best on
+- [ ] First two paragraphs: What's it about? Why listen to you?
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
