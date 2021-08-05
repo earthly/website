@@ -1,0 +1,18 @@
+[
+	{
+        "id"   : 1,    
+		"color": "red",
+		"value": "#f00"
+	},
+	{
+        "id"   : 2,  
+		"color": "green",
+		"value": "#0f0"
+	},
+	{
+        "id"   : 3,  
+		"color": "blue",
+		"value": "#00f"
+
+	}
+]
