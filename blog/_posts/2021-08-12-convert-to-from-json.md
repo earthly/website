@@ -133,7 +133,7 @@ You can install `gawk` using brew (`brew install gawk`) or your package manager 
 
 ## Convert CSV to JSON at The Command Line
 
-For converting CSV to JSON, we can use `daser` again. The read (`-r`) and write (`-w`) options mean that it's easy to convert from any of its supported file formats (JSON, YAML, TOML, XML, and CSV).
+For converting CSV to JSON, we can use `dasel` again. The read (`-r`) and write (`-w`) options mean that it's easy to convert from any of its supported file formats (JSON, YAML, TOML, XML, and CSV).
 
 We can get our original JSON document back from CSV like this:
 
