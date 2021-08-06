@@ -29,3 +29,5 @@ endraw
 makefile
 fzf
 cta
+csvtojson
+dasel

@@ -138,3 +138,4 @@ Pandoc
 Datadog
 Wercker
 Nevercode
+gnuawk
