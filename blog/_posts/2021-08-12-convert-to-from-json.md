@@ -10,7 +10,7 @@ internal-links:
  - json
  - convertion tool
 ---
-How do you convert JSON values to CSV and back at the command line? I've done this task enough times now and been stung by the edge cases enough times that **it's time for me to share my favorite tools for this conversion process.** But first, some background.
+How do you convert JSON values to CSV and back at the command line? I've done this task on many occasions and been stung by the edge cases frequently enough that **it's time for me to share my favorite tools for this conversion process.** But first, some background.
 
 ## Background: You Probably Want a CSV Conversion Tool
 
