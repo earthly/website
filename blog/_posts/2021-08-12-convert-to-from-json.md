@@ -1,5 +1,5 @@
 ---
-title: "How to Convert from Json to CSV at The Command Line"
+title: "How to Convert from JSON to CSV at The Command Line"
 categories:
   - Tutorials
 author: Adam
@@ -10,20 +10,7 @@ internal-links:
  - json
  - convertion tool
 ---
-### Writing Article Checklist
-
-- [ ] First two paragraphs: What's it about? Why listen to you?
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-- [ ] Run mark down linter (`earthly +blog-lint-apply`)
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `earthly --build-arg NAME=2020-09-10-better-builds.md +link-opportunity` and find 1-5 places to incorporate links to other articles
-- [ ] Raise PR
-
-## Converting to Comma-Separated Values
-
-How do you convert JSON values to CSV and back at the command line? I've done this task enough times now and been stung by the edge cases enough times that it's time for me to share my favorite tools for this conversion process. But first, some background.
+How do you convert JSON values to CSV and back at the command line? I've done this task enough times now and been stung by the edge cases enough times that **it's time for me to share my favorite tools for this conversion process.** But first, some background.
 
 ## Background: You Probably Want a CSV Conversion Tool
 
@@ -83,6 +70,8 @@ It's easy to install (`brew install dasel`), and it works great as a format conv
 
 <figcaption>simple.json</figcaption>
 
+The conversion is easy:
+
 ``` bash
 $ dasel -r json -w csv < sample.json 
 color,id,value
@@ -90,6 +79,7 @@ red,1,#f00
 green,2,#0f0
 blue,3,#00f
 ```
+<figcaption>converting with `dasel`</figcaption>
 
 `dasel` handles newlines and values containing commas as well.
 
