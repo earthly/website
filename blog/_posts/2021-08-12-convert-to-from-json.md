@@ -14,7 +14,7 @@ How do you convert JSON values to CSV and back at the command line? I've done th
 
 ## Background: You Probably Want a CSV Conversion Tool
 
-The CSV format seems simple at first glance: You have a fixed number of fields per row and each is field is separated by a comma.
+The CSV format seems simple at first glance: You have a fixed number of fields per row and each field is separated by a comma.
 
 ``` bash
 1997,Ford,E350\n
