@@ -37,7 +37,7 @@ Things get more complex from there, and even the [CSV standard](https://datatrac
 
 > The CSV file format is not fully standardized. Separating fields with commas is the foundation, but commas in the data or embedded line breaks have to be handled specially. Some implementations disallow such content while others surround the field with quotation marks, which yet again creates the need for escaping these if they are present in the data.
 
-So although it seems like CSV conversion can be done by hand in python, using an existing tool that is known to handle the edges cases well it the way to go.
+So although it seems like CSV conversion can be done by hand in python, or your language of choice, using an existing tool that is known to handle the edges cases well it the way to go.
 
 With that in mind, let's review some tools for converting from JSON to CSV at the command line.
 
@@ -166,7 +166,7 @@ $ dasel -r csv -w json < sample.csv
 
 ## Convert CSV to JSON Command Line with `csvtojson`
 
-Another option is to grab the npm tool `csvtojson` (`npm i --save csvtojson`). To convert just sent csvtojson results over standard in:
+Another option is to grab the npm tool `csvtojson` (`npm i --save csvtojson`). If you don't already have npm and Node.js installed then installing `dasel` is a simple solution. Once installed, you can convert to CSV by sending input to  `csvtojson` over standard in:
 
 ``` bash
 csvtojson < sample.csv
