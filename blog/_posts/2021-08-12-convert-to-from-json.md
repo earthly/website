@@ -23,32 +23,34 @@ internal-links:
 
 ## Converting to Comma-Separated Values
 
-The details behind comma-separated-values (CSV) file parsing and conversion is trickier than it may seem at first glance. The idea is simple: you have a fixed number of fields per row and each is field is separated by a comma.
+How do you convert JSON values to CSV and back at the command line? I've done this task enough times now and been stung by the edge cases enough times that it's time for me to share my favorite tools for this conversion process. But first, some background.
 
+## Background: You Probably Want a CSV Conversion Tool
 
+The CSV format seems simple at first glance: You have a fixed number of fields per row and each is field is separated by a comma.
 
 ``` bash
 1997,Ford,E350\n
 ```
 
-If you need to use commas in the format, then the fields must be delimited with `"`:
+However, if you need to use commas in the value, then the fields must be delimited with `"`:
 
 ``` bash
 1997,Ford,E350,"Super, luxurious truck"\n
 ```
 
-You can use this same trick to delimit a line break and use double double-quotes to add use delimiters
+You can use this same trick to delimit a line break, and use double double-quotes if you need to include `"` in your values or headings.
 
 ``` bash
 1997,Ford,E350,"Go get one ""now""\n
 they are going fast"\n
 ```
 
-Things get more complex from there, and even the [CSV standard](https://datatracker.ietf.org/doc/html/rfc4180) does not specify all the edge cases. From this, we can conclude one thing: although the format is simple, you probably want to use a tool to convert JSON to CSV because the edge cases are where it gets tricky.
-
-Wikipedia puts it this way:
+Things get more complex from there, and even the [CSV standard](https://datatracker.ietf.org/doc/html/rfc4180) does not specify how to handle all the edge cases and some formatting options are non-compatible. Wikipedia puts it this way:
 
 > The CSV file format is not fully standardized. Separating fields with commas is the foundation, but commas in the data or embedded line breaks have to be handled specially. Some implementations disallow such content while others surround the field with quotation marks, which yet again creates the need for escaping these if they are present in the data.
+
+So although it seems like CSV conversion can be done by hand in python using an existing tool that is known to handle the edges cases well it the way to go.
 
 With that in mind, let's review some tools for converting from JSON to CSV at the command line.
 
@@ -186,6 +188,6 @@ csvtojson < sample.csv
 
 ## Conclusion
 
-You now have the knowledge and the tools you need to convert JSON to CSV and CSV to JSON. [`jq`](https://stedolan.github.io/jq/), [`dasel`](https://github.com/TomWright/dasel), [`csvtojson`](https://www.npmjs.com/package/csvtojson) and [`jsonv`](https://github.com/archan937/jsonv.sh) are handy command line tools.
+You now have the knowledge and the tools you need to convert JSON to CSV and CSV to JSON. [`jq`](https://stedolan.github.io/jq/), [`dasel`](https://github.com/TomWright/dasel), [`csvtojson`](https://www.npmjs.com/package/csvtojson) and [`jsonv`](https://github.com/archan937/jsonv.sh) are handy command line tools. Since installing `dasel`, i've used it for a number of text data restructuring tasks.
 
 {% include cta/cta1.html %}
