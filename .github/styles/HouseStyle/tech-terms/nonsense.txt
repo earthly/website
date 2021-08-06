@@ -30,3 +30,4 @@ makefile
 fzf
 cta
 csvtojson
+dasel

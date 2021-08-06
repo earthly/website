@@ -79,6 +79,7 @@ red,1,#f00
 green,2,#0f0
 blue,3,#00f
 ```
+
 <figcaption>converting with `dasel`</figcaption>
 
 `dasel` handles newlines and values containing commas as well.
