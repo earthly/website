@@ -50,9 +50,34 @@ Also mention:
 - convert
 - command line
 
+## Converting to Comma-Separated Values
+The details behind Comma-separated values (CSV) file parsing and conversion is trickier than it may seem at first glance. The idea is simple: you have a fixed number of fields per row and each is field is serpated by a comma.
+
+```
+1997,Ford,E350\n
+```
+If you need to use commas in the format, then the fields must be delimited with `"`:
+```
+1997,Ford,E350,"Super, luxurious truck"\n
+```
+You can use this same trick to delimit a line break and use double double-quotes to add use delimiters
+```
+1997,Ford,E350,"Go get one ""now""\n
+they are going fast"\n
+```
+
+Things get more complex from there and even the (RFC standard)[https://datatracker.ietf.org/doc/html/rfc4180] does not specify all the edge cases. From this we can conclude one thing: Although the format seems simple, you probably want to use an existing tool if you are converting json to CSV because the edge cases are a bit more involved then you might think.
+
+Wikipedia puts it this way:
+
+> The CSV file format is not fully standardized. Separating fields with commas is the foundation, but commas in the data or embedded line breaks have to be handled specially. Some implementations disallow such content while others surround the field with quotation marks, which yet again creates the need for escaping these if they are present in the data.
+
+With that in mind, lets review some tools for converting from JSON to CSV at the command line.
 
 ## Convert JSON to CSV via the Command Line
-The easiest way to convert JSON to CSV is using JSONV. Here is a simple JSON file. Lets do a JSON to CSV conversion.
+The simplest way to do this JSON to CSV conversion is with `dasel`. `dasel` is a tool for DAta SELection. Think of it as a `jq` that supports selection on formats besides just JSON. 
+
+It's easy to install (`brew install dasel`) and it works great as a format converter.
 
 ``` json
 [
@@ -76,6 +101,38 @@ The easiest way to convert JSON to CSV is using JSONV. Here is a simple JSON fil
 ```
 <figcaption>sample.json</figcaption>
 
+```
+dasel -r json -w csv < sample.json 
+color,id,value
+red,1,#f00
+green,2,#0f0
+blue,3,#00f
+```
+`dasel` handles newlines and comma values as well. 
+
+#todo example
+
+dasel -r json -w csv "{"name,,,":"lines\n\nlines"}"
+
+Install 
+
+## Convert JSON to CSV via the Command Line using JQ
+
+If you don't want to install `dasel` or if you just love `JQ`  (`brew install jq`) then this solution may work well for you. Before I discovered `dasel` this was the main approach I used.
+
+```
+cat simple.json| jq -r '(map(keys) | add | unique) as $cols | map(. as $row | $cols | map($row[.])) as $rows | $cols, $rows[] | @csv' 
+"color","id","value"
+"red",1,"#f00"
+"green",2,"#0f0"
+"blue",3,"#00f"
+```
+
+
+## Convert JSON to CSV via the Command Line and Choose Ordering Column
+
+The down side to the previous two approaches is that the order of the columns not preserved and it's not simple to specify which columns to include. Both `jq` and `dazel` support a query langauge which is capable of handling such rules but the `jsonv` tool is an easy way to accomplish this without learning a query langauge. 
+
 To convert we will use `jsonv` and pipe it our json file. It also takes a list of columns to include and by default outputs the csv file to standard out. We redirect this output to a file.
 ```
 cat simple.json | jsonv id,color,value > simple.csv
@@ -96,22 +153,13 @@ jsonv handles more complex examples as well. Under the hood it uses gnuawk (`gaw
 ```
 $ curl -Ls https://raw.github.com/archan937/jsonv.sh/master/install.sh | bash
 ```
-gawk can be installed like using brew (`brew install gawk`) or your package manager of choice. `jsonv` has no option for adding headings to the resulting file. For my own one of usage this has never been a problem as its easy to add in the heading row manually. However if you need an automated way to add the heading then `JQ` can do an excellant job of this.
+gawk can be installed like using brew (`brew install gawk`) or your package manager of choice.
 
-```
-cat simple.json| jq -r '(map(keys) | add | unique) as $cols | map(. as $row | $cols | map($row[.])) as $rows | $cols, $rows[] | @csv' 
-"color","id","value"
-"red",1,"#f00"
-"green",2,"#0f0"
-"blue",3,"#00f"
-```
-The other advantage of this JQ approach is that you don't need to specify the columns you need. The down side is to specify the ordering with JQ a different approach is needed. Understanding the JQ solution is beyond the scope of this article. 
+## Convert CSV to JSON at The Command Line 
+For converting CSV to JSON we can use `daser` again. The read (`-r`) and write (`-w`) options mean its easy to convert from any of its supported file formats (JSON, YAML, TOML, XML and CSV).
 
-## Convert CSV to JSON Command Line
-
-Converting from CSV to Json is very simple with the right conversion tool and `csvtojson` is just that tool. It requires a header line in the CSV file for determining the keys of the resulting JSON document. 
-
-```
+We can get our original JSON document back from CSV like this:
+``` bash
 $ cat sample.csv
 ID, color, value
 1,"red","#f00"
@@ -119,7 +167,28 @@ ID, color, value
 3,"blue","#00f"
 ```
 
-To convert just sent csvtojson results over standard in:
+``` json
+$ dasel -r csv -w json < sample.csv
+{
+  "ID": "1",
+  "color": "red",
+  "value": "#f00"
+}
+{
+  "ID": "2",
+  "color": "green",
+  "value": "#0f0"
+}
+{
+  "ID": "3",
+  "color": "blue",
+  "value": "#00f"
+}
+```
+
+
+## Convert CSV to JSON Command Line with `csvtojson`
+Another option is to grab the npm tool `csvtojson` (`npm i --save csvtojson`). To convert just sent csvtojson results over standard in:
 ```
 csvtojson < sample.csv
 [
@@ -129,73 +198,8 @@ csvtojson < sample.csv
 ]
 ```
 
-Install it via npm:
-```
-npm i --save csvtojson
+## Conclusion
 
-```
+You now have the knowledge and the tools you need to convert JSON to CSV and CSV to JSON. [`jq`](https://stedolan.github.io/jq/), [`dasel`](https://github.com/TomWright/dasel), [`csvtojson`](https://www.npmjs.com/package/csvtojson) and [`jsonv`](https://github.com/archan937/jsonv.sh) are handy command line tools. 
 
-## Convert XML to JSON
-To convert from an XML document to JSON there are a couple tools to choose from. `xq` which comes with [`yq`](https://github.com/kislyuk/yq) is the most actively supported.  
-
-Install
-```
-pip3 install yq
-```
-
-In the XML standard ordering of elements is defined and duplicate elements are supported. Neither of these is true of JSON so if you plan to convert back at some point be aware that you may lose ordering and duplicate values.
-
-```
-cat sample01.xml
-<note>
-<to>Tove</to>
-<from>Jani</from>
-<heading>Reminder</heading>
-<body>Don't forget me this weekend!</body>
-</note> 
-```
-<figcaption>A sample xml document</figcaption>
-
-`xq` is a wrapper around `jq` that converts to XML. To use `xq` as a conversion tool just call it as `xq .`:
-
-``` json
-$ xq . < sample.xml
-{
-  "note": {
-    "to": "Tove",
-    "from": "Jani",
-    "heading": "Reminder",
-    "body": "Don't forget me this weekend!"
-  }
-}
-```
-
-## Convert JSON to XML
-➜  downloads git:(master) ./jsontoxml-cli-darwin-amd64 < /Users/adam/sandbox/earthly-website/blog/assets/other/convert-to-from-json/simple.json
-<root><element><color>red</color><id>1</id><value>#f00</value></element><element><color>green</color><id>2</id><value>#0f0</value></element><element><color>blue</color><id>3</id><value>#00f</value></element></root>
-
-
-https://github.com/chrismalek/jsontoxml-cli
-
-##  html to json -> tidy?
-
-install pup
-```
-brew install pup
-```
-
-curl https://earthly.dev/blog/ | pup '.archive__item-title' > test2.html
-
-
-
-
-
-
-Ideas:
-what can you do taking everything to JSON?
-Can you do CSS style selectors on json?
-
-Articles:
-https://kevinmarsh.com/2014/11/12/web-scraping-with-pup-and-jq.html
-https://datascienceworkshops.com/blog/seven-command-line-tools-for-data-science/
-https://www.reddit.com/r/commandline/comments/cq5n4c/jq_for_htmlxml/
+{% include cta/cta1.html %}
