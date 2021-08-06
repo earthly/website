@@ -37,7 +37,7 @@ Things get more complex from there, and even the [CSV standard](https://datatrac
 
 > The CSV file format is not fully standardized. Separating fields with commas is the foundation, but commas in the data or embedded line breaks have to be handled specially. Some implementations disallow such content while others surround the field with quotation marks, which yet again creates the need for escaping these if they are present in the data.
 
-So although it seems like CSV conversion can be done by hand in python using an existing tool that is known to handle the edges cases well it the way to go.
+So although it seems like CSV conversion can be done by hand in python, using an existing tool that is known to handle the edges cases well it the way to go.
 
 With that in mind, let's review some tools for converting from JSON to CSV at the command line.
 
