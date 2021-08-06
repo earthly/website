@@ -86,7 +86,7 @@ blue,3,#00f
 
 ## Convert JSON to CSV via the Command Line using JQ
 
-If you don't want to install `dasel` or if you just love `JQ`  (`brew install jq`) then this solution may work well for you. Before I discovered `dasel` this was the main approach I used:
+If you don't want to install `dasel` or if you just love `jq`  (`brew install jq`) then this solution may work well for you. Before I discovered `dasel` this was the main approach I used:
 
 ``` bash
 $ cat simple.json| jq -r '(map(keys) | add | unique) as $cols | map(. as $row | $cols | map($row[.])) as $rows | $cols, $rows[] | @csv' 
