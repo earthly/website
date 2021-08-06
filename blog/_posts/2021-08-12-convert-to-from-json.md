@@ -12,9 +12,6 @@ internal-links:
 ---
 ### Writing Article Checklist
 
-- [ ] Fix Grammarly Errors
-- [ ] Read out loud
-- [ ] Write 5 or more titles and pick the best on
 - [ ] First two paragraphs: What's it about? Why listen to you?
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
@@ -26,7 +23,9 @@ internal-links:
 
 ## Converting to Comma-Separated Values
 
-The details behind comma separated values (CSV) file parsing and conversion is trickier than it may seem at first glance. The idea is simple: you have a fixed number of fields per row and each is field is separated by a comma.
+The details behind comma-separated-values (CSV) file parsing and conversion is trickier than it may seem at first glance. The idea is simple: you have a fixed number of fields per row and each is field is separated by a comma.
+
+
 
 ``` bash
 1997,Ford,E350\n
@@ -45,19 +44,19 @@ You can use this same trick to delimit a line break and use double double-quotes
 they are going fast"\n
 ```
 
-Things get more complex from there and even the [CSV standard](https://datatracker.ietf.org/doc/html/rfc4180) does not specify all the edge cases. From this we can conclude one thing: Although the format seems simple, you probably want to use an existing tool if you are converting JSON to CSV because the edge cases are where it gets tricky.
+Things get more complex from there, and even the [CSV standard](https://datatracker.ietf.org/doc/html/rfc4180) does not specify all the edge cases. From this, we can conclude one thing: although the format is simple, you probably want to use a tool to convert JSON to CSV because the edge cases are where it gets tricky.
 
 Wikipedia puts it this way:
 
 > The CSV file format is not fully standardized. Separating fields with commas is the foundation, but commas in the data or embedded line breaks have to be handled specially. Some implementations disallow such content while others surround the field with quotation marks, which yet again creates the need for escaping these if they are present in the data.
 
-With that in mind, lets review some tools for converting from JSON to CSV at the command line.
+With that in mind, let's review some tools for converting from JSON to CSV at the command line.
 
 ## Convert JSON to CSV via the Command Line
 
 The simplest way to do this JSON to CSV conversion is with `dasel`. `dasel` is a tool for DAta SELection. Think of it as a `jq` that supports selection on formats besides just JSON.
 
-It's easy to install (`brew install dasel`) and it works great as a format converter.
+It's easy to install (`brew install dasel`), and it works great as a format converter.
 
 ``` json
 [
@@ -110,9 +109,9 @@ A full explanation for how this works is beyond the scope of this article, but t
 
 ## Convert JSON to CSV via the Command Line and Choose Ordering Column
 
-The down side to the previous two approaches is that which columns to include and in which order can't be specified. Both `jq` and `dazel` support a query language which is capable of handling such rules but the `jsonv` tool is an easy way to accomplish this without learning a query language.
+The downside to the previous two approaches is that you can't specify which columns to exclude nor their order. Both `jq` and `dazel` support a query language for customizing the output, but if you don't want to dive into CSS selectors, the `jsonv` tool is a great alternative.
 
-To convert we will use `jsonv` and pipe it our JSON file. It also takes a list of columns to include and by default outputs the CSV file to standard out. We redirect this output to a file.
+To convert, we will use `jsonv` and pipe it our JSON file. Then, we will specify the columns to include, and we redirect its output to a file.
 
 ``` bash
 cat simple.json | jsonv id,color,value > simple.csv
@@ -131,17 +130,17 @@ $ cat simple.csv
 7,"black","#000"
 ```
 
-`jsonv` handles more complex examples as well. Under the hood it uses gnuawk (`gawk`). It can be installed like this:
+`jsonv` handles more complex examples as well. Under the hood, it uses `gnuawk` (`gawk`). You can install it using curl:
 
 ```
 curl -Ls https://raw.github.com/archan937/jsonv.sh/master/install.sh | bash
 ```
 
-gawk can be installed like using brew (`brew install gawk`) or your package manager of choice.
+You can install `gawk` using brew (`brew install gawk`) or your package manager of choice.
 
 ## Convert CSV to JSON at The Command Line
 
-For converting CSV to JSON we can use `daser` again. The read (`-r`) and write (`-w`) options mean its easy to convert from any of its supported file formats (JSON, YAML, TOML, XML and CSV).
+For converting CSV to JSON, we can use `daser` again. The read (`-r`) and write (`-w`) options mean that it's easy to convert from any of its supported file formats (JSON, YAML, TOML, XML, and CSV).
 
 We can get our original JSON document back from CSV like this:
 
