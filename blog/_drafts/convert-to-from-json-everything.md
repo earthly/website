@@ -24,6 +24,10 @@ internal-links:
 - [ ] Run `earthly --build-arg NAME=2020-09-10-better-builds.md +link-opportunity` and find 1-5 places to incorporate links to other articles
 - [ ] Raise PR
 
+https://github.com/johnkerl/miller
+https://elv.sh/learn/unique-semantics.html
+
+
 ## Keywords
  xml to json -> dasel
  json to xml 
