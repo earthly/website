@@ -1,0 +1,1213 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<link rel="icon" type="image/png" href="/blog/assets/images/favicon.png">
+<!-- begin _includes/seo.html -->
+
+
+
+
+
+<title>Home - Earthly Blog</title>
+<meta name="description" content="Build automation for the container era.">
+
+
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Earthly Blog">
+<meta property="og:title" content="Home">
+<meta property="og:url" content="https://earthly.dev/blog/">
+
+
+  <meta property="og:description" content="Build automation for the container era.">
+
+
+
+  <meta property="og:image" content="/blog/generated/assets/images/logo-header-800-c4ff9c2c5.png">
+
+
+
+  <meta name="twitter:site" content="@EarthlyTech">
+  <meta name="twitter:title" content="Home">
+  <meta name="twitter:description" content="Build automation for the container era.">
+  <meta name="twitter:url" content="https://earthly.dev/blog/">
+
+  
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://earthly.dev/blog/generated/assets/images/logo-header-800-c4ff9c2c5.png">
+  
+
+  
+
+
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="https://earthly.dev/blog/">
+
+
+
+  <link rel="next" href="https://earthly.dev/blog/page2/">
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Organization",
+      "url": "https://earthly.dev/blog/",
+      "logo": "/assets/images/logo-header.png"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/blog/feed.xml" type="application/atom+xml" rel="alternate" title="Earthly Blog Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/blog/assets/css/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+  
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-161831101-5"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-161831101-5');
+</script>
+  <!-- Facebook Pixel Code -->
+<script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '259843109045285');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=259843109045285&ev=PageView&noscript=1"
+    />
+</noscript>
+ <!-- End Facebook Pixel Code -->
+  <!-- Twitter universal website tag code -->
+<script>
+  !function(e,t,n,s,u,a){e.twq||(s=e.twq=function(){s.exe?s.exe.apply(s,arguments):s.queue.push(arguments);
+  },s.version='1.1',s.queue=[],u=t.createElement(n),u.async=!0,u.src='//static.ads-twitter.com/uwt.js',
+  a=t.getElementsByTagName(n)[0],a.parentNode.insertBefore(u,a))}(window,document,'script');
+  // Insert Twitter Pixel ID and Standard Event data below
+  twq('init','o5s6p');
+  twq('track','PageView');
+  </script>
+  <!-- End Twitter universal website tag code -->
+
+
+  </head>
+
+  <body class="layout--home">
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <a class="site-logo" href="/"><img src="/blog/assets/images/white-logo.png" alt="Earthly"></a>
+        
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/blog/">Blog home</a>
+            </li><li class="masthead__menu-item">
+              <a href="/blog/categories/articles/">Articles</a>
+            </li><li class="masthead__menu-item">
+              <a href="/blog/categories/news/">News</a>
+            </li><li class="masthead__menu-item">
+              <a href="/blog/categories/tutorials/">Tutorials</a>
+            </li><li class="masthead__menu-item">
+              <a href="https://github.com/earthly/earthly">GitHub</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+  
+
+
+
+
+
+
+
+<div class="page__hero"
+  style=" background-image: url('');"
+>
+  
+      <img src="/blog/assets/images/logo-header.png" alt="Home" class="page__hero-image">
+  
+  
+</div>
+
+
+
+
+
+<div id="main" role="main">
+  
+
+
+  <div class="home-archive">
+    
+
+<h3 class="archive__subtitle">Recent posts</h3>
+
+
+
+
+<div class="entries-grid">
+  
+    
+
+
+
+
+
+
+
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+      <div class="archive__item-teaser">
+        <picture>
+  <source srcset="/blog/generated/assets/images/idiots-and-maniacs/header-600-161d4ea73.webp 600w, /blog/generated/assets/images/idiots-and-maniacs/header-800-161d4ea73.webp 800w" type="image/webp">
+  <source srcset="/blog/generated/assets/images/idiots-and-maniacs/header-600-00dc94dde.jpg 600w, /blog/generated/assets/images/idiots-and-maniacs/header-800-00dc94dde.jpg 800w" type="image/jpeg">
+  <img src="/blog/generated/assets/images/idiots-and-maniacs/header-800-00dc94dde.jpg">
+</picture>
+
+      </div>
+    
+    
+    <div class="archive__item-title no_toc heading" itemprop="headline">
+    
+      
+      
+        <a href="/blog/idiots-and-maniacs/" rel="permalink">Idiots And Maniacs
+</a>
+      
+    
+    </div>
+    
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          4 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+Observability
+
+
+If you do software-as-a-service development and you have paying customers, you at some point learn about the need for operational monitoring...</p>
+  </article>
+</div>
+
+  
+    
+
+
+
+
+
+
+
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+      <div class="archive__item-teaser">
+        <picture>
+  <source srcset="/blog/generated/assets/images/vscode-make/header-600-cc5a5db17.webp 600w, /blog/generated/assets/images/vscode-make/header-800-cc5a5db17.webp 800w" type="image/webp">
+  <source srcset="/blog/generated/assets/images/vscode-make/header-600-91e861b7e.jpg 600w, /blog/generated/assets/images/vscode-make/header-800-91e861b7e.jpg 800w" type="image/jpeg">
+  <img src="/blog/generated/assets/images/vscode-make/header-800-91e861b7e.jpg">
+</picture>
+
+      </div>
+    
+    
+    <div class="archive__item-title no_toc heading" itemprop="headline">
+    
+      
+      
+        <a href="/blog/vscode-make/" rel="permalink">Building in Visual Studio Code with a Makefile
+</a>
+      
+    
+    </div>
+    
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          6 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+Microsoft announced recently a new Visual Studio Code extension to handle Makefiles. This extension provides a set of commands to the editor that will facil...</p>
+  </article>
+</div>
+
+  
+    
+
+
+
+
+
+
+
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+      <div class="archive__item-teaser">
+        <picture>
+  <source srcset="/blog/generated/assets/images/continuous-testing-in-devops/header-600-e66dcda6f.webp 600w, /blog/generated/assets/images/continuous-testing-in-devops/header-800-e66dcda6f.webp 800w" type="image/webp">
+  <source srcset="/blog/generated/assets/images/continuous-testing-in-devops/header-600-6603a5d07.jpg 600w, /blog/generated/assets/images/continuous-testing-in-devops/header-800-6603a5d07.jpg 800w" type="image/jpeg">
+  <img src="/blog/generated/assets/images/continuous-testing-in-devops/header-800-6603a5d07.jpg">
+</picture>
+
+      </div>
+    
+    
+    <div class="archive__item-title no_toc heading" itemprop="headline">
+    
+      
+      
+        <a href="/blog/continuous-testing-in-devops/" rel="permalink">Using Continuous Testing in DevOps Workflows
+</a>
+      
+    
+    </div>
+    
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          12 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+Automation testing is a crucial element to speed up your delivery process. It aims to flush out any potential regressions. The more you automate, the more c...</p>
+  </article>
+</div>
+
+  
+    
+
+
+
+
+
+
+
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+      <div class="archive__item-teaser">
+        <picture>
+  <source srcset="/blog/generated/assets/images/command-line-tools/header-600-df2c8b780.webp 600w, /blog/generated/assets/images/command-line-tools/header-800-df2c8b780.webp 800w" type="image/webp">
+  <source srcset="/blog/generated/assets/images/command-line-tools/header-600-7e54c1bed.jpg 600w, /blog/generated/assets/images/command-line-tools/header-800-7e54c1bed.jpg 800w" type="image/jpeg">
+  <img src="/blog/generated/assets/images/command-line-tools/header-800-7e54c1bed.jpg">
+</picture>
+
+      </div>
+    
+    
+    <div class="archive__item-title no_toc heading" itemprop="headline">
+    
+      
+      
+        <a href="/blog/command-line-tools/" rel="permalink">6 Command Line Tools for Productive Programmers
+</a>
+      
+    
+    </div>
+    
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          8 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+Lately, I’ve been doing a lot more things at the command line. I’m not a hard-core terminal guy – I use VSCode more than Vim – but I’m always surprised at t...</p>
+  </article>
+</div>
+
+  
+    
+
+
+
+
+
+
+
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+      <div class="archive__item-teaser">
+        <picture>
+  <source srcset="/blog/generated/assets/images/python-matplotlib-docker/header-600-e56f7fb32.webp 600w, /blog/generated/assets/images/python-matplotlib-docker/header-800-e56f7fb32.webp 800w" type="image/webp">
+  <source srcset="/blog/generated/assets/images/python-matplotlib-docker/header-600-976d74d44.jpg 600w, /blog/generated/assets/images/python-matplotlib-docker/header-800-976d74d44.jpg 800w" type="image/jpeg">
+  <img src="/blog/generated/assets/images/python-matplotlib-docker/header-800-976d74d44.jpg">
+</picture>
+
+      </div>
+    
+    
+    <div class="archive__item-title no_toc heading" itemprop="headline">
+    
+      
+      
+        <a href="/blog/python-matplotlib-docker/" rel="permalink">Install <code>matplotlib</code> In A Docker Container
+</a>
+      
+    
+    </div>
+    
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+matplotlib is an excellent library for creating graphs and visualizations in Python. For example, I used it to generate the performance graphs in my merging...</p>
+  </article>
+</div>
+
+  
+    
+
+
+
+
+
+
+
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+      <div class="archive__item-teaser">
+        <picture>
+  <source srcset="/blog/generated/assets/images/golang-makefile/header-600-c2a6f06af.webp 600w, /blog/generated/assets/images/golang-makefile/header-800-c2a6f06af.webp 800w" type="image/webp">
+  <source srcset="/blog/generated/assets/images/golang-makefile/header-600-a3886f2c1.jpg 600w, /blog/generated/assets/images/golang-makefile/header-800-a3886f2c1.jpg 800w" type="image/jpeg">
+  <img src="/blog/generated/assets/images/golang-makefile/header-800-a3886f2c1.jpg">
+</picture>
+
+      </div>
+    
+    
+    <div class="archive__item-title no_toc heading" itemprop="headline">
+    
+      
+      
+        <a href="/blog/golang-makefile/" rel="permalink">Creating a Golang Makefile
+</a>
+      
+    
+    </div>
+    
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          6 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+Building and testing any large codebase is time-consuming, error-prone, and repetitive. Golang supports multi-platform builds, which is excellent, but it n...</p>
+  </article>
+</div>
+
+  
+    
+
+
+
+
+
+
+
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+      <div class="archive__item-teaser">
+        <picture>
+  <source srcset="/blog/generated/assets/images/python-timsort-merge/header-600-a71a6b2cc.webp 600w, /blog/generated/assets/images/python-timsort-merge/header-800-a71a6b2cc.webp 800w" type="image/webp">
+  <source srcset="/blog/generated/assets/images/python-timsort-merge/header-600-2f03a0cf7.jpg 600w, /blog/generated/assets/images/python-timsort-merge/header-800-2f03a0cf7.jpg 800w" type="image/jpeg">
+  <img src="/blog/generated/assets/images/python-timsort-merge/header-800-2f03a0cf7.jpg">
+</picture>
+
+      </div>
+    
+    
+    <div class="archive__item-title no_toc heading" itemprop="headline">
+    
+      
+      
+        <a href="/blog/python-timsort-merge/" rel="permalink">Beating TimSort at Merging
+</a>
+      
+    
+    </div>
+    
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          7 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+Here is a problem. You are tasked with improving the hot loop of a Python program: maybe it is an in-memory sequential index of some sort. The slow part is...</p>
+  </article>
+</div>
+
+  
+    
+
+
+
+
+
+
+
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+      <div class="archive__item-teaser">
+        <picture>
+  <source srcset="/blog/generated/assets/images/python-makefile/header-600-b95119718.webp 600w, /blog/generated/assets/images/python-makefile/header-800-b95119718.webp 800w" type="image/webp">
+  <source srcset="/blog/generated/assets/images/python-makefile/header-600-3a116cb6d.jpg 600w, /blog/generated/assets/images/python-makefile/header-800-3a116cb6d.jpg 800w" type="image/jpeg">
+  <img src="/blog/generated/assets/images/python-makefile/header-800-3a116cb6d.jpg">
+</picture>
+
+      </div>
+    
+    
+    <div class="archive__item-title no_toc heading" itemprop="headline">
+    
+      
+      
+        <a href="/blog/python-makefile/" rel="permalink">Creating a Python Makefile
+</a>
+      
+    
+    </div>
+    
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          10 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+Even though Python is regarded as an interpreted language and the files need not be compiled separately, many developers are unaware that you can still use ...</p>
+  </article>
+</div>
+
+  
+    
+
+
+
+
+
+
+
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+      <div class="archive__item-teaser">
+        <picture>
+  <source srcset="/blog/generated/assets/images/python-concatenate-lists/header-600-b885e9e5f.webp 600w, /blog/generated/assets/images/python-concatenate-lists/header-800-b885e9e5f.webp 800w" type="image/webp">
+  <source srcset="/blog/generated/assets/images/python-concatenate-lists/header-600-e31d70141.jpg 600w, /blog/generated/assets/images/python-concatenate-lists/header-800-e31d70141.jpg 800w" type="image/jpeg">
+  <img src="/blog/generated/assets/images/python-concatenate-lists/header-800-e31d70141.jpg">
+</picture>
+
+      </div>
+    
+    
+    <div class="archive__item-title no_toc heading" itemprop="headline">
+    
+      
+      
+        <a href="/blog/python-concatenate-lists/" rel="permalink">Python Concatenate Lists
+</a>
+      
+    
+    </div>
+    
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          5 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+
+Concatenate Two Lists in Python
+
+
+Problem: You have two lists and you’d like to join them into a new list. Solution:
+
+
+Python 3.8.2
+&gt;&gt;&gt; one = [&q...</p>
+  </article>
+</div>
+
+  
+    
+
+
+
+
+
+
+
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+      <div class="archive__item-teaser">
+        <picture>
+  <source srcset="/blog/generated/assets/images/g++-makefile/header-600-0b9fb0c93.webp 600w, /blog/generated/assets/images/g++-makefile/header-800-0b9fb0c93.webp 800w" type="image/webp">
+  <source srcset="/blog/generated/assets/images/g++-makefile/header-600-44867ebff.jpg 600w, /blog/generated/assets/images/g++-makefile/header-800-44867ebff.jpg 800w" type="image/jpeg">
+  <img src="/blog/generated/assets/images/g++-makefile/header-800-44867ebff.jpg">
+</picture>
+
+      </div>
+    
+    
+    <div class="archive__item-title no_toc heading" itemprop="headline">
+    
+      
+      
+        <a href="/blog/g++-makefile/" rel="permalink">Creating a G++ Makefile
+</a>
+      
+    
+    </div>
+    
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          10 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+C++ is one of the most dominant programming languages. Although there are many compilers available, GCC still ranks as one of the most popular choices for C...</p>
+  </article>
+</div>
+
+  
+    
+
+
+
+
+
+
+
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+      <div class="archive__item-teaser">
+        <picture>
+  <source srcset="/blog/generated/assets/images/video-camera-on/header-600-739475018.webp 600w, /blog/generated/assets/images/video-camera-on/header-800-739475018.webp 800w" type="image/webp">
+  <source srcset="/blog/generated/assets/images/video-camera-on/header-600-5573f622c.jpg 600w, /blog/generated/assets/images/video-camera-on/header-800-5573f622c.jpg 800w" type="image/jpeg">
+  <img src="/blog/generated/assets/images/video-camera-on/header-800-5573f622c.jpg">
+</picture>
+
+      </div>
+    
+    
+    <div class="archive__item-title no_toc heading" itemprop="headline">
+    
+      
+      
+        <a href="/blog/video-camera-on/" rel="permalink">SQL Errors and Video Cameras
+</a>
+      
+    
+    </div>
+    
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          7 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+Some years ago, when I worked in a physical office, I was having trouble with a new report I was developing. The reasonably complex SQL that generated the ...</p>
+  </article>
+</div>
+
+  
+    
+
+
+
+
+
+
+
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+      <div class="archive__item-teaser">
+        <picture>
+  <source srcset="/blog/generated/assets/images/markdown-lint/header-600-193822b16.webp 600w, /blog/generated/assets/images/markdown-lint/header-800-193822b16.webp 800w" type="image/webp">
+  <source srcset="/blog/generated/assets/images/markdown-lint/header-600-490715c18.jpg 600w, /blog/generated/assets/images/markdown-lint/header-800-490715c18.jpg 800w" type="image/jpeg">
+  <img src="/blog/generated/assets/images/markdown-lint/header-800-490715c18.jpg">
+</picture>
+
+      </div>
+    
+    
+    <div class="archive__item-title no_toc heading" itemprop="headline">
+    
+      
+      
+        <a href="/blog/markdown-lint/" rel="permalink">Linting Markdown And Documentation
+</a>
+      
+    
+    </div>
+    
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          8 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+Many linting, code formatting, and static analysis tools exist for code. You can use eslint, gofmt, or many other static analysis tools, combined with a gre...</p>
+  </article>
+</div>
+
+  
+    
+
+
+
+
+
+
+
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+      <div class="archive__item-teaser">
+        <picture>
+  <source srcset="/blog/generated/assets/images/creating-and-hosting-your-own-rpm-packages-and-yum-repo/header-600-f3c707015.webp 600w, /blog/generated/assets/images/creating-and-hosting-your-own-rpm-packages-and-yum-repo/header-800-f3c707015.webp 800w" type="image/webp">
+  <source srcset="/blog/generated/assets/images/creating-and-hosting-your-own-rpm-packages-and-yum-repo/header-600-3cc6ceb1f.jpg 600w, /blog/generated/assets/images/creating-and-hosting-your-own-rpm-packages-and-yum-repo/header-800-3cc6ceb1f.jpg 800w" type="image/jpeg">
+  <img src="/blog/generated/assets/images/creating-and-hosting-your-own-rpm-packages-and-yum-repo/header-800-3cc6ceb1f.jpg">
+</picture>
+
+      </div>
+    
+    
+    <div class="archive__item-title no_toc heading" itemprop="headline">
+    
+      
+      
+        <a href="/blog/creating-and-hosting-your-own-rpm-packages-and-yum-repo/" rel="permalink">Creating and hosting your own rpm packages and yum repo
+</a>
+      
+    
+    </div>
+    
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          5 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+This tutorial is a follow up to creating and hosting your own deb and apt repo, but is written for creating rpm packages for redhat-based Linux distributio...</p>
+  </article>
+</div>
+
+  
+    
+
+
+
+
+
+
+
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+      <div class="archive__item-teaser">
+        <picture>
+  <source srcset="/blog/generated/assets/images/15-minute-project/header-600-6a593a8f2.webp 600w, /blog/generated/assets/images/15-minute-project/header-800-6a593a8f2.webp 800w" type="image/webp">
+  <source srcset="/blog/generated/assets/images/15-minute-project/header-600-0f4e5a7b7.jpg 600w, /blog/generated/assets/images/15-minute-project/header-800-0f4e5a7b7.jpg 800w" type="image/jpeg">
+  <img src="/blog/generated/assets/images/15-minute-project/header-800-0f4e5a7b7.jpg">
+</picture>
+
+      </div>
+    
+    
+    <div class="archive__item-title no_toc heading" itemprop="headline">
+    
+      
+      
+        <a href="/blog/15-minute-project/" rel="permalink">The 15-Minute Project
+</a>
+      
+    
+    </div>
+    
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          6 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Applying city planning to software development
+</p>
+  </article>
+</div>
+
+  
+</div>
+
+
+<nav class="pagination">
+  
+  <ul>
+    
+    
+    <li><a href="#" class="disabled"><span aria-hidden="true">Previous</span></a></li>
+    
+
+    
+    
+      <li><a href="#" class="disabled current">1</a></li>
+    
+
+    
+    
+
+    
+    
+    
+
+    
+      
+        
+        
+        
+        <li><a href="/blog/page2/">2</a></li>
+      
+    
+      
+        
+        
+        
+        <li><a href="/blog/page3/">3</a></li>
+      
+    
+      
+        
+        
+        
+        <li><a href="/blog/page4/">4</a></li>
+      
+    
+
+    
+    
+      <li><a href="#" class="disabled">&hellip;</a></li>
+    
+
+    
+      <li><a href="/blog/page5/">5</a></li>
+    
+
+    
+    
+      <li><a href="/blog/page2/">Next</a></li>
+    
+  </ul>
+</nav>
+
+
+
+  </div>
+</div>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="https://twitter.com/earthlytech" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+        
+      
+        
+          <li><a href="https://github.com/earthly/earthly" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/blog/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2021 <a href="https://earthly.dev/">Earthly</a>. </div>
+
+      </footer>
+    </div>
+
+    <script src="/blog/assets/js/vendor/jquery/jquery-3.5.1.js"></script>
+<script src="/blog/assets/js/plugins/jquery.fitvids.js"></script>
+<script src="/blog/assets/js/plugins/smooth-scroll.js"></script>
+<script src="/blog/assets/js/plugins/gumshoe.js"></script>
+<script src="/blog/assets/js/plugins/jquery.magnific-popup.js"></script>
+<script src="/blog/assets/js/main.min.js"></script>
+
+  <script> // minified version of https://earthly.dev/assets/js/analytics.js
+    function setCookie(e,t,r){var i="";if(r){var o=new Date;o.setTime(o.getTime()+24*r*60*60*1e3),i="; expires="+o.toUTCString()}document.cookie=e+"="+(t||"")+i+"; path=/"}function getCookie(e){for(var t=e+"=",r=document.cookie.split(";"),i=0;i<r.length;i++){for(var o=r[i];" "==o.charAt(0);)o=o.substring(1,o.length);if(0==o.indexOf(t))return o.substring(t.length,o.length)}return null}function uuidv4(){return([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g,e=>(e^crypto.getRandomValues(new Uint8Array(1))[0]&15>>e/4).toString(16))}function getAnalyticCookie(){cookieName="earthlyID";var e=getCookie(cookieName);return null==e&&(e=uuidv4()),setCookie(cookieName,e,36500),e}jQuery.ajax({type:"POST",url:"https://api.earthly.dev/analytics",data:JSON.stringify({key:"website",url:window.location.href,referrer:document.referrer,earthlyID:getAnalyticCookie()})});
+</script>
+
+
+
+
+  </body>
+</html>
