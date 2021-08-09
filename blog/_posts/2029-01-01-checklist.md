@@ -1,9 +1,9 @@
 ---
-title: "Put Your Best Title Here"
+title: "JQ Select Explained: Selecting elements from JSON with Examples"
 categories:
   - Tutorials
 toc: true
-author: Aniket Bhattacharyea
+author: Adam
 published: False
 internal-links:
  - just an example
@@ -24,12 +24,44 @@ internal-links:
 - [ ] Run `earthly --build-arg NAME=2020-09-10-better-builds.md +link-opportunity` and find 1-5 places to incorporate links to other articles
 - [ ] Raise PR
 
-## Draft.dev Article Checklist
 
-- [ ] Add in Author page
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-- [ ] Run mark down linter (`earthly +blog-lint-apply`)
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `earthly +link-opportunity` and find 1-5 places to incorporate links
+- Keyword: jq select
+- Long tail keywords:
+    - jq select multiple fields
+    - jq select examples
+    - jq select key value
+    - jq remove quotes
+    - jq filter by value
+    - jq count
+    - jq sort
+    - jq json to csv
+    - jq map
+    - jq array
+    - harder ones
+        - what is jq
+        - jq filter
+        - 
+
+# Outline
+# Intro
+Some shortcuts and command line tools I use so much that using them is just in my fingers. I don't have to remember how to use them, my fingers just know how. 
+
+I hit save in VS Code all the time, despite the fact that VS Code autosaves. It's like a nervous tick that is in my fingers. If I pause my typing my fingers hit Command-S. The shortcut for saving files is in my fingers. 
+
+`git commit / git add` is simarly in my fingers. I have an alias for commiting and I often due it almost automatically when I reach a stopping point. Rebasing changes into my code is different. It's in my head not my fingers. I have to think about each time maybe search my history for it.
+
+However, some things I have to head to google every time I use them. They've never stuck in my brain nor my fingers. JQ is one of these. It's time to fix that. Let's go over selecting elements out of a JSON string using JQ in enough depth that it should stick in both my and your head.
+
+# What is JQ
+
+
+# Using It To Select Elements
+# Using it to Select Multiple Fields
+# Using the select function
+# Selecting keys by values
+# Selecting and counting
+# Selecting and mapping
+# Selecting and sorting
+# Removing Quotes
+# Selecting and Transforming with Map  
+# 
