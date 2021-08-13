@@ -116,3 +116,4 @@ parsable
 preprocessor
 recompiles
 makefiles
+boolean
