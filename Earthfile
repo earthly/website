@@ -205,9 +205,9 @@ new-post:
 # this looks for places you can manually add links to your page using internal-links in the post frontmatter
 link-opportunity:
   FROM agbell/website-base:latest
-  COPY blog blog 
-  ARG NAME="2020-09-10-better-builds.md"
+  COPY blog blog
   RUN pip3 install python-frontmatter
+  ARG NAME="2020-09-10-better-builds.md"
   RUN python3 ./blog/_util/suggest-links.py ./blog/_posts/$NAME
 
 test1:
