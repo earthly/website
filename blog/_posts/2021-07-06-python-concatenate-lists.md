@@ -1,5 +1,6 @@
 ---
 title: "Python Concatenate Lists"
+description: "There are several ways to join lists in Python. In almost all situations using list1 + list2 is the way you want to concatenate lists." 
 categories:
   - Tutorials
 toc: true

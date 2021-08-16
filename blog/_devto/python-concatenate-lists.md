@@ -1,7 +1,7 @@
 ---
 title: Python Concatenate Lists
 published: false
-description: 
+description: "There are several ways to join lists in Python. In almost all simple using list1 + list2 is the way you want to concatenate lists." 
 tags: python, testing, beginners
 cover_image: https://earthly.dev/blog/generated/assets/images/python-matplotlib-docker/header-1200-95e33d9c8.webp
 canonical_url: https://earthly.dev/blog/python-concatenate-lists/
