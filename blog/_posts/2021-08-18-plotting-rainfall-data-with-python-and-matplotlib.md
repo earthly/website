@@ -1,5 +1,5 @@
 ---
-title: "Plotting Precipitation with Python and Matplotlib"
+title: "Plotting Precipitation with Python, Pandas and Matplotlib"
 categories:
   - Tutorials
 internal-links:
@@ -176,7 +176,7 @@ A pandas series can be converted into a [python list](/blog/python-concatenate-l
 
 ### Plotting the Data Interactively
 
-Here's a quick example or plotting this data interactively:
+Here's a quick example of plotting this data interactively:
 
 ```python
 import matplotlib.pyplot as plt
@@ -569,5 +569,7 @@ On the other hand, my tomatoes have been loving the heat.
 
 If you would like to try generating the above graphs, all the code (and data) can be found under
 [github.com/earthly/example-plotting-precipitation](https://github.com/earthly/example-plotting-precipitation).
+
+{% include cta/cta1.html %}
 
 [^1]: https://www.nssl.noaa.gov/education/svrwx101/winter/faq/
