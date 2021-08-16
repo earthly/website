@@ -13,6 +13,8 @@ layout: default
   {% include page__hero.html %}
 {% elsif page.header.video.id and page.header.video.provider %}
   {% include page__hero_video.html %}
+{% else %}
+  {{ "no header found under " | append: header | raise_error }}
 {% endif %}
 
 {% if page.url != "/" and site.breadcrumbs %}
