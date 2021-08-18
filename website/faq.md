@@ -78,6 +78,10 @@ At a higher level, though, Earthly is focused on providing an easy to write lang
 
 Overall, by letting you use your existing tool chain, Earthly has an easier adoption curve and is easier to use in non-mono repo settings. This does mean that its possible to do non-repeatable actions in Earthly, but practically at organization scales smaller than Google, we have not found this to be a problem and the ease of adoption out-weighs these concerns. 
 
+<h2 id="bsl">How is Earthly Licensed?<span class="hide"><a href="#bsl">¶</a></span></h2>
+
+Earthly uses a source available [BSL license](https://github.com/earthly/earthly/blob/main/LICENSE). You can read about the change on [our blog](https://earthly.dev/blog/every-open-core-company-should-be-a-source-available-company/), read [our licensing FAQ](/bslfaq), or email us for licensing questions. 
+
 <!-- vale HouseStyle.H2 = YES -->
 <div class="color2">
   <div class="wrapper">
