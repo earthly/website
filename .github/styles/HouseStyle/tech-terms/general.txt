@@ -117,3 +117,4 @@ preprocessor
 recompiles
 makefiles
 boolean
+unicode

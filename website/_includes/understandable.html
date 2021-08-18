@@ -35,8 +35,8 @@
 <span class="earthfile-term">WORKDIR</span> /go-example                                    
 
 <span class="earthfile-target">all:</span>
+    <span class="earthfile-term">BUILD</span> +build
     <span class="earthfile-term">BUILD</span> +lint
-    <span class="earthfile-term">BUILD</span> +docker
 
 <span class="earthfile-target">build:</span>
     <span class="earthfile-term">COPY</span> main.go .
@@ -49,7 +49,7 @@
     <span class="earthfile-term">RUN</span> golint -set_exit_status ./...</code>
                         </div>
                     </p>
-                    <p style="text-align:center">A simple GO <a href="https://docs.earthly.dev/examples">example</a></p>
+                    <p style="text-align:center">A simple GO <a href="https://docs.earthly.dev/docs/examples">example</a></p>
                 </div>
             </div>
         </div>
