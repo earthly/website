@@ -220,7 +220,7 @@ echo "it is worth noting that both for CI and CD, the operating principles and c
 <stdin>:1:96: after_the_deadline.redundancy Redundancy. Use 'as' instead of 'equally as'.
 ```
 
-This one is awesome considering the context of the [original article](/blog/thought-leaders/):
+This one is awesome considering the context of the [original article](https://earthly.dev/blog/thought-leaders/):
 
 ```
 echo "thought leaders" | proselint
