@@ -80,7 +80,7 @@ Overall, by letting you use your existing tool chain, Earthly has an easier adop
 
 <h2 id="bsl">How is Earthly Licensed?<span class="hide"><a href="#bsl">¶</a></span></h2>
 
-Earthly uses a source available [BSL license](https://github.com/earthly/earthly/blob/main/LICENSE). You can read about the change on [our blog](https://earthly.dev/blog/every-open-core-company-should-be-a-source-available-company/), read [our licensing FAQ](/bslfaq), or email us for licensing questions. 
+Earthly uses a source available [BSL license](https://github.com/earthly/earthly/blob/main/LICENSE) that turns into a fully open-source license after a time delay. You can read about the change on [our blog](https://earthly.dev/blog/every-open-core-company-should-be-a-source-available-company/), read [our licensing FAQ](/bslfaq), or [email us](mailto:support@earthly.dev) for licensing questions. 
 
 <!-- vale HouseStyle.H2 = YES -->
 <div class="color2">
