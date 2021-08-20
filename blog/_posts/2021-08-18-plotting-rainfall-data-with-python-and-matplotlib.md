@@ -94,7 +94,7 @@ print(weather)
 This will produce output such as:
 
 ```
-     Longitude (x)  Latitude (y)     Station Name  Climate ID   Date/Time  Year  Month  Day  ...  Total Precip (mm)  Total Precip Flag Snow on Grnd (cm)  Snow on Grnd Flag Dir of Max Gust (10s deg)  Dir of Max Gust Flag Spd of Max Gust (km/h)  Spd of Max Gust Flag
+     Longitude (x)  Latitude (y)     Station Name  Climate ID   Date/Time  Year  Month  Day  ... Total Precip (mm)  Total Precip Flag Snow on Grnd (cm)  Snow on Grnd Flag Dir of Max Gust (10s deg)  Dir of Max Gust Flag Spd of Max Gust (km/h)  Spd of Max Gust Flag
 0          -123.43         48.65  VICTORIA INTL A     1018621  2020-01-01  2020      1    1  ...                0.0                  T               NaN                NaN                      26.0                   NaN                   59.0                   NaN
 1          -123.43         48.65  VICTORIA INTL A     1018621  2020-01-02  2020      1    2  ...               14.6                NaN               NaN                NaN                      14.0                   NaN                   45.0                   NaN
 2          -123.43         48.65  VICTORIA INTL A     1018621  2020-01-03  2020      1    3  ...               11.2                NaN               NaN                NaN                      15.0                   NaN                   39.0                   NaN
@@ -144,7 +144,7 @@ our program from crashing if any other files existed in the directory, 2) parses
 the data using the `concat` function. This code should output a single data frame containing all the data spanning a decade:
 
 ```
-     Longitude (x)  Latitude (y)     Station Name  Climate ID   Date/Time  Year  Month  Day  Data Quality  ...  Total Snow Flag Total Precip (mm)  Total Precip Flag Snow on Grnd (cm)  Snow on Grnd Flag Dir of Max Gust (10s deg)  Dir of Max Gust Flag Spd of Max Gust (km/h)  Spd of Max Gust Flag
+     Longitude (x)  Latitude (y)     Station Name  Climate ID   Date/Time  Year  Month  Day  Data Quality  ... Total Snow Flag Total Precip (mm)  Total Precip Flag Snow on Grnd (cm)  Snow on Grnd Flag Dir of Max Gust (10s deg)  Dir of Max Gust Flag Spd of Max Gust (km/h)  Spd of Max Gust Flag
 0          -123.43         48.65  VICTORIA INTL A     1018621  2014-01-01  2014      1    1           NaN  ...              NaN               1.6                NaN               NaN                NaN                       NaN                   NaN                    <31                   NaN
 1          -123.43         48.65  VICTORIA INTL A     1018621  2014-01-02  2014      1    2           NaN  ...              NaN               6.6                NaN               NaN                NaN                      21.0                   NaN                     37                   NaN
 2          -123.43         48.65  VICTORIA INTL A     1018621  2014-01-03  2014      1    3           NaN  ...              NaN               0.0                NaN               NaN                NaN                      31.0                   NaN                     41                   NaN
