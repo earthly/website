@@ -68,9 +68,9 @@ Makefile
 all: count.txt 
 
 count.txt: data.txt
- wc -c data.txt > count.txt # Count characters
- wc -w data.txt >> count.txt # Count words
- wc -l data.txt >> count.txt # Count lines
+    wc -c data.txt > count.txt # Count characters
+    wc -w data.txt >> count.txt # Count words
+    wc -l data.txt >> count.txt # Count lines
 ```
 
 This Makefile has two targets. The first target is `all`, which acts like an overall build target. It is not necessary to have such a target, especially when our build has only one step, but it is a recommended practice.
@@ -141,12 +141,12 @@ SOURCE = data.txt
 all: $(TARGET) 
 
 $(TARGET): $(SOURCE)
- wc -c $(SOURCE) >  $(TARGET) # Count characters
- wc -w $(SOURCE) >> $(TARGET) # Count words
- wc -l $(SOURCE) >> $(TARGET) # Count lines
+    wc -c $(SOURCE) >  $(TARGET) # Count characters
+    wc -w $(SOURCE) >> $(TARGET) # Count words
+    wc -l $(SOURCE) >> $(TARGET) # Count lines
 
 clean:
- rm $(TARGET)
+   rm $(TARGET)
 ```
 
 Here instead of hard-coding the target and source file names, we have used two variables, with default values of `count.txt` and `data.txt`. If you run the `make` command, it should work just like before. However, if you want to change the name of the target to, for example, `newcount.txt`, you can do so without changing the Makefile:
@@ -183,12 +183,12 @@ SOURCE = data.txt
 all: $(TARGET) 
 
 $(TARGET): $(SOURCE)
- wc -c $< >  $@ # $< matches the source file name, $@ matches the target file name 
- wc -w $< >> $@
- wc -l $< >> $@
+   wc -c $< >  $@ # $< matches the source file name, $@ matches the target file name 
+   wc -w $< >> $@
+   wc -l $< >> $@
 
 clean:
- rm $(TARGET)
+   rm $(TARGET)
 ```
 
 ### Virtual Paths
