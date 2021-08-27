@@ -4,6 +4,8 @@ categories:
   - Tutorials
 toc: true
 author: Aniket Bhattacharyea
+sidebar:
+  nav: "makefile"
 internal-links:
  - python make
  - make python

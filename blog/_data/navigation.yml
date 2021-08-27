@@ -29,3 +29,24 @@ docker:
         url: /what-is-buildkit-and-what-can-i-do-with-it/
       - title: "Compiling Containers"
         url: /compiling-containers-dockerfiles-llvm-and-buildkit/
+makefile:
+  - title: Tutorials
+    children:
+      - title: Overview Tutorial
+        url: /make-tutorial/
+      - title: "Creating a C++ / G++ Makefile"
+        url: /g++-makefile/
+      - title: "Creating a Python Makefile"
+        url: /python-makefile/
+      - title: "Creating a Golang Makefile"
+        url: /golang-makefile/
+      - title: "Makefiles and VS Code"
+        url: /vscode-make/
+  - title: Makefile Guides
+    children:
+      - title: "Using Autotools"
+        url: /autoconf/
+      - title: "Understanding Makefile Flags"
+        url: /make-flags
+      - title: "Taming Large Makefiles"
+        url: /repeatable-builds-every-time/#tips-for-taming-makefiles-in-large-teams

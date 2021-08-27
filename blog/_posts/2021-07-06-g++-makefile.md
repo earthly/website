@@ -4,7 +4,8 @@ categories:
   - Tutorials
 toc: true
 author: Aniket Bhattacharyea
-
+sidebar:
+  nav: "makefile"
 internal-links:
  - makefile
  - make
