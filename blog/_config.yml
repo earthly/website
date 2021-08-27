@@ -214,3 +214,6 @@ defaults:
       layout: "author"
       header:
         overlay_image: /assets/images/default-header.jpg
+
+picture:
+  fast_build: true
