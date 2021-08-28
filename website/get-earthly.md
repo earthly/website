@@ -102,9 +102,16 @@ ide:
             Visit [earthly.vim on GitHub](https://github.com/earthly/earthly.vim) for details.
 
     tab3:
+        name: emacs
+        title: Emacs
+        source: source3
+        content: |
+            Visit [earthly-mode on GitHub](https://github.com/earthly/earthly-mode) for details.
+
+    tab4:
         name: st
         title: Sublime Text
-        source: source3
+        source: source4
         content: |
             Add the [Earthly Earthfile package](https://packagecontrol.io/packages/Earthly%20Earthfile) via Package Control:
 
