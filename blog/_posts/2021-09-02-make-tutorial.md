@@ -22,8 +22,7 @@ When you run `make`, it looks for a file named `Makefile`, or `makefile` in the 
 
 You can name your Makefile anything, but then you have to explicitly tell `make` which file to read:
 
-```
-shell
+``` shell
 make -f some_other_makefile
 ```
 
@@ -31,8 +30,7 @@ The Makefile should consist of one or more rules. Each rule describes a goal or 
 
 The format for each rule is as follows:
 
-```
-Makefile
+``` Makefile
 target1 [target2 ...]: [pre-req1 pre-req2 pre-req3 ...]
     [recipes
     ...]
@@ -46,8 +44,7 @@ Here's an example. Create a file named `data.txt` with the text `hello world.` Y
 
 First, let's do it manually.
 
-```
-shell
+``` shell
 wc -c data.txt > count.txt # Count characters
 wc -w data.txt >> count.txt # Count words
 wc -l data.txt >> count.txt # Count lines
@@ -63,8 +60,7 @@ This should create a file named `count.txt` with the following content:
 
 Let's write the Makefile to automate this:
 
-```
-Makefile
+``` Makefile
 all: count.txt 
 
 count.txt: data.txt
@@ -95,8 +91,7 @@ You can also run a target directly by passing its name to the `make` command. Ru
 
 Let's add a rule to clean the project files. It is a recommended practice to have a `clean` rule to delete any generated files, effectively returning the project to the initial state. Add the following rule to your Makefile:
 
-```
-Makefile
+``` Makefile
 clean:
     rm count.txt
 ```
@@ -111,8 +106,7 @@ Here are some important components that can help you write more concise and simp
 
 You can have comments in Makefile that start with a `#` and last till the end of the line.
 
-```
-Makefile
+``` Makefile
 all: count.txt # This is a comment
 ...
 ```
@@ -123,8 +117,7 @@ Just like regular programming languages, `make` supports using variables to avoi
 
 A variable in Makefile starts with a $ and is enclosed in parentheses () or braces {}, unless it's a single character variable. To set a variable, write a line starting with a variable name followed by `=`, `:=` or `::=`, followed by the value of the variable:
 
-```
-Makefile
+``` Makefile
 TARGET = count.txt
 SOURCE = data.txt
 ```
@@ -133,8 +126,7 @@ The variables defined with `=` are called "recursively expanded variables," and 
 
 You can reference these values in any of the targets, prerequisites, or recipes:
 
-```
-Makefile
+``` Makefile
 TARGET = count.txt
 SOURCE = data.txt
 
@@ -151,8 +143,7 @@ clean:
 
 Here instead of hard-coding the target and source file names, we have used two variables, with default values of `count.txt` and `data.txt`. If you run the `make` command, it should work just like before. However, if you want to change the name of the target to, for example, `newcount.txt`, you can do so without changing the Makefile:
 
-```
-shell
+``` shell
 make TARGET=newcount.txt
 ```
 
@@ -175,8 +166,7 @@ There are other automatic variables. For a full list, see [the manual](https://w
 
 Using the automatic variables, we can simplify our Makefile a bit more:
 
-```
-Makefile
+``` Makefile
 TARGET = count.txt
 SOURCE = data.txt
 
@@ -197,8 +187,7 @@ Often you have files organized into directories. It is not always possible to wr
 
 For example:
 
-```
-Makefile
+``` Makefile
 VPATH = src include
 
 foo.o: foo.cpp
@@ -208,8 +197,7 @@ Here `make` will search for `foo.o` and `foo.cpp` first in the current directory
 
 However, there is a slight issue. Usually the `cpp` files are stored under `src`, while the header files are stored under `include`. But in our previous example, `make` searches for `foo.cpp` in both of those directories. You can tell `make` that `cpp` files should be searched in `src` and headers should be searched in `include`. For that, `vpath` (note: lowercase) is used:
 
-```
-Makefile
+``` Makefile
 vpath %.cpp src
 vpath %.h include
 ```
@@ -222,8 +210,7 @@ A pattern rule contains the character `%` exactly once. The `%` matches any char
 
 When used in a prerequisite, the `%` stands for the same stem that was matched by the `%` in the target. For example:
 
-```
-Makefile
+``` Makefile
 %.o: %.cpp
     ...
 ```
@@ -236,8 +223,7 @@ In our Makefile, there are two "special" targets—`all` and `clean`. Since they
 
 But if you create a file called `all` or `clean` in the directory, `make` will get confused. Since the `all` or `clean` file is there, and the targets have no prerequisites, they will be considered newer than their prerequisites. Therefore, the recipes will never be run. To fix this, you can declare the targets to be "phony":  
 
-```
-Makefile
+``` Makefile
 .PHONY: all clean
 
 ...

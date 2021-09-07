@@ -14,8 +14,7 @@ internal-links:
 
 Usually, the build process involves invoking various command-line tools, like the compiler or preprocessor. Often you need to pass options to these tools as per your requirements. However, hard-coding these options in your `makefile` can lead to difficulties. As an example, consider the following `makefile` snippet:
 
-```
-Makefile
+``` Makefile
 main.o: main.c
     gcc -Wall -c main.c
 ```
@@ -30,8 +29,7 @@ There are a few benefits to using flags over hard-coded options.
 
 First, just like any other `makefile` variable, these flags can be overridden when invoking `make` from the command line. This feature offers a way to use any flag the user desires, as well as provides a default. For example, consider the following `makefile`:
 
-```
-Makefile
+``` Makefile
 CFLAGS = -g
 
 all: main.o
@@ -40,8 +38,7 @@ all: main.o
 
 When you run `make`, it executes `gcc -o main -g main.o`. The value of `$(CFLAGS)` is substituted when the command is executed. However, you can change the value of `$(CFLAGS)` by providing the new value when invoking `make`:
 
-```
-shell
+``` shell
 make CFLAGS="-Wall"
 ```
 
@@ -49,8 +46,7 @@ This time, the command that will be executed is `gcc -o main -Wall main.o`. The 
 
 Since any `make` variable can be overridden by providing its value in the command line, you may wonder why the manual recommends using special names for the variables. The reason is that by using the flags you can make use of the implicit rules provided by `make`. The [implicit rules](https://www.gnu.org/software/make/manual/html_node/Catalogue-of-Rules.html#Catalogue-of-Rules) are a list of built-in rules that utilize the flags. For example, consider the following `makefile`:
 
-```
-Makefile
+``` Makefile
 CC = gcc
 CFLAGS = -g # Flag to pass to gcc
 CPPFLAGS = -I. # Flag to pass to the C preprocessor
@@ -66,8 +62,7 @@ Another reason is that these flags are standardized and have been used for a lon
 
 You can use `make` flags just like any other `make` variable. Define the flags with default values using the `=` operator, and use the flags using the `$(...)` syntax:
 
-```
-Makefile
+``` Makefile
 CC = gcc # It is a recommended practice to define the C compiler with CC
 CFLAGS = -Wall # Defines -Wall as default flag
 
@@ -77,15 +72,13 @@ main.o: main.c
 
 You can also override the flags when invoking main, as explained earlier:
 
-```
-shell
+``` shell
 make CFLAGS="-g -Wall"
 ```
 
 Since `make` already defines these flags with default values (an empty string for most of them), you don't have to define them in the `makefile` explicitly if you don't want to have a default value, and you can use them directly from the command line. For example, the following `makefile` is valid, and `CFLAGS` is set to the empty string, which means no options are passed to the compiler.
 
-```
-Makefile
+``` Makefile
 CC = gcc # It is a recommended practice to define the C compiler with CC
 
 main.o: main.c
@@ -94,8 +87,7 @@ main.o: main.c
 
 You can still define `CFLAGS` from the command line:
 
-```
-shell
+``` shell
 make CFLAGS="-Wall"
 ```
 
@@ -107,8 +99,7 @@ Here are a few commonly used flags. For a full list of flags, check the [manual]
 
 This flag should contain the options to give to the C compiler. These options can include debug options, optimization level, warning levels, and any extra flags that you want to use.
 
-```
-Makefile
+``` Makefile
 CC = gcc
 
 CFLAGS = -g -Wall # Passes -g and -Wall to gcc
@@ -119,8 +110,7 @@ main.o: main.c
 
 If you have options that are required for proper compilation, the [manual suggests](https://www.gnu.org/software/make/manual/html_node/Command-Variables.html#Command-Variables) putting the optional ones in `CFLAGS` and adding the required options to `CFLAGS` separately. This way the user can override `CFLAGS` via the command line, but the required options will not be overridden.
 
-```
-Makefile
+``` Makefile
 CFLAGS = -g # Optional. Not required for proper compilation
 ALL_CFLAGS = -I. $(CFLAGS) # -I. is required for proper compilation
 main.o: main.c
@@ -131,8 +121,7 @@ main.o: main.c
 
 This flag is similar to `CFLAGS`, except that you should use `CXXFLAGS` when invoking a [C++ compiler](/blog/g++-makefile).
 
-```
-Makefile
+``` Makefile
 CXX = g++
 
 CXXFLAGS = -g -Wall # Passes -g and -Wall to g++
@@ -145,8 +134,7 @@ main.o: main.cpp
 
 `CPPFLAGS` is used to pass extra flags to the C preprocessor. These flags are also used by any programs that use the C preprocessor, including the C, C++, and Fortran compilers. You do not need to explicitly call the C preprocessor. Pass `CPPFLAGS` to the compiler, and these will be used when the compiler invokes the preprocessor. The most common use case of `CPPFLAGS` is to include directories to the compiler search path using the `-I` option.
 
-```
-Makefile
+``` Makefile
 CC = gcc
 CFLAGS = -g -Wall
 CPPFLAGS = - I /usr/foo/bar # Search for header files in /usr/foo/bar
@@ -159,8 +147,7 @@ main.o: main.c
 
 You can use `LDFLAGS` to pass extra flags to the linker `lD`. Similar to `CPPFLAGS`, these flags are automatically passed to the linker when the compiler invokes it. The most common use is to specify directories where the libraries can be found, using the `-L` option. You should not include the names of the libraries in `LDFLAGS`; instead they go into `LDLIBS`.
 
-```
-Makefile
+``` Makefile
 LDFLAGS = -L. \ # Search for libraries in the current directory
           -L/usr/foo # Search for libraries in /usr/foo
 
@@ -172,8 +159,7 @@ main.o: main.c
 
 The `LDLIBS` flag should contain the space-separated list of libraries that are used by your programs. For this flag, the `-l` option followed by the name of the library is used. For example, if your software uses `libm`, the math library, then you need to include the `-lm` option.
 
-```
-Makefile
+``` Makefile
 LDFLAGS = -L. \ # Search for libraries in the current directory
           -L/usr/foo # Search for libraries in /usr/foo
 
@@ -189,8 +175,7 @@ Keep in mind that `LDLIBS` should be included *after* you have listed all your s
 
 This flag is used if you are working with `lex`, a tool used to generate lexical analyzers. `Lex` takes a list of token definitions in a `.l` file and generates a C program that can take an input and tokenize it accordingly. You can find a basic introduction to `lex` [on IBM's documentation site](https://www.ibm.com/docs/en/zos/2.4.0?topic=tools-generating-lexical-analyzer-using-lex#genlex).
 
-```
-Makefile
+``` Makefile
 LEX = flex # Use flex as the lex program
 LFLAGS = -d # enable debug
 
@@ -202,8 +187,7 @@ lexer.c: lexer.l
 
 This flag is used to pass options to `yacc`. This is a tool that is often used in conjunction with `lex`. `Yacc` is a parser generator; it converts a grammar definition in a `.y` file into a C program, which can parse the tokenized output of `lex` into a parse tree. [IBM](https://www.ibm.com/docs/en/zos/2.4.0?topic=tools-generating-parser-using-yacc#genyac) has a tutorial if you'd like to find out more about `yacc`.
 
-```
-Makefile
+``` Makefile
 YACC = bison # Use bison as the yacc program
 YFLAGS = -v \ # Verbose mode
         -g # Generate graph
@@ -218,8 +202,7 @@ This is an interesting flag that is used in recursive invocation of `make`. If y
 
 To test this, create a directory called `subdir` and create a `makefile` in this `subdir` with the following content:
 
-```
-Makefile
+``` Makefile
 all:
  echo $(MAKEFLAGS)
 ```
@@ -228,8 +211,7 @@ This will print out the value of the `MAKEFLAGS` variable.
 
 Then in your top-level `makefile`, write the following:
 
-```
-Makefile
+``` Makefile
 subsystem:
  cd subdir && $(MAKE)
 ```
@@ -238,8 +220,7 @@ This `makefile` recursively calls `make` in the `subdir` subdirectory.
 
 Now you can run `make` from your project root with options:
 
-```
-shell
+``` shell
 $  make -sk CFLAGS="-g"
 ks -- CFLAGS=-g
 ```
