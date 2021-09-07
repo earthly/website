@@ -1,7 +1,7 @@
 presets:
   default:
     link_source: false
-    fallback_width: 800
+    # fallback_width: 800
     fallback_format: original
     noscript: false
     quality: 100

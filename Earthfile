@@ -94,6 +94,11 @@ blog-lint:
     RUN echo "Fail: external image link" && false
   END
   RUN markdownlint "./blog/_posts/*.md"
+  RUN cd blog && bundle exec jekyll build --future 2> ../error.txt
+  IF [ -s error.txt ]
+    RUN cat error.txt
+    RUN echo “Errors in Build” && False
+  END
 
 blog-lint-apply:
   LOCALLY
@@ -107,6 +112,11 @@ blog-lint-apply:
     RUN echo "Fail: external image link" && false
   END
   RUN cd blog && markdownlint --fix "./_posts/*.md"
+  RUN cd blog && bundle exec jekyll build --future 2> ../error.txt
+  IF [ -s error.txt ]
+    RUN cat error.txt
+    RUN echo “Errors in Build” && False
+  END
 
 
 blog-writing-suggestions:
@@ -121,7 +131,7 @@ blog-build:
   #FROM +blog-install
   FROM agbell/blog-install
   COPY blog .
-  RUN JEKYLL_ENV=production bundle exec jekyll build $FLAGS
+  RUN JEKYLL_ENV=production bundle exec jekyll build $FLAGS 
   SAVE ARTIFACT _site AS LOCAL build/site/blog
 
 blog-docker:
@@ -209,23 +219,3 @@ link-opportunity:
   RUN pip3 install python-frontmatter
   ARG NAME="2020-09-10-better-builds.md"
   RUN python3 ./blog/_util/suggest-links.py ./blog/_posts/$NAME
-
-test1:
-  FROM alpine
-  ARG S="$(date +%s)"
-  RUN echo "s=$S"
-  BUILD --build-arg S="$S" +test2
-
-test2:
-  FROM alpine
-  ARG S
-  RUN echo "s=$S"
-
-test3:
-  FROM alpine
-  ARG S
-  RUN echo "s=$S"
-
-test4:
- FROM +test1
- RUN echo "s=$S"
