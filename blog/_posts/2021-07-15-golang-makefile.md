@@ -4,6 +4,8 @@ categories:
   - Tutorials
 toc: true
 author: Milap Neupane
+sidebar:
+  nav: "makefile"
 internal-links:
  - makefile 
  - go makefile

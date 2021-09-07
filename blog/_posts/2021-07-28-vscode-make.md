@@ -5,6 +5,8 @@ categories:
 author: Nicolas Bohorquez
 internal-links:
  - vscode
+sidebar:
+  nav: "makefile"
 ---
 Microsoft announced [recently](https://devblogs.microsoft.com/cppblog/now-announcing-makefile-support-in-visual-studio-code/) a new Visual Studio Code extension to handle Makefiles. This extension provides a set of commands to the editor that will facilitate working with projects that rely on a Makefile to speed up the build.
 
