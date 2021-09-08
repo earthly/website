@@ -118,3 +118,9 @@ recompiles
 makefiles
 boolean
 unicode
+
+#fastlane build stuff
+fastlane
+Fastfile
+Appfile
+Matchfile

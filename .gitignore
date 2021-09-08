@@ -1,3 +1,4 @@
 .netlify
 /website-output
 /build
+error.txt
