@@ -106,14 +106,14 @@ ide:
         title: Emacs
         source: source3
         content: |
-            If you're using `use-package`, you can do:
+            If you are using `use-package`:
 
             ```elisp
             (use-package earthfile-mode
               :ensure t)
             ```
             
-            Or via package-install, run this command:
+            Alternatively, install via `package-install`:
 
             ```
             M-x package-install RET earthfile-mode RET
