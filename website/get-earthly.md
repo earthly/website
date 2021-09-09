@@ -102,9 +102,27 @@ ide:
             Visit [earthly.vim on GitHub](https://github.com/earthly/earthly.vim) for details.
 
     tab3:
+        name: emacs
+        title: Emacs
+        source: source3
+        content: |
+            If you are using `use-package`:
+
+            ```elisp
+            (use-package earthfile-mode
+              :ensure t)
+            ```
+            
+            Alternatively, install via `package-install`:
+
+            ```
+            M-x package-install RET earthfile-mode RET
+            ```
+
+    tab4:
         name: st
         title: Sublime Text
-        source: source3
+        source: source4
         content: |
             Add the [Earthly Earthfile package](https://packagecontrol.io/packages/Earthly%20Earthfile) via Package Control:
 
