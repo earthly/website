@@ -106,7 +106,18 @@ ide:
         title: Emacs
         source: source3
         content: |
-            Visit [earthly-mode on GitHub](https://github.com/earthly/earthly-mode) for details.
+            If you're using `use-package`, you can do:
+
+            ```elisp
+            (use-package earthfile-mode
+              :ensure t)
+            ```
+            
+            Or via package-install, run this command:
+
+            ```
+            M-x package-install RET earthfile-mode RET
+            ```
 
     tab4:
         name: st
