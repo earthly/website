@@ -14,7 +14,7 @@ Last year we saw lots of great contributions from the community and sent out a b
 
 ## What Is It?
 
-The hosting provider DigitalOcean is once again hosting the [Hacktoberfest](https://hacktoberfest.digitalocean.com/) to celebrate open source. Hacktoberfest invites you to submit pull requests to open source projects. People who submit four or more pull requests, get a free t-shirt from DigitalOcean.
+The hosting provider DigitalOcean is once again organizing the [Hacktoberfest](https://hacktoberfest.digitalocean.com/) to celebrate open source. Hacktoberfest invites you to submit pull requests to open-source projects. People who submit four or more pull requests, get a free t-shirt from DigitalOcean.
 
 ## Sticker Rewards
 
