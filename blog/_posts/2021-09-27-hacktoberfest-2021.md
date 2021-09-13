@@ -22,7 +22,7 @@ In addition to this official event, Earthly would also like to kick in some rewa
 
 Earthly is a free and open build tool. &nbsp;It lets you build everything using containers.
 
-The first 40 participants who submit at least one pull request that is accepted [Earthly's GitHub Repository](https://github.com/earthly/earthly) between October 1, 2021 and November 1, 2021, will get an earthly sticker. &nbsp;We have labeled many issues '[Hacktoberfest](https://github.com/earthly/earthly/issues?q=is%3Aissue+is%3Aopen+label%3Ahacktoberfest)' to get you started.
+The first 40 participants who submit at least one pull request that is accepted [Earthly's GitHub Repository](https://github.com/earthly/earthly) between October 1, 2021 and November 1, 2021, will get an earthly sticker. &nbsp;We have labeled many issues [`hacktoberfest`](https://github.com/earthly/earthly/issues?q=is%3Aissue+is%3Aopen+label%3Ahacktoberfest) to get you started.
 
 You can also qualify for the sticker by adding a working Earthfile file to another open-source project, including your own personal project.
 
