@@ -10,9 +10,9 @@ internal-links:
 
 I was surprised to learn that Google protocol buffers (protobufs), were first introduced nearly two decades ago. They were used internally at google as early as 2001 and were open sourced 2008.
 
-Following this success, in 2016 Google released gRPC. &nbsp; gRPC offered a way to define remote procedure calls using protobufs for serialization. Due to protobuf's binary serialization format, it offered a significant speed up compared to using JSON over HTTP. The use of proto files for a precise definition of a service's API. This was a big innovation. &nbsp;
+Following this success, in 2016 Google released gRPC. gRPC offered a way to define remote procedure calls using protobufs for serialization. Due to protobuf's binary serialization format, it offered a significant speed up compared to using JSON over HTTP. The use of proto files for a precise definition of a service's API. This was a big innovation.
 
-gRPC is a great solution for communicating between internal microservices. There's [plenty](https://phenopackets-schema.readthedocs.io/en/latest/protobuf.html) [of](https://www.ionos.ca/digitalguide/websites/web-development/protocol-buffers-explained/) [articles](https://www.baeldung.com/google-protocol-buffer) and documentation that covers [protobufs](https://developers.google.com/protocol-buffers) and [gRPC](https://grpc.io/), but when I am considering a new technology, I learn best by seeing a working example. &nbsp;In this blog post I'm going build an example using Go, Python and Ruby.
+gRPC is a great solution for communicating between internal microservices. There's [plenty](https://phenopackets-schema.readthedocs.io/en/latest/protobuf.html) [of](https://www.ionos.ca/digitalguide/websites/web-development/protocol-buffers-explained/) [articles](https://www.baeldung.com/google-protocol-buffer) and documentation that covers [protobufs](https://developers.google.com/protocol-buffers) and [gRPC](https://grpc.io/), but when I am considering a new technology, I learn best by seeing a working example. In this blog post I'm going build an example using Go, Python and Ruby.
 
 ## First Step: Implementing a gRPC Client using Go
 
@@ -27,7 +27,7 @@ First let's design our API in a proto file:
 ``` protobuf
     syntax = "proto3";
     package simplekeyvalue;
-    option go_package = "kvapi";
+    option go_package = "/kvapi";
     
     // The key/value API contains two procedures for storing and retrieving data
     service KeyValue {
@@ -81,11 +81,11 @@ Here's what an Earthfile would look like for installing Google protobufs inside 
       RUN mkdir /defs/go-api
       RUN protoc --proto_path=/defs --go_out=/defs/go-api \
           --go-grpc_out=/defs/go-api /defs/api.proto
-      SAVE ARTIFACT ./go-api /go-pb AS LOCAL go-pb
+      SAVE ARTIFACT ./go-api/kvapi AS LOCAL kvapi
 
 ```
 
-This will then produce two go files under the go-pb directory: api.pb.go and api\_grpc.pb.go which contains the auto generated protobuf and grpc code respectively.
+This will then produce two go files under the `kvapi` directory: `api.pb.go` and `api\_grpc.pb.go` which contains the auto generated protobuf and grpc code respectively.
 
 At this point, assuming that earth is already [installed](https://docs.earthly.dev/installation), give it a try for yourself with code from our [example repository](https://github.com/earthly/example-grpc-key-value-store):
 
@@ -106,7 +106,7 @@ The next step is to write the server code that will implement the set and get me
      "log"
      "net"
     
-     pb "github.com/earthly/example-grpc-key-value-store/go-server/kvapi"
+     "github.com/earthly/example-grpc-key-value-store/go-server/kvapi"
     
      "google.golang.org/grpc"
     )
@@ -119,24 +119,24 @@ The next step is to write the server code that will implement the set and get me
     
     // server is used to implement kvapi.KeyValueServer
     type server struct {
-     pb.UnimplementedKeyValueServer
+     kvapi.UnimplementedKeyValueServer
      data map[string]string
     }
     
     // Set stores a given value under a given key
-    func (s *server) Set(ctx context.Context, in *pb.SetRequest) (*pb.SetReply, error) {
+    func (s *server) Set(ctx context.Context, in *kvapi.SetRequest) (*kvapi.SetReply, error) {
      key := in.GetKey()
      value := in.GetValue()
      log.Printf("serving set request for key %q and value %q", key, value)
     
      s.data[key] = value
     
-     reply := &pb.SetReply{}
+     reply := &kvapi.SetReply{}
      return reply, nil
     }
     
     // Get returns a value associated with a key to the client
-    func (s *server) Get(ctx context.Context, in *pb.GetRequest) (*pb.GetReply, error) {
+    func (s *server) Get(ctx context.Context, in *kvapi.GetRequest) (*kvapi.GetReply, error) {
      key := in.GetKey()
      log.Printf("serving get request for key %q", key)
     
@@ -145,7 +145,7 @@ The next step is to write the server code that will implement the set and get me
       return nil, errKeyNotFound
      }
     
-     reply := &pb.GetReply{
+     reply := &kvapi.GetReply{
       Value: value,
      }
      return reply, nil
@@ -161,7 +161,7 @@ The next step is to write the server code that will implement the set and get me
       data: make(map[string]string),
      }
      s := grpc.NewServer()
-     pb.RegisterKeyValueServer(s, &serverInstance)
+     kvapi.RegisterKeyValueServer(s, &serverInstance)
      if err := s.Serve(lis); err != nil {
       log.Fatalf("failed to serve: %v", err)
      }
@@ -178,7 +178,7 @@ Next we will compile the go code and save it as a docker image with the followin
     kvserver:
         COPY go.mod go.sum ./
         RUN go mod download
-        COPY ../proto+proto-go/go-pb kvapi
+        COPY ../proto+proto-go/kvapi kvapi
         COPY --dir cmd ./
         RUN go build -o kvserver cmd/server/main.go
         SAVE ARTIFACT kvserver
@@ -368,4 +368,4 @@ Then you can try querying the server to see what the weather was set to:
 And if all went well, it'll tell you that it's sunny outside.
 {% include imgf src="sun.png" alt="drawing of the sunn" caption="It's Sunny Outside"%}
 
-So there we go. &nbsp;You can find the code for the server and the two clients in [GitHub](https://github.com/earthly/example-grpc-key-value-store).
+So there we go. You can find the code for the server, the two clients, and a bonus integration test in [GitHub](https://github.com/earthly/example-grpc-key-value-store).
