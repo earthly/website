@@ -10,19 +10,19 @@ internal-links:
 
 We're excited to announce that Earthly is participating in Hacktoberfest this October [again](/2020-09-30-hacktoberfest-2020).
 
-Last year's we saw lots of great contributions from the community and sent out a bunch of earthly stickers to participants.
+Last year we saw lots of great contributions from the community and sent out a bunch of Earthly stickers to participants.
 
 ## What Is It?
 
-The hosting provider DigitalOcean is once again hosting the [Hacktoberfest](https://hacktoberfest.digitalocean.com/) to celebrate open source. Hacktoberfest invites you to submit pull requests to open source projects. People who submit four or more pull requests, get a free t-shirt from DigitalOcean.
+The hosting provider DigitalOcean is once again organizing the [Hacktoberfest](https://hacktoberfest.digitalocean.com/) to celebrate open source. Hacktoberfest invites you to submit pull requests to open-source projects. People who submit four or more pull requests, get a free t-shirt from DigitalOcean.
 
 ## Sticker Rewards
 
 In addition to this official event, Earthly would also like to kick in some rewards for people who contribute.
 
-Earthly is an open-source build tool. &nbsp;It lets you build everything using containers.
+Earthly is a free and open build tool. &nbsp;It lets you build everything using containers.
 
-The first 40 participants who submit at least one pull request that is accepted [Earthly's GitHub Repository](https://github.com/earthly/earthly) between October 1, 2021 and November 1, 2021, will get an earthly sticker. &nbsp;We have labeled many issues '[Hacktoberfest](https://github.com/earthly/earthly/issues?q=is%3Aissue+is%3Aopen+label%3Ahacktoberfest)' to get you started.
+The first 40 participants who submit at least one pull request that is accepted [Earthly's GitHub Repository](https://github.com/earthly/earthly) between October 1, 2021 and November 1, 2021, will get an earthly sticker. &nbsp;We have labeled many issues [`hacktoberfest`](https://github.com/earthly/earthly/issues?q=is%3Aissue+is%3Aopen+label%3Ahacktoberfest) to get you started.
 
 You can also qualify for the sticker by adding a working Earthfile file to another open-source project, including your own personal project.
 
