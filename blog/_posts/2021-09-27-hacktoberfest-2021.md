@@ -20,7 +20,7 @@ The hosting provider DigitalOcean is once again organizing the [Hacktoberfest](h
 
 In addition to this official event, Earthly would also like to kick in some rewards for people who contribute.
 
-Earthly is an open-source build tool. &nbsp;It lets you build everything using containers.
+Earthly is a free and open build tool. &nbsp;It lets you build everything using containers.
 
 The first 40 participants who submit at least one pull request that is accepted [Earthly's GitHub Repository](https://github.com/earthly/earthly) between October 1, 2021 and November 1, 2021, will get an earthly sticker. &nbsp;We have labeled many issues '[Hacktoberfest](https://github.com/earthly/earthly/issues?q=is%3Aissue+is%3Aopen+label%3Ahacktoberfest)' to get you started.
 
