@@ -10,7 +10,7 @@ internal-links:
 
 We're excited to announce that Earthly is participating in Hacktoberfest this October [again](/2020-09-30-hacktoberfest-2020).
 
-Last year's we saw lots of great contributions from the community and sent out a bunch of earthly stickers to participants.
+Last year we saw lots of great contributions from the community and sent out a bunch of Earthly stickers to participants.
 
 ## What Is It?
 
