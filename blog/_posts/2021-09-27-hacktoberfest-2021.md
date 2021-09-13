@@ -28,7 +28,7 @@ You can also qualify for the sticker by adding a working Earthfile file to anoth
 
 ## How Do I Claim my Sticker?
 
-Send an email to `adam+hacktober@earthly.com`, with your address and link to your merged PRs. All PRs that are contributing value will get an Earthly sticker!
+Once your PR has been accepted please fill out this [form](https://forms.gle/DVkrWCu4yD2wMPmE8). All PRs that are contributing value will get an Earthly sticker!
 
 ## Questions / Help ?
 
