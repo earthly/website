@@ -31,7 +31,7 @@ One of the comments I heard around the JQ article was the JQ was so complex just
 So in this article I will myself, and you, the basics of AWK.
 
 ## What is AWK
-AWK is a record processing tool written by AWK in 1977. After the success of tools like SED and GREP that worked with strings of text they created AWK as an experiment into how text processing tools could be extended to deal with numbers.  GREP lets you search for lines that match a regualr experssion, and SED lets you do replacements. AWK lets you do calculations. This will make sense soon enough.
+AWK is a record processing tool written by AWK in 1977. After the success of tools like SED and GREP that worked with lines of text they created AWK as an experiment into how text processing tools could be extended to deal with numbers. GREP lets you search for lines that match a regualr experssion, and SED lets you do replacements. AWK lets you do calculations. This will make sense soon enough.
 
 ## How to Install GAWK
 
@@ -62,7 +62,7 @@ That should give us a large file of Amazon book reviews that look like this:
 
 ```
 marketplace	customer_id	review_id	product_id	product_parent	product_title	product_category	star_rating	helpful_votes	total_votes	vine	verified_purchase	review_headline	review_body	review_date
-US	22480053	R28HBXXO1UEVJT	0843952016	34858117	The Rising	Books	5	0	0	N	N	Great Twist on Zombie Mythos	I've known about this one for a long time, but just finally got around to reading it for the first time.  I enjoyed it a lot!  What I liked the most was how it took a tired premise and breathed new life into it by creating an entirely new twist on the zombie mythos.  A definite must read!	2012-05-03
+US	22480053	R28HBXXO1UEVJT	0843952016	34858117	The Rising	Books	5	0	0	N	N	Great Twist on Zombie Mythos	I've known about this one for a long time, but just finally got around to reading it for the first time. I enjoyed it a lot!  What I liked the most was how it took a tired premise and breathed new life into it by creating an entirely new twist on the zombie mythos. A definite must read!	2012-05-03
 ```
 
 Each row in this file represents the record of one book review. We can view it as a record like this:
@@ -107,7 +107,7 @@ You may have been expecting the first colum to be $0 and not $1 but $0 is someth
 $ echo "one two three" | awk '{ print $0 }'
 one two three
 ```
-It is the entire line! Incidentally AWK referrs to each line as a record and each column as a field. 
+It is the entire line! Incidentally AWK refers to each line as a record and each column as a field. 
 
 All of this also works across multiple lines:
 ```
@@ -115,6 +115,23 @@ $ echo "one two three\n four five six" | awk '{ print $1 }'
 one
 four
 ```
+
+And we can print more than one column:
+
+```
+$ echo "one two three\n four five six" | awk '{ print $1 $2 }'
+onetwo
+fourfive
+```
+But we need to put in spaces explicitly:
+
+```
+$  echo "one two three\n four five six" | awk '{ print $1 " " $2 }'
+one two
+four five
+```
+
+
 
 ## Book Data
 
@@ -208,18 +225,19 @@ review_date     review_headline
 2012-05-03      Chocoholic heaven
 2012-05-03      Quilt Art Projects for Children
 ```
-Note also how we are able to print more than one column and add a tab between them. 
 
 <div class="notice--info">
 **What I've learned**
-AWK creates a variable for each field in a record ($1, $2 ... $NF), based on the fieled seperator which is whitespace by default.
+
+AWK creates a variable for each field in a record ($1, $2 ... $NF), based on the field separator which is whitespace by default.
 
 </div>
 
 <div class="notice--info">
 **Side Note: NF and NR**
 
-$NF may seem like a strange name for the last field in a record, but `NF` is  actually a variable holding the Number of Fields in that record. We are just using its value as an index to refer to the last element. 
+`$NF` seems like a unusual name for printing the last column
+, right? but `NF` is actually a variable holding the *Number of Fields* in a record. We are just using its value as an index to refer to the last field. 
 
 We can print the actual value like this:
 ```
@@ -236,7 +254,7 @@ awk -F '\t' '{ print NF }' bookreviews.tsv| head
 15
 ```
 
-Another variable AWK offers up for use is `NR`, the number of records so far. This can be useful if you want to add line numbers to something.
+Another variable AWK offers up for use is `NR`, the *number of records* so far. This is helpful if I need to print line numbers.
 
 ```
 awk -F '\t' '{ print NR " " $(NF-2) }' bookreviews.tsv| head  
@@ -253,6 +271,14 @@ awk -F '\t' '{ print NR " " $(NF-2) }' bookreviews.tsv| head
 ```
 
 </div>
+
+### AWK Pattern Match With Regular Expressions
+
+Everything we've done so far has applied to every line in our file but the real power of AWK comes from pattern matching. Instead of using `head` to restrict our output, lets focus in on a specific book title.
+
+```
+awk -F '\t' '/245449872/{ print NR " " $(NF-2) }' bookreviews.tsv | head 
+```
 
 ### AWK Printf
 
