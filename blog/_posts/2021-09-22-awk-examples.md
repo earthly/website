@@ -274,10 +274,84 @@ awk -F '\t' '{ print NR " " $(NF-2) }' bookreviews.tsv| head
 
 ### AWK Pattern Match With Regular Expressions
 
-Everything we've done so far has applied to every line in our file but the real power of AWK comes from pattern matching. Instead of using `head` to restrict our output, lets focus in on a specific book title.
+Everything we've done so far has applied to every line in our file but the real power of AWK comes from pattern matching. You can give AWK a pattern to match each line on like this:
+```
+$ echo "aa \n bb \n cc" | awk '/bb/'
+bb
+```
+This lets you use AWK like you would use GREP and you can combine this with the field access and printing we've done so far:
+```
+$ echo "aa 10\n bb 20 \n cc 30" | awk '/bb/{ print $2 }'
+bb
+```
+
+Using this knowledge, I can easily grab reviews by product_id and print the book title ($6):
 
 ```
-awk -F '\t' '/245449872/{ print NR " " $(NF-2) }' bookreviews.tsv | head 
+$ awk -F '\t' '/0439023483/{ print $6  }' bookreviews.tsv | head
+The Hunger Games (The Hunger Games, Book 1)
+The Hunger Games (The Hunger Games, Book 1)
+The Hunger Games (The Hunger Games, Book 1)
+The Hunger Games (The Hunger Games, Book 1)
+The Hunger Games (The Hunger Games, Book 1)
+The Hunger Games (The Hunger Games, Book 1)
+The Hunger Games (The Hunger Games, Book 1)
+The Hunger Games (The Hunger Games, Book 1)
+The Hunger Games (The Hunger Games, Book 1)
+The Hunger Games (The Hunger Games, Book 1)
+The Hunger Games (The Hunger Games, Book 1)
+The Hunger Games (The Hunger Games, Book 1)
+The Hunger Games (The Hunger Games, Book 1)
+```
+<figcaption>
+The amazon reviews dataset I'm using is from 2012. Hunger Games we really big then
+</figcaption>
+
+I should be able to do some interesting data analysis on these reviews, but first there is a problem. `/0439023483/` is matching any line with that number in it anywhere and I seem to be getting some false positives:
+
+```
+$ awk -F '\t' '/0439023483/{ print $6 }' bookreviews.tsv | sort |  uniq      
+Birthmarked
+Blood Red Road
+Catching Fire (The Hunger Games)
+Divergent
+Enclave
+Fire (Graceling Realm Books)
+Futuretrack 5
+Girl in the Arena
+...
+```
+The problem is the file has a `product_parent` column and since I'm matching on the whole line I'm getting back all the related child products. 
+
+It is sort of like this
+```
+$ cat hunger-tree.table 
+  title parent
+  hunger_games none
+  sequel hunger_games
+  sequel_again hunger_games
+$ awk '/hunger_games/' hunger-tree.table 
+  hunger_games none
+  sequel hunger_games
+  sequel_again hunger_games
+```
+
+I can fix this by specifying a field to pattern match on:
+```
+$ echo "key1 key2 value1\n key2 key3 value2 \n key5 key1 value3" | awk '$1/key2/{ print $2 }'
+bb
+```
+
+I can fix this by using `$field~/regex/` in my pattern
+
+```
+$ awk '$1~/hunger_games/{ print $1}'
+hunger_games
+```
+I can see that that works with the amazon dataset as well:
+```
+awk -F '\t' '$4~/0439023483/{ print $6 }' bookreviews.tsv | sort |  uniq 
+The Hunger Games (The Hunger Games, Book 1)
 ```
 
 ### AWK Printf
