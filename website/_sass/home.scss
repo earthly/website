@@ -8,6 +8,15 @@
   }
 }
 
+.hello-bar-text--after{
+   background-image: none !important;
+   cursor: pointer;
+}
+
+.hello-bar-button svg{
+  cursor: pointer;
+}
+
 .Home-sectionHeading {
   @include font-heading;
 }
@@ -45,7 +54,7 @@
   
   @include mobileAndAbove {
     max-width: 90%;
-    margin-bottom: $spacing-unit * 2;
+    margin: $spacing-unit 0;
   }
 }
 
@@ -107,17 +116,18 @@
   font-size: $earth-button-font-size--large;
   font-weight: $earth-font-weight-sans-bold;
   height: $earth-button-height--large;
-  min-width: 270px;
+  min-width: 300px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: $earth-border-radius;
-  border: 2px solid $earth-color-gray-lighter;
+  border: 2px solid $earth-color-gray;
   box-sizing: border-box;
   cursor: pointer;
   white-space: nowrap;
   color: $color-white;
   background-color: $earth-color-gray;
+  box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.3);
 
   &:hover {
     color: $earth-color-gray;
@@ -344,6 +354,11 @@
 }
 
 // Features Intro --------------------------------------------------
+
+.Home-featuresIntro {
+  padding: 20px 0;
+}
+
 .Home-featuresIntro-text {
   font-size: $earth-font-size-hero-smallest;
   line-height: $earth-line-height-hero;
@@ -358,7 +373,7 @@
 
 .Home-featuresIntro-text-button {
   @include reset-button-style;
-  font-weight: inherit;
+  font-weight: 500;
 }
 
 
@@ -567,6 +582,11 @@ $Home-feature-navList-width: 35%;
 }
 
 // Testimonials --------------------------------------------------
+
+.testimonials-block.wrapper{
+  padding: 80px 30px;
+}
+
 .Home-sectionHeading--testimonials {
   display: flex;
   align-items: center;
@@ -599,7 +619,7 @@ $Home-feature-navList-width: 35%;
 }
 
 .Home-testimonialBlock {
-  overflow: hidden;
+
 }
 .Home-testimonialList {
   @include reset-list-style;
@@ -608,7 +628,6 @@ $Home-feature-navList-width: 35%;
 }
 
 .Home-testimonial {
-  margin-bottom: $spacing-unit;
   background-color: $color-off-white;
   // border-radius: $earth-border-radius;
   // border: 1px solid $earth-color-gray-lightest;
@@ -618,14 +637,21 @@ $Home-feature-navList-width: 35%;
   width: 100%;
   box-sizing: border-box;
   flex-shrink: 0;
-  @include boxshadow;
+  border-radius: $earth-border-radius;
+  box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
 
   @include mobileAndAbove {
     display: grid;
     grid-template-columns: 1fr 7fr;
     column-gap: $spacing-unit * 2;
-    margin-bottom: $spacing-unit * 2;
     padding: $spacing-unit * 1.5;
+  } 
+}
+
+.Home-testimonialBlock:first-child .Home-testimonial {
+  margin-bottom: $spacing-unit;
+  @include mobileAndAbove {
+    margin-bottom: $spacing-unit * 2;
   } 
 }
 

@@ -64,6 +64,7 @@
   display: flex;
   justify-content: center;
   border: 1px solid $earth-color-gray;
+  min-width: 50px;
   
   &:hover {
     color: $color-white;
