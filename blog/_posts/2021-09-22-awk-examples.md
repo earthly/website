@@ -733,6 +733,44 @@ Catching Fire (The Hunger Game  👍👍
 ```
 
 We can easily modify this to give let us query this adhoc:
+``` awk
+exec gawk -F '\t' '
+{
+    # Global Average
+    g_count = g_count + 1
+    g_total = g_total + $8 
+    PROCINFO["sorted_in"] = "@val_num_asc"
+}
+$6~/^.*'+"$1"+'.*$/ { # <-- Take match as input
+  title[$6]=$6
+  count[$6]= count[$6] + 1
+  total[$6]= total[$6] + $8
+}
+END { 
+    PROCINFO["sorted_in"] = "@val_num_desc"
+    g_score = g_total/g_count 
+    for (i in count) {
+        score = total[i]/count[i]
+        printf "%-50s\t", substr(title[i],1,50)
+        if (score - g_score > .4)
+            printf "👍👍👍" 
+        else if (score - g_score > .25)
+            printf "👍👍" 
+        else if (score - g_score > 0)
+            printf "👍" 
+        else if (g_score - score  > 1)
+            printf "👎👎👎" 
+        else if (g_score - score  > .5)
+            printf "👎👎" 
+        else if (g_score - score  > 0)
+            printf "👎"
+        printf "\n"
+    }
+}
+' bookreviews.tsv | head -n 1
+```
+
+And then run it like this:
 ```
 $ ./average "Left Hand of Darkness"
 The Left Hand of Darkness (Ace Science Fiction)         👎
@@ -753,20 +791,37 @@ exec gawk -F '\t' '
     # Global Average
     g_count = g_count + 1
     g_total = g_total + $8 
-
-    # Book Average
     title[$6]=$6
     count[$6]= count[$6] + 1
     total[$6]= total[$6] + $8
 }
 END { 
-    PROCINFO["sorted_in"] = "@val_num_desc"
+    PROCINFO["sorted_in"] = "@val_num_desc" # <-- Print in value order
     g_score = g_total/g_count 
     for (i in count) {
-      ...
+        score = total[i]/count[i]
+        printf "%-50s\t", substr(title[i],1,50)
+        if (score - g_score > .4)
+            printf "👍👍👍" 
+        else if (score - g_score > .25)
+            printf "👍👍" 
+        else if (score - g_score > 0)
+            printf "👍" 
+        else if (g_score - score  > 1)
+            printf "👎👎👎" 
+        else if (g_score - score  > .5)
+            printf "👎👎" 
+        else if (g_score - score  > 0)
+            printf "👎"
+        printf "\n"
+    }
+}
+' bookreviews.tsv 
+
 ```
+Running it:
 ``` bash
-$ ./top | head
+$ ./top_books | head
 ```
 ```
 Breaking Dawn (The Twilight Saga, Book 4)               👎👎
@@ -783,12 +838,5 @@ The Girl with the Dragon Tattoo (Millennium Series      👎👎
 
 It looks like even though the hunger games movie came out in 2012, none of the books even cracked the top 10 of reviews.
 
-
-
-
-Next:
-- add a header
-- if else
-- gsub
-- passing in parameters
-- accessing the match 
+### Conclusion
+What did we learn?
