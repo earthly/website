@@ -478,9 +478,23 @@ END { print "Average book review:", total/NR, "stars" }
 ``` ini
 Average book review is 4.24361 stars
 ```
+`BEGIN` also exists and runs an action at the beginnning before any lines have been processed.
+
+``` bash
+ $ awk -F '\t' '
+BEGIN { print "Calculating Average ..." } 
+      { total = total + $8 }
+END   { print "Average book review:", total/NR, "stars" }
+' bookreviews.tsv 
+```
+``` ini
+Calculating Average ...
+Average book review is 4.24361 stars
+```
+
 ### Fun AWK one-liners
 
-Before we leave the world of one liners behind here are some fun ones. Most times I've had to reach for AWK involves a comand line tool returning a whitespace delimted table that I'd like to customize.
+Before we leave the world of one liners behind here are some fun ones. Most times I've had to reach for AWK involves a comand line tool returning a whitespace delimited table that I'd like to customize.
 
 Like printing files with a human readable size:
 ``` bash
@@ -510,7 +524,22 @@ docker stop "$(docker ps -a |  awk '/postgres/{ print $1 }')"
 You get the idea. 
 
 ## AWK Scripting Examples
-In my mind, once an AWK program spans multiple lines its time to consider putting it into a file. We've now crossed over from one-liners into AWK scripting. With AWK, this the transition is smooth.
+
+In my mind, once an AWK program spans multiple lines its time to consider putting it into a file. 
+
+<div class="notice--info">
+**Side Note: Why AWK Scripting**
+
+Once we move beyond one-liners a natural question is why. Why not use python? Isn't it good at this type of thing? I have a couple answers for that.
+
+First, AWK is great for writing programs that are, at their core, a glorified for loop over some input. If that is what you are doing, and the amount of control flow is limited, using AWK will be more consise than using python. 
+
+Second, if you need to rewrite your AWK program in something else at some point so be it. It's not going to be more than 100 lines of code and the translation process will be straight forward. 
+
+Third, why not? Learning a new tool can be fun. 
+</div>
+
+We've now crossed over from one-liners into AWK scripting. With AWK, this the transition is smooth.
 
 ``` bash
 $ cat average
@@ -528,7 +557,29 @@ $ average bookreviews.tsv
 Average book review is 4.2862 stars
 ```
 
+It's also possible to use a shebang (`#!`) to run an AWK script. If you do this, it's easiest to set the file seperator to tab using `FS = "\t"` in the `BEGIN` action:
+``` bash
+$ cat average
+```
+``` awk
+#!/usr/bin/env -S gawk -f
+
+BEGIN { FS = "\t" }
+{ total = total + $8 }
+END { print "Average book $6 review is", total/NR, "stars" } 
+```
+And run it like this
+```
+$ ./average bookreviews.tsv
+```
+
+Or you can also pass it to awk directly using `-f`:
+```
+$ awk -f average bookreviews.tsv
+```
+
 ### AWK Average Example
+
 With the things I've covered so far, you should be able to do a lot with AWK. For example, I can get average review for hunger games:
 
 ``` bash
@@ -538,10 +589,9 @@ END { print "The Average book review for", title, "is", total/count, "stars" }
 ' $1
 ```
 
-I can do this over multiple lines, so it reads a bit better:
+Now that I'm in a file, I can format this out a bit better so its easier to read:
 ``` awk
-exec awk -F '\t' '
-$4 == "0439023483"{ 
+$4 == "0439023483" { 
   title=$6
   count = count + 1; 
   total = total + $8 
@@ -549,18 +599,196 @@ $4 == "0439023483"{
 END { 
   printf "Book: %-5s\n", title
   printf "Average Rating: %.2f\n", total/count 
-  }  
-' $1
+}  
 ```
+Either way, I get this output:
 ``` ini
 Book: The Hunger Games (The Hunger Games, Book 1)
 Average Rating: 4.67%       
 ```
 
+### AWK Arrays
+The next thing I'd like to do is compare the reviews across the various hunger game books. Which book was the best? I haven't read the series, but my guess is that the first book is the strongest and things taper off from there. Let's find out.
+
+If I were going to calculate the averages in Python, I would loop over the list of reviews and use a dictionary to track the total stars and total reviews for each.
+
+In AWK I can do the same:
+``` awk
+BEGIN { FS = "\t" }
+$6~/\(The Hunger Games(, Book 1)?\)$/ { 
+  title[$6]=$6
+  count[$6]= count[$6] + 1
+  total[$6]= total[$6] + $8
+}
+END { 
+    for (i in count) {
+        printf "---------------------------------------\n"
+        printf "%s\n", title[i]
+        printf "---------------------------------------\n"
+        printf "Ave: %.2f\t Count: %s \n\n", total[i]/count[i], count[i]  
+    }
+}
+```
+``` ini
+The Hunger Games (The Hunger Games, Book 1)
+---------------------------------------
+Ave: 4.56        Count: 1230 
+
+---------------------------------------
+Mockingjay (The Hunger Games)
+---------------------------------------
+Ave: 3.51        Count: 2055 
+
+---------------------------------------
+Catching Fire (The Hunger Games)
+---------------------------------------
+Ave: 4.53        Count: 1287 
+
+```
+
+And look at that, the first book in the series was the most popular. The series order is Hunger Games, then Catching Fire, then Mocking Jay. If we can trust the reviewers than this implies a gradual decline in book quality. 
+
+Let me look at another trilogy to see if this gradual descrease is rankings is common or Hunger Games specific:
+
+``` awk
+BEGIN { FS = "\t" }
+$6~/\(The Lord of the Rings, Book .\)$/ { 
+  title[$6]=$6
+  count[$6]= count[$6] + 1
+  total[$6]= total[$6] + $8
+}
+END { 
+    for (i in title) {
+        printf "---------------------------------------\n"
+        printf "%s\n", title[i]
+        printf "---------------------------------------\n"
+        printf "Ave: %.2f\t Count: %s \n\n", total[i]/count[i], count[i]  
+    }
+}
+```
+``` ini
+---------------------------------------
+The Return of the King (The Lord of the Rings, Book 3)
+---------------------------------------
+Ave: 4.57        Count: 14 
+
+---------------------------------------
+The Two Towers (The Lord of the Rings, Book 2)
+---------------------------------------
+Ave: 4.67        Count: 12 
+
+---------------------------------------
+The Fellowship of the Ring (The Lord of the Rings, Book 1)
+---------------------------------------
+Ave: 4.30        Count: 23 
+```
+
+Lord of the Rings has a different pattern. The second book is the most highly rated. The number of reviews is also much smaller so it's hard to say for sure that "The Fellowship" is the best book but it certainly looks that way. 
+
+
+
+### AWK If Else
+
+The thing I hate about amazon reviews is that every book review I look at is somehow rated between 3.5 and 4.5 stars. Let's rescale things in terms of the average.
+
+First I need to track the global average like this
+``` awk
+{
+    # Global Average
+    g_count = g_count + 1
+    g_total = g_total + $8 
+}
+```
+Then all I need to do is add some if statements to my `END` pattern:
+```
+END { 
+    g_score = g_total/g_count 
+    for (i in count) {
+        score = total[i]/count[i]
+        printf "%-30s\t", substr(title[i],1,30)
+        if (score - g_score > .5)
+            printf "👍👍👍" 
+        else if (score - g_score > .25)
+            printf "👍👍" 
+        else if (score - g_score > 0)
+            printf "👍" 
+        else if (g_score - score  > 1)
+            printf "👎👎👎" 
+        else if (g_score - score  > .5)
+            printf "👎👎" 
+        else if (g_score - score  > 0)
+            printf "👎"
+        printf "\n"
+    }
+}
+```
+The values for partitioning are just a guess, but it does seem to give a better distribution:
+```
+The Return of the King (The Lo  👍👍
+The Two Towers (The Lord of th  👍👍👍
+The Fellowship of the Ring (Th  👍
+The Hunger Games (The Hunger G  👍👍
+Mockingjay (The Hunger Games)   👎👎
+Catching Fire (The Hunger Game  👍👍
+```
+
+We can easily modify this to give let us query this adhoc:
+```
+$ ./average "Left Hand of Darkness"
+The Left Hand of Darkness (Ace Science Fiction)         👎
+./average "Neuromancer"          
+Neuromancer                                             👎👎
+./average "The Lifecycle of Software Objects"
+The Lifecycle of Software Objects                       👎
+```
+I'm starting to question the taste of 2012 Amazon reviewers, since these are all great books. 
+
+## Awk Sort by Values
+
+AWK ( specifically gawk >= 4) allows you easily configure your iteration order using a magic variable called `PROCINFO["sorted_in"]`. This means that if I change our program to sort by value and drop the filtering then I will be able to see the top reviewed books of 2012:
+
+``` awk
+exec gawk -F '\t' '
+{
+    # Global Average
+    g_count = g_count + 1
+    g_total = g_total + $8 
+
+    # Book Average
+    title[$6]=$6
+    count[$6]= count[$6] + 1
+    total[$6]= total[$6] + $8
+}
+END { 
+    PROCINFO["sorted_in"] = "@val_num_desc"
+    g_score = g_total/g_count 
+    for (i in count) {
+      ...
+```
+``` bash
+$ ./top | head
+```
+```
+Breaking Dawn (The Twilight Saga, Book 4)               👎👎
+The Shack: Where Tragedy Confronts Eternity             👎
+The Help                                                👍👍
+Twilight (The Twilight Saga, Book 1)                    👎
+Harry Potter and the Deathly Hallows (Book 7)           👍👍
+Killing Lincoln: The Shocking Assassination that C      👎👎👎
+Water for Elephants: A Novel                            👍
+Liberty and Tyranny: A Conservative Manifesto           👍👍👍
+The Secret                                              👎👎
+The Girl with the Dragon Tattoo (Millennium Series      👎👎
+```
+
+It looks like even though the hunger games movie came out in 2012, none of the books even cracked the top 10 of reviews.
+
+
+
+
 Next:
 - add a header
 - if else
 - gsub
-- dictionary
 - passing in parameters
 - accessing the match 
