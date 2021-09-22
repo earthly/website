@@ -30,19 +30,21 @@ internal-links:
 One of the comments I heard around the JQ article was the JQ was so complex just like AWK. I have a confession to make - I don't know how to use AWK. I hear it mentioned sometimes and occasionally I see a really cool blog post where someone uses AWK to takes a giant spark task or big data workflow and reduce its complexity to a one-line in AWK.
 </p>
 
-So in this article I will myself, and you, the basics of AWK.
+So in this article I will myself, and you, the basics of Awk.
 
-## What Is AWK
+## What Is Awk
 
-AWK is a record processing tool written by AWK in 1977. After the success of tools like SED and GREP that worked with lines of text they created AWK as an experiment into how text processing tools could be extended to deal with numbers. GREP lets you search for lines that match a regualr experssion, and SED lets you do replacements. AWK lets you do calculations. This will make sense soon enough.
+Awk is a record processing tool written by Aho, Kernighan, and Weinberger in 1977. It's name is an acronym of their names. 
+
+They created it following the success of the line processing tools `sed` and `grep`. Awk was originally an experiment into how text processing tools could be extended to deal with numbers. If grep lets you search for lines, and sed lets you do replacements in lines then awk was designed to let you do calculations on lines. What that means will make more sense once I take us through some examples.
 
 ## How to Install GAWK
 
 > The biggest reason to learn AWK, IMO, is that it's on pretty much every single linux distribution. You might not have perl or python. You WILL have AWK. Only the most minimal of minimal linux systems will exclude it. Even busybox includes awk. That's how essential it's viewed.
 >
-> https://news.ycombinator.com/item?id=28441887
+> [cogman10](https://news.ycombinator.com/item?id=28447825)
 
-AWK is part of the POSIX Standard. This means its already on your macbook and you linux server. There are several versions of AWK and for the basics whatever AWK you have will do. 
+Awk is part of the Portable Operating System Interface (POSIX). This means its already on your MacBook and your Linux server. There are several versions of Awk and for the basics whatever Awk you have will do. 
 
 ``` bash
 $ awk --version
@@ -52,18 +54,22 @@ $ awk --version
   Copyright (C) 1989, 1991-2020 Free Software Foundation.
 ```
 
-If you are doing something more involved with AWK, choose GNU awk (gawk,) which I installed using homebrew (`brew install gawk`) and which can also be installed on windows (`choco install gawk`). It is probably already on your linux distribution. 
+If you are doing something more involved with Awk, choose GNU Awk (`gawk`), which I installed using homebrew (`brew install gawk`) and which can also be installed on windows (`choco install gawk`). It is probably already on your linux distribution. 
 
 
-## AWK Big Data
+## AWK Sample Data
 
-To understand how AWK works we will grab a small slice of the [amazon product reviews dataset](https://s3.amazonaws.com/amazon-reviews-pds/tsv/index.txt). 
+To demostrate how Awk works, I'm going to need some sample data. I'm going to use the book portion of the [amazon product reviews dataset](https://s3.amazonaws.com/amazon-reviews-pds/tsv/index.txt).
 
+You can grab it like this:
 ``` bash
-$ curl https://s3.amazonaws.com/amazon-reviews-pds/tsv/amazon_reviews_us_Books_v1_01.tsv.gz | /
-  gunzip -c > / 
+$ curl https://s3.amazonaws.com/amazon-reviews-pds/tsv/amazon_reviews_us_Books_v1_00.tsv.gz | /
+  gunzip -c >> / 
   bookreviews.tsv
 ```
+Repeat this for each of the three book files (`v1_00`, `v1_01`, `v1_02`) if you want to follow along.
+
+ToDo: up to here
 
 <div class="notice--warning">
 
