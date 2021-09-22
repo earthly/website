@@ -30,7 +30,8 @@ One of the comments I heard around the JQ article was the JQ was so complex just
 
 So in this article I will myself, and you, the basics of AWK.
 
-## What is AWK
+## What Is AWK
+
 AWK is a record processing tool written by AWK in 1977. After the success of tools like SED and GREP that worked with lines of text they created AWK as an experiment into how text processing tools could be extended to deal with numbers. GREP lets you search for lines that match a regualr experssion, and SED lets you do replacements. AWK lets you do calculations. This will make sense soon enough.
 
 ## How to Install GAWK
@@ -394,7 +395,7 @@ I can fix this by using `$field == "value"` in my pattern
 $ awk '$1 =="hunger_games"{ print $1}'
 hunger_games
 ```
-I can see that that works with the amazon dataset as well:
+I can see that it works with the amazon dataset as well:
 ``` bash
 awk -F '\t' '$4 == "0439023483"{ print $6 }' bookreviews.tsv | sort |  uniq 
 The Hunger Games (The Hunger Games, Book 1)
