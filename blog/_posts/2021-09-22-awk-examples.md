@@ -4,7 +4,7 @@ categories:
   - Tutorials
 toc: true
 author: Adam
-
+description: "In this article, I'm going to go over the basics building blocks of jq in enough depth that you will be able to understand how jq works." 
 internal-links:
  - just an example
 ---
