@@ -8,6 +8,271 @@ author: Adam
 internal-links:
  - just an example
 ---
+### Writing Article Checklist
+
+- [ ] Write Outline
+- [ ] Write Draft
+- [ ] Fix Grammarly Errors
+- [ ] Read out loud
+- [ ] Write 5 or more titles and pick the best on
+- [ ] First two paragraphs: What's it about? Why listen to you?
+- [ ] Create header image in Canva
+- [ ] Optional: Find ways to break up content with quotes or images
+- [ ] Verify look of article locally
+- [ ] Run mark down linter (`earthly +blog-lint-apply`)
+- [ ] Add keywords for internal links to front-matter
+- [ ] Run `earthly --build-arg NAME=2020-09-10-better-builds.md +link-opportunity` and find 1-5 places to incorporate links to other articles
+- [ ] Raise PR
+
+## Intro
+
+<p>
+One of the comments I heard around the JQ article was the JQ was so complex just like AWK. I have a confession to make - I don't know how to use AWK. I hear it mentioned sometimes and occasionally I see a really cool blog post where someone uses AWK to takes a giant spark task or big data workflow and reduce its complexity to a one-line in AWK.
+</p>
+
+So in this article I will myself, and you, the basics of AWK.
+
+## What Is AWK
+
+AWK is a record processing tool written by AWK in 1977. After the success of tools like SED and GREP that worked with lines of text they created AWK as an experiment into how text processing tools could be extended to deal with numbers. GREP lets you search for lines that match a regualr experssion, and SED lets you do replacements. AWK lets you do calculations. This will make sense soon enough.
+
+## How to Install GAWK
+
+> The biggest reason to learn AWK, IMO, is that it's on pretty much every single linux distribution. You might not have perl or python. You WILL have AWK. Only the most minimal of minimal linux systems will exclude it. Even busybox includes awk. That's how essential it's viewed.
+>
+> https://news.ycombinator.com/item?id=28441887
+
+AWK is part of the POSIX Standard. This means its already on your macbook and you linux server. There are several versions of AWK and for the basics whatever AWK you have will do. 
+
+``` bash
+$ awk --version
+``` 
+```
+  GNU Awk 5.1.0, API: 3.0 (GNU MPFR 4.1.0, GNU MP 6.2.1)
+  Copyright (C) 1989, 1991-2020 Free Software Foundation.
+```
+
+If you are doing something more involved with AWK, choose GNU awk (gawk,) which I installed using homebrew (`brew install gawk`) and which can also be installed on windows (`choco install gawk`). It is probably already on your linux distribution. 
+
+
+## AWK Big Data
+
+To understand how AWK works we will grab a small slice of the [amazon product reviews dataset](https://s3.amazonaws.com/amazon-reviews-pds/tsv/index.txt). 
+
+``` bash
+$ curl https://s3.amazonaws.com/amazon-reviews-pds/tsv/amazon_reviews_us_Books_v1_01.tsv.gz | /
+  gunzip -c > / 
+  bookreviews.tsv
+```
+
+<div class="notice--warning">
+
+**❗ Disk Space Warning**
+
+The above file is over 6 gigs unzipped. If you don't have much space you can play along by just grabbing the first ten thousand rows. 
+
+```
+$ curl https://s3.amazonaws.com/amazon-reviews-pds/tsv/amazon_reviews_us_Books_v1_01.tsv.gz \
+  | gunzip -c \
+  | head -n 10000 \
+  > bookreviews.tsv
+```
+
+</div>
+
+That should give us a large file of Amazon book reviews that look like this:
+
+``` ini
+marketplace	customer_id	review_id	product_id	product_parent	product_title	product_category	star_rating	helpful_votes	total_votes	vine	verified_purchase	review_headline	review_body	review_date
+US	22480053	R28HBXXO1UEVJT	0843952016	34858117	The Rising	Books	5	0	0	N	N	Great Twist on Zombie Mythos	I've known about this one for a long time, but just finally got around to reading it for the first time. I enjoyed it a lot!  What I liked the most was how it took a tired premise and breathed new life into it by creating an entirely new twist on the zombie mythos. A definite must read!	2012-05-03
+```
+
+Each row in this file represents the record of one book review. We can view it as a record like this:
+TODO: insert record here
+
+## AWK Print
+
+By default AWK expects to receive its input on standard in and output its results to standard out. The simplest thing you can do in AWK is Print the line.
+
+``` bash
+$ echo "one two three" | awk '{ print }'
+one two three
+```
+Note the braces. The syntax will make sense after seeing a couple examples.
+
+We can selectively choose columns (which AWK calls fields):
+``` bash
+$ echo "one two three" | awk '{ print $1 }'
+one
+$ echo "one two three" | awk '{ print $2 }'
+two
+$ echo "one two three" | awk '{ print $3 }'
+three
+```
+You may have been expecting the first colum to be $0 and not $1 but $0 is something different:
+``` bash
+$ echo "one two three" | awk '{ print $0 }'
+``` 
+``` ini
+one two three
+```
+It is the entire line! Incidentally AWK refers to each line as a record and each column as a field. 
+
+All of this also works across multiple lines:
+``` bash
+$ echo "
+ one two three
+ four five six" \
+ | awk '{ print $1 }'
+```
+``` ini
+one
+four
+```
+
+And we can print more than one column:
+
+``` bash
+$ echo "
+ one two three
+ four five six" \
+| awk '{ print $1 $2 }'
+```
+``` ini
+onetwo
+fourfive
+```
+
+But we need to put in spaces explicitly:
+
+``` bash
+$ echo "
+ one two three
+ four five six" \
+| awk '{ print $1 " " $2 }'
+```
+``` ini
+one two
+four five
+```
+
+
+
+## Book Data
+
+I can use this knowledge to pull the fields I care about from the amazon dataset. Like the marketplace:
+``` bash
+$ awk '{ print $1 }' bookreviews.tsv| head 
+```
+``` ini
+marketplace
+US
+US
+US
+US
+US
+US
+US
+US
+US
+```
+Or the customer_id:
+``` bash
+$ awk '{ print $2 }' bookreviews.tsv| head 
+```
+``` ini
+customer_id
+22480053
+44244451
+20357422
+13235208
+26301786
+27780192
+13041546
+51692331
+23108524
+```
+However, when I try to pull out the title things do not go well:
+``` bash
+$ awk '{ print $6 }' bookreviews.tsv| head 
+```
+``` ini
+product_title
+The
+Sticky
+Black
+Direction
+Until
+Unfinished
+The
+Good
+Patterns
+```
+
+To fix this, I need to configure my field seperator.
+
+## Field Seperators
+
+By Default, AWK assumes that the fields in a record are space delimited. We can change the field seperator to use tabs using the `awk -F` option:
+
+``` bash
+$ awk -F '\t' '{ print $6 }' bookreviews.tsv| head 
+```
+``` ini
+product_title
+The Rising
+Sticky Faith Teen Curriculum with DVD: 10 Lessons to Nurture Faith Beyond High 
+Black Passenger Yellow Cabs: Of Exile And Excess In Japan
+Direction and Destiny in the Birth Chart
+Until the Next Time
+Unfinished Business
+The Republican Brain: The Science of Why They Deny Science- and Reality
+Good Food: 101 Cakes & Bakes
+Patterns and Quilts (Mathzones)
+```
+
+AWK also has convience values for accessing last field in a row:
+
+``` bash
+$ awk -F '\t' '{ print $NF }' bookreviews.tsv| head 
+```
+``` ini
+review_date
+2012-05-03
+2012-05-03
+2012-05-03
+2012-05-03
+2012-05-03
+2012-05-03
+2012-05-03
+2012-05-03
+2012-05-03
+```
+
+And you can easily work backwards from the last position forward by subtracting from `NF`.
+``` bash
+$ awk -F '\t' '{ print $NF "\t" $(NF-2)}' bookreviews.tsv| head 
+```
+``` ini
+review_date     review_headline
+2012-05-03      Great Twist on Zombie Mythos
+2012-05-03      Helpful and Practical
+2012-05-03      Paul
+2012-05-03      Direction and Destiny in the Birth Chart
+2012-05-03      This was Okay
+2012-05-03      Excellent read!!!
+2012-05-03      A must read for science thinkers
+2012-05-03      Chocoholic heaven
+2012-05-03      Quilt Art Projects for Children
+```
+
+<div class="notice--info">
+**What I've learned**
+
+AWK creates a variable for each field in a record ($1, $2 ... $NF), based on the field separator which is whitespace by default.
+
+</div>
+
 <div class="notice--info">
 **Side Note: NF and NR**
 
@@ -215,13 +480,37 @@ Average book review is 4.24361 stars
 ```
 ### Fun AWK one-liners
 
-Before we leave the world of one liners behind here are some fun ones.
+Before we leave the world of one liners behind here are some fun ones. Most times I've had to reach for AWK involves a comand line tool returning a whitespace delimted table that I'd like to customize.
+
+Like printing files with a human readable size:
+``` bash
+$ ls -lh | awk '{ print $5,"\t", $9 }'  
+```
+``` ini
+7.8M     The_AWK_Programming_Language.pdf
+6.2G     bookreviews.tsv
+```
 ....
 ...
 
+Or getting the containerID of running docker containers:
+
+``` awk
+docker ps -a |  awk '{ print $1 }'
+```
+``` ini
+CONTAINER
+08488f220f76
+3b7fc673649f
+```
+We can combine those with a regex to focus in on a line we care about. Here I stop postgres, regardless of its name.
+```
+docker stop "$(docker ps -a |  awk '/postgres/{ print $1 }')"
+```
+You get the idea. 
 
 ## AWK Scripting Examples
-In my mind, once an AWK program spans multiple lines its time to consider putting it into a file. We've now crossed over from one-liners to scripting and with AWK the transition is really smooth.
+In my mind, once an AWK program spans multiple lines its time to consider putting it into a file. We've now crossed over from one-liners into AWK scripting. With AWK, this the transition is smooth.
 
 ``` bash
 $ cat average
@@ -239,7 +528,7 @@ $ average bookreviews.tsv
 Average book review is 4.2862 stars
 ```
 
-### Bringing It All Together
+### AWK Average Example
 With the things I've covered so far, you should be able to do a lot with AWK. For example, I can get average review for hunger games:
 
 ``` bash
@@ -263,6 +552,11 @@ END {
   }  
 ' $1
 ```
+``` ini
+Book: The Hunger Games (The Hunger Games, Book 1)
+Average Rating: 4.67%       
+```
+
 Next:
 - add a header
 - if else
