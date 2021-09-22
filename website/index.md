@@ -21,7 +21,7 @@ layout: default
   </div>
 </div>
 <div class="color1">
-  <div class="wrapper">
+  <div class="wrapper testimonials-block">
     {% include testimonials.html data=site.data.testimonials1 %} 
   </div>
 </div>

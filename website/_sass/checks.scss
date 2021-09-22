@@ -1,7 +1,7 @@
 .check ul {
     text-align: left;
     list-style: none;
-    padding-left: 32px;
+    padding-left: 18px;
 
     & > li {
       position: relative;
@@ -9,15 +9,15 @@
 
       &:before {
         position: absolute;
-        background: url("/assets/svg/check-circle-grey.svg")
+        background: url("/assets/svg/done-check.svg")
           no-repeat;
         content: "";
         left: 10px;
         float: left;
         height: 19px;
         left: 0;
-        margin: 6px 0 0 -32px;
-        width: 18px;
+        margin: 1px 0 0 -32px;
+        width: 22px;
       }
       & > span.shrink {
         font-size: 14px;
@@ -28,7 +28,7 @@
   .badcheck ul {
     text-align: left;
     list-style: none;
-    padding-left: 32px;
+    padding-left: 18px;
 
     & > li {
       position: relative;
@@ -36,15 +36,15 @@
 
       &:before {
         position: absolute;
-        background: url("/assets/svg/red-x.svg")
+        background: url("/assets/svg/close-icon.svg")
           no-repeat;
         content: "";
         left: 10px;
         float: left;
         height: 19px;
         left: 0;
-        margin: 6px 0 0 -32px;
-        width: 18px;
+        margin: 1px 0 0 -32px;
+        width: 20px;
       }
       & > span.shrink {
         font-size: 14px;
