@@ -40,7 +40,7 @@ Awk is part of the Portable Operating System Interface (POSIX). This means its a
 If you can run this, you can do the rest of this tutorial:
 
 ``` bash
-awk --version
+$ awk --version
 ```
 
 ```
@@ -75,7 +75,7 @@ three
 You may have been expecting the first column to be `$0` and not `$1`, but `$0` is something different:
 
 ``` bash
-echo "one two three" | awk '{ print $0 }'
+$ echo "one two three" | awk '{ print $0 }'
 ```
 
 ``` ini
@@ -136,7 +136,7 @@ Awk creates a variable for each field (row) in a record (line) (`$1`, `$2` ... `
 You can print out fields like this:
 
 ``` bash
-awk '{ print $1, $2, $7 }'
+$ awk '{ print $1, $2, $7 }'
 ```
 
 </div>
@@ -209,7 +209,7 @@ DATA COLUMNS:
 I can now test out my field printing skills on a bigger file. I can start by printing fields that I care about, like the marketplace:
 
 ``` bash
-awk '{ print $1 }' bookreviews.tsv| head 
+$ awk '{ print $1 }' bookreviews.tsv | head 
 ```
 
 ``` ini
@@ -228,7 +228,7 @@ US
 Or the customer_id:
 
 ``` bash
-awk '{ print $2 }' bookreviews.tsv| head 
+$ awk '{ print $2 }' bookreviews.tsv | head 
 ```
 
 ``` ini
@@ -247,7 +247,7 @@ customer_id
 However, when I try to print out the title, things do not go well:
 
 ``` bash
-awk '{ print $6 }' bookreviews.tsv| head 
+$ awk '{ print $6 }' bookreviews.tsv | head 
 ```
 
 ``` ini
@@ -270,7 +270,7 @@ To fix this, I need to configure my field separators.
 By default, Awk assumes that the fields in a record are space delimited. We can change the field separator to use tabs using the `awk -F` option:
 
 ``` bash
-awk -F '\t' '{ print $6 }' bookreviews.tsv | head 
+$ awk -F '\t' '{ print $6 }' bookreviews.tsv | head 
 ```
 
 ``` ini
@@ -295,7 +295,7 @@ Awk assumes that the fields in a record are space delimited.
 You can change this using the `-F` option like this
 
 ``` bash
-awk -F '\t' '{ print $6 }'
+$ awk -F '\t' '{ print $6 }'
 ```
 
 </div>
@@ -303,7 +303,7 @@ awk -F '\t' '{ print $6 }'
 I can also work backwards from the last position forward by subtracting from `NF`.
 
 ``` bash
-awk -F '\t' '{ print $NF "\t" $(NF-2)}' bookreviews.tsv | head 
+$ awk -F '\t' '{ print $NF "\t" $(NF-2)}' bookreviews.tsv | head 
 ```
 
 ``` ini
@@ -329,7 +329,7 @@ But actually, `NF` is a variable holding the *Number of Fields* in a record. So 
 I can print the actual value like this:
 
 ``` bash
-awk -F '\t' '{ print NF }' bookreviews.tsv| head  
+$ awk -F '\t' '{ print NF }' bookreviews.tsv | head  
 ```
 
 ``` ini
@@ -348,7 +348,7 @@ awk -F '\t' '{ print NF }' bookreviews.tsv| head
 Another variable Awk offers up for use is `NR`, the *number of records* so far. `NR` is handy when I need to print line numbers:
 
 ``` bash
-awk -F '\t' '{ print NR " " $(NF-2) }' bookreviews.tsv| head  
+$ awk -F '\t' '{ print NR " " $(NF-2) }' bookreviews.tsv | head  
 ```
 
 ``` ini
@@ -391,7 +391,7 @@ Using this knowledge, I can easily grab reviews by book title and print the book
 The reviews I'm going to focus on today are for the book 'The Hunger Games'. I'm choosing it because it's part of a series with many reviews and I recall liking the movie. So I'm wondering if I should read it.  
 
 ``` bash
-awk -F '\t' '/Hunger Games/{ print $6, $8  }' bookreviews.tsv | head
+$ awk -F '\t' '/Hunger Games/{ print $6, $8  }' bookreviews.tsv | head
 ```
 
 ``` ini
@@ -410,7 +410,7 @@ Tabula Rasa 3
 I should be able to pull valuable data from these reviews, but first there is a problem. I'm getting reviews from more than one book here. `/Hunger Games/` matches anywhere in the line and I'm getting all kinds of 'Hunger Games' books returned. I'm even getting books that mention "Hunger Games" in the review text:
 
 ``` bash
-awk -F '\t' '/Hunger Games/{ print $6 }' bookreviews.tsv | sort | uniq    
+$ awk -F '\t' '/Hunger Games/{ print $6 }' bookreviews.tsv | sort | uniq    
 ```
 
 ``` ini
@@ -428,14 +428,14 @@ Girl in the Arena
 I can fix this by using the `product_id` field to pattern match on:
 
 ``` bash
-awk -F '\t' '$4 == "0439023483"{ print $6 }' bookreviews.tsv | sort |  uniq 
+$ awk -F '\t' '$4 == "0439023483"{ print $6 }' bookreviews.tsv | sort |  uniq 
 The Hunger Games (The Hunger Games, Book 1)
 ```
 
 I'd want to calculate the average review score for 'The Hunger Games' in my dataset, but first, let's take a look at the review_date (`$15`), the review_headline (`$13`), and the star_rating (`$8`) of our Hunger Games reviews, to get a feel for the data:
 
 ``` bash
-awk -F '\t' '$4 == "0439023483{ print $15 "\t" $13 "\t" $8}' bookreviews.tsv | head 
+$ awk -F '\t' '$4 == "0439023483{ print $15 "\t" $13 "\t" $8}' bookreviews.tsv | head 
 ```
 
 ``` ini
@@ -464,19 +464,19 @@ I've learned that an awk action, like `{ print $4}`, can be preceded by a patter
 You can use a simple regular expression for the pattern. In which case it matches anywhere in the line, like `grep`:
 
 ``` bash
-awk '/hello/{ print "This line contains hello", $0}'
+$ awk '/hello/{ print "This line contains hello", $0}'
 ```
 
 Or you can match within a specific field:
 
 ``` bash
-awk '$4~/hello/{ print "This field contains hello", $4}'
+$ awk '$4~/hello/{ print "This field contains hello", $4}'
 ```
 
 Or you can exact match a field:
 
 ``` bash
-awk '$4 == "hello"{ print "This field is hello:", $4}'
+$ awk '$4 == "hello"{ print "This field is hello:", $4}'
 ```
 
 </div>
@@ -491,7 +491,7 @@ becomes `printf "%s \t %s \t %s, $15, $13, $8`.
 From there I can add right padding and fix my layout by changing `%s` to `%-Ns` where `N` is my desired column width:
 
 ``` bash
-awk -F '\t' '$4 == "0439023483"{ printf "%s \t %-20s \t %s \n", $15, $13, $8}' bookreviews.tsv| head 
+$ awk -F '\t' '$4 == "0439023483"{ printf "%s \t %-20s \t %s \n", $15, $13, $8}' bookreviews.tsv | head 
 ```
 
 ``` ini
@@ -512,7 +512,7 @@ This table is pretty close to what I'd want. Some of the titles are just too lon
 Putting it all together and I get:
 
 ``` bash
-awk -F '\t' '$4 == "0439023483"{ printf "%s \t %-20s \t %s \n", $15, substr($13,1,20), $8}' bookreviews.tsv| head
+$ awk -F '\t' '$4 == "0439023483"{ printf "%s \t %-20s \t %s \n", $15, substr($13,1,20), $8}' bookreviews.tsv | head
 ```
 
 ``` ini
@@ -539,7 +539,7 @@ If you need print out a table, Awk lets you use `printf` and built-ins like `sub
 It ends up looking something like this:
 
 ``` bash
-awk '{ printf "%s \t %-5s", $1, substr($2,1,5)}'
+$ awk '{ printf "%s \t %-5s", $1, substr($2,1,5)}'
 ```
 
 `printf` works much like C's `printf`, and for more information on the other built-ins, you can consult an Awk reference document.
@@ -552,7 +552,7 @@ I want to calculate the average rating for book reviews in this data set. To do 
 I can add up and print out a running total of review_stars (`$8`) like this
 
 ``` bash
-awk -F '\t' '{ total = total + $8; print total }' bookreviews.tsv| head 
+$ awk -F '\t' '{ total = total + $8; print total }' bookreviews.tsv | head 
 ```
 
 ``` ini
@@ -565,7 +565,7 @@ awk -F '\t' '{ total = total + $8; print total }' bookreviews.tsv| head
 And to turn this into an average, I can use `NR` to get the total amount of records and `END` to run an action at the end of the processing.
 
 ``` bash
- $ awk -F '\t' '
+$ awk -F '\t' '
     { total = total + $8 }
 END { print "Average book review:", total/NR, "stars" }
 ' bookreviews.tsv | head 
@@ -594,7 +594,7 @@ Average book review is 4.24361 stars
 
 **What I've learned: Awk's `BEGIN`, `END` and Variables**
 
-Awk provides two special patterns, `BEGIN` and `END`. You can use them to run actions before any lines before and after processing the records. For example, this is how you would initialize data, print headers and footer, or do any start-up or tear-down stuff in Awk.
+Awk provides two special patterns, `BEGIN` and `END`. You can use them to run actions before and after processing the records. For example, this is how you would initialize data, print headers and footer, or do any start-up or tear-down stuff in Awk.
 
 It ends up looking like this:
 
@@ -608,7 +608,7 @@ END   { print "tear down" }'
 You can also easily use variables in Awk. No declaration is needed.
 
 ``` bash
-awk -F '{ total = total + $8 }'
+$ awk -F '{ total = total + $8 }'
 ```
 
 </div>
@@ -620,7 +620,7 @@ Before we leave the world of one-liners behind, I reached out to my friends to a
 Printing files with a human readable size:
 
 ``` bash
-ls -lh | awk '{ print $5,"\t", $9 }'  
+$ ls -lh | awk '{ print $5,"\t", $9 }'  
 ```
 
 ``` ini
@@ -631,7 +631,7 @@ ls -lh | awk '{ print $5,"\t", $9 }'
 Getting the containerID of running docker containers:
 
 ``` awk
-docker ps -a |  awk '{ print $1 }'
+$ docker ps -a |  awk '{ print $1 }'
 ```
 
 ``` ini
@@ -643,7 +643,7 @@ CONTAINER
 You can combine that last one with a regex to focus on a line you care about. Here I stop `postgres`, regardless of its tag name:
 
 ```
-docker stop "$(docker ps -a |  awk '/postgres/{ print $1 }')"
+$ docker stop "$(docker ps -a |  awk '/postgres/{ print $1 }')"
 ```
 
 You get the idea. If you have a table of space-delimited text returned by some tool then Awk can easily slice and dice it.
@@ -683,7 +683,7 @@ END { print "Average book review is", total/NR, "stars" }
 ```
 
 ``` bash
-average bookreviews.tsv
+$ average bookreviews.tsv
 ```
 
 ``` ini
@@ -693,7 +693,7 @@ Average book review is 4.2862 stars
 Or we can use a shebang (`#!`):
 
 ``` bash
-cat average.awk
+$ cat average.awk
 ```
 
 ``` awk
@@ -707,13 +707,13 @@ END { print "Average book $6 review is", total/NR, "stars" }
 And run it like this
 
 ```
-./average.awk bookreviews.tsv
+$ ./average.awk bookreviews.tsv
 ```
 
 Or you can also pass it to awk directly using `-f`:
 
 ```
-awk -f average.awk bookreviews.tsv
+$ awk -f average.awk bookreviews.tsv
 ```
 
 <div class="notice--info">
@@ -768,7 +768,7 @@ Once you are beyond a single line, it makes sense to put your Awk script into a 
 You can then call you program using the `-f`option
 
 ``` bash
-awk -f file.awk input
+$ awk -f file.awk input
 ```
 
 Using a shebang :
@@ -907,7 +907,7 @@ Not bad for a language written in 1977!
 
 I hate how every book on Amazon has a star rating between 3.0 and 4.5 stars. It makes it hard to judge purely based on numbers. So let's rescale things in terms of the average. Maybe if we normalize the reviews, it will be easier to judge how good or bad 3.77 for Mockingjay is.
 
-First, I need to calculate the global average like this
+First, I need to calculate the global average but adding up the total and average for every row:
 
 ``` awk
 {
@@ -916,10 +916,17 @@ First, I need to calculate the global average like this
     g_total = g_total + $8 
 }
 ```
+Then I calculate the global average:
+```
+END { 
+    g_score = g_total/g_count 
+    ...
+}    
+```
 
 Once I have this, I can score books based on how higher or lower they are than the average. All I need to do is add some if statements to my `END` pattern to accomplish this:
 
-```
+``` awk
 END { 
     g_score = g_total/g_count 
     for (i in count) {
@@ -956,7 +963,7 @@ The Return of the King (The Lo  👍👍👍
 
 It looks like Mockingjay, at least on Amazon and in this dataset, was not well received.
 
-We can easily modify this to give let us query this ad hoc:
+We can easily modify this to let us query for books ad hoc:
 
 ``` awk
 exec gawk -F '\t' '
@@ -1000,9 +1007,9 @@ And then run it like this:
 ```
 $ ./average "Left Hand of Darkness"
 The Left Hand of Darkness (Ace Science Fiction)         👎
-./average "Neuromancer"          
+$ ./average "Neuromancer"          
 Neuromancer                                             👎👎
-./average "The Lifecycle of Software Objects"
+$ ./average "The Lifecycle of Software Objects"
 The Lifecycle of Software Objects                       👎
 ```
 
@@ -1016,7 +1023,7 @@ I want to test one more thing, though: how do the most popular books rate? Maybe
 Awk has branching using `if` and `else` statements. It works exactly like you might expect it to:
 
 ``` bash
-echo "1\n 2\n 3\n 4\n 5\n 6" | awk '{
+$ echo "1\n 2\n 3\n 4\n 5\n 6" | awk '{
         if (NR % 2) 
             print "odd"
         else
@@ -1077,20 +1084,20 @@ END {
 Running it:
 
 ``` bash
-./top_books | head
+$ ./top_books | head
 ```
 
 ```
-667539744       Harry Potter And The Sorcerer's Stone                 👍👍
-600633062       Fifty Shades of Grey                                  👎👎
-245449872       The Hunger Games (The Hunger Games, Book 1)           👍
-669379389       The Hobbit                                            👍
-745538746       Twilight                                              👎
-340399706       Jesus Calling: Enjoying Peace in His Presence         👍👍👍
-259796199       Unbroken: A World War II Story of Survival, Resili    👍👍👍
-736723180       The Shack: Where Tragedy Confronts Eternity           👎
-941986263       Divergent                                             👍
-93816562        Gone Girl                                             👎👎
+Harry Potter And The Sorcerer's Stone                 👍👍
+Fifty Shades of Grey                                  👎👎
+The Hunger Games (The Hunger Games, Book 1)           👍
+The Hobbit                                            👍
+Twilight                                              👎
+Jesus Calling: Enjoying Peace in His Presence         👍👍👍
+Unbroken: A World War II Story of Survival, Resili    👍👍👍
+The Shack: Where Tragedy Confronts Eternity           👎
+Divergent                                             👍
+Gone Girl                                             👎👎
 ```
 
 It looks like about half (6 /10) of the most reviewed books were more popular than average. So Mockingjay's low score can't be blamed on its popularity. I think I'll have to take a pass on the series or at least that book.
@@ -1108,7 +1115,7 @@ If you want to learn more about Awk, [The Awk Programming Language](https://www.
 Even Amazon thinks its great:
 
 ``` bash
-./average "The AWK "          
+$ ./average "The AWK "          
 The AWK Programming Language                            👍👍
 ```
 
