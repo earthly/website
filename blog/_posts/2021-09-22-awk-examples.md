@@ -84,7 +84,7 @@ one two three
 ```
 It is the entire line! Incidentally Awk refers to each line as a record and each column as a field. 
 
-All of this also works across multiple lines:
+I can do this across multiple lines:
 ``` bash
 $ echo "
  one two three
@@ -96,7 +96,7 @@ one
 four
 ```
 
-And we can print more than one column:
+And I can print more than one column:
 
 ``` bash
 $ echo "
@@ -108,6 +108,33 @@ $ echo "
 one two
 four five
 ```
+
+Awk also includes `$NF` for access the last column:
+
+``` bash
+$ echo "
+ one two three
+ four five six" \
+| awk '{ print $NF }'
+```
+``` ini
+two
+five
+```
+
+
+<div class="notice--big--primary">
+
+<!-- markdownlint-disable MD036 -->
+**What I've learned: Awk Field Variables**
+
+Awk creates a variable for each field (row) in a record (line) (`$1`, `$2` ... `$NF`). `$0` refers to the whole record.
+
+You can print out fields like this:
+``` bash
+awk '{ print $1, $2, $7 }'
+```
+</div>
 
 ## AWK Sample Data
 
@@ -208,7 +235,7 @@ customer_id
 51692331
 23108524
 ```
-However, when I try to pull out the title things do not go well:
+However, when I try to print out the title things do not go well:
 ``` bash
 $ awk '{ print $6 }' bookreviews.tsv| head 
 ```
@@ -229,12 +256,8 @@ To fix this, I need to configure my field separators.
 
 ## Field Separators
 
-> A good programmer uses the most powerful tool to do a job. A great programmer uses the least powerful tool that does the job." I believe this, and I always try to find the combination of simple and lightweight tools which does the job at hand correctly.
->
-> [vyuh](https://news.ycombinator.com/item?id=28445692
-https://news.ycombinator.com/item?id=28445692)
 
-By Default, Awk assumes that the fields in a record are space delimited. We can change the field separator to use tabs using the `awk -F` option:
+By default, Awk assumes that the fields in a record are space delimited. We can change the field separator to use tabs using the `awk -F` option:
 
 ``` bash
 $ awk -F '\t' '{ print $6 }' bookreviews.tsv | head 
@@ -252,25 +275,20 @@ Good Food: 101 Cakes & Bakes
 Patterns and Quilts (Mathzones)
 ```
 
-Awk also has convenience values for accessing last field in a row:
+<div class="notice--big--primary">
 
+**What I've learned: Awk Field Separators**
+
+Awk assumes that the fields in a record are space delimited.
+
+You can change this using the `-F` option like this
 ``` bash
-$ awk -F '\t' '{ print $NF }' bookreviews.tsv| head 
+awk -F '\t' '{ print $6 }'
 ```
-``` ini
-review_date
-2012-05-03
-2012-05-03
-2012-05-03
-2012-05-03
-2012-05-03
-2012-05-03
-2012-05-03
-2012-05-03
-2012-05-03
-```
+</div>
 
-And you can easily work backwards from the last position forward by subtracting from `NF`.
+
+I can also work backwards from the last position forward by subtracting from `NF`.
 ``` bash
 $ awk -F '\t' '{ print $NF "\t" $(NF-2)}' bookreviews.tsv| head 
 ```
@@ -287,12 +305,6 @@ review_date     review_headline
 2012-05-03      Quilt Art Projects for Children
 ```
 
-<div class="notice--info">
-**What I've learned**
-
-Awk creates a variable for each field in a record ($1, $2 ... $NF), based on the field separator which is whitespace by default.
-
-</div>
 
 <div class="notice--info">
 **Side Note: NF and NR**
@@ -338,14 +350,14 @@ awk -F '\t' '{ print NR " " $(NF-2) }' bookreviews.tsv| head
 
 </div>
 
-### AWK Pattern Match With Regular Expressions
+### Awk Pattern Match With Regular Expressions
 
-Everything we've done so far has applied to every line in our file but the real power of AWK comes from pattern matching. You can give AWK a pattern to match each line on like this:
+Everything I've done so far has applied to every line in our file but the real power of Awk comes from pattern matching. You can give Awk a pattern to match each line on like this:
 ``` bash
 $ echo "aa \n bb \n cc" | awk '/bb/'
 bb
 ```
-This lets you use AWK like you would use GREP and you can combine this with the field access and printing we've done so far:
+This lets you use Awk like you would use `grep`. You can combine this with the field access and printing we've done so far:
 ``` bash
 $ echo "aa 10\n bb 20 \n cc 30" | awk '/bb/{ print $2 }'
 bb
@@ -865,4 +877,9 @@ The Girl with the Dragon Tattoo (Millennium Series      👎👎
 It looks like even though the hunger games movie came out in 2012, none of the books even cracked the top 10 of reviews.
 
 ### Conclusion
+> A good programmer uses the most powerful tool to do a job. A great programmer uses the least powerful tool that does the job." I believe this, and I always try to find the combination of simple and lightweight tools which does the job at hand correctly.
+>
+> [vyuh](https://news.ycombinator.com/item?id=28445692
+https://news.ycombinator.com/item?id=28445692)
+
 What did we learn?
