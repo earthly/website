@@ -672,7 +672,7 @@ Third, why not? Learning a new tool can be fun.
 We've now crossed over from one-liners into Awk scripting. With Awk, the transition is smooth. We can embed Awk into a bash script:
 
 ``` bash
-cat average
+$ cat average
 ```
 
 ``` ini
