@@ -842,7 +842,7 @@ Not bad for a langauge written in 1977!
 
 ### AWK If Else
 
-The thing I hate about amazon reviews is that every book review I look at is somehow rated between 3.5 and 4.5 stars. Let's rescale things in terms of the average.
+The thing I hate about amazon reviews is that every book review I look at is somehow rated between 3.5 and 4.5 stars. Let's rescale things in terms of the average. Maybe if we normalize the reviews it will be easier to judge how good or bad 3.77 for MockingJay is. 
 
 First I need to track the global average like this
 ``` awk
@@ -875,15 +875,18 @@ END {
     }
 }
 ```
-The values for partitioning are just a guess, but it does seem to give a better distribution:
+The values for partitioning are just a guess, but it make it easier for me to understand the rankings:
 ```
-The Return of the King (The Lo  👍👍
-The Two Towers (The Lord of th  👍👍👍
-The Fellowship of the Ring (Th  👍
-The Hunger Games (The Hunger G  👍👍
+The Hunger Games (The Hunger G  👍
+Catching Fire: The Official Il  👍👍👍
 Mockingjay (The Hunger Games)   👎👎
-Catching Fire (The Hunger Game  👍👍
+
+The Two Towers (The Lord of th  👍👍
+The Fellowship of the Ring (Th  👍👍
+The Return of the King (The Lo  👍👍👍
 ```
+
+It looks like MockingJay, at least on Amazon, in this dataset, was not well received. 
 
 We can easily modify this to give let us query this adhoc:
 ``` awk
@@ -932,11 +935,36 @@ Neuromancer                                             👎👎
 ./average "The Lifecycle of Software Objects"
 The Lifecycle of Software Objects                       👎
 ```
-I'm starting to question the taste of 2012 Amazon reviewers, since these are all great books. 
+These are all great books so I'm starting to question the taste of Amazon reviewers. 
+
+There is one more thing I'd like to test though: how do the most popular books rate? Maybe popular books get lots of reviews and that pushes them below the overall average?
+<div class="notice--big--primary">
+
+**What I've learned: Awk If Else**
+
+Awk has branching using `if` and `else` statments. It works exactly like you might expect it to:
+
+``` bash
+echo "1\n 2\n 3\n 4\n 5\n 6" | awk '{
+        if (NR % 2) 
+            print "odd"
+        else
+            print $0
+        }'
+```
+``` ini 
+odd
+2
+odd
+4
+odd
+6
+```
+</div>
 
 ## Awk Sort by Values
 
-AWK ( specifically gawk >= 4) allows you easily configure your iteration order using a magic variable called `PROCINFO["sorted_in"]`. This means that if I change our program to sort by value and drop the filtering then I will be able to see the top reviewed books of 2012:
+Awk ( specifically gawk) allows you easily configure your iteration order using a magic variable called `PROCINFO["sorted_in"]`. This means that if I change our program to sort by value and drop the filtering then I will be able to see the top reviewed books:
 
 ``` awk
 exec gawk -F '\t' '
@@ -977,19 +1005,19 @@ Running it:
 $ ./top_books | head
 ```
 ```
-Breaking Dawn (The Twilight Saga, Book 4)               👎👎
-The Shack: Where Tragedy Confronts Eternity             👎
-The Help                                                👍👍
-Twilight (The Twilight Saga, Book 1)                    👎
-Harry Potter and the Deathly Hallows (Book 7)           👍👍
-Killing Lincoln: The Shocking Assassination that C      👎👎👎
-Water for Elephants: A Novel                            👍
-Liberty and Tyranny: A Conservative Manifesto           👍👍👍
-The Secret                                              👎👎
-The Girl with the Dragon Tattoo (Millennium Series      👎👎
+667539744       Harry Potter And The Sorcerer's Stone                 👍👍
+600633062       Fifty Shades of Grey                                  👎👎
+245449872       The Hunger Games (The Hunger Games, Book 1)           👍
+669379389       The Hobbit                                            👍
+745538746       Twilight                                              👎
+340399706       Jesus Calling: Enjoying Peace in His Presence         👍👍👍
+259796199       Unbroken: A World War II Story of Survival, Resili    👍👍👍
+736723180       The Shack: Where Tragedy Confronts Eternity           👎
+941986263       Divergent                                             👍
+93816562        Gone Girl                                             👎👎
 ```
 
-It looks like even though the hunger games movie came out in 2012, none of the books even cracked the top 10 of reviews.
+It looks like about half (6 /10) of the most reviewed books were more popular than average. This tell me that the low reviews on MockingJay can't be blamed on its popularity.  So, I think I'll have to take a pass on the series or at the very least that book.
 
 ### Conclusion
 > A good programmer uses the most powerful tool to do a job. A great programmer uses the least powerful tool that does the job." I believe this, and I always try to find the combination of simple and lightweight tools which does the job at hand correctly.
@@ -997,4 +1025,8 @@ It looks like even though the hunger games movie came out in 2012, none of the b
 > [vyuh](https://news.ycombinator.com/item?id=28445692
 https://news.ycombinator.com/item?id=28445692)
 
-What did we learn?
+Awk just keeps going. It has more built-in variables and built-in functions. It has range patterns and substition rules you can use to modify content and more.
+
+If you want to learn more Awk, [The Awk Programming Language]() is the definitive book. It covers the language in depth but also covers how to biuld a small programming language in Awk, how to build a database in Awk and some other fun projects. It's really an introduction to building things with scripting langauges.
+
+I hope this introduction gave you enough AWK for 90% of your use-cases though. If you come up with any clever Awk tricks yourself or if you have strong opinions on whether I should read the Hunger Games Trilogy, please reach out me.
