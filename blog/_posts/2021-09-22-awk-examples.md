@@ -352,45 +352,46 @@ awk -F '\t' '{ print NR " " $(NF-2) }' bookreviews.tsv| head
 
 ### Awk Pattern Match With Regular Expressions
 
-Everything I've done so far has applied to every line in our file but the real power of Awk comes from pattern matching. You can give Awk a pattern to match each line on like this:
+Everything I've done so far has applied to every line in our file but the real power of Awk comes from pattern matching. And you can give Awk a pattern to match each line on like this:
 ``` bash
-$ echo "aa \n bb \n cc" | awk '/bb/'
+$ echo "aa
+        bb
+        cc" | awk '/bb/'
 bb
 ```
 This lets you use Awk like you would use `grep`. You can combine this with the field access and printing we've done so far:
 ``` bash
-$ echo "aa 10\n bb 20 \n cc 30" | awk '/bb/{ print $2 }'
-bb
+$ echo "aa 10
+        bb 20
+        cc 30" | awk '/bb/{ print $2 }'
+20
 ```
 
-Using this knowledge, I can easily grab reviews by product_id and print the book title ($6):
+Using this knowledge, I can easily grab reviews by book title and print the book title($6) and review score($8). 
+
+This dataset is up to 2012, which is when the first Hunger Games moving came out, so let's look for it:
 
 ``` bash
-$ awk -F '\t' '/0439023483/{ print $6  }' bookreviews.tsv | head
+$ awk -F '\t' '/Hunger Games/{ print $6, $8  }' bookreviews.tsv | head
 ```
 ``` ini
-The Hunger Games (The Hunger Games, Book 1)
-The Hunger Games (The Hunger Games, Book 1)
-The Hunger Games (The Hunger Games, Book 1)
-The Hunger Games (The Hunger Games, Book 1)
-The Hunger Games (The Hunger Games, Book 1)
-The Hunger Games (The Hunger Games, Book 1)
-The Hunger Games (The Hunger Games, Book 1)
-The Hunger Games (The Hunger Games, Book 1)
-The Hunger Games (The Hunger Games, Book 1)
-The Hunger Games (The Hunger Games, Book 1)
-The Hunger Games (The Hunger Games, Book 1)
-The Hunger Games (The Hunger Games, Book 1)
-The Hunger Games (The Hunger Games, Book 1)
+The Hunger Games (Book 1) 5
+The Hunger Games Trilogy Boxed Set 5
+The Hunger Games Trilogy: The Hunger Games / Catching Fire / Mockingjay 5
+Catching Fire |Hunger Games|2 4
+The Hunger Games (Book 1) 5
+Catching Fire |Hunger Games|2 5
+The Hunger Games Trilogy: The Hunger Games / Catching Fire / Mockingjay 5
+Blackout 3
+The Hunger Games Trilogy: The Hunger Games / Catching Fire / Mockingjay 4
+Tabula Rasa 3
 ```
-<figcaption>
-The amazon reviews dataset I'm using is from 2012. Hunger Games we really big then
-</figcaption>
+I should be able to do some interesting data analysis on these reviews, but first there is a problem. I'm clearly getting reviews from more than one book here. `/Hunger Games/` is matching anywhere in the line and I'm getting all kinds of Hunger Game books. 
 
-I should be able to do some interesting data analysis on these reviews, but first there is a problem. `/0439023483/` is matching any line with that number in it anywhere and I seem to be getting some false positives:
+I'm even getting books that mention "Hunger Games" in the review text:
 
 ``` bash
-$ awk -F '\t' '/0439023483/{ print $6 }' bookreviews.tsv | sort |  uniq      
+$ awk -F '\t' '/Hunger Games/{ print $6 }' bookreviews.tsv | sort | uniq    
 ```
 ``` ini
 Birthmarked
@@ -403,58 +404,32 @@ Futuretrack 5
 Girl in the Arena
 ...
 ```
-The problem is the file has a `product_parent` column and since I'm matching on the whole line I'm getting back all the related child products. 
 
-It is sort of like this
-``` bash
-$ cat hunger-tree.table 
-  title parent
-  hunger_games none
-  sequel hunger_games
-  sequel_again hunger_games
-$ awk '/hunger_games/' hunger-tree.table 
-  hunger_games none
-  sequel hunger_games
-  sequel_again hunger_games
-```
-
-I can fix this by specifying a field to pattern match on:
-``` bash
-$ echo "key1 key2 value1\n key2 key3 value2 \n key5 key1 value3" | awk '$1/key2/{ print $2 }'
-bb
-```
-
-I can fix this by using `$field == "value"` in my pattern
-
-``` bash
-$ awk '$1 =="hunger_games"{ print $1}'
-hunger_games
-```
-I can see that it works with the amazon dataset as well:
+I can fix this by using the `product_id` field to pattern match on:
 ``` bash
 awk -F '\t' '$4 == "0439023483"{ print $6 }' bookreviews.tsv | sort |  uniq 
 The Hunger Games (The Hunger Games, Book 1)
 ```
 
-I'd like to calculate the average review score for hunger games in my dataset but first lets take a look at the review_date (`$15`), the review_headline (`$13`) and the star_rating (`$8`) of our Hunger Games reviews.
+I'd like to calculate the average review score for hunger games in my dataset but first lets take a look at the review_date (`$15`), the review_headline (`$13`) and the star_rating (`$8`) of our Hunger Games reviews, to get a feel for the data:
 
 ``` bash
-$ awk -F '\t' '$4~0439023483{ print $15 "\t" $13 "\t" $8}' bookreviews.tsv | head 
+$ awk -F '\t' '$4 == "0439023483{ print $15 "\t" $13 "\t" $8}' bookreviews.tsv | head 
 ```
 ``` ini
-2012-05-02      Great story, great characters   5
-2012-05-02      Great!  5
-2012-05-02      " A Repeat Of The First Book"   2
-2012-05-02      Great book, appropriate and satisfying ending   5
-2012-05-02      Catching Fire   5
-2012-05-02      Psychological Manipulation Inappropriate for Youths.    1
-2012-05-02      A Ray of Light  5
-2012-05-02      Easy and Entertaining Read      4
-2012-05-02      The Hunger GAmes        5
-2012-05-02      the game of life [no spoilers]  4
+015-08-19      Five Stars      5
+2015-08-17      Five Stars      5
+2015-07-23      Great read      5
+2015-07-05      Awesome 5
+2015-06-28      Epic start to an epic series    5
+2015-06-21      Five Stars      5
+2015-04-19      Five Stars      5
+2015-04-12      i lile the book 3
+2015-03-28      What a Great Read, i could not out it down   5
+2015-03-28      Five Stars      5
 ```
 
-Look at those star ratings. Yes, the book is polarizing but more importantly, the layout of my text table look horrible: the width of the width of the review titles are breaking the layout.
+Look at those star ratings. Yes, the book is getting a lot of 5 star reviews but more importantly, the layout of my text table look horrible: the width of the review titles are breaking the layout.
 
 To fix this I need to switch from using `print` to using `printf`.
 
