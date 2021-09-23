@@ -771,17 +771,17 @@ Ave: 4.52        Count: 2205
 ```
 And look at that, the first book in the series was the most popular. And the last book, Mocking Jay was much less popular. That isn't a good sign.
 
-<div class="notice--info">
+<!-- <div class="notice--info">
 **Side Note: RegEx**
 
 There are many editions of the hunger games books. This regex from above `\(The Hunger Games(, Book 1)?\)$/` let me narrow the results down to the most popular edition of the three books. 
-</div>
+</div> -->
 
 Let me look at another trilogy to see if this gradual decrease in rankings is common or Hunger Games specific:
 
 ``` awk
 BEGIN { FS = "\t" }
-$6~/\(The Lord of the Rings, Book .\)$/ { 
+$6~/\(The Lord of the Rings, Book .\)$/ {  # <-- changed this line
   title[$6]=$6
   count[$6]= count[$6] + 1
   total[$6]= total[$6] + $8
@@ -813,6 +813,32 @@ Ave: 4.60        Count: 93
 ```
 
 Lord of the Rings has a different pattern. The books are all in a pretty tight range. The number of reviews is also much smaller so it's hard to say for sure that "The Return Of the King" is the best book but it certainly looks that way. 
+
+<div class="notice--big--primary">
+
+**What I've learned: Awk Associative Arrays**
+
+Awk has associative arrays built it. These use a string as the index and function very much like Python dictionaries. 
+
+``` awk
+arr["key1"] = "one"
+arr["key2"] = "two"
+arr["key3"] = "three"
+```
+There is also a for loop construct for iterating over them:
+``` awk
+for (i in arr){
+    print $i, arr[i]
+}
+```
+``` bash
+key1 one
+key2 two
+key3 three
+```
+
+Not bad for a langauge written in 1977!
+</div>
 
 ### AWK If Else
 
