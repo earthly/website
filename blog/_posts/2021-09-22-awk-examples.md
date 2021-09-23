@@ -303,7 +303,7 @@ awk -F '\t' '{ print $6 }'
 I can also work backwards from the last position forward by subtracting from `NF`.
 
 ``` bash
-awk -F '\t' '{ print $NF "\t" $(NF-2)}' bookreviews.tsv| head 
+awk -F '\t' '{ print $NF "\t" $(NF-2)}' bookreviews.tsv | head 
 ```
 
 ``` ini
