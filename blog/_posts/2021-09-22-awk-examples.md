@@ -843,7 +843,7 @@ First, I need to calculate the global average like this
     g_total = g_total + $8 
 }
 ```
-Then all I need to do is add some if statements to my `END` pattern:
+Once I have this, I can score books based on how higher or lower they are than the average. All I need to do is add some if statements to my `END` pattern to accomplish this:
 ```
 END { 
     g_score = g_total/g_count 
@@ -866,7 +866,7 @@ END {
     }
 }
 ```
-The values for partitioning are just a guess, but it make it easier for me to understand the rankings:
+The values for partitioning are just a guess, but it makes it easier for me to understand the rankings:
 ```
 The Hunger Games (The Hunger G  👍
 Catching Fire: The Official Il  👍👍👍
@@ -877,7 +877,7 @@ The Fellowship of the Ring (Th  👍👍
 The Return of the King (The Lo  👍👍👍
 ```
 
-It looks like MockingJay, at least on Amazon, in this dataset, was not well received. 
+It looks like Mockingjay, at least on Amazon and in this dataset, was not well received. 
 
 We can easily modify this to give let us query this ad hoc:
 ``` awk
@@ -928,7 +928,7 @@ The Lifecycle of Software Objects                       👎
 ```
 These are all great books, so I'm starting to question the taste of Amazon reviewers. 
 
-I'd like to test one more thing though: how do the most popular books rate? Maybe popular books get lots of reviews and that pushes them below the overall average?
+I want to test one more thing, though: how do the most popular books rate? Maybe popular books get lots of reviews, and that pushes them below the overall average?
 <div class="notice--big--primary">
 
 **What I've learned: Awk If Else**
@@ -955,7 +955,7 @@ odd
 
 ## Awk Sort by Values
 
-Awk ( specifically gawk) allows you easily configure your iteration order using a magic variable called `PROCINFO["sorted_in"]`. This means that if I change our program to sort by value and drop the filtering then I will be able to see the top reviewed books:
+Awk ( specifically gawk) allows you easily configure your iteration order using a magic variable called `PROCINFO["sorted_in"]`. This means that if I change our program to sort by value and drop the filtering, then I will be able to see the top reviewed books:
 
 ``` awk
 exec gawk -F '\t' '
@@ -1008,7 +1008,7 @@ $ ./top_books | head
 93816562        Gone Girl                                             👎👎
 ```
 
-It looks like about half (6 /10) of the most reviewed books were more popular than average. This tell me that the low reviews on MockingJay can't be blamed on its popularity. So I'll have to take a pass on the series or at least that book.
+It looks like about half (6 /10) of the most reviewed books were more popular than average. So Mockingjay's low score can't be blamed on its popularity. I think I'll have to take a pass on the series or at least that book.
 
 ### Conclusion
 > A good programmer uses the most powerful tool to do a job. A great programmer uses the least powerful tool that does the job." I believe this, and I always try to find the combination of simple and lightweight tools which does the job at hand correctly.
@@ -1016,8 +1016,8 @@ It looks like about half (6 /10) of the most reviewed books were more popular th
 > [vyuh](https://news.ycombinator.com/item?id=28445692
 https://news.ycombinator.com/item?id=28445692)
 
-Awk has more to it than this. It has more built-in variables and built-in functions. It has range patterns and substitution rules so that you can modify content.
+Awk has more to it than this. There are more built-in variables and built-in functions. It has range patterns and substitution rules and you can easily use it to modify content, not just add things up.
 
-If you want to learn more Awk, [The Awk Programming Language](https://www.amazon.ca/AWK-Programming-Language-Alfred-Aho/dp/020107981X/) is the definitive book. It covers the language in depth and also covers how to build a small programming language in Awk, how to build a database in Awk and some other fun projects.
+If you want to learn more about Awk, [The Awk Programming Language](https://www.amazon.ca/AWK-Programming-Language-Alfred-Aho/dp/020107981X/) is the definitive book. It covers the language in depth. It also covers how to build a small programming language in Awk, how to build a database in Awk, and some other fun projects.
 
 I hope this introduction gave you enough Awk for 90% of your use-cases though. If you come up with any clever Awk tricks yourself or if you have strong opinions on whether I should read the Hunger Games Trilogy, please reach out me.
