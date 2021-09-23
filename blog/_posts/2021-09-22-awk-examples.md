@@ -439,7 +439,7 @@ awk -F '\t' '$4 == "0439023483{ print $15 "\t" $13 "\t" $8}' bookreviews.tsv | h
 ```
 
 ``` ini
-015-08-19      Five Stars      5
+2015-08-19      Five Stars      5
 2015-08-17      Five Stars      5
 2015-07-23      Great read      5
 2015-07-05      Awesome 5
