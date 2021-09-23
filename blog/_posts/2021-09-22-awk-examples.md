@@ -608,21 +608,21 @@ You get the idea. If you have a table of space-delimited text returned by some t
 >
 > [Michael Feathers](https://news.ycombinator.com/item?id=13455678)
 
-In my mind, once an Awk program spans multiple lines, its time to consider putting it into a file. 
+In my mind, once an Awk program spans multiple lines, it's time to consider putting it into a file. 
 
 <div class="notice--info">
 **Side Note: Why Awk Scripting**
 
-Once we move beyond one-liners a natural question is *why*. As in 'Why not use python? Isn't it good at this type of thing?' I have a couple answers for that.
+Once we move beyond one-liners a natural question is *why*. As in 'Why not use Python? Isn't it good at this type of thing?' I have a couple answers for that.
 
-First, Awk is great for writing programs that are, at their core, a glorified for loop over some input. If that is what you are doing, and the amount of control flow is limited, using Awk will be more concise than using python. 
+First, Awk is great for writing programs that are, at their core, a glorified for loop over some input. If that is what you are doing, and the control flow is limited, using Awk will be more concise than using python. 
 
-Second, if you need to rewrite your Awk program in something else at some point so be it. It's not going to be more than 100 lines of code and the translation process will be straight forward. 
+Second, if you need to rewrite your Awk program into Python at some point, so be it. It's not going to be more than 100 lines of code, and the translation process will be straightforward.  
 
 Third, why not? Learning a new tool can be fun. 
 </div>
 
-We've now crossed over from one-liners into Awk scripting. With Awk, this the transition is smooth. We can embed Awk into a bash script:
+We've now crossed over from one-liners into Awk scripting. With Awk, the transition is smooth. We can embed Awk into a bash script:
 
 ``` bash
 $ cat average
@@ -664,7 +664,7 @@ $ awk -f average.awk bookreviews.tsv
 <div class="notice--info">
 **Side Note: BEGIN FS**
 
-If you do use a shebang or pass to Awk directly then it's easiest to set the file separator using `FS = "\t"` in the `BEGIN` action.
+If you use a shebang or pass to Awk directly, it's easiest to set the file separator using `FS = "\t"` in the `BEGIN` action.
 ``` awk
 BEGIN { FS = "\t" }
 ```
@@ -722,13 +722,12 @@ exec awk -F '\t' 'print $0' $1
 </div>
 
 ### Awk Arrays
-The next thing I'd like to do is compare the reviews across the hunger game trilogy. I'd like to know if the series stays strong, or its a single great book that was stretched out into a trilogy. 
-
-Which book was the best and which was the worst? If the reviews decline quickly then that is not a good sign. Let's find out.
+I'd like to know if the series stays strong or if it's a single great book that the author stretched out into a trilogy.  If the reviews decline quickly, then that is not a good sign. I should be able to see which book was rated the best and which was the worst. Let's find out.
 
 If I were going to calculate the averages in Python, I would loop over the list of reviews and use a dictionary to track the total stars and total reviews for each.
 
 In Awk I can do the same:
+
 ``` awk
 BEGIN { FS = "\t" }
 $6~/\(The Hunger Games(, Book 1)?\)$/ { 
@@ -767,9 +766,9 @@ Ave: 4.52        Count: 2205
 ---------------------------------------
 
 ```
-And look at that, the first book in the series was the most popular. And the last book, Mocking Jay was much less popular. That isn't a good sign.
+And look at that, the first book in the series was the most popular. And the last book, Mockingjay was much less popular. That isn't a good sign.
 
-Let me look at another trilogy to see if this gradual decrease in rankings is common or Hunger Games specific:
+Let me look at another trilogy to see if this gradual decrease in rankings is common or The Hunger Games specific:
 
 ``` awk
 BEGIN { FS = "\t" }
@@ -804,13 +803,13 @@ The Fellowship of the Ring (The Lord of the Rings, Book 1)
 Ave: 4.60        Count: 93  
 ```
 
-Lord of the Rings has a different pattern. The books are all in a pretty tight range. The number of reviews is also much smaller so it's hard to say for sure that "The Return Of the King" is the best book but it certainly looks that way. 
+Lord of the Rings has a different pattern. The books are all in a pretty tight range. The number of reviews is also much smaller, so it's hard to say for sure that "The Return Of the King" is the best book but it certainly looks that way. 
 
 <div class="notice--big--primary">
 
 **What I've learned: Awk Associative Arrays**
 
-Awk has associative arrays built it. You can use them in much the same way you would use Python dictionaries. 
+Awk has associative arrays built it, and you can use them in much the same way you would use Python dictionaries.  
 
 ``` awk
 arr["key1"] = "one"
@@ -832,11 +831,11 @@ key3 three
 Not bad for a language written in 1977!
 </div>
 
-### Awk If Else
+### Awk `If` `Else`
 
-The thing I hate about amazon reviews is that every book review I look at is somehow rated between 3.0 and 4.5 stars. Let's rescale things in terms of the average. Maybe if we normalize the reviews it will be easier to judge how good or bad 3.77 for MockingJay is. 
+I hate how every book on Amazon has a star rating between 3.0 and 4.5 stars. It makes it hard to judge purely based on numbers. So let's rescale things in terms of the average. Maybe if we normalize the reviews, it will be easier to judge how good or bad 3.77 for Mockingjay is. 
 
-First I need to calculate the global average like this
+First, I need to calculate the global average like this
 ``` awk
 {
     # Global Average
