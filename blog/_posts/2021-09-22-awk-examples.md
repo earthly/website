@@ -811,7 +811,7 @@ END {
 ```
 
 ``` bash
-awk -f hungergames.awk bookreviews.tsv
+$ awk -f hungergames.awk bookreviews.tsv
 ```
 
 ``` ini
