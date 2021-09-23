@@ -4,22 +4,9 @@ categories:
   - Tutorials
 toc: true
 author: Adam
-
 internal-links:
- - just an example
+ - awk
 ---
-### Writing Article Checklist
-
-- [ ] Fix Grammarly Errors
-- [ ] Read out loud
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-- [ ] Run mark down linter (`earthly +blog-lint-apply`)
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `earthly --build-arg NAME=2020-09-10-better-builds.md +link-opportunity` and find 1-5 places to incorporate links to other articles
-- [ ] Raise PR
-
 > awk exists so that guy can rag on any data processing tool made after the year 1990 to get votes from people who can't really remember any of its syntax
 >
 > "I processed 500 Petabytes with awk on a single server once I don't see why this is needed"
