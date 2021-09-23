@@ -1020,4 +1020,11 @@ Awk has more to it than this. There are more built-in variables and built-in fun
 
 If you want to learn more about Awk, [The Awk Programming Language](https://www.amazon.ca/AWK-Programming-Language-Alfred-Aho/dp/020107981X/) is the definitive book. It covers the language in depth. It also covers how to build a small programming language in Awk, how to build a database in Awk, and some other fun projects.
 
+Even Amazon thinks its great:
+
+``` bash
+./average "The AWK "          
+The AWK Programming Language                            👍👍
+```
+
 I hope this introduction gave you enough Awk for 90% of your use-cases though. If you come up with any clever Awk tricks yourself or if you have strong opinions on whether I should read the Hunger Games Trilogy, please reach out me.
