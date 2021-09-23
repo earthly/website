@@ -542,7 +542,7 @@ It ends up looking something like this:
 awk '{ printf "%s \t %-5s", $1, substr($2,1,5)}'
 ```
 
-`printf` works much like c's `printf`, and for more information on the other built-ins, you can consult an Awk reference document.
+`printf` works much like C's `printf`, and for more information on the other built-ins, you can consult an Awk reference document.
 </div>
 
 ## Awk `END` Actions
