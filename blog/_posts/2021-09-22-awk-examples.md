@@ -26,11 +26,11 @@ internal-links:
 >
 > Reddit User [BufferUnderpants](https://www.reddit.com/r/programming/comments/pank18/comment/ha6hzg0/?utm_source=reddit&utm_medium=web2x&context=3)
 
-I have a confession to make - I don't know how to use Awk. Or I didn't know how to use it before I started writing this article. The people I know who use it and use it well they seem to have a text processing super power and I want that power. 
+I have a confession to make - I don't know how to use Awk. Or at least I didn't know how to use it before I started writing this article. But yet, the people I know who use it and use it well seem to have a text processing superpower and, I want that power. 
 
-It turns out Awk is pretty simple. It has a only couple of conventions and only small amount of syntax. It's design to be easy to learn, easy to write and easy to throw away. 
+It turns out Awk is pretty simple. It has only a couple of conventions and only a small amount of syntax. It's designed to be easy to learn, easy to write, and easy to throw away. 
 
-So in this article I will teach myself, and you, the basics of Awk. I'm going to use Awk to look at book reviews and pick my next book to read. **If you read through the article and maybe even try an example or two, you should have no problem writing Awk scripts by the end of it.** And you probably don't even need to install anything because Awk is everywhere. 
+So in this article, I will teach myself, and you, the basics of Awk. I'm going to use Awk to look at book reviews and pick my next book to read. **If you read through the article and maybe even try an example or two, you should have no problem writing Awk scripts by the end of it.** And you probably don't even need to install anything because Awk is everywhere. 
 
 ## What Is Awk
 
@@ -38,9 +38,9 @@ So in this article I will teach myself, and you, the basics of Awk. I'm going to
 > 
 > Bryan Cantrill 
 
-Awk is a record processing tool written by Aho, Kernighan, and Weinberger in 1977. It's name is an acronym of their names. 
+Awk is a record processing tool written by Aho, Kernighan, and Weinberger in 1977. Its name is an acronym of their names. 
 
-They created it following the success of the line processing tools `sed` and `grep`. Awk was originally an experiment into how text processing tools could be extended to deal with numbers. If grep lets you search for lines, and sed lets you do replacements in lines then awk was designed to let you do calculations on lines. It will be clear what that means once I take us through some examples. 
+They created it following the success of the line processing tools `sed`, and `grep`. Awk was initially an experiment by the authors into whether text processing tools could be extended to deal with numbers. If grep lets you search for lines, and sed lets you do replacements in lines then awk was designed to let you do calculations on lines. It will be clear what that means once I take us through some examples. 
 
 ## How to Install `gawk`
 
@@ -48,7 +48,7 @@ They created it following the success of the line processing tools `sed` and `gr
 >
 > [cogman10](https://news.ycombinator.com/item?id=28447825)
 
-Awk is part of the Portable Operating System Interface (POSIX). This means its already on your MacBook and your Linux server. There are several versions of Awk but for the basics whatever Awk you have will do. 
+Awk is part of the Portable Operating System Interface (POSIX). This means its already on your MacBook and your Linux server. There are several versions of Awk, but for the basics, whatever Awk you have will do. 
 
 If you can run this, you can do the rest of this tutorial:
 
@@ -60,17 +60,17 @@ $ awk --version
   Copyright (C) 1989, 1991-2020 Free Software Foundation.
 ```
 
-If you are doing something more involved with Awk, take the time to install GNU Awk (`gawk`). I did this using Homebrew (`brew install gawk`). Windows users can use chocolatey (`choco install gawk`). It's already on your Linux distribution. 
+If you are doing something more involved with Awk, take the time to install GNU Awk (`gawk`). I did this using Homebrew (`brew install gawk`). Windows users can get gawk using chocolatey (`choco install gawk`). If you are on Linux, you already have it.
 
 ## Awk Print
 
-By default Awk expects to receive its input on standard in and output its results to standard out. The simplest thing you can do in Awk is print a line of input.
+By default, Awk expects to receive its input on standard in and output its results to standard out. Thus, the simplest thing you can do in Awk is print a line of input.
 
 ``` bash
 $ echo "one two three" | awk '{ print }'
 one two three
 ```
-Note the braces. This syntax will start to make sense after you see a couple examples.
+Note the braces. This syntax will start to make sense after you see a couple of examples.
 
 We can selectively choose columns (which Awk calls fields):
 ``` bash
@@ -81,14 +81,14 @@ two
 $ echo "one two three" | awk '{ print $3 }'
 three
 ```
-You may have been expecting the first column to be `$0` and not `$1` but `$0` is something different:
+You may have been expecting the first column to be `$0` and not `$1`, but `$0` is something different:
 ``` bash
 $ echo "one two three" | awk '{ print $0 }'
 ``` 
 ``` ini
 one two three
 ```
-It is the entire line! Incidentally Awk refers to each line as a record and each column as a field. 
+It is the entire line! Incidentally, Awk refers to each line as a record and each column as a field. 
 
 I can do this across multiple lines:
 ``` bash
@@ -115,7 +115,7 @@ one two
 four five
 ```
 
-Awk also includes `$NF` for access the last column:
+Awk also includes `$NF` for accessing the last column:
 
 ``` bash
 $ echo "
@@ -144,7 +144,7 @@ awk '{ print $1, $2, $7 }'
 
 ## Awk Sample Data
 
-To move beyond simple printing, I need some sample data. I'm going to use the book portion of the [amazon product reviews dataset](https://s3.amazonaws.com/amazon-reviews-pds/tsv/index.txt).
+To move beyond simple printing, I need some sample data. I'm will use the book portion of the [amazon product reviews dataset](https://s3.amazonaws.com/amazon-reviews-pds/tsv/index.txt) for the rest of this tutorial.
 
 > This dataset contains product reviews and metadata from Amazon, including 142.8 million reviews spanning May 1996 - July 2014.
 >
@@ -156,13 +156,14 @@ $ curl https://s3.amazonaws.com/amazon-reviews-pds/tsv/amazon_reviews_us_Books_v
   gunzip -c >> / 
   bookreviews.tsv
 ```
-Repeat this for each of the three book files (`v1_00`, `v1_01`, `v1_02`) if you want to follow along with the full dataset.
+
+If you want to follow along with the entire dataset, repeat this for each of the three book files (`v1_00`, `v1_01`, `v1_02`).
 
 <div class="notice--warning">
 
 **❗ Disk Space Warning**
 
-The above file is over 6 gigs unzipped. If you grab all three you will be up to 15 gigs. If you don't have much space you can play along by just grabbing the first ten thousand rows of the first file. 
+The above file is over six gigs unzipped. If you grab all three, you will be up to fifteen gigs of disk space. If you don't have much space, you can play along by just grabbing the first ten thousand rows of the first file. 
 
 ``` bash
 $ curl https://s3.amazonaws.com/amazon-reviews-pds/tsv/amazon_reviews_us_Books_v1_00.tsv.gz \
@@ -181,7 +182,8 @@ marketplace	customer_id	review_id	product_id	product_parent	product_title	produc
 US	22480053	R28HBXXO1UEVJT	0843952016	34858117	The Rising	Books	5	0	0	N	N	Great Twist on Zombie Mythos	I've known about this one for a long time, but just finally got around to reading it for the first time. I enjoyed it a lot!  What I liked the most was how it took a tired premise and breathed new life into it by creating an entirely new twist on the zombie mythos. A definite must read!	2012-05-03
 ```
 
-Each row in this file represents the record of one book review. The row is laid out like this:
+Each row in this file represents the record of one book review. Amazon lays out the fields like this:
+
 ``` ini
 DATA COLUMNS:
 01  marketplace       - 2 letter country code of the marketplace where the review was written.
@@ -235,7 +237,7 @@ customer_id
 51692331
 23108524
 ```
-However, when I try to print out the title things do not go well:
+However, when I try to print out the title, things do not go well:
 ``` bash
 $ awk '{ print $6 }' bookreviews.tsv| head 
 ```
@@ -308,9 +310,9 @@ review_date     review_headline
 <div class="notice--info">
 **Side Note: NF and NR**
 
-`$NF` seems like a unusual name for printing the last column
+`$NF` seems like an unusual name for printing the last column
 , right? 
-But `NF` is actually a variable holding the *Number of Fields* in a record. I am just using its value as an index to refer to the last field. 
+But actually, `NF` is a variable holding the *Number of Fields* in a record. So I'm just using its value as an index to refer to the last field. 
 
 I can print the actual value like this:
 ``` bash
@@ -329,7 +331,7 @@ awk -F '\t' '{ print NF }' bookreviews.tsv| head
 15
 ```
 
-Another variable Awk offers up for use is `NR`, the *number of records* so far. This is helpful if I need to print line numbers.
+Another variable Awk offers up for use is `NR`, the *number of records* so far. `NR` is handy when I need to print line numbers: 
 
 ``` bash
 awk -F '\t' '{ print NR " " $(NF-2) }' bookreviews.tsv| head  
@@ -346,19 +348,18 @@ awk -F '\t' '{ print NR " " $(NF-2) }' bookreviews.tsv| head
 9 Chocoholic heaven
 10 Quilt Art Projects for Children
 ```
-
 </div>
 
 ### Awk Pattern Match With Regular Expressions
 
-Everything I've done so far has applied to every line in our file but the real power of Awk comes from pattern matching. And you can give Awk a pattern to match each line on like this:
+Everything I've done so far has applied to every line in our file, but the real power of Awk comes from pattern matching. And you can give Awk a pattern to match each line on like this:
 ``` bash
 $ echo "aa
         bb
         cc" | awk '/bb/'
 bb
 ```
-This lets you use Awk like you would use `grep`. You can combine this with the field access and printing we've done so far:
+You could replace `grep` this way. You can also combine this with the field access and printing we've done so far:
 ``` bash
 $ echo "aa 10
         bb 20
@@ -368,7 +369,7 @@ $ echo "aa 10
 
 Using this knowledge, I can easily grab reviews by book title and print the book title(`$6`) and review score(`$8`). 
 
-The reviews I'm going to focus in on today, are for the book 'The Hunger Games'. I'm choosing it because: its a series, it's has many reviews, and I recall that I liked the movie and am wondering if I should read the trilogy.  
+The reviews I'm going to focus on today are for the book 'The Hunger Games'. I'm choosing it because it's part of a series with many reviews and I recall liking the movie. So I'm wondering if I should read it.  
 
 ``` bash
 $ awk -F '\t' '/Hunger Games/{ print $6, $8  }' bookreviews.tsv | head
@@ -385,9 +386,7 @@ Blackout 3
 The Hunger Games Trilogy: The Hunger Games / Catching Fire / Mockingjay 4
 Tabula Rasa 3
 ```
-I should be able to do valuable data from these reviews, but first there is a problem. I'm clearly getting reviews from more than one book here. `/Hunger Games/` is matching anywhere in the line and I'm getting all kinds of Hunger Game books. 
-
-I'm even getting books that mention "Hunger Games" in the review text:
+I should be able to pull valuable data from these reviews, but first there is a problem. I'm getting reviews from more than one book here. `/Hunger Games/` matches anywhere in the line and I'm getting all kinds of 'Hunger Games' books returned. I'm even getting books that mention "Hunger Games" in the review text:
 
 ``` bash
 $ awk -F '\t' '/Hunger Games/{ print $6 }' bookreviews.tsv | sort | uniq    
@@ -410,7 +409,7 @@ awk -F '\t' '$4 == "0439023483"{ print $6 }' bookreviews.tsv | sort |  uniq
 The Hunger Games (The Hunger Games, Book 1)
 ```
 
-I'd like to calculate the average review score for hunger games in my dataset, but first lets take a look at the review_date (`$15`), the review_headline (`$13`) and the star_rating (`$8`) of our Hunger Games reviews, to get a feel for the data:
+I'd want to calculate the average review score for 'The Hunger Games' in my dataset, but first, let's take a look at the review_date (`$15`), the review_headline (`$13`), and the star_rating (`$8`) of our Hunger Games reviews, to get a feel for the data:
 
 ``` bash
 $ awk -F '\t' '$4 == "0439023483{ print $15 "\t" $13 "\t" $8}' bookreviews.tsv | head 
@@ -428,7 +427,7 @@ $ awk -F '\t' '$4 == "0439023483{ print $15 "\t" $13 "\t" $8}' bookreviews.tsv |
 2015-03-28      Five Stars      5
 ```
 
-Look at those star ratings. Yes, the book is getting a lot of 5 star reviews but more importantly, the layout of my text table look horrible: the width of the review titles are breaking the layout.
+Look at those star ratings. Yes, the book is getting many 5-star reviews, but more importantly, the layout of my text table looks horrible: the width of the review titles is breaking the layout.
 
 To fix this I need to switch from using `print` to using `printf`.
 
@@ -438,7 +437,7 @@ To fix this I need to switch from using `print` to using `printf`.
 
 I've learned that an awk action, like `{ print $4}`, can be preceded by a pattern, like `/regex/`. Without the pattern, the action runs on all lines.
 
-You can use a plain regular expression for the pattern. In which case it matches anywhere in the line, like `grep`:
+You can use a simple regular expression for the pattern. In which case it matches anywhere in the line, like `grep`:
 ``` bash 
 $ awk '/hello/{ print "This line contains hello", $0}'
 ```
@@ -477,7 +476,7 @@ $ awk -F '\t' '$4 == "0439023483"{ printf "%s \t %-20s \t %s \n", $15, $13, $8}'
 2015-03-28       What a Great Read, i could not out it down   5 
 2015-03-28       Five Stars              5 
 ```
-This is pretty close to what I'd like. Some of the titles are just to long. I can shorten them up with `substr($13,1,20)`.
+This table is pretty close to what I'd want. Some of the titles are just too long. I can shorten them up with `substr($13,1,20)`.
 
 Putting it all together and I get:
 
@@ -497,7 +496,7 @@ $ awk -F '\t' '$4 == "0439023483"{ printf "%s \t %-20s \t %s \n", $15, substr($1
 2015-03-28       Five Stars              5 
 ```
 
-Alright, I think at this point I'm ready to move on to doing some calculations. 
+Alright, I think at this point, I'm ready to move on to star calculations. 
 
 
 <div class="notice--big--primary">
@@ -511,12 +510,12 @@ It ends up looking something like this:
 $ awk '{ printf "%s \t %-5s", $1, substr($2,1,5)}'
 ```
 
-`printf` works much like c's `printf` and for the built-ins included head to an Awk reference document.
+`printf` works much like c's `printf`, and for more information on the other built-ins, you can consult an Awk reference document.
 </div>
 
 ## Awk `END` Actions
 
-I want to calculate the average rating for book reviews in this data set. To do that I need to use a variable. Variables are easy in Awk. No declaration, just use them.
+I want to calculate the average rating for book reviews in this data set. To do that, I need to use a variable. Variables are straightforward in Awk. No declaration is required. You can just use them.
 
 I can add up and print out a running total of review_stars (`$8`) like this
 ``` bash
@@ -539,7 +538,7 @@ END { print "Average book review:", total/NR, "stars" }
 ``` ini
 Average book review is 4.24361 stars
 ```
-`BEGIN` also exists and runs an action at the beginning before any lines have been processed.
+I can also use `BEGIN` to run an action before Awk starts processing records.
 
 ``` bash
  $ awk -F '\t' '
@@ -556,7 +555,7 @@ Average book review is 4.24361 stars
 
 **What I've learned: Awk's `BEGIN`, `END` and Variables**
 
-Awk provides two special patterns, `BEGIN` and `END`. The actions in these blocks are run before any lines are processed and after all the lines have be processed. This is how you would initialize data, print headers and footer or do any start up or tear down stuff in Awk.
+Awk provides two special patterns, `BEGIN` and `END`. You can use them to run actions before any lines before and after processing the records. For example, this is how you would initialize data, print headers and footer, or do any start-up or tear-down stuff in Awk.
 
 It ends up looking like this:
 ``` bash
@@ -575,7 +574,7 @@ awk -F '{ total = total + $8 }'
 
 ### Fun Awk One-Liners
 
-Before we leave the world of one liners behind, I reached out to my friends to ask when they use Awk day to day. Here are some the examples I got back. 
+Before we leave the world of one-liners behind, I reached out to my friends to ask when they use Awk day-to-day. Here are some of the examples I got back.  
 
 Printing files with a human readable size:
 ``` bash
@@ -596,11 +595,11 @@ CONTAINER
 08488f220f76
 3b7fc673649f
 ```
-You can combine that last one with a regex to focus in on a line you care about. Here I stop postgres, regardless of its name:
+You can combine that last one with a regex to focus on a line you care about. Here I stop `postgres`, regardless of its tag name:
 ```
 docker stop "$(docker ps -a |  awk '/postgres/{ print $1 }')"
 ```
-And so on. You get the idea. If you have a table of space delimited text returned by some tool then Awk can easily slice and dice it.
+You get the idea. If you have a table of space-delimited text returned by some tool then Awk can easily slice and dice it.
 
 ## Awk Scripting Examples
 
@@ -609,7 +608,7 @@ And so on. You get the idea. If you have a table of space delimited text returne
 >
 > [Michael Feathers](https://news.ycombinator.com/item?id=13455678)
 
-In my mind, once an Awk program spans multiple lines its time to consider putting it into a file. 
+In my mind, once an Awk program spans multiple lines, its time to consider putting it into a file. 
 
 <div class="notice--info">
 **Side Note: Why Awk Scripting**
