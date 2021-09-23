@@ -367,9 +367,9 @@ $ echo "aa 10
 20
 ```
 
-Using this knowledge, I can easily grab reviews by book title and print the book title($6) and review score($8). 
+Using this knowledge, I can easily grab reviews by book title and print the book title(`$6`) and review score(`$8`). 
 
-This dataset is up to 2012, which is when the first Hunger Games moving came out, so let's look for it:
+The reviews I'm going to focus in on today, are for the book 'The Hunger Games'. I'm choosing it because: its a series, it's likely to have many reviews, and I recall that I liked the movie and am wondering if I should read the series.  
 
 ``` bash
 $ awk -F '\t' '/Hunger Games/{ print $6, $8  }' bookreviews.tsv | head
@@ -433,6 +433,26 @@ Look at those star ratings. Yes, the book is getting a lot of 5 star reviews but
 
 To fix this I need to switch from using `print` to using `printf`.
 
+<div class="notice--big--primary">
+
+**What I've learned: Awk Pattern Matching**
+
+I've learned that an awk action, like `{ print $4}`, can be preceded by a pattern, like `/regex/`. Without the pattern, the action runs on all lines.
+
+You can use a plain regular expression for the pattern. In which case it matches anywhere in the line, like `grep`:
+``` bash 
+$ awk '/hello/{ print "This line contains hello", $0}'
+```
+Or you can match within a specific field:
+``` bash
+$ awk '$4~/hello/{ print "This field contains hello", $4}'
+```
+Or you can exact match a field:
+``` bash
+$ awk '$4 == "hello"{ print "This field is hello:", $4}'
+```
+</div>
+
 ### AWK Printf
 
 `printf` works like it does in the C and uses a format string and then a list of values. 
@@ -440,30 +460,64 @@ To fix this I need to switch from using `print` to using `printf`.
 So my `print $15 "\t" $13 "\t" $8` 
 becomes `printf "%s \t %s \t %s, $15, $13, $8`. 
 
-From there I can add right padding and fix my layout by changing `%s` to `%-Ns` where `N` is my desired column width. 
+From there I can add right padding and fix my layout by changing `%s` to `%-Ns` where `N` is my desired column width:
 
-Putting it all together and we get: 
 
 ``` bash
-$ awk -F '\t' '$4~0439023483{ printf "%s \t %-55s \t %s \n", $15, $13, $8}' bookreviews.tsv| head 
+$ awk -F '\t' '$4 == "0439023483"{ printf "%s \t %-20s \t %s \n", $15, $13, $8}' bookreviews.tsv| head 
 ```
 ``` ini
-2012-05-02       Great story, great characters                                   5 
-2012-05-02       Great!                                                          5 
-2012-05-02       " A Repeat Of The First Book"                                   2 
-2012-05-02       Great book, appropriate and satisfying ending                   5 
-2012-05-02       Catching Fire                                                   5 
-2012-05-02       Psychological Manipulation Inappropriate for Youths.            1 
-2012-05-02       A Ray of Light                                                  5 
-2012-05-02       Easy and Entertaining Read                                      4 
-2012-05-02       The Hunger GAmes                                                5 
-2012-05-02       the game of life [no spoilers]                                  4 
+2015-08-19       Five Stars              5 
+2015-08-17       Five Stars              5 
+2015-07-23       Great read              5 
+2015-07-05       Awesome                 5 
+2015-06-28       Epic start to an epic series    5 
+2015-06-21       Five Stars              5 
+2015-04-19       Five Stars              5 
+2015-04-12       i lile the book         3 
+2015-03-28       What a Great Read, i could not out it down   5 
+2015-03-28       Five Stars              5 
+```
+This is pretty close to what I'd like. Some of the titles are just to long. I can shorten them up with `substr($13,1,20)`.
+
+Putting it all together and I get:
+
+``` bash
+$ awk -F '\t' '$4 == "0439023483"{ printf "%s \t %-20s \t %s \n", $15, substr($13,1,20), $8}' bookreviews.tsv| head
+```
+``` ini
+2015-08-19       Five Stars              5 
+2015-08-17       Five Stars              5 
+2015-07-23       Great read              5 
+2015-07-05       Awesome                 5 
+2015-06-28       Epic start to an epi    5 
+2015-06-21       Five Stars              5 
+2015-04-19       Five Stars              5 
+2015-04-12       i lile the book         3 
+2015-03-28       What a Great Read, i    5 
+2015-03-28       Five Stars              5 
 ```
 
+Alright, I think at this point I'm ready to move on to doing some calculations. 
 
-## AWK END Actions
 
-I want to calculate the average rating for book reviews in this data set. To do some I need to use a variable. Variables are easy in AWK. No declaration, just use them.
+<div class="notice--big--primary">
+
+**What I've learned: Printf and Built-ins**
+
+If you need print out a table, Awk lets you use `printf` and built-ins like `substr` to format your output.
+
+It ends up looking something like this:
+``` bash
+$ awk '{ printf "%s \t %-5s", $1, substr($2,1,5)}'
+```
+
+`printf` works much like c's `printf` and for the built-ins included head to an Awk reference document.
+</div>
+
+## Awk `END` Actions
+
+I want to calculate the average rating for book reviews in this data set. To do that I need to use a variable. Variables are easy in Awk. No declaration, just use them.
 
 I can add up and print out a running total of review_stars (`$8`) like this
 ``` bash
@@ -486,7 +540,7 @@ END { print "Average book review:", total/NR, "stars" }
 ``` ini
 Average book review is 4.24361 stars
 ```
-`BEGIN` also exists and runs an action at the beginnning before any lines have been processed.
+`BEGIN` also exists and runs an action at the beginning before any lines have been processed.
 
 ``` bash
  $ awk -F '\t' '
@@ -499,10 +553,30 @@ END   { print "Average book review:", total/NR, "stars" }
 Calculating Average ...
 Average book review is 4.24361 stars
 ```
+<div class="notice--big--primary">
 
-### Fun AWK one-liners
+**What I've learned: Awk's `BEGIN`, `END` and Variables**
 
-Before we leave the world of one liners behind here are some fun ones. Most times I've had to reach for AWK involves a comand line tool returning a whitespace delimited table that I'd like to customize.
+Awk provides two special patterns, `BEGIN` and `END`. The actions in these blocks are run before any lines are processed and after all the lines have be processed. This is how you would initialize data, print headers and footer or do any start up or tear down stuff in Awk.
+
+It ends up looking like this:
+``` bash
+$ awk '
+BEGIN { print "start up" }
+      { print "line match" }
+END   { print "tear down" }'
+```
+
+You can also easily use variables in Awk. No declaration is needed.
+``` bash
+awk -F '{ total = total + $8 }'
+```
+
+</div>
+
+### Fun Awk one-liners
+
+Before we leave the world of one liners behind here are some I've used before. Most of the times I've had to reach for Awk involves a command line tools returning a whitespace delimited table that I'd like to customize or further process.
 
 Like printing files with a human readable size:
 ``` bash
@@ -512,8 +586,6 @@ $ ls -lh | awk '{ print $5,"\t", $9 }'
 7.8M     The_AWK_Programming_Language.pdf
 6.2G     bookreviews.tsv
 ```
-....
-...
 
 Or getting the containerID of running docker containers:
 
@@ -529,7 +601,7 @@ We can combine those with a regex to focus in on a line we care about. Here I st
 ```
 docker stop "$(docker ps -a |  awk '/postgres/{ print $1 }')"
 ```
-You get the idea. 
+And so on. You get the idea.
 
 ## AWK Scripting Examples
 
@@ -541,18 +613,18 @@ You get the idea.
 In my mind, once an AWK program spans multiple lines its time to consider putting it into a file. 
 
 <div class="notice--info">
-**Side Note: Why AWK Scripting**
+**Side Note: Why Awk Scripting**
 
-Once we move beyond one-liners a natural question is why. Why not use python? Isn't it good at this type of thing? I have a couple answers for that.
+Once we move beyond one-liners a natural question is *why*. As in 'Why not use python? Isn't it good at this type of thing?' I have a couple answers for that.
 
-First, AWK is great for writing programs that are, at their core, a glorified for loop over some input. If that is what you are doing, and the amount of control flow is limited, using AWK will be more consise than using python. 
+First, Awk is great for writing programs that are, at their core, a glorified for loop over some input. If that is what you are doing, and the amount of control flow is limited, using Awk will be more concise than using python. 
 
-Second, if you need to rewrite your AWK program in something else at some point so be it. It's not going to be more than 100 lines of code and the translation process will be straight forward. 
+Second, if you need to rewrite your Awk program in something else at some point so be it. It's not going to be more than 100 lines of code and the translation process will be straight forward. 
 
 Third, why not? Learning a new tool can be fun. 
 </div>
 
-We've now crossed over from one-liners into AWK scripting. With AWK, this the transition is smooth.
+We've now crossed over from one-liners into AWK scripting. With AWK, this the transition is smooth. We can embed Awk into a bash script:
 
 ``` bash
 $ cat average
@@ -570,9 +642,9 @@ $ average bookreviews.tsv
 Average book review is 4.2862 stars
 ```
 
-It's also possible to use a shebang (`#!`) to run an AWK script. If you do this, it's easiest to set the file seperator to tab using `FS = "\t"` in the `BEGIN` action:
+Or we can use a shebang (`#!`):
 ``` bash
-$ cat average
+$ cat average.awk
 ```
 ``` awk
 #!/usr/bin/env -S gawk -f
@@ -583,17 +655,26 @@ END { print "Average book $6 review is", total/NR, "stars" }
 ```
 And run it like this
 ```
-$ ./average bookreviews.tsv
+$ ./average.awk bookreviews.tsv
 ```
 
 Or you can also pass it to awk directly using `-f`:
 ```
-$ awk -f average bookreviews.tsv
+$ awk -f average.awk bookreviews.tsv
 ```
 
-### AWK Average Example
+<div class="notice--info">
+**Side Note: BEGIN FS**
 
-With the things I've covered so far, you should be able to do a lot with AWK. For example, I can get average review for hunger games:
+If you do use a shebang or pass to Awk directly then it's easiest to set the file separator using `FS = "\t"` in the `BEGIN` action.
+``` awk
+BEGIN { FS = "\t" }
+```
+</div>
+
+### Awk Average Example
+
+At this point, I should be ready to start calculating review scores for The Hunger Games :
 
 ``` bash
 exec awk -F '\t' '
@@ -620,12 +701,36 @@ Book: The Hunger Games (The Hunger Games, Book 1)
 Average Rating: 4.67%       
 ```
 
-### AWK Arrays
-The next thing I'd like to do is compare the reviews across the various hunger game books. Which book was the best? I haven't read the series, but my guess is that the first book is the strongest and things taper off from there. Let's find out.
+<div class="notice--big--primary">
+
+**What I've learned: Calling Awk from a file**
+
+Once you are beyond a single line, it makes sense to put your Awk script into a file. 
+
+You can then call you program using using the `-f`option
+
+``` bash
+awk -f file.awk input
+```
+
+Using a shebang :
+``` bash
+#!/usr/bin/env -S gawk -f
+```
+or by using a bash `exec` command:
+``` bash
+exec awk -F '\t' 'print $0' $1
+```
+</div>
+
+### Awk Arrays
+The next thing I'd like to do is compare the reviews across the hunger game trilogy. I'd like to know if the series stays strong, or its a single great book that was stretched out into a trilogy. 
+
+Which book was the best and which was the worst? If the reviews decline quickly then that is not a good sign. Let's find out.
 
 If I were going to calculate the averages in Python, I would loop over the list of reviews and use a dictionary to track the total stars and total reviews for each.
 
-In AWK I can do the same:
+In Awk I can do the same:
 ``` awk
 BEGIN { FS = "\t" }
 $6~/\(The Hunger Games(, Book 1)?\)$/ { 
@@ -642,26 +747,37 @@ END {
     }
 }
 ```
+``` bash
+$ awk -f hungergames.awk bookreviews.tsv
+```
 ``` ini
+---------------------------------------
 The Hunger Games (The Hunger Games, Book 1)
 ---------------------------------------
-Ave: 4.56        Count: 1230 
+Ave: 4.55        Count: 1497 
 
 ---------------------------------------
 Mockingjay (The Hunger Games)
 ---------------------------------------
-Ave: 3.51        Count: 2055 
+Ave: 3.77        Count: 3801 
 
 ---------------------------------------
 Catching Fire (The Hunger Games)
 ---------------------------------------
-Ave: 4.53        Count: 1287 
+Ave: 4.52        Count: 2205 
+
+---------------------------------------
 
 ```
+And look at that, the first book in the series was the most popular. And the last book, Mocking Jay was much less popular. That isn't a good sign.
 
-And look at that, the first book in the series was the most popular. The series order is Hunger Games, then Catching Fire, then Mocking Jay. If we can trust the reviewers than this implies a gradual decline in book quality. 
+<div class="notice--info">
+**Side Note: RegEx**
 
-Let me look at another trilogy to see if this gradual descrease is rankings is common or Hunger Games specific:
+There are many editions of the hunger games books. This regex from above `\(The Hunger Games(, Book 1)?\)$/` let me narrow the results down to the most popular edition of the three books. 
+</div>
+
+Let me look at another trilogy to see if this gradual decrease in rankings is common or Hunger Games specific:
 
 ``` awk
 BEGIN { FS = "\t" }
@@ -683,22 +799,20 @@ END {
 ---------------------------------------
 The Return of the King (The Lord of the Rings, Book 3)
 ---------------------------------------
-Ave: 4.57        Count: 14 
+Ave: 4.79        Count: 38 
 
 ---------------------------------------
 The Two Towers (The Lord of the Rings, Book 2)
 ---------------------------------------
-Ave: 4.67        Count: 12 
+Ave: 4.64        Count: 56 
 
 ---------------------------------------
 The Fellowship of the Ring (The Lord of the Rings, Book 1)
 ---------------------------------------
-Ave: 4.30        Count: 23 
+Ave: 4.60        Count: 93  
 ```
 
-Lord of the Rings has a different pattern. The second book is the most highly rated. The number of reviews is also much smaller so it's hard to say for sure that "The Fellowship" is the best book but it certainly looks that way. 
-
-
+Lord of the Rings has a different pattern. The books are all in a pretty tight range. The number of reviews is also much smaller so it's hard to say for sure that "The Return Of the King" is the best book but it certainly looks that way. 
 
 ### AWK If Else
 
