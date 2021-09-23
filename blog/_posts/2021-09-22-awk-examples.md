@@ -10,8 +10,6 @@ internal-links:
 ---
 ### Writing Article Checklist
 
-- [ ] Write Outline
-- [ ] Write Draft
 - [ ] Fix Grammarly Errors
 - [ ] Read out loud
 - [ ] Write 5 or more titles and pick the best on
@@ -27,7 +25,7 @@ internal-links:
 ## Intro
 
 <p>
-One of the comments I heard around the JQ article was the JQ was so complex just like AWK. I have a confession to make - I don't know how to use AWK. I hear it mentioned sometimes and occasionally I see a really cool blog post where someone uses AWK to takes a giant spark task or big data workflow and reduce its complexity to a one-line in AWK.
+One of the comments I heard around the JQ article was the JQ was so complex just like awk. I have a confession to make - I don't know how to use awk. I hear it mentioned sometimes and occasionally I see a cool blog post where someone uses awk to takes a giant spark task or big data workflow and reduce its complexity to a one-line in awk.
 </p>
 
 So in this article I will myself, and you, the basics of Awk.
@@ -36,7 +34,7 @@ So in this article I will myself, and you, the basics of Awk.
 
 Awk is a record processing tool written by Aho, Kernighan, and Weinberger in 1977. It's name is an acronym of their names. 
 
-They created it following the success of the line processing tools `sed` and `grep`. Awk was originally an experiment into how text processing tools could be extended to deal with numbers. If grep lets you search for lines, and sed lets you do replacements in lines then awk was designed to let you do calculations on lines. What that means will make more sense once I take us through some examples.
+They created it following the success of the line processing tools `sed` and `grep`. Awk was originally an experiment into how text processing tools could be extended to deal with numbers. If grep lets you search for lines, and sed lets you do replacements in lines then awk was designed to let you do calculations on lines. It will be clear what that means once I take us through some examples. 
 
 ## How to Install GAWK
 
@@ -46,6 +44,8 @@ They created it following the success of the line processing tools `sed` and `gr
 
 Awk is part of the Portable Operating System Interface (POSIX). This means its already on your MacBook and your Linux server. There are several versions of Awk and for the basics whatever Awk you have will do. 
 
+If you can run this, you can do the rest of this tutorial:
+
 ``` bash
 $ awk --version
 ``` 
@@ -54,59 +54,19 @@ $ awk --version
   Copyright (C) 1989, 1991-2020 Free Software Foundation.
 ```
 
-If you are doing something more involved with Awk, choose GNU Awk (`gawk`), which I installed using homebrew (`brew install gawk`) and which can also be installed on windows (`choco install gawk`). It is probably already on your linux distribution. 
+If you are doing something more involved with Awk, take the time to instal  GNU Awk (`gawk`). I did this using homebrew (`brew install gawk`). Windows users can use chocolatey (`choco install gawk`). It is already on your Linux distribution. 
 
+## Awk Print
 
-## AWK Sample Data
-
-To demostrate how Awk works, I'm going to need some sample data. I'm going to use the book portion of the [amazon product reviews dataset](https://s3.amazonaws.com/amazon-reviews-pds/tsv/index.txt).
-
-You can grab it like this:
-``` bash
-$ curl https://s3.amazonaws.com/amazon-reviews-pds/tsv/amazon_reviews_us_Books_v1_00.tsv.gz | /
-  gunzip -c >> / 
-  bookreviews.tsv
-```
-Repeat this for each of the three book files (`v1_00`, `v1_01`, `v1_02`) if you want to follow along.
-
-ToDo: up to here
-
-<div class="notice--warning">
-
-**❗ Disk Space Warning**
-
-The above file is over 6 gigs unzipped. If you don't have much space you can play along by just grabbing the first ten thousand rows. 
-
-```
-$ curl https://s3.amazonaws.com/amazon-reviews-pds/tsv/amazon_reviews_us_Books_v1_01.tsv.gz \
-  | gunzip -c \
-  | head -n 10000 \
-  > bookreviews.tsv
-```
-
-</div>
-
-That should give us a large file of Amazon book reviews that look like this:
-
-``` ini
-marketplace	customer_id	review_id	product_id	product_parent	product_title	product_category	star_rating	helpful_votes	total_votes	vine	verified_purchase	review_headline	review_body	review_date
-US	22480053	R28HBXXO1UEVJT	0843952016	34858117	The Rising	Books	5	0	0	N	N	Great Twist on Zombie Mythos	I've known about this one for a long time, but just finally got around to reading it for the first time. I enjoyed it a lot!  What I liked the most was how it took a tired premise and breathed new life into it by creating an entirely new twist on the zombie mythos. A definite must read!	2012-05-03
-```
-
-Each row in this file represents the record of one book review. We can view it as a record like this:
-TODO: insert record here
-
-## AWK Print
-
-By default AWK expects to receive its input on standard in and output its results to standard out. The simplest thing you can do in AWK is Print the line.
+By default Awk expects to receive its input on standard in and output its results to standard out. The simplest thing you can do in Awk is print a line of input.
 
 ``` bash
 $ echo "one two three" | awk '{ print }'
 one two three
 ```
-Note the braces. The syntax will make sense after seeing a couple examples.
+Note the braces. This syntax will start to make sense after you see a couple examples.
 
-We can selectively choose columns (which AWK calls fields):
+We can selectively choose columns (which Awk calls fields):
 ``` bash
 $ echo "one two three" | awk '{ print $1 }'
 one
@@ -115,14 +75,14 @@ two
 $ echo "one two three" | awk '{ print $3 }'
 three
 ```
-You may have been expecting the first colum to be $0 and not $1 but $0 is something different:
+You may have been expecting the first column to be `$0` and not `$1` but `$0` is something different:
 ``` bash
 $ echo "one two three" | awk '{ print $0 }'
 ``` 
 ``` ini
 one two three
 ```
-It is the entire line! Incidentally AWK refers to each line as a record and each column as a field. 
+It is the entire line! Incidentally Awk refers to each line as a record and each column as a field. 
 
 All of this also works across multiple lines:
 ``` bash
@@ -142,31 +102,81 @@ And we can print more than one column:
 $ echo "
  one two three
  four five six" \
-| awk '{ print $1 $2 }'
-```
-``` ini
-onetwo
-fourfive
-```
-
-But we need to put in spaces explicitly:
-
-``` bash
-$ echo "
- one two three
- four five six" \
-| awk '{ print $1 " " $2 }'
+| awk '{ print $1, $2 }'
 ```
 ``` ini
 one two
 four five
 ```
 
+## AWK Sample Data
 
+> awk exists so that guy can rag on any data processing tool made after the year 1990 to get votes from people who can’t really remember any of its syntax
+>
+> “I processed 500 Petabytes with awk on a single server once I don’t see why this is needed”
+>
+> [BufferUnderpants on /r/programming](https://www.reddit.com/r/programming/comments/pank18/comment/ha6hzg0/?utm_source=reddit&utm_medium=web2x&context=3)
 
-## Book Data
+To move beyond simple printing, I need some sample data. I'm going to use the book portion of the [amazon product reviews dataset](https://s3.amazonaws.com/amazon-reviews-pds/tsv/index.txt).
 
-I can use this knowledge to pull the fields I care about from the amazon dataset. Like the marketplace:
+> This dataset contains product reviews and metadata from Amazon, including 142.8 million reviews spanning May 1996 - July 2014.
+>
+> Amazon Review Data Set
+
+You can grab the book portion of it like this:
+``` bash
+$ curl https://s3.amazonaws.com/amazon-reviews-pds/tsv/amazon_reviews_us_Books_v1_00.tsv.gz | /
+  gunzip -c >> / 
+  bookreviews.tsv
+```
+Repeat this for each of the three book files (`v1_00`, `v1_01`, `v1_02`) if you want to follow along with the full dataset.
+
+<div class="notice--warning">
+
+**❗ Disk Space Warning**
+
+The above file is over 6 gigs unzipped. If you grab all three you will be up to 15 gigs. If you don't have much space you can play along by just grabbing the first ten thousand rows of the first file. 
+
+``` bash
+$ curl https://s3.amazonaws.com/amazon-reviews-pds/tsv/amazon_reviews_us_Books_v1_00.tsv.gz \
+  | gunzip -c \
+  | head -n 10000 \
+  > bookreviews.tsv
+```
+</div>
+
+## The Book Data
+
+Once you've grabbed that data, you should have Amazon book review data that looks like this:
+
+``` ini
+marketplace	customer_id	review_id	product_id	product_parent	product_title	product_category	star_rating	helpful_votes	total_votes	vine	verified_purchase	review_headline	review_body	review_date
+US	22480053	R28HBXXO1UEVJT	0843952016	34858117	The Rising	Books	5	0	0	N	N	Great Twist on Zombie Mythos	I've known about this one for a long time, but just finally got around to reading it for the first time. I enjoyed it a lot!  What I liked the most was how it took a tired premise and breathed new life into it by creating an entirely new twist on the zombie mythos. A definite must read!	2012-05-03
+```
+
+Each row in this file represents the record of one book review. The row is laid out like this:
+``` ini
+DATA COLUMNS:
+01  marketplace       - 2 letter country code of the marketplace where the review was written.
+02  customer_id       - Random identifier that can be used to aggregate reviews written by a single author.
+03  review_id         - The unique ID of the review.
+04  product_id        - The unique Product ID the review pertains to. 
+05  product_parent    - Random identifier that can be used to aggregate reviews for the same product.
+06  product_title     - Title of the product.
+07  product_category  - Broad product category that can be used to group reviews 
+08  star_rating       - The 1-5 star rating of the review.
+09  helpful_votes     - Number of helpful votes.
+10  total_votes       - Number of total votes the review received.
+11  vine              - Review was written as part of the Vine program.
+12  verified_purchase - The review is on a verified purchase.
+13  review_headline   - The title of the review.
+14  review_body       - The review text.
+15  review_date       - The date the review was written.
+```
+
+## Printing Book Data
+
+I can now test out my field printing skills on a bigger file. I can start by printing fields that I care about, like the marketplace:
 ``` bash
 $ awk '{ print $1 }' bookreviews.tsv| head 
 ```
@@ -215,14 +225,19 @@ Good
 Patterns
 ```
 
-To fix this, I need to configure my field seperator.
+To fix this, I need to configure my field separators.
 
-## Field Seperators
+## Field Separators
 
-By Default, AWK assumes that the fields in a record are space delimited. We can change the field seperator to use tabs using the `awk -F` option:
+> A good programmer uses the most powerful tool to do a job. A great programmer uses the least powerful tool that does the job." I believe this, and I always try to find the combination of simple and lightweight tools which does the job at hand correctly.
+>
+> [vyuh](https://news.ycombinator.com/item?id=28445692
+https://news.ycombinator.com/item?id=28445692)
+
+By Default, Awk assumes that the fields in a record are space delimited. We can change the field separator to use tabs using the `awk -F` option:
 
 ``` bash
-$ awk -F '\t' '{ print $6 }' bookreviews.tsv| head 
+$ awk -F '\t' '{ print $6 }' bookreviews.tsv | head 
 ```
 ``` ini
 product_title
@@ -237,7 +252,7 @@ Good Food: 101 Cakes & Bakes
 Patterns and Quilts (Mathzones)
 ```
 
-AWK also has convience values for accessing last field in a row:
+Awk also has convenience values for accessing last field in a row:
 
 ``` bash
 $ awk -F '\t' '{ print $NF }' bookreviews.tsv| head 
@@ -275,7 +290,7 @@ review_date     review_headline
 <div class="notice--info">
 **What I've learned**
 
-AWK creates a variable for each field in a record ($1, $2 ... $NF), based on the field separator which is whitespace by default.
+Awk creates a variable for each field in a record ($1, $2 ... $NF), based on the field separator which is whitespace by default.
 
 </div>
 
@@ -530,6 +545,11 @@ docker stop "$(docker ps -a |  awk '/postgres/{ print $1 }')"
 You get the idea. 
 
 ## AWK Scripting Examples
+
+> If you pick your constraints you can make a particular envelope of uses easy and ones you don't care about hard.
+> AWK's choice to be a per line processor, with optional sections for processing before all lines and after all lines is self-limiting but it defines a useful envelope of use.
+>
+> [Michael Feathers](https://news.ycombinator.com/item?id=13455678)
 
 In my mind, once an AWK program spans multiple lines its time to consider putting it into a file. 
 
