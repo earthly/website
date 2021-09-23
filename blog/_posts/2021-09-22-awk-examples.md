@@ -12,8 +12,6 @@ internal-links:
 
 - [ ] Fix Grammarly Errors
 - [ ] Read out loud
-- [ ] Write 5 or more titles and pick the best on
-- [ ] First two paragraphs: What's it about? Why listen to you?
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
@@ -26,13 +24,13 @@ internal-links:
 >
 > “I processed 500 Petabytes with awk on a single server once I don’t see why this is needed”
 >
-> [BufferUnderpants on /r/programming](https://www.reddit.com/r/programming/comments/pank18/comment/ha6hzg0/?utm_source=reddit&utm_medium=web2x&context=3)
+> Reddit User [BufferUnderpants](https://www.reddit.com/r/programming/comments/pank18/comment/ha6hzg0/?utm_source=reddit&utm_medium=web2x&context=3)
 
-I have a confession to make - I don't know how to use awk. Or I didn't know how to use it before I started writing this article. But the people I knew who used it and knew how to use it well they seemed to have a text processing super power that I had yet to understand. 
+I have a confession to make - I don't know how to use Awk. Or I didn't know how to use it before I started writing this article. The people I know who use it and use it well they seem to have a text processing super power and I want that power. 
 
 It turns out Awk is pretty simple. It has a only couple of conventions and only small amount of syntax. It's design to be easy to learn, easy to write and easy to throw away. 
 
-So in this article I will teach myself, and you, the basics of Awk. I'm going to use Awk to look at book reviews and pick my next book to read. **If you read through the article and maybe even try an example or two, you should have no problem writing some Awk at the end of it.** And you probably don't even need to install anything because Awk is everywhere. 
+So in this article I will teach myself, and you, the basics of Awk. I'm going to use Awk to look at book reviews and pick my next book to read. **If you read through the article and maybe even try an example or two, you should have no problem writing Awk scripts by the end of it.** And you probably don't even need to install anything because Awk is everywhere. 
 
 ## What Is Awk
 
@@ -772,12 +770,6 @@ Ave: 4.52        Count: 2205
 ```
 And look at that, the first book in the series was the most popular. And the last book, Mocking Jay was much less popular. That isn't a good sign.
 
-<!-- <div class="notice--info">
-**Side Note: RegEx**
-
-There are many editions of the hunger games books. This regex from above `\(The Hunger Games(, Book 1)?\)$/` let me narrow the results down to the most popular edition of the three books. 
-</div> -->
-
 Let me look at another trilogy to see if this gradual decrease in rankings is common or Hunger Games specific:
 
 ``` awk
@@ -819,14 +811,14 @@ Lord of the Rings has a different pattern. The books are all in a pretty tight r
 
 **What I've learned: Awk Associative Arrays**
 
-Awk has associative arrays built it. These use a string as the index and function very much like Python dictionaries. 
+Awk has associative arrays built it. You can use them in much the same way you would use Python dictionaries. 
 
 ``` awk
 arr["key1"] = "one"
 arr["key2"] = "two"
 arr["key3"] = "three"
 ```
-There is also a for loop construct for iterating over them:
+You can then use a for loop to iterate over them:
 ``` awk
 for (i in arr){
     print $i, arr[i]
@@ -838,14 +830,14 @@ key2 two
 key3 three
 ```
 
-Not bad for a langauge written in 1977!
+Not bad for a language written in 1977!
 </div>
 
-### AWK If Else
+### Awk If Else
 
-The thing I hate about amazon reviews is that every book review I look at is somehow rated between 3.5 and 4.5 stars. Let's rescale things in terms of the average. Maybe if we normalize the reviews it will be easier to judge how good or bad 3.77 for MockingJay is. 
+The thing I hate about amazon reviews is that every book review I look at is somehow rated between 3.0 and 4.5 stars. Let's rescale things in terms of the average. Maybe if we normalize the reviews it will be easier to judge how good or bad 3.77 for MockingJay is. 
 
-First I need to track the global average like this
+First I need to calculate the global average like this
 ``` awk
 {
     # Global Average
@@ -889,7 +881,7 @@ The Return of the King (The Lo  👍👍👍
 
 It looks like MockingJay, at least on Amazon, in this dataset, was not well received. 
 
-We can easily modify this to give let us query this adhoc:
+We can easily modify this to give let us query this ad hoc:
 ``` awk
 exec gawk -F '\t' '
 {
@@ -936,14 +928,14 @@ Neuromancer                                             👎👎
 ./average "The Lifecycle of Software Objects"
 The Lifecycle of Software Objects                       👎
 ```
-These are all great books so I'm starting to question the taste of Amazon reviewers. 
+These are all great books, so I'm starting to question the taste of Amazon reviewers. 
 
-There is one more thing I'd like to test though: how do the most popular books rate? Maybe popular books get lots of reviews and that pushes them below the overall average?
+I'd like to test one more thing though: how do the most popular books rate? Maybe popular books get lots of reviews and that pushes them below the overall average?
 <div class="notice--big--primary">
 
 **What I've learned: Awk If Else**
 
-Awk has branching using `if` and `else` statments. It works exactly like you might expect it to:
+Awk has branching using `if` and `else` statements. It works exactly like you might expect it to:
 
 ``` bash
 echo "1\n 2\n 3\n 4\n 5\n 6" | awk '{
@@ -1018,7 +1010,7 @@ $ ./top_books | head
 93816562        Gone Girl                                             👎👎
 ```
 
-It looks like about half (6 /10) of the most reviewed books were more popular than average. This tell me that the low reviews on MockingJay can't be blamed on its popularity.  So, I think I'll have to take a pass on the series or at the very least that book.
+It looks like about half (6 /10) of the most reviewed books were more popular than average. This tell me that the low reviews on MockingJay can't be blamed on its popularity. So I'll have to take a pass on the series or at least that book.
 
 ### Conclusion
 > A good programmer uses the most powerful tool to do a job. A great programmer uses the least powerful tool that does the job." I believe this, and I always try to find the combination of simple and lightweight tools which does the job at hand correctly.
@@ -1026,8 +1018,8 @@ It looks like about half (6 /10) of the most reviewed books were more popular th
 > [vyuh](https://news.ycombinator.com/item?id=28445692
 https://news.ycombinator.com/item?id=28445692)
 
-Awk just keeps going. It has more built-in variables and built-in functions. It has range patterns and substition rules you can use to modify content and more.
+Awk has more to it than this. It has more built-in variables and built-in functions. It has range patterns and substitution rules so that you can modify content.
 
-If you want to learn more Awk, [The Awk Programming Language]() is the definitive book. It covers the language in depth but also covers how to biuld a small programming language in Awk, how to build a database in Awk and some other fun projects. It's really an introduction to building things with scripting langauges.
+If you want to learn more Awk, [The Awk Programming Language](https://www.amazon.ca/AWK-Programming-Language-Alfred-Aho/dp/020107981X/) is the definitive book. It covers the language in depth and also covers how to build a small programming language in Awk, how to build a database in Awk and some other fun projects.
 
-I hope this introduction gave you enough AWK for 90% of your use-cases though. If you come up with any clever Awk tricks yourself or if you have strong opinions on whether I should read the Hunger Games Trilogy, please reach out me.
+I hope this introduction gave you enough Awk for 90% of your use-cases though. If you come up with any clever Awk tricks yourself or if you have strong opinions on whether I should read the Hunger Games Trilogy, please reach out me.
