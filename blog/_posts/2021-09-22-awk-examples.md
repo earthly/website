@@ -7,8 +7,8 @@ author: Adam
 internal-links:
  - awk
 ---
-> awk exists so that guy can rag on any data processing tool made after the year 1990 to get votes from people who can't really remember any of its syntax
->
+</p>
+> awk exists so that [some] guy can rag on any data processing tool made after the year 1990.
 > "I processed 500 Petabytes with awk on a single server once I don't see why this is needed"
 >
 > Reddit User [BufferUnderpants](https://www.reddit.com/r/programming/comments/pank18/comment/ha6hzg0/?utm_source=reddit&utm_medium=web2x&context=3)
@@ -1099,8 +1099,7 @@ It looks like about half (6 /10) of the most reviewed books were more popular th
 
 > A good programmer uses the most powerful tool to do a job. A great programmer uses the least powerful tool that does the job." I believe this, and I always try to find the combination of simple and lightweight tools which does the job at hand correctly.
 >
-> [vyuh](<https://news.ycombinator.com/item?id=28445692>
-<https://news.ycombinator.com/item?id=28445692>)
+> [vyuh](https://news.ycombinator.com/item?id=28445692)
 
 Awk has more to it than this. There are more built-in variables and built-in functions. It has range patterns and substitution rules and you can easily use it to modify content, not just add things up.
 
