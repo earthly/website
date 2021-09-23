@@ -916,7 +916,9 @@ First, I need to calculate the global average but adding up the total and averag
     g_total = g_total + $8 
 }
 ```
+
 Then I calculate the global average:
+
 ```
 END { 
     g_score = g_total/g_count 
