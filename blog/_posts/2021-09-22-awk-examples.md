@@ -22,13 +22,19 @@ internal-links:
 - [ ] Run `earthly --build-arg NAME=2020-09-10-better-builds.md +link-opportunity` and find 1-5 places to incorporate links to other articles
 - [ ] Raise PR
 
-## Intro
+> awk exists so that guy can rag on any data processing tool made after the year 1990 to get votes from people who can’t really remember any of its syntax
+>
+> “I processed 500 Petabytes with awk on a single server once I don’t see why this is needed”
+>
+> [BufferUnderpants on /r/programming](https://www.reddit.com/r/programming/comments/pank18/comment/ha6hzg0/?utm_source=reddit&utm_medium=web2x&context=3)
 
-<p>
-One of the comments I heard around the JQ article was the JQ was so complex just like awk. I have a confession to make - I don't know how to use awk. I hear it mentioned sometimes and occasionally I see a cool blog post where someone uses awk to takes a giant spark task or big data workflow and reduce its complexity to a one-line in awk.
-</p>
 
-So in this article I will myself, and you, the basics of Awk.
+
+I have a confession to make - I don't know how to use awk. Or I didn't know how to use it before I started writing this article. But the people I knew who used it and knew how to use it well they seemed to have a text processing super power that I had yet to understand. 
+
+It turns out Awk is pretty simple. It has a only couple of conventions and only small amount of syntax. It's design to be easy to learn, easy to write and easy to throw away. 
+
+So in this article I will teach myself, and you, the basics of Awk. If you read through the article and maybe even try an example or two, you should have no problem writing some Awk at the end of it. You probably don't even need to install anything. Awk is everywhere. 
 
 ## What Is Awk
 
@@ -36,7 +42,7 @@ Awk is a record processing tool written by Aho, Kernighan, and Weinberger in 197
 
 They created it following the success of the line processing tools `sed` and `grep`. Awk was originally an experiment into how text processing tools could be extended to deal with numbers. If grep lets you search for lines, and sed lets you do replacements in lines then awk was designed to let you do calculations on lines. It will be clear what that means once I take us through some examples. 
 
-## How to Install GAWK
+## How to Install `gawk`
 
 > The biggest reason to learn AWK, IMO, is that it's on pretty much every single linux distribution. You might not have perl or python. You WILL have AWK. Only the most minimal of minimal linux systems will exclude it. Even busybox includes awk. That's how essential it's viewed.
 >
@@ -54,7 +60,7 @@ $ awk --version
   Copyright (C) 1989, 1991-2020 Free Software Foundation.
 ```
 
-If you are doing something more involved with Awk, take the time to instal  GNU Awk (`gawk`). I did this using homebrew (`brew install gawk`). Windows users can use chocolatey (`choco install gawk`). It is already on your Linux distribution. 
+If you are doing something more involved with Awk, take the time to install GNU Awk (`gawk`). I did this using homebrew (`brew install gawk`). Windows users can use chocolatey (`choco install gawk`). It's already on your Linux distribution. 
 
 ## Awk Print
 
@@ -137,12 +143,6 @@ awk '{ print $1, $2, $7 }'
 </div>
 
 ## AWK Sample Data
-
-> awk exists so that guy can rag on any data processing tool made after the year 1990 to get votes from people who can’t really remember any of its syntax
->
-> “I processed 500 Petabytes with awk on a single server once I don’t see why this is needed”
->
-> [BufferUnderpants on /r/programming](https://www.reddit.com/r/programming/comments/pank18/comment/ha6hzg0/?utm_source=reddit&utm_medium=web2x&context=3)
 
 To move beyond simple printing, I need some sample data. I'm going to use the book portion of the [amazon product reviews dataset](https://s3.amazonaws.com/amazon-reviews-pds/tsv/index.txt).
 
