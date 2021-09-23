@@ -122,8 +122,8 @@ $ echo "
 ```
 
 ``` ini
-two
-five
+three
+six
 ```
 
 <div class="notice--big--primary">
