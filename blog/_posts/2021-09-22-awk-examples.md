@@ -28,15 +28,17 @@ internal-links:
 >
 > [BufferUnderpants on /r/programming](https://www.reddit.com/r/programming/comments/pank18/comment/ha6hzg0/?utm_source=reddit&utm_medium=web2x&context=3)
 
-
-
 I have a confession to make - I don't know how to use awk. Or I didn't know how to use it before I started writing this article. But the people I knew who used it and knew how to use it well they seemed to have a text processing super power that I had yet to understand. 
 
 It turns out Awk is pretty simple. It has a only couple of conventions and only small amount of syntax. It's design to be easy to learn, easy to write and easy to throw away. 
 
-So in this article I will teach myself, and you, the basics of Awk. If you read through the article and maybe even try an example or two, you should have no problem writing some Awk at the end of it. You probably don't even need to install anything. Awk is everywhere. 
+So in this article I will teach myself, and you, the basics of Awk. I'm going to use Awk to look at book reviews and pick my next book to read. **If you read through the article and maybe even try an example or two, you should have no problem writing some Awk at the end of it.** And you probably don't even need to install anything because Awk is everywhere. 
 
 ## What Is Awk
+
+> I write three or four Awk programs a day. These are one-liners. These are super quick programs I can throw away.
+> 
+> Bryan Cantrill 
 
 Awk is a record processing tool written by Aho, Kernighan, and Weinberger in 1977. It's name is an acronym of their names. 
 
@@ -44,11 +46,11 @@ They created it following the success of the line processing tools `sed` and `gr
 
 ## How to Install `gawk`
 
-> The biggest reason to learn AWK, IMO, is that it's on pretty much every single linux distribution. You might not have perl or python. You WILL have AWK. Only the most minimal of minimal linux systems will exclude it. Even busybox includes awk. That's how essential it's viewed.
+> The biggest reason to learn Awk is that it's on pretty much every single linux distribution. You might not have perl or python. You *will* have Awk. Only the most minimal of minimal linux systems will exclude it. Even busybox includes awk. That's how essential it's viewed.
 >
 > [cogman10](https://news.ycombinator.com/item?id=28447825)
 
-Awk is part of the Portable Operating System Interface (POSIX). This means its already on your MacBook and your Linux server. There are several versions of Awk and for the basics whatever Awk you have will do. 
+Awk is part of the Portable Operating System Interface (POSIX). This means its already on your MacBook and your Linux server. There are several versions of Awk but for the basics whatever Awk you have will do. 
 
 If you can run this, you can do the rest of this tutorial:
 
@@ -60,7 +62,7 @@ $ awk --version
   Copyright (C) 1989, 1991-2020 Free Software Foundation.
 ```
 
-If you are doing something more involved with Awk, take the time to install GNU Awk (`gawk`). I did this using homebrew (`brew install gawk`). Windows users can use chocolatey (`choco install gawk`). It's already on your Linux distribution. 
+If you are doing something more involved with Awk, take the time to install GNU Awk (`gawk`). I did this using Homebrew (`brew install gawk`). Windows users can use chocolatey (`choco install gawk`). It's already on your Linux distribution. 
 
 ## Awk Print
 
@@ -142,7 +144,7 @@ awk '{ print $1, $2, $7 }'
 ```
 </div>
 
-## AWK Sample Data
+## Awk Sample Data
 
 To move beyond simple printing, I need some sample data. I'm going to use the book portion of the [amazon product reviews dataset](https://s3.amazonaws.com/amazon-reviews-pds/tsv/index.txt).
 
@@ -256,7 +258,6 @@ To fix this, I need to configure my field separators.
 
 ## Field Separators
 
-
 By default, Awk assumes that the fields in a record are space delimited. We can change the field separator to use tabs using the `awk -F` option:
 
 ``` bash
@@ -311,9 +312,9 @@ review_date     review_headline
 
 `$NF` seems like a unusual name for printing the last column
 , right? 
-But `NF` is actually a variable holding the *Number of Fields* in a record. We are just using its value as an index to refer to the last field. 
+But `NF` is actually a variable holding the *Number of Fields* in a record. I am just using its value as an index to refer to the last field. 
 
-We can print the actual value like this:
+I can print the actual value like this:
 ``` bash
 awk -F '\t' '{ print NF }' bookreviews.tsv| head  
 ```
@@ -330,7 +331,7 @@ awk -F '\t' '{ print NF }' bookreviews.tsv| head
 15
 ```
 
-Another variable AWK offers up for use is `NR`, the *number of records* so far. This is helpful if I need to print line numbers.
+Another variable Awk offers up for use is `NR`, the *number of records* so far. This is helpful if I need to print line numbers.
 
 ``` bash
 awk -F '\t' '{ print NR " " $(NF-2) }' bookreviews.tsv| head  
@@ -369,7 +370,7 @@ $ echo "aa 10
 
 Using this knowledge, I can easily grab reviews by book title and print the book title(`$6`) and review score(`$8`). 
 
-The reviews I'm going to focus in on today, are for the book 'The Hunger Games'. I'm choosing it because: its a series, it's likely to have many reviews, and I recall that I liked the movie and am wondering if I should read the series.  
+The reviews I'm going to focus in on today, are for the book 'The Hunger Games'. I'm choosing it because: its a series, it's has many reviews, and I recall that I liked the movie and am wondering if I should read the trilogy.  
 
 ``` bash
 $ awk -F '\t' '/Hunger Games/{ print $6, $8  }' bookreviews.tsv | head
@@ -386,7 +387,7 @@ Blackout 3
 The Hunger Games Trilogy: The Hunger Games / Catching Fire / Mockingjay 4
 Tabula Rasa 3
 ```
-I should be able to do some interesting data analysis on these reviews, but first there is a problem. I'm clearly getting reviews from more than one book here. `/Hunger Games/` is matching anywhere in the line and I'm getting all kinds of Hunger Game books. 
+I should be able to do valuable data from these reviews, but first there is a problem. I'm clearly getting reviews from more than one book here. `/Hunger Games/` is matching anywhere in the line and I'm getting all kinds of Hunger Game books. 
 
 I'm even getting books that mention "Hunger Games" in the review text:
 
@@ -411,7 +412,7 @@ awk -F '\t' '$4 == "0439023483"{ print $6 }' bookreviews.tsv | sort |  uniq
 The Hunger Games (The Hunger Games, Book 1)
 ```
 
-I'd like to calculate the average review score for hunger games in my dataset but first lets take a look at the review_date (`$15`), the review_headline (`$13`) and the star_rating (`$8`) of our Hunger Games reviews, to get a feel for the data:
+I'd like to calculate the average review score for hunger games in my dataset, but first lets take a look at the review_date (`$15`), the review_headline (`$13`) and the star_rating (`$8`) of our Hunger Games reviews, to get a feel for the data:
 
 ``` bash
 $ awk -F '\t' '$4 == "0439023483{ print $15 "\t" $13 "\t" $8}' bookreviews.tsv | head 
@@ -453,7 +454,7 @@ $ awk '$4 == "hello"{ print "This field is hello:", $4}'
 ```
 </div>
 
-### AWK Printf
+### Awk `printf`
 
 `printf` works like it does in the C and uses a format string and then a list of values. 
 
@@ -503,7 +504,7 @@ Alright, I think at this point I'm ready to move on to doing some calculations.
 
 <div class="notice--big--primary">
 
-**What I've learned: Printf and Built-ins**
+**What I've learned: `printf` and Built-ins**
 
 If you need print out a table, Awk lets you use `printf` and built-ins like `substr` to format your output.
 
@@ -574,11 +575,11 @@ awk -F '{ total = total + $8 }'
 
 </div>
 
-### Fun Awk one-liners
+### Fun Awk One-Liners
 
-Before we leave the world of one liners behind here are some I've used before. Most of the times I've had to reach for Awk involves a command line tools returning a whitespace delimited table that I'd like to customize or further process.
+Before we leave the world of one liners behind, I reached out to my friends to ask when they use Awk day to day. Here are some the examples I got back. 
 
-Like printing files with a human readable size:
+Printing files with a human readable size:
 ``` bash
 $ ls -lh | awk '{ print $5,"\t", $9 }'  
 ```
@@ -587,7 +588,7 @@ $ ls -lh | awk '{ print $5,"\t", $9 }'
 6.2G     bookreviews.tsv
 ```
 
-Or getting the containerID of running docker containers:
+Getting the containerID of running docker containers:
 
 ``` awk
 docker ps -a |  awk '{ print $1 }'
@@ -597,20 +598,20 @@ CONTAINER
 08488f220f76
 3b7fc673649f
 ```
-We can combine those with a regex to focus in on a line we care about. Here I stop postgres, regardless of its name.
+You can combine that last one with a regex to focus in on a line you care about. Here I stop postgres, regardless of its name:
 ```
 docker stop "$(docker ps -a |  awk '/postgres/{ print $1 }')"
 ```
-And so on. You get the idea.
+And so on. You get the idea. If you have a table of space delimited text returned by some tool then Awk can easily slice and dice it.
 
-## AWK Scripting Examples
+## Awk Scripting Examples
 
 > If you pick your constraints you can make a particular envelope of uses easy and ones you don't care about hard.
-> AWK's choice to be a per line processor, with optional sections for processing before all lines and after all lines is self-limiting but it defines a useful envelope of use.
+> Awk's choice to be a per line processor, with optional sections for processing before all lines and after all lines is self-limiting but it defines a useful envelope of use.
 >
 > [Michael Feathers](https://news.ycombinator.com/item?id=13455678)
 
-In my mind, once an AWK program spans multiple lines its time to consider putting it into a file. 
+In my mind, once an Awk program spans multiple lines its time to consider putting it into a file. 
 
 <div class="notice--info">
 **Side Note: Why Awk Scripting**
@@ -624,7 +625,7 @@ Second, if you need to rewrite your Awk program in something else at some point 
 Third, why not? Learning a new tool can be fun. 
 </div>
 
-We've now crossed over from one-liners into AWK scripting. With AWK, this the transition is smooth. We can embed Awk into a bash script:
+We've now crossed over from one-liners into Awk scripting. With Awk, this the transition is smooth. We can embed Awk into a bash script:
 
 ``` bash
 $ cat average
@@ -674,7 +675,7 @@ BEGIN { FS = "\t" }
 
 ### Awk Average Example
 
-At this point, I should be ready to start calculating review scores for The Hunger Games :
+At this point, I should be ready to start calculating review scores for The Hunger Games:
 
 ``` bash
 exec awk -F '\t' '
@@ -707,7 +708,7 @@ Average Rating: 4.67%
 
 Once you are beyond a single line, it makes sense to put your Awk script into a file. 
 
-You can then call you program using using the `-f`option
+You can then call you program using the `-f`option
 
 ``` bash
 awk -f file.awk input
