@@ -919,7 +919,7 @@ First, I need to calculate the global average but adding up the total and averag
 
 Then I calculate the global average:
 
-```
+``` awk
 END { 
     g_score = g_total/g_count 
     ...
@@ -1018,6 +1018,7 @@ The Lifecycle of Software Objects                       👎
 These are all great books, so I'm starting to question the taste of Amazon reviewers.
 
 I want to test one more thing, though: how do the most popular books rate? Maybe popular books get lots of reviews, and that pushes them below the overall average?
+
 <div class="notice--big--primary">
 
 **What I've learned: Awk If Else**
