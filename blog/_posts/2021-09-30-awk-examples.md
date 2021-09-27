@@ -14,7 +14,7 @@ excerpt: "It turns out Awk is pretty simple. It has only a couple of conventions
 >
 > Reddit User [BufferUnderpants](https://www.reddit.com/r/programming/comments/pank18/comment/ha6hzg0/?utm_source=reddit&utm_medium=web2x&context=3)
 
-I have a confession to make : I don't know how to use Awk. Or at least I didn't know how to use it before I started writing this article. I would hear people mention AWK and how often they used it, and I was pretty certain I was missing out on some minor superpower.
+I have a confession to make: I don't know how to use Awk. Or at least I didn't know how to use it before I started writing this article. I would hear people mention AWK and how often they used it, and I was pretty certain I was missing out on some minor superpower.
 
 Like this little off hand comment by [Bryan Cantrill](https://www.youtube.com/watch?v=2wZ1pCpJUIM):
 
