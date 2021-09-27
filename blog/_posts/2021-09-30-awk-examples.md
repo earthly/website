@@ -18,8 +18,7 @@ I have a confession to make : I don't know how to use Awk. Or at least I didn't 
 
 Like this little off hand comment by [Bryan Cantrill](https://www.youtube.com/watch?v=2wZ1pCpJUIM):
 
-
-> I write three or four Awk programs a day. And these are one-liners. These super quick programs. 
+> I write three or four Awk programs a day. And these are one-liners. These super quick programs.
 
 It turns out Awk is pretty simple. It has only a couple of conventions and only a small amount of syntax. It's straightforward to learn, and once you understand it, it will come in handy more often than you'd think.
 
@@ -484,7 +483,7 @@ $ awk '$4 == "hello"{ print "This field is hello:", $4}'
 
 ## Awk `printf`
 
-`printf` works like it does in the C and uses a format string and then a list of values. You can use `%s` to print the next string value. 
+`printf` works like it does in the C and uses a format string and then a list of values. You can use `%s` to print the next string value.
 
 So my `print $15 "\t" $13 "\t" $8`
 becomes `printf "%s \t %s \t %s, $15, $13, $8`.
@@ -661,7 +660,7 @@ In my mind, once an Awk program spans multiple lines, it's time to consider putt
 <div class="notice--info">
 **Side Note: Why Awk Scripting**
 
-Once we move beyond one-liners, a natural question is *why*. As in 'Why not use Python? Isn't it good at this type of thing?' 
+Once we move beyond one-liners, a natural question is *why*. As in 'Why not use Python? Isn't it good at this type of thing?'
 
 I have a couple of answers for that.
 
