@@ -1126,6 +1126,6 @@ The AWK Programming Language                            👍👍
 
 I hope this introduction gave you enough Awk for 90% of your use-cases though. If you come up with any clever Awk tricks yourself or if you have strong opinions on whether I should read the Hunger Games Trilogy, please reach out me.
 
-Also, if you're the type of person who's not afraid to do things that command line then you might like Earthly:
+Also, if you're the type of person who's not afraid to do things on the command line then you might like Earthly:
 
 {% include cta/cta1.html %}
