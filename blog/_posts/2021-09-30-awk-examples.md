@@ -8,34 +8,37 @@ internal-links:
  - awk
 ---
 </p>
-> awk exists so that [some] guy can rag on any data processing tool made after the year 1990.
+> Awk exists so that [some] guy can rag on any data processing tool made after the year 1990.
 > "I processed 500 Petabytes with awk on a single server once I don't see why this is needed"
 >
 > Reddit User [BufferUnderpants](https://www.reddit.com/r/programming/comments/pank18/comment/ha6hzg0/?utm_source=reddit&utm_medium=web2x&context=3)
 
-I have a confession to make - I don't know how to use Awk. Or at least I didn't know how to use it before I started writing this article. But yet, the people I know who use it and use it well seem to have a text processing superpower and, I want that power.
+I have a confession to make : I don't know how to use Awk. Or at least I didn't know how to use it before I started writing this article. I would hear people mention AWK and how often they used it, and I was pretty certain I was missing out on some minor superpower.
 
-It turns out Awk is pretty simple. It has only a couple of conventions and only a small amount of syntax. It's designed to be easy to learn, easy to write, and easy to throw away.
+Like this little off hand comment by [Bryan Cantrill](https://www.youtube.com/watch?v=2wZ1pCpJUIM):
 
-So in this article, I will teach myself, and you, the basics of Awk. I'm going to use Awk to look at book reviews and pick my next book to read. **If you read through the article and maybe even try an example or two, you should have no problem writing Awk scripts by the end of it.** And you probably don't even need to install anything because Awk is everywhere.
+
+> I write three or four Awk programs a day. And these are one-liners. These super quick programs. 
+
+It turns out Awk is pretty simple. It has only a couple of conventions and only a small amount of syntax. It's straightforward to learn, and once you understand it, it will come in handy more often than you'd think.
+
+So in this article, I will teach myself, and you, the basics of Awk. To do this, I will use Awk to look at book reviews and pick my next book to read.  **If you read through the article and maybe even try an example or two, you should have no problem writing Awk scripts by the end of it.** And you probably don't even need to install anything because Awk is everywhere.
 
 ## What Is Awk
 
-> I write three or four Awk programs a day. These are one-liners. These are super quick programs I can throw away.
->
-> Bryan Cantrill
+
 
 Awk is a record processing tool written by Aho, Kernighan, and Weinberger in 1977. Its name is an acronym of their names.
 
-They created it following the success of the line processing tools `sed`, and `grep`. Awk was initially an experiment by the authors into whether text processing tools could be extended to deal with numbers. If grep lets you search for lines, and sed lets you do replacements in lines then awk was designed to let you do calculations on lines. It will be clear what that means once I take us through some examples.
+They created it following the success of the line processing tools `sed` and `grep`. Awk was initially an experiment by the authors into whether text processing tools could be extended to deal with numbers. If grep lets you search for lines, and sed lets you do replacements in lines then awk was designed to let you do calculations on lines. It will be clear what that means once I take us through some examples.
 
 ## How to Install `gawk`
 
-> The biggest reason to learn Awk is that it's on pretty much every single linux distribution. You might not have perl or python. You *will* have Awk. Only the most minimal of minimal linux systems will exclude it. Even busybox includes awk. That's how essential it's viewed.
+> The biggest reason to learn Awk is that it's on pretty much every single linux distribution. You might not have perl or Python. You *will* have Awk. Only the most minimal of minimal linux systems will exclude it. Even busybox includes awk. That's how essential it's viewed.
 >
 > [cogman10](https://news.ycombinator.com/item?id=28447825)
 
-Awk is part of the Portable Operating System Interface (POSIX). This means its already on your MacBook and your Linux server. There are several versions of Awk, but for the basics, whatever Awk you have will do.
+Awk is part of the Portable Operating System Interface (POSIX). This means it's already on your MacBook and your Linux server. There are several versions of Awk, but for the basics, whatever Awk you have will do.
 
 If you can run this, you can do the rest of this tutorial:
 
@@ -61,7 +64,7 @@ one two three
 
 Note the braces. This syntax will start to make sense after you see a couple of examples.
 
-We can selectively choose columns (which Awk calls fields):
+You can selectively choose columns (which Awk calls fields):
 
 ``` bash
 $ echo "one two three" | awk '{ print $1 }'
@@ -143,7 +146,7 @@ $ awk '{ print $1, $2, $7 }'
 
 ## Awk Sample Data
 
-To move beyond simple printing, I need some sample data. I'm will use the book portion of the [amazon product reviews dataset](https://s3.amazonaws.com/amazon-reviews-pds/tsv/index.txt) for the rest of this tutorial.
+To move beyond simple printing, I need some sample data. I will use the book portion of the [amazon product reviews dataset](https://s3.amazonaws.com/amazon-reviews-pds/tsv/index.txt) for the rest of this tutorial.
 
 > This dataset contains product reviews and metadata from Amazon, including 142.8 million reviews spanning May 1996 - July 2014.
 >
@@ -163,7 +166,7 @@ If you want to follow along with the entire dataset, repeat this for each of the
 
 **❗ Disk Space Warning**
 
-The above file is over six gigs unzipped. If you grab all three, you will be up to fifteen gigs of disk space. If you don't have much space, you can play along by just grabbing the first ten thousand rows of the first file.
+The above file is over six gigs unzipped. If you grab all three, you will be up to fifteen gigs of disk space. If you don't have much space, you can play along by grabbing the first ten thousand rows of the first file:
 
 ``` bash
 $ curl https://s3.amazonaws.com/amazon-reviews-pds/tsv/amazon_reviews_us_Books_v1_00.tsv.gz \
@@ -267,7 +270,7 @@ To fix this, I need to configure my field separators.
 
 ## Field Separators
 
-By default, Awk assumes that the fields in a record are space delimited. We can change the field separator to use tabs using the `awk -F` option:
+By default, Awk assumes that the fields in a record are space delimited. I can change the field separator to use tabs using the `awk -F` option:
 
 ``` bash
 $ awk -F '\t' '{ print $6 }' bookreviews.tsv | head 
@@ -300,7 +303,7 @@ $ awk -F '\t' '{ print $6 }'
 
 </div>
 
-I can also work backwards from the last position forward by subtracting from `NF`.
+I can also work backward from the last position forward by subtracting from `NF`.
 
 ``` bash
 $ awk -F '\t' '{ print $NF "\t" $(NF-2)}' bookreviews.tsv | head 
@@ -322,8 +325,7 @@ review_date     review_headline
 <div class="notice--info">
 **Side Note: NF and NR**
 
-`$NF` seems like an unusual name for printing the last column
-, right?
+`$NF` seems like an unusual name for printing the last column, right?
 But actually, `NF` is a variable holding the *Number of Fields* in a record. So I'm just using its value as an index to refer to the last field.
 
 I can print the actual value like this:
@@ -432,7 +434,7 @@ $ awk -F '\t' '$4 == "0439023483"{ print $6 }' bookreviews.tsv | sort |  uniq
 The Hunger Games (The Hunger Games, Book 1)
 ```
 
-I'd want to calculate the average review score for 'The Hunger Games' in my dataset, but first, let's take a look at the review_date (`$15`), the review_headline (`$13`), and the star_rating (`$8`) of our Hunger Games reviews, to get a feel for the data:
+I want to calculate the average review score for 'The Hunger Games', but first, let's take a look at the review_date (`$15`), the review_headline (`$13`), and the star_rating (`$8`) of our Hunger Games reviews, to get a feel for the data:
 
 ``` bash
 $ awk -F '\t' '$4 == "0439023483{ print $15 "\t" $13 "\t" $8}' bookreviews.tsv | head 
@@ -483,7 +485,7 @@ $ awk '$4 == "hello"{ print "This field is hello:", $4}'
 
 ### Awk `printf`
 
-`printf` works like it does in the C and uses a format string and then a list of values.
+`printf` works like it does in the C and uses a format string and then a list of values. You can use `%s` to print the next string value. 
 
 So my `print $15 "\t" $13 "\t" $8`
 becomes `printf "%s \t %s \t %s, $15, $13, $8`.
@@ -507,7 +509,7 @@ $ awk -F '\t' '$4 == "0439023483"{ printf "%s \t %-20s \t %s \n", $15, $13, $8}'
 2015-03-28       Five Stars              5 
 ```
 
-This table is pretty close to what I'd want. Some of the titles are just too long. I can shorten them up with `substr($13,1,20)`.
+This table is pretty close to what I'd want. However, some of the titles are just too long. I can shorten them to 20 characters with `substr($13,1,20)`.
 
 Putting it all together and I get:
 
@@ -542,14 +544,14 @@ It ends up looking something like this:
 $ awk '{ printf "%s \t %-5s", $1, substr($2,1,5)}'
 ```
 
-`printf` works much like C's `printf`, and for more information on the other built-ins, you can consult an Awk reference document.
+`printf` works much like C's `printf`. You can use `%s` to insert a string into the format string, and other flags let you the set width or precision. For more information on `printf` or other built-ins, you can consult an Awk reference document.
 </div>
 
 ## Awk `END` Actions
 
-I want to calculate the average rating for book reviews in this data set. To do that, I need to use a variable. Variables are straightforward in Awk. No declaration is required. You can just use them.
+I want to calculate the average rating for book reviews in this data set. To do that, I need to use a variable. However, I don't need to declare the variable or its type. I can just use it:
 
-I can add up and print out a running total of review_stars (`$8`) like this
+I can add up and print out a running total of review_stars (`$8`) like this:
 
 ``` bash
 $ awk -F '\t' '{ total = total + $8; print total }' bookreviews.tsv | head 
@@ -594,7 +596,7 @@ Average book review is 4.24361 stars
 
 **What I've learned: Awk's `BEGIN`, `END` and Variables**
 
-Awk provides two special patterns, `BEGIN` and `END`. You can use them to run actions before and after processing the records. For example, this is how you would initialize data, print headers and footer, or do any start-up or tear-down stuff in Awk.
+Awk provides two special patterns, `BEGIN` and `END`. You can use them to run actions before and after processing the records. For example, this is how you would initialize data, print headers, and footer, or do any start-up or tear-down stuff in Awk.
 
 It ends up looking like this:
 
@@ -660,16 +662,18 @@ In my mind, once an Awk program spans multiple lines, it's time to consider putt
 <div class="notice--info">
 **Side Note: Why Awk Scripting**
 
-Once we move beyond one-liners a natural question is *why*. As in 'Why not use Python? Isn't it good at this type of thing?' I have a couple answers for that.
+Once we move beyond one-liners, a natural question is *why*. As in 'Why not use Python? Isn't it good at this type of thing?' 
 
-First, Awk is great for writing programs that are, at their core, a glorified for loop over some input. If that is what you are doing, and the control flow is limited, using Awk will be more concise than using python.
+I have a couple of answers for that.
+
+First, Awk is great for writing programs that are, at their core, a glorified for loop over some input. If that is what you are doing, and the control flow is limited, using Awk will be more concise than using Python.
 
 Second, if you need to rewrite your Awk program into Python at some point, so be it. It's not going to be more than 100 lines of code, and the translation process will be straightforward.  
 
 Third, why not? Learning a new tool can be fun.
 </div>
 
-We've now crossed over from one-liners into Awk scripting. With Awk, the transition is smooth. We can embed Awk into a bash script:
+We've now crossed over from one-liners into Awk scripting. With Awk, the transition is smooth. I can now embed Awk into a bash script:
 
 ``` bash
 $ cat average
@@ -690,7 +694,7 @@ $ average bookreviews.tsv
 Average book review is 4.2862 stars
 ```
 
-Or we can use a shebang (`#!`):
+Or I can use a shebang (`#!`):
 
 ``` bash
 $ cat average.awk
@@ -834,7 +838,7 @@ Ave: 4.52        Count: 2205
 
 ```
 
-And look at that, the first book in the series was the most popular. And the last book, Mockingjay was much less popular. That isn't a good sign.
+And look at that, the first book in the series was the most popular. And the last book, Mockingjay was much less popular. So that isn't a good sign.
 
 Let me look at another trilogy to see if this gradual decrease in rankings is common or The Hunger Games specific:
 
@@ -872,7 +876,7 @@ The Fellowship of the Ring (The Lord of the Rings, Book 1)
 Ave: 4.60        Count: 93  
 ```
 
-Lord of the Rings has a different pattern. The books are all in a pretty tight range. The number of reviews is also much smaller, so it's hard to say for sure that "The Return Of the King" is the best book but it certainly looks that way.
+Lord of the Rings has a different pattern. The books are all in a pretty tight range. The number of reviews is also much smaller, so it's hard to say for sure that "The Return Of the King" is the best book, but it certainly looks that way.
 
 <div class="notice--big--primary">
 
@@ -905,7 +909,7 @@ Not bad for a language written in 1977!
 
 ### Awk `If` `Else`
 
-I hate how every book on Amazon has a star rating between 3.0 and 4.5 stars. It makes it hard to judge purely based on numbers. So let's rescale things in terms of the average. Maybe if we normalize the reviews, it will be easier to judge how good or bad 3.77 for Mockingjay is.
+I hate how every book on Amazon has a star rating between 3.0 and 4.5 stars. It makes it hard to judge purely based on numbers. So let's rescale things in terms of the average. Maybe if I normalize the reviews, it will be easier to determine how good or bad the 3.77 average for Mockingjay is.
 
 First, I need to calculate the global average but adding up the total and average for every row:
 
@@ -965,7 +969,7 @@ The Return of the King (The Lo  👍👍👍
 
 It looks like Mockingjay, at least on Amazon and in this dataset, was not well received.
 
-We can easily modify this to let us query for books ad hoc:
+You can easily modify this script to query for books ad hoc:
 
 ``` awk
 exec gawk -F '\t' '
@@ -1103,15 +1107,15 @@ Divergent                                             👍
 Gone Girl                                             👎👎
 ```
 
-It looks like about half (6 /10) of the most reviewed books were more popular than average. So Mockingjay's low score can't be blamed on its popularity. I think I'll have to take a pass on the series or at least that book.
+It looks like about half (6 /10) of the most reviewed books were more popular than average. So I can't blame Mockingjay's low score on its popularity. I think I'll have to take a pass on the series or at least that book.
 
 ### Conclusion
 
-> A good programmer uses the most powerful tool to do a job. A great programmer uses the least powerful tool that does the job." I believe this, and I always try to find the combination of simple and lightweight tools which does the job at hand correctly.
+> A good programmer uses the most powerful tool to do a job. A great programmer uses the least powerful tool that does the job."
 >
 > [vyuh](https://news.ycombinator.com/item?id=28445692)
 
-Awk has more to it than this. There are more built-in variables and built-in functions. It has range patterns and substitution rules and you can easily use it to modify content, not just add things up.
+Awk has more to it than this. There are more built-in variables and built-in functions. It has range patterns and substitution rules, and you can easily use it to modify content, not just add things up.
 
 If you want to learn more about Awk, [The Awk Programming Language](https://www.amazon.ca/AWK-Programming-Language-Alfred-Aho/dp/020107981X/) is the definitive book. It covers the language in depth. It also covers how to build a small programming language in Awk, how to build a database in Awk, and some other fun projects.
 
@@ -1123,3 +1127,7 @@ The AWK Programming Language                            👍👍
 ```
 
 I hope this introduction gave you enough Awk for 90% of your use-cases though. If you come up with any clever Awk tricks yourself or if you have strong opinions on whether I should read the Hunger Games Trilogy, please reach out me.
+
+Also, if you're the type of person who's not afraid to do things that command line then you might like Earthly:
+
+{% include cta/cta1.html %}
