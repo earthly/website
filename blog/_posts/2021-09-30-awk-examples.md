@@ -6,6 +6,7 @@ toc: true
 author: Adam
 internal-links:
  - awk
+excerpt: "It turns out Awk is pretty simple. It has only a couple of conventions and only a small amount of syntax. It's straightforward to learn, and once you understand it, it will come in handy more often than you'd think."
 ---
 </p>
 > Awk exists so that [some] guy can rag on any data processing tool made after the year 1990.
@@ -26,13 +27,11 @@ So in this article, I will teach myself, and you, the basics of Awk. To do this,
 
 ## What Is Awk
 
-
-
 Awk is a record processing tool written by Aho, Kernighan, and Weinberger in 1977. Its name is an acronym of their names.
 
 They created it following the success of the line processing tools `sed` and `grep`. Awk was initially an experiment by the authors into whether text processing tools could be extended to deal with numbers. If grep lets you search for lines, and sed lets you do replacements in lines then awk was designed to let you do calculations on lines. It will be clear what that means once I take us through some examples.
 
-## How to Install `gawk`
+### How to Install `gawk`
 
 > The biggest reason to learn Awk is that it's on pretty much every single linux distribution. You might not have perl or Python. You *will* have Awk. Only the most minimal of minimal linux systems will exclude it. Even busybox includes awk. That's how essential it's viewed.
 >
@@ -177,7 +176,7 @@ $ curl https://s3.amazonaws.com/amazon-reviews-pds/tsv/amazon_reviews_us_Books_v
 
 </div>
 
-## The Book Data
+### The Book Data
 
 Once you've grabbed that data, you should have Amazon book review data that looks like this:
 
@@ -207,7 +206,7 @@ DATA COLUMNS:
 15  review_date       - The date the review was written.
 ```
 
-## Printing Book Data
+### Printing Book Data
 
 I can now test out my field printing skills on a bigger file. I can start by printing fields that I care about, like the marketplace:
 
@@ -368,7 +367,7 @@ $ awk -F '\t' '{ print NR " " $(NF-2) }' bookreviews.tsv | head
 
 </div>
 
-### Awk Pattern Match With Regular Expressions
+## Awk Pattern Match With Regular Expressions
 
 Everything I've done so far has applied to every line in our file, but the real power of Awk comes from pattern matching. And you can give Awk a pattern to match each line on like this:
 
@@ -483,7 +482,7 @@ $ awk '$4 == "hello"{ print "This field is hello:", $4}'
 
 </div>
 
-### Awk `printf`
+## Awk `printf`
 
 `printf` works like it does in the C and uses a format string and then a list of values. You can use `%s` to print the next string value. 
 
@@ -547,7 +546,7 @@ $ awk '{ printf "%s \t %-5s", $1, substr($2,1,5)}'
 `printf` works much like C's `printf`. You can use `%s` to insert a string into the format string, and other flags let you the set width or precision. For more information on `printf` or other built-ins, you can consult an Awk reference document.
 </div>
 
-## Awk `END` Actions
+## Awk `BEGIN` and `END` Actions
 
 I want to calculate the average rating for book reviews in this data set. To do that, I need to use a variable. However, I don't need to declare the variable or its type. I can just use it:
 
@@ -615,7 +614,7 @@ $ awk -F '{ total = total + $8 }'
 
 </div>
 
-### Fun Awk One-Liners
+## Fun Awk One-Liners
 
 Before we leave the world of one-liners behind, I reached out to my friends to ask when they use Awk day-to-day. Here are some of the examples I got back.  
 
@@ -1109,7 +1108,7 @@ Gone Girl                                             👎👎
 
 It looks like about half (6 /10) of the most reviewed books were more popular than average. So I can't blame Mockingjay's low score on its popularity. I think I'll have to take a pass on the series or at least that book.
 
-### Conclusion
+## Conclusion
 
 > A good programmer uses the most powerful tool to do a job. A great programmer uses the least powerful tool that does the job."
 >
