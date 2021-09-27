@@ -123,7 +123,7 @@ $earth-input-height--large: $earth-button-height--large;
 // "EFFECTS"
 // --------------------------------------------------
 
-$earth-border-radius: 4px;
+$earth-border-radius: 9px;
 $earth-border-radius-large: 4px;
 
 @mixin shadow {
@@ -168,7 +168,7 @@ $earth-border-radius-large: 4px;
 }
 
 @mixin dropshadow {
-  filter: drop-shadow(2px 2px 10px #00000077);
+  filter: drop-shadow(0px 1px 1px rgba(0,0,0,0.5));
 }
 
 .dropshadow {

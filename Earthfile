@@ -1,37 +1,43 @@
-FROM ruby:2.7
-WORKDIR /site
 ARG FLAGS=""
 
+DEPS:
+    COMMAND
+    RUN apt-get update 
+    RUN apt-get install gcc cmake imagemagick -y
+    RUN gem install bundler -v "~>1.0" && gem install bundler jekyll
+
+    RUN apt-get install python3-matplotlib libvips-dev python3-pip npm -y
+    RUN pip3 install pandocfilters
+    RUN npm install -g markdownlint-cli 
+
 ## Base Image
-base-image:
-  RUN apt-get update 
-  RUN apt-get install gcc cmake imagemagick -y
-  RUN gem install bundler -v "~>1.0" && gem install bundler jekyll
-
-  # # diagrams and stuff
-  RUN apt-get install cabal-install -y
-  RUN cabal update
-  # ToDo: This takes forever, and there is a static binary offered
-  RUN cabal install pandoc-plot --dependencies-only --force-reinstalls
-  RUN cabal install pandoc-plot --force-reinstalls
-  RUN cp /root/.cabal/bin/* /usr/bin/
-
-  RUN apt-get install python3-matplotlib libvips-dev python3-pip npm -y
-  RUN pip3 install pandocfilters
-  RUN npm install -g markdownlint-cli 
-
+base-amd64:
+  FROM --platform=linux/amd64 ruby:2.7
+  WORKDIR /site
+  DO +DEPS 
   # Vale
   RUN curl -sfL https://install.goreleaser.com/github.com/ValeLint/vale.sh | sh -s v2.10.3
   RUN cp /site/bin/vale /bin
+
   SAVE IMAGE --push agbell/website-base:latest #Acts as a cache
 
-deps:
-    ## moved to dockerfile for build speed
-    FROM agbell/website-base:latest
+base-arm64:
+  FROM --platform=linux/arm64 ruby:2.7
+  DO +DEPS 
+
+  # Vale is not working for arm. May need a step to build a vale binary and copy it in.
+  # RUN curl -sfL https://install.goreleaser.com/github.com/ValeLint/vale.sh | sh -s v2.10.3
+  # RUN cp /site/bin/vale /bin  SAVE IMAGE --push agbell/website-base:latest #Acts as a cache
+
+  SAVE IMAGE --push agbell/website-base:latest #Acts as a cache
+
+base-image:
+  BUILD +base-arm64
+  BUILD +base-amd64
 
 ## Website
 website-update:
-  FROM +deps
+  FROM agbell/website-base:latest
   COPY website .
   RUN rm Gemfile.lock
   RUN bundle install
@@ -39,7 +45,7 @@ website-update:
   SAVE ARTIFACT Gemfile.lock AS LOCAL website/Gemfile.lock
 
 website-install:
-    FROM +deps
+    FROM agbell/website-base:latest
     COPY website/Gemfile .
     COPY website/Gemfile.lock .
     RUN bundle install --retry 5 --jobs 20
@@ -53,6 +59,7 @@ website-build:
   SAVE ARTIFACT _site AS LOCAL build/site
 
 website-docker:
+    BUILD +base-image
     FROM +website-install
     CMD JEKYLL_ENV=production bundle exec jekyll serve --incremental -H 0.0.0.0 -P 4001
     SAVE IMAGE earthly-website
@@ -65,7 +72,7 @@ website-run:
 
 ## Blog
 blog-update:
-  FROM +deps
+  FROM agbell/website-base:latest
   COPY blog .
   RUN rm Gemfile.lock
   RUN bundle install
@@ -73,7 +80,7 @@ blog-update:
   SAVE ARTIFACT Gemfile.lock AS LOCAL blog/Gemfile.lock
 
 blog-install:
-  FROM +deps
+  FROM agbell/website-base:latest
   COPY blog/Gemfile .
   COPY blog/Gemfile.lock .
   RUN bundle install --retry 5 --jobs 20
@@ -135,6 +142,7 @@ blog-build:
   SAVE ARTIFACT _site AS LOCAL build/site/blog
 
 blog-docker:
+  BUILD +base-image
   FROM +blog-install
   CMD bundle exec jekyll serve -H 0.0.0.0 --future --incremental -P 4002
   SAVE IMAGE earthly-blog
@@ -156,23 +164,10 @@ blog-local:
   RUN cd blog && bundle exec jekyll serve --future --incremental --profile -H 0.0.0.0 -P 4002
 
 ## Utils
-
 clean:
   LOCALLY
   RUN rm -rf build website/_site website/.sass-cache website/.jekyll-metadata website/.jekyll-cache
   RUN rm -rf build blog/_site blog/.sass-cache blog/.jekyll-metadata blog/.jekyll-cache
-
-# doesn't work
-shell: 
-  LOCALLY    
-  BUILD +docker
-  RUN --interactive docker run -p 4001:4001 -v $(pwd)/website:/site -it --entrypoint=/bin/bash earthly-website
-
-# get shell, but no volume mount
-static-shell:
-  FROM +jekyll-install
-  COPY website .
-  RUN --interactive /bin/bash
 
 ## Dev Build
 dev-build:
