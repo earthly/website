@@ -1109,7 +1109,7 @@ It looks like about half (6 /10) of the most reviewed books were more popular th
 
 ## Conclusion
 
-> A good programmer uses the most powerful tool to do a job. A great programmer uses the least powerful tool that does the job."
+> A good programmer uses the most powerful tool to do a job. A great programmer uses the least powerful tool that does the job.
 >
 > [vyuh](https://news.ycombinator.com/item?id=28445692)
 
