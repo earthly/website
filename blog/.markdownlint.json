@@ -1,4 +1,5 @@
 {
+  "docs": "https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md",
   "default": true,
   "line-length": false,
   "MD033": false,
