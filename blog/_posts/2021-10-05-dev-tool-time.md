@@ -35,13 +35,13 @@ TODO: insert pictures
 
 ## Things to Show
 
-* `markdownlint`
-* `vale`
-* `earthly`
-* `funky`
-* `zoxide`
-* `mcfly`
-* `gitupdate` 
-* `broot`
+* [`markdownlint`](https://github.com/markdownlint/markdownlint)
+* [`vale`](https://github.com/errata-ai/vale)
+* [`earthly`](https://earthly.dev/)
+* [`funky`](https://github.com/bbugyi200/funky)
+* [`zoxide`](https://github.com/ajeetdsouza/zoxide)
+* [`mcfly`](https://github.com/cantino/mcfly)
+* [`gitupdate`](https://github.com/nikitavoloboev/gitupdate) 
+* [`broot`](https://github.com/Canop/broot)`
 
 Watch it [here](https://www.twitch.tv/videos/1149577302). 
