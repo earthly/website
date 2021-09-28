@@ -63,7 +63,7 @@ The downside is if someone was in our cluster they could see what's going on bet
 
 **What about Deployment strategies?**
 
-Kubernetes has a few of those baked in, where it'll roll through and you can set how many or maximum amount available, and how many extra can I spin up to give myself headroom while I'm rolling in a deployment. But there's more to it than that because that does let you get to, more or less zero downtime.
+Kubernetes has a few of those baked in, where it'll roll through, and you can set how many or maximum amount available, and how many extra can I spin up to give myself headroom while I'm rolling in a deployment. But there's more to it than that because that does let you get to more or less, zero downtime.
 
 Kubernetes will handle that, "Hey, no more traffic comes to this node." And then we'll spin it down as soon as all the traffic there is exhausted and spin up new ones, and let those get routed to. It'll handle all that for you, and that's really nice.
 

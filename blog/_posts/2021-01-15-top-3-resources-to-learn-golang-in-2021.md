@@ -49,7 +49,7 @@ It's great because it gets you running and then writing code very quickly. &nbsp
 
 After reading the tour, you're probably ready to start playing around. If you have a side project, perhaps try reimplementing it in Go. If you'd like a more structured approach start with [Codewars](https://www.codewars.com/) or [Exercism](https://exercism.io/tracks/go).
 
-Either way, Writing and running some actual code is a great way to build up familiarity. &nbsp;As you do this G[o by Example](https://gobyexample.com/) is a great reference. Personally, I hadn't written a C style for loop in a long time and I'm not sure if I had ever used the `continue` keyword before. The side by side examples provided really helped cement things.
+Either way, writing, and running some actual code is a great way to build up familiarity. &nbsp;As you do this G[o by Example](https://gobyexample.com/) is a great reference. Personally, I hadn't written a C style for loop in a long time and I'm not sure if I had ever used the `continue` keyword before. The side by side examples provided really helped cement things.
 
 ## #3 Effective Go
 

@@ -1,7 +1,7 @@
 ---
 extends: readability
 message: "Grade level (%s) too high!"
-level: warning
+level: suggestion
 # grade: 10
 grade: 13
 metrics:

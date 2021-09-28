@@ -37,7 +37,7 @@ Earthly is somewhat like a Makefile, where each target is fully isolated from on
 
 In a way, Earthly completes Dockerfiles. While Dockerfiles allow you to define the make-up of Docker images, Earthfiles go beyond and also allow you to run unit tests, integration tests, or to output arbitrary files (eg. binaries, artifacts, jars), not just images - all of which runs within a containerized environment, thus maintaining consistency of execution.
 
-{% include imgf src="glue-diagram.png" alt="Diagram of how Earthly integrates as a distinct layer between build systems and CI. It replaces traditional glue scripts formed of Dockerfiles, Makefiles and Bash files. These traditional scripts are DIY, clunky and easy to get wrong." caption="Earthly replaces the scripting glue layer" %}
+{% include imgf src="glue-diagram.png" alt="Diagram of how Earthly integrates as a distinct layer between build systems and CI. It replaces traditional glue scripts formed of Dockerfiles, Makefiles, and Bash files. These traditional scripts are DIY, clunky, and easy to get wrong." caption="Earthly replaces the scripting glue layer" %}
 
 There are lots of other goodies that Earthly does beyond this, such as automatically running everything in parallel, bringing a modern import system and having native secrets and SSH agent support.
 

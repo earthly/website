@@ -67,7 +67,7 @@ Your choice of CI tools will largely depend on your business requirements, the t
 
 Jenkins works as a standalone CI server or a continuous delivery platform and offers several features to support the entire software development life cycle, including automated builds and testing, code debugging and analysis, and project deployment.
 
-It can run on any operating system including Windows, OS X, and Unix, and you can easily configure it via a web GUI interface or console commands. Jenkins is highly extensible; thanks to its robust ecosystem of almost 1400 plugins, you can add several features for user interface, platform integration, source code management and builds, and administrative tasks.
+It can run on any operating system including Windows, OS X, and Unix, and you can easily configure it via a web GUI interface or console commands. Jenkins is highly extendable; thanks to its robust ecosystem of almost 1400 plugins, you can add several features for user interface, platform integration, source code management and builds, and administrative tasks.
 
 - **Where is it hosted?** Self-hosted; cloud
 - **What platform does it run?** Containers; virtual machines
@@ -103,7 +103,7 @@ GitHub Actions offers a wide range of automation tasks and actions that allow yo
 
 [Azure DevOps](https://azure.microsoft.com/en-us/services/devops/) by Microsoft is a platform for creating a CI/CD pipeline to Azure. It provides several advanced features and services that support the software development cycle from planning to deployment. Azure DevOps integrates with both Team Foundation Version Control and Git for version control, code repository management, and build automation.
 
-Azure DevOps also integrates with major languages and platforms, allowing you to build, test and deploy in Java, .Net, Android, or iOS. It also runs parallel on Linux, macOS, and Windows and on both virtual machines and containers.
+Azure DevOps also integrates with major languages and platforms, allowing you to build, test, and deploy in Java, .Net, Android, or iOS. It also runs parallel on Linux, macOS, and Windows and on both virtual machines and containers.
 
 One standout feature of Azure DevOps is that it supports automated load testing, which can simulate thousands of users using your app at the same time. This helps your developers uncover bottlenecks and improve throughput before an application is released.
 
@@ -143,9 +143,9 @@ Sending all changes through the CI/CD pipeline helps to protect the integrity of
 
 The general goal of the CI/CD process is to provide rapid feedback to developers and promote rapid software delivery to users. You want to keep the entire pipeline fast, but the reality is that some parts will be faster than others. If developers have to wait too long to get feedback from testing, they might look for ways around the process.
 
-Because you want to discover failures as early as possible, prioritize and run the tests that complete quickest first and leave longer running tests until later.
+Because you want to discover failures as early as possible, prioritize, and run the tests that complete quickest first and leave longer running tests until later.
 
-This usually means running your unit tests first, as those are faster, make up most of your tests, and can give you immediate feedback on bugs and errors introduced by the latest update. After unit testing is complete, run integration tests next to see how different parts of your code interact. Then follow up with system-wide tests such as GUI, performance, load and security tests, and manual acceptance tests.
+This usually means running your unit tests first, as those are faster, make up most of your tests, and can give you immediate feedback on bugs and errors introduced by the latest update. After unit testing is complete, run integration tests next to see how different parts of your code interact. Then follow up with system-wide tests such as GUI, performance, load, and security tests, and manual acceptance tests.
 
 ### Build Only Once and Promote the Result Through the Pipeline
 

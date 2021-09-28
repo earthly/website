@@ -19,6 +19,7 @@ internal-links:
 
 <!-- vale HouseStyle.TLA = NO -->
 <!-- vale HouseStyle.ListStart = NO -->
+<!-- vale HouseStyle.EG = NO -->
 <!-- markdownlint-disable MD032 -->
 As an Ubuntu user, I find myself typing `apt install ...` frequently as a way to install software on my system.
 But what if I wanted to distribute my code to others via an apt repository? In this post I'll cover how to
@@ -410,9 +411,7 @@ In the previous step, we generated a `Release` file, which referenced one or mor
 along with it's corresponding md5, sha1, and sha256 hashes. The `Packages` file in turns references a
 deb package along with it's md5, sha1, and sha256 hashes.
 
-As of 2021, md5 and sha1 hashes are no longer considered secure; however sha256 is still considered to be secure.
-Therefore if a user can verify that the initial Release file has not been tampered with, then they could
-make use of the sha256 to verify the Packages file, then use the sha256 contained in the Packages file
+As of 2021, md5, and sha1 hashes are no longer considered secure; however sha256 is still considered to be secure. Therefore if a user can verify that the initial Release file has not been tampered with, then they could make use of the sha256 to verify the Packages file, then use the sha256 contained in the Packages file
 to verify the deb file.
 
 In order to sign the apt repo, all we must do is sign the Release file.

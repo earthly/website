@@ -1,6 +1,6 @@
 ---
 extends: existence
-message: "Do not start a paragraph with a 'but'."
+message: "Paragraph starts with 'But'. Try rewording."
 level: suggestion
 scope: paragraph
 tokens:
