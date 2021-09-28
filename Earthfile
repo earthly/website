@@ -6,7 +6,7 @@ DEPS:
     RUN apt-get install gcc cmake imagemagick -y
     RUN gem install bundler -v "~>1.0" && gem install bundler jekyll
 
-    RUN apt-get install python3-matplotlib libvips-dev python3-pip npm -y
+    RUN apt-get install python3-matplotlib libvips-dev python3-pip npm pandoc -y
     RUN pip3 install pandocfilters
     RUN npm install -g markdownlint-cli 
 
@@ -71,14 +71,6 @@ website-run:
       docker run -p 4001:4001 -v $(pwd)/website:/site --rm --name earthly-website earthly-website
 
 ## Blog
-blog-update:
-  FROM agbell/website-base:latest
-  COPY blog .
-  RUN rm Gemfile.lock
-  RUN bundle install
-  RUN bundle update
-  SAVE ARTIFACT Gemfile.lock AS LOCAL blog/Gemfile.lock
-
 blog-install:
   FROM agbell/website-base:latest
   COPY blog/Gemfile .
@@ -101,11 +93,6 @@ blog-lint:
     RUN echo "Fail: external image link" && false
   END
   RUN markdownlint "./blog/_posts/*.md"
-  RUN cd blog && bundle exec jekyll build --future 2> ../error.txt
-  IF [ -s error.txt ]
-    RUN cat error.txt
-    RUN echo “Errors in Build” && False
-  END
 
 blog-lint-apply:
   LOCALLY
@@ -119,12 +106,6 @@ blog-lint-apply:
     RUN echo "Fail: external image link" && false
   END
   RUN cd blog && markdownlint --fix "./_posts/*.md"
-  RUN cd blog && bundle exec jekyll build --future 2> ../error.txt
-  IF [ -s error.txt ]
-    RUN cat error.txt
-    RUN echo “Errors in Build” && False
-  END
-
 
 blog-writing-suggestions:
   FROM agbell/blog-install
@@ -147,21 +128,12 @@ blog-docker:
   CMD bundle exec jekyll serve -H 0.0.0.0 --future --incremental -P 4002
   SAVE IMAGE earthly-blog
 
-blog-interactive:
-  FROM +blog-install
-  COPY blog .
-  RUN --interactive /bin/bash
-
 blog-run:
   LOCALLY
   WITH DOCKER --load=+blog-docker
     RUN docker rm -f earthly-blog && \
       docker run -p 4002:4002 -v $(pwd)/blog:/site --rm --name earthly-blog earthly-blog
   END
-
-blog-local:
-  LOCALLY
-  RUN cd blog && bundle exec jekyll serve --future --incremental --profile -H 0.0.0.0 -P 4002
 
 ## Utils
 clean:
@@ -181,24 +153,6 @@ build:
   BUILD +website-build
   BUILD +blog-build
 
-# Publish by pushing published site to seperate git repo
-manual-publish:
-  LOCALLY
-  BUILD +website-build
-  BUILD +blog-build
-  ARG branch=main
-  RUN git clone https://github.com/earthly/website-output.git || true
-  RUN cd website-output \
-       && git checkout -b $branch || true \
-       && git rm -rf . || true \
-       && git clean -fxd 
-  RUN cp -a build/site/. website-output/
-  RUN cd website-output && ls
-  RUN cd website-output \
-    && git add -A \
-    && git commit -m "Latest website - manual publish" || exit 0 \ 
-    && git push 
-   
 new-post:
   LOCALLY
   ARG name="one-two-three"
