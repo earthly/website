@@ -1,5 +1,5 @@
 ---
-title: "I was on Dev Tool Time and it was fun"
+title: "I Was on Dev Tool Time and It Was Fun"
 categories:
   - News
 author: Adam
@@ -33,3 +33,17 @@ Cons:
 ## Pictures:
 
 TODO: insert pictures
+
+## Things to Show
+
+* Markdownlint
+* Vale
+* Earthly
+* Funky
+* zoxide
+* mcfly
+* gitupdate ?
+* broot ?
+
+
+Watch it [here](https://www.twitch.tv/videos/1149577302).
