@@ -8,7 +8,7 @@ internal-links:
  - source graph
 ---
 
-<!-- ## About Dev tool Time
+## About Dev tool Time
 Dev Tool Time is a Source Graph monthly virtual event. Thorsten Ball and TJ Devries are the hosts hosts.
 
 TODO: Add some more background details.
@@ -44,4 +44,4 @@ TODO: insert pictures
 * `gitupdate` 
 * `broot`
 
-Watch it [here](https://www.twitch.tv/videos/1149577302). -->
+Watch it [here](https://www.twitch.tv/videos/1149577302). 
