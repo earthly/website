@@ -258,7 +258,7 @@ This is best suited for a complex system where each entity customizes the logs, 
 
 ### 6. Third-Party Logging Services
 
-There are a lot of third-party logging services you can use according to your infrastructure and application needs, enabling you to aggregate, manage, and analyze logs and take proactive preventative actions as a result.
+There are a lot of third-party logging services you can use according to your infrastructure and application needs, enabling you to aggregate, manage, and analyze logs and take proactive preventive actions as a result.
 
 - **[Splunk](http://www.splunk.com/):** Splunk is built to scale from a single server to multiple data centers. It has built-in alerting and reporting, real-time search, analysis, and visualization, which helps you take action against malfunctions faster. It comes with a Splunk Enterprise on-premise deployment and Splunk Cloud. The free plan comes with 500 MB data per day, and the paid plan starts from $150 a month for a GB.
 - **[Logstash](https://github.com/elastic/logstash):** Logstash is part of the [Elastic Stack](https://www.elastic.co/products) along with Beats, Elasticsearch, and Kibana. It's a server-side data processing pipeline that ingests data from a multitude of sources simultaneously, transforms it, and then sends it to your favourite "stash." Logstash has over 200 plugins for input, filter/transform, and output. It's free and open source.

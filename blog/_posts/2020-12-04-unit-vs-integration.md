@@ -97,7 +97,7 @@ So which type of test should be preferred? Neither alone is sufficient. Both are
 | Isolated | Integrated |
 | Quick to run | Slower to run |
 | Many in number | Fewer in number |
-| No access to file system, database or external services | Directly testing areas where software interacts with external systems |
+| No access to file system, database, or external services | Directly testing areas where software interacts with external systems |
 | Tests a single piece of functionality | Tests the interaction of several pieces of functionality |
 | Minimal setup and teardown | May involve extensive setup and teardown of external resources like file systems of database state |
 | Stateless | Possibly Stateful |

@@ -9,6 +9,8 @@ internal-links:
 
 author: Alex
 ---
+<!-- vale HouseStyle.EG = NO -->
+<!-- vale WritingSuggestions.Cliches = NO -->
 ## Where Did All The Rain Go?
 
 It's been a really dry summer here in Victoria BC (and the rest of the province). I couldn't remember the last time it had rained, which got me looking at historical weather data.

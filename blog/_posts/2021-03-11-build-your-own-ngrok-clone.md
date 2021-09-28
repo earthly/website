@@ -12,7 +12,7 @@ internal-links:
   - local tunnel
   - tunnel proxy
 ---
-
+<!-- vale WritingSuggestions.CorporateSpeak = NO -->
 
 ## Introduction
 

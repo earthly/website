@@ -1,8 +1,7 @@
 extends: substitution
 message: Inflated phrase - prefer '%s' over '%s'
 ignorecase: true
-action:
-  name: replace
+level: suggestion
 swap:
   'is able to': can
   'a myriad of': many

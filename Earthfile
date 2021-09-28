@@ -90,7 +90,7 @@ blog-lint:
   #FROM +blog-install
   FROM agbell/blog-install
   COPY .vale.ini .
-  COPY blog/.markdownlintrc .
+  COPY blog/.markdownlint.json .
   COPY .github .github
   COPY blog blog
   RUN vale --output line --minAlertLevel error ./blog/_posts/*.md
@@ -129,10 +129,10 @@ blog-lint-apply:
 blog-writing-suggestions:
   FROM agbell/blog-install
   COPY .vale.ini .
-  COPY blog/.markdownlintrc .
+  COPY blog/.markdownlint.json .
   COPY .github .github
   COPY blog blog
-  RUN vale ./blog/_posts/*.md
+  RUN --no-cache vale ./blog/_posts/*.md
 
 blog-build:
   #FROM +blog-install

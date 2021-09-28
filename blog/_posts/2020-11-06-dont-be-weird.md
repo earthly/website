@@ -19,7 +19,7 @@ Don't be weird is the short version. The slightly less short version is: "You on
 
 If you go to great lengths to work around some default of Kubernetes or one of the tools you're using, the trouble is you've severely limited the amount of support you can get from the community.
 
-In the past, I've worked on code with services that people made, and they hated a bunch of the defaults that Postgres was pushing on them. So they had this giant, 200 and something line init script that laid down how they wanted the database to act before you could even do anything. And personally I'm just like, "Dude, just create some freaking tables, and let's get on with our life." Why are you changing all of these defaults and stuff everywhere?
+In the past, I've worked on code with services that people made, and they hated a bunch of the defaults that Postgres was pushing on them. So they had this giant 200 and something line init script that laid down how they wanted the database to act before you could even do anything. And personally I'm just like, "Dude, just create some freaking tables, and let's get on with our life." Why are you changing all of these defaults and stuff everywhere?
 
 **Also Postgres defaults are pretty sane right?**
 
