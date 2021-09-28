@@ -185,11 +185,11 @@ For alternative installation options see the [alternative installation page in t
             </div>
             Terminal
         </header>
-        <code class="Home-product-Earthfile-code">earthly github.com/earthly/hello-world:main+hello</code>
+        <code class="Home-product-Earthfile-code">earthly github.com/earthly/hello-world+hello</code>
     </div>
 </p>
 
-This command executes the target `hello` from the repository [`github.com/earthly/hello-world`](https://github.com/earthly/hello-world) on the branch `main`.
+This command executes the target `hello` from the repository [`github.com/earthly/hello-world`](https://github.com/earthly/hello-world).
 
 ## Syntax highlighting
 
