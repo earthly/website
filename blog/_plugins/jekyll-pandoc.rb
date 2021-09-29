@@ -16,7 +16,7 @@ module Jekyll
   
           #--filter pandoc-citeproc
           # content = PandocRuby.new(content, *extensions, '--filter pandoc-plot --filter ./_plugins/embed-svg.py --filter ./_plugins/re-route.py').send("to_#{format}")
-          content = PandocRuby.new(content, *extensions, '--filter pandoc-plot').send("to_#{format}")
+          content = PandocRuby.new(content, *extensions).send("to_#{format}")
           raise Jekyll::Errors::FatalException, "Conversion returned empty string" unless content.length > 0
           content
         end

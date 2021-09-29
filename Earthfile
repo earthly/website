@@ -6,7 +6,7 @@ DEPS:
     RUN apt-get install gcc cmake imagemagick -y
     RUN gem install bundler -v "~>1.0" && gem install bundler jekyll
 
-    RUN apt-get install python3-matplotlib libvips-dev python3-pip npm -y
+    RUN apt-get install python3-matplotlib libvips-dev python3-pip npm pandoc -y
     RUN pip3 install pandocfilters
     RUN npm install -g markdownlint-cli 
 
@@ -147,21 +147,12 @@ blog-docker:
   CMD bundle exec jekyll serve -H 0.0.0.0 --future --incremental -P 4002
   SAVE IMAGE earthly-blog
 
-blog-interactive:
-  FROM +blog-install
-  COPY blog .
-  RUN --interactive /bin/bash
-
 blog-run:
   LOCALLY
   WITH DOCKER --load=+blog-docker
     RUN docker rm -f earthly-blog && \
       docker run -p 4002:4002 -v $(pwd)/blog:/site --rm --name earthly-blog earthly-blog
   END
-
-blog-local:
-  LOCALLY
-  RUN cd blog && bundle exec jekyll serve --future --incremental --profile -H 0.0.0.0 -P 4002
 
 ## Utils
 clean:
