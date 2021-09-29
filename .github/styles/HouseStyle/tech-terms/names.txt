@@ -140,3 +140,4 @@ Wercker
 Nevercode
 gnuawk
 jqterm
+Artifactory
