@@ -493,7 +493,7 @@ $ awk '$4 == "hello"{ print "This field is hello:", $4}'
 `printf` works like it does in the C and uses a format string and a list of values. You can use `%s` to print the next string value.
 
 So my `print $15 "\t" $13 "\t" $8`
-becomes `printf "%s \t %s \t %s, $15, $13, $8`.
+becomes `printf "%s \t %s \t %s", $15, $13, $8`.
 
 From there I can add right padding and fix my layout by changing `%s` to `%-Ns` where `N` is my desired column width:
 
