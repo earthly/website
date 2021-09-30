@@ -1135,12 +1135,11 @@ Also, if you're the type of person who's not afraid to do things on the command 
 
 {% include cta/cta1.html %}
 
-
 ### Feedback
 
-I hope this introduction gave you enough Awk for 90% of your use-cases though. If you come up with any clever Awk tricks yourself or if you have strong opinions on whether I should read the Hunger Games Trilogy, please reach out me.
+I hope this introduction gave you enough Awk for 90% of your use-cases though. If you come up with any clever Awk tricks yourself or if you have strong opinions on whether I should read the Hunger Games Trilogy, please reach out me on twitter:
 
-
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">AWK is a Swiss Army knife of text processing.<br><br>I knew it was powerful but I&#39;d never known how to use it.<br><br>So I took some time to learn the basics. Here is what you need to know: 🧵</p>&mdash; Adam Gordon Bell 🤓 (@adamgordonbell) <a href="https://twitter.com/adamgordonbell/status/1443590995279446019?ref_src=twsrc%5Etfw">September 30, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 [^1]:
  [Sundeep Agarwal](https://learnbyexample.github.io/learn_gnuawk/cover.html) pointed out on [reddit](https://www.reddit.com/r/programming/comments/pyjy65/understanding_awk/) that Awk does more than this: "By default, awk does more than split the input on spaces. It splits based on one or more sequence of space or tab or newline characters. In addition, any of these three characters at the start or end of input gets trimmed and won't be part of field contents. Newline characters come into play if the record separator results in newline within the record content."
