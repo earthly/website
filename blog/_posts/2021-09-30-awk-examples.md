@@ -9,20 +9,27 @@ internal-links:
 excerpt: "It turns out Awk is pretty simple. It has only a couple of conventions and only a small amount of syntax. It's straightforward to learn, and once you understand it, it will come in handy more often than you'd think."
 ---
 </p>
-> Awk exists so that [some] guy can rag on any data processing tool made after the year 1990.
+
+## Background
+
+<!-- > Awk exists so that [some] guy can rag on any data processing tool made after the year 1990.
 > "I processed 500 Petabytes with awk on a single server once I don't see why this is needed"
 >
-> Reddit User [BufferUnderpants](https://www.reddit.com/r/programming/comments/pank18/comment/ha6hzg0/?utm_source=reddit&utm_medium=web2x&context=3)
+> Reddit User [BufferUnderpants](https://www.reddit.com/r/programming/comments/pank18/comment/ha6hzg0/?utm_source=reddit&utm_medium=web2x&context=3) -->
 
-I have a confession to make: I don't know how to use Awk. Or at least I didn't know how to use it before I started writing this article. I would hear people mention AWK and how often they used it, and I was pretty certain I was missing out on some minor superpower.
+I have a confession to make: I don't know how to use Awk. Or at least I didn't know how to use it before I started writing this article. I would hear people mention Awk and how often they used it, and I was pretty certain I was missing out on some minor superpower.
 
 Like this little off hand comment by [Bryan Cantrill](https://www.youtube.com/watch?v=2wZ1pCpJUIM):
 
 > I write three or four Awk programs a day. And these are one-liners. These super quick programs.
 
-It turns out Awk is pretty simple. It has only a couple of conventions and only a small amount of syntax. It's straightforward to learn, and once you understand it, it will come in handy more often than you'd think.
+It turns out Awk is pretty simple. It has only a couple of conventions and only a small amount of syntax. As a result, it's straightforward to learn, and once you understand it, it will come in handy more often than you'd think.
 
-So in this article, I will teach myself, and you, the basics of Awk. To do this, I will use Awk to look at book reviews and pick my next book to read.  **If you read through the article and maybe even try an example or two, you should have no problem writing Awk scripts by the end of it.** And you probably don't even need to install anything because Awk is everywhere.
+So in this article, I will teach myself, and you, the basics of Awk. **If you read through the article and maybe even try an example or two, you should have no problem writing Awk scripts by the end of it.** And you probably don't even need to install anything because Awk is everywhere.
+
+### The Plan
+
+I will be using Awk to look at book reviews and pick my next book to read. I will start with short Awk one-liners and build towards a simple 33 line program that ranks books by the 19 million reviews on Amazon.com.
 
 ## What Is Awk
 
@@ -453,7 +460,7 @@ $ awk -F '\t' '$4 == "0439023483{ print $15 "\t" $13 "\t" $8}' bookreviews.tsv |
 
 Look at those star ratings. Yes, the book is getting many 5-star reviews, but more importantly, the layout of my text table looks horrible: the width of the review titles is breaking the layout.
 
-To fix this I need to switch from using `print` to using `printf`.
+To fix this, I need to switch from using `print` to using `printf`.
 
 <div class="notice--big--primary">
 
@@ -483,7 +490,7 @@ $ awk '$4 == "hello"{ print "This field is hello:", $4}'
 
 ## Awk `printf`
 
-`printf` works like it does in the C and uses a format string and then a list of values. You can use `%s` to print the next string value.
+`printf` works like it does in the C and uses a format string and a list of values. You can use `%s` to print the next string value.
 
 So my `print $15 "\t" $13 "\t" $8`
 becomes `printf "%s \t %s \t %s, $15, $13, $8`.
@@ -534,7 +541,7 @@ Alright, I think at this point, I'm ready to move on to star calculations.
 
 **What I've learned: `printf` and Built-ins**
 
-If you need print out a table, Awk lets you use `printf` and built-ins like `substr` to format your output.
+If you need to print out a table, Awk lets you use `printf` and built-ins like `substr` to format your output.
 
 It ends up looking something like this:
 
@@ -594,7 +601,7 @@ Average book review is 4.24361 stars
 
 **What I've learned: Awk's `BEGIN`, `END` and Variables**
 
-Awk provides two special patterns, `BEGIN` and `END`. You can use them to run actions before and after processing the records. For example, this is how you would initialize data, print headers, and footer, or do any start-up or tear-down stuff in Awk.
+Awk provides two special patterns, `BEGIN` and `END`. You can use them to run actions before and after processing the records. For example, this is how you would initialize data, print headers and footer, or do any start-up or tear-down stuff in Awk.
 
 It ends up looking like this:
 
@@ -664,7 +671,7 @@ Once we move beyond one-liners, a natural question is *why*. As in 'Why not use 
 
 I have a couple of answers for that.
 
-First, Awk is great for writing programs that are, at their core, a glorified for loop over some input. If that is what you are doing, and the control flow is limited, using Awk will be more concise than using Python.
+First, Awk is great for writing programs that are, at their core, a glorified for loop over some input. If that is what you are doing, and the control flow is limited, using Awk will be more concise than Python.
 
 Second, if you need to rewrite your Awk program into Python at some point, so be it. It's not going to be more than 100 lines of code, and the translation process will be straightforward.  
 
