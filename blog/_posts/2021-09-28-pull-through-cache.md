@@ -32,7 +32,7 @@ This kind of setup works especially well when the images you are pulling do not 
 
 Of course, there are additional methods and tools that can be used to cache images. Of particular note is the nifty [`rpardini/docker-registry-proxy`](https://github.com/rpardini/docker-registry-proxy), which uses `nginx` proxy and cache the requests, not unlike [MITM Proxy](/blog/mitmproxy). Other registries offer cache modes, like [Artifactory](https://www.jfrog.com/confluence/display/JFROG/Repository+Management#RepositoryManagement-RemoteRepositories) and [GCP](https://cloud.google.com/container-registry/docs/pulling-cached-images).
 
-For the purposes of this article, we will focus on the standard Docker registry found in ([`distribution/distribution`](https://github.com/distribution/distribution)), since it is simple and well-documented.
+For the purposes of this article, we will focus on the standard Docker registry found in ([`distribution/distribution`](https://github.com/distribution/distribution)), since it is simple and well-documented. If you just want to cut to the chase, [all of our work is on GitHub](https://github.com/earthly/ci-examples/tree/main/pull-through-cache).
 
 ## Obtaining the Registry
 
@@ -40,7 +40,7 @@ The canonical registry is [`registry:2`](https://hub.docker.com/_/registry). You
 
 ## Configuring the Registry
 
-As we go through the options that you may want to configure for you pull through cache, I'll be sharing snippets from a complete [configuration file example](). If any of the information shared here isn't quite what you need, the [documentation for configuring the registry](https://docs.docker.com/registry/configuration/) is fairly comprehensive.
+As we go through the options that you may want to configure for you pull through cache, I'll be sharing snippets from a complete [configuration file example](https://github.com/earthly/ci-examples/tree/main/pull-through-cache/terraform/module/cloud-init.yaml#L38-72). If any of the information shared here isn't quite what you need, the [documentation for configuring the registry](https://docs.docker.com/registry/configuration/) is fairly comprehensive.
 
 ### Proxy Mode
 
