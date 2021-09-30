@@ -442,7 +442,7 @@ The Hunger Games (The Hunger Games, Book 1)
 I want to calculate the average review score for 'The Hunger Games', but first, let's take a look at the review_date (`$15`), the review_headline (`$13`), and the star_rating (`$8`) of our Hunger Games reviews, to get a feel for the data:
 
 ``` bash
-$ awk -F '\t' '$4 == "0439023483{ print $15 "\t" $13 "\t" $8}' bookreviews.tsv | head 
+$ awk -F '\t' '$4 == "0439023483"{ print $15 "\t" $13 "\t" $8}' bookreviews.tsv | head 
 ```
 
 ``` ini
