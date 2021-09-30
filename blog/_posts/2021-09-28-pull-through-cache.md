@@ -12,7 +12,6 @@ internal-links:
 - terraform
 - registry
 ---
-# Set Up A Docker Pull-Through Cache
 
 On November 20, 2020 Docker began [rate limiting](https://docs.docker.com/docker-hub/download-rate-limit/) requests to its popular Docker Hub registry. This change applied to all users, anonymous or free. When this change was applied, developer workflows around the world screeched to a halt. Many were just fine after simply logging in (the rate limit is higher for logged-in accounts), but others found themselves needing to pay for a [service account](https://docs.docker.com/docker-hub/service-accounts/). Depending on usage, service accounts don't come cheap.
 
