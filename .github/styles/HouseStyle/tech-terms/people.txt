@@ -1,3 +1,6 @@
+Aho
+Kernighan
+Weinberger
 Driessen
 Hecht
 Spolsky
@@ -27,3 +30,6 @@ Vanesa
 TJ
 Devries
 Thorsten
+Cantrill
+Cantrill
+vyuh
