@@ -298,7 +298,7 @@ Patterns and Quilts (Mathzones)
 
 **What I've learned: Awk Field Separators**
 
-Awk assumes that the fields in a record are space delimited.
+Awk assumes that the fields in a record are whitespace delimited.
 
 You can change this using the `-F` option like this
 
