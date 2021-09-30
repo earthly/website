@@ -275,7 +275,7 @@ To fix this, I need to configure my field separators.
 
 ## Field Separators
 
-By default, Awk assumes that the fields in a record are space delimited. I can change the field separator to use tabs using the `awk -F` option:
+By default, Awk assumes that the fields in a record are whitespace delimited[^1]. I can change the field separator to use tabs using the `awk -F` option:
 
 ``` bash
 $ awk -F '\t' '{ print $6 }' bookreviews.tsv | head 
@@ -1136,3 +1136,6 @@ I hope this introduction gave you enough Awk for 90% of your use-cases though. I
 Also, if you're the type of person who's not afraid to do things on the command line then you might like Earthly:
 
 {% include cta/cta1.html %}
+
+[^1]:
+ [Sundeep Agarwal](https://learnbyexample.github.io/learn_gnuawk/cover.html) pointed out on [reddit](https://www.reddit.com/r/programming/comments/pyjy65/understanding_awk/) that Awk does more than this: "By default, awk does more than split the input on spaces. It splits based on one or more sequence of space or tab or newline characters. In addition, any of these three characters at the start or end of input gets trimmed and won't be part of field contents. Newline characters come into play if the record separator results in newline within the record content."
