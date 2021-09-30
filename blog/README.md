@@ -5,7 +5,7 @@ Theme: [Minimal Mistakes Jekyll theme](https://mmistakes.github.io/minimal-mista
 Start:
 ```
 earthly +blog-docker
-earthly +blog+run
+earthly +blog-run
 browse to http://0.0.0.0:4002/blog/
 ```
 
