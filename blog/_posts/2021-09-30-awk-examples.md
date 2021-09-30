@@ -139,7 +139,7 @@ six
 <!-- markdownlint-disable MD036 -->
 **What I've learned: Awk Field Variables**
 
-Awk creates a variable for each field (row) in a record (line) (`$1`, `$2` ... `$NF`). `$0` refers to the whole record.
+Awk creates a variable for each field (column) in a record (line) (`$1`, `$2` ... `$NF`). `$0` refers to the whole record.
 
 You can print out fields like this:
 
