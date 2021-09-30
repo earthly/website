@@ -736,7 +736,7 @@ BEGIN { FS = "\t" }
 
 </div>
 
-### Awk Average Example
+## Awk Average Example
 
 At this point, I should be ready to start calculating review scores for The Hunger Games:
 
@@ -794,7 +794,7 @@ exec awk -F '\t' 'print $0' $1
 
 </div>
 
-### Awk Arrays
+## Awk Arrays
 
 I'd like to know if the series stays strong or if it's a single great book that the author stretched out into a trilogy. If the reviews decline quickly, then that is not a good sign. I should be able to see which book was rated the best and which was the worst. Let's find out.
 
@@ -912,7 +912,7 @@ key3 three
 Not bad for a language written in 1977!
 </div>
 
-### Awk `If` `Else`
+## Awk `If` `Else`
 
 I hate how every book on Amazon has a star rating between 3.0 and 4.5 stars. It makes it hard to judge purely based on numbers. So let's rescale things in terms of the average. Maybe if I normalize the reviews, it will be easier to determine how good or bad the 3.77 average for Mockingjay is.
 
