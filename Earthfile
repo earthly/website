@@ -142,7 +142,7 @@ blog-build:
   SAVE ARTIFACT _site AS LOCAL build/site/blog
 
 blog-docker:
-  BUILD +base-image
+  # BUILD +base-image
   FROM +blog-install
   CMD bundle exec jekyll serve -H 0.0.0.0 --future --incremental -P 4002
   SAVE IMAGE earthly-blog

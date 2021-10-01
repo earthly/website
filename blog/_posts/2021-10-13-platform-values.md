@@ -31,7 +31,7 @@ Before jumping into talking about Earthly’s platform values, I should preface 
 
 *Interoperability, Configurability, Extensibility*
 
-![Versatility]({{site.images}}{{page.slug}}/header-versatility.jpg)
+![Versatility]({{site.images}}{{page.slug}}/header-versatility.jpg)\
 
 The ultimate goal for Earthfiles is to completely replace CI scripts, while also serving the use-cases of local development.
 
@@ -45,11 +45,7 @@ And finally, Earthly should work immediately with tools developers already use. 
 
 *Readability, Intuitiveness, First-time ease of use*
 
-https://unsplash.com/photos/-2vD8lIhdnw
-
-OR
-
-https://unsplash.com/photos/GWbIHT51VT4
+![Approachability]({{site.images}}{{page.slug}}/header-approachability.jpg)\
 
 A key issue in modern complex development environments is that not many people on the team fully understand the build. Oftentimes one engineer puts the scripts together and then they are the only ones who end up maintaining them. We call this person the “build guru” - because they know everything about the build, and nobody else does. (Does your team know the difference between `=`, `:=`, `?=` and `::=` in that Makefile you’ve just written? Can your team make sense of the gnarly groovy in your Jenkinsfile?)
 
@@ -63,7 +59,7 @@ Another consideration we made was the prioritization of these values. As **Appro
 
 *Repeatability, Portability*
 
-https://unsplash.com/photos/Oxl_KBNqxGA
+![Reproducibility]({{site.images}}{{page.slug}}/header-reproducibility.jpg)\
 
 Reproducibility is the ability to consistently get the same result from the platform given the same inputs. Although Earthly doesn’t yet provide full [reproducibility](​​https://reproducible-builds.org/) -- i.e. byte-for-byte deterministic output -- it does achieve what we call **repeatability**: a level of guarantee that the execution environment is isolated from host-specific characteristics or customizations.
 
@@ -81,7 +77,7 @@ Besides the above top 3 platform values, we also wanted to put together a set of
 
 *Performance, Computation reusability*
 
-https://unsplash.com/photos/NqOInJ-ttqM
+![Speed]({{site.images}}{{page.slug}}/header-speed.jpg)\
 
 The number one complaint we hear about people’s builds is that they take too long. And this isn’t about the difference between 5 minutes vs 3 minutes. It’s much more about 30 minutes vs 10 minutes. Builds that take longer than 15-20 minutes really slow down engineering productivity. It’s like this great wall that eventually everyone faces and all of a sudden makes build performance a top priority.
 
@@ -91,7 +87,7 @@ In that sense, Earthly should aim to be performant, cache as much as possible, a
 
 *Integrity, Transparency*
 
-https://unsplash.com/photos/saJkxOZXPsk
+![User respect]({{site.images}}{{page.slug}}/header-user-respect.jpg)\
 
 If users trust Earthly with running it on their computers, or in their build automation infrastructure, then Earthly should abide by the highest integrity standards. The overall theme is to not do to our users what we wouldn’t wish to be done to ourselves.
 
@@ -101,7 +97,7 @@ This is probably a value that should go without saying. We decided to put this i
 
 *Simplicity*
 
-https://unsplash.com/photos/7Sgw_56YVQI
+![Consistency of experience]({{site.images}}{{page.slug}}/header-consistency-of-experience.jpg)\
 
 High-quality products tend to be robust, consistent, intuitive, and simple. The fact that some language concepts can be reused across the Earthly experience makes the tool easier to understand and therefore more accessible. This helps with always knowing what to expect of the tool even in areas that the user is unfamiliar with.
 
@@ -142,3 +138,5 @@ Hopefully, this prioritization exercise will help us as a community to more easi
 Note that these principles aren’t meant as hard and fast rules - they are mainly guidelines. There may be occasions when the sensible thing to do is to make an exception.
 
 If you’re new, come give [Earthly a spin to experience Repeatable and Understandable builds](https://earthly.dev).
+
+{% include cta/cta1.html %}
