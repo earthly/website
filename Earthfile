@@ -23,6 +23,7 @@ base-amd64:
 
 base-arm64:
   FROM --platform=linux/arm64 ruby:2.7
+  WORKDIR /site
   DO +DEPS 
 
   # Vale is not working for arm. May need a step to build a vale binary and copy it in.
@@ -59,16 +60,17 @@ website-build:
   SAVE ARTIFACT _site AS LOCAL build/site
 
 website-docker:
-    BUILD +base-image
-    FROM +website-install
-    CMD JEKYLL_ENV=production bundle exec jekyll serve --incremental -H 0.0.0.0 -P 4001
-    SAVE IMAGE earthly-website
+  FROM +website-install
+  WORKDIR /site
+  CMD JEKYLL_ENV=production bundle exec jekyll serve --incremental -H 0.0.0.0 -P 4001
+  SAVE IMAGE earthly-website
 
 website-run:
   LOCALLY
-  # BUILD +website-docker
-  RUN docker rm -f earthly-website && \
-      docker run -p 4001:4001 -v $(pwd)/website:/site --rm --name earthly-website earthly-website
+  WITH DOCKER --load=+website-docker
+    RUN docker rm -f earthly-website && \
+        docker run -p 4001:4001 -v $(pwd)/website:/site --rm --name earthly-website earthly-website
+  END
 
 ## Blog
 blog-update:
@@ -142,8 +144,8 @@ blog-build:
   SAVE ARTIFACT _site AS LOCAL build/site/blog
 
 blog-docker:
-  # BUILD +base-image
   FROM +blog-install
+  WORKDIR /site
   CMD bundle exec jekyll serve -H 0.0.0.0 --future --incremental -P 4002
   SAVE IMAGE earthly-blog
 

@@ -58,7 +58,9 @@ GEM
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
     mercenary (0.4.0)
-    nokogiri (1.11.2-x86_64-linux)
+    mini_portile2 (2.5.3)
+    nokogiri (1.11.2)
+      mini_portile2 (~> 2.5.0)
       racc (~> 1.4)
     nuggets (1.6.0)
     pathutil (0.16.2)
@@ -80,6 +82,7 @@ GEM
     unicode-display_width (1.7.0)
 
 PLATFORMS
+  aarch64-linux
   x86_64-linux-musl
 
 DEPENDENCIES
@@ -95,4 +98,4 @@ DEPENDENCIES
   tzinfo-data
 
 BUNDLED WITH
-   2.2.14
+   2.2.28
