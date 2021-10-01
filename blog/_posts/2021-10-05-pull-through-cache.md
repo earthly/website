@@ -168,7 +168,7 @@ Choosing a VPS for your cache is easy - you should probably just use what your c
 
 For most of its life, our cache ran fairly well on a single $5 droplet, though additional CI pressure has forced us to step up a tier. If your needs are larger than a single node can provide, there are ways to [run multiple instances behind a load balancer](https://docs.docker.com/registry/deploying/#load-balancing-considerations), or [use a CDN](https://docs.docker.com/registry/configuration/#example-middleware-configuration), if needed.
 
-While it is possible to create a VPS instance by hand, lets take it a step further and fully automate it using [Terraform](https://www.terraform.io/) and [clout-init](https://cloud-init.io/). If you want to cut to the chase, [the full example is available here](https://github.com/earthly/ci-examples/tree/main/pull-through-cache/terraform).
+While it is possible to create a VPS instance by hand, lets take it a step further and fully automate it using [Terraform](https://www.terraform.io/) and [clout-init](https://cloud-init.io/). If you want to cut to the chase, [check out the full example](https://github.com/earthly/ci-examples/tree/main/pull-through-cache/terraform).
 
 Lets start by creating the VPS instance. Unlike the registry examples earlier, I'll leave in the variables I used in our Terraform module.
 
