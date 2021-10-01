@@ -33,12 +33,24 @@ base-arm64:
   SAVE IMAGE --push agbell/website-base:latest #Acts as a cache
 
 base-image:
+  FROM alpine:latest
+  ARG TARGETARCH
+  IF [ "$TARGETARCH" = "arm64" ]
+    FROM +base-arm64
+  ELSE IF [ "$TARGETARCH" = "amd64" ]
+    FROM +base-amd64
+  ELSE
+    RUN echo "Unsupported target architecture $TARGETARCH"; false
+  END
+
+base-image-all:
   BUILD +base-arm64
   BUILD +base-amd64
 
 ## Website
 website-update:
-  FROM agbell/website-base:latest
+  #FROM agbell/website-base:latest
+  FROM +base-image
   COPY website .
   RUN rm Gemfile.lock
   RUN bundle install
@@ -46,15 +58,16 @@ website-update:
   SAVE ARTIFACT Gemfile.lock AS LOCAL website/Gemfile.lock
 
 website-install:
-    FROM agbell/website-base:latest
+    # FROM agbell/website-base:latest
+    FROM +base-image
     COPY website/Gemfile .
     COPY website/Gemfile.lock .
     RUN bundle install --retry 5 --jobs 20
     SAVE IMAGE --push agbell/website-install:latest #Acts as a cache
 
 website-build:
-  #FROM +website-install
-  FROM agbell/website-install
+  FROM +website-install
+  # FROM agbell/website-install
   COPY website .
   RUN bundle exec jekyll build $FLAGS
   SAVE ARTIFACT _site AS LOCAL build/site
@@ -74,7 +87,8 @@ website-run:
 
 ## Blog
 blog-update:
-  FROM agbell/website-base:latest
+  #FROM agbell/website-base:latest
+  FROM +base-image
   COPY blog .
   RUN rm Gemfile.lock
   RUN bundle install
@@ -82,15 +96,16 @@ blog-update:
   SAVE ARTIFACT Gemfile.lock AS LOCAL blog/Gemfile.lock
 
 blog-install:
-  FROM agbell/website-base:latest
+  # FROM agbell/website-base:latest
+  FROM +base-image
   COPY blog/Gemfile .
   COPY blog/Gemfile.lock .
   RUN bundle install --retry 5 --jobs 20
   SAVE IMAGE --push agbell/blog-install:latest #Acts as a cache
 
 blog-lint:
-  #FROM +blog-install
-  FROM agbell/blog-install
+  FROM +blog-install
+  # FROM agbell/blog-install
   COPY .vale.ini .
   COPY blog/.markdownlint.json .
   COPY .github .github
@@ -129,7 +144,8 @@ blog-lint-apply:
 
 
 blog-writing-suggestions:
-  FROM agbell/blog-install
+  FROM +blog-install
+  # FROM agbell/blog-install
   COPY .vale.ini .
   COPY blog/.markdownlint.json .
   COPY .github .github
@@ -137,8 +153,8 @@ blog-writing-suggestions:
   RUN --no-cache vale ./blog/_posts/*.md
 
 blog-build:
-  #FROM +blog-install
-  FROM agbell/blog-install
+  FROM +blog-install
+  # FROM agbell/blog-install
   COPY blog .
   RUN JEKYLL_ENV=production bundle exec jekyll build $FLAGS 
   SAVE ARTIFACT _site AS LOCAL build/site/blog
@@ -202,7 +218,8 @@ new-post:
 
 # this looks for places you can manually add links to your page using internal-links in the post frontmatter
 link-opportunity:
-  FROM agbell/website-base:latest
+  # FROM agbell/website-base:latest
+  FROM +base-image
   COPY blog blog
   RUN pip3 install python-frontmatter
   ARG NAME="2020-09-10-better-builds.md"
