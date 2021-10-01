@@ -389,7 +389,7 @@ You could replace `grep` this way. You can also combine this with the field acce
 ``` bash
 $ echo "aa 10
         bb 20
-        cc 30" | awk '/bb/{ print $2 }'
+        cc 30" | awk '/bb/ { print $2 }'
 20
 ```
 
@@ -398,7 +398,7 @@ Using this knowledge, I can easily grab reviews by book title and print the book
 The reviews I'm going to focus on today are for the book 'The Hunger Games'. I'm choosing it because it's part of a series with many reviews and I recall liking the movie. So I'm wondering if I should read it.  
 
 ``` bash
-$ awk -F '\t' '/Hunger Games/{ print $6, $8  }' bookreviews.tsv | head
+$ awk -F '\t' '/Hunger Games/ { print $6, $8  }' bookreviews.tsv | head
 ```
 
 ``` ini
@@ -417,7 +417,7 @@ Tabula Rasa 3
 I should be able to pull valuable data from these reviews, but first there is a problem. I'm getting reviews from more than one book here. `/Hunger Games/` matches anywhere in the line and I'm getting all kinds of 'Hunger Games' books returned. I'm even getting books that mention "Hunger Games" in the review text:
 
 ``` bash
-$ awk -F '\t' '/Hunger Games/{ print $6 }' bookreviews.tsv | sort | uniq    
+$ awk -F '\t' '/Hunger Games/ { print $6 }' bookreviews.tsv | sort | uniq    
 ```
 
 ``` ini
@@ -435,14 +435,14 @@ Girl in the Arena
 I can fix this by using the `product_id` field to pattern match on:
 
 ``` bash
-$ awk -F '\t' '$4 == "0439023483"{ print $6 }' bookreviews.tsv | sort |  uniq 
+$ awk -F '\t' '$4 == "0439023483" { print $6 }' bookreviews.tsv | sort |  uniq 
 The Hunger Games (The Hunger Games, Book 1)
 ```
 
 I want to calculate the average review score for 'The Hunger Games', but first, let's take a look at the review_date (`$15`), the review_headline (`$13`), and the star_rating (`$8`) of our Hunger Games reviews, to get a feel for the data:
 
 ``` bash
-$ awk -F '\t' '$4 == "0439023483"{ print $15 "\t" $13 "\t" $8}' bookreviews.tsv | head 
+$ awk -F '\t' '$4 == "0439023483" { print $15 "\t" $13 "\t" $8}' bookreviews.tsv | head 
 ```
 
 ``` ini
@@ -471,19 +471,19 @@ I've learned that an awk action, like `{ print $4}`, can be preceded by a patter
 You can use a simple regular expression for the pattern. In which case it matches anywhere in the line, like `grep`:
 
 ``` bash
-$ awk '/hello/{ print "This line contains hello", $0}'
+$ awk '/hello/ { print "This line contains hello", $0}'
 ```
 
 Or you can match within a specific field:
 
 ``` bash
-$ awk '$4~/hello/{ print "This field contains hello", $4}'
+$ awk '$4~/hello/ { print "This field contains hello", $4}'
 ```
 
 Or you can exact match a field:
 
 ``` bash
-$ awk '$4 == "hello"{ print "This field is hello:", $4}'
+$ awk '$4 == "hello" { print "This field is hello:", $4}'
 ```
 
 </div>
@@ -498,7 +498,7 @@ becomes `printf "%s \t %s \t %s", $15, $13, $8`.
 From there I can add right padding and fix my layout by changing `%s` to `%-Ns` where `N` is my desired column width:
 
 ``` bash
-$ awk -F '\t' '$4 == "0439023483"{ printf "%s \t %-20s \t %s \n", $15, $13, $8}' bookreviews.tsv | head 
+$ awk -F '\t' '$4 == "0439023483" { printf "%s \t %-20s \t %s \n", $15, $13, $8}' bookreviews.tsv | head 
 ```
 
 ``` ini
@@ -519,7 +519,7 @@ This table is pretty close to what I'd want. However, some of the titles are jus
 Putting it all together and I get:
 
 ``` bash
-$ awk -F '\t' '$4 == "0439023483"{ printf "%s \t %-20s \t %s \n", $15, substr($13,1,20), $8}' bookreviews.tsv | head
+$ awk -F '\t' '$4 == "0439023483" { printf "%s \t %-20s \t %s \n", $15, substr($13,1,20), $8}' bookreviews.tsv | head
 ```
 
 ``` ini
@@ -546,7 +546,7 @@ If you need to print out a table, Awk lets you use `printf` and built-ins like `
 It ends up looking something like this:
 
 ``` bash
-$ awk '{ printf "%s \t %-5s", $1, substr($2,1,5)}'
+$ awk '{ printf "%s \t %-5s", $1, substr($2,1,5) }'
 ```
 
 `printf` works much like C's `printf`. You can use `%s` to insert a string into the format string, and other flags let you the set width or precision. For more information on `printf` or other built-ins, you can consult an Awk reference document.
@@ -686,7 +686,7 @@ $ cat average
 
 ``` ini
 exec awk -F '\t' '
-{ total = total + $8 }
+    { total = total + $8 }
 END { print "Average book review is", total/NR, "stars" } 
 ' $1
 ```
@@ -742,8 +742,8 @@ At this point, I should be ready to start calculating review scores for The Hung
 
 ``` bash
 exec awk -F '\t' '
-$4 == "0439023483"{ title=$6; count = count + 1; total = total + $8 }
-END { print "The Average book review for", title, "is", total/count, "stars" }  
+$4 == "0439023483" { title=$6; count = count + 1; total = total + $8 }
+END                { print "The Average book review for", title, "is", total/count, "stars" }  
 ' $1
 ```
 
@@ -1056,7 +1056,7 @@ odd
 
 ## Awk Sort by Values
 
-Awk ( specifically gawk) allows you easily configure your iteration order using a magic variable called `PROCINFO["sorted_in"]`. This means that if I change our program to sort by value and drop the filtering, then I will be able to see the top reviewed books:
+Awk (specifically gawk) allows you easily configure your iteration order using a magic variable called `PROCINFO["sorted_in"]`. This means that if I change our program to sort by value and drop the filtering, then I will be able to see the top reviewed books:
 
 ``` awk
 exec gawk -F '\t' '
@@ -1135,9 +1135,9 @@ Also, if you're the type of person who's not afraid to do things on the command 
 
 {% include cta/cta1.html %}
 
-### Feedback
+### What's your Awk Trick or Book Pick?
 
-I hope this introduction gave you enough Awk for 90% of your use-cases though. If you come up with any clever Awk tricks yourself or if you have strong opinions on whether I should read the Hunger Games Trilogy, please reach out me on twitter:
+I hope this introduction gave you enough Awk for 90% of your use-cases though. If you come up with any clever Awk tricks yourself or if you have strong opinions on what I should read next, let me know Twitter [`@AdamGordonBell`](https://twitter.com/adamgordonbell):
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">AWK is a Swiss Army knife of text processing.<br><br>I knew it was powerful but I&#39;d never known how to use it.<br><br>So I took some time to learn the basics. Here is what you need to know: 🧵</p>&mdash; Adam Gordon Bell 🤓 (@adamgordonbell) <a href="https://twitter.com/adamgordonbell/status/1443590995279446019?ref_src=twsrc%5Etfw">September 30, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
