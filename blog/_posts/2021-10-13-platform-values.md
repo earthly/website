@@ -19,11 +19,13 @@ This has been inspired by a talk given by [Bryan Cantrill](https://twitter.com/b
 
 As a tangible example, here is a comparison between the values of **C** vs the values of **C++**:
 
-![Platform core values of C]({{site.images}}{{page.slug}}/values-c.png)
+{% picture content-nocrop {{site.pimages}}{{page.slug}}/values-c.png --picture --alt {{ Platform core values of C }} %}
+<figcaption>Platform core values of C</figcaption>
 
-![Platform core values of C++]({{site.images}}{{page.slug}}/values-cpp.png)
+{% picture content-nocrop {{site.pimages}}{{page.slug}}/values-cpp.png --picture --alt {{ Platform core values of C++ }} %}
+<figcaption>Platform core values of C++</figcaption>
 
-As you can see, C++ sacrificed **interoperability** and **simplicity** in favor of **expressiveness**. So much of where C++ succeeded and where it never replaced C can be traced back to that decision.
+As you can see, C++ sacrificed **interoperability** and **simplicity** in favor of **expressiveness**. So much of where C++ succeeded at replacing C and where it didn't can be traced back to that decision.
 
 Before jumping into talking about Earthly's platform values, I should preface this by saying that we're not there yet. For now, this is merely our north star and not yet our description. However, Earthly has been evolving fast since its initial launch in April last year and we hope that one day we can truly say that these values are 100% representative of what Earthly is.
 
@@ -40,7 +42,7 @@ Because CI scripts historically have been used for general automation, not just 
 
 In addition, the scripting language provided through Earthfiles should be complete enough and not require any subsequent wrapping nor repeated invocation of Earthly. The moment Earthfiles require wrapping we've already lost the repeatability advantage because then the wrapper can become a vector for inconsistency.
 
-And finally, Earthly should work immediately with tools developers already use. I always say that there is no single tool that can become the best build system for all programming languages. The world of development is too fragmented between varying opinions for anyone to be able to satisfy all of them fully. For this reason, Earthly is not meant to replace any such language-specific tool. It's only meant to be a tool for glueing together various build tools into a repeatable process.
+And finally, Earthly should work immediately with tools developers already use. There is no single tool that can become the best build system for all programming languages. The world of development is too fragmented between varying opinions for anyone to be able to satisfy all of them fully. For this reason, Earthly is not meant to replace any such language-specific tool. It's only meant to be a tool for glueing together various build tools into a repeatable process.
 
 ## 2. Approachability
 
