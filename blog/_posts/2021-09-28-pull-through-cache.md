@@ -1,5 +1,5 @@
 ---
-title: "Set Up A Docker Pull-Through Cache"
+title: "How I Saved $5,000/mo with a $5 Droplet"
 categories:
 - Tutorials
 
@@ -17,13 +17,13 @@ On November 20, 2020 Docker began [rate limiting](https://docs.docker.com/docker
 
 There's nothing wrong with waving the magic money wand to make the problem go away. Depending on your situation, this may even be the right answer. For others, reality might not be quite so plush.
 
-At Earthly, we were no stranger to these rate limits. And, building a containerized build too means pulling a _lot_ of containers, very often. Running our test suite 2-3 times over the span of a couple hours would trigger the rate limit... and it was getting worse with each new test. Perhaps this situation sounds familiar?
+At Earthly, I was no stranger to these rate limits. And, building a containerized build too means pulling a _lot_ of containers, very often. Running our test suite 2-3 times over the span of a couple hours would trigger the rate limit... and it was getting worse with each new test. Perhaps this situation sounds familiar?
 
-So, rather than pay for a service account; we set up our own _pull-through cache_ to middleman all requests to Docker Hub. Once we put this in place, failures from rate-limiting vanished. Additionally, it is cheaper than paying for a service account! So, to save you some time, we've documented and shared what we did.
+So, rather than pay for a service account; I set up a _pull-through cache_ to middleman all requests to Docker Hub. Once I put this in place, failures from rate-limiting vanished. Additionally, it is cheaper than paying for a service account! So, to save you some time, I've documented and shared what I did.
 
 ## What Is A Pull-Through Cache?
 
-Before we dive into specifics about our setup, lets make sure we have a solid understanding about what a pull-through cache is, and is _not_.
+Before I dive into specifics about our setup at Earthly, lets build a solid understanding about what a pull-through cache is, and is _not_.
 
 A pull-through cache, from the perspective of a client, is just a normal registry. Well, almost. [You can't push images to it](https://docs.docker.com/registry/configuration/#proxy), for instance. But you can pull from it. The first time an image (or its metadata) is requested from the cache, it will be transparently fetched from the upstream repository. Subsequent requests will use the cached version.
 
@@ -31,7 +31,7 @@ This kind of setup works especially well when the images you are pulling do not 
 
 Of course, there are additional methods and tools that can be used to cache images. Of particular note is the nifty [`rpardini/docker-registry-proxy`](https://github.com/rpardini/docker-registry-proxy), which uses `nginx` proxy and cache the requests, not unlike [MITM Proxy](/blog/mitmproxy). Other registries offer cache modes, like [Artifactory](https://www.jfrog.com/confluence/display/JFROG/Repository+Management#RepositoryManagement-RemoteRepositories) and [GCP](https://cloud.google.com/container-registry/docs/pulling-cached-images).
 
-For the purposes of this article, we will focus on the standard Docker registry found in ([`distribution/distribution`](https://github.com/distribution/distribution)), since it is simple and well-documented. If you just want to cut to the chase, [all of our work is on GitHub](https://github.com/earthly/ci-examples/tree/main/pull-through-cache).
+For the purposes of this article, I'll focus on the standard Docker registry found in ([`distribution/distribution`](https://github.com/distribution/distribution)), since it is simple and well-documented. If you just want to cut to the chase, [all of our work is on GitHub](https://github.com/earthly/ci-examples/tree/main/pull-through-cache).
 
 ## Obtaining the Registry
 
@@ -39,7 +39,7 @@ The canonical registry is [`registry:2`](https://hub.docker.com/_/registry). You
 
 ## Configuring the Registry
 
-As we go through the options that you may want to configure for you pull through cache, I'll be sharing snippets from a complete [configuration file example](https://github.com/earthly/ci-examples/tree/main/pull-through-cache/terraform/module/cloud-init.yaml#L38-72). If any of the information shared here isn't quite what you need, the [documentation for configuring the registry](https://docs.docker.com/registry/configuration/) is fairly comprehensive.
+As I go through the options that you may want to configure for you pull through cache, I'll be sharing snippets from a complete [configuration file example](https://github.com/earthly/ci-examples/tree/main/pull-through-cache/terraform/module/cloud-init.yaml#L38-72). If any of the information shared here isn't quite what you need, the [documentation for configuring the registry](https://docs.docker.com/registry/configuration/) is fairly comprehensive.
 
 ### Proxy Mode
 
@@ -67,7 +67,7 @@ auth:
     path: /auth/htpasswd
 ```
 
-Since we are a relatively small team, using a static username/password in a standard `htpasswd` file is sufficient. If you need help generating a `htpasswd` file, see the [Apache documentation](https://httpd.apache.org/docs/2.4/programs/htpasswd.html).
+Since I work with a relatively small team, using a static username/password in a standard `htpasswd` file is sufficient. If you need help generating a `htpasswd` file, see the [Apache documentation](https://httpd.apache.org/docs/2.4/programs/htpasswd.html).
 
 Do _not_ use the `silly` authentication type, as it is only meant for development. The name should give this away. We hope.
 
@@ -75,13 +75,13 @@ The `token` system should let you connect it to your existing authentication inf
 
 ### HTTPS
 
-For us at Earthly; our infrastructure resides on a `.dev` domain. The entirety of `.dev` uses [HSTS](https://hstspreload.org/). This means we couldn't just leave our cache on HTTP. Besides, in the era of [Let's Encrypt](https://letsencrypt.org/), its simple enough to set up, right?
+For us at Earthly; our infrastructure resides on a `.dev` domain. The entirety of `.dev` uses [HSTS](https://hstspreload.org/). This means I couldn't just leave our cache on HTTP. Besides, in the era of [Let's Encrypt](https://letsencrypt.org/), its simple enough to set up, right?
 
 Well, kinda. At the time of this writing, there's [an issue with the default image](https://github.com/docker/distribution-library-image/issues/96), and a [similar issue upstream for the registry program itself](https://github.com/distribution/distribution/issues/3041). Because Let's Encrypt turned off the relevant APIs, and the default image is so old, you'll need use one of three approaches:
 
 #### Compile A Registry
 
-[This is the approach we took](https://github.com/earthly/registry). You can simply wrap the existing `registry` image in another Dockerfile using `FROM registry:2` (or use an Earthfile ;)) and replace the binary with another built from the `distribution/registry` source.
+[This is the approach I took](https://github.com/earthly/registry). You can simply wrap the existing `registry` image in another Dockerfile using `FROM registry:2` (or use an Earthfile ;)) and replace the binary with another built from the `distribution/registry` source.
 
 After that, it was as simple as configuring it as specified using the [`http.letsencrypt` key](https://docs.docker.com/registry/configuration/#letsencrypt) :
 
@@ -105,7 +105,7 @@ This was our second option after compiling our own version. Using something like
 
 ### Storage
 
-Because this registry is just a cache, and isn't mission critical, we opted to back the cache with just the local disk space on the VPS we deployed this on. Additionally, the metadata for the images is not mission critical, so we opted to place this in memory. For more details on these options, see the [`storage.filesystem`](https://github.com/docker/docker.github.io/blob/master/registry/storage-drivers/filesystem.md)  and the [`storage.cache` keys](https://docs.docker.com/registry/configuration/#cache).
+Because this registry is just a cache, and isn't mission critical, I opted to back the cache with just the local disk space on the VPS I deployed this on. Additionally, the metadata for the images is not mission critical, so I opted to place this in memory. For more details on these options, see the [`storage.filesystem`](https://github.com/docker/docker.github.io/blob/master/registry/storage-drivers/filesystem.md)  and the [`storage.cache` keys](https://docs.docker.com/registry/configuration/#cache).
 
 ```yaml
 storage:
@@ -119,9 +119,9 @@ There are other storage drivers available, too. The [`storage` root key](https:/
 
 ### Other Small Tweaks
 
-Because we were _already_ adding many configuration options... what were a few more? Here are the other tweaks we added:
+Because I was _already_ adding many configuration options... what were a few more? Here are the other tweaks I added:
 
-A storage healthcheck (in case we start to run out of space, or other VPC weirdness happens):
+A storage healthcheck (in case the cache starts to run out of space, or other VPC weirdness happens):
 
 ```yaml
 health:
@@ -164,27 +164,27 @@ docker run -d -p 443:5000 --restart=always --name=through-cache -v ./auth:/auth 
 
 But, a cache that exists only on your machine isn't as useful as one that can be shared; or one that can sit between Docker Hub and your CI. Fortunately, It's not too difficult to get this up and running on a VPS.
 
-Choosing a VPS for your cache is easy - you should probably just use what your company uses. However, we opted to use Digital Ocean due to their reasonable pricing, simple configuration, and generous bandwidth.
+Choosing a VPS for your cache is easy - you should probably just use what your company uses. However, I opted to use Digital Ocean due to their reasonable pricing, simple configuration, and generous bandwidth.
 
 For most of its life, our cache ran fairly well on a single $5 droplet, though additional CI pressure has forced us to step up a tier. If your needs are larger than a single node can provide, there are ways to [run multiple instances behind a load balancer](https://docs.docker.com/registry/deploying/#load-balancing-considerations), or [use a CDN](https://docs.docker.com/registry/configuration/#example-middleware-configuration), if needed.
 
-While it is possible to create a VPS instance by hand, lets take it a step further and fully automate it using [Terraform](https://www.terraform.io/) and [clout-init](https://cloud-init.io/). If you want to cut to the chase, we have the full example available [here].
+While it is possible to create a VPS instance by hand, lets take it a step further and fully automate it using [Terraform](https://www.terraform.io/) and [clout-init](https://cloud-init.io/). If you want to cut to the chase, the full example is available [here](https://github.com/earthly/ci-examples/tree/main/pull-through-cache/terraform).
 
-Lets start by creating the VPS instance. Unlike the registry examples earlier, I'll leave in the variables we use in our Terraform module.
+Lets start by creating the VPS instance. Unlike the registry examples earlier, I'll leave in the variables I used in our Terraform module.
 
 ```hcl
 resource "digitalocean_droplet" "docker_cache" {
   image      = "ubuntu-20-04-x64"
   name       = "docker-cache-${var.repository_to_mirror}"
   region     = "sfo3"
-  size       = "s-2vcpu-2gb"
+  size       = "s-1cpu-1gb"
   monitoring = true
   ssh_keys   = [var.ssh_key.fingerprint]
   user_data  = data.template_file.cloud-init.rendered
 }
 ```
 
-Its a fairly standard, simple configuration to spin up a droplet. But, how do we start our cache on the fresh droplet? Through the cloud-init `user_data` key. We use Terraform to template it out using the same variables provided to our module, and place the result in this HCL section. Here's a (truncated) version of our cloud-init template:
+Its a fairly standard, simple configuration to spin up a droplet. But, how do you start our cache on the fresh droplet? Through the cloud-init `user_data` key. We use Terraform to template it out using the same variables provided to our module, and place the result in this HCL section. Here's a (truncated) version of our cloud-init template:
 
 ```
 #cloud-config
@@ -245,4 +245,4 @@ If your mirror becomes unavailable, `docker` should start using the upstream dir
 
 ## Conclusion
 
-Configuring and maintaining our own pull-through cache has saved us tons of headache, and money. Our CI is no longer subject to rate limits. This means we are more consistent, reliable, and faster.
+Configuring and maintaining our own pull-through cache has saved us tons of headache, and money. Our CI is no longer subject to rate limits. This means our builds are more consistent, reliable, and faster.
