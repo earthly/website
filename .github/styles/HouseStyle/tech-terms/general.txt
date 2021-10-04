@@ -118,6 +118,13 @@ recompiles
 makefiles
 boolean
 unicode
+strived
+Joyent
+cofounder
+Jenkinsfile
+Rossum
+onboarding
+deprioritizing
 
 #fastlane build stuff
 fastlane
