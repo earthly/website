@@ -87,3 +87,7 @@ Marsel Tzatzos:
     name    : "Marsel Tzatzos"
     bio     : "I am Marsel, currently tech lead @ Vodafone. I have worked both with mobile & web technologies and I just love learning new stuff."
     avatar  : "/assets/images/authors/marsel-tzatzos.jpg"
+Ben Force:
+    name    : "Ben Force"
+    bio     : "Ben Force is a freelance software engineer. He has been programming since he discovered QBasic on his parent's computer in the '90s. You can find more of his writing on thebenforce.com."
+    avatar  : "/assets/images/authors/ben-force.jpg"
