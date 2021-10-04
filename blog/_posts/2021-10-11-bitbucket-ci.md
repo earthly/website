@@ -9,13 +9,6 @@ internal-links:
  - bitbucket
  - groovy 
 ---
-## Draft.dev Article Checklist
-
-- [ ] Verify look of article locally
-- [ ] Run mark down linter (`earthly +blog-lint-apply`)
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `earthly +link-opportunity` and find 1-5 places to incorporate links
-
 How do you rapidly deliver new features without delivering bugs at the same rate? By running automatic builds and tests on all of your code before it gets into a release. And that's exactly what continuous integration is.
 
 To run these automated code checks, you'll need to keep your code in a repository. There are a lot of options, but if you're already using [Jira](https://www.atlassian.com/software/jira), then [Bitbucket](https://bitbucket.org/product) is a natural choice. Beyond good integration with Jira, Bitbucket offers integrations with a lot of build systems.
@@ -26,7 +19,7 @@ If you want to see all of the build pipeline configurations, I've put all this u
 
 ## Using Bitbucket With Jenkins
 
-[Jenkins](https://www.jenkins.io/) is a free, open-source build server. It allows you to define build jobs, store build artifacts, and run deployments, all of which run on your own servers.
+[Jenkins](/blog/slow-performance-in-jenkins) is a free, open-source build server. It allows you to define build jobs, store build artifacts, and run deployments, all of which run on your own servers.
 
 Jenkins is a great option if you need to run builds on a customized machine. A good example of this is building iOS apps. On the flip side, however, is that since Jenkins isn't a managed service you have to manage your own infrastructure to run builds. This can be a lot more costly than some of the alternatives, especially if your builds don't run that often or for very long.
 
@@ -40,7 +33,7 @@ The plugin's page has details about how to get it setup. The short version is th
 
 Once your pipeline is set up, you'll need to tell Jenkins how to actually verify your code. You can do this using a specially formatted file called `Jenkinsfile` in your project's root directory. The following example runs some Jest unit tests in a Node project.
 
-```groovy
+``` yaml
 pipeline {
     agent any
 
@@ -87,7 +80,7 @@ When you create a new pipeline, the source step will ask what provider hosts you
 
 ![Create a Pipeline]({{site.images}}{{page.slug}}/9460.png)
 
-Next, select the repository and branch that you want this pipeline to build. Make sure the checkbox to start the pipeline on code changes is checked, then click **Next**. The rest of the steps are pretty straight forward, just make sure you select **CodeBuild** as your build provider when asked.
+Next, select the repository and [branch](/blog/git-branching) that you want this pipeline to build. Make sure the checkbox to start the pipeline on code changes is checked, then click **Next**. The rest of the steps are pretty straight forward, just make sure you select **CodeBuild** as your build provider when asked.
 
 ### Configuring Your Build
 
