@@ -58,12 +58,12 @@ website-update:
   SAVE ARTIFACT Gemfile.lock AS LOCAL website/Gemfile.lock
 
 website-install:
-    # FROM agbell/website-base:latest
-    FROM +base-image
+    FROM agbell/website-base:latest
+    # FROM +base-image
     COPY website/Gemfile .
     COPY website/Gemfile.lock .
     RUN bundle install --retry 5 --jobs 20
-    SAVE IMAGE --push agbell/website-install:latest #Acts as a cache
+    # SAVE IMAGE --push agbell/website-install:latest #Acts as a cache
 
 website-build:
   FROM +website-install
@@ -96,12 +96,12 @@ blog-update:
   SAVE ARTIFACT Gemfile.lock AS LOCAL blog/Gemfile.lock
 
 blog-install:
-  # FROM agbell/website-base:latest
-  FROM +base-image
+  FROM agbell/website-base:latest
+  # FROM +base-image
   COPY blog/Gemfile .
   COPY blog/Gemfile.lock .
   RUN bundle install --retry 5 --jobs 20
-  SAVE IMAGE --push agbell/blog-install:latest #Acts as a cache
+  # SAVE IMAGE --push agbell/blog-install:latest #Acts as a cache
 
 blog-lint:
   FROM +blog-install
