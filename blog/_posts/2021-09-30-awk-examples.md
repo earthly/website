@@ -899,7 +899,7 @@ You can then use a for loop to iterate over them:
 
 ``` awk
 for (i in arr){
-    print $i, arr[i]
+    print i, arr[i]
 }
 ```
 
