@@ -43,7 +43,7 @@ jobs:
             earthly --use-inline-cache +build
           else
             echo "Branch Build - only for preview"
-            earthly --use-inline-cache +dev-build 
+            earthly --use-inline-cache --verbose +dev-build 
           fi
           
       - name: checkout branch in repo website-output
