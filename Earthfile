@@ -118,6 +118,10 @@ blog-lint:
     RUN echo "Fail: external image link" && false
   END
   RUN markdownlint "./blog/_posts/*.md"
+
+  # In order to check for warnings, we need to build all future posts and check the error out
+  # This is a unideal because it means we are building site twice but it prevents failing at 
+  # some future date when a post goes out.
   RUN cd blog && bundle exec jekyll build --future 2> ../error.txt
   IF [ -s error.txt ]
     RUN cat error.txt
