@@ -143,3 +143,5 @@ gnuawk
 jqterm
 Artifactory
 Jira
+Assembla
+Atlassian
