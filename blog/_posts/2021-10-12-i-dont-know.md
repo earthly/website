@@ -85,7 +85,7 @@ Balancing these two related types of confidence can be a bit tricky. Scout Minds
 
 ### Never Say "I Don't Know."
 
-Imagine you`re a software developer working on a service, and someone asks you why it's down a certain region of AWS. A perfectly correct answer is "I don't know." The problem is that "I don't know" implies that the uncertainty is in you. It's YOU who doesn't know.
+Imagine you're a software developer working on a service, and someone asks you why it's down a certain region of AWS. A perfectly correct answer is "I don't know." The problem is that "I don't know" implies that the uncertainty is in you. It's YOU who doesn't know.
 
 Instead of "I don't know," you should confidently explain the uncertainty: "I rolled out a change to that service yesterday, so it could be that, but until someone looks at logs it will be hard to know for sure." You are now communicating not just that you are uncertain but also why you're justified in being so.
 
