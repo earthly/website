@@ -16,11 +16,7 @@ It was always the same voice, and always said in the same way: "OH GAAAHWD". I d
 
 That was Alex[^1], and she wasn't watching the stock market. She had just gotten feedback on her work. Either a ticket had just been set back to 'in progress' or someone from QA had shown up at her desk to ask a question (which implied something was wrong).
 
-<!-- Maybe sometimes there wasn't even anything wrong -- I'm not sure, I wasn't on a team with Alex I just heard her reactions.  -->
-
 Alex was not confident in her work and panicked at the sign of negative feedback.
-
-<!-- Maybe Alex had impostor syndrome, or maybe she was struggling to do her job well. Maybe both. -->
 
 ## Quality Was Assured
 
