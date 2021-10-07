@@ -4,30 +4,22 @@ categories:
   - Tutorials
 toc: true
 author: Lukonde Mwila
-
 internal-links:
  - travis ci
  - bitbucket ci
-
 ---
-## Draft.dev Article Checklist
-
-- [ ] Run mark down linter (`earthly +blog-lint-apply`)
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `earthly +link-opportunity` and find 1-5 places to incorporate links
-
 CI/CD (continuous integration / continuous delivery) helps development teams optimize software quality tests before delivering committed changes into production. In this tutorial, you'll learn how to set up a continuous integration workflow using [Travis CI](https://www.travis-ci.com/) and [Bitbucket](https://bitbucket.org/).
 
-First, let's break down exactly what CI and CD represent:
+First, let's break down exactly what [CI](/blog/continuous-integration) and CD represent:
 
 - **Continuous integration** focuses on automated tests to ensure an application isn't broken when new commits are integrated into the main branch.
 - **Continuous delivery** picks up where continuous integration ends—it can be considered an extension of CI. The end goal of CD is to quickly release new changes to customers. CD ensures there's an automated way to push these changes to different environments.
 
 CI/CD is a [sequential process](https://www.redhat.com/en/topics/devops/what-is-ci-cd), typically implemented as a pipeline. But manually building these pipelines can be tedious, time-consuming, and hard to scale.
 
-CI/CD pipelines are normally sourced from a [Git](https://git-scm.com/) repository management platform, like Bitbucket. Bitbucket provides users (software developers, individuals, and teams) with a central place to manage and collaborate with others on source code.
+CI/CD pipelines are normally from a [Git](/blog/monorepo-vs-polyrepo) repository management platform, like Bitbucket. Bitbucket provides users (software developers, individuals, and teams) with a central place to manage and collaborate with others on source code.
 
-CI/CD can be carried out using a tool, like Travis CI. Travis CI is a hosted or managed CI service used to build, test, and deliver software projects hosted on GitHub, Bitbucket, GitLab, or Assembla.
+CI/CD can be carried out using a [tool](/blog/bitbucket-ci), like Travis CI. Travis CI is a hosted or managed CI service used to build, test, and deliver software projects hosted on GitHub, Bitbucket, GitLab, or Assembla.
 
 CI tools, like Travis CI, use containerization to create isolated environments for build processes. These environments are configurable—typically through a YAML file—which declares what underlying environment software and dependencies should be installed to build and test the application.
 

@@ -6,7 +6,6 @@ featured: true
 author: Adam
 excerpt: In 1972, two students learning FORTRAN came up with a fantastic new programming language called INTERCAL. 
 internal-links:
-  - yaml
   - intercal
 ---
 ## PROGRAM REJECTED FOR MENTAL HEALTH REASONS

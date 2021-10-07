@@ -33,3 +33,4 @@ internal-links:
 - [ ] Run mark down linter (`earthly +blog-lint-apply`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `earthly +link-opportunity` and find 1-5 places to incorporate links
+- [ ] Add Earthly CTA at bottom `{% include cta/cta1.html %}`

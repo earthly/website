@@ -8,7 +8,6 @@ sidebar:
   nav: "makefile"
 internal-links:
  - makefile
- - make
  - g\+\+
  - c\+\+
 ---
