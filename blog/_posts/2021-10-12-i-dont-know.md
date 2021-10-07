@@ -8,21 +8,6 @@ author: Adam
 internal-links:
  - just an example
 ---
-
-### Writing Article Checklist
-
-- [ ] Fix Grammarly Errors
-- [ ] Read out loud
-- [ ] Write 5 or more titles and pick the best on
-- [ ] First two paragraphs: What's it about? Why listen to you?
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-- [ ] Run mark down linter (`earthly +blog-lint-apply`)
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `earthly --build-arg NAME=2020-09-10-better-builds.md +link-opportunity` and find 1-5 places to incorporate links to other articles
-- [ ] Raise PR
-
 ## "OH GAWD"
 
 Around the time of the subprime mortgage collapse, I was working in an enterprise software company. I worked in a large open space full of cubicles. Several times a week, I would hear a slightly panicked voice say, "oh god!"
