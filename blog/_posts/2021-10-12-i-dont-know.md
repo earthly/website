@@ -30,7 +30,7 @@ Amy was a more senior developer at the same place. One of the two most senior so
 
 Anyhow, Amy would get push back on features from QA as well. Less often, but it still happened. Amy was never afraid, though. Amy was so confident in her work,that if there was a problem, you couldn't call it that. You had to hint that *maybe* someone could *possibly* consider improving things a bit before the feature was released.
 
-If you didn't adopt that tone and you insisted Amy did something wrong, she would lift this blank piece of paper she kept on her desk into the air and say "These were the requirements!". This was a shorthand for "How can it be broken when it matches the non-existant requirements!" which was a shorthand for "That's not a bug, it's a feature!" That would be the end of the discussion.
+If you didn't adopt that tone and you insisted Amy did something wrong, she would lift this blank piece of paper she kept on her desk into the air and say "These were the requirements!" This was a shorthand for "How can it be broken when it matches the non-existant requirements!" which was a shorthand for "That's not a bug, it's a feature!" That would be the end of the discussion.
 
 Sometimes if you're talented, you can get away with arrogance.
 
@@ -71,7 +71,7 @@ Speaking to CNBC, as a CEO of a public company, is speaking to your investors. I
 
 The [whole interview](https://www.youtube.com/watch?v=GltlJO56S1g) is fascinating. Bezos never fails to communicate that the odds are long, but that he thinks Amazon's a good bet anyway.
 
-So copy Jeff Bezos. You want to be socially confident - confident in yourself, confident in who you are - but you want to be appropriately uncertain about the world. So don't kid yourself into thinking your code is bug free when you have historical evidence to the contrary. In shouldn't hurt your ego to acknowledge uncertainty.
+So copy Jeff Bezos. You want to be socially confident - confident in yourself, confident in who you are - but you want to be appropriately uncertain about the world. So don't kid yourself into thinking your code is bug free when you have historical evidence to the contrary. **It shouldn't hurt your ego to acknowledge uncertainty.**
 
 As Scout Mindset says:
 
@@ -83,7 +83,7 @@ Balancing these two related types of confidence can be a bit tricky. Scout Minds
 
 ### Never Say "I Don't Know."
 
-Imagine you're a software developer working on a service, and someone asks you why it's down a certain region of AWS. A perfectly correct answer is "I don't know." The problem is that "I don't know" implies that the uncertainty is in you. It's YOU who doesn't know.
+Imagine you're a software developer working on a service, and someone asks you why it's down in a certain region of AWS. A perfectly correct answer is "I don't know." The problem is that "I don't know" implies that the uncertainty is in you. It's YOU who doesn't know.
 
 Instead of "I don't know," you should confidently explain the uncertainty: "I rolled out a change to that service yesterday, so it could be that, but until someone looks at logs it will be hard to know for sure." You are now communicating not just that you are uncertain but also why you're justified in being so.
 
@@ -94,9 +94,9 @@ You can even give estimates on the uncertainty: "nine times out of ten when some
 After you communicate that it's reasonable to be uncertain, you want to share that you have a plan to minimize or address the uncertainty. Jeff Bezos had a plan for overcoming the unpredictability of the dot com boom: "I believe that if you can focus obsessively enough on customer experience, selection,
 ease of use, low prices... I think you have a good chance."
 
-This second step is what allows you to be socially confident in the face of the unknown: You have a plan. Jeff didn't just say it was uncertain whether Amazon would succeed. He said that and then immediately followed with how he thought he could overcome the odds.
+This second step is what allows you to be socially confident in the face of the unknown: You have a plan. Jeff didn't just say he was uncertain whether Amazon would succeed. He said that and then immediately followed with how he thought he could overcome the odds.
 
-In other words, share that the uncertainty is out there in that world, and you have a plan to overcome it. And having a plan can be as simple as saying, "Let me look into that".
+In other words, share that the uncertainty is out there in that world, and that you have a plan to overcome it. And having a plan can be as simple as saying, "Let me look into that".
 
 ## Let Me Look Into That
 
@@ -106,4 +106,4 @@ This brings me back to Alex and Amy: if I could go back in time, I would tell th
 
 {% include cta/cta1.html %}
 
-[^1]: I've changed Alex and Amy's names but, yeah, you know who you are 😉. You are both solid developers and we should catch up.
+[^1]: I've changed Alex and Amy's names but, yeah, you probably know who you are. Hopefully you'll forgive me for the characterization. You are both solid developers and we should catch up.
