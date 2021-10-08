@@ -28,7 +28,7 @@ We rarely did code reviews or automated testing, but man, we could write legacy 
 
 Amy was a more senior developer at the same place. One of the two most senior software engineers at the company. Today Amy would be a principal engineer, but we didn't have those titles.
 
-Anyhow, Amy would get push back on features from QA as well. Less often, but it still happened. Amy was never afraid, though. Amy was so confident in her work,that if there was a problem, you couldn't call it that. You had to hint that *maybe* someone could *possibly* consider improving things a bit before the feature was released.
+Anyhow, Amy would get push back on features from QA as well. Less often, but it still happened. Amy was never afraid, though. Amy was so confident in her work, that if there was a problem, you couldn't call it that. You had to hint that *maybe* someone could *possibly* consider improving things a bit before the feature was released.
 
 If you didn't adopt that tone and you insisted Amy did something wrong, she would lift this blank piece of paper she kept on her desk into the air and say "These were the requirements!" This was a shorthand for "How can it be broken when it matches the non-existant requirements!" which was a shorthand for "That's not a bug, it's a feature!" That would be the end of the discussion.
 
