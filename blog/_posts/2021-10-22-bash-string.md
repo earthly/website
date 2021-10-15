@@ -1,0 +1,464 @@
+---
+title: "Bash String Manipulation"
+categories:
+  - Tutorials
+toc: true
+author: Adam
+
+internal-links:
+ - just an example
+---
+### Writing Article Checklist
+
+- [ ] Fix Grammarly Errors
+- [ ] Read out loud
+- [ ] Write 5 or more titles and pick the best on
+- [ ] First two paragraphs: What's it about? Why listen to you?
+- [ ] Create header image in Canva
+- [ ] Optional: Find ways to break up content with quotes or images
+- [ ] Verify look of article locally
+- [ ] Run mark down linter (`earthly +blog-lint-apply`)
+- [ ] Add keywords for internal links to front-matter
+- [ ] Run `earthly --build-arg NAME=2020-09-10-better-builds.md +link-opportunity` and find 1-5 places to incorporate links to other articles
+- [ ] Raise PR
+
+### Background 
+
+I'm going to go over techniques for working with strings in bash. [Understanding Bash](/blog/understanding-bash/) goes over the basics of bash scripting. But for this article mainly you need to know that you can run any of the examples at the bash prompt:
+``` bash
+$ echo "test"
+test
+```
+
+Or you can put the same commands into a file with a bash shebang. 
+
+``` bash
+#!/bin/bash
+
+echo "test"
+```
+
+And then run it at the command line:
+``` bash
+$ ./strings.sh
+test
+```
+
+Everything covered will work in bash 3.2 and greater and unless otherwise noted will also work in ZSH. That means everything in here will work on MacOS and Windows under WSL and WSL 2 and on most Linux distributions ( On some linux distributions, such as Alpine, you will need to install bash first.)
+
+Let's start with the easy stuff.
+
+### Bash Concatenate Strings
+
+In bash I can declare a variable like this:
+``` bash
+one="1"
+```
+
+and then I can refer to it in a double quoted string like this:
+``` bash
+echo "$one"
+"1"
+```
+
+Concatenating strings follows easily from this same pattern
+
+``` bash
+$ one="1"
+$ two="2"
+$ three="$one$two"
+$ echo "$three"
+12
+```
+
+<div class="notice--info">
+**Side Note: Globs and File Expansions**
+You can in theory refer to variables directly like this:
+
+``` bash
+echo $one
+```
+
+but if you do that, you might have unexpected things happen.
+
+``` bash
+comment='/* begin comment block'
+echo $comment
+/Applications /Library /System /Users /Volumes /bin /cores /dev /etc /home /opt /private /sbin /tmp /usr /var begin comment block
+```
+
+Without quotes bash is doing a path name expansion on `/*` and expanding it out to paths on your file system. **So you should always use double quotes if you want the literal value of a variable.**
+</div>
+
+### Bash String Length
+
+The `"$var"` syntax is called variable expansion in bash. It can also be written as `"${var}"` and that syntax allows you to do some powerful things. Once of those things is to get the length of a string like so:
+
+``` bash
+$ words="here are some words"
+$ echo "'$words' is ${#words} characters long
+```
+``` ini
+'here are some words' is 19 characters long
+```
+
+## Bash SubString
+
+If I need to get a portion of an existing string then the Bash parameter expansion substring syntax is here to help.
+
+The format you use for this is `${string:position:length}`.
+
+### Bash First Character
+
+You can get the first character of a string like this:
+
+``` bash
+$ word="bash"
+$ echo "${word:0:1}"
+b
+```
+
+Since I'm asking to start at position zero and return a string of length one, I can shorten this a bit: 
+
+``` bash
+$ word="bash"
+$ echo "${word::1}"
+b
+```
+
+However this won't work in ZSH (where the `0` must be provided):
+
+``` bash
+$ word="zsh"
+$ echo "${word::1}"
+zsh: closing brace expected
+```
+
+You can get the inverse of this string, the portion starting after the first character using an alternate substring syntax `${string:position}` (Note the single colon and single parameter). It ends up looking like this:
+
+``` bash
+#!/bin/bash
+
+word="bash"
+echo "Head: ${word:0:1}"
+echo "Rest: ${word:1}"
+```
+
+And giving this output:
+``` ini
+Head: b
+Rest: ash
+```
+
+The way this works is you are telling the parameter expansion to return a new string starting a position one, which drops the first character.
+
+
+### Bash Last Character
+
+To return the last character of a string in bash, I can use the same single argument substring parameter expansion but use negative indexes which will start from the end of the string. 
+
+``` bash
+#!/bin/bash
+
+word="bash" 
+echo "${word:(-1)}"
+echo "${word:(-2)}"
+echo "${word:(-3)}"
+```
+
+It works like you would expect:
+
+``` ini
+h
+sh
+ash
+```
+
+To drop the last character we can combine this with the string length expansion (`${#var}`):
+
+``` bash
+#!/bin/bash
+
+word="bash" 
+echo "${word:0:${#word}-1}"
+echo "${word:0:${#word}-2}"
+echo "${word:0:${#word}-3}"
+```
+
+Which gives me this result:
+
+``` ini
+bas
+ba
+b
+```
+
+That is a bit verbose though so you could also use the pattern expansion for removing a regex from the end of a string (`${var%<<regex>>}`) and the regular expression for any single character (`?`):
+
+``` bash
+#!/bin/bash
+
+word="bash" 
+echo "${word%?}
+echo "${word%??}
+echo "${word%???}
+```
+
+Running that I get the same result:
+
+``` ini
+bas
+ba
+b
+```
+
+This regex trim feature only removes the regex match if it finds one. If the regex doesn't match, it doesn't remove anything.
+
+``` bash
+$ word="one"
+$ echo "${word%????}" # remove first four characters
+one 
+```
+
+You can also use regular expressions to remove characters from the beginning of a string by using `#` like this:
+
+``` bash
+#!/bin/bash
+
+word="bash" 
+echo "${word#?}
+echo "${word#??}
+echo "${word#???}
+```
+
+Running that I get characters dropped from the beginning of the string, if they match the regex:
+
+``` ini
+ash
+sh
+h
+```
+
+## Bash String Replace
+
+The next common task I run into when working with strings in bash is replacing parts of an existing string.
+
+Let's say I want to change the word `create` to `make` in this quote:
+
+> When you don't create things, you become defined by your tastes rather than ability. Your tastes only narrow & exclude people. So create.
+>
+> Why The Lucky Stiff
+
+There is a parameter expansion for string replacement:
+``` bash
+#!/bin/bash
+
+phrase="When you don't create things, you become defined by your tastes rather than ability. Your tastes only narrow & exclude people. So create."
+echo "${phrase/create/make}"
+
+```
+
+Running:
+
+```
+When you don't make things, you become defined by your tastes rather than ability. Your tastes only narrow & exclude people. So create.
+```
+
+You can see that my script only replaced the first `create`. To replace all I can change it from `test/find/replace` to `/text//find/replace` (Note the double slash `//`):
+
+``` bash
+#!/bin/bash
+
+phrase="When you don't create things, you become defined by your tastes rather than ability. Your tastes only narrow & exclude people. So create."
+echo "${phrase//create/make}"
+```
+
+Then I get the result I'd like:
+
+``` bash
+When you don't make things, you become defined by your tastes rather than ability. Your tastes only narrow & exclude people. So make.
+```
+
+You can do more complicated string placements using regular expressions. Like redact a phone number:
+
+``` bash
+number="Phone Number: 234-234-2343"
+echo "${number//[0-9]/X}
+```
+
+```
+$ ./number.sh
+Phone number: XXX-XXX-XXXX
+```
+
+If the substitution logic is at all complex this regex replacement format can become hard to understand and you may want to consider using regex match (below) or pulling in an outside tool like `sed`. 
+
+## Bash String Conditionals
+
+You can compare strings for equality (`==`), inequality (`!=`), and ordering (`>` or `<`):
+
+``` bash
+if [[ "one" == "one" ]]; then
+    echo "Strings are equal."
+fi
+
+if [[ "one" != "two" ]]; then
+    echo "Strings are not equal."
+fi
+
+if [[ "aaa" < "bbb" ]]; then
+    echo "aaa is smaller."
+fi
+```
+Output:
+```
+Strings are equal.
+Strings are not equal.
+aaa is smaller.
+```
+
+You can also use `=` to compare strings to globs:
+``` bash
+#!/bin/bash
+file="todo.gz"
+if [[ "$file" = *.gz ]]; then
+    echo "Found gzip file: $file"
+fi
+if [[ "$file" = todo.* ]]; then
+    echo "Found file named todo: $file"
+fi
+```
+The file name will match in both cases:
+```
+Found gzip file: todo.gz
+Found file named todo: todo.gz
+```
+
+Glob patterns have their limits though. When I need to confirm a string matches a specific format, I usually more right to regular expression match (`~=`).
+
+Here is starts with:
+
+```
+name="aardvark"
+if [[ "$name" =~ ^aa ]]; then
+    echo "Starts with aa: $name"
+fi
+```
+```
+Starts with aa: aardvark
+```
+
+Here is contains using match:
+```
+name="aardvark"
+if [[ "$name" =~ dvark ]]; then
+    echo "Contains dvark: $name"
+fi
+```
+
+```
+Contains dvark: aardvark
+```
+
+Unfortunely, this match operator does not support all of modern regular expression syntax: you can use positive or negative look behind and the character classes might be different then you are expecting, but it does support capture groups. 
+
+## Bash Split Strings
+
+What if I want to use regexs to spit a string on pipes and pull out the values? This is possible using capture groups :
+``` bash
+if [[ "1|tom|1982" =~ (.*)\|(.*)\|(.*) ]]; 
+then 
+  echo "ID = ${BASH_REMATCH[1]}" ; 
+  echo "Name = ${BASH_REMATCH[2]}" ; 
+  echo "Year = ${BASH_REMATCH[3]}" ; 
+else 
+  echo "Not proper format"; 
+fi
+```
+
+```
+ID = 1
+Name = tom
+Year = 1982
+```
+
+Capture groups can be very handy for doing some light-weight string parsing in bash. However, there is a nicer method for splitting strings by a delimiter in bash. 
+
+## Bash Split String
+
+By default bash treats spaces as the delimiter between seperate elements. This is one reason for double quoting your varialbes assignements. But this can also be a useful feature:
+
+``` bash
+list="foo bar baz"
+for word in $list; do # <-- $list is not in double quotes
+  echo "Word: $word"
+done
+```
+
+``` output
+Word: foo:bar
+Word: baz
+Word: rab
+```
+If you wrap space delimited items in brackets you get an array.
+
+You can access this array like this:
+``` bash
+list="foo bar baz"
+array=($list)
+echo "Zeroth: ${array[0]}"  
+echo "First: ${array[1]}"  
+echo "Whole Array: ${array[*]}" 
+```
+
+``` output 
+Zeroth: foo
+First: bar
+Whole Array: foo bar baz
+```
+
+I can use this feature to split a string on delimiter. All I need to do change the internal field seperator (`IFS`), create my array and then change it back.
+
+```
+#!/bin/bash
+
+text="1|tom|1982"
+
+IFS='|' 
+array=($text)
+unset IFS;
+```
+
+And now I have an array split on my chosen delimter:
+```
+echo "ID = ${array[1]}" ; 
+echo "Name = ${array[2]}" ; 
+echo "Year = ${array[3]}" ; 
+```
+
+``` output
+ID = 1
+Name = tom
+Name = tom
+```
+
+### Reaching Outside of Bash
+
+Many things are hard to do directly in pure bash, but easy to do with the right supporting tools. For example, trimming the [whitespace](https://stackoverflow.com/a/3352015) from a string is verbose in pure bash but its simple to do by piping to existing POSIX tools like xargs:
+``` bash
+$ echo "   lol  " | xargs
+lol
+```
+Bash Regular expressions have some limitations but sed, grep and [`awk`](/blog/awk-examples) make it easy to do whatever you need, and if you have to deal with JSON data `jq` will make your life easier. 
+
+## Conclusion
+
+I hope this overview of string manipulation in bash gave you enough details to cover most of your use cases.
+
+Also, if you’re the type of person who’s not afraid to do things solve problems in bash then I think you might like Earthly:
+
+{% include cta/cta1.html %}
+
+## Feedback
+
+If you have any clever tricks for handling strings in bash, or spot any problems with my examples then let me know on twitter [`@AdamGordonBell`](https://twitter.com/adamgordonbell).
