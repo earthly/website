@@ -102,7 +102,7 @@ In other words, share that the uncertainty is out there in that world, and that 
 
 So that is how you can be confidently uncertain: Explain why things are uncertain and communicate that you have a plan.
 
-This brings me back to Alex and Amy: if I could go back in time, I would tell them that instead of saying "Oh God, why did my task fail again" or "How can you fail it when you don't know the requirements" they should have just said, "Let me look into that." I'd also bring them each a copy of [The Scout Mindset](https://www.goodreads.com/book/show/42041926-the-scout-mindset) - That's where I got these concepts from.
+This brings me back to Alex and Amy: if I could go back in time, I would tell them that instead of saying "Oh God, why did my task fail again" or "How can you fail it when you don't know the requirements" they should have just said, "Let me look into that." I'd also bring them each a copy of [The Scout Mindset](https://www.goodreads.com/book/show/42041926-the-scout-mindset) - That's where I got this idea from.
 
 {% include cta/cta1.html %}
 
