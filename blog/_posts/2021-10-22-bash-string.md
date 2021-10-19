@@ -261,7 +261,8 @@ There is a parameter expansion for string replacement:
 ``` bash
 #!/bin/bash
 
-phrase="When you don't create things, you become defined by your tastes rather than ability. Your tastes only narrow & exclude people. So create."
+phrase="When you don't create things, you become defined by your tastes 
+rather than ability. Your tastes only narrow & exclude people. So create."
 echo "${phrase/create/make}"
 
 ```
@@ -269,7 +270,8 @@ echo "${phrase/create/make}"
 Running:
 
 ```
-When you don't make things, you become defined by your tastes rather than ability. Your tastes only narrow & exclude people. So create.
+When you don't make things, you become defined by your tastes 
+rather than ability. Your tastes only narrow & exclude people. So create.
 ```
 
 You can see that my script only replaced the first `create`. To replace all, I can change it from `test/find/replace` to `/text//find/replace` (Note the double slash `//`):
@@ -277,14 +279,16 @@ You can see that my script only replaced the first `create`. To replace all, I c
 ``` bash
 #!/bin/bash
 
-phrase="When you don't create things, you become defined by your tastes rather than ability. Your tastes only narrow & exclude people. So create."
+phrase="When you don't create things, you become defined by your tastes 
+rather than ability. Your tastes only narrow & exclude people. So create."
 echo "${phrase//create/make}"
 ```
 
 Then I get the result I'm looking for:
 
-``` bash
-When you don't make things, you become defined by your tastes rather than ability. Your tastes only narrow & exclude people. So make.
+```
+When you don't make things, you become defined by your tastes 
+rather than ability. Your tastes only narrow & exclude people. So make.
 ```
 
 You can do more complicated string placements using regular expressions. Like redact a phone number:
