@@ -181,7 +181,7 @@ sh
 ash
 ```
 
-To drop the last character, we can combine this with the string length expansion (`${#var}`):
+To drop the last character, I can combine this with the string length expansion (`${#var}`):
 
 ``` bash
 #!/bin/bash
