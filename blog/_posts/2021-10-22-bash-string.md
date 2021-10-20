@@ -4,16 +4,12 @@ categories:
   - Tutorials
 toc: true
 author: Adam
-
 internal-links:
- - just an example
+ - bash strings
+ - bash substring
 ---
 ### Writing Article Checklist
 
-- [ ] Fix Grammarly Errors
-- [ ] Read out loud
-- [ ] Write 5 or more titles and pick the best on
-- [ ] First two paragraphs: What's it about? Why listen to you?
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
@@ -474,7 +470,7 @@ $ echo "   lol  " | xargs
 lol
 ```
 
-Bash regular expressions have some limitations but sed, grep, and [`awk`](/blog/awk-examples) make it easy to do whatever you need, and if you have to deal with JSON data `jq` will make your life easier.
+Bash regular expressions have some limitations but sed, grep, and [`awk`](/blog/awk-examples) make it easy to do whatever you need, and if you have to deal with JSON data [`jq`](/blog/jq-select) will make your life easier.
 
 ## Conclusion
 

@@ -5,8 +5,6 @@ categories:
 toc: true
 author: Kasper Siig
 internal-links:
-  - bash
-  - shell
   - shellcheck
   - bash script
   - shebang
