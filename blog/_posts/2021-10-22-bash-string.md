@@ -8,15 +8,6 @@ internal-links:
  - bash strings
  - bash substring
 ---
-### Writing Article Checklist
-
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-- [ ] Run mark down linter (`earthly +blog-lint-apply`)
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `earthly --build-arg NAME=2020-09-10-better-builds.md +link-opportunity` and find 1-5 places to incorporate links to other articles
-- [ ] Raise PR
 
 One thing that bash is excellent at is manipulating strings of text. If you're at the command line or writing a small script, then knowing some bash string idioms can be a lot of help.
 
@@ -53,25 +44,30 @@ Let's start at the beginning.
 In bash, I can declare a variable like this:
 
 ``` bash
-one="1"
+$ one="1"
 ```
 
 and then I can refer to it in a double-quoted string like this:
 
 ``` bash
-echo "$one"
+$ echo "$one"
 "1"
 ```
 
 Concatenating strings follows easily from this same pattern:
 
 ``` bash
-$ one="1"
-$ two="2"
-$ three="$one$two"
-$ echo "$three"
-12
+#!/bin/bash
+
+one="1"
+two="2"
+three="$one$two"
+echo "$three"
 ```
+
+~~~{.output caption="result"}
+12
+~~~
 
 <div class="notice--info">
 **Side Note: Globs and File Expansions**
