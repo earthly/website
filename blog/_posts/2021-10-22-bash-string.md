@@ -13,10 +13,10 @@ One thing that bash is excellent at is manipulating strings of text. If you're a
 
 So in this article, I'm going to go over techniques for working with strings in bash. You can run any of the examples at the bash prompt:
 
-``` bash
+~~~{.bash caption=">_"}
 $ echo "test"
 test
-```
+~~~
 
 Or you can put the same commands into a file with a bash shebang.
 
@@ -28,10 +28,10 @@ echo "test"
 
 And then run it at the command line:
 
-``` bash
+~~~{.bash caption=">_"}
 $ ./strings.sh
 test
-```
+~~~
 
 ### Background
 
@@ -43,29 +43,29 @@ Let's start at the beginning.
 
 In bash, I can declare a variable like this:
 
-``` bash
+~~~{.bash caption=">_"}
 $ one="1"
-```
+~~~
 
 and then I can refer to it in a double-quoted string like this:
 
-``` bash
+~~~{.bash caption=">_"}
 $ echo "$one"
 "1"
-```
+~~~
 
 Concatenating strings follows easily from this same pattern:
 
-``` bash
+~~~{.bash }
 #!/bin/bash
 
 one="1"
 two="2"
 three="$one$two"
 echo "$three"
-```
+~~~
 
-~~~{.output caption="result"}
+~~~{.output caption="Output"}
 12
 ~~~
 
