@@ -92,7 +92,7 @@ echo $comment
 /home /opt /private /sbin /tmp /usr /var begin comment block
 ~~~
 
-Without quotes, bash splits your string on whitespace and then does a pathname expansion on `/*`. 
+Without quotes, bash splits your string on whitespace and then does a pathname expansion on `/*`.
 
 I'm going to use whitespace splitting later on, but for now remember: **You should always use double quotes if you want the literal value of a variable.**
 </div>
@@ -262,7 +262,7 @@ When you don't make things, you become defined by your tastes
 rather than ability. Your tastes only narrow & exclude people. So create.
 ~~~
 
-You can see that my script only replaced the first `create`. 
+You can see that my script only replaced the first `create`.
 
 To replace all, I can change it from `test/find/replace` to `/text//find/replace` (Note the double slash `//`):
 
