@@ -42,14 +42,19 @@ div.narrow-code  > pre,
 div.wide  > div.sourceCode,
 div.wide  > pre,
 div.notice--info > div.sourceCode,
+div.notice--info > pre:not([class^="sourceCode"]),
 div.notice--primary > div.sourceCode,
-div.notice--primary > div.sourceCode,
-div.notice--info > div.sourceCode,
+div.notice--primary > pre:not([class^="sourceCode"]),
 div.notice--warning  > div.sourceCode,
+div.notice--warning  > pre:not([class^="sourceCode"]),
 div.notice--success  > div.sourceCode,
+div.notice--success  > pre:not([class^="sourceCode"]),
 div.notice--danger  > div.sourceCode,
+div.notice--danger  > pre:not([class^="sourceCode"]),
 div.notice--big  > div.sourceCode,
+div.notice--big  > pre:not([class^="sourceCode"]),
 div.notice--big--primary > div.sourceCode
+div.notice--big--primary > pre:not([class^="sourceCode"])
 {
   width: 100%;
   margin-left: 0%;

@@ -14,7 +14,7 @@ One thing that bash is excellent at is manipulating strings of text. If you're a
 So in this article, I'm going to go over techniques for working with strings in bash. You can run any of the examples at the bash prompt:
 
 ~~~{.bash caption=">_"}
-$ echo "test"
+> echo "test"
 test
 ~~~
 
@@ -29,7 +29,7 @@ echo "test"
 And then run it at the command line:
 
 ~~~{.bash caption=">_"}
-$ ./strings.sh
+> ./strings.sh
 test
 ~~~
 
@@ -44,19 +44,19 @@ Let's start at the beginning.
 In bash, I can declare a variable like this:
 
 ~~~{.bash caption=">_"}
-$ one="1"
+> one="1"
 ~~~
 
 and then I can refer to it in a double-quoted string like this:
 
 ~~~{.bash caption=">_"}
-$ echo "$one"
-"1"
+> echo "$one"
+1
 ~~~
 
 Concatenating strings follows easily from this same pattern:
 
-~~~{.bash }
+~~~{.bash caption=""}
 #!/bin/bash
 
 one="1"
@@ -71,6 +71,7 @@ echo "$three"
 
 <div class="notice--info">
 **Side Note: Globs and File Expansions**
+
 You can, in theory, refer to variables directly like this:
 
 ``` bash
@@ -80,26 +81,31 @@ echo $one
 but if you do that, you might have unexpected things happen.
 
 ``` bash
+#!/bin/bash
+
 comment='/* begin comment block'
 echo $comment
-/Applications /Library /System /Users /Volumes /bin /cores /dev /etc /home /opt /private /sbin /tmp /usr /var begin comment block
 ```
 
-Without quotes, bash splits your string on whitespace and then does a pathname expansion on `/*`. I'm going to use whitespace splitting later on, but for now remember: **You should always use double quotes if you want the literal value of a variable.**
+~~~{.output caption="Output"}
+/Applications /Library /System /Users /Volumes /bin /cores /dev /etc 
+/home /opt /private /sbin /tmp /usr /var begin comment block
+~~~
+
+Without quotes, bash splits your string on whitespace and then does a pathname expansion on `/*`. 
+
+I'm going to use whitespace splitting later on, but for now remember: **You should always use double quotes if you want the literal value of a variable.**
 </div>
 
 ### Bash String Length
 
 The `"$var"` syntax is called variable expansion in bash and you can also write it as `"${var}"`. This expansion syntax allows you to do some powerful things such . Once of those things is getting the length of a string:
 
-``` bash
-$ words="here are some words"
-$ echo "'$words' is ${#words} characters long
-```
-
-``` ini
+~~~{.bash caption=">_"}
+> words="here are some words"
+> echo "'$words' is ${#words} characters long
 'here are some words' is 19 characters long
-```
+~~~
 
 ## Bash SubString
 
@@ -111,27 +117,27 @@ The format you use for this is `${string:position:length}`.
 
 You can get the first character of a string like this:
 
-``` bash
-$ word="bash"
-$ echo "${word:0:1}"
+~~~{.bash caption=">_"}
+> word="bash"
+> echo "${word:0:1}"
 b
-```
+~~~
 
 Since I'm asking to start at position zero and return a string of length one, I can shorten this a bit:
 
-``` bash
-$ word="bash"
-$ echo "${word::1}"
+~~~{.bash caption=">_"}
+> word="bash"
+> echo "${word::1}"
 b
-```
+~~~
 
 However, this won't work in ZSH (where you must provide the 0):
 
-``` bash
-$ word="zsh"
-$ echo "${word::1}"
+~~~{.bash caption=">_"}
+> word="zsh"
+> echo "${word::1}"
 zsh: closing brace expected
-```
+~~~
 
 You can get the inverse of this string, the portion starting after the first character using an alternate substring syntax `${string:position}` (Note the single colon and single parameter). It ends up looking like this:
 
@@ -143,12 +149,10 @@ echo "Head: ${word:0:1}"
 echo "Rest: ${word:1}"
 ```
 
-And giving this output:
-
-``` ini
+~~~{.output caption="Output"}
 Head: b
 Rest: ash
-```
+~~~
 
 This substring works by telling the parameter expansion to return a new string starting a position one, which drops the first character.
 
@@ -165,13 +169,11 @@ echo "${word:(-2)}"
 echo "${word:(-3)}"
 ```
 
-It works like you would expect:
-
-``` ini
+~~~{.output caption="Output"}
 h
 sh
 ash
-```
+~~~
 
 To drop the last character, I can combine this with the string length expansion (`${#var}`):
 
@@ -184,13 +186,11 @@ echo "${word:0:${#word}-2}"
 echo "${word:0:${#word}-3}"
 ```
 
-Which gives me this result:
-
-``` ini
+~~~{.output caption="Output"}
 bas
 ba
 b
-```
+~~~
 
 That is a bit long, though, so you could also use the pattern expansion for removing a regex from the end of a string (`${var%<<regex>>}`) and the regular expression for any single character (`?`):
 
@@ -203,21 +203,19 @@ echo "${word%??}
 echo "${word%???}
 ```
 
-Running that, I get the same result:
-
-``` ini
+~~~{.output caption="Output"}
 bas
 ba
 b
-```
+~~~
 
 This regex trim feature only removes the regex match if it finds one. If the regex doesn't match, it doesn't remove anything.
 
-``` bash
-$ word="one"
-$ echo "${word%????}" # remove first four characters
+~~~{.bash caption=">_"}
+> word="one"
+> echo "${word%????}" # remove first four characters
 one 
-```
+~~~
 
 You can also use regular expressions to remove characters from the beginning of a string by using `#` like this:
 
@@ -232,11 +230,11 @@ echo "${word#???}
 
 Running that I get characters dropped from the beginning of the string if they match the regex:
 
-``` ini
+~~~{.output caption="Output"}
 ash
 sh
 h
-```
+~~~
 
 ## Bash String Replace
 
@@ -259,14 +257,14 @@ echo "${phrase/create/make}"
 
 ```
 
-Running:
-
-```
+~~~{.output caption="Output"}
 When you don't make things, you become defined by your tastes 
 rather than ability. Your tastes only narrow & exclude people. So create.
-```
+~~~
 
-You can see that my script only replaced the first `create`. To replace all, I can change it from `test/find/replace` to `/text//find/replace` (Note the double slash `//`):
+You can see that my script only replaced the first `create`. 
+
+To replace all, I can change it from `test/find/replace` to `/text//find/replace` (Note the double slash `//`):
 
 ``` bash
 #!/bin/bash
@@ -276,24 +274,23 @@ rather than ability. Your tastes only narrow & exclude people. So create."
 echo "${phrase//create/make}"
 ```
 
-Then I get the result I'm looking for:
-
-```
+~~~{.output caption="Output"}
 When you don't make things, you become defined by your tastes 
 rather than ability. Your tastes only narrow & exclude people. So make.
-```
+~~~
 
 You can do more complicated string placements using regular expressions. Like redact a phone number:
 
 ``` bash
+#!/bin/bash
+
 number="Phone Number: 234-234-2343"
 echo "${number//[0-9]/X}
 ```
 
-```
-$ ./number.sh
+~~~{.output caption="Output"}
 Phone number: XXX-XXX-XXXX
-```
+~~~
 
 If the substitution logic is complex, this regex replacement format can become hard to understand, and you may want to consider using regex match (below) or pulling in an outside tool like `sed`.
 
@@ -315,19 +312,18 @@ if [[ "aaa" < "bbb" ]]; then
 fi
 ```
 
-Output:
-
-```
+~~~{.output caption="Output"}
 Strings are equal.
 Strings are not equal.
 aaa is smaller.
-```
+~~~
 
 You can also use `=` to compare strings to globs:
 
 ``` bash
 #!/bin/bash
 file="todo.gz"
+
 if [[ "$file" = *.gz ]]; then
     echo "Found gzip file: $file"
 fi
@@ -336,40 +332,40 @@ if [[ "$file" = todo.* ]]; then
 fi
 ```
 
-The file name will match in both cases:
-
-```
+~~~{.output caption="Output"}
 Found gzip file: todo.gz
 Found file named todo: todo.gz
-```
+~~~
 
-Glob patterns have their limits, though. And so when I need to confirm a string matches a specific format, I usually more right to regular expression match(`~=`).
+You can see it matched in boths cases. Glob patterns have their limits, though. And so when I need to confirm a string matches a specific format, I usually more right to regular expression match(`~=`).
 
 Here is how I would write a regex match for checking if a string starts with `aa`:
 
-```
+``` bash
+#!/bin/bash
 name="aardvark"
 if [[ "$name" =~ ^aa ]]; then
     echo "Starts with aa: $name"
 fi
 ```
 
-```
+~~~{.output caption="Output"}
 Starts with aa: aardvark
-```
+~~~
 
 And here using the regex match to find if the string contains a certain substring:
 
-```
+``` bash
+#!/bin/bash
 name="aardvark"
 if [[ "$name" =~ dvark ]]; then
     echo "Contains dvark: $name"
 fi
 ```
 
-```
+~~~{.output caption="Output"}
 Contains dvark: aardvark
-```
+~~~
 
 Unfortunately, this match operator does not support all of modern regular expression syntax: you can use positive or negative look behind and the character classes might be different then you are expecting, but it does support capture groups.
 
@@ -388,11 +384,11 @@ else
 fi
 ```
 
-```
+~~~{.output caption="Output"}
 ID = 1
 Name = tom
 Year = 1982
-```
+~~~
 
 Capture groups can be convenient for doing some light-weight string parsing in bash. However, there is a better method for splitting strings by a delimiter in bash. It requires a little explanation, though.
 
@@ -407,11 +403,11 @@ for word in $list; do # <-- $list is not in double quotes
 done
 ```
 
-``` output
+~~~{.output caption="Output"}
 Word: foo:bar
 Word: baz
 Word: rab
-```
+~~~
 
 If you wrap space-delimited items in brackets, you get an array.
 
@@ -425,15 +421,15 @@ echo "First: ${array[1]}"
 echo "Whole Array: ${array[*]}" 
 ```
 
-``` output
+~~~{.output caption="Output"}
 Zeroth: foo
 First: bar
 Whole Array: foo bar baz
-```
+~~~
 
 I can use this feature to split a string on a delimiter. All I need to do change the internal field separator (`IFS`), create my array and then change it back.
 
-```
+``` bash
 #!/bin/bash
 
 text="1|tom|1982"
@@ -445,26 +441,26 @@ unset IFS;
 
 And now I have an array split on my chosen delimiter:
 
-```
+``` bash
 echo "ID = ${array[1]}" ; 
 echo "Name = ${array[2]}" ; 
 echo "Year = ${array[3]}" ; 
 ```
 
-``` output
+~~~{.output caption="Output"}
 ID = 1
 Name = tom
 Name = tom
-```
+~~~
 
 ### Reaching Outside of Bash
 
 Many things are hard to do directly in pure bash but easy to do with the right supporting tools. For example, trimming the [whitespace](https://stackoverflow.com/a/3352015) from a string is verbose in pure bash, but its simple to do by piping to existing POSIX tools like `xargs`:
 
-``` bash
-$ echo "   lol  " | xargs
+~~~{.bash caption=">_"}
+> echo "   lol  " | xargs
 lol
-```
+~~~
 
 Bash regular expressions have some limitations but sed, grep, and [`awk`](/blog/awk-examples) make it easy to do whatever you need, and if you have to deal with JSON data [`jq`](/blog/jq-select) will make your life easier.
 
