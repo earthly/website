@@ -416,7 +416,7 @@ Year = 1982
 
 Capture groups can be convenient for doing some light-weight string parsing in bash. However, there is a better method for splitting strings by a delimiter. It requires a little explanation, though.
 
-## Bash Split String
+### Internal Field Separator Split
 
 By default, bash treats spaces as the delimiter between separate elements. This can lead to problems, though, and is one of the reasons I mentioned earlier for double quoting your variable assignments. However, this space delimiting can also be a helpful feature:
 
@@ -477,7 +477,7 @@ Name = tom
 Name = tom
 ~~~
 
-### Reaching Outside of Bash
+## Reaching Outside of Bash
 
 Many things are hard to do directly in pure bash but easy to do with the right supporting tools. For example, trimming the [whitespace](https://stackoverflow.com/a/3352015) from a string is verbose in pure bash, but its simple to do by piping to existing POSIX tools like `xargs`:
 
@@ -488,7 +488,9 @@ lol
 
 Bash regular expressions have some limitations but sed, grep, and [`awk`](/blog/awk-examples) make it easy to do whatever you need, and if you have to deal with JSON data [`jq`](/blog/jq-select) will make your life easier.
 
+<div class="no_toc_section">
 ## Conclusion
+</div>
 
 I hope this overview of string manipulation in bash gave you enough details to cover most of your use cases.
 
@@ -496,6 +498,8 @@ Also, if you're the type of person who's not afraid to solve problems in bash th
 
 {% include cta/cta1.html %}
 
+<div class="no_toc_section">
 ## Feedback
+</div>
 
 If you have any clever tricks for handling strings in bash, or spot any problems with my examples, let me know on Twitter [`@AdamGordonBell`](https://twitter.com/adamgordonbell).
