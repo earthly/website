@@ -28,9 +28,10 @@ Or you can put the same commands into a file with a bash shebang.
 echo "test"
 ```
 
-And then run it at the command line:
+And then make it executable using `chmod` and run it at the command line:
 
 ~~~{.bash caption=">_"}
+> chmod +x strings.sh
 > ./strings.sh
 test
 ~~~
