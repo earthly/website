@@ -9,7 +9,7 @@ internal-links:
  - canary
 ---
 
-As you’re building your application, you want to ensure that your customers have a bug-free user experience as much as possible. Since bugs show up most often when new code is deployed, your deployment process should be set up to catch bugs or regressions early and then quickly deploy patches into production before those bugs affect users.
+As you're building your application, you want to ensure that your customers have a bug-free user experience as much as possible. Since bugs show up most often when new code is deployed, your deployment process should be set up to catch bugs or regressions early and then quickly deploy patches into production before those bugs affect users.
 
 Implementing a CI/CD pipeline is of course a great first step. Automated testing and automated deployments eliminate much of the error-prone nature of manual deployments. However, even with development environments that mimic your production environment, you can never be completely sure that your deployment will be bug-free. This is where *canary deployment* comes in.
 
@@ -31,7 +31,7 @@ And the biggest benefit by far with canary deployments, and how it differs from 
 
 If your organization has a solid DevOps setup but is still struggling with buggy deployments, user complaints, and app instability when deploying your software, you definitely want to consider adding canary deployments into your workflow. Let's take a look at how they work.
 
-You’ll need two different production environments for canary deployment. Let's call them environment A and environment B.
+You'll need two different production environments for canary deployment. Let's call them environment A and environment B.
 
 In the standard state of the application, only one of these environments receives traffic. However, when you initiate a deployment, you only deploy your new code to _one_ of these environments. So after your initial release, environment A has not been touched yet, but environment B has the new version of your application running on it. You then use a piece of your infrastructure (usually a load balancer) to direct a subset of your traffic to environment B—this is how canary deployment differs from blue-green deployment. This subset is often 10 percent, but the exact breakdown varies by organization and how much traffic your application gets.
 
@@ -61,4 +61,6 @@ One you have canary deployments implemented, your organization may benefit from 
 
 As your application, and more importantly your user base, grows, you want to be sure that any bugs or bad deployments are relatively limited in scope and easy to fix while impacting as few customers as possible. Rolling out any changes to a subset of your customers using the canary deployment strategy can be a great way to do this.
 
-Many of the difficult pieces of implementing a canary deployment system can be mitigated with a tool like [Earthly](https://earthly.dev/). Earthly helps manage and automate your build process, which is a key component of managing the added complexity of a canary deployment process. With Earthly, all builds are containerized, repeatable, and language agnostic, ensuring that you get consistent results no matter what language or infrastructure your application currently uses. 
+Many of the difficult pieces of implementing a canary deployment system can be mitigated with a tool like [Earthly](https://earthly.dev/). Earthly helps manage and automate your build process, which is a key component of managing the added complexity of a canary deployment process. With Earthly, all builds are containerized, repeatable, and language agnostic, ensuring that you get consistent results no matter what language or infrastructure your application currently uses.
+
+{% include cta/cta1.html %}
