@@ -11,7 +11,7 @@ internal-links:
 
 One thing that bash is excellent at is manipulating strings of text. If you're at the command line or writing a small script, then knowing some bash string idioms can be a lot of help.
 
-So in this article, I'm going to go over techniques for working with strings in bash. 
+So in this article, I'm going to go over techniques for working with strings in bash.
 
 You can run any of the examples at the bash prompt:
 
@@ -102,6 +102,7 @@ I'm going to use whitespace splitting later on, but for now remember: **You shou
 ### Another Concatenate Method +=
 
 Another way to combine strings is using `+=`:
+
 ``` bash
 #!/bin/bash
 
