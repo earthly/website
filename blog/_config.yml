@@ -130,7 +130,6 @@ incremental: false
 
 pandoc:
   extensions:
-    # - fenced_code_attributes
     # - smart
     # - mathjax
     # - csl: _styles/apa.csl
