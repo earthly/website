@@ -11,7 +11,9 @@ internal-links:
 
 One thing that bash is excellent at is manipulating strings of text. If you're at the command line or writing a small script, then knowing some bash string idioms can be a lot of help.
 
-So in this article, I'm going to go over techniques for working with strings in bash. You can run any of the examples at the bash prompt:
+So in this article, I'm going to go over techniques for working with strings in bash. 
+
+You can run any of the examples at the bash prompt:
 
 ~~~{.bash caption=">_"}
 > echo "test"
@@ -33,13 +35,13 @@ And then run it at the command line:
 test
 ~~~
 
-### Background
+## Background
 
-If you need a review of the basics of bash scripting, check out [Understanding Bash](/blog/understanding-bash/). If not, know that everything covered will work in bash version 3.2 and greater, and unless otherwise noted, will also work in ZSH. That means everything here will work on macOS, Windows under WSL and WSL 2, and most Linux distributions. Of course, if you're on Alpine, or some minimal linux distribution, you will need to install bash first.
+If you need a review of the basics of bash scripting, check out [Understanding Bash](/blog/understanding-bash/). If not, know that everything covered will work in bash version 3.2 and greater. Much covered will also work in ZSH. That means everything here will work on macOS, Windows under WSL and WSL 2, and most Linux distributions. Of course, if you're on Alpine, or some minimal linux distribution, you will need to install bash first.
 
 Let's start at the beginning.
 
-### Bash Concatenate Strings
+## Bash Concatenate Strings
 
 In bash, I can declare a variable like this:
 
@@ -97,7 +99,25 @@ Without quotes, bash splits your string on whitespace and then does a pathname e
 I'm going to use whitespace splitting later on, but for now remember: **You should always use double quotes if you want the literal value of a variable.**
 </div>
 
-### Bash String Length
+### Another Concatenate Method +=
+
+Another way to combine strings is using `+=`:
+``` bash
+#!/bin/bash
+
+concat=""
+concat+="1"
+concat+="2"
+echo "$concat"
+```
+
+~~~{.output caption="Output"}
+12
+~~~
+
+Next, let's do string length.
+
+## Bash String Length
 
 The `"$var"` syntax is called variable expansion in bash and you can also write it as `"${var}"`. This expansion syntax allows you to do some powerful things such . Once of those things is getting the length of a string:
 
@@ -111,7 +131,7 @@ The `"$var"` syntax is called variable expansion in bash and you can also write 
 
 If I need to get a portion of an existing string, then the substring syntax of parameter expansion is here to help.
 
-The format you use for this is `${string:position:length}`.
+The format you use for this is `${string:position:length}`. Here are some examples.
 
 ### Bash First Character
 
@@ -123,7 +143,7 @@ You can get the first character of a string like this:
 b
 ~~~
 
-Since I'm asking to start at position zero and return a string of length one, I can shorten this a bit:
+Since I'm asking to start at position zero and return a string of length one, I can also shorten this a bit:
 
 ~~~{.bash caption=">_"}
 > word="bash"
@@ -139,7 +159,7 @@ However, this won't work in ZSH (where you must provide the 0):
 zsh: closing brace expected
 ~~~
 
-You can get the inverse of this string, the portion starting after the first character using an alternate substring syntax `${string:position}` (Note the single colon and single parameter). It ends up looking like this:
+You can get the inverse of this string, the portion starting after the first character, using an alternate substring syntax `${string:position}` (Note the single colon and single parameter). It ends up looking like this:
 
 ``` bash
 #!/bin/bash
@@ -336,7 +356,11 @@ Found gzip file: todo.gz
 Found file named todo: todo.gz
 ~~~
 
+(Note that in the above the glob is not quoted.)
+
 You can see it matched in both cases. Glob patterns have their limits, though. And so when I need to confirm a string matches a specific format, I usually more right to regular expression match(`~=`).
+
+### Bash String Regex Match
 
 Here is how I would write a regex match for checking if a string starts with `aa`:
 
@@ -366,7 +390,7 @@ fi
 Contains dvark: aardvark
 ~~~
 
-Unfortunately, this match operator does not support all of modern regular expression syntax: you can use positive or negative look behind and the character classes might be different then you are expecting, but it does support capture groups.
+Unfortunately, this match operator does not support all of modern regular expression syntax: you can't use positive or negative look behind and the character classes are a little different then you would find in most modern programming langaues. But it does support capture groups.
 
 ## Bash Split Strings
 
@@ -389,11 +413,11 @@ Name = tom
 Year = 1982
 ~~~
 
-Capture groups can be convenient for doing some light-weight string parsing in bash. However, there is a better method for splitting strings by a delimiter in bash. It requires a little explanation, though.
+Capture groups can be convenient for doing some light-weight string parsing in bash. However, there is a better method for splitting strings by a delimiter. It requires a little explanation, though.
 
 ## Bash Split String
 
-By default, bash treats spaces as the delimiter between separate elements. This can lead to problems, though, and is one of the reasons I mentioned earlier for double quoting your variables assignments. However, this space delimiting can also be a helpful feature:
+By default, bash treats spaces as the delimiter between separate elements. This can lead to problems, though, and is one of the reasons I mentioned earlier for double quoting your variable assignments. However, this space delimiting can also be a helpful feature:
 
 ``` bash
 list="foo bar baz"
@@ -426,7 +450,7 @@ First: bar
 Whole Array: foo bar baz
 ~~~
 
-I can use this feature to split a string on a delimiter. All I need to do change the internal field separator (`IFS`), create my array and then change it back.
+I can use this feature to split a string on a delimiter. All I need to do change the internal field separator (`IFS`), create my array, and then change it back.
 
 ``` bash
 #!/bin/bash
