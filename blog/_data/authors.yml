@@ -91,3 +91,16 @@ Ben Force:
     name    : "Ben Force"
     bio     : "Ben Force is a freelance software engineer. He has been programming since he discovered QBasic on his parent's computer in the '90s. You can find more of his writing on thebenforce.com."
     avatar  : "/assets/images/authors/ben-force.jpg"
+Keanan Koppenhaver:
+    name    : "Keanan Koppenhaver"
+    bio     : "Keanan is the CTO at Alpha Particle where he helps publishers modernize their technology platforms and build their developer teams."
+    avatar  : "/assets/images/authors/keanan-koppenhaver.jpg"
+Charles Odili:
+    name    : "Charles Odili:"
+    bio     : "I am a Senior Full-stack API Engineer who enjoys researching, experimenting, easing how sub-systems interconnect, building to solve tough problems, and writing to share my knowledge with others."
+    avatar  : "/assets/images/authors/charles-odili.jpg"
+Mohammed Osman:
+    name    : "Mohammed Osman:"
+    bio     : ""
+    avatar  : "/assets/images/authors/person.jpg"
+

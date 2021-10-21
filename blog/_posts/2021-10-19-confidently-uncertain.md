@@ -1,7 +1,7 @@
 ---
 title: "Career Advice: Be Confidently Uncertain"
 categories:
-  - Tutorials
+  - Articles
 author: Adam
 internal-links:
  - just an example
