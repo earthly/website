@@ -86,7 +86,7 @@ but if you do that, you might have unexpected things happen.
 ``` bash
 #!/bin/bash
 
-comment='/* begin comment block'
+comment="/* begin comment block"
 echo $comment
 ```
 
