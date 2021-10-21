@@ -390,7 +390,7 @@ fi
 Contains dvark: aardvark
 ~~~
 
-Unfortunately, this match operator does not support all of modern regular expression syntax: you can't use positive or negative look behind and the character classes are a little different then you would find in most modern programming langaues. But it does support capture groups.
+Unfortunately, this match operator does not support all of modern regular expression syntax: you can't use positive or negative look behind and the character classes are a little different then you would find in most modern programming languages. But it does support capture groups.
 
 ## Bash Split Strings
 
