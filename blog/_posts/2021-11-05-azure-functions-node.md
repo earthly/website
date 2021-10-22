@@ -19,7 +19,7 @@ Deploying an application once meant provisioning a virtual machine, ensuring sec
 
 Now, though, cloud computing has advanced to the point where you can rely on serverless computing for your platform and other deployment infrastructure and just focus on writing code.
 
-This tutorial will introduce you to Azure functions, the Microsoft flavor of serverless computing. You'll learn how to create [Node.js](https://nodejs.org/en/about/) applications using [VS Code](https://code.visualstudio.com/), create Azure functions in [Microsoft Azure](https://azure.microsoft.com/en-us/), and finally deploy the application to Azure using the [ci/cd](/blog/ci-vs-cd) pipeline in [Azure DevOps](https://azure.microsoft.com/en-us/services/devops/).
+This tutorial will introduce you to Azure functions, the Microsoft flavor of serverless computing. You'll learn how to create [Node.js](https://nodejs.org/en/about/) applications using [VS Code](https://code.visualstudio.com/), create Azure functions in [Microsoft Azure](https://azure.microsoft.com/en-us/), and finally deploy the application to Azure using the [CI / CD](/blog/ci-vs-cd) pipeline in [Azure DevOps](https://azure.microsoft.com/en-us/services/devops/).
 
 ## The Case for Serverless Functions
 
