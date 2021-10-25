@@ -5,3 +5,6 @@ namespaces
 linux
 perl
 sed
+substring
+regex
+regexes

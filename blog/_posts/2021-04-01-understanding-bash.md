@@ -5,8 +5,6 @@ categories:
 toc: true
 author: Kasper Siig
 internal-links:
-  - bash
-  - shell
   - shellcheck
   - bash script
   - shebang
@@ -319,7 +317,9 @@ There is one significant difference between executing a script and typing the co
 
 For example, if you set `TEST="hello"` in your shell and run `echo $TEST` inside a script, it will print nothing to your screen.
 
+<div class="no_toc_section">
 ## Conclusion
+</div>
 
 At this point, you should be ready to venture into the exciting world of bash scripting. You've learned about common shebangs, what `set` does, and how it can improve the error handling of your scripts, as well as understanding some general pitfalls developers run into with bash.
 
