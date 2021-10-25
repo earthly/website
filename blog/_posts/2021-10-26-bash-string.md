@@ -121,7 +121,7 @@ Next, let's do string length.
 
 ## Bash String Length
 
-The `"$var"` syntax is called variable expansion in bash and you can also write it as `"${var}"`. This expansion syntax allows you to do some powerful things such . Once of those things is getting the length of a string:
+The `"$var"` syntax is called variable expansion in bash and you can also write it as `"${var}"`. This expansion syntax allows you to do some powerful things. One of those things is getting the length of a string:
 
 ~~~{.bash caption=">_"}
 > words="here are some words"
@@ -360,7 +360,7 @@ Found file named todo: todo.gz
 
 (Note that in the above the glob is not quoted.)
 
-You can see it matched in both cases. Glob patterns have their limits, though. And so when I need to confirm a string matches a specific format, I usually more right to regular expression match(`~=`).
+You can see it matched in both cases. Glob patterns have their limits, though. And so when I need to confirm a string matches a specific format, I usually more right to regular expression match(`=~`).
 
 ### Bash String Regex Match
 
@@ -429,9 +429,9 @@ done
 ```
 
 ~~~{.output caption="Output"}
-Word: foo:bar
+Word: foo
+Word: bar
 Word: baz
-Word: rab
 ~~~
 
 If you wrap space-delimited items in brackets, you get an array.
@@ -475,7 +475,7 @@ echo "Year = ${array[3]}" ;
 ~~~{.output caption="Output"}
 ID = 1
 Name = tom
-Name = tom
+Year = 1982
 ~~~
 
 ## Reaching Outside of Bash
