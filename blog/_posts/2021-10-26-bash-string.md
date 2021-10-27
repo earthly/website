@@ -503,4 +503,5 @@ Also, if you're the type of person who's not afraid to solve problems in bash th
 ## Feedback
 </div>
 
-If you have any clever tricks for handling strings in bash, or spot any problems with my examples, let me know on Twitter [`@AdamGordonBell`](https://twitter.com/adamgordonbell).
+If you have any clever tricks for handling strings in bash, or spot any problems with my examples, let me know on Twitter [`@AdamGordonBell`](https://twitter.com/adamgordonbell):
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">How many of these bash string parameter expansions idioms do you use? <a href="https://t.co/9UIuLPgELy">https://t.co/9UIuLPgELy</a></p>&mdash; Adam Gordon Bell 🤓 (@adamgordonbell) <a href="https://twitter.com/adamgordonbell/status/1453341378361049091?ref_src=twsrc%5Etfw">October 27, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
