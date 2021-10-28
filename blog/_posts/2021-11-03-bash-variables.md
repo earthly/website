@@ -307,7 +307,7 @@ $ echo "$HOME"
 /root
 $ echo '$HOME'
 $HOME
-```
+~~~
 
 And just like local shell variables, you can change their value:
 
