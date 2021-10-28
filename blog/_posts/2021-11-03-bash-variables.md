@@ -31,7 +31,7 @@ ARGC=0
 
 Local shell variables are local to the current shell session process and do not get carried to any sub-process the shell may start. That is, in bash I can export variables and variables I don't export are called local. This distinction will make more sense once we get to exporting.
 
-For now, though, let look at some examples.
+For now, though, let's look at some examples.
 
 You can define shell variables like this:
 
