@@ -53,7 +53,7 @@ You can also refer to them within double-quoted strings:
 
 ~~~{.bash caption=">_"}
 > test="test value"
-> echo "$test"
+> echo "Test Value: $test"
 Test Value: test value
 ~~~
 
