@@ -4,7 +4,8 @@ categories:
   - Tutorials
 toc: true
 author: Adam
-
+sidebar:
+  nav: "bash"
 internal-links:
  - just an example
 ---
