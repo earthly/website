@@ -57,7 +57,7 @@ You can also refer to them within double-quoted strings:
 Test Value: test value
 ~~~
 
-Use single quotes when you want don't want variable substitution to happen :
+Use single quotes when you don't want variable substitution to happen:
 
 ~~~{.bash caption=">_"}
 > test="test value"
