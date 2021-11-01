@@ -17,8 +17,7 @@ pre:not([class^="sourceCode"])
   line-height: 1.8;
   border-radius: $border-radius;
 
-  // Adam Widens snippets
-  //This overflows low resolutions though
+  // Widen Code Snippets
   @media (min-width: 1100px){
     width: 120%;
     margin-left: 50%;
@@ -37,23 +36,33 @@ pre:not([class^="sourceCode"]) {
   padding: 1em;
 }
 
+// unwiden code snippets
+// pre:not([class^="sourceCode"]) captures unsyntax highlighted code snippets
 div.narrow-code  > div.sourceCode,
-div.narrow-code  > pre,
+div.narrow-code  > pre:not([class^="sourceCode"]),
+
 div.wide  > div.sourceCode,
-div.wide  > pre,
+div.wide  > pre:not([class^="sourceCode"]),
+
 div.notice--info > div.sourceCode,
 div.notice--info > pre:not([class^="sourceCode"]),
+
 div.notice--primary > div.sourceCode,
 div.notice--primary > pre:not([class^="sourceCode"]),
+
 div.notice--warning  > div.sourceCode,
 div.notice--warning  > pre:not([class^="sourceCode"]),
+
 div.notice--success  > div.sourceCode,
 div.notice--success  > pre:not([class^="sourceCode"]),
+
 div.notice--danger  > div.sourceCode,
 div.notice--danger  > pre:not([class^="sourceCode"]),
+
 div.notice--big  > div.sourceCode,
 div.notice--big  > pre:not([class^="sourceCode"]),
-div.notice--big--primary > div.sourceCode
+
+div.notice--big--primary > div.sourceCode,
 div.notice--big--primary > pre:not([class^="sourceCode"])
 {
   width: 100%;
