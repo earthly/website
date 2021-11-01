@@ -12,7 +12,7 @@ internal-links:
 
 <div class="narrow-code">
 
-Bash is not just a UNIX shell, it's also a programming language. And like most programming languages, it has variables. You use these shell variables whenever you append to your `PATH` or refer to `$HOME` or set `JAVA_HOME` or `GOARCH`.
+Bash is not just a UNIX shell, it's also a programming language. And like most programming languages, it has variables. You use these shell variables whenever you append to your `PATH` or refer to `$HOME` or set `JAVA_HOME`.
 
 So let me walk you through how variables work in bash, starting with local shell variables and then covering special and environment variables. I think you'll find understanding the basics to be extremely helpful.
 
@@ -29,7 +29,7 @@ ARGC=0
 
 ## Local Shell Variables
 
-Local shell variables are local to the current shell session process and do not get carried to any sub-process the shell may start. That is, in bash I can export variables and variables I don't export are called local. This distinction will make more sense once we get to exporting.
+Local shell variables are local to the current shell session process and do not get carried to any sub-process the shell may start. That is, in Bash I can export variables and variables I don't export are called local. This distinction will make more sense once we get to exporting.
 
 For now, though, let's look at some examples.
 
@@ -74,28 +74,37 @@ numbers[0]=0
 numbers[1]=1
 numbers[2]=2
 ```
-
+Or like this:
+``` bash
+moreNumbers=(3 4)
+```
 And access them like this:
 
 ``` bash
 #!/bin/bash
 
-
 numbers[0]=0
 numbers[1]=1
 numbers[2]=2
-
 echo "zero: ${numbers[0]}"
 echo "one: ${numbers[1]}"
 echo "two: ${numbers[2]}"
-echo "all: ${numbers[@]}"
+echo "\$numbers: ${numbers[@]}"
+
+moreNumbers=(3 4)
+echo "three: ${moreNumbers[0]}"
+echo "four: ${moreNumbers[1]}"
+echo "\$moreNumbers: ${moreNumbers[@]}"
 ```
 
 ~~~{.output caption="Output"}
 zero: 0
 one: 1
 two: 2
-all: 0 1 2
+$numbers: 0 1 2
+three: 3
+four: 4
+$moreNumbers: 3 4
 ~~~
 
 <div class="notice--info">
@@ -130,7 +139,7 @@ Often I'm going to skip these steps and just show the output:
 This is a bash script bash.sh
 ~~~
 
-This makes the examples more concise.
+This makes the examples more concise but if you need clarification, or would like to learn more about shebangs, check out Earthly's [understanding Bash](/blog/understanding-bash/#use-the-right-shebang) tutorial.
 </div>
 
 You can use `unset` to unset a variable. This is nearly equivalent to setting it to a blank value, but unset will also remove it from the `set` list.
@@ -239,7 +248,7 @@ Arg 2: 2
 
 ## Passing Variables as Arguments in Bash
 
-Command-line arguments follow the same rules as local variables. If you need to send in arguments that contain spaces, you want to use quotes (double or single).
+If you need to send in arguments that contain spaces, you want to use quotes (double or single).
 
 ~~~{.bash caption=">_"}
 > ./args.sh "a b" 'c d' 
@@ -250,7 +259,7 @@ Arg 1: a b
 Arg 2: c d
 ~~~
 
-I can use double quotes when I want to expand a variable inside of the string I am passing. Single quotes do not expand.
+Command-line arguments follow the same rules as local variables, so I can use double quotes when I want to expand a variable inside of the string or single quotes when I don't want to.
 
 ~~~{.bash caption=">_"}
 > test='this is not a test'
