@@ -74,10 +74,13 @@ numbers[0]=0
 numbers[1]=1
 numbers[2]=2
 ```
+
 Or like this:
+
 ``` bash
 moreNumbers=(3 4)
 ```
+
 And access them like this:
 
 ``` bash
