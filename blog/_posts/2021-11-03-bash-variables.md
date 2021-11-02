@@ -107,6 +107,8 @@ four: 4
 $moreNumbers: 3 4
 ~~~
 
+Bash v4 also introduced [associative arrays](https://www.artificialworlds.net/blog/2012/10/17/bash-associative-array-examples/). I won't cover them here but they are powerful and little used feature (little used since even the newest versions of macOS only include bash 3.2).
+
 <div class="notice--info">
 **ℹ️ Running Shell Scripts**
 
@@ -282,13 +284,41 @@ echo "test1: $test1"
 echo "test2: $test2"
 ~~~
 
-~~~{.bash caption=">_"}
+~~~{.output caption=">_"}
 > test1="test1" test2="test2" ./preprend.sh
 test1: test1
 test2: test2
 ~~~
 
 To `prepend.sh` these look like global environmental variables, which we will be covering next. But in fact, they are only scoped to the specific process this is running this script.
+
+## Exit Codes
+
+Where programs finish executing they can pass an exit code to the parent process which can be read using `$?`:
+
+~~~{.bash caption=">_"}
+> bash -c 'exit 255'
+> echo $?
+255
+~~~
+
+A return code of zero indicates success and if you don't indicate otherwise, zero is returned by default.
+
+~~~{.bash caption=">_"}
+> echo "what will I echo?"
+what will I echo?
+> echo $?
+0
+~~~
+
+You can assign this exit status a variable use it later.
+
+~~~{.bash caption=">_"}
+> bash -c 'exit 1'
+> exitCode=$?
+> echo $exitCode
+1
+~~~
 
 ## Environmental Variables
 
