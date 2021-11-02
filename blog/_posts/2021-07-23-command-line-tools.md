@@ -3,6 +3,8 @@ title: "6 Command Line Tools for Productive Programmers"
 categories:
   - Tutorials
 author: Adam
+sidebar:
+  nav: "bash"
 internal-links:
  - broot
  - funky

@@ -3,6 +3,8 @@ title: "Understanding AWK"
 categories:
   - Tutorials
 toc: true
+sidebar:
+  nav: "bash"
 author: Adam
 internal-links:
  - awk

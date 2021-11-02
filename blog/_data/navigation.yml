@@ -50,3 +50,20 @@ makefile:
         url: /make-flags
       - title: "Taming Large Makefiles"
         url: /repeatable-builds-every-time/#tips-for-taming-makefiles-in-large-teams
+bash:
+  - title: Bash
+    children:
+      - title: "Bash Basics" 
+        url: /understanding-bash/
+      - title: "Bash Strings"
+        url: /bash-string/
+      - title: "Bash Variables"
+        url: /bash-variables/
+  - title: Command Line Tools
+    children:
+      - title: "Understanding AWK" 
+        url: /awk-examples/
+      - title: "Understanding JQ"
+        url: /jq-select/
+      - title: "More Command Line Tools"
+        url: /command-line-tools/ 
