@@ -103,4 +103,11 @@ Mohammed Osman:
     name    : "Mohammed Osman:"
     bio     : ""
     avatar  : "/assets/images/authors/person.jpg"
-
+Sanni Michael:
+    name    : "Sanni Michael"
+    bio     : "Sanni is a software engineer with a passion to build and understand how things work on a subliminal level. He has over 3 years of experience building applications that meet customer expectations."
+    avatar  : "/assets/images/authors/sanni-michael.jpg"
+Daniel Olaogun:
+    name    : "Daniel Olaogun"
+    bio     : "Daniel is a software engineer with 5 years of experience building software solutions ranging from Consulting, Fin-tech, E-commerce, Legal, Personnel Management, and Education."
+    avatar  : "/assets/images/authors/daniel-olaogun.jpg"

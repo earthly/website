@@ -8,3 +8,4 @@ sed
 substring
 regex
 regexes
+hostname

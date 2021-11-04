@@ -136,6 +136,10 @@ Timsort
 Codecov
 zoxide
 Pandoc
+Okta
+Dex
+Keycloak
+Gogs
 Datadog
 Wercker
 Nevercode

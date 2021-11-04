@@ -10,6 +10,7 @@ ignore:
   - HouseStyle/tech-terms/java.txt
   - HouseStyle/tech-terms/python.txt
   - HouseStyle/tech-terms/linux.txt
+  - HouseStyle/tech-terms/k8s.txt
   - HouseStyle/tech-terms/monitoring.txt
   - HouseStyle/tech-terms/names.txt
   - HouseStyle/tech-terms/phrases.txt

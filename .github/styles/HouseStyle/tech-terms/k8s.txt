@@ -1,0 +1,3 @@
+Kustomize
+kubectl
+kubeconfig
