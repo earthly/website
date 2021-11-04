@@ -4,6 +4,8 @@ categories:
   - Tutorials
 toc: true
 author: Adam
+sidebar:
+  nav: "bash"
 internal-links:
  - bash strings
  - bash substring
@@ -121,7 +123,7 @@ Next, let's do string length.
 
 ## Bash String Length
 
-The `"$var"` syntax is called variable expansion in bash and you can also write it as `"${var}"`. This expansion syntax allows you to do some powerful things. One of those things is getting the length of a string:
+The `"$var"` syntax is called variable expansion in bash and you can also write it as `"${var}"`. This expansion syntax allows you to do some powerful things such . Once of those things is getting the length of a string:
 
 ~~~{.bash caption=">_"}
 > words="here are some words"
@@ -360,7 +362,7 @@ Found file named todo: todo.gz
 
 (Note that in the above the glob is not quoted.)
 
-You can see it matched in both cases. Glob patterns have their limits, though. And so when I need to confirm a string matches a specific format, I usually more right to regular expression match(`=~`).
+You can see it matched in both cases. Glob patterns have their limits, though. And so when I need to confirm a string matches a specific format, I usually more right to regular expression match(`~=`).
 
 ### Bash String Regex Match
 
@@ -429,9 +431,9 @@ done
 ```
 
 ~~~{.output caption="Output"}
-Word: foo
-Word: bar
+Word: foo:bar
 Word: baz
+Word: rab
 ~~~
 
 If you wrap space-delimited items in brackets, you get an array.
@@ -475,7 +477,7 @@ echo "Year = ${array[3]}" ;
 ~~~{.output caption="Output"}
 ID = 1
 Name = tom
-Year = 1982
+Name = tom
 ~~~
 
 ## Reaching Outside of Bash
@@ -495,7 +497,7 @@ Bash regular expressions have some limitations but sed, grep, and [`awk`](/blog/
 
 I hope this overview of string manipulation in bash gave you enough details to cover most of your use cases.
 
-Also, if you're the type of person who's not afraid to solve problems in bash then take a look at [Earthly](https://earthly.dev/). It's a great tool for creating repeatable builds in a approachable syntax.
+Also, if you're the type of person who's not afraid to solve problems in bash then take a look at Earthly:
 
 {% include cta/cta1.html %}
 
@@ -503,5 +505,4 @@ Also, if you're the type of person who's not afraid to solve problems in bash th
 ## Feedback
 </div>
 
-If you have any clever tricks for handling strings in bash, or spot any problems with my examples, let me know on Twitter [`@AdamGordonBell`](https://twitter.com/adamgordonbell):
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">How many of these bash string parameter expansions idioms do you use? <a href="https://t.co/9UIuLPgELy">https://t.co/9UIuLPgELy</a></p>&mdash; Adam Gordon Bell 🤓 (@adamgordonbell) <a href="https://twitter.com/adamgordonbell/status/1453341378361049091?ref_src=twsrc%5Etfw">October 27, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+If you have any clever tricks for handling strings in bash, or spot any problems with my examples, let me know on Twitter [`@AdamGordonBell`](https://twitter.com/adamgordonbell). 
