@@ -71,7 +71,17 @@ presets:
 
   content-nocrop:
       formats: [webp, original]
-      widths: [800]
+      widths: [400, 600, 800]
+      quality: 100
+      format_quality:
+        webp: 100
+  
+  content-wide-nocrop:
+      formats: [webp, original]
+      widths: [1000, 1200, 1400]
+      quality: 100
+      format_quality:
+        webp: 100
 
   author:
       formats: [webp, original]

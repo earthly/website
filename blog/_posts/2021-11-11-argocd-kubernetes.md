@@ -59,20 +59,23 @@ There are a few prerequisites for implementing ArgoCD on your project:
 
 Create a namespace called `argocd`. This isolates the environment used for running ArgoCD from the environment used for development, staging, or production. Run this command:
 
-```
+``` bash
 kubectl create namespace argocd
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 ```
 
 The `-n` is used for specifying the namespace, in this case `argocd`. This will install ArgoCD and other components (service-account, RBAC, ConfigMap) into the namespace. You should see something similar to this: 
 
-![Installation](https://i.imgur.com/tyHI7ak.png)
+<div class="wide">
+{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/2230.png --alt {{ Installation }} %}
+<figcaption>Installation</figcaption>
+</div>
 
 ### Step 2: Install ArgoCLI
 
 You need the latest ArgoCLI version to be able to interact with ArgoCD from the command line. You can find the installation instructions for different operating systems [on GitHub](https://argoproj.github.io/argo-cd/cli_installation/). To install the CLI on macOS, run:
 
-```
+``` bash
 brew install argocd
 ```
 
@@ -83,12 +86,12 @@ The ArgoCD API server is not exposed by default. You might want to log in to the
 - **Ingress**: This allows you to define rules on how you can access applications on your cluster, such as path-based routing, domain, and subdomain. You can read more on how to use Ingress in the [operator manual](https://argoproj.github.io/argo-cd/operator-manual/ingress/).
 - **Service type of LoadBalancer**: This allows you to also access the server by changing the ArgoCD service type to LoadBalancer. Use the following command:
 
-```
+``` bash
 kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}'
 ```
 - **Port-forwarding**: This allows you to route requests to a particular port on the host. It's usually good for testing. This tutorial will use the port-forward option. To port-forward the ArgoCD server API requests to a port on the host, run:
 
-```
+``` bash
 kubectl port-forward svc/argocd-server -n argocd 8888:443
 ```
 
@@ -96,11 +99,16 @@ Here `8888` is the host port and `443` is the container port.
 
 After port-forwarding to a particular port on the host machine, you should see something similar to this:
 
-![port-forward](https://i.imgur.com/Zolk8V9.png)
+``` bash
+> kubectl port-forward svc/argocd-server -n argocd 8888:443
+Forwarding from 127.0.0.1:8888 -> 8080
+Forwarding from [::1]:8888 -> 8080
+Handling connection for 8888
+```
 
 When you visit port `8888`, you should see an interface to log in. The username is `admin`, and you can get the password by running this command on your cluster:
 
-```
+``` bash
 kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
 ```
 
@@ -110,7 +118,7 @@ There are two ways to add your application to ArgoCD: via the CLI or the UI.
 
 To use the CLI, you need to log in with a username and password. The default username is `admin`, and you can get the password from the instructions above. Run this command to log in to the CLI:
 
-```
+``` bash
  argocd login <ARGOCD_SERVER> 
 ``` 
 
@@ -118,7 +126,7 @@ The `ARGOCD_SERVER` can either be the IP or hostname of the server where you ins
 
 To add your application via the CLI, run this command:
 
-```
+``` bash
 argocd app create guestbook --repo https://github.com/argoproj/argocd-example-apps.git --path guestbook --dest-server https://kubernetes.default.svc --dest-namespace default
 ```
 
@@ -129,61 +137,91 @@ Note that when using ArgoCD locally, `https://kubernetes.default.svc` should be 
 
 The process changes if you're adding your application via UI. After you follow step 3 above, give the application a name like `guestbook` and use the project `default`. Set the sync policy as manual:
 
-![guestbook](https://i.imgur.com/SdKOyLy.png)
+<div class="wide">
+{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/0310.png --alt {{ Create Guestbook Application }} %}
+<figcaption>Create Guestbook Application</figcaption>
+</div>
 
 Add your application to ArgoCD by configuring the repository URL and the path. You can leave the revision as HEAD. For the cluster, you can use `https://kubernetes.default.svc` and set the namespace to default:
 
-![Revision and namespace](https://i.imgur.com/E3Utt4i.png)
+<div class="wide">
+{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/0400.png --alt {{ Set revision and namespace }} %}
+<figcaption>Set revision and namespace</figcaption>
+</div>
 
 Finally you should see something like this:
 
-![Project view](https://i.imgur.com/LQu9TSY.png)
+<div class="wide">
+{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/0460.png --alt {{ Project View In ArgoCD }} %}
+<figcaption>Project View In ArgoCD</figcaption>
+</div>
 
 ### Step 5: Deploy the Application
 
 Before you deploy, check the status of your application. Run: 
 
-```
+``` bash
 argocd app get guestbook
 ```
 
-![get guestbook](https://i.imgur.com/PDsNCnW.png)
+<div class="wide">
+{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/0510.png --alt {{ `argoco app get guestbook` }} %}
+<figcaption>`argoco app get guestbook`</figcaption>
+</div>
 
 By default it will have a status of `OutOfSync`, since the application hasn't been deployed and no Kubernetes resources have been created. 
 
 To deploy it, run:
  
-```
+``` bash
 argocd app sync guestbook
 ```
 
 Check the dashboard now and you'll see the application has been synced (deployed).
 
-![Synced app](https://i.imgur.com/IIHkxFv.png)
+<div class="wide">
+{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/0670.png --alt {{ Synced app in ArgoCD }} %}
+<figcaption>Synced app in ArgoCD</figcaption>
+</div>
 
 ### Step 6: Demonstrate the Deployment Pipeline
 
 When you create a new application, ArgoCD represents the application as a graph. Each component serves as a node with a path to its dependencies and sub-dependencies. In the deployment below, you can see the application is made up of service and deployment. The deployment is further broken down into replica sets and pods, with an arrow pointing to each component. ArgoCD keeps track of each Kubernetes object and ensures the state of the configuration files on GitHub matches that of the cluster.
 
-![guestbook graph](https://i.imgur.com/uihiN1L.png)
+<div class="wide">
+{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/9920.png --alt {{ Guestbook Pipeline Graph }} %}
+<figcaption>Guestbook Pipeline Graph</figcaption>
+</div>
 
 To see the deployment pipeline in process, you can use one of the ArgoCD example applications on GitHub by forking and updating the YAML files based on the applications you selected while setting up. For example, make a change to the `values.yaml` file under `helm-guestbook`: 
 
-![Update values](https://i.imgur.com/c29zlT3.png)
+<div class="wide">
+{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/0070.png --alt {{ Update values }} %}
+<figcaption>Update values</figcaption>
+</div>
 
 The changes made to the configuration file triggered an update to the state of the application on the dashboard. Depending on the type of sync you set up when creating the application, this update can be automatic or manual. For automatic sync, changes are fetched and applied to the cluster. For manual sync, you will need to do that from the dashboard.
 
-![Out of Sync](https://i.imgur.com/RUk3duC.png)
+<div class="wide">
+{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/0190.png --alt {{ Out of Sync }} %}
+<figcaption>Out of Sync</figcaption>
+</div>
 
 The image above shows the application is out of sync because of the changes made to the configuration files on Git.
 
-![Difference](https://i.imgur.com/MO8E6ku.png)
+<div class="wide">
+{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/0330.png --alt {{ Difference }} %}
+</div>
+
 
 The figure above shows the difference between the current state and the changes made to the files on Git.
 
 To sync manually, click on the Sync button and ArgoCD will deploy the new changes to the cluster. The yellow mark on the deployment changes to green and the status of the application changes from Out of Sync to Synced.
 
-![Sync OK](https://i.imgur.com/EUJTeMb.png)
+<div class="wide">
+{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/0420.png --alt {{ Manual Sync in ArgoCD }} %}
+<figcaption>Manual Sync in ArgoCD</figcaption>
+</div>
 
 ## ArgoCD Integrations
 
