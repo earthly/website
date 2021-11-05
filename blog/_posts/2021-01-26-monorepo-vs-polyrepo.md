@@ -11,7 +11,6 @@ author: Vlad
 internal-links:
   - mono repo
   - poly repo
-  - repository
   - monorepo
   - polyrepo
 ---

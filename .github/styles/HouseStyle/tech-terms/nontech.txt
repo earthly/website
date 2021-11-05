@@ -2,3 +2,5 @@ preconfiguration
 preconfigure
 rollup
 prepending
+pre
+automations
