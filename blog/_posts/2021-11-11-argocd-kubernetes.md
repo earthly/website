@@ -21,8 +21,7 @@ internal-links:
 - [ ] Run `earthly +link-opportunity` and find 1-5 places to incorporate links
 - [ ] Add Earthly CTA at bottom `{% include cta/cta1.html %}`
 
-
-Kubernetes has simplified the container management process for microservice applications, but developers often face challenges when using this notoriously complex platform to achieve constant software delivery. 
+Kubernetes has simplified the container management process for microservice applications, but developers often face challenges when using this notoriously complex platform to achieve constant software delivery.
 
 GitOps, a CD (continuous delivery) set of practices for Kubernetes, uses Git as a single source of truth for declarative infrastructure and applications, so that code versions can be more easily tracked and updated. One tool to help achieve GitOps is [ArgoCD, a declarative CD tool](https://argo-cd.readthedocs.io/en/stable/) designed to deploy apps to Kubernetes.
 
@@ -32,16 +31,16 @@ This article will introduce you to ArgoCD, offer some common use cases, and demo
 
 ## What Is ArgoCD?
 
-ArgoCD is a lightweight tool that reads an environment configuration (written as a Helm chart, Kustomize file, Jsonnet, or YAML files) from a Git repository and applies the changes to a Kubernetes cluster. It constantly monitors Git files to ensure the actual state on the cluster corresponds to the configurations on Git. 
+ArgoCD is a lightweight tool that reads an environment configuration (written as a Helm chart, Kustomize file, Jsonnet, or YAML files) from a Git repository and applies the changes to a Kubernetes cluster. It constantly monitors Git files to ensure the actual state on the cluster corresponds to the configurations on Git.
 
 ## ArgoCD Use Cases
 
 <!-- vale HouseStyle.OxfordComma = NO -->
--  ArgoCD helps users deploy applications to Kubernetes clusters. Releases can be automated using GitHub Actions.
+- ArgoCD helps users deploy applications to Kubernetes clusters. Releases can be automated using GitHub Actions.
 
 - It integrates easily with other providers for SSO. Instead of requiring a user to establish their identity many times, SSO allows them to prove their identity once and access services using an authentication token. To integrate ArgoCD with SSO, you can either use a bundled Dex OpenID Connect provider (for example, SAML or LDAP) or an existing OIDC provider (for example, Okta, OneLogin, Auth0, Microsoft, Keycloak, or G Suite).
 
-- It allows you to view an extensive audit of any changes made to your code as well as who made the changes and when. This is possible because the Git commit history provides a natural audit log system. 
+- It allows you to view an extensive audit of any changes made to your code as well as who made the changes and when. This is possible because the Git commit history provides a natural audit log system.
 
 - ArgoCD can also be used to gather application and API server metrics. Application metrics monitor health status, sync history, and other data. The API server is a gRPC/REST server that exposes the API consumed by the Web UI. It can be used for collecting data on request and response activity.
 <!-- vale HouseStyle.OxfordComma = YES -->
@@ -52,7 +51,7 @@ ArgoCD can be useful when you need to constantly sync the state of your environm
 
 There are a few prerequisites for implementing ArgoCD on your project:
 
-- A kubectl command-line tool 
+- A kubectl command-line tool
 - A kubeconfig file (default location is `~/.kube/config`).
 
 ### Step 1: Install ArgoCD
@@ -64,7 +63,7 @@ kubectl create namespace argocd
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 ```
 
-The `-n` is used for specifying the namespace, in this case `argocd`. This will install ArgoCD and other components (service-account, RBAC, ConfigMap) into the namespace. You should see something similar to this: 
+The `-n` is used for specifying the namespace, in this case `argocd`. This will install ArgoCD and other components (service-account, RBAC, ConfigMap) into the namespace. You should see something similar to this:
 
 <div class="wide">
 {% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/2230.png --alt {{ Installation }} %}
@@ -89,13 +88,14 @@ The ArgoCD API server is not exposed by default. You might want to log in to the
 ``` bash
 kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}'
 ```
+
 - **Port-forwarding**: This allows you to route requests to a particular port on the host. It's usually good for testing. This tutorial will use the port-forward option. To port-forward the ArgoCD server API requests to a port on the host, run:
 
 ``` bash
 kubectl port-forward svc/argocd-server -n argocd 8888:443
 ```
 
-Here `8888` is the host port and `443` is the container port. 
+Here `8888` is the host port and `443` is the container port.
 
 After port-forwarding to a particular port on the host machine, you should see something similar to this:
 
@@ -120,7 +120,7 @@ To use the CLI, you need to log in with a username and password. The default use
 
 ``` bash
  argocd login <ARGOCD_SERVER> 
-``` 
+```
 
 The `ARGOCD_SERVER` can either be the IP or hostname of the server where you installed ArgoCD.
 
@@ -131,7 +131,7 @@ argocd app create guestbook --repo https://github.com/argoproj/argocd-example-ap
 ```
 
 The application name is `guestbook`, whereas `--repo` specifies a repository,`--path` specifies the path to the project, `--dest-server` specifies the cluster URL, and `--dest-namespace` specifies the namespace. You can check out other configurations in the manual under [`argocd app create`
-](https://argoproj.github.io/argo-cd/user-guide/commands/argocd_app_create/). 
+](https://argoproj.github.io/argo-cd/user-guide/commands/argocd_app_create/).
 
 Note that when using ArgoCD locally, `https://kubernetes.default.svc` should be used as the application's Kubernetes API server address. If ArgoCD is deployed to an external cluster, then it can be changed to the respective cluster URL.
 
@@ -158,7 +158,7 @@ Finally you should see something like this:
 
 ### Step 5: Deploy the Application
 
-Before you deploy, check the status of your application. Run: 
+Before you deploy, check the status of your application. Run:
 
 ``` bash
 argocd app get guestbook
@@ -169,10 +169,10 @@ argocd app get guestbook
 <figcaption>`argoco app get guestbook`</figcaption>
 </div>
 
-By default it will have a status of `OutOfSync`, since the application hasn't been deployed and no Kubernetes resources have been created. 
+By default it will have a status of `OutOfSync`, since the application hasn't been deployed and no Kubernetes resources have been created.
 
 To deploy it, run:
- 
+
 ``` bash
 argocd app sync guestbook
 ```
@@ -193,7 +193,7 @@ When you create a new application, ArgoCD represents the application as a graph.
 <figcaption>Guestbook Pipeline Graph</figcaption>
 </div>
 
-To see the deployment pipeline in process, you can use one of the ArgoCD example applications on GitHub by forking and updating the YAML files based on the applications you selected while setting up. For example, make a change to the `values.yaml` file under `helm-guestbook`: 
+To see the deployment pipeline in process, you can use one of the ArgoCD example applications on GitHub by forking and updating the YAML files based on the applications you selected while setting up. For example, make a change to the `values.yaml` file under `helm-guestbook`:
 
 <div class="wide">
 {% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/0070.png --alt {{ Update values }} %}
@@ -213,7 +213,6 @@ The image above shows the application is out of sync because of the changes made
 {% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/0330.png --alt {{ Difference }} %}
 </div>
 
-
 The figure above shows the difference between the current state and the changes made to the files on Git.
 
 To sync manually, click on the Sync button and ArgoCD will deploy the new changes to the cluster. The yellow mark on the deployment changes to green and the status of the application changes from Out of Sync to Synced.
@@ -228,8 +227,8 @@ To sync manually, click on the Sync button and ArgoCD will deploy the new change
 ArgoCD integrates well with Kubernetes tools. Here are some examples:
 
 - Prometheus: With Prometheus, ArgoCD makes it easy to collect application and API server metrics. This can be useful when you need to keep track of your application logs and gain insights into what happens at each point. The metrics and logs can also be used for debugging.
-- Kube-Watch: ArgoCD allows you to integrate with [Kube-Watch](https://argo-cd.readthedocs.io/en/stable/operator-manual/notifications/) for notifications. This is handy when you need to send notifications to an environment such as Slack, generally through webhooks. 
-- Git Webhook Configuration: The API server can be configured to listen to webhook events instead of pulling from the repository every three minutes. This is useful when you want to send frequent messages to the server or when you need to handle other custom edge cases in your application for deployment. It supports Git webhook notifications from GitHub, GitLab, Bitbucket, Bitbucket Server, and [Gogs](https://gogs.io/). 
+- Kube-Watch: ArgoCD allows you to integrate with [Kube-Watch](https://argo-cd.readthedocs.io/en/stable/operator-manual/notifications/) for notifications. This is handy when you need to send notifications to an environment such as Slack, generally through webhooks.
+- Git Webhook Configuration: The API server can be configured to listen to webhook events instead of pulling from the repository every three minutes. This is useful when you want to send frequent messages to the server or when you need to handle other custom edge cases in your application for deployment. It supports Git webhook notifications from GitHub, GitLab, Bitbucket, Bitbucket Server, and [Gogs](https://gogs.io/).
 
 ## Conclusion
 
