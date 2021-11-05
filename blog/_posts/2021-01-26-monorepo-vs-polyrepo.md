@@ -12,7 +12,6 @@ internal-links:
   - mono repo
   - poly repo
   - repository
-  - source code
   - monorepo
   - polyrepo
 ---

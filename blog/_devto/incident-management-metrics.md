@@ -8,7 +8,6 @@ internal-links:
  - mtbf
  - mttr
  - mtta
- - metrics
  - incident management
 ---
 <!-- markdownlint-disable MD024 -->

@@ -4,11 +4,11 @@ categories:
   - Tutorials
 author: Adam
 internal-links:
- - merging
- - branching
- - merge
- - git
- - branch
+ - git merging
+ - git branching
+ - git merge
+ - source control branch
+ - git branch
 ---
 
 Some modern development practices are easiest to understand from a historical perspective: things started a certain way, and then steps were added or removed as conditions changed. Git branching, for example, is like that.

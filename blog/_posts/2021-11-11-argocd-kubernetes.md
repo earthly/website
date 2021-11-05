@@ -10,17 +10,6 @@ internal-links:
  - argocd
  - kubernetes deployment
 ---
-
-## Draft.dev Article Checklist
-
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-- [ ] Run mark down linter (`earthly +blog-lint-apply`)
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `earthly +link-opportunity` and find 1-5 places to incorporate links
-- [ ] Add Earthly CTA at bottom `{% include cta/cta1.html %}`
-
 Kubernetes has simplified the container management process for microservice applications, but developers often face challenges when using this notoriously complex platform to achieve constant software delivery.
 
 GitOps, a CD (continuous delivery) set of practices for Kubernetes, uses Git as a single source of truth for declarative infrastructure and applications, so that code versions can be more easily tracked and updated. One tool to help achieve GitOps is [ArgoCD, a declarative CD tool](https://argo-cd.readthedocs.io/en/stable/) designed to deploy apps to Kubernetes.
@@ -36,13 +25,13 @@ ArgoCD is a lightweight tool that reads an environment configuration (written as
 ## ArgoCD Use Cases
 
 <!-- vale HouseStyle.OxfordComma = NO -->
-- ArgoCD helps users deploy applications to Kubernetes clusters. Releases can be automated using GitHub Actions.
+- ArgoCD helps users [deploy](/blog/deployment-strategies) applications to Kubernetes clusters. Releases can be automated using GitHub Actions.
 
 - It integrates easily with other providers for SSO. Instead of requiring a user to establish their identity many times, SSO allows them to prove their identity once and access services using an authentication token. To integrate ArgoCD with SSO, you can either use a bundled Dex OpenID Connect provider (for example, SAML or LDAP) or an existing OIDC provider (for example, Okta, OneLogin, Auth0, Microsoft, Keycloak, or G Suite).
 
 - It allows you to view an extensive audit of any changes made to your code as well as who made the changes and when. This is possible because the Git commit history provides a natural audit log system.
 
-- ArgoCD can also be used to gather application and API server metrics. Application metrics monitor health status, sync history, and other data. The API server is a gRPC/REST server that exposes the API consumed by the Web UI. It can be used for collecting data on request and response activity.
+- ArgoCD can also be used to gather application and API server [metrics](/blog/./blog/_devto/incident-management-metrics.md) . Application metrics monitor health status, sync history, and other data. The API server is a gRPC/REST server that exposes the API consumed by the Web UI. It can be used for collecting data on request and response activity.
 <!-- vale HouseStyle.OxfordComma = YES -->
 
 ## Implementing ArgoCD
