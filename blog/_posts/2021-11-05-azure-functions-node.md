@@ -10,11 +10,6 @@ internal-links:
  - azure
 ---
 
-## Draft.dev Article Checklist
-
-- [ ] Run `earthly +link-opportunity` and find 1-5 places to incorporate links
-- [ ] Add Earthly CTA at bottom `{% include cta/cta1.html %}`
-
 Deploying an application once meant provisioning a virtual machine, ensuring security protocols were in place, and installing the required frameworks—a complicated series of steps that led to unnecessary processing charges when the applications were idle.
 
 Now, though, cloud computing has advanced to the point where you can rely on serverless computing for your platform and other deployment infrastructure and just focus on writing code.
