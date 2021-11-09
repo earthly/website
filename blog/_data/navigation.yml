@@ -63,6 +63,8 @@ bash:
     children:
       - title: "Understanding AWK" 
         url: /awk-examples/
+      - title: "AWK and CSV" 
+        url: /awk-csv/
       - title: "Understanding JQ"
         url: /jq-select/
       - title: "More Command Line Tools"
