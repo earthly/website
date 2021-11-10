@@ -443,6 +443,6 @@ Also, if you're the type of person who's not afraid to solve problems in bash, t
 
 If you have any tips or tricks about variables in bash or spot any problems with my examples, let me know on Twitter [`@AdamGordonBell`](https://twitter.com/adamgordonbell).
 
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Bash is not just a UNIX shell, it’s also a programming language. And like most programming languages, it has variables. You probably already knew that. <br><br>But ... do you know all its quirks?<br><br>Here is a refresher, just in case:</p>&mdash; Earthly Technologies (@EarthlyTech) <a href="https://twitter.com/EarthlyTech/status/1458449376624341005?ref_src=twsrc%5Etfw">November 10, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Bash is not just a UNIX shell, it's also a programming language. And like most programming languages, it has variables. You probably already knew that. <br><br>But ... do you know all its quirks?<br><br>Here is a refresher, just in case:</p>&mdash; Earthly Technologies (@EarthlyTech) <a href="https://twitter.com/EarthlyTech/status/1458449376624341005?ref_src=twsrc%5Etfw">November 10, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 </div>
