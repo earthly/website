@@ -83,7 +83,8 @@ clear-images() { # Clear images for latest post
 }
 
 link-opp() { # List places you could link to other posts
-    earthly +link-opportunity --NAME="$(ls -Art blog/_posts | tail -n 1)"; 
+    pip3 install python-frontmatter
+    python3 ./util/suggest-links.py "$(post)"
 }
 
 lint() { # Run Linter
@@ -99,7 +100,12 @@ list-images() {
 }
 
 new-post() { # Eg. new-post multi-word-slug
-    earthly --build-arg name="$1" +new-post; 
+  default="one-two-three"
+  name="${1:=$default}"
+  cat ./blog/_posts/2029-01-01-checklist.md > "./blog/_posts/$(date -v +7d +"%Y-%m-%d")-$name.md"
+  sed -i -E "s/published: False//g" "./blog/_posts/$(date -v +7d +"%Y-%m-%d")-$name.md"
+  mkdir "./blog/assets/images/$name"
+  cp ./blog/assets/images/default-header.jpg "./blog/assets/images/$name/header.jpg"
 }
 
 set-author-image() { # Eg. set-author-image first-last.jpg

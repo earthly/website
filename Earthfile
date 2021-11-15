@@ -211,20 +211,3 @@ manual-publish:
     && git add -A \
     && git commit -m "Latest website - manual publish" || exit 0 \ 
     && git push 
-   
-new-post:
-  LOCALLY
-  ARG name="one-two-three"
-  RUN cat ./blog/_posts/2029-01-01-checklist.md > ./blog/_posts/$(date -v +7d +"%Y-%m-%d")-$name.md
-  RUN sed -i -E "s/published: False//g" ./blog/_posts/$(date -v +7d +"%Y-%m-%d")-$name.md
-  RUN mkdir ./blog/assets/images/$name
-  RUN cp ./blog/assets/images/default-header.jpg ./blog/assets/images/$name/header.jpg
-
-# this looks for places you can manually add links to your page using internal-links in the post frontmatter
-link-opportunity:
-  # FROM agbell/website-base:latest
-  FROM +blog-install
-  COPY blog blog
-  RUN pip3 install python-frontmatter
-  ARG NAME="2020-09-10-better-builds.md"
-  RUN python3 ./blog/_util/suggest-links.py ./blog/_posts/$NAME
