@@ -70,6 +70,12 @@ list(){
 }
 
 ## External
+
+unset-functions(){ # Unset all these functions
+    script=$(./util/unset.awk "$INIT_LOCATION")
+    eval "$script"
+}
+
 clear-images() { # Clear images for latest post
         echo "deleting from $(gen-image-folder)"
         rm -frv "$(gen-image-folder)"

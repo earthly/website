@@ -8,10 +8,11 @@ BEGIN {
 $2 == "External" { external=1 }
 $1 ~/\(\)/{ 
     if (external==1){
+        f=substr($1, 0, index($1,"(")-1)
         if(index($0,"#"))
-            printf "%-20s \t %-60s\n",$1, substr($0, index($0,"#")+1)
+            printf "%-20s \t %-60s\n",f, substr($0, index($0,"#")+1)
         else 
-            print $1 
+            print f
     }
 }
 END {
