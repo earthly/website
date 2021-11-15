@@ -19,9 +19,10 @@ internal-links:
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
-- [ ] Run mark down linter (`earthly +blog-lint-apply`)
+- [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
-- [ ] Run `earthly --build-arg NAME=2020-09-10-better-builds.md +link-opportunity` and find 1-5 places to incorporate links to other articles
+- [ ] Run `link-opp` and find 1-5 places to incorporate links to other articles
+- [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
 - [ ] Raise PR
 
 ## Draft.dev Article Checklist
@@ -30,7 +31,8 @@ internal-links:
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
-- [ ] Run mark down linter (`earthly +blog-lint-apply`)
+  - Would any images look better `wide` or without the `figcaption`?
+- [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
-- [ ] Run `earthly +link-opportunity` and find 1-5 places to incorporate links
-- [ ] Add Earthly CTA at bottom `{% include cta/cta1.html %}`
+- [ ] Run `link-opp` and find 1-5 places to incorporate links
+- [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`

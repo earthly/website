@@ -36,6 +36,15 @@ latest-image() { #Requires IMAGE_DOWNLOADS
 }
 
 ## imgur image download helpers
+
+# matches:
+#https://imgur.com/
+#http://imgur.com/
+#https://i.imgur.com/
+#http://i.imgur.com/
+
+urlpattern='https?://(i\.)?imgur\.com/[^\)]*'
+
 download-all-imgur(){
     # shellcheck disable=SC2207
     images=($(get-imgur))
@@ -46,20 +55,25 @@ download-all-imgur(){
 }
 
 get-imgur() {
-    rg 'https://i.imgur.com/[^\)]*' "$(post)" -o -N
+    rg "$urlpattern" "$(post)" -o -N
 }
 
 download-imgur(){
-    default="https://i.imgur.com/ZP56boY.png"
+    default="https://imgur.com/u7mCEge.jpeg"
     url="${1:=$default}"
-    image="$(echo $url | rg '^.*/(.*\.png)' -r '$1')"
-    loc="$(image-folder)/$image"
-    echo "Saving $url to $loc"
-    curl --output "$loc"  "$url"
+    image="$(echo $url | rg '^.*/(.*\.(png|jpg|jpeg))' -r '$1')"
+    if [ -z "$image" ] 
+    then
+        echo "Something is wrong. image not set for $url"
+    else
+        loc="$(image-folder)/$image"
+        echo "Saving $url to $loc"
+        curl -L --output "$loc" "$url"
+    fi
 }
 
 imgur-fix-links(){
-   rg --passthru -N 'https://i.imgur.com/' "$(post)" -r '{{site.images}}{{page.slug}}/' | sponge "$(post)"
+   rg --passthru -N 'https?://(i\.)?imgur\.com/' "$(post)" -r '{{site.images}}{{page.slug}}/' | sponge "$(post)"
 }
 
 
@@ -136,6 +150,21 @@ set-image() { # Save latest-image using $IMAGE_DOWNLOADS
 imgur(){ # Download images from imgur from post and update post
    download-all-imgur 
    imgur-fix-links
+}
+
+div-wide(){
+    awk '/^!\[/ { 
+        printf "<div class=\"wide\">\n"
+        print $0 
+        printf "</div>\n"
+        printed[NR]=1
+        }
+        {
+            if (printed[NR]==0)
+                print $0
+        }
+        
+        ' "$(post)" | sponge "$(post)"
 }
 
 start-blog(){ # Start up blog on localhost:4002/blog

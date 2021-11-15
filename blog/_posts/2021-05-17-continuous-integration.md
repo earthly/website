@@ -6,7 +6,6 @@ toc: true
 author: Deborah Ruck
 internal-links:
  - continuous integration
- - ci
  - circleci
  - github actions
  - azure
@@ -45,7 +44,7 @@ CI validates changes upon check-in using an automated build process that also ru
 
 In a typical CI build process, developers push code changes from a branch to a central repository such as GitHub. CI automation servers such as Jenkins and CircleCI continuously monitor the repository to check for code updates.
 
-Once it detects a change, the automation server triggers the build process to compile and build the code, then run validation and integration tests. CI automation servers interface with compilation tools such as Docker, Bash, and Makefile to create deployable artifacts such as binaries, packages, or Docker images. When continuous deployment is employed, the built application is then deployed and run on subsequent testing or production environments. Other developers can also pull down the resulting image and test locally.
+Once it detects a change, the automation server triggers the build process to compile and build the code, then run validation and integration tests. CI automation servers interface with compilation tools such as Docker, Bash, and Makefile to create deployable artifacts such as binaries, packages, or Docker images. When [continuous deployment](/blog/deployment-strategies) is employed, the built application is then deployed and run on subsequent testing or production environments. Other developers can also pull down the resulting image and test locally.
 
 If the build fails, the development team will typically receive an alert, allowing them to fix any errors that occur.
 

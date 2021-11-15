@@ -111,3 +111,15 @@ Daniel Olaogun:
     name    : "Daniel Olaogun"
     bio     : "Daniel is a software engineer with 5 years of experience building software solutions ranging from Consulting, Fin-tech, E-commerce, Legal, Personnel Management, and Education."
     avatar  : "/assets/images/authors/daniel-olaogun.jpg"
+Said Hayani:
+    name    : "Said Hayani"
+    bio     : "I'm a Frontend JavaScript developer and technical writer who uses written tutorials and blog posts to help people learn React Native and JavaScript."
+    avatar  : "/assets/images/authors/said-hayani.jpg"
+Reda Dokkar:
+    name    : "Reda Dokkar"
+    bio     : "A final year Software Engineering student."
+    avatar  : "/assets/images/authors/reda-dokkar.jpg"
+Joel Olawanle:
+    name    : "Joel Olawanle"
+    bio     : "Joel Olawanle is a Frontend developer and Technical writer proficient in Web and Mobile technologies alongside DevOps with many years of experience developing scalable distributed applications."
+    avatar  : "/assets/images/authors/joel-olanwanle.jpg"

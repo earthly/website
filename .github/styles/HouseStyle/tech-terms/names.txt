@@ -136,9 +136,11 @@ Timsort
 Codecov
 zoxide
 Pandoc
+Stackdriver
 Okta
 Dex
 Keycloak
+Bitrise
 Gogs
 Datadog
 Wercker
