@@ -11,11 +11,11 @@ run "list" for a list of helpers
 
 ```
 > list
-function        	 description
-----------------	 -----------------------------------------------------------------
-clear-images()   	 Clear images for latest post
-link-opp()       	 List places you could link to other posts
-lint()            	 Run Linter
+function             description
+----------------     -----------------------------------------------------------------
+clear-images()       Clear images for latest post
+link-opp()           List places you could link to other posts
+lint()               Run Linter
 list-images
 new-post()           Eg. new-post multi-word-slug
 set-author-image()   Eg. set-author-image first-last.jpg
