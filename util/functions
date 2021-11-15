@@ -1,0 +1,141 @@
+#!/usr/bin/env bash
+
+# set -e
+
+echo "functions assume they are run from repo root"
+echo "run \"list\" for a list of helpers"
+
+## Dependencies
+# rg (rip grep)
+# sponge (moreutils)
+# $IMAGE_DOWNLOADS set to IMAGE_DOWNLOADS="/Users/adam/Downloads/images/ for example"
+
+### Internal
+post() { # active blog post
+    echo "blog/_posts/$(ls -Art blog/_posts |  grep -v "checklist"  | tail -n 1)"; 
+}
+
+gen-image-folder() { # generated images for post 
+    echo "$(pwd)/blog/_site/generated/assets/images/$(slug)"; 
+}
+
+slug() { # slug of post
+    post | rg '^[^-]*-[^-]*-[^-]*-([^\.]*)\.md' -r '$1'; 
+}
+
+image-folder() { # image folder of post
+    echo "$(pwd)/blog/assets/images/$(slug)"; 
+}
+
+timestamp() { # unique id from current time
+    echo "scale=0; $(date +%s) / 10 * 10" | bc -l | cut -c7-11; 
+}
+
+latest-image() { #Requires IMAGE_DOWNLOADS
+    echo "$IMAGE_DOWNLOADS$(ls -Art "$IMAGE_DOWNLOADS" | tail -n 1)"; 
+}
+
+## imgur image download helpers
+download-all-imgur(){
+    # shellcheck disable=SC2207
+    images=($(get-imgur))
+    for arg in "${images[@]}" 
+    do
+       download-imgur "$arg"
+    done
+}
+
+get-imgur() {
+    rg 'https://i.imgur.com/[^\)]*' "$(post)" -o -N
+}
+
+download-imgur(){
+    default="https://i.imgur.com/ZP56boY.png"
+    url="${1:=$default}"
+    image="$(echo $url | rg '^.*/(.*\.png)' -r '$1')"
+    loc="$(image-folder)/$image"
+    echo "Saving $url to $loc"
+    curl --output "$loc"  "$url"
+}
+
+imgur-fix-links(){
+   rg --passthru -N 'https://i.imgur.com/' "$(post)" -r '{{site.images}}{{page.slug}}/' | sponge "$(post)"
+}
+
+
+INIT_LOCATION="$0"
+
+list(){
+    ./util/list.awk "$INIT_LOCATION"
+}
+
+## External
+clear-images() { # Clear images for latest post
+        echo "deleting from $(gen-image-folder)"
+        rm -frv "$(gen-image-folder)"
+        touch "$(post)"
+}
+
+link-opp() { # List places you could link to other posts
+    earthly +link-opportunity --NAME="$(ls -Art blog/_posts | tail -n 1)"; 
+}
+
+lint() { # Run Linter
+    earthly +blog-lint-apply "$@"; 
+}
+
+list-images() { 
+    echo "listing source images:"
+    ls -d "$(image-folder)/"*
+
+    echo "listing generated images:"
+    ls -d "$(gen-image-folder)/"*
+}
+
+new-post() { # Eg. new-post multi-word-slug
+    earthly --build-arg name="$1" +new-post; 
+}
+
+set-author-image() { # Eg. set-author-image first-last.jpg
+    cp "$(latest-image)" "$(pwd)/blog/assets/images/authors/$1.jpg"
+    echo "saved as:"
+    echo "/assets/images/authors/$1.jpg"
+}
+
+set-header() { # Set latest-image as header using $IMAGE_DOWNLOADS
+    cp "$(latest-image)" "$(image-folder)/header.jpg"
+    echo "wrote to $(image-folder)/header.jpg"
+}
+
+set-image() { # Save latest-image using $IMAGE_DOWNLOADS
+    VAL=$(timestamp)
+    echo "saving as $VAL.png \n"
+    tput setaf 2 && echo  "{{site.images}}{{page.slug}}/$VAL.png" && tput setaf 9
+    tput setaf 4
+    echo '<div class="wide">'
+    echo "{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/$VAL.png --alt {{  }} %}"
+    echo "<figcaption></figcaption>"
+    echo "</div>\n" 
+    tput setaf 7
+    echo "wrote to $(image-folder)/$VAL.png"
+    cp "$(latest-image)" "$(image-folder)/$VAL.png"
+}
+
+imgur(){ # Download images from imgur from post and update post
+   download-all-imgur 
+   imgur-fix-links
+}
+
+start-blog(){ # Start up blog on localhost:4002/blog
+    (
+    cd blog || exit
+    bundle exec jekyll serve --future --incremental --profile  -H 0.0.0.0 -P 4002
+    )
+}
+
+start-website(){ # Start up website on localhost:4001
+    (
+    cd website || exit
+    JEKYLL_ENV=production bundle exec jekyll serve --incremental -H 0.0.0.0 -P 4001
+    )
+}
