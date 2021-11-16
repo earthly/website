@@ -8,6 +8,7 @@ author: Sanni Michael
 internal-links:
  - spinnaker
 ---
+
 [Kubernetes has become the standard for deploying and managing containerized applications](https://newrelic.com/blog/how-to-relic/what-is-kubernetes), but there are a lot of questions to be answered in the cloud native space. And they all seem to center around a single theme:
 
 How do you constantly release software with speed, quality, and confidence?  

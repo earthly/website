@@ -9,6 +9,7 @@ internal-links:
  - jenkins pipeline
  - jenkinsfile
 ---
+
 The software release cycle has developed over time, from the days of moving code from one machine to another to see if it works (which was frequently error-prone), to the present day, where automated techniques ensure that software programs may be deployed quickly at any time.
 
 [Continuous deployment](/blog/deployment-strategies) is a software engineering strategy that involves automating the delivery of software features on a regular basis. [Jenkins](https://www.jenkins.io/) is a popular open-source continuous integration tool. It's written in Java and it can help you automate a variety of software development tasks. In Jenkins, you can create pipelines which are a sequence of tasks that processes a set of input data.
