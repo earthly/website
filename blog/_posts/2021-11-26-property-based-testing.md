@@ -2,34 +2,11 @@
 title: "Property-Based Testing In Go"
 categories:
   - Tutorials
-toc: true
 author: Adam
 
 internal-links:
  - just an example
 ---
-### Writing Article Checklist
-
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Run mark down linter (`lint`)
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links to other articles
-- [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
-- [ ] Raise PR
-
-## Draft.dev Article Checklist
-
-- [ ] Add in Author page
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
-
 Have you ever wanted your unit tests written for you? Property based testing is a powerful testing technique that, in a sense, is just that. You describe the properties you'd like to test, and the specific cases are generated for you.
 
 Property-based testing can be a bit trickier to learn, and not every problem can be well tested in this manner, but it's a powerful technique that's well supported by the go std-lib (`testing/quick`) and that is under-utilized.
@@ -265,7 +242,7 @@ The hardest part of this style of testing is seeing where and how it can apply. 
 - Verifying an optimization (by comparing the results to the un-optimized version)
 - Anywhere I have more than one representation of some data and need to test the boundaries of those representations.
 
-But others have more ways to use this paradigm. If you want to learn more about property-based testing, then [`gopter`](https://github.com/leanovate/gopter),*the GOlang Property TestER*, is worth taking a look at. [Amir Saeid](https://github.com/amir), who's good at this technique, recommends this [book](https://leanpub.com/property-based-testing-in-a-screencast-editor) full of examples, and [this blog](https://jacobstanley.io/how-to-use-hedgehog-to-test-a-real-world-large-scale-stateful-app/).
+But others have more ways to use this paradigm. If you want to learn more about property-based testing, then [`gopter`](https://github.com/leanovate/gopter), *the GOlang Property TestER*, is worth taking a look at. [Amir Saeid](https://github.com/amir), who's good at this technique, recommends this [book](https://leanpub.com/property-based-testing-in-a-screencast-editor) full of examples, and [this blog](https://jacobstanley.io/how-to-use-hedgehog-to-test-a-real-world-large-scale-stateful-app/).
 
 If you have any tips or suggested resources for property-based testing, please let me know on Twitter (<a href="https://twitter.com/adamgordonbell/">@adamgordonbell</a>).
 
