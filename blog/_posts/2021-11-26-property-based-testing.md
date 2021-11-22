@@ -98,7 +98,7 @@ Now that we have that function, we can use `testing/quick`, the property-based t
 
 ``` go
 func TestIdentity1(t *testing.T) {
- if err := quick.Check(idTest, nil); err != nil {
+ if err := quick.Check(doesIdentityHold, nil); err != nil {
   t.Error(err)
  }
 }
@@ -109,7 +109,7 @@ By default, this will cause `testing/quick` to run 100 iterations of my identity
 ``` go
 func TestIdentity1(t *testing.T) {
  c := quick.Config{MaxCount: 1000000} // <- changed
-  if err := quick.Check(idTest, &c); err != nil {
+  if err := quick.Check(doesIdentityHold, &c); err != nil {
   t.Error(err)
  }
 }
@@ -209,7 +209,7 @@ func TestIdentity2(t *testing.T) {
   Values: func(values []reflect.Value, r *rand.Rand) {
    values[0] = reflect.ValueOf(randCSV(r))
   }}
- if err := quick.Check(idTest, &c); err != nil {
+ if err := quick.Check(doesIdentityHold, &c); err != nil {
   t.Error(err)
  }
 }
