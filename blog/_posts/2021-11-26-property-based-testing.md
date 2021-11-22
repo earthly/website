@@ -54,12 +54,12 @@ Slightly simplified, it looks like this:
 
 ``` go
 func apply(data []byte, f mapper) []byte {
-	count := len(data)
+ count := len(data)
 
-	for i := 0; i < count; i++ {
-		data[i] = f(data[i])
-	}
-	return data
+ for i := 0; i < count; i++ {
+  data[i] = f(data[i])
+ }
+ return data
 }
 ```
 
