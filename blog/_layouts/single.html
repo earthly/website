@@ -83,8 +83,9 @@ layout: default
   {% elsif page.id and page.related %}
     <div class="page__related">
       <h4 class="page__related-title">{{ site.data.ui-text[site.locale].related_label | default: "You May Also Enjoy" }}</h4>
-      <div class="grid__wrapper">
-        {% for post in site.posts limit:2 %}
+      <div class="grid__wrapper"><h1>hello</h1>
+        {%  assign related = site.posts | sample: 2 %}
+        {% for post in related %}
           {% if post.id == page.id %}
             {% continue %}
           {% endif %}

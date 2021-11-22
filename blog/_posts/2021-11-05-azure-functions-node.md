@@ -7,8 +7,8 @@ author: Mohammed Osman
 internal-links:
  - azure functions
  - azure
+related: true 
 ---
-
 Deploying an application once meant provisioning a virtual machine, ensuring security protocols were in place, and installing the required frameworks—a complicated series of steps that led to unnecessary processing charges when the applications were idle.
 
 Now, though, cloud computing has advanced to the point where you can rely on serverless computing for your platform and other deployment infrastructure and just focus on writing code.
@@ -175,3 +175,4 @@ Of course, Azure functions development is a big topic. If you are interested in 
 To further assist your build process, try [Earthly](https://earthly.dev/). This free automation tool helps you execute your builds in containers. It works with multiple platforms and offers flexible caching and parallelism, so you can quickly build, test, and [deploy](/blog/deployment-strategies) your projects.
 
 {% include cta/cta1.html %}
+sdfsdf
