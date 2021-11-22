@@ -74,7 +74,8 @@ layout: default
     <div class="page__related">
       <div class="page__related-title heading">{{ site.data.ui-text[site.locale].related_label | default: "You May Also Enjoy" }}</div>
       <div class="grid__wrapper">
-        {% for post in site.related_posts limit:2 %}
+        {%  assign related = site.posts | where: "as_related",true | sample: 2 %}
+        {% for post in related %}
           {% include archive-single.html type="grid" %}
         {% endfor %}
       </div>
@@ -83,7 +84,7 @@ layout: default
   {% elsif page.id and page.related %}
     <div class="page__related">
       <h4 class="page__related-title">{{ site.data.ui-text[site.locale].related_label | default: "You May Also Enjoy" }}</h4>
-      <div class="grid__wrapper"><h1>hello</h1>
+      <div class="grid__wrapper">
         {%  assign related = site.posts | sample: 2 %}
         {% for post in related %}
           {% if post.id == page.id %}

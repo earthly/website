@@ -198,6 +198,7 @@ defaults:
       comments: false
       share: false
       related: true
+      as_related: true
   - scope:
       type: "category"
     values:
