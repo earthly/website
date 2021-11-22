@@ -48,7 +48,20 @@ func TestSubstitute(t *testing.T) {
 }
 ```
 
-`substituteNonprintingChars` returns a function that does the conversion.
+`substituteNonprintingChars` returns a function that does the conversion and `apply` is a helper for applying that function over a `[]byte`.
+
+Slightly simplified, it looks like this:
+
+``` go
+func apply(data []byte, f mapper) []byte {
+	count := len(data)
+
+	for i := 0; i < count; i++ {
+		data[i] = f(data[i])
+	}
+	return data
+}
+```
 
 The second thing I want to test is that I can reverse this operation. That is, when `csvquote` is run with `-u`, it should always return the original input.
 
