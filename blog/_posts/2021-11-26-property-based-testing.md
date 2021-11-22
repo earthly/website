@@ -79,7 +79,7 @@ func TestRestore(t *testing.T) {
 
 `restoreOriginalChars` is the function that restores the string to its original form.
 
-Both these tests pass (the full source is [on GitHub](https://github.com/adamgordonbell/csvquote/blob/pt/cmd/cvsquote/main_test.go)). However, it's still possible there are edge cases that work incorrectly. What I need is a way to generate more test cases.
+Both these tests pass (the full source is [on GitHub](https://github.com/adamgordonbell/csvquote/blob/7f4698ad3d3c2d12f063b5d8a8bd304e8307a089/cmd/cvsquote/main_test.go)). However, it's still possible there are edge cases that work incorrectly. What I need is a way to generate more test cases.
 
 ## Property-Based Testing
 
