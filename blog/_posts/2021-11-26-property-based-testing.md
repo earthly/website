@@ -188,7 +188,7 @@ func randCSVString(r *rand.Rand) string {
 
 ```
 
-Here is what calling `RandCSVString` will generate:
+Here is what calling `randCSVString` will generate:
 
 ``` ini
 "7IWvdDEGTxlRdJZrc4Ra","LMHcCcN,D2RVRsfbw0IF",",LrZ3B4SvFEfG3FqO01n","""vY4FmzhbyR4iDgYpr6f","sw83uJkitIc8trzaYmEO"
@@ -242,7 +242,7 @@ The hardest part of this style of testing is seeing where and how it can apply. 
 - Verifying an optimization (by comparing the results to the un-optimized version)
 - Anywhere I have more than one representation of some data and need to test the boundaries of those representations.
 
-But others have more ways to use this paradigm. If you want to learn more about property-based testing, then [`gopter`](https://github.com/leanovate/gopter), *the GOlang Property TestER*, is worth taking a look at. [Amir Saeid](https://github.com/amir), who's good at this technique, recommends this [book](https://leanpub.com/property-based-testing-in-a-screencast-editor) full of examples, and [this blog](https://jacobstanley.io/how-to-use-hedgehog-to-test-a-real-world-large-scale-stateful-app/).
+But others have found more ways to use this paradigm. If you want to learn more about property-based testing, then [`gopter`](https://github.com/leanovate/gopter), *the GOlang Property TestER*, is worth taking a look at. [Amir Saeid](https://github.com/amir), who's good at this technique, recommends this [book](https://leanpub.com/property-based-testing-in-a-screencast-editor) full of examples, and [this blog](https://jacobstanley.io/how-to-use-hedgehog-to-test-a-real-world-large-scale-stateful-app/).
 
 If you have any tips or suggested resources for property-based testing, please let me know on Twitter (<a href="https://twitter.com/adamgordonbell/">@adamgordonbell</a>).
 
