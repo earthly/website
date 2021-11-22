@@ -3,6 +3,7 @@ maven
 jvm
 akka
 
+deserialization
 #python
 iterable
 itertools
