@@ -7,8 +7,8 @@ author: Mohammed Osman
 internal-links:
  - azure functions
  - azure
+related: true 
 ---
-
 Deploying an application once meant provisioning a virtual machine, ensuring security protocols were in place, and installing the required frameworks—a complicated series of steps that led to unnecessary processing charges when the applications were idle.
 
 Now, though, cloud computing has advanced to the point where you can rely on serverless computing for your platform and other deployment infrastructure and just focus on writing code.

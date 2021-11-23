@@ -167,16 +167,22 @@ div-wide(){
         ' "$(post)" | sponge "$(post)"
 }
 
-start-blog(){ # Start up blog on localhost:4002/blog
+start-blog(){ # Start up blog on localhost:4002/blog. 
+# Takes args like --profile, --future, --incremental, --trace 
     (
-    cd blog || exit
-    bundle exec jekyll serve --future --incremental --profile  -H 0.0.0.0 -P 4002
+        cd blog || exit
+        if [[ $# > 0 ]]
+        then
+            bundle exec jekyll serve "$@"  -H 0.0.0.0 -P 4002
+        else
+           bundle exec jekyll serve --future --incremental --profile  -H 0.0.0.0 -P 4002
+        fi 
     )
 }
 
-start-website(){ # Start up website on localhost:4001
+start-website(){ 
     (
-    cd website || exit
-    JEKYLL_ENV=production bundle exec jekyll serve --incremental -H 0.0.0.0 -P 4001
+        cd website || exit
+        JEKYLL_ENV=production bundle exec jekyll serve --incremental -H 0.0.0.0 -P 4001
     )
 }

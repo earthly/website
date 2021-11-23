@@ -13,6 +13,7 @@ internal-links:
   - bsl
   - source-available
   - open core
+as_related: false
 ---
 
 Earthly users and prospective users - today we are announcing our switch to Business Source License 1.1 (BSL).

@@ -2,6 +2,7 @@
 title: Earthly 0.3.6 Released
 categories:
   - News
+as_related: false
 ---
 
 Release Notes:
