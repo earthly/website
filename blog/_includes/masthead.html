@@ -5,7 +5,9 @@
     <div class="masthead__menu">
       <nav id="site-nav" class="greedy-nav">
         {% unless logo_path == empty %}
-          <a class="site-logo" href="/"><img src="{{ logo_path | relative_url }}" alt="Earthly"></a>
+          <a class="site-logo" href="/">
+            {% picture {{logo_path}} %}
+          </a>
         {% endunless %}
         <ul class="visible-links">
           {%- for link in site.data.navigation.main -%}
