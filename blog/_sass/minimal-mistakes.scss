@@ -13,7 +13,11 @@
 @import "minimal-mistakes/vendor/magnific-popup/magnific-popup"; // Magnific Popup
 @import "minimal-mistakes/vendor/susy/susy";
 @import "minimal-mistakes/mixins";
-@import "minimal-mistakes/vendor/fontawesome/all";
+
+@import "minimal-mistakes/vendor/fontawesome/fontawesome";
+@import "minimal-mistakes/vendor/fontawesome/regular";
+@import "minimal-mistakes/vendor/fontawesome/solid";
+@import "minimal-mistakes/vendor/fontawesome/brands";
 
 /* Core CSS */
 @import "minimal-mistakes/reset";
