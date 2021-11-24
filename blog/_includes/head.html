@@ -6,6 +6,7 @@
   <link href="{% if site.atom_feed.path %}{{ site.atom_feed.path }}{% else %}{{ '/feed.xml' | relative_url }}{% endif %}" type="application/atom+xml" rel="alternate" title="{{ site.title }} Feed">
 {% endunless %}
 
+<!-- Pre Connect to domains -->
 <link rel="preconnect" href="https://googletagmanager.com">
 <link rel="preconnect" href="https://connect.facebook.net">
 <link rel="preconnect" href="https://static.ads-twitter.com">
@@ -17,6 +18,12 @@
 <link rel="preconnect" href="https://www.google.com">
 <link rel="preconnect" href="https://analytics.twitter.com">
 <link rel="preconnect" href="https://api.earthly.dev"> 
+
+
+<!-- PreLoad Fonts -->
+<link rel="preload" as="font" href="/blog/assets/webfonts/fa-regular-400.woff2" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" as="font" href="/blog/assets/webfonts/fa-solid-900.woff2" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" as="font" href="/blog/assets/webfonts/fa-brands-400.woff2" type="font/woff2" crossorigin="anonymous">
 
 <!-- https://t.co/dKP3o1e -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
