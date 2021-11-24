@@ -6,7 +6,7 @@
       <nav id="site-nav" class="greedy-nav">
         {% unless logo_path == empty %}
           <a class="site-logo" href="/">
-            {% picture {{logo_path}} %}
+            {% picture content-nocrop {{logo_path}} %}
           </a>
         {% endunless %}
         <ul class="visible-links">
