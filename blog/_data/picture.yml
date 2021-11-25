@@ -9,7 +9,7 @@ presets:
       webp: 80
     data_sizes: true
     keep: center
-    dimension_attributes: true
+    dimension_attributes: false
     strip_metadata: true
 
   grid:
@@ -42,7 +42,6 @@ presets:
       webp: 100
     crop: '4:1'
     keep: center
-    dimension_attributes: true
 
   large-twitter-card:
     markup: direct_url
