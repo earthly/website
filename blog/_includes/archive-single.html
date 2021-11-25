@@ -29,7 +29,7 @@
   <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
     {% if include.type == "grid" and teaser %}
       <div class="archive__item-teaser">
-        {% picture 2up {{teaser}} %}
+        {% picture 2up-lazy {{teaser}} %}
       </div>
     {% endif %}
     {% if include.heading == "heading" %} 

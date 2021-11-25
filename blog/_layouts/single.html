@@ -76,21 +76,7 @@ layout: default
       <div class="grid__wrapper">
         {%  assign related = site.posts | where: "as_related",true | sample: 2 %}
         {% for post in related %}
-          {% include archive-single.html type="grid" %}
-        {% endfor %}
-      </div>
-    </div>
-  {% comment %}<!-- otherwise show recent posts if no related when `related: true` -->{% endcomment %}
-  {% elsif page.id and page.related %}
-    <div class="page__related">
-      <h4 class="page__related-title">{{ site.data.ui-text[site.locale].related_label | default: "You May Also Enjoy" }}</h4>
-      <div class="grid__wrapper">
-        {%  assign related = site.posts | sample: 2 %}
-        {% for post in related %}
-          {% if post.id == page.id %}
-            {% continue %}
-          {% endif %}
-          {% include archive-single.html type="grid" %}
+          {% include archive-single.html type="grid" lazy="true" %}
         {% endfor %}
       </div>
     </div>
