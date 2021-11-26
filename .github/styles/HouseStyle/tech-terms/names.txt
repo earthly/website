@@ -1,4 +1,7 @@
 mockingjay
+Sysdig
+minikube
+Skaffold
 ngcontainer
 zx
 dkarl
