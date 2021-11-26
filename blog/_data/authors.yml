@@ -127,3 +127,7 @@ Damaso Sanoja:
     name    : "Damaso Sanoja"
     bio     : "Damaso Sanoja is a mechanical engineer with a passion for cars and computers. He's written for both industries for more than two decades."
     avatar  : "/assets/images/authors/damaso-sanoja.jpg"
+Cameron Pavey:
+    name    : "Cameron Pavey"
+    bio     : "Cameron is a full-stack dev living and working in Melbourne. He's committed himself to the never-ending journey of understanding the intricacies of quality code, developer productivity, and job satisfaction."
+    avatar  : "/assets/images/authors/cameron-pavey.jpg"

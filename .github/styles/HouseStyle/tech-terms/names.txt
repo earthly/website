@@ -12,6 +12,8 @@ TruffleRuby
 emacs
 pstree
 cgroups
+Buildah
+Kube
 buildctl
 buildkitd
 mitmproxy
