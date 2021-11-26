@@ -7,8 +7,6 @@ author: Damaso Sanoja
 ---
 ## Draft.dev Article Checklist
 
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Run mark down linter (`lint`)
@@ -76,11 +74,15 @@ For example, once configured, with a simple command, you can work on the applica
 
 The image below shows a Node.js application driven by Skaffold:
 
-![Skaffold Node.js sample app]({{site.images}}{{page.slug}}/RfRGjY5.png)
+<div class="wide">
+![Skaffold Node.js Sample App]({{site.images}}{{page.slug}}/RfRGjY5.png)
+</div>
 
 On the other hand, this image shows an example of a [Gatsby](https://www.gatsbyjs.com/) website deployed in Kubernetes wherein the source code changes are monitored by Garden:
 
-![Gatsby app monitored by Garden]({{site.images}}{{page.slug}}/OUNaPmL.png)
+<div class="wide">
+![Gatsby App Monitored by Garden]({{site.images}}{{page.slug}}/OUNaPmL.png)
+</div>
 
 ## Conclusion
 
