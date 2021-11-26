@@ -76,11 +76,11 @@ For example, once configured, with a simple command, you can work on the applica
 
 The image below shows a Node.js application driven by Skaffold:
 
-![Skaffold Node.js sample app](https://i.imgur.com/RfRGjY5.png)
+![Skaffold Node.js sample app]({{site.images}}{{page.slug}}/RfRGjY5.png)
 
 On the other hand, this image shows an example of a [Gatsby](https://www.gatsbyjs.com/) website deployed in Kubernetes wherein the source code changes are monitored by Garden:
 
-![Gatsby app monitored by Garden](https://i.imgur.com/OUNaPmL.png)
+![Gatsby app monitored by Garden]({{site.images}}{{page.slug}}/OUNaPmL.png)
 
 ## Conclusion
 
