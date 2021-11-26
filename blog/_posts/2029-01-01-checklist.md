@@ -4,7 +4,6 @@ categories:
   - Tutorials
 toc: true
 author: Adam
-published: false
 internal-links:
  - just an example
 ---
