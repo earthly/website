@@ -85,7 +85,7 @@ One issue I encountered on both my M1 laptop and also a [MacStadium MacMini](htt
 
 (In any case, a very impressive effort to switch architecture so quickly for a project that hosts so many packages!)
 
-Back to fixing the issue now. Using `brew doctor` I was able to find out that Xcode needed a (re)install. Easy: `xcode-select --install`. However, the issue was still there. On the MacStadium instance, I was able to just uninstall brew and reinstall it and everything was fine. I was not as comfortable doing that on my laptop after having installed so much via casks. Instead, I was able to just remove the brew `git` via `brew uninstall git` and simply rely on `git` from Xcode, which seems to work just fine. (If anyone reading this knows what's up with my brew's git and can tell me how to fix it, ping me on Twitter: [@vladaionescu](https://twitter.com/VladAIonescu))
+Back to fixing the issue now. Using `brew doctor` I was able to find out that Xcode needed a (re)install. Easy: `xcode-select --install`. However, the issue was still there. On the MacStadium instance, I was able to just uninstall brew and reinstall it and everything was fine. I was not as comfortable doing that on my laptop after having installed so much via casks. Instead, I was able to just remove the brew `git` via `brew uninstall git` and simply rely on `git` from Xcode, which seems to work just fine. (If anyone reading this knows what's up with my brew's git and can tell me how to fix it, ping me on Twitter: [@vladaionescu](https://twitter.com/VladAIonescu) )
 
 ## Using Docker
 
