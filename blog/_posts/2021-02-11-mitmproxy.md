@@ -21,6 +21,7 @@ mitmproxy is a command-line tool that acts as a HTTP and HTTPS proxy and records
 
 ## Installing It
 
+<div class="narrow-code">
 On Mac, mitmproxy is easy to install with brew:
 
 ```
@@ -36,6 +37,8 @@ To start up mitmproxy, type `mitmproxy`, and it will start up bound to port 8080
 ```
 >mitmproxy
 ```
+
+</div>
 
 The command-line interface (CLI) has VIM-like keybindings. `q` will quit, and arrow keys or `h`, `j`, `k`, `l` will move you up and down through the request list. `?` will load the help, and `<<enter>>` will drill in on a specific request.
 {% include imgf src="1.png" alt="Help menu for mitmproxy" caption="Help Menu for mitmproxy" %}

@@ -504,7 +504,7 @@
      Table of contents navigation
      ========================================================================== */
 
-.toc {
+.toc, .newsletter, .newsletter2 {
   font-family: $sans-serif-narrow;
   color: $gray;
   background-color: $background-color;
@@ -525,6 +525,10 @@
   .active a {
     @include yiq-contrasted($active-color);
   }
+}
+
+.newsletter {
+  margin-top: 20px;
 }
 
 .toc__menu {

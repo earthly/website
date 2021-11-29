@@ -82,3 +82,9 @@ div .heading {
   font-family: $sans-serif;
   font-weight: bold
 }
+
+@media (max-width: 768px) {
+  .no-mobile{
+    display:none;
+  }
+}

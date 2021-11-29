@@ -31,15 +31,21 @@ with some tests.
 
 This tutorial assumes you are using Ubuntu, and that the following packages are installed:
 
+<div class="narrow-code">
+
 ```bash
 sudo apt-get install -y gcc dpkg-dev gpg
 ```
+
+</div>
 
 ## Step 0: Creating a Simple Hello World Program
 
 Before getting started with packaging, let's create a basic hello world program
 under `~/example/hello-world-program`. To do this, you can copy and paste the following commands
 into your terminal:
+
+<div class="narrow-code">
 
 ```bash
 mkdir -p ~/example/hello-world-program
@@ -51,12 +57,18 @@ int main() {
 }' > ~/example/hello-world-program/hello.c
 ```
 
+</div>
+
 Then, you can compile it with:
+
+<div class="narrow-code">
 
 ```bash
 cd ~/example/hello-world-program
 gcc -o hello-world hello.c
 ```
+
+</div>
 
 There's no technical reason for picking C for this example -- the language doesn't matter.
 It's the binary we will be distributing in our deb package.

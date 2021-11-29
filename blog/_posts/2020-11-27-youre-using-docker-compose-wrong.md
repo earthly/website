@@ -58,6 +58,8 @@ Where it gets a bit more cumbersome is when you run an integration test and the 
 
 For such cases, you need something that waits for services to be ready. Docker recommends using [wait-for-it](https://github.com/vishnubob/wait-for-it), [Dockerize](https://github.com/jwilder/dockerize) or [wait-for](https://github.com/Eficode/wait-for). Note, however, that a port being ready isn't always a sign that the service is ready to be used. For example, in an integration test using a certain SQL DB with a certain schema, the port becomes available when the DB is initialized, however, the test might only work after a certain schema migration has been applied. You may need application-specific checks on top.
 
+{% include cta/embedded-newsletter.html %}
+
 ## Problem #4: You're running the DB in docker-compose, but the test on the host
 
 Here is a situation: you want to run some unit tests but those tests depend on some external services. Maybe a database, maybe a Redis, maybe another API. Easy: let's put those dependencies in a docker-compose and have the unit test connect to those.

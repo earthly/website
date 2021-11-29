@@ -100,6 +100,8 @@ This Dockerfile has two FROM commands, with each one constituting a distinct bui
 
 The second stage starts by pulling the official Nginx image from Docker Hub. It then copies the updated virtual server configuration to replace the default Nginx configuration. Then the COPY --from command is used to copy only the production-related application code from the image built by the previous stage. The final image is approximately 127 MB.
 
+{% include cta/embedded-newsletter.html %}
+
 ## Problems That Docker Multistage Builds Might Encounter
 
 Depending on how they are designed, multistage builds can introduce some serious issues around the speed of the build process. Since these Dockerfiles have multiple stages to produce the production-grade image, your cache will not consist of the images built in the previous steps leading to your final output. Simulating the build locally might give you the impression that it's worth the wait. However, when you're working with build services such as [AWS CodeBuild](https://aws.amazon.com/codebuild/), [Travis CI](https://travis-ci.org/), or [CircleCI](https://circleci.com/), you want to keep your build time as short as possible for cost reasons, as well as streamlining application delivery.

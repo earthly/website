@@ -165,6 +165,8 @@ Target all built successfully.
 
 As you can see from the previous image, the target was built successfully after cleaning, compiling, and running the compiled program. The extension also provides commands to run other targets easily without changing the configurations in the perspective.
 
+{% include cta/embedded-newsletter.html %}
+
 The following image shows the commands available for the Makefile in the sample project:
 
 ![The makefile commands palette.]({{site.images}}{{page.slug}}/9630.png)
