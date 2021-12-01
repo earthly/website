@@ -85,6 +85,19 @@ list(){
 
 ## External
 
+hide_posts() 
+(
+    cd blog/_posts
+    for f in *.md; do mv -- "$f" "_${f}"; done
+)
+
+unhide_posts()
+(
+    cd blog/_posts
+    for f in *.md; do mv -- "$f" "${f//\_/}"; done
+)
+
+
 unset-functions(){ # Unset all these functions
     script=$(./util/unset.awk "$INIT_LOCATION")
     eval "$script"
