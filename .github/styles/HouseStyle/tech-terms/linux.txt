@@ -10,3 +10,5 @@ regex
 regexes
 hostname
 ci
+debian
+arch

@@ -7,3 +7,4 @@ deserialization
 #python
 iterable
 itertools
+artifactory
