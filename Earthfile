@@ -96,8 +96,8 @@ blog-update:
   SAVE ARTIFACT Gemfile.lock AS LOCAL blog/Gemfile.lock
 
 blog-install:
-  FROM agbell/website-base:latest
-  # FROM +base-image
+  # FROM agbell/website-base:latest
+  FROM +base-image
   COPY blog/Gemfile .
   COPY blog/Gemfile.lock .
   RUN bundle install --retry 5 --jobs 20
@@ -122,10 +122,9 @@ blog-lint:
   # In order to check for warnings, we need to build all future posts and check the error out
   # This is a unideal because it means we are building site twice but it prevents failing at 
   # some future date when a post goes out.
-  RUN cd blog && bundle exec jekyll build --future 2> ../error.txt
+  RUN cd blog && bundle exec jekyll build --future 2> ../error.txt || true
   IF [ -s error.txt ]
-    RUN cat error.txt
-    RUN echo “Errors in Build” && False
+    RUN cat error.txt && echo "Errors in Build" && false
   END
 
 blog-lint-apply:
@@ -140,10 +139,9 @@ blog-lint-apply:
     RUN echo "Fail: external image link" && false
   END
   RUN cd blog && markdownlint --fix "./_posts/*.md"
-  RUN cd blog && bundle exec jekyll build --future 2> ../error.txt
+  RUN cd blog && bundle exec jekyll build --future 2> ../error.txt || true
   IF [ -s error.txt ]
-    RUN cat error.txt
-    RUN echo “Errors in Build” && False
+    RUN cat error.txt && echo "Errors in Build" && false
   END
 
 
