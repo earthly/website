@@ -1,13 +1,16 @@
 //from convertkit
 .center-button {
    display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 100px;
+   justify-content: center;
+   align-items: center;
 }
 .formkit-form[data-uid="c2823c65a3"] input
  {
    box-shadow: 3px 3px 3px rgba(#000, 0.16);
+   border: 1px solid #ccc;
+   padding: 12px;
+   font-size: 16px;
+   
 }
 
    .formkit-form[data-uid="c2823c65a3"] {
@@ -422,12 +425,10 @@
 
   
    .formkit-form[data-uid="c2823c65a3"] .formkit-field{
-      position: absolute;
-      top: 50%;
+
       min-width:220px;
    }
    .formkit-form[data-uid="c2823c65a3"] .formkit-field,.formkit-form[data-uid="c2823c65a3"] .formkit-submit{
-      margin:0 0 15px 0;
       -webkit-flex:1 0 100%;
       -ms-flex:1 0 100%;
       flex:1 0 100%;
@@ -491,4 +492,11 @@
    }
    .formkit-form[data-uid="c2823c65a3"] .formkit-fields{
       margin:25px auto 0 auto;
+   }
+
+   .formkit-form[data-uid="c2823c65a3"] p.tips-tricks-box-title{
+      font-size: 20px;
+      font-weight: bold;
+      color: #111 !important;
+      margin-bottom: 5px !important;
    }
