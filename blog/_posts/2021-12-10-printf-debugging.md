@@ -18,7 +18,7 @@ The strange thing is that many incredible developers don't use debuggers at all.
 
 > The most effective debugging tool is still careful thought, coupled with judiciously placed print statements.
 >
-> Brian Kernighan, "Unix for Beginners" 
+> Brian Kernighan, "Unix for Beginners"
 
 I have a theory for why this is, and to explain it, I need to talk about a famous mathematician and a skill acquisition theory.
 
