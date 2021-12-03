@@ -26,7 +26,11 @@ ShellCheck
 unix
 Fargate
 containerd
+devs
+breakpoint
 Turing
+printfs
+printf
 ubuntu
 autotools
 Earthfile

@@ -95,7 +95,7 @@ You see, I was inserting records sorted and selecting them out without an explic
 </div>
 <!-- markdownlint-disable MD046 -->
 
-[^1]: [Like everything](http://localhost:4002/blog/thought-leaders/), they work well in some contexts and not in others. If they aren't helpful, drop them and try something else.
+[^1]: [Like everything](/blog/thought-leaders/), they work well in some contexts and not in others. If they aren't helpful, drop them and try something else.
 [^2]: I've run this idea by people I know who work remotely and never turn their camera on. Not everyone is convinced, and I find that genuinely confusing. Maybe they have a lot of useless meetings? Perhaps the local culture is against cameras? Or maybe they always know what they are doing, and I never do?
 [^3]: Here is a minimal reproduction in Postgres.
       <div class="narrow-code">
