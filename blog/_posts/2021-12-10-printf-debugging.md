@@ -8,7 +8,7 @@ author: Adam
  - debuggers
  - debugging
 ---
-The Visual Studio debugger is fantastic. When I was a C# developer, I used it all the time. 
+The Visual Studio debugger is fantastic. When I was a C# developer, I used it all the time.
 
 <div class="wide">
 {% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/4450.png --alt {{ Visual Studio Debug Session }} %}
@@ -19,7 +19,7 @@ A typical pattern was putting a breakpoint on a failing assert in a unit test an
 I would do this pretty quickly without really thinking much about the problem at hand, and I could usually find my way to where the problem was. Of course, it might take me some time to find the problem, but often I could find it iteratively and a bit mindlessly by just using the debugger keyboard shortcuts to walk around the code.
 
 <div class="align-left">
- {% picture {{site.pimages}}{{page.slug}}/3400.png --picture --img width="260px" --alt {{ The Debugger Keyboard shortcuts were my most used key }} %}
+ {% picture {{site.pimages}}{{page.slug}}/5610.png --picture --img width="260px" --alt {{ The Debugger Keyboard shortcuts were my most used key }} %}
 <figcaption>The Debugger's Keyboard</figcaption>
 </div>
 
