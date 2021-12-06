@@ -131,3 +131,7 @@ Cameron Pavey:
     name    : "Cameron Pavey"
     bio     : "Cameron is a full-stack dev living and working in Melbourne. He's committed himself to the never-ending journey of understanding the intricacies of quality code, developer productivity, and job satisfaction."
     avatar  : "/assets/images/authors/cameron-pavey.jpg"
+Johan Fischer:
+    name    : "Johan Fischer"
+    bio     : "Johan is a DevSecOps at Lorica Health where he develops, secures and maintains customer-facing SaaS applications."
+    avatar  : "/assets/images/authors/johan-fischer.jpg"

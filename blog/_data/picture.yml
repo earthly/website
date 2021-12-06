@@ -93,6 +93,14 @@ presets:
       format_quality:
         webp: 100
 
+  content-240:
+      formats: [webp, original]
+      widths: [240]
+      quality: 100
+      format_quality:
+        webp: 100
+      fallback_width: 240
+
   author:
       formats: [webp, original]
       fallback_width: 240
