@@ -1,0 +1,64 @@
+<div class="shadow-2xl rounded-xl overflow-hidden">
+  <header class="pt-1 pb-1.5 text-center relative bg-gray-300">
+    <div class="flex absolute pt-2 ml-2">
+      <svg
+        fill="none"
+        height="12"
+        viewBox="0 0 12 12"
+        width="12"
+        class="mr-1 chrome-button1"
+      >
+        <circle cx="6" cy="6" class="fillStd" r="6"></circle>
+        <circle
+          cx="6"
+          cy="6"
+          r="5.75"
+          class="primaryStroke"
+          stroke-opacity=".16"
+          stroke-width=".5"
+        ></circle>
+      </svg>
+      <svg
+        fill="none"
+        height="12"
+        viewBox="0 0 12 12"
+        width="12"
+        class="mr-1 chrome-button2"
+      >
+        <circle cx="6" cy="6" class="fillStd" r="6"></circle>
+        <circle
+          cx="6"
+          cy="6"
+          r="5.75"
+          class="primaryStroke"
+          stroke-opacity=".16"
+          stroke-width=".5"
+        ></circle>
+      </svg>
+      <svg
+        fill="none"
+        height="12"
+        viewBox="0 0 12 12"
+        width="12"
+        class="chrome-button3"
+      >
+        <circle cx="6" cy="6" class="fillStd" r="6"></circle>
+        <circle
+          cx="6"
+          cy="6"
+          r="5.75"
+          class="primaryStroke"
+          stroke-opacity=".16"
+          stroke-width=".5"
+        ></circle>
+      </svg>
+    </div>
+    {{ include.title }}
+  </header>
+  <code
+    class="text-sm sm:text-md pt-6 pl-6 pb-6 font-mono block {{ include.padding }}"
+    style="line-height: 1.4; color: #eef1f1d5; background-color: #111214"
+  >
+    {% include {{ include.template }} %}
+  </code>
+</div>

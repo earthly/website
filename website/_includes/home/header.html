@@ -1,0 +1,100 @@
+<div class="px-10">
+  <div class="py-5">
+    <a class="siteHeader-logoLink" href="{{site.landingurl}}/">
+      {% svg assets/svg/earhtly-logo.svg class="siteHeader-logoLink-svg" %}
+    </a>
+    <div
+      class="
+        mt-0
+        pt-8
+        mb-6
+        lg:mb-0 lg:pt-0
+        right-20
+        flex
+        flex-col
+        sm:flex-row
+        lg:justify-end lg:w-3/5 lg:absolute lg:right-10
+        top-12
+        height-20
+      "
+    >
+      <div class="mt-1 mr-10 widget widget-lg">
+        <div class="star-cta">
+          <a
+            class="github-button"
+            href="https://github.com/earthly/earthly"
+            data-size="large"
+            data-show-count="true"
+            aria-label="Star earthly/earthly on GitHub"
+            >Star</a
+          >
+        </div>
+      </div>
+
+      <div class="flex items-center content-start mt-4 sm:mt-0 h-10 mr-16">
+        
+        <span class="mr-3 text-lg"> Join us on</span>
+        {% svg assets/svg/slack.svg %}
+        <a href="/slack">
+        <span class="font-bold underline ml-2 text-lg cursor-pointer">
+          Slack
+        </span>
+      </a>
+      </div>
+      <nav class="flex mt-4 h-10 sm:mt-0 lg:h-20 w-46 lg:block">
+        <a
+          class="
+            inline-block
+            w-16
+            pt-2
+            pb-2
+            mr-2
+            text-center text-black
+            rounded-lg
+            bg-green-50
+            cursor-pointer
+            hover:bg-green-100
+          "
+          href="/blog"
+        >
+          Blog
+        </a>
+
+        <a
+          class="
+            inline-block
+            w-16
+            pt-2
+            pb-2
+            mr-2
+            text-center text-black
+            rounded-lg
+            bg-green-50
+            cursor-pointer
+            hover:bg-green-100
+          "
+          href="/faq"
+        >
+          FAQ
+        </a>
+
+        <a
+          class="
+            inline-block
+            w-16
+            pt-2
+            pb-2
+            text-center text-black
+            rounded-lg
+            bg-green-50
+            cursor-pointer
+            hover:bg-green-100
+          "
+          href="https://docs.earthly.dev/"
+        >
+          Docs
+        </a>
+      </nav>
+    </div>
+  </div>
+</div>

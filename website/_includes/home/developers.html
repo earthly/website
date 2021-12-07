@@ -1,0 +1,119 @@
+<div class="w-full px-10 pb-10 mb-20 bg-blue-20">
+  <div
+    class="
+      pt-10
+      mt-10
+      mb-8
+      text-3xl
+      font-extrabold
+      leading-none
+      tracking-tight
+      text-gray-900
+      lg:text-3xl
+      xl:text-4xl
+      lg:mt-14 lg:mb-5
+    "
+  >
+    Why do developers ❤️ Earthly?
+  </div>
+
+  <div class="grid grid-cols-1 gap-4 py-10 lg:grid-cols-2">
+    <div class="lg:pr-10">
+      <div class="text-2xl font-extrabold tracking-tight">
+        Cache build steps automatically
+      </div>
+      <div class="py-5 text-gray-600 lg:pr-20">
+        Earthly uses the same caching technology as the Docker builder. If a
+        step of your build would produce the same output as a previously cached
+        run, it uses the cache. Earthly cache can also be shared via the cloud.
+      </div>
+    </div>
+    <div class="lg:pr-10">
+      <div>
+        {% include common/terminal.html
+        template='home/examples/developers-1.html' title="Earthfile"
+        padding="pl-0" %}
+      </div>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 gap-4 py-10 lg:grid-cols-2">
+    <div class="order-2 lg:pr-10 lg:order-1">
+      <div>
+        {% include common/terminal.html
+        template='home/examples/developers-2.html' title="Earthfile" %}
+      </div>
+    </div>
+    <div class="order-1 lg:pr-10">
+      <div class="text-2xl font-extrabold tracking-tight">
+        Self-contained builds that work everywhere
+      </div>
+      <div class="py-5 text-gray-600 lg:pr-20">
+        No need to ask your team to install protoc, a specific version of
+        Python, Java 1.6 or the .NET Core ecosystem. You only install once, in
+        your Earthfile, and it works for everyone. Or even better, you can just
+        make use of the rich Docker Hub ecosystem.
+      </div>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 gap-4 py-10 lg:grid-cols-2">
+    <div class="lg:pr-10">
+      <div class="text-2xl font-extrabold tracking-tight">
+        Parallelization with no strings attached
+      </div>
+      <div class="py-5 text-gray-600 lg:pr-20">
+        Whenever possible, Earthly automatically executes targets in parallel.
+
+        <div class="pt-6 pb-4 font-bold">
+          If your build has independent steps, Earthly will:
+        </div>
+
+        <div>
+          <div class="flex pb-2">
+            <img src="./assets/svg/done-check.svg" class="" />
+            <div class="px-2">Build a directed acyclic graph</div>
+          </div>
+          <div class="flex pb-2">
+            <img src="./assets/svg/done-check.svg" class="" />
+            <div class="px-2">Isolate execution of each step</div>
+          </div>
+          <div class="flex pb-2">
+            <img src="./assets/svg/done-check.svg" class="" />
+            <div class="px-2">Run independent steps in parallel</div>
+          </div>
+          <div class="flex pb-2">
+            <img src="./assets/svg/done-check.svg" class="" />
+            <div class="px-2">Cache results for future use</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="lg:pr-10">
+      <div>
+        {% include common/terminal.html
+        template='home/examples/developers-3.html' title="Earthfile" %}
+      </div>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 gap-4 py-10 lg:grid-cols-2">
+    <div class="order-2 lg:pr-10 lg:order-1">
+      <div>
+        {% include common/terminal.html
+        template='home/examples/developers-4.html' title="Earthfile" %}
+      </div>
+    </div>
+    <div class="order-1 lg:pr-10">
+      <div class="text-2xl font-extrabold tracking-tight">
+        Modern import system
+      </div>
+      <div class="py-5 text-gray-600 lg:pr-20">
+        Copy artifacts across repositories in a single line. Earthly is
+        cache-aware, based on the Git commit sha of the referenced repository.
+        Combined with shared caching, you can create vast and efficient build
+        hierarchies that only execute steps impacted by your changes.
+      </div>
+    </div>
+  </div>
+</div>

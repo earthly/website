@@ -1,0 +1,32 @@
+<div class="pb-1">
+  <span class="earthfile-term">FROM</span> golang:1.13-alpine3.11
+</div>
+<div class="pb-1">
+  <span class="earthfile-term">WORKDIR</span> /proto-example
+</div>
+<div class="pt-5 earthfile-target">proto:</div>
+<div class="pl-8">
+  <span class="earthfile-term">FROM</span>
+  namely/protoc-all:1.29_4
+</div>
+<div class="pl-8"><span class="earthfile-term">COPY</span> api.proto /defs</div>
+<div class="pl-8">
+  <span class="earthfile-term">RUN</span> --entrypoint -- -f api.proto -l go
+</div>
+<div class="pl-8">
+  <span class="earthfile-term">SAVE ARTIFACT</span> ./gen/pb-go /pb
+  <span class="earthfile-term">AS LOCAL</span> pb
+</div>
+<div class="pt-5 earthfile-target">build:</div>
+<div class="pl-8"><span class="earthfile-term">COPY</span> go.mod go.sum .</div>
+<div class="pl-8"><span class="earthfile-term">RUN</span> go mod download</div>
+<div class="pl-8"><span class="earthfile-term">COPY</span> +proto/pb pb</div>
+<div class="pl-8"><span class="earthfile-term">COPY</span> main.go ./</div>
+<div class="pl-8">
+  <span class="earthfile-term">RUN</span> go build -o build/proto-example
+  main.go
+</div>
+<div class="pl-8">
+  <span class="earthfile-term">SAVE ARTIFACT</span>
+  build/proto-example
+</div>

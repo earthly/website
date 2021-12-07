@@ -3,6 +3,23 @@ title: Earthly Terms of Service
 layout: page
 ---
 
+<style>
+p > a, p > a:visited{
+   color: rgb(59, 130, 246);
+}
+
+p {
+   font-size: 18px;
+   font-weight: 500;
+   margin-block-start: 1em;
+   margin-block-end: 1em;
+   margin-inline-start: 0px;
+   margin-inline-end: 0px;
+   line-height: 2rem;
+   color: rgb(75, 85, 99);
+}
+</style>
+
 *2020-12-01*
 
 Welcome, and thank you for your interest in Earthly Technologies Inc. ("**Earthly Technologies,**" "**we,**" "**us**" or "**our**") and our website at [https://www.earthly.dev/](https://www.earthly.dev/), along with our related websites (collectively, the "**Site**"), networks, interfaces, applications, and other products and services provided by us (collectively, the "**Service**"). These Terms of Service are a legally binding contract between you and Earthly Technologies regarding your use of the Service.

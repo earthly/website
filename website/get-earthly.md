@@ -1,134 +1,229 @@
 ---
 title: Get Earthly
 layout: page
-os: 
-    tab1:
-        name: linux
-        title: Linux
-        source: source1
-        active: 1
-        content: |
-            ### Pre-requisites
+os:
+  tab1:
+    name: linux
+    title: Linux
+    source: source1
+    active: 1
+    content: |
+      ### Pre-requisites
 
-            * [Docker](https://docs.docker.com/install/)
-            * [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+      * [Docker](https://docs.docker.com/install/)
+      * [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 
-            ### Installation
+      ### Installation
 
-            <div class="Home-product-Earthfile">
-                <header class="Home-product-Earthfile-header">
-                    <div class="Home-product-Earthfile-header-chromeDecoration">
-                    </div>
-                    Terminal
-                </header>
-                <code class="Home-product-Earthfile-code on-download-listen">sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/latest/download/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly && /usr/local/bin/earthly bootstrap --with-autocomplete'</code>
-            </div>
+      <div class="Home-product-Earthfile">
+          <header class="Home-product-Earthfile-header">
+              <div class="Home-product-Earthfile-header-chromeDecoration">
+              </div>
+              Terminal
+          </header>
+          <code class="Home-product-Earthfile-code on-download-listen">sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/latest/download/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly && /usr/local/bin/earthly bootstrap --with-autocomplete'</code>
+      </div>
 
-            <div class="Home-product-note" markdown="1">
-            `sudo` is used for:
-              * placing the `earthly` binary in `/usr/local/bin/` and marking it as executable
-              * installing auto-completion for your shell
-            </div>
+      <div class="Home-product-note" markdown="1">
+      `sudo` is used for:
+        * placing the `earthly` binary in `/usr/local/bin/` and marking it as executable
+        * installing auto-completion for your shell
+      </div>
 
-    tab2:
-        name: mac
-        title: Mac
-        source: source2
-        content: |
-            ### Pre-requisites
+  tab2:
+    name: mac
+    title: Mac
+    source: source2
+    content: |
+      ### Pre-requisites
 
-            * [Docker for Mac](https://docs.docker.com/docker-for-mac/install/)
-            * [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+      * [Docker for Mac](https://docs.docker.com/docker-for-mac/install/)
+      * [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 
-            ### Installation
+      ### Installation
 
-            <div class="Home-product-Earthfile">
-                <header class="Home-product-Earthfile-header">
-                    <div class="Home-product-Earthfile-header-chromeDecoration">
-                    </div>
-                    Terminal
-                </header>
-                <code class="Home-product-Earthfile-code on-download-listen">brew install earthly/earthly/earthly && earthly bootstrap</code>
-            </div>
+      <div class="Home-product-Earthfile">
+          <header class="Home-product-Earthfile-header">
+              <div class="Home-product-Earthfile-header-chromeDecoration">
+              </div>
+              Terminal
+          </header>
+          <code class="Home-product-Earthfile-code on-download-listen">brew install earthly/earthly/earthly && earthly bootstrap</code>
+      </div>
 
-    tab3:
-        name: windows
-        title: Windows (WSL 2)
-        source: source3
-        content: |
-            ### Pre-requisites
+  tab3:
+    name: windows
+    title: Windows (WSL 2)
+    source: source3
+    content: |
+      ### Pre-requisites
 
-            * [WSL 2](https://docs.microsoft.com/en-us/windows/wsl/install-win10)
-            * [Docker Desktop with WSL2 backend](https://docs.docker.com/docker-for-windows/wsl/)
-            * [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+      * [WSL 2](https://docs.microsoft.com/en-us/windows/wsl/install-win10)
+      * [Docker Desktop with WSL2 backend](https://docs.docker.com/docker-for-windows/wsl/)
+      * [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 
-            ### Installation
+      ### Installation
 
-            Under `wsl`, run the following to install `earthly`.
+      Under `wsl`, run the following to install `earthly`.
 
-            <div class="Home-product-Earthfile">
-                <header class="Home-product-Earthfile-header">
-                    <div class="Home-product-Earthfile-header-chromeDecoration">
-                    </div>
-                    Terminal
-                </header>
-                <code class="Home-product-Earthfile-code on-download-listen">sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/latest/download/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly && /usr/local/bin/earthly bootstrap  --with-autocomplete'</code>
-            </div>
+      <div class="Home-product-Earthfile">
+          <header class="Home-product-Earthfile-header">
+              <div class="Home-product-Earthfile-header-chromeDecoration">
+              </div>
+              Terminal
+          </header>
+          <code class="Home-product-Earthfile-code on-download-listen">sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/latest/download/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly && /usr/local/bin/earthly bootstrap  --with-autocomplete'</code>
+      </div>
 
-            <div class="Home-product-note" markdown="1">
-            `sudo` is used for:
-              * placing the `earthly` binary in `/usr/local/bin/` and marking it as executable
-              * installing auto-completion for your shell
-            </div>
+      <div class="Home-product-note" markdown="1">
+      `sudo` is used for:
+        * placing the `earthly` binary in `/usr/local/bin/` and marking it as executable
+        * installing auto-completion for your shell
+      </div>
 
-ide: 
-    tab1:
-        name: vscode
-        title: VS Code
-        source: source1
-        active: 1
-        content: |
-            Add [Earthfile Syntax Highlighting](https://marketplace.visualstudio.com/items?itemName=earthly.earthfile-syntax-highlighting) to VS Code.
+ide:
+  tab1:
+    name: vscode
+    title: VS Code
+    source: source1
+    active: 1
+    content: |
+      Add [Earthfile Syntax Highlighting](https://marketplace.visualstudio.com/items?itemName=earthly.earthfile-syntax-highlighting) to VS Code.
 
-            ```
-            ext install earthly.earthfile-syntax-highlighting
-            ```
+      ```
+      ext install earthly.earthfile-syntax-highlighting
+      ```
 
-    tab2:
-        name: vim
-        title: Vim
-        source: source2
-        content: |
-            Visit [earthly.vim on GitHub](https://github.com/earthly/earthly.vim) for details.
+  tab2:
+    name: vim
+    title: Vim
+    source: source2
+    content: |
+      Visit [earthly.vim on GitHub](https://github.com/earthly/earthly.vim) for details.
 
-    tab3:
-        name: emacs
-        title: Emacs
-        source: source3
-        content: |
-            If you are using `use-package`:
+  tab3:
+    name: emacs
+    title: Emacs
+    source: source3
+    content: |
+      If you are using `use-package`:
 
-            ```elisp
-            (use-package earthfile-mode
-              :ensure t)
-            ```
-            
-            Alternatively, install via `package-install`:
+      ```elisp
+      (use-package earthfile-mode
+        :ensure t)
+      ```
 
-            ```
-            M-x package-install RET earthfile-mode RET
-            ```
+      Alternatively, install via `package-install`:
 
-    tab4:
-        name: st
-        title: Sublime Text
-        source: source4
-        content: |
-            Add the [Earthly Earthfile package](https://packagecontrol.io/packages/Earthly%20Earthfile) via Package Control:
+      ```
+      M-x package-install RET earthfile-mode RET
+      ```
 
-            1. Press `Ctrl+Shift+P` (or `Cmd+Shift+P` on Mac) to bring up the Command Palette, and select **Install Package control** (if you haven't already installed Package Control).
-            2. Press `Ctrl+Shift+P` (or `Cmd+Shift+P` on Mac) again, select "Package Control: Install Package" and select **Earthly Earthfile** to install.
+  tab4:
+    name: st
+    title: Sublime Text
+    source: source4
+    content: |
+      Add the [Earthly Earthfile package](https://packagecontrol.io/packages/Earthly%20Earthfile) via Package Control:
+
+      1. Press `Ctrl+Shift+P` (or `Cmd+Shift+P` on Mac) to bring up the Command Palette, and select **Install Package control** (if you haven't already installed Package Control).
+      2. Press `Ctrl+Shift+P` (or `Cmd+Shift+P` on Mac) again, select "Package Control: Install Package" and select **Earthly Earthfile** to install.
 ---
+
+<style>
+
+li > a, li > a:visited,
+p > a, p > a:visited{
+   color: rgb(59, 130, 246);
+}
+
+ul.tabcontrol.tabs li.tab {
+    white-space: nowrap;
+    padding: 5px 13px;
+    cursor: pointer;
+    list-style-type: none;
+    border: 1px solid #9a9a9a;
+    border-bottom: none;
+    box-sizing: border-box;
+    min-height: 38px;
+    background: white;
+    margin-right: 2px;
+    font-family: upgrade, sans-serif !important;
+    font-size: 17pt !important;
+    line-height: 100% !important;
+    border-radius: 2px 2px 0 0;
+    box-shadow: 1px 1px 1px 0px #00000033;
+}
+
+ul.tabcontrol.tabs {
+    display: flex;
+    flex-direction: row;
+    padding: 4px 0;
+    margin: 0;
+    height: 40px;
+    box-sizing: border-box;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+
+ul.tabcontrol.tabs li.tabcontrol.tab.active {
+    min-height: 42px;
+    font-weight: bold !important;
+    margin-top: -3px;
+    border-top: 3px solid #4FE2C8;
+}
+
+div.tabcontrol.body.fullborder {
+    border: 1px solid #9a9a9a;
+    padding: 10px 20px 20px 20px;
+    box-sizing: border-box;
+    box-shadow: 1px 1px 2px 0px #00000077;
+    background-color: #80e8ff28;
+    border-radius: 9px;
+    border-top-left-radius: 0;
+}
+
+ul {
+    list-style: inside;
+}
+
+.Home-product-Earthfile{
+    max-width: 900px;
+    border-radius: 9px;
+}
+
+.Home-product-Earthfile-code{
+    padding: 20px 0 20px 20px;
+}
+
+p{
+    padding: 14px 0 0 0;
+}
+
+h3 ~ p {
+      padding: 0;
+}
+
+
+.on-download-show {
+    display:none;
+}
+
+h3{
+  margin: 16px 0 6px 0;
+  font-weight: bold;
+}
+
+.language-plaintext.highlighter-rouge{
+  padding-top: 8px;
+}
+
+ol {
+  padding-top: 10px;
+}
+
+</style>
 
 {% include tabs.html tabs=page.os id="os" bodyclass="fullborder" %}
 
@@ -176,9 +271,20 @@ Thank you for giving Earthly a shot. Come and be part of the Earthly movement!
 
 For alternative installation options see the [alternative installation page in the Earthly docs](https://docs.earthly.dev/docs/misc/alt-installation). To install Earthly from source, see the [contributing page in GitHub](https://github.com/earthly/earthly/blob/main/CONTRIBUTING.md).
 
-## Verify installation
+<h2 class="
+      mt-10
+      mb-8
+      text-3xl
+      font-extrabold
+      leading-none
+      tracking-tight
+      text-gray-900
+      lg:text-3xl
+      xl:text-4xl
+      lg:mt-20 lg:mb-5
+    ">Verify installation</h2>
 
-<p>
+<p class="-mt-4">
     <div class="Home-product-Earthfile">
         <header class="Home-product-Earthfile-header">
             <div class="Home-product-Earthfile-header-chromeDecoration">
@@ -191,20 +297,53 @@ For alternative installation options see the [alternative installation page in t
 
 This command executes the target `hello` from the repository [`github.com/earthly/hello-world`](https://github.com/earthly/hello-world).
 
-## Syntax highlighting
+<h2 class="
+      mt-10
+      mb-8
+      text-3xl
+      font-extrabold
+      leading-none
+      tracking-tight
+      text-gray-900
+      lg:text-3xl
+      xl:text-4xl
+      lg:mt-20 lg:mb-5
+    ">Syntax highlighting</h2>
 
 {% include tabs.html tabs=page.ide id="ide" bodyclass="fullborder" %}
 
-## Installing Earthly in CI
+<h2 class="
+      mt-10
+      mb-8
+      text-3xl
+      font-extrabold
+      leading-none
+      tracking-tight
+      text-gray-900
+      lg:text-3xl
+      xl:text-4xl
+      lg:mt-20 lg:mb-5
+    ">Installing Earthly in CI</h2>
 
 See the [CI integration guide](https://docs.earthly.dev/guides/ci-integration).
 
-## Next steps
+<h2 class="
+      mt-10
+      mb-8
+      text-3xl
+      font-extrabold
+      leading-none
+      tracking-tight
+      text-gray-900
+      lg:text-3xl
+      xl:text-4xl
+      lg:mt-20 lg:mb-5
+    ">Next steps</h2>
 
 To learn how to use Earthly, try
 
-* [The getting started guide](https://docs.earthly.dev/guides/basics).
-* [An introductory video](https://www.youtube.com/watch?v=B7Q7S2lpshw)
-* [The full documentation](https://docs.earthly.dev/)
+- [The getting started guide](https://docs.earthly.dev/guides/basics).
+- [An introductory video](https://www.youtube.com/watch?v=B7Q7S2lpshw)
+- [The full documentation](https://docs.earthly.dev/)
 
 Need some inspiration to get started with your project? Check out [examples on GitHub](https://github.com/earthly/earthly/tree/main/examples).
