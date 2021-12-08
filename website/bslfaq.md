@@ -4,41 +4,7 @@ layout: page
 ---
 
 <!-- vale HouseStyle.H2 = NO -->
-<style>
-blockquote {
-    margin: 2em 1em 2em 0;
-    padding-left: 2em;
-    padding-right: 1em;
-    font-style: italic;
-    border-left: 0.25em solid #6f777d;
-}
-
-span.hide {
-    display: none;
-    white-space:nowrap;
-    width: max-content;
-}
-    
-h2:hover span {
-    display: inline-block;
-}
-
-p > a, p > a:visited{
-   color: rgb(59, 130, 246);
-}
-
-p {
-   font-size: 18px;
-   font-weight: 500;
-   margin-block-start: 1em;
-   margin-block-end: 1em;
-   margin-inline-start: 0px;
-   margin-inline-end: 0px;
-   line-height: 2rem;
-   color: rgb(75, 85, 99);
-}
-
-</style>
+<link rel="stylesheet" href="/assets/css/subpage.css">
 
 <h2 class="text-2xl font-semibold mb-5 mt-20" id="what">What is the BSL?<span class="hide"><a href="#what">¶</a></span></h2>
 
@@ -101,6 +67,6 @@ Please see the [complete text of the Earthly license](https://github.com/earthly
 <!-- vale HouseStyle.H2 = YES -->
 <div class="color2">
   <div class="wrapper">
-    {% include home/earthlyButton.html %}
+    {% include home/earthlyButton.html padding="pt-8" %}
   </div>
 </div>

@@ -3,32 +3,7 @@ title: Frequently Asked Questions
 layout: page
 ---
 <!-- vale HouseStyle.H2 = NO -->
-<style>
-span.hide {
-    display: none;
-    white-space:nowrap;
-    width: max-content;
-}
-    
-h2:hover span {
-    display: inline-block;
-}
-
-p > a, p > a:visited{
-   color: rgb(59, 130, 246);
-}
-
-p {
-   font-size: 18px;
-   font-weight: 500;
-   margin-block-start: 1em;
-   margin-block-end: 1em;
-   margin-inline-start: 0px;
-   margin-inline-end: 0px;
-   line-height: 2rem;
-   color: rgb(75, 85, 99);
-}
-</style>
+<link rel="stylesheet" href="/assets/css/subpage.css">
 
 <h2 class="text-2xl font-semibold mb-5 mt-20" id="dockerfile">How is Earthly different from Dockerfiles?<span class="hide"><a href="#dockerfile">¶</a></span></h2>
 
@@ -103,6 +78,6 @@ Earthly uses a source available [BSL license](https://github.com/earthly/earthly
 <!-- vale HouseStyle.H2 = YES -->
 <div class="color2">
   <div class="wrapper">
-    {% include home/earthlyButton.html %}
+    {% include home/earthlyButton.html padding="pt-8" %}
   </div>
 </div>

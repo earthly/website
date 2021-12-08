@@ -3,22 +3,7 @@ title: Earthly Terms of Service
 layout: page
 ---
 
-<style>
-p > a, p > a:visited{
-   color: rgb(59, 130, 246);
-}
-
-p {
-   font-size: 18px;
-   font-weight: 500;
-   margin-block-start: 1em;
-   margin-block-end: 1em;
-   margin-inline-start: 0px;
-   margin-inline-end: 0px;
-   line-height: 2rem;
-   color: rgb(75, 85, 99);
-}
-</style>
+<link rel="stylesheet" href="/assets/css/subpage.css">
 
 *2020-12-01*
 

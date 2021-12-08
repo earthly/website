@@ -1,0 +1,143 @@
+p > a,
+p > a:visited {
+  color: rgb(59, 130, 246);
+}
+
+p {
+  font-size: 18px;
+  font-weight: 500;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  line-height: 2rem;
+  color: rgb(75, 85, 99);
+}
+
+h2,
+h3 {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: 700;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+#tab_os h3 {
+  font-size: 1.2rem;
+  padding-bottom: 4px;
+}
+
+#tab_os p {
+  margin-block-end: 0;
+}
+
+#tab_os{
+    padding: 20px 20px;
+}
+
+ul {
+  list-style: inside;
+  margin-bottom: 20px;
+}
+
+li {
+  color: rgb(75, 85, 99);
+}
+
+blockquote {
+  margin: 2em 1em 2em 0;
+  padding-left: 2em;
+  padding-right: 1em;
+  font-style: italic;
+  border-left: 0.25em solid #6f777d;
+}
+
+span.hide {
+  display: none;
+  white-space: nowrap;
+  width: max-content;
+}
+
+h2:hover span {
+  display: inline-block;
+}
+
+ul.tabcontrol.tabs li.tab {
+  white-space: nowrap;
+  padding: 6px 13px;
+  cursor: pointer;
+  list-style-type: none;
+  border: 1px solid #9a9a9a;
+  border-bottom: none;
+  box-sizing: border-box;
+  min-height: 38px;
+  background: white;
+  margin-right: 2px;
+  font-family: upgrade, sans-serif !important;
+  font-size: 17pt !important;
+  line-height: 100% !important;
+  border-radius: 2px 2px 0 0;
+  box-shadow: 1px 1px 1px 0px #00000033;
+  min-width: 150px;
+  text-align: center;
+}
+
+ul.tabcontrol.tabs {
+  display: flex;
+  flex-direction: row;
+  padding: 4px 0;
+  margin: 0;
+  height: 40px;
+  box-sizing: border-box;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+ul.tabcontrol.tabs li.tabcontrol.tab.active {
+  min-height: 42px;
+  font-weight: bold !important;
+  margin-top: -3px;
+  border-top: 3px solid #4fe2c8;
+  color: #000;
+}
+
+div.tabcontrol.body.fullborder {
+  border: 1px solid #9a9a9a;
+  padding: 10px 20px 20px 20px;
+  box-sizing: border-box;
+  box-shadow: 1px 1px 2px 0px #00000077;
+  background-color: #80e8ff28;
+  border-radius: 9px;
+  border-top-left-radius: 0;
+}
+
+#installation ~ p {
+  margin-top: -0.2em;
+}
+
+ol {
+  padding-top: 10px;
+}
+
+.language-plaintext.highlighter-rouge {
+  padding-top: 8px;
+}
+
+li > a,
+li > a:visited,
+p > a,
+p > a:visited {
+  color: rgb(59, 130, 246);
+}
+
+.Home-product-Earthfile {
+  max-width: 900px;
+  border-radius: 9px;
+}
+
+.Home-product-Earthfile-code {
+  padding: 20px 0 20px 20px;
+}

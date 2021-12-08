@@ -14,4 +14,3 @@ layout: default
 {% include home/community.html %}
 {% include home/support.html %}
 {% include home/resources.html %}
-{% include home/footer.html %}

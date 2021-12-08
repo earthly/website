@@ -21,7 +21,7 @@ os:
               </div>
               Terminal
           </header>
-          <code class="Home-product-Earthfile-code on-download-listen">sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/latest/download/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly && /usr/local/bin/earthly bootstrap --with-autocomplete'</code>
+          <code class="Home-product-Earthfile-code">sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/latest/download/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly && /usr/local/bin/earthly bootstrap --with-autocomplete'</code>
       </div>
 
       <div class="Home-product-note" markdown="1">
@@ -48,7 +48,7 @@ os:
               </div>
               Terminal
           </header>
-          <code class="Home-product-Earthfile-code on-download-listen">brew install earthly/earthly/earthly && earthly bootstrap</code>
+          <code class="Home-product-Earthfile-code">brew install earthly/earthly/earthly && earthly bootstrap</code>
       </div>
 
   tab3:
@@ -72,7 +72,7 @@ os:
               </div>
               Terminal
           </header>
-          <code class="Home-product-Earthfile-code on-download-listen">sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/latest/download/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly && /usr/local/bin/earthly bootstrap  --with-autocomplete'</code>
+          <code class="Home-product-Earthfile-code">sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/latest/download/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly && /usr/local/bin/earthly bootstrap  --with-autocomplete'</code>
       </div>
 
       <div class="Home-product-note" markdown="1">
@@ -130,150 +130,15 @@ ide:
       2. Press `Ctrl+Shift+P` (or `Cmd+Shift+P` on Mac) again, select "Package Control: Install Package" and select **Earthly Earthfile** to install.
 ---
 
-<style>
 
-li > a, li > a:visited,
-p > a, p > a:visited{
-   color: rgb(59, 130, 246);
-}
-
-ul.tabcontrol.tabs li.tab {
-    white-space: nowrap;
-    padding: 5px 13px;
-    cursor: pointer;
-    list-style-type: none;
-    border: 1px solid #9a9a9a;
-    border-bottom: none;
-    box-sizing: border-box;
-    min-height: 38px;
-    background: white;
-    margin-right: 2px;
-    font-family: upgrade, sans-serif !important;
-    font-size: 17pt !important;
-    line-height: 100% !important;
-    border-radius: 2px 2px 0 0;
-    box-shadow: 1px 1px 1px 0px #00000033;
-}
-
-ul.tabcontrol.tabs {
-    display: flex;
-    flex-direction: row;
-    padding: 4px 0;
-    margin: 0;
-    height: 40px;
-    box-sizing: border-box;
-    overflow-x: auto;
-    overflow-y: hidden;
-}
-
-
-ul.tabcontrol.tabs li.tabcontrol.tab.active {
-    min-height: 42px;
-    font-weight: bold !important;
-    margin-top: -3px;
-    border-top: 3px solid #4FE2C8;
-}
-
-div.tabcontrol.body.fullborder {
-    border: 1px solid #9a9a9a;
-    padding: 10px 20px 20px 20px;
-    box-sizing: border-box;
-    box-shadow: 1px 1px 2px 0px #00000077;
-    background-color: #80e8ff28;
-    border-radius: 9px;
-    border-top-left-radius: 0;
-}
-
-ul {
-    list-style: inside;
-}
-
-.Home-product-Earthfile{
-    max-width: 900px;
-    border-radius: 9px;
-}
-
-.Home-product-Earthfile-code{
-    padding: 20px 0 20px 20px;
-}
-
-p{
-    padding: 14px 0 0 0;
-}
-
-h3 ~ p {
-      padding: 0;
-}
-
-
-.on-download-show {
-    display:none;
-}
-
-h3{
-  margin: 16px 0 6px 0;
-  font-weight: bold;
-}
-
-.language-plaintext.highlighter-rouge{
-  padding-top: 8px;
-}
-
-ol {
-  padding-top: 10px;
-}
-
-</style>
+<link rel="stylesheet" href="/assets/css/subpage.css">
 
 {% include tabs.html tabs=page.os id="os" bodyclass="fullborder" %}
-
-<p>
-<div class="on-download-show-wrap">
-<div class="on-download-show">
-<div class="on-download-show-content">
-<p class="on-download-show-content-quote">
-<div markdown="1">
-
-#### 📢 Get involved 📢
-
-Thank you for giving Earthly a shot. Come and be part of the Earthly movement!
-
-<!-- Twitter button code -->
-<script>window.twttr = (function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0],
-    t = window.twttr || {};
-  if (d.getElementById(id)) return t;
-  js = d.createElement(s);
-  js.id = id;
-  js.src = "https://platform.twitter.com/widgets.js";
-  fjs.parentNode.insertBefore(js, fjs);
-
-  t._e = [];
-  t.ready = function(f) {
-    t._e.push(f);
-  };
-
-  return t;
-}(document, "script", "twitter-wjs"));</script>
-
-<!-- Social buttons -->
-<p class="get-involved-social">
-<a class="github-button" href="https://github.com/earthly/earthly" data-size="large" data-show-count="true" aria-label="Star earthly/earthly on GitHub">Star</a>
-<a class="twitter-share-button" href="https://twitter.com/intent/tweet?text=I%27m%20trying%20out%20%F0%9F%8C%8D%20%40EarthlyTech%2C%20a%20fully%20containerized%20build%20tool%0A%0AIt%27s%20like%20Makefile%20and%20Dockerfile%20had%20a%20baby%20%F0%9F%8D%BC%0A%0AWish%20me%20luck!%0A%0A&url=https%3A%2F%2Fearthly.dev" target="_blank" data-size="large">Tweet</a>
-<!-- <a class="twitter-follow-button" href="https://twitter.com/EarthlyTech" target="_blank" data-show-count="false" data-size="large">Follow @EarthlyTech</a> -->
-</p>
-</div>
-</p>
-</div>
-</div>
-</div>
-</p>
 
 For alternative installation options see the [alternative installation page in the Earthly docs](https://docs.earthly.dev/docs/misc/alt-installation). To install Earthly from source, see the [contributing page in GitHub](https://github.com/earthly/earthly/blob/main/CONTRIBUTING.md).
 
 <h2 class="
-      mt-10
-      mb-8
+      mt-14
       text-3xl
       font-extrabold
       leading-none
@@ -281,7 +146,7 @@ For alternative installation options see the [alternative installation page in t
       text-gray-900
       lg:text-3xl
       xl:text-4xl
-      lg:mt-20 lg:mb-5
+      lg:mt-20
     ">Verify installation</h2>
 
 <p class="-mt-4">
@@ -298,8 +163,8 @@ For alternative installation options see the [alternative installation page in t
 This command executes the target `hello` from the repository [`github.com/earthly/hello-world`](https://github.com/earthly/hello-world).
 
 <h2 class="
-      mt-10
-      mb-8
+      mt-14
+      mb-5
       text-3xl
       font-extrabold
       leading-none
@@ -307,14 +172,13 @@ This command executes the target `hello` from the repository [`github.com/earthl
       text-gray-900
       lg:text-3xl
       xl:text-4xl
-      lg:mt-20 lg:mb-5
+      lg:mt-20
     ">Syntax highlighting</h2>
 
 {% include tabs.html tabs=page.ide id="ide" bodyclass="fullborder" %}
 
 <h2 class="
-      mt-10
-      mb-8
+      mt-14
       text-3xl
       font-extrabold
       leading-none
@@ -322,14 +186,13 @@ This command executes the target `hello` from the repository [`github.com/earthl
       text-gray-900
       lg:text-3xl
       xl:text-4xl
-      lg:mt-20 lg:mb-5
+      lg:mt-20
     ">Installing Earthly in CI</h2>
 
 See the [CI integration guide](https://docs.earthly.dev/guides/ci-integration).
 
 <h2 class="
-      mt-10
-      mb-8
+      mt-14
       text-3xl
       font-extrabold
       leading-none
@@ -337,7 +200,7 @@ See the [CI integration guide](https://docs.earthly.dev/guides/ci-integration).
       text-gray-900
       lg:text-3xl
       xl:text-4xl
-      lg:mt-20 lg:mb-5
+      lg:mt-20
     ">Next steps</h2>
 
 To learn how to use Earthly, try
