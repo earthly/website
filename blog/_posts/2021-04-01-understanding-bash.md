@@ -13,6 +13,8 @@ internal-links:
   - environment variables
   - environment variable
 ---
+<div class="narrow-code">
+
 Bash scripts give you the ability to turn a tedious series of commands into an easily runnable and repeatable script. With many real-world use cases, like using a bash script to run a continuous deployment process, create a series of files in a folder, or download the contents of several URLs, it's worth your time to make sure bash scripting is in your programming toolbox.
 
 When you're done with this article, you'll not only be able to write bash scripts, but you'll be able to write them using today's accepted best practices.
@@ -40,6 +42,7 @@ If you use the previous shebang, it's crucial that you give the executable's abs
 ```
 
 Some people like to customize their systems, either their personal system or production servers, resulting in the `bash` executable not being located in `/bin/bash` every time. Use the above line if you can't be sure that the `bash` executable will be located in the same path when this script is run.
+</div>
 
 ## Understand Common Sets
 

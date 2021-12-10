@@ -14,10 +14,14 @@ internal-links:
 
 Usually, the build process involves invoking various command-line tools, like the compiler or preprocessor. Often you need to pass options to these tools as per your requirements. However, hard-coding these options in your `makefile` can lead to difficulties. As an example, consider the following `makefile` snippet:
 
+<div class="narrow-code">
+
 ``` Makefile
 main.o: main.c
     gcc -Wall -c main.c
 ```
+
+</div>
 
 This snippet compiles `main.c` to `main.o` by invoking `gcc` with the `-Wall` option. But let's say that you do not wish to pass the `-Wall` option; instead, you want to pass the `-Werror` option. The only way of doing that is to edit the `makefile` to change the options. There is no convenient way to override the options without modifying the `makefile`. This is where `make` flags come into play.
 

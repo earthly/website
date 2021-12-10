@@ -98,11 +98,7 @@ h4 {
     width: 50%;
   }
 }
-@media (max-width: 768px) {
-  .no-mobile{
-    display:none;
-  }
-}
+
 .pad {
   padding: $spacing-unit / 1.5 ;
 }

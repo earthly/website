@@ -184,6 +184,8 @@ To create an overlay network so that standalone containers can communicate with 
 docker network create -d overlay --attachable my-attachable-overlay
 ```
 
+{% include cta/embedded-newsletter.html %}
+
 ### The Macvlan Driver
 
 This driver connects Docker containers directly to the physical host network. As per [the Docker documentation](https://docs.docker.com/network/#network-drivers):

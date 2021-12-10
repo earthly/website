@@ -138,6 +138,8 @@ clean:
     rm -rf __pycache__
 ```
 
+{% include cta/embedded-newsletter.html %}
+
 ### Creating a Virtual Environment
 
 The sample app depends on the `requests` library only. However, in a large project, there might be numerous dependencies. And if you are running multiple apps, it's possible that some apps require the same dependencies, but a different version. This means that one Python installation may not be capable of satisfying the requirements of all applications. The solution for this is to use a [virtual environment](https://docs.python.org/3/glossary.html#term-virtual-environment). This is a self-contained directory tree that contains a Python installation of a specific version.

@@ -11,6 +11,7 @@ internal-links:
  - bash substring
 ---
 
+<div class="narrow-code">
 One thing that bash is excellent at is manipulating strings of text. If you're at the command line or writing a small script, then knowing some bash string idioms can be a lot of help.
 
 So in this article, I'm going to go over techniques for working with strings in bash.
@@ -37,6 +38,8 @@ And then make it executable using `chmod` and run it at the command line:
 > ./strings.sh
 test
 ~~~
+
+</div>
 
 ## Background
 
