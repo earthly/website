@@ -9,36 +9,37 @@ internal-links:
  - golang json
  - golang http
 ---
+If you want to build a simple JSON HTTP web service that runs natively on a Linux server, then Golang is a great choice. At least this is what I've been told, my coworkers are big fans and report having a small memory footprint, a shallow learning curve, and an excellent standard library.
 
-- [ ] Fix Grammarly Errors
+So in this article, I'm going to give it a try with a simple project I've want to build: an activity tracker. You see, I'm a bit out of shape, and I'd like to start tracking my activity levels. It will be a bit of a toy application, but I'm hoping it will encourage me to start adding more activity to sedentary winter habits.
 
-If you want to build a simple JSON HTTP web service that runs natively on a linux server, then Go (often called GoLang) is a great language to choose.
+( Maybe I should exercise as a first step instead, but coding this up seems more fun.)
 
-At least this is what I've been told. My coworkers are big fans and report that it has a small memory footprint, a shallow learning curve and a great standard library.
+I want my end result to be beautiful and easy to use, but to start with, I just need an API to insert and retrieve records.
 
-So in this article I'm going to give it a try and I have a simple project in mind that I can use as an example, an activity tracker. You see, I'm out of shape and I'd like to start tracking my activity levels. It will be a bit of a toy application but I'm hoping it will be enough to encourage me to starting adding more activity to sedentary winter habits.
+I want inserting to look something like this:
 
-( Maybe I should actually exercise as a first step instead, but coding this up seems like more fun.)
-
-I want my end result to be beautiful and easy to use but to start with I just need an simple API of inserting and retrieving records.
-
-Inserting I want to look something like this:
-
-``` bash
-> curl -X POST localhost:8080 -d \
+~~~{.bash caption=">_"}
+> curl -iX POST localhost:8080 -d \
 '{"activity": {"description": "christmas eve bike class", "time":"2021-12-24T12:42:31Z"}}'
+~~~
+``` ini
+HTTP/1.1 200 OK
+{"id":1}
 ```
 
 And I want to be able to retrieve previous activities by their auto-generated Id:
 
 ``` bash
 > curl -X GET localhost:8080 -d '{"id": 1}'
+```
+``` ini
 {"activity": {"description": "christmas eve class", time:"2021-12-24T12:42:31Z", "id":1}}
 ```
 
 ## Build a Simple GoLang HTTP Server
 
-The first step towards building my web server is using `"net/http"` to start listening on a port.
+The first step towards building my web server is using `"net/http"` to listen on a port.
 
 ~~~{.go caption="main.go"}
 package main
@@ -64,20 +65,26 @@ I can then run it like this:
 And verify that it is serving HTTP `GET` requests:
 
 ~~~{.bash caption=">_"}
->  curl -X GET localhost:8080
+>  curl -iX GET localhost:8080
+HTTP/1.1 404 Not Found
+Content-Length: 19
+
 404 page not found
 ~~~
 
 Posts work equally as well as GETs:
 
 ~~~{.bash caption=">_"}
-> curl -X POST localhost:8080
+> curl -iX POST localhost:8080
+HTTP/1.1 404 Not Found
+Content-Length: 19
+
 404 page not found
 ~~~
 
 ### Building HTTP Handlers in GoLang
 
-404s may be the appropriate response to a query about my activity levels but to return something informative for these `GET` and `POST` requests, I'll need to write handlers for them:
+404s may be the appropriate response to a query about my activity levels, but to return something informative for these `GET` and `POST` requests, I'll need to write handlers for them:
 
 ~~~{.go caption="main.go"}
 func handleGet(w http.ResponseWriter, req *http.Request) {
@@ -108,7 +115,7 @@ func main() {
 <div class="notice--info">
 ℹ️ **Gorilla web toolkit**
 
-The [Gorilla web toolkit](https://www.gorillatoolkit.org/) is a collection of packages for working web protocols. `github.com/gorilla/mux` is a HTTP request multiplexer, basically a router, and is just a bit more flexible than the standard library's router.
+The [Gorilla web toolkit](https://www.gorillatoolkit.org/) is a collection of packages for working web protocols. `github.com/gorilla/mux` is an HTTP request multiplexer, basically a router, and is just a bit more flexible than the standard library's router.
 </div>
 
 Running this version, I can see that my handlers are working:
@@ -122,9 +129,9 @@ post
 
 ## Testing HTTP `GET` and `POST`
 
-I'm a big fan of integration tests and though our service isn't exactly doing much it does seem like this would be an easy time to write some end to end tests.
+I'm a big fan of integration tests, and though our service isn't exactly doing much, it seems like this would be an easy time to write some end-to-end tests.
 
-If fact, by combining a `curl` request with [ripgrep](https://github.com/BurntSushi/ripgrep)'s `-q` flag -- which will fail when no matches are found -- I can quickly write a shell script to test my end-points:
+In fact, by combining a `curl` request with [ripgrep](https://github.com/BurntSushi/ripgrep)'s `-q` flag -- which will fail when no matches are found -- I can quickly write a shell script to test my end-points:
 
 ~~~{.bash caption="test.sh"}
 #!/usr/bin/env sh
@@ -140,7 +147,7 @@ curl -X POST -s localhost:8080 | rg -q "post"
 echo "Success"
 ~~~
 
-And I can also use [Earthly](https://earthly.dev/) to write a small build script that puts this service into a container, and tests it's end points. This may seem like overkill, but I'm going to build on this test case as we go.
+And I can also use [Earthly](https://earthly.dev/) to write a small build script that puts this service into a container and tests it's endpoints. Doing so may seem like overkill, but I'm going to build on this test case as we go.
 
 ~~~{.dockerfile caption="Earthfile"}
 test:
@@ -154,7 +161,7 @@ test:
 
 <figcaption>Test my containerized service</figcaption>
 
-What I've built up so far is on [GitHub](https://github.com/adamgordonbell/cloudservices/tree/main/WebServer) but it doesn't do much. For my activity tracker to be useful it's going to need to understand and store activities.
+What I've built up so far is on [GitHub](https://github.com/adamgordonbell/cloudservices/tree/main/WebServer), but it doesn't do much. For my activity tracker to be useful, it will need to understand and store activities.
 
 So let's move on to my activity data structures.
 
@@ -187,7 +194,7 @@ type Activities struct {
 }
 ~~~
 
-If the service is stops or crashes I'll lose all my activity data, but on the plus side I can simply use the slice offset as my auto-incrementing Id.
+If the service stops or crashes, I'll lose all my activity data, but I can use the slice offset as my auto-incrementing Id.
 
 Doing that, I can write an insert function like this:
 
@@ -219,11 +226,11 @@ If I get an invalid Id I just return an `ErrIdNotFound` error:
 var ErrIdNotFound = fmt.Errorf("Id not found")
 ~~~
 
-Now I just need to hook this up to the HTTP server and do the JSON serialization.
+Now I just need to hook this up to the HTTP server and serialize the JSON.
 
 ### Updating The HTTP Server and Routing
 
-At this point I think it makes sense to take my HTTP server code out of main and move it to it's own file. I also am going to create a struct for my `httpServer` and give it an 'Activities` field to hold onto its state.
+At this point, it makes sense to take my HTTP server code out of main and move it to its own file. I will also create a struct for my `httpServer` and give it an 'Activities` field to hold onto its state.
 
 ~~~{.go caption="internal/server/http.go"}
 package server
@@ -263,7 +270,7 @@ type IdDocument struct {
 ~~~
 
 <figcaption>
-*The struct field tag `json:"id"` will be used by `encoding/json` to decode and encode IdDocument back and forth from Golang to JSON.*
+*I use the struct field tag `json:"id"` to tell `encoding/json` how to decode and encode IdDocument back and forth from Golang to JSON.*
 </figcaption>
 
 Similarly to represent a JSON activity like `{"activity": {"description": "christmas eve class", time:"2021-12-24T12:42:31Z", "id":1}}`, I need an `ActivityDocument`:
@@ -299,14 +306,19 @@ func (s *httpServer) handlePost(w http.ResponseWriter, r *http.Request) {
 }
 ~~~
 
-I use `json.NewDecoder` to decode the body of the request sent to the service and if it doesn't decode, I write `http.StatusBadRequest`  to the `ResponseWriter`, which is a 400 Response.
+I use `json.NewDecoder` to decode the body of the request sent to the service, and if it doesn't decode, I write `http.StatusBadRequest`  to the `ResponseWriter`, which is a 400 Response.
 
 It works like this:
 
 ```
-> curl -X POST localhost:8080 -d \
-'{"this":"is","all":"wrong"}'
-//todo show result
+> curl -iX POST localhost:8080 -d "Not Valid"
+HTTP/1.1 400 Bad Request
+Content-Type: text/plain; charset=utf-8
+X-Content-Type-Options: nosniff
+Date: Fri, 10 Dec 2021 15:33:26 GMT
+Content-Length: 53
+
+invalid character 'N' looking for beginning of value
 ```
 
 But if it's a valid response I can add it to my activities list and return the Id using `IdDocument`:
@@ -370,7 +382,7 @@ func main() {
 
 ~~~
 
-And my original API, that was just a wish is now a reality:
+And my original API, which was just a wish is now a reality:
 
 ```
 curl -X POST localhost:8080 -d \
@@ -386,7 +398,7 @@ If fact, I can now update my shell script `test.sh` to exercise these endpoints.
 
 ## End to End Testing
 
-First I can add in some test data:
+First, I can add in some test data:
 
 ~~~{.bash caption="test.sh"}
 #!/usr/bin/env sh
@@ -430,10 +442,9 @@ And now, since I wrote that `Earthfile` that starts up the service and runs `tes
 <figcaption>Passing End to End tests on [GitHub](https://github.com/adamgordonbell/cloudservices/tree/main/ActivityLog)</figcaption>
 </div>
 
+## That's a Wrap
 
-## That is a Wrap
-
-There we go. I have a working service and I put it up on [GitHub](https://github.com/adamgordonbell/cloudservices/tree/main/ActivityLog) with a working CI process. It doesn't persist it's data, it doesn't allow me to access my activity log in any other way than by id, and it doesn't have a UI, but I'm starting to get the feel for how web services are built in Go, which was really the point.
+There we go. I have a working service that I've put up on [GitHub](https://github.com/adamgordonbell/cloudservices/tree/main/ActivityLog) with an active CI process. It doesn't persist its data, it doesn't allow me to access my activity log in any other way than by id, and it doesn't have a UI, but I'm starting to get a feel for how web services are built in Golang, which was the point.
 
 As an activity tracker, what I have so far is pretty weak. But as a learning lesson, I've found it valuable.
 
