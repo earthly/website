@@ -1,16 +1,4 @@
-<script defer src="/blog/assets/js/vendor/jquery/jquery-3.6.0.slim.min.js"></script>
-<script defer src="/blog/assets/js/plugins/jquery.fitvids.js"></script>
-<script defer src="/blog/assets/js/main.min.js"></script>
-<script defer src="/blog/assets/js/extras.js"></script>
-<script src="/blog/assets/js/vendor/vanilla-lazyload/lazyload.min.js"></script>
-<script>
-var lazyLoadInstance = new LazyLoad({
-  // Your custom settings go here
-});
-</script>
-{% if jekyll.environment == "production" %}
-  {% include_cached footer/earthly-cookie.html %}
-{% endif %}
+<script defer src="/blog/assets/bundle.js"></script>
 
 {% if site.search == true or page.layout == "search" %}
   {%- assign search_provider = site.search_provider | default: "lunr" -%}
