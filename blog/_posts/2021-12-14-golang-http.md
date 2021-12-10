@@ -11,7 +11,7 @@ internal-links:
 ---
 If you want to build a simple JSON HTTP web service that runs natively on a Linux server, then Golang is a great choice. At least this is what I've been told, my coworkers are big fans and report having a small memory footprint, a shallow learning curve, and an excellent standard library.
 
-So in this article, I'm going to give it a try with a simple project I've want to build: an activity tracker. You see, I'm a bit out of shape, and I'd like to start tracking my activity levels. It will be a bit of a toy application, but I'm hoping it will encourage me to start adding more activity to sedentary winter habits.
+So in this article, I'm going to give it a try with a simple project I've been wanting to build: an activity tracker. You see, I'm a bit out of shape, and I'd like to start tracking my activity levels. It will be a bit of a toy application, but I'm hoping it will encourage me to start adding more activity to sedentary winter habits.
 
 ( Maybe I should exercise as a first step instead, but coding this up seems more fun.)
 
@@ -23,6 +23,7 @@ I want inserting to look something like this:
 > curl -iX POST localhost:8080 -d \
 '{"activity": {"description": "christmas eve bike class", "time":"2021-12-24T12:42:31Z"}}'
 ~~~
+
 ``` ini
 HTTP/1.1 200 OK
 {"id":1}
@@ -30,12 +31,13 @@ HTTP/1.1 200 OK
 
 And I want to be able to retrieve previous activities by their auto-generated Id:
 
-``` bash
+~~~{.bash caption=">_"}
 > curl -X GET localhost:8080 -d '{"id": 1}'
-```
-``` ini
+~~~
+
+~~~{.ini }
 {"activity": {"description": "christmas eve class", time:"2021-12-24T12:42:31Z", "id":1}}
-```
+~~~
 
 ## Build a Simple GoLang HTTP Server
 
@@ -66,6 +68,9 @@ And verify that it is serving HTTP `GET` requests:
 
 ~~~{.bash caption=">_"}
 >  curl -iX GET localhost:8080
+~~~
+
+~~~{.ini}
 HTTP/1.1 404 Not Found
 Content-Length: 19
 
@@ -76,6 +81,9 @@ Posts work equally as well as GETs:
 
 ~~~{.bash caption=">_"}
 > curl -iX POST localhost:8080
+~~~
+
+~~~{.ini}
 HTTP/1.1 404 Not Found
 Content-Length: 19
 
@@ -86,7 +94,7 @@ Content-Length: 19
 
 404s may be the appropriate response to a query about my activity levels, but to return something informative for these `GET` and `POST` requests, I'll need to write handlers for them:
 
-~~~{.go caption="main.go"}
+~~~{.go captionb="main.go"}
 func handleGet(w http.ResponseWriter, req *http.Request) {
  fmt.Fprintf(w, "get\n")
 }
@@ -122,8 +130,19 @@ Running this version, I can see that my handlers are working:
 
 ~~~{.bash caption=">_"}
 > curl -X GET -s localhost:8080
+~~~
+
+~~~{.ini}
+HTTP/1.1 200 OK
 get
+~~~
+
+~~~{.bash caption=">_"}
 > curl -X POST -s localhost:8080
+~~~
+
+~~~{.ini}
+HTTP/1.1 200 OK
 post
 ~~~
 
@@ -170,7 +189,6 @@ So let's move on to my activity data structures.
 The way I am going represent activities in Golang is to create a new package for my server ( in `internal/server` ) and in it create an `activity.go` with an `Activity` struct:
 
 ~~~{.go caption="internal/server/activity.go"}
-
 package server
 
 import (
@@ -198,8 +216,7 @@ If the service stops or crashes, I'll lose all my activity data, but I can use t
 
 Doing that, I can write an insert function like this:
 
-~~~{.go caption="internal/server/activity.go"}
-
+~~~{.go captionb="internal/server/activity.go"}
 func (c *Activities) Insert(activity Activity) uint64 {
  activity.Id = uint64(len(c.activities))
  c.activities = append(c.activities, activity)
@@ -209,8 +226,7 @@ func (c *Activities) Insert(activity Activity) uint64 {
 
 And retrieve is super simple as well:
 
-~~~{.go caption="internal/server/activity.go"}
-
+~~~{.go captionb="internal/server/activity.go"}
 func (c *Activities) Retrieve(id uint64) (Activity, error) {
  if id >= uint64(len(c.activities)) {
   return Activity{}, ErrIdNotFound
@@ -221,8 +237,7 @@ func (c *Activities) Retrieve(id uint64) (Activity, error) {
 
 If I get an invalid Id I just return an `ErrIdNotFound` error:
 
-~~~{.go caption="internal/server/activity.go"}
-
+~~~{.go captionb="internal/server/activity.go"}
 var ErrIdNotFound = fmt.Errorf("Id not found")
 ~~~
 
@@ -293,8 +308,7 @@ type Activity struct {
 
 Now I can add the insert handler:
 
-~~~{.go caption="internal/server/http.go"}
-
+~~~{.go captionb="internal/server/http.go"}
 func (s *httpServer) handlePost(w http.ResponseWriter, r *http.Request) {
  var req ActivityDocument
  err := json.NewDecoder(r.Body).Decode(&req)
@@ -310,21 +324,18 @@ I use `json.NewDecoder` to decode the body of the request sent to the service, a
 
 It works like this:
 
-```
+~~~{.bash caption=">_"}
 > curl -iX POST localhost:8080 -d "Not Valid"
-HTTP/1.1 400 Bad Request
-Content-Type: text/plain; charset=utf-8
-X-Content-Type-Options: nosniff
-Date: Fri, 10 Dec 2021 15:33:26 GMT
-Content-Length: 53
+~~~
 
+~~~{.ini}
+HTTP/1.1 400 Bad Request
 invalid character 'N' looking for beginning of value
-```
+~~~
 
 But if it's a valid response I can add it to my activities list and return the Id using `IdDocument`:
 
-~~~{.go caption="internal/server/http.go"}
-
+~~~{.go captionb="internal/server/http.go"}
 func (s *httpServer) handlePost(w http.ResponseWriter, r *http.Request) {
   ...
  id := s.Activities.Insert(req.Activity)
@@ -336,17 +347,20 @@ func (s *httpServer) handlePost(w http.ResponseWriter, r *http.Request) {
 
 We now have half our API working!
 
-``` bash
+~~~{.bash caption=">_"}
 > curl -X POST localhost:8080 -d \
 '{"activity": {"description": "christmas eve class", time:"2021-12-24T12:42:31Z"}}'
+~~~
+
+~~~{.ini}
 {"id":0}
-```
+~~~
 
 ### Get by ID JSON Decoding
 
 For the `GET` request, I want to accept an Id via the `IdDocument` and return a 400 if I get something else:
 
-~~~{.go caption="internal/server/http.go"}
+~~~{.go captionb="internal/server/http.go"}
 func (s *httpServer) handleGet(w http.ResponseWriter, r *http.Request) {
   var req IdDocument
  err := json.NewDecoder(r.Body).Decode(&req)
@@ -359,7 +373,7 @@ func (s *httpServer) handleGet(w http.ResponseWriter, r *http.Request) {
 
 Then I retrieve my activity and assuming it exists, I write it to the `ResponseWriter` as an `ActivityDocument` :
 
-~~~{.go caption="internal/server/http.go"}
+~~~{.go captionb="internal/server/http.go"}
 activity, err := s.Activities.Retrieve(req.Id)
  if err == ErrIdNotFound {
   http.Error(w, err.Error(), http.StatusNotFound)
@@ -384,13 +398,22 @@ func main() {
 
 And my original API, which was just a wish is now a reality:
 
-```
+~~~{.bash caption=">_"}
 curl -X POST localhost:8080 -d \
 '{"activity": {"description": "christmas eve bike class", "time":"2021-12-09T16:34:04Z"}}'
+~~~
+
+~~~{.ini}
 {"id":1}
+~~~
+
+~~~{.bash captionw=">_"}
 > curl -X GET localhost:8080 -d '{"id": 1}' 
+~~~
+
+~~~{.ini}
 {"activity":{"time":"2021-12-09T16:34:04Z","description":"christmas eve bike class","id":15}
-```
+~~~
 
 the whole thing, including some edge cases I left out is on [GitHub](https://github.com/adamgordonbell/cloudservices/tree/main/ActivityLog).
 
