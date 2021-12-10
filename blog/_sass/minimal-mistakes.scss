@@ -83,8 +83,14 @@ div .heading {
   font-weight: bold
 }
 
-@media (max-width: 768px) {
+@media (max-width: $large ) {
   .no-mobile{
+    display:none;
+  }
+}
+
+@media (min-width: $large ) {
+  .only-mobile{
     display:none;
   }
 }
