@@ -3,11 +3,13 @@ title: "Printf Debugging and Srinivasa Ramanujan"
 categories:
   - Article
 author: Adam
+newsletter_side: false
 
  - printf
  - debuggers
  - debugging
 ---
+
 The Visual Studio debugger is fantastic. When I was a C# developer, I used it all the time.
 
 <div class="wide">
@@ -40,7 +42,7 @@ I have a theory about this is, and to explain it, I need to talk about a famous 
 <figcaption>Srinivasa Ramanujan</figcaption>
 </div>
 
-Srinivasa Ramanujan was an Indian mathematician. He lacked formal training in mathematics but made many important contributions to the field. (Wikipedia says he contributed 3900 original results to mathematics). Srinivasa was discovered because he wrote letters to G. H. Hardy, a British mathematician, who brought him to Cambridge as his doctoral student.
+Srinivasa Ramanujan was an Indian mathematician. He lacked formal training in mathematics but made many important contributions to the field. (Wikipedia says he contributed 3900 original results to mathematics). Ramanujan was discovered because he wrote letters to G. H. Hardy, a British mathematician, who brought him to Cambridge as his doctoral student.
 
 However, long before Hardy discovered him, Ramanujan was obsessed with equations and numbers. He spent all his time working on math but had very little access to high-quality mathematics textbooks. However, he managed to get a book from his local library called "A Synopsis of Elementary Results in Pure and Applied Mathematics." It was a reference book and listed, in condensed form, many mathematical theorems, but it often skipped the explanations and proofs.
 
@@ -69,6 +71,8 @@ You need to deepen your understanding of the code to debug it without a debugger
 The secret to printf debugging isn't the printfs. I can use those just as mindlessly as a debugger. The secret is thinking, thinking through the execution of your program, and deepening your understanding of how your program works. Doing so gives you a better ability to simulate program execution in your head. You are debugging not just the program, but your understanding of the program.
 
 Debugging problems with careful thought and the odd printf statement is like deriving the proofs from first principles yourself. It's hard and sometimes it may be beyond your ability. But, when you can do it, when you can find problems in your code via careful thought, it will help make you a better software engineer.
+
+So I still reach for a debugger when a problem is too big to fit in my head or if I don't know the codebase well. But I try to remind myself to pause and spend some time thinking – I force myself to guess what conditions could have led to this problem – before I jump in and add a print statement or fire up a debugger.
 
 [^1]: With Visual Studio's edit and continue features, I could even write in the new code and try running it in the same session. And now Visual studio has time travel debugging, so you can move backward and forward in execution whenever you like. It's a fantastic feat of engineering.
 
