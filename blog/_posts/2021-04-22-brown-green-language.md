@@ -4,6 +4,8 @@ author: Adam
 categories:
   - Articles
 author: Adam
+sidebar:
+  nav: "thoughts"
 toc: true
 featured: true
 excerpt: "I've noticed something interesting about the types of programming languages people like. It's something that doesn't seem to come up in various discussions of programming language preferences."

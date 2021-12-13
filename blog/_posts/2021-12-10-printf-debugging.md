@@ -1,15 +1,16 @@
 ---
 title: "Printf Debugging and Srinivasa Ramanujan"
 categories:
-  - Article
+  - Articles
 author: Adam
 newsletter_side: false
-
+sidebar:
+  nav: "thoughts"
+internal-links:
  - printf
  - debuggers
  - debugging
 ---
-
 The Visual Studio debugger is fantastic. When I was a C# developer, I used it all the time.
 
 <div class="wide">
