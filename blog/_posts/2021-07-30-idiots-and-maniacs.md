@@ -3,6 +3,8 @@ title: "Idiots And Maniacs"
 categories:
   - Articles
 author: Adam
+sidebar:
+  nav: "thoughts"
 ---
 ## Observability
 

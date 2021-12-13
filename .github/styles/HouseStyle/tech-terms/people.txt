@@ -1,7 +1,9 @@
 Aho
+Srinivasa
 Kernighan
 Weinberger
 Driessen
+Hashimoto
 Hecht
 Spolsky
 Tetlock

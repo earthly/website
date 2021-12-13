@@ -69,3 +69,20 @@ bash:
         url: /jq-select/
       - title: "More Command Line Tools"
         url: /command-line-tools/ 
+thoughts:
+  - title: Programming Thoughts
+    children:
+      - title: "Green Vs. Brown"
+        url: /brown-green-language/
+      - title: "Don't Feed The Thought Leaders"
+        url: /thought-leaders/
+      - title: "INTERCAL & YAML"
+        url: /intercal-yaml-and-other-horrible-programming-languages/
+      - title: "Beating TimSort"
+        url: /python-timsort-merge/
+      - title: "Idiots And Maniacs"
+        url: /idiots-and-maniacs/
+      - title: "Confidently Uncertain"
+        url: /confidently-uncertain/
+      - title: "Printf Debugging"
+        url: /printf-debugging/

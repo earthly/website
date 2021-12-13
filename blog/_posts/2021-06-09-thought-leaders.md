@@ -4,6 +4,8 @@ categories:
   - Articles
 author: Adam
 featured: true
+sidebar:
+  nav: "thoughts"
 internal-links:
  - thought leaders
  - hedgehog

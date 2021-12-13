@@ -4,6 +4,8 @@ categories:
   - Articles
 featured: true
 author: Adam
+sidebar:
+  nav: "thoughts"
 excerpt: In 1972, two students learning FORTRAN came up with a fantastic new programming language called INTERCAL. 
 internal-links:
   - intercal

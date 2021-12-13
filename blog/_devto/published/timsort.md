@@ -3,10 +3,11 @@ title: Beating TimSort at Merging
 published: false
 description: 
 tags: python, computerscience, cpp, opensource
+sidebar:
+  nav: "thoughts"
 cover_image: https://earthly.dev/blog/generated/assets/images/python-timsort-merge/header-1200-75e74e4c2.webp
 canonical_url: https://earthly.dev/blog/python-timsort-merge/
 ---
-
 Here is a problem. You are tasked with improving the hot loop of a Python program: maybe it is an in-memory sequential index of some sort. The slow part is the updating, where you are adding a new sorted list of items to the already sorted index. You need to combine two sorted lists and keep the result sorted. How do you do that update?
 
 Yes, this sounds like a LeetCode problem, and maybe in the real-world you would reach for some existing [sorted set](https://docs.oracle.com/javase/8/docs/api/java/util/SortedSet.html) [data structure](http://www.cplusplus.com/reference/set/set/), but if you were working with python lists, you might do something like this[^1]:
