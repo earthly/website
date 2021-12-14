@@ -3,6 +3,8 @@ title: Earthly Privacy Policy
 layout: page
 ---
 
+<link rel="stylesheet" href="/assets/css/subpage.css">
+  
 *2020-12-01*
 
 Earthly Technologies Inc. ("**Earthly**," "**we**," "**our**," and/or "**us**") values the privacy of individuals who use our websites (including [https://earthly.dev](https://earthly.dev)), applications, or services that link to this Privacy Policy (collectively, our "**Services**").  This privacy policy (the "**Privacy Policy**") explains how we collect, use, and disclose personal information from users of our Services.  By using our Services, you agree to the collection, use, and disclosure of your personal information as described in this Privacy Policy.  Beyond this Privacy Policy, your use of our Services is also subject to our [Terms of Service](./tos).

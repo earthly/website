@@ -1,0 +1,12 @@
+<span class="earthfile-term">FROM</span>
+golang:1.13-alpine3.11
+<div class="pt-3 earthfile-target">build:</div>
+
+<div class="pl-8"><span class="earthfile-term">COPY</span> main.go .</div>
+
+<div class="pl-8"><span class="earthfile-term">RUN</span> go build main.go</div>
+
+<div class="pl-8">
+  <span class="earthfile-term"> SAVE ARTIFACT </span> main
+  <span class="earthfile-term">AS LOCAL</span> main
+</div>

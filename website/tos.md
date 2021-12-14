@@ -3,6 +3,8 @@ title: Earthly Terms of Service
 layout: page
 ---
 
+<link rel="stylesheet" href="/assets/css/subpage.css">
+
 *2020-12-01*
 
 Welcome, and thank you for your interest in Earthly Technologies Inc. ("**Earthly Technologies,**" "**we,**" "**us**" or "**our**") and our website at [https://www.earthly.dev/](https://www.earthly.dev/), along with our related websites (collectively, the "**Site**"), networks, interfaces, applications, and other products and services provided by us (collectively, the "**Service**"). These Terms of Service are a legally binding contract between you and Earthly Technologies regarding your use of the Service.

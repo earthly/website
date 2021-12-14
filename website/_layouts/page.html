@@ -1,14 +1,32 @@
 ---
 layout: default
 ---
-<article class="wrapper post">
 
-  <header class="post-header">
-    <h1 class="post-title">{{ page.title | escape }}</h1>
-  </header>
+<div class="p-0 space-y-20 overflow-hidden lg:p-0 md:p-10 lg:space-y-32 bg-{{ include.backgroundColor }}">
+  <div class="relative z-10 max-w-screen-lg px-0 mx-auto lg:p-0 lg:max-w-screen-xl">
+{% include home/header.html %}
 
-  <div class="post-content">
-    {{ content }}
-  </div>
+<div class="px-10">
+  <article class="wrapper post">
+    <header class="post-header">
+      <h1
+        class="
+          mt-2
+          mb-8
+          text-4xl
+          font-extrabold
+          leading-none
+          tracking-tight
+          text-gray-900
+          sm:text-5xl sm:mt-14 sm:mb-10
+        "
+      >
+        {{ page.title | escape }}
+      </h1>
+    </header>
 
-</article>
+    <div class="post-content">{{ content }}</div>
+  </article>
+</div>
+</div>
+</div>

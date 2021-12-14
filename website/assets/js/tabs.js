@@ -37,7 +37,6 @@ $(document).ready(function() {
             $('#' + $(this).data('target')).html( $('#' + $(this).data('source')).html());
             $(this).siblings().removeClass('active');
             $(this).addClass('active');
-            installOnDownload();
         }
     });
 
@@ -46,6 +45,5 @@ $(document).ready(function() {
         $('#' + $(this).data('target')).html( $('#' + $(this).data('source')).html());
         $(this).siblings().removeClass('active');
         $(this).addClass('active');
-        installOnDownload();
     });
 });

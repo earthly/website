@@ -1,0 +1,41 @@
+<div class="px-10">
+  <div class="lg:py-5">
+    <div class="flex flex-col lg:flex-row">
+      <div class="lg:w-3/5 lg:pt-4 xl:pt-14">
+        <div
+          class="
+            mt-2
+            mb-8
+            text-4xl
+            font-extrabold
+            leading-none
+            tracking-tight
+            text-gray-900
+            lg:text-6xl
+            xl:text-7xl
+            lg:mb-10
+          "
+        >
+          Repeatable Builds
+        </div>
+        <div
+          class="
+            max-w-screen-lg
+            mb-6
+            text-lg
+            font-medium
+            text-gray-500
+            lg:w-3/4 lg:text-2xl lg:leading-10 lg:mb-6
+          "
+        >
+          Earthly is a syntax for defining your build. It works with your
+          existing build system. Get repeatable and understandable builds today.
+        </div>
+      </div>
+      <div class="pt-0 mb-10 lg:mb-0 lg:pt-4 xl:pt-14 lg:w-2/5">
+        {% include common/terminal.html
+        template='home/examples/earthly-basic.html' title="Earthfile" %}
+      </div>
+    </div>
+  </div>
+</div>

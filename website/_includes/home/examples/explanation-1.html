@@ -1,0 +1,29 @@
+<div class="pb-1">
+  <span class="earthfile-term">FROM</span> golang:1.13-alpine3.11
+</div>
+<div class="pb-1">
+  <span class="earthfile-term">RUN</span> apk --update --no-cache add git
+</div>
+<div class="pb-1"><span class="earthfile-term">WORKDIR</span> /go-example</div>
+<div class="pt-5 earthfile-target">all:</div>
+<div class="pl-8"><span class="earthfile-term">BUILD</span> +build</div>
+<div class="pl-8"><span class="earthfile-term">BUILD</span> +lint</div>
+<div class="pt-5 earthfile-target">build:</div>
+<div class="pl-8"><span class="earthfile-term">COPY</span> main.go .</div>
+<div class="pl-8">
+  <span class="earthfile-term">RUN</span> go build -o build/go-example main.go
+</div>
+<div class="pl-8">
+  <span class="earthfile-term">SAVE ARTIFACT</span>
+  build/go-example <span class="earthfile-term">AS LOCAL</span>
+  build/go-example
+</div>
+
+<div class="pt-5 earthfile-target">lint:</div>
+<div class="pl-8">
+  <span class="earthfile-term">RUN</span> go get golang.org/x/lint/golint
+</div>
+<div class="pl-8"><span class="earthfile-term">COPY</span> main.go .</div>
+<div class="pl-8">
+  <span class="earthfile-term">RUN</span> golint -set_exit_status ./...
+</div>
