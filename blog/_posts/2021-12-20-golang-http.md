@@ -3,6 +3,7 @@ title: "Building a Golang JSON HTTP Server"
 categories:
   - Tutorials
 toc: true
+newsletter_side: false
 author: Adam
 internal-links:
  - golang json
@@ -470,7 +471,7 @@ Now I just have to start being active! Maybe building a command line client for 
 
 ### Linting
 
-In the first version of this example I used `Id` everywhere instead of `ID`, which is incorrect capitalization (per `go lint`). To prevent further style issues like this as I continue building this application I'm linting my code going forward using [`golangci-lint`](https://golangci-lint.run/) which with the [right configuration](https://github.com/adamgordonbell/cloudservices/blob/main/ActivityLog/.golangci.yml) calls several go linters, including `go lint`.
+In the first version of this example I used `Id` everywhere instead of `ID`, which is incorrect capitalization (per `go lint` and [Alex](/blog/authors/Alex/)). To prevent further style issues like this as I continue building this application I'm linting my code going forward using [`golangci-lint`](https://golangci-lint.run/) which with the [right configuration](https://github.com/adamgordonbell/cloudservices/blob/main/ActivityLog/.golangci.yml) calls several go linters, including `go lint`.
 
 ### Errors
 
@@ -485,4 +486,8 @@ I hit a number of errors building this. If you hit them, here are the solutions.
 
 My current plan is to build a command-line client for this service next. This should make it a bit easier to use – and I also really want to develop a command-line client. After that, I'm thinking about adding other features, but I'll keep those to myself for now.
 
-Two minor improvements I explored but then abandoned were better validation of the JSON coming in using `gojsonschema` and testing with `net/http/httptest`, but if the solution grows, I might revisit those. If you want to be notified about the next installment, sign up for the newsletter.
+Two minor improvements I explored but then abandoned were better validation of the JSON coming in using `gojsonschema` and testing with `net/http/httptest`, but if the solution grows, I might revisit those.
+
+If you want to be notified about the next installment, sign up for the newsletter:
+
+{% include cta/embedded-newsletter.html %}
