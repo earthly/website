@@ -4,6 +4,8 @@
 
 sbt
 scala
+adamgordonbell
+cloudservices
 dev
 grpc
 api

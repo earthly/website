@@ -23,6 +23,8 @@ Lerna
 reddit
 RAMDisk
 ShellCheck
+ripgrep
+json
 unix
 Fargate
 containerd

@@ -10,21 +10,47 @@ externalLinks();
 
 
 // Add label to code blocks
-function syntaxLabel() {
-    for(var c = document.querySelectorAll('[data-caption]') , a = 0;a < c.length; a++) {
-      var b = c[a];
-      var caption = b.getAttribute('data-caption');
-      var elem;
-      if(b.tagName == "PRE"){
-        elem = b;
-      } else if (b.tagName == "DIV" && b.firstChild.tagName == "PRE") {
-        elem = b.firstChild;
-      }
-      if(elem)
-      {
-        elem.innerHTML = "<span class=\"syntax-label\">"+caption+"</span>" + elem.innerHTML;
-      }
+//.caption
+function addStuff(label, action){
+  for(var c = document.querySelectorAll('['+ label +']') , a = 0;a < c.length; a++) {
+    var b = c[a];
+    var caption = b.getAttribute(label);
+    var elem;
+    if(b.tagName == "PRE"){
+      elem = b;
+    } else if (b.tagName == "DIV" && b.firstChild.tagName == "PRE") {
+      elem = b.firstChild;
     }
+    if(elem)
+    {
+      action(elem, caption)
+    }
+  }
+}
+function syntaxLabel() {
+    //mobile version
+    // use ~~~{captionm="filename"}
+    addStuff("data-caption",
+    function (elem, caption) {
+      elem.innerHTML =  "<span class=\"syntax-label\">"+caption+"</span>" + elem.innerHTML ; 
+    }
+    );
+
+    //wide caption : too wide to show on mobile
+    // use ~~~{captionw="filename"}
+    addStuff("data-captionw",
+     function (elem, caption) {
+      elem.innerHTML =  "<span class=\"syntax-label-wide\">"+caption+"</span>" + elem.innerHTML ; 
+     }
+    );
+
+    // bottom caption
+    // use ~~~{captionb="filename"}
+    addStuff("data-captionb",
+      function (elem, caption) {
+         elem.innerHTML = elem.innerHTML + "<span class=\"syntax-label-bottom\">"+caption+"</span>" ; 
+       }
+    );
 };
 
 syntaxLabel();
