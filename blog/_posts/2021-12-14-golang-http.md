@@ -4,7 +4,6 @@ categories:
   - Tutorials
 toc: true
 author: Adam
-
 internal-links:
  - golang json
  - golang http
@@ -200,7 +199,7 @@ import (
 type Activity struct {
  Time        time.Time 
  Description string
- Id          uint64    
+ ID          uint64    
 }
 ~~~
 
@@ -212,15 +211,15 @@ type Activities struct {
 }
 ~~~
 
-If the service stops or crashes, I'll lose all my activity data, but I can use the slice offset as my auto-incrementing Id.
+If the service stops or crashes, I'll lose all my activity data, but I can use the slice offset as my auto-incrementing ID.
 
 Doing that, I can write an insert function like this:
 
 ~~~{.go captionb="internal/server/activity.go"}
 func (c *Activities) Insert(activity Activity) uint64 {
- activity.Id = uint64(len(c.activities))
+ activity.ID = uint64(len(c.activities))
  c.activities = append(c.activities, activity)
- return activity.Id
+ return activity.ID
 }
 ~~~
 
@@ -229,16 +228,16 @@ And retrieve is super simple as well:
 ~~~{.go captionb="internal/server/activity.go"}
 func (c *Activities) Retrieve(id uint64) (Activity, error) {
  if id >= uint64(len(c.activities)) {
-  return Activity{}, ErrIdNotFound
+  return Activity{}, ErrIDNotFound
  }
  return c.activities[id], nil
 }
 ~~~
 
-If I get an invalid Id I just return an `ErrIdNotFound` error:
+If I get an invalid ID I just return an `ErrIDNotFound` error:
 
 ~~~{.go captionb="internal/server/activity.go"}
-var ErrIdNotFound = fmt.Errorf("Id not found")
+var ErrIDNotFound = fmt.Errorf("ID not found")
 ~~~
 
 Now I just need to hook this up to the HTTP server and serialize the JSON.
@@ -279,13 +278,13 @@ func NewHTTPServer(addr string) *http.Server {
 I also need my server to understand the JSON formats of my API. So to represent `{"id": 1}` I will create this struct:
 
 ~~~{.go caption="internal/server/http.go"}
-type IdDocument struct {
- Id uint64 `json:"id"`
+type IDDocument struct {
+ ID uint64 `json:"id"`
 }
 ~~~
 
 <figcaption>
-*I use the struct field tag `json:"id"` to tell `encoding/json` how to decode and encode IdDocument back and forth from Golang to JSON.*
+*I use the struct field tag `json:"id"` to tell `encoding/json` how to decode and encode IDDocument back and forth from Golang to JSON.*
 </figcaption>
 
 Similarly to represent a JSON activity like `{"activity": {"description": "christmas eve class", time:"2021-12-24T12:42:31Z", "id":1}}`, I need an `ActivityDocument`:
@@ -301,8 +300,8 @@ And finally, I need to head back to my Activity service to add field tags for `A
 ~~~{.go caption="internal/server/activity.go"}
 type Activity struct {
  Time        time.Time `json:"time"`
- Description []byte    `json:"description"`
- Id          uint64    `json:"id"`
+ Description string    `json:"description"`
+ ID          uint64    `json:"id"`
 }
 ~~~
 
@@ -333,13 +332,13 @@ HTTP/1.1 400 Bad Request
 invalid character 'N' looking for beginning of value
 ~~~
 
-But if it's a valid response I can add it to my activities list and return the Id using `IdDocument`:
+But if it's a valid response I can add it to my activities list and return the ID using `IDDocument`:
 
 ~~~{.go captionb="internal/server/http.go"}
 func (s *httpServer) handlePost(w http.ResponseWriter, r *http.Request) {
   ...
  id := s.Activities.Insert(req.Activity)
- res := IdDocument{Id: id}
+ res := IDDocument{ID: id}
  json.NewEncoder(w).Encode(res)
 }
 
@@ -358,11 +357,11 @@ We now have half our API working!
 
 ### Get by ID JSON Decoding
 
-For the `GET` request, I want to accept an Id via the `IdDocument` and return a 400 if I get something else:
+For the `GET` request, I want to accept an ID via the `IDDocument` and return a 400 if I get something else:
 
 ~~~{.go captionb="internal/server/http.go"}
 func (s *httpServer) handleGet(w http.ResponseWriter, r *http.Request) {
-  var req IdDocument
+  var req IDDocument
  err := json.NewDecoder(r.Body).Decode(&req)
  if err != nil {
   http.Error(w, err.Error(), http.StatusBadRequest)
@@ -374,8 +373,8 @@ func (s *httpServer) handleGet(w http.ResponseWriter, r *http.Request) {
 Then I retrieve my activity and assuming it exists, I write it to the `ResponseWriter` as an `ActivityDocument` :
 
 ~~~{.go captionb="internal/server/http.go"}
-activity, err := s.Activities.Retrieve(req.Id)
- if err == ErrIdNotFound {
+activity, err := s.Activities.Retrieve(req.ID)
+ if err == ErrIDNotFound {
   http.Error(w, err.Error(), http.StatusNotFound)
   return
  }
@@ -389,7 +388,7 @@ Then I just update `main.go` to call this server:
 
 ~~~{.go caption="cmd/server/main.go"}
 func main() {
- println("Starting on http://localhost:8080")
+ println("Starting listening on port 8080")
  srv := server.NewHTTPServer(":8080")
  srv.ListenAndServe()
 }
@@ -445,17 +444,9 @@ Then I can get test that I can get them back:
 ~~~{.bash caption="test.sh"}
 echo "=== Test Descriptions ==="
 
-curl -X GET localhost:8080 -d '{"id": 0}' | rg -q 'christmas eve bike class'
-curl -X GET localhost:8080 -d '{"id": 1}' | rg -q 'cross country skiing'
-curl -X GET localhost:8080 -d '{"id": 2}' | rg -q 'sledding'
-~~~
-
-And since that is just testing the descriptions I should also check that `id` and `time` are being stored and retrieved:
-
-~~~{.bash caption="test.sh"}
-echo "=== Test Other Fields ==="
-curl -X GET localhost:8080 -d '{"id": 0}' | rg -q '2021-12-09T16:34:04Z'
-curl -X GET localhost:8080 -d '{"id": 1}' | rg -q '"id":1'
+curl -X GET localhost:8080 -d '{"id": 0}' | grep -q 'christmas eve bike class'
+curl -X GET localhost:8080 -d '{"id": 1}' | grep -q 'cross country skiing'
+curl -X GET localhost:8080 -d '{"id": 2}' | grep -q 'sledding'
 ~~~
 
 And now, since I wrote that `Earthfile` that starts up the service and runs `test.sh` against it, it's simple to use GitHub Actions to test every commit!
@@ -475,9 +466,35 @@ Now I just have to start being active! Maybe another coding project will help.
 
 {% include cta/cta1.html %}
 
+## Appendix
+
+### Linting
+
+In the first version of this example I used `Id` everywhere instead of `ID`, which is incorrect capitalization (per `go lint`). To prevent further style issues like this as I continue building this application I'm linting my code going forward using [`golangci-lint`](https://golangci-lint.run/) which with the [right configuration](https://github.com/adamgordonbell/cloudservices/blob/main/ActivityLog/.golangci.yml) calls several go linters, including `go lint`.
+
+### Errors
+
+I hit a number of errors building this. If you hit them, here are the solutions.
+
+| Error      | Solution |
+| ----------- | ----------- |
+| illegal base64 data at input byte      | I was using `[]byte` for my json Description. If you do this then base64 encoded data is expected. Switching to `string` fixed this.         |
+| invalid character 't' looking for beginning of object key string   |  I was sending invalid JSON to my service. I needed to validate my input and found I wasn't quoting a string. |
+
 <!-- Errors:
-`illegal base64 data at input byte 9`
-`invalid character 't' looking for beginning of object key string`
+ go test                             
+no Go files in /Users/adam/sandbox/cloudservices/ActivityLog
+
+ go test internal/server/http_test.go
+# command-line-arguments [command-line-arguments.test]
+internal/server/http_test.go:15:13: undefined: httpServer
+FAIL    command-line-arguments [build failed]
+FAIL
+
+go test ./...
+https://yourbasic.org/golang/three-dots-ellipsis/
+
+
 
 Improvements:
 - how to validate the input and make things required? -->
