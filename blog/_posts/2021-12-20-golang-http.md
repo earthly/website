@@ -462,7 +462,7 @@ There we go. I have a working service that I've put up on [GitHub](https://githu
 
 As an activity tracker, what I have so far is pretty weak. But as a learning lesson, I've found it valuable.
 
-Now I just have to start being active! Maybe another coding project will help.
+Now I just have to start being active! Maybe building a command line client for this service will help.
 
 {% include cta/cta1.html %}
 
@@ -481,20 +481,8 @@ I hit a number of errors building this. If you hit them, here are the solutions.
 | illegal base64 data at input byte      | I was using `[]byte` for my json Description. If you do this then base64 encoded data is expected. Switching to `string` fixed this.         |
 | invalid character 't' looking for beginning of object key string   |  I was sending invalid JSON to my service. I needed to validate my input and found I wasn't quoting a string. |
 
-<!-- Errors:
- go test                             
-no Go files in /Users/adam/sandbox/cloudservices/ActivityLog
+### What's Next
 
- go test internal/server/http_test.go
-# command-line-arguments [command-line-arguments.test]
-internal/server/http_test.go:15:13: undefined: httpServer
-FAIL    command-line-arguments [build failed]
-FAIL
+My current plan is to build a command-line client for this service next. This should make it a bit easier to use – and I also really want to develop a command-line client. After that, I'm thinking about adding other features, but I'll keep those to myself for now.
 
-go test ./...
-https://yourbasic.org/golang/three-dots-ellipsis/
-
-
-
-Improvements:
-- how to validate the input and make things required? -->
+Two minor improvements I explored but then abandoned were better validation of the JSON coming in using `gojsonschema` and testing with `net/http/httptest`, but if the solution grows, I might revisit those. If you want to be notified about the next installment, sign up for the newsletter.
