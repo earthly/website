@@ -14,14 +14,21 @@ author: Alex
 Humans have a hard time comparing areas. Try it for yourself: **Which slice is the largest? Which is the smallest?**
 
 <div class="wide">
-{% picture content-nocrop {{site.pimages}}{{page.slug}}/pie-chart.png --picture --alt {{ Can you rank the slices from largest to smallest? }} %}
+{% picture {{site.pimages}}{{page.slug}}/pie-chart.png --picture --alt {{ Can you rank the slices from largest to smallest? }} %}
 <figcaption>Can you rank the slices from largest to smallest?</figcaption>
 </div>
 
 Instead, if we plot the exact data points in a linear dimension; it's trivial:
 
 <div class="wide">
-{% picture content-nocrop {{site.pimages}}{{page.slug}}/horizontal-lollipop-chart.png --picture --alt {{ largest to smallest values in ascending order }} %}
+{% picture {{site.pimages}}{{page.slug}}/bar-chart.png --picture --alt {{ largest to smallest values in ascending order }} %}
+<figcaption>Just look for the tallest value</figcaption>
+</div>
+
+Alternatively, we can plot it horizontally using a lollipop-chart.
+
+<div class="wide">
+{% picture {{site.pimages}}{{page.slug}}/horizontal-lollipop-chart.png --picture --alt {{ largest to smallest values in ascending order }} %}
 <figcaption>Using a horizontal lollipop bar plot ranks values in ascending order</figcaption>
 </div>
 
@@ -47,42 +54,45 @@ if it's incorrect the previous player must take all the cards; however, if you a
 
 Monday.
 
-In this section, we will switch from using randomly-generated data to using precipitation data, which was previously described in ["Plotting Precipitation with Python, Pandas and Matplotlib"](/blog/plotting-rainfall-data-with-python-and-matplotlib); in particular Victoria BC's daily precipitation for 2020. Let's See if it actually rains more on the weekend.
+In this section, we will switch from using randomly-generated data to using precipitation data, which was previously described in ["Plotting Precipitation with Python, Pandas and Matplotlib"](/blog/plotting-rainfall-data-with-python-and-matplotlib); in particular Victoria BC's daily precipitation for 2021. Let's See if it actually rains more on the weekend.
 
 <div class="wide">
-{% picture content-nocrop {{site.pimages}}{{page.slug}}/rainfall-by-day-of-week-pie-chart-is-hard-to-read.png --picture --alt {{ amount of rain by day of week as a pie chart }} %}
-<figcaption>Distribution of precipitation by day of week: Saturday does look smaller than others, however the second ranked day is not clear</figcaption>
+{% picture {{site.pimages}}{{page.slug}}/rainfall-by-day-of-week-pie-chart-is-hard-to-read.png --picture --alt {{ amount of rain by day of week as a pie chart }} %}
+<figcaption>Saturday, Sunday, or Monday? They all look the same.</figcaption>
 </div>
+
+The pie chart shows Saturday, Sunday and Monday looking equal. It's not possible to easily see which day received the most rain.
+
 
 ### Let's Try That Again
 
 Here's the same data plotted horizontally:
 
 <div class="wide">
-{% picture content-nocrop {{site.pimages}}{{page.slug}}/rainfall-by-day-of-week.png --picture --alt {{ amount of rain by day of week as a dot chart }} %}
+{% picture {{site.pimages}}{{page.slug}}/rainfall-by-day-of-week.png --picture --alt {{ amount of rain by day of week as a dot chart }} %}
 <figcaption>Distribution of precipitation by day of week: Avoid Fridays!</figcaption>
 </div>
 
-Interestingly Saturdays and Sundays were significantly[^1] drier than most weekdays; whereas Fridays appear to be downright ugly.
+Ah ha! Saturday was the wettest day, followed by Sunday. It turns out that Monday is actually halfway between Thursday and Saturday -- something that was not clearly displayed by the pie chart.
 
 ### Plotting Distributions Using Box and Whisker Plots
 
-I Wonder why Fridays received so much more precipitation compared to other days? Maybe we had a single Friday that poured rain. Rather than look at the total precipitation, let's look at a distribution of precipitation. We will use a box and whisker plot (also known as simply a box plot).
+I wonder why Saturdays received so much more precipitation compared to other days? Maybe we had a single Saturday that poured rain. Rather than look at the total precipitation, let's look at a distribution of precipitation. We will use a box and whisker plot (also known as simply a box plot).
 
 <div class="wide">
-{% picture content-nocrop {{site.pimages}}{{page.slug}}/rainfall-by-day-of-week-box-and-whisker-with-outliers.png --picture --alt {{ amount of rain by day of week as a dot chart }} %}
+{% picture {{site.pimages}}{{page.slug}}/rainfall-by-day-of-week-box-and-whisker-with-outliers.png --picture --alt {{ amount of rain by day of week as a dot chart }} %}
 <figcaption>Box and whisker plot of precipitation by day of week</figcaption>
 </div>
 
 Percentiles are at the core of a box and whisker plot. The plot is comprised of four parts: 1) a rectangular box displays the lower and upper quartiles (the 25th and 75th percentiles), 2) a vertical line drawn inside the rectangular box, which represents the median value (the 50th percentile), 3) whiskers which extend on beyond the rectangle to display the minimum and maximum values, and optionally 4) outliers which are displayed as points which were rejected while calculating the percentiles.
 
-It turns out that the heaviest day of rain in 2020 occurred on a Monday! Whereas Fridays contained five days of heavy rain, which contributed
-to the large total precipitation value displayed in a previous plot.
+It turns out that the heaviest day of rain in 2021 occurred on a Monday! That Monday was November 15th, when BC was hit with an atmospheric river, which caused severe flooding and severed all roads in and out of Vancouver.
+Victoria _only_ received 78mm of rain, compared to Hope, BC which received 103mm (and 174mm on the prior day), but I digress.
 
 It's possible to reduce (or completely disable) outlier detection, by setting a very large [`whis`](https://matplotlib.org/3.1.1/api/_as_gen/matplotlib.pyplot.boxplot.html) value; however doing presents a simplified version of the story:
 
 <div class="wide">
-{% picture content-nocrop {{site.pimages}}{{page.slug}}/rainfall-by-day-of-week-box-and-whisker.png --picture --alt {{ amount of rain by day of week as a dot chart }} %}
+{% picture {{site.pimages}}{{page.slug}}/rainfall-by-day-of-week-box-and-whisker.png --picture --alt {{ amount of rain by day of week as a dot chart }} %}
 <figcaption>Box and whisker plot without omitting outliers</figcaption>
 </div>
 
@@ -91,13 +101,24 @@ It's possible to reduce (or completely disable) outlier detection, by setting a 
 If you have the option of staying inside, does 50mm vs 80mm of precipitation really matter? Instead, let's plot the number of days in a year where it rained.
 
 <div class="wide">
-{% picture content-nocrop {{site.pimages}}{{page.slug}}/number-of-wet-days-by-day-of-week.png --picture --alt {{ number of days that experienced precipitation }} %}
+{% picture {{site.pimages}}{{page.slug}}/distribution-of-days-that-experience-rain.png --picture --alt {{ number of rainy days}} %}
 <figcaption>Day of week distribution of rainy days</figcaption>
 </div>
 
 One rebuttal to using pie charts, I've heard is "well how do I show the values sum to 100%?", if it's not clear by your text, you can just add this to a title, or figure description.
 
-*If you absolutely want to show an area-based chart, consider using a 10x10 [waffle chart](https://github.com/gyli/PyWaffle), but keep in mind that humans have a hard time perceiving changes in area. The 10x10 suggestion allows users to treat each box as a percentage point, which they can count if they want.*
+#### Waffle charts
+
+*If you absolutely want to show an area-based chart, consider using a 10x10 [waffle chart](https://github.com/gyli/PyWaffle). The 10x10 suggestion allows users to treat each box as a percentage point, which they can count if they want.*
+
+Here's an example where days have been plotted from most to least precipitation.
+
+<div class="wide">
+{% picture {{site.pimages}}{{page.slug}}/distribution-of-days-that-experience-rain-waffle-chart.png --picture --alt {{ number of rainy days}} %}
+<figcaption>waffle chart</figcaption>
+</div>
+
+While waffle charts might sound tasty, they still rely on area, which humans have a hard time perceiving changes in.
 
 ## Generating Horizontal Charts Using Python and Matplotlib
 
