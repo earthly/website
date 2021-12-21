@@ -3,7 +3,7 @@ title: "Effective Error Handling in Golang"
 categories:
   - Tutorials
 toc: true
-author: Adam
+author: Brandon
 
 internal-links:
  - just an example
@@ -16,11 +16,11 @@ In this article, we'll demonstrate the basics of handling errors in Go, as well 
 
 The error type in Go is implemented as the following interface:
 
-```golang
+~~~{.go}
 type error interface {
     Error() string
 }
-```
+~~~
 
 So basically, an error is anything that implements the `Error()` method, which returns an error message as a string. It's that simple!
 
@@ -28,7 +28,7 @@ So basically, an error is anything that implements the `Error()` method, which r
 
 Errors can be constructed on the fly using Go's built-in `errors` or `fmt` packages. For example, the following function uses the `errors` package to return a new error with a static error message:
 
-```golang
+~~~{.go caption="main.go"}
 package main
 
 import "errors"
@@ -36,11 +36,11 @@ import "errors"
 func DoSomething() error {
     return errors.New("something didn't work")
 }
-```
+~~~
 
 Similarly, the `fmt` package can be used to add dynamic data to the error, such as an `int`, `string`, or another `error`. For example:
 
-```golang
+~~~{.go caption="main.go"}
 package main
 
 import "fmt"
@@ -51,7 +51,7 @@ func Divide(a, b int) (int, error) {
     }
     return a / b, nil
 }
-```
+~~~
 
 Note that `fmt.Errorf` will prove extremely useful when we use it to wrap another error using the `%w` format verb - but we'll get into more detail on that further down in the article.
 
@@ -69,15 +69,13 @@ There are a few other important things we should take notice of in the example a
 
 Another important technique in Go is defining expected Errors so we can check for them explicitly in other parts of our code. This becomes useful if we need to execute a different branch of code when a certain kind of error is encountered.
 
-A common way to do this is to predefine one or more errors in our package (perhaps at the top of the file). These are called "Sentinel" errors, and they can be returned, checked, or exported so that other packages can use them.
-
 #### Defining Sentinel Errors
 
-Building on our `Divide` function from earlier, here's a simple way we can improve the error signaling in our example so that a calling function knows that it encountered a "divide by zero" error.
+Building on our `Divide` function from earlier, we can improve the error signaling by predefining a "Sentinel" error so that any calling function knows how to check for a "divide by zero" error.
 
 The following program takes two integers, `a` and `b` as command-line arguments and attempts to call `Divide` on them, checking for our particular error using the `errors.Is` built-in method:
 
-```golang
+~~~{.go caption="main.go"}
 package main
 
 import (
@@ -130,23 +128,19 @@ func main() {
 
     fmt.Printf("%d / %d = %d\n", a, b, result)
 }
-```
+~~~
 
 For further reading on parsing command line arguments in Go, check out [this page](https://gobyexample.com/command-line-arguments) on the "Go by Example" website.
-
-Now let's look at an alternate approach below.
 
 #### Defining Custom Error Types
 
 Many error-handling use cases can be covered using our strategy above, however, there are times when we want a little more functionality. Perhaps we want our error to carry additional data fields, or maybe we want our error's message to be populated with dynamic values when we print it.
 
-We can extend the standard error by implementing custom errors types. 
+We can do that in Go by implementing our own custom errors type. 
 
-Let's refactor our `Division` example, adding a new error type called `DivisionError`, which implements the `Error` `interface`. We can now use `errors.As` to check and convert a generic `error` to our more specific `DivisionError`. 
+Below is a slight rework of our previous example, notice the new type `DivisionError`, which implements the `Error` `interface`. We can also use `errors.As` to check and convert a standard error to our more specific `DivisionError`.
 
-Below is a slight rework of our previous example:
-
-```golang
+~~~{.go caption="main.go"}
 package main
 
 import (
@@ -212,7 +206,7 @@ func main() {
 
     fmt.Printf("%d / %d = %d\n", a, b, result)
 }
-```
+~~~
 
 Note: when necessary, you can also customize the behavior of the `errors.Is` and `errors.As`. See [this Go.dev blog](https://go.dev/blog/go1.13-errors) for an example.
 
@@ -238,7 +232,8 @@ Let's consider a simple program that manages a database of users. In this progra
 For simplicity's sake, let's replace what would be a real database with an entirely "fake" database that we import from `"example.com/fake/users/db"`.
 
 Let's also assume that this fake database already contains some functions for finding and updating user records. And that the user records are defined to be a struct that looks something like:
-```golang
+
+~~~{.go caption="fake/users/db.go"}
 package db
 
 type User struct {
@@ -246,11 +241,14 @@ type User struct {
   Username string
   Age      int
 }
-```
+
+func FindUser(username string) (*User, error) { /* ... */ }
+func SetUserAge(user *User, age int) error { /* ... */ }
+~~~
 
 Here's our example program:
 
-```golang
+~~~{.go caption="main.go"}
 package main
 
 import (
@@ -292,18 +290,17 @@ func main() {
 
     fmt.Println("successfully updated user's age")
 }
-```
+~~~
 
 Now, what happens if one of our database operations fails with some `malformed request` error? 
 
 Our error check in the `main` function should catch that and print something like this:
-```
-> failed finding or updating user: malformed request
-```
 
-Oops! Hey, mistakes happen. Perhaps there's a problem with our database code, or the input we're passing to it in one of those functions isn't what it expects.
+~~~{.bash caption=">_"}
+failed finding or updating user: malformed request
+~~~
 
-But the question is, which database operation returned the error? We know it came from `FindAndSetUserAge` but that function calls two other functions, `FindUser` and `SetUserAge`, and unfortunately, we don't have enough information in our error log to know which of those it was.
+But which of the two database operations produced the error? Unfortunately, we don't have enough information in our error log to know if it came from `FindUser` or `SetUserAge`.
 
 Go 1.13 adds a simple way we can get the information we need.
 
@@ -313,7 +310,7 @@ In the snippt below, we add `fmt.Errorf` with a `%w` verb to "wrap" the errors a
 
 Here's our updated program:
 
-```golang
+~~~{.go caption="main.go"}
 package main
 
 import (
@@ -361,18 +358,17 @@ func main() {
 
     fmt.Println("successfully updated user's age")
 }
-```
+~~~
 
 If we re-run our program and encounter the same error again, our log might print the following:
-```
-> failed finding or updating user: FindAndSetUserAge: SetUserAge: failed executing db update: malformed request
-```
 
-Now our message contains enough context that we can see that the problem originated in the `db.SetUserAge` function. Phew! That definitely saved us some time debugging!
+~~~{.bash caption=">_"}
+failed finding or updating user: FindAndSetUserAge: SetUserAge: failed executing db update: malformed request
+~~~
 
-Notice that by simply adding a bit of context to our errors as we wrap them, we've added enough information to trace through our function calls. Especially if we add the name of the function to our wrapped error message. 
+Now our message contains enough context so we can see that the problem originated in the `db.SetUserAge` function. Phew! That definitely saved us some time debugging!
 
-Doing this gives us a similar amount of information that we might be familiar with seeing in a stack-trace from other programming languages like Java.
+Wrapping errors with meaningful messages (especially including the function name) gives us similar information as we might expect from printing a stack-trace in a language like Java.
 
 #### When to Wrap
 
@@ -380,9 +376,9 @@ Generally, it's a good idea to wrap an error every time you "bubble" it up - i.e
 
 There are some exceptions to the rule, however, where wrapping an error may not be appropriate.
 
-Since wrapping the error always preserves the original error messages, sometimes exposing those underlying issues might be a security, privacy, or even UX concern. In those cases, it could be worth handling the error and returning a new one, rather than wrapping it.
+Since wrapping the error always preserves the original error messages, sometimes exposing those underlying issues might be a security, privacy, or even UX concern. In those cases, it could be worth handling the error and returning a new one, rather than wrapping it. This could be the case if you're writing an open-source library, or a REST API where we don't want the underlying error message to be returned to the 3rd-party user.
 
-This might be the case, for example, when writing an open-source library, or when writing a microservice with a REST or gRPC API, where we don't want the underlying error message to be returned to a 3rd-party user.
+{% include cta/cta1.html %}
 
 ## Conclusion
 
@@ -395,11 +391,11 @@ That's a wrap! In summary, here's the gist of what was covered here:
 I hope you found this guide to effective error handling useful. If you'd like to learn more, I've attached some related articles I found interesting during my own journey to robust error handling in Go.
 
 ## References
-* https://go.dev/blog/error-handling-and-go
-* https://go.dev/blog/go1.13-errors
-* https://gobyexample.com/errors
-* https://gobyexample.com/panic
-* https://gabrieltanner.org/blog/golang-error-handling-definitive-guide
+* [https://go.dev/blog/error-handling-and-go](https://go.dev/blog/error-handling-and-go)
+* [https://go.dev/blog/go1.13-errors](https://go.dev/blog/go1.13-errors)
+* [https://gobyexample.com/errors](https://gobyexample.com/errors)
+* [https://gobyexample.com/panic](https://gobyexample.com/errors)
+* [https://gabrieltanner.org/blog/golang-error-handling-definitive-guide](https://gabrieltanner.org/blog/golang-error-handling-definitive-guide)
 
 {% include cta/embedded-newsletter.html %}
 

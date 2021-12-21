@@ -10,6 +10,10 @@ Alex:
     name    : "Alex Couture-Beil"
     bio     : "Alex enjoys writing code, growing vegetables, and the great outdoors."
     avatar  : "/assets/images/authors/alexcouturebeil.jpg"
+Brandon:
+    name    : "Brandon Schurman"
+    bio     : "Brandon is an Engineer at Earthly who loves coding, tech startups, and camping trips with his family."
+    avatar  : "/assets/images/authors/brandonschurman.jpg"
 Adam:
     name    : "Adam Gordon Bell"
     bio     : "Spreading the word about Earthly. Host of CoRecursive podcast. Physical Embodiment of Cunningham's Law"
