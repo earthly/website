@@ -8,7 +8,6 @@ author: Adam
 internal-links:
  - just an example
 ---
-### Writing Article Checklist
 
 - [ ] Write Outline
 - [ ] Write Draft
@@ -25,61 +24,53 @@ internal-links:
 - [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
 - [ ] Raise PR
 
-## Draft.dev Article Checklist
-
-- [ ] Add in Author page
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
-
 ## Start
 
-[Last time](/blog/golang-http/) I built a REST service for storing activities. Now I'm going to try to figure out how to build a command line client for it.
+I'm an experience software developer learning GoLang by building an activity tracker. Incidentally, one of the first things I learned was to call it GoLang and not Go or I just end up with advice on an augmented reality and not the programming langauge. 
 
-First I create a new folder for my client:
-```
-$ go mod init github.com/adamgordonbell/cloudservices/activityclient
-```
+I want an easy way to track all my physical activity in hopes it will encourage me to be more active. [Last time](/blog/golang-http/) I built a REST service for storing my workout activities and now I'm going to build a command line client for it.
 
 I want my CLI to work something like this:
-```
-$ activity -add "lifted weights"
-Added as 0
-$ activity -list
-ID:0  lifted weights  date
-```
-Or I can get specific activities:
-```
-$ activity -get 0
-ID:0  lifted weights  date
-```
 
-The actual backend doesn't support `list` yet so we will skip that one for now.
+~~~{.bash caption=">_"}
+$ activityclient -add "lifted weights"
+Added as 0
+$ activityclient -list
+ID:0  lifted weights  2021-12-21
+~~~
+
+Or I can get specific activities:
+
+~~~{.bash caption=">_"}
+$ activity -get 0
+ID:0  lifted weights  2021-12-21
+~~~
+
+The existing backend doesn't support `list` yet so we will skip that one for now.
+
+First I create a new folder for my client:
+
+~~~{.bash caption=">_"}
+$ go mod init github.com/adamgordonbell/cloudservices/activityclient
+~~~
 
 ## Command Line Flags
 
-I'm going to start with the command line flags before I worry about talking to backend. For now, know we have a JSON client called `activitiesClient`.
-
+I'm going to start with the command line flags before I worry about talking to backend. 
 
 Parsing command-line args is pretty simple, thanks to the `flag` package:
 
-```
+~~~{.go caption="main.go"}
 func main() {
 	add := flag.Bool("add", false, "Add activity")
 	get := flag.Bool("get", false, "Get activity")
 
 	flag.Parse()
-
-```
+~~~
 
 After setting up the flags, I can just use a case statement to decide what to do:
 
-```
+~~~{.go caption="main.go"}
 switch {
 	case *get:
 		// get case
@@ -92,92 +83,133 @@ switch {
 		os.Exit(1)
 	}
 
-```
+~~~
+
 The default case is the simplest to explain. If neither flag is given, I ask flag to print to `flag.Usage()` which looks like this:
 
-```
+~~~{.bash caption=">_"}
 $ go run cmd/client/main.go
+~~~
+
+~~~{.ini }
 Usage of activityclient:
   -add
         Add activity
   -get
         Get activity
 exit status 1
+~~~
+
+I'm exiting 1, as this case will also be hit for any options the program doesn't understand -- which gives a helpful reminder of usage:
+
+~~~{.bash caption=">_"}
+$ go run cmd/client/main.go -unknown -flags
+~~~
+
+~~~{.ini }
+Usage of activityclient:
+  -add
+        Add activity
+  -get
+        Get activity
+exit status 1
+~~~
+
+<div class="notice--big--primary">
+
+<!-- markdownlint-disable MD036 -->
+**What I Learned: GoLang CLI Flags**
+
+The `flag` package in the standard library makes handling command line flags pretty simple. You just define flags by calling `flag.Bool` or `flag.IntVar` and then call `flag.Parse()` and your flags will be set. It seems a bit magical but inside the `flag` package is a variable called `CommandLine`, which is a `FlagSet` and used to parse the command line arguments and place them into the flags you configured.
+
+Inside the flag package, each flag is defined like this:
+
+~~~{.go caption="flag package"}
+// A Flag represents the state of a flag.
+type Flag struct {
+	Name     string // name as it appears on command line
+	Usage    string // help message
+	Value    Value  // value as set
+	DefValue string // default value (as text); for usage message
+}
+~~~
+
+If you need more complex flag handling, like you want a shortname option (`-a`) and a long name option (`--add`) for each flag, then [`go-flags`](https://github.com/jessevdk/go-flags) is a popular package adding these capabilities.
+
+I'm sticking with `flags` for now though.
+</div>
+
+### Adding the Add CLI Flag
+
+Now lets do `-add`. First thing I need to do is validate my input:
+
+~~~{.go caption="main"}
+	case *add:
+		if len(os.Args) != 3 {
+			println(`Usage: -add "message"`)
+			os.Exit(1)
+		}
+~~~
+
+So that if I forget an arg, I get informed:
+
+~~~{.go caption=">_"}
+$ go run cmd/client/main.go -add      
+~~~
+
+~~~{.ini}
+Usage: -add "message"
+exit status 1
+~~~
+
+
+After that, if the argument count is correct, I just to create my activity and try to add to `activitiesClient`:
+
+
+~~~{.go caption="main"}
+	a := client.Activity{Time: time.Now(), Description: os.Args[2]}
+	id, _ := activitiesClient.Insert(a)
+~~~
+
+*The JSON client will be covered last. For now, all that matters is its called `activitiesClient`.*
+
+Actually, there are all kinds of things that can go wrong with inserting records, so I'd better add error checking:
+
+~~~{.go caption="main"}
+	id, err := activitiesClient.Insert(a)
+	if err != nil {
+		println("Error:", err.Error())
+		os.Exit(1)
+	}
+~~~
+
+This is helpful when I forget to start up the service:
+
+```
+./go run cmd/client/main.go -add "overhead press: 70lbs"
+Error: Post "http://localhost:8080/": dial tcp [::1]:8080: connect: connection refused
+```
+
+With that in place, it's easy to add items:
+```
+$ go run cmd/client/main.go -add "overhead press: 70lbs"
+Added: overhead press: 70lbs as 0
 ```
 
 <div class="notice--info">
 
 ℹ️ **`go run` and `go build`**
 
-I could continue to use `go run` like above while working on the CLI tool but I'm going instead compile it (`go build -o build/activityclient cmd/client/main.go`) and use `activityclient`.
+I could continue to use `go run` like above while working on the CLI tool but I'm going instead compile it (`go build -o build/activityclient cmd/client/main.go`) and use the `activityclient` binary.
 </div>
 
+### Adding the Get Command Line Flag
 
-I'm exiting 1, as this case will also be hit for any options the program doesn't understand -- which gives a helpful reminder of usage:
-
-```
-$ ./activityclient -unknown -flags
-Usage of activityclient:
-  -add
-        Add activity
-  -get
-        Get activity
-exit status 1
-```
-
-Now lets do `-add`. First thing I need to do is validate my input:
-
-```
-	case *add:
-		if len(os.Args) != 3 {
-			println(`Usage: -add "message"`)
-			os.Exit(1)
-		}
-```
-
-So that if I forget an arg, I get informed:
-```
-$ ./activityclient -add      
-Usage: -add "message"
-exit status 1
-```
-
-After that, if the argument count is correct, I just to create my actvity and try to add it:
-
-```
-	a := client.Activity{Time: time.Now(), Description: os.Args[2]}
-	id, _ := activitiesClient.Insert(a)
-```
-
-Actually, there are all kinds of things that can go wrong inserting records, so I'd better add error checking:
-
-```
-	id, err := activitiesClient.Insert(a)
-	if err != nil {
-		println("Error:", err.Error())
-		os.Exit(1)
-	}
-```
-This is helpful when I forget to start up the service:
-```
-./activityclient -add "overhead press: 70lbs"
-Error: Post "http://localhost:8080/": dial tcp [::1]:8080: connect: connection refused
-```
-
-With that in place ( and the json client, which I'll cover last) it's easy to add items:
-```
-$ go build -o build/activityclient cmd/client/main.go
-$  ./activityclient -add "overhead press: 70lbs"
-Added: {Time:2021-12-20 14:40:23.264457 -0500 EST m=+0.000422247 Description:overhead press: 70lbs ID:0} as 0
-```
-
-## Get
-
-Get is very similar to Add. It will work like this:
+Get is similar to Add. It will work like this:
 
 ```
 $ ./activityclient -get 0                      
-{Time:2021-12-20 14:59:51.723453 -0500 EST Description:overhead press: 70lbs ID:0}
+ID:0    "overhead press: 70lbs"      2021-12-21
 ```
 
 The first thing I need to do is parse the id into an int:
@@ -239,7 +271,7 @@ type Activities struct {
 }
 ```
 
-First thing I need to write in my activity client is insert. I wrap my `activity` in an document and use json.Marshal to convert it:
+First thing I need to write in my activity client is insert. I wrap my `activity` in a document and use json.Marshal to convert it:
 
 ```
 func (c *Activities) Insert(activity Activity) (int, error) {
@@ -263,7 +295,7 @@ curl -X POST -s localhost:8080 -d \
 '{"activity": {"description": "christmas eve bike class", "time":"2021-12-09T16:34:04Z"}}'
 ```
 
-I can do this by first creating a request:
+I can do this by first creating a `http.Request` like this:
 
 ```
 req, err := http.NewRequest(http.MethodPost, c.URL, jsonContent)
@@ -321,7 +353,7 @@ One differences though is we need to handle invalid IDs. Like this:
 Error: Not Found
 ```
 
-Since the service returns 404s for those, once I have `http.Response`  I just need to status codes:
+Since the service returns 404s for those, once I have `http.Response`  I just need to check status codes:
 
 ```
 	if res.StatusCode == 404 {
@@ -329,11 +361,11 @@ Since the service returns 404s for those, once I have `http.Response`  I just ne
 	}
 ```
 
-And with that I have a working client. I'm going to add some light testing and then call it a day.
+And with that I have a working client, though basic client. I'm going to add some light testing and then call it a day.
 
-## Test the Happy Path
+## Testing the Happy Path
 
-I could write extensive unit tests for this, but nothing turns on my implementation so instead I will just exercise the happy path with this script:
+I could write extensive unit tests for this, but important depends on `activityclient`. So instead I will just exercise the happy path with this script:
 
 ```
 #!/usr/bin/env sh
@@ -348,11 +380,11 @@ echo "=== Retrieve Records ==="
 ./activityclient -get 1 | grep "20 minute walk"
 ```
 
-Assuming the back-end service is up, and the client is built this will test that `-add` is adding elements and that `-list` is retrieveing them. If either break, the script won't exit cleanly.
+Assuming the back-end service is up, and the client is built, this will test that `-add` is adding elements and that `-list` is retriveing them. If either is broken, the script won't exit cleanly.
 
 ## Continuous Integration
 
-I can even hook this happy path up to CI fairly easily by extending my previous [Earthfile](https://github.com/adamgordonbell/cloudservices/blob/main/ActivityClient/Earthfile). 
+I can even hook this happy path up to CI fairly easily by extending my previous [Earthfile](https://github.com/adamgordonbell/cloudservices/blob/main/ActivityClient/Earthfile).
 
 I'll create a `test` target for the client, and copy in client binary and the test script:
 ```
@@ -369,14 +401,14 @@ Then I'll start-up the docker container for the service (using its GitHub path) 
                 ./test.sh
     END
 ```
-You can find more about how that work on the main earthly site, but the important for my purpose is now my GitHub Action will build the back-end service, the client and then test them together using my shell script. It gives me a quick sanity check on the compatiblity of my client.
+You can find more about how that works on the main [earthly site](https://earthly.dev), but the important thing is now my GitHub Action will build the back-end service, the client, and then test them together using my shell script. It gives me a quick sanity check on the compatibility of my client that I can run on each new feature.
 
 // insert picture
 
 
 ### What's Next
 
-There are two things I want to add to activity tracker next. First, I want to move to GRPC. Second is I need some sort of persistence - right now everything is held in memory.  
+There are two things I want to add to activity tracker next. First, I want to move to GRPC. Second, I need some sort of persistence - right now the service holds everything in memory.  
 
 If you want to be notified about the next installment, sign up for the newsletter:
 
