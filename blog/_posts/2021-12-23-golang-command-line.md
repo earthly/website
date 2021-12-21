@@ -297,7 +297,7 @@ If you'd like to learn more about time formatting, take a look at the [package d
 
 For the JSON client, I need the structs I used in the [JSON service](/blog/golang-http/) article. I'll just copy pasta them in:
 
-```
+~~~{.go caption="activty.go"}
 type Activity struct {
 	Time        time.Time `json:"time"`
 	Description string    `json:"description"`
@@ -311,59 +311,61 @@ type ActivityDocument struct {
 type IDDocument struct {
 	ID int `json:"id"`
 }
+~~~
 
-```
 My activities JSON client is going to be called `internal/client/activity` and it needs the URL for my server in order to make requests:
 
-```
+~~~{.go caption="activty.go"}
 type Activities struct {
 	URL string
 }
-```
+~~~
 
 First thing I need to write in my activity client is insert. I wrap my `activity` in a document and use json.Marshal to convert it:
 
-```
+~~~{.go caption="activty.go"}
 func (c *Activities) Insert(activity Activity) (int, error) {
 	activityDoc := ActivityDocument{Activity: activity}
 	bytes, err := json.Marshal(activityDoc)
 	if err != nil {
 		return -1, err
 	}
-
-```
+~~~
 
 `json.marshal` gives me `[]byte` and I need a `io.Reader` to make an HTTP call, so I convert it like this:
 
-```
+~~~{.go caption="activty.go"}
 strings.NewReader(string(bytes))
-```
+~~~
+
 The HTTP call I want to make looks like this:
 
-```
+~~~{.bash caption=">_"}
 curl -X POST -s localhost:8080 -d \
 '{"activity": {"description": "christmas eve bike class", "time":"2021-12-09T16:34:04Z"}}'
-```
+~~~
 
 I can do this by first creating a `http.Request` like this:
 
-```
+~~~{.go caption="activty.go"}
 req, err := http.NewRequest(http.MethodPost, c.URL, jsonContent)
-	if err != nil {
-		return -1, err
-	}
-```
+if err != nil {
+	return -1, err
+}
+~~~
+
 And then making the request:
 
-```
+~~~{.go caption="activty.go"}
 res, err := http.DefaultClient.Do(req)
-	if err != nil {
-		return -1, err
-	}
-```
+if err != nil {
+	return -1, err
+}
+~~~
+
 `res` is my `http.Response` and I need to get my ID out of it if everything went well. It looks like this:
 
-```
+~~~{.go caption="activty.go"}
 if res.Body != nil {
 	defer res.Body.Close()
 }
@@ -371,45 +373,71 @@ body, err := ioutil.ReadAll(res.Body)
 if err != nil {
 	return -1, err
 }
-```
+~~~
+
 To get the ID out of the response, I need to use `json.Unmarshal`:
 
-```
+~~~{.go caption="activty.go"}
 var document IDDocument
-	err = json.Unmarshal(body, &document)
-	if err != nil {
-		return -1, err
-	}
-	return document.ID, nil
+err = json.Unmarshal(body, &document)
+if err != nil {
+	return -1, err
+}
+return document.ID, nil
+~~~
+
+<div class="notice--big--primary">
+
+<!-- markdownlint-disable MD036 -->
+**What I Learned: `json.Marshall` and  `io.reader` **
+
+You can convert a struct back and forth to a `[]byte` of JSON using `json.Marshall` and `json.Unmarshal` like this:
+
+``` go
+byte := json.Marshal(someStruct)
+json.Unmarshal(bytes, &someStruct)
 ```
 
-// what I learned
+Requests and Responses in the http package however work with `io.Reader` which looks like this:
+
+``` go
+type Reader interface {
+	Read(p []byte) (n int, err error)
+}
+```
+
+Which you can convert to like this:
+``` go
+ reader := bytes.NewReader(data)
+```
+
+</div>
 
 ## Status Codes
 
 `Retrieve` is mainly the same as `Insert` but in reverse -- I json.Marshal the ID and json.Unmarshal the activities struct. 
 
-```
+~~~{.go caption="activty.go"}
 func (c *Activities) Retrieve(id int) (Activity, error) {
 	...
 	return document.Activity, nil
 }
-```
+~~~
 
 One differences though is we need to handle invalid IDs. Like this:
 
-```
+~~~{.bash caption=">_"}
 ./activityclient --get 100
 Error: Not Found
-```
+~~~
 
 Since the service returns 404s for those, once I have `http.Response`  I just need to check status codes:
 
-```
+~~~{.go caption="activty.go"}
 	if res.StatusCode == 404 {
 		return document.Activity, errors.New("Not Found")
 	}
-```
+~~~
 
 And with that I have a working client, though basic client. I'm going to add some light testing and then call it a day.
 
@@ -417,7 +445,7 @@ And with that I have a working client, though basic client. I'm going to add som
 
 I could write extensive unit tests for this, but important depends on `activityclient`. So instead I will just exercise the happy path with this script:
 
-```
+~~~{.bash caption="test.sh"}
 #!/usr/bin/env sh
 set -e
 
@@ -428,7 +456,7 @@ echo "=== Add Records ==="
 echo "=== Retrieve Records ==="
 ./activityclient -get 0 | grep "overhead press"
 ./activityclient -get 1 | grep "20 minute walk"
-```
+~~~
 
 Assuming the back-end service is up, and the client is built, this will test that `-add` is adding elements and that `-list` is retriveing them. If either is broken, the script won't exit cleanly.
 
@@ -437,23 +465,29 @@ Assuming the back-end service is up, and the client is built, this will test tha
 I can even hook this happy path up to CI fairly easily by extending my previous [Earthfile](https://github.com/adamgordonbell/cloudservices/blob/main/ActivityClient/Earthfile).
 
 I'll create a `test` target for the client, and copy in client binary and the test script:
-```
+
+~~~{.dockerfile caption="Earthfile"}
 test:
     FROM +test-deps
     COPY +build/activityclient ./activityclient
     COPY test.sh .
-```
+~~~
 
 Then I'll start-up the docker container for the service (using its GitHub path) and run `test.sh`:
-```
+
+~~~{.dockerfile captionb="Earthfile"}
     WITH DOCKER --load agbell/cloudservices/activityserver=github.com/adamgordonbell/cloudservices/ActivityLog+docker
         RUN  docker run -d -p 8080:8080 agbell/cloudservices/activityserver && \
                 ./test.sh
     END
-```
-You can find more about how that works on the main [earthly site](https://earthly.dev), but the important thing is now my GitHub Action will build the back-end service, the client, and then test them together using my shell script. It gives me a quick sanity check on the compatibility of my client that I can run on each new feature.
+~~~
 
-// insert picture
+You can find more about how that works on the main [Earthly site](https://earthly.dev), but the important thing is now my GitHub Action will build the back-end service, the client, and then test them together using my shell script. It gives me a quick sanity check on the compatibility of my client that I can run on each new feature.
+
+<div class="wide">
+{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/8600.png --alt {{  }} %}
+<figcaption></figcaption>
+</div>
 
 
 ### What's Next
