@@ -8,7 +8,7 @@ author: Brandon
 internal-links:
  - just an example
 ---
-Error handling in Go is a little different than other mainstream programming languages like Java, JavaScript, or Python. Go's built-in errors don't contain stack traces, nor do they support conventional `try`/`catch `methods to handle them. Instead, errors in Go are just values returned by functions, and they can be treated in much the same way as any other datatype - leading to a surprisingly lightweight and simple design.
+Error handling in Go is a little different than other mainstream programming languages like Java, JavaScript, or Python. Go's built-in errors don't contain stack traces, nor do they support conventional `try`/`catch` methods to handle them. Instead, errors in Go are just values returned by functions, and they can be treated in much the same way as any other datatype - leading to a surprisingly lightweight and simple design.
 
 In this article, we'll demonstrate the basics of handling errors in Go, as well as some simple strategies you can follow in your code to ensure your program is robust and easy to debug.
 
@@ -136,7 +136,7 @@ For further reading on parsing command line arguments in Go, check out [this pag
 
 Many error-handling use cases can be covered using our strategy above, however, there are times when we want a little more functionality. Perhaps we want our error to carry additional data fields, or maybe we want our error's message to be populated with dynamic values when we print it.
 
-We can do that in Go by implementing our own custom errors type. 
+We can do that in Go by implementing our own custom errors type.
 
 Below is a slight rework of our previous example, notice the new type `DivisionError`, which implements the `Error` `interface`. We can also use `errors.As` to check and convert a standard error to our more specific `DivisionError`.
 
@@ -214,20 +214,19 @@ Another note: `errors.Is` and `errors.As` were added in Go 1.13. More on that be
 
 ## Wrapping Errors
 
-In our examples thus far, the errors have been created, returned, and handled with a single function call. In other words, the stack of functions involved in "bubbling" up the error is only a single level deep. 
+In our examples thus far, the errors have been created, returned, and handled with a single function call. In other words, the stack of functions involved in "bubbling" up the error is only a single level deep.
 
 Often in our real-world programs, we'll have many more functions involved - from the function where the error is produced, to where it is eventually handled, and any number of additional functions in-between.
 
 In Go 1.13, several new error APIs were introduced, including `errors.Wrap` and `errors.Unwrap`, which are useful in applying additional context to an error as it "bubbles up", as well as checking for particular error types, regardless of how many times the error has been "wrapped".
 
-> **A bit of history**: Before Go 1.13 was released in 2019, the standard library didn't contain many APIs for working with errors - it was basically just `errors.New` and `fmt.Errorf`. As such, you may encounter legacy Go programs in the wild which do not implement some of the newer error APIs. Many legacy programs also used 3rd-party error libraries such as [`pkg/errors`](https://github.com/pkg/errors). Eventually, [a formal proposal](https://go.googlesource.com/proposal/+/master/design/go2draft-error-inspection.md) was documented in 2018, which suggested many of the features we see today in Go 1.13+.
-
+> **A bit of history**: Before Go 1.13 was released in 2019, the standard library didn't contain many APIs for working with errors - it was basically just `errors.New` and `fmt.Errorf`. As such, you may encounter legacy Go programs in the wild that do not implement some of the newer error APIs. Many legacy programs also used 3rd-party error libraries such as [`pkg/errors`](https://github.com/pkg/errors). Eventually, [a formal proposal](https://go.googlesource.com/proposal/+/master/design/go2draft-error-inspection.md) was documented in 2018, which suggested many of the features we see today in Go 1.13+.
 
 ### The Old Way (Before Go 1.13)
 
-It's easy to see just how useful the new error APIs are in Go 1.13+ are by looking at some examples where the old API was limiting. 
+It's easy to see just how useful the new error APIs are in Go 1.13+ are by looking at some examples where the old API was limiting.
 
-Let's consider a simple program that manages a database of users. In this program, we'll have a few functions involved in the lifecycle of a database error. 
+Let's consider a simple program that manages a database of users. In this program, we'll have a few functions involved in the lifecycle of a database error.
 
 For simplicity's sake, let's replace what would be a real database with an entirely "fake" database that we import from `"example.com/fake/users/db"`.
 
@@ -292,7 +291,7 @@ func main() {
 }
 ~~~
 
-Now, what happens if one of our database operations fails with some `malformed request` error? 
+Now, what happens if one of our database operations fails with some `malformed request` error?
 
 Our error check in the `main` function should catch that and print something like this:
 
@@ -304,9 +303,9 @@ But which of the two database operations produced the error? Unfortunately, we d
 
 Go 1.13 adds a simple way we can get the information we need.
 
-### Errors are Better Wrapped
+### Errors Are Better Wrapped
 
-In the snippt below, we add `fmt.Errorf` with a `%w` verb to "wrap" the errors as they "bubble up" through our other function calls. This adds the appropriate context we need so that we can deduce which of those database operations failed in our previous example.
+In the snippet below, we add `fmt.Errorf` with a `%w` verb to "wrap" the errors as they "bubble up" through our other function calls. This adds the appropriate context we need so that we can deduce which of those database operations failed in our previous example.
 
 Here's our updated program:
 
@@ -376,7 +375,7 @@ Generally, it's a good idea to wrap an error every time you "bubble" it up - i.e
 
 There are some exceptions to the rule, however, where wrapping an error may not be appropriate.
 
-Since wrapping the error always preserves the original error messages, sometimes exposing those underlying issues might be a security, privacy, or even UX concern. In those cases, it could be worth handling the error and returning a new one, rather than wrapping it. This could be the case if you're writing an open-source library, or a REST API where we don't want the underlying error message to be returned to the 3rd-party user.
+Since wrapping the error always preserves the original error messages, sometimes exposing those underlying issues might be a security, privacy, or even UX concern. In those cases, it could be worth handling the error and returning a new one, rather than wrapping it. This could be the case if you're writing an open-source library or a REST API where we don't want the underlying error message to be returned to the 3rd-party user.
 
 {% include cta/cta1.html %}
 
@@ -391,11 +390,11 @@ That's a wrap! In summary, here's the gist of what was covered here:
 I hope you found this guide to effective error handling useful. If you'd like to learn more, I've attached some related articles I found interesting during my own journey to robust error handling in Go.
 
 ## References
-* [https://go.dev/blog/error-handling-and-go](https://go.dev/blog/error-handling-and-go)
-* [https://go.dev/blog/go1.13-errors](https://go.dev/blog/go1.13-errors)
-* [https://gobyexample.com/errors](https://gobyexample.com/errors)
-* [https://gobyexample.com/panic](https://gobyexample.com/errors)
-* [https://gabrieltanner.org/blog/golang-error-handling-definitive-guide](https://gabrieltanner.org/blog/golang-error-handling-definitive-guide)
+
+* [Error handling and Go](https://go.dev/blog/error-handling-and-go)
+* [Go 1.13 Errors](https://go.dev/blog/go1.13-errors)
+* [Go By Example: Errors](https://gobyexample.com/errors)
+* [Go By Example: Panic](https://gobyexample.com/errors)
+* [Golang Error Handling Definitive Guide](https://gabrieltanner.org/blog/golang-error-handling-definitive-guide)
 
 {% include cta/embedded-newsletter.html %}
-
