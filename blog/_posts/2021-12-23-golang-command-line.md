@@ -185,16 +185,23 @@ Actually, there are all kinds of things that can go wrong with inserting records
 
 This is helpful when I forget to start up the service:
 
-```
+~~~{.go caption=">_"}
 ./go run cmd/client/main.go -add "overhead press: 70lbs"
+~~~
+
+~~~{.ini}
 Error: Post "http://localhost:8080/": dial tcp [::1]:8080: connect: connection refused
-```
+~~~
 
 With that in place, it's easy to add items:
-```
+
+~~~{.bash caption=">_"}
 $ go run cmd/client/main.go -add "overhead press: 70lbs"
+~~~
+
+~~~{.ini}
 Added: overhead press: 70lbs as 0
-```
+~~~
 
 <div class="notice--info">
 
@@ -207,41 +214,84 @@ I could continue to use `go run` like above while working on the CLI tool but I'
 
 Get is similar to Add. It will work like this:
 
-```
+~~~{.bash caption=">_"}
 $ ./activityclient -get 0                      
+~~~
+
+~~~{.ini}
 ID:0    "overhead press: 70lbs"      2021-12-21
-```
+~~~
 
 The first thing I need to do is parse the id into an int:
 
-```
+~~~{.go caption=">_"}
 case *get:
 	id, err := strconv.Atoi(os.Args[2])
 	if err != nil {
 		println("Invalid Offset: Not an integer")
 		os.Exit(1)
 	}
-```
+~~~
+
 Which works like this:
-```
+
+~~~{.bash caption=">_"}
 ./activityclient -get one
+~~~
+
+~~~{.ini}
 Invalid Offset: Not an integer
-```
+~~~
 
 Then I retrieve from the JSON client and handle any errors:
-```
+
+~~~{.go caption="main.go"}
 a, err := activitiesClient.Retrieve(id)
 if err != nil {
 	println("Error:", err.Error())
 	os.Exit(1)
 }
-```
-Then I print activity:
-```
-fmt.Printf("Added: %+v as %d\n", a, id)
-```
+~~~
+
+Then I just need a way to turn my Activity into a string:
+
+~~~{.go caption="activity.go"}
+func (a Activity) String() string {
+	return fmt.Sprintf("ID:%d\t\"%s\"\t%d-%d-%d", 
+		a.ID, a.Description, a.Time.Year(), a.Time.Month(), a.Time.Day())
+}
+~~~
+
+And then printing is simple:
+
+~~~{.go caption="main.go"}
+fmt.Println(a.String())
+~~~
 
 And the command-line part is complete. 
+
+<div class="notice--big--primary">
+
+<!-- markdownlint-disable MD036 -->
+**What I Learned: Convert to and From Strings **
+
+I used `strconv.Atoi` to parse command-line args back into a integer. It looks like `strconv.ParseInt` is a lot more flexibile, if I ever need to get back `int32` or other more specific integer formats.
+
+I converted my `time.Time` to string manually using `fmt.Sprintf` but `time.time` has a format method that can print time in whatever way you might need:
+
+~~~{.go caption=""}
+fmt.Println(time.Now().Format("UnixDate"))
+fmt.Println(time.Now().Format("January-02"))
+~~~
+
+~~~{.output caption="Output"}
+Tue Dec 21 12:04:05 ES 500
+December-21
+~~~
+
+If you'd like to learn more about time formatting, take a look at the [package documentation](https://pkg.go.dev/time#Time.Format).
+
+</div>
 
 ## JSON Client
 
