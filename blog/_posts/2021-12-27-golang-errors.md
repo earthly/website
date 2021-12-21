@@ -71,7 +71,7 @@ Another important technique in Go is defining expected Errors so they can be che
 
 #### Defining Sentinel Errors
 
-Building on the `Divide` function from earlier, we can improve the error signaling by pre-defining a "Sentinel" error. Calling functions are able to explicitly check for this  error using `errors.Is`:
+Building on the `Divide` function from earlier, we can improve the error signaling by pre-defining a "Sentinel" error. Calling functions are able to explicitly check for this error using `errors.Is`:
 
 ~~~{.go caption="main.go"}
 package main
@@ -162,13 +162,15 @@ func main() {
 }
 ~~~
 
+<!-- vale HouseStyle.Spacing = NO -->
 <div class="notice--info">
 Note: when necessary, you can also customize the behavior of the `errors.Is` and `errors.As`. See [this Go.dev blog](https://go.dev/blog/go1.13-errors) for an example.
 </div>
 
 <div class="notice--info">
-Another note: `errors.Is` and `errors.As` were added in Go 1.13 and are preferrable over using `err == ...`. More on that below.
+Another note: `errors.Is` and `errors.As` were added in Go 1.13 and are preferable over using `err == ...`. More on that below.
 </div>
+<!-- vale HouseStyle.Spacing = YES -->
 
 ## Wrapping Errors
 
