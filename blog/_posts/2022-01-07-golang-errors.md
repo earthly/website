@@ -71,7 +71,7 @@ Another important technique in Go is defining expected Errors so they can be che
 
 #### Defining Sentinel Errors
 
-Building on the `Divide` function from earlier, we can improve the error signaling by pre-defining a "Sentinel" error. Calling functions are able to explicitly check for this error using `errors.Is`:
+Building on the `Divide` function from earlier, we can improve the error signaling by pre-defining a "Sentinel" error. Calling functions can explicitly check for this error using `errors.Is`:
 
 ~~~{.go caption="main.go"}
 package main
@@ -168,7 +168,7 @@ Note: when necessary, you can also customize the behavior of the `errors.Is` and
 </div>
 
 <div class="notice--info">
-Another note: `errors.Is` and `errors.As` were added in Go 1.13 and are preferable over using `err == ...`. More on that below.
+Another note: `errors.Is` was added in Go 1.13 and is preferable over checking `err == ...`. More on that below.
 </div>
 <!-- vale HouseStyle.Spacing = YES -->
 
@@ -178,13 +178,13 @@ In these examples so far, the errors have been created, returned, and handled wi
 
 Often in real-world programs, there can be many more functions involved - from the function where the error is produced, to where it is eventually handled, and any number of additional functions in-between.
 
-In Go 1.13, several new error APIs were introduced, including `errors.Wrap` and `errors.Unwrap`, which are useful in applying additional context to an error as it "bubbles up", as well as checking for particular error types, regardless of how many times the error has been "wrapped".
+In Go 1.13, several new error APIs were introduced, including `errors.Wrap` and `errors.Unwrap`, which are useful in applying additional context to an error as it "bubbles up", as well as checking for particular error types, regardless of how many times the error has been wrapped.
 
 > **A bit of history**: Before Go 1.13 was released in 2019, the standard library didn't contain many APIs for working with errors - it was basically just `errors.New` and `fmt.Errorf`. As such, you may encounter legacy Go programs in the wild that do not implement some of the newer error APIs. Many legacy programs also used 3rd-party error libraries such as [`pkg/errors`](https://github.com/pkg/errors). Eventually, [a formal proposal](https://go.googlesource.com/proposal/+/master/design/go2draft-error-inspection.md) was documented in 2018, which suggested many of the features we see today in Go 1.13+.
 
 ### The Old Way (Before Go 1.13)
 
-It's easy to see just how useful the new error APIs are in Go 1.13+ are by looking at some examples where the old API was limiting.
+It's easy to see just how useful the new error APIs are in Go 1.13+ by looking at some examples where the old API was limiting.
 
 Let's consider a simple program that manages a database of users. In this program, we'll have a few functions involved in the lifecycle of a database error.
 
@@ -331,7 +331,7 @@ Wrapping also preserves the original error, which means `errors.Is` and `errors.
 
 #### When to Wrap
 
-Generally, it's a good idea to wrap an error every time you "bubble" it up - i.e. every time you receive the error from a function and want to continue returning it back up the function chain.
+Generally, it's a good idea to wrap an error with at least the function's name, every time you "bubble it up" - i.e. every time you receive the error from a function and want to continue returning it back up the function chain.
 
 ![Wrapping an error adds the gift of context]({{site.images}}{{page.slug}}/wrap.jpg)
 
@@ -358,6 +358,5 @@ I hope you found this guide to effective error handling useful. If you'd like to
 * [Go Error Doc](https://pkg.go.dev/errors@go1.17.5)
 * [Go By Example: Errors](https://gobyexample.com/errors)
 * [Go By Example: Panic](https://gobyexample.com/errors)
-* [Golang Error Handling Definitive Guide](https://gabrieltanner.org/blog/golang-error-handling-definitive-guide)
 
 {% include cta/embedded-newsletter.html %}
