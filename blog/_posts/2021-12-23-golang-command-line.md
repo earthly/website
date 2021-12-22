@@ -496,7 +496,7 @@ You can find more about how that works on the [Earthly site](https://earthly.dev
 
 ### What's Next
 
-So now I've learned the basics of building a command-line tool that calls a JSON web-service in GoLang. It went pretty smoothly and the amount of code I had to write was pretty minimal.
+So now I've learned the basics of building a command-line tool that calls a JSON web-service in GoLang. It went pretty smoothly and the amount of code I had to write was [pretty minimal](https://github.com/adamgordonbell/cloudservices/tree/main/ActivityClient).
 
 There are two things I want to add to the activity tracker next. First, since all that calls the service is this client, I want to move to GRPC. Second, I need some sort of persistence - right now the service holds everything in memory. I can't have a power outage erasing all of my hard work.
 
