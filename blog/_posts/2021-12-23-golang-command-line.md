@@ -10,9 +10,7 @@ internal-links:
  - command line tool
 ---
 
-I'm an experience software developer learning GoLang by building an activity tracker. Incidentally, one of the first things I learned was to call it GoLang and not Go or I just end up with advice on an augmented reality and not the programming language.
-
-I want an easy way to track all my physical activity in hopes it will encourage me to be more active. [Last time](/blog/golang-http/) I built a REST service for storing my workout activities and now I'm going to build a command line client for it.
+I'm an experience software developer learning GoLang by building an activity tracker[^1]. I want a low-effort way to track my physical activity, and building it seems like a fun learning project. [Last time](/blog/golang-http/) I built a REST service for storing my workout activities, and now I'm going to make a command-line client for it.
 
 I want my CLI to work something like this:
 
@@ -40,7 +38,7 @@ $ go mod init github.com/adamgordonbell/cloudservices/activityclient
 
 ## Command Line Flags
 
-I'm going to start with the command line flags before I worry about talking to backend.
+I'm will start with the command line flags before I worry about talking to the backend.
 
 Parsing command-line args is pretty simple, thanks to the `flag` package:
 
@@ -52,7 +50,7 @@ func main() {
  flag.Parse()
 ~~~
 
-After setting up the flags, I can just use a case statement to decide what to do:
+After setting up the flags, I can use a case statement to decide what to do:
 
 ~~~{.go caption="main.go"}
 switch {
@@ -84,7 +82,7 @@ Usage of activityclient:
 exit status 1
 ~~~
 
-I'm exiting 1, as this case will also be hit for any options the program doesn't understand -- which gives a helpful reminder of usage:
+I'm exiting 1 because if I pass in invalid flags, this case will also be hit, and print a helpful reminder of the expected usage:
 
 ~~~{.bash caption=">_"}
 $ go run cmd/client/main.go -unknown -flags
@@ -104,7 +102,7 @@ exit status 1
 <!-- markdownlint-disable MD036 -->
 **What I Learned: GoLang CLI Flags**
 
-The `flag` package in the standard library makes handling command line flags pretty simple. You just define flags by calling `flag.Bool` or `flag.IntVar` and then call `flag.Parse()` and your flags will be set. It seems a bit magical but inside the `flag` package is a variable called `CommandLine`, which is a `FlagSet` and used to parse the command line arguments and place them into the flags you configured.
+The `flag` package in the standard library makes handling command-line flags pretty simple. You define flags by calling `flag.Bool` or `flag.IntVar` and then call `flag.Parse()`, and your flags will be set. It seems a bit magical, but inside the flag package is a variable called CommandLine, a FlagSet used to parse the command line arguments and place them into the flags you configured.
 
 Inside the flag package, each flag is defined like this:
 
@@ -120,7 +118,7 @@ type Flag struct {
 
 If you need more complex flag handling, like you want a short-name option (`-a`) and a long-name option (`--add`) for each flag, then [`go-flags`](https://github.com/jessevdk/go-flags) is a popular package adding these capabilities.
 
-I'm sticking with `flags` for now though.
+I'm sticking with `flags` for now, though.
 </div>
 
 ### Adding the Add CLI Flag
@@ -165,7 +163,7 @@ Actually, there are all kinds of things that can go wrong with inserting records
  }
 ~~~
 
-This is helpful when I forget to start up the service:
+This checking is helpful when I forget to start up the service:
 
 ~~~{.go caption=">_"}
 ./go run cmd/client/main.go -add "overhead press: 70lbs"
@@ -175,7 +173,7 @@ This is helpful when I forget to start up the service:
 Error: Post "http://localhost:8080/": dial tcp [::1]:8080: connect: connection refused
 ~~~
 
-With that in place, it's easy to add items:
+With that in place, I can add items:
 
 ~~~{.bash caption=">_"}
 $ go run cmd/client/main.go -add "overhead press: 70lbs"
@@ -189,10 +187,10 @@ Added: overhead press: 70lbs as 0
 
 ℹ️ **`go run` and `go build`**
 
-I could continue to use `go run` like above while working on the CLI tool but I'm going instead compile it (`go build -o build/activityclient cmd/client/main.go`) and use the `activityclient` binary.
+I could continue to use `go run` like above while working on the CLI tool, but I'm going instead compile it (`go build -o build/activityclient cmd/client/main.go`) and use the `activityclient` binary.
 </div>
 
-### Adding the Get Command Line Flag
+### Adding the Get Command-Line Flag
 
 Get is similar to Add. It will work like this:
 
@@ -257,7 +255,7 @@ And the command-line part is complete.
 <!-- markdownlint-disable MD036 -->
 **What I Learned: Convert to and From Strings**
 
-I used `strconv.Atoi` to parse command-line args back into a integer. It looks like `strconv.ParseInt` is a lot more flexible, if I ever need to get back `int32` or other more specific integer formats.
+I used `strconv.Atoi` to parse command-line args back into an integer. It looks like `strconv.ParseInt` is a lot more flexible if I ever need to get back `int32` or other more specific integer formats.
 
 I converted my `time.Time` to string manually using `fmt.Sprintf` but `time.time` has a format method that can print time in whatever way you might need:
 
@@ -295,7 +293,7 @@ type IDDocument struct {
 }
 ~~~
 
-My activities JSON client is going to be called `internal/client/activity` and it needs the URL for my server in order to make requests:
+My activities JSON client is going to be called `internal/client/activity`, and it needs the URL for my server to make requests:
 
 ~~~{.go caption="activty.go"}
 type Activities struct {
@@ -303,7 +301,7 @@ type Activities struct {
 }
 ~~~
 
-First thing I need to write in my activity client is insert. I wrap my `activity` in a document and use `json.Marshal` to convert it:
+First thing I need to write in my activity client is insert. I wrap my `activity` in a document, and use `json.Marshal` to convert it:
 
 ~~~{.go caption="activty.go"}
 func (c *Activities) Insert(activity Activity) (int, error) {
@@ -314,7 +312,7 @@ func (c *Activities) Insert(activity Activity) (int, error) {
  }
 ~~~
 
-`json.marshal` gives me `[]byte` and I need a `io.Reader` to make an HTTP call, so I convert it like this:
+`json.marshal` gives me `[]byte` and I need an `io.Reader` to make an HTTP call, so I convert it like this:
 
 ~~~{.go caption="activty.go"}
 bytes.NewReader(jsBytes)
@@ -345,7 +343,7 @@ if err != nil {
 }
 ~~~
 
-`res` is my `http.Response` and I need to get my ID out of it if everything went well. It looks like this:
+`res` is my `http.Response` and I need to get my ID out of it if everything goes well. It looks like this:
 
 ~~~{.go caption="activty.go"}
 if res.Body != nil {
@@ -421,7 +419,7 @@ func (c *Activities) Retrieve(id int) (Activity, error) {
 }
 ~~~
 
-One differences though is we need to handle invalid IDs. Like this:
+One difference, though, is I need to handle invalid IDs. Like this:
 
 ~~~{.bash caption=">_"}
 ./activityclient --get 100
@@ -446,11 +444,11 @@ Then I just need to `json.Unmarshall` my activity document:
  return document.Activity, nil
 ~~~
 
-And with that I have a [working](https://github.com/adamgordonbell/cloudservices/tree/main/ActivityClient), though basic, client. I'm going to add some light testing and then call it a day.
+And with that, I have a [working](https://github.com/adamgordonbell/cloudservices/tree/main/ActivityClient), though basic, client. So I'm going to add some light testing and then call it a day.
 
 ## Testing the Happy Path
 
-I could write extensive unit tests for this, but nothing important depends on `activityclient`. So instead I will just exercise the happy path with this script:
+I could write extensive unit tests for this, but nothing important depends on `activityclient`. So instead, I will just exercise the happy path with this script:
 
 ~~~{.bash caption="test.sh"}
 #!/usr/bin/env sh
@@ -469,7 +467,7 @@ Assuming the back-end service is up, and the client is built, this will test tha
 
 ## Continuous Integration
 
-I can even hook this happy path up to CI fairly easily by extending my previous [Earthfile](https://github.com/adamgordonbell/cloudservices/blob/main/ActivityClient/Earthfile).
+I can quickly hook this happy path up to CI by extending my previous [Earthfile](https://github.com/adamgordonbell/cloudservices/blob/main/ActivityClient/Earthfile).
 
 I'll create a `test` target for the client, and copy in client binary and the test script:
 
@@ -489,7 +487,7 @@ Then I'll start-up the docker container for the service (using its GitHub path) 
     END
 ~~~
 
-You can find more about how that works on the main [Earthly site](https://earthly.dev), but the important thing is now my GitHub Action will build the back-end service, the client, and then test them together using my shell script. It gives me a quick sanity check on the compatibility of my client that I can run on each new feature.
+You can find more about how that works on the [Earthly site](https://earthly.dev), but the important thing is now my GitHub Action will build the back-end service, the client, and then test them together using my shell script. It gives me a quick sanity check on the compatibility of my client that I can run whenever I'm adding new features.
 
 <div class="wide">
 {% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/8600.png --alt {{ build in GitHubActions }} %}
@@ -498,10 +496,12 @@ You can find more about how that works on the main [Earthly site](https://earthl
 
 ### What's Next
 
-So now I've learned the basics of building a command line tool that calls a JSON web-service in GoLang. It went pretty smoothly and the amount of code I had to write was pretty minimal.
+So now I've learned the basics of building a command-line tool that calls a JSON web-service in GoLang. It went pretty smoothly and the amount of code I had to write was pretty minimal.
 
-There are two things I want to add to activity tracker next. First, I want to try moving to GRPC. Second, I need some sort of persistence - right now the service holds everything in memory. I can't have a power outage erasing all my fitness tracking.
+There are two things I want to add to the activity tracker next. First, since all that calls the service is this client, I want to move to GRPC. Second, I need some sort of persistence - right now the service holds everything in memory. I can't have a power outage erasing all of my hard work.
 
 Hopefully, you've learned something as well. If you want to be notified about the next installment, sign up for the newsletter:
 
 {% include cta/embedded-newsletter.html %}
+
+[^1]: One of the first things I learned was to call it GoLang and not Go, or I'd end up with advice on an augmented reality game and not the programming language.
