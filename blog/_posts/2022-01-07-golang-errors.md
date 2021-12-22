@@ -329,6 +329,14 @@ If used correctly, error wrapping can provide additional context about the linea
 
 Wrapping also preserves the original error, which means `errors.Is` and `errors.As` continue to work, regardless of how many times an error has been wrapped. We can also call `errors.Unwrap` to return the previous error in the chain.
 
+<!-- vale HouseStyle.Spelling = NO -->
+<!-- vale HouseStyle.Spacing = NO -->
+<div class="notice--info">
+Curious to learn how error wrapping works under the hood? Take a peek at the internals of [`fmt.Errorf`](https://github.com/golang/go/blob/release-branch.go1.17/src/fmt/errors.go#L26), [the `%w` verb](https://github.com/golang/go/blob/release-branch.go1.17/src/fmt/print.go#L574), and [the `errors` API](https://github.com/golang/go/blob/release-branch.go1.17/src/errors/wrap.go).
+</div>
+<!-- vale HouseStyle.Spacing = YES -->
+<!-- vale HouseStyle.Spelling = YES -->
+
 #### When to Wrap
 
 Generally, it's a good idea to wrap an error with at least the function's name, every time you "bubble it up" - i.e. every time you receive the error from a function and want to continue returning it back up the function chain.
