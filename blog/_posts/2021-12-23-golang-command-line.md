@@ -1,5 +1,5 @@
 ---
-title: "Command Line JSON Client In GoLang"
+title: "Command Line JSON Client In Golang"
 categories:
   - Tutorials
 author: Adam
@@ -10,7 +10,7 @@ internal-links:
  - command line tool
 ---
 
-I'm an experience software developer learning GoLang by building an activity tracker[^1]. I want a low-effort way to track my physical activity, and building it seems like a fun learning project. [Last time](/blog/golang-http/) I built a REST service for storing my workout activities, and now I'm going to make a command-line client for it.
+I'm an experienced software developer learning Golang by building an activity tracker[^1]. I want a low-effort way to track my physical activity, and building it seems like a fun learning project. [Last time](/blog/golang-http/) I built a REST service for storing my workout activities, and now I'm going to make a command-line client for it.
 
 I want my CLI to work something like this:
 
@@ -118,17 +118,17 @@ type Flag struct {
 
 If you need more complex flag handling, like you want a short-name option (`-a`) and a long-name option (`--add`) for each flag, then [`go-flags`](https://github.com/jessevdk/go-flags) is a popular package adding these capabilities.
 
-I'm sticking with `flags` for now, though.
+I'm sticking with the standard library's `flags` package for now, though.
 </div>
 
-### Adding the Add CLI Flag
+### Implementing the Add CLI Flag
 
 Now lets do `-add`. First thing I need to do is validate my input:
 
 ~~~{.go caption="main"}
  case *add:
   if len(os.Args) != 3 {
-   println(`Usage: -add "message"`)
+   fmt.Fprintln(os.Stderr, `Usage: --add "message"`)
    os.Exit(1)
   }
 ~~~
@@ -144,7 +144,30 @@ Usage: -add "message"
 exit status 1
 ~~~
 
-After that, if the argument count is correct, I just to create my activity and try to add to `activitiesClient`:
+<div class="notice--info">
+
+**Side Note: Printing Errors in Golang**
+
+When something goes wrong, you want to print to standard error and then exit.
+
+The most common way to do this is using the `log` package or another logging framework like [`logrus`](https://github.com/Sirupsen/logrus).
+
+Using `log`, you can log a fatal message to standard error like this:
+
+``` go
+log.Fatalf("failed inserting activity: %s", err)
+```
+
+In my case, however, I don't want to include any timestamps or log formatting so I'm just using `fmt.Fprintln` and passing it `os.Stderr`:
+
+```
+fmt.Fprintln(os.Stderr, "My Error")
+```
+
+Ok, back to the activities project.
+</div>
+
+Assuming the correct number of arguments was passed and my program doesn't log an error and exit then I just create my activity and try to add to `activitiesClient`:
 
 ~~~{.go caption="main"}
  a := client.Activity{Time: time.Now(), Description: os.Args[2]}
@@ -158,7 +181,7 @@ Actually, there are all kinds of things that can go wrong with inserting records
 ~~~{.go caption="main"}
  id, err := activitiesClient.Insert(a)
  if err != nil {
-  println("Error:", err.Error())
+  fmt.Fprintln(os.Stderr, "Error:", err.Error())
   os.Exit(1)
  }
 ~~~
@@ -185,9 +208,9 @@ Added: overhead press: 70lbs as 0
 
 <div class="notice--info">
 
-ℹ️ **`go run` and `go build`**
+**Side Note: `go run` vs `go build`**
 
-I could continue to use `go run` like above while working on the CLI tool, but I'm going instead compile it (`go build -o build/activityclient cmd/client/main.go`) and use the `activityclient` binary.
+I could continue to use `go run` like above while working on this command lint tool, but I'm instead going to compile it (`go build -o build/activityclient cmd/client/main.go`) and use the `activityclient` binary.
 </div>
 
 ### Adding the Get Command-Line Flag
@@ -208,7 +231,7 @@ The first thing I need to do is parse the id into an int:
 case *get:
  id, err := strconv.Atoi(os.Args[2])
  if err != nil {
-  println("Invalid Offset: Not an integer")
+  fmt.Fprintln(os.Stderr, "Invalid Offset: Not an integer")
   os.Exit(1)
  }
 ~~~
@@ -228,7 +251,7 @@ Then I retrieve from the JSON client and handle any errors:
 ~~~{.go caption="main.go"}
 a, err := activitiesClient.Retrieve(id)
 if err != nil {
- println("Error:", err.Error())
+ fmt.Fprintln(os.Stderr, "Error:", err.Error())
  os.Exit(1)
 }
 ~~~
@@ -374,8 +397,8 @@ return document.ID, nil
 You can convert a struct back and forth to a `[]byte` of JSON using `json.Marshall` and `json.Unmarshal` like this:
 
 ``` go
-byte := json.Marshal(someStruct)
-json.Unmarshal(bytes, &someStruct)
+b := json.Marshal(someStruct)
+json.Unmarshal(b, &someStruct)
 ```
 
 Requests and Responses in the `http` package however work with `io.Reader` which looks like this:
