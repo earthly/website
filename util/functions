@@ -199,3 +199,11 @@ start-website(){
         JEKYLL_ENV=production bundle exec jekyll serve --incremental -H 0.0.0.0 -P 4001
     )
 }
+
+stop-blog(){ # kill what is on port 4002
+    kill "$(lsof -i :4002 | tail -n 1 | awk '{ print $2 }')" 
+}
+
+stop-website(){ # kill what is on port 4001
+    kill "$(lsof -i :4001 | tail -n 1 | awk '{ print $2 }')" 
+}

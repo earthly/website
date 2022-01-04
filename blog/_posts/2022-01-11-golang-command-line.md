@@ -16,16 +16,16 @@ I want my CLI to work something like this:
 
 ~~~{.bash caption=">_"}
 $ activityclient -add "lifted weights"
-Added as 0
+Added as 1
 $ activityclient -list
-ID:0  lifted weights  2021-12-21
+ID:1  lifted weights  2021-12-21
 ~~~
 
 Or I can get specific activities:
 
 ~~~{.bash caption=">_"}
-$ activity -get 0
-ID:0  lifted weights  2021-12-21
+$ activity -get 1
+ID:1  lifted weights  2021-12-21
 ~~~
 
 The existing backend doesn't support `list` yet so we will skip that one for now.
@@ -203,7 +203,7 @@ $ go run cmd/client/main.go -add "overhead press: 70lbs"
 ~~~
 
 ~~~{.ini}
-Added: overhead press: 70lbs as 0
+Added: overhead press: 70lbs as 1
 ~~~
 
 <div class="notice--info">
@@ -218,11 +218,11 @@ I could continue to use `go run` like above while working on this command lint t
 Get is similar to Add. It will work like this:
 
 ~~~{.bash caption=">_"}
-$ ./activityclient -get 0                      
+$ ./activityclient -get 1                      
 ~~~
 
 ~~~{.ini}
-ID:0    "overhead press: 70lbs"      2021-12-21
+ID:1    "overhead press: 70lbs"      2021-12-21
 ~~~
 
 The first thing I need to do is parse the id into an int:
@@ -298,22 +298,39 @@ If you'd like to learn more about time formatting, take a look at the [package d
 
 ## JSON Client
 
-For the JSON client, I need the structs I used in the [JSON service](/blog/golang-http/) article. I'll just copy pasta them in:
+For the JSON client, I need the structs I used in the [JSON service](/blog/golang-http/) article: 
 
-~~~{.go caption="activty.go"}
+~~~{.go caption="activty-log/api.go"}
+package api
+
+import "time"
+
 type Activity struct {
- Time        time.Time `json:"time"`
- Description string    `json:"description"`
- ID          int       `json:"id"`
+	Time        time.Time `json:"time"`
+	Description string    `json:"description"`
+	ID          int       `json:"id"`
 }
 
 type ActivityDocument struct {
- Activity Activity `json:"activity"`
+	Activity Activity `json:"activity"`
 }
 
 type IDDocument struct {
- ID int `json:"id"`
+	ID int `json:"id"`
 }
+~~~
+
+I could just copy these in, but after a small change to the backend[^2], it's fairly simple to just import these in:
+
+~~~{.go caption="activty.go"}
+package client
+
+import (
+	...
+
+	api "github.com/adamgordonbell/cloudservices/activity-log"
+)
+
 ~~~
 
 My activities JSON client is going to be called `internal/client/activity`, and it needs the URL for my server to make requests:
@@ -324,14 +341,14 @@ type Activities struct {
 }
 ~~~
 
-First thing I need to write in my activity client is insert. I wrap my `activity` in a document, and use `json.Marshal` to convert it:
+First thing I need to write in my activity client is insert, which will send my activity to service and get back it's id. To do this, I wrap my `activity` in a document, and use `json.Marshal` to convert it:
 
 ~~~{.go caption="activty.go"}
-func (c *Activities) Insert(activity Activity) (int, error) {
+func (c *Activities) Insert(activity api.Activity) (int, error) {
  activityDoc := ActivityDocument{Activity: activity}
  jsBytes, err := json.Marshal(activityDoc)
  if err != nil {
-  return -1, err
+  return 0, err
  }
 ~~~
 
@@ -353,7 +370,7 @@ I can do this by first creating a `http.Request` like this:
 ~~~{.go caption="activty.go"}
 req, err := http.NewRequest(http.MethodPost, c.URL, jsonContent)
 if err != nil {
- return -1, err
+ return 0, err
 }
 ~~~
 
@@ -362,7 +379,7 @@ And then making the request:
 ~~~{.go caption="activty.go"}
 res, err := http.DefaultClient.Do(req)
 if err != nil {
- return -1, err
+ return 0, err
 }
 ~~~
 
@@ -374,7 +391,7 @@ if res.Body != nil {
 }
 body, err := ioutil.ReadAll(res.Body)
 if err != nil {
- return -1, err
+ return 0, err
 }
 ~~~
 
@@ -384,7 +401,7 @@ To get the ID out of the response, I need to use `json.Unmarshal`:
 var document IDDocument
 err = json.Unmarshal(body, &document)
 if err != nil {
- return -1, err
+ return 0, err
 }
 return document.ID, nil
 ~~~
@@ -421,9 +438,8 @@ Which you can convert to like this:
 
 `Retrieve` is mainly the same as `Insert` but in reverse -- I `json.Marshal` the ID instead of the activities struct.
 
-~~~{.go caption="activty.go"}
-
-func (c *Activities) Retrieve(id int) (Activity, error) {
+~~~{.go captionb="activty.go"}
+func (c *Activities) Retrieve(id int) (api.Activity, error) {
  var document ActivityDocument
  idDoc := IDDocument{ID: id}
  jsBytes, err := json.Marshal(idDoc)
@@ -467,7 +483,7 @@ Then I just need to `json.Unmarshall` my activity document:
  return document.Activity, nil
 ~~~
 
-And with that, I have a [working](https://github.com/adamgordonbell/cloudservices/tree/main/ActivityClient), though basic, client. So I'm going to add some light testing and then call it a day.
+And with that, I have a [working](https://github.com/adamgordonbell/cloudservices/tree/v2-cli/activity-client), though basic, client. So I'm going to add some light testing and then call it a day.
 
 ## Testing the Happy Path
 
@@ -482,17 +498,17 @@ echo "=== Add Records ==="
 ./activityclient -add "20 minute walk"
 
 echo "=== Retrieve Records ==="
-./activityclient -get 0 | grep "overhead press"
-./activityclient -get 1 | grep "20 minute walk"
+./activityclient -get 1 | grep "overhead press"
+./activityclient -get 2 | grep "20 minute walk"
 ~~~
 
 Assuming the back-end service is up, and the client is built, this will test that `-add` is adding elements and that `-list` is retrieving them. If either is broken, the script won't exit cleanly.
 
 ## Continuous Integration
 
-I can quickly hook this happy path up to CI by extending my previous [Earthfile](https://github.com/adamgordonbell/cloudservices/blob/main/ActivityClient/Earthfile).
+I can quickly hook this happy path up to CI by extending my previous [Earthfile](https://github.com/adamgordonbell/cloudservices/blob/v2-cli/Earthfile).
 
-I'll create a `test` target for the client, and copy in client binary and the test script:
+I'll create a test target for my activity client (`ac-test`), and copy in client binary and the test script:
 
 ~~~{.dockerfile caption="Earthfile"}
 test:
@@ -517,9 +533,54 @@ You can find more about how that works on the [Earthly site](https://earthly.dev
 <figcaption></figcaption>
 </div>
 
+<div class="notice--primary">
+
+<!-- markdownlint-disable MD036 -->
+### Refactoring Notes
+
+#### Sentinel Values
+
+In the original backend, the element ids started at zero. This proved confusing for me in the case of error conditions, where the non-error parameters would be returned as zero values, so I changed the IDs to start at 1:
+
+~~~{.go captionb="activity-log/server/activty.go"}
+func (c *Activities) Insert(activity api.Activity) uint64 {
+	c.mu.Lock()
+	defer c.mu.Unlock()
+	activity.ID = uint64(len(c.activities)) + 1 // <- Start at 1
+	c.activities = append(c.activities, activity)
+	log.Printf("Added %v", activity)
+	return activity.ID
+}
+~~~
+
+#### Go Mod Changes
+
+My initial attempts to import the JSON service types into the CLI client were a failure. Problems encountered included:
+
+* **Problem:** module `module github.com/adamgordonbell/cloudservices/activitylog` was in a folder called `ActivityLog`. This case inconsistency caused problems when importing.
+
+  **Solution** I renamed all packages to be kebab-cased. `ActivityLog` is now `activity-log`. Problem solved!
+* **Problem:** Backend using uint64 and frontend using int leading to `cannot use id (type int) as type uint64 in field value` everywhere. 
+
+  **Solution** use `int` everywhere.
+* **Problem:** `activity-client` and `activity-log` are two separate applications, in two separate modules in the same monorepo. Importing became a bit messy, with `activity-log` importing a pin git version, rather than my local version.
+  **Solution** use `replace` in `go.mod` to use local version of `activity-log` in `activity-client`.
+
+``` ini
+module github.com/adamgordonbell/cloudservices/activity-client
+
+go 1.17
+
+require github.com/adamgordonbell/cloudservices/activity-log v0.0.0
+
+replace github.com/adamgordonbell/cloudservices/activity-log => ../activity-log
+``` 
+
+</div>
+
 ### What's Next
 
-So now I've learned the basics of building a command-line tool that calls a JSON web-service in GoLang. It went pretty smoothly and the amount of code I had to write was [pretty minimal](https://github.com/adamgordonbell/cloudservices/tree/main/ActivityClient).
+So now I've learned the basics of building a command-line tool that calls a JSON web-service in GoLang. It went pretty smoothly and the amount of code I had to write was [pretty minimal](https://github.com/adamgordonbell/cloudservices/tree/v2-cli/activity-client).
 
 There are two things I want to add to the activity tracker next. First, since all that calls the service is this client, I want to move to GRPC. Second, I need some sort of persistence - right now the service holds everything in memory. I can't have a power outage erasing all of my hard work.
 
@@ -528,3 +589,6 @@ Hopefully, you've learned something as well. If you want to be notified about th
 {% include cta/embedded-newsletter.html %}
 
 [^1]: One of the first things I learned was to call it GoLang and not Go, or I'd end up with advice on an augmented reality game and not the programming language.
+
+[^2]: In part one, these types were inside an `internal` package. I moved them into api.go for ease of sharing with the client.
+      See also [Go Mod Changes](#go-mod-changes)
