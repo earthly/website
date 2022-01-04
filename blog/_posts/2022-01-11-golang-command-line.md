@@ -538,15 +538,17 @@ You can find more about how that works on the [Earthly site](https://earthly.dev
 <!-- markdownlint-disable MD036 -->
 ### Refactoring Notes
 
+As I built this client I needed to make changes to it and the JSON service several times. Here are some of the changes I made.
+
 #### Sentinel Values
 
 In the original backend, the element ids started at zero. This proved confusing for me in the case of error conditions, where the non-error parameters would be returned as zero values, so I changed the IDs to start at 1:
 
 ~~~{.go captionb="activity-log/server/activty.go"}
-func (c *Activities) Insert(activity api.Activity) uint64 {
+func (c *Activities) Insert(activity api.Activity) int {
  c.mu.Lock()
  defer c.mu.Unlock()
- activity.ID = uint64(len(c.activities)) + 1 // <- Start at 1
+ activity.ID = len(c.activities) + 1 // <- Start at 1
  c.activities = append(c.activities, activity)
  log.Printf("Added %v", activity)
  return activity.ID
