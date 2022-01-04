@@ -28,9 +28,9 @@ $ activity -get 1
 ID:1  lifted weights  2021-12-21
 ~~~
 
-The existing backend doesn't support `list` yet so we will skip that one for now.
+The existing backend doesn't support `list` yet, so we will skip that one for now.
 
-First I create a new folder for my client:
+First, I create a new folder for my client:
 
 ~~~{.bash caption=">_"}
 $ go mod init github.com/adamgordonbell/cloudservices/activityclient
@@ -38,7 +38,7 @@ $ go mod init github.com/adamgordonbell/cloudservices/activityclient
 
 ## Command Line Flags
 
-I'm will start with the command line flags before I worry about talking to the backend.
+I will start with the command line flags before talking to the backend.
 
 Parsing command-line args is pretty simple, thanks to the `flag` package:
 
@@ -82,7 +82,7 @@ Usage of activityclient:
 exit status 1
 ~~~
 
-I'm exiting 1 because if I pass in invalid flags, this case will also be hit, and print a helpful reminder of the expected usage:
+I'm exiting with one because if I pass in invalid flags, this case will also be hit, and print a helpful reminder of the expected usage:
 
 ~~~{.bash caption=">_"}
 $ go run cmd/client/main.go -unknown -flags
@@ -102,7 +102,7 @@ exit status 1
 <!-- markdownlint-disable MD036 -->
 **What I Learned: GoLang CLI Flags**
 
-The `flag` package in the standard library makes handling command-line flags pretty simple. You define flags by calling `flag.Bool` or `flag.IntVar` and then call `flag.Parse()`, and your flags will be set. It seems a bit magical, but inside the flag package is a variable called CommandLine, a FlagSet used to parse the command line arguments and place them into the flags you configured.
+The `flag` package in the standard library makes handling command-line flags pretty simple. You define flags by calling `flag.Bool` or `flag.IntVar` and then call `flag.Parse()`, which will set your flags. It seems a bit magical, but inside the flag package is a variable called CommandLine, a FlagSet used to parse the command line arguments and place them into the flags you configured.
 
 Inside the flag package, each flag is defined like this:
 
@@ -148,7 +148,7 @@ exit status 1
 
 **Side Note: Printing Errors in Golang**
 
-When something goes wrong, you want to print to standard error and then exit.
+You want to print to standard error and exit when something goes wrong.
 
 The most common way to do this is using the `log` package or another logging framework like [`logrus`](https://github.com/Sirupsen/logrus).
 
@@ -167,7 +167,7 @@ fmt.Fprintln(os.Stderr, "My Error")
 Ok, back to the activities project.
 </div>
 
-Assuming the correct number of arguments was passed and my program doesn't log an error and exit then I just create my activity and try to add to `activitiesClient`:
+Assuming my program is passed the correct number of arguments and doesn't log an error and exit, then I create my activity and try to add to `activitiesClient`:
 
 ~~~{.go caption="main"}
  a := client.Activity{Time: time.Now(), Description: os.Args[2]}
@@ -210,7 +210,7 @@ Added: overhead press: 70lbs as 1
 
 **Side Note: `go run` vs `go build`**
 
-I could continue to use `go run` like above while working on this command lint tool, but I'm instead going to compile it (`go build -o build/activityclient cmd/client/main.go`) and use the `activityclient` binary.
+I could continue to use `go run` like above while working on this command line tool, but I'm instead going to compile it (`go build -o build/activityclient cmd/client/main.go`) and use the `activityclient` binary.
 </div>
 
 ### Adding the Get Command-Line Flag
@@ -298,7 +298,7 @@ If you'd like to learn more about time formatting, take a look at the [package d
 
 ## JSON Client
 
-For the JSON client, I need the structs I used in the [JSON service](/blog/golang-http/) article: 
+For the JSON client, I need the structs I used in the [JSON service](/blog/golang-http/) article:
 
 ~~~{.go caption="activty-log/api.go"}
 package api
@@ -306,17 +306,17 @@ package api
 import "time"
 
 type Activity struct {
-	Time        time.Time `json:"time"`
-	Description string    `json:"description"`
-	ID          int       `json:"id"`
+ Time        time.Time `json:"time"`
+ Description string    `json:"description"`
+ ID          int       `json:"id"`
 }
 
 type ActivityDocument struct {
-	Activity Activity `json:"activity"`
+ Activity Activity `json:"activity"`
 }
 
 type IDDocument struct {
-	ID int `json:"id"`
+ ID int `json:"id"`
 }
 ~~~
 
@@ -326,9 +326,9 @@ I could just copy these in, but after a small change to the backend[^2], it's fa
 package client
 
 import (
-	...
+ ...
 
-	api "github.com/adamgordonbell/cloudservices/activity-log"
+ api "github.com/adamgordonbell/cloudservices/activity-log"
 )
 
 ~~~
@@ -502,7 +502,7 @@ echo "=== Retrieve Records ==="
 ./activityclient -get 2 | grep "20 minute walk"
 ~~~
 
-Assuming the back-end service is up, and the client is built, this will test that `-add` is adding elements and that `-list` is retrieving them. If either is broken, the script won't exit cleanly.
+Assuming the backend service is up, and the client is built, this will test that `-add` is adding elements and that `-list` is retrieving them. If either is broken, the script won't exit cleanly.
 
 ## Continuous Integration
 
@@ -526,7 +526,7 @@ Then I'll start-up the docker container for the service (using its GitHub path) 
     END
 ~~~
 
-You can find more about how that works on the [Earthly site](https://earthly.dev), but the important thing is now my GitHub Action will build the back-end service, the client, and then test them together using my shell script. It gives me a quick sanity check on the compatibility of my client that I can run whenever I'm adding new features.
+You can find more about how that works on the [Earthly site](https://earthly.dev), but the important thing is now my GitHub Action will build the backend service, the client, and then test them together using my shell script. It gives me a quick sanity check on the compatibility of my client that I can run whenever I'm adding new features.
 
 <div class="wide">
 {% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/8600.png --alt {{ build in GitHubActions }} %}
@@ -544,12 +544,12 @@ In the original backend, the element ids started at zero. This proved confusing 
 
 ~~~{.go captionb="activity-log/server/activty.go"}
 func (c *Activities) Insert(activity api.Activity) uint64 {
-	c.mu.Lock()
-	defer c.mu.Unlock()
-	activity.ID = uint64(len(c.activities)) + 1 // <- Start at 1
-	c.activities = append(c.activities, activity)
-	log.Printf("Added %v", activity)
-	return activity.ID
+ c.mu.Lock()
+ defer c.mu.Unlock()
+ activity.ID = uint64(len(c.activities)) + 1 // <- Start at 1
+ c.activities = append(c.activities, activity)
+ log.Printf("Added %v", activity)
+ return activity.ID
 }
 ~~~
 
@@ -557,13 +557,13 @@ func (c *Activities) Insert(activity api.Activity) uint64 {
 
 My initial attempts to import the JSON service types into the CLI client were a failure. Problems encountered included:
 
-* **Problem:** module `module github.com/adamgordonbell/cloudservices/activitylog` was in a folder called `ActivityLog`. This case inconsistency caused problems when importing.
+* **Problem:** module `module github.com/adamgordonbell/cloudservices/activitylog` was in a folder called `ActivityLog`. This caused inconsistency caused problems when importing.
 
   **Solution** I renamed all packages to be kebab-cased. `ActivityLog` is now `activity-log`. Problem solved!
-* **Problem:** Backend using uint64 and frontend using int leading to `cannot use id (type int) as type uint64 in field value` everywhere. 
+* **Problem:** Backend using uint64 and frontend using int leading to `cannot use id (type int) as type uint64 in field value` everywhere.
 
   **Solution** use `int` everywhere.
-* **Problem:** `activity-client` and `activity-log` are two separate applications, in two separate modules in the same monorepo. Importing became a bit messy, with `activity-log` importing a pin git version, rather than my local version.
+* **Problem:** `activity-client` and `activity-log` are two separate applications, in two different modules, in the same monorepo. Importing became a bit messy, with `activity-log` importing a pinned git version rather than my local version.
   **Solution** use `replace` in `go.mod` to use local version of `activity-log` in `activity-client`.
 
 ``` ini
@@ -574,15 +574,15 @@ go 1.17
 require github.com/adamgordonbell/cloudservices/activity-log v0.0.0
 
 replace github.com/adamgordonbell/cloudservices/activity-log => ../activity-log
-``` 
+```
 
 </div>
 
 ### What's Next
 
-So now I've learned the basics of building a command-line tool that calls a JSON web-service in GoLang. It went pretty smoothly and the amount of code I had to write was [pretty minimal](https://github.com/adamgordonbell/cloudservices/tree/v2-cli/activity-client).
+So now I've learned the basics of building a command-line tool that calls a JSON web-service in GoLang. It went pretty smoothly, and the amount of code I had to write was [pretty minimal](https://github.com/adamgordonbell/cloudservices/tree/v2-cli/activity-client).
 
-There are two things I want to add to the activity tracker next. First, since all that calls the service is this client, I want to move to GRPC. Second, I need some sort of persistence - right now the service holds everything in memory. I can't have a power outage erasing all of my hard work.
+There are two things I want to add to the activity tracker next. First, since all that calls to backend service are in this client, I want to move to GRPC. Second, I need some persistence - right now, the service holds everything in memory. I can't have a power outage erasing all of my hard work.
 
 Hopefully, you've learned something as well. If you want to be notified about the next installment, sign up for the newsletter:
 
