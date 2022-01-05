@@ -10,7 +10,7 @@ canonical_url: https://earthly.dev/blog/idiots-and-maniacs/
 
 If you do software-as-a-service development and you have paying customers, you at some point learn about the need for operational monitoring and observability. Personally, I went through a process something like this:
 
-1. Service has some basic [logging](/blog/understanding-docker-logging-and-log-files) and an uptime alert.
+1. Service has some basic [logging](earthly.dev/blog/understanding-docker-logging-and-log-files) and an uptime alert.
 1. Service has a health-check endpoint, is deployed in triplicate behind a load balancer.
 1. Logs are real-time shipped to Splunk / ELK Stack.
 1. Metrics set up in Datadog / Prometheus with paging.
@@ -40,9 +40,9 @@ So it is with software development. Everyone who takes an idea further than I ha
 
 There was a time when I thought all code should have 80% unit test code coverage as a minimum. Anything less was practically unethical, and if you didn't think so, then you hadn't read Clean Code™️ enough times.
 
-![SQLite](https://earthly.dev/blog/generated/assets/images/idiots-and-maniacs/9770-400-5e5247841.webp)
+![SQLite](https://earthly.dev/blog/generated/assets/images/idiots-and-maniacs/9770-500-410f473a4.webp)
 
-On the other hand, Richard Hipp -- who tests to 100% code coverage at the machine code level, covering every branch by running billions of tests each release[^1] -- is a testing maniac.
+On the other hand, Richard Hipp – who tests to 100% code coverage at the machine code level, covering every branch by running billions of tests each release[^1] – is a testing maniac.
 
 I hope you see where I'm going. This idiot to maniac gradient feels right, but it makes no sense[^2]. How can I be the only the person driving the right speed? Wherever you find yourself along the spectrum is more a reflection of the context in which you work than anything else.
 
@@ -60,6 +60,8 @@ Here are some made-up and exaggerated examples:
 I'm not trying to pick on any of these languages - Typescript, Go, and Kotlin are exceptionally well suited to their niche. But contexts vary[^3], and it takes mental effort to see that people making other trade-offs sometimes have good reasons for it.
 
 That doesn't mean that other people are never wrong, though. People choose the wrong tool for the job all the time. For example, if I were doing SQLite's level of testing for a low-reliability, low-traffic, state-less web service when a couple of integration tests would do, then that'd be a mistake, but you'd have to know the context to make that call.
+
+What do you think? This article was originally published on [earthly.dev](earthly.dev).
 
 
 [^1]: Richard is the creator of SQLite. See my [interview](https://corecursive.com/066-sqlite-with-richard-hipp/#billions-of-tests) with him for a discussion of his testing approach.
