@@ -50,6 +50,11 @@ os:
           </header>
           <code class="Home-product-Earthfile-code">brew install earthly/earthly/earthly && earthly bootstrap</code>
       </div>
+      
+      <div class="Home-product-note" markdown="1">
+      For shell auto-completion:
+      * Homebrew may require [additional configuration](https://docs.brew.sh/Shell-Completion) in your profile
+      </div>
 
   tab3:
     name: windows
