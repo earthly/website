@@ -15,12 +15,15 @@ In this article, I'll demonstrate the basics of handling errors in Go, as well a
 ## The Error Type
 
 The error type in Go is implemented as the following interface:
+<div class="narrow-code">
 
 ~~~{.go}
 type error interface {
     Error() string
 }
 ~~~
+
+</div>
 
 So basically, an error is anything that implements the `Error()` method, which returns an error message as a string. It's that simple!
 
