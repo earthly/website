@@ -5,6 +5,8 @@ categories:
 toc: true
 newsletter_side: false
 author: Adam
+sidebar:
+  nav: "activity-tracker"
 internal-links:
  - golang json
  - golang http
