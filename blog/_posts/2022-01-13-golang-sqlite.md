@@ -1,5 +1,5 @@
 ---
-title: "SQLite and GoLang"
+title: "Golang SQLite `database/sql`"
 categories:
   - Tutorials
 toc: true
@@ -7,34 +7,27 @@ author: Adam
 sidebar:
   nav: "activity-tracker"
 internal-links:
- - just an example
+ - sqlite
+ - sqlite3
+ - sqlite-utils
 ---
-### Writing Article Checklist
+**Writing Article Checklist**
 
-- [ ] Write Outline
-- [ ] Write Draft
 - [ ] Fix Grammarly Errors
 - [ ] Read out loud
-- [ ] Write 5 or more titles and pick the best on
 - [ ] First two paragraphs: What's it about? Why listen to you?
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
 - [ ] Run mark down linter (`lint`)
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links to other articles
-- [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
 - [ ] Raise PR
 
-Welcome back. I'm an experienced developer, learning golang by building an activity tracker. Last time I built a [command line client]() to connect to the [Json Service]() but today is all about database persistence.
+Welcome back. I'm an experienced developer, learning Golang by building an activity tracker. Last time I built a [command line client](/blog/golang-command-line/) to connect to the [Json Service](/blog/golang-http/) but today is all about database persistence using `database/sql`.
 
-My goal for today is to add a SQLite backend to the service so that my work outs aren't lost if the service goes down. And once I have that in I will be able to add the `--list` command, which I skipped before – it's the type of feature that works is really simple to do with SQL.
+**If you curious about the basics of storing persistent data into a SQL database using Golang, this tutorial will be helpful for you.** I'm going to be using `sqlite3` and I'll add lots of heading for ease of skimming.
 
-## Steps
+My goal for today is to add a SQLite backend to [the service](https://github.com/adamgordonbell/cloudservices) so that my workouts aren't lost if the service goes down. And once I have that in I will be able to add the `--list` command, which I skipped before – it's the type of feature that is really simple to do with SQL backend.
 
 ## Install SQLite
 
-My first step is to install SQLite and SQLite-utils. 
+This first thing I need is to setup my dev environment. I need to install SQLite3 and SQLite-utils 
 
 ``` bash
  brew install sqlite3
@@ -48,7 +41,7 @@ My first step is to install SQLite and SQLite-utils.
 
 `sqlite-utils` is a handy tool for working with sqlite databases at the command line. It makes it simple to query for results or insert records from your terminal. 
 
-One thing in particular its good at is creating a database schema based on a CSV or JSON schema. So if I start up the service and get a sample JSON doc:
+One thing in particular `sqlite-utils` is good at is creating a database schema based on a CSV or JSON schema. So if I start up the service and get a sample JSON doc:
 
 ```
 > curl -X GET -s localhost:8080 -d '{"id": 1}' | jq '.activity'
@@ -78,7 +71,7 @@ CREATE TABLE [activities] (
 );
 ```
 
-I'm going to show the way to create a schema manually sqlite3 below, but its helpful to know you can have a tool create the schema for you.
+I'm to this sqlite3 schema creation manually below, but its helpful to know you can have a tool create a schema for you.
 </div>
 
 ## SQLite3 Create Database
@@ -100,9 +93,9 @@ sqlite> sqlite> CREATE TABLE [activities] (
 
 **ℹ️ SQLite, Data Types, and `database/sql`**
 
-You may notice that I'm storing time as `DATETIME` whereas sqlite-utils suggested `TEXT` for that column. In SQLite, there are reasons to prefer one over the other, depending upon the case. SQLite is an amazing database but it has an unusual stance on types: it doesn't [really care](https://www.sqlite.org/datatype3.html) about static types. In fact, Richard Hipp, the creator doesn't even like the term static types, he prefers rigid types, which he thinks are often [a mistake](https://www.sqlite.org/flextypegood.html).[^1]
+You may notice that I'm storing time as `DATETIME` whereas sqlite-utils suggested `TEXT` for that column. SQLite is an amazing database but it has an unusual stance on types: it doesn't [really care](https://www.sqlite.org/datatype3.html) about static types. In fact, Richard Hipp, the creator doesn't even like the term static types, he prefers rigid types, which he thinks are often [a mistake](https://www.sqlite.org/flextypegood.html).[^1]
 
-Because of this stance, there is no staticly verified `TIME` or `DATETIME` type in SQLite. Only `INTEGER`, `REAL`, `TEXT`, and `BLOB`. If you set the type as `DATETIME`, it is still stored as `TEXT` on disk and you can insert anything into it:
+Because of this stance, there is no statically verified `TIME` or `DATETIME` type in SQLite. Only `INTEGER`, `REAL`, `TEXT`, and `BLOB`. If you set the type as `DATETIME`, it is still stored as `TEXT` on disk and you can insert anything into it:
 
 ```
 sqlite> insert into activities values 
@@ -111,7 +104,7 @@ sqlite> select * from activities;
 1|not a date|bike class
 ```
 
-Why then am I using `DATETIME`? Well, It's because I'm going to be using `database/sql` in my service and it uses the column types to infer the type of conversions that are valid. In other words, I need it to be `DATETIME` so that I can convert it into a `time.Time` when we jump into our GoLang service.
+Why then am I using `DATETIME`? Well, It's because I'm going to be using `database/sql` in my service and it uses the column types to infer the type of conversions that are valid. In other words, I need it to be `DATETIME` so that I can convert it into a `time.Time` when we jump into our Golang service.
 
 </div>
 
@@ -172,7 +165,7 @@ With my database in place, I can now start in on changes to the service.
 
 ## GoLang SQLite Setup
 
-To use sqlite3 from golang, I need a database driver. I'm going to use [`go-sqlite3`](https://github.com/mattn/go-sqlite3) which I can install like this:
+To use sqlite3 from Golang, I need a database driver. I'm going to use [`go-sqlite3`](https://github.com/mattn/go-sqlite3) which I can install like this:
 
 ```
 go get github.com/mattn/go-sqlite3
@@ -180,7 +173,9 @@ go get github.com/mattn/go-sqlite3
 
 *Installing go-sqlite3 requires `gcc` and `CGO_ENABLED=1`, both of which we ready to go on my macbook. However, I will have to make some changes to the CI process to ensure a c compiler is present.*
 
-## GoLang SQL Example Repository
+Finally, let's jump into the GoLang code.
+
+## Golang SQL Repository
 
 Previously `server.Activities` contained a slice of `api.Activity`. Now I'm going to update it to contain a pointer to a `sql.DB`. This will be my database handle. That is it will be how I store and retrieve the activity records. Here is a diff:
 
@@ -195,6 +190,8 @@ Previously `server.Activities` contained a slice of `api.Activity`. Now I'm goin
 ~~~
 
 `sql.DB` is not sqlite specific. It is can represent a connection to any relational database with a driver. Let's connect to it. 
+
+### Database Connection Open
 
 For this round I'm going to hard code my file path:
 
@@ -231,9 +228,17 @@ import (
 )
 ~~~
 
-After doing that, things seem to work. It seems a little bit magical for an import to change execution but the reason is that `db.Open` looks into a map of drivers (`drivers[driverName]`) for the driver matching `sqlite3` and the initialization of `github.com/mattn/go-sqlite3` calls `sql.Register` and adds itself to that driver map. Also, the error message told me exactly what to do, which was nice.
+After doing that, things seem to work. 
 
-### Create Table 
+<div class="notice--info">
+
+**ℹ️ `database/sql` drivers**
+
+It seems a little bit magical for an import to change execution but the reason is that `db.Open` looks into a map of drivers (`drivers[driverName]`) for the driver matching `sqlite3` and the initialization of `github.com/mattn/go-sqlite3` calls `sql.Register` and adds itself to that driver map. Also, the error message told me exactly what to do, which was nice.
+
+</div>
+
+### Initialize Database and Setup Schema
 
 I'd like my service to be able to bootstrap the database itself if one doesn't exist. After all once of the nice things about sqlite is how quickly a database can be created. For now, I'm going to initialize things by using a `CREATE TABLE IF NOT EXISTS` statement. This way I can keep my existing data if I have it, but if I don't I'll start from scratch. 
 
@@ -262,12 +267,14 @@ func NewActivities() (*Activities, error) {
 	}, nil
 }
 ~~~
-<figcaption>Intialize the db like this (code is here)</figcaption>
 
-## Golang Insert bla
+<figcaption>Initialize the db like this (code is on github)</figcaption>
+
+## Golang Insert into Database
 
 I can now use my `sql.db` handle to insert data and get back primary key. The most concise way to do this is using `db.Exec` like this:
-```
+
+~~~{.go caption="internal/server/activity.go"}
 func (c *Activities) Insert(activity api.Activity) (int, error) {
 	res, err := c.db.Exec("INSERT INTO activities VALUES(NULL,?,?);", activity.Time, activity.Description)
 	if err != nil {
@@ -280,58 +287,15 @@ func (c *Activities) Insert(activity api.Activity) (int, error) {
 	}
 	return int(id), nil
 }
-```
+~~~
 
-//ToDo: is this even a good idea? The prepared statment is thrown away
 
-However, it does take time for SQLite to parse the insert string when sent this way. It probably doesn't matter for this case, since the number of inserts I'm doing is pretty low, but I'm going to use a prepared statement for insert.
-
-Doing so means first preparing a statement `insStmt`, like this:
-```
-insStmt, err := c.db.Prepare("INSERT INTO activities VALUES(NULL,?,?);")
-	if err != nil {
-		return 0, err
-	}
-	defer insStmt.Close()
-```
-
-And then using it to execute my insert:
-
-```
-res, err := insStmt.Exec(activity.Time, activity.Description)
-	if err != nil {
-		return 0, err
-	}
-```
-The whole thing, slightly simplified looks like this:
-```
-func (c *Activities) Insert(activity api.Activity) (int, error) {
-	insStmt, err := c.db.Prepare("INSERT INTO activities VALUES(NULL,?,?);")
-	if err != nil {
-		return 0, err
-	}
-	defer insStmt.Close()
-
-	res, err := insStmt.Exec(activity.Time, activity.Description)
-	if err != nil {
-		return 0, err
-	}
-
-	var id int64
-	if id, err = res.LastInsertId(); err != nil {
-		return 0, err
-	}
-	return int(id), nil
-}
-```
-
-And I can test it with curl:
-
-## Prepared statements
+And I can test my insert code with curl:
 
 //todo: make these examples better and consistent across the tutorial
 ```
- curl -X POST -s localhost:8080 -d \    '{"activity": {"description": "christmas eve bike class", "time":"2021-12-09T16:34:04Z"}}'
+ curl -X POST -s localhost:8080 -d \    
+ '{"activity": {"description": "christmas eve bike class", "time":"2021-12-09T16:34:04Z"}}'
 {"id":5}
 ```
 And I can see that it's ending up in the db:
@@ -348,25 +312,152 @@ sqlite-utils activities.db "select * from activities" --table
 
 
 ## Golang Select Row.Scan
-Now that I can insert, its time for retrieve. 
 
-I could use db.query for my retrieval by id.
+Now that I can insert data into the database, its time to get some data back out. 
+
+I can use db.query for my retrieval by id.
+
+~~~{.go caption="internal/server/activity.go"}
+row, err := c.db.Query("SELECT * FROM activities WHERE id=?", id)
+if err != nil {
+	return nil, err
+}
+~~~
+<figcaption>I can get a single row with `Query` but there is a better way.</figcaption>
+
+But doing this gives me back `sql.Rows`, a cursor that points to one to n rows. Using it I'll have to handle the possibility of multiple rows coming back — since that is impossible with my primary key based query I'd probably just assume I always get a single row back.
+
+Thankfully, I can use `sql.QueryRow` which does just this:
+
+> QueryRow executes a query that is expected to return at most one row.
+> QueryRow always returns a non-nil value. Errors are deferred until
+> Row's Scan method is called.
+> if the query selects no rows, the *Row's Scan will return ErrNoRows.
+> Otherwise, the *Row's Scan scans the first selected row and discards
+> the rest.
+
+My usage looks like this:
+
+~~~{.go caption="internal/server/activity.go"}
+	row := c.db.QueryRow("SELECT id, time, description FROM activities WHERE id=?", id)
+~~~
+
+To convert the database values into my struct `api.Activity` I used `row.Scan` ( or `row.Scan` for multiple rows). It copies columns from the row into the value pointed at by each of its arguments.
+
+With that in place, my full sql select to struct code looks like this:
+
+~~~{.go caption="internal/server/activity.go"}
+func (c *Activities) Retrieve(id int) (api.Activity, error) {
+	log.Printf("Getting %d", id)
+
+	// Query DB row based on ID
+	row := c.db.QueryRow("SELECT id, time, description FROM activities WHERE id=?", id)
+
+	// Parse row into Activity struct
+	activity := api.Activity{}
+	var err error
+	if err = row.Scan(&activity.ID, &activity.Time, &activity.Description); err == sql.ErrNoRows {
+		log.Printf("Id not found")
+		return api.Activity{}, ErrIDNotFound
+	}
+	return activity, err
+}
+~~~
+
+<div class="notice--info">
+
+**ℹ️ Understanding Scan**
+
+`rows.Scan` has no problem handling cases where the column value is an integer and destination value is also an integer – it just copies the row value into the pointed at destination value.
+
+But how can it convert the string returned by sqlite into a `time.Time`? After all 01/12/2022 means different things depending whether you expect `DD/MM/YYYY` or `MM/DD/YYY` and sqlite is actually storing this dates as strings on disk. It turns out that it handles more complex types by implementing the scanner interface, which looks like this:
+
+```
+```
+
+The `time.Time` scan implementation of this looks this:
+
+~~~{.go caption="database/sql/sql.go"}
+
+type NullTime struct {
+	Time  time.Time
+	Valid bool // Valid is true if Time is not NULL
+}
+func (n *NullTime) Scan(value interface{}) error {
+	if value == nil {
+		n.Time, n.Valid = time.Time{}, false
+		return nil
+	}
+	n.Valid = true
+	return convertAssign(&n.Time, value)
+}
+
+~~~
+And the relevant part of `convertAssign` looks like this:
+
+~~~{.go caption="database/sql/convert.go"}
+case time.Time:
+		switch d := dest.(type) {
+		case *time.Time:
+			*d = s
+			return nil
+		case *string:
+			*d = s.Format(time.RFC3339Nano)
+			return nil
+		case *[]byte:
+			if d == nil {
+				return errNilPtr
+			}
+			*d = []byte(s.Format(time.RFC3339Nano))
+			return nil
+		case *RawBytes:
+			if d == nil {
+				return errNilPtr
+			}
+			*d = s.AppendFormat((*d)[:0], time.RFC3339Nano)
+			return nil
+		}
+~~~
+
+In other words, `database/sql` is expecting any strings that are dates to be formatted like this: `2006-01-02T15:04:05.999999999Z07:00` and it's up to our sqlite driver `github.com/mattn/go-sqlite3` to get that string into the correct format.
+
+`go-sqlite3` does this by keeping a list of datetime formats to try:
+
+~~~{.go caption="mattn/go-sqlite3/sqlite3.go"}
+
+// SQLiteTimestampFormats is timestamp formats understood by both this module
+// and SQLite.  The first format in the slice will be used when saving time
+// values into the database. When parsing a string from a timestamp or datetime
+// column, the formats are tried in order.
+var SQLiteTimestampFormats = []string{
+	// By default, store timestamps with whatever timezone they come with.
+	// When parsed, they will be returned with the same timezone.
+	"2006-01-02 15:04:05.999999999-07:00",
+	"2006-01-02T15:04:05.999999999-07:00",
+	"2006-01-02 15:04:05.999999999",
+	"2006-01-02T15:04:05.999999999",
+	"2006-01-02 15:04:05",
+	"2006-01-02T15:04:05",
+	"2006-01-02 15:04",
+	"2006-01-02T15:04",
+	"2006-01-02",
+}
+~~~
+
+So, as long as my dates strings are in one of these formats, everything will work correctly on retreival. And when inserting the first format in the list will be used to convert the other way.
+
+</div>
+
+
+
 
 ```
 da code
 ```
-To do so I would need to check the row count returned and handle the specific case of getting zero rows back.
 
-```
-da code
-```
 
-Instead I can use  db.QueryRow:
-```
-	row := c.db.QueryRow("SELECT * FROM activities WHERE id=?", id)
-```
 
-## GoLang SQL row.Scan
+## Golang SQL row.Scan
 
 Then I do the mapping:
 ```
@@ -375,6 +466,67 @@ Then I do the mapping:
 , and things can go badly like this
 
 
+<div class="notice--info">
+
+**ℹ️ Prepared statements**
+
+It takes time for SQLite to parse the strings of SQL I'm sending it. And since the sql never changes using prepared statements is a great option to consider.
+
+To do so I would need to add them to my `Activities` struct and initialize them with the database handle init code.
+
+~~~{.diff caption="internal/server/activity.go"}
+
+type Activities struct {
+	db     *sql.DB
+	mu     sync.Mutex
++	insert, retrieve, list *sql.Stmt
+}
+
+func NewActivities() (*Activities, error) {
+	db, err := sql.Open("sqlite3", file)
+	if err != nil {
+		return nil, err
+	}
+	if _, err := db.Exec(create); err != nil {
+		return nil, err
+	}
++	insert, err := db.Prepare("INSERT INTO activities VALUES(NULL,?,?);")
++	if err != nil {
++		return nil, err
++	}
+	...
+	return &Activities{
+		db:     db,
++		insert: insert,
++		retrieve: retrieve,
++		list: list,
+	}, nil
+
+}
+~~~
+
+And then I could use these statements to perform any SQL work, saving the parsing:
+
+~~~{.go captionb="internal/server/activity.go"}
+	res, err := insStmt.Exec(activity.Time, activity.Description)
+	if err != nil {
+		return 0, err
+	}
+~~~
+
+I'd also have to remember to close these statements when my db handle was closed. 
+
+This seems like overkill for my activity tracker, so I'll avoid this for now. But I did find [this example](https://github.com/TechEmpower/FrameworkBenchmarks/blob/master/frameworks/Go/echo/src/main.go) helpful for understanding what using prepared statements would look like.
+
+</div>
+
+### What's Next
+
+My current plan is to ... After that, I'm thinking about adding other features, but I'll keep those to myself for now.
+
+If you want to be notified about the next installment, sign up for the newsletter:
+
+{% include cta/embedded-newsletter.html %}
 
 
 
