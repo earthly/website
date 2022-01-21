@@ -392,7 +392,7 @@ It turns out that it handles more complex types by implementing the scanner inte
 
 ~~~{.go caption="database/sql/sql.go"}
 type Scanner interface {
-	Scan(src interface{}) error
+ Scan(src interface{}) error
 }
 ~~~
 
@@ -422,7 +422,7 @@ case time.Time:
   }
 ~~~
 
-So if SQLite is storing dates and time as strings and `database/sql` is getting them as `time.Time` then the conversion must be happening somewhere right? And where this conversion happens does matter – if I import data from another source, I want to make sure its in a standard supported format. 
+So if SQLite is storing dates and time as strings and `database/sql` is getting them as `time.Time` then the conversion must be happening somewhere right? And where this conversion happens does matter – if I import data from another source, I want to make sure its in a standard supported format.
 
 Well, after a little digging into `go-sqlite3` and I found this:
 
