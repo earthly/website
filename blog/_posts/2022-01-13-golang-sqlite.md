@@ -10,6 +10,7 @@ internal-links:
  - sqlite
  - sqlite3
  - sqlite-utils
+ - "database/sql"
 ---
 <!-- markdownlint-disable MD036 -->
 Welcome back. I'm an experienced developer, learning Golang by building an activity tracker. Last time I made a [command-line client](/blog/golang-command-line/) to connect to the [JSON Service](/blog/golang-http/), but today is all about database persistence using `database/sql`.
@@ -389,30 +390,13 @@ But how can it convert the string returned by SQLite into a `time.Time`? After a
 
 It turns out that it handles more complex types by implementing the scanner interface, which looks like this:
 
-```
-TODO
-```
-
-The `time.Time` scan implementation of this looks this:
-
 ~~~{.go caption="database/sql/sql.go"}
-
-type NullTime struct {
- Time  time.Time
- Valid bool // Valid is true if Time is not NULL
+type Scanner interface {
+	Scan(src interface{}) error
 }
-func (n *NullTime) Scan(value interface{}) error {
- if value == nil {
-  n.Time, n.Valid = time.Time{}, false
-  return nil
- }
- n.Valid = true
- return convertAssign(&n.Time, value)
-}
-
 ~~~
 
-And the relevant part of `convertAssign` looks like this:
+However, time values come in from the driver as values `time.Time` and get mapped to other values using `convertAssign` like this:
 
 ~~~{.go caption="database/sql/convert.go"}
 case time.Time:
@@ -438,9 +422,9 @@ case time.Time:
   }
 ~~~
 
-In other words, `database/sql` is expecting any strings that are dates to be formatted like this: `2006-01-02T15:04:05.999999999Z07:00` and it's up to our SQLite driver `github.com/mattn/go-sqlite3` to get that string into the correct format.
+So if SQLite is storing dates and time as strings and `database/sql` is getting them as `time.Time` then the conversion must be happening somewhere right? And where this conversion happens does matter – if I import data from another source, I want to make sure its in a standard supported format. 
 
-`go-sqlite3` does this by keeping a list of Timestamp formats to try:
+Well, after a little digging into `go-sqlite3` and I found this:
 
 ~~~{.go caption="mattn/go-sqlite3/sqlite3.go"}
 
@@ -463,7 +447,7 @@ var SQLiteTimestampFormats = []string{
 }
 ~~~
 
-So, as long as my dates strings are in one of these formats, everything will work correctly on retrieval. And when inserting, the first format in the list will be used to convert the other way.
+So, that list of priority order formats drives the conversion process. As long as my dates strings are in one of these formats, they will get correctly converted when I read them out. And when I'm inserting records, the first format in the list will be used to transform my `time.Time` to a database string.
 
 </div>
 
