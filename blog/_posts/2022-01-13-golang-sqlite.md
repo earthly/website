@@ -388,7 +388,7 @@ func (c *Activities) Retrieve(id int) (api.Activity, error) {
 
 But how can it convert the string returned by SQLite into a `time.Time`? After all `01/12/2022` means different things depending on whether you expect `DD/MM/YYYY` or `MM/DD/YYY`, and SQLite stores these dates as strings on disk.
 
-It turns out that it handles more complex types by implementing the scanner interface, which looks like this:
+It turns out that `Scan` handles more complex types by implementing the scanner interface, which looks like this:
 
 ~~~{.go caption="database/sql/sql.go"}
 type Scanner interface {
@@ -396,7 +396,7 @@ type Scanner interface {
 }
 ~~~
 
-However, time values come in from the driver as values `time.Time` and get mapped to other values using `convertAssign` like this:
+However, time values come in from the driver as `time.Time` and get mapped to other values using `convertAssign` like this:
 
 ~~~{.go caption="database/sql/convert.go"}
 case time.Time:
@@ -422,7 +422,7 @@ case time.Time:
   }
 ~~~
 
-So if SQLite is storing dates and time as strings and `database/sql` is getting them as `time.Time` then the conversion must be happening somewhere right? And where this conversion happens does matter – if I import data from another source, I want to make sure its in a standard supported format.
+So if SQLite is storing dates and time as strings and `database/sql` is getting them as `time.Time` then where is the conversion taking place? And this does matter – if I import data from another source, I want to make sure it will get converted correctly.
 
 Well, after a little digging into `go-sqlite3` and I found this:
 
@@ -447,7 +447,9 @@ var SQLiteTimestampFormats = []string{
 }
 ~~~
 
-So, that list of priority order formats drives the conversion process. As long as my dates strings are in one of these formats, they will get correctly converted when I read them out. And when I'm inserting records, the first format in the list will be used to transform my `time.Time` to a database string.
+So, that list of priority order formats drives the conversion process. 
+
+As long as my dates strings are in one of these formats, they will get correctly converted when I read them out. And when I'm inserting records, the first format in the list will be used to transform my `time.Time` to a database string.
 
 </div>
 
@@ -455,7 +457,7 @@ So, that list of priority order formats drives the conversion process. As long a
 
 Now I can add my `-list` endpoint. It follows a similar pattern as Retrieve (`-get`) but using `db.Query`:
 
-~~~{.go caption="internal/server/activity.go"}
+~~~{.go captionb="internal/server/activity.go"}
 func (c *Activities) List(offset int) ([]api.Activity, error) {
  rows, err := c.db.Query("SELECT * FROM activities WHERE ID > ? ORDER BY id DESC LIMIT 100", offset)
  if err != nil {
