@@ -447,7 +447,7 @@ var SQLiteTimestampFormats = []string{
 }
 ~~~
 
-So, that list of priority order formats drives the conversion process. 
+So, that list of priority order formats drives the conversion process.
 
 As long as my dates strings are in one of these formats, they will get correctly converted when I read them out. And when I'm inserting records, the first format in the list will be used to transform my `time.Time` to a database string.
 
