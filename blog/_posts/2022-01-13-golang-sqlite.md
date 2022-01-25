@@ -175,7 +175,7 @@ COMMIT;
 
 With my database in place, I can now start in on changes to the service.
 
-## GoLang SQLite Setup
+## Golang SQLite Setup
 
 To use sqlite3 from Golang, I need a database driver. I'm going to use [`go-sqlite3`](https://github.com/mattn/go-sqlite3) which I can install like this:
 
@@ -185,7 +185,7 @@ go get github.com/mattn/go-sqlite3
 
 *Installing go-sqlite3 requires `gcc` and `CGO_ENABLED=1`*
 
-Finally, let's jump into the GoLang code.
+Finally, let's jump into the Golang code.
 
 ## Golang SQL Repository
 
@@ -307,7 +307,7 @@ And I can test my insert code with curl:
 {"id":5}
 ~~~
 
-And I can see that it's ending up in the db:
+A quick check with `sqlite-utils` shows that my results were written to the db:
 
 ~~~{.bash caption=">_"}
 > sqlite-utils activities.db "select * from activities" --table
@@ -342,7 +342,7 @@ But doing this gives me back `sql.Rows`, a cursor that points to possibly many r
 
 Using it, I'll have to handle the possibility of multiple rows coming back — since that is impossible with my primary key based query I'd probably just assume I always get a single row back.
 
-Thankfully, I can use `sql.QueryRow`, which does just this:
+Thankfully, I can use [`sql.QueryRow`](https://github.com/golang/go/blob/2580d0e08d5e9f979b943758d3c49877fb2324cb/src/database/sql/sql.go#L1828), which does just this:
 
 > QueryRow executes a query that is expected to return at most one row.
 > QueryRow always returns a non-nil value. Errors are deferred until
@@ -396,7 +396,7 @@ type Scanner interface {
 }
 ~~~
 
-However, time values come in from the driver as `time.Time` and get mapped to other values using `convertAssign` like this:
+However, time values come in from the driver as `time.Time` and get mapped to other values using [`convertAssign`](https://github.com/golang/go/blob/master/src/database/sql/convert.go#L219) like this:
 
 ~~~{.go caption="database/sql/convert.go"}
 case time.Time:
