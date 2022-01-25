@@ -139,3 +139,19 @@ Johan Fischer:
     name    : "Johan Fischer"
     bio     : "Johan is a DevSecOps at Lorica Health where he develops, secures and maintains customer-facing SaaS applications."
     avatar  : "/assets/images/authors/johan-fischer.jpg"
+Bukola Omosefunmi:
+    name    : "Bukola Omosefunmi"
+    bio     : "Bukola is a Software Engineer passionate about building scalable and maintainable applications, an avid reader and one who loves solving problems."
+    avatar  : "/assets/images/authors/bukola-omosefunmi.jpg"
+James Walker:
+    name    : "James Walker"
+    bio     : "James Walker is the founder of Heron Web, a UK-based digital agency providing bespoke software development services to SMEs.He has experience managing complete end-to-end web development workflows with DevOps, CI/CD, Docker, and Kubernetes."
+    avatar  : "/assets/images/authors/james-walker.jpg"
+Shingai Zivuku:
+    name    : "Shingai Zivuku"
+    bio     : "Shingai is a DevOps Security Engineer who lives in Nairobi. He’s passionate about learning new things. In his free time, he’s probably trying something new, reading, or catching up with the latest breaking news."
+    avatar  : "/assets/images/authors/shingai-zivuku.jpg"
+Taurai Mutimutema:
+    name    : "Taurai Mutimutema"
+    bio     : "Taurai is a systems analyst with a knack for writing. His BS in Computer Science makes learning new technologies second to nature for Tau."
+    avatar  : "/assets/images/authors/tauria-mutimutema.jpg"
