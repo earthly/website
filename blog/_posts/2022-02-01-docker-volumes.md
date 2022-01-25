@@ -5,17 +5,9 @@ categories:
 toc: true
 author: Shingai Zivuku
 internal-links:
- - just an example
+ - docker volumes
+ - docker volume
 ---
-## Draft.dev Article Checklist
-
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
-
 [Docker](https://www.docker.com/) is a common containerization solution that offers a user-friendly interface. It allows you to deploy your application as a lightweight process set rather than a complete virtual machine.
 
 Docker images are like a snapshot of a container's file system and contain both your application and its dependencies. When you run it, you recreate the container's state.
@@ -62,19 +54,21 @@ In this section, you'll learn how to create a Docker volume implicitly and expli
 
 The easiest way to create and use a volume is with `docker run` and the `-v` or `--volume` flag. This flag takes three arguments separated by `:`:
 
-~~~{.bash caption=">_"}
+~~~{.bash caption=""}
 -v <source>:<destination>:<options>
 ~~~
 
 If the "source" is a path that was used in the previous example, Docker will use a mount bind. If the "source" is a name, then Docker tries to find this volume or creates one if one cannot be found. Below, the previous example has been updated to use a volume instead of a mount bind:
 
-~~~{.bash caption=">_"}
+~~~{.bash caption=""}
 docker run -it --rm --name nginx -p 8080:80 -v demo-earthly:/usr/share/nginx/html nginx
 ~~~
 
 You can check to make sure the container was properly created with `docker volume ls` which lists all existing volumes.
 
-![Volume Is]({{site.images}}{{page.slug}}/jgrmG9u.png)
+<div class="wide">
+![`docker volume ls`]({{site.images}}{{page.slug}}/jgrmG9u.png)
+</div>
 
 > Note that the volume in question is not empty. If a volume is completely empty, the container's content is copied to the volume.
 
@@ -102,7 +96,7 @@ docker volume create --name demo-earthly
 
 Volumes can be declared in your Dockerfile using the `VOLUME` statement. This statement declares that a specific path of the container must be mounted to a Docker volume. When you run the container, Docker will create an anonymous volume (volume with a unique id as the name) and mount it to the specified path.
 
-~~~{.bash caption=">_"}
+~~~{.dockerfile caption="Dockerfile"}
 FROM nginx:latest
 
 RUN echo "<h1>Hello from Volume</h1>" > /usr/share/nginx/html/index.html
@@ -121,7 +115,7 @@ You can now validate that nginx serves your message at `http://localhost:8080/`.
 More importantly, an anonymous Docker volume has been created, and every time you start a new container, another volume is created with the content of `/usr/share/nginx/html`.
 
 ~~~{.bash caption=">_"}
-Docker volume ls
+docker volume ls
 ~~~
 
 From the above example, ​​a volume directory `data` with the text file `test` containing "Hello from Volume" is created.
@@ -130,17 +124,20 @@ From the above example, ​​a volume directory `data` with the text file `test
 
 To manage your data, sometimes you need to list data volumes from the command line as a point of reference, which is faster than repeatedly checking the configuration files. You can use the `docker volume ls` command to view a list of data volumes.
 
-![Volume Is]({{site.images}}{{page.slug}}/jgrmG9u.png)
+<div class="wide">
+![`docker volume ls`]({{site.images}}{{page.slug}}/jgrmG9u.png)
+</div>
 
 Use the `docker volume inspect` command to view the data volume details.
-
-![Volume inspect]({{site.images}}{{page.slug}}/tFMRmjM.png)
+<div class="wide">
+![`docker volume inspect`]({{site.images}}{{page.slug}}/tFMRmjM.png)
+</div>
 
 ### Mount a Volume to a Container
 
 As you have seen through the various examples `-v` and `--volume` are the most common way to mount a volume to a container using the syntax:
 
-~~~{.bash caption=">_"}
+~~~{.bash caption=""}
 -v <name>:<destination>:<options>
 ~~~
 
@@ -176,7 +173,9 @@ Remember if the volume doesn't exist Docker will create it for you.
 
 List the contents of the container to see if the volume is mounted successfully. You should find the Docker volume name defined in the above data syntax.
 
+<div class="wide">
 ![Container content]({{site.images}}{{page.slug}}/ge5QZEv.png)
+</div>
 
 ### Configure a Volume Using `docker-compose`
 
@@ -184,7 +183,7 @@ Although there are many ways to create a volume, it's more convenient to use the
 
 The use of the `volume` property in compose files is very similar to `-v` and `--volume`. That being said, to perform a bind mount (mount a directory from your local machine), you can use a relative path unlike `-v` with the command `docker run` that requires an absolute path.
 
-~~~{.bash caption=">_"}
+~~~{.yaml caption="docker-compose.yaml"}
 version: "3.2"
 services:
   web:
@@ -199,7 +198,7 @@ The containers and hosts in the above configuration use `volumes` in the `servic
 
 With `docker-compose`, volumes must be declared at the same level as `services`. Then you can refer to them by their name.
 
-~~~{.bash caption=">_"}
+~~~{.yaml caption="docker-compose.yaml"}
 version: "3.2"
 services:
   web:
@@ -225,7 +224,7 @@ Running `docker-compose up` will create a volume named `<project_name>_html_file
 
 You can also manage container outside of you docker-compose file, but you still need to declare them under `volumes` and set the property `external: true`.
 
-~~~{.bash caption=">_"}
+~~~{.yaml caption="docker-compose.yml"}
 version: "3.2"
 services:
   web:
@@ -264,7 +263,9 @@ docker run -it --name=another-example-two --mount source=demo-volume,destination
 
 The `demo.txt` file you created in the preceding container should list `another-example` in the output.
 
+<div class="wide">
 ![Copying files]({{site.images}}{{page.slug}}/AkCRBoI.png)
+</div>
 
 ## Docker Volume Best Practices
 
@@ -272,7 +273,7 @@ Now that you've learned how to implement Docker volumes, it's important to keep 
 
 - Always [mount volumes as read-only](https://github.com/OWASP/CheatSheetSeries/blob/master/cheatsheets/Docker_Security_Cheat_Sheet.md#rule-8---set-filesystem-and-volumes-to-read-only) if you only need to read from them.
 - Always set the permissions and ownership on a volume.
-- Always use environment variables for the host path or volume name in a production environment.
+- Always use [environment variables](/blog/understanding-bash) for the host path or volume name in a production environment.
 
 ## Conclusion
 
@@ -280,4 +281,6 @@ Often, you want your containers to use or persist data beyond the scope of the c
 
 In this guide, you looked at how volumes work with Docker, what they do, and where volumes are the preferred solution.
 
-[Docker plays an important role](https://dzone.com/articles/9-reasons-why-devops-is-better-with-docker-amp-kub) in the DevOps ecosystem, so if you want to improve your continuous integration process, consider [Earthly](https://earthly.dev/). Earthly is a build automation tool that allows you to build anything via containers, making your builds self-contained, repeatable, portable, and parallel.
+Docker plays an important role in the DevOps ecosystem, so if you want to improve your continuous integration process, consider [Earthly](https://earthly.dev/). Earthly is a build automation tool that allows you to build anything via containers, making your builds self-contained, repeatable, portable, and parallel.
+
+{% include cta/cta1.html %}
