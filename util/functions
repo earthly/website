@@ -115,7 +115,9 @@ link-opp() { # List places you could link to other posts
 }
 
 lint() { # Run Linter
-     cat "$(post)" | ./util/codeblock.awk | sponge "$(post)"
+    # change code blocks
+    cat "$(post)" | ./util/codeblock.awk | sponge "$(post)"
+    # run CI lint process
     earthly +blog-lint-apply "$@"; 
 }
 
