@@ -52,7 +52,7 @@ The recreate strategy above assumes you only have one instance of your service r
 
 ## Blue-Green Deployment
 
-A blue-green deployment requires a bit more resources: you need two identical production environments and a load balancer. One of these environments always receives 100% of the traffic while the other version sits idle. Updates are deployed to inactive version, and once it is successfully upgraded, traffic is switched over to it. These two environments are named blue and green, respectively, and traffic alternates back and forth from green to blue and then blue to green and so on. This means that the previously deployed version is always running on the idle environment, which simplifies rollbacks.
+A [blue-green deployment](/blog/blue-green/) requires a bit more resources: you need two identical production environments and a load balancer. One of these environments always receives 100% of the traffic while the other version sits idle. Updates are deployed to inactive version, and once it is successfully upgraded, traffic is switched over to it. These two environments are named blue and green, respectively, and traffic alternates back and forth from green to blue and then blue to green and so on. This means that the previously deployed version is always running on the idle environment, which simplifies rollbacks.
 
 <div class="no_toc_section">
 ### Pros
