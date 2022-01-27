@@ -5,7 +5,6 @@ categories:
 toc: true
 author: Taurai Mutimutema
 internal-links:
- - just an example
  - blue green
 ---
 Remember when systems would go offline to implement changes and updates? Sometimes you still get emails from applications with notifications of downtime, apologizing in advance for any interruption. That's a costly and outdated way of maintaining applications that are constantly evolving.
