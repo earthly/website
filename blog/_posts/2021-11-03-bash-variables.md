@@ -7,7 +7,8 @@ author: Adam
 sidebar:
   nav: "bash"
 internal-links:
- - just an example
+  - environment variables
+  - environment variable
 ---
 
 <div class="narrow-code">

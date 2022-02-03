@@ -10,8 +10,7 @@ internal-links:
   - shellcheck
   - bash script
   - shebang
-  - environment variables
-  - environment variable
+
 ---
 <div class="narrow-code">
 

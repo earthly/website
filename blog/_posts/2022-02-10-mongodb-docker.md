@@ -5,7 +5,7 @@ categories:
 toc: true
 author: Soumi Bardhan
 internal-links:
- - just an example
+ - mongodb
 ---
 [Docker](https://www.docker.com/) is a powerful development platform that enables users to containerize software. These containers can be run on any machine, as well as in a public or private cloud. Thanks to Docker's lightweight runtime and ability to run processes in isolation, multiple containers can run at the same time on the same VM or server.
 
@@ -15,7 +15,7 @@ MongoDB can be run in a Docker container. There is an [official image](https://h
 
 If you want to use your MongoDB database across several machines, using Docker containers for hosting MongoDB is a great approach – you can easily create new isolated instances. Furthermore, during development, it is easier to start a Docker instance than manually configure a server. If you are developing multiple applications, you can start multiple containers together using a `docker-compose.yaml` file.
 
-In this article, you'll learn the best practices for running a MongoDB container. You'll also learn how to host a simple [Flask](https://palletsprojects.com/p/flask/) app and how to use Docker volumes to persist data in a Docker container.
+In this article, you'll learn the best practices for running a MongoDB container. You'll also learn how to host a simple [Flask](https://palletsprojects.com/p/flask/) app and how to use [Docker volumes](/blog/docker-volumes)  to persist data in a Docker container.
 
 ## Docker Components
 
@@ -34,7 +34,26 @@ For development, it is better to connect to an instance of MongoDB running insid
 
 In development, you will use Docker to host a MongoDB instance locally. Start by pulling the image for the MongoDB version you want by specifying the tag accordingly:
 
-![Pulling Docker image for MongoDB, image by the author]({{site.images}}{{page.slug}}/sBB6vHg.png)
+~~~{.bash caption=">_"}
+$ docker pull mongo:4.0.4
+~~~
+
+~~~{caption="Output"}
+4.0.4: Pulling from library/mongo
+7b8b6451c85f: Downloading 36.19MB/43.41MB
+ab4d1096d9ba: Download complete
+e6797d1788ac: Download complete
+e25c5c290bde: Download complete
+45aala4d5e06: Download complete
+b7e29f184242: Download complete
+ad78e42605af: Download complete
+1f4ac0b92a65: Download complete
+55880275f9fb: Download complete
+bd0396c9dcef: Download complete
+28bf9db38c03: Downloading 8.608MB/87.07MB
+3e954d14ae9b: Download complete
+cd245aa9c426: Download complete
+~~~
 
 You can start a MongoDB server running the latest version of MongoDB using Docker with the following command:
 
@@ -50,7 +69,11 @@ To change the port number, you can change the `-p` flag argument to `8000:27017`
 docker run -d --name test-mongo mongo:latest --port 8000
 ~~~
 
-![Pulling the latest MongoDB Docker image, by the author]({{site.images}}{{page.slug}}/lgxNbPi.png)
+Or choose your own port:
+
+~~~{.bash caption=">_"}
+docker run -d -p 27017:27017 --name example-mongo mongo:latest
+~~~
 
 Alternatively, if you pulled the image specifying a version tag, run the Docker container with this command:
 
@@ -64,19 +87,23 @@ Then use the following command to open the MongoDB shell. I have used  `mymongo`
 docker exec -it <CONTAINER_NAME> bash
 ~~~
 
-![Docker exec output, image by the author]({{site.images}}{{page.slug}}/Z1dyLiW.png)
-
 Your interactive MongoDB shell should look like this:
 
+<div class="wide">
 ![Interactive MongoDB shell for container]({{site.images}}{{page.slug}}/42ecHnc.png)
+</div>
 
 The `show dbs` command will display all your existing databases. Here, you have the admin, config, and local databases, which are empty initially. For details on the different functions that are available from the shell, type "help". This will provide a list of some of the database methods available, including commands to display the database's collections and information.
 
-![Database methods]({{site.images}}{{page.slug}}/ZbWETYT.png)
+<div class="wide">
+![MongoDb commands]({{site.images}}{{page.slug}}/ZbWETYT.png)
+</div>
 
 You can interact with your locally hosted MongoDB instance through this shell directly from your terminal. You can also open up the container CLI using the buttons on Docker Desktop:
 
+<div class="wide">
 ![Docker desktop: running containers]({{site.images}}{{page.slug}}/hrhqtYp.png)
+</div>
 
 To check your container logs, you can use the `docker logs` command followed by the name of your container:
 
@@ -84,7 +111,9 @@ To check your container logs, you can use the `docker logs` command followed by 
 docker logs test-mongo --follow
 ~~~
 
+<div class="wide">
 ![Docker logs output for container]({{site.images}}{{page.slug}}/6ppXQIn.png)
+</div>
 
 You can also inspect MongoDB's logs with the `docker logs` command:
 
@@ -122,7 +151,26 @@ If you want to inspect your volumes, you can do so with the `docker volume inspe
 
 You can check out all the existing volumes to display which volumes are attached to which containers using `docker volume ls`:
 
-![`docker volume ls` output]({{site.images}}{{page.slug}}/aFBZv71.png)
+~~~{.bash caption=">_"}
+> docker volume ls
+~~~
+
+~~~{caption="Output"}
+DRIVER VOLUME NAME
+local 3Fcdd64229ecle6d664F7282F5254b743dce2a9250F84e1d059ddc25698a7294
+local 6e6a22f5d527676F53c521ccb08975d9ddf108a8138a1d08d74c1417ed7Ff0e5c
+local 6f473750c25bb8a67F292F8bFd295F56d019cF933alOb8bfb7Ffbd6F508155F02
+local 9fceebe4F68d1488cd05973e39b277d6a2481a0a07cbOd5474F333300d2ee2a9
+local ale1663768c4079642F06f6bb13945c59312b91d6edb744d29d3753dbc63d5a4
+local b97a67ebcfd86810F0c9d65e2d62b3d20F8c05c1bba4b79140ef56e8cb4bee16
+local c02e17e65cf4426b7d56b62F8Fd835bfeb2684d0e9107c93e23ce16866b1b620
+local c8b98cOF64F5bbOc7TH6Fe401961644c698cbcdc2bcec550F44c872940211a51d
+local d6bdabd15b59b9ce74727d8e0036e3bbc439e7a706a7d057da3c83155c1fal5e
+local d34976aeeb21eebd576d9cbe82b46ed3a4dd736a0747a210dd8Fcb50cc2c230F
+local data1
+local mongo-data
+local new
+~~~
 
 ### Configuring Your Server
 
@@ -140,7 +188,7 @@ docker run -d
 
 You can also add authentication to your MongoDB containers to ensure data security. This will disable unauthorized personnel from connecting to your server.
 
-Add your user account by setting the username and password using the environment variables during container creation. Use the `-e` flag to specify the environment variables `MONGODB_INITDB_ROOT_USERNAME` and `MONGODB_INITDB_ROOT_PASSWORD`:
+Add your user account by setting the username and password using the [environment variables](/blog/bash-variables) during container creation. Use the `-e` flag to specify the environment variables `MONGODB_INITDB_ROOT_USERNAME` and `MONGODB_INITDB_ROOT_PASSWORD`:
 
 ~~~{.bash caption=">_"}
 docker run -d 
@@ -203,23 +251,33 @@ python3 -m pip install requirements.txt
 
 For ease of development, you will run the Python app outside the container and run Mongo inside one. Go ahead and run the Python Flask app with `python3 app.py` now.
 
+<div class="wide">
 ![Run Flask app]({{site.images}}{{page.slug}}/x66OQjI.png)
+</div>
 
 Using the Flask interface, you can add, update, and view records. To get started, go to `localhost:5000`:
 
+<div class="wide">
 ![Student Grades Database]({{site.images}}{{page.slug}}/RdmkDEB.png)
+</div>
 
 Fill in a new record and click on **Submit Grades**. This page will confirm your submission:
 
+<div class="wide">
 ![New submission accepted for student]({{site.images}}{{page.slug}}/5ppBuz6.png)
+</div>
 
 Next, go back to the homepage and click on **Get Grades of all Students**. This page will show all your student records:
 
+<div class="wide">
 ![List of students and grades]({{site.images}}{{page.slug}}/AlKmLrI.png)
+</div>
 
 Add a few more entries and ensure that the app is working as expected. You can also edit submissions for a certain student. After adding a few more records, your database might look like this:
 
+<div class="wide">
 ![List of students and grades]({{site.images}}{{page.slug}}/ckfPj03.png)
+</div>
 
 For this container, you did not attach a volume. So when you create a new container from the same MongoDB image, it will start with an empty database. Go to Docker Desktop and stop the running container `test-mongo`. You can also use `docker stop test-mongo` to stop the container from the terminal. To see the list of running containers and their details, use `docker container list`. Then create another container for MongoDB from the terminal:
 
@@ -229,7 +287,9 @@ docker run -d -p 27017:27017 --name test-mongo2 mongo:latest
 
 Now go to `localhost:5000` and click on **Get Grades of all Students**:
 
+<div class="wide">
 ![Empty list of all students]({{site.images}}{{page.slug}}/PPXe3H5.png)
+</div>
 
 This time, you will see that all the previous data has been lost, and instead, you are starting with an empty database. This is where volumes come in handy.
 
@@ -239,11 +299,11 @@ Stop the container `test-mongo2`. Create a container called `test-mongo-3` and a
 docker run -d -p 27017:27017 --name test-mongo3 -v mongo-data-vol:/data/db mongo:latest
 ~~~
 
-![Output of Docker container creation with volume]({{site.images}}{{page.slug}}/mtzWAbM.png)
-
 Then go to `localhost:5000` and add some new records to the student database:
 
+<div class="wide">
 ![Student records database (Tania, Sam, and Beth)]({{site.images}}{{page.slug}}/xvoPAx6.png)
+</div>
 
 When you stop this container and create a new one, you will enable the new container to use the volume of the previous one. Stop this container and create a new container with the `--volumes-from` tag followed by the name of the container with the volume you want to mount onto this container—in this case, `test-mongo-3`:
 
@@ -262,3 +322,5 @@ In this article, you hosted your MongoDB server using Docker. You created a Flas
 There are many advantages of using containers as part of your day-to-day life as a software developer. Containers ensure consistency across operating systems, and by using them, you can ensure uniformity throughout the team. Deploying containers is relatively easy, as your production environment and development will be consistent. By running MongoDB in Docker, you can create new isolated containers from the same image and you can connect the volume associated with one container to another.
 
 [Earthly](https://earthly.dev/) is an automation tool for managing all your [Docker components](https://docs.earthly.dev/docs/guides/docker-in-earthly), images, and containers. With Earthly, you can execute all your builds in containers and ensure uniformity across machines.
+
+{% include cta/cta1.html %}
