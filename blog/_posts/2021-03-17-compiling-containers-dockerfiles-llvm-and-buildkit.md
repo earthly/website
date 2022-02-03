@@ -11,13 +11,7 @@ sidebar:
   nav: "docker"
 internal-links:
   - llvm
-  - dockerfile
-  - compiler
-  - frontend
-  - front end
   - docker build
-  - ir
-  - assembly
   - machine code
 ---
 ## Introduction

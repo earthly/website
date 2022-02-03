@@ -7,7 +7,6 @@ sidebar:
   nav: "thoughts"
 featured: true
 internal-links:
- - python
  - timsort
  - list merging
 ---

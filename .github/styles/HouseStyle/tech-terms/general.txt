@@ -133,3 +133,8 @@ Appfile
 Matchfile
 reimplemented
 preboot
+
+distroless
+autoscaling
+cgroup
+chroot

@@ -3,7 +3,6 @@ title: "Plotting Precipitation with Python, Pandas and Matplotlib"
 categories:
   - Tutorials
 internal-links:
- - python
  - matplotlib
  - pandas
 

@@ -3,7 +3,6 @@ title: "Stop Using Pie-Charts"
 categories:
   - Tutorials
 internal-links:
- - python
  - matplotlib
  - pandas
 

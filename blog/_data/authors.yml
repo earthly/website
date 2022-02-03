@@ -155,3 +155,11 @@ Taurai Mutimutema:
     name    : "Taurai Mutimutema"
     bio     : "Taurai is a systems analyst with a knack for writing. His BS in Computer Science makes learning new technologies second to nature for Tau."
     avatar  : "/assets/images/authors/tauria-mutimutema.jpg"
+Soumi Bardhan:
+    name    : "Soumi Bardhan"
+    bio     : "I am working in computer vision and AI development. I write technical articles on medium. Have been part of Google season of docs twice and love open source!"
+    avatar  : "/assets/images/authors/soumi-bardhan.jpg"
+Eric Kahuha:
+    name    : "Eric Kahuha"
+    bio     : "Eric is a data scientist interested in using scientific methods, algorithms, and processes to extract insights from both structural and unstructured data. Enjoys converting raw data into meaningful information and contributing to data science topical issues."
+    avatar  : "/assets/images/authors/eric-kahuha.jpg"
