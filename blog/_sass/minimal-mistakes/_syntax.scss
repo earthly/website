@@ -401,10 +401,18 @@ code span.ot { color: $base08; } /* Other */
 code span.pp { color: #bc7a00; } /* Preprocessor */
 code span.sc { color: #4070a0; } /* SpecialChar */
 code span.ss { color: #bb6688; } /* SpecialString */
+
+
+
 code span.st { color: $base0b; } /* String */
 code span.va { color: $base0e; } /* Variable */
+
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+
+//Special diff colors
+.diff span.st { color: #e83d3d; } /* String */
+.diff span.va { color: #4fc489; } /* Variable */
 
 pre.sourceCode {
   overflow-x: hidden;

@@ -86,3 +86,12 @@ thoughts:
         url: /confidently-uncertain/
       - title: "Printf Debugging"
         url: /printf-debugging/
+activity-tracker:
+  - title: "Activity Tracker Series"
+    children:
+      - title: "Part 1: JSON HTTP Server"
+        url: /golang-http/
+      - title: "Part 2: Command Line JSON Client "
+        url: /golang-command-line/
+      - title: "Part 3: SQLite"
+        url: /golang-sqlite/

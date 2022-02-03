@@ -35,3 +35,4 @@ csvtojson
 dasel
 nocrop
 argoco
+github
