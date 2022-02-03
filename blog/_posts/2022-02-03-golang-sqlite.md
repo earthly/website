@@ -15,9 +15,9 @@ internal-links:
 <!-- markdownlint-disable MD036 -->
 Welcome back. I'm an experienced developer, learning Golang by building an activity tracker. Last time I made a [command-line client](/blog/golang-command-line/) to connect to the [JSON Service](/blog/golang-http/), but today is all about database persistence using `database/sql`.
 
-**If you're curious about the basics of storing persistent data into a SQL database using Golang, this tutorial will be helpful for you.** I'm going to be using `sqlite3`, but I'll add lots of heading, so if you're using a different database, you can skip ahead.
+**If you're curious about the basics of storing persistent data into a SQL database using Golang, this tutorial will be helpful for you.** I'm going to be using `sqlite3`, but I'll add lots of headings, so you can skip ahead if `sqlite` is not your thing.
 
-Today I'll add a SQLite backend to [the service](https://github.com/adamgordonbell/cloudservices) so that my workouts aren't lost if it goes down. And once I have that, I'll add the `--list` command and end point, which I skipped before – it's the type of feature that is simple to do with a SQL backend.
+My plan is to add SQLite persistence to [the backend service](https://github.com/adamgordonbell/cloudservices) so that my workouts aren't lost if the service goes down. And once I have that, I'll add the `--list` command to my command line client and add an end point for it. it's the type of feature that is simple to do with a SQL backend.
 
 ## Install SQLite
 
