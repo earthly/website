@@ -22,6 +22,7 @@ My plan is to add SQLite persistence to [the backend service](https://github.com
 ## Install SQLite
 
 The first thing I need is to set up my dev environment. I need to install SQLite3 and SQLite-utils:
+
 <div class="narrow-code">
 
 ~~~{.bash caption=">_"}
