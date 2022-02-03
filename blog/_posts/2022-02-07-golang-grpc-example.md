@@ -6,8 +6,29 @@ toc: true
 author: Adam
 
 internal-links:
- - just an example
+ - golang grpc
+ - grpc server
+ - golang grpc server
+ - grpc tutorial
+ - grpc client
+ - golang grpc client
+ - grpcurl
+ - grpcurl examples
+ - protoc
+ - protoc-gen-go
+ - protobuf vs json
+
+
 ---
+think about 
+  - golang grpc rest api
+   -- grpc gateway
+  - golang grpc timeout
+  - protoc golang grpc
+  -
+   - https://github.com/grpc-ecosystem/grpc-gateway
+
+
 ### Writing Article Checklist
 
 - [ ] Write Outline
