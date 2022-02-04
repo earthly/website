@@ -622,5 +622,5 @@ If you want to be notified about the next installment, sign up for the newslette
 
 {% include cta/embedded-newsletter.html %}
 
-[^1]: [bbkane_](https://www.reddit.com/user/bbkane_/) pointed out to me that  SQlite now has a [STRICT mode](https://www.sqlite.org/stricttables.html). It doesn't support DateTime so far, but perhaps it one day will.
+[^1]: [`bbkane_`](https://www.reddit.com/user/bbkane_/) pointed out to me that SQlite now has a [STRICT mode](https://www.sqlite.org/stricttables.html). It doesn't support DateTime so far, but perhaps it one day will.
 [^2]: There is a machine translated pure Go SQLITE implementation that saves you from needing GCC, although it is slower and probably less extensively tested. Thanks again `bbkane_`
