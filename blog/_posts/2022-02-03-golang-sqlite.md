@@ -98,7 +98,7 @@ sqlite> sqlite> CREATE TABLE [activities] (
 
 **SQLite, Data Types, and `database/sql`**
 
-You may notice that I'm storing time as `DATETIME` whereas sqlite-utils suggested `TEXT` for that column. SQLite is an amazing database but it has an unusual stance on types: it doesn't [really care](https://www.sqlite.org/datatype3.html) about static types. Richard Hipp, the creator, doesn't even like the term static types. He prefers to call them rigid types ( which he thinks are often [a mistake](https://www.sqlite.org/flextypegood.html).)
+You may notice that I'm storing time as `DATETIME` whereas sqlite-utils suggested `TEXT` for that column. SQLite is an amazing database but it has an unusual stance on types: it doesn't [really care](https://www.sqlite.org/datatype3.html) about static types. Richard Hipp, the creator, doesn't even like the term static types. He prefers to call them rigid types ( which he thinks are often [a mistake](https://www.sqlite.org/flextypegood.html).[^1])
 
 Because of this stance, there is no statically verified `TIME` or `DATETIME` type in SQLite. Only `INTEGER`, `REAL`, `TEXT`, and `BLOB`. If you set the type as `DATETIME`, you can insert anything you want into it because it's stored as TEXT on disk:
 
@@ -155,7 +155,9 @@ sqlite-utils activities.db "select * from activities" --table
    3  2021-12-09T16:56:23Z  sledding with nephew
 ~~~
 
-It also has a dump command, which is helpful if I want a text backup of my database contents to version control.
+You can also set `.mode box` in your [`.sqliterc`](https://sqlite.org/cli.html#changing_output_formats) to get a nicer output out of `sqlite3`.
+
+`sqlite-utils` also has a dump command, which is helpful if I want a text backup of my database contents to version control.
 
 ~~~{.bash caption=">_"}
 > sqlite-utils dump activities.db
@@ -576,7 +578,7 @@ And I can also use [Earthly](https://earthly.dev/) to test my CI integration tes
    +build | cgo: exec gcc: exec: "gcc": executable file not found in $PATH
 ~~~
 
-Oh yeah, the SQLite driver! Our driver needs GCC to build and since our builds are running in a container, for repeatability, we need to add GCC to our build script.
+Oh yeah, the SQLite driver! Our driver needs GCC to build and since our builds are running in a container, for repeatability, we need to add GCC to our build script.[^2]
 
 ~~~{.diff caption="Earthfile"}
 VERSION 0.6
@@ -619,3 +621,6 @@ My current plan is to next tackle gRPC and protocol buffers. I'm thinking about 
 If you want to be notified about the next installment, sign up for the newsletter:
 
 {% include cta/embedded-newsletter.html %}
+
+[^1]: [bbkane_](https://www.reddit.com/user/bbkane_/) pointed out to me that  SQlite now has a [STRICT mode](https://www.sqlite.org/stricttables.html). It doesn't support DateTime so far, but perhaps it one day will.
+[^2]: There is a machine translated pure Go SQLITE implementation that saves you from needing GCC, although it is slower and probably less extensively tested. Thanks again `bbkane_`
