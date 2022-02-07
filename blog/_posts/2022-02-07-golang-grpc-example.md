@@ -223,21 +223,7 @@ Another possible path to generating a REST client is [grpc-gateway](https://gith
 
 ## Golang gRPC Server
 
-Now that I've got all my code generated, its time for me to build the server side.
-
-Previously, in my http service, I had an `httpServer`:
-~~~{.bash caption=">_"}
-type httpServer struct {
-	Activities *Activities
-}
-~~~
-
-I'm going to rename that:
-~~~{.bash caption=">_"}
-type grpcServer struct {
-	Activities *Activities
-}
-~~~
+Now that I've got all my code generated, its time for me to build the server side. Let's start at the database layer and work upwards
 
 If you recall from when I was adding the `sqlite` feature, Activities handles all the data persistence. The data persistence should change at all. I just need to make sure I'm using my `protoc` generated struct. I can do this with an import change:
 
@@ -248,22 +234,50 @@ import
 + "google.golang.org/protobuf/types/known/timestamppb"
 ~~~
 
-### `google.protobuf.Timestamp` and  `google.protobuf.Timestamp`
+### `google.protobuf.Timestamp`
 
 Previsouly my Activity struct was using `time.Time` to represent time and "net/http" was mapping it back and forth to a JSON string. However, protobufs are typed and so I have choosen to use `google.protobuf.Timestamp` as my datetime type. This means I need to worry less about getting invalid data.
 
-Unfortunely, my generated code now uses a `google.protobuf.Timestamp` where my persistenance layer needs a `time.Time`. This is easy to fix with `AsTime`:
+Unfortunely, my generated code now uses a `google.protobuf.Timestamp` where my persistenance layer needs a `time.Time`. This is easy to fix with
+This is easy to fix with `AsTime`:
 
-```
+~~~{.go caption="timstamp.pb.go"}
 // AsTime converts x to a time.Time.
 func (x *Timestamp) AsTime() time.Time {
-	return time.Unix(int64(x.GetSeconds()), int64(x.GetNanos())).UTC()
+       return time.Unix(int64(x.GetSeconds()), int64(x.GetNanos())).UTC()
 }
+~~~
 
-```
+<br/>
+
+~~~{.diff captionb="activity-log/internal/server/activity.go"}
+func (c *Activities) Insert(activity *api.Activity) (int, error) {
+	res, err := c.db.Exec("INSERT INTO activities VALUES(NULL,?,?);", 
+-  activity.Time, 
++  activity.Time.AsTime(), 
+  activity.Description)
+	if err != nil {
+		return 0, err
+	}
+~~~
+
+And that is really the only perstiecne layer change we need to make to switch from our hand-rolled struct to the `protoc` generated one. You can see the full file here: TODO
+
+
+## GRPC Service
+
+Previously, in my http service, I had an `httpServer`, I'm going to rename that::
+
+~~~{.diff caption="activity-log/internal/server/server.go"}
+- type httpServer struct {
++ type grpcServer struct {
+	Activities *Activities
+}
+~~~
+
 And then I need to make an instance of it:
 
-~~~{.bash caption=">_"}
+~~~{.go caption="activity-log/internal/server/server.go"}
 func NewGRPCServer() *grpc.Server {
 	var acc *Activities
 	var err error
@@ -281,7 +295,8 @@ func NewGRPCServer() *grpc.Server {
 ToDO: explain why this returns grpc.Server
 
 And then wire that up to my main method and I can start things up:
-~~~{.bash caption=">_"}
+
+~~~{.go caption="activity-log/cmd/server/main.go"}
 func main() {
 	log.Println("Starting listening on port 8080")
 	port := ":8080"
@@ -292,30 +307,142 @@ func main() {
 	}
 	log.Printf("Listening on %s", port)
 	srv := server.NewGRPCServer()
-	// Register reflection service on gRPC server.
-	reflection.Register(srv)
+
 	if err := srv.Serve(lis); err != nil {
 		log.Fatalf("failed to serve: %v", err)
 	}
 }
 
 ~~~
-I haven't actually hooked up an implementation of these methods yet, but I'm curious what happens if I run it. Actually I can't even get that far, it won't compile, but it does give me this helpful error message:
+I haven't written an implementation of any of the RPC methods yet, but I'm curious what happens if I run it. 
+
+Actually I can't even get that far, it won't compile, but it does give me this helpful error message:
 
 ~~~{.bash caption=">_"}
+$ go run cmd/server/main.go
+~~~
+~~~{.output caption="Output"}
 # github.com/adamgordonbell/cloudservices/activity-log/internal/server
 internal/server/server.go:30:39: cannot use &srv (type *grpcServer) as type api_v1.Activity_LogServer in argument to api_v1.RegisterActivity_LogServer:
         *grpcServer does not implement api_v1.Activity_LogServer (missing api_v1.mustEmbedUnimplementedActivity_LogServer method)
-
 ~~~
+
 All I need to do is add an `UnimplementedActivity_LogServer`:
-~~~{.bash caption=">_"}
+
+~~~{.diff caption="activity-log/internal/server/server.go"}
 type grpcServer struct {
 	+ api.UnimplementedActivity_LogServer
 	Activities *Activities
 }
 ~~~
 
+And with that I can start running things:
+~~~{.bash caption=">_"}
+grpcurl -plaintext -d  '{ "description": "christmas eve bike class" }' localhost:8080 api.v1.Activity_Log/Insert
+~~~
+
+~~~{.bash caption=">_"}
+ERROR:
+  Code: Unimplemented
+  Message: method Insert not implemented
+~~~
+
+How does that work? How can I call the method that I haven't implemented yet? Well, the `protoc` generated code contins `UnimplementedActivity_LogServer` which looks like this:
+~~~{.go caption="activity-log/api/v1/activity_grpc.pb.go"}
+// UnimplementedActivity_LogServer must be embedded to have forward compatible implementations.
+type UnimplementedActivity_LogServer struct {
+}
+~~~
+
+But it also implements this interface:
+~~~{.go caption="activity-log/api/v1/activity_grpc.pb.go"}
+type Activity_LogServer interface {
+	Insert(context.Context, *Activity) (*InsertResponse, error)
+	Retrieve(context.Context, *RetrieveRequest) (*Activity, error)
+	List(context.Context, *ListRequest) (*Activities, error)
+	mustEmbedUnimplementedActivity_LogServer()
+}
+~~~
+
+and those implementations are what I'm hitting when I call `insert`:
+~~~{.bash caption=">_"}
+func (UnimplementedActivity_LogServer) Insert(context.Context, *Activity) (*InsertResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Insert not implemented")
+}
+~~~
+As a newcomer to GoLang, its actually pretty nice that I can just read through the generated code and understand how it works. 
+
+<div class="notice">
+**Making gRPC requests by Hand**
+
+One potential downside to using gRPC and protobufs is that they are less human readable. I can make a GET request in my browser and view the JSON result and I can use curl and related tools to make more complex requests. This is harder to do with gRPC and protobufs. Or at least it used to be. I've found working with gRPC at the command line is pretty easy once make a couple of steps:
+
+### 1) Install `grpcurl` 
+
+~~~{.bash caption=">_"}
+brew install grpcurl
+~~~
+
+### 2) Enable Reflection
+
+~~~{.diff caption="main.go"}
+func main() {
+	...
+	srv := server.NewGRPCServer()
++	// Register reflection service on gRPC server.
++	reflection.Register(srv)
+	if err := srv.Serve(lis); err != nil {
+		log.Fatalf("failed to serve: %v", err)
+	}
+}
+~~~
+
+Then you can not only make called against the service like its a REST service:
+
+```
+grpcurl -plaintext -d  '{ "description": "christmas eve bike class" }' localhost:8080 api.v1.Activity_Log/Insert
+```
+```
+{
+  "id": 1
+}
+```
+
+But, you can introspect against the service and see what it supports:
+```
+grpcurl -plaintext localhost:8080 describe
+```
+
+```
+api.v1.Activity_Log is a service:
+service Activity_Log {
+  rpc Insert ( .api.v1.Activity ) returns ( .api.v1.InsertResponse );
+  rpc List ( .api.v1.ListRequest ) returns ( .api.v1.Activities );
+  rpc Retrieve ( .api.v1.RetrieveRequest ) returns ( .api.v1.Activity );
+}
+```
+
+Without reflection on you would get an error like this:
+
+~~~{.bash caption=">_"}
+grpcurl -plaintext localhost:8080 describe
+Error: server does not support the reflection API
+~~~
+
+And you aren't strictly limited to grpcurl. I like it because it works like, well curl, but many other options exist. Postman supports grpc, as does [BloomRPC](https://github.com/bloomrpc/bloomrpc), [Insomnia](https://insomnia.rest/) and [many](github.com/gogo/letmegrpc) [command-line](https://github.com/fullstorydev/grpcui) [tools](https://github.com/gusaul/grpcox).
+
+</div>
+
+### gRPC Service Implementation
+
+So as it stands now, the database layer is done, and the service can start up and receive gRPC requests but there is not service implementation connecting these two parts together.
+
+
+```
+
+```
+
+ , which is helpfully found in ``Well the 
 ## Install 
 
 ## Just Notes

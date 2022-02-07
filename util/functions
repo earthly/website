@@ -121,6 +121,10 @@ lint() { # Run Linter
     earthly +blog-lint-apply "$@"; 
 }
 
+format(){ # change code blocks
+   cat "$(post)" | ./util/codeblock.awk | sponge "$(post)" 
+}
+
 list-images() { 
     echo "listing source images:"
     ls -d "$(image-folder)/"*
