@@ -221,6 +221,101 @@ Another possible path to generating a REST client is [grpc-gateway](https://gith
 
 </div>
 
+## Golang gRPC Server
+
+Now that I've got all my code generated, its time for me to build the server side.
+
+Previously, in my http service, I had an `httpServer`:
+~~~{.bash caption=">_"}
+type httpServer struct {
+	Activities *Activities
+}
+~~~
+
+I'm going to rename that:
+~~~{.bash caption=">_"}
+type grpcServer struct {
+	Activities *Activities
+}
+~~~
+
+If you recall from when I was adding the `sqlite` feature, Activities handles all the data persistence. The data persistence should change at all. I just need to make sure I'm using my `protoc` generated struct. I can do this with an import change:
+
+~~~{.diff caption="activity-log/internal/server/activity.go "}
+import 
+- api "github.com/adamgordonbell/cloudservices/activity-log"
++ api "github.com/adamgordonbell/cloudservices/activity-log/api/v1"
++ "google.golang.org/protobuf/types/known/timestamppb"
+~~~
+
+### `google.protobuf.Timestamp` and  `google.protobuf.Timestamp`
+
+Previsouly my Activity struct was using `time.Time` to represent time and "net/http" was mapping it back and forth to a JSON string. However, protobufs are typed and so I have choosen to use `google.protobuf.Timestamp` as my datetime type. This means I need to worry less about getting invalid data.
+
+Unfortunely, my generated code now uses a `google.protobuf.Timestamp` where my persistenance layer needs a `time.Time`. This is easy to fix with `AsTime`:
+
+```
+// AsTime converts x to a time.Time.
+func (x *Timestamp) AsTime() time.Time {
+	return time.Unix(int64(x.GetSeconds()), int64(x.GetNanos())).UTC()
+}
+
+```
+And then I need to make an instance of it:
+
+~~~{.bash caption=">_"}
+func NewGRPCServer() *grpc.Server {
+	var acc *Activities
+	var err error
+	if acc, err = NewActivities(); err != nil {
+		log.Fatal(err)
+	}
+	gsrv := grpc.NewServer()
+	srv := grpcServer{
+		Activities: acc,
+	}
+	api.RegisterActivity_LogServer(gsrv, &srv)
+	return gsrv
+}
+~~~
+ToDO: explain why this returns grpc.Server
+
+And then wire that up to my main method and I can start things up:
+~~~{.bash caption=">_"}
+func main() {
+	log.Println("Starting listening on port 8080")
+	port := ":8080"
+
+	lis, err := net.Listen("tcp", port)
+	if err != nil {
+		log.Fatalf("failed to listen: %v", err)
+	}
+	log.Printf("Listening on %s", port)
+	srv := server.NewGRPCServer()
+	// Register reflection service on gRPC server.
+	reflection.Register(srv)
+	if err := srv.Serve(lis); err != nil {
+		log.Fatalf("failed to serve: %v", err)
+	}
+}
+
+~~~
+I haven't actually hooked up an implementation of these methods yet, but I'm curious what happens if I run it. Actually I can't even get that far, it won't compile, but it does give me this helpful error message:
+
+~~~{.bash caption=">_"}
+# github.com/adamgordonbell/cloudservices/activity-log/internal/server
+internal/server/server.go:30:39: cannot use &srv (type *grpcServer) as type api_v1.Activity_LogServer in argument to api_v1.RegisterActivity_LogServer:
+        *grpcServer does not implement api_v1.Activity_LogServer (missing api_v1.mustEmbedUnimplementedActivity_LogServer method)
+
+~~~
+All I need to do is add an `UnimplementedActivity_LogServer`:
+~~~{.bash caption=">_"}
+type grpcServer struct {
+	+ api.UnimplementedActivity_LogServer
+	Activities *Activities
+}
+~~~
+
 ## Install 
 
 ## Just Notes
