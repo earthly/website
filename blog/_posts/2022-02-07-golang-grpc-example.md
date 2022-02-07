@@ -88,6 +88,7 @@ Please specify a program using absolute path or make sure the program is availab
 First it seems I need protoc-gen-go:
 
 ~~~{.bash caption=">_"}
+$ brew install grpc 
 $ go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.26
 ~~~
 
@@ -442,153 +443,12 @@ So as it stands now, the database layer is done, and the service can start up an
 
 ```
 
- , which is helpfully found in ``Well the 
-## Install 
-
-## Just Notes
-
-think about 
-  - golang grpc rest api
-   -- grpc gateway
-  - golang grpc timeout
-  - protoc golang grpc
-  -
-   - https://github.com/grpc-ecosystem/grpc-gateway
-
-
-protoc
-
-
 
 # Explain about protobufs
 # Aside about json verification and golang
 
 ## CLI protobufs
 
-start up a sample endpoint
-~~~{.bash caption=">_"}
-docker run -it --rm -p 9000:9000 -p 9001:9001 moul/grpcbin
-~~~
-Use grpc_cli
-~~~{.bash caption=">_"}
-brew install grpc 
-==> Downloading from https://pkg-containers.githubusercontent.com/ghcr1/blobs/sha256:909f83d52b2fe4d9c2c2185183940162a4b2e189103d6f65a92b14714ec3abd6?se=2022-01-31T14%3A55%3A00Z&sig=HXzdw0%2BAyFd8%2FOYG
-######################################################################## 100.0%
-==> Installing dependencies for grpc: abseil, protobuf and re2
-==> Installing grpc dependency: abseil
-==> Pouring abseil--20211102.0.monterey.bottle.tar.gz
-🍺  /usr/local/Cellar/abseil/20211102.0: 586 files, 6.9MB
-==> Installing grpc dependency: protobuf
-==> Pouring protobuf--3.19.4.monterey.bottle.tar.gz
-🍺  /usr/local/Cellar/protobuf/3.19.4: 270 files, 19.6MB
-==> Installing grpc dependency: re2
-==> Pouring re2--20211101.monterey.bottle.tar.gz
-🍺  /usr/local/Cellar/re2/20211101: 15 files, 448.6KB
-==> Installing grpc
-~~~
-
-https://github.com/grpc/grpc/blob/master/doc/command_line_tool.md
-
-Only for unsecured:
-~~~{.bash caption=">_"}
-grpc_cli ls localhost:9000  -l   
-
-~~~
-
-Or use `grpcurl`
-~~~{.bash caption=">_"}
-brew install grpcurl
-grpcurl -plaintext localhost:9000 list
-addsvc.Add
-grpc.gateway.examples.examplepb.ABitOfEverythingService
-grpc.reflection.v1alpha.ServerReflection
-grpcbin.GRPCBin
-hello.HelloService
-
-~~~
-
-See here:
-
-https://grpc.io/docs/languages/go/quickstart/
-
-
-
-
-## generate things
-
-~~~{.bash caption=">_"}
-protoc activity-log/api/v1/*.proto --go_out=. --go_opt=paths=source_relative --proto_path=.
-~~~
-
-## GRPC
-
-here is how we generate it
-~~~{.bash caption=">_"}
-$ go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.1
-~~~
-
-## Problem:
-~~~{.bash caption=">_"}
-cannot use srv (variable of type *grpcServer) as api_v1.Activity_LogServer value in argument to api1.RegisterActivity_LogServer: missing method Insert
-~~~
-Solution: Adding UnImplemented
-~~~{.bash caption=">_"}
-type grpcServer struct {
-	api1.UnimplementedActivity_LogServer
-	Activities *Activities
-}
-~~~
-
-~~~{.bash caption=">_"}
-
-// UnimplementedActivity_LogServer must be embedded to have forward compatible implementations.
-type UnimplementedActivity_LogServer struct {
-}
-
-func (UnimplementedActivity_LogServer) Insert(context.Context, *Activity) (*Activity, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Insert not implemented")
-}
-func (UnimplementedActivity_LogServer) Retrieve(context.Context, *RetrieveRequest) (*Activity, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Retrieve not implemented")
-}
-func (UnimplementedActivity_LogServer) List(context.Context, *ListRequest) (*Activities, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method List not implemented")
-}
-func (UnimplementedActivity_LogServer) mustEmbedUnimplementedActivity_LogServer() {}
-~~~
-
-With this in place, I can make calls:
-~~~{.bash caption=">_"}
-grpcurl -plaintext -d '{ "id": 10 }' localhost:8080 api.v1.Activity_Log/Retrieve
-ERROR:
-  Code: Unimplemented
-  Message: method Retrieve not implemented
-~~~
-
-GRPC has an introspection feature, that can be used to list what end points are available, but if I try it at first it fails:
-
-~~~{.bash caption=">_"}
- grpcurl -plaintext localhost:8080 describe
-Error: server does not support the reflection API
-~~~
-first you need to do this:
-~~~{.bash caption=">_"}
-https://github.com/grpc/grpc-go/blob/master/Documentation/server-reflection-tutorial.md
-~~~
-
-~~~{.bash caption=">_"}
- grpcurl -plaintext localhost:8080 describe
-api.v1.Activity_Log is a service:
-service Activity_Log {
-  rpc Insert ( .api.v1.Activity ) returns ( .api.v1.Activity );
-  rpc List ( .api.v1.ListRequest ) returns ( .api.v1.Activities );
-  rpc Retrieve ( .api.v1.RetrieveRequest ) returns ( .api.v1.Activity );
-}
-grpc.reflection.v1alpha.ServerReflection is a service:
-service ServerReflection {
-  rpc ServerReflectionInfo ( stream .grpc.reflection.v1alpha.ServerReflectionRequest ) returns ( stream .grpc.reflection.v1alpha.ServerReflectionResponse );
-}
-~~~
 
 `grpc_cli` which comes with grpc also works well for this
 ~~~{.bash caption=">_"}
