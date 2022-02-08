@@ -141,7 +141,7 @@ Let's get back to our real-world data, and use a box plot to view the rough dist
 </div>
 
 It turns out that the heaviest day of rain in 2021 occurred on a Monday! That Monday was November 15th, when BC was [hit by an atmospheric river](https://www.cbc.ca/news/canada/british-columbia/atmospheric-river-to-be-followed-by-high-winds-1.6250028), which caused severe flooding and severed all roads in and out of Vancouver.
-Victoria _only_ received 78mm of rain, compared to Hope, BC which received 103mm (and 174mm on the prior day), but I digress.
+Victoria *only* received 78mm of rain, compared to Hope, BC which received 103mm (and 174mm on the prior day), but I digress.
 
 It's possible to reduce (or completely disable) outlier detection, by setting a very large [`whis`](https://matplotlib.org/3.1.1/api/_as_gen/matplotlib.pyplot.boxplot.html) value; however doing presents a simplified version of the story:
 

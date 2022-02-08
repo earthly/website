@@ -91,7 +91,7 @@ Choose a visibility (*Public* or *Private*), name the repository (ideally someth
 - *Scan on push* - Your images will be scanned for security vulnerabilities each time a new tag is pushed.
 - *[KMS encryption](https://medium.com/@suprajaraman/aws-kms-all-about-keys-564245425ecc)* - Allows you to use AWS Key Management Service (KMS) to encrypt the images in this repository.
 
-_Note: your final repository URL structure will be something like this:_
+*Note: your final repository URL structure will be something like this:*
 
 ```
 <account-id>.dkr.ecr.<account-region>.amazonaws.com/<repository-name>

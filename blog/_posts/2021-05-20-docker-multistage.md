@@ -77,7 +77,7 @@ Now that you get the underlying concept, turn your attention to how this transla
 
 Multistage builds make use of one Dockerfile with multiple FROM instructions. Each of these FROM instructions is a new build stage that can COPY artifacts from the previous stages. By going and copying the build artifact from the build stage, you eliminate all the intermediate steps such as downloading of code, installing dependencies, and testing. All these steps create additional layers, and you want to eliminate them from the final image.
 
-The build stage is named by appending AS _name-of-build_ to the FROM instruction. The name of the build stage can be used in a subsequent FROM and COPY command by providing a convenient way to identify the source layer for files brought into the image build. The final image is produced from the last stage executed in the Dockerfile.
+The build stage is named by appending AS *name-of-build* to the FROM instruction. The name of the build stage can be used in a subsequent FROM and COPY command by providing a convenient way to identify the source layer for files brought into the image build. The final image is produced from the last stage executed in the Dockerfile.
 
 Try taking the example from the previous section that used more than one Dockerfile for the React application and replacing the solution with one file that uses a multistage build.
 

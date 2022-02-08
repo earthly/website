@@ -16,7 +16,7 @@ Continuous integration has become prevalent in software development, but it's st
 
 Continuous integration (CI) is a set of operating principles and practices in the DevOps process that helps software development teams release faster and more reliable application updates. With the advancement of modern tooling, most CI processes center around automated tests, static analysis, and building releasable software. This process is helpful for teams that want to ensure each update to their software is working, stable, and ready to deploy before they integrate it into their production environment.
 
-For example, if a team member makes a change to a project, they might make updates on a new branch (assuming they're using [git for version control](https://git-scm.com/)). When complete, they _push_ these changes to a shared [repository](/blog/monorepo-vs-polyrepo) where a continuous integration workflow will automatically install dependencies, run tests, and check for linting errors before merging the changes into the main branch.
+For example, if a team member makes a change to a project, they might make updates on a new branch (assuming they're using [git for version control](https://git-scm.com/)). When complete, they *push* these changes to a shared [repository](/blog/monorepo-vs-polyrepo) where a continuous integration workflow will automatically install dependencies, run tests, and check for linting errors before merging the changes into the main branch.
 
 ## The Relationship Between Continuous Integration and Continuous Delivery/Deployment
 
@@ -154,7 +154,7 @@ In the "Build Once" best practice, the build process always occurs as the first 
 
 ## What's Next?
 
-Continuous integration speeds up the software development process and helps development teams avoid common pitfalls such as broken application builds, and chaotic release cycles. Rather than catching issues just before (or even after) they're released, continuous integration allows you to mitigate errors _while_ you're working on a feature.
+Continuous integration speeds up the software development process and helps development teams avoid common pitfalls such as broken application builds, and chaotic release cycles. Rather than catching issues just before (or even after) they're released, continuous integration allows you to mitigate errors *while* you're working on a feature.
 
 [Earthly](https://earthly.dev/) is a free and open-source build automation tool that works with your existing build systems to create repeatable, containerized, language-agnostic builds. It acts as a layer between language-specific tools such as Gradle and Apache Maven and the CI buildspec and allows for faster iteration on build scripts and easier debugging. You can discuss automation and other topics in the [Earthly Community on Slack](https://earthly.dev/slack).
 

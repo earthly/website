@@ -62,7 +62,7 @@ Many readers pointed out that their development community skipped right by this 
 
 > It's fairly common in Pythonland \[ to just use Python\] ...
 >
-> It's an ideal solution for technically-savvy users in non-security sensitive contexts. - [__crakers__](https://www.reddit.com/r/programming/comments/ls6tgm/intercal_yaml_and_other_horrible_programming/gopy30z/?utm_source=reddit&utm_medium=web2x&context=3)
+> It's an ideal solution for technically-savvy users in non-security sensitive contexts. - [crakers](https://www.reddit.com/r/programming/comments/ls6tgm/intercal_yaml_and_other_horrible_programming/gopy30z/?utm_source=reddit&utm_medium=web2x&context=3)
 
 > I'm not convinced that just using programming language for your configuration files is actually that bad. For instance, with node, if you just use JS files that export an object instead of. JSON files, you end up with a lot more programmable and flexible thing. I don't actually see the problem. - [light24bulbs](https://www.reddit.com/r/programming/comments/ls6tgm/intercal_yaml_and_other_horrible_programming/goqm3z0/?utm_source=reddit&utm_medium=web2x&context=3)
 
