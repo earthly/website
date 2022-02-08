@@ -321,8 +321,10 @@ Actually I can't even get that far, it won't compile, but it does give me this h
 
 ~~~{.bash caption=">_"}
 $ go run cmd/server/main.go
+
 ~~~
-~~~{.output caption="Output"}
+
+~~~{.bash caption="Output"}
 # github.com/adamgordonbell/cloudservices/activity-log/internal/server
 internal/server/server.go:30:39: cannot use &srv (type *grpcServer) as type api_v1.Activity_LogServer in argument to api_v1.RegisterActivity_LogServer:
         *grpcServer does not implement api_v1.Activity_LogServer (missing api_v1.mustEmbedUnimplementedActivity_LogServer method)
@@ -331,31 +333,35 @@ internal/server/server.go:30:39: cannot use &srv (type *grpcServer) as type api_
 All I need to do is add an `UnimplementedActivity_LogServer`:
 
 ~~~{.diff caption="activity-log/internal/server/server.go"}
-type grpcServer struct {
-	+ api.UnimplementedActivity_LogServer
-	Activities *Activities
-}
+ type grpcServer struct {
++	api.UnimplementedActivity_LogServer
+ 	Activities *Activities
+ }
 ~~~
 
 And with that I can start running things:
-~~~{.bash caption=">_"}
-grpcurl -plaintext -d  '{ "description": "christmas eve bike class" }' localhost:8080 api.v1.Activity_Log/Insert
-~~~
 
 ~~~{.bash caption=">_"}
+grpcurl -plaintext -d  '{ "description": "christmas eve bike class" }' \
+ localhost:8080 api.v1.Activity_Log/Insert
+~~~
+
+~~~{.bash caption="Output"}
 ERROR:
   Code: Unimplemented
   Message: method Insert not implemented
 ~~~
 
-How does that work? How can I call the method that I haven't implemented yet? Well, the `protoc` generated code contins `UnimplementedActivity_LogServer` which looks like this:
-~~~{.go caption="activity-log/api/v1/activity_grpc.pb.go"}
+How does that work? How can I call the method that I haven't implemented yet? Well, the `protoc` generated code contains `UnimplementedActivity_LogServer` which looks like this:
+
+~~~{.go captionb="activity-log/api/v1/activity_grpc.pb.go"}
 // UnimplementedActivity_LogServer must be embedded to have forward compatible implementations.
 type UnimplementedActivity_LogServer struct {
 }
 ~~~
 
-But it also implements this interface:
+But, it also implements this interface:
+
 ~~~{.go caption="activity-log/api/v1/activity_grpc.pb.go"}
 type Activity_LogServer interface {
 	Insert(context.Context, *Activity) (*InsertResponse, error)
@@ -366,17 +372,18 @@ type Activity_LogServer interface {
 ~~~
 
 and those implementations are what I'm hitting when I call `insert`:
-~~~{.bash caption=">_"}
+
+~~~{.go captionb="activity-log/api/v1/activity_grpc.pb.go"}
 func (UnimplementedActivity_LogServer) Insert(context.Context, *Activity) (*InsertResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Insert not implemented")
 }
 ~~~
 As a newcomer to GoLang, its actually pretty nice that I can just read through the generated code and understand how it works. 
 
-<div class="notice">
+<div class="notice--info">
 **Making gRPC requests by Hand**
 
-One potential downside to using gRPC and protobufs is that they are less human readable. I can make a GET request in my browser and view the JSON result and I can use curl and related tools to make more complex requests. This is harder to do with gRPC and protobufs. Or at least it used to be. I've found working with gRPC at the command line is pretty easy once make a couple of steps:
+There is one potential downside to using gRPC instead of rest: they are less human readable. With REST, I can make a GET request in my browser and view the JSON result and I can use curl and related tools to make more complex requests. This is harder to do with gRPC and protobufs. Or at least it used to be. I've found working with gRPC at the command line is doable once I did a couple of steps:
 
 ### 1) Install `grpcurl` 
 
@@ -400,28 +407,31 @@ func main() {
 
 Then you can not only make called against the service like its a REST service:
 
-```
-grpcurl -plaintext -d  '{ "description": "christmas eve bike class" }' localhost:8080 api.v1.Activity_Log/Insert
-```
-```
+~~~{.bash caption=">_"}
+$ grpcurl -plaintext -d  \
+  '{ "description": "christmas eve bike class" }' \
+  localhost:8080 api.v1.Activity_Log/Insert
+~~~
+~~~{.bash caption="Output"}
 {
   "id": 1
 }
-```
+~~~
 
-But, you can introspect against the service and see what it supports:
-```
+And even better, you can introspect against the service and see what gRPC methods it implements:
+
+~~~{.bash caption=">_"}
 grpcurl -plaintext localhost:8080 describe
-```
+~~~
 
-```
+~~~{.protobuf caption="Output"}
 api.v1.Activity_Log is a service:
 service Activity_Log {
   rpc Insert ( .api.v1.Activity ) returns ( .api.v1.InsertResponse );
   rpc List ( .api.v1.ListRequest ) returns ( .api.v1.Activities );
   rpc Retrieve ( .api.v1.RetrieveRequest ) returns ( .api.v1.Activity );
 }
-```
+~~~
 
 Without reflection on you would get an error like this:
 
@@ -436,13 +446,85 @@ And you aren't strictly limited to grpcurl. I like it because it works like, wel
 
 ### gRPC Service Implementation
 
-So as it stands now, the database layer is done, and the service can start up and receive gRPC requests but there is not service implementation connecting these two parts together.
+So as it stands now, the database layer is done, and the service can start up and receive gRPC requests but there is not service implementation connecting these two parts together. Let's write that.
 
+The interface tells me what I need to do for each function. Insert looks like this:
 
-```
+~~~{.go caption="activity-log/api/v1/activity_grpc.pb.go"}
+Insert(context.Context, *Activity) (*InsertResponse, error)
+~~~
 
-```
+And I can implement it by just calling through to my database layer, handling the error conditions and wrapping the response back up in the expected type:
 
+~~~{.go caption="activity-log/internal/server/server.go"}
+func (s *grpcServer) Insert(ctx context.Context, activity *api.Activity) (*api.InsertResponse, error) {
+	id, err := s.Activities.Insert(activity)
+	if err != nil {
+		return nil, fmt.Errorf("Internal Error: %w", err)
+	}
+	res := api.InsertResponse{Id: int32(id)}
+	return &res, nil
+}
+~~~
+
+I can repeat this for `List` and `Retrieve` (full code on github) and I have a working solution. (Though there is room for improvement, that I'll get back to in a second).
+
+## Testing A gRPC Server
+
+Previously, I had tested my REST service, by starting it up in a docker container and exercising some endpoints via a small bash script `test.sh`. And ran it all in an Earthfile in GitHubActions that looked like this:
+
+~~~{.dockerfile caption="Earthfile"}
+test:
+    FROM +test-deps
+    COPY test.sh .
+    WITH DOCKER --load agbell/cloudservices/activityserver=+docker
+        RUN  docker run -d -p 8080:8080 agbell/cloudservices/activityserver && \
+                ./test.sh
+    END
+~~~
+
+To get this working with grpc, all I need to do is change `test.sh` to use `grpcurl`:
+
+~~~{.bash caption=">_"}
+# echo "=== Test Reflection API ==="
+grpcurl -plaintext localhost:8080 describe
+
+echo "=== Insert Test Data ==="
+
+grpcurl -plaintext -d  '{ "description": "christmas eve bike class" }' localhost:8080 api.v1.Activity_Log/Insert
+
+echo "=== Test Retrieve Descriptions ==="
+
+grpcurl -plaintext -d '{ "id": 1 }' localhost:8080 api.v1.Activity_Log/Retrieve | grep -q 'christmas eve bike class'
+
+echo "=== Test List ==="
+
+grpcurl -plaintext localhost:8080 api.v1.Activity_Log/List | jq '.activities | length' |  grep -q '1'
+
+echo "Success"
+~~~
+
+And additionally, I need to make sure my `+test-deps` container has `grpcurl` installed. There are probably lots of ways to get grpcurl into my alpine base image, but the way I did it was just copy it from the official grpcurl alpine image into my `test-deps` image:
+
+~~~{.diff caption="Earthfile"}
++ grpcurl:
++    FROM fullstorydev/grpcurl:latest
++    SAVE ARTIFACT /bin/grpcurl ./grpcurl
+
+ test-deps:
+     FROM earthly/dind
+     RUN apk add curl jq
++    COPY +grpcurl/grpcurl /bin/grpcurl
+~~~
+
+And with that my gRPC server example is working and has end-to-end tests running in CI.
+
+<div class="wide">
+{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/3040.png --alt {{ gRPC Server Example Working  }} %}
+<figcaption>gRPC Server Example Working</figcaption>
+</div>
+
+Now I can move on to the gRPC client example.
 
 # Explain about protobufs
 # Aside about json verification and golang
