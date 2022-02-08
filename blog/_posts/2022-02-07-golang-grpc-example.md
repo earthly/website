@@ -440,7 +440,22 @@ grpcurl -plaintext localhost:8080 describe
 Error: server does not support the reflection API
 ~~~
 
-And you aren't strictly limited to grpcurl. I like it because it works like, well curl, but many other options exist. Postman supports grpc, as does [BloomRPC](https://github.com/bloomrpc/bloomrpc), [Insomnia](https://insomnia.rest/) and [many](github.com/gogo/letmegrpc) [command-line](https://github.com/fullstorydev/grpcui) [tools](https://github.com/gusaul/grpcox).
+`grpc_cli` which comes with grpc also can use the reflection api:
+
+~~~{.bash caption=">_"}
+grpc_cli ls localhost:8080 -l
+~~~
+~~~{.protobuf caption="Output"}
+filename: activity-log/api/v1/activity.proto
+package: api.v1;
+service Activity_Log {
+  rpc Insert(api.v1.Activity) returns (api.v1.Activity) {}
+  rpc Retrieve(api.v1.RetrieveRequest) returns (api.v1.Activity) {}
+  rpc List(api.v1.ListRequest) returns (api.v1.Activities) {}
+}
+~~~
+
+And you aren't strictly limited to grpcurl or the command-line. I like grpcurl because it works like, well curl, but many other options exist. Postman supports grpc, as does [BloomRPC](https://github.com/bloomrpc/bloomrpc), [Insomnia](https://insomnia.rest/) and [many](github.com/gogo/letmegrpc) [command-line](https://github.com/fullstorydev/grpcui) [tools](https://github.com/gusaul/grpcox).
 
 </div>
 
@@ -526,29 +541,115 @@ And with that my gRPC server example is working and has end-to-end tests running
 
 Now I can move on to the gRPC client example.
 
+## Golang gRPC Client Example
+
+How does the client code get generated? It turns out that is generated using `protoc` just like the service. In fact, I've already generated it without realizing it. 
+
+`protoc` created the client code when given `--go-grpc_out`:
+
+~~~{.bash caption=">_"}
+    protoc activity-log/api/v1/*.proto \
+    --go_out=. \
+    --go_opt=paths=source_relative \
+    --go-grpc_out=. \
+    --go-grpc_opt=paths=source_relative \
+    --proto_path=.
+~~~
+
+It looks like this:
+
+~~~{.go caption="activity-log/api/v1/activity_grpc.pb.go"}
+type activity_LogClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewActivity_LogClient(cc grpc.ClientConnInterface) Activity_LogClient {
+	return &activity_LogClient{cc}
+}
+~~~
+
+My Activities client is going to contain an instance of this client:
+
+~~~{.go caption="activity-client/internal/client/activity.go}
+type Activities struct {
+	client api.Activity_LogClient
+}
+~~~
+
+And I'll initialize the client with an active connection like this:
+
+~~~{.go caption="activity-client/internal/client/activity.go"}
+func NewActivities(URL string) Activities {
+	conn, err := grpc.Dial(URL, grpc.WithTransportCredentials(insecure.NewCredentials()))
+	if err != nil {
+		log.Fatalf("did not connect: %v", err)
+	}
+	client := api.NewActivity_LogClient(conn)
+	return Activities{client: client}
+}
+~~~
+
+Back in my main method, I initialze the client and also create a context. This context lets the client track if the request is still running. I'm creating mine with a timeout so my service can't hang my client if something goes sideways.
+
+~~~{.go bcaption="activity-client/cmd/client/main.go"}
+ctx, cancel := context.WithTimeout(context.Background(), time.Second)
+defer cancel()
+~~~
+
+<div class="notice--info">
+Breaking the client
+
+Problem:
+~~~{.bash caption=">_"}
+go run cmd/client/main.go -get 3
+Error: Insert failure: rpc error: code = Canceled desc = context canceled
+exit status 1
+~~~
+Solution:
+~~~{.bash caption=">_"}
+I had called defer cancel in my constructor.
+~~~
+
+Problem:
+~~~{.bash caption=">_"}
+go run cmd/client/main.go -get 1
+Error: Insert failure: rpc error: code = Canceled desc = grpc: the client connection is closing
+exit status 1
+~~~
+Problem here was I closed the connection
+
+</div>
+
+To implement the calls to the client, I just call the client and handle any possible errors. Here is insert:
+
+~~~{.go caption="activity-client/internal/client/activity.go"}
+func (c *Activities) Insert(ctx context.Context, activity *api.Activity) (int, error) {
+	resp, err := c.client.Insert(ctx, activity)
+	if err != nil {
+		return 0, fmt.Errorf("Insert failure: %w", err)
+	}
+	return int(resp.GetId()), nil
+}
+~~~
+
+Did I say handle errors? That is where things get a little trickier. In a REST service, I can infer meaning from response codes. Insert, shown above, is pretty simple but when implementing `Retrieve` I'd like to differentiate between a server error and a id not existing. That was easy with Rest, I had 404s and 500s. 
+
+It turns out gRPC has something similar. 
+
+## gRPC Error Codes
+
+
+
+I was wondering how the client was going to work. , but actually its already been generated, and I can use it.
+
 # Explain about protobufs
 # Aside about json verification and golang
 
 ## CLI protobufs
 
 
-`grpc_cli` which comes with grpc also works well for this
-~~~{.bash caption=">_"}
-grpc_cli ls localhost:8080 -l
-filename: activity-log/api/v1/activity.proto
-package: api.v1;
-service Activity_Log {
-  rpc Insert(api.v1.Activity) returns (api.v1.Activity) {}
-  rpc Retrieve(api.v1.RetrieveRequest) returns (api.v1.Activity) {}
-  rpc List(api.v1.ListRequest) returns (api.v1.Activities) {}
-}
 
-filename: reflection/grpc_reflection_v1alpha/reflection.proto
-package: grpc.reflection.v1alpha;
-service ServerReflection {
-  rpc ServerReflectionInfo(stream grpc.reflection.v1alpha.ServerReflectionRequest) returns (stream grpc.reflection.v1alpha.ServerReflectionResponse) {}
-}
-~~~
+
 
 Now I just have to implement this interface:
 
@@ -567,14 +668,10 @@ type Activity_LogServer interface {
 not clear how `mustEmbedUnimplementedActivity_LogServer` works.
 
 
-
 ## Client
 
-I was wondering how the client was going to work. How does the client code get generated, but actually its already been generated, and I can use it.
 
-## Questions
- - when to use int, int32, uint64 ?
- - what about hte locks and the pointers and stuff
+
 
 
 ## Base stuff
@@ -595,24 +692,6 @@ and use it like this:
 ~~~{.bash caption=">_"}
 ~~~
 
-Problem:
-~~~{.bash caption=">_"}
-go run cmd/client/main.go -get 3
-Error: Insert failure: rpc error: code = Canceled desc = context canceled
-exit status 1
-~~~
-Solution:
-~~~{.bash caption=">_"}
-I had called defer cancel in my constructor.
-~~~
-
-Problem:
-~~~{.bash caption=">_"}
-go run cmd/client/main.go -get 1
-Error: Insert failure: rpc error: code = Canceled desc = grpc: the client connection is closing
-exit status 1
-~~~
-Problem here was I closed the connection
 
 # Error handling
 By default your errors will only have a string description, but you
@@ -635,3 +714,7 @@ then we can unwrap it like this:
 ~~~{.bash caption=">_"}
 
 ~~~
+
+## Questions
+ - when to use int, int32, uint64 ?
+ - what about hte locks and the pointers and stuff
