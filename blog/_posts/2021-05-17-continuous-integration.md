@@ -20,7 +20,7 @@ For example, if a team member makes a change to a project, they might make updat
 
 ## The Relationship Between Continuous Integration and Continuous Delivery/Deployment
 
-Continuous integration is the first part of the CI/CD process. The *CD* stands for either *continuous delivery* or *continuous deployment*. Although these terms are sometimes used interchangeably, they are not quite the same.
+Continuous integration is the first part of the CI/CD process. The _CD_ stands for either _continuous delivery_ or _continuous deployment_. Although these terms are sometimes used interchangeably, they are not quite the same.
 
 In both cases, code is released in short cycles. However, with continuous delivery, code changes are automatically deployed through the development and [testing stages](/blog/unit-vs-integration), but must be manually reviewed and approved before being batched and released to production.
 
