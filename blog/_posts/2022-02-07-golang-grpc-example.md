@@ -23,7 +23,7 @@ internal-links:
 <!-- markdownlint-disable MD036 -->
 Welcome back. I'm an experienced developer, learning Golang by building an activity tracker. Last time I added sqlite persistance. Today, I'm going to be porting everything to gRPC.
 
-If you're curious about gRPC – how it works, when to use it, what example code might look like –  well you are in luck because I'm going to be building a grpc client, a grpc server and the protobuf files for my activity tracker. The full code is here.
+If you're curious about gRPC – how it works, when to use it, what example code might look like – well you are in luck because I'm going to be building a grpc client, a grpc server and the protobuf files for my activity tracker. The full code is on [GitHub](https://github.com/adamgordonbell/cloudservices/tree/v4-grpc).
 
 ## Why gRPC
 
@@ -264,7 +264,7 @@ func (c *Activities) Insert(activity *api.Activity) (int, error) {
 	}
 ~~~
 
-And that is really the only persistence layer change we need to make to switch from our hand-rolled struct to the `protoc` generated one. You can see the full file here: TODO
+And that is really the only persistence layer change we need to make to switch from our hand-rolled struct to the `protoc` generated one. You can see the full file on [github](https://github.com/adamgordonbell/cloudservices/blob/v4-grpc/activity-log/internal/server/activity.go).
 
 ## GRPC Service
 
@@ -296,7 +296,6 @@ func NewGRPCServer() *grpc.Server {
 	return gsrv
 }
 ~~~
-ToDO: explain why this returns grpc.Server
 
 And then wire that up to my main method and I can start things up:
 
@@ -485,7 +484,7 @@ func (s *grpcServer) Insert(ctx context.Context, activity *api.Activity) (*api.I
 }
 ~~~
 
-I can repeat this for `List` and `Retrieve` (TODO: full code on github) and I have a working solution. (Though there is room for improvement, that I'll get back to that later on).
+I can repeat this for [`List` and `Retrieve`](https://github.com/adamgordonbell/cloudservices/blob/v4-grpc/activity-log/internal/server/server.go) and I have a working solution. (Though there is room for improvement, that I'll get back to that later on).
 
 ## Testing A gRPC Server
 
@@ -726,8 +725,8 @@ And with those implementation in place (found here), the client works. Here is t
 
 ## Was this Worth it?
 
-If I exclude the generated code, the whole gRPC solution is a bit less code than the previous REST solution. And although it did take me a bit longer to get working, the advantages with this approach should increase as my messages and service endpoints get more complex. Also I learned a lot, so i think this was a worthwhile change.
+If I exclude the generated code, the whole gRPC solution is a bit less code than the previous REST solution. And although it did take me a bit longer to get working, the advantages with this approach should increase as my messages and service endpoints get more complex. Also I learned a lot, so I think this was a worthwhile change.
 
-Also, Earthly made it easy to test the whole solution. I barely had to change my integration approach at all. If you are looking for a vendor neutral way to describe your build and test process, take a look at Earthly and if you want to read the next installment of this series, sign up for the newsletter.
+Also, [Earthly](https://earthly.dev/) made it simple to test the whole solution. I barely had to change my integration test approach at all. If you are looking for a vendor neutral way to describe your build and test process, take a look at Earthly and if you want to read the next installment of this series, sign up for the newsletter.
 
 {% include cta/cta1.html %}
