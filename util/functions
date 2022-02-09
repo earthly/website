@@ -139,6 +139,11 @@ list-images() {
     ls -d "$(gen-image-folder)/"*
 }
 
+double-image() { # Double size of image. Using imagemagick
+# Better to get a high quality image
+mogrify -resize 200% "$1"
+}
+
 new-post() { # Eg. new-post multi-word-slug
   default="one-two-three"
   name="${1:=$default}"

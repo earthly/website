@@ -215,7 +215,7 @@ Note how this time I used `go-grpc_out` and `go-grpc_opt=paths` instead of `go_o
 
 Generating code from an API specification is great, especially when different people, or even different teams, are building the client and the server.
 
-People do this less often REST services, but it is doable.  In the past, when building REST clients in Scala, I've used OpenAPI specs as the source of truth and generated code from them, so the approach here is not merely limited to gRPC.
+People do this less often REST services, but it is doable. In the past, when building REST clients in Scala, I've used OpenAPI specs as the source of truth and generated code from them, so the approach here is not merely limited to gRPC.
 
 A excellent solution for writing REST clients from an OpenAPI definitions is [`gaurdrail`](https://github.com/guardrail-dev/guardrail) if using Scala. In Golang, gRPC is much more common, but [go-swagger](https://github.com/go-swagger/go-swagger) looks pretty promising if you want a REST service.
 
