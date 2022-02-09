@@ -644,27 +644,90 @@ It turns out gRPC has something similar.
 ## gRPC Error Codes
 
 In the gRPC service above, I constructed errors like this:
-```
-
-```
-
-By default your errors will only have a string description, but you
-may want to include more information such as a status code or some other
-arbitrary data.
-
-
-We do this like this
-NB: need code above this to not use status
-~~~{.bash caption=">_"}
-old:
-return nil, fmt.Errorf("Internal Error: %w", err)
-
-new:
-		return nil, status.Error(codes.NotFound, "id was not found")
-
+~~~{.go caption="internal/server/server.go"}
+func (s *grpcServer) Retrieve(ctx context.Context, req *api.RetrieveRequest) (*api.Activity, error) {
+	resp, err := s.Activities.Retrieve(int(req.Id))
+	if err == ErrIDNotFound {
+		return nil, fmt.Errorf("id was not found %w", err)
+	}
+	...
+}
 ~~~
 
-then we can unwrap it like this:
-~~~{.bash caption=">_"}
+And if I send in an invalid ID, I get a response like this:
 
+~~~{.bash caption=">_"}
+$ grpcurl -plaintext -d '{ "id": 5 }' \
+  localhost:8080 api.v1.Activity_Log/Retrieve 
 ~~~
+
+~~~{.bash caption="Output"}
+ERROR:
+  Code: Unknown
+  Message: id was not found Id not found
+~~~
+
+The only way my client can understand that message is by reading the string. And I don't want my client coupled to the exact strings used by my server.
+
+So, I'm going to change the server to return proper [gRPC status codes](https://grpc.github.io/grpc/core/md_doc_statuscodes.html):
+
+~~~{.diff caption="internal/server/server.go"}
+package server
+
+import (
++	codes "google.golang.org/grpc/codes"
++	status "google.golang.org/grpc/status"
+)
+func (s *grpcServer) Retrieve(ctx context.Context, req *api.RetrieveRequest) (*api.Activity, error) {
+	resp, err := s.Activities.Retrieve(int(req.Id))
+	if err == ErrIDNotFound {
+-		// return nil, fmt.Errorf("id was not found %w", err)
++		return nil, status.Error(codes.NotFound, "id was not found")
+	}
+	if err != nil {
+-		return nil, status.Error(codes.Internal, err.Error())
++		return nil, fmt.Errorf("Internal Error: %w", err)
+	}
+	return resp, nil
+}
+~~~
+
+And then I get proper status codes:
+
+~~~{.bash caption=">_"}
+$ grpcurl -plaintext -d '{ "id": 5 }' \
+  localhost:8080 api.v1.Activity_Log/Retrieve 
+~~~
+
+~~~{.bash caption="Output"}
+ERROR:
+  Code: NotFound
+  Message: id was not found Id not found
+~~~
+
+Then on the client side, I can unwrap the errors using `status.FromError`. This allows me to handle `code.NotFound` separately from other errors:
+
+~~~{.go caption="internal/client/activity.go"}
+func (c *Activities) Retrieve(ctx context.Context, id int) (*api.Activity, error) {
+	resp, err := c.client.Retrieve(ctx, &api.RetrieveRequest{Id: int32(id)})
+	if err != nil {
+		st, _ := status.FromError(err)
+		if st.Code() == codes.NotFound {
+			return &api.Activity{}, ErrIDNotFound
+		} else {
+			return &api.Activity{}, fmt.Errorf("Unexpected Insert failure: %w", err)
+		}
+	}
+	return resp, nil
+}
+~~~
+
+And with those implementation in place (found here), the client works. Here is the Earthly build:
+
+## Was this Worth it?
+
+If I exclude the generated code, the whole gRPC solution is a bit less code than the previous REST solution. And although it did take me a bit longer to get working, the advantages with this approach should increase as my messages and service endpoints get more complex. Also I learned a lot, so i think this was a worthwhile change.
+
+Also, Earthly made it easy to test the whole solution. I barely had to change my integration approach at all. If you are looking for a vendor neutral way to describe your build and test process, take a look at Earthly and if you want to read the next installment of this series, sign up for the newsletter.
+
+{% include cta/cta1.html %}
