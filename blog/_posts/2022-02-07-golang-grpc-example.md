@@ -266,7 +266,7 @@ func (c *Activities) Insert(activity *api.Activity) (int, error) {
 
 And that is the only persistence layer change we need to make to switch from our hand-rolled struct to the `protoc` generated one. Again, you can see the full thing on [github](https://github.com/adamgordonbell/cloudservices/blob/v4-grpc/activity-log/internal/server/activity.go).
 
-## GRPC Service
+### GRPC Service
 
 Now that my persistence layer uses the gRPC messages, I need to create a `grpc.Server` and start it up.
 
@@ -487,7 +487,7 @@ func (s *grpcServer) Insert(ctx context.Context, activity *api.Activity) (*api.I
 
 I can repeat this for [`List` and `Retrieve`](https://github.com/adamgordonbell/cloudservices/blob/v4-grpc/activity-log/internal/server/server.go), and I have a working solution. (Though the error handling has room for improvement. I'll get back to that later on in the article).
 
-## Testing A gRPC Server
+### Testing A gRPC Server
 
 Previously, I had tested my REST service by starting it up in a docker container and exercising some endpoints via a small bash script `test.sh`. I then ran it all in an Earthfile in GitHubActions that looked like this:
 
@@ -592,7 +592,7 @@ func NewActivities(URL string) Activities {
 }
 ~~~
 
-Back in my main method, I initialize the client and also create a context. This context lets the client track request specific details. I'm creating mine with a timeout so if something goes sideways my service can't hang my client.
+Back in my main method, I initialize the client and also create a context. This context lets the client track request-specific details. I'm building mine with a timeout so my service can't hang my client if something goes sideways.
 
 ~~~{.go bcaption="cmd/client/main.go"}
 ctx, cancel := context.WithTimeout(context.Background(), time.Second)
@@ -610,7 +610,7 @@ Error: Insert failure: rpc error: code = Canceled desc = context canceled
 exit status 1
 ~~~
 
-If you hit this, as the error suggests, you have probably called `cancel()` before the response came back.
+If you hit this, as the error suggests, you probably called `cancel()` before the response returned.
 
 The next problem I hit was this:
 
@@ -620,12 +620,12 @@ Error: Insert failure: rpc error: code = Canceled desc = grpc: the client connec
 exit status 1
 ~~~
 
-Here the problem was similar: I was closing the connection before the response had come back.
+The problem was similar: I was closing the connection before the response came back.
 </div>
 
 ### Golang GRPC Client Implementation
 
-To wire up the calls to the generated client code with my command-line, I just call the client and handle any possible errors. Here is insert:
+The last step I need to do is call the generated client code and handle any possible errors. Here is the insert:
 
 ~~~{.go caption="internal/client/activity.go"}
 func (c *Activities) Insert(ctx context.Context, activity *api.Activity) (int, error) {
@@ -637,7 +637,7 @@ func (c *Activities) Insert(ctx context.Context, activity *api.Activity) (int, e
 }
 ~~~
 
-Did I say handle errors? That is where things get a little trickier. In a REST service, I can infer meaning from response codes. Insert, shown above, is pretty simple but when implementing `Retrieve` I'd like to differentiate between a server error and a id not existing. That was straightforward with Rest, I had 404s and 500s.
+Did I say handle errors? That is where things get a little trickier. In a REST service, I can infer meaning from response codes. Insert, shown above, is pretty simple, but I need to differentiate between a server error and an id not existing when implementing `Retrieve`. That was straightforward with Rest: I had 404s and 500s.
 
 It turns out gRPC has something similar.
 
@@ -668,7 +668,7 @@ ERROR:
   Message: id was not found Id not found
 ~~~
 
-The only way my client can understand that message is by reading the string. And I don't want my client coupled to the exact strings used by my server.
+My client can only understand that message by matching on the string. And I don't want my client coupled to the exact strings used by my server.
 
 So, I'm going to change the server to return proper [gRPC status codes](https://grpc.github.io/grpc/core/md_doc_statuscodes.html):
 
@@ -706,7 +706,7 @@ ERROR:
   Message: id was not found Id not found
 ~~~
 
-Then on the client side, I can unwrap the errors using `status.FromError`. This allows me to handle `code.NotFound` separately from other errors:
+Then I can unwrap the errors using `status.FromError` on the client-side. This allows me to handle `code.NotFound` separately from other errors:
 
 ~~~{.go caption="internal/client/activity.go"}
 func (c *Activities) Retrieve(ctx context.Context, id int) (*api.Activity, error) {
@@ -723,12 +723,17 @@ func (c *Activities) Retrieve(ctx context.Context, id int) (*api.Activity, error
 }
 ~~~
 
-And with those implementation in place (found here), the client works. Here is the Earthly build:
+And with that implementation [in place](https://github.com/adamgordonbell/cloudservices/blob/v4-grpc/activity-client/internal/client/activity.go), the client works. Here is the Earthly build:
+
+<div class="wide">
+{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/3060.png --alt {{ gRPC Client Example Working }} %}
+<figcaption>gRPC Client Example Working</figcaption>
+</div>
 
 ## Was This Worth It?
 
-If I exclude the generated code, the whole gRPC solution is a bit less code than the previous REST solution. And although it did take me a bit longer to get working, the advantages with this approach should increase as my messages and service endpoints get more complex. Also I learned a lot, so I think this was a worthwhile change.
+The whole gRPC solution is a bit less code than the previous REST solution, if I exclude the generated code. And although it did take me a bit longer to get working, the advantages with this approach should increase as my messages and service endpoints get more complex. Also, I learned a lot, so I think this was a worthwhile change.
 
-Also, [Earthly](https://earthly.dev/) made it simple to test the whole solution. I barely had to change my integration test approach at all. If you are looking for a vendor neutral way to describe your build and test process, take a look at Earthly and if you want to read the next installment of this series, sign up for the newsletter.
+Also, [Earthly](https://earthly.dev/) made it simple to test the whole solution. I barely had to change my integration test approach at all. So, if you are looking for a vendor-neutral way to describe your build and test process, take a look at Earthly, and if you want to read the next installment of this series, sign up for the newsletter.
 
 {% include cta/cta1.html %}
