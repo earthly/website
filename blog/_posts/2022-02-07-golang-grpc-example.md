@@ -27,15 +27,15 @@ If you're curious about gRPC – how it works, when to use it, what example code
 
 ## Why gRPC
 
-If the main client of your backend service is client side JavaScript or if your project is going to have many clients, some of which you won't control then a JSON based REST service is a great way to go. JSON is human readable, its simple to make requests at the command-line or using tools like postman, and its a well understood how to write good REST apis. 
+If the main consumer of your service is client side JavaScript or if your project is going to have many clients, some of which you won't control then a JSON based REST service is a great way to go. JSON is human readable, its simple to make requests at the command-line or using tools like postman, and its a well understood how to write good REST apis. 
 
-However, it has some downsides. JSON is a text format, so there is more data to send and it is more expensive to serialize and deserialize. A standardized API specification does exist ( OpenAPI 2.0 aka Swagger 2.0 ) but generating a client and server from the specification is a bit trickier. 
+However, it has some downsides. JSON is a text format, so there is more data to send and it is more expensive to serialize and deserialize. A standardized API specification does exist ( OpenAPI 2.0 aka Swagger 2.0 ) but generating a client and server from the specification is a bit trickier.
 
-gRPC addresses a lot of these issues. It's binary format, so its quicker to send. It's quicker to serialize and de-serialize and it has better type support than JSON. But the most important aspect for my little app is that gRPC has code-generation. I can describe my service using `.proto` files and use existing tool to do some of the heavy lifting.
+gRPC addresses a lot of these issues. It's binary format, so its quicker to send. It's quicker to serialize and de-serialize and it has better types than JSON. But the most important aspect for my little app is that gRPC has code-generation. I can describe my service using `.proto` files and use an existing tool to do some of the heavy lifting.
 
 ## Protocal Buffers
-One of the big advantages to gRPC is protocol buffers, called protobuf from here forward. With protobufs you can encode the message semantics in a parsable form that can be shared among client and service. Protobuffs are a platform neutral language for structing data with built it fast serialization and support for schema migration, which is important if you want to change your message formats without introducing downtime.
 
+One of the big advantages to gRPC is protocol buffers (protobufs). With protobufs you can encode the message semantics of a service in a parsable form that can be shared by the client and the server. Protobufs are a platform neutral language for structuring data with built in fast serialization and support for schema migration, which is important if you want to change your message formats without introducing downtime. But that's enough talk, let's start building something.
 
 First thing I'll do is create a message type:
 
@@ -53,14 +53,15 @@ message Activity {
 }
 ~~~
 
-A couple things to note is this short example. First off I am using the latest version of the protobuf syntax `proto3`. Second I'm specifiying a package name `package api.v1;` and this will get used in the code I'm generating.
+There are a couple things to note is this short example. First off I am using the latest version of the protobuf syntax `proto3`. Second I'm specifiying a package name `package api.v1;` – this will get used in the code I'm generating.
+
 Then I'll install the protobuf compiler:
 
 ~~~{.bash caption=">_"}
 brew install protobuf
 ~~~
 
-Make sure installed:
+Make sure it's installed:
 
 ~~~{.bash caption=">_"}
 protoc --version
@@ -85,7 +86,7 @@ Please specify a program using absolute path or make sure the program is availab
 --go_out: protoc-gen-go: Plugin failed with status code 1.
 ~~~
 
-First it seems I need protoc-gen-go:
+Oh wait, first it seems I need protoc-gen-go:
 
 ~~~{.bash caption=">_"}
 $ brew install grpc 
@@ -137,7 +138,7 @@ type Activity struct {
 }
 ~~~
 
-`protoc` also generates a number of helper methods for working with the protobug message, such as field getters:
+`protoc` also generates a number of helper methods for working with the protobuf message, such as field getters:
 
 ~~~{.go caption="api/v1/activity.pb.go"}
 func (x *Activity) GetTime() *timestamppb.Timestamp {
@@ -155,7 +156,7 @@ func (x *Activity) GetId() int32 {
 }
 ~~~
 
-These are helping me correctly handle zero values on a nil Activity. I'm not sure why I'd be asking for the values of a nil Activity, but maybe it will make sense later.
+These are helpful if I wanted to create an interface for all messages with an ID. 
 
 Now that I have things working for one message type, I can define my whole service:
 
@@ -198,7 +199,7 @@ I can then generate the client and the service code using `protoc` again.
 
 Running this generates `activity_grpc.pb.go` with all the nessary code for a client and a server. 
 
-Note how this time I used `go-grpc_out` and `go-grpc_opt=paths` instead of `go_out` and `go_opt=paths`. I can combine these two together to generate messages and the client server.  
+Note how this time I used `go-grpc_out` and `go-grpc_opt=paths` instead of `go_out` and `go_opt=paths`. I can combine these two together to generate messages, the client, and the server.  
 
 ~~~{.bash caption=">_"}
   protoc activity-log/api/v1/*.proto \
@@ -214,7 +215,7 @@ Note how this time I used `go-grpc_out` and `go-grpc_opt=paths` instead of `go_o
 
 Generating code from an API specification is great, especially if you are working on a project where the client and server are being built by different people or even different teams.
 
-In the past, when building REST clients in Scala, I've used OpenAPI specs as the source of truth and generated code from them, so the approach `protoc` is helping me use is not merely limited to gRPC. 
+This is less commonly done with REST clients, but is doable. In the past, when building REST clients in Scala, I've used OpenAPI specs as the source of truth and generated code from them, so the approach here is not merely limited to gRPC. 
 
 A great solution for writing REST clients from an OpenAPI definitions is [gaurdrail](https://github.com/guardrail-dev/guardrail) if you are using Scala. In goLang, gRPC seems much more common, but [go-swagger](https://github.com/go-swagger/go-swagger) looks pretty promising if you want a REST service.
 
@@ -224,11 +225,13 @@ Another possible path to generating a REST client is [grpc-gateway](https://gith
 
 ## Golang gRPC Server
 
+### Golang Protobuf Types
+
 Now that I've got all my code generated, its time for me to build the server side. Let's start at the database layer and work upwards
 
-If you recall from when I was adding the `sqlite` feature, Activities handles all the data persistence. The data persistence should change at all. I just need to make sure I'm using my `protoc` generated struct. I can do this with an import change:
+If you recall from when I was adding the `sqlite` feature, Activities handles all the data persistence. The data persistence shouldn't change at all. I just need to make sure I'm using my `protoc` generated struct. I can do this with an import change:
 
-~~~{.diff caption="activity-log/internal/server/activity.go "}
+~~~{.diff caption="internal/server/activity.go "}
 import 
 - api "github.com/adamgordonbell/cloudservices/activity-log"
 + api "github.com/adamgordonbell/cloudservices/activity-log/api/v1"
@@ -237,10 +240,9 @@ import
 
 ### `google.protobuf.Timestamp`
 
-Previsouly my Activity struct was using `time.Time` to represent time and "net/http" was mapping it back and forth to a JSON string. However, protobufs are typed and so I have choosen to use `google.protobuf.Timestamp` as my datetime type. This means I need to worry less about getting invalid data.
+Previously my Activity struct was using `time.Time` to represent time and `net/http` was mapping it back and forth to a JSON string. However, protobufs are typed and so I have chosen to use `google.protobuf.Timestamp` as my time type. This means I don't have to worry about getting an invalid date sent in.
 
-Unfortunely, my generated code now uses a `google.protobuf.Timestamp` where my persistenance layer needs a `time.Time`. This is easy to fix with
-This is easy to fix with `AsTime`:
+Unfortunately, my generated code now uses a `google.protobuf.Timestamp` where my persistence layer needs a `time.Time`. This is easy to fix with `AsTime`:
 
 ~~~{.go caption="timstamp.pb.go"}
 // AsTime converts x to a time.Time.
@@ -251,7 +253,7 @@ func (x *Timestamp) AsTime() time.Time {
 
 <br/>
 
-~~~{.diff captionb="activity-log/internal/server/activity.go"}
+~~~{.diff captionb="internal/server/activity.go"}
 func (c *Activities) Insert(activity *api.Activity) (int, error) {
 	res, err := c.db.Exec("INSERT INTO activities VALUES(NULL,?,?);", 
 -  activity.Time, 
@@ -262,14 +264,15 @@ func (c *Activities) Insert(activity *api.Activity) (int, error) {
 	}
 ~~~
 
-And that is really the only perstiecne layer change we need to make to switch from our hand-rolled struct to the `protoc` generated one. You can see the full file here: TODO
-
+And that is really the only persistence layer change we need to make to switch from our hand-rolled struct to the `protoc` generated one. You can see the full file here: TODO
 
 ## GRPC Service
 
+Now that my persistence layer is using the gRPC messages, I need to create a `grpc.Server` and start it up.
+
 Previously, in my http service, I had an `httpServer`, I'm going to rename that::
 
-~~~{.diff caption="activity-log/internal/server/server.go"}
+~~~{.diff caption="internal/server/server.go"}
 - type httpServer struct {
 + type grpcServer struct {
 	Activities *Activities
@@ -278,7 +281,7 @@ Previously, in my http service, I had an `httpServer`, I'm going to rename that:
 
 And then I need to make an instance of it:
 
-~~~{.go caption="activity-log/internal/server/server.go"}
+~~~{.go caption="internal/server/server.go"}
 func NewGRPCServer() *grpc.Server {
 	var acc *Activities
 	var err error
@@ -297,7 +300,7 @@ ToDO: explain why this returns grpc.Server
 
 And then wire that up to my main method and I can start things up:
 
-~~~{.go caption="activity-log/cmd/server/main.go"}
+~~~{.go caption="cmd/server/main.go"}
 func main() {
 	log.Println("Starting listening on port 8080")
 	port := ":8080"
@@ -317,7 +320,6 @@ func main() {
 ~~~
 I haven't written an implementation of any of the RPC methods yet, but I'm curious what happens if I run it. 
 
-Actually I can't even get that far, it won't compile, but it does give me this helpful error message:
 
 ~~~{.bash caption=">_"}
 $ go run cmd/server/main.go
@@ -330,9 +332,9 @@ internal/server/server.go:30:39: cannot use &srv (type *grpcServer) as type api_
         *grpcServer does not implement api_v1.Activity_LogServer (missing api_v1.mustEmbedUnimplementedActivity_LogServer method)
 ~~~
 
-All I need to do is add an `UnimplementedActivity_LogServer`:
+No luck, but it gives me a helpful error message. All I need to do is add an `UnimplementedActivity_LogServer`:
 
-~~~{.diff caption="activity-log/internal/server/server.go"}
+~~~{.diff caption="internal/server/server.go"}
  type grpcServer struct {
 +	api.UnimplementedActivity_LogServer
  	Activities *Activities
@@ -354,7 +356,7 @@ ERROR:
 
 How does that work? How can I call the method that I haven't implemented yet? Well, the `protoc` generated code contains `UnimplementedActivity_LogServer` which looks like this:
 
-~~~{.go captionb="activity-log/api/v1/activity_grpc.pb.go"}
+~~~{.go captionb="api/v1/activity_grpc.pb.go"}
 // UnimplementedActivity_LogServer must be embedded to have forward compatible implementations.
 type UnimplementedActivity_LogServer struct {
 }
@@ -362,7 +364,7 @@ type UnimplementedActivity_LogServer struct {
 
 But, it also implements this interface:
 
-~~~{.go caption="activity-log/api/v1/activity_grpc.pb.go"}
+~~~{.go caption="api/v1/activity_grpc.pb.go"}
 type Activity_LogServer interface {
 	Insert(context.Context, *Activity) (*InsertResponse, error)
 	Retrieve(context.Context, *RetrieveRequest) (*Activity, error)
@@ -373,17 +375,18 @@ type Activity_LogServer interface {
 
 and those implementations are what I'm hitting when I call `insert`:
 
-~~~{.go captionb="activity-log/api/v1/activity_grpc.pb.go"}
+~~~{.go captionb="api/v1/activity_grpc.pb.go"}
 func (UnimplementedActivity_LogServer) Insert(context.Context, *Activity) (*InsertResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Insert not implemented")
 }
 ~~~
-As a newcomer to GoLang, its actually pretty nice that I can just read through the generated code and understand how it works. 
+
+As a newcomer to GoLang, this is pretty nice! I can just read through the generated code and understand how it works without too much difficulty.
 
 <div class="notice--info">
 **Making gRPC requests by Hand**
 
-There is one potential downside to using gRPC instead of rest: they are less human readable. With REST, I can make a GET request in my browser and view the JSON result and I can use curl and related tools to make more complex requests. This is harder to do with gRPC and protobufs. Or at least it used to be. I've found working with gRPC at the command line is doable once I did a couple of steps:
+There is one potential downside to using gRPC instead of REST: the messages are less human readable. Also the tooling is less standard. With REST, I can make a GET request in my browser and view the JSON result and I can use curl and related tools to make more complex requests. This is harder to do with gRPC and protobufs. Or at least it used to be. I've found working with gRPC at the command line is doable once I did a couple of steps:
 
 ### 1) Install `grpcurl` 
 
@@ -405,7 +408,7 @@ func main() {
 }
 ~~~
 
-Then you can not only make called against the service like its a REST service:
+Then you can make called against the service like its a REST service:
 
 ~~~{.bash caption=">_"}
 $ grpcurl -plaintext -d  \
@@ -433,14 +436,14 @@ service Activity_Log {
 }
 ~~~
 
-Without reflection on you would get an error like this:
+By the way, without reflection on you would get an error like this:
 
 ~~~{.bash caption=">_"}
 grpcurl -plaintext localhost:8080 describe
 Error: server does not support the reflection API
 ~~~
 
-`grpc_cli` which comes with grpc also can use the reflection api:
+And if you don't like `grpcurl` then `grpc_cli`, which comes with the grpc package, also can use the reflection api:
 
 ~~~{.bash caption=">_"}
 grpc_cli ls localhost:8080 -l
@@ -455,7 +458,7 @@ service Activity_Log {
 }
 ~~~
 
-And you aren't strictly limited to grpcurl or the command-line. I like grpcurl because it works like, well curl, but many other options exist. Postman supports grpc, as does [BloomRPC](https://github.com/bloomrpc/bloomrpc), [Insomnia](https://insomnia.rest/) and [many](github.com/gogo/letmegrpc) [command-line](https://github.com/fullstorydev/grpcui) [tools](https://github.com/gusaul/grpcox).
+And you aren't strictly limited to those two options. I like grpcurl because it works like, well curl, but many other options exist. Postman supports grpc, as does [BloomRPC](https://github.com/bloomrpc/bloomrpc), [Insomnia](https://insomnia.rest/) and [many](github.com/gogo/letmegrpc) [command-line](https://github.com/fullstorydev/grpcui) [tools](https://github.com/gusaul/grpcox).
 
 </div>
 
@@ -463,15 +466,15 @@ And you aren't strictly limited to grpcurl or the command-line. I like grpcurl b
 
 So as it stands now, the database layer is done, and the service can start up and receive gRPC requests but there is not service implementation connecting these two parts together. Let's write that.
 
-The interface tells me what I need to do for each function. Insert looks like this:
+I can follow the provided interface to create my implementation. Insert looks like this:
 
-~~~{.go caption="activity-log/api/v1/activity_grpc.pb.go"}
+~~~{.go caption="api/v1/activity_grpc.pb.go"}
 Insert(context.Context, *Activity) (*InsertResponse, error)
 ~~~
 
 And I can implement it by just calling through to my database layer, handling the error conditions and wrapping the response back up in the expected type:
 
-~~~{.go caption="activity-log/internal/server/server.go"}
+~~~{.go caption="internal/server/server.go"}
 func (s *grpcServer) Insert(ctx context.Context, activity *api.Activity) (*api.InsertResponse, error) {
 	id, err := s.Activities.Insert(activity)
 	if err != nil {
@@ -482,11 +485,11 @@ func (s *grpcServer) Insert(ctx context.Context, activity *api.Activity) (*api.I
 }
 ~~~
 
-I can repeat this for `List` and `Retrieve` (full code on github) and I have a working solution. (Though there is room for improvement, that I'll get back to in a second).
+I can repeat this for `List` and `Retrieve` (TODO: full code on github) and I have a working solution. (Though there is room for improvement, that I'll get back to that later on).
 
 ## Testing A gRPC Server
 
-Previously, I had tested my REST service, by starting it up in a docker container and exercising some endpoints via a small bash script `test.sh`. And ran it all in an Earthfile in GitHubActions that looked like this:
+Previously, I had tested my REST service, by starting it up in a docker container and exercising some endpoints via a small bash script `test.sh`. I then ran it all in an Earthfile in GitHubActions that looked like this:
 
 ~~~{.dockerfile caption="Earthfile"}
 test:
@@ -535,7 +538,7 @@ And additionally, I need to make sure my `+test-deps` container has `grpcurl` in
 And with that my gRPC server example is working and has end-to-end tests running in CI.
 
 <div class="wide">
-{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/3040.png --alt {{ gRPC Server Example Working  }} %}
+{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/3040.png --alt {{ gRPC Server Example Working }} %}
 <figcaption>gRPC Server Example Working</figcaption>
 </div>
 
@@ -558,7 +561,7 @@ How does the client code get generated? It turns out that is generated using `pr
 
 It looks like this:
 
-~~~{.go caption="activity-log/api/v1/activity_grpc.pb.go"}
+~~~{.go caption="api/v1/activity_grpc.pb.go"}
 type activity_LogClient struct {
 	cc grpc.ClientConnInterface
 }
@@ -570,7 +573,7 @@ func NewActivity_LogClient(cc grpc.ClientConnInterface) Activity_LogClient {
 
 My Activities client is going to contain an instance of this client:
 
-~~~{.go caption="activity-client/internal/client/activity.go}
+~~~{.go caption="internal/client/activity.go"}
 type Activities struct {
 	client api.Activity_LogClient
 }
@@ -578,7 +581,7 @@ type Activities struct {
 
 And I'll initialize the client with an active connection like this:
 
-~~~{.go caption="activity-client/internal/client/activity.go"}
+~~~{.go caption="internal/client/activity.go"}
 func NewActivities(URL string) Activities {
 	conn, err := grpc.Dial(URL, grpc.WithTransportCredentials(insecure.NewCredentials()))
 	if err != nil {
@@ -589,40 +592,42 @@ func NewActivities(URL string) Activities {
 }
 ~~~
 
-Back in my main method, I initialze the client and also create a context. This context lets the client track if the request is still running. I'm creating mine with a timeout so my service can't hang my client if something goes sideways.
+Back in my main method, I initialze the client and also create a context. This context lets the client track request specific details. I'm creating mine with a timeout so if something goes sideways my service can't hang my client.
 
-~~~{.go bcaption="activity-client/cmd/client/main.go"}
+~~~{.go bcaption="cmd/client/main.go"}
 ctx, cancel := context.WithTimeout(context.Background(), time.Second)
 defer cancel()
 ~~~
 
 <div class="notice--info">
-Breaking the client
+**Breaking the client**
 
-Problem:
+Initially, I ran into some problems getting the client to work. The first time I ran it I got this:
+
 ~~~{.bash caption=">_"}
 go run cmd/client/main.go -get 3
 Error: Insert failure: rpc error: code = Canceled desc = context canceled
 exit status 1
 ~~~
-Solution:
-~~~{.bash caption=">_"}
-I had called defer cancel in my constructor.
-~~~
 
-Problem:
+If you hit this, as the error suggests, you have probably called `cancel()` before the response came back.
+
+The next problem I hit was this:
+
 ~~~{.bash caption=">_"}
 go run cmd/client/main.go -get 1
 Error: Insert failure: rpc error: code = Canceled desc = grpc: the client connection is closing
 exit status 1
 ~~~
-Problem here was I closed the connection
 
+Here the problem was similar: I was closing the connection before the response had come back.
 </div>
 
-To implement the calls to the client, I just call the client and handle any possible errors. Here is insert:
+### Golang GRPC Client Implementation
 
-~~~{.go caption="activity-client/internal/client/activity.go"}
+To wire up the calls to the generated client code with my command-line, I just call the client and handle any possible errors. Here is insert:
+
+~~~{.go caption="internal/client/activity.go"}
 func (c *Activities) Insert(ctx context.Context, activity *api.Activity) (int, error) {
 	resp, err := c.client.Insert(ctx, activity)
 	if err != nil {
@@ -634,66 +639,15 @@ func (c *Activities) Insert(ctx context.Context, activity *api.Activity) (int, e
 
 Did I say handle errors? That is where things get a little trickier. In a REST service, I can infer meaning from response codes. Insert, shown above, is pretty simple but when implementing `Retrieve` I'd like to differentiate between a server error and a id not existing. That was easy with Rest, I had 404s and 500s. 
 
-It turns out gRPC has something similar. 
+It turns out gRPC has something similar.
 
 ## gRPC Error Codes
 
+In the gRPC service above, I constructed errors like this:
+```
 
+```
 
-I was wondering how the client was going to work. , but actually its already been generated, and I can use it.
-
-# Explain about protobufs
-# Aside about json verification and golang
-
-## CLI protobufs
-
-
-
-
-
-Now I just have to implement this interface:
-
-~~~{.bash caption=">_"}
-// Activity_LogServer is the server API for Activity_Log service.
-// All implementations must embed UnimplementedActivity_LogServer
-// for forward compatibility
-type Activity_LogServer interface {
-	Insert(context.Context, *Activity) (*Activity, error)
-	Retrieve(context.Context, *RetrieveRequest) (*Activity, error)
-	List(context.Context, *ListRequest) (*Activities, error)
-	mustEmbedUnimplementedActivity_LogServer()
-}
-~~~
-
-not clear how `mustEmbedUnimplementedActivity_LogServer` works.
-
-
-## Client
-
-
-
-
-
-## Base stuff
-
-This client here is helpful:
-https://github.com/grpc/grpc-go/blob/master/examples/helloworld/greeter_client/main.go
-
-First I have to connect to the client
-~~~{.bash caption=">_"}
-
-~~~
-
-Then I can write my insert like this:
-~~~{.bash caption=">_"}
-
-~~~
-and use it like this:
-~~~{.bash caption=">_"}
-~~~
-
-
-# Error handling
 By default your errors will only have a string description, but you
 may want to include more information such as a status code or some other
 arbitrary data.
@@ -714,7 +668,3 @@ then we can unwrap it like this:
 ~~~{.bash caption=">_"}
 
 ~~~
-
-## Questions
- - when to use int, int32, uint64 ?
- - what about hte locks and the pointers and stuff
