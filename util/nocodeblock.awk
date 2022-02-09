@@ -2,26 +2,34 @@
 
 ## Delete code blocks
 ## Useful for sending to Grammarly, but make sure you save
+
+
+# sline = skip line
+# sblokc = skip block
 /```/{ 
-    if(open==0){
-        open=1
+    if(sblock==0){
+        sblock=1
     } else {
-        ending=1
-        open=0
+        sline=1
+        sblock=0
     }
 }
 /~~~/{ 
-    if(open==0){
-        open=1
+    if(sblock==0){
+        sblock=1
     } else {
-        ending=1
-        open=0
+        sline=1
+        sblock=0
     }
 }
+/<div/{ 
+        sline=1
+}
 {
-    if(open==0 && ending==0){ 
+    if(sblock==0 && sline==0){ 
         print $0
     }
-    ending=0
+    # 
+    sline=0
 }
 
