@@ -824,4 +824,4 @@ Also if you have any feedback on this tutorial, you can find me [`@adamgordonbel
 {% include cta/cta1.html %}
 
 [^1]:
-  Yet another option is to use grpc-web to call grpc end points from client side JavaScript. You can find more out about this in the [gRPC-Gateway FAQ](https://grpc-ecosystem.github.io/grpc-gateway/docs/faq/#what-is-the-difference-between-the-grpc-gateway-and-grpc-web)
+  Yet another option is to use grpc-web to call grpc end points from client side JavaScript. You can find more out about this on [grpc-web's GitHub page](https://github.com/grpc/grpc-web). See also a comparison on the [gRPC-Gateway FAQ](https://grpc-ecosystem.github.io/grpc-gateway/docs/faq/#what-is-the-difference-between-the-grpc-gateway-and-grpc-web).
