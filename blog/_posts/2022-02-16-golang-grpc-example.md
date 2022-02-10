@@ -158,6 +158,14 @@ func (x *Activity) GetId() int32 {
 
 These are helpful if I want to create an interface to abstract across various message types.
 
+<div class="notice--info">
+
+**Caution: `protoc` and generated code**
+
+Installing `protoc` via an OS package manager like brew is a quick way to get started but it has some downsides. I'll going to show a better way to generate these files later on in the article.
+
+</div>
+
 Now that I have things working for one message type, I can define my whole service:
 
 ~~~{.protobuf caption="api/v1/activity.proto"}
@@ -219,7 +227,7 @@ People do this less often REST services, but it is doable. In the past, when bui
 
 A excellent solution for writing REST clients from an OpenAPI definitions is [`gaurdrail`](https://github.com/guardrail-dev/guardrail) if using Scala. In Golang, gRPC is much more common, but [go-swagger](https://github.com/go-swagger/go-swagger) looks pretty promising if you want a REST service.
 
-Another possible path to generating a REST client is [grpc-gateway](https://github.com/grpc-ecosystem/grpc-gateway). If I need rest end-points, in addition to the gRPC end-points, then I may give that a try.
+Another possible path to generating a REST client is [grpc-gateway](https://github.com/grpc-ecosystem/grpc-gateway). If I need rest end-points, in addition to the gRPC end-points, then I may give that a try.[^1]
 
 </div>
 
@@ -270,7 +278,7 @@ And that is the only persistence layer change we need to make to switch from our
 
 Now that my persistence layer uses the gRPC messages, I need to create a `grpc.Server` and start it up.
 
-Previously, in my http service, I had an `httpServer`, I'm going to rename that::
+Previously, in my http service, I had an `httpServer`, I'm going to rename that:
 
 ~~~{.diff caption="internal/server/server.go"}
 - type httpServer struct {
@@ -382,7 +390,8 @@ func (UnimplementedActivity_LogServer) Insert(context.Context, *Activity) (*Inse
 As a newcomer to GoLang, this is pretty nice! I can just read through the generated code and understand how it works without much difficulty.
 
 <div class="notice--info">
-**Making gRPC requests by Hand**
+
+## `grpcurl` Examples: Making gRPC requests by Hand
 
 One potential downside to using gRPC instead of REST is that the messages are less human-readable. Also, the tooling is less standard. With REST, I can make a `GET` request in my browser and view the JSON result, and I can use curl and related tools for more complex requests. This is harder to do with gRPC and protobufs. Or at least it used to be. I've found working with gRPC at the command line is doable once I did a couple of steps:
 
@@ -442,6 +451,22 @@ grpcurl -plaintext localhost:8080 describe
 Error: server does not support the reflection API
 ~~~
 
+But, even with reflection off, you can make specific rpc, calls if you have the `.proto` file
+
+~~~{.bash caption=">_"}
+ grpcurl -plaintext -d '{ "id": 1 }' \
+   -proto ./activity-log/api/v1/activity.proto \
+    localhost:8080 api.v1.Activity_Log/Retrieve
+~~~
+
+~~~{.bash caption="Output"}
+{
+  "id": 1,
+  "time": "1970-01-01T00:00:00Z",
+  "description": "christmas eve bike class"
+}
+~~~
+
 And if you don't like `grpcurl` then `grpc_cli`, which comes with the gRPC package, also can use the reflection api:
 
 ~~~{.bash caption=">_"}
@@ -474,7 +499,7 @@ Insert(context.Context, *Activity) (*InsertResponse, error)
 
 And I can implement it by just calling through to my database layer, handling the error conditions, and wrapping the response back up in the expected type:
 
-~~~{.go caption="internal/server/server.go"}
+~~~{.go bcaption="internal/server/server.go"}
 func (s *grpcServer) Insert(ctx context.Context, activity *api.Activity) (*api.InsertResponse, error) {
  id, err := s.Activities.Insert(activity)
  if err != nil {
@@ -627,7 +652,7 @@ The problem was similar: I was closing the connection before the response came b
 
 The last step I need to do is call the generated client code and handle any possible errors. Here is the insert:
 
-~~~{.go caption="internal/client/activity.go"}
+~~~{.go bcaption="internal/client/activity.go"}
 func (c *Activities) Insert(ctx context.Context, activity *api.Activity) (int, error) {
  resp, err := c.client.Insert(ctx, activity)
  if err != nil {
@@ -645,7 +670,7 @@ It turns out gRPC has something similar.
 
 In the gRPC service above, I constructed errors like this:
 
-~~~{.go caption="internal/server/server.go"}
+~~~{.go bcaption="internal/server/server.go"}
 func (s *grpcServer) Retrieve(ctx context.Context, req *api.RetrieveRequest) (*api.Activity, error) {
  resp, err := s.Activities.Retrieve(int(req.Id))
  if err == ErrIDNotFound {
@@ -682,12 +707,12 @@ import (
 func (s *grpcServer) Retrieve(ctx context.Context, req *api.RetrieveRequest) (*api.Activity, error) {
  resp, err := s.Activities.Retrieve(int(req.Id))
  if err == ErrIDNotFound {
--  // return nil, fmt.Errorf("id was not found %w", err)
+-  return nil, fmt.Errorf("id was not found %w", err)
 +  return nil, status.Error(codes.NotFound, "id was not found")
  }
  if err != nil {
--  return nil, status.Error(codes.Internal, err.Error())
-+  return nil, fmt.Errorf("Internal Error: %w", err)
+-  return nil, fmt.Errorf("Internal Error: %w", err)
++  return nil, status.Error(codes.Internal, err.Error())
  }
  return resp, nil
 }
@@ -708,7 +733,7 @@ ERROR:
 
 Then I can unwrap the errors using `status.FromError` on the client-side. This allows me to handle `code.NotFound` separately from other errors:
 
-~~~{.go caption="internal/client/activity.go"}
+~~~{.go bcaption="internal/client/activity.go"}
 func (c *Activities) Retrieve(ctx context.Context, id int) (*api.Activity, error) {
  resp, err := c.client.Retrieve(ctx, &api.RetrieveRequest{Id: int32(id)})
  if err != nil {
@@ -730,10 +755,73 @@ And with that implementation [in place](https://github.com/adamgordonbell/clouds
 <figcaption>gRPC Client Example Working</figcaption>
 </div>
 
+## Playing Nice With Others
+
+I mentioned earlier that using an OS package manager installed `protoc` was not necessarily the best way to do things. Now let me show you why:
+
+~~~{.diff caption="api/v1/activity.pb.go"}
+ // Code generated by protoc-gen-go. DO NOT EDIT.
+ // versions:
+-//     protoc-gen-go v1.26.0
+-//     protoc        v3.19.4
++//     protoc-gen-go v1.27.1
++//     protoc        v3.13.0
+~~~
+
+That was a diff created by running protoc on a Debian environment. And then when I was back on my mac, I got this diff.
+
+~~~{.diff caption="api/v1/activity.pb.go"}
+ // Code generated by protoc-gen-go. DO NOT EDIT.
+ // versions:
+-//     protoc-gen-go v1.27.1
+-//     protoc        v3.13.0
++//     protoc-gen-go v1.26.0
++//     protoc        v3.19.4
+~~~
+
+The problem is that I'm using different versions of `protoc`. I need a way to pin the version of `protoc` and `protoc-gen-go`. Then I wouldn't have these messy diffs. And this is just a side-project – this will get worse with larger teams.
+
+This is one of the big reasons we see people reach for Earthly. With Earthly, I can add a target that installs a specific version of protoc into a container:
+
+~~~{.dockerfile caption="Earthfile"}
+proto-deps:
+    FROM golang:buster
+    RUN apt-get update && apt-get install -y wget unzip
+    RUN wget -O protoc.zip \
+        https://github.com/protocolbuffers/protobuf/releases/download/v3.13.0/protoc-3.13.0-linux-x86_64.zip
+    RUN unzip protoc.zip -d /usr/local/
+    RUN go get google.golang.org/protobuf/cmd/protoc-gen-go \
+               google.golang.org/grpc/cmd/protoc-gen-go-grpc
+~~~
+
+Then put my code generating `protoc` command in a target as well:
+
+~~~{.dockerfile caption="Earthfile"}
+protoc:
+    FROM +proto-deps
+    WORKDIR /activity-log
+    COPY go.mod go.sum ./ 
+    COPY api ./api
+    RUN protoc api/v1/*.proto \
+            --go_out=. \
+            --go_opt=paths=source_relative \
+            --go-grpc_out=. \
+            --go-grpc_opt=paths=source_relative \
+            --proto_path=.
+   SAVE ARTIFACT ./api AS LOCAL ./api 
+~~~
+
+And then if everyone runs `earthly +protoc` instead of calling `protoc` directly then we will all always get the same output. And an added benefit is it makes on-boarding people to your project easier because they don't have to install any gRPC specific tools locally and you can bump the versions for everyone by just editing the Earthfile.
+
 ## Was This Worth It?
 
 The whole gRPC solution is a bit less code than the previous REST solution, if I exclude the generated code. And although it did take me a bit longer to get working, the advantages with this approach should increase as my messages and service endpoints get more complex. Also, I learned a lot, so I think this was a worthwhile change.
 
-Also, [Earthly](https://earthly.dev/) made it simple to test the whole solution. I barely had to change my integration test approach at all. So, if you are looking for a vendor-neutral way to describe your build and test process, take a look at Earthly, and if you want to read the next installment of this series, sign up for the newsletter.
+Also, [Earthly](https://earthly.dev/) made it simple to test the whole solution and to pin a specific version of the protocol buffer compiler. So, if you are looking for a vendor-neutral way to describe your build and test process, take a look at Earthly, and if you want to read the next installment of this series, sign up for the newsletter.
+
+Also if you have any feedback on this tutorial, you can find me [`@adamgordonbell`](https://twitter.com/adamgordonbell).
 
 {% include cta/cta1.html %}
+
+[^1]:
+  Yet another option is to use grpc-web to call grpc end points from client side JavaScript. You can find more out about this in the [gRPC-Gateway FAQ](https://grpc-ecosystem.github.io/grpc-gateway/docs/faq/#what-is-the-difference-between-the-grpc-gateway-and-grpc-web)

@@ -141,3 +141,5 @@ chroot
 jupyter
 csv
 http
+
+rpc
