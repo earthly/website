@@ -19,12 +19,24 @@ docker:
         url: /understanding-docker-logging-and-log-files/
       - title: "Docker Networking"
         url: /docker-networking/
+      - title: "Docker Volumes"
+        url: /docker-volumes/
+      - title: "Docker Secrets"
+        url: /docker-secrets/
       - title: "AWS ECR"
         url: /how-to-setup-and-use-amazons-elastic-container-registry/
   - title: Best Practices
     children:
       - title: "Docker Compose"
         url: /youre-using-docker-compose-wrong/
+      - title: "Local Dev: Kubernetes Vs Docker"
+        url: /kubernetes-docker/
+      - title: "Chef vs. Docker"
+        url: /docker-vs-chef/
+  - title: Docker Internals
+    children:
+      - title: "containerd vs. Docker"
+        url: /containerd-vs-docker/
       - title: "What Is BuildKit?"
         url: /what-is-buildkit-and-what-can-i-do-with-it/
       - title: "Compiling Containers"
@@ -95,3 +107,32 @@ activity-tracker:
         url: /golang-command-line/
       - title: "Part 3: SQLite"
         url: /golang-sqlite/
+deployment-strategies:
+  - title: "Deployment Strategies"
+    children:
+      - title: "Deployment Strategies Overview"
+        url: /deployment-strategies/
+      - title: "Blue Green Deployment"
+        url: /blue-green/
+      - title: "Canary Deployment"
+        url: /canary-deployment/
+      - title: "Continuous Integration vs. Continuous Deployment"
+        url: /ci-vs-cd/
+  - title: "Continous Deployment Tools"
+    children:
+      - title: "Octopus Deploy"
+        url: /octopus-deploy/
+      - title: "ArgoCD"
+        url: /argocd-kubernetes/  
+      - title: "Spinnaker Deployments"
+        url: /spinnaker-kubernetes/  
+      - title: "GitLab CI/CD"
+        url: /gitlab-ci/  
+      - title: "Jenkins Deployment"
+        url: /jenkins-stages-pipelines/  
+  - title: "Serverless Deployment"
+    children:
+      - title: "Azure Functions Deployment "
+        url: /azure-functions-node/
+      - title: "AWS Lambda Deployment"
+        url: /aws-lambda-node/

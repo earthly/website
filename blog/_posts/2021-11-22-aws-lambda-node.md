@@ -4,7 +4,8 @@ categories:
   - Tutorials
 toc: true
 author: Said Hayani
-
+sidebar:
+  nav: "deployment-strategies"
 internal-links:
  - aws lambda
  - lambda

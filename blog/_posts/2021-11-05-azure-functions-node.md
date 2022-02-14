@@ -4,6 +4,8 @@ categories:
   - Tutorials
 toc: true
 author: Mohammed Osman
+sidebar:
+  nav: "deployment-strategies"
 internal-links:
  - azure functions
  - azure

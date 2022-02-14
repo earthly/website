@@ -4,6 +4,8 @@ categories:
   - Tutorials
 toc: true
 author: Shingai Zivuku
+sidebar:
+  nav: "docker"
 internal-links:
  - docker volumes
  - docker volume

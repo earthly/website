@@ -3,6 +3,8 @@ title: "How Blue-Green Deployments Work in Practice"
 categories:
   - Articles
 toc: true
+sidebar:
+  nav: "deployment-strategies"
 author: Taurai Mutimutema
 internal-links:
  - blue green

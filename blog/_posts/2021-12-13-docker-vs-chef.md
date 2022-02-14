@@ -4,7 +4,8 @@ categories:
   - Tutorials
 toc: true
 author: Keanan Koppenhaver
-
+sidebar:
+  nav: "docker"
 internal-links:
  - chef
 ---

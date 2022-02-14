@@ -4,7 +4,8 @@ categories:
   - Tutorials
 toc: true
 author: Allan MacGregor
-
+sidebar:
+  nav: "docker"
 internal-links:
  - docker secrets
 ---

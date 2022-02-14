@@ -5,7 +5,8 @@ categories:
   - Tutorials
 toc: true
 author: Sanni Michael
-
+sidebar:
+  nav: "deployment-strategies"
 internal-links:
  - argocd
  - kubernetes deployment

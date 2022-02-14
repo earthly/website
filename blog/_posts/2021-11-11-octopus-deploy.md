@@ -4,6 +4,8 @@ categories:
   - Tutorials
 toc: true
 author: Daniel Olaogun
+sidebar:
+  nav: "deployment-strategies"
 internal-links:
  - octopus deploy
 ---

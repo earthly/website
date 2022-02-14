@@ -4,7 +4,8 @@ categories:
   - Articles
 toc: true
 author: Keanan Koppenhaver
-
+sidebar:
+  nav: "deployment-strategies"
 internal-links:
  - canary
 ---

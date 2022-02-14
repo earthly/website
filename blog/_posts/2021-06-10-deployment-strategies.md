@@ -4,6 +4,8 @@ categories:
   - Tutorial
 author: Adam
 toc: true 
+sidebar:
+  nav: "deployment-strategies"
 internal-links:
  - deployment strategies
  - deployment

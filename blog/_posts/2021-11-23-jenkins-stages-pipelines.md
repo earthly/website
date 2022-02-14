@@ -4,6 +4,8 @@ categories:
   - Tutorials
 toc: true
 author: Joel Olawanle
+sidebar:
+  nav: "deployment-strategies"
 internal-links:
  - jenkins
  - jenkins pipeline

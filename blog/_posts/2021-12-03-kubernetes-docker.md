@@ -2,9 +2,12 @@
 title: "Kubernetes vs. Docker for Local Development"
 categories:
   - Tutorials
+sidebar:
+  nav: "docker"
 toc: true
 author: Damaso Sanoja
 ---
+
 You may be wondering, given that [Docker](https://www.docker.com/) is a containerization platform and [Kubernetes](https://kubernetes.io/) is a containerization platform orchestrator, how can the two be compared? Aren't they supposed to play different roles?
 
 This article will explore a use case where such a comparison is quite relevant: local development: is it better to use the Docker runtime or Kubernetes to manage your local container development environment?
