@@ -138,3 +138,5 @@ distroless
 autoscaling
 cgroup
 chroot
+jupyter
+csv
