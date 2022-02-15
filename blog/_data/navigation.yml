@@ -105,6 +105,8 @@ activity-tracker:
         url: /golang-command-line/
       - title: "Part 3: SQLite"
         url: /golang-sqlite/
+      - title: "Part 4: gRPC"
+        url: /golang-grpc-example/
 deployment-strategies:
   - title: "Deployment Strategies"
     children:
