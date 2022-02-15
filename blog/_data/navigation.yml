@@ -10,8 +10,6 @@ main:
     url: /categories/tutorials/
   - title: "GitHub"
     url: https://github.com/earthly/earthly
-  # - title: "Reference"
-  #   url: /categories/reference/
 docker:
   - title: Container Tutorials
     children:
@@ -107,6 +105,8 @@ activity-tracker:
         url: /golang-command-line/
       - title: "Part 3: SQLite"
         url: /golang-sqlite/
+      - title: "Part 4: gRPC"
+        url: /golang-grpc-example/
 deployment-strategies:
   - title: "Deployment Strategies"
     children:
@@ -136,3 +136,5 @@ deployment-strategies:
         url: /azure-functions-node/
       - title: "AWS Lambda Deployment"
         url: /aws-lambda-node/
+      - title: "Part 4: gRPC"
+        url: /golang-grpc-example/

@@ -117,8 +117,18 @@ link-opp() { # List places you could link to other posts
 lint() { # Run Linter
     # change code blocks
     cat "$(post)" | ./util/codeblock.awk | sponge "$(post)"
+    # fix markdown
+    markdownlint --fix "./blog/_posts/*.md"
     # run CI lint process
     earthly +blog-lint-apply "$@"; 
+}
+
+format(){ # change code blocks
+   cat "$(post)" | ./util/codeblock.awk | sponge "$(post)" 
+}
+
+drop-code(){ # Delete all code blocks
+   cat "$(post)" | ./util/nocodeblock.awk | sponge "$(post)" 
 }
 
 list-images() { 
@@ -127,6 +137,11 @@ list-images() {
 
     echo "listing generated images:"
     ls -d "$(gen-image-folder)/"*
+}
+
+double-image() { # Double size of image. Using imagemagick
+    # Better to get a high quality image
+    mogrify -resize 200% "$1"
 }
 
 new-post() { # Eg. new-post multi-word-slug

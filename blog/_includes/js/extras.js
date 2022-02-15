@@ -51,6 +51,14 @@ function syntaxLabel() {
          elem.innerHTML = elem.innerHTML + "<span class=\"syntax-label-bottom\">"+caption+"</span>" ; 
        }
     );
+
+    // bottom caption
+    // use ~~~{bcaptionb="filename"}
+    addStuff("data-bcaption",
+    function (elem, caption) {
+       elem.innerHTML = elem.innerHTML + "<span class=\"syntax-label-bottom\">"+caption+"</span>" ; 
+     }
+  );
 };
 
 syntaxLabel();
