@@ -132,8 +132,8 @@ blog-lint-apply:
   RUN sed -i -E "s/“|”/\"/g" ./blog/_posts/*.md
   RUN sed -i -E "s/‘|’/'/g" ./blog/_posts/*.md
   # remove double spaces
-  RUN sed -i -E "s/\.\s\s(\w)/. \1/g" ./blog/_posts/*.md
-  RUN sed -i -E "s/\?\s\s(\w)/? \1/g" ./blog/_posts/*.md
+  # RUN sed -i -E "s/\.\s\s(\w)/. \1/g" ./blog/_posts/*.md
+  # RUN sed -i -E "s/\?\s\s(\w)/? \1/g" ./blog/_posts/*.md
   RUN vale --output line --minAlertLevel error ./blog/_posts/*.md
   IF grep -n 'imgur.com' ./blog/_posts/*.md
     RUN echo "Fail: external image link" && false
