@@ -94,8 +94,18 @@ Then browse to http://0.0.0.0:4002/blog/
  rbenv install 2.7.0
  rbenv global 2.7.0
  ruby -v
+ brew install vale
+ brew install markdownlint-cli
+ brew install sponge
+ brew install gawk
  brew install vips
  brew install pandoc
+ brew install gnu-sed
+
+```
+`gnu-sed` works differnet than the version of `sed` that comes with mac by default, so you'll need to add the line below to your `.bashrc` to get your system to use it.
+```bash
+ export  PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
 ```
 
 ### Run

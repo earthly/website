@@ -166,3 +166,4 @@ Artifactory
 Jira
 Assembla
 Atlassian
+Alletto
