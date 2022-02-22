@@ -36,3 +36,8 @@ dasel
 nocrop
 argoco
 github
+gridnc
+www
+uae
+nad
+sheba

@@ -25,6 +25,7 @@ RAMDisk
 ShellCheck
 ripgrep
 Kaggle
+postgres
 json
 unix
 Fargate
