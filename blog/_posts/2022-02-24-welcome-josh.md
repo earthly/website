@@ -32,6 +32,8 @@ I also think the fact that I don't come from a technical background helps me bri
 
 My answer for this one is pretty simple: I love writing, teaching, and learning. A technical writing position gives me the chance to alternate between those roles on a regular basis.
 
+## Welcome to the Team
+
 Keep a look out for Josh's writing here on the Earthly blog in the coming weeks. He's already hard at work on a few tutorials and articles. We look forward to having him as part of the Earthly team moving forward.
 
 {% include cta/cta1.html %}

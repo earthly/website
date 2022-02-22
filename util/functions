@@ -121,7 +121,7 @@ lint() { # Run Linter
     markdownlint --fix "./blog/_posts/*.md"
     # run CI lint process
     earthly +blog-lint-apply "$@"; 
-} 
+}
 
 format(){ # change code blocks
    cat "$(post)" | ./util/codeblock.awk | sponge "$(post)" 

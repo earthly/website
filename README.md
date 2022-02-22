@@ -103,7 +103,7 @@ Then browse to http://0.0.0.0:4002/blog/
  brew install gnu-sed
 
 ```
-`gnu-sed` works differnet than the version of `sed` that comes with mac by default, so you'll need to add the line below to your `.bashrc` to get your system to use it.
+`gnu-sed` works different than the version of `sed` that comes with mac by default, so you'll need to add the line below to your `.bashrc` to get your system to use it.
 ```bash
  export  PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
 ```
