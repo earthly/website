@@ -8,18 +8,35 @@ author: Josh
 internal-links:
  - just an example
 ---
-Go to circleci and start a new account. You can sign up with your email or use an existing github account. Follow the steps to connect your github or bitbucket account. I used github.
 
-Once you are signed in Click projects in the menu on the left. You should see a list of repos. 
+If you're looking for a reliable CI/CD platform to deploy your Python Django project, CircleCi offers a lot. It's easy to set up, comes with tons of reusable set ups called Orbs, and best of all, offers up to 6,000 build minutes per month for free, so it's great for small projects, but can certainly scale to accomadate large enterprise level workflows with paid accounts.
 
-Select Setup Project. 
-Circleci uses a config.yml file to know what to do. You can create this file in the repo yourself, or you can have circleci create a template file for you by selecting the option Commit a starter CI pipeline to a new branch. I decided to go this route. After clicking setup project you'll be taken to a dashboard. 
+I'm currenlty working on a project compairing different CI/CD pipelien offerings, trying to get a better idea of what each offers, how they run, and how much it takes to get them set up. My first stop was CircleCi. To get familiar with it I spun up a small sample DJango project to use for this tutorial. The idea behind it is an app to help me keep track of all my physical media (I'm kind of obsessed with collecting DVDs and Blurays), but really it is just an example project to have something to test and build in CircleCi.
 
-Above your pipleline you should see three drop down menus. The first lets you select pipelines by owner. This is useful if you are working on a team and you want to give permissions for certain pipelines to certian teams. Very helpful if you are looking to get developers to own their own builds. In a new account there will only be two options, everyone, and your user. The drop down lets you select a specific pipeline and the last one lets you select which branch you'd like to see builds for. Select your project from the drop down menu. If the branch drop down is set to all branches you should see an execution of your pipeline.
+NOTE ON Media inventory:
+As I'm sure you guessed there are dozens of apps that do this very well already, but I am required by turorial writers law to choose something that already exists and build a worse version of it. If you want a great working version checkout [MovieBuddy](https://apps.apple.com/us/app/moviebuddy-movie-tv-library/id965645508). If you want to learn how build and test Django with CircleCi, read on.
 
-Now select `circleci-project-setup` from the drop down. This is the branch that Circleci made when we set up our project and told it to create the config.yml for us.
+## Sign Up
 
-From here we have a couple of options. You could pull down the branch circleci created and start to edit the file locally, or you can click Edit Config in the top right which opens up an editor in your browser. This is nice becuase circle ci has a linter built in that will let you know if any of hte code you write is invalid. Either way, you should see a template file that looks something like this:
+
+One I thing I really liked was that it was easy to sign up and get started with circlci since it offers a completely free teir, there's no credit card necessary. TravisCI offers on month free, but charges after that, so you can't even sign up without a credit card. As part of the signup process you'll be givent the option to  follow steps to connect your github or bitbucket account, which you'll need to do to give CircleCi permission to pull your code. I used github for this tutorial.
+
+## Creting a Project
+![Projects](../assets/images/circle-ci-with-django/menu.png)
+
+Once you are signed in click projects in the menu on the left. You should see a list of repos from your github account.
+
+
+
+Select Setup Project. CircleCi uses a config.yml file to know what to do. You can create this file in the repo yourself, or you can have CircleCi create a template file for you by selecting the option Commit a starter CI pipeline to a new branch. I decided to go this route. After clicking setup project you'll be taken to a dashboard.
+
+![Repo](../assets/images/circle-ci-with-django/create_config.png)
+
+Above your pipeline you should see three drop down menus. The first lets you select pipelines by owner. This is useful if you are working on a team and you want to give permissions for certain pipelines to certain teams. Very helpful if you are looking to get developers to own their own builds. In a new account there will only be two options, everyone, and your user. The drop down lets you select a specific pipeline and the last one lets you select which branch you'd like to see builds for. Select your project from the drop down menu. If the branch drop down is set to all branches you should see an execution of your pipeline.
+
+Now select `circleci-project-setup` from the drop down. This is the branch that CircleCi made when we set up our project and told it to create the config.yml for us.
+
+From here we have a couple of options. You could pull down the branch CircleCi created and start to edit the file locally, or you can click Edit Config in the top right which opens up an editor in your browser. This is nice becuase circle ci has a linter built in that will let you know if any of hte code you write is invalid. Either way, you should see a template file that looks something like this:
 
 ```yml
 # Use the latest 2.1 version of CircleCI pipeline process engine.
@@ -49,7 +66,7 @@ workflows:
     jobs:
       - say-hello
 ```
-We can start by thinking of the file as containing three seperate pieces. First is the Version of cirlceci we want to use. After that we have job definitions. Jobs are templates for tasks we want to perform. We can define as many jobs as we want and each job can have several steps. It's important to know that jobs do not run on their own. Simply defining a job does nto mean it will run.
+We can start by thinking of the file as containing three seperate pieces. First is the Version of CircleCi we want to use. After that we have job definitions. Jobs are templates for tasks we want to perform. We can define as many jobs as we want and each job can have several steps. It's important to know that jobs do not run on their own. Simply defining a job does nto mean it will run.
 
 Workflows are where we tell circle ci which jobs to run and in what order. We can define several workflows that run under different circumstances. For example, we can have a workflow that runs whenever someone pushes a new branch to our repo. I may run some tests, run our linter, and build our app. Then we might have another workflow that fires whenever there is a merge to master. In this case we may want to do all the same steps again, but add a step where we push the built image to a repositior like AWS ECR or Dockerhub. 
 
@@ -199,7 +216,7 @@ It will need to:
 
 ### Writing Article Checklist
 
-- [ ] Write Outline
+- [x] Write Outline
 - [ ] Write Draft
 - [ ] Fix Grammarly Errors
 - [ ] Read out loud
