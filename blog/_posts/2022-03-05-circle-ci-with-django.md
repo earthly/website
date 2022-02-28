@@ -301,6 +301,10 @@ workflows:
 ```
 By adding the `requires` field to `build-and-push-to-dockerhub`, CircleCi now knows that I want it to wait until `test-and-lint` finishes successfully before running `build-and-push-to-dockerhub`. This way if any of the tests fail, the pipeline will fail and I won't risk pushing a broken build to Dockerhub.
 
+## CircleCi With Earthly
+TO DO
+
+
 ## Conclusion
 You may need to experiment with different set ups to find what's right for your project. If this project was much larger and I were to refactor what we have so far, I might split the linting step out into a separate job and let it run alongside my tests instead of having them run one after another in the same job.
 
@@ -322,15 +326,3 @@ You may need to experiment with different set ups to find what's right for your 
 - [ ] Run `link-opp` and find 1-5 places to incorporate links to other articles
 - [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
 - [ ] Raise PR
-
-## Draft.dev Article Checklist
-
-- [ ] Add in Author page
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
