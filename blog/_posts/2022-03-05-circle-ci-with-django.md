@@ -11,12 +11,21 @@ internal-links:
 
 If you're looking for a reliable CI/CD platform to deploy your Python Django project, CircleCi offers a lot. It's easy to set up, comes with tons of reusable set ups called Orbs, and best of all, offers up to 6,000 build minutes per month for free, so it's great for small projects, but can certainly scale to accommodate large enterprise level workflows with paid accounts.
 
-I'm currently working on a project comparing different CI/CD pipelines, trying to get a better idea of what each offers, how they run, and how much it takes to get them set up. My first stop was CircleCi. To get familiar with it I spun up a small sample DJango project to use for this tutorial. The idea behind the Django project is an app to help me keep track of all of my physical copies of movies (blu-ray, dvds, etc), but really it is just an example project to have something to test and build in CircleCi.
+I'm currently working on a project comparing different CI/CD pipelines, trying to get a better idea of what each offers, how they run, and how much it takes to get them set up. My first stop was CircleCi. 
 
-NOTE ON Media inventory:
-As I'm sure you guessed there are dozens of apps that do this very well already, but I am required by tutorial writers law to choose something that already exists and build a worse version of it. If you want a great working version checkout [MovieBuddy](https://apps.apple.com/us/app/moviebuddy-movie-tv-library/id965645508). If you want to learn about how to build and test Django with CircleCi, read on.
+To get familiar with it I spun up a small [sample DJango project](https://github.com/jalletto/circle_ci_python_example) to use for this tutorial. I am an ~~compulsive~~ avid ~~hoarder~~ collector of movies. The idea behind the Django project is an app to help me keep track of all of my blu-rays, DVDs, etc, but really it is just an example project to have something to test and build in CircleCi.
 
-## CircleCi Sign Up
+<div class="notice--info">
+
+**Physical Media Inventory Managers**
+As I'm sure you've already guessed there are dozens of apps that do this very well already, but I am required by tutorial writers law to choose something that already exists and build a worse version of it. My hands are tied.
+
+If you want a great working version checkout [MovieBuddy](https://apps.apple.com/us/app/moviebuddy-movie-tv-library/id965645508). 
+
+If you want to learn about how to build and test Django with CircleCi, read on.
+</div>
+
+## CircleCi: Getting Started
 
 One thing I really liked was that it was easy to sign up and get started with CircleCi since it offers a completely free tier, there's no credit card necessary. Other products I've tried offer a month or two free, but charge after that, so you can't even sign up without a credit card. As part of the signup process you'll be given the option to  follow steps to connect your github or bitbucket account, which you'll need to do to give CircleCi permission to pull your code. I used github for this tutorial.
 
@@ -41,7 +50,17 @@ The most important one to take note of is the last one, which allows you to sele
 
 Now select `circleci-project-setup` from the drop down. This is the branch that CircleCi made when we set up our project and told it to create the config.yml for us.
 
-From here we have a couple of options. You could pull down the branch CircleCi created and start to edit the file locally, or you can click Edit Config in the top right which opens up an editor in your browser. This is nice becuase circle ci has a linter built in that will let you know if any of hte code you write is invalid. Either way, you should see a template file that looks something like this:
+<div class="notice--info">
+
+**Working With the Config File**
+
+You have a couple of options here. You could pull down the branch CircleCi created and start to edit the file locally, or you can click `Edit Config` in the top right which opens up an editor in your browser. This is nice because CircleCi has a linter built in that will let you know if any of the code in the YML file is invalid.
+</div>
+
+
+If you're updating the code locally you'll need to push every time you make a change, but if you are working in the editor you can click `Save and Run` and CircleCi will push the changes for you.
+
+You should see a template file that looks something like this:
 
 ```yml
 # Use the latest 2.1 version of CircleCI pipeline process engine.
@@ -71,24 +90,31 @@ workflows:
     jobs:
       - say-hello
 ```
-We can start by thinking of the file as containing three seperate pieces. First is the Version of CircleCi we want to use. After that we have job definitions. Jobs are templates for tasks we want to perform. We can define as many jobs as we want and each job can have several steps. It's important to know that jobs do not run on their own. Simply defining a job does nto mean it will run.
+We can start by thinking of the file as containing three pieces. First is the Version of CircleCi we want to use. As of this writing, 2.1 is the latest version. 
 
-Workflows are where we tell circle ci which jobs to run and in what order. We can define several workflows that run under different circumstances. For example, we can have a workflow that runs whenever someone pushes a new branch to our repo. I may run some tests, run our linter, and build our app. Then we might have another workflow that fires whenever there is a merge to master. In this case we may want to do all the same steps again, but add a step where we push the built image to a repositior like AWS ECR or Dockerhub. 
+After that we have job definitions. [Jobs](https://circleci.com/docs/2.0/jobs-steps/#jobs-overview) are templates for tasks we want to perform. We can define as many jobs as we want and each job can have several steps. It's important to know that jobs do not run just because you define them. You can get a job to run by calling it in a workflow.
 
-Lets start by creating a job called `build_and_test`.
+[Workflows](https://circleci.com/docs/2.0/workflows/) are where we tell CircleCi which jobs to run and in what order. We can define several workflows that run under different circumstances. For example, we can have a workflow that runs whenever someone pushes a new branch to our repo and a separate workflow that runs only on pushes to a `main` or `production` branch.
+
+In this tutorial we'll define one workflow that runs two jobs. The first job will run our linter and our tests. I'm using [pylint](https://pylint.org/) along with the [pylint-django](https://pypi.org/project/pylint-django/) plugin to make sure my Python code is styled correctly. For tests I'm using the [Unittest module](https://docs.python.org/3/library/unittest.html#module-unittest) that comes built in with Python. Django [recommends using Unittest](https://docs.djangoproject.com/en/4.0/topics/testing/) and is compatible with it out of the box.
+
+Lets start by creating a job called `test-and-lint`. Delete everything in the `config.yml` and replace it with the code below.
 
 ```yml
 version: 2.1
 
 jobs:
-  build-and-test:
+  test-and-lint:
     docker:
       - image: cimg/python:3.10.1
     steps:
       - checkout
       - run:
-          name: install dependancies
+          name: install dependencies
           command: pip install -r requirements.txt
+      - run:
+          name: lint
+          command: pylint my_media/ media_organizer/
       - run:
           name: run tests
           command: python manage.py test
@@ -99,27 +125,37 @@ workflows:
       - build-and-test
 ```
 
-After we name our job we need to specify an enviorment for it run in. In this case, we'll use a docker image. We can pull docker images from dockerhub, or, in this case, we can use [images provided by circleci](https://circleci.com/docs/2.0/circleci-images/). These are images that circleci maintains and that "include tools especially useful for CI/CD". You can search for available images [here](https://circleci.com/developer/images).
+After we name our job we need to specify an environment for it run in. CircleCi offers MacOS and Linux environments, but most likely you'll want to use a docker image to run your jobs in. CircleCi can pull docker images from Dockerhub, or, in this case, we can use [images provided by circleci](https://circleci.com/docs/2.0/circleci-images/). These are images that CircleCi maintains and that "include tools especially useful for CI/CD". You can search for available images [here](https://circleci.com/developer/images).
 
-Next we define our steps. the `checkout` step tells circleci to to checkout the repo code into the steps working directory. After that we can install the dependancies using pip and then run our tests. Lastly, we need to create a workflow and tell it to run the job we just created.
+Next we define our steps. These are the actual things we want the job to do. The `checkout` step tells CircleCi to checkout the repo code into the step's working directory. 
 
-If you're updating the code locally you'll need to push every time you make a change. Another reason why making edits in the circleci browser editor is super conveient
+The `run` command lets us run commands as we would if we were working on the command line. Each `run` command gets a name, which can be anything you want, followed by the actual command we want to run.
 
-If you're in the editor you can just click `Save and Run` in the top right corner. This will trigger a 
+In this case we are running three commands. First we need to install our dependencies. In Python we can do this with pip.
+Next I run my linter, and the last command runs the tests. Save the changes we have and run the build, it will fail.
 
-At the bottom, under the lllll tab you can click on `build-and-test` or go to your dashboard and click on the currently running build. You'll be able to see all the steps for the running build. Oh no! Looks like our build failed when trying to run our tests. If we take a look at the error it looks like Django is having trouble connecting to postgres. 
+![Build Failed](../assets/images/circle-ci-with-django/build-failed.png)
 
-No worries, we can set up a postgres image to fix this issue.
+No problem. On the view page for the build you'll be able to see the job that failed. Click on it to see a breakdown of each step. You can further click on each step to see the console output. If you click on the `run tests` step your should see an error similar to the one below.
+
+![Could Not Connect to Server](../assets/images/circle-ci-with-django/no-postgres-error.png)
+
+It looks like Django is having trouble connecting to Postgres. This error is occuring when Django tries to set up a test database to run our unit tests. The reason it can't connect is because there is no database, not yet. We'll need to set one up.
+
+When we create a job, we can tell it to use docker and then define an image we want to user. The first image we pass is the main image our job will run in, however we can pass aditional images and CircleCi will create containers we can connect to and use during the job.
+
+In this case we use a Postgres so that Django can set up a test DB. We can pass a number of enviormnet variables, but the miniumu we need for now is to set a `POSTGRES_USER`. When the Postgres container spins up, it will create a postgres role named `example`. This will be the role Django users to connect to the database.
 
 ```yml
-  build-and-test:
+  test-and-lint:
     docker:
       - image: cimg/python:3.10.1
       - image: cimg/postgres:14.1
         environment:
           POSTGRES_USER: example
 ```
-Next let's take a look at the `settings.py` file in our Django project. In order for our app to be able to connect to postgresql in circleci, we'll need to set have `HOST` set to `localhost`. Also make sure that the `POSTGRES_USER` in your circleci.yml matches the `USER` in your `settings.py` file. In this case I went with the generic `example`. 
+
+In order to connect to the test database we'll need to make sure our Django project is set up correctly. Let's take a look at the `settings.py` file in our Django project. In order for our app to be able to connect to Postgres in CircleCi, we'll need to set have `HOST` set to `localhost`. Also, make sure that the `POSTGRES_USER` in your `circleci.yml` matches the `USER` in your `settings.py` file.
 
 ```python
 DATABASES = {
@@ -133,11 +169,13 @@ DATABASES = {
     }
 }
 ```
-Now rerun the build and it should pass. There's a lot more we can do, including saving our test results, but for now, let's commit these changes. Now circleci will listen for changes to your repo. It will run a new build whenever you push a new branch, push changes to a branch or merge to main. You'll be able to see the status of the build on your PR.
+Now if we rerun the build it should pass.
 
-Circleci allows you to save the results of your tests so you can view them in the UI. This is helpful when debugging and also allows you to take advantage of CircleCi's [test insights](https://circleci.com/docs/2.0/collect-test-data/) feature.
+## Saving Test Results
 
-CircleCi reads the test data from xml files, so in order to take advantage of this feature we'll need to make an update to our Django project to tell it to save our test results to an xml file.  We are using the build in Unnittest sweet to run our tests. We can export those results to xml easily by installing the [unittest-xml-reporting](https://pypi.org/project/unittest-xml-reporting/) package with `pip install unittest-xml-reporting`
+CircleCi allows you to save the results of your test runs so you can view them in the UI. This is helpful when debugging and also allows you to take advantage of CircleCi's [test insights](https://circleci.com/docs/2.0/collect-test-data/) feature, which gives you a window into how your tests are performing overall across multiple runs. The data can help you identify things like flaky tests or tests that are taking too long to run.
+
+CircleCi reads the test data from xml files, so in order to take advantage we'll need to make an update to our Django project to tell it to save our test results to an xml file. We can export our Unittest results to `xml` easily by installing the [unittest-xml-reporting](https://pypi.org/project/unittest-xml-reporting/) package with `pip install unittest-xml-reporting`
 
 Next we need to tell Django to use the new package and where to save the test results. We can do that by adding the following to the `settings.py` file.
 
@@ -151,9 +189,9 @@ NOTE Before you push to github.
 1. Don't forget to add `unittest-xml-reporting` to your requirements.txt file. `pip freeze > requirements.txt`
 2. Be sure to add `test_results/` to your `.gitignore` file.
 
-You can tests that everything is running locally. Run your tests as normal with `python manage.py test`. YOu should see a test_results/ directory show up in the root of your project with a `results.xml` file in it.
+You can tests that everything is running locally by running you tests as you normally would with `python manage.py test`. You should see a `test_results/` directory show up in the root of your project with a `results.xml` file in it.
 
-Now we just need to tell CircleCi where to look for the test results by add the following to the config.yml file.
+Now we just need to tell CircleCi where to look for the test results by adding the following to `config.yml`.
 
 ```yml
       - run:
@@ -167,52 +205,45 @@ With these changes in place, rerun the pipeline. Now, under the tests tab in bui
 
 Let's go back and add a step to run our linter before our tests.
 
-```yml
-    steps:
-      - checkout
-      - run:
-          name: install dependancies
-          command: pip install -r requirements.txt
-      - run:
-          name: lint
-          command: pylint my_media/ media_organizer/
-      - run:
-          name: run tests
-          command: python manage.py test
-```
-Each time we make an update to our yml file, Circleci will ask if we want to commit to an existing branch or create a new one. In this case I created a new branch.
-
-Now if you run the pipeline again you'll should be able to see some information under tests tab.
-
 ![successful test run](../assets/images/circle-ci-with-django/successful_test_run.png)
 
-Green tests are great, but the real benifit of setting this all up is being able to see when tests fail.
+Green tests are great, but the real benefit of setting this all up is being able to see when tests fail.
 
 ![successful test run](../assets/images/circle-ci-with-django/failed_test.png)
 
-TIP:
-You can also use CircleCi's Test Insights feature which gives you a window into how your tests are performing overall across multiple runs. The data can help you identify things like flaky tests or tests that are taking too long to run.
 
 ## Pushing to Dockerhub
-Automatically running our tests with each pull request is great, but what we really want to move toward is deploying our code. If you're using Docker or kubernettes, you'll want to be able to build an image for deployment. Circleci makes that process easy.
+Automatically running our tests with each pull request is great, but what we really want to move toward is deploying our code. If you're using Docker or Kubernetes, you'll want to be able to build an image to deploy later. CircleCi makes that process easy.
+
+I'm using a very simple Dockerfile for this project.
+
+```Docker
+FROM python:3
+WORKDIR /circle_ci_python_example
+COPY . /circle_ci_python_example
+RUN pip install -r requirements.txt
+COPY . /circle_ci_python_example/
+EXPOSE 8000
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+```
 
 In this case we'll build an image and push it to Dockerhub, though it is possible to push to other container management services like AWS ECR. 
 
-First, make sure you have a Dockerhub account and access to your username and password. You'll need to create a repository in Dockerhub. This will be where your images will get pushed to and live.
+First, make sure you have a [Dockerhub account](https://hub.docker.com/) and access to your username and password. You'll also need to create a repository in Dockerhub to store your images.
 
 ### Enviorment Variables
 
-In order to push to Dockerhub we'll need to provide a password. Naturally we don't wasnt to put senesaivte information directly into our code, so instead we can take advantage of CircleCi's Enviromant variables.
+In order to push to Dockerhub we'll need to provide a password. Naturally, we don't want to put sensitive information directly into our code, so instead we can use CircleCi's environment variables.
 
-In the upper right corner of the project screen there will be a button with a gear on it that says Project Settings. Clicking this will bring you to a new page with a new menu on the left. Clcick the button for Environment Variables.
+In the upper right corner of the project screen there will be a button with a gear on it that says Project Settings. Clicking this will bring you to a new page with a new menu on the left. Ccick the button for Environment Variables.
 
-From here you should be able to add your dockerhub user name and password. If you're using the same code as in this tutorial you'll want to name the variables `DOCKERHUB_PASSWORD` and `DOCKERHUB_USERNAME`.
+From here you should be able to add your Dockerhub user name and password. If you're using the same code as in this tutorial you'll want to name the variables `DOCKERHUB_PASSWORD` and `DOCKERHUB_USERNAME`.
 
-Once set, you can access the enviorment variables at any step in a job by using `$` followed by the variable name. For example `$DOCKERHUB_PASSWORD`. We'll do just that in the next section.
+Once set, you can access the environment variables at any step in a job by using `$` followed by the variable name. For example `$DOCKERHUB_PASSWORD`. We'll do just that in the next section.
 
 ### Updating Our YML file.
 
-Now that we have a repository on Dockerhub and our password and user name set as envs, we can update our config.yml file with a new job to build and push the image ot the remote repository.
+Now that we have a repository on Dockerhub and our password and user name set as envs, we can update our `config.yml` file with a new job to build and push the image ot the remote repository.
 
 CircleCi offers support for running docker commands inside of jobs with the [setup_remote_docker](https://circleci.com/docs/2.0/building-docker-images/)
 
@@ -231,13 +262,13 @@ build-and-push-to-dockerhub:
       - run: docker push user_name/circle_ci_python_example:$CIRCLE_BRANCH
 
 ```
-In the code above we create a new job called `build-and-push-to-docker-hub`. The initial setup looks a lot like our `test-and-lint` job. We start with a docker image for python. We don't need postgresql in this step because we won't be running any tests.
+In the code above we create a new job called `build-and-push-to-docker-hub`. The initial setup looks a lot like our `test-and-lint` job. We start with a docker image for python. We don't need Postgres in this step because we won't be running any tests.
 
-Next we need to checkout the code. (look this up to provide more details). When we add the `setup_remote_docker` step to our job, this tells CircleCi to setup a new environment that "is remote, fully-isolated and has been configured to execute Docker commands."
+Next, we need to checkout the code just like we did in the last job. Next we can add the `setup_remote_docker` step which tells CircleCi to setup a new environment that "is remote, fully-isolated and has been configured to execute Docker commands."
 
 From there we can run our docker commands just as we would from the command line if we were developing locally.
 
-In this case we run three commands. First, we take advantage of the environment variables we set up earlier to login to Dockerhub. The next command builds the docker image and tags it with `user_name/circle_ci_python_example:$CIRCLE_BRANCH`.
+First, we take advantage of the environment variables we set up earlier to login to Dockerhub. The next command builds the docker image and tags it with `user_name/circle_ci_python_example:$CIRCLE_BRANCH`. `$CIRCLE_BRANCH` is a environment vairalbe provided by CircleCi. For this example I used it as a the tag name, but you can obviously tag the image any way you want.
 
 The final command pushes the image to Dockerhub.
 
@@ -253,11 +284,11 @@ workflows:
 
 ## Order of Execution
 
-Unless you tell CircleCi otherwise, it will attempt to run the jobs in a workflow in parrallell. This comes in handy when you have large workflows or a lot of tests that take a  long time to run. You could split your test runs into seperate jobs and then CircleCi wouuld run them at the same time, saving you time.
+Unless you tell CircleCi otherwise, it will attempt to run the jobs in a workflow in parallel. This comes in handy when you have large workflows or a lot of tests that take a long time to run. You could split your test runs into separate jobs and then CircleCi would run them at the same time for example.
 
-But the way we have our current workflow set up, I don't want to push any builds with failing tests up to Dockerhub, so in this case I don't want to run the jobs in parrellel. Instead, I only want to push to Dockerhub after I know all the tests have passed.
+But the way we have our current workflow set up, I don't want to push any builds with failing tests up to Dockerhub, so in this case I don't want to run the jobs in parallel. Instead, I only want to push to Dockerhub after I know all the tests have passed.
 
-No problem. I can tell CircleCi to wait by altering the `config.yml` like this.
+I can tell CircleCi to wait by altering the `config.yml` like this.
 
 ```yml
 workflows:
@@ -268,9 +299,11 @@ workflows:
           requires:
             - test-and-lint
 ```
-By adding the `requires` field to the `build-and-push-to-dockerhub`, CircleCi now knows that I want it to wait until `test-and-lint` finishes and finishes successfully, before running `build-and-push-to-dockerhub`.
+By adding the `requires` field to `build-and-push-to-dockerhub`, CircleCi now knows that I want it to wait until `test-and-lint` finishes successfully before running `build-and-push-to-dockerhub`. This way if any of the tests fail, the pipeline will fail and I won't risk pushing a broken build to Dockerhub.
 
 ## Conclusion
+You may need to experiment with different set ups to find what's right for your project. If this project was much larger and I were to refactor what we have so far, I might split the linting step out into a separate job and let it run alongside my tests instead of having them run one after another in the same job.
+
 
 
 ### Writing Article Checklist
