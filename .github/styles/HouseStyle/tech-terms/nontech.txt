@@ -7,3 +7,4 @@ automations
 misconfigured
 Chai
 impactful
+Residental

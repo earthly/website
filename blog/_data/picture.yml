@@ -18,6 +18,10 @@ presets:
     keep: center
     crop: '1:1'
 
+  gridnc:
+    formats: [webp, original]
+    widths: [500]
+
   2up:
     formats: [webp, original]
     widths: [600, 800]
