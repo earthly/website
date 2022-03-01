@@ -40,7 +40,7 @@ Once you are signed in click `projects` in the menu on the left. You should see 
 
 Select `Setup Project` next to the repository that contains the Django project you want to build. In order to define a pipeline for your project, you'll need to create `.circleci/config.yml` in the root of your repository. You can create this file in the repo yourself, or you can have CircleCi create a template file for you by selecting the option `Commit a starter CI pipeline to a new branch`.
 
-![Create the file yourself or let circleci take care of it for you](../assets/images/circle-ci-with-django/create_config.png)
+![Create the file yourself or let CircleCi take care of it for you](../assets/images/circle-ci-with-django/create_config.png)
 
 Either way, after clicking `setup project` you'll be taken to a dashboard similar to the one pictured below. The only difference is that the bottom section where the pipeline runs are list will be blank, since you haven't run any pipelines yet.
 
@@ -383,15 +383,16 @@ You may need to experiment with different set ups to find what's right for your 
 
 - [x] Write Outline
 - [x] Write Draft
-- [ ] Fix Grammarly Errors
-- [ ] Read out loud
-- [ ] Write 5 or more titles and pick the best on
-- [ ] First two paragraphs: What's it about? Why listen to you?
+- [X] Fix Grammarly Errors
 - [X] Create header image in Canva
 - [x] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
+- [X] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
 - [x] Run mark down linter (`lint`)
+- [X] Verify look of article locally
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links to other articles
-- [X] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
+- [ ] Read out loud
 - [ ] Raise PR
+
+- [ ] Write 5 or more titles and pick the best on
+- [ ] First two paragraphs: What's it about? Why listen to you?
