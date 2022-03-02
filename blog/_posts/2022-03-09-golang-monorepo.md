@@ -230,7 +230,7 @@ unit-test:
 
 ### Service One
 
-Uses the Hello library as an artifact, and configures its own build and test steps.
+Uses the Hello library as an artifact and configures its own build and test steps.
 Service Two looks basically the same, so I've left it out.
 
 ~~~{.Dockerfile caption="services/one/Earthfile"}
