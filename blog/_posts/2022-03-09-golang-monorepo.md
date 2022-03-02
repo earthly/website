@@ -281,7 +281,7 @@ the entire monorepo can be run using `earthly +all-unit-test`.
 
 ### Efficient Caching in a Monorepo Build
 
-An efficient build tool for a monorepo should not rebuild components that haven't changed, nor should it re-run tests 
+An efficient build tool for a monorepo should not rebuild components that haven't changed, nor should it re-run tests
 that aren't necessary. Earthly does this naturally in a local environment, which is super useful in speeding up
 development.
 
@@ -290,7 +290,7 @@ It's also possible to utilize caching in a CI pipeline. On many platforms such a
 so Earthly loses its cache history from previous runs.
 [Shared caching](https://docs.earthly.dev/docs/guides/shared-cache), however, can be used to improve this.
 
-Note that shared cache does require upload and download steps to sync the cache during each CI run, so it does have a 
+Note that shared cache does require upload and download steps to sync the cache during each CI run, so it does have a
 cost. It can yield a nice performance boost though for compute-heavy steps, such as long-running integration tests
 which do not always need to be re-run.
 
