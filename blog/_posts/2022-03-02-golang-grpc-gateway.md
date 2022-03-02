@@ -173,6 +173,10 @@ You can find the code for this gRPC proxy on github. If you have the proto files
 
 Let's move on to the next grpc gateway example.
 
+### Proxy Alternatives - Kong gRPC-gateway
+
+An stand-in alternative to the above is the KONG [gRPC-gateway](https://docs.konghq.com/hub/kong-inc/grpc-gateway/). If you are using as an API gateway then by enabling the grpc-gateway plugin and configuring things correctly you can get an equivalent proxy setup for you.
+
 ## REST GRPC (HTTP Frontend)
 
 The Proxy service above is great if your gRPC service is written in a langauge besides go, or if its not your code or your service. You can interact with it from the outside and not worry about the implementation details.
@@ -201,7 +205,6 @@ func main() {
 		log.Fatalf("failed to serve: %v", err)
 	}
 }
-
 ```
 
 The big change is calling `RegisterActivity_LogHandlerServer` instead of `RegisterActivity_LogHandlerFromEndpoint`, which takes the backend implementation of a GRPC service instead of a network location of an existing instance. So I just hand it the same ActivityService implementation I use and no network calls are needed to serve requests.
@@ -283,24 +286,29 @@ func main() {
 
 And if I start that up, I should have a working service than can handle REST and gRPC.
 
-....
+```
+grpcurl -insecure localhost:8080 api.v1.Activity_Log/List
+```
+```
+Failed to dial target host "localhost:8080": tls: first record does not look like a TLS handshake
+```
 
-Ok, well maybe not. Before I get it working I need to explain a little about what is getting in my way.
+Ok, well maybe not. Before I get it working I need to explain a little about TLS and HTTP/2 because they are getting in my way.
 
 
 #### What is HTTP/2
 
-HTTP 1 uses the simple model of making requests I was introduced to in a networking class. A TCP connection is established, then a resource is requested and then the TCP connection is ended. 
+Here is how HTTP was explained to me in a networking class once: A TCP connection is established, then a resource is requested and then the TCP connection is ended. That is how HTTP/1 works.
 
 However, as webpages got more complex, they involved more and more resources and the time to establish a connection and then hang up became a significant bottleneck. HTTP/2 solves this problem by allowing the TCP connection once established to remain open and serve many resource requests.
 
 gRPC uses HTTP/2 as its transport medium, HTTP/1 will not do. This makes my solution a bit more complex because I need to make sure any request I recieve is part of an HTTP/2 connection. Thankfully, this is totally possible using the goLang std lib `http.Server`so long as I use `ListenAndServeTLS` to establish a TLS connection. Which means its time for me to start generating certificates.
 
-### Side Quest: TLS
+### Side Quest: Generating TLS Certs
 
 Transport Layer Security is a huge topic, probably in need of its own whole article. So to keep things on track, I'll just mention that TLS uses public key cryptography to establish a secure connection between two parties, and uses a certification authority to validate that a party is who they say they are.
 
-I'm going to be using CloudFlare's [CFSSL](https://github.com/cloudflare/cfssl) to generate a self signed certificate authority and then using that CA to generate a certificate for my service.
+I'm going to be using CloudFlare's [CFSSL](https://github.com/cloudflare/cfssl) to generate a self signed certificate authority and then using that CA to generate a certificate for my service. Using your own certificate authority is  great for internal services. For externally facing services, you probably want something like Let's Encrypt. 
 
 First I install CFSSL:
 ```
@@ -309,6 +317,7 @@ go get github.com/cloudflare/cfssl/cmd/cfssl \
 ```
 
 Then I create my certificate signing request (`cs-crs.json`):
+
 ```json 
 {
     "CN": "Earthly Example Code CA",
@@ -381,135 +390,137 @@ cfssl gencert -ca ca.pem -ca-key=ca-key.pem -config ca-config.json \
                -profile=server server-csr.json | cfssljson -bare server 
 ```
 
-With all that generation in place, and wrapped up in a nice [Earth file target](), I can start building my REST + gRPC service.
+With all that generation in place, and wrapped up in a nice [Earth file target](), my side quest is over and I can head back to my service.
 
-## Testing it
+## TLS Time
 
-#### HTTP
+Now that I have my certs, all I need to do is start using `ListenAndServeTLS` with my certificate and private key:
 
-#### gRPC
+```
+	log.Println("Starting listening on port 8080")
+- err = http.ListenAndServe(":8080", grpcHandlerFunc(*grpcServer, mux))
++	err = http.ListenAndServeTLS(":8080", "./certs/server.pem", "./certs/server-key.pem", grpcHandlerFunc(*grpcServer, mux))
+	if err != nil {
+		log.Fatalf("failed to serve: %v", err)
+	}
+```
 
-### Client
+And then I can make grpc request:
+```
+ grpcurl localhost:8080 api.v1.Activity_Log/List
+```
+```
+Failed to dial target host "localhost:8080": x509: certificate signed by unknown authority
+```
 
-### Side quest: Don't Verify
+My TLS cert is signed by certificate authority that my machine is not aware of. I'm on MacOS and it is simple to add `ca.pem` to keychain but that seems like overkill for this situation. Instead I can just use the `-insecure` flag.
 
-### Proxy Alternatives
+```
+ grpcurl -insecure localhost:8080 api.v1.Activity_Log/List
+{
+  "activities": [
+    {
+      "id": 2,
+      "time": "1970-01-01T00:00:00Z",
+      "description": "christmas eve bike class"
+    }
+  ]
+}
+```
 
-## Silly: Making certs work with Proxy and Activity Log
+And for curl I can use `-k`:
+
+```
+curl -k -X POST -s https://localhost:8080/api.v1.Activity_Log/List -d \
+'{ "offset": 0 }' 
+{
+  "activities": [
+    {
+      "id": 2,
+      "time": "1970-01-01T00:00:00Z",
+      "description": "christmas eve bike class"
+    }
+}
+```
+There we go, a single service that support gRPC and REST requests. Let's test it with my gRPC client:
+
+```
+./activity-client -list
+```
+```
+http: TLS handshake error from [::1]:55763: tls: first record does not look like a TLS handshake
+```
+
+Of course, I need to tell the client to use a TLS connection.
+```
+func NewActivities(URL string) Activities {
+- conn, err := grpc.Dial(URL, grpc.WithTransportCredentials(insecure.NewCredentials()))	
++	tlsCreds = credentials.NewTLS(&tls.Config{})
++	conn, err := grpc.Dial(URL, grpc.WithTransportCredentials(tlsCreds))
+	if err != nil {
+		log.Fatalf("did not connect: %v", err)
+	}
+	client := api.NewActivity_LogClient(conn)
+	return Activities{client: client}
+}
+```
+That gets me part of the way there.
+```
+go run cmd/client/main.go --list
+```
+```
+Error: List failure: rpc error: code = Unavailable desc = connection error: desc = "transport: authentication handshake failed: x509: certificate signed by unknown authority"
+```
+ I am now connecting over TLS, but my client has no idea about my one off certificate authority. I can take the same approach I had used with grpcurl, and tell the client not to verify the cert:
+ ```
+ tlsCreds = credentials.NewTLS(&tls.Config{
+		InsecureSkipVerify: true,
+	})
+	conn, err := grpc.Dial(URL, grpc.WithTransportCredentials(tlsCreds))
+ ```
+
+But, better than that, is that I make all my internal services aware of my certificate authority:
+
+```
+tlsCreds, err := credentials.NewClientTLSFromFile("../activity-log/certs/ca.pem", "")
+	if err != nil {
+		log.Fatalf("No cert found: %v", err)
+	}
+	conn, err := grpc.Dial(URL, grpc.WithTransportCredentials(tlsCreds))
+```
+
+And with that change, my gRPC client and server can communicate over TLS and my server can also respond to REST requests, which are all documented in a REST request.
+
+### Sidenote: Fixing the Proxy
+
+The proxy created in the first step is now no longer needed, because I can answer REST requests directly in the service. But also, its now broken, because much like the client was connecting insecurely and it doesn't know about the CA I created. 
+
+Leaving things broken is bad form so I can fix it like this. 
+
+```
+func main() {
+	log.Println("Starting listening on port 8081")
+	port := ":8081"
+	mux := runtime.NewServeMux()
++	tlsCreds, err := credentials.NewClientTLSFromFile("../activity-log/certs/ca.pem", "")
++	if err != nil {
++		log.Fatalf("No cert found: %v", err)
++	}
+-	    opts := []grpc.DialOption{grpc.WithTransportCredentials(insecure.NewCredentials())}
++	opts := []grpc.DialOption{grpc.WithTransportCredentials(tlsCreds)}
+	err = api.RegisterActivity_LogHandlerFromEndpoint(context.Background(), mux, grpcServerEndpoint, opts)
+	if err != nil {
+		log.Fatalf("failed to serve: %v", err)
+	}
+
+	err = http.ListenAndServe(port, mux)
+	if err != nil {
+		log.Fatalf("failed to serve: %v", err)
+	}
+}
+```
 
 ## Conclusion
 
-## Notes
-
---
-details
-
-Starting with <https://github.com/grpc-ecosystem/grpc-gateway>
-
-install stuff
-
-```
- go install \
-    github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-grpc-gateway \
-    github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-openapiv2 \
-    google.golang.org/protobuf/cmd/protoc-gen-go \
-    google.golang.org/grpc/cmd/protoc-gen-go-grpc
-```
-
-Had to run go get as well. Not totally suer why
-
-```
- require (
--       github.com/golang/protobuf v1.5.0 // indirect
--       golang.org/x/net v0.0.0-20200822124328-c89045814202 // indirect
--       golang.org/x/sys v0.0.0-20200323222414-85ca7c5b95cd // indirect
--       golang.org/x/text v0.3.0 // indirect
--       google.golang.org/genproto v0.0.0-20200526211855-cb27e3aa2013 // indirect
-+       github.com/golang/glog v1.0.0 // indirect
-+       github.com/golang/protobuf v1.5.2 // indirect
-+       github.com/grpc-ecosystem/grpc-gateway/v2 v2.7.3 // indirect
-+       golang.org/x/net v0.0.0-20210405180319-a5a99cb37ef4 // indirect
-+       golang.org/x/sys v0.0.0-20210510120138-977fb7262007 // indirect
-+       golang.org/x/text v0.3.5 // indirect
-+       google.golang.org/genproto v0.0.0-20220118154757-00ab72f36ad5 // indirect
-+       google.golang.org/grpc/cmd/protoc-gen-go-grpc v1.2.0 // indirect
-+       gopkg.in/yaml.v2 v2.4.0 // indirect
-+       sigs.k8s.io/yaml v1.3.0 // indirect
- )
-```
-
-example:
-<https://web.archive.org/web/20160306083908/https://coreos.com/blog/grpc-protobufs-swagger.html>
-
-using the proxy:
-
-```
-curl -v  -X POST -s localhost:8080/api.v1.Activity_Log/Insert -d \
-'{"activity": {"description": "christmas eve bike class", "time":"2021-12-09T16:34:04Z"}}'
-```
-
-Problems:
-```
-2022/02/24 14:51:47 http: TLS handshake error from 127.0.0.1:61470: tls: first record does not look like a TLS handshake
-```
-I was doing this, when I had no TLS stuff setup:
-```
-err = srv.Serve(tls.NewListener(conn, srv.TLSConfig))
-```
-
-Making an HTTP server that doens't proxy, but processes the requests:
-...
- 
-see commit 6230e9f
-
-### GRPC 
-// The provided HTTP request must have arrived on an HTTP/2
-// connection. When using the Go standard library's server,
-// practically this means that the Request must also have arrived
-// over TLS.
-
-What is http/2?
-
-Then I need to follow the cret creation guide:
-https://github.com/denji/golang-tls
-
-But then:
-```
-2022/02/25 09:33:43 http: TLS handshake error from 127.0.0.1:53499: remote error: tls: bad certificate
-```
-
-```
-2022/02/25 09:34:40 http: TLS handshake error from [::1]:53511: remote error: tls: unknown certificate
-```
-
-From the book
-cfssl gencert -initca ca-csr.json | cfssljson -bare ca
-
-cfssl gencert -ca=ca.pem -ca-key=ca-key.pem -config=ca-config.json -profile=server server-csr.json | cfssljson -bare server
-
-
-If you use curl on http you need to `-k` or you get
-Client sent an HTTP request to an HTTPS server.
-
-
-## Question
-
-how do I get ca cert compiled into program?
-
-Getting problems like this:
-
-
-```
-curl -X POST -s localhost:8081/api.v1.Activity_Log/List -d \
-'{ "offset": 0 }'
-{"code":14, "message":"connection error: desc = \"transport: Error while dialing dial tcp 127.0.0.1:8080: connect: connection refused\"", "details":[]}%
-```
-
-Because of docker netowrking and needing to refer to things by name.
-
-Then, needed to update cert and then got:
-```
-TLS: private key does not match public key
-```
-
+There we have it. Rest to gRPC three ways, with all the complicated bits documented in a runnable [Earthfile](). With certs in place the gRPC + Rest service is not even that big of a lift from a standard gRPC solution. If fact, this approach is in use in [etcd](https://github.com/etcd-io/etcd/blob/main/server/embed/serve.go) and [istio](https://github.com/istio/istio/blob/f46f821fb13b7fc24b5d29193e2ad7c5c0a46877/pilot/pkg/bootstrap/server.go#L469)
 
