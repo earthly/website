@@ -52,7 +52,7 @@ We'll try our best to address some of these potential downsides in a Go monorepo
 
 ## Monorepo Layout in Go
 
-A monorepo may contain multiple components, such as applications, and libraries. Let's consider how we might organize
+A monorepo may contain multiple components, such as applications and libraries. Let's consider how we might organize
 those components as distinct Go modules.
 
 As a simple example, we'll consider a monorepo that has two backend Microservices and a single shared Library.
