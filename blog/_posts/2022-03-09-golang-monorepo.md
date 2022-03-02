@@ -91,18 +91,18 @@ Below is all the code so far in our monorepo example.
 package main
 
 import (
- "net/http"
+  "net/http"
 
- "github.com/earthly/earthly/examples/go-monorepo/libs/hello"
- "github.com/labstack/echo/v4"
+  "github.com/earthly/earthly/examples/go-monorepo/libs/hello"
+  "github.com/labstack/echo/v4"
 )
 
 func main() {
-	e := echo.New()
-	e.GET("/one/hello", func(c echo.Context) error {
-		return c.String(http.StatusOK, hello.Greet("World"))
-	})
-	_ = e.Start(":8080")
+  e := echo.New()
+  e.GET("/one/hello", func(c echo.Context) error {
+    return c.String(http.StatusOK, hello.Greet("World"))
+  })
+  _ = e.Start(":8080")
 }
 ~~~
 
@@ -112,18 +112,18 @@ func main() {
 package main
 
 import (
- "net/http"
+  "net/http"
 
- "github.com/earthly/earthly/examples/go-monorepo/libs/hello"
- "github.com/labstack/echo/v4"
+  "github.com/earthly/earthly/examples/go-monorepo/libs/hello"
+  "github.com/labstack/echo/v4"
 )
 
 func main() {
-	e := echo.New()
-	e.GET("/two/hello", func(c echo.Context) error {
-		return c.String(http.StatusOK, hello.Greet("Friend"))
-	})
-	_ = e.Start(":8080")
+  e := echo.New()
+  e.GET("/two/hello", func(c echo.Context) error {
+    return c.String(http.StatusOK, hello.Greet("Friend"))
+  })
+  _ = e.Start(":8080")
 }
 ~~~
 
@@ -133,11 +133,11 @@ func main() {
 package hello
 
 import (
- "fmt"
+  "fmt"
 )
 
 func Greet(audience string) string {
- return fmt.Sprintf("Hello, %s!", audience)
+  return fmt.Sprintf("Hello, %s!", audience)
 }
 ~~~
 
@@ -168,14 +168,14 @@ module github.com/earthly/earthly/examples/go-monorepo/services/one
 go 1.17
 
 require (
- github.com/earthly/earthly/examples/go-monorepo/libs/hello v0.0.0
- github.com/labstack/echo/v4 v4.6.3
+  github.com/earthly/earthly/examples/go-monorepo/libs/hello v0.0.0
+  github.com/labstack/echo/v4 v4.6.3
 )
 
 replace github.com/earthly/earthly/examples/go-monorepo/libs/hello v0.0.0 => ../../libs/hello
 ~~~
 
-Using the strategy above, we're now able to compile Service One and Service Two in our example, as well as develop and 
+Using the strategy above, we're now able to compile Service One and Service Two in our example, as well as develop and
 run our unit tests.
 
 > **VSCode Users:** By default, Visual Studio may give you errors when opening an entire Go monorepo project as a
