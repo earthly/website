@@ -101,6 +101,7 @@ func main() {
 	e.GET("/one/hello", func(c echo.Context) error {
 		return c.String(http.StatusOK, hello.Greet("World"))
 	})
+	_ = e.Start(":8080")
 }
 ~~~
 
@@ -121,6 +122,7 @@ func main() {
 	e.GET("/two/hello", func(c echo.Context) error {
 		return c.String(http.StatusOK, hello.Greet("Friend"))
 	})
+	_ = e.Start(":8080")
 }
 ~~~
 
@@ -173,7 +175,7 @@ replace github.com/earthly/earthly/examples/go-monorepo/libs/hello v0.0.0 => ../
 ~~~
 
 Using the strategy above, we're now able to compile Service One and Service Two in our example, as well as develop and 
-run any unit tests we wish to develop.
+run our unit tests.
 
 > **VSCode Users:** By default, Visual Studio may give you errors when opening an entire Go monorepo project as a 
 > workspace. Those issues can usually be resolved by adding the following experimental feature flag to your settings: 
@@ -278,7 +280,7 @@ the entire monorepo can be run using `earthly +all-unit-test`.
 
 ### Efficient Caching in a Monorepo Build
 
-An efficient build tool for a monorepo would not rebuild components that haven't changed, nor would it re-run tests 
+An efficient build tool for a monorepo should not rebuild components that haven't changed, nor should it re-run tests 
 that aren't necessary. Earthly does this naturally in a local environment, which is super useful in speeding up 
 development.
 
@@ -287,13 +289,13 @@ It's also possible to utilize caching in a CI pipeline. On many platforms such a
 so Earthly loses its cache history from previous runs. 
 [Shared caching](https://docs.earthly.dev/docs/guides/shared-cache), however, can be used to improve this. 
 
-Note that Shared cache does require upload and download steps to sync the cache during each CI run, so it does have a 
+Note that shared cache does require upload and download steps to sync the cache during each CI run, so it does have a 
 cost. It can yield a nice performance boost though for compute-heavy steps, such as long-running integration tests 
 which do not always need to be re-run.
 
 ### Releasing and Versioning Microservices in a Monorepo
 
-Another interesting difference when building Go Modules in Monorepo is versioning, since typically a repo contains a 
+Another interesting difference when building Go Modules in Monorepo is versioning,   since typically a repo contains a 
 single module, with semantic version numbers specified as Git Tags. For monorepos, we may have a couple of options.
 
 In the example monorepo above, libraries are used via the `replace` syntax in `go.mod`. Hence, they are only used 
