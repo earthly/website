@@ -14,7 +14,9 @@ If you're looking for a reliable CI/CD platform to deploy your Python Django pro
 
 ## What We're Building
 
-To get familiar with CircleCi I spun up a small [sample DJango project](https://github.com/jalletto/circle_ci_python_example) to use for this tutorial. I am ~~a compulsive hoarder~~ an avid collector of movies. The idea behind the Django project is an app to help me keep track of all of my blu-rays, DVDs, etc, but really it is just an example project to have something work with in CircleCi. In this tutorial we'll learn how to have CircleCi run our linter then run our tests and save the data. Lastly we'll build a Docker image and push it to Docker Hub.
+To get familiar with CircleCi I spun up a small [sample DJango project](https://github.com/jalletto/circle_ci_python_example) to use for this tutorial. I am ~~a compulsive hoarder~~ an avid collector of movies. The idea behind the Django project is an app to help me keep track of all of my blu-rays, DVDs, etc, but really it is just an example project to have something to work with in CircleCi.
+
+In this tutorial we'll learn how to have CircleCi run our linter. Then we'll run our tests and save the data. Lastly we'll build a Docker image and push it to Docker Hub.
 
 <div class="notice--info">
 
@@ -29,13 +31,13 @@ If you want to learn more about how to build and test Django apps with CircleCi,
 
 ## CircleCi: Getting Started
 
-One thing I really like about CircleCi is that it is easy to sign up and get started without having to enter any credit card information. It offers a completely free tier. Other products I've tried offer a month or two free, but charge after that, so you can't even sign up without a credit card.
+One thing I really like about CircleCi is that it has a completely free tier and so it's is easy to sign up and get started without having to enter any credit card information. Other products I've tried offer a month or two free, but charge after that, so you can't even sign up without a credit card.
 
 The CircleCi free tier offers up to 6,000 build minutes per month. You can also choose from three different resource sizes which range from 1 vCPUs and 2GB of RAM to 4 vCPUs and 8GB of RAM. You can also run up to 30 Jobs at a time.
 
 ### Connecting A Repository
 
-As part of the sign up process you'll be given the option to follow steps to connect your Github or Bitbucket account, which you'll need to do to give CircleCi permission to pull your code. I used github for this tutorial.
+As part of the sign up process you'll be given the option to connect your Github or Bitbucket account, which you'll need to do to give CircleCi permission to pull your code. I used github for this tutorial.
 
 Once you are signed in you'll be taken to your main dashboard. Click `Projects` in the menu on the left. You should see a list of repos from your github account.
 
@@ -47,13 +49,13 @@ Select `Setup Project` next to the repository that contains the Django project y
 
 ![Create the file yourself or let CircleCi take care of it for you](../assets/images/circle-ci-with-django/create_config.png)
 
-After you make your choice click `Set Up Project` and you'll be taken to a dashboard similar to the one pictured below. The only difference is that the bottom section where the pipeline runs are listed will be blank since you haven't run any pipelines yet.
+After you make your choice click `Set Up Project` and you'll be taken to a dashboard similar to the one pictured below. The only difference is that the bottom section where the pipeline-runs are listed will be blank since you haven't run any pipelines yet.
 
 <div class="wide">
 ![After you run a few pipelines, you'll be able to see them here](../assets/images/circle-ci-with-django/dashboard.png)
 </div>
 
-When you get to this page it is important that you make sure you are on the correct branch or you won't see any pipeline runs. The third drop down menu is where you select a branch. Choose
+When you get to this page it is important that you make sure you are on the correct branch or you won't see any pipeline runs. The third drop down menu is where you select a branch.
 
 If you had CircleCi create the `config.yml` for you then you can select `circleci-project-setup` from the drop down. This is the branch that CircleCi made when it set up your project with a `config.yml`.
 
@@ -103,7 +105,7 @@ After that we have job definitions. [Jobs](https://circleci.com/docs/2.0/jobs-st
 
 [Workflows](https://circleci.com/docs/2.0/workflows/) are where we tell CircleCi which jobs to run and in what order. We can define several workflows that run under different circumstances. We can have a workflow that runs whenever someone pushes a new branch to our repo and a separate workflow that runs only on pushes to a `main` or `production` branch.
 
-In this tutorial we'll define one workflow that runs two jobs. The first job will run our linter and our tests. I'm using [Pylint](https://pylint.org/) along with the [Pylint-Django](https://pypi.org/project/pylint-django/) plugin to make sure my Python code is styled correctly. For tests I'm using the [Unit test module](https://docs.python.org/3/library/unittest.html#module-unittest) that comes built in with Python. Django [recommends using Unit test](https://docs.djangoproject.com/en/4.0/topics/testing/) and is compatible with it out of the box.
+In this tutorial we'll define one workflow that runs two jobs. The first job will run our linter and our tests. I'm using [Pylint](https://pylint.org/) along with the [Pylint-Django](https://pypi.org/project/pylint-django/) plugin to make sure my Python code is styled correctly. For tests I'm using the [unittest module](https://docs.python.org/3/library/unittest.html#module-unittest) that comes built in with Python. Django [recommends using unittest](https://docs.djangoproject.com/en/4.0/topics/testing/) and is compatible with it out of the box.
 
 Lets start by creating a job called `test-and-lint`. Delete everything in the `config.yml` and replace it with the code below.
 
@@ -140,7 +142,7 @@ The `run` step lets us run commands as we would if we were working on the comman
 
 In this case we are running three commands. First, we need to install our dependencies. In Python we can do this with `pip install` and then tell it to read from our `requirements.txt` file.
 
-Next we run the linter, and the last command runs the tests. If you are working in the CircleCi editor you can click `Save and Run` and CircleCi will commit these changes. Any commit to your project repo will trigger a new build so you should be able to go back to your dashboard in CircleCi and see the build running.
+Next we run the linter, and the last command runs the tests. If you are working in the CircleCi editor you can click `Save and Run` and CircleCi will commit these changes. Any commit to your project repo will trigger a new build so you should be able to go back to your dashboard in CircleCi and see the build running. After a couple minutes you'll see that our pipeline has failed!
 
 <div class="wide">
 ![You can click on the job to view each step in more detail](../assets/images/circle-ci-with-django/build-failed.png)
@@ -195,7 +197,7 @@ Now if we rerun the build it should pass.
 
 CircleCi allows you to save the results of your test runs so you can view them in the UI. This is helpful when debugging and also allows you to take advantage of CircleCi's [test insights](https://circleci.com/docs/2.0/collect-test-data/) feature, which gives you a window into how your tests are performing overall across multiple runs. The data can help you identify things like flaky tests or tests that are taking too long to run.
 
-CircleCi reads the test data from XML files, so in order to take advantage we'll need to make an update to our Django project to tell it to save our test results to an XML file. We can export our Unit test results to XML easily by installing the [unittest-xml-reporting](https://pypi.org/project/unittest-xml-reporting/) package with `pip install unittest-xml-reporting`
+CircleCi reads the test data from XML files, so we'll need to make an update to our Django project to tell it to save our test results to an XML file. We can export our Unit test results to XML easily by installing the [unittest-xml-reporting](https://pypi.org/project/unittest-xml-reporting/) package with `pip install unittest-xml-reporting`
 
 Next we need to tell Django to use the new package and where to save the test results. We can do that by adding the following to the `settings.py` file.
 
@@ -329,7 +331,7 @@ By adding the `requires` field to `build-and-push-to-dockerhub`, CircleCi now kn
 
 ## CircleCi With Earthly
 
-The downside to tools like CircleCi is that we usually don't know if our build is going to break until we push our code up and see it run. Yes a developer could run the linter and the tests locally, but there is always the risk that their environments won't be the same between developers, much the less the same as what CircleCi will end up running. With Earthly we can be sure our builds run the same every time both in CircleCi and locally.
+The downside to tools like CircleCi is that we usually don't know if our build is going to break until we push our code up and see it run. Yes a developer could run the linter and the tests locally, but there is always the risk that environments won't be the same between developers, much the less the same as what CircleCi will end up running. With Earthly we can be sure our builds run the same every time both in CircleCi and locally.
 
 We can adapt the steps in our `config.yml` into an `Earthfile` pretty easily.
 
@@ -362,9 +364,7 @@ docker:
 
 ```
 
-We can run any of these steps locally and be sure it will run exactly the same way in CircleCi. For example we can run the build step with `earthly +build`.
-
-Now we can update our `.circleci/config.yml` to use Earthly.
+Next we just need to update our `.circleci/config.yml` to use Earthly.
 
 ```{.yml caption=".circleci/config.yml"}
 version: 2.1
@@ -384,12 +384,10 @@ jobs:
       - run: earthly --ci --push +docker
 ```
 
-And that's all it takes to be able to run define our pipeline with Earthly and allow me to run the same build locally and in CircleCi
+Now we can run any of these steps locally and be sure it will run exactly the same way in CircleCi. For example we can run the build step with `earthly +build` on our local machine and it will produce the same output as it does on CircleCi.
 
 ## Conclusion
 
-You may need to experiment with different set ups to find what's right for your project. If this project was much large and I were to refactor what we have so far, I might split the linting step out into a separate job and let it run alongside my tests instead of having them run one after another in the same job.
-
-And there you have it, a complete though small example of testing and linting a Django project with CircleCi. Overall I found the service easy to set up and had documentation that was clear and thorough. I was especially happy that they offer such of complete and robust free tier which makes using it for side projects an easy choice. Will I end up switching to my new media tracking app over MovieBuddy? That seems unlikely, but hopefully I've shown how you can use CircleCi to keep your code in good shape no matter what project you're working on.
+And there you have it, a complete though small example of testing and linting a Django project with CircleCi. You may need to experiment with different set ups to find what's right for your project, but hopefully this tutorial was enough to get you started. Overall I found the service easy to set up with documentation that was clear and thorough. I was especially happy that they offer such of complete and robust free tier which makes using it for side projects an easy choice. Will I end up switching to my new media tracking app over MovieBuddy? That seems unlikely, but hopefully I've shown how you can use CircleCi to keep your code in good shape no matter what project you're working on.
 
 {% include cta/cta1.html %}
