@@ -509,7 +509,7 @@ curl -k -X POST -s https://localhost:8080/api.v1.Activity_Log/List -d \
 }
 ~~~
 
-There we go, a single service that supports gRPC and REST requests. 
+There we go, a single service that supports gRPC and REST requests.
 
 ### TLS on gRPC Client
 
