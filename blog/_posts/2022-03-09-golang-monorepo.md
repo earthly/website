@@ -340,6 +340,6 @@ import local modules. In a monorepo environment, using the right build tooling c
 Continuous Integration more efficient.
 
 You can find the full working monorepo covered in this article in the official
-[Earthly examples collection](https://github.com/earthly/earthly/pull/1704).
+[Earthly examples collection](https://github.com/earthly/earthly/tree/main/examples/go-monorepo).
 
 {% include cta/embedded-newsletter.html %}
