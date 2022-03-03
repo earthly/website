@@ -13,7 +13,7 @@ internal-links:
 
 Welcome back. I'm an experienced developer learning Golang. [Last time](/blog/golang-grpc-example) I moved my service from REST to gRPC, but there are times when HTTP and REST are still needed. So today, I'm going to build a gRPC gateway that accepts HTTP requests and proxies it through to my gRPC service. And for fun, I'm going to do it three ways.
 
-{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/8900.png --alt {{  }} %}
+{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/8900.png --alt {{ Rest to gRPC three ways }} %}
 
 I'll first build a proxy using grpc-gateway and an existing proto file. This method is excellent if you have a gRPC service that you don't want to touch. It's also the only way I'll cover that will work with a non-golang service. You can use it to proxy to any service that speaks gRPC.
 
@@ -55,7 +55,7 @@ With that, I get a new generated file, `activity.pb.go`, which I can use to buil
 ## gRPC Proxy
 
 <div class="align-center">
-{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/9810.png --alt {{  }} --img width="400px" %}
+{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/9810.png --alt {{ grpc proxy diagram }} --img width="400px" %}
 </div>
 
 So I create a new folder and a new main file, and I import the generated code.
