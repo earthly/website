@@ -351,9 +351,12 @@ lint:
 
 test:
   FROM +build
-  COPY . .
+  COPY ./docker-compose.yml .
+  RUN apt-get update
+  RUN apt-get install -y postgresql-client
   WITH DOCKER --compose docker-compose.yml
-      RUN sleep 20 && python manage.py test
+      RUN while ! pg_isready --host=localhost --port=5432 --dbname=my_media --username=example; do sleep 1; done ;\
+        python manage.py test
   END
   SAVE ARTIFACT test_results/results.xml test_results/results.xml AS LOCAL ./test_results/results.xml
 
@@ -362,14 +365,17 @@ docker:
   ENTRYPOINT ["python", "manage.py"," runserver", "0.0.0.0:8000"]
   SAVE IMAGE --push jalletto/circle_ci_python_example
 
+
 ```
 
 Next we just need to update our `.circleci/config.yml` to use Earthly.
 
 ```{.yml caption=".circleci/config.yml"}
+# Change the name of this file to config.yml to use Earthly with CircleCi
+
 version: 2.1
 jobs:
-  build:
+  test-and-lint:
     machine:
       image: ubuntu-1604:201903-01
     steps:
@@ -382,6 +388,12 @@ jobs:
       - store_test_results:
           path: test_results
       - run: earthly --ci --push +docker
+
+workflows:
+  build-and-test-workflow:
+    jobs:
+      - test-and-lint
+
 ```
 
 Now we can run any of these steps locally and be sure it will run exactly the same way in CircleCi. For example we can run the build step with `earthly +build` on our local machine and it will produce the same output as it does on CircleCi.
