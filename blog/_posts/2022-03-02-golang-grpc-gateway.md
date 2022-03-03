@@ -4,30 +4,28 @@ categories:
   - Tutorials
 toc: true
 author: Adam
-
 internal-links:
- - just an example
+ - grpc gateway
 ---
 
-## Intro
+Welcome back. I'm an experienced developer, learning Golang. Last time I moved my service from REST to gRPC but there are times when http and REST is still needed. So Today, I'm going to build a gRPC gateway that accepts http rest requests and proxies it through to my gRPC service. And I'm actually going to do it three ways.
 
-Welcome back. I’m an experienced developer, learning Golang. Last time I moved my service from REST to gRPC but there are times when http and REST is still needed. So Today, I'm going to build a gRPC gateway that accepts http rest requests and proxies it through to my gRPC service. And I'm actually going to do it three ways.
+The first way is to build a proxy using grpc-gateway and an existing proto file. This method is great if you have an existing gRPC service that you don't want to touch. It's also the only way I'll cover that will work great with a non-golang service. You can use it to proxy to any service that speaks gRPC.
 
-The First way is to build a proxy using grpc-gateway and an existing proto file. This method is great if you have an existing gRPC service that you don't want to touch. It's also the only way I'll cover that will work great with a non-golang service. You can use it to proxy to any service that speaks gRPC. 
-
-The second way will be to will be to build a REST service, using the same proto file but that actually uses the same implementation as the existing gRPC service. Assuming you have a shared backing database this means you could scale the REST endpoint seperately from the gRPC endpoint.
+The second way will be to will be to build a REST service, using the same proto file but that actually uses the same implementation as the existing gRPC service. Assuming you have a shared backing database this means you could scale the REST endpoint separately from the gRPC endpoint.
 
 The third solution is the most fun. I'll change my original gRPC service to answer both REST and gRPC requests over the same port. And to get that working, I'm going to have to learn a bit about TLS, and cert generation and HTTP/2.
 
 Ok, lets start. The first thing I need to do is get the GRPC gateway plugin:
 
-```
+~~~{.bash caption=">_"}
 go get github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-grpc-gateway
-```
+~~~
 
 Then I update my protoc invocation to use this plugin:
-```
-    RUN protoc api/v1/*.proto \
+
+~~~{.diff caption=">_"}
+    protoc api/v1/*.proto \
             --go_out=. \
             --go_opt=paths=source_relative \
             --go-grpc_out=. \
@@ -36,98 +34,121 @@ Then I update my protoc invocation to use this plugin:
 +            --grpc-gateway_opt logtostderr=true \
 +            --grpc-gateway_opt paths=source_relative \
 +            --grpc-gateway_opt generate_unbound_methods=true \
-```
+~~~
 
 My proto file looks contains this service:
 
-```
+~~~{.protobuf caption="activity-log/api/activity.proto"}
 service Activity_Log {
     rpc Insert(Activity) returns (InsertResponse) {}
     rpc Retrieve(RetrieveRequest) returns (Activity) {}
     rpc List(ListRequest) returns (Activities) {}
 }
-```
+~~~
 
 with that, I get a new generated file `activity.pb.go` which I can use to build a stand alone gRPC proxy in GoLang.
 
 ## gRPC Proxy
 
-So I create a new folder and a new main file and I import the generated code. 
+So I create a new folder and a new main file and I import the generated code.
 
-```
+~~~{.go caption="grpc-proxy/main.go"}
 package main
 
 import (
-	"context"
-	"log"
-	"net/http"
+ "context"
+ "log"
+ "net/http"
 
-	"github.com/grpc-ecosystem/grpc-gateway/v2/runtime"
-	"google.golang.org/grpc"
-	"google.golang.org/grpc/credentials/insecure"
+ "github.com/grpc-ecosystem/grpc-gateway/v2/runtime"
+ "google.golang.org/grpc"
+ "google.golang.org/grpc/credentials/insecure"
 
-	api "github.com/adamgordonbell/cloudservices/activity-log/api/v1"
+ api "github.com/adamgordonbell/cloudservices/activity-log/api/v1"
 )
-```
+~~~
 
 And I tell this service how to connect to my existing gRPC service:
-```
 
+~~~{.go caption="grpc-proxy/main.go"}
 func main() {
-
   var grpcServerEndpoint = "localhost:8080"
-	mux := runtime.NewServeMux()
-	opts := []grpc.DialOption{grpc.WithTransportCredentials(insecure.NewCredentials())}
-	err := api.RegisterActivity_LogHandlerFromEndpoint(context.Background(), mux, grpcServerEndpoint, opts)
-	if err != nil {
-		log.Fatalf("failed to serve: %v", err)
-	}
-```
+  mux := runtime.NewServeMux()
+  opts := []grpc.DialOption{grpc.WithTransportCredentials(insecure.NewCredentials())}
+  err := api.RegisterActivity_LogHandlerFromEndpoint(context.Background(), 
+          mux, grpcServerEndpoint, opts)
+  if err != nil {
+   log.Fatalf("failed to serve: %v", err)
+  }
+ ...
+}
+~~~
 
-`grpc.DialOption` can be used to set up auth credentials, including TLS settings and JWT credentials but since the service I'm proxying to currently runs unsecured and with TLS nothing besides `insecure.NewCredentials()` is needed for now. ( Stay tuned though, It's going to come up later)
+`grpc.DialOption` can be used to set up auth credentials, including TLS settings and JWT credentials but since the service I'm proxying to currently runs unsecured and without TLS nothing besides `insecure.NewCredentials()` is needed for now. ( Stay tuned though, It's going to come up later.)
 
-TODO: say stuff about how that works
+The code generated by `protoc-gen-grpc-gateway` is going to establish a connection to my gRPC service and register handlers for each one in the request multiplexer (`mux`).
 
 After that, I start up the proxy, listening on port 8081
-```
-	log.Println("Listening on port 8081")
-	port := ":8081"
-	http.ListenAndServe(port, mux)
+
+~~~{.go caption="grpc-proxy/main.go contd"}
+func main() {
+  ...
+  log.Println("Listening on port 8081")
+  port := ":8081"
+  http.ListenAndServe(port, mux)
 }
-```
+~~~
+
 And that is it. I can start this service up, start the gRPC service up and make curl requests that get proxied through to grpc:
 
-```
+~~~{.bash caption=">_"}
+curl -X POST -s localhost:8081/api.v1.Activity_Log/List -d \
+'{ "offset": 0 }' 
+~~~
 
-```
+~~~{.yml caption="Output"}
+{
+  "activities": [
+    {
+      "id": 2,
+      "time": "1970-01-01T00:00:00Z",
+      "description": "christmas eve bike class"
+    }
+}
+~~~
 
-Ok, I have a REST end point now, but what are the endpoints? What type of request and what type of response should I expect? In all cases checked, in this version of the gRPC gateway, the expected request format and the given responses look like just a straight conversion to JSON.
+Ok, I have a REST end point now, but what are the endpoints? What type of request and what type of response should I expect? In all cases I checked, in this version of the gRPC gateway, the expected request format and the given responses look like just a straight conversion to JSON.
 
-GRPC request:
-```
+So when the gRPC request looks like this:
+
+~~~{.bash caption=">_"}
 grpcurl -insecure -d '{ "id": 1 }' localhost:8080 api.v1.Activity_Log/Retrieve 
-```
-CURL request:
-```
+~~~
+
+The curl request looks the same:
+
+~~~{.bash caption=">_"}
 curl -X POST -s localhost:8081/api.v1.Activity_Log/Retrieve -d \
 '{ "id": 1 }'
-```
+~~~
 
 However, we can do better than just assuming it is always going to be the same. We can generate a spec for the REST service.
 
-### OpenAPI 
+### OpenAPI
 
 OpenAPI specs, which I've always just called Swagger documents are defined like this:
 
-> The OpenAPI Specification (OAS) defines a standard, language-agnostic interface to RESTful APIs which allows both humans and computers to discover and understand the capabilities of the service without access to source code, documentation, or through network traffic inspection. [^1]
+> The OpenAPI Specification (OAS) defines a standard, language-agnostic interface to RESTful APIs which allows both humans and computers to discover and understand the capabilities of the service without access to source code, documentation, or through network traffic inspection.
 
-That sounds like exactly what I need, and they are easy to generate with the `protoc-gen-openapiv2 ` protoc plugin.
+That sounds like exactly what I need, and fortunately they are simple to generate with the `protoc-gen-openapiv2` protoc plugin. First I install the plugin.
 
-```
+~~~{.bash caption=">_"}
 go get github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-openapiv2
-```
+~~~
 
-```
+Then I add it to my protoc call:
+
+~~~{.diff caption=">_"}
 protoc api/v1/*.proto \
             --go_out=. \
             --go_opt=paths=source_relative \
@@ -140,11 +161,11 @@ protoc api/v1/*.proto \
 +            --openapiv2_out . \
 +            --openapiv2_opt logtostderr=true \
 +            --openapiv2_opt generate_unbound_methods=true \
-```
+~~~
 
-After running that I get `activity.swagger.json`
+After running that I get ``
 
-```
+~~~{.bash caption="activity-log/api/activity.swagger.json"}
 {
   "swagger": "2.0",
   "info": {
@@ -161,164 +182,179 @@ After running that I get `activity.swagger.json`
     "/api.v1.Activity_Log/Retrieve": {
       ...
     }
-```
-Which I can view in a more human readble form using the online [swagger editor](https://editor.swagger.io/):
+~~~
+
+Which I can view in a more human readable form using the online [swagger editor](https://editor.swagger.io/):
 
 <div class="wide">
-{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/7820.png --alt {{  }} %}
-<figcaption></figcaption>
+{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/7820.png --alt {{ Swagger UI Screenshot }} %}
+<figcaption>Creating a Swagger Doc for a gRPC service proxy</figcaption>
 </div>
 
-You can find the code for this gRPC proxy on github. If you have the proto files of a service you would like to proxy then all you need to do is generate the proxy and swagger file with `protoc` and then adapt the one file service to you needs.
+You can find the code for the above gRPC proxy on [GitHub](https://github.com/adamgordonbell/cloudservices/blob/v5-grpc-gateway/grpc-proxy/main.go) and If you have the proto files for a gRPC then all you need to do is generate the proxy and swagger files with `protoc` and adapt the one file service to you needs.
 
-Let's move on to the next grpc gateway example.
+Let's move on to the next gRPC gateway example.
 
+<div class="notice--info">
 ### Proxy Alternatives - Kong gRPC-gateway
 
 An stand-in alternative to the above is the KONG [gRPC-gateway](https://docs.konghq.com/hub/kong-inc/grpc-gateway/). If you are using as an API gateway then by enabling the grpc-gateway plugin and configuring things correctly you can get an equivalent proxy setup for you.
+</div>
 
-## REST GRPC (HTTP Frontend)
+## REST Service Based on gRPC
 
-The Proxy service above is great if your gRPC service is written in a langauge besides go, or if its not your code or your service. You can interact with it from the outside and not worry about the implementation details.
+The Proxy service above is great if your gRPC service is written in a language besides Golang, or if its not your code or your service. You can interact with it from the outside and not worry about the implementation details.
 
-However, if it is your service and if its stateless because it uses a database, there is another way do things. You can create a REST service that shares its implementation with the gRPC service. gRPC gateway can help with this was well.
+But, if it is your service, and if it's stateless – say because it uses a database to store its state – then there is another way do things. You can create a REST service that shares its implementation with the gRPC service. The gRPC gateway plugin can help with this was well.
 
-To setup this configuration, I'll create a new file, rest.go, and slightly modify the code I've used above:
+To set up this up, I'll create a new file, rest.go, and slightly modify the code proxy code:
 
-```
+~~~{.diff caption="activity-log/rest.go"}
 func main() {
 
--	var grpcServerEndpoint = "localhost:8080"
-+	_, srv := server.NewGRPCServer()
+- var grpcServerEndpoint = "localhost:8080"
++ _, srv := server.NewGRPCServer()
 
-	mux := runtime.NewServeMux()
+ mux := runtime.NewServeMux()
 - opts := []grpc.DialOption{grpc.WithTransportCredentials(insecure.NewCredentials())} 
--	err := api.RegisterActivity_LogHandlerServer(context.Background(), mux, &srv)
-+ err := api.RegisterActivity_LogHandlerFromEndpoint(context.Background(), mux, grpcServerEndpoint, opts)
-	if err != nil {
-		log.Fatalf("failed to serve: %v", err)
-	}
+- err := api.RegisterActivity_LogHandlerFromEndpoint(context.Background(), 
+-          mux, grpcServerEndpoint, opts)
++ err := api.RegisterActivity_LogHandlerServer(context.Background(), mux, &srv)
+ if err != nil {
+  log.Fatalf("failed to serve: %v", err)
+ }
 
-	log.Println("Starting listening on port 8081")
-	err = http.ListenAndServe(":8081", mux)
-	if err != nil {
-		log.Fatalf("failed to serve: %v", err)
-	}
+ log.Println("Starting listening on port 8081")
+ err = http.ListenAndServe(":8081", mux)
+ if err != nil {
+  log.Fatalf("failed to serve: %v", err)
+ }
 }
-```
+~~~
 
-The big change is calling `RegisterActivity_LogHandlerServer` instead of `RegisterActivity_LogHandlerFromEndpoint`, which takes the backend implementation of a GRPC service instead of a network location of an existing instance. So I just hand it the same ActivityService implementation I use and no network calls are needed to serve requests.
+The big change is calling `RegisterActivity_LogHandlerServer` instead of `RegisterActivity_LogHandlerFromEndpoint`, which takes the backend implementation of a GRPC service instead of a network location of an existing instance. So I just hand it and instance of the same ActivityService implementation and no network calls are needed to serve requests.
 
-SQLite Note: My toy example here is using SQLite, which probably isn't a great fit for this particular solution because it involves multiple writing services. With a network based database, however, this could work quite well.
+<div class="notice--info">
+### SideNote: SQLite:
 
-And practically, the reason I'm showing this solution is a half way step toward teh final solution: responding to HTTP rest requests and gRPC requests in a single service. So lets go there next.
+My toy example here is using SQLite, which probably isn't a great fit for this particular solution because it involves multiple writing services. With a network based database, however, this could work quite well.
+</div>
 
-### REST and gRPC in one Service
+And practically, the reason I'm showing this solution is a half way step toward the final solution: responding to HTTP rest requests and gRPC requests in a single service. So lets go there next.
+
+## REST and gRPC in one Service
 
 To start with I can create a service exactly like our last REST service above:
-```
+
+~~~{.go caption="activity-log/main.go"}
 package main
 
 import (
-	"context"
-	"log"
-	"net/http"
-	"strings"
+ "context"
+ "log"
+ "net/http"
+ "strings"
 
-	"github.com/adamgordonbell/cloudservices/activity-log/internal/server"
-	"github.com/grpc-ecosystem/grpc-gateway/v2/runtime"
-	"google.golang.org/grpc"
-	"google.golang.org/grpc/reflection"
+ "github.com/adamgordonbell/cloudservices/activity-log/internal/server"
+ "github.com/grpc-ecosystem/grpc-gateway/v2/runtime"
+ "google.golang.org/grpc"
+ "google.golang.org/grpc/reflection"
 
-	api "github.com/adamgordonbell/cloudservices/activity-log/api/v1"
+ api "github.com/adamgordonbell/cloudservices/activity-log/api/v1"
 )
 
 func main() {
 
-	// GRPC Server
-	grpcServer, srv := server.NewGRPCServer()
+ // GRPC Server
+ grpcServer, srv := server.NewGRPCServer()
 
-	// Rest Server
-	mux := runtime.NewServeMux()
-	err := api.RegisterActivity_LogHandlerServer(context.Background(), mux, &srv)
-	if err != nil {
-		log.Fatalf("failed to serve: %v", err)
-	}
+ // Rest Server
+ mux := runtime.NewServeMux()
+ err := api.RegisterActivity_LogHandlerServer(context.Background(), mux, &srv)
+ if err != nil {
+  log.Fatalf("failed to serve: %v", err)
+ }
 
 log.Println("Starting listening on port 8080")
-	err = http.ListenAndServe(":8080", mux)
-	if err != nil {
-		log.Fatalf("failed to serve: %v", err)
-	}
+ err = http.ListenAndServe(":8080", mux)
+ if err != nil {
+  log.Fatalf("failed to serve: %v", err)
+ }
 }
-```
+~~~
 
-I now have two possible `http.Handler`'s: one is returned by `grpcServer.ServeHTTP` and one by `mux.ServeHTTP`. So all I need now is a way to choose the correct one on a per request basis. The Content-Type headers are a great way to do this.
+I have two possible `http.Handler`'s: one is returned by `grpcServer.ServeHTTP` and one by `mux.ServeHTTP`. So all I need now is a way to choose the correct one on a per request basis. The Content-Type headers are a great way to do this.
 
-```golang
+~~~{.go bcaption="activity-log/main.go"}
 func grpcHandlerFunc(grpcServer grpc.Server, otherHandler http.Handler) http.Handler {
-	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		if r.ProtoMajor == 2 && strings.HasPrefix(
-			r.Header.Get("Content-Type"), "application/grpc") {
-			log.Println("GRPC")
-			grpcServer.ServeHTTP(w, r)
-		} else {
-			log.Println("REST")
-			otherHandler.ServeHTTP(w, r)
-		}
-	})
+  return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+  if r.ProtoMajor == 2 && strings.HasPrefix(
+    r.Header.Get("Content-Type"), "application/grpc") {
+    log.Println("GRPC")
+    grpcServer.ServeHTTP(w, r)
+  } else {
+    log.Println("REST")
+    otherHandler.ServeHTTP(w, r)
+  }
+ })
 }
-```
+~~~
 
-grpcHandlerFunc sends all gRPC content types to the grpc and defaults everything else to a secondary source, which of me will be the rest service:
+`grpcHandlerFunc` sends all gRPC content types to the grpc and defaults everything else to a secondary source, which for me will be the rest service:
 
-```
+~~~{.diff bcaption="activity-log/main.go"}
 func main() {
   ...
-	log.Println("Starting listening on port 8080")
+ log.Println("Starting listening on port 8080")
 - err = http.ListenAndServe(":8080", mux)
-+	err = http.ListenAndServe(":8080", grpcHandlerFunc(*grpcServer, mux))
-	if err != nil {
-		log.Fatalf("failed to serve: %v", err)
-	}
++ err = http.ListenAndServe(":8080", grpcHandlerFunc(*grpcServer, mux))
+ if err != nil {
+  log.Fatalf("failed to serve: %v", err)
+ }
 }
-```
+~~~
 
 And if I start that up, I should have a working service than can handle REST and gRPC.
 
-```
-grpcurl -insecure localhost:8080 api.v1.Activity_Log/List
-```
-```
-Failed to dial target host "localhost:8080": tls: first record does not look like a TLS handshake
-```
+~~~{.bash caption=">_"}
+$ grpcurl -insecure localhost:8080 api.v1.Activity_Log/List
+~~~
 
-Ok, well maybe not. Before I get it working I need to explain a little about TLS and HTTP/2 because they are getting in my way.
+~~~{caption=""}
+Failed to dial target host "localhost:8080": 
+tls: first record does not look like a TLS handshake
+~~~
 
+Ok, well maybe not.
 
-#### What is HTTP/2
+To get it all working, I first need to explain a little about TLS and HTTP/2 because they are getting in my way.
 
-Here is how HTTP was explained to me in a networking class once: A TCP connection is established, then a resource is requested and then the TCP connection is ended. That is how HTTP/1 works.
+### What Is HTTP/2
 
-However, as webpages got more complex, they involved more and more resources and the time to establish a connection and then hang up became a significant bottleneck. HTTP/2 solves this problem by allowing the TCP connection once established to remain open and serve many resource requests.
+HTTP was explained to me in a networking class once like this: a TCP connection is established, then a resource is requested and then the TCP connection is ended. It's a simple but inaccurate picture, because that is really only how HTTP/1 works.
 
-gRPC uses HTTP/2 as its transport medium, HTTP/1 will not do. This makes my solution a bit more complex because I need to make sure any request I recieve is part of an HTTP/2 connection. Thankfully, this is totally possible using the goLang std lib `http.Server`so long as I use `ListenAndServeTLS` to establish a TLS connection. Which means its time for me to start generating certificates.
+You see, as web pages got more complex, they involved more and more resources and the time to establish a connection and then hang up became a significant bottleneck. This is why HTTP/2 was created. It solves this problem by allowing the TCP connection once established to remain open and serve many resource requests.
+
+gRPC uses HTTP/2 as its transport medium, HTTP/1 will not do. This means I need to make sure any request I receive is part of an HTTP/2 connection. Luckily, this is totally possible using the goLang std lib `http.Server`so long as I use `ListenAndServeTLS` to establish a TLS connection. Which means its time for me to start generating certificates.
 
 ### Side Quest: Generating TLS Certs
 
 Transport Layer Security is a huge topic, probably in need of its own whole article. So to keep things on track, I'll just mention that TLS uses public key cryptography to establish a secure connection between two parties, and uses a certification authority to validate that a party is who they say they are.
 
-I'm going to be using CloudFlare's [CFSSL](https://github.com/cloudflare/cfssl) to generate a self signed certificate authority and then using that CA to generate a certificate for my service. Using your own certificate authority is  great for internal services. For externally facing services, you probably want something like Let's Encrypt. 
+I'm going to be using CloudFlare's [CFSSL](https://github.com/cloudflare/cfssl) to generate a self signed certificate authority and then using that CA to generate a certificate for my service. Then using my certificate I'll hopefully be able to answer REST and gRPC requests in the same service.
+
+(Using your own certificate authority is great for internal services. For externally facing services, you probably want something like Let's Encrypt.)
 
 First I install CFSSL:
-```
-go get github.com/cloudflare/cfssl/cmd/cfssl \
+
+~~~{.bash caption=">_"}
+$ go get github.com/cloudflare/cfssl/cmd/cfssl \
       github.com/cloudflare/cfssl/cmd/cfssljson
-```
+~~~
 
-Then I create my certificate signing request (`cs-crs.json`):
+Then I create my certificate signing request:
 
-```json 
+~~~{.json caption="activity-log/certs/cs-crs.json"}
 {
     "CN": "Earthly Example Code CA",
     "key": {
@@ -335,9 +371,11 @@ Then I create my certificate signing request (`cs-crs.json`):
         }
     ]
 }
-```
-Then I need to define the CA's signing policies ('ca-config.json`):
-```
+~~~
+
+Then I need to define the CA's signing policies:
+
+~~~{.json caption="activity-log/certs/ca-config.json"}
 {
     "signing": {
         "default": {
@@ -355,11 +393,11 @@ Then I need to define the CA's signing policies ('ca-config.json`):
         }
     }
 }
-``` 
+~~~
 
-CFSSL uses those policies, like a one year expiring ( 8760h) when creating the server certificate. Next I need to create a certificate signing request for the server. I need to specify which hosts its valid for and what encryption alogorithm to use. It ends up looking like this (server-csr.json):
+CFSSL uses those policies, like a one year expiring ( 8760h) when creating the server certificate. Next I need to create a certificate signing request for the server. I need to specify which hosts its valid for and what encryption algorithm to use. It ends up looking like this:
 
-```{
+~~~{.json caption="activity-log/certs/server-csr.json"}
     "CN": "127.0.0.1",
     "hosts": [
         "localhost",
@@ -380,43 +418,46 @@ CFSSL uses those policies, like a one year expiring ( 8760h) when creating the s
         }
     ]
 }
-```
+~~~
 
-With all those files in place, I can generate my CA private key (ca-key.pem) and certificate (ca.pem) and then my server private key (server-key.pem) and certificate (server.pem).
+With all those files in place, I can generate my CA private key (`ca-key.pem`) and certificate (`ca.pem`) and then my server private key (`server-key.pem`) and certificate (`server.pem`).
 
-```
-cfssl gencert -initca ca-csr.json | cfssljson -bare ca
-cfssl gencert -ca ca.pem -ca-key=ca-key.pem -config ca-config.json \
+~~~{.bash caption=">_"}
+$ cfssl gencert -initca ca-csr.json | cfssljson -bare ca
+$ cfssl gencert -ca ca.pem -ca-key=ca-key.pem -config ca-config.json \
                -profile=server server-csr.json | cfssljson -bare server 
-```
+~~~
 
-With all that generation in place, and wrapped up in a nice [Earth file target](), my side quest is over and I can head back to my service.
+With all that generation in place, and wrapped up in a nice [Earthfile target](https://github.com/adamgordonbell/cloudservices/blob/v5-grpc-gateway/activity-log/Earthfile#L44), my side quest is over and I can head back to my activity-log service.
 
-## TLS Time
+### TLS Time
 
 Now that I have my certs, all I need to do is start using `ListenAndServeTLS` with my certificate and private key:
 
-```
-	log.Println("Starting listening on port 8080")
+~~~{.diff caption="activity-log/main.go"}
+ log.Println("Starting listening on port 8080")
 - err = http.ListenAndServe(":8080", grpcHandlerFunc(*grpcServer, mux))
-+	err = http.ListenAndServeTLS(":8080", "./certs/server.pem", "./certs/server-key.pem", grpcHandlerFunc(*grpcServer, mux))
-	if err != nil {
-		log.Fatalf("failed to serve: %v", err)
-	}
-```
++ err = http.ListenAndServeTLS(":8080", "./certs/server.pem", "./certs/server-key.pem", grpcHandlerFunc(*grpcServer, mux))
+ if err != nil {
+  log.Fatalf("failed to serve: %v", err)
+ }
+~~~
 
 And then I can make grpc request:
-```
- grpcurl localhost:8080 api.v1.Activity_Log/List
-```
-```
-Failed to dial target host "localhost:8080": x509: certificate signed by unknown authority
-```
 
-My TLS cert is signed by certificate authority that my machine is not aware of. I'm on MacOS and it is simple to add `ca.pem` to keychain but that seems like overkill for this situation. Instead I can just use the `-insecure` flag.
+~~~{.bash caption=">_"}
+$ grpcurl localhost:8080 api.v1.Activity_Log/List
+~~~
 
-```
- grpcurl -insecure localhost:8080 api.v1.Activity_Log/List
+~~~{.bash caption=""}
+Failed to dial target host "localhost:8080": 
+x509: certificate signed by unknown authority
+~~~
+
+Oh, my TLS cert is signed by certificate authority that my machine is not aware of. I'm on MacOS and it is simple to add `ca.pem` to keychain but that seems like overkill for this situation. Instead I can just use the `-insecure` flag.
+
+~~~{.bash caption=">_"}
+$ grpcurl -insecure localhost:8080 api.v1.Activity_Log/List
 {
   "activities": [
     {
@@ -426,11 +467,11 @@ My TLS cert is signed by certificate authority that my machine is not aware of. 
     }
   ]
 }
-```
+~~~
 
 And for curl I can use `-k`:
 
-```
+~~~{.bash caption=">_"}
 curl -k -X POST -s https://localhost:8080/api.v1.Activity_Log/List -d \
 '{ "offset": 0 }' 
 {
@@ -441,86 +482,98 @@ curl -k -X POST -s https://localhost:8080/api.v1.Activity_Log/List -d \
       "description": "christmas eve bike class"
     }
 }
-```
+~~~
+
 There we go, a single service that support gRPC and REST requests. Let's test it with my gRPC client:
 
-```
+~~~{.bash caption=">_"}
 ./activity-client -list
-```
-```
-http: TLS handshake error from [::1]:55763: tls: first record does not look like a TLS handshake
-```
+~~~
+
+~~~{.bash caption=""}
+http: TLS handshake error from [::1]:55763: 
+tls: first record does not look like a TLS handshake
+~~~
 
 Of course, I need to tell the client to use a TLS connection.
-```
+
+~~~{.diff caption="activity-client/internal/activity.go"}
 func NewActivities(URL string) Activities {
-- conn, err := grpc.Dial(URL, grpc.WithTransportCredentials(insecure.NewCredentials()))	
-+	tlsCreds = credentials.NewTLS(&tls.Config{})
-+	conn, err := grpc.Dial(URL, grpc.WithTransportCredentials(tlsCreds))
-	if err != nil {
-		log.Fatalf("did not connect: %v", err)
-	}
-	client := api.NewActivity_LogClient(conn)
-	return Activities{client: client}
+- conn, err := grpc.Dial(URL, grpc.WithTransportCredentials(insecure.NewCredentials())) 
++ tlsCreds = credentials.NewTLS(&tls.Config{})
++ conn, err := grpc.Dial(URL, grpc.WithTransportCredentials(tlsCreds))
+ if err != nil {
+  log.Fatalf("did not connect: %v", err)
+ }
+ client := api.NewActivity_LogClient(conn)
+ return Activities{client: client}
 }
-```
+~~~
+
 That gets me part of the way there.
-```
+
+~~~{.bash caption=">_"}
 go run cmd/client/main.go --list
-```
-```
-Error: List failure: rpc error: code = Unavailable desc = connection error: desc = "transport: authentication handshake failed: x509: certificate signed by unknown authority"
-```
- I am now connecting over TLS, but my client has no idea about my one off certificate authority. I can take the same approach I had used with grpcurl, and tell the client not to verify the cert:
- ```
+~~~
+
+~~~{.bash caption=""}
+rpc error: code = Unavailable desc = connection error: 
+desc = "transport: authentication handshake failed: x509: certificate signed by unknown authority"
+~~~
+
+ So, I am now connecting over TLS, but my client has no idea about my one-off certificate authority. I can take the same approach I had used with grpcurl, and tell the client not to verify the cert:
+
+~~~{.go caption="activity-client/internal/activity.go"}
  tlsCreds = credentials.NewTLS(&tls.Config{
-		InsecureSkipVerify: true,
-	})
-	conn, err := grpc.Dial(URL, grpc.WithTransportCredentials(tlsCreds))
- ```
+  InsecureSkipVerify: true,
+ })
+ conn, err := grpc.Dial(URL, grpc.WithTransportCredentials(tlsCreds))
+~~~
 
 But, better than that, is that I make all my internal services aware of my certificate authority:
 
-```
+~~~{.go bcaption="activity-client/internal/activity.go"}
 tlsCreds, err := credentials.NewClientTLSFromFile("../activity-log/certs/ca.pem", "")
-	if err != nil {
-		log.Fatalf("No cert found: %v", err)
-	}
-	conn, err := grpc.Dial(URL, grpc.WithTransportCredentials(tlsCreds))
-```
+ if err != nil {
+  log.Fatalf("No cert found: %v", err)
+ }
+ conn, err := grpc.Dial(URL, grpc.WithTransportCredentials(tlsCreds))
+~~~
 
-And with that change, my gRPC client and server can communicate over TLS and my server can also respond to REST requests, which are all documented in a REST request.
+And with that change, my gRPC client and server can communicate over TLS, and my server can also respond to REST requests, which are all documented OPENAPI spec.
 
-### Sidenote: Fixing the Proxy
+<div class="notice--info">
+### Side Note: Fixing the Proxy
 
-The proxy created in the first step is now no longer needed, because I can answer REST requests directly in the service. But also, its now broken, because much like the client was connecting insecurely and it doesn't know about the CA I created. 
+The proxy created in the first step is now no longer needed, because I can answer REST requests directly in the service. But also, its now broken, because – much like the client – it was connecting insecurely and without knowledge of the certificate authority I created.
 
-Leaving things broken is bad form so I can fix it like this. 
+Leaving things broken is bad form so I can fix it like this.
 
-```
+~~~{.diff bcaption="grpc-proxy/main.go"}
 func main() {
-	log.Println("Starting listening on port 8081")
-	port := ":8081"
-	mux := runtime.NewServeMux()
-+	tlsCreds, err := credentials.NewClientTLSFromFile("../activity-log/certs/ca.pem", "")
-+	if err != nil {
-+		log.Fatalf("No cert found: %v", err)
-+	}
--	    opts := []grpc.DialOption{grpc.WithTransportCredentials(insecure.NewCredentials())}
-+	opts := []grpc.DialOption{grpc.WithTransportCredentials(tlsCreds)}
-	err = api.RegisterActivity_LogHandlerFromEndpoint(context.Background(), mux, grpcServerEndpoint, opts)
-	if err != nil {
-		log.Fatalf("failed to serve: %v", err)
-	}
+ log.Println("Starting listening on port 8081")
+ port := ":8081"
+ mux := runtime.NewServeMux()
++ tlsCreds, err := credentials.NewClientTLSFromFile("../activity-log/certs/ca.pem", "")
++ if err != nil {
++  log.Fatalf("No cert found: %v", err)
++ }
+- opts := []grpc.DialOption{grpc.WithTransportCredentials(insecure.NewCredentials())}
++ opts := []grpc.DialOption{grpc.WithTransportCredentials(tlsCreds)}
+ err = api.RegisterActivity_LogHandlerFromEndpoint(context.Background(), mux, grpcServerEndpoint, opts)
+ if err != nil {
+  log.Fatalf("failed to serve: %v", err)
+ }
 
-	err = http.ListenAndServe(port, mux)
-	if err != nil {
-		log.Fatalf("failed to serve: %v", err)
-	}
+ err = http.ListenAndServe(port, mux)
+ if err != nil {
+  log.Fatalf("failed to serve: %v", err)
+ }
 }
-```
+~~~
+
+</div>
 
 ## Conclusion
 
-There we have it. Rest to gRPC three ways, with all the complicated bits documented in a runnable [Earthfile](). With certs in place the gRPC + Rest service is not even that big of a lift from a standard gRPC solution. If fact, this approach is in use in [etcd](https://github.com/etcd-io/etcd/blob/main/server/embed/serve.go) and [istio](https://github.com/istio/istio/blob/f46f821fb13b7fc24b5d29193e2ad7c5c0a46877/pilot/pkg/bootstrap/server.go#L469)
-
+There we have it. Rest to gRPC in three different ways, with all the complicated bits documented in a runnable [Earthfile](https://github.com/adamgordonbell/cloudservices/blob/v5-grpc-gateway/Earthfile). All the code is on [GitHub](https://github.com/adamgordonbell/cloudservices/tree/v5-grpc-gateway). And with the certs in place, this gRPC + REST service is not even that big of a lift from a standard gRPC end-point. If fact, this approach is in use in [`etcd`](https://github.com/etcd-io/etcd/blob/main/server/embed/serve.go) and [Istio](https://github.com/istio/istio/blob/f46f821fb13b7fc24b5d29193e2ad7c5c0a46877/pilot/pkg/bootstrap/server.go#L469).
