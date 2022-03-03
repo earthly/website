@@ -11,7 +11,9 @@ internal-links:
  - grpc proxy
 ---
 
-Welcome back. I'm an experienced developer learning Golang. [Last time](/blog/golang-grpc-example) I moved my service from REST to gRPC, but there are times when HTTP and REST are still needed. So today, I'm going to build a gRPC gateway that accepts HTTP requests and proxies it through to my gRPC service. And I'm going to do it three ways.
+Welcome back. I'm an experienced developer learning Golang. [Last time](/blog/golang-grpc-example) I moved my service from REST to gRPC, but there are times when HTTP and REST are still needed. So today, I'm going to build a gRPC gateway that accepts HTTP requests and proxies it through to my gRPC service. And for fun, I'm going to do it three ways.
+
+{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/8900.png --alt {{  }} %}
 
 I'll first build a proxy using grpc-gateway and an existing proto file. This method is excellent if you have a gRPC service that you don't want to touch. It's also the only way I'll cover that will work with a non-golang service. You can use it to proxy to any service that speaks gRPC.
 
@@ -51,6 +53,10 @@ service Activity_Log {
 With that, I get a new generated file, `activity.pb.go`, which I can use to build a stand alone gRPC proxy in GoLang.
 
 ## gRPC Proxy
+
+<div class="align-center">
+{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/9810.png --alt {{  }} --img width="400px" %}
+</div>
 
 So I create a new folder and a new main file, and I import the generated code.
 
@@ -165,7 +171,7 @@ protoc api/v1/*.proto \
 +            --openapiv2_opt generate_unbound_methods=true \
 ~~~
 
-After running that, I get 
+After running that, I get
 
 ~~~{.bash caption="activity-log/api/activity.swagger.json"}
 {
@@ -204,6 +210,10 @@ A stand-in alternative to the above is the KONG [gRPC-gateway](https://docs.kong
 </div>
 
 ## REST Service Based on gRPC
+
+<div class="align-center">
+{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/9620.png --img width="400px" --alt {{ Rest service based on grpc }} %}
+</div>
 
 If your gRPC service is written in a language besides Golang, or if it's not your code or your service then the proxy above is a great solution. You can interact with it from the outside and not worry about the implementation details.
 
@@ -245,6 +255,10 @@ My [toy example](https://github.com/adamgordonbell/cloudservices/tree/v5-grpc-ga
 And practically, the reason I'm showing this solution is a half step toward the final solution: responding to HTTP rest requests and gRPC requests in a single service. So lets go there next.
 
 ## REST and gRPC in one Service
+
+<div class="align-center">
+{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/9560.png --picture --img width="400px" --alt {{ grpc and rest service }} %}
+</div>
 
 To start with, I can create a service exactly like our last REST service above:
 
@@ -333,7 +347,7 @@ To get it all working, I first need to explain a little about TLS and HTTP/2 bec
 
 ### What Is HTTP/2
 
-HTTP was explained to me in a networking class once like this: 
+HTTP was explained to me in a networking class once like this:
 
 * First, you establish a TCP connection with the webserver.
 * Then, you request a resource.
