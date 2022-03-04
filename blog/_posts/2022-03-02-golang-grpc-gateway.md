@@ -221,7 +221,7 @@ If your gRPC service is written in a language besides Golang, or if it's not you
 
 But, if it is your service, and if it's stateless – say because it uses a database to store its state – then there is another way to do things. You can create a REST service that shares its implementation with the gRPC service. The gRPC gateway plugin can help with this as well.
 
-To set up this up, I'll create a new file, rest.go, and slightly modify the code proxy code:
+To set this up, I'll create a new file, `rest.go`, and slightly modify the code proxy code:
 
 ~~~{.diff caption="activity-log/rest.go"}
 func main() {
