@@ -2,7 +2,6 @@
 # All of these are found in areas that should not be spell checked. They represent a parsing problem in VALE.
 # IE. inside backtics and code blocks and link urls
 
-sbt
 scala
 adamgordonbell
 cloudservices
@@ -38,6 +37,3 @@ argoco
 github
 gridnc
 www
-uae
-nad
-sheba

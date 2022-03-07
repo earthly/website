@@ -39,7 +39,7 @@ object Main extends App {
 }
 ```
 
-<figcaption>Main.scala</figcaption>
+<figcaption>`Main.scala`</figcaption>
 
 And some unit tests we would like to run as part of the build:
 
@@ -53,7 +53,7 @@ class ListFlatSpec extends FlatSpec {
 }
 ```
 
-<figcaption>Test.scala</figcaption>
+<figcaption>`Test.scala`</figcaption>
 
 There are several steps involved in the build process for this project:
 
@@ -82,7 +82,7 @@ deps:
 
 The first line is declaring the base docker image our build steps will run inside. &nbsp;All earthly builds take place within the context of a docker container. &nbsp;This is how we ensure reproducibility. &nbsp;After that, we set a working directory and declare our first target `deps` and copy our project files into the build context.
 
-> You may have noticed the first time you build an sbt project, it takes a while to pull down all the project dependencies. &nbsp;This `deps` target is helping us avoid paying that cost every build. &nbsp; Calling `sbt update` and then `SAVE IMAGE` ensures that these steps are cached and can be used in further build steps. &nbsp;Earthly will only need to be rerun this step if our build files change.
+> You may have noticed the first time you build a `sbt` project, it takes a while to pull down all the project dependencies. &nbsp;This `deps` target is helping us avoid paying that cost every build. &nbsp; Calling `sbt update` and then `SAVE IMAGE` ensures that these steps are cached and can be used in further build steps. &nbsp;Earthly will only need to be rerun this step if our build files change.
 
 We can test out the `deps` step like this:
 
