@@ -16,7 +16,7 @@ base-amd64:
   WORKDIR /site
   DO +DEPS 
   # Vale
-  RUN curl -sfL https://install.goreleaser.com/github.com/ValeLint/vale.sh | sh -s v2.10.3
+  RUN curl -sfL https://install.goreleaser.com/github.com/ValeLint/vale.sh | sh -s v2.15.2
   RUN cp /site/bin/vale /bin
 
   SAVE IMAGE --push agbell/website-base:latest #Acts as a cache
