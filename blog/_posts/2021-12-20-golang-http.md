@@ -421,7 +421,7 @@ the whole thing, including some edge cases I left out is on [GitHub](https://git
 
 If fact, I can now update my shell script `test.sh` to exercise these endpoints.
 
-## End to End Testing
+## End To End Testing
 
 First, I can add in some test data:
 

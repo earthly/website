@@ -9,6 +9,7 @@ sidebar:
 internal-links:
  - containerd
 ---
+<!-- vale HouseStyle.Setup = NO -->
 You can't have a conversation about modern infrastructure technology without talking about containers. They provide a simple, secure way to package, distribute, and run applications, and because they run within an isolated namespace in a computer, failures within containers won't affect the entire computing environment. And they're lighter than VMs because they don't have to abstract physical resources or require an installed operating system.
 
 That abstraction is done by the container runtime, or the container engine. Having the container runtime take care of low-level operations also means containerized applications can start faster.

@@ -10,7 +10,7 @@ internal-links:
 ---
 I'm currently working on a project comparing different CI/CD pipelines, trying to get a better idea of what each offers, how they run, and how much it takes to get them set up. My first stop was CircleCi.
 
-If you're looking for a reliable CI/CD platform to deploy your Python Django project, CircleCi offers a lot. It's easy to set up, comes with tons of reusable set ups called Orbs, and best of all, offers up to 6,000 build minutes per month for free.
+If you're looking for a reliable CI/CD platform to deploy your Python Django project, CircleCi offers a lot. It's easy to set up, comes with tons of reusable setups called Orbs, and best of all, offers up to 6,000 build minutes per month for free.
 
 ## What We're Building
 
@@ -400,6 +400,6 @@ Now we can run any of these steps locally and be sure it will run exactly the sa
 
 ## Conclusion
 
-And there you have it, a complete though small example of testing and linting a Django project with CircleCi. You may need to experiment with different set ups to find what's right for your project, but hopefully this tutorial was enough to get you started. Overall I found the service easy to set up with documentation that was clear and thorough. I was especially happy that they offer such of complete and robust free tier which makes using it for side projects an easy choice. Will I end up switching to my new media tracking app over MovieBuddy? That seems unlikely, but hopefully I've shown how you can use CircleCi to keep your code in good shape no matter what project you're working on.
+And there you have it, a complete though small example of testing and linting a Django project with CircleCi. You may need to experiment with different setups to find what's right for your project, but hopefully this tutorial was enough to get you started. Overall I found the service easy to set up with documentation that was clear and thorough. I was especially happy that they offer such of complete and robust free tier which makes using it for side projects an easy choice. Will I end up switching to my new media tracking app over MovieBuddy? That seems unlikely, but hopefully I've shown how you can use CircleCi to keep your code in good shape no matter what project you're working on.
 
 {% include cta/cta1.html %}

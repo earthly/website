@@ -86,7 +86,7 @@ blue,3,#00f
 
 {% include cta/embedded-newsletter.html %}
 
-## Convert JSON to CSV via the Command Line using JQ
+## Convert JSON to CSV via the Command Line Using JQ
 
 If you don't want to install `dasel` or if you just love `jq`  (`brew install jq`) then this solution may work well for you. Before I discovered `dasel` this was the main approach I used:
 

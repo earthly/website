@@ -1,0 +1,8 @@
+extends: sequence
+message: Use set up instead of setup. setup is a noun. set up a verb.
+level: suggestion
+scope: text
+ignorecase: true
+tokens:
+  - tag: VB
+    pattern: setup

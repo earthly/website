@@ -25,7 +25,7 @@ CI tools, like Travis CI, use containerization to create isolated environments f
 
 In this tutorial, you'll learn how Travis CI and Bitbucket integrate. Plus, we'll show you how to implement continuous integration in Travis CI using a [Node.js](https://nodejs.org) project stored in Bitbucket.
 
-## How to Use Travis CI with Bitbucket
+## How to Use Travis CI With Bitbucket
 
 In this section, you will develop a simple REST API using Node.js and the [Express](https://expressjs.com/) framework that will be stored in a Bitbucket repository. It will then be sourced by Travis CI to run tests on the application.
 

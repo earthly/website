@@ -23,7 +23,7 @@ Docker logging and its management are an important part of the containerization 
 
 With that in mind, let's dive into Docker logging and its log files.
 
-## Introduction to Docker Logging
+## Introduction To Docker Logging
 
 Developers, DevOps professionals, and product stakeholders all apply knowledge gained from logging to improve a system's performance and reliability. Much of what an application, server, or OS does should be recorded in the logs and aggregated in an easily accessible location. A [log analysis](https://www.sumologic.com/glossary/log-analysis/) then uses all the log events and audit trails to help chalk out a clear picture of events that happen across your application.
 

@@ -340,7 +340,7 @@ Curious to learn how error wrapping works under the hood? Take a peek at the int
 <!-- vale HouseStyle.Spacing = YES -->
 <!-- vale HouseStyle.Spelling = YES -->
 
-#### When to Wrap
+#### When To Wrap
 
 Generally, it's a good idea to wrap an error with at least the function's name, every time you "bubble it up" - i.e. every time you receive the error from a function and want to continue returning it back up the function chain.
 

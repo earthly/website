@@ -9,7 +9,6 @@ internal-links:
  - api testing
  - performance testing
 ---
-
 Automation testing is a crucial element to speed up your delivery process. It aims to flush out any potential regressions. The more you automate, the more confidence you gain in the quality of your software because the quality of each release of your application or library is measurable. Additionally, you reduce costs and save time and effort by reducing manual testing.
 
 The caveat is that automated tests have no value if they are not executed regularly alongside your continuous integration (CI) pipeline. CI refers to frequently merging developer code changes and building and creating an artifact that can later be tested and deployed.
@@ -264,7 +263,7 @@ Now your workflow should contain four sequential jobs:
 
 ![GitHub Actions workflow including API tests]({{site.images}}{{page.slug}}/1626878353.png)
 
-### Add End-to-End Testing
+### Add End-To-End Testing
 
 End-to-end testing (e2e) aims to test complete use cases from the user perspective. Think of e2e as replacing a human with a robot.
 

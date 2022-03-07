@@ -39,7 +39,7 @@ Awk is a record processing tool written by Aho, Kernighan, and Weinberger in 197
 
 They created it following the success of the line processing tools `sed` and `grep`. Awk was initially an experiment by the authors into whether text processing tools could be extended to deal with numbers. If grep lets you search for lines, and sed lets you do replacements in lines then awk was designed to let you do calculations on lines. It will be clear what that means once I take us through some examples.
 
-### How to Install `gawk`
+### How To Install `gawk`
 
 > The biggest reason to learn Awk is that it's on pretty much every single linux distribution. You might not have perl or Python. You *will* have Awk. Only the most minimal of minimal linux systems will exclude it. Even busybox includes awk. That's how essential it's viewed.
 >

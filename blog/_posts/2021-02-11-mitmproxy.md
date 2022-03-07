@@ -88,7 +88,7 @@ This is great for protecting online communication but problematic for our debugg
 
 {% include imgf src="9.png" alt="Getting a Certificate signed by an unknown certificate authority" caption="Getting a Certificate signed by an unknown certificate authority" %}
 
-## How to add a Trusted Certificate Authority Certificate
+## How to Add a Trusted Certificate Authority Certificate
 
 mitmproxy generated a certificate and private key the first time you ran it. The certificate generated is specific to your machine and is located in `~/.mitmproxy/mitmproxy-ca-cert.cer`
 

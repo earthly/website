@@ -82,7 +82,7 @@ The never-happens-again part is hard to achieve but vital. If you are responding
 
 <div class="notice--big--primary">
 
-### Calculating Mean Time to Resolve
+### Calculating Mean Time To Resolve
 
 | Incident #3   |          |
 | -------------------- | -------- |
@@ -114,7 +114,7 @@ MTTA highlights this difference. It is a metric for measuring the responsiveness
 
 <div class="notice--big--primary">
 
-### ️Calculating Mean Time to Acknowledge
+### ️Calculating Mean Time To Acknowledge
 
 | Incident #5   |          |
 | -------------------- | -------- |

@@ -45,7 +45,7 @@ However, many feel the real reason is that the acquirer is aiming for profitabil
 
 Many open-source projects are still using Travis and open-source maintainers are notoriously overworked. &nbsp;Time spent migrating builds is time not spent on other things. &nbsp;Large well-maintained projects will likely quickly transition but for many smaller projects, an abrupt change in a service they depend on is a huge challenge.
 
-## Where to Move To
+## Where To Move To
 
 {% picture content-wide {{site.pimages}}{{page.slug}}/dartboard.png --picture --img width="1200px" --alt {{ Pins on a Map }} %}
 
@@ -135,7 +135,7 @@ Example build steps for a <a href="https://github.com/earthly/earthly/blob/main/
 
 ## Other Interesting Options
 
-### Easier Migration from Travis to GHA
+### Easier Migration From Travis To GHA
 
 Migrating your build out of Travis will take a little work. &nbsp;If you aren't interested in a neutral format, [this GHA action](https://github.com/marketplace/actions/run-travis-yml) might make it easier. &nbsp;
 

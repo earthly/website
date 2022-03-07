@@ -1,0 +1,9 @@
+extends: sequence
+message: Use setup instead of set up. setup is a noun. set up a verb.
+level: suggestion
+scope: text
+ignorecase: true
+tokens:
+  - tag: NN|NNS
+    pattern: set
+  - pattern: up

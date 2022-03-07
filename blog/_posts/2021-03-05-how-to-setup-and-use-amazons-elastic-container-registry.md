@@ -138,7 +138,7 @@ After authentication, you will see `Login Succeeded` as a response. Now you'll b
 
 If you are pushing or pulling images from this machine regularly, you may not want to go through this login process every time. Instead of using `docker login`, you can configure the [Amazon ECR Docker Credential Helper](https://github.com/awslabs/amazon-ecr-credential-helper) to give the [Docker daemon](/blog/what-is-buildkit-and-what-can-i-do-with-it) direct access to your AWS credentials. This method is also convenient for CI environments because it automates the authentication process and caches tokens to minimize your risk of being throttled.
 
-### Pushing an Image to ECR
+### Pushing an Image To ECR
 
 Next, build the image from your Dockerfile:
 

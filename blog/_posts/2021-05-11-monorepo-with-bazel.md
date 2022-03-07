@@ -94,7 +94,7 @@ Available commands:
 ...
 ```
 
-## How to Build a Monorepo with Bazel
+## How to Build a Monorepo With Bazel
 
 Once you have the [Node.js](https://nodejs.org/en/) installed on your system, you can run the following command to install Bazel globally:
 

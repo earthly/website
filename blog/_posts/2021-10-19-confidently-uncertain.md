@@ -79,7 +79,7 @@ As Scout Mindset says:
 
 > When people claim that "admitting uncertainty" makes you look bad, they're invariably conflating these two very different kinds of uncertainty: uncertainty "in you," caused by your own ignorance or lack of experience, and uncertainty "in the world," caused by the fact that reality is messy and unpredictable.
 
-## How to Be Uncertain
+## How To Be Uncertain
 
 Balancing these two related types of confidence can be a bit tricky. Scout Mindset offers some tips.
 

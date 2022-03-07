@@ -119,8 +119,28 @@ lint() { # Run Linter
     cat "$(post)" | ./util/codeblock.awk | sponge "$(post)"
     # fix markdown
     markdownlint --fix "./blog/_posts/*.md"
-    # run CI lint process
-    earthly +blog-lint-apply "$@"; 
+    sed -i -E "s/“|”/\"/g" ./blog/_posts/*.md
+    sed -i -E "s/‘|’/'/g" ./blog/_posts/*.md
+    # remove double spaces
+    sed -i -E "s/\.\s\s(\w)/. \1/g" ./blog/_posts/*.md
+    sed -i -E "s/\?\s\s(\w)/? \1/g" ./blog/_posts/*.md
+    vale --output line --minAlertLevel error ./blog/_posts/*.md
+    if grep -n 'imgur.com' ./blog/_posts/*.md
+    then
+        echo "Fail: external image link" && false
+    fi
+    (
+       cd blog || exit
+       markdownlint --fix "./_posts/*.md" 
+    )
+    (
+        cd blog || exit
+        bundle exec jekyll build --future 2> ../error.txt || true
+        if [ -s error.txt ] 
+        then
+            cat error.txt && echo "Errors in Build" && false
+        fi
+    )
 }
 
 format(){ # change code blocks
