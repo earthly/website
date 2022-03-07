@@ -10,14 +10,7 @@ internal-links:
  - awk
 excerpt: "It turns out Awk is pretty simple. It has only a couple of conventions and only a small amount of syntax. It's straightforward to learn, and once you understand it, it will come in handy more often than you'd think."
 ---
-</p>
-
 ## Background
-
-<!-- > Awk exists so that [some] guy can rag on any data processing tool made after the year 1990.
-> "I processed 500 Petabytes with awk on a single server once I don't see why this is needed"
->
-> Reddit User [BufferUnderpants](https://www.reddit.com/r/programming/comments/pank18/comment/ha6hzg0/?utm_source=reddit&utm_medium=web2x&context=3) -->
 
 I have a confession to make: I don't know how to use Awk. Or at least I didn't know how to use it before I started writing this article. I would hear people mention Awk and how often they used it, and I was pretty certain I was missing out on some minor superpower.
 
@@ -138,8 +131,7 @@ six
 
 <div class="notice--big--primary">
 
-<!-- markdownlint-disable MD036 -->
-**What I've learned: Awk Field Variables**
+### What I've learned: Awk Field Variables
 
 Awk creates a variable for each field (column) in a record (line) (`$1`, `$2` ... `$NF`). `$0` refers to the whole record.
 
@@ -171,7 +163,7 @@ If you want to follow along with the entire dataset, repeat this for each of the
 
 <div class="notice--warning">
 
-**❗ Disk Space Warning**
+### ❗ Disk Space Warning
 
 The above file is over six gigs unzipped. If you grab all three, you will be up to fifteen gigs of disk space. If you don't have much space, you can play along by grabbing the first ten thousand rows of the first file:
 
@@ -298,7 +290,7 @@ Patterns and Quilts (Mathzones)
 
 <div class="notice--big--primary">
 
-**What I've learned: Awk Field Separators**
+### What I've learned: Awk Field Separators
 
 Awk assumes that the fields in a record are whitespace delimited.
 
@@ -466,7 +458,7 @@ To fix this, I need to switch from using `print` to using `printf`.
 
 <div class="notice--big--primary">
 
-**What I've learned: Awk Pattern Matching**
+### What I've learned: Awk Pattern Matching
 
 I've learned that an awk action, like `{ print $4}`, can be preceded by a pattern, like `/regex/`. Without the pattern, the action runs on all lines.
 
@@ -541,7 +533,7 @@ Alright, I think at this point, I'm ready to move on to star calculations.
 
 <div class="notice--big--primary">
 
-**What I've learned: `printf` and Built-ins**
+### What I've learned: `printf` and Built-ins
 
 If you need to print out a table, Awk lets you use `printf` and built-ins like `substr` to format your output.
 
@@ -601,7 +593,7 @@ Average book review is 4.24361 stars
 
 <div class="notice--big--primary">
 
-**What I've learned: Awk's `BEGIN`, `END` and Variables**
+### What I've learned: Awk's `BEGIN`, `END` and Variables
 
 Awk provides two special patterns, `BEGIN` and `END`. You can use them to run actions before and after processing the records. For example, this is how you would initialize data, print headers and footer, or do any start-up or tear-down stuff in Awk.
 
@@ -728,7 +720,8 @@ $ awk -f average.awk bookreviews.tsv
 ```
 
 <div class="notice--info">
-**Side Note: BEGIN FS**
+
+### Side Note: BEGIN FS
 
 If you use a shebang or pass to Awk directly, it's easiest to set the file separator using `FS = "\t"` in the `BEGIN` action.
 
@@ -772,7 +765,7 @@ Average Rating: 4.67%
 
 <div class="notice--big--primary">
 
-**What I've learned: Calling Awk from a file**
+### What I've learned: Calling Awk from a file
 
 Once you are beyond a single line, it makes sense to put your Awk script into a file.
 
@@ -887,7 +880,7 @@ Lord of the Rings has a different pattern. The books are all in a pretty tight r
 
 <div class="notice--big--primary">
 
-**What I've learned: Awk Associative Arrays**
+### What I've learned: Awk Associative Arrays
 
 Awk has associative arrays built it, and you can use them in much the same way you would use Python dictionaries.  
 
@@ -1032,7 +1025,7 @@ I want to test one more thing, though: how do the most popular books rate? Maybe
 
 <div class="notice--big--primary">
 
-**What I've learned: Awk If Else**
+### What I've Learned: Awk If Else
 
 Awk has branching using `if` and `else` statements. It works exactly like you might expect it to:
 

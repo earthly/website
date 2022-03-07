@@ -16,7 +16,8 @@ Many linting, code formatting, and static analysis tools exist for code. You can
 Many tools exist for finding problems in text files. You can use this list as a starting point for finding the markdown and prose linting tools that best fit your needs.
 
 <div class="notice--success notice--big">
-**Docs as Code**
+
+## Docs as Code
 
 The movement behind testing and linting prose is known as [Docs as Code](https://www.writethedocs.org/guide/docs-as-code/), and the [Writing The Docs](https://www.writethedocs.org/) website is a great place to learn more.
 

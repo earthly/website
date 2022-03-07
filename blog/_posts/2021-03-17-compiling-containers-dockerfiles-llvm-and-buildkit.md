@@ -77,7 +77,8 @@ This [primer on using BuildKit](https://earthly.dev/blog/what-is-buildkit-and-wh
 A traditional compiler takes code in a high-level language and lowers it to a lower-level language. In most conventional ahead-of-time compilers, the final target is machine code. Machine code is a low-level programming language that your CPU understands[^1].  
 
 <div class="notice--info">
-**ℹ️ Fun Fact: Machine Code VS. Assembly**
+
+### Fun Fact: Machine Code VS. Assembly
 
 Machine code is written in binary. This makes it hard for a human to understand. Assembly code is a plain-text representation of machine code that is designed to be somewhat human-readable. There is generally a 1-1 mapping between instructions the machine understands (in machine code) and the OpCodes in Assembly
 </div>
@@ -149,7 +150,8 @@ This similarity was not lost on the BuildKit creators. BuildKit has its own inte
 
 Alright, enough background. Let's programmatically generate the LLB for an image and then build an image.  
 <div class="notice--info">
- ℹ️ Using Go
+
+### Using Go
 
 In this example, we will be using Go which lets us leverage existing BuildKit libraries, but it's possible to accomplish this in any language with Protocol Buffer support.
 </div>
@@ -396,7 +398,7 @@ The output flag lets us specify what backend we want BuildKit to use. We will as
 
 <div class="notice--info">
 
- ℹ️ Real-World Usage
+### Real-World Usage
 
  In the real-world tool, we might want to programmatically make sure `buildkitd` is running and send the RPC request directly to it, as well as provide friendly error messages. For tutorial purposes, we will skip all that.
 </div>
@@ -514,7 +516,8 @@ README.md
 I've pushed this image to Docker Hub. Anyone can start building images using our `ickfile` format by adding `#syntax=agbell/ick` to an existing Dockerfile. No manual installation is required!
 
 <div class="notice--info">
- ℹ️ Enabling BuildKit  
+
+### Enabling BuildKit  
 
  BuildKit is included but not enabled by default in the current version of Docker (`version 20.10.2`). To instruct `docker build` to use BuildKit set the following environment variable `DOCKER_BUILDKIT=1`. This will not be necessary once BuildKit reaches general availability.
 </div>

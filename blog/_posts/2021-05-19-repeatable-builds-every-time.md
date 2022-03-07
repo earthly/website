@@ -79,7 +79,7 @@ Another thing to consider is that certain UNIX commands vary from platform to pl
 
 <div class="notice--info">
 
-**Remember The Tab**.
+### Remember the Tab
 
 Use of the tab character is mandatory in Makefiles or you'll get this error. This usually catches newbies off-guard.
 

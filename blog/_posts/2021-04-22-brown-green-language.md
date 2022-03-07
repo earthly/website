@@ -24,13 +24,15 @@ to do so, please check both boxes in that row.)
 A dreaded language is one you work with extensively in the current year but don't want to continue to use. A loved language you use extensively and wish to continue using. The results are interesting because they reflect the opinions of people who are using the languages extensively. There should be no I-heard-X-is-cool effect, where people rank highly things they don't use because they heard it is the new hotness. The inverse should also be true: People who put something on the **Dreaded** list are using it. They are not dreading a language because they heard it was complex, but because they have to work it and feel real pain.
 
 <div class="notice--warning notice--big">
-**The TOP 15 Dreaded Programming Languages:**
+
+### The TOP 15 Dreaded Programming Languages
 
 VBA, Objective-C, Perl, Assembly, C, PHP, Ruby, C++, Java, R, Haskell, Scala, HTML, Shell, and SQL.
 </div>
 
 <div class="notice--success notice--big">
-**The TOP 15 Loved Programming Languages:**
+
+### The TOP 15 Loved Programming Languages
 
 Rust, TypeScript, Python, Kotlin, Go, Julia, Dart, C#, Swift, JavaScript, SQL, Shell, HTML, Scala, and Haskell.
 </div>

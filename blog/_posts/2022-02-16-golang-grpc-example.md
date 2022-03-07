@@ -160,7 +160,7 @@ These are helpful if I want to create an interface to abstract across various me
 
 <div class="notice--info">
 
-**Caution: `protoc` and generated code**
+### Caution: `protoc` and Generated Code
 
 Installing `protoc` via an OS package manager like brew is a quick way to get started but it has some downsides. I'll going to show a better way to generate these files later on in the article.
 
@@ -219,7 +219,8 @@ Note how this time I used `go-grpc_out` and `go-grpc_opt=paths` instead of `go_o
 ~~~
 
 <div class="notice">
-**Side Note: OpenAPI Code Generation**
+
+### Side Note: OpenAPI Code Generation
 
 Generating code from an API specification is great, especially when different people, or even different teams, are building the client and the server.
 
@@ -625,7 +626,8 @@ defer cancel()
 ~~~
 
 <div class="notice--info">
-**Breaking the client**
+
+### Breaking the Client
 
 Initially, I ran into some problems getting the client to work. The first time I ran it I got this:
 

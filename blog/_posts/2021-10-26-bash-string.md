@@ -78,7 +78,8 @@ echo "$three"
 ~~~
 
 <div class="notice--info">
-**Side Note: Globs and File Expansions**
+
+### Side Note: Globs and File Expansions
 
 You can, in theory, refer to variables directly like this:
 

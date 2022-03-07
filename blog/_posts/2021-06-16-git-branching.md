@@ -37,7 +37,7 @@ Her customers then install her software on their web servers, where they use it 
 
 ## MainLine Development
 
-### ℹ️ Fun Fact: Trunk VS. Main
+### Fun Fact: Trunk VS. Main
 
 If Ashley had chosen subversion or CVS, which were more prevalent in 2006, she would have called her branch `trunk` because every branch is branched off the trunk like a real-world tree. This is where the term trunk-based development comes from. However, Ashley uses `main`, so she may prefer the term mainline development. It's the same thing, just a different name.
 </div>

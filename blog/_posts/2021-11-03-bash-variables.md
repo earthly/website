@@ -114,7 +114,8 @@ $moreNumbers: 3 4
 Bash v4 also introduced [associative arrays](https://www.artificialworlds.net/blog/2012/10/17/bash-associative-array-examples/). I won't cover them here but they are powerful and little used feature (little used since even the newest versions of macOS only include bash 3.2).
 
 <div class="notice--info">
-**ℹ️ Running Shell Scripts**
+
+### Running Shell Scripts
 
 You can declare bash variables interactively in a bash shell session or in a bash script. I will put a shebang at the top of the scripts (`#!/bin/bash`).
 

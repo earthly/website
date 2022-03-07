@@ -36,7 +36,7 @@ The first thing I need is to set up my dev environment. I need to install SQLite
 
 <div class="notice--info">
 
-**Fun Tool: `sqlite-utils`**
+### Fun Tool: `sqlite-utils`
 
 `sqlite-utils` is a handy tool for working with SQLite databases at the command line. It makes it simple to query for results or insert records from your terminal.
 
@@ -96,7 +96,7 @@ sqlite> sqlite> CREATE TABLE [activities] (
 
 <div class="notice--info">
 
-**SQLite, Data Types, and `database/sql`**
+### SQLite, Data Types, and `database/sql`
 
 You may notice that I'm storing time as `DATETIME` whereas sqlite-utils suggested `TEXT` for that column. SQLite is an amazing database but it has an unusual stance on types: it doesn't [really care](https://www.sqlite.org/datatype3.html) about static types. Richard Hipp, the creator, doesn't even like the term static types. He prefers to call them rigid types ( which he thinks are often [a mistake](https://www.sqlite.org/flextypegood.html).[^1])
 
@@ -242,7 +242,7 @@ After doing that, things seem to work.
 
 <div class="notice--info">
 
-**`database/sql` drivers**
+### `database/sql` Drivers
 
 It seems a bit magical for an import to change execution, but the reason is that `db.Open` looks into a map of drivers (`drivers[driverName]`) for the driver matching `sqlite3`. And `sqlite3` gets in that map via the initialization of `github.com/mattn/go-sqlite3`. Also, the error message told me precisely what to do, which was nice.
 
@@ -385,7 +385,7 @@ func (c *Activities) Retrieve(id int) (api.Activity, error) {
 
 <div class="notice--info">
 
-**Understanding Scan**
+### Understanding Scan
 
 `rows.Scan` has no problem handling cases where the column value is an integer and destination value is also an integer – it just copies the row value into the pointed at destination value.
 
@@ -483,7 +483,7 @@ func (c *Activities) List(offset int) ([]api.Activity, error) {
 
 <div class="notice--info">
 
-**Prepared Statements**
+### Prepared Statements
 
 It takes time for SQLite to parse the strings of SQL I'm sending it. And since the SQL never changes, using prepared statements is a great option to consider.
 

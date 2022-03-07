@@ -27,12 +27,14 @@ Protocol Buffers are also great at persisting blobs of data, particularly in lan
 Both backward and forward compatibility is important for any project you expect will run for a long time. There are at least two parts to any protobuf system, the sender and the receiver. If either one can be upgraded to a new message format, and the system functionality continues uninterrupted then the message protocol is both forward and backward compatible.
 
 <div class="notice notice--big">
+
 #### Backward Compatibility
 
 If a client that was updated to a new message type but is still able to understand the previous message type then the message change is backward compatible. Backward compatibility is being able to understand messages from a previous version.
 </div>
 
 <div class="notice notice--big">
+
 #### Forward Compatibility
 
 If a message is changed and a non-updated client can still understand and process the message then the message change is forward compatible. Forward compatibility is being able to understand messages from a future version.

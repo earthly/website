@@ -123,7 +123,8 @@ func main() {
 ~~~
 
 <div class="notice--info">
-ℹ️ **Gorilla web toolkit**
+
+### Gorilla Web Toolkit
 
 The [Gorilla web toolkit](https://www.gorillatoolkit.org/) is a collection of packages for working web protocols. `github.com/gorilla/mux` is an HTTP request multiplexer, basically a router, and is just a bit more flexible than the standard library's router.
 </div>

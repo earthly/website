@@ -62,7 +62,8 @@ You can navigate around using the arrow keys in `broot` and it is also helpful f
 It can do lots of other things, so take a look at the [GitHub guide](https://github.com/Canop/broot), but for me, its just a better `tree`.
 
 <div class="notice--info">
-**ℹ️ Install BRoot**
+
+### Install BRoot
 
 Install on MacOS using `brew` or follow [installation instructions](https://dystroy.org/broot/install/) for other environments.
 
@@ -92,7 +93,8 @@ set-image() { cp "$(latest-image)" "$(image-folder)/$(date +%s).png"; }
 `funky` can do more than this, though. It has features for interactively adding and editing functions and for registering global functions and aliases. What I like, though, is just being able to quickly give a command, in a specific context, a short alias.
 
 <div class="notice--info">
-**ℹ️ Install Funky**
+
+### Install Funky
 
 Install Funky using pip
 
@@ -129,7 +131,8 @@ I recommend watching this video where Alexey Samoshkin walks through many possib
 <iframe width="560" height="315" src="https://www.youtube.com/embed/qgG5Jhi_Els" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 <div class="notice--info">
-**ℹ️ Install FZF**
+
+### Install FZF
 
 Install FZF using your [package manager of choice](https://github.com/junegunn/fzf#using-linux-package-managers):
 
@@ -176,7 +179,8 @@ Being suggested failed commands is a pet peeve of mine, but I never considered n
 I've only been using it for a couple of days, so I can't give a fair appraisal of it, but the concept makes me pretty hopeful: using extra information to customize tools towards real-world usage.
 
 <div class="notice--info">
-**ℹ️ Install McFly**
+
+### Install McFly
 
 You can install McFly [several ways](https://github.com/cantino/mcfly/#installation). Here is brew: :
 
@@ -212,7 +216,8 @@ After you install it, you can use it just like `cd` (`z ~/path/foo/bar`), but yo
 For ease of adoption, I've chosen to have `zoxide` replace `cd`, which is as simple as using the `--cmd` flag when you add the initialization shell code (`eval "$(zoxide init zsh --cmd cd)"`).
 
 <div class="notice--info">
-**ℹ️ Install zoxide**
+
+### Install `zoxide`
 
 `zoxide` can be installed [several ways](https://github.com/ajeetdsouza/zoxide#step-1-install-zoxide). Here is brew: :
 
@@ -244,7 +249,8 @@ git wip = !git add --all; git ci -m WIP
 </div>
 
 <div class="notice--info">
-**ℹ️ Install GitUpdate**
+
+### Install GitUpdate
 
 ``` bash
 git clone https://github.com/nikitavoloboev/gitupdate

@@ -71,7 +71,8 @@ Mean Time To Recovery =
 ## Mean Time to Resolve (MTTRe)
 
 <div class="notice--info">
-ℹ️ Acronyms Collision Alert
+
+### Acronyms Collision Alert
 
 Mean Time To Resolve, MTTRe, differs from Mean Time To Recover, MTTR, but some resources use MTTR for both. To avoid confusion, ensure you are using the correct terminology for your metric.
 </div>

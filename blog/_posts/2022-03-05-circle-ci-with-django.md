@@ -158,7 +158,7 @@ It looks like Django is having trouble connecting to Postgres. This error is occ
 
 <div class="notice">
 
-**Database for Unit Tests?**
+### Database for Unit Tests
 
 I'm not sure why Django [sets up a test database](https://docs.djangoproject.com/en/4.0/topics/testing/overview/#the-test-database) when you run Unit tests. There may be ways to turn this feature off since I'm not sure if it is needed, but since I think it would be useful to see how to set up a test database in case you might want to run integration tests, we will move forward with this requirement.
 </div>
@@ -210,7 +210,7 @@ TEST_OUTPUT_FILE_NAME = 'results.xml'
 
 <div class="notice--info">
 
-**Before You Push to Github!**
+### Before You Push To Github
 
 1. Don't forget to add `unittest-xml-reporting` to your `requirements.txt` file with `pip freeze > requirements.txt`
 2. Be sure to add `test_results/` to your `.gitignore` file.

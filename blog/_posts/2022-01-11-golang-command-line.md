@@ -101,7 +101,7 @@ exit status 1
 <div class="notice--big--primary">
 
 <!-- markdownlint-disable MD036 -->
-**What I Learned: GoLang CLI Flags**
+### What I Learned: GoLang CLI Flags
 
 The `flag` package in the standard library makes handling command-line flags pretty simple. You define flags by calling `flag.Bool` or `flag.IntVar` and then call `flag.Parse()`, which will set your flags. It seems a bit magical, but inside the flag package is a variable called CommandLine, a FlagSet used to parse the command line arguments and place them into the flags you configured.
 
@@ -147,7 +147,7 @@ exit status 1
 
 <div class="notice--info">
 
-**Side Note: Printing Errors in Golang**
+### Side Note: Printing Errors in Golang
 
 You want to print to standard error and exit when something goes wrong.
 
@@ -209,7 +209,7 @@ Added: overhead press: 70lbs as 1
 
 <div class="notice--info">
 
-**Side Note: `go run` vs `go build`**
+### Side Note: `go run` vs `go build`
 
 I could continue to use `go run` like above while working on this command line tool, but I'm instead going to compile it (`go build -o build/activityclient cmd/client/main.go`) and use the `activityclient` binary.
 </div>
@@ -276,8 +276,7 @@ And the command-line part is complete.
 
 <div class="notice--big--primary">
 
-<!-- markdownlint-disable MD036 -->
-**What I Learned: Convert to and From Strings**
+### What I Learned: Convert to and From Strings
 
 I used `strconv.Atoi` to parse command-line args back into an integer. It looks like `strconv.ParseInt` is a lot more flexible if I ever need to get back `int32` or other more specific integer formats.
 
@@ -410,7 +409,7 @@ return document.ID, nil
 <div class="notice--big--primary">
 
 <!-- markdownlint-disable MD036 -->
-**What I Learned: `json.Marshall` and  `io.reader`**
+### What I Learned: `json.Marshall` and  `io.reader`
 
 You can convert a struct back and forth to a `[]byte` of JSON using `json.Marshall` and `json.Unmarshal` like this:
 

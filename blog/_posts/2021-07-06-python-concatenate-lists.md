@@ -28,7 +28,8 @@ Python 3.8.2
 ```
 
 <div class="notice--warning notice--big">
-**📢 TLDR: Use `+`**
+
+### 📢 TLDR: Use `+`
 
 In almost all simple situations, **using `list1 + list2` is the way you want to concatenate lists**.
 </div>
@@ -71,7 +72,8 @@ y = ["four","five","six"]
 In this example, where x is 3000 elements, extend is around 50x faster.
 
 <div class="notice--info">
-**❗ Concatenating Lists With Large Elements is Fine**
+
+### ❗ Concatenating Lists With Huge Elements is Fine
 
 If the elements in your list are huge (million character strings), but the list size is less than a thousand elements, the previous solution `x + y` will work just fine. This is because Python stores references to the values in the list, not the values themselves. Thus, the element size makes no difference to the runtime complexity.
 
