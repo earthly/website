@@ -23,7 +23,7 @@ The third solution is the most fun. I'll change my original gRPC service to answ
 
 ## Generating Code
 
-Ok, lets start. The first thing I need to do is get the GRPC gateway plugin:
+Ok, lets start. The first thing I need to do is get the gRPC gateway plugin:
 
 ~~~{.bash caption=">_"}
 go get github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-grpc-gateway
@@ -360,7 +360,7 @@ It's a simple but inaccurate picture because only HTTP/1 works like that.
 
 You see, as web pages got more complex, they involved more and more resources and the time to establish a connection and then hang up became a significant bottleneck. This is why HTTP/2 was created. It solves this problem by allowing the TCP connection to remain open and serve many resource requests once established.
 
-gRPC uses HTTP/2 as its transport medium, HTTP/1 will not do. This means I need to make sure any request I receive is part of an HTTP/2 connection. Luckily, this is totally possible using the Golang std lib `http.Server`so long as I use `ListenAndServeTLS` to establish a TLS connection, which means its time for me to start generating certificates.
+gRPC uses HTTP/2 as its transport medium and builds on its features like binary encoding, multiplexing, and push messaging. HTTP/1 will not do. This means I need to make sure any request I receive is part of an HTTP/2 connection. Luckily, this is totally possible using the Golang std lib `http.Server` so long as I use `ListenAndServeTLS` to establish a TLS connection, which means its time for me to start generating certificates.
 
 ### Side Quest: Generating TLS Certs
 
