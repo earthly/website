@@ -263,6 +263,15 @@ Let's do this by running:
 cat dists/stable/main/binary-amd64/Packages | gzip -9 > dists/stable/main/binary-amd64/Packages.gz
 ```
 
+<div class="notice--info">
+_Note: A reader has reported supplying a compressed file might be a required step rather than optional; either way it's best to
+create a compressed file. Apt repositories can support more than just `gzip` compression, e.g. `bzip2`, `lzma`, or `uncompressed`.
+In order to support other compression types, one must adjust the previous command for each desired compressed file format.
+The [apt.conf man page](http://manpages.ubuntu.com/manpages/trusty/man5/apt.conf.5.html) has details on configuring apt
+to prefer one format over the other via the `CompressionTypes` option; it is also possible to temporarily override it on
+the command-line (e.g. `apt-get -o Acquire::CompressionTypes::Order::=bz2 update`)._
+</div>
+
 Let's take a quick look at the contents of the Packages file:
 
 ```
