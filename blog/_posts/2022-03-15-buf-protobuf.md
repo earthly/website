@@ -12,11 +12,11 @@ internal-links:
 
 ## Introduction
 
-Welcome back! In my tutorial series on building an [Activity Tracker](blog/golang-grpc-example/), I build up a client and server communicating over grpc and then added REST endpoints to it using [the gRPC gateway](https://github.com/grpc-ecosystem/grpc-gateway) protoc plugin.
+Welcome back! In my tutorial series on building an [Activity Tracker](blog/golang-grpc-example/), I built up a client and server communicating over gRPC. I then added REST endpoints to it using [the gRPC-Gateway](https://github.com/grpc-ecosystem/grpc-gateway) `protoc` plugin.
 
-The plugins like grpc gateway and OpenAPI helped make me productive but my `protoc` call grew from a simple invocation to a multi-line script. Which is what brought `buf` to my attention. `buf` is a suite of tools that simplify dealing with protocol buffers all wrapped up in a nice three letter command.
+The plugins like gRPC-gateway and OpenAPI helped make me productive, but my `protoc` call grew from a simple invocation to a multi-line script, which brought `buf` to my attention. `buf` is a suite of tools that simplify dealing with protocol buffers wrapped up in a nice three-letter command.
 
-So before I roll this service out and start actively using it, I'm going to take my existing implementation and see how I can use `buf lint`, `buf generate` and `buf breaking` to improve things.
+So before I roll this service out and start actively using it, I will take my existing implementation and see how I can use `buf lint`, `buf generate` and `buf breaking` to improve things.
 
 ## Background
 
@@ -59,7 +59,7 @@ api/v1/activity.proto:12:36:
   RPC response type "Activities" should be named "ListResponse" or "ActivityLogServiceListResponse".
 ~~~
 
-This is a great catch by `buf lint`. APIs change over time, and by sharing the `Activity` type across multiple RPC definitions, I'm essentially coupling them together forever.
+This is an excellant catch by `buf lint`. APIs change over time, and by sharing the `Activity` type across multiple RPC definitions, I'm essentially coupling them together forever.
 
 Or as buf's guide states:
 
@@ -91,14 +91,15 @@ And with that, I am passing all the `buf lint` rules. Later, I'll add `buf lint`
 
 ## `buf breaking`
 
-As my activity service evolves – as I add new features and role out new versions of it – something I need to keep in mind is backwards compatibility. It's not possible to instantly upgrade a gRPC service and all its clients. Instead I want to make sure that I don't introduce any breaking changes. That way, a new version of the service can receive and handle messages from a client using an earlier version of the protobuf definition.
+As my activity service evolves – as I add new features and roll out new versions – I need all my changes to be backwards compatible. This is because it's impossible to upgrade a gRPC service and its clients instantly. So I need backwards compatibility to prevent downtime. That way, a new version of the service can receive and handle messages from a client using an earlier version of the protobuf definition.
 
-`buf breaking` is here to help me find breaking changes. In fact, it can show that the changes I just made above are breaking changes:
+`buf breaking` is here to help me find breaking changes. For example, it can show that the changes I just made above are breaking changes:
 
 ~~~{.bash caption=">_"}
 
 > buf breaking --against "https://github.com/adamgordonbell/cloudservices.git#branch=main,subdir=activity-log" 
 ~~~
+<figcaption>Using `buf breaking` to compare against main branch</figcaption>
 
 ~~~{.bash caption=""}
 api/v1/activity.proto:10:16:
@@ -109,7 +110,7 @@ api/v1/activity.proto:12:36:
   RPC "List" on service "Activity_Log" changed response type from "api.v1.Activities" to "api.v1.ListResponse".
 ~~~
 
-Those breaking changes I'm not too worried about, because my service is not yet running anywhere, but going forward I do want to prevent the introduction of any break changes. To do that I'm going to introduce `buf lint` and `buf breaking` into my CI process, but first I need to tackle code generation.
+I'm not too worried about those breaking changes because my service is not yet running anywhere, but from now on, I want to prevent the introduction of any break changes. To do that, I'm going to introduce `buf lint` and `buf breaking` into my CI process, but first, I need to tackle code generation.
 
 ## `buf generate`
 
@@ -164,7 +165,7 @@ Moving this to `buf` generate is simple: I create a `buf.gen.yaml` file and star
       - generate_unbound_methods=true
 ~~~
 
-Because of the nested nature of yaml, I find this much easier to understand than a lengthy `protoc` call. Then instead of `protoc` I just call `buf generate` and all the generated code is produced.
+Because of the nested nature of yaml, I find this much easier to understand than a lengthy `protoc` call. So then instead of `protoc` I call `buf generate`, and all the generated code is produced.
 
 ## Earthly CI Changes
 
@@ -196,8 +197,8 @@ proto:
     SAVE ARTIFACT ./api AS LOCAL ./api 
 ~~~
 
-And with that, I have a smaller, more declarative protocol buffer generation process and `buf lint` and `buf breaking` help me avoid some gRPC foot-guns and its all wrapped up in a reusable build script, so no breaking change or lint violation will even make it into my master branch.
+And with that, I have a simpler, more declarative protocol buffer generation process, and `buf lint` and `buf breaking` help me avoid some gRPC foot-guns, and it's all wrapped up in a reusable build script, so no breaking change or lint violation will even make it into my main branch.
 
-And I'm just scratching the surface on `buf`, most of the steps above are highly configurable and their schema registry and remote generation feature look very cool. But for now, I think it's been an improvement.
+And I'm just scratching the surface on `buf`, most of the steps above are highly configurable, and their schema registry and remote generation feature look very cool. But for now, I think it's been an improvement.
 
 {% include cta/cta1.html %}
