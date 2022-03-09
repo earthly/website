@@ -59,7 +59,7 @@ api/v1/activity.proto:12:36:
   RPC response type "Activities" should be named "ListResponse" or "ActivityLogServiceListResponse".
 ~~~
 
-This is an excellant catch by `buf lint`. APIs change over time, and by sharing the `Activity` type across multiple RPC definitions, I'm essentially coupling them together forever.
+This is an excellent catch by `buf lint`. APIs change over time, and by sharing the `Activity` type across multiple RPC definitions, I'm essentially coupling them together forever.
 
 Or as buf's guide states:
 
@@ -99,6 +99,7 @@ As my activity service evolves – as I add new features and roll out new versio
 
 > buf breaking --against "https://github.com/adamgordonbell/cloudservices.git#branch=main,subdir=activity-log" 
 ~~~
+
 <figcaption>Using `buf breaking` to compare against main branch</figcaption>
 
 ~~~{.bash caption=""}
