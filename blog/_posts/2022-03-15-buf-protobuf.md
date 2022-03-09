@@ -3,6 +3,8 @@ title: "Using Buf To Enforce Protobuf Best Practices"
 categories:
   - Tutorials
 toc: true
+sidebar:
+  nav: "activity-tracker"
 author: Adam
 internal-links:
  - buf
