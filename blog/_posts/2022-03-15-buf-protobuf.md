@@ -1,5 +1,5 @@
 ---
-title: "Using Buf To Enforce Protobuf Best Practices"
+title: "Avoiding Protobuf's Common Pitfalls with Buf"
 categories:
   - Tutorials
 toc: true
@@ -12,7 +12,7 @@ internal-links:
 
 ## Introduction
 
-Welcome back! In my tutorial series on building an [Activity Tracker](blog/golang-grpc-example/), I built up a client and server communicating over gRPC. I then added REST endpoints to it using [the gRPC-Gateway](https://github.com/grpc-ecosystem/grpc-gateway) `protoc` plugin.
+Welcome back! In my tutorial series on building an [Activity Tracker](/blog/golang-grpc-example/), I built up a client and server communicating over gRPC. I then added REST endpoints to it using [the gRPC-Gateway](https://github.com/grpc-ecosystem/grpc-gateway) `protoc` plugin.
 
 The plugins like gRPC-gateway and OpenAPI helped make me productive, but my `protoc` call grew from a simple invocation to a multi-line script, which brought `buf` to my attention. `buf` is a suite of tools that simplify dealing with protocol buffers wrapped up in a nice three-letter command.
 
@@ -145,25 +145,25 @@ protoc api/v1/*.proto \
 Moving this to `buf` generate is simple: I create a `buf.gen.yaml` file and start listing and configuring plugins.
 
 ~~~{.yaml caption="buf.gen.yaml"}
- version: v1
- plugins:
-  - name: go
-    out: .
-    opt: paths=source_relative
-  - name: go-grpc
-    out: .
-    opt: paths=source_relative
-  - name: grpc-gateway
-    out: .
-    opt:
-      - logtostderr=true
-      - paths=source_relative
-      - generate_unbound_methods=true
-  - name: openapiv2
-    out: .
-    opt:
-      - logtostderr=true
-      - generate_unbound_methods=true
+version: v1
+plugins:
+ - name: go
+   out: .
+   opt: paths=source_relative
+ - name: go-grpc
+   out: .
+   opt: paths=source_relative
+ - name: grpc-gateway
+   out: .
+   opt:
+     - logtostderr=true
+     - paths=source_relative
+     - generate_unbound_methods=true
+ - name: openapiv2
+   out: .
+   opt:
+    - logtostderr=true
+    - generate_unbound_methods=true
 ~~~
 
 Because of the nested nature of yaml, I find this much easier to understand than a lengthy `protoc` call. So then instead of `protoc` I call `buf generate`, and all the generated code is produced.
