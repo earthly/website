@@ -111,7 +111,7 @@ api/v1/activity.proto:12:36:
   RPC "List" on service "Activity_Log" changed response type from "api.v1.Activities" to "api.v1.ListResponse".
 ~~~
 
-I'm not too worried about those breaking changes because my service is not yet running anywhere, but from now on, I want to prevent the introduction of any break changes. To do that, I'm going to introduce `buf lint` and `buf breaking` into my CI process, but first, I need to tackle code generation.
+I'm not too worried about those breaking changes because my service is not yet running anywhere, but from now on, I want to prevent the introduction of any breaking changes. To do that, I'm going to introduce `buf lint` and `buf breaking` into my CI process, but first, I need to tackle code generation.
 
 ## `buf generate`
 
