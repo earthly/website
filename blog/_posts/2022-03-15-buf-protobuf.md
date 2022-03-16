@@ -198,7 +198,7 @@ proto:
     SAVE ARTIFACT ./api AS LOCAL ./api 
 ~~~
 
-And with that, I have a simpler, more declarative protocol buffer generation process, and `buf lint` and `buf breaking` help me avoid some gRPC foot-guns, and it's all wrapped up in a reusable build script, so no breaking change or lint violation will even make it into my main branch.
+And with that, I have a simpler, more declarative protocol buffer generation process, and `buf lint` and `buf breaking` help me avoid some gRPC foot-guns, and it's all wrapped up in a reusable build script, so no breaking change or lint violation will ever make it into my main branch.
 
 And I'm just scratching the surface on `buf`, most of the steps above are highly configurable, and their schema registry and remote generation feature look very cool. But for now, I think it's been an improvement.
 
