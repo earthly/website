@@ -1,4 +1,5 @@
 txt
 asciidoc
 gzip
+yaml
 lzma
