@@ -12,3 +12,5 @@ hostname
 ci
 debian
 arch
+manpage
+manpages

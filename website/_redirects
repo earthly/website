@@ -4,5 +4,8 @@
 # Slack invite link
 /slack https://join.slack.com/t/earthlycommunity/shared_invite/zt-n5vw7fw6-7inWcey3_UNkx0FOm3bQBA 302
 
+# Hiring
+/hiring https://angel.co/company/earthly-technologies/jobs 302
+
 # Renamed article
 /blog/dont-use-earthly /blog/repeatable-builds-every-time
