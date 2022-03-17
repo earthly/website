@@ -276,5 +276,45 @@ See this error, but the easiest way to fix is just set `$HOME` to `/tmp` in the 
 <figcaption></figcaption>
 </div>
 
+One thing that caught be out with this solution is that, although I've deployed `:latest` updating the latest image doesn't change whats running in the lambda. because the lambda just uses the tag to look up the sha at that point and runs based on the sha. This is a good approach, all things considered, because some would even recommend never using mutable tags at all. 
+
+I can easily deploy a new image like this though:
+
+```
+ aws lambda update-function-code \
+            --region us-east-1 \
+            --function-name container-test \
+            --image-uri 733977735356.dkr.ecr.us-east-1.amazonaws.com/container-test:latest
+```
+
 So there you go, I have containers working in lambdas. And this will work with any software stack that you can get inside a linux container.
 
+## Wrapping it all up with a Bow 
+
+From where I'm at now, its actually pretty easy to get to a full CI/CD solution.
+
+First off I make my docker container inside Earthly.
+
+```
+FROM public.ecr.aws/lambda/nodejs:12
+
+build:
+    COPY package*.json readme.txt ./
+    COPY built/*.js ./
+    RUN npm install
+    CMD [ "app.handler" ]
+    SAVE IMAGE 733977735356.dkr.ecr.us-east-1.amazonaws.com/container-test:latest
+```
+Then, in the same earth file, I run my deploy steps.
+
+```
+deploy:
+    LOCALLY
+    RUN aws lambda update-function-code \
+            --region us-east-1 \
+            --function-name container-test \
+            --image-uri 733977735356.dkr.ecr.us-east-1.amazonaws.com/container-test:latest
+
+```
+
+Then in my choosen CI, when something is merged into my main branch, I just run `earthly +build --push` and `earthly +deploy` and my function will be updated.
