@@ -1,5 +1,5 @@
 ---
-title: "Avoiding Protobuf's Common Pitfalls with Buf"
+title: "Avoiding Common Protobuf's Pitfalls with Buf"
 categories:
   - Tutorials
 toc: true
