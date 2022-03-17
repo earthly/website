@@ -164,27 +164,117 @@ With the app containerized, its easy to test it locally:
 
 First I build it: 
 ```
-curl --verbose -XPOST "http://localhost:9000/2015-03-31/functions/function/invocations" -d '{
-  "queryStringParameters": {
-    "url": "https://earthly.dev/blog/golang-monorepo/"
-  }
-}'
-}
+
 ```
 
 Then I can run it and make calls against it:
 
 ```
- docker run -p 9000:8080 733977735356.dkr.ecr.us-east-1.amazonaws.com/text-mode:latest
+ docker run -p 9000:8080 733977735356.dkr.ecr.us-east-1.amazonaws.com/container-test:latest
 
+ curl -XPOST "http://localhost:9000/2015-03-31/functions/function/invocations" -d '{
+  "queryStringParameters": {
+    "url": "https://icanhazip.com/"
+  }
+}'
 ```
 
-Note how I need to make my requests in the same fashion API Gateway will. My API will be responding to GET requests with a URL parameter, but to exercise it I post with a correctly formatted request body. 
+``` yaml
+{"statusCode":200,"headers":{"content-type":"text/plain; charset=utf-8"},"body":"76.6.XXX.XXX\n"}
+```
 
+Note how I need to make my requests in the same fashion the API Gateway will. My API will be responding to GET requests with a URL parameter, but to exercise it I post with a correctly formatted request body. 
 
 After that I need to push my image to AWS ECR:
 
+First I create a repository:
+
+<div class="wide">
+{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/4460.png --alt {{  Create Repo in ECR }} %}
+<figcaption>Create Repo in ECR</figcaption>
+</div>
+
+Then I login and push to it
 ```
 aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin XXXXXXXXXXXXXXXXXXX.dkr.ecr.us-east-1.amazonaws.com 
 
 ```
+
+```
+The push refers to repository [733977735356.dkr.ecr.us-east-1.amazonaws.com/container-test]
+6f55f8f6a022: Pushed 
+ff595bbcde74: Pushed 
+428b5d37bdb8: Pushed 
+aa262ea90a60: Pushed 
+b84abea626b7: Pushed 
+c51ba664b438: Pushed 
+2b9913d02f84: Pushed 
+d589926497ff: Pushed 
+00a4e675f0b7: Pushed 
+3f1bccf018a1: Pushed 
+latest: digest: sha256:f5578098c6677638e2c3420e7fa70707889fd55e3f4e9d84ff099efe59e280a3 size: 2420
+```
+
+And then create the lambda, by selecting 
+<div class="wide">
+{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/5170.png --alt {{  }} %}
+<figcaption></figcaption>
+</div>
+
+Select my image:
+
+<div class="wide">
+{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/5200.png --alt {{  }} %}
+<figcaption></figcaption>
+</div>
+
+Create a trigger:
+
+<div class="wide">
+{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/5320.png --alt {{  }} %}
+<figcaption></figcaption>
+</div>
+
+<div class="wide">
+{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/5430.png --alt {{  }} %}
+<figcaption></figcaption>
+</div>
+
+Then I can call it , via the provided API end point:
+<div class="wide">
+{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/5520.png --alt {{  }} %}
+<figcaption></figcaption>
+</div>
+
+
+<div class="wide">
+{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/5650.png --alt {{  }} %}
+<figcaption></figcaption>
+</div>
+
+
+```
+curl https://5f8lt8irs0.execute-api.us-east-1.amazonaws.com/default/container-test\?url\=https://icanhazip.com/
+100.27.35.7
+```
+
+### Side Note: 
+
+If you are spawning processes and running things in a shell inside your container, inside your lambda be aware that the home directory, as of March, 2020 is not properly configured and you will get an error like this:
+```
+ENOENT: no such file or directory, mkdir '/home/sbx_user1051/.fonts
+```
+See this error, but the easiest way to fix is just set `$HOME` to `/tmp` in the environmental variables section of lambda configuration.
+
+<div class="wide">
+{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/7190.png --alt {{  }} %}
+<figcaption></figcaption>
+</div>
+
+<div class="wide">
+{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/7210.png --alt {{  }} %}
+<figcaption></figcaption>
+</div>
+
+So there you go, I have containers working in lambdas. And this will work with any software stack that you can get inside a linux container.
+
