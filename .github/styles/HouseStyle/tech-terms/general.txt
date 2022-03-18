@@ -13,6 +13,9 @@ git
 npm
 ttd
 TestTheDocs
+Lightsail
+url
+cli
 vale
 dns
 orm
