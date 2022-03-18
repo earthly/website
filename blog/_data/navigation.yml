@@ -107,6 +107,10 @@ activity-tracker:
         url: /golang-sqlite/
       - title: "Part 4: gRPC"
         url: /golang-grpc-example/
+      - title: "Part 4: gRPC Gateway"
+        url: /golang-grpc-gateway/
+      - title: "Side Quest: Protobuf's"
+        url: /buf-protobuf/
 deployment-strategies:
   - title: "Deployment Strategies"
     children:
