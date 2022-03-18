@@ -9,27 +9,27 @@ internal-links:
  - just an example
 ---
 
-Most of the code I've had running on AWS's cloud has been in the form of docker containers, running in Kubernetes clusters. And from my perspective, AWS was invisible, all I needed to concern myself with was the intricacies of getting the yaml for kubectl apply right. The actual specifics of the cluster and how its configured was outside of my area of concern, unless something went wrong and then I could just ping some Ops expert to help me out. But that seems like overkill for many tasks – the operational burden of maintaining Kubernetes is not free.
+Most of the code I've had running on AWS's cloud has been in docker containers, running in Kubernetes clusters. And from my perspective, AWS was invisible. All I needed to concern myself with was the intricacies of getting the YAML for `kubectl apply` right. Of course, the cluster's configuration was not my concern unless something went wrong, but I could then ping some Ops expert to help me out. But all that seems overkill for many tasks – the operational burden of maintaining Kubernetes is not free.
 
-What if I just want a simple container running in my AWS account, with some endpoints open to the world. What is the best way to get that in place? AWS offers many options. There is Amazon Elastic Container Service (ECS), Amazon Elastic Kubernetes Service (EKS), AWS App Runner and AWS Lightsail. Maybe there are more options? I'm not sure how anyone keeps up with the myriad of options AWS offers. But, an option with some nice properties is AWS Lambda.
+What if I want a simple container running in my AWS account, with some endpoints open to the world? What is the best way to get that in place? AWS offers many options: Amazon Elastic Container Service (ECS), Amazon Elastic Kubernetes Service (EKS), AWS App Runner, and AWS Lightsail. Maybe there are more options? I'm not sure how anyone keeps up with the myriad AWS possibilities. But, an option with some excellent attributes is AWS Lambda.
 
 ## Containers on AWS Lambda
 
-AWS lambda, in it's first revision, supported giving the lambda a zip file of code, that corresponded to their lambda API and that was about it. But it has some two nice scalability features. One, it could scale up to thousands of instances based on request load and two, it scaled down to zero when no requests were coming in. That aggressive scheduling, combined with a billing structure where you only for the time your lambda is running is what caused all the buzz around lambdas back in 2014
+In its first revision, AWS Lambda supported giving the lambda a zip file of code, and that was about it. But it had two exciting scalability features. One, it could scale up to thousands of instances based on request load, and two, it scaled down to zero when no requests were coming in. That aggressive scheduling, combined with a billing structure where you only for the time your lambda is running, caused all the buzz around lambdas back when it was launched in 2014.
 
 > AWS Lambda is a compute service that runs your code in response to events and automatically manages the compute resources for you, making it easy to build applications that respond quickly to new information. AWS Lambda starts running your code within milliseconds of an event such as an image upload, in-app activity, website click, or output from a connected device. You can also use AWS Lambda to create new back-end services where compute resources are automatically triggered based on custom requests.
 
-But, I never got interested in lambdas myself. I worked in Scala, which runs on the JVM, which has a slow start-up time, and I also was into containers as a packaging unit and so although I heard people talk about lamda's I didn't pay attention.
+But, I never got interested in lambdas myself. I worked in Scala, which runs on the JVM, which has a slow start-up time, and I also was into containers as a packaging unit and so although I heard people talk about lambda's I didn't pay attention.
 
-But then in 2020, AWS added support for containers. This maybe naive of me, but the tech stack suddenly made more sense to me. If I could take my app, wrap it up in a container, which I was doing already, and have it running in AWS Lambda then it was sort of like getting to deploy things into a giant Kubernetes cluster in the sky. The horizontal scaling features that were hard to get right in Kubernetes (`HPAScaleToZero`), were built into lambdas and if your app has a slow start up time, with provisioned concurrency, you can always keep some instances running, never scaling back right to zero.
+But then, in 2020, AWS added support for containers. This may be naive, but the lambda product suddenly made more sense to me. If I could take my app, wrap it up in a container, which I was doing already, and have it running in AWS Lambda, it was like getting to deploy things into a giant Kubernetes cluster in the sky. The horizontal scaling features that were hard to get right in Kubernetes (`HPAScaleToZero`), were built into lambdas, and if your app has a slow start up time, with provisioned concurrency, you can always keep some instances running, never scaling back right to zero.
 
-All of this to say, 8 years afters its launch, I'm starting to see what the hype is about. With that extended preamble, let me show you the set up for running a container in a lambda.
+All of this to say, 8 years after its launch, I'm starting to see what the hype is about. So let me show you the setup for running a container in a Lambda.
 
-What I'm going to make will be pretty simple, it will be a small node.js app that will take a url, download it and return the results. Basically a simple web proxy.
+What I'm going to make will be pretty straightforward. It will be a small node.js app that will take a URL, download it, and return the results – basically a simple web proxy.
 
 ## TypeScript Lambda
 
-The first thing I'm going to do is create typescript file that will be the bulk of my lambda. Any programming language that can run inside a container will work though. The main trick is just conforming to the shape of input and output expected by a lambda.
+The first thing I'm going to do is create a TypeScript file that will be the bulk of my lambda. Any programming language that can run inside a container will work, though. The main trick is just conforming to the shape of input and output expected by a lambda.
 
 For instance, when I make a request against the AWS API gateway that I'll be setting up shortly, like this:
 
@@ -83,9 +83,9 @@ exports.handler = (event: { queryStringParameters: { url: string; }; }) => {
 };
 ~~~
 
-I'm returning an explanatory message in plain text if URL is missing and otherwise I return the result of `call`.
+I'm returning an explanatory message in plain text if the URL is missing, and otherwise, I return the result of `call`.
 
-Since this is running in a container, `call` could call out to other programs installed in the container – perhaps downloading the html, and running a html minimizer? But for tutorial purposes, all it does it download the html content and return it as text.
+Since this is running in a container, `call` could call out to other programs installed in the container – perhaps downloading the html, and running an html minimizer? But for tutorial purposes, all it does is download the html content and return it as text.
 
 ~~~{.ts caption="app.ts continued"}
 function call(url: string) {
@@ -114,7 +114,7 @@ function call(url: string) {
 }
 ~~~
 
-I build this file with `tsc` into `built/app.js` and then I wrap it up into a docker container, for deployment to AWS Lambda.
+I build this file with `tsc` into `built/app.js`, and then I wrap it up into a docker container for deployment to AWS Lambda.
 
 ~~~{.dockerfile caption="dockefile"}
 FROM public.ecr.aws/lambda/nodejs:12
@@ -127,7 +127,7 @@ CMD [ "app.handler" ]
 
 I'm using Amazon's suggested base container for Node.js which is a Red Hat linux container with the AWS lambda runtime installed.
 
-Using Amazon's images, the lambda runtime is already installed and everything is configured for it to start up. I can see this using `docker inspect`
+Using Amazon's images, the lambda runtime is already installed, and everything is configured for it to start up. I can see this using `docker inspect`
 
 ~~~{.json caption="docker inspect"}
 {
@@ -144,15 +144,15 @@ Using Amazon's images, the lambda runtime is already installed and everything is
 }
 ~~~
 
-Amazon provides a number of container bases, but you can also just install the [container base of your choosing](https://docs.aws.amazon.com/lambda/latest/dg/images-create.html#images-create-from-alt).
+Amazon provides several container bases, but you can also install the [container base of your choosing](https://docs.aws.amazon.com/lambda/latest/dg/images-create.html#images-create-from-alt).
 
 Now, let's run something.
 
 ## Testing Lambdas Locally
 
-With the app containerized, its straightforward to test it locally:
+With the app containerized, it's straightforward to test it locally:
 
-First I build it:
+First, I build it:
 
 ~~~{.bash caption=">_"}
 $ docker build i  -t 733977735356.dkr.ecr.us-east-1.amazonaws.com/container-test .
@@ -187,12 +187,12 @@ $ curl -XPOST "http://localhost:9000/2015-03-31/functions/function/invocations" 
 ~~~
 
 <div class="notice--info">
-Note how I need to make my requests in the same fashion the API Gateway will. My API will be responding to GET requests with a URL parameter, but to exercise it I post with a correctly formatted request body.
+Note how I need to make my requests in the same fashion the API Gateway will. My API will respond to GET requests with a URL parameter, but to exercise it, I need to simulate the lambda runtime by using a properly formatted POST.
 </div>
 
 ### Elastic Container Registry
 
-After that I need to push my image to AWS ECR.
+After that, I need to push my image to AWS ECR.
 
 First I create a repository:
 
@@ -201,7 +201,7 @@ First I create a repository:
 <figcaption>Create Repo in ECR</figcaption>
 </div>
 
-Then I login and push to it.
+Then I log in and push to it.
 
 ~~~{.bash caption=">_"}
 $ aws ecr get-login-password --region us-east-1 | \
@@ -225,7 +225,7 @@ d589926497ff: Pushed
 latest: digest: sha256:f5578098c6677638e2 size: 2420
 ~~~
 
-And then create the lambda, by selecting 'Create Function' and 'Container Image'.
+And then, create the lambda by selecting 'Create Function' and 'Container Image'.
 
 <div class="wide">
 {% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/5170.png --alt {{ AWS Lambda Create Function }} %}
@@ -248,11 +248,11 @@ And then create a trigger.
 <figcaption></figcaption>
 </div>
 
-At this point, I'm all setup and I can start using my lambda.
+At this point, I'm all set up, and I can start using my lambda.
 
 ## Calling My Endpoint
 
-Amazon provides me with an url and an endpoint, which I can call via my web browser.
+Amazon provides me with an URL and an endpoint, which I can call via my web browser.
 
 <div class="wide">
 {% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/5520.png --alt {{ Calling Lambda via browser }} %}
@@ -262,7 +262,7 @@ Amazon provides me with an url and an endpoint, which I can call via my web brow
 {% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/5650.png --alt {{ Calling Lambda via browser }} %}
 </div>
 
-It's also simple to test it with curl at the command line. The IP returned by requesting [`I can haz IP`](https://icanhazip.com/) via this simple proxy is the one of the IPs Amazon is using for external requests.
+It's also simple to test it with a curl at the command line. The IP returned by requesting [`I can haz IP`](https://icanhazip.com/) via this simple proxy is not my IP, but the IP Amazon is using to make the requests.
 
 ~~~{.bash caption=">_"}
 $ curl https://5f8lt8irs0.execute-api.us-east-1.amazonaws.com/default/container-test\?url\=https://icanhazip.com/
@@ -272,22 +272,22 @@ $ curl https://5f8lt8irs0.execute-api.us-east-1.amazonaws.com/default/container-
 <div class="notice--info">
 ### Side Note: Home Path
 
-If you are spawning processes and running things in a shell inside your container, inside your lambda be aware that the home directory, as of March, 2020 is not properly configured and you will get an error like this:
+If you are spawning processes and running things in a shell inside your container, inside your lambda, be aware that the home directory, as of March, 2022 is not properly configured and you will get an error like this:
 
 ~~~{.bash caption="error"}
 ENOENT: no such file or directory, mkdir '/home/sbx_user1051/.fonts
 ~~~
 
-See this error, but the easiest way to fix is just set `$HOME` to `/tmp` in the environmental variables section of lambda configuration.
+See [this error](https://github.com/alixaxel/chrome-aws-lambda/issues/131), but the easiest way to fix is just set `$HOME` to `/tmp` in the environmental variables section of lambda configuration.
 
 {% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/7210.png --alt {{ Setting ENV in AWS Lambda }} %}
 </div>
 
 ### Deploying Changes
 
-One thing that caught me out with this solution is that, although I've deployed `:latest`, updating the latest image doesn't change whats running in the lambda. This because the lambda just uses the tag to look up the sha of a container and runs that.
+One thing that caught me out with this solution is that, although I've deployed `:latest`, updating the latest image doesn't change whats running in the lambda. Instead, the lambda just uses the tag to look up the sha of a container, pulls based on that sha, and runs that.
 
-I can easily deploy a new image using the aws cli though.
+I can quickly deploy a new image using the aws cli, though.
 
 ~~~{.bash caption=">_"}
  aws lambda update-function-code \
@@ -300,9 +300,9 @@ So there you go, I have containers working in lambdas. And this will work with a
 
 ## Continuous Deployment
 
-From where I'm at now, its not far to a full CI/CD solution.
+From where I'm at now, it's not far to a full CI/CD solution.
 
-First off I make my docker container inside an Earthfile.
+First off, I make my docker container inside an Earthfile.
 
 ~~~{.bash caption="Earthfile"}
 FROM public.ecr.aws/lambda/nodejs:12
@@ -327,8 +327,8 @@ deploy:
 
 ~~~
 
-Then in my chosen CI, when something is merged into my main branch, I just run `earthly +build --push` and `earthly +deploy` and my function will be updated.
+Then in my chosen CI, when something is merged into my main branch, I just run `earthly +build --push`, and `earthly +deploy`, and my function will be updated.
 
-And with that I have a container running in AWS, where I'm only billed for the milliseconds it runs, with a full – although simple – deployment pipeline.
+And with that, I have a container running in AWS, where I'm only billed for the milliseconds it runs, with a full – although simple – deployment pipeline.
 
 {% include cta/cta1.html %}
