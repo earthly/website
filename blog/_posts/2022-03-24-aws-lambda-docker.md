@@ -8,34 +8,6 @@ author: Adam
 internal-links:
  - just an example
 ---
-### Writing Article Checklist
-
-- [ ] Fix Grammarly Errors
-- [ ] Read out loud
-- [ ] Write 5 or more titles and pick the best on
-- [ ] First two paragraphs: What's it about? Why listen to you?
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-- [ ] Run mark down linter (`lint`)
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links to other articles
-- [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
-- [ ] Raise PR
-
-## Draft.dev Article Checklist
-
-- [ ] Add in Author page
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-- [ ] Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
-
-## Intro
 
 Most of the code I've had running on AWS's cloud has been in the form of docker containers, running in Kubernetes clusters. And from my perspective, AWS was invisible, all I needed to concern myself with was the intricacies of getting the yaml for kubectl apply right. The actual specifics of the cluster and how its configured was outside of my area of concern, unless something went wrong and then I could just ping some Ops expert to help me out. But that seems like overkill for many tasks – the operational burden of maintaining Kubernetes is not free.
 
