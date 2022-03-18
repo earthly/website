@@ -31,7 +31,7 @@ internal-links:
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
+- [ ] Would any images look better `wide` or without the `figcaption`?
 - [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
@@ -318,3 +318,6 @@ deploy:
 ```
 
 Then in my choosen CI, when something is merged into my main branch, I just run `earthly +build --push` and `earthly +deploy` and my function will be updated.
+
+
+{% include cta/cta1.html %}
