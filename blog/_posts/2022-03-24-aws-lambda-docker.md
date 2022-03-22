@@ -6,7 +6,7 @@ toc: true
 author: Adam
 
 internal-links:
- - just an example
+ - lambda container
 ---
 
 Most of the code I've had running on AWS's cloud has been in docker containers, running in Kubernetes clusters. And from my perspective, AWS was invisible. All I needed to concern myself with was the intricacies of getting the YAML for `kubectl apply` right. Of course, the cluster's configuration was not my concern unless something went wrong, but I could then ping some Ops expert to help me out. But all that seems overkill for many tasks – the operational burden of maintaining Kubernetes is not free.
@@ -34,7 +34,7 @@ The first thing I'm going to do is create a TypeScript file that will be the bul
 For instance, when I make a request against the AWS API Gateway that I'll be setting up shortly, like this:
 
 ~~~{.bash caption=">_"}
-curl ((URL))/endpoint/?url=bla
+curl ((URL))/endpoint/?url=https://earthly.dev/blog/golang-monorepo/
 ~~~
 
 Then AWS Lambda will receive the event like this:
@@ -275,7 +275,7 @@ $ curl https://5f8lt8irs0.execute-api.us-east-1.amazonaws.com/default/container-
 If you are spawning processes and running things in a shell inside your container, inside your lambda, be aware that the home directory, as of March, 2022 is not properly configured and you will get an error like this:
 
 ~~~{.bash caption="error"}
-ENOENT: no such file or directory, mkdir '/home/sbx_user1051/.fonts
+ENOENT: no such file or directory, mkdir '/home/sbx_user1051/
 ~~~
 
 See [this error](https://github.com/alixaxel/chrome-aws-lambda/issues/131), but the easiest way to fix is just set `$HOME` to `/tmp` in the environmental variables section of lambda configuration.
@@ -300,11 +300,11 @@ So there you go, I have containers working in lambdas. And this will work with a
 
 ## Continuous Deployment
 
-From where I'm at now, it's not far to a full CI/CD solution.
+From where I'm at now, it's not far to a full deployment solution.
 
-First off, I make my docker container inside an Earthfile.
+To get there, first I'll make my docker container inside an Earthfile.
 
-~~~{.bash caption="Earthfile"}
+~~~{.dockerfile caption="Earthfile"}
 FROM public.ecr.aws/lambda/nodejs:12
 
 build:
@@ -315,19 +315,50 @@ build:
     SAVE IMAGE 733977735356.dkr.ecr.us-east-1.amazonaws.com/container-test:latest
 ~~~
 
-Then, in the same Earthfile, I run my deploy steps.
+Then, in the same Earthfile, I need a deploy step. First I use the `aws cli` image:
 
-~~~{.bash caption="Earthfile"}
+~~~{.dockerfile caption="Earthfile"}
 deploy:
-    LOCALLY
-    RUN aws lambda update-function-code \
-         --region us-east-1 \
-         --function-name container-test \
-         --image-uri 733977735356.dkr.ecr.us-east-1.amazonaws.com/container-test:latest
+    FROM amazon/aws-cli
+~~~
+
+Then I need to pass in AWS config and AWS credentials as secrets. I do this using a secret mount.
+
+~~~
+ RUN --mount=type=secret,target=/root/.aws/config,id=+secrets/config \
+     --mount=type=secret,target=/root/.aws/credentials,id=+secrets/credentials \
+     --no-cache \
+~~~
+
+This I deploy away, using `aws lambda update-function-code`. All together it looks like this:
+
+~~~{.dockerfile caption="Earthfile"}
+deploy:
+    FROM amazon/aws-cli
+    RUN --mount=type=secret,target=/root/.aws/config,id=+secrets/config \
+        --mount=type=secret,target=/root/.aws/credentials,id=+secrets/credentials \
+        --no-cache \
+        aws lambda update-function-code \
+            --region us-east-1 \
+            --function-name text-mode \
+            --image-uri 733977735356.dkr.ecr.us-east-1.amazonaws.com/text-mode:latest
 
 ~~~
 
 Then in my chosen CI, when something is merged into my main branch, I just run `earthly +build --push`, and `earthly +deploy`, and my function will be updated.
+
+<div class="notice--info">
+Taking proper care of secrets is important, so I'm using Earthly's secret support whenever I touch to my AWS credentials. This way I can ensure they aren't cached.
+
+To call my deploy step I need to pass my aws config files as secrets like this:
+
+```
+ earthly \
+  --secret-file config=/Users/adam/.aws/config \
+  --secret-file credentials=/Users/adam/.aws/credentials \
+  +deploy
+```
+</div>
 
 And with that, I have a container running in AWS, where I'm only billed for the milliseconds it runs, with a full – although simple – deployment pipeline.
 
