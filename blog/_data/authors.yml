@@ -167,3 +167,7 @@ Kelly Moreira:
     name    : "Kelly Moreira"
     bio     : ""
     avatar  : "/assets/images/authors/kelly-moreira.jpg"
+Aveek Das:
+    name    : "Aveek Das"
+    bio     : "Aveek is an experienced data and analytics engineer. His main areas of technical interest include data architectures, Python, Big Data tools like Apache Spark, Kafka, and cloud technologies such as AWS/Amazon and Azure."
+    avatar  : "/assets/images/authors/aveek-das.jpg"
