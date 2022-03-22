@@ -33,8 +33,6 @@ In this section, you're going to implement a PostgreSQL instance using Docker an
 
 ~~~{.bash caption=">_"}
 $ docker --version
-~~~
-~~~
   Docker version 20.10.1, build dea9396
 ~~~
 
