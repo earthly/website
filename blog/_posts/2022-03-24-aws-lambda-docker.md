@@ -37,7 +37,7 @@ For instance, when I make a request against the AWS API Gateway that I'll be set
 curl ((URL))/endpoint/?url=bla
 ~~~
 
-Then AWS Lambda will receive the even like this:
+Then AWS Lambda will receive the event like this:
 
 ~~~{.json caption="lambda input"}
 {
