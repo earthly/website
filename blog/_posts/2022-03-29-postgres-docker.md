@@ -32,12 +32,11 @@ In addition to that, databases are stateful applications, while containers are b
 In this section, you're going to implement a PostgreSQL instance using Docker and use a graphical user interface (GUI) and pgAdmin to connect to the database. To begin, you need to have Docker installed on your machine. You can check if you already have Docker installed on your machine by running the following command on your terminal:
 
 ~~~{.bash caption=">_"}
-docker --version
+$ docker --version
 ~~~
-
-<div class="wide">
-{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/9210.png --alt {{ Checking Docker version }} %}
-</div>
+~~~
+  Docker version 20.10.1, build dea9396
+~~~
 
 If you don't have Docker installed, you can install it from the [official website](https://docs.docker.com/get-docker/).
 
@@ -186,7 +185,9 @@ Docker makes it easy to set up a PostgreSQL database in seconds. But there are f
 1. Backup your data periodically. You can do this by running the `pg_dump` command from the database container:
 
   ~~~{.bash caption=">_"}
-  docker exec -it <container_name> pg_dump -U<user_name> --column-inserts --data-only <db_name> > backup_data.sql
+  docker exec -it <container_name> \
+    pg_dump -U<user_name> --column-inserts --data-only <db_name> > \
+    backup_data.sql
   ~~~
 <!-- markdownlint-disable MD029 -->
 4. If there is no database when PostgreSQL starts in a container, a default database will be created and it will not accept incoming connections during that time. This may cause issues with automation tools which may try to access the database as soon as the container starts. To mitigate this, you need to ensure that the database is accepting connections before trying to connect to it. If you're using [Docker Compose](https://docs.docker.com/compose/), you can use the [healthcheck](https://docs.docker.com/compose/compose-file/compose-file-v2/#healthcheck) feature:
@@ -210,6 +211,6 @@ However, a database is stateful, and so any disruption caused in a database appl
 
 In this article, you've learned about running a PostgreSQL instance on Docker. You implemented the instance using Docker and used a GUI and pgAdmin to connect to the database. You also learned about a few best practices like using a persistent volume to store data so that you can offer a smooth experience and secure data.
 
-In order to deploy your container-based applications, you need to implement a CI/CD pipeline that will continuously build your Docker image and deploy it when new versions of your code are available. [Earthly](https://docs.earthly.dev/docs/guides/docker-in-earthly) is a popular CI tool that can be used to automate your container deployments using Docker. It provides integrations with most of the popular CI tools, like [Jenkins](https://www.jenkins.io), [AWS CodeBuild](https://aws.amazon.com/codebuild/), [CircleCI](https://circleci.com), and [GitHub Actions](https://github.com/features/actions). You can learn more about Earthly on their [website](https://earthly.dev/).
+In order to deploy your container-based applications, you need to implement a CI/CD pipeline that will continuously build your Docker image and deploy it when new versions of your code are available. [Earthly](https://docs.earthly.dev/docs/guides/docker-in-earthly) is a popular CI tool that can be used to automate your container deployments. It provides integrations with most of the popular CI tools, like [Jenkins](https://www.jenkins.io), [AWS CodeBuild](https://aws.amazon.com/codebuild/), [CircleCI](https://circleci.com), and [GitHub Actions](https://github.com/features/actions). You can learn more about Earthly on their [website](https://earthly.dev/).
 
 {% include cta/cta1.html %}
