@@ -187,7 +187,7 @@ $ curl -XPOST "http://localhost:9000/2015-03-31/functions/function/invocations" 
 ~~~
 
 <div class="notice--info">
-Note how I need to make my requests in the same fashion the API Gateway will. My API will respond to GET requests with a URL parameter, but to exercise it, I need to simulate the lambda runtime by using a properly formatted POST.
+Note how I need to make my requests in the same fashion the API Gateway will. My actual API can be accessed via GET requests with a URL parameter, but to exercise it when no API Gateway sits in front of it, I need to simulate the lambda runtime by using a properly formatted POST.
 </div>
 
 ### Elastic Container Registry
