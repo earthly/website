@@ -31,7 +31,7 @@ What I'm going to make will be pretty straightforward. It will be a small node.j
 
 The first thing I'm going to do is create a TypeScript file that will be the bulk of my lambda. Any programming language that can run inside a container will work, though. The main trick is just conforming to the shape of input and output expected by a lambda.
 
-For instance, when I make a request against the AWS API gateway that I'll be setting up shortly, like this:
+For instance, when I make a request against the AWS API Gateway that I'll be setting up shortly, like this:
 
 ~~~{.bash caption=">_"}
 curl ((URL))/endpoint/?url=bla
