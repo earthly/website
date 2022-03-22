@@ -352,12 +352,13 @@ Taking proper care of secrets is important, so I'm using Earthly's secret suppor
 
 To call my deploy step I need to pass my aws config files as secrets like this:
 
-```
+~~~{.bash caption=">_"}
  earthly \
   --secret-file config=/Users/adam/.aws/config \
   --secret-file credentials=/Users/adam/.aws/credentials \
   +deploy
-```
+~~~
+
 </div>
 
 And with that, I have a container running in AWS, where I'm only billed for the milliseconds it runs, with a full – although simple – deployment pipeline.
