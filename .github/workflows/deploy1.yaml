@@ -1,9 +1,6 @@
 name: Deploy Website
 
 on:
-  # run everyday at 12:15 utf ( 8:15 am est) to roll out new posts
-  schedule:
-    - cron: '15 12 * * *' 
   workflow_dispatch:
   push:
 
@@ -46,26 +43,11 @@ jobs:
             earthly --use-inline-cache --verbose +dev-build 
           fi
           
-      - name: checkout branch in repo website-output
+      - name: Push to Netlifty
         run: |-
           git clone --depth 1 https://x-access-token:${{ secrets.PUSH_SECRET }}@github.com/earthly/website-output.git
           cd website-output
           git checkout $CI_ACTION_REF_NAME 2>/dev/null || git checkout -b $CI_ACTION_REF_NAME
           git rm -rf .
           git clean -fxd 
-      - name: "copy files"
-        run: |- 
-          cp -a build/site/. website-output/ || true
-      - name: git push
-        run: |-
-          cd website-output
-          git config user.name "Automated"
-          git config user.email "actions@users.noreply.github.com"
-          if [ -z "$(git status --porcelain)" ]; then
-            echo "Clean!"
-          else
-            git add -A
-            git commit -m "Latest data: ${timestamp}"
-            git push --force --set-upstream origin $CI_ACTION_REF_NAME
-          fi
-          
+     
