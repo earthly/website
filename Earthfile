@@ -70,7 +70,7 @@ website-build:
   # FROM agbell/website-install
   COPY website .
   RUN bundle exec jekyll build $FLAGS
-  SAVE ARTIFACT _site AS LOCAL build/site
+  SAVE ARTIFACT _site/* AS LOCAL ./build/site/
 
 website-docker:
   FROM +website-install
@@ -159,7 +159,7 @@ blog-build:
   # FROM agbell/blog-install
   COPY blog .
   RUN JEKYLL_ENV=production bundle exec jekyll build $FLAGS 
-  SAVE ARTIFACT _site AS LOCAL build/site/blog
+  SAVE ARTIFACT _site/* AS LOCAL build/site/blog/
 
 blog-docker:
   FROM +blog-install

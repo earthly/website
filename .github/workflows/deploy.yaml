@@ -16,7 +16,8 @@ jobs:
       - uses: FranzDiebold/github-env-vars-action@v2
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: "create key"
+
+      - name: Create Cache Key
         run: |- 
           date "+%Y-%d-%m" > today.txt
           date --date="yesterday" "+%Y-%d-%m" > yesterday.txt
@@ -40,32 +41,33 @@ jobs:
         run: |-
           if [ "$CI_ACTION_REF_NAME" == "main" ]; then
             echo "Main Build - going to prod!"
-            earthly --use-inline-cache +build
+            OUTPUT=$(earthly --use-inline-cache +build)
           else
             echo "Branch Build - only for preview"
             earthly --use-inline-cache --verbose +dev-build 
           fi
-          
-      - name: checkout branch in repo website-output
+      - name: Push to Netlify
+        env:
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
         run: |-
-          git clone --depth 1 https://x-access-token:${{ secrets.PUSH_SECRET }}@github.com/earthly/website-output.git
-          cd website-output
-          git checkout $CI_ACTION_REF_NAME 2>/dev/null || git checkout -b $CI_ACTION_REF_NAME
-          git rm -rf .
-          git clean -fxd 
-      - name: "copy files"
-        run: |- 
-          cp -a build/site/. website-output/ || true
-      - name: git push
-        run: |-
-          cd website-output
-          git config user.name "Automated"
-          git config user.email "actions@users.noreply.github.com"
-          if [ -z "$(git status --porcelain)" ]; then
-            echo "Clean!"
+          cd build/site
+          if [ "$CI_ACTION_REF_NAME" == "main" ]; then
+            echo "Main Build - deploying to prod!"
+            netlify deploy --dir=. --prod
+            OUTPUT=$(netlify deploy --dir=.)
+            echo "NETLIFY_URL=$(echo $OUTPUT | grep -Eo '(http|https)://[a-zA-Z0-9./?=_-]*(--)[a-zA-Z0-9./?=_-]*')" >> $GITHUB_ENV
           else
-            git add -A
-            git commit -m "Latest data: ${timestamp}"
-            git push --force --set-upstream origin $CI_ACTION_REF_NAME
+            echo "Preview Deploy"
+            OUTPUT=$(netlify deploy --dir=.)
+            echo "NETLIFY_URL=$(echo $OUTPUT | grep -Eo '(http|https)://[a-zA-Z0-9./?=_-]*(--)[a-zA-Z0-9./?=_-]*')" >> $GITHUB_ENV
           fi
-          
+      - name: Get PR
+        uses: jwalton/gh-find-current-pr@v1
+        id: finder
+      - name: Comment on PR 
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          number: ${{ steps.finder.outputs.pr }}
+          message: |
+            Commit ${{ github.sha }} deployed to ${{ env.NETLIFY_URL }}
