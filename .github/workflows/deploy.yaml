@@ -16,10 +16,9 @@ jobs:
       - uses: FranzDiebold/github-env-vars-action@v2
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: comment 
-        uses: jwalton/gh-find-current-pr@v1
-          id: finder
-        uses: marocchino/sticky-pull-request-comment@v2
+      - uses: jwalton/gh-find-current-pr@v1
+        id: finder
+      - uses: marocchino/sticky-pull-request-comment@v2
         with:
           number: ${{ steps.finder.outputs.pr }}
           message: |
@@ -82,7 +81,3 @@ jobs:
         with:
           message: |
             Preview: to <https://google.com>
-
-
-
-     
