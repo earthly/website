@@ -42,20 +42,10 @@ jobs:
           if [ "$CI_ACTION_REF_NAME" == "main" ]; then
             echo "Main Build - going to prod!"
             OUTPUT=$(earthly --use-inline-cache +build)
-            NETLIFY_OUTPUT=$(echo "$OUTPUT")
-            NETLIFY_URL=$(echo "$OUTPUT" | grep -Eo '(http|https)://[a-zA-Z0-9./?=_-]*(--)[a-zA-Z0-9./?=_-]*') #Unique key: --
-            NETLIFY_LOGS_URL=$(echo "$OUTPUT" | grep -Eo '(http|https)://app.netlify.com/[a-zA-Z0-9./?=_-]*') #Unique key: app.netlify.com
-            NETLIFY_LIVE_URL=$(echo "$OUTPUT" | grep -Eo '(http|https)://[a-zA-Z0-9./?=_-]*' | grep -Eov "netlify.com") #Unique key: don't containr -- and app.netlify.com
-
-            echo "::set-output name=NETLIFY_OUTPUT::$NETLIFY_OUTPUT"
-            echo "::set-output name=NETLIFY_URL::$NETLIFY_URL"
-            echo "::set-output name=NETLIFY_LOGS_URL::$NETLIFY_LOGS_URL"
-            echo "::set-output name=NETLIFY_LIVE_URL::$NETLIFY_LIVE_URL"
           else
             echo "Branch Build - only for preview"
             earthly --use-inline-cache --verbose +dev-build 
           fi
-          
       - name: Push to Netlify
         env:
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
@@ -65,14 +55,18 @@ jobs:
           if [ "$CI_ACTION_REF_NAME" == "main" ]; then
             echo "Main Build - deploying to prod!"
             netlify deploy --dir=. --prod
+            OUTPUT=$(netlify deploy --dir=.)
+            echo "NETLIFY_URL=$(echo $OUTPUT | grep -Eo '(http|https)://[a-zA-Z0-9./?=_-]*(--)[a-zA-Z0-9./?=_-]*')" >> $GITHUB_ENV
           else
             echo "Preview Deploy"
             OUTPUT=$(netlify deploy --dir=.)
             echo "NETLIFY_URL=$(echo $OUTPUT | grep -Eo '(http|https)://[a-zA-Z0-9./?=_-]*(--)[a-zA-Z0-9./?=_-]*')" >> $GITHUB_ENV
           fi
-      - uses: jwalton/gh-find-current-pr@v1
+      - name: Get PR
+        uses: jwalton/gh-find-current-pr@v1
         id: finder
-      - uses: marocchino/sticky-pull-request-comment@v2
+      - name: Comment on PR 
+        uses: marocchino/sticky-pull-request-comment@v2
         with:
           number: ${{ steps.finder.outputs.pr }}
           message: |
