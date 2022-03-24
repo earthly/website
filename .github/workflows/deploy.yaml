@@ -69,10 +69,10 @@ jobs:
             netlify deploy --dir=.
           fi
       - name: Comment
-        uses: github-actions-up-and-running/pr-comment@v1.0.0
+        uses: marocchino/sticky-pull-request-comment@v2
         with:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
-          message: Nice PR!👍
+          message: |
+            Preview: to <https://google.com>
 
 
 
