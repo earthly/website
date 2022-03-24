@@ -183,8 +183,8 @@ clean:
 ## Dev Build
 dev-build:
   # BUILD +blog-lint
-  # BUILD --build-arg FLAGS="--future" +website-build 
-  BUILD --build-arg FLAGS="--future" +blog-build
+  BUILD --build-arg FLAGS="--future" +website-build 
+  # BUILD --build-arg FLAGS="--future" +blog-build
 
 # Prod Build
 build:
