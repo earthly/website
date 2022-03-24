@@ -16,6 +16,15 @@ jobs:
       - uses: FranzDiebold/github-env-vars-action@v2
       - name: Checkout code
         uses: actions/checkout@v2
+      - name: comment 
+        uses: jwalton/gh-find-current-pr@v1
+          id: finder
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          number: ${{ steps.finder.outputs.pr }}
+          message: |
+            Test ${{ github.sha }} ended successfully.
+            This message is from a push.
       - name: Create Cache Key
         run: |- 
           date "+%Y-%d-%m" > today.txt
