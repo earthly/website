@@ -67,7 +67,8 @@ jobs:
             netlify deploy --dir=. --prod
           else
             echo "Preview Deploy"
-            netlify deploy --dir=.
+            OUTPUT=$(netlify deploy --dir=.)
+            echo "NETLIFY_URL=$(echo $OUTPUT | grep -Eo '(http|https)://[a-zA-Z0-9./?=_-]*(--)[a-zA-Z0-9./?=_-]*')" >> $GITHUB_ENV
           fi
       - uses: jwalton/gh-find-current-pr@v1
         id: finder
@@ -75,4 +76,4 @@ jobs:
         with:
           number: ${{ steps.finder.outputs.pr }}
           message: |
-            Commit ${{ github.sha }} deployed to http://google.com
+            Commit ${{ github.sha }} deployed to ${{ env.NETLIFY_URL }}
