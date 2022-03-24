@@ -46,26 +46,20 @@ jobs:
             earthly --use-inline-cache --verbose +dev-build 
           fi
           
-      - name: checkout branch in repo website-output
+      - name: Push to Netlify
+        env:
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
         run: |-
-          git clone --depth 1 https://x-access-token:${{ secrets.PUSH_SECRET }}@github.com/earthly/website-output.git
-          cd website-output
-          git checkout $CI_ACTION_REF_NAME 2>/dev/null || git checkout -b $CI_ACTION_REF_NAME
-          git rm -rf .
-          git clean -fxd 
-      - name: "copy files"
-        run: |- 
-          cp -a build/site/. website-output/ || true
-      - name: git push
-        run: |-
-          cd website-output
-          git config user.name "Automated"
-          git config user.email "actions@users.noreply.github.com"
-          if [ -z "$(git status --porcelain)" ]; then
-            echo "Clean!"
+          cd build/site
+          if [ "$CI_ACTION_REF_NAME" == "main" ]; then
+            echo "Main Build - deploying to prod!"
+            netlify deploy --dir=. --prod
           else
-            git add -A
-            git commit -m "Latest data: ${timestamp}"
-            git push --force --set-upstream origin $CI_ACTION_REF_NAME
+            echo "Preview Deploy"
+            netlify deploy --dir=.
           fi
-          
+
+
+
+     
