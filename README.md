@@ -48,6 +48,8 @@ For blogging locally:
  brew install pandoc
 ```
 
+Then, in `/blog/` run `bundle install`.
+
 For linting locally (and in vs code):
 
 ```
