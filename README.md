@@ -15,7 +15,7 @@ Then browse to http://0.0.0.0:4002/blog/
 
 ### Run Website in Docker
 
-You can run the website locally, and use it to preview changes as you go.  d
+You can run the website locally, and use it to preview changes as you go.
 
 ```
 > earthly +website-docker 
@@ -38,22 +38,27 @@ Volume mounts on a mac can be slow, until such time as [watch mode](https://docs
 
 ### Install Dependencies
 
+For blogging locally:
 ```
  brew update
  brew upgrade ruby-build
  rbenv install 2.7.0
  rbenv global 2.7.0
- ruby -v
+ brew install vips
+ brew install pandoc
+```
+
+For linting locally (and in vs code):
+```
  brew install vale
  brew install markdownlint-cli
  brew install sponge
  brew install gawk
- brew install vips
- brew install pandoc
  brew install gnu-sed
-
 ```
+
 `gnu-sed` works different than the version of `sed` that comes with mac by default, so you'll need to add the line below to your `.bashrc` to get your system to use it.
+
 ```bash
  export  PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
 ```
