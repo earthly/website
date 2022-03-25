@@ -96,8 +96,8 @@ blog-update:
   SAVE ARTIFACT Gemfile.lock AS LOCAL blog/Gemfile.lock
 
 blog-install:
-  # FROM agbell/website-base:latest
-  FROM +base-image
+  FROM agbell/website-base:latest
+  # FROM +base-image
   COPY blog/Gemfile .
   COPY blog/Gemfile.lock .
   RUN bundle install --retry 5 --jobs 20
