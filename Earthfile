@@ -191,21 +191,3 @@ build:
   BUILD +blog-lint
   BUILD +website-build
   BUILD +blog-build
-
-# Publish by pushing published site to seperate git repo
-manual-publish:
-  LOCALLY
-  BUILD +website-build
-  BUILD +blog-build
-  ARG branch=main
-  RUN git clone https://github.com/earthly/website-output.git || true
-  RUN cd website-output \
-       && git checkout -b $branch || true \
-       && git rm -rf . || true \
-       && git clean -fxd 
-  RUN cp -a build/site/. website-output/
-  RUN cd website-output && ls
-  RUN cd website-output \
-    && git add -A \
-    && git commit -m "Latest website - manual publish" || exit 0 \ 
-    && git push 
