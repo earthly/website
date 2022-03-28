@@ -38,3 +38,6 @@ github
 gridnc
 www
 buf
+luke
+url
+yoururl
