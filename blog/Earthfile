@@ -48,9 +48,7 @@ blog-update:
 ## Lint (Run in CI)
 blog-lint:
   FROM agbell/blog-base-image:latest
-  COPY .vale.ini .
-  COPY .markdownlint.json .
-  COPY .github .github
+  COPY ../+export/base .
   COPY . blog
   RUN vale --output line --minAlertLevel error ./blog/_posts/*.md
   IF grep '[“”‘’]' ./blog/_posts/*.md

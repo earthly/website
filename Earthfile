@@ -17,3 +17,12 @@ clean:
   LOCALLY
   RUN rm -rf build website/_site website/.sass-cache website/.jekyll-metadata website/.jekyll-cache
   RUN rm -rf build blog/_site blog/.sass-cache blog/.jekyll-metadata blog/.jekyll-cache
+
+## Files needed by blog and website that are in root dir need to be exported here 
+## And reimported in blog and website earthfiles 
+export:
+  WORKDIR /base
+  COPY .vale.ini .
+  COPY .markdownlint.json .
+  COPY .github .github
+  SAVE ARTIFACT /base
