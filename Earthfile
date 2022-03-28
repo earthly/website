@@ -25,5 +25,5 @@ export:
   WORKDIR /base
   COPY .vale.ini .
   COPY .github .github
-  COPY .markdownlint.json .
+  COPY ./blog/.markdownlint.json .
   SAVE ARTIFACT /base
