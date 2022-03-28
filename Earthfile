@@ -21,6 +21,7 @@ clean:
 ## Files needed by blog and website that are in root dir need to be exported here 
 ## And reimported in blog and website earthfiles 
 export:
+  FROM alpine
   WORKDIR /base
   COPY .vale.ini .
   COPY .markdownlint.json .
