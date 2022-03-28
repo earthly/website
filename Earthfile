@@ -3,25 +3,24 @@ FROM alpine
 
 ## Dev Build
 dev-build:
-  BUILD ./blog+blog-lint
-  BUILD --build-arg FLAGS="--future" ./website+website-build 
-  BUILD --build-arg FLAGS="--future" ./blog+blog-build
+  BUILD ./blog+lint
+  BUILD ./website+build --FLAGS="--future"
+  BUILD ./blog+build --FLAGS="--future"
 
 # Prod Build
 build:
-  BUILD ./blog+blog-lint
-  BUILD ./website+website-build 
-  BUILD ./blog+blog-build
+  LOCALLY
+  BUILD ./blog+lint
+  BUILD ./website+build 
+  BUILD ./blog+build
+
+  ## Content needs to be combined into /build for netlify to pick up
+  RUN cp -rf ./blog/build/* ./build
+  RUN cp -rf ./website/build/* ./build
 
 build-base-images:
   BUILD ./blog+base-image-all
   BUILD ./website+base-image-all  
-
-## Utils
-clean:
-  LOCALLY
-  RUN rm -rf build website/_site website/.sass-cache website/.jekyll-metadata website/.jekyll-cache
-  RUN rm -rf build blog/_site blog/.sass-cache blog/.jekyll-metadata blog/.jekyll-cache
 
 ## Files needed by blog and website that are in root dir need to be exported here 
 ## And reimported in blog and website earthfiles 
@@ -31,3 +30,9 @@ export:
   COPY .github .github
   COPY ./blog/.markdownlint.json .
   SAVE ARTIFACT /base
+
+clean:
+  LOCALLY
+  BUILD ./blog+clean
+  BUILD ./website+clean
+  RUN rm -rf build

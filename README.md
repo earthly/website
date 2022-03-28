@@ -7,7 +7,7 @@
 Build docker image for blog:
 
 ```
-> earthly +blog-run
+> earthly ./blog+run
 ```
 
 Then browse to http://0.0.0.0:4002/blog/
@@ -17,7 +17,7 @@ Then browse to http://0.0.0.0:4002/blog/
 You can run the website locally, and use it to preview changes as you go.
 
 ```
-> earthly +website-run
+> earthly ./website+run
 ```
 
 Then browse to http://0.0.0.0:4001/

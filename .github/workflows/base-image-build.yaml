@@ -1,8 +1,11 @@
 name: Build Base Image
 
 on:
+  # run build once a week
+  schedule:
+    - cron: '0 0 * * 0' 
+  # or on demand
   workflow_dispatch:
-  push:
 
 jobs:
   build-image:

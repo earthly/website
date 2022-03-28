@@ -3,6 +3,7 @@ ARG FLAGS=""
 
 ## This base image is pushed as agbell/blog-base-image:latest 
 ## And used as a docker image. This is because it's expensive to build
+## There is a GHA manual action that will rebuild this image
 base-image:
   FROM ruby:2.7
   ARG TARGETARCH
@@ -37,7 +38,7 @@ base-image-all:
         +base-image
 
 ## Update jekyll libs
-blog-update:
+update:
   FROM agbell/blog-base-image:latest 
   COPY . .
   RUN rm Gemfile.lock
@@ -46,7 +47,7 @@ blog-update:
   SAVE ARTIFACT Gemfile.lock AS LOCAL blog/Gemfile.lock
 
 ## Lint (Run in CI)
-blog-lint:
+lint:
   FROM agbell/blog-base-image:latest
   COPY ../+export/base .
   COPY . blog
@@ -68,23 +69,27 @@ blog-lint:
   END
 
 ## Build (Run in CI)
-blog-build:
+build:
   FROM agbell/blog-base-image:latest
   COPY . .
   RUN JEKYLL_ENV=production bundle exec jekyll build $FLAGS 
   SAVE ARTIFACT _site/* AS LOCAL build/site/blog/
 
 # Build docker image for local development
-blog-docker:
+docker:
   FROM agbell/blog-base-image:latest
   WORKDIR /site
   CMD bundle exec jekyll serve -H 0.0.0.0 --future --incremental -P 4002
   SAVE IMAGE earthly-blog
 
 # Run site in docker
-blog-run:
+run:
   LOCALLY
-  WITH DOCKER --load=+blog-docker
+  WITH DOCKER --load=+docker
     RUN docker rm -f earthly-blog && \
-      docker run -p 4002:4002 -v $(pwd)/blog:/site --rm --name earthly-blog earthly-blog
+      docker run -p 4002:4002 -v $(pwd):/site --rm --name earthly-blog earthly-blog
   END
+
+clean:
+  LOCALLY
+  RUN rm -rf build _site .sass-cache .jekyll-metadata .jekyll-cache
