@@ -13,6 +13,10 @@ build:
   BUILD ./website+website-build 
   BUILD ./blog+blog-build
 
+build-base-images:
+  BUILD ./blog+base-image-all
+  BUILD ./website+base-image-all  
+
 ## Utils
 clean:
   LOCALLY
