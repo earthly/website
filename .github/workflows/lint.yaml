@@ -1,0 +1,56 @@
+name: Lint Website
+
+on:
+  workflow_dispatch:
+  push:
+
+jobs:
+  lint:
+    name: Lint Website
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: FranzDiebold/github-env-vars-action@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Create Cache Key
+        run: |- 
+          date "+%Y-%d-%m" > today.txt
+          date --date="yesterday" "+%Y-%d-%m" > yesterday.txt
+          mkdir -p build/site/blog/generated/
+      - name: Download released earth
+        run: "sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/download/v0.6.12/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly'"
+      - name: cache images
+        uses: actions/cache@v2
+        with:
+          path: |
+              .jekyll-cache
+              build/site/blog/generated
+          key: ${{ hashFiles('today.txt')  }}
+          restore-keys: |
+            ${{ hashFiles('yesterday.txt') }}
+      - name: copy cache
+        run: |-
+          mkdir -p blog/_site/generated/
+          cp -a build/site/blog/generated/. blog/_site/generated/
+      - id: lint-site
+        name: lint site
+        run: |-
+            OUTPUT=$(earthly ./blog+lint)
+            echo "LINT_OUTPUT=$(echo $OUTPUT)
+        continue-on-error: true
+      - name: Get PR
+        uses: jwalton/gh-find-current-pr@v1
+        id: finder
+      - name: Comment on PR 
+        if: steps.lint-site.outcome != 'success'
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          number: ${{ steps.finder.outputs.pr }}
+          message: |
+            Lint Failed:
+               ${{ steps.lint-site.outputs }}
+      - name: Fail if fail
+        if: steps.lint-site.outcome != 'success'
+        run: exit 1
