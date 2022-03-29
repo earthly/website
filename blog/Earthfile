@@ -66,14 +66,14 @@ lint:
   RUN mkdir lint
   COPY ../+export/base .
   COPY . blog
-  RUN vale --output line --minAlertLevel error ./blog/_posts/*.md 2>&1 | tee -a ./lint/output.txt
+  RUN set -o pipefail && vale --output line --minAlertLevel error ./blog/_posts/*.md 2>&1 | tee -a ./lint/output.txt
   IF grep '[“”‘’]' ./blog/_posts/*.md
     RUN echo "Fail: Remove curly quotes and use straight quotes instead" && false
   END  
   IF grep -n 'imgur.com' ./blog/_posts/*.md
     RUN echo "Fail: external image link" && false
   END
-  RUN markdownlint "./blog/_posts/*.md" 2>&1 | tee -a ./lint/output.txt
+  RUN set -o pipefail && markdownlint "./blog/_posts/*.md" 2>&1 | tee -a ./lint/output.txt
 
   # # In order to check for warnings, we need to build all future posts and check the error out
   # # This is a unideal because it means we are building site twice but it prevents failing at 
