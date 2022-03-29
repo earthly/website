@@ -46,7 +46,7 @@ jobs:
         with:
           number: ${{ steps.finder.outputs.pr }}
           header: lint-comment
-          path: ./blog/build/lint.txt
+          path: blog/build/lint.txt
       - name: Remove comment on PR
         if: ${{ steps.lint-site.outcome == 'success' }}
         uses: marocchino/sticky-pull-request-comment@v2
