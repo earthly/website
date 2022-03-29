@@ -44,13 +44,21 @@ jobs:
         uses: jwalton/gh-find-current-pr@v1
         id: finder
       - name: Comment on PR 
-        if: steps.lint-site.outcome != 'success'
+        if: ${{ steps.lint-site.outcome != 'success' }}
         uses: marocchino/sticky-pull-request-comment@v2
         with:
           number: ${{ steps.finder.outputs.pr }}
           message: |
             Lint Failed:
+              ```
                ${{ steps.lint-site.outputs }}
+              ```
+      - name: Remove comment on PR
+        if: ${{ steps.lint-site.outcome == 'success' }}
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          number:  ${{ steps.finder.outputs.pr }}
+          delete: true
       - name: Fail if fail
-        if: steps.lint-site.outcome != 'success'
+        if: ${{ steps.lint-site.outcome != 'success' }}
         run: exit 1
