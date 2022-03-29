@@ -54,6 +54,7 @@ jobs:
               ```
                ${{ steps.lint-site.outputs }}
               ```
+              if: ${{ steps.lint-site.outcome }}
       - name: Remove comment on PR
         if: ${{ steps.lint-site.outcome == 'success' }}
         uses: marocchino/sticky-pull-request-comment@v2
