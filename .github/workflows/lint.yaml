@@ -39,7 +39,6 @@ jobs:
         run: |-
             OUTPUT=$(earthly ./blog+lint)
             echo "::set-output name=LINT::$(output)"
-        continue-on-error: true
       - name: Get PR
         uses: jwalton/gh-find-current-pr@v1
         id: finder
@@ -49,12 +48,7 @@ jobs:
         with:
           number: ${{ steps.finder.outputs.pr }}
           header: lint-comment
-          message: |
-            Lint Failed:
-              ```
-               ${{ steps.lint-site.outputs.lint }}
-              ```
-              if: ${{ steps.lint-site.outcome }}
+          path: ./blog/build/lint.txt
       - name: Remove comment on PR
         if: ${{ steps.lint-site.outcome == 'success' }}
         uses: marocchino/sticky-pull-request-comment@v2
@@ -62,6 +56,3 @@ jobs:
           header: lint-comment
           number:  ${{ steps.finder.outputs.pr }}
           delete: true
-      - name: Fail if fail
-        if: ${{ steps.lint-site.outcome != 'success' }}
-        run: exit 1
