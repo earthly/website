@@ -48,6 +48,7 @@ jobs:
         uses: marocchino/sticky-pull-request-comment@v2
         with:
           number: ${{ steps.finder.outputs.pr }}
+          header: lint-comment
           message: |
             Lint Failed:
               ```
@@ -57,6 +58,7 @@ jobs:
         if: ${{ steps.lint-site.outcome == 'success' }}
         uses: marocchino/sticky-pull-request-comment@v2
         with:
+          header: lint-comment
           number:  ${{ steps.finder.outputs.pr }}
           delete: true
       - name: Fail if fail
