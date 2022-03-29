@@ -63,6 +63,7 @@ update:
 ## Lint (Run in CI)
 lint:
   FROM +base-or-cache-image
+  LOG --file="bla/blog.log"
   RUN mkdir lint
   COPY ../+export/base .
   COPY . blog
