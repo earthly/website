@@ -19,7 +19,7 @@ In this article, you'll learn more about what Docker is and how to use it. Then 
 
 To learn more about Docker, you can check out the [official guide](https://docs.docker.com/).
 
-## Use Cases for Running PostgreSQL on Docker
+# Use Cases for Running PostgreSQL on Docker
 
 When considering running PostgreSQL, you should take into account portability. If you're a developer working on multiple machines, each time you switch a machine, you need to set up and configure the database separately. If you use PostgreSQL inside a Docker container, you can quickly use Docker to spin up PostgreSQL containers and focus on actual development rather than setup.
 
