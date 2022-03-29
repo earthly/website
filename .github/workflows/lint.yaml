@@ -38,7 +38,7 @@ jobs:
         name: lint site
         run: |-
             OUTPUT=$(earthly ./blog+lint)
-            echo "LINT_OUTPUT=$(echo $OUTPUT)
+            echo "::set-output name=LINT::$(output)"
         continue-on-error: true
       - name: Get PR
         uses: jwalton/gh-find-current-pr@v1
@@ -52,7 +52,7 @@ jobs:
           message: |
             Lint Failed:
               ```
-               ${{ steps.lint-site.outputs }}
+               ${{ steps.lint-site.outputs.lint }}
               ```
               if: ${{ steps.lint-site.outcome }}
       - name: Remove comment on PR
