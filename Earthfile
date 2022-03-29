@@ -10,7 +10,6 @@ dev-build:
 # Prod Build
 build:
   LOCALLY
-  BUILD ./blog+lint
   BUILD ./website+build 
   BUILD ./blog+build
 
