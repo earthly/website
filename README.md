@@ -36,6 +36,8 @@ Or
 > earthly ./website+run --CACHE_IMAGE="NO"
 ```
 
+To update the base image, makes changes in the earthfile and then run [this workflow](https://github.com/earthly/website/actions/workflows/base-image-build.yaml).
+
 ## Linting
 
 The blog has several linting steps. They run in CI, but you can also run them locally using `earthly +blog-lint`.
