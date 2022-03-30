@@ -1,0 +1,82 @@
+VERSION 0.6
+FROM alpine
+
+# Anything but "YES" uses +base-image
+ARG CACHE_IMAGE="YES"
+# Flags passed to Jekyll
+ARG FLAGS=""
+
+## This base image is pushed as agbell/blog-base-image:latest 
+## And used as a docker image. This is because it's expensive to build
+base-image:
+  FROM ruby:2.7
+  ARG TARGETARCH
+  WORKDIR /site
+  RUN apt-get update 
+  RUN apt-get install gcc cmake imagemagick -y
+  RUN gem install bundler -v "~>1.0" && gem install bundler jekyll
+  IF [ "$TARGETARCH" = "arm64" ]
+     RUN echo "arm64 - vale cannot be used. Lint step may fail."  
+  ELSE IF [ "$TARGETARCH" = "amd64" ]
+    RUN curl -sfL https://install.goreleaser.com/github.com/ValeLint/vale.sh | sh -s v2.15.2
+    RUN cp /site/bin/vale /bin 
+  ELSE
+    RUN echo "Unsupported target architecture $TARGETARCH"; false
+  END
+
+  ## install jekyll
+  COPY Gemfile .
+  COPY Gemfile.lock .
+  RUN bundle install --retry 5 --jobs 20
+
+  SAVE IMAGE --push agbell/website-base-image:latest 
+
+base-image-all:
+  BUILD \
+        --platform=linux/amd64 \
+        --platform=linux/arm64 \
+        +base-image
+
+base-or-cache-image:
+  IF [ "$CACHE_IMAGE" = "YES" ]
+    RUN echo "CACHE set. Using prebuilt image"
+    FROM agbell/website-base-image:latest 
+  ELSE
+    RUN echo "CACHE is not set"
+    FROM +base-image 
+  END
+
+## Update jekyll libs
+update:
+  FROM +base-or-cache-image
+  COPY . .
+  RUN rm Gemfile.lock
+  RUN bundle install
+  RUN bundle update
+  SAVE ARTIFACT Gemfile.lock AS LOCAL Gemfile.lock
+
+# Build website (used in CI)
+build:
+  FROM +base-or-cache-image
+  COPY . .
+  RUN bundle exec jekyll build $FLAGS
+  SAVE ARTIFACT _site/* AS LOCAL ./build/site/
+
+# Build docker image for local development
+docker:
+  FROM +base-or-cache-image
+  WORKDIR /site
+  CMD JEKYLL_ENV=production bundle exec jekyll serve --incremental -H 0.0.0.0 -P 4001
+  SAVE IMAGE earthly-website
+
+# Run site in docker
+run:
+  LOCALLY
+  WITH DOCKER --load=+docker
+    RUN docker rm -f earthly-website && \
+        docker run -p 4001:4001 -v $(pwd):/site --rm --name earthly-website earthly-website
+  END
+
+clean:
+  LOCALLY
+  RUN rm -rf build _site .sass-cache .jekyll-metadata .jekyll-cache

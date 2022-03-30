@@ -1,6 +1,89 @@
 # Earthly Website & Blog
 
+## How To Build in Earthly and Run in Docker
+
+### Run Blog in Docker
+
+Build docker image for blog:
+
+```
+> earthly ./blog+run
+```
+
+Then browse to http://0.0.0.0:4002/blog/
+
+### Run Website in Docker
+
+You can run the website locally, and use it to preview changes as you go.
+
+```
+> earthly ./website+run
+```
+
+Then browse to http://0.0.0.0:4001/
+
+## Alternative Run
+
+By default the Earth files use a prebuilt image. To skip this and build the image yourself use `--CACHE_IMAGE="NO"`
+
+```
+> earthly ./blog+run --CACHE_IMAGE="NO"
+```
+
+Or
+
+```
+> earthly ./website+run --CACHE_IMAGE="NO"
+```
+
+To update the base image, makes changes in the earthfile and then run [this workflow](https://github.com/earthly/website/actions/workflows/base-image-build.yaml).
+
+## Linting
+
+The blog has several linting steps. They run in CI, but you can also run them locally using `earthly +blog-lint`.
+
+These linting errors can also be seen directly in VS Code if you install them natively (See Install Dependencies below ) and install vs-code extension `markdownlint` and `vale`.
+
+Also the helper function `lint` exists which will correct some of the lint problems itself and return any it can't correct (see helper functions below).
+
+## Run Blog Native on MacOS
+
+Volume mounts on a mac can be slow, until such time as [watch mode](https://docs.google.com/document/d/18VIcpWBmQ8HcNlmtlZtc84mvJA87_QZePZZY1ZPLI90/edit) exists it can be worth it to run Jekyll natively.
+
+### Install Dependencies
+
+For blogging locally:
+
+```
+ brew update
+ brew upgrade ruby-build
+ brew install rbenv
+ rbenv install 2.7.0
+ rbenv global 2.7.0
+ brew install vips
+ brew install pandoc
+```
+
+Then, in `/blog/` run `bundle install`.
+
+For linting locally (and in vs code):
+
+```
+ brew install vale
+ brew install markdownlint-cli
+ brew install sponge
+ brew install gawk
+ brew install gnu-sed
+```
+
+`gnu-sed` works different than the version of `sed` that comes with mac by default, so you need to add the line below to your `.bashrc` to get your system to use it.
+
+```bash
+ export  PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
+```
+
 ## Helper Bash Functions
+
 There are helper functions in `util/functions`. Once sourced, `list` lists them.
 
 ```bash
@@ -27,96 +110,7 @@ start-website(){     Start up website on localhost:4001
 -----------------------------------------------------------------------------------------
 ```
 
-## Dependencies
-
-To run locally you need the following dependencies:
-
-* Ruby 
-* Jekyll
-* Pandoc (blog only)
-
-You can use `start-blog` or `start-website` to start or run in docker (see below).
-
-## Run Website in Docker
-
-You can run the website locally, and use it to preview changes as you go.  Use `earthly` to do this, or repeat the steps earthly executes manually.
-
-Build docker image for website:
-
-```
-> earthly +website-docker 
-```
-
-Run docker image with a volume mount:
-
-```
-> earthly +website-run
-```
-
-or
-
-```
-> docker run -p 4001:4001 -v $(pwd)/website:/site earthly-website
-```
-
-Then browse to http://0.0.0.0:4001/
-
-
-## Run Blog in Docker
-
-Build docker image for blog:
-
-```
-> earthly +blog-docker
-```
-
-Run docker image with a volume mount
-
-```
-> earthly +blog-run
-```
-
-or
-
-```
-docker run -p 4002:4002 -v $(pwd)/blog:/site earthly-blog
-```
-
-Then browse to http://0.0.0.0:4002/blog/
-
-## Run Blog Native on MacOS
-
-### Install Dependencies
-
-```
- brew update
- brew upgrade ruby-build
- rbenv install 2.7.0
- rbenv global 2.7.0
- ruby -v
- brew install vale
- brew install markdownlint-cli
- brew install sponge
- brew install gawk
- brew install vips
- brew install pandoc
- brew install gnu-sed
-
-```
-`gnu-sed` works different than the version of `sed` that comes with mac by default, so you'll need to add the line below to your `.bashrc` to get your system to use it.
-```bash
- export  PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
-```
-
-### Run
-
-```
-> source ./util/functions
-> start-blog
-
-```
-
-## Build Site (Blog and Website):
+## Build Site (Blog and Website)
 
 Build this site into a folder of static files:
 
@@ -131,7 +125,7 @@ To include future dated posts use:
 earthly +dev-build
 ```
 
-## How to Deploy
+## How To Deploy
 
 Anything merged into main is deployed using `earthly +build` in GitHub actions.
 
