@@ -15,6 +15,7 @@ build:
   BUILD ./blog+build
 
   ## Content needs to be combined into /build for netlify to pick up
+  RUN mkdir -p ./build
   RUN cp -rf ./blog/build/* ./build
   RUN cp -rf ./website/build/* ./build
 

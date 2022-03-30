@@ -66,13 +66,13 @@ lint:
   COPY ../+export/base .
   COPY . blog
   RUN vale --output line --minAlertLevel error ./blog/_posts/*.md
+  RUN markdownlint "./blog/_posts/*.md"
   IF grep '[“”‘’]' ./blog/_posts/*.md
     RUN echo "Fail: Remove curly quotes and use straight quotes instead" && false
   END  
   IF grep -n 'imgur.com' ./blog/_posts/*.md
     RUN echo "Fail: external image link" && false
   END
-  RUN markdownlint "./blog/_posts/*.md"
 
   # In order to check for warnings, we need to build all future posts and check the error out
   # This is a unideal because it means we are building site twice but it prevents failing at 
