@@ -8,12 +8,14 @@ dev-build:
   BUILD ./blog+build --FLAGS="--future"
 
 # Prod Build
+
 build:
-  LOCALLY
   BUILD ./blog+lint
   BUILD ./website+build 
   BUILD ./blog+build
 
+combine:
+  LOCALLY
   ## Content needs to be combined into /build for netlify to pick up
   RUN mkdir -p ./build
   RUN cp -rf ./blog/build/* ./build

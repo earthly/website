@@ -41,10 +41,12 @@ jobs:
         run: |-
           if [ "$CI_ACTION_REF_NAME" == "main" ]; then
             echo "Main Build - going to prod!"
-            OUTPUT=$(earthly --use-inline-cache +build)
+            earthly --use-inline-cache +build
+            earthly +combine
           else
             echo "Branch Build - only for preview"
             earthly --use-inline-cache --verbose +dev-build 
+            earthly +combine
           fi
       - name: Push to Netlify
         env:
