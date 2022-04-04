@@ -8,7 +8,7 @@ internal-links:
 ---
 Do you love writing about software development? Write for Earthly and you'll get access to a larger audience and we'll pay you.
 
-Eathly's blog gets tens of thousands of visitors each month and is a respected source of developer information. It frequently shows up on the front page of [hacker news](https://news.ycombinator.com/from?site=earthly.dev) and receives thousands of visitors from google each day.
+Eathly's blog gets tens of thousands of visitors each month and is a respected source of developer information. It frequently shows up on the front page of [Hacker News](https://news.ycombinator.com/from?site=earthly.dev) and receives thousands of visitors from Google each day.
 
 ## Process
 <!-- markdownlint-disable MD029 -->
