@@ -34,7 +34,7 @@ Eathly's blog gets tens of thousands of visitors each month and is a respected s
 
 ## Topics We Like
 
-We all kinds of well written content targeting experienced software developers. We do however have areas we like to focus on.
+We publish all kinds of well written content targeting experienced software developers. However, these topics are currently our focus.
 
 * CI/CD
 * Builds
