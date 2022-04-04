@@ -159,10 +159,6 @@ what I try to build, on this series of videos.
 
 ### Jeff Lindsay (`progrium`)
 
-Certain that go, but uncertain how often stream
-https://www.twitch.tv/mdlayher
-https://www.twitch.tv/mdempsky
-https://www.twitch.tv/travisjeffery
 <div class="wide">
 {% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/5070.png --alt {{ Earthly Docker contributor Jeff Lindsay }} %}
 <figcaption>Earthly Docker contributor Jeff Lindsay</figcaption>
