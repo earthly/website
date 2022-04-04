@@ -19,7 +19,7 @@ Eathly's blog gets tens of thousands of visitors each month and is a respected s
 
 2. Write a Draft
 
-  Write your draft in a google doc, using markdown.
+  Write your draft in a Google Doc, using Markdown.
 
 3. Get Published.
 
