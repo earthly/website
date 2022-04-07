@@ -14,3 +14,4 @@ debian
 arch
 manpage
 manpages
+distros

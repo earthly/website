@@ -147,3 +147,4 @@ http
 
 rpc
 webserver
+multiplatform
