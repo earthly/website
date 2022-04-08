@@ -173,7 +173,7 @@ new-post() { # Eg. new-post multi-word-slug
   cp ./blog/assets/images/default-header.jpg "./blog/assets/images/$name/header.jpg"
 }
 
-set-author-image() { # Eg. set-author-image first-last.jpg
+set-author-image() { # Eg. set-author-image first-last
     cp "$(latest-image)" "$(pwd)/blog/assets/images/authors/$1.jpg"
     echo "saved as:"
     echo "/assets/images/authors/$1.jpg"
