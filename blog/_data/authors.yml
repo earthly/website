@@ -179,4 +179,8 @@ Gineesh Madapparambath:
     name    : "Gineesh Madapparambath"
     bio     : "Gineesh has worked as a systems engineer, automation specialist, and content author. His primary focus is on Ansible automation, containerization (OpenShift and Kubernetes), and infrastructure as code (Terraform)."
     avatar  : "/assets/images/authors/mdu-sibisi.jpg"
+James Konik:
+    name    : "James Konik"
+    bio     : "Uncertain if he's a coder who writes or a writer who codes, James tries to funnel as much of this existential tension as possible into both of his passions but finds it of more benefit to his writing than his software. When occasionally hopping out from behind his keyboard, he can be found jogging and cycling around suburban Japan."
+    avatar  : "/assets/images/authors/james-konik.jpg"
 
