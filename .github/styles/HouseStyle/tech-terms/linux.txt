@@ -15,3 +15,11 @@ arch
 manpage
 manpages
 distros
+Solaris
+Genode
+
+## Virtulization
+Vagrantfile
+virtualize
+lxc
+Kaniko
