@@ -6,7 +6,8 @@ toc: true
 author: Josh
 
 internal-links:
- - just an example
+ - terminal
+ - user interface
 ---
 
 I first became interested in terminal user interfaces when I started using [K9s](https://github.com/derailed/k9s) to help manage multiple Kubernetes clusters. K9s runs entirely in the terminal and has a robust set of features and commands. It allows you to manage multiple clusters by displaying pods and nodes in an interactive real time table view. It also gives you the ability to run `kubectl` commands with the click of a button.
@@ -405,20 +406,3 @@ TUIs will never be able to compare to a full Graphical User Interface, but for c
 I'm definitely sold on them and will be looking for more opportunities to build them in the future. If you know of any cool TUI apps or libraries, please let me know.
 
 {% include cta/cta1.html %}
-
-### Writing Article Checklist
-
-- [x] Write Outline
-- [x] Write Draft
-- [ ] Fix Grammarly Errors
-- [ ] Read out loud
-- [ ] Write 5 or more titles and pick the best on
-- [ ] First two paragraphs: What's it about? Why listen to you?
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-- [ ] Run mark down linter (`lint`)
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links to other articles
-- [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
-- [ ] Raise PR
