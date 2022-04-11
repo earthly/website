@@ -3,7 +3,7 @@ title: "Building A Terminal User Interface With Go"
 categories:
   - Tutorials
 toc: true
-author: Josh Alletto
+author: Josh
 
 internal-links:
  - terminal
