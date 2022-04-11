@@ -3,7 +3,7 @@ title: "Building A Terminal User Interface With Go"
 categories:
   - Tutorials
 toc: true
-author: Josh
+author: Josh Alletto
 
 internal-links:
  - terminal
@@ -12,11 +12,11 @@ internal-links:
 
 I first became interested in terminal user interfaces when I started using [K9s](https://github.com/derailed/k9s) to help manage multiple Kubernetes clusters. K9s runs entirely in the terminal and has a robust set of features and commands. It allows you to manage multiple clusters by displaying pods and nodes in an interactive real time table view. It also gives you the ability to run `kubectl` commands with the click of a button.
 
-There are a handful of [different packages](https://appliedgo.net/tui/) to help you create a TUI in Go, and they all offer different advantages. But since K9s is what led me here, I decided to do a deeper dive into the library they use which is called [Tview](https://github.com/rivo/tview). 
+There are a handful of [different packages](https://appliedgo.net/tui/) to help you create a TUI in Go, and they all offer different advantages. But since K9s is what led me here, I decided to do a deeper dive into the library they use which is called [Tview](https://github.com/rivo/tview).
 
 In addition to having a strong project behind it, the documentation for `Tview` is pretty good, and there are a decent number of other example projects linked in their github repo, so it was relatively easy to get something up and running quickly.
 
-In this post I want to highlight some of `Tview`'s core functionality. In order to keep the focus on `Tview` and its features, we'll build a very simple app for storing and displaying contacts. Basically a terminal based rolodex.[ All the code is up on Github](https://github.com/jalletto/tui-go-example).
+In this post I want to highlight some of `Tview`'s core functionality. In order to keep the focus on `Tview` and its features, we'll build a very simple app for storing and displaying contacts. Basically a terminal based rolodex.[All the code is up on Github](https://github.com/jalletto/tui-go-example).
 
 ## Widgets
 
