@@ -12,15 +12,17 @@ internal-links:
 
 I first became interested in terminal user interfaces when I started using [K9s](https://github.com/derailed/k9s) to help manage multiple Kubernetes clusters. K9s runs entirely in the terminal and has a robust set of features and commands. It allows you to manage multiple clusters by displaying pods and nodes in an interactive real time table view. It also gives you the ability to run `kubectl` commands with the click of a button.
 
-There are a handful of [different packages](https://appliedgo.net/tui/) to help you create a TUI in Go, and they all offer different advantages. But since K9s is what led me here, I decided to do a deeper dive into the library they use which is called [Tview](https://github.com/rivo/tview). In addition to having a strong project behind it, the documentation for `Tview` is pretty good, and there are a decent number of other example projects linked in their github repo, so it was relatively easy to get something up and running quickly.
+There are a handful of [different packages](https://appliedgo.net/tui/) to help you create a TUI in Go, and they all offer different advantages. But since K9s is what led me here, I decided to do a deeper dive into the library they use which is called [Tview](https://github.com/rivo/tview). 
 
-In this post I want to highlight some of `Tview`'s core functionality. In order to keep the focus on `Tview` and its features, we'll build a very simple app for storing and displaying contacts. Basically a terminal based rolodex.
+In addition to having a strong project behind it, the documentation for `Tview` is pretty good, and there are a decent number of other example projects linked in their github repo, so it was relatively easy to get something up and running quickly.
+
+In this post I want to highlight some of `Tview`'s core functionality. In order to keep the focus on `Tview` and its features, we'll build a very simple app for storing and displaying contacts. Basically a terminal based rolodex.[ All the code is up on Github](https://github.com/jalletto/tui-go-example).
 
 ## Widgets
 
 `Tview` is built on top of another Go package called [`tcell`](https://github.com/gdamore/tcell). `Tcell` provides an api for interacting with the terminal in Go. `Tview` builds on top of it by offering some pre-built components it calls [widgets](https://pkg.go.dev/github.com/rivo/tview#hdr-Widgets). These widgets help you create common UI elements like lists, forms, dropdown menus, and tables. It also includes tools to help you build layouts with grids, flex boxes, and multiple pages.
 
-## Install Tview
+## Installing Tview
 
 To install `tview` run `go get github.com/rivo/tview` and then you can import both `tview` and `tcell` in your `main.go` file.
 
@@ -145,7 +147,7 @@ func addContactForm() {
 }
 ~~~
 
-The code here is pretty straight forward. We can call a series of functions to add input items to the form. I tried to show off a few of the options available, but [these are not all of them](https://pkg.go.dev/github.com/rivo/tview#Form.AddPasswordField). (The `states` variable that we are passing the drop down is just a [slice of state abbreviations](link_to_my_repo). I didn't add the code here to save some space but it's available in the repo.)
+The code here is pretty straight forward. We can call a series of functions to add input items to the form. I tried to show off a few of the options available, but [these are not all of them](https://pkg.go.dev/github.com/rivo/tview#Form.AddPasswordField). (The `states` variable that we are passing the drop down is just a [slice of state abbreviations](https://github.com/jalletto/tui-go-example/blob/main/main.go#L8). I didn't add the code here to save some space but it's available in the repo.)
 
 Each of these functions takes a few inputs depending on the type of input field you're adding. All of them take a label as the first argument and then a `changed` function as the last argument. The `changed` function gets called whenever the input item changes. In this case we will use them to set the data for our contact.
 
@@ -230,7 +232,7 @@ Take a second to fill it out and then click save. You should be taken back to th
 
 ### What About Q and A?
 
-You may notice that pressing q still quits. Not great if your contacts name is Quincy Quigley. Don't worry, we'll fix this a little bit later.
+You may notice that pressing q still quits. Not great if your contact's name is Quincy Quigley. Don't worry, we'll fix this a little bit later.
 
 </div>
 
