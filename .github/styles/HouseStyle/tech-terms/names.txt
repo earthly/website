@@ -169,3 +169,4 @@ Jira
 Assembla
 Atlassian
 Alletto
+Quigley

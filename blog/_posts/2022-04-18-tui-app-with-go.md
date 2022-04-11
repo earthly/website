@@ -8,13 +8,12 @@ author: Josh
 internal-links:
  - just an example
 ---
-I've always really liked building terminal based projects. I'm not a designer and find [GUIs](https://en.wikipedia.org/wiki/Graphical_user_interface) frustrating to build. Also, there's something fun about trying to make the most out of a limited number of tools. Whenever I have to learn a new language I usually build a terminal based game like hangman or breakout. But I never thought there was much use for a terminal user interface outside of some small hobby projects. 
 
-Then, at a previous job, I started using [K9s](https://github.com/derailed/k9s) to help manage multiple Kubernetes clusters. K9s runs entirely in the terminal and has a robust set of features and commands. It can give you insights in to your cluster and allows you to manage multiple clusters by displaying pods and nodes in an interactive realtime table view as well as the ability to run `kubectl` commands with the click of a button.
+I first became interested in terminal user interfaces when I started using [K9s](https://github.com/derailed/k9s) to help manage multiple Kubernetes clusters. K9s runs entirely in the terminal and has a robust set of features and commands. It allows you to manage multiple clusters by displaying pods and nodes in an interactive real time table view. It also gives you the ability to run `kubectl` commands with the click of a button.
 
-There are a handful of [different packages](https://appliedgo.net/tui/) to help you create a TUI in Go, and they all offer different advantages. But since K9s is what led me here, I decided to do a deeper dive into the library they use called [Tview](https://github.com/rivo/tview). The documentation for Tview is pretty good and there are a decent number of example projects linked in their github repo, so it was relatively easy to get something up and running quickly.
+There are a handful of [different packages](https://appliedgo.net/tui/) to help you create a TUI in Go, and they all offer different advantages. But since K9s is what led me here, I decided to do a deeper dive into the library they use which is called [Tview](https://github.com/rivo/tview). In addition to having a strong project behind it, the documentation for `Tview` is pretty good, and there are a decent number of other example projects linked in their github repo, so it was relatively easy to get something up and running quickly.
 
-In this post I want to highlight some of Tview's core functionality. In order to keep the focus on Tview and its features, we'll build a very simple app for storing and displaying contacts. Basically a terminal based rolodex.
+In this post I want to highlight some of `Tview`'s core functionality. In order to keep the focus on `Tview` and its features, we'll build a very simple app for storing and displaying contacts. Basically a terminal based rolodex.
 
 ## Widgets
 
@@ -61,9 +60,9 @@ func main() {
 }
 ~~~
 
-After creating a new app, we call a series of set up methods including enabling mouse detection and issuing a `Run` command. The `SetRoot` function tells the `tview` app which widget to display when the application starts. In this case we've chosen to use a [`Box`](https://pkg.go.dev/github.com/rivo/tview#Box) widget. Boxes are the parent type of all other widgets. They can do nothing but exist, which is fine for now. 
+After creating a new app, we call a series of set up methods including enabling mouse detection and issuing a `Run` command. The `SetRoot` function tells the `tview` app which widget to display when the application starts. In this case we've chosen to use a [`Box`](https://pkg.go.dev/github.com/rivo/tview#Box) widget. Boxes are the parent type of all other widgets. They can do nothing but exist, which is fine for now.
 
-Run this code and marvel at the blank black nothing that fills your terminal screen. You can end the program by pressing `ctrl+c`. Not super exciting, but it's a start. We've created an app, but we haven't told it to display anything or to respond to any key presses. 
+Run this code and marvel at the blank black nothing that fills your terminal screen. You can end the program by pressing `ctrl+c`. Not super exciting, but it's a start. We've created an app, but we haven't told it to display anything or to respond to any key presses.
 
 ## Adding Text
 
@@ -85,7 +84,7 @@ func main() {
 
 Notice that after we created our new `TextView` we use it to replace the blank box as the application root. Now run the code and behold: TEXT! The only problem is that our app is now lying to us because you can press `q` all day and nothing is going to happen. Press `ctrl-c` to quit for now and lets see if we can make an honest app out of this thing.
 
-## Responding to Input
+## Responding To Input
 
 `Tview` allows us to respond to all sorts of events that are happening in the terminal, including mouse clicks, on focus actions, and yes, key presses. Let's set up our app to quit when a user presses `q`.
 
@@ -145,13 +144,13 @@ func addContactForm() {
 }
 ~~~
 
-The code here is pretty straight forward. We can call a series of functions to add input items to the form. I tried to show off a few of the options available, but [these are not all of them](https://pkg.go.dev/github.com/rivo/tview#Form.AddPasswordField). (The `states` variable that we are passing the drop down is just a [slice of state abbreviations](link_to_my_repo)). 
+The code here is pretty straight forward. We can call a series of functions to add input items to the form. I tried to show off a few of the options available, but [these are not all of them](https://pkg.go.dev/github.com/rivo/tview#Form.AddPasswordField). (The `states` variable that we are passing the drop down is just a [slice of state abbreviations](link_to_my_repo). I didn't add the code here to save some space but it's available in the repo.)
 
-Each of these functions takes a a few inputs depending on the type of input field you're adding. All of them take a label as the first argument and then a `changed` function as the last argument. The `changed` function gets called whenever the input item changes. In this case we will use them to set the data for our contact.
+Each of these functions takes a few inputs depending on the type of input field you're adding. All of them take a label as the first argument and then a `changed` function as the last argument. The `changed` function gets called whenever the input item changes. In this case we will use them to set the data for our contact.
 
-The last thing we add is a button which we label `Save` and then pass it a function that will execute when the button is pressed. 
+The last thing we add is a button which we label `Save` and then pass it a function that will execute when the button is pressed.
 
-Now we can update our app to listen for a new button press and then call our `addContactForm` function. 
+Now we can update our app to listen for a new button press and then call our `addContactForm` function.
 
 ~~~{.go caption="main.go"}
 app.SetInputCapture(func(event *tcell.EventKey) *tcell.EventKey {
@@ -169,14 +168,14 @@ We can also update our text view with the info about the new command.
 ~~~{.go caption="main.go"}
 var text = tview.NewTextView().
     SetTextColor(tcell.ColorGreen).
-	  SetText("(a) to add a new contact \n(q) to quit")
+   SetText("(a) to add a new contact \n(q) to quit")
 ~~~
 
-Now if you run the application and press `a`...nothing happens. This is because we need to tell our `app` about our new form and give it a way to switch from the `TextView` to the `Form`. 
+Now if you run the application and press `a`...nothing happens. This is because we need to tell our `app` about our new form and give it a way to switch from the `TextView` to the `Form`.
 
 ### Pages
 
-When we originally started the app up we fed it a widget to use as its root, in this case a `TextView` which we set the the variable `text`: `app.SetRoot(text, true)`. Because the app is using the `TextView` widget as its main primitive, anything we want to show on the screen needs to be attached to it. Or, we need to reset the app root, which is possible, but `Tview` offers a special widget called [`Pages`](https://pkg.go.dev/github.com/rivo/tview#Pages) to allow us to switch more easily between different views like pages on a website. Let's refactor our code to uses a `Pages` widget.
+When we originally started the app up we fed it a widget to use as its root, in this case a `TextView` which we set the variable `text`: `app.SetRoot(text, true)`. Because the app is using the `TextView` widget as its main primitive, anything we want to show on the screen needs to be attached to it. Or, we need to reset the app root, which is possible, but `Tview` offers a special widget called [`Pages`](https://pkg.go.dev/github.com/rivo/tview#Pages) to allow us to switch more easily between different views like pages on a website. Let's refactor our code to uses a `Pages` widget.
 
 ~~~{.go caption="main.go"}
 var pages = tview.NewPages()
@@ -220,9 +219,9 @@ form.AddButton("Save", func() {
 })
 ~~~
 
-Now if you run the code and press `a` you should see thr form show up.
+Now if you run the code and press `a` you should see the form show up.
 
-![](../assets/images/tui-app-with-go/form.png)
+![A simple form](../assets/images/tui-app-with-go/form.png)
 
 Take a second to fill it out and then click save. You should be taken back to the main menu and our contact will have been saved to `contacts` slice we set up earlier. Only problem now is we can't see any of our contacts.
 
@@ -233,7 +232,6 @@ Take a second to fill it out and then click save. You should be taken back to th
 You may notice that pressing q still quits. Not great if your contacts name is Quincy Quigley. Don't worry, we'll fix this a little bit later.
 
 </div>
-
 
 ## Lists
 
@@ -253,9 +251,9 @@ func addContactList() {
 }
 ~~~
 
-When we add an item to a list we first pass a string. This is the main text that will be displayed. There is also an option for a secondary text that will appear below the main text, but we've turned this option off so we can get away with just passing an empty string. 
+When we add an item to a list we first pass a string. This is the main text that will be displayed. There is also an option for a secondary text that will appear below the main text, but we've turned this option off so we can get away with just passing an empty string.
 
-Next, we can pass a [`rune`](https://www.geeksforgeeks.org/rune-in-golang/) which is what will show up next to each item. In this case we want numbers `1..n`, so we can take advantage of the index to do that. (49 is the [ascii code](https://www.ascii-code.com/) for the number 1) 
+Next, we can pass a [`rune`](https://www.geeksforgeeks.org/rune-in-golang/) which is what will show up next to each item. In this case we want numbers `1..n`, so we can take advantage of the index to do that. (49 is the [ascii code](https://www.ascii-code.com/) for the number 1)
 
 This is a good start, but as we learned earlier, we won't be able to see our list until we give our app a way to display it. We could add a new page for our list, but we want to be able to display the `List` and the `TextView` that's displaying our menu options on the same page.
 
@@ -325,7 +323,7 @@ flex.SetInputCapture(func(event *tcell.EventKey) *tcell.EventKey {
 })
 ~~~
 
-Now, if you run the code and use the form to add a contact, you should be brought back to the menu and see a list displaying the first and last name of the contact you just added. 
+Now, if you run the code and use the form to add a contact, you should be brought back to the menu and see a list displaying the first and last name of the contact you just added.
 
 Add a few more contacts and you'll notice we have two bugs. Each time we go back to the form page, an additional form gets added.
 
@@ -391,7 +389,8 @@ flex.SetDirection(tview.FlexRow).
         AddItem(contactText, 0, 4, false), 0, 6, false).
     AddItem(text, 0, 1, false)
 ~~~
-We use the same process here of first clearing the widget and then rewriting the content. 
+
+We use the same process here of first clearing the widget and then rewriting the content.
 
 Now if we run our code, we can add contacts. Then when we select them from the list we can see the details appear to the right.
 
@@ -401,9 +400,9 @@ Now if we run our code, we can add contacts. Then when we select them from the l
 
 We've barely scratched the surface of what's possible with `Tview`. There's a lot more we could do with [styles](https://pkg.go.dev/github.com/rivo/tview#hdr-Styles) and [layouts](https://pkg.go.dev/github.com/rivo/tview#Table). One big problem with our app is that it's not persisting any data. For something simple like this we could get away with [writing to a csv file](https://golangdocs.com/reading-and-writing-csv-files-in-golang), but for larger apps, you might want to checkout this [`tview` example with postgres](https://github.com/rivo/tview/wiki/Postgres).
 
-TUIs will never be able to compare to a full Graphical User Interface, but for certain applications they can provide more options than you might think. They're particlualry great for applications developers use frequently since not having to leave the terminal can be a plus, and sometimes you might be on a server that doesn't have access to a GUI at all.
+TUIs will never be able to compare to a full Graphical User Interface, but for certain applications they can provide more options than you might think. They're particularly great for applications developers use frequently since not having to leave the terminal can be a plus, and sometimes you might be on a server that doesn't have access to a GUI at all.
 
-I'm definitely sold on them and will be looking for more oportunities to build them in the future. If you know of any cool TUI apps or projects, please let me know.
+I'm definitely sold on them and will be looking for more opportunities to build them in the future. If you know of any cool TUI apps or libraries, please let me know.
 
 {% include cta/cta1.html %}
 
