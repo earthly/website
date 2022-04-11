@@ -119,11 +119,11 @@ lint() { # Run Linter
     cat "$(post)" | ./util/codeblock.awk | sponge "$(post)"
     # fix markdown
     markdownlint --fix "./blog/_posts/*.md"
-    sed -i -E "s/“|”/\"/g" ./blog/_posts/*.md
-    sed -i -E "s/‘|’/'/g" ./blog/_posts/*.md
+    gsed -i -E "s/“|”/\"/g" ./blog/_posts/*.md
+    gsed -i -E "s/‘|’/'/g" ./blog/_posts/*.md
     # remove double spaces
-    sed -i -E "s/\.\s\s(\w)/. \1/g" ./blog/_posts/*.md
-    sed -i -E "s/\?\s\s(\w)/? \1/g" ./blog/_posts/*.md
+    gsed -i -E "s/\.\s\s(\w)/. \1/g" ./blog/_posts/*.md
+    gsed -i -E "s/\?\s\s(\w)/? \1/g" ./blog/_posts/*.md
     vale --output line --minAlertLevel error ./blog/_posts/*.md
     if grep -n 'imgur.com' ./blog/_posts/*.md
     then

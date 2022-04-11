@@ -21,7 +21,7 @@ You can run the website locally, and use it to preview changes as you go.
 ```
 
 Then browse to http://0.0.0.0:4001/
-
+ 
 ## Alternative Run
 
 By default the Earth files use a prebuilt image. To skip this and build the image yourself use `--CACHE_IMAGE="NO"`
@@ -76,10 +76,14 @@ For linting locally (and in vs code):
  brew install gnu-sed
 ```
 
-`gnu-sed` works different than the version of `sed` that comes with mac by default, so you need to add the line below to your `.bashrc` to get your system to use it.
+`gnu-sed` works different than the version of `sed` that comes with mac by default, so you need to add the line below to your `.bashrc` or `.zshrc` to get your system to use it.
 
 ```bash
- export  PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
+# For Intel Mac
+ export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
+
+# For M1 Mac
+export PATH=/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH
 ```
 
 ## Helper Bash Functions
