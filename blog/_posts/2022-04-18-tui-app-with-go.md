@@ -1,5 +1,5 @@
 ---
-title: "Building A Terminal User Interface With Go"
+title: "Building A Terminal User Interface With Golang"
 categories:
   - Tutorials
 toc: true
@@ -16,11 +16,11 @@ There are a handful of [different packages](https://appliedgo.net/tui/) to help 
 
 In addition to having a strong project behind it, the documentation for `Tview` is pretty good, and there are a decent number of other example projects linked in their github repo, so it was relatively easy to get something up and running quickly.
 
-In this post I want to highlight some of `Tview`'s core functionality. In order to keep the focus on `Tview` and its features, we'll build a very simple app for storing and displaying contacts. Basically a terminal based rolodex.[All the code is up on Github](https://github.com/jalletto/tui-go-example).
+In this post I want to highlight some of `Tview`'s core functionality. In order to keep the focus on `Tview` and its features, we'll build a very simple app for storing and displaying contacts. Basically a terminal based rolodex. [All the code is up on Github](https://github.com/jalletto/tui-go-example).
 
 ## Widgets
 
-`Tview` is built on top of another Go package called [`tcell`](https://github.com/gdamore/tcell). `Tcell` provides an api for interacting with the terminal in Go. `Tview` builds on top of it by offering some pre-built components it calls [widgets](https://pkg.go.dev/github.com/rivo/tview#hdr-Widgets). These widgets help you create common UI elements like lists, forms, dropdown menus, and tables. It also includes tools to help you build layouts with grids, flex boxes, and multiple pages.
+`Tview` is built on top of another Go package called [`tcell`](https://github.com/gdamore/tcell). `Tcell` provides an api for interacting with the terminal in Go. `Tview` builds on top of it by offering some pre-built components it calls [widgets](https://pkg.go.dev/github.com/rivo/tview#hdr-Widgets). These widgets help you create common UI elements like lists, forms, dropdown menus, and tables. It also includes tools to help you build layouts with grids, flexboxes, and multiple pages.
 
 ## Installing Tview
 
@@ -224,7 +224,7 @@ form.AddButton("Save", func() {
 
 Now if you run the code and press `a` you should see the form show up.
 
-![A simple form](../assets/images/tui-app-with-go/form.png)
+![A simple form]({{site.images}}{{page.slug}}/form.png)
 
 Take a second to fill it out and then click save. You should be taken back to the main menu and our contact will have been saved to `contacts` slice we set up earlier. Only problem now is we can't see any of our contacts.
 
@@ -262,9 +262,9 @@ This is a good start, but as we learned earlier, we won't be able to see our lis
 
 ### Flexbox Layout
 
-![Our finished app will display multiple widgets on a single page.](../assets/images/tui-app-with-go/finished_app.png)
+![Our finished app will display multiple widgets on a single page.]({{site.images}}{{page.slug}}/finished_app.png)
 
-Tview gives us a couple options for layouts. The first is a [grid](https://pkg.go.dev/github.com/rivo/tview#Grid) system that allows you to set fixed sizes for rows and columns. The second, and the one we'll use here, is [Flexbox](https://pkg.go.dev/github.com/rivo/tview#Flex). `Flex` lets you create layouts by organizing widgets into rows or columns. We can also nest `flexboxes` to create more complex layouts.
+`Tview` gives us a couple options for layouts. The first is a [grid](https://pkg.go.dev/github.com/rivo/tview#Grid) system that allows you to set fixed sizes for rows and columns. The second, and the one we'll use here, is [Flexbox](https://pkg.go.dev/github.com/rivo/tview#Flex). `Flex` lets you create layouts by organizing widgets into rows or columns. We can also nest `flexboxes` to create more complex layouts.
 
 Start by creating a new flex widget.
 
@@ -280,7 +280,7 @@ flex.AddItem(tview.NewBox().SetBorder(true), 0, 1, false).
     AddItem(tview.NewBox().SetBorder(true), 0, 1, false)
 ~~~
 
-![In this case all the boxes are equal size](../assets/images/tui-app-with-go/flex_box_one.png)
+![In this case all the boxes are equal size]({{site.images}}{{page.slug}}/flex_box_one.png)
 
 We can set the proportion of each box by setting the third argument in `AddItem`.
 
@@ -290,7 +290,7 @@ flex.AddItem(tview.NewBox().SetBorder(true), 0, 1, false).
     AddItem(tview.NewBox().SetBorder(true), 0, 1, false)
 ~~~
 
-![Setting the middle box to 4 makes it 4 times as big as the others. ](../assets/images/tui-app-with-go/flex_box_two.png)
+![Setting the middle box to 4 makes it 4 times as big as the others. ]({{site.images}}{{page.slug}}/flex_box_two.png)
 
 If we don't want columns, we can tell flex to use rows instead.
 
@@ -301,7 +301,7 @@ If we don't want columns, we can tell flex to use rows instead.
         AddItem(tview.NewBox().SetBorder(true), 0, 1, false)
 ~~~
 
-![Stack widgets with the rows option.](../assets/images/tui-app-with-go/flex_box_rows.png)
+![Stack widgets with the rows option.]({{site.images}}{{page.slug}}/flex_box_rows.png)
 
 For now we just want to put our `List` on top of our `TextView`, which means we could use a single `Flex` with rows. But later we'll want to add another widget next to our `List`, which will require nesting a `Flex` with columns into a `Flex` with rows.
 
@@ -312,7 +312,7 @@ flex.SetDirection(tview.FlexRow).
     AddItem(text, 0, 1, false)
 ~~~
 
-Let's also update our `SetInputCapture` function. We can actually call this function on any `tview` widget. The function only get's called if the widget we attach it to has focus. By moving it off of the `app` and onto the `flexbox` we are ensuring that when our form page has focus, users can use the `q` and `a` buttons without triggering a quit or new form action.
+Let's also update our `SetInputCapture` function. We can actually call this function on any `tview` widget. The function only gets called if the widget we attach it to has focus. Since the `app` is the parent of all widgets, it always has focus. By moving the `SetInputCapture` off of the `app` and onto the `flexbox` we are ensuring that when our form page has focus, users can use the `q` and `a` buttons without triggering a quit or new form action.
 
 ~~~{.go caption="main.go"}
 flex.SetInputCapture(func(event *tcell.EventKey) *tcell.EventKey {
@@ -330,7 +330,7 @@ Now, if you run the code and use the form to add a contact, you should be brough
 
 Add a few more contacts and you'll notice we have two bugs. Each time we go back to the form page, an additional form gets added.
 
-![Not very formidable for the user](../assets/images/tui-app-with-go/too_many_forms.png)
+![Not very formidable for the user]({{site.images}}{{page.slug}}/too_many_forms.png)
 
 Also, when we get brought back to our contacts list, we see that names are being repeated.
 
@@ -385,7 +385,7 @@ func setConcatText(contact *Contact) {
 
 The last step is adding our new textbox to the layout.
 
-~~~{.go caption="main.go}
+~~~{.go caption="main.go"}
 flex.SetDirection(tview.FlexRow).
     AddItem(tview.NewFlex().
         AddItem(contactsList, 0, 1, true).
@@ -397,7 +397,7 @@ We use the same process here of first clearing the widget and then rewriting the
 
 Now if we run our code, we can add contacts. Then when we select them from the list we can see the details appear to the right.
 
-![It's working!](../assets/images/tui-app-with-go/finished_app.png)
+![It's working!]({{site.images}}{{page.slug}}/finished_app.png)
 
 ## Conclusion
 
