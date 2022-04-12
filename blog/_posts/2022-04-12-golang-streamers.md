@@ -2,7 +2,6 @@
 title: "Watch People Doing the Thing"
 categories:
   - Articles
-toc: true
 author: Adam
 internal-links:
  - live coding
