@@ -15,3 +15,5 @@ arch
 manpage
 manpages
 distros
+htop
+tmux
