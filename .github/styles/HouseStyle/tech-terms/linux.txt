@@ -15,5 +15,15 @@ arch
 manpage
 manpages
 distros
+Solaris
+Genode
+htop
+tmux
+
+## Virtulization
+Vagrantfile
+virtualize
+lxc
+Kaniko
 htop
 tmux

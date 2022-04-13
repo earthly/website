@@ -169,4 +169,6 @@ Jira
 Assembla
 Atlassian
 Alletto
+Cryptogopher
+Boi
 Quigley
