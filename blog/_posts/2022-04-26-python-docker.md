@@ -128,8 +128,7 @@ Tag the image using `docker tag <imageId> <hostname>/<imagename>:<tag>`:
 $ docker tag 8fbb6cdc5e76 adenicole/dockerpy:latest
 ```
 
-Now that the Docker image has been created and tagged, run the image using 
-`docker run --publish 5000:5000 <imagename>` to build the container:
+Now that the Docker image has been created and tagged, run the image using `docker run --publish 5000:5000 <imagename>` to build the container:
 
 <div class="wide">
 ![Building the container]({{site.images}}{{page.slug}}/amXs8zx.png)
