@@ -403,7 +403,7 @@ We use the same process here of first clearing the widget and then rewriting the
 
 Now if we run our code, we can add contacts. Then when we select them from the list we can see the details appear to the right.
 
-<script zoom="2" id="asciicast-2UWD3NMXowmPCfTlwYjyFDJSF" src="https://asciinema.org/a/2UWD3NMXowmPCfTlwYjyFDJSF.js" async data-loop="true"  data-fit="none" data-autoplay="true" data-speed="2" data-size="small" data-start-at=04 ></script>
+<script id="asciicast-2UWD3NMXowmPCfTlwYjyFDJSF" src="https://asciinema.org/a/2UWD3NMXowmPCfTlwYjyFDJSF.js" async data-loop="true"  data-fit="none" data-autoplay="true" data-speed="2" data-size="big" data-start-at=04 ></script>
 
 ## Conclusion
 
