@@ -10,7 +10,7 @@ internal-links:
  - user interface
 ---
 
-<script zoom="2" id="asciicast-IDtzXLEV07kr0PpvuMKg7QgRU" src="https://asciinema.org/a/IDtzXLEV07kr0PpvuMKg7QgRU.js" async data-loop="true" data-autoplay="true" data-speed="2" data-size="big" data-startAt="04" ></script>
+<script zoom="2" id="asciicast-IDtzXLEV07kr0PpvuMKg7QgRU" src="https://asciinema.org/a/IDtzXLEV07kr0PpvuMKg7QgRU.js" async data-loop="true" data-autoplay="true" data-speed="2" data-size="big" data-start-at="04" ></script>
 <!-- [![asciicast](https://asciinema.org/a/IDtzXLEV07kr0PpvuMKg7QgRU.svg)](https://asciinema.org/a/IDtzXLEV07kr0PpvuMKg7QgRU?autoplay=1&startAt=02&loop=1) -->
 
 I first became interested in terminal user interfaces when I started using [K9s](https://github.com/derailed/k9s) to help manage multiple Kubernetes clusters. K9s runs entirely in the terminal and has a robust set of features and commands. It allows you to manage multiple clusters by displaying pods and nodes in an interactive real time table view. It also gives you the ability to run `kubectl` commands with the click of a button.
