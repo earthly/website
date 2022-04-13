@@ -11,7 +11,8 @@ internal-links:
 ---
 
 <script zoom="2" id="asciicast-IDtzXLEV07kr0PpvuMKg7QgRU" src="https://asciinema.org/a/IDtzXLEV07kr0PpvuMKg7QgRU.js" async data-loop="true" data-autoplay="true" data-speed="2" data-size="big" data-start-at="04" ></script>
-<!-- [![asciicast](https://asciinema.org/a/IDtzXLEV07kr0PpvuMKg7QgRU.svg)](https://asciinema.org/a/IDtzXLEV07kr0PpvuMKg7QgRU?autoplay=1&startAt=02&loop=1) -->
+
+When it comes to user interfaces, graphics reign supreme. But did you know it's actually possible to build a rich UI that runs completely in the terminal? Some programs like [htop](https://htop.dev/) and [tmux](https://github.com/tmux/tmux) use TUIs which is great because they are often run on servers where no GUI is available. There are even [games](https://www.tecmint.com/best-linux-terminal-console-games/) that run entirely in the terminal. In this article we'll use the Go programing language to create our own TUI.
 
 I first became interested in terminal user interfaces when I started using [K9s](https://github.com/derailed/k9s) to help manage multiple Kubernetes clusters. K9s runs entirely in the terminal and has a robust set of features and commands. It allows you to manage multiple clusters by displaying pods and nodes in an interactive real time table view. It also gives you the ability to run `kubectl` commands with the click of a button.
 
@@ -87,7 +88,6 @@ func main() {
     }
 }
 ~~~
-
 
 Notice that after we created our new `TextView` we use it to replace the blank box as the application root. Now run the code and behold: TEXT! The only problem is that our app is now lying to us because you can press `q` all day and nothing is going to happen. Press `ctrl-c` to quit for now and lets see if we can make an honest app out of this thing.
 
