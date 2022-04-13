@@ -45,7 +45,7 @@ type Contact struct {
     firstName   string
     lastName    string
     email       string
-    phoneNumber int
+    phoneNumber string
     state       string
     business    bool
 }
