@@ -10,6 +10,9 @@ internal-links:
  - user interface
 ---
 
+<script zoom="2" id="asciicast-IDtzXLEV07kr0PpvuMKg7QgRU" src="https://asciinema.org/a/IDtzXLEV07kr0PpvuMKg7QgRU.js" async data-loop="true" data-autoplay="true" data-speed="2" data-size="big" data-startAt="04" ></script>
+<!-- [![asciicast](https://asciinema.org/a/IDtzXLEV07kr0PpvuMKg7QgRU.svg)](https://asciinema.org/a/IDtzXLEV07kr0PpvuMKg7QgRU?autoplay=1&startAt=02&loop=1) -->
+
 I first became interested in terminal user interfaces when I started using [K9s](https://github.com/derailed/k9s) to help manage multiple Kubernetes clusters. K9s runs entirely in the terminal and has a robust set of features and commands. It allows you to manage multiple clusters by displaying pods and nodes in an interactive real time table view. It also gives you the ability to run `kubectl` commands with the click of a button.
 
 There are a handful of [different packages](https://appliedgo.net/tui/) to help you create a TUI in Go, and they all offer different advantages. But since K9s is what led me here, I decided to do a deeper dive into the library they use which is called [Tview](https://github.com/rivo/tview).
@@ -85,7 +88,10 @@ func main() {
 }
 ~~~
 
+
 Notice that after we created our new `TextView` we use it to replace the blank box as the application root. Now run the code and behold: TEXT! The only problem is that our app is now lying to us because you can press `q` all day and nothing is going to happen. Press `ctrl-c` to quit for now and lets see if we can make an honest app out of this thing.
+
+![Our first step: text]({{site.images}}{{page.slug}}/text.png)
 
 ## Responding To Input
 
@@ -397,7 +403,8 @@ We use the same process here of first clearing the widget and then rewriting the
 
 Now if we run our code, we can add contacts. Then when we select them from the list we can see the details appear to the right.
 
-![It's working!]({{site.images}}{{page.slug}}/finished_app.png)
+<!-- ![It's working!]({{site.images}}{{page.slug}}/finished_app.png) -->
+<script zoom="2" id="asciicast-IDtzXLEV07kr0PpvuMKg7QgRU" src="https://asciinema.org/a/IDtzXLEV07kr0PpvuMKg7QgRU.js" async data-loop="true" data-autoplay="true" data-speed="2" data-size="big" data-startAt="04" ></script>
 
 ## Conclusion
 
