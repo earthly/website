@@ -10,7 +10,7 @@ internal-links:
  - user interface
 ---
 
-<script zoom="2" id="asciicast-IDtzXLEV07kr0PpvuMKg7QgRU" src="https://asciinema.org/a/IDtzXLEV07kr0PpvuMKg7QgRU.js" async data-loop="true" data-autoplay="true" data-speed="2" data-size="big" data-start-at="04" ></script>
+<script zoom="2" id="asciicast-2UWD3NMXowmPCfTlwYjyFDJSF" src="https://asciinema.org/a/2UWD3NMXowmPCfTlwYjyFDJSF.js" async data-loop="true"  data-fit="none" data-autoplay="true" data-speed="2" data-size="small" data-start-at=04 ></script>
 
 When it comes to user interfaces, graphics reign supreme. But did you know it's actually possible to build a rich UI that runs completely in the terminal? Some programs like [htop](https://htop.dev/) and [tmux](https://github.com/tmux/tmux) use TUIs which is great because they are often run on servers where no GUI is available. There are even [games](https://www.tecmint.com/best-linux-terminal-console-games/) that run entirely in the terminal. In this article we'll use the Go programing language to create our own TUI.
 
@@ -403,8 +403,7 @@ We use the same process here of first clearing the widget and then rewriting the
 
 Now if we run our code, we can add contacts. Then when we select them from the list we can see the details appear to the right.
 
-<!-- ![It's working!]({{site.images}}{{page.slug}}/finished_app.png) -->
-<script zoom="2" id="asciicast-IDtzXLEV07kr0PpvuMKg7QgRU" src="https://asciinema.org/a/IDtzXLEV07kr0PpvuMKg7QgRU.js" async data-loop="true" data-autoplay="true" data-speed="2" data-size="big" data-startAt="04" ></script>
+<script zoom="2" id="asciicast-2UWD3NMXowmPCfTlwYjyFDJSF" src="https://asciinema.org/a/2UWD3NMXowmPCfTlwYjyFDJSF.js" async data-loop="true"  data-fit="none" data-autoplay="true" data-speed="2" data-size="small" data-start-at=04 ></script>
 
 ## Conclusion
 
