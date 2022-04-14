@@ -1,4 +1,6 @@
 hackathon
+misconfiguration
+hostnames
 esint
 GitHub
 GraphQL
