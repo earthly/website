@@ -19,6 +19,8 @@ manpages
 distros
 Solaris
 Genode
+htop
+tmux
 
 ## Virtulization
 Vagrantfile

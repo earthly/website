@@ -14,6 +14,14 @@ Brandon:
     name    : "Brandon Schurman"
     bio     : "Brandon is an Engineer at Earthly who loves coding, tech startups, and camping trips with his family."
     avatar  : "/assets/images/authors/brandonschurman.jpg"
+Josh:
+    name    : "Josh Alletto"
+    bio     : "Josh is a writer and former devops engineer. He's passionate about coding, learning, and sharing knowledge."
+    avatar  : "/assets/images/authors/joshalletto.jpg"
+    links:
+        - label: ""
+          icon: "fas fa-fw fa-envelope-square"
+          url: "mailto:josh@earthly.dev"
 Adam:
     name    : "Adam Gordon Bell"
     bio     : "Spreading the word about Earthly. Host of CoRecursive podcast. Physical Embodiment of Cunningham's Law"
