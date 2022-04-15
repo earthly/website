@@ -388,6 +388,7 @@ func setConcatText(contact *Contact) {
     contactText.SetText(text)
 }
 ~~~
+We use the same process here of first clearing the widget and then rewriting the content.
 
 The last step is adding our new textbox to the layout.
 
@@ -398,8 +399,6 @@ flex.SetDirection(tview.FlexRow).
         AddItem(contactText, 0, 4, false), 0, 6, false).
     AddItem(text, 0, 1, false)
 ~~~
-
-We use the same process here of first clearing the widget and then rewriting the content.
 
 Now if we run our code, we can add contacts. Then when we select them from the list we can see the details appear to the right.
 
