@@ -388,6 +388,7 @@ func setConcatText(contact *Contact) {
     contactText.SetText(text)
 }
 ~~~
+
 We use the same process here of first clearing the widget and then rewriting the content.
 
 The last step is adding our new textbox to the layout.
