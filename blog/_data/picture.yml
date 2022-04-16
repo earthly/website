@@ -11,6 +11,8 @@ presets:
     keep: center
     dimension_attributes: false
     strip_metadata: true
+  
+  picture:
     suppress_warnings: true
 
   grid:
@@ -117,10 +119,3 @@ presets:
       attributes:
         picture: 'class="lazy"'
         img: 'class="lazy"'
-
-  content-wide:
-      formats: [webp, original]
-      widths: [800]
-      keep: center
-      crop: '3:1'
-
