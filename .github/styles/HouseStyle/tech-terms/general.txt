@@ -1,4 +1,6 @@
 hackathon
+misconfiguration
+hostnames
 esint
 GitHub
 GraphQL
@@ -149,3 +151,9 @@ rpc
 webserver
 hyperscalers
 freemium
+multiplatform
+tview
+flexbox
+flexboxes
+ascii
+textbox

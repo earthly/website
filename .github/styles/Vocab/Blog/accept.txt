@@ -9,6 +9,7 @@ alex
 mdspell
 textlint
 proselint
+ie
 
 # probably not a real world and should remove, but for now
 repos?
