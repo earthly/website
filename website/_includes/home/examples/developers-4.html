@@ -1,6 +1,14 @@
 <div class="pb-1">
-  <span class="earthfile-term">FROM</span>
-  node:13.10.1-alpine3.11
+  <span class="earthfile-term">IMPORT</span> github.com/earthly/multirepo-static:main <span class="earthfile-term">AS</span> static
+</div>
+<div class="pb-1">
+  <span class="earthfile-term">IMPORT</span> github.com/earthly/multirepo-js:main <span class="earthfile-term">AS</span> js
+</div>
+<div class="pb-1">
+  <br/>
+</div>
+<div class="pb-1">
+  <span class="earthfile-term">FROM</span> node:13.10.1-alpine3.11
 </div>
 <div class="pb-1">
   <span class="earthfile-term">WORKDIR</span> /example-multirepo
@@ -10,18 +18,17 @@
   <span class="earthfile-term">RUN</span> npm install -g http-server
 </div>
 <div class="pl-8">
-  <span class="earthfile-term">COPY</span>
-  github.com/earthly/earthly-example-multirepo-static:main+html/* ./
+  <span class="earthfile-term">COPY</span> static+html/* ./
 </div>
 <div class="pl-8">
-  <span class="earthfile-term">COPY</span>
-  github.com/earthly/earthly-example-multirepo-js:main+build/* ./
+  <span class="earthfile-term">COPY</span> js+build/* ./
 </div>
-<div class="pl-8"><span class="earthfile-term">EXPOSE</span> 8080</div>
+<div class="pl-8">
+  <span class="earthfile-term">EXPOSE</span> 8080
+</div>
 <div class="pl-8">
   <span class="earthfile-term">ENTRYPOINT</span> ["http-server", "."]
 </div>
 <div class="pl-8">
-  <span class="earthfile-term">SAVE IMAGE</span> --push
-  earthly/examples:multirepo
+  <span class="earthfile-term">SAVE IMAGE</span> --push earthly/examples:multirepo
 </div>

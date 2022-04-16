@@ -25,7 +25,7 @@
           this.el.innerHTML = '<span class="wrap">' + this.txt + "</span>";
 
           var that = this;
-          var delta = 300 - Math.random() * 100;
+          var delta = 100 - Math.random() * 33;
 
           if (this.isDeleting) {
             delta /= 2;
@@ -37,7 +37,7 @@
           } else if (this.isDeleting && this.txt === "") {
             this.isDeleting = false;
             this.loopNum++;
-            delta = 500;
+            delta = 175;
           }
 
           setTimeout(function () {
@@ -70,8 +70,8 @@
           The effortless CI/CD framework that runs
           <div
             class="txt-rotate"
-            data-period="2000"
-            data-rotate='[ "on your laptop","locally","in any CI","remotely","anywhere","everywhere","on your M1 laptop","in GitHub Actions","in Jenkins","in CircleCI","in GitLab Pipeline" ]'
+            data-period="1500"
+            data-rotate='[ "locally","in any CI","on your laptop","on your CI","anywhere","in GitHub Actions","remotely","in GitLab","in CircleCI","in Jenkins","everywhere" ]'
           ></div>
         </div>
         <div

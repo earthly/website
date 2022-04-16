@@ -57,7 +57,7 @@ Both [Nix](https://nixos.org/) and Earthly are focusing on improving the way tha
 
 At a technical level, both Nix and Earthly use Linux namespaces to provide file system isolation. Earthly uses namespaces via Runc, using BuildKit whereas Nix uses them directly.
 
-At a higher level, though, Earthly is focused on providing an easy to write language for declaring all the steps of a complex build pipeline. This often includes things that may not be a good fix of the Nix build model, such as code linting, starting up and tearing down dependent services, making network calls and running integration tests.
+At a higher level, though, Earthly is focused on providing an easy to write language for declaring all the steps of a complex build pipeline. This often includes things that may not be a good fit of the Nix build model, such as code linting, starting up and tearing down dependent services, making network calls and running integration tests.
 
 <h2 class="text-2xl font-semibold mb-5 mt-20" id="bazel">How is Earthly different from Bazel?<span class="hide"><a href="#bazel">¶</a></span></h2>
 
@@ -70,10 +70,6 @@ At a higher level, though, Earthly is focused on providing an easy to write lang
 
 Overall, by letting you use your existing tool chain, Earthly has an easier adoption curve and is easier to use in non-mono repo settings. This does mean that its possible to do non-repeatable actions in Earthly, but practically at organization scales smaller than Google, we have not found this to be a problem and the ease of adoption out-weighs these concerns.
 {: .mb-6 .text-lg .font-medium .text-gray-600 .sm:w-full .sm:text-lg .sm:leading-8 .sm:mb-6 }
-
-<h2 class="text-2xl font-semibold mb-5 mt-20" id="bsl">How is Earthly Licensed?<span class="hide"><a href="#bsl">¶</a></span></h2>
-
-Earthly uses a source available [BSL license](https://github.com/earthly/earthly/blob/main/LICENSE) that turns into a fully open-source license after a time delay. You can read about the change on [our blog](https://earthly.dev/blog/every-open-core-company-should-be-a-source-available-company/), read [our licensing FAQ](/bslfaq), or [email us](mailto:support@earthly.dev) for licensing questions.
 
 <!-- vale HouseStyle.H2 = YES -->
 <div class="color2">

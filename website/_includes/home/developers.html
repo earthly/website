@@ -2,14 +2,17 @@
   <div
     class="pt-10 mt-10 mb-8 text-3xl font-extrabold leading-none tracking-tight text-gray-900 lg:text-3xl xl:text-4xl lg:mt-14 lg:mb-5"
   >
-    Why do developers ❤️ Earthly?
+    Developer friendly like a build system, versatile like a CI
   </div>
 
   <div class="grid grid-cols-1 gap-4 py-10 lg:grid-cols-2">
     <div class="lg:pr-10">
       <div class="text-2xl font-extrabold tracking-tight">Fast by default</div>
       <div class="py-5 text-gray-600 lg:pr-20">
-        Whenever possible, Earthly automatically executes targets in parallel.
+        Whenever possible, Earthly automatically executes targets in parallel
+        and makes maximum use of cache. Earthly also has powerful shared caching
+        capabilities, to speed up builds in sandboxed environments, such as
+        GitHub Actions.
 
         <div class="pt-6 pb-4 font-bold">
           If your build has independent steps, Earthly will:
@@ -22,7 +25,7 @@
               alt="Checked bullet"
               class=""
             />
-            <div class="px-2">Build a directed acyclic graph</div>
+            <div class="px-2">Build a directed acyclic graph (DAG)</div>
           </div>
           <div class="flex pb-2">
             <img
@@ -68,13 +71,18 @@
     </div>
     <div class="order-1 lg:pr-10">
       <div class="text-2xl font-extrabold tracking-tight">
-        Repeatable builds that work everywhere
+        Repeatable builds that work everywhere:<br/>
+        Local, Remote, or CI
       </div>
       <div class="py-5 text-gray-600 lg:pr-20">
-        No need to ask your team to install protoc, a specific version of
-        Python, Java 1.6 or the .NET Core ecosystem. You only install once, in
-        your Earthfile, and it works for everyone. Or even better, you can just
-        make use of the rich Docker Hub ecosystem.
+        When the environment is decoupled from the build execution, the
+        possibilities are endless. Run the build locally, close to where you
+        make edits to your code, or run the build on a remote cloud worker
+        for maximum performance, or run the same build in the CI of your choice.
+        No need to configure language-specific tooling, install additional
+        dependencies, or ensure that the build scripts are compatible with your
+        OS. Earthly gives you consistent, repeatable builds regardless of where
+        the execution takes place. The world is your oyster. 🦪
       </div>
     </div>
   </div>
@@ -82,12 +90,16 @@
   <div class="grid grid-cols-1 gap-4 py-10 lg:grid-cols-2">
     <div class="lg:pr-10">
       <div class="text-2xl font-extrabold tracking-tight">
-        Works with your existing build tools
+        Works with the build tools you know and love
       </div>
       <div class="py-5 text-gray-600 lg:pr-20">
-        Earthly uses the same caching technology as the Docker builder. If a
-        step of your build would produce the same output as a previously cached
-        run, it uses the cache. Earthly cache can also be shared via the cloud.
+        Unlike some opinionated build systems, Earthly allows you to use the
+        compiler and build tooling specific to your programming language of
+        choice. You don't need to completely rewrite your builds, nor replace
+        your <code>package.json</code>, <code>go.mod</code>,
+        <code>build.gradle</code> or your <code>Cargo.toml</code>. You can use
+        Earthly as a wrapper around your existing tooling, and benefit from
+        repeatable builds effortlessly.
       </div>
     </div>
     <div class="lg:pr-10">
@@ -108,13 +120,16 @@
     </div>
     <div class="order-1 lg:pr-10">
       <div class="text-2xl font-extrabold tracking-tight">
-        Modern import system
+        Reuse, don't repeat
       </div>
       <div class="py-5 text-gray-600 lg:pr-20">
-        Copy artifacts across repositories in a single line. Earthly is
-        cache-aware, based on the Git commit sha of the referenced repository.
-        Combined with shared caching, you can create vast and efficient build
-        hierarchies that only execute steps impacted by your changes.
+        Reference builds, recipes, images and artifacts from another build in a
+        single line. Earthly is cache-aware, based on the Git commit hash of the
+        referenced repository. Combined with shared caching, you can create vast
+        and efficient build hierarchies that only execute steps impacted by your
+        changes. Earthly builds are performant in either monorepo or polyrepo
+        setups and do not suffer from bloated context transfer issues specific
+        to some Dockerfile setups.
       </div>
     </div>
   </div>
