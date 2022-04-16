@@ -147,3 +147,5 @@ http
 
 rpc
 webserver
+hyperscalers
+freemium

@@ -24,7 +24,7 @@ This article is left here for historical purposes.
 
 This article used to be titled "Every open-core company should be a source-available company", however that aged poorly.
 
-## Source-available
+## Source-Available
 
 Earthly users and prospective users - today we are announcing our switch to Business Source License 1.1 (BSL).
 
