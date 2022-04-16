@@ -11,9 +11,6 @@ presets:
     keep: center
     dimension_attributes: false
     strip_metadata: true
-  
-  picture:
-    suppress_warnings: true
 
   grid:
     formats: [webp, original]
