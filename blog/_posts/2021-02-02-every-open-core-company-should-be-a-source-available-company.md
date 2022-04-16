@@ -1,6 +1,6 @@
 ---
-title: Every open-core company should be a source-available company
-featured: true
+title: Source-available
+featured: false
 categories:
  - News
 tags:
@@ -15,6 +15,16 @@ internal-links:
   - open core
 as_related: false
 ---
+
+## EDIT April 20, 2022
+
+This article is out of date as we have since switched back to an open-source license. While we still stand for the principles in this article, our thinking has evolved and we have decided that open-sourcing is the best decision for Earthly specifically. Read more about our [switch back to open-source in the official announcement](/blog/earthly-open-source).
+
+This article is left here for historical purposes.
+
+This article used to be titled "Every open-core company should be a source-available company", however that aged poorly.
+
+## Source-available
 
 Earthly users and prospective users - today we are announcing our switch to Business Source License 1.1 (BSL).
 
