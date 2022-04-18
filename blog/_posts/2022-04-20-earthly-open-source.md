@@ -38,7 +38,7 @@ The first observation we made was that source-available licenses (and sometimes 
 
 Overall, we believe that creating more awareness that source-available is net good is still a fight worth fighting. Putting the power of innovation in the hands of the small guys and preventing monopoly bullying is in the best interest of the user in the end because it encourages innovation.
 
-However, as our thinking evolved, we now believe that *for Earthly specifically*, it is not best suited.
+However, as our thinking evolved, we now believe that *for Earthly specifically*, it's not the best choice. 
 
 [^2]: Copy-left licenses like GPL and AGPL are somewhat similar to source-available in spirit, even though they are [OSI-approved](https://opensource.org/licenses). Copy-left is used as a poison pill for anyone trying to copy and build a competing product by the fact that it forces the competitor to release the code back as open-source. All while the owner of the project can still create closed-source modifications to the project to sneak in unique advantages - the owner is allowed to because they own copyright (assuming a [CLA](https://en.wikipedia.org/wiki/Contributor_License_Agreement) is in place - like there usually is in such cases). For similar reasons, there are several databases that use a copy-left license - it makes it hard for the competition to support differentiating features, while the original author can still have closed-source differentiators.
 
