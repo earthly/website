@@ -44,7 +44,7 @@ However, as our thinking evolved, we now believe that *for Earthly specifically*
 
 ## User Feedback
 
-As Earthly continued to grow over time, although the vast majority of users were ok with the BSL license, there were a few cases where our users had different opinions. While it's better to dismiss comments from the random angry person on the orange website, other interactions were genuine concerns from sophisticated prospective users.
+Earthly's growing user base is mostly okay with the BSL license, but there were a few cases where it seemed like a point of friction for our users. Some online license feedback we could dismiss as trolling but other interactions were genuine concerns from sophisticated prospective users.
 
 <div class="align-center">
  {% picture {{site.pimages}}{{page.slug}}/adam-1.png --picture --img width="400px" --alt {{ the only downside is that it's not open source }} %}
