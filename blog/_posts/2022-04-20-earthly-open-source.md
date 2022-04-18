@@ -9,7 +9,7 @@ tags:
 - open-source
 author: Vlad
 internal-links:
-  - Earthly open-source
+  - earthly open-source
 as_related: false
 ---
 
