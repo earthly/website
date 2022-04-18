@@ -1,101 +1,141 @@
 ---
 layout: default
 ---
-{% comment %}
-    Default header image
-{% endcomment %}
-{% assign header = "assets/images/" | append: page.slug | append: "/header.jpg" %}
-{% capture header_default %}{% file_exists {{ header }} %}{% endcapture %}
 
-{% if page.header.overlay_color or page.header.overlay_image or page.header.image %}
-  {% include page__hero.html %}
-{% elsif header_default == "true" %}
-  {% include page__hero.html %}
-{% elsif page.header.video.id and page.header.video.provider %}
-  {% include page__hero_video.html %}
-{% else %}
-  {{ "no header found under " | append: header | raise_error }}
-{% endif %}
-
-{% if page.url != "/" and site.breadcrumbs %}
-  {% unless paginator %}
-    {% include breadcrumbs.html %}
-  {% endunless %}
-{% endif %}
+{% comment %} Default header image {% endcomment %} {% assign header =
+"assets/images/" | append: page.slug | append: "/header.jpg" %} {% capture
+header_default %}{% file_exists {{ header }} %}{% endcapture %} {% if
+page.header.overlay_color or page.header.overlay_image or page.header.image %}
+{% include page__hero.html %} {% elsif header_default == "true" %} {% include
+page__hero.html %} {% elsif page.header.video.id and page.header.video.provider
+%} {% include page__hero_video.html %} {% else %} {{ "no header found under " |
+append: header | raise_error }} {% endif %} {% if page.url != "/" and
+site.breadcrumbs %} {% unless paginator %} {% include breadcrumbs.html %} {%
+endunless %} {% endif %}
 
 <div id="main" role="main">
-  {% include sidebar.html %}
+  <article
+    class="page border-l border-r border-gray-200 bg-white"
+    itemscope
+    itemtype="https://schema.org/CreativeWork"
+  >
+    {% if page.title %}<meta
+      itemprop="headline"
+      content="{{ page.title | markdownify | strip_html | strip_newlines | escape_once }}"
+    />{% endif %} {% if page.excerpt %}<meta
+      itemprop="description"
+      content="{{ page.excerpt | markdownify | strip_html | strip_newlines | escape_once | truncate: 160 }}"
+    />{% endif %} {% if page.date %}<meta
+      itemprop="datePublished"
+      content="{{ page.date | date_to_xmlschema }}"
+    />{% endif %} {% if page.last_modified_at %}<meta
+      itemprop="dateModified"
+      content="{{ page.last_modified_at | date_to_xmlschema }}"
+    />{% endif %}
 
-  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
-    {% if page.title %}<meta itemprop="headline" content="{{ page.title | markdownify | strip_html | strip_newlines | escape_once }}">{% endif %}
-    {% if page.excerpt %}<meta itemprop="description" content="{{ page.excerpt | markdownify | strip_html | strip_newlines | escape_once | truncate: 160 }}">{% endif %}
-    {% if page.date %}<meta itemprop="datePublished" content="{{ page.date | date_to_xmlschema }}">{% endif %}
-    {% if page.last_modified_at %}<meta itemprop="dateModified" content="{{ page.last_modified_at | date_to_xmlschema }}">{% endif %}
-
-    <div class="page__inner-wrap">
-      
-
-      <section class="page__content" itemprop="text">
+    <div class="page__inner-wrap flex">
+      <section
+        class="page__content w-3/4 border p-10 flex flex-1 flex-col"
+        itemprop="text"
+      >
         {% unless page.header.overlay_color or page.header.overlay_image %}
         <header>
-          {% if page.title %}<h1 id="page-title" class="page__title" itemprop="headline">{{ page.title | markdownify | remove: "<p>" | remove: "</p>" }}</h1>{% endif %}
-          {% include page__meta.html %}
+          {% if page.title %}
+          <h1
+            id="page-title"
+            class="page__title text-4xl font-extrabold leading-none tracking-tight text-gray-900"
+            itemprop="headline"
+          >
+            {{ page.title | markdownify | remove: "
+            <p>" | remove: "</p>
+            " }}
+          </h1>
+          {% endif %} {% include page__meta.html %}
         </header>
-      {% endunless %}
-        {% if page.toc %}
-          <aside class="sidebar__right {% if page.toc_sticky %}sticky{% endif %}">
-            <nav class="toc">
-              <header><h4 class="nav__title"><i class="fas fa-{{ page.toc_icon | default: 'file-alt' }}"></i> {{ page.toc_label | default: site.data.ui-text[site.locale].toc_label | default: "On this page" }}</h4></header>
-              {% include toc.html sanitize=true html=content h_min=1 h_max=4 class="toc__menu" skip_no_ids=true %}
-            </nav>
-            {% if page.newsletter_side == true %}
-              <nav class="newsletter no-mobile">
-              {% include cta/sidebar-newsletter.html %}
-              </nav>
-            {% endif %}
-          </aside>
-        {% else %}
-          <aside class="sidebar__right {% if page.toc_sticky %}sticky{% endif %}">
-            {% if page.newsletter_side == true %}
-              <nav class="newsletter2 no-mobile">
-              {% include cta/sidebar-newsletter.html %}
-              </nav>
-            {% endif %}
-        </aside> 
+        {% endunless %}
+        <div class="prose">{{ content }}</div>
+
+        <div class="mt-4 prose">
+          {% if page.author_profile or layout.author_profile and page.type !=
+          "authors" %}{% include author-profile.html %}{% endif %}
+          <footer class="page__meta">
+            {% if site.data.ui-text[site.locale].meta_label %}
+            <h4 class="page__meta-title">
+              {{ site.data.ui-text[site.locale].meta_label }}
+            </h4>
+            {% endif %} {% include page__taxonomy.html %} {% include
+            page__date.html %}
+          </footer>
+
+          {% if page.share %}{% include social-share.html %}{% endif %}
+
+          <div class="only-mobile">
+            {% include cta/embedded-newsletter.html %}
+          </div>
+        </div>
+
+        {% if page.link %}
+        <div>
+          <a href="{{ page.link }}" class="btn btn--primary"
+            >{{ site.data.ui-text[site.locale].ext_link_label | default: "Direct
+            Link" }}</a
+          >
+        </div>
         {% endif %}
-        {{ content }}
-        {% if page.link %}<div><a href="{{ page.link }}" class="btn btn--primary">{{ site.data.ui-text[site.locale].ext_link_label | default: "Direct Link" }}</a></div>{% endif %}
       </section>
 
-      {% if page.author_profile or layout.author_profile and page.type != "authors" %}{% include author-profile.html %}{% endif %}
-      <footer class="page__meta">
-        {% if site.data.ui-text[site.locale].meta_label %}
-          <h4 class="page__meta-title">{{ site.data.ui-text[site.locale].meta_label }}</h4>
+      <div class="bg-gray-50 w-1/4 ml-auto p-6 text-md hidden md:block">
+        {% if page.toc %}
+        <aside
+          class="sidebar__right {% if page.toc_sticky %}sticky{% endif %} h-full"
+        >
+          {% include sidebar.html %}
+          <nav class="toc pt-4 sticky top-0 z-50 bg-gray-50">
+            <header>
+              <h4 class="nav__title font-semibold text-xl mb-2">
+                <i class="fas fa-{{ page.toc_icon | default: 'file-alt' }}"></i>
+                {{ page.toc_label | default:
+                site.data.ui-text[site.locale].toc_label | default: "On this
+                page" }}
+              </h4>
+            </header>
+            {% include toc.html sanitize=true html=content h_min=1 h_max=4
+            class="toc__menu" skip_no_ids=true %}
+          </nav>
+          {% if page.newsletter_side == true %}
+          <nav class="newsletter no-mobile mt-4">
+            {% include cta/sidebar-newsletter.html %}
+          </nav>
+          {% endif %}
+        </aside>
+        {% else %}
+        <aside
+          class="sidebar__right {% if page.toc_sticky %}sticky{% endif %} mt-4"
+        >
+          {% if page.newsletter_side == true %}
+          <nav class="newsletter2 no-mobile mt-4">
+            {% include cta/sidebar-newsletter.html %}
+          </nav>
+          {% endif %}
+        </aside>
         {% endif %}
-        {% include page__taxonomy.html %}
-        {% include page__date.html %}
-      </footer>
-
-      {% if page.share %}{% include social-share.html %}{% endif %}
-    </div>
-  <div class="only-mobile">
-  {% include cta/embedded-newsletter.html %}
-  </div>
-  </article>
-
-  {% comment %}<!-- only show related on a post page when `related: true` -->{% endcomment %}
-  {% if page.id and page.related and site.related_posts.size > 0 %}
-    <div class="page__related">
-      <div class="page__related-title heading">{{ site.data.ui-text[site.locale].related_label | default: "You May Also Enjoy" }}</div>
-      <div class="grid__wrapper">
-        {%  assign related = site.posts | where: "as_related",true | sample: 2 %}
-        {% for post in related %}
-          {% include archive-single.html type="grid" lazy="true" %}
-        {% endfor %}
       </div>
     </div>
-    <div id="mobile-footer-signup-box">
-      {% include cta/sidebar-newsletter.html %}
+  </article>
+
+  {% comment %}<!-- only show related on a post page when `related: true` -->{%
+  endcomment %} {% if page.id and page.related and site.related_posts.size > 0
+  %}
+  <div class="page__related mt-8">
+    <div class="page__related-title heading mb-2 text-2xl text-gray-400">
+      {{ site.data.ui-text[site.locale].related_label | default: "You May Also
+      Enjoy" }}
     </div>
+    <div class="grid__wrapper grid grid-cols-1 md:grid-cols-2 gap-12">
+      {% assign related = site.posts | where: "as_related",true | sample: 2 %}
+      {% for post in related %} {% include archive-single.html type="grid"
+      lazy="true" %} {% endfor %}
+    </div>
+  </div>
   {% endif %}
 </div>

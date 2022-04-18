@@ -4,14 +4,15 @@
 
 @charset "utf-8";
 
-
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials
 
+@import "base";
+
 //convertkit form styling
-@import "convertkit/embedded";
-@import "convertkit/sidebar";
+// @import "convertkit/embedded";
+// @import "convertkit/sidebar";
 
 pre.sourceCode {
-    overflow: auto;
+  overflow: auto;
 }

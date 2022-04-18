@@ -1,0 +1,35 @@
+ul > li > ul {
+  padding-left: 20px;
+}
+
+.image-author img {
+  width: 40px;
+  border-radius: 50%;
+}
+
+.prose .image-author img {
+  width: 100px;
+}
+
+.prose .author__content p {
+  margin-top: 0.25em;
+}
+
+@media (min-width: 1200px) {
+  .wide,
+  div.sourceCode {
+    width: 800px !important;
+  }
+}
+
+.min-w-\[300px\] {
+  min-width: 300px;
+}
+
+.max-w-\[1260px\] {
+  max-width: 1260px;
+}
+
+.page__footer-copyright {
+  height: 50px;
+}

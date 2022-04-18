@@ -25,23 +25,26 @@
   {% assign title = post.title %}
 {% endif %}
 
-<div class="{{ include.type | default: 'grid' }}__item">
+<div class="{{ include.type | default: 'grid' }}__item mb-6 rounded-lg border border-slate-300 p-5">
   <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
     {% if include.type == "grid" and teaser %}
-      <div class="archive__item-teaser">
-        {% picture 2up-lazy {{teaser}} %}
+      <div class="archive__item-teaser rounded-lg overflow-hidden">
+        {% if post.link %}
+        <a class="hover:underline" href="{{ post.link }}">{% picture 2up-lazy {{teaser}} %}</a>
+      {% else %}
+        <a class="hover:underline" href="{{ post.url | relative_url }}" rel="permalink">{% picture 2up-lazy {{teaser}} %}</a>
+      {% endif %}
       </div>
     {% endif %}
     {% if include.heading == "heading" %} 
-    <h2 class="archive__item-title no_toc" itemprop="headline">
+    <h2 class="archive__item-title no_toc heading mt-4 pl-2 pr-2 text-xl font-semibold" itemprop="headline">
     {% else %}
-    <div class="archive__item-title no_toc heading" itemprop="headline">
+    <div class="archive__item-title no_toc heading mt-4 pl-2 pr-2 text-xl font-semibold" itemprop="headline">
     {% endif %}
-      
       {% if post.link %}
-        <a href="{{ post.link }}">{{ title }}</a> <a href="{{ post.url | relative_url }}" rel="permalink"><i class="fas fa-link" aria-hidden="true" title="permalink"></i><span class="sr-only">Permalink</span></a>
+        <a class="hover:underline" href="{{ post.link }}">{{ title }}</a> <a href="{{ post.url | relative_url }}" rel="permalink"><i class="fas fa-link" aria-hidden="true" title="permalink"></i><span class="sr-only">Permalink</span></a>
       {% else %}
-        <a href="{{ post.url | relative_url }}" rel="permalink">{{ title }}</a>
+        <a class="hover:underline" href="{{ post.url | relative_url }}" rel="permalink">{{ title }}</a>
       {% endif %}
     {% if include.heading == "heading" %} 
     </h2>
@@ -49,6 +52,6 @@
     </div>
     {% endif %}
     {% include archive__meta.html type=include.type %}
-    {% if post.excerpt %}<p class="archive__item-excerpt" itemprop="description">{{ post.excerpt | markdownify | strip_html | truncate: 160 }}</p>{% endif %}
+    {% if post.excerpt %}<p class="archive__item-excerpt pl-2 pr-2" itemprop="description">{{ post.excerpt | markdownify | strip_html | truncate: 160 }}</p>{% endif %}
   </article>
 </div>
