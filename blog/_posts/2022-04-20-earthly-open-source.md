@@ -36,7 +36,7 @@ The first observation we made was that source-available licenses (and sometimes 
 * Databases are already budgeted for. Getting a hundred high-paying customers is enough for many database companies to be successful. For other developer products, the unit economics don't work quite the same way, and community and scale of individual users becomes much more important. Hence it's better to optimize for growth.
 * A lesser reason (but still relevant), is that in some isolated cases the DBs have used open-source in their early life to create growth and awareness, and now at maturity, they have switched to a source-available to switch focus from growth to monetization. The switch was extremely disruptive for the community given that it was done so late in their life (after so many depended on the license being open-source) and has prompted the community to show up with angry comments and pitchforks. I will not name names :-), but this kind of fiasco has given source-available a worse name than it deserves.
 
-Overall, we believe that creating more awareness that source-available is net good is still a fight worth fighting. Putting the power of innovation in the hands of the small guys and preventing monopoly bullying is in the best interest of the user in the end because it encourages innovation.
+Overall, we believe that source-available models are net good when used in the right situations. Normalizing them is a fight worth fighting. Putting the power of innovation in the hands of the small guys and preventing monopoly bullying is in the best interest of the user in the end because it encourages innovation.
 
 However, as our thinking evolved, we now believe that *for Earthly specifically*, it's not the best choice. 
 
