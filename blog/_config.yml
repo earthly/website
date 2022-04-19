@@ -219,3 +219,4 @@ defaults:
 
 picture:
   fast_build: true
+  suppress_warnings: true

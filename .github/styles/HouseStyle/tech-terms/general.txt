@@ -149,6 +149,8 @@ http
 
 rpc
 webserver
+hyperscalers
+freemium
 multiplatform
 tview
 flexbox

@@ -116,10 +116,3 @@ presets:
       attributes:
         picture: 'class="lazy"'
         img: 'class="lazy"'
-
-  content-wide:
-      formats: [webp, original]
-      widths: [800]
-      keep: center
-      crop: '3:1'
-
