@@ -4,22 +4,50 @@ ul > li > ul {
 
 .image-author img {
   width: 40px;
+  height: 40px;
   border-radius: 50%;
 }
 
 .prose .image-author img {
   width: 100px;
+  height: 100px;
 }
 
 .prose .author__content p {
   margin-top: 0.25em;
 }
 
+.page__hero {
+  min-height: 80px;
+}
+
 @media (min-width: 1200px) {
   .wide,
   div.sourceCode {
+    font-size: 12px;
+  }
+
+  .lala-land {
     width: 800px !important;
   }
+
+  .notice--big--primary div.sourceCode,
+  .notice--warning div.sourceCode,
+  .notice--info div.sourceCode {
+    width: auto !important;
+  }
+
+  .page__hero {
+    height: 295px;
+  }
+}
+
+.min-w-\[100px\] {
+  min-width: 100px;
+}
+
+.max-w-\[100px\] {
+  max-width: 100px;
 }
 
 .min-w-\[300px\] {
@@ -32,4 +60,62 @@ ul > li > ul {
 
 .page__footer-copyright {
   height: 50px;
+}
+
+.notice--big--primary {
+  margin: 2em 0 !important;
+  padding: 1em;
+  background-color: rgb(241, 245, 249);
+  background-color: rgb(226, 232, 240);
+  border-radius: 9px;
+  font-size: 1em !important;
+}
+
+.notice--big--primary h3,
+.notice--info h3,
+.notice--warning h3 {
+  margin-top: 0 !important;
+}
+
+.notice--big--primary h2,
+.notice--info h2,
+.notice--warning h2 {
+  margin-top: 0 !important;
+}
+
+.notice--warning {
+  margin: 2em 0 !important;
+  padding: 1em;
+  font-size: 0.875em !important;
+  background-color: rgb(255, 237, 213);
+  border-radius: 9px;
+}
+
+.notice--info {
+  margin: 2em 0 !important;
+  padding: 1em;
+  font-size: 0.875em !important;
+  background-color: rgb(220, 252, 231);
+  border-radius: 9px;
+}
+
+.prose code {
+  background-color: rgb(219, 234, 254);
+  border-radius: 4px;
+  padding: 4px;
+}
+
+.prose code::before,
+.prose code::after {
+  display: none;
+}
+
+.align-right {
+  float: right;
+  margin-left: 1em;
+}
+
+.align-left {
+  float: left;
+  margin-right: 1em;
 }

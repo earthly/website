@@ -4,10 +4,10 @@ author %}
 <div
   itemscope
   itemtype="https://schema.org/Person"
-  class="flex border rounded-md"
+  class="flex border rounded-md items-center"
 >
   {% if author.avatar %}
-  <div class="author__avatar w-64 ml-2 max-w-[100px]">
+  <div class="author__avatar ml-2 min-w-[100px] max-w-[100px] flex">
     {% if author.home %}
     <a href="{{ author.home | relative_url }}">
       {% picture author {{author.avatar }} --picture class="image-author" --alt
