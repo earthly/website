@@ -3,6 +3,7 @@ title: "Building in Visual Studio Code with a Makefile"
 categories:
   - Tutorials
 author: Nicolas Bohorquez
+toc: true
 internal-links:
  - vscode
 sidebar:

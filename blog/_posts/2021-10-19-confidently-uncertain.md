@@ -3,6 +3,7 @@ title: "Career Advice: Be Confidently Uncertain"
 categories:
   - Articles
 author: Adam
+toc: true
 sidebar:
   nav: "thoughts"
 internal-links:

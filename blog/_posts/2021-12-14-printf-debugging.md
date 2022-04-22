@@ -3,6 +3,7 @@ title: "Printf Debugging and Srinivasa Ramanujan"
 categories:
   - Articles
 author: Adam
+toc: true
 newsletter_side: false
 sidebar:
   nav: "thoughts"

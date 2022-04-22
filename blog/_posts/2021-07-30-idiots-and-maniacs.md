@@ -3,6 +3,7 @@ title: "Idiots And Maniacs"
 categories:
   - Articles
 author: Adam
+toc: true
 sidebar:
   nav: "thoughts"
 ---

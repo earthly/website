@@ -3,6 +3,7 @@ title: "Beating TimSort at Merging"
 categories:
   - Tutorials
 author: Adam
+toc: true
 sidebar:
   nav: "thoughts"
 featured: true

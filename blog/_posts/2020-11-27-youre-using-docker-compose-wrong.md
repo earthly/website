@@ -3,6 +3,7 @@ title: You're using docker-compose wrong
 categories:
   - Articles
 author: Vlad
+toc: true
 sidebar:
   nav: "docker"
 internal-links:

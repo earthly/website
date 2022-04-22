@@ -49,7 +49,6 @@ The parts in `[]` are optional. Each rule must have one or more targets, zero or
 When `make` executes a rule, it looks at the prerequisites. If all the prerequisites are older than the target file, it means that none of them has changed since the last time the rule was executed. So `make` does not execute the rule. If, however, any prerequisite is newer than the target, the recipes are executed.
 
 Here's an example. Create a file named `data.txt` with the text `hello world.` You'll use the `wc` command to calculate the number of characters, words, and lines and store it in a file named `count.txt`. In this simple demonstration, you have a dependency and a target that needs to be built from the dependency.
-</div>
 
 First, let's do it manually.
 

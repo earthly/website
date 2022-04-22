@@ -3,6 +3,7 @@ title: "Don't Feed the Thought Leaders"
 categories:
   - Articles
 author: Adam
+toc: true
 featured: true
 sidebar:
   nav: "thoughts"

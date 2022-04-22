@@ -17,18 +17,28 @@ ul > li > ul {
   margin-top: 0.25em;
 }
 
+.page__hero--overlay,
 .page__hero {
   min-height: 80px;
 }
 
 @media (min-width: 1200px) {
-  .wide,
+  .wide {
+    width: 864px !important;
+    position: relative;
+    left: -105px;
+  }
+
+  .wide img {
+    width: 864px !important;
+  }
+
   div.sourceCode {
     font-size: 12px;
   }
 
-  .lala-land {
-    width: 800px !important;
+  .image-needs-border {
+    border: 1px solid #999;
   }
 
   .notice--big--primary div.sourceCode,
@@ -37,8 +47,13 @@ ul > li > ul {
     width: auto !important;
   }
 
+  .page__hero--overlay,
   .page__hero {
     height: 295px;
+  }
+
+  .blog-article-wrap {
+    margin: 0 auto;
   }
 }
 
@@ -118,4 +133,55 @@ ul > li > ul {
 .align-left {
   float: left;
   margin-right: 1em;
+}
+
+.series-item {
+  position: relative;
+}
+
+.series-indicator {
+  position: absolute;
+  left: -16px;
+  top: 3px;
+}
+
+.blog-article-wrap {
+  max-width: 65ch;
+}
+
+.page__hero--overlay {
+  position: relative;
+  margin-bottom: 2em;
+  padding: 3em 0;
+  clear: both;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  -webkit-animation: intro 0.3s both;
+  animation: intro 0.3s both;
+  -webkit-animation-delay: 0.25s;
+  animation-delay: 0.25s;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.page__hero-caption {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 0 auto;
+  padding: 2px 5px;
+  color: #fff;
+  font-family: Georgia, Times, serif;
+  font-size: 0.6875em;
+  background: #000;
+  text-align: right;
+  z-index: 5;
+  opacity: 0.5;
+  border-radius: 4px 0 0 0;
+}
+
+.toc__menu {
+  max-height: calc(100vh - 60px);
+  overflow-x: auto;
 }
