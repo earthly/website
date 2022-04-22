@@ -439,5 +439,18 @@ And with that change, I can not read and write to S3 when running locally.
 
 With all that working locally, I can deploy things:
 ```
-
+$ earthly --push +docker
+$ aws lambda update-function-code \
+            --region us-east-1 \
+            --function-name text-mode-go \
+            --image-uri 459018586415.dkr.ecr.us-east-1.amazonaws.com/text-mode-go:latest
 ```
+
+
+
+## Conclusion
+
+So there you go, we built a program in Go that has some OS level dependencies (lynx), we've wrapped it up into a container, run it in AWS Lambda and then also used S3 get and puts for caching and hooked the whole things up to a rest endpoint.
+
+And you can [test it out]() or use it for your own purposes and the full source code on [github]().
+
