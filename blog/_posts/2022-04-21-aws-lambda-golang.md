@@ -438,6 +438,7 @@ And with that change, I can not read and write to S3 when running locally.
 ## Deploy
 
 With all that working locally, I can deploy things:
+
 ```
 $ earthly --push +docker
 $ aws lambda update-function-code \
@@ -446,11 +447,40 @@ $ aws lambda update-function-code \
             --image-uri 459018586415.dkr.ecr.us-east-1.amazonaws.com/text-mode-go:latest
 ```
 
+## Speed Test
 
+Now that I'm caching and using a compiled language, things should be faster. Lets check it out. I have [the orginal node.js] code up and the new code up.
+
+```
+$ # Node.js 
+$ time curl https://earthly-tools.com/text-mode-2?url=https://en.wikipedia.org/wiki/Software_engineering
+...
+curl   0.02s user 0.01s system 0% cpu 8.905 total
+```
+After running it a couple times, to make sure it was warm, the time averaged out at 3.8 seconds.
+
+To test the go solution without caching I'll use the aws cli to clear the cache bucket every second. 
+```
+watch -n 1 'aws s3 rm s3://text-mode/ --recursive'
+```
+
+And then test it:
+
+```
+$ # GoLang
+$ time curl https://earthly-tools.com/text-mode?url=https://en.wikipedia.org/wiki/Software_engineering
+...
+```
+
+Then to test with caching I just stop deleting stuff. Then end result, making sure each lambda is warmed up, and average across several call, is this:
+
+<div class="wide">
+{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/4310.png --alt {{  }} %}
+<figcaption>It seems like porting to Golang was a good idea.</figcaption>
+</div>
+
+It's surprizing to me how much faster the Golang version is. The majority of the work is done by lynx and the readibility lib. It's possible the native readability lib is just a lot faster but I'm not sure without digging in further.  
 
 ## Conclusion
 
-So there you go, we built a program in Go that has some OS level dependencies (lynx), we've wrapped it up into a container, run it in AWS Lambda and then also used S3 get and puts for caching and hooked the whole things up to a rest endpoint.
-
-And you can [test it out]() or use it for your own purposes and the full source code on [github]().
-
+So there you go, serverless golang. We built a program in Go that has some OS level dependencies (lynx), we've wrapped it up into a container, we ran it in an AWS Lambda and then also used S3 get and puts for caching. And the whole up to a REST end-point. You can [test it out]() or use it for your own purposes and the full source code on [github]().
