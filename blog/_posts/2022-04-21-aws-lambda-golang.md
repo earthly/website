@@ -10,8 +10,6 @@ internal-links:
 ---
 ### Writing Article Checklist
 
-- [ ] Write Outline
-- [ ] Write Draft
 - [ ] Fix Grammarly Errors
 - [ ] Read out loud
 - [ ] Write 5 or more titles and pick the best on
@@ -27,13 +25,13 @@ internal-links:
 
 ## Intro
 
-Last time, I built a Node.js lambda running in a container. Running a container on AWS serverless framework worked out really well. Being in a container meant it was simple to test locally and that I could install OS level dependencies and shell out and call them. That is how I was able to run Lynx in my lambda and build [TextMode](/blog/text-mode).
+Last time, I built a [Node.js lambda](/blog/aws-lambda-docker/) running in a container. Running a container as serverless application worked out really well: being in a container meant it was simple to test locally and that I could install OS level dependencies and shell out and call them. That is how I was able to run Lynx in my lambda and build [TextMode](/blog/text-mode).
 
-So Lambda's and containers combined seemed like a good solution, but node.js I'm less certain about. I'm not a JavaScript developer and I found working with promises confusing. TypeScript helped a lot but I still found it a bit of a confusing process.
+So Lambda's and containers combined seemed like a good solution, but node.js I'm less certain about. I'm not a JavaScript developer and I found working with promises confusing. TypeScript helped a lot but I still felt a little bit lost. ( This is certainly more about me having zero experience with Node.js than anything else. )
 
-So today's mission is to port that Node.js code to GoLang, running a container. I'll also using OS dependencies in my container and because TextMode is a very cacheable service, I'll be using S3 to cache the results as well.
+So today's mission is to port that Node.js code to GoLang, running a container. I'll also be using OS dependencies in my container and because TextMode is a very cacheable service, I'm going to use S3 to cache the results as well.
 
-So Read this article to learn how to build a Golang lambda service, hook it up to a REST API endpoint and get and put data to S3 from it.
+**So read this article to learn how to build a Golang lambda service in a container, hook it up to a REST API endpoint and get and put data to S3 from it.**
 
 ## The Goal
 
@@ -242,8 +240,11 @@ This service, especially for large webpages is a bit slow. But the text results 
 
 Amazon S3 has Object expiratation settings, so its easy to setup a bucket as a text file cache.
 
-insert image
-...
+<div class="wide">
+{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/5520.png --alt {{  }} %}
+{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/5620.png --alt {{  }} %}
+<figcaption>S3 Expiration Settings make for a simple disk-based cache</figcaption>
+</div>
 
 ## aws s3 put object
 
