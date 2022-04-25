@@ -18,10 +18,9 @@ Eathly's blog gets tens of thousands of visitors each month and is a respected s
   Suggest a topic you'd like to write about or get suggestions from us.
   
   <div class="notice--info">
-
-  Please send us your topic pitch after you've <a href="https://docs.google.com/forms/d/e/1FAIpQLSdgpU8oYXvRRnvtxt5ZruAvJ3RPa4sEXgvbaY1xDOA98G3ycw/viewform">applied</a> and been approved.
+Please send us your topic pitch after you've <a href="https://docs.google.com/forms/d/e/1FAIpQLSdgpU8oYXvRRnvtxt5ZruAvJ3RPa4sEXgvbaY1xDOA98G3ycw/viewform">applied</a> and been approved.
   
-  A pitch topic is an article title, a paragraph sample introduction, and a bullet point outline. Digital Ocean has a great guide on writing an [article proposal](https://www.digitalocean.com/community/tutorials/how-to-write-a-proposal-and-outline-for-a-digitalocean-community-tutorial)
+A pitch topic is an article title, a paragraph sample introduction, and a bullet point outline. Digital Ocean has a great guide on writing an [article proposal](https://www.digitalocean.com/community/tutorials/how-to-write-a-proposal-and-outline-for-a-digitalocean-community-tutorial)
   </div>
 
 ### 2. Write a Draft
@@ -43,6 +42,11 @@ Eathly's blog gets tens of thousands of visitors each month and is a respected s
 ### 4. Get Paid
 
   We will pay you $350 USD for your article and use our Twitter account to promote your article to our audience of developers.
+ <div class="notice--info">
+  After your article has been accepted please send an invoice to [adam@earthly.dev](mailto:adam@earthly.dev). Invoiced should include the following: Date, Title of Article, Amount, Bank name, Back account number/IBAN, Routing Number/SWIFT code/ABA.
+
+  If you need help with invoicing or have other questions about payment, please feel free to reach out.
+</div>
 
 <!-- vale HouseStyle.Link = NO -->
 <a href="https://docs.google.com/forms/d/e/1FAIpQLSdgpU8oYXvRRnvtxt5ZruAvJ3RPa4sEXgvbaY1xDOA98G3ycw/viewform" class="btn btn--success">Apply Here</a>
