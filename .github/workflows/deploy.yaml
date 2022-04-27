@@ -73,8 +73,8 @@ jobs:
           number: ${{ steps.finder.outputs.pr }}
           message: |
             Commit ${{ github.sha }} deployed to ${{ env.NETLIFY_URL }}
-       - name: Has new published documents
-         run: |-  
+      - name: Has new published documents
+        run: |-  
            path=$(date '+%Y-%m-%d')
            if test -n "$(find ./blog/_posts -maxdepth 1 -name "*$path*" -print)"
            then
