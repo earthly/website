@@ -17,10 +17,12 @@ jobs:
       - uses: FranzDiebold/github-env-vars-action@v2
       - name: Checkout code
         uses: actions/checkout@v2
+        # Where this goes is in the hook
       - name: Slack Notification
         id: slack
         uses: slackapi/slack-github-action@v1.18.0
         with:
+          channel-id: 'alerts'
           payload: |
             {
               "text": "GitHub Action build result."
