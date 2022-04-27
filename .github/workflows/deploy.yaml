@@ -76,6 +76,8 @@ jobs:
 
       ## Write into published.txt what's been published
       ## Write into steps.published_check.outputs the outputs
+      ## Problem - this doesn't seem to get more than one result
+      ##           Might need to use published.txt rather than output
       - name: Has new published documents
         id: published_check
         run: |-  
