@@ -82,7 +82,7 @@ jobs:
             echo "PUBLISHED=1" >> $GITHUB_ENV
             find ./blog/_posts -maxdepth 1 -name "*$path*" -print
             find ./blog/_posts -maxdepth 1 -name "*$path*" -print > published.txt
-            echo "::set-output name=published::$(cat published)"
+            echo "::set-output name=published::$(cat published.txt)"
            fi
       - name: Check file existence
         id: check_files
