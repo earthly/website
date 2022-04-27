@@ -73,22 +73,30 @@ jobs:
       #     number: ${{ steps.finder.outputs.pr }}
       #     message: |
       #       Commit ${{ github.sha }} deployed to ${{ env.NETLIFY_URL }}
+
+      ## Write into published.txt what's been published
+      ## Write into steps.published_check.outputs the outputs
       - name: Has new published documents
         id: published_check
         run: |-  
-           path=$(date '+%Y-%m-%d')
-           if test -n "$(find ./blog/_posts -maxdepth 1 -name "*$path*" -print)"
-           then
-            echo "PUBLISHED=1" >> $GITHUB_ENV
-            find ./blog/_posts -maxdepth 1 -name "*$path*" -print
-            find ./blog/_posts -maxdepth 1 -name "*$path*" -print > published.txt
-            echo "::set-output name=published::$(cat published.txt)"
-           fi
+           if [ "$CI_ACTION_REF_NAME" == "main" ]; then
+            path=$(date '+%Y-%m-%d')
+            if test -n "$(find ./blog/_posts -maxdepth 1 -name "*$path*" -print)"
+            then
+              echo "PUBLISHED=1" >> $GITHUB_ENV
+              find ./blog/_posts -maxdepth 1 -name "*$path*" -print
+              find ./blog/_posts -maxdepth 1 -name "*$path*" -print > published.txt
+              echo "::set-output name=published::$(cat published.txt)"
+            fi
+          fi
+
+      ## Step output value for whether file exists
       - name: Check file existence
         id: check_files
         uses: andstor/file-existence-action@v1
         with:
           files: "published.txt"
+      # Output published list
       - name: Slack Notification
         id: slack
         uses: slackapi/slack-github-action@v1.18.0
@@ -99,7 +107,7 @@ jobs:
           # payload-file-path: "./published.txt"
           payload: |
             {
-              "text": " ${{join(steps.published_check.outputs.*, '\n')}}"
+              "text": "Published blog posts: ${{join(steps.published_check.outputs.*, '\n')}}"
             }
         env:
           SLACK_WEBHOOK_URL: https://hooks.slack.com/services/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
