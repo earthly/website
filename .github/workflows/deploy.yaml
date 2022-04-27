@@ -18,15 +18,16 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Slack Notification
-        uses: rtCamp/action-slack-notify@v2
+        id: slack
+        uses: slackapi/slack-github-action@v1.18.0
+        with:
+          payload: |
+            {
+              "text": "GitHub Action build result."
+            }
         env:
-          SLACK_CHANNEL: alerts-content
-          SLACK_COLOR: ${{ job.status }} # or a specific color like 'good' or '#ff00ff'
-          SLACK_ICON: https://github.com/rtCamp.png?size=48
-          SLACK_MESSAGE: 'Post Content :rocket:'
-          SLACK_TITLE: Post Title
-          SLACK_USERNAME: rtCamp
-          SLACK_WEBHOOK: https://hooks.slack.com/services/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
+          SLACK_WEBHOOK_URL: https://hooks.slack.com/services/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
+          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
       - name: Create Cache Key
         run: |- 
           date "+%Y-%d-%m" > today.txt
