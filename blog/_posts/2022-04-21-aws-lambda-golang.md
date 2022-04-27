@@ -25,7 +25,7 @@ internal-links:
 
 ## Intro
 
-Last time, I built a [Node.js lambda](/blog/aws-lambda-docker/) running in a container. Running a container as serverless application worked out really well: being in a container meant it was simple to test locally and that I could install OS level dependencies and shell out and call them. That is how I was able to run Lynx in my lambda and build [TextMode](/blog/text-mode).
+Last time, I built a [Node.js lambda](/blog/aws-lambda-docker/) running in a container. Running a container as serverless application worked out great: it meant it was simple to test locally and that I could install OS level dependencies and shell out and call them. That is how I was able to run Lynx in my lambda and build [TextMode](/blog/text-mode).
 
 So Lambda's and containers combined seemed like a good solution, but node.js I'm less certain about. I'm not a JavaScript developer and I found working with promises confusing. TypeScript helped a lot but I still felt a little bit lost. ( This is certainly more about me having zero experience with Node.js than anything else. )
 
@@ -484,4 +484,4 @@ It's surprizing to me how much faster the Golang version is. The majority of the
 
 ## Conclusion
 
-So there you go, serverless golang. We built a program in Go that has some OS level dependencies (lynx), we've wrapped it up into a container, we ran it in an AWS Lambda and then also used S3 get and puts for caching. And the whole up to a REST end-point. You can [test it out]() or use it for your own purposes and the full source code on [github]().
+So there you go, containerized serverless Golang. We built a program in Go that has some OS level dependencies (lynx), we've wrapped it up into a container, we ran it in an AWS Lambda and then also used S3 get and puts for caching. And the whole up to a REST end-point. You can [test it out](https://earthly-tools.com/text-mode) or use it for your own purposes and the full source code on [github]().
