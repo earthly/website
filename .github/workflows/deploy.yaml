@@ -88,7 +88,7 @@ jobs:
               find ./blog/_posts -maxdepth 1 -name "*$path*" -print > published.txt
               echo "::set-output name=published::$(cat published.txt)"
             fi
-          fi
+           fi
 
       ## Step output value for whether file exists
       - name: Check file existence
