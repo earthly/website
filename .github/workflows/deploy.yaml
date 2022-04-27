@@ -17,19 +17,7 @@ jobs:
       - uses: FranzDiebold/github-env-vars-action@v2
       - name: Checkout code
         uses: actions/checkout@v2
-        # Where this goes is in the hook
-      - name: Slack Notification
-        id: slack
-        uses: slackapi/slack-github-action@v1.18.0
-        with:
-          channel-id: 'alerts'
-          payload: |
-            {
-              "text": "GitHub Action build result."
-            }
-        env:
-          SLACK_WEBHOOK_URL: https://hooks.slack.com/services/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
-          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
+     
       - name: Create Cache Key
         run: |- 
           date "+%Y-%d-%m" > today.txt
@@ -86,3 +74,32 @@ jobs:
           number: ${{ steps.finder.outputs.pr }}
           message: |
             Commit ${{ github.sha }} deployed to ${{ env.NETLIFY_URL }}
+       - name: Has new published documents
+         run: |-  
+           path=$(date '+%Y-%m-%d')
+           if test -n "$(find ./blog/_posts -maxdepth 1 -name "*$path*" -print)"
+           then
+            echo "PUBLISHED=1" >> $GITHUB_ENV
+            find ./blog/_posts -maxdepth 1 -name "*$path*" -print
+            find ./blog/_posts -maxdepth 1 -name "*$path*" -print > published.txt
+           fi
+      - name: Check file existence
+        id: check_files
+        uses: andstor/file-existence-action@v1
+        with:
+          files: "published.txt"
+      - name: Slack Notification
+        id: slack
+        uses: slackapi/slack-github-action@v1.18.0
+        if: steps.check_files.outputs.files_exists == 'true'
+        with:
+          # This is set in the webhook it seems
+          channel-id: 'alerts'
+          payload-file-path: "./published.txt"
+          # payload: |
+          #   {
+          #     "text": "GitHub Action build result."
+          #   }
+        env:
+          SLACK_WEBHOOK_URL: https://hooks.slack.com/services/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
+          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
