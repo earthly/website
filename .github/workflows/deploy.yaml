@@ -74,6 +74,7 @@ jobs:
           message: |
             Commit ${{ github.sha }} deployed to ${{ env.NETLIFY_URL }}
       - name: Has new published documents
+        id: published_check
         run: |-  
            path=$(date '+%Y-%m-%d')
            if test -n "$(find ./blog/_posts -maxdepth 1 -name "*$path*" -print)"
@@ -81,6 +82,7 @@ jobs:
             echo "PUBLISHED=1" >> $GITHUB_ENV
             find ./blog/_posts -maxdepth 1 -name "*$path*" -print
             find ./blog/_posts -maxdepth 1 -name "*$path*" -print > published.txt
+            echo "::set-output name=published::$(cat published)"
            fi
       - name: Check file existence
         id: check_files
@@ -94,11 +96,11 @@ jobs:
         with:
           # This is set in the webhook it seems
           channel-id: 'alerts'
-          payload-file-path: "./published.txt"
-          # payload: |
-          #   {
-          #     "text": "GitHub Action build result."
-          #   }
+          # payload-file-path: "./published.txt"
+          payload: |
+            {
+              "text": " ${{join(steps.published_check.outputs.*, '\n')}}"
+            }
         env:
           SLACK_WEBHOOK_URL: https://hooks.slack.com/services/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
           SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
