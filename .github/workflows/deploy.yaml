@@ -17,62 +17,62 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
      
-      - name: Create Cache Key
-        run: |- 
-          date "+%Y-%d-%m" > today.txt
-          date --date="yesterday" "+%Y-%d-%m" > yesterday.txt
-          mkdir -p build/site/blog/generated/
-      - name: Download released earth
-        run: "sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/download/v0.6.12/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly'"
-      - name: cache images
-        uses: actions/cache@v2
-        with:
-          path: |
-              .jekyll-cache
-              build/site/blog/generated
-          key: ${{ hashFiles('today.txt')  }}
-          restore-keys: |
-            ${{ hashFiles('yesterday.txt') }}
-      - name: copy cache
-        run: |-
-          mkdir -p blog/_site/generated/
-          cp -a build/site/blog/generated/. blog/_site/generated/
-      - name: Build Site
-        run: |-
-          if [ "$CI_ACTION_REF_NAME" == "main" ]; then
-            echo "Main Build - going to prod!"
-            earthly --use-inline-cache +build
-            earthly +combine
-          else
-            echo "Branch Build - only for preview"
-            earthly --use-inline-cache --verbose +dev-build 
-            earthly +combine
-          fi
-      - name: Push to Netlify
-        env:
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-        run: |-
-          cd build/site
-          if [ "$CI_ACTION_REF_NAME" == "main" ]; then
-            echo "Main Build - deploying to prod!"
-            netlify deploy --dir=. --prod
-            OUTPUT=$(netlify deploy --dir=.)
-            echo "NETLIFY_URL=$(echo $OUTPUT | grep -Eo '(http|https)://[a-zA-Z0-9./?=_-]*(--)[a-zA-Z0-9./?=_-]*')" >> $GITHUB_ENV
-          else
-            echo "Preview Deploy"
-            OUTPUT=$(netlify deploy --dir=.)
-            echo "NETLIFY_URL=$(echo $OUTPUT | grep -Eo '(http|https)://[a-zA-Z0-9./?=_-]*(--)[a-zA-Z0-9./?=_-]*')" >> $GITHUB_ENV
-          fi
-      - name: Get PR
-        uses: jwalton/gh-find-current-pr@v1
-        id: finder
-      - name: Comment on PR 
-        uses: marocchino/sticky-pull-request-comment@v2
-        with:
-          number: ${{ steps.finder.outputs.pr }}
-          message: |
-            Commit ${{ github.sha }} deployed to ${{ env.NETLIFY_URL }}
+      # - name: Create Cache Key
+      #   run: |- 
+      #     date "+%Y-%d-%m" > today.txt
+      #     date --date="yesterday" "+%Y-%d-%m" > yesterday.txt
+      #     mkdir -p build/site/blog/generated/
+      # - name: Download released earth
+      #   run: "sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/download/v0.6.12/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly'"
+      # - name: cache images
+      #   uses: actions/cache@v2
+      #   with:
+      #     path: |
+      #         .jekyll-cache
+      #         build/site/blog/generated
+      #     key: ${{ hashFiles('today.txt')  }}
+      #     restore-keys: |
+      #       ${{ hashFiles('yesterday.txt') }}
+      # - name: copy cache
+      #   run: |-
+      #     mkdir -p blog/_site/generated/
+      #     cp -a build/site/blog/generated/. blog/_site/generated/
+      # - name: Build Site
+      #   run: |-
+      #     if [ "$CI_ACTION_REF_NAME" == "main" ]; then
+      #       echo "Main Build - going to prod!"
+      #       earthly --use-inline-cache +build
+      #       earthly +combine
+      #     else
+      #       echo "Branch Build - only for preview"
+      #       earthly --use-inline-cache --verbose +dev-build 
+      #       earthly +combine
+      #     fi
+      # - name: Push to Netlify
+      #   env:
+      #     NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+      #     NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+      #   run: |-
+      #     cd build/site
+      #     if [ "$CI_ACTION_REF_NAME" == "main" ]; then
+      #       echo "Main Build - deploying to prod!"
+      #       netlify deploy --dir=. --prod
+      #       OUTPUT=$(netlify deploy --dir=.)
+      #       echo "NETLIFY_URL=$(echo $OUTPUT | grep -Eo '(http|https)://[a-zA-Z0-9./?=_-]*(--)[a-zA-Z0-9./?=_-]*')" >> $GITHUB_ENV
+      #     else
+      #       echo "Preview Deploy"
+      #       OUTPUT=$(netlify deploy --dir=.)
+      #       echo "NETLIFY_URL=$(echo $OUTPUT | grep -Eo '(http|https)://[a-zA-Z0-9./?=_-]*(--)[a-zA-Z0-9./?=_-]*')" >> $GITHUB_ENV
+      #     fi
+      # - name: Get PR
+      #   uses: jwalton/gh-find-current-pr@v1
+      #   id: finder
+      # - name: Comment on PR 
+      #   uses: marocchino/sticky-pull-request-comment@v2
+      #   with:
+      #     number: ${{ steps.finder.outputs.pr }}
+      #     message: |
+      #       Commit ${{ github.sha }} deployed to ${{ env.NETLIFY_URL }}
       - name: Has new published documents
         id: published_check
         run: |-  
