@@ -6,49 +6,36 @@ toc: true
 author: Adam
 
 internal-links:
- - just an example
+ - s3
+ - aws lambda
 ---
-### Writing Article Checklist
-
-- [ ] Fix Grammarly Errors
-- [ ] Read out loud
-- [ ] Write 5 or more titles and pick the best on
-- [ ] First two paragraphs: What's it about? Why listen to you?
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-- [ ] Run mark down linter (`lint`)
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links to other articles
-- [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
-- [ ] Raise PR
 
 ## Intro
 
-Last time, I built a [Node.js lambda](/blog/aws-lambda-docker/) running in a container. Running a container as serverless application worked out great: it meant it was simple to test locally and that I could install OS level dependencies and shell out and call them. That is how I was able to run Lynx in my lambda and build [TextMode](/blog/text-mode).
+Last time, I built a [Node.js lambda function](/blog/aws-lambda-docker/) running in a container. Running a container as a serverless application worked out great: it meant it was simple to test locally and that I could install and use OS-level dependencies in a serverless function. That is how I was able to run Lynx in my Lambda and build [TextMode](/blog/text-mode).
 
-So Lambda's and containers combined seemed like a good solution, but node.js I'm less certain about. I'm not a JavaScript developer and I found working with promises confusing. TypeScript helped a lot but I still felt a little bit lost. ( This is certainly more about me having zero experience with Node.js than anything else. )
+So Lambda's and containers combined seemed like a good solution, but node.js I'm less sure about. I'm not a JavaScript developer, and I choose Node.js merely because of the existence of the [Mozilla Readability](https://github.com/mozilla/readability) library. However, since then, I've found it has been ported to Golang, and I hope that the Golang version will be faster and easier for me to understand.
 
-So today's mission is to port that Node.js code to GoLang, running a container. I'll also be using OS dependencies in my container and because TextMode is a very cacheable service, I'm going to use S3 to cache the results as well.
+So today's mission is to port that Node.js code to Golang, running in a container. I'll also be using OS dependencies in my container, and because TextMode is a very cacheable service, I'm going to use S3 to cache the results as well.
 
-**So read this article to learn how to build a Golang lambda service in a container, hook it up to a REST API endpoint and get and put data to S3 from it.**
+**So, please read this article to learn how to build a Golang Lambda service in a container, hook it up to a REST API end-point, and push and pull data from S3.**
 
 ## The Goal
 
 <div class="wide">
-{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/5800.png --alt {{  }} %}
+{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/5800.png --alt {{ Diagram of AWS Lambda request flow }} %}
 <figcaption>Here is what we will make.</figcaption>
 </div>
 
-Here is the plan, when I make a call like this:
+Here is the plan when I make a call like this:
 
 ~~~{.bash caption=">_"}
 curl  https://earthly-tools.com/text-mode?url=https://www.lipsum.com/
 ~~~
 
-It will hit the 1) API gateway, 2) Call my GoLang lambda function handler. My code will 3) pull the site from the web and 4) clean it up to look like a text document and return it to the user. Last we will tackle 5) adding some caching into the mix.
+It will *1)* hit the API gateway, *2)* call my GoLang lambda function handler. My code will then *3)* pull the site from the web and *4)* clean it up to look like a text document and return it to the user. Last we will tackle *5)* adding some caching into the mix.
 
-But the end-result is already up and running at [https://earthly-tools.com/text-mode](https://earthly-tools.com/text-mode) and will return something like this:  
+But the end result is already up and running at [https://earthly-tools.com/text-mode](https://earthly-tools.com/text-mode) and will return something like this:  
 
 ~~~{.txt caption="curl result"}
 What is Lorem Ipsum?
@@ -65,7 +52,7 @@ What is Lorem Ipsum?
    ...
 ~~~
 
-And all in ~150 lines of go code. So lets start with that.
+And all in ~150 lines of go code. So let's do it.
 
 ## The AWS Serverless REST API
 
@@ -79,7 +66,7 @@ When my Go Lambda is called via the lambda runtime, it will get a JSON event des
 }
 ~~~
 
-And I'll return an even describing the document I'd like returned.
+And, I'll return an event describing the document I'd like produced.
 
 ~~~{.json caption="sample output"}
 {
@@ -91,7 +78,7 @@ And I'll return an even describing the document I'd like returned.
 }
 ~~~
 
-The whole thing has the feel of an [CGI Interface](https://en.wikipedia.org/wiki/Common_Gateway_Interface).
+The whole thing has the feel of an old-fashion [CGI Interface](https://en.wikipedia.org/wiki/Common_Gateway_Interface).
 
 I represent the input JSON in Golang like this:
 
@@ -105,7 +92,7 @@ type QueryStringParameters struct {
 
 ~~~
 
-And output
+And output like so:
 
 ~~~{.go caption="output types"}
 type Response struct {
@@ -115,13 +102,13 @@ type Response struct {
 }
 ~~~
 
-With those in place, I can write my lambda handler code.
+And, with those in place, I can write my lambda handler code.
 
 ## The Golang Lambda Function
 
 First I'll add the needed dependencies:
 
-~~~
+~~~{.bash caption=">_"}
 $ go get github.com/aws/aws-lambda-go/lambda # Add lambda dependency
 $ go get github.com/go-shiori/go-readability # Add readability dependency
 ~~~
@@ -159,15 +146,15 @@ func main() {
 
 Here `HandleLambdaEvent` does nothing but delegate to `process`, which uses readability to grab the url and then pipes the returned html through lynx. This is the bulk of the work of our service, everything else is just packaging and bookkeeping.
 
-So Let's package it up in a container and test it out with the lambda runtime.
+So, let's package it up in a container and test it out with the lambda runtime.
 
 ## Containerization
 
-There are two ways to create a container for running in AWS lambda. One is to start with your prefered base container and then copy in and properly setup the AWS lambda runtime. The second is to use an Amazon provided container, and put your code where the runtime expects it. I'm going to do that latter.
+There are two ways to create a container for running in AWS lambda. One is to start with your preferred base container and then copy in and properly set up the AWS Lambda runtime. The second is to use an Amazon-provided container and put your code where the runtime expects it. I'm going to do the latter.
 
-Using an earthfile, my container image creation looks like this:
+I'm using an Earthfile, so my container image creation code looks like this:
 
-~~~{.bash caption=">_"}
+~~~{.dockerfile caption="Earthfile"}
 VERSION 0.6
 FROM golang:1.17-stretch
 
@@ -191,11 +178,11 @@ docker:
     SAVE IMAGE --push 459018586415.dkr.ecr.us-east-1.amazonaws.com/text-mode-go:latest
 ~~~
 
-I grab my dependencies in `deps`, build my executable in `build` and in `docker` things get a bit more exciting. I copy my executable into AWS's lambda go image and into `/var/task`, which is the default place the runtime will look for it. ( In theory it's possible to change `/var/task`  with `LAMBDA_TASK_ROOT` but I found that to only work in local development and to be ignored when running in AWS.) After that I set the `CMD` and `SAVE` my image with a tag set to my Amazon ECR registry and build and push the image using `earthly --push +docker`.
+I grab my dependencies in `deps`, build my executable in `build` and in `docker` things get a bit more exciting. First, I copy my executable into AWS's lambda go image and into `/var/task`, which is the default place the runtime will look for it. ( In theory, it's possible to change `/var/task`  with `LAMBDA_TASK_ROOT`, but I found that to only work in local development and be ignored when running in AWS.) After that, I set the `CMD` and `SAVE` my image with a tag assigned to my Amazon ECR registry and build and push the image using `earthly --push +docker`.
 
 It's possible to do all this in a [dockerfile](https://docs.aws.amazon.com/lambda/latest/dg/go-image.html) as well.
 
-With that done, its possible to test the code along with aws lambda runtime locally.
+With that done, it's possible to test the code and the AWS Lambda runtime locally.
 
 ## AWS Lambda Local Development
 
@@ -215,7 +202,8 @@ $ curl --verbose \
   }'
 ~~~
 
-~~~{.bash caption=">_"}
+~~~{.caption="Output"}
+
 What is Lorem Ipsum?
 
    Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -230,27 +218,25 @@ What is Lorem Ipsum?
    ...
 ~~~
 
-....
+For steps on how to construct the Lambda in AWS and hook it up to and API endpoint, see the [Node.js lambda article](https://earthly.dev/blog/aws-lambda-docker/#elastic-container-registry)
 
-For steps on how to construct the lambda in AWS and hook it up to and API endpoint, the steps are outline in the [Node.js lambda article](https://earthly.dev/blog/aws-lambda-docker/#elastic-container-registry)
+## Using AWS S3 Object Expiration
 
-## S3
+This service is a bit slow, especially for huge pages. But, the text results I am retrieving are very cacheable. So, why head back to the web each time `https://www.lipsum.com/` is requested when I can just cache the result for future usage.
 
-This service, especially for large webpages is a bit slow. But the text results I am retrieveing are very cachable. Why head back to the web each time `https://www.lipsum.com/` is requested when I can just cache the result for future usage.
-
-Amazon S3 has Object expiratation settings, so its easy to setup a bucket as a text file cache.
+Amazon S3 has Object expiration settings, so its easy to set up a bucket as a text file cache.
 
 <div class="wide">
-{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/5520.png --alt {{  }} %}
-{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/5620.png --alt {{  }} %}
+{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/5520.png --alt {{ S3 Object Expiration Settings }} %}
+{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/5620.png --alt {{ S3 day to expiration rules }} %}
 <figcaption>S3 Expiration Settings make for a simple disk-based cache</figcaption>
 </div>
 
-## aws s3 put object
+## AWS S3 Put Object
 
 To write and read from S3 first I need to import some code and start up an S3 session:
 
-~~~{.diff caption=""}
+~~~{.diff caption="main.go"}
 import (
   ...
   "github.com/aws/aws-lambda-go/lambda"
@@ -279,7 +265,7 @@ func main() {
 
 Then I need a way to put data into the correct bucket:
 
-~~~{.go caption=""}
+~~~{.go caption="main.go"}
 func (app App) put(url string, result string) error {
  input := &s3.PutObjectInput{
   Body:   strings.NewReader(result),
@@ -297,9 +283,9 @@ func (app App) put(url string, result string) error {
 
 I'm creating a PutObjectInput, where the key is the input url and the value is the result of my process step.
 
-Let do an S3 get:
+Let's do an S3 get:
 
-~~~{.go caption=""}
+~~~{.go caption="main.go"}
 func (app App) get(url string) (string, error) {
  req := &s3.GetObjectInput{
   Bucket: aws.String("text-mode"),
@@ -319,11 +305,11 @@ func (app App) get(url string) (string, error) {
 }
 ~~~
 
-This works fine, except because we are just passing the error up to the caller its going to be hard to tell the key not existing from other errors.
+This works fine, except because we are just passing the error up to the caller its going to be hard to tell the key not existing from any other errors.
 
 The Amazon SDK represents its errors with this interface:
 
-~~~{.go caption="awserr"}
+~~~{.go caption="package awserr"}
 type Error interface {
  // Satisfy the generic error interface.
  error
@@ -339,9 +325,9 @@ type Error interface {
 }
 ~~~
 
-And there types are denonted using the const stored in `Code()`. The possible values for s3 are in package `s3` in `errors.go`
+And there types are denoted using the constant stored in `Code()`. The possible values for s3 are in package `s3` in `errors.go`
 
-~~~{.go caption=""}
+~~~{.go caption="errors.go"}
  // ErrCodeNoSuchBucket for service response error code
  // "NoSuchBucket".
  //
@@ -408,80 +394,87 @@ func (app App) HandleLambdaEvent(event Event) (Response, error) {
 }
 ~~~
 
-## S3 Locally
+## Accessing S3 Locally
 
-Now if I test this locally, in its docker container, I hit a new problem:
+Now, if I test this locally, in its docker container, I hit a new problem:
 
-```
-{"errorMessage":"failed to get result: NoCredentialProviders: no valid providers in chain. Deprecated.\n\tFor verbose messaging see aws.Config.CredentialsChainVerboseErrors","errorType":"wrapError"}%                                
-```
+~~~{.json caption=""}
+{
+  "errorMessage":"failed to get result: NoCredentialProviders: no valid providers in chain. Deprecated.\n\tFor verbose messaging see aws.Config.CredentialsChainVerboseErrors",
+  "errorType":"wrapError"
+}                                
+~~~
 
-When running in AWS, my lambda is running under a specific role with specific permissions. But here locally inside a container it doesn't know who it is. I can fix this for local testing by giving my program access to my `.aws/config` and `.aws/credentials`.
+My Lambda is running under a specific role with specific permissions when running in AWS. But here, locally inside a container, it doesn't know who it is. I can fix this for local testing by giving my program access to my `.aws/config` and `.aws/credentials`.
 
 <div class="notice--warning">
 ### ❗ Careful With Secrets
 
-Whenever you are working with secrets and build docker images, its important to ensure you aren't capturing the secrets in a image layer or log file. You don't want your secrets to end up contained an image then be pushed to registry.
+Whenever you are working with secrets and building docker images, its important to ensure you aren't capturing the secrets in an image layer or log file. You don't want your secrets to end up contained an image and then be pushed to the registry.
 
 </div>
 
-The simplest safe way to access these files at runtime in the container is a readonly volume mount. This will ensure they are accessable to the running process but they will not be contained in the image at rest.
+The simplest safe way to access these files at runtime in the container is a read-only volume mount. This will ensure they are accessible to the running process but they will not be contained in the image at rest.
 
-```
+~~~{.bash caption=">_"}
  docker run \
         -v /Users/user/.aws/config:/root/.aws/config:ro \
         -v /Users/user/.aws/credentials:/root/.aws/credentials:ro \
         -p 9000:8080 459018586415.dkr.ecr.us-east-1.amazonaws.com/text-mode-go:latest
-```
+~~~
 
-And with that change, I can not read and write to S3 when running locally.
+And with that change, I can read and write to S3 when running locally.
 
 ## Deploy
 
 With all that working locally, I can deploy things:
 
-```
+~~~{.bash caption=">_"}
 $ earthly --push +docker
 $ aws lambda update-function-code \
             --region us-east-1 \
             --function-name text-mode-go \
             --image-uri 459018586415.dkr.ecr.us-east-1.amazonaws.com/text-mode-go:latest
-```
+~~~
 
 ## Speed Test
 
-Now that I'm caching and using a compiled language, things should be faster. Lets check it out. I have [the orginal node.js] code up and the new code up.
+Now that I'm caching and using a compiled language, things should be faster. Lets check it out. I'll temporarily keep [the original node.js](/blog/text-mode/) code and the new code up, so that I can compare them.
 
-```
+~~~{.bash caption=">_"}
 $ # Node.js 
 $ time curl https://earthly-tools.com/text-mode-2?url=https://en.wikipedia.org/wiki/Software_engineering
 ...
 curl   0.02s user 0.01s system 0% cpu 8.905 total
-```
+~~~
+
 After running it a couple times, to make sure it was warm, the time averaged out at 3.8 seconds.
 
-To test the go solution without caching I'll use the aws cli to clear the cache bucket every second. 
-```
+To test the go solution without caching, I'll use the aws cli to clear the cache bucket every second.
+
+~~~{.bash caption=">_"}
 watch -n 1 'aws s3 rm s3://text-mode/ --recursive'
-```
+~~~
 
 And then test it:
 
-```
+~~~{.bash caption=">_"}
 $ # GoLang
 $ time curl https://earthly-tools.com/text-mode?url=https://en.wikipedia.org/wiki/Software_engineering
 ...
-```
+~~~
 
-Then to test with caching I just stop deleting stuff. Then end result, making sure each lambda is warmed up, and average across several call, is this:
+Then to test with caching, I just stop deleting stuff. The end result, making sure each lambda is warmed up, and average across several call, is this:
 
 <div class="wide">
-{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/4310.png --alt {{  }} %}
-<figcaption>It seems like porting to Golang was a good idea.</figcaption>
+{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/4310.png --alt {{ Graph of speeds }} %}
+<figcaption>Porting to Golang was a performance win.</figcaption>
 </div>
 
-It's surprizing to me how much faster the Golang version is. The majority of the work is done by lynx and the readibility lib. It's possible the native readability lib is just a lot faster but I'm not sure without digging in further.  
+It's surprising to me how much faster the Golang version is. Lynx and the readability lib do the majority of the work. Perhaps the native readability lib is just a lot faster but I'm not sure without digging in further.  
 
 ## Conclusion
 
-So there you go, containerized serverless Golang. We built a program in Go that has some OS level dependencies (lynx), we've wrapped it up into a container, we ran it in an AWS Lambda and then also used S3 get and puts for caching. And the whole up to a REST end-point. You can [test it out](https://earthly-tools.com/text-mode) or use it for your own purposes and the full source code on [github]().
+So there you go, containerized serverless Golang. We built a program in Go that has some OS level dependencies (lynx), we've wrapped it up into a container, ran it in an AWS Lambda, and then also used S3 get and puts for caching. And the whole up to a REST end point. You can [test it out](https://earthly-tools.com/text-mode) or use it for your own purposes and the complete source code is on [github](https://github.com/adamgordonbell/cloudservices/tree/aws-lambda-1).
+
+{% include cta/cta1.html %}
