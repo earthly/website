@@ -104,7 +104,6 @@ jobs:
         with:
           # This is set in the webhook it seems
           channel-id: 'alerts'
-          # payload-file-path: "./published.txt"
           payload: |
             {
               "text": "Published blog posts: ${{join(steps.published_check.outputs.*, '\n')}}"
