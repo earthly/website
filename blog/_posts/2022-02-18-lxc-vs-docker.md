@@ -45,7 +45,7 @@ Let's take a look at a couple of examples. In Linux, you can use the `ps` comman
 
 Similarly, on your Linux host machine, you have `/bin`, the standard root directory for the executables. In the container's user space, you have another `/bin`. The container's user space is bundled inside of the container, and can be shipped to a different host. This user space isolation is the reason you can have an Alpine Linux container on a Ubuntu host machine, as programs in Linux containers are isolated from the rest of the system. LXC leverages [`chroot`](https://en.wikipedia.org/wiki/Chroot) to achieve this feature.
 
-Docker used LXC, [prior to version 1.0](https://www.infoq.com/news/2014/03/docker_0_9/#:~:text=LXC%20itself%20recently%20announced%20the,%2C%20Solaris%2C%20OpenSolaris%20and%20illumos.), to create isolation from the host system. Later, Docker developed its own replacement for LXC called [`libcaontainer`](https://github.com/opencontainers/runc/tree/master/libcontainer). This is why Docker and LXC have so much in common.
+Docker used LXC, [prior to version 1.0](https://www.infoq.com/news/2014/03/docker_0_9/#:~:text=LXC%20itself%20recently%20announced%20the,%2C%20Solaris%2C%20OpenSolaris%20and%20illumos.), to create isolation from the host system. Later, Docker developed its own replacement for LXC called [`libcontainer`](https://github.com/opencontainers/runc/tree/master/libcontainer). This is why Docker and LXC have so much in common.
 
 In terms of host utilization, Docker differs from LXC in two additional ways:
 
