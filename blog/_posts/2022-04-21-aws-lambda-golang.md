@@ -325,7 +325,7 @@ type Error interface {
 }
 ~~~
 
-And there types are denoted using the constant stored in `Code()`. The possible values for s3 are in package `s3` in `errors.go`
+And their types are denoted using the constant stored in `Code()`. The possible values for s3 are in package `s3` in `errors.go`
 
 ~~~{.go caption="errors.go"}
  // ErrCodeNoSuchBucket for service response error code
