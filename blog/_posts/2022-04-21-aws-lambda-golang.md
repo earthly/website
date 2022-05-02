@@ -52,7 +52,7 @@ What is Lorem Ipsum?
    ...
 ~~~
 
-And all in ~150 lines of go code. So let's do it.
+And all in ~150 lines of Go code. So let's do it.
 
 ## The AWS Serverless REST API
 
