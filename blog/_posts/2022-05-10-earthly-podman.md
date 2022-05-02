@@ -7,19 +7,6 @@ author: David Szakallas
 internal-links:
  - podman
 ---
-
-## Draft.dev Article Checklist
-
-- [x] Add in Author page
-- [x] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
-
 Podman is a daemon-less container engine for developing, managing, and running OCI containers on your Linux System.
 With podman, containers can either be run as root or in rootless mode, which improves security as an attacker will not have root privileges over your system. It has a CLI that serves as a drop-in replacement for Docker to make migration easier, so most users can alias Docker to podman without any issues. You can find out more in the project's [documentation](https://docs.podman.io/en/latest/).
 
@@ -48,21 +35,21 @@ For rootless OverlayFS support, `fuse-overlayfs` is required. Unfortunately, as 
 On Arch Linux, all required packages are hosted in the [Community](https://archlinux.org/packages/community/x86_64/podman/) repository.
 
 ~~~{.bash caption=">_"}
-sudo pacman -S netavark aardvark-dns slirp4netns fuse-overlayfs podman
+$ sudo pacman -S netavark aardvark-dns slirp4netns fuse-overlayfs podman
 ~~~
 
 You can verify your installation by starting a basic container. Note that rootless won't work just yet, so we're using `sudo` for the time being.
 
 ~~~{.bash caption=">_"}
-sudo podman run busybox echo "Hello World"
-Resolved "busybox" as an alias (/etc/containers/registries.conf.d/00-shortnames.conf)
-Trying to pull docker.io/library/busybox:latest...
-Getting image source signatures
-Copying blob 50e8d59317eb done  
-Copying config 1a80408de7 done  
-Writing manifest to image destination
-Storing signatures
-Hello World
+$ sudo podman run busybox echo "Hello World"
+  Resolved "busybox" as an alias (/etc/containers/registries.conf.d/00-shortnames.conf)
+  Trying to pull docker.io/library/busybox:latest...
+  Getting image source signatures
+  Copying blob 50e8d59317eb done  
+  Copying config 1a80408de7 done  
+  Writing manifest to image destination
+  Storing signatures
+  Hello World
 ~~~
 
 ### Installing on Other Distros
@@ -74,7 +61,7 @@ You can start by looking at podman's [installation instructions](https://podman.
 For rootless podman, unprivileged users must be able to create namespaces. Check the value of `kernel.unprivileged_userns_clone` by running:
 
 ~~~{.bash caption=">_"}
-sysctl kernel.unprivileged_userns_clone
+$ sysctl kernel.unprivileged_userns_clone
 ~~~
 
 If it is currently set to 0, enable it by setting 1 via [`sysctl`](https://wiki.archlinux.org/title/Sysctl) or [kernel parameter](https://wiki.archlinux.org/title/Kernel_parameters).
@@ -82,8 +69,8 @@ If it is currently set to 0, enable it by setting 1 via [`sysctl`](https://wiki.
 Furthermore, [`subuid`](https://man.archlinux.org/man/subuid.5) and [`subgid`](https://man.archlinux.org/man/subgid.5) must be set for each user that wants to run rootless podman. `/etc/subuid` and `/etc/subgid` do not exist by default. If they do not exist yet in your system, create them and add the subuids and subgids with usermod.
 
 ~~~{.bash caption=">_"}
-sudo touch /etc/subuid /etc/subgid
-sudo usermod --add-subuids 100000-165535 --add-subgids 100000-165535 $USER
+$ sudo touch /etc/subuid /etc/subgid
+$ sudo usermod --add-subuids 100000-165535 --add-subgids 100000-165535 $USER
 ~~~
 
 See more about [Configuration](https://wiki.archlinux.org/title/Podman#Configuration) on the Arch wiki.
@@ -92,7 +79,7 @@ See more about [Configuration](https://wiki.archlinux.org/title/Podman#Configura
 
 You might have noticed an interesting line in the output of `podman run` earlier:
 
-~~~{.bash caption=">_"}
+~~~{.bash caption="Output"}
 Resolved "busybox" as an alias (/etc/containers/registries.conf.d/00-shortnames.conf)
 ~~~
 
@@ -102,50 +89,48 @@ being pulled is spoofed. Instead, podman's default distribution includes a prede
 However, the files under `/etc/containers` is only considered when running podman as root. So when running rootless, you will receive the following error:
 
 ~~~{.bash caption=">_"}
-podman run busybox echo "Hello World"
-Error: short-name "busybox" did not resolve to an alias and no unqualified-search registries are defined in "/home/user/.config/containers/registries.conf"
+$ podman run busybox echo "Hello World"
+  Error: short-name "busybox" did not resolve to an alias and no unqualified-search registries are defined in "/home/user/.config/containers/registries.conf"
 ~~~
 
 This issue can be resolved by using the fully qualified image name, i.e `docker.io/library/busybox`. However, this would require modifying all existing
 scripts that already use short image names. Instead you can copy `00-shortnames.conf` to your user config directory and assign the necessary permissions.
 
 ~~~{.bash caption=">_"}
-mkdir -p ${XDG_CONFIG_HOME}/containers/registries.conf.d
-sudo cp /etc/containers/registries.conf.d/00-shortnames.conf ${XDG_CONFIG_HOME}/containers/registries.conf.d/00-shortnames.conf
-sudo chown $UID:$GID ${XDG_CONFIG_HOME}/containers/registries.conf.d/00-shortnames.conf
+$ mkdir -p ${XDG_CONFIG_HOME}/containers/registries.conf.d
+$ sudo cp /etc/containers/registries.conf.d/00-shortnames.conf ${XDG_CONFIG_HOME}/containers/registries.conf.d/00-shortnames.conf
+$ sudo chown $UID:$GID ${XDG_CONFIG_HOME}/containers/registries.conf.d/00-shortnames.conf
 ~~~
 
 Afterwards, you should be able to refer to the image via its short name:
 
 ~~~{.bash caption=">_"}
-podman run busybox echo "Hello World"
-Resolved "busybox" as an alias (/home/user/.config/containers/registries.conf.d/00-shortnames.conf)
-Trying to pull docker.io/library/busybox:latest...
-Getting image source signatures
-Copying blob 50e8d59317eb done  
-Copying config 1a80408de7 done  
-Writing manifest to image destination
-Storing signatures
-Hello World
+$ podman run busybox echo "Hello World"
+  Resolved "busybox" as an alias (/home/user/.config/containers/registries.conf.d/00-shortnames.conf)
+  Trying to pull docker.io/library/busybox:latest...
+  Getting image source signatures
+  Copying blob 50e8d59317eb done  
+  Copying config 1a80408de7 done  
+  Writing manifest to image destination
+  Storing signatures
+  Hello World
 ~~~
 
 However, if you run an image that doesn't have an alias in this list, you will still get an error:
 
 ~~~{.bash caption=">_"}
-user:~/ $ podman run curlimages/curl earthly.dev
-Error: short-name "curlimages/curl" did not resolve to an alias and no unqualified-search registries are defined in "/home/user/.config/containers/registries.conf"
+$ podman run curlimages/curl earthly.dev
+  Error: short-name "curlimages/curl" did not resolve to an alias and no unqualified-search registries are defined in "/home/user/.config/containers/registries.conf"
 ~~~
 
 This means you have to extend this list with each alias you want to allow.
 
-The second approach is (if you aren't worried about spoofing) to add docker.io as
-an unqualified search registry in [`${XDG_CONFIG_HOME}/containers/registries.conf`](https://man.archlinux.org/man/containers-registries.conf.5).
+The second approach is (if you aren't worried about spoofing) to add docker.io as an unqualified search registry in [`${XDG_CONFIG_HOME}/containers/registries.conf`](https://man.archlinux.org/man/containers-registries.conf.5).
 
-This file can also be used for setting up mirrors, e.g an internal company mirror for DockerHub or Quay, or
-the public GCR mirror of DockerHub, as in the following snippet. Note that I eventually left it commented as it doesn't contain the Earthly images I'll be using later in this tutorial.
+This file can also be used for setting up mirrors, e.g an internal company mirror for DockerHub or Quay, or the public GCR mirror of DockerHub, as in the following snippet. Note that I eventually left it commented as it doesn't contain the Earthly images I'll be using later in this tutorial.
 
 ~~~{.bash caption=">_"}
-cat >>$HOME/.config/containers/registries.conf <<EOF
+$ cat >>$HOME/.config/containers/registries.conf <<EOF
 unqualified-search-registries = ['docker.io']
 
 # [[registry]]
@@ -158,26 +143,26 @@ EOF
 Running `curlimages/curl` should output something like this now:
 
 ~~~{.bash caption=">_"}
-user:~/ $ podman run curlimages/curl earthly.dev
-Resolving "curlimages/curl" using unqualified-search registries (/home/user/.config/containers/registries.conf)
-Trying to pull docker.io/curlimages/curl:latest...
-Getting image source signatures
-Copying blob 28867d2f810e done  
-Copying blob 3aa4d0bbde19 done  
-Copying blob 968ce6b2fb58 done  
-Copying blob 701f5fe5d595 done  
-Copying blob 9c3e0e9fd2ff done  
-Copying blob 1082a46b0d76 done  
-Copying blob 610724250ccf done  
-Copying blob a8b5e80ef070 done  
-Copying blob b518d4c718b9 done  
-Copying config 375c62ad36 done  
-Writing manifest to image destination
-Storing signatures
-  % Total % Received % Xferd  Average Speed   Time Time  Time  Current
-                              Dload  Upload   Total   Spent Left  Speed
-100 35  100 35 0  0  73   0 --:--:-- --:--:-- --:--:-- 73
-Redirecting to https://earthly.dev/%
+$ podman run curlimages/curl earthly.dev
+  Resolving "curlimages/curl" using unqualified-search registries (/home/user/.config/containers/registries.conf)
+  Trying to pull docker.io/curlimages/curl:latest...
+  Getting image source signatures
+  Copying blob 28867d2f810e done  
+  Copying blob 3aa4d0bbde19 done  
+  Copying blob 968ce6b2fb58 done  
+  Copying blob 701f5fe5d595 done  
+  Copying blob 9c3e0e9fd2ff done  
+  Copying blob 1082a46b0d76 done  
+  Copying blob 610724250ccf done  
+  Copying blob a8b5e80ef070 done  
+  Copying blob b518d4c718b9 done  
+  Copying config 375c62ad36 done  
+  Writing manifest to image destination
+  Storing signatures
+    % Total % Received % Xferd  Average Speed   Time Time  Time  Current
+                                Dload  Upload   Total   Spent Left  Speed
+  100 35  100 35 0  0  73   0 --:--:-- --:--:-- --:--:-- 73
+  Redirecting to https://earthly.dev/%
 ~~~
 
 ## Authenticating to Private Registries
@@ -189,7 +174,7 @@ If you are using [credential helpers](https://docs.docker.com/engine/reference/c
 For instance, I am using [`docker-credential-acr-env`](https://github.com/chrismellard/docker-credential-acr-env) for unattended login to a
 private Azure Container Registry. I have placed the `docker-credential-acr-env` executable on my `$PATH`, and the following in my `auth.json`:
 
-~~~{.bash caption=">_"}
+~~~{.json caption="auth.json"}
 {
  "credHelpers": {
      "mycompany.azurecr.io": "acr-env"
@@ -205,7 +190,7 @@ You can find out more about authentication configuration on the manual page of [
 
 When you run a container with the `--init` flag it will fail with the following error message:
 
-~~~{.bash caption=">_"}
+~~~{.ini caption="Output"}
 Error: container-init binary not found on the host: stat /usr/libexec/podman/catatonit: no such file or directory
 ~~~
 
@@ -213,13 +198,13 @@ This happens because podman doesn't provide an init executable out of the box. I
 `catatonit` package will provide it as the default init binary for podman and resolve the issue.
 
 ~~~{.bash caption=">_"}
-sudo pacman -S catatonit
+$ sudo pacman -S catatonit
 ~~~
 
 If you would like to use a different init, e.g [`tini`](https://github.com/krallin/tini) (which is the default for docker), you can provide it with `--init-path`. Remember that it should be built as a static binary, as it is executed in the container.
 
 ~~~{.bash caption=">_"}
-podman run --init --init-path="/usr/bin/tini" --rm php:cli bash -c "ls -al /"
+$ podman run --init --init-path="/usr/bin/tini" --rm php:cli bash -c "ls -al /"
 ~~~
 
 ## Docker Compose
@@ -227,18 +212,16 @@ podman run --init --init-path="/usr/bin/tini" --rm php:cli bash -c "ls -al /"
 There are two ways to use the lightweight orchestration framework. podman can serve as the [backend for `docker-compose`](https://fedoramagazine.org/use-docker-compose-with-podman-to-orchestrate-containers-on-fedora/). In a rootless setup, this requires you to start the `podman.service` user unit, and set the `DOCKER_HOST` variable to point to the userland podman socket:
 
 ~~~{.bash caption=">_"}
-systemctl --user enable podman.service
-systemctl --user start podman.service
-export DOCKER_HOST=unix://${XDG_RUNTIME_DIR}/podman/podman.sock
+$ systemctl --user enable podman.service
+$ systemctl --user start podman.service
+$ export DOCKER_HOST=unix://${XDG_RUNTIME_DIR}/podman/podman.sock
 ~~~
 
 You most likely want to export the variable in your `.bashrc` or equivalent.
 
 Let's try it out with a basic WordPress application:
 
-`wp.yaml`:
-
-~~~{.bash caption=">_"}
+~~~{.yaml caption="wp.yaml"}
 version: "3.9"
     
 services:
@@ -269,8 +252,10 @@ services:
    WORDPRESS_DB_NAME: wordpress
 ~~~
 
+Start it up:
+
 ~~~{.bash caption=">_"}
-docker-compose up
+$ docker-compose up
 ~~~
 
 You can verify that it's running by visiting `localhost:8000`:
@@ -281,7 +266,7 @@ You can verify that it's running by visiting `localhost:8000`:
 
 Note that at the time of writing there's an [unresolved issue](https://github.com/containers/podman/issues/11717#issuecomment-932992780) causing containers to fail on named mounts with the following message:
 
-~~~{.bash caption=">_"}
+~~~{.ini caption="Output"}
 Error response from daemon: fill out specgen: /var/lib/mysql: duplicate mount destination
 ~~~
 
@@ -290,7 +275,7 @@ Hopefully it gets fixed soon.
 Alternatively to running docker-compose, there's a [`podman-compose`](https://github.com/containers/podman-compose) utility that uses a daemon-less process model that directly executes podman.
 
 ~~~{.bash caption=">_"}
-sudo pacman -S podman-compose
+$ sudo pacman -S podman-compose
 ~~~
 
 The CLI is similar to docker-compose, e.g `podman-compose up` will bring up the services. However, I noticed that sending the keyboard interrupt signal will not necessarily shut them down, so make sure you run `podman-compose down` if you don't want the processes lingering around in the background.
@@ -301,13 +286,13 @@ Note: Make sure you are on v0.6.15 or later for cgroups v2 support.
 
 Earthly runs BuildKit in a container which requires the cgroups CPU controller to set CPU limits. On some systemd-based systems using cgroups v2 (including Arch), non-root users do not have CPU delegation permissions, which causes enabling the CPU controller to fail. As a consequence, when running Earthly you might get the following error right in the beginning:
 
-~~~{.bash caption=">_"}
+~~~{.bash caption=""}
 sh: write error: No such file or directory
 ~~~
 
 or
 
-~~~{.bash caption=">_"}
+~~~{.bash caption=""}
 buildkitd: operation not permitted
 Error: buildkit process has exited
 ~~~
@@ -315,19 +300,19 @@ Error: buildkit process has exited
 If rootless, check that your user has permissions to delegate at least `cpu` and `pids`:
 
 ~~~{.bash caption=">_"}
-cat "/sys/fs/cgroup/user.slice/user-$(id -u).slice/user@$(id -u).service/cgroup.controllers"
+$ cat "/sys/fs/cgroup/user.slice/user-$(id -u).slice/user@$(id -u).service/cgroup.controllers"
 ~~~
 
 If the permissions are missing, you can add these for all users by creating or modifying the file at `/etc/systemd/system/user@.service.d/delegate.conf`
 
-~~~{.bash caption=">_"}
+~~~{.ini caption="delegate.conf"}
 [Service]
 Delegate=memory pids cpu io
 ~~~
 
 After a reboot, you should see these permissions and successfully run Earthly.
 
-~~~{.bash caption=">_"}
+~~~{.Dockerfile caption="Earthfile"}
 VERSION 0.6
 FROM python:3
 
@@ -344,8 +329,10 @@ docker:
 When running Earthly, you should see in the logs that it uses podman
 
 ~~~{.bash caption=">_"}
-earthly +docker
+$ earthly +docker
+~~~
 
+~~~{.ini caption="Output"}
  1. Init 🚀
 ————————————————————————————————————————————————————————————————————————————————
 
@@ -364,10 +351,12 @@ earthly +docker
 You should be able to run the created image with podman:
 
 ~~~{.bash caption=">_"}
-podman run python-example:latest
+$ podman run python-example:latest
 Hello World
 ~~~
 
 ## Conclusion
 
 As you can see there's much we can do today using the latest version of podman in rootless mode. Additionally to being a substitute for Docker's core functionality, we can to run docker-compose services and use the containerized build tool, Earthly, to build images. There are definitely some rough edges which hopefully get smoothened out as podman gradually gains more traction; just make sure to expect some bumps along the way when you give it a try :).
+
+{% include cta/cta1.html %}

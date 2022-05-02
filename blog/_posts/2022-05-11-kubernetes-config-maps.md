@@ -8,18 +8,6 @@ author: James Walker
 internal-links:
  - just an example
 ---
-## Draft.dev Article Checklist
-
-- [x] Add in Author page
-- [x] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
-
 Most applications have configuration parameters that need to be provided at runtime. It's common to use command line arguments, environment variables, and static files to configure software deployed using traditional methods. These techniques are also available to containerized [Kubernetes](https://kubernetes.io/) workloads via the ConfigMap API object.
 
 [ConfigMaps](https://kubernetes.io/docs/concepts/configuration/configmap) are expressly designed to store config parameters and inject them into running pods. They let you decouple your app's configuration from the individual containers running your deployment. Learning how to use them will increase your system's portability and make it easier to reconfigure your live instances.
@@ -42,7 +30,7 @@ ConfigMaps are one of the simplest Kubernetes object types. Their manifests only
 
 For example, here's a ConfigMap's YAML definition with three key-value pairs. They expose the target application's dynamically adjustable parameters:
 
-~~~{.bash caption=">_"}
+~~~{.yml caption=""}
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -55,7 +43,7 @@ data:
 
 ConfigMaps can also accommodate values that are expressed in binary format; you just need to use the `binaryData` field instead of `data`. Binary values should be [base64-encoded](https://linux.die.net/man/1/base64) inside the ConfigMap:
 
-~~~{.bash caption=">_"}
+~~~{.yml caption=""}
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -72,8 +60,6 @@ Once you've written your manifest, apply it to your cluster [using kubectl](http
 $ kubectl apply -f config-map.yaml
 ~~~
 
-![Creating a ConfigMap with kubectl]({{site.images}}{{page.slug}}/TSdxwEc.png)
-
 ## Consuming ConfigMaps in Pods
 
 Now that the ConfigMap exists in your cluster as a static chunk of data, it's not doing anything because no pods reference the object.
@@ -88,7 +74,7 @@ Now, look at how you can use both kinds of ConfigMap references with your pods.
 
 Set the `spec.containers.envFrom.configMapRef` field to pull a ConfigMap's data into a pod's containers as environment variables:
 
-~~~{.bash caption=">_"}
+~~~{.yaml caption=""}
 apiVersion: v1
 kind: Pod
 metadata:
@@ -103,13 +89,18 @@ spec:
          name: app-config
 ~~~
 
-![Kubernetes pod logs showing successful ConfigMap environment variable referencing]({{site.images}}{{page.slug}}/LZ4av9g.png)
+Apply:
+
+~~~
+$ kubectl apply -f pod.yaml
+$ kubectl logs app-pod
+~~~
 
 Reference the ConfigMap by the name you assigned in its manifest's `metadata.name` field. Containers created by this pod will be started with environment variables corresponding to the key-value pairs within the ConfigMap. In this example, your application could read the `db_host`, `default_user_status`, and `max_invoice_date` parameters from the environment.
 
 Sometimes you might not need the whole ConfigMap inside a particular pod's containers. Alternatively, you may want to rename a particular key before it's injected into the environment. You can use the `env` field with a `valueFrom` clause to selectively include specific keys from a ConfigMap:
 
-~~~{.bash caption=">_"}
+~~~{.yaml}
 apiVersion: v1
 kind: Pod
 metadata:
@@ -132,7 +123,7 @@ This pod's containers can access the `max_invoice_date` ConfigMap value as the `
 
 ConfigMaps can be mounted into your containers as files in a volume. When this mechanism is used, your pod references a volume that uses the `configMap` field to source its initial config from a named ConfigMap. That volume is then mounted into the container via the `volumeMounts` field:
 
-~~~{.bash caption=">_"}
+~~~{.yaml}
 apiVersion: v1
 kind: Pod
 metadata:
@@ -159,7 +150,7 @@ ConfigMaps mounted as volumes expose each `data` key-pair value as a separate fi
 
 You can use a ConfigMap to set the `command` for your containers. This field supports variable interpolation using environment variables. You can dynamically configure the command by creating a variable that references a ConfigMap value, then use that variable in your `spec.containers.command` field:
 
-~~~{.bash caption=">_"}
+~~~{.yaml }
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -192,7 +183,7 @@ This example runs the command given by the `$STARTUP_COMMAND` environment variab
 
 ConfigMaps can be made immutable by setting their `immutable` manifest field to `true`. This locks the `data` and `binaryData` fields, preventing them from ever being changed. It's also forbidden to revert `immutable` to `false` after it has been assigned. Here's the code:
 
-~~~{.bash caption=">_"}
+~~~{.yaml}
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -234,9 +225,16 @@ Another approach lets you automatically create a ConfigMap from an existing conf
 
 ~~~{.bash caption=">_"}
 $ cat ./app.conf
+~~~
+
+~~~{.ini caption="Output"}
 db_host=https://database.example.com
 default_user_status=suspended
+~~~
 
+Apply:
+
+~~~{.bash caption=">_"}
 # Creates ConfigMap with "db_host" and "default_user_status" keys
 $ kubectl create configmap app-config --from-file=./app.conf
 ~~~

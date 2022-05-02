@@ -3,22 +3,12 @@ title: "Docker and Makefiles: Building and Pushing Images with Make"
 categories:
   - Tutorials
 toc: true
+sidebar:
+  nav: "makefile"
 author: Kasper Siig
 internal-links:
- - just an example
+ - makefiles
 ---
-
-## Draft.dev Article Checklist
-
-- [x] Add in Author page
-- [x] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
 
 Deployments have been one of the hassles for many organizations for a long time, with companies sometimes even hiring engineers whose sole job is to get applications deployed more effectively. Because of this, many tools have been developed to help with this exact use case. However, some prefer to use tools that have already existed for many years: Docker and Makefiles.
 
@@ -44,7 +34,7 @@ First, you need to define the application itself. Create a new folder, and creat
 
 > The code for this specific step can be found in the branch "starter".
 
-~~~{.bash caption=">_"}
+~~~{.go caption="main.go"}
 package main
  
 import "fmt"
@@ -58,7 +48,7 @@ If you're not familiar with Go, this is simply a "Hello World" example. You star
 
 Go requires that a Module needs to be specified in order to build the application. This is done by simply running `go mod init` in your terminal. Once this is done, all that's left is to create the Dockerfile. Create a file named `Dockerfile`, and paste the following into it:
 
-~~~{.bash caption=">_"}
+~~~{.dockerfile caption="Dockerfile"}
 FROM golang:1.18-alpine
  
 WORKDIR /app
@@ -81,7 +71,7 @@ Time to add a Makefile to the equation.
 
 Start by creating a file called `Makefile`. In this file, you'll need to paste the following:
 
-~~~{.bash caption=">_"}
+~~~{.Makefile caption="Makefile"}
 DOCKER_USERNAME ?= username
 APPLICATION_NAME ?= hello-world
  
@@ -93,7 +83,7 @@ Again, be sure to replace the `DOCKER_USERNAME` variable with your own username.
 
 The next step is to push the image. Again, this is a very simple target inside Make:
 
-~~~{.bash caption=">_"}
+~~~{.Makefile caption="Makefile"}
 push:
          docker push ${DOCKER_USERNAME}/${APPLICATION_NAME}
 ~~~
@@ -114,13 +104,13 @@ You've been shown how to build and push your Docker images with Make, but the bi
 
 Instead, let's add some functionality to the Makefile so it uses the Git SHA hash when building and pushing your image. Start by adding this variable to the top of your Makefile:
 
-~~~{.bash caption=">_"}
+~~~{.Makefile caption="Makefile"}
 GIT_HASH ?= $(shell git log --format="%h" -n 1)
 ~~~
 
 This gets the SHA hash from Git and stores it in the `GIT_HASH` variable. Now you can append this to both cases where you define the tag for your Docker image:
 
-~~~{.bash caption=">_"}
+~~~{.Makefile caption="Makefile"}
 build:
          docker build --tag ${DOCKER_USERNAME}/${APPLICATION_NAME}:${GIT_HASH} .
  
@@ -130,7 +120,7 @@ push:
 
 Now you can run `make build push` again, and see that it's now using the Git hash to tag your image. This is great for working on it locally, but what do you do when you want to actually push a `:latest` tag? In theory, you could overwrite the `GIT_HASH` variable when executing `make build push`, but that's more of a workaround. Instead, let's create a new target:
 
-~~~{.bash caption=">_"}
+~~~{.Makefile caption="Makefile"}
 release:
          docker pull ${DOCKER_USERNAME}/${APPLICATION_NAME}:${GIT_HASH}
          docker tag  ${DOCKER_USERNAME}/${APPLICATION_NAME}:${GIT_HASH} ${DOCKER_USERNAME}/${APPLICATION_NAME}:latest
@@ -149,7 +139,7 @@ There are instances where you want your project to contain multiple Dockerfiles.
 
 As an example, let's take the case of wanting to have a version of your Docker image that has `make` installed, which is something our version of Alpine doesn't have by default. You don't want to add it to your production image, as it increases the image size, so instead you create a `Dockerfile.debug` where `make` is installed:
 
-~~~{.bash caption=">_"}
+~~~{.dockerfile caption="Dockerfile"}
 FROM golang:1.18-alpine
  
 WORKDIR /app
@@ -166,7 +156,7 @@ CMD ["/hello-world"]
 
 Now you have a debug version of your Dockerfile, but there's currently no way to build it using `make` commands. This requires some changes to your Makefile. First the existing targets have to be changed slightly:
 
-~~~{.bash caption=">_"}
+~~~{.Makefile caption="Makefile"}
 _BUILD_ARGS_TAG ?= ${GIT_HASH}
 _BUILD_ARGS_RELEASE_TAG ?= latest
 _BUILD_ARGS_DOCKERFILE ?= Dockerfile
@@ -187,7 +177,7 @@ Two major changes have been made. First of all, the variables `_BUILD_ARGS_RELEA
 
 Instead, these targets are now internal. To restore the simple functionality of `make build push release`, we're going to create three new targets:
 
-~~~{.bash caption=">_"}
+~~~{.Makefile caption="Makefile"}
 build:
          $(MAKE) _builder
  
@@ -200,7 +190,7 @@ release:
 
 Now you once again have the functionality of `make build push release`. This might seem redundant, which so far is correct. The exciting part about this is the next three targets that will be added to the Makefile:
 
-~~~{.bash caption=">_"}
+~~~{.Makefile caption="Makefile"}
 build_%:
          $(MAKE) _builder \
                      -e _BUILD_ARGS_TAG="$*-${GIT_HASH}" \
@@ -225,3 +215,5 @@ This does add some complexity to your project, but it makes everything much more
 By now, you've seen how you can easily and quickly add Make to your project. The advantages of using Make can range from simple use cases like avoiding typing out long commands, getting everyone on the team used to the same syntax in all projects, and even being able to create dynamic targets that create new possibilities for you and your team.
 
 If you're looking at this and thinking to yourself that it's still a bit complex for you and your organization, check out [Earthly](https://earthly.dev/), a tool that combines the best of Dockerfiles and Makefiles to make builds as easy as possible.
+
+{% include cta/cta1.html %}
