@@ -18,8 +18,6 @@ internal-links:
 
 Here at Earthly, we care about your CI/CD dollar. That's why we decided to pit **free tiers** of four of the top CI/CD platforms against each other to find out which one provides the most bang for no bucks. In this post we'll compare: [Github Actions](https://github.com/features/actions), [GitLab CI](https://docs.gitlab.com/ee/ci/), [Circle CI](https://circleci.com/), and [Travis CI](https://www.travis-ci.com/).
 
-First, we'll give a brief intro to each service and talk about documentation and setup. Next, we'll compare each service head to head in different categories including hardware and how much you can build for free. Lastly, we'll compare performance by building and running a benchmark test.
-
 ## Product Overview, Setup, and Documentation
 
 ### Circle CI
