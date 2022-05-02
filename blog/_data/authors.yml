@@ -199,3 +199,7 @@ Adedoyin Adeyemi:
     name    : "Adedoyin Adeyemi"
     bio     : "I started out as a frontend developer and then joined a cloud bootcamp organized in conjunction with the number one Google cloud partner in Africa."
     avatar  : "/assets/images/authors/adedoyin-adeyemi.jpg"
+David Szakallas:
+    name    : "David Szakallas"
+    bio     : "David Szakallas is a programmer with a mixed passion for Data Engineering and DevOps. He is changing hats working on data pipelines, cloud architecture and containerizing stuff; always learning, seldom teaching."
+    avatar  : "/assets/images/authors/david-szakallas.jpg"
