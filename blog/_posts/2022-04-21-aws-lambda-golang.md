@@ -14,7 +14,7 @@ internal-links:
 
 Last time, I built a [Node.js lambda function](/blog/aws-lambda-docker/) running in a container. Running a container as a serverless application worked out great: it meant it was simple to test locally and that I could install and use OS-level dependencies in a serverless function. That is how I was able to run Lynx in my Lambda and build [TextMode](/blog/text-mode).
 
-So Lambda's and containers combined seemed like a good solution, but node.js I'm less sure about. I'm not a JavaScript developer, and I choose Node.js merely because of the existence of the [Mozilla Readability](https://github.com/mozilla/readability) library. However, since then, I've found it has been ported to Golang, and I hope that the Golang version will be faster and easier for me to understand.
+So Lambda's and containers combined seemed like a good solution, but node.js I'm less sure about. I'm not a JavaScript developer, and I chose Node.js merely because of the existence of the [Mozilla Readability](https://github.com/mozilla/readability) library. However, since then, I've found it has been ported to Golang, and I hope that the Golang version will be faster and easier for me to understand.
 
 So today's mission is to port that Node.js code to Golang, running in a container. I'll also be using OS dependencies in my container, and because TextMode is a very cacheable service, I'm going to use S3 to cache the results as well.
 
