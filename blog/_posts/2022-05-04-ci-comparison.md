@@ -64,7 +64,7 @@ When it came down to available hardware Circle CI was way ahead of the others. I
 
 ![Shows disk space available at the time the job ran.]({{site.images}}{{page.slug}}/diskspace.png)
 
-We wanted to know how much disk space was available for our jobs on each service. For this metric, we simply ran `df -h` as part of our builds and noted the available space. Here Circle CI won out again. Not only did it offer the most available space, but it also offered the highest percentage with 94% of the disk available for your job. Compare that to Github Actions which showed 32GB available of 84GB totally, or 38% of total disk space. Gitlab's measly 15.6GB was not enough to accommodate our build or our benchmark run and ultimately secured it as our dead last pick overall.
+For this metric, we simply ran `df -h` as part of our builds and noted the available space. Here Circle CI won out again. Not only did it offer the most available space, but it also offered the highest percentage with 94% of the disk available for our job. Compare that to Github Actions which showed 32GB available of 84GB totally, or 38% of total disk space. Gitlab's measly 15.6GB was not enough to accommodate our build or our benchmark run and ultimately secured it as our dead last pick overall.
 
 ### Build Minutes
 
@@ -72,22 +72,22 @@ We wanted to know how much disk space was available for our jobs on each service
 
 With one exception, all the services we looked at limited usage by allotting a certain amount of build minutes per month. Run out of build minutes and you'll be forced to pay for more. Again Circle CI won out by offering three times the build minutes as Github Actions, which came in second.
 
-Travis does not use the concept of build minutes. Instead, it offers build credits. The amount of credits you use for each build [depends on several factors](https://docs.travis-ci.com/user/billing-overview/#usage---credits), but we saw about 10 credits deducted per run when conducting our benchmark tests. It's hard to say just how exactly this compares to build minutes offered, but since you have to use your free 10,000 credits within the first month of signing up for Travis CI, we considered it to be the least last when it comes to value.
+Travis does not use the concept of build minutes. Instead, it offers build credits. The amount of credits you use for each build [depends on several factors](https://docs.travis-ci.com/user/billing-overview/#usage---credits), but we saw about 10 credits deducted per run when conducting our benchmark tests. It's hard to say just how exactly this compares to build minutes offered, but since you have to use your free 10,000 credits within the first month of signing up for Travis CI, we considered it to be the last when it comes to value.
 
 ### Speed Test
 
 ![Average total run times for our benchmark test.]({{site.images}}{{page.slug}}/speedtest.png)
 
-To test the performance of each service, we needed something to build. We wanted something open source that also showcased a variety of programming languages. With those criteria in mind, we landed on this [benchmarks project](https://github.com/kostya/benchmarks). This repo contains a handful of different benchmark tests that run on over two dozen languages and frameworks.
+To test the performance of each service, we needed something to build. We wanted something open source that also showcased a variety of programming languages. With those criteria in mind, we landed on this [benchmarks project](https://github.com/kostya/benchmarks). This repo contains a handful of different benchmark tests that run on over two dozen languages and frameworks. Some of the tests can take a long time to run, so in order to keep the test managable, we decided to just use the [Base64](https://github.com/jalletto/benchmarks/tree/master/base64 encoding/decoding benchmark.
 
 This is how we ran the test on each platform.
 
-1. Build the project with Docker.
+1. Build the project with Docker (This builds every test, not just the Base64).
 2. Push the image to Docker Hub.
 3. In a new job, pull the image.
-4. Run the [Base64](https://github.com/jalletto/benchmarks/tree/master/base64) encoding/decoding benchmark.
+4. Run the Base64 benchmark.
 
-We repeated this 5 times to get a sense of how much variation you might expect with each service.
+We repeated this 5 times to get a sense of how much variation you might expect.
 
 For each service, you'll see three sets of data.
 
@@ -121,10 +121,10 @@ This is how we ran the test on each platform.
 
 ![Even though it came in second in our benchmark test, Github ended up running Earthly the fastest.]({{site.images}}{{page.slug}}/earthly-run-table.png)
 
-In this case, Github Actions had a slight advantage over Circle CI. GitLab CI was able to run the job to completion, but it came in dead last, nearly doubling the time our second runner-up, Travis CI, took.
+In this case, Github Actions had a slight advantage over Circle CI. GitLab CI was able to run the job to completion, but it came in dead last, nearly doubling the time of our second runner-up, Travis CI.
 
 ## Conclusion
 
-Overall if speed is your primary concern and you're on a budget, then Circle CI is the clear choice. If you're not looking to run a ton of builds each month and your code is already in Github, then Github Actions can offer similar performance with the added convenience of having everything under one service. Remember we only looked at the free tiers offered by these services. As your project scales performance may vary and each service scales slightly differently so though you may like the convenience of Github Actions, you may find that Travis CI becomes more cost-effective as you run larger and more complicated pipelines.
+Overall if speed is your primary concern and you're on a budget, then Circle CI is the clear choice. If you're not looking to run a ton of builds each month and your code is already in Github, then Github Actions can offer similar performance with the added convenience of having everything under one service. Remember, we only looked at the free tiers offered by these services. As your project grows, performance may vary. Also, each service scales differently so though you may like the convenience of Github Actions, you may find that Travis CI becomes more cost-effective as you run larger and more complicated pipelines.
 
 {% include cta/cta1.html %}
