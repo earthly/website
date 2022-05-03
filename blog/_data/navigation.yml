@@ -60,6 +60,8 @@ makefile:
         url: /make-flags
       - title: "Taming Large Makefiles"
         url: /repeatable-builds-every-time/#tips-for-taming-makefiles-in-large-teams
+      - title: "Docker and Makefiles"
+        url: /docker-and-makefiles
 bash:
   - title: Bash
     children:

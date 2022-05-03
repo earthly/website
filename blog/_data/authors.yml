@@ -203,3 +203,7 @@ Utibeabasi Umanah:
     name    : "Utibeabasi Umanah"
     bio     : "Self-taught cloud/DevOps engineer with a passion for building software, driven by a desire to create better products and infrastructure."
     avatar  : "/assets/images/authors/utibeabasi-umanah.jpg"
+David Szakallas:
+    name    : "David Szakallas"
+    bio     : "David Szakallas is a programmer with a mixed passion for Data Engineering and DevOps. He is changing hats working on data pipelines, cloud architecture and containerizing stuff; always learning, seldom teaching."
+    avatar  : "/assets/images/authors/david-szakallas.jpg"
