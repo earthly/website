@@ -192,3 +192,6 @@ Boi
 Quigley
 LeetCode
 podman
+Feldman
+winget
+cmake
