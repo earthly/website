@@ -78,7 +78,7 @@ Travis does not use the concept of build minutes. Instead, it offers build credi
 
 ![Average total run times for our benchmark test.]({{site.images}}{{page.slug}}/speedtest.png)
 
-To test the performance of each service, we needed something to build. We wanted something open source that also showcased a variety of programming languages. With those criteria in mind, we landed on this [benchmarks project](https://github.com/kostya/benchmarks). This repo contains a handful of different benchmark tests that run on over two dozen languages and frameworks. Some of the tests can take a long time to run, so in order to keep the test managable, we decided to just use the [Base64](https://github.com/jalletto/benchmarks/tree/master/base64 encoding/decoding benchmark.
+To test the performance of each service, we needed something to build. We wanted something open source that also showcased a variety of programming languages. With those criteria in mind, we landed on this [benchmarks project](https://github.com/kostya/benchmarks). This repo contains a handful of different benchmark tests that run on over two dozen languages and frameworks. Some of the tests can take a long time to run, so in order to keep the test manageable, we decided to just use the [Base64](https://github.com/jalletto/benchmarks/tree/master/base64 encoding/decoding benchmark.
 
 This is how we ran the test on each platform.
 
