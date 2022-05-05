@@ -99,7 +99,10 @@ What are SRE, Platform Engineering, and Solutions architects in this world? I th
 
 The easiest way to tell if you are line or staff is to look at the org chart of your business. If your role makes up the largest fraction of the org chart, you are line. There will always be less doctors than soldiers in the army and less IT people than accountants at the accounting firm.
 
-ToDo: picture
+<div class="wide">
+{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/5600.png --alt {{  }} %}
+<figcaption></figcaption>
+</div>
 
 ## Being a Line Software Developer
 
