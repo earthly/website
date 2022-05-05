@@ -192,6 +192,9 @@ Boi
 Quigley
 LeetCode
 podman
+Kubescape
+Powershell
+Armo
 Feldman
 winget
 cmake
