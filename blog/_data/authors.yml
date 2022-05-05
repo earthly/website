@@ -199,6 +199,10 @@ Adedoyin Adeyemi:
     name    : "Adedoyin Adeyemi"
     bio     : "I started out as a frontend developer and then joined a cloud bootcamp organized in conjunction with the number one Google cloud partner in Africa."
     avatar  : "/assets/images/authors/adedoyin-adeyemi.jpg"
+Utibeabasi Umanah:
+    name    : "Utibeabasi Umanah"
+    bio     : "Self-taught cloud/DevOps engineer with a passion for building software, driven by a desire to create better products and infrastructure."
+    avatar  : "/assets/images/authors/utibeabasi-umanah.jpg"
 David Szakallas:
     name    : "David Szakallas"
     bio     : "David Szakallas is a programmer with a mixed passion for Data Engineering and DevOps. He is changing hats working on data pipelines, cloud architecture and containerizing stuff; always learning, seldom teaching."
@@ -207,3 +211,4 @@ Boemo Wame Mmopelwa:
     name    : "Boemo Wame Mmopelwa"
     bio     : "Boemo is a software developer who embraces innovative approaches. He likes diving deep into complex concepts in order to learn and write articles that can help the reader understand complex methodologies in a simple and fun way."
     avatar  : "/assets/images/authors/boemo-mmopelwa.jpg"
+    
