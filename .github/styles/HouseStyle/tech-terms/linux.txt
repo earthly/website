@@ -21,6 +21,12 @@ Solaris
 Genode
 htop
 tmux
+lookups
+subuids
+subgids
+usermod
+userland
+autoconf
 
 ## Virtulization
 Vagrantfile
