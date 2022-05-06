@@ -2,3 +2,4 @@ Kustomize
 kubectl
 kubeconfig
 Kubernetes
+kubernetes
