@@ -94,9 +94,9 @@ Here are some examples of roles:
 
 Things aren't always as clear the military: where "Will anyone every shoot at me?"  draws a clear dividing line. The wikipedia definition asserts that if you make a product your organization makes money from, you are line employee and the farther away you get from that the more of a staff employee you are. By that measurement, if you work at a software company, but on maintaining the hand-rolled internal ticketing system, you are staff.
 
-However, another way to think about it is that the internal tools person is a software developer at a company that makes money with software, so they are a line employee by role, although perhaps in a line position.
+However, another way to think about it is that the internal tools person is a software developer at a company that makes money with software, so they are a line employee by role, although perhaps in a staff position.
 
-Things are murky in my mind, but I think you can know a staff team when you're on it. If your platform engineering team, or dev-ops team is high pressure and highly respected and is considered an important part of how the organization accomplishes its goals then its a line position. But if it feels like a slower moving, sometimes ignored backwater then its a staff team.
+Things are murky, but I think you can know a staff team when you're on it. If your platform engineering team, or dev-ops team, is high pressure and highly respected and is considered an important part of how the organization accomplishes its goals then its a line position. But if it feels like a slower moving, sometimes ignored, backwater then its a staff team.
 
 Sometimes the easiest way to tell is to look at the org chart.
 </div>
@@ -130,13 +130,13 @@ If most of the teams in the org chart are filled with people like you then its g
 
 Meanwhile, I have a friend building software at a utility company. He is on a team of 6, and his boss reports to the executive level. If his boss goes on vacation then he is giving status updates to the COO.
 
-This ladder climbing disparity is how I learned of the staff vs line breakdown. In the one business class I took in university the teacher pointed out trying to become a partner at Goldman Sachs was a fools errand, but working your way to CFO at one of the thousands of publicaly traded companies was possible.
+This ladder climbing disparity is how I learned of the staff vs line breakdown. In the one business class I took in university the teacher pointed out trying to become a partner at Goldman Sachs was a fools errand, but working your way to CFO at one of the thousands of publicaly traded companies was possible. Staff beats line if you want to be in the C-Suite, and indeed many CFOs end up as CEO when companies encounter financial issues become a top concern. Similarly, when Starbucks declares [tech is its biggest focus](https://www.readthegeneralist.com/briefing/starbucks) and puts Kevin Johnson, a software engineer in as CEO, it's a good time to be a staff developer at Starbucks.
 
 ### Advantages to Staff: Business Focus
 
-At a tech company, especially a large one, you will specialize. You may become an expert in a particular subsystem or a particular layer of stack and then good luck telling your mom what you do. In a staff role, at a non-tech company, you will likely have a much larger but shallower scope. You may talk to the stakeholders to understand their requirements, and make changes to the frontend build that backend and keep the database up. Depending on the size of the place, you may do all of that in a single day as well as spending time getting familar with the intracaies of the business your company operates in.
+At a tech company, especially a large one, you will specialize. You may become an expert in a particular subsystem or a particular layer of stack and then good luck telling your mom what you do. In a staff role, at a non-tech company, you will likely have a much larger but shallower scope. You may talk to the stakeholders to understand their requirements, and make changes to the frontend build that backend and keep the database up. Depending on the size of the place, you may do all of that in a single day, as well as spending time getting familar with the intracaies of the business your company operates in.
 
-If having a wider scope and understanding how businesses operate is interesting to you this could be a great fit.
+If having a wider scope, and understanding how businesses operate is interesting to you this could be a great fit.
 
 <div class="notice">
 
