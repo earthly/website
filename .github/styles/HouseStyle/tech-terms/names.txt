@@ -191,3 +191,5 @@ Cryptogopher
 Boi
 Quigley
 LeetCode
+Thoughtworks
+whitepaper
