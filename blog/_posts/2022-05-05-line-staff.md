@@ -14,23 +14,23 @@ Let's talk about a career in tech, but not the usual boring stuff about salary o
 
 Imagine a simplified world where there is only enterprise software and only two broad types of software jobs.
 
-( What is enterprise software? It's boring software for large corporations. My story will also apply to other areas but bear with me here. )
+( What is enterprise software? It's large, bland software for large corporations. My story will also apply to other areas but bear with me here. )
 
 Ok, so only enterprise software exists, and so you can work at two types of companies. First, you could work at a large company, where you build and maintain their internal billing software. Second, you could work outside the large company selling software and development services to them.
 
-You can either work at Duke Energy (a large utility company) or at Thoughtworks. And in either cases, by some coincidence of made-up-anecdotes, you'll be writing billing software for a utility company.
+You can either work at Duke Energy (a large utility company) or Thoughtworks (a consulting company). But in either case, by some coincidence of made-up-anecdotes, you'll write billing software for a utility company.
 
-These jobs may sound similar. Some even argue that an internal dev team and external consulting team are the same:
+These jobs may sound similar. Some even argue that an internal dev team and external dev team are the same:
 
 > If you are a dev team within a bigger, non-tech company, you are basically an in-house agency with one client.
 >
 > The Coding Career Handbook
 
-After all, at both Thoughtworks and Duke Energy, you'll be working inside a utility company. So you'll be working to understand the current system's gaps and coming up with and implementing a solution for them. **But there are significant differences between these jobs: One is a line position, and the other is a staff position.**
+After all, at both Thoughtworks and Duke Energy, you'll work for a utility company. You'll work to understand the current system's gaps and develop a solution for them. **But there are significant differences between these jobs: One is a line position, and the other is a staff position.**
 
 ## Line and Staff Software Engineers
 
-The division of employees into line and staff comes from the military1. A line officer can fight on the front line, and in doing so, they directly contribute to the core mission. On the other hand, a staff officer contributes only in a supporting role. They are doctors, IT people, and administrators.
+The division of employees into line and staff comes from the military[^1]. A line officer can fight on the front line, and in doing so, they directly contribute to the core mission. On the other hand, a staff officer contributes only support. They are the doctors, IT people, and administrators.
 
 [^1]: When talking about "staff" in this article, I do not mean the Staff software engineer role that is found at tech companyies after senior. That is a different usage of the term.
 
@@ -38,15 +38,17 @@ The term spread from the military to business schools, where it became a helpful
 
 > Staff and line are names given to different types of functions in organizations. A "line function" directly advances an organization in its core work. This always includes production and sales. A "staff function" supports the organization with specialized advisory and support functions. For example, human resources, accounting, public relations and the legal department are generally considered to be staff functions.
 >
-> - <https://en.wikipedia.org/wiki/Staff_and_line>
+> - [Wikipedia](https://en.wikipedia.org/wiki/Staff_and_line)
 
-Wikipedia makes the roles sound innate to the profession: accountants are always staff. But, in fact, it depends on the goals of the organization that the accountant is working in, and so an accountant at an accounting firm is a line employee. And so it goes for software developers: you can be either, and which you are will determine a lot about the pace of your job and the career trajectories you are on. Understanding the difference and which will fit you best will help you structure your career.
+Wikipedia makes the roles sound innate to the profession: accountants are always staff. But it depends on where the accountant works. An accountant at an accounting firm is a line employee. And so it goes for software developers: you can be either, and which you are will determine a lot about the pace of your job and the career trajectories you are on. 
+
+Understand the difference, and it will help you structure your career.
 
 ## Line Has Higher Stakes
 
 Back to our example, the dev team members at Duke Electric are staff developers. The billing software supports Duke Electric. The electricity is the product, not the billing software. However, the stakes are different for the team at Thoughtworks, even if working on similar billing software at a similarly sized region utility company (Dominion Energy, maybe).
 
-Someone at Thoughtworks sold Dominion Energy on the idea that Thoughtworks could do a great job on the billing software, and Thoughtworks is probably charging a lot for their services. And if things go well, they will get follow-on business and maybe even a whitepaper. From there, Thoughtworks will try to get into more regional utilities ( Florida Power & Light, here we come!). In other words, if you work on the team deployed into Duke and endanger the project timeline, you might end up on the 'the bench,' which is a half-step away from a lay-off.
+Someone at Thoughtworks sold Dominion Energy on the idea that Thoughtworks could do a great job on the billing software, and they are going to charge a lot for this work. If things go well, they will get follow-on business and maybe even a whitepaper. From there, Thoughtworks will try to get into more regional utilities ( Florida Power & Light, here we come!). In other words, if you work on the team deployed into Duke and endanger the project timeline, you might end up on the 'the bench,' which is a half-step away from a lay-off.
 
 Other the other hand, if someone in billing complains about you and you work on the internal dev team at Duke, your boss will deflect that, and life will go on. Market pressures don't apply to internal teams, which can be both good and bad. The internal customer has one vendor (you), and you, in turn, have one customer. It's not better than working at a consulting company, but it is different. Each has career advantages and disadvantages. And I'll get to that shortly but first, let me beat this distinction to death.
 
@@ -143,7 +145,7 @@ My one role as a staff developer was at a place where I felt there was an implic
 
 ## The Staff Role Is Under Discussed
 
-So, when career planning or considering your next job, think about whether you want a staff or line role. They are very different, and maybe if the grind of a product company has been wearing you out, you might want to look into working on a small dev team at a non-tech company.
+So, when considering your next job or thinking about how you want to spend the decades that will make up your career, think about whether you will most enjoy staff or line roles. They are very different, and if the grind of a product company has been wearing you out, you might want to look into working on a small dev team at a non-tech company.
 
 And if you've worked at both, let me know what you think.
 
