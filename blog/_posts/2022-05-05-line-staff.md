@@ -25,7 +25,7 @@ internal-links:
 - [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
 - [ ] Raise PR
 
-Let's talk about a career in tech, but not the usual boring stuff about salary or how to pass the interview process at the place with the most oversized comp packages. Instead, let’s talk about how your relationship to how the company accomplishes its goals influences what your job is like and what skills and strengths you’ll develop there.
+Let's talk about a career in tech, but not the usual boring stuff about salary or how to pass the interview process at the place with the most oversized comp packages. Instead, let's talk about how your relationship to how the company accomplishes its goals influences what your job is like and what skills and strengths you'll develop there.
 
 ## A Simplified World
 
