@@ -40,7 +40,7 @@ The term spread from the military to business schools, where it became a helpful
 >
 > - <https://en.wikipedia.org/wiki/Staff_and_line>
 
-This description makes it sound like the roles are innate to the profession. That accountants are always staff, but it depends on the organization's goal. An accountant at an accounting firm is a line employee. And so it goes for software developers: you can be either, and which you are will determine a lot about the pace of your job and the career trajectories you are on. Understanding the difference and which will fit you best will help you structure your career.
+Wikipedia makes the roles sound innate to the profession: accountants are always staff. But, in fact, it depends on the goals of the organization that the accountant is working in, and so an accountant at an accounting firm is a line employee. And so it goes for software developers: you can be either, and which you are will determine a lot about the pace of your job and the career trajectories you are on. Understanding the difference and which will fit you best will help you structure your career.
 
 ## Line Has Higher Stakes
 
