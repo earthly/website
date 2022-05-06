@@ -4,27 +4,10 @@ categories:
   - Tutorials
 toc: true
 author: Adam
-
 internal-links:
- - just an example
+ - staff vs line
+ - staff software engineer
 ---
-### Writing Article Checklist
-
-- [ ] Write Outline
-- [ ] Write Draft
-- [ ] Fix Grammarly Errors
-- [ ] Read out loud
-- [ ] Write 5 or more titles and pick the best on
-- [ ] First two paragraphs: What's it about? Why listen to you?
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-- [ ] Run mark down linter (`lint`)
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links to other articles
-- [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
-- [ ] Raise PR
-
 Let's talk about a career in tech, but not the usual boring stuff about salary or how to pass the interview process at the place with the most oversized comp packages. Instead, let's talk about how your relationship to how the company accomplishes its goals influences what your job is like and what skills and strengths you'll develop there.
 
 ## A Simplified World
