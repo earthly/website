@@ -40,7 +40,7 @@ The term spread from the military to business schools, where it became a helpful
 >
 > - [Wikipedia](https://en.wikipedia.org/wiki/Staff_and_line)
 
-Wikipedia makes the roles sound innate to the profession: accountants are always staff. But it depends on where the accountant works. An accountant at an accounting firm is a line employee. And so it goes for software developers: you can be either, and which you are will determine a lot about the pace of your job and the career trajectories you are on. 
+Wikipedia makes the roles sound innate to the profession: accountants are always staff. But it depends on where the accountant works. An accountant at an accounting firm is a line employee. And so it goes for software developers: you can be either, and which you are will determine a lot about the pace of your job and the career trajectories you are on.
 
 Understand the difference, and it will help you structure your career.
 
@@ -145,7 +145,7 @@ My one role as a staff developer was at a place where I felt there was an implic
 
 ## The Staff Role Is Under Discussed
 
-So, when considering your next job or thinking about how you want to spend the decades that will make up your career, think about whether you will most enjoy staff or line roles. They are very different, and if the grind of a product company has been wearing you out, you might want to look into working on a small dev team at a non-tech company.
+So, when considering your next job or thinking about how you want to spend the decades that will make up your career, think about whether you will most enjoy staff or line roles. They are very different, and if the grind of a product company has worn you out, you might enjoy working on a small dev team at a non-tech company.
 
 And if you've worked at both, let me know what you think.
 
