@@ -4,11 +4,11 @@ on:
   # run everyday at 12:15 utf ( 8:15 am est) to alert on new posts
   schedule:
     - cron: '15 12 * * *' 
-  # push:
+  push:
 
 jobs:
   build-website:
-    name: Build Website
+    name: Build Alert List
     runs-on: ubuntu-latest
     steps:
       - uses: FranzDiebold/github-env-vars-action@v2
@@ -22,7 +22,7 @@ jobs:
         id: published_check
         run: |-  
           #  if [ "$CI_ACTION_REF_NAME" == "main" ]; then
-            echo "1"
+            echo "2"
             pattern=$(date '+%Y-%m')
             if test -n "$(find ./blog/_posts -maxdepth 1 -name "*$pattern*" -print)"
             then
