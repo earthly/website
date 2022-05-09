@@ -20,7 +20,7 @@ jobs:
         id: published_check
         run: |-  
            if [ "$CI_ACTION_REF_NAME" == "main" ]; then
-            pattern=$(date '+%Y-%m')
+            pattern=$(date '+%Y-%m-%d')
             if test -n "$(find ./blog/_posts -maxdepth 1 -name "*$pattern*" -print)"
             then
               echo "PUBLISHED=1" >> $GITHUB_ENV
