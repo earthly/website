@@ -164,10 +164,22 @@ double-image() { # Double size of image. Using imagemagick
     mogrify -resize 200% "$1"
 }
 
+next-date(){ # Get Next date for a post
+# Gets all Tues, Wed, Thurs dates from today that don't have posts
+    today=$(date -v +1d +'%Y-%m-%d')
+    fourmonths="$(date -v +4m +'%Y-%m-%d')"
+    dateseq "$today"  "$fourmonths" --skip sat,sun,mon,fri > available-dates.txt
+    find ./blog/_posts -maxdepth 1 | awk '{ print substr( $0, 15, 10 ) }' > used-dates.txt
+    result="$(comm -23 <(sort available-dates.txt) <(sort used-dates.txt) | head -n 1)"
+    rm -f used-dates.txt
+    rm -f available-dates.txt
+    echo "$result"
+}
+
 new-post() { # Eg. new-post multi-word-slug
   default="one-two-three"
   name="${1:=$default}"
-  cat ./blog/_posts/2029-01-01-checklist.md > "./blog/_posts/$(date -v +7d +"%Y-%m-%d")-$name.md"
+  cat ./blog/_posts/2029-01-01-checklist.md > "./blog/_posts/$(next-date)-$name.md"
   sed -i -E "s/published: false//g" "./blog/_posts/$(date -v +7d +"%Y-%m-%d")-$name.md"
   mkdir "./blog/assets/images/$name"
   cp ./blog/assets/images/default-header.jpg "./blog/assets/images/$name/header.jpg"

@@ -62,6 +62,7 @@ For blogging locally:
  rbenv global 2.7.0
  brew install vips
  brew install pandoc
+ brew install dateutils 
 ```
 
 Then, in `/blog/` run `bundle install`.
