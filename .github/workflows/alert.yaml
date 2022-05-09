@@ -1,7 +1,7 @@
 name: Publish Alerts
 
 on:
-  # run everyday at 12:15 utf ( 8:15 am est) to roll out new posts
+  # run everyday at 12:15 utf ( 8:15 am est) to alert on new posts
   schedule:
     - cron: '15 12 * * *' 
   push:
@@ -10,7 +10,6 @@ jobs:
   build-website:
     name: Build Website
     runs-on: ubuntu-latest
-
     steps:
       - uses: FranzDiebold/github-env-vars-action@v2
       - name: Checkout code
@@ -23,12 +22,12 @@ jobs:
         id: published_check
         run: |-  
            #if [ "$CI_ACTION_REF_NAME" == "main" ]; then
-            path=$(date '+%Y-%m-%d')
-            if test -n "$(find ./blog/_posts -maxdepth 1 -name "*$path*" -print)"
+            pattern=$(date '+%Y-%m-%d')
+            if test -n "$(find ./blog/_posts -maxdepth 1 -name "*$pattern*" -print)"
             then
               echo "PUBLISHED=1" >> $GITHUB_ENV
-              find ./blog/_posts -maxdepth 1 -name "*$path*" -print
-              find ./blog/_posts -maxdepth 1 -name "*$path*" -print > published.txt
+              find ./blog/_posts -maxdepth 1 -name "*$pattern*" -print > posts.txt
+              awk '{ print "https://earthly.dev/blog/"substr( $0, 26, length($0)-28 ) }' < posts.txt > published.txt
               echo "::set-output name=published::$(cat published.txt)"
             fi
            #fi
