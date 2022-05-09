@@ -4,6 +4,7 @@ on:
   # run everyday at 12:15 utf ( 8:15 am est) to alert on new posts
   schedule:
     - cron: '15 12 * * *' 
+  push:
 
 jobs:
   build-website:
