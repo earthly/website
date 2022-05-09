@@ -32,6 +32,7 @@ jobs:
               awk '{ print "https://earthly.dev/blog/"substr( $0, 26, length($0)-28 ) }' < posts.txt | tr '\n' "," | sed 's/,/, /g' >> $GITHUB_ENV
               echo 'EOF' >> $GITHUB_ENV
               echo "::set-output name=published::$(cat published.txt)"
+              echo "list: $PUBLISHED_LIST"
             fi
            fi
 
