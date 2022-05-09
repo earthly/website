@@ -179,8 +179,9 @@ next-date(){ # Get Next date for a post
 new-post() { # Eg. new-post multi-word-slug
   default="one-two-three"
   name="${1:=$default}"
-  cat ./blog/_posts/2029-01-01-checklist.md > "./blog/_posts/$(next-date)-$name.md"
-  sed -i -E "s/published: false//g" "./blog/_posts/$(date -v +7d +"%Y-%m-%d")-$name.md"
+  filename="$(next-date)-$name.md"
+  cat ./blog/_posts/2029-01-01-checklist.md > "./blog/_posts/$(filename)"
+  sed -i -E "s/published: false//g" "./blog/_posts/$(filename)"
   mkdir "./blog/assets/images/$name"
   cp ./blog/assets/images/default-header.jpg "./blog/assets/images/$name/header.jpg"
 }
