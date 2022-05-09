@@ -27,7 +27,10 @@ jobs:
             then
               echo "PUBLISHED=1" >> $GITHUB_ENV
               find ./blog/_posts -maxdepth 1 -name "*$pattern*" -print > posts.txt
-              awk '{ print "https://earthly.dev/blog/"substr( $0, 26, length($0)-28 ) }' < posts.txt | tr '\n' "," | sed 's/,/, /g' > published.txt
+              awk '{ print "https://earthly.dev/blog/"substr( $0, 26, length($0)-28 ) }' < posts.txt | tr '\n' "," | sed 's/,/, /g' 
+              echo 'PUBLISHED_LIST<<EOF' >> $GITHUB_ENV
+              awk '{ print "https://earthly.dev/blog/"substr( $0, 26, length($0)-28 ) }' < posts.txt | tr '\n' "," | sed 's/,/, /g' >> $GITHUB_ENV
+              echo 'EOF' >> $GITHUB_ENV
               echo "::set-output name=published::$(cat published.txt)"
             fi
            fi
@@ -37,7 +40,7 @@ jobs:
         id: check_files
         uses: andstor/file-existence-action@v1
         with:
-          files: "published.txt"
+          files: "posts.txt"
       # Output published list
       - name: Slack Notification
         id: slack
@@ -48,7 +51,7 @@ jobs:
           channel-id: 'alerts'
           payload: |
             {
-              "text": "Published blog posts: ${{join(steps.published_check.outputs.*, '\n')}}"
+              "text": "Published blog posts: $PUBLISHED_LIST"
             }
         env:
           SLACK_WEBHOOK_URL: https://hooks.slack.com/services/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
