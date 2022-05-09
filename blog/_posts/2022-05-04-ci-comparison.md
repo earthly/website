@@ -1,5 +1,5 @@
 ---
-title: "CI Showdown"
+title: "CI Free Tier Showdown"
 categories:
   - Tutorials
 toc: true
@@ -16,11 +16,19 @@ internal-links:
 
 ## How Much Can You Get For Free?
 
-Here at Earthly, we care about your CI/CD dollar. That's why we decided to pit **free tiers** of four of the top CI/CD platforms against each other to find out which one provides the most bang for no bucks. In this post we'll compare: [Github Actions](https://github.com/features/actions), [GitLab CI](https://docs.gitlab.com/ee/ci/), [Circle CI](https://circleci.com/), and [Travis CI](https://www.travis-ci.com/).
+Here at Earthly, we care about your CI/CD dollar. That's why we decided to pit **free tiers** of four of the top CI/CD platforms against each other to find out which one provides the most bang for no bucks. In this post we'll compare [Github Actions](https://github.com/features/actions), [GitLab CI](https://docs.gitlab.com/ee/ci/), [Circle CI](https://circleci.com/), and [Travis CI](https://www.travis-ci.com/) using the following criteria:
 
-## Setup and Documentation
+- Quality of Documentation
+- Compute Power
+- Available Disk Space
+- Free Build Minutes
+- Speed and Performance
 
-### Circle CI
+### Documentation
+
+![Docs]({{site.images}}{{page.slug}}/docs.png)\
+
+#### Circle CI
 
 ![Circle CI]({{site.images}}{{page.slug}}/circleci-logo.png)\
 
@@ -28,15 +36,7 @@ Here at Earthly, we care about your CI/CD dollar. That's why we decided to pit *
 
 The [docs](https://circleci.com/docs/) were among the best we looked at. Information was well organized and it was easy to find answers when we encountered issues. Best of all, nearly every page of the docs included code examples, unusually entire example files. This was great when trying to learn about the different options and settings Circle CI offers.
 
-### Travis CI
-
-![Travis CI]({{site.images}}{{page.slug}}/travis-logo.jpg)\
-
-Like Circle CI, [Travis CI](https://www.travis-ci.com/pricing/) also supports Github, [Bitbucket](/blog/bitbucket-ci/), and GitLab. Once you're signed in, we were able to connect a repo with a few button clicks, add a `travis.yml` to the root of the project and we were good to go.
-
-The [documentation](https://docs.travis-ci.com/) was informative and we could usually find what we were looking for, but not without a great deal of digging. Pages are dense with text, which can be helpful, but code examples were usually limited to a few lines, and it was sometimes unclear where the code fit into the larger config file. Travis's free tier was also the only one that expired. One month after sign-up there is no way to use Travis for free.
-
-### Github Actions
+#### Github Actions
 
 ![Github]({{site.images}}{{page.slug}}/githubactions-logo.png)\
 
@@ -44,15 +44,21 @@ The [documentation](https://docs.travis-ci.com/) was informative and we could us
 
 Similar to Circle CI, the docs were extremely easy to use and offered in-depth code examples, screenshots, and charts that made learning to use the service quick and easy.
 
-### GitLab
+#### Travis CI
+
+![Travis CI]({{site.images}}{{page.slug}}/travis-logo.jpg)\
+
+Like Circle CI, [Travis CI](https://www.travis-ci.com/pricing/) also supports Github, [Bitbucket](/blog/bitbucket-ci/), and GitLab. Once you're signed in, we were able to connect a repo with a few button clicks, add a `travis.yml` to the root of the project and we were good to go.
+
+The [documentation](https://docs.travis-ci.com/) was informative and we could usually find what we were looking for, but not without a great deal of digging. Pages are dense with text, which can be helpful, but code examples were usually limited to a few lines, and it was sometimes unclear where the code fit into the larger config file. Travis's free tier was also the only one that expired. One month after sign-up there is no way to use Travis for free.
+
+#### GitLab
 
 ![GitLab]({{site.images}}{{page.slug}}/gitlab-logo.png)\
 
 GitLab, like Github, is an online git repository that also [offers CI/CD services](https://docs.gitlab.com/ee/ci/runners/saas/linux_saas_runner.html). Also, like Github, you'll need to have your code hosted on GitLab to use create pipelines. Once you have a repo set up, getting started with GitLab CI was just as easy as the rest: add your config file and you're ready to go.
 
-We found the GitLab documentation challenging to use when our primary focus was their SASS offering. GitLab seems to be putting most of its efforts toward being a self-hosted solution, either on-prem or in the cloud. As a result, a lot of the tutorials and documentation are written for users who are hosting their own GitLab runners. The first step in their [getting started](https://docs.gitlab.com/ee/ci/quick_start/#cicd-process-overview) section tells you to install and register a runner before getting started, but these steps are not necessary if you want to use runners hosted by GitLab, and theirs little information on the getting started page about this option. It took a little more digging and some outside sources to get started without having to host our own runner.
-
-## So How Do They Compare?
+We found the GitLab documentation challenging to use when our primary focus was their SaaS offering. GitLab seems to be putting most of its efforts toward being a self-hosted solution, either on-prem or in the cloud. As a result, a lot of the tutorials and documentation are written for users who are hosting their own GitLab runners. The first step in their [getting started](https://docs.gitlab.com/ee/ci/quick_start/#cicd-process-overview) section tells you to install and register a runner before getting started, but these steps are not necessary if you want to use runners hosted by GitLab, and theirs little information on the getting started page about this option. It took a little more digging and some outside sources to get started without having to host our own runner.
 
 ### Compute Power
 
@@ -78,7 +84,7 @@ Travis does not use the concept of build minutes. Instead, it offers build credi
 
 ![Average total run times for our benchmark test.]({{site.images}}{{page.slug}}/speedtest.png)
 
-To test the performance of each service, we needed something to build. We wanted something open source that also showcased a variety of programming languages. With those criteria in mind, we landed on this [benchmarks project](https://github.com/kostya/benchmarks). This repo contains a handful of different benchmark tests that run on over two dozen languages and frameworks. Some of the tests can take a long time to run, so in order to keep the test manageable, we decided to just use the [Base64](https://github.com/jalletto/benchmarks/tree/master/base64 encoding/decoding benchmark.
+To test the performance of each service, we needed something to build. We wanted something open source that also showcased a variety of programming languages. With those criteria in mind, we landed on this open-source [benchmarks project](https://github.com/kostya/benchmarks). This repo contains a handful of different benchmark tests that run on over two dozen languages and frameworks. Some of the tests can take a long time to run, so in order to keep the test manageable, we decided to just use the [Base64](<https://github.com/jalletto/benchmarks/tree/master/base64>) encoding/decoding benchmark.
 
 This is how we ran the test on each platform.
 
@@ -125,6 +131,10 @@ In this case, Github Actions had a slight advantage over Circle CI. GitLab CI wa
 
 ## Conclusion
 
-Overall if speed is your primary concern and you're on a budget, then Circle CI is the clear choice. If you're not looking to run a ton of builds each month and your code is already in Github, then Github Actions can offer similar performance with the added convenience of having everything under one service. Remember, we only looked at the free tiers offered by these services. As your project grows, performance may vary. Also, each service scales differently so though you may like the convenience of Github Actions, you may find that Travis CI becomes more cost-effective as you run larger and more complicated pipelines.
+![A summary of the results]({{site.images}}{{page.slug}}/summary.png)
+
+Overall, if speed is your primary concern and you're on a budget, then Circle CI is the clear choice. If you're not looking to run a ton of builds each month and your code is already in Github, then Github Actions can offer similar performance with the added convenience of having everything under one service. Even though we liked Travis as a little better as a service, we awarded GitLab third place since you can't use Travis for free at all after one month.
+
+Remember, we only looked at the free tiers offered by these services. As your project grows, performance may vary. Also, each service scales differently so even though you may like the convenience of Github Actions, you may find that Travis CI becomes more cost-effective as you run larger and more complicated pipelines.
 
 {% include cta/cta1.html %}
