@@ -4,7 +4,6 @@ on:
   # run everyday at 12:15 utf ( 8:15 am est) to alert on new posts
   schedule:
     - cron: '15 12 * * *' 
-  push:
 
 jobs:
   build-website:
@@ -21,7 +20,7 @@ jobs:
       - name: Has new published documents
         id: published_check
         run: |-  
-           #if [ "$CI_ACTION_REF_NAME" == "main" ]; then
+           if [ "$CI_ACTION_REF_NAME" == "main" ]; then
             pattern=$(date '+%Y-%m-%d')
             if test -n "$(find ./blog/_posts -maxdepth 1 -name "*$pattern*" -print)"
             then
@@ -30,7 +29,7 @@ jobs:
               awk '{ print "https://earthly.dev/blog/"substr( $0, 26, length($0)-28 ) }' < posts.txt > published.txt
               echo "::set-output name=published::$(cat published.txt)"
             fi
-           #fi
+           fi
 
       ## Check output value for whether file exists
       - name: Check file existence
