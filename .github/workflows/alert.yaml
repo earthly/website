@@ -21,7 +21,7 @@ jobs:
       - name: Has new published documents
         id: published_check
         run: |-  
-           if [ "$CI_ACTION_REF_NAME" == "main" ]; then
+          #  if [ "$CI_ACTION_REF_NAME" == "main" ]; then
             pattern=$(date '+%Y-%m')
             if test -n "$(find ./blog/_posts -maxdepth 1 -name "*$pattern*" -print)"
             then
@@ -34,7 +34,7 @@ jobs:
               echo "::set-output name=published::$(cat published.txt)"
               echo "list: $PUBLISHED_LIST"
             fi
-           fi
+          #  fi
 
       ## Check output value for whether file exists
       - name: Check file existence
