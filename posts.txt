@@ -1,0 +1,10 @@
+./blog/_posts/2022-05-11-kubernetes-config-maps.md
+./blog/_posts/2022-05-10-earthly-podman.md
+./blog/_posts/2022-05-11-using-cmake.md
+./blog/_posts/2022-05-03-the-opinionated-way-in-which-we-interview-engineers.md
+./blog/_posts/2022-05-12-minikube.md
+./blog/_posts/2022-05-04-aws-lambda-golang.md
+./blog/_posts/2022-05-16-kubescape.md
+./blog/_posts/2022-05-10-rails-with-docker.md
+./blog/_posts/2022-05-12-makefiles-on-windows.md
+./blog/_posts/2022-05-09-docker-and-makefiles.md

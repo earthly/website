@@ -21,12 +21,12 @@ jobs:
         id: published_check
         run: |-  
            if [ "$CI_ACTION_REF_NAME" == "main" ]; then
-            pattern=$(date '+%Y-%m-%d')
+            pattern=$(date '+%Y-%m')
             if test -n "$(find ./blog/_posts -maxdepth 1 -name "*$pattern*" -print)"
             then
               echo "PUBLISHED=1" >> $GITHUB_ENV
               find ./blog/_posts -maxdepth 1 -name "*$pattern*" -print > posts.txt
-              awk '{ print "https://earthly.dev/blog/"substr( $0, 26, length($0)-28 ) }' < posts.txt > published.txt
+              awk '{ print "https://earthly.dev/blog/"substr( $0, 26, length($0)-28 ) }' < posts.txt | tr '\n' "," | sed 's/,/, /g' > published.txt
               echo "::set-output name=published::$(cat published.txt)"
             fi
            fi
