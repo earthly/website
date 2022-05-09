@@ -1,9 +1,9 @@
 name: Publish Alerts
 
 on:
-  # run everyday at 12:15 utf ( 8:15 am est) to alert on new posts
+  # run everyday at 12:20 utf ( 8:20 am est) to alert on new posts
   schedule:
-    - cron: '15 12 * * *' 
+    - cron: '20 12 * * *' 
 
 jobs:
   build-website:
