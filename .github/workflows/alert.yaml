@@ -31,6 +31,7 @@ jobs:
               echo 'PUBLISHED_LIST<<EOF' >> $GITHUB_ENV
               awk '{ print "https://earthly.dev/blog/"substr( $0, 26, length($0)-28 ) }' < posts.txt | tr '\n' "," | sed 's/,/, /g' >> $GITHUB_ENV
               echo 'EOF' >> $GITHUB_ENV
+              cat $GITHUB_ENV
               echo "list: $PUBLISHED_LIST"
             fi
           #  fi
