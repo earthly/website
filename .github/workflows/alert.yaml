@@ -22,6 +22,7 @@ jobs:
         id: published_check
         run: |-  
           #  if [ "$CI_ACTION_REF_NAME" == "main" ]; then
+            echo "1"
             pattern=$(date '+%Y-%m')
             if test -n "$(find ./blog/_posts -maxdepth 1 -name "*$pattern*" -print)"
             then
