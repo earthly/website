@@ -1,4 +1,4 @@
-name: Deploy Website
+name: Publish Alerts
 
 on:
   # run everyday at 12:15 utf ( 8:15 am est) to roll out new posts
