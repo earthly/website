@@ -28,7 +28,6 @@ Here at Earthly, we care about your CI/CD dollar. That's why we decided to pit t
 
 ![Docs]({{site.images}}{{page.slug}}/docs.png)\
 
-
 #### Github Actions
 
 ![Github]({{site.images}}{{page.slug}}/githubactions-logo.png)\
@@ -43,7 +42,7 @@ Similar to Circle CI, the docs were extremely easy to use and offered in-depth c
 
 [Getting set up](/blog/circle-ci-with-django/) and running with [Circle Ci's free tier](https://circleci.com/docs/2.0/plan-free/index.html) was pretty straightforward. Create an account and link it to your Github, Bitbucket, or GitLab account. After that, all it took was adding a `.circleci/config.yml` file to our project repo and we were up and running.
 
-The [docs](https://circleci.com/docs/) were among the best we looked at. Information was well organized and it was easy to find answers when we encountered issues. Best of all, nearly every page of the docs included code examples, usually entire example files. 
+The [docs](https://circleci.com/docs/) were among the best we looked at. Information was well organized and it was easy to find answers when we encountered issues. Best of all, nearly every page of the docs included code examples, usually entire example files.
 
 #### Travis CI
 
@@ -59,7 +58,7 @@ The [documentation](https://docs.travis-ci.com/) was informative and we could us
 
 GitLab, like Github, is an online git repository that [offers CI/CD services](https://docs.gitlab.com/ee/ci/runners/saas/linux_saas_runner.html). Also, like Github, you'll need to have your code hosted on GitLab to create pipelines. Once you have a repo set up, getting started with GitLab CI was just as easy as the rest: add your config file and you're ready to go.
 
-We found the GitLab documentation challenging to use when our primary focus was their SaaS offering. GitLab seems to be putting most of its efforts toward being a self-hosted solution, either on-prem or in the cloud. As a result, a lot of the tutorials and documentation are written for users who are hosting their own GitLab runners. The first step in their [getting started](https://docs.gitlab.com/ee/ci/quick_start/#cicd-process-overview) section tells you to install and register a runner before before you can start building, but these steps are not necessary if you want to use runners hosted by GitLab, and there's little information on the getting started page about this option. It took a little more digging and some outside sources to get started without having to host our own runner.
+We found the GitLab documentation challenging to use when our primary focus was their SaaS offering. GitLab seems to be putting most of its efforts toward being a self-hosted solution, either on-prem or in the cloud. As a result, a lot of the tutorials and documentation are written for users who are hosting their own GitLab runners. The first step in their [getting started](https://docs.gitlab.com/ee/ci/quick_start/#cicd-process-overview) section tells you to install and register a runner before you can start building, but these steps are not necessary if you want to use runners hosted by GitLab, and there's little information on the getting started page about this option. It took a little more digging and some outside sources to get started without having to host our own runner.
 
 ### Compute Power
 
@@ -85,7 +84,7 @@ Travis does not use the concept of build minutes. Instead, it offers build credi
 
 ![Average total run times for our benchmark test.]({{site.images}}{{page.slug}}/speedtest.png)
 
-To test the performance of each service, we needed something to build. We wanted something open source that also showcased a variety of programming languages. With those criteria in mind, we landed on this open-source [benchmarks project](https://github.com/kostya/benchmarks). This repo contains a handful of different benchmark tests that run on over two dozen languages and frameworks. Some of the tests can take a long time to run, so in order to keep the test manageable, we decided to just use the [Base64](<https://github.com/jalletto/benchmarks/tree/master/base64>) encoding/decoding benchmark.
+To test the performance of each service, we needed something to build. We wanted something open source that also showcased a variety of programming languages. With those criteria in mind, we landed on this open-source [benchmarks project](https://github.com/kostya/benchmarks). This repo contains a handful of different benchmark tests that run on over two dozen languages and frameworks. Some of the tests can take a long time to run, so in order to keep the test manageable, we decided to just use the [Base64](<https://github.com/jalletto/benchmarks/tree/master/base64>) encoding/decoding benchmark. You can check out our [fork](https://github.com/jalletto/benchmarks) to see how we set up the config files for each pipeline.
 
 This is how we ran the test on each platform.
 
@@ -119,7 +118,7 @@ If you'd like to get some idea of how GitLab performs, we were able to get it to
 
 ## With Earthly
 
-At Earthly, our goal has always been to create better builds. We build Earthly so it can run anywhere, so naturally, we were curious to see how it would perform on each service's free tier. The Earthly repo contains [dozens of examples](https://github.com/jalletto/earthly/tree/main/examples) in Python, Go, Ruby, react, C, and many more.
+At Earthly, our goal has always been to create better builds. We build Earthly so it can run anywhere, so naturally, we were curious to see how it would perform on each service's free tier. The Earthly repo contains [dozens of examples](https://github.com/jalletto/earthly/tree/main/examples) in Python, Go, Ruby, react, C, and many more. You can checkout this [fork](https://github.com/jalletto/earthly/) if you want to see how we set up our config files for each pipeline.
 
 This is how we ran the test on each platform.
 
