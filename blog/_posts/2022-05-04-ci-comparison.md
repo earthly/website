@@ -135,8 +135,9 @@ In this case, Github Actions had a slight advantage over Circle CI. GitLab CI wa
 
 Overall, if speed is your primary concern and you're on a budget, then Circle CI is the clear choice. If you're not looking to run a ton of builds each month and your code is already in Github, then Github Actions can offer similar performance with the added convenience of having everything under one service. Even though we liked Travis better, our main criteria was value, and since you can't use Travis for free after the first month, GitLab was able to grab the third slot, despite it being weaker in almost every other category.
 
+![final rankings]({{site.images}}{{page.slug}}/rankings.png)\
+
 Remember, we only looked at the free tiers offered by these services. As your project grows, performance may vary. Also, each service scales differently so even though you may like the convenience of Github Actions, you may find that Travis CI becomes more cost-effective as you run larger and more complicated pipelines.
 
-![final rankings]({{site.images}}{{page.slug}}/rankings.png)\
 
 {% include cta/cta1.html %}
