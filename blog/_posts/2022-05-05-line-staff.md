@@ -50,7 +50,7 @@ Back to our example, the dev team members at Duke Electric are staff developers.
 
 Someone at Thoughtworks sold Dominion Energy on the idea that Thoughtworks could do a great job on the billing software, and they are going to charge a lot for this work. If things go well, they will get follow-on business and maybe even a whitepaper. From there, Thoughtworks will try to get into more regional utilities ( Florida Power & Light, here we come!). In other words, if you work on the team deployed into Duke and endanger the project timeline, you might end up on the 'the bench,' which is a half-step away from a lay-off.
 
-Other the other hand, if someone in billing complains about you and you work on the internal dev team at Duke, your boss will deflect that, and life will go on. Market pressures don't apply to internal teams, which can be both good and bad. The internal customer has one vendor (you), and you, in turn, have one customer. It's not better than working at a consulting company, but it is different. Each has career advantages and disadvantages. And I'll get to that shortly but first, let me beat this distinction to death.
+On the other hand, if someone in billing complains about you and you work on the internal dev team at Duke, your boss will deflect that, and life will go on. Market pressures don't apply to internal teams, which can be both good and bad. The internal customer has one vendor (you), and you, in turn, have one customer. It's not better than working at a consulting company, but it is different. Each has career advantages and disadvantages. And I'll get to that shortly but first, let me beat this distinction to death.
 
 <div class="notice">
 ### Profit Center vs. Cost Center
