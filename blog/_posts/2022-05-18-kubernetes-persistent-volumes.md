@@ -32,7 +32,7 @@ Persistent volumes solve this issue. They're built atop the simpler [volume syst
 
 Persistent volumes are a higher abstraction that completely decouples storage from the pods that use it. A persistent volume has its own lifecycle, stores data at the cluster or namespace level, and can be shared between multiple pods. Although persistent volumes are used by pods, they never belong to pods. The volume and its data will remain available in the cluster even after all pods that reference it are gone, allowing it to be reattached to new, future pods.
 
-## When to Use Persistent Volumes
+## When To Use Persistent Volumes
 
 You should use a persistent volume whenever you have data that needs to outlive individual pods. Unless the data is transitory or specific to a single container, it's usually best stored in a persistent volume.
 
@@ -56,9 +56,9 @@ metadata:
   name: example-pv
 spec:
   accessModes:
-	- ReadWriteOnce
+ - ReadWriteOnce
   capacity:
-	storage: 1Gi
+ storage: 1Gi
   storageClassName: standard
   volumeMode: Filesystem
 ```
@@ -75,7 +75,7 @@ The `accessModes` field defines which nodes and pods can access the volume:
 
 ### Volume Mode
 
-A `volumeMode` of `Filesystem` is the default, and usually desired, behavior. It means the volume will be mounted into pods as a directory in each pod's filesystem. The alternative value of `Block` presents the volume as a raw block storage device without a preconfigured filesystem.
+A `volumeMode` of `Filesystem` is the default, and usually desired, behavior. It means the volume will be mounted into pods as a directory in each pod's filesystem. The alternative value of `Block` presents the volume as a raw block storage device without a pre-configured filesystem.
 
 ### Storage Classes
 
@@ -126,10 +126,10 @@ metadata:
   name: example-pvc
 spec:
   accessModes:
-	- ReadWriteOnce
+ - ReadWriteOnce
   resources:
-	requests:
-  	storage: 1Gi
+ requests:
+   storage: 1Gi
   storageClassName: standard
 ```
 
@@ -154,15 +154,15 @@ metadata:
   name: pod-with-pvc
 spec:
   containers:
-	- name: pvc-container
-  	image: nginx:latest
-  	volumeMounts:
-    	- mountPath: /pv-mount
-      	name: pv
+ - name: pvc-container
+   image: nginx:latest
+   volumeMounts:
+     - mountPath: /pv-mount
+       name: pv
   volumes:
-	- name: pv
-  	persistentVolumeClaim:
-    	claimName: example-pvc
+ - name: pv
+   persistentVolumeClaim:
+     claimName: example-pvc
 ```
 
 Then add the pod to your cluster:
@@ -224,15 +224,15 @@ This file is persisted
 
 The content of the persistent volume was not affected by the first pod's deletion. It can be remounted into new pods at any time, preserving everything that's been previously written.
 
-## Managing Persistent Volumes with kubectl
+## Managing Persistent Volumes With `kubectl`
 
 You can retrieve a list of your persistent volumes using kubectl:
 
 ```
 $ kubectl get pv
 
-NAME                                   	CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS   CLAIM                                          	STORAGECLASS   	REASON   AGE
-pvc-f90a46bd-fac0-4cb5-b020-18b3e74dd3b6   1Gi    	RWO        	Delete       	Bound	pv-demo/example-pvc                            	do-block-storage        	7m52s
+NAME                                    CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS   CLAIM                                           STORAGECLASS    REASON   AGE
+pvc-f90a46bd-fac0-4cb5-b020-18b3e74dd3b6   1Gi     RWO         Delete        Bound pv-demo/example-pvc                             do-block-storage         7m52s
 ```
 
 Similarly, you can view all your persistent volume claims:
@@ -240,8 +240,8 @@ Similarly, you can view all your persistent volume claims:
 ```
 $ kubectl get pvc
 
-NAME      	STATUS   VOLUME                                 	CAPACITY   ACCESS MODES   STORAGECLASS   	AGE
-example-pvc   Bound	pvc-f90a46bd-fac0-4cb5-b020-18b3e74dd3b6   1Gi    	RWO        	do-block-storage   9m
+NAME       STATUS   VOLUME                                  CAPACITY   ACCESS MODES   STORAGECLASS    AGE
+example-pvc   Bound pvc-f90a46bd-fac0-4cb5-b020-18b3e74dd3b6   1Gi     RWO         do-block-storage   9m
 ```
 
 If a volume or claim shows a **Pending** status, it's usually because the storage class is still provisioning storage for the volume. You can check what's holding up the process by using the `describe` command to view the object's event history:
@@ -251,10 +251,10 @@ $ kubectl describe pvc example-pvc
 
 ...
 Events:
-  Type 	Reason             	Age                	From                                                                        	Message
-  ---- 	------             	----               	----                                                                        	-------
-  Normal   Provisioning       	9m30s              	dobs.csi.digitalocean.com_master_68ea6d30-36fe-4f9f-9161-0db299cb0a9c       	External provisioner is provisioning volume for claim "pv-demo/example-pvc"
-  Normal   ProvisioningSucceeded  9m24s              	dobs.csi.digitalocean.com_master_68ea6d30-36fe-4f9f-9161-0db299cb0a9c       	Successfully provisioned volume pvc-f90a46bd-fac0-4cb5-b020-18b3e74dd3b6
+  Type  Reason              Age                 From                                                                         Message
+  ----  ------              ----                ----                                                                         -------
+  Normal   Provisioning        9m30s               dobs.csi.digitalocean.com_master_68ea6d30-36fe-4f9f-9161-0db299cb0a9c        External provisioner is provisioning volume for claim "pv-demo/example-pvc"
+  Normal   ProvisioningSucceeded  9m24s               dobs.csi.digitalocean.com_master_68ea6d30-36fe-4f9f-9161-0db299cb0a9c        Successfully provisioned volume pvc-f90a46bd-fac0-4cb5-b020-18b3e74dd3b6
 ```
 
 To edit your volumes and claims, it's usually best to modify your YAML file and reapply it to your cluster with kubectl:
@@ -288,3 +288,5 @@ This will empty and remove the storage that was provisioned by your provider. Th
 Persistent volumes let you store data independently of the pods in your Kubernetes cluster. They're backed by storage classes that interface with different kinds of local disk, cloud storage, and network share. These implementation details are kept separate from how pods access and use the volume.
 
 In this article, you've learned about the use cases for persistent volumes, the way persistent volumes differ from regular volumes, and the methods that let you add and use persistent volumes and persistent volume claims inside your Kubernetes cluster. You've also seen some kubectl utility commands to help you interact with your volumes. These will equip you to run stateful applications in Kubernetes without risking data loss after container restarts.
+
+{% include cta/cta1.html %}
