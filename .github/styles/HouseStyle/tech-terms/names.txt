@@ -191,6 +191,8 @@ Cryptogopher
 Boi
 Quigley
 LeetCode
+Thoughtworks
+whitepaper
 podman
 Kubescape
 Powershell
@@ -198,3 +200,4 @@ Armo
 Feldman
 winget
 cmake
+
