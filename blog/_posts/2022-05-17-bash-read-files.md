@@ -22,7 +22,7 @@ Below, you'll learn about various reading operations with Bash, including readin
 
 The following code illustrates how to use the `while` conditional loop to read a file:
 
-~~~{.bash caption=">_"}
+~~~{.bash caption="bash"}
 while read -r line; 
 do
     echo "$line";
@@ -34,12 +34,12 @@ The `while` loop reads each line from the specified filename, `filename.txt`, an
 If you were to deconstruct the previous reading operations even further, you would start by creating a text file:
 
 ~~~{.bash caption=">_"}
-touch filename.txt
+$ touch filename.txt
 ~~~
 
 Then you would use your preferred text editor, like [vim](https://www.vim.org) or [GNU Emacs](https://www.gnu.org/software/emacs/), to add pseudo input:
 
-~~~{.bash caption=">_"}
+~~~{.bash caption="filename.txt"}
 The
 quick
 brown
@@ -53,7 +53,7 @@ dog.
 
 After that, you need to execute the `while` loop, just like the first code snippet, that reads and prints the contents of `filename.txt` to the console:
 
-~~~{.bash caption=">_"}
+~~~{.bash caption="bash"}
 while read -r line;
 do;
 echo "$line";
@@ -65,8 +65,8 @@ This code can be converted to a [Bash script](/blog/understanding-bash), like `r
 Similarly, the following code shows the output for executing the `while` command to read a file but now using an executable shell script, `read_bash.sh`:
 
 ~~~{.bash caption=">_"}
-chmod +x read_bash.sh
-sh read_bash.sh
+$ chmod +x read_bash.sh
+$ sh read_bash.sh
 ~~~
 
 ### Using Custom Delimiters
@@ -76,12 +76,12 @@ sh read_bash.sh
 The [Internal Field Separator (IFS)] is a special shell variable that acts as the delimiter in Bash. The value of IFS dictates how Bash will split the string. The default value of IFS consists of the space, tab, and newline characters. If you run `echo "$IFS"`, you'll just see an empty output, because all the three aforementioned characters are "non-printing". To "see" them, you can use the `cat` command with the `-e` and `-t` flag:
 
 ~~~{.bash caption=">_"}
-echo "$IFS" | cat -et
+$ echo "$IFS" | cat -et
 ~~~
 
 You'll see the following output:
 
-~~~{.bash caption=">_"}
+~~~{.bash caption="Output"}
  ^I$
 $
 ~~~
@@ -90,7 +90,7 @@ There's a space at the beginning, the `^I` represents the tab character, and the
 
 You can set the IFS variable to your custom delimiter to change the default string splitting behaviour. In the following example, to read a CSV file, IFS is set to `,`:
 
-~~~{.bash caption=">_"}
+~~~{.bash caption="ifs.sh"}
 #! /bin/bash
 while IFS="," read -r column1 column2
 do
@@ -102,7 +102,7 @@ done < input.csv
 
 The content of `input.csv` is the following:
 
-~~~{.bash caption=">_"}
+~~~{.bash caption="input.csv"}
 john,23
 robert,55
 max,35
@@ -110,7 +110,7 @@ max,35
 
 And the output of the script is the following:
 
-~~~{.bash caption=">_"}
+~~~{.bash caption="Output"}
 Name: john
 Age: 23
 
@@ -123,15 +123,18 @@ Age: 35
 
 To revert IFS back to the default value, you can simply unset it:
 
-~~~{.bash caption=">_"}
+~~~{.bash caption=""}
 unset IFS
 ~~~
 
 ### Using `nchar`
 
-In some cases, for instance, where the relevant information in the file is contained in the first few characters, like login details or file version, reading an entire file is not prudent. Bash can be used to read a specific number of characters rather than a full line, as seen later.
+In some cases, for instance, where the relevant information in the file is contained in the first few characters, like login details or file version, reading an entire file is not prudent. Bash can be used to read a specific number of characters rather than a full line.
 
-~~~{.bash caption=">_"}
+Or 
+
+~~~{.bash caption="nchar.sh"}
+#! /bin/bash
 while read -r line;
 do;
 echo "$line";
@@ -142,8 +145,11 @@ n=5
 
 #Code to read first 'n' characters:
 echo ${input:0:$n}
+~~~
 
-#Output:
+Running the script:
+
+~~~{.bash caption="Output"}
 The q
 ~~~
 
@@ -151,8 +157,8 @@ The q
 
 In many instances, user inputs are required as part of the process. Bash can also read user prompts via the command line and pass them to a variable for further processing. In the following example, a Bash script `login.sh` prompts the user to enter the username and password for an application:
 
-~~~{.bash caption=">_"}
-#login.sh
+~~~{.bash caption="login.sh"}
+#! /bin/bash
 read -p 'Username: ' uservar
 read -sp 'Password: ' passvar
 echo
@@ -175,8 +181,9 @@ Working with variables is important for scaling a lot of file and data processin
 #Reading a file, filename.txt from the first example into a variable, var:
 var=$(<filename.txt)
 echo "$value"
+~~~
 
-#Output:
+~~~{.ini caption="Output"}
 The
 quick
 brown
@@ -194,7 +201,7 @@ dog.
 
 Below, is an example where you read a file being piped to a Bash script, `cat_read.sh`:
 
-~~~{.bash caption=">_"}
+~~~{.bash caption="cat_read.sh"}
 #!/bin/bash
 
 if [ -t 0 ]
@@ -211,30 +218,35 @@ echo $data
 In this example, the script will read from a file if provided with a file name. If it doesn't have a file name, it will read from `stdin`.
 
 ~~~{.bash caption=">_"}
-chmod +x cat_read.sh
+$ chmod +x cat_read.sh
 
-# Create the test file
-echo "Hello, World" > file.txt
+$ # Create the test file
+$ echo "Hello, World" > file.txt
 
-#Example1
-./cat_read.sh file.txt
+$ #Example1
+$ ./cat_read.sh file.txt
+~~~
 
-#Output:
+~~~{.bash caption="Output"}
+
 Hello, World
+~~~
 
-#Example2
-cat file.txt | ./cat_read.sh
+Another Example:
 
-#Output:
+~~~{.bash caption=">_"}
+$ cat file.txt | ./cat_read.sh
+~~~
+
+~~~{.bash caption="Output"}
 Hello, World
 ~~~
 
 ### Working With Empty Lines
 
-Most files include empty lines and escape characters, which are sometimes problematic and need to be ignored when reading a file. You can make this possible using the following code:
+Most files include empty lines and escape characters, which are sometimes problematic and need to be ignored when reading a file. 
 
-~~~{.bash caption=">_"}
-#Sample file with empty lines:
+~~~{.bash caption="filename.txt"}
 The
 
 quick
@@ -244,16 +256,16 @@ brown
 fox
 ~~~
 
+You can make this possible using the following code:
+
 ~~~{.bash caption=">_"}
-#Code to read file while ignoring empty lines:
 
 while read -r line; do
    [[ -n "$line" && "$line" != [[:blank:]#]* ]] && echo "$line"
 done < "filename.txt"
 ~~~
 
-~~~{.bash caption=">_"}
-#Output:
+~~~{.bash caption="Ouput"}
 The
 quick
 brown
@@ -271,7 +283,7 @@ The [`cat` command](https://linuxhint.com/cat-command-bash/) (short for "concate
 In the following example, `cat` is being used to read a file:
 
 ~~~{.bash caption=">_"}
-cat filename.txt
+$ cat filename.txt
 ~~~
 
 ### Using the `nl` Command
@@ -279,45 +291,34 @@ cat filename.txt
 The `nl` command in Bash is used for numbering lines and can take input from a file or from the standard input (stdin). The most basic `nl` operation is depicted here:
 
 ~~~{.bash caption=">_"}
-nl filename.txt
+$ nl filename.txt
 ~~~
 
 In this example, the `nl` operation adds a line number to each line in `filename.txt` and saves it into a new filename, `nl_filename.txt`, whose output can be viewed using the `cat` command.
 
 ~~~{.bash caption=">_"}
-nl filename.txt > nl_filename.txt
-cat nl_filename.txt
+$ nl filename.txt > nl_filename.txt
+$ cat nl_filename.txt
 ~~~
 
 ### Using the `head` Command
 
-The `head` command is used to print the top N number of data in a given file. By default, it prints the first five lines of the specified files:
+The `head` command is used to print the top N number of data in a given file. By default, it prints the first ten lines of the specified files:
 
 ~~~{.bash caption=">_"}
-head filename.txt # as in the first example
-
-~~~
-
-~~~{.bash caption=">_"}
-head -n 5 filename.txt
-#Outputs:
-The
-quick
-brown
-fox
+$ head -n 5 filename.txt
+  The
+  quick
+  brown
+  fox
 ~~~
 
 ### Using the `tail` Command
 
-The `tail` command in Bash is the complement of the `head` command and is used to print the last N number of data in a given file. By default, it prints the last five lines of the specified files:
+The `tail` command in Bash is the complement of the `head` command and is used to print the last N number of data in a given file. By default, it prints the last ten lines of the specified files:
 
 ~~~{.bash caption=">_"}
-tail filename.txt # as in the first example
-~~~
-
-~~~{.bash caption=">_"}
-tail -n 5 filename.txt
-#Outputs:
+$ tail -n 5 filename.txt
 jumped
 over
 the

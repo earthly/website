@@ -40,7 +40,7 @@ Persistent volumes may be created either statically or dynamically. A *staticall
 
 To start, you need a YAML file for your persistent volume:
 
-~~~{.bash caption=">_"}
+~~~{.yaml}
 apiVersion: v1
 kind: PersistentVolume
 metadata:
@@ -84,8 +84,9 @@ $ kubectl apply -f pv.yaml
 
 When running this command, you might see the following error message:
 
-~~~{.bash caption=">_"}
-The PersistentVolume "example-pv" is invalid: spec: Required value: must specify a volume type
+~~~{.ini caption=""}
+The PersistentVolume "example-pv" is invalid: spec: 
+Required value: must specify a volume type
 ~~~
 
 This usually occurs when the underlying storage class uses a provisioner to create your storage. The cloud provider is avoiding allocating storage that's not actively used in your cluster. If this happens, you should use dynamic volume creation to automatically create a persistent volume at the time it's used. This is covered in the next section.
@@ -96,7 +97,7 @@ Persistent volumes are linked to pods by means of a persistent volume claim. A *
 
 Persistent volume claims are stand-alone objects. Here's what it looks like to claim the example volume created earlier:
 
-~~~{.bash caption=">_"}
+~~~{.yaml caption=""}
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
@@ -110,7 +111,7 @@ The `volumeName` field references the previously created persistent volume. When
 
 Persistent volume claims may implicitly create new volumes instead of referencing existing ones. You should supply the volume's details as part of the claim's `spec`. Following is the dynamic volume creation method mentioned earlier:
 
-~~~{.bash caption=">_"}
+~~~{.yaml caption=""}
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
@@ -138,7 +139,7 @@ Provided that you've specified a storage class that's available in your cluster,
 
 Finally, you can link the claim to your pods using the `volumes` and `volumeMount` fields in the pod manifest:
 
-~~~{.bash caption=">_"}
+~~~{.yaml caption=""}
 apiVersion: v1
 kind: Pod
 metadata:
