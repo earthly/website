@@ -131,7 +131,7 @@ unset IFS
 
 In some cases, for instance, where the relevant information in the file is contained in the first few characters, like login details or file version, reading an entire file is not prudent. Bash can be used to read a specific number of characters rather than a full line.
 
-Or 
+Or:
 
 ~~~{.bash caption="nchar.sh"}
 #! /bin/bash
@@ -244,7 +244,7 @@ Hello, World
 
 ### Working With Empty Lines
 
-Most files include empty lines and escape characters, which are sometimes problematic and need to be ignored when reading a file. 
+Most files include empty lines and escape characters, which are sometimes problematic and need to be ignored when reading a file.
 
 ~~~{.bash caption="filename.txt"}
 The
