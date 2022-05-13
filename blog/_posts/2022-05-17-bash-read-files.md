@@ -6,19 +6,10 @@ toc: true
 author: Sundeep Teki
 
 internal-links:
- - just an example
+ - nchar
+ - read files
+ - nl 
 ---
-## Draft.dev Article Checklist
-
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
-
 [Bash](https://en.wikipedia.org/wiki/Bash_(Unix_shell)) (bourne again shell) scripts give you the ability to turn series of manual commands into an easily [runnable and repeatable script](https://earthly.dev/blog/understanding-bash/). This can be especially useful when working with files.
 
 For programmers, Bash enables you to efficiently search for particular keywords or phrases by reading each line separately. Bash can also be used for reading files for a variety of reasons, like shell scripting, searching, text processing, building processes, logging data, and automating administrative tasks. When you're done with this article, you'll be able to use Bash to read files line by line, use custom delimiters, assign variables, and more.
@@ -69,7 +60,7 @@ echo "$line";
 done < "filename.txt"
 ~~~
 
-This code can be converted to a Bash script, like `read_bash.sh`, and can be executed any number of times.
+This code can be converted to a [Bash script](/blog/understanding-bash), like `read_bash.sh`, and can be executed any number of times.
 
 Similarly, the following code shows the output for executing the `while` command to read a file but now using an executable shell script, `read_bash.sh`:
 

@@ -5,20 +5,8 @@ categories:
 toc: true
 author: James Konik
 internal-links:
- - just an example
+ - terraform
 ---
-### Draft.dev Article Checklist
-
-- [ ] Add in Author page
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
-
 As projects increase in complexity, so do the benefits of using tools to automate parts of the deployment process. Scaling your infrastructure and deploying to multiple platforms and locations can become unmanageable without the right workflows in place.
 
 Fortunately, help is available in the form of the increasing selection of tools and platforms, like [Kubernetes](https://kubernetes.io/) and [Terraform](https://www.terraform.io/), that are geared toward solving such problems.

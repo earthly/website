@@ -7,10 +7,9 @@ author: Mdu Sibisi
 sidebar:
   nav: "bash"
 internal-links:
- - Bash Programming
- - Bash Scripts
+ - bash test
+ - bash tests
  - flow control
- - bash
 ---
 
 [Bash (bourne again shell)](https://www.gnu.org/software/bash/manual/html_node/What-is-Bash_003f.html) has been around since 1989 and owes its longevity to its usefulness and flexibility. While it's the default login and command shell for most [Linux](https://www.linux.org) distros, its value extends beyond that.

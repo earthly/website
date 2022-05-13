@@ -5,19 +5,10 @@ categories:
 toc: true
 author: James Walker
 internal-links:
- - just an example
+ - persistent volumes
+ - kubernetes persistent volumes
+ - kubernetes persistence
 ---
-## Draft.dev Article Checklist
-
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
-
 Kubernetes [persistent volumes](https://kubernetes.io/docs/concepts/storage/persistent-volumes) provide data storage for stateful applications. They abstract a storage system's implementation from how it's consumed by your pods. A persistent volume could store data locally, on a network share, or in a block storage volume provided by a cloud vendor.
 
 Persistent volumes solve the challenges of storing persistent data, such as databases and logs, in Kubernetes. Containers running inside pods are stateless and have ephemeral filesystems. Although your applications can read and write files within their containers, any changes will be lost when the pod is restarted or terminated.
@@ -49,7 +40,7 @@ Persistent volumes may be created either statically or dynamically. A *staticall
 
 To start, you need a YAML file for your persistent volume:
 
-```yaml
+~~~{.bash caption=">_"}
 apiVersion: v1
 kind: PersistentVolume
 metadata:
@@ -61,7 +52,7 @@ spec:
  storage: 1Gi
   storageClassName: standard
   volumeMode: Filesystem
-```
+~~~
 
 This defines a simple persistent volume with a 1 Gi capacity. A few other configuration options are used to define how the volume is provisioned and accessed.
 
@@ -87,15 +78,15 @@ The `standard` class shown here is available when you're running your cluster [o
 
 Use kubectl to add your new persistent volume to your cluster:
 
-```
+~~~{.bash caption=">_"}
 $ kubectl apply -f pv.yaml
-```
+~~~
 
 When running this command, you might see the following error message:
 
-```
+~~~{.bash caption=">_"}
 The PersistentVolume "example-pv" is invalid: spec: Required value: must specify a volume type
-```
+~~~
 
 This usually occurs when the underlying storage class uses a provisioner to create your storage. The cloud provider is avoiding allocating storage that's not actively used in your cluster. If this happens, you should use dynamic volume creation to automatically create a persistent volume at the time it's used. This is covered in the next section.
 
@@ -105,7 +96,7 @@ Persistent volumes are linked to pods by means of a persistent volume claim. A *
 
 Persistent volume claims are stand-alone objects. Here's what it looks like to claim the example volume created earlier:
 
-```yaml
+~~~{.bash caption=">_"}
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
@@ -113,13 +104,13 @@ metadata:
 spec:
   storageClassName: ""
   volumeName: example-pv
-```
+~~~
 
 The `volumeName` field references the previously created persistent volume. When you link this claim to a pod, the pod will receive access to the `example-pv` volume. The empty `storageClassName` field is intentional and causes the claim to use the storage class set within the persistent volume's definition.
 
 Persistent volume claims may implicitly create new volumes instead of referencing existing ones. You should supply the volume's details as part of the claim's `spec`. Following is the dynamic volume creation method mentioned earlier:
 
-```yaml
+~~~{.bash caption=">_"}
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
@@ -131,23 +122,23 @@ spec:
  requests:
    storage: 1Gi
   storageClassName: standard
-```
+~~~
 
 The claim now has `accessModes` and `storageClassName` fields to configure the volume that'll be created. The volume's capacity is defined via the `resources.requests.storage` field. Please note that this is a slightly different format from a stand-alone persistent volume.
 
 Apply the claim to your cluster using kubectl:
 
-```
+~~~{.bash caption=">_"}
 $ kubectl apply -f pvc.yaml
 
 persistentvolumeclaim/example-pvc created
-```
+~~~
 
 Provided that you've specified a storage class that's available in your cluster, the claim creation should succeed, even if the stand-alone volume creation failed with an error. The storage class will dynamically provision a new persistent volume that satisfies the claim.
 
 Finally, you can link the claim to your pods using the `volumes` and `volumeMount` fields in the pod manifest:
 
-```yaml
+~~~{.bash caption=">_"}
 apiVersion: v1
 kind: Pod
 metadata:
@@ -163,15 +154,15 @@ spec:
  - name: pv
    persistentVolumeClaim:
      claimName: example-pvc
-```
+~~~
 
 Then add the pod to your cluster:
 
-```
+~~~{.bash caption=">_"}
 $ kubectl apply -f pvc-pod.yaml
 
 pod/pod-with-pvc created
-```
+~~~
 
 The persistent volume claim is referenced by the pod's `spec.volumes` field. This sets up a pod volume called `pv`, which can be included in the `containers` section of the manifest and is mounted to `/pv-mount`. Files written to this directory in the container will be stored in the persistent volume, letting them outlive the individual container instances.
 
@@ -181,46 +172,46 @@ You can verify this behavior with a quick example.
 
 Get a shell to the pod created earlier:
 
-```
+~~~{.bash caption=">_"}
 $ kubectl exec --stdin --tty pod-with-pvc -- sh
-```
+~~~
 
 Now write a file to the `/pv-mount` directory, which the persistent volume was mounted to:
 
-```
+~~~{.bash caption=">_"}
 $ echo "This file is persisted" > /pv-mount/demo
-```
+~~~
 
 Then detach from the container:
 
-```
+~~~{.bash caption=">_"}
 $ exit
-```
+~~~
 
 Use kubectl to delete the pod:
 
-```
+~~~{.bash caption=">_"}
 $ kubectl delete pods/pod-with-pvc
 
 pod "pod-with-pvc" deleted
-```
+~~~
 
 Recreate the pod by applying its YAML manifest again:
 
-```
+~~~{.bash caption=">_"}
 $ kubectl apply -f pvc-pod.yaml
 
 pod/pod-with-pvc created
-```
+~~~
 
 Get a shell to the container in the new pod and read the file from `/pv-mount/demo`:
 
-```
+~~~{.bash caption=">_"}
 $ kubectl exec --stdin --tty pod-with-pvc -- sh
 $ cat /pv-mount/demo
 
 This file is persisted
-```
+~~~
 
 The content of the persistent volume was not affected by the first pod's deletion. It can be remounted into new pods at any time, preserving everything that's been previously written.
 
@@ -228,25 +219,25 @@ The content of the persistent volume was not affected by the first pod's deletio
 
 You can retrieve a list of your persistent volumes using kubectl:
 
-```
+~~~{.bash caption=">_"}
 $ kubectl get pv
 
 NAME                                    CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS   CLAIM                                           STORAGECLASS    REASON   AGE
 pvc-f90a46bd-fac0-4cb5-b020-18b3e74dd3b6   1Gi     RWO         Delete        Bound pv-demo/example-pvc                             do-block-storage         7m52s
-```
+~~~
 
 Similarly, you can view all your persistent volume claims:
 
-```
+~~~{.bash caption=">_"}
 $ kubectl get pvc
 
 NAME       STATUS   VOLUME                                  CAPACITY   ACCESS MODES   STORAGECLASS    AGE
 example-pvc   Bound pvc-f90a46bd-fac0-4cb5-b020-18b3e74dd3b6   1Gi     RWO         do-block-storage   9m
-```
+~~~
 
 If a volume or claim shows a **Pending** status, it's usually because the storage class is still provisioning storage for the volume. You can check what's holding up the process by using the `describe` command to view the object's event history:
 
-```
+~~~{.bash caption=">_"}
 $ kubectl describe pvc example-pvc
 
 ...
@@ -255,19 +246,19 @@ Events:
   ----  ------              ----                ----                                                                         -------
   Normal   Provisioning        9m30s               dobs.csi.digitalocean.com_master_68ea6d30-36fe-4f9f-9161-0db299cb0a9c        External provisioner is provisioning volume for claim "pv-demo/example-pvc"
   Normal   ProvisioningSucceeded  9m24s               dobs.csi.digitalocean.com_master_68ea6d30-36fe-4f9f-9161-0db299cb0a9c        Successfully provisioned volume pvc-f90a46bd-fac0-4cb5-b020-18b3e74dd3b6
-```
+~~~
 
 To edit your volumes and claims, it's usually best to modify your YAML file and reapply it to your cluster with kubectl:
 
-```
+~~~{.bash caption=">_"}
 $ kubectl apply -f changed-file.yaml
-```
+~~~
 
 This uses the Kubernetes declarative API model to automatically detect and apply the changes you made. If you'd prefer to use imperative commands, run the `edit` command to open the object's YAML in your editor. Changes will be applied when you save and close the file:
 
-```
+~~~{.bash caption=">_"}
 $ kubectl edit pvc example-pvc
-```
+~~~
 
 It's not possible to change volume properties, such as access mode and storage class. Other fields, like the volume's capacity, are implementation-dependent: most major storage classes support dynamic resizes, but [this isn't universal](https://kubernetes.io/blog/2018/07/12/resizing-persistent-volumes-using-kubernetes). You should consult your Kubernetes provider's documentation if in doubt.
 
@@ -275,11 +266,11 @@ Don't manually edit dynamically created persistent volume objects by adding a pe
 
 To remove a volume or a claim, use the `delete` command:
 
-```
+~~~{.bash caption=">_"}
 $ kubectl delete pvc example-pvc
 
 persistentvolumeclaim "example-pvc" deleted
-```
+~~~
 
 This will empty and remove the storage that was provisioned by your provider. The data inside the volume will be non-recoverable unless separate backups have been made. Don't delete volumes that were dynamically provisioned by a storage class: as with edits and creations, you should interact with the claim they were created for. The storage class will handle the persistent volume object for you.
 

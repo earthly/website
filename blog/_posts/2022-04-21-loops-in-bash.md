@@ -8,10 +8,11 @@ author: Aniket Bhattacharyea
 sidebar:
   nav: "bash"
 internal-links:
- - Bash Programming
- - Bash Scripts
- - Loops
- - bash
+ - bash loops
+ - while loop
+ - while loops
+ - until loop
+ - until loops
 ---
 
 Like any other programming language, [Bash](https://www.gnu.org/software/bash/) supports loops. The loops are used to repeatedly execute a set of commands based on some condition. Along with [conditionals](https://earthly.dev/blog/bash-conditionals/), they're the most common way to control the flow of a program.
