@@ -25,10 +25,14 @@ The big change is where things are.
 
 On Intel Macs, Homebrew, and any packages you install using Homebrew, go in `/usr/local/bin`.
 
+<div class="narrow-code">
+
 ~~~{.bash caption=">_ Intel"}
 $ which brew
 /usr/local/bin/brew
 ~~~
+
+</code>
 
 Homebrew chose `/usr/local/bin` because it is already in your `PATH` by default.
 
