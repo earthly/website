@@ -1,5 +1,5 @@
 ---
-title: "Using Homebrew on an M1 Mac"
+title: "Using Homebrew on M1 Mac"
 categories:
   - Tutorials
 toc: true
