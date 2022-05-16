@@ -33,3 +33,6 @@ Vagrantfile
 virtualize
 lxc
 Kaniko
+
+# programming
+memoization

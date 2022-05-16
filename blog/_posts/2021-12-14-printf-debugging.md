@@ -7,7 +7,7 @@ newsletter_side: false
 sidebar:
   nav: "thoughts"
 internal-links:
- - printf
+ - printf debugging
  - debuggers
  - debugging
 ---
