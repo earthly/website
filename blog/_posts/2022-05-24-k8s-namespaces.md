@@ -122,7 +122,7 @@ Thankfully, a team has created the tool [kubectx + kubens](https://github.com/ah
 
 If you want to supercharge the utility, you should also install [Fzf](https://github.com/junegunn/fzf), a fuzzy finder tool. Once Fzf is installed, you can just execute `kubens` and it will show you a list of all the available namespaces in your cluster. From here, you can type a partial name to search for namespaces, or you can simply use the arrow keys to navigate through the list.
 
-![kubens demo](https://i.imgur.com/bsfBcct.gif)
+![kubens demo]({{site.images}}{{page.slug}}/bsfBcct.gif)\
 
 ## Conclusion
 
