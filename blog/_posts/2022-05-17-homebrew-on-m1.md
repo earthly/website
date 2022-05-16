@@ -117,13 +117,13 @@ That should be it. After that I recommend going over any config files or profile
 
 I encountered a couple issues with this new installation, both related to the fact that Homebrew had moved from `/usr/local/bin`.
 
-### Check Your Hacky Workarounds
+### Update Old Code
 
 The first problem I ran came after pulling my old `.zshrc` file over from my Intel Mac onto my M1. I had been using `gnu-sed`, installed with brew. In order to get it to override the existing `sed` command on my machine I needed to point directly to it in my `PATH` which meant adding `export  PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"` to my `.zshrc` file. (There may have been a better workaround for this but this worked so I stuck with it.)
 
 I'm pretty sure you can see the problem right away. Obviously the package was no longer in `/usr/local/opt/gnu-sed`. The bigger problem was I had set up this work-around and forgotten about it, so it took me a bit to remember to check my `.zshrc` and update the `PATH`.
 
-### Update Third Party Software
+### Update Third Party Code
 
 The second problem I had was the same idea, but took a little longer to debug. We run our blog with [Jekyll](https://jekyllrb.com/). Several of the third party libraries in our project rely on the [ffi](https://github.com/ffi/ffi/) Ruby gem. You can read more about [Foreign function interfaces](https://en.wikipedia.org/wiki/Foreign_function_interface) if you're interested, but what is relevant here is that if some bit of Ruby code in our blog needs to interact with a package installed by brew, it uses ffi to do it.
 
