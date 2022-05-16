@@ -3,3 +3,5 @@ kubectl
 kubeconfig
 Kubernetes
 kubernetes
+kubectx
+kubens
