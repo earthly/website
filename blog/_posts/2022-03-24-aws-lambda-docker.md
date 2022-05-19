@@ -4,7 +4,8 @@ categories:
   - Tutorials
 toc: true
 author: Adam
-
+sidebar:
+  nav: "lambdas"
 internal-links:
  - lambda container
 ---

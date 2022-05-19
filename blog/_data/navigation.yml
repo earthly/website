@@ -146,3 +146,16 @@ deployment-strategies:
         url: /aws-lambda-node/
       - title: "Part 4: gRPC"
         url: /golang-grpc-example/
+lambdas:
+  - title: AWS Lambdas
+    children:
+      - title: "Running Containers on AWS Lambda"
+        url: /aws-lambda-docker/
+      - title: "AWS Lambda Golang With S3"
+        url: /aws-lambda-golang/
+      - title: "Text Mode"
+        url: /text-mode/
+      - title: "AWS Lambdas And GRPC"
+        url: /lambda-grpc/
+      - title: "Lambda Rest APIs"
+        url: /aws-lambda-api-proxy/
