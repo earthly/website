@@ -204,7 +204,100 @@ The route my service is getting has `default` on the front of it. It's possible 
 
 ```
 
-And with and a bit of deployment magic, my services routing works in the Lambda. My problem now is that it doesn't work outside of Lambda, and I'll tackle that next, but first let me show you how I deployed it and got it configured in AWS.
+And with and a bit of deployment magic, my services routing works in the Lambda.
+
+```
+$ curl https://earthly-tools.com/text-mode | head -n 15
+Earthly.dev Presents:                                                                                              
+
+  _____                 _       
+ |_   _|   ___  __  __ | |_     
+   | |    / _ \ \ \/ / | __|    
+   | |   |  __/  >  <  | |_     
+   |_|    \___| /_/\_\  \__|    
+                                
+  __  __               _        
+ |  \/  |   ___     __| |   ___ 
+ | |\/| |  / _ \   / _` |  / _ \
+ | |  | | | (_) | | (_| | |  __/
+ |_|  |_|  \___/   \__,_|  \___|
+```
+
+
+My problem now is that it doesn't work outside of Lambda, and I'll tackle that next, but first let me show you how I deployed it and got it configured in AWS.
 
 ## Deployment Shenanigans 
+
+To deploy a container as a lambda in AWS follow the steps from [my previous guide] and you should end up with a lambda that is backed by ECR and can be updated with an Earthfile target (or equivalent bash script) like this:
+
+```
+deploy:
+    FROM amazon/aws-cli
+    ARG AWS_PROFILE=earthly-dev
+    RUN --mount=type=secret,target=/root/.aws/config,id=+secrets/config \
+        --mount=type=secret,target=/root/.aws/credentials,id=+secrets/credentials \
+        --no-cache \
+        aws lambda update-function-code \
+            --region us-east-1 \
+            --function-name lambda-api \
+            --image-uri 459018586415.dkr.ecr.us-east-1.amazonaws.com/lambda-api:latest
+```
+
+<figcaption>Update Lambda Function</figcaption>
+
+The big difference from the previous solution, is that instead of binding to a specific API gateway route, I want to bind to all routes and handling the routing in go. To do this I setup a route of the form `{term+}` where term can be anything, and map it to my lambda.
+
+<div>
+{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/1340.png --alt {{  }} %}
+<figcaption>API Gateway Route</figcaption>
+</div>
+
+And that is the only change needed. 
+
+(According to AWS Docs, It's also possible to map the existing `$default` route to a lambda and acheive the same results. I had trouble getting that to work.)
+
+
+<div class="notice notice--big">
+
+### Alternate Ending: Lambda Function URL
+
+AWS Lambdas have a new feature called 'Function URLs' which are urls for each function. They work very much like setting up an API Gateway and routing all paths to a single lambda but they can be setup in a step.
+
+<div>
+{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/2100.png %}
+{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/2050.png %}
+<figcaption>Function URLs can be created under Lambda Configuration</figcaption>
+</div>
+
+Function urls work great and nothing extra is appended onto the route, so to use them you don't need to assume `default` will be part of the route. 
+
+```
+$ curl https://e5esd6waj5xra75atmg3t3iooq0pwxnp.lambda-url.us-east-1.on.aws/default/text-mode | head -n 15
+Earthly.dev Presents:                                                                                              
+
+  _____                 _       
+ |_   _|   ___  __  __ | |_     
+   | |    / _ \ \ \/ / | __|    
+   | |   |  __/  >  <  | |_     
+   |_|    \___| /_/\_\  \__|    
+                                
+  __  __               _        
+ |  \/  |   ___     __| |   ___ 
+ | |\/| |  / _ \   / _` |  / _ \
+ | |  | | | (_) | | (_| | |  __/
+ |_|  |_|  \___/   \__,_|  \___|
+```
+
+Unfortunely, function URLS don't support custom domain names, so I need to disgard it as a solution and stick with API Gateway.
+</div>
+
+## Local Host
+
+So the existing solution works as part of a Lambda, but that whole converting to and from a JSON event that `` does means it doesn't work for me locally like a normal web service container. 
+
+```
+```
+
+
+Let's fix that.
 
