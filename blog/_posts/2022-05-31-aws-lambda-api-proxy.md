@@ -90,9 +90,9 @@ And responses get returned like this:
 So one challegens is that we want to match our routes and write handlers using `http.ResponseWriter` like this:
 
 ```
-	http.HandleFunc("/my-route", func(w http.ResponseWriter, r *http.Request) {
-		io.WriteString(w, "Hello")
-	})
+    http.HandleFunc("/my-route", func(w http.ResponseWriter, r *http.Request) {
+        io.WriteString(w, "Hello")
+    })
 ```
 
 And somehow get them translated into the format that lambda requires. Thankfully, `AWS Lambda Go API Proxy` is here to do all the heaving lifting for us.
@@ -102,19 +102,19 @@ A simple hello-world looks like this:
 package main
 
 import (
-	"io"
-	"net/http"
+    "io"
+    "net/http"
 
-	"github.com/aws/aws-lambda-go/lambda"
-	"github.com/awslabs/aws-lambda-go-api-proxy/httpadapter"
+    "github.com/aws/aws-lambda-go/lambda"
+    "github.com/awslabs/aws-lambda-go-api-proxy/httpadapter"
 )
 
 func main() {
-	http.HandleFunc("/my-route", func(w http.ResponseWriter, r *http.Request) {
-		io.WriteString(w, "Hello")
-	})
+    http.HandleFunc("/my-route", func(w http.ResponseWriter, r *http.Request) {
+        io.WriteString(w, "Hello")
+    })
 
-	lambda.Start(httpadapter.New(http.DefaultServeMux).ProxyWithContext)
+    lambda.Start(httpadapter.New(http.DefaultServeMux).ProxyWithContext)
 }
 ```
 
@@ -126,18 +126,18 @@ Here is our orignal, non-lambda specific code:
 
 ```
 func main() {
-	app := textmode.NewApp()
-	r := mux.NewRouter()
+    app := textmode.NewApp()
+    r := mux.NewRouter()
 
-	r.HandleFunc("/text-mode", app.Handler)
-	r.HandleFunc("/", HomeHandler)
+    r.HandleFunc("/text-mode", app.Handler)
+    r.HandleFunc("/", HomeHandler)
 
-	log.Println("Starting up on own")
-	srv := &http.Server{
-		Addr:    ":8080",
-		Handler: r,
-	}
-	_ = srv.ListenAndServe()
+    log.Println("Starting up on own")
+    srv := &http.Server{
+        Addr:    ":8080",
+        Handler: r,
+    }
+    _ = srv.ListenAndServe()
 }
 ```
 
@@ -145,20 +145,20 @@ The first thing I need to do is bring in bla
 
 ```
 func main() {
-	app := textmode.NewApp()
-	r := mux.NewRouter()
+    app := textmode.NewApp()
+    r := mux.NewRouter()
 
-	r.HandleFunc("/text-mode", app.Handler)
-	r.HandleFunc("/", HomeHandler)
+    r.HandleFunc("/text-mode", app.Handler)
+    r.HandleFunc("/", HomeHandler)
 
-	log.Println("Starting up on own")
--	srv := &http.Server{
--		Addr:    ":8080",
--		Handler: r,
--	}
--	_ = srv.ListenAndServe()
-+	adapter := gorillamux.NewV2(r)
-+	lambda.Start(adapter.ProxyWithContext)
+    log.Println("Starting up on own")
+-   srv := &http.Server{
+-       Addr:    ":8080",
+-       Handler: r,
+-   }
+-   _ = srv.ListenAndServe()
++   adapter := gorillamux.NewV2(r)
++   lambda.Start(adapter.ProxyWithContext)
 }
 ```
 
@@ -172,26 +172,39 @@ But once this is deployed, I get 404s:
 $ curl https://earthly-tools.com/text-mode
 404 Not Found
 ```
+
 To figure out what going on, I'm going to add more information to my 404 errors:
 
 ```
 func main() {
-	app := textmode.NewApp()
-	r := mux.NewRouter()
-+	r.NotFoundHandler = http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-+	 	log.Println("Not found", r.RequestURI)
-+	 	http.Error(w, fmt.Sprintf("Not found: %s", r.RequestURI), http.StatusNotFound)
-+	 })
+    app := textmode.NewApp()
+    r := mux.NewRouter()
++   r.NotFoundHandler = http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
++       log.Println("Not found", r.RequestURI)
++       http.Error(w, fmt.Sprintf("Not found: %s", r.RequestURI), http.StatusNotFound)
++    })
 
-	// s := r.PathPrefix("/default").Subrouter()
+    log.Println("Starting up on own")
+    adapter := gorillamux.NewV2(r)
+    lambda.Start(adapter.ProxyWithContext)
+}
+```
+And then I can see the problem:
+```
+$ curl https://earthly-tools.com/text-mode
+Not found: /default/text-mode
+```
+
+The route my service is getting has `default` on the front of it. It's possible there is a some way to configure AWS API gateway to remove this, but it's pretty easy to deal with in service: I just create a prefix path for all my routes.
+
+```
+	s := r.PathPrefix("/default").Subrouter()
 	s.HandleFunc("/text-mode", app.Handler)
 	s.HandleFunc("/", HomeHandler)
 
-		log.Println("Starting up in Lambda Runtime")
-		adapter := gorillamux.NewV2(r)
-		lambda.Start(adapter.ProxyWithContext)
-	
-}
 ```
- 
+
+And with and a bit of deployment magic, my services routing works in the Lambda. My problem now is that it doesn't work outside of Lambda, and I'll tackle that next, but first let me show you how I deployed it and got it configured in AWS.
+
+## Deployment Shenanigans 
 

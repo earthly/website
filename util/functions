@@ -124,6 +124,9 @@ lint() { # Run Linter
     # remove double spaces
     sed -i -E "s/\.\s\s(\w)/. \1/g" ./blog/_posts/*.md
     sed -i -E "s/\?\s\s(\w)/? \1/g" ./blog/_posts/*.md
+    # fix tabs from go
+    expand -t 4 "$(post)" | sponge "$(post)"
+
     vale --output line --minAlertLevel error ./blog/_posts/*.md
     if grep -n 'imgur.com' ./blog/_posts/*.md
     then
