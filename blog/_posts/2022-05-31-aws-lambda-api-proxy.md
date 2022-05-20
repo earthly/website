@@ -11,11 +11,6 @@ internal-links:
 ---
 ### Writing Article Checklist
 
-- [ ] Write Outline
-- [ ] Write Draft
-- [ ] Fix Grammarly Errors
-- [ ] Read out loud
-- [ ] Write 5 or more titles and pick the best on
 - [ ] First two paragraphs: What's it about? Why listen to you?
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
@@ -48,25 +43,35 @@ Welcome back. The earlier post on containers in lambdas showed up on hacker news
 
 > Is it possible to host an app like Django inside container on lambda? This could help the Django/postgres apps to scale horizontally easily. - <https://news.ycombinator.com/item?id=31183109>
 
-The answer is Yes! There are frameworks and libraries out there to help do this in Javascript with Express, in Python with Django and with Ruby on Rails.
+I can't see why this wouldn't work. But before digging in myself I asked around online.
 
-Today, I'm going to show how to do it in GoLang with just the standard HTTP lib and gorrila Mux for setting up routing rules. At the end, we will have a containerized app that can be called like a norma HTTP app locally and work in AWS running in a Lambda.
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Is anyone hosting a full CRUD type app with routing and persisting as an AWS Lambda? <br><br>And if so, how is that going?</p>&mdash; Adam Gordon Bell 🤓 (@adamgordonbell) <a href="https://twitter.com/adamgordonbell/status/1527268246533165056?ref_src=twsrc%5Etfw">May 19, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+The resounding answer I got was Yes! There are frameworks and libraries out there to help do this in Javascript with Express, in Python with Django and with Ruby on Rails. 
+
+The low cost was one of the most stated reasons for using this approach:
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Keep going! I think it&#39;s a promising architecture for mid-size applications and could be really cheap</p>&mdash; Nomad  (@nomad_ok) <a href="https://twitter.com/nomad_ok/status/1527426967720673293?ref_src=twsrc%5Etfw">May 19, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+So today, I'm going to show how to do it in GoLang with just the standard HTTP lib and gorrila Mux for setting up routing rules. At the end, we will have a containerized app that can be called like a normal HTTP app locally and still work in AWS running in a Lambda.
 
 <div class="notice--info">
 
 ### Side Note: Other Languages
 
-- If you'd like to spin up a Rub on Rails App on Lambda, bla is here to help
+- If you'd like to spin up a Ruby on Rails App on Lambda, [Lamby](https://lamby.custominktech.com/) is here to help
 - For Django projects, or anything using ASGI both [magnum](https://github.com/jordaneremieff/mangum) and [apig-wsgi](https://pypi.org/project/apig-wsgi/)
-- For Node.js try ...
+- For Node.js, [`serverless-express`](https://github.com/vendia/serverless-express) seems to be a great option.
 
 </div>
 
-## What we need to do
+## What We Need To Do
 
-Our goal is be able to write a normal golang http webservice that we can start-up and make requests against, but have it work as a lambda when running behind the AWS API Gateway.
+Our goal is be able to write a normal Golang HTTP web-service, that we can start-up and make requests against, but run it as a lambda when behind the AWS API Gateway.
 
-The challenge of this is that [as seen previously]() HTTP requests from API Gateway come as JSON documents like this:
+The challenge of this is that [as seen previously](/blog/aws-lambda-docker/) HTTP requests from API Gateway come as JSON documents like this:
 
 ~~~{.json caption="lambda input"}
 {
@@ -76,7 +81,7 @@ The challenge of this is that [as seen previously]() HTTP requests from API Gate
 }
 ~~~
 
-And responses get returned like this:
+And responses need to get returned like this:
 
 ~~~{.json caption="lambda output"}
 {
@@ -88,7 +93,7 @@ And responses get returned like this:
 }
 ~~~
 
-So one challegens is that we want to match our routes and write handlers using `http.ResponseWriter` like this:
+This is not how HTTP services send and receive. I want to match use `http.ResponseWriter` like this:
 
 ~~~{.bash caption=">_"}
     http.HandleFunc("/my-route", func(w http.ResponseWriter, r *http.Request) {
@@ -96,7 +101,7 @@ So one challegens is that we want to match our routes and write handlers using `
     })
 ~~~
 
-And somehow get them translated into the format that lambda requires. Thankfully, `AWS Lambda Go API Proxy` is here to do all the heaving lifting for us.
+And somehow have that translated into the lambda message format. Thankfully, `AWS Lambda Go API Proxy` is here to help.
 
 A simple hello-world looks like this:
 
@@ -120,13 +125,13 @@ func main() {
 }
 ~~~
 
-I'm going port the Text-mode service to use this framework and if you want to skip ahead, the [code is here]().
+If proxies the requests and responses, converts them to the proper format and communicates with the Lambda runtime. I'm going port the [Text-mode service](/blog/text-mode/) to use this framework and if you want to skip ahead, the [code is here](https://github.com/adamgordonbell/cloudservices/tree/aws-lambda-2).
 
 > Lambda is Greek for CGI script <https://news.ycombinator.com/item?id=31183176>
 
 Here is our orignal, non-lambda specific code:
 
-~~~{.bash caption=">_"}
+~~~{.go caption="main.go"}
 func main() {
     app := textmode.NewApp()
     r := mux.NewRouter()
@@ -143,9 +148,9 @@ func main() {
 }
 ~~~
 
-The first thing I need to do is bring in bla
+The first thing I need to do is bring in `aws-lambda-go-api-proxy`:
 
-~~~{.bash caption=">_"}
+~~~{.diff caption="main.go"}
 func main() {
     app := textmode.NewApp()
     r := mux.NewRouter()
@@ -164,7 +169,7 @@ func main() {
 }
 ~~~
 
-Deploy to lambda and test it out. (I'll cover the setup soon).
+I then deploy to lambda and test it out. (I'll cover the how of AWS setup soon).
 
 ## Failure
 
@@ -175,9 +180,9 @@ $ curl https://earthly-tools.com/text-mode
 404 Not Found
 ~~~
 
-To figure out what going on, I'm going to add more information to my 404 errors:
+To figure out what going on, I need to add more information to my 404 errors:
 
-~~~{.bash caption=">_"}
+~~~{.go caption="diff"}
 func main() {
     app := textmode.NewApp()
     r := mux.NewRouter()
@@ -199,19 +204,23 @@ $ curl https://earthly-tools.com/text-mode
 Not found: /default/text-mode
 ~~~
 
-The route my service is getting has `default` on the front of it. It's possible there is a some way to configure AWS API gateway to remove this, but it's pretty easy to deal with in service: I just create a prefix path for all my routes.
+The route my service is getting is prefixed with `default`. I can work around this by creating a prefix path for all my routes.
 
-~~~{.bash caption=">_"}
+(It's possible there is a some way to configure AWS API gateway to remove this, but I didn't find it.)
+
+~~~{.go caption="main.go"}
  s := r.PathPrefix("/default").Subrouter()
  s.HandleFunc("/text-mode", app.Handler)
  s.HandleFunc("/", HomeHandler)
-
 ~~~
 
-And with and a bit of deployment magic, my services routing works in the Lambda.
+And with and a bit of deployment magic, my service's routing works in the Lambda.
 
 ~~~{.bash caption=">_"}
 $ curl https://earthly-tools.com/text-mode | head -n 15
+~~~
+
+~~~
 Earthly.dev Presents:                                                                                              
 
   _____                 _       
@@ -227,11 +236,12 @@ Earthly.dev Presents:
  |_|  |_|  \___/   \__,_|  \___|
 ~~~
 
-My problem now is that it doesn't work outside of Lambda, and I'll tackle that next, but first let me show you how I deployed it and got it configured in AWS.
+My next problem, however, is getting this to work outside a Lambda. 
+But first let me show you how I deployed it and got it configured in AWS.
 
 ## Deployment Shenanigans
 
-To deploy a container as a lambda in AWS follow the steps from [my previous guide] and you should end up with a lambda that is backed by ECR and can be updated with an Earthfile target (or equivalent bash script) like this:
+To deploy a container as a lambda in AWS follow the steps from [my previous guide] and you should end up with a lambda that is backed by an image sitting in Elastic Container Registry (ECR) and can be updated with an Earthfile target (or equivalent bash script) like this:
 
 ~~~{.bash caption=">_"}
 deploy:
@@ -248,7 +258,7 @@ deploy:
 
 <figcaption>Update Lambda Function</figcaption>
 
-The big difference from the previous solution, is that instead of binding to a specific API gateway route, I want to bind to all routes and handling the routing in go. To do this I setup a route of the form `{term+}` where term can be anything, and map it to my lambda.
+So the big difference from the previous solution on the AWS side is how API Gateway is configured. Instead of binding to a specific API gateway route, I want to bind to all routes and handling the routing in go. To do this, I setup a route of the form `{term+}` where term can be anything, and map it to my lambda.
 
 <div>
 {% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/1340.png --alt {{  }} %}
@@ -257,13 +267,13 @@ The big difference from the previous solution, is that instead of binding to a s
 
 And that is the only change needed.
 
-(According to AWS Docs, It's also possible to map the existing `$default` route to a lambda and acheive the same results. I had trouble getting that to work.)
+(According to AWS Docs, It's also possible to map the existing `$default` route to a lambda and achieve the same results. I had trouble getting that to work.)
 
 <div class="notice notice--big">
 
 ### Alternate Ending: Lambda Function URL
 
-AWS Lambdas have a new feature called 'Function URLs' which are urls for each function. They work very much like setting up an API Gateway and routing all paths to a single lambda but they can be setup in a step.
+AWS Lambdas have a new feature called 'Function URLs' which are one-off URLs for each function. They work very much like setting up API Gateway and routing all paths to a single lambda, but they can be setup in a single step.
 
 <div>
 {% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/2100.png %}
@@ -271,7 +281,7 @@ AWS Lambdas have a new feature called 'Function URLs' which are urls for each fu
 <figcaption>Function URLs can be created under Lambda Configuration</figcaption>
 </div>
 
-Function urls work great and nothing extra is appended onto the route, so to use them you don't need to assume `default` will be part of the route.
+Function URLs work great and nothing extra is appended onto the route, so to use them you don't need to assume `default` will be part of the route.
 
 ~~~{.bash caption=">_"}
 $ curl https://e5esd6waj5xra75atmg3t3iooq0pwxnp.lambda-url.us-east-1.on.aws/default/text-mode | head -n 15
@@ -290,21 +300,23 @@ Earthly.dev Presents:
  |_|  |_|  \___/   \__,_|  \___|
 ~~~
 
-Unfortunely, function URLS don't support custom domain names, so I need to disgard it as a solution and stick with API Gateway.
+Unfortunately, function URLS don't support custom domain names, so I need to discard it and stick with API Gateway.
 </div>
 
 ## Local Host
 
-So the existing solution works as part of a Lambda, but that whole converting to and from a JSON event that `aws-lambda-go-api-proxy` does means it doesn't work for me locally like a normal web service container.
+Ok, back to the go code.
+
+The existing solution works as part of a Lambda, but converting that `aws-lambda-go-api-proxy` does means it doesn't work for me locally like a normal web service container.
 
 ~~~{.bash caption=">_"}
 $ curl localhost:8080/default/text-mode
 404 page not found
 ~~~
 
-That is because I'm still running the lambda runtime locally, which expects its input as JSON events. You can use this locally, as seen in [this article], but its a bit cumbersome. 
+That is because I'm still running the lambda runtime locally, which expects JSON events. You can use this locally, as seen in [this article](/blog/aws-lambda-docker/), but its a bit cumbersome.
 
-To correct this, I need to make some modification to the image (`public.ecr.aws/lambda/go:latest`) that I'm running my lambda in. I can create a second image with an updated entrypoint, in my [earthfile]:
+To correct this, I need to make some modification to the image (`public.ecr.aws/lambda/go:latest`) that I'm running my lambda in. I can create a second image with an updated entrypoint, in my [earthfile](https://github.com/adamgordonbell/cloudservices/blob/aws-lambda-2/lambda-api/Earthfile):
 
 ~~~{.bash caption=">_"}
 local-image:
@@ -314,9 +326,9 @@ local-image:
     SAVE IMAGE lambda-api:latest
 ~~~
 
-I've also set `AWS_LAMBDA_RUNTIME_API` to blank, which allows me to detect when I'm running in a lambda in my code:
+I've also blanked out the `AWS_LAMBDA_RUNTIME_API` value, which allows me to detect when I'm running in a lambda like so:
 
-~~~{.bash caption=">_"}
+~~~{.diff caption="main.go"}
 func main() {
     app := textmode.NewApp()
     r := mux.NewRouter()
@@ -340,15 +352,18 @@ func main() {
 }
 ~~~
 
-And with that lambda runtime detection, and using an identical image but a different entry point, I can run an HTTP service with its own routing, locally and in my lambda.
+And with that, I can run the HTTP service with its own routing locally, and in a lambda.
 
-```
+~~~{.bash caption=">_"}
 $ docker run \
         -v /Users/adam/.aws/config:/root/.aws/config:ro \
         -v /Users/adam/.aws/credentials:/root/.aws/credentials:ro \
         -p 8080:8080 lambda-api:latest
  d0a7b4ded42fa6458a52336c78c151d209e5c567734d70b17a342f231e8ee2b7
 $ curl localhost:8080/default/text-mode | head -n 15
+~~~
+
+~~~
 Earthly.dev Presents:                                                                                              
 
   _____                 _       
@@ -362,6 +377,10 @@ Earthly.dev Presents:
  | |\/| |  / _ \   / _` |  / _ \
  | |  | | | (_) | | (_| | |  __/
  |_|  |_|  \___/   \__,_|  \___|
-```
+~~~
 
-The full source code is availble on github as well as the code for previous versions. This solution shoudl work for any HTTP service in go, whether written using gorrilaMux or the standard lib, or Martini or Gin or whatever HTTP framework. I think this can be a powerful model for deploying stateless HTTP services without getting too intwined and lockedin to AWS. It's just a container and a proxy lib, everything else works just like you are used to.
+The full source code is [on GitHub](https://github.com/adamgordonbell/cloudservices/tree/aws-lambda-2/lambda-api) as well as the code for previous versions. This solution should work for any HTTP service in go, whether written using gorrilaMux, the standard lib, or whatever HTTP framework you prefer. 
+
+I think this can be a powerful model for deploying stateless HTTP services without getting too intertwined and locked-in to AWS specific features. It's just a container and a proxy lib. Everything else works just like you are used to.
+
+{% include cta/cta1.html %}
