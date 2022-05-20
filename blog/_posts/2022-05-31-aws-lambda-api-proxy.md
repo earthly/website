@@ -25,7 +25,6 @@ Keywords:
 
 - api proxy
 - aws lambda http request example
-- rails lambda
 
 - Provisioned Concurrency
   - <https://aws.amazon.com/lambda/pricing/#Provisioned_Concurrency_Pricing>
@@ -47,15 +46,13 @@ I can't see why this wouldn't work. But before digging in myself I asked around 
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Is anyone hosting a full CRUD type app with routing and persisting as an AWS Lambda? <br><br>And if so, how is that going?</p>&mdash; Adam Gordon Bell 🤓 (@adamgordonbell) <a href="https://twitter.com/adamgordonbell/status/1527268246533165056?ref_src=twsrc%5Etfw">May 19, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-
-The resounding answer I got was Yes! There are frameworks and libraries out there to help do this in Javascript with Express, in Python with Django and with Ruby on Rails. 
+The resounding answer I got was Yes! There are frameworks and libraries out there to help do run serverless backends in single lambdas. It's possible in JavaScript with Express, in Python with Django, with Ruby on Rails and probably more.
 
 The low cost was one of the most stated reasons for using this approach:
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Keep going! I think it&#39;s a promising architecture for mid-size applications and could be really cheap</p>&mdash; Nomad  (@nomad_ok) <a href="https://twitter.com/nomad_ok/status/1527426967720673293?ref_src=twsrc%5Etfw">May 19, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-
-So today, I'm going to show how to do it in GoLang with just the standard HTTP lib and gorrila Mux for setting up routing rules. At the end, we will have a containerized app that can be called like a normal HTTP app locally and still work in AWS running in a Lambda.
+So today, I'm going to show how to do it in GoLang with just the standard HTTP lib and Gorrila Mux for setting up routing rules. At the end, we will have a containerized app that can be called like a normal HTTP app locally and still work in AWS running in a Lambda.
 
 <div class="notice--info">
 
@@ -81,6 +78,8 @@ The challenge of this is that [as seen previously](/blog/aws-lambda-docker/) HTT
 }
 ~~~
 
+<figcaption>Example AWS Lambda HTTP Request</figcaption>
+
 And responses need to get returned like this:
 
 ~~~{.json caption="lambda output"}
@@ -92,6 +91,8 @@ And responses need to get returned like this:
   "body" : "Some error fetching the content"
 }
 ~~~
+
+<figcaption>Example AWS Lambda HTTP Response</figcaption>
 
 This is not how HTTP services send and receive. I want to match use `http.ResponseWriter` like this:
 
@@ -125,11 +126,11 @@ func main() {
 }
 ~~~
 
-If proxies the requests and responses, converts them to the proper format and communicates with the Lambda runtime. I'm going port the [Text-mode service](/blog/text-mode/) to use this framework and if you want to skip ahead, the [code is here](https://github.com/adamgordonbell/cloudservices/tree/aws-lambda-2).
+If proxies the requests and responses, converts them to the proper format and communicates with the Lambda runtime. I'm going port the [Text-mode service](/blog/text-mode/) to use this framework and if you want to skip ahead, the [code is on GitHub](https://github.com/adamgordonbell/cloudservices/tree/aws-lambda-2).
 
 > Lambda is Greek for CGI script <https://news.ycombinator.com/item?id=31183176>
 
-Here is our orignal, non-lambda specific code:
+Here is our original, non-lambda specific code:
 
 ~~~{.go caption="main.go"}
 func main() {
@@ -236,7 +237,7 @@ Earthly.dev Presents:
  |_|  |_|  \___/   \__,_|  \___|
 ~~~
 
-My next problem, however, is getting this to work outside a Lambda. 
+My next problem, however, is getting this to work outside a Lambda.
 But first let me show you how I deployed it and got it configured in AWS.
 
 ## Deployment Shenanigans
@@ -261,7 +262,7 @@ deploy:
 So the big difference from the previous solution on the AWS side is how API Gateway is configured. Instead of binding to a specific API gateway route, I want to bind to all routes and handling the routing in go. To do this, I setup a route of the form `{term+}` where term can be anything, and map it to my lambda.
 
 <div>
-{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/1340.png --alt {{  }} %}
+{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/1340.png --alt {{ AWS API Gateway Route }} %}
 <figcaption>API Gateway Route</figcaption>
 </div>
 
@@ -316,7 +317,7 @@ $ curl localhost:8080/default/text-mode
 
 That is because I'm still running the lambda runtime locally, which expects JSON events. You can use this locally, as seen in [this article](/blog/aws-lambda-docker/), but its a bit cumbersome.
 
-To correct this, I need to make some modification to the image (`public.ecr.aws/lambda/go:latest`) that I'm running my lambda in. I can create a second image with an updated entrypoint, in my [earthfile](https://github.com/adamgordonbell/cloudservices/blob/aws-lambda-2/lambda-api/Earthfile):
+To correct this, I need to make some modification to the image (`public.ecr.aws/lambda/go:latest`) that I'm running my lambda in. I can create a second image with an updated entrypoint, in my [Earthfile](https://github.com/adamgordonbell/cloudservices/blob/aws-lambda-2/lambda-api/Earthfile):
 
 ~~~{.bash caption=">_"}
 local-image:
@@ -379,7 +380,7 @@ Earthly.dev Presents:
  |_|  |_|  \___/   \__,_|  \___|
 ~~~
 
-The full source code is [on GitHub](https://github.com/adamgordonbell/cloudservices/tree/aws-lambda-2/lambda-api) as well as the code for previous versions. This solution should work for any HTTP service in go, whether written using gorrilaMux, the standard lib, or whatever HTTP framework you prefer. 
+The full source code is [on GitHub](https://github.com/adamgordonbell/cloudservices/tree/aws-lambda-2/lambda-api) as well as the code for previous versions. This solution should work for any HTTP service in go, whether written using gorrilaMux, the standard lib, or whatever HTTP framework you prefer.
 
 I think this can be a powerful model for deploying stateless HTTP services without getting too intertwined and locked-in to AWS specific features. It's just a container and a proxy lib. Everything else works just like you are used to.
 
