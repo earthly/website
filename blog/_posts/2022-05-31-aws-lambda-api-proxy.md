@@ -6,39 +6,8 @@ toc: true
 author: Adam
 sidebar:
   nav: "lambdas"
-internal-links:
- - just an example
 ---
-### Writing Article Checklist
-
-- [ ] First two paragraphs: What's it about? Why listen to you?
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-- [ ] Run mark down linter (`lint`)
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links to other articles
-- [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
-- [ ] Raise PR
-
-Keywords:
-
-- api proxy
-- aws lambda http request example
-
-- Provisioned Concurrency
-  - <https://aws.amazon.com/lambda/pricing/#Provisioned_Concurrency_Pricing>
-
-- single provisioned concurrency would mean 0.0000041667 *604800* 4.25 in a month
-
-aws lambda web application
-aws lambda rest api
-serverless api gateway
-serverless backend
-aws backend
-
----
-Welcome back. The earlier post on containers in lambdas showed up on hacker news and got some fun questions about using Lambdas to scale out stateless webapps. Here is one question:
+Welcome back. The earlier post on containers in lambdas showed up on hacker news and got some fun questions about using Lambdas to scale out stateless web-apps. Here is one question:
 
 > Is it possible to host an app like Django inside container on lambda? This could help the Django/postgres apps to scale horizontally easily. - <https://news.ycombinator.com/item?id=31183109>
 
@@ -52,7 +21,7 @@ The low cost was one of the most stated reasons for using this approach:
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Keep going! I think it&#39;s a promising architecture for mid-size applications and could be really cheap</p>&mdash; Nomad  (@nomad_ok) <a href="https://twitter.com/nomad_ok/status/1527426967720673293?ref_src=twsrc%5Etfw">May 19, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-So today, I'm going to show how to do it in GoLang with just the standard HTTP lib and Gorrila Mux for setting up routing rules. At the end, we will have a containerized app that can be called like a normal HTTP app locally and still work in AWS running in a Lambda.
+So today, I'm going to show how to do it in GoLang with just the standard HTTP lib and Gorilla Mux for setting up routing rules. At the end, we will have a containerized app that can be called like a normal HTTP app locally and still work in AWS running in a Lambda.
 
 <div class="notice--info">
 
@@ -357,10 +326,12 @@ And with that, I can run the HTTP service with its own routing locally, and in a
 
 ~~~{.bash caption=">_"}
 $ docker run \
+        -d \
         -v /Users/adam/.aws/config:/root/.aws/config:ro \
         -v /Users/adam/.aws/credentials:/root/.aws/credentials:ro \
         -p 8080:8080 lambda-api:latest
  d0a7b4ded42fa6458a52336c78c151d209e5c567734d70b17a342f231e8ee2b7
+
 $ curl localhost:8080/default/text-mode | head -n 15
 ~~~
 
