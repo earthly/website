@@ -1,22 +1,96 @@
 ---
 layout: home-archive
+hero_post: earthly-open-source
+featured_post_a: awk-examples
+featured_post_b: docker-vs-chef
+featured_post_c: blue-green
 ---
 
-{{ content }}
-
-<h3 class="archive__subtitle">{{ site.data.ui-text[site.locale].recent_posts | default: "Recent Posts" }}</h3>
-
-{% if paginator %}
-  {% assign posts = paginator.posts %}
-{% else %}
-  {% assign posts = site.posts %}
-{% endif %}
-
 {% assign entries_layout = page.entries_layout | default: 'grid' %}
-<div class="entries-{{ entries_layout }}">
-  {% for post in posts %}
-    {% include archive-single.html type=entries_layout %}
+
+<div class="grid col-span-1 md:grid-cols-9 w-full gap-8 pb-10">
+  <div class="col-span-1 md:col-span-6 ">
+    {% assign hero_post = site.posts | where:"slug", layout.hero_post %}
+    {% for post in hero_post %}
+    {% include hero-story.html type=entries_layout %}
+    {% endfor %}
+  </div>
+
+  <div class="col-span-1 md:col-span-3 rounded-lg  bg-blue-50">
+    <div class="p-4 pr-12 pl-8">
+      <h3 class="mb-6 pl-2 text-2xl text-slate-500">
+        Earthly News
+      </h3>
+
+      {% for post in site.categories.News limit:5 %}
+      <h2 class="archive__item-title no_toc heading mt-6 pl-2 pr-2 text-md font-semibold" itemprop="headline">
+        <a class="hover:underline" href="/blog/{{ post.url }}" rel="permalink">{{ post.title }}
+        </a>
+      </h2>
+      {% endfor %}
+
+      <a class="pl-2 block mt-8 underline text-gray-600 hover:cursor-pointer hover:text-gray-900" href="/blog/categories/news/">More news...</a>
+    </div>
+  </div>
+
+</div>
+
+
+<h3 class="mb-4 mt-4 text-2xl font-semibold text-slate-600 ">
+  Featured
+</h3>
+<div class="entries-grid grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4">
+  {% assign featured_post_a = site.posts | where:"slug", layout.featured_post_a %}
+  {% for post in featured_post_a %}
+  {% include archive-single.html type=entries_layout %}
+  {% endfor %}
+
+  {% assign featured_post_b = site.posts | where:"slug", layout.featured_post_b %}
+  {% for post in featured_post_b %}
+  {% include archive-single.html type=entries_layout %}
+  {% endfor %}
+
+  {% assign featured_post_c = site.posts | where:"slug", layout.featured_post_c %}
+  {% for post in featured_post_c %}
+  {% include archive-single.html type=entries_layout %}
   {% endfor %}
 </div>
 
-{% include paginator.html %}
+
+
+<h3 class="mb-4 mt-8 text-2xl font-semibold text-slate-600 ">
+  Popular Series
+</h3>
+
+<div class="bg-blue-50 rounded-lg px-2">
+
+  <div class="entries-grid grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4">
+
+    {% include series_list.html name="Docker" type="docker" style="md:border-r md:border-slate-300" %}
+    {% include series_list.html name="Bash" type="bash" style="md:border-r md:border-slate-300" %}
+    {% include series_list.html name="Make Files" type="makefile"  %}
+
+  </div>
+</div>
+<a href="/blog/series" class="hover:underline block text-slate-500 text-lg mt-2 mb-2">More series...</a>
+
+<h3 class="mb-4 mt-9 text-2xl font-semibold text-slate-600 ">
+  Articles
+</h3>
+<div class="entries-grid grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4">
+  {% for post in site.categories.Articles limit:6 %}
+  {% include archive-single.html type=entries_layout %}
+  {% endfor %}
+</div>
+<a href="/blog/categories/articles/" class="hover:underline text-lg block text-slate-500 -mt-4">More articles...</a>
+
+
+<h3 class="mb-4 mt-9 text-2xl font-semibold text-slate-600 ">
+  Tutorials
+</h3>
+<div class="entries-grid grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4">
+  {% for post in site.categories.Tutorials limit:6 %}
+  {% include archive-single.html type=entries_layout %}
+  {% endfor %}
+</div>
+<a href="/blog/categories/tutorials/" class="hover:underline text-lg block text-slate-500 -mt-4">More tutorials...</a>

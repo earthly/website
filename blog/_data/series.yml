@@ -1,0 +1,7 @@
+# series names
+docker: 'Docker'
+makefile: 'Makefile'
+bash: 'Bash'
+thoughts: 'Programming Thoughts'
+activity-tracker: 'Activity Tracker'
+deployment-strategies: 'Deployment'

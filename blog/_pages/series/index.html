@@ -1,0 +1,28 @@
+---
+layout: series
+title: Series
+permalink: /series/
+---
+
+
+<div class="mb-6 text-4xl font-bold">Series</div>
+
+<div class="bg-blue-50 rounded-lg px-2">
+    <div class="entries-grid grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4">
+
+        {% include series_list.html name="Docker" type="docker" style="md:border-r md:border-slate-300" %}
+        {% include series_list.html name="Bash" type="bash" style="md:border-r md:border-slate-300" %}
+        {% include series_list.html name="Make Files" type="makefile" %}
+
+    </div>
+</div>
+
+<div class="bg-blue-50 rounded-lg px-2 mt-8">
+    <div class="entries-grid grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4">
+
+        {% include series_list.html name="Activity Tracker" type="activity-tracker" style="md:border-r md:border-slate-300" %}
+        {% include series_list.html name="Deployment" type="deployment-strategies" style="md:border-r md:border-slate-300" %}
+        {% include series_list.html name="Programming" type="thoughts" %}
+
+    </div>
+</div>
