@@ -36,6 +36,13 @@ html {
   min-height: 80px;
 }
 
+@media (min-width: 880px) {
+  .site-logo{
+    min-height: 75px;
+    display: block;
+  }
+}
+
 @media (min-width: 1200px) {
   .wide {
     width: 864px !important;
