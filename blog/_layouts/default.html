@@ -2,30 +2,67 @@
 ---
 
 <!doctype html>
-<html lang="{{ site.locale | slice: 0,2 | default: "en" }}" class="no-js">
-  <head>
-    {% include head.html %}
-  </head>
+<html lang="{{ site.locale | slice: 0,2 | default: " en" }}" class="no-js">
 
-  <body class="layout--{{ page.layout | default: layout.layout }}{% if page.classes or layout.classes %}{{ page.classes | default: layout.classes | join: ' ' | prepend: ' ' }}{% endif %}">
-    {% include_cached masthead.html %}
+<head>
+  {% include head.html %}
 
-    <div class="initial-content">
-      {{ content }}
-    </div>
-    {% if site.search == true %}
+  <script>
+    function doOnDocumentLoaded() {
+      // Get the button
+      let mybutton = document.getElementById('scroll-button');
+      if(!mybutton) return;
+      console.log(mybutton);
+      // When the user scrolls down 20px from the top of the document, show the button
+      window.onscroll = function () {
+        scrollFunction();
+      };
+
+      function scrollFunction() {
+        if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+          mybutton.style.display = 'block';
+        } else {
+          mybutton.style.display = 'none';
+        }
+      }
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', doOnDocumentLoaded);
+    } else {
+      doOnDocumentLoaded();
+    }
+  </script>
+</head>
+
+<body
+  class="layout--{{ page.layout | default: layout.layout }}{% if page.classes or layout.classes %}{{ page.classes | default: layout.classes | join: ' ' | prepend: ' ' }}{% endif %}">
+  <a name="top"></a>
+  <div class="flex justify-center">
+    <div class="flex flex-col min-w-[300px] max-w-[1260px]">
+      <div class=" pt-2 pr-2">{% include masthead.html name='fdslfkjdkjfdjk' %}</div>
+      
+      <div class="initial-content">
+        {{ content }}
+      </div>
+      {% if site.search == true %}
       <div class="search-content">
         {% include_cached search/search_form.html %}
       </div>
-    {% endif %}
+      {% endif %}
 
-    <div id="footer" class="page__footer">
-      <footer>
-        {% include_cached footer.html %}
-      </footer>
+      <div id="footer" class="page__footer">
+        <footer>
+          {% include_cached footer.html %}
+        </footer>
+      </div>
+
     </div>
 
     {% include scripts.html %}
 
-  </body>
+  </div>
+
+</body>
+
 </html>
