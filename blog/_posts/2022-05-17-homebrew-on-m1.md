@@ -1,11 +1,10 @@
 ---
 title: "Using Homebrew on M1 Mac"
 categories:
-  - Tutorials
+  - Articles
 toc: true
 author: Josh
 tags:
-- docker
 - apple-silicon
 - m1
 - arm64
@@ -17,7 +16,7 @@ internal-links:
  - arm
 ---
 
-Homebrew made some changes to where it installs packages if you are running it on a new M1 Mac, and these changes may throw you for a loop if your moving to M1 from Intel. In this article I'll talk about what changed and why it changed. I'll also walk you through getting all your Homebrew packages from your Intel Mac reinstalled on your M1, and share a couple of issues I came across after migrating that will hopefully help you with any gotchas you encounter in the future.
+Homebrew made some changes to where it installs packages if you are running it on a new M1 Mac, and these changes may throw you for a loop if you're moving over to an M1 from Intel. In this article I'll talk about what changed and why it changed. I'll also walk you through getting all your Homebrew packages from your Intel Mac reinstalled on your M1, and share a couple of issues I came across after migrating that will hopefully help you with any gotchas you encounter in the future.
 
 ## So What Changed?
 
@@ -36,7 +35,7 @@ $ which brew
 
 Homebrew chose `/usr/local/bin` because it is already in your `PATH` by default.
 
-~~~{.bash caption=">_ M1"}
+~~~{.bash caption=">_ Intel"}
 $ echo "${PATH//:/$'\n'}"
 '/usr/local/bin$'
 '/usr/bin$'
@@ -47,20 +46,20 @@ One of the reasons Homebrew has become so popular is that it just works right ou
 
 But if you install Homebrew on an M1 Mac running Apple Silicon, then Homebrew gets installed in `/opt/homebrew/bin`.
 
-~~~{.bash caption=">_"}
+~~~{.bash caption=">_M1"}
 $ which brew
 /opt/homebrew/bin/brew
 ~~~
 
 Since `/opt/homebrew/bin` is not included in your `PATH` by default, there is some extra configuration needed to allow you to use packages installed with Homebrew.
 
-## So Why the Change?
+## Why the Change?
 
 The the main motivation for the change was to allow the transition from Intel to Apple Silicon.
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">In #9117, we switched to a new prefix of <code>/opt/homebrew</code> for installations on Apple Silicon. This was written and shipped with heroic speed to help prevent strange issues with bleeding edge users on the first consumer Apple Silicon Macs.</p>&mdash;Misty De Méo - Homebrew Maintainer </blockquote>
 
-It could be possible to move everything back to `/usr/local/bin` in the future. But there are [other reasons](https://github.com/Homebrew/brew/issues/9177) for sticking with `/opt/homebrew` even after the Intel Macs are long gone.
+It could be possible to move everything back to `/usr/local/bin` in the future, but there are [other reasons](https://github.com/Homebrew/brew/issues/9177) for sticking with `/opt/homebrew` even after the Intel Macs are long gone.
 
 1. Homebrew is not the only tool that installs things in `/usr/local/bin` and so the potential for conflicts has always been an issue.
 2. There are [security concerns](https://applehelpwriter.com/2018/03/21/how-homebrew-invites-users-to-get-pwned/) with using `/usr/local/bin`.
@@ -74,7 +73,7 @@ If you're coming to M1 Mac fresh, without any old projects or profiles, you prob
 
 ### Create a Brewfile
 
-Th first thing you'll want to do is run `brew bundle dump` on your Intel Mac. This will create a `Brewfile`, which is just a list of everything brew has installed and how to install it again. Here's part of mine to give you an idea of what it looks like.
+Th first thing you'll want to do is run `brew bundle dump` on your Intel Mac. This will create a `Brewfile`, which is just a list of all packages that have been installed with brew. Here's part of mine to give you an idea of what it looks like.
 
 ~~~{.bash caption=">_"}
 tap "earthly/earthly"
@@ -113,32 +112,32 @@ Most importantly, it adds `/opt/homebrew/bin` to your path: `export PATH="/opt/h
 
 Once this is done, you'll need to copy over your `Brewfile` from your Intel Mac. You can tell brew to install everything with `brew bundle install --file /path/to/Brewfile`. This may take a while if you have a lot of packages so probably best to have an actual beer nearby.
 
-That should be it. After that I recommend going over any config files or profile files you have that might contain any references to Homebrew or packages you have installed.
+That should be it. After that I recommend going over any config files or profile files you have that might contain any references to Homebrew or Homebrew packages you have installed.
 
 ## Moving Pains
 
 ![Moving sucks]({{site.images}}{{page.slug}}/moving.jpg)\
 
-I encountered a couple issues with this new installation, both related to the fact that Homebrew had moved from `/usr/local/bin`.
+I encountered a couple issues with this new installation, both related to the fact that Homebrew had moved from `/usr/local/bin`. They are pretty specific to my set up, but hopefully a quick description of each one will help you track down similar issues if you encounter them.
 
 ### Update Old Code
 
-The first problem I ran came after pulling my old `.zshrc` file over from my Intel Mac onto my M1. I had been using `gnu-sed`, installed with brew. In order to get it to override the existing `sed` command on my machine I needed to point directly to it in my `PATH` which meant adding `export  PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"` to my `.zshrc` file. (There may have been a better workaround for this but this worked so I stuck with it.)
+The first problem I ran into came after pulling my old `.zshrc` file over from my Intel Mac onto my M1. I had been using `gnu-sed`, installed with brew. In order to get it to override the existing `sed` command on my machine I needed to point directly to it in my `PATH` which meant adding `export  PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"` to my `.zshrc` file. (There may have been a better workaround for this but this worked so I stuck with it.)
 
-I'm pretty sure you can see the problem right away. Obviously the package was no longer in `/usr/local/opt/gnu-sed`. The bigger problem was I had set up this work-around and forgotten about it, so it took me a bit to remember to check my `.zshrc` and update the `PATH`.
+I'm pretty sure you can see the problem right away. Obviously, the package was no longer in `/usr/local/opt/gnu-sed`. The fix was easy enough, just needed update my `PATH` in my `.zshrc` to the new location. The hard part was actually remembering that I had set up this override. For a very long while I could not figure out why my machine was using the default version of `sed` and it was driving me insane.
 
 ### Update Third Party Code
 
-The second problem I had was the same idea, but took a little longer to debug. We run our blog with [Jekyll](https://jekyllrb.com/). Several of the third party libraries in our project rely on the [ffi](https://github.com/ffi/ffi/) Ruby gem. You can read more about [Foreign function interfaces](https://en.wikipedia.org/wiki/Foreign_function_interface) if you're interested, but what is relevant here is that if some bit of Ruby code in our blog needs to interact with a package installed by brew, it uses ffi to do it.
+The second problem I had was the same idea. We run the Earthly blog with [Jekyll](https://jekyllrb.com/). Several of the third party libraries in our project rely on the [ffi](https://github.com/ffi/ffi/) Ruby gem. You can read more about [Foreign function interfaces](https://en.wikipedia.org/wiki/Foreign_function_interface) if you're interested, but what is relevant here is that if some bit of Ruby code in our blog needs to interact with a package installed by brew, it uses ffi to do it.
 
-The problem I encountered was that ffi did not add `/opt/homebrew/lib/` to its list of search paths until [version 1.15.2](https://github.com/ffi/ffi/blob/master/CHANGELOG.md#1152--2021-06-16). We were running v1.15.0 ,so every time I tried to run the blog I kept getting `no such file or directory` errors because ffi wasn't updated to check `/opt/homebrew/lib`. Again, this was frustrating because I hadn't paid much attention when first installing Homebrew on my M1 so it didn't occur to me that packages had moved. The rabbit hole I went down because of this error is the reason I wrote this article.
+The problem I encountered was that ffi did not add `/opt/homebrew/lib/` to its list of search paths until [version 1.15.2](https://github.com/ffi/ffi/blob/master/CHANGELOG.md#1152--2021-06-16). We were running v1.15.0 ,so every time I tried to run the blog I kept getting `no such file or directory` errors because ffi wasn't updated to check `/opt/homebrew/lib`. Again, this was frustrating until I realized what was going on. The rabbit hole I went down because of this error is the reason I wrote this article.
 
-Luckily the gem had already been patched to fix this issue, so once I did realize what was going on, all I needed to do was update it.
+Luckily, the gem had already been patched to fix this issue, so once I did realize what was going on, all I needed to do was update it.
 
 ## Conclusion
 
-So this was a lot of information but the main take away is: Homebrew moved and if you're having issues with it or any of its packages, the reason might be because other tools don't haven't been made aware of Homebrew's new location. If you suspect that's the case, make sure you check that `/opt/homebrew/bin` is part of your PATH, and confirm that any third party software you're using has been updated to look in `/opt/homebrew/bin`.
+So this was a lot of information but the main take away is: Homebrew moved and if you're having issues with it or any of its packages, the reason might be because other tools haven't been made aware of Homebrew's new location. If you suspect that's the case, make sure you check that `/opt/homebrew/bin` is part of your PATH, and confirm that any third party software you're using has been updated to look in `/opt/homebrew/bin`.
 
-One of the reasons people love Homebrew is because it just works. And on Apple Silicon, that's still true, but you might encounter a couple of hiccups along the way. I ended up learning a lot about Homebrew and how it works while digging a little deeper into this issue. If you want to learn more about Homebrew you can checkout their website, or this excellent [getting started tutorial](https://mac.install.guide/homebrew/3.html). And if you haven't already, it's worth reading a bit about [Rosetta 2](https://screenrant.com/apple-rosetta-2-explained/), since it's at the heart of what makes the switch to Apple Silicon possible, not just for Homebrew, but for all software switching over to M1.
+One of the reasons people love Homebrew is because it just works. And on Apple Silicon, that's still true, but you might encounter a couple of hiccups along the way. I ended up learning a lot about Homebrew and how it works while digging a little deeper into this issue. If you want to learn more about Homebrew you can checkout their website, or this excellent [getting started tutorial](https://mac.install.guide/homebrew/3.html). And if you haven't already, it's worth reading a bit about [Rosetta 2](https://screenrant.com/apple-rosetta-2-explained/), since it's at the heart of what makes the switch to Apple Silicon possible, not just for Homebrew, but for all software switching over from Intel to M1.
 
 {% include cta/cta1.html %}
