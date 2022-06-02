@@ -232,14 +232,4 @@ If you're looking for something that is as close to your production cluster as p
 
 No matter what option you choose for developing your applications locally, you'll have to deploy mthe platform into production. For this, check out [Earthly](https://earthly.dev/), a framework to help you effortlessly deploy your services.
 
-## Draft.dev Article Checklist
-
-- [ ] Add in Author page
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
+{% include cta/cta1.html %}
