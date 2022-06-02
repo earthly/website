@@ -5,3 +5,4 @@ error.txt
 .DS_Store
 blog/build
 website/build
+install.sh
