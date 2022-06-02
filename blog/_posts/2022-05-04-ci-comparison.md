@@ -1,7 +1,7 @@
 ---
 title: "CI Free Tier Showdown"
 categories:
-  - Tutorials
+  - Articles
 toc: true
 author: Josh
 
@@ -16,7 +16,7 @@ internal-links:
 
 ## How Much Can You Get For Free?
 
-Here at Earthly, we care about your CI/CD dollar. That's why we decided to pit the **free tiers** of four of the top CI/CD platforms against each other to find out which one provides the most bang for no bucks. In this post we'll compare [Github Actions](https://github.com/features/actions), [GitLab CI](https://docs.gitlab.com/ee/ci/), [Circle CI](https://circleci.com/), and [Travis CI](https://www.travis-ci.com/) using the following criteria:
+Here at Earthly, we care about your CI/CD dollar. That's why we decided to pit the **free tiers** of four of the top CI/CD platforms against each other to find out which one provides the most bang for no bucks. In this post we'll compare [Github Actions](https://github.com/features/actions) vs [GitLab CI](https://docs.gitlab.com/ee/ci/) vs [Circle CI](https://circleci.com/) vs [Travis CI](https://www.travis-ci.com/) using the following criteria:
 
 - Quality of Documentation
 - Compute Power
