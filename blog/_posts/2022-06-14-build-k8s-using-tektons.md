@@ -12,7 +12,7 @@ internal-links:
 ---
 
 
-Continuous integration/continuous delivery (CI/CD) principles offer multiple benefits to software organizations, including faster time to market, higher-quality code, and simpler and faster fault isolation. Applications built using [ci/cd](/blog/ci-vs-cd) pipeline best practices tend to see a huge increase in users over time, necessitating a migration from a large codebase and low-scalability monolithic architecture to a more manageable and efficient microservice architecture.
+Continuous integration/continuous delivery (CI/CD) principles offer multiple benefits to software organizations, including faster time to market, higher-quality code, and simpler and faster fault isolation. Applications built using [CI/CD](/blog/ci-vs-cd) pipeline best practices tend to see a huge increase in users over time, necessitating a migration from a large codebase and low-scalability monolithic architecture to a more manageable and efficient microservice architecture.
 
 Kubernetes is one of the most popular platforms for automating the management, deployment, and scaling processes of microservice applications. Because Kubernetes is complex, though, a framework can help developers and operations teams use the platform to follow CI/CD practices in building applications. This is where Tekton comes in.
 
