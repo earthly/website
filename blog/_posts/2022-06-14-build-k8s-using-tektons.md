@@ -12,7 +12,7 @@ internal-links:
 ---
 
 
-Continuous integration/continuous delivery (CI/CD) principles offer multiple benefits to software organizations, including faster time to market, higher-quality code, and simpler and faster fault isolation. Applications built using CI/CD pipeline best practices tend to see a huge increase in users over time, necessitating a migration from a large codebase and low-scalability monolithic architecture to a more manageable and efficient microservice architecture.
+Continuous integration/continuous delivery (CI/CD) principles offer multiple benefits to software organizations, including faster time to market, higher-quality code, and simpler and faster fault isolation. Applications built using [ci/cd](/blog/ci-vs-cd) pipeline best practices tend to see a huge increase in users over time, necessitating a migration from a large codebase and low-scalability monolithic architecture to a more manageable and efficient microservice architecture.
 
 Kubernetes is one of the most popular platforms for automating the management, deployment, and scaling processes of microservice applications. Because Kubernetes is complex, though, a framework can help developers and operations teams use the platform to follow CI/CD practices in building applications. This is where Tekton comes in.
 
@@ -29,7 +29,7 @@ Tekton consists of five main concepts:
 - **Steps:** A step is the smallest unit for building workflows with Tekton. Block elements such as arguments, images, and commands are defined in steps.
 - **Tasks:** A task element is a combination of steps that are expressed in sequential order.
 - **Pipelines:** A pipeline is a combination of tasks ordered sequentially. It can be set up to run concurrently depending on the use case. The inputs, outputs, and workflow parameters can be specified as well.
-- **TaskRuns:** As the name implies, a TaskRun element instantiates specific tasks. It also specifies details required for a task to run a Git repository as well as container registry information.
+- **TaskRuns:** As the name implies, a TaskRun element instantiates specific tasks. It also specifies details required for a task to run a Git repository as well as [container registry](/blog/how-to-setup-and-use-amazons-elastic-container-registry) information.
 - **PipelineRuns:** A PipelineRun is the final element in the hierarchy. Similar to TaskRun, it instantiates specific pipeline elements. It also specifies the desired runtime information such as a Git repository and container registry.
 
 All of these Tekton elements are configured as custom resource definitions (CRDs) on Kubernetes. These CRDs are customizable and reusable, thereby extending your Kubernetes capabilities. You can use these CRDs to orchestrate workflows such as checking out code from a Git repository, linting the codebase, checking for vulnerabilities in the container images, deploying to a container registry with the appropriate tags, and updating the actual state of the cluster with changes from the new state configurations. This build workflow can be performed across multiple providers and on-premise systems.
@@ -54,7 +54,7 @@ Note that if you're using MicroK8s, you'll have to configure it to export its ku
 microk8s.kubectl config view --raw > $HOME/.kube/config
 ~~~
 
-This Kubernetes cluster must have [MetalLB](https://metallb.universe.tf/) enabled so the load balancer service can attach an IP address to the Node.js deployment. This makes it accessible outside the cluster.
+This Kubernetes cluster must have [MetalLB](https://metallb.universe.tf/) enabled so the load balancer service can attach an IP address to the Node.js [deployment](/blog/deployment-strategies). This makes it accessible outside the cluster.
 
 This cluster must also have a storage class enabled so that `PersistentVolumeClaim` definitions can be created and used by the Tekton pipeline.
 
