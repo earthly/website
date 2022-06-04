@@ -6,7 +6,9 @@ toc: true
 author: Joseph Eshiett
 
 internal-links:
- - just an example
+ - Tekton
+ - CI/CD
+ - Kubernetes
 ---
 
 
