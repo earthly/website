@@ -79,7 +79,7 @@ The most significant difference between Earthly and Dagger is the way a build pr
 - Earthly uses an `Earthfile` to specify a build in a format that takes inspiration from Dockerfiles, shell scripting, and Makefiles. As a result, if you know how to perform a step in your build process at the command line, you know how to do it in Earthly.
 - Dagger uses a configuration language to configure build steps. The configuration language is CUE – a super-set of YAML that includes types, constraints, and scripting.
 
-This difference means Earthly is more accessible to experienced, and first-time users. Many users can understand and make simple changes to earthfiles without reading any documentation. On the other hand, Dagger can require a considerable learning investment. This investment can pay off: there are forms of abstraction available in Dagger (Value Constraints for instance) which harder to encode in Earthly. If you need those features, Dagger might be a great choice.
+This difference means Earthly is more accessible to both experienced, and first-time users. Many users can understand and make simple changes to Earthfiles without reading any documentation. On the other hand, Dagger can require a considerable learning investment. This investment can pay off: there are forms of abstraction available in Dagger (Value Constraints for instance), which are harder to encode in Earthly. If you need those features, Dagger might be a great choice.
 
 But overall, we believe Earthly's strong focus on [approachability](https://earthly.dev/blog/platform-values/#approachability) and ease of first-time use is a fantastic match for most organizations.
 
