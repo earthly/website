@@ -3,3 +3,4 @@ asciidoc
 gzip
 yaml
 lzma
+Brewfile

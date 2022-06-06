@@ -1,0 +1,10 @@
+---
+layout: default
+---
+
+{% if page.url != "/" and site.breadcrumbs %} {% unless paginator %} {% include
+breadcrumbs.html %} {% endunless %} {% endif %}
+
+<div id="main" role="main" class="p-6 md:p-10">
+  <div class="home-archive">{{ content }}</div>
+</div>

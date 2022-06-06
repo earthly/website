@@ -1,59 +1,46 @@
-<meta charset="utf-8">
-<link rel="icon" type="image/png" href="/blog/assets/images/favicon.png">
-{% include seo.html %}
-
-{% unless site.atom_feed.hide %}
-  <link href="{% if site.atom_feed.path %}{{ site.atom_feed.path }}{% else %}{{ '/feed.xml' | relative_url }}{% endif %}" type="application/atom+xml" rel="alternate" title="{{ site.title }} Feed">
+<meta charset="utf-8" />
+<link rel="icon" type="image/png" href="/blog/assets/images/favicon.png" />
+{% include seo.html %} {% unless site.atom_feed.hide %}
+<link
+  href="{% if site.atom_feed.path %}{{ site.atom_feed.path }}{% else %}{{ '/feed.xml' | relative_url }}{% endif %}"
+  type="application/atom+xml"
+  rel="alternate"
+  title="{{ site.title }} Feed"
+/>
 {% endunless %}
 
-
 <!-- PreLoad CSS -->
-<link rel="preload" as="style" href="/blog/assets/css/main.css">
-
-<!-- PreLoad Fonts -->
-<link rel="preload" as="font" href="/blog/assets/webfonts/fa-regular-400.woff2" type="font/woff2" crossorigin="anonymous">
-<link rel="preload" as="font" href="/blog/assets/webfonts/fa-solid-900.woff2" type="font/woff2" crossorigin="anonymous">
-<link rel="preload" as="font" href="/blog/assets/webfonts/fa-brands-400.woff2" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" as="style" href="/blog/assets/css/main.css" />
 
 <!-- Pre Connect to domains -->
-<link rel="preconnect" href="https://connect.facebook.net">
-<link rel="preconnect" href="https://static.ads-twitter.com">
-<link rel="preconnect" href="https://www.google-analytics.com">
-<link rel="preconnect" href="https://t.co">
-<link rel="preconnect" href="https://www.facebook.com">
-<link rel="preconnect" href="https://stats.g.doubleclick.net">
-<link rel="preconnect" href="https://www.google.com">
-<link rel="preconnect" href="https://analytics.twitter.com">
-
-
+<link rel="preconnect" href="https://connect.facebook.net" />
+<link rel="preconnect" href="https://static.ads-twitter.com" />
+<link rel="preconnect" href="https://www.google-analytics.com" />
+<link rel="preconnect" href="https://t.co" />
+<link rel="preconnect" href="https://www.facebook.com" />
+<link rel="preconnect" href="https://stats.g.doubleclick.net" />
+<link rel="preconnect" href="https://www.google.com" />
+<link rel="preconnect" href="https://analytics.twitter.com" />
 
 <!-- https://t.co/dKP3o1e -->
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 <script>
-  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+  document.documentElement.className =
+    document.documentElement.className.replace(/\bno-js\b/g, "") + " js ";
 </script>
 
 <!-- For all browsers -->
-<link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+<link rel="stylesheet" href="{{ '/assets/css/main.css?v=2' | relative_url }}" />
+<link rel="stylesheet" href="{{ '/assets/css/base.css' | relative_url }}" />
 
-<!--[if IE]>
-  <style>
-    /* old IE unsupported flexbox fixes */
-    .greedy-nav .site-title {
-      padding-right: 3em;
-    }
-    .greedy-nav button {
-      position: absolute;
-      top: 0;
-      right: 0;
-      height: 100%;
-    }
-  </style>
-<![endif]-->
+<!-- <script src="https://cdn.tailwindcss.com"></script> -->
 
-{% if jekyll.environment == "production" %}
-  {% include_cached head/google-analytics.html %}
-  {% include_cached head/facebookpixel.html %}
-  {% include_cached head/twitterpixel.html %}
-{% endif %}
+<link
+  rel="stylesheet"
+  href="{{ '/assets/css/typography.min.css' | relative_url }}"
+/>
+
+{% if jekyll.environment == "production" %} {% include_cached
+head/google-analytics.html %} {% include_cached head/facebookpixel.html %} {%
+include_cached head/twitterpixel.html %} {% endif %}
