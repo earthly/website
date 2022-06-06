@@ -72,7 +72,7 @@ Overall, by letting you use your existing tool chain, Earthly has an easier adop
 
 <h2 class="text-2xl font-semibold mb-5 mt-20" id="dagger">How is Earthly different from Dagger?<span class="hide"><a href="#dagger">¶</a></span></h2>
 
-Both [Dagger](https://dagger.io/) and Earthly use BuildKit and containerization to improve the CI workflow. With both tools you can run the CI or CD process locally, which is a big step forward from the world of needing to work with a centralized build process. 
+Both [Dagger](https://dagger.io/) and Earthly are open-source CI/CD frameworks that use BuildKit and containerization to improve the CI workflow. With both tools you can run the CI or CD process locally, which is a big step forward from the world of needing to work with a centralized build process.
 
 The most significant difference between Earthly and Dagger is the way a build process is specified:
 
