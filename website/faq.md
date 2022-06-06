@@ -69,7 +69,23 @@ At a higher level, though, Earthly is focused on providing an easy to write lang
 - Bazel uses tight control of compiler tool chains to achieve true hermetic builds, whereas Earthly uses containers and well-defined inputs.
 
 Overall, by letting you use your existing tool chain, Earthly has an easier adoption curve and is easier to use in non-mono repo settings. This does mean that its possible to do non-repeatable actions in Earthly, but practically at organization scales smaller than Google, we have not found this to be a problem and the ease of adoption out-weighs these concerns.
+
+<h2 class="text-2xl font-semibold mb-5 mt-20" id="dagger">How is Earthly different from Dagger?<span class="hide"><a href="#dagger">¶</a></span></h2>
+
+Both [Dagger](https://dagger.io/) and Earthly are open-source CI/CD frameworks that use BuildKit and containerization to improve the CI workflow. With both tools you can run the CI or CD process locally, which is a big step forward from the world of needing to work with a centralized build process.
+
+The most significant difference between Earthly and Dagger is the way a build process is specified:
+
+- Earthly uses an `Earthfile` to specify a build in a format that takes inspiration from Dockerfiles, shell scripting, and Makefiles. As a result, if you know how to perform a step in your build process at the command line, you know how to do it in Earthly.
+- Dagger uses a configuration language to configure build steps. The configuration language is CUE – a language that extends YAML with concepts such as types, constraints, and packages.
+
+This difference means Earthly is more accessible to both experienced, and first-time users. Many users can understand and make simple changes to Earthfiles without reading any documentation. On the other hand, Dagger can require a considerable learning investment. This investment can pay off: there are forms of abstraction available in Dagger (Value Constraints for instance), which are harder to encode in Earthly. If you need those features, Dagger might be a great choice.
+
+But overall, we believe Earthly's strong focus on [approachability](https://earthly.dev/blog/platform-values/#approachability) and ease of first-time use is a fantastic match for most organizations.
+
 {: .mb-6 .text-lg .font-medium .text-gray-600 .sm:w-full .sm:text-lg .sm:leading-8 .sm:mb-6 }
+
+
 
 <!-- vale HouseStyle.H2 = YES -->
 <div class="color2">
