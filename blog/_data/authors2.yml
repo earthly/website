@@ -1,0 +1,26 @@
+Corey:
+    name    : "Corey Larson"
+    bio     : "Eats, runs, and codes. Dad. Engineer. Progressive. LDS. Disneyland fanatic."
+    avatar  : "/assets/images/authors/coreylarson.jpg"
+Alex:
+    name    : "Alex Couture-Beil"
+    bio     : "Alex enjoys writing code, growing vegetables, and the great outdoors."
+    avatar  : "/assets/images/authors/vladaionescu.jpg"
+Vlad:
+    name    : "Vlad A. Ionescu"
+    bio     : " Founder of Earthly. Founder of ShiftLeft. Ex Google. Ex VMware. Co-author RabbitMQ Erlang Client."
+    avatar  : "/assets/images/authors/vladaionescu.jpg"
+Adam:
+    name    : "Adam Gordon Bell"
+    bio     : "Spreading the word about Earthly. Host of CoRecursive podcast. Physical Embodiment of Cunningham's Law"
+    avatar  : "/assets/images/authors/adamgordonbell.png"
+    links:
+        - label: ""
+          icon: "fab fa-fw fa-twitter-square" 
+          url: "https://twitter.com/adamgordonbell"
+        - label: ""
+          icon: "fas fa-fw fa-envelope-square"
+          url: "mailto:adam+website@earthly.dev"
+        - label: ""
+          icon: "fas fa-fw fa-link"
+          url: "https://corecursive.com"
