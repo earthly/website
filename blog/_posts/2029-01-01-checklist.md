@@ -25,7 +25,7 @@ internal-links:
 - [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
 - [ ] Raise PR
 
-## Draft.dev Article Checklist
+## Outside Article Checklist
 
 - [ ] Add in Author page
 - [ ] Create header image in Canva
