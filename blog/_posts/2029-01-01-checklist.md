@@ -8,7 +8,7 @@ published: false
 internal-links:
  - just an example
 ---
-### Writing Article Checklist
+### Writing an Article Checklist
 
 - [ ] Write Outline
 - [ ] Write Draft
