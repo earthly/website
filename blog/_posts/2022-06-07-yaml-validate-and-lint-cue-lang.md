@@ -1,5 +1,5 @@
 ---
-title: "YAML Validate and Lint with CUE Lang"
+title: "YAML Validate with CUE Lang"
 categories:
   - Tutorials
 toc: true
@@ -11,11 +11,13 @@ internal-links:
  - yaml validate
 ---
 
+Todo:
+
+- add 'what did I learn'
+
 
 ### Writing Article Checklist
 
-- [ ] Write Outline
-- [ ] Write Draft
 - [ ] Fix Grammarly Errors
 - [ ] Read out loud
 - [ ] Write 5 or more titles and pick the best on
@@ -29,16 +31,18 @@ internal-links:
 - [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
 - [ ] Raise PR
 
-YAML is useful as a configuration langauge. It's so much nicer to read and write than XML, but also it so many quirks and its so unstructured that I often have to debug errors like this in very blog:
+I've complained about using YAML as when a programming language would do before.  But actually, when you've got configuring to do, YAML is pretty useful: It's so much nicer to read and write than the XML a had to write back in the early days of Java development. But one advantage XML seemly had of YAML is that XML schema were commonly used and so I wouldn't get errors like the one I got today on this very blog:
 ```
 Error parsing yaml file:
 map values are not allowed here
   in "/Users/adam/sandbox/earthly-website/blog/authors.yml", line 2, column 8 
 ```
 
-You see the blog is expecting a certain format of config, and I've violoated that expectation. The blog wants a string, and I've given it a map. If only there were someway to tell computers when a value should be only allowed to have a certain type. A system for applying types maybe? 
+You see the blog is expecting a certain format of config, and I've violoated that expectation. The blog wants a string, and I've given it a map. If only we had XML Schema for YAML or even better a static type system for configuration.
 
-It turns out such things do exist, they are called static type systems. It's even possible to add static types to YAML us CUELang. So today I'm going to show you how to use CUE, which is both an extension of YAML and command line tool, to validate your YAML. But back to the blogs YAML problem.
+It turns out such things do exist, there is [JSON Schema](https://json-schema.org/), [Dhall](https://dhall-lang.org/), and [Cuelang](https://cuelang.org/)[^1]. I'll save covering Dhall, and JSON Schema for another day. Today I'm going to show you how to use Cuelang, which is both an extension of YAML and command line tool, to validate your YAML. And I"m going to attempt to use it to prevent future problems with this blogs `authors.yml` file.
+
+[^1]: I'll be referring to Cue as Cuelang in this article, and the command line tool as `cue`. Cue is a bit hard to search for in google, so perhaps I can start the trend of following GoLang's naming convention.
 
 ## Beginning
 
@@ -58,9 +62,9 @@ Vlad:
     avatar  : "/assets/images/authors/vladaionescu.jpg"
 ```
 
-All I want to do is find out before my blog starts if this file contains any errors. You know, without running the blog and hitting a code path that reads these values. It won't be an earth shattering improvement to the blog, but it will just remove a little papercut of a problem.
+All I want to do is find out before my blog starts if this file contains anything that will cause a runtime error. You know, catching problems without running the blog and hitting a code path that reads these values. It won't be an earth shattering improvement to the blog, but it will remove a little papercut of a problem.
 
-To validate this I could use JSON Schema, or DHALL, which is amazing, or probably a variatey of other tools, but the Cue Langauge does have some nice properties, so that what I'll be using. To start with I will create a description of what my author type looks like.
+To start with I'll create a description of what my author type looks like in a file called `authors-type.cue`:
 
 ```
 #Author : {
@@ -70,36 +74,36 @@ To validate this I could use JSON Schema, or DHALL, which is amazing, or probabl
 }
 ```
 
-Types in Cue start with '#' and describe the shape and the datatypes of the data. Here I am saying an author Type has a name, bio and an avatar. All of which are strings.
+Types in Cuelang start with '#' and look like a struct or class definition. Here I'm saying an `#Author` type has a name, bio and an avatar, all of which are strings.
 
-Next I need to tell cue that my yaml file is going to be a map with string keys, and `#Author` values. Doing so is pretty simple:
+Next I need to tell `cue` that my yaml file, as the root level, is going to be a map with string keys, and `#Author` values. Doing so is pretty simple:
 
 ```
 [string] : #Author
 ```
 
-Then I can use the cue commandline tool to validate my author file.
+Then I can use the `cue` command-line tool to validate my author file.
 
-<div class="notice">
+<div class="notice--info">
 
 ### Install CUE
 
-To install cuelang, run `brew install cue-lang/tap/cue` on a mac, or download a release directly from [GitHub](https://github.com/cue-lang/cue/releases).
+To install Cuelang, run `brew install cue-lang/tap/cue` on a mac, or download a release directly from [GitHub](https://github.com/cue-lang/cue/releases).
 
 </div>
 
-## Cue Vet
+## YAML Validate
 
-Now that I have the cue command install I can vet my authors.yml like this:
+Now that I have the `cue` command installed I can vet my `authors.yml` like this:
 ```
-$ cue vet authors-template.cue authors.yml
+$ cue vet authors-type.cue authors.yml
 ```
 ```
 Alex.avatar: incomplete value string:
-    ./authors-template.cue:6:14
+    ./authors-type.cue:6:14
 ```
 
-As you can see I'm missing an avatar picture path for Alex. I'll add that: 
+As you can see, I'm missing an avatar value for Alex. I'll add that: 
 ```
 Alex:
     name    : "Alex Couture-Beil"
@@ -109,8 +113,14 @@ Alex:
 
 And now everything passes.
 
+```
+$ cue vet authors-type.cue authors.yml
+```
+
+<div class="notice">
 ## What did I learn?
 Use vet bla bla bla
+</div>
 
 
 ## Optional Fields
@@ -134,8 +144,8 @@ The problem is this is not described in our cue type, so now validation fails:
 
 ```
 Adam: field not allowed: links:
-    ./authors-template.cue:3:11
-    ./authors-template.cue:9:12
+    ./authors-type.cue:3:11
+    ./authors-type.cue:9:12
     ./authors2.yml:17:6
 ```
 
@@ -160,7 +170,7 @@ Then I add it to `#Authors` as optional (using `?` marks it as optional):
 Then running vet finds no errors. 
 
 ```
-$ cue vet authors-template.cue authors.yml
+$ cue vet authors-type.cue authors.yml
 ```
 
 I found it a little strange at first that CUELang complains when I add properties to a field but CueLang Types are by default closed, and don't allow  additional fields by default. But that's just a default, if I want to skip adding links to my type I could easily mark the type as open (using `...`) and get around the errors.
