@@ -29,20 +29,20 @@ internal-links:
 - [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
 - [ ] Raise PR
 
-YAML is useful as a configuration langauge. It's so much nicer to read and write than XML, but also it so many quirks. Did you know that a boolean value in YAML has 22 valid values? Well, its true. Here is the regex for determining if a value is a boolean in YAML:
-
+YAML is useful as a configuration langauge. It's so much nicer to read and write than XML, but also it so many quirks and its so unstructured that I often have to debug errors like this in very blog:
 ```
- y|Y|yes|Yes|YES|n|N|no|No|NO
-|true|True|TRUE|false|False|FALSE
-|on|On|ON|off|Off|OFF
+Error parsing yaml file:
+map values are not allowed here
+  in "/Users/adam/sandbox/earthly-website/blog/authors.yml", line 2, column 8 
 ```
-<figcaption>Is YAML typing too flexible? ON. Can we improve on it? True</figcaption>
 
-So today I'm going to show you how to use CUE, which is both an extension of YAML and command line tool, to validate your YAML.
+You see the blog is expecting a certain format of config, and I've violoated that expectation. The blog wants a string, and I've given it a map. If only there were someway to tell computers when a value should be only allowed to have a certain type. A system for applying types maybe? 
+
+It turns out such things do exist, they are called static type systems. It's even possible to add static types to YAML us CUELang. So today I'm going to show you how to use CUE, which is both an extension of YAML and command line tool, to validate your YAML. But back to the blogs YAML problem.
 
 ## Beginning
 
-Authors are this blog are stored in a yaml file aptly named authors.yaml. It looks like this:
+The Authors are this blog are stored in a yaml file aptly named authors.yaml. It looks like this:
 
 ```
 Corey:
@@ -58,7 +58,9 @@ Vlad:
     avatar  : "/assets/images/authors/vladaionescu.jpg"
 ```
 
-To validate this I could use JSON Schema or probably a variatey of other tools, but Cue Langauge does have some nice properties. To start with I will create a description of what my author type looks like.
+All I want to do is find out before my blog starts if this file contains any errors. You know, without running the blog and hitting a code path that reads these values. It won't be an earth shattering improvement to the blog, but it will just remove a little papercut of a problem.
+
+To validate this I could use JSON Schema, or DHALL, which is amazing, or probably a variatey of other tools, but the Cue Langauge does have some nice properties, so that what I'll be using. To start with I will create a description of what my author type looks like.
 
 ```
 #Author : {
@@ -97,7 +99,7 @@ Alex.avatar: incomplete value string:
     ./authors-template.cue:6:14
 ```
 
-As you can see I'm missing an avatar picture path for Alex. I'll add that. 
+As you can see I'm missing an avatar picture path for Alex. I'll add that: 
 ```
 Alex:
     name    : "Alex Couture-Beil"
@@ -113,7 +115,7 @@ Use vet bla bla bla
 
 ## Optional Fields
 
-I also want to optionally let blog writers define some links to where else they can be found online. It will work like this:
+I also want to optionally attach links to authors in `authors.yaml`. It will look like this:
 
 ```
 Adam:
@@ -128,11 +130,7 @@ Adam:
           icon: "fas fa-fw fa-envelope-square"
           url: "mailto:adam+website@earthly.dev"
 ```
-
-And it will look like this:
-...
-
-The problem is this is not described in our cue type:
+The problem is this is not described in our cue type, so now validation fails:
 
 ```
 Adam: field not allowed: links:
@@ -141,7 +139,7 @@ Adam: field not allowed: links:
     ./authors2.yml:17:6
 ```
 
-First I create a type of links:
+To add links to my `#Author` type I first create a type of links:
 ```
 #Link : {
     label: string
@@ -149,7 +147,7 @@ First I create a type of links:
     url: string
 }
 ```
-Then I add it to `#Authors` as optional:
+Then I add it to `#Authors` as optional (using `?` marks it as optional):
 ```
 #Author : {
     name   : string
@@ -161,9 +159,11 @@ Then I add it to `#Authors` as optional:
 ```
 Then running vet finds no errors. 
 
-I found it a little strange at first that CUELang flags errors when you add properties to a field – YAML extends JSON, and in Javascript, everything is a prototype and you need to add things to things ...
+```
+$ cue vet authors-template.cue authors.yml
+```
 
-CueLang Types are by default closed, and don't allow this addition but that's just a default. If I wanted to skip adding links to my type I could easily mark the type as open and get around the errors.
+I found it a little strange at first that CUELang complains when I add properties to a field but CueLang Types are by default closed, and don't allow  additional fields by default. But that's just a default, if I want to skip adding links to my type I could easily mark the type as open (using `...`) and get around the errors.
 
 ```
 #Author : {
@@ -176,7 +176,7 @@ CueLang Types are by default closed, and don't allow this addition but that's ju
 [string] : #Author
 ```
 
-It's also possible to define links as optional but not its type:
+It's also possible to define links as optional but leave its type unspecified: 
 
 ```
 #Author : {
@@ -189,13 +189,13 @@ It's also possible to define links as optional but not its type:
 
 This would be less open then the full open solution, but less constrained than the full typed solution.
 
-In this way, CueLang is a big like TypeScript, it wants to improve upon YAML, but in doing so it tries to meet YAML where its at, and expects to have occasionaly use of escape hatches like open types.
+By adding these types, but leaving ways to leave the types open, CueLang is behaving a bit like TypeScript. It improves upon YAML, but it tries to meet YAML where its at, and provides some escape hatches like open types.
 
-The other way CueLang is like TypeScript is that it does things with the type system that are not seen often seen outside of academic PL papers. Which brings us to constraints.
+The other way CueLang is like TypeScript is that it does things with the type systems that are a little unusual. Which brings me to constraints.
 
 ## Constraints
 
-The layout on our blog has a limited space for bios. If an author's bio is longer than 250 characters then that's going to be a problem. I can ensure that never happens like this:
+The layout on this blog has a limited space for bios. If an author's bio is longer than 250 characters then that's going to be a problem. I can ensure that never happens like this:
 
 ```
 #Author : {
@@ -206,10 +206,10 @@ The layout on our blog has a limited space for bios. If an author's bio is longe
     links?: [...#Link]
 }
 ```
-What I've done here is add a constraint to the Author Type, which is specified with a regex. The regex is a bit of an odd way to verify a string length. But thankfully CueLang has other ways to do it.
 
+What I've done here is add a constraint to the Author Type, which is specified with a regex. That is pretty simple way to constrain a type if you ask me. Any regex can be attached to any string type. Granted, a regex is a bit of an odd way to verify a string length. Let fix that.
 
-If I import from the CueLang standard Library I can run functions in my types like this:
+CueLang has a standard library which can be used for creating constraints. If I import the strings function, I can check the number of unicode runes in my types like this:
 
 ```
 import "strings"
@@ -225,21 +225,20 @@ import "strings"
 And get errors like this:
 
 ```
-lad.bio: invalid value " Founder of Earthly. Founder of ShiftLeft. Ex Google. Ex VMware. Co-author RabbitMQ Erlang Client." (does not satisfy strings.MaxRunes(250)):
+Vlad.bio: invalid value " Founder of Earthly. Founder of ShiftLeft. Ex Google. Ex VMware. Co-author RabbitMQ Erlang Client." (does not satisfy strings.MaxRunes(250)):
 ```
 
-The CueLang standard library has [many other](https://pkg.go.dev/cuelang.org/go@v0.4.3/pkg) functions for constraining YAML Types in fact any function that returns a bool can be used for this purpose. In this way constraints in CueLang are much like [Refinement Types](https://en.wikipedia.org/wiki/Refinement_type) .
+The CueLang standard library has [many other](https://pkg.go.dev/cuelang.org/go@v0.4.3/pkg) functions for constraining types. I beleive that any function that returns a bool can be used for this purpose and you can write your own functions in Golang. In this way constraints in CueLang are like [Refinement Types](https://en.wikipedia.org/wiki/Refinement_type).
 
-I could use them to continue validating my types – Links could be parsed with a regex to ensure they are of proper format; `avatar` could be checked to make sure it ends in `.png` – however, I think for this simple author list this is enough validation.
+The invariants you can enforce in this way are limitless. I could parse the links to ensure they are valide links. I could validate `avatar` ended in `.png` and so on. However, I think for this simple author list this is enough validation.
 
-
-## What I learned
+## What I Learned
 
 constraints and stuff
 
 ## Packages and Imports
 
-The author.yaml file I've been using as an example came with [our blog theme](https://github.com/mmistakes/minimal-mistakes/blob/master/test/_data/authors.yml) and I think it's pretty easy to understand what each field is for. But we could do better than this right? If instead of using YAML for config the theme used CueLang, they could have shipped it with the author type we specified above and the configuration would be typed and validated.
+The `author.yaml` file I've been using as an example came with [our blog theme](https://github.com/mmistakes/minimal-mistakes/blob/master/test/_data/authors.yml) and it's pretty simple to understand what each field is for. But we could do better than this right? If instead of using YAML for config the theme used CueLang directly, then they could have shipped it with the author type we specified above and the configuration would be typed and validated.
 
 That might work something like this. The minimal mistakes theme could put this cue file up on github:
 
@@ -354,40 +353,39 @@ Adam: blog.#Author & {
 }
 ```
 
-And I can now run `cue vet` without need for specifying the schema:
+And I can now run `cue vet` without need for specifying the schema, or having to create the types myself:
 ```
 $ cue vet authors.cue
 ```
-And I can be sure all my config data is structured properly. The imports and packages don't seem to be extensively explained inthe Cue documentation but if you assume they work like go imports and modules you won't be led astray. 
+
+And I can be sure all my config data is structured properly. 
 
 Once you start to import types for configuration you need to write, especially for config heavy areas like Kuberenetes, you can start to see why something like CueLang or its competitor Dhall can make a lot of sense.
 
-There is one problem though. 
-
+There is one problem though...
 
 ## Back To YAML
 
-Having type checking for YAML sounds great. And CueLang ( and competitor Dhall) have lots more features to make configuration easier to work with but they havea problem. It's the chicken and the egg problem or the two sided marketplace. I want types and constraints for my blog config, but what incentive do the Jekyll theme authors have to provide them? No one is Cue and no one will use it because the types don't exist for the things they need to configure. 
+Having type checking for YAML sounds great. And CueLang has lots more features for improving configuration. But they have a problem. I want types and constraints for my blog config, but what incentive do the Jekyll theme authors have to provide them? Not many Jekyll users are using Cue and that won't change because the types don't exist for the things they need to configure. It's the chicken and the egg problem of Type annotations.
 
-TypeScript solved this with [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped), a giant community driven efforts to source types for variosu javascript libraries. CueLang as far as I know doesn't have a similar concept.
+TypeScript solved this with [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped), a giant community driven efforts to source types for variosu javascript libraries. CueLang doesn't yet have a similar concept.
 
-Another problem is that ideally I'd like my programming langauge to be able to read files cue files directly and so far with CUE I can only read cue configuration files from golang.
+Another problem is that ideally I'd like my programming langauge to be able to read cue files directly and so far with CUE I can only read cue configuration files from Golang.
 
-Nevertheless, much like TypeScript, as a suffiecently motivated users i can do an end run around these concerns, just the way I have here, by writing my own types and then using the cue cli tool to my cue back to yaml. And this is all I can really do with Jekyll since its written in Ruby and has no support for cue. I need to convert back to YAML before running the blog.
+Nevertheless, much like TypeScript, as a suffiecently motivated users i can do an end run around these concerns, just the way I have here, by writing my own types and then using the cue cli tool to my cue back to yaml. And this is all I can really do with Jekyll since Jekyll is written in Ruby and has no support for cue. I need to convert back to YAML before running the blog.
 
 ```
 $ cue eval authors.cue > authors.yaml 
 ```
 
-And so if I keep both `authors.cue` and `authors.yaml` in source, and treat `authors.cue` as the source of truth and always run `cue eval` after I make changes then I can ensure my YAMl is always correct.  I do look forward to the day when types and constraints spread throughout the configuration land but probably what I'm going to do is just keep my types in a `cue` file and keep the authors list in yaml, validating things using the `cue vet {{types.cue}} {{file.yaml}}` approach.
+And so if I keep both `authors.cue` and `authors.yaml` in source, and treat `authors.cue` as the source of truth and always run `cue eval` after I make changes then I can ensure my YAML is always correct. I do look forward to the day when types and constraints spread throughout the configuration land but probably what I'm going to do for now is just keep my types in a `cue` file and keep the authors list in yaml, validating things using the `cue vet {{types.cue}} {{file.yaml}}` approach.
 
 ## What did I learn?
  - optional parameters
  - open vs closed types
 
-## 
+## Conclusion
 
-## See Also:
- * https://cuelang.org/
- * https://cuetorials.com/
+That is the very basics of CueLang. It's the first step of drawing an owl. CueLAng has many more features but if you remember it as a configuration format that uses types and constraints and golang like packages to improve on YAML, then you'll have the jist of it. 
 
+If you want to learn more cuetorials.com was the best online resource I was able to find and [How CUE wins](https://blog.cedriccharly.com/post/20210523-how-cue-wins/) makes a great case for why something like CUE is needed.
