@@ -6,3 +6,8 @@ kubernetes
 kubectx
 kubens
 autoscaler
+<<<<<<< HEAD
+kubeadm
+=======
+Tekton
+>>>>>>> 484cbdf73f0cef04d113c6a870010a860ad52592
