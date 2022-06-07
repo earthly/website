@@ -1,11 +1,8 @@
 name: Deploy Website
 
 on:
-  # run everyday at 12:15 utf ( 8:15 am est) to roll out new posts
-  schedule:
-    - cron: '15 12 * * *' 
-  workflow_dispatch:
-  push:
+  pull_request_target
+
 jobs:
   build-website:
     name: Build Website
@@ -49,20 +46,13 @@ jobs:
           fi
       - name: Push to Netlify
         env:
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_STAGING_SITE_ID }}
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_STAGING_AUTH_TOKEN }}
         run: |-
           cd build/site
-          if [ "$CI_ACTION_REF_NAME" == "main" ]; then
-            echo "Main Build - deploying to prod!"
-            netlify deploy --dir=. --prod
-            OUTPUT=$(netlify deploy --dir=.)
-            echo "NETLIFY_URL=$(echo $OUTPUT | grep -Eo '(http|https)://[a-zA-Z0-9./?=_-]*(--)[a-zA-Z0-9./?=_-]*')" >> $GITHUB_ENV
-          else
-            echo "Preview Deploy"
-            OUTPUT=$(netlify deploy --dir=.)
-            echo "NETLIFY_URL=$(echo $OUTPUT | grep -Eo '(http|https)://[a-zA-Z0-9./?=_-]*(--)[a-zA-Z0-9./?=_-]*')" >> $GITHUB_ENV
-          fi
+          echo "Preview Deploy"
+          OUTPUT=$(netlify deploy --dir=.)
+          echo "NETLIFY_URL=$(echo $OUTPUT | grep -Eo '(http|https)://[a-zA-Z0-9./?=_-]*(--)[a-zA-Z0-9./?=_-]*')" >> $GITHUB_ENV
       - name: Get PR
         uses: jwalton/gh-find-current-pr@v1
         id: finder
