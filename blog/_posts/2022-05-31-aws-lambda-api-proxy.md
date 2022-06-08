@@ -308,7 +308,7 @@ $ curl localhost:8080/default/text-mode
 404 page not found
 ~~~
 
-That is because I'm still running the lambda runtime locally, which expects JSON events. You can use this locally, as seen in [this article](/blog/aws-lambda-docker/), but its a bit cumbersome.
+That is because I'm still running the lambda runtime locally, which expects JSON events. You can use this locally, as seen in [this article](/blog/aws-lambda-docker/), but it's a bit cumbersome.
 
 To correct this, I need to modify the image (`public.ecr.aws/lambda/go:latest`) that I'm running. So, I create a second image with an updated entrypoint, in my [Earthfile](https://github.com/adamgordonbell/cloudservices/blob/aws-lambda-2/lambda-api/Earthfile):
 
