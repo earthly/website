@@ -1,5 +1,5 @@
 ---
-title: "YAML Validate with CUE Lang"
+title: "Validate Your YAML (with CUE)"
 categories:
   - Tutorials
 toc: true
