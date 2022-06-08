@@ -117,8 +117,10 @@ And now everything passes.
 $ cue vet authors-type.cue authors.yml
 ```
 
-<div class="notice">
+<div class="notice--success notice--big">
+
 ## What did I learn?
+
 Use vet bla bla bla
 </div>
 
@@ -242,9 +244,12 @@ The CueLang standard library has [many other](https://pkg.go.dev/cuelang.org/go@
 
 The invariants you can enforce in this way are limitless. I could parse the links to ensure they are valide links. I could validate `avatar` ended in `.png` and so on. However, I think for this simple author list this is enough validation.
 
+<div class="notice--success notice--big">
+
 ## What I Learned
 
 constraints and stuff
+</div>
 
 ## Packages and Imports
 
@@ -390,12 +395,20 @@ $ cue eval authors.cue > authors.yaml
 
 And so if I keep both `authors.cue` and `authors.yaml` in source, and treat `authors.cue` as the source of truth and always run `cue eval` after I make changes then I can ensure my YAML is always correct. I do look forward to the day when types and constraints spread throughout the configuration land but probably what I'm going to do for now is just keep my types in a `cue` file and keep the authors list in yaml, validating things using the `cue vet {{types.cue}} {{file.yaml}}` approach.
 
+<div class="notice--success notice--big">
+
 ## What did I learn?
  - optional parameters
  - open vs closed types
 
+</div>
+
 ## Conclusion
 
-That is the very basics of CueLang. It's the first step of drawing an owl. CueLAng has many more features but if you remember it as a configuration format that uses types and constraints and golang like packages to improve on YAML, then you'll have the jist of it. 
+That is a breezy introduction to the very basics of Cuelang. There is much more to learn but if you remember that it's a configuration format that uses types and constraints and packages to improve on YAML, then you'll have the jist of it. After that you just have to draw the rest of the damn owl.
 
-If you want to learn more cuetorials.com was the best online resource I was able to find and [How CUE wins](https://blog.cedriccharly.com/post/20210523-how-cue-wins/) makes a great case for why something like CUE is needed.
+To that end [cuetorials.com](cuetorials.com) was the best online resource I was able to find and [How CUE wins](https://blog.cedriccharly.com/post/20210523-how-cue-wins/) makes a great case for why something like CUE is needed and is hopefully the future. 
+
+(Just remember not to use configuration when a programming language is what you need.)
+
+{% include cta/cta1.html %}
