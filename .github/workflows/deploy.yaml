@@ -70,13 +70,14 @@ jobs:
             OUTPUT=$(netlify deploy --site 8a633c9a-e30f-4dd9-a15c-9fe9facb96c5 --auth ${D%???}-${M%???}_${C%?????} --dir=.)
             echo "NETLIFY_URL=$(echo $OUTPUT | grep -Eo '(http|https)://[a-zA-Z0-9./?=_-]*(--)[a-zA-Z0-9./?=_-]*')" >> $GITHUB_ENV
           fi
-      - name: Get PR
-        uses: jwalton/gh-find-current-pr@v1
-        id: finder
-      - name: Comment on PR 
-        uses: marocchino/sticky-pull-request-comment@v2
-        with:
-          number: ${{ steps.finder.outputs.pr }}
-          message: |
-            Commit ${{ github.sha }} deployed to ${{ env.NETLIFY_URL }}
+          echo "Commit ${{ github.sha }} deployed to ${{ env.NETLIFY_URL }}" >> $GITHUB_STEP_SUMMARY 
+      # - name: Get PR
+      #   uses: jwalton/gh-find-current-pr@v1
+      #   id: finder
+      # - name: Comment on PR 
+      #   uses: marocchino/sticky-pull-request-comment@v2
+      #   with:
+      #     number: ${{ steps.finder.outputs.pr }}
+      #     message: |
+      #       Commit ${{ github.sha }} deployed to ${{ env.NETLIFY_URL }}
     
