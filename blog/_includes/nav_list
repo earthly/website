@@ -1,7 +1,6 @@
 {% assign navigation = site.data.navigation[include.nav] %}
 {% assign navigation_title = site.data.series[include.nav] %}
 
-
 <div class="pt-3">
   <div class="group">
     <div class="text-xl mt-4 hover:underline flex"><a href="/blog/series/{{include.nav}}/">{{navigation_title}}</a>

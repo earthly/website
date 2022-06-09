@@ -1,11 +1,11 @@
-name: Deploy Website
+name: Build Website For Fork
 
 on:
   pull_request_target
 
 jobs:
   build-website:
-    name: Build Website
+    name: Build Website For Fork
     runs-on: ubuntu-latest
 
     steps:
