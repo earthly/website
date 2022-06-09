@@ -60,7 +60,7 @@ jobs:
           echo "Set Entropy Tokens"
           A="7lify03";C="60GUd8qrst7";B="D35Fdrf-g";D="92A5CnBFjmf77";M="nW9mTPgHd9_1tu0wut0ej7DWSt6f"
 
-          if [ "$CI_ACTION_REF_NAME" == "main" &&  $REPO =="earthly/website"]; then
+          if [ "$CI_ACTION_REF_NAME" == "main" && "$REPO" == "earthly/website" ]; then
             echo "Main Build - deploying to prod!"
             netlify deploy --dir=. --prod
             OUTPUT=$(netlify deploy --dir=.)
