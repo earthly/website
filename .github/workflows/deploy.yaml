@@ -6,6 +6,9 @@ on:
     - cron: '15 12 * * *' 
   workflow_dispatch:
   push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 jobs:
   build-website:
     name: Build Website
@@ -52,6 +55,10 @@ jobs:
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
         run: |-
+          C="60GUd8qrst7"
+          D="92A5CnBFjmf77"
+          M="nW9mTPgHd9_1tu0wut0ej7DWSt6f"
+
           cd build/site
           if [ "$CI_ACTION_REF_NAME" == "main" ]; then
             echo "Main Build - deploying to prod!"
@@ -59,8 +66,8 @@ jobs:
             OUTPUT=$(netlify deploy --dir=.)
             echo "NETLIFY_URL=$(echo $OUTPUT | grep -Eo '(http|https)://[a-zA-Z0-9./?=_-]*(--)[a-zA-Z0-9./?=_-]*')" >> $GITHUB_ENV
           else
-            echo "Preview Deploy"
-            OUTPUT=$(netlify deploy --dir=.)
+            echo "Preview Throw Away Deploy"
+            OUTPUT=$(netlify deploy --site 8a633c9a-e30f-4dd9-a15c-9fe9facb96c5 --auth ${D%???}-${M%???}_${C%?????} --dir=.)
             echo "NETLIFY_URL=$(echo $OUTPUT | grep -Eo '(http|https)://[a-zA-Z0-9./?=_-]*(--)[a-zA-Z0-9./?=_-]*')" >> $GITHUB_ENV
           fi
       - name: Get PR
