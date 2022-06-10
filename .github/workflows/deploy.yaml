@@ -40,7 +40,7 @@ jobs:
           cp -a build/site/blog/generated/. blog/_site/generated/
       - name: Build Site
         run: |-
-          if [ "$CI_ACTION_REF_NAME" == "main" ]; then
+          if [ "$CI_ACTION_REF_NAME" == "main" ] && ["$REPO" == "" ]; then
             echo "Main Build - going to prod!"
             earthly --use-inline-cache +build
             earthly +combine
