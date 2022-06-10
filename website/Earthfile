@@ -15,11 +15,13 @@ base-image:
   RUN apt-get update 
   RUN apt-get install gcc cmake imagemagick -y
   RUN gem install bundler -v "~>1.0" && gem install bundler jekyll
+
   IF [ "$TARGETARCH" = "arm64" ]
-     RUN echo "arm64 - vale cannot be used. Lint step may fail."  
+    RUN echo "arm64 - vale cannot be used."  
   ELSE IF [ "$TARGETARCH" = "amd64" ]
-    RUN curl -sfL https://install.goreleaser.com/github.com/ValeLint/vale.sh | sh -s v2.15.2
-    RUN cp /site/bin/vale /bin 
+    RUN curl -sfL https://github.com/errata-ai/vale/releases/download/v2.17.0/vale_2.17.0_Linux_64-bit.tar.gz -o vale.tar.gz
+    RUN tar -xvf vale.tar.gz
+    RUN mv vale /usr/bin/vale
   ELSE
     RUN echo "Unsupported target architecture $TARGETARCH"; false
   END
