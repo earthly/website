@@ -183,7 +183,7 @@ next-date(){ # Get Next date for a post
             day_of_w=$(date -d "$possible_date" +%w)
          
 
-            if [[ $day_of_w -gt 0 && $day_of_w -lt 5 ]]
+            if [[ $day_of_w -gt 1 && $day_of_w -lt 5 ]]
             then
                 echo "$possible_date" >> available-dates.txt
             fi
