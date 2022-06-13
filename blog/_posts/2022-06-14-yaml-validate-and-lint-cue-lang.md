@@ -4,7 +4,6 @@ categories:
   - Tutorials
 toc: true
 author: Adam
-
 internal-links:
  - cue lang
  - yaml lint
