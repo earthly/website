@@ -78,10 +78,7 @@ imgur-fix-links(){
 }
 
 # INIT_LOCATION is used by list to find this file
-# See here https://stackoverflow.com/a/246128 
-# but also "./util/functions" would probably work
-SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]:-$0}"; )" &> /dev/null && pwd 2> /dev/null; )";
-INIT_LOCATION="$SCRIPT_DIR/functions"
+INIT_LOCATION="./util/functions"
 
 list(){
     ./util/list.awk "$INIT_LOCATION"
