@@ -14,7 +14,7 @@ base-image:
   ARG TARGETARCH
   WORKDIR /site
   RUN apt-get update 
-  RUN apt-get install gcc cmake imagemagick gawk moreutils -y
+  RUN apt-get install gcc cmake imagemagick gawk moreutils dateutils -y
   RUN gem install bundler -v "~>1.0" && gem install bundler jekyll
   RUN apt-get install python3-matplotlib libvips-dev python3-pip npm pandoc -y
   RUN pip3 install pandocfilters python-frontmatter
