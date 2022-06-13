@@ -24,7 +24,7 @@
 	// "forwardPorts": [],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "source ./util/functions && cd ./blog && bundle install",
+	"postCreateCommand": "",
 
 	"features": {
 		// "homebrew": "latest"

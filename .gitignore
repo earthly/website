@@ -6,3 +6,4 @@ error.txt
 blog/build
 website/build
 install.sh
+.vscode
