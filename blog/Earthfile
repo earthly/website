@@ -19,7 +19,7 @@ base-image:
   RUN apt-get install python3-matplotlib libvips-dev python3-pip npm pandoc -y
   RUN pip3 install pandocfilters python-frontmatter
   RUN npm install -g markdownlint-cli 
-  RUN apt-get install ripgrep bc -y
+  RUN apt-get install ripgrep bc lsof -y
 
   IF [ "$TARGETARCH" = "arm64" ]
     RUN echo "arm64 - vale cannot be used."  
