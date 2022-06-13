@@ -17,8 +17,9 @@ base-image:
   RUN apt-get install gcc cmake imagemagick gawk moreutils -y
   RUN gem install bundler -v "~>1.0" && gem install bundler jekyll
   RUN apt-get install python3-matplotlib libvips-dev python3-pip npm pandoc -y
-  RUN pip3 install pandocfilters
+  RUN pip3 install pandocfilters python-frontmatter
   RUN npm install -g markdownlint-cli 
+  RUN apt-get install ripgrep bc lsof -y
 
   IF [ "$TARGETARCH" = "arm64" ]
     RUN echo "arm64 - vale cannot be used."  
@@ -92,6 +93,7 @@ build:
   COPY . .
   RUN JEKYLL_ENV=production bundle exec jekyll build $FLAGS 
   SAVE ARTIFACT _site/* AS LOCAL build/site/blog/
+
 
 # Build docker image for local development
 docker:

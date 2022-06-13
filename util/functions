@@ -8,12 +8,13 @@ echo "run \"list\" for a list of helpers"
 ## Dependencies
 # rg (rip grep)
 # sponge (moreutils)
+# bc
 # $IMAGE_DOWNLOADS set to IMAGE_DOWNLOADS="/Users/adam/Downloads/images/ for example"
+if [[ -z "$IMAGE_DOWNLOADS" ]]; then
+ IMAGE_DOWNLOADS="$HOME"
+fi
 
 ### Internal
-post() { # active blog post
-    echo "blog/_posts/$(ls -Art blog/_posts |  grep -v "checklist"  | tail -n 1)"; 
-}
 
 gen-image-folder() { # generated images for post 
     echo "$(pwd)/blog/_site/generated/assets/images/$(slug)"; 
@@ -76,8 +77,11 @@ imgur-fix-links(){
    rg --passthru -N 'https?://(i\.)?imgur\.com/' "$(post)" -r '{{site.images}}{{page.slug}}/' | sponge "$(post)"
 }
 
-
-INIT_LOCATION="$0"
+# INIT_LOCATION is used by list to find this file
+# See here https://stackoverflow.com/a/246128 
+# but also "./util/functions" would probably work
+SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]:-$0}"; )" &> /dev/null && pwd 2> /dev/null; )";
+INIT_LOCATION="$SCRIPT_DIR/functions"
 
 list(){
     ./util/list.awk "$INIT_LOCATION"
@@ -85,13 +89,19 @@ list(){
 
 ## External
 
-hide_posts() 
+post() { # active blog post
+# Used by other helpers to determine what post to apply changes to
+    echo "blog/_posts/$(ls -Art blog/_posts |  grep -v "checklist"  | tail -n 1)"; 
+}
+
+hide_posts() # Hide All posts
+# For faster blog rendering time
 (
     cd blog/_posts
     for f in *.md; do mv -- "$f" "_${f}"; done
 )
 
-unhide_posts()
+unhide_posts() # Undo Hide
 (
     cd blog/_posts
     for f in *.md; do mv -- "$f" "${f//\_/}"; done
@@ -241,7 +251,7 @@ imgur(){ # Download images from imgur from post and update post
    imgur-fix-links
 }
 
-div-wide(){
+div-wide(){ # Wrap every image in post in wide markdown
     awk '/^!\[/ { 
         printf "<div class=\"wide\">\n"
         print $0 
@@ -269,7 +279,7 @@ start-blog(){ # Start up blog on localhost:4002/blog.
     )
 }
 
-start-website(){ 
+start-website(){ # Start up website on localhost:4001. 
     (
         cd website || exit
         JEKYLL_ENV=production bundle exec jekyll serve --incremental -H 0.0.0.0 -P 4001
