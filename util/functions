@@ -169,9 +169,31 @@ double-image() { # Double size of image. Using imagemagick
 
 next-date(){ # Get Next date for a post
 # Gets all Tues, Wed, Thurs dates from today that don't have posts
-    today=$(date -v +1d +'%Y-%m-%d')
-    fourmonths="$(date -v +4m +'%Y-%m-%d')"
-    dateseq "$today"  "$fourmonths" --skip sat,sun,mon,fri > available-dates.txt
+
+    os="$(uname -a)"
+    
+    if [[ "$os" == *"Linux"* ]]
+    then
+        today="$(date +%F)"
+        touch available-dates.txt
+        
+        for i in `seq 1 120`;
+        do
+            possible_date=$(date -d "$today $i days" +%Y-%m-%d)
+            day_of_w=$(date -d "$possible_date" +%w)
+         
+
+            if [[ $day_of_w -gt 1 && $day_of_w -lt 5 ]]
+            then
+                echo "$possible_date" >> available-dates.txt
+            fi
+        done;
+    else
+        today=$(date -v +1d +'%Y-%m-%d')
+        fourmonths="$(date -v +4m +'%Y-%m-%d')"
+        dateseq "$today"  "$fourmonths" --skip sat,sun,mon,fri > available-dates.txt
+    fi
+
     find ./blog/_posts -maxdepth 1 | awk '{ print substr( $0, 15, 10 ) }' > used-dates.txt
     result="$(comm -23 <(sort available-dates.txt) <(sort used-dates.txt) | head -n 1)"
     rm -f used-dates.txt
