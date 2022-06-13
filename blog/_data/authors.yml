@@ -24,7 +24,7 @@ Josh:
           url: "mailto:josh@earthly.dev"
 Adam:
     name    : "Adam Gordon Bell"
-    bio     : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eu dolor nec nisi scelerisque semper. Phasellus tincidunt ut leo et imperdiet. Etiam dignissim orci non egestas feugiat. Ut lacinia sem quis nisi tincidunt, a pellentesque lectus luctus. Proin hendrerit laoreet lectus in euismod. Donec sed mauris in libero luctus semper. Proin ornare tortor sit amet velit placerat mattis. Nam et interdum mauris, vel consequat enim. Ut ut libero urna. Cras viverra convallis velit sit amet porta. Vestibulum in quam at nibh pretium ultrices ut sed risus. Curabitur suscipit, lacus et sodales rutrum, magna augue vehicula arcu, vitae feugiat leo nisl sit amet risus. Nullam a neque quam. Fusce luctus, lectus nec scelerisque pretium, tellus lectus maximus lectus, in pretium quam risus sed augue. Donec fringilla imperdiet enim, eget interdum neque varius in. Quisque elementum libero vel massa volutpat varius. Nam faucibus neque id nibh vulputate, et placerat libero tincidunt. Interdum et malesuada fames ac ante ipsum primis in faucibus."
+    bio     : "Spreading the word about Earthly. Host of CoRecursive podcast. Physical Embodiment of Cunningham's Law."
     avatar  : "/assets/images/authors/adamgordonbell.png"
     links:
         - label: ""

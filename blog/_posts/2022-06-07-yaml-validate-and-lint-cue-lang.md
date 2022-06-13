@@ -19,9 +19,9 @@ map values are not allowed here
   in "/Users/adam/sandbox/earthly-website/blog/authors.yml", line 2, column 8 
 ~~~
 
-This is an error I got today running this very Jekyll Blog. You see, the blog is expecting a certain format of config, and I've violated that expectation. The blog wants a string, and I've given it a map. If only we had XML Schema for YAML or, even better, a static type system for configuration, then I wouldn't have to get this error at runtime.
+This is an error I got today on this very blog you are reading right now. You see, the blog is expecting a certain format of config, and I've violated that expectation. The blog wants a string, and I've given it a map. If only we had XML Schema for YAML or, even better, a static type system for configuration, then I wouldn't have to get this error at runtime.
 
-It turns out such things do exist. There is [JSON Schema](https://json-schema.org/), [Dhall](https://dhall-lang.org/), and [Cuelang](https://cuelang.org/)[^1]. I'll save covering Dhall and JSON Schema for another day. Today I'm going to show you how to use Cuelang, which is both an extension of YAML and command-line tool, to validate your YAML. And I"m going to attempt to use it to prevent future problems with this blog's `authors.yml` file.
+It turns out such things do exist. There is [JSON Schema](https://json-schema.org/), [Dhall](https://dhall-lang.org/), and [Cuelang](https://cuelang.org/)[^1]. I'll save covering Dhall and JSON Schema for another day. Today I'm going to show you how to use Cuelang, which is both an extension of YAML and command-line tool, to validate your YAML. And I'm going to attempt to use it to prevent future problems with this blog's `authors.yml` file.
 
 [^1]: I'll be referring to Cue as Cuelang in this article, and the command line tool as `cue`. Cue is a bit hard to search for in google, so perhaps I can start the trend of following GoLang's naming convention.
 
@@ -109,7 +109,7 @@ That's a small win for `cue`, but it shows how static typing can be valuable.
 
 Cuelang can be used to specify a schema for a plain YAML file. You can put your types in a separate file and run `cue vet types.cue plain.yml` and start benefiting from static types right away.
 
-To specify a Type, the convention is to with a `#` like this:
+To specify a Type, the convention is to prefix with a `#` like this:
 
 ~~~{.bash caption=">_"}
 #Point: {
@@ -293,7 +293,7 @@ The number of potential invariants you can enforce in this way is immense. For e
 
 ## What I Learned
 
-Cuelang lets you constrain your values by adding constraints to the types. There are built-in constraints that let enforce ranges and ensure strings match or don't match regular expressions like this:
+Cuelang lets you constrain your values by adding constraints to the types. There are built-in constraints that let you enforce ranges and ensure strings match or don't match regular expressions like this:
 
 ~~~{.bash caption=">_"}
 #Person: {
@@ -444,7 +444,7 @@ And I can be sure all my config data is structured correctly.
 
 Once you start import types as part of config writing, you can see why something like CueLang or its competitor Dhall can make a lot of sense. Especially for config-heavy domains like Kubernetes.
 
-(A great post the expands on this idea is [How CUE wins](https://blog.cedriccharly.com/post/20210523-how-cue-wins/) which makes a great case for why something like CUE is needed desperately needed.)
+(A great post that expands on this idea is [How CUE wins](https://blog.cedriccharly.com/post/20210523-how-cue-wins/) which makes a great case for why something like CUE is needed desperately needed.)
 
 There is one problem, though...
 
