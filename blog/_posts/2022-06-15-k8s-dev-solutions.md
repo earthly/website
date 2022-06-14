@@ -236,8 +236,4 @@ If you're looking for something that is as close to your production cluster as p
 
 No matter what option you choose for developing your applications locally, you'll have to deploy mthe platform into production. For this, check out [Earthly](https://earthly.dev/), a framework to help you effortlessly deploy your services.
 
-## Outside Article Checklist
-
-- [ ] Verify look of article locally
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
+{% include cta/cta1.html %}
