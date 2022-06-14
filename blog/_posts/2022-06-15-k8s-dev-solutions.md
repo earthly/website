@@ -6,7 +6,12 @@ toc: true
 author: Kasper Siig
 
 internal-links:
- - just an example
+ - minikube
+ - K3s
+ - kubeadm
+ - Docker Desktop
+ - MicroK8s
+ - Kubernetes Development
 ---
 
 Once you've determined that you want to use [Kubernetes](https://kubernetes.io) as your base for developing applications locally, it's time to figure out which development solution is the best. There are many different options out there, but a few select reign over the others as the most common, including [minikube](https://minikube.sigs.k8s.io/docs/), [kind](https://kind.sigs.k8s.io/), [K3s](https://k3s.io/), [kubeadm](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/), [Docker Desktop](https://docs.docker.com/desktop/kubernetes/), and [MicroK8s](https://microk8s.io/).
@@ -15,7 +20,7 @@ In this article, you'll take a more in-depth look at these six tools, and by the
 
 ## Why You Need a Local Kubernetes Development Solution
 
-Before comparing the tools themselves, it's important to understand why you want a local Kubernetes development solution in the first place. There are many reasons for wanting a local Kubernetes cluster, like being able to test the deployment method you're using, checking how your application interacts with mounted volumes, and testing manifest files. In addition, all these reasons help you avoid the situation where something works on one machine and doesn't on others.
+Before comparing the tools themselves, it's important to understand why you want a local Kubernetes development solution in the first place. There are many reasons for wanting a local Kubernetes cluster, like being able to test the [deployment](/blog/deployment-strategies) method you're using, checking how your application interacts with mounted volumes, and testing manifest files. In addition, all these reasons help you avoid the situation where something works on one machine and doesn't on others.
 
 Now, it's no longer enough to spin up your own service and test it; you need to make sure it works properly together with other services, and you need to make sure they properly communicate when deployed to a Kubernetes cluster. This is why today, it's more important than ever to have the possibility of a local Kubernetes cluster.
 
@@ -69,7 +74,7 @@ In terms of performance, minikube does fairly well, spinning up the [microservic
 
 Like minikube, kind supports all three major platforms. It works by spinning up Docker containers to act as nodes in your cluster, which are based on an image [created by kind](https://kind.sigs.k8s.io/docs/user/quick-start/#creating-a-cluster). However, if you want to use your own image, that's also possible using the `--image` flag.
 
-Because the image is developed by kind themselves, there may be variations compared to what you find in Azure Kubernetes Service (AKS) or Google Kubernetes Engine (GKE), but in the end, it's a solution that conforms to Kubernetes conventions, so you should be able to run all your regular workloads using kind. You'll also get great performance, which is evident with the [microservice demo](https://github.com/GoogleCloudPlatform/microservices-demo.git) deploying in just about a minute and a half.
+Because the image is developed by kind themselves, there may be variations compared to what you find in [Azure](/blog/azure-functions-node) Kubernetes Service (AKS) or Google Kubernetes Engine (GKE), but in the end, it's a solution that conforms to Kubernetes conventions, so you should be able to run all your regular workloads using kind. You'll also get great performance, which is evident with the [microservice demo](https://github.com/GoogleCloudPlatform/microservices-demo.git) deploying in just about a minute and a half.
 
 ### K3s
 
@@ -234,7 +239,5 @@ No matter what option you choose for developing your applications locally, you'l
 ## Outside Article Checklist
 
 - [ ] Verify look of article locally
-- [ ] Run mark down linter (`lint`)
-- [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
 - [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
