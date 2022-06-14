@@ -235,7 +235,6 @@ No matter what option you choose for developing your applications locally, youâ€
 ## Outside Article Checklist
 
 
-- [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
