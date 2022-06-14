@@ -70,7 +70,7 @@ In terms of performance, minikube does fairly well, spinning up the [microservic
 
 ### Kind
 
-![kind logo]({{site.images}}{{page.slug}}/9eE2wL1.png)
+![Kind logo]({{site.images}}{{page.slug}}/9eE2wL1.png)
 
 Like minikube, kind supports all three major platforms. It works by spinning up Docker containers to act as nodes in your cluster, which are based on an image [created by kind](https://kind.sigs.k8s.io/docs/user/quick-start/#creating-a-cluster). However, if you want to use your own image, that's also possible using the `--image` flag.
 
@@ -86,7 +86,7 @@ This means that you don't install K3s as a tool with `brew` or `choco`, rather y
 
 ### Kubeadm
 
-![kubeadm logo]({{site.images}}{{page.slug}}/gikIAq7.png)
+![Kubeadm logo]({{site.images}}{{page.slug}}/gikIAq7.png)
 
 kubeadm is another option that only runs on Linux; however, you can make it run on all Linux-based servers from Ubuntu to [Raspberry Pi](https://www.raspberrypi.org).
 
@@ -160,7 +160,7 @@ minikube isn't very opinionated and mostly lets you handle your Kubernetes clust
 
 minikube is made to be a development tool, which you'll notice when you have to use the minikube CLI quite often. However, once resources have been deployed in the cluster, they behave just like you would expect them to in Kubernetes. You're not likely to run into many use cases that can't be handled in minikube.
 
-### kind
+### Kind
 
 The impression given by kind is that it's not opinionated at all. This is a tool that gives you all the flexibility you want, as long as you know how to use it. It doesn't offer any helpful CLI commands to enable features, opting to use a YAML file instead.
 
@@ -212,7 +212,7 @@ K3s is backed by [Rancher](https://rancher.com/), which is one of the biggest co
 
 On top of that, you'll also find a great community surrounding the product, so it's very likely you're going to find answers to your questions.
 
-### kubeadm
+### Kubeadm
 
 kubeadm is the official offering of Kubernetes, so you get the full force of the Kubernetes community when you use it. This means you get help from people who know exactly how Kubernetes works in the most inner parts.
 
