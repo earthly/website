@@ -1,5 +1,5 @@
 ---
-title: "Comparing Local Kubernetes Development Solutions"
+title: "Comparing Local Kubernetes Development Solutionsssss"
 categories:
   - Tutorials
 toc: true
