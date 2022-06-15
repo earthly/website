@@ -118,6 +118,8 @@ The main reason to choose MicroK8s is that it comes with any of the features you
 
 ## Complexity of Setup
 
+![Complexity general image]({{site.images}}{{page.slug}}/complexity.jpg)\
+
 Once you know what platforms each tool supports and you've made sure that it matches the platform and environment you have, you also need to look into how complex the setup is. If the tool has everything you need it to have but it's too complex to set up, then it's no longer the right choice for you. Or perhaps you're looking for something to implement organization-wide; in which case, the complexity of the setup may be one of the most important factors.
 
 ### Minikube
@@ -155,6 +157,8 @@ Once Docker Desktop is installed, you need to go into the settings and enable Ku
 The setup for MicroK8s is incredibly simple and utilizes the `snap` functionality in Ubuntu. Run `sudo snap install microk8s --classic`, and after a minute or so, you will have MicroK8s installed. From here, you can enable whatever services you want by running `microk8s enable`. For example, you can enable the Kubernetes dashboard by running `microk8s enable dashboard`.
 
 ## Flexibility
+
+![Flexibility general image]({{site.images}}{{page.slug}}/Flexibility.jpg)\
 
 When developing a tool, you can be extremely opinionated, not opinionated at all, or somewhere in the middle. If you're new to the space, it may be good to use an opinionated tool that can make decisions for you, but in some cases, it may be better to choose a tool that is incredibly flexible so you can make it conform to what you need. A portion of flexibility is also about how close you can get to something resembling what you're running in production.
 
@@ -195,6 +199,8 @@ MicroK8s is also a fairly opinionated tool, not allowing you to configure anythi
 If you have some advanced use cases, it's likely that you won't be able to run them in MicroK8s.
 
 ## Support
+
+![Support general image]({{site.images}}{{page.slug}}/support.png)\
 
 The last point to consider when choosing a tool is: Does the tool have a strong community to answer questions, or does it perhaps have a company that's backing the project and providing support, or are you left to your own troubleshooting and skills? The newer you are to the field, the more important this is to consider.
 
