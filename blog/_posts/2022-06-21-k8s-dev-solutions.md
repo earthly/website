@@ -60,7 +60,7 @@ To understand how performant these solutions are, the [Online Boutique](https://
 
 ### Minikube
 
-![minikube logo]({{site.images}}{{page.slug}}/E51VHlu.png)
+![minikube logo]({{site.images}}{{page.slug}}/E51VHlu.png)\
 
 minikube has support for all three major operating systems: Windows, macOS, and Linux. This means you likely don't have to worry if you plan on rolling out minikube organization-wide since pretty much any PC is able to run it. On top of that, you also get great platform support in terms of *how* minikube should be run, given that it supports many different [drivers](https://minikube.sigs.k8s.io/docs/drivers/), like Docker, [kvm2](https://minikube.sigs.k8s.io/docs/drivers/kvm2/), and [VirtualBox](https://www.virtualbox.org).
 
@@ -70,7 +70,7 @@ In terms of performance, minikube does fairly well, spinning up the [microservic
 
 ### Kind
 
-![Kind logo]({{site.images}}{{page.slug}}/9eE2wL1.png)
+![Kind logo]({{site.images}}{{page.slug}}/9eE2wL1.png)\
 
 Like minikube, kind supports all three major platforms. It works by spinning up Docker containers to act as nodes in your cluster, which are based on an image [created by kind](https://kind.sigs.k8s.io/docs/user/quick-start/#creating-a-cluster). However, if you want to use your own image, that's also possible using the `--image` flag.
 
@@ -78,7 +78,7 @@ Because the image is developed by kind themselves, there may be variations compa
 
 ### K3s
 
-![K3s logo]({{site.images}}{{page.slug}}/NfeQXkM.png)
+![K3s logo]({{site.images}}{{page.slug}}/NfeQXkM.png)\
 
 K3s is the first tool on this list that only supports running on Linux due to the fact that K3s isn't actually made to *be* a development solution. Rather, it was developed as a low-resource alternative to Kubernetes (hence the name K3s, which is a play on the abbreviation K8s).
 
@@ -86,7 +86,7 @@ This means that you don't install K3s as a tool with `brew` or `choco`, rather y
 
 ### Kubeadm
 
-![Kubeadm logo]({{site.images}}{{page.slug}}/gikIAq7.png)
+![Kubeadm logo]({{site.images}}{{page.slug}}/gikIAq7.png)\
 
 kubeadm is another option that only runs on Linux; however, you can make it run on all Linux-based servers from Ubuntu to [Raspberry Pi](https://www.raspberrypi.org).
 
@@ -96,7 +96,7 @@ Because of this, kubeadm is the closest you will get to a production-like cluste
 
 ### Docker Desktop
 
-![Docker Desktop logo]({{site.images}}{{page.slug}}/kJMf8ZB.png)
+![Docker Desktop logo]({{site.images}}{{page.slug}}/kJMf8ZB.png)\
 
 Docker Desktop is supported by all the major operating systems (macOS, Windows, and Linux). Today, this is the tool you're most likely to use since most engineers will already have Docker Desktop installed.
 
@@ -106,7 +106,7 @@ In terms of performance, Docker Desktop performs well, deploying the [microservi
 
 ### MicroK8s
 
-![MicroK8s logo]({{site.images}}{{page.slug}}/kbvMYid.png)
+![MicroK8s logo]({{site.images}}{{page.slug}}/kbvMYid.png)\
 
 MicroK8s again supports the three main operating systems, and you will find easy-to-follow installation instructions on [their website](https://microk8s.io/#install-microk8s). Once installed, you'll see that this is a tool that's made for development, and you'll be heavily using the CLI. Even when running simple `kubectl` commands, you need to prefix it with `microk8s`.
 
