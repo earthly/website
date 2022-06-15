@@ -72,7 +72,6 @@ To understand how performant these solutions are, the [Online Boutique](https://
 
 ### Minikube
 
-
 minikube has support for all three major operating systems: Windows, macOS, and Linux. This means you likely don't have to worry if you plan on rolling out minikube organization-wide since pretty much any PC is able to run it. On top of that, you also get great platform support in terms of *how* minikube should be run, given that it supports many different [drivers](https://minikube.sigs.k8s.io/docs/drivers/), like Docker, [kvm2](https://minikube.sigs.k8s.io/docs/drivers/kvm2/), and [VirtualBox](https://www.virtualbox.org).
 
 With minikube, you're getting pretty close to running inside a full Kubernetes cluster. You'll still feel like you're running a local cluster at times, but more on that later.
@@ -87,13 +86,11 @@ Because the image is developed by kind themselves, there may be variations compa
 
 ### K3s
 
-
 K3s is the first tool on this list that only supports running on Linux due to the fact that K3s isn't actually made to *be* a development solution. Rather, it was developed as a low-resource alternative to Kubernetes (hence the name K3s, which is a play on the abbreviation K8s).
 
 This means that you don't install K3s as a tool with `brew` or `choco`, rather you install it as a [Linux service](https://www.hostinger.com/tutorials/manage-and-list-services-in-linux/#:~:text=Managing%20Linux%20Services-,Linux%20Services,operation%20of%20the%20operating%20system.). Again, this is a testament to the fact that K3s isn't supposed to be a local development tool but rather something to use in production. This does mean that performance is great, with the [microservice demo](https://github.com/GoogleCloudPlatform/microservices-demo.git) being deployed in just about a minute.
 
 ### Kubeadm
-
 
 kubeadm is another option that only runs on Linux; however, you can make it run on all Linux-based servers from Ubuntu to [Raspberry Pi](https://www.raspberrypi.org).
 
@@ -102,7 +99,6 @@ kubeadm isn't just a tool that lets you run local Kubernetes clusters. It was de
 Because of this, kubeadm is the closest you will get to a production-like cluster. You can customize every single part of Kubernetes to exactly what you need, and because of this, you'll get some of the greatest performance, with the [microservice demo](https://github.com/GoogleCloudPlatform/microservices-demo.git) deployed in just under a minute.
 
 ### Docker Desktop
-
 
 Docker Desktop is supported by all the major operating systems (macOS, Windows, and Linux). Today, this is the tool you're most likely to use since most engineers will already have Docker Desktop installed.
 
