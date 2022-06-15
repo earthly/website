@@ -6,3 +6,5 @@ kubernetes
 kubectx
 kubens
 autoscaler
+kubeadm
+mthe
