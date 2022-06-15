@@ -28,25 +28,37 @@ Now, it's no longer enough to spin up your own service and test it; you need to 
 
 ### Minikube
 
+![minikube logo]({{site.images}}{{page.slug}}/E51VHlu.png)\
+
 For a long time, minikube was by far the [most popular](https://trends.google.com/trends/explore?date=all&q=minikube,docker%20desktop,k3s,kubeadm,microk8s) option for local Kubernetes development. Providing a simple CLI tool to start and interact with a Kubernetes cluster was a great option for most engineers to get a simple cluster working. On top of that, it's possible to select different [drivers](https://minikube.sigs.k8s.io/docs/drivers/) so you can choose for yourself whether you want a container or VM-based cluster.
 
 ### Kind
+
+![Kind logo]({{site.images}}{{page.slug}}/9eE2wL1.png)\
 
 kind was primarily developed with the intention of being able to test Kubernetes, but it's also useful when you want to test applications running inside Kubernetes, and it is based on containers as nodes.
 
 ### K3s
 
+![K3s logo]({{site.images}}{{page.slug}}/NfeQXkM.png)\
+
 K3s is the first project on this list that can proudly state that it's a [Cloud Native Computing Foundation (CNCF) sandbox project](https://www.cncf.io/sandbox-projects/) focusing on providing a Kubernetes cluster with a smaller footprint. K3s is suited well for IoT and ARM processing, and it's also helpful when you want to run a Kubernetes cluster locally.
 
 ### Kubeadm
+
+![Kubeadm logo]({{site.images}}{{page.slug}}/gikIAq7.png)\
 
 Due to its complexity, kubeadm isn't the most popular option for engineers when setting up a local Kubernetes cluster. However, since kubeadm can help you better understand the configuration of your cluster, it's a viable solution in some cases. For the most part, it's used when engineers want to run Kubernetes on-premise.
 
 ### Docker Desktop
 
+![Docker Desktop logo]({{site.images}}{{page.slug}}/kJMf8ZB.png)\
+
 In recent years, Docker Desktop has taken over minikube in terms of [popularity](https://trends.google.com/trends/explore?date=all&q=minikube,docker%20desktop,k3s,kubeadm,microk8s). Looking at the trend chart, it's important to remember that Docker Desktop, of course, also offers regular [Docker](https://www.docker.com/), which will skew the popularity a bit. However, it's fair to say that being able to run Kubernetes using the already-installed tool has made many choose this option.
 
 ### MicroK8s
+
+![MicroK8s logo]({{site.images}}{{page.slug}}/kbvMYid.png)\
 
 Developed by [Canonical](https://canonical.com/), the same company that's behind the widely popular Linux distribution [Ubuntu](https://ubuntu.com/), MicroK8s is the only one on this list that can be considered a proper product. The other options are either CNCF projects or [Kubernetes Special Interest Groups (SIGs)](https://github.com/kubernetes/community/blob/master/README.md#special-interest-groups-sig). MicroK8s offers enterprise support as one of its main selling points.
 
@@ -60,7 +72,6 @@ To understand how performant these solutions are, the [Online Boutique](https://
 
 ### Minikube
 
-![minikube logo]({{site.images}}{{page.slug}}/E51VHlu.png)\
 
 minikube has support for all three major operating systems: Windows, macOS, and Linux. This means you likely don't have to worry if you plan on rolling out minikube organization-wide since pretty much any PC is able to run it. On top of that, you also get great platform support in terms of *how* minikube should be run, given that it supports many different [drivers](https://minikube.sigs.k8s.io/docs/drivers/), like Docker, [kvm2](https://minikube.sigs.k8s.io/docs/drivers/kvm2/), and [VirtualBox](https://www.virtualbox.org).
 
@@ -70,15 +81,12 @@ In terms of performance, minikube does fairly well, spinning up the [microservic
 
 ### Kind
 
-![Kind logo]({{site.images}}{{page.slug}}/9eE2wL1.png)\
-
 Like minikube, kind supports all three major platforms. It works by spinning up Docker containers to act as nodes in your cluster, which are based on an image [created by kind](https://kind.sigs.k8s.io/docs/user/quick-start/#creating-a-cluster). However, if you want to use your own image, that's also possible using the `--image` flag.
 
 Because the image is developed by kind themselves, there may be variations compared to what you find in [Azure](/blog/azure-functions-node) Kubernetes Service (AKS) or Google Kubernetes Engine (GKE), but in the end, it's a solution that conforms to Kubernetes conventions, so you should be able to run all your regular workloads using kind. You'll also get great performance, which is evident with the [microservice demo](https://github.com/GoogleCloudPlatform/microservices-demo.git) deploying in just about a minute and a half.
 
 ### K3s
 
-![K3s logo]({{site.images}}{{page.slug}}/NfeQXkM.png)\
 
 K3s is the first tool on this list that only supports running on Linux due to the fact that K3s isn't actually made to *be* a development solution. Rather, it was developed as a low-resource alternative to Kubernetes (hence the name K3s, which is a play on the abbreviation K8s).
 
@@ -86,7 +94,6 @@ This means that you don't install K3s as a tool with `brew` or `choco`, rather y
 
 ### Kubeadm
 
-![Kubeadm logo]({{site.images}}{{page.slug}}/gikIAq7.png)\
 
 kubeadm is another option that only runs on Linux; however, you can make it run on all Linux-based servers from Ubuntu to [Raspberry Pi](https://www.raspberrypi.org).
 
@@ -96,7 +103,6 @@ Because of this, kubeadm is the closest you will get to a production-like cluste
 
 ### Docker Desktop
 
-![Docker Desktop logo]({{site.images}}{{page.slug}}/kJMf8ZB.png)\
 
 Docker Desktop is supported by all the major operating systems (macOS, Windows, and Linux). Today, this is the tool you're most likely to use since most engineers will already have Docker Desktop installed.
 
@@ -105,8 +111,6 @@ Docker Desktop runs Kubernetes by spinning up a single node in a Docker containe
 In terms of performance, Docker Desktop performs well, deploying the [microservice demo](https://github.com/GoogleCloudPlatform/microservices-demo.git) in about a minute.
 
 ### MicroK8s
-
-![MicroK8s logo]({{site.images}}{{page.slug}}/kbvMYid.png)\
 
 MicroK8s again supports the three main operating systems, and you will find easy-to-follow installation instructions on [their website](https://microk8s.io/#install-microk8s). Once installed, you'll see that this is a tool that's made for development, and you'll be heavily using the CLI. Even when running simple `kubectl` commands, you need to prefix it with `microk8s`.
 
