@@ -6,7 +6,10 @@ toc: true
 author: Joseph Eshiett
 
 internal-links:
- - just an example
+ - CI/CD
+ - Tekton
+ - Kubernetes
+ - Pipelines
 ---
 
 Continuous integration/continuous delivery (CI/CD) principles offer multiple benefits to software organizations, including faster time to market, higher-quality code, and simpler and faster fault isolation. Applications built using CI/CD pipeline best practices tend to see a huge increase in users over time, necessitating a migration from a large codebase and low-scalability monolithic architecture to a more manageable and efficient microservice architecture.
@@ -57,7 +60,7 @@ This Kubernetes cluster must have [MetalLB](https://metallb.universe.tf/) enable
 
 This cluster must also have a storage class enabled so that `PersistentVolumeClaim` definitions can be created and used by the Tekton pipeline.
 
-#### kubectl
+#### Kubectl
 
 You need the kubectl command line utility to be able to interact with your Kubernetes cluster. This tutorial uses kubectl version 1.23.
 
@@ -86,13 +89,13 @@ kubectl get po -n tekton-pipelines
 
 ![Tekton controller and webhook deployed]({{site.images}}{{page.slug}}/s6tACwr.jpg)
 
-## Installing the Tekton CLI (tkn)
+## Installing the Tekton CLI (Tkn)
 
 Although you can still interact with Tekton using kubectl, for this tutorial you'll use the Tekton CLI (`tkn`) to install tasks from the [Tekton Catalog](https://github.com/tektoncd/catalog), which contains reusable Tekton tasks that you'll be using.
 
 To install `tkn` on your operating system, [follow the instructions](https://github.com/tektoncd/cli#installing-tkn). This tutorial uses the Ubuntu 20.04 operating system with `tkn` version 0.23.1.
 
-## Installing Tasks from Tekton Hub
+## Installing Tasks From Tekton Hub
 
 You don't need to create your tasks from scratch. There are plenty of Tekton resources, such as tasks and pipelines, that are available at the [Tekton Hub](https://hub.tekton.dev/) and frequently updated by contributors.
 

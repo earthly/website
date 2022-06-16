@@ -9,3 +9,4 @@ autoscaler
 kubeadm
 mthe
 Tekton
+tkn
