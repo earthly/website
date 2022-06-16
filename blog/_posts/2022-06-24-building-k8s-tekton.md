@@ -13,9 +13,9 @@ Continuous integration/continuous delivery (CI/CD) principles offer multiple ben
 
 Kubernetes is one of the most popular platforms for automating the management, deployment, and scaling processes of microservice applications. Because Kubernetes is complex, though, a framework can help developers and operations teams use the platform to follow CI/CD practices in building applications. This is where Tekton comes in.
 
-[Tekton](https://tekton.dev/) is an open source framework that’s designed to help you optimize your CI/CD practices. With it, you can build customizable and reusable CI/CD pipelines as well as orchestrate workflows across on-premise systems and multiple cloud providers.
+[Tekton](https://tekton.dev/) is an open source framework that's designed to help you optimize your CI/CD practices. With it, you can build customizable and reusable CI/CD pipelines as well as orchestrate workflows across on-premise systems and multiple cloud providers.
 
-In this tutorial, you’ll learn how to create a customizable CI/CD workflow with Tekton to deploy a sample application to your Kubernetes cluster.
+In this tutorial, you'll learn how to create a customizable CI/CD workflow with Tekton to deploy a sample application to your Kubernetes cluster.
 
 ## What Is Tekton?
 
@@ -35,21 +35,23 @@ To learn more about Tekton, check out the [official documentation](https://tekto
 
 ## Building an Application Using Tekton
 
-For this example, you’re going to package a Node.js application using Docker, push it to Docker Hub, then automatically deploy it to Kubernetes using Tekton. For a sample Node.js application, check the [GitHub repository](https://github.com/Joeshiett/tekton-test) for this tutorial.
+![Application Building]({{site.images}}{{page.slug}}/build-app.jpg)\
+
+For this example, you're going to package a Node.js application using Docker, push it to Docker Hub, then automatically deploy it to Kubernetes using Tekton. For a sample Node.js application, check the [GitHub repository](https://github.com/Joeshiett/tekton-test) for this tutorial.
 
 ### Prerequisites
 
-For this tutorial, you’ll need the following.
+For this tutorial, you'll need the following.
 
 #### A Kubernetes Cluster
 
-You’ll need a cluster to run Tekton and deploy the sample Node.js application. This tutorial uses the lightweight Kubernetes distribution [MicroK8s](https://microk8s.io/docs/getting-started) version 1.23.5, installed on Ubuntu 20.04 via Snap package manager. This cluster must have role-based access control (RBAC) enabled and [`ClusterRole` and `ClusterRoleBinding`](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#rolebinding-and-clusterrolebinding) definitions created for the `cluster-admin` user so that you can create any resource and freely interact with your cluster.
+You'll need a cluster to run Tekton and deploy the sample Node.js application. This tutorial uses the lightweight Kubernetes distribution [MicroK8s](https://microk8s.io/docs/getting-started) version 1.23.5, installed on Ubuntu 20.04 via Snap package manager. This cluster must have role-based access control (RBAC) enabled and [`ClusterRole` and `ClusterRoleBinding`](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#rolebinding-and-clusterrolebinding) definitions created for the `cluster-admin` user so that you can create any resource and freely interact with your cluster.
 
-Note that if you’re using MicroK8s, you’ll have to configure it to export its kubectl configuration to `$HOME/.kube/config` with this command:
+Note that if you're using MicroK8s, you'll have to configure it to export its kubectl configuration to `$HOME/.kube/config` with this command:
 
-```
+~~~{.bash caption=">_"}
 microk8s.kubectl config view --raw > $HOME/.kube/config
-```
+~~~
 
 This Kubernetes cluster must have [MetalLB](https://metallb.universe.tf/) enabled so the load balancer service can attach an IP address to the Node.js deployment. This makes it accessible outside the cluster.
 
@@ -61,7 +63,7 @@ You need the kubectl command line utility to be able to interact with your Kuber
 
 #### A Docker Hub Account
 
-You need access to a public registry on Docker Hub to deploy your built image to. You can [create an account](https://hub.docker.com/) if you haven’t already.
+You need access to a public registry on Docker Hub to deploy your built image to. You can [create an account](https://hub.docker.com/) if you haven't already.
 
 ## Installing Tekton Pipelines
 
@@ -69,66 +71,66 @@ You need access to a public registry on Docker Hub to deploy your built image to
 
 Run the following command to install:
 
-```bash
+~~~{.bash caption=">_"}
 kubectl apply --filename \
 https://storage.googleapis.com/tekton-releases/pipeline/latest/release.yaml
-```
+~~~
 
 ![Applying Tekton Pipelines resources to the cluster]({{site.images}}{{page.slug}}/MK958SI.jpg)
 
 Verify the Tekton controller and webhook pods are up and running:
 
-```bash
+~~~{.bash caption=">_"}
 kubectl get po -n tekton-pipelines
-```
+~~~
 
 ![Tekton controller and webhook deployed]({{site.images}}{{page.slug}}/s6tACwr.jpg)
 
 ## Installing the Tekton CLI (tkn)
 
-Although you can still interact with Tekton using kubectl, for this tutorial you’ll use the Tekton CLI (`tkn`) to install tasks from the [Tekton Catalog](https://github.com/tektoncd/catalog), which contains reusable Tekton tasks that you’ll be using.
+Although you can still interact with Tekton using kubectl, for this tutorial you'll use the Tekton CLI (`tkn`) to install tasks from the [Tekton Catalog](https://github.com/tektoncd/catalog), which contains reusable Tekton tasks that you'll be using.
 
 To install `tkn` on your operating system, [follow the instructions](https://github.com/tektoncd/cli#installing-tkn). This tutorial uses the Ubuntu 20.04 operating system with `tkn` version 0.23.1.
 
 ## Installing Tasks from Tekton Hub
 
-You don’t need to create your tasks from scratch. There are plenty of Tekton resources, such as tasks and pipelines, that are available at the [Tekton Hub](https://hub.tekton.dev/) and frequently updated by contributors.
+You don't need to create your tasks from scratch. There are plenty of Tekton resources, such as tasks and pipelines, that are available at the [Tekton Hub](https://hub.tekton.dev/) and frequently updated by contributors.
 
 To build and deploy the sample Node.js application, you need to install the following tasks from the Tekton Hub.
 
 Install `git-clone` to clone the Node.js project Git repository:
 
-```bash
+~~~{.bash caption=">_"}
 tkn hub install task git-clone --version 0.6
-```
+~~~
 
 Next, install `buildah` to build and push the image to Docker Hub:
 
-```bash
+~~~{.bash caption=">_"}
 tkn hub install task buildah --version 0.3
-```
+~~~
 
 Lastly, install `kubernetes-actions` to apply the Kubernetes deployment manifest to the cluster:
 
-```bash
+~~~{.bash caption=">_"}
 tkn hub install task kubernetes-actions --version 0.2
-```
+~~~
 
 To confirm the tasks have been installed successfully, list them:
 
-```bash
+~~~{.bash caption=">_"}
 tkn task list
-```
+~~~
 
 ![Listing installed tasks]({{site.images}}{{page.slug}}/aAturnr.jpg)
 
 ## Creating the Secret and ServiceAccount Manifest
 
-You’re going to create the secrets that the Buildah runtime will use to push the image to your public Docker registry on Docker Hub.
+You're going to create the secrets that the Buildah runtime will use to push the image to your public Docker registry on Docker Hub.
 
 Create a file called `secret-sa.yml` in the `tekton` directory and add the following code snippet, replacing `DOCKERHUB_USER` and `DOCKERHUB_PASSWORD` with your Docker Hub credentials:
 
-```yaml
+~~~{.bash caption=">_"}
 apiVersion: v1
 kind: Secret
 metadata:
@@ -146,13 +148,13 @@ metadata:
   name: docker-login
 secrets:
   - name: docker-secret
-```
+~~~
 
 Apply the `Secret` and `ServiceAccount` configuration to your cluster:
 
-```yaml
+~~~{.bash caption=">_"}
 kubectl apply --filename secret-sa.yml
-```
+~~~
 
 ![Secret and ServiceAccount created]({{site.images}}{{page.slug}}/E0mehOP.jpg)
 
@@ -162,7 +164,7 @@ To apply the Tekton resources successfully, you need to set a Kubernetes `Role` 
 
 Create a file named `role.yml` and add the following code snippet:
 
-```yaml
+~~~{.bash caption=">_"}
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
@@ -184,31 +186,31 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: docker-login
-```
+~~~
 
 Apply the `role.yml` configuration to your cluster:
 
-```yaml
+~~~{.bash caption=">_"}
 kubectl apply --filename role.yml
-```
+~~~
 
 ![Role and RoleBinding applied to cluster]({{site.images}}{{page.slug}}/UNu8eeV.jpg)
 
 ## Creating a Pipeline
 
-Now you’re going to create a pipeline resource to build and push the Node.js application to Docker Hub, then deploy to your Kubernetes cluster. This pipeline should reference the installed tasks.
+Now you're going to create a pipeline resource to build and push the Node.js application to Docker Hub, then deploy to your Kubernetes cluster. This pipeline should reference the installed tasks.
 
 Clone the GitHub project repository containing `server.js`, `package.json`, `Dockerfile`, and the Kubernetes deployment manifest, `deploy.yml`:
 
-```bash
+~~~{.bash caption=">_"}
 git clone https://github.com/joeshiett/tekton-test.git
-```
+~~~
 
 ![GitHub project directory]({{site.images}}{{page.slug}}/u3EUBrf.jpg)
 
 Navigate into the GitHub project directory, `tekton-test`, and create a directory named `tekton-practice` to store your Tekton pipeline resources. Create a file named `pipeline.yml` in the `tekton-practice` directory and add the following code snippet:
 
-```yaml
+~~~{.bash caption=">_"}
 apiVersion: tekton.dev/v1beta1
 kind: Pipeline
 metadata:
@@ -265,23 +267,23 @@ spec:
       workspaces:
         - name: manifest-dir
           workspace: linked-workspace
-```
+~~~
 
 Replace the `IMAGE` default params above with your Docker Hub repository name. This tutorial uses `docker.io/joeshiett/nodejs-app`.
 
 Next, apply the `pipeline.yml` configuration to the cluster:
 
-```yaml
+~~~{.bash caption=">_"}
 kubectl apply --filename pipeline.yml
-```
+~~~
 
 ![Pipeline configuration created]({{site.images}}{{page.slug}}/L3TQ3WJ.jpg)
 
 Confirm that the Tekton pipeline you created has been added to the cluster:
 
-```yaml
+~~~{.bash caption=">_"}
 tkn pipeline list
-```
+~~~
 
 ![Pipeline successfully added to cluster]({{site.images}}{{page.slug}}/q1wqR4J.jpg)
 
@@ -289,7 +291,7 @@ tkn pipeline list
 
 To deploy the built Docker image to your own public repository on Docker Hub, edit the `deploy.yml` file in the `manifest` directory. Replace `DOCKERHUB_USER` with your Docker Hub username and `APP_NAME` with the name of your built Docker image:
 
-```yaml
+~~~{.bash caption=">_"}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -322,15 +324,15 @@ spec:
     - port: 80
       targetPort: 8081
       nodePort: 30001
-```
+~~~
 
 ## Creating PipelineRun
 
-Your pipeline has been successfully added to the cluster, but at the moment it’s not running. To instantiate it, you need to create a PipelineRun configuration.
+Your pipeline has been successfully added to the cluster, but at the moment it's not running. To instantiate it, you need to create a PipelineRun configuration.
 
 Create a file named `pipeline-run.yml` and add the following code snippet:
 
-```yaml
+~~~{.bash caption=">_"}
 apiVersion: tekton.dev/v1beta1
 kind: PipelineRun
 metadata:
@@ -353,21 +355,21 @@ spec:
           resources:
             requests:
               storage: 10Gi
-```
+~~~
 
 Kickstart the deployment with the following command:
 
-```yaml
+~~~{.bash caption=">_"}
 kubectl apply --filename pipeline-run.yml
-```
- 
+~~~
+
 ![Instantiated pipeline]({{site.images}}{{page.slug}}/zmUt7vK.jpg)
 
 Your pipeline should be up and running. To see the pipeline logs, run the following command:
 
-```yaml
+~~~{.bash caption=">_"}
 tkn pipeline logs -f
-```
+~~~
 
 You should see the `pipeline-run.yml` configuration applied and started:
 
@@ -375,9 +377,9 @@ You should see the `pipeline-run.yml` configuration applied and started:
 
 Tekton automatically creates pods in the `default` namespace that run different containers for the pipeline. To see these pods and the Node.js application deployment, run the following command:
 
-```yaml
+~~~{.bash caption=">_"}
 kubectl get pods
-```
+~~~
 
 As shown by the output below, `nodejs-pipelinerun-` ran successfully and also created two `nodejs-deployment-` pods running the Node.js application.
 
@@ -389,10 +391,10 @@ Your Node.js application should be up and running in your cluster.
 
 To confirm your deployment, retrieve your load balancer IP address, store it in a variable `LB_IP`, and access it via the `curl` command:
 
-```yaml
+~~~{.bash caption=">_"}
 export LB_IP=$(kubectl get svc/nodejs-service -o=jsonpath='{.status.loadBalancer.ingress[0].ip}')
 curl ${LB_IP} -w "\n"
-```
+~~~
 
 The `curl` command should output the following:
 
@@ -402,15 +404,10 @@ The `curl` command should output the following:
 
 As you learned in this tutorial, [Tekton](https://tekton.dev/) can be a useful framework for building applications in Kubernetes. You set up a basic Tekton workflow and deployed an application to your Kubernetes cluster from your Tekton CI/CD pipeline. With Tekton, you were able to quickly build your pipeline so that you could deploy your application right away.
 
-Tekton increases your flexibility and scalability, thus giving you major advantages when you’re using Kubernetes for your projects.
-
-
+Tekton increases your flexibility and scalability, thus giving you major advantages when you're using Kubernetes for your projects.
 
 ## Outside Article Checklist
 
-- [ ] Add in Author page
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Run mark down linter (`lint`)
