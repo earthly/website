@@ -287,7 +287,7 @@ tkn pipeline list
 
 ![Pipeline successfully added to cluster]({{site.images}}{{page.slug}}/q1wqR4J.jpg)
 
-## Editing the deploy.yml Manifest
+## Editing the Deploy.yml Manifest
 
 To deploy the built Docker image to your own public repository on Docker Hub, edit the `deploy.yml` file in the `manifest` directory. Replace `DOCKERHUB_USER` with your Docker Hub username and `APP_NAME` with the name of your built Docker image:
 
