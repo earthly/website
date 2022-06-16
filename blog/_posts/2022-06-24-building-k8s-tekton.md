@@ -74,7 +74,7 @@ kubectl apply --filename \
 https://storage.googleapis.com/tekton-releases/pipeline/latest/release.yaml
 ```
 
-![Applying Tekton Pipelines resources to the cluster](https://imgur.com/MK958SI.jpg)
+![Applying Tekton Pipelines resources to the cluster]({{site.images}}{{page.slug}}/MK958SI.jpg)
 
 Verify the Tekton controller and webhook pods are up and running:
 
@@ -82,7 +82,7 @@ Verify the Tekton controller and webhook pods are up and running:
 kubectl get po -n tekton-pipelines
 ```
 
-![Tekton controller and webhook deployed](https://imgur.com/s6tACwr.jpg)
+![Tekton controller and webhook deployed]({{site.images}}{{page.slug}}/s6tACwr.jpg)
 
 ## Installing the Tekton CLI (tkn)
 
@@ -120,7 +120,7 @@ To confirm the tasks have been installed successfully, list them:
 tkn task list
 ```
 
-![Listing installed tasks](https://imgur.com/aAturnr.jpg)
+![Listing installed tasks]({{site.images}}{{page.slug}}/aAturnr.jpg)
 
 ## Creating the Secret and ServiceAccount Manifest
 
@@ -154,7 +154,7 @@ Apply the `Secret` and `ServiceAccount` configuration to your cluster:
 kubectl apply --filename secret-sa.yml
 ```
 
-![Secret and ServiceAccount created](https://imgur.com/E0mehOP.jpg)
+![Secret and ServiceAccount created]({{site.images}}{{page.slug}}/E0mehOP.jpg)
 
 ## Creating ClusterRole and ClusterRoleBinding
 
@@ -192,7 +192,7 @@ Apply the `role.yml` configuration to your cluster:
 kubectl apply --filename role.yml
 ```
 
-![Role and RoleBinding applied to cluster](https://imgur.com/UNu8eeV.jpg)
+![Role and RoleBinding applied to cluster]({{site.images}}{{page.slug}}/UNu8eeV.jpg)
 
 ## Creating a Pipeline
 
@@ -204,7 +204,7 @@ Clone the GitHub project repository containing `server.js`, `package.json`, `Doc
 git clone https://github.com/joeshiett/tekton-test.git
 ```
 
-![GitHub project directory](https://imgur.com/u3EUBrf.jpg)
+![GitHub project directory]({{site.images}}{{page.slug}}/u3EUBrf.jpg)
 
 Navigate into the GitHub project directory, `tekton-test`, and create a directory named `tekton-practice` to store your Tekton pipeline resources. Create a file named `pipeline.yml` in the `tekton-practice` directory and add the following code snippet:
 
@@ -275,7 +275,7 @@ Next, apply the `pipeline.yml` configuration to the cluster:
 kubectl apply --filename pipeline.yml
 ```
 
-![Pipeline configuration created](https://imgur.com/L3TQ3WJ.jpg)
+![Pipeline configuration created]({{site.images}}{{page.slug}}/L3TQ3WJ.jpg)
 
 Confirm that the Tekton pipeline you created has been added to the cluster:
 
@@ -283,7 +283,7 @@ Confirm that the Tekton pipeline you created has been added to the cluster:
 tkn pipeline list
 ```
 
-![Pipeline successfully added to cluster](https://imgur.com/q1wqR4J.jpg)
+![Pipeline successfully added to cluster]({{site.images}}{{page.slug}}/q1wqR4J.jpg)
 
 ## Editing the deploy.yml Manifest
 
@@ -361,7 +361,7 @@ Kickstart the deployment with the following command:
 kubectl apply --filename pipeline-run.yml
 ```
  
-![Instantiated pipeline](https://imgur.com/zmUt7vK.jpg)
+![Instantiated pipeline]({{site.images}}{{page.slug}}/zmUt7vK.jpg)
 
 Your pipeline should be up and running. To see the pipeline logs, run the following command:
 
@@ -371,7 +371,7 @@ tkn pipeline logs -f
 
 You should see the `pipeline-run.yml` configuration applied and started:
 
-![nodejs-pipelinerun-jxm91 Pipeline logs](https://imgur.com/lPfK5uE.jpg)
+![nodejs-pipelinerun-jxm91 Pipeline logs]({{site.images}}{{page.slug}}/lPfK5uE.jpg)
 
 Tekton automatically creates pods in the `default` namespace that run different containers for the pipeline. To see these pods and the Node.js application deployment, run the following command:
 
@@ -381,7 +381,7 @@ kubectl get pods
 
 As shown by the output below, `nodejs-pipelinerun-` ran successfully and also created two `nodejs-deployment-` pods running the Node.js application.
 
-![Node.js application successfully deployed](https://imgur.com/HUGIKr7.jpg)
+![Node.js application successfully deployed]({{site.images}}{{page.slug}}/HUGIKr7.jpg)
 
 ## Testing Node.js Deployment
 
@@ -396,7 +396,7 @@ curl ${LB_IP} -w "\n"
 
 The `curl` command should output the following:
 
-![Node.js deployment up and running](https://imgur.com/vG5LBSu.jpg)
+![Node.js deployment up and running]({{site.images}}{{page.slug}}/vG5LBSu.jpg)
 
 ## Conclusion
 
