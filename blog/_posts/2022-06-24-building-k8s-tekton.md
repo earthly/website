@@ -3,7 +3,7 @@ title: "Building in Kubernetes Using Tekton"
 categories:
   - Tutorials
 toc: true
-author: Adam
+author: Joseph Eshiett
 
 internal-links:
  - just an example
