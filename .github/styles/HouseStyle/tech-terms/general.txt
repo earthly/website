@@ -5,6 +5,7 @@ esint
 GitHub
 GraphQL
 JavaScript
+Javascript
 jQuery
 api
 css
@@ -161,3 +162,7 @@ preloaded
 Lamby
 Mux
 ffi
+synergically
+beautifulsoup
+Seaborn
+toolset
