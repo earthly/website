@@ -8,11 +8,11 @@ author: Ukeje Goodness
 internal-links:
  - just an example
 ---
+<div class="wide">
 
+<img src="{{site.images}}{{page.slug}}/image 1.png" alt="Pyscript header image">
 
-
-
-![Screenshot from 2022-05-01 16-55-37.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/7f3f1591-caee-485b-b7fd-f41f45f2fdc7/Screenshot_from_2022-05-01_16-55-37.png)
+</div>
 
 ### Introduction
 
@@ -34,6 +34,9 @@ To follow this tutorial, you’ll need to meet these requirements.
 - A text editor or IDE of your choice.
 
 ## What Is PyScript
+
+<img src="{{site.images}}{{page.slug}}/what.jpg" width="80%" height="60%">
+
 
 PyScript is a Python-based front-end web framework for building powerful browser applications in Python using an HTML interface.
 
@@ -109,9 +112,8 @@ PyScript allows you to run Python code in HTML using the `<py-script>` tag in th
 
 Write Python code in the `<py-script>` tags and view the code in your browser for results.
 
-![carbon (1).png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/931f6cc8-a4dd-4d0a-a11b-4f6b1f379158/carbon_(1).png)
 
-The string in the print statement is output to the browser as regular text
+![The string in the print statement is output to the browser as regular text]({{site.images}}{{page.slug}}/carbon_(1).png)
 
 
 ### Passing Python Code Variables to HTML
@@ -131,7 +133,8 @@ Using an `id`, you get to pass strings displayed as regular text.
 
 `pyscript.write` accepts the id value and the variable to be given.
 
-![Screenshot from 2022-05-16 17-54-12.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c550931e-98ac-4083-985a-3b5bc862323d/Screenshot_from_2022-05-16_17-54-12.png)
+
+![Testing Pyscript]({{site.images}}{{page.slug}}/image 3.png)\
 
 ## Importing Files, Modules, and Libraries
 
@@ -192,7 +195,7 @@ PyScript also provides [functionality for running Python code REPL in browsers](
 
 This creates a REPL text area in your browser in which you can type and run Python code whose output is displayed in the browser.
 
-![Screenshot from 2022-05-16 17-58-04.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3d1ec424-0d2e-45d1-b717-73342a3340d4/Screenshot_from_2022-05-16_17-58-04.png)
+![Testing]({{site.images}}{{page.slug}}/image 4.png)\
 
 ## Image and Data Visualization In-Browser using PyScript
 
@@ -219,8 +222,7 @@ Let’s see how a Matplotlib plot in PyScript can be used to visualize data and 
 </py-script>
 </body>
 ```
-
-![Screenshot from 2022-05-16 18-02-12.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ad03694d-0a85-4364-9838-9a0d2dda940c/Screenshot_from_2022-05-16_18-02-12.png)
+![Testing Board]({{site.images}}{{page.slug}}/image 5.png)\
 
 We started by importing the NumPy and Matplotlib libraries which are popularly used for scientific computing in Python; then, we assigned two variables `x_coordinates` and `y_coordinates`, to `np.random.randn` which created NumPy arrays of normally distributed numbers.
 
@@ -228,7 +230,8 @@ The `figure` and `axis` variables to `plt.subplots` set the figure and axis on t
 
 ## PyScript or Pyodide
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a3bfcd77-4d4a-452a-a264-0d648575bf84/Untitled.png)
+![Pyodide Logo]({{site.images}}{{page.slug}}/image 6.png)\
+
 
 Pyodide is an open-source project developed by Mozilla using Web Assembly that allows Python developers to run Python in the browser.
 
@@ -260,10 +263,9 @@ Pyodide would be a more suitable option if you’re building performance-intensi
 
 Learn more about PyScript and Pyodide from these resources.
 
-●	The PyScript website.
-●	The Pyodide official documentation.
-●	PyScript Examples
-
+- [The PyScript website.](https://pyscript.net/)
+- [The Pyodide official documentation.](https://pyodide.org/en/stable/usage/index.html)
+- [PyScript Examples](https://pyscript.net/examples/)
 
 ### Conclusion
 
