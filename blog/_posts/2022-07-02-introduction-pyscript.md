@@ -199,7 +199,7 @@ This creates a REPL text area in your browser in which you can type and run Pyth
 
 ## Image and Data Visualization In-Browser using PyScript
 
-The most powerful use of PyScript comes is the ease of image and data visualization in the browser using raw Python. Data analysts can now visualize data plotted with libraries like Seaborn and Matplotlib, unlike in the past when the image had to be saved locally to be displayed.
+The most powerful use of PyScript comes is the ease of image and data visualization in the browser using raw Python. Data analysts can now visualize data plotted with libraries like Seaborn and [Matplotlib](/blog/python-matplotlib-docker), unlike in the past when the image had to be saved locally to be displayed.
 
 Let's see how a Matplotlib plot in PyScript can be used to visualize data and images in the browser easily.
 
@@ -225,7 +225,7 @@ Let's see how a Matplotlib plot in PyScript can be used to visualize data and im
 
 ![Testing Board]({{site.images}}{{page.slug}}/image 5.png)\
 
-We started by importing the NumPy and Matplotlib libraries which are popularly used for scientific computing in Python; then, we assigned two variables `x_coordinates` and `y_coordinates`, to `np.random.randn` which created NumPy arrays of normally distributed numbers.
+We started by importing the NumPy and [Matplotlib](/blog/plotting-rainfall-data-with-python-and-matplotlib) libraries which are popularly used for scientific computing in Python; then, we assigned two variables `x_coordinates` and `y_coordinates`, to `np.random.randn` which created NumPy arrays of normally distributed numbers.
 
 The `figure` and `axis` variables to `plt.subplots` set the figure and axis on the graph, `axis.scatter` plots the NumPy arrays on the figure, which is displayed by passing the variable on a new line in the `<py-script>` tag.
 
@@ -278,10 +278,4 @@ PyScript could become an important tool in your toolset. it's still very new, in
 
 - [ ] Add in Author page
 - [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
 - [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
