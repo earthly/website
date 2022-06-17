@@ -279,5 +279,3 @@ PyScript could become an important tool in your toolset. it's still very new, in
 ## Outside Article Checklist
 
 - [ ] Add in Author page
-- [ ] Create header image in Canva
-- [ ] Add Earthly `CTA` at bottom ``
