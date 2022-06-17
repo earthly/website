@@ -274,8 +274,10 @@ Before PyScript, it wasn't this easy to run Python REPL in the browser, run Pyth
 
 PyScript could become an important tool in your toolset. it's still very new, in its alpha stage ( so don't use it for production yet) but it looks very promising.
 
+{% include cta/cta1.html %}
+
 ## Outside Article Checklist
 
 - [ ] Add in Author page
 - [ ] Create header image in Canva
-- [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
+- [ ] Add Earthly `CTA` at bottom ``
