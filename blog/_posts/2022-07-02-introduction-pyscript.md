@@ -6,7 +6,11 @@ toc: true
 author: Ukeje Goodness
 
 internal-links:
- - just an example
+ - Pyhton
+ - Numpy
+ - PyScript
+ - Pyodide
+ - Django
 ---
 <div class="wide">
 
