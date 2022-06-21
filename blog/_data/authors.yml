@@ -223,4 +223,7 @@ Joseph Eshiett:
     name    : "Joseph Eshiett"
     bio     : "Joseph is a DevOps practitioner who is fascinated by cloud technologies, software development, and deployment processes. He is also a technical writer who enjoys documenting the processes and learning new things."
     avatar  : "/assets/images/authors/joseph-eshiett.png"
-    
+Ukeje Goodness:
+    name    : "Ukeje Goodness"
+    bio     : "Goodness is a technical writer and  backend developer(Go) simplifying various technology topics as he explores this fascinating field."
+    avatar  : "/assets/images/authors/ukejegoodness.png"
