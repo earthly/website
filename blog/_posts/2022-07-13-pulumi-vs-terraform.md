@@ -7,6 +7,9 @@ author: Alexander Yu
 
 internal-links:
  - just an example
+ - Pulumi
+ - Terraform
+ - IaC tools
 ---
 
 There once was a time when technicians manually provisioned application infrastructure. In recent years, as companies began rapidly expanding their infrastructure stacks, they began to realize the shortcomings of manual provisioning:  
@@ -115,7 +118,6 @@ So which tool should you use? Terraform is still considered the industry leader 
 ## Outside Article Checklist
 
 * [ ] Create header image in Canva
-* [ ] Run mark down linter (`lint`)
 * [ ] Add keywords for internal links to front-matter
 * [ ] Run `link-opp` and find 1-5 places to incorporate links
 * [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
