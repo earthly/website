@@ -35,53 +35,54 @@ Terraform and Pulumi are open source tools that are very widely used in the indu
 
 Both tools have the same base functionality: enabling you to easily define and deploy your infrastructure as code. However, because Terraform uses HCL, it naturally comes with more guidelines and restrictions. In contrast, Pulumi allows you to leverage existing concepts in languages, such as loops, classes, and data structures. It's also easier for developers to create built-in testing suites and use other extensions and libraries in their Pulumi programs. While Terraform has no built-in testing functionality, the Terraform CLI contains better tools for troubleshooting a corrupt state.
 
-The open source nature of these tools gives the developer community the opportunity to influence which features get prioritized and delivered. In a clear illustration of this, due to high demand, Terraform launched the [Cloud Development Kit for Terraform](https://www.terraform.io/cdktf), which allows developers to use familiar languages, though it should be noted that the Terraform CDK is a newer tool in active development that, as of this writing, may not be production stable. Similarly, Pulumi launched [`tf2pulumi`](https://www.pulumi.com/tf2pulumi/), a tool that converts HCL into a language of your choice. 
+The open source nature of these tools gives the developer community the opportunity to influence which features get prioritized and delivered. In a clear illustration of this, due to high demand, Terraform launched the [Cloud Development Kit for Terraform](https://www.terraform.io/cdktf), which allows developers to use familiar languages, though it should be noted that the Terraform CDK is a newer tool in active development that, as of this writing, may not be production stable. Similarly, Pulumi launched [`tf2pulumi`](https://www.pulumi.com/tf2pulumi/), a tool that converts HCL into a language of your choice.
 
 ## Learning Curve
+
 <img src="{{site.images}}{{page.slug}}/learningcurve.png" width="100%" height="60%">
 
 If you're looking to quickly learn and use one of these tools, you'll probably find that Pulumi is easier to pick up. This is because Pulumi allows you to use your preferred programming language to define your infrastructure stacks—there's no need to learn a specific DSL. If you already know Python, Java, Node.js, Go, or .NET Core, you can get started with Pulumi right away. If you're familiar with Python, you can easily create an AWS DynamoDB table using Pulumi with the following code:
 
-```
+~~~{.bash caption=">_"}
 import pulumi
 import pulumi_aws as aws
 
 ddb_table = aws.dynamodb.Table("ddb-table",
-	attributes = [
-		aws.dynamodb.TableAttributeArgs(
-			name="Id",
-			type="S",
-		),
-	],
-	billing_mode = "PAY_PER_REQUEST",
-	hash_key = "Id",
-	read_capacity = 5,
-	write_capacity = 5)
-```
+ attributes = [
+  aws.dynamodb.TableAttributeArgs(
+   name="Id",
+   type="S",
+  ),
+ ],
+ billing_mode = "PAY_PER_REQUEST",
+ hash_key = "Id",
+ read_capacity = 5,
+ write_capacity = 5)
+~~~
 
-Note that this is all regular Python syntax. Pulumi has a plethora of code samples in every supported language in their documentation (for example, [here's the `dynamodb.Table` documentation](https://www.pulumi.com/registry/packages/aws/api-docs/dynamodb/table/)). To actually deploy your infrastructure, you'll need to become familiar with various [Pulumi CLI](https://www.pulumi.com/docs/reference/cli/) commands.
+Note that this is all regular Python syntax. Pulumi has a plethora of code samples in every supported language in their documentation (for example, [it is the `dynamodb.Table` documentation](https://www.pulumi.com/registry/packages/aws/api-docs/dynamodb/table/)). To actually deploy your infrastructure, you'll need to become familiar with various [Pulumi CLI](https://www.pulumi.com/docs/reference/cli/) commands.
 
 To get started with Terraform, you'll first have to become familiar with HCL syntax. Some developers consider this a significant extra hump to get over, but HCL is so widely adopted that it's always a useful skill to have. In addition, while HCL is like learning a new language, much of the syntax is relatively intuitive and simple. For example, to create the same DynamoDB table from the Pulumi example, you can use the following Terraform code:
 
-```
+~~~{.bash caption=">_"}
 provider "aws" {
-	region = "us-east-1"
+ region = "us-east-1"
 }
 
 resource "aws_dynamodb_table" "ddb_table" {
-	name = "ddb_table"
-	attribute {
-		name = "Id"
-		type = "S"
-	}
-	billing_mode = "PAY_PER_REQUEST"
-	hash_key = "Id"
-	read_capacity = "5"
-	write_capacity = "5"
+ name = "ddb_table"
+ attribute {
+  name = "Id"
+  type = "S"
+ }
+ billing_mode = "PAY_PER_REQUEST"
+ hash_key = "Id"
+ read_capacity = "5"
+ write_capacity = "5"
 }
-```
+~~~
 
-As you can see, this isn't too bad! As with Pulumi, Terraform documents all resource properties and provides multiple code examples in their official documentation (for example, [here's the `aws_dynamodb_table` documentation](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/dynamodb_table)). To actually deploy your infrastructure, you'll also have to become familiar with various [Terraform CLI](https://www.terraform.io/cli/commands) commands.
+As you can see, this isn't too bad! As with Pulumi, Terraform documents all resource properties and provides multiple code examples in their official documentation (for example, [it is the `aws_dynamodb_table` documentation](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/dynamodb_table)). To actually deploy your infrastructure, you'll also have to become familiar with various [Terraform CLI](https://www.terraform.io/cli/commands) commands.
 
 At first glance, it's certainly true that Pulumi has a much easier learning curve because you can simply draw on your existing knowledge of a language. However, this doesn't mean that it's necessarily "better" than having to learn HCL. Because all Terraform files are written in HCL, any Terraform developer can automatically understand any Terraform file. A Pulumi developer who's unfamiliar with Go may not be able to understand a Pulumi file written in Go. While the learning curve for Terraform may be higher at the onset, it may be worth having everyone in your organization stick to a single DSL.
 
@@ -111,17 +112,10 @@ In this article, you've looked at a quick comparison of Terraform and Pulumi, tw
 
 So which tool should you use? Terraform is still considered the industry leader in IaC tools, but Pulumi is quickly rising in popularity. Both tools help you accomplish the same thing, so for most organizations and developers, this comes down to whether you're willing to invest your time and resources into learning HCL and Terraform. If you prefer the consistency of using HCL for your infrastructure and want a tool with a more robust community, Terraform is the way to go. If you need to optimize for efficiency and would prefer to use a language you're already comfortable with, Pulumi might be the better solution. Either tool will get you on the way to properly scaling your infrastructure code.
 
-
-
-
 ## Outside Article Checklist
 
-- [ ] Add in Author page
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
+* [ ] Create header image in Canva
+* [ ] Run mark down linter (`lint`)
+* [ ] Add keywords for internal links to front-matter
+* [ ] Run `link-opp` and find 1-5 places to incorporate links
+* [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
