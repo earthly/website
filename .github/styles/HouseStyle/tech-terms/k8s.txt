@@ -8,3 +8,5 @@ kubens
 autoscaler
 kubeadm
 mthe
+Tekton
+tkn

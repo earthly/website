@@ -5,3 +5,10 @@ timsort
 pylint
 unittest
 fargate
+Pyscript
+Pyodide
+pyscript
+Emscripten
+Numpy
+Pypi
+micropip
