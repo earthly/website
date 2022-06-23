@@ -166,4 +166,9 @@ synergically
 beautifulsoup
 Seaborn
 toolset
+codespace
+Codespace
+codespaces
 Codespaces
+devcontainer
+orgs
