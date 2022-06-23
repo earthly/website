@@ -227,3 +227,7 @@ Ukeje Goodness:
     name    : "Ukeje Goodness"
     bio     : "Goodness is a technical writer and  backend developer(Go) simplifying various technology topics as he explores this fascinating field."
     avatar  : "/assets/images/authors/ukejegoodness.png"
+Alexander Yu:
+    name    : "Alexander Yu"
+    bio     : "Alexander Yu is a technical writer at AWS by day and a freelance writer by night. After completing his BS in electrical engineering and computer science from UC Berkeley, he became a software developer at AWS for almost three years before transitioning into technical writing. He lives in Seattle with his dog Yuna."
+    avatar  : "/assets/images/authors/alexanderyu.jpg"
