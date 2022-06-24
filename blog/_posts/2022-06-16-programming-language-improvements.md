@@ -1,5 +1,5 @@
 ---
-title: "Put Your Best Title Here"
+title: "The slow (but steady) march of progress in programming languages"
 categories:
   - Tutorials
 toc: true
@@ -25,43 +25,71 @@ internal-links:
 - [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
 - [ ] Raise PR
 
-So I wrote this post about Green VS Brown langauges and the point of hte aritlce was that when people like a new langauge, they might be judging it from a biased perspective because the new langauge they use for new development whereas older langauges tend to be more often used in existing projects. 
+The Stack Overflow developer survey is out! 
 
-That is as lanaguages get used, they accumluate code bases and people have to maintain those code bases and generally people like writing new code so much more than maintaining old code. So langauge start green, only used in a green field development, but if successful eventaully become brown, primarly used in maintanance.
+Last time it was out, I said this thing about it, and Today I'd like to explain why parts of that were wrong, or maybe too simple.
 
-So its easier to compare peoples feelings on two brown langauges, or two green languages. Ruby was so amazing, but then fast forward 2 decades and people are dealing with giant Rails monolothis that nobody understands and ruby seeems way less hot. Even though Ruby is a better langauage today then it was then, people like it far less.
+## Green VS Brown languages Revisited
 
-Ok, I stil think all this is true, but it is a simplification and the biggest peicee of critisim I got on the article was that you know what Adam, this ignores the fact that langauges actaully get better. 
+I wrote this post about Green VS Brown languages and the point of the article was that when people like a new langauge, they are judging it from a biased perspective because the new langauge is used for new development, green field development, whereas the older langauges tend to used in existing projects  - brown field projects. 
 
-Maybe ruby is better for greenfield projects then it was 20 years ago, but also the table stakes are different. It was competing against old Java and perl then and now there are so many competitors.
+That is, as lanaguages get used, they accumluate code bases and people have to maintain those code bases and maintenace sucks. 
 
-Its like say Ruby could get a Gold 1890 track and field with a time of X, and not its at X+5 but you are ignore the fact that X+5 is no where near the level people are playing at now.
 
-## Language innovation
+I still stand by that. People like writing new code, and don't like maintaining old code. So langauges start green, only used in a green field development, but if successful, eventually become brown. 
 
-So, lets talk about langauge innovation. I think it can be seperated into two things. Category one is the code, the systnax and semantics of the langauge. Not sure why I'm still on Ruby but I think it was very much a language innovation. People writing very verbose code in Java all the sudden didn't need to declare types, and didn't need to worry about marking things as private or public and writing getters and setters and annonomous innner classes. ( I mean it turns out that all this flexibility had other downsides, but lets ignore that for now. )
+Another way to say this I guess is that you can't know how good a langauge is until you've encountered a [Big Ball Of Mud](http://www.laputan.org/mud/mud.html) written in it. Ruby was so amazing, but then fast forward 2 decades and people are dealing with giant Rails monolothis, and Ruby seems way less hot. And Ruby is a better langauage today then it was then, and still people like it less.
 
-So what exists after this? What can be better about a programming langauge that is not the programming langauge? Well, that is my second category, which I don't have a great name for but I will call the tooling around a language.
+I still think all this is true, but it is a simplification because it ignores the fact that langauges actaully get better.
 
-Maybe this is the non-code developer experience of a programming language and its effect can be huge. It's my thesis that these category two factors, although they aren't programming language features in the traditional way, they tend to dominate.
+## Rising Stakes
 
-If you took the C programming languages syntax and relaunched it as the Do lanaguge, with all of these modern acquitimontes added on, you might have a winner of a language on your hands. Additionally, most of these things seem hard to add on after the langauge and idioms have developed. This will make more sense and I go thru these. So lets do it.
+So the stack overflow survey measures what langauges people use and whether they like them or not. This is the Dreaded vs Loved Ranking and I still think that new langauges have an advantage in that framing. But also a new programming langauge can place higher because its better. 
+
+It makes sense if you think of it as a foot race. C++ had a amazing 12 second sprint time in 1984, and continued to improve so that this year it finished in 10.1 seconds. But Rust has a 9.7 second time, and being above 10 doesn't even put you in the top 10 anymore.
+
+Ruby is better for greenfield projects then it was 20 years ago, but the table stakes are different. You can't just be better than Java 1.0 and Perl and expect a medal this year.
+
+So, lets talk about langauge innovation.
+
+
+## Language Innovation
+
+One possible way to think about language innovation is to subdivide it into categories. One Category one is the code, the syntax and semantics of the language. Perl is one of the most dreaded programming languages in the 2022 list but at some point the flexibilty of Perl for writing text processing scripts was a big innovation.
+
+The same with Ruby. I assume that people who were writing very verbose code in Java saw Ruby and all the sudden didn't need to declare types, and didn't need to worry about marking things as private or public and writing getters and setters and annonomous innner classes and got very excited. I mean it turns out that all this flexibility had other downsides, but lets ignore that for now. 
+
+So, all of these syntax and semantics improvements go in category one. Borrow checkers, actors, syntaxic sugar, type systems: all category one.
+
+So what exists after this? What can be better about a programming langauge that is not the programming langauge? 
+
+
+## Tooling is The New Syntax
+
+My second category I'll call tooling, although its more than that. And it's what I'd like to talk about today. Category one, that langauage's syntax and semantics is hard to talk about, because it just descends into fight. Syntaxtic sugar is good, or its bad. Operator overloading is good or its bad. Innvoation is happening here, but my favorite example of innovation might your example that we've strayed to far from god (Or K&R).
+
+
+This second category though is about the developer experience of the language and its both easier to talk about and has profound effects on how work gets done. It's my thesis that these category two factors, although they aren't programming language features in the traditional sense, they tend to dominate.
+
+That's a big claim, but it will make more sense once I give some examples. So here is what I have so far. Here is my list of programming language innovation that aren't the language.
 
 ## Batteries Included Standard Library
 
 ### History
-A standard library is a library of common things that come with the langauge and are ideally written in the langauge itself. C has libc, and C++ has libcpp but both these feel very minimal compared to the common conception of a batteries included standard library. 
 
-The history is a little unclear to me, but it seems like Python (1991) was the first langaue to really take the stance of really having an extensive standard library. Java 1.0 (1996) also came with an extensive standard library (The Java Class Library) and many languages would follwo suite.
+A standard library is a library of common things that come with the langauge and are ideally written in the language itself. C has libc, and C++ has libcpp but both these feel very minimal compared to the common conception of a batteries included standard library.
 
-The benefits of being able to do what you want to do without having to roll it yourself or pull in a thrid party dependencies are hard to overstate.
+The history is a little unclear to me, but it seems like Python (1991) was the first language to take the stance of really having an extensive standard library. Java 1.0 (1996) also came with an extensive standard library (The Java Class Library) and many other languages would follow suite.
 
-Is Javascript the exception that proves the rule?
+The benefits of being able to do what you want to do without having to roll it yourself or pull in a third party dependencies are hard to overstate.
 
-((Amir quote))
+> I'm not sure whether it's a blessing or a curse, but expansive standard libraries [are a big improvement]. It's possible to get a lot done with PHP, Python, and Go without needing to install any third party library. They come with json, http client and server, and even database access for the most part.
+>
+> Amir Saeid
 
-### State of the Art
-- go
+### State of the Art: GoLang
+
+Most modern languages (that aren't JavaScript) now ship with extensive standard libraries. Go though puts special emphasis on its standard library. It promises backwards compatibilty, performance and well-thought out implementations. Because of this, go developers tend to lean on the standard library more than many other communities and generally hold it in high regard.
 
 ## Third Party Package Repository
 
@@ -69,27 +97,26 @@ Is Javascript the exception that proves the rule?
 
 Around the time bigger standard libraries became a thing the world wide web was also taking off and internet proved to be pretty good at fostering collaboration.
 
-Eventually you outstrip even the most inclusive of standard libraries and have to build something yourself.  Or do you? Perl popularized the idea of a global collection of packages with CPAN and nothing has been the same since. I think its fair to say that people who used and contributed to CPAN knew that this was an important thing and didnt' want to work in langauges without it afterwards.
-
+Eventually you outstrip even the most inclusive of standard libraries and have to build something yourself. Or do you? Perl popularized the idea of a global collection of packages with CPAN and nothing has been the same since. I think its fair to say that people who used and contributed to CPAN knew that it was a game changer.
 
 CPAN was launched in 1995 (based on CTAN) and by its height in 2003 it had established a new way for people to get things done with software. That is glueing together 3rd party componenets. So much of modern development now follow this model.
 
-It's hard to find a commonly used programming langauge created after 2003 that didn't come with a third party package repository of some sort. New table stakes had been set.
+It's hard to find a commonly used programming language created after 2003 that didn't come with a third party package repository of some sort. New table stakes had been set.
 
+<div class="notice notice--big">
 Side Note: Back porting.
 
-Ok, so you might wonder, if CPAN made perl better and every langauge moving forward embraced a package managers for thrid party code then why didn't languages predating this date just add on package managers?
+Ok, so you might wonder, if CPAN made Perl better and every language moving forward embraced a package managers for third party code then why didn't languages predating this just add on package managers after the fact?
 
-This is going to be a running theme. It seems that once the idioms and patterns of lanague and a langauge community have been established its hard to go back and add certain things. I'm not sure that this has to be the case, but it does seem to be the current reality. Its just hard to get an agreement in a language community past a certain size, and so things fragement. At least I think this is why Javascript has NPM, Rust has crates but C++ has dds, cpm, conan pacm, spakc, buckaroo, hunter and vcpkg (https://stackoverflow.com/questions/27866965/does-c-have-a-package-manager-like-npm-pip-gem-etc). You know what is better than one universally agreed upon package manager? Not That!
+Well, they did, but it seems like its hard to get agreement in language community after a certain point. I'm not sure why this is but maybe people just don't like change? 
 
-One counter point here though is standard libraries. C++ added its standard library rather than in the game, by successfully bring parts of STL under its roof.
+This is going to be a running theme. Once the idioms and patterns of programming langauge, and a langauge community, have been established its hard to go back and add things on. At least I think this is why Javascript has NPM, Rust has crates but C++ has dds, cpm, conan pacm, spakc, buckaroo, hunter and vcpkg (https://stackoverflow.com/questions/27866965/does-c-have-a-package-manager-like-npm-pip-gem-etc) and yet nobody is using any of those. You know what is better than one universally agreed upon package manager? Not That!
 
-So, a great standard library that does most of the things you need to do, augemented with a third party package repositoy that is easy to use and contribute to. These things are game changes for languages and lead to a community growing up around the langauges.
+One counter point here though is standard libraries. C++ added its standard library rather late in the game, by successfully bring parts of STL under its roof.
 
-### State of the Art?
+</div>
 
-- NPM?
-
+So, a great standard library that does most of the things you need to do, augemented with a third party package repositoy that is simple to use and straight forward to contribute to. That is now table stakes for a language.
 
 ## Community
 
@@ -142,7 +169,7 @@ This has got to be Intellij and Kotlin
 
 ## Future Table Stakes
 
-If these items have all become table stakes for future langaes are there things happening now, that will also reach this level of table stakes. 
+If these items have all become table stakes for future languages then are there things happening now, that will also reach this level of table stakes.
 
 Here are a couple ideas:
 * single file native deployment
@@ -152,7 +179,7 @@ Here are a couple ideas:
 
 ## Conclusion
 
-So going back to the original list of dreaded and not dreaded lanagues, how much does the number of these table stakes affordances the programmming langue have indicate its popularity?
+So going back to the original list of dreaded and loved lanagues, how much does the number of these table stakes affordances the programmming langue have indicate its popularity?
 
 Top 5 loved = Rust, TypeScript, Python, Kotlin, Go
 Top 5 dreaded = VBA, Objective-C, Perl, Assembly, C,
