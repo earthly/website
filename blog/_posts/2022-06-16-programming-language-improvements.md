@@ -179,6 +179,10 @@ This package manager tool area seens like current fasting moving area in languag
 
 It feels strange to call this area package managers because the surface area is so wide. `cargo` does a lot more than just manage packages. The `go` binary at least calls itself `a tool for managing go source code` and that seems more accurate because with modules, and testing and code generation it's more like an all-in-one developer tooling ecosystem. 
 
+....
+gofmt is an interesting example, because people are following this model aand back porting things, but its hard to adopt these tools into existing frameworks so bla bla bla.
+
+
 
 
 
