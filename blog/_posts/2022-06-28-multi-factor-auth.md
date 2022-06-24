@@ -23,7 +23,7 @@ Previously, I'd had a slightly bad time with YubiKeys: My computer fell and crus
 
 ### Side Note: You Should MFA
 
-If you have something valuable online, something that can be stolen or turned into bitcoin you should set up multi-factor authentication for it. 
+If you have something valuable online, something that can be stolen or turned into bitcoin you should set up multi-factor authentication for it.
 
 (FYI: Previously this was often called 2FA, two-factor-authentication.)
 </div>
@@ -85,9 +85,9 @@ But you don't want to stop there. You'd need a way to retrieve the key from some
 
 ### Retrieving the MFA Key
 
-So here's what you do. 
+So here's what you do.
 
-You're going to want to store you MFA Key somewhere secure, and not just keep it in a python script, or copy and paste it into your terminal. Because then it might end up in your `.history` file. 
+You're going to want to store you MFA Key somewhere secure, and not just keep it in a python script, or copy and paste it into your terminal. Because then it might end up in your `.history` file.
 
 I'm using LastPass, so I can install their CLI tool (`lpass`) and do something like this:
 
