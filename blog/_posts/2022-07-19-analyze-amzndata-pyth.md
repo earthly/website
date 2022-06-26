@@ -1,16 +1,13 @@
 ---
-title: "Put Your Best Title Here"
+title: "Analyze Your Amazon Data with Python"
 categories:
   - Tutorials
 toc: true
-author: Adam
+author: Mr. Unity Buddy
 
 internal-links:
  - just an example
 ---
-
-
-# Analyze Your Amazon Data with Python
 
 How much have you spent on Amazon? Well, that’s a kind of interesting question to find an answer to. And it’s the type of question I like to answer using Python.
 
@@ -19,7 +16,7 @@ With Python, Data analysis is just a 10-minute job. So in this article, we’re 
 
 
 * Figured out how much money we’ve spent on Amazon
-*Found the most expensive and cheapest things we’ve ordered.
+* Found the most expensive and cheapest things we’ve ordered.
 * Found the average of our expenses on Amazon
 * Found out how much we have spent on Tax
 * And we’ll also visualize our spending habits day by day in a graph.
@@ -39,19 +36,13 @@ Step 1: Go to Amazon.com and sign in to your account.
 
 Step 2: Click on Your Account > Account
  
-
-Imgur Link: https://imgur.com/bjGElgm
-
-
+![Create account]({{site.images}}{{page.slug}}/bjGElgm.png)\
 Step 3: In the Order and Shopping Preferences section, select “Download order reports”
  
-Imgur Link: https://imgur.com/NQdSCrv
-
+![download order report]({{site.images}}{{page.slug}}/NQdSCrv.png)\
 Step 4: Customize the data according to your need and click on “Request Report”.
 
- 
-Imgur Link: https://imgur.com/KJilq9p
-
+![request report]({{site.images}}{{page.slug}}/KJilq9p.png)\
 Congrats! You’ve your order history stored in a CSV file. Now we can move to code.
 
 
@@ -96,8 +87,8 @@ print(df)
 
 
 The output is 5 columns with a row for each record in the CSV file (We’re using a small data frame for the tutorial so your data frame can be a lot bigger!):
- 
-Imgur Link: https://imgur.com/2BZ5kdd
+
+![CSV file]({{site.images}}{{page.slug}}/2BZ5kdd.png)\
 
 We can customize the number of rows and columns anytime. 
 
@@ -144,7 +135,7 @@ print(df)
 
 Output:
  
-Imgur link: https://imgur.com/aLWkiQs
+![Output file]({{site.images}}{{page.slug}}/aLWkiQs.png)\
 
 As you see, there’s no dollar sign in “Item Total” column. Cool, we can jump into the next problem. What we want now is to convert string values in the Item Subtotal column to float. 
 
@@ -307,8 +298,8 @@ As you see, the results aren’t the same. But we don’t have to worry about it
 In all the above, we’ve played with only one column. What if we want to find the amount of Tax we’ve spent in another column? That’s also simple, we just have to re-do the steps.
 
 First of all, we should remove the dollar signs in the “Item Subtotal Tax” column and convert the string values to floats. 
- 
-Imgur link: https://i.imgur.com/2L2n7cp.png
+
+![Item Subtotal Tax]({{site.images}}{{page.slug}}/2L2n7cp.png)\
 
 To do this, we can improve our code like this:
 
@@ -325,8 +316,7 @@ print(df)
 
 Now we can see that the dollar signs in front of the “Item Subtotal Tax” column have been removed.
 
- 
-Imgur link: https://imgur.com/kUUviaV
+![Item Subtotal]({{site.images}}{{page.slug}}/kUUviaV.png)\
 
 Now we can easily use sum() function on that too.
 
@@ -401,8 +391,7 @@ print(df)
 
 Great, now we can see that the “Order Date” column has been changed to the default date-time format.
 
- 
-Imgur link: https://imgur.com/TMOKwtD
+![Output file]({{site.images}}{{page.slug}}/TMOKwtD.png)\
 
 
 It’s time to move to analyze step. Which dates have we spent most of the money on Amazon? Let’s graph it with “Matpotlib” 
@@ -438,8 +427,8 @@ plt.show()
 
 
 Run the code, and there will be an awesome bar chart like the below:
- 
-Imgur link: https://imgur.com/zrFvTZw
+
+![Bar Chart]({{site.images}}{{page.slug}}/zrFvTZw.png)\
 
 
 But if your CSV file contains a lot of rows, the bar chart would be unclear and very small in size. To zoom in, we can use the fig size keyword. You can change the code like below:
