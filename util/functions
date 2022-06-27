@@ -145,6 +145,10 @@ lint() { # Run Linter
     )
 }
 
+,vale(){ # Run Vale
+  vale --output line --minAlertLevel error ./blog/_posts/*.md
+}
+
 format(){ # change code blocks
    cat "$(post)" | ./util/codeblock.awk | sponge "$(post)" 
 }
