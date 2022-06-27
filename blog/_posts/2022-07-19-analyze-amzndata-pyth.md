@@ -46,7 +46,7 @@ Step 3: In the Order and Shopping Preferences section, select "Download order re
 Step 4: Customize the data according to your need and click on "Request Report".
 <div class="wide">
 ![request report]({{site.images}}{{page.slug}}/KJilq9p.png)\
-<div>
+</div>
 
 Congrats! You've your order history stored in a CSV file. Now we can move to code.
 
@@ -380,7 +380,9 @@ plt.show()
 
 Run the code, and there will be an awesome bar chart like the below:
 
+<div class="wide">
 ![Bar Chart]({{site.images}}{{page.slug}}/zrFvTZw.png)\
+</div>
 
 But if your CSV file contains a lot of rows, the bar chart would be unclear and very small in size. To zoom in, we can use the fig size keyword. You can change the code like below:
 
