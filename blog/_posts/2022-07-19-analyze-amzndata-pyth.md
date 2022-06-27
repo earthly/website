@@ -27,7 +27,7 @@ With Python, Data analysis is just a 10-minute job. So in this article, we're go
 Before we get started, we need to set up a few things. We'll need:
 
 * A Python IDE and Python 3.x
-* Pandas Library (It is a built-in library but in case it is not right there, install it through `pip install pandas`)
+* [Pandas](/blog/plotting-rainfall-data-with-python-and-matplotlib) Library (It is a built-in library but in case it is not right there, install it through `pip install pandas`)
 * Matpotlib installed (to install, use `pip install matpotlib`)
 * Amazon Order History data; Follow these steps to download it!
 
@@ -50,7 +50,7 @@ Python is an excellent programming language for data analysis. And a library tha
 
 ### What Is Pandas?
 
-Pandas is a Python library used for working with data sets. It is an open-source, free-to-use library that saved the jobs of millions of data scientists and other people!
+[Pandas](/blog/plotting-rainfall-data-with-python-and-matplotlib) is a Python library used for working with data sets. It is an open-source, free-to-use library that saved the jobs of millions of data scientists and other people!
 
 Pandas have so many uses that it is probably easier to list the things it can't do. Through pandas, you get acquainted with your data by cleaning, transforming, and analyzing it.
 
@@ -386,7 +386,7 @@ Awesome, now we have a beautiful bar chart representing how much we've spent on 
 
 ## Conclusion
 
-In this tutorial, we learned some key points of data analysis. As you see, with libraries like Pandas, data analysis is more accessible. We also learned how to work with matpotlib, a library used to visualize data in Python.
+In this tutorial, we learned some key points of data analysis. As you see, with libraries like [Pandas](/blog/stop-using-pie-charts), data analysis is more accessible. We also learned how to work with matpotlib, a library used to visualize data in Python.
 
 The key takeaways of this tutorial are:
 
