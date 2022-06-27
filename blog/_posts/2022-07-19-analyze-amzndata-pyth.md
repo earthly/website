@@ -395,6 +395,3 @@ The key takeaways of this tutorial are:
 * Visualizing data in a graph makes the data clear.
 
 {% include cta/cta1.html %}
-
-
-
