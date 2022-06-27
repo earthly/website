@@ -396,8 +396,5 @@ The key takeaways of this tutorial are:
 
 {% include cta/cta1.html %}
 
-## Outside Article Checklist
-
-* [ ] Add in Author page
 
 
