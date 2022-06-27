@@ -12,3 +12,6 @@ Emscripten
 Numpy
 Pypi
 micropip
+Matpotlib
+Dicts
+matpotlib

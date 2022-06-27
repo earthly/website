@@ -4,3 +4,4 @@ gzip
 yaml
 lzma
 Brewfile
+df
