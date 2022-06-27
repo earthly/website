@@ -27,13 +27,24 @@ internal-links:
 
 The Stack Overflow developer survey is out! 
 
-Last time it was out, I said this thing about dreaded vs loved languages, and Today I'd like to explain why parts of that were wrong, or maybe too simple.
+Last time it was out, I said this thing about dreaded vs loved languages, and Today I'd like to explain why parts of that were wrong, or maybe too simple. But first, here is the exciting part of the data. The 'Popular' languages that are loved, and those that are dreaded.[^1]
 
-<div class="wide">
-{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/7990.png --alt {{ Top N Loved Vs Dreaded }} %}
-<figcaption>The Most Loved Langauges</figcaption>
+<div class="notice--warning notice--big">
+
+### The Popular And Dreaded Programming Languages
+
+Ruby, C++, Java, PHP, C
 </div>
 
+<div class="notice--success notice--big">
+
+### The Popular And Loved Programming Languages
+
+Rust, Typescript, Python, Go, C# Kotlin, Javascript
+</div>
+
+[^1]: What is included here are langaues with more than 4200 responses. I also dropped out HTML and SQL because they aren't really pacmac complete langauges and Bash and Powershell because their scripting usage makes them less relevant to today's topic. See the full results [here](https://survey.stackoverflow.co/2022/#technology-most-loved-dreaded-and-wanted) 
+      
 ## Green VS Brown languages Revisited
 
 So I wrote this post about [Green VS Brown languages]() and the point of the article was that when people like a new langauge, they are judging it from a biased perspective because the new langauge is used for new development whereas the older langauges tend to used in existing projects, which often less exciting. 
