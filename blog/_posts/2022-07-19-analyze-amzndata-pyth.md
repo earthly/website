@@ -394,11 +394,12 @@ The key takeaways of this tutorial are:
 * Cleaning data before starting analysis with calculations is very important, and it makes the work easier.
 * Visualizing data in a graph makes the data clear.
 
+{% include cta/cta1.html %}
+
 ## Outside Article Checklist
 
 * [ ] Add in Author page
-* [ ] Create header image in Canva
 * [ ] Optional: Find ways to break up content with quotes or images
 * [ ] Verify look of article locally
   * Would any images look better `wide` or without the `figcaption`?
-* [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
+
