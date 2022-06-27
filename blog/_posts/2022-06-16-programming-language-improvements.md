@@ -152,7 +152,7 @@ But the state of the art appears to be Zig, which can easily cross compile not j
 
 ### History
 
-> If you’re going to invent/create a new language, what is the minimum in tooling that any early adopter developer would expect? Early adopters tend to have a lower bar to try new things, but I still find myself wanting at least syntax highlighting and single-command compile/build for all files as a minimum, and grouchy when I have to stare at all the code in one colour like some barbarian.
+> If you're going to invent/create a new language, what is the minimum in tooling that any early adopter developer would expect? Early adopters tend to have a lower bar to try new things, but I still find myself wanting at least syntax highlighting and single-command compile/build for all files as a minimum, and grouchy when I have to stare at all the code in one colour like some barbarian.
 >
 > Nogginly
 
