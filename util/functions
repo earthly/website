@@ -251,6 +251,13 @@ div-wide(){ # Wrap every image in post in wide markdown
         ' "$(post)" | sponge "$(post)"
 }
 
+tailwind-generate(){ # Generate Tailwind CSS
+     (
+        cd blog || exit
+        npx tailwindcss -i ./assets/css/index.css -o ./assets/css/base.css --minify
+    )
+}
+
 start-blog(){ # Start up blog on localhost:4002/blog. 
 # Takes args like --profile, --future, --incremental, --trace 
     (
