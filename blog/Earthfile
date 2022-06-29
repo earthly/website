@@ -20,6 +20,7 @@ base-image:
   RUN pip3 install pandocfilters python-frontmatter
   RUN npm install -g markdownlint-cli 
   RUN npm install -g tailwindcss
+  RUN npm install -D @tailwindcss/typography  
   RUN apt-get install ripgrep bc lsof -y
 
   IF [ "$TARGETARCH" = "arm64" ]
