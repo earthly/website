@@ -264,6 +264,13 @@ start-blog(){ # Start up blog on localhost:4002/blog.
     )
 }
 
+start-blog-verbose(){ # Start up  blog will all debug info printing.
+     (
+        cd blog || exit
+        bundle exec jekyll serve --future --verbose --incremental --profile  -H 0.0.0.0 -P 4002 | ts
+    )
+}
+
 start-website(){ # Start up website on localhost:4001. 
     (
         cd website || exit
