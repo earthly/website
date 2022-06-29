@@ -200,6 +200,7 @@ defaults:
       related: true
       as_related: true
       newsletter_side: true
+      excerpt: How much have you spent on Amazon?
   - scope:
       type: "category"
     values:

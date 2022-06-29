@@ -4,7 +4,7 @@ categories:
   - Tutorials
 toc: true
 author: Ukeje Goodness
-
+excerpt: "Introduction Python is widely used in so many applications, from data science to machine learning, robotics, and artificial intelligence. On the we.."
 internal-links:
  - Pyhton
  - Numpy
