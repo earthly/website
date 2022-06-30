@@ -46,7 +46,7 @@ If you can run this, you can do the rest of this tutorial:
 $ awk --version
 ~~~
 
-~~~{.bash caption=">_"}
+~~~{.bash caption=""}
   GNU Awk 5.1.0, API: 3.0 (GNU MPFR 4.1.0, GNU MP 6.2.1)
   Copyright (C) 1989, 1991-2020 Free Software Foundation.
 ~~~
@@ -69,8 +69,14 @@ You can selectively choose columns (which Awk calls fields):
 ~~~{.bash caption=">_"}
 $ echo "one two three" | awk '{ print $1 }'
 one
+~~~
+
+~~~{.bash caption=">_"}
 $ echo "one two three" | awk '{ print $2 }'
 two
+~~~
+
+~~~{.bash caption=">_"}
 $ echo "one two three" | awk '{ print $3 }'
 three
 ~~~
@@ -81,7 +87,7 @@ You may have been expecting the first column to be `$0` and not `$1`, but `$0` i
 $ echo "one two three" | awk '{ print $0 }'
 ~~~
 
-~~~{.bash caption=">_"}
+~~~{.bash caption=""}
 one two three
 ~~~
 
@@ -96,7 +102,7 @@ $ echo "
  | awk '{ print $1 }'
 ~~~
 
-~~~{.bash caption=">_"}
+~~~{.bash caption=""}
 one
 four
 ~~~
@@ -110,7 +116,7 @@ $ echo "
 | awk '{ print $1, $2 }'
 ~~~
 
-~~~{.bash caption=">_"}
+~~~{.bash caption=""}
 one two
 four five
 ~~~
@@ -124,7 +130,7 @@ $ echo "
 | awk '{ print $NF }'
 ~~~
 
-~~~{.bash caption=">_"}
+~~~{.bash caption=""}
 three
 six
 ~~~
@@ -153,7 +159,7 @@ To move beyond simple printing, I need some sample data. I will use the book por
 
 You can grab the book portion of it like this:
 
-~~~{.bash caption=">_"}
+~~~{.bash caption=""}
 $ curl https://s3.amazonaws.com/amazon-reviews-pds/tsv/amazon_reviews_us_Books_v1_00.tsv.gz | /
   gunzip -c >> / 
   bookreviews.tsv
@@ -180,14 +186,14 @@ $ curl https://s3.amazonaws.com/amazon-reviews-pds/tsv/amazon_reviews_us_Books_v
 
 Once you've grabbed that data, you should have Amazon book review data that looks like this:
 
-~~~{.bash caption=">_"}
+~~~{.bash caption=""}
 marketplace customer_id review_id product_id product_parent product_title product_category star_rating helpful_votes total_votes vine verified_purchase review_headline review_body review_date
 US 22480053 R28HBXXO1UEVJT 0843952016 34858117 The Rising Books 5 0 0 N N Great Twist on Zombie Mythos I've known about this one for a long time, but just finally got around to reading it for the first time. I enjoyed it a lot!  What I liked the most was how it took a tired premise and breathed new life into it by creating an entirely new twist on the zombie mythos. A definite must read! 2012-05-03
 ~~~
 
 Each row in this file represents the record of one book review. Amazon lays out the fields like this:
 
-~~~{.bash caption=">_"}
+~~~{.bash caption="Data Format"}
 DATA COLUMNS:
 01  marketplace       - 2 letter country code of the marketplace where the review was written.
 02  customer_id       - Random identifier that can be used to aggregate reviews written by a single author.
@@ -214,7 +220,7 @@ I can now test out my field printing skills on a bigger file. I can start by pri
 $ awk '{ print $1 }' bookreviews.tsv | head 
 ~~~
 
-~~~{.bash caption=">_"}
+~~~{.bash caption=""}
 marketplace
 US
 US
@@ -233,7 +239,7 @@ Or the customer_id:
 $ awk '{ print $2 }' bookreviews.tsv | head 
 ~~~
 
-~~~{.bash caption=">_"}
+~~~{.bash caption=""}
 customer_id
 22480053
 44244451
@@ -252,7 +258,7 @@ However, when I try to print out the title, things do not go well:
 $ awk '{ print $6 }' bookreviews.tsv | head 
 ~~~
 
-~~~{.bash caption=">_"}
+~~~{.bash caption=""}
 product_title
 The
 Sticky
@@ -275,7 +281,7 @@ By default, Awk assumes that the fields in a record are whitespace delimited[^1]
 $ awk -F '\t' '{ print $6 }' bookreviews.tsv | head 
 ~~~
 
-~~~{.bash caption=">_"}
+~~~{.bash caption=""}
 product_title
 The Rising
 Sticky Faith Teen Curriculum with DVD: 10 Lessons to Nurture Faith Beyond High 
@@ -308,7 +314,7 @@ I can also work backward from the last position forward by subtracting from `NF`
 $ awk -F '\t' '{ print $NF "\t" $(NF-2)}' bookreviews.tsv | head 
 ~~~
 
-~~~{.bash caption=">_"}
+~~~{.bash caption=""}
 review_date     review_headline
 2012-05-03      Great Twist on Zombie Mythos
 2012-05-03      Helpful and Practical
@@ -333,7 +339,7 @@ I can print the actual value like this:
 $ awk -F '\t' '{ print NF }' bookreviews.tsv | head  
 ~~~
 
-~~~{.bash caption=">_"}
+~~~{.bash caption=""}
 15
 15
 15
@@ -352,7 +358,7 @@ Another variable Awk offers up for use is `NR`, the *number of records* so far. 
 $ awk -F '\t' '{ print NR " " $(NF-2) }' bookreviews.tsv | head  
 ~~~
 
-~~~{.bash caption=">_"}
+~~~{.bash caption=""}
 1 review_headline
 2 Great Twist on Zombie Mythos
 3 Helpful and Practical
@@ -395,7 +401,7 @@ The reviews I'm going to focus on today are for the book 'The Hunger Games'. I'm
 $ awk -F '\t' '/Hunger Games/ { print $6, $8  }' bookreviews.tsv | head
 ~~~
 
-~~~{.bash caption=">_"}
+~~~
 The Hunger Games (Book 1) 5
 The Hunger Games Trilogy Boxed Set 5
 The Hunger Games Trilogy: The Hunger Games / Catching Fire / Mockingjay 5
@@ -414,7 +420,7 @@ I should be able to pull valuable data from these reviews, but first there is a 
 $ awk -F '\t' '/Hunger Games/ { print $6 }' bookreviews.tsv | sort | uniq    
 ~~~
 
-~~~{.bash caption=">_"}
+~~~
 Birthmarked
 Blood Red Road
 Catching Fire (The Hunger Games)
@@ -430,16 +436,20 @@ I can fix this by using the `product_id` field to pattern match on:
 
 ~~~{.bash caption=">_"}
 $ awk -F '\t' '$4 == "0439023483" { print $6 }' bookreviews.tsv | sort |  uniq 
+~~~
+
+~~~
 The Hunger Games (The Hunger Games, Book 1)
 ~~~
 
 I want to calculate the average review score for 'The Hunger Games', but first, let's take a look at the review_date (`$15`), the review_headline (`$13`), and the star_rating (`$8`) of our Hunger Games reviews, to get a feel for the data:
 
 ~~~{.bash caption=">_"}
-$ awk -F '\t' '$4 == "0439023483" { print $15 "\t" $13 "\t" $8}' bookreviews.tsv | head 
+$ awk -F '\t' '$4 == "0439023483" { print $15 "\t" $13 "\t" $8}' \
+    bookreviews.tsv | head 
 ~~~
 
-~~~{.bash caption=">_"}
+~~~
 2015-08-19      Five Stars      5
 2015-08-17      Five Stars      5
 2015-07-23      Great read      5
@@ -492,10 +502,12 @@ becomes `printf "%s \t %s \t %s", $15, $13, $8`.
 From there I can add right padding and fix my layout by changing `%s` to `%-Ns` where `N` is my desired column width:
 
 ~~~{.bash caption=">_"}
-$ awk -F '\t' '$4 == "0439023483" { printf "%s \t %-20s \t %s \n", $15, $13, $8}' bookreviews.tsv | head 
+$ awk -F '\t' \
+   '$4 == "0439023483" { printf "%s \t %-20s \t %s \n", $15, $13, $8}'  \
+   bookreviews.tsv | head 
 ~~~
 
-~~~{.bash caption=">_"}
+~~~{.bash caption=""}
 2015-08-19       Five Stars              5 
 2015-08-17       Five Stars              5 
 2015-07-23       Great read              5 
@@ -513,10 +525,14 @@ This table is pretty close to what I'd want. However, some of the titles are jus
 Putting it all together and I get:
 
 ~~~{.bash caption=">_"}
-$ awk -F '\t' '$4 == "0439023483" { printf "%s \t %-20s \t %s \n", $15, substr($13,1,20), $8}' bookreviews.tsv | head
+$ awk -F '\t' \
+ '$4 == "0439023483" { 
+    printf "%s \t %-20s \t %s \n",$15,substr($13,1,20),$8
+  }' \
+ bookreviews.tsv | head
 ~~~
 
-~~~{.bash caption=">_"}
+~~~{.bash caption=""}
 2015-08-19       Five Stars              5 
 2015-08-17       Five Stars              5 
 2015-07-23       Great read              5 
@@ -556,7 +572,7 @@ I can add up and print out a running total of review_stars (`$8`) like this:
 $ awk -F '\t' '{ total = total + $8; print total }' bookreviews.tsv | head 
 ~~~
 
-~~~{.bash caption=">_"}
+~~~{.bash caption=""}
 0
 5
 10
@@ -572,7 +588,7 @@ END { print "Average book review:", total/NR, "stars" }
 ' bookreviews.tsv | head 
 ~~~
 
-~~~{.bash caption=">_"}
+~~~{.bash caption=""}
 Average book review is 4.24361 stars
 ~~~
 
@@ -586,7 +602,7 @@ END   { print "Average book review:", total/NR, "stars" }
 ' bookreviews.tsv 
 ~~~
 
-~~~{.bash caption=">_"}
+~~~{.bash caption=""}
 Calculating Average ...
 Average book review is 4.24361 stars
 ~~~
@@ -624,7 +640,7 @@ Printing files with a human readable size:
 $ ls -lh | awk '{ print $5,"\t", $9 }'  
 ~~~
 
-~~~{.bash caption=">_"}
+~~~
 7.8M     The_AWK_Programming_Language.pdf
 6.2G     bookreviews.tsv
 ~~~
@@ -635,7 +651,7 @@ Getting the containerID of running docker containers:
 $ docker ps -a |  awk '{ print $1 }'
 ~~~
 
-~~~{.bash caption=">_"}
+~~~
 CONTAINER
 08488f220f76
 3b7fc673649f
@@ -678,7 +694,7 @@ We've now crossed over from one-liners into Awk scripting. With Awk, the transit
 $ cat average
 ~~~
 
-~~~{.bash caption=">_"}
+~~~{.bash caption=""}
 exec awk -F '\t' '
     { total = total + $8 }
 END { print "Average book review is", total/NR, "stars" } 
@@ -689,17 +705,13 @@ END { print "Average book review is", total/NR, "stars" }
 $ average bookreviews.tsv
 ~~~
 
-~~~{.bash caption=">_"}
+~~~{.bash caption=""}
 Average book review is 4.2862 stars
 ~~~
 
 Or I can use a shebang (`#!`):
 
-~~~{.bash caption=">_"}
-$ cat average.awk
-~~~
-
-~~~{.bash caption=">_"}
+~~~{.bash caption="average.awk"}
 #!/usr/bin/env -S gawk -f
 
 BEGIN { FS = "\t" }
@@ -735,16 +747,18 @@ BEGIN { FS = "\t" }
 
 At this point, I should be ready to start calculating review scores for The Hunger Games:
 
-~~~{.bash caption=">_"}
+~~~{.bash caption=""}
 exec awk -F '\t' '
 $4 == "0439023483" { title=$6; count = count + 1; total = total + $8 }
-END                { print "The Average book review for", title, "is", total/count, "stars" }  
+END { 
+      print "The Average book review for", title, "is", total/count, "stars" 
+    }  
 ' $1
 ~~~
 
 Now that I'm in a file, I can format this out a bit better so its easier to read:
 
-~~~{.bash caption=">_"}
+~~~{.awk caption="average.awk"}
 $4 == "0439023483" { 
   title=$6
   count = count + 1; 
@@ -758,7 +772,7 @@ END {
 
 Either way, I get this output:
 
-~~~{.bash caption=">_"}
+~~~
 Book: The Hunger Games (The Hunger Games, Book 1)
 Average Rating: 4.67%       
 ~~~
@@ -797,7 +811,7 @@ If I were going to calculate the averages in Python, I would loop over the list 
 
 In Awk I can do the same:
 
-~~~{.bash caption=">_"}
+~~~{.awk caption="hungergames.awk"}
 BEGIN { FS = "\t" }
 $6~/\(The Hunger Games(, Book 1)?\)$/ { 
   title[$6]=$6
@@ -814,11 +828,13 @@ END {
 }
 ~~~
 
+Running:
+
 ~~~{.bash caption=">_"}
 $ awk -f hungergames.awk bookreviews.tsv
 ~~~
 
-~~~{.bash caption=">_"}
+~~~
 ---------------------------------------
 The Hunger Games (The Hunger Games, Book 1)
 ---------------------------------------
@@ -842,7 +858,7 @@ And look at that, the first book in the series was the most popular. And the las
 
 Let me look at another trilogy to see if this gradual decrease in rankings is common or The Hunger Games specific:
 
-~~~{.bash caption=">_"}
+~~~{.awk caption="hungergames.awk"}
 BEGIN { FS = "\t" }
 $6~/\(The Lord of the Rings, Book .\)$/ {  # <-- changed this line
   title[$6]=$6
@@ -859,7 +875,9 @@ END {
 }
 ~~~
 
-~~~{.bash caption=">_"}
+Which results in:
+
+~~~
 ---------------------------------------
 The Return of the King (The Lord of the Rings, Book 3)
 ---------------------------------------
@@ -884,7 +902,7 @@ Lord of the Rings has a different pattern. The books are all in a pretty tight r
 
 Awk has associative arrays built it, and you can use them in much the same way you would use Python dictionaries.  
 
-~~~{.bash caption=">_"}
+~~~{.awk caption=""}
 arr["key1"] = "one"
 arr["key2"] = "two"
 arr["key3"] = "three"
@@ -892,13 +910,13 @@ arr["key3"] = "three"
 
 You can then use a for loop to iterate over them:
 
-~~~{.bash caption=">_"}
+~~~{.awk caption=""}
 for (i in arr){
     print i, arr[i]
 }
 ~~~
 
-~~~{.bash caption=">_"}
+~~~{.ini caption=""}
 key1 one
 key2 two
 key3 three
@@ -913,7 +931,7 @@ I hate how every book on Amazon has a star rating between 3.0 and 4.5 stars. It 
 
 First, I need to calculate the global average but adding up the total and average for every row:
 
-~~~{.bash caption=">_"}
+~~~{.awk caption="hungergames.awk"}
 {
     # Global Average
     g_count = g_count + 1
@@ -923,7 +941,7 @@ First, I need to calculate the global average but adding up the total and averag
 
 Then I calculate the global average:
 
-~~~{.bash caption=">_"}
+~~~{.awk caption="hungergames.aw"}
 END { 
     g_score = g_total/g_count 
     ...
@@ -932,7 +950,7 @@ END {
 
 Once I have this, I can score books based on how higher or lower they are than the average. All I need to do is add some if statements to my `END` pattern to accomplish this:
 
-~~~{.bash caption=">_"}
+~~~{.awk caption="hungergames.awk"}
 END { 
     g_score = g_total/g_count 
     for (i in count) {
@@ -957,7 +975,7 @@ END {
 
 The values for partitioning are just a guess, but it makes it easier for me to understand the rankings:
 
-~~~{.bash caption=">_"}
+~~~
 The Hunger Games (The Hunger G  👍
 Catching Fire: The Official Il  👍👍👍
 Mockingjay (The Hunger Games)   👎👎
@@ -971,7 +989,7 @@ It looks like Mockingjay, at least on Amazon and in this dataset, was not well r
 
 You can easily modify this script to query for books ad hoc:
 
-~~~{.bash caption=">_"}
+~~~{.bash caption="average"}
 exec gawk -F '\t' '
 {
     # Global Average
@@ -1038,7 +1056,7 @@ $ echo "1\n 2\n 3\n 4\n 5\n 6" | awk '{
         }'
 ~~~
 
-~~~{.bash caption=">_"}
+~~~{.ini caption=""}
 odd
 2
 odd
@@ -1053,7 +1071,7 @@ odd
 
 Awk (specifically gawk) allows you easily configure your iteration order using a magic variable called `PROCINFO["sorted_in"]`. This means that if I change our program to sort by value and drop the filtering, then I will be able to see the top reviewed books:
 
-~~~{.bash caption=">_"}
+~~~{.bash caption="top_books"}
 exec gawk -F '\t' '
 {
     # Global Average
@@ -1094,7 +1112,7 @@ Running it:
 $ ./top_books | head
 ~~~
 
-~~~{.bash caption=">_"}
+~~~
 Harry Potter And The Sorcerer's Stone                 👍👍
 Fifty Shades of Grey                                  👎👎
 The Hunger Games (The Hunger Games, Book 1)           👍
