@@ -36,12 +36,15 @@ base-image:
   COPY Gemfile .
   COPY Gemfile.lock .
   RUN bundle install --retry 5 --jobs 20
- 
-  IF [ "$CACHE_IMAGE" = "YES" ]
-     # Pre Generate Site as a cache
-     COPY . .
-     RUN JEKYLL_ENV=production bundle exec jekyll build $FLAGS 
-  END
+
+  # Pre Generate Site as a cache
+  # Not worth the performance cost
+  # Possibly better to store in S3 and prepopulate the cache from there 
+
+  # IF [ "$CACHE_IMAGE" = "YES" ]
+  #    COPY . .
+  #    RUN JEKYLL_ENV=production bundle exec jekyll build $FLAGS 
+  # END
 
 
   SAVE IMAGE --push agbell/blog-base-image:latest 
