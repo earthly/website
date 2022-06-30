@@ -356,6 +356,14 @@ Here's the result of the update from the Atlas cluster; notice that the value of
 
 You can replace a document using the `ReplaceOne` method of the collection. The `ReplaceOne` method takes in a context, a specification for the document to be replaced, and the values the document should be replaced with.
 
+```go
+result, err := theCollection.ReplaceOne(ctx,
+bson.D{{"Name", "May Slindesloff"}}
+)
+	fmt.Println(result.ModifiedCount)
+
+```
+
 In the example above, the document with the `Name` equal to "`May Slindesloff`" was modified such that it doesn't have a song field, the `tags` array values were modified, and a new field `rating` was introduced.
 
 Here's the result of the replacement from the Atlas Cluster.
@@ -418,10 +426,4 @@ You can refer to these resources to learn more about using [MongoDB](/blog/mongo
 
 There are numerous cases where you'll want to use MongoDB with Go, like backend development, data science, machine learning, and DevOps. Your MQL skills still Go a long way as you perform MongoDB operations with Go, especially if you'll be performing more complex functions.
 
-## Outside Article Checklist
-
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
-- [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
+{% include cta/cta1.html %}
