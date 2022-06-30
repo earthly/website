@@ -36,6 +36,13 @@ base-image:
   COPY Gemfile .
   COPY Gemfile.lock .
   RUN bundle install --retry 5 --jobs 20
+ 
+  IF [ "$CACHE_IMAGE" = "YES" ]
+     # Pre Generate Site as a cache
+     COPY . .
+     RUN JEKYLL_ENV=production bundle exec jekyll build $FLAGS 
+  END
+
 
   SAVE IMAGE --push agbell/blog-base-image:latest 
 
