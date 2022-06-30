@@ -263,6 +263,12 @@ start-blog-verbose(){ # Start up  blog will all debug info printing.
     )
 }
 
+build-blog(){ # Build blog to _site folder
+    (
+        cd blog || exit
+        time bundle exec jekyll build
+    )
+}
 start-website(){ # Start up website on localhost:4001. 
     (
         cd website || exit
