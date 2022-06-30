@@ -4,7 +4,6 @@ categories:
   - Tutorials
 toc: true
 author: Kasper Siig
-
 internal-links:
  - minikube
  - K3s
