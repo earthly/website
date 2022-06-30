@@ -6,10 +6,14 @@ toc: true
 author: Ukeje Goodness
 
 internal-links:
- - just an example
+ - MongoDB
+ - Go
+ - Atlas
+ - Cluster
+ - Database
 ---
 
-Recently, NoSQL Databases like [MongoDB](https://earthly.dev/blog/mongodb-docker/), LevelDB, Redis, and others have been preferred for building and deploying applications. MongoDB is one of the most popular and adopted NoSQL databases due to its simplicity and ease of use.
+Recently, NoSQL Databases like [MongoDB](https://earthly.dev/blog/mongodb-docker/), LevelDB, Redis, and others have been preferred for building and deploying applications. [MongoDB](/blog/mongodb-docker) is one of the most popular and adopted NoSQL databases due to its simplicity and ease of use.
 
 The Go MongoDB driver provides functionality for using the MongoDB database in Go. The Go MongoDB driver is the official driver provided, maintained, and fully supported by MongoDB.
 
@@ -61,9 +65,14 @@ After creating a [MongoDB Atlas cluster](https://www.mongodb.com/basics/clusters
 
 Click on **connect**, choose "**connect to your application**," choose **Go** as your preferred language, select a Go version, and copy the connection URI string.
 
-![Screenshot from 2022-05-13 15-16-12.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/fc9386c9-108b-4495-b0f5-1bdb52add5fb/Screenshot_from_2022-05-13_15-16-12.png)
+<div class="wide">
+![Screenshot from 2022-05-13 15-16-12.png]({{site.images}}{{page.slug}}/first.png)\
+</div>
 
-![textsthththtt.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/837ede90-2284-47b5-b3d6-87cca6775d64/textsthththtt.png)
+
+<div class="wide">
+![textsthththtt.png]({{site.images}}{{page.slug}}/second.png)\
+</div>
 
 Once you have the connection URI string, you can now connect to the MongoDB Atlas cluster.
 
@@ -151,7 +160,9 @@ Here's an explanation of the arguments we will be using in this tutorial.
 
 - The **`bson.A`** argument ****is used for inserting arrays into a collection as part of the fields in an unordered fashion.
 
-![Screenshot 2022-06-02 at 15.04.14.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/4834ce19-4735-4451-93a9-d37c7f4b0a8f/Screenshot_2022-06-02_at_15.04.14.png)
+<div class="wide">
+![Screenshot 2022-06-02 at 15.04.14.png]({{site.images}}{{page.slug}}/third.png)\
+</div>
 
 You can learn more about the [MongoDB `bson` package here](https://pkg.go.dev/go.mongodb.org/mongo-driver/bson@v1.9.1).
 
@@ -203,9 +214,13 @@ In the example above, a document containing the fields `Name`, `Song`, and an ar
 
 Here's the result of the insertion on the command line and MongoDB's Atlas UI
 
-![Screenshot 2022-05-30 at 16.36.31.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/977b6750-b003-4a06-97b6-c44ad3188329/Screenshot_2022-05-30_at_16.36.31.png)
+<div class="wide">
+![Screenshot 2022-05-30 at 16.36.31.png]({{site.images}}{{page.slug}}/fourtha.png)\
+</div>
 
-![Screenshot 2022-05-30 at 16.33.39.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/abee1788-457c-4783-bbaf-942d51e13bad/Screenshot_2022-05-30_at_16.33.39.png)
+<div class="wide">
+![Screenshot 2022-05-30 at 16.36.39.png]({{site.images}}{{page.slug}}/fourthb.png)\
+</div>
 
 Similarly, you can insert multiple documents at once into a cluster using the `InsertMany` method.
 
@@ -238,7 +253,9 @@ Two documents identical to the documents in the `InsertOne` example were inserte
 
 Here's the result of the insertion
 
-![Screenshot 2022-05-30 at 21.41.56.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/5cd10d31-11b6-497d-b56b-12f81cbe0818/Screenshot_2022-05-30_at_21.41.56.png)
+<div class="wide">
+![Screenshot 2022-05-30 at 21.41.56.png]({{site.images}}{{page.slug}}/fifth.png)\
+</div>
 
 ## Querying a Mongodb Database Using Go
 
@@ -267,7 +284,9 @@ In the example above, after specifying that all documents in the collection shou
 
 Here's the result of printing out the `music` slice.
 
-![Screenshot 2022-06-01 at 20.45.31.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a6b9049f-bf3f-43ce-86df-354924c557ce/Screenshot_2022-06-01_at_20.45.31.png)
+<div class="wide">
+![Screenshot 2022-06-01 at 20.45.31.png]({{site.images}}{{page.slug}}/sixth.png)\
+</div>
 
 You can go on to manipulate the slice of maps and format it; that's why decoding the results into a native Go data structure was important.
 
@@ -292,7 +311,9 @@ The filter criteria above for searches for `Songs` with the title "`Don't Dance`
 
 The query's result was decoded into the declared music struct, and possible errors were handled.
 
-![Screenshot 2022-06-01 at 22.09.24.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/49acd97c-4ca9-4a0a-9c1d-2c39ee20eb7a/Screenshot_2022-06-01_at_22.09.24.png)
+<div class="wide">
+![Screenshot 2022-06-01 at 22.09.24.png]({{site.images}}{{page.slug}}/seventh.png)\
+</div>
 
 If you're interested in only one result, you can use the `FindOne` method instead to retrieve the first result of your collections query.
 
@@ -325,7 +346,9 @@ Finally, the `bson.D` argument takes in two parameters, an MQL update operation,
 
 Possible errors were handled, and a modified count was printed using the `ModifiedCount` method.
 
-![Screenshot 2022-06-02 at 17.46.06.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/6acb81e4-c44d-41ad-897b-4dcdc5c5d634/Screenshot_2022-06-02_at_17.46.06.png)
+<div class="wide">
+![creenshot 2022-06-02 at 17.46.06.png]({{site.images}}{{page.slug}}/eight.png)\
+</div>
 
 Here's the result of the update from the Atlas cluster; notice that the value of the Song field was changed from "`Don't Run`" to "`Why are you running`."
 
@@ -337,9 +360,11 @@ In the example above, the document with the `Name` equal to "`May Slindesloff`" 
 
 Here's the result of the replacement from the Atlas Cluster.
 
-![Screenshot 2022-06-02 at 18.11.07.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/585215c4-ffac-4bc4-ac3b-99e4150343b6/Screenshot_2022-06-02_at_18.11.07.png)
+<div class="wide">
+![Screenshot 2022-06-02 at 18.11.07.png]({{site.images}}{{page.slug}}/eleventh.png)\
+</div>
 
-You have seen how to create, update, and insert documents. Let's see how you can delete documents in MongoDB Collections using the Go programming language.
+You have seen how to create, update, and insert documents. Let's see how you can delete documents in [MongoDB](/blog/mongodb-docker) Collections using the Go programming language.
 
 ## Deleting Mongodb Documents With Go
 
@@ -361,7 +386,9 @@ In the code above, a collection with the field of "Song" of value "Don't Dance" 
 
 Recall that there were three documents in the Cluster; the delete operation has reduced it to two.
 
-![Screenshot 2022-06-02 at 15.30.08.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b3800621-e23a-4156-912a-27aa69aa0adf/Screenshot_2022-06-02_at_15.30.08.png)
+<div class="wide">
+![Screenshot 2022-06-02 at 15.30.08.png]({{site.images}}{{page.slug}}/tenth.png)\
+</div>
 
 Deleting all documents in a collection is the same as deleting the collection itself; let's overview how you can delete a collection.
 
@@ -383,7 +410,7 @@ The collection must exist for you to delete it or get an error as handled above.
 
 There are so many operations you can perform on MongoDB databases using the Go driver, and in this tutorial, you learned how to perform frequently used operations with Go.
 
-You can refer to these resources to learn more about using MongoDB with the Go programing language.
+You can refer to these resources to learn more about using [MongoDB](/blog/mongodb-docker) with the Go programing language.
 
 - [Using MongoDB with Docker](https://earthly.dev/blog/mongodb-docker/).
 - [MongoDB & Go Quick Reference](https://www.mongodb.com/docs/drivers/go/current/quick-reference/#std-label-go-quick-reference).
@@ -393,12 +420,8 @@ There are numerous cases where you'll want to use MongoDB with Go, like backend 
 
 ## Outside Article Checklist
 
-- [ ] Add in Author page
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
 - [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
