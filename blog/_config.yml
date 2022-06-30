@@ -98,9 +98,6 @@ exclude:
   - .bundle
   - .jekyll-assets-cache
   - .sass-cache
-  # - assets/js/plugins
-  # - assets/js/_main.js
-  # - assets/js/vendor
   - Capfile
   - CHANGELOG
   - config
@@ -153,22 +150,6 @@ plugins:
   - jekyll-include-cache
   - jekyll_picture_tag
 
-category_archive:
-  type: jekyll-archives
-  path: /categories/
-tag_archive:
-  type: liquid
-  path: /tags/
-# jekyll-archives:
-#   regenerate: false
-#   enabled:
-#     - categories
-#   layouts:
-#     category: archive-taxonomy
-#   permalinks:
-#     category: /categories/:name/
-
-
 # HTML Compression
 # - https://jch.penibelst.de/
 compress_html:
@@ -182,7 +163,6 @@ collections:
 
 # Defaults
 defaults:
-  # _posts
   - scope:
       path: ""
       type: posts
