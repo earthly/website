@@ -35,7 +35,7 @@ Step 1: Go to Amazon.com and sign in to your account.
 Step 2: Click on Your Account > Account
 <div class="wide">
 ![Create account]({{site.images}}{{page.slug}}/bjGElgm.png)\
-</div> 
+</div>
 
 Step 3: In the Order and Shopping Preferences section, select "Download order reports"
 <div class="wide">

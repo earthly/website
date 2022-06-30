@@ -9,9 +9,7 @@ internal-links:
  - just an example
 ---
 
-# How to Use MongoDB with Go
-
-Recently, NoSQL Databases like [MongoDB](https://earthly.dev/blog/mongodb-docker/), LevelDB, Redis, and others have been preferred for building and deploying applications. MongoDB is one of the most popular and adopted  NoSQL databases due to its simplicity and ease of use.
+Recently, NoSQL Databases like [MongoDB](https://earthly.dev/blog/mongodb-docker/), LevelDB, Redis, and others have been preferred for building and deploying applications. MongoDB is one of the most popular and adopted NoSQL databases due to its simplicity and ease of use.
 
 The Go MongoDB driver provides functionality for using the MongoDB database in Go. The Go MongoDB driver is the official driver provided, maintained, and fully supported by MongoDB.
 
@@ -35,25 +33,25 @@ To use MongoDB with Go, you have to install two `mongo-go-driver` packages that 
 
 After setting up your Go workspace, run these commands on your terminal to install the packages.
 
-```go
+~~~{.bash caption=">_"}
 go get go.mongodb.org/mongo-driver/bson
 go get go.mongodb.org/mongo-driver/mongo
-```
+~~~
 
 Once you have installed the packages and have created your Go workspace, import these required packages and modules for this tutorial.
 
-```go
+~~~{.bash caption=">_"}
 import (
-	"context"
-	"fmt"
-	"go.mongodb.org/mongo-driver/bson"
-	"go.mongodb.org/mongo-driver/mongo"
-	"go.mongodb.org/mongo-driver/mongo/options"
-	"go.mongodb.org/mongo-driver/mongo/readpref"
-	"log"
-	"time"
+ "context"
+ "fmt"
+ "go.mongodb.org/mongo-driver/bson"
+ "go.mongodb.org/mongo-driver/mongo"
+ "go.mongodb.org/mongo-driver/mongo/options"
+ "go.mongodb.org/mongo-driver/mongo/readpref"
+ "log"
+ "time"
 )
-```
+~~~
 
 The `context` and `time` modules were imported to set timeouts for your operations. The `log` module is for logging errors to your console; you'll use the `mongo-driver` packages across this tutorial for MongoDB operation.
 
@@ -61,7 +59,7 @@ The `context` and `time` modules were imported to set timeouts for your operatio
 
 After creating a [MongoDB Atlas cluster](https://www.mongodb.com/basics/clusters/mongodb-cluster-setup), you'll need to get a connection URI String to connect to your Cluster from your application.
 
-Click on **connect**, choose “**connect to your application**,” choose **Go** as your preferred language, select a Go version,  and copy the connection URI string.
+Click on **connect**, choose "**connect to your application**," choose **Go** as your preferred language, select a Go version, and copy the connection URI string.
 
 ![Screenshot from 2022-05-13 15-16-12.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/fc9386c9-108b-4495-b0f5-1bdb52add5fb/Screenshot_from_2022-05-13_15-16-12.png)
 
@@ -71,77 +69,77 @@ Once you have the connection URI string, you can now connect to the MongoDB Atla
 
 First, you have to declare a context for connection and query timeouts. Making the context, a global variable is reasonable since you'll use it in many parts of your program.
 
-```go
+~~~{.bash caption=">_"}
 var ctx, cancel = context.WithTimeout(context.Background(), 20*time.Second)
-```
+~~~
 
-In the code above, context and cancel variables were declared and set to timeout in 20 seconds.
+In the code above, context, and cancel variables were declared and set to timeout in 20 seconds.
 
 Next, you declare a client variable representing the connection to the MongoDB Client, as shown below, after which you can choose to close the connection.
 
 `options.Client()` creates a new client instance, and the `ApplyURI` method takes in the connection URI string you got from your Atlas cluster.
 
-```go
-	clientOptions := options.Client().ApplyURI("Your URI String")
-	defer cancel()
-```
+~~~{.bash caption=">_"}
+ clientOptions := options.Client().ApplyURI("Your URI String")
+ defer cancel()
+~~~
 
-If you’re connecting to your mongo shell, you’ll use a [localhost](http://localhost) connection on your specified port; the default port  is set to `27017`.
+If you're connecting to your mongo shell, you'll use a [localhost](http://localhost) connection on your specified port; the default port is set to `27017`.
 
-```go
+~~~{.bash caption=">_"}
 client, err := mongo.Connect(context.TODO(), options.Client().ApplyURI("mongodb://localhost:27017"))
  if err != nil {
     panic(err)
 }
-```
+~~~
 
-Then, you can go ahead and connect your client instance using the Connect method, and handling any errors that might occour.
+Then, you can go ahead and connect your client instance using the Connect method, and handling any errors that might occur.
 
-```go
+~~~{.bash caption=">_"}
 client, err = mongoClient.Connect(ctx)
-	if err != nil {
-		log.Fatal("There was a connection error", err)
-	}
-```
+ if err != nil {
+  log.Fatal("There was a connection error", err)
+ }
+~~~
 
 On a successful connection, there will be no output; however, you may experience authentication and other errors, so you have to handle an error.
 
-## Validating a MongoDB database connection with Go
+## Validating a Mongodb Database Connection with Go
 
 To validate your connection, you can ping the Atlas Cluster and print out the list of names in the databases in the Cluster.
 
 You can ping the database as shown below.
 
-```go
+~~~{.bash caption=">_"}
 err = mongoClient.Ping(context.TODO(), readpref.Primary())
-	if err != nil {
-		panic(err)
-	}
+ if err != nil {
+  panic(err)
+ }
 
-	defer mongoClient.Disconnect(ctx)
-```
+ defer mongoClient.Disconnect(ctx)
+~~~
 
 The `Ping` method on the `mongoClient` variable takes in a context `context.TODO()` and a read preference `readpref.Primary()` after which the error is handled and logged on to the console if any. If there are no errors, you've made a successful connection.
 
 You can print the list of database names using the `ListDatabaseNames` method on your client variable.
 
-```go
-	databases, err := mongoClient.ListDatabaseNames(ctx, bson.M{})
-	if err != nil {
-		log.Fatal(err)
-	}
-	fmt.Println(databases)
-```
+~~~{.bash caption=">_"}
+ databases, err := mongoClient.ListDatabaseNames(ctx, bson.M{})
+ if err != nil {
+  log.Fatal(err)
+ }
+ fmt.Println(databases)
+~~~
 
 The `ListDatabaseNames` method takes in a context and `bson.M`; it outputs the database names as shown below.
 
-```go
+~~~{.bash caption=">_"}
 >>> [sample_airbnb sample_analytics sample_geospatial sample_guides sample_mflix sample_restaurants sample_supplies sample_training sample_weatherdata admin local]
-```
+~~~
 
-You have successfully made and validated a connection to your Atlas cluster; 
+You have successfully made and validated a connection to your Atlas cluster;
 
-### A few things to note as you explore using MongoDB with Go.
+### A Few Things to Note as You Explore Using Mongodb with Go
 
 MongoDB stores information in BSON(Binary JSON), and while using the Go driver package, you'll be passing in arguments from the Mongo driver `bson` subpackage.
 
@@ -149,7 +147,7 @@ Here's an explanation of the arguments we will be using in this tutorial.
 
 - The **`bson.M`** argument is used to insert documents or specify criteria. It is of the type `map[string]interface{}`. When you use `**bson.M`,** the return order of results isn't important.
 
-- The `**bson.D`** argument performs the same functions as the `bson.M` argument, except that when you use `**bson.D`,** the order in which the results are returned is important.
+- The `**bson.D`**argument performs the same functions as the `bson.M` argument, except that when you use `**bson.D`,** the order in which the results are returned is important.
 
 - The **`bson.A`** argument ****is used for inserting arrays into a collection as part of the fields in an unordered fashion.
 
@@ -165,76 +163,76 @@ Remember that MongoDB is structured such that you'll have to access a database t
 
 You can access a database using the `Database` method of your client instance as thus.
 
-```go
+~~~{.bash caption=">_"}
 aDatabase := client.Database("Music")
-```
+~~~
 
 A new database will be created for your operations if the database doesn't exist.
 
 In the same vein, you can use the `Collection` method to specify the collection you want to access on the database instance. A collection will also be created if it doesn't exist.
 
-```go
+~~~{.bash caption=">_"}
 theCollection := aDatabase.Collection("New Music")
-```
+~~~
 
 Once you've specified the database and collection, you can perform various operations on MongoDB documents with Go.
 
 **Note:** The collection above; `theCollection` will be used throughout this article for operations.
 
-## Creating/Inserting Documents into a MongoDB Cluster with Go
+## Creating/Inserting Documents Into  A Mongodb Cluster With Go
 
 Inserting documents with Go is easy; you can insert one or many documents and get the `objectID` of the inserted document.
 
 You can insert one document into a collection using the `InsertOne` method on your collection instance. The `InsertOne` method takes in a context, and a MongoDB bson map `bson.D` where the data is specified.
 
-```go
+~~~{.bash caption=">_"}
 insertResult, err := theCollection.InsertOne(ctx, bson.D{
-	{"Name", " John Doe"},
-	{"Song", "Don't Dance"},
-	{"tags", bson.A{"New", "CodeJams", "Pop Culture"}},
+ {"Name", " John Doe"},
+ {"Song", "Don't Dance"},
+ {"tags", bson.A{"New", "CodeJams", "Pop Culture"}},
 })
 
 if err != nil {
-	log.Println("There was an errr in trying to migrate the data into the database")
+ log.Println("There was an errr in trying to migrate the data into the database")
 }
 
 fmt.Println(insertResult.InsertedID)
-```
+~~~
 
 In the example above, a document containing the fields `Name`, `Song`, and an array of `tags` was inserted into the database. A migration error was handled, and the inserted ID was printed out.
 
-Here’s the result of the insertion on the command line and MongoDB’s Atlas UI
+Here's the result of the insertion on the command line and MongoDB's Atlas UI
 
 ![Screenshot 2022-05-30 at 16.36.31.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/977b6750-b003-4a06-97b6-c44ad3188329/Screenshot_2022-05-30_at_16.36.31.png)
 
 ![Screenshot 2022-05-30 at 16.33.39.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/abee1788-457c-4783-bbaf-942d51e13bad/Screenshot_2022-05-30_at_16.33.39.png)
 
-Similarly, you can insert multiple documents at once into a cluster using the `InsertMany` method. 
+Similarly, you can insert multiple documents at once into a cluster using the `InsertMany` method.
 
-The `InsertMany`  method  takes in a context and an interface of BSON documents `bson.D`.
+The `InsertMany` method takes in a context and an interface of BSON documents `bson.D`.
 
-Here’s how to insert many documents into a collection.
+Here's how to insert many documents into a collection.
 
-```go
+~~~{.bash caption=">_"}
 insertResult, err := theCollection.InsertMany(ctx, []interface{}{
-		bson.D{
-			{"Name", " Deen Bread"},
-			{"Song", "Run Away"},
-			{"tags", bson.A{"New", "AfroCompile", "Woke Culture"}},
-		},
-		bson.D{
-			{"Name", " May Slindesloff"},
-			{"Song", "Come over"},
-			{"tags", bson.A{"New", "Rap Interpreter", "Work Culture"}},
-		},
-	})
+  bson.D{
+   {"Name", " Deen Bread"},
+   {"Song", "Run Away"},
+   {"tags", bson.A{"New", "AfroCompile", "Woke Culture"}},
+  },
+  bson.D{
+   {"Name", " May Slindesloff"},
+   {"Song", "Come over"},
+   {"tags", bson.A{"New", "Rap Interpreter", "Work Culture"}},
+  },
+ })
 
-	if err != nil {
-		log.Println("There was an err in trying to migrate the data into the database")
+ if err != nil {
+  log.Println("There was an err in trying to migrate the data into the database")
 
-	}
-	fmt.Println(insertResult.InsertedIDs)
-```
+ }
+ fmt.Println(insertResult.InsertedIDs)
+~~~
 
 Two documents identical to the documents in the `InsertOne` example were inserted, the error was handled, and the inserted IDs were printed.
 
@@ -242,9 +240,9 @@ Here's the result of the insertion
 
 ![Screenshot 2022-05-30 at 21.41.56.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/5cd10d31-11b6-497d-b56b-12f81cbe0818/Screenshot_2022-05-30_at_21.41.56.png)
 
-# Querying a MongoDB Database using Go
+## Querying a Mongodb Database Using Go
 
-You'll be querying your database collection for data most of the time. The Go MongoDB driver provides as many functionalities as MongoDB Query Language(MQL) for querying databases. 
+You'll be querying your database collection for data most of the time. The Go MongoDB driver provides as many functionalities as MongoDB Query Language(MQL) for querying databases.
 
 Here's an overview of some query operations.
 
@@ -252,20 +250,20 @@ Here's an overview of some query operations.
 
 You can retrieve all the documents in a collection using the `Find` method of the collection instance. Since you want all values, the `bson.M` argument will be empty.
 
-```go
-	cursor, err := theCollection.Find(ctx, bson.M{})
-	if err != nil {
-		log.Println(err)
+~~~{.bash caption=">_"}
+ cursor, err := theCollection.Find(ctx, bson.M{})
+ if err != nil {
+  log.Println(err)
 
-	}
-	var music []bson.M
-	if err = cursor.All(ctx, &music); err != nil {
-		log.Println(err)
-	}
-	fmt.Print(music)
-```
+ }
+ var music []bson.M
+ if err = cursor.All(ctx, &music); err != nil {
+  log.Println(err)
+ }
+ fmt.Print(music)
+~~~
 
-In the example above, after specifying that all documents in the collection should be returned, a slice of `bson.M[]`  named `music` was declared. The query results were decoded into the `music` slice. 
+In the example above, after specifying that all documents in the collection should be returned, a slice of `bson.M[]`  named `music` was declared. The query results were decoded into the `music` slice.
 
 Here's the result of printing out the `music` slice.
 
@@ -277,18 +275,18 @@ You can go on to manipulate the slice of maps and format it; that's why decoding
 
 You can also choose to be specific and query for documents that meet certain criteria. You can do this by using the `Find` method on the collection instance. In this case, the `bson.M` argument would take in a map(key-value pair) of strings.
 
-```go
+~~~{.bash caption=">_"}
 var music []bson.M
 
 filter, err := theCollection.Find(ctx, bson.M{"Song" :"Don't Dance"})
 if err != nil {
-	log.Println(err)
-}	
+ log.Println(err)
+} 
 if err = filter.All(ctx, &music); err != nil {
-		log.Println(err)
+  log.Println(err)
 }
 fmt.Println(music)
-```
+~~~
 
 The filter criteria above for searches for `Songs` with the title "`Don't Dance`" inserted in the example of the ***inserting document*** above.
 
@@ -298,30 +296,30 @@ The query's result was decoded into the declared music struct, and possible erro
 
 If you're interested in only one result, you can use the `FindOne` method instead to retrieve the first result of your collections query.
 
-# Updating MongoDB Documents with Go
+### Updating Mongodb Documents With Go
 
 There are numerous, similar implement methods for updating documents in the Go driver. Some of these include `UpdateByID()`, `UpdateOne()`, `UpdateMany()`, `ReplaceOne()`, `FindOneAndUpdate()` and `FindOneAndReplace()` which all operate as their names imply.
 
-Here’s how to update many documents at once by setting criteria for the documents that should be updated.
+Here's how to update many documents at once by setting criteria for the documents that should be updated.
 
-```go
+~~~{.bash caption=">_"}
 results, err := theCollection.UpdateOne(ctx, bson.M{ // this is the
-		"Name": "Deen Bread",
-	}, bson.D{
-		{"$set", bson.D{
-			{"Song", "Why are you running?"}}},
-	})
+  "Name": "Deen Bread",
+ }, bson.D{
+  {"$set", bson.D{
+   {"Song", "Why are you running?"}}},
+ })
 
-	if err != nil {
-		log.Print(err)
-	}
+ if err != nil {
+  log.Print(err)
+ }
 
 fmt.Println(results.ModifiedCount)
-```
+~~~
 
-In the code above, a context, a `bson.M`, and `bson.D` parameters were passed into the `UpdateMany` method of the collection. 
+In the code above, a context, a `bson.M`, and `bson.D` parameters were passed into the `UpdateMany` method of the collection.
 
-The `bson.M` should take in the criteria for the update; in this case, the updates will occur on documents with the name field equal to “`Deen Bread`".
+The `bson.M` should take in the criteria for the update; in this case, the updates will occur on documents with the name field equal to "`Deen Bread`".
 
 Finally, the `bson.D` argument takes in two parameters, an MQL update operation, e.g. ($set, $inc e.t.c), and another bson containing a different value and the key it should be inserted into.
 
@@ -329,41 +327,37 @@ Possible errors were handled, and a modified count was printed using the `Modifi
 
 ![Screenshot 2022-06-02 at 17.46.06.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/6acb81e4-c44d-41ad-897b-4dcdc5c5d634/Screenshot_2022-06-02_at_17.46.06.png)
 
-Here's the result of the update from the Atlas cluster; notice that the value of the Song field was changed from "`Don't Run`" to “`Why are you running`.”
+Here's the result of the update from the Atlas cluster; notice that the value of the Song field was changed from "`Don't Run`" to "`Why are you running`."
 
-## Replacing MongoDB Documents with Go
+## Replacing Mongodb Documents With Go
 
 You can replace a document using the `ReplaceOne` method of the collection. The `ReplaceOne` method takes in a context, a specification for the document to be replaced, and the values the document should be replaced with.
 
-
-
-
-
-In the example above, the document with the `Name` equal to “`May Slindesloff`" was modified such that it doesn't have a song field, the `tags` array values were modified, and a new field `rating` was introduced.
+In the example above, the document with the `Name` equal to "`May Slindesloff`" was modified such that it doesn't have a song field, the `tags` array values were modified, and a new field `rating` was introduced.
 
 Here's the result of the replacement from the Atlas Cluster.
 
 ![Screenshot 2022-06-02 at 18.11.07.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/585215c4-ffac-4bc4-ac3b-99e4150343b6/Screenshot_2022-06-02_at_18.11.07.png)
 
-You have seen how to create, update and insert documents. Let's see how you can delete documents in MongoDB Collections using the Go programming language.
+You have seen how to create, update, and insert documents. Let's see how you can delete documents in MongoDB Collections using the Go programming language.
 
-# Deleting MongoDB Documents with Go
+## Deleting Mongodb Documents With Go
 
 You can delete a document off a collection using the `DeleteMany` and `DeleteOne` methods.
 
 Here's how to delete one document in a collection.
 
-The `DeleteOne` method takes in a contest and a `bson.M`, which contains specifications of the document to be deleted as arguments. 
+The `DeleteOne` method takes in a contest and a `bson.M`, which contains specifications of the document to be deleted as arguments.
 
-```go
-	result, err := theCollection.DeleteOne(ctx, bson.M{"Song": "Don't Dance"})
-	if err != nil {
-		log.Fatal(err)
-	}
-	fmt.Println(result.DeletedCount)
-```
+~~~{.bash caption=">_"}
+ result, err := theCollection.DeleteOne(ctx, bson.M{"Song": "Don't Dance"})
+ if err != nil {
+  log.Fatal(err)
+ }
+ fmt.Println(result.DeletedCount)
+~~~
 
-In the code above, a collection with the field of “Song” of value "Don't Dance” was deleted, possible errors were handled, and a deleted count was printed.
+In the code above, a collection with the field of "Song" of value "Don't Dance" was deleted, possible errors were handled, and a deleted count was printed.
 
 Recall that there were three documents in the Cluster; the delete operation has reduced it to two.
 
@@ -371,18 +365,17 @@ Recall that there were three documents in the Cluster; the delete operation has 
 
 Deleting all documents in a collection is the same as deleting the collection itself; let's overview how you can delete a collection.
 
- 
-### Deleting a MongoDB Collection with Go
+## Deleting a MongoDB Collection with Go
 
 There are many cases where you might want to delete a collection; it's easy to do that with the driver.
 
 Use the `Drop` method on the collection you want to drop, pass in a context and handle possible errors.
 
-```go
+~~~{.bash caption=">_"}
 if err = theCollection.Drop(ctx); err != nil {
     log.Println(err)
 }
-```
+~~~
 
 The collection must exist for you to delete it or get an error as handled above.
 
@@ -397,9 +390,6 @@ You can refer to these resources to learn more about using MongoDB with the Go p
 - [The Go.dev MongoDB Go Driver Documentation](https://pkg.go.dev/go.mongodb.org/mongo-driver).
 
 There are numerous cases where you'll want to use MongoDB with Go, like backend development, data science, machine learning, and DevOps. Your MQL skills still Go a long way as you perform MongoDB operations with Go, especially if you'll be performing more complex functions.
-
-
-
 
 ## Outside Article Checklist
 
