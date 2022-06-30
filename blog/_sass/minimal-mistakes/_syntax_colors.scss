@@ -2,6 +2,21 @@
    Syntax highlighting
    ========================================================================== */
 
+div.highlighter-rouge,
+figure.highlight, 
+figure.sourceCode, 
+div.sourceCode,
+pre:not([class^="sourceCode"]) 
+{
+ 
+  // Widen Code Snippets
+  @media (min-width: 1100px){
+    width: 110%;
+    margin-left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
 // unwiden code snippets
 // pre:not([class^="sourceCode"]) captures unsyntax highlighted code snippets
 div.narrow-code > div.sourceCode,

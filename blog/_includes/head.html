@@ -32,15 +32,16 @@
 
 <!-- For all browsers -->
 <link rel="stylesheet" href="{{ '/assets/css/main.css?v=2' | relative_url }}" />
-<link rel="stylesheet" href="{{ '/assets/css/base.css' | relative_url }}" />
-
-<!-- <script src="https://cdn.tailwindcss.com"></script> -->
-
 <link
   rel="stylesheet"
   href="{{ '/assets/css/typography.min.css' | relative_url }}"
 />
+<link rel="stylesheet" href="{{ '/assets/css/base.css' | relative_url }}" />
 
-{% if jekyll.environment == "production" %} {% include_cached
-head/google-analytics.html %} {% include_cached head/facebookpixel.html %} {%
-include_cached head/twitterpixel.html %} {% endif %}
+
+
+{% if jekyll.environment == "production" %} 
+  {% include_cached head/google-analytics.html %} 
+  {% include_cached head/facebookpixel.html %} 
+  {% include_cached head/twitterpixel.html %} 
+{% endif %}

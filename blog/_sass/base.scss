@@ -226,3 +226,21 @@ html {
   }
 
 }
+
+// Typography Overrides
+
+figcaption {
+  text-align: center;
+}
+
+.prose ul>li::before {
+  background-color: #374151 !important;
+}
+
+blockquote p:first-of-type::before {
+  content:unset !important;
+}
+
+blockquote p:first-of-type::after {
+  content:unset !important;
+}
