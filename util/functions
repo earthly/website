@@ -143,14 +143,6 @@ lint() { # Run Linter
        cd blog || exit
        markdownlint --fix "./_posts/*.md" 
     )
-    (
-        cd blog || exit
-        bundle exec jekyll build --future 2> ../error.txt || true
-        if [ -s error.txt ] 
-        then
-            cat error.txt && echo "Errors in Build" && false
-        fi
-    )
 }
 
 format(){ # change code blocks
