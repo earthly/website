@@ -358,7 +358,7 @@ You can replace a document using the `ReplaceOne` method of the collection. The 
 
 ```go
 result, err := theCollection.ReplaceOne(ctx,
-bson.D{{"Name", "May Slindesloff"}}
+
 )
 	fmt.Println(result.ModifiedCount)
 
