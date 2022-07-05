@@ -329,7 +329,7 @@ Finally, the `bson.D` argument takes in two parameters, an MQL update operation,
 
 Possible errors were handled, and a modified count was printed using the `ModifiedCount` method.
 
-![creenshot 2022-06-02 at 17.46.06.png]({{site.images}}{{page.slug}}/eight.png)\
+![Screenshot 2022-06-02 at 17.46.06.png]({{site.images}}{{page.slug}}/eight.png)\
 
 Here's the result of the update from the Atlas cluster; notice that the value of the Song field was changed from "`Don't Run`" to "`Why are you running`."
 
