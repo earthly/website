@@ -65,14 +65,9 @@ After creating a [MongoDB Atlas cluster](https://www.mongodb.com/basics/clusters
 
 Click on **connect**, choose "**connect to your application**," choose **Go** as your preferred language, select a Go version, and copy the connection URI string.
 
-<div class="wide">
 ![Screenshot from 2022-05-13 15-16-12.png]({{site.images}}{{page.slug}}/first.png)\
-</div>
 
-
-<div class="wide">
 ![textsthththtt.png]({{site.images}}{{page.slug}}/second.png)\
-</div>
 
 Once you have the connection URI string, you can now connect to the MongoDB Atlas cluster.
 
@@ -160,9 +155,7 @@ Here's an explanation of the arguments we will be using in this tutorial.
 
 - The **`bson.A`** argument ****is used for inserting arrays into a collection as part of the fields in an unordered fashion.
 
-<div class="wide">
 ![Screenshot 2022-06-02 at 15.04.14.png]({{site.images}}{{page.slug}}/third.png)\
-</div>
 
 You can learn more about the [MongoDB `bson` package here](https://pkg.go.dev/go.mongodb.org/mongo-driver/bson@v1.9.1).
 
@@ -214,13 +207,9 @@ In the example above, a document containing the fields `Name`, `Song`, and an ar
 
 Here's the result of the insertion on the command line and MongoDB's Atlas UI
 
-<div class="wide">
 ![Screenshot 2022-05-30 at 16.36.31.png]({{site.images}}{{page.slug}}/fourtha.png)\
-</div>
 
-<div class="wide">
 ![Screenshot 2022-05-30 at 16.36.39.png]({{site.images}}{{page.slug}}/fourthb.png)\
-</div>
 
 Similarly, you can insert multiple documents at once into a cluster using the `InsertMany` method.
 
@@ -253,9 +242,7 @@ Two documents identical to the documents in the `InsertOne` example were inserte
 
 Here's the result of the insertion
 
-<div class="wide">
 ![Screenshot 2022-05-30 at 21.41.56.png]({{site.images}}{{page.slug}}/fifth.png)\
-</div>
 
 ## Querying a Mongodb Database Using Go
 
@@ -284,9 +271,7 @@ In the example above, after specifying that all documents in the collection shou
 
 Here's the result of printing out the `music` slice.
 
-<div class="wide">
 ![Screenshot 2022-06-01 at 20.45.31.png]({{site.images}}{{page.slug}}/sixth.png)\
-</div>
 
 You can go on to manipulate the slice of maps and format it; that's why decoding the results into a native Go data structure was important.
 
@@ -311,9 +296,7 @@ The filter criteria above for searches for `Songs` with the title "`Don't Dance`
 
 The query's result was decoded into the declared music struct, and possible errors were handled.
 
-<div class="wide">
 ![Screenshot 2022-06-01 at 22.09.24.png]({{site.images}}{{page.slug}}/seventh.png)\
-</div>
 
 If you're interested in only one result, you can use the `FindOne` method instead to retrieve the first result of your collections query.
 
@@ -346,9 +329,7 @@ Finally, the `bson.D` argument takes in two parameters, an MQL update operation,
 
 Possible errors were handled, and a modified count was printed using the `ModifiedCount` method.
 
-<div class="wide">
 ![creenshot 2022-06-02 at 17.46.06.png]({{site.images}}{{page.slug}}/eight.png)\
-</div>
 
 Here's the result of the update from the Atlas cluster; notice that the value of the Song field was changed from "`Don't Run`" to "`Why are you running`."
 
@@ -356,21 +337,22 @@ Here's the result of the update from the Atlas cluster; notice that the value of
 
 You can replace a document using the `ReplaceOne` method of the collection. The `ReplaceOne` method takes in a context, a specification for the document to be replaced, and the values the document should be replaced with.
 
+{% raw %}
 ```go
+
 result, err := theCollection.ReplaceOne(ctx,
-
-)
+		bson.D{{"Name", "May Slindesloff"}},
+		bson.D{{"Name", "May Slindesloff"}, {"rating", 9}, {"tags", bson.A{"code musically", "compiler beats"}}},
+	)
 	fmt.Println(result.ModifiedCount)
-
 ```
+{% endraw %}
 
 In the example above, the document with the `Name` equal to "`May Slindesloff`" was modified such that it doesn't have a song field, the `tags` array values were modified, and a new field `rating` was introduced.
 
 Here's the result of the replacement from the Atlas Cluster.
 
-<div class="wide">
 ![Screenshot 2022-06-02 at 18.11.07.png]({{site.images}}{{page.slug}}/eleventh.png)\
-</div>
 
 You have seen how to create, update, and insert documents. Let's see how you can delete documents in [MongoDB](/blog/mongodb-docker) Collections using the Go programming language.
 
@@ -394,9 +376,7 @@ In the code above, a collection with the field of "Song" of value "Don't Dance" 
 
 Recall that there were three documents in the Cluster; the delete operation has reduced it to two.
 
-<div class="wide">
 ![Screenshot 2022-06-02 at 15.30.08.png]({{site.images}}{{page.slug}}/tenth.png)\
-</div>
 
 Deleting all documents in a collection is the same as deleting the collection itself; let's overview how you can delete a collection.
 
