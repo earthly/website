@@ -338,6 +338,7 @@ Here's the result of the update from the Atlas cluster; notice that the value of
 You can replace a document using the `ReplaceOne` method of the collection. The `ReplaceOne` method takes in a context, a specification for the document to be replaced, and the values the document should be replaced with.
 
 {% raw %}
+
 ```go
 result, err := theCollection.ReplaceOne(ctx,
   bson.D{{"Name", "May Slindesloff"}},
@@ -345,6 +346,7 @@ result, err := theCollection.ReplaceOne(ctx,
  )
  fmt.Println(result.ModifiedCount)
 ```
+
 {% endraw %}
 
 In the example above, the document with the `Name` equal to "`May Slindesloff`" was modified such that it doesn't have a song field, the `tags` array values were modified, and a new field `rating` was introduced.
