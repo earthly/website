@@ -339,12 +339,11 @@ You can replace a document using the `ReplaceOne` method of the collection. The 
 
 {% raw %}
 ```go
-
 result, err := theCollection.ReplaceOne(ctx,
-		bson.D{{"Name", "May Slindesloff"}},
-		bson.D{{"Name", "May Slindesloff"}, {"rating", 9}, {"tags", bson.A{"code musically", "compiler beats"}}},
-	)
-	fmt.Println(result.ModifiedCount)
+  bson.D{{"Name", "May Slindesloff"}},
+  bson.D{{"Name", "May Slindesloff"}, {"rating", 9}, {"tags", bson.A{"code musically", "compiler beats"}}},
+ )
+ fmt.Println(result.ModifiedCount)
 ```
 {% endraw %}
 
