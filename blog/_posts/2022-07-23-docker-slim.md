@@ -48,7 +48,7 @@ curl -sL https://raw.githubusercontent.com/docker-slim/docker-slim/master/script
 
 Docker Slim has an interactive CLI option that offers suggestions and helps you configure your commands. It can be used by running the `docker-slim` command:
 
-![Docker Slim interactive CLI](https://i.imgur.com/d1Tcrf3.png)
+![Docker Slim interactive CLI]({{site.images}}{{page.slug}}/d1Tcrf3.png)
 
 There are three main reasons to use Docker Slim in your development process: analysis, compression, and security. Let’s review each in turn. 
 
@@ -68,7 +68,7 @@ You can explore all the available checks from the `lint` command using the follo
 docker-slim lint --list-checks
 ```
 
-![Available `lint` command checks](https://i.imgur.com/PsVxct6.png)
+![Available `lint` command checks]({{site.images}}{{page.slug}}/PsVxct6.png)
 
 Using the `lint` command on Docker images is a work in progress. However, you can use the command on your Dockerfiles using the following syntax:
 
@@ -76,7 +76,7 @@ Using the `lint` command on Docker images is a work in progress. However, you ca
 docker-slim lint --target "path-to-your-dockerfile"
 ```
 
-![`lint` command results](https://i.imgur.com/GjfCbK7.png)
+![`lint` command results]({{site.images}}{{page.slug}}/GjfCbK7.png)
 
 #### The xray Command
 
@@ -92,7 +92,7 @@ docker-slim --report nginx-report.json xray --target nginx --pull
 
 This command performs static analysis on the `nginx` Docker image, exploring its metadata and data, and creates a `docker-slim` report called `nginx-report.json`. The `pull` tag pulls the target image from a repository if it’s not available locally:
 
-![`xray` command results](https://i.imgur.com/GgqeGIb.png)
+![`xray` command results]({{site.images}}{{page.slug}}/GgqeGIb.png)
 
 #### The profile Command
 
@@ -104,7 +104,7 @@ You can utilize this command with the following syntax:
 docker-slim --report nginx-profile-report.json profile --target nginx
 ```
 
-![`profile` command results](https://i.imgur.com/1MA8BOK.png)
+![`profile` command results]({{site.images}}{{page.slug}}/1MA8BOK.png)
 
 ### Compression
 
@@ -122,7 +122,7 @@ The `copy-meta-artifacts` tag helps move the produced files from the build comma
 
 The results of the build command (at the bottom) show a compressed `nginx.slim` image of 12 MB over its original size of 142 MB:
 
-![`build` command results](https://i.imgur.com/fHOgINP.png)
+![`build` command results]({{site.images}}{{page.slug}}/fHOgINP.png)
 
 Now you can use the optimized Docker image in your development process in place of your previous image.
 
@@ -141,7 +141,7 @@ docker run -it --rm -d -p 8080:80 --security-opt apparmor:nginx-apparmor-profile
 
 This command utilizes the created `apparmor` security profile in the working directory to start up an `nginx` container using the minimized image. An `nginx` web server is up and running at [http://localhost:8080/](http://localhost:8080/) and its security profile protects the container from internal or external threats by restricting program capabilities such as read or write permission on certain files, as well as root access. It also limits network access to bar unpermitted entry.
 
-![`nginx` web server](https://i.imgur.com/1v9wRGp.png)
+![`nginx` web server]({{site.images}}{{page.slug}}/1v9wRGp.png)
 
 ## Conclusion
 
