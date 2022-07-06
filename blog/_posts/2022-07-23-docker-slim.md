@@ -5,7 +5,10 @@ categories:
 toc: true
 author: Sooter Saalu
 internal-links:
- - just an example
+ - Docker
+ - nginx
+ - Docker Slim
+ - container
 ---
 
 [Docker](https://www.docker.com/) is an open containerization platform for developing, shipping, and running applications. It enables you to package your applications in isolated environments, called containers, where they can run independently from infrastructure. In the container, they have all the dependencies needed for the application to run.
@@ -47,9 +50,10 @@ curl -sL https://raw.githubusercontent.com/docker-slim/docker-slim/master/script
 ## Using Docker Slim
 
 Docker Slim has an interactive CLI option that offers suggestions and helps you configure your commands. It can be used by running the `docker-slim` command:
+<div class="wide">
 
 ![Docker Slim interactive CLI]({{site.images}}{{page.slug}}/d1Tcrf3.png)
-
+</div>
 There are three main reasons to use Docker Slim in your development process: analysis, compression, and security. Let's review each in turn.
 
 ### Analysis
@@ -67,17 +71,19 @@ You can explore all the available checks from the `lint` command using the follo
 ~~~{.bash caption=">_"}
 docker-slim lint --list-checks
 ~~~
+<div class="wide">
 
 ![Available `lint` command checks]({{site.images}}{{page.slug}}/PsVxct6.png)
-
+</div>
 Using the `lint` command on Docker images is a work in progress. However, you can use the command on your Dockerfiles using the following syntax:
 
 ~~~{.bash caption=">_"}
 docker-slim lint --target "path-to-your-dockerfile"
 ~~~
+<div class="wide">
 
 ![`lint` command results]({{site.images}}{{page.slug}}/GjfCbK7.png)
-
+</div>
 #### The Xray Command
 
 The [`xray` command](https://github.com/docker-slim/docker-slim#xray-command-options) analyzes your Docker images, exploring the layers of the Docker image, commands used, files, libraries, and executables, as well as the changes that will be made in the work environment when the Docker image is built. This command can be used to reverse engineer a Dockerfile from its targeted Docker image. It also gives you insight into the object file sizes and how much container space is being wasted.
@@ -91,9 +97,10 @@ docker-slim --report nginx-report.json xray --target nginx --pull
 ~~~
 
 This command performs static analysis on the `nginx` Docker image, exploring its metadata and data, and creates a `docker-slim` report called `nginx-report.json`. The `pull` tag pulls the target image from a repository if it's not available locally:
+<div class="wide">
 
 ![`Xray` command results]({{site.images}}{{page.slug}}/GgqeGIb.png)
-
+</div>
 #### The Profile Command
 
 The `profile` command carries out a more involved analysis of your Docker images. It performs a dynamic analysis where the Docker image is run, and the container created by that image is then analyzed and probed. This command analyzes both the Docker image and the Docker container that is created from that image. In addition, the `profile` command offers advanced HTTP probe functionality by default that can explore your Docker container's accessibility.
@@ -103,9 +110,10 @@ You can utilize this command with the following syntax:
 ~~~{.bash caption=">_"}
 docker-slim --report nginx-profile-report.json profile --target nginx
 ~~~
+<div class="wide">
 
 ![`profile` command results]({{site.images}}{{page.slug}}/1MA8BOK.png)
-
+</div>
 ### Compression
 
 One of the main features you can gain from Docker Slim is its compression ability when applied to your Docker images. For your developer teams that utilize Docker in their development and production lifecycles, you might often be left with multiple large-size Docker images. This has a significant impact on the speed of each step in your process, as it takes longer to load and build on larger Docker containers locally or in production.
@@ -121,9 +129,10 @@ docker-slim --report nginx-build-report.json build --target nginx --copy-meta-ar
 The `copy-meta-artifacts` tag helps move the produced files from the build command to a location more convenient for you. The command above creates the reverse-engineered Dockerfile, optimized Dockerfile, your optimized Docker image, security profiles, and other files in your current working directory.
 
 The results of the build command (at the bottom) show a compressed `nginx.slim` image of 12 MB over its original size of 142 MB:
+<div class="wide">
 
 ![`build` command results]({{site.images}}{{page.slug}}/fHOgINP.png)
-
+</div>
 Now you can use the optimized Docker image in your development process in place of your previous image.
 
 ### Security
@@ -140,9 +149,10 @@ docker run -it --rm -d -p 8080:80 --security-opt apparmor:nginx-apparmor-profile
 ~~~
 
 This command utilizes the created `apparmor` security profile in the working directory to start up an `nginx` container using the minimized image. An `nginx` web server is up and running at [http://localhost:8080/](http://localhost:8080/) and its security profile protects the container from internal or external threats by restricting program capabilities such as read or write permission on certain files, as well as root access. It also limits network access to bar unpermitted entry.
+<div class="wide">
 
 ![`nginx` web server]({{site.images}}{{page.slug}}/1v9wRGp.png)
-
+</div>
 ## Conclusion
 
 Docker Slim works to optimize your Docker development process, utilizing both static and dynamic analysis to generate information about your Docker resources that can be used to optimize and secure your images. It does this by disposing of miscellaneous packages and files, and streamlining your container to reduce its attack surface and vulnerabilities.
@@ -153,12 +163,9 @@ In this article, you learned about Docker Slim and how it can be used to optimiz
 
 ## Outside Article Checklist
 
-- [ ] Add in Author page
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
-- [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
 - [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
