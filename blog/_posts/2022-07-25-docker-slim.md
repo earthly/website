@@ -74,6 +74,7 @@ You can explore all the available checks from the `lint` command using the follo
 ~~~{.bash caption=">_"}
 docker-slim lint --list-checks
 ~~~
+
 <div class="wide">
 
 ![Available `lint` command checks]({{site.images}}{{page.slug}}/PsVxct6.png)
@@ -83,6 +84,7 @@ Using the `lint` command on Docker images is a work in progress. However, you ca
 ~~~{.bash caption=">_"}
 docker-slim lint --target "path-to-your-dockerfile"
 ~~~
+
 <div class="wide">
 
 ![`lint` command results]({{site.images}}{{page.slug}}/GjfCbK7.png)
@@ -115,6 +117,7 @@ You can utilize this command with the following syntax:
 ~~~{.bash caption=">_"}
 docker-slim --report nginx-profile-report.json profile --target nginx
 ~~~
+
 <div class="wide">
 
 ![`profile` command results]({{site.images}}{{page.slug}}/1MA8BOK.png)
