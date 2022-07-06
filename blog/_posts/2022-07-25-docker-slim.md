@@ -20,6 +20,7 @@ It can reduce image size up to thirty times without any manual optimization. It 
 In this article, you'll explore the various [Docker](/blog/rails-with-docker) Slim functionalities and how to use them effectively and efficiently to optimize your Docker images.
 
 ## What Is Docker Slim
+
 ![What is]({{site.images}}{{page.slug}}/question.jpeg)\
 
 Docker Slim was a [Docker Global Hack Day 2015 project](https://www.docker.com/blog/docker-global-hack-day-3-local-edition-winners/#:~:text=Seattle%2C%20WA%3A%20DockerSlim%20by%20Dmitry%20Vorobev%20and%20Kyle%20Quest). It performs static and dynamic analysis on Docker images in order to reduce layers in the images and produce smaller Docker containers.
