@@ -21,7 +21,7 @@ In this article, you'll learn more about AWS Graviton, including the AWS service
 
 AWS Graviton processors are ARM-based processors that power a host of cloud services. They were specifically designed to deliver the most efficient performance for your money. They power a [host of services](https://aws.amazon.com/ec2/graviton/) like the following:
 
-- Amazon EC2
+- Amazon [EC2](/blog/build-your-own-ngrok-clone)
 - Amazon ElastiCache
 - Amazon Elastic Kubernetes Service (Amazon EKS)
 - Amazon Aurora
@@ -29,7 +29,7 @@ AWS Graviton processors are ARM-based processors that power a host of cloud serv
 - Amazon MemoryDB for Redis
 - Amazon OpenSearch
 - Amazon EMR
-- AWS Lambda
+- AWS [Lambda](/blog/aws-lambda-node)
 
 Amazon created the Graviton processors when [they discovered](https://thenewstack.io/aws-graviton-marks-the-emergence-of-arm-for-cloud-native-workloads/) that a large number of Amazon EC2 customers weren't using their full EC2 capabilities.
 
@@ -83,7 +83,7 @@ In this example, you're going to deploy a basic "hello world!" program onto an E
 
 ### Prerequisites
 
-To follow along with this tutorial, you'll need to have a basic grasp of cloud principles as well as an understanding of [Go](https://go.dev/). This will be enough to create an EC2 instance and use it to run Golang code, which will run on Graviton architecture.
+To follow along with this tutorial, you'll need to have a basic grasp of cloud principles as well as an understanding of [Go](https://go.dev/). This will be enough to create an EC2 instance and use it to run [Golang](/blog/top-3-resources-to-learn-golang-in-2021) code, which will run on Graviton architecture.
 
 Graviton processors are only available in [certain regions](https://aws.amazon.com/ec2/graviton), so you may need to change which region you access AWS in.
 
@@ -192,6 +192,5 @@ Companies around the world have used Graviton architecture to solve problems in 
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Run mark down linter (`lint`)
-- [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
 - [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
