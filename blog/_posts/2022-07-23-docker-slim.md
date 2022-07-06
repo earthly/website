@@ -20,6 +20,7 @@ It can reduce image size up to thirty times without any manual optimization. It 
 In this article, you'll explore the various [Docker](/blog/rails-with-docker) Slim functionalities and how to use them effectively and efficiently to optimize your Docker images.
 
 ## What Is Docker Slim
+![What is]({{site.images}}{{page.slug}}/question.jpeg)\
 
 Docker Slim was a [Docker Global Hack Day 2015 project](https://www.docker.com/blog/docker-global-hack-day-3-local-edition-winners/#:~:text=Seattle%2C%20WA%3A%20DockerSlim%20by%20Dmitry%20Vorobev%20and%20Kyle%20Quest). It performs static and dynamic analysis on Docker images in order to reduce layers in the images and produce smaller Docker containers.
 
@@ -28,6 +29,8 @@ The current version of Docker Slim carries out inspections of the container meta
 Docker Slim is a versatile tool and is able to work on containers running applications in [Node.js](https://nodejs.org/en/), [Python](https://www.python.org), [Ruby on Rails](https://rubyonrails.org), [Java](https://www.java.com/en/), Go, [Rust](https://www.rust-lang.org), [Elixir](https://elixir-lang.org), or [PHP](https://www.php.net) languages as well as with the following operating systems: [Ubuntu](https://ubuntu.com), [Debian](https://www.debian.org), [CentOS](https://www.centos.org), [Alpine](https://www.alpinelinux.org), and even [Distroless](https://github.com/GoogleContainerTools/distroless#distroless-container-images).
 
 ### Docker Slim Use Cases
+
+![What is]({{site.images}}{{page.slug}}/usecase.png)\
 
 [Docker](/blog/rails-with-docker) Slim can help you gain a deeper understanding of your Docker images and what they contain. This is especially crucial when you're working with images you didn't build. Docker Slim has three commands that specifically provide you with an analysis of your Dockerfiles and Docker images giving you more information about its functioning. These [commands](https://github.com/docker-slim/docker-slim#commands) are `xray`, `lint`, and `profile`.
 
@@ -84,6 +87,7 @@ docker-slim lint --target "path-to-your-dockerfile"
 
 ![`lint` command results]({{site.images}}{{page.slug}}/GjfCbK7.png)
 </div>
+
 #### The Xray Command
 
 The [`xray` command](https://github.com/docker-slim/docker-slim#xray-command-options) analyzes your Docker images, exploring the layers of the Docker image, commands used, files, libraries, and executables, as well as the changes that will be made in the work environment when the Docker image is built. This command can be used to reverse engineer a Dockerfile from its targeted Docker image. It also gives you insight into the object file sizes and how much container space is being wasted.
@@ -101,6 +105,7 @@ This command performs static analysis on the `nginx` Docker image, exploring its
 
 ![`Xray` command results]({{site.images}}{{page.slug}}/GgqeGIb.png)
 </div>
+
 #### The Profile Command
 
 The `profile` command carries out a more involved analysis of your [Docker](/blog/rails-with-docker) images. It performs a dynamic analysis where the Docker image is run, and the container created by that image is then analyzed and probed. This command analyzes both the Docker image and the Docker container that is created from that image. In addition, the `profile` command offers advanced HTTP probe functionality by default that can explore your Docker container's accessibility.
@@ -114,6 +119,7 @@ docker-slim --report nginx-profile-report.json profile --target nginx
 
 ![`profile` command results]({{site.images}}{{page.slug}}/1MA8BOK.png)
 </div>
+
 ### Compression
 
 One of the main features you can gain from Docker Slim is its compression ability when applied to your Docker images. For your developer teams that utilize Docker in their development and production lifecycles, you might often be left with multiple large-size Docker images. This has a significant impact on the speed of each step in your process, as it takes longer to load and build on larger Docker containers locally or in production.
@@ -153,6 +159,7 @@ This command utilizes the created `apparmor` security profile in the working dir
 
 ![`nginx` web server]({{site.images}}{{page.slug}}/1v9wRGp.png)
 </div>
+
 ## Conclusion
 
 Docker Slim works to optimize your Docker development process, utilizing both static and dynamic analysis to generate information about your Docker resources that can be used to optimize and secure your images. It does this by disposing of miscellaneous packages and files, and streamlining your container to reduce its attack surface and vulnerabilities.
@@ -161,11 +168,4 @@ The advent of containerized applications has helped scale up the development and
 
 In this article, you learned about Docker Slim and how it can be used to optimize your Docker resources, utilizing the `lint`, `xray`, `profile`, and `build` Docker Slim commands to optimize your Docker images and containers.
 
-## Outside Article Checklist
-
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
+{% include cta/cta1.html %}
