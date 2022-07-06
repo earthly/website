@@ -235,3 +235,7 @@ Mr. Unity Buddy:
     name    : "Mr. Unity Buddy"
     bio     : "Technical writer, Content creator, Game Designer, and a Mad Developer. Visit unitybuddy.com for more!"
     avatar  : "/assets/images/authors/unitybuddylogo.png"
+Kealan Parr:
+    name    : "Kealan Parr"
+    bio     : "Kealan is a senior software engineer and technical writer who works with clients on technical reviewing and software development. He is a member of the Unicode Consortium."
+    avatar  : "/assets/images/authors/Kealanparr.jpg"
