@@ -93,13 +93,13 @@ Before starting, it's important to note that **Graviton instances are not includ
 
 Go to the AWS Management platform and navigate to **EC2**. The user interface will look something like this:
 
-![EC2 Dashboard](https://i.imgur.com/h33nlgS.png)
+![EC2 Dashboard]({{site.images}}{{page.slug}}/h33nlgS.png)
 
 Open the **Instances** menu and click **Instances**, highlighted in yellow in the previous picture. This will launch your EC2 instance.
 
 Click the orange button at the top right of the screen that says **Launch instances**:
 
-![Launch instances](https://i.imgur.com/DHSQRdB.png)
+![Launch instances]({{site.images}}{{page.slug}}/DHSQRdB.png)
 
 Next, you need to change the **Architecture** drop-down to be **64-bit (Arm)**, after which the **Instance Type** drop-down will allow you to pick instances that run Graviton. This is a crucial step for launching an EC2 instance that's specifically running Graviton ARM architecture. Some of the instances running Graviton are as follows:
 
@@ -116,15 +116,15 @@ If you need an exhaustive list, you can find one on this [YouTube tutorial](http
 
 You will also need to configure how accessible your EC2 instance will be. For simplicity's sake, this tutorial will be configured to allow access from anywhere. This can be done by allowing SSH traffic from 0.0.0.0/0, which will allow all connections:
 
-![Image showing SSH access set to 0.0.0.0/0](https://i.imgur.com/yNxrmhn.png)
+![Image showing SSH access set to 0.0.0.0/0]({{site.images}}{{page.slug}}/yNxrmhn.png)
 
 In order to log in and SSH into your box, you'll need to ensure you have a key pair name. If you don't have one, then create one, as shown in the following UI:
 
-![Login for key pair shown](https://i.imgur.com/8HZ4E2e.png)
+![Login for key pair shown]({{site.images}}{{page.slug}}/8HZ4E2e.png)
 
 To generate this, go to the **Key pair (login)** header on your AWS UI and click **Create new key pair**:
 
-![Login generation](https://i.imgur.com/ceRFkFU.png)
+![Login generation]({{site.images}}{{page.slug}}/ceRFkFU.png)
 
 This essentially downloads a private key to uniquely identify you on the terminal. Make a note of the download location and make sure it's somewhere you can easily access.
 
@@ -144,7 +144,7 @@ ssh -i "hello.pem" ec2-user@ec2-184-72-90-10.compute-1.amazonaws.com
 
 In the previous command, you will need to change `ec2-user@ec2-184-72-90-10.compute-1.amazonaws.com` to your EC2 Public DNS instance, found by going to the instance **Details**, then locate the **Public IPv4 DNS**, as shown subsequently:
 
-![EC2 Public DNS](https://i.imgur.com/2VJwTbz.png)
+![EC2 Public DNS]({{site.images}}{{page.slug}}/2VJwTbz.png)
 
 Now that you can access your EC2 instance, you'll run two commands. The first is to ensure that Go is installed into the machine, and the second is to update the instance:
 
@@ -178,7 +178,7 @@ Pressing **Esc** will allow you to escape Vim's command mode; then type `:wq` to
 
 If you've followed along, then you've just deployed a Go application to a Graviton EC2 instance, and you should see "hello world!" displayed in the terminal:
 
-!["hello world!" displayed in the EC2 shell](https://i.imgur.com/HrybAr1.png)
+!["hello world!" displayed in the EC2 shell]({{site.images}}{{page.slug}}/HrybAr1.png)
 
 ## Conclusion
 
