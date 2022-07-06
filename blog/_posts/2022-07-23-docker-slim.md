@@ -13,11 +13,11 @@ internal-links:
 
 [Docker](https://www.docker.com/) is an open containerization platform for developing, shipping, and running applications. It enables you to package your applications in isolated environments, called containers, where they can run independently from infrastructure. In the container, they have all the dependencies needed for the application to run.
 
-However, a common issue with Docker images is their construction and [size](https://semaphoreci.com/blog/2018/03/14/docker-image-size.html). [Docker Slim](https://dockersl.im/) is a tool for optimizing Dockerfiles and Docker images.
+However, a common issue with [Docker](/blog/rails-with-docker) images is their construction and [size](https://semaphoreci.com/blog/2018/03/14/docker-image-size.html). [Docker Slim](https://dockersl.im/) is a tool for optimizing Dockerfiles and Docker images.
 
 It can reduce image size up to thirty times without any manual optimization. It can also help automatically generate security profiles for your Docker containers and has built-in commands that help you analyze and understand your Docker files and images.
 
-In this article, you'll explore the various Docker Slim functionalities and how to use them effectively and efficiently to optimize your Docker images.
+In this article, you'll explore the various [Docker](/blog/rails-with-docker) Slim functionalities and how to use them effectively and efficiently to optimize your Docker images.
 
 ## What Is Docker Slim
 
@@ -29,7 +29,7 @@ Docker Slim is a versatile tool and is able to work on containers running applic
 
 ### Docker Slim Use Cases
 
-Docker Slim can help you gain a deeper understanding of your Docker images and what they contain. This is especially crucial when you're working with images you didn't build. Docker Slim has three commands that specifically provide you with an analysis of your Dockerfiles and Docker images giving you more information about its functioning. These [commands](https://github.com/docker-slim/docker-slim#commands) are `xray`, `lint`, and `profile`.
+[Docker](/blog/rails-with-docker) Slim can help you gain a deeper understanding of your Docker images and what they contain. This is especially crucial when you're working with images you didn't build. Docker Slim has three commands that specifically provide you with an analysis of your Dockerfiles and Docker images giving you more information about its functioning. These [commands](https://github.com/docker-slim/docker-slim#commands) are `xray`, `lint`, and `profile`.
 
 Docker Slim uses the analyzed data on your Docker image to create an image that is up to thirty times smaller than the original. Docker Slim optimizes your Docker image and the resulting container by reducing your image to the files, libraries, executables, and dependencies necessary for your containers' regular operation.
 
@@ -103,7 +103,7 @@ This command performs static analysis on the `nginx` Docker image, exploring its
 </div>
 #### The Profile Command
 
-The `profile` command carries out a more involved analysis of your Docker images. It performs a dynamic analysis where the Docker image is run, and the container created by that image is then analyzed and probed. This command analyzes both the Docker image and the Docker container that is created from that image. In addition, the `profile` command offers advanced HTTP probe functionality by default that can explore your Docker container's accessibility.
+The `profile` command carries out a more involved analysis of your [Docker](/blog/rails-with-docker) images. It performs a dynamic analysis where the Docker image is run, and the container created by that image is then analyzed and probed. This command analyzes both the Docker image and the Docker container that is created from that image. In addition, the `profile` command offers advanced HTTP probe functionality by default that can explore your Docker container's accessibility.
 
 You can utilize this command with the following syntax:
 
