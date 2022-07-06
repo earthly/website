@@ -167,3 +167,6 @@ beautifulsoup
 Seaborn
 toolset
 datetime
+architected
+specced
+Esc

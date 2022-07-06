@@ -3,10 +3,12 @@ title: "Using AWS Graviton"
 categories:
   - Tutorials
 toc: true
-author: Adam
+author: Kealan Parr
 
 internal-links:
- - just an example
+ - Amazon
+ - AWS
+ - EC2
 ---
 
 [Amazon Web Services (AWS)](https://aws.amazon.com/) is one of the most popular—and comprehensive—cloud service providers. It has over [200 fully-featured services](https://aws.amazon.com/what-is-aws/) on offer. There are enough services that it can be hard to remember them all.
@@ -87,7 +89,7 @@ Graviton processors are only available in [certain regions](https://aws.amazon.c
 
 Before starting, it's important to note that **Graviton instances are not included in the free usage tier**, so you'll incur costs in following this tutorial. Running an instance for a few minutes will cost very little, but it's important to remember to remove this instance once you're done with it to prevent charges from accruing.
 
-### Deploying with Graviton
+### Deploying With Graviton
 
 Go to the AWS Management platform and navigate to **EC2**. The user interface will look something like this:
 
@@ -130,15 +132,15 @@ Once this is complete, you can click **Launch instances** and start running the 
 
 Open a terminal in the directory where you saved your private key. To ensure your key is not publicly accessible, run the following command:
 
-```
+~~~{.bash caption=">_"}
 chmod 400 hello.pem
-```
+~~~
 
 You can track the status of your instance from your AWS EC2 instances dashboard underneath the **Instance state** header. Once your instance moves from initializing to running, you'll be able to access it:
 
-```
+~~~{.bash caption=">_"}
 ssh -i "hello.pem" ec2-user@ec2-184-72-90-10.compute-1.amazonaws.com
-```
+~~~
 
 In the previous command, you will need to change `ec2-user@ec2-184-72-90-10.compute-1.amazonaws.com` to your EC2 Public DNS instance, found by going to the instance **Details**, then locate the **Public IPv4 DNS**, as shown subsequently:
 
@@ -146,13 +148,13 @@ In the previous command, you will need to change `ec2-user@ec2-184-72-90-10.comp
 
 Now that you can access your EC2 instance, you'll run two commands. The first is to ensure that Go is installed into the machine, and the second is to update the instance:
 
-```
+~~~{.bash caption=">_"}
 sudo yum update -y
-```
+~~~
 
-```
+~~~{.bash caption=">_"}
 sudo yum install -y golang
-```
+~~~
 
 These commands will also create the environment variables you need.
 
@@ -160,15 +162,15 @@ Create a Go file by running `touch app.go` and then `vi app.go`, which will use 
 
 Insert the following "hello world!" application into the `app.go` file:
 
-```go
+~~~{.bash caption=">_"}
 package main
 
 import "fmt"
 
 func main() {
-	fmt.Println("hello world!")
+ fmt.Println("hello world!")
 }
-```
+~~~
 
 Pressing **Esc** will allow you to escape Vim's command mode; then type `:wq` to save and exit your folder. The final command you need to run is `go run app.go`.
 
@@ -184,11 +186,8 @@ In this article, you've gotten an overview of the Graviton processor architectur
 
 Companies around the world have used Graviton architecture to solve problems in their cloud workflows. Graviton isn't something that only benefits big companies, though—its high performance and low power consumption offer the flexibility to run cloud workflows of any size and take advantage of the savings Graviton provides.
 
-
 ## Outside Article Checklist
 
-- [ ] Add in Author page
-- [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
