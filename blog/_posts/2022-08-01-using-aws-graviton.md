@@ -116,11 +116,11 @@ If you need an exhaustive list, you can find one on this [YouTube tutorial](http
 
 You will also need to configure how accessible your EC2 instance will be. For simplicity's sake, this tutorial will be configured to allow access from anywhere. This can be done by allowing SSH traffic from 0.0.0.0/0, which will allow all connections:
 
-![Image showing SSH access set to 0.0.0.0/0]({{site.images}}{{page.slug}}/yNxrmhn.png)
+![Image showing SSH access set to 0.0.0.0/0]({{site.images}}{{page.slug}}/yNxrmhn.png)\
 
 In order to log in and SSH into your box, you'll need to ensure you have a key pair name. If you don't have one, then create one, as shown in the following UI:
 
-![Login for key pair shown]({{site.images}}{{page.slug}}/8HZ4E2e.png)
+![Login for key pair shown]({{site.images}}{{page.slug}}/8HZ4E2e.png)\
 
 To generate this, go to the **Key pair (login)** header on your AWS UI and click **Create new key pair**:
 
@@ -144,7 +144,10 @@ ssh -i "hello.pem" ec2-user@ec2-184-72-90-10.compute-1.amazonaws.com
 
 In the previous command, you will need to change `ec2-user@ec2-184-72-90-10.compute-1.amazonaws.com` to your EC2 Public DNS instance, found by going to the instance **Details**, then locate the **Public IPv4 DNS**, as shown subsequently:
 
+<div class="wide">
+
 ![EC2 Public DNS]({{site.images}}{{page.slug}}/2VJwTbz.png)
+</div>
 
 Now that you can access your EC2 instance, you'll run two commands. The first is to ensure that Go is installed into the machine, and the second is to update the instance:
 
@@ -178,7 +181,10 @@ Pressing **Esc** will allow you to escape Vim's command mode; then type `:wq` to
 
 If you've followed along, then you've just deployed a Go application to a Graviton EC2 instance, and you should see "hello world!" displayed in the terminal:
 
-!["hello world!" displayed in the EC2 shell]({{site.images}}{{page.slug}}/HrybAr1.png)
+<div class="wide">
+
+!["hello world!" displayed in the EC2 shell]({{site.images}}{{page.slug}}/HrybAr1.png)\
+</div>
 
 ## Conclusion
 
@@ -186,11 +192,11 @@ In this article, you've gotten an overview of the Graviton processor architectur
 
 Companies around the world have used Graviton architecture to solve problems in their cloud workflows. Graviton isn't something that only benefits big companies, though—its high performance and low power consumption offer the flexibility to run cloud workflows of any size and take advantage of the savings Graviton provides.
 
+{% include cta/cta1.html %}
+
 ## Outside Article Checklist
 
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Run mark down linter (`lint`)
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
