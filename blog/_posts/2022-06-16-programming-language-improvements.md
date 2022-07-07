@@ -5,7 +5,6 @@ categories:
 author: Adam
 
 ---
-<!-- vale off -->
 The 2022 Stack Overflow developer survey is out!
 
 And what's most interesting to me is how popular programming languages are loved or dreaded.[^1]
