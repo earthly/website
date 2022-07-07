@@ -7,7 +7,7 @@ author: Adam
 ---
 The 2022 Stack Overflow developer survey is out!
 
-And what's most interesting to me is how popular programming languages are loved or dreaded.[^1]
+And what's fascinating to me is how popular programming languages are either loved or dreaded.[^1]
 
 <div class="notice--success notice--big">
 
@@ -23,11 +23,11 @@ Rust, Typescript, Python, Go, C#, Kotlin, JavaScript
 Ruby, C++, Java, PHP, C
 </div>
 
-[^1]: What is included here are languages with more than 4200 stack overflow survey responses. I dropped HTML and SQL because they aren't pacmac-complete. And I also dropped Bash and Powershell because their scripting usage makes them less relevant to today's topic. See the full results [here](https://survey.stackoverflow.co/2022/#technology-most-loved-dreaded-and-wanted)
+[^1]: What is included here are languages with more than 4200 stack overflow survey responses. I dropped HTML and SQL because they aren't pacmac-complete. And I also dropped Bash and Powershell because their scripting usage makes them less relevant to today's topic. See the full results [on Stack Overflow](https://survey.stackoverflow.co/2022/#technology-most-loved-dreaded-and-wanted).
 
-So last developer survey, I wrote this post about [Green VS Brown languages](/blog/brown-green-language). In it, I said that when people like a new programming language, they judge it from a biased perspective because new things get used for new development, whereas the older things get used in existing projects, which are less exciting. So today, I'd like to talk about something big that misses: **Langauge tooling is getting better**[^2].
+So last developer survey, I wrote this post about [Green VS Brown languages](/blog/brown-green-language). In it, I said that when people like a new programming language, they judge it from a biased perspective because new things get used for new development, whereas the older things get used in existing projects, which are less exciting. So today, I'd like to talk about something big that misses: **Language tooling is getting better**[^2].
 
-[^2]: Langauge syntax and semantics also gets better over time as well. But its harder to talk about because people have strong opinions. Syntactic sugar is good, or its bad. Operator overloading is good or its bad. Borrow checking is good or unneeded with state of the art GCs. Innovation is happening here, but my favorite example of innovation might be your example that we've strayed to far from god (Or K&R).
+[^2]: Language syntax and semantics also gets better over time as well. But its harder to talk about because people have strong opinions. Syntactic sugar is good, or its bad. Operator overloading is good or its bad. Borrow checking is good or unneeded with state of the art GCs. Innovation is happening here, but my favorite example of innovation might be your example that we've strayed to far from god (Or K&R).
 
 ## Raising the Stakes - Go vs Rust
 
@@ -35,7 +35,7 @@ The internet is full of fights about Go vs. Rust. But I think the fascinating th
 
 That is, a big difference between working in Go or Rust vs. some of the languages on the dreaded list has nothing to do with the specifics of the language syntax. Instead, the difference is the tooling and supporting ecosystem.
 
-## Tooling Is The New Syntax
+## Tooling Is the New Syntax
 
 My thesis is that the tooling and developer experience for programming languages is improving over time. It goes like this: Tooling innovation happens, new languages adopt and standardize on it, and end up incrementally better than existing languages. If you add up enough of these increments, the older languages, which may have pioneered some of these innovations, seem painful and antiquated.
 
@@ -90,13 +90,13 @@ So, a great standard library that does most of the things you need to do, augmen
 
 ## History
 
-Once you have third party packages, you need an easy way's to document them. Javadoc and the related generated documentation was the first version of this I encountered. It made it much easier to find what I was looking for by clicking around in the javadocs on the web.
+Once you have third party packages, you need an easy way's to document them. Javadoc and the related generated documentation was the first version of this I encountered. It made it much easier to find what I was looking for by clicking around in the Javadocs on the web.
 
 Combine Javadoc with IDE integration and it becomes simple to work with code you've never seen before. Exploratory coding becomes possible.
 
 ## State of the Art
 
-Even Java with Java Docs is now behind the standard. Go has [godoc](https://pkg.go.dev/), Julia has [Documenter.jl](https://github.com/JuliaDocs/Documenter.jl) and even [hackage](https://hackage.haskell.org/) has pretty good package docs. But the state of the art seems to be Rust with [docs.rs](https://docs.rs/).
+Even Java with Java Docs is now behind the standard. Go has [`godoc`](https://pkg.go.dev/), Julia has [`Documenter.jl`](https://github.com/JuliaDocs/Documenter.jl) and even [hackage](https://hackage.haskell.org/) has pretty good package docs. But the state of the art seems to be Rust with [docs.rs](https://docs.rs/).
 
 ## Write Once, Run Most Places ™
 
@@ -115,7 +115,7 @@ Containerization, and virtualization before it, have made this far more common, 
 
 There are of course downsides to the Java approach. One of which is the slow start-up time of JIT code and another is the limitation of not being able to easily call something that isn't written in Java.
 
-The current trend for running everywhere seems to be ahead-of-time cross-compiled native executables. Both Rust and Go make this fairly easy assuming you don't have any c or libc dependendcies.
+The current trend for running everywhere seems to be ahead-of-time cross-compiled native executables. Both Rust and Go make this fairly easy assuming you don't have any c or `libc` dependendcies.
 
 But the state of the art appears to be Zig, which can easily cross compile not just Zig programs but also anything that would normally be build with Clang or GCC.
 
@@ -137,7 +137,7 @@ All this complexity makes it hard for new users to get up to speed, so new langu
 
 Much like how the batteries-included standard library expanded the definition of a language, modern package managers have raised expectations substantially. The upside of this expansion is the ease of onboarding and improved developer experience. The downside is that packaging, vendoring, and build software is not free. The language authors must pour many engineering hours into these tools to solve these problems.
 
-### State of The Art
+### State of the Art
 
 This package manager tool area is currently fast-moving. If you invest a lot of engineering hours, you can improve your language onboarding and day to day usage experience. And so the stakes here keep growing. The `cargo` and `rustup` documentation for Rust are almost as extensive as the rust book, and that doesn't include all the cargo plugins.
 
