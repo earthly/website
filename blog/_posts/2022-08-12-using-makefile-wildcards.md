@@ -9,6 +9,7 @@ internal-links:
  - Makefiles
  - Wildcard
  - Programming
+ - Make
 ---
 
 Although many of the new modern programming frameworks, like [Node.js](https://nodejs.org/en/) and [.NET](https://en.wikipedia.org/wiki/.NET), come with their own way of packaging and distributing their programs, there's no doubt that [Make](https://www.gnu.org/software/make/) originally created a lot of the founding principles for building and distributing software.
@@ -20,6 +21,9 @@ In this article, you'll get a quick introduction to [Make](/blog/makefiles-on-wi
 If you want to see all the code from this tutorial in one place, you can find it in [this GitHub repository](https://github.com/KSiig/makefile-wildcards).
 
 ## How To Use Make
+
+![How to use make]({{site.images}}{{page.slug}}/how.jpg)\
+
 
 To begin, define a sample application you can use as an example. As any experienced programmer will know, the best example is that of "Hello, World!" This is what it looks like in C:
 
@@ -49,6 +53,8 @@ It's assumed that you are familiar with [Make](/blog/makefiles-on-windows) and i
 Now, the basis of the application is done, and it's time to introduce wildcards.
 
 ## Makefile Wildcards
+
+![Makefile Wildcard]({{site.images}}{{page.slug}}/wildcard.png)\
 
 As mentioned in the introduction, when you want your Makefile targets to be flexible, wildcards come into play. Wildcards can be effective in many places but only pick up files matching a pattern. Now, dive deeper into what is possible with wildcards:
 
@@ -94,6 +100,8 @@ clean:
 This is one of the most common pitfalls in `make`. Now `make` will read the variable first and evaluate the `wildcard` function, meaning the variable actually contains the list of files. Then, when the variable is called in the recipe, it's a list of files.
 
 ## Rules With Wildcards
+
+![Rules Wildcard]({{site.images}}{{page.slug}}/rules.png)\
 
 You've now seen some examples of how wildcards can be used inside of Makefiles, but it's also possible to use pattern matching when defining your rules. By defining a rule inside your Makefile with the `%` character, you can refer to the pattern inside the target by using the character sequence `$*`. As an example, here's how you can integrate a wildcard into a rule where you want to create a binary from a given `.c` file:
 
@@ -145,9 +153,4 @@ Wildcards are a handy utility when creating your Makefiles. You can use them dir
 
 While Make is a popular tool with many possibilities and some downsides. For a modern approach to builds, check out [Earthly](https://earthly.dev/), a tool that has combined the best parts of Makefiles and [Dockerfiles](https://docs.docker.com/engine/reference/builder/).
 
-## Outside Article Checklist
-
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
-- [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
+{% include cta/cta1.html %}
