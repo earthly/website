@@ -24,7 +24,6 @@ If you want to see all the code from this tutorial in one place, you can find it
 
 ![How to use make]({{site.images}}{{page.slug}}/how.jpg)\
 
-
 To begin, define a sample application you can use as an example. As any experienced programmer will know, the best example is that of "Hello, World!" This is what it looks like in C:
 
 ~~~{.bash caption=">_"}
