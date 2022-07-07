@@ -6,14 +6,16 @@ toc: true
 author: Kasper Siig
 
 internal-links:
- - just an example
+ - Makefiles
+ - Wildcard
+ - Programming
 ---
 
 Although many of the new modern programming frameworks, like [Node.js](https://nodejs.org/en/) and [.NET](https://en.wikipedia.org/wiki/.NET), come with their own way of packaging and distributing their programs, there's no doubt that [Make](https://www.gnu.org/software/make/) originally created a lot of the founding principles for building and distributing software.
 
-Make provides users with many exciting possibilities, including making packaging software easy and automated. This saves time when building software, and it's a massive aid in creating a streamlined process. Once you get started building [Makefiles](https://www.gnu.org/software/make/manual/html_node/Introduction.html), you'll notice that there are places where you don't want something to be hardcoded. This is where wildcards come into play. They're one of the parts that turn Make into an incredibly flexible tool build tool.
+[Make](/blog/using-cmake) provides users with many exciting possibilities, including making packaging software easy and automated. This saves time when building software, and it's a massive aid in creating a streamlined process. Once you get started building [Makefiles](https://www.gnu.org/software/make/manual/html_node/Introduction.html), you'll notice that there are places where you don't want something to be hardcoded. This is where wildcards come into play. They're one of the parts that turn Make into an incredibly flexible tool build tool.
 
-In this article, you'll get a quick introduction to Make, where you'll be shown an example C application. Don't be worried if you're not familiar with C programming; the application is simple to understand, and your familiarity with any language is more than enough. With this application, you'll be guided through various ways to implement wildcards into the build process.
+In this article, you'll get a quick introduction to [Make](/blog/makefiles-on-windows), where you'll be shown an example C application. Don't be worried if you're not familiar with C programming; the application is simple to understand, and your familiarity with any language is more than enough. With this application, you'll be guided through various ways to implement wildcards into the build process.
 
 If you want to see all the code from this tutorial in one place, you can find it in [this GitHub repository](https://github.com/KSiig/makefile-wildcards).
 
@@ -42,7 +44,7 @@ main.o: main.c
 
 > Note: Make is very particular about indentation, so make sure you use a `tab` on the second line.
 
-It's assumed that you are familiar with Make and its syntax, but you may be unfamiliar with [GCC](https://www.linuxtopia.org/online_books/an_introduction_to_gcc/gccintro_82.html). It's the compiler most commonly used for C programs. In this command, you define that `gcc` should compile the program into a binary called `hello`, and it should do this using the `main.c` file.
+It's assumed that you are familiar with [Make](/blog/makefiles-on-windows) and its syntax, but you may be unfamiliar with [GCC](https://www.linuxtopia.org/online_books/an_introduction_to_gcc/gccintro_82.html). It's the compiler most commonly used for C programs. In this command, you define that `gcc` should compile the program into a binary called `hello`, and it should do this using the `main.c` file.
 
 Now, the basis of the application is done, and it's time to introduce wildcards.
 
@@ -104,7 +106,7 @@ Now you can run `make main.out`, and it will create the `main` binary from the `
 
 ### Associated Functions
 
-You've now learned about most of the uses that are specific to Make, but it's important to note that there are also places inside Make where you can use wildcards like you would in many other scenarios you're used to, like Bash programming. Here are a few examples:
+You've now learned about most of the uses that are specific to Make, but it's important to note that there are also places inside [Make](/blog/makefiles-on-windows) where you can use wildcards like you would in many other scenarios you're used to, like Bash programming. Here are a few examples:
 
 #### The Patsubst Function
 
@@ -141,14 +143,11 @@ In this example, the relevant projects files are `foo.c bar.c foo.o bar.o`, but 
 
 Wildcards are a handy utility when creating your Makefiles. You can use them directly in your rules, however, you have to ensure that you're using them correctly and consider whether you need to use the `wildcard` function. Besides by using the wildcards directly in your targets, you can also use pattern matching in your rules to create more dynamic targets.
 
-While Make is a popular tool with many possibilities and some downsides. For a modern approach to builds, check out[Earthly](https://earthly.dev/), a tool that has combined the best parts of Makefiles and [Dockerfiles](https://docs.docker.com/engine/reference/builder/).
+While Make is a popular tool with many possibilities and some downsides. For a modern approach to builds, check out [Earthly](https://earthly.dev/), a tool that has combined the best parts of Makefiles and [Dockerfiles](https://docs.docker.com/engine/reference/builder/).
 
 ## Outside Article Checklist
 
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
 - [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
