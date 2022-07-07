@@ -48,7 +48,9 @@ Docker Slim currently works with Linux and Mac operating systems. It can be inst
 For the purpose of this article, an Ubuntu (18.04 LTS) environment was used with Docker Slim installed using the prepared Bash script available on the official [Docker Slim GitHub repo](https://github.com/docker-slim/docker-slim/blob/master/scripts/install-dockerslim.sh) and the following CLI command:
 
 ~~~{.bash caption=">_"}
-curl -sL https://raw.githubusercontent.com/docker-slim/docker-slim/master/scripts/install-dockerslim.sh | sudo -E bash -
+curl -sL \
+ https://raw.githubusercontent.com/docker-slim/docker-slim/master/scripts/install-dockerslim.sh \
+ | sudo -E bash -
 ~~~
 
 ## Using Docker Slim
@@ -155,7 +157,8 @@ Docker Slim automatically generates [AppArmor](https://apparmor.net/) and [Secco
 You can use the security profile generated in the previous build command using the following syntax:
 
 ~~~{.bash caption=">_"}
-docker run -it --rm -d -p 8080:80 --security-opt apparmor:nginx-apparmor-profile nginx.slim
+docker run -it --rm -d -p 8080:80 \
+--security-opt apparmor:nginx-apparmor-profile nginx.slim
 ~~~
 
 This command utilizes the created `apparmor` security profile in the working directory to start up an `nginx` container using the minimized image. An `nginx` web server is up and running at [http://localhost:8080/](http://localhost:8080/) and its security profile protects the container from internal or external threats by restricting program capabilities such as read or write permission on certain files, as well as root access. It also limits network access to bar unpermitted entry.
