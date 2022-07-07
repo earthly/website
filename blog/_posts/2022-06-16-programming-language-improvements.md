@@ -65,6 +65,8 @@ Most modern languages (that aren't JavaScript) now ship with extensive standard 
 
 ## Third-Party Package Repository
 
+{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/6280.png --alt {{ CPAN }} %}
+
 ### History
 
 Around the time more extensive standard libraries became a thing, the world-wide-web was also taking off, and the internet proved to be pretty good at fostering collaboration.
@@ -78,7 +80,7 @@ It's hard to find a commonly used programming language created after 2003 that d
 <div class="notice notice--big">
 ## Side Note: Backporting.
 
-{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/3570.png --alt {{ Backporting }} %}
+{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/8470.png --alt {{ Backporting }} %}
 
 Ok, so you might wonder, if CPAN made Perl better and every language moving forward embraced package managers for third-party code, why didn't languages predating this add on package managers after the fact?
 
@@ -93,6 +95,8 @@ One counter point here though is standard libraries. C++ added its standard libr
 So, a great standard library that does most of the things you need to do, augmented with a third party package repositoy that is simple to use and straight forward to contribute to. That is now table stakes for a language.
 
 ## Documentation Support
+
+{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/6680.png --alt {{  Javadoc }} %}
 
 ## History
 
@@ -113,6 +117,8 @@ Even Java with Java Docs is now behind the standard. Go has [`godoc`](https://pk
 
 ### History
 
+{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/7310.png --alt {{ Java ME on Nokia Phones }} %}
+
 Java and the JVM really pushed the line for cross platform development. No longer did your developer environment need to match your production environment. With the JVM, you could compile things down to JARs and run it anywhere with a Java Virtual Machine installed.
 
 Containerization, and virtualization before it, have made this far more common, but the JVM was a big deal.
@@ -127,11 +133,11 @@ But the state of the art appears to be Zig, which can easily cross compile not j
 
 ## Package Managers
 
-### History
+<div class="align-right">
+ {% picture grid {{site.pimages}}{{page.slug}}/7910.png --picture --img width="400px" --alt {{ Add Nutmeg }} %}
+</div>
 
-> If you're going to invent/create a new language, what is the minimum in tooling that any early adopter developer would expect? Early adopters tend to have a lower bar to try new things, but I still find myself wanting [ a ] single-command compile/build for all files as a minimum.
->
-> Nogginly
+### History
 
 Languages have compilers, and they have lots of flags that you call them with, but this quickly becomes a pain. So things like Make and Autotools came to exist. Now introduce a third-party package ecosystem, and things get even more complex. So you get stuff like Maven and `pip`. Then you have issues like multiple versions of the compiler or runtime and different programs require different versions of packages and in Python you end up with things like `pipenv` and `virtualenv` and something called `conda` that I don't even understand.
 
@@ -145,13 +151,13 @@ Much like how the batteries-included standard library expanded the definition of
 
 ### State of the Art
 
-This package manager tool area is currently fast-moving. If you invest a lot of engineering hours, you can improve your language onboarding and day to day usage experience. And so the stakes here keep growing. The `cargo` and `rustup` documentation for Rust are almost as extensive as the rust book, and that doesn't include all the cargo plugins.
-
-Can you easily switch compiler versions in your language? Can you quickly run tests? Can you easily do code coverage, and performance testing? Vendor code? Generate documentation? Lint code? Fix the code lints? All of these used to be stand-alone tools in various language ecosystems and now they come with Rust out of the box. And it's a similar story for Go. I assume other newer languages will try to match or exceed this level of tooling.
-
 >I think one main advantage that cargo has is that it came with the language. Retro active build tools often lack integration into the platform as a whole
 >
 > Freemasen
+
+This package manager tool area is currently fast-moving. If you invest a lot of engineering hours, you can improve your language onboarding and day to day usage experience. And so the stakes here keep growing. The `cargo` and `rustup` documentation for Rust are almost as extensive as the rust book, and that doesn't include all the cargo plugins.
+
+Can you easily switch compiler versions in your language? Can you quickly run tests? Can you easily do code coverage, and performance testing? Vendor code? Generate documentation? Lint code? Fix the code lints? All of these used to be stand-alone tools in various language ecosystems and now they come with Rust out of the box. And it's a similar story for Go. I assume other newer languages will try to match or exceed this level of tooling.
 
 ## Code Formatters
 
@@ -179,6 +185,8 @@ The tooling that enables developers to get work done is a massive part of what m
 
 It goes like this:
 
-When a new developer tooling innovation is discovered, newer programming languages get a chance to bake that innovation into their language. Doing so gives them an incremental advantage, and these increments add up over time to a better developer experience and make older languages feel old.
+When a new developer tooling innovation is discovered, newer programming languages get a chance to bake that innovation into their language tooling. Doing so gives them an incremental advantage, and these increments add up over time to a better developer experience.
+
+So newer languages have one clear well thought out way to do something and older langauges will have either many contradictory ways or no ways at all, do the same thing. And this makes older languages feel old.
 
 {% include cta/cta1.html %}
