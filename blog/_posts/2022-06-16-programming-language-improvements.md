@@ -44,7 +44,7 @@ It will make more sense once I give some examples. So here is a partial list of 
 
 ## Batteries-Included Standard Library
 
-> I'm not sure whether it's a blessing or a curse, but expansive standard libraries [are a big improvement]. It's possible to get a lot done with PHP, Python, and Go without needing to install any third party library. They come with json, http client and server, and even database access for the most part.
+> I'm not sure whether it's a blessing or a curse, but expansive standard libraries [are a big improvement]. It's possible to get a lot done with PHP, Python, and Go without needing to install any third-party library. They come with json, http client and server, and even database access for the most part.
 >
 > Amir Saeid
 
@@ -136,25 +136,23 @@ All this complexity makes it hard for new users to get up to speed, so new langu
 >
 > Ganesh Sittampalam
 
-Much like how the batteries-included standard library expanded the definition of a language, modern package managers have raised expectations substantially. The upside of this expansion is the ease of onboarding and improved developer experience. The downside is that packaging, vendoring, and build software is not free. Many engineering hours need to be poured into these tools to solve these problems.
+Much like how the batteries-included standard library expanded the definition of a language, modern package managers have raised expectations substantially. The upside of this expansion is the ease of onboarding and improved developer experience. The downside is that packaging, vendoring, and build software is not free. The language authors must pour many engineering hours into these tools to solve these problems.
 
 ### State of The Art
 
-This package manager tool area is currently fast-moving. If you can invest a lot of engineering hours, you can make the onboarding experience much better. The stakes here keep growing. It seems like the cargo, and rustup documentation for Rust are almost as extensive as the rust book, and this effort shows.
+This package manager tool area is currently fast-moving. If you invest a lot of engineering hours, you can improve your language onboarding and day to day usage experience. And so the stakes here keep growing. The `cargo` and `rustup` documentation for Rust are almost as extensive as the rust book, and that doesn't include all the cargo plugins.
 
-Can you easily switch compiler versions in your language? Can you quickly run tests? Can you easily do code coverage, and performance testing? Vendor code? Generate documentation? Lint code? Fix code lints? All of these used to be things that were stand-alone tools or functions in various language ecosystems now come with Rust out of the Box. And it's a similar story for Go. I assume other newer languages will try to match or exceed this level of tooling.
+Can you easily switch compiler versions in your language? Can you quickly run tests? Can you easily do code coverage, and performance testing? Vendor code? Generate documentation? Lint code? Fix the code lints? All of these used to be stand-alone tools in various language ecosystems and now they come with Rust out of the box. And it's a similar story for Go. I assume other newer languages will try to match or exceed this level of tooling.
 
 >I think one main advantage that cargo has is that it came with the language. Retro active build tools often lack integration into the platform as a whole
 >
 > Freemasen
 
-In the previous [Red vs Green](/blog/brown-green-language) article much discussion broke out on hacker news about whether Rust or Go syntax would be considered great or horrible in the future. The differences between the languages approaches the syntax and semantics couldn't be more different.
-
 ## Code Formatters
 
 ## Case Study: `gofmt`
 
-Code formatters existed before `gofmt`, just as third-party software packages exited before `CPAN`, but making something, a standard for a community profoundly changes things. For example, no language before Go is likely to achieve the near 100% style conformance that Go has because the existing languages have to deal with existing code, whereas `gofmt` enforces a single style and has no knobs to tweak. But languages that follow Go can learn this lesson. And so Rust (`rustfmt`) and Zig (`zig fmt`) have embraced no-knob, one-uniform-style code formatting and have gained an edge in developer experience.
+Code formatters existed before `gofmt`, just as third-party software packages exited before `CPAN`, but making something a standard for a community profoundly changes things. For example, no language before Go is likely to achieve the near 100% style conformance that Go has because the existing languages have to deal with existing code, whereas `gofmt` enforces a single style and has no knobs to tweak. Languages that follow Go can learn this lesson. And so Rust (`rustfmt`) and Zig (`zig fmt`) have embraced no-knob, one-uniform-style code formatting and have gained an edge in developer experience.
 
 ## So Much More
 
@@ -172,7 +170,7 @@ Certainly, Jupyter notebooks and REPLs are essential in some domains but unknown
 
 ## Conclusion
 
-The tooling that enables developers to get work done is a massive part of what makes a language useable. It's also a changing landscape where standards keep rising, yet it's not talked about very much.
+The tooling that enables developers to get work done is a massive part of what makes a language useable. It's also a changing landscape where standards keep rising, yet it's not discussed much.
 
 It goes like this:
 
