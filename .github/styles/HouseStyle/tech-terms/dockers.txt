@@ -1,0 +1,3 @@
+Dockershim
+kaniko
+se
