@@ -167,6 +167,10 @@ beautifulsoup
 Seaborn
 toolset
 datetime
+Seccomp
+Xray
+unpermitted
+
 
 architected
 specced
@@ -176,4 +180,5 @@ hardcoded
 Patsubst
 patsubst
 llox
+
 
