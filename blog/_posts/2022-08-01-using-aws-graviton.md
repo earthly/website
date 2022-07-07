@@ -65,7 +65,6 @@ As long as your code hasn't been built and architected exclusively for x86 archi
 
 ![Security]({{site.images}}{{page.slug}}/security.jpg)\
 
-
 Graviton processors have a rich feature set that focuses heavily on security and elasticity. This is done by building Graviton on top of the [Nitro chip](https://aws.amazon.com/ec2/nitro/). This ensures security features like the following:
 
 - Always-on memory encryption
