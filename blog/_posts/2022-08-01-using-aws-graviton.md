@@ -199,4 +199,3 @@ Companies around the world have used Graviton architecture to solve problems in 
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
