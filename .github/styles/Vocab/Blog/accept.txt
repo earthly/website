@@ -10,6 +10,15 @@ mdspell
 textlint
 proselint
 ie
+m6g
+m6gd
+c7g
+c6gd
+c6gn
+c6G
+r6G
+t4G
+
 
 # probably not a real world and should remove, but for now
 repos?
