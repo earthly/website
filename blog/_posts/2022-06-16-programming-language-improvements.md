@@ -96,7 +96,7 @@ So, a great standard library that does most of the things you need to do, augmen
 
 ## Documentation Support
 
-{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/6680.png --alt {{  Javadoc }} %}
+{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/6680.png --alt {{ Javadoc }} %}
 
 ## History
 
@@ -187,6 +187,6 @@ It goes like this:
 
 When a new developer tooling innovation is discovered, newer programming languages get a chance to bake that innovation into their language tooling. Doing so gives them an incremental advantage, and these increments add up over time to a better developer experience.
 
-So newer languages have one clear well thought out way to do something and older langauges will have either many contradictory ways or no ways at all, do the same thing. And this makes older languages feel old.
+So newer languages have one clear well thought out way to do something and older languages will have either many contradictory ways or no ways at all, do the same thing. And this makes older languages feel old.
 
 {% include cta/cta1.html %}
