@@ -64,10 +64,16 @@ The `context` and `time` modules were imported to set timeouts for your operatio
 After creating a [MongoDB Atlas cluster](https://www.mongodb.com/basics/clusters/mongodb-cluster-setup), you'll need to get a connection URI String to connect to your Cluster from your application.
 
 Click on **connect**, choose "**connect to your application**," choose **Go** as your preferred language, select a Go version, and copy the connection URI string.
+<div class="wide">
 
 ![Screenshot from 2022-05-13 15-16-12.png]({{site.images}}{{page.slug}}/first.png)\
+</div>
+
+<div class="wide">
 
 ![textsthththtt.png]({{site.images}}{{page.slug}}/second.png)\
+
+</div>
 
 Once you have the connection URI string, you can now connect to the MongoDB Atlas cluster.
 
@@ -137,7 +143,7 @@ You can print the list of database names using the `ListDatabaseNames` method on
 
 The `ListDatabaseNames` method takes in a context and `bson.M`; it outputs the database names as shown below.
 
-~~~{.go caption="main.go"}
+~~~{.ini caption="Output"}
 >>> [sample_airbnb sample_analytics sample_geospatial sample_guides sample_mflix sample_restaurants sample_supplies sample_training sample_weatherdata admin local]
 ~~~
 
@@ -213,6 +219,7 @@ Here's the result of the insertion on the command line and MongoDB's Atlas UI
 
 ![Screenshot 2022-05-30 at 16.36.31.png]({{site.images}}{{page.slug}}/fourtha.png)\
 </div>
+
 <div class="wide">
 
 ![Screenshot 2022-05-30 at 16.36.39.png]({{site.images}}{{page.slug}}/fourthb.png)\
@@ -280,7 +287,10 @@ In the example above, after specifying that all documents in the collection shou
 
 Here's the result of printing out the `music` slice.
 
+<div class="wide">
+
 ![Screenshot 2022-06-01 at 20.45.31.png]({{site.images}}{{page.slug}}/sixth.png)\
+</div>
 
 You can go on to manipulate the slice of maps and format it; that's why decoding the results into a native Go data structure was important.
 
@@ -308,7 +318,8 @@ The query's result was decoded into the declared music struct, and possible erro
 <div class="wide">
 
 ![Screenshot 2022-06-01 at 22.09.24.png]({{site.images}}{{page.slug}}/seventh.png)\
-<div>
+</div>
+
 If you're interested in only one result, you can use the `FindOne` method instead to retrieve the first result of your collections query.
 
 ### Updating Mongodb Documents With Go
@@ -343,6 +354,7 @@ Possible errors were handled, and a modified count was printed using the `Modifi
 
 ![Screenshot 2022-06-02 at 17.46.06.png]({{site.images}}{{page.slug}}/eight.png)\
 </div>
+
 Here's the result of the update from the Atlas cluster; notice that the value of the Song field was changed from "`Don't Run`" to "`Why are you running`."
 
 ## Replacing Mongodb Documents With Go
@@ -369,6 +381,7 @@ Here's the result of the replacement from the Atlas Cluster.
 
 ![Screenshot 2022-06-02 at 18.11.07.png]({{site.images}}{{page.slug}}/eleventh.png)\
 </div>
+
 You have seen how to create, update, and insert documents. Let's see how you can delete documents in [MongoDB](/blog/mongodb-docker) Collections using the Go programming language.
 
 ## Deleting Mongodb Documents With Go
@@ -394,6 +407,7 @@ Recall that there were three documents in the Cluster; the delete operation has 
 
 ![Screenshot 2022-06-02 at 15.30.08.png]({{site.images}}{{page.slug}}/tenth.png)\
 </div>
+
 Deleting all documents in a collection is the same as deleting the collection itself; let's overview how you can delete a collection.
 
 ## Deleting a MongoDB Collection with Go
