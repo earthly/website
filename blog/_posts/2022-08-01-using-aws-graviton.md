@@ -93,13 +93,19 @@ Before starting, it's important to note that **Graviton instances are not includ
 
 Go to the AWS Management platform and navigate to **EC2**. The user interface will look something like this:
 
+<div class="wide">
+
 ![EC2 Dashboard]({{site.images}}{{page.slug}}/h33nlgS.png)
+</div>
 
 Open the **Instances** menu and click **Instances**, highlighted in yellow in the previous picture. This will launch your EC2 instance.
 
 Click the orange button at the top right of the screen that says **Launch instances**:
 
+<div class="wide">
+
 ![Launch instances]({{site.images}}{{page.slug}}/DHSQRdB.png)
+</div>
 
 Next, you need to change the **Architecture** drop-down to be **64-bit (Arm)**, after which the **Instance Type** drop-down will allow you to pick instances that run Graviton. This is a crucial step for launching an EC2 instance that's specifically running Graviton ARM architecture. Some of the instances running Graviton are as follows:
 
@@ -115,16 +121,24 @@ Next, you need to change the **Architecture** drop-down to be **64-bit (Arm)**, 
 If you need an exhaustive list, you can find one on this [YouTube tutorial](https://youtu.be/kAg7U2I2hzQ?t=1974).
 
 You will also need to configure how accessible your EC2 instance will be. For simplicity's sake, this tutorial will be configured to allow access from anywhere. This can be done by allowing SSH traffic from 0.0.0.0/0, which will allow all connections:
+<div class="wide">
 
 ![Image showing SSH access set to 0.0.0.0/0]({{site.images}}{{page.slug}}/yNxrmhn.png)\
+</div>
 
 In order to log in and SSH into your box, you'll need to ensure you have a key pair name. If you don't have one, then create one, as shown in the following UI:
 
+<div class="wide">
+
 ![Login for key pair shown]({{site.images}}{{page.slug}}/8HZ4E2e.png)\
+</div>
 
 To generate this, go to the **Key pair (login)** header on your AWS UI and click **Create new key pair**:
 
+<div class="wide">
+
 ![Login generation]({{site.images}}{{page.slug}}/ceRFkFU.png)
+</div>
 
 This essentially downloads a private key to uniquely identify you on the terminal. Make a note of the download location and make sure it's somewhere you can easily access.
 
