@@ -37,6 +37,8 @@ When they spoke to their customers, from small and large companies alike, they d
 
 ## Benefits of Graviton
 
+![Benefits]({{site.images}}{{page.slug}}/benefits.jpg)\
+
 Graviton offers a number of benefits in a variety of applications, including strong performance, good security practices, and excellent software integrations.
 
 ### Best Performance per Dollar
@@ -61,6 +63,9 @@ As long as your code hasn't been built and architected exclusively for x86 archi
 
 ### Improved Security
 
+![Security]({{site.images}}{{page.slug}}/security.jpg)\
+
+
 Graviton processors have a rich feature set that focuses heavily on security and elasticity. This is done by building Graviton on top of the [Nitro chip](https://aws.amazon.com/ec2/nitro/). This ensures security features like the following:
 
 - Always-on memory encryption
@@ -76,6 +81,8 @@ Graviton3 architecture uses up to sixty percent less energy on a comparably spec
 Graviton2 offered [significant improvements](https://www.justaftermidnight247.com/insights/everything-you-need-to-know-about-aws-graviton2/) over the first Graviton offering, boasting substantial performance gains, caches twice as fast as the original, quadruple the compute cores, and five times faster memory.
 
 ## Deploying on AWS Graviton
+
+![Deployment]({{site.images}}{{page.slug}}/deployment.png)\
 
 It's worth noting that ARM-based processor architecture isn't compatible with everything. Windows out of the box won't work on it, for example. You'll have to check if your particular use case will work natively on ARM-based architecture. If it won't, you'll need to either migrate it to ARM or see if you can rework your solution.
 
@@ -179,7 +186,7 @@ Create a Go file by running `touch app.go` and then `vi app.go`, which will use 
 
 Insert the following "hello world!" application into the `app.go` file:
 
-~~~{.bash caption=">_"}
+~~~{.go caption="app.go"}
 package main
 
 import "fmt"
@@ -207,9 +214,3 @@ In this article, you've gotten an overview of the Graviton processor architectur
 Companies around the world have used Graviton architecture to solve problems in their cloud workflows. Graviton isn't something that only benefits big companies, though—its high performance and low power consumption offer the flexibility to run cloud workflows of any size and take advantage of the savings Graviton provides.
 
 {% include cta/cta1.html %}
-
-## Outside Article Checklist
-
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
