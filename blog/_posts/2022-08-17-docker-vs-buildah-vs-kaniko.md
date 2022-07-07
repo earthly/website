@@ -22,17 +22,17 @@ In this article, you'll be introduced to three container image build tools: Dock
 
 ## Introduction to Docker, Buildah, and kaniko
 
-![Docker logo](https://i.imgur.com/iFyvSui.png)
+![Docker logo]({{site.images}}{{page.slug}}/iFyvSui.png)
 
 As previously mentioned, Docker is by far [the most popular option](https://trends.google.com/trends/explore?date=all&q=docker,kaniko,buildah) on this list and is the tool that helped containerization gain popularity. Docker was launched in 2013 in order to build images, and today, it's still widely used by many.
 
-![kaniko logo](https://i.imgur.com/7lpG7g4.png)
+![kaniko logo]({{site.images}}{{page.slug}}/7lpG7g4.png)
 
 kaniko, released in 2018, doesn't have the longevity of Docker yet; however, it's backed by one of the biggest companies in the world: Google. Because of this, kaniko has quickly become a mature product and has been adopted by many engineers.
 
 kaniko was primarily developed with one goal: allowing engineers to build container images inside unprivileged containers or inside Kubernetes.
 
-![Buildah](https://i.imgur.com/ZzocU9y.png)
+![Buildah]({{site.images}}{{page.slug}}/ZzocU9y.png)
 
 Also released in 2018, Buildah doesn't have the same backing or focus that kaniko does. However, not having the same backing as Google doesn't mean it doesn't have a big company behind it. [Red Hat](https://www.redhat.com/en) is the company in charge of Buildah, which makes sense, as they are also the company behind [Podman](https://podman.io/). Podman is a tool that aims to solve the same use case as Docker as well as issues outside of building images. You can read more about the difference between Podman and Docker [in this blog post](https://www.imaginarycloud.com/blog/podman-vs-docker/#:~:text=Docker%20uses%20a%20daemon%2C%20an,does%20not%20need%20the%20mediator.). Buildah primarily focuses on providing an efficient way of building container images to be [Open Container Initiative (OCI)](https://opencontainers.org/) compliant.
 
@@ -119,6 +119,5 @@ No matter the tool you choose to build your images, it's important that the appl
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Run mark down linter (`lint`)
-- [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
 - [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
