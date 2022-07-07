@@ -26,15 +26,15 @@ Ruby, C++, Java, PHP, C
 
 [^1]: What is included here are languages with more than 4200 stack overflow survey responses. I dropped HTML and SQL because they aren't pacmac-complete. And I also dropped Bash and Powershell because their scripting usage makes them less relevant to today's topic. See the full results [here](https://survey.stackoverflow.co/2022/#technology-most-loved-dreaded-and-wanted)
 
-So last developer survey, I wrote this post about [Green VS Brown languages](/blog/brown-green-language). In it, I said that when people like a new programming language, they judge it from a biased perspective because new things get used for new development, whereas the older things get used in existing projects, which are less exciting. So today, I’d like to talk about something big that misses: **Langauge tooling is getting better**[^2].
+So last developer survey, I wrote this post about [Green VS Brown languages](/blog/brown-green-language). In it, I said that when people like a new programming language, they judge it from a biased perspective because new things get used for new development, whereas the older things get used in existing projects, which are less exciting. So today, I'd like to talk about something big that misses: **Langauge tooling is getting better**[^2].
 
 [^2]: Langauge syntax and semantics also gets better over time as well. But its harder to talk about because people have strong opinions. Syntactic sugar is good, or its bad. Operator overloading is good or its bad. Borrow checking is good or unneeded with state of the art GCs. Innovation is happening here, but my favorite example of innovation might be your example that we've strayed to far from god (Or K&R).
 
 ## Raising the Stakes - Go vs Rust
 
-The internet is full of fights about Go vs. Rust. But I think the fascinating thing is actually how similar they are in developer experience. They both have a modern, batteries included take on developer tooling. You don't need to wonder that best tool to use for testing, or fuzzing or packaging or linting. All these things are standardized and included. And this is one reason they are both at the top of the `Loved` list.
- 
-That is, a big difference between working in Go or Rust vs some the languages on the dreaded list has nothing to do with the specifics of the language syntax. Instead the differences is the tooling and supporting ecosystem.
+The internet is full of fights about Go vs. Rust. But I think the fascinating thing is how similar they are in developer experience. They both have a modern, batteries-included take on developer tooling that is very different from many of the languages in the DREAD list. You don't need to wonder what best tool to use for testing, fuzzing, packaging, or linting. All these things are standardized and included. And this is one reason they are both at the top of the `Loved` list.
+
+That is, a big difference between working in Go or Rust vs. some of the languages on the dreaded list has nothing to do with the specifics of the language syntax. Instead, the difference is the tooling and supporting ecosystem.
 
 ## Tooling Is The New Syntax
 
@@ -50,7 +50,7 @@ It will make more sense once I give some examples. So here is a partial list of 
 
 ### History
 
-A standard library is a library of common things that come with the language and are ideally written in the language itself. C has libc, and C++ has libcpp but both these feel very minimal compared to the common conception of a batteries-included standard library.
+A standard library is a library of common things that come with the language and are ideally written in the language itself. C has `libc`, and C++ has `libcpp`, but both feel very minimal compared to the common conception of a batteries-included standard library.
 
 The history is a little unclear to me, but it seems like Python (1991) was the first language to take the stance of really having an extensive standard library. Java 1.0 (1996) also came with an extensive standard library (The Java Class Library), and many other languages would follow suite.
 
@@ -66,11 +66,11 @@ Most modern languages (that aren't JavaScript) now ship with extensive standard 
 
 Around the time more extensive standard libraries became a thing, the world-wide-web was also taking off, and the internet proved to be pretty good at fostering collaboration.
 
-Eventually, you outstrip even the most inclusive of standard libraries and have to build something yourself. Or do you? Perl popularized the idea of a global collection of packages with CPAN, and nothing has been the same since. I think it's fair to say that people who used and contributed to CPAN knew it was a game-changer.
+Eventually, you outstrip even the most inclusive of standard libraries and have to build something yourself. Or do you? Perl popularized the idea of a global collection of packages with CPAN; since then, nothing has been the same. I think it's fair to say that people who used and contributed to CPAN knew it was a game-changer.
 
-CPAN was launched in 1995 (based on CTAN), and by its height in 2003, it had established a new way for people to get things done with software. That is gluing together third-party componenets. So much of modern development now follows this model.
+CPAN was launched in 1995 (based on CTAN), and by its height in 2003, it had established a new way for people to get things done with software. That is gluing together third-party components. So much of modern development now follows this model.
 
-It's hard to find a commonly used programming language created after 2003 that didn't come with a third-party package repository of some sort. CPAN raised the table stakes for programming languages.
+It's hard to find a commonly used programming language created after 2003 that didn't come with a third-party package repository of some sort. CPAN moved the line so that for then forward, a "real" programming language needed to have a strategy for third-party package management.
 
 <div class="notice notice--big">
 ## Side Note: Backporting.
@@ -128,19 +128,21 @@ But the state of the art appears to be Zig, which can easily cross compile not j
 >
 > Nogginly
 
-Languages have compilers, and they have lots of flags that you call them with, but this quickly becomes a pain. So things like Make and autotools came to exist. Now introduce a third party package ecosystem and things get even more complex. So you get things like Maven and `pip`. Then you have issues like multiple version of the compiler / or runtime and different programs require different versions of packages and in Python you end up with things like `pipenv` and `virtualenv` and something called `conda` that I don't even understand.
+Languages have compilers, and they have lots of flags that you call them with, but this quickly becomes a pain. So things like Make and Autotools came to exist. Now introduce a third-party package ecosystem, and things get even more complex. So you get stuff like Maven and `pip`. Then you have issues like multiple versions of the compiler or runtime and different programs require different versions of packages and in Python you end up with things like `pipenv` and `virtualenv` and something called `conda` that I don't even understand.
 
-All this complexity makes it hard for new users to get up to speed, and so new langauges try to simplify this by bringing all this management under one roof.
+All this complexity makes it hard for new users to get up to speed, so new languages try to simplify this by bringing all this management under one roof.
 
 > I would say that package management and LSP have been the two biggest game changers in my personal experience of programming languages.
 >
 > Ganesh Sittampalam
 
-Much like the expanded standard library expanded the definition of a langauge to beyond a compile and a spec, modern package managers have expanded the expected langauge tooling substantially. The upside is ease of onboarding and improved developer expericne. The downside is that packaging, vendoring and  build software is not free. A lot of engineering hours that need to be poured into these tools to solve these problems.
+Much like how the batteries-included standard library expanded the definition of a language, modern package managers have raised expectations substantially. The upside of this expansion is the ease of onboarding and improved developer experience. The downside is that packaging, vendoring, and build software is not free. Many engineering hours need to be poured into these tools to solve these problems.
 
 ### State of The Art
 
-This package manager tool area is currently fasting moving. If you can invest a lot engineering hours, you can really make the onboarding experience that much better. The stakes here keep growing. It seems like the cargo and rustup documetation for Rust are almost as big as the rust book and this effort shows. Can you easily switch compiler versions in your language? Can you easily run tests? Can you easily do code coverage, performance testing? Vendor code? Generate documentation? Lint code? Fix code lints? All of these used to be things that were stand alone tools or functions in various language ecosystem now come with Rust out of the Box. And its a similar story for Go. I assume other newer languages will try to match or exceed this level of tooling.
+This package manager tool area is currently fast-moving. If you can invest a lot of engineering hours, you can make the onboarding experience much better. The stakes here keep growing. It seems like the cargo, and rustup documentation for Rust are almost as extensive as the rust book, and this effort shows.
+
+Can you easily switch compiler versions in your language? Can you quickly run tests? Can you easily do code coverage, and performance testing? Vendor code? Generate documentation? Lint code? Fix code lints? All of these used to be things that were stand-alone tools or functions in various language ecosystems now come with Rust out of the Box. And it's a similar story for Go. I assume other newer languages will try to match or exceed this level of tooling.
 
 >I think one main advantage that cargo has is that it came with the language. Retro active build tools often lack integration into the platform as a whole
 >
@@ -152,24 +154,28 @@ In the previous [Red vs Green](/blog/brown-green-language) article much discussi
 
 ## Case Study: `gofmt`
 
-Code formatters existed before `gofmt`, just as third party software packages exited before cpan, but making something a standard for a community changes things in a profound way. No language before Go is likely to achieve the near 100% style conformance that go has because the existing langauges have existing code to deal with. Whereas `gofmt` enforces a singluar style and has no knobs to tweak. But langauges that follow go can learn this lesson. And so Rust (`rustfmt`) and Zig (`zig fmt`) have embraced no-knob, one-uniform-style code formatting and gain an edge in developer experience.
+Code formatters existed before `gofmt`, just as third-party software packages exited before `CPAN`, but making something, a standard for a community profoundly changes things. For example, no language before Go is likely to achieve the near 100% style conformance that Go has because the existing languages have to deal with existing code, whereas `gofmt` enforces a single style and has no knobs to tweak. But languages that follow Go can learn this lesson. And so Rust (`rustfmt`) and Zig (`zig fmt`) have embraced no-knob, one-uniform-style code formatting and have gained an edge in developer experience.
 
 ## So Much More
 
-There are so many other things that could be listed in this essay. Some things, like improvements in runtimes, seem close to direct language improvements. Others like IDEs, LSPs, fuzzing support, and refactoring tools seem closer to developer tools and certainly could have gone on this list. But you have to stop somewhere.
+There are so many other things that I could list in this essay. Some things, like runtime improvements, seem close to direct language improvements. Others like IDEs, LSPs, fuzzing support, and refactoring tools seem closer to developer tools and could have gone on this list. But you have to stop somewhere.
 
-(Tell me what I missed and / or got wrong and I'll do an update.)
+(Tell me what I missed and/or got wrong, and I'll do an update.)
 
 <div class="notice--info">
 ### The Things That Didn't Spread
 
-There are also the things that language creators were certain would change the world but yet never gained wider adoption, or only became a fundamental expectation in one particular niche. (Certainly Jupyter notebooks and REPLs are considered essential in some domains.) These include Smalltalk's image-based approach to state and Mathematica / Wolfram language's language-integrated-data.
+There are also the things that language creators were sure would change the world but yet never gained wider adoption or only became a fundamental expectation in one particular niche.
+
+Certainly, Jupyter notebooks and REPLs are essential in some domains but unknown in others. Even more niche are Smalltalk's image-based approach to state and Mathematica / Wolfram language's language-integrated-data.
 </div>
 
 ## Conclusion
 
-The tooling that enables developers to get work done and help teams ship features are a huge deal and I think under discussed.
+The tooling that enables developers to get work done is a massive part of what makes a language useable. It's also a changing landscape where standards keep rising, yet it's not talked about very much.
 
-When a new innovation in developer tooling is discoved then newer programming languages get a chance to bake that innovation into their language. Doing so gives them an incremental advantage and these increment add up over time to a better developer experience and make older langauges feel old.
+It goes like this:
+
+When a new developer tooling innovation is discovered, newer programming languages get a chance to bake that innovation into their language. Doing so gives them an incremental advantage, and these increments add up over time to a better developer experience and make older languages feel old.
 
 {% include cta/cta1.html %}
