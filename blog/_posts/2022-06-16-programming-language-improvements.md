@@ -26,58 +26,58 @@ Ruby, C++, Java, PHP, C
 
 [^1]: What is included here are languages with more than 4200 stack overflow survey responses. I dropped HTML and SQL because they aren't pacmac-complete. And I also dropped Bash and Powershell because their scripting usage makes them less relevant to today's topic. See the full results [here](https://survey.stackoverflow.co/2022/#technology-most-loved-dreaded-and-wanted)
 
-So last developer survey, I wrote this post about [Green VS Brown languages](/blog/brown-green-language) and that when people like a new language, they are judging it from a biased perspective because the new language is used for new development whereas the older languages tend to used in existing projects, which often less exciting. Today I'd like to talk about something big that misses: **Langauge tooling is getting better**[^2].
+So last developer survey, I wrote this post about [Green VS Brown languages](/blog/brown-green-language). In it, I said that when people like a new programming language, they judge it from a biased perspective because new things get used for new development, whereas the older things get used in existing projects, which are less exciting. So today, I’d like to talk about something big that misses: **Langauge tooling is getting better**[^2].
 
 [^2]: Langauge syntax and semantics also gets better over time as well. But its harder to talk about because people have strong opinions. Syntactic sugar is good, or its bad. Operator overloading is good or its bad. Borrow checking is good or unneeded with state of the art GCs. Innovation is happening here, but my favorite example of innovation might be your example that we've strayed to far from god (Or K&R).
 
-## Rising Stakes - Go vs Rust
+## Raising the Stakes - Go vs Rust
 
-The internet is full of fights about Go vs Rust, two langauges topping the 'Loved' list. But I think the interesting thing is actually how similar they are in a batteries included approach to developer experience. You don't need to wonder that best tool to use for testing, or fuzzing or packaging or linting. All these things are standardized.
+The internet is full of fights about Go vs. Rust. But I think the fascinating thing is actually how similar they are in developer experience. They both have a modern, batteries included take on developer tooling. You don't need to wonder that best tool to use for testing, or fuzzing or packaging or linting. All these things are standardized and included. And this is one reason they are both at the top of the `Loved` list.
  
-A big difference between working in go and Rust vs some the languages on the dreaded list has nothing to do with the specifics of the language syntax. Instead the differences is the tooling and supporting ecosystem.
+That is, a big difference between working in Go or Rust vs some the languages on the dreaded list has nothing to do with the specifics of the language syntax. Instead the differences is the tooling and supporting ecosystem.
 
 ## Tooling Is The New Syntax
 
-It's my thesis that the tooling and developer experience for programming languages are getting better over time. Innovation happens, new langauges adopt it and its harder for existing langauges to backport it.
+My thesis is that the tooling and developer experience for programming languages is improving over time. It goes like this: Tooling innovation happens, new languages adopt and standardize on it, and end up incrementally better than existing languages. If you add up enough of these increments, the older languages, which may have pioneered some of these innovations, seem painful and antiquated.
 
-That's a big claim, but it will make more sense once I give some examples. So here is a partial list of programming language innovations that aren't the language's syntax or semantics.
+It will make more sense once I give some examples. So here is a partial list of programming language innovations that aren't the language's syntax or semantics.
 
-## Batteries Included Standard Library
-
-### History
-
-A standard library is a library of common things that come with the language and are ideally written in the language itself. C has libc, and C++ has libcpp but both these feel very minimal compared to the common conception of a batteries included standard library.
-
-The history is a little unclear to me, but it seems like Python (1991) was the first language to take the stance of really having an extensive standard library. Java 1.0 (1996) also came with an extensive standard library (The Java Class Library) and many other languages would follow suite.
-
-The benefits of being able to do what you want to do without having to roll it yourself or pull in a third party dependencies are hard to overstate.
+## Batteries-Included Standard Library
 
 > I'm not sure whether it's a blessing or a curse, but expansive standard libraries [are a big improvement]. It's possible to get a lot done with PHP, Python, and Go without needing to install any third party library. They come with json, http client and server, and even database access for the most part.
 >
 > Amir Saeid
 
+### History
+
+A standard library is a library of common things that come with the language and are ideally written in the language itself. C has libc, and C++ has libcpp but both these feel very minimal compared to the common conception of a batteries-included standard library.
+
+The history is a little unclear to me, but it seems like Python (1991) was the first language to take the stance of really having an extensive standard library. Java 1.0 (1996) also came with an extensive standard library (The Java Class Library), and many other languages would follow suite.
+
+It's hard to overstate the benefits of getting simple things done without implementing foundational stuff yourself or having to reach for third-party dependencies.
+
 ### State of the Art: GoLang
 
-Most modern languages (that aren't JavaScript) now ship with extensive standard libraries. In particular though, Go puts special emphasis on its standard library. It promises backwards compatibilty, performance and well-thought out implementations. Because of this, go developers tend to lean on the standard library more than many other communities and generally hold it in high regard.
+Most modern languages (that aren't JavaScript) now ship with extensive standard libraries. In particular, though, Go puts special emphasis on its standard library. It promises backward compatibility, performance, and well-thought-out implementations. Because of this, go developers lean on the standard library more than many other communities and generally hold it in high regard.
 
-## Third Party Package Repository
+## Third-Party Package Repository
 
 ### History
 
-Around the time bigger standard libraries became a thing the world-wide-web was also taking off and internet proved to be pretty good at fostering collaboration.
+Around the time more extensive standard libraries became a thing, the world-wide-web was also taking off, and the internet proved to be pretty good at fostering collaboration.
 
-Eventually you outstrip even the most inclusive of standard libraries and have to build something yourself. Or do you? Perl popularized the idea of a global collection of packages with CPAN and nothing has been the same since. I think its fair to say that people who used and contributed to CPAN knew that it was a game changer.
+Eventually, you outstrip even the most inclusive of standard libraries and have to build something yourself. Or do you? Perl popularized the idea of a global collection of packages with CPAN, and nothing has been the same since. I think it's fair to say that people who used and contributed to CPAN knew it was a game-changer.
 
-CPAN was launched in 1995 (based on CTAN) and by its height in 2003 it had established a new way for people to get things done with software. That is glueing together 3rd party componenets. So much of modern development now follow this model.
+CPAN was launched in 1995 (based on CTAN), and by its height in 2003, it had established a new way for people to get things done with software. That is gluing together third-party componenets. So much of modern development now follows this model.
 
-It's hard to find a commonly used programming language created after 2003 that didn't come with a third party package repository of some sort. New table stakes had been set.
+It's hard to find a commonly used programming language created after 2003 that didn't come with a third-party package repository of some sort. CPAN raised the table stakes for programming languages.
 
 <div class="notice notice--big">
-## Side Note: Back porting.
+## Side Note: Backporting.
 
-Ok, so you might wonder, if CPAN made Perl better and every language moving forward embraced package managers for third party code, then why didn't languages predating this just add on package managers after the fact?
+Ok, so you might wonder, if CPAN made Perl better and every language moving forward embraced package managers for third-party code, why didn't languages predating this add on package managers after the fact?
 
-Well, they did, but it seems like its hard to get agreement in language community after a certain point. I'm not sure why this is but maybe people just don't like change?
+Well, they did, but it doesn't seem obvious how to get agreement in a language community after a certain point. I'm not sure why this is, but maybe people don't like change?
 
 This is going to be a running theme. Once the idioms and patterns of a programming language, and a language community, have been established its hard to go back and add things on. At least I think this is why Javascript has NPM, Rust has crates but C++ has [dds, cpm, conan pacm, spakc, buckaroo, hunter and vcpkg](https://stackoverflow.com/questions/27866965/does-c-have-a-package-manager-like-npm-pip-gem-etc). You know what is better than one universally agreed upon package manager? Not eight of them!
 
@@ -152,30 +152,24 @@ In the previous [Red vs Green](/blog/brown-green-language) article much discussi
 
 ## Case Study: `gofmt`
 
-Code formatters existed before `gofmt`, just as third party software packages exited before cpan, but making something a standard for a community changes things in a profound way. No language before Go is likely to achieve the near 100% style conformance that go has because the existing langauges have existing code to deal with. Whereas `gofmt` enforces a singluar style and has no knobs to tweak. But langauges that follow go can learn this lesson. And so Rust (`rustfmt`) and Zig (`zig fmt`) have embraced code formatting and gain an edge in developer experience.
+Code formatters existed before `gofmt`, just as third party software packages exited before cpan, but making something a standard for a community changes things in a profound way. No language before Go is likely to achieve the near 100% style conformance that go has because the existing langauges have existing code to deal with. Whereas `gofmt` enforces a singluar style and has no knobs to tweak. But langauges that follow go can learn this lesson. And so Rust (`rustfmt`) and Zig (`zig fmt`) have embraced no-knob, one-uniform-style code formatting and gain an edge in developer experience.
 
 ## So Much More
 
-There are so many other things that could be listed in this essay. Somethings, like improvements in runtimes, seem close to language improvements and so I've skipped them. Others like IDEs, LSPs, fuzzing, and refactoring tools seem closer to developer tools and certainly could have gone on this list. But you have to stop somewhere.
+There are so many other things that could be listed in this essay. Some things, like improvements in runtimes, seem close to direct language improvements. Others like IDEs, LSPs, fuzzing support, and refactoring tools seem closer to developer tools and certainly could have gone on this list. But you have to stop somewhere.
 
 (Tell me what I missed and / or got wrong and I'll do an update.)
 
 <div class="notice--info">
 ### The Things That Didn't Spread
 
-There is also the things that language creators were certain would become the new table stakes but never gained wider adoption, or only made sense in one particular niche. These include Smalltalk's image based approach to state and matlab / Wolfram language's integrated data. Certainly jupyter notebooks and REPLs are considered essential in some domains and not used at all in others.
+There are also the things that language creators were certain would change the world but yet never gained wider adoption, or only became a fundamental expectation in one particular niche. (Certainly Jupyter notebooks and REPLs are considered essential in some domains.) These include Smalltalk's image-based approach to state and Mathematica / Wolfram language's language-integrated-data.
 </div>
 
 ## Conclusion
 
-So going back to the original list of dreaded and loved languages, how much does the number of these table stakes affordances the programming languages have indicate its popularity?
+The tooling that enables developers to get work done and help teams ship features are a huge deal and I think under discussed.
 
-Top 5 loved = Rust, Typescript, Python, Go, C#, Kotlin
-
-Top 5 dreaded = Ruby, C++, Java, PHP, C
-
-To me, at least it seems like the top of the list, if you ignore the programming language itself completely, that the top of the list has more developer experience affordances than the bottom.
-
-The tooling that enables developers to get work done and helps teams ship features are a huge deal. And I didn't mention Community – because its such a large and amorphous concept – but a thriving community where best practices and idioms are communicated and spread may in fact be the most essential non-languages factor. But that is a whole different essay.
+When a new innovation in developer tooling is discoved then newer programming languages get a chance to bake that innovation into their language. Doing so gives them an incremental advantage and these increment add up over time to a better developer experience and make older langauges feel old.
 
 {% include cta/cta1.html %}
