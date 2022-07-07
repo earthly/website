@@ -167,6 +167,13 @@ beautifulsoup
 Seaborn
 toolset
 datetime
+
 architected
 specced
 Esc
+
+hardcoded
+Patsubst
+patsubst
+llox
+
