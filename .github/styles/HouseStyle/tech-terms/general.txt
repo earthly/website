@@ -170,3 +170,15 @@ datetime
 Seccomp
 Xray
 unpermitted
+
+
+architected
+specced
+Esc
+
+hardcoded
+Patsubst
+patsubst
+llox
+
+
