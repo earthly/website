@@ -64,6 +64,7 @@ The `context` and `time` modules were imported to set timeouts for your operatio
 After creating a [MongoDB Atlas cluster](https://www.mongodb.com/basics/clusters/mongodb-cluster-setup), you'll need to get a connection URI String to connect to your Cluster from your application.
 
 Click on **connect**, choose "**connect to your application**," choose **Go** as your preferred language, select a Go version, and copy the connection URI string.
+
 <div class="wide">
 
 ![Screenshot from 2022-05-13 15-16-12.png]({{site.images}}{{page.slug}}/first.png)\
