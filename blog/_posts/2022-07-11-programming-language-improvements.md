@@ -1,5 +1,5 @@
 ---
-title: "The Slow (but Steady) March of Progress in Programming Languages"
+title: "The Slow March of Progress in Programming Language Tooling"
 categories:
   - Articles
 author: Adam
