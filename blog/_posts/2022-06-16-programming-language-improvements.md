@@ -34,7 +34,6 @@ So last developer survey, I wrote this post about [Green VS Brown languages](/bl
 {% picture content-wide {{site.pimages}}{{page.slug}}/3870.png --alt {{ Go and Rust Together }} %}
 <figcaption>"Let's be friends"</figcaption>
 
-
 The internet is full of fights about Go vs. Rust. But I think the fascinating thing is how similar they are in developer experience. They both have a modern, batteries-included take on developer tooling that is very different from many of the languages in the DREAD list. You don't need to wonder what best tool to use for testing, fuzzing, packaging, or linting. All these things are standardized and included. And this is one reason they are both at the top of the `Loved` list.
 
 That is, a big difference between working in Go or Rust vs. some of the languages on the dreaded list has nothing to do with the specifics of the language syntax. Instead, the difference is the tooling and supporting ecosystem.
