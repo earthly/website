@@ -167,3 +167,7 @@ beautifulsoup
 Seaborn
 toolset
 datetime
+hardcoded
+Patsubst
+patsubst
+llox
