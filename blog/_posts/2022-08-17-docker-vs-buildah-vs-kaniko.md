@@ -22,21 +22,23 @@ In this article, you'll be introduced to three container image build tools: Dock
 
 ## Introduction to Docker, Buildah, and kaniko
 
-![Docker logo]({{site.images}}{{page.slug}}/iFyvSui.png)
+![Docker logo]({{site.images}}{{page.slug}}/iFyvSui.png)\
 
 As previously mentioned, Docker is by far [the most popular option](https://trends.google.com/trends/explore?date=all&q=docker,kaniko,buildah) on this list and is the tool that helped containerization gain popularity. Docker was launched in 2013 in order to build images, and today, it's still widely used by many.
 
-![kaniko logo]({{site.images}}{{page.slug}}/7lpG7g4.png)
+![kaniko logo]({{site.images}}{{page.slug}}/7lpG7g4.png)\
 
 kaniko, released in 2018, doesn't have the longevity of Docker yet; however, it's backed by one of the biggest companies in the world: Google. Because of this, kaniko has quickly become a mature product and has been adopted by many engineers.
 
 kaniko was primarily developed with one goal: allowing engineers to build container images inside unprivileged containers or inside Kubernetes.
 
-![Buildah]({{site.images}}{{page.slug}}/ZzocU9y.png)
+![Buildah]({{site.images}}{{page.slug}}/ZzocU9y.png)\
 
 Also released in 2018, Buildah doesn't have the same backing or focus that kaniko does. However, not having the same backing as Google doesn't mean it doesn't have a big company behind it. [Red Hat](https://www.redhat.com/en) is the company in charge of Buildah, which makes sense, as they are also the company behind [Podman](https://podman.io/). Podman is a tool that aims to solve the same use case as Docker as well as issues outside of building images. You can read more about the difference between [Podman](/blog/earthly-podman) and Docker [in this blog post](https://www.imaginarycloud.com/blog/podman-vs-docker/#:~:text=Docker%20uses%20a%20daemon%2C%20an,does%20not%20need%20the%20mediator.). Buildah primarily focuses on providing an efficient way of building container images to be [Open Container Initiative (OCI)](https://opencontainers.org/) compliant.
 
 ## Features
+
+![Features]({{site.images}}{{page.slug}}/features.png)\
 
 Likely the most important thing to know when you want to choose a container image build tool is its features. When it comes to container image building, the features of each tool tend to be similar; however, there are a few that can be highlighted.
 
@@ -66,6 +68,7 @@ kaniko focuses mostly on providing a container image build tool that doesn't hav
 
 ## Compatibility
 
+![Compatibility]({{site.images}}{{page.slug}}/compatibility.jpg)\
 Aside from the feature set, it's important to know that the tool you choose is compatible with the other parts of your toolchain. Perhaps you're using Kubernetes, and you need to know that the containers being built can be run by [containerd](https://containerd.io/).
 
 ### Docker
@@ -89,6 +92,7 @@ kaniko, like Buildah, is only able to run on Linux. This is partly because its f
 Like the other two options in this article, kaniko is also able to build OCI-compliant images, and it can do so from regular Dockerfiles. This lets kaniko be a drop-in replacement for Docker in, say, Kubernetes.
 
 ## Community
+![Community]({{site.images}}{{page.slug}}/community.png)\
 
 Far from the most important thing to consider, but nonetheless still important, is the community surrounding your tool of choice. The more experience you have, the less important this becomes, as you are more likely to figure out issues for yourself. However, as any engineer knows, you are bound to run into issues you can't figure out for yourself at some point, so a good community is something you should consider.
 
@@ -112,11 +116,8 @@ As you can see, Docker, Buildah, and kaniko are great options for choosing a con
 
 No matter the tool you choose to build your images, it's important that the applications inside them get deployed properly. For this, you can check out [Earthly](https://earthly.dev/), a tool to help you create idempotent CI/CD runs.
 
+{% include cta/cta1.html %}
+
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
