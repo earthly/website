@@ -235,7 +235,12 @@ Mr. Unity Buddy:
     name    : "Mr. Unity Buddy"
     bio     : "Technical writer, Content creator, Game Designer, and a Mad Developer. Visit unitybuddy.com for more!"
     avatar  : "/assets/images/authors/unitybuddylogo.png"
+Sooter Saalu:
+    name    : "Sooter Saalu"
+    bio     : "Sooter Saalu is a data professional with experience as a data analyst, data scientist, and data engineer. He has an educational background in clinical psychology and is committed to writing engaging data stories for technical and non-technical audiences."
+    avatar  : "/assets/images/authors/Sootersaalu.jpeg"
 Kealan Parr:
     name    : "Kealan Parr"
     bio     : "Kealan is a senior software engineer and technical writer who works with clients on technical reviewing and software development. He is a member of the Unicode Consortium."
     avatar  : "/assets/images/authors/Kealanparr.jpg"
+
