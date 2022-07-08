@@ -34,7 +34,7 @@ kaniko was primarily developed with one goal: allowing engineers to build contai
 
 ![Buildah]({{site.images}}{{page.slug}}/ZzocU9y.png)
 
-Also released in 2018, Buildah doesn't have the same backing or focus that kaniko does. However, not having the same backing as Google doesn't mean it doesn't have a big company behind it. [Red Hat](https://www.redhat.com/en) is the company in charge of Buildah, which makes sense, as they are also the company behind [Podman](https://podman.io/). Podman is a tool that aims to solve the same use case as Docker as well as issues outside of building images. You can read more about the difference between Podman and Docker [in this blog post](https://www.imaginarycloud.com/blog/podman-vs-docker/#:~:text=Docker%20uses%20a%20daemon%2C%20an,does%20not%20need%20the%20mediator.). Buildah primarily focuses on providing an efficient way of building container images to be [Open Container Initiative (OCI)](https://opencontainers.org/) compliant.
+Also released in 2018, Buildah doesn't have the same backing or focus that kaniko does. However, not having the same backing as Google doesn't mean it doesn't have a big company behind it. [Red Hat](https://www.redhat.com/en) is the company in charge of Buildah, which makes sense, as they are also the company behind [Podman](https://podman.io/). Podman is a tool that aims to solve the same use case as Docker as well as issues outside of building images. You can read more about the difference between [Podman](/blog/earthly-podman) and Docker [in this blog post](https://www.imaginarycloud.com/blog/podman-vs-docker/#:~:text=Docker%20uses%20a%20daemon%2C%20an,does%20not%20need%20the%20mediator.). Buildah primarily focuses on providing an efficient way of building container images to be [Open Container Initiative (OCI)](https://opencontainers.org/) compliant.
 
 ## Features
 
@@ -46,7 +46,7 @@ Besides having the basic feature that you'd expect of a container image build to
 
 Secondly, Docker as a tool allows you to run containers, whereas the other two options only allow you to build the images. This is, of course, not relevant to the specific use case of container image building, but it's worth keeping in mind that Docker is a more fully formed development tool, while the others are meant to solve a specific problem.
 
-Besides that, not much sets Docker apart in terms of pros. This is not intended to make Docker sound like a poor tool choice; however, because it's the status quo, not much makes it stand out. This is more important for other tools, as they have to make a case for becoming the *new* status quo, whereas Docker mainly needs to make sure it provides existing features reliably.
+Besides that, not much sets [Docker](/blog/rails-with-docker) apart in terms of pros. This is not intended to make Docker sound like a poor tool choice; however, because it's the status quo, not much makes it stand out. This is more important for other tools, as they have to make a case for becoming the *new* status quo, whereas Docker mainly needs to make sure it provides existing features reliably.
 
 ### Buildah
 
@@ -56,7 +56,7 @@ It also shares many of the same features as Docker, including being able to buil
 
 Buildah is perfect in cases where you either can't run as root or where you don't want to install a bloated solution like Docker, such as in a CI scenario.
 
-Tools like [Azure DevOps](https://azure.microsoft.com/en-us/services/devops/) have built-in support for Docker builds; however, this is something you won't always find with Buildah. For Azure DevOps, there is a [plug-in](https://marketplace.visualstudio.com/items?itemName=cloudpup.buildah-toolkit) you can use instead, which isn't bad, per se, but you need to be aware that the industry support is lower when choosing Buildah.
+Tools like [Azure DevOps](https://azure.microsoft.com/en-us/services/devops/) have built-in support for Docker builds; however, this is something you won't always find with Buildah. For [Azure](/blog/azure-functions-node) DevOps, there is a [plug-in](https://marketplace.visualstudio.com/items?itemName=cloudpup.buildah-toolkit) you can use instead, which isn't bad, per se, but you need to be aware that the industry support is lower when choosing Buildah.
 
 ### Kaniko
 
@@ -70,7 +70,7 @@ Aside from the feature set, it's important to know that the tool you choose is c
 
 ### Docker
 
-Docker can be run on every major operating system, including Windows, macOS, and Linux. At the time of writing this article, Linux support for Docker Desktop has just been launched, meaning you can now get a fully supported application to work with Docker on all systems with a UI.
+Docker can be run on every major operating system, including [Windows](/blog/makefiles-on-windows), macOS, and Linux. At the time of writing this article, Linux support for Docker Desktop has just been launched, meaning you can now get a fully supported application to work with Docker on all systems with a UI.
 
 With Docker being one of the leaders that created OCI, it's no surprise that container images built with Docker are going to be OCI compliant. Of course, Docker is also compatible with Dockerfiles. Just like with the feature set, Docker doesn't present anything special, as it's been around since the beginning of mainstream containerization.
 
@@ -118,6 +118,5 @@ No matter the tool you choose to build your images, it's important that the appl
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
 - [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
