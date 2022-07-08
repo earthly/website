@@ -92,6 +92,7 @@ kaniko, like Buildah, is only able to run on Linux. This is partly because its f
 Like the other two options in this article, kaniko is also able to build OCI-compliant images, and it can do so from regular Dockerfiles. This lets kaniko be a drop-in replacement for Docker in, say, Kubernetes.
 
 ## Community
+
 ![Community]({{site.images}}{{page.slug}}/community.png)\
 
 Far from the most important thing to consider, but nonetheless still important, is the community surrounding your tool of choice. The more experience you have, the less important this becomes, as you are more likely to figure out issues for yourself. However, as any engineer knows, you are bound to run into issues you can't figure out for yourself at some point, so a good community is something you should consider.
