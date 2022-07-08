@@ -11,6 +11,7 @@ internal-links:
  - Pip
  - Pandas
 ---
+
 How much have you spent on Amazon? Well, that's a kind of interesting question to find an answer to. And it's the type of question I like to answer using Python.
 
 With Python, Data analysis is just a 10-minute job. So in this article, we're going to analyze your Amazon data with a few lines of code. By the end of the article, we will have:

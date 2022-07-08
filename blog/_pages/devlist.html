@@ -1,0 +1,19 @@
+---
+layout: default 
+title: Dev List
+permalink: /devlist/
+---
+{% if jekyll.environment != "production" %}
+<h1>Dev List</h1>
+<p><strong>You shouldn't see this page in production.</strong></p>
+<h2>All Posts:</h2>
+<p>
+<ul>
+    <li>
+        {% for post in site.posts %}
+        <p><a href="{{ post.url | relative_url }}">{{ post.title }}</a></p>
+        {% endfor %}
+    </li>
+</ul>
+</p>
+{% endif %}

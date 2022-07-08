@@ -169,3 +169,17 @@ toolset
 datetime
 bson
 Mongodb
+
+Seccomp
+Xray
+unpermitted
+
+
+architected
+specced
+Esc
+
+hardcoded
+Patsubst
+patsubst
+llox
