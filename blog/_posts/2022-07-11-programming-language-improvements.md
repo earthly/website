@@ -148,7 +148,7 @@ Much like how the batteries-included standard library expanded the definition of
 
 >I think one main advantage that cargo has is that it came with the language. Retro active build tools often lack integration into the platform as a whole
 >
-> Freemasen
+> Robert Masen
 
 This package manager area is fast-moving. If you invest a lot of engineering hours, you can improve your language onboarding and day to day usage experience substantially. And so the stakes here keep growing. The `cargo` and `rustup` documentation for Rust are almost as extensive as the rust book, and that doesn't include all the cargo plugins.
 
