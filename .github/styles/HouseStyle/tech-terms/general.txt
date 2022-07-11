@@ -167,6 +167,9 @@ beautifulsoup
 Seaborn
 toolset
 datetime
+bson
+Mongodb
+
 Seccomp
 Xray
 unpermitted
@@ -181,4 +184,3 @@ Patsubst
 patsubst
 llox
 Dockershim
-
