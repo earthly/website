@@ -50,7 +50,7 @@ It will make more sense once I give some examples. So here is a partial list of 
 >
 > Amir Saeid
 
-### History
+### Standard Library History
 
 A standard library is a library of common things that comes with the language. C has `libc`, and C++ has `libcpp`, but both feel very minimal compared to the common conception of a batteries-included standard library.
 
@@ -58,15 +58,15 @@ The history is a little unclear to me, but it seems like Python (1991) was the f
 
 It's hard to overstate the benefits of getting simple things done without implementing foundational stuff yourself or having to reach for third-party dependencies.
 
-### State of the Art: GoLang
+### Standard Library State of the Art: GoLang
 
 Most modern languages (that aren't JavaScript) now ship with extensive standard libraries. In particular, though, Go puts special emphasis on its standard library. It promises backward compatibility, performance, and well-thought-out implementations. Because of this, go developers lean on the standard library more than many other communities and generally hold it in high regard.
 
 ## Third-Party Package Repositories
 
-{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/6280.png --alt {{ CPAN }} %}
+{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/9160.png --alt {{ CPAN }} %}
 
-### History
+### Third Party Packages: History
 
 Around the time more extensive standard libraries became a thing, the world-wide-web was also taking off, and the internet proved to be pretty good at fostering collaboration.
 
@@ -97,11 +97,11 @@ So after CPAN, a great standard library that does most of the things you need to
 
 {% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/6680.png --alt {{ Javadoc }} %}
 
-## History
+## Documentation: History
 
 Once you have third-party packages, you need an easy way to document them. Javadoc and it's generated documentation was the first version of this I encountered. It made it much easier to find what I was looking in the Java Class Library because I could just click around in the Javadocs on the web. Then if you combine Javadoc with IDE integration and it becomes simple to work with code you've never seen before. Exploratory coding becomes possible.
 
-## State of the Art
+## Documentation: State of the Art
 
 Java with Javadocs is no longer the state of the art. Go has [`godoc`](https://pkg.go.dev/), Julia has [`Documenter.jl`](https://github.com/JuliaDocs/Documenter.jl) and even [hackage](https://hackage.haskell.org/) has pretty good package docs. But the state of the art seems to be Rust with [docs.rs](https://docs.rs/).
 
@@ -112,7 +112,7 @@ Java with Javadocs is no longer the state of the art. Go has [`godoc`](https://p
 >
 > Cédric Beust
 
-### History
+### Run Anywhere: History
 
 {% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/7310.png --alt {{ Java ME on Nokia Phones }} %}
 
@@ -120,7 +120,7 @@ Java and the JVM really pushed the line for cross platform development. No longe
 
 Virtualization and then containerization have made this far more common, but the Java was the first major programming language to enable this type of run anywhere workflow.
 
-### State of the Art
+### Run Anywhere: State of the Art
 
 There are of course downsides to the Java approach. One of which is the slow start-up time of JIT code and another is the limitation of not being able to easily call something that isn't written in Java. GraalVM claims these problems have be overcome but the current trend seems to be ahead-of-time cross-compiling. Both Rust and Go make this fairly simple, assuming you don't have any c or `libc` dependendcies.
 
@@ -132,7 +132,7 @@ But the state of the art appears to be Zig, which can easily cross compile not j
  {% picture grid {{site.pimages}}{{page.slug}}/7910.png --picture --img width="400px" --alt {{ Add Nutmeg }} %}
 </div>
 
-### History
+### Package Manager: History
 
 Languages have compilers, and they have lots of flags that you call them with, but this quickly becomes a pain. So things like Make and Autotools came to exist. Now introduce a third-party package ecosystem, and things get even more complex. So you get stuff like Maven and `pip`. Then you have issues like multiple versions of the compiler or runtime and different programs require different versions of packages and in Python you end up with things like `pipenv` and `virtualenv` and something called `conda` that I don't even understand.
 
@@ -144,7 +144,7 @@ All this complexity makes it hard for new users to get up to speed. So new langu
 
 Much like how the batteries-included standard library expanded the definition of a language, modern package managers have raised expectations substantially. The upside of this expansion is the ease of onboarding and improved developer experience. The downside is that packaging, vendoring, and build software is not free. The language authors must pour many engineering hours into these tools to solve these problems.
 
-### State of the Art
+### Package Manager: State of the Art
 
 >I think one main advantage that cargo has is that it came with the language. Retro active build tools often lack integration into the platform as a whole
 >
@@ -182,6 +182,6 @@ It goes like this:
 
 When a new developer tooling innovation is discovered, newer programming languages get a chance to bake that innovation into their language tooling. Doing so gives them an incremental advantage, and these increments add up over time to a better developer experience.
 
-So newer languages have one clear well thought out way to do something and older languages will have either many contradictory ways or no ways at all, do the same thing. And this makes older languages feel old.
+So newer languages have one clear well thought out way to do something and older languages will have either many contradictory ways, or no ways at all, do the same thing. And this makes older languages feel old.
 
 {% include cta/cta1.html %}
