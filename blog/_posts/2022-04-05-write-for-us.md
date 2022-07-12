@@ -52,7 +52,7 @@ A pitch topic is an article title, a paragraph sample introduction, and a bullet
 
   We will pay you $350 USD for your article and use our Twitter account to promote your article to our audience of developers.
  <div class="notice--info">
-  After your article has been accepted please send an invoice to [writeforus@earthly.dev](mailto:writeforus@earthly.dev). Invoiced should include the following: Date, Title of Article, Amount, Bank name, Back account number/IBAN, Routing Number/SWIFT code/ABA.
+  After your article has been accepted please send us an invoice. Invoice should include the following: Date, Title of Article, Amount, Bank name, Back account number/IBAN, Routing Number/SWIFT code/ABA.
 
   If you need help with invoicing or have other questions about payment, please feel free to reach out.
 </div>
