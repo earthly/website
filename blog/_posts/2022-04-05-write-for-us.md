@@ -10,7 +10,7 @@ internal-links:
 
 ## Join Writing Wait List
 
-We aren't taking new writers at the moment but will be soon. 
+We aren't taking new writers at the moment but will be soon.
 
 Please [fill out this form](https://docs.google.com/forms/d/e/1FAIpQLSdgpU8oYXvRRnvtxt5ZruAvJ3RPa4sEXgvbaY1xDOA98G3ycw/viewform) to join the wait-list.
 </div>
