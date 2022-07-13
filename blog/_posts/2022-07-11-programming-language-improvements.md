@@ -60,7 +60,7 @@ It's hard to overstate the benefits of getting simple things done without implem
 
 ### Standard Library State of the Art: GoLang
 
-Most modern languages (that aren't JavaScript) now ship with extensive standard libraries. In particular, though, Go puts special emphasis on its standard library. It promises backward compatibility, performance, and well-thought-out implementations. Because of this, go developers lean on the standard library more than many other communities and generally hold it in high regard.
+Most modern languages (that aren't JavaScript) now ship with extensive standard libraries. In particular, though, Go puts special emphasis on its standard library. It promises backward compatibility, performance, and well-thought-out implementations. Because of this, Go developers lean on the standard library more than many other communities and generally hold it in high regard.
 
 ## Third-Party Package Repositories
 
