@@ -74,8 +74,6 @@ deps:
     SAVE IMAGE
 ~~~
 
-<figcaption>Earthfile</figcaption>
-
 The first line is declaring the base docker image our build steps will run inside. &nbsp;All earthly builds take place within the context of a docker container. &nbsp;This is how we ensure reproducibility. &nbsp;After that, we set a working directory and declare our first target `deps` and copy our project files into the build context.
 
 > You may have noticed the first time you build a `sbt` project, it takes a while to pull down all the project dependencies. &nbsp;This `deps` target is helping us avoid paying that cost every build. &nbsp; Calling `sbt update` and then `SAVE IMAGE` ensures that these steps are cached and can be used in further build steps. &nbsp;Earthly will only need to be rerun this step if our build files change.
@@ -95,8 +93,6 @@ build:
     RUN sbt compile
 ~~~
 
-<figcaption>Earthfile continued</figcaption>
-
 Inside the `build:` target we copy in our source files, and run our familiar `sbt compile`. &nbsp;We use `FROM +deps` to tell earthly that this step is dependent upon the output of our `deps` step above.
 
 We can run the build like this:
@@ -114,8 +110,6 @@ test:
     RUN sbt test</code></pre>
 ~~~
 
-<figcaption>Earthfile continued</figcaption>
-
 We can then run our tests like this:
 
 {% include imgf src="run3.gif" alt="running earthly +test" caption="Running `earthly +test`" %}
@@ -131,8 +125,6 @@ docker:
  ENTRYPOINT ["java","-cp","build/bin/scala-example-assembly-1.0.jar","Main"]
   SAVE IMAGE scala-example:latest
 ~~~
-
-<figcaption>Earthfile continued</figcaption>
 
 Here we are using `sbt assembly` to create a fat jar that we run as our docker container's entry point.
 
