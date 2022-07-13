@@ -158,7 +158,7 @@ Can you easily switch compiler versions in your language? Can you quickly run te
 
 ## Case Study: `gofmt`
 
-Code formatters existed before `gofmt`, just as third-party software packages exited before `CPAN`, but making something a standard for a community profoundly changes things. For example, no language that was created before Go is likely to achieve the near 100% style conformance that Go has because the existing languages have to deal with existing code, whereas `gofmt` enforces a single style and has no knobs to tweak. Languages that follow Go can learn this lesson. And so Rust (`rustfmt`) and Zig (`zig fmt`) have embraced a strong default code style and an accompanying code formatter, and have gained an edge in developer experience because of this.
+Code formatters existed before `gofmt`, just as third-party software packages existed before `CPAN`, but making something a standard for a community profoundly changes things. For example, no language that was created before Go is likely to achieve the near 100% style conformance that Go has because the existing languages have to deal with existing code, whereas `gofmt` enforces a single style and has no knobs to tweak. Languages that follow Go can learn this lesson. And so Rust (`rustfmt`) and Zig (`zig fmt`) have embraced a strong default code style and an accompanying code formatter, and have gained an edge in developer experience because of this.
 
 ## So Much More
 
