@@ -99,7 +99,7 @@ So after CPAN, a great standard library that does most of the things you need to
 
 ## Documentation: History
 
-Once you have third-party packages, you need an easy way to document them. Javadoc and it's generated documentation was the first version of this I encountered. It made it much easier to find what I was looking in the Java Class Library because I could just click around in the Javadocs on the web. Then if you combine Javadoc with IDE integration and it becomes simple to work with code you've never seen before. Exploratory coding becomes possible.
+Once you have third-party packages, you need an easy way to document them. Javadoc and it's generated documentation was the first version of this I encountered. It made it much easier to find what I was looking for in the Java Class Library because I could just click around in the Javadocs on the web. Then you can combine Javadoc with IDE integration and it becomes simple to work with code you've never seen before. Exploratory coding becomes possible.
 
 ## Documentation: State of the Art
 
