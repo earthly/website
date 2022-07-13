@@ -87,7 +87,7 @@ Well, they did, but it doesn't seem obvious how to get agreement in a language c
 
 This is going to be a running theme. Once the idioms and patterns of a programming language, and a language community, have been established its hard to go back and add things on. At least I think this is why Javascript has NPM, Rust has crates but C++ has [dds, cpm, conan, pacm, spakc, buckaroo, hunter and vcpkg](https://stackoverflow.com/questions/27866965/does-c-have-a-package-manager-like-npm-pip-gem-etc). You know what is better than one universally agreed upon package manager? Not eight of them!
 
-One counter point on backporting here though is standard libraries. C++ added its standard library rather late in the game, by successfully bring parts of STL under its roof. So existing languages can adopting tooling innovations, its just a bigger lift.
+One counter point on backporting here though is standard libraries. C++ added its standard library rather late in the game, by successfully bringing parts of STL under its roof. So existing languages can adopt tooling innovations, its just a bigger lift.
 
 </div>
 
