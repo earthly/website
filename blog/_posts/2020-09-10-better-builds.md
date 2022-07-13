@@ -39,7 +39,6 @@ object Main extends App {
 }
 ~~~
 
-
 And some unit tests we would like to run as part of the build:
 
 ~~~{.scala caption="test.scala"}
