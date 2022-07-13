@@ -1,5 +1,5 @@
 ---
-title: "Put Your Best Title Here"
+title: "From Click Opps to Terraform"
 categories:
   - Tutorials
 toc: true
@@ -24,8 +24,9 @@ internal-links:
 - [ ] Run `link-opp` and find 1-5 places to incorporate links to other articles
 - [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
 - [ ] Raise PR
+<!-- vale off -->
 
-Perviously I built a container that was contained full REST API and got it all working on AWS as a Lambda. But setting this up invovled just clicking around in AWS and occasionally using the AWS CLI.
+Previously I built a container that was contained full REST API and got it all working on AWS as a Lambda. But setting this up invovled just clicking around in AWS and occasionally using the AWS CLI.
 
 Today, I'm going to port that whole setup to Terraform so that its easier to manage, reproduce and make changes to.
 
@@ -34,19 +35,19 @@ Today, I'm going to port that whole setup to Terraform so that its easier to man
 
 ## From Click Ops to GitOps
 
-Failed tools:
-https://github.com/GoogleCloudPlatform/terraformer
-https://github.com/cycloidio/terracognita
+
 
 ## Installing
 
-First I install terraform:brew install hashicorp/tap/terraform
+First I install terraform:
+
 ```
 brew tap hashicorp/tap
 brew install hashicorp/tap/terraform
 ```
 
 Then I create a `main.tf` for my teraform config:
+
 ```
 terraform {
   required_providers {
@@ -136,7 +137,37 @@ so no changes are needed.
 Apply complete! Resources: 0 added, 0 changed, 0 destroyed.
 ```
 
-After that, I need to setup ECR. It's where I push my container image to in CI and where the lambda pulls it from.
+Even though no changes were applied, and I don't yet have any resources being managed by Terraform I do have a new file. 
+
+```
+$ git status
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        terraform.tfstate
+
+no changes added to commit (use "git add" and/or "git commit -a")
+```
+
+## How State Works in Terraform
+
+Terraform is declarative. You describe the end result of the state of the infrastructure you would like to see and Terraform makes it happen. But to get from your declarative specification to list of changes to 'terraform apply` the current state of the world must be captured. 
+
+Terraform stores this state in `terraform.tfstate`. At this point I have no resources being mangaged by Terraform so my `.tfstate` is pretty small.
+
+```
+{
+  "version": 4,
+  "terraform_version": "1.2.3",
+  "serial": 1,
+  "lineage": "9880ec52-a487-5a8e-db65-c4bc3949ba18",
+  "outputs": {},
+  "resources": []
+}
+
+```
+
+
+Ok, lets move on to creating my first resource. I need to setup ECR. It's where I push my container image to in CI and where the lambda pulls it from.
 
 ## Elastic Computer Repository - Terraform
 
@@ -152,9 +183,13 @@ resource "aws_ecr_repository" "foo" {
   }
 }
 ```
+
+### Understanding Terraform Resources
+
 In the first line, you can see the keyword `resource` followed by `aws_ecr_repository` and `foo`. This is how you declare a terraform resource and a resource is a declaritive thing you want to setup in terraform. The first string is the resource type, `aws_ecr_repository` in this example and the second thing is the name you want to give it. The name is for your own reference and I'll be using it to refer to specific resources from within other resources coming very soon. 
 
 Everything after that is a property of the resource and this whole thing is being written in HCL, hashicorp configuration langauge. It might make sense to know and understand HCL as you get deeper into terraform, but it's suffienceent for this tutorial to just think of it as fancy YAML.
+
 
 
 ...
@@ -203,3 +238,6 @@ resource "aws_ecr_repository" "lambda-api" {
 
 
 
+Failed tools:
+https://github.com/GoogleCloudPlatform/terraformer
+https://github.com/cycloidio/terracognita
