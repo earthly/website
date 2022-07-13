@@ -33,7 +33,7 @@ brew install hashicorp/tap/terraform
 
 Then I create a `main.tf` for my teraform config:
 
-~~~{.bash caption=">_"}
+~~~{.groovy caption="main.tf"}
 terraform {
   required_providers {
     aws = {
@@ -50,10 +50,10 @@ provider "aws" {
 Above, I'm pulling in the terraform AWS provider and setting my region. After that I can then `init` things:
 
 ~~~{.bash caption=">_"}
-terraform init
+$ terraform init
 ~~~
 
-~~~{.bash caption=">_"}
+~~~{.ini caption="Output"}
 Initializing the backend...
 
 Initializing provider plugins...
@@ -79,7 +79,7 @@ commands will detect it and remind you to do so if necessary.
 
 Terraform then creates `.terraform.lock.hcl` file.
 
-~~~{.bash caption=">_"}
+~~~{.groovy caption=".terraform.lock.hcl"}
 # This file is maintained automatically by "terraform init".
 # Manual edits may be lost in future updates.
 
@@ -106,21 +106,21 @@ $ terraform plan
 ~~~{.yaml caption="Output"}
 No changes. Your infrastructure matches the configuration.
 
-Terraform has compared your real infrastructure against your configuration and found no differences,
-so no changes are needed.
+Terraform has compared your real infrastructure against your configuration 
+and found no differences, so no changes are needed.
 ~~~
 
 Then I can apply the changes, just to be sure:
 
 ~~~{.bash caption=">_"}
-terraform apply 
+$ terraform apply 
 ~~~
 
-~~~{.bash caption=">_"}
+~~~{.bash caption="Output"}
 No changes. Your infrastructure matches the configuration.
 
-Terraform has compared your real infrastructure against your configuration and found no differences,
-so no changes are needed.
+Terraform has compared your real infrastructure against your configuration 
+and found no differences, so no changes are needed.
 
 Apply complete! Resources: 0 added, 0 changed, 0 destroyed.
 ~~~
@@ -129,6 +129,9 @@ Even though no changes were applied, and I don't yet have any resources being ma
 
 ~~~{.bash caption=">_"}
 $ git status
+~~~
+
+~~~{.ini caption="Output"}
 Untracked files:
   (use "git add <file>..." to include in what will be committed)
         terraform.tfstate
@@ -142,7 +145,7 @@ Terraform is declarative. You describe the end result of the state of the infras
 
 Terraform stores this state in `terraform.tfstate`. At this point I have no resources being mangaged by Terraform so my `.tfstate` is pretty small.
 
-~~~{.bash caption=">_"}
+~~~{.yaml caption=".tfstate"}
 {
   "version": 4,
   "terraform_version": "1.2.3",
@@ -160,7 +163,7 @@ Ok, lets move on to creating my first resource. I need to setup ECR. It's where 
 
 To create a ECR Repository in Terraform, I just googled "ECR Terraform" and ended up on the terraform docs where I found the following resource description:
 
-~~~{.bash caption=">_"}
+~~~{.groovy caption="main.tf"}
 resource "aws_ecr_repository" "foo" {
   name                 = "bar"
   image_tag_mutability = "MUTABLE"
@@ -185,13 +188,15 @@ The AWS provider will need a way to talk to your AWS account. If you don't have 
 
 ~~~{.bash caption=">_"}
 terraform plan
+~~~
+~~~{.ini caption="Output"}
 ╷
 │ Error: error configuring Terraform AWS Provider: no valid credential sources for Terraform AWS Provider found.
 ~~~
 
 If the credentials you have are wrong, the error will be a little bit different:
 
-~~~{.bash caption=">_"}
+~~~{.ini caption=""}
 Error: error configuring Terraform AWS Provider: error validating provider credentials: error calling sts:GetCallerIdentity: operation error STS: GetCallerIdentity, https response error StatusCode: 403, RequestID: e816a4d9-6f28-49ef-b245-395c3a758f4a, api error InvalidClientTokenId: The security token included in the request is invalid.
 ~~~
 
@@ -203,7 +208,7 @@ $ export AWS_PROFILE=earthly-dev
 
 It's also possible to configure the profile in terraform by adding it under provider configuration:
 
-~~~{.bash caption=">_"}
+~~~{.groovy caption="main.tf"}
  provider "aws" {
    region = "us-east-1"
 +  profile = "earthly-dev"
@@ -214,7 +219,7 @@ It's also possible to configure the profile in terraform by adding it under prov
 
 So to add in my Repository for my image I create the following resource
 
-~~~{.bash caption=">_"}
+~~~{.groovy caption="main.tf"}
 ### ECR
 
 resource "aws_ecr_repository" "lambda-api" {
@@ -225,7 +230,7 @@ resource "aws_ecr_repository" "lambda-api" {
 
 And running `terraform plan` I get this:
 
-~~~{.bash caption=">_"}
+~~~{.ini caption=""}
 Terraform used the selected providers to generate the following execution plan.
 Resource actions are indicated with the following symbols:
   + create
@@ -252,7 +257,7 @@ There is a potential problem here though. I've already setup this repository in 
 terraform apply --auto-approve
 ~~~
 
-~~~{.bash caption=">_"}
+~~~{.ini caption="Output"}
 Plan: 1 to add, 0 to change, 0 to destroy.
 aws_ecr_repository.lambda-api: Creating...
 ╷
