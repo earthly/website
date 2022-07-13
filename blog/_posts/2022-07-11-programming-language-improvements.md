@@ -101,7 +101,7 @@ So after CPAN, a great standard library that does most of the things you need to
 
 Once you have third-party packages, you need an easy way to document them. Javadoc and it's generated documentation was the first version of this I encountered. It made it much easier to find what I was looking for in the Java Class Library because I could just click around in the Javadocs on the web. Then you can combine Javadoc with IDE integration and it becomes simple to work with code you've never seen before. Exploratory coding becomes possible.
 
-## Documentation: State of the Art
+### Documentation: State of the Art
 
 Java with Javadocs is no longer the state of the art. Go has [`godoc`](https://pkg.go.dev/), Julia has [`Documenter.jl`](https://github.com/JuliaDocs/Documenter.jl) and even [hackage](https://hackage.haskell.org/) has pretty good package docs. But the state of the art seems to be Rust with [docs.rs](https://docs.rs/).
 
