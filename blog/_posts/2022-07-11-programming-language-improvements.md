@@ -122,7 +122,7 @@ Virtualization and then containerization have made this far more common, but the
 
 ### Run Anywhere: State of the Art
 
-There are of course downsides to the Java approach. One of which is the slow start-up time of JIT code and another is the limitation of not being able to easily call something that isn't written in Java. GraalVM claims these problems have be overcome but the current trend seems to be ahead-of-time cross-compiling. Both Rust and Go make this fairly simple, assuming you don't have any c or `libc` dependendcies.
+There are of course downsides to the Java approach. One of which is the slow start-up time of JIT code and another is the limitation of not being able to easily call something that isn't written in Java. GraalVM claims these problems have been overcome but the current trend seems to be ahead-of-time cross-compiling. Both Rust and Go make this fairly simple, assuming you don't have any c or `libc` dependencies.
 
 But the state of the art appears to be Zig, which can easily cross compile not just Zig programs but also anything that would normally be build with Clang or GCC.
 
