@@ -6,7 +6,10 @@ toc: true
 author: Boemo Wame Mmopelwa
 
 internal-links:
- - just an example
+ - YAML
+ - Kubeval
+ - ValidKube
+ - Linux
 ---
 
 [Kubeval](https://www.kubeval.com/) is a command line tool that validates Kubernetes manifests and YAML files using the Kubernetes API schema. Behind the scenes, Kubeval compares API schemas with objects provided in your YAML file to find any errors. Cleaning and validating your files is imperative because it helps you to spot misconfigurations that can introduce flaws to your cluster. All you have to do is run the Kubeval command which specifies your YAML file. Kubeval is a free and open-source project developed by [instrumenta](https://instrumenta.dev/).
@@ -290,7 +293,6 @@ Kubernetes security should never be an afterthought; use these two tools to help
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
 - [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
