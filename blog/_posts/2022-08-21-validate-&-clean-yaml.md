@@ -12,7 +12,7 @@ internal-links:
  - Linux
 ---
 
-[Kubeval](https://www.kubeval.com/) is a command line tool that validates Kubernetes manifests and YAML files using the Kubernetes API schema. Behind the scenes, Kubeval compares API schemas with objects provided in your YAML file to find any errors. Cleaning and validating your files is imperative because it helps you to spot misconfigurations that can introduce flaws to your cluster. All you have to do is run the Kubeval command which specifies your YAML file. Kubeval is a free and open-source project developed by [instrumenta](https://instrumenta.dev/).
+[Kubeval](https://www.kubeval.com/) is a [command line tool](/blog/golang-command-line) that validates Kubernetes manifests and YAML files using the Kubernetes API schema. Behind the scenes, Kubeval compares API schemas with objects provided in your YAML file to find any errors. Cleaning and validating your files is imperative because it helps you to spot misconfigurations that can introduce flaws to your cluster. All you have to do is run the Kubeval command which specifies your YAML file. Kubeval is a free and open-source project developed by [instrumenta](https://instrumenta.dev/).
 
 Kubeval is an important tool if you are writing YAML files on a daily basis. You should use it to validate your files before applying them to your cluster. In this tutorial, you will learn how to validate your YAML files using Kubeval and ValidKube which is a web tool that cleans YAML files.
 
@@ -35,7 +35,7 @@ tar xf kubeval-linux-amd64.tar.gz
 sudo cp kubeval /usr/local/bin
 ~~~
 
-If you're not using a Linux distribution you can check the Kubeval [docs](https://www.kubeval.com/installation/) for information on how to install the CLI on Windows or macOS.
+If you're not using a Linux distribution you can check the Kubeval [docs](https://www.kubeval.com/installation/) for information on how to install the CLI on [Windows](/blog/makefiles-on-windows) or macOS.
 
 Once the download is complete, you can confirm Kubeval has been installed successfully by using the following command:
 
@@ -150,7 +150,7 @@ If you scan the above contents using Kubeval again you will get the following ou
 
 ## Converting Kubeval Results to Json and Tap Format
 
-If you are more familiar with JSON or TAP, Kubeval allows you to output the results in JSON or TAP format. This will help you analyze results better since you understand the JSON format much better.
+If you are more familiar with JSON or TAP, Kubeval allows you to output the results in [JSON](/blog/convert-to-from-json) or TAP format. This will help you analyze results better since you understand the JSON format much better.
 
 Use the following command to get the validation results in JSON format:
 
@@ -217,7 +217,7 @@ You will get the following output:
 
 After validating your files using Kubeval, it is important to remove clutter from the YAML files using [Validkube](https://validkube.com/) which is an online web tool that uses [Kube-neat](https://github.com/itaysk/kubectl-neat) to clean your files. You don't have to install anything to use it, all you have to do is copy and paste your files on [ValidKube](https://validkube.com/).
 
-Let's clean the following deployment object using ValidKube:
+Let's clean the following [deployment](/blog/deployment-strategies) object using ValidKube:
 
 ~~~{.bash caption=">_"}
 apiVersion: apps/v1
@@ -291,8 +291,5 @@ Kubernetes security should never be an afterthought; use these two tools to help
 
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
-- [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
 - [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
