@@ -62,7 +62,7 @@ If you get stuck while using Kubeval, use the following command to get all avail
 
 Kubeval allows you to validate Kubernetes objects or resources stated in a YAML file. In this tutorial, you will learn to validate files by validating a ClusterRole. Create a file called `secret-reader.yaml` and add the following contents:
 
-~~~{.bash caption=">_"}
+~~~{.yaml caption="secret-reader.yaml"}
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
@@ -91,7 +91,7 @@ Underneath the hood, Kubeval compared the `secret-reader.yaml` file to this [Jso
 
 Now, let's use a YAML file that has missing metadata and see if Kubeval will spot the error. Here is the full file with the error:
 
-~~~{.bash caption=">_"}
+~~~{.yaml caption="secret-reader.yaml"}
 apiVersion: v1
 kind: Service
 spec:
@@ -123,7 +123,7 @@ When Kubeval gives you scan results that have errors, don't execute the YAML fil
 
 To correct the previous issue, add the metadata key that Kubeval had indicated as missing. The metadata segment in a Kubernetes resource file contains the name of the object, namespace, and other details. Here is the complete service YAML file that has metadata:
 
-~~~{.bash caption=">_"}
+~~~{.yaml caption="secret-reader.yaml"}
 apiVersion: v1
 kind: Service
 metadata:
@@ -162,7 +162,7 @@ Use the following command to get the validation results in JSON format:
 
 You will get the scan results in JSON format:
 
-~~~{.bash caption=">_"}
+~~~{.json caption="output"}
 [
         {
                 "filename": "secret-reader.yaml",
@@ -221,7 +221,7 @@ After validating your files using Kubeval, it is important to remove clutter fro
 
 Let's clean the following [deployment](/blog/deployment-strategies) object using ValidKube:
 
-~~~{.bash caption=">_"}
+~~~{.yaml caption="secret-reader.yaml"}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -258,7 +258,7 @@ Go to the [ValidKube website](https://validkube.com/) and paste the above conten
 
 You will get the following results that show a clutter-free YAML file. The ` resources: {} `field has been removed since it was making the YAML file longer and it was not assigned any values. Also, the "" around `Wrong` were removed for the value of replicas.
 
-~~~{.bash caption=">_"}
+~~~{.yaml caption="secret-reader.yaml"}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -290,7 +290,3 @@ In this tutorial, you have learned how to validate files using Kubeval and how t
 Kubernetes security should never be an afterthought; use these two tools to help you apply secure resources to your cluster. Kubernetes is dynamic and complex, using these security tools will help you simplify Kubernetes security tasks and catch Kubernetes cluster errors more easily. There are can be many errors and bugs that you do not know exist in your manifests; Kubescape and ValidKube will detect and show you flaws that you never knew before. Consistently applying valid manifests to your cluster will improve and maintain your cluster's health over time.
 
 {% include cta/cta1.html %}
-
-## Outside Article Checklist
-
-- [ ] Optional: Find ways to break up content with quotes or images
