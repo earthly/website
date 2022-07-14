@@ -63,7 +63,7 @@ Let's encapsulate these into an Earthfile, so that I can run the exact same buil
 
 The first step is to create a new Earthfile and copy in our build files and dependencies: &nbsp;
 
-~~~{.dockerfile caption="Dockerfile"}
+~~~{.dockerfile caption="Earthfile"}
 FROM hseeberger/scala-sbt:11.0.6_1.3.10_2.13.1
 WORKDIR /scala-example
 
@@ -86,7 +86,7 @@ We can test out the `deps` step like this:
 
 Next, we create a `build` target. This is our Earthfile equivalent of `sbt compile`.
 
-~~~{.dockerfile caption="Dockerfile"}
+~~~{.dockerfile caption="Earthfile"}
 build:
     FROM +deps
     COPY src src
@@ -103,7 +103,7 @@ We can run the build like this:
 
 We can similarly create a target for running tests:
 
-~~~{.dockerfile caption="Dockerfile"}
+~~~{.dockerfile caption="Earthfile"}
 test:
     FROM +deps
     COPY src src
@@ -118,7 +118,7 @@ We can then run our tests like this:
 
 The final step in our build is to build a docker container, so we can send this application off to run in Kubernetes or EKS or whatever production happens to look like.
 
-~~~{.dockerfile caption="Dockerfile"}
+~~~{.dockerfile caption="Earthfile"}
 docker:
  COPY src src
  RUN sbt assembly
