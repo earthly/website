@@ -30,7 +30,8 @@ Kubeval is an important tool if you are writing YAML files on a daily basis. You
 Use the following command to install Kubeval on your Linux machine:
 
 ~~~{.bash caption=">_"}
-wget https://github.com/instrumenta/kubeval/releases/latest/download/kubeval-linux-amd64.tar.gz
+wget https://github.com/instrumenta/kubeval/releases/latest/download \
+/kubeval-linux-amd64.tar.gz
 tar xf kubeval-linux-amd64.tar.gz
 sudo cp kubeval /usr/local/bin
 ~~~
@@ -82,7 +83,8 @@ kubeval secret-reader.yaml
 You will get the following output:
 
 ~~~{.bash caption=">_"}
-←[32mPASS←[0m - secret-reader.yaml contains a valid ClusterRole (organization.secret-reader)
+←[32mPASS←[0m - secret-reader.yaml contains a valid ClusterRole \
+(organization.secret-reader)
 ~~~
 
 Underneath the hood, Kubeval compared the `secret-reader.yaml` file to this [Jsonschema](https://github.com/garethr/kubernetes-json-schema/blob/master/v1.11.2/clusterrole-rbac-v1alpha1.json). As you can see, we provided it a valid file, so the scan passed with no errors or insecurities.
@@ -291,5 +293,4 @@ Kubernetes security should never be an afterthought; use these two tools to help
 
 ## Outside Article Checklist
 
-- [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
