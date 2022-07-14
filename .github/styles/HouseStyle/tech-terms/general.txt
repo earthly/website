@@ -184,3 +184,9 @@ Patsubst
 patsubst
 llox
 Dockershim
+
+Kubeval
+Validkube
+Jsonschema
+misconfigurations
+instrumenta
