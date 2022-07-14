@@ -23,27 +23,25 @@ Earthly uses Earthfiles to encapsulate your build. &nbsp;If you imagine a [docke
 
 Let's walk through creating an Earthfile for a Scala project:
 
-```
+~~~
 ├── build.sbt 
 └── src/main
     ├── Main.scala
 └── src/test
     ├── Test.scala </code></pre>
-```
+~~~
 
 We have a main that we would like to run on startup:
 
-``` scala
+~~~{.scala caption="main.scala"}
 object Main extends App {
   println("Hello, World!")
 }
-```
-
-<figcaption>`Main.scala`</figcaption>
+~~~
 
 And some unit tests we would like to run as part of the build:
 
-``` scala
+~~~{.scala caption="test.scala"}
 import org.scalatest.FlatSpec
 
 class ListFlatSpec extends FlatSpec {
@@ -51,9 +49,7 @@ class ListFlatSpec extends FlatSpec {
     assert(List.empty.size == 0)
   }
 }
-```
-
-<figcaption>`Test.scala`</figcaption>
+~~~
 
 There are several steps involved in the build process for this project:
 
@@ -67,7 +63,7 @@ Let's encapsulate these into an Earthfile, so that I can run the exact same buil
 
 The first step is to create a new Earthfile and copy in our build files and dependencies: &nbsp;
 
-``` dockerfile
+~~~{.dockerfile caption="Earthfile"}
 FROM hseeberger/scala-sbt:11.0.6_1.3.10_2.13.1
 WORKDIR /scala-example
 
@@ -76,9 +72,7 @@ deps:
     COPY project project
     RUN sbt update
     SAVE IMAGE
-```
-
-<figcaption>Earthfile</figcaption>
+~~~
 
 The first line is declaring the base docker image our build steps will run inside. &nbsp;All earthly builds take place within the context of a docker container. &nbsp;This is how we ensure reproducibility. &nbsp;After that, we set a working directory and declare our first target `deps` and copy our project files into the build context.
 
@@ -92,14 +86,12 @@ We can test out the `deps` step like this:
 
 Next, we create a `build` target. This is our Earthfile equivalent of `sbt compile`.
 
-``` dockerfile
+~~~{.dockerfile caption="Earthfile"}
 build:
     FROM +deps
     COPY src src
     RUN sbt compile
-```
-
-<figcaption>Earthfile continued</figcaption>
+~~~
 
 Inside the `build:` target we copy in our source files, and run our familiar `sbt compile`. &nbsp;We use `FROM +deps` to tell earthly that this step is dependent upon the output of our `deps` step above.
 
@@ -111,14 +103,12 @@ We can run the build like this:
 
 We can similarly create a target for running tests:
 
-``` dockerfile
+~~~{.dockerfile caption="Earthfile"}
 test:
     FROM +deps
     COPY src src
     RUN sbt test</code></pre>
-```
-
-<figcaption>Earthfile continued</figcaption>
+~~~
 
 We can then run our tests like this:
 
@@ -128,15 +118,13 @@ We can then run our tests like this:
 
 The final step in our build is to build a docker container, so we can send this application off to run in Kubernetes or EKS or whatever production happens to look like.
 
-``` dockerfile
+~~~{.dockerfile caption="Earthfile"}
 docker:
  COPY src src
  RUN sbt assembly
  ENTRYPOINT ["java","-cp","build/bin/scala-example-assembly-1.0.jar","Main"]
   SAVE IMAGE scala-example:latest
-```
-
-<figcaption>Earthfile continued</figcaption>
+~~~
 
 Here we are using `sbt assembly` to create a fat jar that we run as our docker container's entry point.
 
