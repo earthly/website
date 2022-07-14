@@ -6,10 +6,8 @@ toc: true
 author: Adam
 
 internal-links:
- - just an example
+ - terraform import
 ---
-<!-- vale off -->
-
 ## From Click Ops to GitOps
 
 Previously I built a REST API, deployed it into a container and got it all running on AWS as a Lambda. But setting this up invovled just clicking around in AWS and occasionally using the AWS CLI.
@@ -682,19 +680,18 @@ After importing all those and applying them, I have all the infrastructure behin
 
 So far Terraform has actually deployed zero of these changes. It's possible that I'm missing important resources or that I have the resources properly imported into Terraform but my config for them is incorrect in some sublte way that I'm not aware of.
 
-After all, this is my first time using Terraform and many of the resources diverage from the AWS UI. For instance, the connection between lambda and API gateway was created in the UI using a lambda trigger. However, a lamda trigger is not actually a resource, its more like a wizard that creates resources based on the type of integration you setup. In this case, it created an API gateway route and an API gateway integration. 
+After all, this is my first time using Terraform and many of the resources diverage from the AWS UI. For instance, the connection between lambda and API gateway was created in the UI using a lambda trigger. However, a lamda trigger is not actually a resource, its more like a wizard that creates resources based on the type of integration you setup. In this case, it created an API gateway route and an API gateway integration.
 
 The easiest way to test all this out is to destroy and then recreate the resources in question. There are a couple of ways to do that. One is using `terraform destroy` which will destroy all the infrastructure. But instead I'm choosing to test all this by commenting out resources and running `terraform apply --auto-approve` to remove them. If your dealing with an important production environemtn you might not want to do this and instead test things in a seperate workspace, but for me this works great.
 
 First I commented everything out:
-```
-```
+
+~~~{.bash caption=">_"}
+~~~
 
 and applied it. Then I started uncommented elements and ran apply again. And sure enough, at the end I was back with a running web service.
 
-
-## Conclusion:
-
+## Conclusion
 
 ### Writing Article Checklist
 
