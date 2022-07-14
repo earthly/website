@@ -201,3 +201,4 @@ Feldman
 winget
 cmake
 Cuelang
+Mathematica

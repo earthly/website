@@ -19,6 +19,7 @@ base-image:
   RUN apt-get install python3-matplotlib libvips-dev python3-pip npm pandoc -y
   RUN pip3 install pandocfilters python-frontmatter
   RUN npm install -g markdownlint-cli 
+  RUN npm install -g tailwindcss
   RUN apt-get install ripgrep bc lsof -y
 
   IF [ "$TARGETARCH" = "arm64" ]
@@ -35,6 +36,16 @@ base-image:
   COPY Gemfile .
   COPY Gemfile.lock .
   RUN bundle install --retry 5 --jobs 20
+
+  # Pre Generate Site as a cache
+  # Not worth the performance cost
+  # Possibly better to store in S3 and prepopulate the cache from there 
+
+  # IF [ "$CACHE_IMAGE" = "YES" ]
+  #    COPY . .
+  #    RUN JEKYLL_ENV=production bundle exec jekyll build $FLAGS 
+  # END
+
 
   SAVE IMAGE --push agbell/blog-base-image:latest 
 

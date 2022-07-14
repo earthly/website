@@ -143,14 +143,10 @@ lint() { # Run Linter
        cd blog || exit
        markdownlint --fix "./_posts/*.md" 
     )
-    (
-        cd blog || exit
-        bundle exec jekyll build --future 2> ../error.txt || true
-        if [ -s error.txt ] 
-        then
-            cat error.txt && echo "Errors in Build" && false
-        fi
-    )
+}
+
+,vale(){ # Run Vale
+  vale --output line --minAlertLevel error ./blog/_posts/*.md
 }
 
 format(){ # change code blocks
@@ -259,11 +255,24 @@ start-blog(){ # Start up blog on localhost:4002/blog.
         then
             bundle exec jekyll serve "$@"  -H 0.0.0.0 -P 4002
         else
-           bundle exec jekyll serve --future --incremental --profile  -H 0.0.0.0 -P 4002
+           bundle exec jekyll serve --future --incremental -H 0.0.0.0 -P 4002
         fi 
     )
 }
 
+start-blog-verbose(){ # Start up  blog will all debug info printing.
+     (
+        cd blog || exit
+        bundle exec jekyll serve --future --verbose --incremental --profile --trace  -H 0.0.0.0 -P 4002 | ts
+    )
+}
+
+build-blog(){ # Build blog to _site folder
+    (
+        cd blog || exit
+        time bundle exec jekyll build
+    )
+}
 start-website(){ # Start up website on localhost:4001. 
     (
         cd website || exit

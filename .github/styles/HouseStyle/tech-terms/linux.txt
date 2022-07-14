@@ -27,6 +27,7 @@ subgids
 usermod
 userland
 autoconf
+totp
 
 ## Virtulization
 Vagrantfile
@@ -36,3 +37,17 @@ Kaniko
 
 # programming
 memoization
+
+# cpp package managers
+dds
+cpm
+conan
+pacm
+spakc
+buckaroo
+hunter
+vcpkg
+
+Javadoc
+Javadocs
+hackage

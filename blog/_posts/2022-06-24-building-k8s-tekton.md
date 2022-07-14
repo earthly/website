@@ -4,7 +4,6 @@ categories:
   - Tutorials
 toc: true
 author: Joseph Eshiett
-
 internal-links:
  - CI/CD
  - Tekton

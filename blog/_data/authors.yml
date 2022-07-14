@@ -1,3 +1,7 @@
+Earthly:
+    name    : "Earthly"
+    bio     : ""
+    avatar  : "/assets/images/authors/person.jpg"
 Corey:
     name    : "Corey Larson"
     bio     : "Eats, runs, and codes. Dad. Engineer. Progressive. LDS. Disneyland fanatic."
@@ -227,3 +231,20 @@ Ukeje Goodness:
     name    : "Ukeje Goodness"
     bio     : "Goodness is a technical writer and  backend developer(Go) simplifying various technology topics as he explores this fascinating field."
     avatar  : "/assets/images/authors/ukejegoodness.png"
+Alexander Yu:
+    name    : "Alexander Yu"
+    bio     : "Alexander Yu is a technical writer at AWS by day and a freelance writer by night. After completing his BS in electrical engineering and computer science from UC Berkeley, he became a software developer at AWS for almost three years before transitioning into technical writing. He lives in Seattle with his dog Yuna."
+    avatar  : "/assets/images/authors/alexanderyu.jpg"
+Mr. Unity Buddy:
+    name    : "Mr. Unity Buddy"
+    bio     : "Technical writer, Content creator, Game Designer, and a Mad Developer. Visit unitybuddy.com for more!"
+    avatar  : "/assets/images/authors/unitybuddylogo.png"
+Sooter Saalu:
+    name    : "Sooter Saalu"
+    bio     : "Sooter Saalu is a data professional with experience as a data analyst, data scientist, and data engineer. He has an educational background in clinical psychology and is committed to writing engaging data stories for technical and non-technical audiences."
+    avatar  : "/assets/images/authors/Sootersaalu.jpeg"
+Kealan Parr:
+    name    : "Kealan Parr"
+    bio     : "Kealan is a senior software engineer and technical writer who works with clients on technical reviewing and software development. He is a member of the Unicode Consortium."
+    avatar  : "/assets/images/authors/Kealanparr.jpg"
+

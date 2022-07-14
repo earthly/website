@@ -6,6 +6,15 @@ author: Adam
 internal-links:
  - write for us
 ---
+<div class="notice--info notice--big">
+
+## Join Writing Wait List
+
+We aren't taking new writers at the moment but will be soon.
+
+Please [fill out this form](https://docs.google.com/forms/d/e/1FAIpQLSdgpU8oYXvRRnvtxt5ZruAvJ3RPa4sEXgvbaY1xDOA98G3ycw/viewform) to join the wait-list.
+</div>
+
 Do you love writing about software development? Then, write for Earthly, and you'll get access to a larger audience, and we'll pay you.
 
 Eathly's blog gets tens of thousands of visitors each month and is a respected source of developer information. It frequently shows up on the front page of [Hacker News](https://news.ycombinator.com/from?site=earthly.dev) and receives thousands of visitors from Google each day.
@@ -43,7 +52,7 @@ A pitch topic is an article title, a paragraph sample introduction, and a bullet
 
   We will pay you $350 USD for your article and use our Twitter account to promote your article to our audience of developers.
  <div class="notice--info">
-  After your article has been accepted please send an invoice to [adam@earthly.dev](mailto:adam@earthly.dev). Invoiced should include the following: Date, Title of Article, Amount, Bank name, Back account number/IBAN, Routing Number/SWIFT code/ABA.
+  After your article has been accepted please send us an invoice. Invoice should include the following: Date, Title of Article, Amount, Bank name, Back account number/IBAN, Routing Number/SWIFT code/ABA.
 
   If you need help with invoicing or have other questions about payment, please feel free to reach out.
 </div>

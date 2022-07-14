@@ -23,7 +23,7 @@ For this tutorial I thought I'd work with a [sample Django project](https://gith
 
 All Dev Container set ups start with a `.devcontainer/devcontainer.json`. In here you can set environment variables unique to the dev environment, install additional resources, include any VS Code plugins that might be necessary or helpful, run commands after the container is done spinning up and much more.
 
-Since a Dev Container is just a Docker container, you can define it the same way you define any container, in a Dockerfile or using a `docker-compose.yml` or a combination of both. You can also pull an existing image. Most set ups will use some combination of `devconatiner.json` and a Dockerfile
+Since a Dev Container is just a Docker container, you can define it the same way you define any container, in a Dockerfile or using a `docker-compose.yml` or a combination of both. You can also pull an existing image. Most set ups will use some combination of `devcontainer.json` and a Dockerfile
 
 ## Getting Set Up
 
@@ -31,18 +31,18 @@ VS Code provides a lot of template projects to help you get started with Dev Con
 
 ![remote containers options]({{site.images}}{{page.slug}}/remote-containers.png)
 
-After you click here you'll have a few options depending on your repo. VS Code will suggest pre-defined templates based on what kinds of files it finds in your project. For example the first suggesting for me was `Python3 with Postgresql`, which is exactly what I needed. After this you are given the option to add additional features like Homebrew, Docker, AWS Cli and many more. These options just get added to your `devconatiner.json`, so if you don't know what you'll need don't worry, it's easy to add things later. I didn't need anything else so I left these out and clicked OK.
+After you click here you'll have a few options depending on your repo. VS Code will suggest pre-defined templates based on what kinds of files it finds in your project. For example the first suggesting for me was `Python3 with Postgresql`, which is exactly what I needed. After this you are given the option to add additional features like Homebrew, Docker, AWS Cli and many more. These options just get added to your `devcontainer.json`, so if you don't know what you'll need don't worry, it's easy to add things later. I didn't need anything else so I left these out and clicked OK.
 
 This created three new files for me.
 
-- `.devconatiners/devcontainer.json`
-- `.devconatiners/Dockerfile`
-- `.devconatiners/docker-compose.yml`
+- `.devcontainers/devcontainer.json`
+- `.devcontainers/Dockerfile`
+- `.devcontainers/docker-compose.yml`
 
 Let's take a quick look at each one.
 
 <!-- vale off -->
-### devconatiner.json
+### devcontainer.json
 <!-- vale on -->
 
 ~~~{.json caption=">_"}
@@ -191,7 +191,7 @@ Here you can choose to activate Codespaces with a number of options for who can 
 
 ![Turn On Code Spaces in Your Org Settings]({{site.images}}{{page.slug}}/turn-on-codespaces.png)
 
-<div class="notice--info"></div>
+<div class="notice--info">
 
 ### What About Forks?
 
@@ -232,6 +232,6 @@ If you're ever unsure if you have any Codespaces running, you can see all your C
 
 ## Code Anywhere
 
-We just started using Dev Containers and Codespaces at Earthly. They've allowed us to collaborate more easily with freelances. One thing you lose with this set up is a lot of the customizations a developer might have on their own machine. Could be something as simple as losing your preferred command prompt, or no longer having access to aliases and custom scripts. There [are ways around this](https://docs.github.com/en/codespaces/customizing-your-codespace/personalizing-codespaces-for-your-account), but best leave that for another article.
+We just started using Dev Containers and Codespaces at Earthly. They've allowed us to collaborate more easily with freelancers. One thing you lose with this set up is a lot of the customizations a developer might have on their own machine. Could be something as simple as losing your preferred command prompt, or no longer having access to aliases and custom scripts. There [are ways around this](https://docs.github.com/en/codespaces/customizing-your-codespace/personalizing-codespaces-for-your-account), but best leave that for another article.
 
 {% include cta/cta1.html %}
