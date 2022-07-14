@@ -495,7 +495,7 @@ Which I import:
 terraform import aws_s3_bucket.text-mode text-mode
 ~~~
 
-And then I have to setup and import my bucket lifecycle.
+And then I have to setup my bucket lifecycle.
 
 ~~~{.groovy caption="main.tf"}
 resource "aws_s3_bucket_lifecycle_configuration" "text-mode" {
@@ -511,17 +511,21 @@ resource "aws_s3_bucket_lifecycle_configuration" "text-mode" {
 }
 ~~~
 
+And import it.
+
 ~~~{.bash caption=">_"}
 terraform import aws_s3_bucket_lifecycle_configuration.text-mode text-mode
 ~~~
 
-Then I run apply, which will find no changes to apply. You may be wondering how certain yuo can be in all this declarative config, when none of it has actually been applied from terraform. Well I'm going to tackle that last.
+Then I run apply, which will find no changes to apply. You may be wondering how certain I can be in all this declarative config, when none of it has actually been applied from terraform, only imported. Well I'm going to tackle that last.
 
 ## Terraform API Gateway Import
 
-TODO: Add verbage
+Next up is my API Gateway.
 
-~~~{.bash caption=">_"}
+First I need to import my domain certifcate and setup API gateway to use it.
+
+~~~{.groovy caption="main.tf"}
 ## API GATEWAY
 
 # ## Domain Name
@@ -545,7 +549,18 @@ resource "aws_api_gateway_domain_name" "earthly-tools-com" {
     types = ["REGIONAL"]
   }
 }
+~~~
 
+And import it by ARN, which I got from the AWS UI:
+
+~~~{.bash caption=">_"}
+$ terraform import aws_acm_certificate.cert arn:...
+$ terraform import aws_api_gateway_domain_name.earthly-tools-com earthly-tools.com
+~~~
+
+Then I need to set up the API, the API State and map it to the domain.
+
+~~~
 resource "aws_apigatewayv2_api" "earthly-tools-com" {
    api_key_selection_expression = "$request.header.x-api-key"
     description                  = "Created by AWS Lambda"
@@ -568,13 +583,31 @@ resource "aws_apigatewayv2_api_mapping" "earthly-tools-com" {
 }
 ~~~
 
-### Terraform Import Lambda
-
-TODO: Add verbage
+To import these, I need to get the API identified from AWS.
 
 ~~~{.bash caption=">_"}
+terraform import aws_apigatewayv2_api.earthly-tools-com yr255kt190
+terraform import aws_apigatewayv2_route.earthly-tools-com yr255kt190/afjkrcc
+terraform import aws_apigatewayv2_api_mapping.earthly-tools-com a09jn5/earthly-tools.com
+~~~
 
-## Lambda 
+Notice how things are becoming a bit more intricate. It's not even clear to me where you setup a api gateway mapping in the AWS UI.
+
+When I reach out to Corey, my local terraform expert to discuss how hard this was, he suggested instead of trying to setup each individual resource like this, that sometimes its much better to find a module someone has built and use that. Specifically he recommends [this module](https://github.com/terraform-aws-modules/terraform-aws-apigateway-v2) and in the future I may reach for those off-the-shelf modules rather than figuring this all out myself.
+
+### Terraform Import Lambda
+
+The lambda import was one of the easiest parts and in particular felt pretty useful, since I do have some specific setting setup in my lambda that I don't want to lose.
+
+I imported using the arn:
+
+~~~{.bash caption=">_"}
+terraform import aws_lambda_function.text-mode arn...
+~~~
+
+Then I grabed the details from terraform by doing `terraform show -no-color > file.tf` and findng my lambda and adding the details back into my teraform file.
+
+~~~{.groovy caption="main.tf"}
 
 resource "aws_lambda_function" "lambda-api" {
   function_name                  = "lambda-api"
@@ -602,11 +635,23 @@ resource "aws_lambda_function" "lambda-api" {
 }
 ~~~
 
+I did a similar process for Lambda permissions, since the API needs permissions to call the lambda. The end result looks like this:
+
+~~~{.groovy caption="main.tf"}
+## Give API Gateway access to Lambda
+resource "aws_lambda_permission" "earthly-tools-com" {
+  action        = "lambda:InvokeFunction"
+  function_name = aws_lambda_function.lambda-api.function_name
+  principal     = "apigateway.amazonaws.com"
+  source_arn    = "arn:aws:execute-api:us-east-1:459018586415:yr255kt190/*/*/{path+}"
+}
+~~~
+
 ## Terraform Import API Route and Integration
 
 This part was by far the hardest. In AWS, there is a single button clcik process to hook a lambda up to an API endpoint. Behind the scenes there are a number of seperate things happening. But once I figured out the name of all these little resources, it was easy to import and 'terraform show` them to see how they should be configured.
 
-~~~{.bash caption=">_"}
+~~~{.groovy caption="main.tf"}
 ## Attach Lambda to API Gateway
 resource "aws_apigatewayv2_integration" "earthly-tools-com" {
    api_id = aws_apigatewayv2_api.earthly-tools-com.id
@@ -629,17 +674,27 @@ resource "aws_apigatewayv2_route" "earthly-tools-com" {
   authorization_type   = "NONE"
   request_models       = {}
 }
-
-## Give API Gateway access to Lambda
-resource "aws_lambda_permission" "earthly-tools-com" {
-  action        = "lambda:InvokeFunction"
-  function_name = aws_lambda_function.lambda-api.function_name
-  principal     = "apigateway.amazonaws.com"
-  source_arn    = "arn:aws:execute-api:us-east-1:459018586415:yr255kt190/*/*/{path+}"
-}
 ~~~
 
+After importing all those and applying them, I have all the infrastructure behind [text-mode](earthly-tools.com) in terraform. Now its time to test things.
+
 ## Testing this
+
+So far Terraform has actually deployed zero of these changes. It's possible that I'm missing important resources or that I have the resources properly imported into Terraform but my config for them is incorrect in some sublte way that I'm not aware of.
+
+After all, this is my first time using Terraform and many of the resources diverage from the AWS UI. For instance, the connection between lambda and API gateway was created in the UI using a lambda trigger. However, a lamda trigger is not actually a resource, its more like a wizard that creates resources based on the type of integration you setup. In this case, it created an API gateway route and an API gateway integration. 
+
+The easiest way to test all this out is to destroy and then recreate the resources in question. There are a couple of ways to do that. One is using `terraform destroy` which will destroy all the infrastructure. But instead I'm choosing to test all this by commenting out resources and running `terraform apply --auto-approve` to remove them. If your dealing with an important production environemtn you might not want to do this and instead test things in a seperate workspace, but for me this works great.
+
+First I commented everything out:
+```
+```
+
+and applied it. Then I started uncommented elements and ran apply again. And sure enough, at the end I was back with a running web service.
+
+
+## Conclusion:
+
 
 ### Writing Article Checklist
 
