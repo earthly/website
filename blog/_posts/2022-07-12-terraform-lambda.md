@@ -182,6 +182,7 @@ Everything after that is a property of the resource and this whole thing is bein
 
 The main thing we need to know is that if we need to later refer to this resource we remove the quotes and add dots (`.`) so that `resource "aws_ecr_repository" "foo"` becomes `resource.aws_ecr_repository.foo` and that resources name would be `resource.aws_ecr_repository.foo.name`.
 
+<div class="notice--info">
 ## Side Note: AWS Provider
 
 The AWS provider will need a way to talk to your AWS account. If you don't have AWS credentials properly setup you may get an error like this:
@@ -189,6 +190,7 @@ The AWS provider will need a way to talk to your AWS account. If you don't have 
 ~~~{.bash caption=">_"}
 terraform plan
 ~~~
+
 ~~~{.ini caption="Output"}
 ╷
 │ Error: error configuring Terraform AWS Provider: no valid credential sources for Terraform AWS Provider found.
@@ -214,6 +216,8 @@ It's also possible to configure the profile in terraform by adding it under prov
 +  profile = "earthly-dev"
  }
 ~~~
+
+</div>
 
 ## ECR & Terraform import
 
@@ -254,15 +258,16 @@ Plan: 1 to add, 0 to change, 0 to destroy.
 There is a potential problem here though. I've already setup this repository in AWS. Terraform only tracks the state of resources it is managing, but I created a repository with this same name in the UI. How is this going to work? Let's find out.
 
 ~~~{.bash caption=">_"}
-terraform apply --auto-approve
+$ terraform apply --auto-approve
 ~~~
 
-~~~{.ini caption="Output"}
+~~~{.ini caption=""}
 Plan: 1 to add, 0 to change, 0 to destroy.
 aws_ecr_repository.lambda-api: Creating...
 ╷
-│ Error: failed creating ECR Repository (lambda-api): RepositoryAlreadyExistsException: The repository with name 'lambda-api' already exists in the registry with id '459018586415'
-│ 
+│ Error: failed creating ECR Repository (lambda-api): 
+|  RepositoryAlreadyExistsException: The repository with name 'lambda-api'
+|   already exists in the registry with id '459018586415'
 │   with aws_ecr_repository.lambda-api,
 │   on main.tf line 14, in resource "aws_ecr_repository" "lambda-api":
 │   14: resource "aws_ecr_repository" "lambda-api" {
@@ -274,13 +279,14 @@ So Terraforms calls to Amazon via the AWS API failed to create a new repository,
 
 There are a couple ways to manage this.
 
-- Remove everything via UI and recreate in Terraform
+- Remove everything via UI and recreate in Terraform.
   
   I reached out to Corey, my local Terraform expert and this is the path he recommended:
 
   > Use the UI once to figure out how to set things up but then tear it down and recreate it in Terraform.  
 
-- Use a 'reverse terraformer'
+- Use a 'reverse terraformer'.
+
   Tools exist the proport to take an existing cloud accounts and import them into teraform state and generated the teraform config for them. I did briefly try this approach.
   
   [terraformer](https://github.com/GoogleCloudPlatform/terraformer) from google seems a bit out of date and the terraform it generated was for an older version of terraform that I couldn't figure out how to update.
@@ -297,14 +303,14 @@ To import resources into Terraform I followed these steps
 
 First, I add the resource to my terraform file, like I've already done:
 
-~~~{.bash caption=">_"}
+~~~{.bash caption="main.tf"}
 resource "aws_ecr_repository" "lambda-api" {
   image_tag_mutability = "MUTABLE"
   name                 = "lambda-api"
 }
 ~~~
 
-Next, I need to be able to tell Terraform how to import this specific instance. The terraform docs for a resource all have an import section at the bottom that explains how you can import things. You might think for AWS, that an ARN would be the way to import things, but that isn't always the case, so be sure to read the docs.
+Next, I need to be able to tell Terraform how to import this specific instance. The terraform docs for a resource all have an import section at the bottom that explains how you can import things. You might think for AWS, that an ARN would be the way to import things, but that isn't always the case, so be sure to read the docs. ( I got stuck trying to import by ARN for a bit :) )
 
 For ECR, the docs say "ECR Repositories can be imported using the `name`" and so I run my import like this:
 
@@ -312,7 +318,7 @@ For ECR, the docs say "ECR Repositories can be imported using the `name`" and so
 terraform import aws_ecr_repository.lambda-api lambda-api
 ~~~
 
-~~~{.bash caption=">_"}
+~~~{.ini caption=""}
 aws_ecr_repository.lambda-api: Importing from ID "lambda-api"...
 aws_ecr_repository.lambda-api: Import prepared!
   Prepared aws_ecr_repository for import
@@ -324,10 +330,13 @@ The resources that were imported are shown above. These resources are now in
 your Terraform state and will henceforth be managed by Terraform.
 ~~~
 
-Then apply be able to successfully run.
+Then I apply:
 
 ~~~{.bash caption=">_"}
 terraform apply --auto-approve
+~~~
+
+~~~{.ini caption=""}
 aws_ecr_repository.lambda-api: Refreshing state... [id=lambda-api]
 
 No changes. Your infrastructure matches the configuration.
@@ -338,15 +347,17 @@ found no differences, so no changes are needed.
 Apply complete! Resources: 0 added, 0 changed, 0 destroyed.
 ~~~
 
+And I'm all set: My repository is now managed by Terraform.
+
 ## Learning From Terraform State with `terraform show`
 
-The Terraform docs are often terse and values in the resource config do not always map one-to-one onto values you'd find the AWS UI. For me, this meant that I couldn't always figure out exactly what I needed in the resource configuration to match what I had setup in the UI.
+The Terraform docs are often terse and values in the resource config do not always map one-to-one onto values you'd find the AWS UI. For me, this meant that I couldn't always figure out exactly what I needed to put in the resource configuration to match what I had setup in the UI. Thanksfully you can use `terraform show` to retreive this information.
 
-Thanksfully you can use `terraform show` to retreive this information. Let's pretend that I needed my repo to use KMS encryption and to scan image on push. I've already setup these options in AWS but I want to see how to do it AWS.
+Let's pretend that I needed my repo to use KMS encryption and to scan image on push. I've already setup these options in AWS but I want to see how to do it AWS.
 
-To import this way, I would create as a blank resource:
+To import without knowing the config I need, I would create as a blank resource:
 
-~~~{.bash caption=">_"}
+~~~{.bash caption="main.tf"}
 resource "aws_ecr_repository" "lambda-api" {
 }
 ~~~
@@ -354,26 +365,28 @@ resource "aws_ecr_repository" "lambda-api" {
 And then run import the same way (`terraform import aws_ecr_repository.lambda-api lambda-api`) but after I would use `terraform show` to read its state.
 
 ~~~{.bash caption=">_"}
-terraform show
+$ terraform show
 ~~~
 
-~~~{.bash caption=">_"}
+~~~{.groovy caption="Output"}
 # aws_ecr_repository.lambda-api:
 resource "aws_ecr_repository" "lambda-api" {
-    arn                  = "arn:aws:ecr:us-east-1:459018586415:repository/lambda-api"
+    arn                  = "arn:aws:ecr:us-east-1:459018586415:repository/
+                            lambda-api"
     id                   = "lambda-api"
     image_tag_mutability = "MUTABLE"
     name                 = "lambda-api"
     registry_id          = "459018586415"
-    repository_url       = "459018586415.dkr.ecr.us-east-1.amazonaws.com/lambda-api"
+    repository_url       = "459018586415.dkr.ecr.us-east-1.amazonaws.com/
+                            lambda-api"
     tags                 = {}
     tags_all             = {}
 
-    encryption_configuration {
+    encryption_configuration {      # <- Here is what I need!
         encryption_type = "KMS"
     }
 
-    image_scanning_configuration {
+    image_scanning_configuration {  # <- Here also !
         scan_on_push = true
     }
 
@@ -381,9 +394,9 @@ resource "aws_ecr_repository" "lambda-api" {
 }
 ~~~
 
-And I can easily see how to set the encryption and image scanning options and thereform copy them into my main.tf.
+And I can easily see how to set the encryption and image scanning options and thereform copy them into my `main.tf`.
 
-~~~{.bash caption=">_"}
+~~~{.bash caption="main.tf"}
 resource "aws_ecr_repository" "lambda-api" {
   image_tag_mutability = "MUTABLE"
   name                 = "lambda-api"
@@ -396,13 +409,13 @@ resource "aws_ecr_repository" "lambda-api" {
 }
 ~~~
 
-This trick was instrumental in me getting my lambda integration ported over to terraform, but I refrain from covering it further. Just remember, if you can't figure out how to configure something in teraform for some reason, just set it up in the UI first, and use import and show to extract a working config.
+This trick was instrumental in me getting my lambda integration ported over to terraform, but I'll refrain from focusing on it depth. Just remember, if you can't figure out how to configure something in teraform for some reason, one approach is to set it up in the UI first, and use import and show to extract a working config.
 
 ## AWS ECR Policy Resourse Import
 
 Next up is the ECR Policy. First I created it as a blank resource:
 
-~~~{.bash caption=">_"}
+~~~{.groovy caption="main.tf"}
 resource "aws_ecr_repository_policy" "lambda-api" {
   }
 ~~~
@@ -415,7 +428,7 @@ $ terraform import aws_ecr_repository_policy.lambda-api lambda-api
 
 And then with the show trick I extracted the policy I was already using:
 
-~~~{.bash caption=">_"}
+~~~{.groovy caption="main.tf"}
 resource "aws_ecr_repository_policy" "lambda-api" {
   policy = <<POLICY
 {
@@ -448,17 +461,26 @@ POLICY
 }
 ~~~
 
-Note how `repository` is `aws_ecr_repository.lambda-api.name`. Using `lambda-api` here would be perfectly valid, but would leave me two places to update if I wanted to rename the repository.
+Note how `repository` is `aws_ecr_repository.lambda-api.name`. Using `lambda-api` here would be perfectly valid, but would leave me two places to update if I wanted to rename the repository. Also note the use of Heredoc string starting and ending with `POLICY`.
 
-I can then 'terraform apply` and `terraform plan` that to make sure everything works.
+Heredoc strings work like this:
+
+~~~{.bash caption=""}
+value = <<EOT
+hello
+world
+EOT
+~~~
+
+I can then `terraform apply` and `terraform plan` that to make sure everything works.
 
 ## Terraform Import S3
 
-My lambda also using S3 to cache results and so I need to import my S3 configuration.
+My lambda also uses S3 to cache results and so I need to import my S3 configuration.
 
 First I have my bucket:
 
-~~~{.bash caption=">_"}
+~~~{.groovy caption="main.tf"}
 resource "aws_s3_bucket" "text-mode" {
   arn           = "arn:aws:s3:::text-mode"
   bucket        = "text-mode"
@@ -475,7 +497,7 @@ terraform import aws_s3_bucket.text-mode text-mode
 
 And then I have to setup and import my bucket lifecycle.
 
-~~~{.bash caption=">_"}
+~~~{.groovy caption="main.tf"}
 resource "aws_s3_bucket_lifecycle_configuration" "text-mode" {
   bucket = aws_s3_bucket.text-mode.id
   rule {
