@@ -92,7 +92,7 @@ presets:
   
   content-wide-nocrop:
       formats: [webp, original]
-      widths: [1000, 1200, 1400]
+      widths: [1000, 1200]
       quality: 100
       format_quality:
         webp: 100
