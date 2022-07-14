@@ -13,13 +13,23 @@ internal-links:
 
 We recently started using Dev Containers and Codespaces for development on our Jekyll blog here at Earthly. We have a lot of different plugins and dependencies to make things like linting, spell check, and image importing much easier. The problem is, a lot of this was originally set up on an Intel Mac. Now that the team has grown, there are developers using M1s, Linux, and Windows, and so as you can imagine, a lot of our teammates who just want to write a simple blog entry were getting stuck trying to get the blog working locally. Not only did Dev Containers with Codespaces solve this issue for us, it made development in general much easier and more portable.
 
-## What Are Dev Containers?
+## Dev Containers Vs Codespaces: What's the Difference?
 
-Dev Containers allow you to define a development environment with a `Docker` or `docker-compose.yml` file and then run your project in that environment with the click of a button. Because VS Code can run in the browser, Dev Containers, along with Github Codespaces, also allow you to develop in the cloud from almost anywhere. They're great for standardizing development across a team. They can also make working on several repos at once much easier because each repo can have its own specific environment for development.
+### Dev Containers
+
+You can think of Dev Containers as VS Code running in Docker. They allow you to define a development environment with a `Docker` or `docker-compose.yml` file and then run your project in that environment with the click of a button. This can be done locally on your machine, but it can also be done in the cloud using Github Codespaces.
+
+### Codespaces
+
+Github Codespaces are containers running in the cloud that you connect to via VS Code. They are often talked about in conjunction with Dev Containers because you use Dev Containers to configure a Codespace. In other words, all Codespaces are Dev Containers running in the cloud.
+
+### Working Together
+
+Because VS Code can run in the browser, Dev Containers, along with Github Codespaces, also allow you to develop from almost anywhere. They're great for standardizing development across a team. They can also make working on several repos at once much easier because each repo can have its own specific environment for development.
 
 For this tutorial I thought I'd work with a [sample Django project](https://github.com/jalletto/circle_ci_python_example) I set up for a [previous article](https://earthly.dev/blog/circle-ci-with-django/). It has a few dependencies and also relies on a Postgres database. Feel free to follow along with that repo, but just know that very little of what we cover will be unique to Python or Django, so you should be able to follow along with your own project as well.
 
-## The Files
+## It Starts With a File
 
 All Dev Container set ups start with a `.devcontainer/devcontainer.json`. In here you can set environment variables unique to the dev environment, install additional resources, include any VS Code plugins that might be necessary or helpful, run commands after the container is done spinning up and much more.
 
@@ -110,9 +120,9 @@ RUN pip3 --disable-pip-version-check --no-cache-dir install -r /tmp/pip-tmp/requ
    && rm -rf /tmp/pip-tmp
 ~~~
 
-Not that this container is building from a special Microsoft managed container, but we could just as easily have used a standard Python container.
+Note that this container is building from a special Microsoft managed container, but we could just as easily have used a standard Python container.
 
-Also notable in the Dockerfile are the `COPY` and `RUN` commands that install the Python packages. In Python, packages are listed in a `requirements.txt` file and downloaded with a package manager called pip. Notice how we don't need to copy in the other files in the project after we download our packages. After the container get's created, VS Code will make a shallow clone of our repo inside the container for us.
+Also notable in the Dockerfile are the `COPY` and `RUN` commands that install the Python packages. In Python, packages are listed in a `requirements.txt` file and downloaded with a package manager called pip. If you're familiar with Docker you may be used to copying your project files in after downloading dependancies, but in this case we don't need to do that because after the container get's created, VS Code will make a shallow clone of our repo inside the container for us.
 
 <!-- vale off -->
 ### dockerCompose.yml
