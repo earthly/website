@@ -18,14 +18,20 @@ Here's a short tutorial with some sample code for experimenting with public/priv
 
 Let's start with what I knew, generating a new RSA key with ssh-keygen
 
-```
+~~~{.bash caption=">_"}
     $ ssh-keygen
     Generating public/private rsa key pair.
-    Enter file in which to save the key (/home/alex/.ssh/id_rsa): /tmp/testkey
+    Enter file in which to save the key (/home/alex/.ssh/id_rsa): \
+    /tmp/testkey
     Enter passphrase (empty for no passphrase): 
     Enter same passphrase again: 
     Your identification has been saved in /tmp/testkey
     Your public key has been saved in /tmp/testkey.pub
+~~~
+
+The RSA Key generated with SSH-Keygen:
+
+~~~{.bash caption="Output"}
     The key fingerprint is:
     SHA256:7N/cMpD6ou4tdPDYfQKq6Xa7m2sEYl0nIIonf1+3kvg alex@mah
     The key's randomart image is:
@@ -40,18 +46,28 @@ Let's start with what I knew, generating a new RSA key with ssh-keygen
     |    + ++oo oo.   |
     |   o.=XBEoo oo.  |
     +----[SHA256]-----+
-```
+~~~
 
 Perfect, we can then display my public key with:
 
-```
+~~~{.bash caption=">_"}
     $:~/$ cat /tmp/testkey.pub 
-    ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDBRl0U4mwO/jQ7kYJidSnQy0ci45j1QZ1do7NEC/08cG0jbNCSX6mblFr0JWruLpp6Z1WA/BL+GngCwATBeEt7dSAHNpOvT0fJ4roWv6/KmOLOCjKq26a0MvMf1g/YFa5tP5Zi7UW5Hp4vGCTXRPyywNJvh1/cHKuq2j79fUX+4cG9p01a1Y89/a3Q7L5UkB4JoFuaA9sVzVg4H5A2vRVR/pEIRRFuPuxHDVcNblA6CsKFf0zBoLatXv+aBn86dX8EtwB13HdRsKq+XmBwnWJiS+Cz1GBhnKf4LM/Ca46qy2ExQnOOt49COUOoU6DI7P5bf4I33pNDDLoTvFFKzyXWTRgwg1tiyiRzfIjO+mg0kQM/dZ7+M8W49AQv+MR8Uh0bykECXn6u8yEibEgInYlj0ziWXtf6lPEg+505hDTLlvPWXpo8nLluR5COwgFVSbNcMnY9o3KHeog598mQxiqrXWWbGmra7SgXrKmqJGqUbkZqH1z8l6QfFo9nTBlYI0k= alex@earthly
-```
+    ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDBRl0U4mwO/jQ7kYJidSnQy \
+    0ci45j1QZ1do7NEC/08cG0jbNCSX6mblFr0JWruLpp6Z1WA/BL+Gng \
+    CwATBeEt7dSAHNpOvT0fJ4roWv6/KmOLOCjKq26a0MvMf1g/YFa5 \
+    tP5Zi7UW5Hp4vGCTXRPyywNJvh1/cHKuq2j79fUX+4cG9p01a1 \
+    Y89/a3Q7L5UkB4JoFuaA9sVzVg4H5A2vRVR/pEIRRFuPuxHD \
+    VcNblA6CsKFf0zBoLatXv+aBn86dX8EtwB13HdRsKq+XmBwn \
+    WJiS+Cz1GBhnKf4LM/Ca46qy2ExQnOOt49COUOoU6DI7P5bf4I33pN \
+    DDLoTvFFKzyXWTRgwg1tiyiRzfIjO+mg0kQM/dZ7+M8W49AQv \
+    +MR8Uh0bykECXn6u8yEibEgInYlj0ziWXtf6lPEg+505hDTLlvPWX \
+    po8nLluR5COwgFVSbNcMnY9o3KHeog598mQxiqrXWWbGmra7SgXrKmqJGqUbkZqH \
+    1z8l6QfFo9nTBlYI0k= alex@earthly
+~~~
 
 and since we're all friends here, I'll share my example private key (you should never share your key with anyone, I'm only sharing this as an example -- I won't ever be using this key anywhere).
 
-```
+~~~{.bash caption=">_"}
     $:~/$ cat /tmp/testkey
     -----BEGIN OPENSSH PRIVATE KEY-----
     b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAABlwAAAAdzc2gtcn
@@ -91,11 +107,11 @@ and since we're all friends here, I'll share my example private key (you should 
     N/XMfHMt7FAdUIeNCZWA0tmvy3aZlTUzFF5LEx0/cHmpNgHdz7tshshGG5NvW3ct2AKKmB
     nuAwC6Meoqs1kAAAAIYWxleEBtYWgBAgM=
     -----END OPENSSH PRIVATE KEY-----
-```
+~~~
 
 Ok great, now how do we do that with go?
 
-``` go
+~~~{.go caption="main.go"}
     package main
     
     import (
@@ -140,13 +156,19 @@ Ok great, now how do we do that with go?
      fmt.Println("my private key is...")
      fmt.Println(privKey)
     }
-```
+~~~
 
 Try it out in the [go playground](https://play.golang.org/p/chkKzvcGJcV), you should see something like this:
 
-```
+~~~{.bash caption="Output"}
     my public key is...
-    ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC97wOspXmARcUFThWVlNMnwxIiDIW7CrshmPRDfBV7RYlRtiNuSLlFaAIeXUGPWFnKzivScpBntrFqqj+aJRQ27/tsM/n5jT6ERnoJTbyF+jYCx5BxST5lssVSRrXJQ0dLKSD6OEvTKHK50RrxVtdU2E1cknwQWsYC2514xwmWYwEiNfFkO0QrU27BunPO/Gam+GJNTLt7o7diM0GawuqVI1S/hf0T7goMTA9wX7KaIDg5Q1x+/0MJa1kT7LswG8Rw2TFXRqI9Q+4UmmWN1MxBpeVK8VWx7NY9ngXnHUnJdzrXB4+E95SnKyhzaTlBnWDs9Em606SRb+g+tSYXl8DD
+    ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC97wOspXmARcUFThWVlNMnw\
+    xIiDIW7CrshmPRDfBV7RYlRtiNuSLlFaAIeXUGPWFnKzivScpBntrF\
+    qqj+aJRQ27/tsM/n5jT6ERnoJTbyF+jYCx5BxST5lssVSRrXJQ0dLKSD6OE\
+    vTKHK50RrxVtdU2E1cknwQWsYC2514xwmWYwEiNfFkO0QrU27BunPO/Gam+GJNTL\
+    t7o7diM0GawuqVI1S/hf0T7goMTA9wX7KaIDg5Q1x+/0MJa1kT7LswG8Rw2\
+    TFXRqI9Q+4UmmWN1MxBpeVK8VWx7NY9ngXnHUnJdzrXB4+E95Sn\
+    KyhzaTlBnWDs9Em606SRb+g+tSYXl8DD
     
     my private key is...
     -----BEGIN RSA PRIVATE KEY-----
@@ -176,14 +198,14 @@ Try it out in the [go playground](https://play.golang.org/p/chkKzvcGJcV), you sh
     QjQOuFshp/TZ5jGkv7t2iVBh1whOOpaOmODMKAhueey+NGU47/Ww5vUgwVX/+WJQ
     HddCttBCyHl0vj+Ok4U4JjH05La+7Yrm/5q9wG2KptFe8c+RbeE=
     -----END RSA PRIVATE KEY-----
-```
+~~~
 
 Perfect! Now I can generate a public and private key via Go. I wonder how I can encrypt a message using a public key which can only be decrypted by someone with the private key. Let's try out some more code:
 <!-- vale off -->
 I want to keep my function signature as basic as possible for the purpose of learning, so we will pass in the public key as the regular base64-encoded id\_rsa keyformat, and let that function handle parsing it:
 <!-- vale on -->
 
-``` go
+~~~{.go caption="main.go"}
     func encrypt(msg, publicKey string) (string, error) {
      parsed, _, _, _, err := ssh.ParseAuthorizedKey([]byte(publicKey))
      if err != nil {
@@ -193,7 +215,8 @@ I want to keep my function signature as basic as possible for the purpose of lea
      // ssh.CryptoPublicKey interface
      parsedCryptoKey := parsed.(ssh.CryptoPublicKey)
     
-     // Then, we can call CryptoPublicKey() to get the actual crypto.PublicKey
+     // Then, we can call CryptoPublicKey() to get the \
+     actual crypto.PublicKey
      pubCrypto := parsedCryptoKey.CryptoPublicKey()
     
      // Finally, we can convert back to an *rsa.PublicKey
@@ -210,13 +233,13 @@ I want to keep my function signature as basic as possible for the purpose of lea
      }
      return base64.StdEncoding.EncodeToString(encryptedBytes), nil
     }
-```
+~~~
 
 Try out the [complete example](https://play.golang.org/p/KjvwPoJ6wT4)
 
 Finally, how do we decrypt it?
 
-``` go
+~~~{.go caption="main.go"}
     func decrypt(data, priv string) (string, error) {
      data2, err := base64.StdEncoding.DecodeString(data)
      if err != nil {
@@ -229,13 +252,14 @@ Finally, how do we decrypt it?
       return "", err
      }
     
-     decrypted, err := rsa.DecryptOAEP(sha256.New(), rand.Reader, key, data2, nil)
+     decrypted, err := rsa.DecryptOAEP(sha256.New(),\
+     rand.Reader, key, data2, nil)
      if err != nil {
       return "", err
      }
      return string(decrypted), nil
     }
-```
+~~~
 
 [Try it out](https://play.golang.org/p/a5u9PYWEjgs)
 
