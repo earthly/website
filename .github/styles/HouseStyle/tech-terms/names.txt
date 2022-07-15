@@ -206,3 +206,4 @@ terraformer
 terracognita
 Heredoc
 arn
+tfstate
