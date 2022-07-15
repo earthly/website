@@ -19,7 +19,7 @@ Here's a short tutorial with some sample code for experimenting with public/priv
 Let's start with what I knew, generating a new RSA key with ssh-keygen
 
 ```
-    alex@earthly:~/$ ssh-keygen
+    $ ssh-keygen
     Generating public/private rsa key pair.
     Enter file in which to save the key (/home/alex/.ssh/id_rsa): /tmp/testkey
     Enter passphrase (empty for no passphrase): 
@@ -45,14 +45,14 @@ Let's start with what I knew, generating a new RSA key with ssh-keygen
 Perfect, we can then display my public key with:
 
 ```
-    alex@earthly:~/$ cat /tmp/testkey.pub 
+    $:~/$ cat /tmp/testkey.pub 
     ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDBRl0U4mwO/jQ7kYJidSnQy0ci45j1QZ1do7NEC/08cG0jbNCSX6mblFr0JWruLpp6Z1WA/BL+GngCwATBeEt7dSAHNpOvT0fJ4roWv6/KmOLOCjKq26a0MvMf1g/YFa5tP5Zi7UW5Hp4vGCTXRPyywNJvh1/cHKuq2j79fUX+4cG9p01a1Y89/a3Q7L5UkB4JoFuaA9sVzVg4H5A2vRVR/pEIRRFuPuxHDVcNblA6CsKFf0zBoLatXv+aBn86dX8EtwB13HdRsKq+XmBwnWJiS+Cz1GBhnKf4LM/Ca46qy2ExQnOOt49COUOoU6DI7P5bf4I33pNDDLoTvFFKzyXWTRgwg1tiyiRzfIjO+mg0kQM/dZ7+M8W49AQv+MR8Uh0bykECXn6u8yEibEgInYlj0ziWXtf6lPEg+505hDTLlvPWXpo8nLluR5COwgFVSbNcMnY9o3KHeog598mQxiqrXWWbGmra7SgXrKmqJGqUbkZqH1z8l6QfFo9nTBlYI0k= alex@earthly
 ```
 
 and since we're all friends here, I'll share my example private key (you should never share your key with anyone, I'm only sharing this as an example -- I won't ever be using this key anywhere).
 
 ```
-    alex@earthly:~/$ cat /tmp/testkey
+    $:~/$ cat /tmp/testkey
     -----BEGIN OPENSSH PRIVATE KEY-----
     b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAABlwAAAAdzc2gtcn
     NhAAAAAwEAAQAAAYEAwUZdFOJsDv40O5GCYnUp0MtHIuOY9UGdXaOzRAv9PHBtI2zQkl+p
