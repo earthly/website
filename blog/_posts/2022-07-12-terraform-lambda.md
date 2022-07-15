@@ -639,9 +639,12 @@ resource "aws_lambda_permission" "earthly-tools-com" {
   action        = "lambda:InvokeFunction"
   function_name = aws_lambda_function.lambda-api.function_name
   principal     = "apigateway.amazonaws.com"
-  source_arn    = "arn:aws:execute-api:us-east-1:459018586415:yr255kt190/*/*/{path+}"
+  source_arn    = "arn:aws:execute-api:us-east-1:459018586415:
+                  ${aws_apigatewayv2_api.earthly-tools-com.id}/*/*/{path+}"
 }
 ~~~
+
+Note that `terraform show` returned the current api arn and I needed to replace that with a path to make this future proof.
 
 ## Terraform Import API Route and Integration
 
@@ -682,14 +685,145 @@ After all, this is my first time using Terraform and many of the resources diver
 
 The easiest way to test all this out is to destroy and then recreate the resources in question. There are a couple of ways to do that. One is using `terraform destroy` which will destroy all the infrastructure. But instead I'm choosing to test all this by commenting out resources and running `terraform apply --auto-approve` to remove them. If your dealing with an important production environment you might not want to do this and instead test things in a separate workspace, but for me this works great.
 
-First I commented everything out:
+First I commented everything out and ran `terraform plan`:
 
 ~~~{.bash caption=">_"}
+$ terraform apply 
+...
+aws_ecr_repository_policy.lambda-api: Destroying... [id=lambda-api]
+aws_ecr_repository_policy.lambda-api: Destruction complete after 0s
+aws_ecr_repository.lambda-api: Destroying... [id=lambda-api]
+aws_ecr_repository.lambda-api: Destruction complete after 0s
+aws_apigatewayv2_api_mapping.earthly-tools-com: Destroying... [id=zgbzhv]
+aws_lambda_permission.earthly-tools-com: Destroying... [id=terraform-20220715135453156200000001]
+aws_apigatewayv2_route.earthly-tools-com: Destroying... [id=yha7yhv]
+aws_lambda_permission.earthly-tools-com: Destruction complete after 0s
+aws_apigatewayv2_route.earthly-tools-com: Destruction complete after 1s
+aws_apigatewayv2_integration.earthly-tools-com: Destroying... [id=9js97ns]
+aws_apigatewayv2_api_mapping.earthly-tools-com: Destruction complete after 1s
+aws_api_gateway_domain_name.earthly-tools-com: Destroying... [id=earthly-tools.com]
+aws_apigatewayv2_stage.earthly-tools-com: Destroying... [id=default]
+aws_apigatewayv2_integration.earthly-tools-com: Destruction complete after 0s
+aws_lambda_function.lambda-api: Destroying... [id=lambda-api]
+aws_lambda_function.lambda-api: Destruction complete after 0s
+aws_api_gateway_domain_name.earthly-tools-com: Destruction complete after 0s
+aws_apigatewayv2_stage.earthly-tools-com: Destruction complete after 0s
+aws_apigatewayv2_api.earthly-tools-com: Destroying... [id=yr255kt190]
+aws_apigatewayv2_api.earthly-tools-com: Destruction complete after 1s
+
+Apply complete! Resources: 0 added, 0 changed, 6 destroyed.
 ~~~
 
-and applied it. Then I started uncommented elements and ran apply again. And sure enough, at the end I was back with a running web service.
+and applied it. 
+
+At which point, I can confirm nothing worked:
+```
+curl https://earthly-tools.com/text-mode
+{"message":"Internal Server Error"}%        
+```
+
+Then I started uncommented elements and ran apply again. It took a little time to recreate everything but at the end nothing worked! 
+
+In turns out that the lambda needs to have a container in place before being created. So I uncommented the lambda and did a docker push and then applied again and everything was back up and running.
+
+This is why testing this testing stage is so important. If you have a bunch of terraform, but implicit dependencies mean you can't rerun it from a fresh state to rebuild thing than some of its advantages are lost. (And probably only discovered during an incident).
+ 
+But with that change applied, I was back with a running web service.
+
+```
+aws_apigatewayv2_stage.earthly-tools-com: Creating...
+aws_lambda_function.lambda-api: Creating...
+aws_apigatewayv2_stage.earthly-tools-com: Creation complete after 1s [id=default]
+aws_apigatewayv2_api_mapping.earthly-tools-com: Creating...
+aws_apigatewayv2_api_mapping.earthly-tools-com: Creation complete after 0s [id=zgbzhv]
+aws_lambda_function.lambda-api: Still creating... [10s elapsed]
+aws_lambda_function.lambda-api: Still creating... [20s elapsed]
+...
+...
+
+Apply complete! Resources: 12 added, 0 changed, 0 destroyed.
+```
+
+
+```
+$ curl https://earthly-tools.com/text-mode
+Earthly.dev Presents:
+
+  _____                 _
+ |_   _|   ___  __  __ | |_
+   | |    / _ \ \ \/ / | __|
+   | |   |  __/  >  <  | |_
+   |_|    \___| /_/\_\  \__|
+
+  __  __               _
+ |  \/  |   ___     __| |   ___
+ | |\/| |  / _ \   / _` |  / _ \
+ | |  | | | (_) | | (_| | |  __/
+ |_|  |_|  \___/   \__,_|  \___|
+
+```
+
+It's unfortunate I need to push a docker container in the middle of setting up my infrastructure. And doing so is a little tricky.
+
+If I destroy everything and recreate, things error out here:
+```
+aws_ecr_repository_policy.lambda-api: Creation complete after 1s [id=lambda-api]
+╷
+│ Error: error creating Lambda Function (1): InvalidParameterValueException: Source image 459018586415.dkr.ecr.us-east-1.amazonaws.com/lambda-api:latest does not exist. Provide a valid source image.
+│ {
+│   RespMetadata: {
+│     StatusCode: 400,
+│     RequestID: "9b458fc2-7897-4d46-88f0-5b52494ec276"
+│   },
+│   Message_: "Source image 459018586415.dkr.ecr.us-east-1.amazonaws.com/lambda-api:latest does not exist. Provide a valid source image.",
+│   Type: "User"
+│ }
+│ 
+│   with aws_lambda_function.lambda-api,
+│   on main.tf line 126, in resource "aws_lambda_function" "lambda-api":
+│  126: resource "aws_lambda_function" "lambda-api" {
+│ 
+╵
+```
+But a simple docker push, and apply again and all is well.
+
+```
+docker push 459018586415.dkr.ecr.us-east-1.amazonaws.com/lambda-api:latest
+The push refers to repository [459018586415.dkr.ecr.us-east-1.amazonaws.com/lambda-api]
+559fe089aa1d: Pushed 
+b55abedf5128: Pushed 
+b1c80662fa4b: Pushed 
+77b0856837f7: Pushed 
+70997e1fac5a: Pushed 
+e44da8829878: Pushed 
+247247b540ad: Pushed 
+8f1e63e879eb: Pushed 
+d692ab088a9b: Pushed 
+latest: digest: sha256:b41b0d958721920341cb1cf03fb2778f72ff8c5a7ab2ff8589cb6c5cded14fb0 size: 2205
+```
+
+Pushing a docker image via Terraform is not easy, nor is building a docker image, so I've simply added a comment to my Terraform telling me what to do next time.
+
+```
+# Container must exist in order to create Lambda function,
+# If lamda creation fails, push and rerun
+```
+
+It's not ideal but it works.
 
 ## Conclusion
+
+So this isn't meant to be an introduction to all the terraform best practices. Rather its more a build log of me getting up to speed with Terraform. We have a Terraform expert at the compnay, but understanding all the Terraform behind Earthly Cloud was too big of a hurdle for me to overcome. I needed to make my own mistakes and hopefully writing them down is useful for you.
+
+There are lots of things that can be improved upon from here. I could be using off-the-shelf AWS modules to setup API gateway v2. I could be exrtacting my code into seperate modules and seperating out variables and using workspaces and lifecycles to create a better factored infrastructure as code solution. But, doing things this way, starting from an existing setup in AWS and importing it into terraform has helped me get comfortable with Terraform without adding in too many other complex topics.
+
+Initially, I found working with Terraform hard. I now think its a pretty cool tool that I'd like to learn more about, but there were times in the middle of this where I questioned its design and my own intelligence. 
+
+Once I learned about import, combined with show, things got easier. 
+
+But I also struggled with figuring out how to translate UI concepts into terraform resources. The couple of clicks to setup a lambda as an API turned into a whole series of little resources in terraform that need to be hooked together in very specific way. And getting that working was the hardest part of all this.
+
+Overall, and this is frequently the case when a task feels like it's going sideways, what happened is just there was a lot more for me to do then I expected. I got the scope wrong and there was more to learn than I expected. 
 
 ### Writing Article Checklist
 
