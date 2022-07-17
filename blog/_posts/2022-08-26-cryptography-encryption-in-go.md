@@ -58,7 +58,11 @@ func mdHashing(input string) string {
 
 Using the `EncodeToString` function, you can return a string format of the hash by passing in the hashed byte slice.
 
+<div class="wide">
+
 ![Screenshot 1]({{site.images}}{{page.slug}}/image1.png)\
+
+</div>
 
 ### Hashing in Go using the SHA256 Algorithm
 
@@ -83,11 +87,17 @@ func shaHashing(input string) string {
 }
 ~~~
 
+<div class="wide">
+
 ![Screenshot 2]({{site.images}}{{page.slug}}/image2.png)\
+
+</div>
 
 Hashing Algorithms are usually one-way functions; thus, you can't use them for communication since you can't retrieve the original value; you'll be comparing the hash value you stored to the value of input most of the time. For communication-related purposes, you can use encryption algorithms to relay messages securely.
 
 ## What Are Encryption and Decryption
+
+![Encryption Vs Decryption]({{site.images}}{{page.slug}}/vs.jpg)\
 
 [Encryption](/blog/encrypting-data-with-ssh-keys-and-golang) is a data protection technique of encoding(ciphering) data with the intent of decoding(deciphering) it for later use.
 
@@ -172,7 +182,11 @@ The final step is to encrypt the plain-text using the nonce. The `Seal` method o
 
 You could pass in additional data to the `Seal` method instead of `nil` as seen above. The function returns the byte slice ciphered text from the `Seal` method.
 
+<div class="wide">
+
 ![Screenshot 3]({{site.images}}{{page.slug}}/image3.png)\
+
+</div>
 
 ## Decrypting Ciphered Text in Go
 
@@ -219,7 +233,11 @@ Now that you have the cipher without the nonce, you can use the `Open` method of
 
 The function returns the original text from the `Open` method, as you can see below.
 
+<div class="wide">
+
 ![Screenshot 4]({{site.images}}{{page.slug}}/image4.png)\
+
+</div>
 
 ## Generating Cryptographically Secure Random Values in Go
 
@@ -268,6 +286,3 @@ In this article, you learned how to secure your applications and programs crypto
 
 - [ ] Add in Author page
 - [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
