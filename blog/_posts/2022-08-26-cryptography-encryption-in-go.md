@@ -10,10 +10,8 @@ internal-links:
 ---
 
 One of the biggest concerns for modern web developers is security. Whether your goal is protecting a user’s personal data, effectively authenticating a user’s identity, or securing company databases, cryptography and encryption can help.
-.
 
 Cryptography is the study of techniques for secure communication between a sender and an intended recipient. Cryptographic techniques employ mathematical functions to secure data using various algorithms and systems.
-
 
 The Go programming language provides a `**crypto**` package for cryptography-related operations in the standard library.  You can use the Crypto package for many functionalities like encryption, hashing, cryptographically generated random numbers, and much more.
 
@@ -27,8 +25,8 @@ Good hashing algorithms are one-way functions such that the original input canno
 
 There are many hashing algorithms in use; the most popular ones are the SHA (Secure Hash Algorithm) and the MD(Message Digest) Algorithms. 
 
-
 ### Hashing in Go using the MD5 Algorithm
+
 The MD5 algorithm is one of the successors of the MD2 algorithm. The MD2 and MD5 algorithms have similar architectures except that the MD5 algorithm was build specifcally for 32bit systems, and the MD2 algorithm was built for 8-bit systems.
 
 While the structures of these algorithms are somewhat similar, the design of MD2 is quite different from that of MD4 and MD5. MD2 was optimized for 8-bit machines, whereas MD4 and MD5 were aimed at 32-bit machines.
@@ -43,7 +41,6 @@ import (
 )
 ```
 
-
 Next we can create an `mdHashing` function that takes in an input and returns the encoded string of the hash. The input is converted to a slice of bytes using the built-in `byte` function and then hashed using the `Sum` method of the `md5` package. 
 
 ```go
@@ -57,7 +54,7 @@ func mdHashing(input string) string {
 
 Using the `EncodeToString` function, you can return a string format of the hash by passing in the hashed byte slice.
 
-![Screenshot 2022-06-17 at 12.13.05.png](Cryptography%20and%20Encryption%20In%20Go%2091ab4376f0a9492ea56b473798acd86c/Screenshot_2022-06-17_at_12.13.05.png)
+![Screenshot 1]({{site.images}}{{page.slug}}/image1.png)\
 
 ### Hashing in Go using the SHA256 Algorithm
 
@@ -72,9 +69,6 @@ import (
 )
 ```
 
-
-
-
 Then we can create a `ShaHashing` function that takes in a string as input and returns a string of the hash value. Just like before, the input is converted to a slice of bytes, and then, using the `Sum256` method of the `sha256` package, the `plainText` variable is hashed, and a string hash value is returned.
 
 ```go
@@ -85,8 +79,7 @@ func shaHashing(input string) string {
 }
 ```
 
-
-![Screenshot 2022-06-19 at 09.48.33.png](Cryptography%20and%20Encryption%20In%20Go%2091ab4376f0a9492ea56b473798acd86c/Screenshot_2022-06-19_at_09.48.33.png)
+![Screenshot 2]({{site.images}}{{page.slug}}/image2.png)\
 
 Hashing Algorithms are usually one-way functions; thus, you can’t use them for communication since you can’t retrieve the original value; you’ll be comparing the hash value you stored to the value of input most of the time. For communication-related purposes, you can use encryption algorithms to relay messages securely.
 
@@ -97,7 +90,6 @@ Encryption is a data protection technique of encoding(ciphering) data with the i
 Ciphers are the result of using an encryption algorithm on a plain literal. When you use a cryptographic function on plain text, you’ll need the same algorithm, and encryption keys to decipher the cipher text.r. Encryption is popularly used for files and messages since the initial state of the data is still essential.
 
 Decryption is the reverse process of encryption where you use the same cryptographic key and encryption algorithm to return the cipher text to the original state.
-
 
 ## Encrypting Text in Go
 
@@ -175,7 +167,7 @@ The final step is to encrypt the plaintext using the nonce. The `Seal` method of
 
 You could pass in additional data  to the `Seal` method instead of `nil` as seen above. The function returns the byte slice ciphered text from the `Seal` method.
 
-![Screenshot 2022-06-21 at 13.57.40.png](Cryptography%20and%20Encryption%20In%20Go%2091ab4376f0a9492ea56b473798acd86c/Screenshot_2022-06-21_at_13.57.40.png)
+![Screenshot 3]({{site.images}}{{page.slug}}/image3.png)\
 
 ## Decrypting Ciphered Text in Go
 
@@ -222,7 +214,7 @@ Now that you have the cipher without the nonce,  you canl use the `Open` method 
 
 The function returns the original text from the `Open` method, as you can see below.
 
-![Screenshot 2022-06-21 at 14.04.59.png](Cryptography%20and%20Encryption%20In%20Go%2091ab4376f0a9492ea56b473798acd86c/Screenshot_2022-06-21_at_14.04.59.png)
+![Screenshot 4]({{site.images}}{{page.slug}}/image4.png)\
 
 ## Generating Cryptographically Secure Random Values in Go
 
@@ -235,8 +227,6 @@ func generateCryptoRandom(chars string, length int32) string {
 
 }
 ```
-
-
 
 ```go
 	bytes := make([]byte, length)
@@ -263,8 +253,6 @@ The cryptographically secure random values are in a byte slice, and you can use 
 You’ll be using cryptography and encryption to build secure applications and services. Authentication mediums like JWT(JSON Web Token) rely on cryptography.
 
 In this article, you learned how to secure your applications and programs cryptographically using hashing and encryption algorithms and how to generate cryptographically secure random values for your Go programs.
-`
-
 
 ## Outside Article Checklist
 
