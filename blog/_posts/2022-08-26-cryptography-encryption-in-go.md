@@ -12,7 +12,7 @@ internal-links:
  - Algorithm
 ---
 
-One of the biggest concerns for modern web developers is security. Whether your goal is protecting a user's personal data, effectively authenticating a user's identity, or securing company databases, cryptography, and encryption can help.
+One of the biggest concerns for modern web developers is security. Whether your goal is protecting a user's personal data, effectively authenticating a user's identity, or securing company databases, cryptography, and [encryption](/blog/encrypting-data-with-ssh-keys-and-golang) can help.
 
 Cryptography is the study of techniques for secure communication between a sender and an intended recipient. Cryptographic techniques employ mathematical functions to secure data using various algorithms and systems.
 
@@ -89,7 +89,7 @@ Hashing Algorithms are usually one-way functions; thus, you can't use them for c
 
 ## What Are Encryption and Decryption
 
-Encryption is a data protection technique of encoding(ciphering) data with the intent of decoding(deciphering) it for later use.
+[Encryption](/blog/encrypting-data-with-ssh-keys-and-golang) is a data protection technique of encoding(ciphering) data with the intent of decoding(deciphering) it for later use.
 
 Ciphers are the result of using an encryption algorithm on a plain literal. When you use a cryptographic function on plain text, you'll need the same algorithm, and encryption keys to decipher the cipher text.r. Encryption is popularly used for files and messages since the initial state of the data is still essential.
 
@@ -223,6 +223,8 @@ The function returns the original text from the `Open` method, as you can see be
 
 ## Generating Cryptographically Secure Random Values in Go
 
+![Keys]({{site.images}}{{page.slug}}/key.jpg)\
+
 There's a high probability that when you're building an app, you want to generate random values for different purposes. Generating random values [using the `random` package isn't as random](https://crypto.stackexchange.com/questions/39186/what-does-it-mean-for-a-random-number-generator-to-be-cryptographically-secure) as it may seem. The Authors of Go knew this and provided a `rand` package in the `crypto` package for generating cryptographically secure random values.
 
 Here's how you can generate cryptographically secure random numbers in Go.
@@ -256,7 +258,7 @@ The cryptographically secure random values are in a byte slice, and you can use 
 
 ## Conclusion
 
-You'll be using cryptography and encryption to build secure applications and services. Authentication mediums like JWT(JSON Web Token) rely on cryptography.
+You'll be using cryptography and [encryption](/blog/encrypting-data-with-ssh-keys-and-golang) to build secure applications and services. Authentication mediums like JWT(JSON Web Token) rely on cryptography.
 
 In this article, you learned how to secure your applications and programs cryptographically using hashing and encryption algorithms and how to generate cryptographically secure random values for your Go programs.
 
