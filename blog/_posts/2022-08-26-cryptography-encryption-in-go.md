@@ -262,6 +262,8 @@ You'll be using cryptography and [encryption](/blog/encrypting-data-with-ssh-key
 
 In this article, you learned how to secure your applications and programs cryptographically using hashing and encryption algorithms and how to generate cryptographically secure random values for your Go programs.
 
+{% include cta/cta1.html %}
+
 ## Outside Article Checklist
 
 - [ ] Add in Author page
@@ -269,5 +271,3 @@ In this article, you learned how to secure your applications and programs crypto
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
