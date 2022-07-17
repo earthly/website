@@ -285,4 +285,3 @@ In this article, you learned how to secure your applications and programs crypto
 ## Outside Article Checklist
 
 - [ ] Add in Author page
-- [ ] Create header image in Canva
