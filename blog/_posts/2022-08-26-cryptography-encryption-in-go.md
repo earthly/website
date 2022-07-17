@@ -19,6 +19,8 @@ This tutorial will help you understand cryptography concepts and how to implemen
 
 ## Hashing Functions in Go
 
+![Hashing]({{site.images}}{{page.slug}}/hashing.jpg)\
+
 Hashing is a data protection technique for transforming given inputs into another value (the hash value) of fixed length using a hashing algorithm. Hashing algorithms use mathematical functions to transform any length of data into a fixed-length.
 
 Good hashing algorithms are one-way functions such that the original input cannot be retrieved. To validate data with a hashing algorithm , the input is hashed and compared to the hashed value. When you're building an application, you'll have to store the hashed value in a datastore, and for validation, you'll hash the user's input and compare the two hashes.
@@ -34,7 +36,7 @@ The Message Digest Method 5 Algorithm (MD5) is a cryptographic algorithm that re
 
 We'll start by importing two packages. The md5 algorithm package, which is a subpackage of the `crypto` package, and the hex package, which we will use for encoding the hexadecimal returned from the MD5 algorithm to a string.
 
-~~~{.bash caption=">_"}
+~~~{.go caption="main.go"}
 import (
  "crypto/md5"
  "encoding/hex"
@@ -43,7 +45,7 @@ import (
 
 Next we can create an `mdHashing` function that takes in an input and returns the encoded string of the hash. The input is converted to a slice of bytes using the built-in `byte` function and then hashed using the `Sum` method of the `md5` package.
 
-~~~{.bash caption=">_"}
+~~~{.go caption="main.go"}
 func mdHashing(input string) string {
  byteInput := []byte(input)
  md5Hash := md5.Sum(byteInput)
@@ -61,7 +63,7 @@ The SHA256 (Secure Hash Algorithm 256-bits) is a cryptographic one-way hashing a
 
 You'll need to import the `sha256` package from the `crypto` package for use. And just like the MD5 algorithm example, you'll also need to import the `hex` package to encode the hash value to a string.
 
-~~~{.bash caption=">_"}
+~~~{.go caption="main.go"}
 import (
  "crypto/sha256"
  "encoding/hex"
@@ -70,7 +72,7 @@ import (
 
 Then we can create a `ShaHashing` function that takes in a string as input and returns a string of the hash value. Just like before, the input is converted to a slice of bytes, and then, using the `Sum256` method of the `sha256` package, the `plainText` variable is hashed, and a string hash value is returned.
 
-~~~{.bash caption=">_"}
+~~~{.go caption=">main.go"}
 func shaHashing(input string) string {
  plainText := []byte(input)
  sha256Hash := sha256.Sum256(plainText)
@@ -96,7 +98,7 @@ There are many encryption algorithms available for you to use; the most popular 
 
 You can encrypt data in Go using the `aes` and cipher packages.
 
-~~~{.bash caption=">_"}
+~~~{.go caption="main.go"}
 import (
 "crypto/aes"
 "crypto/cipher"
@@ -107,7 +109,7 @@ You will also need a key phrase for the cipher. The `aes` package will use the k
 
 Start by creating a function called `encryptIt`
 
-~~~{.bash caption=">_"}
+~~~{.go caption="main.go"}
 func encryptIt(value []byte, keyPhrase string) []byte {
 
 }
@@ -115,7 +117,7 @@ func encryptIt(value []byte, keyPhrase string) []byte {
 
 The `encryptIt` function takes in a byte slice and a string key phrase and returns a byte slice.
 
-~~~{.bash caption=">_"}
+~~~{.go caption="main.go"}
 func encryptIt(value []byte, keyPhrase string) []byte {
 
  aesBlock, err := aes.NewCipher([]byte(mdHashing(keyPhrase)))
@@ -129,7 +131,7 @@ First, you create an AES block using the `NewCipher` method. The `NewCipher` met
 
 The next step is to create a new cipher with a nonce. You can use the **Galois Counter Mode(GCM)** using the `NewGCM` method that takes in the AES block.
 
-~~~{.bash caption=">_"}
+~~~{.go caption="main.go"}
 func encryptIt(value []byte, keyPhrase string) []byte {
 
  aesBlock, err := aes.NewCipher([]byte(mdHashing(keyPhrase)))
@@ -149,7 +151,7 @@ The `NewGCM` method returns a 128-bit block cipher with a nonce length.
 
 You can now create a nonce of the length specified in the `NewGCM` method.
 
-~~~{.bash caption=">_"}
+~~~{.go caption="main.go"}
  nonce := make([]byte, gcmInstance.NonceSize())
  _, _ = io.ReadFull(rand.Reader, nonce)
 ~~~
@@ -158,7 +160,7 @@ The `nonce` variable you declared is a byte slice of the nonce size from the `Ne
 
 The final step is to encrypt the plain-text using the nonce. The `Seal` method of your Galois counter mode instance encrypts the plain text and returns a slice of bytes.
 
-~~~{.bash caption=">_"}
+~~~{.go caption="main.go"}
  cipheredText := gcmInstance.Seal(nonce, nonce, value, nil)
 
  return cipheredText
@@ -173,7 +175,7 @@ You could pass in additional data to the `Seal` method instead of `nil` as seen 
 
 You'll have to use the same encryption algorithm, keyphrase, and nonce to decrypt the cipher. The `decryptIt` function takes in the ciphered text `cipheredText` and the keyphrase and returns a slice of byte that we can convert to a readable string format for use.
 
-~~~{.bash caption=">_"}
+~~~{.go caption="main.go"}
 func decryptIt(ciphered []byte, keyPhrase string) []byte {
  
 }
@@ -181,7 +183,7 @@ func decryptIt(ciphered []byte, keyPhrase string) []byte {
 
 You must use a function because it might be expensive to store the encrypted text. In this case, the `decryptIt` function will take in the output from the `encryptIt` function.
 
-~~~{.bash caption=">_"}
+~~~{.go caption="main.go"}
   hashedPhrase := mdHashing(keyPhrase)
  aesBlock, err := aes.NewCipher([]byte(hashedPhrase))
  if err != nil {
@@ -197,14 +199,14 @@ You've may have noticed that the code above is the same as in the `encryptIt` fu
 
 You now need to remember the nonce you used for encryption, and you can get that using the `NonceSize` method. You can get the cipher text you need to decrypt by slicing the nonce off the cipher slice
 
-~~~{.bash caption=">_"}
+~~~{.go caption="main.go"}
 nonceSize := gcmInstance.NonceSize()
 nonce, cipheredText := ciphered[:nonceSize], ciphered[nonceSize:]
 ~~~
 
 Now that you have the cipher without the nonce, you can use the `Open` method of your GCM instance to decrypt the cipher. The open method takes in the nonce, cipher, and additional parameters.
 
-~~~{.bash caption=">_"}
+~~~{.go caption="main.go"}
  originalText, err := gcmInstance.Open(nil, nonce, cipheredText, nil)
  if err != nil {
   log.Fatalln(err)
@@ -223,20 +225,20 @@ There's a high probability that when you're building an app, you want to generat
 Here's how you can generate cryptographically secure random numbers in Go.
 Start by creating aThe `generateCryptoRandom` function that takes in a string from where the random string it returns will be generated and a 32—bit integer for the length of the random string you want to generate.
 
-~~~{.bash caption=">_"}
+~~~{.go caption="main.go"}
 func generateCryptoRandom(chars string, length int32) string {
 
 }
 ~~~
 
-~~~{.bash caption=">_"}
+~~~{.go caption="main.go"}
  bytes := make([]byte, length)
  rand.Read(bytes)
 ~~~
 
 The `bytes` variable is a new byte slice of the length of the random values you want as output. The `Read` method of the `rand` package reads random bytes into the `byte` slice.
 
-~~~{.bash caption=">_"}
+~~~{.go caption="main.go"}
 for index, element := range bytes {
   randomize := element%byte(len(chars))
   bytes[index] = chars[randomize]
