@@ -6,7 +6,10 @@ toc: true
 author: Adam
 
 internal-links:
- - just an example
+ - Go
+ - MD5
+ - Hashing
+ - Algorithm
 ---
 
 One of the biggest concerns for modern web developers is security. Whether your goal is protecting a user's personal data, effectively authenticating a user's identity, or securing company databases, cryptography, and encryption can help.
@@ -264,7 +267,5 @@ In this article, you learned how to secure your applications and programs crypto
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
-- [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
 - [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
