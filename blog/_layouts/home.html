@@ -2,8 +2,11 @@
 layout: home-archive
 hero_post: earthly-open-source
 featured_post_a: awk-examples
-featured_post_b: docker-vs-chef
-featured_post_c: blue-green
+featured_post_b: jq-select
+featured_post_c: command-line-tools
+featured_post_d: golang-errors
+featured_post_e: brown-green-language
+featured_post_f: dos-gaming-in-docker
 ---
 
 {% assign entries_layout = page.entries_layout | default: 'grid' %}
@@ -94,3 +97,24 @@ featured_post_c: blue-green
   {% endfor %}
 </div>
 <a href="/blog/categories/tutorials/" class="hover:underline text-lg block text-slate-500 -mt-4">More tutorials...</a>
+
+
+<h3 class="mb-4 mt-4 text-2xl font-semibold text-slate-600 ">
+  Popular
+</h3>
+<div class="entries-grid grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4">
+  {% assign featured_post_d = site.posts | where:"slug", layout.featured_post_d %}
+  {% for post in featured_post_d %}
+  {% include archive-single.html type=entries_layout %}
+  {% endfor %}
+
+  {% assign featured_post_e = site.posts | where:"slug", layout.featured_post_e %}
+  {% for post in featured_post_e %}
+  {% include archive-single.html type=entries_layout %}
+  {% endfor %}
+
+  {% assign featured_post_f = site.posts | where:"slug", layout.featured_post_f %}
+  {% for post in featured_post_f %}
+  {% include archive-single.html type=entries_layout %}
+  {% endfor %}
+</div>
