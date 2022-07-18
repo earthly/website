@@ -298,5 +298,3 @@ The code provides a minimal set of functions which wrap the matplotlib functions
 Even the code to generate the [Pac-Man pie-chart](https://github.com/earthly/example-dont-use-pie-charts/blob/main/dontusepiecharts/pacman.py) is included, but please don't use it.
 
 {% include cta/cta1.html %}
-
-[^1]: "significantly" is being used in the literary sense -- I didn't perform a significance test.
