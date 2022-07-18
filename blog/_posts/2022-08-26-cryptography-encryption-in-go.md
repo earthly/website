@@ -3,7 +3,7 @@ title: "Cryptography & Encryption in Go"
 categories:
   - Tutorials
 toc: true
-author: Adam
+author: Ukeje Goodness
 
 internal-links:
  - Go
@@ -281,7 +281,3 @@ You'll be using cryptography and [encryption](/blog/encrypting-data-with-ssh-key
 In this article, you learned how to secure your applications and programs cryptographically using hashing and encryption algorithms and how to generate cryptographically secure random values for your Go programs.
 
 {% include cta/cta1.html %}
-
-## Outside Article Checklist
-
-- [ ] Add in Author page
