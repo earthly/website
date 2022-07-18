@@ -10,13 +10,12 @@ author: Adam
 internal-links:
  - terraform import
 ---
+<!-- vale on -->
 ## From Click Ops To GitOps
 
 Previously I built a [REST API](/blog/aws-lambda-api-proxy/), deployed it into a container and got it all running on AWS as a Lambda. But setting this up involved just clicking around in AWS and occasionally using the AWS CLI.
 
-Today, I'm going to port that whole setup to Terraform so that its easier to manage, reproduce, and make changes to.
-
-( These are the purported benefits of Terraform, or so my coworker Corey tells me. I've never used it before so I'll be learning as I go. )
+Today, I'm going to port that whole setup to Terraform so that its easier to manage, reproduce, and make changes to. ( These are the purported benefits of Terraform, or so my coworker Corey tells me. I've never used it before so I'll be learning as I go. )
 
 **Read this to learn about Terraform from a noob's perspective. The specifics of my infrastructure import may not be relevant to you, but hopefully my thinking process and take-aways will be.**
 
@@ -26,7 +25,7 @@ Ok, follow along with me as import my infrastructure into Terraform.
 
 Terraform is an open source tool created by HashiCorp to help you create, manage, and deploy Infrastructure as Code (IaC). Terraform can be used to manage your AWS, GCP, or even [Spotify resources](https://learn.hashicorp.com/tutorials/terraform/spotify-playlist) (Don't ask).
 
-Terraform infrastructure configuration is written in HCL, HashiCorp configuration language. It might make sense to know and understand HCL as you get deeper into Terraform, but it's suffienceent for this tutorial to just think of it as fancy YAML.
+Terraform infrastructure configuration is written in HCL, HashiCorp configuration language. It might make sense to know and understand HCL as you get deeper into Terraform, but it's sufficient for this tutorial to just think of it as fancy YAML.
 
 ## Installing
 
@@ -53,7 +52,7 @@ provider "aws" {
 }
 ~~~
 
-Above, I'm pulling in the terraform AWS provider and setting my region. After that I can then `init` things:
+Above, I'm pulling in the terraform AWS provider and setting my region. After that I can `init` things:
 
 ~~~{.bash caption=">_"}
 $ terraform init
@@ -83,7 +82,7 @@ rerun this command to reinitialize your working directory. If you forget, other
 commands will detect it and remind you to do so if necessary.
 ~~~
 
-Terraform then creates `.terraform.lock.hcl` file.
+This creates a `.terraform.lock.hcl` file.
 
 ~~~{.groovy caption=""}
 # This file is maintained automatically by "terraform init".
@@ -97,11 +96,21 @@ provider "registry.terraform.io/hashicorp/aws" {
 }
 ~~~
 
-`.terraform.lock.hcl` is a lock file. I check this into git, and the hashes ensure that the provider I've using doesn't change without me knowing it, even if run in some other place at some future date.
+`.terraform.lock.hcl` is a lock file. I check this into git, and the hashes in it will ensure that the provider doesn't change without me knowing it, even if run in some other place at some future date.
 
 ## Plan and Apply
 
 I don't have anything besides a provider declared in my terraform file, but never the less, I can still go thru the whole terraform process to make sure everything is ok.
+
+<div class="notice--info notice--big">
+
+### Terraform Workflow
+
+- Write: write your infrastructure as code.
+- Plan: Run `terraform plan` to see a preview of the changes.
+- Apply: Run `terraform apply` to apply the changes.
+
+</div>
 
 First I run plan:
 
@@ -109,7 +118,7 @@ First I run plan:
 $ terraform plan
 ~~~
 
-~~~{.yaml caption="Output"}
+~~~{.ini caption="Output"}
 No changes. Your infrastructure matches the configuration.
 
 Terraform has compared your real infrastructure against your configuration 
@@ -122,7 +131,7 @@ Then I can apply the changes, just to be sure:
 $ terraform apply 
 ~~~
 
-~~~{.bash caption="Output"}
+~~~{.ini caption="Output"}
 No changes. Your infrastructure matches the configuration.
 
 Terraform has compared your real infrastructure against your configuration 
@@ -130,63 +139,6 @@ and found no differences, so no changes are needed.
 
 Apply complete! Resources: 0 added, 0 changed, 0 destroyed.
 ~~~
-
-Even though no changes were applied, and I don't yet have any resources being managed by Terraform I do have a new file.
-
-~~~{.bash caption=">_"}
-$ git status
-~~~
-
-~~~{.ini caption="Output"}
-Untracked files:
-  (use "git add <file>..." to include in what will be committed)
-        terraform.tfstate
-
-no changes added to commit (use "git add" and/or "git commit -a")
-~~~
-
-## How State Works in Terraform
-
-Terraform is declarative. You describe the end result of the state of the infrastructure you would like to see and Terraform makes it happen. But to get from your declarative specification to list of changes to 'terraform apply` the current state of the world must be captured.
-
-Terraform stores this state in `terraform.tfstate`. At this point I have no resources being managed by Terraform so my `.tfstate` is pretty small.
-
-~~~{.yaml caption=".tfstate"}
-{
-  "version": 4,
-  "terraform_version": "1.2.3",
-  "serial": 1,
-  "lineage": "9880ec52-a487-5a8e-db65-c4bc3949ba18",
-  "outputs": {},
-  "resources": []
-}
-
-~~~
-
-Ok, lets move on to creating my first resource. I need to setup ECR. It's where I push my container image to in CI and where the lambda pulls it from.
-
-## Elastic Computer Repository - Terraform
-
-To create a ECR Repository in Terraform, I just googled "ECR Terraform" and ended up on the terraform docs where I found the following resource description:
-
-~~~{.groovy caption="main.tf"}
-resource "aws_ecr_repository" "foo" {
-  name                 = "bar"
-  image_tag_mutability = "MUTABLE"
-
-  image_scanning_configuration {
-    scan_on_push = true
-  }
-}
-~~~
-
-## Understanding Terraform Resources
-
-In the first line, you can see the keyword `resource` followed by `aws_ecr_repository` and `foo`. This is how you declare a terraform resource and a resource is a declarative thing you want to setup in terraform. The first string is the resource type, `aws_ecr_repository` in this example and the second thing is the name you want to give it. The name is for your own reference and I'll be using it to refer to specific resources from within other resources coming very soon.
-
-Everything after that is a property of the resource and this whole thing is being written in HCL, HashiCorp configuration language. But as I mentions before, we won't be getting to deep into HCL.
-
-The main thing we need to know is that if we need to later refer to this resource we remove the quotes and add dots (`.`) so that `resource "aws_ecr_repository" "foo"` becomes `resource.aws_ecr_repository.foo` and that resources name would be `resource.aws_ecr_repository.foo.name`.
 
 <div class="notice--info">
 ## Side Note: AWS Provider
@@ -225,9 +177,71 @@ It's also possible to configure the profile in terraform by adding it under prov
 
 </div>
 
-## ECR & Terraform Import
+Even though no changes were applied, and I don't yet have any resources being managed by Terraform, I do have a new file.
 
-So to add in my Repository for my image I create the following resource
+~~~{.bash caption=">_"}
+$ git status
+~~~
+
+~~~{.ini caption="Output"}
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        terraform.tfstate
+
+no changes added to commit (use "git add" and/or "git commit -a")
+~~~
+
+## How State Works in Terraform
+
+Terraform is declarative. You describe the end result of the state of the infrastructure you would like to see and Terraform makes it happen. But to get from your declarative specification to list of changes to `terraform apply` the current state of the world must be captured.
+
+Terraform stores this state in `terraform.tfstate`. At this point I have no resources being managed by Terraform so my `.tfstate` is pretty small.
+
+~~~{.yaml caption=".tfstate"}
+{
+  "version": 4,
+  "terraform_version": "1.2.3",
+  "serial": 1,
+  "lineage": "9880ec52-a487-5a8e-db65-c4bc3949ba18",
+  "outputs": {},
+  "resources": []
+}
+
+~~~
+
+Ok, lets move on to creating my first resource. I need to set up ECR first because its where I store the docker image that is my lambda.
+
+## Elastic Computer Repository - Terraform
+
+To create a ECR Repository in Terraform, I just googled "ECR Terraform" and ended up on the terraform docs where I found the following resource description:
+
+~~~{.groovy caption="main.tf"}
+resource "aws_ecr_repository" "foo" {
+  name                 = "bar"
+  image_tag_mutability = "MUTABLE"
+
+  image_scanning_configuration {
+    scan_on_push = true
+  }
+}
+~~~
+
+<figcaption>Figure ECR: Terraform Doc's sample ECR resource definition</figcaption>
+
+<div class="notice--info notice--big">
+## Understanding Terraform Resources
+
+In the first line, you can see the keyword `resource` followed by `aws_ecr_repository` and `foo`. This is how you declare a terraform resource and a resource is a declarative thing you want to setup in terraform. The first string is the resource type, `aws_ecr_repository` in this example and the second thing is the name you want to give it. The name is for your own reference and I'll be using it to refer to specific resources from within other resources coming very soon.
+
+Everything after that is a property of the resource and this whole thing is being written in HCL, HashiCorp configuration language. But as I mentions before, we won't be getting to deep into HCL.
+
+The main thing we need to know is that if we need to later refer to this resource we remove the quotes and add dots (`.`) so that `resource "aws_ecr_repository" "foo"` becomes `resource.aws_ecr_repository.foo` and that resources name would be `resource.aws_ecr_repository.foo.name`.
+
+</div>
+
+## Terraform Import ECR
+
+So to add in my Repository for my image, I copy the Terraform docs and I create the following resource:
 
 ~~~{.groovy caption="main.tf"}
 ### ECR
@@ -281,7 +295,7 @@ aws_ecr_repository.lambda-api: Creating...
 ╵
 ~~~
 
-So Terraform calls to Amazon via the AWS API failed to create a new repository, because one already existed. This is going to be an ongoing problem because everything I'd like to get into terraform today I've already setup using the AWS UI.
+You can see that Terraform calls the AWS API , which fails to create a new repository, because one already existed. This is going to be an ongoing problem because everything I'd like to get into terraform today I've already set up using the AWS UI.
 
 There are a couple ways to manage this.
 
@@ -297,17 +311,17 @@ There are a couple ways to manage this.
   
   [terraformer](https://github.com/GoogleCloudPlatform/terraformer) from Google seems a bit out of date and the terraform it generated was for an older version of terraform that I couldn't figure out how to update.
 
-  [terracognita](https://github.com/cycloidio/terracognita) worked better for me. It generated valid Terraform but ultimately I didn't understand everything in generated and so I abandoned this for a different approach.
+  [terracognita](https://github.com/cycloidio/terracognita) worked better for me. It generated valid Terraform but ultimately I didn't understand the structure of the resources generated, which is part of the reason I'm doing this. So I abandoned this for a different approach.
 
 - Use  `terraform import`.
   
-  With import, you can pull a resource that already exists into terraform's state. Let me show you how I imported my ECR Repo.
+  With import, you can pull in an resource existing resource into terraform's state. Let me show you how I imported my ECR Repo.
 
 ## Terraform Import
 
 To import resources into Terraform, I followed these steps. First, I add the resource to my terraform file, like I've already done:
 
-~~~{.bash caption="main.tf"}
+~~~{.groovy caption="main.tf"}
 resource "aws_ecr_repository" "lambda-api" {
   image_tag_mutability = "MUTABLE"
   name                 = "lambda-api"
@@ -400,7 +414,7 @@ resource "aws_ecr_repository" "lambda-api" {
 
 And I can easily see how to set the encryption and image scanning options and therefor copy them into my `main.tf`.
 
-~~~{.bash caption="main.tf"}
+~~~{.groovy caption="main.tf"}
 resource "aws_ecr_repository" "lambda-api" {
   image_tag_mutability = "MUTABLE"
   name                 = "lambda-api"
@@ -413,7 +427,7 @@ resource "aws_ecr_repository" "lambda-api" {
 }
 ~~~
 
-This trick was instrumental in me getting my lambda integration ported over to terraform, but I'll refrain from focusing on it depth. Just remember, if you can't figure out how to configure something in Terraform for some reason, one approach is to set it up in the UI first, and use import and show to extract a working config.
+This trick was instrumental in me getting my lambda integration ported over to terraform, but I'll refrain from focusing on it depth. Just remember, if you can't figure out how to configure something in Terraform for some reason, one approach is to set it up in the UI first, and use `terraform import` and `terraform show` to extract a working config.
 
 ## AWS ECR Policy Resource Import
 
@@ -465,7 +479,11 @@ POLICY
 }
 ~~~
 
-Note how `repository` is `aws_ecr_repository.lambda-api.name`. Using `lambda-api` here would be perfectly valid, but would leave me two places to update if I wanted to rename the repository. Also note the use of Heredoc string starting and ending with `POLICY`.
+Note how `repository` is `aws_ecr_repository.lambda-api.name`. Using `"lambda-api"` here would be perfectly valid, but would leave me with two places to update if I wanted to rename the repository. Also note the use of Heredoc string starting and ending with `POLICY`.
+
+<div class="notice--info notice--big">
+
+### Terraform `heredoc`
 
 Heredoc strings work like this:
 
@@ -475,6 +493,8 @@ hello
 world
 EOT
 ~~~
+
+</div>
 
 I can then `terraform apply` and `terraform plan` that to make sure everything works.
 
@@ -521,7 +541,9 @@ And import it.
 terraform import aws_s3_bucket_lifecycle_configuration.text-mode text-mode
 ~~~
 
-Then I run apply, which will find no changes to apply. You may be wondering how certain I can be in all this declarative config, when none of it has actually been applied from terraform, only imported. Well I'm going to tackle that last.
+Then I run apply, which will find no changes to apply.
+
+You may be wondering how certain I can be in all this declarative config, when none of it has actually been applied from terraform, only imported. Well I'm going to tackle that last.
 
 ## Terraform API Gateway Import
 
@@ -564,7 +586,7 @@ $ terraform import aws_api_gateway_domain_name.earthly-tools-com earthly-tools.c
 
 Then I need to set up the API, the API State and map it to the domain.
 
-~~~
+~~~{.groovy caption="main.tf"}
 resource "aws_apigatewayv2_api" "earthly-tools-com" {
    api_key_selection_expression = "$request.header.x-api-key"
     description                  = "Created by AWS Lambda"
@@ -595,13 +617,11 @@ terraform import aws_apigatewayv2_route.earthly-tools-com yr255kt190/afjkrcc
 terraform import aws_apigatewayv2_api_mapping.earthly-tools-com a09jn5/earthly-tools.com
 ~~~
 
-Notice how things are becoming a bit more intricate. It's not even clear to me where you setup a api gateway mapping in the AWS UI.
-
-When I reach out to Corey, my local terraform expert to discuss how hard this was, he suggested instead of trying to setup each individual resource like this, that sometimes its much better to find a module someone has built and use that. Specifically he recommends [this module](https://github.com/terraform-aws-modules/terraform-aws-apigateway-v2) and in the future I may reach for those off-the-shelf modules rather than figuring this all out myself.
+Notice how things are becoming a bit more intricate. I got stuck a little bit at the api mapping resource, because it's not a concept presented in the AWS UI. I reached out to Corey, my local terraform expert, and confessed that API Gateway in Terraform seemed overly complicated. He suggested instead of trying to setup each individual resource like this, that its much better to find a module someone has built and use that. Specifically he recommends [this module](https://github.com/terraform-aws-modules/terraform-aws-apigateway-v2) and in the future I may reach for it or one of those off-the-shelf modules rather than figuring this all out myself.
 
 ### Terraform Import Lambda
 
-The lambda import was one of the easiest parts and in particular felt pretty useful, since I do have some specific setting setup in my lambda that I don't want to lose.
+The lambda import was one of the easiest parts, and in particular felt pretty useful, since I do have some specific setting set up in my lambda that I don't want to lose.
 
 I imported using the arn:
 
@@ -639,7 +659,7 @@ resource "aws_lambda_function" "lambda-api" {
 }
 ~~~
 
-I did a similar process for Lambda permissions, since the API needs permissions to call the lambda. The end result looks like this:
+I did a similar process for the lambda permissions, since the API needs permissions to call the lambda. The end result looks like this:
 
 ~~~{.groovy caption="main.tf"}
 ## Give API Gateway access to Lambda
@@ -652,11 +672,11 @@ resource "aws_lambda_permission" "earthly-tools-com" {
 }
 ~~~
 
-Note that `terraform show` returned the current api arn and I needed to replace that with a path to make this future proof.
+Note that `terraform show` returned the current api arn for `source_arn` and I needed to replace that with a path to make this future proof. This is something to keep vigilant for when using `terraform show` or you might end up with resources hardcoded to values that quickly go out of date.
 
 ## Terraform Import API Route and Integration
 
-This part was by far the hardest. In AWS, there is a single button click process to hook a lambda up to an API endpoint. Behind the scenes there are a number of separate things happening. But once I figured out the name of all these little resources, it was easy to import and 'terraform show` them to see how they should be configured.
+Integrating the lambda with the API was by far the hardest part for me. In AWS, there is a single button click process to hook a lambda up to an API endpoint. Behind the scenes there are a number of separate things happening. But once I figured out the name of all these little resources, it was easy to import and 'terraform show` them to see how they should be configured.
 
 ~~~{.groovy caption="main.tf"}
 ## Attach Lambda to API Gateway
@@ -685,15 +705,15 @@ resource "aws_apigatewayv2_route" "earthly-tools-com" {
 
 After importing all those and applying them, I have all the infrastructure behind [text-mode](earthly-tools.com) in terraform. Now its time to test things.
 
-## Testing This
+## Testing by Destroying
 
-So far Terraform has deployed zero of these changes. It's possible that I'm missing important resources or that I have the resources properly imported into Terraform but my config for them is incorrect in some subtle way that I'm not aware of.
+So far Terraform has deployed zero of these changes. It's possible that I'm missing important resources, or my config for them is incorrect. After all, this is my first time using Terraform and many of the resources diverge from the AWS UI: the lambda trigger I used in the UI isn't even a terraform concept.
 
-After all, this is my first time using Terraform and many of the resources diverge from the AWS UI. For instance, the connection between lambda and API gateway was created in the UI using a lambda trigger. However, a lambda trigger is not actually a resource, its more like a wizard that creates resources based on the type of integration you setup. In this case, it created an API gateway route and an API gateway integration.
+The easiest way to test all this out is to destroy and then recreate the resources in question. There are a couple of ways to do that. One is using `terraform destroy` which will destroy all the infrastructure. But instead I'm going to comment out resources and run apply to remove them. After that, I'll un-comment them, apply again and see if everything works.
 
-The easiest way to test all this out is to destroy and then recreate the resources in question. There are a couple of ways to do that. One is using `terraform destroy` which will destroy all the infrastructure. But instead I'm choosing to test all this by commenting out resources and running `terraform apply --auto-approve` to remove them. If your dealing with an important production environment you might not want to do this and instead test things in a separate workspace, but for me this works great.
+(If your dealing with an important production environment you might not want to do this and instead test things in a separate workspace, but for me this works great.)
 
-First I commented everything out and ran `terraform plan`:
+First I commented everything out and ran `terraform apply --auto-approve`:
 
 ~~~{.bash caption=">_"}
 $ terraform apply 
@@ -719,10 +739,8 @@ aws_apigatewayv2_stage.earthly-tools-com: Destruction complete after 0s
 aws_apigatewayv2_api.earthly-tools-com: Destroying... [id=yr255kt190]
 aws_apigatewayv2_api.earthly-tools-com: Destruction complete after 1s
 
-Apply complete! Resources: 0 added, 0 changed, 6 destroyed.
+Apply complete! Resources: 0 added, 0 changed, 12 destroyed.
 ~~~
-
-and applied it.
 
 At which point, I can confirm nothing worked:
 
@@ -731,49 +749,7 @@ curl https://earthly-tools.com/text-mode
 {"message":"Internal Server Error"}%        
 ~~~
 
-Then I started uncommented elements and ran apply again. It took a little time to recreate everything but at the end nothing worked!
-
-In turns out that the lambda needs to have a container in place before being created. So I uncommented the lambda and did a docker push and then applied again and everything was back up and running.
-
-This is why testing this testing stage is so important. If you have a bunch of terraform, but implicit dependencies mean you can't rerun it from a fresh state to rebuild thing than some of its advantages are lost. (And probably only discovered during an incident).
-
-But with that change applied, I was back with a running web service.
-
-~~~{.bash caption=">_"}
-aws_apigatewayv2_stage.earthly-tools-com: Creating...
-aws_lambda_function.lambda-api: Creating...
-aws_apigatewayv2_stage.earthly-tools-com: Creation complete after 1s [id=default]
-aws_apigatewayv2_api_mapping.earthly-tools-com: Creating...
-aws_apigatewayv2_api_mapping.earthly-tools-com: Creation complete after 0s [id=zgbzhv]
-aws_lambda_function.lambda-api: Still creating... [10s elapsed]
-aws_lambda_function.lambda-api: Still creating... [20s elapsed]
-...
-...
-
-Apply complete! Resources: 12 added, 0 changed, 0 destroyed.
-~~~
-
-~~~{.bash caption=">_"}
-$ curl https://earthly-tools.com/text-mode
-Earthly.dev Presents:
-
-  _____                 _
- |_   _|   ___  __  __ | |_
-   | |    / _ \ \ \/ / | __|
-   | |   |  __/  >  <  | |_
-   |_|    \___| /_/\_\  \__|
-
-  __  __               _
- |  \/  |   ___     __| |   ___
- | |\/| |  / _ \   / _` |  / _ \
- | |  | | | (_) | | (_| | |  __/
- |_|  |_|  \___/   \__,_|  \___|
-
-~~~
-
-It's unfortunate I need to push a docker container in the middle of setting up my infrastructure. And doing so is a little tricky.
-
-If I destroy everything and recreate, things error out here:
+Then I started un-commenting resources working from the top down and applying as I went. Until I got this:
 
 ~~~{.bash caption=">_"}
 aws_ecr_repository_policy.lambda-api: Creation complete after 1s [id=lambda-api]
@@ -795,7 +771,7 @@ aws_ecr_repository_policy.lambda-api: Creation complete after 1s [id=lambda-api]
 ╵
 ~~~
 
-But a simple docker push, and apply again and all is well.
+In turns out that the lambda needs to have a container in place before being created. So I uncommented the lambda and did a docker push
 
 ~~~{.bash caption=">_"}
 docker push 459018586415.dkr.ecr.us-east-1.amazonaws.com/lambda-api:latest
@@ -819,35 +795,54 @@ Pushing a docker image via Terraform is not easy, nor is building a docker image
 # If lamda creation fails, push and rerun
 ~~~
 
-It's not ideal but it works.
+It's not ideal but it works and with that I could apply the remain resources:
+
+~~~{.bash caption=">_"}
+$ terraform apply 
+...
+aws_apigatewayv2_stage.earthly-tools-com: Creating...
+aws_lambda_function.lambda-api: Creating...
+aws_apigatewayv2_stage.earthly-tools-com: Creation complete after 1s [id=default]
+aws_apigatewayv2_api_mapping.earthly-tools-com: Creating...
+aws_apigatewayv2_api_mapping.earthly-tools-com: Creation complete after 0s [id=zgbzhv]
+aws_lambda_function.lambda-api: Still creating... [10s elapsed]
+aws_lambda_function.lambda-api: Still creating... [20s elapsed]
+Apply complete! Resources: 6 added, 0 changed, 0 destroyed.
+~~~
+
+But with that change applied, I was back with a running web service.
+
+~~~{.bash caption=">_"}
+$ curl https://earthly-tools.com/text-mode
+~~~
+
+~~~{.ini caption=""}
+Earthly.dev Presents:
+
+  _____                 _
+ |_   _|   ___  __  __ | |_
+   | |    / _ \ \ \/ / | __|
+   | |   |  __/  >  <  | |_
+   |_|    \___| /_/\_\  \__|
+
+  __  __               _
+ |  \/  |   ___     __| |   ___
+ | |\/| |  / _ \   / _` |  / _ \
+ | |  | | | (_) | | (_| | |  __/
+ |_|  |_|  \___/   \__,_|  \___|
+
+~~~
+
+This is why this testing stage is so important. Implicit dependencies meant my Terraform couldn't be rerun and its better to discover this now rather then during an incident.
 
 ## Conclusion
 
-So this isn't meant to be an introduction to all the terraform best practices. Rather its more a build log of me getting up to speed with Terraform. We have a Terraform expert at the company, but understanding all the Terraform behind Earthly Cloud was too big of a hurdle for me to overcome. I needed to make my own mistakes and hopefully writing them down is useful for you.
+And with that I have all my resources imported and I've successful verified I can tear them down and recreate them. Now that I've done this, I have a good understanding of the basics of Terraform, importing resources and how to approach infrastructure as code.
 
-There are lots of things that can be improved upon from here. I should have my tfstate backed by an S3 bucker for one. Then I could look into using off-the-shelf AWS modules to setup the API gateway. I could be extracting my code into separate modules and separating out variables and using workspaces and lifecycles to create a better factored infrastructure as code solution. But, doing things this way, starting from an existing setup in AWS and importing it into terraform has helped me get comfortable with Terraform without adding in too many other complex topics.
+Initially, I found working with Terraform to be a challenge. But know I have the understanding I need to understand more complex infrastructure-as-code, like our Earthly Cloud infrastructure. And I now think its a pretty cool tool that I'd like to learn more about.
 
-Initially, I found working with Terraform hard. I now think its a pretty cool tool that I'd like to learn more about, but there were times in the middle of this where I questioned its design and my own intelligence.
+The Terraform code written here for sure could be improved. I could be extracting my code into separate modules and separating out variables and using workspaces and lifecycles to create a better factored infrastructure as code solution. But doing it from first principles and keeping things simple has been instructive and hopefully reading this conversion build log is valuable for you.
 
-Once I learned about import, combined with show, things got easier.
+You can find the full all the source on [GitHub](https://github.com/adamgordonbell/cloudservices/tree/terraform-import).
 
-But I also struggled with figuring out how to translate UI concepts into terraform resources. The couple of clicks to setup a lambda as an API turned into a whole series of little resources in terraform that need to be hooked together in very specific way. And getting that working was the hardest part of all this.
-
-Overall, and this is frequently the case when a task feels like it's going sideways, what happened is just there was a lot more for me to do then I expected. I got the scope wrong and there was more to learn than I expected.
-
-### Writing Article Checklist
-
-- [ ] Write Outline
-- [ ] Write Draft
-- [ ] Fix Grammarly Errors
-- [ ] Read out loud
-- [ ] Write 5 or more titles and pick the best on
-- [ ] First two paragraphs: What's it about? Why listen to you?
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-- [ ] Run mark down linter (`lint`)
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links to other articles
-- [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
-- [ ] Raise PR
+{% include cta/cta1.html %}
