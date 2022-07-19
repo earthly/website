@@ -839,7 +839,7 @@ This is why this testing stage is so important. Implicit dependencies meant my T
 
 And with that I have all my resources imported and I've successful verified I can tear them down and recreate them. Now that I've done this, I have a good understanding of the basics of Terraform, importing resources and how to approach infrastructure as code.
 
-Initially, I found working with Terraform to be a challenge. But know I have the understanding I need to understand more complex infrastructure-as-code, like our Earthly Cloud infrastructure. And I now think its a pretty cool tool that I'd like to learn more about.
+Initially, I found working with Terraform to be a challenge. But know I have the understanding I need to work with more complex infrastructure-as-code, like our Earthly Cloud infrastructure. And I now think it's a pretty cool tool that I'd like to learn more about.
 
 The Terraform code written here for sure could be improved. I could be extracting my code into separate modules and separating out variables and using workspaces and lifecycles to create a better factored infrastructure as code solution. But doing it from first principles and keeping things simple has been instructive and hopefully reading this conversion build log is valuable for you.
 
