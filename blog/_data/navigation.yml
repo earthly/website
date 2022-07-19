@@ -100,6 +100,8 @@ thoughts:
         url: /confidently-uncertain/
       - title: "Printf Debugging"
         url: /printf-debugging/
+      - title: "Programming Language Tooling"
+        url: /programming-language-improvements/
 activity-tracker:
   - title: "Activity Tracker Series"
     children:

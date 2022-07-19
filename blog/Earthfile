@@ -18,7 +18,7 @@ base-image:
   RUN gem install bundler -v "~>1.0" && gem install bundler jekyll
   RUN apt-get install python3-matplotlib libvips-dev python3-pip npm pandoc -y
   RUN pip3 install pandocfilters python-frontmatter
-  RUN npm install -g markdownlint-cli 
+  RUN npm install -g markdownlint-cli@0.32.0
   RUN npm install -g tailwindcss
   RUN apt-get install ripgrep bc lsof -y
 
@@ -79,6 +79,7 @@ lint:
   COPY ../+export/base .
   COPY . blog
   RUN vale --output line --minAlertLevel error ./blog/_posts/*.md
+  RUN markdownlint --version
   RUN markdownlint "./blog/_posts/*.md"
   IF grep '[“”‘’]' ./blog/_posts/*.md
     RUN echo "Fail: Remove curly quotes and use straight quotes instead" && false
