@@ -771,7 +771,7 @@ aws_ecr_repository_policy.lambda-api: Creation complete after 1s [id=lambda-api]
 ╵
 ~~~
 
-In turns out that the lambda needs to have a container in place before being created. So I uncommented the lambda and did a docker push
+It turns out that the lambda needs to have a container in place before being created. So I uncommented the lambda and did a docker push
 
 ~~~{.bash caption=">_"}
 docker push 459018586415.dkr.ecr.us-east-1.amazonaws.com/lambda-api:latest
