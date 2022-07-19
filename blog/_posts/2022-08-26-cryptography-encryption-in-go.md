@@ -16,7 +16,7 @@ One of the biggest concerns for modern web developers is security. Whether your 
 
 Cryptography is the study of techniques for secure communication between a sender and an intended recipient. Cryptographic techniques employ mathematical functions to secure data using various algorithms and systems.
 
-The Go programming language provides a `**crypto**` package for cryptography-related operations in the standard library. You can use the Crypto package for many functionalities like encryption, hashing, cryptographically generated random numbers, and much more.
+The Go programming language provides a `crypto` package for cryptography-related operations in the standard library. You can use the Crypto package for many functionalities like encryption, hashing, cryptographically generated random numbers, and much more.
 
 This tutorial will help you understand cryptography concepts and how to implement them in the Go programming language.
 
