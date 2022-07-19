@@ -10,7 +10,7 @@ author: Adam
 internal-links:
  - terraform import
 ---
-<!-- vale on -->
+
 ## From Click Ops To GitOps
 
 Previously I built a [REST API](/blog/aws-lambda-api-proxy/), deployed it into a container and got it all running on AWS as a Lambda. But setting this up involved just clicking around in AWS and occasionally using the AWS CLI.
@@ -58,7 +58,7 @@ Above, I'm pulling in the terraform AWS provider and setting my region. After th
 $ terraform init
 ~~~
 
-~~~{.ini caption="Output"}
+~~~{.ini caption=""}
 Initializing the backend...
 
 Initializing provider plugins...
@@ -118,7 +118,7 @@ First I run plan:
 $ terraform plan
 ~~~
 
-~~~{.ini caption="Output"}
+~~~{.ini caption=""}
 No changes. Your infrastructure matches the configuration.
 
 Terraform has compared your real infrastructure against your configuration 
@@ -131,7 +131,7 @@ Then I can apply the changes, just to be sure:
 $ terraform apply 
 ~~~
 
-~~~{.ini caption="Output"}
+~~~{.ini caption=""}
 No changes. Your infrastructure matches the configuration.
 
 Terraform has compared your real infrastructure against your configuration 
@@ -149,15 +149,21 @@ The AWS provider will need a way to talk to your AWS account. If you don't have 
 terraform plan
 ~~~
 
-~~~{.ini caption="Output"}
+~~~{.ini caption=""}
 ╷
-│ Error: error configuring Terraform AWS Provider: no valid credential sources for Terraform AWS Provider found.
+│ Error: error configuring Terraform AWS Provider: 
+no valid credential sources for Terraform AWS Provider found.
 ~~~
 
 If the credentials you have are wrong, the error will be a little bit different:
 
 ~~~{.ini caption=""}
-Error: error configuring Terraform AWS Provider: error validating provider credentials: error calling sts:GetCallerIdentity: operation error STS: GetCallerIdentity, https response error StatusCode: 403, RequestID: e816a4d9-6f28-49ef-b245-395c3a758f4a, api error InvalidClientTokenId: The security token included in the request is invalid.
+Error: error configuring Terraform AWS Provider: error validating provider 
+credentials: error calling sts:GetCallerIdentity: operation error STS: 
+GetCallerIdentity, https response error StatusCode: 403, RequestID: 
+e816a4d9-6f28-49ef-b245-395c3a758f4a, api error InvalidClientTokenId: 
+
+The security token included in the request is invalid.
 ~~~
 
 To debug this you need to understand that the aws provider reads from `~/.aws/confg` and `~/.aws/credentials`, the same way the `aws` cli does. If you have credentials for more than one AWS account available, you can use `AWS_PROFILE` to configure the AWS provider. In my case I do this like so:
@@ -168,7 +174,7 @@ $ export AWS_PROFILE=earthly-dev
 
 It's also possible to configure the profile in terraform by adding it under provider configuration:
 
-~~~{.groovy caption="main.tf"}
+~~~{.diff caption="main.tf"}
  provider "aws" {
    region = "us-east-1"
 +  profile = "earthly-dev"
@@ -183,7 +189,7 @@ Even though no changes were applied, and I don't yet have any resources being ma
 $ git status
 ~~~
 
-~~~{.ini caption="Output"}
+~~~{.ini caption=""}
 Untracked files:
   (use "git add <file>..." to include in what will be committed)
         terraform.tfstate
@@ -231,7 +237,7 @@ resource "aws_ecr_repository" "foo" {
 <div class="notice--info notice--big">
 ## Understanding Terraform Resources
 
-In the first line, you can see the keyword `resource` followed by `aws_ecr_repository` and `foo`. This is how you declare a terraform resource and a resource is a declarative thing you want to setup in terraform. The first string is the resource type, `aws_ecr_repository` in this example and the second thing is the name you want to give it. The name is for your own reference and I'll be using it to refer to specific resources from within other resources coming very soon.
+A resource is a declarative bit of HCL describing a piece of infrastructure. In the first line, you can see the keyword `resource` followed by `aws_ecr_repository` and `foo`. This is how you declare a terraform resource. The first string is the resource type, `aws_ecr_repository` in this example and the second thing is the name you want to give it. The name is for your own reference and I'll be using it to refer to specific resources from within other resources coming very soon.
 
 Everything after that is a property of the resource and this whole thing is being written in HCL, HashiCorp configuration language. But as I mentions before, we won't be getting to deep into HCL.
 
@@ -386,7 +392,7 @@ And then run import the same way (`terraform import aws_ecr_repository.lambda-ap
 $ terraform show
 ~~~
 
-~~~{.groovy caption="Output"}
+~~~{.groovy caption=""}
 # aws_ecr_repository.lambda-api:
 resource "aws_ecr_repository" "lambda-api" {
     arn                  = "arn:aws:ecr:us-east-1:459018586415:repository/
@@ -584,7 +590,7 @@ $ terraform import aws_acm_certificate.cert arn:...
 $ terraform import aws_api_gateway_domain_name.earthly-tools-com earthly-tools.com
 ~~~
 
-Then I need to set up the API, the API State and map it to the domain.
+Then I need to set up the API, the API Stage and map it to the domain.
 
 ~~~{.groovy caption="main.tf"}
 resource "aws_apigatewayv2_api" "earthly-tools-com" {
@@ -751,7 +757,7 @@ curl https://earthly-tools.com/text-mode
 
 Then I started un-commenting resources working from the top down and applying as I went. Until I got this:
 
-~~~{.bash caption=">_"}
+~~~{.bash caption=""}
 aws_ecr_repository_policy.lambda-api: Creation complete after 1s [id=lambda-api]
 ╷
 │ Error: error creating Lambda Function (1): InvalidParameterValueException: Source image 459018586415.dkr.ecr.us-east-1.amazonaws.com/lambda-api:latest does not exist. Provide a valid source image.
@@ -839,7 +845,7 @@ This is why this testing stage is so important. Implicit dependencies meant my T
 
 And with that I have all my resources imported and I've successful verified I can tear them down and recreate them. Now that I've done this, I have a good understanding of the basics of Terraform, importing resources and how to approach infrastructure as code.
 
-Initially, I found working with Terraform to be a challenge. But know I have the understanding I need to work with more complex infrastructure-as-code, like our Earthly Cloud infrastructure. And I now think it's a pretty cool tool that I'd like to learn more about.
+Initially, I found working with Terraform to be a challenge. But I now have the understanding I need to work with more complex infrastructure-as-code, like our Earthly Cloud infrastructure. Terraform seems useful and I'd like to learn more about it.
 
 The Terraform code written here for sure could be improved. I could be extracting my code into separate modules and separating out variables and using workspaces and lifecycles to create a better factored infrastructure as code solution. But doing it from first principles and keeping things simple has been instructive and hopefully reading this conversion build log is valuable for you.
 
