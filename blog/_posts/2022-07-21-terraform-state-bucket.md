@@ -14,7 +14,7 @@ First, it leaks details into a git repo that don't need to be there. I'm not set
 
 Second, if multiple people were making infra changes we would have a problem, because there would effectively be two versions of `terraform.tfstate` out there.
 
-There are a number of ways to fix this. One is to move to Terraform Cloud, another is env0 but the simplest is to just to put my `terraform.tfstate` into an S3 bucket. And that is what I'm going to do.
+There are a number of ways to fix this. One is to move to Terraform Cloud, another is env0, but the simplest is to just to put my `terraform.tfstate` into an S3 bucket. And that is what I'm going to do.
 
 ## Creating the Bucket
 
