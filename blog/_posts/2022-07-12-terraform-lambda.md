@@ -444,7 +444,7 @@ Imported is:
 $ terraform import aws_ecr_repository_policy.lambda-api lambda-api
 ~~~
 
-And then with the show trick I extracted the policy I was already using:
+And then, with the `terraform show` trick I used above, I extracted the policy I was already using:
 
 ~~~{.groovy caption="main.tf"}
 resource "aws_ecr_repository_policy" "lambda-api" {
