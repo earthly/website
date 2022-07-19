@@ -51,7 +51,7 @@ The RSA Key generated with SSH-Keygen:
 Perfect, we can then display my public key with:
 
 ~~~{.bash caption=">_"}
-    $:~/$ cat /tmp/testkey.pub 
+    $ cat /tmp/testkey.pub 
     ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDBRl0U4mwO/jQ7kYJidSnQy \
     0ci45j1QZ1do7NEC/08cG0jbNCSX6mblFr0JWruLpp6Z1WA/BL+Gng \
     CwATBeEt7dSAHNpOvT0fJ4roWv6/KmOLOCjKq26a0MvMf1g/YFa5 \
@@ -68,7 +68,7 @@ Perfect, we can then display my public key with:
 and since we're all friends here, I'll share my example private key (you should never share your key with anyone, I'm only sharing this as an example -- I won't ever be using this key anywhere).
 
 ~~~{.bash caption=">_"}
-    $:~/$ cat /tmp/testkey
+    $ cat /tmp/testkey
     -----BEGIN OPENSSH PRIVATE KEY-----
     b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAABlwAAAAdzc2gtcn
     NhAAAAAwEAAQAAAYEAwUZdFOJsDv40O5GCYnUp0MtHIuOY9UGdXaOzRAv9PHBtI2zQkl+p
