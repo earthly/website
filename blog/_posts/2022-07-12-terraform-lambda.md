@@ -676,7 +676,7 @@ Note that `terraform show` returned the current api arn for `source_arn` and I n
 
 ## Terraform Import API Route and Integration
 
-Integrating the lambda with the API was by far the hardest part for me. In AWS, there is a single button click process to hook a lambda up to an API endpoint. Behind the scenes there are a number of separate things happening. But once I figured out the name of all these little resources, it was easy to import and 'terraform show` them to see how they should be configured.
+Integrating the lambda with the API was by far the hardest part for me. In AWS, there is a single button click process to hook a lambda up to an API endpoint. Behind the scenes there are a number of separate things happening. But once I figured out the name of all these little resources, it was easy to import and `terraform show` them to see how they should be configured.
 
 ~~~{.groovy caption="main.tf"}
 ## Attach Lambda to API Gateway
