@@ -10,7 +10,7 @@ internal-links:
 ---
 In the [previous article](/blog/terraform-lambda/) I ported all my AWS infrastructure to Terraform. But in doing so, I was left tracking all my Terraform state in a `terraform.tfstate` file. This has a number of problems.
 
-First, it leaks details into git repo that don't need to be there. I'm not setting up an RDS database or anything, but if I did, `terraform.tfstate` would have my db credentials in it.
+First, it leaks details into a git repo that don't need to be there. I'm not setting up an RDS database or anything, but if I did, `terraform.tfstate` would have my db credentials in it.
 
 Second, if multiple people were making infra changes we would have a problem, because there would effectively be two versions of `terraform.tfstate` out there.
 
