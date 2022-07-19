@@ -209,7 +209,7 @@ Terraform stores this state in `terraform.tfstate`. At this point I have no reso
 
 ~~~
 
-Ok, lets move on to creating my first resource. I need to set up ECR first because its where I store the docker image that is my lambda.
+Ok, lets move on to creating my first resource. I need to set up ECR first because it's where I store the docker image that is my lambda.
 
 ## Elastic Computer Repository - Terraform
 
