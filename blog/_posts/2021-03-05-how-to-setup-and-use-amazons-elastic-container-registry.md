@@ -57,7 +57,7 @@ EKS allows you to run Kubernetes on AWS without maintaining your own [Kubernetes
 
 Like EKS, ECS is a container orchestration service that makes running, stopping, and managing containers on AWS resources easy. Without getting into all of the specifics, ECS is typically better for teams that want a simple but powerful way to run their containers, while EKS adds the flexibility and security options available in Kubernetes. To learn more about each of AWS's container orchestration tools, read [this article on picking the right one](https://aws.amazon.com/blogs/containers/amazon-ecs-vs-amazon-eks-making-sense-of-aws-container-services/).
 
-When integrating with ECR, ECS users simply have to [add their images to a task definition](https://docs.aws.amazon.com/AmazonECR/latest/userguide/ECR_on_ECS.html). Task definitions are JSON files that describe each container that forms the application. These definitions are similar to Kubernetes manifest files but require their own format and options.
+When integrating with ECR, ECS users simply have to [add their images to a task definition](https://docs.aws.amazon.com/AmazonECR/latest/userguide/ECR_on_ECS.html). Task definitions are 'JSON' files that describe each container that forms the application. These definitions are similar to Kubernetes manifest files but require their own format and options.
 
 ## Using Elastic Container Registry
 
@@ -93,9 +93,9 @@ Choose a visibility (*Public* or *Private*), name the repository (ideally someth
 
 *Note: your final repository URL structure will be something like this:*
 
-```
+~~~{.bash caption=">_"}
 <account-id>.dkr.ecr.<account-region>.amazonaws.com/<repository-name>
-```
+~~~
 
 Once your repository is configured, click *Create repository* to initialize your ECR repository. If you want to create a public repository, you can follow the same steps but select `Pubic` instead of `Private`.
 
@@ -107,16 +107,16 @@ Before publishing the Image to ECR, make sure you have Docker installed on your 
 
 If you don't have a project ready, create a new file called `Dockerfile` and enter the following (this is based on the official [Docker `alpine:3.7` image](https://hub.docker.com/_/alpine)):
 
-```
+~~~{.bash caption=">_"}
 FROM alpine:3.7
 CMD echo 'Hello world'
-```
+~~~
 
 Next, [set up your AWS credentials on the CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html) if you haven't already:
 
-```
+~~~{.bash caption=">_"}
 aws configure
-```
+~~~
 
 Paste your *AWS Access Key ID* and *AWS Secret Access Key*. This will allow your CLI instance access to your AWS account.
 
@@ -126,13 +126,14 @@ If you're using the CLI as part of your continuous integration workflow, you als
 
 Next, you need Docker to be able to push images to your ECR repository. The [`docker login` command](https://docs.docker.com/engine/reference/commandline/login/) will allow you to do this, so using the AWS CLI, retrieve your ECR password and pipe it into the Docker command:
 
-```
+~~~{.bash caption=">_"}
 aws ecr get-login-password \
     --region <account-region> \
 | docker login \
     --username AWS \
-    --password-stdin <account-id>.dkr.ecr.<account-region>.amazonaws.com/<repository-name>
-```
+    --password-stdin <account-id>.dkr.ecr.<account-region>.amazonaws.com/
+    <repository-name>
+~~~
 
 After authentication, you will see `Login Succeeded` as a response. Now you'll be able to push tagged images to your ECR repository.
 
@@ -140,23 +141,25 @@ If you are pushing or pulling images from this machine regularly, you may not wa
 
 ### Pushing an Image To ECR
 
-Next, build the image from your Dockerfile:
+Next, build the image from your 'Dockerfile':
 
-```
+~~~{.bash caption=">_"}
 docker build -t <image-name>:<image-version> .
-```
+~~~
 
 Then, tag the image with your ECR repository name:
 
-```
-docker tag <image-name>:<image-version> <account-id>.dkr.ecr.<account-region>.amazonaws.com/<repository-name>:<image-version>
-```
+~~~{.bash caption=">_"}
+docker tag <image-name>:<image-version> <account-id>.dkr.ecr.
+<account-region>.amazonaws.com/<repository-name>:<image-version>
+~~~
 
 Your image is now ready to push to ECR:
 
-```
-docker push <account-id>.dkr.ecr.<account-region>.amazonaws.com/<repository-name>:<image-version>
-```
+~~~{.bash caption=">_"}
+docker push <account-id>.dkr.ecr.<account-region>.amazonaws.com/
+<repository-name>:<image-version>
+~~~
 
 And just like that, you have pushed our first image to a repository on Elastic Container Registry. In the next section, you'll see how you can use these images for local or remote deployments.
 
@@ -164,19 +167,21 @@ And just like that, you have pushed our first image to a repository on Elastic C
 
 Whether you want to pull an image from a public ECR repository or your company has private images stored in ECR, pulling works in the same way it does in any container registry. After you've authenticated (using the same steps above), you can use [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/):
 
-```
-docker pull <account-id>.dkr.ecr.<account-region>.amazonaws.com/<repository-name>:<image-version>
-```
+~~~{.bash caption=">_"}
+docker pull <account-id>.dkr.ecr.<account-region>.amazonaws.com/
+<repository-name>:<image-version>
+~~~
 
 Now you can run this image locally.
 
 ### Using ECR Images in a Dockerfile
 
-If you are building a new application from a base image stored in ECR, you can use the `FROM` command in your Dockerfile just as you would with any other Docker image. For example:
+If you are building a new application from a base image stored in ECR, you can use the `FROM` command in your 'Dockerfile' just as you would with any other Docker image. For example:
 
-```
-FROM: <account-id>.dkr.ecr.<account-region>.amazonaws.com/<repository-name>:<image-version>
-```
+~~~{.bash caption=">_"}
+FROM: <account-id>.dkr.ecr.<account-region>.amazonaws.com/
+<repository-name>:<image-version>
+~~~
 
 Again, you'll need to be authenticated if you want to build an image off a private image in ECR, but this allows you to share base images with your team or the public.
 
@@ -188,7 +193,7 @@ To use your images from ECR in a container management platform like ECS or EKS, 
 
 For example, you can use the following EKS manifest to deploy a NodeJS image stored in ECR:
 
-```
+~~~{.yaml caption=">_"}
 apiVersion: batch/v1 
 kind: Job 
 metadata: 
@@ -201,10 +206,11 @@ spec: template:
       serviceAccountName: iam-test 
       containers: 
         - name: eks-iam-test 
-          image: 123456789012.dkr.ecr.us-west-2.amazonaws.com/aws-nodejs-sample:v1 
+          image: 123456789012.dkr.ecr.us-west-2.amazonaws.com/
+          aws-nodejs-sample:v1 
           args: ["s3", "ls"] 
       restartPolicy: Never
-```
+~~~
 
 When deployed, it will create a job with the name `eks-iam-test-s3` using the `123456789012.dkr.ecr.us-west-2.amazonaws.com/aws-nodejs-sample:v1` image. To see the complete step-by-step process for deploying this job to EKS, see [the AWS documentation](https://docs.amazonaws.cn/en_us/AmazonECR/latest/userguide/ECR_on_EKS.html).
 
@@ -212,12 +218,13 @@ When deployed, it will create a job with the name `eks-iam-test-s3` using the `1
 
 ECR images can also be used in ECS task definition files to define your containers:
 
-```
+~~~{.json caption=">_"}
 {
   "containerDefinitions": [
     {
       "name": "sample-app",
-      "image": "123456789012.dkr.ecr.us-west-2.amazonaws.com/aws-nodejs-sample:v1",
+      "image": "123456789012.dkr.ecr.us-west-2.amazonaws.com/
+      aws-nodejs-sample:v1",
       "memory": 200,
       "cpu": 10,
       "essential": true
@@ -226,7 +233,7 @@ ECR images can also be used in ECS task definition files to define your containe
   "family": "example_task_3",
   "taskRoleArn": "arn:aws:iam::123456789012:role/AmazonECSTaskS3BucketRole"
 }
-```
+~~~
 
 This definition will deploy a container named `sample-app` using image `123456789012.dkr.ecr.us-west-2.amazonaws.com/aws-nodejs-sample:v1`. More detailed steps are [available in the ECS documentation](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/create-task-definition.html).
 
