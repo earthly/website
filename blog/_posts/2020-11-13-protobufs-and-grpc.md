@@ -24,12 +24,12 @@ Our server will allow users to set and get data from a key/value store.
 
 First let's design our API in a proto file:
 
-~~~{.bash caption="protobuf"}
+~~~{.bash caption="api.proto"}
     syntax = "proto3";
     package simplekeyvalue;
     option go_package = "/kvapi";
     
-    // The key/value API contains two procedures for storing\
+    // The key/value API contains two procedures for storing
     and retrieving data
     
     service KeyValue {
@@ -63,15 +63,15 @@ Next we need to compile this proto file into Go code. On a Mac one might be temp
 
 Here's what an Earthfile would look like for installing Google protobufs inside an Ubuntu image, and generating the protobuf code using the protoc-gen-go-grpc tool:
 
-~~~{.go caption="earthfile"}
+~~~{.docker caption="Earthfile"}
     FROM ubuntu:20.10
     WORKDIR /defs
     
     RUN apt-get update && apt-get install -y wget unzip
     
     # setup protoc
-    RUN wget -O protoc.zip https://github.com/protocolbuffers/protobuf/ \
-    releases/download/v3.13.0/protoc-3.13.0-linux-x86_64.zip
+    RUN wget -O protoc.zip
+    https://github.com/protocolbuffers/protobuf/releases/download/v3.13.0/protoc-3.13.0-linux-x86_64.zip
     RUN unzip protoc.zip -d /usr/local/
     
     proto-go:
@@ -100,7 +100,7 @@ At this point, assuming that earth is already [installed](https://docs.earthly.d
 
 The next step is to write the server code that will implement the set and get methods:
 
-~~~{.bash caption=">_"}
+~~~{.go caption="main.go"}
     package main
     
     import (
@@ -127,8 +127,7 @@ The next step is to write the server code that will implement the set and get me
     }
     
     // Set stores a given value under a given key
-    func (s *server) Set(ctx context.Context, in *kvapi.SetRequest)\
-    (*kvapi.SetReply, error) {
+    func (s *server) Set(ctx context.Context, in *kvapi.SetRequest) (*kvapi.SetReply, error) {
      key := in.GetKey()
      value := in.GetValue()
      log.Printf("serving set request for key %q and value %q", key, value)
@@ -140,8 +139,7 @@ The next step is to write the server code that will implement the set and get me
     }
     
     // Get returns a value associated with a key to the client
-    func (s *server) Get(ctx context.Context, in *kvapi.GetRequest) \
-    (*kvapi.GetReply, error) {
+    func (s *server) Get(ctx context.Context, in *kvapi.GetRequest) (*kvapi.GetReply, error) {
      key := in.GetKey()
      log.Printf("serving get request for key %q", key)
     
@@ -175,7 +173,7 @@ The next step is to write the server code that will implement the set and get me
 
 Next we will compile the go code and save it as a docker image with the following Earthfile:
 
-~~~{.bash caption="Earthfile"}
+~~~{.docker caption="Earthfile"}
     FROM golang:1.13-alpine3.11
     
     WORKDIR /kvserver
@@ -215,7 +213,7 @@ Then start up the server in Docker, by running:
 
 Now that we've built and launched our Go-based key-value-store server, we'll cover how to talk to it using a Python client. Remember that initial Earthfile that generated the Go code? We'll extend it to _pip install grpc_ tooling, and generate Python code:
 
-~~~{.python caption="Eathfile"}
+~~~{.dockerfile caption="Earthfile"}
     proto-py:
       RUN apt-get install -y python3 python3-pip
       RUN pip3 install grpcio grpcio-tools
@@ -228,7 +226,7 @@ Now that we've built and launched our Go-based key-value-store server, we'll cov
 
 Then we'll create a client that reads command line arguments, and if the argument contains an equals sign, it will store the value in the server, and otherwise it will retrieve the value from the server:
 
-~~~{.bash caption="Earthfile"}
+~~~{.python caption="Earthfile"}
     import sys
     import grpc
     
@@ -271,7 +269,7 @@ Then we'll create a client that reads command line arguments, and if the argumen
 
 We then store this python code, along with the generated gRPC protobuf code with the following Earthfile:
 
-~~~{.python caption="Earthfile"}
+~~~{.dockerfile caption="Earthfile"}
     FROM python:3
     
     RUN pip install grpcio protobuf pycodestyle
@@ -328,7 +326,7 @@ And if all went well, you should see some output on both the client and server c
 
 We've come a long ways with our Go and Python gRPC examples, but what if you also wanted to include a Ruby gRPC client implementation too? Well let's extend our proto Earthfile to generate Ruby protobufs too:
 
-~~~{.ruby caption="Earthfile"}
+~~~{.dockerfile caption="Earthfile"}
     proto-rb:
       RUN apt-get install -y ruby
       RUN gem install grpc grpc-tools
@@ -342,7 +340,7 @@ We've come a long ways with our Go and Python gRPC examples, but what if you als
 
 We can then use this generated Ruby gRPC code with a simple ruby client example that performs a get request for keys listed as command line arguments:
 
-~~~{.ruby caption=">_"}
+~~~{.ruby caption="client.rb"}
     $LOAD_PATH.unshift '.'
     
     require 'grpc'
