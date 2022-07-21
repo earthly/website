@@ -6,5 +6,8 @@
   "MD040": false,
   "MD048": false,
   "MD014": false,
-  "MD024": false
+  "MD024": false,
+  "MD010": {
+    "spaces_per_tab": 4
+  }
 }
