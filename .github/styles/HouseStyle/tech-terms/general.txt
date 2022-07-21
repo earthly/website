@@ -166,6 +166,13 @@ synergically
 beautifulsoup
 Seaborn
 toolset
+
+codespace
+Codespace
+codespaces
+Codespaces
+devcontainer
+orgs
 datetime
 bson
 Mongodb
@@ -184,7 +191,13 @@ Patsubst
 patsubst
 llox
 Dockershim
+
 tcell
 Tcell
 Xspeed
 Yspeed
+
+proport
+uncommented
+keyphrase
+
