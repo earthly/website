@@ -184,3 +184,7 @@ Patsubst
 patsubst
 llox
 Dockershim
+tcell
+Tcell
+Xspeed
+Yspeed
