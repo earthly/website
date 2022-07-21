@@ -5,4 +5,4 @@ bash: 'Bash'
 thoughts: 'Programming Thoughts'
 activity-tracker: 'Activity Tracker'
 deployment-strategies: 'Deployment'
-lambdas: "AWS Lambda's in GoLang"
+lambdas: "Lambda's in GoLang"

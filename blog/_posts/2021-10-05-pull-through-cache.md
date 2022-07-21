@@ -33,7 +33,7 @@ For the purposes of this article, I'll focus on the standard Docker registry fou
 
 ## Obtaining the Registry
 
-The canonical registry is [`registry:2`](https://hub.docker.com/_/registry). You can obtain this by simply doing a `docker pull registry:2`. However, there are some caveats detailed below in the [HTTPS](#HTTPS) section.
+The canonical registry is [`registry:2`](https://hub.docker.com/_/registry). You can obtain this by simply doing a `docker pull registry:2`. However, there are some caveats detailed below in the [HTTPS](#https) section.
 
 ## Configuring the Registry
 

@@ -100,6 +100,8 @@ thoughts:
         url: /confidently-uncertain/
       - title: "Printf Debugging"
         url: /printf-debugging/
+      - title: "Programming Language Tooling"
+        url: /programming-language-improvements/
 activity-tracker:
   - title: "Activity Tracker Series"
     children:
@@ -159,3 +161,5 @@ lambdas:
         url: /lambda-grpc/
       - title: "Lambda Rest APIs"
         url: /aws-lambda-api-proxy/
+      - title: "Terraform Import"
+        url: /terraform-lambda/

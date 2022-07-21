@@ -3,7 +3,8 @@ title: "The Slow March of Progress in Programming Language Tooling"
 categories:
   - Articles
 author: Adam
-
+sidebar:
+  nav: "thoughts"
 ---
 The 2022 Stack Overflow developer survey is out!
 

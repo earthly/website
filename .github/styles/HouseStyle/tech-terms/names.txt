@@ -202,3 +202,8 @@ winget
 cmake
 Cuelang
 Mathematica
+terraformer
+terracognita
+Heredoc
+arn
+tfstate
