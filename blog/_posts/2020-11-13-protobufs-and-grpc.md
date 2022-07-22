@@ -72,6 +72,7 @@ Here's what an Earthfile would look like for installing Google protobufs inside 
     # setup protoc
     RUN wget -O protoc.zip
     https://github.com/protocolbuffers/protobuf/releases/download/v3.13.0/protoc-3.13.0-linux-x86_64.zip
+    
     RUN unzip protoc.zip -d /usr/local/
     
     proto-go:
@@ -173,7 +174,7 @@ The next step is to write the server code that will implement the set and get me
 
 Next we will compile the go code and save it as a docker image with the following Earthfile:
 
-~~~{.docker caption="Earthfile"}
+~~~{.dockerfile caption="Earthfile"}
     FROM golang:1.13-alpine3.11
     
     WORKDIR /kvserver
