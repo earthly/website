@@ -1,5 +1,5 @@
 ---
-title: "Terraform Import - Leaving Click Opps Behind"
+title: "Terraform Import - Leaving Click Ops Behind"
 categories:
   - Tutorials
 toc: true
