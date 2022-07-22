@@ -30,7 +30,7 @@ First let's design our API in a proto file:
     option go_package = "/kvapi";
     
     // The key/value API contains two procedures for storing
-    and retrieving data
+    // and retrieving data
     
     service KeyValue {
       rpc Set (SetRequest) returns (SetReply) {}
