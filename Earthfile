@@ -39,3 +39,25 @@ clean:
   BUILD ./blog+clean
   BUILD ./website+clean
   RUN rm -rf build
+
+
+## Satellite Build
+publish:
+  FROM node:18-alpine3.15
+  RUN npm i -g netlify-cli && apk add --no-cache jq curl
+  
+  ## Content needs to be combined into /build for netlify to pick up
+  RUN mkdir -p ./build
+  COPY ./blog+build/_site/* ./build
+  COPY ./website+build/_site/* ./build
+
+          #   if [ "$CI_ACTION_REF_NAME" == "main" ] && [ "$REPO" == "" ]; then
+          #   echo "Main Build - deploying to prod!"
+          #   netlify deploy --dir=. --prod
+          #   OUTPUT=$(netlify deploy --dir=.)
+          #   echo "NETLIFY_URL=https://earthly.dev" >> $GITHUB_ENV
+          # else
+          #   echo "Preview Throw Away Deploy"
+          #   OUTPUT=$(netlify deploy --site 8a633c9a-e30f-4dd9-a15c-9fe9facb96c5 --auth ${D%???}-${M%???}_${C%?????} --dir=.)
+          #   echo "NETLIFY_URL=$(echo $OUTPUT | grep -Eo '(http|https)://[a-zA-Z0-9./?=_-]*(--)[a-zA-Z0-9./?=_-]*')" >> $GITHUB_ENV
+          # fi
