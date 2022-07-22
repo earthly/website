@@ -107,7 +107,7 @@ Before publishing the Image to ECR, make sure you have Docker installed on your 
 
 If you don't have a project ready, create a new file called `Dockerfile` and enter the following (this is based on the official [Docker `alpine:3.7` image](https://hub.docker.com/_/alpine)):
 
-~~~{.bash caption=">_"}
+~~~{.dockerfile caption="Dockerfile"}
 FROM alpine:3.7
 CMD echo 'Hello world'
 ~~~
@@ -178,7 +178,7 @@ Now you can run this image locally.
 
 If you are building a new application from a base image stored in ECR, you can use the `FROM` command in your 'Dockerfile' just as you would with any other Docker image. For example:
 
-~~~{.bash caption=">_"}
+~~~{.dockerfile caption="Dockerfile"}
 FROM: <account-id>.dkr.ecr.<account-region>.amazonaws.com/
 <repository-name>:<image-version>
 ~~~
@@ -193,7 +193,7 @@ To use your images from ECR in a container management platform like ECS or EKS, 
 
 For example, you can use the following EKS manifest to deploy a NodeJS image stored in ECR:
 
-~~~{.yaml caption=">_"}
+~~~{.yaml caption=""}
 apiVersion: batch/v1 
 kind: Job 
 metadata: 
@@ -218,7 +218,7 @@ When deployed, it will create a job with the name `eks-iam-test-s3` using the `1
 
 ECR images can also be used in ECS task definition files to define your containers:
 
-~~~{.json caption=">_"}
+~~~{.json caption=""}
 {
   "containerDefinitions": [
     {
