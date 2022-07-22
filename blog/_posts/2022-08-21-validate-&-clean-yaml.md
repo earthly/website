@@ -46,7 +46,7 @@ kubeval --version
 
 You will get the following output message that shows the Kubeval version:
 
-~~~{.bash caption=">_"}
+~~~{.bash caption="output"}
 Version: 0.15.0
 Commit: df50ea7fd4fd202458002a40a6a39ffbb3125bad
 Date: 2020-04-14T09:32:29Z
@@ -82,7 +82,7 @@ kubeval secret-reader.yaml
 
 You will get the following output:
 
-~~~{.bash caption=">_"}
+~~~{.bash caption="output"}
 ←[32mPASS←[0m - secret-reader.yaml contains a valid ClusterRole \
 (organization.secret-reader)
 ~~~
@@ -115,7 +115,7 @@ kubeval service-ingress.yml
 
 You will get the following output that shows that the missing key error has been detected:
 
-~~~{.bash caption=">_"}
+~~~{.bash caption="output"}
 ←[31mERR ←[0m - service-ingress.yml: Missing 'metadata' key
 ~~~
 
@@ -145,7 +145,7 @@ spec:
 
 If you scan the above contents using Kubeval again you will get the following output:
 
-~~~{.bash caption=">_"}
+~~~{.bash caption="output"}
 ←[32mPASS←[0m - service.yaml contains a valid Service (newmetric.my-service)
 
 ~~~
@@ -181,7 +181,7 @@ kubeval secret-reader.yaml -o tap
 
 You will get the following output:
 
-~~~{.bash caption=">_"}
+~~~{.bash caption="output"}
 1..1
 ok 1 - secret-reader.yaml (ClusterRole)
 ~~~
@@ -210,7 +210,7 @@ kubeval --ignore-missing-schemas service-ingress.yml
 
 You will get the following output:
 
-~~~{.bash caption=">_"}
+~~~{.bash caption="output"}
 ←[33mWARN←[0m - Set to ignore missing schemas
 ←[31mERR ←[0m - service-ingress.yml: Missing 'metadata' key
 ~~~
