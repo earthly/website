@@ -24,7 +24,7 @@ Our server will allow users to set and get data from a key/value store.
 
 First let's design our API in a proto file:
 
-~~~{.bash caption="api.proto"}
+~~~{.protobuf caption="api.proto"}
     syntax = "proto3";
     package simplekeyvalue;
     option go_package = "/kvapi";
@@ -63,7 +63,7 @@ Next we need to compile this proto file into Go code. On a Mac one might be temp
 
 Here's what an Earthfile would look like for installing Google protobufs inside an Ubuntu image, and generating the protobuf code using the protoc-gen-go-grpc tool:
 
-~~~{.docker caption="Earthfile"}
+~~~{.dockerfile caption="Earthfile"}
     FROM ubuntu:20.10
     WORKDIR /defs
     
