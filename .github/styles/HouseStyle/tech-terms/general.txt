@@ -192,6 +192,11 @@ patsubst
 llox
 Dockershim
 
+tcell
+Tcell
+Xspeed
+Yspeed
+
 Kubeval
 Validkube
 Jsonschema
