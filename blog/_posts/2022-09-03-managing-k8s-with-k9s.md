@@ -6,7 +6,10 @@ toc: true
 author: Boemo Wame Mmopelwa
 
 internal-links:
- - just an example
+ - Kubernetes
+ - Linux
+ - K9s
+ - Kubectl
 ---
 
 [Kubectl](https://kubernetes.io/docs/reference/kubectl/) is the de facto and most popular Kubernetes command line tool used for accessing Kubernetes cluster metrics. However, one needs to know many commands to fetch metrics and operate a Kubernetes cluster using Kubectl. Though the CLI is robust, commands can quickly become cumbersome to run. For example, here is a command for editing a deployment:
@@ -285,6 +288,5 @@ As Kubernetes third-party tools and out-tree plugins increase and simplify conta
 * [ ] Optional: Find ways to break up content with quotes or images
 * [ ] Verify look of article locally
   * Would any images look better `wide` or without the `figcaption`?
-* [ ] Add keywords for internal links to front-matter
 * [ ] Run `link-opp` and find 1-5 places to incorporate links
 * [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
