@@ -89,25 +89,25 @@ k9s
 
 You will get the following output that shows all clusters present in the Kubeconfig; K9s will automatically read from your Kubeconfig to get information related to your clusters. You can then press on the cluster you want to access:
 
-![K9s UI terminal](https://imgur.com/MVWzn4m.jpg)
+![K9s UI terminal]({{site.images}}{{page.slug}}/MVWzn4m.jpg)
 
 If you click on the `0` digit on your computer, you will get all the namespaces in your cluster:
 
-![Namespaces](https://imgur.com/ZbgGjYh.jpg)
+![Namespaces]({{site.images}}{{page.slug}}/ZbgGjYh.jpg)
 
 You can navigate through the UI terminal using the commands displayed on top of the UI table.
 
-![Short keys](https://imgur.com/bqMSL9C.jpg)
+![Short keys]({{site.images}}{{page.slug}}/bqMSL9C.jpg)
 
 In addition, you can press the `?` key on your keyboard to get all available **short**keys:
 
-![A list of short keys](https://imgur.com/LZE9kir.jpg)
+![A list of short keys]({{site.images}}{{page.slug}}/LZE9kir.jpg)
 
 ## Editing Resources
 
 With k9s, it's easy to edit a specific manifest. By clicking on the letter `E`, K9s will give you the selected YAML file you want to edit in a text editor:
 
-![Editing a manifest](https://imgur.com/xXNY5cT.jpg)
+![Editing a manifest]({{site.images}}{{page.slug}}/xXNY5cT.jpg)
 
 Change the specifications and save the file, and then close the text editor to get back to the K9s terminal.
 
@@ -116,7 +116,7 @@ Change the specifications and save the file, and then close the text editor to g
 Setting up a logging management system to facilitate your logs can help you manage and track performance and resource issues in your cluster. A logging tool will provide facilities for sorting logs and most of all retrieving the logs later on. K9s will display your namespace's logs. To get a specific namespace's logs, click on the namespace and then click on the `L` key to display the logs.
 
 K9s does not allow you to select text. If you want to copy the logs click on the `C` key.
-![Fetching logs](https://imgur.com/ygZKdOW.jpg)
+![Fetching logs]({{site.images}}{{page.slug}}/ygZKdOW.jpg)
 
 To get a specific time range for displaying logs use the following numbers on your keyboard:
 
@@ -126,7 +126,7 @@ To get a specific time range for displaying logs use the following numbers on yo
 * 4: Over 30 minutes.
 * 0: Over the entire lifetime of the pod.
 
-![More log commands](https://imgur.com/TjS0n00.jpg)
+![More log commands]({{site.images}}{{page.slug}}/TjS0n00.jpg)
 
 Use the escape key to get back to the main terminal.
 
@@ -134,11 +134,11 @@ Use the escape key to get back to the main terminal.
 
 K9s has a search bar which you can access by pressing the colon `:` and typing the resource you want to access. For example, if you press the colon and type "de" k9s will auto-complete to suggest the deploy resource. Press the tab button if you want to complete the suggestion and press enter to get access to the resource:
 
-![Navigation](https://imgur.com/E1LADKe.jpg)
+![Navigation]({{site.images}}{{page.slug}}/E1LADKe.jpg)
 
 To get your location in K9s, look at the bottom of the K9s UI terminal and you will see your location. The last component on the right is where you are currently at:
 
-![Location in K9s](https://imgur.com/RoTRox7.jpg)
+![Location in K9s]({{site.images}}{{page.slug}}/RoTRox7.jpg)
 
 The above picture shows that I am currently accessing the logs. If I press the escape button the container text will be highlighted as yellow to show that I am now accessing containers.
 
@@ -148,17 +148,17 @@ Whenever you need help press on the `?` key to get all keys that can be applied 
 
 Here are the basic navigation keys you will surely need:
 
-![Navigation commands](https://imgur.com/gfXg2h0.jpg)
+![Navigation commands]({{site.images}}{{page.slug}}/gfXg2h0.jpg)
 
 Sorting objects and resources boosts your search capability. Use the following keys to sort components and find whatever you are looking for quickly:
 
-![Sorting commands](https://imgur.com/XDDtbJu.jpg)
+![Sorting commands]({{site.images}}{{page.slug}}/XDDtbJu.jpg)
 
 ## Describing Resources
 
 With K9s you don't have to type in long commands to describe a namespace or any other Kubernetes resource; just press the letter `d` and you will get the description:
 
-![Describing a namespace](https://imgur.com/AtkeKTA.jpg)
+![Describing a namespace]({{site.images}}{{page.slug}}/AtkeKTA.jpg)
 
 ## Getting an Overview of Resource Metrics
 
@@ -261,17 +261,17 @@ spec:
 
 Apply the above object to your cluster. To get the number of resources and objects available type `:pulses` on the K9s terminal and you will get the following output:
 
-![Object metrics](https://imgur.com/K2adC8G.jpg)
+![Object metrics]({{site.images}}{{page.slug}}/K2adC8G.jpg)
 
 ## Draining Nodes and Killing Pods
 
 If you want to drain your node, start by searching for the node and then select it. Press `r` to drain the node. You will get the following dialogue which will request information on the grace period and timeout.
 
-![Draining pods](https://imgur.com/wSZn9vS.jpg)
+![Draining pods]({{site.images}}{{page.slug}}/wSZn9vS.jpg)
 
 Press `ctrl + d` to delete a resource or `ctrl+k` if you want to kill a pod:
 
-![Deleting a resource](https://imgur.com/pXrRkc2.jpg)
+![Deleting a resource]({{site.images}}{{page.slug}}/pXrRkc2.jpg)
 
 ## Conclusion
 
