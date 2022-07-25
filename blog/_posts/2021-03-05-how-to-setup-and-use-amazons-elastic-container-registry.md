@@ -179,7 +179,6 @@ Now you can run this image locally.
 If you are building a new application from a base image stored in ECR, you can use the `FROM` command in your 'Dockerfile' just as you would with any other Docker image. For example:
 
 ~~~{.dockerfile caption="Dockerfile"} 
-
 FROM: <account-id>.dkr.ecr.<account-region>.amazonaws.com<repository-name>:<image-version>
 ~~~
 
