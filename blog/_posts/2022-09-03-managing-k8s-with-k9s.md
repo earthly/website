@@ -43,7 +43,7 @@ k9s version
 
 You will get the following output if K9s has been installed successfully:
 
-~~~{.bash caption=">_"}
+~~~{.bash caption="Output"}
  ____  __.________
 |    |/ _/   __   \______
 |      < \____    /  ___/
@@ -76,8 +76,9 @@ minikube addons enable metrics-server
 
 You will get the following output:
 
-~~~{.bash caption=">_"}
-! Executing "docker container inspect minikube --format={{.State.Status}}" took an unusually long time: 6.2066183s
+~~~{.bash caption="Output"}
+! Executing "docker container inspect minikube --format={{.State.Status}}" took
+an unusually long time: 6.2066183s
 * Restarting the docker service may improve performance.
 * The 'metrics-server' addon is enabled
 ~~~
@@ -169,7 +170,7 @@ K9s makes cluster management easy because it enables you to get the number of cr
 
 Before we try to use the `:pulses` command let's create two objects: a `StatefulSet`, deployment and a `service` so that we can get an output when using the `:pulses` command. Create a YAML file called `new-statefulset.yaml` and add the following content:
 
-~~~{.bash caption=">_"}
+~~~{.yaml caption="new-statefulset.yaml"}
 apiVersion: v1
 kind: Service
 metadata:
@@ -216,7 +217,7 @@ kubectl apply -f new-statefulset.yaml
 
 Next, create a file called `deployment.yaml` and add the following contents:
 
-~~~{.bash caption=">_"}
+~~~{.yaml caption="deployment.yaml"}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
