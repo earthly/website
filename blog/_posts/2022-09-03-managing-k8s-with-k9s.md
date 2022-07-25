@@ -9,37 +9,38 @@ internal-links:
  - just an example
 ---
 
-[Kubectl](https://kubernetes.io/docs/reference/kubectl/) is the de facto and most popular Kubernetes command line tool used for accessing Kubernetes cluster metrics. However, one needs to know many commands to fetch metrics and operate a Kubernetes cluster using Kubectl. Though the CLI is robust, commands can quickly become cumbersome to run. For example, here is a command for editing a deployment: 
+[Kubectl](https://kubernetes.io/docs/reference/kubectl/) is the de facto and most popular Kubernetes command line tool used for accessing Kubernetes cluster metrics. However, one needs to know many commands to fetch metrics and operate a Kubernetes cluster using Kubectl. Though the CLI is robust, commands can quickly become cumbersome to run. For example, here is a command for editing a deployment:
 
-```
+~~~{.bash caption=">_"}
 kubectl edit deployment/mydeployment -o yaml --save-config
-```
+~~~
+
 Not the longest command, but typing things like this over an over can get cumbersome.
 Fortunately, there is a terminal UI called [K9s](https://k9scli.io/) that makes interacting with your cluster faster and easier. It abstracts many common `kubectl` commands and maps them to just a few shortcut keys or clicks of the mouse.
 
 In this tutorial, you will learn how to install K9s and use it to fetch cluster metrics and help manage your cluster.
 
-## Installing K9s on Linux distributions
+## Installing K9s on Linux Distributions
 
-Before you install K9s, make sure you install [kubectl](https://kubernetes.io/docs/tasks/tools/) if you haven't installed it already. This tutorial will use a [minikube cluster](https://earthly.dev/blog/minikube/) as an example project, but k9s works just as well with any type of Kubernettes cluster.
+Before you install K9s, make sure you install [kubectl](https://kubernetes.io/docs/tasks/tools/) if you haven't installed it already. This tutorial will use a [minikube cluster](https://earthly.dev/blog/minikube/) as an example project, but k9s works just as well with any type of Kubernetes cluster.
 
 You can install k9s using homebrew with the following command.
 
-```
+~~~{.bash caption=">_"}
 brew install derailed/k9s/k9s
-```
+~~~
 
 This tutorial will focus on using k9s with Linux, but [versions are available](https://k9scli.io/topics/install/) for other operating systems as well.
 
 Confirm the installation was successful by checking the version.
 
-```
+~~~{.bash caption=">_"}
 k9s version
-```
+~~~
 
 You will get the following output if K9s has been installed successfully:
 
-```
+~~~{.bash caption=">_"}
  ____  __.________
 |    |/ _/   __   \______
 |      < \____    /  ___/
@@ -50,39 +51,41 @@ You will get the following output if K9s has been installed successfully:
 Version:    v0.25.18
 Commit:     6085039f83cd5e8528c898cc1538f5b3287ce117
 Date:       2021-12-28T16:53:21Z
-```
+~~~
 
 To get started, use the `k9s -h` command to display all available commands. This will help you learn K9s faster and give you more clarity about certain commands. In addition, you can learn more about K9s from [K9s documentation](https://k9scli.io/).
 
-```
+~~~{.bash caption=">_"}
 Available Commands:
   completion  generate the auto completion script for the specified shell
   help        Help about any command
   info        Print configuration info
   version     Print version/build info
-```
-## Giving K9s access to minikube cluster metrics
+~~~
 
-Before we can start using k9s, let us enable the metric-server addon which will give K9s access to minikube cluster metrics. Use the following command to allow K9s to collect metrics from your minikube cluster:
+## Giving K9s Access to Minikube Cluster Metrics
 
-```
+Before we can start using k9s, let us enable the metric-server add-on which will give K9s access to minikube cluster metrics. Use the following command to allow K9s to collect metrics from your minikube cluster:
+
+~~~{.bash caption=">_"}
 minikube addons enable metrics-server
-```
+~~~
 
 You will get the following output:
-```
+
+~~~{.bash caption=">_"}
 ! Executing "docker container inspect minikube --format={{.State.Status}}" took an unusually long time: 6.2066183s
 * Restarting the docker service may improve performance.
 * The 'metrics-server' addon is enabled
-````
+~~~
 
-## Using the K9s UI terminal
+## Using the K9s UI Terminal
 
 Use the following command to launch K9s on your terminal:
 
-```
+~~~{.bash caption=">_"}
 k9s
-```
+~~~
 
 You will get the following output that shows all clusters present in the Kubeconfig; K9s will automatically read from your Kubeconfig to get information related to your clusters. You can then press on the cluster you want to access:
 
@@ -96,26 +99,27 @@ You can navigate through the UI terminal using the commands displayed on top of 
 
 ![Short keys](https://imgur.com/bqMSL9C.jpg)
 
-In addition, you can press the `?` key on your keyboard to get all available **short **keys:
+In addition, you can press the `?` key on your keyboard to get all available **short**keys:
 
 ![A list of short keys](https://imgur.com/LZE9kir.jpg)
 
-## Editing resources
+## Editing Resources
 
-With k9s, it’s easy to edit a specific manifest. By clicking on the letter `E`, K9s will give you the selected YAML file you want to edit in a text editor:
+With k9s, it's easy to edit a specific manifest. By clicking on the letter `E`, K9s will give you the selected YAML file you want to edit in a text editor:
 
 ![Editing a manifest](https://imgur.com/xXNY5cT.jpg)
 
 Change the specifications and save the file, and then close the text editor to get back to the K9s terminal.
 
-## How to manage your cluster using K9s
+## How to Manage Your Cluster Using K9s
 
-Setting up a logging management system to facilitate your logs can help you manage and track performance and resource issues in your cluster. A logging tool will provide facilities for sorting logs and most of all retrieving the logs later on. K9s will display your namespace’s logs. To get a specific namespace’s logs, click on the namespace and then click on the `L` key to display the logs.
+Setting up a logging management system to facilitate your logs can help you manage and track performance and resource issues in your cluster. A logging tool will provide facilities for sorting logs and most of all retrieving the logs later on. K9s will display your namespace's logs. To get a specific namespace's logs, click on the namespace and then click on the `L` key to display the logs.
 
-K9s does not allow you to select text. If you want to copy the logs click on the `C` key. 
+K9s does not allow you to select text. If you want to copy the logs click on the `C` key.
 ![Fetching logs](https://imgur.com/ygZKdOW.jpg)
 
 To get a specific time range for displaying logs use the following numbers on your keyboard:
+
 * 1: All logs over the last minute.
 * 2: Over 5 minutes.
 * 3: Over 15 minutes.
@@ -126,9 +130,9 @@ To get a specific time range for displaying logs use the following numbers on yo
 
 Use the escape key to get back to the main terminal.
 
-## Getting information about your cluster
+## Getting Information About Your Cluster
 
-K9s has a search bar which you can access by pressing the colon `:` and typing the resource you want to access. For example, if you press the colon and type “de” k9s will auto-complete to suggest the deploy resource. Press the tab button if you want to complete the suggestion and press enter to get access to the resource:
+K9s has a search bar which you can access by pressing the colon `:` and typing the resource you want to access. For example, if you press the colon and type "de" k9s will auto-complete to suggest the deploy resource. Press the tab button if you want to complete the suggestion and press enter to get access to the resource:
 
 ![Navigation](https://imgur.com/E1LADKe.jpg)
 
@@ -150,19 +154,19 @@ Sorting objects and resources boosts your search capability. Use the following k
 
 ![Sorting commands](https://imgur.com/XDDtbJu.jpg)
 
-## Describing resources
+## Describing Resources
 
 With K9s you don't have to type in long commands to describe a namespace or any other Kubernetes resource; just press the letter `d` and you will get the description:
 
 ![Describing a namespace](https://imgur.com/AtkeKTA.jpg)
 
-## Getting an overview of resource metrics
+## Getting an Overview of Resource Metrics
 
-K9s makes cluster management easy because it enables you to get the number of created Statefulsets, DaemonSets, Deployments and other resources using a command called `:pulses`. This command enhances accessibility because you can view the resources in one pane and most of all you can select the object to describe or edit it. 
+K9s makes cluster management easy because it enables you to get the number of created Statefulsets, DaemonSets, Deployments, and other resources using a command called `:pulses`. This command enhances accessibility because you can view the resources in one pane and most of all you can select the object to describe or edit it.
 
 Before we try to use the `:pulses` command let's create two objects: a `StatefulSet`, deployment and a `service` so that we can get an output when using the `:pulses` command. Create a YAML file called `new-statefulset.yaml` and add the following content:
 
-```
+~~~{.bash caption=">_"}
 apiVersion: v1
 kind: Service
 metadata:
@@ -199,17 +203,17 @@ spec:
         ports:
         - containerPort: 80
           name: earth
-```
+~~~
 
 Use the following command to apply the above objects to the cluster:
 
-```
+~~~{.bash caption=">_"}
 kubectl apply -f new-statefulset.yaml
-```
+~~~
 
 Next, create a file called `deployment.yaml` and add the following contents:
 
-```
+~~~{.bash caption=">_"}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -253,19 +257,19 @@ spec:
           items:
           - key: body
             path: index.html
-```
+~~~
 
 Apply the above object to your cluster. To get the number of resources and objects available type `:pulses` on the K9s terminal and you will get the following output:
 
 ![Object metrics](https://imgur.com/K2adC8G.jpg)
 
-## Draining nodes and killing pods
+## Draining Nodes and Killing Pods
 
-If you want to drain your node, start by searching for the node and then select it. Press `r` to drain the node. You will get the following dialogue which will request information on the grace period and timeout. 
+If you want to drain your node, start by searching for the node and then select it. Press `r` to drain the node. You will get the following dialogue which will request information on the grace period and timeout.
 
 ![Draining pods](https://imgur.com/wSZn9vS.jpg)
 
-Press `ctrl + d` to delete a resource or `ctrl+k` if you want to kill a pod: 
+Press `ctrl + d` to delete a resource or `ctrl+k` if you want to kill a pod:
 
 ![Deleting a resource](https://imgur.com/pXrRkc2.jpg)
 
@@ -273,15 +277,15 @@ Press `ctrl + d` to delete a resource or `ctrl+k` if you want to kill a pod:
 
 In this tutorial, you have learned how to install K9s on Linux, get information about your cluster, and manage your cluster using K9s.
 
-As Kubernetes third-party tools and out-tree plugins increase and simplify container orchestration procedures, Kubernetes will become easier and more friendly to beginners who don't know what containers are. K9s has definitely proved to be a third-party tool that eliminates Kubernetes pain points at a specific level. It is also a good tool to recommend to Kubernetes beginners who find managing resources using Kubectl difficult. 
+As Kubernetes third-party tools and out-tree plugins increase and simplify container orchestration procedures, Kubernetes will become easier and more friendly to beginners who don't know what containers are. K9s has definitely proved to be a third-party tool that eliminates Kubernetes pain points at a specific level. It is also a good tool to recommend to Kubernetes beginners who find managing resources using Kubectl difficult.
 
 ## Outside Article Checklist
 
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
+* [ ] Create header image in Canva
+* [ ] Optional: Find ways to break up content with quotes or images
+* [ ] Verify look of article locally
+  * Would any images look better `wide` or without the `figcaption`?
+* [ ] Run mark down linter (`lint`)
+* [ ] Add keywords for internal links to front-matter
+* [ ] Run `link-opp` and find 1-5 places to incorporate links
+* [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`

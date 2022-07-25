@@ -10,3 +10,5 @@ kubeadm
 mthe
 Tekton
 tkn
+homebrew
+Statefulsets
