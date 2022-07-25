@@ -150,14 +150,14 @@ docker build -t <image-name>:<image-version> .
 Then, tag the image with your ECR repository name:
 
 ~~~{.bash caption=">_"}
-docker tag <image-name>:<image-version> <account-id>.dkr.ecr.
+docker tag <image-name>:<image-version> <account-id>.dkr.ecr.\
 <account-region>.amazonaws.com/<repository-name>:<image-version>
 ~~~
 
 Your image is now ready to push to ECR:
 
 ~~~{.bash caption=">_"}
-docker push <account-id>.dkr.ecr.<account-region>.amazonaws.com/
+docker push <account-id>.dkr.ecr.<account-region>.amazonaws.com\
 <repository-name>:<image-version>
 ~~~
 
@@ -168,7 +168,7 @@ And just like that, you have pushed our first image to a repository on Elastic C
 Whether you want to pull an image from a public ECR repository or your company has private images stored in ECR, pulling works in the same way it does in any container registry. After you've authenticated (using the same steps above), you can use [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/):
 
 ~~~{.bash caption=">_"}
-docker pull <account-id>.dkr.ecr.<account-region>.amazonaws.com/
+docker pull <account-id>.dkr.ecr.<account-region>.amazonaws.com\
 <repository-name>:<image-version>
 ~~~
 
@@ -178,9 +178,9 @@ Now you can run this image locally.
 
 If you are building a new application from a base image stored in ECR, you can use the `FROM` command in your 'Dockerfile' just as you would with any other Docker image. For example:
 
-~~~{.dockerfile caption="Dockerfile"}
-FROM: <account-id>.dkr.ecr.<account-region>.amazonaws.com/
-<repository-name>:<image-version>
+~~~{.dockerfile caption="Dockerfile"} 
+
+FROM: <account-id>.dkr.ecr.<account-region>.amazonaws.com<repository-name>:<image-version>
 ~~~
 
 Again, you'll need to be authenticated if you want to build an image off a private image in ECR, but this allows you to share base images with your team or the public.
@@ -206,7 +206,7 @@ spec: template:
       serviceAccountName: iam-test 
       containers: 
         - name: eks-iam-test 
-          image: 123456789012.dkr.ecr.us-west-2.amazonaws.com/
+          image: 123456789012.dkr.ecr.us-west-2.amazonaws.com/\
           aws-nodejs-sample:v1 
           args: ["s3", "ls"] 
       restartPolicy: Never
@@ -223,7 +223,7 @@ ECR images can also be used in ECS task definition files to define your containe
   "containerDefinitions": [
     {
       "name": "sample-app",
-      "image": "123456789012.dkr.ecr.us-west-2.amazonaws.com/
+      "image": "123456789012.dkr.ecr.us-west-2.amazonaws.com/\
       aws-nodejs-sample:v1",
       "memory": 200,
       "cpu": 10,
