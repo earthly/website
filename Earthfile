@@ -1,4 +1,4 @@
-VERSION 0.6
+VERSION --use-cache-command 0.6
 FROM alpine
 
 ## Dev Build
@@ -48,25 +48,24 @@ publish:
   FROM node:18-alpine3.15
   RUN npm i -g netlify-cli && apk add --no-cache jq curl
   
-  ## Content needs to be combined into /build for netlify to pick up
-  RUN mkdir -p ./build
   IF [ "$DESTINATION" = "PROD" ]
-    COPY ./blog+build/site/* ./build
-    # COPY ./website+build/_site/* ./build
+    COPY ./blog/+build/_site/* ./blog
+    COPY ./website/+build/_site/* ./website
   ELSE
-    COPY (./blog+build/_site/* --FLAGS="--future")  ./build 
-    # COPY (./website+build/_site/* --FLAGS="--future") ./build
+    COPY (./blog/+build/_site --FLAGS="--future")  ./blog 
+    COPY (./website/+build/_site --FLAGS="--future") ./website
   END
-  RUN FALSE
 
+  ## Content needs to be combined into /build for netlify to pick up
+  RUN mkdir -p ./build/blog
+  RUN cp -rf ./blog/* ./build/blog
+  RUN cp -rf ./website/* ./build 
 
-          #   if [ "$CI_ACTION_REF_NAME" == "main" ] && [ "$REPO" == "" ]; then
-          #   echo "Main Build - deploying to prod!"
-          #   netlify deploy --dir=. --prod
-          #   OUTPUT=$(netlify deploy --dir=.)
-          #   echo "NETLIFY_URL=https://earthly.dev" >> $GITHUB_ENV
-          # else
-          #   echo "Preview Throw Away Deploy"
-          #   OUTPUT=$(netlify deploy --site 8a633c9a-e30f-4dd9-a15c-9fe9facb96c5 --auth ${D%???}-${M%???}_${C%?????} --dir=.)
-          #   echo "NETLIFY_URL=$(echo $OUTPUT | grep -Eo '(http|https)://[a-zA-Z0-9./?=_-]*(--)[a-zA-Z0-9./?=_-]*')" >> $GITHUB_ENV
-          # fi
+  # IF [ "$DESTINATION" = "PROD" ]
+    # COPY ./blog/+build/_site/* ./blog
+    # COPY ./website/+build/_site/* ./website
+    # RUN "PROD_DEPLOY"
+  # ELSE
+    RUN echo "Preview Throw Away Deploy"
+    RUN cd build && netlify deploy --site 8a633c9a-e30f-4dd9-a15c-9fe9facb96c5 --auth 92A5CnBFjm-nW9mTPgHd9_1tu0wut0ej7DWS_60GUd8 --dir=.
+  # END
