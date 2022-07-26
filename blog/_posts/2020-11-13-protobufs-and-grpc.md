@@ -24,12 +24,14 @@ Our server will allow users to set and get data from a key/value store.
 
 First let's design our API in a proto file:
 
-``` protobuf
+~~~{.protobuf caption="api.proto"}
     syntax = "proto3";
     package simplekeyvalue;
     option go_package = "/kvapi";
     
-    // The key/value API contains two procedures for storing and retrieving data
+    // The key/value API contains two procedures for storing
+    // and retrieving data
+    
     service KeyValue {
       rpc Set (SetRequest) returns (SetReply) {}
       rpc Get (GetRequest) returns (GetReply) {}
@@ -55,20 +57,22 @@ First let's design our API in a proto file:
       string value = 1;
     }
 
-```
+~~~
 
 Next we need to compile this proto file into Go code. On a Mac one might be tempted to run _brew install protobuf_, or if you're on Linux you might want to see if _apt-get install protoc_ will magically work, but rather than do that, we will use earthly to containerize these tools. This will allow you to share this code with other developers, and ensure everyone can compile proto files across multiple platforms using the same version to eliminate compatibility issues.
 
 Here's what an Earthfile would look like for installing Google protobufs inside an Ubuntu image, and generating the protobuf code using the protoc-gen-go-grpc tool:
 
-``` dockerfile
+~~~{.dockerfile caption="Earthfile"}
     FROM ubuntu:20.10
     WORKDIR /defs
     
     RUN apt-get update && apt-get install -y wget unzip
     
     # setup protoc
-    RUN wget -O protoc.zip https://github.com/protocolbuffers/protobuf/releases/download/v3.13.0/protoc-3.13.0-linux-x86_64.zip
+    RUN wget -O protoc.zip
+    https://github.com/protocolbuffers/protobuf/releases/download/v3.13.0/protoc-3.13.0-linux-x86_64.zip
+    
     RUN unzip protoc.zip -d /usr/local/
     
     proto-go:
@@ -83,21 +87,21 @@ Here's what an Earthfile would look like for installing Google protobufs inside 
           --go-grpc_out=/defs/go-api /defs/api.proto
       SAVE ARTIFACT ./go-api/kvapi AS LOCAL kvapi
 
-```
+~~~
 
 This will then produce two go files under the `kvapi` directory: `api.pb.go` and `api\_grpc.pb.go` which contains the auto generated protobuf and grpc code respectively.
 
 At this point, assuming that earth is already [installed](https://docs.earthly.dev/installation), give it a try for yourself with code from our [example repository](https://github.com/earthly/example-grpc-key-value-store):
 
-```
+~~~{.bash caption=">_"}
     git clone https://github.com/earthly/example-grpc-key-value-store.git
     cd example-grpc-key-value-store/proto
     earth +proto-go
-```
+~~~
 
 The next step is to write the server code that will implement the set and get methods:
 
-``` go
+~~~{.go caption="main.go"}
     package main
     
     import (
@@ -166,11 +170,11 @@ The next step is to write the server code that will implement the set and get me
       log.Fatalf("failed to serve: %v", err)
      }
     }
-```
+~~~
 
 Next we will compile the go code and save it as a docker image with the following Earthfile:
 
-``` dockerfile
+~~~{.dockerfile caption="Earthfile"}
     FROM golang:1.13-alpine3.11
     
     WORKDIR /kvserver
@@ -188,21 +192,21 @@ Next we will compile the go code and save it as a docker image with the followin
         COPY +kvserver/kvserver /kvserver
         ENTRYPOINT /kvserver
         SAVE IMAGE as kvserver:latest
-```
+~~~
 
 You can give it a try on your own by using our example code in our GitHub repository, just run:
 
-``` bash
+~~~{.bash caption=">_"}
     git clone https://github.com/earthly/example-grpc-key-value-store.git
     cd example-grpc-key-value-store/go-server
     earth +kvserver-docker
-```
+~~~
 
 Then start up the server in Docker, by running:
 
-``` bash
+~~~{.bash caption=">_"}
     docker run --rm --network=host kvserver:latest
-```
+~~~
 
 * * *
 
@@ -210,7 +214,7 @@ Then start up the server in Docker, by running:
 
 Now that we've built and launched our Go-based key-value-store server, we'll cover how to talk to it using a Python client. Remember that initial Earthfile that generated the Go code? We'll extend it to _pip install grpc_ tooling, and generate Python code:
 
-``` dockerfile
+~~~{.dockerfile caption="Earthfile"}
     proto-py:
       RUN apt-get install -y python3 python3-pip
       RUN pip3 install grpcio grpcio-tools
@@ -219,11 +223,11 @@ Now that we've built and launched our Go-based key-value-store server, we'll cov
       RUN python3 -m grpc_tools.protoc -I /defs --python_out=/defs/py-api \
           --grpc_python_out=/defs/py-api /defs/api.proto
       SAVE ARTIFACT ./py-api /py-pb AS LOCAL py-pb
-```
+~~~
 
 Then we'll create a client that reads command line arguments, and if the argument contains an equals sign, it will store the value in the server, and otherwise it will retrieve the value from the server:
 
-``` python
+~~~{.python caption="Earthfile"}
     import sys
     import grpc
     
@@ -262,11 +266,11 @@ Then we'll create a client that reads command line arguments, and if the argumen
                 value = get_response.value
                 print(f'server returned value "{value}" for key "{key}"')
 
-```
+~~~
 
 We then store this python code, along with the generated gRPC protobuf code with the following Earthfile:
 
-``` dockerfile
+~~~{.dockerfile caption="Earthfile"}
     FROM python:3
     
     RUN pip install grpcio protobuf pycodestyle
@@ -289,32 +293,33 @@ We then store this python code, along with the generated gRPC protobuf code with
         BUILD +lint
         BUILD +kvclient-docker
 
-```
+~~~
 
 You can give it a try for yourself with the example code:
 
-``` bash
+~~~{.bash caption=">_"}
     git clone https://github.com/earthly/example-grpc-key-value-store.git
     cd example-grpc-key-value-store/python-client
     earth +kvclient-docker
-```
+~~~
 
 Then you can run it and set the weather to sunny with:
 
-```
-    docker run --rm --network=host python-kvclient:latest python3 /kvclient/client.py weather=sunny
-```
+~~~{.bash caption=">_"}
+    docker run --rm --network=host python-kvclient:latest python3 \
+    /kvclient/client.py weather=sunny
+~~~
 
 And if all went well, you should see some output on both the client and server consoles:
 
-```
+~~~{.bash caption="Output"}
     # client output
     sent "weather" to server
     
     # server output
     2020/11/12 23:15:18 Listening on :50051
     2020/11/12 23:15:34 serving set request for key "weather" and value "sunny"
-```
+~~~
 
 * * *
 
@@ -322,20 +327,21 @@ And if all went well, you should see some output on both the client and server c
 
 We've come a long ways with our Go and Python gRPC examples, but what if you also wanted to include a Ruby gRPC client implementation too? Well let's extend our proto Earthfile to generate Ruby protobufs too:
 
-``` dockerfile
+~~~{.dockerfile caption="Earthfile"}
     proto-rb:
       RUN apt-get install -y ruby
       RUN gem install grpc grpc-tools
       COPY api.proto /defs
       RUN mkdir /defs/rb-api
-      RUN grpc_tools_ruby_protoc -I /defs --ruby_out=/defs/rb-api --grpc_out=/defs/rb-api /defs/api.proto
+      RUN grpc_tools_ruby_protoc -I /defs --ruby_out=/defs/rb-api \
+      --grpc_out=/defs/rb-api /defs/api.proto
       SAVE ARTIFACT ./rb-api /rb-pb AS LOCAL rb-pb
 
-```
+~~~
 
 We can then use this generated Ruby gRPC code with a simple ruby client example that performs a get request for keys listed as command line arguments:
 
-``` ruby
+~~~{.ruby caption="client.rb"}
     $LOAD_PATH.unshift '.'
     
     require 'grpc'
@@ -351,19 +357,20 @@ We can then use this generated Ruby gRPC code with a simple ruby client example 
       response = stub.get(request)
       puts response.value
     end
-```
+~~~
 
-```
+~~~{.bash caption=">_"}
     git clone https://github.com/earthly/example-grpc-key-value-store.git
     cd example-grpc-key-value-store/ruby-client
     earth +kvclient-docker
-```
+~~~
 
 Then you can try querying the server to see what the weather was set to:
 
-```
-    docker run --rm --network=host ruby-kvclient:latest ruby /kvclient/client.rb weather
-```
+~~~{.bash caption=">_"}
+    docker run --rm --network=host ruby-kvclient:latest \
+    ruby /kvclient/client.rb weather
+~~~
 
 And if all went well, it'll tell you that it's sunny outside.
 {% include imgf src="sun.png" alt="drawing of the sunn" caption="It's Sunny Outside"%}
