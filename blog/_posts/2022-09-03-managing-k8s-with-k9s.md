@@ -93,25 +93,45 @@ k9s
 
 You will get the following output that shows all clusters present in the Kubeconfig; K9s will automatically read from your Kubeconfig to get information related to your clusters. You can then press on the cluster you want to access:
 
-![K9s UI terminal]({{site.images}}{{page.slug}}/MVWzn4m.jpg)
+<div class="wide">
+
+![K9s UI terminal]({{site.images}}{{page.slug}}/MVWzn4m.jpg)\
+
+</div>
 
 If you click on the `0` digit on your computer, you will get all the namespaces in your cluster:
 
-![Namespaces]({{site.images}}{{page.slug}}/ZbgGjYh.jpg)
+<div class="wide">
+
+![Namespaces]({{site.images}}{{page.slug}}/ZbgGjYh.jpg)\
+
+</div>
 
 You can navigate through the UI terminal using the commands displayed on top of the UI table.
 
-![Short keys]({{site.images}}{{page.slug}}/bqMSL9C.jpg)
+<div class="wide">
 
-In addition, you can press the `?` key on your keyboard to get all available **short**keys:
+![Short keys]({{site.images}}{{page.slug}}/bqMSL9C.jpg)\
 
-![A list of short keys]({{site.images}}{{page.slug}}/LZE9kir.jpg)
+</div>
+
+In addition, you can press the `?` key on your keyboard to get all available **short** keys:
+
+<div class="wide">
+
+![A list of short keys]({{site.images}}{{page.slug}}/LZE9kir.jpg)\
+
+</div>
 
 ## Editing Resources
 
 With k9s, it's easy to edit a specific manifest. By clicking on the letter `E`, K9s will give you the selected YAML file you want to edit in a text editor:
 
-![Editing a manifest]({{site.images}}{{page.slug}}/xXNY5cT.jpg)
+<div class="wide">
+
+![Editing a manifest]({{site.images}}{{page.slug}}/xXNY5cT.jpg)\
+
+</div>
 
 Change the specifications and save the file, and then close the text editor to get back to the K9s terminal.
 
@@ -120,7 +140,12 @@ Change the specifications and save the file, and then close the text editor to g
 Setting up a logging management system to facilitate your logs can help you manage and track performance and resource issues in your cluster. A logging tool will provide facilities for sorting logs and most of all retrieving the logs later on. K9s will display your namespace's logs. To get a specific namespace's logs, click on the namespace and then click on the `L` key to display the logs.
 
 K9s does not allow you to select text. If you want to copy the logs click on the `C` key.
-![Fetching logs]({{site.images}}{{page.slug}}/ygZKdOW.jpg)
+
+<div class="wide">
+
+![Fetching logs]({{site.images}}{{page.slug}}/ygZKdOW.jpg)\
+
+</div>
 
 To get a specific time range for displaying logs use the following numbers on your keyboard:
 
@@ -130,7 +155,11 @@ To get a specific time range for displaying logs use the following numbers on yo
 * 4: Over 30 minutes.
 * 0: Over the entire lifetime of the pod.
 
-![More log commands]({{site.images}}{{page.slug}}/TjS0n00.jpg)
+<div class="wide">
+
+![More log commands]({{site.images}}{{page.slug}}/TjS0n00.jpg)\
+
+</div>
 
 Use the escape key to get back to the main terminal.
 
@@ -138,11 +167,19 @@ Use the escape key to get back to the main terminal.
 
 K9s has a search bar which you can access by pressing the colon `:` and typing the resource you want to access. For example, if you press the colon and type "de" k9s will auto-complete to suggest the deploy resource. Press the tab button if you want to complete the suggestion and press enter to get access to the resource:
 
-![Navigation]({{site.images}}{{page.slug}}/E1LADKe.jpg)
+<div class="wide">
+
+![Navigation]({{site.images}}{{page.slug}}/E1LADKe.jpg)\
+
+</div>
 
 To get your location in K9s, look at the bottom of the K9s UI terminal and you will see your location. The last component on the right is where you are currently at:
 
-![Location in K9s]({{site.images}}{{page.slug}}/RoTRox7.jpg)
+<div class="wide">
+
+![Location in K9s]({{site.images}}{{page.slug}}/RoTRox7.jpg)\
+
+</div>
 
 The above picture shows that I am currently accessing the logs. If I press the escape button the container text will be highlighted as yellow to show that I am now accessing containers.
 
@@ -152,17 +189,29 @@ Whenever you need help press on the `?` key to get all keys that can be applied 
 
 Here are the basic navigation keys you will surely need:
 
-![Navigation commands]({{site.images}}{{page.slug}}/gfXg2h0.jpg)
+<div class="wide">
+
+![Navigation commands]({{site.images}}{{page.slug}}/gfXg2h0.jpg)\
+
+</div>
 
 Sorting objects and resources boosts your search capability. Use the following keys to sort components and find whatever you are looking for quickly:
 
-![Sorting commands]({{site.images}}{{page.slug}}/XDDtbJu.jpg)
+<div class="wide">
+
+![Sorting commands]({{site.images}}{{page.slug}}/XDDtbJu.jpg)\
+
+</div>
 
 ## Describing Resources
 
 With K9s you don't have to type in long commands to describe a namespace or any other Kubernetes resource; just press the letter `d` and you will get the description:
 
-![Describing a namespace]({{site.images}}{{page.slug}}/AtkeKTA.jpg)
+<div class="wide">
+
+![Describing a namespace]({{site.images}}{{page.slug}}/AtkeKTA.jpg)\
+
+</div>
 
 ## Getting an Overview of Resource Metrics
 
@@ -265,17 +314,29 @@ spec:
 
 Apply the above object to your cluster. To get the number of resources and objects available type `:pulses` on the K9s terminal and you will get the following output:
 
-![Object metrics]({{site.images}}{{page.slug}}/K2adC8G.jpg)
+<div class="wide">
+
+![Object metrics]({{site.images}}{{page.slug}}/K2adC8G.jpg)\
+
+</div>
 
 ## Draining Nodes and Killing Pods
 
 If you want to drain your node, start by searching for the node and then select it. Press `r` to drain the node. You will get the following dialogue which will request information on the grace period and timeout.
 
-![Draining pods]({{site.images}}{{page.slug}}/wSZn9vS.jpg)
+<div class="wide">
+
+![Draining pods]({{site.images}}{{page.slug}}/wSZn9vS.jpg)\
+
+</div>
 
 Press `ctrl + d` to delete a resource or `ctrl+k` if you want to kill a pod:
 
-![Deleting a resource]({{site.images}}{{page.slug}}/pXrRkc2.jpg)
+<div class="wide">
+
+![Deleting a resource]({{site.images}}{{page.slug}}/pXrRkc2.jpg)\
+
+</div>
 
 ## Conclusion
 
@@ -283,11 +344,10 @@ In this tutorial, you have learned how to install K9s on Linux, get information 
 
 As Kubernetes third-party tools and out-tree plugins increase and simplify container orchestration procedures, Kubernetes will become easier and more friendly to beginners who don't know what containers are. K9s has definitely proved to be a third-party tool that eliminates Kubernetes pain points at a specific level. It is also a good tool to recommend to Kubernetes beginners who find managing resources using Kubectl difficult.
 
+{% include cta/cta1.html %}
+
 ## Outside Article Checklist
 
 * [ ] Create header image in Canva
 * [ ] Optional: Find ways to break up content with quotes or images
-* [ ] Verify look of article locally
-  * Would any images look better `wide` or without the `figcaption`?
 * [ ] Run `link-opp` and find 1-5 places to incorporate links
-* [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
