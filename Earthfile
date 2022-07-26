@@ -43,13 +43,22 @@ clean:
 
 ## Satellite Build
 publish:
+  # Anything but "PROD" deploys to staging site
+  ARG DESTINATION="STAGING"
   FROM node:18-alpine3.15
   RUN npm i -g netlify-cli && apk add --no-cache jq curl
   
   ## Content needs to be combined into /build for netlify to pick up
   RUN mkdir -p ./build
-  COPY ./blog+build/_site/* ./build
-  COPY ./website+build/_site/* ./build
+  IF [ "$DESTINATION" = "PROD" ]
+    COPY ./blog+build/site/* ./build
+    # COPY ./website+build/_site/* ./build
+  ELSE
+    COPY (./blog+build/_site/* --FLAGS="--future")  ./build 
+    # COPY (./website+build/_site/* --FLAGS="--future") ./build
+  END
+  RUN FALSE
+
 
           #   if [ "$CI_ACTION_REF_NAME" == "main" ] && [ "$REPO" == "" ]; then
           #   echo "Main Build - deploying to prod!"
