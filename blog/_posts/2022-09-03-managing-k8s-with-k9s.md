@@ -12,7 +12,7 @@ internal-links:
  - Kubectl
 ---
 
-[Kubectl](https://kubernetes.io/docs/reference/kubectl/) is the de facto and most popular Kubernetes command line tool used for accessing Kubernetes cluster metrics. However, one needs to know many commands to fetch metrics and operate a Kubernetes cluster using Kubectl. Though the CLI is robust, commands can quickly become cumbersome to run. For example, here is a command for editing a deployment:
+[Kubectl](https://kubernetes.io/docs/reference/kubectl/) is the de facto and most popular Kubernetes [command line tool](/blog/golang-command-line) used for accessing Kubernetes cluster metrics. However, one needs to know many commands to fetch metrics and operate a Kubernetes cluster using Kubectl. Though the CLI is robust, commands can quickly become cumbersome to run. For example, here is a command for editing a deployment:
 
 ~~~{.bash caption=">_"}
 kubectl edit deployment/mydeployment -o yaml --save-config
@@ -27,7 +27,7 @@ In this tutorial, you will learn how to install K9s and use it to fetch cluster 
 
 Before you install K9s, make sure you install [kubectl](https://kubernetes.io/docs/tasks/tools/) if you haven't installed it already. This tutorial will use a [minikube cluster](https://earthly.dev/blog/minikube/) as an example project, but k9s works just as well with any type of Kubernetes cluster.
 
-You can install k9s using homebrew with the following command.
+You can install k9s using [homebrew](/blog/homebrew-on-m1) with the following command.
 
 ~~~{.bash caption=">_"}
 brew install derailed/k9s/k9s
@@ -68,7 +68,7 @@ Available Commands:
 
 ## Giving K9s Access to Minikube Cluster Metrics
 
-Before we can start using k9s, let us enable the metric-server add-on which will give K9s access to minikube cluster metrics. Use the following command to allow K9s to collect metrics from your minikube cluster:
+Before we can start using k9s, let us enable the metric-server add-on which will give K9s access to [minikube](/blog/k8s-dev-solutions) cluster metrics. Use the following command to allow K9s to collect metrics from your minikube cluster:
 
 ~~~{.bash caption=">_"}
 minikube addons enable metrics-server
@@ -137,7 +137,7 @@ Change the specifications and save the file, and then close the text editor to g
 
 ## How to Manage Your Cluster Using K9s
 
-Setting up a logging management system to facilitate your logs can help you manage and track performance and resource issues in your cluster. A logging tool will provide facilities for sorting logs and most of all retrieving the logs later on. K9s will display your namespace's logs. To get a specific namespace's logs, click on the namespace and then click on the `L` key to display the logs.
+Setting up a [logging](/blog/understanding-docker-logging-and-log-files) management system to facilitate your logs can help you manage and track performance and resource issues in your cluster. A logging tool will provide facilities for sorting logs and most of all retrieving the logs later on. K9s will display your namespace's logs. To get a specific namespace's logs, click on the namespace and then click on the `L` key to display the logs.
 
 K9s does not allow you to select text. If you want to copy the logs click on the `C` key.
 
@@ -181,7 +181,7 @@ To get your location in K9s, look at the bottom of the K9s UI terminal and you w
 
 </div>
 
-The above picture shows that I am currently accessing the logs. If I press the escape button the container text will be highlighted as yellow to show that I am now accessing containers.
+The above picture shows that I am currently accessing the logs. If I press the escape button the [container](/blog/docker-slim) text will be highlighted as yellow to show that I am now accessing containers.
 
 In case you want to go back, press on the escape key. You can also get other navigation features and tasks at the top of every section on K9s UI.
 
@@ -349,4 +349,3 @@ As Kubernetes third-party tools and out-tree plugins increase and simplify conta
 ## Outside Article Checklist
 
 * [ ] Create header image in Canva
-* [ ] Run `link-opp` and find 1-5 places to incorporate links
