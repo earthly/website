@@ -1,4 +1,4 @@
-VERSION 0.6
+VERSION --use-cache-command 0.6
 FROM alpine
 
 # Anything but "YES" uses +base-image
@@ -104,7 +104,7 @@ build:
   FROM +base-or-cache-image
   COPY . .
   RUN JEKYLL_ENV=production bundle exec jekyll build $FLAGS 
-  SAVE ARTIFACT _site/* AS LOCAL build/site/blog/
+  SAVE ARTIFACT _site AS LOCAL build/site/blog/
 
 
 # Build docker image for local development

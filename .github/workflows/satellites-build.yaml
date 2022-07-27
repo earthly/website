@@ -1,0 +1,24 @@
+name: Deploy Website
+
+on:
+  workflow_dispatch:
+jobs:
+  build-website:
+    name: Build Website
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: FranzDiebold/github-env-vars-action@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Download released earth
+        run: "sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/download/v0.6.12/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly'"
+      - name: Build Site
+        env:
+          NETLIFY_STAGING_SITE_ID: ${{ secrets.NETLIFY_STAGING_SITE_ID }}
+          NETLIFY_STAGING_AUTH_TOKEN: ${{ secrets.NETLIFY_STAGING_SITE_ID }}
+        run: |-
+            earthly \
+               --build-arg NETLIFY_STAGING_SITE_ID="${{ NETLIFY_STAGING_SITE_ID }}" \
+               --build-arg NETLIFY_STAGING_AUTH_TOKEN="${{ NETLIFY_STAGING_SITE_ID }}" \
+              +publish
