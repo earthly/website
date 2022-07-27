@@ -17,7 +17,6 @@ jobs:
         uses: mathiasvr/command-output@v1
         id: build-site
         env:
-            FORCE_COLOR: 1
             EARTHLY_TOKEN: "${{ secrets.EARTHLY_TOKEN }}"
             EARTHLY_INSTALL_ID: "earthly-website-githubactions"
             NETLIFY_STAGING_SITE_ID: ${{ secrets.NETLIFY_STAGING_SITE_ID }}
@@ -36,13 +35,13 @@ jobs:
                  --build-arg NETLIFY_SITE_ID="$NETLIFY_SITE_ID" \
                  --build-arg NETLIFY_AUTH_TOKEN="$NETLIFY_AUTH_TOKEN" \
                  --build-arg DESTINATION="PROD" \
-                 +publish
+                 +publish 2>&1
               else
                 echo "Branch Build - only for preview"
                 earthly \
                  --build-arg NETLIFY_STAGING_SITE_ID="$NETLIFY_STAGING_SITE_ID" \
                  --build-arg NETLIFY_STAGING_AUTH_TOKEN="$NETLIFY_STAGING_AUTH_TOKEN" \
-                +publish
+                +publish 2>&1
               fi
       - name: Test OUTPUT
         run : |-
