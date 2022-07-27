@@ -25,8 +25,12 @@ jobs:
             echo "$NETLIFY_STAGING_SITE_ID"
             echo "$NETLIFY_STAGING_AUTH_TOKEN"
 
+            echo "Setup Satellite"
             earthly satellite select earthly-website-1
+
+            echo "Build and publish website"
             earthly \
                --NETLIFY_STAGING_SITE_ID="$NETLIFY_STAGING_SITE_ID" \
                --NETLIFY_STAGING_AUTH_TOKEN="$NETLIFY_STAGING_AUTH_TOKEN" \
               +publish
+            echo "Done"
