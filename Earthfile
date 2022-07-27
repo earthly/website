@@ -67,8 +67,8 @@ publish:
 
   IF [ "$DESTINATION" = "PROD" ]
     RUN "PROD_DEPLOY"
-    RUN cd build && netlify deploy --dir=. --prod
+    RUN --no-cache cd build && netlify deploy --dir=. --prod
   ELSE
     RUN echo "Preview Throw Away Deploy"
-    RUN cd build && netlify deploy --site "$NETLIFY_STAGING_SITE_ID" --auth "$NETLIFY_STAGING_AUTH_TOKEN" --dir=.
+    RUN --no-cache cd build && netlify deploy --site "$NETLIFY_STAGING_SITE_ID" --auth "$NETLIFY_STAGING_AUTH_TOKEN" --dir=.
   END 
