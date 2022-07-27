@@ -15,6 +15,7 @@ jobs:
       - name: Download released earth
         run: "sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/download/v0.6.20/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly'"
       - name: Build Site
+        uses: mathiasvr/command-output@v1
         id: build-site
         env:
             FORCE_COLOR: 1
@@ -22,18 +23,19 @@ jobs:
             EARTHLY_INSTALL_ID: "earthly-website-githubactions"
             NETLIFY_STAGING_SITE_ID: ${{ secrets.NETLIFY_STAGING_SITE_ID }}
             NETLIFY_STAGING_AUTH_TOKEN: ${{ secrets.NETLIFY_STAGING_AUTH_TOKEN }}
-        run: |-
-            echo "Setup Satellite"
-            earthly satellite select earthly-website-1
+        with:
+          run: |-
+              echo "Setup Satellite"
+              earthly satellite select earthly-website-1
 
-            # echo "Build and publish website"
-            # earthly \
-            #    --build-arg NETLIFY_STAGING_SITE_ID="$NETLIFY_STAGING_SITE_ID" \
-            #    --build-arg NETLIFY_STAGING_AUTH_TOKEN="$NETLIFY_STAGING_AUTH_TOKEN" \
-            #   +publish
-            # echo "Done"
-            echo "+publish | Logs:              https://app.netlify.com/sites/ephemeral-narwhal-3ac3b2/deploys/62e169e34014f443ced25c61"
-            echo "+publish | Website Draft URL: https://62e169e34014f443ced25c61--ephemeral-narwhal-3ac3b2.netlify.app"
+              # echo "Build and publish website"
+              # earthly \
+              #    --build-arg NETLIFY_STAGING_SITE_ID="$NETLIFY_STAGING_SITE_ID" \
+              #    --build-arg NETLIFY_STAGING_AUTH_TOKEN="$NETLIFY_STAGING_AUTH_TOKEN" \
+              #   +publish
+              # echo "Done"
+              echo "+publish | Logs:              https://app.netlify.com/sites/ephemeral-narwhal-3ac3b2/deploys/62e169e34014f443ced25c61"
+              echo "+publish | Website Draft URL: https://62e169e34014f443ced25c61--ephemeral-narwhal-3ac3b2.netlify.app"
       - name: match
         uses: actions-ecosystem/action-regex-match@v2
         id: regex-match
