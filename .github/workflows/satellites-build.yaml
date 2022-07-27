@@ -20,6 +20,6 @@ jobs:
           NETLIFY_STAGING_AUTH_TOKEN: ${{ secrets.NETLIFY_STAGING_AUTH_TOKEN }}
         run: |-
             earthly \
-               --build-arg NETLIFY_STAGING_SITE_ID="${{ NETLIFY_STAGING_SITE_ID }}" \
-               --build-arg NETLIFY_STAGING_AUTH_TOKEN="${{ NETLIFY_STAGING_AUTH_TOKEN }}" \
+               --build-arg NETLIFY_STAGING_SITE_ID="$NETLIFY_STAGING_SITE_ID" \
+               --build-arg NETLIFY_STAGING_AUTH_TOKEN="$NETLIFY_STAGING_AUTH_TOKEN" \
               +publish
