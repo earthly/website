@@ -61,11 +61,10 @@ publish:
   RUN cp -rf ./blog/* ./build/blog
   RUN cp -rf ./website/* ./build 
 
-  # IF [ "$DESTINATION" = "PROD" ]
-    # COPY ./blog/+build/_site/* ./blog
-    # COPY ./website/+build/_site/* ./website
-    # RUN "PROD_DEPLOY"
-  # ELSE
+  IF [ "$DESTINATION" = "PROD" ]
+    RUN "PROD_DEPLOY"
+    RUN cd build && netlify deploy --dir=. --prod
+  ELSE
     RUN echo "Preview Throw Away Deploy"
     RUN cd build && netlify deploy --site 8a633c9a-e30f-4dd9-a15c-9fe9facb96c5 --auth 92A5CnBFjm-nW9mTPgHd9_1tu0wut0ej7DWS_60GUd8 --dir=.
-  # END
+  END
