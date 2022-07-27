@@ -30,7 +30,7 @@ jobs:
 
             echo "Build and publish website"
             earthly \
-               --NETLIFY_STAGING_SITE_ID="$NETLIFY_STAGING_SITE_ID" \
-               --NETLIFY_STAGING_AUTH_TOKEN="$NETLIFY_STAGING_AUTH_TOKEN" \
+               --build-arg NETLIFY_STAGING_SITE_ID="$NETLIFY_STAGING_SITE_ID" \
+               --build-arg NETLIFY_STAGING_AUTH_TOKEN="$NETLIFY_STAGING_AUTH_TOKEN" \
               +publish
             echo "Done"
