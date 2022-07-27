@@ -31,16 +31,20 @@ jobs:
               earthly satellite select earthly-website-1
 
               echo "Build and publish website"
-              earthly \
-                 --build-arg NETLIFY_STAGING_SITE_ID="$NETLIFY_STAGING_SITE_ID" \
-                 --build-arg NETLIFY_STAGING_AUTH_TOKEN="$NETLIFY_STAGING_AUTH_TOKEN" \
+              if [ "$CI_ACTION_REF_NAME" == "main" ]; then
+                echo "Main Build - going to prod!"
+                earthly \
                  --build-arg NETLIFY_SITE_ID="$NETLIFY_SITE_ID" \
                  --build-arg NETLIFY_AUTH_TOKEN="$NETLIFY_AUTH_TOKEN" \
+                 --build-arg DESTINATION="PROD" \
+                 +publish
+              else
+                echo "Branch Build - only for preview"
+                earthly \
+                 --build-arg NETLIFY_STAGING_SITE_ID="$NETLIFY_STAGING_SITE_ID" \
+                 --build-arg NETLIFY_STAGING_AUTH_TOKEN="$NETLIFY_STAGING_AUTH_TOKEN" \
                 +publish
-              echo "Done"
-      - name: Test OUTPUT
-        run : |-
-         echo "${{ steps.build-site.outputs.stdout }}"
+              fi
       - name: match
         uses: actions-ecosystem/action-regex-match@v2
         id: regex-match
