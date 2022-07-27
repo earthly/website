@@ -36,7 +36,7 @@ jobs:
         uses: actions-ecosystem/action-regex-match@v2
         id: regex-match
         with:
-           text: ${{ steps.build.outputs.pr }}
+           text: ${{ steps.build.outputs.stdout }}
            regex: 'Website Draft URL:\s(.*)'
            flags: gm
       - name: Comment on build
