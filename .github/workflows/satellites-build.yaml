@@ -23,19 +23,21 @@ jobs:
             EARTHLY_INSTALL_ID: "earthly-website-githubactions"
             NETLIFY_STAGING_SITE_ID: ${{ secrets.NETLIFY_STAGING_SITE_ID }}
             NETLIFY_STAGING_AUTH_TOKEN: ${{ secrets.NETLIFY_STAGING_AUTH_TOKEN }}
+            NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+            NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
         with:
           run: |-
               echo "Setup Satellite"
               earthly satellite select earthly-website-1
 
-              # echo "Build and publish website"
-              # earthly \
-              #    --build-arg NETLIFY_STAGING_SITE_ID="$NETLIFY_STAGING_SITE_ID" \
-              #    --build-arg NETLIFY_STAGING_AUTH_TOKEN="$NETLIFY_STAGING_AUTH_TOKEN" \
-              #   +publish
-              # echo "Done"
-              echo "+publish | Logs:              https://app.netlify.com/sites/ephemeral-narwhal-3ac3b2/deploys/62e169e34014f443ced25c61"
-              echo "+publish | Website Draft URL: https://62e169e34014f443ced25c61--ephemeral-narwhal-3ac3b2.netlify.app"
+              echo "Build and publish website"
+              earthly \
+                 --build-arg NETLIFY_STAGING_SITE_ID="$NETLIFY_STAGING_SITE_ID" \
+                 --build-arg NETLIFY_STAGING_AUTH_TOKEN="$NETLIFY_STAGING_AUTH_TOKEN" \
+                 --build-arg NETLIFY_SITE_ID="$NETLIFY_SITE_ID" \
+                 --build-arg NETLIFY_AUTH_TOKEN="$NETLIFY_AUTH_TOKEN" \
+                +publish
+              echo "Done"
       - name: Test OUTPUT
         run : |-
          echo "${{ steps.build-site.outputs.stdout }}"
@@ -47,6 +49,6 @@ jobs:
            regex: 'https.*netlify.app'
       - name: Comment on build
         run: |-
-          echo "${{ steps.regex-match.outputs.match }}" >> $GITHUB_STEP_SUMMARY 
+          echo "Preview URL: ${{ steps.regex-match.outputs.match }}" >> $GITHUB_STEP_SUMMARY 
   
          

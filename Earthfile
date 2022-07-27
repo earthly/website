@@ -46,6 +46,8 @@ publish:
   ARG DESTINATION="STAGING"
   ARG NETLIFY_STAGING_SITE_ID
   ARG NETLIFY_STAGING_AUTH_TOKEN 
+  ARG NETLIFY_SITE_ID
+  ARG NETLIFY_AUTH_TOKEN 
 
   FROM node:18-alpine3.15
   RUN npm i -g netlify-cli && apk add --no-cache jq curl
@@ -67,7 +69,7 @@ publish:
 
   IF [ "$DESTINATION" = "PROD" ]
     RUN "PROD_DEPLOY"
-    RUN --no-cache cd build && netlify deploy --dir=. --prod
+    RUN --no-cache cd build && netlify deploy --site "$NETLIFY_SITE_ID" --auth "$NETLIFY_AUTH_TOKEN" --dir=. --prod
   ELSE
     RUN echo "Preview Throw Away Deploy"
     RUN --no-cache cd build && netlify deploy --site "$NETLIFY_STAGING_SITE_ID" --auth "$NETLIFY_STAGING_AUTH_TOKEN" --dir=.
