@@ -68,7 +68,7 @@ publish:
   RUN cp -rf ./website/* ./build 
 
   IF [ "$DESTINATION" = "PROD" ]
-    RUN "PROD_DEPLOY"
+    RUN echo "PROD_DEPLOY"
     RUN --no-cache cd build && netlify deploy --site "$NETLIFY_SITE_ID" --auth "$NETLIFY_AUTH_TOKEN" --dir=. --prod
   ELSE
     RUN echo "Preview Throw Away Deploy"
