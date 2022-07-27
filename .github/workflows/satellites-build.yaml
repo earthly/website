@@ -39,15 +39,14 @@ jobs:
       - name: Test OUTPUT
         run : |-
          echo "${{ steps.build-site.outputs.stdout }}"
-      # - name: match
-      #   uses: actions-ecosystem/action-regex-match@v2
-      #   id: regex-match
-      #   with:
-      #      text: ${{ steps.build-site.outputs.stdout }}
-      #      regex: 'Website'
-      #      flags: gm
+      - name: match
+        uses: actions-ecosystem/action-regex-match@v2
+        id: regex-match
+        with:
+           text: ${{ steps.build-site.outputs.stdout }}
+           regex: 'Website'
       - name: Comment on build
         run: |-
-          echo "${{ steps.build-site.outputs.stdout }}" >> $GITHUB_STEP_SUMMARY 
+          echo "${{ steps.regex-match.outputs.match }}" >> $GITHUB_STEP_SUMMARY 
   
          
