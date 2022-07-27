@@ -22,9 +22,6 @@ jobs:
             NETLIFY_STAGING_SITE_ID: ${{ secrets.NETLIFY_STAGING_SITE_ID }}
             NETLIFY_STAGING_AUTH_TOKEN: ${{ secrets.NETLIFY_STAGING_AUTH_TOKEN }}
         run: |-
-            echo "$NETLIFY_STAGING_SITE_ID"
-            echo "$NETLIFY_STAGING_AUTH_TOKEN"
-
             echo "Setup Satellite"
             earthly satellite select earthly-website-1
 
