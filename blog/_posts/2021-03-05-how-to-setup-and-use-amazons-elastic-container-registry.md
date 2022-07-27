@@ -223,8 +223,7 @@ ECR images can also be used in ECS task definition files to define your containe
   "containerDefinitions": [
     {
       "name": "sample-app",
-      "image": "123456789012.dkr.ecr.us-west-2.amazonaws.com/\
-      aws-nodejs-sample:v1",
+      "image": "123456789012.dkr.ecr.us-west-2.amazonaws.com/aws-nodejs-sample:v1",
       "memory": 200,
       "cpu": 10,
       "essential": true
