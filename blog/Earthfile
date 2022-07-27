@@ -102,6 +102,7 @@ lint:
 ## Build (Run in CI)
 build:
   FROM +base-or-cache-image
+  CACHE _site
   COPY . .
   RUN JEKYLL_ENV=production bundle exec jekyll build $FLAGS 
   SAVE ARTIFACT _site AS LOCAL build/site/blog/
