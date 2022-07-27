@@ -55,8 +55,8 @@ publish:
   RUN echo "$NETLIFY_STAGING_AUTH_TOKEN"
 
   IF [ "$DESTINATION" = "PROD" ]
-    COPY ./blog/+build/_site/* ./blog
-    COPY ./website/+build/_site/* ./website
+    COPY ./blog/+build/_site ./blog
+    COPY ./website/+build/_site ./website
   ELSE
     COPY (./blog/+build/_site --FLAGS="--future")  ./blog 
     COPY (./website/+build/_site --FLAGS="--future") ./website
