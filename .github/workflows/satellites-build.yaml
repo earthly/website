@@ -15,7 +15,7 @@ jobs:
       - name: Download released earth
         run: "sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/download/v0.6.20/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly'"
       - name: Build Site
-        id: build
+        id: build-site
         env:
             FORCE_COLOR: 1
             EARTHLY_TOKEN: "${{ secrets.EARTHLY_TOKEN }}"
@@ -38,11 +38,11 @@ jobs:
         uses: actions-ecosystem/action-regex-match@v2
         id: regex-match
         with:
-           text: ${{ steps.build.outputs.stdout }}
-           regex: 'Website Draft URL'
+           text: ${{ steps.build-site.outputs.stdout }}
+           regex: 'W'
            flags: gm
       - name: Comment on build
         run: |-
-          echo "Commit ${{ github.sha }} deployed to ${{ steps.regex-match.outputs.match }}" >> $GITHUB_STEP_SUMMARY 
+          echo "Commit ${{ github.sha }} deployed to ${{ steps.regex-match.outputs.group1 }} \n\n Next line" >> $GITHUB_STEP_SUMMARY 
   
          
