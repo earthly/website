@@ -7,7 +7,6 @@ jobs:
   build-website:
     name: Build Website
     runs-on: ubuntu-latest
-
     steps:
       - uses: FranzDiebold/github-env-vars-action@v2
       - name: Checkout code
@@ -45,6 +44,9 @@ jobs:
                  --build-arg NETLIFY_STAGING_AUTH_TOKEN="$NETLIFY_STAGING_AUTH_TOKEN" \
                 +publish
               fi
+      - name: Test OUTPUT
+        run : |-
+         echo "${{ steps.build-site.outputs.stdout }}"
       - name: match
         uses: actions-ecosystem/action-regex-match@v2
         id: regex-match
