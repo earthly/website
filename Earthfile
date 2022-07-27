@@ -1,4 +1,4 @@
-VERSION 0.6
+VERSION --use-cache-command 0.6
 FROM alpine
 
 ## Dev Build
@@ -39,3 +39,38 @@ clean:
   BUILD ./blog+clean
   BUILD ./website+clean
   RUN rm -rf build
+
+## Satellite Build
+publish:
+  # Anything but "PROD" deploys to staging site
+  ARG DESTINATION="STAGING"
+  ARG NETLIFY_STAGING_SITE_ID
+  ARG NETLIFY_STAGING_AUTH_TOKEN 
+  ARG NETLIFY_SITE_ID
+  ARG NETLIFY_AUTH_TOKEN 
+
+  FROM node:18-alpine3.15
+  RUN npm i -g netlify-cli && apk add --no-cache jq curl
+  RUN echo "$NETLIFY_STAGING_SITE_ID"
+  RUN echo "$NETLIFY_STAGING_AUTH_TOKEN"
+
+  IF [ "$DESTINATION" = "PROD" ]
+    COPY ./blog/+build/_site ./blog
+    COPY ./website/+build/_site ./website
+  ELSE
+    COPY (./blog/+build/_site --FLAGS="--future")  ./blog 
+    COPY (./website/+build/_site --FLAGS="--future") ./website
+  END
+
+  ## Content needs to be combined into /build for netlify to pick up
+  RUN mkdir -p ./build/blog
+  RUN cp -rf ./blog/* ./build/blog
+  RUN cp -rf ./website/* ./build 
+
+  IF [ "$DESTINATION" = "PROD" ]
+    RUN --no-cache echo "PROD_DEPLOY"
+    RUN --no-cache cd build && netlify deploy --site "$NETLIFY_SITE_ID" --auth "$NETLIFY_AUTH_TOKEN" --dir=. --prod
+  ELSE
+    RUN --no-cache echo "Preview Throw Away Deploy"
+    RUN --no-cache cd build && netlify deploy --site "$NETLIFY_STAGING_SITE_ID" --auth "$NETLIFY_STAGING_AUTH_TOKEN" --dir=.
+  END 

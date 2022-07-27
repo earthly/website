@@ -2,12 +2,12 @@ name: Deploy Website
 
 on:
   # run everyday at 12:15 utf ( 8:15 am est) to roll out new posts
-  schedule:
-    - cron: '15 12 * * *' 
+  # schedule:
+    # - cron: '15 12 * * *' 
   workflow_dispatch:
-  pull_request:
-  push:
-    branches: [ main ]
+  # pull_request:
+  # push:
+    # branches: [ main ]
 jobs:
   build-website:
     name: Build Website
@@ -73,13 +73,3 @@ jobs:
       - name: Comment on build
         run: |-
           echo "Commit ${{ github.sha }} deployed to [${{ env.NETLIFY_URL }}](${{ env.NETLIFY_URL }})" >> $GITHUB_STEP_SUMMARY 
-      # - name: Get PR
-      #   uses: jwalton/gh-find-current-pr@v1
-      #   id: finder
-      # - name: Comment on PR 
-      #   uses: marocchino/sticky-pull-request-comment@v2
-      #   with:
-      #     number: ${{ steps.finder.outputs.pr }}
-      #     message: |
-      #       Commit ${{ github.sha }} deployed to ${{ env.NETLIFY_URL }}
-    
