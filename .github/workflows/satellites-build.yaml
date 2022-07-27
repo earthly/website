@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: FranzDiebold/github-env-vars-action@v2
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Download released earth
         run: "sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/download/v0.6.20/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly'"
       - name: Build Site
@@ -44,10 +44,10 @@ jobs:
       #   id: regex-match
       #   with:
       #      text: ${{ steps.build-site.outputs.stdout }}
-      #      regex: 'W'
+      #      regex: 'Website'
       #      flags: gm
-      # - name: Comment on build
-      #   run: |-
-      #     echo "Commit ${{ github.sha }} deployed to ${{ steps.regex-match.outputs.group1 }} \n\n ${{ steps.build-site.outputs.stdout }}" >> $GITHUB_STEP_SUMMARY 
+      - name: Comment on build
+        run: |-
+          echo "${{ steps.build-site.outputs.stdout }}" >> $GITHUB_STEP_SUMMARY 
   
          
