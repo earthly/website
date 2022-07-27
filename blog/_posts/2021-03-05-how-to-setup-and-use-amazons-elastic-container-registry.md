@@ -206,8 +206,7 @@ spec: template:
       serviceAccountName: iam-test 
       containers: 
         - name: eks-iam-test 
-          image: 123456789012.dkr.ecr.us-west-2.amazonaws.com/\
-          aws-nodejs-sample:v1 
+          image: 123456789012.dkr.ecr.us-west-2.amazonaws.com/aws-nodejs-sample:v1 
           args: ["s3", "ls"] 
       restartPolicy: Never
 ~~~
