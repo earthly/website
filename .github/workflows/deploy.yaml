@@ -1,85 +1,85 @@
-name: Deploy Website
+# name: Deploy Website
 
-on:
-  # run everyday at 12:15 utf ( 8:15 am est) to roll out new posts
-  schedule:
-    - cron: '15 12 * * *' 
-  workflow_dispatch:
-  pull_request:
-  push:
-    branches: [ main ]
-jobs:
-  build-website:
-    name: Build Website
-    runs-on: ubuntu-latest
+# on:
+#   # run everyday at 12:15 utf ( 8:15 am est) to roll out new posts
+#   schedule:
+#     - cron: '15 12 * * *' 
+#   workflow_dispatch:
+#   pull_request:
+#   push:
+#     branches: [ main ]
+# jobs:
+#   build-website:
+#     name: Build Website
+#     runs-on: ubuntu-latest
 
-    steps:
-      - uses: FranzDiebold/github-env-vars-action@v2
-      - name: Checkout code
-        uses: actions/checkout@v2
+#     steps:
+#       - uses: FranzDiebold/github-env-vars-action@v2
+#       - name: Checkout code
+#         uses: actions/checkout@v2
      
-      - name: Create Cache Key
-        run: |- 
-          date "+%Y-%d-%m" > today.txt
-          date --date="yesterday" "+%Y-%d-%m" > yesterday.txt
-          mkdir -p build/site/blog/generated/
-      - name: Download released earth
-        run: "sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/download/v0.6.12/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly'"
-      - name: cache images
-        uses: actions/cache@v2
-        with:
-          path: |
-              .jekyll-cache
-              build/site/blog/generated
-          key: ${{ hashFiles('today.txt')  }}
-          restore-keys: |
-            ${{ hashFiles('yesterday.txt') }}
-      - name: copy cache
-        run: |-
-          mkdir -p blog/_site/generated/
-          cp -a build/site/blog/generated/. blog/_site/generated/
-      - name: Build Site
-        run: |-
-          if [ "$CI_ACTION_REF_NAME" == "main" ]; then
-            echo "Main Build - going to prod!"
-            earthly --use-inline-cache +build
-            earthly +combine
-          else
-            echo "Branch Build - only for preview"
-            earthly --use-inline-cache --verbose +dev-build 
-            earthly +combine
-          fi
-      - name: Push to Netlify
-        env:
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          REPO: ${{ github.event.pull_request.head.repo.full_name }}
-        run: |-
-          cd build/site
-          echo "($REPO) ($CI_ACTION_REF_NAME)"
-          echo "Set Entropy Tokens"
-          A="7lify03";C="60GUd8qrst7";B="D35Fdrf-g";D="92A5CnBFjmf77";M="nW9mTPgHd9_1tu0wut0ej7DWSt6f"
+#       - name: Create Cache Key
+#         run: |- 
+#           date "+%Y-%d-%m" > today.txt
+#           date --date="yesterday" "+%Y-%d-%m" > yesterday.txt
+#           mkdir -p build/site/blog/generated/
+#       - name: Download released earth
+#         run: "sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/download/v0.6.12/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly'"
+#       - name: cache images
+#         uses: actions/cache@v2
+#         with:
+#           path: |
+#               .jekyll-cache
+#               build/site/blog/generated
+#           key: ${{ hashFiles('today.txt')  }}
+#           restore-keys: |
+#             ${{ hashFiles('yesterday.txt') }}
+#       - name: copy cache
+#         run: |-
+#           mkdir -p blog/_site/generated/
+#           cp -a build/site/blog/generated/. blog/_site/generated/
+#       - name: Build Site
+#         run: |-
+#           if [ "$CI_ACTION_REF_NAME" == "main" ]; then
+#             echo "Main Build - going to prod!"
+#             earthly --use-inline-cache +build
+#             earthly +combine
+#           else
+#             echo "Branch Build - only for preview"
+#             earthly --use-inline-cache --verbose +dev-build 
+#             earthly +combine
+#           fi
+#       - name: Push to Netlify
+#         env:
+#           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+#           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+#           REPO: ${{ github.event.pull_request.head.repo.full_name }}
+#         run: |-
+#           cd build/site
+#           echo "($REPO) ($CI_ACTION_REF_NAME)"
+#           echo "Set Entropy Tokens"
+#           A="7lify03";C="60GUd8qrst7";B="D35Fdrf-g";D="92A5CnBFjmf77";M="nW9mTPgHd9_1tu0wut0ej7DWSt6f"
 
-          if [ "$CI_ACTION_REF_NAME" == "main" ] && [ "$REPO" == "" ]; then
-            echo "Main Build - deploying to prod!"
-            netlify deploy --dir=. --prod
-            OUTPUT=$(netlify deploy --dir=.)
-            echo "NETLIFY_URL=https://earthly.dev" >> $GITHUB_ENV
-          else
-            echo "Preview Throw Away Deploy"
-            OUTPUT=$(netlify deploy --site 8a633c9a-e30f-4dd9-a15c-9fe9facb96c5 --auth ${D%???}-${M%???}_${C%?????} --dir=.)
-            echo "NETLIFY_URL=$(echo $OUTPUT | grep -Eo '(http|https)://[a-zA-Z0-9./?=_-]*(--)[a-zA-Z0-9./?=_-]*')" >> $GITHUB_ENV
-          fi
-      - name: Comment on build
-        run: |-
-          echo "Commit ${{ github.sha }} deployed to [${{ env.NETLIFY_URL }}](${{ env.NETLIFY_URL }})" >> $GITHUB_STEP_SUMMARY 
-      # - name: Get PR
-      #   uses: jwalton/gh-find-current-pr@v1
-      #   id: finder
-      # - name: Comment on PR 
-      #   uses: marocchino/sticky-pull-request-comment@v2
-      #   with:
-      #     number: ${{ steps.finder.outputs.pr }}
-      #     message: |
-      #       Commit ${{ github.sha }} deployed to ${{ env.NETLIFY_URL }}
+#           if [ "$CI_ACTION_REF_NAME" == "main" ] && [ "$REPO" == "" ]; then
+#             echo "Main Build - deploying to prod!"
+#             netlify deploy --dir=. --prod
+#             OUTPUT=$(netlify deploy --dir=.)
+#             echo "NETLIFY_URL=https://earthly.dev" >> $GITHUB_ENV
+#           else
+#             echo "Preview Throw Away Deploy"
+#             OUTPUT=$(netlify deploy --site 8a633c9a-e30f-4dd9-a15c-9fe9facb96c5 --auth ${D%???}-${M%???}_${C%?????} --dir=.)
+#             echo "NETLIFY_URL=$(echo $OUTPUT | grep -Eo '(http|https)://[a-zA-Z0-9./?=_-]*(--)[a-zA-Z0-9./?=_-]*')" >> $GITHUB_ENV
+#           fi
+#       - name: Comment on build
+#         run: |-
+#           echo "Commit ${{ github.sha }} deployed to [${{ env.NETLIFY_URL }}](${{ env.NETLIFY_URL }})" >> $GITHUB_STEP_SUMMARY 
+#       # - name: Get PR
+#       #   uses: jwalton/gh-find-current-pr@v1
+#       #   id: finder
+#       # - name: Comment on PR 
+#       #   uses: marocchino/sticky-pull-request-comment@v2
+#       #   with:
+#       #     number: ${{ steps.finder.outputs.pr }}
+#       #     message: |
+#       #       Commit ${{ github.sha }} deployed to ${{ env.NETLIFY_URL }}
     
