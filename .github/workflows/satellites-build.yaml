@@ -36,15 +36,18 @@ jobs:
               # echo "Done"
               echo "+publish | Logs:              https://app.netlify.com/sites/ephemeral-narwhal-3ac3b2/deploys/62e169e34014f443ced25c61"
               echo "+publish | Website Draft URL: https://62e169e34014f443ced25c61--ephemeral-narwhal-3ac3b2.netlify.app"
-      - name: match
-        uses: actions-ecosystem/action-regex-match@v2
-        id: regex-match
-        with:
-           text: ${{ steps.build-site.outputs.stdout }}
-           regex: 'W'
-           flags: gm
-      - name: Comment on build
-        run: |-
-          echo "Commit ${{ github.sha }} deployed to ${{ steps.regex-match.outputs.group1 }} \n\n ${{ steps.build-site.outputs.stdout }}" >> $GITHUB_STEP_SUMMARY 
+      - name: Test OUTPUT
+        run : |-
+         echo "${{ steps.build-site.outputs.stdout }}"
+      # - name: match
+      #   uses: actions-ecosystem/action-regex-match@v2
+      #   id: regex-match
+      #   with:
+      #      text: ${{ steps.build-site.outputs.stdout }}
+      #      regex: 'W'
+      #      flags: gm
+      # - name: Comment on build
+      #   run: |-
+      #     echo "Commit ${{ github.sha }} deployed to ${{ steps.regex-match.outputs.group1 }} \n\n ${{ steps.build-site.outputs.stdout }}" >> $GITHUB_STEP_SUMMARY 
   
          
