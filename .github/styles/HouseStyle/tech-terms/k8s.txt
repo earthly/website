@@ -12,3 +12,7 @@ Tekton
 tkn
 homebrew
 Statefulsets
+Gitpod
+kustomized
+webshop
+nodemon
