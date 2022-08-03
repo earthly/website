@@ -54,9 +54,9 @@ Getting services deployed to Kubernetes is fairly straightforward. You just run 
 
 ### Helm
 
-[Helm](https://helm.sh/) is a package manager for Kubernetes. The main purpose of this tool is to provide an easier and more structured deployment process. Helm integrates deeply into your workflow, which may turn some off of the tool, however the complete integration provides you with some options you otherwise wouldn't have access to.
+[Helm](https://helm.sh/) is a package manager for Kubernetes. The main purpose of this tool is to provide an easier and more structured [deployment](/blog/deployment-strategies) process. Helm integrates deeply into your workflow, which may turn some off of the tool, however the complete integration provides you with some options you otherwise wouldn't have access to.
 
-For example, with Helm you can get version management of your applications, allowing for easy rollback should anything go wrong. One of the biggest ways you'll feel the deep integration of Helm is by the way that it uses template files, with values being replaced by a `values.yaml` file. For example, the template for a deployment in Helm may look like this:
+For example, with Helm you can get version management of your applications, allowing for easy rollback should anything go wrong. One of the biggest ways you'll feel the deep integration of Helm is by the way that it uses template files, with values being replaced by a `values.yaml` file. For example, the template for a [deployment](/blog/deployment-strategies) in Helm may look like this:
 
 ~~~{.bash caption=">_"}
 apiVersion: apps/v1
@@ -106,7 +106,7 @@ The integration into `kubectl` is a testament to how popular Kustomize is and yo
 
 ## Faster Development
 
-When you start working with Kubernetes you should focus on learning Kubernetes. However, as you get more familiar with the tool, you may start to feel that certain areas can be optimized. One of the biggest areas that can be improved is that of development. Using only native Kubernetes tools, you would have to run `kubectl apply` every time you make a change to your application if you want to see how your application works inside a cluster. Following are three tools that can make your development experience better:
+When you start working with Kubernetes you should focus on learning Kubernetes. However, as you get more familiar with the tool, you may start to feel that certain areas can be optimized. One of the biggest areas that can be improved is that of development. Using only native Kubernetes tools, you would have to run `kubectl apply` every time you [make](/blog/makefiles-on-windows) a change to your application if you want to see how your application works inside a cluster. Following are three tools that can make your development experience better:
 
 ### Tilt
 
@@ -154,7 +154,7 @@ Kubernetes is a powerful tool that can become complicated to maintain and develo
 
 Let us know if there are any tools we missed that you love working with or that have solved a significant problem for you and your team.
 
-Another option that you should consider when you start working with Kubernetes is [Earthly](https://earthly.dev/). It's a great tool for setting up your CI/CD pipeline, and it integrates the best parts of Makefiles and Dockerfiles.
+Another option that you should consider when you start working with Kubernetes is [Earthly](https://earthly.dev/). It's a great tool for setting up your [CI/CD](/blog/ci-vs-cd) pipeline, and it integrates the best parts of Makefiles and Dockerfiles.
 
 ## Outside Article Checklist
 
@@ -162,6 +162,4 @@ Another option that you should consider when you start working with Kubernetes i
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
 - [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
