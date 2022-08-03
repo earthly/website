@@ -2,12 +2,12 @@ name: Deploy Website
 
 on:
   # run everyday at 12:15 utf ( 8:15 am est) to roll out new posts
-  # schedule:
-    # - cron: '15 12 * * *' 
+  schedule:
+    - cron: '15 12 * * *' 
   workflow_dispatch:
-  # pull_request:
-  # push:
-    # branches: [ main ]
+  pull_request:
+  push:
+    branches: [ main ]
 jobs:
   build-website:
     name: Build Website
