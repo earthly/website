@@ -164,10 +164,11 @@ Let us know if there are any tools we missed that you love working with or that 
 
 Another option that you should consider when you start working with Kubernetes is [Earthly](https://earthly.dev/). It's a great tool for setting up your [CI/CD](/blog/ci-vs-cd) pipeline, and it integrates the best parts of Makefiles and Dockerfiles.
 
+{% include cta/cta1.html %}
+
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
