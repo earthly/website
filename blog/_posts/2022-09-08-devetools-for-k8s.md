@@ -6,7 +6,10 @@ toc: true
 author: Kasper Siig
 
 internal-links:
- - just an example
+ - Kubernetes
+ - CI/CD
+ - IDE
+ - Cluster
 ---
 
 When you get started on your path as a developer, you may notice from the beginning that there’s an abundance of different tools to choose from. At the same time, it may not even be clear why you need to use specialized tools rather than simply using the programs natively.
@@ -162,6 +165,5 @@ Another option that you should consider when you start working with Kubernetes i
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Run mark down linter (`lint`)
-- [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
 - [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
