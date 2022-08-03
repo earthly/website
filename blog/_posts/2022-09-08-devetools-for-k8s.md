@@ -28,7 +28,7 @@ Most engineers use their favorite integrated development environment (IDE) when 
 
 <div class="wide">
 
-![Lens]({{site.images}}{{page.slug}}/E6V8MLx.png)
+![Lens]({{site.images}}{{page.slug}}/E6V8MLx.png)\
 
 </div>
 
@@ -46,7 +46,7 @@ When you first get started with Lens, it can be a bit confusing because you get 
 
 <div class="wide">
 
-![GitPod]({{site.images}}{{page.slug}}/CGnQ1sT.png)
+![GitPod]({{site.images}}{{page.slug}}/CGnQ1sT.png)\
 
 </div>
 
@@ -57,6 +57,8 @@ As is perhaps clear from the previous paragraph, Gitpod has no clear focus on pr
 One of the shortcomings that you will find with Gitpod, is that you're unlikely to get your very own terminal with you. Unless you've created an install script that you can run to set everything up, you will be stuck with the terminal created by Gitpod. For many this won't be an issue, but if you're the type of engineer who's spent a lot of time configuring your terminal, this will be a pain point.
 
 ## Package Managers
+
+![Package Managers]({{site.images}}{{page.slug}}/manager.jpg)\
 
 Getting services deployed to Kubernetes is fairly straightforward. You just run `kubectl apply` pointing to your manifest files, and your application will quickly deploy. However, once you start getting more serious about your deployments, like wanting to have version management, or different environments, the simple `kubectl apply` command may become somewhat lackluster. Here are two tools that can help you solve this issue:
 
@@ -116,6 +118,8 @@ The integration into `kubectl` is a testament to how popular Kustomize is and yo
 
 When you start working with Kubernetes you should focus on learning Kubernetes. However, as you get more familiar with the tool, you may start to feel that certain areas can be optimized. One of the biggest areas that can be improved is that of development. Using only native Kubernetes tools, you would have to run `kubectl apply` every time you [make](/blog/makefiles-on-windows) a change to your application if you want to see how your application works inside a cluster. Following are three tools that can make your development experience better:
 
+![Faster Development]({{site.images}}{{page.slug}}/fdevelopment.png)\
+
 ### Tilt
 
 [Tilt](https://tilt.dev/) has a strong focus on solving the pains of microservice development. This means that it's not unique to workloads running on Kubernetes; in fact, it heavily focuses on workloads running locally, even if it's just a local Kubernetes cluster in development. This comes to life in the fact that in the Tilt UI you are getting an overview of different services, and how they're deployed.
@@ -170,5 +174,4 @@ Another option that you should consider when you start working with Kubernetes i
 
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
+
