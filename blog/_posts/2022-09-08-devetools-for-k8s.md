@@ -26,7 +26,11 @@ Most engineers use their favorite integrated development environment (IDE) when 
 
 ### Lens
 
+<div class="wide">
+
 ![Lens]({{site.images}}{{page.slug}}/E6V8MLx.png)
+
+</div>
 
 The goal of [Lens](https://k8slens.dev/) is to provide an improved IDE for modern workloads. Lens has a focus on Kubernetes specifically, giving you insight into how your cluster is working and allowing you to create new resources directly from your IDE.
 
@@ -40,7 +44,11 @@ When you first get started with Lens, it can be a bit confusing because you get 
 
 ### Gitpod
 
+<div class="wide">
+
 ![GitPod]({{site.images}}{{page.slug}}/CGnQ1sT.png)
+
+</div>
 
 The goal of [Gitpod](https://www.gitpod.io/) is to create developer environments based on Git repositories. This makes it easy to have your very own developer environment. Inside your Git repo you can define a `.gitpod.yaml` file, in which you can define tasks to be run when you spin up an IDE based on a branch. With this, you can easily have an IDE where `kubectl` is automatically connected to your cluster, and you can even have it deploy your application automatically so you can develop directly in your cluster, using tools like Skaffold, which is covered later in this post.
 
@@ -58,7 +66,7 @@ Getting services deployed to Kubernetes is fairly straightforward. You just run 
 
 For example, with Helm you can get version management of your applications, allowing for easy rollback should anything go wrong. One of the biggest ways you'll feel the deep integration of Helm is by the way that it uses template files, with values being replaced by a `values.yaml` file. For example, the template for a [deployment](/blog/deployment-strategies) in Helm may look like this:
 
-~~~{.bash caption=">_"}
+~~~{.yaml caption="values.yaml"}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -84,7 +92,7 @@ spec:
 
 Then in the `values.yaml` file you would write:
 
-~~~{.bash caption=">_"}
+~~~{.yaml caption="values.yaml"}
 replicaCount: 3
 ~~~
 
@@ -130,7 +138,7 @@ This is a tool you want to use if you are either just getting started with your 
 
 [Skaffold](https://skaffold.dev/) will likely be your go-to tool if you want something that heavily specializes in the use case of local Kubernetes. You start out by defining a simple `skaffold.yaml` file in your root directory, which could look something like this:
 
-~~~{.bash caption=">_"}
+~~~{.yaml caption="skaffold.yaml"}
 apiVersion: skaffold/v2beta29
 kind: Config
 build:
