@@ -26,7 +26,7 @@ curl: (6) Could not resolve host: earthly-tools.com
 
 So, I had a working lambda that was getting all requests to earthly-tools.com, but then it stopped working. What was going on?
 
-First, lets check see what dig says:
+First, lets check and see what dig says:
 
 ~~~{.bash caption=">_"}
 $ dig earthly-tools.com
@@ -107,7 +107,7 @@ And then I import it.
 $ terraform import aws_route53_record.A Z0907636HDO135DJDT7G_earthly-tools.com_A
 ~~~
 
-Then, I need to configure it to point to the domain name and zone of my API gateway. Do do that I add in an alias property.
+Then, I need to configure it to point to the domain name and zone of my API gateway. To do that I add in an alias property.
 
 ~~~{.diff}
  resource "aws_route53_record" "A" {
