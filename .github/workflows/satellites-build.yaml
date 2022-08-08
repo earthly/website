@@ -36,15 +36,15 @@ jobs:
               if [ "$CI_ACTION_REF_NAME" == "main" ]; then
                 echo "Main Build - going to prod!"
                 earthly \
-                 --build-arg NETLIFY_SITE_ID="$NETLIFY_SITE_ID" \
-                 --build-arg NETLIFY_AUTH_TOKEN="$NETLIFY_AUTH_TOKEN" \
+                 --secret  NETLIFY_SITE_ID="$NETLIFY_SITE_ID" \
+                 --secret  NETLIFY_AUTH_TOKEN="$NETLIFY_AUTH_TOKEN" \
                  --build-arg DESTINATION="PROD" \
                  +publish 2>&1
               else
                 echo "Branch Build - only for preview"
                 earthly \
-                 --build-arg NETLIFY_STAGING_SITE_ID="$NETLIFY_STAGING_SITE_ID" \
-                 --build-arg NETLIFY_STAGING_AUTH_TOKEN="$NETLIFY_STAGING_AUTH_TOKEN" \
+                 --secret NETLIFY_STAGING_SITE_ID="$NETLIFY_STAGING_SITE_ID" \
+                 --secret NETLIFY_STAGING_AUTH_TOKEN="$NETLIFY_STAGING_AUTH_TOKEN" \
                 +publish 2>&1
               fi
       - name: match
