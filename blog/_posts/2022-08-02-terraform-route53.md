@@ -6,6 +6,7 @@ author: Adam
 internal-links:
  - terraform route53
  - aws route53
+ - route53
 ---
 In my previous article [about terraform](/blog/terraform-lambda/) I moved my lambda and all related infrastructure to Terraform. I even tested things by destroying everything and then recreating it.
 
