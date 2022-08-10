@@ -42,21 +42,24 @@ clean:
 
 ## Satellite Build
 publish:
-  # Anything but "PROD" deploys to staging site
-  ARG DESTINATION="STAGING"
-
   FROM node:18-alpine3.15
   RUN npm i -g netlify-cli && apk add --no-cache jq curl
 
+  # Anything but "PROD" deploys to staging site
+  ARG DESTINATION="STAGING"
+  # Date is only used to bust the cache and get around this issue
+  # https://github.com/earthly/earthly/issues/2086
+  ARG DATE
+
   IF [ "$DESTINATION" = "PROD" ]
-    COPY ./blog/+build/_site ./blog
+    COPY (./blog/+build/_site --DATE="$DATE") ./blog
     COPY ./website/+build/_site ./website
   ELSE
-    COPY (./blog/+build/_site --FLAGS="--future")  ./blog 
+    COPY (./blog/+build/_site --FLAGS="--future" --DATE="$DATE")  ./blog 
     COPY (./website/+build/_site --FLAGS="--future") ./website
   END
 
-  ## Content needs to be combined into /build for netlify to pick up
+  # ## Content needs to be combined into /build for netlify to pick up
   RUN mkdir -p ./build/blog
   RUN cp -rf ./blog/* ./build/blog
   RUN cp -rf ./website/* ./build 

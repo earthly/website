@@ -39,12 +39,14 @@ jobs:
                  --secret  NETLIFY_SITE_ID="$NETLIFY_SITE_ID" \
                  --secret  NETLIFY_AUTH_TOKEN="$NETLIFY_AUTH_TOKEN" \
                  --build-arg DESTINATION="PROD" \
+                 --build-arg DATE="$(date +"%D")" \
                  +publish 2>&1
               else
                 echo "Branch Build - only for preview"
                 earthly \
                  --secret NETLIFY_STAGING_SITE_ID="$NETLIFY_STAGING_SITE_ID" \
                  --secret NETLIFY_STAGING_AUTH_TOKEN="$NETLIFY_STAGING_AUTH_TOKEN" \
+                 --build-arg DATE="$(date +"%D")" \
                 +publish 2>&1
               fi
       - name: match
