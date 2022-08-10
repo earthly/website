@@ -44,10 +44,6 @@ clean:
 publish:
   # Anything but "PROD" deploys to staging site
   ARG DESTINATION="STAGING"
-  # ARG NETLIFY_STAGING_SITE_ID
-  # ARG NETLIFY_STAGING_AUTH_TOKEN 
-  # ARG NETLIFY_SITE_ID
-  # ARG NETLIFY_AUTH_TOKEN 
 
   FROM node:18-alpine3.15
   RUN npm i -g netlify-cli && apk add --no-cache jq curl
