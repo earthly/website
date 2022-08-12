@@ -36,7 +36,7 @@ The goal of [Lens](https://k8slens.dev/) is to provide an improved IDE for moder
 
 Lens provides you with complete insight into your Kubernetes cluster. For many people, it can become a complete replacement for `kubectl`, because it lets you manage your cluster through a graphical user interface (GUI). For many, managing a Kubernetes cluster (or perhaps even multiple clusters) is overwhelming and a GUI helps simplify that process.
 
-With Lens, you get an overview of all pods, deployments, and services directly in your IDE. You can even quickly switch between different Kubernetes contexts if needed. While this is far from a necessary tool in your Kubernetes toolset, it's a huge increase in quality-of-life.
+With Lens, you get an overview of all pods, deployments, and services directly in your IDE. You can even quickly switch between different Kubernetes contexts if needed. While this is far from a necessary tool in your Kubernetes toolset, it's a huge increase in quality-of-life
 
 There are other tool options in the market like [K9s](https://k9scli.io/), however, that's a tool designed for the terminal, and it can only show you one cluster at a time. In addition, because it runs in the terminal, it's limited by the design choices of the terminal, where Lens is able to be a more fully-fledged application.
 

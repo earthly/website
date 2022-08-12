@@ -42,35 +42,38 @@ clean:
 
 ## Satellite Build
 publish:
-  # Anything but "PROD" deploys to staging site
-  ARG DESTINATION="STAGING"
-  ARG NETLIFY_STAGING_SITE_ID
-  ARG NETLIFY_STAGING_AUTH_TOKEN 
-  ARG NETLIFY_SITE_ID
-  ARG NETLIFY_AUTH_TOKEN 
-
   FROM node:18-alpine3.15
   RUN npm i -g netlify-cli && apk add --no-cache jq curl
-  RUN echo "$NETLIFY_STAGING_SITE_ID"
-  RUN echo "$NETLIFY_STAGING_AUTH_TOKEN"
+
+  # Anything but "PROD" deploys to staging site
+  ARG DESTINATION="STAGING"
+  # Date is only used to bust the cache and get around this issue
+  # https://github.com/earthly/earthly/issues/2086
+  ARG DATE
 
   IF [ "$DESTINATION" = "PROD" ]
-    COPY ./blog/+build/_site ./blog
+    COPY (./blog/+build/_site --DATE="$DATE") ./blog
     COPY ./website/+build/_site ./website
   ELSE
-    COPY (./blog/+build/_site --FLAGS="--future")  ./blog 
+    COPY (./blog/+build/_site --FLAGS="--future" --DATE="$DATE")  ./blog 
     COPY (./website/+build/_site --FLAGS="--future") ./website
   END
 
-  ## Content needs to be combined into /build for netlify to pick up
+  # ## Content needs to be combined into /build for netlify to pick up
   RUN mkdir -p ./build/blog
   RUN cp -rf ./blog/* ./build/blog
   RUN cp -rf ./website/* ./build 
 
   IF [ "$DESTINATION" = "PROD" ]
     RUN --no-cache echo "PROD_DEPLOY"
-    RUN --no-cache cd build && netlify deploy --site "$NETLIFY_SITE_ID" --auth "$NETLIFY_AUTH_TOKEN" --dir=. --prod
+    RUN --no-cache \
+        --secret NETLIFY_SITE_ID \
+        --secret NETLIFY_AUTH_TOKEN \
+        cd build && netlify deploy --site "$NETLIFY_SITE_ID" --auth "$NETLIFY_AUTH_TOKEN" --dir=. --prod
   ELSE
     RUN --no-cache echo "Preview Throw Away Deploy"
-    RUN --no-cache cd build && netlify deploy --site "$NETLIFY_STAGING_SITE_ID" --auth "$NETLIFY_STAGING_AUTH_TOKEN" --dir=.
+    RUN --no-cache \
+        --secret NETLIFY_STAGING_SITE_ID \
+        --secret NETLIFY_STAGING_AUTH_TOKEN \ 
+        cd build && netlify deploy --site "$NETLIFY_STAGING_SITE_ID" --auth "$NETLIFY_STAGING_AUTH_TOKEN" --dir=.
   END 
