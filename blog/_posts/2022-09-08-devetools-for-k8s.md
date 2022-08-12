@@ -158,7 +158,7 @@ This may look confusing, however it simply states what the image should be calle
 
 Well, once you've gotten those files created, you can run `skaffold dev`, and Skaffold will build your image, and deploy your resources based on the k8s-files directory. Then, once you make changes to your application, Skaffold will automatically redeploy your application. If you are familiar with [nodemon](https://www.npmjs.com/package/nodemon) in Node.js then it's the exact same functionality, except for Kubernetes.
 
-Skaffold has the huge advantage that it doesn't affect your production environment or your colleagues at all. It's not something that integrates heavily into your workflow if you don't want it to. You add the `skaffold.yaml` file to your project, and then you can use it if you want. With this tool, you can test that your application runs perfectly inside a Kubernetes cluster like you would expect it to. Skaffold is great when you want something that simply compliments your development process, as well as something that's not necessarily everyone *has* to use, but everyone *can*.
+Skaffold has the huge advantage that it doesn't affect your production environment or your colleagues at all. It's not something that integrates heavily into your workflow if you don't want it to. You add the `skaffold.yaml` file to your project, and then you can use it if you want. With this tool you can test that your application runs perfectly inside a Kubernetes cluster like you would expect it to. Skaffold is great when you want something that simply compliments your development process, as well as something that's not necessarily everyone *has* to use, but everyone *can*.
 
 ## Conclusion
 
