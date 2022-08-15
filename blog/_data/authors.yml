@@ -4,7 +4,7 @@ Earthly:
     avatar  : "/assets/images/authors/person.jpg"
 Corey:
     name    : "Corey Larson"
-    bio     : "Eats, runs, and codes. Dad. Engineer. Progressive. LDS. Disneyland fanatic."
+    bio     : "Eats, runs, and codes. Dad."
     avatar  : "/assets/images/authors/coreylarson.jpg"
 Vlad:
     name    : "Vlad A. Ionescu"
