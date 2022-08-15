@@ -3,7 +3,7 @@ title: "Kube-Bench"
 categories:
   - Tutorials
 toc: true
-author: Adam
+author: Anurag Kumar
 
 internal-links:
  - just an example
