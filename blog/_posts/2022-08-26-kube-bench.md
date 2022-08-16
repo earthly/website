@@ -328,5 +328,3 @@ When running Kubernetes in production, we can use kube-bench to benchmark your c
 ## Outside Article Checklist
 
 - [ ] Add in Author page
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Add Earthly `CTA` at bottom ``
