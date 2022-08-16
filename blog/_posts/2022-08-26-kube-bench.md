@@ -27,9 +27,9 @@ We will talk about this in detail in the blog.
 
 ## Spinning Your Kubernetes Cluster
 
-For the purpose of this blog, I'm using minikube, and you can refer to minikube [installation](https://minikube.sigs.k8s.io/docs/start/)
+For the purpose of this blog, I'm using [minikube](/blog/k8s-dev-solutions), and you can refer to minikube [installation](https://minikube.sigs.k8s.io/docs/start/)
 
-If you're running kind then you can perform the same thing, but you've to exec into the control plane container. In order to create your cluster using kind refer to the [docs](https://kind.sigs.k8s.io/docs/user/quick-start/) kind assumes your docker container as Kubernetes nodes, so in order exec into your kind controlplane container use
+If you're running kind then you can perform the same thing, but you've to exec into the control plane container. In order to create your cluster using kind refer to the [docs](https://kind.sigs.k8s.io/docs/user/quick-start/) kind assumes your [docker](/blog/docker-slim) container as Kubernetes nodes, so in order exec into your kind controlplane container use
 
 ~~~{.bash caption=">_"}
 docker exec -it <container-name> /bin/bash
@@ -37,7 +37,7 @@ docker exec -it <container-name> /bin/bash
 
 ## Installing Kube-Bench
 
-We will use GitHub releases to install kube-bench. Go to the GitHub releases [page](https://github.com/aquasecurity/kube-bench/releases/tag/v0.6.8) Download kube-bench according to your system. I'm using Linux amd64, so I will be going with that.
+We will use [GitHub](/blog/ci-comparison) releases to install kube-bench. Go to the GitHub releases [page](https://github.com/aquasecurity/kube-bench/releases/tag/v0.6.8) Download kube-bench according to your system. I'm using Linux amd64, so I will be going with that.
 
 ~~~{.bash caption=">_"}
 curl -LO https://github.com/aquasecurity/kube-bench/releases/download/v0.6.8/kube-bench_0.6.8_linux_amd64.tar.gz
@@ -162,7 +162,7 @@ If you want more detailed look then you can set the verbosity while executing th
 $ kube-bench run -v 5
 ~~~
 
-To get the output in JSON you can execute the following
+To get the output in [JSON](/blog/convert-to-from-json) you can execute the following
 
 ~~~{.bash caption=">_"}
 $ kube-bench run --json | jq
@@ -184,7 +184,7 @@ If you look at the first section, then the content is structured in four parts.
 
 Now, in the previous part we have learnt about running kube-bench via the command line utility but when we want to run our kube-bench jobs after a fixed interval of time for example on a period of 10 days then doing it manually will be tedious. Although, we can automate it using the Linux Jobs but in this blog we will use Kubernetes jobs to run kube-bench. First, we will set Kubernetes job to run kube-bench and then in the immediate next section, we will configure the job to run every week with the help of Kubernetes cronjobs. The difference between jobs and cronjobs is that with cronjobs, you can configure a job to run a repeating task on a regular schedule.
 
-If you look at the GitHub repo of kube-bench then you will see a [job.yaml](https://github.com/aquasecurity/kube-bench/blob/main/job.yaml) file in the parent directory. This is the manifest you need to run your kube-bench as Kubernetes jobs.
+If you look at the [GitHub](/blog/ci-comparison) repo of kube-bench then you will see a [job.yaml](https://github.com/aquasecurity/kube-bench/blob/main/job.yaml) file in the parent directory. This is the manifest you need to run your kube-bench as Kubernetes jobs.
 
 On your cluster, you just need to apply this manifest.
 
@@ -320,5 +320,4 @@ When running Kubernetes in production, we can use kube-bench to benchmark your c
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
 - [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
