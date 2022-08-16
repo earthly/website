@@ -6,7 +6,10 @@ toc: true
 author: Anurag Kumar
 
 internal-links:
- - just an example
+ - CLI
+ - Kube-Bench
+ - Kubernetes
+ - cluster
 ---
 
 ## What Is CIS?
@@ -319,5 +322,4 @@ When running Kubernetes in production, we can use kube-bench to benchmark your c
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Add keywords for internal links to front-matter
 - [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
