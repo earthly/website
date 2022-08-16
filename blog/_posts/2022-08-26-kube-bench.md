@@ -40,8 +40,7 @@ docker exec -it <container-name> /bin/bash
 We will use GitHub releases to install kube-bench. Go to the GitHub releases [page](https://github.com/aquasecurity/kube-bench/releases/tag/v0.6.8) Download kube-bench according to your system. I'm using Linux amd64, so I will be going with that.
 
 ~~~{.bash caption=">_"}
-curl -LO https://github.com/aquasecurity/kube-bench/releases/download/\
-v0.6.8/kube-bench_0.6.8_linux_amd64.tar.gz
+curl -LO https://github.com/aquasecurity/kube-bench/releases/download/v0.6.8/kube-bench_0.6.8_linux_amd64.tar.gz
 ~~~
   
 After this, you have to create one directory where the default config files of kube-bench will reside.
@@ -64,13 +63,13 @@ sudo mv /etc/kube-bench/kube-bench /usr/local/bin
 
 You have successfully installed and configured kube-bench, and we are ready to move ahead. To verify the installation, use the command `kube-bench version`
 
-![kube-bench installation]({{site.images}}{{page.slug}}/a/fyCzhxy)
+![kube-bench installation]({{site.images}}{{page.slug}}/Imgur.gif)
 
 ## A Hands-on Guide to Kube-bench
 
-### Running Kube-Bench Via CLI
+### Running Kube-bench via Cli
 
-Previously, We had installed kube-bench, and it's time to try it out. To use kube-bench, you just have to run kube-bench run Now what will happen in the background is kube-bench will run all the checks that's there in the CIS benchmarks. After running all the checks, it will give you a formatted output of FAIL, WARN and PASS benchmarks.
+Previously, We had installed kube-bench, and it's time to try it out. To use kube-bench, you just have to run kube-bench run Now what will happen in the background is kube-bench will run all the checks that's there in the CIS benchmarks. After running all the checks, it will give you a formatted output of FAIL, WARN, and PASS benchmarks.
 
 Before analysing the output of the previous command, let's try to understand what are the components of the Kubernetes cluster that kube-bench benchmarks. Essentially, kube-bench will benchmark your configurations of the followings.
 
@@ -87,28 +86,39 @@ We will use one example of each WARN and FAIL in order to understand how to fix 
 When you will look at the output of the previous command, then in the first section you will see something like this.
 
 ~~~{.bash caption=">_"}
-[WARN] 1.2.12 Ensure that the admission control plugin AlwaysPullImages is set (Manual)
+[WARN] 1.2.12 Ensure that the admission control plugin AlwaysPullImages
+is set (Manual)
 
-[WARN] 1.2.13 Ensure that the admission control plugin SecurityContextDeny is set if PodSecurityPolicy is not used (Manual)
+[WARN] 1.2.13 Ensure that the admission control plugin SecurityContextDeny
+is set if PodSecurityPolicy is not used (Manual)
 
-[PASS] 1.2.14 Ensure that the admission control plugin ServiceAccount is set (Automated)
+[PASS] 1.2.14 Ensure that the admission control plugin ServiceAccount is 
+set (Automated)
 
-[PASS] 1.2.15 Ensure that the admission control plugin NamespaceLifecycle is set (Automated)
+[PASS] 1.2.15 Ensure that the admission control plugin NamespaceLifecycle 
+is set (Automated)
 
-[PASS] 1.2.16 Ensure that the admission control plugin NodeRestriction is set (Automated)
+[PASS] 1.2.16 Ensure that the admission control plugin NodeRestriction 
+is set (Automated)
 
-[PASS] 1.2.17 Ensure that the --secure-port argument is not set to 0 (Automated)
+[PASS] 1.2.17 Ensure that the --secure-port argument is not 
+set to 0 (Automated)
 
-[FAIL] 1.2.18 Ensure that the --profiling argument is set to false (Automated)
+[FAIL] 1.2.18 Ensure that the --profiling argument is set to 
+false (Automated)
 
 [FAIL] 1.2.19 Ensure that the --audit-log-path argument is set (Automated)
 
-[FAIL] 1.2.20 Ensure that the --audit-log-maxage argument is set to 30 or as appropriate (Automated)
+[FAIL] 1.2.20 Ensure that the --audit-log-maxage argument is set to 30 
+or as appropriate (Automated)
 
-[FAIL] 1.2.21 Ensure that the --audit-log-maxbackup argument is set to 10 or as appropriate (Automated)
+[FAIL] 1.2.21 Ensure that the --audit-log-maxbackup argument is set to 
+10 or as appropriate (Automated)
 ~~~
 
-**Note** : This is just one section that I have taken to illustrate how to solve WARN and FAIL checks. The output can be different for you.
+> **Note** :
+> This is just one section that I have taken to illustrate how to solve WARN and FAIL checks. The output can be different for you.
+
 Let's first understand how to understand the output of the kube-bench run command.
 
 ### Output Format Of The Kube-Bench
@@ -170,7 +180,7 @@ If you look at the first section, then the content is structured in four parts.
     1.3 Controller Manager
     1.4 Scheduler
 
-### Running Kube-bench As Kubernetes Jobs
+### Running Kube-bench as Kubernetes Jobs
 
 Now, in the previous part we have learnt about running kube-bench via the command line utility but when we want to run our kube-bench jobs after a fixed interval of time for example on a period of 10 days then doing it manually will be tedious. Although, we can automate it using the Linux Jobs but in this blog we will use Kubernetes jobs to run kube-bench. First, we will set Kubernetes job to run kube-bench and then in the immediate next section, we will configure the job to run every week with the help of Kubernetes cronjobs. The difference between jobs and cronjobs is that with cronjobs, you can configure a job to run a repeating task on a regular schedule.
 
@@ -309,7 +319,6 @@ When running Kubernetes in production, we can use kube-bench to benchmark your c
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
 - [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
