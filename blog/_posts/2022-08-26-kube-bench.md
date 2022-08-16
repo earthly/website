@@ -66,7 +66,11 @@ sudo mv /etc/kube-bench/kube-bench /usr/local/bin
 
 You have successfully installed and configured kube-bench, and we are ready to move ahead. To verify the installation, use the command `kube-bench version`
 
-![kube-bench installation]({{site.images}}{{page.slug}}/Imgur.gif)
+<div class="wide">
+
+![kube-bench installation]({{site.images}}{{page.slug}}/Imgur.gif)\
+
+</div>
 
 ## A Hands-on Guide to Kube-bench
 
@@ -83,6 +87,8 @@ Before analysing the output of the previous command, let's try to understand wha
 5. Policies
 
 ## How to Fix the Warn and Fail Benchmarks?
+
+![Fix]({{site.images}}{{page.slug}}/fix.jpg)\
 
 We will use one example of each WARN and FAIL in order to understand how to fix these. If you want quick and immediate solution, then you can look at the output right after the completion of each section's benchmark.
 
@@ -172,6 +178,8 @@ $ kube-bench run --json | jq
 ~~~
 
 ## CIS Kubernetes Benchmark Guide
+
+![Guide]({{site.images}}{{page.slug}}/guide.jpg)\
 
 When you visit the CIS website, then you'll get a handbook that lists all the benchmarks and their remediation in detail. When you're not sure about why a particular benchmark is failing, then this is the reference you should follow.
 
@@ -315,10 +323,10 @@ This will give you all the warnings, pass & failed checks with respect to your G
 
 When running Kubernetes in production, we can use kube-bench to benchmark your cluster against CIS benchmark. You can avoid any misconfigurations in your Kubernetes cluster. With CIS benchmarks, You can be extra sure that you're following the best practices when it comes to running Kubernetes in production. I hope this guide will help you in understanding kube-bench, and you're now ready to benchmark your cluster against CIS benchmarks.
 
+{% include cta/cta1.html %}
+
 ## Outside Article Checklist
 
 - [ ] Add in Author page
 - [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
-- [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
+- [ ] Add Earthly `CTA` at bottom ``
