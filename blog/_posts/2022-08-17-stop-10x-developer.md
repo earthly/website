@@ -95,9 +95,9 @@ Well, yes she is. But my point is it's not a useful way to measure varation in s
 
 The 10X mem is both too extreme, by implying that Fabrice Bellard could kick out simple crud tasks at 10X the speed I do, and not extreme enough, in that it implies that I could build `ffmpeg` and `qemu` the same as fabrice if I was just given more time.
 
-So what term should you use instead of 10x developer? Try expert. As in 'John is a video encoding expert'.  Or specialist like: 'I really need a compiler backend specialist to help implement incremental complilation' or 'What I learned working with a postgres internals specialist'. 
+So what term should you use instead of 10x developer? Try expert. As in 'John is a video encoding expert'.  Or specialist like:  'What I learned working with a postgres internals specialist'. Or if you really want to sound like an MBA use talent: 'I really need some exceptional compiler backend talent to help with the incremental complication design'.
 
-Specificity leads to clear communication.
+I guess what I'm saying is be specific. Skills are not homogeneous and talented people don't have to be treated like a rare pokemon. Specificity leads to clear communication.
 
 
 
