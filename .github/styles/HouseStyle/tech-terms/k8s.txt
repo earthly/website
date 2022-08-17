@@ -12,3 +12,5 @@ Tekton
 tkn
 homebrew
 Statefulsets
+prometheus
+kube
