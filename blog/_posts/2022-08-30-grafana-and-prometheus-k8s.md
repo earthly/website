@@ -11,9 +11,9 @@ internal-links:
 
 So you have a Kubernetes cluster, and you want to keep an eye on its memory CPU and storage usage? Well, look no further than Grafana and Prometheus monitoring.
 
-Grafana and Prometheus Kubernetes Cluster Monitoring reports on potential performance bottlenecks, cluster health, and performance metrics. Simultaneously, visualize network usage, pod resource usage patterns, and a high-level overview of what's going on in your cluster.
+Grafana and Prometheus Kubernetes Cluster Monitoring reports on potential performance bottlenecks, cluster health, and performance [metrics](/blog/incident-management-metrics). Simultaneously, visualize network usage, pod resource usage patterns, and a high-level overview of what's going on in your cluster.
 
-In this guide, you'll learn how to monitor your Kubernetes cluster, viewing internal state metrics with Prometheus and the Grafana dashboard.
+In this guide, you'll learn how to monitor your Kubernetes cluster, viewing internal state [metrics](/blog/incident-management-metrics) with Prometheus and the Grafana dashboard.
 
 ## How to Monitor the Kubernetes Cluster using Prometheus and Grafana Dashboards
 
@@ -111,7 +111,7 @@ Navigate to your server's IP address followed by port 9090 (i.e., <http://YOUR_S
 </div>
 
 To exit from the port forward session press ctrl c or command c
-The next thing is to view internal state metrics for the prometheus kubernetes cluster and the kube-state-metrics (KMS) tool deployed with the helm chart stacks used. The Kube-state-metrics (KSM) tool allows you to view your Kubernetes cluster's internal state metrics. The KSM tool allows you to monitor the health and consumption of your resources, as well as internal state objects. KSM can potentially display data points such as node metrics, deployment metrics, and pod metrics.
+The next thing is to view internal state metrics for the prometheus kubernetes cluster and the kube-state-metrics (KMS) tool deployed with the helm chart stacks used. The Kube-state-metrics (KSM) tool allows you to view your Kubernetes cluster's internal state metrics. The KSM tool allows you to monitor the health and consumption of your resources, as well as internal state objects. KSM can potentially display data points such as node metrics, [deployment](/blog/deployment-strategies) metrics, and pod metrics.
 The KSM tool is pre-packaged in the kube-prometheus stack and is immediately installed alongside the other monitoring components.
 
 You'll port-forward a local port to your cluster via the kube-state-metrics service. Doing so lets KSM scrape the internal system metrics of your cluster and output a list of queries and values.
@@ -211,7 +211,7 @@ echo admin-username | base64 --decode
 echo admin-user | base64 --decode
 ~~~
 
-To decode the admin-password and admin-user for windows machines [check](https://www.base64decode.org/)
+To decode the admin-password and admin-user for [windows](/blog/makefiles-on-windows) machines [check](https://www.base64decode.org/)
 
 The next step is to login into the grafana, firstly you must first direct traffic to the grafana server:
 
@@ -269,5 +269,4 @@ When using Kubernetes, monitoring the cluster is a good idea. Visualizing usage 
 * [ ] Create header image in Canva
 * [ ] Optional: Find ways to break up content with quotes or images
 * [ ] Add keywords for internal links to front-matter
-* [ ] Run `link-opp` and find 1-5 places to incorporate links
 * [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
