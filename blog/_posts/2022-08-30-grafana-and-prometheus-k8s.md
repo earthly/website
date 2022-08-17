@@ -31,7 +31,11 @@ This guide will be a step-by-step tutorial. To follow along, be sure to have the
 
 * **Kubernetes cluster**:  To install Kubernetes on your local machine, follow the [download instructions](https://kubernetes.io/docs/tasks/tools/).
  
-![Architectural Diagram of Prometheus Grafana Monitoring]({{site.images}}{{page.slug}}/a/wzol47l)
+<div class="wide">
+
+![Architectural Diagram of Prometheus Grafana Monitoring]({{site.images}}{{page.slug}}/k8snodes.png)
+
+</div>
 
 ### Create Namespace and add Helm charts Repo
 
@@ -44,7 +48,8 @@ After you have run the above commands, you need to add the Prometheus-community 
 
 ```
 # Add Prometheus-community repo
-helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+helm repo add prometheus-community \
+https://prometheus-community.github.io/helm-charts
 
 # To update the helm repo 
  Helm update repo
@@ -56,7 +61,8 @@ Run the helm install command below after adding the Helm repo to deploy the kube
 By acting on a set of Custom Resource Definitions(CRDs), this Helm chart configures a comprehensive Prometheus Kubernetes monitoring stack. To deploy the chart to the Kubernetes cluster, run the following commands. 
 
 ```
-helm install monitoring prometheus-community/Kube-prometheus-stack --namespace Kubernetes-monitoring
+helm install monitoring prometheus-community/Kube-prometheus-stack \
+ --namespace Kubernetes-monitoring
  ```
 
 run the following command to confirm your Kube-Prometheus stack deployment.
@@ -64,8 +70,12 @@ run the following command to confirm your Kube-Prometheus stack deployment.
 ```
 kubectl get pods -n Kubernetes-monitoring
 ```
- 
-![Diagram showing the pods running the Namespace]({{site.images}}{{page.slug}}/a/Ij0pLHJ)
+
+ <div class="wide">
+
+![Diagram showing the pods running the Namespace]({{site.images}}{{page.slug}}/podsrunning.jpg)
+
+</div>
 
 ### Accessing the Prometheus Instance and Viewing the Internal State Metrics
 
@@ -74,8 +84,12 @@ After you've successfully deployed your Prometheus and Grafana instances to your
 ```
 kubectl get svc -n Kubernetes-monitoring
 ```
- 
-![Diagram showing the servers running the Namespace]({{site.images}}{{page.slug}}/a/dP4XoJm)
+
+<div class="wide">
+
+![Diagram showing the servers running the Namespace]({{site.images}}{{page.slug}}/serverrunning.jpg)
+
+</div>
 
 Next, run the below kubectl port-forward command to forward the local port 9090 to your cluster via the Prometheus service (svc/monitoring-kube-prometheus-prometheus). To do so run the following commands. 
 
@@ -87,8 +101,12 @@ Open a web browser, and navigate to either of the URLs below to access your Prom
 
 Navigate to http://localhost:9090 if you’re following along with local windows, Linux or mac machine. 
 Navigate to your server’s IP address followed by port 9090 (i.e., http://YOUR_SERVER_IP:9090) if you’re using a cloud server.
- 
-![Diagram showing Prometheus Home Page]({{site.images}}{{page.slug}}/a/AeL7bLp)
+
+<div class="wide">
+
+![Diagram showing Prometheus Home Page]({{site.images}}{{page.slug}}/homepage.jpg)
+
+</div>
 
 To exit from the port forward session press ctrl c or command c
 The next thing is to view internal state metrics for the prometheus kubernetes cluster and the kube-state-metrics (KMS) tool deployed with the helm chart stacks used. The Kube-state-metrics (KSM) tool allows you to view your Kubernetes cluster's internal state metrics. The KSM tool allows you to monitor the health and consumption of your resources, as well as internal state objects. KSM can potentially display data points such as node metrics, deployment metrics, and pod metrics.
@@ -97,30 +115,40 @@ The KSM tool is pre-packaged in the kube-prometheus stack and is immediately ins
 You’ll port-forward a local port to your cluster via the kube-state-metrics service. Doing so lets KSM scrape the internal system metrics of your cluster and output a list of queries and values.
 
 To do so, run the following commands 
+
  ```
 # to check if the KMS Tools is running 
 kubectl get svc -n kubernetes-monitoring | grep kube-state-metrics
 
 kubectl port-forward svc/monitoring-kube-state-metrics -n monitoring 8080 
 ```
+
 Open your browser and type http://localhost:8080 or if you're using a cloud machine http://YOUR_SERVER_IP:8080). Please keep in mind that if you get a permissions access issue when forwarding traffic to port 8080, you can use this option.
 
  
 ```
 kubectl port-forward svc/prometheus-kube-state-metrics -n monitoring 8085:80 
 ```
- 
-![Diagram showing the prometheus kube Metrics page]({{site.images}}{{page.slug}}/a/AeL7bLp)
+
+![Diagram showing the prometheus kube Metrics page]({{site.images}}{{page.slug}}/metricpage.jpg)
 
 Click on the metric and to view the metrics 
- 
-![Diagram showing the servers running the Namespace]({{site.images}}{{page.slug}}/eyDHk5v.jpeg)
+
+<div class="wide">
+
+![Diagram showing the servers running the Namespace]({{site.images}}{{page.slug}}/namespace.jpg)
+
+</div>
 
 ### Visualizing a Cluster’s Internal State Metric on Prometheus
 
-Now we will execute some prometheus queries to see the internal state metrics of our kubernetes cluster. We will focus on CPU Utilization.  [check The Prometheus site] (prometheus.io/docs/prometheus/latest/querying/basics/) for more on the Prometheus query language, .
-  
-![Diagram showing the Prometheus Target Page ]({{site.images}}{{page.slug}}/a/q2hpGs)
+Now we will execute some prometheus queries to see the internal state metrics of our kubernetes cluster. We will focus on CPU Utilization.  [check The Prometheus site] (prometheus.io/docs/prometheus/latest/querying/basics/) for more on the Prometheus query language.
+
+<div class="wide">
+
+![Diagram showing the Prometheus Target Page ]({{site.images}}{{page.slug}}/targetpage.png)
+
+</div>
 
 As seen above, many Kubernetes internal and monitoring components are set as Prometheus targets on http://localhost:9090/targets or http://<YOUR_SERVER_IP:9090/targets .
 
@@ -129,8 +157,12 @@ Now, click on the graph icon in the top bar, enter the following commands in the
 ```
 Sum by (cpu)(m=node_cpu_seconds_total{mode!=”idle”})
 ```
- 
-![Diagram of the Graphical view of PromQL query of cluster metric ]({{site.images}}{{page.slug}}/gallery/wprcYd2)
+
+<div class="wide">
+
+![Diagram of the Graphical view of PromQL query of cluster metric ]({{site.images}}{{page.slug}}/promQL.png)
+
+</div>
 
 ### Monitoring and Visualizing with Grafana Dashboards 
 Prometheus' visualization options are limited, only a Grap. Prometheus is great for collecting metrics from targets set as tasks, aggregating the metrics, and storing them locally on the workstation. However, when it comes to traditional resource monitoring adding in Grafana is a great option.
@@ -185,29 +217,45 @@ kubectl port-forward svc/monitoring-grafana -n kubernetes-monitoring 3001:80
 ```
 In your browser, go to http://localhost:3001/ or http://<YOUR_SERVER_IP:3001/ if you're running on a cloud machine. 
 
-![Diagram of Grafana login Page]({{site.images}}{{page.slug}}/a/6j1COnD)
+![Diagram of Grafana login Page]({{site.images}}{{page.slug}}/grafanalogin.png)
 
 Next type the admin-username and password you have decoded to login.
 
-![Diagram of the Home Page]({{site.images}}{{page.slug}}/a/c7DljNs)
+<div class="wide">
+
+![Diagram of the Home Page]({{site.images}}{{page.slug}}/homepagediag.png)
+
+</div>
 
 Now to start monitoring, type this URL in your browser type http://localhost:3001/dashboards or http://<YOUR_SERVER_IP:3001/dashboards if you're using a cloud server. 
- 
-![Diagram of Grafana Dashboards Page]({{site.images}}{{page.slug}}/a/vrgz96v)
+
+<div class="wide">
+
+![Diagram of Grafana Dashboards Page]({{site.images}}{{page.slug}}/grafanadash.png)
+
+</div>
 
 The picture above depicts preconfigured dashboards that come with the Kube-Prometheus stack. 
 
 Now click on the kubernetes/compute Resources/ Namespace(cluster)
- 
-![Imported dashboards]({{site.images}}{{page.slug}}/a/tswVeuP)
+
+<div class="wide">
+
+![Imported dashboards]({{site.images}}{{page.slug}}/imported.png)
+
+</div>
 
 This dashboard shows the CPU usage, CPU request commitment, limitations, memory usage, memory request commitment, and memory limit commitment. It will help you manage and monitor them.
 
 Follow the same steps to select dashboards for Kubernetes resources you want to manage and monitor. 
 
 ## Conclusion 
- 
-![Architectural Diagram of Prometheus Grafana Monitoring]({{site.images}}{{page.slug}}/a/wzol47l)
+
+<div class="wide">
+
+![Architectural Diagram of Prometheus Grafana Monitoring]({{site.images}}{{page.slug}}/grafanamonitoring.png)
+
+</div>
 
 When using Kubernetes, monitoring the cluster is a good idea. Visualizing usage with a Prometheus and Grafana dashboard can be extremely beneficial because it reduces the workload of monitoring your cluster.
 
@@ -216,8 +264,6 @@ When using Kubernetes, monitoring the cluster is a good idea. Visualizing usage 
 - [ ] Add in Author page
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
 - [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
