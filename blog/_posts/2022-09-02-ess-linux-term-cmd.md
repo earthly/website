@@ -392,7 +392,6 @@ When you’re building an application, the best-practice approach is using a sys
 
 ## Outside Article Checklist
 
-- [ ] Add in Author page
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally

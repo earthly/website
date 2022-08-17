@@ -247,4 +247,7 @@ Kealan Parr:
     name    : "Kealan Parr"
     bio     : "Kealan is a senior software engineer and technical writer who works with clients on technical reviewing and software development. He is a member of the Unicode Consortium."
     avatar  : "/assets/images/authors/Kealanparr.jpg"
-
+Hrittik Roy:
+    name    : "Hrittik Roy"
+    bio     : "Hrittik is a writer and a software engineer who specializes in cloud native ecosystems. He has worked on many large-scale projects and has experience in both the technical and the business aspects of cloud computing. He is a frequent speaker at conferences and has written numerous articles on software development and distributed systems. In his free time, he likes to go for long walks."
+    avatar  : "/assets/images/authors/hrittik.jpg"
