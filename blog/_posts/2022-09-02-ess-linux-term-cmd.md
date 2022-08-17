@@ -13,7 +13,7 @@ internal-links:
  - Commands
 ---
 
-[Linux](https://www.linux.org/), a powerful, free, stable, secure, and highly customizable operating system, is essential for any developer's workflow. The Linux terminal interacts with the operating system for all basic and advanced tasks. Moreover, most web servers run Linux, and tools like Docker work by providing an additional layer of abstraction and automation on top of Linux.
+[Linux](https://www.linux.org/), a powerful, free, stable, secure, and highly customizable operating system, is essential for any developer's workflow. The Linux terminal interacts with the operating system for all basic and advanced tasks. Moreover, most web servers run Linux, and tools like [Docker](/blog/rails-with-docker) work by providing an additional layer of abstraction and automation on top of Linux.
 
 While some distributions have GUI (graphical user interface), the GUI is limited with regard to functionality and customization. The terminal, or the shell, provides you with the power to customize and carry out tasks in seconds that would have been tedious, multi-click steps on a GUI. You can chain commands to run multiple commands together with an order of execution or simultaneously, which makes your workflow optimized and efficient.
 
@@ -80,7 +80,7 @@ You can use the commands previously discussed in this article to create an examp
 
 [Sed](https://www.gnu.org/software/sed/manual/sed.html), a stream editor, enables you to operate on an input stream without needing to open it with a text editor. The instructions you give are carried out without opening the file, and the results can be found on the output stream.
 
-While text replacement is the most-used functionality, you can also use sed to select text, add, or remove lines, and alter (or retain) an original file.
+While text replacement is the most-used functionality, you can also use [sed](/blog/sed-find-replace) to select text, add, or remove lines, and alter (or retain) an original file.
 
 ### Syntax
 
@@ -88,7 +88,7 @@ While text replacement is the most-used functionality, you can also use sed to s
 sed OPTIONS... [SCRIPT] [INPUTFILE...]
 ~~~
 
-An easy way to see this in action is to pass a string to sed with replacement attributes set and wait for the results. You can give the string using a pipe or a file.
+An easy way to see this in action is to pass a string to [sed](/blog/sed-find-replace) with replacement attributes set and wait for the results. You can give the string using a pipe or a file.
 
 `echo "Hello World!" | sed "s/World/Earth/"` would pipe the string to sed, resulting in the output "Hello Earth!"
 
@@ -170,7 +170,7 @@ Here, `-c` indicates that a new archive should be created, `-v` shows the proces
 
 APT (advanced package tool) is a package manager that works with core libraries to handle the installation and removal of software on Debian and Debian-based Linux distributions, such as [Ubuntu](https://ubuntu.com/) and [MX Linux](https://mxlinux.org/).
 
-APT is used across Ubuntu as the primary package manager and provides functionalities, like installing, removing, and upgrading packages.
+[APT](/blog/creating-and-hosting-your-own-deb-packages-and-apt-repo) is used across Ubuntu as the primary package manager and provides functionalities, like installing, removing, and upgrading packages.
 
 The package manager also allows you to update all your base packages with two simple commands:
 
@@ -243,7 +243,7 @@ There are sixty-four signals you can use for `-signal`; `kill -l` returns a list
 
 ## Ts
 
-[Ts](https://manpages.debian.org/testing/moreutils/ts.1.en.html) will add a time stamp at the beginning of each line in your standard input. This is a useful command when you're dealing with an input stream, like tracerouting or debugging, where storing time stamps helps the process.
+[Ts](https://manpages.debian.org/testing/moreutils/ts.1.en.html) will add a time stamp at the beginning of each line in your standard input. This is a useful command when you're dealing with an input stream, like tracerouting or [debugging](/blog/printf-debugging), where storing time stamps helps the process.
 
 A simple example is piping your ping command to ts, which will return time-stamped results to your standard output.
 
@@ -398,5 +398,4 @@ When you're building an application, the best-practice approach is using a syste
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
 - [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
