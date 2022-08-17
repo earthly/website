@@ -6,7 +6,11 @@ toc: true
 author: Segun Saka-Aiyedun
 
 internal-links:
- - just an example
+ - Kubernetes
+ - Grafana
+ - Cluster
+ - Prometheus
+ - Namespace
 ---
 
 So you have a Kubernetes cluster, and you want to keep an eye on its memory CPU and storage usage? Well, look no further than Grafana and Prometheus monitoring.
@@ -270,5 +274,4 @@ When using Kubernetes, monitoring the cluster is a good idea. Visualizing usage 
 * [ ] Add in Author page
 * [ ] Create header image in Canva
 * [ ] Optional: Find ways to break up content with quotes or images
-* [ ] Add keywords for internal links to front-matter
 
