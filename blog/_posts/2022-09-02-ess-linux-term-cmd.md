@@ -6,7 +6,11 @@ toc: true
 author: Hrittik Roy
 
 internal-links:
- - just an example
+ - Linux
+ - Grep
+ - Curl
+ - Pipe
+ - Commands
 ---
 
 [Linux](https://www.linux.org/), a powerful, free, stable, secure, and highly customizable operating system, is essential for any developer’s workflow. The Linux terminal interacts with the operating system for all basic and advanced tasks. Moreover, most web servers run Linux, and tools like Docker work by providing an additional layer of abstraction and automation on top of Linux.
@@ -397,6 +401,5 @@ When you’re building an application, the best-practice approach is using a sys
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Run mark down linter (`lint`)
-- [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
 - [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
