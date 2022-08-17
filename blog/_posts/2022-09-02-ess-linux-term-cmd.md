@@ -33,7 +33,7 @@ When run, the above command will look like `grep blue abcd.txt` and will return 
 
 Below is a screenshot showing how to pipe grep:
 
-![grep number](https://i.imgur.com/exxl6Sr.png)
+![grep number]({{site.images}}{{page.slug}}/exxl6Sr.png)
 
 In the above example, you can see that the first `cat` command displays the content of the file in your terminal. When you use pipe, the output of the first command is piped as an input to the second command, which here is the grep command. We’ll look at the pipe in more detail later.
 
@@ -51,7 +51,7 @@ curl [option…] [URL]
 
 To download a file, you can use `curl -O URL`, which saves the file in your directory.
 
-![Curl file download](https://i.imgur.com/wtoBcYd.png)
+![Curl file download]({{site.images}}{{page.slug}}/wtoBcYd.png)
 
 To make a POST request, you can use `curl --request POST https://www.example.com/`. 
 The above code is a cURL command that makes a POST request to the https://www.example.com/ website. 
@@ -68,7 +68,7 @@ Another way would be using pipe, represented as `|`, to retrieve all the occurre
 command1 | command2
 ```
 
-![Pipe using curl and grep](https://i.imgur.com/Nzfj66p.png)
+![Pipe using curl and grep]({{site.images}}{{page.slug}}/Nzfj66p.png)
 
 You can use the commands previously discussed in this article to create an example. If you’re curious about the number of times a pattern is mentioned in a document hosted online, you can use `curl url | grep pattern --count` to get the results.
 
@@ -88,7 +88,7 @@ An easy way to see this in action is to pass a string to sed with replacement at
 
 `echo "Hello World!" | sed "s/World/Earth/"` would pipe the string to sed, resulting in the output "Hello Earth!"
 
-![Sed example](https://i.imgur.com/9CvoBiC.png)
+![Sed example]({{site.images}}{{page.slug}}/9CvoBiC.png)
 
 ## History
 
@@ -102,7 +102,7 @@ history [options]
 
 Running history without any options will list all previously used commands, but for many purposes, that’s an overwhelming and impractical approach. You can narrow the history by replacing options with a number, such as `history 10`, which will return only the ten most recent commands on your terminal. 
 
-![History](https://i.imgur.com/t5GFE1k.png)
+![History]({{site.images}}{{page.slug}}/t5GFE1k.png)
 
 You can clear the history by using `history -c`.
 
@@ -118,11 +118,11 @@ mv [option] source destination
 
 To rename a file, you can use `mv initialname.txt finalname.txt`. The command converts the `initialname.txt ` to ` finalname.txt` very easily.
 
-![mv rename](https://i.imgur.com/C9OkqRP.png)
+![mv rename]({{site.images}}{{page.slug}}/C9OkqRP.png)
 
 Now, whenever you want to move a file from one directory to another, you can use your current file path as your source and desired file path as your destination.
 
-![Move file while renaming](https://i.imgur.com/nCA27Wn.png)
+![Move file while renaming]({{site.images}}{{page.slug}}/nCA27Wn.png)
 
 The other use of `mv` command is when you want to cut and paste all the content of one directory or folder to another. If you need to move all the files and folders from the directory `1` to `2`, mv makes it easy.
 
@@ -142,7 +142,7 @@ Using `mv PrimaryDestination/* FinalDestination/` will move the files and folder
 mv 1/* 2/
 ```
 
-![mv all files and folders](https://i.imgur.com/4VwP7wJ.png)
+![mv all files and folders]({{site.images}}{{page.slug}}/4VwP7wJ.png)
 
 > Note: `tree` is a command used to visualize and list directories. You can learn more about it [here](https://linux.die.net/man/1/tree).
 
@@ -160,7 +160,7 @@ If you want to tar all the files in the directory, you can use the following com
 
 Here, `-c` indicates that a new archive should be created, `-v` shows the process information, and `-f` specifies the archive format. The result of the command is a file called `new.tar`, which contains all the files in the specified directory.
 
-![Archive](https://i.imgur.com/wI7MveF.png)
+![Archive]({{site.images}}{{page.slug}}/wI7MveF.png)
 
 ## APT
 
@@ -187,11 +187,11 @@ apt [...COMMANDS] [...PACKAGES]
 
 If you want to install a package, you can use `apt install packagename`:
 
-![Install a package](https://i.imgur.com/qBd3bRO.png)
+![Install a package]({{site.images}}{{page.slug}}/qBd3bRO.png)
 
 To remove the package, you can run `apt remove packagename`:
 
-![Remove a package](https://i.imgur.com/91lmlCZ.png)
+![Remove a package]({{site.images}}{{page.slug}}/91lmlCZ.png)
 
 > Note: `-y` flag provides yes to all the dialogues
 
@@ -211,7 +211,7 @@ Once you’ve initiated the session, you can split it into multiple rectangular 
 
 If you want to manage two or more operations simultaneously, such as creating Kubernetes objects at one terminal while viewing their status at another, Tmux comes in very handy. 
 
-![Tmux sessions stacked](https://i.imgur.com/NkJCucv.png)
+![Tmux sessions stacked]({{site.images}}{{page.slug}}/NkJCucv.png)
 
 ## Kill
 
@@ -226,7 +226,7 @@ kill -signal <PID>
 
 To get the process IDs (PIDs), you can use `ps -ux`, and then use the PID with kill. For example, if you want to kill the ping process, you can list all the running processes to get the PID of ping, and then use the kill signal as shown below:
 
-![Kill Process](https://i.imgur.com/dOIiAA1.png)
+![Kill Process]({{site.images}}{{page.slug}}/dOIiAA1.png)
 
 There are sixty-four signals you can use for `-signal`; `kill -l` returns a list of these signals. The default signal is `SIGTERM (15)`, which allows the process to terminate gracefully, giving it time to save before it’s killed. If you want to use the default signal, then there's no need to add the `-s` flag. Other signals, which do require the `-s` flag, include:
 
@@ -243,7 +243,7 @@ There are sixty-four signals you can use for `-signal`; `kill -l` returns a list
 
 A simple example is piping your ping command to ts, which will return time-stamped results to your standard output.
 
-![Time stamp with ping](https://i.imgur.com/N9N0Drs.png)
+![Time stamp with ping]({{site.images}}{{page.slug}}/N9N0Drs.png)
 
 ### Syntax
 
@@ -283,19 +283,19 @@ vidir [--verbose] [directory|file|-] ...
 
 The command opens up your default text editor, where you can edit your directories to suit your needs. For example, say you need to edit directories `1` and `2` to put them in a temp directory. 
 
-![Initial directory](https://i.imgur.com/nVwPenZ.png)
+![Initial directory]({{site.images}}{{page.slug}}/nVwPenZ.png)
 
 To get started, open the directory using `vidir .` in your text editor.
 
-![Vim directory intital](https://i.imgur.com/0ypOQXB.png)
+![Vim directory intital]({{site.images}}{{page.slug}}/0ypOQXB.png)
 
 For this example you'll move directories `1` and `2` and all of their content into a temp directory. 
 
-![Vim directory final](https://i.imgur.com/upmhDtP.png)
+![Vim directory final]({{site.images}}{{page.slug}}/upmhDtP.png)
 
 After you save the file, you can see the directories being edited as desired and moved into the temp folder. 
 
-![Final Directory](https://i.imgur.com/FuSjwKK.png)
+![Final Directory]({{site.images}}{{page.slug}}/FuSjwKK.png)
 
 ## Chmod
 
@@ -317,7 +317,7 @@ Using `chmod +[permission]  [file_name]` adds permissions to the file, and using
 
 To remove all permissions from a file you can use ` chmod -rwx [file_name]`
 
-![Permission with characters](https://i.imgur.com/XzAA21o.png)
+![Permission with characters]({{site.images}}{{page.slug}}/XzAA21o.png)
 
 The permissions can also be represented by numbers. One, two, and four stand for execute, write, and read, respectively; three, five, six, and seven indicate indicate more than one permission and are the sum of the permissions granted, as shown in the following table:
 
@@ -334,11 +334,11 @@ The permissions can also be represented by numbers. One, two, and four stand for
 
 Each entity, as described above, gets a single digit that describes their permissions. Using numeric representation, to give the file owner read, write, and execute permissions while denying all permissions to other users, you would use `700` as the chmod option. `7` for the owner, and `0`, or no permission, for the group and for people outside the group.
 
-![Owner read, write, and execute permission added](https://i.imgur.com/VRHWrgu.png)
+![Owner read, write, and execute permission added]({{site.images}}{{page.slug}}/VRHWrgu.png)
 
 If you wish to provide permission to every group and user, you can do so by using the code `777`, where the first `7` represents the user, the next `7` the group, and the last `7` the users outside the group, as shown below:
 
-![Permission for all the groups](https://i.imgur.com/GBdpxed.png)
+![Permission for all the groups]({{site.images}}{{page.slug}}/GBdpxed.png)
 
 Other common examples are `chmod 400 [filename]`, which prevents a file from being overwritten by allowing the owner to read it and disallowing all other permissions, and `chmod 755 [filename]`, which restricts write access to the file’s creator, but allows anyone else to read and execute the file.
 
@@ -364,11 +364,11 @@ crontab -e
 
 The first time you open cron, you can select the editor as per your preferences.
 
-![Text editor](https://i.imgur.com/LqvWuwQ.png)
+![Text editor]({{site.images}}{{page.slug}}/LqvWuwQ.png)
 
 After selecting an editor, the configuration file opens in that editor, with usage instructions at the bottom:
 
-![Crontab initial configuration](https://i.imgur.com/5t3HxzP.png)
+![Crontab initial configuration]({{site.images}}{{page.slug}}/5t3HxzP.png)
 
 For example, if you want to check the status of your server periodically. In this case, you can use crontab to run a Python script every thirty minutes to check if a server is up:
 
@@ -379,7 +379,7 @@ For example, if you want to check the status of your server periodically. In thi
 
 The crontab configuration is stored in your system, and you can view them all using `crontab -l`.
 
-![All cron jobs](https://i.imgur.com/Vx0k7gn.png)
+![All cron jobs]({{site.images}}{{page.slug}}/Vx0k7gn.png)
 
  If you’re interested in a more complex expression, consider using something like [crontab guru](https://crontab.guru/). Scheduling can be nuanced, so before diving in, take a look at more examples in this [guide](https://linuxize.com/post/scheduling-cron-jobs-with-crontab/).
 
