@@ -6,3 +6,6 @@ facto
 
 ad
 hoc
+
+usr
+cfg
