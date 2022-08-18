@@ -12,8 +12,6 @@ internal-links:
  - Objects
 ---
 
-![classes-and-objects-in-python]({{site.images}}{{page.slug}}/qIbuf02.png)\
-
 If you're a developer looking to level up your Python skills, adding OOP to your Python box can be helpful. This tutorial will help you get started with object-oriented programming in Python.
 
 Python is [one of the most-loved programming languages](https://survey.stackoverflow.co/2022/#section-most-loved-dreaded-and-wanted-programming-scripting-and-markup-languages) that supports procedural, functional, and object-oriented programming paradigms.
@@ -478,7 +476,6 @@ In the next tutorial in the series, we'll go over how we can leverage and extend
 
 ## Outside Article Checklist
 
-- [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
