@@ -6,7 +6,10 @@ toc: true
 author: Bala Priya C
 
 internal-links:
- - just an example
+ - Pyhton
+ - Classes
+ - OOP
+ - Objects
 ---
 
 ![classes-and-objects-in-python]({{site.images}}{{page.slug}}/qIbuf02.png)
@@ -434,6 +437,5 @@ In the next tutorial in the series, we'll go over how we can leverage and extend
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Run mark down linter (`lint`)
-- [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
 - [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
