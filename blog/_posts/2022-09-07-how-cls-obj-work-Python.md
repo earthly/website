@@ -12,7 +12,7 @@ internal-links:
  - Objects
 ---
 
-![classes-and-objects-in-python]({{site.images}}{{page.slug}}/qIbuf02.png)
+![classes-and-objects-in-python]({{site.images}}{{page.slug}}/qIbuf02.png)\
 
 If you're a developer looking to level up your Python skills, adding OOP to your Python box can be helpful. This tutorial will help you get started with object-oriented programming in Python.
 
@@ -60,7 +60,7 @@ In this tutorial, let's consider the example of `Student` classâ€”containing stu
 
  All of the code below is in the `main.py` file.
 
-~~~{.bash caption=">_"}
+~~~{.python caption="main.py"}
 class Student:
     pass # placeholder for code that we'll write shortly!
 ~~~
@@ -133,7 +133,7 @@ Summing up what we've learned so far: The `Student` class serves as a templateâ€
 
 As the above attributes are unique to a specific object, they are referred to as **instance attributes** or **instance variables**.
 
-![create-objects-from-class]({{site.images}}{{page.slug}}/wcXVeEw.png)
+![create-objects-from-class]({{site.images}}{{page.slug}}/wcXVeEw.png)\
 
 Now that you've defined the `__init__` method, you can instantiate objects with the desired values for instance attributes, as shown below.
 
