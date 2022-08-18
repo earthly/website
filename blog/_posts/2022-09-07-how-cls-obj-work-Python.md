@@ -33,7 +33,7 @@ In this tutorial, you'll learn how to:
 Python natively supports object-oriented programming and all variables that you create are objects.
 You can start a Python REPL and run the following line of code: it calls the `type()` function with `py_num` as the argument. The output reads `<class 'int'>` which means `py_num` is an object of the integer class.
 
-~~~{.bash caption=">_"}
+~~~{.python caption="main.py"}
 >>> py_num = 8
 >>> type(py_num)
 <class 'int'>
@@ -41,7 +41,7 @@ You can start a Python REPL and run the following line of code: it calls the `ty
 
 You can verify this for a few more built-in data types.
 
-~~~{.bash caption=">_"}
+~~~{.python caption="main.py"}
 >>> py_str = "A Python String"
 >>> type(py_str)
 <class 'str'>
@@ -67,7 +67,7 @@ class Student:
 
 After you've created a class, you can create an object by calling the class as if it were a function.
 
-~~~{.bash caption=">_"}
+~~~{.python caption="main.py"}
 student_1 = Student()
 ~~~
 
@@ -77,12 +77,12 @@ To verify if the created object is an instance of a particular class, you can us
 
 - Call the `isinstance()` function. `isinstance(<object_name>,<ClassName>)` returns `True` if `<object_name>` is an instance of the class `<ClassName>`; else it returns `False`.
 
-~~~{.bash caption=">_"}
+~~~{.python caption="main.py"}
 print(type(student_1))
 print(isinstance(student_1,Student))
 ~~~
 
-~~~{.bash caption=">_"}
+~~~{.python caption="Output"}
 # Output
 <class '__main__.Student'>
 True
@@ -106,7 +106,7 @@ Whenever a method is defined inside a class, it takes the instance of the class 
 The usage of `self` as the first parameter is a recommended practice according to the [PEP 8 Style Guide](https://peps.python.org/pep-0008/#function-and-method-arguments) and is not a strict requirement.
 </div>
 
-~~~{.bash caption=">_"}
+~~~{.python caption="main.py"}
 class Student:
     def __init__(self,first_name,last_name,tuition):
         self.first_name = first_name
@@ -121,7 +121,7 @@ Whenever you create an instance of the class `Student`, the `__init__` method do
 
 To improve readability, you can consider giving the same names to both the attributes and the parameters in the `__init__` constructor, but different names, as shown in the code snippet below, would work just fine.
 
-~~~{.bash caption=">_"}
+~~~{.python caption="main.py"}
 class Student:
     def __init__(self,fname,lname,tuition_amt):
         self.first_name = fname
@@ -133,11 +133,15 @@ Summing up what we've learned so far: The `Student` class serves as a templateâ€
 
 As the above attributes are unique to a specific object, they are referred to as **instance attributes** or **instance variables**.
 
+<div class="wide">
+
 ![create-objects-from-class]({{site.images}}{{page.slug}}/wcXVeEw.png)\
+
+</div>
 
 Now that you've defined the `__init__` method, you can instantiate objects with the desired values for instance attributes, as shown below.
 
-~~~{.bash caption=">_"}
+~~~{.python caption="main.py"}
 student_1 = Student('Jane','Smith',20000)
 student_2 = Student('John','Doe',15000)
 ~~~
@@ -150,7 +154,7 @@ Let's revisit the `Student` class example.
 
 Given the attributes `first_name` and `last_name`, we can define methods that use these attributes and return the full name and email for each student object. We name these methods `get_full_name()` and `get_email()`, respectively . Remember, all instance methods take the instance (`self`) as the first argument.
 
-~~~{.bash caption=">_"}
+~~~{.python caption="main.py"}
 class Student:
     def __init__(self,first_name,last_name,tuition):
         self.first_name = first_name
@@ -166,14 +170,14 @@ class Student:
 
 To call an instance method you can use, `<instance_name>.<method()>`. You can also call an instance method using the class with the syntax: `<ClassName>.<method(<instance_name>)`. Though verbose, this method helps understand how the instance is passed in as the first argument.
 
-~~~{.bash caption=">_"}
+~~~{.python caption="main.py"}
 # calling instance method on the instance
 print(student_1.get_email())
 # calling instance method using the class
 print(Student.get_email(student_2))
 ~~~
 
-~~~{.bash caption=">_"}
+~~~{.python caption="Output"}
 # Output
 Jane.Smith@school.edu
 John.Doe@school.edu
@@ -193,7 +197,7 @@ For example, in the `Student` class, if you're maintaining the student records f
 
 We can define another class variable, `num_students` that keeps track of the number of student objects created. Every time you create a new student object, the value of `num_students` is incremented by 1.
 
-~~~{.bash caption=">_"}
+~~~{.python caption="main.py"}
 class Student:
     academic_yr = '2022-23'
     num_students = 0
@@ -213,16 +217,16 @@ class Student:
 
 You can access class variables using the syntax: `ClassName.var_name`.
 
-~~~{.bash caption=">_"}
+~~~{.python caption="main.py"}
 student_1 = Student('Jane','Smith',20000)
 student_2 = Student('John','Doe',15000)
 print(Student.academic_yr)
 print(Student.num_students)
 ~~~
 
-We've created two student objects, hence the value of the class variable `num_students`  is now 2.
+We've created two student objects, hence the value of the class variable `num_students` is now 2.
 
-~~~{.bash caption=">_"}
+~~~{.python caption="Output"}
 # Output
 2022-23
 2
@@ -236,7 +240,7 @@ Suppose the university sets the value of `fee_waiver`, a number between zero and
 
 To convert an instance method to a class method, you can use the `@classmethod` decorator in Python. By convention, the first argument in class methods is `cls`, just the way the first argument in instance methods is `self`.
 
-~~~{.bash caption=">_"}
+~~~{.python caption="main.py"}
     @classmethod
     def set_fee_waiver(cls,fee_waiver):
         cls.fee_waiver = fee_waiver
@@ -244,7 +248,7 @@ To convert an instance method to a class method, you can use the `@classmethod` 
 
 Now that you've defined the class method, you can define an instance method `apply_fee_waiver()` that applies the fee waiver and returns the updated `tuition` for any student object.
 
-~~~{.bash caption=">_"}
+~~~{.python caption="main.py"}
     def apply_fee_waiver(self):
         self.tuition -= self.tuition*Student.fee_waiver
         return self.tuition
@@ -252,12 +256,12 @@ Now that you've defined the class method, you can define an instance method `app
 
 Let's set the `fee_waiver` and apply the fee waiver for `student_1`.
 
-~~~{.bash caption=">_"}
+~~~{.python caption="main.py"}
 Student.set_fee_waiver(0.1)
 print(student_1.apply_fee_waiver())
 ~~~
 
-~~~{.bash caption=">_"}
+~~~{.python caption="Output"}
 # Output
 # 0.1*tuition has been waived
 18000.0
@@ -269,7 +273,7 @@ print(student_1.apply_fee_waiver())
 
 Let's start with an example.
 
-~~~{.bash caption=">_"}
+~~~{.python caption="main.py"}
 def add(x,y):
   return x + y
 ~~~
@@ -282,7 +286,7 @@ In Python, a **decorator** is a function that extends the functionality of exist
 
 Read through the code snippet below.
 
-~~~{.bash caption=">_"}
+~~~{.python caption="main.py"}
 def double_xy(f):
   def wrapper(x,y):
     return f(x*2,y*2)
@@ -300,14 +304,14 @@ Next, you can call the function `double_xy()` with `add` as the argument and ass
 
 When you now call `add()` with values for `x` and `y`, it returns the sum of `2*x` and `2*y`.
 
-~~~{.bash caption=">_"}
+~~~{.python caption="main.py"}
 add = double_xy(add)
 add(1,2) #6  
 ~~~
 
 Instead of the above verbose syntax, you have a succinct syntax. Just add `@double_xy` above the definition of the `add()` function, as shown below.
 
-~~~{.bash caption=">_"}
+~~~{.python caption="main.py"}
 @double_xy
 def add(x,y):
   return x + y
@@ -320,7 +324,7 @@ Therefore, the function `double_xy()` _decorates_ the `add()` function to have t
 
 At this point, we have the following code in the `main.py` file.
 
-~~~{.bash caption=">_"}
+~~~{.python caption="main.py"}
 class Student:
    #class variables
     academic_yr = '2022-23'
@@ -353,7 +357,7 @@ Next, let's proceed to learn how to define class methods that can be used as con
 
 Suppose instead that the student data are available in the form of tuples - one tuple for each student. In this case, you should unpack the tuple into three variables, and then proceed to instantiate the object.
 
-~~~{.bash caption=">_"}
+~~~{.python caption="main.py"}
 student_tuple = ('Jane','Smith',20000)
 first_name,last_name,tuition = ('Jane','Smith',20000)
 student_1 = Student(first_name,last_name,tuition)
@@ -363,7 +367,7 @@ When you need to instantiate many objects, you'll have to repeat the unpacking s
 
 You can define a class method `from_tuple()` that unpacks the tuple and assigns the values to the attribute names. You can then return a reference to the class, which allows us to instantiate objects by calling the class method.
 
-~~~{.bash caption=">_"}
+~~~{.python caption="main.py"}
     @classmethod
     def from_tuple(cls,student_tuple):
         first_name, last_name, tuition = student_tuple
@@ -372,7 +376,7 @@ You can define a class method `from_tuple()` that unpacks the tuple and assigns 
 
 Now, you can create student objects from the tuples using the `from_tuple()` method as the constructor.
 
-~~~{.bash caption=">_"}
+~~~{.python caption="main.py"}
 student_tuple_1 = ('Jane','Smith',20000)
 student_1 = Student.from_tuple(student_tuple_1)
 student_tuple_2 = ('John','Doe',25000)
@@ -389,7 +393,7 @@ For example, in the `Student` class, you can define a method `is_fall()` that ta
 
 To work with dates, let's import the `date` class from Python's built-in `datetime` module.
 
-~~~{.bash caption=">_"}
+~~~{.python caption="main.py"}
 from datetime import date
 ~~~
 
@@ -397,7 +401,7 @@ To define a static method, you can use the `@staticmethod` decorator. Assuming t
 
 Let's add the following definition of  `is_fall()` to the class.
 
-~~~{.bash caption=">_"}
+~~~{.python caption="main.py"}
     @staticmethod
     def is_fall(date):
         if date.month in [9,10,11]:
@@ -408,19 +412,19 @@ Let's add the following definition of  `is_fall()` to the class.
 
 Even though a static method is not bound to the class or an instance of the class, it's still present in the namespace of the `Student` class. You can call the static method just the way you'd call any class method in scope with the syntax: `ClassName.static_method()`. Let's call `is_fall()` with today's date as the argument, and it's not fall yet in 2022.
 
-~~~{.bash caption=">_"}
+~~~{.python caption="main.py"}
 today = date.today()
 Student.is_fall(today)
 ~~~
 
-~~~{.bash caption=">_"}
+~~~{.python caption="Output"}
 # Output: 
 Not the fall semester
 ~~~
 
 Putting it all together, we have the following code in the `main.py` file.
 
-~~~{.bash caption=">_"}
+~~~{.python caption="main.py"}
 from datetime import date
 
 class Student:
@@ -472,7 +476,6 @@ In the next tutorial in the series, we'll go over how we can leverage and extend
 
 ## Outside Article Checklist
 
-- [ ] Add in Author page
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
