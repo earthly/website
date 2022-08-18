@@ -379,7 +379,7 @@ student_tuple_2 = ('John','Doe',25000)
 student_2 = Student.from_tuple(student_tuple_2)
 ~~~
 
-You can define variants of the above class constructors to construct objects by parsing Python strings, JSON files, and more.
+You can define variants of the above class constructors to construct objects by parsing Python strings, [JSON](/blog/convert-to-from-json) files, and more.
 
 ## How to Use Static Methods in Python
 
@@ -477,5 +477,4 @@ In the next tutorial in the series, we'll go over how we can leverage and extend
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
 - [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
