@@ -12,3 +12,6 @@ Tekton
 tkn
 homebrew
 Statefulsets
+untar
+controlplane
+cronjobs

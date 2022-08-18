@@ -251,3 +251,7 @@ Bala Priya C:
     name    : "Bala Priya C"
     bio     : "Bala is a technical writer who enjoys creating long-form content. Her areas of interest include math and programming. She shares her learning with the developer community by authoring tutorials, how-to guides, and more."
     avatar  : "/assets/images/authors/bala-priya.jpg"
+Anurag Kumar:
+    name    : "Anurag Kumar"
+    bio     : "Anurag is an engineering student who loves contributing to open source projects. He is primarily interested in cloud native ecosystem."
+    avatar  : "/assets/images/authors/anurag.png"
