@@ -46,7 +46,7 @@ When you first get started with Lens, it can be a bit confusing because you get 
 
 <div class="wide">
 
-![GitPod]({{site.images}}{{page.slug}}/CGnQ1sT.png)\
+![GitPod]({{site.images}}{{page.slug}}/gitpod.png)\
 
 </div>
 
