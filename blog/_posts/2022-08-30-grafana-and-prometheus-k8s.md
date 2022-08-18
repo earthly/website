@@ -155,7 +155,7 @@ Now we will execute some prometheus queries to see the internal state metrics of
 
 </div>
 
-As seen above, many Kubernetes internal and monitoring components are set as Prometheus targets on <http://localhost:9090/targets> or <<<<<http://<YOUR_SERVER_IP:9090/targets>>>>>> .
+As seen above, many Kubernetes internal and monitoring components are set as Prometheus targets on <http://localhost:9090/targets> or <http://YOUR_SERVER_IP:9090/targets>.
 
 Now, click on the graph icon in the top bar, enter the following commands in the search box to run the query, and then click on the graph bar below the search bar.
 
@@ -223,9 +223,13 @@ The next step is to login into the grafana, firstly you must first direct traffi
 kubectl port-forward svc/monitoring-grafana -n kubernetes-monitoring 3001:80
 ~~~
 
-In your browser, go to <http://localhost:3001/> or <<<<<<<<http://<YOUR_SERVER_IP:3001/>>>>>>>> if you're running on a cloud machine.
+In your browser, go to <http://localhost:3001/> or <http://YOUR_SERVER_IP:3001/> if you're running on a cloud machine.
+
+<div class="wide">
 
 ![Diagram of Grafana login Page]({{site.images}}{{page.slug}}/grafanalogin.png)
+
+</div>
 
 Next type the admin-username and password you have decoded to login.
 
@@ -235,7 +239,7 @@ Next type the admin-username and password you have decoded to login.
 
 </div>
 
-Now to start monitoring, type this URL in your browser type <http://localhost:3001/dashboards> or <<<<<<<<http://<YOUR_SERVER_IP:3001/dashboards>>>>>>>> if you're using a cloud server.
+Now to start monitoring, type this URL in your browser type <http://localhost:3001/dashboards> or <http://YOUR_SERVER_IP>:3001/dashboards>if you're using a cloud server.
 
 <div class="wide">
 
@@ -268,8 +272,3 @@ Follow the same steps to select dashboards for Kubernetes resources you want to 
 When using Kubernetes, monitoring the cluster is a good idea. Visualizing usage with a Prometheus and Grafana dashboard can be extremely beneficial because it reduces the workload of monitoring your cluster.
 
 {% include cta/cta1.html %}
-
-## Outside Article Checklist
-
-* [ ] Add in Author page
-* [ ] Optional: Find ways to break up content with quotes or images
