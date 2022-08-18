@@ -3,7 +3,7 @@ title: "How Classes and Objects Work in Python"
 categories:
   - Tutorials
 toc: true
-author: Adam
+author: Bala Priya C
 
 internal-links:
  - just an example
@@ -425,17 +425,6 @@ In this tutorial, we delved deep into how classes and objects work within the Py
 We then learned how to use class variables for attributes that take the _same_ value across all instances of a particular class and how class methods can be used as alternative class constructors. We also covered the use of static methods to define related functions that are associated neither with the class nor a particular instance. 
 
 In the next tutorial in the series, we'll go over how we can leverage and extend the functionality of existing classes using inheritance in Python.
-
-
-
-
-
-
-
-
-
-
-
 
 ## Outside Article Checklist
 
