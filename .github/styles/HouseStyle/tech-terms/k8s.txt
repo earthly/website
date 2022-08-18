@@ -14,3 +14,6 @@ homebrew
 Statefulsets
 prometheus
 kube
+untar
+controlplane
+cronjobs

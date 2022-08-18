@@ -251,3 +251,7 @@ Saka-Aiyedun Segun :
     name    : "Saka-Aiyedun Segun"
     bio     : "Segun is DevOps engineer keen on automating the software delivery lifecycle. He is also a technical writer who enjoys documenting the processes and learning new things."
     avatar  : "/assets/images/authors/saka.jpg"
+Anurag Kumar:
+    name    : "Anurag Kumar"
+    bio     : "Anurag is an engineering student who loves contributing to open source projects. He is primarily interested in cloud native ecosystem."
+    avatar  : "/assets/images/authors/anurag.png"
