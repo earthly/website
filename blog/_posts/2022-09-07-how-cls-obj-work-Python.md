@@ -474,10 +474,11 @@ We then learned how to use class variables for attributes that take the _same_ v
 
 In the next tutorial in the series, we'll go over how we can leverage and extend the functionality of existing classes using inheritance in Python.
 
+{% include cta/cta1.html %}
+
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
