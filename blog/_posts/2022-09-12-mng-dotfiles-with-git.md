@@ -19,7 +19,7 @@ Let's understand how dotfiles will solve this problem and how you will be much m
 
 Dotfiles is the name given to the set of hidden files used to store the state configuration or the preferences configuration of a tool.
 
-The term "dotfiles" comes, like most things in computing, from the old Unix kernels that adopted the practice of adding the prefix`.` in front of the filename to make that file, by default, a hidden file, i.e., a file that is not shown in the listing for `ls.` For example, `/home/.hushlogin'it is a common file in Linux nowadays to remove the login message when accessing SSH.
+The term "dotfiles" comes, like most things in computing, from the old Unix kernels that adopted the practice of adding the prefix`.` in front of the filename to [make](/blog/makefiles-on-windows) that file, by default, a hidden file, i.e., a file that is not shown in the listing for `ls.` For example, `/home/.hushlogin'it is a common file in Linux nowadays to remove the login message when accessing [SSH](/blog/encrypting-data-with-ssh-keys-and-golang).
 
 As any Unix based system has a very strong relationship with files, since most modules and even devices or network interfaces are shown as files within the file system, they are highly important for software development.
 
@@ -45,7 +45,7 @@ _Note:_ _It is important to say that if your files contain sensitive data, like 
 
 ## Managing Your Dotfiles
 
-The idea of ​​managing configuration files using git and submodules is to make the configuration easier to segment. Being segmented makes it easier to maintain and find the configuration we are looking for. In our case, the structure is:
+The idea of ​​managing configuration files using git and submodules is to [make](/blog/makefiles-on-windows) the configuration easier to segment. Being segmented makes it easier to maintain and find the configuration we are looking for. In our case, the structure is:
 
 - Dotfiles calling repos
 - Repo with app configuration as a submodule
@@ -152,7 +152,7 @@ The command does not display any output if everything went well, so the way to i
 
 ### Conclusion
 
-Centralizing Dotfiles online via a version control tool like Github or Gitlab makes it very easy to synchronize configurations, which helps simplify setup and collaborate, allowing a reference configuration that can be installed on each machine.
+Centralizing Dotfiles online via a version control tool like [Github](/blog/ci-comparison) or [Gitlab](/blog/gitlab-ci)makes it very easy to synchronize configurations, which helps simplify setup and collaborate, allowing a reference configuration that can be installed on each machine.
 
 As you will have understood, taking an interest in _dotfile_ files is not only reserved for people who want to know the finer cogs of system administration. On the contrary, it can allow you to optimize your development environment(s) in order to increase productivity.
 
@@ -164,5 +164,4 @@ As you will have understood, taking an interest in _dotfile_ files is not only r
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
 - [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
