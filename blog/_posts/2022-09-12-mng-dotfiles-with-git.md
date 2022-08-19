@@ -6,7 +6,11 @@ toc: true
 author: Adam
 
 internal-links:
- - just an example
+ - Dotfile
+ - Git
+ - Github
+ - Gitlab
+ - Bash
 ---
 
 Have you ever found yourself in a situation where you had to format your computer and manually reinstall all the programs you were using? Or did you change machines and have to go to the page of each of the software you use and download and run the installer one by one? Or even customize some mouse/keyboard settings?
@@ -165,4 +169,3 @@ As you will have understood, taking an interest in _dotfile_ files is not only r
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Add keywords for internal links to front-matter
