@@ -206,3 +206,10 @@ instrumenta
 proport
 uncommented
 keyphrase
+
+dotfiles
+dotfile
+bashrc
+rf
+hardlink
+Gitlab
