@@ -35,6 +35,8 @@ Nowadays, the vast majority of tools use dotfiles to maintain configuration file
 
 ## The Problem With Dotfiles
 
+![Problems]({{site.images}}{{page.slug}}/prob.jpg)\
+
 You can save a copy of dotfiles on some online storage service like Dropbox. This is not a problem as long as you only save one file, but what about when you start saving multiple files? How to manage it from several programs, in several folders, and worse, how to restore it all later?
 
 There are [several projects](https://dotfiles.github.io/utilities/) to solve the problem of how we can keep our dotfiles synchronized on machines with the same operating system. One solution is to put your dotfiles under version control.
@@ -48,6 +50,8 @@ Git, therefore, seems perfectly adapted to our needs since it allows you to save
 _Note:_ _It is important to say that if your files contain sensitive data, like passwords, keys, etc., then you may need to manage them in a private repository or use tutorials like this one to make them encrypted._
 
 ## Managing Your Dotfiles
+
+![Managing]({{site.images}}{{page.slug}}/mng.png)\
 
 The idea of ​​managing configuration files using git and submodules is to [make](/blog/makefiles-on-windows) the configuration easier to segment. Being segmented makes it easier to maintain and find the configuration we are looking for. In our case, the structure is:
 
@@ -75,6 +79,8 @@ The file named above takes care of loading:
 This can be done with all applications. Having a more segmented configuration makes it easier to find the specific configuration we are looking for. This also helps make it harder to break the configuration and easier to debug. Another benefit of this segmentation is the ease of reusing code if we use more than one terminal (bash, zsh, etc.) or want to migrate between them.
 
 ### And How Do We Do?
+
+![How]({{site.images}}{{page.slug}}/how.png)\
 
 The process is fairly simple. With git already installed, you can start the repository by executing:
 
@@ -120,6 +126,8 @@ _Note:_ _If the submodules also have submodules, the start and update process mu
 
 ## Difference Between Hard And Soft Links
 
+![Difference]({{site.images}}{{page.slug}}/diff.png)\
+
 After moving all the files to a structure that you are happy with in your repository, you can use the _hard links_ functionality of Unix-based systems so that you can create a connection between your original file and the location where the dotfile will exist.
 
 The difference between _hard links_ and _soft links_ is the fact that _hard links_ will be a pointer to the file itself; that is, it is a different name for the same original file that is independent of any other system resource; it is as if you were talking about a file having multiple names.
@@ -139,6 +147,8 @@ If you want to delete the original file, you will also need to delete the link, 
 Soft links do not allow you to do this, as they are just files that point to other files. So for dotfiles, it is much better to have a hardlink that allows you to directly edit a dotfile wherever it is, and those changes are reflected in your Git repository.
 
 ## Creating the HardLink
+
+![Creating]({{site.images}}{{page.slug}}/create.png)\
 
 Now that you have the repository with the files, all that's left is to link them to their original locations.
 
@@ -166,6 +176,4 @@ As you will have understood, taking an interest in _dotfile_ files is not only r
 
 - [ ] Add in Author page
 - [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
+
