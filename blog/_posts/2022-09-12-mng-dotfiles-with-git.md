@@ -156,6 +156,8 @@ Centralizing Dotfiles online via a version control tool like [Github](/blog/ci-c
 
 As you will have understood, taking an interest in _dotfile_ files is not only reserved for people who want to know the finer cogs of system administration. On the contrary, it can allow you to optimize your development environment(s) in order to increase productivity.
 
+{% include cta/cta1.html %}
+
 ## Outside Article Checklist
 
 - [ ] Add in Author page
@@ -164,4 +166,3 @@ As you will have understood, taking an interest in _dotfile_ files is not only r
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
-- [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
