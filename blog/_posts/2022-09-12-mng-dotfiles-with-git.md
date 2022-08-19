@@ -175,5 +175,3 @@ As you will have understood, taking an interest in _dotfile_ files is not only r
 ## Outside Article Checklist
 
 - [ ] Add in Author page
-- [ ] Create header image in Canva
-
