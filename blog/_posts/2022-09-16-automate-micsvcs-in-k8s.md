@@ -1,9 +1,9 @@
 ---
-title: "Put Your Best Title Here"
+title: "How to automate a microservice setup in Kubernetes using Earthly"
 categories:
   - Tutorials
 toc: true
-author: Adam
+author: Ayomide Akinola
 
 internal-links:
  - just an example
