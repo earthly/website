@@ -624,7 +624,7 @@ Deploy to a specific environment e.g dev (using the digitalocean example)
 earthly +deploy --env=dev --DIGITALOCEAN_ACCESS_TOKEN={token}
 ~~~
 
-![earthly +deploy](https://i.imgur.com/Swz2Xq6.png)
+![earthly +deploy]({{site.images}}{{page.slug}}/Swz2Xq6.png)
 
 ## Add Auto-Deploy Target
 
