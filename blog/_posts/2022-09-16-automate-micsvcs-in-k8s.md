@@ -319,13 +319,10 @@ To enable pushing use
 
         earthly --push ...
 
-
-
  4. Local Output 🎁
 ————————————————————————————————————————————————————————————————————————————————
 
 Artifact github.com/Doctordrayfocus/K8AutoSetup+install/sample-service output as sample-service
-
 
 ========================== 🌍 Earthly Build  ✅ SUCCESS ==========================
 
@@ -379,7 +376,6 @@ WORKDIR /build-arena
 IMPORT ./templates/kubernetes AS kubernetes_engine
 IMPORT ./templates/docker AS docker_engine
 
-
 install:
     ARG service='sample'
     ARG envs='dev,prod'
@@ -397,7 +393,6 @@ install:
         DO kubernetes_engine+NAMESPACE --service=$service --env=$env --dir=$dir
     END
     SAVE ARTIFACT $service AS LOCAL ${service}
-
 
 build:
     ARG version='0.1'
@@ -436,7 +431,6 @@ earthly --push +build --service=sample-service --version=0.1
 ~~~
 
 > The `--push` argument must be added so that earthly will push the generated docker image to the specified container registry.
-
 > The docker image running earthly must have the right authority to successfully push the docker image to the remote repository. If you use docker hub you can run `docker login --username=your_username --password=your_password`. If you use AWS, follow this [tutorial](https://docs.aws.amazon.com/AmazonECR/latest/userguide/getting-started-cli.html) to authenticate docker. For digitalocean, follow this [tutorial](https://docs.digitalocean.com/products/container-registry/how-to/use-registry-docker-kubernetes/). For Microsoft Azure, follow this [tutorial](https://docs.microsoft.com/en-us/azure/container-registry/container-registry-authentication?tabs=azure-cli). and for Google Cloud, follow this [tutorial](https://cloud.google.com/container-registry/docs/advanced-authentication).
 
 If your build script was successful, you should see an output like this-
