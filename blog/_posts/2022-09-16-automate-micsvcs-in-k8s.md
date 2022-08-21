@@ -11,12 +11,12 @@ internal-links:
 
 ## Introduction
 
-Kubernetes(K8s) is an open source system that automates the deployment, scaling, and management of containerized applications such as microservices. It's designed to make it easy to deploy applications to a wide range of virtual machines and cloud providers e.g Digital ocean, AWS. K8s is built on a foundation of open standards. It helps you manage the lifecycle of processes running in the container. This guide will walk you through how to automatically setup your microservices with k8s using Earthly.
+Kubernetes(K8s) is an open source system that automates the [deployment](/blog/deployment-strategies), scaling, and management of containerized applications such as microservices. It's designed to [make](/blog/makefiles-on-windows) it easy to deploy applications to a wide range of virtual machines and cloud providers e.g Digital ocean, AWS. K8s is built on a foundation of open standards. It helps you manage the lifecycle of processes running in the container. This guide will walk you through how to automatically setup your microservices with k8s using Earthly.
 A complete microservice setup on Kubernetes requires both the configuration and deployment of your application. Each service will have its own unique functionality and operates independently of the other services, and can be deployed individually.
 
 ## Why Should Microservice Setup Be Automated?
 
-Microservice configuration and deployment should be automated because it makes it easier for you to add new components to the system or change existing ones. For example, if you need to add a new feature or fix a bug in one of your microservices, you can do so without having to manually set up or deploy it on every instance of Kubernetes where it runs. Automation also helps ensure consistency across all instances of Kubernetes and prevents human error from causing problems in your codebase.
+Microservice configuration and [deployment](/blog/deployment-strategies) should be automated because it makes it easier for you to add new components to the system or change existing ones. For example, if you need to add a new feature or fix a bug in one of your microservices, you can do so without having to manually set up or deploy it on every instance of Kubernetes where it runs. Automation also helps ensure consistency across all instances of Kubernetes and prevents human error from causing problems in your codebase.
 
 Lastly, microservices are applications that run on different hosts, so they need to be configured separately. If you have multiple instances of the same service running, each instance needs its own configuration. This means that you need to have a way to ensure that every instance is configured correctly before it can be deployed. Automating this process makes it easy for you to repeat this process without stress.
 
@@ -26,11 +26,11 @@ Lastly, microservices are applications that run on different hosts, so they need
 
 - You have Earthly set up. If you don't, you can install it by following these [instructions](https://earthly.dev/get-earthly).
 
-- You have a basic understanding of Docker and Kubernetes.
+- You have a basic understanding of [Docker](/blog/rails-with-docker) and Kubernetes.
   
 ## Setup A Template
 
-To automate your microservice setup, you need to create a template that will be used to generate new microservices with default docker and kubernetes configuration, as well as build push docker images and deploy kubernetes configuration to your kubernetes cluster.
+To automate your microservice setup, you need to create a template that will be used to generate new microservices with default docker and kubernetes configuration, as well as build push [docker](/blog/rails-with-docker) images and deploy kubernetes configuration to your kubernetes cluster.
 
 To get started, create a brand new folder called K8AutoSetup.
 
@@ -50,7 +50,7 @@ FROM bash:4.4
 WORKDIR /build-arena
 ~~~
 
-The string `VERSION 0.6` specifies the earthly version to be used. Because some shell commands will be executed, the `bash:4.4` docker image is used here. The `WORKDIR` is the container folder where the operations will take place; it can be set to anything.
+The string `VERSION 0.6` specifies the earthly version to be used. Because some shell commands will be executed, the `bash:4.4` [docker](/blog/rails-with-docker) image is used here. The `WORKDIR` is the container folder where the operations will take place; it can be set to anything.
 
 ## Add Install Target
 
@@ -145,7 +145,7 @@ You can easily pass arguments to Earthly to customize a target. Each of the prec
 SAVE IMAGE --push ${docker_registry}/${service}_node_app:${version}
 ~~~
 
-The last line of this target tags and pushes the built docker image to the specified container registry.
+The last line of this target tags and pushes the built docker image to the specified [container](/blog/docker-slim) registry.
 
 Next, you'll add your Kubernetes configuration files, such as ConfigMaps, Secrets, Deployments, Services, and so on. To deploy the node js app, you will need a `service.yaml` and a `deployment.yaml` file.
 
@@ -745,7 +745,7 @@ That's it! You have successfully automated your microservices setup and deployme
 
 ## Conclusion
 
-In this article, you have learned what kubernetes and microservices are, and also why it is necessary to automate your microservice setup(configuration and deployment) in kubernetes. You were introduced to Earthly(Earthly is a CI/CD framework that helps you Develop CI/CD pipelines locally and run them anywhere.) Finally, you learned the steps involved in automating your microservice setup.
+In this article, you have learned what kubernetes and microservices are, and also why it is necessary to automate your microservice setup(configuration and deployment) in kubernetes. You were introduced to Earthly(Earthly is a [CI/CD](/blog/ci-vs-cd) framework that helps you Develop CI/CD pipelines locally and run them anywhere.) Finally, you learned the steps involved in automating your microservice setup.
 
 ## Outside Article Checklist
 
@@ -754,7 +754,6 @@ In this article, you have learned what kubernetes and microservices are, and als
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
 - [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
