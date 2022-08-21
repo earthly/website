@@ -6,7 +6,11 @@ toc: true
 author: Ayomide Akinola
 
 internal-links:
- - just an example
+ - Kubernetes
+ - Microservice
+ - Docker
+ - Earthly
+ - Automate
 ---
 
 ## Introduction
@@ -756,4 +760,3 @@ In this article, you have learned what kubernetes and microservices are, and als
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Add keywords for internal links to front-matter
