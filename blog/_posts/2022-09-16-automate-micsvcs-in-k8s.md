@@ -756,7 +756,6 @@ In this article, you have learned what kubernetes and microservices are, and als
 ## Outside Article Checklist
 
 - [ ] Add in Author page
-- [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
