@@ -16,3 +16,4 @@ rolodex
 versionable
 papercut
 YubiKey
+skillsets
