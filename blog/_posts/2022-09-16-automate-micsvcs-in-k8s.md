@@ -38,7 +38,7 @@ To automate your microservice setup, you need to create a template that will be 
 
 To get started, create a brand new folder called K8AutoSetup.
 
-( The completed solution is available for reference in [my github repo](https://github.com/Doctordrayfocus/K8AutoSetup) )
+(The completed solution is available for reference in [my github repo](https://github.com/Doctordrayfocus/K8AutoSetup))
 
 ~~~{.bash caption=">_"}
 mkdir K8AutoSetup
@@ -48,7 +48,7 @@ In your code editor, open the new folder and create a new file called "Earthfile
 
 Include an earthfile version, dependencies, and a work directory.
 
-~~~{.bash caption=">_"}
+~~~{.bash caption="earthfile"}
 VERSION 0.6
 FROM bash:4.4
 WORKDIR /build-arena
@@ -66,7 +66,7 @@ Create a directory called "**templates**". Then, in the "**templates**" folder, 
 
 Your folder structure should look like this
 
-~~~{.bash caption=">_"}
+~~~{.dockerfile caption="Dockerfile"}
 $ tree
 .
 ├── Earthfile
@@ -82,14 +82,15 @@ Create a new **Earthfile** in the *docker* directory. This Earthfile will includ
 
 Add this to your Earthfile.
 
-~~~{.bash caption=">_"}
+~~~{.dockerfile caption="Earthfile"}
 VERSION 0.6
 FROM bash:4.4
 WORKDIR /setup-arena
   
 project:
     # clone project
-    GIT CLONE https://github.com/Doctordrayfocus/vue-typescript-template nodejs
+    GIT CLONE https://github.com/Doctordrayfocus/vue-typescript-template \
+    nodejs
     RUN rm nodejs/package-lock.json
     SAVE ARTIFACT nodejs /nodejs
 
@@ -145,7 +146,8 @@ ARG node_env='development'
 
 You can easily pass arguments to Earthly to customize a target. Each of the preceding arguments has a default value. The `version` argument specifies the version of the docker image. You can configure your Docker container registry using the `docker_registry` argument. The `service` argument specifies the microservice for which the docker image is being built. Furthermore, the `node_env` option allows you to specify the node environment that should be used in the docker image.
 
-~~~{.bash caption=">_"}
+~~~{.dockerfile caption="Dockerfile"}
+
 SAVE IMAGE --push ${docker_registry}/${service}_node_app:${version}
 ~~~
 
@@ -159,7 +161,7 @@ Because these kubernetes configuration files must be generated automatically, yo
 
 Add a new **Earthfile** to the **kubernetes** folder. To auto-generate the deployment.yaml file, add this to the Earthfile.
 
-~~~{.bash caption=">_"}
+~~~{.yaml caption="deployment.yaml"}
 VERSION 0.6
 
 DEPLOYMENT:
@@ -200,7 +202,7 @@ spec:
 
 Add for `services.yaml` auto generation, add
 
-~~~{.bash caption=">_"}
+~~~{.yaml caption="services.yaml"}
 SERVICE:
     COMMAND
     ARG service='sample'
@@ -227,7 +229,7 @@ spec:
 
 Then to auto generate the namespace.yaml file
 
-~~~{.bash caption=">_"}
+~~~{.yml caption="namespace.yaml"}
 NAMESPACE:
     COMMAND
     ARG service='sample'
@@ -247,7 +249,7 @@ The above scripts let you specify arguments that can change each configuration f
 
 Return to your main **Earthfile** in the root folder. Both the **docker** and **templates** folders' Earthfiles must be imported into the main **Earthfile**. This is so that the main **Earthfile** can access them. Your main **Earthfile** should now look something like this.
 
-~~~{.bash caption=">_"}
+~~~{.dockerfile caption="Earthfile"}
 VERSION 0.6
 FROM bash:4.4
 WORKDIR /build-arena
@@ -257,7 +259,7 @@ IMPORT ./templates/docker AS docker_engine
 
 Then add `install` target to initiate template installation from the main **Earthfile**
 
-~~~{.bash caption=">_"}
+~~~{.dockerfile caption="Earthfile"}
 install:
     ARG service='sample'
     ARG envs='dev,prod'
@@ -270,9 +272,12 @@ install:
         ENV dir="./$service/environments/$env"
         RUN echo "Creating environment $env"
         RUN mkdir -p $dir
-        DO kubernetes_engine+DEPLOYMENT --service=$service --env=$env --dir=$dir --version=$version --docker_registry=$docker_registry
-        DO kubernetes_engine+SERVICE --service=$service --env=$env --dir=$dir
-        DO kubernetes_engine+NAMESPACE --service=$service --env=$env --dir=$dir
+        DO kubernetes_engine+DEPLOYMENT --service=$service --env=$env \
+        --dir=$dir --version=$version --docker_registry=$docker_registry
+        DO kubernetes_engine+SERVICE --service=$service \
+        --env=$env --dir=$dir
+        DO kubernetes_engine+NAMESPACE --service=$service \
+        --env=$env --dir=$dir
     END
     SAVE ARTIFACT $service AS LOCAL ${service}
 
@@ -282,7 +287,7 @@ The `install` target accepts the project environments as a comma-separated strin
 
 To test your script, run this in this project root folder
 
-~~~{.bash caption=">_"}
+~~~{.dockerfile caption="Earthfile"}
 earthly +install --service=sample-service
 ~~~
 
@@ -341,7 +346,7 @@ If your script ran without any errors, you should see a new folder named "**samp
 
 Add the `build` target to the main **Earthfile** to continue. This target will execute the docker build script and push the completed Docker image to a container registry.
 
-~~~{.bash caption=">_"}
+~~~{.dockerfile caption="Earthfile"}
 build:
     ARG version='0.1'
     ARG docker_registry='drayfocus'
@@ -349,12 +354,14 @@ build:
     ARG envs='dev,prod'
     ARG node_env="development"
 
-    BUILD docker_engine+node-app --version=$version --docker_registry=$docker_registry --service=$service --node_env=$node_env
+    BUILD docker_engine+node-app --version=$version \
+    --docker_registry=$docker_registry --service=$service \
+    --node_env=$node_env
 ~~~
 
 Following the creation of the Docker image, the `deployment.yaml` file for each environment must be updated with the most recent Docker image version. To accomplish this, update your build target.
 
-~~~{.bash caption=">_"}
+~~~{.yml caption="deployment.yaml"}
 build:
     ARG version='0.1'
     ARG docker_registry='drayfocus'
@@ -362,18 +369,22 @@ build:
     ARG envs='dev,prod'
     ARG node_env="development"
 
-    BUILD docker_engine+node-app --version=$version --docker_registry=$docker_registry --service=$service --node_env=$node_env
+    BUILD docker_engine+node-app --version=$version \
+    --docker_registry=$docker_registry --service=$service \
+    --node_env=$node_env
 
     ## Update deployment.yaml with latest versions
     FOR --sep="," env IN "$envs"    
-        DO kubernetes_engine+DEPLOYMENT --service=$service --env=$env --version=$version --docker_registry=$docker_registry
-        SAVE ARTIFACT $service/environments/$env/* AS LOCAL ${service}/environments/$env/
+        DO kubernetes_engine+DEPLOYMENT --service=$service \
+        --env=$env --version=$version --docker_registry=$docker_registry
+        SAVE ARTIFACT $service/environments/$env/* AS LOCAL \
+        ${service}/environments/$env/
     END
 ~~~
 
 Your main **Earthfile** should now look like this,  
 
-~~~{.bash caption=">_"}
+~~~{.dockerfile caption="Earthfile"}
 VERSION 0.6
 FROM bash:4.4
 WORKDIR /build-arena
@@ -392,9 +403,13 @@ install:
         ENV dir="./$service/environments/$env"
         RUN echo "Creating environment $env"
         RUN mkdir -p $dir
-        DO kubernetes_engine+DEPLOYMENT --service=$service --env=$env --dir=$dir --version=$version --docker_registry=$docker_registry
-        DO kubernetes_engine+SERVICE --service=$service --env=$env --dir=$dir
-        DO kubernetes_engine+NAMESPACE --service=$service --env=$env --dir=$dir
+        DO kubernetes_engine+DEPLOYMENT --service=$service \
+        --env=$env --dir=$dir --version=$version \
+        --docker_registry=$docker_registry
+        DO kubernetes_engine+SERVICE --service=$service \
+        --env=$env --dir=$dir
+        DO kubernetes_engine+NAMESPACE --service=$service \
+        --env=$env --dir=$dir
     END
     SAVE ARTIFACT $service AS LOCAL ${service}
 
@@ -405,12 +420,16 @@ build:
     ARG envs='dev,prod'
     ARG node_env="development"
 
-    BUILD docker_engine+node-app --version=$version --docker_registry=$docker_registry --service=$service --node_env=$node_env
+    BUILD docker_engine+node-app --version=$version \
+    --docker_registry=$docker_registry --service=$service \
+    --node_env=$node_env
 
     ## Update deployment.yaml with latest versions
     FOR --sep="," env IN "$envs"    
-        DO kubernetes_engine+DEPLOYMENT --service=$service --env=$env --version=$version --docker_registry=$docker_registry
-        SAVE ARTIFACT $service/environments/$env/* AS LOCAL ${service}/environments/$env/
+        DO kubernetes_engine+DEPLOYMENT --service=$service \
+        --env=$env --version=$version --docker_registry=$docker_registry
+        SAVE ARTIFACT $service/environments/$env/* AS LOCAL \
+        ${service}/environments/$env/
     END
 ~~~
 
@@ -418,19 +437,19 @@ To test the build target,
 
 Install the template
 
-~~~{.bash caption=">_"}
+~~~{.dockerfile caption="Eathfile"}
 earthly +install --service=sample-service
 ~~~
 
 Change directory to "**sample-service**"
 
-~~~{.bash caption=">_"}
+~~~{.dockerfile caption="Eathfile"}
 cd sample-service
 ~~~
   
 Then run the build target
 
-~~~{.bash caption=">_"}
+~~~{.dockerfile caption="Eathfile"}
 earthly --push +build --service=sample-service --version=0.1
 ~~~
 
@@ -439,7 +458,7 @@ earthly --push +build --service=sample-service --version=0.1
 
 If your build script was successful, you should see an output like this-
 
-~~~{.bash caption=">_"}
+~~~{.bash caption="Output"}
 nodejs_docker_engine+node-app | docker_registry=drayfocus node_env=developement service=sample-service version=0.1
 nodejs_docker_engine+node-app | *cached* --> IF [ "$node_env" = "development" ]
              context | --> local context .
@@ -548,7 +567,7 @@ For example,
   
 If you use digitalocean-
 
-~~~{.bash caption=">_"}
+~~~{.dockerfile caption="Earthfile"}
 deploy:
     FROM alpine/doctl:1.22.2
     # setup kubectl
@@ -572,7 +591,7 @@ deploy:
 
 If you use AWS-
   
-~~~{.bash caption=">_"}
+~~~{.dockerfile caption="Earthfile"}
 deploy:
     FROM guitarrapc/docker-awscli-kubectl
     # setup kubectl
@@ -589,7 +608,8 @@ deploy:
     RUN aws configure set default.region $AWS_DEFAULT_REGION
 
     # save Kube config
-    RUN aws eks update-kubeconfig --region $AWS_DEFAULT_REGION --name cluster-name
+    RUN aws eks update-kubeconfig --region $AWS_DEFAULT_REGION \
+    --name cluster-name
 
     ## deploy kubernetes configs
     RUN kubectl apply -f environments/${env}/namespace.yaml
@@ -600,35 +620,39 @@ To test the "deploy" target:
 
 Install the template.
 
-~~~{.bash caption=">_"}
+~~~{.dockerfile caption="Earthfile"}
 earthly +install --service=sample-service.
 ~~~
 
 Change directory to "sample-service".
 
-~~~{.bash caption=">_"}
+~~~{.dockerfile caption="Earthfile"}
 cd sample_service.
 ~~~
 
 Run the build target.
 
-~~~{.bash caption=">_"}
+~~~{.dockerfile caption="Earthfile"}
 earthly --push +build --service=sample-service --version=0.1.
 ~~~
 
 Deploy to a specific environment e.g dev (using the digitalocean example)
 
-~~~{.bash caption=">_"}
+~~~{.dockerfile caption="Earthfile"}
 earthly +deploy --env=dev --DIGITALOCEAN_ACCESS_TOKEN={token}
 ~~~
 
-![earthly +deploy]({{site.images}}{{page.slug}}/Swz2Xq6.png)
+<div class="wide">
+
+![earthly +deploy]({{site.images}}{{page.slug}}/Swz2Xq6.png)\
+
+</div>
 
 ## Add Auto-Deploy Target
 
 This target doesn't do much. It simply combines the build and deploy targets, so they can be initiated together.
 
-~~~{.bash caption=">_"}
+~~~{.dockerfile caption="Earthfile"}
 auto-deploy:
     ARG version='0.1'
     ARG docker_registry='drayfocus'
@@ -637,17 +661,19 @@ auto-deploy:
     ARG DIGITALOCEAN_ACCESS_TOKEN=""
      
     # build and push docker images
-    BUILD +build --version=$version –service=$service --docker_registry=$docker_registry
+    BUILD +build --version=$version –service=$service \
+    --docker_registry=$docker_registry
       
     # Deploy to kubernetes
-    BUILD +deploy --env=$env --DIGITALOCEAN_ACCESS_TOKEN=$DIGITALOCEAN_ACCESS_TOKEN
+    BUILD +deploy --env=$env \
+    --DIGITALOCEAN_ACCESS_TOKEN=$DIGITALOCEAN_ACCESS_TOKEN
 ~~~
 
 ## Testing Your Template
 
 Bringing everything together. Your main **Earthfile** should look like this now,
 
-~~~{.bash caption=">_"}
+~~~{.dockerfile caption="Earthfile"}
 VERSION 0.6
 FROM bash:4.4
 WORKDIR /build-arena
@@ -666,9 +692,13 @@ install:
         ENV dir="./$service/environments/$env"
         RUN echo "Creating environment $env"
         RUN mkdir -p $dir
-        DO kubernetes_engine+DEPLOYMENT --service=$service --env=$env --dir=$dir --version=$version --docker_registry=$docker_registry
-        DO kubernetes_engine+SERVICE --service=$service --env=$env --dir=$dir
-        DO kubernetes_engine+NAMESPACE --service=$service --env=$env --dir=$dir
+        DO kubernetes_engine+DEPLOYMENT --service=$service \
+        --env=$env --dir=$dir --version=$version \
+        --docker_registry=$docker_registry
+        DO kubernetes_engine+SERVICE --service=$service \
+        --env=$env --dir=$dir
+        DO kubernetes_engine+NAMESPACE --service=$service \
+        --env=$env --dir=$dir
     END
     SAVE ARTIFACT $service AS LOCAL ${service}
 
@@ -680,12 +710,16 @@ build:
     ARG envs='dev,prod'
     ARG node_env="development"
 
-    BUILD docker_engine+node-app --version=$version --docker_registry=$docker_registry --service=$service --node_env=$node_env
+    BUILD docker_engine+node-app --version=$version \
+    --docker_registry=$docker_registry --service=$service \
+    --node_env=$node_env
 
     ## Update deployment.yaml with latest versions
     FOR --sep="," env IN "$envs"    
-        DO kubernetes_engine+DEPLOYMENT --service=$service --env=$env --version=$version --docker_registry=$docker_registry
-        SAVE ARTIFACT $service/environments/$env/* AS LOCAL ${service}/environments/$env/
+        DO kubernetes_engine+DEPLOYMENT --service=$service \
+        --env=$env --version=$version --docker_registry=$docker_registry
+        SAVE ARTIFACT $service/environments/$env/* AS LOCAL \
+        ${service}/environments/$env/
     END
 
 # The content of this depends on the cloud service provider you use
@@ -716,11 +750,13 @@ auto-deploy:
     ARG DIGITALOCEAN_ACCESS_TOKEN=""
 
     # build and push docker images
-    BUILD +build --version=$version --service=$service --docker_registry=$docker_registry
+    BUILD +build --version=$version --service=$service \
+    --docker_registry=$docker_registry
 
     # Deploy to kubernetes.
 
-    BUILD +deploy --env=$env --DIGITALOCEAN_ACCESS_TOKEN=$DIGITALOCEAN_ACCESS_TOKEN
+    BUILD +deploy --env=$env \
+    --DIGITALOCEAN_ACCESS_TOKEN=$DIGITALOCEAN_ACCESS_TOKEN
 ~~~
 
 You can delete the "**sample-service**" folder or any other folder that was generated during testing.
@@ -731,7 +767,7 @@ Your template is now ready for use. Push the template to a git repository to mak
 
 To generate a template for a new microservice, run
 
-~~~{.bash caption=">_"}
+~~~{.dockerfile caption="Earthfile"}
 earthly {template_git_url}+install --service=service_name
 ~~~
 
@@ -741,8 +777,10 @@ You can then edit the source code repository in the docker's **Earthfile** with 
 
 To build and deploy the microservice, run this in the project folder ( and also add it to your CI/CD pipeline)
 
-~~~{.bash caption=">_"}
-earthly --push +auto-deploy –-service={service} --env={env} –-version={version} –-DIGITALOCEAN_ACCESS_TOKEN={DIGITALOCEAN_ACCESS_TOKEN}
+~~~{.dockerfile caption="Earthfile"}
+earthly --push +auto-deploy –-service={service} \
+--env={env} –-version={version} \
+–-DIGITALOCEAN_ACCESS_TOKEN={DIGITALOCEAN_ACCESS_TOKEN}
 ~~~
 
 That's it! You have successfully automated your microservices setup and deployment. You can also check out the final project on [github](https://github.com/Doctordrayfocus/K8AutoSetup).
@@ -752,9 +790,3 @@ That's it! You have successfully automated your microservices setup and deployme
 In this article, you have learned what kubernetes and microservices are, and also why it is necessary to automate your microservice setup(configuration and deployment) in kubernetes. You were introduced to Earthly(Earthly is a [CI/CD](/blog/ci-vs-cd) framework that helps you Develop CI/CD pipelines locally and run them anywhere.) Finally, you learned the steps involved in automating your microservice setup.
 
 {% include cta/cta1.html %}
-
-## Outside Article Checklist
-
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
