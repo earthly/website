@@ -251,3 +251,7 @@ Anurag Kumar:
     name    : "Anurag Kumar"
     bio     : "Anurag is an engineering student who loves contributing to open source projects. He is primarily interested in cloud native ecosystem."
     avatar  : "/assets/images/authors/anurag.png"
+Talha Khalid:
+    name    : "Talha Khalid"
+    bio     : "Talha Khalid, full stack developer turned writer. If he isn’t spending time with his cat, Petrov you can almost always find him in some random coffee shop."
+    avatar  : "/assets/images/authors/talha.jpg"
