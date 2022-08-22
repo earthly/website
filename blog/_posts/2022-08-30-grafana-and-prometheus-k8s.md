@@ -21,7 +21,7 @@ In this guide, you'll learn how to monitor your Kubernetes cluster, viewing inte
 
 ## How to Monitor the Kubernetes Cluster using Prometheus and Grafana Dashboards
 
- You're going to create your own monitoring dashboard for your Kubernetes cluster. You'll be using [prometheus] (<https://prometheus.io//>) to handle the extraction, transformation, and loading of all your assets from the Kubernetes cluster. [Grafana](https://grafana.com/), which will be used for querying, visualizing, monitoring, and notifying.
+ You're going to create your own monitoring dashboard for your Kubernetes cluster. You'll be using [Prometheus] (<https://prometheus.io//>) to handle the extraction, transformation, and loading of all your assets from the Kubernetes cluster. [Grafana](https://grafana.com/), which will be used for querying, visualizing, monitoring, and notifying.
 
 ## Prerequisites
 
@@ -37,7 +37,7 @@ This guide will be a step-by-step tutorial. To follow along, be sure to have the
 
 <div class="wide">
 
-![Architectural Diagram of Prometheus Grafana Monitoring]({{site.images}}{{page.slug}}/k8snodes.png)
+![Prometheus Grafana Monitoring]({{site.images}}{{page.slug}}/k8snodes.png)
 
 </div>
 
@@ -53,7 +53,7 @@ After you have run the above commands, you need to add the Prometheus-community 
 
 ~~~{.bash caption=">_"}
 # Add Prometheus-community repo
-helm repo add prometheus-community \
+helm repo add Prometheus-community \
 https://prometheus-community.github.io/helm-charts
 
 # To update the helm repo 
@@ -79,7 +79,7 @@ kubectl get pods -n Kubernetes-monitoring
 
  <div class="wide">
 
-![Diagram showing the pods running the Namespace]({{site.images}}{{page.slug}}/podsrunning.jpg)
+![Pods running the Namespace]({{site.images}}{{page.slug}}/podsrunning.jpg)
 
 </div>
 
@@ -93,14 +93,15 @@ kubectl get svc -n Kubernetes-monitoring
 
 <div class="wide">
 
-![Diagram showing the servers running the Namespace]({{site.images}}{{page.slug}}/serverrunning.jpg)
+![Servers running the Namespace]({{site.images}}{{page.slug}}/serverrunning.jpg)
 
 </div>
 
 Next, run the below kubectl port-forward command to forward the local port 9090 to your cluster via the Prometheus service (svc/monitoring-kube-prometheus-prometheus). To do so run the following commands.
 
 ~~~{.bash caption=">_"}
-kubectl port-forward svc/monitoring-kube-prometheus-prometheus -n monitoring 9090
+kubectl port-forward svc/monitoring-kube-prometheus-prometheus \
+-n monitoring 9090
 ~~~
 
 Open a web browser, and navigate to either of the URLs below to access your Prometheus instance.
@@ -110,12 +111,12 @@ Navigate to your server's IP address followed by port 9090 (i.e., <http://YOUR_S
 
 <div class="wide">
 
-![Diagram showing Prometheus Home Page]({{site.images}}{{page.slug}}/homepage.jpg)
+![Prometheus Home Page]({{site.images}}{{page.slug}}/homepage.jpg)
 
 </div>
 
 To exit from the port forward session press ctrl c or command c
-The next thing is to view internal state metrics for the prometheus kubernetes cluster and the kube-state-metrics (KMS) tool deployed with the helm chart stacks used. The Kube-state-metrics (KSM) tool allows you to view your Kubernetes cluster's internal state metrics. The KSM tool allows you to monitor the health and consumption of your resources, as well as internal state objects. KSM can potentially display data points such as node metrics, [deployment](/blog/deployment-strategies) metrics, and pod metrics.
+The next thing is to view internal state metrics for the Prometheus kubernetes cluster and the kube-state-metrics (KMS) tool deployed with the helm chart stacks used. The Kube-state-metrics (KSM) tool allows you to view your Kubernetes cluster's internal state metrics. The KSM tool allows you to monitor the health and consumption of your resources, as well as internal state objects. KSM can potentially display data points such as node metrics, [deployment](/blog/deployment-strategies) metrics, and pod metrics.
 The KSM tool is pre-packaged in the kube-prometheus stack and is immediately installed alongside the other monitoring components.
 
 You'll port-forward a local port to your cluster via the kube-state-metrics service. Doing so lets KSM scrape the internal system metrics of your cluster and output a list of queries and values.
@@ -132,26 +133,27 @@ kubectl port-forward svc/monitoring-kube-state-metrics -n monitoring 8080
 Open your browser and type <http://localhost:8080> or if you're using a cloud machine <http://YOUR_SERVER_IP:8080>). Please keep in mind that if you get a permissions access issue when forwarding traffic to port 8080, you can use this option.
 
 ~~~{.bash caption=">_"}
-kubectl port-forward svc/prometheus-kube-state-metrics -n monitoring 8085:80 
+kubectl port-forward svc/prometheus-kube-state-metrics -n \
+monitoring 8085:80 
 ~~~
 
-![Diagram showing the prometheus kube Metrics page]({{site.images}}{{page.slug}}/metricpage.jpg)
+![Prometheus kube Metrics page]({{site.images}}{{page.slug}}/metricpage.jpg)
 
 Click on the metric and to view the metrics
 
 <div class="wide">
 
-![Diagram showing the servers running the Namespace]({{site.images}}{{page.slug}}/namespace.jpg)
+![Servers running the Namespace]({{site.images}}{{page.slug}}/namespace.jpg)
 
 </div>
 
 ### Visualizing a Cluster's Internal State Metric on Prometheus
 
-Now we will execute some prometheus queries to see the internal state metrics of our kubernetes cluster. We will focus on CPU Utilization. [Check The Prometheus site] (prometheus.io/docs/prometheus/latest/querying/basics/) for more on the Prometheus query language.
+Now we will execute some Prometheus queries to see the internal state metrics of our kubernetes cluster. We will focus on CPU Utilization. [Check The Prometheus site] (prometheus.io/docs/prometheus/latest/querying/basics/) for more on the Prometheus query language.
 
 <div class="wide">
 
-![Diagram showing the Prometheus Target Page ]({{site.images}}{{page.slug}}/targetpage.png)
+![Prometheus Target Page ]({{site.images}}{{page.slug}}/targetpage.png)
 
 </div>
 
@@ -165,13 +167,13 @@ Sum by (cpu)(m=node_cpu_seconds_total{mode!="idle"})
 
 <div class="wide">
 
-![Diagram of the Graphical view of PromQL query of cluster metric ]({{site.images}}{{page.slug}}/promQL.png)
+![Graphical view of PromQL query of cluster metric ]({{site.images}}{{page.slug}}/promQL.png)
 
 </div>
 
 ### Monitoring and Visualizing with Grafana Dashboards
 
-Prometheus' visualization options are limited, only a Grap. Prometheus is great for collecting metrics from targets set as tasks, aggregating the metrics, and storing them locally on the workstation. However, when it comes to traditional resource monitoring adding in Grafana is a great option.
+Prometheus' visualization options are limited, only a Graph. Prometheus is great for collecting metrics from targets set as tasks, aggregating the metrics, and storing them locally on the workstation. However, when it comes to traditional resource monitoring adding in Grafana is a great option.
 
 Metrics produced by server components such as node exporter, CoreDNS, and others are collected by Prometheus. Grafana obtains these metrics from Prometheus and displays them in a number of ways.
 
@@ -227,7 +229,7 @@ In your browser, go to <http://localhost:3001/> or <http://YOUR_SERVER_IP:3001/>
 
 <div class="wide">
 
-![Diagram of Grafana login Page]({{site.images}}{{page.slug}}/grafanalogin.png)
+![Grafana login Page]({{site.images}}{{page.slug}}/grafanalogin.png)
 
 </div>
 
@@ -235,7 +237,7 @@ Next type the admin-username and password you have decoded to login.
 
 <div class="wide">
 
-![Diagram of the Home Page]({{site.images}}{{page.slug}}/homepagediag.png)
+![Home Page]({{site.images}}{{page.slug}}/homepagediag.png)
 
 </div>
 
@@ -243,7 +245,7 @@ Now to start monitoring, type this URL in your browser type <http://localhost:30
 
 <div class="wide">
 
-![Diagram of Grafana Dashboards Page]({{site.images}}{{page.slug}}/grafanadash.png)
+![Grafana Dashboards Page]({{site.images}}{{page.slug}}/grafanadash.png)
 
 </div>
 
@@ -265,7 +267,7 @@ Follow the same steps to select dashboards for Kubernetes resources you want to 
 
 <div class="wide">
 
-![Architectural Diagram of Prometheus Grafana Monitoring]({{site.images}}{{page.slug}}/grafanamonitoring.png)
+![Prometheus Grafana Monitoring]({{site.images}}{{page.slug}}/grafanamonitoring.png)
 
 </div>
 
