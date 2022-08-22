@@ -19,6 +19,7 @@ c6G
 r6G
 t4G
 kaniko
+mv
 
 # probably not a real world and should remove, but for now
 repos?
