@@ -144,9 +144,9 @@ Now you just have to edit the file present in `~/hardlink,` which is the link it
 
 If you want to delete the original file, you will also need to delete the link, so it's of no use running only `rm -rf $temp`; it's necessary to run `rm -rf ~/hardlink' too.
 
-Soft links do not allow you to do this, as they are just files that point to other files. So for dotfiles, it is much better to have a hardlink that allows you to directly edit a dotfile wherever it is, and those changes are reflected in your Git repository.
+Soft links do not allow you to do this, as they are just files that point to other files. So for dotfiles, it is much better to have a hard link that allows you to directly edit a dotfile wherever it is, and those changes are reflected in your Git repository.
 
-## Creating the HardLink
+## Creating the Hard Link
 
 ![Creating]({{site.images}}{{page.slug}}/create.png)\
 
