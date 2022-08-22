@@ -251,6 +251,10 @@ Bala Priya C:
     name    : "Bala Priya C"
     bio     : "Bala is a technical writer who enjoys creating long-form content. Her areas of interest include math and programming. She shares her learning with the developer community by authoring tutorials, how-to guides, and more."
     avatar  : "/assets/images/authors/bala-priya.jpg"
+Hrittik Roy:
+    name    : "Hrittik Roy"
+    bio     : "Hrittik is a writer and a software engineer who specializes in cloud native ecosystems. He has worked on many large-scale projects and has experience in both the technical and the business aspects of cloud computing. He is a frequent speaker at conferences and has written numerous articles on software development and distributed systems. In his free time, he likes to go for long walks."
+    avatar  : "/assets/images/authors/hrittik.jpg"
 Anurag Kumar:
     name    : "Anurag Kumar"
     bio     : "Anurag is an engineering student who loves contributing to open source projects. He is primarily interested in cloud native ecosystem."
