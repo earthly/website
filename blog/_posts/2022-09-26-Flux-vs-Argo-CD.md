@@ -63,7 +63,7 @@ After this short introduction, now it's time to get on with our topic: comparing
 </div>
 -->
 
-||<a href="https://fluxcd.io" ><img alt="Flux logo" class="image image--md" src="/assets/2022-08-19-flux-vs-argocd/flux-stacked-white.png"/> </a>|<a href="https://argoproj.github.io/cd"><img alt="Argo CD logo" class="image image--md" src="/assets/2022-08-19-flux-vs-argocd/argo-stacked-white.png"/></a>|
+||<a href="https://fluxcd.io" ><img alt="Flux logo" class="image image--md" src="{{site.images}}{{page.slug}}/flux.png"/> </a>|<a href="https://argoproj.github.io/cd"><img alt="Argo CD logo" class="image image--md" src="{{site.images}}{{page.slug}}/argo.png"/></a>|
 |-|-|-|
 |initial release|Flux2: Jun 25, 2020<br>Flux (succeeded): Jun 27, 2017|Mar 18, 2018|
 |license|![License on GitHub](https://img.shields.io/github/license/fluxcd/flux?style=for-the-badge)|![License on GitHub](https://img.shields.io/github/license/argoproj/argo-cd?style=for-the-badge)|
