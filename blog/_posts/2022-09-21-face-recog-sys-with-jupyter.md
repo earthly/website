@@ -6,7 +6,10 @@ toc: true
 author: Fortune Adekogbe
 
 internal-links:
- - just an example
+ - Jupyter
+ - Deepnote
+ - Anvil
+ - Python
 ---
 
 The process of building systems to deploy the models that data scientists and machine learning engineers have created is non-trivial. This is because other developers and designers are not always available to create the required [APIs](https://aws.amazon.com/what-is/api/) and user interfaces. You could decide to learn to use the technologies required for this, but that takes considerable effort and could extend project completion by months. Due to this, you may just resort to leaving the models in notebooks on [Github](/blog/ci-comparison) or perhaps discuss the methodology in an article like this. What if you could still move ahead? What if you could serve models from your notebooks and build minimal interfaces quickly?
@@ -630,4 +633,3 @@ You've now learned about Deepnote and Anvil, as well as how they work well toget
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Add keywords for internal links to front-matter
