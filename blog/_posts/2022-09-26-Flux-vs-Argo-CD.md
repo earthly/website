@@ -170,7 +170,7 @@ which checks the directory contents and uses kustomize if it finds a `kustomizat
 
 Bear in mind that tool-specific settings will override the implicit behavior, which can be surprising at first.
 
-~~~{.bash caption=">_"}
+~~~{.yaml caption="kustomization.yaml"}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -367,6 +367,3 @@ As we saw Argo CD and Flux are pretty much on-par regarding core functionality. 
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
