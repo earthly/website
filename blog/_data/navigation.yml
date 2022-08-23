@@ -117,6 +117,13 @@ activity-tracker:
         url: /golang-grpc-gateway/
       - title: "Side Quest: Protobuf's"
         url: /buf-protobuf/
+pongo:
+  - title: "Build Pong in the Terminal"
+    children:
+    - title: "Pongo Part One"
+      url: /pongo-part1/
+    - title: "Pongo Part Two"
+      url: /pongo-part2/
 deployment-strategies:
   - title: "Deployment Strategies"
     children:
