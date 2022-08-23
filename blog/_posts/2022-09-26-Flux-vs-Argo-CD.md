@@ -363,7 +363,3 @@ For those of you currently evaluating GitOps frameworks, I hope this article pro
 As we saw Argo CD and Flux are pretty much on-par regarding core functionality. Each of them has caveats, so you should ideally weigh the importance of each check box in your organization. For us at Turbine.ai, it was a very close call, but we settled with Flux in the end, mostly because of its better support for OTS Helm charts and operational simplicity compared to Argo CD, which we found important at our (small) size.
 
 {% include cta/cta1.html %}
-
-## Outside Article Checklist
-
-- [ ] Create header image in Canva
