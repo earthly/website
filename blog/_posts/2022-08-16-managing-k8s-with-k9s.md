@@ -77,10 +77,12 @@ minikube addons enable metrics-server
 You will get the following output:
 
 ~~~{.bash caption="Output"}
+{% raw %}
 ! Executing "docker container inspect minikube --format={{.State.Status}}" took
 an unusually long time: 6.2066183s
 * Restarting the docker service may improve performance.
 * The 'metrics-server' addon is enabled
+{% endraw %}
 ~~~
 
 ## Using the K9s UI Terminal
