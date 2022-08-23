@@ -622,6 +622,8 @@ You've now learned about Deepnote and Anvil, as well as how they work well toget
 
  What has been described in this notebook can be replicated with any Python script running on a server. You can also expand the capacity of your Deepnote if you end up running more complex applications. Keep building.
 
+{% include cta/cta1.html %}
+
 ## Outside Article Checklist
 
 - [ ] Add in Author page
@@ -631,4 +633,3 @@ You've now learned about Deepnote and Anvil, as well as how they work well toget
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
