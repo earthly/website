@@ -18,14 +18,14 @@ Part of my job entailed figuring out how to onboard developers who didn't practi
 
 Companies I've worked at during the past 7 years have all used Kubernetes in some way; and the last one, Turbine.ai, adopted it with my lead. It's been quite a journey for me
 since I first encountered the technology in 2015, not long after securing my first full time role as a software engineer at a SaaS startup.
-Back in those days, the only cloud vendor that had a managed public K8s offering was Google Cloud Platform (GKE). The tech was fresh and all backend engineers at our company were pretty hyped about migrating to GKE from Heroku.
+Back in those days, the only cloud vendor that had a managed public [K8s](/blog/k8s-autoscaling offering was Google Cloud Platform (GKE). The tech was fresh and all backend engineers at our company were pretty hyped about migrating to GKE from Heroku.
 
 Later that year, I moved to a role more aligned with my aspirations of working on distributed data processing pipelines with Apache Spark and had little exposure to K8s for
-over a year and a half. My path eventually lead back to the container orchestrator when I started working with the machine learning team, running ML workflows in our cloud environment. I recall manually installing and upgrading Apache Airflow (which was the only service I operated) with Helm, all from my development laptop. If the templates rendered the release was good to go.
+over a year and a half. My path eventually lead back to the [container](/blog/docker-slim) orchestrator when I started working with the machine learning team, running ML workflows in our cloud environment. I recall manually installing and upgrading Apache Airflow (which was the only service I operated) with Helm, all from my development laptop. If the templates rendered the release was good to go.
 
 Fast-forward to my next role where we operated an internal data platform with a more mature development lifecycle. I encountered GitOps for the first time here,
 as backend teams were using Argo CD to deploy their applications. It was a radical quality of life improvement over what I'd been practicing previously. Automatic change detection,
-a nice GUI, alerts on failures and a unified delivery approach for all applications instead of pile of deployment scripts; what's not to love?
+a nice GUI, alerts on failures and a unified delivery approach for all applications instead of pile of [deployment](/blog/deployment-strategies) scripts; what's not to love?
 
 Then, I was hired by Turbine.ai, which is a cool biotech startup. In the simulation team, we decided to move our workflow orchestrator to K8s, with expectations that other services will follow suit gradually. However, there was a problem. Backend developers weren't generally practicing DevOps in the company, and even a simple configuration change in a web app deployment often involved a sysadmin in the loop. Moving to K8s can be daunting for such newcomers, as they have to learn how to rebuild their existing applications according to cloud native application development principles
 such as [12 factor app](https://12factor.net); learn the fundamentals of K8s alongside with its limitations and idiosynchronicities, pick up new tools and infrastructure components, etc. Moreover, the [cloud native landscape]([https://landscape.cncf.io])
@@ -39,7 +39,7 @@ The term was coined by Weaveworks with the following definition found on [gitops
 
 > GitOps is a way of implementing Continuous Deployment for cloud native applications. It focuses on a developer-centric experience when operating infrastructure,
 by using tools developers are already familiar with, including Git and Continuous Deployment tools. The core idea of GitOps is having a Git repository that always
-contains declarative descriptions of the infrastructure currently desired in the production environment and an automated process to make the production environment
+contains declarative descriptions of the infrastructure currently desired in the production environment and an automated process to [make](/blog/makefiles-on-windows) the production environment
 match the described state in the repository. If you want to deploy a new application or update an existing one, you only need to update the repository - the automated
 process handles everything else. It's like having cruise control for managing your applications in production.
 
@@ -81,7 +81,7 @@ This article follows with the comparison of the two frameworks organized by core
 
 ## Reconciliation
 
-_Reconciliation_ or _synchronization_ (_sync_) is the act of modifying the cluster state to match the description stored in git.
+_Reconciliation_ or _synchronization_ (_sync_) is the act of modifying the [cluster](/blog/kube-bench) state to match the description stored in git.
 
 Both platforms support automated sync, i.e they can reconcile the cluster state automatically after a change in GitOps; and manual sync where the action is triggered directly by a human or some external service agent.
 
@@ -197,7 +197,7 @@ Don't mistake `kustomize.toolkit.fluxcd.io/Kustomization` for `kustomize.config.
 
 ## Configuration
 
-Flux supports defining strategic merge and JSON patches, overriding images and the namespaces in the `kustomize.toolkit.fluxcd.io/Kustomization` [resource](https://fluxcd.io/docs/components/kustomize/kustomization/#override-kustomize-config). Argo CD is less flexible, you have to place your edits in the overlays of your kustomization (with [a few exceptions](https://argo-cd.readthedocs.io/en/stable/user-guide/kustomize/#kustomize)). This might be a problem for certain repo layouts, e.g where kustomizations of an app live in a separate repo which is owned by a different team, and adding a new kustomization there is not preferable / feasible. If you are familiar with Helm, it's not hard to see how this will cause a bigger problem there, but about that later. As an additional customization, Flux supports [variable templating and substitution](https://fluxcd.io/docs/components/kustomize/kustomization/#variable-substitution).
+Flux supports defining strategic merge and [JSON](/blog/convert-to-from-json) patches, overriding images and the [namespaces](/blog/k8s-namespaces in the `kustomize.toolkit.fluxcd.io/Kustomization` [resource](https://fluxcd.io/docs/components/kustomize/kustomization/#override-kustomize-config). Argo CD is less flexible, you have to place your edits in the overlays of your kustomization (with [a few exceptions](https://argo-cd.readthedocs.io/en/stable/user-guide/kustomize/#kustomize)). This might be a problem for certain repo layouts, e.g where kustomizations of an app live in a separate repo which is owned by a different team, and adding a new kustomization there is not preferable / feasible. If you are familiar with Helm, it's not hard to see how this will cause a bigger problem there, but about that later. As an additional customization, Flux supports [variable templating and substitution](https://fluxcd.io/docs/components/kustomize/kustomization/#variable-substitution).
 
 ## Summary
 
@@ -221,7 +221,7 @@ Flux supports defining strategic merge and JSON patches, overriding images and t
 
 Helm charts can be configured with [values](https://helm.sh/docs/chart_best_practices/values/). With Flux it is possible to provide a [`values` block](https://fluxcd.io/docs/components/helm/helmreleases/#values-overrides) with the desired configuration in the `HelmRelease` resource. (Similarly to Kustomization, where you provide patches). Additionally, the contents can come from ConfigMap or Secret resources deployed in the cluster, which will be merged in the same manner the Helm CLI does it for values files.
 
-Unfortunately, specifying values inline or inside the cluster is not supported by Argo CD. Instead, the files have to be placed alongside the chart in its repo (in case the source is git) or packaged with it (in case a Helm repository is used). This method works for bespoke applications, however it is quite problematic for those off the shelf.
+Unfortunately, specifying values inline or inside the [cluster](/blog/kube-bench) is not supported by Argo CD. Instead, the files have to be placed alongside the chart in its repo (in case the source is git) or packaged with it (in case a Helm repository is used). This method works for bespoke applications, however it is quite problematic for those off the shelf.
 
 Helm is essentially a package manager for charts. Many off the shelf (OTS) charts are available for open-source projects and can be downloaded from the internet. So there's a misalignment between Helm and Argo CD as an OTS chart cannot possibly contain the configuration for its users, which makes the above values file resolution mechanism useless for anything beyond reading default values. To work around this issue, one can create a wrapper, placed in git, that refers to the original as a [chart dependency](https://helm.sh/docs/topics/charts/#chart-dependencies), and include the custom value files there. Although this is much better than copy-pasting the entire chart, it still results in boilerplate and complicates versioning.
 
@@ -311,7 +311,7 @@ Note that currently Flux doesn't allow a Kustomization to depend on a HelmReleas
 ## Permissions and Access Control
 
 It makes sense to organize applications based on ownership to simplify permission setup. VCS based permission management can be put into place, e.g.
-[CODEOWNERS](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners) can be used to control write permissions based on globs within a monorepo.
+[CODEOWNERS](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners) can be used to control write permissions based on globs within a [monorepo](/blog/monorepo-vs-polyrepo).
 A higher degree of confidentiality can be achieved if each team gets their own repo, as even read can be forbidden for outsiders. The GitOps platform can offer additional features for access control.
 
 With Argo CD, the `AppProject` is used to specify that an application belongs to a [project](https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#projects), which makes use of Argo CD's [own user management](https://argo-cd.readthedocs.io/en/stable/operator-manual/user-management/) and permission system; enabling us to allow/deny
@@ -368,5 +368,4 @@ As we saw Argo CD and Flux are pretty much on-par regarding core functionality. 
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
 - [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
