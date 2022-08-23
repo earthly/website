@@ -626,7 +626,6 @@ You've now learned about Deepnote and Anvil, as well as how they work well toget
 
 ## Outside Article Checklist
 
-- [ ] Add in Author page
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
