@@ -691,7 +691,3 @@ You've now learned about Deepnote and Anvil, as well as how they work well toget
  What has been described in this notebook can be replicated with any Python script running on a server. You can also expand the capacity of your Deepnote if you end up running more complex applications. Keep building.
 
 {% include cta/cta1.html %}
-
-## Outside Article Checklist
-
-- [ ] Create header image in Canva
