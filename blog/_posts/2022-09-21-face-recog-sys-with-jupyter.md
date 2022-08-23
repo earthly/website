@@ -34,21 +34,37 @@ You will now use Anvil and a notebook-like interface to implement facial recogni
 
 First, o go to the [Deepnote sign-up page](https://deepnote.com/sign-up). Once there, use any of the available options to create an account.
 
-![Deepnote sign up page]([{{site.images}}{{page.slug}}/z025oRv.png]({{site.images}}{{page.slug}}/z025oRv.png))
+<div class="wide">
+
+![Deepnote sign up page]([{{site.images}}{{page.slug}}/z025oRv.png]({{site.images}}{{page.slug}}/z025oRv.png))\
+
+</div>
 
 The onboarding screens come next. Enter the necessary information in the fields provided, and respond to all of the questions.
 
-![Deepnote Onboarding page]([{{site.images}}{{page.slug}}/tadKsId.png]({{site.images}}{{page.slug}}/tadKsId.png))
+<div class="wide">
+
+![Deepnote Onboarding page]([{{site.images}}{{page.slug}}/tadKsId.png]({{site.images}}{{page.slug}}/tadKsId.png))\
+
+</div>
 
 Finally, give your workspace a name and click "Next" to access it and see a screen like the one below.
 
-![Deepnote workspace]({{site.images}}{{page.slug}}/iyJQA6C.png)
+<div class="wide">
+
+![Deepnote workspace]({{site.images}}{{page.slug}}/iyJQA6C.png)\
+
+</div>
 
 When you're inside the workspace, go to the left section and click the `+` icon next to the Workspace tab to see a list of options. On this list, click the `New project` option to create a notebook. Rename the project to `Facial Recognition` by clicking the `...` icon next to it.
 
 Then, create a markdown cell in the notebook and enter the text "# Facial Recognition System".
 
-![Deepnote new project]({{site.images}}{{page.slug}}/CTJ8sDq.png)
+<div class="wide">
+
+![Deepnote new project]({{site.images}}{{page.slug}}/CTJ8sDq.png)\
+
+</div>
 
 ### Implementing Facial Recognition
 
@@ -58,7 +74,11 @@ You will be building the admin panel of this system. The building, in this case,
 
 In the top-right section of the page, click the `+` icon by the files section to upload the downloaded files into folders named `umbrella` and `test`.
 
-![Deepnote images uploaded]({{site.images}}{{page.slug}}/TczQpPJ.png)
+<div class="wide">
+
+![Deepnote images uploaded]({{site.images}}{{page.slug}}/TczQpPJ.png)\
+
+</div>
 
 Click the icon in the `Terminals` section on the lower left to create a new terminal. Then, install the `face-recognition` package by running `pip install face-recognition`. Move on to the next section while this installs.
 
@@ -196,7 +216,11 @@ The resulting texts are combined and printed.
 
 When this is run, the following is expected.
 
-![output from checking test images]({{site.images}}{{page.slug}}/yrXzu4I.png)
+<div class="wide">
+
+![output from checking test images]({{site.images}}{{page.slug}}/yrXzu4I.png)\
+
+</div>
 
 #### Adding Residents
 
@@ -346,13 +370,21 @@ You have now successfully developed a facial recognition system for the Umbrella
 
 Visit the [Anvil sign-up page](https://anvil.works/sign-up) and follow the on-screen directions to create an account. Once this is finished, log in to see the dashboard as displayed below.
 
-![Anvil dashboard]({{site.images}}{{page.slug}}/cGHHYfX.png)
+<div class="wide">
+
+![Anvil dashboard]({{site.images}}{{page.slug}}/cGHHYfX.png)\
+
+</div>
 
 Then choose the "blank app" option, the "classic" theme, and "card-based layout with sidebar" in the following window that appears. The screen below then appears.
 
 The client code, server code, services, and theme (which includes the color scheme, assets, and other elements) are all visible in the left section. In essence, this is similar to a file browser. The form being used at the moment is shown in the middle section. Its associated code can also be viewed here by switching to the code view via the top right buttons. The toolbox on the left allows you to add components. This includes text boxes, labels, images, and so on. It also has a properties section at the bottom that can be used to change the components.
 
-![Anvil app default view]({{site.images}}{{page.slug}}/9Cqx0WX.png)
+<div class="wide">
+
+![Anvil app default view]({{site.images}}{{page.slug}}/9Cqx0WX.png)\
+
+</div>
 
 The app will have an initial page where a user can check images, as well as two additional pages for adding and removing residents. A navigation bar will control page transitions.
 
@@ -360,7 +392,11 @@ To add a title to the page, drag the "Rich Text" component to the "DROP A TITLE 
 
 Next, drag, and drop three link text components from the toolbox to the sidebar's plus icon. These help with accessing other pages. Click on each newly added link component to open its properties and type "CHECK IMAGE," "ADD A RESIDENT," and "REMOVE A RESIDENT" into the appropriate fields. Finally, place a card component on the screen by dragging and dropping it. This will contain the rendered components from other forms. The view should look like this:
 
-![Anvil entry point form]({{site.images}}{{page.slug}}/mTYpFfV.png)
+<div class="wide">
+
+![Anvil entry point form]({{site.images}}{{page.slug}}/mTYpFfV.png)\
+
+</div>
 
 Click the drop-down arrow on the left pane to rename the first form to "EntryPointForm." Then, by client code, click the "+" icon to add a new *blank* form. Rename this form to "CheckForm."
 
@@ -376,7 +412,11 @@ Under this, add an image component (to render the uploaded image) and a button c
 
 Finally, drag a label component to display the face recognition system's output. Scroll down in the properties bar for this component and change the text alignment field to center,' check the 'bold' checkbox, and enter a font size of '20.'
 
-![Anvil CheckForm]({{site.images}}{{page.slug}}/UKacj1U.png)
+<div class="wide">
+
+![Anvil CheckForm]({{site.images}}{{page.slug}}/UKacj1U.png)\
+
+</div>
 
 After you've configured the interface, double-click the submit button to open the code tab and automatically define a method that will be called when the button is clicked. Every form is a class, and events related to its components are defined as methods of that class. The anvil library is also imported by the autogenerated script. In the 'button_1_click' method, you will receive a response from the backend (notebook) and display it.
 
@@ -431,7 +471,11 @@ def file_loader_1_change(self, file, **event_args):
 Next, as previously described, create a new form and name it 'AddForm'. This form will include the components and code needed to add residents to the system. It will also contain all the components on the CheckForm.
 First, add all of the components from the CheckForm. In the content field of the rich text component at the top of the page, type "Add a Resident." Add a text box component from the toolbox beneath that one. Change the placeholder field in its properties panel to "Enter name." The form should now look like the image below.
 
-![Anvil add form]({{site.images}}{{page.slug}}/Z1bnWFG.png)
+<div class="wide">
+
+![Anvil add form]({{site.images}}{{page.slug}}/Z1bnWFG.png)\
+
+</div>
 
 Double-click the submit button to open the code tab and create the empty method. In this method, pass the `add_resident` function name to the `server.call` `function. Also, pass in a tuple that contains the uploaded file and the text entered in the textbox.
 
@@ -455,7 +499,11 @@ Back on the Design tab, double-click the file loader component. Set the image so
 
 [Make](/blog/using-cmake a new form called "RemoveForm." This form will include the elements required to manage the removal of residents. Add a rich text component to this form with the content field set to "Remove a Resident". Add a text box component to collect the person's name, a button component to submit the form, and a label component to display the response under this. Format the properties of these components in the same way that you did the AddForm components. The resulting form should look like the image below.
 
-![Anvil remove form]({{site.images}}{{page.slug}}/lVrxmKa.png)
+<div class="wide">
+
+![Anvil remove form]({{site.images}}{{page.slug}}/lVrxmKa.png)\
+
+</div>
 
 Then, in the code tab, double-click the submit button to access the generated function. Here, parse in `'remove_resident'` and the text entered into the textbox as arguments to the `sever.call` method.
 
@@ -543,7 +591,11 @@ At this point, you have created the interface and determined how it would get re
 
 This is the final operation to be carried out. To do this, first, the uplink key string must be obtained. Click the settings icon on the left section and then the Uplink option. In the window that pops up, click the green button and copy the key string.
 
-![anvil-get-uplink-key]({{site.images}}{{page.slug}}/50KymOD.png)
+<div class="wide">
+
+![anvil-get-uplink-key]({{site.images}}{{page.slug}}/50KymOD.png)\
+
+</div>
 
 Move over to Deepnote and open the terminal to install the `anvil-uplink` package via `pip install` anvil-uplink. Then, import the `getpass` method to securely add your uplink key. Also, import the `anvil.server` and then the `anvil.media` method.
 
@@ -615,7 +667,11 @@ Finally, for the remove_resident method, just add the `@anvil.server.callable` d
 
 Now, return to Anvil, run the app, and try checking an image. Also, try adding a resident and removing them. Below is the response I get when I upload [this image](https://github.com/Fortune-Adekogbe/Facial-Recognition-System/blob/main/Deepnote/test/The-Umbrella-Academy-Season-3-Release-Date-Where-To-Watch-Cast-Trailer-And-More.jpg) on the check screen.
 
-![Anvil app test screenshot]({{site.images}}{{page.slug}}/GyueBhL.png)
+<div class="wide">
+
+![Anvil app test screenshot]({{site.images}}{{page.slug}}/GyueBhL.png)\
+
+</div>
 
 Finally, to share and test your app on another device, click the "Publish this app" button in the top right corner and copy the link.
 
@@ -632,4 +688,3 @@ You've now learned about Deepnote and Anvil, as well as how they work well toget
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
