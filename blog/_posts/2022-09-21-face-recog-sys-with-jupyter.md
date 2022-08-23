@@ -9,7 +9,7 @@ internal-links:
  - just an example
 ---
 
-The process of building systems to deploy the models that data scientists and machine learning engineers have created is non-trivial. This is because other developers and designers are not always available to create the required [APIs](https://aws.amazon.com/what-is/api/) and user interfaces. You could decide to learn to use the technologies required for this, but that takes considerable effort and could extend project completion by months. Due to this, you may just resort to leaving the models in notebooks on Github or perhaps discuss the methodology in an article like this. What if you could still move ahead? What if you could serve models from your notebooks and build minimal interfaces quickly?
+The process of building systems to deploy the models that data scientists and machine learning engineers have created is non-trivial. This is because other developers and designers are not always available to create the required [APIs](https://aws.amazon.com/what-is/api/) and user interfaces. You could decide to learn to use the technologies required for this, but that takes considerable effort and could extend project completion by months. Due to this, you may just resort to leaving the models in notebooks on [Github](/blog/ci-comparison) or perhaps discuss the methodology in an article like this. What if you could still move ahead? What if you could serve models from your notebooks and build minimal interfaces quickly?
 
 In this tutorial, you will build a facial recognition system. As you implement this, you will learn to use Deepnote to build the logic and Anvil to build the interface, as well as how to link them. The process of identifying people's faces in an image or video feed by comparing them to a database of registered faces is known as facial recognition. In some cases, it can also be used to identify the faces of other animals.
 
@@ -17,9 +17,9 @@ In this tutorial, you will build a facial recognition system. As you implement t
 
 ## More on Deepnote and Anvil
 
-Deepnote is a cloud-hosted notebook-based application that provides data teams with a platform where they can easily collaborate and ideate seamlessly. All this happens in an interface similar to and compatible with the popular Jupyter notebook. It, however, does not stop there. First, deepnote supports Python, R, and SQL all at the same time. It also supports scheduling (so you can set your notebook to run periodically), a console (for running scripts in an integrated terminal), and special cells (SQL, Inputs, and Charts blocks) in addition to the popular code and markdown blocks. The SQL block can be connected to your data source using any of Deepnote's available integrations. Once the data source is connected, you can make queries within your notebook.
+Deepnote is a cloud-hosted notebook-based application that provides data teams with a platform where they can easily collaborate and ideate seamlessly. All this happens in an interface similar to and compatible with the popular Jupyter notebook. It, however, does not stop there. First, deepnote supports Python, R, and SQL all at the same time. It also supports scheduling (so you can set your notebook to run periodically), a console (for running scripts in an integrated terminal), and special cells (SQL, Inputs, and Charts blocks) in addition to the popular code and [markdown](/blog/markdown-lint) blocks. The SQL block can be connected to your data source using any of Deepnote's available integrations. Once the data source is connected, you can [make](/blog/using-cmake) queries within your notebook.
 
-In addition, you can publish and share notebooks as apps or articles with Deepnote. Deepnote supports [long-running jobs](https://docs.deepnote.com/environment/long-running-jobs), [custom initializations](https://docs.deepnote.com/environment/custom-initialization), and [integrations](https://docs.deepnote.com/features/integrations). Some supported integrations are Github, Telegram, Slack, PostgreSQL, MongoDB, Amazon S3, Google Cloud Storage, Google Drive, Docker Hub, and so on.
+In addition, you can publish and share notebooks as apps or articles with Deepnote. Deepnote supports [long-running jobs](https://docs.deepnote.com/environment/long-running-jobs), [custom initializations](https://docs.deepnote.com/environment/custom-initialization), and [integrations](https://docs.deepnote.com/features/integrations). Some supported integrations are Github, Telegram, Slack, PostgreSQL, MongoDB, Amazon S3, Google Cloud Storage, Google Drive, [Docker](/blog/rails-with-docker) Hub, and so on.
 
 Anvil is an application that enables developers to build applications without traditional web development experience. Yes, with Anvil, you can design user interfaces via a drag and drop editor, customise the application using Python (and its various libraries), and deploy it easily either in the cloud or on a self-hosted server. These applications can be APIs, in-house software, data analysis dashboards, machine learning applications, and so on. Anvil also has an [in-built database](https://anvil.works/beta-docs/data-tables) where you can store data when necessary and an up-link feature which lets you connect it to any external Python script.
 
@@ -450,7 +450,7 @@ Back on the Design tab, double-click the file loader component. Set the image so
 
 #### Creating the Remove Form
 
-Make a new form called "RemoveForm." This form will include the elements required to manage the removal of residents. Add a rich text component to this form with the content field set to "Remove a Resident". Add a text box component to collect the person's name, a button component to submit the form, and a label component to display the response under this. Format the properties of these components in the same way that you did the AddForm components. The resulting form should look like the image below.
+[Make](/blog/using-cmake a new form called "RemoveForm." This form will include the elements required to manage the removal of residents. Add a rich text component to this form with the content field set to "Remove a Resident". Add a text box component to collect the person's name, a button component to submit the form, and a label component to display the response under this. Format the properties of these components in the same way that you did the AddForm components. The resulting form should look like the image below.
 
 ![Anvil remove form]({{site.images}}{{page.slug}}/lVrxmKa.png)
 
@@ -632,4 +632,3 @@ You've now learned about Deepnote and Anvil, as well as how they work well toget
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
