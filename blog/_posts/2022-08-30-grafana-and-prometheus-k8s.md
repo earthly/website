@@ -173,7 +173,7 @@ Sum by (cpu)(m=node_cpu_seconds_total{mode!="idle"})
 
 ### Monitoring and Visualizing with Grafana Dashboards
 
-Prometheus' visualization options are limited, only a Graph. Prometheus is great for collecting metrics from targets set as tasks, aggregating the metrics, and storing them locally on the workstation. However, when it comes to traditional resource monitoring adding in Grafana is a great option.
+Prometheus visualization options are limited, only a Graph. Prometheus is great for collecting metrics from targets set as tasks, aggregating the metrics, and storing them locally on the workstation. However, when it comes to traditional resource monitoring adding in Grafana is a great option.
 
 Metrics produced by server components such as node exporter, CoreDNS, and others are collected by Prometheus. Grafana obtains these metrics from Prometheus and displays them in a number of ways.
 
