@@ -11,7 +11,7 @@ internal-links:
 
 ## What Is Kubernetes?
 
-Kubernetes is a container orchestration system. This means that it manages the lifecycle of containers and allows you to deploy applications in a scalable way, with high availability and fault tolerance. Kubernetes is also a cluster manager, which means that it can manage multiple hosts or VMs on your behalf so you don't have to worry about them (or their resources) going down.
+Kubernetes is a container orchestration system. This means that it manages the lifecycle of containers and allows you to deploy applications in a scalable way, with high availability and fault tolerance. Kubernetes is also a [cluster](/blog/kube-bench) manager, which means that it can manage multiple hosts or VMs on your behalf so you don't have to worry about them (or their resources) going down.
 
 ## ReplicaSets
 
@@ -25,9 +25,9 @@ To start working with Kubernetes you first need to install it in your system. Fo
 - Kubernetes
 - It will ship with a CLI tool `kubectl` which is used to interact with our running cluster.
 - Minikube
-- Install MiniKube, which has a Single Node Master-Worker arrangement so you can experiment with Kubernetes in your system, for educational reasons. Please be aware that you won't be using MiniKube for actual production apps; instead, you'll be using GCP, AWS, or another cloud computing service.
-- Docker
-- Your programmes will be run on the Kubernetes cluster using the container runtime environment Docker. You can also install them as an alternative to Docker if you are familiar with other runtimes like cri-o or containerd.
+- Install [MiniKube](/blog/k8s-dev-solutions), which has a Single Node Master-Worker arrangement so you can experiment with Kubernetes in your system, for educational reasons. Please be aware that you won't be using MiniKube for actual production apps; instead, you'll be using GCP, AWS, or another cloud computing service.
+- [Docker](/blog/rails-with-docker)
+- Your programmes will be run on the Kubernetes cluster using the container runtime environment Docker. You can also install them as an alternative to Docker if you are familiar with other runtimes like cri-o or [containerd](/blog/containerd-vs-docker).
 
 The installation instructions for the above tools are given in the [Official Kubernetes Documentation](https://kubernetes.io/docs/setup/) and for MiniKube you can check out its [documentation](https://minikube.sigs.k8s.io/docs/start/).
 
@@ -48,7 +48,7 @@ spec:
     - containerPort: 80
 ~~~
 
-You can see that you are declaring a Pod with the name `server-pod` in the YAML file mentioned above. The `image`, which is nginx, is defined by the Pod's specifications (or `spec`). Type the following command in your terminal to launch the above file. The `ports` field specifies how you will communicate with the container; they are internal to the container.
+You can see that you are declaring a Pod with the name `server-pod` in the YAML file mentioned above. The `image`, which is nginx, is defined by the Pod's specifications (or `spec`). Type the following command in your terminal to launch the above file. The `ports` field specifies how you will communicate with the container; they are internal to the [container](/blog/docker-slim).
 
 ~~~{.bash caption=">_"}
 >>> kubectl create -f pod.yml
@@ -206,5 +206,4 @@ Pods are rarely formed directly in a real-world context. ReplicaSets are employe
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
 - [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
