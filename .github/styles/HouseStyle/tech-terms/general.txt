@@ -193,6 +193,7 @@ Dockershim
 
 tcell
 Tcell
+tcell's
 Xspeed
 Yspeed
 
