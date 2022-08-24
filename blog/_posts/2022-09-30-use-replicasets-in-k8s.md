@@ -205,8 +205,3 @@ In this tutorial, you have learned how to create Pods with ReplicaSets. Addition
 Pods are rarely formed directly in a real-world context. ReplicaSets are employed in the creation of Pods because they give the Pods fault tolerance. It's crucial to understand ReplicaSets in Kubernetes. Kubernetes also has ReplicationControllers which are not generally used these days but you can still find them in some places. Kubernetes also has a variety of other Controllers like StatefulSet which are useful when working with applications that require persistent storage and DaemonSet to run a copy of the pod in the cluster. These are good to know when building a fault-tolerant and scalable system.
 
 {% include cta/cta1.html %}
-
-## Outside Article Checklist
-
-- [ ] Create header image in Canva
-
