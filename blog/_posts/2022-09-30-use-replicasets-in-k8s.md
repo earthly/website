@@ -3,7 +3,7 @@ title: "How to use ReplicaSets in Kubernetes and why you should know about them"
 categories:
   - Tutorials
 toc: true
-author: Adam
+author: Vivek Kumar Singh
 
 internal-links:
  - just an example
@@ -159,7 +159,6 @@ Pods are rarely formed directly in a real-world context. ReplicaSets are employe
 
 ## Outside Article Checklist
 
-- [ ] Add in Author page
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
