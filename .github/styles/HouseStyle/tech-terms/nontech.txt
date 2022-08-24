@@ -16,4 +16,8 @@ rolodex
 versionable
 papercut
 YubiKey
+<<<<<<< HEAD
 preconfigured
+=======
+skillsets
+>>>>>>> f06ad7e0cc36f828d8a05d373637118d12e24f5b
