@@ -36,9 +36,11 @@ The installation instructions for the above tools are given in the [Official Kub
 
 ## The Problem With Pods
 
+![Problems]({{site.images}}{{page.slug}}/probs.png)\
+
 The smallest unit in Kubernetes is a pod, which wraps a container. Each Pod operates independently as a logical device. You can use the `kubectl run <name> <image>` command to create a Pod in our MiniKube single-node cluster, however, executing a Pod in this manner is not regarded as best practice. Instead, we'll use a YAML file to create a Pod in this lesson. All of the Pod's specifications are defined in one YAML file. Create a `pod.yml` file and add the following:
 
-~~~{.bash caption=">_"}
+~~~{.yml caption="pod.yml"}
 apiVersion: v1
 kind: Pod
 metadata:
@@ -67,8 +69,8 @@ The above command creates any resource that is defined in the file `pod.yml`, in
 The above command will produce an output like below. Note that `STATUS` is `ContainerCreating`. It will show Running once it finishes pulling the container image.
 
 ~~~{.bash caption=">_"}
-NAME        READY    STATUS         RESTARTS     AGE
-server-pod    0/1        ContainerCreating     0         77s
+NAME        READY    STATUS             RESTARTS     AGE
+server-pod    0/1    ContainerCreating     0         77s
 ~~~
 
 The pod you just created is not fault tolerant or scalable; if it goes down, it stays down because there is no mechanism in place to cause it to spin back up. ReplicaSets can help because pods produced using the methods above are susceptible to crashes and Kubernetes won't take any action to recover them on its own.
@@ -93,7 +95,7 @@ ReplicaSets are the controllers used to launch, shut down, and schedule Pods. Re
 
 ReplicaSet creation is similar to Pod creation. Create the file `my-replicaset.yml` and enter the following configuration to define a replica set.:
 
-~~~{.bash caption=">_"}
+~~~{.yml caption="my-replicaset.yml"}
 apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
@@ -136,18 +138,18 @@ kubectl get pods
 Above command will produce the following output:
 
 ~~~{.bash caption=">_"}
-NAME            READY    STATUS        RESTARTS    AGE
-my-replicaset-58fbh    0/1        ContainerCreating    0        51s 
-my-replicaset-lx5hk    0/1        Running        0        51s 
-my-replicaset-qrqj2    0/1        ContainerCreating    0        51s 
+NAME                  READY       STATUS             RESTARTS    AGE
+my-replicaset-58fbh    0/1        ContainerCreating     0        51s 
+my-replicaset-lx5hk    0/1        Running               0        51s 
+my-replicaset-qrqj2    0/1        ContainerCreating     0        51s 
 ~~~
 
 You'll notice that your cluster has three pods, which corresponds to the number of replicas indicated in your YAML file.
 The command `kubectl get rs` used to obtain summary information about the ReplicaSet, running this command will produce the following output.
 
 ~~~{.bash caption=">_"}
-NAME          DESIRED    CURRENT     READY AGE
-my-replicaset    3               3               0         14s
+NAME          DESIRED    CURRENT        READY       AGE
+my-replicaset    3        3               0         14s
 ~~~
 
 `kubectl describe rs -f my-replicaset.yml`is used to offer detailed information about the ReplicaSet. This command will return the following result.
@@ -169,10 +171,10 @@ pod "my-replicaset-58fbh" deleted
 As soon as you perform the preceding command. To acquire the list of active pods, run `kubectl get pods`. You will get the below output.
 
 ~~~{.bash caption=">_"}
-NAME            READY    STATUS        RESTARTS    AGE
-my-replicaset-lx5hk    0/1        Running        0        5m 10s 
-my-replicaset-qrqj2    0/1        Running        0        5m 10s 
-my-replicaset-6bk2x    0/1        ContainerCreating    0        35s 
+NAME                  READY   STATUS              RESTARTS    AGE
+my-replicaset-lx5hk    0/1    Running               0        5m 10s 
+my-replicaset-qrqj2    0/1    Running               0        5m 10s 
+my-replicaset-6bk2x    0/1    ContainerCreating     0        35s 
 ~~~
 
 The list still contains three pods, but you will notice that the Pod you deleted is not present. A new pod is created as soon as the previous pod is eliminated. If you create another pod with the same label then ReplicaSets would terminate any pod because its goal is to keep the running number of Pods equal to the number specified in the YAML file.
@@ -207,6 +209,4 @@ Pods are rarely formed directly in a real-world context. ReplicaSets are employe
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
+
