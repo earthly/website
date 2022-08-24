@@ -6,7 +6,10 @@ toc: true
 author: Vivek Kumar Singh
 
 internal-links:
- - just an example
+ - ReplicaSets
+ - Kubernetes
+ - Pods
+ - Cluster
 ---
 
 ## What Is Kubernetes?
@@ -207,4 +210,3 @@ Pods are rarely formed directly in a real-world context. ReplicaSets are employe
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Add keywords for internal links to front-matter
