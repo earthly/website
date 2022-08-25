@@ -118,12 +118,12 @@ activity-tracker:
       - title: "Side Quest: Protobuf's"
         url: /buf-protobuf/
 pongo:
-  - title: "Build Pong in the Terminal"
+  - title: "Building Pong in the Terminal"
     children:
     - title: "Pongo Part One"
       url: /pongo/
     - title: "Pongo Part Two"
-      url: /pongo-part2/
+      url: /pong-part2/
 deployment-strategies:
   - title: "Deployment Strategies"
     children:
