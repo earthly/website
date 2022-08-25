@@ -247,7 +247,6 @@ Kealan Parr:
     name    : "Kealan Parr"
     bio     : "Kealan is a senior software engineer and technical writer who works with clients on technical reviewing and software development. He is a member of the Unicode Consortium."
     avatar  : "/assets/images/authors/Kealanparr.jpg"
-<<<<<<< HEAD
 Saka-Aiyedun Segun :
     name    : "Saka-Aiyedun Segun"
     bio     : "Segun is DevOps engineer keen on automating the software delivery lifecycle. He is also a technical writer who enjoys documenting the processes and learning new things."
@@ -256,7 +255,6 @@ Anurag Kumar:
     name    : "Anurag Kumar"
     bio     : "Anurag is an engineering student who loves contributing to open source projects. He is primarily interested in cloud native ecosystem."
     avatar  : "/assets/images/authors/anurag.png"
-=======
 Bala Priya C:
     name    : "Bala Priya C"
     bio     : "Bala is a technical writer who enjoys creating long-form content. Her areas of interest include math and programming. She shares her learning with the developer community by authoring tutorials, how-to guides, and more."
@@ -273,4 +271,3 @@ Ayomide Akinola:
     name    : "Ayomide Akinola"
     bio     : "I am a software developer with over 5 years of experience developing web front-end, back-end, and DevOps services in a variety of domains and tech stacks. My strongest skills are in PHP (Laravel), VueJs, Docker, and Kubernetes. I have experience designing system architectures and solutions for rapid scaling."
     avatar  : "/assets/images/authors/ayomide.jpg"
->>>>>>> 214b09e85180f9e0903e79b50a64b622c2402295
