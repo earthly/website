@@ -86,7 +86,7 @@ Click the icon in the `Terminals` section on the lower left to create a new term
 
 Start by importing the `os`, `numpy`, `joblib` and `face_recognition` packages.
 
-~~~{.bash caption=">_"}
+~~~{.python caption=""}
 import os
 import numpy as np
 import joblib
@@ -95,14 +95,14 @@ import face_recognition
 
 Then, create two list objects to store the registered face encodings and the corresponding people's first names.
 
-~~~{.bash caption=">_"}
+~~~{.python caption=""}
 face_encodings = []
 names = []
 ~~~
 
 To make this easy (specifically the name matching part), images that contain single individuals will be used. Loop through all of the previously uploaded filenames in the `umbrella/` directory. To get the complete image path for each iteration, add the directory name to the file name. Then, print this information to monitor progress and ensure that everything was done correctly.
 
-~~~{.bash caption=">_"}
+~~~{.python caption=""}
 for image in os.listdir('umbrella'):
     image_path = f"umbrella/{image}"
     print(image_path)
@@ -110,52 +110,52 @@ for image in os.listdir('umbrella'):
 
 Next, load the file using the `face_recognition.load_image_file` method and pass the loaded file object as a parameter into the `face_recognition.face_encodings` method. This returns a list of 1 x 128 arrays.
 
-~~~{.bash caption=">_"}
+~~~{.python caption=""}
 resident = face_recognition.load_image_file(image_path)
 ~~~
 
 Each array represents a face encoding, and since you know that the current images have only one, simply access the first index to get the array.
 
-~~~{.bash caption=">_"}
+~~~{.python caption=""}
 face_encoding = face_recognition.face_encodings(resident)[0]
 ~~~
 
 Append the array to the face encodings list and the file name (without the extension) to the names list.
 
-~~~{.bash caption=">_"}
+~~~{.python caption=""}
 face_encodings.append(face_encoding)
 names.append(image.split('.')[0])
 ~~~
 
 When this loop is completed, use the  `joblib.dump` method to save the names and face encodings. This acts as our local database.
 
-~~~{.bash caption=">_"}
+~~~{.python caption=""}
 joblib.dump([names, face_encodings], 'face_encodings.jl')
 ~~~
 
 Create the function `check_image` to check an input image for recognized individuals. The image path is passed to this function as a string.
 
-~~~{.bash caption=">_"}
+~~~{.python caption=""}
 def check_image(image):
 ~~~
 
 In the function's body, load the image from its path and store the unknown face encoding(s) in the image.
 
-~~~{.bash caption=">_"}
+~~~{.python caption=""}
 visitors = face_recognition.load_image_file(image)
 visitors_face_encodings = face_recognition.face_encodings(visitors)
 ~~~
 
 After this, load the registered face encodings and create an empty list for storing the output.
 
-~~~{.bash caption=">_"}
+~~~{.python caption=""}
 names, face_encodings = joblib.load('face_encodings.jl')
 output = []
 ~~~
 
 At this point, images with multiple faces can be processed. Loop through the face encodings in the input image and call the `face_recognition.compare_faces` method. This method uses the list of registered face encodings as well as a single visitor's face encoding. The method compares the unknown face encoding to each registered face encoding and returns a True value if there is a match. It then returns a list of booleans equal in length to the database of face encodings loaded.
 
-~~~{.bash caption=">_"}
+~~~{.python caption=""}
 for visitors_face_encoding in visitors_face_encodings:
     results = face_recognition.compare_faces\
     (face_encodings, visitors_face_encoding)
@@ -163,7 +163,7 @@ for visitors_face_encoding in visitors_face_encodings:
 
 . To see if any true values were recorded, use Python's `any` function. If this is the case, use NumPy's `np.argmax` method to find the index of the true value. This works since `True` values are greater than `False` in Python (1 > 0). To obtain the individual's name, the name at this index in the names list is accessed and then stored in the output array.
 
-~~~{.bash caption=">_"}
+~~~{.python caption=""}
 if any(results):
     person = names[np.argmax(results)]
     print(f"Welcome {person}!")
@@ -172,13 +172,13 @@ if any(results):
 
 Finally, return the output list and the number of unknown individuals in the image.
 
-~~~{.bash caption=">_"}
+~~~{.python caption=""}
 return output, len(visitors_face_encodings) - len(output)
 ~~~
 
 To test this function, loop through the previously uploaded files in the `test` directory. After that, append the directory name to the filename so that it can be accessed directly and print the resulting file path.
 
-~~~{.bash caption=">_"}
+~~~{.python caption=""}
 for unknown in os.listdir('test'):
     image_path = f"test/{unknown}"
     print(image_path)
@@ -186,13 +186,13 @@ for unknown in os.listdir('test'):
 
 Call the `check_image` function, pass in the image path, and unpack its output into two variables named `residents` and `n_visitors`.
 
-~~~{.bash caption=">_"}
+~~~{.python caption=""}
 residents, n_visitors = check_image(image_path)
 ~~~
 
 The `n_visitors` variable is used to print the number of unknown individuals at the door (which could be zero).
 
-~~~{.bash caption=">_"}
+~~~{.python caption=""}
 if n_visitors > 1:
     visitors_text = f" There are {n_visitors} unknown individuals 
     at the door."
@@ -203,7 +203,7 @@ else:
 
 The `residents` variable, on the other hand, is used to display the names of the recognised individuals.
 
-~~~{.bash caption=">_"}
+~~~{.python caption=""}
 if len(residents) > 1:
     residents_text = f"Welcome {', '.join(residents[:-1])} 
     and {residents[-1]}."
@@ -213,7 +213,7 @@ else:
 
 The resulting texts are combined and printed.
 
-~~~{.bash caption=">_"}
+~~~{.python caption=""}
 response_text = residents_text + visitors_text
 print(response_text)
 ~~~
@@ -230,13 +230,13 @@ When this is run, the following is expected.
 
 Define a function named `add_resident` which takes in an image path as a string.
 
-~~~{.bash caption=">_"}
+~~~{.python caption=""}
 def add_resident(image):
 ~~~
 
 In a `try` block, load the image, get the unknown face encoding, and load the resident face encodings as well as the corresponding names from memory.
 
-~~~{.bash caption=">_"}
+~~~{.python caption=""}
 try:
     visitor = face_recognition.load_image_file(image)
     visitor_face_encodings = face_recognition.face_encodings(visitor)
@@ -248,7 +248,7 @@ try:
 Since only images with single faces should be used, confirm that only one face is found.
 If this is not the case, the process terminates. Otherwise, access the face encoding and compare it to that of the already registered residents.
 
-~~~{.bash caption=">_"}
+~~~{.python caption=""}
 results = face_recognition.compare_faces(face_encodings,\
 visitor_face_encoding)
 if not any(results):
@@ -258,13 +258,13 @@ if not any(results):
 
  If a face is already a resident, you need not add it, as that could lead to a duplicate entry. Thus, only unregistered faces are saved alongside their names. Finally, the storage is updated by saving the newly modified registered face encodings and names to memory.
 
-~~~{.bash caption=">_"}
+~~~{.python caption=""}
 joblib.dump([names, face_encodings], 'face_encodings.jl')
 ~~~
 
  In the case of exceptions, the except block logs the error message and returns False. If things go well, the function returns True.
 
-~~~{.bash caption=">_"}
+~~~{.python caption=""}
 except Exception as e:
     print(f"Error: {e}")
     return Falsen_visitors
@@ -273,13 +273,13 @@ return True
 
 To put the addition of residents to the test, make the image path a variable. A picture of Lila is used here.
 
-~~~{.bash caption=">_"}
+~~~{.python caption=""}
 lila = 'test/Lila.jpg'
 ~~~
 
 Then, ensure that Lila is not recognized. If this is the case, print a message indicating that she is unknown.  
 
-~~~{.bash caption=">_"}
+~~~{.python caption=""}
 result = check_image(lila)
 
 if not result[0] and result[1] > 0:
@@ -290,13 +290,13 @@ else:
 
 Next, using the image path, call the `add_resident` function and print the output.
 
-~~~{.bash caption=">_"}
+~~~{.python caption=""}
 print(add_resident(lila))
 ~~~
 
 Check again to ensure that Lila is recognized.
 
-~~~{.bash caption=">_"}
+~~~{.python caption=""}
 result = check_image(lila)
 if not result[0] and result[1] > 0:
     print('There is an unknown individual at the door.')
@@ -308,7 +308,7 @@ The output below shows that Lila was successfully registered.
 
 When the script is run, the output shown below is obtained.
 
-~~~{.bash caption=">_"}
+~~~{.python caption=""}
 There is an unknown individual at the door.
 True
 Welcome  Lila!  # printed from check_image()
@@ -319,7 +319,7 @@ Welcome, Lila.  # printed from our if statement
 
 The required parameter for removing a resident is their first name. Replace any white space in the first name with an underscore in a `try` block, and ensure that it is in the title case.
 
-~~~{.bash caption=">_"}
+~~~{.python caption=""}
 def remove_resident(firstname):
     try:
         firstname = firstname.replace(' ', '_').title()
@@ -327,27 +327,27 @@ def remove_resident(firstname):
 
 Then, load the registered face encodings and get the index associated with the name.
 
-~~~{.bash caption=">_"}
+~~~{.python caption=""}
 names, face_encodings = joblib.load('face_encodings.jl')
 idx = names.index(firstname)
 ~~~
 
 Delete the name and face encoding at this index using this index and the `del` keyword.
 
-~~~{.bash caption=">_"}
+~~~{.python caption=""}
 del names[idx]
 del face_encodings[idx]
 ~~~
 
 Finally, save the updated face encodings and names to memory.
 
-~~~{.bash caption=">_"}
+~~~{.python caption=""}
 joblib.dump([names, face_encodings], 'face_encodings.jl')
 ~~~
 
  In the event of an exception, the except block prints the error message and returns `False`. If everything goes well, the function returns `True`.
 
-~~~{.bash caption=">_"}
+~~~{.python caption=""}
 except Exception as e:
     print(f"Error: {e}")
     return False
@@ -356,7 +356,7 @@ return True
 
 To test the remove method, parse in the string `'Lila'` to the `remove_resident` function and call the `check_image` method again.
 
-~~~{.bash caption=">_"}
+~~~{.python caption=""}
 remove_resident('Lila')
 result = check_image(lila)
 if not result[0] and result[1] > 0:
@@ -365,7 +365,7 @@ if not result[0] and result[1] > 0:
 
 The output shown below indicates that Lila has been removed from the list of registered residents.
 
-~~~{.bash caption=">_"}
+~~~{.python caption=""}
 There is an unknown individual at the door.
 ~~~
 
@@ -427,20 +427,20 @@ After you've configured the interface, double-click the submit button to open th
 
 First, get the response by calling the `server.call` method. This method accepts a string representing the name of the function to be called from the notebook and an argument representing the uploaded file to be parsed.
 
-~~~{.bash caption=">_"}
+~~~{.python caption=""}
 def button_1_click(self, **event_args):
     response = server.call('check_image', self.file_loader_1.file)
 ~~~
 
 The function name is `check_image` and the file is accessed via `self.file_loader_1.file`. Here you see that the uploaded file can be accessed from the `file_loader_1` `object using the`.file` method. If you renamed your file loader object, get the new name from the right-hand Code Snippet panel. The response is then unpacked into two variables.
 
-~~~{.bash caption=">_"}
+~~~{.python caption=""}
 residents, n_visitors = response
 ~~~
 
 The text to be sent as a response is composed as done in the notebook.
 
-~~~{.bash caption=">_"}
+~~~{.python caption=""}
 if n_visitors > 1:
     visitors_text = f" There are {n_visitors} unknown 
     individuals at the door."
@@ -459,7 +459,7 @@ response_text = residents_text + visitors_text
 
 Finally, the generated response text is `self.label_1.text`, which represents the text to be rendered.
 
-~~~{.bash caption=">_"}
+~~~{.python caption=""}
 if response_text:
     self.label_1.text = response_text
 else:
@@ -468,7 +468,7 @@ else:
 
 Back on the Design tab, double-click the file loader component. This returns you to the code tab, where you can see a method that was created to track a change in the file loader. Set the image component source to the uploaded file in this method, as shown below.
 
-~~~{.bash caption=">_"}
+~~~{.python caption=""}
 def file_loader_1_change(self, file, **event_args):
     """This method is called when a new file is loaded 
     into this FileLoader"""
@@ -488,7 +488,7 @@ First, add all of the components from the CheckForm. In the content field of the
 
 Double-click the submit button to open the code tab and create the empty method. In this method, pass the `add_resident` function name to the `server.call` `function. Also, pass in a tuple that contains the uploaded file and the text entered in the textbox.
 
-~~~{.bash caption=">_"}
+~~~{.python caption=""}
 def button_1_click(self, **event_args):
     """This method is called when the button is clicked"""
 
@@ -498,7 +498,7 @@ def button_1_click(self, **event_args):
 
 The response in this case is a boolean value. Based on this value, parse in `"Successful!"` or `"Failed!"` into the `self.label_1.text` to display the feedback.
 
-~~~{.bash caption=">_"}
+~~~{.python caption=""}
 self.label_1.text = "Successful!" if response else "Failed!"
 ~~~
 
@@ -516,7 +516,7 @@ Back on the Design tab, double-click the file loader component. Set the image so
 
 Then, in the code tab, double-click the submit button to access the generated function. Here, parse in `'remove_resident'` and the text entered into the textbox as arguments to the `sever.call` method.
 
-~~~{.bash caption=">_"}
+~~~{.python caption=""}
 def button_1_click(self, **event_args):
     """This method is called when the button is clicked"""
     response = server.call('remove_resident', self.text_box_1.text)
@@ -524,7 +524,7 @@ def button_1_click(self, **event_args):
 
 The boolean response is then rendered on the screen as `"Successful!"` or `"Failed!"`.
 
-~~~{.bash caption=">_"}
+~~~{.python caption=""}
 self.label_1.text = "Successful!" if response else "Failed!"
 ~~~
 
@@ -532,7 +532,7 @@ You have now created all the required forms. However, if you click the "run" but
 
 To do this, navigate to the EntrypointForm and double click "CHECK IMAGE" to reveal the code panel and the generated method in the form class. First, add the following lines of code to import the other forms.
 
-~~~{.bash caption=">_"}
+~~~{.python caption=""}
 from ..AddForm import AddForm
 from ..CheckForm import CheckForm
 from ..RemoveForm import RemoveForm
@@ -540,7 +540,7 @@ from ..RemoveForm import RemoveForm
 
 Next, in the `link_1_click` method, call the `self.reset_links()` method. This has not yet been created, but it will be responsible for resetting the roles of the various link components. In this case, the role is what determines whether a link is selected or unselected.
 
-~~~{.bash caption=">_"}
+~~~{.python caption=""}
 def link_1_click(self, **event_args):
     """This method is called when the link is clicked"""
     self.reset_links()
@@ -548,7 +548,7 @@ def link_1_click(self, **event_args):
 
 Following that, modify the role of link_1 to `'selected'`, clear the content panel component with the `self.content_panel.clear` method and finally, pass `CheckForm` as a parameter to the `self.content_panel.add_component` method to connect it to the link component.
 
-~~~{.bash caption=">_"}
+~~~{.python caption=""}
 self.link_1.role = 'selected'
 self.content_panel.clear()
 self.content_panel.add_component(CheckForm())
@@ -556,7 +556,7 @@ self.content_panel.add_component(CheckForm())
 
 Repeat this process for the "ADD A RESIDENT" (link_2) component and "REMOVE A RESIDENT" (link_3) component parsing in the `AddForm` and `RemoveForm` respectively.
 
-~~~{.bash caption=">_"}
+~~~{.python caption=""}
 def link_2_click(self, **event_args):
     """This method is called when the link is clicked"""
     self.reset_links()
@@ -576,7 +576,7 @@ When this is done, create a method to implement `self.reset_links`.
 
 In this method, you simply set the role parameter of all link components to an empty string, indicating that none of them is selected.
 
-~~~{.bash caption=">_"}
+~~~{.python caption=""}
 def reset_links(self, **event_args):
     self.link_1.role = ''
     self.link_2.role = ''
@@ -585,7 +585,7 @@ def reset_links(self, **event_args):
 
 If you run the app, you will notice that initially nothing is displayed but on clicking the items on the navigation bar, you can view the pages. This is because no default view is set. To do this, call the `self.link_1_click` function in the forms `__init__` method. Now the application defaults to the check image screen.
 
-~~~{.bash caption=">_"}
+~~~{.python caption=""}
 def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
@@ -608,7 +608,7 @@ This is the final operation to be carried out. To do this, first, the uplink key
 
 Move over to Deepnote and open the terminal to install the `anvil-uplink` package via `pip install` anvil-uplink. Then, import the `getpass` method to securely add your uplink key. Also, import the `anvil.server` and then the `anvil.media` method.
 
-~~~{.bash caption=">_"}
+~~~{.python caption=""}
 from getpass import getpass
 import anvil.server
 import anvil.media
@@ -616,7 +616,7 @@ import anvil.media
 
 Next, use the `getpass` method to store the link in a variable and pass that variable to the `anvil.server.connect` method.
 
-~~~{.bash caption=">_"}
+~~~{.python caption=""}
 uplink_key = getpass('Enter your Uplink key: ')
 anvil.server.connect(uplink_key)
 ~~~
@@ -624,40 +624,40 @@ anvil.server.connect(uplink_key)
 Following this, the different methods will be slightly modified.
 First, add the `@anvil.server.callable` decorator above the check image method to indicate that Anvil can call the function.
 
-~~~{.bash caption=">_"}
+~~~{.python caption=""}
 @anvil.server.callable
 def check_image(image):
 ~~~
 
 Next, in the `check_image` function, use a context manager to load the image from Anvil as a temporary file using `anvil.media.TempFile`.
 
-~~~{.bash caption=">_"}
+~~~{.python caption=""}
     with anvil.media.TempFile(image) as filename:
 ~~~
 
 This filename should then be passed to the `face_recognition.load_image_file` method. The remainder of the function remains the same. The modified function can be found in [this notebook](https://github.com/Fortune-Adekogbe/Facial-Recognition-System/blob/main/Deepnote/notebook.ipynb).
 
-~~~{.bash caption=">_"}
+~~~{.python caption=""}
 visitors = face_recognition.load_image_file(filename)
 visitors_face_encodings = face_recognition.face_encodings(visitors)
 ~~~
 
 Also, add the decorator above the `add_resident` method.
 
-~~~{.bash caption=">_"}
+~~~{.python caption=""}
 @anvil.server.callable
 def add_resident(image):
 ~~~
 
 From Anvil, a tuple named `image` is sent. Unpack this tuple into the `image` and `name` variables.
 
-~~~{.bash caption=">_"}
+~~~{.python caption=""}
 image, name = image
 ~~~
 
 As done above, use a context manager and the `anvil.media.TempFile` method to load the image.
 
-~~~{.bash caption=">_"}
+~~~{.python caption=""}
 try:
     with anvil.media.TempFile(image) as filename:
         visitor = face_recognition.load_image_file(filename)
@@ -666,7 +666,7 @@ try:
 
 Also, change the new name to `name.title()` when appending it to the names list.
 
-~~~{.bash caption=">_"}
+~~~{.python caption=""}
 if not any(results):
     face_encodings.append(visitor_face_encoding)
     names.append(name.title())
@@ -687,6 +687,7 @@ Finally, to share and test your app on another device, click the "Publish this a
 ## Conclusion
 
 You've now learned about Deepnote and Anvil, as well as how they work well together. You've also built a face recognition system by connecting a Deepnote long-running notebook to an Anvil interface built with Python and drag-and-drop components. Hopefully, this helped you realize that you don't need to learn a framework to serve your model quickly or build an internal tool.
+
 
  What has been described in this notebook can be replicated with any Python script running on a server. You can also expand the capacity of your Deepnote if you end up running more complex applications. Keep building.
 
