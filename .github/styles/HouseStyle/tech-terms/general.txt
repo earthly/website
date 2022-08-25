@@ -207,6 +207,13 @@ instrumenta
 proport
 uncommented
 keyphrase
+
+dotfiles
+dotfile
+bashrc
+rf
+Gitlab
+
 earthfile
 js
 Incase
@@ -214,3 +221,15 @@ digitalocean
 
 hardcoding
 tracerouting
+Weaveworks
+Akuity
+composability
+reconciliaton
+componentized
+changeset
+declaratively
+unsuspend
+auditability
+resyncing
+untracked
+linkerd

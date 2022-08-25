@@ -1,5 +1,9 @@
+Shekhar
+Kirani
 Chetan
 Aho
+Xanda
+Demarco
 Luu
 Srinivasa
 Kernighan
@@ -7,6 +11,7 @@ Weinberger
 Driessen
 Hashimoto
 Hecht
+Fabrice
 Spolsky
 Tetlock
 Tiigi
@@ -19,6 +24,7 @@ Haoyi
 eregontp
 Palahniuk
 Elmore
+Bellard
 Butterick
 Strunk
 Corbett
@@ -68,3 +74,5 @@ Nogginly
 Ganesh
 Sittampalam
 Masen
+Suen
+Morty
