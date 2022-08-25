@@ -12,13 +12,15 @@ Tekton
 tkn
 homebrew
 Statefulsets
-<<<<<<< HEAD
 Gitpod
 kustomized
 webshop
 nodemon
-=======
 untar
 controlplane
 cronjobs
->>>>>>> 6b4b3f9d59b8f09738dfe18bff335adb486a4a22
+Kustomization
+Kustomizations
+kustomization
+kustomizations
+kustomize

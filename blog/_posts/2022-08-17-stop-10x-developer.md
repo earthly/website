@@ -89,7 +89,7 @@ The 10X meme is both too extreme, by implying that Fabrice Bellard[^4] could kic
 
 And also, the 10x meme, and how it's often used, implies that skills are interchangeable. Should a great database internals expert be able to build a great micro-services architecture?
 
-So what term should you use instead of 10x developer? Try expert. As in 'John is a video encoding expert'. Or specialist: 'What I learned working with a postgres internals specialist'. Or if you want to sound like an MBA, use talent: 'I really need some exceptional compiler-backend talent to help with the incremental complication design'.
+So what term should you use instead of 10x developer? Try expert. As in 'John is a video encoding expert'. Or specialist: 'What I learned working with a postgres internals specialist'. Or if you want to sound like an MBA, use talent: 'I really need some exceptional compiler-backend talent to help with the incremental-compilation design'.
 
 I guess what I'm saying is: terminology matters and we can do better than `10x`. We can be specific. Skills are not homogeneous, and people can quickly [improve their craft](https://danluu.com/p95-skill/) as long as we don't treat talent like some mythical quality.
 
