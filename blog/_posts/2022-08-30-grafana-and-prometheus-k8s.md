@@ -143,7 +143,7 @@ Click on the metric and to view the metrics
 
 <div class="wide">
 
-![Servers running the Namespace]({{site.images}}{{page.slug}}/namespace.jpg)
+![Servers running the Namespace]({{site.images}}{{page.slug}}/namespace.png)
 
 </div>
 
