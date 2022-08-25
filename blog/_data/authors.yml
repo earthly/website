@@ -267,6 +267,10 @@ Anurag Kumar:
     name    : "Anurag Kumar"
     bio     : "Anurag is an engineering student who loves contributing to open source projects. He is primarily interested in cloud native ecosystem."
     avatar  : "/assets/images/authors/anurag.png"
+Talha Khalid:
+    name    : "Talha Khalid"
+    bio     : "Talha Khalid, full stack developer turned writer. If he isn’t spending time with his cat, Petrov you can almost always find him in some random coffee shop."
+    avatar  : "/assets/images/authors/talha.jpg"
 Ayomide Akinola:
     name    : "Ayomide Akinola"
     bio     : "I am a software developer with over 5 years of experience developing web front-end, back-end, and DevOps services in a variety of domains and tech stacks. My strongest skills are in PHP (Laravel), VueJs, Docker, and Kubernetes. I have experience designing system architectures and solutions for rapid scaling."

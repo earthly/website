@@ -27,3 +27,12 @@ nodemon
 untar
 controlplane
 cronjobs
+
+untar
+controlplane
+cronjobs
+Kustomization
+Kustomizations
+kustomization
+kustomizations
+kustomize
