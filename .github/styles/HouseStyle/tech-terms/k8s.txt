@@ -16,14 +16,13 @@ Gitpod
 kustomized
 webshop
 nodemon
-<<<<<<< HEAD
 
 untar
 controlplane
 cronjobs
 
 kubelet
-=======
+
 untar
 controlplane
 cronjobs
@@ -32,4 +31,3 @@ Kustomizations
 kustomization
 kustomizations
 kustomize
->>>>>>> 4111d264cb789df34c02097d4c8c4524c95e744f
