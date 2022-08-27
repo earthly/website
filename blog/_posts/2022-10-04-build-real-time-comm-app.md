@@ -1,14 +1,13 @@
 ---
-title: "Put Your Best Title Here"
+title: "How to Build A Real-Time Communication Application with Django-Channels and The WebSocket Protocol"
 categories:
   - Tutorials
 toc: true
-author: Adam
+author: Mustapha Ahmad
 
 internal-links:
  - just an example
 ---
-
 
 In this tutorial, we’ll learn how to build a real-time communication application with The [Django Channels](https://channels.readthedocs.io/en/stable/) package and The [WebSocket Protocol](https://datatracker.ietf.org/doc/html/rfc6455). The application we will create will be a platform where users can join multiple pre-created groups and share ideas with members of the group.
 
