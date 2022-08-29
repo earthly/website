@@ -7,5 +7,6 @@ facto
 ad
 hoc
 
+svc
 usr
 cfg
