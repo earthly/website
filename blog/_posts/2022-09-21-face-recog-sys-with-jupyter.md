@@ -12,7 +12,9 @@ internal-links:
  - Python
 ---
 
-The process of building systems to deploy the models that data scientists and machine learning engineers have created is non-trivial. This is because other developers and designers are not always available to create the required [APIs](https://aws.amazon.com/what-is/api/) and user interfaces. You could decide to learn to use the technologies required for this, but that takes considerable effort and could extend project completion by months. Due to this, you may just resort to leaving the models in notebooks on [Github](/blog/ci-comparison) or perhaps discuss the methodology in an article like this. What if you could still move ahead? What if you could serve models from your notebooks and build minimal interfaces quickly?
+The process of building systems to deploy the models that data scientists and machine learning engineers have created is non-trivial. This is because other developers and designers are not always available to create the required [APIs](https://aws.amazon.com/what-is/api/) and user interfaces. You could decide to learn to use the technologies required for this, but that takes considerable effort and could extend project completion by months. Due to this, you may just resort to leaving the models in notebooks on Github. 
+
+But what if you could still move ahead? What if you could serve models from your notebooks and build minimal interfaces quickly?
 
 In this tutorial, you will build a facial recognition system. As you implement this, you will learn to use Deepnote to build the logic and Anvil to build the interface, as well as how to link them. The process of identifying people's faces in an image or video feed by comparing them to a database of registered faces is known as facial recognition. In some cases, it can also be used to identify the faces of other animals.
 
@@ -36,7 +38,7 @@ First, o go to the [Deepnote sign-up page](https://deepnote.com/sign-up). Once t
 
 <div class="wide">
 
-![Deepnote sign up page]({{site.images}}{{page.slug}}/z025oRv.jpg)\
+![Deepnote sign up page]({{site.images}}{{page.slug}}/z025oRv.jpg)
 
 </div>
 
@@ -44,7 +46,7 @@ The onboarding screens come next. Enter the necessary information in the fields 
 
 <div class="wide">
 
-![Deepnote Onboarding page]({{site.images}}{{page.slug}}/tadKsId.jpg)\
+![Deepnote Onboarding page]({{site.images}}{{page.slug}}/tadKsId.jpg)
 
 </div>
 
@@ -62,7 +64,7 @@ Then, create a markdown cell in the notebook and enter the text "# Facial Recogn
 
 <div class="wide">
 
-![Deepnote new project]({{site.images}}{{page.slug}}/CTJ8sDq.png)\
+![Deepnote new project]({{site.images}}{{page.slug}}/CTJ8sDq.png)
 
 </div>
 
@@ -76,7 +78,7 @@ In the top-right section of the page, click the `+` icon by the files section to
 
 <div class="wide">
 
-![Deepnote images uploaded]({{site.images}}{{page.slug}}/TczQpPJ.png)\
+![Deepnote images uploaded]({{site.images}}{{page.slug}}/TczQpPJ.png)
 
 </div>
 
@@ -377,7 +379,7 @@ Visit the [Anvil sign-up page](https://anvil.works/sign-up) and follow the on-sc
 
 <div class="wide">
 
-![Anvil dashboard]({{site.images}}{{page.slug}}/cGHHYfX.png)\
+![Anvil dashboard]({{site.images}}{{page.slug}}/cGHHYfX.png)
 
 </div>
 
@@ -387,7 +389,7 @@ The client code, server code, services, and theme (which includes the color sche
 
 <div class="wide">
 
-![Anvil app default view]({{site.images}}{{page.slug}}/9Cqx0WX.png)\
+![Anvil app default view]({{site.images}}{{page.slug}}/9Cqx0WX.png)
 
 </div>
 
@@ -399,7 +401,7 @@ Next, drag, and drop three link text components from the toolbox to the sidebar'
 
 <div class="wide">
 
-![Anvil entry point form]({{site.images}}{{page.slug}}/mTYpFfV.png)\
+![Anvil entry point form]({{site.images}}{{page.slug}}/mTYpFfV.png)
 
 </div>
 
@@ -419,7 +421,7 @@ Finally, drag a label component to display the face recognition system's output.
 
 <div class="wide">
 
-![Anvil CheckForm]({{site.images}}{{page.slug}}/UKacj1U.png)\
+![Anvil CheckForm]({{site.images}}{{page.slug}}/UKacj1U.png)
 
 </div>
 
@@ -510,7 +512,7 @@ Back on the Design tab, double-click the file loader component. Set the image so
 
 <div class="wide">
 
-![Anvil remove form]({{site.images}}{{page.slug}}/lVrxmKa.png)\
+![Anvil remove form]({{site.images}}{{page.slug}}/lVrxmKa.png)
 
 </div>
 
@@ -602,7 +604,7 @@ This is the final operation to be carried out. To do this, first, the uplink key
 
 <div class="wide">
 
-![anvil-get-uplink-key]({{site.images}}{{page.slug}}/50KymOD.png)\
+![anvil-get-uplink-key]({{site.images}}{{page.slug}}/50KymOD.png)
 
 </div>
 
@@ -678,7 +680,7 @@ Now, return to Anvil, run the app, and try checking an image. Also, try adding a
 
 <div class="wide">
 
-![Anvil app test screenshot]({{site.images}}{{page.slug}}/GyueBhL.png)\
+![Anvil app test screenshot]({{site.images}}{{page.slug}}/GyueBhL.png)
 
 </div>
 
