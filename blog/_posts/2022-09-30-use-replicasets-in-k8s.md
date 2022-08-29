@@ -1,5 +1,5 @@
 ---
-title: "How to use ReplicaSets in Kubernetes and why you should know about them"
+title: "How to use ReplicaSets in Kubernetes and Why You Should Know About Them"
 categories:
   - Tutorials
 toc: true
@@ -68,7 +68,7 @@ The above command creates any resource that is defined in the file `pod.yml`, in
 
 The above command will produce an output like below. Note that `STATUS` is `ContainerCreating`. It will show Running once it finishes pulling the container image.
 
-~~~{.bash caption=">_"}
+~~~{.bash caption="output"}
 NAME        READY    STATUS             RESTARTS     AGE
 server-pod    0/1    ContainerCreating     0         77s
 ~~~
@@ -83,7 +83,7 @@ pod "server-pod" deleted
 
 To check if the pod is deleted, you can run `kubectl get pods`, which will produce the following output.
 
-~~~{.bash caption=">_"}
+~~~{.bash caption="output"}
 No resources found in default namespace
 ~~~
 
@@ -137,7 +137,7 @@ kubectl get pods
 
 Above command will produce the following output:
 
-~~~{.bash caption=">_"}
+~~~{.bash caption="output"}
 NAME                  READY       STATUS             RESTARTS    AGE
 my-replicaset-58fbh    0/1        ContainerCreating     0        51s 
 my-replicaset-lx5hk    0/1        Running               0        51s 
@@ -147,7 +147,7 @@ my-replicaset-qrqj2    0/1        ContainerCreating     0        51s
 You'll notice that your cluster has three pods, which corresponds to the number of replicas indicated in your YAML file.
 The command `kubectl get rs` used to obtain summary information about the ReplicaSet, running this command will produce the following output.
 
-~~~{.bash caption=">_"}
+~~~{.bash caption="output"}
 NAME          DESIRED    CURRENT        READY       AGE
 my-replicaset    3        3               0         14s
 ~~~
@@ -164,13 +164,13 @@ kubectl delete pod my-replicaset-58fbh
 
 Note that the above pod name would be different in your cluster. Running the above command will produce the following output.
 
-~~~{.bash caption=">_"}
+~~~{.bash caption="output"}
 pod "my-replicaset-58fbh" deleted
 ~~~
 
 As soon as you perform the preceding command. To acquire the list of active pods, run `kubectl get pods`. You will get the below output.
 
-~~~{.bash caption=">_"}
+~~~{.bash caption="output"}
 NAME                  READY   STATUS              RESTARTS    AGE
 my-replicaset-lx5hk    0/1    Running               0        5m 10s 
 my-replicaset-qrqj2    0/1    Running               0        5m 10s 
@@ -185,7 +185,7 @@ By using the command `kubectl delete rs <rs name>`, where `rs name` is the name 
 You may test it, after deleting the ReplicaSet and then typing the command `kubectl get pods` into the terminal.
 The above command will generate the following output.
 
-~~~{.bash caption=">_"}
+~~~{.bash caption="output"}
 No resources found in default namespace
 ~~~
 
