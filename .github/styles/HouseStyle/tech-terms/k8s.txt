@@ -28,6 +28,9 @@ untar
 controlplane
 cronjobs
 
+kubelet
+
+
 untar
 controlplane
 cronjobs
