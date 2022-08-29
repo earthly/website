@@ -12,6 +12,13 @@ Tekton
 tkn
 homebrew
 Statefulsets
+
+prometheus
+kube
+untar
+controlplane
+cronjobs
+
 Gitpod
 kustomized
 webshop
@@ -22,6 +29,7 @@ controlplane
 cronjobs
 
 kubelet
+
 
 untar
 controlplane
