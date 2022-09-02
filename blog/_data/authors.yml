@@ -6,40 +6,37 @@ Corey:
     name    : "Corey Larson"
     bio     : "Eats, runs, and codes. Dad."
     avatar  : "/assets/images/authors/coreylarson.jpg"
+    home    : "/authors/corey/"
 Vlad:
     name    : "Vlad A. Ionescu"
     bio     : " Founder of Earthly. Founder of ShiftLeft. Ex Google. Ex VMware. Co-author RabbitMQ Erlang Client."
     avatar  : "/assets/images/authors/vladaionescu.jpg"
+    home    : "/authors/vlad/"
 Alex:
     name    : "Alex Couture-Beil"
     bio     : "Alex enjoys writing code, growing vegetables, and the great outdoors."
     avatar  : "/assets/images/authors/alexcouturebeil.jpg"
+    home    : "/authors/alex/"
 Brandon:
     name    : "Brandon Schurman"
     bio     : "Brandon is an Engineer at Earthly who loves coding, tech startups, and camping trips with his family."
     avatar  : "/assets/images/authors/brandonschurman.jpg"
+    home    : "/authors/brandon/"
 Josh:
     name    : "Josh Alletto"
-    bio     : "Josh is a writer and former devops engineer. He's passionate about coding, learning, and sharing knowledge."
+    bio     : |
+                Josh is a writer and former devops engineer. He's passionate about coding, learning, and sharing knowledge.
+                </br><a href="mailto:josh+website@earthly.dev">✉Email Josh✉</a>
     avatar  : "/assets/images/authors/joshalletto.jpg"
-    links:
-        - label: ""
-          icon: "fas fa-fw fa-envelope-square"
-          url: "mailto:josh@earthly.dev"
+    home    : "/authors/josh/"
 Adam:
     name    : "Adam Gordon Bell"
-    bio     : "Spreading the word about Earthly. Host of CoRecursive podcast. Physical Embodiment of Cunningham's Law."
+    bio     : |
+                Spreading the word about Earthly. Host of <a href="https://corecursive.com/">CoRecursive</a> podcast. Physical Embodiment of Cunningham's Law.
+                <br/><a href="https://twitter.com/adamgordonbell">@adamgordonbell</a>
+                </br><a href="mailto:adam+website@earthly.dev">✉Email Adam✉</a>
     avatar  : "/assets/images/authors/adamgordonbell.png"
-    links:
-        - label: ""
-          icon: "fab fa-fw fa-twitter-square" 
-          url: "https://twitter.com/adamgordonbell"
-        - label: ""
-          icon: "fas fa-fw fa-envelope-square"
-          url: "mailto:adam+website@earthly.dev"
-        - label: ""
-          icon: "fas fa-fw fa-link"
-          url: "https://corecursive.com"
+    home    : "/authors/adam/"
 Vivek Sonar:
     name    : "Vivek Sonar"
     bio     : "Vivek Sonar is a full-stack engineer who loves to solve complex infrastructure problems and work with public cloud platforms like AWS and GCP."
