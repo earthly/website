@@ -6,40 +6,37 @@ Corey:
     name    : "Corey Larson"
     bio     : "Eats, runs, and codes. Dad."
     avatar  : "/assets/images/authors/coreylarson.jpg"
+    home    : "/authors/corey/"
 Vlad:
     name    : "Vlad A. Ionescu"
     bio     : " Founder of Earthly. Founder of ShiftLeft. Ex Google. Ex VMware. Co-author RabbitMQ Erlang Client."
     avatar  : "/assets/images/authors/vladaionescu.jpg"
+    home    : "/authors/vlad/"
 Alex:
     name    : "Alex Couture-Beil"
     bio     : "Alex enjoys writing code, growing vegetables, and the great outdoors."
     avatar  : "/assets/images/authors/alexcouturebeil.jpg"
+    home    : "/authors/alex/"
 Brandon:
     name    : "Brandon Schurman"
     bio     : "Brandon is an Engineer at Earthly who loves coding, tech startups, and camping trips with his family."
     avatar  : "/assets/images/authors/brandonschurman.jpg"
+    home    : "/authors/brandon/"
 Josh:
     name    : "Josh Alletto"
-    bio     : "Josh is a writer and former devops engineer. He's passionate about coding, learning, and sharing knowledge."
+    bio     : |
+                Josh is a writer and former devops engineer. He's passionate about coding, learning, and sharing knowledge.
+                </br><a href="mailto:josh+website@earthly.dev">✉Email Josh✉</a>
     avatar  : "/assets/images/authors/joshalletto.jpg"
-    links:
-        - label: ""
-          icon: "fas fa-fw fa-envelope-square"
-          url: "mailto:josh@earthly.dev"
+    home    : "/authors/josh/"
 Adam:
     name    : "Adam Gordon Bell"
-    bio     : "Spreading the word about Earthly. Host of CoRecursive podcast. Physical Embodiment of Cunningham's Law."
+    bio     : |
+                Spreading the word about Earthly. Host of <a href="https://corecursive.com/">CoRecursive</a> podcast. Physical Embodiment of Cunningham's Law.
+                <br/><a href="https://twitter.com/adamgordonbell">@adamgordonbell</a>
+                </br><a href="mailto:adam+website@earthly.dev">✉Email Adam✉</a>
     avatar  : "/assets/images/authors/adamgordonbell.png"
-    links:
-        - label: ""
-          icon: "fab fa-fw fa-twitter-square" 
-          url: "https://twitter.com/adamgordonbell"
-        - label: ""
-          icon: "fas fa-fw fa-envelope-square"
-          url: "mailto:adam+website@earthly.dev"
-        - label: ""
-          icon: "fas fa-fw fa-link"
-          url: "https://corecursive.com"
+    home    : "/authors/adam/"
 Vivek Sonar:
     name    : "Vivek Sonar"
     bio     : "Vivek Sonar is a full-stack engineer who loves to solve complex infrastructure problems and work with public cloud platforms like AWS and GCP."
@@ -247,6 +244,14 @@ Kealan Parr:
     name    : "Kealan Parr"
     bio     : "Kealan is a senior software engineer and technical writer who works with clients on technical reviewing and software development. He is a member of the Unicode Consortium."
     avatar  : "/assets/images/authors/Kealanparr.jpg"
+Saka-Aiyedun Segun :
+    name    : "Saka-Aiyedun Segun"
+    bio     : "Segun is DevOps engineer keen on automating the software delivery lifecycle. He is also a technical writer who enjoys documenting the processes and learning new things."
+    avatar  : "/assets/images/authors/saka.jpg"
+Anurag Kumar:
+    name    : "Anurag Kumar"
+    bio     : "Anurag is an engineering student who loves contributing to open source projects. He is primarily interested in cloud native ecosystem."
+    avatar  : "/assets/images/authors/anurag.png"
 Bala Priya C:
     name    : "Bala Priya C"
     bio     : "Bala is a technical writer who enjoys creating long-form content. Her areas of interest include math and programming. She shares her learning with the developer community by authoring tutorials, how-to guides, and more."
@@ -267,7 +272,18 @@ Ayomide Akinola:
     name    : "Ayomide Akinola"
     bio     : "I am a software developer with over 5 years of experience developing web front-end, back-end, and DevOps services in a variety of domains and tech stacks. My strongest skills are in PHP (Laravel), VueJs, Docker, and Kubernetes. I have experience designing system architectures and solutions for rapid scaling."
     avatar  : "/assets/images/authors/ayomide.jpg"
+<<<<<<< HEAD
 Mustapha Ahmad Ayodeji:
     name    : "Mustapha Ahmad Ayodeji"
     bio     : "Ahmad is a Software developer and a Technical writer with so much interest for Django related frameworks."
     avatar  : "/assets/images/authors/ahmad.jpg"
+=======
+Vivek Kumar Singh:
+    name    : "Vivek Kumar Singh"
+    bio     : "Vivek is a Python/Django developer who spends his time building projects and learning new technologies. He also likes to breakdown complex topics in his blogs to help new developers."
+    avatar  : "/assets/images/authors/vivek.jpeg"
+Fortune Adekogbe:
+    name    : "Fortune Adekogbe"
+    bio     : "Fortune is a Python developer with a knack for building intelligent systems. He is also a technical writer and process engineer with a focus on sustainable energy systems. Fortune likes listening to audio content and volunteering with the VFD in his free time."
+    avatar  : "/assets/images/authors/Fortune.jpg"
+>>>>>>> ab51182f8df0eb72aa3885bd186ed7a1a8eaf336

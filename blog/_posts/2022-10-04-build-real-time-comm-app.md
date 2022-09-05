@@ -14,11 +14,11 @@ In this tutorial, we’ll learn how to build a real-time communication applicati
 ## Objectives
 By the end of the tutorial, you should be able to:
 
-1. write the client-side WebSocket code with the Websocket API
-2. setup a Websocket project for the development environment
-3. build a real-time communication project with Django Channels
-4. configure a Websocket server with Django Channels
-5. have a solid understanding of the WebSocket protocol
+1. Write the client-side WebSocket code with the Websocket API
+2. Setup a Websocket project for the development environment
+3. Build a real-time communication project with Django Channels
+4. Configure a Websocket server with Django Channels
+5. Have a solid understanding of the WebSocket protocol
 
 ## Prerequisite
   
@@ -31,7 +31,7 @@ By the end of the tutorial, you should be able to:
   5. Familiarity with HTML and Javascript
 
 
-## Overview of Websocket
+## Overview of WebSocket
 
 The WebSocket protocol is a web protocol that allows bi-directional communication between the client ( web browser ) and the server over a single TCP connection. 
 
@@ -53,7 +53,7 @@ The Channels package makes use of consumers (which are the equivalent of Django 
 
 A consumer can also communicate with other consumers and multiple consumers can be part of a single channel group. The communication between multiple consumers can be achieved via channel layers. (More on channel layers soon.)
 
-## Building the application
+## Building The Application
 
 ### Project Setup
 
@@ -71,19 +71,26 @@ $ cd DiscussIt
 $ python3 -m venv venv
 $ source venv/bin/activate
 ```
+
 3. Install Django and Channels
+
  ```
 $ pip install django,django-channels
 ```
+
 4. Start a new Django Project in the current working directory
+
 ```
 $ django-admin startproject DiscussIt .
 ```
+
 5.  Add the packages you installed in the `requirements.txt` file:
+
 ```
 $ pip freeze > requirements.txt
 
 ```
+
 6. Create a `.env` file in the project directory for the environment variables.
 
 7. Create a Django application called chat:
@@ -116,7 +123,8 @@ $ python manage.py startapp chat
 ```
    $ python manage.py runserver
 ```
-Since you have added channels to the list of `INSTALLED_APP`, it will take over the runserver command and spin up the ASGI server from the `asgi.py` rather than the WSGI  server configured in the `wsgi.py` file:
+
+Since you have added channels to the list of `INSTALLED_APP`, it will take over the runserver command and spin up the ASGI server from the `asgi.py` rather than the WSGI server configured in the `wsgi.py` file:
 
 ![asgirunserveromage](https://i.imgur.com/Ylevmwg.jpeg)
 
@@ -220,6 +228,7 @@ class Message(models.Model):
 ####Event Model
 We will keep track of users coming and going through the use of Events.
 ```
+
 class Event(models.Model):
     '''
     A model that holds all events related to a group like when a user joins the group or leaves.
