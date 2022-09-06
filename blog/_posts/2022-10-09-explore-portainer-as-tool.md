@@ -1,18 +1,13 @@
 ---
-title: "Put Your Best Title Here"
+title: "EXPLORING PORTAINER AS A TOOL FOR MANAGING DOCKER CONTAINERS"
 categories:
   - Tutorials
 toc: true
-author: Adam
+author: Mercy Bassey
 
 internal-links:
  - just an example
 ---
-
-
-
-
-# EXPLORING PORTAINER AS A TOOL FOR MANAGING DOCKER CONTAINERS
 
 As a developer managing containerized applications can be most times daunting especially when it comes to using a command-line interface; where you need to use commands for creating and administrating docker containers, writing complicating YAML files for container ochestrated environments like Kubernetes, and having to learn commands.
 
