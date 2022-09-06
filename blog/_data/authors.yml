@@ -280,3 +280,7 @@ Fortune Adekogbe:
     name    : "Fortune Adekogbe"
     bio     : "Fortune is a Python developer with a knack for building intelligent systems. He is also a technical writer and process engineer with a focus on sustainable energy systems. Fortune likes listening to audio content and volunteering with the VFD in his free time."
     avatar  : "/assets/images/authors/Fortune.jpg"
+Mercy Bassey:
+    name    : "Mercy Bassey"
+    bio     : "Mercy Bassey is a JavaScript programmer with a passion for technical writing. Her area of expertise is Full-stack web development and DevOps/IT."
+    avatar  : "/assets/images/authors/mercy.png"
