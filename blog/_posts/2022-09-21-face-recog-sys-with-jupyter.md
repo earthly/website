@@ -12,7 +12,7 @@ internal-links:
  - Python
 ---
 
-The process of building systems to deploy the models that data scientists and machine learning engineers have created is non-trivial. This is because other developers and designers are not always available to create the required [APIs](https://aws.amazon.com/what-is/api/) and user interfaces. You could decide to learn to use the technologies required for this, but that takes considerable effort and could extend project completion by months. Due to this, you may just resort to leaving the models in notebooks on Github. 
+The process of building systems to deploy the models that data scientists and machine learning engineers have created is non-trivial. This is because other developers and designers are not always available to create the required [APIs](https://aws.amazon.com/what-is/api/) and user interfaces. You could decide to learn to use the technologies required for this, but that takes considerable effort and could extend project completion by months. Due to this, you may just resort to leaving the models in notebooks on Github.
 
 But what if you could still move ahead? What if you could serve models from your notebooks and build minimal interfaces quickly?
 
@@ -689,7 +689,6 @@ Finally, to share and test your app on another device, click the "Publish this a
 ## Conclusion
 
 You've now learned about Deepnote and Anvil, as well as how they work well together. You've also built a face recognition system by connecting a Deepnote long-running notebook to an Anvil interface built with Python and drag-and-drop components. Hopefully, this helped you realize that you don't need to learn a framework to serve your model quickly or build an internal tool.
-
 
  What has been described in this notebook can be replicated with any Python script running on a server. You can also expand the capacity of your Deepnote if you end up running more complex applications. Keep building.
 
