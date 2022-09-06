@@ -61,12 +61,11 @@ But how much day-to-day work has sufficient difficulty to let a skilled develope
 > They also hang from the roofs of caves, their leather wings enfolding their self assembled Compute as they code through the dark night of the soul...  
 > [Paul Sweeney](https://twitter.com/PaulSweeney/status/1150366063303057408)
 
-Variation in skills isn't unique to software development. If 10x developers exist, then 10x doctors and mechanics exist as well. But, for a skill to materially impact a team or an organization, it must be a limiting factor. 
+Variation in skills isn't unique to software development. If 10x developers exist, then 10x doctors and mechanics exist as well. But, for a skill to materially impact a team or an organization, it must be a limiting factor.
 
 If House, the misanthropic medical genius from the show 'House' worked at a walk-in clinic, handing out flu shots and antibiotics, he wouldn't be more effective than a mediocre doctor.[^3] Similarly, if your team's problems aren't occasionally [combinatorial graph coverage problems](https://leetcode.com/problems/minimum-weighted-subgraph-with-the-required-paths/submissions/), then is a Leetcode champ going to move the needle? If a 10x developer is supposed to get 10x the work done, then you need some challenging problems to throw at them.
 
 [^3]: Also, why do 'geniuses' need to be jerks? Both Shekhar Kirani and the House writers need talented people to be deficient in other ways. Where is the genius who's friendly and brings banana bread in to work for everyone?
-
 
 (Personal opinion: A developer who is a 10x communicator is what many a team needs.)
 

@@ -9,17 +9,17 @@ internal-links:
  - just an example
 ---
 
-As a developer managing containerized applications can be most times daunting especially when it comes to using a command-line interface; where you need to use commands for creating and administrating docker containers, writing complicating YAML files for container ochestrated environments like Kubernetes, and having to learn commands.
+As a developer managing containerized applications can be most times daunting especially when it comes to using a command-line interface; where you need to use commands for creating and administrating docker containers, writing complicating YAML files for container orchestrated environments like Kubernetes, and having to learn commands.
 
 Depending on where you land on the spectrum, you might have no problem using the command-line interface; but for many folks it may introduce pitfalls as one has to adopt working with the terminal, having to write complex instructions and commands.
 
 [Portainer](https://github.com/portainer/portainer) is an open-source software that provides a visual view for containerized applications. it is a container management tool for Docker, Docker swarm, Kubernetes and Azure Container Instance (ACI).
 
-Portainer in simple terms gives you the ability to deploy and manage your docker containers without having to write code like you’ll normally do with a CLI. With portainer, you have the flexibility of viewing your containerized apps and manage them via a graphic user interface.
+Portainer in simple terms gives you the ability to deploy and manage your docker containers without having to write code like you'll normally do with a CLI. With portainer, you have the flexibility of viewing your containerized apps and manage them via a graphic user interface.
 
-In this tutorial, you will learn how to set up, create and manage docker containers and images with Portainer.
+In this tutorial, you will learn how to set up, create, and manage docker containers and images with Portainer.
 
-## What is portainer
+## What Is Portainer
 
 Portainer is a software, or a centralized service that is used to manage containerized apps. You simply run portainer as a docker container, then it gives you a user interface to manage your containerized application for both local and cloud environments. This reduces the need for command line interfaces.
 
@@ -37,17 +37,17 @@ If You'd like to follow along, you will need to have the following.
 - Docker installed locally or on a linux server with an Ubuntu distribution.
 - You have a basic knowledge of Docker.
 
-## Setting up portainer for docker
+## Setting Up Portainer for Docker
 
-In this tutorial, you will deploy a portainer server as a docker container to administrate and manage your docker containerized applications. 
+In this tutorial, you will deploy a portainer server as a docker container to administrate and manage your docker containerized applications.
 
-Since portainer runs as a containerized application, it is required that you create a docker container, configure the volume for persistent storage of the portainer server, and assign port number bindings. 
+Since portainer runs as a containerized application, it is required that you create a docker container, configure the volume for persistent storage of the portainer server, and assign port number bindings.
 
 Run the command below to configure a volume called `portainer-data` :
 
-```bash
+~~~{.bash caption=">_"}
 docker volume create portainer-data
-```
+~~~
 
 ![Configuring persistent storage for portainer](EXPLORING%20PORTAINER%20AS%20A%20TOOL%20FOR%20MANAGING%20DOCKER%20%20cb69adda4ed94687b08c2e73678b60b2/docker-volume-for-portainer.png)
 
@@ -62,13 +62,13 @@ Install the portainer Docker standalone version using the command below:
 
 This command will create a docker container called `portainer-ce` and run the portainer server in a detached mode.
 
-It will also expose both port 9443 and 8000 and map it to the port 9443 and 8000, respectively. The port binding 9443 gives you access to the portainer GUI, and the port binding 8000 is for the tunneling that enables the connection between the edge agent and the portainer server. I talk about the edge agent later on as you go on in the tutorial. 
+It will also expose both port 9443 and 8000 and map it to the port 9443 and 8000, respectively. The port binding 9443 gives you access to the portainer GUI, and the port binding 8000 is for the tunneling that enables the connection between the edge agent and the portainer server. I talk about the edge agent later on as you go on in the tutorial.
 
 Additionally, this command will mount the docker sock to mount local docker containers and Mount the volume `portainer-data` to persist data.
 
-```bash
+~~~{.bash caption=">_"}
 docker run -d -p 8000:8000 -p 9443:9443 --name portainer-ce --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer-data:/data portainer/portainer-ce:latest
-```
+~~~
 
 ![Creating and running portainer as a docker container.](EXPLORING%20PORTAINER%20AS%20A%20TOOL%20FOR%20MANAGING%20DOCKER%20%20cb69adda4ed94687b08c2e73678b60b2/creating-and-running-portainer-as-a-docker-container.png)
 
@@ -76,9 +76,9 @@ Creating and running portainer as a docker container.
 
 Confirm if the portainer server is up and running using the following docker command.
 
-```bash
+~~~{.bash caption=">_"}
 docker ps
-```
+~~~
 
 ![Confirming portainer is up and running.](EXPLORING%20PORTAINER%20AS%20A%20TOOL%20FOR%20MANAGING%20DOCKER%20%20cb69adda4ed94687b08c2e73678b60b2/confirming-portainer-is-up-and-running.png)
 
@@ -86,11 +86,11 @@ Confirming portainer is up and running.
 
 ## Accessing the Portainer UI
 
-Portainer becomes really useful and powerful when used via the GUI. Since you now have portainer up and running, visit the address below on your favorite browser to access your login page. You’ll need to create a user and log in so you can access the portainer GUI to ‌administrate your containerized applications. 
+Portainer becomes really useful and powerful when used via the GUI. Since you now have portainer up and running, visit the address below on your favorite browser to access your login page. You'll need to create a user and log in so you can access the portainer GUI to ‌administrate your containerized applications.
 
-```bash
+~~~{.bash caption=">_"}
 https://localhost:9443
-```
+~~~
 
 You should see a page that requires you to create a user to proceed. Fill in the fields accordingly, to create a user.
 
@@ -102,7 +102,7 @@ On successful creation, the page will redirect to a quick setup page.
 
 ## Managing docker containers with Portainer
 
-Until now, you have created and ran portainer as a docker container. You have also accessed the portainer graphic user interface. It’s now time to manage your docker containers with portainer.
+Until now, you have created and ran portainer as a docker container. You have also accessed the portainer graphic user interface. It's now time to manage your docker containers with portainer.
 
 On the quick setup page, click on the *Get Started* box highlighted below to manage the environment where portainer is currently running on.
 
@@ -110,7 +110,7 @@ On the quick setup page, click on the *Get Started* box highlighted below to man
 
 Initializing docker container management with portainer.
 
-You should see all the containers running on your machine together with other resources like stacks, volumes and images.
+You should see all the containers running on your machine together with other resources like stacks, volumes, and images.
 
 ![Viewing docker containers and related resources with portainer.](EXPLORING%20PORTAINER%20AS%20A%20TOOL%20FOR%20MANAGING%20DOCKER%20%20cb69adda4ed94687b08c2e73678b60b2/viewing-docker-containers-locally.png)
 
@@ -118,13 +118,13 @@ Viewing docker containers and related resources with portainer.
 
 For a detailed view of your docker resources, you can click on the box above to see your docker resources respectively.
 
-The image below showcases the number of docker compose stacks, images, containers, volumes and networks available on your machine.
+The image below showcases the number of docker compose stacks, images, containers, volumes, and networks available on your machine.
 
 ![Viewing the portainer dashboard.](EXPLORING%20PORTAINER%20AS%20A%20TOOL%20FOR%20MANAGING%20DOCKER%20%20cb69adda4ed94687b08c2e73678b60b2/viewing-docker-resources-respectively.png)
 
 Viewing the portainer dashboard.
 
-Right here in your dashboard, you also have the flexibility to add a docker container, delete a docker container, add a volume, delete a volume as well as docker compose stacks, images and networks without having to use a command-line interface or write code. 
+Right here in your dashboard, you also have the flexibility to add a docker container, delete a docker container, add a volume, delete a volume as well as docker compose stacks, images, and networks without having to use a command-line interface or write code.
 
 On the right panel in your dashboard, navigate to the *containers* option **to view your docker containers.
 
@@ -138,7 +138,7 @@ Viewing the portainer container.
 
 To add a docker container, click on the *add container* button and the page would then navigate to a *create container* page where you can specify some configuration settings for the container you want to create.
 
-For testing ‌set the container name to *Nginx-web-server* and populate the image field with the value - *nginx.* You’ll need to do this because you will deploy a Nginx web server. 
+For testing ‌set the container name to *Nginx-web-server* and populate the image field with the value - *nginx.* You'll need to do this because you will deploy a Nginx web server.
 
 Also, toggle the ***Publish all exposed network ports to random host ports*** so portainer can assign random host ports to the network port ‌the container exposes.
 
@@ -192,15 +192,15 @@ wait for the image to be downloaded successfully as shown below.
 
 Downloading docker image (*mercybassey/myvueapp)*
 
-Once downloaded successfully, you should see your newly downloaded image. You have now pulled a docker image from dockerhub effortlessly leveraging portainer 
+Once downloaded successfully, you should see your newly downloaded image. You have now pulled a docker image from dockerhub effortlessly leveraging portainer
 
 ![Viewing newly pulled docker image](EXPLORING%20PORTAINER%20AS%20A%20TOOL%20FOR%20MANAGING%20DOCKER%20%20cb69adda4ed94687b08c2e73678b60b2/viewing-newly-pulled-image.png)
 
 Viewing newly pulled docker image
 
-## Adding and managing Portainer environments
+## Adding And Managing Portainer Environments
 
-Portainer supports a number ways for creating and managing environments. The portainer community edition supports Azure; for azure container instances (ACI), Local and cloud Kubernetes clusters, docker standalone as well as docker swarm clusters.
+Portainer supports a number ways for creating and managing environments. The portainer community edition supports Azure; for azure container instances (ACI), Local, and cloud Kubernetes clusters, docker standalone as well as docker swarm clusters.
 
 To illustrate this, Click on the *environment* option from the *left panel* to see the environment page. You should see your docker standalone environment as shown below:
 
@@ -210,7 +210,7 @@ Viewing environment on portainer server
 
 On the *environment* page, go ahead to click on the *Add environment* button to add an environment.
 
-You can see that portainer supports Docker, Kubernetes and ACI environments. Go ahead and click on the *Kubernetes box*  to a add and manage a Kubernetes environment and click on the *start wizard* button to continue.
+You can see that portainer supports Docker, Kubernetes, and ACI environments. Go ahead and click on the *Kubernetes box*  to a add and manage a Kubernetes environment and click on the *start wizard* button to continue.
 
 ![Adding Kubernetes environment](EXPLORING%20PORTAINER%20AS%20A%20TOOL%20FOR%20MANAGING%20DOCKER%20%20cb69adda4ed94687b08c2e73678b60b2/adding-kubernetes-environment-1.png)
 
@@ -222,23 +222,23 @@ A new screen with other configuration settings will be shown to you:
 
 Configuring Kubernetes environment
 
-While connecting to Kubernetes clusters, portainer provides three different options. Connecting through a default agent, an edge agent or import an existing kubernetes config. 
+While connecting to Kubernetes clusters, portainer provides three different options. Connecting through a default agent, an edge agent or import an existing kubernetes config.
 
 The default agent is used to communicate and manage local Kubernetes cluster resources. While the edge agent is used for connecting production or cloud based Kubernetes environments on public networks which is done via an encrypted TLS tunnel to prevent the edge agent from being public. This applies to local and cloud based Docker swarm clusters and Azure container instances (ACI) as well.
 
 <aside>
-💡 If you will run local networks or run docker containers locally on your machine then it’s suitable to use the portainer default agent. But if you will run portainer in the cloud, then portainer will have a public endpoint. So, in this case you’ll need to use the portainer edge agent.
+💡 If you will run local networks or run docker containers locally on your machine then it's suitable to use the portainer default agent. But if you will run portainer in the cloud, then portainer will have a public endpoint. So, in this case you'll need to use the portainer edge agent.
 
 </aside>
 
 For connecting Kubernetes clusters (either local or cloud environments) a portainer agent is required to be deployed on the Kubernetes cluster via node port and load balancer.
 
-In this case, all you need to do is copy the command highlighted to install the portainer agent. This agent serves and a means of communication between the Kubernetes environment and the portainer server. 
+In this case, all you need to do is copy the command highlighted to install the portainer agent. This agent serves and a means of communication between the Kubernetes environment and the portainer server.
 
 This Kubernetes environment can either be running on your local machine or a virtual machine other than the host (the linux server or your local machine) the portainer server is running on.
 
 <aside>
-💡 Adding an environment is beyond the scope of this tutorial. If you’d like to learn more on how you can add an environment visit, the [portainer documentation](https://docs.portainer.io/admin/environments/add/kubernetes) as it is required that you have either a local or cloud kubernetes cluster or docker swarm cluster up and running .
+💡 Adding an environment is beyond the scope of this tutorial. If you'd like to learn more on how you can add an environment visit, the [portainer documentation](https://docs.portainer.io/admin/environments/add/kubernetes) as it is required that you have either a local or cloud kubernetes cluster or docker swarm cluster up and running .
 
 </aside>
 
@@ -253,8 +253,6 @@ As you have learned, Portainer is a useful software for managing your docker con
 At this point you have only have the surface scratched. You can furthermore explore portainer by maybe consoling to the container to communicate directly to the container, create networks and docker secrets alongside other docker resources.
 
 Additionally you can perhaps add Role-Based Access Control and other container registries to pull docker images from.
-
-
 
 ## Outside Article Checklist
 
