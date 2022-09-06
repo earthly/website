@@ -100,7 +100,7 @@ Creating a new user on portainer server.
 
 On successful creation, the page will redirect to a quick setup page.
 
-## Managing docker containers with Portainer
+## Managing Docker Containers With Portainer
 
 Until now, you have created and ran portainer as a docker container. You have also accessed the portainer graphic user interface. It's now time to manage your docker containers with portainer.
 
@@ -166,7 +166,7 @@ Visit the address *[localhost:80](http://localhost:80)* on your favorite browser
 
 You have now successfully created and deploy an nginx web server with portainer without having to write a single line of code.
 
-## Managing docker images
+## Managing Docker Images
 
 Other than just containers you can manage docker images as well with portainer. On the right panel, navigate to the *images* option to see your images lists.
 
@@ -198,7 +198,7 @@ Once downloaded successfully, you should see your newly downloaded image. You ha
 
 Viewing newly pulled docker image
 
-## Adding And Managing Portainer Environments
+## Adding and Managing Portainer Environments
 
 Portainer supports a number ways for creating and managing environments. The portainer community edition supports Azure; for azure container instances (ACI), Local, and cloud Kubernetes clusters, docker standalone as well as docker swarm clusters.
 
@@ -260,7 +260,6 @@ Additionally you can perhaps add Role-Based Access Control and other container r
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
 - [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`

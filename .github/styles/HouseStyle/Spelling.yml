@@ -18,3 +18,5 @@ ignore:
   - HouseStyle/tech-terms/people.txt
   - HouseStyle/tech-terms/nonsense.txt
   - HouseStyle/tech-terms/fileformats.txt
+  - HouseStyle/tech-terms/dockers.txt
+  - HouseStyle/tech-terms/mongo.txt
