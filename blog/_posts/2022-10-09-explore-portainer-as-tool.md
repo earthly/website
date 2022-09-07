@@ -12,15 +12,15 @@ internal-links:
  - Kubernetes
 ---
 
-As a developer managing containerized applications can be daunting especially when it comes to using a command-line interface; administrating docker containers, writing complicating, and having to learn the various commands can be intimidating.
+As a developer managing containerized applications can be daunting especially when it comes to using a command-line interface; administrating [docker](/blog/rails-with-docker) containers, writing complicating, and having to learn the various commands can be intimidating.
 
 Depending on where you land on the spectrum, you might have no problem using a command-line interface; but for many folks, it's a challenge.
 
-[Portainer](https://github.com/portainer/portainer) is an open-source service that provides a visual web view for containerized applications. it is a container management tool for Docker, Docker swarm, Kubernetes, and Azure Container Instances (ACI).
+[Portainer](https://github.com/portainer/portainer) is an open-source service that provides a visual web view for containerized applications. it is a container management tool for Docker, Docker swarm, Kubernetes, and [Azure](/blog/continuous-integration) Container Instances (ACI).
 
 Portainer gives you the ability to deploy and manage your docker containers without having to write code like you'll normally do with a CLI. With portainer, you have the flexibility of viewing your containerized apps and managing them via a graphical user interface.
 
-In this tutorial, you will learn how to set up, create, and manage docker containers and images with Portainer.
+In this tutorial, you will learn how to set up, create, and manage [docker](/blog/rails-with-docker) containers and images with Portainer.
 
 ## What Is Portainer
 
@@ -67,7 +67,7 @@ This command will create a docker container called `portainer-ce` and run the po
 
 It will also expose both port 9443 and 8000 and map it to the port 9443 and 8000, respectively. The port binding 9443 gives you access to the portainer GUI, and the port binding 8000 is for the tunneling that enables the connection between the edge agent and the portainer server.
 
-Additionally, this command will mount the docker sock to mount local docker containers and Mount the volume `portainer-data` to persist data.
+Additionally, this command will mount the docker sock to mount local [docker](/blog/rails-with-docker) containers and Mount the volume `portainer-data` to persist data.
 
 ~~~{.bash caption=">_"}
 docker run -d -p 8000:8000 -p 9443:9443 --name portainer-ce --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer-data:/data portainer/portainer-ce:latest
@@ -111,7 +111,7 @@ On the quick setup page, click on the *Get Started* box highlighted below to man
 
 ![Initializing docker container management with portainer.](https://imgur.com/GvX61t8)
 
-Initializing docker container management with portainer.
+Initializing docker [container](/blog/docker-slim) management with portainer.
 
 You should see all the containers running on your machine together with other resources like stacks, volumes, and images.
 
@@ -261,4 +261,3 @@ At this point, you have only scratched the surface. There is lots more to learn 
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
