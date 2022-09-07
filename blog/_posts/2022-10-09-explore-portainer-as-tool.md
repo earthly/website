@@ -6,7 +6,10 @@ toc: true
 author: Mercy Bassey
 
 internal-links:
- - just an example
+ - Portainer
+ - Docker
+ - Container
+ - Kubernetes
 ---
 
 As a developer managing containerized applications can be daunting especially when it comes to using a command-line interface; administrating docker containers, writing complicating, and having to learn the various commands can be intimidating.
@@ -250,12 +253,12 @@ As you have learned, Portainer is a useful software for managing your docker con
 
 At this point, you have only scratched the surface. There is lots more to learn about Portainer. Role-Based Access may be the next area of Portainer you want to explore.
 
+{% include cta/cta1.html %}
+
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
