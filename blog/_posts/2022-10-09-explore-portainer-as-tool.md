@@ -9,7 +9,7 @@ internal-links:
  - Portainer
  - Docker
  - Container
- - Kubernetes
+ - Kubernetessource ./util/functions
 ---
 
 As a developer managing containerized applications can be daunting especially when it comes to using a command-line interface; administrating [docker](/blog/rails-with-docker) containers, writing complicating, and having to learn the various commands can be intimidating.
@@ -54,7 +54,11 @@ Run the command below to configure a volume called `portainer-data` :
 docker volume create portainer-data
 ~~~
 
-![Configuring persistent storage for portainer](https://imgur.com/E6o26a2)
+<div class="wide">
+
+![Configuring persistent storage for portainer]({{site.images}}{{page.slug}}/img1.png)\
+
+</div>
 
 <aside>
 💡 Portainer community edition comes with three different environment versions - A kubernetes environment, a Docker swarm environment and a Docker standalone environment and Azure container instance environment. This tutorial uses a Docker standalone environment.
@@ -73,7 +77,11 @@ Additionally, this command will mount the docker sock to mount local [docker](/b
 docker run -d -p 8000:8000 -p 9443:9443 --name portainer-ce --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer-data:/data portainer/portainer-ce:latest
 ~~~
 
-![Creating and running portainer as a docker container.](https://imgur.com/tk04FRK)
+<div class="wide">
+
+![Creating and running portainer as a docker container.]({{site.images}}{{page.slug}}/img2.png)\
+
+</div>
 
 Creating and running portainer as a docker container.
 
@@ -83,7 +91,11 @@ Confirm if the portainer server is up and running using the following docker com
 docker ps
 ~~~
 
-![Confirming portainer is up and running.](https://imgur.com/ncvtrAr)
+<div class="wide">
+
+![Confirming portainer is up and running.]({{site.images}}{{page.slug}}/img3.png)\
+
+</div>
 
 Confirming portainer is up and running.
 
@@ -97,7 +109,11 @@ https://localhost:9443
 
 You should see a page that requires you to create a user to proceed. Fill in the fields, to create a user.
 
-![Creating a new user on portainer server.](https://imgur.com/ZP9Iti5)
+<div class="wide">
+
+![Creating a new user on portainer server.]({{site.images}}{{page.slug}}/img4.png)\
+
+</div>
 
 Creating a new user on portainer server.
 
@@ -109,13 +125,21 @@ Up until now, you have created and ran portainer as a docker container. You have
 
 On the quick setup page, click on the *Get Started* box highlighted below to manage the environment where portainer is currently running on.
 
-![Initializing docker container management with portainer.](https://imgur.com/GvX61t8)
+<div class="wide">
+
+![Initializing docker container management with portainer.]({{site.images}}{{page.slug}}/img5.png)\
+
+</div>
 
 Initializing docker [container](/blog/docker-slim) management with portainer.
 
 You should see all the containers running on your machine together with other resources like stacks, volumes, and images.
 
-![Viewing docker containers and related resources with portainer.](https://imgur.com/kl499WX)
+<div class="wide">
+
+![Viewing docker containers and related resources with portainer.]({{site.images}}{{page.slug}}/img6.png)\
+
+</div>
 
 Viewing docker containers and related resources with portainer.
 
@@ -123,7 +147,11 @@ For a detailed view of your docker resources, you can click on the box above to 
 
 The image below showcases the number of docker compose stacks, images, containers, volumes, and networks available on your machine.
 
-![Viewing the portainer dashboard.](https://imgur.com/jf5s1UX)
+<div class="wide">
+
+![Viewing the portainer dashboard.]({{site.images}}{{page.slug}}/img7.png)\
+
+</div>
 
 Viewing the portainer dashboard.
 
@@ -135,7 +163,11 @@ On the containers page, you should see all the containers available on your mach
 
 The image below showcases all docker containers available locally; both the ones that are running and stopped together with their ip-addresses and ports exposed if available.
 
-![Viewing the portainer container.](https://imgur.com/ls1lMx1)
+<div class="wide">
+
+![Viewing the portainer container.]({{site.images}}{{page.slug}}/img8.png)\
+
+</div>
 
 Viewing the portainer container.
 
@@ -145,7 +177,11 @@ For testing, ‌set the container name to *Nginx-web-server* and populate the im
 
 Also, toggle the ***Publish all exposed network ports to random host ports*** so portainer can assign random host ports to the network port ‌the container exposes.
 
-![Creating and configuring (Nginx) docker container](https://imgur.com/fcxETJN)
+<div class="wide">
+
+![Creating and configuring (Nginx) docker container]({{site.images}}{{page.slug}}/img9.png)\
+
+</div>
 
 Creating and configuring (Nginx) docker container
 
@@ -153,19 +189,31 @@ Toggle both the *always pull the image* and *auto-remove* configuration setting 
 
 Finally, scroll down to the bottom of the page and click on the *Deploy container* button to create this container.
 
-![Toggling (*Auto remove*) configuration and deploying container.](https://imgur.com/Arkx3g7)
+<div class="wide">
+
+![Toggling (*Auto remove*) configuration and deploying container.]({{site.images}}{{page.slug}}/img10.png)\
+
+</div>
 
 Toggling (*Auto remove*) configuration and deploying container.
 
 On successful deployment, you should have the nginx container in your container lists in a running state and exposed on port 80.
 
-![Viewing the nginx docker container](https://imgur.com/55zGuEx)
+<div class="wide">
+
+![Viewing the nginx docker container]({{site.images}}{{page.slug}}/img11.png)\
+
+</div>
 
 Viewing the nginx docker container
 
 Visit the address *[localhost:80](http://localhost:80)* on your favorite browser to see the nginx web server welcome page.
 
-![viewing-the-nginx-web-server.png](https://imgur.com/8kYoi45)
+<div class="wide">
+
+![viewing-the-nginx-web-server.png]({{site.images}}{{page.slug}}/img12.png)\
+
+</div>
 
 You have now successfully created and deploy an nginx web server with portainer without having to write a single line of code!
 
@@ -173,7 +221,11 @@ You have now successfully created and deploy an nginx web server with portainer 
 
 Other than just containers you can manage docker images as well with portainer. On the right panel, navigate to the *images* option to see your images lists.
 
-![Viewing lists of docker images available on machine](https://imgur.com/IGySJ9k)
+<div class="wide">
+
+![Viewing lists of docker images available on machine]({{site.images}}{{page.slug}}/img13.png)\
+
+</div>
 
 Viewing lists of docker images available on machine
 
@@ -185,19 +237,31 @@ To pull a docker image from a docker registry, on the *pull image* section from 
 
 The image below shows a *myvueapp* image is to be pulled from dockerhub.
 
-![Pulling docker image (*mercybassey/myvueapp)*](https://imgur.com/prdD73x)
+<div class="wide">
+
+![Pulling docker image (*mercybassey/myvueapp)*]({{site.images}}{{page.slug}}/img14.png)\
+
+</div>
 
 Pulling docker image (*mercybassey/myvueapp)*
 
 wait for the image to be downloaded successfully as shown below.
 
-![Downloading docker image (*mercybassey/myvueapp)*](https://imgur.com/Wifiwr3)
+<div class="wide">
+
+![Downloading docker image (*mercybassey/myvueapp)*]({{site.images}}{{page.slug}}/img15.png)\
+
+</div>
 
 Downloading docker image (*mercybassey/myvueapp)*
 
 Once downloaded successfully, you should be able to view your newly downloaded image. You have now pulled a docker image from dockerhub effortlessly leveraging portainer
 
-![Viewing newly pulled docker image](https://imgur.com/nLwT76F)
+<div class="wide">
+
+![Viewing newly pulled docker image]({{site.images}}{{page.slug}}/img16.png)\
+
+</div>
 
 Viewing newly pulled docker image
 
@@ -207,7 +271,11 @@ Portainer supports a number ways for creating, and managing environments. The po
 
 To further explain this feature, Click on the *environment* option from the *left panel* to see the environment page. You should see your docker standalone environment as shown below:
 
-![Viewing environment on portainer server](https://imgur.com/cvaeJ1d)
+<div class="wide">
+
+![Viewing environment on portainer server]({{site.images}}{{page.slug}}/img17.png)\
+
+</div>
 
 Viewing environment on portainer server
 
@@ -215,13 +283,21 @@ On the *environment* page, ‌click on the *Add environment* button to add an en
 
 You can see that portainer supports Docker, Kubernetes, and ACI environments. Go ahead and click on the *Kubernetes box*  to a add and manage a Kubernetes environment and click on the *start wizard* button to continue.
 
-![Adding Kubernetes environment](https://imgur.com/wwGx326)
+<div class="wide">
+
+![Adding Kubernetes environment]({{site.images}}{{page.slug}}/img18.png)\
+
+</div>
 
 Adding Kubernetes environment
 
 A new screen with other configuration settings will be shown to you:
 
-![Configuring Kubernetes environment](https://imgur.com/7AtxDj2)
+<div class="wide">
+
+![Configuring Kubernetes environment]({{site.images}}{{page.slug}}/img19.png)\
+
+</div>
 
 Configuring Kubernetes environment
 
@@ -243,7 +319,11 @@ This Kubernetes environment can either be running on your local machine or a vir
 
 </aside>
 
-![Viewing portainer agents for both Kubernetes via load balancer and Kubernetes via node port](https://imgur.com/eKwZbgm)
+<div class="wide">
+
+![Viewing portainer agents for both Kubernetes via load balancer and Kubernetes via node port]({{site.images}}{{page.slug}}/img20.png)\
+
+</div>
 
 Viewing portainer agents for both Kubernetes via load balancer and Kubernetes via node port
 
@@ -255,7 +335,7 @@ At this point, you have only scratched the surface. There is lots more to learn 
 
 {% include cta/cta1.html %}
 
-## Outside Article Checklist
+## Outside Article Checklistsource ./util/functions
 
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
