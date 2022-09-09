@@ -209,3 +209,11 @@ Heredoc
 arn
 tfstate
 gdamore
+Qarik
+Alibaba
+TensorFlow
+Tweag
+Tink
+Googler
+Xoogler
+fintech

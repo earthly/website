@@ -18,7 +18,7 @@ Read this if you are considering Bazel and also if you'd like to read gory detai
 
 The experts all have experience moving to Bazel and using it day-to-day., including two people who do Bazel migrations for a living, at least one Bazel contributor, and one person, Oscar Boykin, who has been on Bazel projects at Twitter, Stripe, and Netflix.
 
-It's a long read, and I promise, it's worth it. The short version is:  Bazel can solve large monorepo build problems very well, but it has a steep adoption curve.
+It's a long read, and I promise, it's worth it. The short version is: Bazel can solve large monorepo build problems very well, but it has a steep adoption curve.
 
 ## History
 
@@ -40,7 +40,9 @@ Back in the early days of Google, Bazel was designed to replace a giant [makefil
 A long time ago, Google built its software using large, generated Makefiles. These led to slow and unreliable builds, which began to interfere with our developers' productivity and the company's agility. Bazel was a way to solve these problems.
 </div>
 
-Google needed Bazel at the time because they had a large monorepo that contained large amounts of C++ and Java code, and they wanted a uniform, correct and performant way to build and test all this code. Son Luong Ngoc, a scalable build consultant at Qarik Group, says many larger companies are starting to hit these problems.
+<!-- vale HouseStyle.OxfordComma = NO -->
+Google needed Bazel at the time because they had a large monorepo that contained large amounts of C++, and Java code, and they wanted a uniform, correct and performant way to build and test all this code. Son Luong Ngoc, a scalable build consultant at Qarik Group, says many larger companies are starting to hit these problems.
+<!-- vale HouseStyle.OxfordComma = YES -->
 
 <div class="pl-8">
 So your backend might be in Go or Java, right? There's a front end in react JS. And oh, those data science guys are using Python and Scala, right? And here, these infra people are using Go, Rust, C, C++, and Lua, right? How do you glue all that together to create a cohesive developer experience? A lot of enterprises in recent years start reaching this scale.
@@ -67,14 +69,14 @@ Dropbox becomes one of the very first adopters of Bazel and then BMW. And then, 
 It's not just multi-language changes that force large companies onto Bazel. It's also a monorepo with many services in it. Son hit this at Booking.com with one of their monorepos:
 
 <div class="pl-8">
-We started with every push going directly into trunk, which is our main branch of the monorep, and each was creating about 120 CI jobs, and I was the guy who was told to take all those 120 jobs and try to make something reasonable out of them using a dynamic CI pipeline.
+We started with every push going directly into trunk, which is our main branch of the monorepo, and each was creating about 120 CI jobs, and I was the guy who was told to take all those 120 jobs and try to make something reasonable out of them using a dynamic CI pipeline.
 
 And I also managed a whole fleet of GitLab runners and our setup for artifactory. So I was the person who was on call when our CI system got DDoS by our developers [ committing too fast] or when our CI system was DDoSing our GitLab instance because every single push was creating hundreds of containers [for testing] and just fetching the code took down our GitLab storage layer. How do we scale that up?
 
 So eventually, we were like: Hey, maybe capturing dependency information from production in our CI is not the way to go. Maybe we should do declarative dependencies within our code base of this monorepo, and Bazel became a perfect fit.
 </div>
 
-## When to Use
+## When To Use
 
 ### When to Use Bazel - Oscar's Opinion
 
@@ -106,14 +108,15 @@ I would definitely, unfortunately, use it when I had a million lines of code or 
 
 ## When to Use Bazel - Jason's Opinion
 
-Not everyone would wait for millions of lines to use Bazel, though. Jason Steving, an ML Compiler Engineer on the Tensorflow team at Google, has a different take:
-
+Not everyone would wait for millions of lines to use Bazel, though. Jason Steving, an ML Compiler Engineer on the TensorFlow team at Google, has a different take:
+<!-- vale HouseStyle.Repetition = NO -->
 <div class="pl-8">
 Always. Always use Bazel.
 
 So I come with a super biased opinion on that that I think that building a monorepo only has benefits for code reuse. Whereas the alternative is difficult to work with.
 
 Here's where I'm gonna struggle to give you any like good counter advice is like, I haven't really used other build systems that much. I left Google a year ago, and I worked at Amazon for like eight months, and I did use their build system there.
+<!-- vale HouseStyle.Repetition = YES -->
 
 And I have since come back to Google because honestly, one of the big portions I hated [was] the build system.
 
@@ -145,7 +148,7 @@ Netflix is a multi-repo company where Java code predominates. But as Oscar share
 <div class="pl-8">
 I work at Netflix, and Netflix mostly has a multi-repo style. They are very famous for the kind of freedom and responsibility culture. So each team pretty much can do what it wants.
 
-I work on the recommendations algorithms, and the team I'm on, somewhat recently, merged several different algorithms that are part of the whole recommendations product into one team and one repo.And so it's not all of Netflix, but it has a kind of monorepo feel about it because several unrelated projects got jammed into one repo and the build performance was pretty bad.
+I work on the recommendations algorithms, and the team I'm on, somewhat recently, merged several different algorithms that are part of the whole recommendations product into one team and one repo. And so it's not all of Netflix, but it has a kind of monorepo feel about it because several unrelated projects got jammed into one repo and the build performance was pretty bad.
 
 So I had used Bazel previously, and I was like, you know what, I don't wanna mess with this. I'll just keep working, you know, we'll just keep using it, and I just won't get involved – I won't get pulled into this again.
 
@@ -263,7 +266,7 @@ So you need to have a few people who are willing to take some time, the same thi
 Julien also says the number of languages in use really affects the project's timeline.
 
 <div class="pl-8">
-We migrated some Java. We did it for Scala. We had some Go, and we had some TypeScript and some Python. And each time –  this one of the traps is to think, okay, I did it with go, and it took me a long time, so Bazel Java is going to be easy.
+We migrated some Java. We did it for Scala. We had some Go, and we had some TypeScript and some Python. And each time – this one of the traps is to think, okay, I did it with go, and it took me a long time, so Bazel Java is going to be easy.
 
 I mean, it's probably not Bazel's fault, but it's not abstract – It's giving you primitives to run some other build system like to run the Java compiler or the TypeScript compiler or whatever, and it's super leaky. it's not abstracting away these things because each build tool is a bit different.
 
@@ -275,7 +278,7 @@ And so the upside is you have a much deeper understanding of build systems, and 
 On the plus side, Julien found that Bazel changed how he tackled certain problems. He's no longer afraid to make a mess.
 
 <div class="pl-8">
-Some things are extremely natural in Bazel that I haven't found anywhere else. Like if you have a dirty bash script doing things, and you forget [running] them [it's a problem], but Bazel just gives you this good layer of abstraction: Just put your tool in here, define what's going in, what's going out, and you can stack these things or combine them together ad infinitem.
+Some things are extremely natural in Bazel that I haven't found anywhere else. Like if you have a dirty bash script doing things, and you forget [running] them [it's a problem], but Bazel just gives you this good layer of abstraction: Just put your tool in here, define what's going in, what's going out, and you can stack these things or combine them together ad infinitum.
 
 Things before Bazel that I would find extremely dirty, like Open API definition languages that TypeScript will spit out. If you do this with makefiles, it starts getting really brittle. If you do it with Bazel, you can do really dirty duct taping of things together, and then once it works, you have pretty good Bazel guarantees.
 
@@ -307,7 +310,7 @@ We also used Bazel query logic to actually check whether we needed to redeploy a
 Julien at Open Systems had some hiccups with Java users as well.
 
 <div class="pl-8">
-If you're like expecting this whole [thing to be] perfect,  if you're using Maven or Gradle and you're used to having your IDE perfectly integrated with the build system, you can get there, but it'll take resources. And then people just expect, 'Hey, I just want to write Java code, that's not, not my job', then you're running into trouble.
+If you're like expecting this whole [thing to be] perfect, if you're using Maven or Gradle and you're used to having your IDE perfectly integrated with the build system, you can get there, but it'll take resources. And then people just expect, 'Hey, I just want to write Java code, that's not, not my job', then you're running into trouble.
 </div>
 
 But generally, everyone I interviewed mentioned that Java works fairly smoothly with Bazel. It's other languages where things can be more of a struggle.
@@ -428,7 +431,7 @@ So Oscar is disappointed in where Bazel is today but only because he saw so much
 So I guess what I like is that it doesn't require you, but it almost forces you to like make very small and composed packages, and then on top of that, you layer the visibility system and all of a sudden you get like, almost full control over who can depend on what, in a way that even like your language does not give you.
 </div>
 
-Jens echoed this, saying the emphasis on small packages in Bazel helped him as a Staff Engineer guide developers to write small composable units of code that could be reused. And that hints at probably the most promising future vision for Bazel: a world where large tech orgs use Bazel, scalable testing practices and static analysis to guide developers in writing code that scales with the organization size. A way to escape Conway's law.
+Jens echoed this, saying the emphasis on small packages in Bazel helped him as a Staff Engineer guide developers to write smaller units of code that could be reused. And that hints at probably the most promising future vision for Bazel: a world where large tech orgs use Bazel, scalable testing practices and static analysis to guide developers in writing code that scales with the organization size. A way to escape Conway's law.
 
 ## Conclusion
 
@@ -436,7 +439,7 @@ So after talking to all of these Bazel experts, what have I learned? First, I've
 
 Second, I've learned you shouldn't overlook the education and training aspects either. You should plan to spend time initially getting developers up to speed on this approach. Make sure everyone understands the vision or expect some bumpy roads.
 
-But most importantly, I've learned - and all the people I talked to agreed: Bazel does deliver on its promise of fast and correct builds. Other tools like Pants and Buck exist,  but Bazel is the clear category leader. If I had a mono-repo with several million lines of code in it, I'd want a consistent way to build things and a fast way to get feedback on those changes. Doing so would pay for itself over time because developer time is expensive. Bazel is the tool for that job.
+But most importantly, I've learned - and all the people I talked to agreed: Bazel does deliver on its promise of fast and correct builds. Other tools like Pants and Buck exist, but Bazel is the clear category leader. If I had a mono-repo with several million lines of code in it, I'd want a consistent way to build things and a fast way to get feedback on those changes. Doing so would pay for itself over time because developer time is expensive. Bazel is the tool for that job.
 
 ### Writing Article Checklist
 
