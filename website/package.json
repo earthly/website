@@ -4,12 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "css": "npx tailwindcss -i ./_styles/base.css -o ./assets/css/index.css --minify"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "hello-bar": "^1.4.0"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.1.8"
   }
 }

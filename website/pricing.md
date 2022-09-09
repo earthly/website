@@ -5,59 +5,45 @@ layout: page
 
 <link rel="stylesheet" href="/assets/css/subpage.css">
 
-### Earthly Core
+<div class="grid grid-cols-1 gap-2 lg:grid-cols-3 mb-12">
+  {% include /pricing/core.html  %}
+  {% include /pricing/satellites.html  %}
+  {% include /pricing/ci.html  %}
+</div>
 
-*Achieve build repeatability*
+<div class="text-3xl font-semibold mt-10" id="compute"> FAQ</div>
 
-Pricing: Free and Open-source
-
-* Develop builds that run on any CI
-* Run builds locally
-* Local cache
-* Remote shared cache
-* Community support
-
-[Get Earthly](./get-earthly.md)
-
-### Earthly Satellites
-
-*Fast remote builds*
-
-Pricing: `$30/developer/month` billed annually + [zero-margin compute](#compute)
-
-* Everything in Core
-* Run builds remotely in runners managed by the Earthly team
-* Rebuild only what has changed
-* Built-in caching available instantly between runs
-* Run x86 builds from Apple Silicon machines (Apple M1/M2)
-
-[Get started](https://docs.earthly.dev/earthly-cloud/satellites)
-
-### Earthly CI
-
-*Ridiculously fast CI*
-
-Pricing: Coming soon
-
-* Everything in Satellites
-* Rebuild only what has changed
-* Built-in caching available instantly between runs
-* GitHub integration
-* Automatically span builds across a compute cluster
-
-[Contact us](mailto:support+ci@earthly.dev?subject=Earthly%20CI%20Interest)
-
-## FAQ
-
-<h2 class="text-2xl font-semibold mb-5 mt-20" id="compute">How much does compute cost?<span class="hide"><a href="#compute">¶</a></span></h2>
+<h2 class="text-2xl font-semibold mb-5 mt-10" id="compute">How much does compute cost?<span class="hide"><a href="#compute">¶</a></span></h2>
 
 The cost of compute is based on the AWS rack price for the instances that are used underneath, plus the cost of cache storage and the cost of network ingress/egress incurred. We follow a [zero-margin pricing model for the compute](#zero-margin-compute).
 
-| Instance type | Specs | Price per hour | Price per month <br /> if used 3 hours per work day |
-| --- | --- | --- | --- |
-| `small` | Coming soon | - | - |
-| `medium` (default) | 4 CPUs, 16 GB RAM, 90 GB cache | $0.18 | $11.475 |
-| `large` | Coming soon | - | - |
+<div class="grid grid-cols-4">
+<div class="font-semibold text-xl border-b flex">Instance type</div>
+<div class="font-semibold text-xl border-b flex">Specs </div>
+<div class="font-semibold text-xl border-b flex">Price per hour</div>
+<div class="font-semibold text-xl border-b flex"><div>Price per month<span class="text-sm font-normal block text-gray-600">(if used 3 hours per work day)</span></div> </div>
+</div>
+
+<div class="grid grid-cols-4 border-b">
+<div class="py-4"><span class="font-semibold">small</span></div>
+<div class="py-4">Coming soon</div>
+<div class="py-4">-</div>
+<div class="py-4">-</div>
+</div>
+
+<div class="grid grid-cols-4 border-b">
+<div class="py-4"><span class="font-semibold">medium</span> (default)</div>
+<div class="py-4">4 CPUs, 16 GB RAM, 90 GB cache</div>
+<div class="py-4">$0.18</div>
+<div class="py-4">$11.475</div>
+</div>
+
+<div class="grid grid-cols-4">
+<div class="py-4"><span class="font-semibold">large</span></div>
+<div class="py-4">Coming soon</div>
+<div class="py-4">-</div>
+<div class="py-4">-</div>
+</div>
 
 <h2 class="text-2xl font-semibold mb-5 mt-20" id="usage-tracked">How is my usage of Satellites tracked?<span class="hide"><a href="#usage-tracked">¶</a></span></h2>
 
