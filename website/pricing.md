@@ -47,7 +47,7 @@ The cost of compute is based on the AWS rack price for the instances that are us
 
 <h2 class="text-2xl font-semibold mb-5 mt-20" id="usage-tracked">How is my usage of Satellites tracked?<span class="hide"><a href="#usage-tracked">¶</a></span></h2>
 
-The usage of Satellites is tracked by monitoring the Satellites for active builds. If there are no active builds for 30 minutes, the Satellite goes to sleep automatically. When a Satellite is asleep, it is not billed for compute. When a build is started, the Satellite is woken up automatically and billed for compute.
+The usage of Satellites is tracked by monitoring the Satellites for active builds. If there are no active builds,the Satellite goes to sleep automatically after some time. When a Satellite is asleep, it is not billed for compute. When a build is started, the Satellite is woken up automatically and billed for compute.
 
 <h2 class="text-2xl font-semibold mb-5 mt-20" id="zero-margin-compute">What is zero-margin compute?<span class="hide"><a href="#zero-margin-compute">¶</a></span></h2>
 
