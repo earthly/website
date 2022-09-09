@@ -72,9 +72,9 @@ You have successfully installed and configured kube-bench, and we are ready to m
 
 </div>
 
-## A Hands-on Guide to Kube-bench
+## A Hands-on Guide to Kube-Bench
 
-### Running Kube-bench via Cli
+### Running Kube-Bench via Cli
 
 Previously, We had installed kube-bench, and it's time to try it out. To use kube-bench, you just have to run kube-bench run Now what will happen in the background is kube-bench will run all the checks that's there in the CIS benchmarks. After running all the checks, it will give you a formatted output of FAIL, WARN, and PASS benchmarks.
 
@@ -130,7 +130,7 @@ or as appropriate (Automated)
 
 Let's first understand how to understand the output of the kube-bench run command.
 
-### Output Format Of The Kube-Bench
+### Output Format of the Kube-Bench
 
 The general output format looks something like this. We have 5 sections as mentioned earlier that we target using kube-bench. Each section starts with info describing the component it's benchmarking. e.g. consider the first section.
 
@@ -191,7 +191,7 @@ If you look at the first section, then the content is structured in four parts.
     1.3 Controller Manager
     1.4 Scheduler
 
-### Running Kube-bench as Kubernetes Jobs
+### Running Kube-Bench as Kubernetes Jobs
 
 Now, in the previous part we have learnt about running kube-bench via the command line utility but when we want to run our kube-bench jobs after a fixed interval of time for example on a period of 10 days then doing it manually will be tedious. Although, we can automate it using the Linux Jobs but in this blog we will use Kubernetes jobs to run kube-bench. First, we will set Kubernetes job to run kube-bench and then in the immediate next section, we will configure the job to run every week with the help of Kubernetes cronjobs. The difference between jobs and cronjobs is that with cronjobs, you can configure a job to run a repeating task on a regular schedule.
 
