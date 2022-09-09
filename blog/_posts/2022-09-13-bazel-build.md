@@ -1,5 +1,5 @@
 ---
-title: "Bazel Build"
+title: "When to use Bazel?"
 categories:
   - Tutorials
 toc: true
