@@ -69,6 +69,7 @@ Getting services deployed to Kubernetes is fairly straightforward. You just run 
 For example, with Helm you can get version management of your applications, allowing for easy rollback should anything go wrong. One of the biggest ways you'll feel the deep integration of Helm is by the way that it uses template files, with values being replaced by a `values.yaml` file. For example, the template for a [deployment](/blog/deployment-strategies) in Helm may look like this:
 
 {% raw %}
+
 ~~~{.yaml caption="values.yaml"}
 apiVersion: apps/v1
 kind: Deployment
@@ -92,6 +93,7 @@ spec:
         ports:
         - containerPort: 80
 ~~~
+
 {% endraw %}
 
 Then in the `values.yaml` file you would write:
