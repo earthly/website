@@ -44,7 +44,7 @@ clean:
 publish:
   FROM node:18-alpine3.15
 
-  RUN ./blog/+lint
+  BUILD ./blog/+lint
 
   RUN npm i -g netlify-cli && apk add --no-cache jq curl
 
