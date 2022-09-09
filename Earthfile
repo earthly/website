@@ -43,6 +43,9 @@ clean:
 ## Satellite Build
 publish:
   FROM node:18-alpine3.15
+
+  BUILD ./blog/+lint
+
   RUN npm i -g netlify-cli && apk add --no-cache jq curl
 
   # Anything but "PROD" deploys to staging site

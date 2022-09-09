@@ -36,7 +36,7 @@ os:
     source: source2
     content: |
       ### Pre-requisites
-
+      * [Homebrew for Mac](https://brew.sh/)
       * [Docker for Mac](https://docs.docker.com/docker-for-mac/install/)
       * [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 
