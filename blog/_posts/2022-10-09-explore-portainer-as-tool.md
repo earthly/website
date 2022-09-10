@@ -269,7 +269,7 @@ Viewing newly pulled docker image
 
 ## Adding and Managing Portainer Environments
 
-Portainer supports a number ways for creating, and managing environments. The portainer community edition supports Azure; for azure container instances (ACI), Local and cloud Kubernetes clusters, docker standalone as well as docker swarm clusters.
+Portainer supports a number ways for creating, and managing environments. The portainer community edition supports Azure; for azure container instances (ACI), Local, and cloud Kubernetes clusters, docker standalone as well as docker swarm clusters.
 
 To further explain this feature, Click on the *environment* option from the *left panel* to see the environment page. You should see your docker standalone environment as shown below:
 
