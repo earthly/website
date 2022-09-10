@@ -57,49 +57,49 @@ A consumer can also communicate with other consumers and multiple consumers can 
 
 1. Create a working directory and `cd` into it..
 
-```
+~~~{.bash caption=">_"}
 $ mkdir DiscussIt
 $ cd DiscussIt
 
-```
+~~~
 
 2. Create and activate a virtual environment.
 
- ```
+~~~{.bash caption=">_"}
 $ python3 -m venv venv
 $ source venv/bin/activate
-```
+~~~
 
 3. Install Django and Channels
 
- ```
+~~~{.bash caption=">_"}
 $ pip install django,django-channels
-```
+~~~
 
 4. Start a new Django Project in the current working directory
 
-```
+~~~{.bash caption=">_"}
 $ django-admin startproject DiscussIt .
-```
+~~~
 
 5. Add the packages you installed in the `requirements.txt` file:
 
-```
+~~~{.bash caption=">_"}
 $ pip freeze > requirements.txt
 
-```
+~~~
 
 6. Create a `.env` file in the project directory for the environment variables.
 
 7. Create a Django application called chat:
 
-```
+~~~{.bash caption=">_"}
 $ python manage.py startapp chat
-```
+~~~
 
 8. Add the `chat` app and the Django channel package to the list of the installed apps in the `settings.py` file:
 
- ```
+~~~{.bash caption=">_"}
   INSTALLED_APPS = [
       #installed package
       'channels'
@@ -108,19 +108,19 @@ $ python manage.py startapp chat
       'chat',
   
   ]
-```
+~~~
 
 9. Run initial migrations to create the database table for the applications installed by Django:
 
- ```
+~~~{.bash caption=">_"}
  $ python manage.py migrate   
-```
+~~~
 
 10. Start the development server:
 
-```
+~~~{.bash caption=">_"}
    $ python manage.py runserver
-```
+~~~
 
 Since you have added channels to the list of `INSTALLED_APP`, it will take over the runserver command and spin up the ASGI server from the `asgi.py` rather than the WSGI server configured in the `wsgi.py` file:
 
@@ -130,7 +130,7 @@ Once you confirm this is working as expected, you can stop the server for now..
 
 Right now, your project structure should look like this:
 
-```
+~~~{.bash caption=">_"}
 ├── chat
 │   ├── admin.py
 │   ├── apps.py
@@ -149,7 +149,7 @@ Right now, your project structure should look like this:
     ├── settings.py
     ├── urls.py
     └── wsgi.py
-```
+~~~
 
 ### The Models
 
@@ -165,7 +165,7 @@ To create the models, open the `models.py` file and add the following model clas
 
 #### Group Model
 
-```
+~~~{.bash caption=">_"}
 #chat/models.py
 
 from django.db import models
@@ -203,7 +203,7 @@ class Group(models.Model):
         self.save()
 
 
-```
+~~~
 
 We give the group a UUID, a name, and then a list of members, which in this case is represented by a many-to-many join with the existing User model that comes with Django out of the box.
 
@@ -213,7 +213,7 @@ Then we just need a couple of helper functions and the ability to add and remove
 
 The message model is pretty self explanitory.
 
-```
+~~~{.bash caption=">_"}
 class Message(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     timestamp = models.DateTimeField(auto_now_add=True)
@@ -224,13 +224,13 @@ class Message(models.Model):
         date = self.timestamp.date()
         time = self.timestamp.time()
         return f"{self.author}:- {self.content} @{date} {time.hour}:{time.minute}"
-```
+~~~
 
 #### Event Model
 
 We will keep track of users coming and going through the use of Events.
 
-```
+~~~{.bash caption=">_"}
 
 class Event(models.Model):
     '''
@@ -252,21 +252,21 @@ class Event(models.Model):
 
     def __str__(self) -> str:
         return f"{self.description}"
-```
+~~~
 
 #### Run the Migrations
 
 The next step is to run migrations for the models you just created:
 
-```
+~~~{.bash caption=">_"}
 $ python manage.py makemigrations chat
 $ python manage.py migrate
 
-```
+~~~
 
 Include the three models in the `admin.py` file so that you can have access to them on the admin page:
 
-```
+~~~{.bash caption=">_"}
 #chat/admin.py
 
 from .models import *
@@ -275,7 +275,7 @@ from .models import *
 admin.site.register(Message)
 admin.site.register(Event)
 admin.site.register(Group)
-```
+~~~
 
 ### Views
 
@@ -285,7 +285,7 @@ Now that we have the models set up, let's create the Django view where all the g
 
 Open the `chat/views.py` and add the following code to create the views:
 
-```
+~~~{.bash caption=">_"}
 #chat/views.py
 from django.http import HttpResponseForbidden
 from django.shortcuts import render, get_object_or_404
@@ -343,23 +343,23 @@ def GroupChatView(request, uuid):
 
    return render(request, template_name="chat/groupchat.html", context=context)
 
-```
+~~~
 
 Now let's create an HTML template for these views:
 
 Create the following file structure in the chat applications:
 
-```
+~~~{.bash caption=">_"}
 ├── templates
 │   └── chat
 │       ├── base.html
 │       ├── groupchat.html
 │       └── home.html
-```
+~~~
 
 Add the following HTML code to the `base.html`:
 
-```
+~~~{.bash caption=">_"}
 <!-- chat/templates/chat/base.html -->
 <!DOCTYPE html>
 <html lang="en">
@@ -367,22 +367,25 @@ Add the following HTML code to the `base.html`:
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{%block title%}{%endblock title%}</title>
+   {% raw %}<title>{%block title%}{%endblock title%}</title>{% endraw %}
 </head>
 <body>
-
+    {% raw %}
     {%block content%}
     {% endblock content%}
+    {% endraw %}
 </body>
+    {% raw %}
     {%block script%}
     {%endblock script%}
+    {% endraw %}
 </html>
 
-```
+~~~
 
 Open the `home.html` and add the following HTML code snippets:
 
-```
+~~~{.bash caption=">_"}
 <!-- chat/templates/chat/home.html -->
 {%extends 'chat/base.html'%}
 {% block title%} Home {%endblock title%}
@@ -406,16 +409,17 @@ Open the `home.html` and add the following HTML code snippets:
     </ul>
 {%endblock content%}
 
-```
+~~~
 
 In the HTML code, you have three buttons associated with each group, the Leave, Open and Join buttons.
 The Leave and Open buttons are displayed if the current user is a member of the group and only the Join button otherwise. Also, the id attribute of each button is  `<action>-<group uuid>` where the action is either Join, Leave or Open.
 
 For the group chat, open the `groupchat.html` file and add the following code:
 
-```
+~~~{.bash caption=">_"}
+{% raw %} 
 <!-- chat/templates/chat/groupchat.html -->
-{% extends 'chat/base.html'%}
+{% raw %} {% extends 'chat/base.html'%} {% endraw %}
 {% block title%} Chat Room{%endblock title%}
 {% block content%}
 <textarea id="chat-log" cols="100" rows="20"></textarea><br>
@@ -429,6 +433,8 @@ For the group chat, open the `groupchat.html` file and add the following code:
    document.querySelector('#chat-log').value += ( {{message_event}}  + '\n');
 {%endfor%}
 </script>
+
+
 <h3>Group Members</h3>
 <ul id="members">
 {% for member in group_members%}
@@ -436,7 +442,8 @@ For the group chat, open the `groupchat.html` file and add the following code:
 {%endfor%}
 </ul>
 {%endblock content%}
-```
+{% endraw %}
+~~~
 
 In the HTML code above we:
 Load the `messages` and the events messages that are rendered from the view.
@@ -447,7 +454,7 @@ Add URL patterns to the views so you can see what the page looks like.
 
 Create a `urls.py` file in the chat application and add the following URL patterns:
 
-```
+~~~{.bash caption=">_"}
 #chat/urls.py
 from django.urls import path, include
 from . import views
@@ -456,11 +463,11 @@ urlpatterns = [
    path("", views.HomeView, name="home"),
     path("groups/<uuid:uuid>/", views.GroupChatView, name="group")
 ]
-```
+~~~
 
 Include the URL patterns of the `chat/urls.py` in the main project's `urls.py` file:
 
-```
+~~~{.bash caption=">_"}
 #DiscussIt/urls.py
 from django.urls import path, include
 
@@ -468,13 +475,13 @@ urlpatterns=[
     ...
     path('', include("chat.urls")),
 ]
-```
+~~~
 
 Create a superuser to log in via the admin page and create dummy data for the Group, Event, and Message model:
 
-```
+~~~{.bash caption=">_"}
 $ python manage.py create superuser
-```
+~~~
 
 The dummy groups I created:
 
@@ -516,7 +523,7 @@ In the `chat` folder, create a `consumers.py` file for the consumers that will h
 
 Add the following code to the file:
 
-```
+~~~{.bash caption=">_"}
 #chat/consumers.py
 from channels.generic.websocket import WebsocketConsumer
 
@@ -531,7 +538,7 @@ class JoinAndLeave(WebsocketConsumer):
     
     def disconnect(self, code):
         print("server says disconnected")
-```
+~~~
 
 The consumer class can either be synchronous or asynchronous or both. The consumer class you created above inherits from the `WebsocketConsumer` class which allows you to write your consumer in synchronous code and takes care of the asynchronous operations in the background.
 
@@ -547,7 +554,7 @@ The next step is to create a websocket route that will call the `JoinAndLeave` c
 
 Create a `routing.py` file in the `chat` application and add the following code:
 
-```
+~~~{.bash caption=">_"}
 #chat/routing.py
 from django.urls import re_path, path
 
@@ -556,7 +563,7 @@ from . import consumers
 websocket_urlpatterns = [
     path('', consumers.JoinAndLeave.as_asgi())
 ]  
-```
+~~~
 
 The `.as_asgi()` converts the class to an `ASGI` application and it is similar to `.as_view()` in Django classes.
 
@@ -568,7 +575,7 @@ The Channels package provides a `ProtocolTypeRouter` class that can do that for 
 
 Modify the `asgi.py` file as shown below:
 
-```
+~~~{.bash caption=">_"}
 #DiscussIt/asgi.py
 from channels.routing import ProtocolTypeRouter, URLRouter
 import os
@@ -586,7 +593,7 @@ application = ProtocolTypeRouter({
             "websocket": URLRouter(chat.routing.websocket_urlpatterns) 
                        })
 
-```
+~~~
 
 Inside the `ProtocolTypeRouter`, you specified the protocol you want to route as a dictionary object which has a key of the protocol and the value of the protocol application.
 
@@ -596,9 +603,9 @@ You specified the URL routers for the websocket protocol using the `URLRouter` c
 
 Open the `settings.py` file and add the following configuration:
 
-```
+~~~{.bash caption=">_"}
 ASGI_APPLICATION = 'DiscussIt.asgi.application'
-```
+~~~
 
 ### Creating the Client
 
@@ -606,9 +613,9 @@ The next step is to create the client websocket API that will communicate with t
 
 Open the `templates/chat/home.html` file and add the following:
 
-```
+~~~{.bash caption=">_"}
 {% block script %}
-
+{% raw %} 
 <script>
 
 base_url =  ${window.location.hostname}:${window.location.port}/ 
@@ -628,8 +635,9 @@ websocket.onmessage = function(event){
 
 
 </script>
+{% raw %} 
 {% endblock script %}
-```
+~~~
 
 The code above established a websocket connection to the websocket URL associated with the `JoinAndLeave` consumer and defined three event handlers. Let's run the server to see when these events are fired.
 
@@ -649,11 +657,11 @@ The issue here was that the server needs to accept the opening handshake from th
 
 To fix this, add `self.accept()` in the `connect` method of the consumer to accept the handshake:
 
-```
+~~~{.bash caption=">_"}
 def connect(self):
           ...
     self.accept()
-```
+~~~
 
 Reload the homepage and you should get the following in the console and the web server:
 
@@ -690,7 +698,7 @@ Also, for security purposes, you will add the `AllowedHostsOriginValidator` that
 
 Modify the `asgi.py` file as shown below:
 
-```
+~~~{.bash caption=">_"}
 from channels.security.websocket import AllowedHostsOriginValidator
 
 application = ProtocolTypeRouter({
@@ -702,7 +710,7 @@ application = ProtocolTypeRouter({
                 ),
             )
 })
-```
+~~~
 
 ### Getting the Buttons Working
 
@@ -714,7 +722,7 @@ When a user clicks on the `Join` button the user is added to the group and a joi
 
 Add the following JS script to the `chat/home.html` page:
 
-```
+~~~{.bash caption=">_"}
 function add_event_to_all_buttons(){
     /*Add an event listener that sends the event message to all buttons*/
     const keys = document.querySelectorAll('.group_option');
@@ -742,7 +750,7 @@ function send_event_message(event){
 }
 add_event_to_all_buttons()
 
-```
+~~~
 
 When a user clicks on a button the client calls the `send_event_message` function and sends the  uuid  value of the group to the server.
 
@@ -752,7 +760,7 @@ In the payload, you specified the `type` as the action that you parsed from the 
 
 Add the following to your JoinAndLeave class:
 
-```python
+~~~{.bash caption=">_"}
 #chat/consumers.py
 from django.contrib.auth.models import User
 from .models import Event, Message, Group
@@ -792,15 +800,15 @@ class JoinAndLeave(WebsocketConsumer):
             "data":group_uuid
             }
         self.send(json.dumps(data))
-```
+~~~
 
 The `AuthMiddlewareStack` you added earlier will populate the `scope` with the current user which you can then retrieve in the consumer.
 
 This line in the `connect` method of the `JoinAndLeave` consumer retrieves the current user:
 
-```
+~~~{.bash caption=">_"}
 self.user = self.scope["user"]
-```
+~~~
 
 In the `receive` method, The code loads the JSON data that the frontend sends and retrieves the value of the `type` and `data` of the message.
 
@@ -814,7 +822,7 @@ The data will be received in the frontends `onmessage` event handler method.
 
 Modify the `websocket.onmessage` in the `chat/home.html` file as shown below:
 
-```
+~~~{.bash caption=">_"}
 websocket.onmessage = function(event){
 /*Called when the websocket server sends a message to the client websocket*/
     message = JSON.parse(event.data)
@@ -857,7 +865,7 @@ function join_group_handler(uuid){
 }
 
 
-```
+~~~
 
 Depending on the `type` of the message that the backend sends, the client calls either the `join_group_handler` or the `leave_group_handler`.
 These handlers update the UI of the page.
@@ -882,7 +890,7 @@ But for development purposes, you can use the in-memory channel layer that the D
 
 In `settings.py` , add the following:
 
-  ```python
+~~~{.bash caption=">_"}
 #DiscussIt/settings.py
 
 CHANNEL_LAYERS = {
@@ -890,11 +898,11 @@ CHANNEL_LAYERS = {
         "BACKEND": "channels.layers.InMemoryChannelLayer"
     }
 }
- ```
+~~~
 
 Add the following to the `chats/consumer.py`
 
- ```python
+~~~{.bash caption=">_"}
 #chat/consumers.py
 from channels.generic.websocket import WebsocketConsumer, AsyncWebsocketConsumer
 from channels.layers import channel_layers
@@ -914,7 +922,7 @@ class GroupConsumer(AsyncWebsocketConsumer):
 
     async def receive(self, text_data=None, bytes_data=None):
         pass
-```
+~~~
 
 The `AsyncWebsockect` requires you to write async support code. However, operations like database access are synchronous. The channels package provides the `database_sync_to_async` that can convert the operation to an asynchronous type.
 
@@ -932,9 +940,9 @@ The `group_add` method adds a consumer instance to the group.
 
 The `group_send` method broadcasts messages to the consumers in the same group.
 
-```
+~~~{.bash caption=">_"}
 await self.channel_layer.group_add(self.group_uuid,self.channel_name)
-```
+~~~
 
 The line above in the `connect` method add the instance of the `GroupConsumer` class — that has a name that is stored in the `self.channel_name` — to a channel group that is identified by the group chat's uuid.
 
@@ -942,17 +950,18 @@ The next step is to create a websocket URL pattern for this consumer.
 
 Add the following to the `chat/routing.py` :
 
-```
+~~~{.bash caption=">_"}
 websocket_urlpatterns = [
         ...
     path('groups/<uuid:uuid>/',consumers.GroupConsumer.as_asgi())
 ]
-```
+~~~
 
 The next step is to add the client websocket API to the `chat/groupchat.html` page:
 
-```
+~~~{.bash caption=">_"}
 {%block script%}
+{% raw %} 
 <script>
     base_url =  ${window.location.host}${window.location.pathname} 
 
@@ -984,8 +993,9 @@ The next step is to add the client websocket API to the `chat/groupchat.html` pa
         };
 
 </script>
+{% raw %} 
 {%endblock script%}
-```
+~~~
 
 When a user types a message and clicks the send button, the message is sent to the backend via the `chatSocket.send` method. This is sent together with a `type` of `text_message` as well as the author which is the current user in the `request` object.
 
@@ -993,7 +1003,7 @@ The next step is to handle this message in the consumer on the backend.
 
 Modify the `GroupConsumer` as shown below:
 
-```
+~~~{.bash caption=">_"}
 class GroupConsumer(AsyncWebsocketConsumer):
         ....
     async def receive(self, text_data=None, bytes_data=None):
@@ -1026,7 +1036,7 @@ class GroupConsumer(AsyncWebsocketConsumer):
         await self.send(json.dumps(
                 returned_data
                 ))
-```
+~~~
 
 When you send a broadcast message with the `group_send` method of the `channel_layers` class, it will call a method on the consumer class that has the same name as the value of the  type  key in the message. In that method, you can then send the message via the `self.send()` method.
 
@@ -1036,7 +1046,7 @@ You can add a `post save signal` to send this event message to the frontend to n
 
 Create a `signals.py` file in the `chat` app and add the following code:
 
-```
+~~~{.bash caption=">_"}
 from django.dispatch import receiver
 from .models import Event
 from django.db.models.signals import post_save
@@ -1056,7 +1066,7 @@ def broadcast_event_to_groups(sender, instance, **kwargs):
         "user":str(instance.user)
         }
 )
-```
+~~~
 
 Each consumer class has a channel_layer attribute that we can access inside the consumer as `self.channel_layer`, However when we are outside the consumer class,like in the `broadcast_event_to_groups` signal receive above,  we can only retrieve the channel layer via the get_channel_layer()  function.
 
@@ -1064,7 +1074,7 @@ The broadcast will be received in the `event_message` method of the consumer sin
 
 Add the `event_message` method in the `GroupConsumer` as shown below:
 
-```
+~~~{.bash caption=">_"}
 async def event_message(self, event):
     message = event.get("message")
     user = event.get("user", None)
@@ -1079,13 +1089,13 @@ async def event_message(self, event):
                     }
                   )
         )
-```
+~~~
 
 You need to handle these two messages in the frontend's websocket API `onmessage` event handler method.
 
 Add the following in the `groupchat.html`:
 
- ```
+~~~{.bash caption=">_"}
 chatSocket.onmessage = function(e) {
     const data = JSON.parse(e.data);
     document.querySelector('#chat-log').value += (data.message + '\n');
@@ -1103,7 +1113,7 @@ chatSocket.onmessage = function(e) {
         members_list.appendChild(members_item)
     }
 };
-```
+~~~
 
 Both the `event_message` and `text_message` are added to the chat log. If the type of the message is `event_message`, you check if the value of the status key passed from the backend is `Left` and remove the user from the list of group members else if the value of the status key is `Join` , you add the user to the list of group members.
 
