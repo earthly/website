@@ -336,8 +336,3 @@ As you have learned, Portainer is a useful software for managing your docker con
 At this point, you have only scratched the surface. There is lots more to learn about Portainer. Role-Based Access may be the next area of Portainer you want to explore.
 
 {% include cta/cta1.html %}
-
-## Outside Article Checklistsource ./util/functions
-
-- [ ] Create header image in Canva
-
