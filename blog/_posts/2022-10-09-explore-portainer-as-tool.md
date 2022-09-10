@@ -1,5 +1,5 @@
 ---
-title: "EXPLORING PORTAINER AS A TOOL FOR MANAGING DOCKER CONTAINERS"
+title: "Exploring Portainer As A Tool For Managing Docker Containers"
 categories:
   - Tutorials
 toc: true
@@ -74,7 +74,9 @@ It will also expose both port 9443 and 8000 and map it to the port 9443 and 8000
 Additionally, this command will mount the docker sock to mount local [docker](/blog/rails-with-docker) containers and Mount the volume `portainer-data` to persist data.
 
 ~~~{.bash caption=">_"}
-docker run -d -p 8000:8000 -p 9443:9443 --name portainer-ce --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer-data:/data portainer/portainer-ce:latest
+docker run -d -p 8000:8000 -p 9443:9443 --name portainer-ce \
+--restart=always -v /var/run/docker.sock:/var/run/docker.sock -v \
+portainer-data:/data portainer/portainer-ce:latest
 ~~~
 
 <div class="wide">
@@ -338,6 +340,4 @@ At this point, you have only scratched the surface. There is lots more to learn 
 ## Outside Article Checklistsource ./util/functions
 
 - [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
+
