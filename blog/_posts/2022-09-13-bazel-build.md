@@ -16,11 +16,11 @@ Here at Earthly, we care a lot about builds and talk to many people about their 
 
 I've never worked at Google or anywhere using Bazel to drive their builds, and so while I can walk through a Bazel tutorial, I felt like I was missing the sense of what using Bazel was like, both the day-to-day and migrating to Bazel. So I interviewed 6 Bazel experts[^1] and asked them what they like about Bazel, when they would use it, and what to expect or consider before doing a Bazel migration.
 
-Read this if you are considering Bazel and also if you'd like to read gory details of several Bazel migrations, including the level of effort and the results.
+**Read this if you are considering Bazel and also if you'd like to read gory details of several Bazel migrations, including the level of effort and the results.**
 
 The experts all have experience moving to Bazel and using it day-to-day., including two people who do Bazel migrations for a living, at least one Bazel contributor, and one person, Oscar Boykin, who has been on Bazel projects at Twitter, Stripe, and Netflix.
 
-It's a long read, and I promise, it's worth it. The short version is: Bazel can solve large monorepo build problems very well, but it has a steep adoption curve.
+It's a long read, and I promise, it's worth it. The short version is: **Bazel can solve large monorepo build problems very well, but it has a steep adoption curve.**
 
 ## History
 
