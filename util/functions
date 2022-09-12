@@ -287,3 +287,10 @@ stop-blog(){ # kill what is on port 4002
 stop-website(){ # kill what is on port 4001
     kill "$(lsof -i :4001 | tail -n 1 | awk '{ print $2 }')" 
 }
+
+tailwind(){ # Run tailwind
+    (
+        cd blog || exit
+        npx tailwindcss -i ./assets/css/index.css -o ./assets/css/base.css --minify
+    )
+}
