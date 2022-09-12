@@ -8,6 +8,8 @@ internal-links:
  - bazel
 ---
 
+
+
 ## Introduction
 
 Here at Earthly, we care a lot about builds and talk to many people about their struggles with builds and CI. A frequent topic of conversation, especially if an organization has a monorepo and more than 500 developers, is Bazel, Google's open-sourced monorepo build system.
