@@ -24,7 +24,7 @@ It's a long read, and I promise, it's worth it. The short version is: Bazel can 
 
 ## History
 
-Bazel is based on some simple but powerful ideas. Here is Oscar Boykin explaining:
+Bazel is based on some simple but powerful ideas. Here is Oscar Boykin[^2] explaining:
 
 {% include bazel/oscar.html %}
 The idea of Bazel is we're gonna actually build things correctly. Your build is a pure function. There's sources that come in, and then the artifacts go out. And if the sources are the same, the artifacts that pop out the other side will be bit-for-bit identical. That's really cool.
@@ -43,7 +43,7 @@ A long time ago, Google built its software using large, generated Makefiles. The
 </div>
 
 <!-- vale HouseStyle.OxfordComma = NO -->
-Google needed Bazel at the time because they had a large monorepo that contained large amounts of C++, and Java code, and they wanted a uniform, correct and performant way to build and test all this code. Son Luong Ngoc, a scalable build consultant at Qarik Group, says many larger companies are starting to hit these problems.
+Google needed Bazel at the time because they had a large monorepo that contained large amounts of C++, and Java code, and they wanted a uniform, correct and performant way to build and test all this code. Son Luong Ngoc[^3], a scalable build consultant at Qarik Group, says many larger companies are starting to hit these problems.
 <!-- vale HouseStyle.OxfordComma = YES -->
 
 {% include bazel/son.html %}
@@ -110,7 +110,7 @@ I would definitely, unfortunately, use it when I had a million lines of code or 
 
 ## When to Use Bazel - Jason's Opinion
 
-Not everyone would wait for millions of lines to use Bazel, though. Jason Steving, an ML Compiler Engineer on the TensorFlow team at Google, has a different take:
+Not everyone would wait for millions of lines to use Bazel, though. Jason Steving[^4], an ML Compiler Engineer on the TensorFlow team at Google, has a different take:
 <!-- vale HouseStyle.Repetition = NO -->
 {% include bazel/jason.html %}
 Always. Always use Bazel.
@@ -179,7 +179,7 @@ So now, you've pushed the code, you're filling out the PR, [and] the CI's alread
 
 ## Build Time Expectations - Tweag
 
-Moving from 20 minutes median build to 6 minutes seems like an impressive improvement, especially if the tail build times improved by a similar magnitude. I reached out to a build migration expert Andreas Herrmann, from Tweag, to see if these types of improvements are what people should expect.
+Moving from 20 minutes median build to 6 minutes seems like an impressive improvement, especially if the tail build times improved by a similar magnitude. I reached out to a build migration expert Andreas Herrmann[^5], from Tweag, to see if these types of improvements are what people should expect.
 
 {% include bazel/andreas.html %}
 The problem with these kinds of numbers is that they're highly dependent on the particular project. So it's very difficult to really make a general statement.
@@ -220,7 +220,7 @@ Then one can define a library target for the frontend that uses those generated 
 
 ## Case Study: Open Systems
 
-Andreas and others at Tweag were such big fans of Bazel (And Nix, but that might be a different article) that they started writing about it to [spread](https://www.tweag.io/blog/2019-10-09-bazel-cabal-stack/) the word. From there, other people found Bazel. Like Julien Perrochet, who was working at Open Systems at the time.
+Andreas and others at Tweag were such big fans of Bazel (And Nix, but that might be a different article) that they started writing about it to [spread](https://www.tweag.io/blog/2019-10-09-bazel-cabal-stack/) the word. From there, other people found Bazel. Like Julien Perrochet[^7], who was working at Open Systems at the time.
 
 {% include bazel/julien.html %}
 I think I first heard about it probably 2018, or 2019-ish.
@@ -292,7 +292,7 @@ That was a weird side effect of Bazel: just really duct tape these three tools a
 
 Julien's Bazel adoption experience at Open System, much like Oscar's at Netflix, is rooted in understanding the Bazel principles and choosing to adopt them. Another common vector for Bazel adoption is just having someone who's X-Google join the company and start trying to recreate Google's internal dev tooling.
 
-Jens Rantil, while working at Tink, a fintech startup, had this form of introduction to Bazel:
+Jens Rantil[^6], while working at Tink, a fintech startup, had this form of introduction to Bazel:
 
 {% include bazel/jens.html %}
 The funny story is that we, we essentially had a Googler or a Xoogler, I guess, who briefly joined us for like six months and added a bunch of googly tools. He added Kubernetes, and he introduced Prometheus, and he introduced Bazel, and then he kind of disappeared.
@@ -446,24 +446,24 @@ But most importantly, I've learned - and all the people I talked to agreed: Baze
 
 {% include cta/cta1.html %}
 
-[^1]: Quotes have been edited for clarity. The six people interviewed are as follows:
-      <img class="h-24 md:w-24" style="border-radius: 50%;" src="{{site.images}}{{page.slug}}/0610.png" alt="Oscar Boykin">
-       [P. Oscar Boykin](https://twitter.com/posco) is a Bazel contributor, Senior Research Engineer at Netflix and former physicist, who has worked on Bazel projects at Twitter, Stripe and Netflix.
+[^1]: Quotes have been edited for clarity.
+      Thank you Oscar, Son, Jason, Andreas, Jens, and Julien for letting me pick your brains about builds.
 
-       <img class="h-24 md:w-24" style="border-radius: 50%;" src="{{site.images}}{{page.slug}}/0910.png" alt="Son Luong Ngoc">
-       [Son Luong Ngoc](https://twitter.com/sluongng) is a Dev Ops Engineer at [Qarik group](https://qarik.com/), where he specilizes in MonoRepo and Bazel migrations. Before Qarik group he helped booking.com handle the challenges of larger mono-repo.
+[^2]:    <img class="h-24 md:w-24" style="border-radius: 50%;" src="{{site.images}}{{page.slug}}/0610.png" alt="Oscar Boykin">
+       [P. Oscar Boykin](https://twitter.com/posco) is a Bazel contributor, Senior Research Engineer at Netflix, and former physicist, who has worked on Bazel projects at Twitter, Stripe, and Netflix.
 
-       <img class="h-24 md:w-24" style="border-radius: 50%;" src="{{site.images}}{{page.slug}}/1050.png" alt="Jason Steving">
+[^3]:  <img class="h-24 md:w-24" style="border-radius: 50%;" src="{{site.images}}{{page.slug}}/0910.png" alt="Son Luong Ngoc">
+       [Son Luong Ngoc](https://twitter.com/sluongng) is a Dev Ops Engineer at [Qarik group](https://qarik.com/), where he specializes in MonoRepo and Bazel migrations. Before Qarik group he helped booking.com handle the challenges of larger mono-repo.
+
+[^4]:   <img class="h-24 md:w-24" style="border-radius: 50%;" src="{{site.images}}{{page.slug}}/1050.png" alt="Jason Steving">
        [Jason Steving](https://www.linkedin.com/in/jasonsteving/) is an ML Compiler Engineer on the TensorFlow team at Google and is the creator of [Claro-lang](https://www.clarolang.com).
 
-       <img class="h-24 md:w-24" style="border-radius: 50%;" src="{{site.images}}{{page.slug}}/1250.png" alt="Andreas Herrmann">
+[^5]:  <img class="h-24 md:w-24" style="border-radius: 50%;" src="{{site.images}}{{page.slug}}/1250.png" alt="Andreas Herrmann">
        [Andreas Herrmann](https://www.tweag.io/team/) is a physicist turned software engineer. He leads the Bazel team at Tweag, and maintains Tweag's open source Bazel rule sets and the capability package. 
 
-       <img class="h-24 md:w-24" style="border-radius: 50%;" src="{{site.images}}{{page.slug}}/0270.png" alt="Jens Rantil">
-      [Jens Rantil](https://mobile.twitter.com/JensRantil) is a Swedish 
-      Jens Rantil is a Senior Software Engineer at Normative and former Staff Site Reliability Engineer at Tink.
+[^6]:  <img class="h-24 md:w-24" style="border-radius: 50%;" src="{{site.images}}{{page.slug}}/0270.png" alt="Jens Rantil">
+      [Jens Rantil](https://mobile.twitter.com/JensRantil) is a
+      Senior Software Engineer at Normative and former Staff Site Reliability Engineer at Tink.
 
-      <img class="h-24 md:w-24" style="border-radius: 50%;" src="{{site.images}}{{page.slug}}/1510.png" alt="Julien Perrochet">
-      [Julien Perrochet](https://j3t.ch/) is an independent consultant at Perrochet Reactive Systems. Julien was formerly a Principal Software Engineer at OpenSystems where he was responsible for, among other things, build engineering. 
-
-      Thank you Oscar, Son, Jason, Andreas, Jens, and Julien for letting me pick your brains about builds.
+[^7]: <img class="h-24 md:w-24" style="border-radius: 50%;" src="{{site.images}}{{page.slug}}/1510.png" alt="Julien Perrochet">
+      [Julien Perrochet](https://j3t.ch/) is an independent consultant at Perrochet Reactive Systems. Julien was formerly a Principal Software Engineer at OpenSystems where he was responsible for, among other things, build engineering.
