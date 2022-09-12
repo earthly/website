@@ -12,7 +12,7 @@ internal-links:
 
 Here at Earthly, we care a lot about builds and talk to many people about their struggles with builds and CI. A frequent topic of conversation, especially if an organization has a monorepo and more than 500 developers, is Bazel, Google's open-sourced monorepo build system.
 
-I've never worked at Google or anywhere using Bazel to drive their builds, and so while I can walk through a Bazel tutorial, I felt like I was missing the sense of what using Bazel was like, both the day-to-day and migrating to Bazel. So I interviewed 6 Bazel experts and asked them what they like about Bazel, when they would use it, and what to expect or consider before doing a Bazel migration.
+I've never worked at Google or anywhere using Bazel to drive their builds, and so while I can walk through a Bazel tutorial, I felt like I was missing the sense of what using Bazel was like, both the day-to-day and migrating to Bazel. So I interviewed 6 Bazel experts[^1] and asked them what they like about Bazel, when they would use it, and what to expect or consider before doing a Bazel migration.
 
 Read this if you are considering Bazel and also if you'd like to read gory details of several Bazel migrations, including the level of effort and the results.
 
@@ -441,3 +441,27 @@ So after talking to all of these Bazel experts, what have I learned? First, I've
 Second, I've learned you shouldn't overlook the education and training aspects either. You should plan to spend time initially getting developers up to speed on this approach. Make sure everyone understands the vision or expect some bumpy roads.
 
 But most importantly, I've learned - and all the people I talked to agreed: Bazel does deliver on its promise of fast and correct builds. Other tools like Pants and Buck exist, but Bazel is the clear category leader. If I had a mono-repo with several million lines of code in it, I'd want a consistent way to build things and a fast way to get feedback on those changes. Doing so would pay for itself over time because developer time is expensive. Bazel is the tool for that job.
+
+{% include cta/cta1.html %}
+
+[^1]: The six people interviewed are as follows:
+      <img class="h-24 md:w-24" style="border-radius: 50%;" src="{{site.images}}{{page.slug}}/0610.png" alt="Oscar Boykin">
+       [P. Oscar Boykin](https://twitter.com/posco) is a Bazel contributor, Senior Research Engineer at Netflix and former physicist, who has worked on Bazel projects at Twitter, Stripe and Netflix.
+
+       <img class="h-24 md:w-24" style="border-radius: 50%;" src="{{site.images}}{{page.slug}}/0910.png" alt="Son Luong Ngoc">
+       [Son Luong Ngoc](https://twitter.com/sluongng) is a Dev Ops Engineer at [Qarik group](https://qarik.com/), where he specilizes in MonoRepo and Bazel migrations. Before Qarik group he helped booking.com handle the challenges of larger mono-repo.
+
+       <img class="h-24 md:w-24" style="border-radius: 50%;" src="{{site.images}}{{page.slug}}/1050.png" alt="Jason Steving">
+       [Jason Steving](https://www.linkedin.com/in/jasonsteving/) is an ML Compiler Engineer on the TensorFlow team at Google and is the creator of [Claro-lang](https://www.clarolang.com).
+
+       <img class="h-24 md:w-24" style="border-radius: 50%;" src="{{site.images}}{{page.slug}}/1250.png" alt="Andreas Herrmann">
+       [Andreas Herrmann](https://www.tweag.io/team/) is a physicist turned software engineer. He leads the Bazel team at Tweag, and maintains Tweag's open source Bazel rule sets and the capability package. 
+
+       <img class="h-24 md:w-24" style="border-radius: 50%;" src="{{site.images}}{{page.slug}}/0270.png" alt="Jens Rantil">
+      [Jens Rantil](https://mobile.twitter.com/JensRantil) is a Swedish 
+      Jens Rantil is a Senior Software Engineer at Normative and former Staff Site Reliability Engineer at Tink.
+
+      <img class="h-24 md:w-24" style="border-radius: 50%;" src="{{site.images}}{{page.slug}}/1510.png" alt="Julien Perrochet">
+      [Julien Perrochet](https://j3t.ch/) is an independent consultant at Perrochet Reactive Systems. Julien was formerly a Principal Software Engineer at OpenSystems where he was responsible for, among other things, build engineering. 
+
+      Thank you Oscar, Son, Jason, Andreas, Jens, and Julien for letting me pick your brains about builds.
