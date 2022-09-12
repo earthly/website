@@ -441,20 +441,3 @@ So after talking to all of these Bazel experts, what have I learned? First, I've
 Second, I've learned you shouldn't overlook the education and training aspects either. You should plan to spend time initially getting developers up to speed on this approach. Make sure everyone understands the vision or expect some bumpy roads.
 
 But most importantly, I've learned - and all the people I talked to agreed: Bazel does deliver on its promise of fast and correct builds. Other tools like Pants and Buck exist, but Bazel is the clear category leader. If I had a mono-repo with several million lines of code in it, I'd want a consistent way to build things and a fast way to get feedback on those changes. Doing so would pay for itself over time because developer time is expensive. Bazel is the tool for that job.
-
-### Writing Article Checklist
-
-- [ ] Write Outline
-- [ ] Write Draft
-- [ ] Fix Grammarly Errors
-- [ ] Read out loud
-- [ ] Write 5 or more titles and pick the best on
-- [ ] First two paragraphs: What's it about? Why listen to you?
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-- [ ] Run mark down linter (`lint`)
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links to other articles
-- [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
-- [ ] Raise PR
