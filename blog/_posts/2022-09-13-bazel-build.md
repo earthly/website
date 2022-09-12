@@ -444,7 +444,7 @@ But most importantly, I've learned - and all the people I talked to agreed: Baze
 
 {% include cta/cta1.html %}
 
-[^1]: The six people interviewed are as follows:
+[^1]: Quotes have been edited for clarity. The six people interviewed are as follows:
       <img class="h-24 md:w-24" style="border-radius: 50%;" src="{{site.images}}{{page.slug}}/0610.png" alt="Oscar Boykin">
        [P. Oscar Boykin](https://twitter.com/posco) is a Bazel contributor, Senior Research Engineer at Netflix and former physicist, who has worked on Bazel projects at Twitter, Stripe and Netflix.
 
