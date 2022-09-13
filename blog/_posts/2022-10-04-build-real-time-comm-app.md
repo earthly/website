@@ -367,7 +367,9 @@ Add the following HTML code to the `base.html`:
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   {% raw %}<title>{%block title%}{%endblock title%}</title>{% endraw %}
+   {% raw %}
+   <title>{%block title%}{%endblock title%}</title>
+   {% endraw %}
 </head>
 <body>
     {% raw %}
@@ -386,6 +388,8 @@ Add the following HTML code to the `base.html`:
 Open the `home.html` and add the following HTML code snippets:
 
 ~~~{.bash caption=">_"}
+
+{% raw %}
 <!-- chat/templates/chat/home.html -->
 {%extends 'chat/base.html'%}
 {% block title%} Home {%endblock title%}
@@ -408,6 +412,7 @@ Open the `home.html` and add the following HTML code snippets:
 
     </ul>
 {%endblock content%}
+    {% endraw %}
 
 ~~~
 
@@ -419,7 +424,7 @@ For the group chat, open the `groupchat.html` file and add the following code:
 ~~~{.bash caption=">_"}
 {% raw %} 
 <!-- chat/templates/chat/groupchat.html -->
-{% raw %} {% extends 'chat/base.html'%} {% endraw %}
+ {% extends 'chat/base.html'%} 
 {% block title%} Chat Room{%endblock title%}
 {% block content%}
 <textarea id="chat-log" cols="100" rows="20"></textarea><br>
@@ -614,8 +619,9 @@ The next step is to create the client websocket API that will communicate with t
 Open the `templates/chat/home.html` file and add the following:
 
 ~~~{.bash caption=">_"}
-{% block script %}
 {% raw %} 
+{% block script %}
+
 <script>
 
 base_url =  ${window.location.hostname}:${window.location.port}/ 
@@ -634,9 +640,10 @@ websocket.onmessage = function(event){
 }
 
 
-</script>
-{% raw %} 
+</script> 
 {% endblock script %}
+
+{% endraw %}
 ~~~
 
 The code above established a websocket connection to the websocket URL associated with the `JoinAndLeave` consumer and defined three event handlers. Let's run the server to see when these events are fired.
@@ -960,8 +967,9 @@ websocket_urlpatterns = [
 The next step is to add the client websocket API to the `chat/groupchat.html` page:
 
 ~~~{.bash caption=">_"}
-{%block script%}
 {% raw %} 
+{%block script%}
+
 <script>
     base_url =  ${window.location.host}${window.location.pathname} 
 
@@ -993,8 +1001,9 @@ The next step is to add the client websocket API to the `chat/groupchat.html` pa
         };
 
 </script>
-{% raw %} 
+
 {%endblock script%}
+{% endraw %} 
 ~~~
 
 When a user types a message and clicks the send button, the message is sent to the backend via the `chatSocket.send` method. This is sent together with a `type` of `text_message` as well as the author which is the current user in the `request` object.
