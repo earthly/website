@@ -1,0 +1,14 @@
+---
+title: "Earthly on Ruby Rogues"
+categories:
+  - News
+author: Earthly
+---
+
+Adam was on [Ruby Rogues](https://topenddevs.com/podcasts/ruby-rogues/episodes/programming-language-tooling-with-adam-gordon-bell-ruby-561) discussing langauge tooling and using Earthly for builds.
+
+> Adam Gordon Bell is back on the show again!  Today he shares his views on language tooling, new articles he has recently written, documentation for Ruby, software consulting, and insights into other programming topics.
+
+Previsouly, Adam was on Ruby Rogues episode 530 discussing [command-line tools](https://topenddevs.com/podcasts/ruby-rogues/episodes/commanding-your-command-line-with-adam-gordon-bell-ruby-530):
+
+> Ready to COMMAND your command line? Then listen up! In this episode, the Ruby Rogues sit down with Adam Gordon Bell, a software developer and host of the CoRecursive podcast. The guys discuss the tools that every developer MUST know in 2022, what users of Jekyll and Ruby can expect this year, and why Adam believes that JQ will save you hours from Google and Stack Overflow.
