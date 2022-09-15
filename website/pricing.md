@@ -20,29 +20,25 @@ The cost of compute is based on the AWS rack price for the instances that are us
 <div class="grid grid-cols-4">
 <div class="font-semibold text-xl border-b flex">Instance type</div>
 <div class="font-semibold text-xl border-b flex">Specs </div>
-<div class="font-semibold text-xl border-b flex">Price per hour</div>
-<div class="font-semibold text-xl border-b flex"><div>Price per month<span class="text-sm font-normal block text-gray-600">(if used 3 hours per work day)</span></div> </div>
+<div class="font-semibold text-xl border-b flex">Price per minute</div>
 </div>
 
 <div class="grid grid-cols-4 border-b">
 <div class="py-4"><span class="font-semibold">small</span></div>
+<div class="py-4">1 CPUs, 4 GB RAM, 22 GB cache</div>
 <div class="py-4">Coming soon</div>
-<div class="py-4">-</div>
-<div class="py-4">-</div>
 </div>
 
 <div class="grid grid-cols-4 border-b">
-<div class="py-4"><span class="font-semibold">medium</span> (default)</div>
-<div class="py-4">4 CPUs, 16 GB RAM, 90 GB cache</div>
-<div class="py-4">$0.18</div>
-<div class="py-4">$11.475</div>
+<div class="py-4"><span class="font-semibold">medium</span></div>
+<div class="py-4">2 CPUs, 8 GB RAM, 45 GB cache</div>
+<div class="py-4">Coming soon</div>
 </div>
 
 <div class="grid grid-cols-4">
 <div class="py-4"><span class="font-semibold">large</span></div>
-<div class="py-4">Coming soon</div>
-<div class="py-4">-</div>
-<div class="py-4">-</div>
+<div class="py-4">4 CPUs, 16 GB RAM, 90 GB cache</div>
+<div class="py-4">$0.0100</div>
 </div>
 
 <h2 class="text-2xl font-semibold mb-5 mt-20" id="usage-tracked">How is my usage of Satellites tracked?<span class="hide"><a href="#usage-tracked">¶</a></span></h2>
