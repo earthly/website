@@ -9,7 +9,6 @@ internal-links:
  - WebSocket
  - Django
  - Python
- - 
 ---
 
 In this tutorial, we'll learn how to build a real-time communication application with The [Django Channels](https://channels.readthedocs.io/en/stable/) package and The [WebSocket Protocol](https://datatracker.ietf.org/doc/html/rfc6455). The application we will create will be a platform where users can join multiple pre-created groups and share ideas with members of the group.
@@ -126,7 +125,11 @@ A consumer can also communicate with other consumers and multiple consumers can 
 
 Since you have added channels to the list of `INSTALLED_APP`, it will take over the runserver command and spin up the ASGI server from the `asgi.py` rather than the WSGI server configured in the `wsgi.py` file:
 
+<div class="wide">
+
 ![asgirunserveromage]({{site.images}}{{page.slug}}/Ylevmwg.jpeg)\
+
+</wide>
 
 Once you confirm this is working as expected, you can stop the server for now..
 
@@ -492,18 +495,35 @@ $ python manage.py create superuser
 
 The dummy groups I created:
 
+<div class="wide">
+
 ![groups]({{site.images}}{{page.slug}}/VYUSxYJ.jpeg)
+
+</div>
 
 The dummy user joins events:
 
+<div class="wide">
+
 ![join]({{site.images}}{{page.slug}}/r3RrS9d.jpeg)
 
+</div>
+
 The dummy group messages:
+
+<div class="wide">
+
 ![message]({{site.images}}{{page.slug}}/hJzNVBj.jpeg)
+
+</div>
 
 Now that you have the dummy data, you can navigate to the home page and see what the page looks like:
 
+<div class="wide">
+
 ![homepage]({{site.images}}{{page.slug}}/rnIAfoQ.jpeg)
+
+</div>
 
 The leave and open buttons are displayed for each group since the user is a member of all groups.
 
@@ -513,14 +533,23 @@ To see the Join button, remove the user from the group on the admin page.
 
 The page will look as shown below:
 
+<div class="wide">
+
 ![user need to join]({{site.images}}{{page.slug}}/AFJNyUD.jpeg)\
+
+</div>
 
 Now that you have an idea of what the home page looks like, you can check the group page.
 
 Copy the uuid for a group and navigate to the group page at `group/<group uuid>`
 
 The group page looks as shown below:
+
+<div class="wide">
+
 ![chapter page]({{site.images}}{{page.slug}}/lCw3Kct.jpeg)\
+
+</div>
 
 That's it for the basic Django set-up. We can now connect the Django channels to handle websocket connections.
 
@@ -654,7 +683,11 @@ Run the development server and navigate to the home page.
 
 You should get this message in the development server and console:
 
+<div class="wide">
+
 ![serverclientmessage1]({{site.images}}{{page.slug}}/KHKCrP3.jpeg)
+
+</div>
 
 In the console, you got an error message: `Firefox can't establish a connection to the server at ws://127.0.0.1:8000/` and "Error" which you logged in the `onerror` event handler.
 
@@ -674,7 +707,11 @@ def connect(self):
 
 Reload the homepage and you should get the following in the console and the web server:
 
+<div class="wide">
+
 ![serverclientmessage2]({{site.images}}{{page.slug}}/JYg7FFv.jpeg)
+
+</div>
 
 In the server, you have the `WebSocket HANDSHAKING` and the `Websocket CONNECT` indicating that the server accepted the connection.
 
@@ -689,7 +726,11 @@ This shows the server can now send and receive messages from the client and vice
 
 If you expand the GET response, you can view the request-response Headers associated:
 
+<div class="wide">
+
 ![handshake header]({{site.images}}{{page.slug}}/9phUbvg.jpeg)\
+
+</div>
 
 ### Reviewing the Flow
 
@@ -1170,6 +1211,5 @@ Link to the code on Github and the DiscussIt app
 
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
+
 
