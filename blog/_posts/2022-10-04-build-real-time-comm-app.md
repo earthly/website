@@ -88,7 +88,7 @@ A consumer can also communicate with other consumers and multiple consumers can 
 
     ~~~
 
-6. Create a `.env` file in the project directory for the environment variables.
+6. Create a `.env` file in the project directory for the [environment variables](/blog/bash-variables).
 
 7. Create a Django application called chat:
 
@@ -1169,5 +1169,4 @@ Link to the code on Github and the DiscussIt app
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
 - [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
