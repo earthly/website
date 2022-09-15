@@ -3,10 +3,13 @@ title: "How to Build A Real-Time Communication Application with Django-Channels 
 categories:
   - Tutorials
 toc: true
-author: Mustapha Ahmad
+author: Mustapha Ahmad Ayodeji
 
 internal-links:
- - just an example
+ - WebSocket
+ - Django
+ - Python
+ - 
 ---
 
 In this tutorial, we'll learn how to build a real-time communication application with The [Django Channels](https://channels.readthedocs.io/en/stable/) package and The [WebSocket Protocol](https://datatracker.ietf.org/doc/html/rfc6455). The application we will create will be a platform where users can join multiple pre-created groups and share ideas with members of the group.
@@ -1163,10 +1166,8 @@ Link to the code on Github and the DiscussIt app
 
 ## Outside Article Checklist
 
-- [ ] Add in Author page
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Add keywords for internal links to front-matter
 - [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
