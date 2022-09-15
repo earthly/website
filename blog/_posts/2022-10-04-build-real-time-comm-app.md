@@ -51,80 +51,79 @@ The Channels package makes use of consumers (which are the equivalent of Django 
 
 A consumer can also communicate with other consumers and multiple consumers can be part of a single channel group. The communication between multiple consumers can be achieved via channel layers. (More on channel layers soon.)
 
-## Building The Application
+## Building the Application
 
 ### Project Setup
 
 1. Create a working directory and `cd` into it..
 
-~~~{.bash caption=">_"}
-$ mkdir DiscussIt
-$ cd DiscussIt
-
-~~~
+    ~~~{.bash caption=">_"}
+    $ mkdir DiscussIt
+    $ cd DiscussIt
+    ~~~
 
 2. Create and activate a virtual environment.
 
-~~~{.bash caption=">_"}
-$ python3 -m venv venv
-$ source venv/bin/activate
-~~~
+    ~~~{.bash caption=">_"}
+    $ python3 -m venv venv
+    $ source venv/bin/activate
+    ~~~
 
 3. Install Django and Channels
 
-~~~{.bash caption=">_"}
-$ pip install django,django-channels
-~~~
+    ~~~{.bash caption=">_"}
+    $ pip install django,django-channels
+    ~~~
 
 4. Start a new Django Project in the current working directory
 
-~~~{.bash caption=">_"}
-$ django-admin startproject DiscussIt .
-~~~
+    ~~~{.bash caption=">_"}
+    $ django-admin startproject DiscussIt .
+    ~~~
 
 5. Add the packages you installed in the `requirements.txt` file:
 
-~~~{.bash caption=">_"}
-$ pip freeze > requirements.txt
+    ~~~{.bash caption=">_"}
+    $ pip freeze > requirements.txt
 
-~~~
+    ~~~
 
 6. Create a `.env` file in the project directory for the environment variables.
 
 7. Create a Django application called chat:
 
-~~~{.bash caption=">_"}
-$ python manage.py startapp chat
-~~~
+    ~~~{.bash caption=">_"}
+    $ python manage.py startapp chat
+    ~~~
 
 8. Add the `chat` app and the Django channel package to the list of the installed apps in the `settings.py` file:
 
-~~~{.bash caption=">_"}
-  INSTALLED_APPS = [
-      #installed package
-      'channels'
-           ...
-      #installed APP
-      'chat',
-  
-  ]
-~~~
+    ~~~{.bash caption=">_"}
+    INSTALLED_APPS = [
+        #installed package
+        'channels'
+            ...
+        #installed APP
+        'chat',
+    
+    ]
+    ~~~
 
 9. Run initial migrations to create the database table for the applications installed by Django:
 
-~~~{.bash caption=">_"}
- $ python manage.py migrate   
-~~~
+    ~~~{.bash caption=">_"}
+    $ python manage.py migrate   
+    ~~~
 
 10. Start the development server:
 
-~~~{.bash caption=">_"}
-   $ python manage.py runserver
-~~~
+    ~~~{.bash caption=">_"}
+    $ python manage.py runserver
+    ~~~
 
 Since you have added channels to the list of `INSTALLED_APP`, it will take over the runserver command and spin up the ASGI server from the `asgi.py` rather than the WSGI server configured in the `wsgi.py` file:
 
-![asgirunserveromage](https://i.imgur.com/Ylevmwg.jpeg)
+![asgirunserveromage]({{site.images}}{{page.slug}}/Ylevmwg.jpeg)\
 
 Once you confirm this is working as expected, you can stop the server for now..
 
@@ -211,7 +210,7 @@ Then we just need a couple of helper functions and the ability to add and remove
 
 #### Message Model
 
-The message model is pretty self explanitory.
+The message model is pretty self explanatory.
 
 ~~~{.bash caption=">_"}
 class Message(models.Model):
@@ -490,18 +489,18 @@ $ python manage.py create superuser
 
 The dummy groups I created:
 
-![groups](https://i.imgur.com/VYUSxYJ.jpeg)
+![groups]({{site.images}}{{page.slug}}/VYUSxYJ.jpeg)
 
 The dummy user joins events:
 
-![join](https://i.imgur.com/r3RrS9d.jpeg)
+![join]({{site.images}}{{page.slug}}/r3RrS9d.jpeg)
 
 The dummy group messages:
-![message](https://i.imgur.com/hJzNVBj.jpeg)
+![message]({{site.images}}{{page.slug}}/hJzNVBj.jpeg)
 
 Now that you have the dummy data, you can navigate to the home page and see what the page looks like:
 
-![homepage](https://i.imgur.com/rnIAfoQ.jpeg)
+![homepage]({{site.images}}{{page.slug}}/rnIAfoQ.jpeg)
 
 The leave and open buttons are displayed for each group since the user is a member of all groups.
 
@@ -511,14 +510,14 @@ To see the Join button, remove the user from the group on the admin page.
 
 The page will look as shown below:
 
-![userneeddtojoin](https://i.imgur.com/AFJNyUD.jpeg)
+![user need to join]({{site.images}}{{page.slug}}/AFJNyUD.jpeg)\
 
 Now that you have an idea of what the home page looks like, you can check the group page.
 
 Copy the uuid for a group and navigate to the group page at `group/<group uuid>`
 
 The group page looks as shown below:
-![chaptpage](https://i.imgur.com/lCw3Kct.jpeg)
+![chapter page]({{site.images}}{{page.slug}}/lCw3Kct.jpeg)\
 
 That's it for the basic Django set-up. We can now connect the Django channels to handle websocket connections.
 
@@ -652,7 +651,7 @@ Run the development server and navigate to the home page.
 
 You should get this message in the development server and console:
 
-![serverclientmessage1](https://i.imgur.com/KHKCrP3.jpeg)
+![serverclientmessage1]({{site.images}}{{page.slug}}/KHKCrP3.jpeg)
 
 In the console, you got an error message: `Firefox can't establish a connection to the server at ws://127.0.0.1:8000/` and "Error" which you logged in the `onerror` event handler.
 
@@ -672,7 +671,7 @@ def connect(self):
 
 Reload the homepage and you should get the following in the console and the web server:
 
-![serverclientmessage2](https://i.imgur.com/JYg7FFv.jpeg)
+![serverclientmessage2]({{site.images}}{{page.slug}}/JYg7FFv.jpeg)
 
 In the server, you have the `WebSocket HANDSHAKING` and the `Websocket CONNECT` indicating that the server accepted the connection.
 
@@ -687,7 +686,7 @@ This shows the server can now send and receive messages from the client and vice
 
 If you expand the GET response, you can view the request-response Headers associated:
 
-![handshakeheader](https://i.imgur.com/9phUbvg.jpeg)
+![handshake header]({{site.images}}{{page.slug}}/9phUbvg.jpeg)\
 
 ### Reviewing the Flow
 
@@ -759,7 +758,7 @@ add_event_to_all_buttons()
 
 ~~~
 
-When a user clicks on a button the client calls the `send_event_message` function and sends the  uuid  value of the group to the server.
+When a user clicks on a button the client calls the `send_event_message` function and sends the uuid value of the group to the server.
 
 In the payload, you specified the `type` as the action that you parsed from the value of the button that the user pressed. The action is either `leave_group` or `join_group`. The `open_group` button opens the group page that you will be creating soon.
 
@@ -825,7 +824,7 @@ The `leave_group` method removes the user from the group and sends the data back
 
 The data will be received in the frontends `onmessage` event handler method.
 
-### Handling messages on the Frontend
+### Handling Messages on the Frontend
 
 Modify the `websocket.onmessage` in the `chat/home.html` file as shown below:
 
@@ -891,7 +890,7 @@ All these same instances have to be in the same channel layer group.
 The channel layer group is like a broadcast system that allows you to perform operations on the consumers that are in the same group. You can add a consumer instance to the channel layer group, you can remove a consumer instance and you can broadcast to the consumer instances in the same group.
 You need to configure `channel_layers` in the `settings.py` file via the `CHANNEL_LAYERS` configuration before you can use it.
 
-The  channels_redis package  is the only official channels maintained channel layer supported for production use (source Channels doc).
+The channels_redis package is the only official channels maintained channel layer supported for production use (source Channels doc).
 
 But for development purposes, you can use the in-memory channel layer that the Django-channels package provides.
 
@@ -937,7 +936,7 @@ You need to import the `channel_layers` that will allow multiple instances of th
 
 The websocket endpoint that will connect to this consumer will be `groups/<uuid:uuid>/`
 
-In the `connect` method of the consumer class,  you retrieve the uuid from the URL path from the route attributes of the scope metadata.
+In the `connect` method of the consumer class, you retrieve the uuid from the URL path from the route attributes of the scope metadata.
 
 You retrieved the Group object with the `uuid` using the `database_sync_to_async`. You need to await this since it is an asynchronous operation.
 
@@ -1047,9 +1046,9 @@ class GroupConsumer(AsyncWebsocketConsumer):
                 ))
 ~~~
 
-When you send a broadcast message with the `group_send` method of the `channel_layers` class, it will call a method on the consumer class that has the same name as the value of the  type  key in the message. In that method, you can then send the message via the `self.send()` method.
+When you send a broadcast message with the `group_send` method of the `channel_layers` class, it will call a method on the consumer class that has the same name as the value of the type key in the message. In that method, you can then send the message via the `self.send()` method.
 
-The `Group` model has the `add_user_to_group` and `remove_user_from_group` methods you used in the `join_group` and `leave_group` methods of the `JoinAndLeaveGroup` consumer. These methods create a model  Event objects of type `join` and `leave` respectively for the user.
+The `Group` model has the `add_user_to_group` and `remove_user_from_group` methods you used in the `join_group` and `leave_group` methods of the `JoinAndLeaveGroup` consumer. These methods create a model Event objects of type `join` and `leave` respectively for the user.
 
 You can add a `post save signal` to send this event message to the frontend to notify users in a group when a new user has joined or left.
 
@@ -1077,7 +1076,7 @@ def broadcast_event_to_groups(sender, instance, **kwargs):
 )
 ~~~
 
-Each consumer class has a channel_layer attribute that we can access inside the consumer as `self.channel_layer`, However when we are outside the consumer class,like in the `broadcast_event_to_groups` signal receive above,  we can only retrieve the channel layer via the get_channel_layer()  function.
+Each consumer class has a channel_layer attribute that we can access inside the consumer as `self.channel_layer`, However when we are outside the consumer class,like in the `broadcast_event_to_groups` signal receive above, we can only retrieve the channel layer via the get_channel_layer() function.
 
 The broadcast will be received in the `event_message` method of the consumer since you specified the type as `event_message`.
 
@@ -1126,20 +1125,20 @@ chatSocket.onmessage = function(e) {
 
 Both the `event_message` and `text_message` are added to the chat log. If the type of the message is `event_message`, you check if the value of the status key passed from the backend is `Left` and remove the user from the list of group members else if the value of the status key is `Join` , you add the user to the list of group members.
 
-#### Reviewing the flow
+#### Reviewing the Flow
 
 When a member of a group opens the group:
-The client arrives at the `grouppage` via an  HTTP request , and the server calls the `GroupChatView` view which retrieves the chat and event messages for the group chat and renders them  in the `groupchat` template.
+The client arrives at the `grouppage` via an HTTP request , and the server calls the `GroupChatView` view which retrieves the chat and event messages for the group chat and renders them in the `groupchat` template.
  In the template, The client instantiates an instance of the websocket API which sends a `Handshake` request to the server via the websocket URL.
 The server calls the consumer associated with the URL which accepts the Handshake and the connection is established
 While accepting the Handshake, the instance of the consumer is added to a channel group that is identified by the chat group uuid.
 
 When a user sends a message to the group:
 The message is sent from the client via the `chatsSocket.send` to the `chatSocket` endpoint
-The `receive` method of the consumer class associated with the the endpoint receives the message.
+The `receive` method of the consumer class associated with the endpoint receives the message.
 The message is broadcasted to every `GroupConsumer` class instance in the same channel group via the `group_send` method of the `channel_layers`.
 This is received by the `text_message` message method of each `GroupConsumer` class since `text_message` was specified as the message type.
-The text message is sent  to each client via the `send` method in the `text_message` method
+The text message is sent to each client via the `send` method in the `text_message` method
 The message is received in the client by the `onmessage` event handler.
 The chat log is then updated with the message
 
@@ -1150,11 +1149,11 @@ The event message is broadcasted to all `GroupConsumer` instance in the same gro
 The broadcast message is received from by the `event_message` method on the `GroupConsumer`.
 The message is sent to the client and the chat log is updated.
 
-# Deploying
+## Deploying
 
  To deploy the application, the `channels-package` has an extensive guide on how to deploy a channel project. You can access that here
 
-# Conclusion
+## Conclusion
 
 There are still a lot of things you can do with the WebSocket protocol and a lot you can use the Django-channels package for, including communication with your IoT devices in real-time. This tutorial only gives a glimpse of the websocket protocol and what the `django-channels` package has to offer.
 
@@ -1169,7 +1168,6 @@ Link to the code on Github and the DiscussIt app
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
 - [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
