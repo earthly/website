@@ -244,3 +244,12 @@ blockquote p:first-of-type::before {
 blockquote p:first-of-type::after {
   content:unset !important;
 }
+
+// Bazel article
+.blockquote p:first-of-type {
+  margin-top: 0px !important;
+}
+
+.blockquote p:last-of-type {
+  margin-bottom: 0px !important;
+}

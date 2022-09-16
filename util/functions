@@ -232,6 +232,13 @@ imgur(){ # Download images from imgur from post and update post
    imgur-fix-links
 }
 
+tailwind(){ # Run tailwind to generate css
+    (
+        cd blog || exit
+        npx tailwindcss -i ./assets/css/index.css -o ./assets/css/base.css --minify
+    )
+}
+
 div-wide(){ # Wrap every image in post in wide markdown
     awk '/^!\[/ { 
         printf "<div class=\"wide\">\n"
@@ -287,3 +294,4 @@ stop-blog(){ # kill what is on port 4002
 stop-website(){ # kill what is on port 4001
     kill "$(lsof -i :4001 | tail -n 1 | awk '{ print $2 }')" 
 }
+
