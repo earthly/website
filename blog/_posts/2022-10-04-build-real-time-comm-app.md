@@ -100,7 +100,7 @@ A consumer can also communicate with other consumers and multiple consumers can 
 
 8. Add the `chat` app and the Django channel package to the list of the installed apps in the `settings.py` file:
 
-    ~~~{.bash caption=">_"}
+    ~~~{.python caption="settings.py"}
     INSTALLED_APPS = [
         #installed package
         'channels'
@@ -129,13 +129,13 @@ Since you have added channels to the list of `INSTALLED_APP`, it will take over 
 
 ![asgirunserveromage]({{site.images}}{{page.slug}}/Ylevmwg.jpeg)\
 
-</wide>
+</div>
 
 Once you confirm this is working as expected, you can stop the server for now..
 
 Right now, your project structure should look like this:
 
-~~~{.bash caption=">_"}
+~~~{.bash caption="directory tree"}
 ├── chat
 │   ├── admin.py
 │   ├── apps.py
@@ -170,7 +170,7 @@ To create the models, open the `models.py` file and add the following model clas
 
 #### Group Model
 
-~~~{.bash caption=">_"}
+~~~{.python caption="models.py"}
 #chat/models.py
 
 from django.db import models
@@ -219,7 +219,7 @@ Then we just need a couple of helper functions and the ability to add and remove
 
 The message model is pretty self explanatory.
 
-~~~{.bash caption=">_"}
+~~~{.python caption="models.py"}
 class Message(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     timestamp = models.DateTimeField(auto_now_add=True)
@@ -236,7 +236,7 @@ class Message(models.Model):
 
 We will keep track of users coming and going through the use of Events.
 
-~~~{.bash caption=">_"}
+~~~{.python caption="models.py"}
 
 class Event(models.Model):
     '''
@@ -273,7 +273,7 @@ $ python manage.py migrate
 
 Include the three models in the `admin.py` file so that you can have access to them on the admin page:
 
-~~~{.bash caption=">_"}
+~~~{.python caption="admin.py"}
 #chat/admin.py
 
 from .models import *
@@ -288,11 +288,11 @@ admin.site.register(Group)
 
 Now that we have the models set up, let's create the Django view where all the groups in the application are listed as well as a view for a particular group chat.
 
->Even though the protocol you will be working with the most is the websocket protocol, you still need the Django views and the URL that handles HTTP because the user will arrive at the page via HTTP and the HTML page template will be loaded by the view function associated with the URL. Also, the initial websocket handshake will be performed via HTTP.
+Even though the protocol you will be working with the most is the websocket protocol, you still need the Django views and the URL that handles HTTP because the user will arrive at the page via HTTP and the HTML page template will be loaded by the view function associated with the URL. Also, the initial websocket handshake will be performed via HTTP.
 
 Open the `chat/views.py` and add the following code to create the views:
 
-~~~{.bash caption=">_"}
+~~~{.python caption="views.py"}
 #chat/views.py
 from django.http import HttpResponseForbidden
 from django.shortcuts import render, get_object_or_404
@@ -356,7 +356,7 @@ Now let's create an HTML template for these views:
 
 Create the following file structure in the chat applications:
 
-~~~{.bash caption=">_"}
+~~~{.bash caption="directory tree"}
 ├── templates
 │   └── chat
 │       ├── base.html
@@ -376,15 +376,11 @@ Add the following HTML code to the `base.html`:
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
    {% raw %}
    <title>{%block title%}{%endblock title%}</title>
-   {% endraw %}
 </head>
 <body>
-    {% raw %}
     {%block content%}
     {% endblock content%}
-    {% endraw %}
 </body>
-    {% raw %}
     {%block script%}
     {%endblock script%}
     {% endraw %}
@@ -434,7 +430,7 @@ For the group chat, open the `groupchat.html` file and add the following code:
 ~~~{.bash caption=">_"}
 {% raw %} 
 <!-- chat/templates/chat/groupchat.html -->
- {% extends 'chat/base.html'%} 
+{% extends 'chat/base.html'%} 
 {% block title%} Chat Room{%endblock title%}
 {% block content%}
 <textarea id="chat-log" cols="100" rows="20"></textarea><br>
@@ -469,20 +465,20 @@ Add URL patterns to the views so you can see what the page looks like.
 
 Create a `urls.py` file in the chat application and add the following URL patterns:
 
-~~~{.bash caption=">_"}
+~~~{.python caption="urls.py"}
 #chat/urls.py
 from django.urls import path, include
 from . import views
 
 urlpatterns = [
    path("", views.HomeView, name="home"),
-    path("groups/<uuid:uuid>/", views.GroupChatView, name="group")
+   path("groups/<uuid:uuid>/", views.GroupChatView, name="group")
 ]
 ~~~
 
 Include the URL patterns of the `chat/urls.py` in the main project's `urls.py` file:
 
-~~~{.bash caption=">_"}
+~~~{.pyhton caption="urls.py"}
 #DiscussIt/urls.py
 from django.urls import path, include
 
@@ -494,7 +490,7 @@ urlpatterns=[
 
 Create a superuser to log in via the admin page and create dummy data for the Group, Event, and Message model:
 
-~~~{.bash caption=">_"}
+~~~{.python caption="urls.py"}
 $ python manage.py create superuser
 ~~~
 
@@ -564,7 +560,7 @@ In the `chat` folder, create a `consumers.py` file for the consumers that will h
 
 Add the following code to the file:
 
-~~~{.bash caption=">_"}
+~~~{.pthone caption="consumers.py"}
 #chat/consumers.py
 from channels.generic.websocket import WebsocketConsumer
 
@@ -595,7 +591,7 @@ The next step is to create a websocket route that will call the `JoinAndLeave` c
 
 Create a `routing.py` file in the `chat` application and add the following code:
 
-~~~{.bash caption=">_"}
+~~~{.python caption="routing.py"}
 #chat/routing.py
 from django.urls import re_path, path
 
@@ -616,7 +612,7 @@ The Channels package provides a `ProtocolTypeRouter` class that can do that for 
 
 Modify the `asgi.py` file as shown below:
 
-~~~{.bash caption=">_"}
+~~~{.python caption="asgi.py"}
 #DiscussIt/asgi.py
 from channels.routing import ProtocolTypeRouter, URLRouter
 import os
@@ -644,7 +640,7 @@ You specified the URL routers for the websocket protocol using the `URLRouter` c
 
 Open the `settings.py` file and add the following configuration:
 
-~~~{.bash caption=">_"}
+~~~{.python caption="settings.py"}
 ASGI_APPLICATION = 'DiscussIt.asgi.application'
 ~~~
 
@@ -753,7 +749,7 @@ Also, for security purposes, you will add the `AllowedHostsOriginValidator` that
 
 Modify the `asgi.py` file as shown below:
 
-~~~{.bash caption=">_"}
+~~~{.python caption="asgi.py"}
 from channels.security.websocket import AllowedHostsOriginValidator
 
 application = ProtocolTypeRouter({
@@ -815,7 +811,7 @@ In the payload, you specified the `type` as the action that you parsed from the 
 
 Add the following to your JoinAndLeave class:
 
-~~~{.bash caption=">_"}
+~~~{.python caption="consumers.py"}
 #chat/consumers.py
 from django.contrib.auth.models import User
 from .models import Event, Message, Group
@@ -947,7 +943,7 @@ But for development purposes, you can use the in-memory channel layer that the D
 
 In `settings.py` , add the following:
 
-~~~{.bash caption=">_"}
+~~~{.python caption="settings.py"}
 #DiscussIt/settings.py
 
 CHANNEL_LAYERS = {
@@ -959,7 +955,7 @@ CHANNEL_LAYERS = {
 
 Add the following to the `chats/consumer.py`
 
-~~~{.bash caption=">_"}
+~~~{.python caption="consumers.py"}
 #chat/consumers.py
 from channels.generic.websocket import WebsocketConsumer, AsyncWebsocketConsumer
 from channels.layers import channel_layers
@@ -1007,7 +1003,7 @@ The next step is to create a websocket URL pattern for this consumer.
 
 Add the following to the `chat/routing.py` :
 
-~~~{.bash caption=">_"}
+~~~{.python caption="routing.py"}
 websocket_urlpatterns = [
         ...
     path('groups/<uuid:uuid>/',consumers.GroupConsumer.as_asgi())
@@ -1105,7 +1101,7 @@ You can add a `post save signal` to send this event message to the frontend to n
 
 Create a `signals.py` file in the `chat` app and add the following code:
 
-~~~{.bash caption=">_"}
+~~~{.python caption="signal.py"}
 from django.dispatch import receiver
 from .models import Event
 from django.db.models.signals import post_save
