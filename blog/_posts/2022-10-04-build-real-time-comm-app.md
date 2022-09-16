@@ -202,7 +202,8 @@ class Group(models.Model):
         self.save()
 
     def remove_user_from_group(self, user:User):
-        '''An helper function to remove users from group members when they leave the group and create an event for the timestamp the user left the group'''
+        '''An helper function to remove users from group members when they \
+        leave the group and create an event for the timestamp the user left the group'''
         self.members.remove(user)
         self.event_set.create(type="Left", user=user)
         self.save()
@@ -246,7 +247,8 @@ class Event(models.Model):
         ("Left", "left")
         ]
     type = models.CharField(choices=CHOICES, max_length=10)
-    description= models.CharField(help_text="A description of the event that occurred",     max_length=50, editable=False)
+    description= models.CharField(help_text="A description of the event that occurred",\
+    max_length=50, editable=False)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     timestamp = models.DateTimeField(auto_now_add=True)
     group = models.ForeignKey(Group ,on_delete=models.CASCADE)
@@ -405,12 +407,15 @@ Open the `home.html` and add the following HTML code snippets:
         <div id="{{group.uuid}}">
             <li><a>{{group.name}}</a></li>
             {% if request.user in group.members.all%}
-                <button id="leave-{{group.uuid}}" class="group_option" value="leave_group {{group.uuid}}">Leave</button>
+                <button id="leave-{{group.uuid}}" class="group_option" value="leave_group {{group.uuid}}">\
+                Leave</button>
             {%else%}
-                <button id="join-{{group.uuid}}" class="group_option" value="join_group {{group.uuid}}">Join</button>
+                <button id="join-{{group.uuid}}" class="group_option" value="join_group {{group.uuid}}">\
+                Join</button>
             {%endif%}
             {% if request.user in group.members.all%}
-            <button id="open-{{group.uuid}}" class="group_option" value="open_group {{group.uuid}}">Open</button>
+            <button id="open-{{group.uuid}}" class="group_option" value="open_group {{group.uuid}}">\
+            Open</button>
             {%endif%}
         </div>
         {%endfor%}
@@ -497,7 +502,7 @@ The dummy groups I created:
 
 <div class="wide">
 
-![groups]({{site.images}}{{page.slug}}/VYUSxYJ.jpeg)
+![groups]({{site.images}}{{page.slug}}/VYUSxYJ.jpeg)\
 
 </div>
 
@@ -505,7 +510,7 @@ The dummy user joins events:
 
 <div class="wide">
 
-![join]({{site.images}}{{page.slug}}/r3RrS9d.jpeg)
+![join]({{site.images}}{{page.slug}}/r3RrS9d.jpeg)\
 
 </div>
 
@@ -513,7 +518,7 @@ The dummy group messages:
 
 <div class="wide">
 
-![message]({{site.images}}{{page.slug}}/hJzNVBj.jpeg)
+![message]({{site.images}}{{page.slug}}/hJzNVBj.jpeg)\
 
 </div>
 
@@ -521,7 +526,7 @@ Now that you have the dummy data, you can navigate to the home page and see what
 
 <div class="wide">
 
-![homepage]({{site.images}}{{page.slug}}/rnIAfoQ.jpeg)
+![homepage]({{site.images}}{{page.slug}}/rnIAfoQ.jpeg)\
 
 </div>
 
@@ -685,7 +690,7 @@ You should get this message in the development server and console:
 
 <div class="wide">
 
-![serverclientmessage1]({{site.images}}{{page.slug}}/KHKCrP3.jpeg)
+![serverclientmessage1]({{site.images}}{{page.slug}}/KHKCrP3.jpeg)\
 
 </div>
 
@@ -709,7 +714,7 @@ Reload the homepage and you should get the following in the console and the web 
 
 <div class="wide">
 
-![serverclientmessage2]({{site.images}}{{page.slug}}/JYg7FFv.jpeg)
+![serverclientmessage2]({{site.images}}{{page.slug}}/JYg7FFv.jpeg)\
 
 </div>
 
@@ -903,8 +908,10 @@ function join_group_handler(uuid){
     /*Remove the Join Button and add the Leave and Open button*/
     var leave_button = document.getElementById( join-${uuid} )
     leave_button.remove()
-    var button =  <button id="leave-${uuid}" class="group_option" value="leave_group $    {uuid}">Leave</button> 
-    var open_button =  <button id="open-${uuid}" class="group_option"     value="open_group ${uuid}">Open</button> 
+    var button =  <button id="leave-${uuid}" class="group_option" value="leave_group $    {uuid}">\
+    Leave</button> 
+    var open_button =  <button id="open-${uuid}" class="group_option"     value="open_group ${uuid}">\
+    Open</button> 
     
     var dev_body = document.getElementById(uuid)
     dev_body.innerHTML += button
@@ -1206,7 +1213,3 @@ In this tutorial, you were able to build a real-time communication application u
 Link to the code on Github and the DiscussIt app
 
 {% include cta/cta1.html %}
-
-## Outside Article Checklist
-
-- [ ] Optional: Find ways to break up content with quotes or images
