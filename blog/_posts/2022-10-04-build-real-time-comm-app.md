@@ -1210,5 +1210,3 @@ Link to the code on Github and the DiscussIt app
 ## Outside Article Checklist
 
 - [ ] Optional: Find ways to break up content with quotes or images
-
-
