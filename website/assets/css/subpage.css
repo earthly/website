@@ -34,8 +34,8 @@ h3 {
   margin-block-end: 0;
 }
 
-#tab_os{
-    padding: 20px 20px;
+#tab_os {
+  padding: 20px 20px;
 }
 
 ul {
@@ -136,8 +136,45 @@ p > a:visited {
 .Home-product-Earthfile {
   max-width: 900px;
   border-radius: 9px;
+  background-color: #111214;
+  overflow: hidden;
 }
 
 .Home-product-Earthfile-code {
   padding: 20px 0 20px 20px;
+}
+
+.Home-product-Earthfile-header {
+  position: relative;
+  font-family: inherit;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  background-color: #eef1f1d5;
+  text-align: center;
+}
+
+.Home-product-Earthfile-code {
+  display: block;
+  font-family: "Fira Code", monospace;
+  line-height: 1.3;
+  line-height: 1.4;
+  color: #eef1f1d5;
+}
+
+.Home-product-Earthfile-header-chromeDecoration {
+  position: absolute;
+  left: 8px;
+  top: 8px;
+}
+
+.Home-product-Earthfile-code {
+  padding: 20px 0 20px 20px;
+}
+
+.Home-product-Earthfile-code {
+  display: block;
+  font-family: "Fira Code", monospace;
+  line-height: 1.3;
+  line-height: 1.4;
+  color: #eef1f1d5;
 }
