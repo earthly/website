@@ -14,7 +14,7 @@ internal-links:
  - EC2
 ---
 
-When you first create an AWS account a lot of resources get created for you by default. For starters, you'll get a VPC in each region. In each of those you'll get subnets, a Route Table, an Internet Gateway, a CIDR range of IPs, and a Security Group. But what actually is all this stuff? If you're not someone who is super familiar with networking, it can be a little overwhelming. 
+When you first create an AWS account a lot of resources get created for you by default. For starters, you'll get a VPC in each region. In each of those you'll get subnets, a Route Table, an Internet Gateway, a CIDR range of IPs, and a Security Group. But what actually is all this stuff? If you're not someone who is super familiar with networking, it can be a little overwhelming.
 
 In this tutorial we'll create all the resources that AWS gives you in a default VPC from scratch. Along the way we'll take a look at each one and see what role it plays in your AWS network.
 
@@ -179,8 +179,7 @@ Your instance will take a minute or two to launch. You can check the status by r
 
 </div>
 
-
-Once the instance is up, you can go to a summary page of the instance and see that it was assigned a private ip address that falls within the range we set up for our subnet.
+Once the instance is up, you can go to a summary page of the instance and see that it was assigned a private IP address that falls within the range we set up for our subnet.
 
 <div class="wide">
 
@@ -254,11 +253,11 @@ And that should be it. We should have everything in place.
 
 ## A Quick Review
 
-- We created a VPC which is a virtual network inside of AWS. We also created a CIDR range, which is a range of ip addresses we can use to identify devices and services within our network and allow them to communicate between each other.
+- We created a VPC which is a virtual network inside of AWS. We also created a CIDR range, which is a range of IP addresses we can use to identify devices and services within our network and allow them to communicate between each other.
 - Next, we created a subnet, which is just a subset of the IPs we set up in our VPC
 - Within that subnet we deployed an EC2 instance, which in our case was a machine running Linux.
-- Next we needed to create a "bridge" from the outside internet that connects to our EC2 instance. For that we created an Interent Gateway, which attached to our VPC and was associated with our new subnet.
-- We created a route table and told it to accept traffic from the Interent Gateway and pass it along to our subnet and on to our EC2 instance. 
+- Next we needed to create a "bridge" from the outside internet that connects to our EC2 instance. For that we created an Internet Gateway, which attached to our VPC and was associated with our new subnet.
+- We created a route table and told it to accept traffic from the Internet Gateway and pass it along to our subnet and on to our EC2 instance.
 
 ## Connecting to Our New EC2 Instance
 
@@ -297,7 +296,7 @@ Then try again.
 
 ### Nginx
 
-Connecting via SSH proves our instance is reachable from the internet. Hurray! Just to take it one step further, let's confirm that HTTP is working by installing nginx and connecting via a web browser. 
+Connecting via SSH proves our instance is reachable from the internet. Hurray! Just to take it one step further, let's confirm that HTTP is working by installing nginx and connecting via a web browser.
 
 Nginx is a lightweight webserver that is super easy to install and set up. While you are still connected to the EC2 instance run:
 
@@ -306,7 +305,7 @@ sudo apt update
 sudo apt install nginx
 ~~~
 
-That's it, no more setup is needed. Now, copy and paste the same IP address into your browser, and you should see the nginx welcome page returned.
+That's it, no more setup is needed. Now you can paste the same IP address into your browser, and you should see the nginx welcome page returned.
 
 <div class="wide">
 
