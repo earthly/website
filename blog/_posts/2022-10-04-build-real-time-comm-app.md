@@ -1196,9 +1196,7 @@ The event message is broadcasted to all `GroupConsumer` instance in the same gro
 The broadcast message is received from by the `event_message` method on the `GroupConsumer`.
 The message is sent to the client and the chat log is updated.
 
-## Deploying
 
- To deploy the application, the `channels-package` has an extensive guide on how to deploy a channel project. You can access that here
 
 ## Conclusion
 
