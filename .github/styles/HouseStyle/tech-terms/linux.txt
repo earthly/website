@@ -67,3 +67,6 @@ subtree
 refactorings
 recommender
 composable
+lima
+colima
+lts
