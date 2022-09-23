@@ -11,7 +11,7 @@ internal-links:
  - Python
 ---
 
-In this tutorial, we'll learn how to build a real-time communication application with The [Django Channels](https://channels.readthedocs.io/en/stable/) package and The [WebSocket Protocol](https://datatracker.ietf.org/doc/html/rfc6455). The application we will create will be a platform where users can join multiple pre-created groups and share ideas with members of the group.
+In this tutorial, we'll learn how to build a real-time communication application with The [Django Channels](https://channels.readthedocs.io/en/stable/) package and The [WebSocket Protocol](https://datatracker.ietf.org/doc/html/rfc6455). The application we will create will be a platform where users can join multiple pre-created groups and share ideas with members of the group. [The entire project](https://github.com/DrAnonymousNet/DiscussIt) is available on my Github.
 
 ## Objectives
 
@@ -1189,7 +1189,7 @@ The text message is sent to each client via the `send` method in the `text_messa
 The message is received in the client by the `onmessage` event handler.
 The chat log is then updated with the message
 
-When a user join or leave a group:
+When a user joins or leaves a group:
 The post save signal is dispatched after the group chat instance is saved when the user is added or removed from the group chat
 The `broadcast_event_to_groups` signal receiver receives the event and create an event message.
 The event message is broadcasted to all `GroupConsumer` instance in the same group.
@@ -1206,6 +1206,6 @@ There are still a lot of things you can do with the WebSocket protocol and a lot
 
 In this tutorial, you were able to build a real-time communication application using the WebSocket protocol and Django Channels .
 
-Link to the code on Github and the DiscussIt app
+[Here is the code for the project](https://github.com/DrAnonymousNet/DiscussIt)
 
 {% include cta/cta1.html %}
