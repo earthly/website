@@ -1196,8 +1196,6 @@ The event message is broadcasted to all `GroupConsumer` instance in the same gro
 The broadcast message is received from by the `event_message` method on the `GroupConsumer`.
 The message is sent to the client and the chat log is updated.
 
-
-
 ## Conclusion
 
 There are still a lot of things you can do with the WebSocket protocol and a lot you can use the Django-channels package for, including communication with your IoT devices in real-time. This tutorial only gives a glimpse of the websocket protocol and what the `django-channels` package has to offer.
