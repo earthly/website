@@ -1204,6 +1204,6 @@ There are still a lot of things you can do with the WebSocket protocol and a lot
 
 In this tutorial, you were able to build a real-time communication application using the WebSocket protocol and Django Channels .
 
-[Here is the code for the project](https://github.com/DrAnonymousNet/DiscussIt)
+[Code for the project](https://github.com/DrAnonymousNet/DiscussIt)
 
 {% include cta/cta1.html %}
