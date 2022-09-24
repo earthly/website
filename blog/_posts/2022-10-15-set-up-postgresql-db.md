@@ -692,6 +692,8 @@ There is still a lot a long way to go forward from here. Using the same `seconda
 
 ° [Django official documentation on managing multiple databases](https://docs.djangoproject.com/en/4.1/topics/db/multi-db/#using-routers)
 
+{% include cta/cta1.html %}
+
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
@@ -699,4 +701,4 @@ There is still a lot a long way to go forward from here. Using the same `seconda
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
-- [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
+
