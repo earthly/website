@@ -6,7 +6,9 @@ toc: true
 author: Mustapha Ahmad Ayodeji
 
 internal-links:
- - just an example
+ - Postgresql
+ - Django
+ - Database
 ---
 
 ## Introduction
@@ -700,5 +702,4 @@ There is still a lot a long way to go forward from here. Using the same `seconda
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Add keywords for internal links to front-matter
 
