@@ -284,3 +284,7 @@ Mercy Bassey:
     name    : "Mercy Bassey"
     bio     : "Mercy Bassey is a JavaScript programmer with a passion for technical writing. Her area of expertise is Full-stack web development and DevOps/IT."
     avatar  : "/assets/images/authors/mercy.png"
+Mustapha Ahmad Ayodeji:
+    name    : "Mustapha Ahmad Ayodeji"
+    bio     : "Ahmad is a Software developer and a Technical writer with so much interest for Django related frameworks."
+    avatar  : "/assets/images/authors/ahmad.jpg"
