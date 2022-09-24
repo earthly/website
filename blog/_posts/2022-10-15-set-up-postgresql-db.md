@@ -52,13 +52,13 @@ With this configuration, the `Secondary DB` can continue to serve read operation
 
 ![primary db goes down]({{site.images}}{{page.slug}}/jSHbQkU.png)
 
-This will make sure our application does not go down totally when the primary database goes down because the secondary database will still be available to serve read operations.
+This will make](/blog/using-cmake) sure our application does not go down totally when the primary database goes down because the secondary database will still be available to serve read operations.
 
 In more sophisticated configurations, one of the secondary databases can be promoted as a primary database to serve both read and write operations.
 
 ## Objectives
 
-In this tutorial, We will configure Database replication by setting up a Primary database and a Hot Standby database in Postgresql. These two instances of the database will be a container of Postgresql docker image.
+In this tutorial, We will configure Database replication by setting up a Primary database and a Hot Standby database in Postgresql. These two instances of the database will be a [container](/blog/docker-slim) of Postgresql [docker](/blog/rails-with-docker) image.
 
 We will connect these two databases to a Django application. Afterward, we will create a Django database router to route queries to these databases.
 
@@ -82,7 +82,7 @@ Use the command below to switch to the root user:
 $ sudo -i
 ~~~
 
-Since we will need two instances of Postgresql on our machine, we will make use of docker.
+Since we will need two instances of Postgresql on our machine, we will make use of [docker](/blog/rails-with-docker).
 
 If you have Postgresql installed on your machine, start by stopping any instance of Postgresql service running on it:
 
@@ -469,7 +469,7 @@ DATABASES = {
    }
 ~~~
 
-The first database configuration which is the `default` connects to the `primary_db` container as user `postgres` and it runs on the localhost at port 5432. The default database name created by docker is `postgres`.
+The first database configuration which is the `default` connects to the `primary_db` [container](/blog/docker-slim) as user `postgres` and it runs on the localhost at port 5432. The default database name created by docker is `postgres`.
 
 The `replica` configuration connects to the `secondary_db` container which runs on localhost on port 5433.
 
@@ -699,5 +699,4 @@ There is still a lot a long way to go forward from here. Using the same `seconda
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
 - [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
