@@ -23,14 +23,14 @@ When this database goes offline, the whole web architecture goes down as there i
 
 The following images illustrate the scenario :
 
-![web layer data layer]({{site.images}}{{page.slug}}/PxQxuPr.png)
+![web layer data layer]({{site.images}}{{page.slug}}/PxQxuPr.png)\
 
 The above image shows the web layer and the data layer in the architecture.
 When the database server is online, it will serve both read and write operations and the whole architecture remain functional.
 
 Once the single database server goes down as illustrated below, The whole architecture goes down as there are no other means to read or write data from the presentation layer:
 
-![single db]({{site.images}}{{page.slug}}/6TF16Ir.png)
+![single db]({{site.images}}{{page.slug}}/6TF16Ir.png)\
 
 One of the approaches that could mitigate such a flaw in this architecture is Database Replication.
 
@@ -42,7 +42,7 @@ The data is replicated from the `Primary` database to the `Standby` or `Secondar
 
 The image below shows the configuration of a single primary and Secondary Database:
 
-![single replication setup]({{site.images}}{{page.slug}}/L1hJHfV.png)
+![single replication setup]({{site.images}}{{page.slug}}/L1hJHfV.png)\
 
 When data is written to the `Primary DB`, it is replicated to the `Secondary DB` so that all data available in the primary database are also available for reading in the `Secondary DB`. The `Secondary DB` can accept connections from the web server and serve database read operations alongside the `Primary DB` while the write operations are exclusively carried out on the `Primary DB`.
 
@@ -52,7 +52,7 @@ Such a standby database server that can accept connections and serves read-only 
 
 With this configuration, the `Secondary DB` can continue to serve read operations from the data that has been replicated to it even when the `Primary DB` goes down as shown below:
 
-![primary db goes down]({{site.images}}{{page.slug}}/jSHbQkU.png)
+![primary db goes down]({{site.images}}{{page.slug}}/jSHbQkU.png)\
 
 This will make](/blog/using-cmake) sure our application does not go down totally when the primary database goes down because the secondary database will still be available to serve read operations.
 
@@ -101,7 +101,9 @@ $ docker pull postgres-12-alpine
 Create the primary database instance from the Postgresql image:
 
 ~~~{.bash caption=">_"}
-$ docker run --name primary_db  -p 5432:5432 -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=postgres -v /tmp/lib/postgres:/var/lib/postgresql/data -d postgres:12-alpine
+$ docker run --name primary_db  -p 5432:5432 -e \
+POSTGRES_USER=postgres -e POSTGRES_PASSWORD=postgres -v \
+/tmp/lib/postgres:/var/lib/postgresql/data -d postgres:12-alpine
 ~~~
 
 The command above:
@@ -120,10 +122,11 @@ $ psql -h 127.0.0.1 -U postgres -p 5432
 
 use `postgres` as the password
 
-Create a user with a username of `replica` and password `replica`  with `Replication` privilege:
+Create a user with a username of `replica` and password `replica` with `Replication` privilege:
 
 ~~~{.bash caption=">_"}
-postgres=# CREATE USER replica REPLICATION LOGIN ENCRYPTED PASSWORD 'replica';
+postgres= CREATE USER replica REPLICATION LOGIN\
+ENCRYPTED PASSWORD 'replica';
 ~~~
 
 You should get the output shown below:
@@ -147,7 +150,8 @@ Add the following to the end of the `pg_hba.conf` file in the `/tmp/lib/postgres
 You can add it by opening the file or using the `echo` command as shown below:
 
 ~~~{.bash caption=">_"}
-echo 'host replication replica  0.0.0.0/0 trust' >> /tmp/lib/postgres/pg_hba.conf
+echo 'host replication replica  0.0.0.0/0 trust' \
+>> /tmp/lib/postgres/pg_hba.conf
 ~~~
 
 This allows a replication connection to this primary database from a standby database that authenticates with the `replica` user that we created earlier.
@@ -158,7 +162,11 @@ You can open the file to see the content of the file:
 nano /tmp/lib/postgres/pg_hba.conf
 ~~~
 
-![pg_hba file]({{site.images}}{{page.slug}}/kOoWwMI.jpeg)
+<div class="wide">
+
+![pg_hba file]({{site.images}}{{page.slug}}/kOoWwMI.jpeg)\
+
+</div>
 
 <div class="notice--warning notice--big">
  CAUTION: Configuring the system for local "trust" authentication
@@ -205,13 +213,19 @@ $ docker restart primary_db
 Make a full binary copy of the Postgresql directory:
 
 ~~~{.bash caption=">_"}
-pg_basebackup -h 127.0.0.1 -p 5432 -D /tmp/postgressecondary -U replica -P -v
+pg_basebackup -h 127.0.0.1 -p 5432 -D \
+/tmp/postgressecondary -U replica -P -v
 ~~~
 
 The -P argument shows the progress and -v for verbose.
 
 You should get the output below:
-![pg base backup]({{site.images}}{{page.slug}}/CPBZfnW.jpeg)
+
+<div class="wide">
+
+![pg base backup]({{site.images}}{{page.slug}}/CPBZfnW.jpeg)\
+
+</div>
 
 We will build the standby database on this backup file.
 
@@ -251,7 +265,10 @@ The presence of the `standby.signal` file ( even though empty ) will enable the 
 Create the `secondary database` container by running another instance of the PostgreSQL container:
 
 ~~~{.bash caption=">_"}
-docker run --name secondary_db -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=postgres  -v /tmp/postgressecondary:/var/lib/postgresql/data --link primary_db:db -p 5433:5432 -it postgres:12-alpine
+docker run --name secondary_db -e POSTGRES_USER=postgres \
+-e POSTGRES_PASSWORD=postgres  -v \
+/tmp/postgressecondary:/var/lib/postgresql/data \
+--link primary_db:db -p 5433:5432 -it postgres:12-alpine
 ~~~
 
 The command above:
@@ -264,7 +281,12 @@ The command above:
 The database's name will default to `postgres` like the `primary_db` container.
 
 You should get the following output:
-![secondary db docker output]({{site.images}}{{page.slug}}/H6kHnHb.jpeg)
+
+<div class="wide">
+
+![secondary db docker output]({{site.images}}{{page.slug}}/H6kHnHb.jpeg)\
+
+</div>
 
 As shown in the image above, The database is ready to accept read connections.
 
@@ -279,7 +301,12 @@ postgres=# SELECT * FROM pg_stat_replication;
 ~~~
 
 You should get the output below:
-![pg stat output]({{site.images}}{{page.slug}}/p1xDgsX.jpeg)
+
+<div class="wide">
+
+![pg stat output]({{site.images}}{{page.slug}}/p1xDgsX.jpeg)\
+
+</div>
 
 For a detailed description of this output, you can check [pg_stat_replication](https://www.cybertec-postgresql.com/en/monitoring-replication-pg_stat_replication/).
 
@@ -316,7 +343,8 @@ $ psql -h 127.0.0.1 -U postgres -p 5432
 ~~~
 
 ~~~{.bash caption=">_"}
-SELECT * FROM pg_create_physical_replication_slot('standby_replication_slot');
+SELECT * FROM pg_create_physical_replication_slot \
+('standby_replication_slot');
 ~~~
 
 You can restart the `primary_db` and start the `secondary_db` container:
@@ -333,7 +361,12 @@ $ docker ps
 ~~~
 
 You should get an output as shown below:
-![primary secondary up]({{site.images}}{{page.slug}}/4OM6JGU.jpeg)
+
+<div class="wide">
+
+![primary secondary up]({{site.images}}{{page.slug}}/4OM6JGU.jpeg)\
+
+</div>
 
 In case any of them is not up, you can check the container logs to troubleshoot:
 
@@ -357,7 +390,11 @@ SELECT * FROM pg_replication_slots;
 
 You should see the output below:
 
-![successful replications lot output]({{site.images}}{{page.slug}}/mZ2uxRl.jpeg)
+<div class="wide">
+
+![successful replications lot output]({{site.images}}{{page.slug}}/mZ2uxRl.jpeg)\
+
+</div>
 
 ## Confirming Replication
 
@@ -372,7 +409,8 @@ psql -h 127.0.0.1 -U postgres -p 5432
 Create a database table called `test` with `id` and `value` fields :
 
 ~~~{.bash caption=">_"}
-CREATE TABLE test ("id" int4 NOT NULL, "value" varchar(255), PRIMARY KEY ("id"));
+CREATE TABLE test ("id" int4 NOT NULL, "value" varchar(255), \
+PRIMARY KEY ("id"));
 ~~~
 
 You should get an output of `CREATE TABLE`
@@ -393,7 +431,11 @@ SELECT * FROM test;
 
 You should have an output as shown below:
 
-![output of test]({{site.images}}{{page.slug}}/ucQZFQt.jpeg)
+<div class="wide">
+
+![output of test]({{site.images}}{{page.slug}}/ucQZFQt.jpeg)\
+
+</div>
 
 You can now retrieve this same data on the `secondary_db` because it would have replicated to it.
 
@@ -412,12 +454,22 @@ SELECT * FROM test;
 ~~~
 
 You should get an output as shown below:
-![test out put on secondary]({{site.images}}{{page.slug}}/IGOrgI7.jpeg)
+
+<div class="wide">
+
+![test out put on secondary]({{site.images}}{{page.slug}}/IGOrgI7.jpeg)\
+
+</div>
 
 This shows that the replication configuration is successful.
 
 If you try a write operation on this database you will get an error as shown below:
-![write error]({{site.images}}{{page.slug}}/BbVy8UF.png)
+
+<div class="wide">
+
+![write error]({{site.images}}{{page.slug}}/BbVy8UF.png)\
+
+</div>
 
 ## Connect With Django
 
@@ -584,7 +636,14 @@ $python manage.py migrate
 ~~~
 
 You should have the output below:
-![migrate]({{site.images}}{{page.slug}}/MQ6glfb.jpeg)
+
+<div class="wide">
+
+![migrate]({{site.images}}{{page.slug}}/MQ6glfb.jpeg)\
+
+
+</div>
+
 Even though the migration will be performed on the `default` database, the database table that will be created on the `default` database will replicate to the `replica` database.
 
 You can check if the tables are created for the `primary_db` and the  `secondary_db` in the Postgresql terminal as shown below:
@@ -602,7 +661,12 @@ postgres=# \dt
 ~~~
 
 You should get an output as shown below:
-![all table secondary]({{site.images}}{{page.slug}}/E48O77r.jpeg)
+
+<div class="wide">
+
+![all table secondary]({{site.images}}{{page.slug}}/E48O77r.jpeg)\
+
+</div>
 
 Open the postgresql terminal for the `primary_db` running on port 5432 as a postgres user:
 
@@ -651,7 +715,11 @@ Perform a READ operation like retrieving all the model instances:
 
 Either of the two databases should be returned. You can try this multiple times until both databases have been returned at least once as shown in the image below:
 
-![write read shell output]({{site.images}}{{page.slug}}/U9ftl4z.jpeg)
+<div class="wide">
+
+![write read shell output]({{site.images}}{{page.slug}}/U9ftl4z.jpeg)\
+
+</div>
 
 If you try a `WRITE` operation by explicitly specifying the `replica`, you should get an error as shown below:
 
@@ -660,7 +728,11 @@ If you try a `WRITE` operation by explicitly specifying the `replica`, you shoul
 name="test",count=1,is_available=True,average=2.0)
 ~~~
 
-![force write on replica]({{site.images}}{{page.slug}}/j3XAB5D.jpeg)
+<div class="wide">
+
+![force write on replica]({{site.images}}{{page.slug}}/j3XAB5D.jpeg)\
+
+</div>
 
 Stop the primary database container and run a Read query on the database:
 
@@ -678,7 +750,11 @@ In the Shell console:
 
 You should get the output below anytime the router returns the`default` database:
 
-![primary down return replica]({{site.images}}{{page.slug}}/e7CL4Un.jpeg)
+<div class="wide">
+
+![primary down return replica]({{site.images}}{{page.slug}}/e7CL4Un.jpeg)\
+
+</div>
 
 As you would notice, when the `default` database was initially returned, we got a message that the primary was down and the replica was returned. This will ensure that the `replica` database can continue to serve our application till the `default` database is back online.
 
@@ -700,6 +776,5 @@ There is still a lot a long way to go forward from here. Using the same `seconda
 
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
+
 
