@@ -774,7 +774,6 @@ There is still a lot a long way to go forward from here. Using the same `seconda
 
 ## Outside Article Checklist
 
-- [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
 
 
