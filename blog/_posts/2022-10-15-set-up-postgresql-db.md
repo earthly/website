@@ -21,7 +21,7 @@ The data tier consists of a database and other application services that aid the
 
 When this database goes offline, the whole web architecture goes down as there is no component to manage data.
 
-The following images illustrate the scenario :
+The following images illustrate the scenario:
 
 ![web layer data layer]({{site.images}}{{page.slug}}/PxQxuPr.png)\
 
@@ -194,8 +194,7 @@ This parameter allows writing enough data to support replication, including runn
 In the `REPLICATION` section:
 
 ~~~{.bash caption=">_"}
-max_wal_senders =  3 #How many secondaries can connect
- 
+max_wal_senders =  3 #How many secondaries can connect 
 ~~~
 
 The `max_wal_senders` configuration specifies the maximum number of parallel connections that the standby servers can send. A value of 0 means no replication is allowed.
@@ -483,7 +482,7 @@ I am just going to create a simple database model with the common data types as 
 
 Add the model below in the `models.py` file:
 
-~~~{.bash caption=">_"}
+~~~{.python caption="models.py"}
 from django.db import models
 
 # Create your models here.
@@ -502,7 +501,7 @@ Now that we have a model, let us connect the two databases to the application:
 
 Open the `settings.py` and add the following configuration:
 
-~~~{.bash caption=">_"}
+~~~{.python caption="settings.py"}
 DATABASES = {
        'default': {
            'ENGINE': 'django.db.backends.postgresql',
@@ -547,7 +546,7 @@ Create a python file In your project configuration directory:
 
 I will name my file `dbrouter.py`
 
-~~~{.bash caption=">_"}
+~~~{.python caption="dbrouter.py"}
 ├── asgi.py
 ├── dbrouter.py
 ├── __init__.py
@@ -558,7 +557,7 @@ I will name my file `dbrouter.py`
 
 Add the router class in the `dbrouter.py` file:
 
-~~~{.bash caption=">_"}
+~~~{.python caption="dbrouter.py"}
 from random import choice
 from django.db.utils import OperationalError
 from django.db import connections
@@ -617,7 +616,7 @@ The `DATABASE_ROUTERS` configuration specifies a list path to router class names
 
  Open the `setting.py` and add the following:
 
-~~~{.bash caption=">_"}
+~~~{.pyhton caption="setting.py"}
 DATABASE_ROUTERS=[
    "DJReplica.dbrouter.ReadWriteRouter"
 ]
@@ -771,9 +770,3 @@ There is still a lot a long way to go forward from here. Using the same `seconda
 ° [Django official documentation on managing multiple databases](https://docs.djangoproject.com/en/4.1/topics/db/multi-db/#using-routers)
 
 {% include cta/cta1.html %}
-
-## Outside Article Checklist
-
-- [ ] Optional: Find ways to break up content with quotes or images
-
-
