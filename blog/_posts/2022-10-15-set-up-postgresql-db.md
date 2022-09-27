@@ -640,7 +640,6 @@ You should have the output below:
 
 ![migrate]({{site.images}}{{page.slug}}/MQ6glfb.jpeg)\
 
-
 </div>
 
 Even though the migration will be performed on the `default` database, the database table that will be created on the `default` database will replicate to the `replica` database.
