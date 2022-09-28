@@ -32,11 +32,11 @@ To follow along all you'll need is an AWS account. I'll also assume a working kn
 
 Before we can get started, we need to understand a couple key concepts. First, that AWS is split up into [Regions and Availability Zones](https://aws.amazon.com/about-aws/global-infrastructure/?p=ngi&loc=1). Get used to hearing about this, it's like their favorite thing to talk about.
 
-Regions are large geographical areas. They have names like US East, US West, Asian Pacific East, Asian Pacific West. There's one in Canada and one in South America and many more around the world. When you sign into your account, you can see the region in the upper right menu bar. If you click it, you'll see a list of all the regions and be able to switch which region you want to access and set up services in.
+Regions are large geographical areas. They have names in AWS like US East, US West, Asian Pacific East, Asian Pacific West. There's one in Canada and one in South America and many more around the world. When you sign into your account, you can see the region you are currently working in at the upper right menu bar. If you click it, you'll see a list of all the regions and be able to switch which region you want to access and set up services in.
 
 Within those regions are the actually data centers where your AWS services run. There are multiple data centers within each region. These data centers (or sometimes a group of a few of them) are called Availability Zones.
 
-This is part of the power of using AWS because when you deploy something like, say, a Database, you can deploy it across multiple availability zones. This ensures that if something were to happen at one data center, your data would still be safe at the other one. It's also helpful if you have clients accessing your services from different parts of the country, or the world, because it allows you to deploy close to where your users are.
+This is part of the power of using AWS because when you deploy something like, say, a Database, you can deploy it across multiple availability zones. This ensures that if some sort of disaster were to happen at one data center, your data would still be safe at the other one. It's also helpful if you have clients accessing your services from different parts of the country, or the world, because it allows you to deploy close to where your users are.
 
 ## VPCs
 
@@ -46,8 +46,8 @@ This is part of the power of using AWS because when you deploy something like, s
 
 </div>
 
-Ok, so a Region is just a part of the world, and an availability zone is just sections of that region where the data centers are. That brings us to the [VPC](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html).
-A VPC is your Virtual Private Cloud. It's basically your own private network on AWS. VPCs exist within regions and span multiple Availability Zones. When you create an account, AWS sets up a VPC for you in every region across the world, which is very nice of them, but let's create our own anyway.
+Ok, so a Region is just a part of the world, and an Availability Zone is just sections of that region where the data centers are. That brings us to the [VPC](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html).
+A VPC is your Virtual Private Cloud. It's basically your own private network on AWS. VPCs exist within regions and span multiple Availability Zones. When you create an account, AWS sets up a VPC for you in every region across the world, which is very nice of them, but for our own learning, let's create our own.
 
 ### Creating A New VPC
 
@@ -75,7 +75,7 @@ Next, we'll need to define an IPv4 CIDR range. This is the range of IP addresses
 
 For now, we are going to use the same CIDR range that AWS would have given us if we'd used the default VPC: `172.31.0.0/16`. This uses a range called [RFC 1918](https://netbeez.net/blog/rfc1918/), which is not used on the internet, so there's no chance any of our internal network addresses will conflict with one's on the internet. The `/16` means we'll have 2^16 or 65,536 IP addresses to use on our VPC. More than enough.
 
-Creating CIDR ranges could be an article all on its own. If you want to truly understand CIDR ranges [this video](https://www.youtube.com/watch?v=v8aYhOxZuNg) and [this article](https://www.digitalocean.com/community/tutorials/understanding-ip-addresses-subnets-and-cidr-notation-for-networking) are great places to start.
+Understanding CIDR ranges is really important when setting up a network anywhere, not just on AWS and creating CIDR ranges could be an article all on its own. How they work and how to use them effectively requires a deeper understanding of IP addresses than we have time for here. If you want to truly understand CIDR ranges [this video](https://www.youtube.com/watch?v=v8aYhOxZuNg) and [this article](https://www.digitalocean.com/community/tutorials/understanding-ip-addresses-subnets-and-cidr-notation-for-networking) are great places to start.
 
 And here is a [chart](https://www.catalyst2.com/knowledgebase/networking/ipv4-cidr-table/) that can help you choose the right range for your network.
 
@@ -89,11 +89,11 @@ That's all we'll need to do for this section. Click `Create VPC` and we're done.
 
 ## Subnets
 
-Regions contain AZs which contain VPCs which contain **subnets**.
+Regions contain AZs which contain VPCs which contain: **subnets**.
 
-We can't deploy an EC2 instance directly into a VPC. We first need to divide the VPC into subnets. These are subsets of the IP CIDR range we set up earlier. Subnets allow us to group things in our network, which makes communication and security easier to deal with. The default VPC comes with two subnets. One has access to the internet, the other does not. This is pretty common. You may wan't your web app or API to be accessible from the internet, but have your database deployed in a subnet that is closed off from the internet.
+We can't deploy an EC2 instance, Amazon's virtual machine, directly into a VPC. We first need to divide the VPC into subnets. These are subsets of the IP CIDR range we set up earlier. Subnets allow us to group things in our network, which makes communication and security easier to deal with. The default VPC comes with two subnets. One has access to the internet, the other does not. This is pretty common. You may wan't your web app or API to be accessible from the internet, but have your database deployed in a subnet that is closed off from the internet.
 
-For now, we are just going to create a single subnet in our VPC.
+You can create as many subnets as you want in your VPC, as long as you have IP address to assign to them, but for now, we are just going to create a single subnet in our VPC.
 
 In the left hand menu, under the Virtual Private Cloud section, select `subnets`. This will bring you to a list of all the subnets that exist in your selected region. Again, ignore the default subnets that were created automatically.
 
