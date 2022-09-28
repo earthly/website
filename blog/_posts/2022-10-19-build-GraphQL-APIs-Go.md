@@ -31,7 +31,7 @@ This guide will help the reader learn more about GraphQL while creating a GraphQ
   - Testing Mutation method
 - Conclusion
 
-The purpose of an API is to communicate between the client and the server. There are different protocols and architectures that you can use to create API services and consume resources. This guide will help you learn how to implement a GraphQL API using Golang and consume data from a server. You will use the MySQL database server to perform different operations using the GraphQL API.
+The purpose of an API is to communicate between the client and the server. There are different protocols and architectures that you can use to create API services and consume resources. This guide will help you learn how to implement a GraphQL API using Golang and consume data from a server. You will use the [MySQL](/blog/docker-mysql) database server to perform different operations using the GraphQL API.
 
 ## Prerequisites
 
@@ -46,7 +46,7 @@ You can jump ahead and get the code used for this guide in this [GitHub reposito
 
 GraphQL is a query language for APIs used to communicate data between a client and a server. It's defined using schema to query data from a server or mutate data remotely. GraphQL provides strongly typed tooling for your server.
 
-Implementing a GraphQL API with Go benefits from the fact that both GraphQL and Go are typed languages. This ensures that your APIs are checked before compile time, making it very convenient for your Go code base to make the valid query, while GraphQL ensures results are correctly checked.
+Implementing a GraphQL API with Go benefits from the fact that both GraphQL and Go are typed languages. This ensures that your APIs are checked before compile time, making it very convenient for your Go code base to [make](/blog/makefiles-on-windows) the valid query, while GraphQL ensures results are correctly checked.
 
 Go allows you to use libraries to generate type-safe code for GraphQL APIs. Such tools include the [gqlgen](https://gqlgen.com/).
 
@@ -56,7 +56,7 @@ Gqlgen is a Go GraphQL library that allows you to build robust GraphQL servers w
 
 ## Generating Boilerplate Go GraphQL API Using Gqlgen
 
-Let's dive in and implement the API using gqlgen. First, initialize a Golang application inside the directory where you want the project to live:
+Let's dive in and implement the API using gqlgen. First, initialize a [Golang](/blog/top-3-resources-to-learn-golang-in-2021) application inside the directory where you want the project to live:
 
 ~~~{.bash caption=">_"}
 go mod init go-graphql-api
@@ -263,7 +263,7 @@ We'll use the MySQL database. Ensure [MySQL drivers](https://github.com/go-sql-d
 go get github.com/go-sql-driver/mysql
 ~~~
 
-At this point, ensure your MySQL server is up and running. Then follow these instructions to establish a database connection to your server:
+At this point, ensure your [MySQL](/blog/docker-mysql) server is up and running. Then follow these instructions to establish a database connection to your server:
 
 ## Connecting Database To Go
 
@@ -637,5 +637,4 @@ I hope you found this guide helpful. Happy Go coding!
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
 - [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
