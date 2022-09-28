@@ -73,17 +73,17 @@ First thing we need to do is name our VPC. Instead of picking something lame lik
 
 Next, we'll need to define an IPv4 CIDR range. This is the range of IP addresses that will be available to us **inside the network**. Remember, a VPC is just a network, and when we define a network, we need to define a range of IP addresses that devices on that network can use to identify themselves and talk to other devices on the network. (Note that these are all internal IPs, meaning they won't be accessible outside of the VPC. For that, we'll need to create something else which we will get to later.)
 
-For now, we are going to use the same CIDR range that AWS would have given us if we'd used the default VPC: `172.31.0.0/16`. This uses a range called [RFC 1918](https://netbeez.net/blog/rfc1918/), which is a not used on the internet, so there's no chance any of our internal network addresses will conflict with one's on the internet. The `/16` means we'll have 65,536 IP addresses to use on our VPC. More than enough.
+For now, we are going to use the same CIDR range that AWS would have given us if we'd used the default VPC: `172.31.0.0/16`. This uses a range called [RFC 1918](https://netbeez.net/blog/rfc1918/), which is not used on the internet, so there's no chance any of our internal network addresses will conflict with one's on the internet. The `/16` means we'll have 2^16 or 65,536 IP addresses to use on our VPC. More than enough.
 
-CIDR notation is very boring and complicated to explain. If you want to truly understand CIDR ranges [this video](https://www.youtube.com/watch?v=v8aYhOxZuNg) and [this article](https://www.digitalocean.com/community/tutorials/understanding-ip-addresses-subnets-and-cidr-notation-for-networking) are great places to start.
+Creating CIDR ranges could be an article all on its own. If you want to truly understand CIDR ranges [this video](https://www.youtube.com/watch?v=v8aYhOxZuNg) and [this article](https://www.digitalocean.com/community/tutorials/understanding-ip-addresses-subnets-and-cidr-notation-for-networking) are great places to start.
 
-And here is a [chart](https://www.catalyst2.com/knowledgebase/networking/ipv4-cidr-table/) that can help you choose the right range.
+And here is a [chart](https://www.catalyst2.com/knowledgebase/networking/ipv4-cidr-table/) that can help you choose the right range for your network.
 
 That's all we'll need to do for this section. Click `Create VPC` and we're done.
 
 <div class="wide">
 
-![Our New VPC]({{site.images}}{{page.slug}}/vpc-home.png)
+![Now we have 2 VPCs: The default and the one we just created]({{site.images}}{{page.slug}}/vpc-home.png)
 
 </div>
 
@@ -195,7 +195,7 @@ The Internet Gateway is what gives your VPC a tunnel to the internet. Without on
 
 <div class="wide">
 
-![Create an internet gateway to allow access to the internet]({{site.images}}{{page.slug}}gateway.png)
+![Create an internet gateway to allow access to the internet]({{site.images}}{{page.slug}}/gateway.png)
 
 </div>
 
