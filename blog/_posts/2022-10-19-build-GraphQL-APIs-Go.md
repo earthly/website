@@ -6,7 +6,10 @@ toc: true
 author: Rose Chege
 
 internal-links:
- - just an example
+ - GraphQL
+ - API
+ - Go
+ - MySQL
 ---
 
 GraphQL is a query language for APIs used to communicate data between a client and a server. This allows you to structure data-driven applications much more flexibly and efficiently than the REST or SOAP approach does. GraphQL provides a complete and understandable description of the data in your API. It gives clients the power to ask for exactly what they need and nothing more. This makes it easier to evolve APIs over time and enables powerful developer tools. It also gives developers more control over how they use data in their apps.
@@ -635,5 +638,4 @@ I hope you found this guide helpful. Happy Go coding!
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Add keywords for internal links to front-matter
 - [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
