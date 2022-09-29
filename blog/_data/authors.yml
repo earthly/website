@@ -284,3 +284,7 @@ Mercy Bassey:
     name    : "Mercy Bassey"
     bio     : "Mercy Bassey is a JavaScript programmer with a passion for technical writing. Her area of expertise is Full-stack web development and DevOps/IT."
     avatar  : "/assets/images/authors/mercy.png"
+Rose Chege:
+    name    : "Rose Chege"
+    bio     : "Rose is a lover of technology and an upright individual who is not afraid to get out of her comfort zone and try out new programming paradigms."
+    avatar  : "/assets/images/authors/rose.jpeg"

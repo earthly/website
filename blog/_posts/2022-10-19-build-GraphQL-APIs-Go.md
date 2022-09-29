@@ -3,7 +3,7 @@ title: "How to Build GraphQL APIs Using Go"
 categories:
   - Tutorials
 toc: true
-author: Adam
+author: Rose Chege
 
 internal-links:
  - just an example
@@ -631,7 +631,6 @@ I hope you found this guide helpful. Happy Go coding!
 
 ## Outside Article Checklist
 
-- [ ] Add in Author page
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
