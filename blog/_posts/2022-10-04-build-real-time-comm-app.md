@@ -366,7 +366,7 @@ Create the following file structure in the chat applications:
 
 Add the following HTML code to the `base.html`:
 
-~~~{.bash caption=">_"}
+~~~{.html caption="base.html"}
 <!-- chat/templates/chat/base.html -->
 <!DOCTYPE html>
 <html lang="en">
@@ -390,7 +390,7 @@ Add the following HTML code to the `base.html`:
 
 Open the `home.html` and add the following HTML code snippets:
 
-~~~{.bash caption=">_"}
+~~~{.html caption="home.html"}
 
 {% raw %}
 <!-- chat/templates/chat/home.html -->
@@ -427,7 +427,7 @@ The Leave and Open buttons are displayed if the current user is a member of the 
 
 For the group chat, open the `groupchat.html` file and add the following code:
 
-~~~{.bash caption=">_"}
+~~~{.html caption="groupchat.html"}
 {% raw %} 
 <!-- chat/templates/chat/groupchat.html -->
 {% extends 'chat/base.html'%} 
@@ -561,9 +561,7 @@ In the `chat` folder, create a `consumers.py` file for the consumers that will h
 Add the following code to the file:
 
 ~~~{.pthone caption="consumers.py"}
-#chat/consumers.py
 from channels.generic.websocket import WebsocketConsumer
-
 
 class JoinAndLeave(WebsocketConsumer):
     def connect(self):
@@ -592,7 +590,6 @@ The next step is to create a websocket route that will call the `JoinAndLeave` c
 Create a `routing.py` file in the `chat` application and add the following code:
 
 ~~~{.python caption="routing.py"}
-#chat/routing.py
 from django.urls import re_path, path
 
 from . import consumers
@@ -613,7 +610,6 @@ The Channels package provides a `ProtocolTypeRouter` class that can do that for 
 Modify the `asgi.py` file as shown below:
 
 ~~~{.python caption="asgi.py"}
-#DiscussIt/asgi.py
 from channels.routing import ProtocolTypeRouter, URLRouter
 import os
 from django.core.asgi import get_asgi_application
@@ -650,7 +646,7 @@ The next step is to create the client websocket API that will communicate with t
 
 Open the `templates/chat/home.html` file and add the following:
 
-~~~{.bash caption=">_"}
+~~~{.html caption="home.html"}
 {% raw %} 
 {% block script %}
 
@@ -700,7 +696,7 @@ The issue here was that the server needs to accept the opening handshake from th
 
 To fix this, add `self.accept()` in the `connect` method of the consumer to accept the handshake:
 
-~~~{.bash caption=">_"}
+~~~{.python caption=""}
 def connect(self):
           ...
     self.accept()
@@ -773,7 +769,7 @@ When a user clicks on the `Join` button the user is added to the group and a joi
 
 Add the following JS script to the `chat/home.html` page:
 
-~~~{.bash caption=">_"}
+~~~{.html caption="home.html"}
 function add_event_to_all_buttons(){
     /*Add an event listener that sends the event message to all buttons*/
     const keys = document.querySelectorAll('.group_option');
@@ -857,7 +853,7 @@ The `AuthMiddlewareStack` you added earlier will populate the `scope` with the c
 
 This line in the `connect` method of the `JoinAndLeave` consumer retrieves the current user:
 
-~~~{.bash caption=">_"}
+~~~{.python caption="consumers.py"}
 self.user = self.scope["user"]
 ~~~
 
@@ -873,7 +869,7 @@ The data will be received in the frontends `onmessage` event handler method.
 
 Modify the `websocket.onmessage` in the `chat/home.html` file as shown below:
 
-~~~{.bash caption=">_"}
+~~~{.javascript caption=""}
 websocket.onmessage = function(event){
 /*Called when the websocket server sends a message to the client websocket*/
     message = JSON.parse(event.data)
@@ -993,7 +989,7 @@ The `group_add` method adds a consumer instance to the group.
 
 The `group_send` method broadcasts messages to the consumers in the same group.
 
-~~~{.bash caption=">_"}
+~~~{.python caption=""}
 await self.channel_layer.group_add(self.group_uuid,self.channel_name)
 ~~~
 
@@ -1012,7 +1008,7 @@ websocket_urlpatterns = [
 
 The next step is to add the client websocket API to the `chat/groupchat.html` page:
 
-~~~{.bash caption=">_"}
+~~~{.html caption="groupchat.html"}
 {% raw %} 
 {%block script%}
 
@@ -1058,7 +1054,7 @@ The next step is to handle this message in the consumer on the backend.
 
 Modify the `GroupConsumer` as shown below:
 
-~~~{.bash caption=">_"}
+~~~{.python caption=""}
 class GroupConsumer(AsyncWebsocketConsumer):
         ....
     async def receive(self, text_data=None, bytes_data=None):
@@ -1129,7 +1125,7 @@ The broadcast will be received in the `event_message` method of the consumer sin
 
 Add the `event_message` method in the `GroupConsumer` as shown below:
 
-~~~{.bash caption=">_"}
+~~~{.javascript caption="groupchat.html"}
 async def event_message(self, event):
     message = event.get("message")
     user = event.get("user", None)
