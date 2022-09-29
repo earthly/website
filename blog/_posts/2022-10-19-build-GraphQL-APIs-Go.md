@@ -632,10 +632,12 @@ Go is a speedy steady-growing language for building your backend applications. I
 
 I hope you found this guide helpful. Happy Go coding!
 
+{% include cta/cta1.html %}
+
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
+
