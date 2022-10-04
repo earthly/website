@@ -61,19 +61,19 @@ Gqlgen is a Go GraphQL library that allows you to build robust GraphQL servers w
 
 Let's dive in and implement the API using gqlgen. First, initialize a [Golang](/blog/top-3-resources-to-learn-golang-in-2021) application inside the directory where you want the project to live:
 
-~~~{.bash caption=">_"}
+~~~{.go caption=">_"}
 go mod init go-graphql-api
 ~~~
 
 Install the gqlgen library to your project dependencies:
 
-~~~{.bash caption=">_"}
+~~~{.go caption=">_"}
 go get github.com/99designs/gqlgen
 ~~~
 
 At the root directory of your application, create a `tools.go` file and add an import for gqlgen:
 
-~~~{.bash caption=">_"}
+~~~{.go caption="tools.go"}
 package tools
  
 import (
@@ -83,19 +83,19 @@ _ "github.com/99designs/gqlgen"
 
 This file allows you to add the installed missing dependencies the project requires. Run the following command to add your direct dependencies:
 
-~~~{.bash caption=">_"}
+~~~{.go caption=">_"}
 go mod tidy
 ~~~
 
 Initialize gqlgen to build your boilerplate Go GraphQL API:
 
-~~~{.bash caption=">_"}
+~~~{.go caption=">_"}
 go run github.com/99designs/gqlgen init
 ~~~
 
 This will create a basic GraphQL API with the following file structure:
 
-~~~{.bash caption=">_"}
+~~~{.go caption=">_"}
 | gqlgen.yml
 | server.go
 |   
@@ -123,7 +123,7 @@ This will create a basic GraphQL API with the following file structure:
 
 gqlgen lets you create a schema that fits your application and then generates the resolvers and structs using the created schema. To create a post API, for example, you need to build a schema for posts based on the [Schema Definition Language](https://graphql.org/learn/schema/). Navigate to the `graph/schema.graphqls` file and replace the existing schema with the following post schema:
 
-~~~{.bash caption=">_"}
+~~~{.bash caption="schema.graphqls"}
 type Post {
   id: Int!
   Title: String!
@@ -170,17 +170,18 @@ These are the parameters that gqlgen will look for to create the structs and the
 
 Using the above schema, gqlgen will auto-generate the structs and resolves. This will be executed using a single command to generate these code blocks. Run the following command:
 
-~~~{.bash caption=">_"}
+~~~{.go caption=">_"}
 go run github.com/99designs/gqlgen generate
 ~~~
 
 If you head over to the `graph/schema.resolvers.go`, your post resolvers will be created based on your schema.
 
-~~~{.bash caption=">_"}
+~~~{.go caption="schema.resolvers.go"}
 package graph
  
-// This file will be automatically regenerated based on the schema, any resolver implementations
-// will be copied through when generating and any unknown code will be moved to the end.
+// This file will be automatically regenerated based on the schema,\
+any resolver implementationswill be copied through when generating \
+and any unknown code will be moved to the end.
  
 import (
  "context"
@@ -190,30 +191,36 @@ import (
 )
  
 // CreatePost is the resolver for the CreatePost field.
-func (r *mutationResolver) CreatePost(ctx context.Context, input model.NewPost) (*model.Post, error) {
- panic(fmt.Errorf("not implemented: CreatePost - CreatePost"))
+func (r *mutationResolver) CreatePost(ctx context.Context, \
+input model.NewPost) (*model.Post, error) {
+panic(fmt.Errorf("not implemented: CreatePost - CreatePost"))
 }
  
 // UpdatePost is the resolver for the UpdatePost field.
-func (r *mutationResolver) UpdatePost(ctx context.Context, postID int, input *model.NewPost) (*model.Post, error) {
- panic(fmt.Errorf("not implemented: UpdatePost - UpdatePost"))
+func (r *mutationResolver) UpdatePost(ctx context.Context, postID int, \
+input *model.NewPost) (*model.Post, error) { \
+panic(fmt.Errorf("not implemented: UpdatePost - UpdatePost"))
 }
  
 // GetAllPosts is the resolver for the GetAllPosts field.
-func (r *queryResolver) GetAllPosts(ctx context.Context) ([]*model.Post, error) {
+func (r *queryResolver) GetAllPosts(ctx context.Context) \
+([]*model.Post, error) {
  panic(fmt.Errorf("not implemented: GetAllPosts - GetAllPosts"))
 }
  
 // GetOnePost is the resolver for the GetOnePost field.
-func (r *queryResolver) GetOnePost(ctx context.Context, id int) (*model.Post, error) {
+func (r *queryResolver) GetOnePost(ctx context.Context, id int)\
+ (*model.Post, error) {
  panic(fmt.Errorf("not implemented: GetOnePost - GetOnePost"))
 }
  
 // Mutation returns generated.MutationResolver implementation.
-func (r *Resolver) Mutation() generated.MutationResolver { return &mutationResolver{r} }
+func (r *Resolver) Mutation() generated.MutationResolver \
+{ return &mutationResolver{r} }
  
 // Query returns generated.QueryResolver implementation.
-func (r *Resolver) Query() generated.QueryResolver { return &queryResolver{r} }
+func (r *Resolver) Query() generated.QueryResolver \
+{ return &queryResolver{r} }
  
 type mutationResolver struct{ *Resolver }
 type queryResolver struct{ *Resolver }
@@ -221,7 +228,7 @@ type queryResolver struct{ *Resolver }
 
 The `graph/model/models_gen.go` file will have the structs for your posts.
 
-~~~{.bash caption=">_"}
+~~~{.go caption="models_gen.go"}
 // Code generated by github.com/99designs/gqlgen, DO NOT EDIT.
  
 package model
@@ -256,13 +263,13 @@ To correctly implement this API, we need to use a database to interact directly 
 
 To install it, run:
 
-~~~{.bash caption=">_"}
+~~~{.go caption=">_"}
 go get github.com/jinzhu/gorm   
 ~~~
 
 We'll use the MySQL database. Ensure [MySQL drivers](https://github.com/go-sql-driver/mysql) are installed in your application:
 
-~~~{.bash caption=">_"}
+~~~{.go caption=">_"}
 go get github.com/go-sql-driver/mysql
 ~~~
 
@@ -272,7 +279,7 @@ At this point, ensure your [MySQL](/blog/docker-mysql) server is up and running.
 
 To start interactions with the database, you need to establish a connection to it using Go. First, create a `dbmodel` directory and add a `db_model.go` file. Then create a Model of Posts using Gorm.
 
-~~~{.bash caption=">_"}
+~~~{.go caption="db_model.go"}
 package dbmodel
  
  
@@ -293,7 +300,7 @@ Create a `database` directory and add a `mysql.go` file. Then set your connectio
 
 Add the module package name and import the dependencies
 
-~~~{.bash caption=">_"}
+~~~{.go caption="mysql.go"}
 package database
  
 import (
@@ -308,20 +315,21 @@ You can still run the `go mod tidy` command to ensure any missing dependencies a
 
 Create the following variables:
 
-~~~{.bash caption=">_"}
+~~~{.js caption=">_"}
 // a variable to store database connection
 var DBInstance *gorm.DB
 // Var for error handling
 var err error
 // the db connection string
-var CONNECTION_STRING string = "db_username:your_user_password@tcp(localhost:3306)/?charset=utf8&parseTime=True&loc=Local"
+var CONNECTION_STRING string = \
+"db_username:your_user_password@tcp(localhost:3306)/?charset=utf8&parseTime=True&loc=Local"
 ~~~
 
 Your `CONNECTION_STRING` should reflect the credentials of your MySQL server, such as your user and the MySQL user password.
 
 Establish the connection to your database:
 
-~~~{.bash caption=">_"}
+~~~{.js caption=">_"}
 // connecting to the db
 func ConnectDB() {
  // pass the db connection string
@@ -345,7 +353,7 @@ The `CONNECTION_STRING` opens a connection to the MySQL server. The result of yo
 
 Create a database:
 
-~~~{.bash caption=">_"}
+~~~{.js caption=">_"}
 func CreateDB() {
   // Create a database
  DBInstance.Exec("CREATE DATABASE IF NOT EXISTS Blog_Posts")
@@ -358,7 +366,7 @@ Instead of manually creating a database, use the Gorm ORM to handle this. It wil
 
 Migrate Post Model to a database table:
 
-~~~{.bash caption=">_"}
+~~~{.js caption=">_"}
 func MigrateDB() {
   // migrate and sync the model to create a db table
  DBInstance.AutoMigrate(&dbmodel.Post{})
@@ -370,7 +378,7 @@ The Post models the structure of the database table. This migration will ensure 
 
 This database connection needs to be accessed by the resolvers. The created resolver doesn't have the objects to get this connection. For the Resolvers to access the stored database connection, head over to the `graph/resolver.go`. Add the connection to the resolver's struct:
 
-~~~{.bash caption=">_"}
+~~~{.go caption="resolver.go"}
 import (
  "github.com/jinzhu/gorm"
 )
@@ -384,7 +392,7 @@ Finally, you need to execute the database connection on our server. The connecti
 
 Navigate to the `server.go` file and import the database package:
 
-~~~{.bash caption=">_"}
+~~~{.go caption="server.go"}
 import(
   "go-graphql-api/database"
 )
@@ -404,7 +412,8 @@ database.MigrateDB()
 Save the established database connection in the Resolver struct of your `srv` variable generated by gqlgen:
 
 ~~~{.bash caption=">_"}
-srv := handler.NewDefaultServer(generated.NewExecutableSchema(generated.Config{Resolvers: &graph.Resolver{
+srv := handler.NewDefaultServer(generated.NewExecutableSchema\
+(generated.Config{Resolvers: &graph.Resolver{
   Database: database.DBInstance,
 }}))
 ~~~
@@ -413,13 +422,13 @@ The database is now set to execute a connection and carry out the expected datab
 
 First, run the application to ensure the set database works as expected. To run the server, use [Air](https://github.com/cosmtrek/air) so that you can live reload the server when you make new changes. This way, focus on your code. Once you run the server once, Air will execute your new changes and reload the app for you. To install Air run:
 
-~~~{.bash caption=">_"}
+~~~{.go caption=">_"}
 go install github.com/cosmtrek/air@latest
 ~~~
 
 Then initialize it using:
 
-~~~{.bash caption=">_"}
+~~~{.go caption=">_"}
 air init
 ~~~
 
@@ -427,7 +436,7 @@ Note: You may be required to delete the `tools.go` file created earlier. You can
 
 Now that Air is set, at the root directory of your application, run:
 
-~~~{.bash caption=">_"}
+~~~{.go caption=">_"}
 air
 ~~~
 
@@ -454,9 +463,10 @@ First, add time to your imports. Some fields require time, and the time paramete
 
 To create a post, modify the `CreatePost` method as follows:
 
-~~~{.bash caption=">_"}
+~~~{.js caption=">_"}
 // CreatePost is the resolver for the CreatePost field.
-func (r *mutationResolver) CreatePost(ctx context.Context, input model.NewPost) (*model.Post, error) {
+func (r *mutationResolver) CreatePost(ctx context.Context, \
+input model.NewPost) (*model.Post, error) {
  Addpost := model.Post{
   Title: input.Title,
   Content: input.Content,
@@ -484,14 +494,17 @@ The GraphQL playground is ready, and you see all the GraphQL root types for each
 
 On your GraphQL playground, execute the following mutation:
 
-~~~{.bash caption=">_"}
+~~~{.js caption=">_"}
 mutation createPost {
   CreatePost(
     input: {
       Title: "How to Build GraphQL API using Go and MySQL",
-      Content: "We will create a Build GraphQL API using the MySQL database server to perform the different operations using the GraphQL API.",
+      Content: "We will create a Build GraphQL API using \
+      the MySQL database server to perform the different operations \
+      using the GraphQL API.",
       Author: "Rose Chege",
-      Hero: "https://cdn.pixabay.com/photo/2016/12/28/09/36/web-1935737_1280.png",
+      Hero: \
+      "https://cdn.pixabay.com/photo/2016/12/28/09/36/web-1935737_1280.png",
     })
   {
     id
@@ -510,16 +523,18 @@ You can confirm this addition on your MySQL database to see if a new post got ad
 
 Modify the `UpdatePost()` method to add the update mutation resolver:
 
-~~~{.bash caption=">_"}
+~~~{.js caption=">_"}
 // UpdatePost is the resolver for the UpdatePost field.
-func (r *mutationResolver) UpdatePost(ctx context.Context, postID int, input *model.NewPost) (*model.Post, error) {
+func (r *mutationResolver) UpdatePost(ctx context.Context, \
+postID int, input *model.NewPost) (*model.Post, error) {
  Updatepost := model.Post{
   Title: input.Title,
   Content: input.Content,
   UpdatedAt: time.Now().Format("20-08-2022"),
  }
  
- if err := r.Database.Model(&model.Post{}).Where("id=?", postID).Updates(&Updatepost).Error; err != nil {
+ if err := r.Database.Model(&model.Post{}).Where("id=?", postID)\
+ .Updates(&Updatepost).Error; err != nil {
   fmt.Println(err)
   return nil, err
  }
@@ -533,7 +548,7 @@ First, add the fields to execute on the update mutation as described in the `Upd
 
 Updating mutates your saved data. Therefore, a mutation of new data is sent to your database to update a post. To edit an existing post, use the following schema on your GraphQL playground:
 
-~~~{.bash caption=">_"}
+~~~{.js caption=">_"}
 mutation UpdatePost {
   UpdatePost(PostId:10 input:{
  
@@ -557,9 +572,10 @@ Go ahead and check if the changes were implemented to the selected post.
 
 Add the following modifications to the `GetAllPosts` method in `graph/schema.resolvers.go` to add a resolver that fetches all posts.
 
-~~~{.bash caption=">_"}
+~~~{.js caption=">_"}
 // GetAllPosts is the resolver for the GetAllPosts field.
-func (r *queryResolver) GetAllPosts(ctx context.Context) ([]*model.Post, error) {
+func (r *queryResolver) GetAllPosts(ctx context.Context) \
+([]*model.Post, error) {
  posts := []*model.Post{}
  
  GetPosts := r.Database.Model(&posts).Find(&posts)
@@ -594,9 +610,10 @@ query GetAllPosts{
 
 Modify the `GetOnePost` method to execute the query resolver for getting a single post.
 
-~~~{.bash caption=">_"}
+~~~{.js caption=">_"}
 // GetOnePost is the resolver for the GetOnePost field.
-func (r *queryResolver) GetOnePost(ctx context.Context, id int) (*model.Post, error) {
+func (r *queryResolver) GetOnePost(ctx context.Context, id int)\
+ (*model.Post, error) {
  post := model.Post{}
  
  if err := r.Database.Find(&post, id).Error; err != nil {
@@ -612,7 +629,7 @@ Just like `GetAllPosts`, use the `Find()` method to find records that match the 
 
 To get a single post, pass the post id to your query as follows:
 
-~~~{.bash caption=">_"}
+~~~{.js caption=">_"}
 query GetOnePost{
   GetOnePost(id:11) {
     id
@@ -633,11 +650,3 @@ Go is a speedy steady-growing language for building your backend applications. I
 I hope you found this guide helpful. Happy Go coding!
 
 {% include cta/cta1.html %}
-
-## Outside Article Checklist
-
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
-
