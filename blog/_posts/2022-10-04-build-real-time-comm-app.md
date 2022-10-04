@@ -769,7 +769,7 @@ When a user clicks on the `Join` button the user is added to the group and a joi
 
 Add the following JS script to the `chat/home.html` page:
 
-~~~{.html caption="home.html"}
+~~~{.javascript caption="home.html"}
 function add_event_to_all_buttons(){
     /*Add an event listener that sends the event message to all buttons*/
     const keys = document.querySelectorAll('.group_option');
