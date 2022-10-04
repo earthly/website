@@ -41,7 +41,7 @@ Unlike regular operating system threads, Go's runtime manages Goroutines indepen
 
 First, let's write a couple functions without using a Goroutine.
 
-~~~{.bash caption=">_"}
+~~~{.go caption=">_"}
 func starter() {
     fmt.Println("This is the starter on call")
 }
@@ -58,7 +58,7 @@ func main(){
 
 The `starter` and `follow` functions print out strings in the order they are called in the `main` function.
 
-~~~{.bash caption=">_"}
+~~~{.go caption="Output"}
 This is the starter on call
 This is the follower on call
 ~~~
@@ -67,7 +67,7 @@ This works just as we expected. The code in `main()` executed sequentially, the 
 
 Now let's add a Goroutine, and see how it changes the behavior. Creating a goroutine is easy, you just prepend the function call with the `go` keyword.
 
-~~~{.bash caption=">_"}
+~~~{.go caption=">_"}
 func main() {
     go starter()
     follow()
@@ -76,7 +76,7 @@ func main() {
 
 In the main function, the `starter` function has the `go` keyword prepended to create a Goroutine. Run this and you'll get the following output.
 
-~~~{.bash caption=">_"}
+~~~{.go caption=">_"}
 This is the follower on call
 ~~~
 
@@ -86,7 +86,7 @@ So, what is happening in this function call is that the `starter` function gets 
 
 We can remedy this by having the program wait a couple of seconds to give the `starter` goroutine time to finish. If you're following along, be sure to import the `time` package.
 
-~~~{.bash caption=">_"}
+~~~{.go caption=">_"}
 func main() {
     go starter()
     follow()
@@ -96,7 +96,7 @@ func main() {
 
 Run this and we should get both print statements.
 
-~~~{.bash caption=">_"}
+~~~{.go caption="Output"}
 This is the follower on call
 This is the starter on call
 ~~~
@@ -109,7 +109,7 @@ When you create a Goroutine, the execution time is unknown, and you'll need your
 
 WaitGroups are one way to ensure that a goroutine is completed before the program exits. WaitGroups are part of the `sync` package in Go's standard library, so you'll have to import the `sync` package.
 
-~~~{.bash caption=">_"}
+~~~{.go caption=">_"}
 import (
     "Sync"
      "fmt"
@@ -118,7 +118,7 @@ import (
 
 To use wait groups, the function has to implement the `WaitGroup` type.
 
-~~~{.bash caption=">_"}
+~~~{.go caption=">_"}
 func starter(wg *sync.WaitGroup) {
     fmt.Println("This is the starter on call")
     defer wg.Done()
@@ -131,7 +131,7 @@ func follow() {
 
 The starter function implements the WaitGroup. On calling the function, when the `starter` function is done, the `Done` method will notify the `WaitGroup`, and the program can exit the process.
 
-~~~{.bash caption=">_"}
+~~~{.go caption=">_"}
 func main() {
     var wg sync.WaitGroup
     wg.Add(1)
@@ -143,7 +143,7 @@ func main() {
 
 In the `main` function where the `starter` function will be called, you will have to create a `WaitGroup` variable. Using the `Add` function of the `WaitGroup`, you can add a counter for the Goroutine; when the Goroutine runs, the counter decrements. The output is shown below:
 
-~~~{.bash caption=">_"}
+~~~{.go caption="Output"}
 This is the follower on call
 This is the starter on call
 ~~~
@@ -152,10 +152,12 @@ The `Wait` method ensures that all Goroutines in the WaitGroup run before the `m
 
 ## Communicating Between Goroutines Using Channels
 
+![Communicating]({{site.images}}{{page.slug}}/communicating.png)\
+
 Your concurrent program may require communication between goroutines. Go provides functionality for bi-directional communication between goroutines in Channels.
 You can create a channel using the built-in `make` function. To create a channel, you'll have to pass in the `chan` keyword and the data type you want use to communicate over the channel.
 
-~~~{.bash caption=">_"}
+~~~{.go caption=">_"}
 channels := make(chan string)
 ~~~
 
@@ -163,20 +165,21 @@ To send a value through a channel, you'll have to use the channel operator `<-` 
 
 Here's an example of passing data from a goroutine to a function using a channel.
 
-~~~{.bash caption=">_"}
+~~~{.go caption=">_"}
 func starter(ch chan string)  {
     fmt.Println("This is the starter on call")
     ch <- "Hello,"
 }
 
 func follow(starter string) {
-    fmt.Println(starter, "From the starter function, This is the follower on call")
+    fmt.Println(starter, "From the starter function, \
+    This is the follower on call")
 }
 ~~~
 
 The `starter` function takes in a string and sends the string to the `ch` channel after printing the string in the `Println` method. The `follow` function takes in a string and prints the string.
 
-~~~{.bash caption=">_"}
+~~~{.go caption=">_"}
 func main() {
     channels := make(chan string)     // unbuffered channel
     defer close(channels)
@@ -188,7 +191,7 @@ func main() {
 
 In the main function, the `channels` variable is an empty channel, and the `defer` statement closes the channel once the communication is over. The `starter` goroutine takes in the channel, and the `receiver` variable receives the string from the channel passed into the `follow` function as the string argument it accepts. The `follow` function can run successfully as intended.
 
-~~~{.bash caption=">_"}
+~~~{.go caption=">_"}
 This is the starter on call
 From the starter function, This is the follower on call
 ~~~
@@ -199,13 +202,13 @@ Channels are not buffered on default, and sending and receiving are blocking ope
 
 Go provides functionality for channel buffering. To create a buffered channel, you'll have to specify the buffer length as a second argument to the `make` function when declaring a channel.
 
-~~~{.bash caption=">_"}
+~~~{.go caption=">_"}
 channels := make(chan string, 2) // buffer capacity is 2
 ~~~
 
 When you specify a buffer capacity, you can send the number of messages into the channel at once until the buffer is filled without having deadlocks and the goroutine on the receiving end has received the data.
 
-~~~{.bash caption=">_"}
+~~~{.go caption=">_"}
 func starter(ch chan string)  {
     fmt.Println("This is the starter on call")
     ch <- "Hello,"
@@ -213,13 +216,14 @@ func starter(ch chan string)  {
 }
 
 func follow(starter, starter2 string) {
-    fmt.Println(starter, starter2, "From the starter function, This is the follower on call")
+    fmt.Println(starter, starter2, "From the starter function,\
+    This is the follower on call")
 }
 ~~~
 
 The `starter` function sends two strings through the `ch` channel. The strings will be received in the main function and passed as arguments in the `follow` function.
 
-~~~{.bash caption=">_"}
+~~~{.go caption=">_"}
 func main() {
     channels := make(chan string, 2)     // buffered channel
     defer close(channels)
@@ -238,7 +242,7 @@ In the `starter` function, the channel can either be a sender or a receiver beca
 
 You can pass in the channel operator (<-) to specify the channel direction. `<-chan` specifies that the channel can only send, and `chan<-` specifies that the channel can only receive.
 
-~~~{.bash caption=">_"}
+~~~{.go caption=">_"}
 func starter(entry chan<- string, message string) {
     entry <- message //receive only, so it receives the string
 }
@@ -253,7 +257,7 @@ The `starter` function takes in a receive-only channel and a string that'll be p
 
 The `follower` function takes in the `sender` argument (send-only) and a `receiver` argument (receive-only). In the body of the `follower` function, a message variable is declared, and the `sender` variable sends the channel to the `message` variable that sends the string channel to the `receiver` argument.
 
-~~~{.bash caption=">_"}
+~~~{.go caption=">_"}
 func main() {
     send := make(chan string, 1)
     receive := make(chan string, 1)
@@ -291,9 +295,3 @@ Go offers other tools and functions to help you write concurrent programs. You m
 Concurrent programming isn't safe heaven; [along with the pros come the cons](https://www.codingninjas.com/blog/2021/10/19/understanding-the-pros-and-cons-of-concurrency/). Concurrent programs may be tasking and challenging to write since they introduce more complexity, but if implemented correctly and used under the right conditions, they can help you improve speed and performance.
 
 {% include cta/cta1.html %}
-
-## Outside Article Checklist
-
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
