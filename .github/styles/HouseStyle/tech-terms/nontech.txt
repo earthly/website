@@ -21,3 +21,5 @@ preconfigured
 
 skillsets
 infinitum
+asgirunserveromage
+uuid
