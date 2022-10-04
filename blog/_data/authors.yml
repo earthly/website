@@ -272,6 +272,10 @@ Ayomide Akinola:
     name    : "Ayomide Akinola"
     bio     : "I am a software developer with over 5 years of experience developing web front-end, back-end, and DevOps services in a variety of domains and tech stacks. My strongest skills are in PHP (Laravel), VueJs, Docker, and Kubernetes. I have experience designing system architectures and solutions for rapid scaling."
     avatar  : "/assets/images/authors/ayomide.jpg"
+Mustapha Ahmad Ayodeji:
+    name    : "Mustapha Ahmad Ayodeji"
+    bio     : "Ahmad is a Software developer and a Technical writer with so much interest for Django related frameworks."
+    avatar  : "/assets/images/authors/ahmad.jpg"
 Vivek Kumar Singh:
     name    : "Vivek Kumar Singh"
     bio     : "Vivek is a Python/Django developer who spends his time building projects and learning new technologies. He also likes to breakdown complex topics in his blogs to help new developers."
@@ -288,3 +292,7 @@ Ifihanagbara Olusheye:
     name    : "Ifihanagbara Olusheye"
     bio     : "Ifihanagbara Olusheye is a software developer and technical writer who loves analyzing technology concepts she learns through writing."
     avatar  : "/assets/images/authors/Ifihanagbara.jpg"
+Mustapha Ahmad Ayodeji:
+    name    : "Mustapha Ahmad Ayodeji"
+    bio     : "Ahmad is a Software developer and a Technical writer with so much interest for Django related frameworks."
+    avatar  : "/assets/images/authors/ahmad.jpg"

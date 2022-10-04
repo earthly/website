@@ -21,3 +21,5 @@ ignore:
   - HouseStyle/tech-terms/dockers.txt
   - HouseStyle/tech-terms/mongo.txt
   - HouseStyle/tech-terms/go.txt
+  - HouseStyle/tech-terms/db.txt
+
