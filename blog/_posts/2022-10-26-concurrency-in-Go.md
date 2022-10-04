@@ -23,7 +23,7 @@ Concurrency is the ability to run different program parts interchangeably, possi
 
 This is different from parallelism or parallel processing, which is the ability to run different parts of a program simultaneously on other CPU cores such that each core runs a process. [Alvin Alexander](https://alvinalexander.com/) illustrates the difference with an image of people waiting in line to use a vending machine.
 
-![Parallelism vs Concurrency](https://imgur.com/rplu01v)
+![Parallelism vs Concurrency]({{site.images}}{{page.slug}}/rplu01v)
 
 **Photo Credit:** [https://alvinalexander.com/photos/parallelism-vs-concurrency-programming/](https://alvinalexander.com/photos/parallelism-vs-concurrency-programming/)
 
@@ -288,6 +288,8 @@ Go offers other tools and functions to help you write concurrent programs. You m
 
 Concurrent programming isn't safe heaven; [along with the pros come the cons](https://www.codingninjas.com/blog/2021/10/19/understanding-the-pros-and-cons-of-concurrency/). Concurrent programs may be tasking and challenging to write since they introduce more complexity, but if implemented correctly and used under the right conditions, they can help you improve speed and performance.
 
+{% include cta/cta1.html %}
+
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
@@ -296,4 +298,4 @@ Concurrent programming isn't safe heaven; [along with the pros come the cons](ht
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
+
