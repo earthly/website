@@ -6,7 +6,9 @@ toc: true
 author: Ifihanagbara Olusheye
 
 internal-links:
- - just an example
+ - Concurrency
+ - Go
+ - Goroutines
 ---
 
 ## Introduction
@@ -296,4 +298,3 @@ Concurrent programming isn't safe heaven; [along with the pros come the cons](ht
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Add keywords for internal links to front-matter
