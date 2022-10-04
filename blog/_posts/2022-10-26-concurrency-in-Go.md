@@ -297,5 +297,3 @@ Concurrent programming isn't safe heaven; [along with the pros come the cons](ht
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
-
