@@ -25,7 +25,7 @@ Concurrency is the ability to run different program parts interchangeably, possi
 
 This is different from parallelism or parallel processing, which is the ability to run different parts of a program simultaneously on other CPU cores such that each core runs a process. [Alvin Alexander](https://alvinalexander.com/) illustrates the difference with an image of people waiting in line to use a vending machine.
 
-![Parallelism vs Concurrency]({{site.images}}{{page.slug}}/rplu01v)
+![Parallelism vs Concurrency]({{site.images}}{{page.slug}}/rplu01v.png)
 
 **Photo Credit:** [https://alvinalexander.com/photos/parallelism-vs-concurrency-programming/](https://alvinalexander.com/photos/parallelism-vs-concurrency-programming/)
 
@@ -294,7 +294,6 @@ Concurrent programming isn't safe heaven; [along with the pros come the cons](ht
 
 ## Outside Article Checklist
 
-- [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
