@@ -628,10 +628,8 @@ Open up a terminal and run the following commands:
 
 ~~~{.bash caption=">_"}
 $ python manage.py makemigrations
-~~~
 
-~~~{.bash caption=">_"}
-$python manage.py migrate
+$ python manage.py migrate
 ~~~
 
 You should have the output below:
