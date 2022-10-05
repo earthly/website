@@ -48,7 +48,15 @@ mailto
 se
 Doctordrayfocus
 Squanchers
+
+bazel
+runserver
+redis
+async
+
 myvueapp
 mercybassey
 hardlink
 bazel
+hba
+
