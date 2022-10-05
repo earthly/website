@@ -6,7 +6,8 @@ toc: true
 author: Bala Priya C
 
 internal-links:
- - just an example
+ - Python
+ - Subprocess
 ---
 
 Python ships with built-in modules such as [os](https://docs.python.org/3/library/os.html) and [sys](https://docs.python.org/3/library/sys.html) that provide some functionality to interact with the underlying operating system. However, it may sometimes be more convenient to run system programs from within a Python script. Python's subprocess module provides ready-to-use functionality to run external commands, capture and process outputs, redirect output to files and I/O streams, and much more!
@@ -31,11 +32,11 @@ To follow along with this tutorial, you should have [Python 3.7 or a later versi
 
 The `subprocess` module is built into the Python standard library, so you can import it into your working environment:
 
-~~~{.bash caption=">_"}
+~~~{.python caption="main.py"}
 import subprocess
 ~~~
 
-[Download the code and follow along](https://github.com/balapriyac/Python-Subprocesses/tree/main).
+[Download the code and follow along](https://github.com/balapriyac/Python-Subprocesses/tree/main)\
 
 ### How Does Subprocess Execution Occur?
 
@@ -48,7 +49,7 @@ When a subprocess is invoked, the following actions occur under the hood:
 - The child process executes the external command inside a secondary environment.
 - After the child process finishes executing, the control returns to the parent process.
 
-![parent-and-child-processes-python]({{site.images}}{{page.slug}}/Y1kRZww.png)
+![parent-and-child-processes-python]({{site.images}}{{page.slug}}/Y1kRZww.png)\
 
 ### The `CompletedProcess` Object
 
@@ -56,7 +57,7 @@ Calling the `subprocess.run()` function with an external command or program as t
 
 As our first subprocess, let's run the `ls` command that lists the contents of the working directory.
 
-~~~{.bash caption=">_"}
+~~~{.python caption="main.py"}
 process_1 = subprocess.run("ls")
 print(process_1)
 print(process_1.args)
@@ -64,7 +65,7 @@ print(process_1.returncode)
 print(process_1.stdout)
 ~~~
 
-~~~{.bash caption=">_"}
+~~~{.python caption="main.py"}
 # Output
 py_logging main.py  py_unit_testing  string_manipulation
 CompletedProcess(args='ls', returncode=0)
@@ -90,7 +91,7 @@ To run Bash commands with arguments, you can specify the name of the command fol
 
 We'll now run the `ls` command to list the contents of the `py_logging` directory.
 
-~~~{.bash caption=">_"}
+~~~{.python caption="main.py"}
 process_2 = subprocess.run(["ls","py_logging"])
 print(process_2)
 print(process_2.args)
@@ -98,7 +99,7 @@ print(process_2.returncode)
 print(process_2.stdout)
 ~~~
 
-~~~{.bash caption=">_"}
+~~~{.python caption="main.py"}
 # Output
 custom_logger.py  logger.py
 CompletedProcess(args=['ls', 'py_logging'], returncode=0)
@@ -110,14 +111,14 @@ None
 <div class="notice--info">
 You can also specify the command as a long string and call Python's `split()` method on it. By default, the `split()` method splits the string on all occurrences of whitespace and returns a list of strings. This list of strings can be used in the call to the `run()` function.
 
-~~~{.bash caption=">_"}
+~~~{.python caption="main.py"}
 command = ...
 command_list = command.split()
 ~~~
 
 To parse more complex commands—where whitespace is not the correct separator to split on—use `shlex.split()` that splits the command string using a shell-like syntax.
 
-~~~{.bash caption=">_"}
+~~~{.python caption="main.py"}
 import shlex
 command = ...
 shlex.split(command)
@@ -127,7 +128,7 @@ Let's take an example:
 
 Suppose you'd like to create a directory named 'Foo Bar'. The code cells below show how the command string is split when we use the `split()` method and `shlex.split()`.
 
-~~~{.bash caption=">_"}
+~~~{.python caption="main.py"}
 >>> command_str = "mkdir 'Foo Bar'"
 >>> command_str.split()
 ['mkdir', "'Foo", "Bar'"]
@@ -135,7 +136,7 @@ Suppose you'd like to create a directory named 'Foo Bar'. The code cells below s
 
 As seen, the `split()` method splits `command_str` on all whitespaces. When run as a subprocess, the above command will create two directories, `'Foo` and `Bar'`, which is not what we want!
 
-~~~{.bash caption=">_"}
+~~~{.python caption="main.py"}
 >>> import shlex
 >>> shlex.split(command_str)
 ['mkdir', 'Foo Bar']
@@ -146,14 +147,14 @@ Using `shlex.split()` returns the command list `['mkdir', 'Foo Bar']`. Running t
 
 When you set the `shell` parameter to `True`, you can pass in the command as a single string—without splitting it into a list of strings.
 
-~~~{.bash caption=">_"}
+~~~{.python caption="main.py"}
 process_3 = subprocess.run("ls py_logging",shell=True)
 print(process_3)
 print(process_3.args)
 print(process_3.stdout)
 ~~~
 
-~~~{.bash caption=">_"}
+~~~{.python caption="main.py"}
 # Output
 custom_logger.py  logger.py
 CompletedProcess(args='ls py_logging', returncode=0)
@@ -169,30 +170,30 @@ None
 
 Running `subprocess.run(command)` prints the output of the command onto the console, and the `stdout` attribute is `None` by default if we don't capture the output. When you run Bash commands such as `chmod` to change file permissions or the `sleep` command, you don't need to process the output. However, you may sometimes need to capture the outputs and use them in next steps in your program.
 
-![developer-at-work]({{site.images}}{{page.slug}}/u7e1tVp.png)
+![developer-at-work]({{site.images}}{{page.slug}}/u7e1tVp.png)\
 
 To capture the output of a command for further processing, you can set the `capture_output` argument to `True` when calling the `run()` function.
 
-~~~{.bash caption=">_"}
+~~~{.python caption="main.py"}
 process_4 = subprocess.run("ls",capture_output=True)
 print(process_4.stdout)
 ~~~
 
 Note that the output of `process_4` is not printed onto the console anymore. The `stdout` attribute of the `CompletedProcess` object, `process_4`contains the output as a string of bytes.
 
-~~~{.bash caption=">_"}
+~~~{.python caption="main.py"}
 # Output
 b'py_logging\nmain.py\npy_unit_testing\nstring_manipulation\n'
 ~~~
 
 You can call the `decode()` method on the value of `stdout` to access the output as a normal Python string.
 
-~~~{.bash caption=">_"}
+~~~{.python caption="main.py"}
 process_4 = subprocess.run("ls",capture_output=True)
 print(process_4.stdout.decode())
 ~~~
 
-~~~{.bash caption=">_"}
+~~~{.python caption="main.py"}
 # Output
 py_logging
 py_subprocess.py
@@ -202,12 +203,12 @@ string_manipulation
 
 If you set `text` to `True`, the output is captured as a Python string, thereby eliminating the need for decoding the `stdout` value.
 
-~~~{.bash caption=">_"}
+~~~{.python caption="main.py"}
 process_5 = subprocess.run("ls",capture_output=True,text=True)
 print(process_5.stdout)
 ~~~
 
-~~~{.bash caption=">_"}
+~~~{.python caption="main.py"}
 # Output
 py_logging
 py_subprocess.py
@@ -217,12 +218,12 @@ string_manipulation
 
 Under the hood, setting `capture_output` to `True` redirects both the output and the errors to `subprocess.PIPE`. Therefore, you can also set `stdout` to `subprocess.PIPE` when calling the `run()` function.
 
-~~~{.bash caption=">_"}
+~~~{.python caption="main.py"}
 process_6 = subprocess.run("ls",stdout=subprocess.PIPE,text=True)
 print(process_6.stdout)
 ~~~
 
-~~~{.bash caption=">_"}
+~~~{.python caption="main.py"}
 # Output
 py_logging
 main.py
@@ -234,7 +235,7 @@ string_manipulation
 
 You can redirect the output of a subprocess to a text file by setting the `stdout` attribute to a valid file object. In this example, the contents of the working directory, including the `contents.txt` file are listed in the `contents.txt` file.
 
-~~~{.bash caption=">_"}
+~~~{.python caption="main.py"}
 with open('contents.txt','w') as f_obj:
     subprocess.run("ls",stdout=f_obj,text=True)
 ~~~
@@ -243,19 +244,20 @@ with open('contents.txt','w') as f_obj:
 
 In the examples we've coded thus far, the external programs ran successfully. In practice, we'll run into errors if the external programs do not exist in our development environment or are called with invalid arguments. For example, trying to run a git commit as an external command (subprocess) when I don't have Git installed.
 
-![capture-errors]({{site.images}}{{page.slug}}/Y1kRZww.png)
+![capture-errors]({{site.images}}{{page.slug}}/Y1kRZww.png)\
 
 The `CompletedProcess` object's `returncode` attribute tells whether or not the execution of the external command was successful. A non-zero `returncode` indicates an error in running the command. The `stderr` attribute contains information on the error.
 
 When we try to list the contents of a directory that doesn't exist, the `returncode` of the `CompletedProcess` object `process_7` is 2 (non-zero) and its `stderr` attribute contains the output as a string of bytes.
 
-~~~{.bash caption=">_"}
-process_7 = subprocess.run(["ls","non-existent-directory"],capture_output=True)
+~~~{.python caption="main.py"}
+process_7 = subprocess.run(["ls","non-existent-directory"],\
+capture_output=True)
 print(process_7.returncode)
 print(process_7.stderr)
 ~~~
 
-~~~{.bash caption=">_"}
+~~~{.python caption="main.py"}
 # Output
 2
 b"ls: cannot access 'non-existent-directory': No such file or directory\n"
@@ -263,12 +265,13 @@ b"ls: cannot access 'non-existent-directory': No such file or directory\n"
 
 You can also capture errors in the `stderr` attribute by explicitly setting the `stderr` argument to `subprocess.PIPE` when calling the `run()` function.
 
-~~~{.bash caption=">_"}
-process_8 = subprocess.run(["ls","non-existent-directory"],stderr=subprocess.PIPE)
+~~~{.python caption="main.py"}
+process_8 = subprocess.run(["ls","non-existent-directory"],\
+stderr=subprocess.PIPE)
 print(process_8.stderr)
 ~~~
 
-~~~{.bash caption=">_"}
+~~~{.python caption="main.py"}
 # Output
 b"ls: cannot access 'non-existent-directory': No such file or directory\n"
 ~~~
@@ -281,23 +284,27 @@ To check if the external command ran successfully, here's a summary of methods w
 
 In all of the above methods, Python does _not_ throw an error when the external command fails. However, it might help to get an error message when running the Python script if the external command fails to run successfully. For this, you can set the optional `check` parameter to `True` in the `run()` function call. If the external command fails to run, Python throws a `CalledProcessError`exception.
 
-~~~{.bash caption=">_"}
-process_9 = subprocess.run(["ls","non-existent-directory"],capture_output=True,check=True)
+~~~{.python caption="main.py"}
+
+process_9 = subprocess.run(["ls","non-existent-directory"],\
+capture_output=True,check=True)
 ~~~
 
-~~~{.bash caption=">_"}
+~~~{.python caption="main.py"}
 # Output
 Traceback (most recent call last):
   File "main.py", line 38, in <module>
-    process_9 = subprocess.run(["ls","non-existent-directory"],capture_output=True,check=True)
+    process_9 = subprocess.run(["ls","non-existent-directory"],\
+    capture_output=True,check=True)
   File "/usr/lib/python3.8/subprocess.py", line 516, in run
     raise CalledProcessError(retcode, process.args,
-subprocess.CalledProcessError: Command '['ls', 'non-existent-directory']' returned non-zero exit status 2.
+subprocess.CalledProcessError: Command '['ls', \
+'non-existent-directory']' returned non-zero exit status 2.
 ~~~
 
 ### How to Raise a `TimeoutExpired` Exception
 
-![timeout]({{site.images}}{{page.slug}}/NmPSTon.png)
+![timeout]({{site.images}}{{page.slug}}/NmPSTon.png)\
 
 We've learned that when a subprocess is invoked, the control is transferred from the parent process (Python script) to the child process that runs the command.
 
@@ -307,15 +314,18 @@ To address this, you can set a `timeout` value (in seconds) when invoking a subp
 
 In this example, the Bash command `sleep 10` requires 10 seconds to finish but setting `timeout` to 2 seconds raises the `TimeoutExpired` exception.
 
-~~~{.bash caption=">_"}
-process10 = subprocess.run(["sleep","10"],capture_output=True,check=True,timeout=2)
+~~~{.python caption="main.py"}
+
+process10 = subprocess.run(["sleep","10"],capture_output=True,\
+check=True,timeout=2)
 ~~~
 
-~~~{.bash caption=">_"}
+~~~{.python caption="main.py"}
 # Output
 Traceback (most recent call last):
   File "main.py", line 40, in <module>
-    process_10  = subprocess.run(["sleep","10"],capture_output=True,check=True,timeout=2)
+    process_10  = subprocess.run(["sleep","10"],capture_output=True,\
+    check=True,timeout=2)
   File "/usr/lib/python3.8/subprocess.py", line 495, in run
     stdout, stderr = process.communicate(input, timeout=timeout)
   File "/usr/lib/python3.8/subprocess.py", line 1028, in communicate
@@ -324,14 +334,15 @@ Traceback (most recent call last):
     self._check_timeout(endtime, orig_timeout, stdout, stderr)
   File "/usr/lib/python3.8/subprocess.py", line 1072, in _check_timeout
     raise TimeoutExpired(
-subprocess.TimeoutExpired: Command '['sleep', '10']' timed out after 2 seconds
+subprocess.TimeoutExpired: Command '['sleep', '10']' timed \
+out after 2 seconds
 ~~~
 
 The above traceback for the `TimeoutExpired` exception is difficult to parse. We can choose Python's `try` and `except` statements to handle the `TimeoutExpired` exception.
 
 The general syntax to use `try-except` statements is as follows:
 
-~~~{.bash caption=">_"}
+~~~{.python caption="main.py"}
 try:
     # doing this
 except ThisError:
@@ -340,14 +351,15 @@ except ThisError:
 
 When the `TimeoutExpired` exception occurs, we now get a simple error message instead of the hard-to-parse traceback.
 
-~~~{.bash caption=">_"}
+~~~{.python caption="main.py"}
 try:
-    process10 = subprocess.run(["sleep","10"],capture_output=True,check=True,timeout=2)
+    process10 = subprocess.run(["sleep","10"],capture_output=True,\
+    check=True,timeout=2)
 except subprocess.TimeoutExpired:
     print("subprocess timed out")
 ~~~
 
-~~~{.bash caption=">_"}
+~~~{.python caption="main.py"}
 # Output
 subprocess timed out
 ~~~
@@ -359,7 +371,7 @@ The `TimeoutExpired` exception raised—when a subprocess fails to complete exec
 
 For this, we need to use the `Popen` constructor to run the external command. The `timeout` value is passed to the `communicate()` method when called on the subprocess object. This method returns the `stdout` and `stderr` values as a tuple. When the `TimeoutExpired`exception is raised upon timeout, the child process is killed and the communication is deemed complete.
 
-~~~{.bash caption=">_"}
+~~~{.python caption="main.py"}
 p1 = subprocess.Popen(["sleep","10"])
 try:
 std_out,std_err = p1.communicate(timeout=1)
@@ -379,13 +391,16 @@ Consider the following example, where we'd like to run each of the commands as a
  1. Run the `cat` command to display the contents of [a text file](https://github.com/balapriyac/Python-Subprocesses/blob/main/sample.txt).
  2. Search through the file's contents for the occurrence of a specific string using the `grep` command.
 
-~~~{.bash caption=">_"}
-process1 = subprocess.run(["cat","sample.txt"],capture_output=True,text=True)
-process2 = subprocess.run(["grep","-n","Python"],capture_output=True,text=True,input=process1.stdout)
+~~~{.python caption="main.py"}
+
+process1 = subprocess.run(["cat","sample.txt"],capture_output=True,\
+text=True)
+process2 = subprocess.run(["grep","-n","Python"],capture_output=True,\
+text=True,input=process1.stdout)
 print(process_2.stdout)
 ~~~
 
-~~~{.bash caption=">_"}
+~~~{.python caption="main.py"}
 # Output
 3:with Python programming is to
 4:start a Python REPL and work your way through simple exercises!
@@ -393,7 +408,7 @@ print(process_2.stdout)
 
 ## How to Change the Environment of a Subprocess
 
-![team-of-developers]({{site.images}}{{page.slug}}/zfPlWVI.png)
+![team-of-developers]({{site.images}}{{page.slug}}/zfPlWVI.png)\
 
 You can change the [environment variable](/blog/bash-variables) in which a subprocess runs by setting the `env` parameter to a modified environment. The secondary environment in which a subprocess runs is inherited from the environment of the parent process. This is the default behavior and the `env` parameter is set to its default value `None`. To change this default execution environment, you should set the `env` parameter to the modified environment variable dictionary, when calling the `run()` function.
 
@@ -401,7 +416,7 @@ In Python, the `environ()` function in the `os` module returns the [environment 
 
 In the following example, we update the `PATH` environment variable by adding a new directory and set the `env` parameter to `new_env`.
 
-~~~{.bash caption=">_"}
+~~~{.python caption="main.py"}
 import os
 new_env = os.environ.copy()
 new_env["PATH"] = os.pathsep.join(["/testapp/",new_env["PATH"]])
@@ -425,8 +440,5 @@ If you need to run external programs within the Python application, try to run t
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
-- [ ] Add keywords for internal links to front-matter
+
 
