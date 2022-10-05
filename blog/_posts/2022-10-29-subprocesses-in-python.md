@@ -26,7 +26,7 @@ Let's begin!
 **Prerequisites**:
 To follow along with this tutorial, you should have [Python 3.7 or a later version](https://www.python.org/downloads/) installed on your machine.
 
-⚠️ If you're on a Windows machine, we recommend using [Git Bash](https://git-scm.com/download/win) or installing the [Windows Subsystem for Linux (WSL)](https://ubuntu.com/tutorials/install-ubuntu-on-wsl2-on-windows-10) to code along. If you prefer using other code editors or IDEs on Windows, you should run the Windows equivalents of some of the Bash commands used in this tutorial.
+⚠️ If you're on a [Windows](/blog/makefiles-on-windows) machine, we recommend using [Git Bash](https://git-scm.com/download/win) or installing the [Windows Subsystem for Linux (WSL)](https://ubuntu.com/tutorials/install-ubuntu-on-wsl2-on-windows-10) to code along. If you prefer using other code editors or IDEs on Windows, you should run the Windows equivalents of some of the Bash commands used in this tutorial.
 </div>
 
 The `subprocess` module is built into the Python standard library, so you can import it into your working environment:
@@ -395,9 +395,9 @@ print(process_2.stdout)
 
 ![team-of-developers]({{site.images}}{{page.slug}}/zfPlWVI.png)
 
-You can change the environment in which a subprocess runs by setting the `env` parameter to a modified environment. The secondary environment in which a subprocess runs is inherited from the environment of the parent process. This is the default behavior and the `env` parameter is set to its default value `None`. To change this default execution environment, you should set the `env` parameter to the modified environment variable dictionary, when calling the `run()` function.
+You can change the [environment variable](/blog/bash-variables) in which a subprocess runs by setting the `env` parameter to a modified environment. The secondary environment in which a subprocess runs is inherited from the environment of the parent process. This is the default behavior and the `env` parameter is set to its default value `None`. To change this default execution environment, you should set the `env` parameter to the modified environment variable dictionary, when calling the `run()` function.
 
-In Python, the `environ()` function in the `os` module returns the environment variables dictionary. Instead of modifying the underlying environment variables directly, you can create a copy of the dictionary and update one or more environment variables.
+In Python, the `environ()` function in the `os` module returns the [environment variables](/blog/bash-variables) dictionary. Instead of modifying the underlying environment variables directly, you can create a copy of the dictionary and update one or more environment variables.
 
 In the following example, we update the `PATH` environment variable by adding a new directory and set the `env` parameter to `new_env`.
 
@@ -416,7 +416,7 @@ I hope this tutorial helped you understand how to use Python's `subprocess` modu
 - You can set `capture_output = True` to capture the output as a string of bytes in the `stdout` attribute, which you can decode by calling the `decode()` method. Setting `text = True` eliminates the decoding step. You can redirect output to files by setting the `stdout` argument to a valid file object.
 - When an external program fails to run, the `returncode` is non-zero and the error information is available in the `stderr` attribute of the `CompletedProcess` object.
 - Setting the `check` parameter to `True` raises a `CalledProcessError` when the external command fails. You can optionally set the `timeout` parameter to raise a `TimeoutExpired` exception when the subprocess fails to complete execution within a specified time-frame.
-- To change the environment in which a subprocess runs, set the `env` parameter to the modified environment. You can update one or more environment variables by creating a copy of the environment variables dictionary.
+- To change the environment in which a subprocess runs, set the `env` parameter to the modified [environment](/blog/bash-variables). You can update one or more environment variables by creating a copy of the environment variables dictionary.
 
 If you need to run external programs within the Python application, try to run them as subprocesses. You can also leverage Python's threading capabilities to run subprocesses concurrently.
 
@@ -427,5 +427,4 @@ If you need to run external programs within the Python application, try to run t
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
 - [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
