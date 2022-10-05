@@ -65,7 +65,7 @@ print(process_1.returncode)
 print(process_1.stdout)
 ~~~
 
-~~~{.python caption="main.py"}
+~~~{.python caption="Output"}
 # Output
 py_logging main.py  py_unit_testing  string_manipulation
 CompletedProcess(args='ls', returncode=0)
@@ -99,7 +99,7 @@ print(process_2.returncode)
 print(process_2.stdout)
 ~~~
 
-~~~{.python caption="main.py"}
+~~~{.python caption="Output"}
 # Output
 custom_logger.py  logger.py
 CompletedProcess(args=['ls', 'py_logging'], returncode=0)
@@ -154,7 +154,7 @@ print(process_3.args)
 print(process_3.stdout)
 ~~~
 
-~~~{.python caption="main.py"}
+~~~{.python caption="Output"}
 # Output
 custom_logger.py  logger.py
 CompletedProcess(args='ls py_logging', returncode=0)
@@ -181,7 +181,7 @@ print(process_4.stdout)
 
 Note that the output of `process_4` is not printed onto the console anymore. The `stdout` attribute of the `CompletedProcess` object, `process_4`contains the output as a string of bytes.
 
-~~~{.python caption="main.py"}
+~~~{.python caption="Output"}
 # Output
 b'py_logging\nmain.py\npy_unit_testing\nstring_manipulation\n'
 ~~~
@@ -193,7 +193,7 @@ process_4 = subprocess.run("ls",capture_output=True)
 print(process_4.stdout.decode())
 ~~~
 
-~~~{.python caption="main.py"}
+~~~{.python caption="Output"}
 # Output
 py_logging
 py_subprocess.py
@@ -223,7 +223,7 @@ process_6 = subprocess.run("ls",stdout=subprocess.PIPE,text=True)
 print(process_6.stdout)
 ~~~
 
-~~~{.python caption="main.py"}
+~~~{.python caption="Output"}
 # Output
 py_logging
 main.py
@@ -257,7 +257,7 @@ print(process_7.returncode)
 print(process_7.stderr)
 ~~~
 
-~~~{.python caption="main.py"}
+~~~{.python caption="Output"}
 # Output
 2
 b"ls: cannot access 'non-existent-directory': No such file or directory\n"
@@ -271,7 +271,7 @@ stderr=subprocess.PIPE)
 print(process_8.stderr)
 ~~~
 
-~~~{.python caption="main.py"}
+~~~{.python caption="Output"}
 # Output
 b"ls: cannot access 'non-existent-directory': No such file or directory\n"
 ~~~
@@ -290,7 +290,7 @@ process_9 = subprocess.run(["ls","non-existent-directory"],\
 capture_output=True,check=True)
 ~~~
 
-~~~{.python caption="main.py"}
+~~~{.python caption="Output"}
 # Output
 Traceback (most recent call last):
   File "main.py", line 38, in <module>
@@ -320,7 +320,7 @@ process10 = subprocess.run(["sleep","10"],capture_output=True,\
 check=True,timeout=2)
 ~~~
 
-~~~{.python caption="main.py"}
+~~~{.python caption="Output"}
 # Output
 Traceback (most recent call last):
   File "main.py", line 40, in <module>
@@ -359,7 +359,7 @@ except subprocess.TimeoutExpired:
     print("subprocess timed out")
 ~~~
 
-~~~{.python caption="main.py"}
+~~~{.python caption="Output"}
 # Output
 subprocess timed out
 ~~~
@@ -400,7 +400,7 @@ text=True,input=process1.stdout)
 print(process_2.stdout)
 ~~~
 
-~~~{.python caption="main.py"}
+~~~{.python caption="Output"}
 # Output
 3:with Python programming is to
 4:start a Python REPL and work your way through simple exercises!
