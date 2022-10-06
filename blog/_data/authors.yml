@@ -288,6 +288,10 @@ Mercy Bassey:
     name    : "Mercy Bassey"
     bio     : "Mercy Bassey is a JavaScript programmer with a passion for technical writing. Her area of expertise is Full-stack web development and DevOps/IT."
     avatar  : "/assets/images/authors/mercy.png"
+James Walker:
+    name    : "James Walker"
+    bio     : "James Walker is the founder of Heron Web, a UK-based software development studio providing bespoke solutions for SMEs. He's experienced in delivering custom software using engineering workflows built around modern DevOps methodologies. James is also a freelance technical writer and has written extensively about the software development lifecycle, current industry trends, and DevOps concepts and technologies."
+    avatar  : "/assets/images/authors/james.jpeg"
 Mustapha Ahmad Ayodeji:
     name    : "Mustapha Ahmad Ayodeji"
     bio     : "Ahmad is a Software developer and a Technical writer with so much interest for Django related frameworks."
