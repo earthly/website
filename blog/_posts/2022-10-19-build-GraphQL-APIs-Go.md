@@ -71,7 +71,7 @@ go run github.com/99designs/gqlgen init
 
 This will create a basic GraphQL API with the following file structure:
 
-~~~{. caption=""}
+~~~{.bash caption=""}
 | gqlgen.yml
 | server.go
 |   
@@ -160,46 +160,46 @@ any resolver implementationswill be copied through when generating \
 and any unknown code will be moved to the end.
  
 import (
- "context"
- "fmt"
- "go-graphql-api/graph/generated"
- "go-graphql-api/graph/model"
+    "context"
+    "fmt"
+    "go-graphql-api/graph/generated"
+    "go-graphql-api/graph/model"
 )
  
 // CreatePost is the resolver for the CreatePost field.
-func (r *mutationResolver) CreatePost(ctx context.Context, \
-input model.NewPost) (*model.Post, error) {
-panic(fmt.Errorf("not implemented: CreatePost - CreatePost"))
+  func (r *mutationResolver) CreatePost(ctx context.Context, \
+  input model.NewPost) (*model.Post, error) {
+  panic(fmt.Errorf("not implemented: CreatePost - CreatePost"))
 }
  
 // UpdatePost is the resolver for the UpdatePost field.
-func (r *mutationResolver) UpdatePost(ctx context.Context, postID int, \
-input *model.NewPost) (*model.Post, error) { \
-panic(fmt.Errorf("not implemented: UpdatePost - UpdatePost"))
+  func (r *mutationResolver) UpdatePost(ctx context.Context, postID int, \
+  input *model.NewPost) (*model.Post, error) { \
+  panic(fmt.Errorf("not implemented: UpdatePost - UpdatePost"))
 }
  
 // GetAllPosts is the resolver for the GetAllPosts field.
-func (r *queryResolver) GetAllPosts(ctx context.Context) \
-([]*model.Post, error) {
- panic(fmt.Errorf("not implemented: GetAllPosts - GetAllPosts"))
+  func (r *queryResolver) GetAllPosts(ctx context.Context) \
+  ([]*model.Post, error) {
+  panic(fmt.Errorf("not implemented: GetAllPosts - GetAllPosts"))
 }
  
 // GetOnePost is the resolver for the GetOnePost field.
-func (r *queryResolver) GetOnePost(ctx context.Context, id int)\
- (*model.Post, error) {
- panic(fmt.Errorf("not implemented: GetOnePost - GetOnePost"))
+  func (r *queryResolver) GetOnePost(ctx context.Context, id int)\
+  (*model.Post, error) {
+  panic(fmt.Errorf("not implemented: GetOnePost - GetOnePost"))
 }
  
 // Mutation returns generated.MutationResolver implementation.
-func (r *Resolver) Mutation() generated.MutationResolver \
-{ return &mutationResolver{r} }
+  func (r *Resolver) Mutation() generated.MutationResolver \
+  { return &mutationResolver{r} }
  
 // Query returns generated.QueryResolver implementation.
-func (r *Resolver) Query() generated.QueryResolver \
-{ return &queryResolver{r} }
+  func (r *Resolver) Query() generated.QueryResolver \
+  { return &queryResolver{r} }
  
-type mutationResolver struct{ *Resolver }
-type queryResolver struct{ *Resolver }
+  type mutationResolver struct{ *Resolver }
+  type queryResolver struct{ *Resolver }
 ~~~
 
 The `graph/model/models_gen.go` file will have the structs for your posts.
@@ -210,22 +210,22 @@ The `graph/model/models_gen.go` file will have the structs for your posts.
 package model
  
 type NewPost struct {
- Title       string  `json:"Title"`
- Content     string  `json:"Content"`
- Author *string `json:"Author"`
- Hero *string `json:"Hero"`
- PublishedAt *string `json:"Published_At"`
- UpdatedAt *string `json:"Updated_At"`
+  Title       string  `json:"Title"`
+  Content     string  `json:"Content"`
+  Author *string `json:"Author"`
+  Hero *string `json:"Hero"`
+  PublishedAt *string `json:"Published_At"`
+  UpdatedAt *string `json:"Updated_At"`
 }
  
 type Post struct {
- ID          int    `json:"id"`
- Title       string `json:"Title"`
- Content     string `json:"Content"`
- Author      string `json:"Author"`
- Hero        string `json:"Hero"`
- PublishedAt string `json:"Published_At"`
- UpdatedAt   string `json:"Updated_At"`
+  ID          int    `json:"id"`
+  Title       string `json:"Title"`
+  Content     string `json:"Content"`
+  Author      string `json:"Author"`
+  Hero        string `json:"Hero"`
+  PublishedAt string `json:"Published_At"`
+  UpdatedAt   string `json:"Updated_At"`
 }
 ~~~
 
@@ -260,13 +260,13 @@ package dbmodel
  
  
 type Post struct {
- ID uint64 `sql:"AUTO_INCREMENT" gorm:"primary_key"`
- Title string `gorm:"not null"`
- Content string `gorm:"not null"`
- Author string `gorm:"not null; unique"`
- Hero string `json:"Hero"`
- Published_At string `json:"PublishedAt"`
- Updated_At string `json:"UpdateAt"`
+  ID uint64 `sql:"AUTO_INCREMENT" gorm:"primary_key"`
+  Title string `gorm:"not null"`
+  Content string `gorm:"not null"`
+  Author string `gorm:"not null; unique"`
+  Hero string `json:"Hero"`
+  Published_At string `json:"PublishedAt"`
+  Updated_At string `json:"UpdateAt"`
 }
 ~~~
 
@@ -280,10 +280,10 @@ Add the module package name and import the dependencies
 package database
  
 import (
- "fmt"
- _ "github.com/go-sql-driver/mysql"
- "github.com/jinzhu/gorm"
- "go-graphql-api/dbmodels"
+  "fmt"
+  _ "github.com/go-sql-driver/mysql"
+  "github.com/jinzhu/gorm"
+  "go-graphql-api/dbmodels"
 )
 ~~~
 
@@ -308,11 +308,11 @@ Establish the connection to your database:
 ~~~{.go caption="mysql.go"}
 // connecting to the db
 func ConnectDB() {
- // pass the db connection string
- ConnectionURI := CONNECTION_STRING
- // check for db connection
- DBInstance, err = gorm.Open("mysql", ConnectionURI)
- if err != nil {
+  // pass the db connection string
+  ConnectionURI := CONNECTION_STRING
+  // check for db connection
+  DBInstance, err = gorm.Open("mysql", ConnectionURI)
+  if err != nil {
   fmt.Println(err)
   // if the connection was unsuccessful
   panic("Database connection attempt was unsuccessful.....")
@@ -332,9 +332,9 @@ Create a database:
 ~~~{.go caption="mysql.go"}
 func CreateDB() {
   // Create a database
- DBInstance.Exec("CREATE DATABASE IF NOT EXISTS Blog_Posts")
+  DBInstance.Exec("CREATE DATABASE IF NOT EXISTS Blog_Posts")
  // make the database available to this connection
- DBInstance.Exec("USE Blog_Posts")
+  DBInstance.Exec("USE Blog_Posts")
 }
 ~~~
 
@@ -345,8 +345,8 @@ Migrate Post Model to a database table:
 ~~~{.go caption="mysql.go"}
 func MigrateDB() {
   // migrate and sync the model to create a db table
- DBInstance.AutoMigrate(&dbmodel.Post{})
- fmt.Println("Database migration completed....")
+  DBInstance.AutoMigrate(&dbmodel.Post{})
+  fmt.Println("Database migration completed....")
 }
 ~~~
 
@@ -356,11 +356,11 @@ This database connection needs to be accessed by the resolvers. The created reso
 
 ~~~{.go caption="resolver.go"}
 import (
- "github.com/jinzhu/gorm"
+  "github.com/jinzhu/gorm"
 )
  
 type Resolver struct {
- Database *gorm.DB
+  Database *gorm.DB
 }
 ~~~
 
@@ -377,12 +377,12 @@ import(
 Execute the following database functions:
 
 ~~~{.go caption="server.go"}
-// establish connection
-database.ConnectDB()
-// create db
-database.CreateDB()
-// migrate the db with Post model
-database.MigrateDB()
+  // establish connection
+  database.ConnectDB()
+  // create db
+  database.CreateDB()
+  // migrate the db with Post model
+  database.MigrateDB()
 ~~~
 
 Save the established database connection in the Resolver struct of your `srv` variable generated by gqlgen:
@@ -470,7 +470,7 @@ The GraphQL playground is ready, and you see all the GraphQL root types for each
 
 On your GraphQL playground, execute the following mutation:
 
-~~~{. caption=""}
+~~~{.bash caption=""}
 mutation createPost {
   CreatePost(
     input: {
@@ -503,20 +503,20 @@ Modify the `UpdatePost()` method to add the update mutation resolver:
 // UpdatePost is the resolver for the UpdatePost field.
 func (r *mutationResolver) UpdatePost(ctx context.Context, \
 postID int, input *model.NewPost) (*model.Post, error) {
- Updatepost := model.Post{
-  Title: input.Title,
-  Content: input.Content,
-  UpdatedAt: time.Now().Format("20-08-2022"),
- }
+  Updatepost := model.Post{
+    Title: input.Title,
+    Content: input.Content,
+    UpdatedAt: time.Now().Format("20-08-2022"),
+  }
  
  if err := r.Database.Model(&model.Post{}).Where("id=?", postID)\
  .Updates(&Updatepost).Error; err != nil {
-  fmt.Println(err)
-  return nil, err
+    fmt.Println(err)
+    return nil, err
  }
  
  Updatepost.ID = postID
- return &Updatepost, nil
+  return &Updatepost, nil
 }
 ~~~
 
@@ -524,7 +524,7 @@ First, add the fields to execute on the update mutation as described in the `Upd
 
 Updating mutates your saved data. Therefore, a mutation of new data is sent to your database to update a post. To edit an existing post, use the following schema on your GraphQL playground:
 
-~~~{. caption=""}
+~~~{.bash caption=""}
 mutation UpdatePost {
   UpdatePost(PostId:10 input:{
  
@@ -568,7 +568,7 @@ Create a variable `post` to save all the fields you want to get from the post mo
 
 Send the following query to retrieve all the posts saved in your database:
 
-~~~{. caption=""}
+~~~{.bash caption=""}
 query GetAllPosts{
   GetAllPosts{
     id
@@ -587,6 +587,7 @@ query GetAllPosts{
 Modify the `GetOnePost` method to execute the query resolver for getting a single post.
 
 ~~~{.go caption="graph/schema.resolvers.go"}
+
 // GetOnePost is the resolver for the GetOnePost field.
 func (r *queryResolver) GetOnePost(ctx context.Context, id int)\
  (*model.Post, error) {
@@ -605,7 +606,7 @@ Just like `GetAllPosts`, use the `Find()` method to find records that match the 
 
 To get a single post, pass the post id to your query as follows:
 
-~~~{. caption=""}
+~~~{.bash caption=""}
 query GetOnePost{
   GetOnePost(id:11) {
     id
