@@ -11,7 +11,11 @@ layout: page
   {% include /pricing/ci.html  %}
 </div>
 
-<div class="text-3xl font-semibold mt-10" id="compute"> FAQ</div>
+<div class="text-3xl font-semibold mt-10"> FAQ</div>
+
+<h2 class="text-2xl font-semibold mb-5 mt-20" id="what-is-an-active-user">What is an active user?<span class="hide"><a href="#what-is-an-active-user">¶</a></span></h2>
+
+An active user is a user that has triggered a Satellite build at least three times during a month. Triggering a build can be done by either performing a Satellite build directly via the earthly CLI, or indirectly, by pushing code to a repository, and that push being picked up by a CI that uses a Earthly Satellites to perform the build.
 
 <h2 class="text-2xl font-semibold mb-5 mt-10" id="compute">How much does compute cost?<span class="hide"><a href="#compute">¶</a></span></h2>
 
