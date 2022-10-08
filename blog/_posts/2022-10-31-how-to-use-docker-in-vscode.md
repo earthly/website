@@ -6,7 +6,9 @@ toc: true
 author: Temitope Oyedele
 
 internal-links:
- - just an example
+ - Docker
+ - VS Code
+ - Container
 ---
 
 Created by Microsoft, the  [Docker extension](https://code.visualstudio.com/docs/containers/overview) makes it easy to build, manage, and deploy containerized applications without leaving your code editor. Simply put, it helps you manage Docker better.
@@ -188,5 +190,4 @@ The VS Code docker extension gets things done easier and quicker by simplifying 
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Add keywords for internal links to front-matter
 
