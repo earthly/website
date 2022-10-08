@@ -31,7 +31,6 @@ The first selection in this image is what you want to look for to install. Click
 
 ![Docker icon in VS Code]({{site.images}}{{page.slug}}/wqmhmlw.gif)\
 
-
 Click on it. All our running and stopped containers are highlighted inside the Docker explorer. Here, you can also see your images, registries, volumes, networks, e.t.c. :
 
 ![containers,volumes,images and more]({{site.images}}{{page.slug}}/UQWjQRM.png)\
