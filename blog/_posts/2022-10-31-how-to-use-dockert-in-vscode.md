@@ -3,7 +3,7 @@ title: "Put Your Best Title Here"
 categories:
   - Tutorials
 toc: true
-author: Adam
+author: Temitope Oyedele
 
 internal-links:
  - just an example
@@ -181,7 +181,6 @@ The VS Code docker extension gets things done easier and quicker by simplifying 
 
 ## Outside Article Checklist
 
-- [ ] Add in Author page
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
