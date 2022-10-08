@@ -180,6 +180,8 @@ The Command Palette contains most of the commands for Docker images and containe
 
 The VS Code docker extension gets things done easier and quicker by simplifying the steps you take when working in the terminal. It also provides a number of features that make working creating Dockerfiles faster and less prone to errors. Best of all, it gives you key insights into your Docker environments, including debugging tools, logs, and a visual reference for which images and networks are running.
 
+{% include cta/cta1.html %}
+
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
@@ -188,4 +190,4 @@ The VS Code docker extension gets things done easier and quicker by simplifying 
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
+
