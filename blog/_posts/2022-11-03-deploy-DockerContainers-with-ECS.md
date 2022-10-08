@@ -3,7 +3,7 @@ title: "Put Your Best Title Here"
 categories:
   - Tutorials
 toc: true
-author: Adam
+author: Somtochukwu Uchegbu
 
 internal-links:
  - just an example
@@ -241,7 +241,6 @@ In this article, we covered one solution to container deployment. We got to unde
 
 ## Outside Article Checklist
 
-- [ ] Add in Author page
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
