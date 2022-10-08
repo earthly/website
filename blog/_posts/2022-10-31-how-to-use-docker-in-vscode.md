@@ -11,13 +11,13 @@ internal-links:
 
 Created by Microsoft, the  [Docker extension](https://code.visualstudio.com/docs/containers/overview) makes it easy to build, manage, and deploy containerized applications without leaving your code editor. Simply put, it helps you manage Docker better.
 
-In this article, I'll walk you through how to use Docker in VS Code using the Docker extension. This extension has some exciting features that can make working with Docker easier.  
+In this article, I'll walk you through how to use Docker in VS Code using the Docker extension. This extension has some exciting features that can [make](/blog/using-cmake) working with Docker easier.  
 
 I'll be using this extension to work with Docker by adding a `dockerfile`, building an image, and also running it. I'll do all this without having to use the terminal at all. Let's get started!
 
 ## Prerequisites
 
-To follow along with this article, you will need to have Docker installed on your workstation. Instructions on installing and running Docker are [available](https://docs.docker.com/get-docker/), and they should be specific to the operating system you are running. You also need to have [VS Code installed](https://code.visualstudio.com/download).
+To follow along with this article, you will need to have [Docker](/blog/rails-with-docker) installed on your workstation. Instructions on installing and running Docker are [available](https://docs.docker.com/get-docker/), and they should be specific to the operating system you are running. You also need to have [VS Code installed](https://code.visualstudio.com/download).
 
 ## Installing the Docker Extension
 
@@ -25,7 +25,7 @@ Head to the extension section in VS Code and type `docker` in the search box. Yo
 
 ![Searching for docker extension]({{site.images}}{{page.slug}}/a/OGJUFsx)
 
-The first selection in this image is what you want to look for to install. Click on it to install. Once it's done downloading, you will notice a Docker icon or logo at the bottom left corner of your window. This is the Docker explorer.
+The first selection in this image is what you want to look for to install. Click on it to install. Once it's done downloading, you will notice a Docker icon or logo at the bottom left corner of your window. This is the [Docker](/blog/rails-with-docker) explorer.
 
 ![Docker icon in VS Code]({{site.images}}{{page.slug}}/wqmhmlw)
 
@@ -151,7 +151,7 @@ You can then continue by pressing the play button at the top to continue running
 
 ### Viewing Container Logs
 
-This option is available in the context menu for running containers. The integrated terminal will display the logs.
+This option is available in the context menu for running [containers](/blog/docker-slim). The integrated terminal will display the logs.
 
 Using the running Node.js container as our example, all you have to do is navigate to Docker Explorer. In the Containers tab, right-click on your container and choose View Logs. You should see it being displayed in the terminal
 
@@ -189,5 +189,4 @@ The VS Code docker extension gets things done easier and quicker by simplifying 
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
 
