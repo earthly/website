@@ -1,4 +1,5 @@
 mockingjay
+Throwdown
 Leetcode
 Telco
 Proxmox
@@ -209,3 +210,12 @@ Heredoc
 arn
 tfstate
 gdamore
+Qarik
+Alibaba
+TensorFlow
+Tweag
+Tink
+Googler
+Xoogler
+fintech
+Sourcegraph

@@ -142,7 +142,7 @@ ln $temp/original ~/hardlink
 
 Now you just have to edit the file present in `~/hardlink,` which is the link itself, and run `cat $temp/original` to see that the content is also present there.
 
-If you want to delete the original file, you will also need to delete the link, so it's of no use running only `rm -rf $temp`; it's necessary to run `rm -rf ~/hardlink' too.
+If you want to delete the original file, you will also need to delete the link, so it's of no use running only `rm -rf $temp`; it's necessary to run `rm -rf ~/hardlink` too.
 
 Soft links do not allow you to do this, as they are just files that point to other files. So for dotfiles, it is much better to have a hard link that allows you to directly edit a dotfile wherever it is, and those changes are reflected in your Git repository.
 

@@ -1,3 +1,7 @@
 Dockershim
 kaniko
 se
+Portainer
+portainer
+dockerhub
+distro

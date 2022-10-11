@@ -45,3 +45,9 @@
   {% include_cached head/facebookpixel.html %} 
   {% include_cached head/twitterpixel.html %} 
 {% endif %}
+
+{% if jekyll.environment != "production" %}
+  <!-- Tailwind magic locally --> 
+  <!-- run `tailwind` from functions before hitting prod --> 
+  <script src="https://cdn.tailwindcss.com"></script>
+{% endif %}

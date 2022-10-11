@@ -61,3 +61,12 @@ crontab
 Crontab
 rw
 rwx
+linearization
+toolchains
+subtree
+refactorings
+recommender
+composable
+lima
+colima
+lts

@@ -73,7 +73,7 @@ After this short introduction, now it's time to get on with our topic: comparing
 Both Flux and Argo CD are very popular with an active community. Flux defines itself as "a set of continuous and progressive delivery solutions for Kubernetes that are open and extensible",
 whereas Argo CD is "a declarative, GitOps continuous delivery tool for Kubernetes". Based exclusively on this, one might conclude that there's no clear distinction in their mission statement, however as we dive deeper, we will see that they take a different approach and offer a slightly different feature set.
 
-Argo CD is part of [Argo](https://argoproj.github.io), an umbrella project comprising of multiple productivity focused tools, and is currently incubating under the CNCF. Jesse Suen, creator of the Argo project, [told in Kubernetes Podcast #172](https://kubernetespodcast.com/episode/172-argo/) about the origins of Argo CD: "we needed to build a delivery tool for developer teams (at Intuit - ed.) and we heavily focused on things like the user experience and the UI, and GitOps happened to be the mechanism we chose to do the delivery aspect of it". He claims that Argo CD is more developer-experience-centric, whereas Flux is more operator centric. There has been an attempt to merge the two projects, but in the end the Flux team went with a different approach which became the GitOps Toolkit (Flux2).
+Argo CD is part of [Argo](https://argoproj.github.io), an umbrella project comprising of multiple productivity focused tools, and is currently incubating under the CNCF. Jesse Suen, creator of the Argo project, [told in Kubernetes Podcast #172](https://kubernetespodcast.com/episode/172-argo/) about the origins of Argo CD: "we needed to build a delivery tool for developer teams (at Intuit - ed) and we heavily focused on things like the user experience and the UI, and GitOps happened to be the mechanism we chose to do the delivery aspect of it". He claims that Argo CD is more developer-experience-centric, whereas Flux is more operator centric. There has been an attempt to merge the two projects, but in the end the Flux team went with a different approach which became the GitOps Toolkit (Flux2).
 
 Flux predates Argo CD and has been around since 2017. I explore the second major version of Flux, which resolves many shortcomings, offers better observability, ease of integrating, composability, and extensibility over the first, which is now in maintenance mode. Flux 2 is comprised of GitOps Toolkit components, k8s operators that reconcile GitOps resources of different kinds. For example, the [source controller](https://fluxcd.io/docs/components/source/) is responsible for source repositories, the helm controller - Helm releases, etc.
 
@@ -93,7 +93,7 @@ As it was previously mentioned, Flux is componentized. Reconciliation specifics 
 
 ### Argo CD
 
-With Argo CD, you declaratively specify manual sync by setting `syncPolicy: {}` on the `Application` GitOps resource. This way, Argo CD will detect changes, show them on the UI, etc., but will not take action to reconcile them. Instead, synchronization can be manually triggered on the web UI (which is very straightforward for beginners) or the CLI with [`argocd app sync`](https://argo-cd.readthedocs.io/en/stable/user-guide/commands/argocd_app_sync/).
+With Argo CD, you declaratively specify manual sync by setting `syncPolicy: {}` on the `Application` GitOps resource. This way, Argo CD will detect changes, show them on the UI, etc, but will not take action to reconcile them. Instead, synchronization can be manually triggered on the web UI (which is very straightforward for beginners) or the CLI with [`argocd app sync`](https://argo-cd.readthedocs.io/en/stable/user-guide/commands/argocd_app_sync/).
 
 ### Flux
 
@@ -109,7 +109,7 @@ kustomization/podinfo reconcile.fluxcd.io/requestedAt="$(date +%s)"
 It's worth noting that running `flux reconcile` against a suspended resource will __not__ trigger the reconciliation. Requiring a manual edit to the cluster state for this override was [an intentional design choice](https://github.com/fluxcd/flux2/issues/959). Essentially, on-demand, manual synchronization doesn't have a declarative setting, so Flux doesn't wish to support it via its CLI either.
 
 <div class="notice--info">
-Another way to trigger reconciliation is to temporarily `flux unsuspend` the resource. One can argue that this is an imperative action too. The difference is that `suspend` has a declarative setting, so the command effectively edits an in-cluster resource, similarly to e.g `kubectl scale deployment`. Admittedly, this still hurts auditability, since the GitOps state is overridden (at least until the next reconciliation).
+Another way to trigger reconciliation is to temporarily `flux resume` the resource. One can argue that this is an imperative action too. The difference is that `suspend` has a declarative setting, so the command effectively edits an in-cluster resource, similarly to e.g `kubectl scale deployment`. Admittedly, this still hurts auditability, since the GitOps state is overridden (at least until the next reconciliation).
 </div>
 
 ## Source Tracking
@@ -135,7 +135,7 @@ There are cases when you don't want to allow resource updates, only during a spe
 Using Argo CD, this can be achieved with
 [sync windows](https://argo-cd.readthedocs.io/en/stable/user-guide/sync_windows/). Using sync windows, automatic or all syncs can be denied except for a certain time frame.
 
-Flux doesn't offer this feature, although a design has already been [proposed](https://github.com/fluxcd/flux2/discussions/870). Currently, it can be achieved with a CronJob that unsuspend the resource for the duration of the maintenance window.
+Flux doesn't offer this feature, although a design has already been [proposed](https://github.com/fluxcd/flux2/discussions/870). Currently, it can be achieved with a CronJob that resumes the resource for the duration of the maintenance window.
 
 ## Selective Sync
 
@@ -145,7 +145,7 @@ In Flux there's no mechanism for this, however if your only use case is to ignor
 
 ## Hooks
 
-Argo CD sync behavior can be customized with [hooks](https://argo-cd.readthedocs.io/en/stable/user-guide/resource_hooks/). If you are familiar with [Helm hooks](https://helm.sh/docs/topics/charts_hooks/), this is the same thing in essence, e.g. allows you to deploy resources in a specific order, run a job (such as a database migration) or trigger a notification after the deployment. Argo CD also understands Helm hooks.
+Argo CD sync behavior can be customized with [hooks](https://argo-cd.readthedocs.io/en/stable/user-guide/resource_hooks/). If you are familiar with [Helm hooks](https://helm.sh/docs/topics/charts_hooks/), this is the same thing in essence, e.g allows you to deploy resources in a specific order, run a job (such as a database migration) or trigger a notification after the deployment. Argo CD also understands Helm hooks.
 
 Flux doesn't provide hooks in general, but an individual tool (such as Helm) might provide their own.
 
@@ -237,11 +237,11 @@ Tracking changes in Helm releases with GitOps is more complicated than Kustomize
 
 Helm uses [SemVer](https://semver.org/) for versioning. Helm charts are expected to be immutable, similarly to other software packages. This means, __whenever the template is changed, the chart version must be bumped__.
 
-For charts in Helm registries, both [Flux](https://fluxcd.io/docs/components/helm/helmreleases/#helm-chart-template) and [Argo CD](https://argo-cd.readthedocs.io/en/stable/user-guide/tracking_strategies/#helm) support specifying SemVer ranges, so you may receive updates on new package versions. For example using a range of `>=4.0.0 <5.0.0`, your cluster will get automatically receive updates for major version 4.
+For charts in Helm registries, both [Flux](https://fluxcd.io/docs/components/helm/helmreleases/#helm-chart-template) and [Argo CD](https://argo-cd.readthedocs.io/en/stable/user-guide/tracking_strategies/#helm) support specifying SemVer ranges, so you may receive updates on new package versions. For example using a range of `>=4.0.0 <5.0.0`, your cluster will automatically receive updates for major version 4.
 
 ### Helm Charts in Git
 
-Source tracking of Helm charts works similarly to Kustomizations using both platforms, i.e. they can be configured so that reconciliation tracks commits on a branch, a tag pattern, or is fixed to a commit hash.
+Source tracking of Helm charts works similarly to Kustomizations using both platforms, i.e they can be configured so that reconciliation tracks commits on a branch, a tag pattern, or is fixed to a commit hash.
 
 However, there is a very important property in Flux that you should be aware of. Under the hood, Flux packages the Helm chart contained in the git repository and caches it for internal consumption by HelmReleases. By default (i.e with the `ChartVersion` reconcile strategy), it assumes that __the chart is unchanged unless the version is different in `Chart.yaml`, no matter the git revision__. In other words, __it assumes immutable packages__, even for git sources. This means that if you don't want surprises, you should bump the Chart version on each revision that changes a template.
 
@@ -264,7 +264,7 @@ You [shouldn't use](https://www.weave.works/blog/profile-layering-for-helm-encou
 
 Argo CD provides self healing for Helm releases. Flux [does __not__](https://github.com/fluxcd/flux2/discussions/2812).
 
-This limitation of Flux is problematic enough for apps. However, it is even worse when you try to use Helm for managing GitOps resources (in a multi-level hierarchy), because e.g. if someone suspends the reconciliation of an app by adding `suspend: true` to its owning GitOps resource, which is in turn owned by a `HelmRelease`, the drift will never be corrected in the child, and will linger there indefinitely. This can be problematic as entire hierarchies can drift away. Therefore, __my advice is to use Helm only for leaf GitOps resources__ (i.e those that directly manage application resources), until drift correction is implemented for Helm.
+This limitation of Flux is problematic enough for apps. However, it is even worse when you try to use Helm for managing GitOps resources (in a multi-level hierarchy), because e.g if someone suspends the reconciliation of an app by adding `suspend: true` to its owning GitOps resource, which is in turn owned by a `HelmRelease`, the drift will never be corrected in the child, and will linger there indefinitely. This can be problematic as entire hierarchies can drift away. Therefore, __my advice is to use Helm only for leaf GitOps resources__ (i.e those that directly manage application resources), until drift correction is implemented for Helm.
 </div>
 
 ## Summary
@@ -291,7 +291,7 @@ GitOps frameworks should provide appropriate abstractions to support adoption in
 
 > "What is the tortoise standing on?" "You're very clever, young man, very clever," said the old lady. "But it's turtles all the way down!" -- conversation between scientist and old lady in Stephen Hawking's Brief History of Time
 
-In this context, recursion means applying GitOps techniques to manage GitOps resources. For example, think of a team managing an application having multiple deployments (e.g in different environments). To avoid excessive duplication and to keep their GitOps resources free of duplication they decide to extract common configuration with the use of kustomize patches. A straightforward way to do this is to create a parent GitOps resource that uses e.g Kustomize to generate the inferior GitOps configurations.
+In this context, recursion means applying GitOps techniques to manage GitOps resources. For example, think of a team managing an application having multiple deployments (e.g in different environments). To keep their GitOps resources free of duplication they decide to extract common configuration with the use of kustomize patches. A straightforward way to do this is to create a parent GitOps resource that uses Kustomize to generate the inferior GitOps configurations.
 
 In Argo CD, this can be achieved with the [App of Apps pattern](https://medium.com/dzerolabs/turbocharge-argocd-with-app-of-apps-pattern-and-kustomized-helm-ea4993190e7c), which lets us define an `Application` resource that contains child `Application`s (and `AppProject`s). Argo CD watches the root application as well as synchronizes any application it generates. (By the way, the referenced article also points out how to do Kustomized Helm.) The child apps need not reside in the same cluster as their parent. By using the Apps of Apps pattern we can use the same techniques for generating GitOps resources as app resources, which makes it feasible to template or kustomize `Application`s, consequently, avoid duplication.
 
@@ -300,7 +300,7 @@ Similarly in Flux, we can define GitOps resources recursively. Having dedicated 
 ## Dependency Ordering
 
 Applications depend on each other, and we should be able to express that to some degree. As initial approach, one can distinguish between infrastructure applications providing core functionalities such as ingress, secret management,
-RBAC, cert management, service mesh, etc.; and product applications. For example if you use the popular service mesh [linkerd](https://linkerd.io/), it must be in place before any applications come up, because it injects sidecars into application pods starting up. Having a way to stall the installation of product applications until the infra is ready spares us the chore of dealing with such race-conditions and other problems.
+RBAC, cert management, service mesh, etc; and product applications. For example if you use the popular service mesh [linkerd](https://linkerd.io/), it must be in place before any applications come up, because it injects sidecars into application pods starting up. Having a way to stall the installation of product applications until the infra is ready spares us the chore of dealing with such race-conditions and other problems.
 
 With Flux's [`dependsOn`](https://fluxcd.io/docs/components/kustomize/kustomization/#kustomization-dependencies), we can prevent an application to be synced unless its dependencies are in the Ready state, in other words, to guarantee installation ordering. Unfortunately, this feature is missing from Argo CD [but it is proposed](https://github.com/argoproj/argo-cd/issues/7437).
 
@@ -321,7 +321,7 @@ With Argo CD, the `AppProject` is used to specify that an application belongs to
 - Access for users
 - Deploying to target clusters.
 
-Flux doesn't offer its own user management like Argo CD does. Instead, platform administrators should use Kubernetes RBAC and policy driven validation to establish security. Flux has a multi-component design, and integrates with many other systems. Having different components and CRDs such as git repositories, charts, notifications, etc. helps separate concerns, thus simplifies setting up policies. Platform admins can [enforce service account impersonation](https://fluxcd.io/docs/components/helm/helmreleases/#role-based-access-control) to minimize privileges.
+Flux doesn't offer its own user management like Argo CD does. Instead, platform administrators should use Kubernetes RBAC and policy driven validation to establish security. Flux has a multi-component design, and integrates with many other systems. Having different components and CRDs such as git repositories, charts, notifications, etc, helps separate concerns, thus facilitates setting up fine-grained policies. Platform admins can [enforce service account impersonation](https://fluxcd.io/docs/components/helm/helmreleases/#role-based-access-control) to minimize privileges.
 
 ## Everything Is A CRD
 
@@ -329,7 +329,7 @@ Flux doesn't offer its own user management like Argo CD does. Instead, platform 
 
 While Argo CD offers only two major CRDs, Application, and AppProject, Flux has separate CRDs for each concept such as Kustomization (kustomize-controller), HelmRelease, HelmChart (helm-controller), HelmRepository, GitRepository (source-controller), Alert, Event (notification-controller), etc. This allows for a cleaner design, which precipitates in details such as:
 
-- Using Flux, notification configuration is [placed in CRDs](https://fluxcd.io/docs/components/notification/), whereas for Argo CD, it is [placed in ConfigMaps]((https://argocd-notifications.readthedocs.io/en/stable/triggers/)) in the Argo CD deployment's namespace. Access to that namespace is often restricted to the platform administrators.
+- Using Flux, notification configuration is [placed in CRDs](https://fluxcd.io/docs/components/notification/), whereas for Argo CD, it is [placed in ConfigMaps]((https://argocd-notifications.readthedocs.io/en/stable/triggers/)) in the Argo CD deployment's namespace. Access to that namespace is often restricted to the platform administrator.
 - Using Flux, private repository credentials stored in a Secret should be referenced in [Flux's GitRepository](https://fluxcd.io/docs/components/source/gitrepositories/#secret-reference), whereas for Argo CD, they should be [placed in Secrets](https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#repository-credentials) in the Argo CD deployment's namespace. Reusing the same credential for multiple repos requires a rather [strange technique](https://argo-cd.readthedocs.io/en/stable/user-guide/private-repositories/#credential-templates). Not only Flux's method is much more conventional and flexible, access to Argo CD's namespace is often restricted to the platform administrator.
 - Analogously to repository credentials, cluster credentials (in a multi-cluster scenario) are set up [directly in the CRDs](https://fluxcd.io/docs/components/kustomize/kustomization/#remote-clusters--cluster-api) in Flux, whereas for Argo CD, its a [Secret in its own namespace](https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#clusters)
 

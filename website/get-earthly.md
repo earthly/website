@@ -39,7 +39,7 @@ os:
     source: source2
     content: |
       ### Pre-requisites
-
+      * [Homebrew for Mac](https://brew.sh/)
       * [Docker for Mac](https://docs.docker.com/docker-for-mac/install/) OR [Podman](https://github.com/containers/podman/blob/main/docs/tutorials/podman_tutorial.md)
       * [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 
@@ -53,7 +53,7 @@ os:
           </header>
           <code class="Home-product-Earthfile-code">brew install earthly/earthly/earthly && earthly bootstrap</code>
       </div>
-      
+
       <div class="Home-product-note" markdown="1">
       For shell auto-completion:
         * Homebrew may require [additional configuration](https://docs.brew.sh/Shell-Completion) in your profile
@@ -144,7 +144,6 @@ ide:
       2. Press `Ctrl+Shift+P` (or `Cmd+Shift+P` on Mac) again, select "Package Control: Install Package" and select **Earthly Earthfile** to install.
 ---
 
-
 <link rel="stylesheet" href="/assets/css/subpage.css">
 
 {% include tabs.html tabs=page.os id="os" bodyclass="fullborder" %}
@@ -153,6 +152,7 @@ For alternative installation options see the [alternative installation page in t
 
 <h2 class="
       mt-14
+      mb-8
       text-3xl
       font-extrabold
       leading-none
