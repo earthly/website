@@ -65,8 +65,10 @@ print(process_1.returncode)
 print(process_1.stdout)
 ~~~
 
+-
+
 ~~~{.text caption="Output"}
-# Output
+
 py_logging main.py  py_unit_testing  string_manipulation
 CompletedProcess(args='ls', returncode=0)
 ls
@@ -99,8 +101,10 @@ print(process_2.returncode)
 print(process_2.stdout)
 ~~~
 
+-
+
 ~~~{.text caption="Output"}
-# Output
+
 custom_logger.py  logger.py
 CompletedProcess(args=['ls', 'py_logging'], returncode=0)
 ['ls', 'py_logging']
@@ -154,6 +158,8 @@ print(process_3.args)
 print(process_3.stdout)
 ~~~
 
+-
+
 ~~~{.text caption="Output"}
 custom_logger.py  logger.py
 CompletedProcess(args='ls py_logging', returncode=0)
@@ -191,6 +197,8 @@ process_4 = subprocess.run("ls",capture_output=True)
 print(process_4.stdout.decode())
 ~~~
 
+-
+
 ~~~{.text caption="Output"}
 py_logging
 py_subprocess.py
@@ -205,6 +213,8 @@ process_5 = subprocess.run("ls",capture_output=True,text=True)
 print(process_5.stdout)
 ~~~
 
+-
+
 ~~~{.text caption="Output"}
 py_logging
 py_subprocess.py
@@ -218,6 +228,8 @@ Under the hood, setting `capture_output` to `True` redirects both the output and
 process_6 = subprocess.run("ls",stdout=subprocess.PIPE,text=True)
 print(process_6.stdout)
 ~~~
+
+-
 
 ~~~{.text caption="Output"}
 py_logging
@@ -265,6 +277,8 @@ stderr=subprocess.PIPE)
 print(process_8.stderr)
 ~~~
 
+-
+
 ~~~{.text caption="Output"}
 
 b"ls: cannot access 'non-existent-directory': No such file or directory\n"
@@ -283,6 +297,8 @@ In all of the above methods, Python does _not_ throw an error when the external 
 process_9 = subprocess.run(["ls","non-existent-directory"],\
 capture_output=True,check=True)
 ~~~
+
+-
 
 ~~~{.text caption="Output"}
 
@@ -313,6 +329,8 @@ In this example, the Bash command `sleep 10` requires 10 seconds to finish but s
 process10 = subprocess.run(["sleep","10"],capture_output=True,\
 check=True,timeout=2)
 ~~~
+
+-
 
 ~~~{.text caption="Output"}
 
@@ -352,6 +370,8 @@ try:
 except subprocess.TimeoutExpired:
     print("subprocess timed out")
 ~~~
+
+-
 
 ~~~{.text caption="Output"}
 
@@ -393,6 +413,8 @@ process2 = subprocess.run(["grep","-n","Python"],capture_output=True,\
 text=True,input=process1.stdout)
 print(process_2.stdout)
 ~~~
+
+-
 
 ~~~{.text caption="Output"}
 
