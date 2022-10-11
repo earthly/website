@@ -30,7 +30,7 @@ os:
         * installing auto-completion for your shell
 
       For Podman:
-        * Rootless Podman is [not officially supported](https://docs.earthly.dev/docs/guides/podman#rootless-podman)
+        * Rootless Podman is [not officially supported](https://docs.earthly.dev/docs/guides/podman#rootless-podman). Run Podman with `sudo`
       </div>
 
   tab2:
@@ -60,7 +60,7 @@ os:
       
       For Podman:
         * Ensure [Podman Machine](https://docs.podman.io/en/latest/markdown/podman-machine.1.html) is running before bootstrap
-        * Rootless Podman is [not officially supported](https://docs.earthly.dev/docs/guides/podman#rootless-podman)
+        * Rootless Podman is [not officially supported](https://docs.earthly.dev/docs/guides/podman#rootless-podman). Learn how to [switch to rootful mode](https://docs.podman.io/en/latest/markdown/podman-machine-set.1.html#rootful)
       </div>
 
   tab3:
@@ -222,6 +222,5 @@ To learn how to use Earthly, try
 - [The getting started guide](https://docs.earthly.dev/guides/basics).
 - [An introductory video](https://www.youtube.com/watch?v=B7Q7S2lpshw)
 - [The full documentation](https://docs.earthly.dev/)
-- [(optional): The Podman guide](https://docs.earthly.dev/docs/guides/podman#rootless-podman)
 
 Need some inspiration to get started with your project? Check out [examples on GitHub](https://github.com/earthly/earthly/tree/main/examples).
