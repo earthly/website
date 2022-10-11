@@ -58,7 +58,7 @@ os:
       For shell auto-completion:
         * Homebrew may require [additional configuration](https://docs.brew.sh/Shell-Completion) in your profile
       
-      For Podman
+      For Podman:
         * Ensure [Podman Machine](https://docs.podman.io/en/latest/markdown/podman-machine.1.html) is running before bootstrap
         * Rootless Podman is [not officially supported](https://docs.earthly.dev/docs/guides/podman#rootless-podman)
       </div>
