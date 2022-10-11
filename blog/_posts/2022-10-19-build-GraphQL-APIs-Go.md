@@ -37,13 +37,13 @@ Gqlgen is a Go GraphQL library that allows you to build robust GraphQL servers w
 
 Let's dive in and implement the API using gqlgen. First, initialize a [Golang](/blog/top-3-resources-to-learn-golang-in-2021) application inside the directory where you want the project to live:
 
-~~~{.go caption=">_"}
+~~~{.bash caption=">_"}
 go mod init go-graphql-api
 ~~~
 
 Install the gqlgen library to your project dependencies:
 
-~~~{.go caption=">_"}
+~~~{.bash caption=">_"}
 go get github.com/99designs/gqlgen
 ~~~
 
@@ -59,19 +59,19 @@ _ "github.com/99designs/gqlgen"
 
 This file allows you to add the installed missing dependencies the project requires. Run the following command to add your direct dependencies:
 
-~~~{.go caption=">_"}
+~~~{.bash caption=">_"}
 go mod tidy
 ~~~
 
 Initialize gqlgen to build your boilerplate Go GraphQL API:
 
-~~~{.go caption=">_"}
+~~~{.bash caption=">_"}
 go run github.com/99designs/gqlgen init
 ~~~
 
 This will create a basic GraphQL API with the following file structure:
 
-~~~{.bash caption=""}
+~~~{.text caption=""}
 | gqlgen.yml
 | server.go
 |   
@@ -99,7 +99,7 @@ This will create a basic GraphQL API with the following file structure:
 
 gqlgen lets you create a schema that fits your application and then generates the resolvers and structs using the created schema. To create a post API, for example, you need to build a schema for posts based on the [Schema Definition Language](https://graphql.org/learn/schema/). Navigate to the `graph/schema.graphqls` file and replace the existing schema with the following post schema:
 
-~~~{.bash caption="schema.graphqls"}
+~~~{.text caption="schema.graphqls"}
 type Post {
   id: Int!
   Title: String!
@@ -146,7 +146,7 @@ These are the parameters that gqlgen will look for to create the structs and the
 
 Using the above schema, gqlgen will auto-generate the structs and resolves. This will be executed using a single command to generate these code blocks. Run the following command:
 
-~~~{.go caption=">_"}
+~~~{.bash caption=">_"}
 go run github.com/99designs/gqlgen generate
 ~~~
 
@@ -239,13 +239,13 @@ To correctly implement this API, we need to use a database to interact directly 
 
 To install it, run:
 
-~~~{.go caption=">_"}
+~~~{.bash caption=">_"}
 go get github.com/jinzhu/gorm   
 ~~~
 
 We'll use the MySQL database. Ensure [MySQL drivers](https://github.com/go-sql-driver/mysql) are installed in your application:
 
-~~~{.go caption=">_"}
+~~~{.bash caption=">_"}
 go get github.com/go-sql-driver/mysql
 ~~~
 
@@ -470,7 +470,7 @@ The GraphQL playground is ready, and you see all the GraphQL root types for each
 
 On your GraphQL playground, execute the following mutation:
 
-~~~{.bash caption=""}
+~~~{.text caption=""}
 mutation createPost {
   CreatePost(
     input: {
@@ -524,7 +524,7 @@ First, add the fields to execute on the update mutation as described in the `Upd
 
 Updating mutates your saved data. Therefore, a mutation of new data is sent to your database to update a post. To edit an existing post, use the following schema on your GraphQL playground:
 
-~~~{.bash caption=""}
+~~~{.text caption=""}
 mutation UpdatePost {
   UpdatePost(PostId:10 input:{
  
@@ -568,7 +568,7 @@ Create a variable `post` to save all the fields you want to get from the post mo
 
 Send the following query to retrieve all the posts saved in your database:
 
-~~~{.bash caption=""}
+~~~{.text caption=""}
 query GetAllPosts{
   GetAllPosts{
     id
@@ -606,7 +606,7 @@ Just like `GetAllPosts`, use the `Find()` method to find records that match the 
 
 To get a single post, pass the post id to your query as follows:
 
-~~~{.bash caption=""}
+~~~{.text caption=""}
 query GetOnePost{
   GetOnePost(id:11) {
     id
