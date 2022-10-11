@@ -292,6 +292,10 @@ Ifihanagbara Olusheye:
     name    : "Ifihanagbara Olusheye"
     bio     : "Ifihanagbara Olusheye is a software developer and technical writer who loves analyzing technology concepts she learns through writing."
     avatar  : "/assets/images/authors/Ifihanagbara.jpg"
+Rose Chege:
+    name    : "Rose Chege"
+    bio     : "Rose is a lover of technology and an upright individual who is not afraid to get out of her comfort zone and try out new programming paradigms."
+    avatar  : "/assets/images/authors/rose.jpeg"
 James Walker:
     name    : "James Walker"
     bio     : "James Walker is the founder of Heron Web, a UK-based software development studio providing bespoke solutions for SMEs. He's experienced in delivering custom software using engineering workflows built around modern DevOps methodologies. James is also a freelance technical writer and has written extensively about the software development lifecycle, current industry trends, and DevOps concepts and technologies."
