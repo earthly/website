@@ -20,4 +20,6 @@ ignore:
   - HouseStyle/tech-terms/fileformats.txt
   - HouseStyle/tech-terms/dockers.txt
   - HouseStyle/tech-terms/mongo.txt
+  - HouseStyle/tech-terms/go.txt
   - HouseStyle/tech-terms/db.txt
+
