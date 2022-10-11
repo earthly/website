@@ -58,7 +58,7 @@ func main(){
 
 The `starter` and `follow` functions print out strings in the order they are called in the `main` function.
 
-~~~{. caption="Output"}
+~~~{.text caption="Output"}
 This is the starter on call
 This is the follower on call
 ~~~
@@ -96,7 +96,7 @@ func main() {
 
 Run this and we should get both print statements.
 
-~~~{. caption="Output"}
+~~~{.text caption="Output"}
 This is the follower on call
 This is the starter on call
 ~~~
@@ -143,7 +143,7 @@ func main() {
 
 In the `main` function where the `starter` function will be called, you will have to create a `WaitGroup` variable. Using the `Add` function of the `WaitGroup`, you can add a counter for the Goroutine; when the Goroutine runs, the counter decrements. The output is shown below:
 
-~~~{. caption="Output"}
+~~~{.text caption="Output"}
 This is the follower on call
 This is the starter on call
 ~~~
@@ -191,7 +191,7 @@ func main() {
 
 In the main function, the `channels` variable is an empty channel, and the `defer` statement closes the channel once the communication is over. The `starter` goroutine takes in the channel, and the `receiver` variable receives the string from the channel passed into the `follow` function as the string argument it accepts. The `follow` function can run successfully as intended.
 
-~~~{. caption="Output"}
+~~~{.text caption="Output"}
 This is the starter on call
 From the starter function, This is the follower on call
 ~~~
