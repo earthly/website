@@ -11,13 +11,13 @@ internal-links:
 
 ## What Is AWS ECS
 
-AWS Elastic Container Service (AWS ECS) is a managed container service that is used to run and deploy containers. It is similar to Kubernetes in that it allows us to launch, monitor, and set up docker containers within a specified cluster. Unlike Kubernetes its a AWS specific technology for managing the lifecycle of a container.
+AWS Elastic Container Service (AWS ECS) is a managed container service that is used to run and deploy containers. It is similar to Kubernetes in that it allows us to launch, monitor, and set up docker containers within a specified cluster. Unlike Kubernetes its a AWS specific technology for managing the lifecycle of a [container](/blog/docker-slim).
 
 <div class="notice--info">
 AWS ECS is not to be confused with AWS EKS, which is AWS's kubernetes service. EKS competes with Google Kubernetes Service ( GKE ), and Azure Kubernetes Service (AKS).
 </div>
-With AWS ECS, we create a cluster on which we can create various tasks we want to run. These tasks are usually individual containers that handle specific operations.
-When deploying our containers, we need actual infrastructure to run our docker containers. There are two options for us here. We can either decide to handle spinning up instances, connecting them to our ECS cluster, and monitoring them, or we can use **Fargate**.
+With AWS [ECS](/blog/how-to-setup-and-use-amazons-elastic-container-registry), we create a cluster on which we can create various tasks we want to run. These tasks are usually individual containers that handle specific operations.
+When deploying our containers, we need actual infrastructure to run our docker containers. There are two options for us here. We can either decide to handle spinning up instances, connecting them to our ECS [cluster](/blog/kube-bench), and monitoring them, or we can use **Fargate**.
 Fargate is a serverless way to run docker containers. It works by taking the container we want to deploy, and automatically provisioning the resources needed to deploy that container.
 
 ## **Why Use AWS ECS**
@@ -243,7 +243,7 @@ Our task should take some time before it starts running, but once it does, the s
 Finally, before we can send requests to our Django app, we need to configure our server to allow us to send requests to it on the port we defined earlier.
 First, we need to get to our EC2 dashboard.
 In the search bar, enter **EC2**, and click on EC2.
-On the resources page, click on **instances(running)**, and select the running EC2 instance.
+On the resources page, click on **instances(running)**, and select the running [EC2](/blog/build-your-own-ngrok-clone) instance.
 
 Click on Security, and click on the security group
 
@@ -264,7 +264,7 @@ With that, we have just successfully deployed our docker container.
 
 ## **Conclusion**
 
-In this article, we covered one solution to container deployment. We got to understand the different container services that exist, and the benefits of using AWS ECS, and finally, we looked at how to deploy a simple docker container.
+In this article, we covered one solution to container [deployment](/blog/deployment-strategies). We got to understand the different container services that exist, and the benefits of using AWS ECS, and finally, we looked at how to deploy a simple docker container.
 
 {% include cta/cta1.html %}
 
@@ -275,5 +275,4 @@ In this article, we covered one solution to container deployment. We got to unde
 * [ ] Verify look of article locally
   * Would any images look better `wide` or without the `figcaption`?
 * [ ] Add keywords for internal links to front-matter
-* [ ] Run `link-opp` and find 1-5 places to incorporate links
 
