@@ -65,7 +65,7 @@ jobs:
           channel-id: 'alerts'
           payload: |
             {
-              "text": "Blog post published: ${{ env.PUBLISHED_LIST }}"
+              "text": "${{ env.PUBLISHED_LIST }}"
             }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_COMMUNITY_BLOG_WEBHOOK_URL }}
