@@ -6,7 +6,10 @@ toc: true
 author: Somtochukwu Uchegbu
 
 internal-links:
- - just an example
+ - Docker
+ - Container
+ - ECS
+ - AWS
 ---
 
 ## What Is AWS ECS
@@ -274,5 +277,4 @@ In this article, we covered one solution to container [deployment](/blog/deploym
 * [ ] Optional: Find ways to break up content with quotes or images
 * [ ] Verify look of article locally
   * Would any images look better `wide` or without the `figcaption`?
-* [ ] Add keywords for internal links to front-matter
 
