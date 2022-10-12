@@ -266,6 +266,8 @@ With that, we have just successfully deployed our docker container.
 
 In this article, we covered one solution to container deployment. We got to understand the different container services that exist, and the benefits of using AWS ECS, and finally, we looked at how to deploy a simple docker container.
 
+{% include cta/cta1.html %}
+
 ## Outside Article Checklist
 
 * [ ] Create header image in Canva
@@ -274,4 +276,4 @@ In this article, we covered one solution to container deployment. We got to unde
   * Would any images look better `wide` or without the `figcaption`?
 * [ ] Add keywords for internal links to front-matter
 * [ ] Run `link-opp` and find 1-5 places to incorporate links
-* [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
+
