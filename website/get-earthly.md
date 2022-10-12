@@ -10,7 +10,7 @@ os:
     content: |
       ### Pre-requisites
 
-      * [Docker](https://docs.docker.com/install/) OR [Podman](https://github.com/containers/podman/blob/main/docs/tutorials/podman_tutorial.md)
+      * [Docker](https://docs.docker.com/install/) or [Podman](https://github.com/containers/podman/blob/main/docs/tutorials/podman_tutorial.md)
       * [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 
       ### Installation
@@ -30,7 +30,7 @@ os:
         * installing auto-completion for your shell
 
       For Podman:
-        * Rootless Podman is [not officially supported](https://docs.earthly.dev/docs/guides/podman#rootless-podman). Run Podman with `sudo`
+        * Rootless Podman is [not officially supported](https://docs.earthly.dev/docs/guides/podman#rootless-podman). Run podman with `sudo`
       </div>
 
   tab2:
@@ -40,7 +40,7 @@ os:
     content: |
       ### Pre-requisites
       * [Homebrew for Mac](https://brew.sh/)
-      * [Docker for Mac](https://docs.docker.com/docker-for-mac/install/) OR [Podman](https://github.com/containers/podman/blob/main/docs/tutorials/podman_tutorial.md)
+      * [Docker for Mac](https://docs.docker.com/docker-for-mac/install/) or [Podman](https://github.com/containers/podman/blob/main/docs/tutorials/podman_tutorial.md)
       * [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 
       ### Installation
@@ -59,7 +59,7 @@ os:
         * Homebrew may require [additional configuration](https://docs.brew.sh/Shell-Completion) in your profile
       
       For Podman:
-        * Ensure [Podman Machine](https://docs.podman.io/en/latest/markdown/podman-machine.1.html) is running before bootstrap
+        * Ensure [Podman Machine](https://docs.podman.io/en/latest/markdown/podman-machine.1.html) is running before running bootstrap
         * Rootless Podman is [not officially supported](https://docs.earthly.dev/docs/guides/podman#rootless-podman). Learn how to [switch to rootful mode](https://docs.podman.io/en/latest/markdown/podman-machine-set.1.html#rootful)
       </div>
 
@@ -71,7 +71,7 @@ os:
       ### Pre-requisites
 
       * [WSL 2](https://docs.microsoft.com/en-us/windows/wsl/install-win10)
-      * [Docker Desktop with WSL2 backend](https://docs.docker.com/docker-for-windows/wsl/) OR [Podman with WSL2 backend](https://github.com/containers/podman/blob/main/docs/tutorials/podman-for-windows.md)
+      * [Docker Desktop with WSL2 backend](https://docs.docker.com/docker-for-windows/wsl/) or [Podman with WSL2 backend](https://github.com/containers/podman/blob/main/docs/tutorials/podman-for-windows.md)
       * [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 
       ### Installation
@@ -91,8 +91,9 @@ os:
       `sudo` is used for:
         * placing the `earthly` binary in `/usr/local/bin/` and marking it as executable
         * installing auto-completion for your shell
-       For Podman
-        * Rootless Podman is [not officially supported](https://docs.earthly.dev/docs/guides/podman#rootless-podman)
+
+       For Podman:
+        * Rootless Podman is [not officially supported](https://docs.earthly.dev/docs/guides/podman#rootless-podman). Run podman with `sudo`
       </div>
 
 ide:
