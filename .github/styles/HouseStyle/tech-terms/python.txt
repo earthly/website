@@ -15,3 +15,7 @@ micropip
 Matpotlib
 Dicts
 matpotlib
+
+sys
+subprocess
+Subprocess
