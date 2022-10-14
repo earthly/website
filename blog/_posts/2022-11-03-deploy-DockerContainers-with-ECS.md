@@ -154,18 +154,49 @@ CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
 ### Step 3
 
 After completing our Dockerfile, we need to head on to AWS to create a docker repository using Elastic Container Registry.
+
 After creating our registry, we will build our docker image and push it to the repository.
+
 On the AWS management console homepage, search for ECR
 
+<div class="wide">
+
+![Image]({{site.images}}{{page.slug}}/image1.png)\
+
+</div>
+
 Click on **Elastic Container Registry**
+
 On the ECR home page, click **Get Started**
+
 In the registry settings, make sure to select **Public** as the repository type.
+
 Next, we need to give our repository a name. In this case, we are going with _django-app._
+
 After that, we need to leave every other setting as is and click on the **Create** button on the bottom right corner of the page.
+
+<div class="wide">
+
+![Image]({{site.images}}{{page.slug}}/image2.png)\
+
+</div>
 
 Next, we need to highlight our newly created repository, and click on the View push commands button.
 
+<div class="wide">
+
+![Image]({{site.images}}{{page.slug}}/image3.png)\
+
+</div>
+
 On the View push commands modal, we are given a detailed guide to follow to successfully push our docker image to our repository.
+
+<div class="wide">
+
+![Image]({{site.images}}{{page.slug}}/image4.png)\
+
+</div>
+
 The push view has a series of instructions, let's go over them.
 
 Firstly, we need to retrieve an authentication token which we will use to authenticate our docker client to our AWS repository.
@@ -195,75 +226,200 @@ Finally, we push our docker image to our AWS repository
 docker push public.ecr.aws/w0p8w5x2/django-app:latest
 ~~~
 
-Now, if we check our AWS repository, we should have an image with the tag latest. Finally, copy the image URI, because we are going to need it later.
+Now, if we check our AWS repository, we should have an image with the tag latest.
+
+<div class="wide">
+
+![Image]({{site.images}}{{page.slug}}/image5.png)\
+
+</div>
+
+Finally, copy the image URI, because we are going to need it later.
 
 ### Step 4
 
 Now that we have our docker image. Let us create our cluster and our tasks.
+
 In the search bar, enter ECS
 
+<div class="wide">
+
+![Image]({{site.images}}{{page.slug}}/image6.png)\
+
+</div>
+
 Click on **Elastic Container Service**
+
 On the ECS home page, on the left pane, click **Clusters**
+
 On the Clusters page, click on **Create Cluster**
+
 Next, on the select templates page, select the **EC2 Linux + Networking** Template
 
+<div class="wide">
+
+![Image]({{site.images}}{{page.slug}}/image7.png)\
+
+</div>
+
 Click **Next Step**
+
 Next, on our cluster configurations page, we need to give our cluster a name.
+
 For our instance configuration, select **On-Demand Instance** as our Provisioning Model type.
 
+<div class="wide">
+
+![Image]({{site.images}}{{page.slug}}/image8.png)\
+
+</div>
+
 Next, for our instance type, we need to select **t2.micro** because it is the free tier instance type.
+
 For the remaining configurations under instance configurations, we leave them as default.
 
+<div class="wide">
+
+![Image]({{site.images}}{{page.slug}}/image9.png)\
+
+</div>
+
 In the Networking section, select a VPC, for subnets, select the first option.
+
 For the **Auto-assign public IP** option, select Enabled, and finally, for security groups, select the first security group
 
+<div class="wide">
+
+![Image]({{site.images}}{{page.slug}}/image10.png)\
+
+</div>
+
 Leave every other setting as default and click on **Create**
+
 After creating our cluster, we need to create one last thing, which is our task.
+
 To create a new task, on the left pane of the home page of ECS click on **Task Definitions.**
+
 Next, click **Create new Task Definition**
+
 For our launch type, we will be selecting EC2
+
+<div class="wide">
+
+![Image]({{site.images}}{{page.slug}}/image11.png)\
+
+</div>
 
 Next, we need to give our task definition a name and leave other settings under Configure task and container definitions and Task execution IAM role section as default.
 
+<div class="wide">
+
+![Image]({{site.images}}{{page.slug}}/image12.png)\
+
+</div>
+
 Now, in our Task Size section, we need to set our container compute resource.
+
 Since we are creating a very basic container, we can set our Task Memory to 100, and Task CPU to 1vCPU
 
+<div class="wide">
+
+![Image]({{site.images}}{{page.slug}}/image13.png)\
+
+</div>
+
 Next, in Container Definitions, we need to set some configurations for our container.
+
 First, we need to give our container a name, and enter our image URI (this is where the image URI we copied earlier comes in).
 
+<div class="wide">
+
+![Image]({{site.images}}{{page.slug}}/image14.png)\
+
+</div>
+
 Finally, we need to configure our Port Mapping settings.
+
 Our host port will be the port we want to expose on our EC2 instance, and our container port will be the port we are exposing in our Dockerfile.
 
+<div class="wide">
+
+![Image]({{site.images}}{{page.slug}}/image15.png)\
+
+</div>
+
 Now that we are done, click the **Add** button to add the new container definition.
+
 After that, we leave all other settings in our Task Definition as default and click on **Create**
+
 Now that we have a cluster and a task definition, all we have to do now is run a task in our cluster.
+
 To do that, go back to the cluster we created, select Tasks, and click on **Run new Task**
+
 Select EC2 as the Launch type and click on **Run Task**
 
+<div class="wide">
+
+![Image]({{site.images}}{{page.slug}}/image16.png)\
+
+</div>
+
 Our task should take some time before it starts running, but once it does, the status will change from PENDING to RUNNING
+
+<div class="wide">
+
+![Image]({{site.images}}{{page.slug}}/image17.png)\
+
+</div>
 
 ### Step 5
 
 Finally, before we can send requests to our Django app, we need to configure our server to allow us to send requests to it on the port we defined earlier.
+
 First, we need to get to our EC2 dashboard.
+
 In the search bar, enter **EC2**, and click on EC2.
+
 On the resources page, click on **instances(running)**, and select the running [EC2](/blog/build-your-own-ngrok-clone) instance.
+
+<div class="wide">
+
+![Image]({{site.images}}{{page.slug}}/image18.png)\
+
+</div>
 
 Click on Security, and click on the security group
 
+<div class="wide">
+
+![Image]({{site.images}}{{page.slug}}/image19.png)\
+
+</div>
+
 While on the Security Groups page, click on **Edit inbound rules**
+
 Now, all we need to do is add more inbound rules, one of which will consist of:
 
 * Type: Custom TCP, Port range: 9000, Source: Anywhere-IPv4
 And:
 * Type: Custom TCP, Port range: 9000, Source: Anywhere-IPv6
+
 Now, we click on **Save rules**.
 
 We have successfully configured our server to allow internet traffic on port 9000.
+
 All we need to do now is go back to our instance dashboard and copy our **Public IPv4 DNS**.
+
 We can now send an HTTP request to that server. We can test this with Postman
 
+<div class="wide">
+
+![Image]({{site.images}}{{page.slug}}/image20.png)\
+
+</div>
+
 As you can see, we got a response of {"message": "Hello World"}.
+
 With that, we have just successfully deployed our docker container.
 
 ## Conclusion
@@ -271,10 +427,3 @@ With that, we have just successfully deployed our docker container.
 In this article, we covered one solution to container [deployment](/blog/deployment-strategies). We got to understand the different container services that exist, and the benefits of using AWS ECS, and finally, we looked at how to deploy a simple docker container.
 
 {% include cta/cta1.html %}
-
-## Outside Article Checklist
-
-* [ ] Optional: Find ways to break up content with quotes or images
-* [ ] Verify look of article locally
-  * Would any images look better `wide` or without the `figcaption`?
-
