@@ -23,7 +23,7 @@ With AWS [ECS](/blog/how-to-setup-and-use-amazons-elastic-container-registry), w
 When deploying our containers, we need actual infrastructure to run our docker containers. There are two options for us here. We can either decide to handle spinning up instances, connecting them to our ECS [cluster](/blog/kube-bench), and monitoring them, or we can use **Fargate**.
 Fargate is a serverless way to run docker containers. It works by taking the container we want to deploy, and automatically provisioning the resources needed to deploy that container.
 
-## **Why Use AWS ECS**
+## Why Use AWS ECS
 
 Now that we have a little understanding of what ECS is and how it works. Why should we use it? are there added benefits?
 You should use AWS ECS because it's:
@@ -45,7 +45,7 @@ You'll need:
 * Docker installed on your machine
 * And the AWS CLI installed
 
-### **Step 1**
+### Step 1
 
 We need to create a simple Django application, which we will containerize locally.
 
@@ -71,13 +71,13 @@ django-admin startproject app .
 
 We then need to create our Django application and add it to our installed apps
 
-~~~{.bash caption=">_"}
+~~~{.python caption="manage.py"}
 python manage.py startapp api
 ~~~
 
 Within our app/settings.py file, add this block of code
 
-~~~{.bash caption=">_"}
+~~~{.python caption="settings.py"}
 INSTALLED_APPS = [ 
     ... 
     'rest_framework', 
@@ -86,17 +86,17 @@ INSTALLED_APPS = [
 ]
 ~~~
 
-Since we are going to deploy our application, we need to change some configurations in our[settings.py](http://settings.py) file.
+Since we are going to deploy our application, we need to change some configurations in our [settings.py](http://settings.py) file.
 
 One of which includes adding an asterisk to our _ALLOWED_HOST_ list like so
 
-~~~{.bash caption=">_"}
+~~~{.python caption="settings.py"}
 ALLOWED_HOST = ['*']
 ~~~
 
 Next, we need to create a simple view in our api/views.py file. Add this block of code
 
-~~~{.bash caption=">_"}
+~~~{.python caption="views.py"}
 from rest_framework import status 
 from rest_framework.response import Response 
 from rest_framework.decorators import api_view 
@@ -106,11 +106,11 @@ def home_endpoint(request):
     return Response({"message":"Hello World"}, status=status.HTTP_200_OK)
 ~~~
 
-We need to create a[urls.py](http://urls.py) file (in our api directory) that will hold the url to this endpoint.
+We need to create a [urls.py](http://urls.py) file (in our api directory) that will hold the url to this endpoint.
 
 Add this block of code
 
-~~~{.bash caption=">_"}
+~~~{.python caption="urls.py"}
 from django.urls import path 
 from . import views 
 urlpatterns = [ 
@@ -120,7 +120,7 @@ urlpatterns = [
 
 Next, we need to include our _api_ url's in our _app/urls.py_ file.
 
-~~~{.bash caption=">_"}
+~~~{.python caption="urls.py"}
 from django.urls import path, include 
 urlpatterns = [ 
     path('admin/', admin.site.urls), 
@@ -134,13 +134,13 @@ Finally, we need to create our _requirements.txt_file.
 pip freeze > requirements.txt
 ~~~
 
-### **Step 2**
+### Step 2
 
 We need to create a Dockerfile which will be used for creating a docker image for our application.
 **Note**: The Dockerfile should be located in our root directory
 Add this block of code to the Dockerfile
 
-~~~{.bash caption=">_"}
+~~~{.dockerfile caption="Dockerfile"}
 FROM python:3.10.0-alpine 
 WORKDIR /usr/src/app 
 RUN pip install --upgrade pip 
@@ -151,7 +151,7 @@ EXPOSE 8000
 CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
 ~~~
 
-### **Step 3**
+### Step 3
 
 After completing our Dockerfile, we need to head on to AWS to create a docker repository using Elastic Container Registry.
 After creating our registry, we will build our docker image and push it to the repository.
@@ -173,7 +173,8 @@ Firstly, we need to retrieve an authentication token which we will use to authen
 To do this, we will use the AWS CLI tool and run this command in our terminal
 
 ~~~{.bash caption=">_"}
-aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin <REPOSITORY-URI>
+aws ecr-public get-login-password --region us-east-1 | \
+docker login --username AWS --password-stdin <REPOSITORY-URI>
 ~~~
 
 Next, we need to build our docker image.
@@ -196,7 +197,7 @@ docker push public.ecr.aws/w0p8w5x2/django-app:latest
 
 Now, if we check our AWS repository, we should have an image with the tag latest. Finally, copy the image URI, because we are going to need it later.
 
-### **Step 4**
+### Step 4
 
 Now that we have our docker image. Let us create our cluster and our tasks.
 In the search bar, enter ECS
@@ -241,7 +242,7 @@ Select EC2 as the Launch type and click on **Run Task**
 
 Our task should take some time before it starts running, but once it does, the status will change from PENDING to RUNNING
 
-### **Step 5**
+### Step 5
 
 Finally, before we can send requests to our Django app, we need to configure our server to allow us to send requests to it on the port we defined earlier.
 First, we need to get to our EC2 dashboard.
@@ -265,7 +266,7 @@ We can now send an HTTP request to that server. We can test this with Postman
 As you can see, we got a response of {"message": "Hello World"}.
 With that, we have just successfully deployed our docker container.
 
-## **Conclusion**
+## Conclusion
 
 In this article, we covered one solution to container [deployment](/blog/deployment-strategies). We got to understand the different container services that exist, and the benefits of using AWS ECS, and finally, we looked at how to deploy a simple docker container.
 
@@ -273,7 +274,6 @@ In this article, we covered one solution to container [deployment](/blog/deploym
 
 ## Outside Article Checklist
 
-* [ ] Create header image in Canva
 * [ ] Optional: Find ways to break up content with quotes or images
 * [ ] Verify look of article locally
   * Would any images look better `wide` or without the `figcaption`?
