@@ -55,3 +55,18 @@ jobs:
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
           SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
+        # Output blog post for 
+      - name: Slack Community Notification
+        id: slack
+        uses: slackapi/slack-github-action@v1.18.0
+        if: steps.check_files.outputs.files_exists == 'true'
+        with:
+          # This is set in the webhook it seems
+          channel-id: 'alerts'
+          payload: |
+            {
+              "text": "${{ env.PUBLISHED_LIST }}"
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_COMMUNITY_BLOG_WEBHOOK_URL }}
+          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
