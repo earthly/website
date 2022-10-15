@@ -11,9 +11,9 @@ internal-links:
 
 ## Introduction
 
-Kubernetes is a powerful container orchestration tool that can help you manage your microservices. Often when you have a microservice setup, each microservice requires it's own set of configuration in the Kubernetes cluster that makes it run. The problem is, maintaining closely similar configurations for your microservices, particularly those that use similar tech stacks, can lead to repetitive code that becomes a cumbersome to maintain.
+Kubernetes is a powerful [container](/blog/docker-slim) orchestration tool that can help you manage your microservices. Often when you have a microservice setup, each microservice requires it's own set of configuration in the Kubernetes cluster that makes it run. The problem is, maintaining closely similar configurations for your microservices, particularly those that use similar tech stacks, can lead to repetitive code that becomes a cumbersome to maintain.
 
-This can be made simpler if all your microservices are managed by a single configuration template. Changes made to this configuration template are easily applied to all the microservices using it. In addition to the maintenance ease, a configuration template can also make it easier to collaborate with other developers because all your microservice configurations and setup are in one place.
+This can be made simpler if all your microservices are managed by a single configuration template. Changes made to this configuration template are easily applied to all the microservices using it. In addition to the maintenance ease, a configuration template can also [make](/blog/using-cmake) it easier to collaborate with other developers because all your microservice configurations and setup are in one place.
 
 In this article, you will learn how to create a configuration template for your microservice infrastructure using custom resources and controllers.
 
@@ -136,7 +136,7 @@ In the `spec` section, you can also define different data structures for the var
 
 ~~~
 
-Next, you can define a typed data structure for your custom resource in the `schema` section. You will collect the `serviceName` for this tutorial, which will be used to create a unique namespace for each microservice. The `environment` field allows you to specify the microservice's development stage, which can be `production`, `staging`, or `development`. The `deploymentReplicas` property allows you to manage the auto scaling of each microservice deployment and has a default value of 1 and a maximum value of 5. You can specify the docker image name and version for each microservice using the `imageName` and `imageVersion` parameters.
+Next, you can define a typed data structure for your custom resource in the `schema` section. You will collect the `serviceName` for this tutorial, which will be used to create a unique namespace for each microservice. The `environment` field allows you to specify the microservice's development stage, which can be `production`, `staging`, or `development`. The `deploymentReplicas` property allows you to manage the auto scaling of each microservice [deployment](/blog/deployment-strategies) and has a default value of 1 and a maximum value of 5. You can specify the docker image name and version for each microservice using the `imageName` and `imageVersion` parameters.
 
 ~~~{.bash caption=">_"}
 # either Namespaced or Cluster
@@ -221,7 +221,7 @@ apptemplate.myapp.domain.com/sample-service created
 
 The `sample-service` microservice specific configuration has been created, and can now be used to modify your main configuration template.
 
-Next, create your main configuration template. This template will contain common K8s configuration files like deployment, service, statefulset, ingress, e.t.c. These configurations will need to be in a git repo for easy maintenance. For the purpose of this tutorial, you can use the configurations in this repository, <https://github.com/Doctordrayfocus/AppTemplateConfigs>
+Next, create your main configuration template. This template will contain common K8s configuration files like deployment, service, statefulset, [ingress](/blog/building-on-kubernetes-ingress), e.t.c. These configurations will need to be in a git repo for easy maintenance. For the purpose of this tutorial, you can use the configurations in this repository, <https://github.com/Doctordrayfocus/AppTemplateConfigs>
 
 Clone the repository and change into its directory
 
@@ -418,7 +418,7 @@ The `drayfocus/apptemplate-controller:0.49` docker image is used as the engine t
 
 > If you are interested in how the `drayfocus/apptemplate-controller:0.49` docker image works, you can browse the code on [github](https://github.com/Doctordrayfocus/AppTemplateController).
 
-Now, apply all the controller configurations to your cluster,
+Now, apply all the controller configurations to your [cluster](/blog/kube-bench,
 
 ~~~{.bash caption=">_"}
 cd  ..  &&  kubectl apply -f controller
@@ -505,4 +505,3 @@ In this article, you learned how to use kubernetes `custom resources` and contro
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
