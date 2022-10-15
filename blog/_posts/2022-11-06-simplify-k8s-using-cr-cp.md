@@ -11,25 +11,25 @@ internal-links:
 
 ## Introduction
 
-Kubernetes is a powerful container orchestration tool that can help you manage your microservices. Often when you have a microservice setup, each microservice requires it’s own set of configuration in the Kubernetes cluster that makes it run. The problem is, maintaining closely similar configurations for your microservices, particularly those that use similar tech stacks, can lead to repetitive code that becomes a cumbersome to maintain.
+Kubernetes is a powerful container orchestration tool that can help you manage your microservices. Often when you have a microservice setup, each microservice requires it's own set of configuration in the Kubernetes cluster that makes it run. The problem is, maintaining closely similar configurations for your microservices, particularly those that use similar tech stacks, can lead to repetitive code that becomes a cumbersome to maintain.
 
 This can be made simpler if all your microservices are managed by a single configuration template. Changes made to this configuration template are easily applied to all the microservices using it. In addition to the maintenance ease, a configuration template can also make it easier to collaborate with other developers because all your microservice configurations and setup are in one place.
 
 In this article, you will learn how to create a configuration template for your microservice infrastructure using custom resources and controllers.
 
-> To follow along with this tutorial, you can make use of [Killercoder’s kubernetes cluster playground](https://killercoda.com/playgrounds/scenario/kubernetes).
+> To follow along with this tutorial, you can make use of [Killercoder's kubernetes cluster playground](https://killercoda.com/playgrounds/scenario/kubernetes).
 
-## Create a custom resource
+## Create A Custom Resource
 
 To begin, create a new folder called `k8AppTemplate`. This folder contains all of the files required by your configuration template.
 
-```
+~~~{.bash caption=">_"}
 mkdir k8AppTemplate && cd $_
-```
+~~~
 
 Next, create the `AppTemplateResource.yaml` file in the `k8AppTemplate` folder and copy and paste the following code into the file:
 
-```yml
+~~~{.bash caption=">_"}
 apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
@@ -76,25 +76,25 @@ spec:
     # shortNames allow shorter string to match your resource on the CLI
     shortNames:
     - apptemp
-```
+~~~
 
 The first two lines define the apiVersion of Kubernetes and the resource type (CustomResourceDefinition)
 
-```yml
+~~~{.bash caption=">_"}
 apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
-```
+~~~
 
 The metadata session stores additional information about your resource and also defines its name. Resource names are typically an extension of a subdomain, as shown above with `apptemplate.myapp.domain.com`  standing as the name and `myapp.domain.com` as the subdomain. You are free to use any subdomain you want.
 
-```
+~~~{.bash caption=">_"}
 metadata:
     name: apptemplates.myapp.domain.com
-```
+~~~
 
 The structural definition of your custom resources is held in the `spec` session. It allows you to specify what data your custom resource collects and how that data should be validated.
 
-```yml
+~~~{.bash caption=">_"}
 spec:
   # group name to use for REST API: /apis/<group>/<version>
   group: myapp.domain.com
@@ -107,13 +107,13 @@ spec:
       storage: true
       schema:
         …
-```
+~~~
 
 The `group` value must be similar to the subdomain you used in the `metadata` section to name your custom resource, in this case, `myapp.domain.com`. In the kubernetes REST API, the group name is used to uniquely identify your resources - `/apis/group/<version>`.
 
 In the `spec` section, you can also define different data structures for the various Kubernetes versions you intend to support. Only version 1 will be supported in this tutorial.
 
-```yml
+~~~{.bash caption=">_"}
  schema:
         openAPIV3Schema:
           type: object
@@ -134,11 +134,11 @@ In the `spec` section, you can also define different data structures for the var
                 imageVersion:
                   type: string
 
-```
+~~~
 
-Next, you can define a typed data structure for your custom resource in the `schema` section. You will collect the `serviceName` for this tutorial, which will be used to create a unique namespace for each microservice. The `environment` field allows you to specify the microservice’s development stage, which can be `production`, `staging`, or `development`. The `deploymentReplicas` property allows you to manage the auto scaling of each microservice deployment and has a default value of 1 and a maximum value of 5. You can specify the docker image name and version for each microservice using the `imageName` and `imageVersion` parameters.
+Next, you can define a typed data structure for your custom resource in the `schema` section. You will collect the `serviceName` for this tutorial, which will be used to create a unique namespace for each microservice. The `environment` field allows you to specify the microservice's development stage, which can be `production`, `staging`, or `development`. The `deploymentReplicas` property allows you to manage the auto scaling of each microservice deployment and has a default value of 1 and a maximum value of 5. You can specify the docker image name and version for each microservice using the `imageName` and `imageVersion` parameters.
 
-```
+~~~{.bash caption=">_"}
 # either Namespaced or Cluster
   scope: Namespaced
   names:
@@ -152,30 +152,31 @@ Next, you can define a typed data structure for your custom resource in the `sch
     shortNames:
     - apptemp
 
-```
+~~~
 
 You can make your custom resource available to the entire cluster or to a specific namespace. It will be namespace scoped for this tutorial. The other names for your custom resources - `plural`, `singular`, and `shortNames` - are required when using Kubectl or the Kubernetes API to interact with your custom resource.
 
 Save the `AppTemplateResource.yaml` file and then apply the custom resource to your cluster:
 
-```bash
+~~~{.bash caption=">_"}
 kubectl apply -f  AppTemplateResource.yaml
-```
+~~~
+
 And you should see a confirmation output,
 
-```text
+~~~{.bash caption=">_"}
 customresourcedefinition.apiextensions.k8s.io/apptemplates.myapp.domain.com created
-```
+~~~
 
-Now, proceed to use the AppTemplate custom resource to create your first microservice configuation. Add a new file, `sample-service.yaml` to the `k8AppTemplate` folder,
+Now, proceed to use the AppTemplate custom resource to create your first microservice configuration. Add a new file, `sample-service.yaml` to the `k8AppTemplate` folder,
 
-```
+~~~{.bash caption=">_"}
 touchsample-service.yaml
-```
+~~~
 
-Next, copy and paste the code below into the file,
+Next, copy, and paste the code below into the file,
 
-```yml
+~~~{.bash caption=">_"}
 apiVersion: "myapp.domain.com/v1"
 kind: AppTemplate
 metadata:
@@ -186,56 +187,57 @@ spec:
   deploymentReplicas: 2
   imageName: "sample-service_node_app"
   imageVersion: "0.1"
-```
+~~~
 
 The first two lines defines version of the custom resource to use and the `kind` of resource as defined in the custom resources
 
-```
+~~~{.bash caption=">_"}
 apiVersion: "myapp.domain.com/v1"
 kind: AppTemplate
-```
+~~~
 
 The `spec` section contains all the defined data specifications as defined in the custom resource.
 
-```yml
+~~~{.bash caption=">_"}
 spec:
   serviceName: sample-service
   environment: development
   deploymentReplicas: 2
   imageName: "sample-service_node_app"
   imageVersion: "0.1"
-```
+~~~
 
 Save the file and apply, the new microservice apptemplate configuration;
 
-```
+~~~{.bash caption=">_"}
 kubectl apply -f sample-service.yaml
-```
+~~~
 
 You should see an output similar to this.
 
-```
+~~~{.bash caption=">_"}
 apptemplate.myapp.domain.com/sample-service created
-```
+~~~
 
-The `sample-service` microservice specific configuration has been created, and can now be used to modify your main configuration template. 
+The `sample-service` microservice specific configuration has been created, and can now be used to modify your main configuration template.
 
-Next, create your main configuration template. This template will contain common K8s configuration files like deployment, service, statefulset, ingress, e.t.c. These configurations will need to be in a git repo for easy maintenance. For the purpose of this tutorial, you can use the configurations in this repository, https://github.com/Doctordrayfocus/AppTemplateConfigs 
+Next, create your main configuration template. This template will contain common K8s configuration files like deployment, service, statefulset, ingress, e.t.c. These configurations will need to be in a git repo for easy maintenance. For the purpose of this tutorial, you can use the configurations in this repository, <https://github.com/Doctordrayfocus/AppTemplateConfigs>
 
 Clone the repository and change into its directory
 
-```
+~~~{.bash caption=">_"}
 git clone https://github.com/Doctordrayfocus/AppTemplateConfigs && cd AppTemplateConfigs
-```
+~~~
+
 > The configuration files in the repository above are mainly for example purposes. The aim is to show you how you can make use of the microservice-specific configuration created from the custom resource to modify the main configuration template.
 
-This configuration template contains deployment.yaml, service.yaml, namespace.yaml files and an `extras` folder.  Each of your configuration files has access to all the specifications defined in the appTemplate custom resource. For instance, check out the deployment.yaml code
+This configuration template contains deployment.yaml, service.yaml, namespace.yaml files and an `extras` folder. Each of your configuration files has access to all the specifications defined in the appTemplate custom resource. For instance, check out the deployment.yaml code
 
-```
+~~~{.bash caption=">_"}
 cat deployment.yaml
-```
+~~~
 
-```yml
+~~~{.bash caption=">_"}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -258,53 +260,54 @@ spec:
         image: ${DOCKER_REGISTRY}/${imageName}:${imageVersion}
         ports:
         - containerPort: 3000
-```
+~~~
 
 Notice that the `serviceName`, `environment`, `deploymentReplicas` and so on, are used as placeholders in this format - `${spec}`.  
 
-You should also take note of the `DOCKER_REGISTRY` placeholder. It is an example of a global variable that can be used by the custom controller that manages the deployment of your microservice. You shouldn’t worry about it for now, it will be explained later in the tutorial.
+You should also take note of the `DOCKER_REGISTRY` placeholder. It is an example of a global variable that can be used by the custom controller that manages the deployment of your microservice. You shouldn't worry about it for now, it will be explained later in the tutorial.
 
 Now that your main configuration template is ready, there has to be a system that will generate new configurations from the main template using the provided microservice-specific configuration and create each microservice by applying these generated configurations to the kubernetes cluster. This system can be provided by a kubernetes custom controller.
 
+## Create A Kubernetes Custom Controller
 
-## Create a kubernetes custom controller
-
-Kubernetes custom controllers are applications that make use of Kubernetes’ declarative REST API to interact with the Kubernetes cluster. They are usually deployed on the cluster and can be written in any programming languages including Go, NodeJS, Python, Java, e.t.c.
+Kubernetes custom controllers are applications that make use of Kubernetes' declarative REST API to interact with the Kubernetes cluster. They are usually deployed on the cluster and can be written in any programming languages including Go, NodeJS, Python, Java, e.t.c.
 
 To proceed, create a new folder named `controller`. This folder will contain all the configurations for your custom controller.
 
-```
+~~~{.bash caption=">_"}
 mkdir controller && cd $_ 
-```
+~~~
 
-Because the controller will be accessing and handling resources in your cluster, you will need to configure its access. 
+Because the controller will be accessing and handling resources in your cluster, you will need to configure its access.
 
 To do that, first create a new service account for the controller. ServiceAccount allows you to control who or what has access to your cluster and which resources they can use.
 
 Create a new file `AppServiceAccount.yaml`,
 
-```
+~~~{.bash caption=">_"}
 touch AppServiceAccount.yaml
-```
+~~~
 
 Copy and paste the following into the file:
-```yml
+
+~~~{.bash caption=">_"}
 apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: app-template
-```
-Next, you need to add a `ClusterRoleBinding` to assign some roles and permissions to the service account.  For the controller to function properly, it would need to have full access to the cluster - hence `cluster-admin` role.
+~~~
+
+Next, you need to add a `ClusterRoleBinding` to assign some roles and permissions to the service account. For the controller to function properly, it would need to have full access to the cluster - hence `cluster-admin` role.
 
 Create a new file `AppTemplateRoleBinding.yaml`.
 
-```
+~~~{.bash caption=">_"}
 touch AppTemplateRoleBinding.yaml
-```
+~~~
 
 Copy and paste the code below,
 
-```yml
+~~~{.bash caption=">_"}
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
@@ -317,19 +320,19 @@ subjects:
 - kind: ServiceAccount
   name: app-template
   namespace: default
-```
+~~~
 
 Next, create a configuration for your custom controller using a `ConfigMap`. This configuration will primarily hold information needed by the controller to detect and manage the custom resource you created earlier. Also, you can use it to set global configurations for your main configuration as used in the `deployment.yaml` file above (DOCKER_REGISTRY).
 
 To continue, create a new file `configMap.yaml`,
 
-```
+~~~{.bash caption=">_"}
 touchconfigMap.yaml
-```
+~~~
 
 Copy and paste the following code,
 
-```yml
+~~~{.bash caption=">_"}
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -355,20 +358,21 @@ data:
 
   # repo sync interval (in seconds)
   SYNC_INTERVAL: "3"
-```
+~~~
+
 `RESOURCE_GROUP` defines the group of your custom resource, `RESOURCE_NAME` defines the plural name of your `apptemplate` custom resource, `API_VERSION` defines the api version the custom controller should use, `RESOURCE_NAMESPACE` defines the namespace of your custom resources, `CONFIG_REPO_URL` takes the git repository of your main configuration template, and `SYNC_INTERVAL` defines how frequent the controller should check for updates in your main configuration repository. The configMap can also take global configuration data like the `DOCKER_REGISTRY` data above.
 
-Finally, you need to deploy the controller on your kubernetes cluster, so that it can have access to the cluster. 
+Finally, you need to deploy the controller on your kubernetes cluster, so that it can have access to the cluster.
 
 Now, create a new file `deployment.yaml`,
 
-```
+~~~{.bash caption=">_"}
 touch deployment.yaml
-```
+~~~
 
-Next, copy and paste the following into the file,
+Next, copy, and paste the following into the file,
 
-```yml
+~~~{.bash caption=">_"}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -393,70 +397,70 @@ spec:
           envFrom:
             - configMapRef:
                 name: app-template-config
-```
+~~~
 
 In the deployment file, the service account created earlier is attached to the custom controller.
 
-```
+~~~{.bash caption=">_"}
   spec:
       serviceAccountName: app-template
-```
+~~~
 
 The configMap was also attached to the custom controller,
 
-```
+~~~{.bash caption=">_"}
  envFrom:
             - configMapRef:
                 name: app-template-config
-```
+~~~
 
 The `drayfocus/apptemplate-controller:0.49` docker image is used as the engine that runs the custom controller.
 
 > If you are interested in how the `drayfocus/apptemplate-controller:0.49` docker image works, you can browse the code on [github](https://github.com/Doctordrayfocus/AppTemplateController).
 
-
 Now, apply all the controller configurations to your cluster,
 
-```
+~~~{.bash caption=">_"}
 cd  ..  &&  kubectl apply -f controller
-```
+~~~
 
 You should see the following confirmation:
 
-```
+~~~{.bash caption=">_"}
 serviceaccount/app-template created
 clusterrolebinding.rbac.authorization.k8s.io/app-template-role-binding created
 configmap/app-template-config created
 deployment.apps/apptemplate-controller created
-```
+~~~
 
 Now that your custom controller is running, the `sample-service` microservice you created earlier using the apptemplate custom resource should have all its resources (namespace, deployment, services, ) deployed. To confirm this, check for the microservice namespace
 
-```
+~~~{.bash caption=">_"}
 kubectl get namespaces
-```
+~~~
 
-You should be able to find the ${enviroment}-sample-service namespace, where the `environment` is the value of the environment in the apptemplate e.g development
+You should be able to find the ${environment}-sample-service namespace, where the `environment` is the value of the environment in the apptemplate e.g development
 
-```
+~~~{.bash caption=">_"}
 …
 development-sample-service    Active     41s
 …
-```
+~~~
 
 You can also check for its pods
 
-```
+~~~{.bash caption=">_"}
 kubectl get pods -n development-sample-service
-```
+~~~
 
-```
+~~~{.bash caption=">_"}
 Sample-service-deployment-69d89bf574-2j4xf        1/1      Running   0    56s
 sample-service-deployment-69d89bf574-m5gnx      1/1     Running    0    56s
-```
+~~~
 
-To create a new microservice, simply create a new `apptemplate` resources, 
-```
+To create a new microservice, simply create a new `apptemplate` resources,
+
+~~~{.bash caption=">_"}
 # sample-service-2.yaml
 apiVersion: "myapp.domain.com/v1"
 kind: AppTemplate
@@ -468,26 +472,31 @@ spec:
   deploymentReplicas: 1
   imageName: "sample-service_node_app"
   imageVersion: "0.1"
-```
+~~~
 
 Then apply the microservice template to your cluster,
 
-```
+~~~{.bash caption=">_"}
 kubectl apply -f sample-service-2.yaml
-```
+~~~
+
 You can also view, delete, manage your apptemplate custom resources using `kubectl`.
 
-```
+~~~{.bash caption=">_"}
 kubectl get apptemplate
-```
-```
+~~~
+
+~~~{.bash caption=">_"}
 NAME                   AGE
 sample-service        13m
 sample-service-2      1m
-```
+~~~
+
 ## Conclusion
 
-In this article, you learned how to use kubernetes `custom resources` and controllers to simplify your kubernetes configuration management. You made use of kubernetes `custom resources` to define microservice-specific configurations. Then you created a custom controller that used these configurations to generate your microservice configuration from the main configuration template. Lastly,you learned how to give your controller the right permission to your cluster using `ServiceAccount` and `ClusterRoleBinding`. 
+In this article, you learned how to use kubernetes `custom resources` and controllers to simplify your kubernetes configuration management. You made use of kubernetes `custom resources` to define microservice-specific configurations. Then you created a custom controller that used these configurations to generate your microservice configuration from the main configuration template. Lastly,you learned how to give your controller the right permission to your cluster using `ServiceAccount` and `ClusterRoleBinding`.
+
+{% include cta/cta1.html %}
 
 ## Outside Article Checklist
 
@@ -495,7 +504,5 @@ In this article, you learned how to use kubernetes `custom resources` and contro
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
