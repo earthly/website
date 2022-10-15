@@ -6,7 +6,9 @@ toc: true
 author: Ayomide Akinola
 
 internal-links:
- - just an example
+ - Kubernetes
+ - Cluster
+ - Microservices
 ---
 
 ## Introduction
@@ -504,4 +506,3 @@ In this article, you learned how to use kubernetes `custom resources` and contro
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Add keywords for internal links to front-matter
