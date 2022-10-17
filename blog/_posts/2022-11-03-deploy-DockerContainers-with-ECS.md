@@ -55,6 +55,8 @@ Firstly, we need to create a virtual environment and install our dependencies.
 virtualenv env
 ~~~
 
+-
+
 ~~~{.bash caption=">_"}
 pip install django djangorestframework
 ~~~
@@ -64,6 +66,8 @@ Next, we need to activate our virtual environment and create our Django project.
 ~~~{.bash caption=">_"}
 source env/bin/actviate
 ~~~
+
+-
 
 ~~~{.bash caption=">_"}
 django-admin startproject app .
@@ -418,7 +422,7 @@ We can now send an HTTP request to that server. We can test this with Postman
 
 </div>
 
-As you can see, we got a response of {"message": "Hello World"}.
+As you can see, we got a response of "{"message": "Hello World"}".
 
 With that, we have just successfully deployed our docker container.
 
