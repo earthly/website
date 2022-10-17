@@ -422,7 +422,7 @@ We can now send an HTTP request to that server. We can test this with Postman
 
 </div>
 
-As you can see, we got a response of "{"message": "Hello World"}"a.
+As you can see, we got a response of "{"message": "Hello World"}".
 
 With that, we have just successfully deployed our docker container.
 
