@@ -58,15 +58,12 @@ jobs:
         # Output blog post for 
       - name: Slack Community Notification
         id: slack2
-        uses: slackapi/slack-github-action@v1.18.0
         if: steps.check_files.outputs.files_exists == 'true'
         with:
-          # This is set in the webhook it seems
-          channel-id: 'alerts'
-          payload: |
-            {
-              "text": "${{ env.PUBLISHED_LIST }}"
-            }
+         run: |-
+                  echo "Community Blog Alert"
+                  curl -X POST -H 'Content-type: application/json' --data '{"text":"${{ env.PUBLISHED_LIST }}"}' $SLACK_WEBHOOK_URL
+
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_COMMUNITY_BLOG_WEBHOOK_URL }}
           SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
