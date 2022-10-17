@@ -42,7 +42,7 @@ jobs:
           files: "posts.txt"
       # Output published list
       - name: Slack Notification
-        id: slack
+        id: slack1
         uses: slackapi/slack-github-action@v1.18.0
         if: steps.check_files.outputs.files_exists == 'true'
         with:
@@ -57,7 +57,7 @@ jobs:
           SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
         # Output blog post for 
       - name: Slack Community Notification
-        id: slack
+        id: slack2
         uses: slackapi/slack-github-action@v1.18.0
         if: steps.check_files.outputs.files_exists == 'true'
         with:
