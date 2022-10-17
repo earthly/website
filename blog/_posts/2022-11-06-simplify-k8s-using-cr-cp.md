@@ -23,6 +23,8 @@ In this article, you will learn how to create a configuration template for your 
 
 ## Create A Custom Resource
 
+![Custom Resource]({{site.images}}{{page.slug}}/resource.jpg)\
+
 To begin, create a new folder called `k8AppTemplate`. This folder contains all of the files required by your configuration template.
 
 ~~~{.bash caption=">_"}
@@ -164,13 +166,13 @@ You can make your custom resource available to the entire cluster or to a specif
 
 Save the `AppTemplateResource.yaml` file and then apply the custom resource to your cluster:
 
-~~~{.yaml caption="AppTemplateResource.yaml"}
+~~~{.bash caption=">_"}
 kubectl apply -f  AppTemplateResource.yaml
 ~~~
 
 And you should see a confirmation output,
 
-~~~{.yaml caption="AppTemplateResource.yaml"}
+~~~{.bash caption="Output"}
 
 customresourcedefinition.apiextensions.k8s.io/apptemplates.myapp.domain.com created
 ~~~
@@ -222,7 +224,7 @@ kubectl apply -f sample-service.yaml
 
 You should see an output similar to this.
 
-~~~{.bash caption=">_"}
+~~~{.bash caption="Output"}
 apptemplate.myapp.domain.com/sample-service created
 ~~~
 
@@ -277,6 +279,8 @@ You should also take note of the `DOCKER_REGISTRY` placeholder. It is an example
 Now that your main configuration template is ready, there has to be a system that will generate new configurations from the main template using the provided microservice-specific configuration and create each microservice by applying these generated configurations to the kubernetes cluster. This system can be provided by a kubernetes custom controller.
 
 ## Create A Kubernetes Custom Controller
+
+![Custom Controller]({{site.images}}{{page.slug}}/controller.jpg)\
 
 Kubernetes custom controllers are applications that make use of Kubernetes' declarative REST API to interact with the Kubernetes cluster. They are usually deployed on the cluster and can be written in any programming languages including Go, NodeJS, Python, Java, e.t.c.
 
@@ -507,9 +511,3 @@ sample-service-2      1m
 In this article, you learned how to use kubernetes `custom resources` and controllers to simplify your kubernetes configuration management. You made use of kubernetes `custom resources` to define microservice-specific configurations. Then you created a custom controller that used these configurations to generate your microservice configuration from the main configuration template. Lastly,you learned how to give your controller the right permission to your cluster using `ServiceAccount` and `ClusterRoleBinding`.
 
 {% include cta/cta1.html %}
-
-## Outside Article Checklist
-
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
