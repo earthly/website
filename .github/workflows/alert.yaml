@@ -59,11 +59,9 @@ jobs:
       - name: Slack Community Notification
         id: slack2
         if: steps.check_files.outputs.files_exists == 'true'
-        with:
-         run: |-
+        run: |-
                   echo "Community Blog Alert"
                   curl -X POST -H 'Content-type: application/json' --data '{"text":"${{ env.PUBLISHED_LIST }}"}' $SLACK_WEBHOOK_URL
-
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_COMMUNITY_BLOG_WEBHOOK_URL }}
           SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
