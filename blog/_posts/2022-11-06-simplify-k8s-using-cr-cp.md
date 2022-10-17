@@ -247,6 +247,8 @@ This configuration template contains deployment.yaml, service.yaml, namespace.ya
 cat deployment.yaml
 ~~~
 
+-
+
 ~~~{.yaml caption="deployment.yaml"}
 apiVersion: apps/v1
 kind: Deployment
@@ -439,7 +441,7 @@ cd  ..  &&  kubectl apply -f controller
 
 You should see the following confirmation:
 
-~~~{.bash caption=">_"}
+~~~{.bash caption="output"}
 serviceaccount/app-template created
 clusterrolebinding.rbac.authorization.k8s.io/app-template-role-binding created
 configmap/app-template-config created
@@ -452,9 +454,9 @@ Now that your custom controller is running, the `sample-service` microservice yo
 kubectl get namespaces
 ~~~
 
-You should be able to find the ${environment}-sample-service namespace, where the `environment` is the value of the environment in the apptemplate e.g development
+You should be able to find the `${environment}-sample-service namespace`, where the `environment` is the value of the environment in the apptemplate e.g development
 
-~~~{.bash caption=">_"}
+~~~{.bash caption="output"}
 …
 development-sample-service    Active     41s
 …
@@ -465,6 +467,8 @@ You can also check for its pods
 ~~~{.bash caption=">_"}
 kubectl get pods -n development-sample-service
 ~~~
+
+-
 
 ~~~{.bash caption=">_"}
 
@@ -499,6 +503,8 @@ You can also view, delete, manage your apptemplate custom resources using `kubec
 ~~~{.bash caption=">_"}
 kubectl get apptemplate
 ~~~
+
+-
 
 ~~~{.bash caption=">_"}
 NAME                  AGE
