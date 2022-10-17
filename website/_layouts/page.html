@@ -7,23 +7,23 @@ layout: default
     {% include home/header.html %}
 
     <div class="p-10">
-      <article class="wrapper post flex flex-col justify-center items-center">
+      <article class="wrapper post">
         <header class="post-header">
           <h1 class="
           mt-2
           mb-8
-          text-[6.25rem]
+          text-4xl
           font-extrabold
           leading-none
           tracking-tight
-          text-[#007e5d]
-          sm:mt-14 sm:mb-10
+          text-gray-900
+          sm:text-5xl sm:mt-14 sm:mb-10
         ">
             {{ page.title | escape }}
           </h1>
         </header>
 
-        <div class="post-content text-center">{{ content }}</div>
+        <div class="post-content">{{ content }}</div>
       </article>
     </div>
   </div>
