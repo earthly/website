@@ -55,8 +55,6 @@ Firstly, we need to create a virtual environment and install our dependencies.
 virtualenv env
 ~~~
 
--
-
 ~~~{.bash caption=">_"}
 pip install django djangorestframework
 ~~~
@@ -66,8 +64,6 @@ Next, we need to activate our virtual environment and create our Django project.
 ~~~{.bash caption=">_"}
 source env/bin/actviate
 ~~~
-
--
 
 ~~~{.bash caption=">_"}
 django-admin startproject app .
