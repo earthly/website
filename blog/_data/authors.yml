@@ -304,3 +304,7 @@ Mustapha Ahmad Ayodeji:
     name    : "Mustapha Ahmad Ayodeji"
     bio     : "Ahmad is a Software developer and a Technical writer with so much interest for Django related frameworks."
     avatar  : "/assets/images/authors/ahmad.jpg"
+Somtochukwu Uchegbu:
+    name    : "Somtochukwu Uchegbu"
+    bio     : "Somtochukwu is a DevOps engineer and Technical Writer that likes writing technical articles that break down complex technical concepts."
+    avatar  : "/assets/images/authors/Somtochukwu.jpg"
