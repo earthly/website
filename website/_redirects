@@ -9,3 +9,6 @@
 
 # Renamed article
 /blog/dont-use-earthly /blog/repeatable-builds-every-time
+
+# public-key-auth implementation details, referenced by earthly-core cli during account registration
+/public-key-auth https://docs.earthly.dev/docs/misc/public-key-auth
