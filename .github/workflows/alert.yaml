@@ -16,8 +16,6 @@ jobs:
         uses: actions/checkout@v2
       ## Write into published.txt what's been published
       ## Write into steps.published_check.outputs the outputs
-      ## Problem - this doesn't seem to get more than one result
-      ##           Might need to use published.txt rather than output
       - name: Has new published documents
         id: published_check
         run: |-  
@@ -25,8 +23,13 @@ jobs:
             pattern=$(date '+%Y-%m-%d')
             if test -n "$(find ./blog/_posts -maxdepth 1 -name "*$pattern*" -print)"
             then
+              echo "Setting Publish Flag" 
               echo "PUBLISHED=1" >> $GITHUB_ENV
+
+              echo "Writing blog paths to posts.txt" 
               find ./blog/_posts -maxdepth 1 -name "*$pattern*" -print > posts.txt
+
+              echo "Writing list of post urls to PUBLISHED_LIST for future steps" 
               echo 'PUBLISHED_LIST<<EOF' >> $GITHUB_ENV
               awk '{ print "https://earthly.dev/blog/"substr( $0, 26, length($0)-28 ) }' < posts.txt | tr '\n' "," | sed 's/,/\\n/g' >> $GITHUB_ENV
               echo '\n' >> $GITHUB_ENV
@@ -42,31 +45,21 @@ jobs:
           files: "posts.txt"
       # Output published list
       - name: Slack Notification
-        id: slack
-        uses: slackapi/slack-github-action@v1.18.0
+        id: slack1
         if: steps.check_files.outputs.files_exists == 'true'
-        with:
-          # This is set in the webhook it seems
-          channel-id: 'alerts'
-          payload: |
-            {
-              "text": "Published blog posts: ${{ env.PUBLISHED_LIST }}"
-            }
+        run: |-
+                  echo "Community Blog Alert"
+                  curl -X POST -H 'Content-type: application/json' --data '{"text":"${{ env.PUBLISHED_LIST }}"}' $SLACK_WEBHOOK_URL
         env:
+          ## Zapier web hook (which controls formatting)
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
         # Output blog post for 
       - name: Slack Community Notification
-        id: slack
-        uses: slackapi/slack-github-action@v1.18.0
+        id: slack2
         if: steps.check_files.outputs.files_exists == 'true'
-        with:
-          # This is set in the webhook it seems
-          channel-id: 'alerts'
-          payload: |
-            {
-              "text": "${{ env.PUBLISHED_LIST }}"
-            }
+        run: |-
+                  echo "Community Blog Alert"
+                  curl -X POST -H 'Content-type: application/json' --data '{"text":"${{ env.PUBLISHED_LIST }}"}' $SLACK_WEBHOOK_URL
         env:
+          ## Zapier web hook (which controls formatting)
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_COMMUNITY_BLOG_WEBHOOK_URL }}
-          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK

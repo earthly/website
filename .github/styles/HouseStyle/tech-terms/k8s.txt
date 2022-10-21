@@ -39,3 +39,6 @@ Kustomizations
 kustomization
 kustomizations
 kustomize
+
+apptemplate
+statefulset
