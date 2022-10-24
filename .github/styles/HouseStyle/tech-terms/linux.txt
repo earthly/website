@@ -70,3 +70,10 @@ composable
 lima
 colima
 lts
+dirs
+chrun
+libc
+namepaces
+vm
+chrooted
+chrooting
