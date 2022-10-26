@@ -27,9 +27,7 @@ require github.com/jalletto/parserGo v0.0.2
 replace github.com/jalletto/parserGo => ./local-path/parserGo
 ~~~
 
-This works for small projects, but you still need to remember to remove the replace before pushing your code since you can't be certain other devs will have the same local set up as you.
-
-As [monorepos](/blog/monorepo-vs-polyrepo) have become more popular, it's becoming common to have [repos with many modules](/blog/golang-monorepo) , and if you needed to work on several of them at once, updating and keeping track of `replace`s in multiple `go.mod` files becomes cumbersome. These are the problems Go workspaces aim to solve.
+This works for small projects, but you still need to remember to remove the replace before pushing your code since you can't be certain other devs will have the same local set up as you. And if you are working on a project with dozens of modules, you can see how this would become cumbersome. These are the problems Go workspaces aim to solve.
 
 ## Workspaces
 
@@ -103,7 +101,7 @@ module github.com/jalletto/service
 go 1.18
 ~~~
 
-But when we run `go mod tidy` to try to add are requirements we get an error.
+But when we run `go mod tidy` to try to add our requirements we get an error.
 
 ~~~{.bash caption=">_"}
 go mod tidy
@@ -196,8 +194,3 @@ Workspaces are unique to each developer and should not be checked into source co
 The beauty is that if I add any other modules to this workspace that have my `adder` library listed as a requirement, they will also default to using this local version that I'm making changes to. All without having to edit anything in the `go.mod` for each module.
 
 {% include cta/cta1.html %}
-
-### Writing Article Checklist
-
-- [ ] Create header image in Canva
-- [ ] Verify look of article locally
