@@ -1,5 +1,5 @@
 ---
-title: "WebSocket Protocol with Django Channelsax"
+title: "WebSocket Protocol with Django Channels"
 categories:
   - Tutorials
 toc: true
