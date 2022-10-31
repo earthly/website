@@ -9,9 +9,9 @@ internal-links:
  - just an example
 ---
 
-Recently, multi-cloud and hybrid cloud deployments have gained significant traction as they let you optimize costs, increase scalability, improve agility, and achieve greater operational resilience. However, with these deployment strategies, managing different Kubernetes clusters with multiple tools and dashboards can be a challenge; Rancher can help you seamlessly manage such deployments at scale.
+Recently, multi-cloud and hybrid cloud deployments have gained significant traction as they let you optimize costs, increase scalability, improve agility, and achieve greater operational resilience. However, with these [deployment strategies](/blog/deployment-strategies), managing different Kubernetes clusters with multiple tools and dashboards can be a challenge; Rancher can help you seamlessly manage such deployments at scale.
 
-This article will explore the features and capabilities of [Rancher](https://rancher.com), an open source [Cloud Native Computing Foundation (CNCF) certified Kubernetes distribution](https://www.cncf.io/certification/software-conformance/) designed to make it easy to deploy, manage, and monitor multi-cluster environments from a centralized UI. Here, you'll learn about Rancher and the different deployment options it provides, and understand the aspects that make it unique.
+This article will explore the features and capabilities of [Rancher](https://rancher.com), an open source [Cloud Native Computing Foundation (CNCF) certified Kubernetes distribution](https://www.cncf.io/certification/software-conformance/) designed to make it easy to deploy, manage, and monitor multi-cluster environments from a centralized UI. Here, you'll learn about Rancher and the different deployment options it provides, and understand the aspects that [make](/blog/using-cmake) it unique.
 
 ## What Is Rancher?
 
@@ -24,7 +24,7 @@ In a nutshell, Rancher simplifies managing, monitoring, importing, and provision
 
 Here's a breakdown of the main components:
 
-* **Rancher server**: You can think of the Rancher server as the heart of the Rancher cluster, as it includes key components, like [etcd](https://etcd.io), the authentication proxy, the Rancher API server, and cluster controllers. At a high level, its primary function is to allow users to manage, monitor, and provision other Kubernetes clusters through the Rancher UI.
+* **Rancher server**: You can think of the Rancher server as the heart of the Rancher cluster, as it includes key components, like [etcd](https://etcd.io), the authentication [proxy](/blog/mitmproxy), the Rancher API server, and cluster controllers. At a high level, its primary function is to allow users to manage, monitor, and provision other Kubernetes clusters through the Rancher UI.
 * **[Rancher Kubernetes Engine (RKE)](https://rancher.com/docs/rke/latest/en/)**: *RKE* is a term used to refer to both the RKE library and the RKE command-line utility that can be used to create [RKE](https://rancher.com/products/rke) clusters. RKE is also a CNCF-certified Kubernetes distribution that runs entirely within [Docker](https://www.docker.com/) containers, similar to [K3s](https://k3s.io).
 * **Cluster controllers and cluster agents**: These components are responsible for establishing secure communication between the Rancher server and each downstream Kubernetes cluster.
 * **Authentication proxy**: On each Kubernetes API call, this component authenticates the caller with local or external authentication services and forwards that call to the appropriate downstream cluster.
@@ -42,7 +42,7 @@ Rancher allows your DevOps team to seamlessly deploy managed Kubernetes clusters
 
 ### Deploying Kubernetes Clusters on Any Infrastructure
 
-Rancher's flexibility is not limited to deploying Kubernetes clusters on managed platforms. You can also provision and install Kubernetes on-premise or in compute nodes, like Microsoft Azure, [Cloudscale](https://cloudscale.io/), Google, [Amazon Elastic Compute Cloud (Amazon EC2)](https://aws.amazon.com/ec2/), [Alibaba Cloud Elastic Compute Service (ECS)](https://www.alibabacloud.com/product/ecs), [OpenStack](https://www.openstack.org/), and [VMware vSphere](https://www.vmware.com/asean/products/vsphere.html),to name a few. This allows you to create Kubernetes clusters tailored to your organization's needs while avoiding vendor lock-in.
+Rancher's flexibility is not limited to deploying Kubernetes clusters on managed platforms. You can also provision and install Kubernetes on-premise or in compute nodes, like Microsoft [Azure](/blog/continuous-integration), [Cloudscale](https://cloudscale.io/), Google, [Amazon Elastic Compute Cloud (Amazon EC2)](https://aws.amazon.com/ec2/), [Alibaba Cloud Elastic Compute Service (ECS)](https://www.alibabacloud.com/product/ecs), [OpenStack](https://www.openstack.org/), and [VMware vSphere](https://www.vmware.com/asean/products/vsphere.html),to name a few. This allows you to create Kubernetes clusters tailored to your organization's needs while avoiding vendor lock-in.
 
 ### Importing Existing Kubernetes Clusters
 
@@ -238,7 +238,7 @@ In both cases, you can activate, deactivate, or even add new drivers from Ranche
 
 In this article, you learned what Rancher is and how it can help you better manage your Kubernetes clusters regardless of where they're hosted. To that end, you've explored how Rancher solves many Kubernetes pain points by extending its default functionality to allow deployment and monitoring of Kubernetes clusters on any infrastructure, management of hybrid and multi-cluster environments from a single interface, and support for authentication methods such as Active Directory, LDAP, or SAML.In summary, Rancher takes Kubernetes to the next level by adding vital features and enterprise support with no vendor lock-in.
 
-Another tool that is as flexible and easy to use as Rancher is [Earthly](https://earthly.dev), the effortless CI/CD framework that allows you to develop pipelines locally and run them anywhere.
+Another tool that is as flexible and easy to use as Rancher is [Earthly](https://earthly.dev), the effortless [CI/CD](/blog/ci-vs-cd) framework that allows you to develop pipelines locally and run them anywhere.
 
 {% include cta/cta1.html %}
 
@@ -249,5 +249,4 @@ Another tool that is as flexible and easy to use as Rancher is [Earthly](https:/
 * [ ] Verify look of article locally
   * Would any images look better `wide` or without the `figcaption`?
 * [ ] Add keywords for internal links to front-matter
-* [ ] Run `link-opp` and find 1-5 places to incorporate links
 
