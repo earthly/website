@@ -240,6 +240,8 @@ In this article, you learned what Rancher is and how it can help you better mana
 
 Another tool that is as flexible and easy to use as Rancher is [Earthly](https://earthly.dev), the effortless CI/CD framework that allows you to develop pipelines locally and run them anywhere.
 
+{% include cta/cta1.html %}
+
 ## Outside Article Checklist
 
 * [ ] Create header image in Canva
@@ -248,4 +250,4 @@ Another tool that is as flexible and easy to use as Rancher is [Earthly](https:/
   * Would any images look better `wide` or without the `figcaption`?
 * [ ] Add keywords for internal links to front-matter
 * [ ] Run `link-opp` and find 1-5 places to incorporate links
-* [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
+
