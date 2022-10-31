@@ -3,7 +3,8 @@ title: "Golang Workspaces"
 categories:
   - Tutorials
 toc: true
-author: Josh
+author: Ryan
+author2: Josh
 
 internal-links:
  - go workspaces
@@ -27,7 +28,9 @@ require github.com/jalletto/parserGo v0.0.2
 replace github.com/jalletto/parserGo => ./local-path/parserGo
 ~~~
 
-This works for small projects, but you still need to remember to remove the replace before pushing your code since you can't be certain other devs will have the same local set up as you. And if you are working on a project with dozens of modules, you can see how this would become cumbersome. These are the problems Go workspaces aim to solve.
+This works for small projects, but you still need to remember to remove the replace before pushing your code since you can't be certain other devs will have the same local set up as you. And if you are working on a project with dozens of modules, you can see how this would become cumbersome.These are the problems Go workspaces aim to solve.
+
+
 
 ## Workspaces
 
