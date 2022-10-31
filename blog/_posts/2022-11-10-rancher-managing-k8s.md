@@ -15,7 +15,7 @@ This article will explore the features and capabilities of [Rancher](https://ran
 
 ## What Is Rancher?
 
-The main goal of any Kubernetes distribution is to orchestrate container workloads. However, Rancher was created by [SUSE](https://www.suse.com/) to provide capabilities beyond those of conventional [Kubernetes](https://kubernetes.io/) distributions. 
+The main goal of any Kubernetes distribution is to orchestrate container workloads. However, Rancher was created by [SUSE](https://www.suse.com/) to provide capabilities beyond those of conventional [Kubernetes](https://kubernetes.io/) distributions.
 Rancher is an enterprise-grade platform that facilitates consistent administering of multiple Kubernetes clusters from a single UI—while addressing key Kubernetes pain points, such as cluster and workload deployment, security management, workload monitoring across multiple clusters, and scalability.
 
 In a nutshell, Rancher simplifies managing, monitoring, importing, and provisioning Kubernetes clusters with just a few clicks from its intuitive UI. But how does Rancher achieve this? The following diagram gives you a high-level overview of the components that make it all possible:
@@ -28,7 +28,7 @@ Here's a breakdown of the main components:
 * **[Rancher Kubernetes Engine (RKE)](https://rancher.com/docs/rke/latest/en/)**: *RKE* is a term used to refer to both the RKE library and the RKE command-line utility that can be used to create [RKE](https://rancher.com/products/rke) clusters. RKE is also a CNCF-certified Kubernetes distribution that runs entirely within [Docker](https://www.docker.com/) containers, similar to [K3s](https://k3s.io).
 * **Cluster controllers and cluster agents**: These components are responsible for establishing secure communication between the Rancher server and each downstream Kubernetes cluster.
 * **Authentication proxy**: On each Kubernetes API call, this component authenticates the caller with local or external authentication services and forwards that call to the appropriate downstream cluster.
-* **Node agents**: Under normal circumstances, the `cattle-node-agent` performs several operations on [Rancher Launched Kubernetes](https://docs.ranchermanager.rancher.io/v2.5/pages-for-subheaders/launch-kubernetes-with-rancher) cluster nodes, such as creating or restoring `etcd` snapshots or upgrading the cluster to the latest version. However, each node agent can provide the same functionality as the cluster agent when the latter is not available. 
+* **Node agents**: Under normal circumstances, the `cattle-node-agent` performs several operations on [Rancher Launched Kubernetes](https://docs.ranchermanager.rancher.io/v2.5/pages-for-subheaders/launch-kubernetes-with-rancher) cluster nodes, such as creating or restoring `etcd` snapshots or upgrading the cluster to the latest version. However, each node agent can provide the same functionality as the cluster agent when the latter is not available.
 
 If you're looking to delve deeper into the workings of Rancher server and its components, check out [the official documentation](https://docs.ranchermanager.rancher.io/reference-guides/rancher-manager-architecture/rancher-server-and-components).
 
@@ -38,7 +38,7 @@ Now that you know the basics of Rancher, here are the key features that set it a
 
 ### Deploying Managed Kubernetes Clusters
 
-Rancher allows your DevOps team to seamlessly deploy managed Kubernetes clusters on popular platforms, like [Amazon Elastic Kubernetes Service (EKS)](​​https://aws.amazon.com/eks/), [Azure Kubernetes Service (AKS)](https://azure.microsoft.com/en-us/products/kubernetes-service/), and [Google Kubernetes Engine (GKE)](https://cloud.google.com/kubernetes-engine). It also has drivers that provide support to other vendors, like [DigitalOcean Kubernetes (DOKS)](https://github.com/digitalocean/DOKS), [Linode Kubernetes Engine (LKE)](https://www.linode.com/products/kubernetes/), [Alibaba Cloud Container Service for Kubernetes (ACK)](https://www.alibabacloud.com/product/kubernetes), [Baidu Cloud Container Engine (CCE)](https://intl.cloud.baidu.com/product/cce.html), [Huawei CCE](https://www.huaweicloud.com/intl/en-us/product/cce.html), [Open Telekom Cloud CCE](https://open-telekom-cloud.com/en/products-services/core-services/cloud-container-engine), [Oracle Container Engine for Kubernetes (OKE)](https://www.oracle.com/cloud/cloud-native/container-engine-kubernetes/), and [Tencent Kubernetes Engine (TKE)](https://www.tencentcloud.com/products/tke). With Rancher,  development teams can easily create [custom drivers](https://github.com/rancher-plugins/kontainer-engine-driver-example), making it possible for Rancher to support virtually *any* existing Kubernetes platform.
+Rancher allows your DevOps team to seamlessly deploy managed Kubernetes clusters on popular platforms, like [Amazon Elastic Kubernetes Service (EKS)](​​https://aws.amazon.com/eks/), [Azure Kubernetes Service (AKS)](https://azure.microsoft.com/en-us/products/kubernetes-service/), and [Google Kubernetes Engine (GKE)](https://cloud.google.com/kubernetes-engine). It also has drivers that provide support to other vendors, like [DigitalOcean Kubernetes (DOKS)](https://github.com/digitalocean/DOKS), [Linode Kubernetes Engine (LKE)](https://www.linode.com/products/kubernetes/), [Alibaba Cloud Container Service for Kubernetes (ACK)](https://www.alibabacloud.com/product/kubernetes), [Baidu Cloud Container Engine (CCE)](https://intl.cloud.baidu.com/product/cce.html), [Huawei CCE](https://www.huaweicloud.com/intl/en-us/product/cce.html), [Open Telekom Cloud CCE](https://open-telekom-cloud.com/en/products-services/core-services/cloud-container-engine), [Oracle Container Engine for Kubernetes (OKE)](https://www.oracle.com/cloud/cloud-native/container-engine-kubernetes/), and [Tencent Kubernetes Engine (TKE)](https://www.tencentcloud.com/products/tke). With Rancher, development teams can easily create [custom drivers](https://github.com/rancher-plugins/kontainer-engine-driver-example), making it possible for Rancher to support virtually *any* existing Kubernetes platform.
 
 ### Deploying Kubernetes Clusters on Any Infrastructure
 
@@ -64,11 +64,11 @@ Rancher offers enterprise-level support with the benefit of not tying your organ
 
 The biggest advantage of Rancher is the convenience of managing all your Kubernetes clusters from a single dashboard. This eliminates the complexity and inconvenience of accessing vendor-specific dashboards and management tools.
 
-### Easy to Install
+### Easy To Install
 
 Rancher is easy to install both in the cloud and on premise, which makes it optimal for both development and production.
 
-The previous list is just a fraction of the features Rancher brings to DevOps teams. To learn more about all of Rancher’s features that DevOps teams can use, check out [the documentation](https://docs.ranchermanager.rancher.io/getting-started/introduction/overview).
+The previous list is just a fraction of the features Rancher brings to DevOps teams. To learn more about all of Rancher's features that DevOps teams can use, check out [the documentation](https://docs.ranchermanager.rancher.io/getting-started/introduction/overview).
 
 ## Setup and Maintenance in Rancher
 
@@ -80,9 +80,9 @@ Unlike most Kubernetes distributions, Rancher can be easily installed in virtual
   * [Setting Up a High-Availability RKE Kubernetes Cluster](https://docs.ranchermanager.rancher.io/how-to-guides/new-user-guides/kubernetes-cluster-setup/rke1-for-rancher)
   * [Setting Up a High-Availability RKE2 Kubernetes Cluster for Rancher](https://docs.ranchermanager.rancher.io/how-to-guides/new-user-guides/kubernetes-cluster-setup/rke2-for-rancher)
 
-The above-listed procedures involve creating a configuration file and then running a script that uses RKE to provision each node. Alternatively, you can use an  existing HA cluster and apply Helm charts to install Rancher on top of Kubernetes. In summary, setting up Rancher is straightforward.
+The above-listed procedures involve creating a configuration file and then running a script that uses RKE to provision each node. Alternatively, you can use an existing HA cluster and apply Helm charts to install Rancher on top of Kubernetes. In summary, setting up Rancher is straightforward.
 
-Regardless of the method selected, once you've installed Rancher, you’ll see the login screen:
+Regardless of the method selected, once you've installed Rancher, you'll see the login screen:
 
 ![Rancher login](https://i.imgur.com/XRqZQuO.png)
 
@@ -94,8 +94,8 @@ You then need to confirm the access URL:
 
 ![Rancher URL](https://i.imgur.com/4vDAC4G.png)
 
-With Rancher, upgrading or reverting to a previous version is easy. 
-If you use a single-node Rancher server on Docker, all you have to do is run the container with the desired version. 
+With Rancher, upgrading, or reverting to a previous version is easy.
+If you use a single-node Rancher server on Docker, all you have to do is run the container with the desired version.
 If you installed Rancher using RKE or Helm charts, you should run `helm upgrade`.
 
 ## Rancher Versions
@@ -124,7 +124,7 @@ Here's an example; you create a new Kubernetes cluster on new DigitalOcean nodes
 
 ![Choose infrastructure or provider](https://i.imgur.com/w0XbsAv.png)
 
-The next screen lets you create node pools, select a network provider, set the number of nodes, create labels, and muchmore. From here, you can fully configure the Kubernetes cluster. Once that configuration is ready, you can deploy the cluster:
+The next screen lets you create node pools, select a network provider, set the number of nodes, create labels, and much more. From here, you can fully configure the Kubernetes cluster. Once that configuration is ready, you can deploy the cluster:
 
 ![Configure node options 2](https://i.imgur.com/fAyORCQ.png)
 
@@ -154,7 +154,7 @@ If you're familiar with DigitalOcean, you may be interested in knowing which OS 
 
 ![Add node template](https://i.imgur.com/qGY2rTU.png)
 
-The procedure for deploying managed Kubernetes clusters is similar. In all cases, you must previously configure the necessary access tokens. This will enable the cluster controller to  communicate correctly with the cluster agent and perform all the necessary operations.
+The procedure for deploying managed Kubernetes clusters is similar. In all cases, you must previously configure the necessary access tokens. This will enable the cluster controller to communicate correctly with the cluster agent and perform all the necessary operations.
 
 ### Management of Multi-Cluster and Hybrid-Cluster Environments from a Single Interface
 
@@ -220,7 +220,7 @@ This allows efficient and secure management of who can enter each cluster and wi
 
 Rancher allows you to handle multi-cluster and hybrid-cluster environments, no matter what Kubernetes distro you are using. This eliminates vendor lock-in and lets you subscribe to enterprise-level support without being tied to a particular vendor.
 
-### Plug-In Support
+### Plug-in Support
 
 Rancher is synonymous with flexibility and convenience; for this reason, its amazing [plug-in support](https://github.com/rancher-plugins) should come as no surprise.
 
@@ -240,14 +240,12 @@ In this article, you learned what Rancher is and how it can help you better mana
 
 Another tool that is as flexible and easy to use as Rancher is [Earthly](https://earthly.dev), the effortless CI/CD framework that allows you to develop pipelines locally and run them anywhere.
 
-
 ## Outside Article Checklist
 
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
+* [ ] Create header image in Canva
+* [ ] Optional: Find ways to break up content with quotes or images
+* [ ] Verify look of article locally
+  * Would any images look better `wide` or without the `figcaption`?
+* [ ] Add keywords for internal links to front-matter
+* [ ] Run `link-opp` and find 1-5 places to incorporate links
+* [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`

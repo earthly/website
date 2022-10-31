@@ -246,3 +246,8 @@ linkerd
 Websocket
 websocket
 pem
+
+Huawei
+Telekom
+Tencent
+Cloudscale
