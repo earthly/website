@@ -28,6 +28,8 @@ You will need a running cluster and Kubectl.
 
 ## How Does RBAC Work In Kubernetes?
 
+![Image]({{site.images}}{{page.slug}}/how.png)\
+
 The RBAC configuration uses the `rbac.authorization.k8s.io/v1` apiVersion to create Roles and RoleBindings. Since RBAC uses rules to delegate permissions, there is a property called verbs in the rules map which states the permissions given to the service account. For example, the user can be granted the following permissions when working with Kubernetes resources:
 
 * `get`
@@ -159,6 +161,8 @@ rules:
 
 ## How To Create A RoleBinding
 
+![Image]({{site.images}}{{page.slug}}/how2.jpg)\
+
 Now we can use our new role by assigning it to a service account. We do this by creating a RoleBinding that will give the service account the permissions stated in the we created Role.
 
 ~~~{.yaml caption="earthly-access-role.yaml"}
@@ -233,6 +237,8 @@ subjects:
 ~~~
 
 ## The Difference Between ClusterRoles and Roles
+
+![Image]({{site.images}}{{page.slug}}/differences.jpg)\
 
 The Roles we've created so far only applied RBAC **at the namespace level**, but we can **also create RBAC at the cluster level**.
 
@@ -392,7 +398,5 @@ system.
 ## Outside Article Checklist
 
 * [ ] Create header image in Canva
-* [ ] Optional: Find ways to break up content with quotes or images
-* [ ] Verify look of article locally
-  * Would any images look better `wide` or without the `figcaption`?
+
 
