@@ -394,9 +394,3 @@ Role-based access control should not be optional as it enforces access restricti
 system.
 
 {% include cta/cta1.html %}
-
-## Outside Article Checklist
-
-* [ ] Create header image in Canva
-
-
