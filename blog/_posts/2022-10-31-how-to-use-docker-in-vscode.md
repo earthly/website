@@ -63,10 +63,10 @@ You won't do anything else with this app as it's just being used to play around 
 ## Adding a Docker File
 
 Traditionally, to add Docker, you would need to:
-1. Create a `dockerfile`.
-2. Add Docker instructions to it.
-3. Build the Docker image from the terminal.
-4. Run the Docker image, also from the terminal.
+Create a `dockerfile`.
+Add Docker instructions to it.
+Build the Docker image from the terminal.
+Run the Docker image, also from the terminal.
 
 But with the Docker extension, you can have VS Code do most of the heavy lifting for you.
 
@@ -100,14 +100,14 @@ CMD ["node", "index.js"]
 ~~~
 
 You're probably already familiar with Docker, but just to highlight all the things the extension gives you, here's a brief explanation of what was generated:
-- **FROM:**Sets the base image to use for subsequent instructions.
-- **ENV:** Sets the environment variable key to the value.
-- **WORKDIR:**Sets the working directory to /usr/src/app.
-- **COPY:** Copies files or folders from the source to the destination path in the image's filesystem.
-- **RUN:** Executes any commands on top of the current image as a new layer and commits the results.
-- **EXPOSE:** Defines the network ports on which this container will listen at runtime.
-- **USER:**Sets the user name or UID to use when running the image in addition to any subsequent CMD, ENTRYPOINT, or RUN instructions that follow it in the Dockerfile.
-- **CMD:** Provides defaults for an executing container.
+**FROM:**Sets the base image to use for subsequent instructions.
+**ENV:** Sets the environment variable key to the value.
+**WORKDIR:**Sets the working directory to /usr/src/app.
+**COPY:** Copies files or folders from the source to the destination path in the image's filesystem.
+**RUN:** Executes any commands on top of the current image as a new layer and commits the results.
+**EXPOSE:** Defines the network ports on which this container will listen at runtime.
+**USER:**Sets the user name or UID to use when running the image in addition to any subsequent CMD, ENTRYPOINT, or RUN instructions that follow it in the Dockerfile.
+**CMD:** Provides defaults for an executing container.
 
 Similar to the `.gitignore`, the `.dockerignore` instructs Docker to hold files and folders that should not be replicated when creating the image.
 
