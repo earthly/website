@@ -382,7 +382,10 @@ rules: \
 
 This tutorial has equipped you with the skills and knowledge on how to implement RBAC at namespace level and cluster level.
 
-Role-based access control should not be optional as it enforces access restriction to specific unauthorized service accounts and users. Secret sprawling is very common and it can be controlled by who accesses secrets and public keys using RBAC. Losing keys to unauthorized users is the same as losing your system.
+Role-based access control should not be optional as it enforces access restriction to specific unauthorized service accounts and users. Secret sprawling is very common and it can be controlled by who accesses secrets and public keys using RBAC. Losing keys to unauthorized users is the same as losing your 
+system.
+
+{% include cta/cta1.html %}
 
 ## Outside Article Checklist
 
@@ -392,4 +395,4 @@ Role-based access control should not be optional as it enforces access restricti
   * Would any images look better `wide` or without the `figcaption`?
 * [ ] Add keywords for internal links to front-matter
 * [ ] Run `link-opp` and find 1-5 places to incorporate links
-* [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
+
