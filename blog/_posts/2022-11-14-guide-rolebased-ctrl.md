@@ -6,7 +6,9 @@ toc: true
 author: Boemo Wame Mmopelwa
 
 internal-links:
- - just an example
+ - Kubernetes
+ - Cluster
+ - RBAC
 ---
 
 Kubernetes has many resources and components that must be kept out of reach of certain users and service accounts. Resources such as secrets have to be encrypted and have strict access. If everyone in a company who has access to the cluster is given limitless power when using the cluster; this is dangerous because Kubernetes secrets and keys can be stolen and used inappropriately. Mostly, anyone can change the cluster's configurations, and it will be hard to know who made changes in case of vulnerability detection.
@@ -393,5 +395,4 @@ system.
 * [ ] Optional: Find ways to break up content with quotes or images
 * [ ] Verify look of article locally
   * Would any images look better `wide` or without the `figcaption`?
-* [ ] Add keywords for internal links to front-matter
 
