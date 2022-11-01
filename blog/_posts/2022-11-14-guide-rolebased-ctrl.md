@@ -9,11 +9,11 @@ internal-links:
  - just an example
 ---
 
-Kubernetes has many resources and components that must be kept out of reach of certain users and service accounts. Resources such as secrets have to be encrypted and have strict access. If everyone in a company who has access to the cluster is given limitless power when using the cluster; this is dangerous because Kubernetes secrets and keys can be stolen and used inappropriately. Mostly, anyone can change the cluster’s configurations, and it will be hard to know who made changes in case of vulnerability detection.
+Kubernetes has many resources and components that must be kept out of reach of certain users and service accounts. Resources such as secrets have to be encrypted and have strict access. If everyone in a company who has access to the cluster is given limitless power when using the cluster; this is dangerous because Kubernetes secrets and keys can be stolen and used inappropriately. Mostly, anyone can change the cluster's configurations, and it will be hard to know who made changes in case of vulnerability detection.
 
 For this reason, Kubernetes has a mechanism called **Role-based Access Control** (RBAC) that implements rules that define what service account is allowed to access a certain component or resource in a cluster.
 
-Implementing RBAC in Kubernetes is easy. You first have to create a Role or ClusterRole which defines what the user or service account is allowed to access. The ClusterRole is applied at a cluster level while the Role is applied at a namespace level. 
+Implementing RBAC in Kubernetes is easy. You first have to create a Role or ClusterRole which defines what the user or service account is allowed to access. The ClusterRole is applied at a cluster level while the Role is applied at a namespace level.
 
 Next, you have to create a ClusterBinding or a RoleBinding which binds a Kubernetes cluster user with a role. ClusterBinding is applied at a cluster level, while RoleBinding is applied at a namespace level.
 
@@ -24,41 +24,42 @@ In this tutorial, you will learn how to implement RBAC at the cluster level and 
 You will need a running cluster and Kubectl.
  Basic knowledge of how service accounts work.
 
-## How does RBAC work in Kubernetes?
+## How Does RBAC Work In Kubernetes?
 
 The RBAC configuration uses the `rbac.authorization.k8s.io/v1` apiVersion to create Roles and RoleBindings. Since RBAC uses rules to delegate permissions, there is a property called verbs in the rules map which states the permissions given to the service account. For example, the user can be granted the following permissions when working with Kubernetes resources:
 
-* get
-* list 
-* watch
-* create
-* update
-* patch
-* delete
+* `get`
+* `list`
+* `watch`
+* `create`
+* `update`
+* `patch`
+* `delete`
 
 The resources map states which resources and apiGroups the Role is being applied to:
 
-```yml
+~~~{.bash caption=">_"}
 rules:
 apiGroups: [""]
 verbs: ["get", "list"]
 resources: ["services"]
-```
+~~~
+
 ## Implementing RBAC at a Namespace Level
 
 ### Create a Namespace
 
 Since Roles only cover namespaces specifically, let's go ahead and create a namespace called `earthly`. All of the manifests we will create in this segment will have the earthly namespace property. Use the following command to create the earthly namespace:
 
-```
+~~~{.bash caption=">_"}
 kubectl create namespace earthly
-```
+~~~
 
 ### Create a Role
 
 Now, let's create a Role that will state the permissions that an authorized user will have over the resources created in the earthly namespace. Create a YAML file called `earthly-access-role.yaml` and add the following contents:
 
-```yml
+~~~{.bash caption=">_"}
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
@@ -82,27 +83,27 @@ rules:
       - serviceaccounts
       - services
     verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
-```
+~~~
 
-The above role gives the service account access to all of the Kubernetes resources stated in the `resource` map above including services, pods, and nodes. In this case we’ve given the user full permissions by listing all available actions in the `verbs` section. If you simply wanted to give the service account permission to read resources, without the ability to change or delete them, you might change the verb section to something like”
+The above role gives the service account access to all of the Kubernetes resources stated in the `resource` map above including services, pods, and nodes. In this case we've given the user full permissions by listing all available actions in the `verbs` section. If you simply wanted to give the service account permission to read resources, without the ability to change or delete them, you might change the verb section to something like"
 
-```yml
+~~~{.bash caption=">_"}
    verbs: ["get", "list"]
-```
+~~~
 
 Next, you can use the following command to create the above Role:
 
-```
+~~~{.bash caption=">_"}
 kubectl apply -f earthly-access-role.yaml
-```
+~~~
 
 You will get the following output:
 
-```
+~~~{.bash caption=">_"}
 role.rbac.authorization.k8s.io/earthly-access-role created
-```
+~~~
 
-Simply creating a role will not provide us any security. We need to then assign the role to users. But first, let’s take a look at one other way you can create Role in k8s.
+Simply creating a role will not provide us any security. We need to then assign the role to users. But first, let's take a look at one other way you can create Role in k8s.
 
 ### How to Create a Role Imperatively
 
@@ -114,28 +115,27 @@ When you create a resource in Kubernetes without using YAML file declarations th
 
 **namespace**: This is where you state the name of the namespace in which the role is being applied to.
 
-
-```
+~~~{.bash caption=">_"}
 kubectl create role earthly-access-role --verb=get --verb=list  --resource=services -n earthly
-```
+~~~
 
 You will get the following output:
 
-```
+~~~{.bash caption=">_"}
 role.rbac.authorization.k8s.io/earthly-access-role created
-```
+~~~
 
 ### Viewing a Role Configuration
 
 After creating the Role you can use the following command to view the configuration of the Role at any time:
 
-```
+~~~{.bash caption=">_"}
 kubectl get role earthly-access-role -n earthly -o yaml
-```
+~~~
 
 You will get the following output:
 
-```
+~~~{.bash caption=">_"}
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
@@ -152,13 +152,13 @@ rules:
   verbs:
   - get
   - list
-```
+~~~
 
-## How to Create a RoleBinding
+## How To Create A RoleBinding
 
 Now we can use our new role by assigning it to a service account. We do this by creating a RoleBinding that will give the service account the permissions stated in the we created Role.
 
-```yml
+~~~{.bash caption=">_"}
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
@@ -172,45 +172,45 @@ subjects:
 - namespace: earthly
   kind: ServiceAccount
   name: earthly-service-account
-```
+~~~
 
 Use the following command to create the RoleBinding:
 
-```
+~~~{.bash caption=">_"}
 kubectl apply -f earthly-rolebinding.yaml
-```
+~~~
 
 You will get the following output:
 
-```
+~~~{.bash caption=">_"}
 rolebinding.rbac.authorization.k8s.io/earthly-rolebinding created
-```
+~~~
 
 ### How to Create a RoleBinding Imperatively
 
 In this section, you will learn how to create a RoleBinding with just one command, no YAML file required. This RoleBinding gives the serviceaccount the permissions given by the role in the organization namespace:
 
-```
+~~~{.bash caption=">_"}
 kubectl create rolebinding test --role=service-reader  --serviceaccount=foo:default -n organization
-```
+~~~
 
 You will get the following output:
 
-```
+~~~{.bash caption=">_"}
 rolebinding.rbac.authorization.k8s.io/test created
-```
+~~~
 
 ### Viewing a RoleBinding
- 
+
 Use the following command to view the RoleBinding you just created:
 
-```
+~~~{.bash caption=">_"}
 kubectl get rolebinding test -n organization -o yaml
-```
+~~~
 
 You will get the following output:
 
-```yml
+~~~{.bash caption=">_"}
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
@@ -226,16 +226,17 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: default
-```
+~~~
 
 ## The Difference Between ClusterRoles and Roles
 
-The Roles we’ve created so far only applied RBAC **at the namespace level**, but we can **also create RBAC at the cluster level**. 
+The Roles we've created so far only applied RBAC **at the namespace level**, but we can **also create RBAC at the cluster level**.
 
 ### Declarative
+
 Let's create a ClusterRole instead of a Role in a declarative manner:
 
-```yml
+~~~{.bash caption=">_"}
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
@@ -254,26 +255,25 @@ rules:
       - serviceaccounts
       - services
     verbs: ["get", "list", "watch", "create", "update"]
-```
+~~~
 
 As you can see, this file looks very similar to the one we created for the Role, except this time we use `kind: ClusterRole` instead of `kind: Role`.
 
 ### Imperatively
 
-```
+~~~{.bash caption=">_"}
 kubectl create clusterrole volume-access -o yaml
-```
+~~~
 
-To view the full ClusterRole configuration created by the above command, execute the following command: 
+To view the full ClusterRole configuration created by the above command, execute the following command:
 
-
-```
+~~~{.bash caption=">_"}
 kubectl get clusterrole volume-access -o yaml
-```
+~~~
 
 You will get the following output:
 
-```
+~~~{.bash caption=">_"}
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
@@ -289,28 +289,29 @@ rules:
   verbs:
   - get
   - list
-```
+~~~
 
 ### Creating a ClusterRoleBinding
 
-### Imperatively 
+### Imperatively
 
 ClusterRoles require their own type of role binding. Use the following command to create a ClusterRoleBinding called `production` which will be connected to the volume-access ClusterRole you created previously:
 
-```
+~~~{.bash caption=">_"}
  kubectl create clusterrolebinding production-1 --clusterrole=volume-access --serviceaccount=foo:default
-```
+~~~
 
-To view the full ClusterBinding configuration description created by the above command, execute the following command: 
+To view the full ClusterBinding configuration description created by the above command, execute the following command:
 
-```
+~~~{.bash caption=">_"}
 kubectl get clusterrolebinding production-1 -o yaml
-```
+~~~
+
 ### Declarative
 
 If you execute the previous command you will get the following output which is the declarative format of the ClusterRoleBinding:
 
-```yml
+~~~{.bash caption=">_"}
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
@@ -326,7 +327,7 @@ subjects:
 - kind: ServiceAccount
   name: default
   namespace: foo
-```
+~~~
 
 The table below compares a Role and a ClusterRole. Notice that there are very few distinctions. The Kind value is what differentiates them and then the ClusterRole does not have the namespace field since it is applied at cluster level only.
 
@@ -376,17 +377,16 @@ rules: \
 
 ## Conclusion
 
-This tutorial has equipped you with the skills and knowledge on how to implement RBAC at namespace level and cluster level. 
+This tutorial has equipped you with the skills and knowledge on how to implement RBAC at namespace level and cluster level.
 
 Role-based access control should not be optional as it enforces access restriction to specific unauthorized service accounts and users. Secret sprawling is very common and it can be controlled by who accesses secrets and public keys using RBAC. Losing keys to unauthorized users is the same as losing your system.
 
 ## Outside Article Checklist
 
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
+* [ ] Create header image in Canva
+* [ ] Optional: Find ways to break up content with quotes or images
+* [ ] Verify look of article locally
+  * Would any images look better `wide` or without the `figcaption`?
+* [ ] Add keywords for internal links to front-matter
+* [ ] Run `link-opp` and find 1-5 places to incorporate links
+* [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
