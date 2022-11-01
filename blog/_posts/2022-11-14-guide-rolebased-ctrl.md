@@ -3,7 +3,7 @@ title: "An Ultimate Guide to Kubernetes Role-Based Access Control"
 categories:
   - Tutorials
 toc: true
-author: Adam
+author: Boemo Wame Mmopelwa
 
 internal-links:
  - just an example
@@ -84,7 +84,6 @@ rules:
     verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
 ```
 
-
 The above role gives the service account access to all of the Kubernetes resources stated in the `resource` map above including services, pods, and nodes. In this case we’ve given the user full permissions by listing all available actions in the `verbs` section. If you simply wanted to give the service account permission to read resources, without the ability to change or delete them, you might change the verb section to something like”
 
 ```yml
@@ -159,7 +158,6 @@ rules:
 
 Now we can use our new role by assigning it to a service account. We do this by creating a RoleBinding that will give the service account the permissions stated in the we created Role.
 
-
 ```yml
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
@@ -176,23 +174,17 @@ subjects:
   name: earthly-service-account
 ```
 
-
 Use the following command to create the RoleBinding:
-
 
 ```
 kubectl apply -f earthly-rolebinding.yaml
 ```
 
-
 You will get the following output:
-
 
 ```
 rolebinding.rbac.authorization.k8s.io/earthly-rolebinding created
 ```
-
-
 
 ### How to Create a RoleBinding Imperatively
 
@@ -305,7 +297,6 @@ rules:
 
 ClusterRoles require their own type of role binding. Use the following command to create a ClusterRoleBinding called `production` which will be connected to the volume-access ClusterRole you created previously:
 
-
 ```
  kubectl create clusterrolebinding production-1 --clusterrole=volume-access --serviceaccount=foo:default
 ```
@@ -338,7 +329,6 @@ subjects:
 ```
 
 The table below compares a Role and a ClusterRole. Notice that there are very few distinctions. The Kind value is what differentiates them and then the ClusterRole does not have the namespace field since it is applied at cluster level only.
-
 
 <table>
   <tr>
@@ -384,8 +374,6 @@ rules: \
   </tr>
 </table>
 
-
-
 ## Conclusion
 
 This tutorial has equipped you with the skills and knowledge on how to implement RBAC at namespace level and cluster level. 
@@ -394,7 +382,6 @@ Role-based access control should not be optional as it enforces access restricti
 
 ## Outside Article Checklist
 
-- [ ] Add in Author page
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
