@@ -63,10 +63,10 @@ You won't do anything else with this app as it's just being used to play around 
 ## Adding a Docker File
 
 Traditionally, to add Docker, you would need to:
-Create a `dockerfile`.
-Add Docker instructions to it.
-Build the Docker image from the terminal.
-Run the Docker image, also from the terminal.
+1. Create a `dockerfile`.
+2. Add Docker instructions to it.
+3. Build the Docker image from the terminal.
+4. Run the Docker image, also from the terminal.
 
 But with the Docker extension, you can have VS Code do most of the heavy lifting for you.
 
@@ -78,9 +78,9 @@ To generate the Docker files automatically, open the Command Palette by pressing
 Docker: Add Docker files to Workspace command`:
 ~~~
 
-![adding docker files]({{site.images}}{{page.slug}}/hzvYbtN.gif)\
+![adding docker files]({{site.images}}{{page.slug}}/bM7WWsn.jpeg)\
 
-you'll be asked to choose the application platform you're working with. Just proceed to choose  `node`, and you'll also be asked whether to include Docker compose or not. A compose file is typically used when you want to start up multiple containers, say if you also wanted a database, or if you were trying to run a front-end and a back-end together. Since that's not the case with our project you can choose `No`.
+You'll be asked to choose the application platform you're working with. Just proceed to choose  `node`, and you'll also be asked whether to include Docker compose or not. A compose file is typically used when you want to start up multiple containers, say if you also wanted a database, or if you were trying to run a front-end and a back-end together. Since that's not the case with our project you can choose `No`.
 
 You will then be prompted to select a port. Select  `3000` because `3000` is the port on which our app will listen. Now, the following files are added to your workspace: `.dockerignore` and  `Dockerfile`.
 
@@ -100,14 +100,14 @@ CMD ["node", "index.js"]
 ~~~
 
 You're probably already familiar with Docker, but just to highlight all the things the extension gives you, here's a brief explanation of what was generated:
-**FROM:**Sets the base image to use for subsequent instructions.
-**ENV:** Sets the environment variable key to the value.
-**WORKDIR:**Sets the working directory to /usr/src/app.
-**COPY:** Copies files or folders from the source to the destination path in the image's filesystem.
-**RUN:** Executes any commands on top of the current image as a new layer and commits the results.
-**EXPOSE:** Defines the network ports on which this container will listen at runtime.
-**USER:**Sets the user name or UID to use when running the image in addition to any subsequent CMD, ENTRYPOINT, or RUN instructions that follow it in the Dockerfile.
-**CMD:** Provides defaults for an executing container.
+- **FROM:**Sets the base image to use for subsequent instructions.
+- **ENV:** Sets the environment variable key to the value.
+- **WORKDIR:**Sets the working directory to /usr/src/app.
+- **COPY:** Copies files or folders from the source to the destination path in the image's filesystem.
+- **RUN:** Executes any commands on top of the current image as a new layer and commits the results.
+- **EXPOSE:** Defines the network ports on which this container will listen at runtime.
+- **USER:**Sets the user name or UID to use when running the image in addition to any subsequent CMD, ENTRYPOINT, or RUN instructions that follow it in the Dockerfile.
+- **CMD:** Provides defaults for an executing container.
 
 Similar to the `.gitignore`, the `.dockerignore` instructs Docker to hold files and folders that should not be replicated when creating the image.
 
@@ -115,7 +115,7 @@ Similar to the `.gitignore`, the `.dockerignore` instructs Docker to hold files 
 
 To build the Docker image, open the `Command Palette` and execute `Docker Images: Build Image`. You can also right-click the `Dockerfile` in the navigation panel and select `Build image:`
 
-![Docker build]({{site.images}}{{page.slug}}/riA1YnX.gif)\
+![Docker build]({{site.images}}{{page.slug}}/gn9rNt4.jpeg)\
 
 If you check the extension pane and look at the `images` section inside the Docker explorer, you should see the latest project has been added to the docker explorer.
 
@@ -123,11 +123,11 @@ If you check the extension pane and look at the `images` section inside the Dock
 
 The following step is to run our `image`. Open the command palette once more, type `docker run`, and then pick `Docker: Run`. It will display a list of all the containers on your system. Select the `docker-node:latest` tag and click `Enter`.
   
-![Docker run]({{site.images}}{{page.slug}}/rX2i54d.gif)\
+![Docker run]({{site.images}}{{page.slug}}/lDRhXAu.jpeg)\
 
 You can also run the container by going to the left pane, selecting the Docker explorer, then under `IMAGES`, choose the image you want. Right-click on  `latest`. and click run. You will get the same logs running on the terminal.
 
-![running docker inside the extension]({{site.images}}{{page.slug}}/JtutJ1V.gif)\
+![running docker inside the extension]({{site.images}}{{page.slug}}/OU6RnwE.jpeg)\
 
 Once the `docker-node` container runs, You can check the running containers in the same section in our Docker explorer. You can also stop them from here.
 
@@ -135,7 +135,7 @@ You have successfully built an image and ran your image all from VS Code without
 
 You can view the app running in the container in the browser. To do this, right-click on the running container in the docker explorer and click on "open in browser":
 
- ![view in browser]({{site.images}}{{page.slug}}/nDo4zrh.gif)\
+ ![view in browser]({{site.images}}{{page.slug}}/Em7k5gV.jpeg)\
 
 ### Debugging Our Container
 
@@ -157,13 +157,17 @@ This option is available in the context menu for running [containers](/blog/dock
 
 Using the running Node.js container as our example, all you have to do is navigate to Docker Explorer. In the Containers tab, right-click on your container and choose View Logs. You should see it being displayed in the terminal
 
-![container logs]({{site.images}}{{page.slug}}/GVHaZm4.gif)\
+![view container logs]({{site.images}}{{page.slug}}/P8lZ9Fr.jpeg)\
+
+![container logs]({{site.images}}{{page.slug}}/Hn6x6xm.png)\
 
 ### Docker Inspect Images
 
 The Docker inspect images is a feature that allows you to inspect the images built and see the details in a JSON file. This allows you to see important information about our image i.e the image ID, when it was created, volumes, and many more. Inside our docker explorer, navigate to `IMAGES` and locate the `project folder/latest` right click and click on inspect:
 
-![Docker inspect]({{site.images}}{{page.slug}}/vmqjKB1.gif)\
+![Docker inspect]({{site.images}}{{page.slug}}/HMQtXXA.jpeg)\
+
+![Json file]({{site.images}}{{page.slug}}/4yCyoeN.jpeg)\
 
 ### Other Features
 
