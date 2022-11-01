@@ -1,5 +1,5 @@
 ---
-title: "How to Build A Real-Time Communication Application with Django-Channels and The WebSocket Protocol"
+title: "WebSocket Protocol with Django Channels"
 categories:
   - Tutorials
 toc: true

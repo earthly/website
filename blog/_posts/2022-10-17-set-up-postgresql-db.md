@@ -1,5 +1,5 @@
 ---
-title: "How to Set up a Postgresql Database Replication for Optimization and High Availability in a Django Application"
+title: "Postgres Database Replication in Django"
 categories:
   - Tutorials
 toc: true

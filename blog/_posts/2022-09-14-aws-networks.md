@@ -55,7 +55,7 @@ Sign into your AWS console and navigate to the VPC service. You can do this by t
 
 <div class="wide">
 
-![The Main VPC Dashboard]({{site.images}}{{page.slug}}/vpc-home.png)
+![The Main VPC Dashboard]({{site.images}}{{page.slug}}/vpc-dashboard.png)
 
 </div>
 
@@ -83,7 +83,7 @@ That's all we'll need to do for this section. Click `Create VPC` and we're done.
 
 <div class="wide">
 
-![Now we have 2 VPCs: The default and the one we just created]({{site.images}}{{page.slug}}/vpc-home.png)
+![Now we have 2 VPCs: The default and the one we just created]({{site.images}}{{page.slug}}/your-vpcs.png)
 
 </div>
 
