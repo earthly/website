@@ -247,8 +247,6 @@ Another tool that is as flexible and easy to use as Rancher is [Earthly](https:/
 
 ## Outside Article Checklist
 
-* [ ] Create header image in Canva
-* [ ] Optional: Find ways to break up content with quotes or images
 * [ ] Verify look of article locally
   * Would any images look better `wide` or without the `figcaption`?
-g
+
