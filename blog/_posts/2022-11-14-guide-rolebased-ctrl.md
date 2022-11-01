@@ -38,7 +38,7 @@ The RBAC configuration uses the `rbac.authorization.k8s.io/v1` apiVersion to cre
 
 The resources map states which resources and apiGroups the Role is being applied to:
 
-~~~{.bash caption=">_"}
+~~~{.yaml caption=">_"}
 rules:
 apiGroups: [""]
 verbs: ["get", "list"]
@@ -59,7 +59,7 @@ kubectl create namespace earthly
 
 Now, let's create a Role that will state the permissions that an authorized user will have over the resources created in the earthly namespace. Create a YAML file called `earthly-access-role.yaml` and add the following contents:
 
-~~~{.bash caption=">_"}
+~~~{.yaml caption="earthly-access-role.yaml"}
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
@@ -87,7 +87,7 @@ rules:
 
 The above role gives the service account access to all of the Kubernetes resources stated in the `resource` map above including services, pods, and nodes. In this case we've given the user full permissions by listing all available actions in the `verbs` section. If you simply wanted to give the service account permission to read resources, without the ability to change or delete them, you might change the verb section to something like"
 
-~~~{.bash caption=">_"}
+~~~{.yaml caption="earthly-access-role.yaml"}
    verbs: ["get", "list"]
 ~~~
 
@@ -99,7 +99,7 @@ kubectl apply -f earthly-access-role.yaml
 
 You will get the following output:
 
-~~~{.bash caption=">_"}
+~~~{.bash caption="Output"}
 role.rbac.authorization.k8s.io/earthly-access-role created
 ~~~
 
@@ -116,12 +116,13 @@ When you create a resource in Kubernetes without using YAML file declarations th
 **namespace**: This is where you state the name of the namespace in which the role is being applied to.
 
 ~~~{.bash caption=">_"}
-kubectl create role earthly-access-role --verb=get --verb=list  --resource=services -n earthly
+kubectl create role earthly-access-role --verb=get --verb=list \
+--resource=services -n earthly
 ~~~
 
 You will get the following output:
 
-~~~{.bash caption=">_"}
+~~~{.bash caption="Output"}
 role.rbac.authorization.k8s.io/earthly-access-role created
 ~~~
 
@@ -135,7 +136,7 @@ kubectl get role earthly-access-role -n earthly -o yaml
 
 You will get the following output:
 
-~~~{.bash caption=">_"}
+~~~{.yaml caption="earthly-access-role.yaml"}
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
@@ -158,7 +159,7 @@ rules:
 
 Now we can use our new role by assigning it to a service account. We do this by creating a RoleBinding that will give the service account the permissions stated in the we created Role.
 
-~~~{.bash caption=">_"}
+~~~{.yaml caption="earthly-access-role.yaml"}
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
@@ -182,7 +183,7 @@ kubectl apply -f earthly-rolebinding.yaml
 
 You will get the following output:
 
-~~~{.bash caption=">_"}
+~~~{.bash caption="Output"}
 rolebinding.rbac.authorization.k8s.io/earthly-rolebinding created
 ~~~
 
@@ -191,12 +192,13 @@ rolebinding.rbac.authorization.k8s.io/earthly-rolebinding created
 In this section, you will learn how to create a RoleBinding with just one command, no YAML file required. This RoleBinding gives the serviceaccount the permissions given by the role in the organization namespace:
 
 ~~~{.bash caption=">_"}
-kubectl create rolebinding test --role=service-reader  --serviceaccount=foo:default -n organization
+kubectl create rolebinding test --role=service-reader  \
+--serviceaccount=foo:default -n organization
 ~~~
 
 You will get the following output:
 
-~~~{.bash caption=">_"}
+~~~{.bash caption="Output"}
 rolebinding.rbac.authorization.k8s.io/test created
 ~~~
 
@@ -210,7 +212,7 @@ kubectl get rolebinding test -n organization -o yaml
 
 You will get the following output:
 
-~~~{.bash caption=">_"}
+~~~{.yaml caption="earthly-access-role.yaml"}
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
@@ -236,7 +238,7 @@ The Roles we've created so far only applied RBAC **at the namespace level**, but
 
 Let's create a ClusterRole instead of a Role in a declarative manner:
 
-~~~{.bash caption=">_"}
+~~~{.yaml caption="earthly-access-role.yaml"}
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
@@ -273,7 +275,7 @@ kubectl get clusterrole volume-access -o yaml
 
 You will get the following output:
 
-~~~{.bash caption=">_"}
+~~~{.yaml caption="earthly-access-role.yaml"}
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
@@ -298,7 +300,8 @@ rules:
 ClusterRoles require their own type of role binding. Use the following command to create a ClusterRoleBinding called `production` which will be connected to the volume-access ClusterRole you created previously:
 
 ~~~{.bash caption=">_"}
- kubectl create clusterrolebinding production-1 --clusterrole=volume-access --serviceaccount=foo:default
+kubectl create clusterrolebinding production-1 \
+--clusterrole=volume-access --serviceaccount=foo:default
 ~~~
 
 To view the full ClusterBinding configuration description created by the above command, execute the following command:
@@ -311,7 +314,7 @@ kubectl get clusterrolebinding production-1 -o yaml
 
 If you execute the previous command you will get the following output which is the declarative format of the ClusterRoleBinding:
 
-~~~{.bash caption=">_"}
+~~~{.yaml caption="earthly-access-role.yaml"}
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
