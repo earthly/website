@@ -251,7 +251,7 @@ with open('contents.txt','w') as f_obj:
 
 In the examples we've coded thus far, the external programs ran successfully. In practice, we'll run into errors if the external programs do not exist in our development environment or are called with invalid arguments. For example, trying to run a git commit as an external command (subprocess) when I don't have Git installed.
 
-![capture-errors]({{site.images}}{{page.slug}}/Y1kRZww.png)\
+![capture-errors]({{site.images}}{{page.slug}}/cotwDuk.png)\
 
 The `CompletedProcess` object's `returncode` attribute tells whether or not the execution of the external command was successful. A non-zero `returncode` indicates an error in running the command. The `stderr` attribute contains information on the error.
 
@@ -388,10 +388,10 @@ For this, we need to use the `Popen` constructor to run the external command. Th
 ~~~{.python caption="main.py"}
 p1 = subprocess.Popen(["sleep","10"])
 try:
-std_out,std_err = p1.communicate(timeout=1)
+    std_out,std_err = p1.communicate(timeout=1)
 except subprocess.TimeoutExpired:
-p1.kill()
-std_out,std_err = p1.communicate()
+    p1.kill()
+    std_out,std_err = p1.communicate()
 ~~~
 
 </div>

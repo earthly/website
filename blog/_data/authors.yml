@@ -29,6 +29,12 @@ Josh:
                 </br><a href="mailto:josh+website@earthly.dev">✉Email Josh✉</a>
     avatar  : "/assets/images/authors/joshalletto.jpg"
     home    : "/authors/josh/"
+Ryan:
+    name    : "Ryan LaForge"
+    bio     : |
+                Ryan is a full-stack staff engineer at Earthly. Equipped with a rich background in web development Ryan prides himself on being a generalist capable of contributing in many different areas.
+    avatar  : "/assets/images/authors/ryanlaforge.png"
+    home    : "/authors/ryan/"
 Adam:
     name    : "Adam Gordon Bell"
     bio     : |
