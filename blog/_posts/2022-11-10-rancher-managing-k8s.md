@@ -6,7 +6,10 @@ toc: true
 author: Damaso Sanoja
 
 internal-links:
- - just an example
+ - Rancher
+ - Deployment
+ - Kubernetes
+ - Clusters
 ---
 
 Recently, multi-cloud and hybrid cloud deployments have gained significant traction as they let you optimize costs, increase scalability, improve agility, and achieve greater operational resilience. However, with these [deployment strategies](/blog/deployment-strategies), managing different Kubernetes clusters with multiple tools and dashboards can be a challenge; Rancher can help you seamlessly manage such deployments at scale.
@@ -248,5 +251,4 @@ Another tool that is as flexible and easy to use as Rancher is [Earthly](https:/
 * [ ] Optional: Find ways to break up content with quotes or images
 * [ ] Verify look of article locally
   * Would any images look better `wide` or without the `figcaption`?
-* [ ] Add keywords for internal links to front-matter
-
+g
