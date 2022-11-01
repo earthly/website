@@ -14,9 +14,12 @@ internal-links:
 
 ## The Problem
 
-Say you are working on a project that uses several Golang modules. Each will have their own `go.mod` and their own dependencies. Within your project you have a library, maybe a parser for example, that is used in several other modules in your project. You want to do some work on the parser and then you want to also start using these updates in other modules in your project.
+In a [previous article](/blog/golang-monorepo), we wrote about how you should be using replace in `go.mod` files for modules local to the repository, like in a large monorepo This works because we can safely make assumptions about the organization of the checked-out directory structure. **But what to do when you are working on dependant modules spread across multiple repos?**
 
-Before Go version 1.18, you'd have to edit each module's `go.mod` with a `replace` to be able to use and test the local changes. That might look something like this:
+For example, say you are working on a project that uses several Golang modules. Each will have their own `go.mod` and their own dependencies. Furthermore, each may have their own repository. Within your project you have a library, maybe a parser for example, that is used in several other modules in your project. You want to do some work on the parser, and then you want to also start using these updates in other modules in your project.
+
+
+Before Go version 1.18, you'd need to pull the repos locally and then edit each module's `go.mod` with a `replace` to be able to use and test the local changes. That might look something like this:
 
 ~~~{.go caption="example mod file"}
 module my-module
