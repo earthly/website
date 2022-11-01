@@ -11,7 +11,7 @@ internal-links:
 
 Kubernetes has many resources and components that must be kept out of reach of certain users and service accounts. Resources such as secrets have to be encrypted and have strict access. If everyone in a company who has access to the cluster is given limitless power when using the cluster; this is dangerous because Kubernetes secrets and keys can be stolen and used inappropriately. Mostly, anyone can change the cluster's configurations, and it will be hard to know who made changes in case of vulnerability detection.
 
-For this reason, Kubernetes has a mechanism called **Role-based Access Control** (RBAC) that implements rules that define what service account is allowed to access a certain component or resource in a cluster.
+For this reason, Kubernetes has a mechanism called **Role-based Access Control** (RBAC) that implements rules that define what service account is allowed to access a certain component or resource in a [cluster](/blog/kube-bench).
 
 Implementing RBAC in Kubernetes is easy. You first have to create a Role or ClusterRole which defines what the user or service account is allowed to access. The ClusterRole is applied at a cluster level while the Role is applied at a namespace level.
 
@@ -49,7 +49,7 @@ resources: ["services"]
 
 ### Create a Namespace
 
-Since Roles only cover namespaces specifically, let's go ahead and create a namespace called `earthly`. All of the manifests we will create in this segment will have the earthly namespace property. Use the following command to create the earthly namespace:
+Since Roles only cover namespaces specifically, let's go ahead and create a namespace called `earthly`. All of the manifests we will create in this segment will have the earthly namespace property. Use the following command to create the earthly [namespace](/blog/k8s-namespaces):
 
 ~~~{.bash caption=">_"}
 kubectl create namespace earthly
@@ -332,7 +332,7 @@ subjects:
   namespace: foo
 ~~~
 
-The table below compares a Role and a ClusterRole. Notice that there are very few distinctions. The Kind value is what differentiates them and then the ClusterRole does not have the namespace field since it is applied at cluster level only.
+The table below compares a Role and a ClusterRole. Notice that there are very few distinctions. The Kind value is what differentiates them and then the ClusterRole does not have the namespace field since it is applied at [cluster](/blog/kube-bench) level only.
 
 <table>
   <tr>
@@ -394,5 +394,4 @@ system.
 * [ ] Verify look of article locally
   * Would any images look better `wide` or without the `figcaption`?
 * [ ] Add keywords for internal links to front-matter
-* [ ] Run `link-opp` and find 1-5 places to incorporate links
 
