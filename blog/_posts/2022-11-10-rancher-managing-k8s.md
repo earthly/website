@@ -244,9 +244,3 @@ In this article, you learned what Rancher is and how it can help you better mana
 Another tool that is as flexible and easy to use as Rancher is [Earthly](https://earthly.dev), the effortless [CI/CD](/blog/ci-vs-cd) framework that allows you to develop pipelines locally and run them anywhere.
 
 {% include cta/cta1.html %}
-
-## Outside Article Checklist
-
-* [ ] Verify look of article locally
-  * Would any images look better `wide` or without the `figcaption`?
-
