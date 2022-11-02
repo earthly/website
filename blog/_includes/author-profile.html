@@ -1,5 +1,4 @@
-{% assign author = page.author | default: page.authors[0] | default: site.author
-%} 
+{% assign author = page.author[0] | default: page.author | default: site.author %} 
 {% assign author = site.data.authors[author] | default: author %} 
 {% if author %}
   <div
@@ -29,4 +28,37 @@
       {% endif %}
     </div>
   </div>
+
+  {% if page.author2 %}
+  {% assign author2 = page.author2 %} 
+    {% assign author2 = site.data.authors[author2]%} 
+  
+  <div
+    itemscope
+    itemtype="https://schema.org/Person"
+    class="flex border rounded-md items-center mt-2"
+  >
+    {% if author2.avatar %}
+    <div class="author__avatar ml-2 min-w-[100px] max-w-[100px] flex">
+        {% picture author {{author2.avatar }} --picture class="image-author" --alt {{ author2.name }} % %} 
+    </div>
+    {% endif %}
+    <div class="author__content">
+      <div class="author__name heading pl-4 text-xl font-bold mt-4" itemprop="name">
+        {% if author2.home %}
+        <a href="{{ author2.home | relative_url }}">
+          {{ author2.name }}
+        </a>
+        {% else %}
+        {{ author2.name }}
+        {% endif %}
+      </div>
+      {% if author2.bio %}
+      <div class="author__bio text-sm px-4" itemprop="description">
+        {{ author2.bio | markdownify }}
+      </div>
+      {% endif %}
+    </div>
+  </div>
+  {% endif %}
 {% endif %}

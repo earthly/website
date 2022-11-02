@@ -11,7 +11,7 @@ dev-build:
 
 build:
   BUILD ./blog+lint
-  BUILD ./website+build 
+  BUILD ./website+build
   BUILD ./blog+build
 
 combine:
@@ -23,10 +23,10 @@ combine:
 
 build-base-images:
   BUILD ./blog+base-image-all
-  BUILD ./website+base-image-all  
+  BUILD ./website+base-image-all
 
-## Files needed by blog and website that are in root dir need to be exported here 
-## And reimported in blog and website earthfiles 
+## Files needed by blog and website that are in root dir need to be exported here
+## And reimported in blog and website earthfiles
 export:
   WORKDIR /base
   COPY .vale.ini .
@@ -58,14 +58,14 @@ publish:
     COPY (./blog/+build/_site --DATE="$DATE") ./blog
     COPY ./website/+build/_site ./website
   ELSE
-    COPY (./blog/+build/_site --FLAGS="--future" --DATE="$DATE")  ./blog 
+    COPY (./blog/+build/_site --FLAGS="--future" --DATE="$DATE")  ./blog
     COPY (./website/+build/_site --FLAGS="--future") ./website
   END
 
   # ## Content needs to be combined into /build for netlify to pick up
   RUN mkdir -p ./build/blog
   RUN cp -rf ./blog/* ./build/blog
-  RUN cp -rf ./website/* ./build 
+  RUN cp -rf ./website/* ./build
 
   IF [ "$DESTINATION" = "PROD" ]
     RUN --no-cache echo "PROD_DEPLOY"
@@ -77,6 +77,6 @@ publish:
     RUN --no-cache echo "Preview Throw Away Deploy"
     RUN --no-cache \
         --secret NETLIFY_STAGING_SITE_ID \
-        --secret NETLIFY_STAGING_AUTH_TOKEN \ 
+        --secret NETLIFY_STAGING_AUTH_TOKEN \
         cd build && netlify deploy --site "$NETLIFY_STAGING_SITE_ID" --auth "$NETLIFY_STAGING_AUTH_TOKEN" --dir=.
-  END 
+  END
