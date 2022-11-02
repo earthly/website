@@ -74,9 +74,8 @@ For these reasons, Bazel is often run in conjunction with Earthly, rather than i
 One of Bazel’s use cases is managing builds for a monorepo setup. For this use case, there is some overlap with what Earthly can do. Here are some key differences between the two:
 
 - Earthly is significantly easier to adopt. Every new programming language that Bazel needs to build requires onboarding, and all build files usually need to be completely rewritten. This can be a significant investment of time and effort from the team adopting it. For large codebases, migration often takes a few years.
-&nbsp;  
-&nbsp;  
-Earthly, on the other hand, does not replace language-specific tools. This makes migrating to Earthly much faster and easier, only taking a few weeks to a few months.
+  
+  Earthly, on the other hand, does not replace language-specific tools. This makes migrating to Earthly much faster and easier, only taking a few weeks to a few months.
 - The learning curve of Earthly is much lower than Bazel. Learning Earthly is especially easy if you already have experience with Dockerfiles. Bazel, on the other hand, introduces several new concepts and a custom programming language. The difficulty of learning how to use Bazel means fewer engineers across a team will be able to use it. Earthly's simplicity makes it easier to democratize builds across a team than with Bazel.
 - Bazel has a purely descriptive specification language. Earthly is a mix of descriptive and imperative language.
 - Earthly does not do file-level compilation caching on its own. Bazel does. So incremental compilation of large codebases is faster on Bazel. You can set up Earthly to cache individually compiled files, but that requires more work (we're working to improve this).
