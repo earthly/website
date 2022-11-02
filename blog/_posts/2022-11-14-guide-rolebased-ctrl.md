@@ -23,8 +23,8 @@ In this tutorial, you will learn how to implement RBAC at the cluster level and 
 
 ## Prerequisites
 
-You will need a running cluster and Kubectl.
- Basic knowledge of how service accounts work.
+* You will need a running cluster and Kubectl.
+* Basic knowledge of how service accounts work.
 
 ## How Does RBAC Work In Kubernetes?
 
