@@ -23,7 +23,11 @@ Rancher is an enterprise-grade platform that facilitates consistent administerin
 
 In a nutshell, Rancher simplifies managing, monitoring, importing, and provisioning Kubernetes clusters with just a few clicks from its intuitive UI. But how does Rancher achieve this? The following diagram gives you a high-level overview of the components that make it all possible:
 
+<div class="wide">
+
 ![Rancher Architecture Diagram courtesy of Damaso Sanoja]({{site.images}}{{page.slug}}/MbC0MK0.png)
+
+</div>
 
 Here's a breakdown of the main components:
 
@@ -87,15 +91,27 @@ The above-listed procedures involve creating a configuration file and then runni
 
 Regardless of the method selected, once you've installed Rancher, you'll see the login screen:
 
+<div class="wide">
+
 ![Rancher login]({{site.images}}{{page.slug}}/XRqZQuO.png)
+
+</div>
 
 Next, you need to create a new admin password for the Rancher UI:
 
+<div class="wide">
+
 ![Rancher admin password]({{site.images}}{{page.slug}}/IVU3FoR.png)
+
+</div>
 
 You then need to confirm the access URL:
 
+<div class="wide">
+
 ![Rancher URL]({{site.images}}{{page.slug}}/4vDAC4G.png)
+
+</div>
 
 With Rancher, upgrading, or reverting to a previous version is easy.
 If you use a single-node Rancher server on Docker, all you have to do is run the container with the desired version.
@@ -115,7 +131,11 @@ Rancher allows you to deploy Kubernetes clusters on any infrastructure from its 
 
 The following screen shows Rancher's main dashboard. Note that only the cluster from which Rancher is running is displayed. To add more clusters, click the **Add Cluster** button located on the top right:
 
+<div class="wide">
+
 ![**Add Cluster**]({{site.images}}{{page.slug}}/Djna2a1.png)
+
+</div>
 
 The next screen asks you to select the type of cluster to deploy. At this point, you have these options:
 
@@ -125,37 +145,69 @@ The next screen asks you to select the type of cluster to deploy. At this point,
 
 Here's an example; you create a new Kubernetes cluster on new DigitalOcean nodes:
 
+<div class="wide">
+
 ![Choose infrastructure or provider]({{site.images}}{{page.slug}}/w0XbsAv.png)
+
+</div>
 
 The next screen lets you create node pools, select a network provider, set the number of nodes, create labels, and much more. From here, you can fully configure the Kubernetes cluster. Once that configuration is ready, you can deploy the cluster:
 
+<div class="wide">
+
 ![Configure node options 2]({{site.images}}{{page.slug}}/fAyORCQ.png)
+
+</div>
 
 The next screen shows the main dashboard, where you can see how the cluster is provisioned in real time:
 
+<div class="wide">
+
 ![Rancher provisioning 1]({{site.images}}{{page.slug}}/H8TDw9o.png)
+
+</div>
 
 For reference, the following is a screenshot of the DigitalOcean dashboard where you can see how the cluster is provisioned:
 
+<div class="wide">
+
 ![Rancher provisioning 2]({{site.images}}{{page.slug}}/Om074Tr.png)
+
+</div>
 
 Once the process is complete, both clusters will be listed in the Rancher dashboard:
 
+<div class="wide">
+
 ![New cluster]({{site.images}}{{page.slug}}/csaB5X3.png)
+
+</div>
 
 The hamburger menu to the right of the cluster allows you to perform some basic operations, like editing the cluster, taking a snapshot of the cluster, running a CIS scan, and deleting the cluster:
 
+<div class="wide">
+
 ![Cluster management]({{site.images}}{{page.slug}}/uzIHH7K.png)
 
+</div>
+
 If you click on any of the clusters, you will be taken to a screen where you can see the key metrics of each cluster:
+
+<div class="wide">
 
 ![Local cluster monitoring]({{site.images}}{{page.slug}}/nwmJOEc.png)
 
 ![DigitalOcean cluster monitoring]({{site.images}}{{page.slug}}/SUz4S2j.png)
 
+</div>
+
 If you're familiar with DigitalOcean, you may be interested in knowing which OS was used for each node and the specifications of the RAM, vCPU, and storage (the specific Droplet). An advantage of Rancher is that you can create and manage node templates for any supported host provider and then use those templates during cluster creation. Take a look at this example:
 
+<div class="wide">
+
 ![Add node template]({{site.images}}{{page.slug}}/qGY2rTU.png)
+
+</div>
 
 The procedure for deploying managed Kubernetes clusters is similar. In all cases, you must previously configure the necessary access tokens. This will enable the cluster controller to communicate correctly with the cluster agent and perform all the necessary operations.
 
@@ -165,37 +217,69 @@ But can Rancher help you better manage Kubernetes? In short, the answer is yes.
 
 Go back for a moment to one of the previous screenshots:
 
+<div class="wide">
+
 ![DigitalOcean cluster monitoring]({{site.images}}{{page.slug}}/SUz4S2j.png)
+
+</div>
 
 At the top right, you can see a button labeled **Launch kubectl**. If you click on it, another screen similar to the following will be displayed:
 
+<div class="wide">
+
 ![kubectl screen]({{site.images}}{{page.slug}}/dbF6OYA.png)
+
+</div>
 
 From here, you can run any command on the selected cluster. As shown, the kubectl `get pods -A` command has been run. This means, without switching contexts in your terminal, you can easily use `kubectl` commands on any of the Rancher-managed clusters.
 
 Rancher's convenience for managing multi-cluster environments doesn't end there. Instead of clicking the **Launch kubectl** button, you could click the yellow button labeled **Cluster Explorer** located at the top left:
 
+<div class="wide">
+
 ![**Cluster Explorer** monitoring]({{site.images}}{{page.slug}}/uHvocLA.png)
+
+</div>
 
 This screen offers detailed information about the status of the selected cluster and is ideal for more detailed monitoring of the resources used. On the left, you can see a side menu with multiple options. Take a look at the nodes:
 
+<div class="wide">
+
 ![**Cluster Explorer** > **Nodes**]({{site.images}}{{page.slug}}/DOox4sc.png)
+
+</div>
 
 Or you could also handle the cluster role bindings:
 
+<div class="wide">
+
 ![**ClusterRoleBindings**]({{site.images}}{{page.slug}}/gu97yHo.png)
+
+</div>
 
 Do you want to configure Git repositories for continuous delivery? You can also do that from the Rancher UI:
 
+<div class="wide">
+
 ![**Continuous Delivery**]({{site.images}}{{page.slug}}/frvWmaQ.png)
+
+</div>
 
 Since Rancher uses Helm, you can install any number of applications and tools on each cluster, and you can do it from the convenience of the Rancher marketplace:
 
+<div class="wide">
+
 ![Rancher Marketplace]({{site.images}}{{page.slug}}/S3bJzgc.png)
+
+</div>
 
 You can even add or remove the Helm chart according to your needs:
 
+<div class="wide">
+
 ![Helm charts]({{site.images}}{{page.slug}}/k3PnZ07.png)
+
+</div>
 
 This is just a brief overview of all the operations that can be done from the Rancher Cluster Explorer. From workload management to storage and RBAC, you can manage multi-cluster and hybrid-cluster environments conveniently from a single interface.
 
@@ -203,7 +287,11 @@ This is just a brief overview of all the operations that can be done from the Ra
 
 As briefly mentioned in the previous section, from the Rancher Cluster Explorer, you can manage Kubernetes's role-based access control (RBAC):
 
+<div class="wide">
+
 ![RBAC]({{site.images}}{{page.slug}}/QTAF6Il.png)
+
+</div>
 
 This means you can enforce ClusterRoleBindings, ClusterRoles, RoleBindings, and Roles—for both users and services running on your clusters—from the same UI.
 
@@ -213,9 +301,13 @@ Another layer of security and convenience that Rancher offers is the authenticat
 
 Rancher, however, does have built-in support for major authentication providers and also offers you absolute control over the permissions granted to each user:
 
+<div class="wide">
+
 ![New user]({{site.images}}{{page.slug}}/mkClL91.png)
 
 ![Auth Provider]({{site.images}}{{page.slug}}/uf9OBYM.png)
+
+</div>
 
 This allows efficient and secure management of who can enter each cluster and with what permissions they can do so.
 
@@ -229,11 +321,19 @@ Rancher is synonymous with flexibility and convenience; for this reason, its ama
 
 These plug-ins, also called drivers, allow Rancher to communicate with different Kubernetes-hosted solutions and infrastructure providers. You can access Rancher Cluster Drivers from the UI:
 
+<div class="wide">
+
 ![Rancher Cluster Drivers]({{site.images}}{{page.slug}}/fZ0CX28.png)
+
+</div>
 
 You can also access the different Node Drivers from the UI:
 
+<div class="wide">
+
 ![Rancher Node Drivers]({{site.images}}{{page.slug}}/jnRZONR.png)
+
+</div>
 
 In both cases, you can activate, deactivate, or even add new drivers from Rancher's graphical interface.
 
