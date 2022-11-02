@@ -25,7 +25,7 @@ To follow along with this article, you will need to have [Docker](/blog/rails-wi
 
 Head to the extension section in VS Code and type `docker` in the search box. You should see something like this:
 
-![Searching for docker extension]({{site.images}}{{page.slug}}/vVdGELj.png)\
+![Searching for docker extension]({{site.images}}{{page.slug}}/vVdGELj.png)
 
 The first selection in this image is what you want to look for to install. Click on it to install. Once it's done downloading, you will notice a Docker icon or logo at the bottom left corner of your window. This is the [Docker](/blog/rails-with-docker) explorer.
 
@@ -33,7 +33,7 @@ The first selection in this image is what you want to look for to install. Click
 
 Click on it. All our running and stopped containers are highlighted inside the Docker explorer. Here, you can also see your images, registries, volumes, networks, e.t.c. :
 
-![containers,volumes,images and more]({{site.images}}{{page.slug}}/UQWjQRM.png)\
+![Containers ,volumes, images and more]({{site.images}}{{page.slug}}/UQWjQRM.png)
 
 ## Building Our Project
 
@@ -78,7 +78,7 @@ To generate the Docker files automatically, open the Command Palette by pressing
 Docker: Add Docker files to Workspace command`:
 ~~~
 
-![adding docker files]({{site.images}}{{page.slug}}/bM7WWsn.jpeg)\
+![Adding docker files]({{site.images}}{{page.slug}}/bM7WWsn.jpeg)
 
 You'll be asked to choose the application platform you're working with. Just proceed to choose  `node`, and you'll also be asked whether to include Docker compose or not. A compose file is typically used when you want to start up multiple containers, say if you also wanted a database, or if you were trying to run a front-end and a back-end together. Since that's not the case with our project you can choose `No`.
 
@@ -115,19 +115,19 @@ Similar to the `.gitignore`, the `.dockerignore` instructs Docker to hold files 
 
 To build the Docker image, open the `Command Palette` and execute `Docker Images: Build Image`. You can also right-click the `Dockerfile` in the navigation panel and select `Build image:`
 
-![Docker build]({{site.images}}{{page.slug}}/gn9rNt4.jpeg)\
+![Building an image]({{site.images}}{{page.slug}}/gn9rNt4.jpeg)
 
 If you check the extension pane and look at the `images` section inside the Docker explorer, you should see the latest project has been added to the docker explorer.
 
-![our latest project]({{site.images}}{{page.slug}}/qxnlDbj.png)\
+![Our latest project]({{site.images}}{{page.slug}}/qxnlDbj.png)
 
 The following step is to run our `image`. Open the command palette once more, type `docker run`, and then pick `Docker: Run`. It will display a list of all the containers on your system. Select the `docker-node:latest` tag and click `Enter`.
   
-![Docker run]({{site.images}}{{page.slug}}/lDRhXAu.jpeg)\
+![Running a container]({{site.images}}{{page.slug}}/lDRhXAu.jpeg)
 
 You can also run the container by going to the left pane, selecting the Docker explorer, then under `IMAGES`, choose the image you want. Right-click on  `latest`. and click run. You will get the same logs running on the terminal.
 
-![running docker inside the extension]({{site.images}}{{page.slug}}/OU6RnwE.jpeg)\
+![Running docker inside the extension]({{site.images}}{{page.slug}}/OU6RnwE.jpeg)
 
 Once the `docker-node` container runs, You can check the running containers in the same section in our Docker explorer. You can also stop them from here.
 
@@ -141,13 +141,13 @@ You can view the app running in the container in the browser. To do this, right-
 
 The docker extension includes a VS Code debugger configuration inside `.vscode/launch.json` for debugging when running inside a container. To do this, set a breakpoint in the `get()` handler for the '/' in `index.js` by pressing the f9 key. Then go to the `run and debug section` in VS Code and select `Docker Node.js launch` debugger and start debugging by pressing `f5` :
 
-![the run and debug section]({{site.images}}{{page.slug}}/WSiiCWl.png)\
+![The run and debug section]({{site.images}}{{page.slug}}/WSiiCWl.png)
 
 ![selecting docker node.js launch]({{site.images}}{{page.slug}}/jcR4gOc.png)\
 
 What you'll notice is that the debugger comes to a halt in `index.js` at the breakpoint:
 
-![The breakpoint]({{site.images}}{{page.slug}}/dnqMcyX.png)\
+![Using breakpoints]({{site.images}}{{page.slug}}/dnqMcyX.png)
 
 You can then continue by pressing the play button at the top to continue running.
 
@@ -157,7 +157,7 @@ This option is available in the context menu for running [containers](/blog/dock
 
 Using the running Node.js container as our example, all you have to do is navigate to Docker Explorer. In the Containers tab, right-click on your container and choose View Logs. You should see it being displayed in the terminal
 
-![view container logs]({{site.images}}{{page.slug}}/P8lZ9Fr.jpeg)\
+![Viewing container logs]({{site.images}}{{page.slug}}/P8lZ9Fr.jpeg)
 
 ![container logs]({{site.images}}{{page.slug}}/Hn6x6xm.png)\
 
@@ -165,7 +165,7 @@ Using the running Node.js container as our example, all you have to do is naviga
 
 The Docker inspect images is a feature that allows you to inspect the images built and see the details in a JSON file. This allows you to see important information about our image i.e the image ID, when it was created, volumes, and many more. Inside our docker explorer, navigate to `IMAGES` and locate the `project folder/latest` right click and click on inspect:
 
-![Docker inspect]({{site.images}}{{page.slug}}/HMQtXXA.jpeg)\
+![Docker inspect]({{site.images}}{{page.slug}}/HMQtXXA.jpeg)
 
 ![Json file]({{site.images}}{{page.slug}}/4yCyoeN.jpeg)\
 
