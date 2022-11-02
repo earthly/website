@@ -246,3 +246,4 @@ linkerd
 Websocket
 websocket
 pem
+serviceaccount
