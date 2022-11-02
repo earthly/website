@@ -46,7 +46,7 @@ GEM
       jekyll (>= 3.5, < 5.0)
     jekyll-watch (2.2.1)
       listen (~> 3.0)
-    jekyll_picture_tag (2.0.3)
+    jekyll_picture_tag (2.0.4)
       addressable (~> 2.6)
       jekyll (~> 4.0)
       mime-types (~> 3.0)
