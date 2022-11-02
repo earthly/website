@@ -221,3 +221,5 @@ fintech
 Sourcegraph
 Tarun
 Kundhiya
+Damaso
+Sanoja
