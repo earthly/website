@@ -42,7 +42,7 @@ The RBAC configuration uses the `rbac.authorization.k8s.io/v1` apiVersion to cre
 
 The resources map states which resources and apiGroups the Role is being applied to:
 
-~~~{.yaml caption=">_"}
+~~~{.yaml caption=""}
 rules:
 apiGroups: [""]
 verbs: ["get", "list"]
