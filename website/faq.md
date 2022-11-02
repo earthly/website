@@ -61,14 +61,23 @@ At a higher level, though, Earthly is focused on providing an easy to write lang
 
 <h2 class="text-2xl font-semibold mb-5 mt-20" id="bazel">How is Earthly different from Bazel?<span class="hide"><a href="#bazel">¶</a></span></h2>
 
-[Bazel](https://bazel.build) is a build tool developed by Google to optimize the speed, correctness, and reproducibility of their internal monorepo codebase. Earthly draws inspiration from some of the principles of Bazel (mainly the idea of repeatable builds), but it is different in a few key ways:
+[Bazel](https://bazel.build) is a build tool developed by Google to optimize the speed, correctness, and reproducibility of their internal monorepo codebase.
 
-- Earthly does not replace language-specific tools, like Maven, Gradle, Webpack, etc. Instead, it leverages and integrates with them. Adopting Bazel usually means that all build files need to be completely rewritten. This is not the case with Earthly, as it mainly acts as the glue between builds.
-- The learning curve of Earthly is more accessible, especially if the user already has experience with Dockerfiles. Bazel, on the other hand, introduces some completely new concepts.
+The main difference between Bazel and Earthly is that Bazel is a **build system**, whereas Earthly is a **general purpose CI/CD framework**. As such, Bazel focuses on compiling and unit testing - and it does so in a highly opinionated manner. When adopted correctly, Bazel is an extremely efficient build system that focuses on speed, correctness, and reproducibility. Anything beyond compiling and unit testing, however, is very difficult to achieve. Earthly on the other hand can be used for general-purpose CI/CD use cases, going beyond compiling and unit testing, allowing additionally integration testing, deployment to production, executing arbitrary scripts, performing custom packaging, and so on.
+
+Bazel does exceptionally well in very specific types of environments, for a set of very specific use-cases, but is not a general purpose CI/CD environment.
+
+For these reasons, Bazel is often run in conjunction with Earthly, rather than instead of it. There is an [example of how to do that in the Earthly repository on GitHub](https://github.com/earthly/earthly/tree/main/examples/bazel). In particular, the combination of [Earthly Satellites](https://earthly.dev/pricing) and Bazel allows for Bazel's cache to be saved and be instantly available on the next run, which can make Bazel executions in CI very fast.
+
+One of Bazel's use cases is managing builds for a monorepo setup. For this use case, there is some overlap with what Earthly can do as well. Here are some key differences between the two:
+
+- Earthly is significantly easier to adopt. Every new language that needs to be onboarded to Bazel requires a significant investment from the team adopting it. For large codebases, this migration is typically of the order of years. Adopting Bazel usually means that all build files need to be completely rewritten. Earthly, on the other hand, does not replace language-specific tools, allowing for migrations to take place in weeks to months.
+- The learning curve of Earthly is more accessible, especially if the user already has experience with Dockerfiles. Bazel, on the other hand, introduces some completely new concepts. Bazel builds are not democratized within the team to the same extent as Earthly builds are.
+- Earthly does not do file-level compilation caching on its own. Bazel does. This means that incremental compilation of large codebases is faster on Bazel. Earthly builds could be set up to cache individually compiled files, but that requires more work. This will be improved in the future.
 - Bazel has a purely descriptive specification language. Earthly is a mix of descriptive and imperative language.
-- Bazel uses tight control of compiler tool chains to achieve true hermetic builds, whereas Earthly uses containers and well-defined inputs.
+- Bazel's consistency is more correct and more difficult to achieve, while Earthly's consistency is more practical. Bazel uses tight control of compiler toolchains to achieve true hermetic builds, whereas Earthly uses containers and well-defined inputs. This means that Bazel achieves truly reproducible builds (the output is byte-for-byte consistent across systems when ran in similar environments - assuming compiler versions match, etc.), whereas Earthly only achieves repeatable builds (consistency is guaranteed via ensuring that the build executes in a similar environment through the use of containers, but the build output is usually not byte-for-byte the same if dependencies are not pinned to a fixed version, or if compilers used within the build introduce timestamps).
 
-Overall, by letting you use your existing tool chain, Earthly has an easier adoption curve and is easier to use in non-mono repo settings. This does mean that its possible to do non-repeatable actions in Earthly, but practically at organization scales smaller than Google, we have not found this to be a problem and the ease of adoption out-weighs these concerns.
+For more information about when to use Bazel, check out our blog, where we have written an [extensive article on the topic](https://earthly.dev/blog/bazel-build/).
 
 <h2 class="text-2xl font-semibold mb-5 mt-20" id="dagger">How is Earthly different from Dagger?<span class="hide"><a href="#dagger">¶</a></span></h2>
 
