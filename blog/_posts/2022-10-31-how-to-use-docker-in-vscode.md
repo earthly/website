@@ -33,7 +33,7 @@ The first selection in this image is what you want to look for to install. Click
 
 Click on it. All our running and stopped containers are highlighted inside the Docker explorer. Here, you can also see your images, registries, volumes, networks, e.t.c. :
 
-![Containers ,volumes, images and more]({{site.images}}{{page.slug}}/UQWjQRM.png)
+![Containers ,volumes, images, and more]({{site.images}}{{page.slug}}/UQWjQRM.png)
 
 ## Building Our Project
 
