@@ -3,7 +3,7 @@ title: "Using Canary Deployments in Kubernetes"
 categories:
   - Tutorials
 toc: true
-author: Adam
+author: Sooter Saalu
 
 internal-links:
  - just an example
@@ -229,7 +229,6 @@ In this article, you learned about canary deployments in Kubernetes, why they're
 
 ## Outside Article Checklist
 
-- [ ] Add in Author page
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
