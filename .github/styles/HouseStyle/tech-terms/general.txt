@@ -253,3 +253,7 @@ Tencent
 Cloudscale
 
 serviceaccount
+
+Bitnami
+bitnami
+ip
