@@ -11,7 +11,7 @@ internal-links:
 
 For production and hybrid cloud environments, manual deployments with Kubernetes are time consuming and non reusable. As you deploy different applications with similar configuration settings to Kubernetes, you'll have a large number of YAML files and substantial duplication; this makes the applications difficult to maintain. This is where Helm can help.
 
-With Helm, you can deploy complex applications quickly as Helm charts, resulting in increased productivity, scalability, and reusability.
+With Helm, you can deploy complex applications quickly as Helm charts, resulting in increased productivity, scalability, and [reusability](/blog/achieving-repeatability).
 
 In this tutorial, you'll learn what Helm is, what Helm charts are, and how to deploy a MongoDB database up on Kubernetes with Helm.
 
@@ -35,7 +35,7 @@ Creating and sharing application configuration as charts makes Helm popular amon
 
 ![Viewing MongoDB helm chart]({{site.images}}{{page.slug}}/8edmxYX)
 
-You can find Helm charts on GitHub, GitLab, Bitbucket, and other related platforms. You can also get Helm charts from [verified publishers](https://blog.artifacthub.io/blog/verified-and-official-repos/#verified-publishers) like [Bitnami](https://bitnami.com/). Here's the Prometheus Helm chart made by Prometheus.
+You can find Helm charts on GitHub, [GitLab](/blog/gitlab-ci), Bitbucket, and other related platforms. You can also get Helm charts from [verified publishers](https://blog.artifacthub.io/blog/verified-and-official-repos/#verified-publishers) like [Bitnami](https://bitnami.com/). Here's the Prometheus Helm chart made by Prometheus.
 
 ![Viewing Prometheus helm chart]({{site.images}}{{page.slug}}/hu7aW8m)
 
@@ -210,7 +210,7 @@ To see Helm in action, you'll deploy a replicated MongoDB database using Helm on
 
 ### Deploying a MongoDB Database Using Helm
 
-Create a namespace in your Kubernetes cluster; this tutorial uses a namespace called `mongodb-helm`.This namespace will house your MongoDB database.
+Create a namespace in your Kubernetes cluster; this tutorial uses a namespace called `mongodb-helm`.This namespace will house your [MongoDB](/blog/mongodb-docker) database.
 
 ~~~{.bash caption=">_"}
 kubectl create namespace mongodb-helm
@@ -464,7 +464,7 @@ I hope you understand how Helm is a helpful tool when working with Kubernetes.. 
 
 - Deploy a MongoDB database,
 - Create a mongo-express service to provide a UI for the MongoDB database, and
-- Deploy an Nginx Ingress controller to handle browser requests to view the Mongo-Express UI over the internet using Helm, without configuring it all by yourself.
+- Deploy an Nginx [Ingress](/blog/k8s-networking) controller to handle browser requests to view the Mongo-Express UI over the internet using Helm, without configuring it all by yourself.
 As a next step, you can create and publish your own Helm chart.See the [Helm documentation](https://helm.sh/docs/chart_template_guide/getting_started/) to get started.
 
 {% include cta/cta1.html %}
@@ -476,4 +476,3 @@ As a next step, you can create and publish your own Helm chart.See the [Helm doc
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
