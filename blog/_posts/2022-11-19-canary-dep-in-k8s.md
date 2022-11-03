@@ -233,7 +233,3 @@ Automating your Kubernetes process is especially helpful for large architectures
 In this article, you learned about canary deployments in Kubernetes, why they're needed, how they work, how they differ from normal deployments, and how to utilize them. Canary deployments can be beneficial to your production process if you create and utilize application updates in Kubernetes often.
 
 {% include cta/cta1.html %}
-
-## Outside Article Checklist
-
-- [ ] Create header image in Canva 
