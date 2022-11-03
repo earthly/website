@@ -38,7 +38,7 @@ Initially, you can have a specific percentage of users test the modified applica
 
 This gradual process alleviates any downtime and reduces the impact of your changes until they are tested live while streamlining the transition between application versions. If there are issues with a particular update, only a small section of the user base will be affected, and you can drop the canary deployment until a more stable update is in place.
 
-![Canary deployment architecture diagram courtesy of Sooter Saalu]({{site.images}}{{page.slug}}/laz6hB1.png)
+![Canary deployment architecture diagram]({{site.images}}{{page.slug}}/laz6hB1.png)
 
 ## Default Kubernetes Request Flow
 
@@ -58,7 +58,7 @@ When defining a [deployment](/blog/deployment-strategies), you should set up the
 
 The following YAML declares a `sample-deployment`, which creates three pod copies of a labeled `nginx` application. This `nginx` application is built with a [Docker](https://www.docker.com/) image named `nginx:1.14.2` and is set to communicate outside of its container through port 8080:
 
-~~~{.bash caption=">_"}
+~~~{.yaml caption=""}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -88,7 +88,7 @@ You do not need to explicitly declare a deployment strategy; however, the defaul
 
 Next, you have a service definition matching your deployment labeling and defining access ports for the deployment:
 
-~~~{.bash caption=">_"}
+~~~{.yaml caption=""}
 apiVersion: v1
 kind: Service
 metadata:
@@ -110,7 +110,7 @@ It's important to note the name given to the service, the selector labels, and t
 
 The ingress controller is ideal for exposing multiple services through a single external endpoint while also enabling rules to be defined for routing traffic. You can configure ingress controllers to extend your service capabilities and enable external access to your pods with more flexibility:
 
-~~~{.bash caption=">_"}
+~~~{.yaml caption=""}
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
@@ -141,7 +141,7 @@ Suppose you have a running deployment. To set up a canary deployment, you need t
 
 As such, most of the changes will be in the ingress file for canary development:
 
-~~~{.bash caption=">_"}
+~~~{.yaml caption=""}
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -168,7 +168,7 @@ spec:
 
 Here, you create a deployment named `canary-deployment` with an updated app name and an updated image base. These labels will be used in the service creation as well. The service uses the `nginx-canary` tag and connects to pods with that label:
 
-~~~{.bash caption=">_"}
+~~~{.yaml caption=""}
 ---
 apiVersion: v1
 kind: Service
@@ -185,7 +185,7 @@ spec:
 
 Here, you add additional annotations that tell Kubernetes that this ingress is a canary one, and the weight annotation denotes the percentage of traffic to be routed to the canary service and, from there, to the canary deployment.
 
-~~~{.bash caption=">_"}
+~~~{.yaml caption=""}
 ---
 apiVersion: extensions/v1beta1
 kind: Ingress
@@ -216,6 +216,8 @@ With canary deployment, your stable version is still online, ideally taking up o
 
 ## Canary Deployments in CI/CD Frameworks
 
+![Deployment]({{site.images}}{{page.slug}}/deploy.png)\
+
 You can use canary deployments in a CI/CD process, in synergy with monitoring and telemetry. In addition, CI/CD frameworks like [Earthly](https://earthly.dev/) allow you to set automated shifts between versions—with percentages of your user base utilizing different versions of your application—generating metrics that are critical to optimizing application performance and user experience.
 
 You can build a [CI/CD](/blog/ci-vs-cd) pipeline that accepts application updates, adjusts traffic for a section of users, and collates data to be compared with the stable version. With checks on which version performs better, traffic can be fully rerouted to the updated version, or the updated version can be taken offline.
@@ -234,7 +236,4 @@ In this article, you learned about canary deployments in Kubernetes, why they're
 
 ## Outside Article Checklist
 
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
+- [ ] Create header image in Canva 
