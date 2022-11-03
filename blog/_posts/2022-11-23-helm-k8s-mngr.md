@@ -73,7 +73,7 @@ Create a file called `mongodb-deployment.yaml`, open it up with your favourite c
 
 In the `mongodb-deployment.yaml` file add the configuration settings below to create a *persistent volume* called `mongodb-pv` and a *persistent volume claim* called `mongodb-claim` to use some amount of storage from the persistent volume to persist data for the MongoDB database.
 
-~~~{.bash caption=">_"}
+~~~{.yaml caption=""}
 apiVersion: v1
 kind: PersistentVolume
 metadata:
@@ -81,7 +81,8 @@ metadata:
    labels:
      type: local
 spec:
-   storageClassName: hostpath # Name of the storage class for local Kubernetes clusters
+   storageClassName: hostpath # Name of the storage class for \
+   local Kubernetes clusters
    capacity:
      storage: 3Gi # Amount of storage this volume should hold
    accessModes:
@@ -100,13 +101,14 @@ spec:
     - ReadWriteOnce # Indicates this claim can only be read and written once
   resources:
     requests:
-      storage: 500Mi # Indicates this claim requests only 500Mi of storage from a PV
+      storage: 500Mi # Indicates this claim requests only 500Mi of \
+      storage from a PV
 
 ~~~
 
 Also, add the configuration setting below to create an internal *service* called(`mongodb`) with a port `27017` and a target port `27017`. And a MongoDB *secret* called (`mongodb-secret`) that will hold the MongoDB username and password—only available within the Kubernetes cluster.
 
-~~~{.bash caption=">_"}
+~~~{.yaml caption=""}
 ---
 apiVersion: v1
 kind: Service
@@ -140,7 +142,7 @@ data:
 
 Finally, add the configuration setting below to create a *StatefulSet* called (`mongodb`) with one replica using a service (`mongodb`). This *StatefulSet* will also pull the official MongoDB database from DockerHub and use the persistent volume claim (`mongodb-claim`) to persist data.
 
-~~~{.bash caption=">_"}
+~~~{.yaml caption=">_"}
 --- 
 apiVersion: apps/v1
 kind: StatefulSet
@@ -151,7 +153,8 @@ spec:
   selector:
     matchLabels:
       app: mongodb
-  replicas: 1 # Indicates this StatefulSet should only create one instance of the MongoDB database
+  replicas: 1 # Indicates this StatefulSet should only \
+  create one instance of the MongoDB database
   template:
     metadata:
       labels:
@@ -168,19 +171,23 @@ spec:
           valueFrom: 
             secretKeyRef:
               name: mongodb-secret
-              key: mongodb-root-username #the key that holds the mongodb username
+              key: mongodb-root-username #the key that holds the\
+              mongodb username
         - name: MONGO_INITDB_ROOT_PASSWORD # mongodb-password
           valueFrom:
             secretKeyRef:
               name: mongodb-secret
-              key: mongodb-root-password #the key that holds the mongodb password
+              key: mongodb-root-password #the key that holds the \
+              mongodb password
         volumeMounts:
           - name: data
-            mountPath: /var/lib/mongodb/data # Data should be mounted onto this file path
+            mountPath: /var/lib/mongodb/data # Data should be \
+            mounted onto this file path
       volumes:
       - name: data
         persistentVolumeClaim:
-          claimName: mongodb-claim # Indicates the mongodb database should use a PVC mongodb-claim
+          claimName: mongodb-claim # Indicates the mongodb database \
+          should use a PVC mongodb-claim
 ~~~
 
 Deploy the MongoDB database using the `kubectl` command below:
@@ -269,11 +276,12 @@ Create a file called `values.yaml` and add the following configuration settings.
 
 The code below will deploy the MongoDB chart as a `replicaSet` with three pods(`replicaCount`). It will use a standard `storageClass` and a root password `secret-root-password`.
 
-~~~{.bash caption=">_"}
+~~~{.yaml caption=""}
 architecture: replicaset 
 replicaCount: 3
 persistence: 
-  storageClass: "linode-block-storage" #your cloud Kubernetes cluster provisioner storage class goes here
+  storageClass: "linode-block-storage" #your cloud Kubernetes \
+  cluster provisioner storage class goes here
 auth:
   rootPassword: secret-root-pwsd
 ~~~
@@ -281,8 +289,11 @@ auth:
 Running the following command will install the MongoDB chart using the values overwritten in the `values.yaml` file:
 
 ~~~{.bash caption=">_"}
-helm install -n [the-kubernetes-namespace] [the-name-you-want-to-give-the-chart] -values [the-name-of-the-values-file] [chart name]
-helm install -n mongodb-helm mongodb --values values.yaml bitnami/mongodb
+helm install -n [the-kubernetes-namespace] \
+[the-name-you-want-to-give-the-chart] -values \
+[the-name-of-the-values-file] [chart name]
+helm install -n mongodb-helm mongodb --values \
+values.yaml bitnami/mongodb
 ~~~
 
 <aside>
@@ -333,7 +344,7 @@ Deploying Mongo-express isn't as complex as deploying a fully fledged database, 
 
 Create a file called `mongodb-express.yaml` and add the following configuration to create a *deployment* called *mongo-express* with *one* instance of *mongo-express*.
 
-~~~{.bash caption=">_"}
+~~~{.yaml caption="mongodb-express.yaml"}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -369,7 +380,7 @@ spec:
 
 Add the following configuration settings to create an internal service called *mongo-express-service*  to deploy the *mongo-express* image container on port *8081* and connect to the MongoDB server using the `ME_CONFIG_MONGODB_ADMINUSERNAME`, `ME_CONFIG_MONGODB_SERVER` and `ME_CONFIG_MONGODB_ADMINPASSWORD` as environment variables.
 
-~~~{.bash caption=">_"}
+~~~{.yaml caption="mongodb-express.yaml"}
 ---
 apiVersion: v1
 kind: Service
@@ -470,7 +481,7 @@ Now, create a file called `ingress.yaml` and paste in the following configuratio
 
 The configuration setting below will create an Ingress rule, that'll forward all browser requests for the *mongo-express-service* to point to your domain name. Ensure you have the external IP address of *the Nginx ingress controller* mapped to your domain name.
 
-~~~{.bash caption=">_"}
+~~~{.yaml caption="ingress.yaml"}
                                                                                                                                                  
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -480,14 +491,16 @@ metadata:
   name: mongo-express-ingress
 spec:
   rules:
-    -  host: 104-200-26-90-ip.linodeusercontent.com #the domain name that points to the nginx ingress controller
+    -  host: 104-200-26-90-ip.linodeusercontent.com \
+    #the domain name that points to the nginx ingress controller
        http:
         paths:
           -  path: "/"
              pathType: Prefix
              backend:
                 service:
-                  name: mongo-express-service #the service you want to access over the domain name
+                  name: mongo-express-service #the service you \
+                  want to access over the domain name
                   port:
                     number: 8081
 ~~~
@@ -539,8 +552,3 @@ I hope you understand how Helm is a helpful tool when working with Kubernetes.. 
 As a next step, you can create and publish your own Helm chart.See the [Helm documentation](https://helm.sh/docs/chart_template_guide/getting_started/) to get started.
 
 {% include cta/cta1.html %}
-
-## Outside Article Checklist
-
-- [ ] Create header image in Canva
-
