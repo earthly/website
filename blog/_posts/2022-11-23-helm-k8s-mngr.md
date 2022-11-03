@@ -6,7 +6,10 @@ toc: true
 author: Mercy Bassey
 
 internal-links:
- - just an example
+ - Kubernetes
+ - Helm 
+ - Deployment
+ - Charts
 ---
 
 For production and hybrid cloud environments, manual deployments with Kubernetes are time consuming and non reusable. As you deploy different applications with similar configuration settings to Kubernetes, you'll have a large number of YAML files and substantial duplication; this makes the applications difficult to maintain. This is where Helm can help.
@@ -33,11 +36,11 @@ Helm charts are file based and follow a convention-based directory structure so 
 
 Creating and sharing application configuration as charts makes Helm popular amongst developers. You can search for Helm charts on [Helm Search Hub‌](https://helm.sh/docs/helm/helm_search_hub/) or via the command line using the `helm search <keyword>` command. The [Artifact Hub](https://artifacthub.io/) is the main repository to look for a specific helm chart. All you have to do is search for the chart you'll need and the search results for that chart pops up as shown below:
 
-![Viewing MongoDB helm chart]({{site.images}}{{page.slug}}/8edmxYX)
+![Viewing MongoDB helm chart]({{site.images}}{{page.slug}}/8edmxYX.png)
 
 You can find Helm charts on GitHub, [GitLab](/blog/gitlab-ci), Bitbucket, and other related platforms. You can also get Helm charts from [verified publishers](https://blog.artifacthub.io/blog/verified-and-official-repos/#verified-publishers) like [Bitnami](https://bitnami.com/). Here's the Prometheus Helm chart made by Prometheus.
 
-![Viewing Prometheus helm chart]({{site.images}}{{page.slug}}/hu7aW8m)
+![Viewing Prometheus helm chart]({{site.images}}{{page.slug}}/hu7aW8m.png)
 
 Now that you know what a Helm chart is, it's time to dive into its practical use case.
 
@@ -180,7 +183,7 @@ kubectl apply -f mongodb-deployment.yaml
 
 If created successfully, you should have an output similar to the one below:
 
-![Creating and deploying MongoDB]({{site.images}}{{page.slug}}/YAMO9pD)
+![Creating and deploying MongoDB]({{site.images}}{{page.slug}}/YAMO9pD.png)
 
 Check if all the resources for your MongoDB database are up and running by executing the `kubectl` commands below:
 
@@ -193,7 +196,7 @@ kubectl get secret #gets secret
 
 If your output looks similar to the one shown below, you've successfully deployed a MongoDB database on Kubernetes.
 
-![Viewing all resources for MongoDB in the Kubernetes cluster]({{site.images}}{{page.slug}}/RkHs9hX)
+![Viewing all resources for MongoDB in the Kubernetes cluster]({{site.images}}{{page.slug}}/RkHs9hX.png)
 
 ## Deploying Applications With Helm
 
@@ -216,7 +219,7 @@ Create a namespace in your Kubernetes cluster; this tutorial uses a namespace ca
 kubectl create namespace mongodb-helm
 ~~~
 
-![Creating namespace]({{site.images}}{{page.slug}}/dhjUuHb)
+![Creating namespace]({{site.images}}{{page.slug}}/dhjUuHb.png)
 
 As of writing this tutorial, the maintained MongoDB chart is managed by [Bitnami](https://bitnami.com/stack/mongodb/helm). Add the Helm repository that contains the MongoDB helm chart:
 
@@ -224,7 +227,7 @@ As of writing this tutorial, the maintained MongoDB chart is managed by [Bitnami
 helm repo add bitnami https://charts.bitnami.com/bitnami
 ~~~
 
-![Adding the bitnami helm repository]({{site.images}}{{page.slug}}/JDsAxum)
+![Adding the bitnami helm repository]({{site.images}}{{page.slug}}/JDsAxum.png)
 
 Next, search for the MongoDB chart from the [Bitnami](https://bitnami.com/stack/mongodb/helm) repository:
 
@@ -232,7 +235,7 @@ Next, search for the MongoDB chart from the [Bitnami](https://bitnami.com/stack/
 helm search repo bitnami/mongo
 ~~~
 
-![Searching for MongoDB helm chart from Bitnamin helm repository]({{site.images}}{{page.slug}}/vX8Irjv)
+![Searching for MongoDB helm chart from Bitnamin helm repository]({{site.images}}{{page.slug}}/vX8Irjv.png)
 
 Create a file called `values.yaml` and add the following configuration settings.
 
@@ -271,7 +274,7 @@ kubectl -n mongodb-helm get all
 
 You can see that three pods and two services have been created, alongside instances of the MongoDB database as `statefulSets`.
 
-![Viewing all resources created by MongoDB helm chart]({{site.images}}{{page.slug}}/NxxcuWp)
+![Viewing all resources created by MongoDB helm chart]({{site.images}}{{page.slug}}/NxxcuWp.png)
 
 Verify the secret and persistent volume claim created for the MongoDB database:
 
@@ -282,7 +285,7 @@ kubectl -n mongodb-helm get pvc
 
 You should have a secret and three persistent volume claims created for each instance (`pods`) of the MongoDB database:
 
-![Viewing MongoDB secret and persistent volume claims (PVC)]({{site.images}}{{page.slug}}/4px291U)
+![Viewing MongoDB secret and persistent volume claims (PVC)]({{site.images}}{{page.slug}}/4px291U.png)
 
 You have now deployed a MongoDB database in your Kubernetes cluster with Helm.
 
@@ -358,7 +361,7 @@ kubectl -n mongodb-helm apply -f mongodb-express.yaml
 
 If deployed successfully, you should have the following output:
 
-![Deploying Mongo-express]({{site.images}}{{page.slug}}/7rY24my)
+![Deploying Mongo-express]({{site.images}}{{page.slug}}/7rY24my.png)
 
 Confirm if `mongo-express` is up and running, using the `kubectl` commands below:
 
@@ -369,7 +372,7 @@ kubectl -n mongodb-helm get service
 
 With the output below you have mongo-express up and running.
 
-![Viewing Mongo-express deployment and service]({{site.images}}{{page.slug}}/s2w2E0e)
+![Viewing Mongo-express deployment and service]({{site.images}}{{page.slug}}/s2w2E0e.png)
 
 ### Deploying an Nginx Ingress Controller Using Helm
 
@@ -382,7 +385,7 @@ helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx #adds the
 helm repo update #updates the repository
 ~~~
 
-![Adding the repository containing Nginx-ingress-controller and updating the repository]({{site.images}}{{page.slug}}/bZwq67K)
+![Adding the repository containing Nginx-ingress-controller and updating the repository]({{site.images}}{{page.slug}}/bZwq67K.png)
 
 Install the Nginx Ingress controller Helm chart using the command below:
 
@@ -394,7 +397,7 @@ helm install -n mongodb-helm nginx-ingress ingress-nginx/ingress-nginx
 
 Wait for the Nginx ingress controller to install; if the installation is successful, you'll have an image similar to the one below:
 
-![Deploying Nginx ingress controller]({{site.images}}{{page.slug}}/kGVHbQH)
+![Deploying Nginx ingress controller]({{site.images}}{{page.slug}}/kGVHbQH.png)
 
 Confirm that the Nginx Ingress controller pod and service are up and running using the command below:
 
@@ -405,7 +408,7 @@ kubectl -n mongodb-helm get svc
 
 You can see the Ingress controller pod and service deployed as a *LoadBalancer* with a ClusterIP and an External IP alongside the Nginx ingress controller default backend:
 
-![Viewing Nginx-ingress-controller pod and service]({{site.images}}{{page.slug}}/bNyI51p)
+![Viewing Nginx-ingress-controller pod and service]({{site.images}}{{page.slug}}/bNyI51p.png)
 
 Now, create a file called `ingress.yaml` and paste in the following configuration settings:
 
@@ -439,7 +442,7 @@ Run the following command to apply this file:
 kubectl -n mongodb-helm apply -f ingress.yaml
 ~~~
 
-![Creating an Ingress resource]({{site.images}}{{page.slug}}/SfGeVcw)
+![Creating an Ingress resource]({{site.images}}{{page.slug}}/SfGeVcw.png)
 
 Confirm that the Ingress resource is up and running, using the command below:
 
@@ -447,7 +450,7 @@ Confirm that the Ingress resource is up and running, using the command below:
 kubectl -n mongodb-helm get ingress
 ~~~
 
-![Viewing ingress resource]({{site.images}}{{page.slug}}/07yLFhE)
+![Viewing ingress resource]({{site.images}}{{page.slug}}/07yLFhE.png)
 
 Now, open up your preferred web browser and add the url below to access Mongo Express:
 
@@ -456,7 +459,7 @@ http://your_domain_name_here
 http://104-200-26-90-ip.linodeusercontent.com
 ~~~
 
-![Accessing Mongo-express over the web browser]({{site.images}}{{page.slug}}/7fjkysi)
+![Accessing Mongo-express over the web browser]({{site.images}}{{page.slug}}/7fjkysi.png)
 
 ## Conclusion
 
@@ -475,4 +478,3 @@ As a next step, you can create and publish your own Helm chart.See the [Helm doc
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Add keywords for internal links to front-matter
