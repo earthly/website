@@ -6,7 +6,10 @@ toc: true
 author: Sooter Saalu
 
 internal-links:
- - just an example
+ - Kubernetes
+ - Canary
+ - CI/CD
+ - Deployments
 ---
 
 Has a seemingly harmless update ever caused your application to fail in production? [Canary deployments](https://earthly.dev/blog/canary-deployment/), like the proverbial canary in a coal mine, can help you mitigate the chaotic outcomes of such updates that can potentially cause critical downtime.
@@ -235,4 +238,3 @@ In this article, you learned about canary deployments in Kubernetes, why they're
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Add keywords for internal links to front-matter
