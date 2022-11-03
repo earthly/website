@@ -472,7 +472,6 @@ http://104-200-26-90-ip.linodeusercontent.com
 
 ![Accessing Mongo-express over the web browser](https://imgur.com/7fjkysi)
 
-
 ## Conclusion
 
 I hope you understand how Helm is a helpful tool when working with Kubernetes.. In this tutorial, you’ve learned how to:
@@ -481,6 +480,7 @@ I hope you understand how Helm is a helpful tool when working with Kubernetes.. 
 - deploy an Nginx Ingress controller to handle browser requests to view the Mongo-Express UI over the internet using Helm, without configuring it all by yourself. 
 As a next step, you can create and publish your own Helm chart.See the [Helm documentation](https://helm.sh/docs/chart_template_guide/getting_started/) to get started.
 
+{% include cta/cta1.html %}
 
 ## Outside Article Checklist
 
@@ -491,4 +491,3 @@ As a next step, you can create and publish your own Helm chart.See the [Helm doc
 - [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
