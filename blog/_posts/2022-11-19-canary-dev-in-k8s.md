@@ -11,7 +11,7 @@ internal-links:
 
 Has a seemingly harmless update ever caused your application to fail in production?  [Canary deployments](https://earthly.dev/blog/canary-deployment/), like the proverbial canary in a coal mine, can help you mitigate the chaotic outcomes of such updates that can potentially cause critical downtime.
 
-Canary deployments are based on the routing of user traffic such that you can compare, test, and observe the behavior of any update for a small percentage of users. They are an important rollout strategy in [Kubernetes](https://kubernetes.io), especially when tweaks, updates, or entirely new deployments need to be tested. A canary deployment is an improved iteration of an existing deployment that includes all the necessary dependencies and application code. It exists alongside the original deployment and allows you to compare the behavior of different versions of your application side by side. It helps you test new features on a small percentage of users with minimal downtime and less impact on user experience.
+Canary deployments are based on the routing of user traffic such that you can compare, test, and observe the behavior of any update for a small percentage of users. They are an important roll-out strategy in [Kubernetes](https://kubernetes.io), especially when tweaks, updates, or entirely new deployments need to be tested. A canary deployment is an improved iteration of an existing deployment that includes all the necessary dependencies and application code. It exists alongside the original deployment and allows you to compare the behavior of different versions of your application side by side. It helps you test new features on a small percentage of users with minimal downtime and less impact on user experience.
 
 In this article, you'll learn about canary deployments, why they're important, and how to use them to optimize your deployment process. You'll also learn how to fit them into an automatic CI/CD framework.
 
@@ -35,7 +35,7 @@ Initially, you can have a specific percentage of users test the modified applica
 
 This gradual process alleviates any downtime and reduces the impact of your changes until they are tested live while streamlining the transition between application versions. If there are issues with a particular update, only a small section of the user base will be affected, and you can drop the canary deployment until a more stable update is in place.
 
-![Canary deployment architecture diagram courtesy of Sooter Saalu](https://i.imgur.com/laz6hB1.png)
+![Canary deployment architecture diagram courtesy of Sooter Saalu]({{site.images}}{{page.slug}}/laz6hB1.png)
 
 ## Default Kubernetes Request Flow
 
@@ -47,7 +47,7 @@ In this flow, you create a service to allow access to all created pods or replic
 
 In a Kubernetes cluster, you utilize these ingress objects to deploy your application and configure communication both within and outside the cluster.
 
-![Typical Kubernetes request flow](https://i.imgur.com/J9toSTq.png)
+![Typical Kubernetes request flow]({{site.images}}{{page.slug}}/J9toSTq.png)
 
 ### Deployment Definition
 
@@ -55,7 +55,7 @@ When defining a deployment, you should set up the name of your deployment, the l
 
 The following YAML declares a `sample-deployment`, which creates three pod copies of a labeled `nginx` application. This `nginx` application is built with a [Docker](https://www.docker.com/) image named `nginx:1.14.2` and is set to communicate outside of its container through port 8080:
 
-```yaml
+~~~{.bash caption=">_"}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -77,7 +77,7 @@ spec:
         image: nginx:1.14.2
         ports:
         - containerPort: 8080
-```
+~~~
 
 You do not need to explicitly declare a deployment strategy; however, the default deployment strategy in Kubernetes is the [RollingUpdate](https://kubernetes.io/docs/tutorials/kubernetes-basics/update/update-intro/) strategy, where pods containing updates replace old pods continuously until all pods are updated. This process is often quick and can be rolled back to a previous deployment.
 
@@ -85,7 +85,7 @@ You do not need to explicitly declare a deployment strategy; however, the defaul
 
 Next, you have a service definition matching your deployment labeling and defining access ports for the deployment:
 
-```yaml
+~~~{.bash caption=">_"}
 apiVersion: v1
 kind: Service
 metadata:
@@ -97,7 +97,7 @@ spec:
     - protocol: TCP
       port: 80
       targetPort: 8080
-```
+~~~
 
 This code will create a `sample-service` object in your cluster, which binds itself to any pod running `nginx`, defined by the selector label. Any newly created pod from that deployment will also gain access to this service.
 
@@ -107,7 +107,7 @@ It's important to note the name given to the service, the selector labels, and t
 
 The ingress controller is ideal for exposing multiple services through a single external endpoint while also enabling rules to be defined for routing traffic. You can configure ingress controllers to extend your service capabilities and enable external access to your pods with more flexibility:
 
-```yaml
+~~~{.bash caption=">_"}
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
@@ -128,7 +128,7 @@ spec:
             name: sample-service
             port:
               number: 80
-```
+~~~
 
 This code connects to the defined service and extends its capabilities for connections outside the cluster.
 
@@ -138,7 +138,7 @@ Suppose you have a running deployment. To set up a canary deployment, you need t
 
 As such, most of the changes will be in the ingress file for canary development:
 
-```yaml
+~~~{.bash caption=">_"}
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -161,11 +161,11 @@ spec:
         image: nginx:1.23.1
         ports:
         - containerPort: 8080
-```
+~~~
 
 Here, you create a deployment named `canary-deployment` with an updated app name and an updated image base. These labels will be used in the service creation as well. The service uses the `nginx-canary` tag and connects to pods with that label:
 
-```yaml
+~~~{.bash caption=">_"}
 ---
 apiVersion: v1
 kind: Service
@@ -178,11 +178,11 @@ spec:
     - protocol: TCP
       port: 80
       targetPort: 8080
-```
+~~~
 
 Here, you add additional annotations that tell Kubernetes that this ingress is a canary one, and the weight annotation denotes the percentage of traffic to be routed to the canary service and, from there, to the canary deployment.
 
-```yaml
+~~~{.bash caption=">_"}
 ---
 apiVersion: extensions/v1beta1
 kind: Ingress
@@ -205,7 +205,7 @@ spec:
             port:
               number: 80
 ---
-```
+~~~
 
 In the first deployment example, any new update will immediately start replacing previous deployments for all your user bases. At the same time, you can roll back updates if any errors occur after the entire user base has been potentially affected.
 
@@ -235,7 +235,5 @@ In this article, you learned about canary deployments in Kubernetes, why they're
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-
