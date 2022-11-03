@@ -9,7 +9,7 @@ internal-links:
  - just an example
 ---
 
-Has a seemingly harmless update ever caused your application to fail in production?  [Canary deployments](https://earthly.dev/blog/canary-deployment/), like the proverbial canary in a coal mine, can help you mitigate the chaotic outcomes of such updates that can potentially cause critical downtime.
+Has a seemingly harmless update ever caused your application to fail in production? [Canary deployments](https://earthly.dev/blog/canary-deployment/), like the proverbial canary in a coal mine, can help you mitigate the chaotic outcomes of such updates that can potentially cause critical downtime.
 
 Canary deployments are based on the routing of user traffic such that you can compare, test, and observe the behavior of any update for a small percentage of users. They are an important roll-out strategy in [Kubernetes](https://kubernetes.io), especially when tweaks, updates, or entirely new deployments need to be tested. A canary deployment is an improved iteration of an existing deployment that includes all the necessary dependencies and application code. It exists alongside the original deployment and allows you to compare the behavior of different versions of your application side by side. It helps you test new features on a small percentage of users with minimal downtime and less impact on user experience.
 
@@ -25,7 +25,7 @@ It also allows you to compare the behavior of both versions of the application, 
 
 ## How You Can Use Canary Deployments in Kubernetes
 
-At its core, a canary deployment implements a clone of your production environment with a load balancer routing user traffic between the available environments based on your parameters. You can deploy canary rollouts in a similar manner to regular rollouts.
+At its core, a [canary deployment](/blog/canary-deployment) implements a clone of your production environment with a load balancer routing user traffic between the available environments based on your parameters. You can deploy canary rollouts in a similar manner to regular rollouts.
 
 This feature is available for use on [minikube](https://minikube.sigs.k8s.io/docs/), cloud, or locally managed Kubernetes clusters.
 
@@ -43,7 +43,7 @@ For canary deployments, the selectors and labels used in the config or YAML file
 
 In Kubernetes, a deployment declares the desired states of pods and ReplicaSets. The Kubernetes controller helps a cluster move towards the desired state from its current state.
 
-In this flow, you create a service to allow access to all created pods or replicas through a single IP or name, as it abstracts away the individual pod addresses to a specific service name and allows requests within the cluster to reach multiple pods. Then your ingress configuration sets a collection of rules allowing inbound connection to communicate with your cluster services.
+In this flow, you create a service to allow access to all created pods or replicas through a single IP or name, as it abstracts away the individual pod addresses to a specific service name and allows requests within the [cluster](/blog/kube-bench) to reach multiple pods. Then your ingress configuration sets a collection of rules allowing inbound connection to communicate with your cluster services.
 
 In a Kubernetes cluster, you utilize these ingress objects to deploy your application and configure communication both within and outside the cluster.
 
@@ -51,7 +51,7 @@ In a Kubernetes cluster, you utilize these ingress objects to deploy your applic
 
 ### Deployment Definition
 
-When defining a deployment, you should set up the name of your deployment, the label (Nginx) to match its created objects, the number of replica pods, and the details of the pod to be created.
+When defining a [deployment](/blog/deployment-strategies), you should set up the name of your deployment, the label (Nginx) to match its created objects, the number of replica pods, and the details of the pod to be created.
 
 The following YAML declares a `sample-deployment`, which creates three pod copies of a labeled `nginx` application. This `nginx` application is built with a [Docker](https://www.docker.com/) image named `nginx:1.14.2` and is set to communicate outside of its container through port 8080:
 
@@ -215,13 +215,13 @@ With canary deployment, your stable version is still online, ideally taking up o
 
 You can use canary deployments in a CI/CD process, in synergy with monitoring and telemetry. In addition, CI/CD frameworks like [Earthly](https://earthly.dev/) allow you to set automated shifts between versions—with percentages of your user base utilizing different versions of your application—generating metrics that are critical to optimizing application performance and user experience.
 
-You can build a CI/CD pipeline that accepts application updates, adjusts traffic for a section of users, and collates data to be compared with the stable version. With checks on which version performs better, traffic can be fully rerouted to the updated version, or the updated version can be taken offline.
+You can build a [CI/CD](/blog/ci-vs-cd) pipeline that accepts application updates, adjusts traffic for a section of users, and collates data to be compared with the stable version. With checks on which version performs better, traffic can be fully rerouted to the updated version, or the updated version can be taken offline.
 
 With Earthly, you can create templates for Kubernetes request flows and set arguments for the parameters you want to automate. These templates will be built and deployed on your Kubernetes environment by Earthly and updated with your programmed logic.
 
 For instance, the `nginx.ingress.kubernetes.io/canary-weight` annotation in the ingress template can be an automated parameter that will change with each programmed deployment cycle, increasing the percentage of users exposed to the updates.
 
-Automating your Kubernetes process is especially helpful for large architectures with multiple deployments that need frequent updates. A microservices architecture where applications run on different environments and need to be configured separately will benefit from an automated deployment process. Such automated deployments also help standardize configurations and their changes over time and improve the repeatability of the process.
+Automating your Kubernetes process is especially helpful for large architectures with multiple  [deployments](/blog/deployment-strategies) that need frequent updates. A microservices architecture where applications run on different environments and need to be configured separately will benefit from an automated deployment process. Such automated deployments also help standardize configurations and their changes over time and improve the repeatability of the process.
 
 ## Conclusion
 
@@ -236,4 +236,3 @@ In this article, you learned about canary deployments in Kubernetes, why they're
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
