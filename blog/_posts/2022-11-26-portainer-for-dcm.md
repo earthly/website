@@ -6,7 +6,9 @@ toc: true
 author: James Walker
 
 internal-links:
- - just an example
+ - Container
+ - Docker
+ - Portainer
 ---
 
 [Docker's CLI](https://docs.docker.com/engine/reference/commandline/cli/) and [API](https://docs.docker.com/engine/api) are powerful tools, but they can be unwieldy when you're working with large container fleets or looking for a more visual experience. [Portainer](https://www.portainer.io), a web-based Docker management system that provides a convenient graphical user interface (GUI), lets you take charge of your containers, images, volumes, and other resources, without memorizing long terminal commands.
@@ -281,6 +283,5 @@ Portainer is ideal for many different use cases, from your local development wor
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Add keywords for internal links to front-matter
 
 
