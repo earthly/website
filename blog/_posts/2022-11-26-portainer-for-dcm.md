@@ -3,7 +3,7 @@ title: "Using Portainer for Docker Container Management"
 categories:
   - Tutorials
 toc: true
-author: Adam
+author: James Walker
 
 internal-links:
  - just an example
@@ -275,7 +275,6 @@ Portainer is ideal for many different use cases, from your local development wor
 
 ## Outside Article Checklist
 
-- [ ] Add in Author page
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
