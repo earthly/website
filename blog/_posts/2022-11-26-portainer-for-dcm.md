@@ -21,7 +21,11 @@ This article will show you how to set up and start using Portainer. You'll also 
 
 [Portainer](https://www.portainer.io) is a [container](/blog/docker-slim) management interface. It started out as a GUI for Docker but has expanded to support several other container environments. It has more than 1 million users and over [22,000 GitHub stars](https://github.com/portainer/portainer). Two versions are available: the free and open source Community Edition (CE) and a paid Enterprise Edition (EE).
 
-![Screenshot of the Portainer dashboard](https://imgur.com/9ragLJ6.png)
+<div class="wide">
+
+![Portainer dashboard](https://imgur.com/9ragLJ6.png)
+
+</div>
 
 You can use Portainer whenever you want to interact with your containers from a graphical interface. CLI commands and API endpoints are often handy in development but less ideal for managing production applications. With Portainer, you can easily monitor multiple endpoints and allow team members to access a shared deployment environment.
 
@@ -55,14 +59,17 @@ Next, add the GPG key used to sign the Docker repository:
 
 ~~~{.bash caption=">_"}
 $ sudo mkdir -p /etc/apt/keyrings
-$ curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+$ curl -fsSL https://download.docker.com/linux/debian/gpg | \
+sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
 ~~~
 
 This lets the `apt` package manager verify the source of your download. Now add the repository to your package list with the following command:
 
 ~~~{.bash caption=">_"}
-$ echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian \
-  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+$ echo "deb [arch=$(dpkg --print-architecture) \
+signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian \
+  $(lsb_release -cs) stable" | sudo tee \
+  /etc/apt/sources.list.d/docker.list > /dev/null
 ~~~
 
 The interpolated commands allow automatic selection of the correct list for your system.
@@ -140,7 +147,7 @@ $ docker run -d \
 
 A better way to start Portainer is to use Docker Compose. This lets you write the container's configuration into a file so you can bring up the app with a single command. To do so, save the following file as `docker-compose.yml` in your working directory:
 
-~~~{.bash caption=">_"}
+~~~{.yaml caption="docker-compose.yml"}
 version: "3"
 services:
   portainer:
@@ -175,31 +182,55 @@ Next, head to [https://localhost:9443](https://localhost:9443) in your browser. 
 
 Once you've acknowledged the prompt, you'll get to Portainer's first run screen. Create your initial user account by entering a username and password and pressing **Create user**:
 
-![Screenshot of creating an initial Portainer user account](https://imgur.com/YjSV1Wf.png)
+<div class="wide">
+
+![Creating an initial Portainer user account](https://imgur.com/YjSV1Wf.png)
+
+</div>
 
 You'll be taken to the environment setup wizard. This is where you connect Portainer to your containerization systems. Click the **Get Started** button to continue with the local Docker socket mounted into the container from your host, and you'll end up on the Portainer dashboard:
 
-![Screenshot of Portainer's environment setup screen](https://imgur.com/1Tbvau5.png)
+<div class="wide">
+
+![Portainer's environment setup screen](https://imgur.com/1Tbvau5.png)
+
+</div>
 
 ## Touring the Portainer Dashboard
 
 The dashboard provides an overview of all the environments you've added to Portainer. Although there's only your `local` environment at the moment, you could add Kubernetes clusters and other remote Docker hosts in the future:
 
-![Screenshot of the Portainer dashboard](https://imgur.com/9ragLJ6.png)
+<div class="wide">
+
+![Portainer dashboard](https://imgur.com/9ragLJ6.png)
+
+</div>
 
 Each environment gets a summary tile, giving quick insights into the number of running, stopped, and healthy containers, as well as counts of the images and volumes available. The sidebar to the left of the screen is where you can navigate between environments, resource types, and application-level global settings:
 
-![Screenshot of Portainer's environment-specific dashboard](https://imgur.com/aHaFN81.png)
+<div class="wide">
+
+![Portainer's environment-specific dashboard](https://imgur.com/aHaFN81.png)
+
+</div>
 
 Clicking into an environment takes you to its own dashboard that summarizes the number of available resources. Clicking any resource type displays a table enumerating all the objects in the environment. Action buttons at the top of the screen are available to perform context-specific functions, such as stopping a container or deleting an image:
 
-![Screenshot of viewing containers in Portainer](https://imgur.com/Sqp8cVh.png)
+<div class="wide">
+
+![Viewing containers in Portainer](https://imgur.com/Sqp8cVh.png)
+
+</div>
 
 ## Deploying an Application with Portainer Stacks
 
 Portainer provides several options for deploying new applications. One of these is **stacks**, a thin wrapper around Docker Compose functionality. A stack is a collection of one or more containers that collectively provide a complete application. You could have a stack consisting of an API, a database, and a frontend web UI:
 
-![Screenshot of the **Stacks** screen in Portainer](https://imgur.com/ZYdGhRY.png)
+<div class="wide">
+
+![The **Stacks** screen in Portainer](https://imgur.com/ZYdGhRY.png)
+
+</div>
 
 To create a new stack, click the **Stacks** menu item on the left sidebar and then press the **Add stack** button on the top-right. There are four ways to define a stack:
 
@@ -210,7 +241,7 @@ To create a new stack, click the **Stacks** menu item on the left sidebar and th
 
 Here's a sample Compose file you can try:
 
-~~~{.bash caption=">_"}
+~~~{.yaml caption=">_"}
 services:
   db:
     image: mysql:8.0
@@ -236,7 +267,11 @@ volumes:
 
 This Compose file includes two services that run a basic [WordPress](https://wordpress.com/) site. Enter a name for your stack at the top of the screen, then paste the WordPress Compose file into the editor:
 
-![Screenshot of Portainer's stack editor](https://imgur.com/jUpybTw.png)
+<div class="wide">
+
+![Portainer's stack editor](https://imgur.com/jUpybTw.png)
+
+</div>
 
 The Compose file uses environment variable substitution with `${VARIABLE}` syntax to configure the database connection. You need to supply values for these variables when you start your stack. To do this, scroll down the page and press the **Add an environment variable** button to create a new key-value pair. Repeat this for the four required variables:
 
@@ -245,29 +280,53 @@ The Compose file uses environment variable substitution with `${VARIABLE}` synta
 - `MYSQL_USER`
 - `MYSQL_PASSWORD`
 
-![Screenshot of setting Portainer stack environment variables](https://imgur.com/pShRX09.png)
+<div class="wide">
+
+![Setting Portainer stack environment variables](https://imgur.com/pShRX09.png)
+
+</div>
 
 Press the blue **Deploy the stack** button at the bottom of the screen to start your services. It may take a few minutes for Portainer to pull the required images and create your containers. You'll then be taken to the stack's page, which shows the details of the running containers. You can access the created WordPress site by heading to [http://localhost:8880](http://localhost:8880) in your browser:
 
-![Screenshot of viewing a running stack in Portainer](https://imgur.com/EuRGJqK.png)
+<div class="wide">
+
+![Viewing a running stack in Portainer](https://imgur.com/EuRGJqK.png)
+
+</div>
 
 ## Deploying a Portainer Template
 
 Templates are an even easier way to launch new application instances. Portainer comes with a set of built-in templates for popular apps. These can be reached by heading to **App Templates** on the left sidebar. You can also create your own templates based on Compose files:
 
-![Screenshot of Portainer's built-in app templates](https://imgur.com/ellmw8u.png)
+<div class="wide">
+
+![Portainer's built-in app templates](https://imgur.com/ellmw8u.png)
+
+</div>
 
 You could replicate the WordPress site created earlier by using the official WordPress template. Head to **Add Templates** and enter "wordpress" into the search bar at the top of the screen:
 
-![Screenshot of searching for the WordPress app template in Portainer](https://imgur.com/u62T3Ch.png)
+<div class="wide">
+
+![Searching for the WordPress app template in Portainer](https://imgur.com/u62T3Ch.png)
+
+</div>
 
 The template comes preconfigured with the services you need to run a WordPress site. You only have to supply a name for your stack and the root password to set it on the MySQL database server. Enter these into the fields at the top of the page, and then press the **Deploy the stack** button at the bottom:
 
-![Screenshot of deploying the WordPress app template in Portainer](https://imgur.com/7JqCXkf.png)
+<div class="wide">
+
+![Deploying the WordPress app template in Portainer](https://imgur.com/7JqCXkf.png)
+
+</div>
 
 Wait while Portainer pulls your images and creates your containers. The container will be assigned a random port by default. You can find it by navigating to the stack's details page and then scrolling the Containers table so you can view the port published by the WordPress service. This example is accessible on `localhost:49153`:
 
-![Screenshot of viewing a running stack in Portainer](https://imgur.com/Xbx87JS.png)
+<div class="wide">
+
+![Viewing a running stack in Portainer](https://imgur.com/Xbx87JS.png)
+
+</div>
 
 ## Conclusion
 
@@ -276,11 +335,3 @@ Wait while Portainer pulls your images and creates your containers. The containe
 Portainer is ideal for many different use cases, from your local development workstation to production app monitoring. You can also use it to track containers and images used by CI/CD pipelines and build systems, preventing excess resources from accumulating on your Docker host.
 
 {% include cta/cta1.html %}
-
-## Outside Article Checklist
-
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
-
-
