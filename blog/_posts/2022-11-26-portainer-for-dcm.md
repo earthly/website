@@ -11,13 +11,13 @@ internal-links:
 
 [Docker's CLI](https://docs.docker.com/engine/reference/commandline/cli/) and [API](https://docs.docker.com/engine/api) are powerful tools, but they can be unwieldy when you're working with large container fleets or looking for a more visual experience. [Portainer](https://www.portainer.io), a web-based Docker management system that provides a convenient graphical user interface (GUI), lets you take charge of your containers, images, volumes, and other resources, without memorizing long terminal commands.
 
-Portainer can be used to monitor your Docker installation, interact with containerized apps, and deploy new stacks with minimal effort. A single Portainer instance can connect to multiple Docker hosts, centralizing your container management around one application. It also supports other container environments beyond Docker, including [Kubernetes](https://kubernetes.io/) clusters and [Azure Container Instances](https://azure.microsoft.com/en-us/products/container-instances/#features).
+Portainer can be used to monitor your Docker installation, interact with containerized apps, and deploy new stacks with minimal effort. A single Portainer instance can connect to multiple Docker hosts, centralizing your container management around one application. It also supports other container environments beyond [Docker](/blog/rails-with-docker), including [Kubernetes](https://kubernetes.io/) clusters and [Azure Container Instances](https://azure.microsoft.com/en-us/products/container-instances/#features).
 
 This article will show you how to set up and start using Portainer. You'll also learn the benefits of some of Portainer's headline features, such as how to deploy apps with built-in templates and your own Compose files.
 
 ## What Is Portainer?
 
-[Portainer](https://www.portainer.io) is a container management interface. It started out as a GUI for Docker but has expanded to support several other container environments. It has more than 1 million users and over [22,000 GitHub stars](https://github.com/portainer/portainer). Two versions are available: the free and open source Community Edition (CE) and a paid Enterprise Edition (EE).
+[Portainer](https://www.portainer.io) is a [container](/blog/docker-slim) management interface. It started out as a GUI for Docker but has expanded to support several other container environments. It has more than 1 million users and over [22,000 GitHub stars](https://github.com/portainer/portainer). Two versions are available: the free and open source Community Edition (CE) and a paid Enterprise Edition (EE).
 
 ![Screenshot of the Portainer dashboard](https://imgur.com/9ragLJ6.png)
 
@@ -103,7 +103,7 @@ This message shows that your installation appears to be working correctly.
 
 Although not required to use Portainer, [Docker Compose](https://docs.docker.com/compose/) is a popular utility that makes it easier to manage containers in your terminal. Compose will be used in the next step to start Portainer.
 
-Docker Compose used to be an independent binary but has now been integrated into Docker as a plugin. It's included with Docker Desktop and can be added to the Docker Engine installation configured earlier by running the following command:
+[Docker Compose](/blog/rails-with-docker) used to be an independent binary but has now been integrated into Docker as a plugin. It's included with Docker Desktop and can be added to the Docker Engine installation configured earlier by running the following command:
 
 ~~~{.bash caption=">_"}
 $ sudo apt-get install docker-compose-plugin
@@ -121,7 +121,7 @@ Docker Compose version v2.6.0
 Portainer has a few dependencies that must be supplied when you start your container:
 
 - It requires a volume to store persistent data.
-- Your host's Docker socket should be mounted into the container so that Portainer can access and interact with the Docker daemon.
+- Your host's Docker socket should be mounted into the container so that Portainer can access and interact with the [Docker daemon](/blog/what-is-buildkit-and-what-can-i-do-with-it).
 - You need to bind a port to the container so you can access the web UI.
 
 This requires several flags to be used when you start Portainer with `docker run`:
@@ -282,5 +282,5 @@ Portainer is ideal for many different use cases, from your local development wor
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
+
 
