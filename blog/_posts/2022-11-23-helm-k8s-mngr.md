@@ -268,7 +268,7 @@ helm search repo bitnami/mongo
 
 <div class="wide">
 
-![Searching for MongoDB helm chart from Bitnamin helm repository]({{site.images}}{{page.slug}}/vX8Irjv.png)
+![Searching for MongoDB helm chart from Bitnami helm repository]({{site.images}}{{page.slug}}/vX8Irjv.png)
 
 </div>
 
