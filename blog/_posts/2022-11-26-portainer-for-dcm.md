@@ -13,7 +13,6 @@ internal-links:
 
 Portainer can be used to monitor your Docker installation, interact with containerized apps, and deploy new stacks with minimal effort. A single Portainer instance can connect to multiple Docker hosts, centralizing your container management around one application. It also supports other container environments beyond Docker, including [Kubernetes](https://kubernetes.io/) clusters and [Azure Container Instances](https://azure.microsoft.com/en-us/products/container-instances/#features).
 
-
 This article will show you how to set up and start using Portainer. You'll also learn the benefits of some of Portainer's headline features, such as how to deploy apps with built-in templates and your own Compose files.
 
 ## What Is Portainer?
@@ -39,55 +38,56 @@ The following sections will detail each of these steps in turn.
 
 ### Installing Docker
 
-Before you go any further in this tutorial, you'll need to install Docker. If you're using Windows or Mac, download and run [the latest version of the Docker Desktop](https://docs.docker.com/get-docker) installer. Linux users can try [the experimental version](https://docs.docker.com/desktop/install/linux-install) of Desktop for Linux or use the following steps to install [Docker Engine](https://docs.docker.com/engine/).
+Before you go any further in this tutorial, you'll need to install Docker. If you're using Windows or Mac, download, and run [the latest version of the Docker Desktop](https://docs.docker.com/get-docker) installer. Linux users can try [the experimental version](https://docs.docker.com/desktop/install/linux-install) of Desktop for Linux or use the following steps to install [Docker Engine](https://docs.docker.com/engine/).
 
 Docker Engine is distributed in the package repositories of all major Linux distributions. It's also available as a direct download in DEB or RPM format. You can obtain detailed instructions for each method and platform [from the official Docker documentation](https://docs.docker.com/engine/install). The following steps assume you're installing from the repository on a Debian-based system.
 
 To begin, install the dependencies required by running the following commands:
 
-```bash
+~~~{.bash caption=">_"}
 $ sudo apt-get update
 $ sudo apt-get install ca-certificates curl gnupg lsb-release
-```
+~~~
 
 Next, add the GPG key used to sign the Docker repository:
 
-```bash
+~~~{.bash caption=">_"}
 $ sudo mkdir -p /etc/apt/keyrings
 $ curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-```
+~~~
 
 This lets the `apt` package manager verify the source of your download. Now add the repository to your package list with the following command:
 
-```bash
+~~~{.bash caption=">_"}
 $ echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian \
   $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-```
+~~~
 
 The interpolated commands allow automatic selection of the correct list for your system.
 
 Docker can now be installed with the following command:
 
-```bash
+~~~{.bash caption=">_"}
 $ sudo apt-get update
 $ sudo apt-get install docker-ce docker-ce-cli containerd.io
-```
+~~~
 
 The `docker` CLI requires root privileges by default. You can avoid prefixing commands with `sudo` by adding yourself to the `docker` group:
 
-```bash
+~~~{.bash caption=">_"}
 $ sudo groupadd docker
 $ sudo usermod -aG docker $USER
-```
+~~~
 
 Log out and log back in to apply the change.
 
 Finally, test your installation by starting a container with the Hello World image:
 
-```bash
+~~~{.bash caption=">_"}
 $ docker run hello-world
-```
-```
+~~~
+
+~~~{.bash caption=">_"}
 Unable to find image 'hello-world:latest' locally
 latest: Pulling from library/hello-world
 2db29710123e: Pull complete
@@ -97,7 +97,7 @@ Status: Downloaded newer image for hello-world:latest
 Hello from Docker!
 This message shows that your installation appears to be working correctly.
 ...
-```
+~~~
 
 ### Installing Docker Compose
 
@@ -105,16 +105,16 @@ Although not required to use Portainer, [Docker Compose](https://docs.docker.com
 
 Docker Compose used to be an independent binary but has now been integrated into Docker as a plugin. It's included with Docker Desktop and can be added to the Docker Engine installation configured earlier by running the following command:
 
-```bash
+~~~{.bash caption=">_"}
 $ sudo apt-get install docker-compose-plugin
-```
+~~~
 
 You should now be able to use `docker compose` in your terminal:
 
-```bash
+~~~{.bash caption=">_"}
 $ docker compose version
 Docker Compose version v2.6.0
-```
+~~~
 
 ### Deploying Portainer
 
@@ -126,7 +126,7 @@ Portainer has a few dependencies that must be supplied when you start your conta
 
 This requires several flags to be used when you start Portainer with `docker run`:
 
-```bash
+~~~{.bash caption=">_"}
 $ docker run -d \
   -p 9443:9443 \
   --name portainer \
@@ -134,11 +134,11 @@ $ docker run -d \
   -v data:/data \
   -v /var/run/docker.sock:/var/run/docker.sock \
   portainer/portainer-ce:latest
-```
+~~~
 
 A better way to start Portainer is to use Docker Compose. This lets you write the container's configuration into a file so you can bring up the app with a single command. To do so, save the following file as `docker-compose.yml` in your working directory:
 
-```yaml
+~~~{.bash caption=">_"}
 version: "3"
 services:
   portainer:
@@ -151,7 +151,7 @@ services:
     restart: unless-stopped
 volumes:
   data:
-```
+~~~
 
 This encapsulates all the flags given to the `docker run` command in the previous example.
 
@@ -165,9 +165,9 @@ Finally, the `restart` field is set to `unless-stopped`, so Docker automatically
 
 Now you can use this Compose file to bring up Portainer:
 
-```bash
+~~~{.bash caption=">_"}
 $ docker compose up -d
-```
+~~~
 
 Next, head to [https://localhost:9443](https://localhost:9443) in your browser. You'll see a security prompt if you're using Portainer's built-in SSL certificate. This configuration shouldn't be used in production or when Portainer is exposed on a public network, but this is safe for local use.
 
@@ -208,7 +208,7 @@ To create a new stack, click the **Stacks** menu item on the left sidebar and th
 
 Here's a sample Compose file you can try:
 
-```yaml
+~~~{.bash caption=">_"}
 services:
   db:
     image: mysql:8.0
@@ -230,7 +230,7 @@ services:
       - WORDPRESS_DB_NAME=${MYSQL_DATABASE}
 volumes:
   db:
-```
+~~~
 
 This Compose file includes two services that run a basic [WordPress](https://wordpress.com/) site. Enter a name for your stack at the top of the screen, then paste the WordPress Compose file into the editor:
 
@@ -279,7 +279,6 @@ Portainer is ideal for many different use cases, from your local development wor
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
 - [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`

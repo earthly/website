@@ -253,3 +253,5 @@ Tencent
 Cloudscale
 
 serviceaccount
+
+wordpress
