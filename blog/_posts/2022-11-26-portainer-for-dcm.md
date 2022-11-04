@@ -23,7 +23,7 @@ This article will show you how to set up and start using Portainer. You'll also 
 
 <div class="wide">
 
-![Portainer dashboard](https://imgur.com/9ragLJ6.png)
+![Portainer dashboard]({{site.images}}{{page.slug}}/9ragLJ6.png)
 
 </div>
 
@@ -184,7 +184,7 @@ Once you've acknowledged the prompt, you'll get to Portainer's first run screen.
 
 <div class="wide">
 
-![Creating an initial Portainer user account](https://imgur.com/YjSV1Wf.png)
+![Creating an initial Portainer user account]({{site.images}}{{page.slug}}/YjSV1Wf.png)
 
 </div>
 
@@ -192,7 +192,7 @@ You'll be taken to the environment setup wizard. This is where you connect Porta
 
 <div class="wide">
 
-![Portainer's environment setup screen](https://imgur.com/1Tbvau5.png)
+![Portainer's environment setup screen]({{site.images}}{{page.slug}}/1Tbvau5.png)
 
 </div>
 
@@ -202,7 +202,7 @@ The dashboard provides an overview of all the environments you've added to Porta
 
 <div class="wide">
 
-![Portainer dashboard](https://imgur.com/9ragLJ6.png)
+![Portainer dashboard]({{site.images}}{{page.slug}}/9ragLJ6.png)
 
 </div>
 
@@ -210,7 +210,7 @@ Each environment gets a summary tile, giving quick insights into the number of r
 
 <div class="wide">
 
-![Portainer's environment-specific dashboard](https://imgur.com/aHaFN81.png)
+![Portainer's environment-specific dashboard]({{site.images}}{{page.slug}}/aHaFN81.png)
 
 </div>
 
@@ -218,7 +218,7 @@ Clicking into an environment takes you to its own dashboard that summarizes the 
 
 <div class="wide">
 
-![Viewing containers in Portainer](https://imgur.com/Sqp8cVh.png)
+![Viewing containers in Portainer]({{site.images}}{{page.slug}}/Sqp8cVh.png)
 
 </div>
 
@@ -228,7 +228,7 @@ Portainer provides several options for deploying new applications. One of these 
 
 <div class="wide">
 
-![The **Stacks** screen in Portainer](https://imgur.com/ZYdGhRY.png)
+![The **Stacks** screen in Portainer]({{site.images}}{{page.slug}}/ZYdGhRY.png)
 
 </div>
 
@@ -269,7 +269,7 @@ This Compose file includes two services that run a basic [WordPress](https://wor
 
 <div class="wide">
 
-![Portainer's stack editor](https://imgur.com/jUpybTw.png)
+![Portainer's stack editor]({{site.images}}{{page.slug}}/jUpybTw.png)
 
 </div>
 
@@ -282,7 +282,7 @@ The Compose file uses environment variable substitution with `${VARIABLE}` synta
 
 <div class="wide">
 
-![Setting Portainer stack environment variables](https://imgur.com/pShRX09.png)
+![Setting Portainer stack environment variables]({{site.images}}{{page.slug}}/pShRX09.png)
 
 </div>
 
@@ -290,7 +290,7 @@ Press the blue **Deploy the stack** button at the bottom of the screen to start 
 
 <div class="wide">
 
-![Viewing a running stack in Portainer](https://imgur.com/EuRGJqK.png)
+![Viewing a running stack in Portainer]({{site.images}}{{page.slug}}/EuRGJqK.png)
 
 </div>
 
@@ -300,7 +300,7 @@ Templates are an even easier way to launch new application instances. Portainer 
 
 <div class="wide">
 
-![Portainer's built-in app templates](https://imgur.com/ellmw8u.png)
+![Portainer's built-in app templates]({{site.images}}{{page.slug}}/ellmw8u.png)
 
 </div>
 
@@ -308,7 +308,7 @@ You could replicate the WordPress site created earlier by using the official Wor
 
 <div class="wide">
 
-![Searching for the WordPress app template in Portainer](https://imgur.com/u62T3Ch.png)
+![Searching for the WordPress app template in Portainer]({{site.images}}{{page.slug}}/u62T3Ch.png)
 
 </div>
 
@@ -316,7 +316,7 @@ The template comes preconfigured with the services you need to run a WordPress s
 
 <div class="wide">
 
-![Deploying the WordPress app template in Portainer](https://imgur.com/7JqCXkf.png)
+![Deploying the WordPress app template in Portainer]({{site.images}}{{page.slug}}/7JqCXkf.png)
 
 </div>
 
@@ -324,7 +324,7 @@ Wait while Portainer pulls your images and creates your containers. The containe
 
 <div class="wide">
 
-![Viewing a running stack in Portainer](https://imgur.com/Xbx87JS.png)
+![Viewing a running stack in Portainer]({{site.images}}{{page.slug}}/Xbx87JS.png)
 
 </div>
 
