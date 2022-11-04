@@ -273,6 +273,8 @@ Wait while Portainer pulls your images and creates your containers. The containe
 
 Portainer is ideal for many different use cases, from your local development workstation to production app monitoring. You can also use it to track containers and images used by CI/CD pipelines and build systems, preventing excess resources from accumulating on your Docker host.
 
+{% include cta/cta1.html %}
+
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
@@ -281,4 +283,4 @@ Portainer is ideal for many different use cases, from your local development wor
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
+
