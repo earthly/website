@@ -219,5 +219,6 @@ Googler
 Xoogler
 fintech
 Sourcegraph
+haitch
 Tarun
 Kundhiya

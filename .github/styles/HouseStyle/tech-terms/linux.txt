@@ -59,6 +59,7 @@ vidir
 wx
 crontab
 chdir
+overlayfs
 Crontab
 rw
 rwx
