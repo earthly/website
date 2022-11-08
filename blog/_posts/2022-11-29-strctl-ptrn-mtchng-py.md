@@ -6,7 +6,9 @@ toc: true
 author: Mustapha Ahmad Ayodeji
 
 internal-links:
- - just an example
+ - Python
+ - Pattern
+ - Structural
 ---
 
 *Structural Pattern Matching* is a new feature introduced in Python 3.10 in the [PEP 634](https://peps.python.org/pep-0634/) specification. The feature verifies if the value of an expression, called the *subject*, matches a given structure called the `pattern`.
@@ -742,4 +744,3 @@ The use case of this feature is not limited to matching the response of APIs in 
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Add keywords for internal links to front-matter
