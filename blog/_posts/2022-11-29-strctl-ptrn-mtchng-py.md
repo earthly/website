@@ -32,7 +32,7 @@ The code examples in this tutorial are in the `pattern-matching.py` file; you ca
 - Proficiency in Python
 - [Python 3.10]((https://www.python.org/downloads/release/python-3106/) ) or the most recent stable release of Python 3.11
 
-This tutorial uses the Python [Requests](https://requests.readthedocs.io/en/latest/) library to retrieve fake blog post data from the *jsonplaceholder* API. Therefore, a working knowledge of the library will be helpful but not required.
+This tutorial uses the Python [Requests](https://requests.readthedocs.io/en/latest/) library to retrieve fake [blog](/blog/top-5-scala-blogs) post data from the *jsonplaceholder* API. Therefore, a working knowledge of the library will be helpful but not required.
 
 You may install the Requests library using the `pip` package manager:
 
@@ -407,7 +407,7 @@ main(response)
 In the example above:
 
 - We request an article with an `id` of `0` which returns a status code of `404 Not Found`.
-- We specify the *subject* as a sequence of the response status code and the response json data.
+- We specify the *subject* as a sequence of the response status code and the response [json](/blog/convert-to-from-json) data.
 - The pattern in each case clause is a *sequence* whose first element is the attribute access.
 
 The *subject* is matched against the value the attribute access evaluates to—rather than binding the *subject* as a value to the attribute.
@@ -492,7 +492,7 @@ The second pattern binds the value of the first element in the sequence of the *
 The mapping pattern allows us to match and extract both values and keys from mapping data structures like Python dict data type. The values and keys are matched against a given subpattern.
 The keys of the mapping pattern must be literals or value patterns while the value could be any of the patterns we've discussed earlier.
 
-As an example, let's match the data of the json response of the `posts/1` endpoint. The response data has the following structure:
+As an example, let's match the data of the [json](/blog/convert-to-from-json) response of the `posts/1` endpoint. The response data has the following structure:
 
 ~~~{.bash caption=">_"}
 {
@@ -619,7 +619,7 @@ class Post2:
 
 We have two classes:
 
-- The `Post` class with attributes that match with the keys in the single post json response.
+- The `Post` class with attributes that match with the keys in the single post [json](/blog/convert-to-from-json) response.
 
 - The `Post2` class with no attribute.
 
@@ -627,7 +627,7 @@ We have two classes:
 
 In the code below, the `match-case` statement behaves like the Python `isinstance` function.
 
-We create an instance of the `Post` class with the json response and match the instance against the two classes we created earlier. If the subject is an instance of the class we specify as the pattern in the case clause, the pattern matching will be successful. In this case, the second pattern matches.
+We create an instance of the `Post` class with the [json](/blog/convert-to-from-json) response and match the instance against the two classes we created earlier. If the subject is an instance of the class we specify as the pattern in the case clause, the pattern matching will be successful. In this case, the second pattern matches.
 
 ~~~{.bash caption=">_"}
 import requests
@@ -743,4 +743,3 @@ The use case of this feature is not limited to matching the response of APIs in 
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
