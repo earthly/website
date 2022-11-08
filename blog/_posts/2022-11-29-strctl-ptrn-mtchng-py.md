@@ -100,7 +100,7 @@ There are several classes of structural patterns that can be matched and they in
 
 ## Matching Literal Patterns in Python
 
-![Literal patterns](https://i.imgur.com/T0rEuUn.png)
+![Literal patterns]({{site.images}}{{page.slug}}/T0rEuUn.png)
 
 Literal patterns are constants (alphabetic, numeric, or boolean) that only match the exact values. They include a *subject* with one of the basic data types (integer, float, string, and Boolean) matched against a pattern of the same data type.
 
@@ -287,7 +287,7 @@ case [int(status_code), str(encoding)]:
 
 ## Matching Wildcard Patterns
 
-![Wildcard Patterns](https://i.imgur.com/HFFv2Tb.png)
+![Wildcard Patterns]({{site.images}}{{page.slug}}/HFFv2Tb.png)
 
 The wildcard pattern, denoted by an underscore ( `_` ) matches any structure but doesn't bind the value. It is often used as a fallback pattern if no pattern matches the structure of the subject.
 Here's an example:
@@ -487,7 +487,7 @@ The second pattern binds the value of the first element in the sequence of the *
 
 ## Matching Mapping Patterns
 
-![Mapping Patterns](https://i.imgur.com/R4sOIib.png)
+![Mapping Patterns]({{site.images}}{{page.slug}}/R4sOIib.png)
 
 The mapping pattern allows us to match and extract both values and keys from mapping data structures like Python dict data type. The values and keys are matched against a given subpattern.
 The keys of the mapping pattern must be literals or value patterns while the value could be any of the patterns we've discussed earlier.
