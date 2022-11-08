@@ -709,6 +709,8 @@ In this tutorial, we explored Python’s *structural pattern matching* feature t
 
 The use case of this feature is not limited to matching the response of APIs in web development. It can be used in any application that involves matching the structure or shapes of values.
 
+{% include cta/cta1.html %}
+
 ## Outside Article Checklist
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
@@ -717,4 +719,4 @@ The use case of this feature is not limited to matching the response of APIs in 
 - [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
+
