@@ -1,12 +1,10 @@
 lingua
 franca
-
 de
 facto
-
 ad
 hoc
-
 svc
 usr
 cfg
+rtfm
