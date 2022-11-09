@@ -58,10 +58,13 @@ chmod
 vidir
 wx
 crontab
+chdir
+overlayfs
 Crontab
 rw
 rwx
 linearization
+syscall
 toolchains
 subtree
 refactorings
@@ -70,3 +73,10 @@ composable
 lima
 colima
 lts
+dirs
+chrun
+libc
+namepaces
+vm
+chrooted
+chrooting
