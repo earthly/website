@@ -47,6 +47,9 @@ itor
 mailto
 se
 Doctordrayfocus
+u_rdir
+rdir
+cdir
 Squanchers
 
 bazel
