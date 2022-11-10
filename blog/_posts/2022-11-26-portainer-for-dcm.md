@@ -96,7 +96,7 @@ Finally, test your installation by starting a container with the Hello World ima
 $ docker run hello-world
 ~~~
 
-~~~{.bash caption=">_"}
+~~~{.bash caption="output"}
 Unable to find image 'hello-world:latest' locally
 latest: Pulling from library/hello-world
 2db29710123e: Pull complete
