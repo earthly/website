@@ -254,6 +254,8 @@ Cloudscale
 
 serviceaccount
 
+wordpress
+
 Bitnami
 bitnami
 ip
