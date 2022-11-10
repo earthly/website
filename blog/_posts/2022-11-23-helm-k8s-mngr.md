@@ -544,7 +544,7 @@ http://104-200-26-90-ip.linodeusercontent.com
 
 ## Conclusion
 
-I hope you understand how Helm is a helpful tool when working with Kubernetes.. In this tutorial, you've learned how to:
+I hope you understand how Helm is a helpful tool when working with Kubernetes. In this tutorial, you've learned how to:
 
 - Deploy a MongoDB database,
 - Create a mongo-express service to provide a UI for the MongoDB database, and
