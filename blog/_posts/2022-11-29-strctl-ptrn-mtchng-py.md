@@ -20,7 +20,7 @@ In this tutorial, you'll learn how structural pattern matching works in Python b
 
 In this tutorial, we'll use the following endpoints from the API:
 
-~~~{.bash caption=">_"}
+~~~{.json caption=""}
 GET /posts  #returns 100 posts
 GET /posts/<id>   #returns a single post
 ~~~
@@ -46,7 +46,7 @@ pip install requests
 
 ### Understanding the `match-case` Syntax
 
-~~~{.bash caption=">_"}
+~~~{.python caption=""}
 match <expression>:
     case <pattern 1> [<if guard>]:
         <block to execute if pattern 1 matches>
@@ -67,13 +67,13 @@ The patterns are shapes or structures that the *subjects* are compared against. 
 
 Binding variables to values is a little different than assigning variables to values. The value captured in the pattern can not be set as a value to an attribute of an object in the `case clause` using the dot notation:
 
-~~~{.bash caption=">_"}
+~~~{.python caption=""}
 object.attribute = value 
 ~~~
 
 However, variable bindings outlive the scope of the respective case or match statements just like a normal variable.
 
-~~~{.bash caption=">_"}
+~~~{.python caption=""}
 book_data = ["Structural Pattern Matching", "DrA", 232113]
 
 match book_data:
@@ -102,7 +102,7 @@ There are several classes of structural patterns that can be matched and they in
 
 ## Matching Literal Patterns in Python
 
-![Literal patterns]({{site.images}}{{page.slug}}/T0rEuUn.png)
+![Literal patterns]({{site.images}}{{page.slug}}/T0rEuUn.png)\
 
 Literal patterns are constants (alphabetic, numeric, or boolean) that only match the exact values. They include a *subject* with one of the basic data types (integer, float, string, and Boolean) matched against a pattern of the same data type.
 
@@ -116,7 +116,7 @@ All forms of strings ([byte](https://docs.python.org/3/library/stdtypes.html#byt
 
 However, based on the consistent rule of equality `==`  in Python, literal patterns like 1 and 1.0 will match (so do all expressions that evaluate to `True`) when compared with the equality sign:
 
-~~~{.bash caption=">_"}
+~~~{.python caption=""}
 In [1]: 1 == 1.0
 Out[1]: True
 
@@ -128,7 +128,7 @@ Out[2]: True
 
 Let's take a look at an example of matching a literal integer value:
 
-~~~{.bash caption=">_"}
+~~~{.python caption="pattern-matching.py"}
 import requests
 
 def main(response):
@@ -145,7 +145,7 @@ main(response)
 
 If we execute the code above, we will get the following output:
 
-~~~{.bash caption=">_"}
+~~~{.bash caption="Output"}
 The response is OK
 ~~~
 
@@ -155,7 +155,7 @@ In the case above, Python compares the *subject* which is the `status_code` to t
 
 We can match a string like the encoding of the response as shown below:
 
-~~~{.bash caption=">_"}
+~~~{.python caption="pattern-matching.py"}
 import requests
 
 def main(response):
@@ -172,7 +172,7 @@ main(response)
 
 We have this output:
 
-~~~{.bash caption=">_"}
+~~~{.bash caption="Output"}
 The encoding is utf-8
 ~~~
 
@@ -180,7 +180,7 @@ The encoding is utf-8
 
 Similarly, we can match a `bool` value:
 
-~~~{.bash caption=">_"}
+~~~{.python caption="pattern-matching.py"}
 import requests
 
 def main(response):
@@ -197,7 +197,7 @@ main(response)
 
 We will get the output as shown below:
 
-~~~{.bash caption=">_"}
+~~~{.bash caption="Output"}
 The response is ok
 ~~~
 
@@ -211,7 +211,7 @@ We can capture and bind some or all the values of the *subject* to a variable.
 
 The binding of values to variables is similar to how arguments are the values of parameters in a function.
 
-~~~{.bash caption=">_"}
+~~~{.python caption="pattern-matching.py"}
 
 def main(response):
    values = [response.status_code, response.encoding, response.json()]
@@ -233,9 +233,14 @@ In the snippet above, the *subject* is a sequence with three elements, therefore
 
 When we run the code above, we will get the following output:
 
-~~~{.bash caption=">_"}
+~~~{.bash caption="Output"}
 The second pattern matches the subject
-200 utf-8 {'userId': 1, 'id': 1, 'title': 'sunt aut facere repellat provident occaecati excepturi optio reprehenderit', 'body': 'quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto'}
+200 utf-8 {'userId': 1, 'id': 1, 'title': \
+'sunt aut facere repellat provident occaecati \
+excepturi optio reprehenderit', 'body': \
+'quia et suscipit\nsuscipit recusandae consequuntur \
+expedita et cum\nreprehenderit molestiae ut ut quas \
+totam\nnostrum rerum est autem sunt rem eveniet architecto'}
 
 ~~~
 
@@ -251,7 +256,7 @@ The `As pattern` uses the `as` keyword to bind a variable to the value after the
 
 Let us modify the snippet above to match the number of elements in the sequence and the data-types of the individual elements.
 
-~~~{.bash caption=">_"}
+~~~{.python caption="pattern-matching.py"}
 
 def main(response):
    values = [response.status_code, response.encoding, response.json()]
@@ -259,11 +264,14 @@ def main(response):
        case [int() as status_code, str() as encoding]:
            print("The first pattern matches the subject")
                    
-       case [int() as status_code, str() as encoding, str() as response_data]:
+       case [int() as status_code, str() as encoding, str() as \
+       response_data]:
            print("The second pattern matches the subject")
-       case [int() as status_code, str() as encoding, dict() as response_data]:
+       case [int() as status_code, str() as encoding, dict() as \
+       response_data]:
            print("The Third pattern matches the subject")
-   print(f"status_code:{status_code}, encoding:{encoding}, response_data:{response_data}")
+   print(f"status_code:{status_code}, encoding:{encoding}, \
+   response_data:{response_data}")
 
 ~~~
 
@@ -277,24 +285,29 @@ When we run the code above, we will get the following output:
 
 ~~~{.bash caption=">_"}
 The Third pattern matches the subject
-status_code:200, encoding:utf-8, response_data:{'userId': 1, 'id': 1, 'title': 'sunt aut facere repellat provident occaecati excepturi optio reprehenderit', 'body': 'quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto'}
+status_code:200, encoding:utf-8, response_data: \
+{'userId': 1, 'id': 1, 'title': 'sunt aut facere \
+repellat provident occaecati excepturi optio reprehenderit', \
+'body': 'quia et suscipit\nsuscipit recusandae consequuntur \
+expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum \
+rerum est autem sunt rem eveniet architecto'}
 
 ~~~
 
 The above pattern can be made more concise by passing in the variable names as arguments into the data type classes, as shown below:
 
-~~~{.bash caption=">_"}
+~~~{.python caption="pattern-matching.py"}
 case [int(status_code), str(encoding)]:
 ~~~
 
 ## Matching Wildcard Patterns
 
-![Wildcard Patterns]({{site.images}}{{page.slug}}/HFFv2Tb.png)
+![Wildcard Patterns]({{site.images}}{{page.slug}}/HFFv2Tb.png)\
 
 The wildcard pattern, denoted by an underscore ( `_` ) matches any structure but doesn't bind the value. It is often used as a fallback pattern if no pattern matches the structure of the subject.
 Here's an example:
 
-~~~{.bash caption=">_"}
+~~~{.python caption="pattern-matching.py"}
 
 def main(response):
    status_code = response.status_code
@@ -318,7 +331,7 @@ The status code of the response is expected to be 200; so none of the *literal p
 
 We can match the example in the *captured pattern* above with the *wildcard pattern* if we only want to bind the value of the `encoding` as shown below:
 
-~~~{.bash caption=">_"}
+~~~{.python caption="pattern-matching.py"}
 def main(response):
    values = [response.status_code, response.encoding, response.json()]
    match values:
@@ -339,7 +352,7 @@ utf-8
 
 An attempt to access the value of the wildcard pattern ( `_` ) will give a `NameError` as shown below:
 
-~~~{.bash caption=">_"}
+~~~{.python caption="pattern-matching.py"}
 NameError: name '_' is not defined
 ~~~
 
@@ -359,15 +372,17 @@ The example below checks the encoding scheme of the response by matching the *su
 
 As with other pattern, we can bind the value of the pattern that matches the structure of the *subject* to a variable as shown below:
 
-~~~{.bash caption=">_"}
+~~~{.python caption="pattern-matching.py"}
 
 def main(response):
    encoding = response.encoding
    match encoding:
        case "utf-8" | "utf-16" as encoding:
-           print(f"The response was encoded with {encoding} encoding scheme")
+           print(f"The response was encoded with {encoding} \
+           encoding scheme")
        case "base64" | "ascii" as encoding:
-           print(f"The response was encoded with {encoding} encoding scheme")
+           print(f"The response was encoded with {encoding} \
+           encoding scheme")
        case _:
            print("No pattern matches the response encoding !")
        
@@ -377,7 +392,7 @@ The first pattern will match if the encoding scheme is either `utf-8` or `utf-16
 
 If we run the code above, we will get the output below:
 
-~~~{.bash caption=">_"}
+~~~{.bash caption="Output"}
 The response was encoded with utf-8 encoding scheme
 ~~~
 
@@ -387,7 +402,7 @@ Value patterns involve accessing the attributes of an object. Python matches the
 
 This is similar in syntax to the *capture pattern*. However, the [structural pattern matching specification](https://peps.python.org/pep-0634) adopted a rule that any attribute access is to be interpreted as a *value pattern*, and the value of the subject is matched against the value of the attribute.
 
-~~~{.bash caption=">_"}
+~~~{.python caption="pattern-matching.py"}
 
 from http import HTTPStatus
 import requests
@@ -402,7 +417,7 @@ def main(response):
            print("No pattern matches the response status code !")
 
 
-response = requests.get("https://jsonplaceholder.typicode.com/posts/0")  #new
+response = requests.get("https://jsonplaceholder.typicode.com/posts/0") #new
 main(response)
 ~~~
 
@@ -416,13 +431,13 @@ The *subject* is matched against the value the attribute access evaluates to—r
 
 The first case pattern evaluates to:
 
-~~~{.bash caption=">_"}
+~~~{.python caption=">_"}
 case (200, body)
 ~~~
 
 The second case pattern evaluates to:
 
-~~~{.bash caption=">_"}
+~~~{.python caption=">_"}
 case (400 | 404, _)
 ~~~
 
@@ -430,7 +445,7 @@ The evaluation of the second pattern contains a *literal pattern*, an *or patter
 
 The response status code is 404; so the second pattern matches and the interpreter executes the code block associated with it:
 
-~~~{.bash caption=">_"}
+~~~{.bash caption="Outpu"}
 Bad request or Not found
 ~~~
 
@@ -455,7 +470,7 @@ In the context of pattern matching, only the following are recognized as sequenc
 5. `range`
 6. `tuple`
 
-~~~{.bash caption=">_"}
+~~~{.python caption="pattern-matching.py"}
 import requests
 
 def main(response):
@@ -476,8 +491,15 @@ main(response)
 The code above gives the output shown below:
 
 ~~~{.bash caption=">_"}
-first_post:  {'userId': 1, 'id': 1, 'title': 'sunt aut facere repellat provident occaecati excepturi optio reprehenderit', 'body': 'quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto'}
-last_post: {'userId': 10, 'id': 100, 'title': 'at nam consequatur ea labore ea harum', 'body': 'cupiditate quo est a modi nesciunt soluta\nipsa voluptas error itaque dicta in\nautem qui minus magnam et distinctio eum\naccusamus ratione error aut'}
+first_post:  {'userId': 1, 'id': 1, 'title': \
+'sunt aut facere repellat provident occaecati excepturi \
+optio reprehenderit', 'body': 'quia et suscipit\nsuscipit \
+recusandae consequuntur expedita et cum\nreprehenderit molestiae \
+ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto'}
+last_post: {'userId': 10, 'id': 100, 'title': 'at nam consequatur ea \
+labore ea harum', 'body': 'cupiditate quo est a modi nesciunt soluta\nipsa \
+voluptas error itaque dicta in\nautem qui minus magnam et distinctio \
+eum\naccusamus ratione error aut'}
 
 ~~~
 
@@ -489,14 +511,14 @@ The second pattern binds the value of the first element in the sequence of the *
 
 ## Matching Mapping Patterns
 
-![Mapping Patterns]({{site.images}}{{page.slug}}/R4sOIib.png)
+![Mapping Patterns]({{site.images}}{{page.slug}}/R4sOIib.png)\
 
 The mapping pattern allows us to match and extract both values and keys from mapping data structures like Python dict data type. The values and keys are matched against a given subpattern.
 The keys of the mapping pattern must be literals or value patterns while the value could be any of the patterns we've discussed earlier.
 
 As an example, let's match the data of the [json](/blog/convert-to-from-json) response of the `posts/1` endpoint. The response data has the following structure:
 
-~~~{.bash caption=">_"}
+~~~{.json caption=">_"}
 {
 "userId": 1,
 "id": 1,
@@ -511,7 +533,7 @@ The patterns in the key could be literal or value patterns.
 
 All or some of the keys in the mapping data structure could be specified. If only some of the keys are specified, other keys are ignored and the pattern will match if a key that matches such a pattern is in the mapping data structure that we specify as the *subject*.
 
-~~~{.bash caption=">_"}
+~~~{.python caption="pattern-matching.py"}
 import requests
 
 def main(response):
@@ -546,7 +568,7 @@ pattern 3 matched
 
 The patterns in the value could be any form of pattern we have discussed so far.
 
-~~~{.bash caption=">_"}
+~~~{.python caption="pattern-matching.py"}
            def main(response):
    post_data = response.json()
    match post_data:
@@ -568,7 +590,7 @@ In the code above:
 
 Output :
 
-~~~{.bash caption=">_"}
+~~~{.bash caption="Output"}
 pattern 3 matched
 ~~~
 
@@ -576,15 +598,17 @@ pattern 3 matched
 
 When we match some part of the key-value pairs in a mapping data structure, as shown above, the interpreter ignores the other key-value pairs. If we need them, we can leverage Python's [sequence packing](https://peps.python.org/pep-3132/) feature to match and bind several keys and values in the *subject* to a variable as shown below:
 
-~~~{.bash caption=">_"}
+~~~{.python caption="pattern-matching.py"}
 def main(response):
    post_data = response.json()
    match post_data:
         case {"user_id":1, **others}:
             print("Pattern 1 matched ", others)
-        case {"userId":user_id, "id":post_id, **others} if user_id < post_id:
+        case {"userId":user_id, "id":post_id, **others} \
+        if user_id < post_id:
             print("pattern 2 matched", others)
-        case {"userId":user_id, "id":1|2|3, **others} if "title" in others.keys():
+        case {"userId":user_id, "id":1|2|3, **others} \
+        if "title" in others.keys():
             print("pattern 3 matched")
             print(others)
         case _:
@@ -594,7 +618,7 @@ def main(response):
 
 When we execute the code above, we get the following output:
 
-~~~{.bash caption=">_"}
+~~~{.bash caption="Output"}
 pattern 3 matched
 {'title': 'sunt aut facere repellat provident occaecati\
  excepturi optio reprehenderit', 'body': 'quia et \
@@ -611,7 +635,7 @@ The value that the interpreter binds to the `others` variable is a mapping data 
 
 Class patterns check whether the subject is an instance of a specific class. If there are no arguments, the pattern matches if the subject is an instance of the class specified in the pattern.
 
-~~~{.bash caption=">_"}
+~~~{.python caption="pattern-matching.py"}
 class Post:
     def __init__(self, userId, id, title, body):
         self.userId = userId
@@ -635,7 +659,7 @@ In the code below, the `match-case` statement behaves like the Python `isinstanc
 
 We create an instance of the `Post` class with the [json](/blog/convert-to-from-json) response and match the instance against the two classes we created earlier. If the subject is an instance of the class we specify as the pattern in the case clause, the pattern matching will be successful. In this case, the second pattern matches.
 
-~~~{.bash caption=">_"}
+~~~{.python caption="pattern-matching.py"}
 import requests
 
 def main(response):
@@ -665,7 +689,7 @@ If keywords arguments are present in the class pattern:
 - If the attribute lookup raises an `AttributeError`, the pattern fails.
 - If not, the subpattern associated with the keyword pattern is matched against the attribute value of the subject, if it succeeds, the whole pattern matching succeeds, otherwise it fails.
 
-~~~{.bash caption=">_"}
+~~~{.python caption="pattern-matching.py"}
 def main(response):
     post = Post(**response.json())
     match post:
@@ -690,7 +714,7 @@ In the case above:
 
 Let's specify the arguments as positional arguments instead:
 
-~~~{.bash caption=">_"}
+~~~{.python caption="pattern-matching.py"}
 def main(response):
     post = Post(**response.json())
     match post:
@@ -706,18 +730,20 @@ def main(response):
 
 We will get the following error:
 
-~~~{.bash caption=">_"}
+~~~{.bash caption="Output"}
 Traceback (most recent call last):
-  File "/home/dracode/Adventure/pattern_matching.py", line 302, in <module>
+  File "/home/dracode/Adventure/pattern_matching.py", \
+  line 302, in <module>
     main(response)
-  File "/home/dracode/Adventure/pattern_matching.py", line 292, in main
+  File "/home/dracode/Adventure/pattern_matching.py", \
+  line 292, in main
     case Post(4 | 5):
 TypeError: Post() accepts 0 positional sub-patterns (1 given)
 ~~~
 
 Python classes do not have a natural ordering of their attributes, we need to specify the order of the attributes using the `__match_args__` attribute before we can use the positional arguments in the patterns.
 
-~~~{.bash caption=">_"}
+~~~{.python caption="pattern-matching.py"}
 class Post:
     __match_args__ = ("post_id", "userId", "title", "body")
     def __init__(self, userId, id, title, body):
@@ -741,9 +767,3 @@ In this tutorial, we explored Python's *structural pattern matching* feature tha
 The use case of this feature is not limited to matching the response of APIs in web development. It can be used in any application that involves matching the structure or shapes of values.
 
 {% include cta/cta1.html %}
-
-## Outside Article Checklist
-
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
