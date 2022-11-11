@@ -258,3 +258,10 @@ destructure
 JSONPlaceholder
 subpatterns
 subpatterns
+
+wordpress
+
+Bitnami
+bitnami
+ip
+mongodb
