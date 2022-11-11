@@ -84,21 +84,22 @@ match book_data:
 ~~~
 
 In the example above:
- - The `book_data` variable that precedes the `match` statement is the `subject`
- - The variables in front of the `case` statements are a form of pattern we will discuss later.
- - The second `case` clause will be matched and the elements in the `book_data` list will be bound to these variables (`title`, `author`, and `isbn`).
- - The condition in the `if statement` is the `guard` and the Python interpreter only evaluates it if the pattern has *matched* the `subject`.
+
+- The `book_data` variable that precedes the `match` statement is the `subject`
+- The variables in front of the `case` statements are a form of pattern we will discuss later.
+- The second `case` clause will be matched and the elements in the `book_data` list will be bound to these variables (`title`, `author`, and `isbn`).
+- The condition in the `if statement` is the `guard` and the Python interpreter only evaluates it if the pattern has *matched* the `subject`.
 
 There are several classes of structural patterns that can be matched and they include the following:
 
- - Literal Patterns
- - As Patterns
- - Wildcard Patterns
- - OR Patterns
- - Value Patterns
- - Sequence Patterns
- - Mapping Patterns
- - Class Patterns
+- Literal Patterns
+- As Patterns
+- Wildcard Patterns
+- OR Patterns
+- Value Patterns
+- Sequence Patterns
+- Mapping Patterns
+- Class Patterns
 
 ## Matching Literal Patterns in Python
 
