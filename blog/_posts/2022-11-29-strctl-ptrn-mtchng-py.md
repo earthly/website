@@ -596,7 +596,11 @@ When we execute the code above, we get the following output:
 
 ~~~{.bash caption=">_"}
 pattern 3 matched
-{'title': 'sunt aut facere repellat provident occaecati excepturi optio reprehenderit', 'body': 'quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto'}
+{'title': 'sunt aut facere repellat provident occaecati\
+ excepturi optio reprehenderit', 'body': 'quia et \
+ suscipit\nsuscipit recusandae consequuntur expedita et \
+ cum\nreprehenderit molestiae ut ut quas totam\nnostrum \
+ rerum est autem sunt rem eveniet architecto'}
 ~~~
 
 The third pattern matches.
@@ -740,7 +744,6 @@ The use case of this feature is not limited to matching the response of APIs in 
 
 ## Outside Article Checklist
 
-- [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
