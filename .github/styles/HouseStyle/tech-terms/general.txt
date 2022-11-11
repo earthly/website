@@ -256,7 +256,7 @@ serviceaccount
 
 destructure
 JSONPlaceholder
-subpatterns
+subpattern
 subpatterns
 
 wordpress
