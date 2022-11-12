@@ -143,6 +143,14 @@ ide:
 
       1. Press `Ctrl+Shift+P` (or `Cmd+Shift+P` on Mac) to bring up the Command Palette, and select **Install Package control** (if you haven't already installed Package Control).
       2. Press `Ctrl+Shift+P` (or `Cmd+Shift+P` on Mac) again, select "Package Control: Install Package" and select **Earthly Earthfile** to install.
+
+  tab5:
+    name: intellij
+    title: IntelliJ
+    source: source5
+    content: |
+      Earthly plugin available in the [IntelliJ Marketplace](https://plugins.jetbrains.com/plugin/20392-earthly).
+
 ---
 
 <link rel="stylesheet" href="/assets/css/subpage.css">
