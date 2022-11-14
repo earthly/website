@@ -1,7 +1,7 @@
 ---
 title: "When to use Bazel?"
 categories:
-  - Tutorials
+  - Articles
 toc: true
 author: Adam
 internal-links:

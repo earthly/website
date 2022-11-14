@@ -65,9 +65,7 @@ print(process_1.returncode)
 print(process_1.stdout)
 ~~~
 
--
-
-~~~{.text caption="Output"}
+~~~{ caption="Output"}
 
 py_logging main.py  py_unit_testing  string_manipulation
 CompletedProcess(args='ls', returncode=0)
@@ -101,9 +99,7 @@ print(process_2.returncode)
 print(process_2.stdout)
 ~~~
 
--
-
-~~~{.text caption="Output"}
+~~~{ caption="Output"}
 
 custom_logger.py  logger.py
 CompletedProcess(args=['ls', 'py_logging'], returncode=0)
@@ -158,9 +154,7 @@ print(process_3.args)
 print(process_3.stdout)
 ~~~
 
--
-
-~~~{.text caption="Output"}
+~~~{ caption="Output"}
 custom_logger.py  logger.py
 CompletedProcess(args='ls py_logging', returncode=0)
 ls py_logging
@@ -197,9 +191,7 @@ process_4 = subprocess.run("ls",capture_output=True)
 print(process_4.stdout.decode())
 ~~~
 
--
-
-~~~{.text caption="Output"}
+~~~{ caption="Output"}
 py_logging
 py_subprocess.py
 py_unit_testing
@@ -213,9 +205,7 @@ process_5 = subprocess.run("ls",capture_output=True,text=True)
 print(process_5.stdout)
 ~~~
 
--
-
-~~~{.text caption="Output"}
+~~~{ caption="Output"}
 py_logging
 py_subprocess.py
 py_unit_testing
@@ -229,9 +219,7 @@ process_6 = subprocess.run("ls",stdout=subprocess.PIPE,text=True)
 print(process_6.stdout)
 ~~~
 
--
-
-~~~{.text caption="Output"}
+~~~{ caption="Output"}
 py_logging
 main.py
 py_unit_testing
@@ -277,9 +265,7 @@ stderr=subprocess.PIPE)
 print(process_8.stderr)
 ~~~
 
--
-
-~~~{.text caption="Output"}
+~~~{ caption="Output"}
 
 b"ls: cannot access 'non-existent-directory': No such file or directory\n"
 ~~~
@@ -298,9 +284,7 @@ process_9 = subprocess.run(["ls","non-existent-directory"],\
 capture_output=True,check=True)
 ~~~
 
--
-
-~~~{.text caption="Output"}
+~~~{ caption="Output"}
 
 Traceback (most recent call last):
   File "main.py", line 38, in <module>
@@ -330,9 +314,7 @@ process10 = subprocess.run(["sleep","10"],capture_output=True,\
 check=True,timeout=2)
 ~~~
 
--
-
-~~~{.text caption="Output"}
+~~~{caption="Output"}
 
 Traceback (most recent call last):
   File "main.py", line 40, in <module>
@@ -371,9 +353,7 @@ except subprocess.TimeoutExpired:
     print("subprocess timed out")
 ~~~
 
--
-
-~~~{.text caption="Output"}
+~~~{ caption="Output"}
 
 subprocess timed out
 ~~~
@@ -414,9 +394,7 @@ text=True,input=process1.stdout)
 print(process_2.stdout)
 ~~~
 
--
-
-~~~{.text caption="Output"}
+~~~{ caption="Output"}
 
 3:with Python programming is to
 4:start a Python REPL and work your way through simple exercises!

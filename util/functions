@@ -123,7 +123,7 @@ link-opp() { # List places you could link to other posts
 
 lint() { # Run Linter
     # change code blocks
-    cat "$(post)" | ./util/codeblock.awk | sponge "$(post)"
+    cat "2021-08-24-jq-select.md" | ./util/codeblock.awk | sponge "2021-08-24-jq-select.md"
     # fix markdown
     markdownlint --fix "./blog/_posts/*.md"
     sed -i -E "s/“|”/\"/g" ./blog/_posts/*.md
