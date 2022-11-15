@@ -46,7 +46,7 @@ If you can run this, you can do the rest of this tutorial:
 $ awk --version
 ~~~
 
-~~~{.bash caption=""}
+~~~{.bash .merge-code}
   GNU Awk 5.1.0, API: 3.0 (GNU MPFR 4.1.0, GNU MP 6.2.1)
   Copyright (C) 1989, 1991-2020 Free Software Foundation.
 ~~~
@@ -71,12 +71,12 @@ $ echo "one two three" | awk '{ print $1 }'
 one
 ~~~
 
-~~~{.bash caption=">_"}
+~~~{.bash .merge-code}
 $ echo "one two three" | awk '{ print $2 }'
 two
 ~~~
 
-~~~{.bash caption=">_"}
+~~~{.bash .merge-code}
 $ echo "one two three" | awk '{ print $3 }'
 three
 ~~~
@@ -87,7 +87,7 @@ You may have been expecting the first column to be `$0` and not `$1`, but `$0` i
 $ echo "one two three" | awk '{ print $0 }'
 ~~~
 
-~~~{.bash caption=""}
+~~~{.bash .merge-code }
 one two three
 ~~~
 
@@ -102,7 +102,7 @@ $ echo "
  | awk '{ print $1 }'
 ~~~
 
-~~~{.bash caption=""}
+~~~{.bash .merge-code}
 one
 four
 ~~~
@@ -116,7 +116,7 @@ $ echo "
 | awk '{ print $1, $2 }'
 ~~~
 
-~~~{.bash caption=""}
+~~~{.bash .merge-code}
 one two
 four five
 ~~~
@@ -130,7 +130,7 @@ $ echo "
 | awk '{ print $NF }'
 ~~~
 
-~~~{.bash caption=""}
+~~~{.bash .merge-code}
 three
 six
 ~~~
@@ -159,8 +159,9 @@ To move beyond simple printing, I need some sample data. I will use the book por
 
 You can grab the book portion of it like this:
 
-~~~{.bash caption=""}
-$ curl https://s3.amazonaws.com/amazon-reviews-pds/tsv/amazon_reviews_us_Books_v1_00.tsv.gz | /
+~~~{.bash caption=">_"}
+$ curl https://s3.amazonaws.com/amazon-reviews-pds/tsv/ ↩
+amazon_reviews_us_Books_v1_00.tsv.gz | /
   gunzip -c >> / 
   bookreviews.tsv
 ~~~
@@ -174,7 +175,8 @@ If you want to follow along with the entire dataset, repeat this for each of the
 The above file is over six gigs unzipped. If you grab all three, you will be up to fifteen gigs of disk space. If you don't have much space, you can play along by grabbing the first ten thousand rows of the first file:
 
 ~~~{.bash caption=">_"}
-$ curl https://s3.amazonaws.com/amazon-reviews-pds/tsv/amazon_reviews_us_Books_v1_00.tsv.gz \
+$ curl https://s3.amazonaws.com/amazon-reviews-pds/tsv/ ↩
+amazon_reviews_us_Books_v1_00.tsv.gz \
   | gunzip -c \
   | head -n 10000 \
   > bookreviews.tsv
@@ -186,7 +188,7 @@ $ curl https://s3.amazonaws.com/amazon-reviews-pds/tsv/amazon_reviews_us_Books_v
 
 Once you've grabbed that data, you should have Amazon book review data that looks like this:
 
-~~~{.bash caption=""}
+~~~{.bash }
 marketplace customer_id review_id product_id product_parent product_title product_category star_rating helpful_votes total_votes vine verified_purchase review_headline review_body review_date
 US 22480053 R28HBXXO1UEVJT 0843952016 34858117 The Rising Books 5 0 0 N N Great Twist on Zombie Mythos I've known about this one for a long time, but just finally got around to reading it for the first time. I enjoyed it a lot!  What I liked the most was how it took a tired premise and breathed new life into it by creating an entirely new twist on the zombie mythos. A definite must read! 2012-05-03
 ~~~
@@ -195,13 +197,17 @@ Each row in this file represents the record of one book review. Amazon lays out 
 
 ~~~{.bash caption="Data Format"}
 DATA COLUMNS:
-01  marketplace       - 2 letter country code of the marketplace where the review was written.
-02  customer_id       - Random identifier that can be used to aggregate reviews written by a single author.
+01  marketplace       - 2 letter country code of the marketplace where the ↩
+ review was written.
+02  customer_id       - Random identifier that can be used to aggregate reviews↩
+ written by a single author.
 03  review_id         - The unique ID of the review.
 04  product_id        - The unique Product ID the review pertains to. 
-05  product_parent    - Random identifier that can be used to aggregate reviews for the same product.
+05  product_parent    - Random identifier that can be used to aggregate ↩ 
+reviews for the same product.
 06  product_title     - Title of the product.
-07  product_category  - Broad product category that can be used to group reviews 
+07  product_category  - Broad product category that can be used to group ↩
+reviews 
 08  star_rating       - The 1-5 star rating of the review.
 09  helpful_votes     - Number of helpful votes.
 10  total_votes       - Number of total votes the review received.
@@ -220,7 +226,7 @@ I can now test out my field printing skills on a bigger file. I can start by pri
 $ awk '{ print $1 }' bookreviews.tsv | head 
 ~~~
 
-~~~{.bash caption=""}
+~~~{.bash .merge-code}
 marketplace
 US
 US
@@ -239,7 +245,7 @@ Or the customer_id:
 $ awk '{ print $2 }' bookreviews.tsv | head 
 ~~~
 
-~~~{.bash caption=""}
+~~~{.bash .merge-code}
 customer_id
 22480053
 44244451
@@ -258,7 +264,7 @@ However, when I try to print out the title, things do not go well:
 $ awk '{ print $6 }' bookreviews.tsv | head 
 ~~~
 
-~~~{.bash caption=""}
+~~~{.bash .merge-code}
 product_title
 The
 Sticky
@@ -281,7 +287,7 @@ By default, Awk assumes that the fields in a record are whitespace delimited[^1]
 $ awk -F '\t' '{ print $6 }' bookreviews.tsv | head 
 ~~~
 
-~~~{.bash caption=""}
+~~~{.bash .merge-code}
 product_title
 The Rising
 Sticky Faith Teen Curriculum with DVD: 10 Lessons to Nurture Faith Beyond High 
@@ -314,7 +320,7 @@ I can also work backward from the last position forward by subtracting from `NF`
 $ awk -F '\t' '{ print $NF "\t" $(NF-2)}' bookreviews.tsv | head 
 ~~~
 
-~~~{.bash caption=""}
+~~~{.bash .merge-code}
 review_date     review_headline
 2012-05-03      Great Twist on Zombie Mythos
 2012-05-03      Helpful and Practical
@@ -339,7 +345,7 @@ I can print the actual value like this:
 $ awk -F '\t' '{ print NF }' bookreviews.tsv | head  
 ~~~
 
-~~~{.bash caption=""}
+~~~{.bash .merge-code}
 15
 15
 15
@@ -358,7 +364,7 @@ Another variable Awk offers up for use is `NR`, the *number of records* so far. 
 $ awk -F '\t' '{ print NR " " $(NF-2) }' bookreviews.tsv | head  
 ~~~
 
-~~~{.bash caption=""}
+~~~{.bash .merge-code}
 1 review_headline
 2 Great Twist on Zombie Mythos
 3 Helpful and Practical
@@ -401,7 +407,7 @@ The reviews I'm going to focus on today are for the book 'The Hunger Games'. I'm
 $ awk -F '\t' '/Hunger Games/ { print $6, $8  }' bookreviews.tsv | head
 ~~~
 
-~~~
+~~~{.merge-code}
 The Hunger Games (Book 1) 5
 The Hunger Games Trilogy Boxed Set 5
 The Hunger Games Trilogy: The Hunger Games / Catching Fire / Mockingjay 5
@@ -420,7 +426,7 @@ I should be able to pull valuable data from these reviews, but first there is a 
 $ awk -F '\t' '/Hunger Games/ { print $6 }' bookreviews.tsv | sort | uniq    
 ~~~
 
-~~~
+~~~{.merge-code}
 Birthmarked
 Blood Red Road
 Catching Fire (The Hunger Games)
@@ -438,7 +444,7 @@ I can fix this by using the `product_id` field to pattern match on:
 $ awk -F '\t' '$4 == "0439023483" { print $6 }' bookreviews.tsv | sort |  uniq 
 ~~~
 
-~~~
+~~~{.merge-code}
 The Hunger Games (The Hunger Games, Book 1)
 ~~~
 
@@ -449,7 +455,7 @@ $ awk -F '\t' '$4 == "0439023483" { print $15 "\t" $13 "\t" $8}' \
     bookreviews.tsv | head 
 ~~~
 
-~~~
+~~~{.merge-code}
 2015-08-19      Five Stars      5
 2015-08-17      Five Stars      5
 2015-07-23      Great read      5
@@ -507,7 +513,7 @@ $ awk -F '\t' \
    bookreviews.tsv | head 
 ~~~
 
-~~~{.bash caption=""}
+~~~{.merge-code}
 2015-08-19       Five Stars              5 
 2015-08-17       Five Stars              5 
 2015-07-23       Great read              5 
@@ -532,7 +538,7 @@ $ awk -F '\t' \
  bookreviews.tsv | head
 ~~~
 
-~~~{.bash caption=""}
+~~~{.merge-code}
 2015-08-19       Five Stars              5 
 2015-08-17       Five Stars              5 
 2015-07-23       Great read              5 
@@ -572,7 +578,7 @@ I can add up and print out a running total of review_stars (`$8`) like this:
 $ awk -F '\t' '{ total = total + $8; print total }' bookreviews.tsv | head 
 ~~~
 
-~~~{.bash caption=""}
+~~~{.merge-code}
 0
 5
 10
@@ -588,7 +594,7 @@ END { print "Average book review:", total/NR, "stars" }
 ' bookreviews.tsv | head 
 ~~~
 
-~~~{.bash caption=""}
+~~~{.merge-code}
 Average book review is 4.24361 stars
 ~~~
 
@@ -602,7 +608,7 @@ END   { print "Average book review:", total/NR, "stars" }
 ' bookreviews.tsv 
 ~~~
 
-~~~{.bash caption=""}
+~~~{.merge-code}
 Calculating Average ...
 Average book review is 4.24361 stars
 ~~~
@@ -640,7 +646,7 @@ Printing files with a human readable size:
 $ ls -lh | awk '{ print $5,"\t", $9 }'  
 ~~~
 
-~~~
+~~~{.merge-code}
 7.8M     The_AWK_Programming_Language.pdf
 6.2G     bookreviews.tsv
 ~~~
@@ -651,7 +657,7 @@ Getting the containerID of running docker containers:
 $ docker ps -a |  awk '{ print $1 }'
 ~~~
 
-~~~
+~~~{.merge-code}
 CONTAINER
 08488f220f76
 3b7fc673649f
@@ -694,7 +700,7 @@ We've now crossed over from one-liners into Awk scripting. With Awk, the transit
 $ cat average
 ~~~
 
-~~~{.bash caption=""}
+~~~{.bash .merge-code}
 exec awk -F '\t' '
     { total = total + $8 }
 END { print "Average book review is", total/NR, "stars" } 
@@ -705,7 +711,7 @@ END { print "Average book review is", total/NR, "stars" }
 $ average bookreviews.tsv
 ~~~
 
-~~~{.bash caption=""}
+~~~{.merge-code}
 Average book review is 4.2862 stars
 ~~~
 
@@ -747,7 +753,7 @@ BEGIN { FS = "\t" }
 
 At this point, I should be ready to start calculating review scores for The Hunger Games:
 
-~~~{.bash caption=""}
+~~~{.bash }
 exec awk -F '\t' '
 $4 == "0439023483" { title=$6; count = count + 1; total = total + $8 }
 END { 
@@ -834,7 +840,7 @@ Running:
 $ awk -f hungergames.awk bookreviews.tsv
 ~~~
 
-~~~
+~~~{.merge-code}
 ---------------------------------------
 The Hunger Games (The Hunger Games, Book 1)
 ---------------------------------------
@@ -902,7 +908,7 @@ Lord of the Rings has a different pattern. The books are all in a pretty tight r
 
 Awk has associative arrays built it, and you can use them in much the same way you would use Python dictionaries.  
 
-~~~{.awk caption=""}
+~~~{.awk }
 arr["key1"] = "one"
 arr["key2"] = "two"
 arr["key3"] = "three"
@@ -910,13 +916,13 @@ arr["key3"] = "three"
 
 You can then use a for loop to iterate over them:
 
-~~~{.awk caption=""}
+~~~{.awk }
 for (i in arr){
     print i, arr[i]
 }
 ~~~
 
-~~~{.ini caption=""}
+~~~{.ini .merge-code}
 key1 one
 key2 two
 key3 three
@@ -1056,7 +1062,7 @@ $ echo "1\n 2\n 3\n 4\n 5\n 6" | awk '{
         }'
 ~~~
 
-~~~{.ini caption=""}
+~~~{.ini .merge-code}
 odd
 2
 odd
@@ -1112,7 +1118,7 @@ Running it:
 $ ./top_books | head
 ~~~
 
-~~~
+~~~{.merge-code}
 Harry Potter And The Sorcerer's Stone                 👍👍
 Fifty Shades of Grey                                  👎👎
 The Hunger Games (The Hunger Games, Book 1)           👍
