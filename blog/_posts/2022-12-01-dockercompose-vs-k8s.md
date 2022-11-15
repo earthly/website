@@ -1,5 +1,5 @@
 ---
-title: "Put Your Best Title Here"
+title: "When to Use Docker Compose vs. Kubernetes"
 categories:
   - Tutorials
 toc: true
@@ -9,25 +9,23 @@ internal-links:
  - just an example
 ---
 
-# When to Use Docker Compose vs. Kubernetes
-
-As a developer, you’ll have likely heard about [Docker Compose](https://docs.docker.com/compose/) and [Kubernetes](https://kubernetes.io)–two of the most popular container orchestration tools on the market. If you're just getting started with these technologies, it can be hard to know which one to choose.
+As a developer, you'll have likely heard about [Docker Compose](https://docs.docker.com/compose/) and [Kubernetes](https://kubernetes.io)–two of the most popular container orchestration tools on the market. If you're just getting started with these technologies, it can be hard to know which one to choose.
 
 In this article, you'll learn about Docker Compose and Kubernetes, and compare them based on their features and use cases. By the end, you'll have a better understanding of which tool is right for you.
 
 ## The History of Docker Compose and Kubernetes
 
-Docker Compose and Kubernetes are both popular tools used for managing applications in a containerized environment. They've continued to gain popularity due to the need for container orchestration technologies to manage multicontainer applications.
+Docker Compose and Kubernetes are both popular tools used for managing applications in a containerized environment. They've continued to gain popularity due to the need for container orchestration technologies to manage multi-container applications.
 
-![Kubernetes and Docker logos](https://i.imgur.com/0TKHMW9.png)
+![Kubernetes and Docker logos]({{site.images}}{{page.slug}}/0TKHMW9.png)
 
 ### Docker and Docker Compose: An Overview
 
 Before diving into the history of Docker Compose, it'll help to learn about [Docker](https://www.docker.com), which is an open source container technology that lets developers package an application with all its dependencies into a standardized unit of software.
 
-Docker was released by Solomon Hykes as dotCloud, a platform-as-a-service (PaaS) company, in March 2013. The software was developed to simplify the process of creating, deploying, and running applications using containers. dotCloud quickly gained popularity due to its ease of use and ability to handle multicontainer applications and later rebranded itself as Docker Inc.
+Docker was released by Solomon Hykes as dotCloud, a platform-as-a-service (PaaS) company, in March 2013. The software was developed to simplify the process of creating, deploying, and running applications using containers. dotCloud quickly gained popularity due to its ease of use and ability to handle multi-container applications and later rebranded itself as Docker Inc.
 
-Docker Compose was released in 2013 as a part of the Docker toolset. It was developed to simplify the process of working with multicontainer applications.
+Docker Compose was released in 2013 as a part of the Docker toolset. It was developed to simplify the process of working with multi-container applications.
 
 In the past, you had to write long scripts or commands to manage containers. With Docker Compose, you can run multiple containers at the same time and get those containers to communicate with each other via a single YAML file. The YAML file defines the services and configurations required to run your application.
 
@@ -45,11 +43,11 @@ The Kubernetes architecture is made up of several components, including the cont
 
 ## Features of Docker Compose and Kubernetes
 
-Both Docker Compose and Kubernetes have unique features that distinguish them from each other. One key difference is that Docker Compose defines multicontainer Docker applications and deploys them to a single server. Kubernetes, on the other hand, is a production-grade container orchestrator and can run other container runtimes, including Docker's, over several machines, virtual or real.
+Both Docker Compose, and Kubernetes have unique features that distinguish them from each other. One key difference is that Docker Compose defines multi-container Docker applications and deploys them to a single server. Kubernetes, on the other hand, is a production-grade container orchestrator, and can run other container runtimes, including Docker's, over several machines, virtual or real.
 
 ### Features of Docker Compose
 
-Let’s enumerate the key features of Docker Compose.
+Let's enumerate the key features of Docker Compose.
 
 #### Quickly Set Up a Development Environment
 
@@ -57,40 +55,39 @@ Docker Compose can help you quickly set up a development environment for a Docke
 
 You can define your app's development environment with a `dockerfile` so it can be reproduced. Once the `dockerfile` is set up, the `docker build` command can be used to build an image; this command will create an image based on the instructions contained in the `dockerfile`.
 
-Next, define the services, dependencies, and other configuration options required to run your app in the `docker-compose.yml` file. Then, run the `docker compose up` command to start and run all services defined in the `docker-compose.yml` file. 
-Another reason why Docker Compose is useful for development environments is that it allows you to easily create local environments that are identical to your production environment. Using these, you can test your apps and reduce instances of errors and unexpected behavior in production. Docker Compose can also be used in continuous integration and continuous delivery pipelines. 
+Next, define the services, dependencies, and other configuration options required to run your app in the `docker-compose.yml` file. Then, run the `docker compose up` command to start and run all services defined in the `docker-compose.yml` file.
+Another reason why Docker Compose is useful for development environments is that it allows you to easily create local environments that are identical to your production environment. Using these, you can test your apps and reduce instances of errors and unexpected behavior in production. Docker Compose can also be used in continuous integration and continuous delivery pipelines.
 
 #### Easily Link Containers
 
 Microservice applications are usually composed of many independent containers. You can use the `docker run` command to start individual Docker containers. But what if you want to run multiple containers at the same time? And what if those containers need to communicate with each other? This is where Docker Compose, a lightweight tool, shines because it allows you to link multiple containers together in a single file.
 
-In addition, all containers defined in a compose file are assigned to the same internal network for internal communication. This secures them from unauthorized external access. It also facilitates easier management of multicontainer application networks.
+In addition, all containers defined in a compose file are assigned to the same internal network for internal communication. This secures them from unauthorized external access. It also facilitates easier management of multi-container application networks.
 
-#### Locally Test Multicontainer Applications
+#### Locally Test Multi-container Applications
 
-Testing multicontainer applications without a container orchestrator or manager can be complicated. You need to start each container one by one, ensure their network configurations are correct, and run any other scripts or commands that you need to get them ready. Only then can you run your test scripts.
+Testing multi-container applications without a container orchestrator or manager can be complicated. You need to start each container one by one, ensure their network configurations are correct, and run any other scripts or commands that you need to get them ready. Only then can you run your test scripts.
 
 Additionally, by defining the testing environment in a [Compose file](https://docs.docker.com/compose/compose-file/), you can conveniently set up and tear down isolated testing environments for your multi-container applications by running the following commands:
 
-```bash
+~~~{.bash caption=">_"}
 $ docker compose up -d
 $ ./run_test
 $ docker compose down
-```
+~~~
 
-Docker Compose automates the process of getting your multicontainer application up and running. All you need to do is use Docker Compose to start up your application and get going with your tests.
+Docker Compose automates the process of getting your multi-container application up and running. All you need to do is use Docker Compose to start up your application and get going with your tests.
 
 ### Features of Kubernetes
 
-Here’s an overview of the key features of Kubernetes.
+Here's an overview of the key features of Kubernetes.
 
 #### Unsurpassed Scalability
 
 Kubernetes is the preferred tool for large-scale clusters. An application can be automatically scaled by defining the number of replicas required for the application and evaluating the workload via metrics such as CPU, memory usage, memory limit, and network I/O
 for Kubernetes. The cluster automatically scales up in the event of an overworked pod by adding more replicas, and it scales down in the event of a reduced workload.
 
-
-This ensures high availability. You can automate the scaling process using the [HorizontalPodAutoscaler (HPA)](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/). Docker Compose does not support autoscaling; so you can consider using Kubernetes to leverage  the benefit of automatically scaling clusters.
+This ensures high availability. You can automate the scaling process using the [HorizontalPodAutoscaler (HPA)](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/). Docker Compose does not support autoscaling; so you can consider using Kubernetes to leverage the benefit of automatically scaling clusters.
 
 #### High Reliability
 
@@ -100,23 +97,23 @@ In terms of managing production workloads, Kubernetes is extremely reliable. It 
 
 Kubernetes offers more flexibility in comparison to Docker Compose. It can support a wide range of container technologies such as [Containerd](https://www.containiq.com/), [Podman](https://podman.io), and [Buildah](https://buildah.io/), unlike Docker Compose, which only supports Docker containers.
 
-#### Built-In Self-Healing Capability
+#### Built-in Self-healing Capability
 
 Because Kubernetes has built-in self-healing capability, it can automatically restart failed clusters and detect and replace unhealthy nodes. If a part of the cluster goes down unexpectedly, such as a node or an entire zone, other nodes will detect the outage and will react accordingly by starting additional pods on different nodes to make sure all services are running as needed. This ensures high availability for your applications by reducing downtime and increasing uptime.
 
-#### Multicloud and Hybrid Cloud Support 
+#### Multicloud and Hybrid Cloud Support
 
-One of the reasons for Kubernetes popularity is its ability to support multicloud and hybrid cloud environments. You can use Kubernetes to manage containers across multiple cloud providers or even across a mix of on-premise and cloud-based infrastructure. 
+One of the reasons for Kubernetes popularity is its ability to support multicloud and hybrid cloud environments. You can use Kubernetes to manage containers across multiple cloud providers or even across a mix of on-premise and cloud-based infrastructure.
 
 Kubernetes's multicloud and hybrid cloud support makes it a versatile solution for businesses of all sizes.
 
-## Use Cases of Docker Compose 
+## Use Cases of Docker Compose
 
 Docker Compose is great for development, testing, and staging environments, as well as CI/CD pipelines. It can also be used to easily run automated tests.
 
 Although it can be used for production environments, it has limitations, such as not being able to automatically restart or replace failed containers until you manually restart the containers. In these scenarios, Kubernetes is preferred.
 
-## Use Cases of Kubernetes 
+## Use Cases of Kubernetes
 
 Kubernetes is a better option for large production-grade deployments because of its ability to manage and deploy large numbers of containers on multiple hosts, with better reliability and fault tolerance. As a robust container orchestration platform, Kubernetes is especially useful for businesses that run a lot of microservices or need to scale their applications quickly, like [Spotify](https://www.spotify.com/), [Pinterest](https://www.pinterest.com/), and [Airbnb](https://www.airbnb.com/).
 
@@ -126,9 +123,9 @@ Kubernetes also has great support for monitoring, logging, and dashboarding acti
 
 ## Conclusion
 
-In this article, you learned how Docker Compose and Kubernetes help orchestrate and manage containerized applications and the key differences between the two. 
+In this article, you learned how Docker Compose and Kubernetes help orchestrate and manage containerized applications and the key differences between the two.
 
-While Docker Compose is great for creating and managing multicontainer Docker applications on a single host, Kubernetes is perfect for large-scale deployments that require high availability and scalability.
+While Docker Compose is great for creating and managing multi-container Docker applications on a single host, Kubernetes is perfect for large-scale deployments that require high availability and scalability.
 
 ## Outside Article Checklist
 
@@ -137,7 +134,6 @@ While Docker Compose is great for creating and managing multicontainer Docker ap
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
 - [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
