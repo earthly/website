@@ -116,7 +116,7 @@ Kubernetes's multicloud and hybrid cloud support makes it a versatile solution f
 
 ## Use Cases of Docker Compose
 
-![Usecases]({{site.images}}{{page.slug}}/usecase.png)\
+![Use cases]({{site.images}}{{page.slug}}/usecase.png)\
 
 Docker Compose is great for development, testing, and staging environments, as well as CI/CD pipelines. It can also be used to easily run automated tests.
 
