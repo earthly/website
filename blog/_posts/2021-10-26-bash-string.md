@@ -25,11 +25,11 @@ test
 
 Or you can put the same commands into a file with a bash shebang.
 
-``` bash
+~~~{.bash }
 #!/bin/bash
 
 echo "test"
-```
+~~~
 
 And then make it executable using `chmod` and run it at the command line:
 
@@ -84,9 +84,9 @@ echo "$three"
 
 You can, in theory, refer to variables directly like this:
 
-``` bash
+~~~{.bash}
 echo $one
-```
+~~~
 
 but if you do that, you might have unexpected things happen.
 
