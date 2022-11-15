@@ -64,7 +64,7 @@ and then I can refer to it in a double-quoted string like this:
 
 Concatenating strings follows easily from this same pattern:
 
-~~~{.bash caption=""}
+~~~{.bash caption="concat1"}
 #!/bin/bash
 
 one="1"
@@ -73,7 +73,8 @@ three="$one$two"
 echo "$three"
 ~~~
 
-~~~{.output caption="Output"}
+~~~{.output caption="running concat1"}
+
 12
 ~~~
 
@@ -89,35 +90,35 @@ echo $one
 
 but if you do that, you might have unexpected things happen.
 
-``` bash
+~~~{.bash caption="bad_expand.sh"}
 #!/bin/bash
 
 comment="/* begin comment block"
 echo $comment
-```
+~~~
 
-~~~{.output caption="Output"}
+~~~{.ini caption="Output"}
 /Applications /Library /System /Users /Volumes /bin /cores /dev /etc 
 /home /opt /private /sbin /tmp /usr /var begin comment block
 ~~~
 
 Without quotes, bash splits your string on whitespace and then does a pathname expansion on `/*`.
 
-I'm going to use whitespace splitting later on, but for now remember: **You should always use double quotes if you want the literal value of a variable.**
+I'm going to use whitespace splitting later on, but for now remember: **You should always use double quotes, when echoing, if you want the literal value of a variable.**
 </div>
 
 ### Another Concatenate Method +=
 
 Another way to combine strings is using `+=`:
 
-``` bash
+~~~{.bash caption="concat2.sh"}
 #!/bin/bash
 
 concat=""
 concat+="1"
 concat+="2"
 echo "$concat"
-```
+~~~
 
 ~~~{.output caption="Output"}
 12
@@ -169,13 +170,13 @@ zsh: closing brace expected
 
 You can get the inverse of this string, the portion starting after the first character, using an alternate substring syntax `${string:position}` (Note the single colon and single parameter). It ends up looking like this:
 
-``` bash
+~~~{.bash caption="index_strings.sh"}
 #!/bin/bash
 
 word="bash"
 echo "Head: ${word:0:1}"
 echo "Rest: ${word:1}"
-```
+~~~
 
 ~~~{.output caption="Output"}
 Head: b
@@ -188,14 +189,14 @@ This substring works by telling the parameter expansion to return a new string s
 
 To return the last character of a string in bash, I can use the same single-argument substring parameter expansion but use negative indexes, which will start from the end.
 
-``` bash
+~~~{.bash caption="neg_index.sh"}
 #!/bin/bash
 
 word="bash" 
 echo "${word:(-1)}"
 echo "${word:(-2)}"
 echo "${word:(-3)}"
-```
+~~~
 
 ~~~{.output caption="Output"}
 h
@@ -205,14 +206,14 @@ ash
 
 To drop the last character, I can combine this with the string length expansion (`${#var}`):
 
-``` bash
+~~~{.bash caption="combined.sh"}
 #!/bin/bash
 
 word="bash" 
 echo "${word:0:${#word}-1}"
 echo "${word:0:${#word}-2}"
 echo "${word:0:${#word}-3}"
-```
+~~~
 
 ~~~{.output caption="Output"}
 bas
@@ -222,14 +223,14 @@ b
 
 That is a bit long, though, so you could also use the pattern expansion for removing a regex from the end of a string (`${var%<<regex>>}`) and the regular expression for any single character (`?`):
 
-``` bash
+~~~{.bash caption="question.sh"}
 #!/bin/bash
 
 word="bash" 
 echo "${word%?}
 echo "${word%??}
 echo "${word%???}
-```
+~~~
 
 ~~~{.output caption="Output"}
 bas
@@ -247,14 +248,14 @@ one
 
 You can also use regular expressions to remove characters from the beginning of a string by using `#` like this:
 
-``` bash
+~~~{.bash caption="question2.sh"}
 #!/bin/bash
 
 word="bash" 
 echo "${word#?}
 echo "${word#??}
 echo "${word#???}
-```
+~~~
 
 Running that I get characters dropped from the beginning of the string if they match the regex:
 
@@ -276,14 +277,13 @@ Let's say I want to change the word `create` to `make` in this quote:
 
 There is a parameter expansion for string replacement:
 
-``` bash
+~~~{.bash caption="replace.sh"}
 #!/bin/bash
 
 phrase="When you don't create things, you become defined by your tastes 
 rather than ability. Your tastes only narrow & exclude people. So create."
 echo "${phrase/create/make}"
-
-```
+~~~
 
 ~~~{.output caption="Output"}
 When you don't make things, you become defined by your tastes 
@@ -294,13 +294,13 @@ You can see that my script only replaced the first `create`.
 
 To replace all, I can change it from `test/find/replace` to `/text//find/replace` (Note the double slash `//`):
 
-``` bash
+~~~{.bash caption="replace2.sh"}
 #!/bin/bash
 
 phrase="When you don't create things, you become defined by your tastes 
 rather than ability. Your tastes only narrow & exclude people. So create."
 echo "${phrase//create/make}"
-```
+~~~
 
 ~~~{.output caption="Output"}
 When you don't make things, you become defined by your tastes 
@@ -309,12 +309,12 @@ rather than ability. Your tastes only narrow & exclude people. So make.
 
 You can do more complicated string placements using regular expressions. Like redact a phone number:
 
-``` bash
+~~~{.bash caption="regex.sh"}
 #!/bin/bash
 
 number="Phone Number: 234-234-2343"
 echo "${number//[0-9]/X}
-```
+~~~
 
 ~~~{.output caption="Output"}
 Phone number: XXX-XXX-XXXX
@@ -326,7 +326,7 @@ If the substitution logic is complex, this regex replacement format can become h
 
 You can compare strings for equality (`==`), inequality (`!=`), and ordering (`>` or `<`):
 
-``` bash
+~~~{.bash caption="eq1.sh"}
 if [[ "one" == "one" ]]; then
     echo "Strings are equal."
 fi
@@ -338,7 +338,7 @@ fi
 if [[ "aaa" < "bbb" ]]; then
     echo "aaa is smaller."
 fi
-```
+~~~
 
 ~~~{.output caption="Output"}
 Strings are equal.
@@ -348,7 +348,7 @@ aaa is smaller.
 
 You can also use `=` to compare strings to globs:
 
-``` bash
+~~~{.bash caption="eq2.sh"}
 #!/bin/bash
 file="todo.gz"
 if [[ "$file" = *.gz ]]; then
@@ -357,7 +357,7 @@ fi
 if [[ "$file" = todo.* ]]; then
     echo "Found file named todo: $file"
 fi
-```
+~~~
 
 ~~~{.output caption="Output"}
 Found gzip file: todo.gz
@@ -372,13 +372,13 @@ You can see it matched in both cases. Glob patterns have their limits, though. A
 
 Here is how I would write a regex match for checking if a string starts with `aa`:
 
-``` bash
+~~~{.bash caption="regex1.sh"}
 #!/bin/bash
 name="aardvark"
 if [[ "$name" =~ ^aa ]]; then
     echo "Starts with aa: $name"
 fi
-```
+~~~
 
 ~~~{.output caption="Output"}
 Starts with aa: aardvark
@@ -386,13 +386,13 @@ Starts with aa: aardvark
 
 And here using the regex match to find if the string contains a certain substring:
 
-``` bash
+~~~{.bash caption="regex2.sh"}
 #!/bin/bash
 name="aardvark"
 if [[ "$name" =~ dvark ]]; then
     echo "Contains dvark: $name"
 fi
-```
+~~~
 
 ~~~{.output caption="Output"}
 Contains dvark: aardvark
@@ -404,7 +404,7 @@ Unfortunately, this match operator does not support all of modern regular expres
 
 What if I want to use regexes to spit a string on pipes and pull out the values? This is possible using capture groups :
 
-``` bash
+~~~{.bash caption="regex3.sh"}
 if [[ "1|tom|1982" =~ (.*)\|(.*)\|(.*) ]]; 
 then 
   echo "ID = ${BASH_REMATCH[1]}" ; 
@@ -413,7 +413,7 @@ then
 else 
   echo "Not proper format"; 
 fi
-```
+~~~
 
 ~~~{.output caption="Output"}
 ID = 1
@@ -427,12 +427,12 @@ Capture groups can be convenient for doing some light-weight string parsing in b
 
 By default, bash treats spaces as the delimiter between separate elements. This can lead to problems, though, and is one of the reasons I mentioned earlier for double quoting your variable assignments. However, this space delimiting can also be a helpful feature:
 
-``` bash
+~~~{.bash caption="list.sh"}
 list="foo bar baz"
 for word in $list; do # <-- $list is not in double quotes
   echo "Word: $word"
 done
-```
+~~~
 
 ~~~{.output caption="Output"}
 Word: foo
@@ -444,13 +444,13 @@ If you wrap space-delimited items in brackets, you get an array.
 
 You can access this array like this:
 
-``` bash
+~~~{.bash caption="list2.sh"}
 list="foo bar baz"
 array=($list)
 echo "Zeroth: ${array[0]}"  
 echo "First: ${array[1]}"  
 echo "Whole Array: ${array[*]}" 
-```
+~~~
 
 ~~~{.output caption="Output"}
 Zeroth: foo
@@ -460,7 +460,7 @@ Whole Array: foo bar baz
 
 I can use this feature to split a string on a delimiter. All I need to do change the internal field separator (`IFS`), create my array, and then change it back.
 
-``` bash
+~~~{.bash caption="ifs.sh"}
 #!/bin/bash
 
 text="1|tom|1982"
@@ -468,15 +468,15 @@ text="1|tom|1982"
 IFS='|' 
 array=($text)
 unset IFS;
-```
+~~~
 
 And now I have an array split on my chosen delimiter:
 
-``` bash
+~~~{.bash caption="ifs.sh continued"}
 echo "ID = ${array[1]}" ; 
 echo "Name = ${array[2]}" ; 
 echo "Year = ${array[3]}" ; 
-```
+~~~
 
 ~~~{.output caption="Output"}
 ID = 1
