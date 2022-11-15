@@ -127,6 +127,8 @@ In this article, you learned how Docker Compose and Kubernetes help orchestrate 
 
 While Docker Compose is great for creating and managing multi-container Docker applications on a single host, Kubernetes is perfect for large-scale deployments that require high availability and scalability.
 
+{% include cta/cta1.html %}
+
 ## Outside Article Checklist
 
 - [ ] Add in Author page
@@ -136,4 +138,4 @@ While Docker Compose is great for creating and managing multi-container Docker a
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
+
