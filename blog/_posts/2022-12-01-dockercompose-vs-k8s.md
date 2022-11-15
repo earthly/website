@@ -11,11 +11,11 @@ internal-links:
 
 As a developer, you'll have likely heard about [Docker Compose](https://docs.docker.com/compose/) and [Kubernetes](https://kubernetes.io)–two of the most popular container orchestration tools on the market. If you're just getting started with these technologies, it can be hard to know which one to choose.
 
-In this article, you'll learn about Docker Compose and Kubernetes, and compare them based on their features and use cases. By the end, you'll have a better understanding of which tool is right for you.
+In this article, you'll learn about [Docker Compose](/blog/youre-using-docker-compose-wrong) and Kubernetes, and compare them based on their features and use cases. By the end, you'll have a better understanding of which tool is right for you.
 
 ## The History of Docker Compose and Kubernetes
 
-Docker Compose and Kubernetes are both popular tools used for managing applications in a containerized environment. They've continued to gain popularity due to the need for container orchestration technologies to manage multi-container applications.
+[Docker](/blog/rails-with-docker) Compose and Kubernetes are both popular tools used for managing applications in a containerized environment. They've continued to gain popularity due to the need for container orchestration technologies to manage multi-container applications.
 
 ![Kubernetes and Docker logos]({{site.images}}{{page.slug}}/0TKHMW9.png)
 
@@ -25,7 +25,7 @@ Before diving into the history of Docker Compose, it'll help to learn about [Doc
 
 Docker was released by Solomon Hykes as dotCloud, a platform-as-a-service (PaaS) company, in March 2013. The software was developed to simplify the process of creating, deploying, and running applications using containers. dotCloud quickly gained popularity due to its ease of use and ability to handle multi-container applications and later rebranded itself as Docker Inc.
 
-Docker Compose was released in 2013 as a part of the Docker toolset. It was developed to simplify the process of working with multi-container applications.
+[Docker Compose](/blog/youre-using-docker-compose-wrong) was released in 2013 as a part of the Docker toolset. It was developed to simplify the process of working with multi-container applications.
 
 In the past, you had to write long scripts or commands to manage containers. With Docker Compose, you can run multiple containers at the same time and get those containers to communicate with each other via a single YAML file. The YAML file defines the services and configurations required to run your application.
 
@@ -35,7 +35,7 @@ Using Docker Compose, you can implement a single command to start and stop all t
 
 Kubernetes (K8s) was developed by Google and was first released as an open source project in 2015. It's now maintained by the [Cloud Native Computing Foundation (CNCF)](https://www.cncf.io).
 
-Prior to 2015, Google had been using containers to manage its workloads before deciding to open source the Kubernetes system so that others could benefit from its container management capabilities.
+Prior to 2015, Google had been using containers to manage its workloads before deciding to open source the Kubernetes system so that others could benefit from its [container](/blog/docker-slim) management capabilities.
 
 Since its release, Kubernetes has become the industry standard for container orchestration and is used by companies of all sizes. Kubernetes has also been adopted by many cloud providers, including Amazon, Microsoft, and Google.
 
@@ -43,7 +43,7 @@ The Kubernetes architecture is made up of several components, including the cont
 
 ## Features of Docker Compose and Kubernetes
 
-Both Docker Compose, and Kubernetes have unique features that distinguish them from each other. One key difference is that Docker Compose defines multi-container Docker applications and deploys them to a single server. Kubernetes, on the other hand, is a production-grade container orchestrator, and can run other container runtimes, including Docker's, over several machines, virtual or real.
+Both [Docker Compose](/blog/youre-using-docker-compose-wrong), and Kubernetes have unique features that distinguish them from each other. One key difference is that Docker Compose defines multi-container Docker applications and deploys them to a single server. Kubernetes, on the other hand, is a production-grade container orchestrator, and can run other container runtimes, including Docker's, over several machines, virtual or real.
 
 ### Features of Docker Compose
 
@@ -137,5 +137,4 @@ While Docker Compose is great for creating and managing multi-container Docker a
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
 
