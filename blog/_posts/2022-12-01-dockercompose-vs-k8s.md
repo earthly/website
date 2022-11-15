@@ -131,7 +131,7 @@ While Docker Compose is great for creating and managing multi-container Docker a
 
 ## Outside Article Checklist
 
-- [ ] Add in Author page
+
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
