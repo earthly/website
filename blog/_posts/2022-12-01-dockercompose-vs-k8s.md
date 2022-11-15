@@ -71,7 +71,7 @@ Microservice applications are usually composed of many independent containers. Y
 
 In addition, all containers defined in a compose file are assigned to the same internal network for internal communication. This secures them from unauthorized external access. It also facilitates easier management of multi-container application networks.
 
-#### Locally Test Multi-container Applications
+#### Locally Test Multi-Container Applications
 
 Testing multi-container applications without a container orchestrator or manager can be complicated. You need to start each container one by one, ensure their network configurations are correct, and run any other scripts or commands that you need to get them ready. Only then can you run your test scripts.
 
@@ -104,7 +104,7 @@ In terms of managing production workloads, Kubernetes is extremely reliable. It 
 
 Kubernetes offers more flexibility in comparison to Docker Compose. It can support a wide range of container technologies such as [Containerd](https://www.containiq.com/), [Podman](https://podman.io), and [Buildah](https://buildah.io/), unlike Docker Compose, which only supports Docker containers.
 
-#### Built-in Self-healing Capability
+#### Built-in Self-Healing Capability
 
 Because Kubernetes has built-in self-healing capability, it can automatically restart failed clusters and detect and replace unhealthy nodes. If a part of the cluster goes down unexpectedly, such as a node or an entire zone, other nodes will detect the outage and will react accordingly by starting additional pods on different nodes to make sure all services are running as needed. This ensures high availability for your applications by reducing downtime and increasing uptime.
 
