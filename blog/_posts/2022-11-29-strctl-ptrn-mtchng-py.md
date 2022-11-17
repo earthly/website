@@ -20,7 +20,7 @@ In this tutorial, you'll learn how structural pattern matching works in Python b
 
 In this tutorial, we'll use the following endpoints from the API:
 
-~~~{.json caption=""}
+~~~
 GET /posts  #returns 100 posts
 GET /posts/<id>   #returns a single post
 ~~~
@@ -46,7 +46,7 @@ pip install requests
 
 ### Understanding the `match-case` Syntax
 
-~~~{.python caption=""}
+~~~{.python }
 match <expression>:
     case <pattern 1> [<if guard>]:
         <block to execute if pattern 1 matches>
@@ -570,9 +570,9 @@ pattern 3 matched
 The patterns in the value could be any form of pattern we have discussed so far.
 
 ~~~{.python caption="pattern-matching.py"}
-           def main(response):
-   post_data = response.json()
-   match post_data:
+def main(response):
+    post_data = response.json()
+    match post_data:
         case {"userId":2}:
             print("Pattern 1 matched")
         case {"userId":user_id, "id":post_id} if user_id < post_id:
