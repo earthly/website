@@ -74,7 +74,7 @@ The default case is the simplest to explain. If neither flag is given, I ask fla
 $ go run cmd/client/main.go
 ~~~
 
-~~~{.ini }
+~~~{.merge-code}
 Usage of activityclient:
   -add
         Add activity
@@ -89,7 +89,7 @@ I'm exiting with one because if I pass in invalid flags, this case will also be 
 $ go run cmd/client/main.go -unknown -flags
 ~~~
 
-~~~{.ini }
+~~~{.merge-code}
 Usage of activityclient:
   -add
         Add activity
@@ -140,7 +140,7 @@ So that if I forget an argument, I get informed:
 $ go run cmd/client/main.go -add      
 ~~~
 
-~~~{.ini}
+~~~{.merge-code}
 Usage: -add "message"
 exit status 1
 ~~~
@@ -161,9 +161,9 @@ log.Fatalf("failed inserting activity: %s", err)
 
 In my case, however, I don't want to include any timestamps or log formatting so I'm just using `fmt.Fprintln` and passing it `os.Stderr`:
 
-```
+~~~{.ini}
 fmt.Fprintln(os.Stderr, "My Error")
-```
+~~~
 
 Ok, back to the activities project.
 </div>
@@ -193,7 +193,7 @@ This checking is helpful when I forget to start up the service:
 ./go run cmd/client/main.go -add "overhead press: 70lbs"
 ~~~
 
-~~~{.ini}
+~~~{.merge-code}
 Error: Post "http://localhost:8080/": dial tcp [::1]:8080: connect: connection refused
 ~~~
 
@@ -203,7 +203,7 @@ With that in place, I can add items:
 $ go run cmd/client/main.go -add "overhead press: 70lbs"
 ~~~
 
-~~~{.ini}
+~~~{.merge-code}
 Added: overhead press: 70lbs as 1
 ~~~
 
@@ -222,7 +222,7 @@ Get is similar to Add. It will work like this:
 $ ./activityclient -get 1                      
 ~~~
 
-~~~{.ini}
+~~~{.merge-code}
 ID:1    "overhead press: 70lbs"      2021-12-21
 ~~~
 
@@ -243,7 +243,7 @@ Which works like this:
 ./activityclient -get one
 ~~~
 
-~~~{.ini}
+~~~{.merge-code}
 Invalid Offset: Not an integer
 ~~~
 
@@ -287,7 +287,7 @@ fmt.Println(time.Now().Format("UnixDate"))
 fmt.Println(time.Now().Format("January-02"))
 ~~~
 
-~~~{.output caption="Output"}
+~~~{.ini .merge-code caption="Output"}
 Tue Dec 21 12:04:05 ES 500
 December-21
 ~~~
@@ -568,7 +568,7 @@ My initial attempts to import the JSON service types into the CLI client were a 
 * **Problem:** `activity-client` and `activity-log` are two separate applications, in two different modules, in the same monorepo. Importing became a bit messy, with `activity-log` importing a pinned git version rather than my local version.
   **Solution** use `replace` in `go.mod` to use local version of `activity-log` in `activity-client`.
 
-``` ini
+~~~
 module github.com/adamgordonbell/cloudservices/activity-client
 
 go 1.17
@@ -576,7 +576,7 @@ go 1.17
 require github.com/adamgordonbell/cloudservices/activity-log v0.0.0
 
 replace github.com/adamgordonbell/cloudservices/activity-log => ../activity-log
-```
+~~~
 
 </div>
 
