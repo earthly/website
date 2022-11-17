@@ -117,7 +117,7 @@ curl -X POST -s localhost:8081/api.v1.Activity_Log/List -d \
 '{ "offset": 0 }' 
 ~~~
 
-~~~{.yml caption="Output"}
+~~~{.yml .merge-code caption="Output"}
 {
   "activities": [
     {
@@ -338,7 +338,7 @@ And if I start that up, I should have a working service that can handle REST and
 $ grpcurl -insecure localhost:8080 api.v1.Activity_Log/List
 ~~~
 
-~~~{caption=""}
+~~~{.merge-code caption=""}
 Failed to dial target host "localhost:8080": 
 tls: first record does not look like a TLS handshake
 ~~~
@@ -474,7 +474,7 @@ And then I can make grpc request:
 $ grpcurl localhost:8080 api.v1.Activity_Log/List
 ~~~
 
-~~~{.bash caption=""}
+~~~{.ini .merge-code caption=""}
 Failed to dial target host "localhost:8080": 
 x509: certificate signed by unknown authority
 ~~~
@@ -519,7 +519,7 @@ Let's test it with my gRPC client:
 ./activity-client -list
 ~~~
 
-~~~{.bash caption=""}
+~~~{.ini .merge-code caption=""}
 http: TLS handshake error from [::1]:55763: 
 tls: first record does not look like a TLS handshake
 ~~~
@@ -545,7 +545,7 @@ That gets me part of the way there.
 go run cmd/client/main.go --list
 ~~~
 
-~~~{.bash caption=""}
+~~~{.ini .merge-code caption=""}
 rpc error: code = Unavailable desc = connection error: 
 desc = "transport: authentication handshake failed: x509: certificate signed by unknown authority"
 ~~~

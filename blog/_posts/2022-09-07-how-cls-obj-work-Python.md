@@ -80,7 +80,7 @@ print(type(student_1))
 print(isinstance(student_1,Student))
 ~~~
 
-~~~{.python caption="Output"}
+~~~{.python .merge-code caption="Output"}
 # Output
 <class '__main__.Student'>
 True
@@ -175,7 +175,7 @@ print(student_1.get_email())
 print(Student.get_email(student_2))
 ~~~
 
-~~~{.python caption="Output"}
+~~~{.python .merge-code caption="Output"}
 # Output
 Jane.Smith@school.edu
 John.Doe@school.edu
@@ -259,7 +259,7 @@ Student.set_fee_waiver(0.1)
 print(student_1.apply_fee_waiver())
 ~~~
 
-~~~{.python caption="Output"}
+~~~{.python .merge-code caption="Output"}
 # Output
 # 0.1*tuition has been waived
 18000.0
@@ -415,7 +415,7 @@ today = date.today()
 Student.is_fall(today)
 ~~~
 
-~~~{.python caption="Output"}
+~~~{.python .merge-code caption="Output"}
 # Output: 
 Not the fall semester
 ~~~

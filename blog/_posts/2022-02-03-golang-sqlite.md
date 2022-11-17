@@ -147,7 +147,7 @@ By the way, I rarely select data using the sqlite3 client. Instead, I like to us
 sqlite-utils activities.db "select * from activities" --table
 ~~~
 
-~~~{.ini caption="output"}
+~~~{.ini .merge-code caption="output"}
   id  time                  description
 ----  --------------------  -----------------------------------------
    1  2021-12-09T16:34:04Z  christmas eve bike class
@@ -163,7 +163,7 @@ You can also set `.mode box` in your [`.sqliterc`](https://sqlite.org/cli.html#c
 > sqlite-utils dump activities.db
 ~~~
 
-~~~{.sql caption="output"}
+~~~{.sql .merge-code caption="output"}
 BEGIN TRANSACTION;
 CREATE TABLE [activities] (
 id INTEGER NOT NULL PRIMARY KEY,
@@ -306,7 +306,7 @@ And I can test my insert code with curl:
  '{"activity": {"description": "christmas eve bike class", "time":"2021-12-09T16:34:04Z"}}'
 ~~~
 
-~~~{.bash caption="output"}
+~~~{.bash .merge-code caption="output"}
 {"id":5}
 ~~~
 
@@ -316,7 +316,7 @@ A quick check with `sqlite-utils` shows that my results were written to the db:
 > sqlite-utils activities.db "select * from activities" --table
 ~~~
 
-~~~{.texinfo caption="Output"}
+~~~{.texinfo .merge-code caption="Output"}
   id  time                       description
 ----  -------------------------  -----------------------------------------
    1  2021-12-09 16:34:04+00:00  christmas eve bike class
@@ -542,7 +542,7 @@ With that list method threaded through to `/list` I can start pulling out lists 
 > curl -X GET -s localhost:8080/list -d '{"offset": 1}' | jq .
 ~~~
 
-~~~{.json caption="Output"}
+~~~{.json .merge-code caption="Output"}
 [
   {
     "time": "2022-01-09T16:56:23Z",
@@ -563,7 +563,7 @@ And then calling it with my command-line client:
 go run cmd/client/main.go --list
 ~~~
 
-~~~{.ini caption="Output"}
+~~~{.ini .merge-code caption="Output"}
 ID:3    "sledding with nephew" .     2022-01-9
 ID:2    "cross country skiing "      2022-01-2
 ID:1    "christmas eve bike class"   2021-12-24

@@ -16,7 +16,7 @@ Imagine my surprise then, when several days later I got this.
 $ curl https://earthly-tools.com/text-mode
 ~~~
 
-~~~
+~~~{.merge-code}
 curl: (6) Could not resolve host: earthly-tools.com
 ~~~
 
@@ -32,7 +32,7 @@ First, lets check and see what dig says:
 $ dig earthly-tools.com
 ~~~
 
-~~~
+~~~{.merge-code}
 ;; QUESTION SECTION:
 ;earthly-tools.com.        IN    A
 
@@ -44,7 +44,7 @@ Dig is missing the IPs for the A record of my domain name. Here is what a DIG re
 $ dig google.com 
 ~~~
 
-~~~
+~~~{.merge-code}
 ;; QUESTION SECTION:
 ;google.com.                    IN      A
 
@@ -130,7 +130,7 @@ $ terraform apply
 
 ~~~
 
-~~~{.ini caption=""}
+~~~{.ini .merge-code caption=""}
 Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
   + create
 
@@ -176,7 +176,7 @@ $ curl https://earthly-tools.com/text-mode
 
 ~~~
 
-~~~{.ini caption=""}
+~~~{.ini .merge-code caption=""}
 Earthly.dev Presents:                                                                                              
 
   _____                 _       

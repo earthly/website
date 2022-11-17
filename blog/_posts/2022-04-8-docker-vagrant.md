@@ -128,7 +128,7 @@ You can see the time taken to create an NGINX Docker container from an existing 
 $ time sudo docker run --name mynginx1 -p 80:80 -d nginx
 ~~~
 
-~~~{.bash caption="Output"}
+~~~{.bash .merge-code caption="Output"}
 ec2c5e520fff0ef93fd9f432ef625f496886ac4ceceb7066708902f0f007b535
 
 real    0m0.966s
@@ -140,7 +140,7 @@ sys     0m0.014s
 $ curl localhost:80
 ~~~
 
-~~~{.html caption="Output"}
+~~~{.html .merge-code caption="Output"}
 <!DOCTYPE html>
 <html>
 <head>
