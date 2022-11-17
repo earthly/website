@@ -12,6 +12,7 @@ internal-links:
    - buildkitd
    - runc
    - docker daemon
+last_modified_at: 2022-11-17
 ---
 There is an excellent open-source project that you have probably used without realizing it. It's called BuildKit, and it is what turns a Dockerfile into a Docker image. And it doesn't just build Docker images; it can build OCI images and several other output formats. [OpenFasS](https://www.openfaas.com/) uses it to turn functions into full containers, and here at Earthly, we use it to create complete continuous integration pipelines.  
 
@@ -40,16 +41,16 @@ BuildKit has two primary components: buildctl and buildkitd. buildctl is the Bui
 
 On macOS, you can install buildctl with brew.  
 
-```
-brew install buildkit
-```
+~~~{.bash caption=">_"}
+> brew install buildkit
+~~~
 
 On Linux and Windows, grab a release from [GitHub](https://github.com/moby/buildkit/releases).
 
 Afterward, you should be able to call buildctl
 
-```
-➜  ~ buildctl
+~~~{caption=">_"}
+> buildctl
 NAME:
    buildctl - build utility
 
@@ -68,16 +69,19 @@ COMMANDS:
 
 GLOBAL OPTIONS:
    --debug                enable debug output in logs
-   --addr value           buildkitd address (default: "unix:///run/buildkit/buildkitd.sock")
+   --addr value           buildkitd address (default: "unix:///run/buildkit/
+   buildkitd.sock")
    --tlsservername value  buildkitd server name for certificate validation
    --tlscacert value      CA certificate for validation
    --tlscert value        client certificate
    --tlskey value         client key
-   --tlsdir value         directory containing CA certificate, client certificate, and client key
-   --timeout value        timeout backend connection after value seconds (default: 5)
+   --tlsdir value         directory containing CA certificate, client 
+   certificate, and client key
+   --timeout value        timeout backend connection after value seconds 
+   (default: 5)
    --help, -h             show help
    --version, -v          print the version
-```
+~~~
 
  ***Other Tools**: In this guide, we will use [pstree](https://linux.die.net/man/1/pstree), [br](https://github.com/Canop/broot), and [mitmproxy](/blog/mitmproxy/). They are not required to use BuildKit or to follow this guide, but they help us demonstrate how BuildKit works.m
 
@@ -85,8 +89,8 @@ GLOBAL OPTIONS:
 
 buildkitd does the actual work of transforming a build definition into some output. It is designed to be a long-running process. It also isn't possible to run it on macOS or Windows. For this tutorial, we will run it as a docker container. That will work regardless of your host OS.
 
-```
-➜ docker run --rm --privileged -d --name buildkit moby/buildkit
+~~~{caption=">_"}
+> docker run --rm --privileged -d --name buildkit moby/buildkit
 Unable to find image 'moby/buildkit:latest' locally
 latest: Pulling from moby/buildkit
 05e7bc50f07f: Already exists 
@@ -96,17 +100,19 @@ d7d1da19a5ee: Already exists
 Digest: sha256:ecd5ad4910c322cad6995f8a1a0805d9da4b09ed4aaef40627f5bcb8ebf74068
 Status: Downloaded newer image for moby/buildkit:latest
 6c4342639e07eedc16ba2f5d9f91fb2f82e1793cdea73aec1725e6652cab315a
+~~~
 
+~~~{caption=">_"}
 ➜ docker ps
-CONTAINER ID   IMAGE           COMMAND       CREATED          STATUS          PORTS     NAMES
-6c4342639e07   moby/buildkit "buildkitd" 45 seconds ago   Up 43 seconds             buildkit
-```
+CONTAINER ID   IMAGE           COMMAND       CREATED          STATUS          
+6c4342639e07   moby/buildkit "buildkitd" 45 seconds ago  
+~~~
 
 We also need to tell buildctl where to find buildkitd:
 
-```
-export BUILDKIT_HOST=docker-container://buildkit
-```
+~~~{.bash caption=">_"}
+> export BUILDKIT_HOST=docker-container://buildkit
+~~~
 
 *On Linux, you can substitute these steps with just running `buildkitd` to avoid the container.*
 
@@ -114,15 +120,14 @@ export BUILDKIT_HOST=docker-container://buildkit
 
 Now that we have all dependencies we need, let's build an image using BuildKit:
 
-```
-cat .\DockerFile
+~~~{.dockerfile caption="DockerFile"}
 FROM alpine
 RUN echo "built with BuildKit!" >  file
 CMD ["/bin/sh"]
-```
+~~~
 
-```
-➜buildctl build \
+~~~{caption=">_"}
+> buildctl build \
     --frontend=dockerfile.v0 \
     --local context=. \
     --local dockerfile=.
@@ -136,14 +141,14 @@ CMD ["/bin/sh"]
  => [1/2] FROM docker.io/library/alpine@sha256:08d6ca16c  0.0s
  => => resolve docker.io/library/alpine@sha256:08d6ca16c  0.0s
   => [2/2] RUN echo "built with buildkit!" >  file   
-```
+~~~
 
 We have built the image, but we haven't given it a name nor told BuildKit what to do with it.
 
 By default, the build result will remain internal to BuildKit. An output type needs to be specified to retrieve the result. Let's specify a docker hub account that we have permission to push to:
 
-```
-➜ buildctl build \
+~~~{caption=">_"}
+> buildctl build \
     --frontend=dockerfile.v0 \
     --local context=. \
     --local dockerfile=. \
@@ -162,28 +167,28 @@ By default, the build result will remain internal to BuildKit. An output type ne
  => => exporting layers                                   0.0s
  => => exporting manifest sha256:a81d7671b5ceeb534739c95  0.0s
  => => exporting config sha256:4c8c89bca725572cf9ff3bd6a  0.0s
-```
+~~~
 
 After that, we can pull it and run it:
 
-```
-➜ docker run -it agbell/test
-/ # cat file
+~~~{.bash caption=">_"}
+> docker run -it agbell/test
+> cat file
 built with BuildKit!
-```
+~~~
 
 ## Tangent: Where Are `FROM`'s From?
 
 If we have an image locally on our machine, can we use it in a `FROM` to build something based on it? Let's find out by altering our `FROM` to use a local image:
 
-```
+~~~{.dockerfile caption="Dockerfile"}
 FROM agbell/test:local
 RUN echo "BuildKit built">  file
 CMD ["/bin/sh"] 
 
-```
+~~~
 
-```
+~~~{caption=">_"}
 > docker tag alpine agbell/test:local
 > buildctl build \
     --frontend=dockerfile.v0 \
@@ -192,26 +197,30 @@ CMD ["/bin/sh"]
 ------
  > [internal] load metadata for docker.io/agbell/test:local:
 ------
-error: failed to solve: rpc error: code = Unknown desc = failed to solve with frontend dockerfile.v0: failed to create LLB definition: docker.io/agbell/test:local: not found
+error: failed to solve: rpc error: code = Unknown desc = failed to solve 
+with frontend dockerfile.v0: failed to create LLB definition: docker.io/agbell/
+test:local: not found
 
-```
+~~~
 
 It doesn't work. It looks like it is trying to fetch the image from docker.io, the default docker hub registry.  
 
 We can verify this by quickly [capturing requests](https://earthly.dev/blog/mitmproxy/) from buildkitd:
 
-```
-➜ cat ~\Dockerfile
+~~~{.dockerfile caption="Dockerfile"}
 FROM moby/buildkit 
 RUN apk update && apk add curl
 WORKDIR /usr/local/share/ca-certificates
 COPY mitmproxy.crt mitmproxy.crt
 RUN update-ca-certificates
-➜ docker build . -t buildkit:mitm
+~~~
+
+~~~{.bash caption=">_"}
+> docker build . -t buildkit:mitm
  ...
-➜ docker run --rm --privileged -d --name buildkit buildkit:mitm
+> docker run --rm --privileged -d --name buildkit buildkit:mitm
 6676dc0109eb3f5f09f7380d697005b6aae401bb72a4ee366f0bb279c0be137b
-```
+~~~
 
 ![404 on mitmproxy](/blog/assets/images/what-is-buildkit-and-what-can-i-do-with-it/2.png)
 
@@ -227,7 +236,9 @@ We can see a `404`, and this confirms buildkitd is expecting registry that it ca
 
 We can watch the execution of our build by using `pstree` and `watch`. Open two side by side terminals, run `docker exec -it buildkit "/bin/watch" "-n1" "pstree -p"` in one and call `buildctl build ...` in the other. You will see `buildkitd` start a `buildkit-runc` process and then a separate process for each `RUN` command.
 
+<div class="wide">
 ![Diagram of BuildKit running and pstree showing the process tree of buildkitd](/blog/assets/images/what-is-buildkit-and-what-can-i-do-with-it/3.png)
+</div>
 
 ## How to See Docker Processes on macOS and Windows
 
@@ -237,14 +248,14 @@ On macOS and Windows, Docker processes run on a separate virtual machine (VM). I
 
 The above `exec` trick lets us see the processes inside a specific container, but to see all the processes running across all the containers, we need a different technique. To do that, we can use `docker run` and `nsenter`:
 
-```
-docker run -it --rm --privileged --pid=host ubuntu nsenter -t 1 -m -u -n -i s
-```
+~~~{.bash caption=">_"}
+docker run -it --rm --privileged --pid=host ubuntu \
+  nsenter -t 1 -m -u -n -i s
+~~~
 
 We can now use `watch` and `pstree` to view the whole container host in a single view:
 
-```
-docker-desktop:/# pstree -p
+~~~{caption="pstree -p"}
 init(1)-+-containerd(983)
         |-containerd-shim(1018)---acpid(1039)
         |-containerd-shim(1064)---diagnosticsd(1085)---sh(1354)
@@ -266,13 +277,13 @@ init(1)-+-containerd(983)
         |-rungetty.sh(429)---login(431)---sh(443)
         |-rungetty.sh(432)---login(433)---sh(437)
         `-vpnkit-bridge(452)
-```
+~~~
 
 We can use pstree with a process id (pid) while a build is running to focus on just the buildkitd tree:
 
-```
-docker-desktop:/# watch -n 1 pstree -p 2522 
-```
+~~~{.bash caption=">_"}
+> docker-desktop:/# watch -n 1 pstree -p 2522 
+~~~
 
 ## BuildKit Output Types
 
@@ -280,7 +291,7 @@ So far, we have only used `output type=image,` but BuildKit supports several typ
 
 We can output a tar:
 
-```
+~~~{.bash caption=">_"}
 buildctl build \
     --frontend=dockerfile.v0 \
     --local context=. \
@@ -293,26 +304,31 @@ buildctl build \
 ...
  => exporting to client                                   2.6s
  => => sending tarball                                    2.6s
-```
+~~~
 
-```
+~~~{.bash caption=">_"}
 > ls *.tar
  out.tar
-```
+~~~
 
 And if we try to load it as a docker image, it will fail:
 
-```
+~~~{.bash caption=">_"}
 > docker load < out.tar
-open /var/lib/docker/tmp/docker-import-013443725/bin/json: no such file or directory
-```
+open /var/lib/docker/tmp/docker-import-013443725/bin/json: 
+ no such file or directory
+~~~
 
 This tag isn't an image of any sort. There are no layers or manifests, just the full filesystem that the built image would contain.
 
 We can also export directly to the local filesystem:
 
-```
-buildctl build --frontend dockerfile.v0 --local context=. --local dockerfile=. --output type=local,dest=output   
+~~~{.bash caption=">_"}
+buildctl build \
+   --frontend dockerfile.v0 \
+   --local context=. \
+   --local dockerfile=. \
+   --output type=local,dest=output   
 [+] Building 2.6s (10/10) FINISHED                             
  => [internal] load build definition from Dockerfile      0.0s
  => => transferring dockerfile: 31B                       0.0s
@@ -328,25 +344,27 @@ buildctl build --frontend dockerfile.v0 --local context=. --local dockerfile=. -
  => CACHED [5/5] RUN sleep 1                              0.0s
  => exporting to client                                   1.9s
  => => copying files 121.14MB                             1.9sr
-```
+~~~
 
 This filesystem output could be useful if we were trying to trim our image down. We could look through the output and find things to remove and use a multi-stage build to remove them. [broot](https://github.com/Canop/broot) is pretty handy for this:
 
+<div class="wide">
 ![tree view of alpine image showing space used in each directory]({{site.images}}{{page.slug}}/4.png)
+</div>
 
 ## What Is in `FROM scratch`
 
 One thing we can do with our newfound powers is investigate the `scratch` keyword. The scratch keyword doesn't correspond to an actual image. We can't run it:
 
-```
+~~~{.bash caption=">_"}
 docker run scratch
 Unable to find image' scratch:latest' locally
 docker: Error response from daemon: 'scratch' is a reserved name.
-```
+~~~
 
 However, does it actually contain anything? Is a `FROM scratch` image literally empty or are there certain required elements of unix filesystem that `scratch` provides? Let's find out:
 
-```
+~~~{.bash caption=">_"}
 > mkdir scratch
 > cat .\Dockerfile
 FROM scratch
@@ -361,7 +379,7 @@ FROM scratch
  > ls scratch
  > br -s scratch
  0 ./output
-```
+~~~
 
 It's empty! The scratch keyword indicates a completely empty docker layer. The more you know! *(The more you know is a trademark of The National Broadcasting Company, who in no way endorse this article 😀 )*
 
