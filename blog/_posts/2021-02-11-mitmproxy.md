@@ -8,7 +8,9 @@ excerpt: Have you ever wanted to see what kinds of requests a service or applica
 internal-links:
    - mitmproxy
    - proxy
+last_modified_at: 2022-11-17
 ---
+
 ## Introduction
 
 Have you ever wanted to see what kinds of requests a service or application on your machine is making and what kind of responses it is getting back? Have you ever tried and failed to capture this traffic or modify it to investigate how something works (or doesn't work). If you have, then mitmproxy might be what you need. Being able to scan through and observe HTTP protocol traffic easily is a great debugging aid.
@@ -208,8 +210,7 @@ With that done, the network interface will be proxied. All that is left to do is
 
 On Linux, we can add a proxy by editing the docker client config and then restarting.  
 
-~~~{.bash caption=">_"}
-> cat ~/.docker/config.json
+~~~{.json caption="~/.docker/config.json"}
 {
  "proxies":
  {
@@ -317,23 +318,34 @@ The simplest solution is to mount the certificate into the proper spot in our co
 
 ### Alpine
 
+First, we run the container and mount in our CA Certificate.
+
 ~~~{.bash caption=">_"}
-# Run container and mount in our CA Cert
 > docker run -it -v ~/.mitmproxy/mitmproxy-ca-cert.cer:/usr/local/share/
 ca-certificates/mitmproxy-ca-cert.cer alpine
-# Add ca-certificates (and curl for testing)
-root@167f5742c295:/# apk update && apk upgrade && apk add ca-certificates && 
+~~~
+
+Inside the container, add our dependencies:
+
+~~~{.bash caption="alpine prompt"}
+> apk update && apk upgrade && apk add ca-certificates && 
 apk add curl
 ...
+~~~
 
-# include trust our cert
-root@167f5742c295:/# update-ca-certificates
+Trust our certificate:
+
+~~~{.bash caption="alpine prompt"}
+> update-ca-certificates
 Updating certificates in /etc/ssl/certs...
 1 added, 0 removed; done.
 Running hooks in /etc/ca-certificates/update.d...
 done.
+~~~
 
-# Test https
+Then we can test it with a HTTPS request
+
+~~~{.bash caption="alpine prompt"}
 root@167f5742c295:/# curl https://google.com
 <HTML><HEAD><meta http-equiv="content-type" content="text/html;charset=utf-8">
 <TITLE>301 Moved</TITLE></HEAD><BODY>
@@ -341,26 +353,40 @@ root@167f5742c295:/# curl https://google.com
 The document has moved
 <A HREF="https://www.google.com/">here</A>.
 </BODY></HTML>
-
-# Success!
 ~~~
+
+That is a success!
 
 ### Ubuntu
 
 The general pattern with some small modifications works on Ubuntu-based images as well.
 
+First, we run the container and mount in our CA Certificate.
+
 ~~~{.bash caption=">_"}
 > docker run -it -v ~/.mitmproxy/mitmproxy-ca-cert.cer:/usr/local/share/
 ca-certificates/mitmproxy-ca-cert.crt ubuntu
+~~~
 
-root@167f5742c295:/# apt update && apt upgrade && apt install ca-certificates curl
+We update our dependencies:
 
-root@167f5742c295:/# update-ca-certificates 
+~~~{.bash caption="ubuntu prompt"}
+> apt update && apt upgrade && apt install ca-certificates curl
+~~~
+
+We trust our cert:
+
+~~~{.bash caption="ubuntu prompt"}
+> update-ca-certificates 
 Updating certificates in /etc/ssl/certs...
 1 added, 0 removed; done.
 Running hooks in /etc/ca-certificates/update.d...
 done.
+~~~
 
+Then we can test it with a HTTPS request.
+
+~~~{.bash caption="ubuntu prompt"}
 root@167f5742c295:/# curl https://google.com
 <HTML><HEAD><meta http-equiv="content-type" content="text/html;charset=utf-8">
 <TITLE>301 Moved</TITLE></HEAD><BODY>
@@ -368,9 +394,9 @@ root@167f5742c295:/# curl https://google.com
 The document has moved
 <A HREF="https://www.google.com/">here</A>.
 </BODY></HTML>
-
-\> # Success!!
 ~~~
+
+Success!
 
 ## Solution #2: Extend the Image
 
