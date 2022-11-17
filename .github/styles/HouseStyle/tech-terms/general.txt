@@ -254,6 +254,11 @@ Cloudscale
 
 serviceaccount
 
+destructure
+JSONPlaceholder
+subpattern
+subpatterns
+
 wordpress
 
 Bitnami
