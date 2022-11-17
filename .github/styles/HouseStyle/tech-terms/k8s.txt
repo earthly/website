@@ -42,3 +42,7 @@ kustomize
 
 apptemplate
 statefulset
+
+Hykes
+Multicloud
+multicloud
