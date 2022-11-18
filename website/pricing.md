@@ -33,24 +33,71 @@ The cost of compute is based on the AWS rack price for the instances that are us
 </div>
 
 <div class="grid grid-cols-4 border-b">
-<div class="py-4"><span class="font-semibold">small</span></div>
-<div class="py-4">1 CPUs, 4 GB RAM, 22 GB cache</div>
-<div class="py-4">Coming soon</div>
+<div class="py-4"><span class="font-semibold">xsmall, linux/amd64</span></div>
+<div class="py-4">2 vCPUs, 2 GB RAM, 11 GB cache, 5 GB additional disk</div>
+<div class="py-4">$0.0013</div>
+<div class="py-4">0.25X</div>
+</div>
+
+<div class="grid grid-cols-4 border-b">
+<div class="py-4"><span class="font-semibold">small, linux/amd64</span></div>
+<div class="py-4">2 vCPUs, 4 GB RAM, 22 GB cache, 10 GB additional disk</div>
+<div class="py-4">$0.0026</div>
 <div class="py-4">0.5X</div>
 </div>
 
 <div class="grid grid-cols-4 border-b">
-<div class="py-4"><span class="font-semibold">medium</span></div>
-<div class="py-4">2 CPUs, 8 GB RAM, 45 GB cache</div>
-<div class="py-4">Coming soon</div>
+<div class="py-4"><span class="font-semibold">medium, linux/amd64</span></div>
+<div class="py-4">2 vCPUs, 8 GB RAM, 45 GB cache, 20 GB additional disk</div>
+<div class="py-4">$0.0052</div>
 <div class="py-4">1X</div>
 </div>
 
 <div class="grid grid-cols-4">
-<div class="py-4"><span class="font-semibold">large</span></div>
-<div class="py-4">4 CPUs, 16 GB RAM, 90 GB cache</div>
+<div class="py-4"><span class="font-semibold">large, linux/amd64</span></div>
+<div class="py-4">4 vCPUs, 16 GB RAM, 90 GB cache, 40 GB additional disk</div>
+<div class="py-4">$0.0105</div>
+<div class="py-4">2X</div>
+
+<div class="grid grid-cols-4">
+<div class="py-4"><span class="font-semibold">xlarge, linux/amd64</span></div>
+<div class="py-4">8 vCPUs, 32 GB RAM, 180 GB cache, 80 GB additional disk</div>
+<div class="py-4">$0.0210</div>
+<div class="py-4">4X</div>
+</div>
+
+<div class="grid grid-cols-4 border-b">
+<div class="py-4"><span class="font-semibold">xsmall, linux/arm64</span></div>
+<div class="py-4">2 vCPUs, 2 GB RAM, 11 GB cache, 5 GB additional disk</div>
+<div class="py-4">$0.0012</div>
+<div class="py-4">0.25X</div>
+</div>
+
+<div class="grid grid-cols-4 border-b">
+<div class="py-4"><span class="font-semibold">small, linux/arm64</span></div>
+<div class="py-4">2 vCPUs, 4 GB RAM, 22 GB cache, 10 GB additional disk</div>
+<div class="py-4">$0.0025</div>
+<div class="py-4">0.5X</div>
+</div>
+
+<div class="grid grid-cols-4 border-b">
+<div class="py-4"><span class="font-semibold">medium, linux/arm64</span></div>
+<div class="py-4">2 vCPUs, 8 GB RAM, 45 GB cache, 20 GB additional disk</div>
+<div class="py-4">$0.0050</div>
+<div class="py-4">1X</div>
+</div>
+
+<div class="grid grid-cols-4">
+<div class="py-4"><span class="font-semibold">large, linux/arm64</span></div>
+<div class="py-4">4 vCPUs, 16 GB RAM, 90 GB cache, 40 GB additional disk</div>
 <div class="py-4">$0.0100</div>
 <div class="py-4">2X</div>
+
+<div class="grid grid-cols-4">
+<div class="py-4"><span class="font-semibold">xlarge, linux/arm64</span></div>
+<div class="py-4">8 vCPUs, 32 GB RAM, 180 GB cache, 80 GB additional disk</div>
+<div class="py-4">$0.0199</div>
+<div class="py-4">4X</div>
 </div>
 
 <h2 class="text-2xl font-semibold mb-5 mt-20" id="usage-tracked">How is my usage of Satellites tracked?<span class="hide"><a href="#usage-tracked">¶</a></span></h2>
