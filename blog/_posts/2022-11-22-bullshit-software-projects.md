@@ -117,6 +117,36 @@ Sunk cost bias is not a new concept, so you'd think someone would ask carefully 
 
 ## Executive Pet Projects
 
+One way BS projects happen is a large company chasing something because someone with a lot of power decided it was important. An Amazon developer said this is what being on Amazon's firephone project felt like:
+
+> Every single person involved knew we were just wasting Jeff's money and there was absolutely no chance anyone would buy it.
+
+Whether that truly counts as a pointless project is unclear. Maybe the firephone was a speculative project from the get-go, and Bezo's knew they would likely fail but felt they couldn't communicate this lest it demotivates the teams involved?
+
+Some software companies, though, have a repeated history of abandoned efforts. An exec will have an idea with no basis in reality, which fails, just in time for another executive to have an idea. Gregory saw this happen at a very large ERP company (yes, that one):
+
+> We'd build thing after thing after thing that was always advertised - to the devs building it and to the customers alike - as the next best thing since sliced bread. First, java application servers, then development environments, BPM, model-driven, SOA, SOA take 2, SOA take 3.
+>
+> There would be an R&D-wide reorg every six months. Previous Senior Vice President would get fired or moved due to lack of results, a new one would show up, and would present us with their master plan and High-Level Enterprise Architecture of their new next best thing since sliced bread.
+>
+> It never worked. We'd throw it in the can and build the next thing that would never work. They'd be declared a failure in 6-12 months. We'd scrap the thing we were building - pouring our hearts into – and just start over.
+
+Initially, Gregory liked this job, there was a lot of time for learning and an excellent mentorship program, but eventually, the pointlessness of it all can grind people down.
+
+## Mental Health of Doom
+
+You may think that being on a project that will never ship and never have any or many customers is great because you'll have a light schedule and can improve on some skills on the side, but Gregory found it can actually be quite taxing.
+
+> My work would just get binned over and over, and what even was that work? Try to put it into words and explain to a layman, friend, family member - even a fellow programmer at another company, and you'd fail.
+
+Marcelle, another developer, also found doomed projects hard to handle:
+
+> I've never been on a team with lower morale. At one point, I realized, oh, my boss doesn't care. Oh, my boss's boss doesn't care either. I've given an identical daily update for one month [and] no one cared! It was excruciating!
+
+So my advice to you is this: if you suspect you might be on a bullshit project, first talk to your manager or product manager and see if they can explain. Maybe things do make sense, but it is harder to see from your vantage point? But, if they deny the facts and if it feels like their explanations conflict with reality, then start planning your exit because working on a pointless project is a fast track to burnout. Because as David Graeber puts it:
+
+> You're not even living your own lie. Most of the time, you're not even quite living somebody else's lie, either. Your job is more like a boss's unzippered fly that everyone can see but also knows better than to mention.
+
 {% include cta/cta1.html %}
 
 [^1]:
@@ -125,17 +155,3 @@ Sunk cost bias is not a new concept, so you'd think someone would ask carefully 
     Talking about a previous or current employer can be risky, so I've changed the name of the people I talked to in private, and I will refrain from linking to the lobster's thread (which was deleted by the mods, anyhow).
 
     The [hacker news](https://news.ycombinator.com/item?id=33522495) thread wasn't prompted by my question, but just a thread I stumbled on while writing this article that seems very much on topic.
-
-### Writing Article Checklist
-
-- [ ] Read out loud
-- [ ] Write 5 or more titles and pick the best on
-- [ ] First two paragraphs: What's it about? Why listen to you?
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-- [ ] Run mark down linter (`lint`)
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links to other articles
-- [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
-- [ ] Raise PR
