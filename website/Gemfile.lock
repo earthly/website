@@ -55,6 +55,8 @@ GEM
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
     mercenary (0.4.0)
+    nokogiri (1.13.8-aarch64-linux)
+      racc (~> 1.4)
     nokogiri (1.13.8-x86_64-darwin)
       racc (~> 1.4)
     nokogiri (1.13.8-x86_64-linux)
@@ -78,6 +80,7 @@ GEM
     unicode-display_width (1.8.0)
 
 PLATFORMS
+  aarch64-linux
   x86_64-darwin-19
   x86_64-linux
 
@@ -94,4 +97,4 @@ DEPENDENCIES
   tzinfo-data
 
 BUNDLED WITH
-   2.3.21
+   2.3.25

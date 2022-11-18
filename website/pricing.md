@@ -21,36 +21,86 @@ An active user is a user that has triggered a Satellite build at least three tim
 
 Zero-margin compute is a pricing model where the cost of compute is passed on directly to the user, without any profit-generating margin. This allows us, the CI vendor, to better align our incentives with the end-user. Slow builds should not mean more profit for us.
 
-<h2 class="text-2xl font-semibold mb-5 mt-10" id="compute">How much does compute cost?<span class="hide"><a href="#compute">¶</a></span></h2>
+<h2 class="text-2xl font-semibold mb-5 mt-20" id="compute">How much does compute cost?<span class="hide"><a href="#compute">¶</a></span></h2>
 
 The cost of compute is based on the AWS rack price for the instances that are used underneath, plus the cost of cache storage and the cost of network ingress/egress incurred. All of these costs are packaged as an all-inclusive per-minute cost and is then passed on directly to the user, without any profit-generating margin.
 
-<div class="grid grid-cols-4">
+<div class="grid grid-cols-4 mt-10">
 <div class="font-semibold text-xl border-b flex">Instance type</div>
 <div class="font-semibold text-xl border-b flex">Specs </div>
 <div class="font-semibold text-xl border-b flex">Price per minute</div>
-<div class="font-semibold text-xl border-b flex">Included minutes cost multiplier</div>
+<div class="font-semibold text-xl border-b flex">Included minutes multiplier</div>
+</div>
+<div class="grid grid-cols-4 border-b font-semibold pb-2 text-lg pt-8">amd64 instances:</div>
+<div class="grid grid-cols-4 border-b">
+<div class="py-4"><span class="font-semibold">xsmall</span><br/>linux/amd64</div>
+<div class="py-4">2 vCPUs | 2 GB RAM<br/>11 GB cache | 5 GB burst disk</div>
+<div class="py-4">$0.0013</div>
+<div class="py-4">4X<br/><span class="text-xs">1000 min included = 4000 min on xsmall</span></div>
 </div>
 
 <div class="grid grid-cols-4 border-b">
-<div class="py-4"><span class="font-semibold">small</span></div>
-<div class="py-4">1 CPUs, 4 GB RAM, 22 GB cache</div>
-<div class="py-4">Coming soon</div>
-<div class="py-4">0.5X</div>
+<div class="py-4"><span class="font-semibold">small</span><br/>linux/amd64</div>
+<div class="py-4">2 vCPUs | 4 GB RAM<br/>22 GB cache | 10 GB burst disk</div>
+<div class="py-4">$0.0026</div>
+<div class="py-4">2X<br/><span class="text-xs">1000 min included = 2000 min on small</span></div>
 </div>
 
 <div class="grid grid-cols-4 border-b">
-<div class="py-4"><span class="font-semibold">medium</span></div>
-<div class="py-4">2 CPUs, 8 GB RAM, 45 GB cache</div>
-<div class="py-4">Coming soon</div>
-<div class="py-4">1X</div>
+<div class="py-4"><span class="font-semibold">medium</span><br/>linux/amd64</div>
+<div class="py-4">2 vCPUs | 8 GB RAM<br/>45 GB cache | 20 GB burst disk</div>
+<div class="py-4">$0.0052</div>
+<div class="py-4">1X<br/><span class="text-xs">1000 min included = 1000 min on medium</span></div>
+</div>
+
+<div class="grid grid-cols-4 border-b">
+<div class="py-4"><span class="font-semibold">large</span><br/>linux/amd64</div>
+<div class="py-4">4 vCPUs | 16 GB RAM<br/>90 GB cache | 40 GB burst disk</div>
+<div class="py-4">$0.0105</div>
+<div class="py-4">0.5X<br/><span class="text-xs">1000 min included = 500 min on large</span></div>
+</div>
+
+<div class="grid grid-cols-4 border-b">
+<div class="py-4"><span class="font-semibold">xlarge</span><br/>linux/amd64</div>
+<div class="py-4">8 vCPUs | 32 GB RAM<br/>180 GB cache | 80 GB burst disk</div>
+<div class="py-4">$0.0210</div>
+<div class="py-4">0.25X<br/><span class="text-xs">1000 min included = 250 min on xlarge</span></div>
+</div>
+
+<div class="grid grid-cols-4 border-b font-semibold text-lg pb-2 pt-8">arm64 instances:</div>
+<div class="grid grid-cols-4 border-b">
+<div class="py-4"><span class="font-semibold">xsmall</span><br/>linux/arm64</div>
+<div class="py-4">2 vCPUs | 2 GB RAM<br/>11 GB cache | 5 GB burst disk</div>
+<div class="py-4">$0.0012</div>
+<div class="py-4">4X<br/><span class="text-xs">1000 min included = 4000 min on xsmall</span></div>
+</div>
+
+<div class="grid grid-cols-4 border-b">
+<div class="py-4"><span class="font-semibold">small</span><br/>linux/arm64</div>
+<div class="py-4">2 vCPUs | 4 GB RAM<br/>22 GB cache | 10 GB burst disk</div>
+<div class="py-4">$0.0025</div>
+<div class="py-4">2X<br/><span class="text-xs">1000 min included = 2000 min on small</span></div>
+</div>
+
+<div class="grid grid-cols-4 border-b">
+<div class="py-4"><span class="font-semibold">medium</span><br/>linux/arm64</div>
+<div class="py-4">2 vCPUs | 8 GB RAM<br/>45 GB cache | 20 GB burst disk</div>
+<div class="py-4">$0.0050</div>
+<div class="py-4">1X<br/><span class="text-xs">1000 min included = 1000 min on medium</span></div>
 </div>
 
 <div class="grid grid-cols-4">
-<div class="py-4"><span class="font-semibold">large</span></div>
-<div class="py-4">4 CPUs, 16 GB RAM, 90 GB cache</div>
+<div class="py-4"><span class="font-semibold">large</span><br/>linux/arm64</div>
+<div class="py-4">4 vCPUs | 16 GB RAM<br/>90 GB cache | 40 GB burst disk</div>
 <div class="py-4">$0.0100</div>
-<div class="py-4">2X</div>
+<div class="py-4">0.5X<br/><span class="text-xs">1000 min included = 500 min on large</span></div>
+</div>
+
+<div class="grid grid-cols-4">
+<div class="py-4"><span class="font-semibold">xlarge</span><br/>linux/arm64</div>
+<div class="py-4">8 vCPUs | 32 GB RAM<br/>180 GB cache | 80 GB burst disk</div>
+<div class="py-4">$0.0199</div>
+<div class="py-4">0.25X<br/><span class="text-xs">1000 min included = 250 min on xlarge</span></div>
 </div>
 
 <h2 class="text-2xl font-semibold mb-5 mt-20" id="usage-tracked">How is my usage of Satellites tracked?<span class="hide"><a href="#usage-tracked">¶</a></span></h2>
