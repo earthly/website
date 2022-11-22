@@ -60,6 +60,9 @@ wx
 crontab
 chdir
 overlayfs
+protos
+blockchain
+adtech
 Crontab
 rw
 rwx
