@@ -9,7 +9,7 @@ I was frying a couple of dozen walnut crunch when I first got in trouble at Tim 
 
 Tim Horton's is a donut and coffee place, and I worked there as a baker assistant around 2002, when I was in university.
 
-Most donuts fry for 30 seconds per side, then you flip them and do the other side. It's hot work, spending a shift working over a deep fryer, but frying walnut crunch (since discontinued ) was my favorite part because they took 3 minutes per side, which gave me time to grab an empty cooking oil pale and sit and rest my legs while they cooked.
+Most donuts fry for 30 seconds per side, then you flip them and do the other side. It's hot work, spending a shift working over a deep fryer, but frying walnut crunch (since discontinued ) was my favorite part because they took 3 minutes per side, which gave me time to grab an empty cooking oil pail and sit and rest my legs while they cooked.
 
 <div class="align-right">
  {% picture grid {{site.pimages}}{{page.slug}}/4840.png --picture --img width="260px" --alt {{ Walnut Crunch Donut }} %}
