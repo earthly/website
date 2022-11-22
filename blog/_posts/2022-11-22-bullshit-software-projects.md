@@ -23,7 +23,8 @@ This was my introduction to busy work: work to be done for no other reason than 
 I hated that busy work, and I'm so glad that I finished school and started working as a software developer, where I don't have to make myself look busy all the time – I can read hacker news while a build runs and no one has yet suggested I start polishing my parentheses.
 
 Unfortunately, software developers aren't immune from absurd tasks that seemingly benefit no one. I know this because I asked around. It turns out it's easy to find software developers that answer yes to the following question:
-Although you are required to do your job, you secretly believe it is pointless and should not need to be performed.
+
+* **Although you are required to do your job, you secretly believe it is pointless and should not need to be performed.**
 
 So that is today's topic, and spoiler alert: tech bullshit work is different from donut shop busy work. Instead of being something to fill downtime, it's often a whole giant project that benefits no one. Let's go through some examples.
 
