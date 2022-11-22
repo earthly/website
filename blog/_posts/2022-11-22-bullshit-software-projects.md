@@ -153,7 +153,7 @@ So my advice to you is this: if you suspect you might be on a bullshit project, 
 {% include cta/cta1.html %}
 
 [^1]:
-    I asked these questions on a private slack group and lobste.rs, where I received many responses.
+    I asked these questions on a private slack group, lobste.rs and [twitter](https://twitter.com/adamgordonbell/status/1593245734723166208).
 
     Talking about a previous or current employer can be risky, so I've changed the name of the people I talked to in private, and I will refrain from linking to the lobster's thread (which was deleted by the mods, anyhow).
 
