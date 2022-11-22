@@ -100,6 +100,7 @@ How can a monumental misallocation of capital like this happen? One reason is a 
 According to Tom, individual contributors were grumbling about the things they were making not making sense, but also, a non-sensical project left a lot of room for tech exploration, and some people really loved that.
 
 > That job taught me all about cargo-culting. Well, Netflix uses microservices, so we should too! I came in with React Native and left with Elixir, so it was a massive trade-up in skills. Also, I learned how not to run a company.
+>
 > That job also taught me that tech and the business case for a business case are mostly independent. You can have a strong business case and be successful with garbage tech, and the reverse is also true. You should prefer a strong business case because customers are so important.
 
 Tom's story gives me a better way to understand what a pointless job is like. Kevin was working on building something, but in his mind, he couldn't see how the project would ever work out and be used by anyone. The project was doomed to fail, yet continued on in zombie mode long past the time when ICs knew its a failure.
@@ -111,6 +112,7 @@ Not every project succeeds. That is a fact of life, and just because a project d
 `memorysluice` on hacker news thinks this form of sunk costs is often behind doomed projects:
 
 > I had recently started a job where my new employer had been working with a contractor on their "next-gen" web application for four years, and it was nowhere near production ready.
+>
 > [two] weeks into the new gig, I looked at my boss and told him that it was a failed project and needed to be canned. I got the "are you kidding me, we've already got millions tied up in this project." Fast forward two years went by, and it's still not production ready.
 
 Sunk cost bias is not a new concept, so you'd think someone would ask carefully about a project and its success and not let it just keep rolling on for years and years. But what if someone important in the org is behind the project, and people are afraid to give them the bad news?
