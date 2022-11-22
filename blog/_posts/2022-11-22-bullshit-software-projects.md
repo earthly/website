@@ -104,7 +104,7 @@ According to Tom, individual contributors were grumbling about the things they w
 >
 > That job also taught me that tech and the business case for a business case are mostly independent. You can have a strong business case and be successful with garbage tech, and the reverse is also true. You should prefer a strong business case because customers are so important.
 
-Tom's story gives me a better way to understand what a pointless job is like. Kevin was working on building something, but in his mind, he couldn't see how the project would ever work out and be used by anyone. The project was doomed to fail, yet continued on in zombie mode long past the time when ICs knew its a failure.
+Tom's story gives me a better way to understand what a pointless job is like. Tom was working on building something, but in his mind, he couldn't see how the project would ever work out and be used by anyone. The project was doomed to fail, yet continued on in zombie mode long past the time when ICs knew its a failure.
 
 ## Sunk Cost Much
 
