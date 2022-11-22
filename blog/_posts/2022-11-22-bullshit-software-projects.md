@@ -9,7 +9,7 @@ I was frying a couple of dozen walnut crunch when I first got in trouble at Tim 
 
 Tim Horton's is a donut and coffee place, and I worked there as a baker assistant around 2002, when I was in university.
 
-Most donuts fry for 30 seconds per side, then you flip them and do the other side. It's hot work, spending a shift working over a deep fryer, but frying walnut crunch (since discontinued ) was my favorite part because they took 3 minutes per side, which gave me time to grab an empty cooking oil pale and sit and rest my legs while they cooked.
+Most donuts fry for 30 seconds per side, then you flip them and do the other side. It's hot work, spending a shift working over a deep fryer, but frying walnut crunch (since discontinued ) was my favorite part because they took 3 minutes per side, which gave me time to grab an empty cooking oil pail and sit and rest my legs while they cooked.
 
 <div class="align-right">
  {% picture grid {{site.pimages}}{{page.slug}}/4840.png --picture --img width="260px" --alt {{ Walnut Crunch Donut }} %}
@@ -104,7 +104,7 @@ According to Tom, individual contributors were grumbling about the things they w
 >
 > That job also taught me that tech and the business case for a business case are mostly independent. You can have a strong business case and be successful with garbage tech, and the reverse is also true. You should prefer a strong business case because customers are so important.
 
-Tom's story gives me a better way to understand what a pointless job is like. Kevin was working on building something, but in his mind, he couldn't see how the project would ever work out and be used by anyone. The project was doomed to fail, yet continued on in zombie mode long past the time when ICs knew its a failure.
+Tom's story gives me a better way to understand what a pointless job is like. Tom was working on building something, but in his mind, he couldn't see how the project would ever work out and be used by anyone. The project was doomed to fail, yet continued on in zombie mode long past the time when ICs knew its a failure.
 
 ## Sunk Cost Much
 
