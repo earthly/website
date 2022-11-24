@@ -1,15 +1,13 @@
 ---
-title: "Put Your Best Title Here"
+title: "Make It Observable: Running Grafana in Docker"
 categories:
   - Tutorials
 toc: true
-author: Adam
+author: Sooter Saalu
 
 internal-links:
  - just an example
 ---
-
-# Make It Observable: Running Grafana in Docker
 
 When you have a potentially complex infrastructure, adding observability helps with easier debugging and performance optimization. 
 
@@ -161,7 +159,7 @@ To sum up, [Grafana](https://grafana.com) is an open-source solution that helps 
 
 ## Outside Article Checklist
 
-- [ ] Add in Author page
+
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
