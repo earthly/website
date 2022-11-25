@@ -9,13 +9,15 @@ internal-links:
  - python csv
  - csv read
 ---
+<iframe width="560" height="315" src="https://www.youtube.com/embed/kBPESb-Voqw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 ## What Is A CSV File
 
 I first began to work with CSV files when taking the backend portion of my software engineering bootcamp curriculum. It wasn't until I began to dive more into the data science portion of my continued learning that I began to use them on a regular basis.
 
 CSV stands for comma-separated values, and files containing the `.csv` extension contain a collection of comma-separated values used to store data.
 
-In this tutorial we will be using the public `Beach Water Quality` data set stored in the `bwq.csv` file. You can obtain the file by downloading it from [Kaggle](https://www.kaggle.com/sveneschlbeck/chicago-beach-water-quality?select=bwq.csv), however, you should be able to read any csv file following the instructions below.
+In this tutorial we will be using the public `Beach Water Quality` data set stored in the `bwq.csv` file. You can obtain the file by downloading it from [Kaggle](https://raw.githubusercontent.com/adamgordonbell/python-examples/main/readcsv/bwq.csv), however, you should be able to read any csv file following the instructions below.
 
 ## Read A CSV File Using Python
 
