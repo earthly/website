@@ -104,7 +104,7 @@ postgres=# \l
 Now that you have the necessary dependencies, go ahead and install the Phoenix application generator and create your first Phoenix app. The Phoenix generator is distributed as a `mix archive` and can be installed by running the following command:
 
 ```bash
-> mix archive. install hex phx_new 1.5.8
+> mix archive.install hex phx_new 1.5.8
 ```
 
 ### Mix Archives
