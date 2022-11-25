@@ -156,6 +156,7 @@ docker run -d -p 3000:3000 --name=grafana grafana-custom
 
 To sum up, [Grafana](https://grafana.com) is an open-source solution that helps you study, analyze, and monitor observability data over time, easing both debugging and optimization efforts. In this article, you’ve learned all about Grafana, with a focus on utilizing it within Docker containers.
 
+{% include cta/cta1.html %}
 
 ## Outside Article Checklist
 
@@ -167,4 +168,4 @@ To sum up, [Grafana](https://grafana.com) is an open-source solution that helps 
 - [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
+
