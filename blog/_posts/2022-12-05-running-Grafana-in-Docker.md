@@ -147,7 +147,6 @@ GF_INSTALL_PLUGINS=grafana-simple-json-datasource -v \
 grafana-storage:/var/lib/grafana -p 3000:3000 grafana/grafana
 ~~~
 
-
 <div class="wide">
 
 ![Installed plugin on a Grafana instance]({{site.images}}{{page.slug}}/Pm9eWZT.png)
