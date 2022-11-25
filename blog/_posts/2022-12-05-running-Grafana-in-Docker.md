@@ -6,7 +6,10 @@ toc: true
 author: Sooter Saalu
 
 internal-links:
- - just an example
+ - Debugging 
+ - Docker
+ - Grafana
+ - Container
 ---
 
 When you have a potentially complex infrastructure, adding observability helps with easier [debugging](/blog/printf-debugging) and performance optimization.
@@ -164,4 +167,3 @@ To sum up, [Grafana](https://grafana.com) is an open-source solution that helps 
 * [ ] Optional: Find ways to break up content with quotes or images
 * [ ] Verify look of article locally
   * Would any images look better `wide` or without the `figcaption`?
-* [ ] Add keywords for internal links to front-matter
