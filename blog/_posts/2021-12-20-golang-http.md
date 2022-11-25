@@ -23,13 +23,14 @@ I want inserting to look something like this:
 
 ~~~{.bash caption=">_"}
 > curl -iX POST localhost:8080 -d \
-'{"activity": {"description": "christmas eve bike class", "time":"2021-12-24T12:42:31Z"}}'
+'{"activity": {"description": "christmas eve bike class", 
+"time":"2021-12-24T12:42:31Z"}}'
 ~~~
 
-``` ini
+~~~{.merge-code}
 HTTP/1.1 200 OK
 {"id":1}
-```
+~~~
 
 And I want to be able to retrieve previous activities by their auto-generated Id:
 
@@ -37,8 +38,9 @@ And I want to be able to retrieve previous activities by their auto-generated Id
 > curl -X GET localhost:8080 -d '{"id": 1}'
 ~~~
 
-~~~{.ini }
-{"activity": {"description": "christmas eve class", time:"2021-12-24T12:42:31Z", "id":1}}
+~~~{.merge-code}
+{"activity": {"description": "christmas eve class", 
+time:"2021-12-24T12:42:31Z", "id":1}}
 ~~~
 
 ## Build a Simple GoLang HTTP Server
@@ -72,7 +74,7 @@ And verify that it is serving HTTP `GET` requests:
 >  curl -iX GET localhost:8080
 ~~~
 
-~~~{.ini}
+~~~{.merge-code}
 HTTP/1.1 404 Not Found
 Content-Length: 19
 
@@ -85,7 +87,7 @@ Posts work equally as well as GETs:
 > curl -iX POST localhost:8080
 ~~~
 
-~~~{.ini}
+~~~{.merge-code}
 HTTP/1.1 404 Not Found
 Content-Length: 19
 
@@ -135,7 +137,7 @@ Running this version, I can see that my handlers are working:
 > curl -X GET -s localhost:8080
 ~~~
 
-~~~{.ini}
+~~~{.merge-code}
 HTTP/1.1 200 OK
 get
 ~~~
@@ -144,7 +146,7 @@ get
 > curl -X POST -s localhost:8080
 ~~~
 
-~~~{.ini}
+~~~{.merge-code}
 HTTP/1.1 200 OK
 post
 ~~~
@@ -331,7 +333,7 @@ It works like this:
 > curl -iX POST localhost:8080 -d "Not Valid"
 ~~~
 
-~~~{.ini}
+~~~{.merge-code}
 HTTP/1.1 400 Bad Request
 invalid character 'N' looking for beginning of value
 ~~~
@@ -352,10 +354,11 @@ We now have half our API working!
 
 ~~~{.bash caption=">_"}
 > curl -X POST localhost:8080 -d \
-'{"activity": {"description": "christmas eve class", time:"2021-12-24T12:42:31Z"}}'
+'{"activity": {"description": "christmas eve class",
+ time:"2021-12-24T12:42:31Z"}}'
 ~~~
 
-~~~{.ini}
+~~~{.merge-code}
 {"id":0}
 ~~~
 
@@ -403,10 +406,11 @@ And my original API, which was just a wish is now a reality:
 
 ~~~{.bash caption=">_"}
 curl -X POST localhost:8080 -d \
-'{"activity": {"description": "christmas eve bike class", "time":"2021-12-09T16:34:04Z"}}'
+'{"activity": {"description": "christmas eve bike class",
+ "time":"2021-12-09T16:34:04Z"}}'
 ~~~
 
-~~~{.ini}
+~~~{.merge-code}
 {"id":1}
 ~~~
 
@@ -414,8 +418,9 @@ curl -X POST localhost:8080 -d \
 > curl -X GET localhost:8080 -d '{"id": 1}' 
 ~~~
 
-~~~{.ini}
-{"activity":{"time":"2021-12-09T16:34:04Z","description":"christmas eve bike class","id":15}
+~~~{.merge-code}
+{"activity":{"time":"2021-12-09T16:34:04Z","description":"christmas eve bike 
+class","id":15}
 ~~~
 
 the whole thing, including some edge cases I left out is on [GitHub](https://github.com/adamgordonbell/cloudservices/tree/v1-http-server/ActivityLog).

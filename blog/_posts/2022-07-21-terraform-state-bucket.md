@@ -98,7 +98,7 @@ Then Terraform walks me through the rest of the process:
 $ terraform plan
 ~~~
 
-~~~{.bash caption=""}
+~~~{.bash .merge-code caption=""}
 ╷
 │ Error: Backend initialization required: please run "terraform init"
 │ 
@@ -125,7 +125,7 @@ Following the lead of the error message, I run `terraform init -migrate-state`:
 $ terraform init -migrate-state
 ~~~
 
-~~~{.ini caption=""}
+~~~{.ini .merge-code caption=""}
 
 Initializing the backend...
 Do you want to copy existing state to the new backend?

@@ -58,7 +58,7 @@ Above, I'm pulling in the terraform AWS provider and setting my region. After th
 $ terraform init
 ~~~
 
-~~~{.ini caption=""}
+~~~{.ini .merge-code caption=""}
 Initializing the backend...
 
 Initializing provider plugins...
@@ -118,7 +118,7 @@ First I run plan:
 $ terraform plan
 ~~~
 
-~~~{.ini caption=""}
+~~~{.ini .merge-code caption=""}
 No changes. Your infrastructure matches the configuration.
 
 Terraform has compared your real infrastructure against your configuration 
@@ -131,7 +131,7 @@ Then I can apply the changes, just to be sure:
 $ terraform apply 
 ~~~
 
-~~~{.ini caption=""}
+~~~{.ini .merge-code caption=""}
 No changes. Your infrastructure matches the configuration.
 
 Terraform has compared your real infrastructure against your configuration 
@@ -149,7 +149,7 @@ The AWS provider will need a way to talk to your AWS account. If you don't have 
 terraform plan
 ~~~
 
-~~~{.ini caption=""}
+~~~{.ini .merge-code caption=""}
 ╷
 │ Error: error configuring Terraform AWS Provider: 
 no valid credential sources for Terraform AWS Provider found.
@@ -189,7 +189,7 @@ Even though no changes were applied, and I don't yet have any resources being ma
 $ git status
 ~~~
 
-~~~{.ini caption=""}
+~~~{.ini .merge-code caption=""}
 Untracked files:
   (use "git add <file>..." to include in what will be committed)
         terraform.tfstate
@@ -287,7 +287,7 @@ There is a potential problem here though. I've already setup this repository in 
 $ terraform apply --auto-approve
 ~~~
 
-~~~{.ini caption=""}
+~~~{.ini .merge-code caption=""}
 Plan: 1 to add, 0 to change, 0 to destroy.
 aws_ecr_repository.lambda-api: Creating...
 ╷
@@ -342,7 +342,7 @@ For ECR, the docs say "ECR Repositories can be imported using the `name`" and so
 terraform import aws_ecr_repository.lambda-api lambda-api
 ~~~
 
-~~~{.ini caption=""}
+~~~{.ini .merge-code caption=""}
 aws_ecr_repository.lambda-api: Importing from ID "lambda-api"...
 aws_ecr_repository.lambda-api: Import prepared!
   Prepared aws_ecr_repository for import
@@ -360,7 +360,7 @@ Then I apply:
 terraform apply --auto-approve
 ~~~
 
-~~~{.ini caption=""}
+~~~{.ini .merge-code caption=""}
 aws_ecr_repository.lambda-api: Refreshing state... [id=lambda-api]
 
 No changes. Your infrastructure matches the configuration.
@@ -392,7 +392,7 @@ And then run import the same way (`terraform import aws_ecr_repository.lambda-ap
 $ terraform show
 ~~~
 
-~~~{.groovy caption=""}
+~~~{.groovy .merge-code caption=""}
 # aws_ecr_repository.lambda-api:
 resource "aws_ecr_repository" "lambda-api" {
     arn                  = "arn:aws:ecr:us-east-1:459018586415:repository/
@@ -822,7 +822,7 @@ But with that change applied, I was back with a running web service.
 $ curl https://earthly-tools.com/text-mode
 ~~~
 
-~~~{.ini caption=""}
+~~~{.ini .merge-code caption=""}
 Earthly.dev Presents:
 
   _____                 _

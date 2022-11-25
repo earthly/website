@@ -168,8 +168,9 @@ $ docker run -p 9000:8080 /
 
 And exercise it.
 
-~~~{.bash caption=">_"}
-$ curl -XPOST "http://localhost:9000/2015-03-31/functions/function/invocations" -d '{
+~~~{.bash}
+$ curl -XPOST "http://localhost:9000/2015-03-31/functions/function/invocations"
+ -d '{
   "queryStringParameters": {
     "url": "https://icanhazip.com/"
   }

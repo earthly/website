@@ -8,7 +8,9 @@ excerpt: Have you ever wanted to see what kinds of requests a service or applica
 internal-links:
    - mitmproxy
    - proxy
+last_modified_at: 2022-11-17
 ---
+
 ## Introduction
 
 Have you ever wanted to see what kinds of requests a service or application on your machine is making and what kind of responses it is getting back? Have you ever tried and failed to capture this traffic or modify it to investigate how something works (or doesn't work). If you have, then mitmproxy might be what you need. Being able to scan through and observe HTTP protocol traffic easily is a great debugging aid.
@@ -24,9 +26,9 @@ mitmproxy is a command-line tool that acts as a HTTP and HTTPS proxy and records
 <div class="narrow-code">
 On Mac, mitmproxy is easy to install with brew:
 
-```
-brew install mitmproxy
-```
+~~~{.bash caption=">_"}
+> brew install mitmproxy
+~~~
 
 On Windows and Linux, [download the binary release](https://docs.mitmproxy.org/stable/overview-installation/) and place it somewhere in your path.
 
@@ -34,9 +36,9 @@ On Windows and Linux, [download the binary release](https://docs.mitmproxy.org/s
 
 To start up mitmproxy, type `mitmproxy`, and it will start up bound to port 8080.
 
-```
->mitmproxy
-```
+~~~{.bash caption=">_"}
+> mitmproxy
+~~~
 
 </div>
 
@@ -92,7 +94,7 @@ This is great for protecting online communication but problematic for our debugg
 
 mitmproxy generated a certificate and private key the first time you ran it. The certificate generated is specific to your machine and is located in `~/.mitmproxy/mitmproxy-ca-cert.cer`
 
-```
+~~~{.bash caption=">_"}
 > cat ~/.mitmproxy/mitmproxy-ca-cert.cer 
 -----BEGIN CERTIFICATE-----
 MIIC1TCCAb2gAwIBAgIJAOY7y/7Qrqr3MA0GCSqGSIb3DQEBBQUAMBoxGDAWBgNV
@@ -112,6 +114,9 @@ KlhNqXfomY2trZHuxfeyMjg9GItmYaoeV+xg5SDYjGmgE2n8nc5FH5TlhimE9gd1
 K2k43zCas8fHIU5o+0XoFQ7JoA+1AV3S9LYVD2rHfeOMMY/VzTP+b67/KY7H/Wl+
 QyVJfmCmjt2i
 -----END CERTIFICATE-----
+~~~
+
+~~~{.bash caption=">_"}
 cat mitmproxy-ca.pem
 -----BEGIN PRIVATE KEY-----
 MIIC1TCCAb2gAwIBAgIJAOY7y/7Qrqr3MA0GCSqGSIb3DQEBBQUAMBoxGDAWBgNV
@@ -131,7 +136,7 @@ KlhNqXfomY2trZHuxfeyMjg9GItmYaoeV+xg5SDYjGmgE2n8nc5FH5TlhimE9gd1
 K2k43zCas8fHIU5o+0XoFQ7JoA+1AV3S9LYVD2rHfeOMMY/VzTP+b67/KY7H/Wl+
 QyVJfmCmjt2i=
 -----END PRIVATE KEY-----
-```
+~~~
 
 *Note: Once we instruct our machine to trust this certificate, someone with the private key who controlled your internet connection, like your ISP, could use it to MITM your connection. For this reason, don't share your MITM private key, or any private key, with others.*
 
@@ -139,9 +144,9 @@ QyVJfmCmjt2i=
 
 On macOS, the easiest way to add a new CA is to copy it to the desktop and then double-click it.
 
-```
+~~~{.bash caption=">_"}
 cp ~/.mitmproxy/mitmproxy-ca-cert.cer ~/Desktop
-```
+~~~
 
 {% include imgf src="10.png" alt="Getting a Certificate signed by an unknown certificate authority" %}
 
@@ -163,11 +168,12 @@ If you are on Windows, follow this guide [to add the MITM root certificate as a 
 
 On Debian-based Linux distributions, follow these steps:
 
-```
+~~~{.bash caption=">_"}
 > mkdir /usr/local/share/ca-certificates/extra
-> cp ~/.mitmproxy/mitmproxy-ca-cert.cer /usr/local/share/ca-certificates/extra/mitmproxy-ca-cert.crt
+> cp ~/.mitmproxy/mitmproxy-ca-cert.cer \ 
+     /usr/local/share/ca-certificates/extra/mitmproxy-ca-cert.crt
 > update-ca-certificates
-```
+~~~
 
 *We will be using these steps later when we work with docker containers on macOS and Windows.*
 
@@ -204,8 +210,7 @@ With that done, the network interface will be proxied. All that is left to do is
 
 On Linux, we can add a proxy by editing the docker client config and then restarting.  
 
-```
-> cat ~/.docker/config.json
+~~~{.json caption="~/.docker/config.json"}
 {
  "proxies":
  {
@@ -216,18 +221,18 @@ On Linux, we can add a proxy by editing the docker client config and then restar
    }
  }
 }
-```
+~~~
 
-```
+~~~{.bash caption=">_"}
 > sudo service docker restart
 
-```
+~~~
 
 ### Test It
 
 After restarting, we can test the proxying by performing a docker pull for a random image
 
-```
+~~~{.bash caption=">_"}
 ➜  ~ docker pull couchbase:7.0.0-beta
 7.0.0-beta: Pulling from library/couchbase
 83ee3a23efb7: Pull complete
@@ -247,7 +252,7 @@ f52d17d818b3: Pull complete
 Digest: sha256:290a7a0623b62e02438e6f0cd03adf116ac465f70fc4254a4059bcf51e8fa040
 Status: Downloaded newer image for couchbase:7.0.0-beta
 docker.io/library/couchbase:7.0.0-beta
-```
+~~~
 
 We can then see the requests and responses in our proxy:
 
@@ -265,7 +270,7 @@ We can even see the binary payload of the layer requests and the fact that docke
 
 We now know how to capture traffic on our host machine and the Linux container host. But what happens when we make requests from inside a running container?
 
-```
+~~~{.bash caption=">_"}
 > docker run -it ubuntu
 root@ca43de1bb8b1:/# apt upgrade & apt update & apt install curl
 ...
@@ -276,14 +281,14 @@ root@167f5742c295:/# curl http://google.com
 The document has moved
 <A HREF="http://www.google.com/">here</A>.
 </BODY></HTML>
-```
+~~~
 
 We are successfully capturing the requests and responses:
 {% include imgf src="21.png" alt="" caption="" %}
 
 However, we hit problems when we try to use HTTPS:
 
-```
+~~~{.bash caption=">_"}
 root@ca43de1bb8b1:/# curl https://google.com/
 curl: (60) server certificate verification failed. CAfile: /etc/ssl/certs/ca-certificates.crt CRLfile: none
 More details here: http://curl.haxx.se/docs/sslcerts.html
@@ -299,7 +304,7 @@ If this HTTPS server uses a certificate signed by a CA represented in
 If you'd like to turn off curl's verification of the certificate, use
  the -k (or --insecure) option.
  > exit
-```
+~~~
 
 ## Adding the CA Cert to our Linux Container
 
@@ -313,21 +318,34 @@ The simplest solution is to mount the certificate into the proper spot in our co
 
 ### Alpine
 
-```
-# Run container and mount in our CA Cert
-> docker run -it -v ~/.mitmproxy/mitmproxy-ca-cert.cer:/usr/local/share/ca-certificates/mitmproxy-ca-cert.cer alpine
-# Add ca-certificates (and curl for testing)
-root@167f5742c295:/# apk update && apk upgrade && apk add ca-certificates && apk add curl
-...
+First, we run the container and mount in our CA Certificate.
 
-# include trust our cert
-root@167f5742c295:/# update-ca-certificates
+~~~{.bash caption=">_"}
+> docker run -it -v ~/.mitmproxy/mitmproxy-ca-cert.cer:/usr/local/share/
+ca-certificates/mitmproxy-ca-cert.cer alpine
+~~~
+
+Inside the container, add our dependencies:
+
+~~~{.bash caption="alpine prompt"}
+> apk update && apk upgrade && apk add ca-certificates && 
+apk add curl
+...
+~~~
+
+Trust our certificate:
+
+~~~{.bash caption="alpine prompt"}
+> update-ca-certificates
 Updating certificates in /etc/ssl/certs...
 1 added, 0 removed; done.
 Running hooks in /etc/ca-certificates/update.d...
 done.
+~~~
 
-# Test https
+Then we can test it with a HTTPS request
+
+~~~{.bash caption="alpine prompt"}
 root@167f5742c295:/# curl https://google.com
 <HTML><HEAD><meta http-equiv="content-type" content="text/html;charset=utf-8">
 <TITLE>301 Moved</TITLE></HEAD><BODY>
@@ -335,25 +353,40 @@ root@167f5742c295:/# curl https://google.com
 The document has moved
 <A HREF="https://www.google.com/">here</A>.
 </BODY></HTML>
+~~~
 
-# Success!
-```
+That is a success!
 
 ### Ubuntu
 
 The general pattern with some small modifications works on Ubuntu-based images as well.
 
-```
-> docker run -it -v ~/.mitmproxy/mitmproxy-ca-cert.cer:/usr/local/share/ca-certificates/mitmproxy-ca-cert.crt ubuntu
+First, we run the container and mount in our CA Certificate.
 
-root@167f5742c295:/# apt update && apt upgrade && apt install ca-certificates curl
+~~~{.bash caption=">_"}
+> docker run -it -v ~/.mitmproxy/mitmproxy-ca-cert.cer:/usr/local/share/
+ca-certificates/mitmproxy-ca-cert.crt ubuntu
+~~~
 
-root@167f5742c295:/# update-ca-certificates 
+We update our dependencies:
+
+~~~{.bash caption="ubuntu prompt"}
+> apt update && apt upgrade && apt install ca-certificates curl
+~~~
+
+We trust our cert:
+
+~~~{.bash caption="ubuntu prompt"}
+> update-ca-certificates 
 Updating certificates in /etc/ssl/certs...
 1 added, 0 removed; done.
 Running hooks in /etc/ca-certificates/update.d...
 done.
+~~~
 
+Then we can test it with a HTTPS request.
+
+~~~{.bash caption="ubuntu prompt"}
 root@167f5742c295:/# curl https://google.com
 <HTML><HEAD><meta http-equiv="content-type" content="text/html;charset=utf-8">
 <TITLE>301 Moved</TITLE></HEAD><BODY>
@@ -361,9 +394,9 @@ root@167f5742c295:/# curl https://google.com
 The document has moved
 <A HREF="https://www.google.com/">here</A>.
 </BODY></HTML>
+~~~
 
-\> # Success!!
-```
+Success!
 
 ## Solution #2: Extend the Image
 
@@ -373,17 +406,17 @@ Volume mounting the certificate and manually running `update-ca-certificates` is
 
 We can create a new Dockerfile that extends the image we want to proxy and add in the certificate.
 
-```
+~~~{.dockerfile caption="Dockerfile"}
 FROM alpine # or any alpine based image
 RUN apk update && apk add curl
 WORKDIR /usr/local/share/ca-certificates
 COPY mitmproxy.crt mitmproxy.crt
 RUN update-ca-certificates
-```
+~~~
 
 We can then build it and tag it with a `:mitm` tag.
 
-```
+~~~{.bash caption=">_"}
 > docker build --tag alpine:mitm .
 [+] Building 1.9s (10/10) FINISHED                             
  => [internal] load build definition from Dockerfile      0.0s
@@ -402,20 +435,21 @@ We can then build it and tag it with a `:mitm` tag.
  => => exporting layers                                   0.1s 
  => => writing image sha256:ca5be16f3d19c34ea5e29ac1774b  0.0s 
  => => naming to docker.io/library/alpine:mitm            0.0s
-```
+~~~
 
 Now anytime we run this image, it will be ready to accept responses signed by our certificate authority. And because we didn't change the entry point, we can use it wherever we would use the base image.
 
-```
+~~~{.bash caption=">_"}
 > docker run -it alpine:mitm      
-\> curl https://google.com
+
+> curl https://google.com
 <HTML><HEAD><meta http-equiv="content-type" content="text/html;charset=utf-8">
 <TITLE>301 Moved</TITLE></HEAD><BODY>
 <H1>301 Moved</H1>
 The document has moved
 <A HREF="https://www.google.com/">here</A>.
 </BODY></HTML>
-```
+~~~
 
 Any requests by anything running inside the container will be transparently proxied. If you are trying to debug what a service you depend on is doing this will come in handy.  
 
@@ -423,15 +457,15 @@ Any requests by anything running inside the container will be transparently prox
 
 A similar process will work with Ubuntu-based images:
 
-```
+~~~{.dockerfile caption="dockerfile"}
 FROM ubuntu
 RUN apt update -y && apt upgrade -y && apt install ca-certificates curl -y
 WORKDIR /usr/local/share/ca-certificates
 COPY mitmproxy.crt mitmproxy.crt
 RUN update-ca-certificates 
-```
+~~~
 
-```
+~~~{.bash caption=">_"}
 > docker build --tag ubuntu:mitm .
 [+] Building 36.4s (10/10) FINISHED                            
  => [internal] load build definition from Dockerfile      0.0s
@@ -450,9 +484,9 @@ RUN update-ca-certificates
  => => exporting layers                                   0.3s 
  => => writing image sha256:06fbbeea728364e3bacef503f7c2  0.0s 
  => => naming to docker.io/library/ubuntu:mitm            0.0s
-```
+~~~
 
-```
+~~~{.bash caption=">_"}
 > docker run -it ubuntu:mitm    
 root> curl https://google.com
 <HTML><HEAD><meta http-equiv="content-type" content="text/html;charset=utf-8">
@@ -462,7 +496,7 @@ The document has moved
 <A HREF="https://www.google.com/">here</A>.
 </BODY></HTML>
 # Success
-```
+~~~
 
 ## But Wait, There's More
 

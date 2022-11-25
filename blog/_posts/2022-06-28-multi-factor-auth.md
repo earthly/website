@@ -63,7 +63,7 @@ Or use whatever package manager is right for you ( `sudo apt install oathtool` .
 oathtool -b --totp "{secret}"
 ~~~
 
-~~~
+~~~{.merge-code}
 628254
 ~~~
 
@@ -106,7 +106,7 @@ $ lpass login usename
 ...
 ~~~
 
-~~~{.bash caption=">_"}
+~~~{.bash .merge-code caption=">_"}
 $ mfa
 654334
 ~~~

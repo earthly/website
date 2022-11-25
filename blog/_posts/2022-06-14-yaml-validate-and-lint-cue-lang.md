@@ -80,7 +80,7 @@ Now that I have the `cue` command installed I can vet my `authors.yml` like this
 $ cue vet authors-type.cue authors.yml
 ~~~
 
-~~~{.bash caption="Output"}
+~~~{.bash .merge-code caption="Output"}
 Alex.avatar: incomplete value string:
     ./authors-type.cue:6:14
 ~~~
@@ -143,7 +143,7 @@ That is not described in our type, so now validation fails:
 $ cue vet authors-type.cue authors.yml
 ~~~
 
-~~~{.bash caption="Output"}
+~~~{.bash .merge-code caption="Output"}
 Adam: field not allowed: links:
     ./authors-type.cue:3:11
     ./authors-type.cue:9:12
@@ -278,7 +278,7 @@ And get errors like this:
 $ cue vet authors-type.cue authors.yml
 ~~~
 
-~~~{.bash caption=""}
+~~~{.bash .merge-code caption=""}
 Adam.bio: invalid value 
 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eu dolor nec nisi scelerisque semper..." 
 (does not satisfy strings.MaxRunes(250)):

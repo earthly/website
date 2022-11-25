@@ -46,7 +46,7 @@ After [installing `buf`](https://docs.buf.build/installation), I ran `buf mod in
 > buf lint
 ~~~
 
-~~~{.bash caption=""}
+~~~{.bash .merge-code caption=""}
 api/v1/activity.proto:10:5:
   "api.v1.Activity" is used as the request or response type for multiple RPCs.
 api/v1/activity.proto:10:16:
