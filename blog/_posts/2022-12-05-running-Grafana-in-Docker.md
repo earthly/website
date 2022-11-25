@@ -20,6 +20,8 @@ In this article, you'll learn more about Grafana, its use cases, and how to impl
 
 ## Why Should You Use Grafana?
 
+![Why]({{site.images}}{{page.slug}}/why.jpg)\
+
 A properly instrumented infrastructure will generate a large amount of data over time that needs to be processed, stored, and utilized for debugging and optimization efforts. Grafana helps gather and process metrics, logs, and traces from [various sources](https://grafana.com/docs/grafana/latest/datasources/#supported-data-sources) on a single platform. You can then run queries against the data and visualize the results. This makes data analysis easier and helps make data-backed decisions.
 
 Grafana allows data to be explored with ad hoc queries, and offers flexible drill-down and filtering options. [Dynamic dashboards and visualizations](https://grafana.com/docs/grafana/latest/dashboards/) that are reusable can be created with a wide range of templates, plugins, and graphing features. With Grafana, data can be collated from mixed data sources into the same visualization; it works as an alerting tool with the ability to set rule-based alerts on metrics.
@@ -30,11 +32,15 @@ Running Grafana within a containerized service can help you easily create an iso
 
 ## Implementing Grafana in Docker
 
+![implement]({{site.images}}{{page.slug}}/implement.png)\
+
 Before implementing Grafana in Docker, you need to have [Docker](https://docs.docker.com/get-docker/) and a CLI for the commands installed. You can then set up a Grafana container using the official [Grafana Docker images](https://grafana.com/docs/grafana/latest/setup-grafana/installation/docker/).
 
 There are two managed versions of Grafana, the enterprise version and the open-source version, and they both come in Alpine and Ubuntu variants. The enterprise version offers a licensed version of Grafana with more managed features and plugins, data source permissions, and extended authorization options. However, for this tutorial, the open-source version is sufficient.
 
 ### Creating a Grafana Container
+
+![Creating]({{site.images}}{{page.slug}}/creating.jpg)\
 
 Spin up a Grafana container on a Docker-enabled CLI using the following command:
 
@@ -46,7 +52,7 @@ This command tells Docker to create and start a Docker container called `sample_
 
 The `-d` tag streamlines the information visibly logged by this command:
 
-![Creating and starting up a Grafana container](https://i.imgur.com/7SpnEkt.png)
+![Creating and starting up a Grafana container]({{site.images}}{{page.slug}}/7SpnEkt.png)
 
 Navigate to [http://localhost:3000](http://localhost:3000) and access the Grafana container created. Log in with the following default Grafana authentication:
 
@@ -55,7 +61,7 @@ Navigate to [http://localhost:3000](http://localhost:3000) and access the Grafan
 
 This gives access to the Grafana user interface, where you can add data sources and create visualizations:
 
-![Grafana user interface](https://i.imgur.com/o5i0NeV.png)
+![Grafana user interface]({{site.images}}{{page.slug}}/o5i0NeV.png)
 
 > **Note**: To stop and delete the running Grafana container, use the following commands, where `sample_grafana` is the user-defined name tag given to the container:
 
@@ -113,7 +119,7 @@ docker run -d --name=sample_grafana -v ./grafana.ini:etc/grafana.ini -v grafana-
 
 By default, a number of plugins are installed in the Grafana container, including [Prometheus](https://grafana.com/grafana/plugins/prometheus/) and some database and visualization options. You can install more from the official [**Grafana Plugins** page](https://grafana.com/grafana/plugins/); this gives a wide range of integrations with popular and useful software:
 
-![Default Grafana plugins installed](https://i.imgur.com/helXzZB.png)
+![Default Grafana plugins installed]({{site.images}}{{page.slug}}/helXzZB.png)
 
 More official plugins can also be added to the Grafana container by utilizing the plugin environmental variable (`GF_INSTALL_PLUGINS`), which accepts comma-separated strings of the plugin's name tag.
 
@@ -123,7 +129,7 @@ For example, run the following command to add a [Datasource plugin for JSON file
 docker run -d --name=sample_grafana -e GF_INSTALL_PLUGINS=grafana-simple-json-datasource -v grafana-storage:/var/lib/grafana -p 3000:3000 grafana/grafana
 ~~~
 
-![Installed plugin on a Grafana instance](https://i.imgur.com/Pm9eWZT.png)
+![Installed plugin on a Grafana instance]({{site.images}}{{page.slug}}/Pm9eWZT.png)
 
 > **Note**: Plugins from other sources outside of the official Grafana repository and its community can also be installed. To do this, substitute the plugin name tag with a URL for the unofficial plugin.
 
@@ -160,10 +166,3 @@ docker run -d -p 3000:3000 --name=grafana grafana-custom
 To sum up, [Grafana](https://grafana.com) is an open-source solution that helps you study, analyze, and monitor observability data over time, easing both [debugging](/blog/printf-debugging) and optimization efforts. In this article, you've learned all about Grafana, with a focus on utilizing it within Docker containers.
 
 {% include cta/cta1.html %}
-
-## Outside Article Checklist
-
-* [ ] Create header image in Canva
-* [ ] Optional: Find ways to break up content with quotes or images
-* [ ] Verify look of article locally
-  * Would any images look better `wide` or without the `figcaption`?
