@@ -9,7 +9,7 @@ internal-links:
  - just an example
 ---
 
-When you have a potentially complex infrastructure, adding observability helps with easier debugging and performance optimization. 
+When you have a potentially complex infrastructure, adding observability helps with easier debugging and performance optimization.
 
 To build observability into the infrastructure, you can use [Grafana](https://grafana.com), an open-source visualization and analytics platform that aids in exploring observability data, such as metrics and logs. You can run Grafana in [Docker](https://www.docker.com) containers. This is particularly beneficial in creating an observable, portable testing environment and can be implemented in the [Kubernetes](https://kubernetes.io) infrastructure with various customizations available to the Grafana Docker container.
 
@@ -27,7 +27,7 @@ Running Grafana within a containerized service can help you easily create an iso
 
 ## Implementing Grafana in Docker
 
-Before implementing Grafana in Docker, you need to have [Docker](https://docs.docker.com/get-docker/) and a CLI for the commands  installed. You can then set up a Grafana container using the official [Grafana Docker images](https://grafana.com/docs/grafana/latest/setup-grafana/installation/docker/).
+Before implementing Grafana in Docker, you need to have [Docker](https://docs.docker.com/get-docker/) and a CLI for the commands installed. You can then set up a Grafana container using the official [Grafana Docker images](https://grafana.com/docs/grafana/latest/setup-grafana/installation/docker/).
 
 There are two managed versions of Grafana, the enterprise version and the open-source version, and they both come in Alpine and Ubuntu variants. The enterprise version offers a licensed version of Grafana with more managed features and plugins, data source permissions, and extended authorization options. However, for this tutorial, the open-source version is sufficient.
 
@@ -35,9 +35,9 @@ There are two managed versions of Grafana, the enterprise version and the open-s
 
 Spin up a Grafana container on a Docker-enabled CLI using the following command:
 
-```bash
+~~~{.bash caption=">_"}
 docker run -d --name=sample_grafana -p 3000:3000 grafana/grafana
-```
+~~~
 
 This command tells Docker to create and start a Docker container called `sample_grafana` using the latest update of the official `grafana/grafana` Docker image (Grafana open source version). This container is then exposed through the 3000 port.
 
@@ -56,10 +56,10 @@ This gives access to the Grafana user interface, where you can add data sources 
 
 > **Note**: To stop and delete the running Grafana container, use the following commands, where `sample_grafana` is the user-defined name tag given to the container:
 
-```bash
+~~~{.bash caption=">_"}
 docker stop sample_grafana
 docker rm sample_grafana
-```
+~~~
 
 ### Deploying a Grafana Container with Persistent Storage
 
@@ -67,11 +67,11 @@ Grafana generates information and files that are important for continuous optimi
 
 Add persistent volumes to the container during the startup process with the following command:
 
-```bash
+~~~{.bash caption=">_"}
 docker run -d --name=sample_grafana -v grafana-storage:/var/lib/grafana -p 3000:3000 grafana/grafana
-```
+~~~
 
-Here, a persistent volume called `grafana-storage` is created and mounted on the `/var/lib/grafana` directory, where Grafana stores all its generated data and plugins. Because this volume and its contents are stored *outside* of the container, there’s no problem of losing data when the Grafana container restarts.
+Here, a persistent volume called `grafana-storage` is created and mounted on the `/var/lib/grafana` directory, where Grafana stores all its generated data and plugins. Because this volume and its contents are stored *outside* of the container, there's no problem of losing data when the Grafana container restarts.
 
 > **Note**: [Bind mounts](https://grafana.com/docs/grafana/latest/setup-grafana/configure-docker/#run-grafana-container-using-bind-mounts) can also be used to prevent data loss from the Grafana container. With bind mounts, data will be stored in a folder on the local system, and the container will depend on the host machine's directory for its data needs. This is ideal if full control of the storage option is required and other tools (besides Docker) need to be given read-and-write access to the storage.
 
@@ -81,30 +81,30 @@ Generally, Grafana offers [default and custom configuration files](https://grafa
 
 Grafana offers a wide range of [customization options](https://grafana.com/docs/grafana/v9.0/setup-grafana/configure-grafana/). Custom variables can also be created according to a particular use case. The format for Grafana variables takes into consideration the section and the variable name:
 
-```bash
+~~~{.bash caption=">_"}
 GF_<SectionName>_<KeyName>
 
 #Example
 
 GF_DEFAULT_INSTANCE_NAME
-```
+~~~
 
 Here, the name of the Grafana server instance can be set for easy delineation, and authorization details can be set so the user can immediately log into the Grafana user interface with one command:
 
-```bash
+~~~{.bash caption=">_"}
 docker run -d --name=sample_grafana -v grafana-storage:/var/lib/grafana -p 3000:3000  -e GF_DEFAULT_INSTANCE_NAME=my-grafana  -e GF_SECURITY_ADMIN_USER=demo -e GF_SECURITY_ADMIN_PASSWORD__FILE=/run/secrets/password grafana/grafana
 
-```
+~~~
 
 Setting custom configurations with environment variables can be a drawn-out process, with each variable needing to be declared. In cases where this gets too bulky or a simpler command is needed, you can create a custom configuration file with the required variable values. You can then exchange this file for the default configuration file that gets used in the `docker run` commands via [bind mounts](https://grafana.com/docs/grafana/latest/setup-grafana/configure-docker/#run-grafana-container-using-bind-mounts).
 
 The following command takes a `grafana.ini` file created locally and binds it to the default configuration file created as the Grafana container is started:
 
-```bash
+~~~{.bash caption=">_"}
 
 docker run -d --name=sample_grafana -v ./grafana.ini:etc/grafana.ini -v grafana-storage:/var/lib/grafana -p 3000:3000 grafana/grafana
 
-```
+~~~
 
 ### Managing Grafana Plugins
 
@@ -116,9 +116,9 @@ More official plugins can also be added to the Grafana container by utilizing th
 
 For example, run the following command to add a [Datasource plugin for JSON files](https://grafana.com/grafana/plugins/simpod-json-datasource/):
 
-```bash
+~~~{.bash caption=">_"}
 docker run -d --name=sample_grafana -e GF_INSTALL_PLUGINS=grafana-simple-json-datasource -v grafana-storage:/var/lib/grafana -p 3000:3000 grafana/grafana
-```
+~~~
 
 ![Installed plugin on a Grafana instance](https://i.imgur.com/Pm9eWZT.png)
 
@@ -130,17 +130,17 @@ To help create a repeatable template with preferred plugins and customized setti
 
 To do so, use the official Grafana Docker image as a base layer and declare the customizations through bind mounts and environmental variables in a Dockerfile; then build and store that image:
 
-```bash
+~~~{.bash caption=">_"}
 FROM grafana/grafana:latest
 
 ENV GF_INSTALL_PLUGINS=grafana-simple-json-datasource
 
 COPY grafana.ini /etc/grafana/grafana.ini
-```
+~~~
 
 Another way to build a customized image is through the official [Grafana GitHub](https://grafana.com/docs/grafana/latest/setup-grafana/installation/docker/#build-with-pre-installed-plugins), where a [custom Dockerfile](https://github.com/grafana/grafana/blob/main/packaging/docker/custom/Dockerfile) is stored with build arguments for plugins and the preferred Grafana version to be used:
 
-```bash
+~~~{.bash caption=">_"}
 cd packaging/docker/custom
 
 docker build \
@@ -150,22 +150,19 @@ docker build \
 
 docker run -d -p 3000:3000 --name=grafana grafana-custom
 
-```
+~~~
 
 ## Conclusion
 
-To sum up, [Grafana](https://grafana.com) is an open-source solution that helps you study, analyze, and monitor observability data over time, easing both debugging and optimization efforts. In this article, you’ve learned all about Grafana, with a focus on utilizing it within Docker containers.
+To sum up, [Grafana](https://grafana.com) is an open-source solution that helps you study, analyze, and monitor observability data over time, easing both debugging and optimization efforts. In this article, you've learned all about Grafana, with a focus on utilizing it within Docker containers.
 
 {% include cta/cta1.html %}
 
 ## Outside Article Checklist
 
-
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
-
+* [ ] Create header image in Canva
+* [ ] Optional: Find ways to break up content with quotes or images
+* [ ] Verify look of article locally
+  * Would any images look better `wide` or without the `figcaption`?
+* [ ] Add keywords for internal links to front-matter
+* [ ] Run `link-opp` and find 1-5 places to incorporate links
