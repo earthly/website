@@ -9,11 +9,11 @@ internal-links:
  - just an example
 ---
 
-When you have a potentially complex infrastructure, adding observability helps with easier debugging and performance optimization.
+When you have a potentially complex infrastructure, adding observability helps with easier [debugging](/blog/printf-debugging) and performance optimization.
 
-To build observability into the infrastructure, you can use [Grafana](https://grafana.com), an open-source visualization and analytics platform that aids in exploring observability data, such as metrics and logs. You can run Grafana in [Docker](https://www.docker.com) containers. This is particularly beneficial in creating an observable, portable testing environment and can be implemented in the [Kubernetes](https://kubernetes.io) infrastructure with various customizations available to the Grafana Docker container.
+To build observability into the infrastructure, you can use [Grafana](https://grafana.com), an open-source visualization and analytics platform that aids in exploring observability data, such as metrics and logs. You can run Grafana in [Docker](https://www.docker.com) containers. This is particularly beneficial in creating an observable, portable testing environment and can be implemented in the [Kubernetes](https://kubernetes.io) infrastructure with various customizations available to the Grafana Docker [container](/blog/docker-slim).
 
-In this article, you'll learn more about Grafana, its use cases, and how to implement Grafana in Docker.
+In this article, you'll learn more about Grafana, its use cases, and how to implement Grafana in [Docker](/blog/rails-with-docker).
 
 ## Why Should You Use Grafana?
 
@@ -77,7 +77,7 @@ Here, a persistent volume called `grafana-storage` is created and mounted on the
 
 ### Configuring a Grafana Container
 
-Generally, Grafana offers [default and custom configuration files](https://grafana.com/docs/grafana/v9.0/setup-grafana/configure-grafana/). When running Grafana in a Docker container, you can personalize the Grafana instance by adding environment variables to the `docker run` command. These variables will *override* the default Grafana settings.
+Generally, Grafana offers [default and custom configuration files](https://grafana.com/docs/grafana/v9.0/setup-grafana/configure-grafana/). When running Grafana in a Docker container, you can personalize the Grafana instance by adding [environment variables](/blog/bash-variables) to the `docker run` command. These variables will *override* the default Grafana settings.
 
 Grafana offers a wide range of [customization options](https://grafana.com/docs/grafana/v9.0/setup-grafana/configure-grafana/). Custom variables can also be created according to a particular use case. The format for Grafana variables takes into consideration the section and the variable name:
 
@@ -154,7 +154,7 @@ docker run -d -p 3000:3000 --name=grafana grafana-custom
 
 ## Conclusion
 
-To sum up, [Grafana](https://grafana.com) is an open-source solution that helps you study, analyze, and monitor observability data over time, easing both debugging and optimization efforts. In this article, you've learned all about Grafana, with a focus on utilizing it within Docker containers.
+To sum up, [Grafana](https://grafana.com) is an open-source solution that helps you study, analyze, and monitor observability data over time, easing both [debugging](/blog/printf-debugging) and optimization efforts. In this article, you've learned all about Grafana, with a focus on utilizing it within Docker containers.
 
 {% include cta/cta1.html %}
 
@@ -165,4 +165,3 @@ To sum up, [Grafana](https://grafana.com) is an open-source solution that helps 
 * [ ] Verify look of article locally
   * Would any images look better `wide` or without the `figcaption`?
 * [ ] Add keywords for internal links to front-matter
-* [ ] Run `link-opp` and find 1-5 places to incorporate links
