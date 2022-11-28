@@ -17,7 +17,7 @@ Here is a problem. You are tasked with improving the hot loop of a Python progra
 
 Yes, this sounds like a LeetCode problem, and maybe in the real-world you would reach for some existing [sorted set](https://docs.oracle.com/javase/8/docs/api/java/util/SortedSet.html) [data structure](http://www.cplusplus.com/reference/set/set/), but if you were working with python lists, you might do something like this[^1]:
 
-``` Python
+~~~{.Python}
 def merge_sorted_lists(l1, l2):
     sorted_list = []
 
@@ -34,7 +34,7 @@ def merge_sorted_lists(l1, l2):
 
     return sorted_list
 
-```
+~~~
 
 Python has a built-in method in [`heapq.merge`](https://github.com/python/cpython/blob/3.7/Lib/heapq.py#L314) that does this. It takes advantage of the fact that our lists are already sorted, so we can get a new sorted list linear time rather than the `n*log(n)` time it would take for combining and sorting two unsorted lists.
 
@@ -82,7 +82,7 @@ This means that if I drop down to C and write a C extension I should be able to 
 
 The bulk of the C Extension, whose performance I'm going to cover in a minute, is just the pop the stack algorithm discussed before, but using an index to point to the head of the stack:
 
-``` c
+~~~{.c caption="merge.c"}
   //New List
   PyObject* mergedList = PyList_New( n1 + n2 );
 
@@ -111,13 +111,13 @@ The bulk of the C Extension, whose performance I'm going to cover in a minute, i
  }
  return mergedList;
 
-```
+~~~
 
 <figcaption>C merge ([full and final version on GitHub](https://github.com/earthly/pymerge/blob/main/merge.c))</figcaption>
 
 The nice thing about C extensions in Python is that they are easy to use. Once compiled, I can just `import merge` and use my new merge method:
 
-``` Python
+~~~{.python}
 import merge
 
 # create some sorted lists
@@ -126,13 +126,13 @@ b = list(range(1400, 1800))
 
 # merge them
 merge.merge(a, b)
-```
+~~~
 
 ## Testing It
 
 Testing my new merge with a list of integers and floats, we can see that we are beating Timsort, especially for long lists:
 
-``` Python
+~~~{.python}
 import merge
 import timeit
 
@@ -151,12 +151,12 @@ merge_time = timeit.timeit("merge_test()", setup="from __main__ import merge_tes
 
 print(f'timsort took {sort_time} seconds')
 print(f'merge took {merge_time} seconds')
-```
+~~~
 
-``` bash
+~~~{.bash caption=">_"}
 timsort took 3.9523325259999997 seconds
 merge took 3.0547665259999994 seconds
-```
+~~~
 
 Graphing the performance we get this:
 
@@ -181,7 +181,7 @@ Specifically, if your list is all [longs](https://github.com/python/cpython/blob
 
 Learning from Timsort we can bring in these comparison operations ourselves. We don't want to do a full pass over the list, or we will lose our advantage, so we can just specialize our merge by offering separate calls for longs, floats, and Latin alphabet strings like so:
 
-``` c
+~~~{.c caption="merge.h"}
 //Default comparison
 PyObject* merge( PyObject*, PyObject* );
 
@@ -193,9 +193,7 @@ PyObject* merge_float( PyObject*, PyObject* );
 
 //Compare assuming latin
 PyObject* merge_latin( PyObject*, PyObject* )
-```
-
-<figcaption>merge.h</figcaption>
+~~~
 
 ## Beating TimSort
 
