@@ -10,6 +10,8 @@ internal-links:
  - timsort
  - list merging
 ---
+<iframe width="560" height="315" src="https://www.youtube.com/embed/9fcWnAf6rEY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 <div class="narrow-code">
 Here is a problem. You are tasked with improving the hot loop of a Python program: maybe it is an in-memory sequential index of some sort. The slow part is the updating, where you are adding a new sorted list of items to the already sorted index. You need to combine two sorted lists and keep the result sorted. How do you do that update?
 
