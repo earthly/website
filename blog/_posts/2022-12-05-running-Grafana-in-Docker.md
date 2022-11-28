@@ -100,7 +100,7 @@ Generally, Grafana offers [default and custom configuration files](https://grafa
 
 Grafana offers a wide range of [customization options](https://grafana.com/docs/grafana/v9.0/setup-grafana/configure-grafana/). Custom variables can also be created according to a particular use case. The format for Grafana variables takes into consideration the section and the variable name:
 
-~~~{.bash caption=">_"}
+~~~{.bash }
 GF_<SectionName>_<KeyName>
 
 #Example
@@ -161,7 +161,7 @@ To help create a repeatable template with preferred plugins and customized setti
 
 To do so, use the official Grafana Docker image as a base layer and declare the customizations through bind mounts and environmental variables in a Dockerfile; then build and store that image:
 
-~~~{.bash caption=">_"}
+~~~{.dockerfile }
 FROM grafana/grafana:latest
 
 ENV GF_INSTALL_PLUGINS=grafana-simple-json-datasource
