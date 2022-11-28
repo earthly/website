@@ -13,18 +13,11 @@ internal-links:
   - llvm
   - docker build
   - machine code
+last_modified_at: 2022-11-17
 ---
 ## Introduction
 
 How are containers made? Usually, from a series of statements like `RUN`, `FROM`, and `COPY`, which are put into a Dockerfile and built. But how are those commands turned into a container image and then a running container? We can build up an intuition for how this works by understanding the phases involved and creating a container image ourselves. We will create an image programmatically and then develop a trivial syntactic frontend and use it to build an image.
-
-### Game Plan
-
-- ☑️ Intro
-- ☐️ Background
-- ☐ Understanding Compiler Stages and BuildKit
-- ☐ Programmatically Creating an Image
-- ☐ Building a Frontend for BuildKit
 
 ## On `Docker Build`
 
@@ -32,19 +25,19 @@ We can create container images in several ways. We can use Buildpacks, we can us
 
 Here is an example Dockerfile:
 
-``` {.dockerfile .numberLines startFrom="100"}
+~~~{.dockerfile caption="Dockerfile"}
 FROM alpine
 COPY README.md README.md
 RUN echo "standard docker build" > /built.txt"
-```
+~~~
 
 We will be using variations on this Dockerfile throughout this tutorial.
 
 We can build it like this:
 
-```
-docker build . -t test
-```
+~~~{.bash caption=">_"}
+> docker build . -t test
+~~~
 
 But what is happening when you call `docker build`? To understand that, we will need a little background.
 
@@ -158,29 +151,29 @@ In this example, we will be using Go which lets us leverage existing BuildKit li
 
 Import LLB definitions:
 
-```
+~~~{.go caption="main.go"}
 import (
  "github.com/moby/buildkit/client/llb"
 )
-```
+~~~
 
 Create LLB for an Alpine image:
 
-```
+~~~{.go caption="main.go"}
 func createLLBState() llb.State {
  return llb.Image("docker.io/library/alpine").
   File(llb.Copy(llb.Local("context"), "README.md", "README.md")).
-  Run(llb.Args([]string{"/bin/sh", "-c", "echo \"programmatically built\" > /built.txt"})).
-    Root()
+  Run(llb.Args([]string{"/bin/sh", "-c", "echo \"programmatically built\" > ↩ 
+  \ built.txt"})).Root()
 }
 
-```
+~~~
 
 We are accomplishing the equivalent of a `FROM` by using `llb.Image`. Then, we copy a file from the local file system into the image using `File` and `Copy`. Finally, we `RUN` a command to echo some text to a file. LLB has many more operations, but you can recreate many standard images with these three building blocks.
 
 The final thing we need to do is turn this into protocol-buffer and emit it to standard out:
 
-```
+~~~{.go caption="main.go"}
 func main() {
 
  dt, err := createLLBState().Marshal(context.TODO(), llb.LinuxAmd64)
@@ -189,20 +182,20 @@ func main() {
  }
  llb.WriteTo(dt, os.Stdout)
 }
-```
+~~~
 
 Let's look at the what this generates using the `dump-llb` option of buildctl:
 
-```
+~~~{.go caption="main.go"}
  go run ./writellb/writellb.go | \
  buildctl debug dump-llb | \
  jq .
 
-```
+~~~
 
 We get this JSON formatted LLB:
 
-```
+~~~{.json caption="dump-llb"}
 {
   "Op": {
     "Op": {
@@ -346,13 +339,13 @@ We get this JSON formatted LLB:
     }
   }
 }
-```
+~~~
 
 Looking through the output, we can see how our code maps to LLB.
 
 Here is our `Copy` as part of a FileOp:
 
-```
+~~~{.json caption="llb"}
     "Action": {
               "copy": {
                 "src": "/README.md",
@@ -360,11 +353,11 @@ Here is our `Copy` as part of a FileOp:
                 "mode": -1,
                 "timestamp": -1
               }
-```
+~~~
 
 Here is mapping our build context for use in our `COPY` command:
 
-```
+~~~{.json caption="llb"}
   "Op": {
       "source": {
         "identifier": "local://context",
@@ -372,7 +365,7 @@ Here is mapping our build context for use in our `COPY` command:
           "local.unique": "s43w96rwjsm9tf1zlxvn6nezg"
         }
       }
-```
+~~~
 
 Similarly, the output contains LLB that corresponds to our  `RUN` and `FROM` commands.
 
@@ -380,19 +373,19 @@ Similarly, the output contains LLB that corresponds to our  `RUN` and `FROM` com
 
 To build our image, we must first start `buildkitd`:
 
-```
-docker run --rm --privileged -d --name buildkit moby/buildkit
-export BUILDKIT_HOST=docker-container://buildkit
-```
+~~~{.bash caption=">_"}
+> docker run --rm --privileged -d --name buildkit moby/buildkit
+> export BUILDKIT_HOST=docker-container://buildkit
+~~~
 
 We can then build our image like this:
 
-```
-go run ./writellb/writellb.go | \
+~~~{.bash caption=">_"}
+> go run ./writellb/writellb.go | \
 buildctl build \
 --local context=. \
 --output type=image,name=docker.io/agbell/test,push=true
-```
+~~~
 
 The output flag lets us specify what backend we want BuildKit to use. We will ask it to build an OCI image and push it to docker.io.
 
@@ -405,19 +398,19 @@ The output flag lets us specify what backend we want BuildKit to use. We will as
 
 We can run it like this:
 
-```
+~~~{.bash caption=">_"}
 > docker run -it --pull always agbell/test:latest /bin/sh
 
-```
+~~~
 
 And we can then see the results of our programmatic `COPY` and `RUN` commands:
 
-```
-/ # cat built.txt 
+~~~{.bash caption=">_"}
+> cat built.txt 
 programmatically built
-/ # ls README.md
+> ls README.md
 README.md
-```
+~~~
 
 There we go! The [full code example](https://github.com/agbell/compiling-containers/blob/main/writellb/writellb.go) can be a great starting place for your own programmatic docker image building.
 
@@ -425,7 +418,7 @@ There we go! The [full code example](https://github.com/agbell/compiling-contain
 
 A true compiler front end does more than just emit hard coded IR. A proper frontend takes in files, tokenizes them, parses them, generates a syntax tree, and then lowers that syntax tree into the internal representation.  [Mockerfiles](https://matt-rickard.com/building-a-new-dockerfile-frontend/) are an example of such a frontend:
 
-```
+~~~{.yml caption="mockerfile"}
 #syntax=r2d4/mocker
 apiVersion: v1alpha1
 images:
@@ -436,13 +429,13 @@ images:
     - curl
     - git
     - gcc
-```
+~~~
 
 And because Docker build supports the `#syntax` command we can even build a Mockerfiles directly with `docker build`.
 
-```
-docker build -f mockerfile.yaml
-```
+~~~{.bash caption=">_"}
+> docker build -f mockerfile.yaml
+~~~
 
 To support the #syntax command, all that is needed is to put the frontend in a docker image that accepts a GRPC request in the correct format, publish that image somewhere. At that point, anyone can use your frontend `docker build` by just using `#syntax=yourimagename`.
 
@@ -466,7 +459,7 @@ The modules in the dockerfile frontend split the parsing of the input file into 
 
 For this tutorial, we are only going to make trivial changes to the frontend. We will leave all the stages intact and focus on customizing the existing commands to our tastes. To do this, all we need to do is change `command.go`:
 
-```
+~~~{.go caption="command.go"}
 package command
 
 // Define constants for the command strings
@@ -476,42 +469,42 @@ const (
  From        = "come_from"
  ...
 )
-```
+~~~
 
 Then we build our image:
 
-```
-docker build . -t agbell/ick
-```
+~~~{.bash caption=">_"}
+> docker build . -t agbell/ick
+~~~
 
 And we can use this image as a BuildKit frontend and build images with it like this:
 
-```
+~~~{.dockerfile caption="Ickfile"}
 #syntax=agbell/ick
 COME_FROM alpine
 STASH README.md README.md
 PLEASE echo "custom frontend built" > /built.txt"
 
-```
+~~~
 
-```
-DOCKER_BUILDKIT=1 docker build . -f ./Ickfile -t ick 
-```
+~~~{.bash caption=">_"}
+> DOCKER_BUILDKIT=1 docker build . -f ./Ickfile -t ick 
+~~~
 
 And we can run it just like any other image:
 
-```
+~~~{.bash caption=">_"}
 > docker run -it ick /bin/sh
-```
+~~~
 
 And we can then see results of our `STASH` and `PLEASE` commands:
 
-```
-/ # cat built.txt 
+~~~{.bash caption=">_"}
+> cat built.txt 
 custom frontend built
-/ # ls README.md
+> ls README.md
 README.md
-```
+~~~
 
 I've pushed this image to Docker Hub. Anyone can start building images using our `ickfile` format by adding `#syntax=agbell/ick` to an existing Dockerfile. No manual installation is required!
 

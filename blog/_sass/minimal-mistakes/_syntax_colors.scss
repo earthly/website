@@ -469,10 +469,10 @@ pre.sourceCode {
   overflow-x: hidden;
 }
 
-// double source code listings are grouped together
+// we want the option to  have double source code listings grouped together
 // see 2021-08-16-jq-select.md
-div.sourceCode + div.sourceCode,
-div.sourceCode + pre:not([class^="output"]) {
+div.sourceCode + div.sourceCode pre.merge-code,
+div.sourceCode + pre.merge-code {
   margin-top: -2em;
   padding-top: 0em;
   border-radius: 0px;

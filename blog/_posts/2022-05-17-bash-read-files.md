@@ -183,7 +183,7 @@ var=$(<filename.txt)
 echo "$value"
 ~~~
 
-~~~{.ini caption="Output"}
+~~~{.ini .merge-code caption="Output"}
 The
 quick
 brown
@@ -227,7 +227,7 @@ $ #Example1
 $ ./cat_read.sh file.txt
 ~~~
 
-~~~{.bash caption="Output"}
+~~~{.bash .merge-code caption="Output"}
 
 Hello, World
 ~~~
@@ -238,7 +238,7 @@ Another Example:
 $ cat file.txt | ./cat_read.sh
 ~~~
 
-~~~{.bash caption="Output"}
+~~~{.bash .merge-code caption="Output"}
 Hello, World
 ~~~
 
@@ -265,7 +265,7 @@ while read -r line; do
 done < "filename.txt"
 ~~~
 
-~~~{.bash caption="Ouput"}
+~~~{.bash .merge-code caption="Ouput"}
 The
 quick
 brown

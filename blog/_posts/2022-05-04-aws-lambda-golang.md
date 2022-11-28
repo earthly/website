@@ -203,7 +203,7 @@ $ curl --verbose \
   }'
 ~~~
 
-~~~{.caption="Output"}
+~~~{.merge-code .caption="Output"}
 
 What is Lorem Ipsum?
 

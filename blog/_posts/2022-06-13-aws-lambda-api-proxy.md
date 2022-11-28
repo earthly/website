@@ -200,7 +200,7 @@ And with a bit of deployment magic, my service's routing works in the Lambda.
 $ curl https://earthly-tools.com/text-mode | head -n 15
 ~~~
 
-~~~
+~~~{.merge-code}
 Earthly.dev Presents:                                                                                              
 
   _____                 _       
@@ -359,7 +359,7 @@ $ docker run \
 $ curl localhost:8080/default/text-mode | head -n 15
 ~~~
 
-~~~
+~~~{.merge-code}
 Earthly.dev Presents:                                                                                              
 
   _____                 _       
