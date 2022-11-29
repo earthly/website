@@ -58,8 +58,6 @@ The `match` keyword is a [soft keyword](https://docs.python.org/3/reference/lexi
 
 The `guard` is an optional `if condition` in a `case clause`. It's evaluated after a `pattern` matches the subject. The block of code associated with the case clause will execute only if the `guard` evaluates to `True`. Otherwise, the next pattern will be compared until there is another match with a `guard` that evaluates to True (if we specified a `guard`).
 
-The `guard` is an optional `if condition` in a `case clause`. It's evaluated after a `pattern` matches the subject. The block of code associated with the case clause will execute only if the `guard` evaluates to `True`. Otherwise, the next pattern will be compared until there is another match with a `guard` that evaluates to True (if we specified a `guard`).
-
 If you've coded in Javascript or C, the `match-case` statement might look similar to the `switch-case` statement. However, there are certain differences.
 The `match-case`  statement differs from the `switch-case` statement in that it does not require an explicit `break` statement after a pattern has been matched. It also has a lot of powerful features that cannot be found in the `switch-case` statement in other languages. We will explore these features later on.
 
