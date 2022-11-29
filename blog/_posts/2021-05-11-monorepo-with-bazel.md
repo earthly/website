@@ -8,6 +8,10 @@ internal-links:
  - bazel
  - monorepo
 ---
+<div class="notice--info">
+### Update: September, 2022
+Read our [interview series with Bazel experts on when to use Bazel](/blog/bazel-build/).
+</div>
 A *[monorepo](/blog/monorepo-vs-polyrepo)* is perhaps what you would expect from the name: a single code repository for your entire codebase.
 
 [Wikipedia](https://en.wikipedia.org/wiki/Monorepo) describes it as a decade-old software development strategy for storing all your code in a single repository, but you can also think of it as a higher-level architecture pattern for governing loosely tied applications. For instance, if you have a full-stack web application stored in one repository and an Android client in another, a monorepo would essentially wrap them in the same repository codebase.

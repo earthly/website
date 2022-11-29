@@ -7,7 +7,7 @@ author: Adam
 internal-links:
  - bazel
 ---
-## Introduction
+## Bazel Build?
 
 Here at Earthly, we care a lot about builds and talk to many people about their struggles with builds and CI. A frequent topic of conversation, especially if an organization has a monorepo and more than 500 developers, is Bazel, Google's open-sourced monorepo build system.
 
@@ -138,7 +138,7 @@ So it's very clear to me that Bazel is not the key to success.
 There are startups out there that only use one language or one software stack, and that's very easy to build. It's a trade-off between costs and [the] return on investment, and the organization needs to make that call. I have seen a range of customers who arrive at different answers in terms of addressing problems of scale.
 {% include bazel/end.html %}
 
-## Case Studies
+## Bazel Case Studies
 
 ### Case Study: Netflix Recommendations
 
@@ -174,7 +174,7 @@ Previously, when I was quoting like 45 minutes or an hour, those might be the 90
 So now, you've pushed the code, you're filling out the PR, [and] the CI's already green or red. You don't really feel that block and that linearization of the PRs is not a problem at all. No one notices, no one cares. And we made a little (linearization) bot also because we wanted to make it nice. And people don't even think about it anymore. So this linearization of main isn't a problem anymore.
 {% include bazel/end.html %}
 
-## Build Time Expectations - Tweag
+## Bazel Build Time Expectations - Tweag
 
 Moving from 20 minutes median build to 6 minutes seems like an impressive improvement, especially if the tail build times improved by a similar magnitude. I reached out to a build migration expert Andreas Herrmann[^5], from Tweag, to see if these types of improvements are what people should expect.
 
@@ -215,7 +215,7 @@ Ideally, you wouldn't want to duplicate all the API definitions for the frontend
 Then one can define a library target for the frontend that uses those generated files as regular code source inputs, and it's just gonna work from there automatically. So these kinds of complex dependency graphs become really challenging with the native tools but are pretty easy to express in Bazel.
 {% include bazel/end.html %}
 
-## Case Study: Open Systems
+## Bazel Case Study: Open Systems
 
 Andreas and others at Tweag were such big fans of Bazel (And Nix, but that might be a different article) that they started writing about it to [spread](https://www.tweag.io/blog/2019-10-09-bazel-cabal-stack/) the word. From there, other people found Bazel. Like Julien Perrochet[^7], who was working at Open Systems at the time.
 
@@ -251,7 +251,7 @@ You have a pretty big code base. And now it's just let's just try something. And
 So that was the best. It's super hard to put in place [but] once you give it to people and they have the basic control to quickly iterate again. Like suddenly, they're happy to be learning to write BUILD files. So it was a two years adventure.
 {% include bazel/end.html %}
 
-## Open System Migration Tips
+## Bazel Migration Tips
 
 Because Julien recently finished a two-year migration of a large org, he has a lot of great tips to share about migrating to Bazel and what to expect.
 
@@ -285,7 +285,7 @@ Things before Bazel that I would find extremely dirty, like Open API definition 
 That was a weird side effect of Bazel: just really duct tape these three tools and three different languages together, and it works.
 {% include bazel/end.html %}
 
-## Case Study: Tink
+## Bazel Case Study: Tink
 
 Julien's Bazel adoption experience at Open System, much like Oscar's at Netflix, is rooted in understanding the Bazel principles and choosing to adopt them. Another common vector for Bazel adoption is just having someone who's X-Google join the company and start trying to recreate Google's internal dev tooling.
 
@@ -303,7 +303,7 @@ One really amazing thing is they have really great querying capability, which al
 We also used Bazel query logic to actually check whether we needed to redeploy a service in our CI pipeline.
 {% include bazel/end.html %}
 
-## Migration Tips
+## Bazel Migration Tips
 
 ### Migration Challenge: Java
 
