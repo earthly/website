@@ -6,7 +6,9 @@ toc: true
 author: James Walker
 
 internal-links:
- - just an example
+ - NVIDIA
+ - Container
+ - Docker
 ---
 
 [NVIDIA Container Runtime](https://github.com/NVIDIA/nvidia-container-runtime) allows containerized applications to access your host's GPU hardware. It facilitates the containerization of systems that would otherwise be off-limits, such as artificial intelligence (AI) and machine learning (ML) workloads. With NVIDIA [Container](/blog/docker-slim) Runtime installed, you can run these apps in containers on *any* host with an NVIDIA GPU.
@@ -281,4 +283,3 @@ Containers are a great way to run [CI](https://earthly.dev/blog/continuous-integ
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Add keywords for internal links to front-matter
