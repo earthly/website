@@ -269,3 +269,6 @@ mongodb
 rebranded
 Pinterest
 dashboarding
+
+Kitware
+Buildr
