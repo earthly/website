@@ -32,7 +32,7 @@ Make is a tool that controls the generation of executables and other non–sourc
 
 On the other hand, CMake requires a `CMakeLists.txt` file and is a cross-platform Make. This means that it works on different operating systems. It allows **compiler-independent builds**, testing, packaging, and installation of software. It's important to note that CMake produces build files for other systems; however, it's not a build system itself. CMake can generate a Makefile, and then the generated Makefile can be used with Make in the platform being worked on:
 
-![How CMake and Make Work]({{site.images}}{{page.slug}}/5Gv149z.png)
+![How CMake and Make Work]({{site.images}}{{page.slug}}/5Gv149z.png)\
 
 To use Make, you have to manually create the Makefile, but with CMake, the Makefile is automatically created.
 
@@ -46,22 +46,21 @@ To install CMake, follow the [instructions available on their website](https://c
 
 On both Windows and Linux, run the following command to check the CMake version number:
 
-~~~
+~~~{.bash caption=">_"}
 cmake --version
 ~~~
 
 The output on Windows will look like this:
 
-~~~
+~~~{.bash caption="Output"}
 cmake version 3.24.2
 
 CMake suite maintained and supported by Kitware (kitware.com/cmake).
-
 ~~~
 
 And the output on Linux will look like this:
 
-~~~
+~~~{.bash caption="Output"}
 cmake version 3.10.2
 
 CMake suite maintained and supported by [Kitware](kitware.com/cmake).
@@ -70,13 +69,13 @@ CMake suite maintained and supported by [Kitware](kitware.com/cmake).
 
 Next, check the version of Make:
 
-~~~
+~~~{.bash caption=">_"}
 make --version
 ~~~
 
 The output should look similar to the following:
 
-~~~
+~~~{.bash caption="Output"}
 GNU Make 4.1
 Built for x86_64-pc-linux-gnu
 Copyright (C) 1988-2014 Free Software Foundation, Inc.
@@ -87,13 +86,14 @@ There is NO WARRANTY, to the extent permitted by law.
 
 If you're on a Windows machine, check the MSBuild version:
 
-~~~
+~~~{.bash caption=">_"}
 msbuild -version
 ~~~
 
 The output should look like this:
 
-~~~
+~~~{.bash caption="Output"}
+
 Microsoft (R) Build Engine version 15.8.168+ga8fba1ebd7 for .NET Framework
 Copyright (C) Microsoft Corporation. All rights reserved.
 
@@ -121,7 +121,7 @@ To demonstrate this, look at an example where the following C++ program is run, 
 
 1. **`main.cpp`**:
 
-~~~
+~~~{.C caption="main.cpp"}
 # include "process_age.h"
 # include <iostream>
 
@@ -134,7 +134,7 @@ int main(){
 
 2. **`age.cpp`**:
 
-~~~
+~~~{.C caption="age.cpp"}
 # include <iostream>
 using namespace std;
 
@@ -149,7 +149,7 @@ void processAge(){
 
 3. **`process_age.h`**:
 
-~~~
+~~~{.C caption="process_age.h"}
 void processAge();
 ~~~
 
@@ -157,14 +157,14 @@ void processAge();
 
 To build your project with Make, you have to create a Makefile. Makefile entries generally have the following format:
 
-~~~
+~~~{.makefile caption=""}
 target: dependencies
 <tab>    command
 ~~~
 
 For this example, the contents of the Makefile will look like this:
 
-~~~
+~~~{.makefile caption=""}
 hello_age: hello.o age.o
     g++ hello.o age.o -o hello_age
     
@@ -182,15 +182,19 @@ From the above we can see that we have the target, `hello_age` which depends on 
 
 After creating the Makefile, the four files should now be in the directory:
 
-![Hello application files]({{site.images}}{{page.slug}}/edkyvc3.png)
+<div class="wide">
+![Hello application files]({{site.images}}{{page.slug}}/edkyvc3.png)\
+</div>
 
 To run this program using Make, run `make` in the terminal. This will compile the files using the [g++ compiler](https://gcc.gnu.org/), which should already be installed on the computer. The output of this command will be a `hello_age` executable:
 
-![Running Make]({{site.images}}{{page.slug}}/ayaRGYG.png)
+<div class="wide">
+![Running Make]({{site.images}}{{page.slug}}/ayaRGYG.png)\
+</div>
 
 Next, run the command `./hello_age`, which will run the executable and print out "Hello, Earthly!". Then it will give a prompt to enter the age. For a given age of "50", it will print the following:
 
-~~~
+~~~{.bash caption="Output"}
 Hello, Earthly!
 Please enter your age: 50
 You are 50 years old.
@@ -198,7 +202,9 @@ You are 50 years old.
 
 After running the application, it's time to clean up the created files with the `make` command by running the command `make clean`, removing `age.o`, `main.o`, and `hello_age` from the directory:
 
-![Make files]({{site.images}}{{page.slug}}/Pbt47FD.png)
+<div class="wide">
+![Make files]({{site.images}}{{page.slug}}/Pbt47FD.png)\
+</div>
 
 #### Building With CMake
 
@@ -206,13 +212,15 @@ Now that you've seen how Make builds a C++ program, let's see how CMake does it.
 
 Start by creating a directory named `hello_cmake` and put in three files: `age.cpp`, `main.cpp`, and `process_age.h`:
 
-![`hello_cmake` folder contents]({{site.images}}{{page.slug}}/MPzr4q3.png)
+<div class="wide">
+![`hello_cmake` folder contents]({{site.images}}{{page.slug}}/MPzr4q3.png)\
+</div>
 
 Then in the `hello_cmake` directory, create two directories called `build-unix` and `build-windows`. Everything created by CMake will be placed in these directories, and they help separate the source files and the files created by CMake. `build-unix` is needed for builds that run on Unix systems, and `build-windows` is needed for Windows systems.
 
 Next, create a file named `CMakeLists.txt`, which is the CMake configuration file. It contains the instructions that will be used to build the program:
 
-~~~
+~~~{.txt caption="CMakeLists.txt"}
 cmake_minimum_required(VERSION 3.10.0)
 
 #project name
@@ -227,41 +235,51 @@ The `CMakeLists.txt` file contains a set of directives and instructions describi
 
 Navigate into the `build-unix` folder and run the following command if using a Unix system:
 
-~~~
+~~~{.bash caption=">_"}
 cmake ..
 ~~~
 
 This will build the project and create a Makefile in the `build-unix` folder:
 
-![Running CMake]({{site.images}}{{page.slug}}/jTJzgQD.png)
+<div class="wide">
+![Running CMake]({{site.images}}{{page.slug}}/jTJzgQD.png)\
+</div>
 
 The following are the contents of the directory `build-unix` after running the CMake command:
 
+<div class="wide">
 ![`build-unix` contents after running CMake]({{site.images}}{{page.slug}}/F2wxa9w.png)
+</div>
 
 The Makefile has now been created. To compile the application, run the `make` command in order to put a `hello-age` executable inside the `build-unix` directory:
 
-~~~
+~~~{.bash caption=">_"}
 make
 ~~~
 
+<div class="wide">
 ![Running `make` in the `build-unix` directory]({{site.images}}{{page.slug}}/eBpjETJ.png)
+</div>
 
 Then run the `hello_age` executable file, which was created by running the `make` command:
 
-~~~
+~~~{.bash caption=">_"}
 ./hello_age
 ~~~
 
+<div class="wide">
 ![`build-unix` contents after running Make]({{site.images}}{{page.slug}}/1yektfe.png)
+</div>
 
 To ensure that this executable works similarly to the one created by the `make` command, run `./hello_age`:
 
-~~~
+~~~{.bash caption=">_"}
 ./hello_age
 ~~~
 
+<div class="wide">
 ![Running a Make executable]({{site.images}}{{page.slug}}/dL4jhZP.png)
+</div>
 
 As you can see, the program works as before. The only difference is that this time, "51" was inputted as the age.
 
@@ -273,19 +291,19 @@ Another difference between CMake and Make is that CMake is cross-platform, while
 
 On a Windows machine, copy the directory `hello_cmake` and then navigate into the `build-windows` directory using the command prompt:
 
-~~~
+~~~{.bash caption=">_"}
 C:\CMake_vs_Make\hello_cmake\build-windows>
 ~~~
 
 Then run the following `cmake` command:
 
-~~~
+~~~{.bash caption=">_"}
 cmake ..
 ~~~
 
 This will build the C++ code for Windows Visual Studio 15 2017 build system:
 
-~~~
+~~~{.bash caption="Output"}
 -- Building for: Visual Studio 15 2017
 -- Selecting Windows SDK version 10.0.17763.0 to target Windows 10.0.18363.
 -- The C compiler identification is MSVC 19.16.27043.0
@@ -308,27 +326,31 @@ This will build the C++ code for Windows Visual Studio 15 2017 build system:
 
 If you navigate to the `build-windows` directory, you should be able to see the following files:
 
+<div class="wide">
 ![`build-windows` contents]({{site.images}}{{page.slug}}/rJP8TxM.png)
+</div>
 
 Next, open the `hello_cmake.sln` file with Visual Studio Code or compile it in the command prompt. To compile it, just make sure `MSBuild.exe` is in the path. Then run the following command from within the `build-windows` folder:
 
-~~~
+~~~{.bash caption=">_"}
 MSBuild.exe hello_age.vcxproj
 ~~~
 
 The previous code will build the project, and the following will be the output:
 
-![MSBuild output]({{site.images}}{{page.slug}}/shyQUyi.png)
+<div class="wide">
+![MSBuild output]({{site.images}}{{page.slug}}/shyQUyi.png)/
+</div>
 
 This build process will create three directories: `Debug`, `hello_age.dir`, and `Win32`. Find the executable file in the `Debug` directory and run it using the following command:
 
-~~~
+~~~{.bash caption=">_"}
 hello_age.exe
 ~~~
 
 In this example, the age entered was "52":
 
-~~~
+~~~{.bash caption="Output"}
 Hello, Earthly!
 Please enter your age: 52
 You are 52 years old.
@@ -350,7 +372,10 @@ To use the GUI, you need to specify the paths to the source code files as well a
 Create a directory and copy over the `main.cpp` and `age.cpp` files. Also create a new directory called `gui_build` which is where the build files will be created.
 
 The directory should look as follows:
+
+<div class="wide">
 ![GUI Directory Contents]({{site.images}}{{page.slug}}/u3Ygtvl.png)
+</div>
 
 After specifying the source and output directories, the [CMake](/blog/using-cmake) GUI should look as follows:
 ![GUI with directories]({{site.images}}{{page.slug}}/FDvhWWI.png)
@@ -370,7 +395,9 @@ Now add the CMakeList.txt file and run *Configure* again. This time there will b
 
 Then click on *Generate* to generate the Makefile. If you go into the directory you specified to have the binaries, you will see the files generated.
 
-![Generated Files]({{site.images}}{{page.slug}}/mGEO9H1.png)
+<div class="wide">
+![Generated Files]({{site.images}}{{page.slug}}/mGEO9H1.png)\
+</div>
 
 ### Active Development
 
@@ -395,9 +422,3 @@ More recently, CMake added the `FetchContent` module, which is a better way to f
 In this article, you've learned the differences between CMake and Make, as well as the advantages of using CMake including its active development, dependency management, and cross-platform capabilities. If you're looking to explore other build tools, check out [Apache Buildr](https://buildr.apache.org), [Apache Maven](https://maven.apache.org), and [Gradle](https://gradle.org).
 
 {% include cta/cta1.html %}
-
-## Outside Article Checklist
-
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
