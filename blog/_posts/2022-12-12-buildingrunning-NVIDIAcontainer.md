@@ -276,10 +276,3 @@ Docker containers don't get automatic access to the system's GPU hardware. Conta
 Containers are a great way to run [CI](https://earthly.dev/blog/continuous-integration/) pipelines because they enable *reproducible builds* that work on any device. The NVIDIA Container Runtime allows the extension of containerized pipelines to include AI and ML workloads, too.
 
 {% include cta/cta1.html %}
-
-## Outside Article Checklist
-
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
