@@ -83,7 +83,7 @@ Kubernetes uses a container runtime to run containers in pods. To use Kubernetes
 📑 If you already have a container runtime installed, proceed to the next section on **configuring cgroup drivers**.
 </div>
 
-This section outlines the steps for [installing Docker Engine](https://docs.docker.com/engine/install/ubuntu/ ), which you'll use for the remainder of this tutorial.To install other container runtimes, refer to the instructions in [this guide](https://kubernetes.io/docs/setup/production-environment/container-runtimes/).
+This section outlines the steps for [installing Docker Engine](https://docs.docker.com/engine/install/ubuntu/ ), which you'll use for the remainder of this tutorial. To install other container runtimes, refer to the instructions in [this guide](https://kubernetes.io/docs/setup/production-environment/container-runtimes/).
 
 Start by installing the following packages on each node:
 
@@ -109,7 +109,7 @@ echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docke
 sudo apt-get update && sudo apt install docker-ce docker-ce-cli containerd.io -y
 ~~~
 
-**Step 4**:  Start and enable docker service. Docker has now been installed, so you need to start and enable the Docker service on all nodes for it to start working:
+**Step 4**: Start and enable docker service. Docker has now been installed, so you need to start and enable the Docker service on all nodes for it to start working:
 
 ~~~
 sudo systemctl start docker && sudo systemctl enable docker 
@@ -161,7 +161,7 @@ Once you've adjusted the configuration on each node, restart the Docker service 
 sudo systemctl daemon-reload && sudo systemctl restart docker
 ~~~
 
-## Installing kubeadm, kubelet, and kubectl
+## Installing Kubeadm, Kubelet, and Kubectl
 
 After setting up Docker and configuring the cgroup driver, you should install kubeadm, kubectl, and kubelet from the official Kubernetes package repository. To do so, follow along with the steps outlined in this section.
 
@@ -306,7 +306,7 @@ With the network plugin initialized, the master node is now Ready. Learn more ab
 
 ## Joining the Worker Node to the Kubernetes Cluster
 
-![]({{site.images}}{{page.slug}}/Pi4ncYk.png)
+![Joining the Worker Node to the Kubernetes Cluster]({{site.images}}{{page.slug}}/Pi4ncYk.png)\
 
 Now that you've successfully initiated the master node, the next step is to connect the worker node to the cluster. [SSH](https://help.skytap.com/connect-to-a-linux-vm-with-ssh.html) into your worker node and run the `kubeadm join` command you saved earlier or generate a new one with this command:
 
@@ -326,7 +326,7 @@ kubectl get nodes
 
 ## Upgrading the Kubernetes Cluster
 
-![]({{site.images}}{{page.slug}}/OcwoMk0.png)
+![Upgrading the Kubernetes Cluster]({{site.images}}{{page.slug}}/OcwoMk0.png)\
 
 In addition to supporting Kubernetes cluster upgrades, kubeadm makes upgrading your Kubernetes cluster as simple as possible with minimal downtime. In this guide, you'll learn how to upgrade Kubernetes from version 1.13.4 to version 1.14.1.
 
@@ -385,7 +385,7 @@ The upgrade may take a few minutes to complete.
 
 **Note**: If you see a Configuring grub-pc menu, select 'Keep the local version currently installed'.
 
-After a successful upgrade, bring the master node back online by making it scheduleable. To do this you have to uncordon the master node:
+After a successful upgrade, bring the master node back online by making it schedulable. To do this you have to uncordon the master node:
 
 ~~~
 kubectl uncordon $HOSTNAME
@@ -453,11 +453,11 @@ kubectl get nodes
 
 ![Successful upgrade of worker node]({{site.images}}{{page.slug}}/a/ICWrvUy)
 
-To sum up: kubeadm facilitates the upgrade of Kubernetes control planes and nodes without downtime. The  cluster has now been upgraded from version 1.13.4 to 1.14.1 seamlessly and with no downtime.
+To sum up: kubeadm facilitates the upgrade of Kubernetes control planes and nodes without downtime. The cluster has now been upgraded from version 1.13.4 to 1.14.1 seamlessly and with no downtime.
 
 ## Creating a Deployment for Testing
 
-![]({{site.images}}{{page.slug}}/vrMIeuc.png)
+![Creating a Deployment for Testing]({{site.images}}{{page.slug}}/vrMIeuc.png)\
 
 You now have a working Kubernetes cluster, complete with a master and worker node. To ensure that Kubernetes is properly configured, you'll create a demo project to test the cluster setup. You will deploy an NGINX web server in the Kubernetes cluster using the deployment resource.
 
@@ -503,5 +503,4 @@ In this article, you've learned how kubeadm allows you to quickly and easily boo
 * [ ] Optional: Find ways to break up content with quotes or images
 * [ ] Verify look of article locally
   * Would any images look better `wide` or without the `figcaption`?
-* [ ] Run mark down linter (`lint`)
 * [ ] Add keywords for internal links to front-matter
