@@ -125,7 +125,11 @@ sudo systemctl start docker && sudo systemctl enable docker
 sudo systemctl status docker 
 ~~~
 
+<div class="wide">
+
 ![Docker service active]({{site.images}}{{page.slug}}/KZj9viW.jpeg)
+
+</div>
 
 ## Configuring a `cgroup driver`
 
@@ -207,7 +211,11 @@ Blocking these packages ensures that all nodes will run the same version of `kub
 kubeadm
 ~~~
 
-![kubeadm help]({{site.images}}{{page.slug}}/slDeJbT.jpeg)
+<div class="wide">
+
+![Kubeadm help]({{site.images}}{{page.slug}}/slDeJbT.jpeg)
+
+</div>
 
 Read through the output to get a high-level overview of how a cluster is created and the commands that are available in kubeadm.
 
@@ -215,7 +223,11 @@ Read through the output to get a high-level overview of how a cluster is created
 
 You now have two nodes with kubeadm, kubelet, and kubectl installed. It's now time to initialize the Kubernetes control plane, which will manage the worker node and pods within the cluster.
 
+<div class="wide">
+
 ![Kubernetes architecture diagram]({{site.images}}{{page.slug}}/5hfwgUb.jpeg)
+
+</div>
 
 During this process, a certificate authority is created along with all cluster components, including
 [kubelets](https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet), masters, [API servers](https://kubernetes.io/docs/concepts/overview/kubernetes-api/), [controller managers](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-controller-manager/), [schedulers](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-scheduler/), [etcd](https://etcd.io/)), and any additional components that may be needed.
@@ -238,7 +250,11 @@ To initialize the Kubernetes cluster, run the following command on the master no
 sudo kubeadm init --pod-network-cidr=192.168.0.0/16 --kubernetes-version=stable-1.13 --node-name master
 ~~~
 
-![initiating the master node]({{site.images}}{{page.slug}}/ythdnTJ.jpeg)
+<div class="wide">
+
+![Initiating the master node]({{site.images}}{{page.slug}}/ythdnTJ.jpeg)
+
+</div>
 
 Read through the output to understand what is happening. At the end of the output, useful commands for configuring `kubectl` and joining worker nodes to the cluster are given.
 
@@ -258,7 +274,11 @@ Confirm you can use `kubectl` to get the cluster component statuses:
 kubectl get componentstatuses
 ~~~
 
+<div class="wide">
+
 ![Master node components successfully installed]({{site.images}}{{page.slug}}/haSZ5Oy.jpeg)
+
+</div>
 
 The output confirms that the [scheduler](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-scheduler/), [controller-manager](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-controller-manager/), [etcd](https://etcd.io/) are all `Healthy`. The Kubernetes API server is also operational; else, `kubectl` would have returned an error attempting to connect to the API server. Enter `kubeadm token --help` if you would like to learn more about kubeadm tokens.
 
@@ -268,7 +288,11 @@ Get the nodes in the cluster:
 kubectl get nodes
 ~~~
 
+<div class="wide">
+
 ![Master node not ready]({{site.images}}{{page.slug}}/GjNUiM6.jpeg)
+
+</div>
 
 You can probe deeper into the master node's `NotReady` status by describing it as follows:
 
@@ -276,7 +300,11 @@ You can probe deeper into the master node's `NotReady` status by describing it a
 kubectl describe nodes
 ~~~
 
+<div class="wide">
+
 ![Network plugin error message]({{site.images}}{{page.slug}}/YFGsPDk.jpeg)
+
+</div>
 
 ## Installing Weave CNI
 
@@ -298,13 +326,21 @@ Check the status of the nodes in the cluster:
 kubectl get nodes
 ~~~
 
+<div class="wide">
+
 ![Master node is ready]({{site.images}}{{page.slug}}/JXUhfzQ.jpeg)
+
+</div>
 
 ~~~
 kubectl get pods -all-namespaces
 ~~~
 
+<div class="wide">
+
 ![Weave network plugin successfully installed]({{site.images}}{{page.slug}}/F8KKPJW.jpeg)
+
+</div>
 
 With the network plugin initialized, the master node is now Ready. Learn more about [other network plugins supported by Kubernetes](https://kubernetes.io/docs/concepts/extend-kubernetes/compute-storage-net/network-plugins/).
 
@@ -318,7 +354,11 @@ Now that you've successfully initiated the master node, the next step is to conn
 kubeadm token create --print-join-command
 ~~~
 
+<div class="wide">
+
 ![Worker node successfully added to the cluster ]({{site.images}}{{page.slug}}/FrbPyDK.jpeg)
+
+</div>
 
 Verify whether the node has already been added to the Kubernetes cluster by exiting the worker node and [connecting to the master via SSH](https://help.skytap.com/connect-to-a-linux-vm-with-ssh.html).
 
@@ -326,7 +366,11 @@ Verify whether the node has already been added to the Kubernetes cluster by exit
 kubectl get nodes
 ~~~
 
+<div class="wide">
+
 ![Nodes successfully added to the cluster]({{site.images}}{{page.slug}}/H6ZJI1g.jpeg)
+
+</div>
 
 ## Upgrading the Kubernetes Cluster
 
@@ -352,7 +396,11 @@ sudo kubeadm upgrade plan v1.14.1
 
 **Note**: This command checks that your cluster can be upgraded, and fetches the versions you can upgrade to if you don't specify a version. It also shows a table with the component config version states.
 
+<div class="wide">
+
 ![Kubeadm Upgrade Plan]({{site.images}}{{page.slug}}/oQzZqEB.jpeg)
+
+</div>
 
 The output describes several checks that are performed before upgrading the cluster. This display informs you that you must upgrade the kubelet manually on each cluster node. The planned version changes for all cluster components are summarized in the `COMPONENT` section.
 
@@ -362,7 +410,11 @@ Next, apply the upgrade plan by issuing the following command:
 sudo kubeadm upgrade apply v1.14.1 -y
 ~~~
 
+<div class="wide">
+
 ![Successful upgrade of kubeadm]({{site.images}}{{page.slug}}/ZzdFx37.jpeg)
+
+</div>
 
 **Note**: If the upgrade procedure times out, you can safely try again until it succeeds. The upgrade command is **idempotent**, so you can run it as many times as required to complete the upgrade.
 
@@ -374,7 +426,11 @@ Prepare the master node for upgrade by making it unschedulable and evicting the 
 kubectl drain $HOSTNAME --ignore-daemonsets
 ~~~
 
+<div class="wide">
+
 ![Master node Drained]({{site.images}}{{page.slug}}/gARwQHU.jpeg)
+
+</div>
 
 Upgrade the kubelet, kubeadm, and kubectl apt packages:
 
@@ -401,7 +457,11 @@ Get the node information to confirm that the version of the master is 1.14.1:
 kubectl get nodes
 ~~~
 
+<div class="wide">
+
 ![Successful upgrade of master node]({{site.images}}{{page.slug}}/fWWhX05.jpeg)
+
+</div>
 
 ### Upgrading the Worker Node
 
@@ -419,7 +479,11 @@ After obtaining the node's name, to make the worker node unscheduled, you have t
 kubectl drain $worker_name --ignore-daemonsets
 ~~~
 
+<div class="wide">
+
 ![Draining the worker node]({{site.images}}{{page.slug}}/Rdc6UC2.jpeg)
+
+</div>
 
 After draining the node, the next step is to upgrade it. Connect via SSH to the worker node and use kubeadm to update the Kubernetes packages and the worker node's kubelet configuration:
 
@@ -435,7 +499,11 @@ Run the `kubeadm upgrade` command to update the worker node:
 sudo kubeadm upgrade node config --kubelet-version v1.14.1
 ~~~
 
+<div class="wide">
+
 ![Upgrading worker node]({{site.images}}{{page.slug}}/6IXCunm.jpeg)
+
+</div>
 
 Restart the worker node's kubelet:
 
@@ -455,7 +523,11 @@ Confirm the worker node is ready and running version 1.14.1:
 kubectl get nodes
 ~~~
 
+<div class="wide">
+
 ![Successful upgrade of worker node]({{site.images}}{{page.slug}}/ICWrvUy.jpeg)
+
+</div>
 
 To sum up: kubeadm facilitates the upgrade of Kubernetes control planes and nodes without downtime. The cluster has now been upgraded from version 1.13.4 to 1.14.1 seamlessly and with no downtime.
 
@@ -491,7 +563,11 @@ Now send an HTTP request to the web service to confirm availability:
 curl $service_ip
 ~~~
 
+<div class="wide">
+
 ![Successful deployment of Nginx web server ]({{site.images}}{{page.slug}}/ZMBclAP.jpeg)
+
+</div>
 
 The image above shows the response received after an HTTP request was sent to Nginx deployment in the Kubernetes [cluster](/blog/kube-bench). The response returns the home page of the Nginx server. Your Kubernetes cluster is now running a working application. You can now deploy applications to the cluster using the `kubectl apply` command. ✅
 
@@ -500,8 +576,3 @@ The image above shows the response received after an HTTP request was sent to Ng
 In this article, you've learned how kubeadm allows you to quickly and easily bootstrap minimal viable clusters as well as upgrade the cluster without downtime. Though kubeadm is great for development and workloads that do not require autoscaling, it is not suitable for large production clusters that require autoscaling functionality. Because node [autoscaling](/blog/k8s-autoscaling) necessitates the management of the underlying infrastructure and hardware, kubeadm delegates this responsibility to infrastructure providers.
 
 {% include cta/cta1.html %}
-
-## Outside Article Checklist
-
-* [ ] Verify look of article locally
-  * Would any images look better `wide` or without the `figcaption`?
