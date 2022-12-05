@@ -39,7 +39,7 @@ In Linux, [IPtables](https://www.redhat.com/sysadmin/iptables) is a basic firewa
 
 For IPtables to see bridged traffic, execute the following commands on all the nodes:
 
-~~~
+~~~{.bash caption=">_"}
 cat <<EOF | sudo tee /etc/modules-load.d/k8s.conf
 overlay
 br_netfilter
@@ -48,7 +48,7 @@ EOF
 
 Next, configure the `sysctl` parameters required by setup; the parameters set below will persist across reboots.
 
-~~~
+~~~{.bash caption=">_"}
 cat <<EOF | sudo tee /etc/sysctl.d/k8s.conf
 
 net.bridge.bridge-nf-call-iptables  = 1
@@ -62,7 +62,7 @@ EOF
 
 Apply the sysctl parameters to make sure that the changes are applied without rebooting:
 
-~~~
+~~~{.bash caption=">_"}
 sudo sysctl --system
 ~~~
 
@@ -70,7 +70,7 @@ sudo sysctl --system
 
 The Kubernetes scheduler determines which node is the best fit for deploying newly created pods. Allowing memory swapping on a host system can lead to performance and stability issues within Kubernetes. For this reason, Kubernetes requires that you **disable swap** in the host system. To ensure that the node does not use swap memory, run the following command on all nodes:
 
-~~~
+~~~{.bash caption=">_"}
 sudo swapoff -a && sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
 ~~~
 
@@ -91,37 +91,42 @@ This section outlines the steps for [installing Docker Engine](https://docs.dock
 
 Start by installing the following packages on each node:
 
-~~~
+~~~{.bash caption=">_"}
 sudo apt install ca-certificates curl gnupg lsb-release
 ~~~
 
 **Step 1**: Add Docker Official GPG key.
 
-~~~
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+~~~{.bash caption=">_"}
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | \
+sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
 ~~~
 
 **Step 2**: Configure the stable Docker release repository.
 
-~~~
-echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+~~~{.bash caption=">_"}
+echo "deb [arch=$(dpkg --print-architecture) \
+signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] \
+https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" \
+| sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 ~~~
 
 **Step 3**: Once the new repository is added, you'll only have to update the apt index and install Docker:
 
-~~~
-sudo apt-get update && sudo apt install docker-ce docker-ce-cli containerd.io -y
+~~~{.bash caption=">_"}
+sudo apt-get update && sudo apt install docker-ce \
+docker-ce-cli containerd.io -y
 ~~~
 
 **Step 4**: Start and enable docker service. Docker has now been installed, so you need to start and enable the Docker service on all nodes for it to start working:
 
-~~~
+~~~{.bash caption=">_"}
 sudo systemctl start docker && sudo systemctl enable docker 
 ~~~
 
 **Step 5**: Finally, verify that docker is working.
 
-~~~
+~~~{.bash caption=">_"}
 sudo systemctl status docker 
 ~~~
 
@@ -135,7 +140,7 @@ sudo systemctl status docker
 
 In order for the kubelet process to function correctly, its [cgroup driver](https://kubernetes.io/docs/setup/production-environment/container-runtimes/) needs to match Docker's. On each node, use the following command to adjust the Docker configuration:
 
-~~~
+~~~{.bash caption=">_"}
 cat <<EOF | sudo tee /etc/docker/daemon.json
 {
 
@@ -165,7 +170,7 @@ For more details, see [Configuring a cgroup driver](https://kubernetes.io/docs/t
 
 Once you've adjusted the configuration on each node, restart the Docker service and its corresponding daemon.
 
-~~~
+~~~{.bash caption=">_"}
 sudo systemctl daemon-reload && sudo systemctl restart docker
 ~~~
 
@@ -175,39 +180,42 @@ After setting up Docker and configuring the cgroup driver, you should install ku
 
 Download the public key for accessing packages on Google Cloud and add it as follows:
 
-~~~
-curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+~~~{.bash caption=">_"}
+curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg \
+| sudo apt-key add -
 ~~~
 
 Add the Kubernetes release repository:
 
-~~~
-sudo add-apt-repository "deb http://apt.kubernetes.io/ kubernetes-xenial main"
+~~~{.bash caption=">_"}
+sudo add-apt-repository "deb http://apt.kubernetes.io/ \
+kubernetes-xenial main"
 ~~~
 
 Next, update the package index to include the Kubernetes repository:
 
-~~~
+~~~{.bash caption=">_"}
 sudo apt-get update
 ~~~
 
 You can now Install kubeadm, kubelet, and kubectl:
 
-~~~
-sudo apt-get install -y kubeadm=1.13.4-00 kubelet=1.13.4-00 kubectl=1.13.4-00 kubernetes-cni=0.6.0-00
+~~~{.bash caption=">_"}
+sudo apt-get install -y kubeadm=1.13.4-00 kubelet=1.13.4-00 \
+kubectl=1.13.4-00 kubernetes-cni=0.6.0-00
 ~~~
 
 **Note**: All packages are set to 1.13.4 because they are stable versions. In production environments, it's more common to deploy a tested version of Kubernetes than the latest.
 
 Run the following command to prevent automatic updates to the installed packages:
 
-~~~
+~~~{.bash caption=">_"}
 sudo apt-mark hold kubelet kubeadm kubectl
 ~~~
 
 Blocking these packages ensures that all nodes will run the same version of `kubeadm`, `kubelet`, and `kubectl`. Display the help page for kubeadm:
 
-~~~
+~~~{.bash caption=">_"}
 kubeadm
 ~~~
 
@@ -246,7 +254,7 @@ In addition, many [command options](https://kubernetes.io/docs/reference/setup-t
 
 To initialize the Kubernetes cluster, run the following command on the master node:
 
-~~~
+~~~{.bash caption=">_"}
 sudo kubeadm init --pod-network-cidr=192.168.0.0/16 --kubernetes-version=stable-1.13 --node-name master
 ~~~
 
@@ -262,7 +270,7 @@ Copy the kubeadm join command at the end of the output and store it somewhere so
 
 To initialize your user's default `kubectl` configuration—using the admin kubeconfig file— generated by kubeadm, run the following commands:
 
-~~~
+~~~{.bash caption=">_"}
 mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
@@ -270,7 +278,7 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
 Confirm you can use `kubectl` to get the cluster component statuses:
 
-~~~
+~~~{.bash caption=">_"}
 kubectl get componentstatuses
 ~~~
 
@@ -284,7 +292,7 @@ The output confirms that the [scheduler](https://kubernetes.io/docs/reference/co
 
 Get the nodes in the cluster:
 
-~~~
+~~~{.bash caption=">_"}
 kubectl get nodes
 ~~~
 
@@ -296,7 +304,7 @@ kubectl get nodes
 
 You can probe deeper into the master node's `NotReady` status by describing it as follows:
 
-~~~
+~~~{.bash caption=">_"}
 kubectl describe nodes
 ~~~
 
@@ -312,7 +320,7 @@ In the `Conditions` section of the output, observe that the `Ready` condition is
 
 We'll now install [Weave]( https://github.com/weaveworks/weave), a network plugin. Run the following commands to install the Weave pod network plugin:
 
-~~~
+~~~{.bash caption=">_"}
 kubectl apply -f https://docs.projectcalico.org/v3.1/getting-started/kubernetes/installation/hosted/rbac-kdd.yaml
 
 kubectl apply -f https://github.com/weaveworks/weave/releases/download/v2.8.1/weave-daemonset-k8s-1.11.yaml
@@ -322,7 +330,7 @@ The commands first install the cluster roles and bindings that are used by Weave
 
 Check the status of the nodes in the cluster:
 
-~~~
+~~~{.bash caption=">_"}
 kubectl get nodes
 ~~~
 
@@ -332,7 +340,7 @@ kubectl get nodes
 
 </div>
 
-~~~
+~~~{.bash caption=">_"}
 kubectl get pods -all-namespaces
 ~~~
 
@@ -350,7 +358,7 @@ With the network plugin initialized, the master node is now Ready. Learn more ab
 
 Now that you've successfully initiated the master node, the next step is to connect the worker node to the cluster. [SSH](https://help.skytap.com/connect-to-a-linux-vm-with-ssh.html) into your worker node and run the `kubeadm join` command you saved earlier or generate a new one with this command:
 
-~~~
+~~~{.bash caption=">_"}
 kubeadm token create --print-join-command
 ~~~
 
@@ -362,7 +370,7 @@ kubeadm token create --print-join-command
 
 Verify whether the node has already been added to the Kubernetes cluster by exiting the worker node and [connecting to the master via SSH](https://help.skytap.com/connect-to-a-linux-vm-with-ssh.html).
 
-~~~
+~~~{.bash caption=">_"}
 kubectl get nodes
 ~~~
 
@@ -384,13 +392,13 @@ Although cluster upgrades are always supported, you should understand any change
 
 Update the kubeadm binary with version 1.14.1.
 
-~~~
+~~~{.bash caption=">_"}
 sudo curl -sSL https://dl.k8s.io/release/v1.14.1/bin/linux/amd64/kubeadm -o /usr/bin/kubeadm
 ~~~
 
 Before you upgrade, you need to verify the upgrade plan for upgrading Kubernetes to version 1.14.1:
 
-~~~
+~~~{.bash caption=">_"}
 sudo kubeadm upgrade plan v1.14.1
 ~~~
 
@@ -406,7 +414,7 @@ The output describes several checks that are performed before upgrading the clus
 
 Next, apply the upgrade plan by issuing the following command:
 
-~~~
+~~~{.bash caption=">_"}
 sudo kubeadm upgrade apply v1.14.1 -y
 ~~~
 
@@ -422,7 +430,7 @@ sudo kubeadm upgrade apply v1.14.1 -y
 
 Prepare the master node for upgrade by making it unschedulable and evicting the workloads:
 
-~~~
+~~~{.bash caption=">_"}
 kubectl drain $HOSTNAME --ignore-daemonsets
 ~~~
 
@@ -434,11 +442,12 @@ kubectl drain $HOSTNAME --ignore-daemonsets
 
 Upgrade the kubelet, kubeadm, and kubectl apt packages:
 
-~~~
+~~~{.bash caption=">_"}
 sudo apt-get update
 sudo apt-get upgrade -y --allow-change-held-packages \
 
-     kubelet=1.14.1-00 kubeadm=1.14.1-00 kubectl=1.14.1-00 kubernetes-cni=0.7.5-00
+     kubelet=1.14.1-00 kubeadm=1.14.1-00 \
+     kubectl=1.14.1-00 kubernetes-cni=0.7.5-00
 ~~~
 
 The upgrade may take a few minutes to complete.
@@ -447,13 +456,13 @@ The upgrade may take a few minutes to complete.
 
 After a successful upgrade, bring the master node back online by making it schedulable. To do this you have to uncordon the master node:
 
-~~~
+~~~{.bash caption=">_"}
 kubectl uncordon $HOSTNAME
 ~~~
 
 Get the node information to confirm that the version of the master is 1.14.1:
 
-~~~
+~~~{.bash caption=">_"}
 kubectl get nodes
 ~~~
 
@@ -469,13 +478,13 @@ Following the successful upgrade of the master node, the worker node needs to be
 
 Firstly, get the worker's name:
 
-~~~
+~~~{.bash caption=">_"}
 worker_name=$(kubectl get nodes | grep \<none\> | cut -d' ' -f1)
 ~~~
 
 After obtaining the node's name, to make the worker node unscheduled, you have to drain it.
 
-~~~
+~~~{.bash caption=">_"}
 kubectl drain $worker_name --ignore-daemonsets
 ~~~
 
@@ -487,15 +496,16 @@ kubectl drain $worker_name --ignore-daemonsets
 
 After draining the node, the next step is to upgrade it. Connect via SSH to the worker node and use kubeadm to update the Kubernetes packages and the worker node's kubelet configuration:
 
-~~~
+~~~{.bash caption=">_"}
 sudo apt-get update
 sudo apt-get upgrade -y --allow-change-held-packages \
-     kubelet=1.14.1-00 kubeadm=1.14.1-00 kubectl=1.14.1-00 kubernetes-cni=0.7.5-00
+     kubelet=1.14.1-00 kubeadm=1.14.1-00 \
+     kubectl=1.14.1-00 kubernetes-cni=0.7.5-00
 ~~~
 
 Run the `kubeadm upgrade` command to update the worker node:
 
-~~~
+~~~{.bash caption=">_"}
 sudo kubeadm upgrade node config --kubelet-version v1.14.1
 ~~~
 
@@ -507,19 +517,19 @@ sudo kubeadm upgrade node config --kubelet-version v1.14.1
 
 Restart the worker node's kubelet:
 
-~~~
+~~~{.bash caption=">_"}
 sudo systemctl restart kubelet
 ~~~
 
 Now connect via SSH in the master node and uncordon the worker node:
 
-~~~
+~~~{.bash caption=">_"}
 kubectl uncordon $worker_name
 ~~~
 
 Confirm the worker node is ready and running version 1.14.1:
 
-~~~
+~~~{.bash caption=">_"}
 kubectl get nodes
 ~~~
 
@@ -539,27 +549,28 @@ You now have a working Kubernetes cluster, complete with a master and worker nod
 
 Firstly, create an Nginx deployment with a container image of the Nginx with two replicas:
 
-~~~
+~~~{.bash caption=">_"}
 kubectl create deployment nginx --image=nginx --replicas=2
 ~~~
 
 In order to access the Nginx deployment, you must create a service resource. You can do this by running the following commands:
 
-~~~
-kubectl expose deployment nginx --type=ClusterIP --port=80 --target-port=80 --name=web 
+~~~{.bash caption=">_"}
+kubectl expose deployment nginx --type=ClusterIP \
+--port=80 --target-port=80 --name=web 
 ~~~
 
 The service type clusterIP and port 80 named "web" are created for the Nginx deployment.
 
 Get the Cluster IP of the service:
 
-~~~
+~~~{.bash caption=">_"}
 service_ip=$(kubectl get service web -o jsonpath='{.spec.clusterIP}')
 ~~~
 
 Now send an HTTP request to the web service to confirm availability:
 
-~~~
+~~~{.bash caption=">_"}
 curl $service_ip
 ~~~
 
