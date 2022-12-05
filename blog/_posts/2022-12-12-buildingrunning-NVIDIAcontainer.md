@@ -9,7 +9,7 @@ internal-links:
  - just an example
 ---
 
-[NVIDIA Container Runtime](https://github.com/NVIDIA/nvidia-container-runtime) allows containerized applications to access your host's GPU hardware. It facilitates the containerization of systems that would otherwise be off-limits, such as artificial intelligence (AI) and machine learning (ML) workloads. With NVIDIA Container Runtime installed, you can run these apps in containers on *any* host with an NVIDIA GPU.
+[NVIDIA Container Runtime](https://github.com/NVIDIA/nvidia-container-runtime) allows containerized applications to access your host's GPU hardware. It facilitates the containerization of systems that would otherwise be off-limits, such as artificial intelligence (AI) and machine learning (ML) workloads. With NVIDIA [Container](/blog/docker-slim) Runtime installed, you can run these apps in containers on *any* host with an NVIDIA GPU.
 
 In this article, you'll learn about the runtime's architecture and how to set it up. You'll also learn how to deploy your own containers with GPU access, broadening the scope of what you can successfully containerize.
 
@@ -197,7 +197,7 @@ The NVIDIA Container Runtime provides a few configuration options for controllin
 
 ### Using Specific GPUs
 
-On systems with multiple GPUs, it's often preferred to make only a subset of the hardware available to a container. There are a few ways of doing this:
+On systems with multiple GPUs, it's often preferred to [make](/blog/using-cmake) only a subset of the hardware available to a container. There are a few ways of doing this:
 
 #### Make Two GPUs Available
 
@@ -238,7 +238,7 @@ Setting `--gpus '"device=1"'` or `NVIDIA_VISIBLE_DEVICES=1` will make only the G
 
 ### Customizing Driver Capabilities
 
-Not every application needs all the capabilities of the NVIDIA driver. The `NVIDIA_DRIVER_CAPABILITIES` environment variable allows only a subset of libraries to be mounted onto the container. And most containerized apps won't be using the GPU to render graphics, so it's possible to filter only the `compute` (CUDA/OpenCL) and `utility` (`nvidia-smi`/NVML) capabilities:
+Not every application needs all the capabilities of the NVIDIA driver. The `NVIDIA_DRIVER_CAPABILITIES` [environment variable](/blog/bash-variables) allows only a subset of libraries to be mounted onto the container. And most containerized apps won't be using the GPU to render graphics, so it's possible to filter only the `compute` (CUDA/OpenCL) and `utility` (`nvidia-smi`/NVML) capabilities:
 
 ~~~
 $ docker run -it --runtime nvidia -e NVIDIA_DRIVER_CAPABILITIES=compute,utility nvidia/cuda:11.4.0-base-ubuntu20.04 nvidia-smi
@@ -248,7 +248,7 @@ The full list of known capability names is available in the [NVIDIA documentatio
 
 ### Requiring Specific Hardware and Drivers
 
-The `NVIDIA_REQUIRE_*` environment variables allow for constraining GPU access based on specific characteristics of the host environment.
+The `NVIDIA_REQUIRE_*` [environment variables](/blog/bash-variables) allow for constraining GPU access based on specific characteristics of the host environment.
 
 The following four options are available:
 
@@ -257,7 +257,7 @@ The following four options are available:
 - **`arch`**: require a specific CPU architecture
 - **`brand`**: require a specific GPU model family, such as GeForce or Tesla
 
-Here's an example where the container image is constrained to GeForce GPUs with CUDA version 11.0 or newer:
+Here's an example where the [container](/blog/docker-slim) image is constrained to GeForce GPUs with CUDA version 11.0 or newer:
 
 ~~~
 $ docker run -it --runtime nvidia -e NVIDIA_REQUIRE_CUDA="cuda>=11.0 brand=GeForce" nvidia/cuda:11.4.0-base-ubuntu20.04 nvidia-smi
@@ -269,7 +269,7 @@ Multiple constraints passed to the same environment variable are always combined
 
 Docker containers don't get automatic access to the system's GPU hardware. Containers lack the drivers that enable GPU communications. This necessitates the use of a vendor-specific layer to expose GPUs inside containers.
 
-[NVIDIA](https://www.nvidia.com/en-us/) hardware is supported by the company's container runtime that wraps the default container runtime with an interface to the host's NVIDIA drivers. GPU support can then be added to the images by basing them on an official NVIDIA CUDA image or manually installing the CUDA libraries inside the Dockerfile.
+[NVIDIA](https://www.nvidia.com/en-us/) hardware is supported by the company's [container](/blog/docker-slim) runtime that wraps the default container runtime with an interface to the host's NVIDIA drivers. GPU support can then be added to the images by basing them on an official NVIDIA CUDA image or manually installing the CUDA libraries inside the Dockerfile.
 
 Containers are a great way to run [CI](https://earthly.dev/blog/continuous-integration/) pipelines because they enable *reproducible builds* that work on any device. The NVIDIA Container Runtime allows the extension of containerized pipelines to include AI and ML workloads, too.
 
@@ -282,4 +282,3 @@ Containers are a great way to run [CI](https://earthly.dev/blog/continuous-integ
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
