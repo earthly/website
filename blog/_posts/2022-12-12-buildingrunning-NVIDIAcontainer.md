@@ -43,7 +43,7 @@ Before you install the runtime, make sure your system satisfies the following pr
 
 To install NVIDIA Container Runtime, start by making sure that the drivers are detecting the hardware by running the `nvidia-smi` command on the host:
 
-~~~
+~~~{.bash caption=">_"}
 +-----------------------------------------------------------------------------+
 | NVIDIA-SMI 470.141.03   Driver Version: 470.141.03   CUDA Version: 11.4     |
 |-------------------------------+----------------------+----------------------+
@@ -63,15 +63,16 @@ This machine has detected a single GPU using the driver version 470.141.03 and C
 
 Run the following command to add the `nvidia-docker` package repository to the system. It registers the repository's GPG key and inserts it into the sources list:
 
-~~~
+~~~{.bash caption=">_"}
 $ distribution=$(. /etc/os-release;echo $ID$VERSION_ID) \
-   && curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add - \
+   && curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey \
+   | sudo apt-key add - \
    && curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list | sudo tee /etc/apt/sources.list.d/nvidia-docker.list
 ~~~
 
 Then run `apt update` to update the package lists and discover the NVIDIA container packages:
 
-~~~
+~~~{.bash caption=">_"}
 $ sudo apt update
 ~~~
 
@@ -79,7 +80,7 @@ $ sudo apt update
 
 Use the following command to add the complete NVIDIA Container Toolkit to the system:
 
-~~~
+~~~{.bash caption=">_"}
 $ sudo apt install -y nvidia-docker2
 ~~~
 
@@ -87,7 +88,7 @@ The installation process is fully automated. Once it's finished, open the `/etc/
 
 Find or add the `runtimes` key and insert a new field called `nvidia`. The value should be an object with a `path` that points to `nvidia-container-runtime`. Here's a complete example:
 
-~~~
+~~~{.json caption="daemon.json"}
 {
     "runtimes": {
         "nvidia": {
@@ -100,7 +101,7 @@ Find or add the `runtimes` key and insert a new field called `nvidia`. The value
 
 Referencing the runtime called `nvidia` will start the containers using the NVIDIA Container Runtime. The next section will show how this is done. If preferred, all new containers can be made to automatically use the runtime by setting the `default-runtime` field, too:
 
-~~~
+~~~{.json caption="daemon.json"}
 {
     "runtimes": {
         "nvidia": {
@@ -114,7 +115,7 @@ Referencing the runtime called `nvidia` will start the containers using the NVID
 
 Restart Docker Engine to apply the changes:
 
-~~~
+~~~{.bash caption=">_"}
 $ sudo systemctl restart docker
 ~~~
 
@@ -134,7 +135,7 @@ Three different flavors are available for each combination of operating system a
 
 Basing the image on top of one of the `nvidia/cuda` tags is the recommended way to use CUDA if a suitable option is available. A descendant image can then be built by writing a Dockerfile that layers in the source code:
 
-~~~
+~~~{.bash caption=">_"}
 FROM nvidia/cuda:11.4.0-base-ubuntu20.04
 RUN apt update
 RUN apt-get install -y python3 python3-pip
@@ -150,7 +151,7 @@ The instructions vary by architecture, operating system, and CUDA release, so it
 
 The image will need to add the correct CUDA package repository, install the library, and then set some environment variables that advertise GPU support to the NVIDIA Container Runtime:
 
-~~~
+~~~{.bash caption=">_"}
 ENV NVIDIA_VISIBLE_DEVICES all
 ENV NVIDIA_DRIVER_CAPABILITIES compute,utility
 ~~~
@@ -163,11 +164,12 @@ The container runtime won't attach the hardware if these variables are missing. 
 
 Make sure that the installation is working by running the `nvidia-smi` command within an image:
 
-~~~
-$ docker run -it --gpus all --runtime nvidia nvidia/cuda:11.4.0-base-ubuntu20.04 nvidia-smi
+~~~{.bash caption=">_"}
+$ docker run -it --gpus all --runtime nvidia \
+nvidia/cuda:11.4.0-base-ubuntu20.04 nvidia-smi
 ~~~
 
-~~~
+~~~{.bash caption=">_"}
 +-----------------------------------------------------------------------------+
 | NVIDIA-SMI 470.141.03   Driver Version: 470.141.03   CUDA Version: 11.4     |
 |-------------------------------+----------------------+----------------------+
@@ -203,37 +205,45 @@ On systems with multiple GPUs, it's often preferred to [make](/blog/using-cmake)
 
 #### Make Two GPUs Available
 
-~~~
-$ docker run -it --gpus 2 --runtime nvidia nvidia/cuda:11.4.0-base-ubuntu20.04 nvidia-smi
+~~~{.bash caption=">_"}
+$ docker run -it --gpus 2 --runtime nvidia \
+nvidia/cuda:11.4.0-base-ubuntu20.04 nvidia-smi
 ~~~
 
 #### Make a Specific GPU Available
 
-~~~
-$ docker run -it --gpus '"device=1"' --runtime nvidia nvidia/cuda:11.4.0-base-ubuntu20.04 nvidia-smi
+~~~{.bash caption=">_"}
+$ docker run -it --gpus '"device=1"' --runtime \
+nvidia nvidia/cuda:11.4.0-base-ubuntu20.04 nvidia-smi
 ~~~
 
 #### Make Two Specific GPUs Available
 
-~~~
-$ docker run -it --gpus '"device=0,1' --runtime nvidia nvidia/cuda:11.4.0-base-ubuntu20.04 nvidia-smi
+~~~{.bash caption=">_"}
+$ docker run -it --gpus '"device=0,1' --runtime \
+nvidia nvidia/cuda:11.4.0-base-ubuntu20.04 nvidia-smi
 ~~~
 
 #### Alternatively, Use an Environment Variable
 
-~~~
-$ docker run -it --runtime nvidia -e NVIDIA_VISIBLE_DEVICES=0,1 nvidia/cuda:11.4.0-base-ubuntu20.04 nvidia-smi
+~~~{.bash caption=">_"}
+$ docker run -it --runtime nvidia -e \
+NVIDIA_VISIBLE_DEVICES=0,1 nvidia/cuda:11.4.0-base-ubuntu20.04 nvidia-smi
 ~~~
 
 Run the following command on the host to find the indexes of the GPU hardware to supply to `--gpus` or `NVIDIA_VISIBLE_DEVICES`:
 
-~~~
+~~~{.bash caption=">_"}
+
 $ nvidia-smi -L
 ~~~
 
-~~~
-GPU 0: NVIDIA GeForce GTX 1080 Ti (UUID: GPU-5ba4538b-234f-2c18-6a7a-458d0a7fb348)
-GPU 1: NVIDIA GeForce GTX 1060 (UUID: GPU-c6dc4e3b-7f0d-4e22-ac41-479ae1c6fbdc)
+~~~{.bash caption=">_"}
+
+GPU 0: NVIDIA GeForce GTX 1080 Ti \
+(UUID: GPU-5ba4538b-234f-2c18-6a7a-458d0a7fb348)
+GPU 1: NVIDIA GeForce GTX 1060 \
+(UUID: GPU-c6dc4e3b-7f0d-4e22-ac41-479ae1c6fbdc)
 ~~~
 
 Setting `--gpus '"device=1"'` or `NVIDIA_VISIBLE_DEVICES=1` will make only the GTX 1060 available to the container.
@@ -242,8 +252,11 @@ Setting `--gpus '"device=1"'` or `NVIDIA_VISIBLE_DEVICES=1` will make only the G
 
 Not every application needs all the capabilities of the NVIDIA driver. The `NVIDIA_DRIVER_CAPABILITIES` [environment variable](/blog/bash-variables) allows only a subset of libraries to be mounted onto the container. And most containerized apps won't be using the GPU to render graphics, so it's possible to filter only the `compute` (CUDA/OpenCL) and `utility` (`nvidia-smi`/NVML) capabilities:
 
-~~~
-$ docker run -it --runtime nvidia -e NVIDIA_DRIVER_CAPABILITIES=compute,utility nvidia/cuda:11.4.0-base-ubuntu20.04 nvidia-smi
+~~~{.bash caption=">_"}
+
+$ docker run -it --runtime nvidia -e \
+NVIDIA_DRIVER_CAPABILITIES=compute,utility \
+nvidia/cuda:11.4.0-base-ubuntu20.04 nvidia-smi
 ~~~
 
 The full list of known capability names is available in the [NVIDIA documentation](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/user-guide.html#driver-capabilities).
@@ -261,8 +274,11 @@ The following four options are available:
 
 Here's an example where the [container](/blog/docker-slim) image is constrained to GeForce GPUs with CUDA version 11.0 or newer:
 
-~~~
-$ docker run -it --runtime nvidia -e NVIDIA_REQUIRE_CUDA="cuda>=11.0 brand=GeForce" nvidia/cuda:11.4.0-base-ubuntu20.04 nvidia-smi
+~~~{.bash caption=">_"}
+
+$ docker run -it --runtime nvidia -e \
+NVIDIA_REQUIRE_CUDA="cuda>=11.0 brand=GeForce" \
+nvidia/cuda:11.4.0-base-ubuntu20.04 nvidia-smi
 ~~~
 
 Multiple constraints passed to the same environment variable are always combined with a logical *and* clause.
