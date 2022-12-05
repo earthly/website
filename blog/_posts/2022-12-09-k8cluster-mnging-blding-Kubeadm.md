@@ -11,7 +11,7 @@ internal-links:
 
 Are you looking for a tool to quickly bootstrap a Kubernetes cluster? Why not try **kubeadm**?
 
-Kubeadm is an excellent tool for quickly creating a Kubernetes cluster. By running a series of pre-checks, kubeadm ensures that the server has all the components and configurations needed for Kubernetes. In addition to bootstrapping a Kubernetes cluster with ease, kubeadm also allows you to customize and configure cluster components.
+Kubeadm is an excellent tool for quickly creating a Kubernetes [cluster](/blog/kube-bench). By running a series of pre-checks, [kubeadm](/blog/k8s-dev-solutions) ensures that the server has all the components and configurations needed for Kubernetes. In addition to bootstrapping a Kubernetes cluster with ease, kubeadm also allows you to customize and configure cluster components.
 
 In this guide, you'll learn how to set up a Kubernetes cluster using kubeadm, upgrade the cluster, and deploy an application to test if it works.
 
@@ -489,11 +489,11 @@ curl $service_ip
 
 ![Successful deployment of Nginx web server ]({{site.images}}{{page.slug}}/a/ZMBclAP)
 
-The image above shows the response received after an HTTP request was sent to Nginx deployment in the Kubernetes cluster. The response returns the home page of the Nginx server. Your Kubernetes cluster is now running a working application. You can now deploy applications to the cluster using the `kubectl apply` command. ✅
+The image above shows the response received after an HTTP request was sent to Nginx deployment in the Kubernetes [cluster](/blog/kube-bench). The response returns the home page of the Nginx server. Your Kubernetes cluster is now running a working application. You can now deploy applications to the cluster using the `kubectl apply` command. ✅
 
 ## Conclusion
 
-In this article, you've learned how kubeadm allows you to quickly and easily bootstrap minimal viable clusters as well as upgrade the cluster without downtime. Though kubeadm is great for development and workloads that do not require autoscaling, it is not suitable for large production clusters that require autoscaling functionality. Because node autoscaling necessitates the management of the underlying infrastructure and hardware, kubeadm delegates this responsibility to infrastructure providers.
+In this article, you've learned how kubeadm allows you to quickly and easily bootstrap minimal viable clusters as well as upgrade the cluster without downtime. Though kubeadm is great for development and workloads that do not require autoscaling, it is not suitable for large production clusters that require autoscaling functionality. Because node [autoscaling](/blog/k8s-autoscaling) necessitates the management of the underlying infrastructure and hardware, kubeadm delegates this responsibility to infrastructure providers.
 
 {% include cta/cta1.html %}
 
@@ -505,4 +505,3 @@ In this article, you've learned how kubeadm allows you to quickly and easily boo
   * Would any images look better `wide` or without the `figcaption`?
 * [ ] Run mark down linter (`lint`)
 * [ ] Add keywords for internal links to front-matter
-* [ ] Run `link-opp` and find 1-5 places to incorporate links
