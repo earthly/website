@@ -6,7 +6,10 @@ toc: true
 author: Ndafara Tsamba
 
 internal-links:
- - just an example
+ - CMake
+ - Make
+ - Compilation
+ - Dependency-Management
 ---
 
 Creating software isn't only about writing code; you need to build all the source code to get a usable software artifact. This build process can be done manually, but it can become difficult as you start working on larger projects. This is where tools like [CMake](https://cmake.org/) and [Make](https://www.make.com/en) can help you automate the process. Both of these tools allow you to go from source code to executables.
@@ -399,4 +402,3 @@ In this article, you've learned the differences between CMake and Make, as well 
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Add keywords for internal links to front-matter
