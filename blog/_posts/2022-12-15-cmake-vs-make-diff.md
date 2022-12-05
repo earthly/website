@@ -119,7 +119,7 @@ One of the main differences between CMake and Make is that CMake creates output 
 
 To demonstrate this, look at an example where the following C++ program is run, which gives a greeting, asks for an age, and then prints out that number. The program is composed of three files: `main.cpp`, `age.cpp`, and `process_age.h`:
 
-1. **`main.cpp`**:
+1 - **`main.cpp`**
 
 ~~~{.C caption="main.cpp"}
 # include "process_age.h"
@@ -132,7 +132,7 @@ int main(){
 }
 ~~~
 
-2. **`age.cpp`**:
+2 - **`age.cpp`**
 
 ~~~{.C caption="age.cpp"}
 # include <iostream>
@@ -147,7 +147,7 @@ void processAge(){
     cout << "You are " << age << " years old.\n";
 ~~~
 
-3. **`process_age.h`**:
+3 - **`process_age.h`**
 
 ~~~{.C caption="process_age.h"}
 void processAge();
