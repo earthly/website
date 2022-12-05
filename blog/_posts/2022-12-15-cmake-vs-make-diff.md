@@ -15,15 +15,15 @@ In this article, you'll learn how CMake and Make work and the key differences be
 
 ## What Is Compilation?
 
-A compiler is a program that translates source code into machine code. The compilation of code consists of a few steps, including preprocessing, compiling, and linking, to create either a library or an executable that can be directly run by the computer it was made for.
+A compiler is a program that translates source code into [machine code](/blog/compiling-containers-dockerfiles-llvm-and-buildkit). The compilation of code consists of a few steps, including preprocessing, compiling, and linking, to create either a library or an executable that can be directly run by the computer it was made for.
 
 ![Steps in the Compilation Process]({{site.images}}{{page.slug}}/IbLS3QY.png)
 
-This compilation process is also known as the **build process** and is where CMake and Make enter the picture.
+This compilation process is also known as the **build process** and is where CMake and [Make](/blog/using-cmake) enter the picture.
 
 ### How CMake and Make Work
 
-CMake and Make are especially helpful when it comes to automation and save you time by putting all the commands required to build the program in either a Makefile or `CMakeLists.txt` file without having to type them out every time.
+CMake and Make are especially helpful when it comes to automation and save you time by putting all the commands required to build the program in either a [Makefile](/blog/using-cmake) or `CMakeLists.txt` file without having to type them out every time.
 
 Make is a tool that controls the generation of executables and other non–source files of a program from the program's source files. It obtains the instructions on how to build the program from a file called the [Makefile](https://makefiletutorial.com/).
 
@@ -98,7 +98,7 @@ Copyright (C) Microsoft Corporation. All rights reserved.
 
 ~~~
 
-**Note**: To build the CMake artifacts on Windows, you need to [install MSBuild]((<https://learn.microsoft.com/en-us/visualstudio/msbuild/msbuild?view=vs-2022>), a build engine.
+**Note**: To build the CMake artifacts on [Windows](/blog/makefiles-on-windows), you need to [install MSBuild]((<https://learn.microsoft.com/en-us/visualstudio/msbuild/msbuild?view=vs-2022>), a build engine.
 
 Because Make comes bundled with the Unix operating system, there is no need to install it. However, there may be a need to upgrade to the latest version (which is version 4.3 at the time of writing) to improve functionality and prevent security vulnerabilities.
 
@@ -349,7 +349,7 @@ Create a directory and copy over the `main.cpp` and `age.cpp` files. Also create
 The directory should look as follows:
 ![GUI Directory Contents]({{site.images}}{{page.slug}}/u3Ygtvl.png)
 
-After specifying the source and output directories, the CMake GUI should look as follows:
+After specifying the source and output directories, the [CMake](/blog/using-cmake) GUI should look as follows:
 ![GUI with directories]({{site.images}}{{page.slug}}/FDvhWWI.png)
 Then click on *Configure* which will open a dialog box for you to choose which build system you want to generate for.
 
@@ -395,10 +395,8 @@ In this article, you've learned the differences between CMake and Make, as well 
 
 ## Outside Article Checklist
 
-- [ ] Add in Author page
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
