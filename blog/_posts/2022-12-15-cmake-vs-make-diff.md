@@ -52,7 +52,7 @@ cmake --version
 
 The output on Windows will look like this:
 
-~~~{.bash caption="Output"}
+~~~{caption="Output"}
 cmake version 3.24.2
 
 CMake suite maintained and supported by Kitware (kitware.com/cmake).
@@ -60,7 +60,7 @@ CMake suite maintained and supported by Kitware (kitware.com/cmake).
 
 And the output on Linux will look like this:
 
-~~~{.bash caption="Output"}
+~~~{caption="Output"}
 cmake version 3.10.2
 
 CMake suite maintained and supported by [Kitware](kitware.com/cmake).
@@ -75,7 +75,7 @@ make --version
 
 The output should look similar to the following:
 
-~~~{.bash caption="Output"}
+~~~{caption="Output"}
 GNU Make 4.1
 Built for x86_64-pc-linux-gnu
 Copyright (C) 1988-2014 Free Software Foundation, Inc.
@@ -92,13 +92,12 @@ msbuild -version
 
 The output should look like this:
 
-~~~{.bash caption="Output"}
+~~~{caption="Output"}
 
 Microsoft (R) Build Engine version 15.8.168+ga8fba1ebd7 for .NET Framework
 Copyright (C) Microsoft Corporation. All rights reserved.
 
 15.8.168.64424
-
 ~~~
 
 **Note**: To build the CMake artifacts on [Windows](/blog/makefiles-on-windows), you need to [install MSBuild]((<https://learn.microsoft.com/en-us/visualstudio/msbuild/msbuild?view=vs-2022>), a build engine.
@@ -194,7 +193,7 @@ To run this program using Make, run `make` in the terminal. This will compile th
 
 Next, run the command `./hello_age`, which will run the executable and print out "Hello, Earthly!". Then it will give a prompt to enter the age. For a given age of "50", it will print the following:
 
-~~~{.bash caption="Output"}
+~~~{caption="Output"}
 Hello, Earthly!
 Please enter your age: 50
 You are 50 years old.
@@ -220,7 +219,7 @@ Then in the `hello_cmake` directory, create two directories called `build-unix` 
 
 Next, create a file named `CMakeLists.txt`, which is the CMake configuration file. It contains the instructions that will be used to build the program:
 
-~~~{.txt caption="CMakeLists.txt"}
+~~~{caption="CMakeLists.txt"}
 cmake_minimum_required(VERSION 3.10.0)
 
 #project name
@@ -303,7 +302,7 @@ cmake ..
 
 This will build the C++ code for Windows Visual Studio 15 2017 build system:
 
-~~~{.bash caption="Output"}
+~~~{caption="Output"}
 -- Building for: Visual Studio 15 2017
 -- Selecting Windows SDK version 10.0.17763.0 to target Windows 10.0.18363.
 -- The C compiler identification is MSVC 19.16.27043.0
@@ -321,7 +320,6 @@ This will build the C++ code for Windows Visual Studio 15 2017 build system:
 -- Configuring done
 -- Generating done
 -- Build files have been written to: C:/CMake_vs_Make/hello_cmake/build-windows
-
 ~~~
 
 If you navigate to the `build-windows` directory, you should be able to see the following files:
@@ -350,11 +348,10 @@ hello_age.exe
 
 In this example, the age entered was "52":
 
-~~~{.bash caption="Output"}
+~~~{caption="Output"}
 Hello, Earthly!
 Please enter your age: 52
 You are 52 years old.
-
 ~~~
 
 As shown, the same commands can be run on both Unix-based systems and Windows-based systems to create a build system with CMake, which makes CMake platform-agnostic. After the output is generated, any build system of choice can then be used to build the application. In this case, Make is used for the Unix-based platform and MSBuild for Windows.
