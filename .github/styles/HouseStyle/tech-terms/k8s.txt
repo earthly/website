@@ -46,3 +46,12 @@ statefulset
 Hykes
 Multicloud
 multicloud
+
+uncordon
+unschedulable
+schedulable
+kubelets
+cidr
+daemonset
+sysctl
+fstab
