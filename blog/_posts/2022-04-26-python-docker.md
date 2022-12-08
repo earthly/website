@@ -8,6 +8,8 @@ internal-links:
  - python docker
  - docker python
 ---
+<iframe width="560" height="315" src="https://www.youtube.com/embed/4bGtb2L4-VM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 Python is a versatile programming language, but running it can be a handful when you have to manage its dependencies—especially when you are sharing projects with other developers.
 
 One solution is to use [Docker](https://www.docker.com/). The containerization tool runs applications in an isolated system and manages dependencies. It is cost-effective, efficient for CI/CD deployments, scalable, and easy to use, making it a good choice for your Python applications.
