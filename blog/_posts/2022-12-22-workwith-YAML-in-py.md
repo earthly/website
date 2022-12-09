@@ -461,8 +461,3 @@ In this tutorial, you have learned how to work with YAML using the Python progra
 As a next step, you may try converting [JSON to CSV](https://earthly.dev/blog/convert-to-from-json/).
 
 {% include cta/cta1.html %}
-
-## Outside Article Checklist
-
-- [ ] Create header image in Canva
-
