@@ -7,7 +7,10 @@ toc: true
 author: Muhammed Ali
 
 internal-links:
- - just an example
+ - Kubernetes
+ - Ingress
+ - Cluster
+ - Routing
 ---
 
 # Defining Application Routing in Kubernetes Cluster
@@ -287,6 +290,5 @@ You can build on what you have learned here by using a legit TLS certificate. Or
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Run mark down linter (`lint`)
-- [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
 
