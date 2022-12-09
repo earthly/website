@@ -55,7 +55,12 @@ pip3 show pyyaml
 ~~~
 
 If the PyYAML installation was successful, you should get a similar output.
-![Confirming the pyyaml library installation]({{site.images}}{{page.slug}}/CfAE3U5)
+
+<div class="wide">
+
+![Confirming the pyyaml library installation]({{site.images}}{{page.slug}}/CfAE3U5.png)
+
+</div>
 
 ### Creating YAML in Python
 
@@ -63,7 +68,7 @@ You can download the code snippets used in this tutorial from [this](https://git
 
 Now that you have **PyYAML** installed, you can start working with YAML in Python.
 
-![PyYAML installed]({{site.images}}{{page.slug}}/IpzMsKL.png)
+![PyYAML installed]({{site.images}}{{page.slug}}/IpzMsKL.png)\
 
 In your working directory, create a file called *script.py* and  
 import the *yaml*  module:
@@ -195,7 +200,8 @@ hostpath:
 
 ## Writing YAML to a File in Python
 
-![Writing YAML to a File in Python]({{site.images}}{{page.slug}}/XUdOKxs.png)
+![Writing YAML to a File in Python]({{site.images}}{{page.slug}}/XUdOKxs.png)\
+
 
 Now that you've learned how to create YAML documents from Python objects, let's learn how to write them into a file for future use.
 
@@ -214,7 +220,9 @@ write_yaml_to_file(data, 'output')
 
 Upon calling the `write_yaml_to_file()` function with the `data` dictionary as the argument, the YAML file will be created in the working directory, as shown below:
 
-![Viewing *data* dictionary in *yaml* format in the file *output.yaml* ]({{site.images}}{{page.slug}}/YF5c7y0)
+<div class="wide">
+![Viewing *data* dictionary in *yaml* format in the file *output.yaml* ]({{site.images}}{{page.slug}}/YF5c7y0.png)
+</div>
 
 Similarly, you can call the `write_yaml_to_file()` function with `data2` as the argument to convert it to YAML and store it into a YAML file.
 
@@ -227,7 +235,11 @@ write_yaml_to_file(data2, 'output2')
 
 ~~~
 
-![Viewing (*data2*) list of dictionaries in *yaml* format in a file (*output2.yaml*)]({{site.images}}{{page.slug}}/XoFh6F9)
+<div class="wide">
+
+![Viewing (*data2*) list of dictionaries in *yaml* format in a file (*output2.yaml*)]({{site.images}}{{page.slug}}/XoFh6F9.png)
+
+</div>
 
 ## Reading YAML in Python
 
@@ -269,7 +281,12 @@ read_and_write_one_block_of_yaml_data('output', 'output3')
 ~~~
 
 You should have the following output:
-![Viewing contents of read yaml *output.yaml* in file `output3.yaml`]({{site.images}}{{page.slug}}/O8N1jqh)
+
+<div class="wide">
+
+![Viewing contents of read yaml *output.yaml* in file `output3.yaml`]({{site.images}}{{page.slug}}/O8N1jqh.png)
+
+</div>
 
 For reading *yaml* with multiple blocks of YAML data, you'll use the `safe_load_all()` function and convert the output to a list:
 
@@ -325,11 +342,15 @@ read_multiple_block_of_yaml_data('output2','output4')
 
 ~~~
 
-![Reading and writing multiple blocks of yaml data]({{site.images}}{{page.slug}}/nghXeJI)
+<div class="wide">
+
+![Reading and writing multiple blocks of yaml data]({{site.images}}{{page.slug}}/nghXeJI.png)
+
+</div>
 
 ## Modifying YAML in Python
 
-![Modifying YAML in Python]({{site.images}}{{page.slug}}/1Loo6M7.png)
+![Modifying YAML in Python]({{site.images}}{{page.slug}}/1Loo6M7.png)\
 
 You can modify the contents of a YAML file using the `yaml` module with PyYAML. All you have to do is ensure the function takes in the following arguments: a YAML file to read and the key with the new value.
 
@@ -369,7 +390,12 @@ read_and_modify_one_block_of_yaml_data('output', 'output5', key='Age', value=30)
 ~~~
 
 Once executed successfully, you should have the following output:
-![Modifying yaml data with one block of yaml data]({{site.images}}{{page.slug}}/Vx75ygy)
+
+<div class="wide">
+
+![Modifying yaml data with one block of yaml data]({{site.images}}{{page.slug}}/Vx75ygy.png)\
+
+</div>
 
 To illustrate further, you can modify the *output2.yaml* file also. The code below, will modify the first block of YAML data and edit the `accessMode` to be both 'ReadAccessModes' and 'ReadOnlyMany' and write it to a file *output6.yaml*
 
@@ -388,7 +414,11 @@ read_modify_save_yaml_data('output2', 0, 'accessModes', 'ReadOnlyMany', 'output6
 
 Once this code is executed, you should have the following output:
 
-![Viewing modified *yaml*]({{site.images}}{{page.slug}}/1zYum42)
+<div class="wide">
+
+![Viewing modified *yaml*]({{site.images}}{{page.slug}}/1zYum42.png)\
+
+</div>
 
 ## How to Convert YAML to JSON in Python
 
@@ -418,7 +448,11 @@ The `json.dump()` function converts a Python object (YAML in this case) into a [
 
 Once converted successfully, you should have an `output.json` file in your working directory:
 
-![new-3.png]({{site.images}}{{page.slug}}/WJ7ZS6j)
+<div class="wide">
+
+![new-3.png]({{site.images}}{{page.slug}}/WJ7ZS6j.png)\
+
+</div>
 
 ## Conclusion
 
@@ -431,6 +465,4 @@ As a next step, you may try converting [JSON to CSV](https://earthly.dev/blog/co
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
+
