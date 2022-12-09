@@ -422,9 +422,10 @@ In this tutorial, you have learned how to work with YAML using the Python progra
 
 As a next step, you may try converting [JSON to CSV](https://earthly.dev/blog/convert-to-from-json/).
 
+{% include cta/cta1.html %}
+
 ## Outside Article Checklist
 
-- [ ] Add in Author page
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
@@ -432,4 +433,4 @@ As a next step, you may try converting [JSON to CSV](https://earthly.dev/blog/co
 - [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
+
