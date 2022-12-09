@@ -6,7 +6,9 @@ toc: true
 author: Mercy Bassey
 
 internal-links:
- - just an example
+ - YAML
+ - Python
+ - Data
 ---
 
 If you’ve ever worked with Docker or Kubernetes, you’ll have likely used YAML files. From configuring an application’s services in Docker to defining Kubernetes objects like pods, services, and more—YAML is used for them all.     
@@ -431,6 +433,5 @@ As a next step, you may try converting [JSON to CSV](https://earthly.dev/blog/co
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Run mark down linter (`lint`)
-- [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
 
