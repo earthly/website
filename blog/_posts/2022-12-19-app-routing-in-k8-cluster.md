@@ -1,9 +1,10 @@
 ---
-title: "Put Your Best Title Here"
+title: "Comprehensive guide to Defining Application Routing in Kubernetes Cluster
+"
 categories:
   - Tutorials
 toc: true
-author: Adam
+author: Muhammed Ali
 
 internal-links:
  - just an example
@@ -279,7 +280,6 @@ You can build on what you have learned here by using a legit TLS certificate. Or
 
 ## Outside Article Checklist
 
-- [ ] Add in Author page
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
