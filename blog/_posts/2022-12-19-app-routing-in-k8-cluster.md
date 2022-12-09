@@ -39,6 +39,8 @@ There are some third-party implementations that can be used to apply an [Ingress
 
 ### How Is Service Different from Ingress
 
+![Question]({{site.images}}{{page.slug}}/question.png)\
+
 Services and Ingresses are used to expose applications operating in Pods. An [Ingress](/blog/building-on-kubernetes-ingress) cannot direct traffic to a Pod on its own! Traffic must be forwarded to a Service that directs users to the Pod.
 
 The idea behind Services is to give pods a permanent IP address so that whenever a pod fails, its port stays persistent. It can also be used to configure load balancers. Service maps the incoming `port` (this is exposed by the Service) to the `targetPort` (the port application is running on in the container) then you can access the application outside the cluster.
@@ -48,6 +50,8 @@ The idea behind Services is to give pods a permanent IP address so that whenever
 While building, you can use the Service to access your application outside the cluster, but it is not ideal in production. This is the major difference between Service and Ingress. Unlike with Ingress, with Service you can't map public domains, configure paths on a domain, configure HTTPS, etc.
 
 ## Configuring Ingress in a Cluster
+
+![Configuring]({{site.images}}{{page.slug}}/config.jpg)\
 
 For the practical aspect of this tutorial, we will use a local Kubernetes cluster, [minikube](https://minikube.sigs.k8s.io/). We will also use an NGINX image that is available on Docker Hub, so all we have to do is pull it into the cluster. If you don't have a running cluster already, run the following command to start it:
 
@@ -294,6 +298,3 @@ You can build on what you have learned here by using a legit TLS certificate. Or
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
