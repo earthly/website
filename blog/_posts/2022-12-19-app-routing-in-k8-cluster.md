@@ -55,25 +55,25 @@ While building, you can use the Service to access your application outside the c
 
 For the practical aspect of this tutorial, we will use a local Kubernetes cluster, [minikube](https://minikube.sigs.k8s.io/). We will also use an NGINX image that is available on Docker Hub, so all we have to do is pull it into the cluster. If you don't have a running cluster already, run the following command to start it:
 
-~~~
+~~~{.bash caption=">_"}
 minikube start
 ~~~
 
 The first step to configuring Ingress is to install your preferred Ingress controller in your [minikube](/blog/k8s-dev-solutions) cluster. In this case, since we are using the NGINX Ingress controller, you can run the following command to enable it. The following command automatically starts the NGINX implementation of the Ingress Controller. NGINX Ingress controller comes with the minikube cluster, which is why you don't need to install anything. When you enable it, then minikube spins up an NGINX Ingress controller pod. If you are working on a production environment (or different environment other than minikube), you will need to look up in the [documentation](https://docs.nginx.com/nginx-ingress-controller/) to see how you can set it up there.
 
-~~~
+~~~{.bash caption=">_"}
 minikube addons enable ingress
 ~~~
 
 You can check if the Ingress controller pod is now running in the cluster by running the following command:
 
-~~~
+~~~{.bash caption=">_"}
 kubectl get pods -n ingress-nginx
 ~~~
 
 Your output should look like the following:
 
-~~~
+~~~{caption="Output"}
 NAME                                       READY   STATUS      RESTARTS   AGE
 ingress-nginx-admission-create-q89fl       0/1     Completed   0          33m
 ingress-nginx-admission-patch-6psqq        0/1     Completed   2          33m
@@ -88,7 +88,7 @@ Start by creating a deployment that contains the NGINX server. This server will 
 
 To get started, create a new YAML file, I called mine `nginx.yaml`, but it can be anything, and paste the configuration below. In the code below, we are creating a deployment for NGINX. Also included in the file is the Service that will be used to access the NGINX server
 
-~~~
+~~~{.yaml caption="nginx.yaml"}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -131,26 +131,26 @@ spec:
 
 Now, you can apply the NGINX deployment and service configuration in your cluster. You can do this by running the following command:
 
-~~~
+~~~{.bash caption=">_"}
 kubectl apply -f nginx.yaml
 ~~~
 
 After the command is run you need to wait for some time for the NGINX container to be established completely. You can see if your NGINX container is now running by running the following command to list the pods in the cluster.
 
-~~~
+~~~{.bash caption=">_"}
 kubectl get pods
 ~~~
 
 Your output should look something like this:
 
-~~~
+~~~{caption="Output"}
 NAME                    READY   STATUS    RESTARTS   AGE
 nginx-8d545c96d-776x4   1/1     Running   0          5m21s
 ~~~
 
 Now, to configure the Ingress rule, create a new file (`nginx-ingress.yaml`) and paste the following Ingress *manifest.* The following manifest forwards any requests coming from `nginx-local.com`  to the NGINX server running in the cluster.
 
-~~~
+~~~{.yaml caption="nginx-ingress.yaml"}
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -174,7 +174,7 @@ spec:
 
 Now you can apply the ingress rule you just created by running the following command:
 
-~~~
+~~~{.bash caption=">_"}
 kubectl apply -f nginx-ingress.yaml
 ~~~
 
@@ -184,19 +184,19 @@ You can get the Ingress IP address from the following command:
 
 *Note: It may take some time for your Ingress IP address to show up.*
 
-~~~
+~~~{.bash caption=">_"}
 kubectl get ingress
 ~~~
 
 Now, you can run the following command to open the `/etc/hosts` file:
 
-~~~
+~~~{.bash caption=">_"}
 sudo nano /etc/hosts
 ~~~
 
 On the file you just opened, paste the following text into a new line and save. Replace the IP address `192.168.49.2` in the text below with the IP address of your Ingress.
 
-~~~
+~~~{.bash caption=">_"}
 192.168.49.2 nginx-local.com
 ~~~
 
@@ -214,7 +214,7 @@ In this section, you will learn how to configure different paths on the same hos
 
 Since we have only NGINX running, both of the paths we will create here will point to NGINX. You can get this working by pasting the following in your YAML file for Ingress. In the following YAML file, the `annotations` attribute changed to cater to multiple paths. We also need to state that the `pathType` is `Prefix`, unlike before where it was `Exact`.
 
-~~~
+~~~{.yaml caption="nginx-ingress.yaml"}
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -245,7 +245,7 @@ spec:
 
 Now you can apply the ingress rule you just created by running the following command:
 
-~~~
+~~~{.bash caption=">_"}
 kubectl apply -f nginx-ingress.yaml
 ~~~
 
@@ -263,7 +263,7 @@ It is important to try your best to make your application as safe as possible fo
 
 You can do this by pasting the following configuration above the `rules` attribute.
 
-~~~
+~~~{.yaml caption="nginx-ingress.yaml"}
 spec:
   tls:
   - hosts:
@@ -275,13 +275,13 @@ Now we need to create a TLS certificate and key locally then save it as a secret
 
 *Note: For production, you will need to purchase TLS certificate from a trusted distributor.*
 
-~~~
+~~~{.bash caption=">_"}
 openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout tls.key -out tls.crt -subj "/CN=nginx-local.com/O=nginx-ingress-tls"
 ~~~
 
 Next, run the following command to save the key and certificate generated as a `tls secret`:
 
-~~~
+~~~{.bash caption=">_"}
 kubectl create secret tls nginx-ingress-tls --key tls.key --cert tls.crt
 ~~~
 
