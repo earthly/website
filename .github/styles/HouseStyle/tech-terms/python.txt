@@ -19,3 +19,6 @@ matpotlib
 sys
 subprocess
 Subprocess
+
+PyYAML
+pyyaml
