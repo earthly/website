@@ -11,7 +11,7 @@ internal-links:
  - Data
 ---
 
-If you've ever worked with Docker or Kubernetes, you'll have likely used YAML files. From configuring an application's services in Docker to defining Kubernetes objects like pods, services, and more—YAML is used for them all.
+If you've ever worked with Docker or Kubernetes, you'll have likely used YAML files. From configuring an application's services in [Docker](/blog/rails-with-docker) to defining Kubernetes objects like pods, services, and more—YAML is used for them all.
 
 If you'd like to learn how to work with YAML in the Python programming language, then this tutorial is for you. This tutorial will cover creating, writing, reading, and modifying YAML in Python.
 
@@ -19,7 +19,7 @@ If you'd like to learn how to work with YAML in the Python programming language,
 
 Data serialization is relevant in the exchange of unstructured or semi-structured data effectively across applications or systems with different underlying infrastructures. Data serialization languages use standardized and well-documented syntax to share data across machines.
 
-Some of the widely used data serialization languages include YAML, XML, and JSON. While XML and JSON are used for data transfer between applications, YAML is often used to define the configuration for applications.
+Some of the widely used data serialization languages include YAML, XML, and [JSON](/blog/convert-to-from-json). While XML and JSON are used for data transfer between applications, YAML is often used to define the configuration for applications.
 
 YAML is characterized by a simple syntax involving line separation and indentation, without complex syntax involving the use of curly braces, parentheses, and tags.
 
@@ -413,7 +413,7 @@ convert_yaml_to_json('output','output')
 ~~~
 
 <aside>
-The `json.dump()` function converts a Python object (YAML in this case) into a JSON object. It takes in the following arguments: the Python object you want to convert, the JSON file you'd like to write it to, and an optional `index` value to specify how you want the JSON object to be formatted.
+The `json.dump()` function converts a Python object (YAML in this case) into a [JSON](/blog/convert-to-from-json) object. It takes in the following arguments: the Python object you want to convert, the JSON file you'd like to write it to, and an optional `index` value to specify how you want the JSON object to be formatted.
 </aside>
 
 Once converted successfully, you should have an `output.json` file in your working directory:
@@ -422,7 +422,7 @@ Once converted successfully, you should have an `output.json` file in your worki
 
 ## Conclusion
 
-In this tutorial, you have learned how to work with YAML using the Python programming language. You have used the PyYAML library to read, write, modify, and convert YAML to JSON. You've learned how to use the `safe_load()` and `safe_load_all()` functions to read single and multiple blocks of YAML data, respectively. To read and write both single and multiple blocks of YAML data, you used the `dump()` and `dump_all` functions, respectively. You then learned how to use the `dump()` function from Python's built-in `json` to convert a YAML document to JSON.
+In this tutorial, you have learned how to work with YAML using the Python programming language. You have used the PyYAML library to read, write, modify, and convert YAML to [JSON](/blog/convert-to-from-json. You've learned how to use the `safe_load()` and `safe_load_all()` functions to read single and multiple blocks of YAML data, respectively. To read and write both single and multiple blocks of YAML data, you used the `dump()` and `dump_all` functions, respectively. You then learned how to use the `dump()` function from Python's built-in `json` to convert a YAML document to JSON.
 
 As a next step, you may try converting [JSON to CSV](https://earthly.dev/blog/convert-to-from-json/).
 
@@ -434,4 +434,3 @@ As a next step, you may try converting [JSON to CSV](https://earthly.dev/blog/co
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
