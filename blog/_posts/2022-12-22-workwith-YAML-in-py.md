@@ -202,7 +202,6 @@ hostpath:
 
 ![Writing YAML to a File in Python]({{site.images}}{{page.slug}}/XUdOKxs.png)\
 
-
 Now that you've learned how to create YAML documents from Python objects, let's learn how to write them into a file for future use.
 
 The `dump()` function optionally accepts a file object as one of its arguments. When you provide this optional file object argument, the `dump()` function will write the produced YAML document into the file.
