@@ -33,13 +33,13 @@ To follow along with this tutorial, you should have:
 
 Ingress is a component of Kubernetes that is used to set rules for forwarding the internal IP address on the service to a public domain name that can be accessed by the outside world. You can also use it to convert `http` to `https` which is essential for public usage. Ingress can be used to set rules for routing traffic within the cluster without setting up Load Balancers. In general, it is essential for exposing you application to the outside world.
 
-To apply Ingress on your cluster, you need an **[Ingress Controller](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/)**. The ingress controller is a pod that runs on your cluster to implement your Ingress rules. The Ingress controller will be the entry point for accessing the application on the cluster.
+To apply Ingress on your [cluster](/blog/kube-bench), you need an **[Ingress Controller](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/)**. The ingress controller is a pod that runs on your cluster to implement your Ingress rules. The Ingress controller will be the entry point for accessing the application on the cluster.
 
 There are some third-party implementations that can be used to apply an [Ingress Controller](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/#additional-controllers) to your cluster, but in this article, we will use the NGINX Ingress controller.
 
 ### How Is Service Different from Ingress
 
-Services and Ingresses are used to expose applications operating in Pods. An Ingress cannot direct traffic to a Pod on its own! Traffic must be forwarded to a Service that directs users to the Pod.
+Services and Ingresses are used to expose applications operating in Pods. An [Ingress](/blog/building-on-kubernetes-ingress) cannot direct traffic to a Pod on its own! Traffic must be forwarded to a Service that directs users to the Pod.
 
 The idea behind Services is to give pods a permanent IP address so that whenever a pod fails, its port stays persistent. It can also be used to configure load balancers. Service maps the incoming `port` (this is exposed by the Service) to the `targetPort` (the port application is running on in the container) then you can access the application outside the cluster.
 
@@ -55,7 +55,7 @@ For the practical aspect of this tutorial, we will use a local Kubernetes cluste
 minikube start
 ~~~
 
-The first step to configuring Ingress is to install your preferred Ingress controller in your minikube cluster. In this case, since we are using the NGINX Ingress controller, you can run the following command to enable it. The following command automatically starts the NGINX implementation of the Ingress Controller. NGINX Ingress controller comes with the minikube cluster, which is why you don't need to install anything. When you enable it, then minikube spins up an NGINX Ingress controller pod. If you are working on a production environment (or different environment other than minikube), you will need to look up in the [documentation](https://docs.nginx.com/nginx-ingress-controller/) to see how you can set it up there.
+The first step to configuring Ingress is to install your preferred Ingress controller in your [minikube](/blog/k8s-dev-solutions) cluster. In this case, since we are using the NGINX Ingress controller, you can run the following command to enable it. The following command automatically starts the NGINX implementation of the Ingress Controller. NGINX Ingress controller comes with the minikube cluster, which is why you don't need to install anything. When you enable it, then minikube spins up an NGINX Ingress controller pod. If you are working on a production environment (or different environment other than minikube), you will need to look up in the [documentation](https://docs.nginx.com/nginx-ingress-controller/) to see how you can set it up there.
 
 ~~~
 minikube addons enable ingress
@@ -285,7 +285,7 @@ Now apply the changes you made to the Ingress file. After that is done, when you
 
 ## Conclusion
 
-In this article, you learned how to make a deployment and create a service for the NGINX image and use Ingress to forward requests from a domain name to our application. You also learned how to use Ingress to configure multiple paths for a particular domain. Finally, you saw how to configure your application to run on HTTPS.
+In this article, you learned how to make a deployment and create a service for the [NGINX](/blog/docker-slim) image and use [Ingress](/blog/k8s-networking) to forward requests from a domain name to our application. You also learned how to use Ingress to configure multiple paths for a particular domain. Finally, you saw how to configure your application to run on HTTPS.
 
 You can build on what you have learned here by using a legit TLS certificate. Or you can build 2 applications and see if you can configure the routing for those applications on the same domain.
 
@@ -297,4 +297,3 @@ You can build on what you have learned here by using a legit TLS certificate. Or
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
