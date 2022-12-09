@@ -74,6 +74,7 @@ kubectl get pods -n ingress-nginx
 Your output should look like the following:
 
 ~~~{caption="Output"}
+
 NAME                                       READY   STATUS      RESTARTS   AGE
 ingress-nginx-admission-create-q89fl       0/1     Completed   0          33m
 ingress-nginx-admission-patch-6psqq        0/1     Completed   2          33m
@@ -268,7 +269,8 @@ spec:
   tls:
   - hosts:
     - nginx-local.com
-    secretName: nginx-ingress-tls #name of the secret. We will create this later.
+    secretName: nginx-ingress-tls #name of the secret.\
+    #We will create this later.
 ~~~
 
 Now we need to create a TLS certificate and key locally then save it as a secret in `nginx-ingress-tls`. To generate TLS key and certificate, run the following command below:
@@ -276,13 +278,15 @@ Now we need to create a TLS certificate and key locally then save it as a secret
 *Note: For production, you will need to purchase TLS certificate from a trusted distributor.*
 
 ~~~{.bash caption=">_"}
-openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout tls.key -out tls.crt -subj "/CN=nginx-local.com/O=nginx-ingress-tls"
+openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout tls.key \
+-out tls.crt -subj "/CN=nginx-local.com/O=nginx-ingress-tls"
 ~~~
 
 Next, run the following command to save the key and certificate generated as a `tls secret`:
 
 ~~~{.bash caption=">_"}
-kubectl create secret tls nginx-ingress-tls --key tls.key --cert tls.crt
+kubectl create secret tls nginx-ingress-tls \
+--key tls.key --cert tls.crt
 ~~~
 
 Now apply the changes you made to the Ingress file. After that is done, when you open your application, you will see that it is running on `https://`.
