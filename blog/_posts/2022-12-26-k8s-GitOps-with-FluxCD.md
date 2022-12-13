@@ -600,7 +600,3 @@ In this guide, you learned how Flux allows you to easily automate Kubernetes man
 In addition to GitHub, Flux can also retrieve and bootstrap Git repositories hosted on GitLab. For more information, visit the [official docs](https://fluxcd.io/docs/cmd/flux_bootstrap_gitlab/). Another popular GitOps tool is [ArgoCD](https://earthly.dev/blog/argocd-kubernetes/). Check out this [comprehensive guide](https://earthly.dev/blog/flux-vs-argo-cd/) to see how Flux and ArgoCD compare.
 
 {% include cta/cta1.html %}
-
-## Outside Article Checklist
-
-* [ ] Create header image in Canva
