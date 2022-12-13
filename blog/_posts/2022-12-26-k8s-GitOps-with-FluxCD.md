@@ -41,19 +41,19 @@ Local installations of [Git](https://git-scm.com/downloads) and [Chocolatey](htt
 As a first step, you need to install **FluxCD CLI** on your local machine or a machine with access to your Kubernetes cluster. Flux CLI is a binary executable for all major platforms that implement the Flux architecture. It'll be used to bootstrap the FluxCD toolkit into your cluster.  
 If you're using a Windows machine, run the command below to install Flux:
 
-~~~
+~~~{.bash caption=">_"}
 choco install flux
 ~~~
 
 Run the command below if you're on a Mac:
 
-~~~
+~~~{.bash caption=">_"}
 brew install fluxcd/tap/flux
 ~~~
 
 If you're using a Linux machine, run this command to install Flux:
 
-~~~
+~~~{.bash caption=">_"}
 curl -s https://fluxcd.io/install.sh | sudo bash
 ~~~
 
@@ -63,7 +63,7 @@ You now have Flux installed on your machine; you can verify the installation wit
 
 The next step is to run **FluxCD prerequisites check**. It is important to verify FluxCD's compatibility with your cluster before bootstrapping FluxCD toolkits into it. To do so, run the following command:
 
-~~~
+~~~{.bash caption=">_"}
 flux check --pre
 ~~~
 
@@ -95,14 +95,14 @@ To generate a GitHub token, follow [these instructions](https://docs.github.com/
 
 If you're following along on a Mac or a Linux machine, run the following commands to configure GitHub Credentials:
 
-~~~
+~~~{.bash caption=">_"}
 export GITHUB_USER=<username>
 export GITHUB_TOKEN=<access-token>
 ~~~
 
 If you're on a Windows machine, then run the following commands to configure GitHub Credentials:
 
-~~~
+~~~{.bash caption=">_"}
 set GITHUB_USER=<username>
 set GITHUB_TOKEN=<access-token>
 ~~~
@@ -111,7 +111,7 @@ set GITHUB_TOKEN=<access-token>
 
 After you've configured your GitHub credentials, you're ready to bootstrap the Flux Toolkit inside your cluster. To do so, run the following commands:
 
-~~~
+~~~{.bash caption=">_"}
 
 flux bootstrap github \\
 
@@ -134,7 +134,7 @@ This command will create a GitHub repository in your GitHub account named `fluxc
 
 Next, run the following commands to verify that the FluxCD Toolkits have been deployed in your cluster:
 
-~~~
+~~~{.bash caption=">_"}
 kubectl get deployment -n flux-system
 ~~~
 
@@ -190,7 +190,7 @@ If any configurations are stored, or changes are made to the toolkit components 
 
 Next, you should install the FluxCD Prometheus and Grafana stacks from the FluxCD official repository in an imperative way to display the options available in Flux. Registration of the Prometheus and Grafana Git repositories is *required* because it will create a Git source in Flux to monitor the repository for changes. To do so run the following commands:
 
-~~~
+~~~{.bash caption=">_"}
 flux create source git flux-monitoring \ 
 --interval=30m \ 
 --url=https://github.com/fluxcd/flux2 \ 
@@ -209,7 +209,7 @@ Upon running this command, Flux creates a source repository called `flux-monitor
 
 Next, run the `flux create` command below to create a kustomization configuration. This configuration applies the kube-prometheus-stack configurations stored in the official [Flux repository](https://github.com/fluxcd/flux2/tree/main/manifests/monitoring/kube-prometheus-stack) to your cluster.
 
-~~~
+~~~{.bash caption=">_"}
 flux create kustomization kube-prometheus-stack \
   --interval=1h \
   --prune \
@@ -243,7 +243,7 @@ This Kustomization resource can be used to manage the deployment of the kube-pro
 
 After installing the Kube-Prometheus-stack, the next step is to install Flux Grafana dashboards, which will be used to monitor and visualize the Flux control plane usage and reconciliation stats from the kube-Prometheus-stack.
 
-~~~
+~~~{.bash caption=">_"}
 flux create kustomization monitoring-config \
   --depends-on=kube-prometheus-stack \
   --interval=1h \
@@ -286,13 +286,13 @@ This Kustomization resource can be used to manage the [deployment](/blog/deploym
 
 To access the Grafana dashboard, you need to forward traffic to the Grafana server. To do so, run the following commands:
 
-~~~
+~~~{.bash caption=">_"}
 kubectl -n monitoring port-forward svc/kube-prometheus-stack-grafana 3001:80
 ~~~
 
 To log in to your Grafana Dashboard, you should use the default credentials for the kube-Prometheus-stack.
 
-~~~
+~~~{.bash caption=">_"}
 Username: admin
 Password: prom-operator 
 ~~~
@@ -317,7 +317,7 @@ So far, you've used the Flux CLI to deploy Prometheus and Grafana stacks with Fl
 
 The first step is to create a Git repository that will host your Kubernetes deployment manifest and FluxCD manifest. To do so, run the following commands:
 
-~~~
+~~~{.bash caption=">_"}
 # create directory ~/2048
 
 mkdir -p 2048/apps
@@ -330,7 +330,7 @@ cd ~/2048 && git init
 
 Next, run the below `gh repo` command to create a public GitHub repository (2048). This repository will contain the 2048 game deployment manifest.
 
-~~~
+~~~{.bash caption=">_"}
 gh repo create 2048 --public 
 ~~~
 
@@ -342,13 +342,13 @@ You now have a Git repository created. The next step is to add the Kubernetes de
 
 Now, you'll have to cd into the `app` directory:
 
-~~~
+~~~{.bash caption=">_"}
 cd apps/
 ~~~
 
 Now create `2048.yaml` in the app/ directory in your preferred editor and add the following configuration:
 
-~~~
+~~~{.yaml caption="2048.yaml"}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -397,12 +397,12 @@ The Service resource exposes the 2048 game app replicas through a Service with t
 
 The next step is to create a manifest for Flux configuration to deploy your 2048 game application. In the root folder, create a file named `flux.yaml` and add the following configuration.
 
-~~~
+~~~{.bash caption=">_"}
 ## change directory to the root folder (2048)
 cd ..
 ~~~
 
-~~~
+~~~{.yaml caption="flux.yaml"}
 apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: GitRepository  
 metadata:
@@ -430,7 +430,7 @@ Let's take a closer look at the fields in the above configuration:
 * **B
 ranch: main** specifies the branch to use for the GitRepository resource.
 
-~~~
+~~~{.yaml caption="flux.yaml"}
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
@@ -458,7 +458,7 @@ Here,
 
 At this point, the flux.yaml file would look like this:
 
-~~~
+~~~{.yaml caption="flux.yaml"}
 apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: GitRepository  
 metadata:
@@ -487,7 +487,7 @@ spec:
 
 Now stage, commit, and push these files to your Git repository.
 
-~~~
+~~~{.bash caption=">_"}
 cd ..
 
 git add .
@@ -511,7 +511,7 @@ git push -u origin main
 
 Before applying the FluxCD configuration file, you must first create a namespace called '2048-game'. This is the namespace where the 2048 game will be hosted. To do so, run the following command:
 
-~~~
+~~~{.bash caption=">_"}
 kubectl create namespace 2048-game
 ~~~
 
@@ -519,13 +519,13 @@ kubectl create namespace 2048-game
 
 Now apply the flux.yaml file to deploy your application with Flux:
 
-~~~
+~~~{.bash caption=">_"}
 kubectl apply -f flux.yaml
 ~~~
 
 After applying the Flux configuration file, you need to verify if FluxCD has deployed your application. To do so run the following command:
 
-~~~
+~~~{.bash caption=">_"}
 kubectl get pods -n 2048-game
 ~~~
 
@@ -537,7 +537,7 @@ kubectl get pods -n 2048-game
 
 Now, run the below kubectl command to port-forward port 8085 to port 80, the HTTP port for the 2048 game application running in a container. Doing so provides you access to the 2048 game application via a web browser.
 
-~~~
+~~~{.bash caption=">_"}
 kubectl port-forward svc\2048-service -n 2048 8086:80
 ~~~
 
@@ -579,7 +579,7 @@ Now edit the deployment file; change the `replicas` from 2 to 3, save, and commi
 
 Wait for a few minutes and confirm that FluxCD has applied the new changes to your cluster. ✅
 
-~~~
+~~~{.bash caption=">_"}
 kubectl get pods -n 2048-game
 ~~~
 
