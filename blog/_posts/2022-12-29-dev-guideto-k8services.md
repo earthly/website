@@ -432,6 +432,8 @@ While ClusterIP Service type is used to expose the IP address of the Pods to be 
 
 It's important to properly configure services in Kubernetes and make sure they are working as expected.
 
+{% include cta/cta1.html %}
+
 ## Outside Article Checklist
 
 - [ ] Add in Author page
@@ -440,4 +442,3 @@ It's important to properly configure services in Kubernetes and make sure they a
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
-- [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
