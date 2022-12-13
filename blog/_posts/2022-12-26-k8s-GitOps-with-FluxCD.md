@@ -23,7 +23,7 @@ Let's get started!
 
 Flux is quickly gaining popularity because it integrates with Kubernetes and is simple to set up. Flux, like [Terraform](/blog/kubernetes-terraform), allows DevOps engineers to deploy solutions to Kubernetes via a declarative configuration file that is simple to read and update.
 
-![Flux Continuous Delivery Architecture ]({{site.images}}{{page.slug}}/a/tsuKw4V)
+![Flux Continuous Delivery Architecture ]({{site.images}}{{page.slug}}/bwYwEEQ.jpeg)
 
 ## Prerequisites
 
@@ -64,7 +64,9 @@ The next step is to run **FluxCD prerequisites check**. It is important to verif
 flux check --pre
 ~~~
 
-![Flux prerequisites checks]({{site.images}}{{page.slug}}/a/US9KR9p)
+<div class="wide">
+![Flux prerequisites checks]({{site.images}}{{page.slug}}/nvzSkid.jpeg)
+</div>
 
 ## Bootstrapping FluxCD Toolkit Components
 
@@ -123,7 +125,9 @@ flux bootstrap github \\
 
 This command will create a GitHub repository in your GitHub account named `fluxcd-demo`, add the configurations for the Flux components into the repository, and bootstrap the components into your cluster in the namespace called `flux-system`.
 
-![Bootstrapping Flux components]({{site.images}}{{page.slug}}/a/PpNGYJ)
+<div class="wide">
+![Bootstrapping Flux components]({{site.images}}{{page.slug}}/PpNGYJ.jpg)
+</div>
 
 Next, run the following commands to verify that the FluxCD Toolkits have been deployed in your cluster:
 
@@ -131,7 +135,9 @@ Next, run the following commands to verify that the FluxCD Toolkits have been de
 kubectl get deployment -n flux-system
 ~~~
 
-![Flux Components in flux-system namespace]({{site.images}}{{page.slug}}/a/fGjuT9R{{site.images}}{{page.slug}}/a/fGjuT9R)
+<div class="wide">
+![Flux Components in flux-system namespace]({{site.images}}{{page.slug}}/WfMys5P.jpeg)
+</div>
 
 ### FluxCD Toolkit Components
 
@@ -165,7 +171,9 @@ The Kustomize controller also supports health assessment of deployed resources a
 
 In your browser, go to `https://github.com/your-github-username/fluxcd-demo` to confirm the repository that flux created, `https://github.com/your-github-username/fluxcd-demo/tree/main/clusters/my-cluster/flux-systemclusters/mycluster/flux-system/`, and view the configuration YAML files that Flux used to install the toolkit in your cluster.
 
-![Flux Created Github Repository]({{site.images}}{{page.slug}}/a/eoh1o0W)
+<div class="wide">
+![Flux Created Github Repository]({{site.images}}{{page.slug}}/PtIz8kg.jpeg)
+</div>
 
 ## Automating Deployment To Cluster With Flux Cli
 
@@ -188,7 +196,11 @@ flux create source git flux-monitoring \
 
 Upon running this command, Flux creates a source repository called `flux-monitoring` in the repository Flux created. The URL for `flux-monitoring` will be set to Flux Repository, which contains the Prometheus and Grafana components. The main branch will be set as the reference to pull changes from, and the interval for checking the changes from the repository will be set to 30 minutes.
 
-![Creating Git source for Flux-monitoring]({{site.images}}{{page.slug}}/a/49IzE7K)
+<div class="wide">
+
+![Creating Git source for Flux-monitoring]({{site.images}}{{page.slug}}/wVcJF89.jpeg)
+
+</div>
 
 ### Create a Kustomization Configuration
 
@@ -222,7 +234,9 @@ Let's parse the above command:
 
 This Kustomization resource can be used to manage the deployment of the kube-prometheus-stack in the cluster.
 
-![Successfully applied Kustomization configuration]({{site.images}}{{page.slug}}/a/id3yFFI)
+<div class="wide">
+![Successfully applied Kustomization configuration]({{site.images}}{{page.slug}}/8m03taB.jpeg)
+</div>
 
 After installing the Kube-Prometheus-stack, the next step is to install Flux Grafana dashboards, which will be used to monitor and visualize the Flux control plane usage and reconciliation stats from the kube-Prometheus-stack.
 
@@ -237,7 +251,11 @@ flux create kustomization monitoring-config \
   --wait
 ~~~
 
-![Successfully Applied Kustomization configuration]({{site.images}}{{page.slug}}/a/id3yFFI)
+<div class="wide">
+
+![Successfully Applied Kustomization configuration]({{site.images}}{{page.slug}}/8m03taB.jpeg)
+
+</div>
 
 Here's an overview of the command options:
 
@@ -278,7 +296,11 @@ Password: prom-operator
 
 Navigate to <http://localhost:3001/d/flux-control-plane> if you're following along on your local machine. Navigate to your server's IP followed by port 3001 (<http://YOUR_SERVER_IP:3001/d/flux-control-plane>) if you're following along with a cloud server.
 
-![Grafana Monitoring Dashboard]({{site.images}}{{page.slug}}/a/EZtl2ua)
+<div class="wide">
+
+![Grafana Monitoring Dashboard]({{site.images}}{{page.slug}}/aOTsTMx.jpeg)
+
+</div>
 
 The Flux Prometheus and Grafana monitoring stacks have now been deployed to your cluster. These stacks were deployed to your cluster in an imperative manner, which works fine, but it goes against GitOps' principles of using Git repositories as the source of truth for managing deployments in a Kubernetes cluster.
 
@@ -309,7 +331,9 @@ Next, run the below `gh repo` command to create a public GitHub repository (2048
 gh repo create 2048 --public 
 ~~~
 
-![Created Git Repository]({{site.images}}{{page.slug}}/a/e50WWXN)
+<div class="wide">
+![Created Git Repository]({{site.images}}{{page.slug}}/tjGaG7K.jpeg)
+</div>
 
 You now have a Git repository created. The next step is to add the Kubernetes deployment manifest and the Flux manifest.
 
@@ -476,7 +500,11 @@ git remote add origin https://github.com/segunjkf/2048.git
 git push -u origin main
 ~~~
 
-![Pushing changes to Github]({{site.images}}{{page.slug}}/a/pqmGpgs)
+<div class="wide">
+
+![Pushing changes to Github]({{site.images}}{{page.slug}}/3VMrhrw.jpeg)
+
+</div>
 
 Before applying the FluxCD configuration file, you must first create a namespace called '2048-game'. This is the namespace where the 2048 game will be hosted. To do so, run the following command:
 
@@ -498,7 +526,11 @@ After applying the Flux configuration file, you need to verify if FluxCD has dep
 kubectl get pods -n 2048-game
 ~~~
 
-![Pods in the namespace]({{site.images}}{{page.slug}}/a/syvO4Ui)
+<div class="wide">
+
+![Pods in the namespace]({{site.images}}{{page.slug}}/sKNfRwQ.jpeg)
+
+</div>
 
 Now, run the below kubectl command to port-forward port 8085 to port 80, the HTTP port for the 2048 game application running in a container. Doing so provides you access to the 2048 game application via a web browser.
 
@@ -508,7 +540,11 @@ kubectl port-forward svc\2048-service -n 2048 8086:80
 
 As you can see below, the 2048 service has been configured and listens for incoming connections via port 80.
 
-![Port forwarding Session]({{site.images}}{{page.slug}}/a/QpmxWWH)
+<div class="wide">
+
+![Port forwarding Session]({{site.images}}{{page.slug}}/xjl3AmT.jpeg)
+
+</div>
 
 Finally, open your favorite web browser and navigate to one of the following endpoints:
 
@@ -516,7 +552,7 @@ Finally, open your favorite web browser and navigate to one of the following end
 
 * <http://SERVER_IP:8086> (cloud) – If you're running a Kubernetes cluster on a VM provisioned with a cloud provider. Replace <SERVER_IP> with your server's actual IP address.
 
-![Accessing the 2048 game web UI]({{site.images}}{{page.slug}}/a/UTSxVYV)
+![Accessing the 2048 game web UI]({{site.images}}{{page.slug}}/EsDYHXk.jpeg)
 
 ### Demonstrating FluxCD's Capabilities
 
@@ -524,11 +560,19 @@ To demonstrate FluxCD continuous delivery capabilities, you make changes to the 
 
  Open your favorite web browser and navigate to `https://github.com/segunjkf/2048/edit/main/apps/2048.yaml`. Make sure you replace `segunjkf` with your GitHub username.
 
-![Making Changes to Git Repository]({{site.images}}{{page.slug}}/a/KPeZZpq)
+<div class="wide">
+
+![Making Changes to Git Repository]({{site.images}}{{page.slug}}/Why4uN6.jpeg)
+
+</div>
 
 Now edit the deployment file; change the `replicas` from 2 to 3, save, and commit the changes.
 
-![Edited Kubernetes Manifest]({{site.images}}{{page.slug}}/a/gGd054p)
+<div class="wide">
+
+![Edited Kubernetes Manifest]({{site.images}}{{page.slug}}/PZsT4GN.jpeg)
+
+</div>
 
 Wait for a few minutes and confirm that FluxCD has applied the new changes to your cluster. ✅
 
@@ -536,7 +580,11 @@ Wait for a few minutes and confirm that FluxCD has applied the new changes to yo
 kubectl get pods -n 2048-game
 ~~~
 
-![Pods running in the Namespace]({{site.images}}{{page.slug}}/a/SpcVjXV)
+<div class="wide">
+
+![Pods running in the Namespace]({{site.images}}{{page.slug}}/Ep0PJ7V.jpeg)
+
+</div>
 
 To sum up, you have used Flux to set up a continuous delivery pipeline to your cluster. You deployed a Flux Prometheus and Grafana monitoring stack imperatively and the 2048-game application declaratively.
 
@@ -553,7 +601,5 @@ In addition to GitHub, Flux can also retrieve and bootstrap Git repositories hos
 ## Outside Article Checklist
 
 * [ ] Create header image in Canva
-* [ ] Optional: Find ways to break up content with quotes or images
-* [ ] Verify look of article locally
-  * Would any images look better `wide` or without the `figcaption`?
+
 * [ ] Add keywords for internal links to front-matter
