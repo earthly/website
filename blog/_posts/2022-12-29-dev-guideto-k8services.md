@@ -9,11 +9,11 @@ internal-links:
  - just an example
 ---
 
-Kubernetes is a tool for managing containerized applications, designed to make it easy to deploy and scale applications. It is designed to work with a variety of container technologies like [Docker and containerd](https://earthly.dev/blog/containerd-vs-docker/). In a Kubernetes cluster, your application runs in a **Pod**. In Kubernetes, Pods are *ephemeral*; they are temporary resources which are created and destroyed as needed .
+Kubernetes is a tool for managing containerized applications, designed to [make](/blog/using-cmake) it easy to deploy and scale applications. It is designed to work with a variety of container technologies like [Docker and containerd](https://earthly.dev/blog/containerd-vs-docker/). In a Kubernetes [cluster](/blog/kube-bench), your application runs in a **Pod**. In Kubernetes, Pods are *ephemeral*; they are temporary resources which are created and destroyed as needed .
 
 When pods need to interact with other resources in a Kubernetes cluster, they can use the IP addresses provided by the cluster. However, this approach has the drawback of requiring developers to manually configure the IP addresses for each pod. Because Pods are temporary resources in a cluster, it is practically impossible to configure IP tables whenever a new Pod is created or destroyed. As a result, it is challenging for Pods to communicate with one another using IP addresses.
 
-To solve this problem, Kubernetes has a resource called **Service**, which gives the Pod a stable IP address to solve this communication issue—making interaction with other Pods considerably more reliable. Services provide a way to expose applications running on a Kubernetes cluster to the outside world. They also allow for load balancing and for routing traffic to the correct application instance. Services can be exposed using a variety of methods, such as a load balancer or an Ingress resource.
+To solve this problem, Kubernetes has a resource called **Service**, which gives the Pod a stable IP address to solve this communication issue—making interaction with other Pods considerably more reliable. Services provide a way to expose applications running on a Kubernetes cluster to the outside world. They also allow for load balancing and for routing traffic to the correct application instance. Services can be exposed using a variety of methods, such as a load balancer or an [Ingress](/blog/k8s-networking) resource.
 
 In this guide, you'll learn about Services and its types in Kubernetes, and how to define them using YAML files. By the end of the article, you'll have a good understanding of Services in Kubernetes.
 
@@ -99,7 +99,7 @@ spec:
 Let's parse the contents of the YAML file:
 
 - `apiVersion` defines the version to be used. The API version must support this kind of resource.
-- `kind` specifies the resource type you're creating in K8s.
+- `kind` specifies the resource type you're creating in [k8s](/blog/k8s-autoscaling).
 - `metadata` is another mandatory field which provides the resource's fundamental details. In this example, you only enter the resource's name, but you may also include labels and annotations.
 - The final mandatory part, `spec` , describes the requirements for the resources. Each resource has unique specifications.
 - `spec.ports.port` specifies the port which should be made an endpoint in the cluster; port can take any arbitrary value.
@@ -406,7 +406,7 @@ rs-service-loadbalancer  LoadBalancer    10.110.210.241    145.168.25.58   80:30
 
 ~~~
 
-In the above output you can see that the LoadBalancer Service also exposed your application using EXTERNAL-IP. Note that using LoadBalancer Service requires cloud providers like AWS or GCP. Also, minikube does not support LoadBalancer so using this service in minikube will show `<pending>` in the EXTERNAL-IP section.
+In the above output you can see that the LoadBalancer Service also exposed your application using EXTERNAL-IP. Note that using LoadBalancer Service requires cloud providers like AWS or GCP. Also, minikube does not support LoadBalancer so using this service in [minikube](/blog/k8s-dev-solutions) will show `<pending>` in the EXTERNAL-IP section.
 
 Overall, load balancer services are helpful when exposing services to external traffic.
 ![Working of LoadBalancer Services in Kubernetes]({{site.images}}{{page.slug}}/ILmSY1C.png)
@@ -440,5 +440,4 @@ It's important to properly configure services in Kubernetes and make sure they a
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
 - [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
