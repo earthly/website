@@ -6,7 +6,10 @@ toc: true
 author: Saka-Aiyedun Segun
 
 internal-links:
- - just an example
+ - Kubernetes
+ - FluxCD
+ - GitOps
+ - Cluster
 ---
 
 Kubernetes has become the go-to tool for application [deployment](/blog/deployment-strategies). However, it does not offer features for continuous integration and delivery. Continuous delivery can be particularly helpful for larger teams that host and update deployments frequently. One approach to maintaining continuous delivery for Kubernetes is GitOps.
@@ -601,5 +604,3 @@ In addition to GitHub, Flux can also retrieve and bootstrap Git repositories hos
 ## Outside Article Checklist
 
 * [ ] Create header image in Canva
-
-* [ ] Add keywords for internal links to front-matter
