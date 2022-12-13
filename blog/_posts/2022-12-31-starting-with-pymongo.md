@@ -26,12 +26,12 @@ The main features of MongoDB are
 
 MongoDB Cluster is an abstraction on top of a database. These clusters refer to two different architectures:
 
-1. Replica Sets: A MongoDB replica set is a collection of one or more servers containing an exact copy of the data. A primary node handles read and write operations for your application, while the secondary nodes hold the copy of the data.
+1. Replica Sets: A [MongoDB](/blog/mongodb-docker) replica set is a collection of one or more servers containing an exact copy of the data. A primary node handles read and write operations for your application, while the secondary nodes hold the copy of the data.
 
 ![Replica Sets]({{site.images}}{{page.slug}}/oODGE1t.png)
 
 If the primary node somehow becomes faulty, an election process will be used to select a new primary node. When the defective server becomes healthy, it syncs with the primary node and starts serving as a secondary node. This minimizes downtime and provides higher availability to your application.
-2. Sharded Cluster: A sharded cluster distributes your data over multiple replica sets to scale it horizontally. When a read or write operation is done on a collection, the client sends a request to the router. The router will then utilize the configuration server to determine which shard the data is stored on. The requests are then sent to the relevant cluster.
+2. Sharded Cluster: A sharded [cluster](/blog/kube-bench) distributes your data over multiple replica sets to scale it horizontally. When a read or write operation is done on a collection, the client sends a request to the router. The router will then utilize the configuration server to determine which shard the data is stored on. The requests are then sent to the relevant cluster.
 ![Sharded Cluster]({{site.images}}{{page.slug}}/XOX9ayM.png)
 Each shard has its own set of replicas. You should have more than one configuration server or router to ensure high availability.
 
@@ -82,7 +82,7 @@ Since you're going to connect locally, for now, you can go ahead with My Local E
 
 Once the setup is complete, you will be redirected to a page where you can see your clusters. Note that it might take some time to build your cluster. Once built, it looks like the below:
 ![Database deployments]({{site.images}}{{page.slug}}/neu4Xl2.png)
-Now that you are aware of MongoDB Clusters, you can see that the type of cluster is Replica Set with three nodes.
+Now that you are aware of [MongoDB](/blog/mongodb-docker) Clusters, you can see that the type of cluster is Replica Set with three nodes.
 
 ## Setting Up PyMongo
 
@@ -94,7 +94,7 @@ Next, choose the appropriate connection method. Since it's a Python tutorial, ch
 ![MongoDB Connection String]({{site.images}}{{page.slug}}/NrVnfMB.png)
 The connection string includes your username and the password for that user.
 
-Now, open your favorite code editor (VS Code is used here). The first thing you're going to require is a Python library called PyMongo. PyMongo is a MongoDB driver containing tools for interacting with MongoDB databases. You can install the library using the pip command:
+Now, open your favorite code editor (VS Code is used here). The first thing you're going to require is a Python library called PyMongo. PyMongo is a [MongoDB](/blog/mongodb-docker) driver containing tools for interacting with MongoDB databases. You can install the library using the pip command:
 
 ~~~
 pip install pymongo
@@ -114,7 +114,7 @@ MONGODB_PASSWORD="mongopassword"
 ~~~
 
 Make sure you change the values of the variables with your correct values.
-Now, create a Python file (say, `main.py`) in the same directory as the `.env` file. To use the environment variables stored in your `.env` file, you'll need to use the `config` object from the python-decouple library as below:
+Now, create a Python file (say, `main.py`) in the same directory as the `.env` file. To use the [environment variables](/blog/bash-variables) stored in your `.env` file, you'll need to use the `config` object from the python-decouple library as below:
 
 ~~~
 from decouple import config
@@ -164,7 +164,7 @@ The MongoClient class contains a method called `list_database_names()` to get th
 ['admin', 'local']
 ~~~
 
-Since you haven't created any database of your own until now, the above two are the default databases you get with a cluster.
+Since you haven't created any database of your own until now, the above two are the default databases you get with a [cluster](/blog/kube-bench).
 
 Next, if you want to list all the collections in a database, MongoClient provides you with an easy method called `list_collection_names()` too. But, this method can only be called upon by a database. Hence you need to access a database first, and call the method afterward as shown below:
 
@@ -446,4 +446,3 @@ If you want to further your learning, I suggest you look into Schema Validation,
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
