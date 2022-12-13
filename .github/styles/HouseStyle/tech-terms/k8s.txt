@@ -55,3 +55,6 @@ cidr
 daemonset
 sysctl
 fstab
+
+Replicaset
+Nodeport
