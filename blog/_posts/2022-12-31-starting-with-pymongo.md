@@ -6,7 +6,10 @@ toc: true
 author: Ashutosh Krishna
 
 internal-links:
- - just an example
+ - MongoDB
+ - PyMongo
+ - Python
+ - Cluster
 ---
 
 In this article, you will learn about MongoDB and how to use it with Python. Specifically, you will learn how to set up a remote MongoDB database using a tool called Atlas and how to connect with that database using PyMongo, the official MongoDB driver for Python. The article explains the MongoDB document model and how to perform CRUD operations on the database. Finally, the article also discusses relationships using document embeddings and foreign keys.
@@ -445,4 +448,3 @@ If you want to further your learning, I suggest you look into Schema Validation,
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Add keywords for internal links to front-matter
