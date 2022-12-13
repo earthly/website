@@ -439,7 +439,6 @@ If you want to further your learning, I suggest you look into Schema Validation,
 
 ## Outside Article Checklist
 
-- [ ] Add in Author page
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
