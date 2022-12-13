@@ -6,7 +6,10 @@ toc: true
 author: Vivek Kumar Singh
 
 internal-links:
- - just an example
+ - Kubernetes
+ - Yaml
+ - Services
+ - ClusterIP
 ---
 
 Kubernetes is a tool for managing containerized applications, designed to [make](/blog/using-cmake) it easy to deploy and scale applications. It is designed to work with a variety of container technologies like [Docker and containerd](https://earthly.dev/blog/containerd-vs-docker/). In a Kubernetes [cluster](/blog/kube-bench), your application runs in a **Pod**. In Kubernetes, Pods are *ephemeral*; they are temporary resources which are created and destroyed as needed .
@@ -21,7 +24,7 @@ In this guide, you'll learn about Services and its types in Kubernetes, and how 
 
 We'll use [ReplicaSets](https://earthly.dev/blog/use-replicasets-in-k8s/) in this tutorial. ReplicaSets are Pod Controllers in Kubernetes, they are used to make the pods fault tolerant by making it easy for them to easily scale up and down. Replicaset ensures that a specific number of Pods(replicas) keep running in the cluster. To make a ReplicaSet, create a new file `my-replicaset.yml` and populate it with the following configuration:
 
-~~~
+~~~{.yaml caption="my-replicaset.yml"}
 apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
@@ -59,13 +62,13 @@ Let's go through the contents of the above YAML file:
 
 To create the ReplicaSet, open your terminal and run `kubectl create -f my-replicaset.yml`. Running this command should produce the following output.
 
-~~~
+~~~{.bash caption=">_"}
 replicaset.apps/my-replicaset created
 ~~~
 
 ## Types of Services in Kubernetes
 
-![Types of Services in Kubernetes]({{site.images}}{{page.slug}}/IkyAMKi.png)
+![Types of Services in Kubernetes]({{site.images}}{{page.slug}}/IkyAMKi.png)\
 
 Kubernetes offers four primary service types that are each beneficial for a certain task. The following services are covered in more detail below:
 
@@ -80,7 +83,7 @@ A ClusterIP service is a type of service that can be used to expose instances of
 
 To create a ClusterIP service, create a YAML file and add the following configuration:
 
-~~~
+~~~{.yaml caption=""}
 apiVersion: v1
 kind: Service
 metadata:
@@ -108,36 +111,37 @@ Let's parse the contents of the YAML file:
 
 To create a new service resource, type `kubectl create -f rs-svc.yml` into your console with the `rs-svc.yml` file containing the above configuration. Kubernetes creates an endpoint resource when the service is created that lists all the endpoints to which requests should be directed.
 
-~~~
+~~~{.bash caption=">_"}
 $ kubectl get endpoints
 ~~~
 
-~~~
-NAME             ENDPOINTS                                               AGE
-kubernetes       192.168.49.2:8443                                       105d
-rs-service       172.17.0.5:80,172.17.0.6:80,172.17.0.7:80       111s
+~~~{.bash caption="Output"}
+
+NAME             ENDPOINTS                                      AGE
+kubernetes       192.168.49.2:8443                              105d
+rs-service       172.17.0.5:80,172.17.0.6:80,172.17.0.7:80      111s
 ~~~
 
 In the above example, you have three endpoints which correspond to the number of Pods in the ReplicaSet. Note that these endpoints are internal to the cluster. This means only the service can access the Pod using these endpoints but the end user cannot.
 
 You can check detailed information about the Service by running `kubectl describe -f rs-svc.yml`, which produces the following output:
 
-~~~
+~~~{.bash caption="Output"}
 Name:            rs-service
-Namespace:        default
-Labels:                <none>
-Annotations:           <none>
-Selector:              app=my-pod
-Type:                      ClusterIP
-IP Family Policy:      SingleStack
-IP Families:           IPv4
-IP:                        10.103.78.229
-IPs:                       10.103.78.229
-Port:                      <unset>  80/TCP
-TargetPort:            80/TCP
-Endpoints:             172.17.0.5:80,172.17.0.6:80,172.17.0.7:80
-Session Affinity:      None
-Events:                <none>
+Namespace:       default
+Labels:          <none>
+Annotations:     <none>
+Selector:         app=my-pod
+Type:             ClusterIP
+IP Family Policy: SingleStack
+IP Families:      IPv4
+IP:               10.103.78.229
+IPs:              10.103.78.229
+Port:             <unset>  80/TCP
+TargetPort:       80/TCP
+Endpoints:        172.17.0.5:80,172.17.0.6:80,172.17.0.7:80
+Session Affinity: None
+Events:           <none>
 
 ~~~
 
@@ -145,21 +149,22 @@ In the above output, you can see all the Events, IPs, Type, and Selector at one 
 
 To check all the current services running in your cluster type `kubectl get svc`:
 
-~~~
+~~~{.bash caption=">_"}
 $ kubectl get svc
 ~~~
 
-~~~
+~~~{.bash caption="Output"}
+
 NAME         CLUSTER-IP         EXTERNAL-IP     PORT(S)     AGE 
-kubernetes     10.111.240.1         <none>        443/TCP     30d 
-rs-service    10.96.206.29         <none>        80/TCP     6m
+kubernetes   10.111.240.1         <none>        443/TCP     30d 
+rs-service   10.96.206.29         <none>        80/TCP      6m
 ~~~
 
 In the above output, you can see that External IP is set to `none` which means the current service can only be used from inside the cluster. The ClusterIP service is only accessible to other Pods and other resources inside the cluster. You'll soon learn how to expose a service externally.
 
 You can delete the newly created service using `kubectl delete -f rs-svc.yml` command which returns the confirmation that the service has been deleted.
 
-![ClusterIP Services in a Kubernetes Cluster]({{site.images}}{{page.slug}}/C9LF2jd.png)
+![ClusterIP Services in a Kubernetes Cluster]({{site.images}}{{page.slug}}/C9LF2jd.png)\
 
 In the above illustration, every request at `IP:<PORT>` from inside the cluster is directed to the service resource which then redirects to the `<TARGET_PORT>` (in this case 80) of the Pods with matching labels.
 
@@ -180,7 +185,7 @@ By creating a multiport service, you can map these different ports to a single s
 
 To define a multiport service create a YAML file, `mul-svc.yml` and add the following configuration:
 
-~~~
+~~~{.yaml caption="mul-svc.yml"}
 apiVersion: v1
 kind: Service
 metadata:
@@ -204,13 +209,13 @@ spec:
 
 In the above configuration, you can see that multiple ports are defined in the `spec.ports` field. This field contains an array of objects, each of which defines the port number, protocol, and target port for a specific service. Note that defining the `name` field is *required* for each port you define in multiport services. To create the Service from the above file, run the following command in your terminal:
 
-~~~
+~~~{.bash caption=">_"}
 kubectl create -f mul-svc.yml
 ~~~
 
 After running the above command, your application can be communicated to both port 80 and 25 using multiport service. Multiport services provide a convenient way to access multiple services from a single application or container, while cluster IP services require you to create a separate service for each port you want to expose. This is useful when a single application or container exposes multiple services or APIs on different ports.
 
-![Working of Multiport Service in Kubernetes]({{site.images}}{{page.slug}}/1CzxmLr.png)
+![Working of Multiport Service in Kubernetes]({{site.images}}{{page.slug}}/1CzxmLr.png)\
 
 In the above illustration, you can see that the requests for both Port 80 and Port 25 are routed through the same service to the Pods.
 
@@ -222,7 +227,7 @@ When you need to access stateful applications such as databases, a headless serv
 
 These services are typically used when you want to access the individual pods within a service directly, rather than accessing the service as a whole through a load balancer. Headless Service is created by setting the `ClusterIP` field to `None` in the Service YAML file (here, a new file, `rs-svc-headless.yml`, is created).
 
-~~~
+~~~{.yaml caption="rs-svc-headless.yml"}
 apiVersion: v1
 kind: Service
 metadata:
@@ -241,17 +246,18 @@ spec:
 
 Note that we've set the newly added `spec.clusterIP` field to `None`. After creating this service using `kubectl create -f rs-svc-headless.yml`, run the following command in your terminal.
 
-~~~
+~~~{.bash caption=">_"}
 $ kubectl get svc
 ~~~
 
 Running the above command gives the following output:
 
-~~~
-NAME                      TYPE        CLUSTER-IP      EXTERNAL-IP        PORT(S)       AGE
-kubernetes                ClusterIP   10.96.0.1           <none>                443/TCP       117d
-rs-service                ClusterIP   10.103.78.229       <none>                80/TCP        3m51s
-rs-service-headless       ClusterIP   None                <none>                80/TCP        82s
+~~~{.bash caption="Output"}
+
+NAME                      TYPE        CLUSTER-IP      EXTERNAL-IP    PORT(S)       AGE
+kubernetes                ClusterIP   10.96.0.1         <none>       443/TCP       117d
+rs-service                ClusterIP   10.103.78.229     <none>       80/TCP        3m51s
+rs-service-headless       ClusterIP   None              <none>       80/TCP        82s
 ~~~
 
 As seen in the output, Kubernetes did not allocate the `CLUSTER-IP` as specified in the YAML file, hence it is None. In most cases, this type of configuration is used in conjunction with ClusterIP Service to handle load balancing and normal communication between the Pods.
@@ -260,24 +266,24 @@ Headless services are often used with pods which maintain a consistent state and
 
 You can also get detailed information about the service by running the following command:
 
-~~~
+~~~{.bash caption=">_"}
 $ kubectl describe -f rs-svc-headless.yml
 ~~~
 
 Here's the output:
 
-~~~
+~~~{.bash caption="Output"}
 Name:                  rs-service-headless
 Namespace:             default
 Labels:                <none>
 Annotations:           <none>
 Selector:              app=my-pod
-Type:                      ClusterIP
+Type:                  ClusterIP
 IP Family Policy:      SingleStack
 IP Families:           IPv4
-IP:                        None
-IPs:                       None
-Port:                      <unset>  80/TCP
+IP:                    None
+IPs:                   None
+Port:                  <unset>  80/TCP
 TargetPort:            80/TCP
 Endpoints:             172.17.0.5:80,172.17.0.6:80,172.17.0.7:80
 Session Affinity:      None
@@ -286,7 +292,7 @@ Events:                <none>
 
 In the above output, you can see that IP and IPs field is set to `None` since Headless Service does not provide any IP to the pod, but does a DNS lookup on the endpoints.
 
-![Working of Headless Service in Kubernetes]({{site.images}}{{page.slug}}/OAOylfV.png)
+![Working of Headless Service in Kubernetes]({{site.images}}{{page.slug}}/OAOylfV.png)\
 
 The above image shows how the request to write data to the database (stateful pod) goes through a DNS lookup and then to the database. This is done to maintain consistency between the replicas of the databases.
 
@@ -298,7 +304,7 @@ Note that exposing ports using NodePort Service type is not considered secure. T
 
 To create a NodePort service, create a new file, `rs-np-svc.yml`, and populate it with the following configuration.
 
-~~~
+~~~{.yaml caption="rs-np-svc.yml"}
 apiVersion: v1
 kind: Service
 metadata:
@@ -318,47 +324,48 @@ In the above file you can see that the `type` field specifies the service type a
 
 Now create the above service by running `kubectl create -f`rs-np-svc.yml`. To check if the Service has been created, run the following command in your terminal:
 
-~~~
+~~~{.bash caption=">_"}
 $ kubectl get svc
 ~~~
 
-~~~
-NAME                      TYPE            CLUSTER-IP          EXTERNAL-IP   PORT(S)        AGE
-kubernetes                ClusterIP       10.96.0.1               <none>               443/TCP        117d
-rs-service                ClusterIP       10.103.78.229       <none>              80/TCP         7m25s
-rs-service-headless       ClusterIP       None                    <none>              80/TCP         4m56s
-rs-service-nodeport       NodePort        10.105.4.133        <none>        80:30256/TCP   28s
+~~~{.bash caption="Output"}
+
+NAME                   TYPE            CLUSTER-IP       EXTERNAL-IP   PORT(S)        AGE
+kubernetes             ClusterIP       10.96.0.1        <none>        443/TCP        117d
+rs-service             ClusterIP       10.103.78.229    <none>        80/TCP         7m25s
+rs-service-headless    ClusterIP       None             <none>        80/TCP         4m56s
+rs-service-nodeport    NodePort        10.105.4.133     <none>        80:30256/TCP   28s
 ~~~
 
 In the above output you can see that the new Nodeport Service is created by the Kubernetes. You can also run the following command to get detailed information about the Service:
 
-~~~
+~~~{.bash caption=">_"}
 $ kubectl describe -f rs-np-svc.yml
 ~~~
 
-~~~
-Name:                         rs-service-nodeport
+~~~{.bash caption="Output"}
+Name:                    rs-service-nodeport
 Namespace:               default
-Labels:                       <none>
-Annotations:                  <none>
-Selector:                     app=my-pod
-Type:                         NodePort
-IP Family Policy:         SingleStack
-IP Families:                  IPv4
-IP:                           10.105.4.133
-IPs:                          10.105.4.133
-Port:                         <unset>  80/TCP
-TargetPort:                   80/TCP
-NodePort:                     <unset>  30256/TCP
-Endpoints:                    172.17.0.5:80,172.17.0.6:80,172.17.0.7:80
-Session Affinity:             None
-External Traffic Policy:  Cluster
-Events:                       <none>
+Labels:                  <none>
+Annotations:             <none>
+Selector:                app=my-pod
+Type:                    NodePort
+IP Family Policy:        SingleStack
+IP Families:             IPv4
+IP:                      10.105.4.133
+IPs:                     10.105.4.133
+Port:                    <unset>  80/TCP
+TargetPort:              80/TCP
+NodePort:                <unset>  30256/TCP
+Endpoints:               172.17.0.5:80,172.17.0.6:80,172.17.0.7:80
+Session Affinity:        None
+External Traffic Policy: Cluster
+Events:                  <none>
 ~~~
 
 The working of NodePort service is summarized below. You can see that the Node in the cluster opens the desired port (as specified in spec.ports.nodePort) which redirects all the requests to the internal service which then redirects them to the Pods.
 
-![NodePort Service in a Kubernetes Cluster]({{site.images}}{{page.slug}}/q2dibr0.png)
+![NodePort Service in a Kubernetes Cluster]({{site.images}}{{page.slug}}/q2dibr0.png)\
 
 ### LoadBalancer Services
 
@@ -368,7 +375,7 @@ Additionally, LoadBalancer services automatically detect and route traffic away 
 
 To create a LoadBalancer Service, create a new file `svc-load.yml` and add the following to the manifest file:
 
-~~~
+~~~{.yaml caption="svc-load.yml"}
 apiVersion: v1
 kind: Service
 metadata:
@@ -391,25 +398,26 @@ This is because the LoadBalancer service is an *extension* of NodePort Service. 
 
 Now create the above service by running the below command:
 
-~~~
+~~~{.bash caption=">_"}
 kubectl create -f svc-load.yml
 ~~~
 
 After running the above command you can see that the LoadBalancer service was created using the command `kubectl get svc`, which produces the following output:
 
-~~~
-NAME                              TYPE                 CLUSTER-IP       EXTERNAL-IP   PORT(S)         AGE
-kubernetes                        ClusterIP           10.96.0.1            <none>             443/TCP               126d
-rs-service                        ClusterIP           10.103.78.229        <none>              80/TCP                  8d
-rs-service-headless        ClusterIP            None                 <none>              80/TCP                  8d
-rs-service-loadbalancer  LoadBalancer    10.110.210.241    145.168.25.58   80:30056/TCP   60s
+~~~{.bash caption="Output"}
+
+NAME                     TYPE            CLUSTER-IP       EXTERNAL-IP     PORT(S)        AGE
+kubernetes               ClusterIP       10.96.0.1        <none>          443/TCP        126d
+rs-service               ClusterIP       10.103.78.229    <none>          80/TCP         8d
+rs-service-headless      ClusterIP       None             <none>          80/TCP         8d
+rs-service-loadbalancer  LoadBalancer    10.110.210.241   145.168.25.58   80:30056/TCP   60s
 
 ~~~
 
 In the above output you can see that the LoadBalancer Service also exposed your application using EXTERNAL-IP. Note that using LoadBalancer Service requires cloud providers like AWS or GCP. Also, minikube does not support LoadBalancer so using this service in [minikube](/blog/k8s-dev-solutions) will show `<pending>` in the EXTERNAL-IP section.
 
 Overall, load balancer services are helpful when exposing services to external traffic.
-![Working of LoadBalancer Services in Kubernetes]({{site.images}}{{page.slug}}/ILmSY1C.png)
+![Working of LoadBalancer Services in Kubernetes]({{site.images}}{{page.slug}}/ILmSY1C.png)\
 
 In the above image, you can see that the external request to the cluster goes through the LoadBalancer service which then redirects it to the `nodePort`—and then chooses a random Pod—after taking into account the current load on each Pod that listens to `targetPort`.
 
@@ -436,9 +444,4 @@ It's important to properly configure services in Kubernetes and make sure they a
 
 ## Outside Article Checklist
 
-- [ ] Add in Author page
 - [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
-- [ ] Add keywords for internal links to front-matter
