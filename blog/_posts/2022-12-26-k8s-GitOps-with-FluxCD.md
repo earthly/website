@@ -9,7 +9,7 @@ internal-links:
  - just an example
 ---
 
-Kubernetes has become the go-to tool for application deployment. However, it does not offer features for continuous integration and delivery. Continuous delivery can be particularly helpful for larger teams that host and update deployments frequently. One approach to maintaining continuous delivery for Kubernetes is GitOps.
+Kubernetes has become the go-to tool for application [deployment](/blog/deployment-strategies). However, it does not offer features for continuous integration and delivery. Continuous delivery can be particularly helpful for larger teams that host and update deployments frequently. One approach to maintaining continuous delivery for Kubernetes is GitOps.
 
 **GitOps** is a software development practice that relies on a Git repository as its single source of truth. Descriptive configurations are committed to Git and then used to create continuous delivery environments. All aspects of the environment are defined via the Git repository; there are no standalone scripts or manual setups.
 
@@ -21,7 +21,7 @@ Let's get started!
 
 [Flux](https://fluxcd.io/) is an open-source tool for automating application delivery pipelines to Kubernetes clusters based on GitOps principles. Flux makes use of source control platforms such as Git to allow users to describe their desired application state. It was originally created by Weaveworks but has recently been open-sourced.
 
-Flux is quickly gaining popularity because it integrates with Kubernetes and is simple to set up. Flux, like Terraform, allows DevOps engineers to deploy solutions to Kubernetes via a declarative configuration file that is simple to read and update.
+Flux is quickly gaining popularity because it integrates with Kubernetes and is simple to set up. Flux, like [Terraform](/blog/kubernetes-terraform), allows DevOps engineers to deploy solutions to Kubernetes via a declarative configuration file that is simple to read and update.
 
 ![Flux Continuous Delivery Architecture ]({{site.images}}{{page.slug}}/a/tsuKw4V)
 
@@ -79,7 +79,7 @@ Flux will automatically create a GitHub repository and attach the Flux Toolkit c
 This GitHub repository will contain all the configuration for the Flux core components in a [namespace](https://earthly.dev/blog/k8s-namespaces/).
 
 <div class="notice--big--primary">
-Flux automatically applies these configurations to your cluster in the specified namespaces. This behavior only applies if one or more configurations with the custom resource definitions, [HelmRelease](https://fluxcd.io/flux/components/helm/helmreleases/), [Kustomization](https://fluxcd.io/docs/components/kustomize/kustomization/), [GitRepository](https://fluxcd.io/docs/components/source/gitrepositories/), and [HelmRepository](https://fluxcd.io/docs/components/source/helmrepositories/) are added to this GitHub repository.
+Flux automatically applies these configurations to your cluster in the specified [namespaces](/blog/k8s-namespaces). This behavior only applies if one or more configurations with the custom resource definitions, [HelmRelease](https://fluxcd.io/flux/components/helm/helmreleases/), [Kustomization](https://fluxcd.io/docs/components/kustomize/kustomization/), [GitRepository](https://fluxcd.io/docs/components/source/gitrepositories/), and [HelmRepository](https://fluxcd.io/docs/components/source/helmrepositories/) are added to this GitHub repository.
 </div>
 
 ### Generating a Personal Access Token on GitHub
@@ -171,7 +171,7 @@ In your browser, go to `https://github.com/your-github-username/fluxcd-demo` to 
 
 ![Automating Deployment To Cluster With Flux Cli]({{site.images}}{{page.slug}}/3xIesos.png)
 
-Your cluster now has Flux controllers installed with a GitHub repository that was used to bootstrap the components. For all configuration and deployment, Flux will now use the `flux-demo` repository as a "source of truth".
+Your cluster now has Flux controllers installed with a [Github](/blog/ci-comparison) repository that was used to bootstrap the components. For all configuration and deployment, Flux will now use the `flux-demo` repository as a "source of truth".
 
 If any configurations are stored, or changes are made to the toolkit components in the `fluxcd-demo` repository, the Flux toolkit automatically applies those configurations and changes to the cluster.
 
@@ -257,7 +257,7 @@ Here's an overview of the command options:
 
 * **--wait** waits until the operation is complete.
 
-This Kustomization resource can be used to manage the deployment of the monitoring-config in the cluster, ensuring that it depends on the kube-prometheus-stack deployment.
+This Kustomization resource can be used to manage the [deployment](/blog/deployment-strategies) of the monitoring-config in the cluster, ensuring that it depends on the kube-prometheus-stack deployment.
 
 ### Accessing the Grafana Dashboard
 
@@ -557,4 +557,3 @@ In addition to GitHub, Flux can also retrieve and bootstrap Git repositories hos
 * [ ] Verify look of article locally
   * Would any images look better `wide` or without the `figcaption`?
 * [ ] Add keywords for internal links to front-matter
-* [ ] Run `link-opp` and find 1-5 places to incorporate links
