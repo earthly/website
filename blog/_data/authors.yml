@@ -330,3 +330,7 @@ Ndafara Tsamba:
     name    : "Ndafara Tsamba"
     bio     : "Ndafara Tsamba is a software engineer turned self-taught data engineer and technical content creator. When he is not working or creating technical tutorials, Ndafara plays chess and Call of Duty mobile."
     avatar  : "/assets/images/authors/Ndafara.jpg"
+Muhammed Ali:
+    name    : "Muhammed Ali"
+    bio     : "I am a software developer passionate about technical writing and open-source contributions. My area of expertise is full-stack web development and DevOps."
+    avatar  : "/assets/images/authors/muhammed.jpg"
