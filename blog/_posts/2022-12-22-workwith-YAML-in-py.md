@@ -312,7 +312,7 @@ The output below shows the result as a list of dictionaries:
 
 If you try to load the data as it is, without converting it to a list, you'll get a generator object and a memory location and not the contents of the *yaml* file:
 
-~~~{.python caption="script.py"}
+~~~{caption="Output"}
 <generator object load_all at 0x7f9e0e0b6880>
 ~~~
 
@@ -370,7 +370,7 @@ def read_and_modify_one_block_of_yaml_data(filename, key, value):
 read_and_modify_one_block_of_yaml_data('output', key='Age', value=30)
 ~~~
 
-~~~{.yaml caption="Output"}
+~~~{caption="Output"}
 {'Name': 'John Doe', 'Position': 'DevOps Engineer', 'Location': \
 'England', 'Age': '30', 'Experience': {'GitHub': 'Software Engineer', \
 'Google': 'Technical Engineer', 'Linkedin': 'Data Analyst'}, \
