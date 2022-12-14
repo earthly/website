@@ -1,5 +1,5 @@
 ---
-title: "Using Portainer for Docker Container Management"
+title: "Using Portainer with Docker and Docker Compose"
 categories:
   - Tutorials
 toc: true
