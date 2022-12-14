@@ -35,7 +35,7 @@ When choosing a monorepo build tool, there are a few different features that you
   Make sure that the build tool you choose has a good caching solution.
 Remote Execution: Remote execution can improve build times by allowing you to build the codebase on a remote server. And distributed execution is a further improvement where the build scheduler can distribute build steps across more than one machine. Make sure that the build tool you choose supports remote execution.
 - **Build Introspection**: Build introspection refers to the ability of a build tool to provide insight into the processes and dependencies involved in building software. This allows engineers to view and query the build graph and ask questions like what part of the build is slowest or what projects depend upon this change.
-- **Versatility**: Build scripts are often used for things besides just purely producing artifacts. Most large organizations have at least one build pipeline with requirements that fall outside of the standard build and test stages. Make sure you consider how you will solve problems beyond producing an artifact from some source code.
+- **Versatility**: Build scripts are often used for things besides just purely producing artifacts. Most large organizations have at least one build pipeline with requirements that fall outside of the standard build and test stages. How are dependencies installed? How are integration tests run? Is there a staging database to restore or a production deploy to trigger? Make sure you consider how you will solve problems beyond producing an artifact from some source code.
 
 {% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/5120.png --alt {{ The Monorepo Tools }} %}
 
@@ -192,7 +192,49 @@ Earthly is a tool that is well-suited for multi-language monorepos, especially f
 
 Earthly is the only tool in this list that does not replace your previous language-specific build tool but instead wraps it. This has pros and cons. As a pro, it is easy to adopt Earthly as it acts more like a glue layer rather than a rewrite of the build scripts. As a con, being a glue layer, it is often less fine-grained at caching, which can affect its performance.
 
-{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/5160.png --alt {{ Conclusion }} %}
+## Overview
+
+Another way to compare these tools is look at each feature on by one.
+
+### Programming Language Support
+
+It's important to choose the tool that can support the programming languages you have in your monorepo.
+
+<div class="wide">
+{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/6840.png %}
+</div>
+
+### Learning Curve
+
+Adopting a monorepo build tool has a cost. That cost varies based on the learning curve and ease of adoption.
+
+<div class="wide">
+{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/6950.png %}
+</div>
+
+### Remote Caching and Execution
+
+Remote caching and execution is important for scaling builds.
+
+<div class="wide">
+{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/7190.png %}
+</div>
+
+### Build Introspection
+
+Build introspection refers to the ability of a build tool to provide insight into the processes and dependencies involved in building software.
+
+<div class="wide">
+{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/7230.png %}
+</div>
+
+### Versatility
+
+Most large organizations have at least one build pipeline with requirements that fall outside of the standard build and test stages. Some tools consider this out of scope while others offer support for tackling the automation work at the heart of building software.
+
+<div class="wide">
+{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/7310.png %}
+</div>
 
 ## Conclusion
 
