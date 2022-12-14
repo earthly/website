@@ -21,13 +21,16 @@ os:
               </div>
               Terminal
           </header>
-          <code class="Home-product-Earthfile-code">sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/latest/download/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly && /usr/local/bin/earthly bootstrap --with-autocomplete'</code>
+          <code class="Home-product-Earthfile-code">sudo /bin/sh -c 'prefix=/usr/local && wget https://github.com/earthly/earthly/releases/latest/download/earthly-linux-amd64 -O "${prefix}/bin/earthly && chmod +x ${prefix}/bin/earthly && ${prefix}/bin/earthly bootstrap --with-autocomplete'</code>
       </div>
 
       <div class="Home-product-note" markdown="1">
       `sudo` is used for:
         * placing the `earthly` binary in `/usr/local/bin/` and marking it as executable
         * installing auto-completion for your shell
+
+      To install in `${HOME}/.local/bin`, change the `prefix` variable to `${HOME}/.local`.
+        * `sudo` is still required if you want auto-completion
 
       For Podman:
         * Rootless Podman is [not officially supported](https://docs.earthly.dev/docs/guides/podman#rootless-podman). Run podman with `sudo`
@@ -84,13 +87,16 @@ os:
               </div>
               Terminal
           </header>
-          <code class="Home-product-Earthfile-code">sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/latest/download/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly && /usr/local/bin/earthly bootstrap  --with-autocomplete'</code>
+          <code class="Home-product-Earthfile-code">sudo /bin/sh -c 'prefix=/usr/local && wget https://github.com/earthly/earthly/releases/latest/download/earthly-linux-amd64 -O ${prefix}/bin/earthly && chmod +x ${prefix}/bin/earthly && ${prefix}/bin/earthly bootstrap  --with-autocomplete'</code>
       </div>
 
       <div class="Home-product-note" markdown="1">
       `sudo` is used for:
         * placing the `earthly` binary in `/usr/local/bin/` and marking it as executable
         * installing auto-completion for your shell
+
+       To install in `${HOME}/.local/bin`, change the `prefix` variable to `${HOME}/.local`.
+        * `sudo` is still required if you want auto-completion
 
        For Podman:
         * Rootless Podman is [not officially supported](https://docs.earthly.dev/docs/guides/podman#rootless-podman). Run podman with `sudo`
