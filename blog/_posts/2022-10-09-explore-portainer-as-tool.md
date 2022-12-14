@@ -1,5 +1,5 @@
 ---
-title: "Exploring Portainer As A Tool For Managing Docker Containers"
+title: "Using Portainer with Docker and Kubernetes"
 categories:
   - Tutorials
 toc: true
