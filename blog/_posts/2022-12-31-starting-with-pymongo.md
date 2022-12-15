@@ -420,18 +420,14 @@ updates = {
         "author": "Unknown Author"
     }
 }
-book_collection.update_one( filter={"_id": book_id}, 
-                                                  update=updates
-                                                 )
+book_collection.update_one( filter={"_id": book_id}, update=updates)
 ~~~
 
 > Notice the `$set` operator used in the `updates` dictionary. The operator is used to set the value of a field in MongoDB. You can learn more about Operators here.
 If you want to update more than one document at a time, you can use the `update_many()` method as below:
 
 ~~~{.python caption="main.py"}
-book_collection.update_many(filter={}, 
-                                                   update={"$set": {"author": "Unknown Author"}}
-                                                   )
+book_collection.update_many(filter={}, update={"$set": {"author": "Unknown Author"}})
 ~~~
 
 The empty `filter` dictionary means you want to delete all the documents in the collection. Once you run the script, you will see all the updated documents in the MongoDB cluster.
