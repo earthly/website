@@ -194,47 +194,69 @@ Earthly is the only tool in this list that does not replace your previous langua
 
 ## Overview
 
-Another way to compare these tools is look at each feature on by one.
+<style>
+      .prose table,
+      .prose td {
+        vertical-align: middle !important;
+      }
+    </style>
+
+Another way to compare these tools is look at each feature one by one.
 
 ### Programming Language Support
 
 It's important to choose the tool that can support the programming languages you have in your monorepo.
 
-<div class="wide">
-{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/6840.png %}
-</div>
+| Tool |          |    Programming Language Support |
+| ----- | ----------- | --------------------------------------------- |
+| <img src="{{site.images}}{{page.slug}}/4.png" width="50" height="50" /> | Bazel             |Java, C++, Python and more.|
+| <img src="{{site.images}}{{page.slug}}/3.png" width="50" height="50" /> | Pants             |Go, Python, Java and more (no JavaScript)
+| <img src="{{site.images}}{{page.slug}}/5.png" width="50" height="50" /> | Nx             |Javascript, Go, Rust. Also iOS and Android executors.
+| <img src="{{site.images}}{{page.slug}}/6.png" width="50" height="50" /> | Earthly             |Anything that runs on Linux. |
 
 ### Learning Curve
 
 Adopting a monorepo build tool has a cost. That cost varies based on the learning curve and ease of adoption.
 
-<div class="wide">
-{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/6950.png %}
-</div>
+| Tool |          |    Learning Curve |
+| ----- | ----------- | --------------------------------------------- |
+| <img src="{{site.images}}{{page.slug}}/4.png" width="50" height="50" /> | Bazel             |Challenging to adopt.|
+| <img src="{{site.images}}{{page.slug}}/3.png" width="50" height="50" /> | Pants             |Uses static introspection to improve on the usability of Bazel.|
+| <img src="{{site.images}}{{page.slug}}/5.png" width="50" height="50" /> | Nx             |Small learning curve for JavaScript Developers.|
+| <img src="{{site.images}}{{page.slug}}/6.png" width="50" height="50" /> | Earthly             |Build software same way you would on Linux, but inside Earthly. |
 
 ### Remote Caching and Execution
 
 Remote caching and execution is important for scaling builds.
 
-<div class="wide">
-{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/7190.png %}
-</div>
+| Tool |          |    Remote Caching and Execution |
+| ----- | ----------- | --------------------------------------------- |
+| <img src="{{site.images}}{{page.slug}}/4.png" width="50" height="50" /> | Bazel |Remote caching and distributed execution available open-source or commercially.|
+| <img src="{{site.images}}{{page.slug}}/3.png" width="50" height="50" /> | Pants |Remote caching and distributed execution available open-source or commercially.|
+| <img src="{{site.images}}{{page.slug}}/5.png" width="50" height="50" /> | Nx    |Remote caching and remote execution available commercially.|
+| <img src="{{site.images}}{{page.slug}}/6.png" width="50" height="50" /> | Earthly|Remote caching and remote execution available open-source or commercially. Open source via self-host BuildKit runners and commercially via Earthly Satellites. |
 
 ### Build Introspection
 
 Build introspection refers to the ability of a build tool to provide insight into the processes and dependencies involved in building software.
 
-<div class="wide">
-{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/7230.png %}
-</div>
+| Tool |          |    Build Introspection |
+| ----- | ----------- | --------------------------------------------- |
+| <img src="{{site.images}}{{page.slug}}/4.png" width="50" height="50" /> | Bazel |`bazel query` and related commands offer great introspection support.|
+| <img src="{{site.images}}{{page.slug}}/3.png" width="50" height="50" /> | Pants |`pants dependencies` command offers good introspection.|
+| <img src="{{site.images}}{{page.slug}}/5.png" width="50" height="50" /> | Nx    |Nx affected offers some introspection capabilities.|
+| <img src="{{site.images}}{{page.slug}}/6.png" width="50" height="50" /> | Earthly|Earthly has limited introspection capabilities.|
 
 ### Versatility
 
 Most large organizations have at least one build pipeline with requirements that fall outside of the standard build and test stages. Some tools consider this out of scope while others offer support for tackling the automation work at the heart of building software.
 
-<div class="wide">
-{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/7310.png %}
-</div>
+| Tool |          |    Build Introspection |
+| ----- | ----------- | --------------------------------------------- |
+| <img src="{{site.images}}{{page.slug}}/4.png" width="50" height="50" /> | Bazel |Limited support. `run` stage can be used for integration testing. Environment setup and build automation mainly considered out of scope.|
+| <img src="{{site.images}}{{page.slug}}/3.png" width="50" height="50" /> | Pants |Limited support. Environment setup and build automation mainly considered out of scope.|
+| <img src="{{site.images}}{{page.slug}}/5.png" width="50" height="50" /> | Nx    |Support for non-cacheable steps and ad-hoc build tasks via npm scripts.|
+| <img src="{{site.images}}{{page.slug}}/6.png" width="50" height="50" /> | Earthly|Aims to encompass all environment setup and build automation by wrapping existing tools.|
 
 ## Conclusion
 
