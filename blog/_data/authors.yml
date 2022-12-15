@@ -334,3 +334,7 @@ Ashutosh Krishna:
     name    : "Ashutosh Krishna"
     bio     : "Ashutosh is an Application Developer at Thoughtworks. He enjoys creating things that live on the internet. He is passionate about full stack development and DevOps. In his free time, he enjoys sharing his technical knowledge with others through articles and turorials."
     avatar  : "/assets/images/authors/Ashutosh.jpeg"
+Muhammed Ali:
+    name    : "Muhammed Ali"
+    bio     : "I am a software developer passionate about technical writing and open-source contributions. My area of expertise is full-stack web development and DevOps."
+    avatar  : "/assets/images/authors/muhammed.jpg"
