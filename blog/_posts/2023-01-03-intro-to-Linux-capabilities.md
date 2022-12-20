@@ -42,14 +42,14 @@ The two basic commands that we have to get and set capabilities are `setcap` and
 
 Please note that for using `setcap`, you have to pass the original file, not the file with symlink. Symlink in Linux is a special file that points to another file.
 
-~~~
+~~~{.bash caption=">_"}
 $ sudo setcap cap_net_bind_service+ep /path/to/the/file
 ~~~
 
 After running this command, the file will be having `cap_net_bind_service` capability, meaning it has the privilege to bind any port less than 1024 on the host.
 For `getcap` you need to do the same.
 
-~~~
+~~~{.bash caption=">_"}
 $ sudo getcap /path/to/the/file
 ~~~
 
@@ -59,7 +59,7 @@ To illustrate, let's take an example of `ping`. It requires you to open a raw so
 
 You can set the particular `net_raw` capability to ping:
 
-~~~
+~~~{.bash caption=">_"}
 $ sudo setcap cap_net_raw=ep ping
 ~~~
 
@@ -89,17 +89,17 @@ When you start a container by default, it starts with some capabilities given by
 
 For example, let's run a busybox container and check the capabilities with which the process is running. A busybox container is a container based on a busybox image. It's a lightweight container that comes with many commonly used UNIX utilities like awk, grep, and tar.
 
-~~~
+~~~{.bash caption=">_"}
 $ docker run --rm -it busybox sleep 1h &
 ~~~
 
 Now you need to get the PID of the running container and for this you can use `docker inspect <container-id>`. The PID stands for process ID. It is a unique numeric ID for every process that's running on a Linux system.
 
-~~~
+~~~{.bash caption=">_"}
 $ docker inspect 7666636cd08c | grep -i PID
 ~~~
 
-~~~
+~~~{.bash caption="Output"}
             "Pid": 23764,
             "PidMode": "",
             "PidsLimit": null,
@@ -119,11 +119,11 @@ In this article, we will focus on effective capabilities set. Most of the time y
 
 To get the capabilities of the container, run the following command:
 
-~~~
+~~~{.bash caption=">_"}
 $ grep Cap /proc/<container-pid>/status
 ~~~
 
-~~~
+~~~{.bash caption="Output"}
 CapInh: 00000000a80425fb
 CapPrm: 00000000a80425fb
 CapEff: 00000000a80425fb
@@ -137,23 +137,27 @@ This output is not readable, so to read this we'll use a binary which comes from
 
 At this point, [make](/blog/using-cmake) sure you have the [libcap2-bin package installed](https://command-not-found.com/capsh). To decode the effective capability, get the text written after `CapEff:` and use the following command, and you should see output like this.
 
-~~~
+~~~{.bash caption=">_"}
 $ capsh --decode=00000000a80425fb
 ~~~
 
-~~~
-0x00000000a80425fb=cap_chown,cap_dac_override,cap_fowner,cap_fsetid,cap_kill,cap_setgid,cap_setuid,cap_setpcap,cap_net_bind_service,cap_net_raw,cap_sys_chroot,cap_mknod,cap_audit_write,cap_setfcap
+~~~{.bash caption="Output"}
+0x00000000a80425fb=cap_chown,cap_dac_override,cap_fowner,
+cap_fsetid,cap_kill,cap_setgid,cap_setuid,cap_setpcap,
+cap_net_bind_service,cap_net_raw,cap_sys_chroot,cap_mknod,
+cap_audit_write,cap_setfcap
 ~~~
 
 The output shows different capabilities that the process has. For example, `cap_chwon` capability gives a program the ability to change the owner of a file or a directory. This capability is used by the `chown` command. Similarly, If you want a process to allow opening/listening to a port less than 1024 then you can use cap_net_bind_service which allows a process to bind to ports less than 1024. You can read more about [capabilities](https://man7.org/linux/man-pages/man7/capabilities.7.html).
 
 Alternatively, if you have the PID of the process, you can also use `getpcaps` to get the capabilities of the process.
 
-~~~
+~~~{.bash caption=">_"}
 $ getpcaps 23808
 ~~~
 
-~~~
+~~~{.bash caption="Output"}
+
 23808: = cap_chown,cap_dac_override,cap_fowner,cap_fsetid,cap_kill,cap_setgid,cap_setuid,cap_setpcap,cap_net_bind_service,cap_net_raw,cap_sys_chroot,cap_mknod,cap_audit_write,cap_setfcap+eip
 ~~~
 
@@ -166,7 +170,7 @@ The capabilities mentioned above the capabilities of the container which is runn
 
 To run a privileged container, you can pass a `--privileged` flag while running the container. You might want to run a privileged container when your container needs to modify sensitive system files that are not accessible to a non-privileged container. You can also run containers with privilege when you need access to certain hardware resources.
 
-~~~
+~~~{.bash caption=">_"}
 $ docker run --privileged -d nginx
 ~~~
 
@@ -180,7 +184,7 @@ A normal container will *not* give you access to your host disks or device files
 
 For example, let's run an Ubuntu container without a privileged flag:
 
-~~~
+~~~{.bash caption=">_"}
 $ docker run --rm -it ubuntu 
 ~~~
 
@@ -188,29 +192,30 @@ And then, within the container, First execute this command `fdisk -l` and then `
 
 Post installation, if you run `fdisk -l` then you'll not get anything! If you execute the command `ls /dev` for listing all the device files, then you'll get this output.
 
-~~~
+~~~{.bash caption=">_"}
 root@461c672e930a:/# ls /dev
 ~~~
 
-~~~
-console  core  fd  full  mqueue  null  ptmx  pts  random  shm  stderr  stdin  stdout  tty  urandom  zero
+~~~{.bash caption="Ouput"}
+console  core  fd  full  mqueue  null  ptmx  pts  \
+random  shm  stderr  stdin  stdout  tty  urandom  zero
 ~~~
 
 Now, if you repeat the same steps in a privileged container, then you'll see that you're able to read the disk information available on the host system. If an attacker has access to the host system, then they can gather information about other containers that are running on it and identify potentially vulnerable targets.
 
-~~~
+~~~{.bash caption=">_"}
 $ docker run --privileged --rm -it ubuntu
 ~~~
 
 In the privileged container, try executing the same command that we have executed in the normal container.
 
-~~~
+~~~{.bash caption=">_"}
 root@190c563af469:/# fdisk -l
 ~~~
 
 This lists the partition table entries:
 
-~~~
+~~~{.bash caption="Output"}
 # output (truncated)
 
 Disk /dev/loop0: 61.77 MiB, 64770048 bytes, 126504 sectors
@@ -236,11 +241,11 @@ Device      Start      End  Sectors  Size Type
 
 Next, run the `ls /dev` command:
 
-~~~
+~~~{.bash caption=">_"}
 root@190c563af469:/# ls /dev
 ~~~
 
-~~~
+~~~{.bash caption="Output"}
 # output (truncated)
 
 autofs           full          loop1   mem     pts       stdout  tty15  tty23  tty31  tty4   tty48  tty56  tty7    ttyS14  ttyS22  ttyS30     udmabuf  vcs6   vcsu1  vda15
@@ -261,17 +266,17 @@ If you're using Docker, then you can use the flag `--cap-drop=all` to run a cont
 
 By running containers with zero privileges, you can limit the potential damage that can be caused by a compromised container. Even if an attacker gets inside the container, they might not be able to compromise the host system or any other container. The blast surface will be very strict in this case.
 
-~~~
+~~~{.bash caption=">_"}
 $ docker run --rm --cap-drop=all -it busybox sleep 1h &
 ~~~
 
 If you grep the capabilities like we did above, you'll see the effective capability is now `CapEff: 0000000000000000` and if you decode the string then you will get no capabilities.
 
-~~~
+~~~{.bash caption=">_"}
 $ capsh --decode=0000000000000000
 ~~~
 
-~~~
+~~~{.bash caption="Output"}
 0x0000000000000000=
 ~~~
 
@@ -280,16 +285,18 @@ $ capsh --decode=0000000000000000
 Now, let's try and understand how we can run a container with certain privileges.
 If you're using [docker](/blog/rails-with-docker), then you can use `--cap-add` to add capabilities and `--cap-drop` to drop the capabilities. For example, if you want to run a container with `sys_admin` capabilities and drop everything else, then you can do it as follows:
 
-~~~
-$ docker run --rm --cap-drop=all --cap-add=sys_admin -it busybox sleep 1h &
+~~~{.bash caption=">_"}
+$ docker run --rm --cap-drop=all --cap-add=sys_admin \
+-it busybox sleep 1h &
 ~~~
 
 Please note that if you want to add or drop more than one privileges, then you have to add the same flag again.
 
 For example, say if you want to run a container dropping all capabilities and only using SYS_ADMIN & NET_ADMIN capabilities. You need to use the `--cap-add` flag twice.
 
-~~~
-$ docker run --rm --cap-drop=all --cap-add=sys_admin --cap-add=net_admin -it busybox sleep 1h &
+~~~{.bash caption=">_"}
+$ docker run --rm --cap-drop=all --cap-add=sys_admin \
+--cap-add=net_admin -it busybox sleep 1h &
 ~~~
 
 ## Capabilities in the Context of Kubernetes
@@ -308,7 +315,7 @@ It's a CNCF graduated project. Since it manages containers, you can set the capa
 
 By using `SecurityContext` in Kubernetes manifest, you can set the capabilities in containers. Let me illustrate the same with one sample manifest:
 
-~~~
+~~~{.yaml caption=""}
 apiVersion: v1
 kind: Pod
 metadata:
@@ -349,10 +356,3 @@ By setting the right capabilities for your [container](/blog/docker-slim), you a
 As with most other Linux commands, you can use the `man` page to learn more about capabilities.
 
 {% include cta/cta1.html %}
-
-## Outside Article Checklist
-
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
