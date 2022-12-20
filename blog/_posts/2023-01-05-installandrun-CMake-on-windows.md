@@ -9,7 +9,7 @@ internal-links:
  - just an example
 ---
 
-CMake is an open source multiplatform tool that you can use to help with build automation, testing, packaging, and the installation of software. One of the main advantages of CMake is that it supports generating build scripts for a wide variety of platforms including Windows, macOS, and Linux. This gives developers the flexibility they need when building a new project and hopefully helps speed up the build.
+CMake is an open source multiplatform tool that you can use to help with build automation, testing, packaging, and the installation of software. One of the main advantages of CMake is that it supports generating build scripts for a wide variety of platforms including [Windows](/blog/makefiles-on-windows), macOS, and Linux. This gives developers the flexibility they need when building a new project and hopefully helps speed up the build.
 
 In this article, you'll learn more about CMake and if it's the right solution for you. You'll also walk through the process of installing it on Windows.
 
@@ -184,13 +184,13 @@ Then select **Debug** > **Start Debugging** from the main toolbar:
 
 If any changes have been made since the last time you built the project, the debug command will build it first before the debugging can take place.
 
-The [`launch.vs.json`](https://learn.microsoft.com/cpp/build/configure-cmake-debugging-sessions?view=msvc-170&WT.mc_id=AZ-MVP-5004737#launchvsjson-reference) file can be used to customize your CMake debugging session. This file can be used to input any environment variables or command line arguments that you might want to pass into the program during debugging.
+The [`launch.vs.json`](https://learn.microsoft.com/cpp/build/configure-cmake-debugging-sessions?view=msvc-170&WT.mc_id=AZ-MVP-5004737#launchvsjson-reference) file can be used to customize your CMake debugging session. This file can be used to input any [environment variables](/blog/bash-variables) or command line arguments that you might want to pass into the program during [debugging](/blog/printf-debugging).
 
 ## Conclusion
 
-In this article, you learned that CMake is a tool that can help with build automation, testing, packaging, and installation of software. It can be integrated into several IDE solutions, allowing developers the option of using their favorite IDE while taking advantage of CMake for their build solution.
+In this article, you learned that CMake is a tool that can help with [build automation](/blog/introducing-earthly-build-automation-for-the-container-era), testing, packaging, and installation of software. It can be integrated into several IDE solutions, allowing developers the option of using their favorite IDE while taking advantage of CMake for their build solution.
 
-CMake gives you the flexibility to ensure your application can be built and executed on any platform. While CMake might not be the right tool for everyone, for the right developer, team, or project, it can be a powerful solution.
+CMake gives you the flexibility to ensure your application can be built and executed on any platform. While [Cmake](/blog/using-cmake) might not be the right tool for everyone, for the right developer, team, or project, it can be a powerful solution.
 
 ## Outside Article Checklist
 
@@ -199,5 +199,4 @@ CMake gives you the flexibility to ensure your application can be built and exec
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
 - [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
