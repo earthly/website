@@ -345,6 +345,8 @@ I hope this guide helped you understand Linux capabilities and why they're impor
 By setting the right capabilities for your container, you are reducing the attack surface. Even if someone breaks into the container, you can control the damage.
 As with most other Linux commands, you can use the `man` page to learn more about capabilities.
 
+{% include cta/cta1.html %}
+
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
@@ -353,4 +355,3 @@ As with most other Linux commands, you can use the `man` page to learn more abou
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
