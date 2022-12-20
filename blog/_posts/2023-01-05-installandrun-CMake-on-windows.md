@@ -33,7 +33,7 @@ CMake can also help to keep your source code folder clean. It can separate the b
 
 ## Install CMake on Windows
 
-There are several ways to install CMake on Windows. The first option is to use [precompiled binaries](https://cmake.org/download/) as either the Windows Installer file (MSI) or the compressed version (ZIP) files. You just have to download the files and then walk through the interactive installation wizard.
+There are several ways to install CMake on Windows. The first option is to use [pre-compiled binaries](https://cmake.org/download/) as either the Windows Installer file (MSI) or the compressed version (ZIP) files. You just have to download the files and then walk through the interactive installation wizard.
 
 The second option is to [download and build CMake from the source](https://cmake.org/download/), and CMake even includes a source release download option.
 
@@ -41,15 +41,15 @@ The third option is to use a package manager tool, such as [Windows Package Mana
 
 If you're using Windows Package Manager, run the following command to install CMake:
 
-```bash
+~~~
 winget install kitware.cmake
-```
+~~~
 
 If you're using Chocolatey, use the following command:
 
-```bash
+~~~
 choco install cmake
-```
+~~~
 
 ### Install a CMake Extension with Visual Studio
 
@@ -57,19 +57,27 @@ Once you've finished installing CMake on Windows, you need to install an extensi
 
 To install the CMake extension, you need to select **Start** and then open the **Visual Studio Installer** from the menu:
 
-![**Visual Studio Installer**](https://i.imgur.com/rL2NEtk.png)
+<div class="wide">
+![**Visual Studio Installer**]({{site.images}}{{page.slug}}/rL2NEtk.png)
+</div>
 
 Once the **Visual Studio Installer** loads, select **Modify**:
 
-![Modify your **Visual Studio Installer**](https://i.imgur.com/J0F3Zy4.png)
+<div class="wide">
+![Modify your **Visual Studio Installer**]({{site.images}}{{page.slug}}/J0F3Zy4.png)
+</div>
 
 Under **Workloads**, locate **Desktop development with C++**, which can be found under **Desktop & Mobile**:
 
-![**Desktop development with C++** component](https://i.imgur.com/N97KbHm.jpg)
+<div class="wide">
+![**Desktop development with C++** component]({{site.images}}{{page.slug}}/N97KbHm.jpg)
+</div>
 
 On this same page, you also need to find and select the **Linux and embedded development with C++** component. This component ensures you have cross-platform CMake development capabilities:
 
-![Linux development with C++ component](https://i.imgur.com/gw4mUcU.png)
+<div class="wide">
+![Linux development with C++ component]({{site.images}}{{page.slug}}/gw4mUcU.png)
+</div>
 
 Once you've selected both, select **Modify** again, and the additional tools will be installed.
 
@@ -77,13 +85,17 @@ Once you've selected both, select **Modify** again, and the additional tools wil
 
 Now that you've installed CMake and a few components, it's time to use them. Start a new project by opening Visual Studio and selecting **Create a new project** > **CMake project**:
 
-![New project selection](https://i.imgur.com/tZE06Kr.png)
+<div class="wide">
+![New project selection]({{site.images}}{{page.slug}}/tZE06Kr.png)
+</div>
 
 After selecting **CMake project**, Visual Studio, and CMake will create a directory and a file called [`CMakeLists.txt`](https://www.jetbrains.com/help/clion/cmakelists-txt-file.html), which is a set of instructions describing certain settings within the project, such as source files and targets.
 
 When Visual Studio detects that there is a `CMakeLists.txt` file within a project that's been opened, it adds CMake items to the **Project** menu, which gives you access to commands for viewing and editing CMake scripts:
 
-![**Project** menu](https://i.imgur.com/gDWPB2V.png)
+<div class="wide">
+![**Project** menu]({{site.images}}{{page.slug}}/gDWPB2V.png)
+</div>
 
 ### Configure CMake Projects
 
@@ -91,7 +103,9 @@ CMake supports two files that let you specify build and test options. These file
 
 To ensure that Visual Studio uses the `CMakePresets.json` file, you need to enable it. You can do so via **Tools** > **Options** > **CMake** > **General**. Please ensure that the **Always use CMake Presets** option is selected:
 
-![Options menu settings](https://i.imgur.com/C0zS8rF.png)
+<div class="wide">
+![Options menu settings]({{site.images}}{{page.slug}}/C0zS8rF.png)
+</div>
 
 If Visual Studio can't find a `CMakePresets.json` file, it will fall back to using the default [configure presets](https://learn.microsoft.com/cpp/build/cmake-presets-vs?view=msvc-170&WT.mc_id=AZ-MVP-5004737#default-configure-presets).
 
@@ -109,34 +123,48 @@ When you're ready, Visual Studio gives you several options to build your CMake p
 
 If you want to use the toolbar, you need to find the **Startup Item** drop-down:
 
-![**Startup Item** drop-down](https://i.imgur.com/cAePEXq.png)
+<div class="wide">
+![**Startup Item** drop-down]({{site.images}}{{page.slug}}/cAePEXq.png)
+</div>
 
 Select your preferred target to build, and either press **F5** or choose **Run**.
 
 If you want to use the Solution Explorer, navigate to the **Solution Explorer** on the right-hand side of your screen. By default, it will be set to the **Folder View**:
 
-![**Solution Explorer - Folder View**](https://i.imgur.com/dqElsX9.png)
+<div class="wide">
+![**Solution Explorer - Folder View**]({{site.images}}{{page.slug}}/dqElsX9.png)
+</div>
 
 You need to change the **Folder View** to the **CMake Targets View**. To do this, select the view icon:
 
-![View icon](https://i.imgur.com/Fy0Jy4m.png)
+<div class="wide">
+![View icon]({{site.images}}{{page.slug}}/Fy0Jy4m.png)
+</div>
 
 Then select **CMake Targets View**:
 
-![**CMake Targets View**](https://i.imgur.com/FBAsxCY.png)
+<div class="wide">
+![**CMake Targets View**]({{site.images}}{{page.slug}}/FBAsxCY.png)
+</div>
 
 Then right-click on **CMake Target** and select **Build** from the context menu:
 
-![**Build**](https://i.imgur.com/vuMsozD.png)
+<div class="wide">
+![**Build**]({{site.images}}{{page.slug}}/vuMsozD.png)
+</div>
 
 Lastly, you can select **Build** > **Build All** from the main menu of Visual Studio to build your CMake project:
 
-![**Build All**](https://i.imgur.com/GcG7Y2o.png)
+<div class="wide">
+![**Build All**]({{site.images}}{{page.slug}}/GcG7Y2o.png)
+</div>
 
-After completing either one of these options, you can find the build results within the 
+After completing either one of these options, you can find the build results within the
 **Output** window and **Error List**:
 
-![**Output** window](https://i.imgur.com/4JE6Fpn.png)
+<div class="wide">
+![**Output** window]({{site.images}}{{page.slug}}/4JE6Fpn.png)
+</div>
 
 ### Debug CMake Projects
 
@@ -144,11 +172,15 @@ As you know, when writing code, it's never perfect the first time, which is why 
 
 To debug your CMake project using Visual Studio, start by selecting one of the targets shown in the **Startup Item** drop-down within the toolbar:
 
-![**Startup Item** drop-down](https://i.imgur.com/cAePEXq.png)
+<div class="wide">
+![**Startup Item** drop-down]({{site.images}}{{page.slug}}/cAePEXq.png)
+</div>
 
 Then select **Debug** > **Start Debugging** from the main toolbar:
 
-![**Debug**](https://i.imgur.com/XcBC4Ta.png)
+<div class="wide">
+![**Debug**]({{site.images}}{{page.slug}}/XcBC4Ta.png)
+</div>
 
 If any changes have been made since the last time you built the project, the debug command will build it first before the debugging can take place.
 
@@ -166,7 +198,6 @@ CMake gives you the flexibility to ensure your application can be built and exec
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
 - [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
