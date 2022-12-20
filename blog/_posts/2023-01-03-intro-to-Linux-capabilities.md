@@ -6,7 +6,10 @@ toc: true
 author: Anurag Kumar
 
 internal-links:
- - just an example
+ - Kubernetes
+ - Linux
+ - Containers
+ - Pods
 ---
 
 In Linux, capabilities are a way to assign specific privileges to a running process. They allow us to have more fine-grained control over the privileges that processes have on a Linux system.
@@ -353,4 +356,3 @@ As with most other Linux commands, you can use the `man` page to learn more abou
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Add keywords for internal links to front-matter
