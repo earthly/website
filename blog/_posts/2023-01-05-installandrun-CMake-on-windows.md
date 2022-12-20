@@ -162,7 +162,6 @@ CMake gives you the flexibility to ensure your application can be built and exec
 
 ## Outside Article Checklist
 
-- [ ] Add in Author page
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
