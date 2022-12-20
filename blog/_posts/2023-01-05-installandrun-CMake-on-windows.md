@@ -6,7 +6,10 @@ toc: true
 author: Sarah Lean
 
 internal-links:
- - just an example
+ - CMake
+ - Windows
+ - Visual Studio
+ - Automation
 ---
 
 CMake is an open source multiplatform tool that you can use to help with build automation, testing, packaging, and the installation of software. One of the main advantages of CMake is that it supports generating build scripts for a wide variety of platforms including [Windows](/blog/makefiles-on-windows), macOS, and Linux. This gives developers the flexibility they need when building a new project and hopefully helps speed up the build.
@@ -57,9 +60,7 @@ Once you've finished installing CMake on Windows, you need to install an extensi
 
 To install the CMake extension, you need to select **Start** and then open the **Visual Studio Installer** from the menu:
 
-<div class="wide">
 ![**Visual Studio Installer**]({{site.images}}{{page.slug}}/rL2NEtk.png)
-</div>
 
 Once the **Visual Studio Installer** loads, select **Modify**:
 
@@ -201,4 +202,3 @@ or project, it can be a powerful solution.
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Add keywords for internal links to front-matter
