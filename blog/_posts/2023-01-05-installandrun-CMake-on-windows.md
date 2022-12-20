@@ -197,8 +197,3 @@ CMake gives you the flexibility to ensure your application can be built and exec
 or project, it can be a powerful solution.
 
 {% include cta/cta1.html %}
-
-## Outside Article Checklist
-
-- [ ] Create header image in Canva
-
