@@ -132,7 +132,7 @@ These are the five types of capabilities that we discussed above. We will also s
 
 This output is not readable, so to read this we'll use a binary which comes from the `libcap2-bin` package named `capsh`.
 
-At this point, make sure you have the [libcap2-bin package installed](https://command-not-found.com/capsh). To decode the effective capability, get the text written after `CapEff:` and use the following command, and you should see output like this.
+At this point, [make](/blog/using-cmake) sure you have the [libcap2-bin package installed](https://command-not-found.com/capsh). To decode the effective capability, get the text written after `CapEff:` and use the following command, and you should see output like this.
 
 ~~~
 $ capsh --decode=00000000a80425fb
@@ -254,7 +254,7 @@ You can try running privileged tasks by execing into the container. You can also
 
 ### Running a Container with Zero Privileges
 
-If you're using Docker, then you can use the flag `--cap-drop=all` to run a container with zero privileges. Running a container with zero privileges means that the container is not allowed to access any of the host system's resources.
+If you're using Docker, then you can use the flag `--cap-drop=all` to run a container with zero privileges. Running a [container](/blog/docker-slim) with zero privileges means that the container is not allowed to access any of the host system's resources.
 
 By running containers with zero privileges, you can limit the potential damage that can be caused by a compromised container. Even if an attacker gets inside the container, they might not be able to compromise the host system or any other container. The blast surface will be very strict in this case.
 
@@ -275,7 +275,7 @@ $ capsh --decode=0000000000000000
 ### Running a Container with Certain Privileges
 
 Now, let's try and understand how we can run a container with certain privileges.
-If you're using docker, then you can use `--cap-add` to add capabilities and `--cap-drop` to drop the capabilities. For example, if you want to run a container with `sys_admin` capabilities and drop everything else, then you can do it as follows:
+If you're using [docker](/blog/rails-with-docker), then you can use `--cap-add` to add capabilities and `--cap-drop` to drop the capabilities. For example, if you want to run a container with `sys_admin` capabilities and drop everything else, then you can do it as follows:
 
 ~~~
 $ docker run --rm --cap-drop=all --cap-add=sys_admin -it busybox sleep 1h &
@@ -297,7 +297,7 @@ Kubernetes is an open-source container orchestrator that manages containerized w
 - Self Healing : With the help of controllers, Kubernetes monitors the health of your containerized application and if the container or pod crashes, then Kubernetes tries to run the container again or reschedule the pod.
 - Configuration Management: Kubernetes has support for [ConfigMaps for configuration management](https://earthly.dev/blog/kubernetes-config-maps/).
 
-It's a CNCF graduated project. Since it manages containers, you can set the capabilities here. The orchestrator will make sure that the container runs with the given capabilities only.
+It's a CNCF graduated project. Since it manages containers, you can set the capabilities here. The orchestrator will [make](/blog/makefiles-on-windows) sure that the container runs with the given capabilities only.
 
 ### Setting the Right Capabilities in Pods
 
@@ -342,7 +342,7 @@ Even if you're using a multi-container pod, you can set the SecurityContext in e
 
 I hope this guide helped you understand Linux capabilities and why they're important. If you're running containerized workloads, then you should check with what privilege your container is running. You should only try to give the minimum required capabilities to the container.
 
-By setting the right capabilities for your container, you are reducing the attack surface. Even if someone breaks into the container, you can control the damage.
+By setting the right capabilities for your [container](/blog/docker-slim), you are reducing the attack surface. Even if someone breaks into the container, you can control the damage.
 As with most other Linux commands, you can use the `man` page to learn more about capabilities.
 
 {% include cta/cta1.html %}
@@ -354,4 +354,3 @@ As with most other Linux commands, you can use the `man` page to learn more abou
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
