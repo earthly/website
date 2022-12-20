@@ -18,6 +18,8 @@ In this article, you'll learn more about CMake and if it's the right solution fo
 
 ## Pros and Cons of CMake
 
+![Pros & Cons**]({{site.images}}{{page.slug}}/procon.jpg)\
+
 There are a number of benefits to using CMake to help build your solutions, including the fact that CMake can run on all major platforms, including Windows, Linux, and macOS. This means that a team of developers who are using different operating systems can still have common development tools.
 
 Using CMake for projects, instead of something like [Visual Studio projects](https://learn.microsoft.com/visualstudio/ide/solutions-and-projects-in-visual-studio?view=vs-2022&WT.mc_id=AZ-MVP-5004737#projects), helps you avoid being locked into one integrated development environment (IDE). A team can create a project using CMake, and then each developer can use their preferred IDE to work on it. CMake integration is supported by a variety of IDE tools, including [CLion](https://www.jetbrains.com/clion/), [Atom](https://atom.io/), and [Visual Studio](https://visualstudio.microsoft.com/).
@@ -44,13 +46,13 @@ The third option is to use a package manager tool, such as [Windows Package Mana
 
 If you're using Windows Package Manager, run the following command to install CMake:
 
-~~~
+~~~{.bash caption=">_"}
 winget install kitware.cmake
 ~~~
 
 If you're using Chocolatey, use the following command:
 
-~~~
+~~~{.bash caption=">_"}
 choco install cmake
 ~~~
 
@@ -199,5 +201,4 @@ or project, it can be a powerful solution.
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
 
