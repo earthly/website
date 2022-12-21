@@ -6,7 +6,9 @@ toc: true
 author: Antreas Antoniou
 
 internal-links:
- - just an example
+ - Ninja
+ - Build
+ - Build System
 ---
 
 [Ninja](https://ninja-build.org/) is a compact build system with a focus on fast incremental builds. It was originally developed by [Evan Martin](https://github.com/evmar), a Google dev, partly in response to the needs of building large projects such as Google Chrome.
@@ -323,4 +325,3 @@ Tools that help automate the building, testing, and deployment of software, such
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Add keywords for internal links to front-matter
