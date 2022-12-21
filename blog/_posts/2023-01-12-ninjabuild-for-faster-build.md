@@ -11,7 +11,7 @@ internal-links:
 
 [Ninja](https://ninja-build.org/) is a compact build system with a focus on fast incremental builds. It was originally developed by [Evan Martin](https://github.com/evmar), a Google dev, partly in response to the needs of building large projects such as Google Chrome.
 
-If you're developing a software system and you require a rebuild every few minutes to test your latest feature or code block, then Ninja will *only* rebuild what you have just modified or added and nothing else—as opposed to Make, which would rebuild the whole project every single time.
+If you're developing a software system and you require a rebuild every few minutes to test your latest feature or code block, then Ninja will *only* rebuild what you have just modified or added and nothing else—as opposed to [Make](/blog/makefiles-on-windows), which would rebuild the whole project every single time.
 
 This article will start by explaining build systems in a little more detail. It'll then introduce Ninja and teach you how to use Ninja to build a simple C++ project.
 
@@ -30,7 +30,7 @@ Next, let's take a closer look at Ninja and when you may want to use it.
 
 ![What Is Ninja?]({{site.images}}{{page.slug}}/VQN7VTU.png)
 
-Ninja is a fast build tool that can also be used as a build tool for other build generators. As mentioned, it was originally developed by Evan Martin, a Google dev, as a resource to speed up the building of projects such as Chrome. Since its inception, some notable projects built using Ninja include Chrome, Android, all Meson projects, Swift, and LLVM.
+Ninja is a fast build tool that can also be used as a build tool for other build generators. As mentioned, it was originally developed by Evan Martin, a Google dev, as a resource to speed up the building of projects such as Chrome. Since its inception, some notable projects built using Ninja include Chrome, Android, all Meson projects, Swift, and [LLVM](/blog/compiling-containers-dockerfiles-llvm-and-buildkit).
 
 <div class="notice--big--primary">
 For a very interesting review and tech analysis of the Ninja build system, Ninja's creator wrote a [critical review article](https://neugierig.org/software/blog/2020/05/ninja.html) eight years after its original release.
@@ -51,7 +51,7 @@ The main advantage of Ninja is its speed in **incremental builds**. It incentivi
 
 [According to benchmarks](https://david.rothlis.net/ninja-benchmark), Ninja performs as well as Make in a fresh build but outperforms it in an incremental build by what appears to be an exponentially increasing factor.
 
-On the downside, Ninja can't build projects without a build file, so it must always work with a build generator, such as [CMake](https://earthly.dev/blog/using-cmake/) or Meson, the most popular build generators that work with Ninja. Problems can be introduced depending on the build generator used. For example, Make requires each file to be specified in the build file, making the process of writing these files extremely complicated, time consuming, and prone to errors. So, the key is to choose the right build generator that works well with Ninja.
+On the downside, Ninja can't build projects without a build file, so it must always work with a build generator, such as [CMake](https://earthly.dev/blog/using-cmake/) or Meson, the most popular build generators that work with Ninja. Problems can be introduced depending on the build generator used. For example, [Make](/blog/makefiles-on-windows) requires each file to be specified in the build file, making the process of writing these files extremely complicated, time consuming, and prone to errors. So, the key is to choose the right build generator that works well with Ninja.
 
 ### When Should You Use Ninja?
 
@@ -151,7 +151,7 @@ This tutorial will show you how to create a simple from-scratch project and an i
 The following are prerequisites to follow along:
 
 - CMake is required to build the project. Instructions for CMake installation can be found on their [official website](https://cmake.org/install/).
-- For Linux users, CMake can be installed with the single terminal command `sudo snap install cmake --classic`. It can be installed on macOS with `brew install cmake`.
+- For Linux users, [CMake](/blog/using-cmake) can be installed with the single terminal command `sudo snap install cmake --classic`. It can be installed on macOS with `brew install cmake`.
 - Python is required to generate the sample files used in this tutorial. Ensure [Python is installed](https://www.python.org/downloads/).
 
 #### Creating a Project From Scratch
@@ -313,7 +313,7 @@ As you can see, Ninja is able to build the updated 1001-file project in only thr
 
 This article introduced you to build systems and Ninja before explaining how to install Ninja and use it to build your C++ projects.
 
-Tools that help automate the building, testing, and deployment of software, such as the build systems discussed in this article, are essential to the success of any software project. Ninja is a great tool that can save time and effort when building C++ projects. You can as well explore other build tools like [Bazel](https://earthly.dev/blog/bazel-build/).
+Tools that help automate the building, testing, and deployment of software, such as the build systems discussed in this article, are essential to the success of any software project. Ninja is a great tool that can save time and effort when building [C++](/blog/g++-makefile) projects. You can as well explore other build tools like [Bazel](https://earthly.dev/blog/bazel-build/).
 
 {% include cta/cta1.html %}
 
@@ -324,4 +324,3 @@ Tools that help automate the building, testing, and deployment of software, such
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
