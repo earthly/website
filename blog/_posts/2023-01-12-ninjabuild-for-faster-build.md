@@ -30,7 +30,7 @@ Next, let's take a closer look at Ninja and when you may want to use it.
 
 ## What Is Ninja?
 
-![What Is Ninja?]({{site.images}}{{page.slug}}/VQN7VTU.png)
+![What Is Ninja?]({{site.images}}{{page.slug}}/VQN7VTU.png)\
 
 Ninja is a fast build tool that can also be used as a build tool for other build generators. As mentioned, it was originally developed by Evan Martin, a Google dev, as a resource to speed up the building of projects such as Chrome. Since its inception, some notable projects built using Ninja include Chrome, Android, all Meson projects, Swift, and [LLVM](/blog/compiling-containers-dockerfiles-llvm-and-buildkit).
 
@@ -63,7 +63,7 @@ Conversely, Ninja might not be a good choice if you want an end-to-end tool (bui
 
 ## Implementing a Ninja Build
 
-![Implementing a Ninja Build]({{site.images}}{{page.slug}}/ZI0eCAX.png)
+![Implementing a Ninja Build]({{site.images}}{{page.slug}}/ZI0eCAX.png)\
 
 The following sections explain the different ways to install Ninja before going through step-by-step instructions for implementing a Ninja build.
 
@@ -112,14 +112,14 @@ Users who don't want to build Ninja with specialized flags can build it from sou
 
 First, `clone` and `checkout` the Ninja repo:
 
-~~~
+~~~{.bash caption=">_"}
 git clone git://github.com/ninja-build/ninja.git && cd ninja
 git checkout release
 ~~~
 
 Then, build a basic Ninja binary and a set of files needed to build Ninja:
 
-~~~
+~~~{.bash caption=">_"}
 ./configure.py --bootstrap
 ~~~
 
@@ -127,7 +127,7 @@ This will generate the Ninja binary and a `build.ninja` file that can be used to
 
 Use the following code to build Ninja:
 
-~~~
+~~~{.bash caption=">_"}
 cmake -Bbuild-cmake
 cmake --build build-cmake
 ~~~
@@ -136,13 +136,13 @@ The Ninja binary will now be inside the `build-cmake` directory (though the user
 
 The following code will run the unit tests:
 
-~~~
+~~~{.bash caption=">_"}
 ./build-cmake/ninja_test
 ~~~
 
 ### Creating a Project With Ninja
 
-![Creating a Project with Ninja]({{site.images}}{{page.slug}}/xjVmKEo.png)
+![Creating a Project with Ninja]({{site.images}}{{page.slug}}/xjVmKEo.png)\
 
 To demonstrate how to use Ninja as well as showcase some of its strengths, this tutorial uses a sample project, which can be found in [this GitHub repo](https://github.com/AntreasAntoniou/ninja-tutorial).
 
@@ -167,7 +167,7 @@ To create a project from scratch, do the following:
 
 `hello_world.cpp` is a simple C++ program that prints "Hello World" to the console:
 
-~~~
+~~~{.cpp caption="hello_world.cpp"}
 // C++ program to display "Hello World"
 
 // Header file for input/output functions
@@ -186,7 +186,7 @@ int main()
 
 `CMakeLists.txt` is a CMake file that describes the project and how to build it:
 
-~~~
+~~~{caption="CMakeLists.txt"}
 cmake_minimum_required (VERSION 3.8)
 
 project(HelloWorld CXX)
@@ -197,7 +197,7 @@ add_executable(HelloWorld hello_world.cpp)
 
 Now use CMake to generate a build file for Ninja:
 
-~~~
+~~~{.bash caption=">_"}
 cmake -G Ninja
 ~~~
 
@@ -205,13 +205,13 @@ This should generate a `build.ninja` file in the current directory, along with r
 
 The project can now be built with Ninja using the following command:
 
-~~~
+~~~{.bash caption=">_"}
 ninja
 ~~~
 
 The following output should be generated:
 
-~~~
+~~~{.bash caption="Output"}
 [2/2] Linking CXX executable HelloWorld
 ~~~
 
@@ -221,7 +221,7 @@ With that, the Ninja project should be successfully built.
 
 Now, go back to the root of the repository and navigate to the incremental project by running:
 
-~~~
+~~~{.bash caption=">_"}
 cd ..
 cd incremental
 ~~~
@@ -234,13 +234,13 @@ This script needs to be run twice: once to generate a 1000-file project and a se
 
 Generate the 1000-file project first:
 
-~~~
+~~~{.bash caption=">_"}
 python3 generate_project_files.py --num_files 1000
 ~~~
 
 Now, use CMake to generate a build file for Ninja:
 
-~~~
+~~~{.bash caption=">_"}
 cmake -S sample_project -G Ninja
 ~~~
 
@@ -248,19 +248,19 @@ This should generate a `build.ninja` file in the current directory, along with r
 
 Build the project with Ninja:
 
-~~~
+~~~{.bash caption=">_"}
 ninja
 ~~~
 
 Next, emulate an incremental build by adding one more file to your sample project:
 
-~~~
+~~~{.bash caption=">_"}
 python3 generate_project_files.py --num_files 1001
 ~~~
 
 Use CMake to generate a build file for Ninja:
 
-~~~
+~~~{.bash caption=">_"}
 cmake -S sample_project -G Ninja
 ~~~
 
@@ -268,7 +268,7 @@ This should generate a `build.ninja` file in the current directory, along with r
 
 As before, build the project with Ninja:
 
-~~~
+~~~{.bash caption=">_"}
 ninja
 ~~~
 
@@ -278,19 +278,22 @@ On the local setup (Apple M1 Max, 16-inch) used in this tutorial, the first buil
 
 The following is a copy of the terminal output for the second build:
 
-~~~
+~~~{.bash caption="Output"}
 ❯ cmake -S sample_project/ -G Ninja
 -- The CXX compiler identification is AppleClang 14.0.0.14000029
 -- Detecting CXX compiler ABI info
 -- Detecting CXX compiler ABI info - done
--- Check for working CXX compiler: /Library/Developer/CommandLineTools/usr/bin/c++ - skipped
+-- Check for working CXX compiler: \
+  /Library/Developer/CommandLineTools/usr/bin/c++ - skipped
 -- Detecting CXX compile features
 -- Detecting CXX compile features - done
 -- Configuring done
 -- Generating done
--- Build files have been written to: /Users/helloworld/ninja-tutorial/incremental
+-- Build files have been written to: \
+  /Users/helloworld/ninja-tutorial/incremental
 
-ninja-tutorial/incremental on  main [!+?] via △ v3.24.2 via 🐍 v3.9.13 on ☁️  took 4s
+ninja-tutorial/incremental on  main [!+?] via △ v3.24.2 via 🐍 v3.9.13 \
+on ☁️  took 4s
 ❯ ninja
 [2000/2000] Linking CXX executable HelloWorld998
 
@@ -302,7 +305,8 @@ ninja-tutorial/incremental on  main [!+?] via 🐍 v3.9.13 on ☁️
 ❯ cmake -S sample_project/ -G Ninja
 -- Configuring done
 -- Generating done
--- Build files have been written to: /Users/helloworld/ninja-tutorial/incremental
+-- Build files have been written to: \
+  /Users/helloworld/ninja-tutorial/incremental
 
 ninja-tutorial/incremental on  main [!+?] via 🐍 v3.9.13 on ☁️ took 3s
 ❯ ninja
@@ -322,6 +326,4 @@ Tools that help automate the building, testing, and deployment of software, such
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
+
