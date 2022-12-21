@@ -338,3 +338,7 @@ Muhammed Ali:
     name    : "Muhammed Ali"
     bio     : "I am a software developer passionate about technical writing and open-source contributions. My area of expertise is full-stack web development and DevOps."
     avatar  : "/assets/images/authors/muhammed.jpg"
+Muhammad Badawy:
+    name    : "Muhammad Badawy"
+    bio     : "Living in the line between DevOps Engineering Enthusiasm and Arabic Calligraphy as a passion."
+    avatar  : "/assets/images/authors/Badawy.png"

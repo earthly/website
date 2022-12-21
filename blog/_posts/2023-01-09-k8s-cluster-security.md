@@ -3,7 +3,7 @@ title: "Harden Kubernetes cluster with pod and container security contexts"
 categories:
   - Tutorials
 toc: true
-author: Adam
+author: Muhammad Badawy
 
 internal-links:
  - Kubernetes
@@ -295,10 +295,3 @@ Also we demonstrated how to apply security contexts on the pod level and contain
 Securitycontext has a [whole list of options](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.25/#securitycontext-v1-core) you can configure to secure running pods like `capabilities` or `seLinuxOptions` which can enhance our K8s security level.
 
 {% include cta/cta1.html %}
-
-## Outside Article Checklist
-
-- [ ] Add in Author page
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-
