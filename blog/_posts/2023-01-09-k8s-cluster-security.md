@@ -84,7 +84,7 @@ Once you execute the above command, a terminal will be prompted as (/#) which me
 uid=0(root) gid=0(root) groups=10(wheel)
 ~~~
 
-### A quick review on the UID and GID
+### A Quick Review on the Uid and Gid
 
 In Linux operating systems, each user is assigned a number which is called a UID (User ID). You can add many users to groups. A group of users is assigned a number which is called the GID (Group ID). These numbers are used to identify users and groups to the OS and to determine the ownership of system resources (files and processes).
 
