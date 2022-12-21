@@ -84,7 +84,7 @@ Once you execute the above command, a terminal will be prompted as (/#) which me
 uid=0(root) gid=0(root) groups=10(wheel)
 ~~~
 
-### A Quick Review on the Uid and Gid
+### A Quick Review on the UID and GID
 
 In Linux operating systems, each user is assigned a number which is called a UID (User ID). You can add many users to groups. A group of users is assigned a number which is called the GID (Group ID). These numbers are used to identify users and groups to the OS and to determine the ownership of system resources (files and processes).
 
@@ -105,7 +105,6 @@ containers:
   securityContext:
     privileged: true
 ~~~
-
 
 Which can give the root user inside that container access to all the volumes mounted in the cluster and of course all sensitive data and credentials. If we try to redeploy the pod with the above security context, then list the available volumes, we will be able to see all system volumes, which is a breach and could allow attackers to perform root-privileged actions to our system.
 
