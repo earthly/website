@@ -11,9 +11,9 @@ internal-links:
 
 ![K8s Security Context]({{site.images}}{{page.slug}}/FB9gnth.jpg)
 
-When it comes to security in Kubernetes, it is vital to secure the individual resources of the cluster. Pods and containers are considered the core resources running in the cluster and are the fundamental building block of Kubernetes workloads. Applying security to the pod and container layer can have a huge impact on the overall security of your cluster.
+When it comes to security in Kubernetes, it is vital to secure the individual resources of the cluster. Pods and containers are considered the core resources running in the [cluster](/blog/kube-bench) and are the fundamental building block of Kubernetes workloads. Applying security to the pod and container layer can have a huge impact on the overall security of your cluster.
 
-By default, Kubernetes pods have root access. Running k8s pods with root or as a privileged user can be very harmful to the host file system for a number of reasons. It can give the attackers the ability to escape out of the pod or container boundaries and get unconstrained access to the host. Security contexts allow you to control what types of access your pods have and accordingly run the pods inside your K8s cluster in a secure manner.
+By default, Kubernetes pods have root access. Running [k8s](/blog/k8s-autoscaling) pods with root or as a privileged user can be very harmful to the host file system for a number of reasons. It can give the attackers the ability to escape out of the pod or container boundaries and get unconstrained access to the host. Security contexts allow you to control what types of access your pods have and accordingly run the pods inside your K8s cluster in a secure manner.
 In this blog post, we'll demonstrate how to harden your Kubernetes cluster through security contexts and apply them to pods and containers.
 
 ### Security Context as Concept
@@ -34,7 +34,7 @@ Samples of security control that can be handled through security contexts includ
 Now let's jump to a demo which will consists of 3 parts:
 1- Risks behind running apps with default configuration.
 2- Applying security contexts on pod level.
-3- Applying security contexts on pod and container level.
+3- Applying security contexts on pod and [container](/blog/docker-slim) level.
 
 ### Prerequisites
 
@@ -124,7 +124,7 @@ $kubectl explain pod.spec.containers.securityContext | more
 
 You will be able to see a detailed explanation of securityContext object:
 ![Security Context explanation in K8s]({{site.images}}{{page.slug}}/lPjmTMl.jpg)
-Now let's apply a YAML deployment to run a demo pod with security context defined and see how it will impact the behaviour of our app.
+Now let's apply a YAML [deployment](/blog/deployment-strategies) to run a demo pod with security context defined and see how it will impact the behaviour of our app.
 
 ~~~
 echo "
@@ -295,4 +295,3 @@ Securitycontext has a [whole list of options](https://kubernetes.io/docs/referen
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
