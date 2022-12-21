@@ -65,3 +65,7 @@ hba
 
 Multiport
 multiport
+
+Spack
+Conda
+ninjaception
