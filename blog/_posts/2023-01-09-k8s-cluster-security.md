@@ -285,6 +285,8 @@ In this article, we discussed the security context as concept and as implementat
 Also we demonstrated how to apply security contexts on the pod level and container level to guarantee running applications with minimum needed permissions.
 Securitycontext has a [whole list of options](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.25/#securitycontext-v1-core) you can configure to secure running pods like `capabilities` or `seLinuxOptions` which can enhance our K8s security level.
 
+{% include cta/cta1.html %}
+
 ## Outside Article Checklist
 
 - [ ] Add in Author page
@@ -294,4 +296,3 @@ Securitycontext has a [whole list of options](https://kubernetes.io/docs/referen
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
