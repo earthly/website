@@ -6,7 +6,10 @@ toc: true
 author: Ayomide Akinola
 
 internal-links:
- - just an example
+ - Distributed
+ - Tracing
+ - Kubernetes
+ - Cluster
 ---
 
 Debugging an application can be stressful, especially when your application runs on a large distributed system with multiple separate components. Some of these components are written in different languages and use different frameworks with different [logging](/blog/understanding-docker-logging-and-log-files) mechanisms. This makes it hard to debug when something goes wrong. You have to jump between different tools, run each component in separate terminals, check their logs, and try to put everything together to understand what went wrong.
@@ -391,5 +394,4 @@ Finally, you learned how to set up distributed tracing on your [cluster](/blog/k
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Add keywords for internal links to front-matter
 
