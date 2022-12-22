@@ -6,7 +6,9 @@ toc: true
 author: Aniket Bhattacharyea
 
 internal-links:
- - just an example
+ - Makefile
+ - Variables
+ - Assignment
 ---
 
 Since its appearance in 1976, [Make](https://www.make.com/en) has been helping developers automate complex processes for compiling code, building executables, and generating documentation.
@@ -523,4 +525,3 @@ Variables in Make are similar to variables in other programming languages. Howev
 * [ ] Optional: Find ways to break up content with quotes or images
 * [ ] Verify look of article locally
   * Would any images look better `wide` or without the `figcaption`?
-* [ ] Add keywords for internal links to front-matter
