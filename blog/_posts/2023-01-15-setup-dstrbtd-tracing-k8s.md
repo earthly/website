@@ -9,7 +9,7 @@ internal-links:
  - just an example
 ---
 
-Debugging an application can be stressful, especially when your application runs on a large distributed system with multiple separate components. Some of these components are written in different languages and use different frameworks with different logging mechanisms. This makes it hard to debug when something goes wrong. You have to jump between different tools, run each component in separate terminals, check their logs, and try to put everything together to understand what went wrong.
+Debugging an application can be stressful, especially when your application runs on a large distributed system with multiple separate components. Some of these components are written in different languages and use different frameworks with different [logging](/blog/understanding-docker-logging-and-log-files) mechanisms. This makes it hard to debug when something goes wrong. You have to jump between different tools, run each component in separate terminals, check their logs, and try to put everything together to understand what went wrong.
 This can be made easier with distributed tracing. Distributed tracing allows you to see the flow of data between the different components in your application and understand how they interact with each other. It provides insight into where things are going wrong and allows you to debug problems on a whole new level. In this article, you will learn what distributed tracing is, how it works, and how you can set it up in your kubernetes cluster.
 
 ## What Is Distributed Tracing?
@@ -297,7 +297,7 @@ To build the docker images for the services, run the build script in the project
 ./build.sh
 ~~~
 
-<div class="notice–info"> For this tutorial, the docker images for each service have been built and are available on the docker hub. These images would be used in the kubernetes deployment configuration.
+<div class="notice–info"> For this tutorial, the docker images for each service have been built and are available on the docker hub. These images would be used in the kubernetes [deployment](/blog/deployment-strategies) configuration.
 <div class="notice–info>
 
 Next, deploy the services on your kubernetes cluster
@@ -343,7 +343,7 @@ Also, expose the backend service for an external request, so you can access it a
  kubectl port-forward svc/backend-api-1-svc 3001:80
 ~~~
 
-Load both the frontend at `localhost:3000` and the backend at `localhost:3001/api/message` multiple times to generate enough traces and metrics that will be sent to Signoz.
+Load both the frontend at `localhost:3000` and the backend at `localhost:3001/api/message` multiple times to generate enough traces and [metrics](/blog/incident-management-metrics) that will be sent to Signoz.
 
 <div class="notice–info"> This article assumes you are on your local host or you have direct access to the machine that is running kubectl. In a production setting, you can expose a service for external requests using [ingress](https://kubernetes.io/docs/concepts/services-networking/ingress)
 </div>
@@ -364,7 +364,7 @@ To see your application traces, go to the `Traces` section on the dashboard. Thi
 
 </div>
 
-You can also expand into a trace to see the various `spans` and their corresponding `tags` that make up the trace.
+You can also expand into a trace to see the various `spans` and their corresponding `tags` that [make](/blog/using-cmake) up the trace.
 
 <div class="wide">
 ![Spans and tags]({{site.images}}{{page.slug}}//AdE69i3.png)\
@@ -381,7 +381,7 @@ In this article, you learned about the definition of distributed tracing. Distri
 - Tags- These are key-value pairs that provide additional information about spans.
 - Trace- A trace represents all spans associated with each other within an interval.
 
-Finally, you learned how to set up distributed tracing on your cluster by installing Application Performance Monitoring agents (APM) on every microservices that is needed to be traced using Signoz.  
+Finally, you learned how to set up distributed tracing on your [cluster](/blog/kube-bench) by installing Application Performance Monitoring agents (APM) on every microservices that is needed to be traced using Signoz.  
 
 {% include cta/cta1.html %}
 
@@ -392,5 +392,4 @@ Finally, you learned how to set up distributed tracing on your cluster by instal
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
 
