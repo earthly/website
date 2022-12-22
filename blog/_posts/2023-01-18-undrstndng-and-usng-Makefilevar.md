@@ -3,7 +3,7 @@ title: "Understanding and Using Makefile Variables"
 categories:
   - Tutorials
 toc: true
-author: Adam
+author: Aniket Bhattacharyea
 
 internal-links:
  - just an example
@@ -514,6 +514,8 @@ Learn more about [Makefile flags](https://earthly.dev/blog/make-flags/).
 
 Variables in Make are similar to variables in other programming languages. However, certain features and quirks make them powerful and convenient to use, albeit slightly difficult to wrap your head around. This article gave you an overview of the different types of variables in Make and how you can use them.
 
+{% include cta/cta1.html %}
+
 ## Outside Article Checklist
 
 - [ ] Add in Author page
@@ -524,4 +526,3 @@ Variables in Make are similar to variables in other programming languages. Howev
 - [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
