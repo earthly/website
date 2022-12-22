@@ -233,7 +233,7 @@ These four types of assignments can be used in some specific situations:
 You may sometimes need to run a shell command and assign its output to a variable. You can do that with the `shell` function:
 
 ~~~{.makefile caption=""}
-files = $(shell ls) # Runs the `ls` command and assigns its output to `files`
+files = $(shell ls) # Runs the `ls` command & assigns its output to `files`
 ~~~
 
 A shorthand for this is the shell assignment operator `!=`. With this operator, the right-hand side must be the shell command whose result will be assigned to the left-hand side:
