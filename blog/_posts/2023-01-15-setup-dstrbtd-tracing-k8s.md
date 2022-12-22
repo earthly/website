@@ -46,6 +46,8 @@ Now that you understand how distributed tracing works, you can move ahead to set
 
 ## Setting up Distributed Tracing on Your Cluster
 
+![Setting]({{site.images}}{{page.slug}}/setting.jpg)\
+
 Configuring distributed tracing involves installing Application performance Monitoring Agents (APM) on every microservices that is needed to be traced. Since each microservices can run on separate programming languages, the corresponding APM agents will need to be installed.
 
 For this article, a sample microservice will be used to demonstrate how you can set up distributed tracing. This demo is a simple NodeJs application with three services:
@@ -391,7 +393,5 @@ Finally, you learned how to set up distributed tracing on your [cluster](/blog/k
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
+
 
