@@ -25,20 +25,20 @@ A variable is a named construct that can hold a value that can be reused in the 
 
 The following is an example of a variable definition:
 
-~~~
+~~~{.makefile caption=""}
 foo = World
 ~~~
 
 Any white space before the variable's value is stripped away, but white spaces at the end are preserved. Using a `$` inside the value of the variable is permitted, but `make` will assume that a string starting with the `$` sign is referring to another variable and will substitute the variable's value:
 
-~~~
+~~~{.makefile caption=""}
 foo = one$two
 # foo becomes onewo
 ~~~
 
 As you'll soon learn, `make` assumes that `$t` refers to another variable named `t` and substitutes it. Since `t` doesn't exist, it's empty, and therefore, `foo` becomes `onewo`. If you want to include a `$` verbatim, you must escape it with another `$`:
 
-~~~
+~~~{.makefile caption=""}
 foo = one$$two
 ~~~
 
@@ -48,7 +48,7 @@ Once defined, a variable can be used in any target, prerequisite, or recipe. To 
 
 Here's an example of a variable reference in a recipe:
 
-~~~
+~~~{.makefile caption=""}
 foo = World
 all:
     echo "Hello, $(foo)!"
@@ -58,7 +58,7 @@ Running `make` with the earlier `makefile` will print "Hello, World!".
 
 Another common example of variable usage is in compiling a C program where you can define an `objects` variable to hold the list of all object files:
 
-~~~
+~~~{.makefile caption=""}
 objects = main.o foo.o bar.o
 program : $(objects) # objects used in prerequisite
     cc -o program $(objects) # objects used in recipe
@@ -94,7 +94,7 @@ As you may remember, you can define a variable with `=`, `:=`, and `::=`. There'
 
 When a recursively expanded variable is expanded, its value is substituted verbatim. If the substituted text contains references to other variables, they are also substituted until no further variable reference is encountered. Consider the following example where `foo` expands to `Hello $(bar)`:
 
-~~~
+~~~{.makefile caption=""}
 foo = Hello $(bar)
 bar = World
 
@@ -104,7 +104,7 @@ all:
 
 Since `foo` is a recursively expanded variable, `$(bar)` is also expanded, and "Hello World" is printed. This **recursive expansion** process is performed every time the variable is expanded, using the *current values* of any referenced variables:
 
-~~~
+~~~{.makefile caption=""}
 bar = World
 foo = Hello $(bar)
 
@@ -119,7 +119,7 @@ The biggest advantage of recursively expanded variables is that they make it eas
 
 For example, consider the following snippet that is often used in compiling C programs:
 
-~~~
+~~~{.makefile caption=""}
 CFLAGS = -g
 ALL_CFLAGS = -I. $(CFLAGS)
 main.o: main.c
@@ -128,13 +128,13 @@ main.o: main.c
 
 Here, `ALL_CFLAGS` is a recursively expanded variable that expands to include the contents of `CFLAGS` along with the `-I.` option. This lets you override the `CFLAGS` variable if you wish to pass other options while retaining the mandatory `-I.` option:
 
-~~~
+~~~{.makefile caption=""}
 CFLAGS="-g -Wall" # ALL_CFLAGS expands to "-I. -g -Wall"
 ~~~
 
 A disadvantage of recursively expanded variables is that it's not possible to append something to the end of the variable:
 
-~~~
+~~~{.makefile caption=""}
 CFLAGS = $(CFLAGS) -I. # Causes infinite recursion
 ~~~
 
@@ -142,7 +142,7 @@ To overcome this issue, [GNU Make](https://www.gnu.org/software/make/) supports 
 
 Unlike recursively expanded variables, where referenced variables are expanded to their current values, in a simply expanded variable, referenced variables are expanded to their values at the time the variable is defined:
 
-~~~
+~~~{.makefile caption=""}
 bar := World
 foo := Hello $(bar)
 
@@ -154,7 +154,7 @@ all:
 
 With a simply expanded variable, the following is possible:
 
-~~~
+~~~{.makefile caption=""}
 CFLAGS = $(CFLAGS) -I.
 ~~~
 
@@ -168,7 +168,7 @@ A variable defined with `:::=` is called an **immediately expanded variable**. L
 
 In the following code, the immediately expanded variable `foo` behaves similarly to a simply expanded variable:
 
-~~~
+~~~{.makefile caption=""}
 bar := World
 foo :::= Hello $(bar)
 
@@ -180,7 +180,7 @@ all:
 
 However, if there are references to other variables, things get interesting:
 
-~~~
+~~~{.makefile caption=""}
 var = one$$two
 OUT :::= $(var)
 var = three$$four
@@ -188,7 +188,7 @@ var = three$$four
 
 Here, `OUT` will have the value `one$$two`. This is because `$(var)` is immediately expanded to `one$two`, which is quoted to get `one$$two`. But `OUT` is a recursive variable, so when it's used, `$two` will be expanded:
 
-~~~
+~~~{.makefile caption=""}
 two = two
 
 all:
@@ -203,7 +203,7 @@ The `:::=` operator is supported in POSIX Make, but GNU Make includes this opera
 
 The conditional assignment operator `?=` can be used to set a variable only if it hasn't already been defined:
 
-~~~
+~~~{.makefile caption=""}
 foo = World
 
 foo ?= Make # foo will not change
@@ -216,7 +216,7 @@ all:
 
 An equivalent way of defining variables conditionally is to use the [`origin` function](https://www.gnu.org/software/make/manual/make.html#Origin-Function):
 
-~~~
+~~~{.makefile caption=""}
 foo ?= Make
 
 # is equivalent to
@@ -232,13 +232,13 @@ These four types of assignments can be used in some specific situations:
 
 You may sometimes need to run a shell command and assign its output to a variable. You can do that with the `shell` function:
 
-~~~
+~~~{.makefile caption=""}
 files = $(shell ls) # Runs the `ls` command and assigns its output to `files`
 ~~~
 
 A shorthand for this is the shell assignment operator `!=`. With this operator, the right-hand side must be the shell command whose result will be assigned to the left-hand side:
 
-~~~
+~~~{.makefile caption=""}
 files != ls
 ~~~
 
@@ -246,7 +246,7 @@ files != ls
 
 Trailing spaces at the end of a variable definition are preserved in the variable value, but spaces at the beginning are stripped away:
 
-~~~
+~~~{.makefile caption=""}
 foo = xyz   # There are spaces at the beginning and at the end
 
 # Prints "startxyz   end"
@@ -256,7 +256,7 @@ all:
 
 It's possible to preserve spaces at the beginning by using a second variable to store the space character:
 
-~~~
+~~~{.makefile caption=""}
 nullstring =
 foo = ${nullstring} xyz   # Spaces at the end
 
@@ -269,13 +269,13 @@ all:
 
 It's possible to limit the scope of a variable to specific targets only. The syntax for this is as follows:
 
-~~~
+~~~{.makefile caption=""}
 target … : variable-assignment
 ~~~
 
 Here's an example:
 
-~~~
+~~~{.makefile caption=""}
 target-one: foo = World
 target-two: foo = Make
 
@@ -288,7 +288,7 @@ target-two:
 
 Here, the variable `foo` will have different values based on which target `make` is currently evaluating:
 
-~~~
+~~~{.makefile caption=""}
 $ make target-one
 Hello World
 
@@ -302,13 +302,13 @@ Hello Make
 
 Pattern-specific variables make it possible to limit the scope of a variable to targets that match a particular [pattern](https://www.gnu.org/software/make/manual/make.html#Pattern-Intro). The syntax is similar to target-specific variables:
 
-~~~
+~~~{.makefile caption=""}
 pattern … : variable-assignment
 ~~~
 
 For example, the following line sets the variable `foo` to `World` for any target that ends in `.c`:
 
-~~~
+~~~{.makefile caption=""}
 %.c: foo = World
 ~~~
 
@@ -318,7 +318,7 @@ Pattern-specific variables are commonly used when you want to set the variable f
 
 The real power of `make` variables starts to show when you pair them with [environment variables](/blog/bash-variables). When `make` is run in a shell, any environment variable present in the shell is transformed into a `make` variable with the same name and value. This means you don't have to set them in the `makefile` explicitly:
 
-~~~
+~~~{.makefile caption=""}
 all:
     @echo ${USER}
 ~~~
@@ -329,7 +329,7 @@ This feature is most commonly used with [flags](https://earthly.dev/blog/make-fl
 
 If there's an explicit assignment in the `makefile` to a variable, it overrides any environment variable with the same name:
 
-~~~
+~~~{.makefile caption=""}
 USER = Bob
 
 all:
@@ -342,7 +342,7 @@ The earlier `makefile` will always print `Bob` since the assignment overrides th
 
 You can pass variable values to the `make` command as command-line variables. Unlike environment variables, command-line arguments will always override assignments in the `makefile` unless the `override` directive is used:
 
-~~~
+~~~{.makefile caption=""}
 override FOO = Hello
 BAR = World
 
@@ -352,21 +352,21 @@ all:
 
 You can simply run `make`, and the default values will be used:
 
-~~~
+~~~{.makefile caption=""}
 $ make
 Hello World
 ~~~
 
 You can pass a new value for `BAR` by passing it as a command-line argument:
 
-~~~
+~~~{.makefile caption=""}
 $ make BAR=Make
 Hello Make
 ~~~
 
 However, since the `override` directive is used with `FOO`, it cannot be changed via command-line arguments:
 
-~~~
+~~~{.makefile caption=""}
 $ make FOO=Hi
 Hello World
 ~~~
@@ -379,7 +379,7 @@ This feature is handy since it lets you change a variable's value without editin
 
 You can use the previous value of a simply expanded variable to add more text to it:
 
-~~~
+~~~{.makefile caption=""}
 foo := Hello
 foo := ${foo} World
 
@@ -390,7 +390,7 @@ all:
 
 As mentioned before, this syntax will produce an **infinite recursion error** with a recursively expanded variable. In this case, you can use the `+=` operator, which appends text to a variable, and it can be used for both recursively expanded and simply expanded variables:
 
-~~~
+~~~{.makefile caption=""}
 foo = Hello
 foo += World
 
@@ -420,7 +420,7 @@ Automatic variables are special variables whose value is set up automatically pe
 
 Here's an example that shows automatic variables in action:
 
-~~~
+~~~{.makefile caption=""}
 hello: one two
     @echo $@
     @echo $<
@@ -441,7 +441,7 @@ clean:
 
 Running `make` with the earlier `makefile` prints the following:
 
-~~~
+~~~{.makefile caption=""}
 hello
 one
 one two
@@ -450,7 +450,7 @@ one two
 
 If you run `touch one` to modify `one` and run `make` again, you'll get a different output:
 
-~~~
+~~~{.makefile caption=""}
 hello
 one
 one
@@ -463,7 +463,7 @@ There exist variants of these automatic variables that can extract the directory
 
 **Automatic variables are often used where the target and prerequisite names dictate how the recipe executes**. A very common practical example is the following rule that compiles a C file of the form `x.c` into `x.o`:
 
-~~~
+~~~{.makefile caption=""}
 %.o:%.c
     $(CC) -c $(CPPFLAGS) $(CFLAGS) $^ -o $@
 ~~~
@@ -489,7 +489,7 @@ You can find the full list of implicit variables in [GNU Make's docs](https://ww
 
 Just like standard variables, you can explicitly define an implicit variable:
 
-~~~
+~~~{.makefile caption=""}
 CC = clang
 
 # This implicit rule will use clang as compiler
@@ -498,7 +498,7 @@ foo.o:foo.c
 
 Or you can define them with command line arguments:
 
-~~~
+~~~{.makefile caption=""}
 make CC=clang
 ~~~
 
@@ -520,8 +520,5 @@ Variables in Make are similar to variables in other programming languages. Howev
 
 ## Outside Article Checklist
 
-* [ ] Add in Author page
 * [ ] Create header image in Canva
-* [ ] Optional: Find ways to break up content with quotes or images
-* [ ] Verify look of article locally
-  * Would any images look better `wide` or without the `figcaption`?
+
