@@ -11,15 +11,15 @@ internal-links:
 
 Since its appearance in 1976, [Make](https://www.make.com/en) has been helping developers automate complex processes for compiling code, building executables, and generating documentation.
 
-Like other programming languages, Make lets you define and use variables that facilitate reusability of values.
+Like other programming languages, Make lets you define and use variables that facilitate [reusability](/blog/achieving-repeatability) of values.
 
-Have you found yourself using the same value in multiple places? This is both repetitive and prone to errors. If you'd like to change this value, you'll have to change it everywhere. This process is tedious, but it can be solved with variables, and Make offers powerful variable manipulation techniques that can make your life easier.
+Have you found yourself using the same value in multiple places? This is both repetitive and prone to errors. If you'd like to change this value, you'll have to change it everywhere. This process is tedious, but it can be solved with variables, and Make offers powerful variable manipulation techniques that can [make](/blog/using-cmake) your life easier.
 
 In this article, you'll learn all about `make` variables and how to use them.
 
 ## What Are Make Variables?
 
-A variable is a named construct that can hold a value that can be reused in the program. It is defined by writing a name followed by `=`, `:=`, or `::=`, and then a value. The name of a variable can be any sequence of characters except ":", "#", "=", or white space. In addition, variable names in Make are case sensitive, like many other programming languages.
+A variable is a named construct that can hold a value that can be reused in the program. It is defined by writing a name followed by `=`, `:=`, or `::=`, and then a value. The name of a variable can be any sequence of characters except ":", "#", "=", or white space. In addition, variable names in [Make](/blog/using-cmake) are case sensitive, like many other programming languages.
 
 The following is an example of a variable definition:
 
@@ -314,7 +314,7 @@ Pattern-specific variables are commonly used when you want to set the variable f
 
 ### Environment Variables
 
-The real power of `make` variables starts to show when you pair them with environment variables. When `make` is run in a shell, any environment variable present in the shell is transformed into a `make` variable with the same name and value. This means you don't have to set them in the `makefile` explicitly:
+The real power of `make` variables starts to show when you pair them with [environment variables](/blog/bash-variables). When `make` is run in a shell, any environment variable present in the shell is transformed into a `make` variable with the same name and value. This means you don't have to set them in the `makefile` explicitly:
 
 ~~~
 all:
@@ -512,7 +512,7 @@ Learn more about [Makefile flags](https://earthly.dev/blog/make-flags/).
 
 ## Conclusion
 
-Variables in Make are similar to variables in other programming languages. However, certain features and quirks make them powerful and convenient to use, albeit slightly difficult to wrap your head around. This article gave you an overview of the different types of variables in Make and how you can use them.
+Variables in Make are similar to variables in other programming languages. However, certain features and quirks [make](/blog/using-cmake) them powerful and convenient to use, albeit slightly difficult to wrap your head around. This article gave you an overview of the different types of variables in Make and how you can use them.
 
 {% include cta/cta1.html %}
 
@@ -523,6 +523,4 @@ Variables in Make are similar to variables in other programming languages. Howev
 * [ ] Optional: Find ways to break up content with quotes or images
 * [ ] Verify look of article locally
   * Would any images look better `wide` or without the `figcaption`?
-* [ ] Run mark down linter (`lint`)
 * [ ] Add keywords for internal links to front-matter
-* [ ] Run `link-opp` and find 1-5 places to incorporate links
