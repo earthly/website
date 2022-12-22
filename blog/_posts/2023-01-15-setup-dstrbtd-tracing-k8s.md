@@ -64,25 +64,25 @@ The data collected by Signoz can easily be analyzed and visualized on its dashbo
 
 First, add the SigNoz helm repository:
 
-~~~
+~~~{.bash caption=">_"}
 helm repo add signoz https://charts.signoz.io
 ~~~
 
 Next, create a namespace that would house SigNoz resources:
 
-~~~
+~~~{.bash caption=">_"}
 kubectl create ns platform
 ~~~
 
 Then, deploy SigNoz using helm:
 
-~~~
+~~~{.bash caption=">_"}
 helm --namespace platform install my-release signoz/signoz
 ~~~
 
 You should see an output similar to this:
 
-~~~
+~~~{.bash caption="Output"}
 NAME: my-release
 LAST DEPLOYED: Mon May 23 20:34:55 2022
 NAMESPACE: platform
@@ -100,13 +100,13 @@ NOTES:
 
 Verify that the installation is complete:
 
-~~~
+~~~{.bash caption=">_"}
 kubectl -n platform gets pods
 ~~~
 
 You should see an output similar to this:
 
-~~~
+~~~{.bash caption="Output"}
 NAME                                                        READY   STATUS    RESTARTS   AGE
 chi-signoz-cluster-0-0-0                                    1/1     Running   0          8m21s
 clickhouse-operator-8cff468-n5s99                           2/2     Running   0          8m55s
@@ -120,7 +120,7 @@ my-release-zookeeper-0                                      1/1     Running   0 
 
 Finally, you need to expose SigNoz frontend service so you can have access to its dashboard:
 
-~~~
+~~~{.bash caption=">_"}
 export SERVICE_NAME=$(kubectl get svc --namespace platform -l "app.kubernetes.io/component=frontend" -o jsonpath="{.items[0].metadata.name}")
 
 kubectl --namespace platform port-forward svc/$SERVICE_NAME 3301:3301
@@ -148,13 +148,13 @@ In this tutorial, only Javascript APM agent instrumentation will be demonstrated
 
 To set up the sample microservice, clone the repo and change the directory to it
 
-~~~
+~~~{.bash caption=">_"}
 git clone https://github.com/Doctordrayfocus/kubernetes-microservices.git && cd kubernetes-microservices
 ~~~
 
 Here is the directory structure of the sample microservice
 
-~~~
+~~~{caption=""}
 .
 ├── backend-api1            NodeJS backend service 1.
 │   └── API                 REST API.
@@ -170,7 +170,7 @@ Next, instrument the frontend service. To do this, you must install and activate
 
 First, initialize OpenTelemetry by creating a new file `tracing.js` in the root folder of the `frontend` service,
 
-~~~
+~~~{.js caption="tracing.js"}
   // tracing.js
   'use strict'
   const process = require('process');
@@ -213,7 +213,7 @@ The `http://my-release-signoz-otel-collector.platform.svc.cluster.local:4318` is
 
 Next, open the `frontend->Dockerfile` in a code editor of your choice, add OpenTelmetry packages after `RUN npm install --silent`, and `tracing.js` to the startup script. The Docker file should now look like the following:
 
-~~~
+~~~{.bash caption=">_"}
 FROM node:15-alpine
 
 LABEL version="1.0.0"
@@ -247,7 +247,7 @@ Similar configurations need to be made to both `backend-api1` and `backend-api2`
 
 To continue, create a new `tracing.js` file in the `backend-api1` folder and add the initialization code. The initialization code is similar to that of the frontend-service. Copy and paste the `tracing.js` content and change the service name to `backend_service_1`
 
-~~~
+~~~{.js caption="tracing.js"}
   // tracing.js
 …
     resource: new Resource({
@@ -258,7 +258,7 @@ To continue, create a new `tracing.js` file in the `backend-api1` folder and add
 
 Then, add OpenTelmetry packages after `RUN npm install --silent` and `tracing.js` to the startup script.
 
-~~~
+~~~{.bash caption=">_"}
 …
 # Setup open telemetry
 RUN npm install --save @opentelemetry/sdk-node
@@ -272,7 +272,7 @@ CMD node -r ./tracing.js server.js
 
 Finally, for `backend_service_2`, copy and paste the `tracing.js` content from the frontend service and change the service name to `backend_service_2`
 
-~~~
+~~~{.js caption="tracing.js"}
   // tracing.js
 …
    resource: new Resource({
@@ -283,7 +283,7 @@ Finally, for `backend_service_2`, copy and paste the `tracing.js` content from t
 
 And for the Dockerfile, add OpenTelemetry packages and `tracing.js` to the startup script.
 
-~~~
+~~~{.bash caption=">_"}
 …
 # Setup open telemetry
 RUN npm install --save @opentelemetry/sdk-node
@@ -298,7 +298,7 @@ CMD node -r ./tracing.js server.js
 Now, it is time to send traces and metrics to SigNoz and for this to happen, the sample microservice needs to be running on the cluster.
 To build the docker images for the services, run the build script in the project `kubernetes-microservices` folder.
 
-~~~
+~~~{.bash caption=">_"}
 ./build.sh
 ~~~
 
@@ -307,13 +307,13 @@ To build the docker images for the services, run the build script in the project
 
 Next, deploy the services on your kubernetes cluster
 
-~~~
+~~~{.bash caption=">_"}
 ./kubernetes/install.sh
 ~~~
 
 You should get an output similar to this
 
-~~~
+~~~{.bash caption="Output"}
 service/backend-api-1-svc created
 service/backend-api-2-svc created
 service/frontend-svc created
@@ -324,13 +324,13 @@ deployment.apps/frontend created
 
 Check if the services are running
 
-~~~
+~~~{.bash caption=">_"}
 Kubectl get pods
 ~~~
 
 You should see an output like this
 
-~~~
+~~~{.bash caption=">Output"}
 backend-api-1-6dbd4dc47-bwjv6    1/1     Running   0             74s
 backend-api-2-7c5b9f9d4d-wrnzx   1/1     Running   0             24s
 frontend-695cc55cdf-f8nqs        1/1     Running    0            24s
@@ -338,13 +338,13 @@ frontend-695cc55cdf-f8nqs        1/1     Running    0            24s
 
 Next, expose the frontend service for external requests, so you can access it directly at localhost:3000
 
-~~~
+~~~{.bash caption=">_"}
  kubectl port-forward svc/frontend-svc 3000:80
 ~~~
 
 Also, expose the backend service for an external request, so you can access it at localhost:3001
 
-~~~
+~~~{.bash caption=">_"}
  kubectl port-forward svc/backend-api-1-svc 3001:80
 ~~~
 
