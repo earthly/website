@@ -193,7 +193,6 @@ The [`launch.vs.json`](https://learn.microsoft.com/cpp/build/configure-cmake-deb
 
 In this article, you learned that CMake is a tool that can help with [build automation](/blog/introducing-earthly-build-automation-for-the-container-era), testing, packaging, and installation of software. It can be integrated into several IDE solutions, allowing developers the option of using their favorite IDE while taking advantage of CMake for their build solution.
 
-CMake gives you the flexibility to ensure your application can be built and executed on any platform. While [Cmake](/blog/using-cmake) might not be the right tool for everyone, for the right developer, team, 
-or project, it can be a powerful solution.
+CMake gives you the flexibility to ensure your application can be built and executed on any platform. While [Cmake](/blog/using-cmake) might not be the right tool for everyone, for the right developer, team, or project, it can be a powerful solution.
 
 {% include cta/cta1.html %}
