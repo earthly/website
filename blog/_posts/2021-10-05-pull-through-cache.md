@@ -170,7 +170,7 @@ While it is possible to create a VPS instance by hand, lets take it a step furth
 
 Lets start by creating the VPS instance. Unlike the registry examples earlier, I'll leave in the variables I used in our Terraform module.
 
-```hcl
+~~~{.hcl }
 resource "digitalocean_droplet" "docker_cache" {
   image      = "ubuntu-20-04-x64"
   name       = "docker-cache-${var.repository_to_mirror}"
@@ -180,7 +180,7 @@ resource "digitalocean_droplet" "docker_cache" {
   ssh_keys   = [var.ssh_key.fingerprint]
   user_data  = data.template_file.cloud-init.rendered
 }
-```
+~~~
 
 Its a fairly standard, simple configuration to spin up a droplet. But, how do you start our cache on the fresh droplet? Through the cloud-init `user_data` key. We use Terraform to template it out using the same variables provided to our module, and place the result in this HCL section. Here's a (truncated) version of our cloud-init template:
 
