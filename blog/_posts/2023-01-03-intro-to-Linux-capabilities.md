@@ -71,9 +71,9 @@ Let's try to understand what some capabilities can do. The best guide here is th
 
 For example:
 
-- CAP_CHOWN changes the ownership of a file. It allows root to make arbitrary changes to file UIDs and GIDs.
-- CAP_KILL kills any process that's running in the system.
-- CAP_NET_BIND_SERVICE allows you to open a port which is less than 1024  even if a process is not running as root.
+- `CAP_CHOWN` changes the ownership of a file. It allows root to make arbitrary changes to file UIDs and GIDs.
+- `CAP_KILL` kills any process that's running in the system.
+- `CAP_NET_BIND_SERVICE` allows you to open a port which is less than 1024  even if a process is not running as root.
 
 There are many more and if you're interested you can refer to the man page.
 
@@ -107,11 +107,11 @@ $ docker inspect 7666636cd08c | grep -i PID
 
 There are five different types of process capabilities set. Let's understand what each of the capabilities signify:
 
-- CapInh (Inherited capabilities) are the capabilities that are passed down from a running parent process to its child process.
-- CapPrm(Permitted capabilities) are the capabilities that a process is allowed to have.
-- CapEff (Effective capabilities) set is all the capabilities with which the current process is executing.
-- CapBnd (Bounding capabilities) set is the maximum set of capabilities that a process is allowed to have.
-- CapAmb (Ambient capability) set includes the capabilities that are in effect currently. It can be applied to the current process or its children at a later time.
+- `CapInh` (Inherited capabilities) are the capabilities that are passed down from a running parent process to its child process.
+- `CapPrm`(Permitted capabilities) are the capabilities that a process is allowed to have.
+- `CapEff` (Effective capabilities) set is all the capabilities with which the current process is executing.
+- `CapBnd` (Bounding capabilities) set is the maximum set of capabilities that a process is allowed to have.
+- `CapAmb` (Ambient capability) set includes the capabilities that are in effect currently. It can be applied to the current process or its children at a later time.
 
 ### Understanding Effective Capabilities
 
