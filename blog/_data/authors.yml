@@ -338,3 +338,11 @@ Muhammed Ali:
     name    : "Muhammed Ali"
     bio     : "I am a software developer passionate about technical writing and open-source contributions. My area of expertise is full-stack web development and DevOps."
     avatar  : "/assets/images/authors/muhammed.jpg"
+Muhammad Badawy:
+    name    : "Muhammad Badawy"
+    bio     : "Living in the line between DevOps Engineering Enthusiasm and Arabic Calligraphy as a passion."
+    avatar  : "/assets/images/authors/Badawy.png"
+Sarah Lean:
+    name    : "Sarah Lean"
+    bio     : "I've been a subject matter expert in various solutions through my career including Microsoft Exchange, System Center Configuration Manager and Patch Management, to name a few. In 2022 I was awarded the Microsoft MVP award for Azure. I am a STEM Ambassador and am hopeful that by sharing my story with the next generation it can help to inspire them into a STEM career. I am also the founder of the Glasgow Azure User Group, which is a community group that meets every two months and aims to bring together people who are looking to learn and network with their peers."
+    avatar  : "/assets/images/authors/sarah.jpg"
