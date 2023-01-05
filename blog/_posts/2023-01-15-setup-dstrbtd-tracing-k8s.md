@@ -107,6 +107,7 @@ kubectl -n platform gets pods
 You should see an output similar to this:
 
 ~~~{.bash caption="Output"}
+
 NAME                                                        READY   STATUS    RESTARTS   AGE
 chi-signoz-cluster-0-0-0                                    1/1     Running   0          8m21s
 clickhouse-operator-8cff468-n5s99                           2/2     Running   0          8m55s
@@ -121,6 +122,7 @@ my-release-zookeeper-0                                      1/1     Running   0 
 Finally, you need to expose SigNoz frontend service so you can have access to its dashboard:
 
 ~~~{.bash caption=">_"}
+
 export SERVICE_NAME=$(kubectl get svc --namespace platform -l "app.kubernetes.io/component=frontend" -o jsonpath="{.items[0].metadata.name}")
 
 kubectl --namespace platform port-forward svc/$SERVICE_NAME 3301:3301
@@ -149,7 +151,8 @@ In this tutorial, only Javascript APM agent instrumentation will be demonstrated
 To set up the sample microservice, clone the repo and change the directory to it
 
 ~~~{.bash caption=">_"}
-git clone https://github.com/Doctordrayfocus/kubernetes-microservices.git && cd kubernetes-microservices
+git clone https://github.com/Doctordrayfocus/kubernetes-microservices.git && \
+cd kubernetes-microservices
 ~~~
 
 Here is the directory structure of the sample microservice
@@ -213,7 +216,7 @@ The `http://my-release-signoz-otel-collector.platform.svc.cluster.local:4318` is
 
 Next, open the `frontend->Dockerfile` in a code editor of your choice, add OpenTelmetry packages after `RUN npm install --silent`, and `tracing.js` to the startup script. The Docker file should now look like the following:
 
-~~~{.bash caption=">_"}
+~~~{.dockerfile caption="Dockerfile"}
 FROM node:15-alpine
 
 LABEL version="1.0.0"
@@ -258,7 +261,7 @@ To continue, create a new `tracing.js` file in the `backend-api1` folder and add
 
 Then, add OpenTelmetry packages after `RUN npm install --silent` and `tracing.js` to the startup script.
 
-~~~{.bash caption=">_"}
+~~~{.dockerfile caption="Dockerfile"}
 …
 # Setup open telemetry
 RUN npm install --save @opentelemetry/sdk-node
@@ -283,7 +286,7 @@ Finally, for `backend_service_2`, copy and paste the `tracing.js` content from t
 
 And for the Dockerfile, add OpenTelemetry packages and `tracing.js` to the startup script.
 
-~~~{.bash caption=">_"}
+~~~{.dockerfile caption="Dockerfile"}
 …
 # Setup open telemetry
 RUN npm install --save @opentelemetry/sdk-node
@@ -331,6 +334,7 @@ Kubectl get pods
 You should see an output like this
 
 ~~~{.bash caption=">Output"}
+
 backend-api-1-6dbd4dc47-bwjv6    1/1     Running   0             74s
 backend-api-2-7c5b9f9d4d-wrnzx   1/1     Running   0             24s
 frontend-695cc55cdf-f8nqs        1/1     Running    0            24s
