@@ -171,6 +171,8 @@ Through the example of file handling in Python, you learned:
 
 The with statement is commonly used for reading from or writing to a file, but it can also be utilized for other purposes. You are welcome to further explore the capabilities of the `with` statement and context managers.
 
+{% include cta/cta1.html %}
+
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
@@ -179,4 +181,4 @@ The with statement is commonly used for reading from or writing to a file, but i
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
+
