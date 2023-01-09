@@ -180,5 +180,4 @@ The with statement is commonly used for reading from or writing to a file, but i
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
 
