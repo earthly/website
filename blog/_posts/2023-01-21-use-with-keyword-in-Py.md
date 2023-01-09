@@ -6,7 +6,9 @@ toc: true
 author: Ashutosh Krishna
 
 internal-links:
- - just an example
+ - Python
+ - Context Manager
+ - Handling
 ---
 
 The `with` keyword in python is used for exception handling when working with certain resources like files or database connections. These resources may need to have additional actions performed if an exception is raised.
@@ -179,5 +181,4 @@ The with statement is commonly used for reading from or writing to a file, but i
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Add keywords for internal links to front-matter
 
