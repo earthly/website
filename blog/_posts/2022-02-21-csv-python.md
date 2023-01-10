@@ -9,7 +9,7 @@ internal-links:
  - python csv
  - csv read
 ---
-<iframe width="560" height="315" src="https://www.youtube.com/embed/kBPESb-Voqw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/H-hagjt65cE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ## What Is A CSV File
 
