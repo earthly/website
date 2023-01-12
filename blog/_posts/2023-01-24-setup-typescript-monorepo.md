@@ -20,10 +20,10 @@ In this tutorial, we'll go over what a monorepo is, why, and when you should con
 
 A [monorepo](https://earthly.dev/blog/golang-monorepo/) is a software-development approach in which one repository contains the code and assets of several projects. It is a global project that contains smaller projects. Each of these projects can be anything from a single application to reusable packages of components or utility functions. Within a monorepo, these packages are typically called *local packages*.
 
-A monorepo generally includes many applications and several packages; a package can depend on other packages. For example, the `ui` package may use functions exposed by the `utils` package. On the other hand, the apps are usually not dependent on each other.
+A [monorepos](/blog/go-workspaces) generally includes many applications and several packages; a package can depend on other packages. For example, the `ui` package may use functions exposed by the `utils` package. On the other hand, the apps are usually not dependent on each other.
 
 <div class="notice--big--primary">
-*Monorepo* is not to be confused with a [*monolithic application*](https://en.wikipedia.org/wiki/Monolithic_application)! A **monolith** is a single project whose components must be deployed together. A monorepo, on the other hand, consists of several independent applications that live in the same repository and share code through local packages, but can be deployed on their own. Thus, monorepos allow greater deployment flexibility than monoliths.
+*Monorepo* is not to be confused with a [*monolithic application*](https://en.wikipedia.org/wiki/Monolithic_application)! A **monolith** is a single project whose components must be deployed together. A [monorepos](/blog/go-workspaces), on the other hand, consists of several independent applications that live in the same repository and share code through local packages, but can be deployed on their own. Thus, monorepos allow greater deployment flexibility than monoliths.
 </div>
 
 ## What Are Some Benefits of a Monorepo?
@@ -43,7 +43,7 @@ A monorepo strategy is particularly appealing if you have a large number of proj
 
 At the same time, the monorepo approach has its pitfalls.
 
-First, don't forget that **setting up a build pipeline for your monorepo may not be easy**. This is especially true if your monorepo consists of several apps that should be deployed in a particular order. If your pipeline isn't perfectly configured, your deployments could lead to downtime or malfunction.
+First, don't forget that **setting up a build pipeline for your [monorepos](/blog/go-workspaces) may not be easy**. This is especially true if your monorepo consists of several apps that should be deployed in a particular order. If your pipeline isn't perfectly configured, your deployments could lead to downtime or malfunction.
 
 Second, coordinating the versioning of all products, services, and libraries that are part of a monorepo is a complex process. If you adopt a monorepo, you need to pay even more attention to each commit. Also, every member on the development team should be highly skilled with Git or a similar version control system.
 
@@ -51,7 +51,7 @@ So if your teams use very different technologies, a polyrepo might be the best a
 
 ## How to Build a TypeScript Monorepo With NPM
 
-Building a monorepo in TypeScript isn't a simple task, which is why several monorepo build tools are on the market these days to make things easier. The most popular monorepo build tools are [Lerna](https://lerna.js.org/), [Nx](https://nx.dev/), and [Turborepo](https://turbo.build/). With these, you can set up a monorepo in TypeScript with a bunch of npm commands. However, you may not be able to understand what these tools do behind the scenes or why.
+Building a monorepo in TypeScript isn't a simple task, which is why several monorepo build tools are on the market these days to [make](/blog/using-cmake) things easier. The most popular monorepo build tools are [Lerna](https://lerna.js.org/), [Nx](https://nx.dev/), and [Turborepo](https://turbo.build/). With these, you can set up a monorepo in TypeScript with a bunch of npm commands. However, you may not be able to understand what these tools do behind the scenes or why.
 
 The only way to master monorepos in TypeScript is to understand how they work. So let's learn how to implement a TypeScript monorepo based on npm workspaces.
 
@@ -517,7 +517,7 @@ Congratulations! You just learned how to set up a TypeScript monorepo based on n
 
 As you know, a monorepo consists of several applications, with each application relying on many packages that may depend on each other. So to ensure that you can correctly deploy an application that's part of a monorepo, it's essential to build and deploy each package in the right order. Therefore, you need to define a monorepo pipeline.
 
-[Earthly](https://earthly.dev/) can help you with that. It's a build automation tool that enables you to run all your builds in containers. Earthly runs on top of the most popular CI systems, such as Jenkins, CircleCI, GitHub Actions, and AWS CodeBuild, and you can easily adopt it to set up your monorepo pipeline.
+[Earthly](https://earthly.dev/) can help you with that. It's a build automation tool that enables you to run all your builds in containers. Earthly runs on top of the most popular CI systems, such as [Jenkins](/blog/slow-performance-in-jenkins), [CircleCI](/blog/continuous-integration), GitHub Actions, and AWS CodeBuild, and you can easily adopt it to set up your monorepo pipeline.
 
 {% include cta/cta1.html %}
 
@@ -527,4 +527,3 @@ As you know, a monorepo consists of several applications, with each application 
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
