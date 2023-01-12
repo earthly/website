@@ -30,7 +30,7 @@ Let's start by taking a look at one of the most common uses for the 'with' state
 
 Let's start with some simple code to write to a file.
 
-~~~
+~~~{.python caption=""}
 file = open("sample1.txt", "w")
 file.write("Earthly is great!")
 file.close()
@@ -46,7 +46,7 @@ As long as everything executes as expected, this code should work just fine, but
 
 To avoid the above problems, you can use the `try-finally` block as shown below:
 
-~~~
+~~~{.python caption=""}
 file = open("sample2.txt", "w")
 try:
     file.write("Earthly is great!")
@@ -62,7 +62,7 @@ The above code opens a file called `sample2.txt` in a similar fashion as the pre
 
 In the previous example, you learned how to utilise exception handling to ensure a file closes in case of an error. But, you can do the same using the `with` statement as shown below:
 
-~~~
+~~~{.python caption=""}
 with open("sample3.txt", "w") as file:
     file.write("Earthly is great!")
 ~~~
@@ -71,7 +71,7 @@ In addition to helping you clean up resources after usage, the `with` statement 
 
 For example, you can use a `try-finally` block to acquire a lock as below:
 
-~~~
+~~~{.python caption=""}
 import threading
 
 lock = threading.Lock()
@@ -85,7 +85,7 @@ finally:
 
 However, the same can be written using `with` statement in the following way:
 
-~~~
+~~~{.python caption=""}
 import threading
 
 lock = threading.Lock()
@@ -98,6 +98,8 @@ with lock:
 As you can see, the `with` statement allows you to write this code more concisely and clearly. The `with` statement automatically takes care of calling the `acquire()` and `release()` methods of the lock object, so you don't have to include them in the `try-finally` block.
 
 ## How to Create a Class That Supports the `with` Statement
+
+[!How]({{site.images}}{{page.slug}}/how.jpg)\
 
 You can create your own classes that support the `with` statement. A class or a function that supports the `with` statement is known as a **Context Manager**. The `open` function is an example of a context manager.
 
@@ -112,7 +114,7 @@ When you call the `with` statement, the context manager class invokes the `__ent
 
 Observe the code below to get a clearer picture:
 
-~~~
+~~~{.python caption=""}
 class CustomFileWriter:
     def __init__(self, filename):
         self.filename = filename
@@ -139,7 +141,7 @@ In the above code example, the `CustomFileWriter` class is a context manager. It
 
 In the previous section, you created a context manager class. However, you can also create a context manager function (like the `open()` function) with the [contexlib](https://docs.python.org/3/library/contextlib.html) library:
 
-~~~
+~~~{.python caption=""}
 from contextlib import contextmanager
 
 @contextmanager
@@ -174,10 +176,3 @@ Through the example of file handling in Python, you learned:
 The with statement is commonly used for reading from or writing to a file, but it can also be utilized for other purposes. You are welcome to further explore the capabilities of the `with` statement and context managers.
 
 {% include cta/cta1.html %}
-
-## Outside Article Checklist
-
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
-
