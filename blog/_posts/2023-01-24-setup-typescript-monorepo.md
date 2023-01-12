@@ -57,7 +57,7 @@ The only way to master monorepos in TypeScript is to understand how they work. S
 
 You can take a look at the final result by cloning the [GitHub repository that supports this tutorial](https://github.com/Tonel/typescript-monorepo) with the following command:
 
-~~~
+~~~{.bash caption=">_"}
 git clone https://github.com/Tonel/typescript-monorepo
 ~~~
 
@@ -76,7 +76,7 @@ Note that you need `npm >= 7` because npm workspaces were introduced in version 
 
 This is what your monorepo directory structure should look like:
 
-~~~
+~~~{.bash caption=">_"}
 typescript-monorepo
 ├── src
 ├── node_modules
@@ -88,7 +88,7 @@ The `src` folder stores a Node.js TypeScript application, while `/packages` cont
 
 Let's create this basic folder setup with the following commands:
 
-~~~
+~~~{.bash caption=">_"}
 # create the monorepo root directory
 mkdir typescript-monorepo
 
@@ -104,7 +104,7 @@ mkdir packages
 
 Inside the `monorepo-typescript` directory, launch the following command:
 
-~~~
+~~~{.bash caption=">_"}
 npm init -y
 ~~~
 
@@ -112,7 +112,7 @@ This initializes a `package.json` file for you. Note that the `-y` flag tells `n
 
 Now, let's update the `/package.json` as follows:
 
-~~~
+~~~{.json caption="package.json"}
     {
       "name": "monorepo-typescript",
       "version": "1.0.0",
@@ -128,7 +128,7 @@ In detail, make sure the `workspaces` property is present and configured as abov
 
 When you run `npm install` in the root directory, folders within `packages/` are symlinked to the `node_modules` folder. For example, let's assume you have a `ui` local package. After running `npm install`, your monorepo project should have the following folder structure:
 
-~~~
+~~~{.bash caption=">_"}
 typescript-monorepo
 ├── ...
 ├── node_modules
@@ -148,7 +148,7 @@ As you can see, the `ui` package folder also appears in the `node_modules` direc
 
 Since you're setting up a TypeScript monorepo, you need to install `typescript` as a root dependency with the following command:
 
-~~~
+~~~{.bash caption=">_"}
 npm install typescript
 ~~~
 
@@ -156,7 +156,7 @@ Note that the libraries installed here should be considered a core dependency of
 
 You also need `ts-node` and its types. Install them as dev dependencies with the npm command below:
 
-~~~
+~~~{.bash caption=">_"}
 npm install --save-dev @types/node ts-node 
 ~~~
 
@@ -166,13 +166,13 @@ All packages in your application should follow the same linting and indentation 
 
 Install them all as dev dependencies with the npm command below:
 
-~~~
+~~~{.bash caption=">_"}
 npm install eslint prettier @typescript-eslint/eslint-parser @typescript-eslint/eslint-plugin
 ~~~
 
 Then, create an [eslint configuration file](https://eslint.org/docs/latest/user-guide/configuring/configuration-files). For example, you can initialize a `.eslintrc.json` file as follows:
 
-~~~
+~~~{.json caption="eslintrc.json"}
 {
   "extends": [
     "eslint:recommended",
@@ -187,7 +187,7 @@ Then, create an [eslint configuration file](https://eslint.org/docs/latest/user-
 
 Similarly, create a [prettier configuration file](https://prettier.io/docs/en/configuration.html). Again, you can define a `.prettierrc.json` file as below:
 
-~~~
+~~~{.json caption="prettierrc.json"}
 {
   "trailingComma": "all",
   "tabWidth": 2,
@@ -208,13 +208,13 @@ Now let's set up a local package. The `@monorepo/utils` package includes all the
 
 First, create the `utils` folder inside `/packages`:
 
-~~~
+~~~{.bash caption=">_"}
 mkdir utils
 ~~~
 
 Initialize a `package.json` file inside `utils` with this npm command:
 
-~~~
+~~~{.bash caption=">_"}
 npm init --scope @monorepo --workspace ./packages/utils -y
 ~~~
 
@@ -226,7 +226,7 @@ You should adopt the same npm scope name for all your local packages. This keeps
 
 Make sure `package.json` contains the following content:
 
-~~~
+~~~{.json caption="package.json"}
     {
       "name": "@monorepo/utils",
       "version": "1.0.0",
@@ -240,7 +240,7 @@ Make sure `package.json` contains the following content:
 
 Here, you're simply defining a basic `package.json` file with a custom `build` script that runs `tsc --build`. If you're not familiar with this command, `tsc` is the TypeScript compiler. In detail, `tsc` compiles TypeScript to JavaScript according to the rules defined in `tsconfig.json`. This is why you also need a `tsconfig.json` file. Initialize it as follows:
 
-~~~
+~~~{.json caption="tsconfig.json"}
 {
     "compilerOptions": {
         "target": "es2022",
@@ -267,14 +267,14 @@ As explained in the [TypeScript documentation](https://www.typescriptlang.org/do
 
 Now, define the logic of the package by creating an `src` directory:
 
-~~~
+~~~{.bash caption=">_"}
 cd packages/ui
 mkdir src
 ~~~
 
 This folder contains all your code. Then, initialize an `index.ts` file as follows:
 
-~~~
+~~~{.ts caption="index.ts"}
 // ./packages/utils/index.ts
 
 export function isEven(n: number): boolean {
@@ -286,7 +286,7 @@ export function isEven(n: number): boolean {
 
 This is what the file structure of the `@monorepo/utils` local package looks like:
 
-~~~
+~~~{.bash caption=">_"}
 utils
 └── src
 │   └── index.ts
@@ -302,7 +302,7 @@ As explained earlier, npm automatically processes any `package.json` file under 
 
 You can build the local package to see if it works with the command below:
 
-~~~
+~~~{.bash caption=">_"}
 npm run build --workspace ./packages/utils
 ~~~
 
@@ -317,7 +317,7 @@ At the end of the compilation process, if everything worked as expected, you can
 
 Initialize a `tsconfig.json` file in the root directory with the following content:
 
-~~~
+~~~{.json caption="tsconfig.json"}
 {
   "compilerOptions": {
     "incremental": true,
@@ -346,7 +346,7 @@ Thanks to [TypeScript references](https://www.typescriptlang.org/docs/handbook/p
 
 For example, let's assume you also added a `ui` package. In that case, the `references` option of `./tsconfig.json` looks like this:
 
-~~~
+~~~{.json caption="tsconfig.json"}
 "references": [
   {
     "path": "./packages/utils"
@@ -359,7 +359,7 @@ For example, let's assume you also added a `ui` package. In that case, the `refe
 
 Add a new `build` script in the global `./package.json` file:
 
-~~~
+~~~{.json caption="package.json"}
 "scripts": {
   "build": "tsc --build --verbose"
 }
@@ -369,7 +369,7 @@ The `--verbose` flag to make `tsc` log what it's doing in the terminal.
 
 Now, if you run `npm run build` in the root directory, `tsc` should print:
 
-~~~
+~~~{caption="Output"}
 Projects in this build: 
   * packages/utils/tsconfig.json
   * packages/ui/tsconfig.json
@@ -392,7 +392,7 @@ At the end of the compilation process, for each local package, you'll have:
 
 Now, let's assume you want to use some utility functions from the `@monorepo/utils` in the `@monorepo/ui` package. All you have to do is run the following npm command in the root directory:
 
-~~~
+~~~{.bash caption=">_"}
 npm install @monorepo/utils --workspace ./packages/ui
 ~~~
 
@@ -400,7 +400,7 @@ This adds `@monorepo/utils` as a dependency in `@monorepo/utils`.
 
 Take a look at the local `package.json` file inside `./packages/ui` and you'll see:
 
-~~~
+~~~{.json caption="package.json"}
 "dependencies": {
   "@monorepo/utils": "^1.0.0"
 }
@@ -410,7 +410,7 @@ This means that `@monorepo/utils` was correctly added as a dependency.
 
 Now, in `./packages/ui/index.ts`, you can access the utility functions exposed by `@monorepo/utils` as follows:
 
-~~~
+~~~{.ts caption="index.ts"}
 // ./packages/ui/index.ts
 
 import { isEven } from "@monorepo/utils"
@@ -418,7 +418,8 @@ import { isEven } from "@monorepo/utils"
 export function FooComponent() {
   // giving a random integer number between 0 and 5
   const randomNumber = Math.floor(Math.random() * 5)
-  console.log(`FooComponent: ${randomNumber} -> isEven: ${isEven(randomNumber)}`)
+  console.log(`FooComponent: ${randomNumber} -> isEven: \
+  ${isEven(randomNumber)}`)
 
   // UI component implementation ...
 }
@@ -426,7 +427,7 @@ export function FooComponent() {
 
 In detail, you can import the functions from the `@monorepo/utils` package with the following line:
 
-~~~
+~~~{.bash caption=">_"}
 import { isEven } from "@monorepo/utils"
 ~~~
 
@@ -438,13 +439,13 @@ Instead, follow this procedure to add an external npm package to a local package
 
 Let's assume you want to add `[moment](https://www.npmjs.com/package/moment)` to the `@monorepo/ui` package. Run the following `npm install` command in the root folder of your monorepo:
 
-~~~
+~~~{.bash caption=">_"}
 npm install moment --workspace ./packages/ui
 ~~~
 
 This installs `moment` in the monorepo's `node_modules` folder and adds the following section to the local `packages.json` inside `./packages/ui`:
 
-~~~
+~~~{.json caption="package.json"}
 "dependencies": {
   // ...
   "moment": "^2.29.4"
@@ -455,7 +456,7 @@ You can verify that everything went as expected by checking that there's only on
 
 Then, you can use `moment` as below:
 
-~~~
+~~~{.ts caption="index.ts"}
 // ./packages/ui/index.ts
 
 import { isEven } from "@monorepo/utils"
@@ -464,7 +465,8 @@ import moment from "moment"
 export function FooComponent() {
   // giving a random integer number between 0 and 5
   const randomNumber = Math.floor(Math.random() * 5)
-  console.log(`[${moment().toISOString()}] FooComponent: ${randomNumber} -> isEven: ${isEven(randomNumber)}`)
+  console.log(`[${moment().toISOString()}] FooComponent: \
+  ${randomNumber} -> isEven: ${isEven(randomNumber)}`)
 
   // UI component implementation ...
 }
@@ -472,7 +474,7 @@ export function FooComponent() {
 
 In detail, you can import `moment` and use it in `@monorepo/ui` with the following `import` statement:
 
-~~~
+~~~{.json caption="package.json"}
 import moment from "moment"
 ~~~
 
@@ -480,13 +482,13 @@ import moment from "moment"
 
 Now, add `@monorepo/utils` and `@monorepo/ui` as project dependencies in the global `./package.json` file with this npm command:
 
-~~~
+~~~{.bash caption=">_"}
 npm install @monorepo/utils @monorepo/ui
 ~~~
 
 Then, create a `./src/index.ts` file and make it use the functions exposed by your local packages:
 
-~~~
+~~~{.ts caption="index.ts"}
 import { FooComponent } from "@monorepo/ui"
 import { isEven } from "@monorepo/utils"
 
@@ -496,7 +498,7 @@ FooComponent()
 
 Now, test if the Node.js `./src/index.ts` file works:
 
-~~~
+~~~{.bash caption=">_"}
 # building the monorepo and all its packages
 npm run build
 
@@ -506,7 +508,7 @@ node src/index.js
 
 This prints:
 
-~~~
+~~~{.bash caption=">_"}
 true
 [2022-11-23T14:28:14.220Z] FooComponent: 4 -> isEven: true
 ~~~
@@ -520,10 +522,3 @@ As you know, a monorepo consists of several applications, with each application 
 [Earthly](https://earthly.dev/) can help you with that. It's a build automation tool that enables you to run all your builds in containers. Earthly runs on top of the most popular CI systems, such as [Jenkins](/blog/slow-performance-in-jenkins), [CircleCI](/blog/continuous-integration), GitHub Actions, and AWS CodeBuild, and you can easily adopt it to set up your monorepo pipeline.
 
 {% include cta/cta1.html %}
-
-## Outside Article Checklist
-
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
