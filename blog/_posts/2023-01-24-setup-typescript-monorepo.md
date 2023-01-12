@@ -6,10 +6,11 @@ toc: true
 author: Antonello Zanini
 
 internal-links:
- - just an example
+ - TypeScript
+ - Monorepo
+ - Node
+ - packages
 ---
-
-## How to Set Up a TypeScript Monorepo
 
 In recent years, monorepos have become a trending topic in the IT community. When using a monorepo, an organization stores all its projects in the same repo. Monorepos are particularly popular among web developers, since most of their projects use JavaScript or TypeScript and rely on the same npm dependencies.
 
@@ -526,5 +527,4 @@ As you know, a monorepo consists of several applications, with each application 
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
