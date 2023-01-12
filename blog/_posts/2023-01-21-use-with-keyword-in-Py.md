@@ -99,7 +99,7 @@ As you can see, the `with` statement allows you to write this code more concisel
 
 ## How to Create a Class That Supports the `with` Statement
 
-[!How]({{site.images}}{{page.slug}}/how.jpg)\
+![How]({{site.images}}{{page.slug}}/how.jpg)\
 
 You can create your own classes that support the `with` statement. A class or a function that supports the `with` statement is known as a **Context Manager**. The `open` function is an example of a context manager.
 
