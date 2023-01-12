@@ -518,6 +518,8 @@ As you know, a monorepo consists of several applications, with each application 
 
 [Earthly](https://earthly.dev/) can help you with that. It's a build automation tool that enables you to run all your builds in containers. Earthly runs on top of the most popular CI systems, such as Jenkins, CircleCI, GitHub Actions, and AWS CodeBuild, and you can easily adopt it to set up your monorepo pipeline.
 
+{% include cta/cta1.html %}
+
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
@@ -526,4 +528,3 @@ As you know, a monorepo consists of several applications, with each application 
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
