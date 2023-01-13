@@ -15,6 +15,8 @@ In this article you'll learn about Bazel, what it's used for, and what features 
 
 ## What Is Bazel
 
+![What]({{site.images}}{{page.slug}}/what.jpg)\
+
 Bazel automates the build process and testing of software. In this respect, it can be compared to build tools like [Make](https://www.gnu.org/software/make/), [Apache Ant](https://ant.apache.org/), [Apache Maven](https://maven.apache.org/), and [Gradle](https://gradle.org/).
 
 Bazel grew out of the need for highly scalable builds. Developers who have worked on larger projects have probably experienced a problem between unit tests and a new feature. In this scenario, typically, several new files are added to a project in each sprint until the whole thing eventually becomes so inflated that the scaling of the builds, especially in larger projects, sometimes takes several seconds.
@@ -29,6 +31,8 @@ The tool itself is written in Java, but it can be used in conjunction with sever
 
 ## Implementing Bazel for Building Python Apps
 
+![Implement]({{site.images}}{{page.slug}}/implement.png)\
+
 In the following tutorial, a simple application in Bazel will be implemented and deployed using Python and [Flask](https://flask.palletsprojects.com/en/2.2.x/), which is a lightweight micro web framework for programming web applications. A calculator application will be created that sums up two random numbers and shows the sum in the browser. Then a unit test will be implemented to test the functionality of the app.
 
 Before beginning, the following are needed:
@@ -39,12 +43,12 @@ Before beginning, the following are needed:
 
 ### Creating the Folder Structure
 
-The first step of creating the calculator app is to create the proper folder structure in VS Code. 
+The first step of creating the calculator app is to create the proper folder structure in VS Code.
 In Bazel, the software is built from source code that is organized in a directory tree called a workspace. In the workspace, the source files need to be organized in a nested package hierarchy. Here, each package is a directory that contains a number of source files and one `BUILD` file that specifies what software will be built from the source files.
 
 In this project, the folder `MY-PYTHON-APP` serves as the root directory for the workspace. In it, the package calculator, app, and third party are created. The package app will contain the source code of the calculator and the unit tests. In the app, the main code for the actual application will be stored. Additionally, a `third-party` folder will be created that will be responsible for any third-party dependencies:
 
-![Folder structure](https://i.imgur.com/wnNRmbo.png)
+![Folder structure]({{site.images}}{{page.slug}}/wnNRmbo.png)
 
 ### Creating the WORKSPACE File and Declaring the Bazel Version
 
@@ -58,7 +62,7 @@ After this, the file `.bazelversion` needs to be created in the same directory. 
 
 Following this, the `WORKSPACE` file has to be filled with references to external dependencies. In order to use Python, the [Python rules for Bazel](https://bazel.build/reference/be/python), which provide the basis of support for Python in Bazel, will be used. To import the Python rules, add some commands to the `WORKSPACE` file:
 
-```
+~~~
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 http_archive(
     name = "rules_python",
@@ -66,11 +70,11 @@ http_archive(
     strip_prefix = "rules_python-0.13.0",
     url = "https://github.com/bazelbuild/rules_python/archive/refs/tags/0.13.0.tar.gz",
 )
-```
+~~~
 
 Next, utilize the third-party dependency Flask. This is a [pip](https://pypi.org/project/pip/) dependency that is added to the `WORKSPACE` by loading the function `pip_install`. Then call this function to install the required dependency:
 
-```
+~~~
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 http_archive(
     name = "rules_python",
@@ -85,44 +89,44 @@ pip_install(
    name = "python_deps",
    requirements = "//third_party:requirements.txt",
 )
-```
+~~~
 
 The function `pip_install` installs all dependencies listed in the file `requirements.txt` that need to be created in the third-party directory. This file contains Flask as the only external dependency needed:
 
-```
+~~~
 Flask==2.0.2
-```
+~~~
 
 ### Implementing the Calculator
 
 After defining Flask as an internal dependency, write the source code for the calculator. The file `calculator.py` in the directory `calculator` looks like this:
 
-```
+~~~
 class Calculator:
   def add(self, x, y): return x + y;
-```
+~~~
 
 The class `Calculator` takes two variables, `x` and `y`, as arguments and returns the sum of these variables. This class will be the basis for the calculator app.
 
 To build the software from the source, create the file `BUILD.bazel` in the same directory as the source code. The file defines and declares this directory as a Bazel package.
 Because of this, Bazel knows exactly what source code has to be built during the build process. Here, build the calculator source code as a Python library:
 
-```
+~~~
 py_library(
     name = "calculator",
     srcs = ["calculator.py"],
     visibility = ["//visibility:public"]
 )
-```
+~~~
 
 In this code, some attributes, including the `name`, `srcs`, and `visibility`, are provided. The `name` simply defines the name of the build library. The attribute `srcs` specifies the source code for the build process, and `visibility` allows the build library to be used outside this particular Bazel package.
 
 ### Implementing a Unit Test
 
-Let’s write a unit test. The test class will be called `calculator_test.py` and will be in the same directory as the class `calculator.py`.
+Let's write a unit test. The test class will be called `calculator_test.py` and will be in the same directory as the class `calculator.py`.
 The source code for the unit test is depicted here:
 
-```
+~~~
 import unittest
 from calculator import Calculator
  
@@ -134,13 +138,13 @@ class TestSum(unittest.TestCase):
  
   if __name__ =="__main__":
     unittest.main()
-```
+~~~
 
 In this code, the unit test simply checks whether the sum of 1 and 2 equals 3.
 
 Then extend the previous `BUILD.bazel` file with a `py_test` rule that compiles the source code of the unit test:
 
-```
+~~~
 py_library(
     name = "calculator",
     srcs = ["calculator.py"],
@@ -154,7 +158,7 @@ py_test(
         "//calculator:calculator"
     ],
 )
-```
+~~~
 
 The `py_test` requires the attributes `name`, `srcs`, and `deps`. The first two attributes are analogous to the previously defined `py_library`. The third attribute, `deps`, specifies the path to the library that is required by the unit test.
 
@@ -164,7 +168,7 @@ For the unit test, use the previously defined library named `calculator`.
 
 In this section, building the previously written source code and running the unit test are discussed. By executing the command `bazel test calculator/…`, the source code is built in the Bazel package `calculator`, and then Bazel runs the unit test. The output should look like this:
 
-![Terminal output of the unit test](https://i.imgur.com/FBeMeE9.png)
+![Terminal output of the unit test]({{site.images}}{{page.slug}}/FBeMeE9.png)
 
 The output shows that Bazel successfully built the source code and that the unit test has passed.
 
@@ -176,7 +180,7 @@ Now a Flask app that uses the calculator to find the sum of two random numbers n
 
 To begin, create the source code:
 
-```
+~~~
 from calculator.calculator import Calculator
 from flask import Flask
 from random import randint
@@ -192,7 +196,7 @@ def randomNumberCalculator():
  
 if __name__ == '__main__':
   app.run(host='0.0.0.0')
-```
+~~~
 
 The code is saved in the file `main.py` in the previously created directory `app`.
 
@@ -200,7 +204,7 @@ The code is saved in the file `main.py` in the previously created directory `app
 
 Then create a `BUILD.bazel` file in order to declare this directory as a Bazel package:
 
-```
+~~~
 py_binary(
   name = "main",
   srcs = ["main.py"],
@@ -208,13 +212,13 @@ py_binary(
           requirement("Flask")
   ]
 )
-```
+~~~
 
 Here, the Python rule `py_binary` is used since this will be a runnable application. Analogous to `py_library` and `py_test`, `py_binary` requires three arguments: `name`, `srcs`, and `deps`. `srcs` is the source code that is going to be built as a binary. In this case, it's the `main.py` file. The dependency `deps` is the calculator library.
 
 In the code of the application, Flask is being used as an external dependency. Because of this, the `BUILD.bazel` file has to be further modified to ensure that the third-party dependency can be consumed by the package. The modification can be seen in the first line of the file:
 
-```
+~~~
 load("@python_deps//:requirements.bzl", "requirement")
  
 py_binary(
@@ -224,7 +228,7 @@ py_binary(
           requirement("Flask")
   ]
 )
-```
+~~~
 
 Previously, a pip dependency was added to the `WORKSPACE`, and `pip_install` was used to install Flask. Here, this external dependency was referenced as `python_deps`. By incorporating the first line in the `BAZEL.build` file, this external requirement is loaded into the package `app`. Then Flask is added as a dependency to the `py_binary` rule, and with that, the application is finished.
 
@@ -232,7 +236,7 @@ Previously, a pip dependency was added to the `WORKSPACE`, and `pip_install` was
 
 By running the command `bazel run //app:main`, the project is built, and the main application is run. The Flask app is now running in the browser, where the sum of two randomly generated numbers is shown:
 
-![Browser output of the app](https://i.imgur.com/2Qj5wzg.png)
+![Browser output of the app]({{site.images}}{{page.slug}}/2Qj5wzg.png)
 
 ## Conclusion
 
@@ -244,11 +248,9 @@ Bazel isn't the only solution for the automation of building and testing softwar
 
 ## Outside Article Checklist
 
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
-
+* [ ] Create header image in Canva
+* [ ] Optional: Find ways to break up content with quotes or images
+* [ ] Verify look of article locally
+  * Would any images look better `wide` or without the `figcaption`?
+* [ ] Add keywords for internal links to front-matter
+* [ ] Run `link-opp` and find 1-5 places to incorporate links
