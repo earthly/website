@@ -51,7 +51,11 @@ In Bazel, the software is built from source code that is organized in a director
 
 In this project, the folder `MY-PYTHON-APP` serves as the root directory for the workspace. In it, the package calculator, app, and third party are created. The package app will contain the source code of the calculator and the unit tests. In the app, the main code for the actual application will be stored. Additionally, a `third-party` folder will be created that will be responsible for any third-party dependencies:
 
+<div class="wide">
+
 ![Folder structure]({{site.images}}{{page.slug}}/wnNRmbo.png)
+
+</div>
 
 ### Creating the WORKSPACE File and Declaring the Bazel Version
 
@@ -65,7 +69,7 @@ After this, the file `.bazelversion` needs to be created in the same directory. 
 
 Following this, the `WORKSPACE` file has to be filled with references to external dependencies. In order to use Python, the [Python rules for Bazel](https://bazel.build/reference/be/python), which provide the basis of support for Python in Bazel, will be used. To import the Python rules, add some commands to the `WORKSPACE` file:
 
-~~~
+~~~{.bazelversion caption=""}
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 http_archive(
     name = "rules_python",
@@ -77,7 +81,7 @@ http_archive(
 
 Next, utilize the third-party dependency Flask. This is a [pip](https://pypi.org/project/pip/) dependency that is added to the `WORKSPACE` by loading the function `pip_install`. Then call this function to install the required dependency:
 
-~~~
+~~~{.bazelversion caption=""}
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 http_archive(
     name = "rules_python",
@@ -96,7 +100,7 @@ pip_install(
 
 The function `pip_install` installs all dependencies listed in the file `requirements.txt` that need to be created in the third-party directory. This file contains Flask as the only external dependency needed:
 
-~~~
+~~~{.bash caption=">_"}
 Flask==2.0.2
 ~~~
 
@@ -104,7 +108,7 @@ Flask==2.0.2
 
 After defining Flask as an internal dependency, write the source code for the calculator. The file `calculator.py` in the directory `calculator` looks like this:
 
-~~~
+~~~{.python caption="calculator.py"}
 class Calculator:
   def add(self, x, y): return x + y;
 ~~~
@@ -114,7 +118,7 @@ The class `Calculator` takes two variables, `x` and `y`, as arguments and return
 To build the software from the source, create the file `BUILD.bazel` in the same directory as the source code. The file defines and declares this directory as a Bazel package.
 Because of this, Bazel knows exactly what source code has to be built during the build process. Here, build the calculator source code as a Python library:
 
-~~~
+~~~{.bazel caption="BUILD.bazel"}
 py_library(
     name = "calculator",
     srcs = ["calculator.py"],
@@ -129,7 +133,7 @@ In this code, some attributes, including the `name`, `srcs`, and `visibility`, a
 Let's write a unit test. The test class will be called `calculator_test.py` and will be in the same directory as the class `calculator.py`.
 The source code for the unit test is depicted here:
 
-~~~
+~~~{.python caption="calculator_test.py"}
 import unittest
 from calculator import Calculator
  
@@ -147,7 +151,7 @@ In this code, the unit test simply checks whether the sum of 1 and 2 equals 3.
 
 Then extend the previous `BUILD.bazel` file with a `py_test` rule that compiles the source code of the unit test:
 
-~~~
+~~~{.bazel caption="BUILD.bazel"}
 py_library(
     name = "calculator",
     srcs = ["calculator.py"],
@@ -171,7 +175,11 @@ For the unit test, use the previously defined library named `calculator`.
 
 In this section, building the previously written source code and running the unit test are discussed. By executing the command `bazel test calculator/…`, the source code is built in the [Bazel](/blog/monorepo-with-bazel) package `calculator`, and then Bazel runs the unit test. The output should look like this:
 
+<div class="wide">
+
 ![Terminal output of the unit test]({{site.images}}{{page.slug}}/FBeMeE9.png)
+
+</div>
 
 The output shows that Bazel successfully built the source code and that the unit test has passed.
 
@@ -183,7 +191,7 @@ Now a Flask app that uses the calculator to find the sum of two random numbers n
 
 To begin, create the source code:
 
-~~~
+~~~{.python caption="main.py"}
 from calculator.calculator import Calculator
 from flask import Flask
 from random import randint
@@ -207,7 +215,7 @@ The code is saved in the file `main.py` in the previously created directory `app
 
 Then create a `BUILD.bazel` file in order to declare this directory as a Bazel package:
 
-~~~
+~~~{.bazel caption="BUILD.bazel"}
 py_binary(
   name = "main",
   srcs = ["main.py"],
@@ -221,7 +229,7 @@ Here, the Python rule `py_binary` is used since this will be a runnable applicat
 
 In the code of the application, Flask is being used as an external dependency. Because of this, the `BUILD.bazel` file has to be further modified to ensure that the third-party dependency can be consumed by the package. The modification can be seen in the first line of the file:
 
-~~~
+~~~{.bazel caption="BUILD.bazel"}
 load("@python_deps//:requirements.bzl", "requirement")
  
 py_binary(
@@ -239,7 +247,9 @@ Previously, a pip dependency was added to the `WORKSPACE`, and `pip_install` was
 
 By running the command `bazel run //app:main`, the project is built, and the main application is run. The Flask app is now running in the browser, where the sum of two randomly generated numbers is shown:
 
+<div class="wide">
 ![Browser output of the app]({{site.images}}{{page.slug}}/2Qj5wzg.png)
+</div>
 
 ## Conclusion
 
@@ -248,9 +258,3 @@ In this article, the fundamentals of [Bazel](https://bazel.build), specifically 
 Bazel isn't the only solution for the automation of building and testing software. [Earthly](https://earthly.dev/) provides a convenient [CI/CD](/blog/ci-vs-cd) framework to build images or stand-alone artifacts by leveraging containers for the execution of pipelines. Earthly combines the best ideas from Dockerfiles and Makefiles into one specification, making the containers self-contained, repeatable, portable, and parallel.
 
 {% include cta/cta1.html %}
-
-## Outside Article Checklist
-
-* [ ] Optional: Find ways to break up content with quotes or images
-* [ ] Verify look of article locally
-  * Would any images look better `wide` or without the `figcaption`?
