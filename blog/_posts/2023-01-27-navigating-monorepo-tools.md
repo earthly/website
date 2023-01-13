@@ -6,7 +6,10 @@ toc: true
 author: Paul Ibeabuchi
 
 internal-links:
- - just an example
+ - CI/CD
+ - Monorepo
+ - Ecosystem
+ - Pipelines 
 ---
 
 Many engineers and organizations are beginning to adopt a [monorepo](/blog/monorepo-tools) architecture, where a single repository contains multiple projects. However, ensuring that your pipelines run efficiently and that your builds are occurring in the right order are just a couple of the complexities that a monorepo introduces for your engineering team.
@@ -168,5 +171,3 @@ As an open source [CI/CD](/blog/ci-vs-cd) framework, Earthly allows you to devel
 * [ ] Optional: Find ways to break up content with quotes or images
 * [ ] Verify look of article locally
   * Would any images look better `wide` or without the `figcaption`?
-* [ ] Add keywords for internal links to front-matter
-* [ ] Run `link-opp` and find 1-5 places to incorporate links
