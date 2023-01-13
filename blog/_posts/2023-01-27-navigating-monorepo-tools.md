@@ -9,11 +9,11 @@ internal-links:
  - just an example
 ---
 
-Many engineers and organizations are beginning to adopt a monorepo architecture, where a single repository contains multiple projects. However, ensuring that your pipelines run efficiently and that your builds are occurring in the right order are just a couple of the complexities that a monorepo introduces for your engineering team.
+Many engineers and organizations are beginning to adopt a [monorepo](/blog/monorepo-tools) architecture, where a single repository contains multiple projects. However, ensuring that your pipelines run efficiently and that your builds are occurring in the right order are just a couple of the complexities that a monorepo introduces for your engineering team.
 
 Fortunately, using a dedicated tool for your monorepo system means you're not spending valuable time away from your core competencies to implement this system yourself.
 
-To help you determine what tool would work best for your project, let's compare five monorepo tools—Bazel, Gradle, Lage, Lerna, and Rush—according to their features, benefits, and drawbacks. We'll analyze factors like:
+To help you determine what tool would work best for your project, let's compare five [monorepo](/blog/monorepo-with-bazel) tools—Bazel, Gradle, Lage, Lerna, and Rush—according to their features, benefits, and drawbacks. We'll analyze factors like:
 
 * Speed
 * Learning curve
@@ -32,7 +32,7 @@ Let's dive in, shall we?
 ![Bazel Homepage]({{site.images}}{{page.slug}}/t7KgZrS.png)
 </div>
 
-Google built [Bazel](https://bazel.build/) to automate software builds and tests, with an aim to make builds reproducible and portable. In other words, for every set of inputs, the same outputs are always produced, regardless of the device on which the build is run.
+Google built [Bazel](https://bazel.build/) to automate software builds and tests, with an aim to [make](/blog/using-cmake) builds reproducible and portable. In other words, for every set of inputs, the same outputs are always produced, regardless of the device on which the build is run.
 
 Some notable features and benefits of Bazel include:
 
@@ -40,7 +40,7 @@ Some notable features and benefits of Bazel include:
 * **It supports local caching of build results.** However, it also supports [remote caching](https://bazel.build/docs/remote-caching).
 * **It supports multiple [languages](https://bazel.build/rules).** Bazel also supports multiple platforms such as Linux, macOS, and Windows, for desktop, server, and mobile.
 * **It can handle large projects.** Bazel is reliable when it comes to scaling applications. According to its documentation, it can comfortably handle builds with thousands of source files.
-* **It can execute a command on multiple devices while developing locally.** This is unlike other monorepo tools listed in this article.
+* **It can execute a command on multiple devices while developing locally.** This is unlike other [monorepo](/blog/golang-monorepo) tools listed in this article.
 * **It supports visualization of dependencies between projects and tasks.**
 
 Some drawbacks of Bazel include:
@@ -158,7 +158,7 @@ Some of the drawbacks of Rush are:
 
 These five common monorepo tools—Bazel, Gradle, Lage, Lerna, and Rush—all have their own features, benefits, and drawbacks. The good news is that regardless of which one works best for your situation, you can still use [Earthly](https://earthly.dev/) with all of them.
 
-As an open source CI/CD framework, Earthly allows you to develop locally and run anywhere. Builds are containerized and language agnostic, and tasks are executed in parallel, which makes it fast. Check out Earthly's detailed [documentation](https://docs.earthly.dev/) to see how you can get started with it easily.
+As an open source [CI/CD](/blog/ci-vs-cd) framework, Earthly allows you to develop locally and run anywhere. Builds are containerized and language agnostic, and tasks are executed in parallel, which makes it fast. Check out Earthly's detailed [documentation](https://docs.earthly.dev/) to see how you can get started with it easily.
 
 {% include cta/cta1.html %}
 
