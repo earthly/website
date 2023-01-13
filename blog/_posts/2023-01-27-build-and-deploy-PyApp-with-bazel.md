@@ -3,7 +3,7 @@ title: "Building and Deploying a Python App with Bazel"
 categories:
   - Tutorials
 toc: true
-author: Adam
+author: Artem Oppermann
 
 internal-links:
  - just an example
@@ -243,7 +243,6 @@ Bazel isn't the only solution for the automation of building and testing softwar
 
 ## Outside Article Checklist
 
-- [ ] Add in Author page
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
