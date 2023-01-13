@@ -6,7 +6,10 @@ toc: true
 author: Artem Oppermann
 
 internal-links:
- - just an example
+ - Python
+ - Bazel
+ - Deploy
+ - Dependencies
 ---
 
 [Bazel](https://bazel.build) is an open source software tool released by Google to automate software build processes and testing. It's a scalable and reliable tool that allows developers to quickly build and test software applications. Because Bazel supports multiple programming languages, it's ideal for projects with multilanguage dependencies.
@@ -251,4 +254,3 @@ Bazel isn't the only solution for the automation of building and testing softwar
 * [ ] Optional: Find ways to break up content with quotes or images
 * [ ] Verify look of article locally
   * Would any images look better `wide` or without the `figcaption`?
-* [ ] Add keywords for internal links to front-matter
