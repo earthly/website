@@ -69,7 +69,7 @@ After this, the file `.bazelversion` needs to be created in the same directory. 
 
 Following this, the `WORKSPACE` file has to be filled with references to external dependencies. In order to use Python, the [Python rules for Bazel](https://bazel.build/reference/be/python), which provide the basis of support for Python in Bazel, will be used. To import the Python rules, add some commands to the `WORKSPACE` file:
 
-~~~{.bazelversion caption=""}
+~~~{ caption="WORKSPACE.bazel"}
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 http_archive(
     name = "rules_python",
@@ -81,7 +81,7 @@ http_archive(
 
 Next, utilize the third-party dependency Flask. This is a [pip](https://pypi.org/project/pip/) dependency that is added to the `WORKSPACE` by loading the function `pip_install`. Then call this function to install the required dependency:
 
-~~~{.bazelversion caption=""}
+~~~{ caption="WORKSPACE.bazel"}
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 http_archive(
     name = "rules_python",
@@ -100,7 +100,7 @@ pip_install(
 
 The function `pip_install` installs all dependencies listed in the file `requirements.txt` that need to be created in the third-party directory. This file contains Flask as the only external dependency needed:
 
-~~~{.bash caption=">_"}
+~~~{ caption="requirments.txt"}
 Flask==2.0.2
 ~~~
 
@@ -118,7 +118,7 @@ The class `Calculator` takes two variables, `x` and `y`, as arguments and return
 To build the software from the source, create the file `BUILD.bazel` in the same directory as the source code. The file defines and declares this directory as a Bazel package.
 Because of this, Bazel knows exactly what source code has to be built during the build process. Here, build the calculator source code as a Python library:
 
-~~~{.bazel caption="BUILD.bazel"}
+~~~{ caption="WORKSPACE.bazel"}
 py_library(
     name = "calculator",
     srcs = ["calculator.py"],
@@ -151,7 +151,7 @@ In this code, the unit test simply checks whether the sum of 1 and 2 equals 3.
 
 Then extend the previous `BUILD.bazel` file with a `py_test` rule that compiles the source code of the unit test:
 
-~~~{.bazel caption="BUILD.bazel"}
+~~~{ caption="WORKSPACE.bazel"}
 py_library(
     name = "calculator",
     srcs = ["calculator.py"],
@@ -216,7 +216,7 @@ The code is saved in the file `main.py` in the previously created directory `app
 
 Then create a `BUILD.bazel` file in order to declare this directory as a Bazel package:
 
-~~~{.bazel caption="BUILD.bazel"}
+~~~{ caption="WORKSPACE.bazel"}
 py_binary(
   name = "main",
   srcs = ["main.py"],
@@ -230,7 +230,7 @@ Here, the Python rule `py_binary` is used since this will be a runnable applicat
 
 In the code of the application, Flask is being used as an external dependency. Because of this, the `BUILD.bazel` file has to be further modified to ensure that the third-party dependency can be consumed by the package. The modification can be seen in the first line of the file:
 
-~~~{.bazel caption="BUILD.bazel"}
+~~~{ caption="WORKSPACE.bazel"}
 load("@python_deps//:requirements.bzl", "requirement")
  
 py_binary(
