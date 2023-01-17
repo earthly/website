@@ -105,8 +105,8 @@ You can create your own classes that support the `with` statement. A class or a 
 
 A Python class that implements the methods below qualifies as a context manager:
 
-●    `__enter__()`: This method is called when the `with` statement is executed, and it returns an object that will be bound to the variable specified in the `as` clause of the `with` statement.
-●    `__exit__()`: This method is called when the block of code inside the `with` statement has finished executing (regardless of whether an exception was raised or not). It is responsible for cleaning up any resources that the context manager might have acquired. The `__exit__()` method can also handle exceptions that are raised within the `with` block.
+- `__enter__()`: This method is called when the `with` statement is executed, and it returns an object that will be bound to the variable specified in the `as` clause of the `with` statement.
+- `__exit__()`: This method is called when the block of code inside the `with` statement has finished executing (regardless of whether an exception was raised or not). It is responsible for cleaning up any resources that the context manager might have acquired. The `__exit__()` method can also handle exceptions that are raised within the `with` block.
 
 Once you implement the above two methods in your class, you can use the `with` statement with the class.
 
