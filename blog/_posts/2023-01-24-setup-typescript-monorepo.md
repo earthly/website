@@ -167,6 +167,7 @@ All packages in your application should follow the same linting and indentation 
 Install them all as dev dependencies with the npm command below:
 
 ~~~{.bash caption=">_"}
+
 npm install eslint prettier @typescript-eslint/eslint-parser @typescript-eslint/eslint-plugin
 ~~~
 
