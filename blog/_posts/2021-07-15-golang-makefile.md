@@ -4,6 +4,7 @@ categories:
   - Tutorials
 toc: true
 author: Milap Neupane
+author2: Adam
 sidebar:
   nav: "makefile"
 internal-links:
@@ -11,6 +12,8 @@ internal-links:
  - go makefile
  - golang make
 ---
+<iframe width="560" height="315" src="https://www.youtube.com/embed/QPfNopc6B_g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 <div class="narrow-code">
 Building and testing any large codebase is time-consuming, error-prone, and repetitive. Golang supports multi-platform builds, which is excellent, but it needs multiple commands to build the binaries for different platforms, which means more time-consuming and repetitive steps when building binaries. If that's not enough, most projects have some dependencies that need to be installed before building the binary, and you probably want to run tests and ensure the code quality with linters and code coverage tools.
 
@@ -49,7 +52,7 @@ You may want the build to create binary for multiple OS. For that, you will need
 ```
 GOARCH=amd64 GOOS=darwin go build -o hello-world-darwin main.go
 GOARCH=amd64 GOOS=linux go build -o hello-world-linux main.go
-GOARCH=amd64 GOOS=window go build -o hello-world-windows main.go
+GOARCH=amd64 GOOS=windows go build -o hello-world-windows main.go
 ```
 
 ```
@@ -66,12 +69,10 @@ BINARY_NAME=hello-world
 build:
  GOARCH=amd64 GOOS=darwin go build -o ${BINARY_NAME}-darwin main.go
  GOARCH=amd64 GOOS=linux go build -o ${BINARY_NAME}-linux main.go
- GOARCH=amd64 GOOS=window go build -o ${BINARY_NAME}-windows main.go
+ GOARCH=amd64 GOOS=windows go build -o ${BINARY_NAME}-windows main.go
 
-run:
+run: build
  ./${BINARY_NAME}
-
-build_and_run: build run
 
 clean:
  go clean
@@ -84,13 +85,6 @@ Now with these simple commands, you can build and run the Go project:
 
 ```
 make run
-make build
-```
-
-Or you can use a single command for both build and run:
-
-```
-make build_and_run
 ```
 
 Finally, you can run the clean command for the cleanup of binaries:
@@ -175,12 +169,10 @@ BINARY_NAME=hello-world
 build:
  GOARCH=amd64 GOOS=darwin go build -o ${BINARY_NAME}-darwin main.go
  GOARCH=amd64 GOOS=linux go build -o ${BINARY_NAME}-linux main.go
- GOARCH=amd64 GOOS=window go build -o ${BINARY_NAME}-windows main.go
+ GOARCH=amd64 GOOS=windows go build -o ${BINARY_NAME}-windows main.go
 
-run:
+run: build
  ./${BINARY_NAME}
-
-build_and_run: build run
 
 clean:
  go clean
