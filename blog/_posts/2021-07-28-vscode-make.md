@@ -29,7 +29,7 @@ A *Makefile* is a simple text file that defines rules to be executed. The usual 
 
 To illustrate this power, the [sample project](https://github.com/nickmancol/vscode_makefile) contains a single C++ source code file. The source code for the example is pretty simple —- it flips a coin as many times as the `iters` argument is passed, and then prints the number of heads and tails counted from each flip.
 
-```cpp
+~~~
 #include <cstdio>
 #include <cstdlib>
 #include <stdlib.h>
@@ -62,7 +62,7 @@ int main(int argc,char* argv[]) {
         printf("With enough trials Heads should be close to Tails\n");
     }
 }
-```
+~~~
 
 This code will be compiled and linked with a simple Makefile that also will provide a couple of other standard rules for cleaning the compiled code and run a simple test.
 
@@ -90,7 +90,7 @@ This sample Makefile defines five simple rules:
 - `test`: Delegates to `CoinFlipper.cpp`, then runs the output main function passing an argument.
 - `clean`: Deletes compiled files.
 
-```makefile
+~~~
 #
 # A simple makefile for compiling a c++ project
 #
@@ -99,17 +99,17 @@ This sample Makefile defines five simple rules:
 all: clean test
 
 CoinFlipper.cpp: 
-	gcc -o ./target/CoinFlipper.out ./src/main/CoinFlipper.cpp
+    gcc -o ./target/CoinFlipper.out ./src/main/CoinFlipper.cpp
 
 run: CoinFlipper.cpp
-	./target/CoinFlipper.out 10
+    ./target/CoinFlipper.out 10
 
 test: CoinFlipper.cpp
-	./target/CoinFlipper.out 10000
+    ./target/CoinFlipper.out 10000
 
 clean: 
-	rm -rf ./target/*.out
-```
+    rm -rf ./target/*.out
+~~~
 
 The Makefile Tools Extension provides a new "perspective" to the Visual Studio Code IDE. This contains three different commands and three different project configurations to run the Makefile:
 
@@ -124,7 +124,7 @@ In the following example, two configurations are defined:
 
 `Print make versions` adds the `--version` argument to the make utility every time the project is built using the Makefile extension. This argument is not especially useful but you can explore different arguments to fit your case.
 
-```json
+~~~
 {
  "makefile.configurations": [
      {
@@ -137,7 +137,7 @@ In the following example, two configurations are defined:
      }
  ]
 }
-```
+~~~
 
 The second configuration is the default build target rule for the make utility, which is equivalent to running `make [target]` directly. The IDE will let show you a list of target rules defined in the Makefile configured for the project:
 
@@ -157,7 +157,7 @@ The commands in the Makefile are self-explanatory:
 
 Once you build the project, the terminal view shows the result of the execution:
 
-```
+~~~
 Building target "all" with command: "make all"
 rm -rf ./target/*.out
 g++ -o ./target/CoinFlipper.out ./src/main/CoinFlipper.cpp
@@ -165,7 +165,7 @@ g++ -o ./target/CoinFlipper.out ./src/main/CoinFlipper.cpp
 50 Heads, 51 Tails
 With enough trials Heads should be equal to Tails
 Target all built successfully.
-```
+~~~
 
 As you can see from the previous image, the target was built successfully after cleaning, compiling, and running the compiled program. The extension also provides commands to run other targets easily without changing the configurations in the perspective.
 
