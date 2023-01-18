@@ -656,6 +656,8 @@ terraform destroy
 
 In this tutorial, you’ve learned how to use Terraform to automate your cloud infrastructure tasks. You started by creating and running an application locally. Using the configured AWS, you used Terraform to automate the deployment of the same application to the AWS ECS platform. I hope you found this guide helpful.
 
+{% include cta/cta1.html %}
+
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
@@ -664,4 +666,3 @@ In this tutorial, you’ve learned how to use Terraform to automate your cloud i
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Run mark down linter (`lint`)
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
