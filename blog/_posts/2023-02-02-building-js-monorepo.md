@@ -74,7 +74,7 @@ Some benefits and features of Gradle include:
 * **It's fast.** Gradle reuses previous output to determine what inputs need to be executed. It also allows parallel execution of tasks, like running multiple tasks simultaneously, which makes it even faster.
 * **It can reuse previous output.** Gradle uses [Build Caches](https://docs.gradle.org/current/userguide/build_cache.html#sec:task_output_caching), allowing it to behave similarly to Bazel.
 * **It supports major IDEs.** Examples include VSCode, Eclipse, Android Studio, IntelliJ IDEA, and NetBeans.
-* **It supports [dependency management](https://gradle.org/features/#:~:text=be%20Gradle%20builds.-,Dependency%20Management,-Transitive%20Dependencies).
+* **It supports [dependency management](https://gradle.org/features/#:~:text=be%20Gradle%20builds.-,Dependency%20Management,-Transitive%20Dependencies)**.
 * **It can detect changes in projects and packages.** This helps it determine what build or test to run.
 
 Some of the drawbacks of Gradle are:
