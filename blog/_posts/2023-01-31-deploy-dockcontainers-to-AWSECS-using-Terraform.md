@@ -34,15 +34,21 @@ To provision the infrastructure running on AWS ECS, you need an [Identity and Ac
 
 On your AWS account, add an IAM by clicking the **Add user** button. Fill in the name and select the access key credential type. Check the password option if you want to create a dedicated sign in for this user.
 
-![AWS IAM user]({{site.images}}{{page.slug}}/STi7ZSg)
+<div class="wide">
+![AWS IAM user]({{site.images}}{{page.slug}}/STi7ZSg.png)\
+</div>
 
 Click next to create user permission roles. For simplicity, give this user `AdministratorAccess` without enabling multi-factor authentication. Next, add the user to a group that has administrator access.
 
-![AWS administrator access]({{site.images}}{{page.slug}}/ke5R8ix)
+<div class="wide">
+![AWS administrator access]({{site.images}}{{page.slug}}/ke5R8ix.png)\
+</div>
 
 This should reflect as follows:
 
-![AWS user permissions]({{site.images}}{{page.slug}}/s1bjOVg)
+<div class="wide">
+![AWS user permissions]({{site.images}}{{page.slug}}/s1bjOVg.png)\
+</div>
 
 Proceed to the next step and create a user. This will create a user access key ID and a secret access key. Copy these credentials and configure them to your installed AWS CLI as follows.
 
@@ -59,7 +65,9 @@ Provide your AWS IAM user details:
 - Default region name: For example, us-east-1
 - Default output format: [json](/blog/convert-to-from-json)
 
-![AWS CLI configuration]({{site.images}}{{page.slug}}/A4RgDXD)
+<div class="wide">
+![AWS CLI configuration]({{site.images}}{{page.slug}}/A4RgDXD.png)\
+</div>
 
 That's all you need for AWS configuration.
 
@@ -93,7 +101,9 @@ node index.js
 
 Open `http://localhost:5000/` on your browser and check if the application is working. You should see the following basic CRUD web app:
 
-![Node.js demo app]({{site.images}}{{page.slug}}/wshCJFG)
+<div class="wide">
+![Node.js demo app]({{site.images}}{{page.slug}}/wshCJFG.png)\
+</div>
 
 The goal is to deploy the above application to AWS ECS.
 <div class="notice--info">
@@ -102,7 +112,7 @@ Terraform will set up and automate configuration files to run the above app with
 
 ## Creating Dockerfile for the App
 
-![Creating Dockerfile for the App]({{site.images}}{{page.slug}}/yiZu7ug.png)
+![Creating Dockerfile for the App]({{site.images}}{{page.slug}}/yiZu7ug.png)\
 
 Terraform checks the application's Dockerfile and instructs Docker on what needs to be done. Dockerfile contains the instructions used to create a Docker image. To create a docker image for the application, follow the steps outlined below:
 
@@ -229,7 +239,9 @@ terraform init
 
 The message **Terraform has been successfully initialized!** should be displayed on your terminal, as shown:
 
-![Initialize terraform directory]({{site.images}}{{page.slug}}/BXlLt2i)
+<div class="wide">
+![Initialize terraform directory]({{site.images}}{{page.slug}}/BXlLt2i.png)\
+</div>
 
 To create an ECR, run the `plan` command; you'll be able to preview the above Terraform configuration file and the resource that will be created:
 
@@ -237,7 +249,9 @@ To create an ECR, run the `plan` command; you'll be able to preview the above Te
 terraform plan
 ~~~
 
-![Terraform plan]({{site.images}}{{page.slug}}/Bt3wwzA)
+<div class="wide">
+![Terraform plan]({{site.images}}{{page.slug}}/Bt3wwzA.png)\
+</div>
 
 Terraform plan will let you see the resource that will be added, changed, or deployed to AWS. In this case, one resource, `aws_ecr_repository.app_ecr_repo`, will be added to AWS. To provision the displayed configuration infrastructure on AWS, apply the above execution plan:
 
@@ -247,15 +261,21 @@ terraform apply
 
 Don't forget to enter **yes** when prompted to allow Terraform to execute this command as expected.
 
-![Terraform apply]({{site.images}}{{page.slug}}/cEGOKDb)
+<div class="wide">
+![Terraform apply]({{site.images}}{{page.slug}}/cEGOKDb.png)\
+</div>
 
 Terraform will create the ECR. You can confirm this on your Amazon Elastic Container Registry Repositories list.
 
-![AWS ECR]({{site.images}}{{page.slug}}/ioOVCb0)
+<div class="wide">
+![AWS ECR]({{site.images}}{{page.slug}}/ioOVCb0.png)\
+</div>
 
 Now that you have an ECR repository ready, it's time to push your Docker image to the newly created repository. You need to run some commands that authenticate the Docker image to the registry and push the image to the repository. AWS provides these commands out of the box. To access these commands, navigate to your ECR repository and click the **View push commands** button, as shown below:
 
-![AWS ECR]({{site.images}}{{page.slug}}/WtU0IRd)
+<div class="wide">
+![AWS ECR]({{site.images}}{{page.slug}}/WtU0IRd.png)\
+</div>
 
 A pop-up containing the push commands for the repository will be launched. Next, execute the following command to run an authentication token that authenticates and connects the Docker client to your registry (ECR) repository.
 
@@ -289,11 +309,13 @@ docker push ID.dkr.REGION.amazonaws.com/app-repo:latest
 
 Finally, refresh the repository's page to verify you've successfully pushed the image to the AWS ECR repository.
 
-![AWS ECR image]({{site.images}}{{page.slug}}/rZUhwKG)
+<div class="wide">
+![AWS ECR image]({{site.images}}{{page.slug}}/rZUhwKG.png)\
+</div>
 
 ## Creating an ECS Cluster
 
-![Creating an ECS Cluster]({{site.images}}{{page.slug}}/n5zlbCC.png)
+![Creating an ECS Cluster]({{site.images}}{{page.slug}}/n5zlbCC.png)\
 
 So far, you've created a repository and deployed the image. But whenever you want to launch, you'll need a **target**. A cluster acts as the container target. It takes a task into the cluster configuration and runs that task within the cluster.
 The ECS agent communicates with the ECS cluster and receives requests to launch the container. To create a cluster where you'll run your task, add the following configurations to your `main.tf` file:
@@ -313,7 +335,9 @@ terraform apply
 
 Head over to Amazon ECS Clusters, and verify that you can see these changes:
 
-![AWS ECS cluster]({{site.images}}{{page.slug}}/Orc6r5T)
+<div class="wide">
+![AWS ECS cluster]({{site.images}}{{page.slug}}/Orc6r5T.png)\
+</div>
 
 ## Configuring AWS ECS Task Definitions
 
@@ -393,7 +417,9 @@ resource "aws_iam_role_policy_attachment" "ecsTaskExecutionRole_policy" {
 
 Run `terraform apply` to add these changes to AWS. Navigate to Amazon ECS Task Definitions, and these changes should reflect as such:
 
-![AWS ECS task definition]({{site.images}}{{page.slug}}/qUx4QdM)
+<div class="wide">
+![AWS ECS task definition]({{site.images}}{{page.slug}}/qUx4QdM.png)\
+</div>
 
 Click on this task to access the specifications created in the above configurations. For example:
 
@@ -405,19 +431,25 @@ Click on this task to access the specifications created in the above configurati
 
 Based on the task definition, Terraform will create the task, and assign the FARGTE launch type and the AWS VPN network mode as follows:
 
-![ECS Fargate launch type]({{site.images}}{{page.slug}}/uQU59He)
+<div class="wide">
+![ECS Fargate launch type]({{site.images}}{{page.slug}}/uQU59He.png)\
+</div>
 
 ### CPU and RAM Resources
 
 Task memory (MiB) and task CPU (unit) resources will be created and assigned to the container as shown:
 
-![AWS ECS resources]({{site.images}}{{page.slug}}/LAJ3N2c)
+<div class="wide">
+![AWS ECS resources]({{site.images}}{{page.slug}}/LAJ3N2c.png)\
+</div>
 
 ### Port Mappings
 
 Port mappings for the host (5000), and the container (5000) will be assigned to the resource:
 
-![AWS ECS Port mappings]<{{site.images}}{{page.slug}}/bnJ5a9s>)
+<div class="wide">
+![AWS ECS Port mappings]({{site.images}}{{page.slug}}/bnJ5a9s.png)\
+</div>
 
 ## Launching the Container
 
@@ -581,7 +613,7 @@ At this point, Terraform is set to create and provision infrastructure on AWS EC
 
 ## Testing the Infrastructure
 
-![Testing the Infrastructure]({{site.images}}{{page.slug}}/NymMlg2.png)
+![Testing the Infrastructure]({{site.images}}{{page.slug}}/NymMlg2.png)\
 
 Before testing out the infrastructure, let's check the created resources. This includes:
 
@@ -589,39 +621,53 @@ Before testing out the infrastructure, let's check the created resources. This i
 
 Refresh the previous deployed cluster. The service to run this container will be updated as follows:
 
-![AWS ECS cluster]({{site.images}}{{page.slug}}/XaQ4JJd)
+<div class="wide">
+![AWS ECS cluster]({{site.images}}{{page.slug}}/XaQ4JJd.png)\
+</div>
 
 ### VPC
 
- Navigate to **Your VPCs** section and check the created container network:
+Navigate to **Your VPCs** section and check the created container network:
 
-![AWS VPC]({{site.images}}{{page.slug}}/KZvLZZr)
+<div class="wide">
+![AWS VPC]({{site.images}}{{page.slug}}/KZvLZZr.png)\
+</div>
 
 ### Subnets
 
 The following subnets will be created in your VPCs.
 
-![AWS subnets]({{site.images}}{{page.slug}}/SgzaM5w)
+<div class="wide">
+![AWS subnets]({{site.images}}{{page.slug}}/SgzaM5w.png)\
+</div>
 
 ### Target Groups
 
 Target groups *route traffic requests* and define health checks for the network load balancer. Below is how Terraform provisioned the Target groups that are in the load balancer available zones:
 
-![AWS target groups]({{site.images}}{{page.slug}}/UfM3bF7)
+<div class="wide">
+![AWS target groups]({{site.images}}{{page.slug}}/UfM3bF7.png)\
+</div>
 
 ### Load Balancer
 
 Finally, the load balancer for distributing and accessing the application traffic across the created targets will be created as follows:
 
-![AWS load balancer]({{site.images}}{{page.slug}}/BXLGIhy)
+<div class="wide">
+![AWS load balancer]({{site.images}}{{page.slug}}/BXLGIhy.png)\
+</div>
 
 You should see the application's URL on your terminal.
 
-![Terraform load balancer output]({{site.images}}{{page.slug}}/S5gXxeM)
+<div class="wide">
+![Terraform load balancer output]({{site.images}}{{page.slug}}/S5gXxeM.png)\
+</div>
 
 You can also access the URL from your `load-balancer-dev` as the DNS name. Copy it to your browser. You'll see that the AWS ECS provisioned application has been served.
 
-![Terraform AWS ESC app]({{site.images}}{{page.slug}}/ooVQetM)
+<div class="wide">
+![Terraform AWS ESC app]({{site.images}}{{page.slug}}/ooVQetM.png)\
+</div>
 
 Note that you can get a **503 Service Temporarily Unavailable** if you test your application immediately after running the `terraform apply` command. Give the infrastructure a few seconds to bring all components online.
 
@@ -640,6 +686,3 @@ In this tutorial, you've learned how to use [Terraform](/blog/kubernetes-terrafo
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
