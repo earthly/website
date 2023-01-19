@@ -6,7 +6,10 @@ toc: true
 author: Hrittik Roy
 
 internal-links:
- - just an example
+ - Kubernetes
+ - OpenShift
+ - Container
+ - Deployment 
 ---
 
 The modern software delivery life cycle is filled with microservices packed into containers. Containers can lead to more flexible and scalable applications but often at the cost of additional complexity. Your application probably consists of many microservices that are built and deployed independently. Each microservice may have its own development and deployment cycle, and the dependencies between services can be complex.
@@ -29,7 +32,7 @@ You can think of OpenShift as a **managed service for Kubernetes**. It comes wit
 
 ## What Are the Advantages of Kubernetes and OpenShift?
 
-![Advantages]({{site.images}}{{page.slug}}/a/pLeCJbp)\
+![Advantages]({{site.images}}{{page.slug}}/pLeCJbp.png)\
 
 Let's take a look at some of the most important features of Kubernetes and OpenShift. We'll also try to understand where each tool really shines.
 
@@ -63,7 +66,7 @@ To sum up: OpenShift is easier to use because of its out-of-the-box support for 
 
 ### Installation
 
-![Installation]({{site.images}}{{page.slug}}/a/8yoYITV)\
+![Installation]({{site.images}}{{page.slug}}/8yoYITV.png)\
 
 Kubernetes is available for all major platforms: from Windows (via virtualization) to any Linux distribution. You can install tools like [minikube](https://minikube.sigs.k8s.io/docs/), [kubeadm](https://kubernetes.io/docs/reference/setup-tools/kubeadm/), and [kind](https://kind.sigs.k8s.io) that can help you easily bootstrap clusters and test deployments. For production use cases, you can try [K3s](https://k3s.io), which is a lightweight Kubernetes distribution that is easy to install and maintain.
 
@@ -99,7 +102,7 @@ In essence: **OpenShift is Kubernetes coupled with extra features that make it e
 
 ### Security
 
-![Security]({{site.images}}{{page.slug}}/a/aNgUHYz)\
+![Security]({{site.images}}{{page.slug}}/aNgUHYz.png)\
 
 OpenShift has stricter security features that help it position itself as an enterprise-ready and secure Kubernetes distribution. While you can implement most of these features in Kubernetes manually (to some extent), it takes more effort when compared to what OpenShift offers out of the box.
 
@@ -148,7 +151,3 @@ Choosing the right container orchestration tool would require factoring in the c
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
-- [ ] Add keywords for internal links to front-matter
