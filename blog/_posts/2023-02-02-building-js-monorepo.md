@@ -1,5 +1,5 @@
 ---
-title: "Navigating the Monorepo Tools Ecosystem"
+title: "Building Your JavaScript Monorepo"
 categories:
   - Tutorials
 toc: true
@@ -12,16 +12,15 @@ internal-links:
  - Pipelines 
 ---
 
-Many engineers and organizations are beginning to adopt a [monorepo](/blog/monorepo-tools) architecture, where a single repository contains multiple projects. However, ensuring that your pipelines run efficiently and that your builds are occurring in the right order are just a couple of the complexities that a monorepo introduces for your engineering team.
+Many engineers and organizations are beginning to adopt a monorepo architecture for their JavaScript projects, where a single repository contains multiple projects. However, ensuring that your pipelines run efficiently and that your builds are occurring in the right order are just a couple of the complexities that a monorepo introduces for your engineering team.
 
-Fortunately, using a dedicated tool for your monorepo system means you're not spending valuable time away from your core competencies to implement this system yourself.
+A large JavaScript application has multiple modules and dependencies; a monorepo tool can manage these dependencies and improve scalability. Fortunately, using a dedicated tool for your monorepo system means you're not spending valuable time away from your core competencies to implement this system yourself.
 
-To help you determine what tool would work best for your project, let's compare five [monorepo](/blog/monorepo-with-bazel) tools—Bazel, Gradle, Lage, Lerna, and Rush—according to their features, benefits, and drawbacks. We'll analyze factors like:
+To help you determine what tool would work best for your project, let's compare five monorepo tools—Bazel, Gradle, Lage, Lerna, and Rush—according to their features, benefits, and drawbacks. We'll analyze factors like:
 
 * Speed
 * Learning curve
 * Ease of adoption
-* Programming language support
 * Build caching
 * Detect the scope of changes
 * Dependency graph visualization
@@ -35,7 +34,7 @@ Let's dive in, shall we?
 ![Bazel Homepage]({{site.images}}{{page.slug}}/t7KgZrS.png)
 </div>
 
-Google built [Bazel](https://bazel.build/) to automate software builds and tests, with an aim to [make](/blog/using-cmake) builds reproducible and portable. In other words, for every set of inputs, the same outputs are always produced, regardless of the device on which the build is run.
+Google built [Bazel](https://bazel.build/) to automate software builds and tests, with an aim to make builds reproducible and portable. In other words, for every set of inputs, the same outputs are always produced, regardless of the device on which the build is run.
 
 Some notable features and benefits of Bazel include:
 
@@ -43,7 +42,7 @@ Some notable features and benefits of Bazel include:
 * **It supports local caching of build results.** However, it also supports [remote caching](https://bazel.build/docs/remote-caching).
 * **It supports multiple [languages](https://bazel.build/rules).** Bazel also supports multiple platforms such as Linux, macOS, and Windows, for desktop, server, and mobile.
 * **It can handle large projects.** Bazel is reliable when it comes to scaling applications. According to its documentation, it can comfortably handle builds with thousands of source files.
-* **It can execute a command on multiple devices while developing locally.** This is unlike other [monorepo](/blog/golang-monorepo) tools listed in this article.
+* **It can execute a command on multiple devices while developing locally.** This is unlike other monorepo tools listed in this article.
 * **It supports visualization of dependencies between projects and tasks.**
 
 Some drawbacks of Bazel include:
@@ -62,9 +61,9 @@ Gradle is an open-source build automation tool. It uses three build phases, know
 
 * **The Initialization Phase.** The environment for the build is set up.
 * **The Configuration Phase.** Task configurations are made, i.e, what tasks run first and in what order.
-* **The Execution Phase.** The determined tasks run according to the order in the Configuration Phase.
+* **The Execution Phase.** The determined tasks run according to the order in the configuration phase.
 
-In a monorepo, Gradle is used to create a **Gradle build file**, which is used to add dependencies, configurations and tasks for modules of the repository. The build file can either be created for each module of the repository or a unified build file can be created for the entire repository. Build is then run based on added deoendencies.
+In a monorepo, Gradle is used to create a **Gradle build file**, which adds dependencies, configurations, and tasks for modules of the repository. You can either create a build file for each module of the repository or a unified build file for the entire repository. The build then runs based on added dependencies.
 
 > Tasks in Gradle are logical instructions to be run and can include actions (e.g., copy files or compile), inputs (values, files), and outputs (files as well).
 
@@ -75,13 +74,13 @@ Some benefits and features of Gradle include:
 * **It's fast.** Gradle reuses previous output to determine what inputs need to be executed. It also allows parallel execution of tasks, like running multiple tasks simultaneously, which makes it even faster.
 * **It can reuse previous output.** Gradle uses [Build Caches](https://docs.gradle.org/current/userguide/build_cache.html#sec:task_output_caching), allowing it to behave similarly to Bazel.
 * **It supports major IDEs.** Examples include VSCode, Eclipse, Android Studio, IntelliJ IDEA, and NetBeans.
-* **It supports [Dependency Management](https://gradle.org/features/#:~:text=be%20Gradle%20builds.-,Dependency%20Management,-Transitive%20Dependencies).
+* **It supports [dependency management](https://gradle.org/features/#:~:text=be%20Gradle%20builds.-,Dependency%20Management,-Transitive%20Dependencies).
 * **It can detect changes in projects and packages.** This helps it determine what build or test to run.
 
 Some of the drawbacks of Gradle are:
 
 * **It doesn't provide support for running a command across multiple machines while developing locally.** This is unlike Bazel.
-* **It has extensive documentation.** This may make it difficult to adopt by early programmers.
+* **Javascript documentation and examples are limited** This may make it difficult to adopt by early programmers.
 
 ## Lage
 
@@ -91,7 +90,7 @@ Some of the drawbacks of Gradle are:
 
 [Lage](https://microsoft.github.io/lage/) (which means "make" in Norwegian) is a build tool that was built by Microsoft, with the aim of improving speed and performance in build processes.
 
-While Lerna and Rush (which are also monorepo tools) makes it possible for you to run your npm scripts one at a time in a topological order (that is, build scripts run first and test scripts run only after they are completed), but Lage tries to minimize the CPU cycles that could be wasted between those two processes. It uses *terse pipelining syntax* to optimize your build processes, which allocates tasks to available CPU cores rather than waiting and focusing on the order in which the tasks should be run.
+While Lerna and Rush (which are also monorepo tools we'll cover in a bit) make it possible for you to run your npm scripts one at a time in a topological order (that is, build scripts run first and test scripts run only after they're completed), Lage tries to minimize the CPU cycles that could be wasted between those two processes. It uses *terse pipelining syntax* to optimize your build processes, which allocates tasks to available CPU cores rather than waiting and focusing on the order in which the tasks should be run.
 
 Some of the features and benefits of Lage are:
 
@@ -149,7 +148,7 @@ Some of the features and benefits of Rush are:
 * **It's able to detect changes in dependency in order to run build.** This is similar to most other tools.
 * **It's free and open source.** This is similar to Lerna.
 * **It supports [build caching](https://rushjs.io/pages/maintainer/build_cache/).** However, this is currently an experimental feature, as stated in Rush's documentation.
-* **It can automatically generate Changelog.**
+* **It can automatically generate a Changelog.**
 * **It's commonly used around the web.** Rush also uses JavaScript.
 
 Some of the drawbacks of Rush are:
@@ -159,8 +158,8 @@ Some of the drawbacks of Rush are:
 
 ## Conclusion
 
-These five common monorepo tools—Bazel, Gradle, Lage, Lerna, and Rush—all have their own features, benefits, and drawbacks. The good news is that regardless of which one works best for your situation, you can still use [Earthly](https://earthly.dev/) with all of them.
+These five common monorepo tools—Bazel, Gradle, Lage, Lerna, and Rush—all have their own features, benefits, and drawbacks for building JavaScript and TypeScript monorepos. The good news is that regardless of which one works best for your situation, you can still use [Earthly](https://earthly.dev/) with all of them.
 
-As an open source [CI/CD](/blog/ci-vs-cd) framework, Earthly allows you to develop locally and run anywhere. Builds are containerized and language agnostic, and tasks are executed in parallel, which makes it fast. Check out Earthly's detailed [documentation](https://docs.earthly.dev/) to see how you can get started with it easily.
+As an open source CI/CD framework, Earthly allows you to develop locally and run anywhere. Builds are containerized and language agnostic, and tasks are executed in parallel, which makes it fast. Check out Earthly's detailed [documentation](https://docs.earthly.dev/) to see how you can get started with it easily.
 
 {% include cta/cta1.html %}
