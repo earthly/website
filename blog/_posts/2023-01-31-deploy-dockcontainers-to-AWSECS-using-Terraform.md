@@ -12,7 +12,7 @@ internal-links:
  - Container
 ---
 
-[Elastic Container Service](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/Welcome.html) (ECS) is a container orchestration service from AWS. It allows you to launch and manage container workloads. Recently, we published a [Deploying Docker Containers with ECS](https://earthly.dev/blog/deploy-dockercontainers-with-ecs/) guide that allows you to provision infrastructure on ECS. However, these steps are implemented manually.
+[Elastic Container Service](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/Welcome.html) (ECS) is a container orchestration service from AWS. It allows you to launch and manage container workloads. Recently, we published a [Deploying Docker Containers with ECS](https://earthly.dev/blog/deploy-dockercontainers-with-ecs/) guide that allows you to provision infrastructure on [ECS](/blog/how-to-setup-and-use-amazons-elastic-container-registry) . However, these steps are implemented manually.
 
 This guide aims to help you automate the process of deploying Docker Containers to ECS using [Terraform](https://developer.hashicorp.com/terraform/intro), an infrastructure-as-code (IaC) tool.
 
@@ -57,7 +57,7 @@ Provide your AWS IAM user details:
 - AWS Access Key ID
 - AWS Secret Access Key
 - Default region name: For example, us-east-1
-- Default output format: json
+- Default output format: [json](/blog/convert-to-from-json)
 
 ![AWS CLI configuration]({{site.images}}{{page.slug}}/A4RgDXD)
 
@@ -65,7 +65,7 @@ That's all you need for AWS configuration.
 
 ## Setting Up a Docker App
 
-To demonstrate how to automate tasks using Terraform, you need a demo application. Let's get a simple Node.js application running. If you have an application ready, you can skip this step and use the application alongside this guide.
+To demonstrate how to automate tasks using [Terraform](/blog/kubernetes-terraform), you need a demo application. Let's get a simple Node.js application running. If you have an application ready, you can skip this step and use the application alongside this guide.
 
 Navigate to your directory of choice and run the following command to clone the demo Node.js application from GitHub.
 
@@ -179,7 +179,7 @@ Docker and AWS are ready. Let's now create Terraform automation procedures to ge
 
 ## Creating an Elastic Container Registry (ECR) on AWS ECS
 
-You've verified that your application is working locally and with Docker. We'll now deploy the application to ECS. But before you can deploy your application's container to AWS ECS, you need an ECR setup.
+You've verified that your application is working locally and with Docker. We'll now deploy the application to ECS. But before you can deploy your application's [container](/blog/docker-slim) to AWS ECS, you need an ECR setup.
 
 [ECR](https://aws.amazon.com/ecr/) is an AWS service for sharing and deploying container applications. This service offers a fully managed container registry that makes the process of storing, managing, sharing, and deploying your containers easier and faster. To set up an ECR, create a `main.tf` file inside the `demo_node_app` directory.
 
@@ -269,7 +269,7 @@ aws ecr get-login-password --region REGION | docker login --username AWS --passw
 
 Copy your authentication token and run command in the directory that contains the application's Dockerfile. If the authentication is successful, a **Login Succeeded** message should be logged onto your terminal.
 
-Now, run the Docker build command to build the container from the local or working project directory:
+Now, run the Docker build command to build the [container](/blog/docker-slim) from the local or working project directory:
 
 ~~~
 docker build -t app-repo .
@@ -469,7 +469,7 @@ The above configuration creates a load balancer that will distribute the workloa
 
 ### Creating a Security Group for the Load Balancer
 
-The next important part of allowing HTTP traffic to access the ECS cluster is to create a **security group**. This will be crucial for accessing the application later in this guide. Go ahead and add the security group for the load balancer as follows:
+The next important part of allowing HTTP traffic to access the [ECS](/blog/how-to-setup-and-use-amazons-elastic-container-registry) cluster is to create a **security group**. This will be crucial for accessing the application later in this guide. Go ahead and add the security group for the load balancer as follows:
 
 ~~~
 # main.tf
@@ -633,7 +633,7 @@ terraform destroy
 
 ## Conclusion
 
-In this tutorial, you've learned how to use Terraform to automate your cloud infrastructure tasks. You started by creating and running an application locally. Using the configured AWS, you used Terraform to automate the deployment of the same application to the AWS ECS platform. I hope you found this guide helpful.
+In this tutorial, you've learned how to use [Terraform](/blog/kubernetes-terraform) to automate your cloud infrastructure tasks. You started by creating and running an application locally. Using the configured AWS, you used Terraform to automate the deployment of the same application to the AWS ECS platform. I hope you found this guide helpful.
 
 {% include cta/cta1.html %}
 
@@ -643,4 +643,3 @@ In this tutorial, you've learned how to use Terraform to automate your cloud inf
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
