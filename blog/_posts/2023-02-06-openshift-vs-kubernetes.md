@@ -29,28 +29,27 @@ You can think of OpenShift as a **managed service for Kubernetes**. It comes wit
 
 ## What Are the Advantages of Kubernetes and OpenShift?
 
- 
-![](https://imgur.com/a/pLeCJbp)
+![Advantages]({{site.images}}{{page.slug}}/a/pLeCJbp)\
 
-Let’s take a look at some of the most important features of Kubernetes and OpenShift. We’ll also try to understand where each tool really shines. 
+Let's take a look at some of the most important features of Kubernetes and OpenShift. We'll also try to understand where each tool really shines.
 
 ### Ease of Use and Deployment
 
-In terms of user experience, OpenShift has an edge with a login-based console to manage cluster roles and projects visually. Kubernetes, in contrast, Kubernetes requires manual installation  of the dashboard or a third-party tool, which may be challenging if you’re just getting started. In addition, to create a login portal in Kubernetes, you need to create bearer tokens, but OpenShift includes these by default.
+In terms of user experience, OpenShift has an edge with a login-based console to manage cluster roles and projects visually. Kubernetes, in contrast, Kubernetes requires manual installation of the dashboard or a third-party tool, which may be challenging if you're just getting started. In addition, to create a login portal in Kubernetes, you need to create bearer tokens, but OpenShift includes these by default.
 
-![OpenShift Login-Based Console](https://i.imgur.com/DqlBAhN.png)
+![OpenShift Login-Based Console]({{site.images}}{{page.slug}}/DqlBAhN.png)
 
 #### Using the OpenShift GUI for Deployment, Monitoring, and More
 
-The powerful graphical interface OpenShift offers lets you perform all kinds of tasks, like deployment, scaling, upgrading, and monitoring. OpenShift also has an opinionated approach where it takes the application code and deploys it in your cluster by lifting all the deployment and integration logic. This lifting process is automated via the OpenShift CLI or the GUI and requires very little input from the application developer (mostly in the form of small config files or values). 
+The powerful graphical interface OpenShift offers lets you perform all kinds of tasks, like deployment, scaling, upgrading, and monitoring. OpenShift also has an opinionated approach where it takes the application code and deploys it in your cluster by lifting all the deployment and integration logic. This lifting process is automated via the OpenShift CLI or the GUI and requires very little input from the application developer (mostly in the form of small config files or values).
 
 The heavy lifting is currently supported for Node.js, Go, Ruby, PHP, Python, and Java. If you want to extend to other languages, you can deploy containers on the platform using container images and Kubernetes [manifests](https://kubernetes.io/docs/reference/glossary/?all=true#term-manifest).
 
-![Ways to Deploy Applications to OpenShift](https://i.imgur.com/mdaBFpM.png)
+![Ways to Deploy Applications to OpenShift]({{site.images}}{{page.slug}}/mdaBFpM.png)
 
-#### Deploying with Kubernetes
+#### Deploying With Kubernetes
 
-When using Kubernetes, you must run commands at the command-line interface to upgrade, deploy, and more. For deployment, you need to package your application in containers, then create manifest files, services, and other objects to run the application in your orchestrator. This requires you to write Dockerfiles and Kubernetes manifests,  create images, and then update them as the requirements change.
+When using Kubernetes, you must run commands at the command-line interface to upgrade, deploy, and more. For deployment, you need to package your application in containers, then create manifest files, services, and other objects to run the application in your orchestrator. This requires you to write Dockerfiles and Kubernetes manifests, create images, and then update them as the requirements change.
 
 While Kubernetes is a very powerful tool, OpenShift is more convenient for users who prefer GUIs.
 
@@ -58,14 +57,13 @@ While Kubernetes is a very powerful tool, OpenShift is more convenient for users
 
 OpenShift has continuous integration, continuous delivery (CI/CD) built into it with [Tekton](https://tekton.dev/docs), which allows building, testing, and deploying applications with the help of pipelines without a lot of configuration.
 
-Kubernetes does not offer built-in support. However, it does have support from the CNCF ecosystem to facilitate deployments to it with the help of tools like [ArgoCD](https://github.com/argoproj/argo-cd/), which integrates seamlessly. For CI, you can integrate Tekton manually or [choose from a range of open-source or commercial tools](https://earthly.dev/blog/ci-comparison/). 
+Kubernetes does not offer built-in support. However, it does have support from the CNCF ecosystem to facilitate deployments to it with the help of tools like [ArgoCD](https://github.com/argoproj/argo-cd/), which integrates seamlessly. For CI, you can integrate Tekton manually or [choose from a range of open-source or commercial tools](https://earthly.dev/blog/ci-comparison/).
 
 To sum up: OpenShift is easier to use because of its out-of-the-box support for CI/CD.
 
 ### Installation
 
- 
-![](https://imgur.com/a/8yoYITV)
+![Installation]({{site.images}}{{page.slug}}/a/8yoYITV)\
 
 Kubernetes is available for all major platforms: from Windows (via virtualization) to any Linux distribution. You can install tools like [minikube](https://minikube.sigs.k8s.io/docs/), [kubeadm](https://kubernetes.io/docs/reference/setup-tools/kubeadm/), and [kind](https://kind.sigs.k8s.io) that can help you easily bootstrap clusters and test deployments. For production use cases, you can try [K3s](https://k3s.io), which is a lightweight Kubernetes distribution that is easy to install and maintain.
 
@@ -73,7 +71,7 @@ For production, managed services are recommended. All the major providers have a
 
 OpenShift is based on [Red Hat Enterprise Linux OS](https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux) or [CoreOS](https://getfedora.org/coreos?stream=stable), and other distros are not supported. Depending on your version of OpenShift, you must choose an underlying operating system.
 
-If you want to install OpenShift 3, you can use either Red Hat Atomic or Red Hat Enterprise Linux (RHEL). Bootstrapping the installation is possible and can be done with [openshift-ansible](https://github.com/openshift/openshift-ansible). However, the installation is complicated. 
+If you want to install OpenShift 3, you can use either Red Hat Atomic or Red Hat Enterprise Linux (RHEL). Bootstrapping the installation is possible and can be done with [openshift-ansible](https://github.com/openshift/openshift-ansible). However, the installation is complicated.
 
 For OpenShift 4, CoreOS is a requirement. You need to perform a bare metal installation or use a simplified installer from the provider, which is only limited to [vSphere](https://www.vmware.com/products/vsphere.html) and [Amazon Web Services (AWS)](https://aws.amazon.com/).
 
@@ -81,7 +79,7 @@ Lastly, the open source version of OpenShift or [OKD](https://www.okd.io/) needs
 
 ## How Do Kubernetes and OpenShift Differ?
 
-There are also a few key differences between OpenShift and Kubernetes—in addition to those outlined when discussing the advantages. 
+There are also a few key differences between OpenShift and Kubernetes—in addition to those outlined when discussing the advantages.
 
 ### Commercial Products
 
@@ -101,16 +99,15 @@ In essence: **OpenShift is Kubernetes coupled with extra features that make it e
 
 ### Security
 
- 
-![](https://imgur.com/a/aNgUHYz)
+![Security]({{site.images}}{{page.slug}}/a/aNgUHYz)\
 
-OpenShift has stricter security features that help it position itself as an enterprise-ready and secure Kubernetes distribution. While you can implement most of these features in Kubernetes manually (to some extent), it takes more effort when compared to what OpenShift offers out of the box. 
+OpenShift has stricter security features that help it position itself as an enterprise-ready and secure Kubernetes distribution. While you can implement most of these features in Kubernetes manually (to some extent), it takes more effort when compared to what OpenShift offers out of the box.
 
 In addition to reducing attack surfaces by limiting Linux distributions it can operate on, OpenShift also does the following to keep your apps secure:
 
 #### Stringent Policies For Containers and Images
 
-OpenShift is picky when it comes to running container images hosted on public registries. There are a lot of official images you can't run directly in DockerHub, and running a single Docker image is often restricted. 
+OpenShift is picky when it comes to running container images hosted on public registries. There are a lot of official images you can't run directly in DockerHub, and running a single Docker image is often restricted.
 
 OpenShift provides container registries such as [Quay](https://www.redhat.com/en/technologies/cloud-computing/quay)), where applications are regularly scanned for vulnerability and signed for identification. Additionally, OpenShift prevents containers from running as root by default. In contrast, Kubernetes lacks these features out of the box.
 
@@ -120,9 +117,9 @@ OpenShift encrypts all application traffic using its [Service Mesh](https://www.
 
 #### Secure Platform Management
 
-In OpenShift, it’s easy to set up authentication and authorization for managing your clusters. It offers an integrated server for set up, whereas in Kubernetes, you need to fiddle with multiple [Role-Based Access Control](https://earthly.dev/blog/guide-rolebased-ctrl/) and network policies to get the configuration you want. 
+In OpenShift, it's easy to set up authentication and authorization for managing your clusters. It offers an integrated server for set up, whereas in Kubernetes, you need to fiddle with multiple [Role-Based Access Control](https://earthly.dev/blog/guide-rolebased-ctrl/) and network policies to get the configuration you want.
 
-OpenShift and Kubernetes both support granular deployment policies, but OpenShift makes it easier for you to manage quotas and access protection through its UI and CLI. In Kubernetes, you have to manually set them up. 
+OpenShift and Kubernetes both support granular deployment policies, but OpenShift makes it easier for you to manage quotas and access protection through its UI and CLI. In Kubernetes, you have to manually set them up.
 
 #### Security Context Constraints
 
@@ -136,13 +133,13 @@ The process of enabling authentication or authorization requires you to engage i
 
 Kubernetes is a powerful container orchestrator that can easily handle hundreds to thousands of nodes. As such, you will update your Kubernetes version from time to time to add new features or fix bugs. This can be done easily using [kubeadm](https://earthly.dev/blog/k8cluster-mnging-blding-kubeadm/) or by accessing the managed dashboard from your cloud provider. The upgrades can occur simultaneously, and you should ensure that you have backups and replicas of control plane components for high availability and disaster recovery.
 
-In contrast, OpenShift lacks in this area and is still in an experimental stage with major version upgrades. Upgrades are still manual and can be done by running the installation scripts again with a new version. Minor upgrades are relatively simpler with the help of [CLI](https://docs.openshift.com/container-platform/4.11/updating/updating-cluster-cli.html) or [webconsole](https://docs.openshift.com/container-platform/4.11/updating/updating-cluster-within-minor.html). But the process is a bit more involved in comparison to Kubernetes upgrades.
+In contrast, OpenShift lacks in this area and is still in an experimental stage with major version upgrades. Upgrades are still manual and can be done by running the installation scripts again with a new version. Minor upgrades are relatively simpler with the help of [CLI](https://docs.openshift.com/container-platform/4.11/updating/updating-cluster-cli.html) or [web console](https://docs.openshift.com/container-platform/4.11/updating/updating-cluster-within-minor.html). But the process is a bit more involved in comparison to Kubernetes upgrades.
 
 ## Conclusion
 
-Kubernetes offers a lot of flexibility to customize deployments and it has the whole [CNCF landscape](https://landscape.cncf.io/) integrated to support any pitfalls. On the other hand, OpenShift is a secure, ready-to-deploy, and preconfigured flavor of Kubernetes, and it charges a premium for its features with a wide range of ready-to-use internal integrations. 
+Kubernetes offers a lot of flexibility to customize deployments and it has the whole [CNCF landscape](https://landscape.cncf.io/) integrated to support any pitfalls. On the other hand, OpenShift is a secure, ready-to-deploy, and preconfigured flavor of Kubernetes, and it charges a premium for its features with a wide range of ready-to-use internal integrations.
 
-Due to its additional features, OpenShift may be a better option for those who are new to container orchestration, who want a simpler adoption path, or who are already familiar with the Red Hat ecosystem. 
+Due to its additional features, OpenShift may be a better option for those who are new to container orchestration, who want a simpler adoption path, or who are already familiar with the Red Hat ecosystem.
 
 Choosing the right container orchestration tool would require factoring in the complexity of deployments, budget, and customization requirements amongst others. Kubernetes is a good choice when you want customization and have the resources to support it. Opting for OpenShift will be a great choice when you want to be on the cloud quickly and are willing to pay for it.
 
@@ -154,6 +151,5 @@ Choosing the right container orchestration tool would require factoring in the c
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
