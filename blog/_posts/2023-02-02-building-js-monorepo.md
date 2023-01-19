@@ -14,7 +14,7 @@ internal-links:
 
 Many engineers and organizations are beginning to adopt a monorepo architecture for their JavaScript projects, where a single repository contains multiple projects. However, ensuring that your pipelines run efficiently and that your builds are occurring in the right order are just a couple of the complexities that a monorepo introduces for your engineering team.
 
-A large JavaScript application has multiple modules and dependencies; a monorepo tool can manage these dependencies and improve scalability. Fortunately, using a dedicated tool for your monorepo system means you're not spending valuable time away from your core competencies to implement this system yourself.
+A large JavaScript application has [multiple modules](/blog/go-workspaces) and dependencies; a monorepo tool can manage these dependencies and improve scalability. Fortunately, using a dedicated tool for your monorepo system means you're not spending valuable time away from your core competencies to implement this system yourself.
 
 To help you determine what tool would work best for your project, let's compare five monorepo tools—Bazel, Gradle, Lage, Lerna, and Rush—according to their features, benefits, and drawbacks. We'll analyze factors like:
 
@@ -41,7 +41,7 @@ Some notable features and benefits of Bazel include:
 * **It's fast.** It's able to rebuild only necessary file changes by comparing them to previously cached build results. Bazel runs build operations locally by default but you can connect it to a cluster, which makes it even faster.
 * **It supports local caching of build results.** However, it also supports [remote caching](https://bazel.build/docs/remote-caching).
 * **It supports multiple [languages](https://bazel.build/rules).** Bazel also supports multiple platforms such as Linux, macOS, and Windows, for desktop, server, and mobile.
-* **It can handle large projects.** Bazel is reliable when it comes to scaling applications. According to its documentation, it can comfortably handle builds with thousands of source files.
+* **It can handle large projects.** [Bazel](/blog/bazel-build) is reliable when it comes to scaling applications. According to its documentation, it can comfortably handle builds with thousands of source files.
 * **It can execute a command on multiple devices while developing locally.** This is unlike other monorepo tools listed in this article.
 * **It supports visualization of dependencies between projects and tasks.**
 
@@ -158,8 +158,8 @@ Some of the drawbacks of Rush are:
 
 ## Conclusion
 
-These five common monorepo tools—Bazel, Gradle, Lage, Lerna, and Rush—all have their own features, benefits, and drawbacks for building JavaScript and TypeScript monorepos. The good news is that regardless of which one works best for your situation, you can still use [Earthly](https://earthly.dev/) with all of them.
+These five common monorepo tools—Bazel, Gradle, Lage, Lerna, and Rush—all have their own features, benefits, and drawbacks for building JavaScript and TypeScript [monorepos](/blog/go-workspaces). The good news is that regardless of which one works best for your situation, you can still use [Earthly](https://earthly.dev/) with all of them.
 
-As an open source CI/CD framework, Earthly allows you to develop locally and run anywhere. Builds are containerized and language agnostic, and tasks are executed in parallel, which makes it fast. Check out Earthly's detailed [documentation](https://docs.earthly.dev/) to see how you can get started with it easily.
+As an open source [CI/CD](/blog/ci-vs-cd) framework, Earthly allows you to develop locally and run anywhere. Builds are containerized and language agnostic, and tasks are executed in parallel, which makes it fast. Check out Earthly's detailed [documentation](https://docs.earthly.dev/) to see how you can get started with it easily.
 
 {% include cta/cta1.html %}
