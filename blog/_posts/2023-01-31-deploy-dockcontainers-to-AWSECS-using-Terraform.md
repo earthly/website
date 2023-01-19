@@ -54,7 +54,7 @@ Proceed to the next step and create a user. This will create a user access key I
 
 Launch your command line and run the following command:
 
-~~~
+~~~{.bash caption=">_"}
 aws configure
 ~~~
 
@@ -77,25 +77,25 @@ To demonstrate how to automate tasks using [Terraform](/blog/kubernetes-terrafor
 
 Navigate to your directory of choice and run the following command to clone the demo Node.js application from GitHub.
 
-~~~
+~~~{.bash caption=">_"}
 git clone https://github.com/Rose-stack/demo_node_app.git
 ~~~
 
 A `demo_node_app` directory containing your application will be created. You can `cd` into this newly created folder:
 
-~~~
+~~~{.bash caption=">_"}
 cd demo_node_app
 ~~~
 
 Go ahead and run the following command to install the needed dependencies for this application:
 
-~~~
+~~~{.bash caption=">_"}
 git clone https://github.com/Rose-stack/demo_node_app.git
 ~~~
 
 To test this application, run this command:
 
-~~~
+~~~{.bash caption=">_"}
 node index.js
 ~~~
 
@@ -120,21 +120,21 @@ First, create a `Dockerfile` file in the `demo_node_app` directory. Inside this 
 
 A [DockerHub](https://hub.docker.com/_/node) image to run Node.js:
 
-~~~
+~~~{.bash caption=">_"}
 # Pull the Node.js image
 FROM node:18-alpine
 ~~~
 
 Create a directory to host the application on the Docker:
 
-~~~
+~~~{.bash caption=">_"}
 # Create a Docker working directory
 WORKDIR /app
 ~~~
 
 Copy all the dependency files:
 
-~~~
+~~~{.bash caption=">_"}
 # Copy package.json and package-lock.json dependencies files 
 COPY package*.json ./
 
@@ -142,21 +142,21 @@ COPY package*.json ./
 
 Install the application's dependencies:
 
-~~~
+~~~{.bash caption=">_"}
 # Install dependencies inside Docker
 RUN npm install
 ~~~
 
 Copy the application files to the Docker directory:
 
-~~~
+~~~{.bash caption=">_"}
 # Copy the application source code
 COPY . .
 ~~~
 
 Add a port number to expose the Docker image:
 
-~~~
+~~~{.bash caption=">_"}
 # Port number to expose the Node.js app outside of Docker
 EXPOSE 5000
 
@@ -164,7 +164,7 @@ EXPOSE 5000
 
 Finally, add the command to run the application:
 
-~~~
+~~~{.bash caption=">_"}
 # Command to run the application
 CMD ["node", "index.js"]
 ~~~
@@ -173,13 +173,13 @@ Note: Always ensure you have the right Dockerfile for running your application a
 
 Run the following command to build the image:
 
-~~~
+~~~{.bash caption=">_"}
 docker build -t sample-app .
 ~~~
 
 Finally, expose a container to run the image:
 
-~~~
+~~~{.bash caption=">_"}
 docker run -it -p 5000:5000 sample-app
 ~~~
 
@@ -197,7 +197,7 @@ First, you need the [Terraform AWS provider](https://registry.terraform.io/provi
 
 Here you are using AWS. Therefore, inside the `main.tf` file, **add the AWS provider** as follows:
 
-~~~
+~~~{ caption="main.tf"}
 # main.tf
 terraform {
   required_providers {
@@ -211,10 +211,11 @@ terraform {
 
 You can always check the latest [AWS provider](https://registry.terraform.io/providers/hashicorp/aws/latest/docs). Go ahead and provide the **AWS configuration credentials** to allow Terraform to connect to AWS:
 
-~~~
+~~~{.bash caption="main.tf"}
 # main.tf
 provider "aws" {
-  region  = "us-east-1" # The region where the environment is going to be deployed # Use your own region here
+  region  = "us-east-1" #The region where the environment 
+  #is going to be deployed # Use your own region here
   access_key = "enter_access_key_here" # Enter AWS IAM 
   secret_key = "enter_secret_key_here" # Enter AWS IAM 
 }
@@ -222,7 +223,7 @@ provider "aws" {
 
 Finally, create an ECR using Terraform as follows:
 
-~~~
+~~~{.bash caption="main.tf"}
 # main.tf
 resource "aws_ecr_repository" "app_ecr_repo" {
   name = "app-repo"
@@ -233,7 +234,7 @@ This way, Terraform will communicate with AWS and create an ECR named `app-repo`
 
 Start by running the `terraform init` command. This should be the first command executed after creating a new Terraform configuration. It creates the Terraform configuration files in your working directory, `demo_node_app`.
 
-~~~
+~~~{.bash caption=">_"}
 terraform init
 ~~~
 
@@ -245,7 +246,7 @@ The message **Terraform has been successfully initialized!** should be displayed
 
 To create an ECR, run the `plan` command; you'll be able to preview the above Terraform configuration file and the resource that will be created:
 
-~~~
+~~~{.bash caption=">_"}
 terraform plan
 ~~~
 
@@ -255,7 +256,7 @@ terraform plan
 
 Terraform plan will let you see the resource that will be added, changed, or deployed to AWS. In this case, one resource, `aws_ecr_repository.app_ecr_repo`, will be added to AWS. To provision the displayed configuration infrastructure on AWS, apply the above execution plan:
 
-~~~
+~~~{.bash caption=">_"}
 terraform apply
 ~~~
 
@@ -283,27 +284,28 @@ A pop-up containing the push commands for the repository will be launched. Next,
 Ensure you are running the following command as copied from your AWS **View push commands** section.
 </div>
 
-~~~
-aws ecr get-login-password --region REGION | docker login --username AWS --password-stdin ID.dkr.ecr.REGION.amazonaws.com 
+~~~{.bash caption=">_"}
+aws ecr get-login-password --region REGION | docker login \
+--username AWS --password-stdin ID.dkr.ecr.REGION.amazonaws.com 
 ~~~
 
 Copy your authentication token and run command in the directory that contains the application's Dockerfile. If the authentication is successful, a **Login Succeeded** message should be logged onto your terminal.
 
 Now, run the Docker build command to build the [container](/blog/docker-slim) from the local or working project directory:
 
-~~~
+~~~{.bash caption=">_"}
 docker build -t app-repo .
 ~~~
 
 After building, run the following [docker tag](https://docs.docker.com/engine/reference/commandline/tag/) command to tag the image. Doing so gives a tag to the image that you'll use to push the image to the repository.
 
-~~~
+~~~{.bash caption=">_"}
 docker tag app-repo:latest ID.dkr.REGION.amazonaws.com/app-repo:latest  
 ~~~
 
 Once tagged, run the [docker push](https://docs.docker.com/engine/reference/commandline/push/) command to push and publish the image to the ECR repository.  
 
-~~~
+~~~{.bash caption=">_"}
 docker push ID.dkr.REGION.amazonaws.com/app-repo:latest
 ~~~
 
@@ -320,7 +322,7 @@ Finally, refresh the repository's page to verify you've successfully pushed the 
 So far, you've created a repository and deployed the image. But whenever you want to launch, you'll need a **target**. A cluster acts as the container target. It takes a task into the cluster configuration and runs that task within the cluster.
 The ECS agent communicates with the ECS cluster and receives requests to launch the container. To create a cluster where you'll run your task, add the following configurations to your `main.tf` file:
 
-~~~
+~~~{caption="main.tf"}
 # main.tf
 resource "aws_ecs_cluster" "my_cluster" {
   name = "app-cluster" # Name your cluster here
@@ -329,7 +331,7 @@ resource "aws_ecs_cluster" "my_cluster" {
 
 This will instruct ECS to create a new cluster named `app-cluster`. Re-run the apply command to add these changes to AWS:
 
-~~~
+~~~{.bash caption=">_"}
 terraform apply
 ~~~
 
@@ -358,7 +360,7 @@ In the next steps, you'll write the configuration that a task requires to spin u
 
 You need to build a task definition to get the application ready to operate on ECS. The task specification is a text file in JSON format that lists one or more resources that make up your container. Using Task definition JSON format, provide the container specifications as follows:
 
-~~~
+~~~{ caption="main.tf"}
 # main.tf
 resource "aws_ecs_task_definition" "app_task" {
   family                   = "app-first-task" # Name your task
@@ -391,7 +393,7 @@ As described in the above config block, Terraform will create a task named `app-
 
 Creating a task definition requires `ecsTaskExecutionRole` to be added to your IAM. The above task definition needs this role, and it is specified as `aws_iam_role.ecsTaskExecutionRole.arn`. In the next step, create a resource to execute this role as follows:
 
-~~~
+~~~{ caption="main.tf"}
 # main.tf
 resource "aws_iam_role" "ecsTaskExecutionRole" {
   name               = "ecsTaskExecutionRole"
@@ -461,7 +463,7 @@ First, you need to create a [Virtual Private Cloud Module (VPC)](https://registr
 
 Go ahead and create a default [VPC](https://earthly.dev/blog/aws-networks/#vpcs) and [subnets](https://earthly.dev/blog/aws-networks/#subnets) information for your AWS availability zones.
 
-~~~
+~~~{ caption="main.tf"}
 # main.tf
 # Provide a reference to your default VPC
 resource "aws_default_vpc" "default_vpc" {
@@ -483,7 +485,7 @@ resource "aws_default_subnet" "default_subnet_b" {
 
 Next, create a security group that will route the HTTP traffic using a load balancer. Go ahead and implement a load balancer as follows:
 
-~~~
+~~~{ caption="main.tf"}
 # main.tf
 resource "aws_alb" "application_load_balancer" {
   name               = "load-balancer-dev" #load balancer name
@@ -503,7 +505,7 @@ The above configuration creates a load balancer that will distribute the workloa
 
 The next important part of allowing HTTP traffic to access the [ECS](/blog/how-to-setup-and-use-amazons-elastic-container-registry) cluster is to create a **security group**. This will be crucial for accessing the application later in this guide. Go ahead and add the security group for the load balancer as follows:
 
-~~~
+~~~{ caption="main.tf"}
 # main.tf
 # Create a security group for the load balancer:
 resource "aws_security_group" "load_balancer_security_group" {
@@ -525,7 +527,7 @@ resource "aws_security_group" "load_balancer_security_group" {
 
 Configure the load balancer with the VPC networking we created earlier. This will distribute the balancer traffic to the available zone:
 
-~~~
+~~~{ caption="main.tf"}
 # main.tf
 resource "aws_lb_target_group" "target_group" {
   name        = "target-group"
@@ -550,11 +552,11 @@ resource "aws_lb_listener" "listener" {
 
 The last step is to create an ECS Service and its details to maintain task definition in an Amazon ECS cluster. The service will run the [cluster, task, and Fargate](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/AWS_Fargate.html) behind the created load balancer to distribute traffic across the containers that are associated with the service. You can achieve this with the following block:
 
-~~~
+~~~{ caption="main.tf"}
 # main.tf
 resource "aws_ecs_service" "app_service" {
-  name            = "app-first-service"                             # Name the service
-  cluster         = "${aws_ecs_cluster.my_cluster.id}"             # Reference the created Cluster
+  name            = "app-first-service"     # Name the service
+  cluster         = "${aws_ecs_cluster.my_cluster.id}"   # Reference the created Cluster
   task_definition = "${aws_ecs_task_definition.app_task.arn}" # Reference the task that the service will spin up
   launch_type     = "FARGATE"
   desired_count   = 3 # Set up the number of containers to 3
@@ -567,7 +569,7 @@ resource "aws_ecs_service" "app_service" {
 
   network_configuration {
     subnets          = ["${aws_default_subnet.default_subnet_a.id}", "${aws_default_subnet.default_subnet_b.id}"]
-    assign_public_ip = true                                                # Provide the containers with public IPs
+    assign_public_ip = true     # Provide the containers with public IPs
     security_groups  = ["${aws_security_group.service_security_group.id}"] # Set up the security group
   }
 }
@@ -575,7 +577,7 @@ resource "aws_ecs_service" "app_service" {
 
 To access the ECS service over HTTP while ensuring the VPC is more secure, create security groups that will only allow the traffic from the created load balancer. To do so, create a `aws_security_group.service_security_group` resource as follows:
 
-~~~
+~~~{ caption="main.tf"}
 # main.tf
 resource "aws_security_group" "service_security_group" {
   ingress {
@@ -597,7 +599,7 @@ resource "aws_security_group" "service_security_group" {
 
 Additionally, add an output config that will extract the load balancer URL value from the state file and log it onto the terminal.
 
-~~~
+~~~{ caption="main.tf"}
 # main.tf
 #Log the load balancer app URL
 output "app_url" {
@@ -673,7 +675,7 @@ Note that you can get a **503 Service Temporarily Unavailable** if you test your
 
 To destroy this dev infrastructure and avoid AWS additional costs, run the following command:
 
-~~~
+~~~{.bash caption=">_"}
 terraform destroy
 ~~~
 
@@ -682,7 +684,3 @@ terraform destroy
 In this tutorial, you've learned how to use [Terraform](/blog/kubernetes-terraform) to automate your cloud infrastructure tasks. You started by creating and running an application locally. Using the configured AWS, you used Terraform to automate the deployment of the same application to the AWS ECS platform. I hope you found this guide helpful.
 
 {% include cta/cta1.html %}
-
-## Outside Article Checklist
-
-- [ ] Create header image in Canva
