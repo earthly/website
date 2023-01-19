@@ -23,7 +23,7 @@ Kubernetes is a container orchestrator project managed by the [Cloud Native Comp
 
 ### What Is OpenShift?
 
-In contrast, Red Hat OpenShift is an open-source Platform as a Service (PaaS) and container orchestration engine that extends Kubernetes with capabilities. These include seamless CI/CD, built-in image repository, and various commands and routines that help accelerate application development and deployment.
+In contrast, Red Hat OpenShift is an open-source Platform as a Service (PaaS) and container orchestration engine that extends Kubernetes with capabilities. These include seamless [CI/CD](/blog/ci-vs-cd), built-in image repository, and various commands and routines that help accelerate application development and [deployment](/blog/deployment-strategies).
 
 You can think of OpenShift as a **managed service for Kubernetes**. It comes with additional features that help it to be more streamlined, user friendly, and secure by default. These features make it easy for large-scale enterprises to develop, host, and scale applications in a cloud environment.
 
@@ -41,7 +41,7 @@ In terms of user experience, OpenShift has an edge with a login-based console to
 
 #### Using the OpenShift GUI for Deployment, Monitoring, and More
 
-The powerful graphical interface OpenShift offers lets you perform all kinds of tasks, like deployment, scaling, upgrading, and monitoring. OpenShift also has an opinionated approach where it takes the application code and deploys it in your cluster by lifting all the deployment and integration logic. This lifting process is automated via the OpenShift CLI or the GUI and requires very little input from the application developer (mostly in the form of small config files or values).
+The powerful graphical interface OpenShift offers lets you perform all kinds of tasks, like [deployment](/blog/deployment-strategies), scaling, upgrading, and monitoring. OpenShift also has an opinionated approach where it takes the application code and deploys it in your cluster by lifting all the deployment and integration logic. This lifting process is automated via the OpenShift CLI or the GUI and requires very little input from the application developer (mostly in the form of small config files or values).
 
 The heavy lifting is currently supported for Node.js, Go, Ruby, PHP, Python, and Java. If you want to extend to other languages, you can deploy containers on the platform using container images and Kubernetes [manifests](https://kubernetes.io/docs/reference/glossary/?all=true#term-manifest).
 
@@ -87,7 +87,7 @@ OpenShift is available in different editions and was created for enterprises loo
 
 The [OpenShift Container Platform](https://www.redhat.com/en/technologies/cloud-computing/openshift/container-platform) is an enterprise-ready application platform that helps developers develop and deploy their applications on virtually any infrastructure.
 
-[Red Hat OpenShift Online](https://access.redhat.com/products/openshift-online-red-hat) is a cloud-based, self-service application PaaS. The other one is [OpenShift Dedicated](https://www.redhat.com/en/technologies/cloud-computing/openshift/dedicated), a managed service that provides a single-tenant, isolated deployment of the OpenShift Container Platform.
+[Red Hat OpenShift Online](https://access.redhat.com/products/openshift-online-red-hat) is a cloud-based, self-service application PaaS. The other one is [OpenShift Dedicated](https://www.redhat.com/en/technologies/cloud-computing/openshift/dedicated), a managed service that provides a single-tenant, isolated deployment of the OpenShift [Container](/blog/docker-slim) Platform.
 
 [OpenShift Origin](https://cloud.redhat.com/blog/openshift-ecosystem-get-started-openshift-origin-gitlab) is the only free offering from the provider that you can use and self host. This can also be used to test the platform locally.
 
@@ -107,7 +107,7 @@ In addition to reducing attack surfaces by limiting Linux distributions it can o
 
 #### Stringent Policies For Containers and Images
 
-OpenShift is picky when it comes to running container images hosted on public registries. There are a lot of official images you can't run directly in DockerHub, and running a single Docker image is often restricted.
+OpenShift is picky when it comes to running container images hosted on public registries. There are a lot of official images you can't run directly in DockerHub, and running a single [Docker](/blog/rails-with-docker) image is often restricted.
 
 OpenShift provides container registries such as [Quay](https://www.redhat.com/en/technologies/cloud-computing/quay)), where applications are regularly scanned for vulnerability and signed for identification. Additionally, OpenShift prevents containers from running as root by default. In contrast, Kubernetes lacks these features out of the box.
 
@@ -152,4 +152,3 @@ Choosing the right container orchestration tool would require factoring in the c
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
