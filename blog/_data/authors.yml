@@ -358,3 +358,7 @@ Paul Ibeabuchi:
     name    : "Paul Ibeabuchi"
     bio     : "I'm a frontend engineer with several years' experience in JavaScript, React, HTML5, CSS3, and other technologies. I am also skilled with UI designs using tools such as Figma, Adobe XD, and Adobe Photoshop. I love to write content about web technologies."
     avatar  : "/assets/images/authors/paul.jpg"
+Antonello Zanini:
+    name    : "Antonello Zanini"
+    bio     : "I'm a software engineer, but I prefer to call myself a Technology Bishop. Spreading knowledge through writing is my mission."
+    avatar  : "/assets/images/authors/antonello.jpg"

@@ -69,3 +69,7 @@ multiport
 Spack
 Conda
 ninjaception
+
+precompiling
+eslint
+utils
