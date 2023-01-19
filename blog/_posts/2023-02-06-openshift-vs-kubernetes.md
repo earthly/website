@@ -146,6 +146,8 @@ Due to its additional features, OpenShift may be a better option for those who a
 
 Choosing the right container orchestration tool would require factoring in the complexity of deployments, budget, and customization requirements amongst others. Kubernetes is a good choice when you want customization and have the resources to support it. Opting for OpenShift will be a great choice when you want to be on the cloud quickly and are willing to pay for it.
 
+{% include cta/cta1.html %}
+
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
@@ -155,4 +157,3 @@ Choosing the right container orchestration tool would require factoring in the c
 - [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
