@@ -29,7 +29,7 @@ To follow along with this tutorial, you need to have the following installed in 
 - [PostgreSQL](https://www.postgresql.org/download/) and [Python 3.6 or a later version](https://www.python.org/downloads/)
 - Psycopg2, the Postgres connector for Python. It's available as a PyPI package that you can install using pip:
 
-~~~
+~~~{.bash caption=">_"}
 pip3 install psycopg2
 ~~~
 
@@ -58,7 +58,7 @@ After you've installed the psycopg2 library, you can import it into your working
 
 To connect to a database, you can use the `connect()` function from psycopg2. The `connect()` function takes in the information needed to connect to the database, such as the name of the database, username, and password, as keyword arguments. It returns a connection object if the connection succeeds. You can use the `connect()` function as shown:
 
-~~~
+~~~{.python caption="main.py"}
 # psycopg2-tutorial/main.py
 
 import psycopg2
@@ -98,7 +98,7 @@ If [TOML](https://toml.io/en/) is your preferred config file format, you can use
 
 A typical config file consists of multiple sections, with each section having a set of key-value pairs. The keys and values are separated by a `:` or `=`. Here's the general structure of a config file with one section and `n` key-value pairs:
 
-~~~
+~~~{.python caption="main.py"}
 [section-name]
 key1=value1
 key2=value2
@@ -110,7 +110,7 @@ keyn=valuen
 
 Let's create the config file `db_info.ini` that stores the details required to connect to the PostgreSQL database. The names of the keyword arguments, `dbname`, `user`, `password`, `host`, and `port`, should be the keys. And the values used for these arguments in the `connect()` function call should be the values in the config file:
 
-~~~
+~~~{ caption="db_info.ini"}
 # psycopg2-tutorial/db_info.ini
 
 [postgres-sample-db]
@@ -129,7 +129,7 @@ We'll define helper functions in separate modules and import them inside the `ma
 
 Let's create `db_config.py` containing the definition of `get_db_info()`, a function that parses the config file and returns the info we need to connect to the database.
 
-~~~
+~~~{.python caption="db_config.py"}
 # psycopg2-tutorial/db_config.py
 
 from configparser import ConfigParser
@@ -157,7 +157,7 @@ Now we do the following inside `main.py`:
 - Call the `get_db_info()` function with the correct arguments and store the returned dictionary in `db_info`, and
 - Use `db_info` in the call to the `connect()` function.
 
-~~~
+~~~{.python caption="main.py"}
 # psycopg2-tutorial/main.py
 
 import psycopg2
@@ -181,18 +181,20 @@ Suppose you enter an incorrect password (yeah, that happens often!). Open the co
 
 There'll be a runtime error. Focusing on the relevant information in the traceback, you'll see that an `OperationalError` exception is thrown as password authentication failed. Psycopg2 has an implementation of the `OperationalError` class.
 
-~~~
+~~~{ caption="db_info.ini"}
 Traceback (most recent call last):
 ...
-psycopg2.OperationalError: connection to server at "localhost" (::1), port 5432 failed: FATAL:  password authentication failed for user "postgres"
+psycopg2.OperationalError: connection to server at "localhost" (::1), \
+port 5432 failed: FATAL:  password authentication failed for user "postgres"
 ~~~
 
 What happens when you try connecting to a database that does not exist? For example, I updated the `dbname` field in the config file from `test` to `test1` (the `test1` database does not exist). It's an `OperationalError` exception (again).
 
-~~~
+~~~{ caption="db_info.ini"}
 Traceback (most recent call last):
 ...
-psycopg2.OperationalError: connection to server at "localhost" (::1), port 5432 failed: FATAL:  database "test1" does not exist
+psycopg2.OperationalError: connection to server at "localhost" (::1), \
+port 5432 failed: FATAL:  database "test1" does not exist
 ~~~
 
 You can run the script a few more times by changing one or more fields to invalid values. And you'll see that an `OperationalError` exception is thrown in all of the runs.
@@ -203,7 +205,7 @@ Therefore, such connection errors that arise due to incorrect or invalid values 
 
 Now, let's import the `OperationalError` class from psycopg2 and handle the `OperationalError` exception using Python's `try` and `except` blocks.
 
-~~~
+~~~{.python caption="main.py"}
 # psycopg2-tutorial/main.py
 
 import psycopg2
@@ -238,7 +240,7 @@ We know how to connect to a database and handle connection errors. After connect
 
 You can do this inside a `finally` block. The statements inside the `finally` block are *always* executed, regardless of whether or not the `try` block succeeds. So you may come up with the following:
 
-~~~
+~~~{.python caption="main.py"}
 from psycopg2 import OperationalError
 
 try:
@@ -258,7 +260,7 @@ To account for this, let's set `db_connection` to `None` initially and close the
 
 Putting it all together, here's our `main.py` file:
 
-~~~
+~~~{.python caption="main.py"}
 # psycopg2-tutorial/main.py
 
 import psycopg2
@@ -298,7 +300,7 @@ Cursors are analogous to file handlers. They let you query databases and fetch r
 
 To create a cursor object, you can call the `cursor()` method on the connection object.
 
-~~~
+~~~{.python caption="main.py"}
 db_cursor = db_connection.cursor()
 ~~~
 
@@ -310,7 +312,7 @@ In the `test` database, let's create a table, `people`. Each record in the table
 
 To execute the query, call the `execute()` method on the cursor object, `db_cursor`, and pass in the query string, `create_table`.
 
-~~~
+~~~{.python caption="main.py"}
 create_table = '''CREATE TABLE people(
                           id SERIAL PRIMARY KEY,
                           name varchar(50) NOT NULL,
@@ -321,8 +323,9 @@ db_cursor.execute(create_table)
 
 After creating the table, let's insert a record: *Jane Lee* who works as a *Rust programmer* in the fictional city of *Rustmore*.
 
-~~~
-insert_record = "INSERT INTO people (name,city,profession) VALUES (%s, %s, %s);"
+~~~{.python caption="main.py"}
+insert_record = "INSERT INTO people (name,city,profession) \
+VALUES (%s, %s, %s);"
 insert_value = ('Jane Lee','Rustmore','Rust programmer')
 db_cursor.execute(insert_record, insert_value)
 ~~~
@@ -337,7 +340,7 @@ Now run `main.py`. The script will run without errors. However, if you look up t
 
 To do so you can either call the `commit()` method on the connection object or set the `autocommit` attribute of the connection object to `True`.
 
-~~~
+~~~{.python caption="main.py"}
 db_connection.autocommit = True
 ~~~
 
@@ -349,7 +352,7 @@ In the `test` database, we now have a table named `people` containing *only one*
 
 The `fake_data.py` file contains the `generate_fake_data()` function that'll return a list of (name, city, job) tuples. After instantiating a Faker object, I've set the seed for reproducibility. Without the seed, you'll get a different set of records every time you run the script.
 
-~~~
+~~~{.python caption="fake_data.py"}
 # psycopg2-tutorial/fake_data.py
 
 from faker import Faker
@@ -370,10 +373,11 @@ Inside the `main.py` file, import `generate_fake_data` from the `fake_data` modu
 
 Here, `records` is a tuple of records. We can loop through it and insert the records into the table by calling the `execute()` method on `db_cursor`.
 
-~~~
+~~~{.python caption="fake_data.py"}
 from fake_data import generate_fake_data
-records = tuple(generate_fake_data(100)) # cast into a tuple for immutability
-insert_record = "INSERT INTO people (name,city,profession) VALUES (%s, %s, %s);"
+records = tuple(generate_fake_data(100)) #cast into a tuple for immutability
+insert_record = "INSERT INTO people (name,city,profession)\
+VALUES (%s, %s, %s);"
 
 for record in records:
     db_cursor.execute(insert_record,record)
@@ -393,14 +397,14 @@ Executing the select query, `SELECT * FROM people;` returns all the records in t
 
 Calling the `fetchone()` method on `db_cursor` fetches the *next* record in the result.
 
-~~~
+~~~{.python caption="fake_data.py"}
 db_cursor.execute("SELECT * FROM people;")
 print(db_cursor.fetchone())
 ~~~
 
 As this is the first time we're fetching the record, it fetches the *first* record.
 
-~~~
+~~~{.python caption="Output"}
 (1, 'Jane Lee', 'Rustmore', 'Rust programmer')
 ~~~
 
@@ -408,19 +412,20 @@ As this is the first time we're fetching the record, it fetches the *first* reco
 
 The `fetchmany()` method takes in the number of records to fetch (`n`) and fetches the next `n` records from the result.
 
-~~~
+~~~{.python caption="fake_data.py"}
 for record in db_cursor.fetchmany(10):
 print(record)
 ~~~
 
 As we've mentioned 10 in the `fetchmany()` method call, we get the next 10 records: records in rows 2 to 11 in the people table.
 
-~~~
+~~~{.python caption="Output"}
 (2, 'Allison Hill', 'East Jill', 'Sports administrator')
 (3, 'Javier Johnson', 'East William', 'Aid worker')
 (4, 'Michelle Miles', 'Robinsonshire', 'Health physicist')
 (5, 'Abigail Shaffer', 'Petersonberg', 'Engineer, structural')
-(6, 'Gabrielle Davis', 'West Melanieview', 'Armed forces logistics/support/administrative officer')
+(6, 'Gabrielle Davis', 'West Melanieview', 'Armed forces logistics/ \
+support/administrative officer')
 (7, 'Kimberly Dudley', 'Millerport', 'Water engineer')
 (8, 'Heidi Lee', 'North Donnaport', 'Cartographer')
 (9, 'Sharon James', 'Reidstad', 'Designer, textile')
@@ -432,14 +437,14 @@ As we've mentioned 10 in the `fetchmany()` method call, we get the next 10 recor
 
 Calling the `fetchall()` method on the cursor object returns all the remaining records in the result.
 
-~~~
+~~~{.python caption="fake_data.py"}
 for record in db_cursor.fetchall():
 print(record)
 ~~~
 
 We've already fetched the first 11 records in the result. So `fetchall()` fetches all the remaining records.
 
-~~~
+~~~{.python caption="Output"}
 # output (truncated)
 (12, 'Andrew Stewart', 'Carlshire', 'International aid/development worker')
 (13, 'Jonathan Wilkerson', 'Thomasberg', 'Fine artist')
@@ -459,7 +464,7 @@ We've already fetched the first 11 records in the result. So `fetchall()` fetche
 
 From the cities in the table, I'd like to get the list of all cities that occur more than once.
 
-~~~
+~~~{.python caption="fake_data.py"}
 get_count ='''SELECT city, COUNT(*)
               FROM people
               GROUP BY city HAVING COUNT(*)>1;'''
@@ -469,7 +474,7 @@ print(db_cursor.fetchall())
 
 We see that 'Johnsonmouth' is the only city that appears more than once.
 
-~~~
+~~~{.python caption="Output"}
 # Output
 [('Johnsonmouth', 2)]
 
@@ -477,7 +482,7 @@ We see that 'Johnsonmouth' is the only city that appears more than once.
 
 Let's update both the occurrences of 'Johnsonmouth' to another fictional city, say, 'Mathville'.
 
-~~~
+~~~{.python caption="fake_data.py"}
 update_query = "UPDATE people SET city=%s WHERE city=%s"
 values = ('Mathville','Johnsonmouth')
 db_cursor.execute(update_query,values)
@@ -485,7 +490,7 @@ db_cursor.execute(update_query,values)
 
 Now let's delete the records where the `city` is 'Mathville'.
 
-~~~
+~~~{.python caption="fake_data.py"}
 delete_record = "DELETE FROM people WHERE city=%s;"
 record = ('Mathville',) # pass in as a tuple
 db_cursor.execute(delete_record,record)
@@ -509,7 +514,7 @@ In summary: you're not only trying to connect to the database and run a set of q
 
 Suppose you need to run `n` queries. If you implement error handling for each of the `n` queries, your script will look like this:
 
-~~~
+~~~{.python caption="main.py"}
 # all imports
 from psycopg2 import OperationalError
 
@@ -546,7 +551,7 @@ In general, context managers mitigate resource leakage and help in efficient res
 
 The connection and cursor objects we've used so far are both context managers. You can use them in `with` statements using the following general syntax:
 
-~~~
+~~~{.python caption="main2.py"}
 # psycopg2-tutorial/main2.py
 try:
     with psycopg2.connect(**db_info) as db_connection:
@@ -605,6 +610,4 @@ As a next step, you can add more tables to the database, define relationships am
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
+
