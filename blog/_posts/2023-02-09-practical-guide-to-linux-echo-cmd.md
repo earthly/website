@@ -3,7 +3,7 @@ title: "A Practical Guide To Linux Echo Command"
 categories:
   - Tutorials
 toc: true
-author: Adam
+author: Ubaydah Abdulwasiu
 
 internal-links:
  - just an example
@@ -449,7 +449,6 @@ The tutorial also explained the various scenarios in which the `echo` command ca
 
 ## Outside Article Checklist
 
-- [ ] Add in Author page
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
