@@ -6,7 +6,10 @@ toc: true
 author: Bala Priya C
 
 internal-links:
- - just an example
+ - Python
+ - Psycopg2
+ - PostgreSQL
+ - Context Managers
 ---
 
 Are you a Python programmer learning to work with PostgreSQL? If so, this guide on `psycopg2`, the PostgreSQL connector for Python, is for you. You can connect to PostgreSQL databases and run queries—all from within your Python script—using the `psycopg2` adapter.
@@ -601,9 +604,7 @@ As a next step, you can add more tables to the database, define relationships am
 
 ## Outside Article Checklist
 
-- [ ] Add in Author page
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Add keywords for internal links to front-matter
