@@ -33,13 +33,13 @@ Before we get started, you should know that you need a good understanding of dat
 
 From the command prompt, install Streamlit using pip by running the following command:
 
-~~~
+~~~{.bash caption=">_"}
 pip install streamlit 
 ~~~
 
 To check if the installation worked, create a new Python script in your editor, import streamlit under the alias `st`, and use the `write` function to print out some text. The `st.write()` function is used to display information like text, dataframes, or figures.
 
-~~~
+~~~{.bash caption=">_"}
 import streamlit as st
 st.write("Hello World!")
 st.write("Hello Streamlit!")
@@ -48,13 +48,17 @@ st.write("Hello Streamlit!")
 
 Run the app on your browser (in your command prompt, change the directory to the folder where your file is located) by running this command:
 
-~~~
+~~~{.bash caption=">_"}
 streamlit run file_name.py
 
 ~~~
 
 This will automatically open a tab in your browser.
- ![Streamlit Hello World Output ](https://res.cloudinary.com/barine/image/upload/v1669832373/Streamlit/hello.png)
+
+<div class="wide">
+![Streamlit Hello World Output]({{site.images}}{{page.slug}}/hello.png)\
+</div>
+
 If you get this output, your installation works and you are ready to use Streamlit.
 
 ## Plotting With Streamlit
@@ -68,7 +72,7 @@ Github](https://github.com/danielgrijalva/movie-stats).
 
 This dataset contains over 7000 movie entries—from the period 1986-2016—scraped from IMDb (Internet Movie Database). It lists movies of different genres and countries. I'll be using this dataset to create different interactive plots for this tutorial.
 
-~~~
+~~~{.python caption=""}
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -76,7 +80,7 @@ import matplotlib.pyplot as plt
 
 We use the pandas `read_csv()` function to read in the data into a dataframe.
 
-~~~
+~~~{.python caption=""}
 #read in the file
 movies_data = pd.read_csv("https://raw.githubusercontent.com/danielgrijalva/movie-stats/7c6a562377ab5c91bb80c405be50a0494ae8e582/movies.csv")
 ~~~
@@ -87,7 +91,7 @@ To generate a summary of the dataset and check for missing values and duplicates
 movies_data.info()
 ~~~
 
-~~~
+~~~{.python caption="Output"}
 #output
 <class 'pandas.core.frame.DataFrame'>
 RangeIndex: 7668 entries, 0 to 7667
@@ -114,11 +118,11 @@ dtypes: float64(5), int64(1), object(9)
 
 As seen, `movies_data.info()` gives a quick overview of our dataset. We can see that there are 7668 entries (rows) and a total of 15 columns.
 
-~~~
+~~~{.python caption=""}
 movies_data.duplicated()
 ~~~
 
-~~~
+~~~{.python caption="Output"}
 #output
 0       False
 1       False
@@ -136,11 +140,11 @@ Length: 7668, dtype: bool
 
 The method `movies_data.duplicated()` checks if there are any duplicates. All rows returned `False` which means there are no duplicates.
 
-~~~
+~~~{.python caption=""}
 movies_data.count()
 ~~~
 
-~~~
+~~~{.python caption="Output"}
 #output
 name        7668
 rating      7591
@@ -161,13 +165,13 @@ runtime     7664
 
 Calling the `count()` method on the dataframe: `movies_data.count()` returns the sum of all entries in a column. Columns with less than 7668 entries suggest missing values.
 
-~~~
+~~~{.python caption=""}
 movies_data.dropna()
 ~~~
 
 We dropped all columns with missing data using `movies_data.dropna()`. The output is a new dataframe. Next, we'll create a [Matplotlib](/blog/stop-using-pie-charts) bar chart that shows the average movie budget of movies in different genres.
 
-~~~
+~~~{.python caption=""}
 st.write("""
 Average Movie Budget, Grouped by Genre
 """)
@@ -179,23 +183,26 @@ avg_bud = avg_budget['budget']
 
 The `groupby` method groups data by categories using the columns of a dataset and applies a function to it. Here we group by the 'genre' and the 'budget'. And we apply the  `mean()` and the `round()` functions. The `mean()` function returns the average of a list of numbers while the `round()` function rounds up digits and returns a float. The `reset_index()` method resets the index of an updated dataframe; creating a new row index that starts at 0. Resetting indexes is important so [pandas](/blog/plotting-rainfall-data-with-python-and-matplotlib) can find the indexes of elements.
 
-~~~
+~~~{.python caption=""}
 fig = plt.figure(figsize = (19, 10))
 
 plt.bar(genre, avg_bud, color = 'maroon')
 plt.xlabel('genre')
 plt.ylabel('budget')
-plt.title('Matplotlib Bar Chart Showing the Average Budget of Movies in Each Genre')
+plt.title('Matplotlib Bar Chart Showing the Average \
+Budget of Movies in Each Genre')
 ~~~
 
 [Matplotlib](/blog/plotting-rainfall-data-with-python-and-matplotlib) has a function called `show()` that creates a figure object. In Streamlit, this line should be replaced with `st.pyplot(variable_name)` where `variable_name` is the variable of visualization.
 
-~~~
+~~~{.python caption=""}
 st.pyplot(fig)
 
 ~~~
 
- ![Matplotlib figure output](https://res.cloudinary.com/barine/image/upload/v1671375256/Streamlit/matplotlib.png)
+<div class="wide">
+![Matplotlib figure output]({{site.images}}{{page.slug}}/matplotlib.png)\
+</div>
 
 ## Layouts in Streamlit
 
@@ -209,16 +216,19 @@ Columns in Streamlit operate just as they do in documents and on web pages. They
 
 To create columns, simply assign them to the variables that match the number of columns you need. Here, `col1` and   `col2` are the variable names because we need two columns.
 
-~~~
+~~~{.python caption=""}
 col1, col2 = st.columns(2)
 col1.write('# This is Column 1')
 col2.write('# This is Column 2')
 ~~~
 
- ![Streamlit Even Columns](https://res.cloudinary.com/barine/image/upload/v1671375194/Streamlit/columns_of_same_size.png)
+<div class="wide">
+![Streamlit Even Columns]({{site.images}}{{page.slug}}/columns_of_same_size.png)\
+</div>
+
 We can as well create columns of different dimensions, where columns are of different sizes.  
 
-~~~
+~~~{.python caption=""}
 st.write('### Columns of different sizes')
 col1, col2, col3, col4 = st.columns([1,3,1,2])
 
@@ -228,7 +238,9 @@ col3.write('# This is Column 3')
 col4.write('# This is Column 4')
 ~~~
 
- ![Streamlit Columns of different sizes](https://res.cloudinary.com/barine/image/upload/v1671375189/Streamlit/columns_of_different_sizes.png)
+<div class="wide">
+![Streamlit Columns of different sizes]({{site.images}}{{page.slug}}/columns_of_different_sizes.png)\
+</div>
 
 ## Working With Widgets
 
@@ -252,7 +264,7 @@ Here's an overview of widgets used in this tutorial:
 
 To link data to a widget, we first convert the needed column to a unique list. This is important so only unique values are selected:
 
-~~~
+~~~{.python caption=""}
 # Creating sidebar widget unique values from our movies dataset
 score_rating = movies_data['score'].unique().tolist()
 genre_list = movies_data['genre'].unique().tolist()
@@ -268,9 +280,11 @@ The `with` statement provides a simpler, more organized way of displaying Stream
 
 We use the `with` statement to group all elements of a layout together. We've implemented it with a sidebar layout, as shown:
 
-~~~
+~~~{.python caption=""}
 with st.sidebar:
-       st.write("Select a range on the slider (it represents movie score) to view the total number of movies in a genre that falls within that range ")
+       st.write("Select a range on the slider (it represents movie score) \
+       to view the total number of movies in a genre that falls \
+       within that range ")
     #create a slider to hold user scores
     new_score_rating = st.slider(label = "Choose a value:",
                                   min_value = 1.0,
@@ -279,7 +293,8 @@ with st.sidebar:
 
 #create a multiselect widget to display genre
 new_genre_list = st.multiselect('Choose Genre:',
-                                        genre_list, default = ['Animation', 'Horror',  'Fantasy', 'Romance'])
+                                        genre_list, default = ['Animation',\
+                                         'Horror',  'Fantasy', 'Romance'])
 #create a selectbox option that holds all unique years
 year = st.selectbox('Choose a Year',
     year_list, 0)
@@ -289,42 +304,49 @@ year = st.selectbox('Choose a Year',
 `st.slider` is the function that creates a slider widget. It takes in parameters like label, `min_value`,  `max_value`, and a `value`. The `min_value` is the specified minimum value. The `max_value` is the specified maximum value. The `value` is the point where it is rendered.
 `st.multiselect()` is the function that creates a multiselect widget. From our tutorial, we created a multiselect widget that displays all unique genres from the 'genre' column. We pre-selected 'Animation', 'Horror', 'Fantasy' and 'Romance' genres. While interacting with this widget, users can select or deselect as many options as they wish.
 A selectbox is created by calling the `st.selectbox()` function. The selectbox represents a drop-down menu that allows *only one* option to be picked at a time. We linked the 'year' column to this widget, so we can only pick one year at a time.
-![Sidebar Image](https://res.cloudinary.com/barine/image/upload/v1671375267/Streamlit/sidebar2.png)
+
+![Sidebar Image]({{site.images}}{{page.slug}}/sidebar2.png)
+
 To add interactivity among the slider, the selectbox, the multiselect widgets, and the plots on the main page, we need to create filters. We do this by mapping the columns of the dataframe to their unique list and using it in the analysis. By doing so, we can ensure that only the selected widgets affect a plot.
 
-~~~
+~~~{.python caption=""}
 #Configure and filter the slider widget for interactivity
 score_info = (movies_data['score'].between(*new_score_rating))
 ~~~
 
 We will be linking the slider widget to the line chart that displays the number of movies in a particular genre that have scores that fall within a specified range. We mapped the 'score' column to the slider widget. Therefore, whenever a user interacts with the slider, the line chart changes as well.
 
-~~~
+~~~{.python caption=""}
 #Filter the selectbox and multiselect widget for interactivity
-new_genre_year = (movies_data['genre'].isin(new_genre_list)) & (movies_data['year'] == year)
+new_genre_year = (movies_data['genre'].isin(new_genre_list)) \
+& (movies_data['year'] == year)
 ~~~
 
 We need the multiselect widget and the selectbox that holds genre and year to work together. We will be creating a dataframe that changes movie titles according to the year and genre(s) selected. In our configuration, we mapped the 'genre' column to the variable of our multiselect widget and mapped the 'year' column to the variable of our selectbox widget and joined them both using 'and'.
 
-~~~
+~~~{.python caption=""}
 # visualization section
 #group the columns needed for visualizations
 col1, col2 = st.columns([2,3])
 with col1:
     st.write("""#### Lists of movies filtered by year and Genre """)
-    dataframe_genre_year = movies_data[new_genre_year].groupby(['name',  'genre'])['year'].sum()
+    dataframe_genre_year = movies_data[new_genre_year]\
+    .groupby(['name',  'genre'])['year'].sum()
     dataframe_genre_year = dataframe_genre_year.reset_index()
     st.dataframe(dataframe_genre_year, width = 400)
 
 with col2:
     st.write("""#### User score of movies and their genre """)
-    rating_count_year = movies_data[score_info].groupby('genre')['score'].count()
+    rating_count_year = movies_data[score_info]\
+    .groupby('genre')['score'].count()
     rating_count_year = rating_count_year.reset_index()
     figpx = px.line(rating_count_year, x = 'genre', y = 'score')
     st.plotly_chart(figpx)
 ~~~
 
-![Streamlit Web application ](https://res.cloudinary.com/barine/image/upload/v1671375263/Streamlit/sidebar_and_graph3.png)
+<div class="wide">
+![Streamlit Web application]({{site.images}}{{page.slug}}/sidebar_and_graph3.png)\
+</div>
 
 ## Conclusion
 
@@ -336,6 +358,4 @@ In this tutorial, we have learned about Streamlit: what it is, and why we should
 
 - [ ] Add in Author page
 - [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
+
