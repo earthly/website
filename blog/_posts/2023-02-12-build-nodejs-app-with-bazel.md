@@ -44,6 +44,7 @@ workspace(
 - Load the `http_archive` package and define it:
 
 ~~~{ caption="WORKSPACE.bazel"}
+
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
 http_archive(
@@ -56,7 +57,9 @@ http_archive(
 - Load the [Bazel](/blog/monorepo-with-bazel) Node.js rules dependencies and call the function after loading:
 
 ~~~{ caption="WORKSPACE.bazel"}
-load("@build_bazel_rules_nodejs//:repositories.bzl", "build_bazel_rules_nodejs_dependencies")
+
+load("@build_bazel_rules_nodejs//:repositories.bzl",\
+ "build_bazel_rules_nodejs_dependencies")
 
 build_bazel_rules_nodejs_dependencies()
 ~~~
@@ -64,6 +67,7 @@ build_bazel_rules_nodejs_dependencies()
 - Load Node.js from node_repositories and call it too:
 
 ~~~{ caption="WORKSPACE.bazel"}
+
 load("@build_bazel_rules_nodejs//:index.bzl", "node_repositories")
 
 node_repositories()
@@ -71,7 +75,8 @@ node_repositories()
 
 - Load NPM and define the residing place for `package.json` and `package-lock.json`:
 
-~~~{.json caption="package.json"}
+~~~{.js caption="package.json"}
+
 load("@build_bazel_rules_nodejs//:index.bzl", "npm_install")
 
 npm_install(
@@ -83,7 +88,7 @@ npm_install(
 
 On the project root directory, create a `package.json` file. Edit the `package.json` file as below:
 
-~~~{.json caption="package.json"}
+~~~{.js caption="package.json"}
 {
     "name":"your_project_name",
     "version":"0.0.1",
@@ -128,7 +133,8 @@ module.exports = class Calculator {
 const Calculator = require('./calculator');
 const calculator = new Calculator();
 
-it('10 - 4 = 6 >', () => { // testing the result from the calculator class if it will equal 6
+it('10 - 4 = 6 >', () => { 
+  // testing the result from the calculator class if it will equal 6
     const expected_value = 6;
     expect(calculator.subtract(10,4)).toEqual(expected_value);
 })
@@ -137,12 +143,15 @@ it('10 - 4 = 6 >', () => { // testing the result from the calculator class if it
 - `BUILD.bazel` : For defining the Bazel build dependencies and steps. Edit `BUILD.bazel` as follows:
 
 ~~~{ caption="BUILD.bazel"}
-load("@npm//@bazel/jasmine:index.bzl","jasmine_node_test") # loading the node dependencies
+
+load("@npm//@bazel/jasmine:index.bzl","jasmine_node_test") 
+#loading the node dependencies
 
 filegroup(
     name="node_calculator",
     srcs=["calculator.js"],
-    visibility = ["//apps/node_web:__pkg__"] # full visibility of the apps folder
+    visibility = ["//apps/node_web:__pkg__"] 
+    #full visibility of the apps folder
 )
 
 jasmine_node_test(
@@ -187,6 +196,7 @@ app.listen(8080, () => console.log(`listening on port 8080`));
 - `BUILD.bazel` : For handling the Bazel build steps. Edit the `BUILD.bazel` as follows:
 
 ~~~{ caption="BUILD.bazel"}
+
 load("@build_bazel_rules_nodejs//:index.bzl", "nodejs_binary")
 
 nodejs_binary(
