@@ -24,3 +24,14 @@ PyYAML
 pyyaml
 
 contexlib
+
+Streamlit
+streamlit
+dataframes
+dataframe
+expanders
+Multiselect
+Selectbox
+multiselect
+selectbox
+Plotly
