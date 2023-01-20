@@ -170,7 +170,8 @@ from sqlalchemy import create_engine
 from app.settings import settings
  
 engine = create_engine(
-    settings.database_url, pool_size=settings.database_pool_size, pool_pre_ping=True
+    settings.database_url, pool_size=settings.database_pool_size, \
+    pool_pre_ping=True
 )
 ~~~
 
@@ -337,12 +338,14 @@ Finally, you will define the fetch task that does most of the work. The fetch `f
 @celery_app.task
 def fetch(symbol: str):
     """
-    Fetch the stock info for a given symbol from Finnhub and load it into QuestDB.
+    Fetch the stock info for a given symbol from Finnhub and 
+    load it into QuestDB.
     """
  
     quote: dict = client.quote(symbol)
     # https://finnhub.io/docs/api/quote
-    # quote = {'c': 148.96, 'd': -0.84, 'dp': -0.5607, 'h': 149.7, 'l': 147.8, 'o': 148.985, 'pc': 149.8, 't': 1635796803}
+    # quote = {'c': 148.96, 'd': -0.84, 'dp': -0.5607, 'h': 149.7, 'l': \
+    #147.8, 'o': 148.985, 'pc': 149.8, 't': 1635796803}
     # c: Current price
     # d: Change
     # dp: Percent change
@@ -353,7 +356,8 @@ def fetch(symbol: str):
     # t: when it was traded
  
     query = f"""
-    INSERT INTO quotes(stock_symbol, current_price, high_price, low_price, open_price, percent_change, tradets, ts)
+    INSERT INTO quotes(stock_symbol, current_price, high_price, low_price,\
+    open_price, percent_change, tradets, ts)
     VALUES(
         '{symbol}',
         {quote["c"]},
@@ -375,6 +379,7 @@ As you have seen in the above code snippet, Finnhub client will assist you to fe
 So far, you have configured the worker successfully and are ready to test it. To test the worker run the below command in the terminal window within the Python virtual environment and wait for sometime to let Celery start.
 
 ~~~{.bash caption=">_"}
+
 $ python3 -m celery --app app.worker.celery_app worker --beat -l info -c 1
 ~~~
 
@@ -462,7 +467,8 @@ def get_stock_data(start: datetime, end: datetime, stock_symbol: str):
     def format_date(dt: datetime) -> str:
         return dt.isoformat(timespec="microseconds") + "Z"
  
-    query = f"SELECT * FROM quotes WHERE ts BETWEEN '{format_date(start)}' AND '{format_date(end)}'"
+    query = f"SELECT * FROM quotes WHERE ts BETWEEN \
+    '{format_date(start)}' AND '{format_date(end)}'"
  
     if stock_symbol:
         query += f" AND stock_symbol = '{stock_symbol}' "
@@ -486,7 +492,8 @@ app = dash.Dash(
     __name__,
     title="Real-time stock market changes",
     assets_folder="../assets",
-    meta_tags=[{"name": "viewport", "content": "width=device-width, initial-scale=1"}],
+    meta_tags=[{"name": "viewport", "content": \
+    "width=device-width, initial-scale=1"}],
 )
  
 # [...]
@@ -505,9 +512,11 @@ app.layout = html.Div(
             [
                 html.Div(
                     [
-                        html.H4("Stock market changes", className="app__header__title"),
+                        html.H4("Stock market changes", \
+                        className="app__header__title"),
                         html.P(
-                            "Continually query QuestDB and display live changes of the specified stocks.",
+                            "Continually query QuestDB and \
+                            display live changes of the specified stocks.",
                             className="app__header__subtitle",
                         ),
                     ],
@@ -535,7 +544,8 @@ app.layout = html.Div(
                 html.Div(
                     [
                         html.Div(
-                            [html.H6("Current price changes", className="graph__title")]
+                            [html.H6("Current price changes", \
+                            className="graph__title")]
                         ),
                         dcc.Graph(id="stock-graph"),
                     ],
@@ -544,7 +554,8 @@ app.layout = html.Div(
                 html.Div(
                     [
                         html.Div(
-                            [html.H6("Percent changes", className="graph__title")]
+                            [html.H6("Percent changes", \
+                            className="graph__title")]
                         ),
                         dcc.Graph(id="stock-graph-percent-change"),
                     ],
@@ -574,7 +585,8 @@ Next, we define two callbacks that will listen to the input changes and the inte
  
 @app.callback(
     Output("stock-graph", "figure"),
-    [Input("stock-symbol", "value"), Input("stock-graph-update", "n_intervals")],
+    [Input("stock-symbol", "value"), \
+    Input("stock-graph-update", "n_intervals")],
 )
 # [...]
 
@@ -587,7 +599,8 @@ The function `generate_stock_graph` is responsible for filtering the data frames
 
 def generate_stock_graph(selected_symbol, _):
     data = []
-    filtered_df = get_stock_data(now() - timedelta(hours=TIME_DELTA), now(), selected_symbol)
+    filtered_df = get_stock_data(now() - timedelta(hours=TIME_DELTA), \
+    now(), selected_symbol)
     groups = filtered_df.groupby(by="stock_symbol")
  
     for group, data_frame in groups:
@@ -646,7 +659,8 @@ The function `generate_stock_graph()` is responsible for filtering the data fram
 # [...]
 def generate_stock_graph_percentage(selected_symbol, _):
     data = []
-    filtered_df = get_stock_data(now() - timedelta(hours=TIME_DELTA), now(), selected_symbol)
+    filtered_df = get_stock_data(now() - timedelta(hours=TIME_DELTA),\
+     now(), selected_symbol)
     groups = filtered_df.groupby(by="stock_symbol")
  
     for group, data_frame in groups:
@@ -713,6 +727,3 @@ In this tutorial, you have seen how you can use Celery and Redis to fetch stock 
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
