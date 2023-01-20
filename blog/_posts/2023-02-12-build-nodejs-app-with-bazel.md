@@ -24,6 +24,8 @@ To follow along with this article, it is helpful to have the following:
 
 ## Setting Up the Bazel Environment
 
+![Setting]({{site.images}}{{page.slug}}/setting.jpg)\
+
 Open your code editor in your preferred working directory. Create two files on the root directory:
 
 - `WORKSPACE.bazel`: For defining the workspace environment.
@@ -33,7 +35,7 @@ Edit the `WORKSPACE.bazel` as explained in the following step-by-step instructio
 
 Start by defining the workspace by giving it a name. Preferably the name of the directory you are currently working at.
 
-~~~
+~~~{ caption="WORKSPACE.bazel"}
 workspace(
     name = "your_workspace_name",
 )
@@ -41,7 +43,7 @@ workspace(
 
 - Load the `http_archive` package and define it:
 
-~~~
+~~~{ caption="WORKSPACE.bazel"}
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
 http_archive(
@@ -53,7 +55,7 @@ http_archive(
 
 - Load the [Bazel](/blog/monorepo-with-bazel) Node.js rules dependencies and call the function after loading:
 
-~~~
+~~~{ caption="WORKSPACE.bazel"}
 load("@build_bazel_rules_nodejs//:repositories.bzl", "build_bazel_rules_nodejs_dependencies")
 
 build_bazel_rules_nodejs_dependencies()
@@ -61,7 +63,7 @@ build_bazel_rules_nodejs_dependencies()
 
 - Load Node.js from node_repositories and call it too:
 
-~~~
+~~~{ caption="WORKSPACE.bazel"}
 load("@build_bazel_rules_nodejs//:index.bzl", "node_repositories")
 
 node_repositories()
@@ -69,7 +71,7 @@ node_repositories()
 
 - Load NPM and define the residing place for `package.json` and `package-lock.json`:
 
-~~~
+~~~{.json caption="package.json"}
 load("@build_bazel_rules_nodejs//:index.bzl", "npm_install")
 
 npm_install(
@@ -81,7 +83,7 @@ npm_install(
 
 On the project root directory, create a `package.json` file. Edit the `package.json` file as below:
 
-~~~
+~~~{.json caption="package.json"}
 {
     "name":"your_project_name",
     "version":"0.0.1",
@@ -98,7 +100,7 @@ On the project root directory, create a `package.json` file. Edit the `package.j
 
 - Install the above dependencies using [Bazel](/blog/monorepo-with-bazel) by running the following command:
 
-~~~
+~~~{.bash caption=">_"}
 bazel run @nodejs_host//:npm -- install
 ~~~
 
@@ -106,11 +108,13 @@ From the above command, [Bazel](/blog/monorepo-with-bazel) will create a couple 
 
 ## Implementing and Testing a Simple Calculator Application
 
+![Implement]({{site.images}}{{page.slug}}/implement.jpg)\
+
 Let's now test the create Bazel environment using a Node.js application. On the project root directory, create a directory and name it `apps`. Inside the `apps` directory, create a `simple_calculator` directory. Inside the `simple_calculator`, create three files:
 
 - `calculator.js` : For defining the logic. Edit `calculator.js` as follows:
 
-~~~
+~~~{.js caption="calculator.js"}
 module.exports = class Calculator {
     subtract(x,y){ // returning subtraction of two numbers.
         return x - y;
@@ -120,7 +124,7 @@ module.exports = class Calculator {
 
 - `calculator.spec.js` : For defining the testing logic. Edit `calculator.spec.js` as follows:
 
-~~~
+~~~{.js caption="calculator.spec.js"}
 const Calculator = require('./calculator');
 const calculator = new Calculator();
 
@@ -132,7 +136,7 @@ it('10 - 4 = 6 >', () => { // testing the result from the calculator class if it
 
 - `BUILD.bazel` : For defining the Bazel build dependencies and steps. Edit `BUILD.bazel` as follows:
 
-~~~
+~~~{ caption="BUILD.bazel"}
 load("@npm//@bazel/jasmine:index.bzl","jasmine_node_test") # loading the node dependencies
 
 filegroup(
@@ -150,7 +154,7 @@ jasmine_node_test(
 
 To test the functionality, run the following command:
 
-~~~
+~~~{.bash caption=">_"}
 bazel test //...
 ~~~
 
@@ -166,7 +170,7 @@ Let's Now load the calculator app to the web while implementing the Bazel builds
 
 - `index.js` : For starting the web server and handling routes. Edit the `index.js` as follows:
 
-~~~
+~~~{.js caption="index.js"}
 const express = require('express');
 const Calculator = require('../node_calculator/calculator');
 
@@ -182,7 +186,7 @@ app.listen(8080, () => console.log(`listening on port 8080`));
 
 - `BUILD.bazel` : For handling the Bazel build steps. Edit the `BUILD.bazel` as follows:
 
-~~~
+~~~{ caption="BUILD.bazel"}
 load("@build_bazel_rules_nodejs//:index.bzl", "nodejs_binary")
 
 nodejs_binary(
@@ -197,7 +201,7 @@ nodejs_binary(
 
 Run the project by executing the following command:
 
-~~~
+~~~{.bash caption=">_"}
 bazel run apps/node_web
 ~~~
 
