@@ -24,3 +24,7 @@ PyYAML
 pyyaml
 
 contexlib
+
+Finnhub
+Plotly
+plotly
