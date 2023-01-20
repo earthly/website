@@ -357,5 +357,4 @@ In this tutorial, we have learned about Streamlit: what it is, and why we should
 ## Outside Article Checklist
 
 - [ ] Add in Author page
-- [ ] Create header image in Canva
 
