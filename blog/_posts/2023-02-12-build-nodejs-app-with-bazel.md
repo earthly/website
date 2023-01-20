@@ -19,7 +19,7 @@ To follow along with this article, it is helpful to have the following:
 - [Node.js](https://nodejs.org/en/) installed on your computer.
 - [Bazel](https://bazel.build/install) installed on your computer.
 
-## Setting up the Bazel environment
+## Setting Up the Bazel Environment
 
 Open your code editor in your preferred working directory. Create two files on the root directory:
 
@@ -30,15 +30,15 @@ Edit the `WORKSPACE.bazel` as explained in the following step-by-step instructio
 
 Start by defining the workspace by giving it a name. Preferably the name of the directory you are currently working at.
 
-```js
+~~~
 workspace(
     name = "your_workspace_name",
 )
-```
+~~~
 
 - Load the `http_archive` package and define it:
 
-```js
+~~~
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
 http_archive(
@@ -46,27 +46,27 @@ http_archive(
     sha256 = "c29944ba9b0b430aadcaf3bf2570fece6fc5ebfb76df145c6cdad40d65c20811",
     urls = ["https://github.com/bazelbuild/rules_nodejs/releases/download/5.7.0/rules_nodejs-5.7.0.tar.gz"],
 )
-```
+~~~
 
 - Load the [Bazel](/blog/monorepo-with-bazel) Node.js rules dependencies and call the function after loading:
 
-```js
+~~~
 load("@build_bazel_rules_nodejs//:repositories.bzl", "build_bazel_rules_nodejs_dependencies")
 
 build_bazel_rules_nodejs_dependencies()
-```
+~~~
 
 - Load Node.js from node_repositories and call it too:
 
-```js
+~~~
 load("@build_bazel_rules_nodejs//:index.bzl", "node_repositories")
 
 node_repositories()
-```
+~~~
 
 - Load NPM and define the residing place for `package.json` and `package-lock.json`:
 
-```js
+~~~
 load("@build_bazel_rules_nodejs//:index.bzl", "npm_install")
 
 npm_install(
@@ -74,11 +74,11 @@ npm_install(
     package_json = "//:package.json",
     package_lock_json = "//:package-lock.json",
 )
-```
+~~~
 
 On the project root directory, create a `package.json` file. Edit the `package.json` file as below:
 
-```js
+~~~
 {
     "name":"your_project_name",
     "version":"0.0.1",
@@ -91,33 +91,33 @@ On the project root directory, create a `package.json` file. Edit the `package.j
         "jasmine-core":"4.0.1"
     }
 }
-```
+~~~
 
 - Install the above dependencies using [Bazel](/blog/monorepo-with-bazel) by running the following command:
 
-```bash
+~~~
 bazel run @nodejs_host//:npm -- install
-```
+~~~
 
 From the above command, [Bazel](/blog/monorepo-with-bazel) will create a couple of additional directories for managing the Node.js dependencies: `package-lock.json` and `node_modules`.
 
-## Implementing and testing a simple calculator application
+## Implementing and Testing a Simple Calculator Application
 
-Let’s now test the create Bazel environment using a Node.js application. On the project root directory, create a directory and name it `apps`. Inside the `apps` directory, create a `simple_calculator` directory. Inside the `simple_calculator`, create three files:
+Let's now test the create Bazel environment using a Node.js application. On the project root directory, create a directory and name it `apps`. Inside the `apps` directory, create a `simple_calculator` directory. Inside the `simple_calculator`, create three files:
 
 - `calculator.js` : For defining the logic. Edit `calculator.js` as follows:
 
-```js
+~~~
 module.exports = class Calculator {
     subtract(x,y){ // returning subtraction of two numbers.
         return x - y;
     }
 }
-```
+~~~
 
 - `calculator.spec.js` : For defining the testing logic. Edit `calculator.spec.js` as follows:
 
-```js
+~~~
 const Calculator = require('./calculator');
 const calculator = new Calculator();
 
@@ -125,11 +125,11 @@ it('10 - 4 = 6 >', () => { // testing the result from the calculator class if it
     const expected_value = 6;
     expect(calculator.subtract(10,4)).toEqual(expected_value);
 })
-```
+~~~
 
 - `BUILD.bazel` : For defining the Bazel build dependencies and steps. Edit `BUILD.bazel` as follows:
 
-```js
+~~~
 load("@npm//@bazel/jasmine:index.bzl","jasmine_node_test") # loading the node dependencies
 
 filegroup(
@@ -143,26 +143,27 @@ jasmine_node_test(
     srcs=["calculator.spec.js"], # spec files
     data = [":node_calculator"]
 )
-```
+~~~
 
 To test the functionality, run the following command:
 
-```bash
+~~~
 bazel test //...
-```
+~~~
 
 Your response should be similar to:
 
+<div class="wide">
+![Bazel with Node.js]({{site.images}}{{page.slug}}/iM7gbSe.png)
+</div>
 
-![Bazel with Node.js](https://imgur.com/iM7gbSe)
+## Exposing the Calculator Application On a Web Server
 
-## Exposing the calculator application on a web server
-
-Let’s Now load the calculator app to the web while implementing the Bazel builds. Create another directory on the `apps` folder and name it `node_web`. In the `node_web` folder, create two files:
+Let's Now load the calculator app to the web while implementing the Bazel builds. Create another directory on the `apps` folder and name it `node_web`. In the `node_web` folder, create two files:
 
 - `index.js` : For starting the web server and handling routes. Edit the `index.js` as follows:
 
-```js
+~~~
 const express = require('express');
 const Calculator = require('../node_calculator/calculator');
 
@@ -174,11 +175,11 @@ app.get('/',(req,res) => {
 })
 
 app.listen(8080, () => console.log(`listening on port 8080`));
-```
+~~~
 
 - `BUILD.bazel` : For handling the Bazel build steps. Edit the `BUILD.bazel` as follows:
 
-```js
+~~~
 load("@build_bazel_rules_nodejs//:index.bzl", "nodejs_binary")
 
 nodejs_binary(
@@ -189,27 +190,29 @@ nodejs_binary(
     ],
     entry_point = ":index.js",
 )
-```
+~~~
 
 Run the project by executing the following command:
 
-```bash
+~~~
 bazel run apps/node_web
-```
+~~~
 
 You will get such a response on the terminal:
 
-
-![Bazel Builds with Node.js](https://imgur.com/vt7SpLG)
+<div class="wide">
+![Bazel Builds with Node.js]({{site.images}}{{page.slug}}/vt7SpLG.png)
+</div>
 
 From above, the server is running on port 8080. Proceed to `http://localhost:8080`. You will get the following calculator response:
 
-
-![Node.js App](https://imgur.com/LIUvC3c)
+![Node.js App]({{site.images}}{{page.slug}}/LIUvC3c.png)
 
 ## Conclusion
 
 This guide helped us create Node.js with [Bazel](/blog/monorepo-with-bazel). We were able to configure Bazel, set up Bazel builds, and, most importantly, run tests using Bazel for the Node.js app. I hope you found this guide helpful. Happy Go coding!
+
+{% include cta/cta1.html %}
 
 ## Outside Article Checklist
 
@@ -217,6 +220,4 @@ This guide helped us create Node.js with [Bazel](/blog/monorepo-with-bazel). We 
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
-- [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
