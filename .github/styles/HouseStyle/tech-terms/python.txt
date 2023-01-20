@@ -24,3 +24,10 @@ PyYAML
 pyyaml
 
 contexlib
+
+psql
+tomllib
+Rustmore
+executemany
+Johnsonmouth
+Mathville
