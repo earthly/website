@@ -48,7 +48,7 @@ http_archive(
 )
 ```
 
-- Load the Bazel Node.js rules dependencies and call the function after loading:
+- Load the [Bazel](/blog/monorepo-with-bazel) Node.js rules dependencies and call the function after loading:
 
 ```js
 load("@build_bazel_rules_nodejs//:repositories.bzl", "build_bazel_rules_nodejs_dependencies")
@@ -93,13 +93,13 @@ On the project root directory, create a `package.json` file. Edit the `package.j
 }
 ```
 
-- Install the above dependencies using Bazel by running the following command:
+- Install the above dependencies using [Bazel](/blog/monorepo-with-bazel) by running the following command:
 
 ```bash
 bazel run @nodejs_host//:npm -- install
 ```
 
-From the above command, Bazel will create a couple of additional directories for managing the Node.js dependencies: `package-lock.json` and `node_modules`.
+From the above command, [Bazel](/blog/monorepo-with-bazel) will create a couple of additional directories for managing the Node.js dependencies: `package-lock.json` and `node_modules`.
 
 ## Implementing and testing a simple calculator application
 
@@ -209,7 +209,7 @@ From above, the server is running on port 8080. Proceed to `http://localhost:808
 
 ## Conclusion
 
-This guide helped us create Node.js with Bazel. We were able to configure Bazel, set up Bazel builds, and, most importantly, run tests using Bazel for the Node.js app. I hope you found this guide helpful. Happy Go coding!
+This guide helped us create Node.js with [Bazel](/blog/monorepo-with-bazel). We were able to configure Bazel, set up Bazel builds, and, most importantly, run tests using Bazel for the Node.js app. I hope you found this guide helpful. Happy Go coding!
 
 ## Outside Article Checklist
 
@@ -219,5 +219,4 @@ This guide helped us create Node.js with Bazel. We were able to configure Bazel,
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
 - [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
