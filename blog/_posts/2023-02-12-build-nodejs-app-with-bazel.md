@@ -3,10 +3,13 @@ title: "How to Build Node.js Application with Bazel"
 categories:
   - Tutorials
 toc: true
-author: Rose Cherge
+author: Rose Chege
 
 internal-links:
- - just an example
+ - Node JS
+ - Bazel
+ - Application
+ - JavaScript
 ---
 
 [Bazel](https://earthly.dev/blog/bazel-build/) is an open-source build tool to speed up your builds and tests. Bazel is generally used on very large projects to scale the organization's codebase. Bazel is a multilingual build system. This guide will help you run and build Bazel with Node.js apps. We will create a Bazel workspace from scratch to build and test Node.js code.
@@ -220,4 +223,3 @@ This guide helped us create Node.js with [Bazel](/blog/monorepo-with-bazel). We 
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Add keywords for internal links to front-matter
