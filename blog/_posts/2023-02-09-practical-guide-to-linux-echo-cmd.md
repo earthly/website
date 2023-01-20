@@ -300,7 +300,7 @@ Learning is Good
 
 ### Displaying Variables in the Terminal
 
-Using the `echo` command, you can display the different variables you declared as well as environment variables on your terminal. Here's an example:
+Using the `echo` command, you can display the different variables you declared as well as [environment variables](/blog/bash-variables) on your terminal. Here's an example:
 
 ~~~{.bash caption=">_"}
 ubay=good
@@ -482,7 +482,7 @@ This is Red
 
 Here, you used `\033[` which represents  `ESC[`, followed by the ANSI escape color code for Red `0;31`, and then an `m` to change the color of the output.
 
-You can also write a Bash script to perform an action and change color. Here's an example:
+You can also write a [Bash script](/blog/understanding-bash) to perform an action and change color. Here's an example:
 
 
 ## `!/bin/bash`
@@ -507,7 +507,7 @@ echo -e "The square root of $number is \033[0;32m$result"
 
 In this script, we first set a variable called `number` to the value we want to find the square root of. Then, we use the `echo` command to pass the `sqrt` function and the value of `number` to the `bc` command, which calculates the square root and stores the result in a variable called `result`. Finally, we use the echo command to display the result in the terminal and change its color to green.
 
-Save this script to a file , say, myscript.sh, make it executable with the `chmod` command: `chmod +x myscript.sh`, and then run it with the `./ command`: `./myscript.sh` to see the green message in the terminal.
+Save this script to a file , say, myscript.sh, [make](/blog/makefiles-on-windows) it executable with the `chmod` command: `chmod +x myscript.sh`, and then run it with the `./ command`: `./myscript.sh` to see the green message in the terminal.
 
 Here are the ANSI escape color codes for some colors:
 
