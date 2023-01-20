@@ -430,26 +430,32 @@ This will only print the names of files that do not end in a forward slash (/), 
 
 The echo command can be piped with other commands to perform various actions using the pipe operator `|`. Some examples of piping the echo command with other commands are:
 
-#### Using `echo` With the `tee` command
+#### Using `echo` With the `tee` Command
+
 To output the result of a command and save it to a file, the echo command can be piped with the tee command:
 
 ~~~{.bash caption=">_"}
+
 echo "Hello World" | tee output.txt
+
 ~~~
+
 To append the output of a command to an existing file, the `echo` command can be piped with the `tee` command and the -a flag:
 
 ~~~{.bash caption=">_"}
 echo "Hello World" | tee -a output.txt
 ~~~
 
-#### Using `echo` With the `tr` command
+#### Using `echo` With the `tr` Command
+
 To pass the output of a command as input to another command, the `echo` command can be piped with the desired command:
 
 ~~~{.bash caption=">_"}
 echo "Hello World" | tr '[:lower:]' '[:upper:]'
 ~~~
 
-#### Using `echo` With the `grep` command
+#### Using `echo` With the `grep` Command
+
 To search for a specific string in the output of a command, the `echo` command can be piped with the `grep` command:
 
 ~~~{.bash caption=">_"}
