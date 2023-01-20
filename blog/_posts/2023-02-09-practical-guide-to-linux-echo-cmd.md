@@ -470,7 +470,7 @@ This would return "1:world", indicating that the string "world" was found on lin
 
 By default, the color of the output of the `echo` command matches the terminal theme. You might be in a situation where you need to change the colors, such as when writing a script and you need to show whether a step was successful, which is usually displayed in green, or warn them about a step in which red is used.
 
-The color output is changed by formatting them  using the [ANSI escape codes](https://en.wikipedia.org/wiki/ANSI_escape_code#Colors)  for each color.
+The color output is changed by formatting them using the [ANSI escape codes](https://en.wikipedia.org/wiki/ANSI_escape_code#Colors)  for each color.
 
 Here's an example:
 
