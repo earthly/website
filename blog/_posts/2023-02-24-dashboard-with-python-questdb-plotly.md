@@ -6,7 +6,10 @@ toc: true
 author: Verah Ombui
 
 internal-links:
- - just an example
+ - Dashboard
+ - Python
+ - QuestDB
+ - Plotlye
 ---
 
 Are you dealing with huge amounts of data? If so, you're likely facing a problem storing and analyzing such data to gain meaningful insights.
@@ -713,4 +716,3 @@ In this tutorial, you have seen how you can use Celery and Redis to fetch stock 
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Add keywords for internal links to front-matter
