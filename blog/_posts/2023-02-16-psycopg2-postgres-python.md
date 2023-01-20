@@ -606,8 +606,3 @@ In this tutorial, I used a simple example to walk you through the basics of quer
 As a next step, you can add more tables to the database, define relationships among them, and query data from multiple tables. Also, try exploring other [features of psycopg2](https://www.psycopg.org/docs/index.html).
 
 {% include cta/cta1.html %}
-
-## Outside Article Checklist
-
-- [ ] Create header image in Canva
-
