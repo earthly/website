@@ -117,13 +117,13 @@ Upon running the above statement the database table named `quotes` will be creat
 </div>
 
 The `quotes` table created by the above SQL command will have the following fields:
-`stock_symbol`: stores unique codes that uniquely identify the company and stock that it issues
-`current_price`: stores the current price of the particular stock
-`high_price`: stores the value when a given stock price rises
-`low_price`: stores the value when a given stock price drops
-`open_price`: stores the opening price at which stock first trades when an exchange opens for the day
-`percent_change`: assists to track a given stock's prices increase or decrease
-`tradets`: stores date and time of the day identifying when a trade happened
+1 `stock_symbol`: stores unique codes that uniquely identify the company and stock that it issues
+2 `current_price`: stores the current price of the particular stock
+3 `high_price`: stores the value when a given stock price rises
+4 `low_price`: stores the value when a given stock price drops
+5 `open_price`: stores the opening price at which stock first trades when an exchange opens for the day
+6 `percent_change`: assists to track a given stock's prices increase or decrease
+7 `tradets`: stores date and time of the day identifying when a trade happened
 
 ## Creating Workers Using Celery
 
