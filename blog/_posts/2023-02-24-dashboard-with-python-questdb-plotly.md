@@ -51,7 +51,7 @@ $ mkdir -p stock-prices/app
 
 ### Installing QuestDB and Redis
 
-Next you need to install the project's required services. In this project, you need Docker and Docker Compose to avoid overloading the local system. Inside the project's root directory, create a new `.yml` file named `docker-compose.yml` file for Docker Compose as shown below. The `.yml` file lets you define the configuration or container environment for multiple Docker containers.. In this project it will allow you to run QuestDB and Redis services simultaneously. Later on, you will install other services as needed.
+Next you need to install the project's required services. In this project, you need Docker and [Docker Compose](/blog/youre-using-docker-compose-wrong) to avoid overloading the local system. Inside the project's root directory, create a new `.yml` file named `docker-compose.yml` file for Docker Compose as shown below. The `.yml` file lets you define the configuration or [container](/blog/docker-slim) environment for multiple Docker containers.. In this project it will allow you to run QuestDB and Redis services simultaneously. Later on, you will install other services as needed.
 
 ~~~{.yaml caption="docker-compose.yml"}
 # docker-compose.yml
@@ -78,7 +78,7 @@ services:
 
 Upon running the `docker-compose up` command the QuestDB and Redis services will fire up. The purpose of Redis is to store real-time data and act as a message broker, as the QuestDB stores the fetched data. The reason for using QuestDB over other databases is that it is lightweight hence less complex, designed to offer real-time analytics on the time series data. For this reason it was the best database to use for this kind of application that deals with real time data fetched from the API.
 
-After services have started on Docker containers, you will access QuestDB's interactive console at <http://127.0.0.1:9000>.
+After services have started on [Docker](/blog/rails-with-docker) containers, you will access QuestDB's interactive console at <http://127.0.0.1:9000>.
 
 The below output will be displayed:
 
@@ -411,7 +411,7 @@ $ curl -o assets/style.css https://github.com/verah-tech/stock-market/blob/main/
 
 ![Setting Up the Application]({{site.images}}{{page.slug}}/3OFABqK.png)
 
-This is the last part of the application as you will be able to visualize the data you earlier fetched. You will create the `main.py` file in the `app` packages and performing several imports required by the project as below:
+This is the last part of the application as you will be able to visualize the data you earlier fetched. You will create the `main.py` file in the `app` [packages](/blog/setup-typescript-monorepo) and performing several imports required by the project as below:
 
 ~~~{.python caption="main.py"}
 # app/main.py
@@ -713,5 +713,4 @@ In this tutorial, you have seen how you can use Celery and Redis to fetch stock 
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
 - [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
