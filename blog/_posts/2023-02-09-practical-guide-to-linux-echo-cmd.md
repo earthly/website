@@ -46,14 +46,17 @@ Here’s an example:
 ```bash
 echo -n Welcome
 ```
+
 ```
 Welcomeubaydah@ubaydah
 ```
+
 You can also print multiple lines of text without adding new lines after each line; use the `n` option with the echo command.
 
-``bash
+```bash
 echo -n "Hello World" "This is a test" "This is another test"
 ```
+
 ```
 Hello World This is a test This is another testubaydah@ubaydah
 ```
@@ -250,9 +253,10 @@ This creates a new file named 'test.txt' and adds the text if the file doesn’t
 
 To check the content of the file:
 
-``bash
+```bash
 cat test.txt
 ```
+
 ```
 Hello world
 ```
@@ -289,9 +293,10 @@ Here, you declared a new variable called `ubay` and assigned `good` to it. Its v
 
 You can also use the echo command to display the value of multiple variables at once by separating them with a space. For example, if you have a second variable `new` that contains the value “hello”, you can display both `ubay` and `new` by running the following command:
 
-``bash
+```bash
 echo $ubay $new
 ```
+
 ```
 good hello
 ```
@@ -447,6 +452,8 @@ You should now have working knowledge on how to use the `echo` command. In this 
 
 The tutorial also explained the various scenarios in which the `echo` command can be used, such as adding and overwriting texts in a file, outputting declared variables to the terminal, and printing files of a specific kind in a directory. You’ve also learned how the command can be piped with other commands using the pipe operator and how to customize the output colors.
 
+{% include cta/cta1.html %}
+
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
@@ -456,4 +463,4 @@ The tutorial also explained the various scenarios in which the `echo` command ca
 - [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
+
