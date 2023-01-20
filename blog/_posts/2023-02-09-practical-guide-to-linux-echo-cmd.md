@@ -528,10 +528,3 @@ You should now have working knowledge on how to use the `echo` command. In this 
 The tutorial also explained the various scenarios in which the `echo` command can be used, such as adding and overwriting texts in a file, outputting declared variables to the terminal, and printing files of a specific kind in a directory. You've also learned how the command can be piped with other commands using the pipe operator and how to customize the output colors.
 
 {% include cta/cta1.html %}
-
-## Outside Article Checklist
-
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
