@@ -6,7 +6,10 @@ toc: true
 author: Adam
 
 internal-links:
- - just an example
+ - Python
+ - Data
+ - OpenSource
+ - Matplotlib
 ---
 
 Streamlit is an open-source Python framework that lets you turn data scripts into shareable web apps in minutes. Streamlit makes it easy for data scientists and analysts to create and deploy interactive visualizations and dashboards for machine learning models and other Python applications.
@@ -336,4 +339,3 @@ In this tutorial, we have learned about Streamlit: what it is, and why we should
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Add keywords for internal links to front-matter
