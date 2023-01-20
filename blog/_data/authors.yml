@@ -358,3 +358,7 @@ Antonello Zanini:
     name    : "Antonello Zanini"
     bio     : "I'm a software engineer, but I prefer to call myself a Technology Bishop. Spreading knowledge through writing is my mission."
     avatar  : "/assets/images/authors/antonello.jpg"
+Verah Ombui:
+    name    : "Verah Ombui"
+    bio     : "Verah is a passionate technical content writer and a DevOps practitioner who believes in writing the best content on DevOps, and IT technologies and sharing it with the world. Her mission has always remained the same: learn new technologies by doing hands-on practice, deep-dive into them, and teach the world in the easiest possible way. She has good exposure to DevOps technologies such as Terraform, AWS Cloud, Microsoft Azure, Ansible, Kubernetes, Docker, Jenkins, Linux, etc."
+    avatar  : "/assets/images/authors/verah.jpg"

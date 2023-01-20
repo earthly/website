@@ -3,7 +3,7 @@ title: "Building a Real-time Stock Price Dashboard Using Python, QuestDB, and Pl
 categories:
   - Tutorials
 toc: true
-author: Adam
+author: Verah Ombui
 
 internal-links:
  - just an example
@@ -709,7 +709,6 @@ In this tutorial, you have seen how you can use Celery and Redis to fetch stock 
 
 ## Outside Article Checklist
 
-- [ ] Add in Author page
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
