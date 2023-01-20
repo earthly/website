@@ -82,7 +82,7 @@ In practice, you should store the details of the database and the credentials re
 
 **But why is this helpful?** When working on a project, you may need to connect to multiple databases or connect to a database from more than one module. In such cases, if the database credentials change, you can only modify the contents of the config file *without* introducing breaking changes elsewhere.
 
-Also, exposing sensitive info like passwords in source code is a security risk. So you should always store the credentials in a config file or set them as environment variables whose values you can fetch as needed.
+Also, exposing sensitive info like passwords in source code is a security risk. So you should always store the credentials in a config file or set them as [environment variables](/blog/bash-variables) whose values you can fetch as needed.
 </div>
 
 ### How to Parse Config Files in Python
@@ -492,7 +492,7 @@ With that, we've run a basic set of queries to insert, retrieve, update, and del
 
 It's a good practice to also close the database cursor. To do this, you can call the `close()` method on the cursor object. But this has to be inside the `finally` block too, before closing the database connection. This is because if the connection object does not exist, the cursor doesn't exist either!
 
-If needed, look up the [main.py](https://github.com/balapriyac/psycopg2-tutorial/blob/main/main.py) file to make sure you've understood it all.
+If needed, look up the [main.py](https://github.com/balapriyac/psycopg2-tutorial/blob/main/main.py) file to [make](/blog/makefiles-on-windows) sure you've understood it all.
 
 ## Simplifying Querying Using Context Managers
 
@@ -500,7 +500,7 @@ So far we've implemented exception handling for errors that arise when trying to
 
 In practice, however, some queries may not run as expected! We may run into errors: from syntax errors in the query string to errors arising from attempting invalid transactions.
 
-For example: retrieving, updating, and deleting records make sense only when there *is* a table with records. Psycopg2 provides several [exception classes](https://www.psycopg.org/docs/errors.html#sqlstate-exception-classes) such as `DatabaseError` and `ProgrammingError` that are triggered when the SQL queries fail to run successfully.
+For example: retrieving, updating, and deleting records [make](/blog/makefiles-on-windows) sense only when there *is* a table with records. Psycopg2 provides several [exception classes](https://www.psycopg.org/docs/errors.html#sqlstate-exception-classes) such as `DatabaseError` and `ProgrammingError` that are triggered when the SQL queries fail to run successfully.
 
 In summary: you're not only trying to connect to the database and run a set of queries. Rather, for *each* of the queries, you *try* to run the query (inside a `try` block) and catch any exception (inside the `except` block).
 
@@ -607,4 +607,3 @@ As a next step, you can add more tables to the database, define relationships am
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
