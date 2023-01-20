@@ -486,7 +486,6 @@ Here, you used `\033[` which represents  `ESC[`, followed by the ANSI escape col
 
 You can also write a [Bash script](/blog/understanding-bash) to perform an action and change color. Here's an example:
 
-
 ## `!/bin/bash`
 
 ## Set the Number to Find the Square Root Of
