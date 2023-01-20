@@ -705,6 +705,8 @@ To get a better graphical representation of the stock price variations, select a
 
 In this tutorial, you have seen how you can use Celery and Redis to fetch stock data from the Finnhub API in Python and store the data in QuestDB. You have also learned how to create useful dashboards using Plotly and Dash to visualize and present the fetched data to the user. Although the tutorial is for demonstration purposes and not actual trading, you have learned how to combine these powerful tools and software to create a bigger and more useful application. As a next step, try building a similar project for a dataset of your choice.
 
+{% include cta/cta1.html %}
+
 ## Outside Article Checklist
 
 - [ ] Add in Author page
@@ -713,4 +715,3 @@ In this tutorial, you have seen how you can use Celery and Redis to fetch stock 
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
-- [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
