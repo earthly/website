@@ -358,3 +358,7 @@ Antonello Zanini:
     name    : "Antonello Zanini"
     bio     : "I'm a software engineer, but I prefer to call myself a Technology Bishop. Spreading knowledge through writing is my mission."
     avatar  : "/assets/images/authors/antonello.jpg"
+Barine Sambaris:
+    name    : "Barine Sambaris"
+    bio     : "Barine Sambaris is a former web developer, now currently a python developer and data analyst. She's experienced in building interactive dashboards and data visualization projects with Python frameworks and libraries. Barine is also a freelance technical writer and has written articles on HTML, CSS, JavaScript, Python and Data Analytics."
+    avatar  : "/assets/images/authors/barine.jpg"

@@ -3,7 +3,7 @@ title: "Build a Data Dashboard with Streamlit in Python"
 categories:
   - Tutorials
 toc: true
-author: Adam
+author: Barine Sambaris
 
 internal-links:
  - Python
@@ -353,8 +353,3 @@ with col2:
 In this tutorial, we have learned about Streamlit: what it is, and why we should use it, and the basics of data visualization with Streamlit. You've also learned how to create interactive visualizations by programmatically adding interactivity to a Plotly chart. As a next step, you can try building a data dashboard for a dataset of your choice.
 
 {% include cta/cta1.html %}
-
-## Outside Article Checklist
-
-- [ ] Add in Author page
-
