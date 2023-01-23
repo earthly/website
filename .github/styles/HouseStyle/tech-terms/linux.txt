@@ -89,3 +89,7 @@ namepaces
 vm
 chrooted
 chrooting
+
+bc
+sqrt
+it
