@@ -362,4 +362,9 @@ Antonello Zanini:
     name    : "Antonello Zanini"
     bio     : "I'm a software engineer, but I prefer to call myself a Technology Bishop. Spreading knowledge through writing is my mission."
     avatar  : "/assets/images/authors/antonello.jpg"
+Ubaydah Abdulwasiu:
+    name    : "Ubaydah Abdulwasiu"
+    bio     : "Ubaydah is a backend engineer who has built APIs using a variety of languages and frameworks such as Python Django, Golang, and Javascript. She also has experience writing technical documentation and articles. She enjoys passing on technical knowledge, reading, and learning about new technologies."
+    avatar  : "/assets/images/authors/ubaydah.jpg"
+
 
