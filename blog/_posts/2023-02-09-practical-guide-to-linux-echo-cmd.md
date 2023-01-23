@@ -165,8 +165,8 @@ echo -e "Page 1\fPage 2\fPage 3"
 
 ~~~{.bash caption="Output"}
 Page 1
-Page 2
-          Page 3
+      Page 2
+            Page 3
 ~~~
 
 This will print the text on separate pages.
@@ -224,8 +224,8 @@ echo -e "Learning\vis\vgood"
 
 ~~~{.bash caption="Output"}
 Learning
-  is
-      good
+             is
+                good
 ~~~
 
 Here, the character adds vertical tab spaces between the texts.
