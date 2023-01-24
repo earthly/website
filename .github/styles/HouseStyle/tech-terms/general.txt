@@ -284,3 +284,7 @@ readonly
 Securitycontext
 
 Deployer
+
+pipelining
+profiler
+Wix
