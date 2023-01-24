@@ -127,14 +127,14 @@ FROM node:18-alpine
 
 Create a directory to host the application on the Docker:
 
-~~~{.bash caption=">_"}
+~~~{.bash caption="Dockerfile"}
 # Create a Docker working directory
 WORKDIR /app
 ~~~
 
 Copy all the dependency files:
 
-~~~{.bash caption=">_"}
+~~~{.bash caption="Dockerfile"}
 # Copy package.json and package-lock.json dependencies files 
 COPY package*.json ./
 
@@ -142,21 +142,21 @@ COPY package*.json ./
 
 Install the application's dependencies:
 
-~~~{.bash caption=">_"}
+~~~{.bash caption="Dockerfile"}
 # Install dependencies inside Docker
 RUN npm install
 ~~~
 
 Copy the application files to the Docker directory:
 
-~~~{.bash caption=">_"}
+~~~{.bash caption="Dockerfile"}
 # Copy the application source code
 COPY . .
 ~~~
 
 Add a port number to expose the Docker image:
 
-~~~{.bash caption=">_"}
+~~~{.bash caption="Dockerfile"}
 # Port number to expose the Node.js app outside of Docker
 EXPOSE 5000
 
