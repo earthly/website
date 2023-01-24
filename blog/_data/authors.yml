@@ -354,6 +354,14 @@ Sarah Lean:
     name    : "Sarah Lean"
     bio     : "I've been a subject matter expert in various solutions through my career including Microsoft Exchange, System Center Configuration Manager and Patch Management, to name a few. In 2022 I was awarded the Microsoft MVP award for Azure. I am a STEM Ambassador and am hopeful that by sharing my story with the next generation it can help to inspire them into a STEM career. I am also the founder of the Glasgow Azure User Group, which is a community group that meets every two months and aims to bring together people who are looking to learn and network with their peers."
     avatar  : "/assets/images/authors/sarah.jpg"
+Paul Ibeabuchi:
+    name    : "Paul Ibeabuchi"
+    bio     : "I'm a frontend engineer with several years' experience in JavaScript, React, HTML5, CSS3, and other technologies. I am also skilled with UI designs using tools such as Figma, Adobe XD, and Adobe Photoshop. I love to write content about web technologies."
+    avatar  : "/assets/images/authors/paul.jpg"
+Artem Oppermann:
+    name    : "Artem Oppermann"
+    bio     : "Artem is a research engineer with a focus on artificial intelligence and machine learning. He started his career during university as a freelance machine learning developer and consultant. After receiving his master's degree in physics, he began working in the autonomous driving industry. Artem shares his passion and expertise in the field of AI by writing technical articles on the subject."
+    avatar  : "/assets/images/authors/artem.jpg"
 Antonello Zanini:
     name    : "Antonello Zanini"
     bio     : "I'm a software engineer, but I prefer to call myself a Technology Bishop. Spreading knowledge through writing is my mission."
@@ -362,3 +370,7 @@ Barine Sambaris:
     name    : "Barine Sambaris"
     bio     : "Barine Sambaris is a former web developer, now currently a python developer and data analyst. She's experienced in building interactive dashboards and data visualization projects with Python frameworks and libraries. Barine is also a freelance technical writer and has written articles on HTML, CSS, JavaScript, Python and Data Analytics."
     avatar  : "/assets/images/authors/barine.jpg"
+Ubaydah Abdulwasiu:
+    name    : "Ubaydah Abdulwasiu"
+    bio     : "Ubaydah is a backend engineer who has built APIs using a variety of languages and frameworks such as Python Django, Golang, and Javascript. She also has experience writing technical documentation and articles. She enjoys passing on technical knowledge, reading, and learning about new technologies."
+    avatar  : "/assets/images/authors/ubaydah.jpg"
