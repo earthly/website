@@ -22,11 +22,11 @@ The application will use [QuestDB](https://questdb.io/), [Celery](https://docs.c
 
 To follow along with this tutorial, ensure you have the following:
 
-- A computer running Ubuntu version 22.04. Note: You  can also work with other Linux distros or an operating system of your choice.
+- A computer running Ubuntu version 22.04. Note: You can also work with other Linux distros or an operating system of your choice.
 - [Python version 3.8](https://www.python.org/downloads/release/python-380)
 - [Docker](https://docs.docker.com/desktop/install/windows-install/) and [Docker Compose](https://docker-docs.netlify.app/compose/install/)
 - A [Finnhub](https://finnhub.io/register) account with a sandbox API key
-- Working knowledge of  Linux, SQL, and Python
+- Working knowledge of Linux, SQL, and Python
 - Familiarity with Plotly Dash and Celery will be helpful
 
 ## Project Overview
@@ -111,6 +111,22 @@ PARTITION BY DAY;
 ~~~
 
 Upon running the above statement the database table named `quotes` will be created and ready for use as shown below:
+
+The `quotes` table created by the above SQL command will have the following fields:
+
+`stock_symbol`: stores unique codes that uniquely identify the company and stock that it issues.
+
+`current_price`: stores the current price of the particular stock.
+
+`high_price`: stores the value when a given stock price rises.
+
+`low_price`: stores the value when a given stock price drops.
+
+`open_price`: stores the opening price at which stock first trades when an exchange opens for the day.
+
+`percent_change`: assists to track a given stock's prices increase or decrease.
+
+`tradets`: stores date and time of the day identifying when a trade happened.
 
 <div class="wide">
 ![Creating QuestDB Table]({{site.images}}{{page.slug}}/CkwHRFz.png)
