@@ -359,6 +359,8 @@ This tutorial has taught you how to use the popular and widely used Gin framewor
 
 You can check out the documentation of the [Gin](https://gin-gonic.com/docs/) framework to learn more about how you can build other specific functionalities for your web applications.
 
+{% include cta/cta1.html %}
+
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
@@ -368,4 +370,3 @@ You can check out the documentation of the [Gin](https://gin-gonic.com/docs/) fr
 - [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
