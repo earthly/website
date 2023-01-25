@@ -28,3 +28,13 @@ contexlib
 Finnhub
 Plotly
 plotly
+
+psql
+tomllib
+Rustmore
+executemany
+Johnsonmouth
+Mathville
+
+multilanguage
+contexlib
