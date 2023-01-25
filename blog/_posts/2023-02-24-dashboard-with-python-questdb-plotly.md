@@ -113,19 +113,12 @@ PARTITION BY DAY;
 Upon running the above statement the database table named `quotes` will be created and ready for use as shown below:
 
 The `quotes` table created by the above SQL command will have the following fields:
-
 `stock_symbol`: stores unique codes that uniquely identify the company and stock that it issues.
-
 `current_price`: stores the current price of the particular stock.
-
 `high_price`: stores the value when a given stock price rises.
-
 `low_price`: stores the value when a given stock price drops.
-
 `open_price`: stores the opening price at which stock first trades when an exchange opens for the day.
-
 `percent_change`: assists to track a given stock's prices increase or decrease.
-
 `tradets`: stores date and time of the day identifying when a trade happened.
 
 <div class="wide">
@@ -137,7 +130,7 @@ The `quotes` table created by the above SQL command will have the following fiel
 In this section, you will define Python dependencies that the project requires, define the worker settings, and create the periodic tasks that will fetch data from Finnhub.
 
 ![Creating Workers Using Celery]({{site.images}}{{page.slug}}/lqv7XJ9.png)
- 
+
 ### Defining Dependencies
 
 The next step is to define the Python dependencies. You will create a `requirements.txt` file in the project root directory with the below contents. The `.txt` file will contain the dependencies that will fetch data and visualize this gathered data.
