@@ -11,13 +11,13 @@ internal-links:
 
 Images: <https://goodnessuc.notion.site/Building-APIs-in-Go-with-the-Gin-Framework-ef892e9ae9174052b4fbb56063410830>
 
-Go is increasing in popularity for many reasons, from speed to ease of use and so much more. The Go standard library has most of the functionalities you'll need to build web applications in the `net/http` package. There are many web-based packages in the Go ecosystem to build fast web applications.
+Go is increasing in popularity for many reasons, from speed to ease of use and so much more. The Go standard library has most of the functionalities you'll need to build web applications in the `net/http` package. There are many web-based [packages](/blog/setup-typescript-monorepo) in the Go ecosystem to build fast web applications.
 
 The Gin framework is one of the popular web packages in the Go ecosystem for building web applications. Gin provides most of the functionalities you'll need in a web framework featuring a [martini-like](https://github.com/go-martini/martini) API with high performance and easy error management.
 
 ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/9c3d3eb6-8f79-4c79-b883-26b8f8698c06/Untitled.png)
 
-Gin is extendable, and the package provides built-in rendering support for HTML, JSON, and XML rendering with documentation support, among many other features.
+Gin is extendable, and the package provides built-in rendering support for HTML, [JSON](/blog/convert-to-from-json), and XML rendering with documentation support, among many other features.
 
 This tutorial will walk you through developing web applications in Go with the Gin framework. You'll learn how to use Gin by building a CRUD API. You'll use the Gin framework for routing, JSON parsing, request-response-related operations, and the GORM package for the database (SQLite) auto migrations and operations.
 
@@ -38,9 +38,9 @@ Once you've set up your Go workspace, install the `gin` package in your working 
 go get github.com/gin-gonic/gin
 ~~~
 
-You'll also need to install the `gorm` package and the `gorm` sqlite driver for connecting to the SQLite database.
+You'll also need to install the `gorm` package and the `gorm` [sqlite](/blog/golang-sqlite) driver for connecting to the SQLite database.
 
-Run these commands in your working directory to install the packages.
+Run these commands in your working directory to install the [packages](/blog/setup-typescript-monorepo).
 
 ~~~
 go get gorm.io/gorm
@@ -235,7 +235,7 @@ curl -X GET "http://localhost:8080/api/v1/TestCompany"
 
 ### The `PUT` Request Handler
 
-`PUT` request handlers are responsible for the update operations. The `PUT` request will receive a parameter and a JSON request body from the client and search the database before updating the database entry.
+`PUT` request handlers are responsible for the update operations. The `PUT` request will receive a parameter and a [JSON](/blog/convert-to-from-json) request body from the client and search the database before updating the database entry.
 
 ~~~
 func UpdateCompany(ctx *gin.Context) {
@@ -351,7 +351,7 @@ Here's the CURL request for the `DeleteCompany` handler function. Insert a compa
      {"message": "Company Deleted"% }
 ~~~
 
-The CURL request sends a PUT request to the `api/v1/:company` endpoint with a JSON payload as the replacement for the update operation.
+The CURL request sends a PUT request to the `api/v1/:company` endpoint with a [JSON](/blog/convert-to-from-json) payload as the replacement for the update operation.
 
 ## Conclusion
 
@@ -368,4 +368,3 @@ You can check out the documentation of the [Gin](https://gin-gonic.com/docs/) fr
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
