@@ -512,5 +512,4 @@ Lastly, you developed a real-world application feature that showed you how to wo
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Add keywords for internal links to front-matter
 
