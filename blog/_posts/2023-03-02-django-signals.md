@@ -30,7 +30,7 @@ To follow along with this article, you need to have a basic understanding of the
 
 ## Overview of Django Signals
 
-A signal is a method of processing tasks before or after the subscribed events are ready to update. Then, whether the interesting period is before or after the event is complete depends on the execution time of the signal. Signals in Django make subscribers aware of particular events that happen in the different components of the application.
+A signal is a method of processing tasks before or after the subscribed events are ready to update. Then, whether the interesting period is before or after the event is complete depends on the execution time of the signal. Signals in Django [make](/blog/makefiles-on-windows) subscribers aware of particular events that happen in the different components of the application.
 
 Signals in Django also decouple various parts of event processes. Decoupling makes sense when you need to avoid the synchronization of application components. In short, signals allow developers to write codes that run on separate events and operating systems threads to achieve better performance.
 
@@ -328,7 +328,7 @@ def send_account_otp(email , user, subject):
     return otp
 ~~~
 
-You must make your system thread safe to prevent the block of the running thread as well. This is because sending emails requires some time, it could cause the system to respond slowly or even crash if the process of sending emails is unsuccessful. Then, resolving this problem will require a separate thread for the procedure.
+You must [make](/blog/using-cmake) your system thread safe to prevent the block of the running thread as well. This is because sending emails requires some time, it could cause the system to respond slowly or even crash if the process of sending emails is unsuccessful. Then, resolving this problem will require a separate thread for the procedure.
 
 Create a `thread.py` file inside your application folder. Add the below code snippets:
 
@@ -482,7 +482,7 @@ Then, an HTTP response is sent back to the client with the sample output;
 
 Note that the HTTP response is not dependent on the email threading. That is, the response is generated as fast as possible instead of waiting for the email to finish. This is the advantage of separating threads when working on application components.
 
-Now launch your development server and use your preferred API testing tool such as [Postman](https://www.postman.com/downloads/) to test the endpoint. Next, send a `POST` request with the user's email as the body to `http://localhost:8000/user/account/forgot password`.
+Now launch your development server and use your preferred [API testing] tool such as [Postman](https://www.postman.com/downloads/) to test the endpoint. Next, send a `POST` request with the user's email as the body to `http://localhost:8000/user/account/forgot password`.
 
 The images below show a sample output of the endpoint working as expected. Hopefully, if you follow along, you will achieve the same results. As you can see, the endpoint returns a successful message for this test.
 
@@ -509,5 +509,4 @@ Lastly, you developed a real-world application feature that showed you how to wo
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
 - [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
