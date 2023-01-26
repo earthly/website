@@ -39,7 +39,7 @@ pip install streamlit
 
 To check if the installation worked, create a new Python script in your editor, import streamlit under the alias `st`, and use the `write` function to print out some text. The `st.write()` function is used to display information like text, dataframes, or figures.
 
-~~~{.bash caption=">_"}
+~~~{.python caption="data_analysis.py"}
 import streamlit as st
 st.write("Hello World!")
 st.write("Hello Streamlit!")
@@ -72,7 +72,7 @@ Github](https://github.com/danielgrijalva/movie-stats).
 
 This dataset contains over 7000 movie entries—from the period 1986-2016—scraped from IMDb (Internet Movie Database). It lists movies of different genres and countries. I'll be using this dataset to create different interactive plots for this tutorial.
 
-~~~{.python caption=""}
+~~~{.python caption="data_analysis.py"}
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -80,18 +80,18 @@ import matplotlib.pyplot as plt
 
 We use the pandas `read_csv()` function to read in the data into a dataframe.
 
-~~~{.python caption=""}
+~~~{.python caption="data_analysis.py"}
 #read in the file
 movies_data = pd.read_csv("https://raw.githubusercontent.com/danielgrijalva/movie-stats/7c6a562377ab5c91bb80c405be50a0494ae8e582/movies.csv")
 ~~~
 
 To generate a summary of the dataset and check for missing values and duplicates, we'll use the following functions:
 
-~~~{.python caption=""}
+~~~{.python caption="data_analysis.py"}
 movies_data.info()
 ~~~
 
-~~~{.python caption="Output"}
+~~~{caption="Output"}
 #output
 <class 'pandas.core.frame.DataFrame'>
 RangeIndex: 7668 entries, 0 to 7667
@@ -118,11 +118,11 @@ dtypes: float64(5), int64(1), object(9)
 
 As seen, `movies_data.info()` gives a quick overview of our dataset. We can see that there are 7668 entries (rows) and a total of 15 columns.
 
-~~~{.python caption=""}
+~~~{.python caption="data_analysis.py"}
 movies_data.duplicated()
 ~~~
 
-~~~{.python caption="Output"}
+~~~{caption="Output"}
 #output
 0       False
 1       False
@@ -140,11 +140,11 @@ Length: 7668, dtype: bool
 
 The method `movies_data.duplicated()` checks if there are any duplicates. All rows returned `False` which means there are no duplicates.
 
-~~~{.python caption=""}
+~~~{.python caption="data_analysis.py"}
 movies_data.count()
 ~~~
 
-~~~{.python caption="Output"}
+~~~{caption="Output"}
 #output
 name        7668
 rating      7591
@@ -165,13 +165,13 @@ runtime     7664
 
 Calling the `count()` method on the dataframe: `movies_data.count()` returns the sum of all entries in a column. Columns with less than 7668 entries suggest missing values.
 
-~~~{.python caption=""}
+~~~{.python caption="data_analysis.py"}
 movies_data.dropna()
 ~~~
 
 We dropped all columns with missing data using `movies_data.dropna()`. The output is a new dataframe. Next, we'll create a [Matplotlib](/blog/stop-using-pie-charts) bar chart that shows the average movie budget of movies in different genres.
 
-~~~{.python caption=""}
+~~~{.python caption="data_analysis.py"}
 st.write("""
 Average Movie Budget, Grouped by Genre
 """)
@@ -183,7 +183,7 @@ avg_bud = avg_budget['budget']
 
 The `groupby` method groups data by categories using the columns of a dataset and applies a function to it. Here we group by the 'genre' and the 'budget'. And we apply the  `mean()` and the `round()` functions. The `mean()` function returns the average of a list of numbers while the `round()` function rounds up digits and returns a float. The `reset_index()` method resets the index of an updated dataframe; creating a new row index that starts at 0. Resetting indexes is important so [pandas](/blog/plotting-rainfall-data-with-python-and-matplotlib) can find the indexes of elements.
 
-~~~{.python caption=""}
+~~~{.python caption="data_analysis.py"}
 fig = plt.figure(figsize = (19, 10))
 
 plt.bar(genre, avg_bud, color = 'maroon')
@@ -195,7 +195,7 @@ Budget of Movies in Each Genre')
 
 [Matplotlib](/blog/plotting-rainfall-data-with-python-and-matplotlib) has a function called `show()` that creates a figure object. In Streamlit, this line should be replaced with `st.pyplot(variable_name)` where `variable_name` is the variable of visualization.
 
-~~~{.python caption=""}
+~~~{.python caption="data_analysis.py"}
 st.pyplot(fig)
 
 ~~~
@@ -216,7 +216,7 @@ Columns in Streamlit operate just as they do in documents and on web pages. They
 
 To create columns, simply assign them to the variables that match the number of columns you need. Here, `col1` and   `col2` are the variable names because we need two columns.
 
-~~~{.python caption=""}
+~~~{.python caption="data_analysis.py"}
 col1, col2 = st.columns(2)
 col1.write('# This is Column 1')
 col2.write('# This is Column 2')
@@ -228,7 +228,7 @@ col2.write('# This is Column 2')
 
 We can as well create columns of different dimensions, where columns are of different sizes.  
 
-~~~{.python caption=""}
+~~~{.python caption="data_analysis.py"}
 st.write('### Columns of different sizes')
 col1, col2, col3, col4 = st.columns([1,3,1,2])
 
@@ -264,7 +264,7 @@ Here's an overview of widgets used in this tutorial:
 
 To link data to a widget, we first convert the needed column to a unique list. This is important so only unique values are selected:
 
-~~~{.python caption=""}
+~~~{.python caption="data_analysis.py"}
 # Creating sidebar widget unique values from our movies dataset
 score_rating = movies_data['score'].unique().tolist()
 genre_list = movies_data['genre'].unique().tolist()
@@ -280,7 +280,7 @@ The `with` statement provides a simpler, more organized way of displaying Stream
 
 We use the `with` statement to group all elements of a layout together. We've implemented it with a sidebar layout, as shown:
 
-~~~{.python caption=""}
+~~~{.python caption="data_analysis.py"}
 with st.sidebar:
        st.write("Select a range on the slider (it represents movie score) \
        to view the total number of movies in a genre that falls \
@@ -309,14 +309,14 @@ A selectbox is created by calling the `st.selectbox()` function. The selectbox r
 
 To add interactivity among the slider, the selectbox, the multiselect widgets, and the plots on the main page, we need to create filters. We do this by mapping the columns of the dataframe to their unique list and using it in the analysis. By doing so, we can ensure that only the selected widgets affect a plot.
 
-~~~{.python caption=""}
+~~~{.python caption="data_analysis.py"}
 #Configure and filter the slider widget for interactivity
 score_info = (movies_data['score'].between(*new_score_rating))
 ~~~
 
 We will be linking the slider widget to the line chart that displays the number of movies in a particular genre that have scores that fall within a specified range. We mapped the 'score' column to the slider widget. Therefore, whenever a user interacts with the slider, the line chart changes as well.
 
-~~~{.python caption=""}
+~~~{.python caption="data_analysis.py"}
 #Filter the selectbox and multiselect widget for interactivity
 new_genre_year = (movies_data['genre'].isin(new_genre_list)) \
 & (movies_data['year'] == year)
@@ -324,7 +324,7 @@ new_genre_year = (movies_data['genre'].isin(new_genre_list)) \
 
 We need the multiselect widget and the selectbox that holds genre and year to work together. We will be creating a dataframe that changes movie titles according to the year and genre(s) selected. In our configuration, we mapped the 'genre' column to the variable of our multiselect widget and mapped the 'year' column to the variable of our selectbox widget and joined them both using 'and'.
 
-~~~{.python caption=""}
+~~~{.python caption="data_analysis.py"}
 # visualization section
 #group the columns needed for visualizations
 col1, col2 = st.columns([2,3])
