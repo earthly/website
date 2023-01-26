@@ -502,6 +502,8 @@ In addition, we discussed two ways of connecting signals with receiver functions
 
 Lastly, you developed a real-world application feature that showed you how to work with signals and threading to send emails. As a next step, try exploring more about [Django signals] (<https://docs.djangoproject.com/en/4.1/topics/signals/>).
 
+{% include cta/cta1.html %}
+
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
@@ -509,4 +511,4 @@ Lastly, you developed a real-world application feature that showed you how to wo
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
-- [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
+
