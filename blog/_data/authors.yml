@@ -370,5 +370,7 @@ Ubaydah Abdulwasiu:
     name    : "Ubaydah Abdulwasiu"
     bio     : "Ubaydah is a backend engineer who has built APIs using a variety of languages and frameworks such as Python Django, Golang, and Javascript. She also has experience writing technical documentation and articles. She enjoys passing on technical knowledge, reading, and learning about new technologies."
     avatar  : "/assets/images/authors/ubaydah.jpg"
-
-
+Arafat Olayiwola:
+    name    : "Arafat Olayiwola"
+    bio     : "Arafat is a passionate developer who is drawn to creating real-world solutions. He is currently a member of the AWS Community Builders. He is also constantly interested in learning more about distributed systems."
+    avatar  : "/assets/images/authors/arafat.jpeg"
