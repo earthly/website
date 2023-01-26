@@ -120,21 +120,21 @@ First, create a `Dockerfile` file in the `demo_node_app` directory. Inside this 
 
 A [DockerHub](https://hub.docker.com/_/node) image to run Node.js:
 
-~~~{.bash caption=">_"}
+~~~{.dockerfile caption="Dockerfile"}
 # Pull the Node.js image
 FROM node:18-alpine
 ~~~
 
 Create a directory to host the application on the Docker:
 
-~~~{.bash caption="Dockerfile"}
+~~~{.dockerfile caption="Dockerfile"}
 # Create a Docker working directory
 WORKDIR /app
 ~~~
 
 Copy all the dependency files:
 
-~~~{.bash caption="Dockerfile"}
+~~~{.dockerfile caption="Dockerfile"}
 # Copy package.json and package-lock.json dependencies files 
 COPY package*.json ./
 
@@ -142,21 +142,21 @@ COPY package*.json ./
 
 Install the application's dependencies:
 
-~~~{.bash caption="Dockerfile"}
+~~~{.dockerfile caption="Dockerfile"}
 # Install dependencies inside Docker
 RUN npm install
 ~~~
 
 Copy the application files to the Docker directory:
 
-~~~{.bash caption="Dockerfile"}
+~~~{.dockerfile caption="Dockerfile"}
 # Copy the application source code
 COPY . .
 ~~~
 
 Add a port number to expose the Docker image:
 
-~~~{.bash caption="Dockerfile"}
+~~~{.dockerfile caption="Dockerfile"}
 # Port number to expose the Node.js app outside of Docker
 EXPOSE 5000
 
@@ -164,7 +164,7 @@ EXPOSE 5000
 
 Finally, add the command to run the application:
 
-~~~{.bash caption=">_"}
+~~~{.dockerfile caption="Dockerfile"}
 # Command to run the application
 CMD ["node", "index.js"]
 ~~~
@@ -197,7 +197,7 @@ First, you need the [Terraform AWS provider](https://registry.terraform.io/provi
 
 Here you are using AWS. Therefore, inside the `main.tf` file, **add the AWS provider** as follows:
 
-~~~{ caption="main.tf"}
+~~~{.terraform caption="main.tf"}
 # main.tf
 terraform {
   required_providers {
@@ -211,7 +211,7 @@ terraform {
 
 You can always check the latest [AWS provider](https://registry.terraform.io/providers/hashicorp/aws/latest/docs). Go ahead and provide the **AWS configuration credentials** to allow Terraform to connect to AWS:
 
-~~~{.bash caption="main.tf"}
+~~~{.terraform caption="main.tf"}
 # main.tf
 provider "aws" {
   region  = "us-east-1" #The region where the environment 
@@ -223,7 +223,7 @@ provider "aws" {
 
 Finally, create an ECR using Terraform as follows:
 
-~~~{.bash caption="main.tf"}
+~~~{.terraform caption="main.tf"}
 # main.tf
 resource "aws_ecr_repository" "app_ecr_repo" {
   name = "app-repo"
@@ -322,7 +322,7 @@ Finally, refresh the repository's page to verify you've successfully pushed the 
 So far, you've created a repository and deployed the image. But whenever you want to launch, you'll need a **target**. A cluster acts as the container target. It takes a task into the cluster configuration and runs that task within the cluster.
 The ECS agent communicates with the ECS cluster and receives requests to launch the container. To create a cluster where you'll run your task, add the following configurations to your `main.tf` file:
 
-~~~{caption="main.tf"}
+~~~{.terraform caption="main.tf"}
 # main.tf
 resource "aws_ecs_cluster" "my_cluster" {
   name = "app-cluster" # Name your cluster here
@@ -360,7 +360,7 @@ In the next steps, you'll write the configuration that a task requires to spin u
 
 You need to build a task definition to get the application ready to operate on ECS. The task specification is a text file in JSON format that lists one or more resources that make up your container. Using Task definition JSON format, provide the container specifications as follows:
 
-~~~{ caption="main.tf"}
+~~~{.terraform caption="main.tf"}
 # main.tf
 resource "aws_ecs_task_definition" "app_task" {
   family                   = "app-first-task" # Name your task
@@ -393,7 +393,7 @@ As described in the above config block, Terraform will create a task named `app-
 
 Creating a task definition requires `ecsTaskExecutionRole` to be added to your IAM. The above task definition needs this role, and it is specified as `aws_iam_role.ecsTaskExecutionRole.arn`. In the next step, create a resource to execute this role as follows:
 
-~~~{ caption="main.tf"}
+~~~{.terraform caption="main.tf"}
 # main.tf
 resource "aws_iam_role" "ecsTaskExecutionRole" {
   name               = "ecsTaskExecutionRole"
@@ -463,7 +463,7 @@ First, you need to create a [Virtual Private Cloud Module (VPC)](https://registr
 
 Go ahead and create a default [VPC](https://earthly.dev/blog/aws-networks/#vpcs) and [subnets](https://earthly.dev/blog/aws-networks/#subnets) information for your AWS availability zones.
 
-~~~{ caption="main.tf"}
+~~~{.terraform caption="main.tf"}
 # main.tf
 # Provide a reference to your default VPC
 resource "aws_default_vpc" "default_vpc" {
@@ -485,7 +485,7 @@ resource "aws_default_subnet" "default_subnet_b" {
 
 Next, create a security group that will route the HTTP traffic using a load balancer. Go ahead and implement a load balancer as follows:
 
-~~~{ caption="main.tf"}
+~~~{.terraform caption="main.tf"}
 # main.tf
 resource "aws_alb" "application_load_balancer" {
   name               = "load-balancer-dev" #load balancer name
@@ -505,7 +505,7 @@ The above configuration creates a load balancer that will distribute the workloa
 
 The next important part of allowing HTTP traffic to access the [ECS](/blog/how-to-setup-and-use-amazons-elastic-container-registry) cluster is to create a **security group**. This will be crucial for accessing the application later in this guide. Go ahead and add the security group for the load balancer as follows:
 
-~~~{ caption="main.tf"}
+~~~{.terraform caption="main.tf"}
 # main.tf
 # Create a security group for the load balancer:
 resource "aws_security_group" "load_balancer_security_group" {
@@ -527,7 +527,7 @@ resource "aws_security_group" "load_balancer_security_group" {
 
 Configure the load balancer with the VPC networking we created earlier. This will distribute the balancer traffic to the available zone:
 
-~~~{ caption="main.tf"}
+~~~{.terraform caption="main.tf"}
 # main.tf
 resource "aws_lb_target_group" "target_group" {
   name        = "target-group"
@@ -552,7 +552,7 @@ resource "aws_lb_listener" "listener" {
 
 The last step is to create an ECS Service and its details to maintain task definition in an Amazon ECS cluster. The service will run the [cluster, task, and Fargate](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/AWS_Fargate.html) behind the created load balancer to distribute traffic across the containers that are associated with the service. You can achieve this with the following block:
 
-~~~{ caption="main.tf"}
+~~~{.terraform caption="main.tf"}
 # main.tf
 resource "aws_ecs_service" "app_service" {
   name            = "app-first-service"     # Name the service
@@ -577,7 +577,7 @@ resource "aws_ecs_service" "app_service" {
 
 To access the ECS service over HTTP while ensuring the VPC is more secure, create security groups that will only allow the traffic from the created load balancer. To do so, create a `aws_security_group.service_security_group` resource as follows:
 
-~~~{ caption="main.tf"}
+~~~{.terraform caption="main.tf"}
 # main.tf
 resource "aws_security_group" "service_security_group" {
   ingress {
@@ -599,7 +599,7 @@ resource "aws_security_group" "service_security_group" {
 
 Additionally, add an output config that will extract the load balancer URL value from the state file and log it onto the terminal.
 
-~~~{ caption="main.tf"}
+~~~{.terraform caption="main.tf"}
 # main.tf
 #Log the load balancer app URL
 output "app_url" {
