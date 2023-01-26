@@ -1,15 +1,17 @@
 ---
-title: "Put Your Best Title Here"
+title: "Building APIs in Go with the Gin Framework"
 categories:
   - Tutorials
 toc: true
 author: Ukeje Goodness
 
 internal-links:
- - just an example
+ - APIs
+ - Go
+ - Gin
+ - Framework
+ - Web Application
 ---
-
-Images: <https://goodnessuc.notion.site/Building-APIs-in-Go-with-the-Gin-Framework-ef892e9ae9174052b4fbb56063410830>
 
 Go is increasing in popularity for many reasons, from speed to ease of use and so much more. The Go standard library has most of the functionalities you'll need to build web applications in the `net/http` package. There are many web-based [packages](/blog/setup-typescript-monorepo) in the Go ecosystem to build fast web applications.
 
@@ -367,4 +369,3 @@ You can check out the documentation of the [Gin](https://gin-gonic.com/docs/) fr
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Add keywords for internal links to front-matter
