@@ -6,7 +6,9 @@ toc: true
 author: Arafat Olayiwola
 
 internal-links:
- - just an example
+ - Django
+ - Python
+ - Signals
 ---
 
 In Django, signals allow certain senders to inform a set of receivers that specific actions have occurred. Django signals are used to send and receive specific essential information whenever a data model is saved, changed, or even removed. This relates to specific past or present client-provided events that occur in real time.
@@ -44,7 +46,7 @@ Dispatchers are the built-in `connect()` and `disconnect()` methods of Django si
 
 To register a receiver function that gets called by signals, you use Django signals dispatcher `connect()` method. For instance, let's make a receiver function and connect to it once an HTTP request is sent.
 
-~~~
+~~~{.python caption="get_notified.py"}
     def get_notified(sender, **kwargs):
         """ Printing a notification string. """
         print("HTTP request finished")
@@ -54,7 +56,7 @@ The `get_notified()` function prints out the notification string. It is a receiv
 
 Now, let's connect the receiver with the dispatcher. There are two ways to achieve this. The first way is to import the `request_finished` class from Django signals and pass the receiver function created when calling the `connect()` method on `request_finished`, as shown:
 
-~~~
+~~~{.python caption="get_notified.py"}
     from django.core.signals import request_finished
 
     request_finished.connect(get_notified)
@@ -66,7 +68,7 @@ The other way to register a receiver function is through **decorators**.
 
 In a nutshell, [decorators](https://docs.python.org/3/glossary.html#term-decorator) are functions that return a different internal function that is abstracted away from usage outside the context of the decorator. This means that the `receiver` function will be passed into the internal method defined in the `connect()` method in the Django source code.
 
-~~~
+~~~{.python caption="get_notified.py"}
     from django.core.signals import request_finished
     from django.dispatch import receiver
 
@@ -81,7 +83,7 @@ How to disconnect a receiver function from the signal? `<signal>.disconnect(rece
 
 Therefore, the receiver function can be disconnected by calling the `disconnect()` method on the `request_finished` module.
 
-~~~
+~~~{.python caption="disconnect.py"}
     from django.core.signals import request_finished
     request_finished.disconnect(dispatch_uid=REQUEST_FINISH_DISPATCH_UID)
 ~~~
@@ -98,7 +100,7 @@ Here, we'll go over Django's most popular signals. These signals are typically t
 
 The model class `save()` method is always called whenever it is saving an instance to the database in Django. For example:
 
-~~~
+~~~{.python caption="django_models_example.py"}
     #models.py
     from django.db.models import models
 
@@ -138,7 +140,7 @@ This signal is useful in many real-world applications like keeping track of the 
 
 The snippet below will signal the `callback()` receiver function when the `User` model is ready to instantiate a new object of the class.
 
-~~~{.python caption=""}
+~~~{.python caption="pre_init.py"}
     from django.core.signals import pre_init
     from datetime import datetime
 
@@ -149,7 +151,7 @@ The snippet below will signal the `callback()` receiver function when the `User`
 
 Here's a sample output:
 
-~~~
+~~~{caption="Output"}
 User model __init()__  method is called initially at    
 2023-01-12 16:50:42.193280
 ~~~
@@ -163,7 +165,7 @@ The `post_init` signal is sent when the `___init__()` method finishes execution 
 - `sender`: the model class that transmits the signal.
 - `instance`: another name of the object produced by the `__init__()` model method.
 
-~~~{.python caption=""}
+~~~{.python caption="post_init.py"}
     from django.core.signals import post_init
     from datetime import datetime
 
@@ -195,7 +197,7 @@ When a signal needs to be sent *before* a model instance is saved to the databas
 
 So we have a model `Profile` that needs `pre_save`  and `post_save` signals. This is just an illustration of how these signals can be used.
 
-~~~
+~~~{.python caption="pre_save.py"}
 #models.py
 from django.db.models.signals import pre_save
 
@@ -216,7 +218,7 @@ You'll observe that in response to a `pre_save` signal to the receiver decorator
 
 This signal is activated each time a model instance is saved. Except for the Boolean keyword `created`, this signal has all the same arguments as `pre_save.` Once an instance is created, the model will send the Boolean `created`  to the receiver.
 
-~~~{.python caption=""}
+~~~{.python caption="post_save.py"}
 #models.py
 from django.db.models.signals import post_save
 from django.contrib.auth.models import User
@@ -239,7 +241,7 @@ To call the `post_save` signal, the `update_profile()` function is decorated as 
 
 Similarly, `pre_delete` and `post_delete` signals perform their receiver functions before and after each instance is removed, respectively. Let's take a look at how these signals are used in the examples below.
 
-~~~
+~~~{.python caption="delete_signals.py"}
 #models.py
 from django.db.models.signals import pre_delete, post_delete
 from django.contrib.auth.models import User
@@ -258,13 +260,13 @@ def get_order_notification(sender, **kwargs):
 
 Sample output for the `pre_delete` signal will be like this:
 
-~~~
+~~~{caption="Output"}
 The tomato groceries delete request was received on 2023-01-12-16:50:42.193280.
 ~~~
 
 While the sample output for the `post_delete` signal will be like this:
 
-~~~
+~~~{caption="Output"}
 The grocery was deleted successfully on 2023-01-12-16:52:42.193290.
 ~~~
 
@@ -282,7 +284,7 @@ Set up and start your Django project's admin section at the domain. `http://loca
 
 Next, create a superuser who has access to the admin panel. Run your migration commands after that to create a file for the `User` model migration and migrate the registered model to the database.
 
-~~~
+~~~{.bash caption=">_"}
 python3 manage.py createsuperuser
 python3 manage.py makemigrations
 python3 manage.py migrate
@@ -290,7 +292,7 @@ python3 manage.py migrate
 
 Launch your development server in a separate terminal and log in to the admin panel to create a user for testing.
 
-~~~
+~~~{.bash caption=">_"}
 python3 manage.py runserver
 ~~~
 
@@ -304,7 +306,7 @@ Additionally, we'll be using [mailtrap](https://mailtrap.io/blog/django-send-ema
 
 Create a `helper.py` file inside your application folder, and add the following email sender code. We are utilizing Django's built-in `send_mail` module.
 
-~~~
+~~~{.python caption="helper.py"}
 #helper.py
 from django.core.mail import send_mail
 from smtplib import SMTPException
@@ -332,7 +334,7 @@ You must [make](/blog/using-cmake) your system thread safe to prevent the block 
 
 Create a `thread.py` file inside your application folder. Add the below code snippets:
 
-~~~
+~~~{.python caption="thread.py"}
 # thread.py
 
 import threading
@@ -368,7 +370,7 @@ In addition, the `get_otp()` method returns a one-time password sent to the user
 
 Let's now add the `ForgetPassword` model class. Add the following by editing your `models.py` file in the program:
 
-~~~
+~~~{.python caption="models.py"}
 #models.py
 from django.db import models
 from django.contrib.auth.models import User
@@ -416,14 +418,14 @@ The value of the one-time password is then accessed through the `get_otp()` meth
 
 Now run your migrations to register the newly created model:
 
-~~~
+~~~{.bash caption=">_"}
 python3 manage.py makemigrations
 python3 manage.py migrate
 ~~~
 
 Add an endpoint route in your application `urls.py` file. This route is forwarded to the views class `ForgotPasswordView` when your application receives an HTTP `POST` request.
 
-~~~
+~~~{.python caption="urls.py"}
 #urls.py
 from . import views
 
@@ -433,7 +435,7 @@ path('user/account/forgot-password', views.ForgotPasswordView.as_view(), name="f
 
 Let's also modify the `views.py` file for the endpoint incoming HTTP request.
 
-~~~
+~~~{.python caption="views.py"}
 #views.py
 
 from rest_framework.views import APIView
@@ -473,7 +475,7 @@ Remember that a `post_save` signal has been configured in the `models.py` file t
 
 Then, an HTTP response is sent back to the client with the sample output;
 
-~~~
+~~~{caption="Output"}
 {
     "Message": "Success. Check your email for the opt.",
     "Status_Code": 201
@@ -500,7 +502,7 @@ How object instances are being created and saved internally. The `save()` and `_
 
 In addition, we discussed two ways of connecting signals with receiver functions. You also learned how signals like `post_init`, `pre_init`, `pre_save`, `post_save`, `pre_delete` and `post_delete` work with their examples. This led us to the discussion about the signal disconnection method which is the `disconnect()` and how it can be applied.
 
-Lastly, you developed a real-world application feature that showed you how to work with signals and threading to send emails. As a next step, try exploring more about [Django signals] (<https://docs.djangoproject.com/en/4.1/topics/signals/>).
+Lastly, you developed a real-world application feature that showed you how to work with signals and threading to send emails. As a next step, try exploring more about [Django signals](https://docs.djangoproject.com/en/4.1/topics/signals/).
 
 {% include cta/cta1.html %}
 
