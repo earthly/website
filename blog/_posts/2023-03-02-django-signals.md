@@ -84,6 +84,7 @@ How to disconnect a receiver function from the signal? `<signal>.disconnect(rece
 Therefore, the receiver function can be disconnected by calling the `disconnect()` method on the `request_finished` module.
 
 ~~~{.python caption="disconnect.py"}
+
     from django.core.signals import request_finished
     request_finished.disconnect(dispatch_uid=REQUEST_FINISH_DISPATCH_UID)
 ~~~
@@ -146,7 +147,8 @@ The snippet below will signal the `callback()` receiver function when the `User`
 
     @receiver(pre_init, sender=User)
     def callback(sender, **kwargs):
-        print(f"User model __init()__  method is called initially at {datetime.now()}")
+        print(f"User model __init()__  method is called initially \
+        at {datetime.now()}")
 ~~~
 
 Here's a sample output:
@@ -251,7 +253,8 @@ class Order(models.Model):
 
 @receiver(pre_delete, sender=Order)
 def get_order_notification(sender, instance, **kwargs):
-    print(f"The {instance.grocery} groceries delete request was received on {datetime.now()}.")
+    print(f"The {instance.grocery} groceries delete request was \
+    received on {datetime.now()}.")
 
 @receiver(post_delete, sender=Order)
 def get_order_notification(sender, **kwargs):
@@ -261,7 +264,9 @@ def get_order_notification(sender, **kwargs):
 Sample output for the `pre_delete` signal will be like this:
 
 ~~~{caption="Output"}
-The tomato groceries delete request was received on 2023-01-12-16:50:42.193280.
+
+The tomato groceries delete request was received on
+2023-01-12-16:50:42.193280.
 ~~~
 
 While the sample output for the `post_delete` signal will be like this:
@@ -316,7 +321,8 @@ import secrets
         
 def send_account_otp(email , user, subject):
     otp = secrets.choice(range(1000, 10000))
-    message = f"Hi {user.username},\n\nYour account one-time-password is {otp}.\
+    message = f"Hi {user.username},\n\nYour account one-time-password \
+    is {otp}.\
         \n This one-time password will expire in the next 10 minutes.\
         \n Kindly supply it to move forward in the pipeline.\n\n\nCheers"
     email_from = EMAIL_HOST_USER
@@ -353,7 +359,8 @@ class SendForgetPasswordEmail(threading.Thread):
     def run(self):
         try:
             subject = "@noreply: Your password reset one time password."
-            self._otp = send_account_otp(self.email, self.user, subject) #this returns the sent otp
+            self._otp = send_account_otp(self.email, self.user, subject) 
+            #this returns the sent otp
         except SMTPException as e:
             print('There was an error sending an email. '+ e)
 
@@ -377,7 +384,8 @@ from django.contrib.auth.models import User
 
 class ForgetPassword(models.Model):
     user = models.ForeignKey(User , on_delete=models.CASCADE)
-    forget_password_otp = models.CharField(max_length=10 ,null=True, blank=True)
+    forget_password_otp = models.CharField(max_length=10 ,null=True, \
+    blank=True)
     is_user_password_updated = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -390,10 +398,13 @@ def send_email_otp(sender, instance, created, **kwargs):
     try:
         if created:
             """ EXECUTING THREAD TO SEND EMAIL """
-            new_thread = SendForgetPasswordEmail(email=instance.email , user=instance.user)
+            new_thread = SendForgetPasswordEmail(email=instance.email ,\
+             user=instance.user)
             new_thread.start()
-            new_thread.join() #joining another thread to run one to catch the otp value
-            instance.forget_password_otp = new_thread.get_otp()  #setting the user otp
+            new_thread.join() #joining another thread to run one \
+            #to catch the otp value
+            instance.forget_password_otp = new_thread.get_otp()  
+            #setting the user otp
             instance.save()
             return instance
     except SystemError as e:
@@ -429,7 +440,8 @@ Add an endpoint route in your application `urls.py` file. This route is forwarde
 #urls.py
 from . import views
 
-path('user/account/forgot-password', views.ForgotPasswordView.as_view(), name="forgot-password"),
+path('user/account/forgot-password', views.ForgotPasswordView.as_view(), \
+name="forgot-password"),
 
 ~~~
 
@@ -453,12 +465,14 @@ class ForgotPasswordView(APIView):
             
         except Exception as err:
             return Response({
-                "message": f"User account with email {request.data['email']} not found.",
+                "message": f"User account with email \
+                {request.data['email']} not found.",
                 "status_code": status.HTTP_404_NOT_FOUND,
                 "error": str(err)
             })
 
-        forgot_password_obj = ForgotPassword.objects.filter(user=user).first()
+        forgot_password_obj = ForgotPassword.objects.filter\
+        (user=user).first()
         forgot_password_obj.is_user_password_updated = True
         forgot_password_obj.save()
         return Response({
@@ -488,11 +502,15 @@ Now launch your development server and use your preferred [API testing] tool suc
 
 The images below show a sample output of the endpoint working as expected. Hopefully, if you follow along, you will achieve the same results. As you can see, the endpoint returns a successful message for this test.
 
+<div class="wide">
 ![postman_endpoint_testing]({{site.images}}{{page.slug}}/Exxg4Ey.png)
+</div>
 
 The other image below shows the "mailtrap" sandbox environment for simulating email production:
 
+<div class="wide">
 ![mailtrap_sandbox_email_inbox]({{site.images}}{{page.slug}}/nplikZE.png)
+</div>
 
 ## Conclusion
 
@@ -509,7 +527,3 @@ Lastly, you developed a real-world application feature that showed you how to wo
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
-
