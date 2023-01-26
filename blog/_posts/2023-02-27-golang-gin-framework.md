@@ -1,5 +1,5 @@
 ---
-title: "Building APIs in Go with the Gin Framework"
+title: "Go with the Gin Framework"
 categories:
   - Tutorials
 toc: true
@@ -17,7 +17,10 @@ Go is increasing in popularity for many reasons, from speed to ease of use and s
 
 The Gin framework is one of the popular web packages in the Go ecosystem for building web applications. Gin provides most of the functionalities you'll need in a web framework featuring a [martini-like](https://github.com/go-martini/martini) API with high performance and easy error management.
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/9c3d3eb6-8f79-4c79-b883-26b8f8698c06/Untitled.png)
+<div class="wide">
+
+![Untitled]({{site.images}}{{page.slug}}/Untitled.png)\
+</div>
 
 Gin is extendable, and the package provides built-in rendering support for HTML, [JSON](/blog/convert-to-from-json), and XML rendering with documentation support, among many other features.
 
@@ -34,9 +37,13 @@ You'll need to meet a few prerequisites to understand and follow this hands-on t
 
 ## Getting Started With Gin and GORM
 
+<div style="height= 50%">
+![Starting]({{site.images}}{{page.slug}}/start.png)\
+</div>
+
 Once you've set up your Go workspace, install the `gin` package in your working directory using this command.
 
-~~~
+~~~{.go caption=">_"}
 go get github.com/gin-gonic/gin
 ~~~
 
@@ -44,14 +51,14 @@ You'll also need to install the `gorm` package and the `gorm` [sqlite](/blog/gol
 
 Run these commands in your working directory to install the [packages](/blog/setup-typescript-monorepo).
 
-~~~
+~~~{.go caption=">_"}
 go get gorm.io/gorm
 go get gorm.io/driver/sqlite
 ~~~
 
 These are the imports you'll need for this tutorial.
 
-~~~
+~~~{.go caption="gin.go"}
 import (
     "github.com/gin-gonic/gin"
     "gorm.io/driver/sqlite"
@@ -69,7 +76,7 @@ GORM uses structs for the database model. You can declare the struct with constr
 
 Here's an example `company` struct with `gorm` and `json` tags.
 
-~~~
+~~~{.go caption="gin.go"}
 type Companies struct {
     Name    string `gorm:"primary_key" json:"name"`
     Created int `json:"created"`
@@ -81,11 +88,13 @@ The `Name` field has the primary key constraint, and the constraints would refle
 
 On database migrations, GORM creates a table that matches the struct model. Here's an example of a database table matching the struct model after a series of POST requests.
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/5ada52ac-d95c-4f3c-85d0-27e4edeac8a3/Untitled.png)
+<div class="wide">
+![Untitled]({{site.images}}{{page.slug}}/Untitled (1).png)\
+</div>
 
 You can declare a function to manage database connections and auto migrations.
 
-~~~
+~~~{.go caption="gin.go"}
 func DBConnection() (*gorm.DB, error) {
     db, err := gorm.Open(sqlite.Open("test.db"), &gorm.Config{})
     if err != nil {
@@ -111,7 +120,7 @@ Handler functions will house your business logic based on the input and response
 
 A typical handler `gin` handler function takes in the `gin` context struct.
 
-~~~
+~~~{.go caption="gin.go"}
 func GetCompany(ctx *gin.Context) {
 
 }
@@ -125,7 +134,7 @@ You'll need to mount the handlers, define the routes and their respective handle
 
 You can use the `Default` method to create a `gin` router instance. The `Default` method returns a router instance.
 
-~~~
+~~~{.go caption="gin.go"}
 func main() {
     router := Gin.Default()
     log.Fatal(router.Run(":8080"))
@@ -140,7 +149,7 @@ The `Run` method of your router instance starts a server to run on the specified
 
 The `POST` request handler function will accept JSON input from the client for GORM to migrate to the decoded JSON struct database.  
 
-~~~
+~~~{.go caption="gin.go"}
 func PostCompany(ctx *gin.Context) {
     var company Companies
     if err := ctx.ShouldBindJSON(&company); err != nil {
@@ -157,7 +166,8 @@ func PostCompany(ctx *gin.Context) {
         log.Println(err)
     }
     if err := db.Create(&newCompany).Error; err != nil {
-        ctx.JSON(http.StatusInternalServerError, gin.H{"error": "Database Migration Error"})
+        ctx.JSON(http.StatusInternalServerError, \
+        gin.H{"error": "Database Migration Error"})
     }
     ctx.JSON(http.StatusOK, company)
 
@@ -172,7 +182,7 @@ If there's an error decoding the JSON request body or migrating the data, the ha
 
 You can mount the `PostCompany` handler function and assign a route to the handler function with the `POST` method of your writer instance that takes in the route string and the handler function.
 
-~~~
+~~~{.go caption="gin.go"}
 func main() {
     router := Gin.Default()
     router.POST("/company", PostCompany)
@@ -182,11 +192,16 @@ func main() {
 
 Here's a CURL request that tests the `PostCompany` handler function.
 
-~~~
-curl -X POST -H "Content-Type: application/json" -d '{"name": "TestCompany", "created": "2021-01-01", "product": "TestProduct"}' "http://localhost:8080/api/v1/company"
+~~~{.bash caption=">_"}
+curl -X POST -H "Content-Type: application/json" \
+-d '{"name": "TestCompany", "created": "2021-01-01", \
+"product": "TestProduct"}' "http://localhost:8080/api/v1/company"
 ~~~
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a797a756-7829-4c7b-9f82-fe2923b0c7a7/Untitled.png)
+<div class="wide">
+
+![Untitled]({{site.images}}{{page.slug}}/Untitled (2).png)\
+</div>
 
 The CURL request sends a POST request to the `/company` endpoint with a JSON payload containing fields that match the `Companies` struct.
 
@@ -194,7 +209,7 @@ The CURL request sends a POST request to the `/company` endpoint with a JSON pay
 
 The `GET` request will accept a parameter (the company name) from the client and return a JSON response to the client from the `Companies` database.
 
-~~~
+~~~{.go caption="gin.go"}
 func GetCompany(ctx *gin.Context) {
     var company Companies
     name := ctx.Param("company")
@@ -215,7 +230,7 @@ The `GetCompany` handler function retrieves the `company` name from the request 
 
 You can mount the `GetCompany` handler function with the `GET` method of your router instance. The `GET` method, just like the `POST` method, takes in the route and the handler function as parameters
 
-~~~
+~~~{.go caption="gin.go"}
 func main() {
     router := Gin.Default()
     router.GET("api/v1/:company", GetCompany)
@@ -228,18 +243,22 @@ func main() {
 
 Here's the CURL request for the `GetCompany` handler function. The `CURL` request sends a request to the `/api/v1/:company` route with the data attached to the URL.
 
-~~~
+~~~{.bash caption=">_"}
 curl -X GET "http://localhost:8080/api/v1/TestCompany"
 
 {"name": "TestCompany", "created": "2021-01-01", "product": "TestProduct"}
 
 ~~~
 
+<div class="wide">
+![Untitled]({{site.images}}{{page.slug}}/Untitled (3).png)\
+</div>
+
 ### The `PUT` Request Handler
 
 `PUT` request handlers are responsible for the update operations. The `PUT` request will receive a parameter and a [JSON](/blog/convert-to-from-json) request body from the client and search the database before updating the database entry.
 
-~~~
+~~~{.go caption="gin.go"}
 func UpdateCompany(ctx *gin.Context) {
 
     var company Companies
@@ -249,13 +268,17 @@ func UpdateCompany(ctx *gin.Context) {
         log.Println(err)
     }
 
-    if err := db.Where("company = ?", name).First(&company).Error; err != nil {
-        ctx.JSON(http.StatusNotFound, gin.H{"error": "Company doesn't exist "})
+    if err := db.Where("company = ?", name).First(&company).Error; \
+    err != nil {
+        ctx.JSON(http.StatusNotFound, \
+        gin.H{"error": "Company doesn't exist "})
         return
     }
 
-    if err := ctx.ShouldBindJSON(&company); err != nil {
-        ctx.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+    if err := ctx.ShouldBindJSON(&company); \
+    err != nil {
+        ctx.JSON(http.StatusBadRequest, \
+        gin.H{"error": err.Error()})
         return
     }
 
@@ -264,7 +287,8 @@ func UpdateCompany(ctx *gin.Context) {
         Created: company.Created,
         Product: company.Product,
     }).Error; err != nil {
-        ctx.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+        ctx.JSON(http.StatusInternalServerError, \
+        gin.H{"error": err.Error()})
         return
     }
     ctx.JSON(http.StatusOK, company)
@@ -276,7 +300,7 @@ The `UpdateCompany` handler function retrieves the company name from the request
 
 Similar to the POST and GET handler functions, you can mount the `UpdateCompany` handler function with the `PUT` method of the router instance.
 
-~~~
+~~~{.go caption="gin.go"}
 func main() {
     router := Gin.Default()
     router.GET("api/v1/:company", GetCompany)
@@ -289,22 +313,28 @@ func main() {
 
 Here's the CURL request that tests the `UpdateCompany` handler function. Insert a company name in the specified field to run the CURL request effectively.
 
-~~~
-curl -X PUT -H "Content-Type: application/json" -d '{"name": "TestCompany", "created": "2022-01-01", "product": "UpdatedProduct"}' "http://localhost:8080/api/v1/<company_name>"
+~~~{.bash caption=">_"}
+curl -X PUT -H "Content-Type: application/json" \
+-d '{"name": "TestCompany", "created": "2022-01-01", \
+"product": "UpdatedProduct"}' "http://localhost:8080/api/v1/<company_name>"
 
-{"name": "TestCompany", "created": "2022-01-01", "product": "UpdatedProduct "}
+{"name": "TestCompany", "created": "2022-01-01", \
+"product": "UpdatedProduct "}
 
 ~~~
 
 The CURL request sends a PUT request to the `api/v1/:company` endpoint with a JSON payload as the replacement for the update operation.
 
-![
+<div class="wide">
+
+![Untitled]({{site.images}}{{page.slug}}/Untitled (4).png)\
+</div>
 
 ### The `DELETE` Request Handler
 
 Your `DELETE` request handler will receive a parameter from the client's request and search through the database for the valid entry to delete the row with the access.
 
-~~~
+~~~{.go caption="gin.go"}
 func DeleteCompany(ctx *gin.Context) {
 
     var company Companies
@@ -314,13 +344,15 @@ func DeleteCompany(ctx *gin.Context) {
         log.Println(err)
     }
 
-    if err := db.Where("company = ?", name).First(&company).Error; err != nil {
+    if err := db.Where("company = ?", name).First(&company).Error; \
+    err != nil {
         ctx.JSON(http.StatusNotFound, gin.H{"error": "company not found!"})
         return
     }
 
     if err := db.Delete(&company).Error; err != nil {
-        ctx.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+        ctx.JSON(http.StatusInternalServerError, \
+        gin.H{"error": err.Error()})
         return
     }
     ctx.JSON(http.StatusOK, gin.H{"message": "Company Deleted"})
@@ -333,7 +365,7 @@ After a valid request, the `DeleteCompany` handler function returns a message an
 
 You can mount the `DeleteCompany` handler function with the `DELETE` method.
 
-~~~
+~~~{.go caption="gin.go"}
 func main() {
     router := Gin.Default()
     router.GET("api/v1/:company", GetCompany)
@@ -347,7 +379,7 @@ func main() {
 
 Here's the CURL request for the `DeleteCompany` handler function. Insert a company name in the specified field to run the CURL request effectively.
 
-~~~
+~~~{.bash caption=">_"}
     curl -X DELETE "http://localhost:8080/api/v1/<company_name>"
 
      {"message": "Company Deleted"% }
@@ -362,9 +394,3 @@ This tutorial has taught you how to use the popular and widely used Gin framewor
 You can check out the documentation of the [Gin](https://gin-gonic.com/docs/) framework to learn more about how you can build other specific functionalities for your web applications.
 
 {% include cta/cta1.html %}
-
-## Outside Article Checklist
-
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
