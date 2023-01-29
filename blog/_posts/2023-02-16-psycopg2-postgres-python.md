@@ -12,7 +12,7 @@ internal-links:
  - Context Managers
 ---
 
-Are you a Python programmer learning to work with PostgreSQL? If so, this guide on `psycopg2`, the PostgreSQL connector for Python, is for you. You can connect to PostgreSQL databases and run queries—all from within your Python script—using the `psycopg2` adapter.
+Are you a Python programmer learning to work with PostgreSQL? If so, this tutorial on **psycopg2**, the PostgreSQL connector for Python, is for you. You can connect to PostgreSQL databases and run queries—all from within your Python script—using the psycopg2 adapter.
 
 In this tutorial, you'll learn the basics of using `psycopg2` in Python to do the following:
 
@@ -572,7 +572,7 @@ In the above snippet:
 - The outer `with` statement wraps a block that executes with the database connection instance as the context manager.
 - The inner `with` statement wraps a set of queries that run with the database cursor as the context manager.
 
-But how does this help?
+**But how does this help?**
 
 When you use the connection object as a context manager:
 
