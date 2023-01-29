@@ -178,7 +178,7 @@ process_4 = subprocess.run("ls",capture_output=True)
 print(process_4.stdout)
 ~~~
 
-Note that the output of `process_4` is not printed onto the console anymore. The `stdout` attribute of the `CompletedProcess` object `process_4`contains the output as a string of bytes.
+Note that the output of `process_4` is not printed onto the console anymore. The `stdout` attribute of the `CompletedProcess` object `process_4` contains the output as a string of bytes.
 
 ~~~{.text caption="Output"}
 b'py_logging\nmain.py\npy_unit_testing\nstring_manipulation\n'
