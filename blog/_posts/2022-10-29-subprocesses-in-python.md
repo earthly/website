@@ -276,7 +276,7 @@ To check if the external command ran successfully, here's a summary of methods w
 - Access the `stderr` attribute of the `CompletedProcess` object. The error message in `stderr` has diagnostic information on what went wrong when the external command was run.
 - If you anticipate that an external command may fail, you can explicitly set the `stderr` attribute to `subprocess.PIPE` to redirect errors to `stderr`.
 
-In all of the above methods, Python does _not_ throw an error when the external command fails. However, it might help to get an error message when running the Python script if the external command fails to run successfully. For this, you can set the optional `check` parameter to `True` in the `run()` function call. If the external command fails to run, Python throws a `CalledProcessError`exception.
+In all of the above methods, Python does *not* throw an error when the external command fails. However, it might help to get an error message when running the Python script if the external command fails to run successfully. For this, you can set the optional `check` parameter to `True` in the `run()` function call. If the external command fails to run, Python throws a `CalledProcessError`exception.
 
 ~~~{.python caption="main.py"}
 
@@ -302,7 +302,7 @@ subprocess.CalledProcessError: Command '['ls', \
 
 We've learned that when a subprocess is invoked, the control is transferred from the parent process (Python script) to the child process that runs the command.
 
-The control returns to the parent process only _after_ the child process finishes execution which can sometimes be challenging. For example, the subprocess may involve pinging a URL when you're working offline. In this case, the parent process waits for transfer of control from the child process; but the child process never finishes its execution.
+The control returns to the parent process only *after* the child process finishes execution which can sometimes be challenging. For example, the subprocess may involve pinging a URL when you're working offline. In this case, the parent process waits for transfer of control from the child process; but the child process never finishes its execution.
 
 To address this, you can set a `timeout` value (in seconds) when invoking a subprocess. If the subprocess does not finish executing within the value specified by the `timeout` argument, a `TimeoutExpired` exception is raised.
 
