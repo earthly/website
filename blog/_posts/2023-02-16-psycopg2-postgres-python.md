@@ -286,7 +286,7 @@ finally:
         print("Closed connection.")
 ~~~
 
-## How to Query the Database
+## How To Query the Database
 
 So far, we've learned to connect to the database and handle connection errors. Can we start querying the database yet?
 
