@@ -20,7 +20,7 @@ In this article, you'll learn more about Grafana, its use cases, and how to impl
 
 ## Why Should You Use Grafana?
 
-![Why]({{site.images}}{{page.slug}}/why.jpg)\
+![Why]({{site.images}}{{page.slug}}/why.png)\
 
 A properly instrumented infrastructure will generate a large amount of data over time that needs to be processed, stored, and utilized for debugging and optimization efforts. Grafana helps gather and process metrics, logs, and traces from [various sources](https://grafana.com/docs/grafana/latest/datasources/#supported-data-sources) on a single platform. You can then run queries against the data and visualize the results. This makes data analysis easier and helps make data-backed decisions.
 
