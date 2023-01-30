@@ -1,5 +1,5 @@
 ---
-title: "Introduction to the Context Managers and the `with` Keyword in Python?"
+title: "Introduction to Context Managers and the with Keyword in Python"
 categories:
   - Tutorials
 toc: true
