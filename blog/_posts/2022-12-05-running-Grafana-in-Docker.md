@@ -40,7 +40,7 @@ There are two managed versions of Grafana, the enterprise version and the open-s
 
 ### Creating a Grafana Container
 
-![Creating]({{site.images}}{{page.slug}}/creating.jpg)\
+![Creating]({{site.images}}{{page.slug}}/creating.png)\
 
 Spin up a Grafana container on a Docker-enabled CLI using the following command:
 
