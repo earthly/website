@@ -9,3 +9,5 @@ deserialization
 iterable
 itertools
 artifactory
+
+enum
