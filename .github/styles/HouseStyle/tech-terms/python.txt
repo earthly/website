@@ -25,6 +25,22 @@ pyyaml
 
 contexlib
 
+Streamlit
+streamlit
+dataframes
+dataframe
+expanders
+Multiselect
+Selectbox
+multiselect
+selectbox
+Plotly
+
+multilanguage
+contexlib
+
+contexlib
+
 psql
 tomllib
 Rustmore
@@ -33,7 +49,10 @@ Johnsonmouth
 Mathville
 
 multilanguage
+
 contexlib
 
 mailtrap
 docstrings
+
+contexlib
