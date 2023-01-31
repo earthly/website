@@ -9,11 +9,11 @@ internal-links:
  - just an example
 ---
 
-[MongoDB](https://www.mongodb.com/) is a powerful and flexible NoSQL database that has become increasingly popular in recent years due to its ability to handle large amounts of data and its support for a wide range of data types. [PyMongo](https://pymongo.readthedocs.io/en/stable/) is a Python library that provides a simple and efficient way to interact with MongoDB using the Python programming language.
+[MongoDB](https://www.mongodb.com/) is a powerful and flexible NoSQL database that has become increasingly popular in recent years due to its ability to handle large amounts of data and its support for a wide range of data types. [PyMongo](https://pymongo.readthedocs.io/en/stable/) is a Python library that provides a simple and efficient way to interact with [MongoDB](/blog/mongodb-docker) using the Python programming language.
 
 This article is a follow-up to the article titled ["Getting started with PyMongo"](https://earthly.dev/blog/starting-with-pymongo) where we:
 
-- Created a MongoDB database.
+- Created a [MongoDB](/blog/mongodb-docker) database.
 - Connected to the database using the PyMongo library.
 - Performed CRUD operation on the database with the PyMongo library.
 
@@ -99,7 +99,7 @@ If the collection already exists, PyMongo will raise an exception. You will need
 Next, you can define a validator for the `book` collection using the `$jsonSchema` operator.
 The [`$jsonSchema`](https://www.mongodb.com/docs/manual/reference/operator/query/jsonSchema/) operator is a MongoDB operator that allows you to specify a JSON schema to validate documents in a collection. The operator is used in conjunction with the validator option when creating or updating a collection.
 
-The `$jsonSchema` operator takes in a JSON Schema object which is based on the [JSON Schema specification](https://json-schema.org/specification.html), a widely used standard for defining the structure of JSON documents.
+The `$jsonSchema` operator takes in a [JSON](/blog/convert-to-from-json) Schema object which is based on the [JSON Schema specification](https://json-schema.org/specification.html), a widely used standard for defining the structure of JSON documents.
 
 You can define the schema in a different file and import it in the working file. But for the sake of simplicity, add the following code in the `create_book_collection` function after the try-except block:
 
@@ -268,7 +268,7 @@ The above code snippet defines a function named `create_author_collection` that:
 
 ● Set the schema as the validator for the author collection with the `collMod` command
 
-When you run the code, it will create the`author` collection in the database cluster. You can verify the creation in your MongoDB Atlas.
+When you run the code, it will create the`author` collection in the database [cluster](/blog/kube-bench). You can verify the creation in your MongoDB Atlas.
 
 ### Verifying the Validations
 
@@ -496,7 +496,7 @@ Output:
 
 ### Using the Join Operator
 
-To perform a `join` operation in MongoDB, you can use the `$lookup` pipeline stage. The `$lookup` pipeline stage performs a [left outer join](https://stackoverflow.com/questions/38549/what-is-the-difference-between-inner-join-and-outer-join) to an un-sharded collection in the same database to filter in documents from the joined collection for processing.
+To perform a `join` operation in [MongoDB](/blog/mongodb-docker), you can use the `$lookup` pipeline stage. The `$lookup` pipeline stage performs a [left outer join](https://stackoverflow.com/questions/38549/what-is-the-difference-between-inner-join-and-outer-join) to an un-sharded collection in the same database to filter in documents from the joined collection for processing.
 
 You can get all the authors with their respective documents as shown below:
 
@@ -748,7 +748,7 @@ Additionally, you learned the techniques for inserting data in bulk, which can b
 
 Finally, you learned about some advanced MongoDB queries, which can be used to perform complex data retrieval operations.
 
-Overall, by mastering these concepts, you should be well-equipped to effectively work with MongoDB and build robust and efficient applications.
+Overall, by mastering these concepts, you should be well-equipped to effectively work with [MongoDB](/blog/mongodb-docker) and build robust and efficient applications.
 
 {% include cta/cta1.html %}
 
