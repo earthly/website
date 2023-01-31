@@ -750,6 +750,8 @@ Finally, you learned about some advanced MongoDB queries, which can be used to p
 
 Overall, by mastering these concepts, you should be well-equipped to effectively work with MongoDB and build robust and efficient applications.
 
+{% include cta/cta1.html %}
+
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
@@ -758,4 +760,3 @@ Overall, by mastering these concepts, you should be well-equipped to effectively
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
