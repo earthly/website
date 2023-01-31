@@ -24,8 +24,6 @@ In this article, you'll learn about [Docker Compose](/blog/youre-using-docker-co
 
 ### Docker and Docker Compose: An Overview
 
-![Overview]({{site.images}}{{page.slug}}/overview.jpg)\
-
 Before diving into the history of Docker Compose, it'll help to learn about [Docker](https://www.docker.com), which is an open source container technology that lets developers package an application with all its dependencies into a standardized unit of software.
 
 Docker was released by Solomon Hykes as dotCloud, a platform-as-a-service (PaaS) company, in March 2013. The software was developed to simplify the process of creating, deploying, and running applications using containers. dotCloud quickly gained popularity due to its ease of use and ability to handle multi-container applications and later rebranded itself as Docker Inc.

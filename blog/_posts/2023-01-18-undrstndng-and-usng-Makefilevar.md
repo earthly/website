@@ -72,7 +72,7 @@ Unlike many other programming languages, using a variable that you have not set 
 
 ## How to Set Variables
 
-![How to Set Variables]({{site.images}}{{page.slug}}/9NzlT6N.png)
+![How to Set Variables]({{site.images}}{{page.slug}}/9NzlT6N.png)\
 
 Setting a variable refers to defining a variable with an initial value as well as changing its value later in the program. You can either set a value explicitly in the `makefile` or pass it as an environment variable or a command-line argument.
 
@@ -298,7 +298,7 @@ Hello Make
 
 ### Pattern-Specific Variables
 
-![Pattern-Specific Variables]({{site.images}}{{page.slug}}/BZHNTkc.png)
+![Pattern-Specific Variables]({{site.images}}{{page.slug}}/BZHNTkc.png)\
 
 Pattern-specific variables make it possible to limit the scope of a variable to targets that match a particular [pattern](https://www.gnu.org/software/make/manual/make.html#Pattern-Intro). The syntax is similar to target-specific variables:
 
@@ -375,7 +375,7 @@ This feature is handy since it lets you change a variable's value without editin
 
 ## How To Append To a Variable
 
-![How to Append to a Variable]({{site.images}}{{page.slug}}/RGuT43G.png)
+![How to Append to a Variable]({{site.images}}{{page.slug}}/RGuT43G.png)\
 
 You can use the previous value of a simply expanded variable to add more text to it:
 
