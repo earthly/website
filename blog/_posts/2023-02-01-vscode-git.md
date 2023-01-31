@@ -1,5 +1,5 @@
 ---
-title: "Store VS Code Settings.json in Git"
+title: "Store VS Code `Settings.json` in Git"
 categories:
   - Tutorials
 toc: true
@@ -31,8 +31,10 @@ Next, locate your settings.json file by opening it in VS Code (Ctrl-Shift-P or C
 In your terminal, copy these files into your new settings repo:
 
 ```
-> cp /Users/adam/Library/Application Support/Code/User/settings.json /Users/adam/sandbox/vs-code-styles/settings.json
-> cp /Users/adam/Library/Application Support/Code/User/keybindings.json /Users/adam/sandbox/vs-code-styles/keybindings.json
+> cp /Users/adam/Library/Application Support/Code/User/settings.json ↩
+  /Users/adam/sandbox/vs-code-styles/settings.json
+> cp /Users/adam/Library/Application Support/Code/User/keybindings.json ↩
+  /Users/adam/sandbox/vs-code-styles/keybindings.json
 ```
 
 After commiting these (`git add . && git commit -a -m "settings.json"`) remove the old copies.
@@ -45,38 +47,14 @@ After commiting these (`git add . && git commit -a -m "settings.json"`) remove t
 Then symlink the new versions into place.
 
 ```
-> ln -s /Users/adam/sandbox/vs-code-styles/keybindings.json /Users/adam/Library/Application Support/Code/User/keybindings.json
-> ln -s /Users/adam/sandbox/vs-code-styles/settings.json /Users/adam/Library/Application Support/Code/User/settings.json
+> ln -s /Users/adam/sandbox/vs-code-styles/keybindings.json ↩
+      /Users/adam/Library/Application Support/Code/User/keybindings.json
+> ln -s /Users/adam/sandbox/vs-code-styles/settings.json ↩
+      /Users/adam/Library/Application Support/Code/User/settings.json
 ```
 
-If you have any issues with that, ensure that VS Code (all copies) are closed. After this change any settings changes you make are written to the repo and you can commit and or revert the chagnes as needed.
+If you have any issues with that, ensure that VS Code (all copies) are closed. After this change any settings changes you make are written to the repo and you can commit and or revert the changes as needed.
 
+Now my settings are stored on [GitHub](https://github.com/adamgordonbell/vs-code-styles).
 
-### Writing Article Checklist
-
-- [ ] Write Outline
-- [ ] Write Draft
-- [ ] Fix Grammarly Errors
-- [ ] Read out loud
-- [ ] Write 5 or more titles and pick the best on
-- [ ] First two paragraphs: What's it about? Why listen to you?
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-- [ ] Run mark down linter (`lint`)
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links to other articles
-- [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
-- [ ] Raise PR
-
-## Outside Article Checklist
-
-- [ ] Add in Author page
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
+{% include cta/cta1.html %}
