@@ -102,7 +102,6 @@ Here, we'll go over Django's most popular signals. These signals are typically t
 The model class `save()` method is always called whenever it is saving an instance to the database in Django. For example:
 
 ~~~{.python caption="django_models_example.py"}
-    #models.py
     from django.db.models import models
 
     class User(models.Model):
@@ -200,7 +199,6 @@ When a signal needs to be sent *before* a model instance is saved to the databas
 So we have a model `Profile` that needs `pre_save`  and `post_save` signals. This is just an illustration of how these signals can be used.
 
 ~~~{.python caption="pre_save.py"}
-# models.py
 from django.db.models.signals import pre_save
 
 class Profile(models.Model):
@@ -221,7 +219,6 @@ You'll observe that in response to a `pre_save` signal to the receiver decorator
 This signal is activated each time a model instance is saved. Except for the Boolean keyword `created`, this signal has all the same arguments as `pre_save.` Once an instance is created, the model will send the Boolean `created`  to the receiver.
 
 ~~~{.python caption="post_save.py"}
-# models.py
 from django.db.models.signals import post_save
 from django.contrib.auth.models import User
 
@@ -244,7 +241,7 @@ To call the `post_save` signal, the `update_profile()` function is decorated as 
 Similarly, `pre_delete` and `post_delete` signals perform their receiver functions before and after each instance is removed, respectively. Let's take a look at how these signals are used in the examples below.
 
 ~~~{.python caption="delete_signals.py"}
-#models.py
+
 from django.db.models.signals import pre_delete, post_delete
 from django.contrib.auth.models import User
 
