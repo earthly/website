@@ -370,6 +370,10 @@ Verah Ombui:
     name    : "Verah Ombui"
     bio     : "Verah is a passionate technical content writer and a DevOps practitioner who believes in writing the best content on DevOps, and IT technologies and sharing it with the world. Her mission has always remained the same: learn new technologies by doing hands-on practice, deep-dive into them, and teach the world in the easiest possible way. She has good exposure to DevOps technologies such as Terraform, AWS Cloud, Microsoft Azure, Ansible, Kubernetes, Docker, Jenkins, Linux, etc."
     avatar  : "/assets/images/authors/verah.jpg"
+Barine Sambaris:
+    name    : "Barine Sambaris"
+    bio     : "Barine Sambaris is a former web developer, now currently a python developer and data analyst. She's experienced in building interactive dashboards and data visualization projects with Python frameworks and libraries. Barine is also a freelance technical writer and has written articles on HTML, CSS, JavaScript, Python and Data Analytics."
+    avatar  : "/assets/images/authors/barine.jpg"
 Ubaydah Abdulwasiu:
     name    : "Ubaydah Abdulwasiu"
     bio     : "Ubaydah is a backend engineer who has built APIs using a variety of languages and frameworks such as Python Django, Golang, and Javascript. She also has experience writing technical documentation and articles. She enjoys passing on technical knowledge, reading, and learning about new technologies."
