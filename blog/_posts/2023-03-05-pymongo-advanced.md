@@ -758,7 +758,6 @@ Overall, by mastering these concepts, you should be well-equipped to effectively
 
 ## Outside Article Checklist
 
-- [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
