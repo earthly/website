@@ -6,7 +6,11 @@ toc: true
 author: Ashutosh Krishna
 
 internal-links:
- - just an example
+ - PyMongo
+ - Python
+ - MongoDB
+ - Database
+ - Schema
 ---
 
 [MongoDB](https://www.mongodb.com/) is a powerful and flexible NoSQL database that has become increasingly popular in recent years due to its ability to handle large amounts of data and its support for a wide range of data types. [PyMongo](https://pymongo.readthedocs.io/en/stable/) is a Python library that provides a simple and efficient way to interact with [MongoDB](/blog/mongodb-docker) using the Python programming language.
@@ -758,5 +762,4 @@ Overall, by mastering these concepts, you should be well-equipped to effectively
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
+
