@@ -73,7 +73,7 @@ flux check --pre
 
 ## Bootstrapping FluxCD Toolkit Components
 
-![Bootstrapping FluxCD Toolkit Components]({{site.images}}{{page.slug}}/ROJ79k6.png)
+![Bootstrapping FluxCD Toolkit Components]({{site.images}}{{page.slug}}/ROJ79k6.png)\
 
 After the prerequisite check, the next step is to configure Github credentials and bootstrap Flux Toolkit into your cluster. Flux will use these components of the toolkits to add a CD pipeline on top of your existing Kubernetes cluster.
 
@@ -180,7 +180,7 @@ In your browser, go to `https://github.com/your-github-username/fluxcd-demo` to 
 
 ## Automating Deployment To Cluster With Flux Cli
 
-![Automating Deployment To Cluster With Flux Cli]({{site.images}}{{page.slug}}/3xIesos.png)
+![Automating Deployment To Cluster With Flux Cli]({{site.images}}{{page.slug}}/3xIesos.png)\
 
 Your cluster now has Flux controllers installed with a [Github](/blog/ci-comparison) repository that was used to bootstrap the components. For all configuration and deployment, Flux will now use the `flux-demo` repository as a "source of truth".
 
@@ -282,7 +282,7 @@ This Kustomization resource can be used to manage the [deployment](/blog/deploym
 
 ### Accessing the Grafana Dashboard
 
-![Accessing the Grafana Dashboard]({{site.images}}{{page.slug}}/xzDcNjZ.png)
+![Accessing the Grafana Dashboard]({{site.images}}{{page.slug}}/xzDcNjZ.png)\
 
 To access the Grafana dashboard, you need to forward traffic to the Grafana server. To do so, run the following commands:
 
