@@ -68,7 +68,7 @@ The other way to register a receiver function is through **decorators**.
 
 In a nutshell, [decorators](https://docs.python.org/3/glossary.html#term-decorator) are functions that return a different internal function that is abstracted away from usage outside the context of the decorator. This means that the `receiver` function will be passed into the internal method defined in the `connect()` method in the Django source code.
 
-~~~{.python caption="get_notified.py"}
+~~~{.python caption="receiver_as_decorator.py"}
     from django.core.signals import request_finished
     from django.dispatch import receiver
 
@@ -113,7 +113,7 @@ The model class `save()` method is always called whenever it is saving an instan
 
     user = User()
     user.name = "John"
-    user. save()
+    user.save()
 ~~~
 
 We created a `User` model class that inherits from the Django `Model` class. This allows us to override some internal methods like `__str()__` which returns a representation of the model. The instance name will be used to represent the object in the Django admin interface.
@@ -200,7 +200,7 @@ When a signal needs to be sent *before* a model instance is saved to the databas
 So we have a model `Profile` that needs `pre_save`  and `post_save` signals. This is just an illustration of how these signals can be used.
 
 ~~~{.python caption="pre_save.py"}
-#models.py
+# models.py
 from django.db.models.signals import pre_save
 
 class Profile(models.Model):
@@ -214,14 +214,14 @@ class Profile(models.Model):
         return instance
 ~~~
 
-You'll observe that in response to a `pre_save` signal to the receiver decorator, the `update _profile()` receiver function modifies the property `to_receive_new_user`. Every time an instance is created before being saved to the database, the receiver function is called. Additionally, you'll see that the `created` Boolean keyword was not included in the receiver parameters. This is because an instance has not yet been created.
+You'll observe that in response to a `pre_save` signal to the receiver decorator, the `update _profile()` receiver function modifies the property `to_receive_new_user`. Every time an instance is created before being saved to the database, the receiver function is called. Additionally, you'll see that the `created` Boolean was not included in the receiver parameters. This is because an instance has not yet been created.
 
 #### `post_save`
 
 This signal is activated each time a model instance is saved. Except for the Boolean keyword `created`, this signal has all the same arguments as `pre_save.` Once an instance is created, the model will send the Boolean `created`  to the receiver.
 
 ~~~{.python caption="post_save.py"}
-#models.py
+# models.py
 from django.db.models.signals import post_save
 from django.contrib.auth.models import User
 
@@ -275,9 +275,9 @@ While the sample output for the `post_delete` signal will be like this:
 The grocery was deleted successfully on 2023-01-12-16:52:42.193290.
 ~~~
 
-Here, we define two receiver functions that print message strings to the console before and after an instance is deleted, respectively. The sender model class is "Order".
+Here, we define two receiver functions that print message strings to the console before and after an instance is deleted, respectively. The sender model class is `Order`.
 
-Note that the `instance` keyword is not one of the arguments of the `post_delete` receiver function because the signal cannot reference the instance object *after* it is deleted.
+Note that the `instance` is not one of the arguments of the `post_delete` receiver function because the signal cannot reference the instance object *after* it is deleted.
 
 ## A Practical Application: Designing an Endpoint
 
@@ -312,7 +312,7 @@ Additionally, we'll be using [mailtrap](https://mailtrap.io/blog/django-send-ema
 Create a `helper.py` file inside your application folder, and add the following email sender code. We are utilizing Django's built-in `send_mail` module.
 
 ~~~{.python caption="helper.py"}
-#helper.py
+# helper.py
 from django.core.mail import send_mail
 from smtplib import SMTPException
 from auth_system.settings import EMAIL_HOST_USER
@@ -375,10 +375,10 @@ We also override the `run()` method to send the email. This method comes from th
 
 In addition, the `get_otp()` method returns a one-time password sent to the user's email. Note that `_otp` with a preceding underscore is considered private property. The proper way of accessing such properties outside the class is to create a "get" method that returns them. This is what the  `get_otp()` method does.
 
-Let's now add the `ForgetPassword` model class. Add the following by editing your `models.py` file in the program:
+Let's now add the `ForgetPassword` model class. Add the following by editing your `models.py` file:
 
 ~~~{.python caption="models.py"}
-#models.py
+# models.py
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -423,7 +423,7 @@ We define a receiver function with a `post_save` signal where the execution of e
 
 After the user's email is saved to the database, an instance of the `ForgetPassword` model is created, and the signal notifies the receiver function. Then, a new thread is spawned to send the secret one-time password to the user's email.
 
-Note that we join another thread to the running one to catch the one-time password that the `send_mail` function returns. This is one possible way to return the one-time password sent to the user's email.
+Note that we join another thread to the running one to catch the one-time password that the `send_mail()` function returns. This is one possible way to return the one-time password sent to the user's email.
 
 The value of the one-time password is then accessed through the `get_otp()` method. Lastly, the `forgot_password_otp` model property is set with this value, and the data is saved to the database.
 
@@ -448,7 +448,7 @@ name="forgot-password"),
 Let's also modify the `views.py` file for the endpoint incoming HTTP request.
 
 ~~~{.python caption="views.py"}
-#views.py
+# views.py
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -516,9 +516,9 @@ The other image below shows the "mailtrap" sandbox environment for simulating em
 
 In this article, you learned about Django signals. You went through various signal types, what they mean, and how to use them in practical applications.
 
-How object instances are being created and saved internally. The `save()` and `_init()_` Django's model methods were discussed as well.
+You learned how object instances are created and saved internally. The `save()` and `_init()_` Django's model methods were discussed as well.
 
-In addition, we discussed two ways of connecting signals with receiver functions. You also learned how signals like `post_init`, `pre_init`, `pre_save`, `post_save`, `pre_delete` and `post_delete` work with their examples. This led us to the discussion about the signal disconnection method which is the `disconnect()` and how it can be applied.
+In addition, we discussed two ways of connecting signals with receiver functions. You also learned how signals like `post_init`, `pre_init`, `pre_save`, `post_save`, `pre_delete` and `post_delete` work with their examples. This led us to the discussion on the `disconnect()` method.
 
 Lastly, you developed a real-world application feature that showed you how to work with signals and threading to send emails. As a next step, try exploring more about [Django signals](https://docs.djangoproject.com/en/4.1/topics/signals/).
 
