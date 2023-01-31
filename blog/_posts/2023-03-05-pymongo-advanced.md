@@ -27,6 +27,8 @@ In this tutorial, you will learn about schema validation, data modeling, and adv
 
 ## Database Design
 
+![Design Illustration]({{site.images}}{{page.slug}}/design.png)\
+
 In the MongoDB database that you will work on in this tutorial, you will create two database collections: a `book` collection and an `author` collection.
 
 The `book` collection will store information about a book, such as the `title`, `publication_date`, `copies`, and other relevant details. The `author` collection will store information about an author, such as the `name`, and other relevant details.
@@ -42,18 +44,25 @@ Before proceeding with the tutorial, you will need to grant your MongoDB user an
 Follow the steps below to grant admin privileges to your MongoDB user:
 
 1. Click on **Database Access** in your MongoDB Cluster:
-![Click on Database Access](({{site.images}}{{page.slug}}/ASe00NW.png)\
+<div class="wide">
+![Click on Database Access]({{site.images}}{{page.slug}}/ASe00NW.png)\
+</div>
 
 2. Click on the **Edit** button:
-![Click on Edit](({{site.images}}{{page.slug}}/Vm7W6x9.png)\
+<div class="wide">
+![Click on Edit]({{site.images}}{{page.slug}}/Vm7W6x9.png)\
+</div>
 
 3. Select **Atlas admin** as the role in the Database User Privileges:
+<div class="wide">
 ![Select Atlas admin]({{site.images}}{{page.slug}}/GQCOAHw.png)\
+</div>
 
 4. Add `&authSource=admin` at the end of your MongoDB connection string:
 
 ~~~
-connection_string = f"mongodb+srv://{USERNAME}:{PASSWORD}@cluster0.d0mjzrc.mongodb.net/?retryWrites=true&w=majority&authSource=admin"
+connection_string = f"mongodb+srv://{USERNAME}:{PASSWORD}\
+@cluster0.d0mjzrc.mongodb.net/?retryWrites=true&w=majority&authSource=admin"
 ~~~
 
 ## Schema Validation
@@ -66,7 +75,7 @@ To enable schema validation in MongoDB, you can use the *validator* option when 
 
 Here's what you'd have in your Python file from the last tutorial where you created the `library_db` database:
 
-~~~
+~~~{.python caption="main.py"}
 from decouple import config
 from pymongo import MongoClient
 
@@ -74,7 +83,8 @@ from pymongo import MongoClient
 USERNAME = config('MONGODB_USERNAME')
 PASSWORD = config('MONGODB_PASSWORD')
 
-connection_string = f"mongodb+srv://{USERNAME}:{PASSWORD}@cluster0.d0mjzrc.mongodb.net/?retryWrites=true&w=majority&authSource=admin"
+connection_string = f"mongodb+srv://{USERNAME}:{PASSWORD}@\
+cluster0.d0mjzrc.mongodb.net/?retryWrites=true&w=majority&authSource=admin"
 
 # Creating a connection to MongoDB
 client = MongoClient(connection_string)
@@ -90,7 +100,7 @@ library_db = client.library_db
 
 You can create a `book` collection using the PyMongo `create_collection` method as shown below:
 
-~~~
+~~~{.python caption="main.py"}
 def create_book_collection():
     try:
         library_db.create_collection("book")
@@ -107,11 +117,12 @@ The `$jsonSchema` operator takes in a [JSON](/blog/convert-to-from-json) Schema 
 
 You can define the schema in a different file and import it in the working file. But for the sake of simplicity, add the following code in the `create_book_collection` function after the try-except block:
 
-~~~
+~~~{.js caption="book_validator.js"}
 book_validator = {
     "$jsonSchema": {
         "bsonType": "object",
-        "required": ["title", "authors", "publication_date", "type", "copies"],
+        "required": ["title", "authors", "publication_date", "type", \
+        "copies"],
         "properties": {
             "title": {
                 "bsonType": "string",
@@ -132,11 +143,13 @@ book_validator = {
             },
             "type": {
                 "enum": ["hardcover", "paperback"],
-                "description": "can only be one of the enum values and is required"
+                "description": "can only be one of the enum values and \
+                is required"
             },
             "copies": {
                 "bsonType": "int",
-                "description": "must be an integer greater than 0 and is required",
+                "description": "must be an integer greater than 0 and \
+                is required",
                 "minimum": 0
             }
         }
@@ -160,7 +173,7 @@ Next, you need to run the[`collMod`](https://www.mongodb.com/docs/manual/referen
 
 Add the following code in the `create_book_collection` function:
 
-~~~
+~~~{.python caption="main.py"}
 library_db.command("collMod", "book", validator=book_validator)
 ~~~
 
@@ -168,8 +181,11 @@ When the command is executed, the schema you specified in the `book_validator` o
 
 If you print the output of the above command, you will see a similar output as below:
 
-~~~
-{'ok': 1.0, '$clusterTime': {'clusterTime': Timestamp(1673361108, 3), 'signature': {'hash': b'\x7f\xd8\xa5G\xff\xb2\xca\xb7\xc0\x9e\x14\xde\x88\xc6\x9b2\x04\xbc\xff\xce', 'keyId': 7142151715528114178}}, 'operationTime': Timestamp(1673361108, 3)}
+~~~{.js caption="Output"}
+
+{'ok': 1.0, '$clusterTime': {'clusterTime': Timestamp(1673361108, 3), \
+'signature': {'hash': b'\x7f\xd8\xa5G\xff\xb2\xca\xb7\xc0\x9e\x14\xde\x88\xc6\x9b2\x04\xbc\xff\xce', \
+'keyId': 7142151715528114178}}, 'operationTime': Timestamp(1673361108, 3)}
 ~~~
 
 In the output, the `'ok': 1.0` means the operation was successful.
@@ -178,7 +194,7 @@ In the output, the `'ok': 1.0` means the operation was successful.
 
 The code now looks as shown below:
 
-~~~
+~~~{.python caption="main.py"}
 def create_book_collection():
 
     # Creating a new collection
@@ -190,7 +206,8 @@ def create_book_collection():
     book_validator = {
         "$jsonSchema": {
             "bsonType": "object",
-            "required": ["title", "authors", "publication_date", "type", "copies"],
+            "required": ["title", "authors", "publication_date", \
+            "type", "copies"],
             "properties": {
                 "title": {
                     "bsonType": "string",
@@ -211,11 +228,13 @@ def create_book_collection():
                 },
                 "type": {
                     "enum": ["hardcover", "paperback"],
-                    "description": "can only be one of the enum values and is required"
+                    "description": "can only be one of the enum values and \
+                    is required"
                 },
                 "copies": {
                     "bsonType": "int",
-                    "description": "must be an integer greater than 0 and is required",
+                    "description": "must be an integer greater than 0 and \
+                    is required",
                     "minimum": 0
                 }
             }
@@ -231,7 +250,7 @@ create_book_collection()
 
 You can create a function to create an `author` collection and specify the schema validator just as you created for the `book` collection.
 
-~~~
+~~~{.python caption="main.py"}
 def create_author_collection():
     try:
         library_db.create_collection("author")
@@ -278,16 +297,36 @@ When you run the code, it will create the`author` collection in the database [cl
 
 You can verify the validations of the collections you created using the following code:
 
-~~~
+~~~{.python caption="main.py"}
+
 print(f'Book Validation: {library_db.get_collection("book").options()}')
 print(f'Author Validation: {library_db.get_collection("author").options()}')
 ~~~
 
 Output:
 
-~~~
-Book Validation: {'validator': {'$jsonSchema': {'bsonType': 'object', 'required': ['title', 'authors', 'publication_date', 'type', 'copies'], 'properties': {'title': {'bsonType': 'string', 'description': 'must be a string and is required'}, 'authors': {'bsonType': 'array', 'description': 'must be an array and is required', 'items': {'bsonType': 'objectId', 'description': 'must be an objectId and is required'}, 'minItems': 1}, 'publication_date': {'bsonType': 'date', 'description': 'must be a date and is required'}, 'type': {'enum': ['hardcover', 'paperback'], 'description': 'can only be one of the enum values and is required'}, 'copies': {'bsonType': 'int', 'description': 'must be an integer greater than 0 and is required', 'minimum': 0}}}}, 'validationLevel': 'strict', 'validationAction': 'error'}
-Author Validation: {'validator': {'$jsonSchema': {'bsonType': 'object', 'required': ['first_name', 'last_name'], 'properties': {'first_name': {'bsonType': 'string', 'description': 'must be a string and is required'}, 'last_name': {'bsonType': 'string', 'description': 'must be a string and is required'}, 'date_of_birth': {'bsonType': 'date', 'description': 'must be a date'}}}}, 'validationLevel': 'strict', 'validationAction': 'error'}
+~~~{.js caption="Output"}
+
+Book Validation: {'validator': {'$jsonSchema': {'bsonType': 'object', \
+'required': ['title', 'authors', 'publication_date', 'type', 'copies'], \
+'properties': {'title': {'bsonType': 'string', 'description': 'must be a \
+string and is required'}, 'authors': {'bsonType': 'array', 'description': \
+'must be an array and is required', 'items': {'bsonType': 'objectId', \
+'description': 'must be an objectId and is required'}, 'minItems': 1}, \
+'publication_date': {'bsonType': 'date', 'description': 'must be a date \
+and is required'}, 'type': {'enum': ['hardcover', 'paperback'], \
+'description': 'can only be one of the enum values and is required'}, \
+'copies': {'bsonType': 'int', 'description': 'must be an integer \
+greater than 0 and is required', 'minimum': 0}}}}, 'validationLevel': \
+'strict', 'validationAction': 'error'}
+
+Author Validation: {'validator': {'$jsonSchema': {'bsonType': \
+'object', 'required': ['first_name', 'last_name'], 'properties': \
+{'first_name': {'bsonType': 'string', 'description': 'must be \
+a string and is required'}, 'last_name': {'bsonType': 'string', \
+'description': 'must be a string and is required'}, 'date_of_birth': \
+{'bsonType': 'date', 'description': 'must be a date'}}}}, \
+'validationLevel': 'strict', 'validationAction': 'error'}
 ~~~
 
 If the validation failed to apply properly or there were no validations, you will see an empty dictionary in the output.
@@ -296,7 +335,7 @@ If the validation failed to apply properly or there were no validations, you wil
 
 To insert data into the `book` and `author` collections, first insert the data into the `author` collection, as the documents in the `book` collection have a reference to the `author` collection. Then, insert the data into the `book` collection.
 
-~~~
+~~~{.python caption="main.py"}
 def insert_bulk_data():
     authors = [
         {
@@ -368,10 +407,16 @@ insert_bulk_data()
 
 Output:
 
-~~~
-Author IDs: [ObjectId('63bd78b8d7bbbf34d7a3826a'), ObjectId('63bd78b8d7bbbf34d7a3826b'), ObjectId('63bd78b8d7bbbf34d7a3826c')]
-Inserted Book Results: <pymongo.results.InsertManyResult object at 0x0000023DB97F7040>
-Inserted Book IDs: [ObjectId('63bd78b9d7bbbf34d7a3826d'), ObjectId('63bd78b9d7bbbf34d7a3826e'), ObjectId('63bd78b9d7bbbf34d7a3826f'), ObjectId('63bd78b9d7bbbf34d7a38270'), ObjectId('63bd78b9d7bbbf34d7a38271')]
+~~~{.js caption="Output"}
+Author IDs: [ObjectId('63bd78b8d7bbbf34d7a3826a'), \
+ObjectId('63bd78b8d7bbbf34d7a3826b'), \
+ObjectId('63bd78b8d7bbbf34d7a3826c')]
+Inserted Book Results: <pymongo.results.InsertManyResult \
+object at 0x0000023DB97F7040>
+Inserted Book IDs: [ObjectId('63bd78b9d7bbbf34d7a3826d'), \
+ObjectId('63bd78b9d7bbbf34d7a3826e'), \
+ObjectId('63bd78b9d7bbbf34d7a3826f'), \
+ObjectId('63bd78b9d7bbbf34d7a38270'), ObjectId('63bd78b9d7bbbf34d7a38271')]
 ~~~
 
 The above code calls the `insert_bulk_data` function, which inserts multiple documents into the `author` and the `book` collections in the `library_db` database.
@@ -388,7 +433,7 @@ Notice that all the documents follow the defined schema validation.
 
 If you try to insert a document that fails to follow the schema, you'll get a validation error:
 
-~~~
+~~~{.python caption="main.py"}
 book_collection = library_db.book
 book_collection.insert_one({
     "title": "MongoDB, The Book"
@@ -399,8 +444,15 @@ In the above code, you didn't pass the other required fields, and hence, the val
 
 Output:
 
-~~~
-pymongo.errors.WriteError: Document failed validation, full error: {'index': 0, 'code': 121, 'errInfo': {'failingDocumentId': ObjectId('63b3bba1421a1d3a6001b4ad'), 'details': {'operatorName': '$jsonSchema', 'schemaRulesNotSatisfied': [{'operatorName': 'required', 'specifiedAs': {'required': ['title', 'authors', 'publication_date', 'type', 'copies']}, 'missingProperties': ['authors', 'copies', 'publication_date', 'type']}]}}, 'errmsg': 'Document failed validation'}
+~~~{.js caption="Output"}
+pymongo.errors.WriteError: Document failed validation, \
+full error: {'index': 0, 'code': 121, 'errInfo': \
+{'failingDocumentId': ObjectId('63b3bba1421a1d3a6001b4ad'), \
+'details': {'operatorName': '$jsonSchema', 'schemaRulesNotSatisfied': \
+[{'operatorName': 'required', 'specifiedAs': {'required': \
+['title', 'authors', 'publication_date', 'type', 'copies']}, \
+'missingProperties': ['authors', 'copies', 'publication_date', \
+'type']}]}}, 'errmsg': 'Document failed validation'}
 ~~~
 
 ## Data Modeling Patterns
@@ -413,7 +465,7 @@ There are two main data modeling patterns that can be used to model these relati
 
 1. Embedded pattern: In this pattern, you will embed the entire `author` document or a subset of the `author` document within the `book` document. This allows you to retrieve all the information about a book and its authors in a single query, without having to perform multiple queries or join the collections.
 
-~~~
+~~~{.python caption="main.py"}
     {
         "_id": ObjectId("1234567890"),
         "title": "MongoDB, The Book for Beginners",
@@ -438,7 +490,7 @@ There are two main data modeling patterns that can be used to model these relati
 However, one of the disadvantages of this pattern is that it can take up more disk space. It can also be difficult to update the information of the authors if this information is embedded in multiple documents.
 2. Reference pattern: In this pattern, instead of embedding the `author` information within the `book` document, you will store a reference to the `author` document in the `book` document. This reference is a field in the `book` document that stores the unique identifier of the `author` document. This allows you to easily retrieve all the books written by a particular author by querying the `book` collection and using the `authors` field to filter the results.
 
-~~~
+~~~{.python caption="main.py"}
      {
         "_id": ObjectId("1234567890"),
         "title": "MongoDB, The Book for Beginners",
@@ -466,7 +518,7 @@ MongoDB supports the use of regular expressions to search for specific patterns 
 
 For example, searching for all books containing `"MongoDB"` in their title will look as shown below:
 
-~~~
+~~~{.python caption="main.py"}
 query = {"title": {"$regex": "MongoDB"}}
 mongodb_books = library_db.book.find(query)
 print(list(mongodb_books))
@@ -474,7 +526,7 @@ print(list(mongodb_books))
 
 Output:
 
-~~~
+~~~{.js caption="Output"}
 [{'_id': ObjectId('63bd78b9d7bbbf34d7a3826d'),
   'authors': [ObjectId('63bd78b8d7bbbf34d7a3826a'),
               ObjectId('63bd78b8d7bbbf34d7a3826b')],
@@ -504,7 +556,7 @@ To perform a `join` operation in [MongoDB](/blog/mongodb-docker), you can use th
 
 You can get all the authors with their respective documents as shown below:
 
-~~~
+~~~{.python caption="main.py"}
     pipeline = [
         {
             "$lookup": {
@@ -523,7 +575,7 @@ This will perform a left outer join on the author and book collections. The `aut
 
 Output:
 
-~~~
+~~~{.js caption="Output"}
     [{'_id': ObjectId('63bd78b8d7bbbf34d7a3826a'),
   'books': [{'_id': ObjectId('63bd78b9d7bbbf34d7a3826d'),
              'authors': [ObjectId('63bd78b8d7bbbf34d7a3826a'),
@@ -597,7 +649,7 @@ The `$addFields` operator is used to add a new field named `total_books` to each
 
 The `$project` operator in MongoDB is used to reshape the documents in a collection by specifying a set of fields to include or exclude in the results.
 
-~~~
+~~~{.python caption="main.py"}
     pipeline = [
         {
             "$lookup": {
@@ -613,7 +665,8 @@ The `$project` operator in MongoDB is used to reshape the documents in a collect
             }
         },
         {
-            "$project": {"_id": 0, "first_name": 1, "last_name": 1, "total_books": 1}
+            "$project": {"_id": 0, "first_name": 1, \
+            "last_name": 1, "total_books": 1}
         }
     ]
     authors_with_books = library_db.author.aggregate(pipeline)
@@ -622,7 +675,7 @@ The `$project` operator in MongoDB is used to reshape the documents in a collect
 
 Output:
 
-~~~
+~~~{.js caption="Output}
   [{'first_name': 'John', 'last_name': 'Doe', 'total_books': 3},
   {'first_name': 'Jane', 'last_name': 'Doe', 'total_books': 3},
   {'first_name': 'Jack', 'last_name': 'Smith', 'total_books': 2}]
@@ -634,7 +687,7 @@ You can get the authors with more than 2 books as shown below:
 
 To get authors with more than 2 books, you can add a `match` stage to the pipeline. The `$match` operator filters the documents to pass only the documents that match the specified condition(s) to the next pipeline stage:
 
-~~~
+~~~{.python caption="main.py"}
     pipeline = [
         {
             "$lookup": {
@@ -653,7 +706,8 @@ To get authors with more than 2 books, you can add a `match` stage to the pipeli
             "$match": {"total_books": {"$gt": 2}}
         },
         {
-            "$project": {"_id": 0, "first_name": 1, "last_name": 1, "total_books": 1}
+            "$project": {"_id": 0, "first_name": 1, \
+            "last_name": 1, "total_books": 1}
         }
     ]
 ~~~
@@ -662,7 +716,7 @@ This will filter out all authors that have less than 3 books.
 
 Output:
 
-~~~
+~~~{.js caption="Output"}
     [{'first_name': 'John', 'last_name': 'Doe', 'total_books': 3},
     {'first_name': 'Jane', 'last_name': 'Doe', 'total_books': 3}]
 ~~~
@@ -673,7 +727,7 @@ The `$map` operator is an array operator in MongoDB that applies an expression t
 
 You can calculate how many days ago a book was written in the following way:
 
-~~~
+~~~{.python caption="main.py"}
 pipeline = [
     {
         "$lookup": {
@@ -712,10 +766,11 @@ print(list(authors_with_book_ages))
 
 Output:
 
-~~~
+~~~{.js caption="Output"}
 [{'_id': ObjectId('63bd78b8d7bbbf34d7a3826a'),
   'books': [{'age_in_days': 24, 'title': 'MongoDB, The Book for Beginners'},
-            {'age_in_days': 8, 'title': 'MongoDB, The Book for Advanced Users'},
+            {'age_in_days': 8, 'title': 'MongoDB, \
+            The Book for Advanced Users'},
             {'age_in_days': 373, 'title': '100 Projects in Python'}],
   'date_of_birth': datetime.datetime(1990, 1, 20, 0, 0),
   'first_name': 'John',
@@ -728,7 +783,8 @@ Output:
   'first_name': 'Jane',
   'last_name': 'Doe'},
  {'_id': ObjectId('63bd78b8d7bbbf34d7a3826c'),
-  'books': [{'age_in_days': 8, 'title': 'MongoDB, The Book for Advanced Users'},
+  'books': [{'age_in_days': 8, 'title': 'MongoDB, \
+  The Book for Advanced Users'},
             {'age_in_days': 8, 'title': 'MongoDB, The Book for Experts'}],
   'first_name': 'Jack',
   'last_name': 'Smith'}]
@@ -755,10 +811,3 @@ Finally, you learned about some advanced MongoDB queries, which can be used to p
 Overall, by mastering these concepts, you should be well-equipped to effectively work with [MongoDB](/blog/mongodb-docker) and build robust and efficient applications.
 
 {% include cta/cta1.html %}
-
-## Outside Article Checklist
-
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
-
