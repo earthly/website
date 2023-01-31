@@ -96,7 +96,7 @@ The below output will be displayed:
 
 Now that you have QuestDB running, you can create the database table by connecting to QuestDB's interactive console and running the below SQL statement.
 
-~~~{.bash caption=">_"}
+~~~{.sql}
 CREATE TABLE
     quotes(stock_symbol SYMBOL CAPACITY 5 CACHE INDEX,
             current_price DOUBLE,
@@ -129,7 +129,7 @@ The `quotes` table created by the above SQL command will have the following fiel
 
 In this section, you will define Python dependencies that the project requires, define the worker settings, and create the periodic tasks that will fetch data from Finnhub.
 
-![Creating Workers Using Celery]({{site.images}}{{page.slug}}/lqv7XJ9.png)
+![Creating Workers Using Celery]({{site.images}}{{page.slug}}/lqv7XJ9.png)\
 
 ### Defining Dependencies
 
@@ -226,7 +226,7 @@ Next, you have to define the database settings of the application. In the below 
 # [...]
 ~~~
 
-![Image]({{site.images}}{{page.slug}}/p5JXM6g.png)
+![Image]({{site.images}}{{page.slug}}/p5JXM6g.png)\
 
 Next, you will define the API settings. You have to specify the API key, the stock data fetch frequency and the stock symbols to be fetched. The API key and stock symbols contain sensitive data and will be stored in a separate file called a `.env` file.
 
@@ -274,7 +274,7 @@ settings = Settings()
 
 In the above `settings.py` file, `celery_broker` and `database_url` settings have been defined with default values. You will have to change their values with the correct settings and run the worker in a Docker container to get started with the settings. To keep the environment separated, you will create a `.env` file in the project root directory with the below content. The reason for using a `.env` file is to store sensitive credentials such as API keys, the stock symbols, and the frequency at which stock prices are fetched from the API.
 
-~~~{.env caption=""}
+~~~{ caption=".env"}
 SMD_API_KEY = "<YOUR SANDBOX API KEY>"
 SMD_FREQUENCY = 10
 SMD_SYMBOLS = ["AAPL","DOCN","EBAY"]
@@ -417,7 +417,7 @@ $ curl -o assets/style.css https://github.com/verah-tech/stock-market/blob/main/
 
 ### Setting Up the Application
 
-![Setting Up the Application]({{site.images}}{{page.slug}}/3OFABqK.png)
+![Setting Up the Application]({{site.images}}{{page.slug}}/3OFABqK.png)\
 
 This is the last part of the application as you will be able to visualize the data you earlier fetched. You will create the `main.py` file in the `app` [packages](/blog/setup-typescript-monorepo) and performing several imports required by the project as below:
 
