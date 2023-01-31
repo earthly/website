@@ -26,11 +26,11 @@ Gin is extendable, and the package provides built-in rendering support for HTML,
 
 This tutorial will walk you through developing web applications in Go with the Gin framework. You'll learn how to use Gin by building a CRUD API. You'll use the Gin framework for routing, JSON parsing, request-response-related operations, and the GORM package for the database (SQLite) auto migrations and operations.
 
-Note: You can find the complete code for this tutorial on this [GitHub Gist](https://gist.github.com/Goodnessuc/e4fdc78b04965e991efc440f50705ece)
+Note: You can find the complete code for this tutorial on this [GitHub Gist](https://gist.github.com/Goodnessuc/e4fdc78b04965e991efc440f50705ece).
 
 ## Prerequisites
 
-You'll need to meet a few prerequisites to understand and follow this hands-on tutorial.
+You'll need to meet a few prerequisites to understand and follow this hands-on tutorial:
 
 1. You have experience working with Go and Go installed on your machine.
 2. Experience working with the GORM package and SQL databases in Go is a plus.
@@ -43,20 +43,20 @@ You'll need to meet a few prerequisites to understand and follow this hands-on t
 
 Once you've set up your Go workspace, install the `gin` package in your working directory using this command.
 
-~~~{.go caption=">_"}
+~~~{.bash caption=">_"}
 go get github.com/gin-gonic/gin
 ~~~
 
 You'll also need to install the `gorm` package and the `gorm` [sqlite](/blog/golang-sqlite) driver for connecting to the SQLite database.
 
-Run these commands in your working directory to install the [packages](/blog/setup-typescript-monorepo).
+Run these commands in your working directory to install the packages:
 
-~~~{.go caption=">_"}
+~~~{.bash caption=">_"}
 go get gorm.io/gorm
 go get gorm.io/driver/sqlite
 ~~~
 
-These are the imports you'll need for this tutorial.
+These are the imports you'll need for this tutorial:
 
 ~~~{.go caption="gin.go"}
 import (
@@ -74,7 +74,7 @@ You'll use the `log` package for logging-related operations and the `http` packa
 
 GORM uses structs for the database model. You can declare the struct with constraint tags and set up auto migrations for the struct.
 
-Here's an example `company` struct with `gorm` and `json` tags.
+Here's an example `company` struct with `gorm` and `json` tags:
 
 ~~~{.go caption="gin.go"}
 type Companies struct {
@@ -147,7 +147,7 @@ The `Run` method of your router instance starts a server to run on the specified
 
 ### The `POST` Request Handler
 
-The `POST` request handler function will accept JSON input from the client for GORM to migrate to the decoded JSON struct database.  
+The `POST` request handler function will accept JSON input from the client for GORM to migrate to the decoded JSON struct database:
 
 ~~~{.go caption="gin.go"}
 func PostCompany(ctx *gin.Context) {
@@ -174,8 +174,6 @@ func PostCompany(ctx *gin.Context) {
 }
 ~~~
 
-The PostCompany handler function receives POST requests from the server, parses the JSON into the `newCompany` struct, and the Create method of your database instance creates a new row of the struct inputs in the database.
-
 The `PostCompany` handler function receives POST requests from the server, parses the JSON into the `newCompany` struct, and the `Create` method of your database instance creates a new row of the struct inputs in the database.
 
 If there's an error decoding the JSON request body or migrating the data, the handler function returns the JSON from the error handling `if` statement.
@@ -190,7 +188,7 @@ func main() {
 }
 ~~~
 
-Here's a CURL request that tests the `PostCompany` handler function.
+Here's a CURL request that tests the `PostCompany` handler function:
 
 ~~~{.bash caption=">_"}
 curl -X POST -H "Content-Type: application/json" \
@@ -241,7 +239,7 @@ func main() {
 
 ~~~
 
-Here's the CURL request for the `GetCompany` handler function. The `CURL` request sends a request to the `/api/v1/:company` route with the data attached to the URL.
+Here's the CURL request for the `GetCompany` handler function. The `CURL` request sends a request to the `/api/v1/:company` route with the data attached to the URL:
 
 ~~~{.bash caption=">_"}
 curl -X GET "http://localhost:8080/api/v1/TestCompany"
@@ -311,7 +309,7 @@ func main() {
 }
 ~~~
 
-Here's the CURL request that tests the `UpdateCompany` handler function. Insert a company name in the specified field to run the CURL request effectively.
+Here's the CURL request that tests the `UpdateCompany` handler function. Insert a company name in the specified field to run the CURL request effectively:
 
 ~~~{.bash caption=">_"}
 curl -X PUT -H "Content-Type: application/json" \
@@ -323,7 +321,7 @@ curl -X PUT -H "Content-Type: application/json" \
 
 ~~~
 
-The CURL request sends a PUT request to the `api/v1/:company` endpoint with a JSON payload as the replacement for the update operation.
+The CURL request sends a PUT request to the `api/v1/:company` endpoint with a [JSON](/blog/convert-to-from-json) payload as the replacement for the update operation.
 
 <div class="wide">
 
@@ -377,7 +375,7 @@ func main() {
 }
 ~~~
 
-Here's the CURL request for the `DeleteCompany` handler function. Insert a company name in the specified field to run the CURL request effectively.
+Here's the CURL request for the `DeleteCompany` handler function. Insert a company name in the specified field to run the CURL request effectively:
 
 ~~~{.bash caption=">_"}
     curl -X DELETE "http://localhost:8080/api/v1/<company_name>"
@@ -385,7 +383,7 @@ Here's the CURL request for the `DeleteCompany` handler function. Insert a compa
      {"message": "Company Deleted"% }
 ~~~
 
-The CURL request sends a PUT request to the `api/v1/:company` endpoint with a [JSON](/blog/convert-to-from-json) payload as the replacement for the update operation.
+The CURL request sends a DELETE request to the `api/v1/:company` endpoint to delete the matching row from the database.
 
 ## Conclusion
 
