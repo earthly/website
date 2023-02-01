@@ -332,7 +332,7 @@ Ndafara Tsamba:
     avatar  : "/assets/images/authors/Ndafara.jpg"
 Ashutosh Krishna:
     name    : "Ashutosh Krishna"
-    bio     : "Ashutosh is an Application Developer at Thoughtworks. He enjoys creating things that live on the internet. He is passionate about full stack development and DevOps. In his free time, he enjoys sharing his technical knowledge with others through articles and turorials."
+    bio     : "Ashutosh is an Application Developer at Thoughtworks. He enjoys creating things that live on the internet. He is passionate about full-stack development and DevOps. In his free time, he enjoys sharing his technical knowledge with others through articles and tutorials."
     avatar  : "/assets/images/authors/Ashutosh.jpeg"
 Muhammed Ali:
     name    : "Muhammed Ali"
@@ -374,3 +374,8 @@ Ubaydah Abdulwasiu:
     name    : "Ubaydah Abdulwasiu"
     bio     : "Ubaydah is a backend engineer who has built APIs using a variety of languages and frameworks such as Python Django, Golang, and Javascript. She also has experience writing technical documentation and articles. She enjoys passing on technical knowledge, reading, and learning about new technologies."
     avatar  : "/assets/images/authors/ubaydah.jpg"
+Arafat Olayiwola:
+    name    : "Arafat Olayiwola"
+    bio     : "Arafat is a passionate developer who is drawn to creating real-world solutions. He is currently a member of the AWS Community Builders. He is also constantly interested in learning more about distributed systems."
+    avatar  : "/assets/images/authors/arafat.jpeg"
+    
