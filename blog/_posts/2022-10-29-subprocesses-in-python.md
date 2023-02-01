@@ -44,7 +44,7 @@ After importing the `subprocess` module, you can call the `run()` function with 
 
 When a subprocess is invoked, the following actions occur under the hood:
 
-- The Python script inside which you're running the external command is the parent process and the subprocess is the child process.
+- The *Python script* inside which you're running the external command is the **parent process** and the *subprocess* is the **child process**.
 - Upon starting a subprocess, the control is transferred from the parent process to the child process.
 - The child process executes the external command inside a secondary environment.
 - After the child process finishes executing, the control returns to the parent process.
@@ -79,7 +79,7 @@ In the above output:
 - The contents of the working directory are printed onto the console.
 - The `args` attribute contains the arguments passed to the `run()` function.
 - The `returncode` attribute indicates whether the command ran successfully; A return code of zero indicates successful execution.
-- If the output of the command is captured, the `stdout` attribute contains the output; if we do not capture the output, `stdout`is `None`.
+- If the output of the command is captured, the `stdout` attribute contains the output; if we do not capture the output, `stdout` is `None`.
 
 <div class="notice--big--primary">
 In the subprocess module, the [Popen class](https://docs.python.org/3/library/subprocess.html#subprocess.Popen) handles the creation and management of subprocesses. However, the `run()` function is recommended for invoking subprocesses and suffices for most common use cases.
@@ -111,14 +111,14 @@ None
 <div class="notice--info">
 You can also specify the command as a long string and call Python's `split()` method on it. By default, the `split()` method splits the string on all occurrences of whitespace and returns a list of strings. This list of strings can be used in the call to the `run()` function.
 
-~~~{.python caption="main.py"}
+~~~{.python caption=""}
 command = ...
 command_list = command.split()
 ~~~
 
 To parse more complex commands—where whitespace is not the correct separator to split on—use `shlex.split()` that splits the command string using a shell-like syntax.
 
-~~~{.python caption="main.py"}
+~~~{.python caption=""}
 import shlex
 command = ...
 shlex.split(command)
@@ -128,7 +128,7 @@ Let's take an example:
 
 Suppose you'd like to create a directory named 'Foo Bar'. The code cells below show how the command string is split when we use the `split()` method and `shlex.split()`.
 
-~~~{.python caption="main.py"}
+~~~{.python caption=">_"}
 >>> command_str = "mkdir 'Foo Bar'"
 >>> command_str.split()
 ['mkdir', "'Foo", "Bar'"]
@@ -136,7 +136,7 @@ Suppose you'd like to create a directory named 'Foo Bar'. The code cells below s
 
 As seen, the `split()` method splits `command_str` on all whitespaces. When run as a subprocess, the above command will create two directories, `'Foo` and `Bar'`, which is not what we want!
 
-~~~{.python caption="main.py"}
+~~~{.python caption=">_"}
 >>> import shlex
 >>> shlex.split(command_str)
 ['mkdir', 'Foo Bar']
@@ -178,7 +178,7 @@ process_4 = subprocess.run("ls",capture_output=True)
 print(process_4.stdout)
 ~~~
 
-Note that the output of `process_4` is not printed onto the console anymore. The `stdout` attribute of the `CompletedProcess` object, `process_4`contains the output as a string of bytes.
+Note that the output of `process_4` is not printed onto the console anymore. The `stdout` attribute of the `CompletedProcess` object `process_4` contains the output as a string of bytes.
 
 ~~~{.text caption="Output"}
 b'py_logging\nmain.py\npy_unit_testing\nstring_manipulation\n'
@@ -276,7 +276,7 @@ To check if the external command ran successfully, here's a summary of methods w
 - Access the `stderr` attribute of the `CompletedProcess` object. The error message in `stderr` has diagnostic information on what went wrong when the external command was run.
 - If you anticipate that an external command may fail, you can explicitly set the `stderr` attribute to `subprocess.PIPE` to redirect errors to `stderr`.
 
-In all of the above methods, Python does _not_ throw an error when the external command fails. However, it might help to get an error message when running the Python script if the external command fails to run successfully. For this, you can set the optional `check` parameter to `True` in the `run()` function call. If the external command fails to run, Python throws a `CalledProcessError`exception.
+In all of the above methods, Python does *not* throw an error when the external command fails. However, it might help to get an error message when running the Python script if the external command fails to run successfully. For this, you can set the optional `check` parameter to `True` in the `run()` function call. If the external command fails to run, Python throws a `CalledProcessError`exception.
 
 ~~~{.python caption="main.py"}
 
@@ -302,7 +302,7 @@ subprocess.CalledProcessError: Command '['ls', \
 
 We've learned that when a subprocess is invoked, the control is transferred from the parent process (Python script) to the child process that runs the command.
 
-The control returns to the parent process only _after_ the child process finishes execution which can sometimes be challenging. For example, the subprocess may involve pinging a URL when you're working offline. In this case, the parent process waits for transfer of control from the child process; but the child process never finishes its execution.
+The control returns to the parent process only *after* the child process finishes execution which can sometimes be challenging. For example, the subprocess may involve pinging a URL when you're working offline. In this case, the parent process waits for transfer of control from the child process; but the child process never finishes its execution.
 
 To address this, you can set a `timeout` value (in seconds) when invoking a subprocess. If the subprocess does not finish executing within the value specified by the `timeout` argument, a `TimeoutExpired` exception is raised.
 
@@ -404,7 +404,7 @@ print(process_2.stdout)
 
 ![team-of-developers]({{site.images}}{{page.slug}}/zfPlWVI.png)\
 
-You can change the [environment variable](/blog/bash-variables) in which a subprocess runs by setting the `env` parameter to a modified environment. The secondary environment in which a subprocess runs is inherited from the environment of the parent process. This is the default behavior and the `env` parameter is set to its default value `None`. To change this default execution environment, you should set the `env` parameter to the modified environment variable dictionary, when calling the `run()` function.
+You can change the [environment](/blog/bash-variables) in which a subprocess runs by setting the `env` parameter to a modified environment. The secondary environment in which a subprocess runs is inherited from the environment of the parent process. This is the default behavior and the `env` parameter is set to its default value `None`. To change this default execution environment, you should set the `env` parameter to the modified environment variable dictionary, when calling the `run()` function.
 
 In Python, the `environ()` function in the `os` module returns the [environment variables](/blog/bash-variables) dictionary. Instead of modifying the underlying environment variables directly, you can create a copy of the dictionary and update one or more environment variables.
 

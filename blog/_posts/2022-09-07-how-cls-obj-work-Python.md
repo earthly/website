@@ -6,7 +6,7 @@ toc: true
 author: Bala Priya C
 
 internal-links:
- - Pyhton
+ - Python
  - Classes
  - OOP
  - Objects
@@ -31,7 +31,7 @@ In this tutorial, you'll learn how to:
 Python natively supports object-oriented programming and all variables that you create are objects.
 You can start a Python REPL and run the following line of code: it calls the `type()` function with `py_num` as the argument. The output reads `<class 'int'>` which means `py_num` is an object of the integer class.
 
-~~~{.python caption="main.py"}
+~~~{.python caption=">_"}
 >>> py_num = 8
 >>> type(py_num)
 <class 'int'>
@@ -39,7 +39,7 @@ You can start a Python REPL and run the following line of code: it calls the `ty
 
 You can verify this for a few more built-in data types.
 
-~~~{.python caption="main.py"}
+~~~{.python caption=">_"}
 >>> py_str = "A Python String"
 >>> type(py_str)
 <class 'str'>
@@ -54,7 +54,7 @@ To create a class, you can use the `class` keyword followed by the name of the c
 
 In this tutorial, let's consider the example of `Student` class—containing student records for a given academic year.
 
-[You may download the code and follow along.](https://github.com/balapriyac/Python-OOP/blob/main/main.py)
+[You may download the code and follow along](https://github.com/balapriyac/Python-OOP/blob/main/main.py).
 
  All of the code below is in the `main.py` file.
 
@@ -80,7 +80,7 @@ print(type(student_1))
 print(isinstance(student_1,Student))
 ~~~
 
-~~~{.python .merge-code caption="Output"}
+~~~{ .merge-code caption="Output"}
 # Output
 <class '__main__.Student'>
 True
@@ -115,16 +115,16 @@ class Student:
 Whenever you create an instance of the class `Student`, the `__init__` method does the following:
 
 - It automatically  takes in the instance as the first argument (denoted by `self`). In this example, instance denotes a particular student object.
-- It assigns the values of the parameters, `first_name`,`last_name`, and `tuition` to the instance attributes `first_name`,`last_name`, and `tuition` of the specific instance.
+- It assigns the values of the parameters, `first_name`, `last_name`, and `tuition` to the instance attributes `first_name`, `last_name`, and `tuition` of the specific instance.
 
 To improve readability, you can consider giving the same names to both the attributes and the parameters in the `__init__` constructor, but different names, as shown in the code snippet below, would work just fine.
 
-~~~{.python caption="main.py"}
+~~~{.python caption=""}
 class Student:
     def __init__(self,fname,lname,tuition_amt):
         self.first_name = fname
         self.last_name = lname
-        self.tuition = tuit_amt
+        self.tuition = tuition_amt
 ~~~
 
 Summing up what we've learned so far: The `Student` class serves as a template—with attributes `first_name`, `last_name`, and `tuition`—from which we can create student objects each having their own first and last names, and an associated tuition.
@@ -166,7 +166,7 @@ class Student:
         return f"{self.first_name}.{self.last_name}@school.edu"
 ~~~
 
-To call an instance method you can use, `<instance_name>.<method()>`. You can also call an instance method using the class with the syntax: `<ClassName>.<method(<instance_name>)`. Though verbose, this method helps understand how the instance is passed in as the first argument.
+To call an instance method you can use, `<instance_name>.<method()>`. You can also call an instance method using the class with the syntax: `<ClassName>.<method>(<instance_name>)`. Though verbose, this method helps understand how the instance is passed in as the first argument.
 
 ~~~{.python caption="main.py"}
 # calling instance method on the instance
@@ -175,7 +175,7 @@ print(student_1.get_email())
 print(Student.get_email(student_2))
 ~~~
 
-~~~{.python .merge-code caption="Output"}
+~~~{ .merge-code caption="Output"}
 # Output
 Jane.Smith@school.edu
 John.Doe@school.edu
@@ -224,7 +224,7 @@ print(Student.num_students)
 
 We've created two student objects, hence the value of the class variable `num_students` is now 2.
 
-~~~{.python caption="Output"}
+~~~{ caption="Output"}
 # Output
 2022-23
 2
@@ -259,7 +259,7 @@ Student.set_fee_waiver(0.1)
 print(student_1.apply_fee_waiver())
 ~~~
 
-~~~{.python .merge-code caption="Output"}
+~~~{ .merge-code caption="Output"}
 # Output
 # 0.1*tuition has been waived
 18000.0
@@ -271,7 +271,7 @@ print(student_1.apply_fee_waiver())
 
 Let's start with an example.
 
-~~~{.python caption="main.py"}
+~~~{.python caption=""}
 def add(x,y):
   return x + y
 ~~~
@@ -284,10 +284,10 @@ In Python, a **decorator** is a function that extends the functionality of exist
 
 Read through the code snippet below.
 
-~~~{.python caption="main.py"}
+~~~{.python caption=""}
 def double_xy(f):
   def wrapper(x,y):
-    return f(x*2,y*2)
+    return f(2*x,2*y)
   return wrapper
 ~~~
 
@@ -295,21 +295,21 @@ Let's parse the definition of `double_xy()`.
 
 - The function `double_xy()` accepts a function `f` as the argument.
 - In the body of the function, we define a `wrapper()` function that is parameterized by `x` and `y`.
-- The `wrapper()` returns the function `f`, called with `2*x` and `2*y` as the arguments
+- The `wrapper()` returns the function `f`, called with `2*x` and `2*y` as the arguments.
 - The function `double_xy()` returns the inner `wrapper()` function.
 
 Next, you can call the function `double_xy()` with `add` as the argument and assign it (again) to `add`—just the way you'd call a function and assign its return value to a variable.
 
 When you now call `add()` with values for `x` and `y`, it returns the sum of `2*x` and `2*y`.
 
-~~~{.python caption="main.py"}
+~~~{.python caption=""}
 add = double_xy(add)
 add(1,2) #6  
 ~~~
 
 Instead of the above verbose syntax, you have a succinct syntax. Just add `@double_xy` above the definition of the `add()` function, as shown below.
 
-~~~{.python caption="main.py"}
+~~~{.python caption=""}
 @double_xy
 def add(x,y):
   return x + y
@@ -415,7 +415,7 @@ today = date.today()
 Student.is_fall(today)
 ~~~
 
-~~~{.python .merge-code caption="Output"}
+~~~{ .merge-code caption="Output"}
 # Output: 
 Not the fall semester
 ~~~
