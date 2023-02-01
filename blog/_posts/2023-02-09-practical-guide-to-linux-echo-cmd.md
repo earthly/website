@@ -49,7 +49,7 @@ Here's an example:
 echo -n Welcome
 ~~~
 
-~~~{.bash caption="Output"}
+~~~{caption="Output"}
 Welcomeubaydah@ubaydah
 ~~~
 
@@ -59,7 +59,7 @@ You can also print multiple lines of text without adding new lines after each li
 echo -n "Hello World" "This is a test" "This is another test"
 ~~~
 
-~~~{.bash caption="Output"}
+~~~{caption="Output"}
 Hello World This is a test This is another testubaydah@ubaydah
 ~~~
 
@@ -79,7 +79,7 @@ Here's an example:
 echo -e "\aWelcome Back"
 ~~~
 
-~~~{.bash caption="Output"}
+~~~{caption="Output"}
 Welcome back
 ~~~
 
@@ -95,7 +95,7 @@ Consider the following examples:
 echo -e "Learning is\b good"
 ~~~
 
-~~~{.bash caption="Output"}
+~~~{caption="Output"}
 Learning i good    
 ~~~
 
@@ -106,7 +106,7 @@ In the example above, `s` is erased, and the remaining text is in the output.
 echo -e "Learning is  good\b"
 ~~~
 
-~~~{.bash caption="Output"}
+~~~{caption="Output"}
 Learning is goo    
 ~~~
 
@@ -117,7 +117,7 @@ In the example above, the last letter is erased.
  echo -e "Learning \bis\b\b\b good"
 ~~~
 
-~~~{.bash caption="Output"}
+~~~{caption="Output"}
 Learning good    
 ~~~
 
@@ -131,7 +131,7 @@ Here's an example:
 echo -e "Learning is\c good"
 ~~~
 
-~~~{.bash caption="Output"}
+~~~{caption="Output"}
 Learning is    
 ~~~
 
@@ -143,7 +143,7 @@ You can also print a string with `\c` and a custom delimiter:
 echo -e "Hello World:\c"
 ~~~
 
-~~~{.bash caption="Output"}
+~~~{caption="Output"}
 Hello World:%
 ~~~
 
@@ -163,7 +163,7 @@ The second example of using the form feed character `\f` in an `echo` command is
 echo -e "Page 1\fPage 2\fPage 3"
 ~~~
 
-~~~{.bash caption="Output"}
+~~~{caption="Output"}
 Page 1
       Page 2
             Page 3
@@ -179,7 +179,7 @@ The `\n` character allows you to add a new line to your output. Here's an exampl
 echo -e "Learning is\ngood"
 ~~~
 
-~~~{.bash caption="Output"}
+~~~{caption="Output"}
 Learning is
 good
 ~~~
@@ -193,7 +193,7 @@ Here's an example:
 echo -e "Hello\n\tWorld"
 ~~~
 
-~~~{.bash caption="Output"}
+~~~{caption="Output"}
 Hello
     World
 ~~~
@@ -208,7 +208,7 @@ Here's an example:
 echo -e "Learning\tis\tgood"
 ~~~
 
-~~~{.bash caption="Output"}
+~~~{caption="Output"}
 Learning        is      good
 ~~~
 
@@ -222,7 +222,7 @@ The `\v` character gives you the behavior of vertical tab spaces, as shown:
 echo -e "Learning\vis\vgood"
 ~~~
 
-~~~{.bash caption="Output"}
+~~~{caption="Output"}
 Learning
              is
                 good
@@ -240,7 +240,7 @@ Here's an example:
 echo -e "Learning\\good"
 ~~~
 
-~~~{.bash caption="Output"}
+~~~{caption="Output"}
 Learning\good
 ~~~
 
@@ -252,7 +252,7 @@ Unlike the `-e` option which lets you interpret escape characters, the `E` optio
 echo -E "Learning\n is \tgood"
 ~~~
 
-~~~{.bash caption="Output"}
+~~~{caption="Output"}
 Learning\n is \tgood
 ~~~
 
@@ -280,7 +280,7 @@ To check the content of the file:
 cat test.txt
 ~~~
 
-~~~{.bash caption="Output"}
+~~~{caption="Output"}
 Hello world
 ~~~
 
@@ -312,7 +312,7 @@ ubay=good
 echo "the value of ubay is $ubay"
 ~~~
 
-~~~{.bash caption="Output"}
+~~~{caption="Output"}
 the value of ubay is good
 ~~~
 
@@ -324,7 +324,7 @@ You can also use the echo command to display the value of multiple variables at 
 echo $ubay $new
 ~~~
 
-~~~{.bash caption="Output"}
+~~~{caption="Output"}
 good hello
 ~~~
 
@@ -338,7 +338,7 @@ Consider the following example where you display all the `png` files in your Des
 echo *.png
 ~~~
 
-~~~{.bash caption="Output"}
+~~~{caption="Output"}
 
 Screenshot 2022-10-19 at 12.25.13.png \
 Screenshot 2022-10-27 at 14.44.38.png \
@@ -357,7 +357,7 @@ Here's an example:
 echo  *.txt
 ~~~
 
-~~~{.bash caption="Output"}
+~~~{ caption="Output"}
 myfile.txt output.txt test.txt
 ~~~
 
@@ -383,7 +383,7 @@ Here's an example:
  echo *
 ~~~
 
-~~~{.bash caption="Output"}
+~~~{ caption="Output"}
 
 Screenshot 2022-11-07 at 13.40.11.png \
 Screenshot 2022-11-07 at 13.43.53.png
@@ -403,7 +403,7 @@ You can also list only the directories and exclude files:
 echo */
 ~~~
 
-~~~{.bash caption="Output"}
+~~~{ caption="Output"}
 
 First Semester 300L/ DSA in Golang/ DSA/ GO-API/ Go-path/ \
 backend/ bank-modern-app/ blog-fast-api/ bookly-jamstack-hack/ \
