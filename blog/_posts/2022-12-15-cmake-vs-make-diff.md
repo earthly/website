@@ -32,7 +32,7 @@ Make is a tool that controls the generation of executables and other non–sourc
 
 On the other hand, CMake requires a `CMakeLists.txt` file and is a cross-platform Make. This means that it works on different operating systems. It allows **compiler-independent builds**, testing, packaging, and installation of software. It's important to note that CMake produces build files for other systems; however, it's not a build system itself. CMake can generate a Makefile, and then the generated Makefile can be used with Make in the platform being worked on:
 
-![How CMake and Make Work]({{site.images}}{{page.slug}}/5Gv149z.png)\
+![How CMake and Make Work]({{site.images}}{{page.slug}}/5Gv149z.png)
 
 To use Make, you have to manually create the Makefile, but with CMake, the Makefile is automatically created.
 
@@ -50,7 +50,7 @@ On both Windows and Linux, run the following command to check the CMake version 
 cmake --version
 ~~~
 
-The output on Windows will look like this:
+If you have [installed CMake on Windows](/blog/installandrun-cmake-on-windows/), you'll have the following output:
 
 ~~~{caption="Output"}
 cmake version 3.24.2
@@ -100,7 +100,7 @@ Copyright (C) Microsoft Corporation. All rights reserved.
 15.8.168.64424
 ~~~
 
-**Note**: To build the CMake artifacts on [Windows](/blog/makefiles-on-windows), you need to [install MSBuild]((<https://learn.microsoft.com/en-us/visualstudio/msbuild/msbuild?view=vs-2022>), a build engine.
+**Note**: To build the CMake artifacts on [Windows](/blog/makefiles-on-windows), you need to [install MSBuild](<https://learn.microsoft.com/en-us/visualstudio/msbuild/msbuild?view=vs-2022>), a build engine.
 
 Because Make comes bundled with the Unix operating system, there is no need to install it. However, there may be a need to upgrade to the latest version (which is version 4.3 at the time of writing) to improve functionality and prevent security vulnerabilities.
 
