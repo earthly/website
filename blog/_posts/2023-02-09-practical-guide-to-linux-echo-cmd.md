@@ -492,23 +492,22 @@ Here, you used `\033[` which represents  `ESC[`, followed by the ANSI escape col
 
 You can also write a [Bash script](/blog/understanding-bash) to perform an action and change color. Here's an example:
 
-## `!/bin/bash`
+~~~{.bash caption="myscript.sh"}
 
-## Set the Number to Find the Square Root Of
+#!/bin/bash
 
-~~~{.bash caption=">_"}
+# Set the Number to Find the Square Root Of
+
 number=9
-~~~
 
-## Calculate the Square Root of the Number
 
-~~~{.bash caption=">_"}
+# Calculate the Square Root of the Number
+
 result=$(echo "sqrt($number)" | bc)
-~~~
 
-## Display the Result
 
-~~~{.bash caption=">_"}
+# Display the Result
+
 echo -e "The square root of $number is \033[0;32m$result"
 ~~~
 
