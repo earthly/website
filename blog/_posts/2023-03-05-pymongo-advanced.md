@@ -117,7 +117,7 @@ The `$jsonSchema` operator takes in a [JSON](/blog/convert-to-from-json) Schema 
 
 You can define the schema in a different file and import it in the working file. But for the sake of simplicity, add the following code in the `create_book_collection` function after the try-except block:
 
-~~~{.js caption="book_validator.js"}
+~~~{.python caption="main.py"}
 book_validator = {
     "$jsonSchema": {
         "bsonType": "object",
@@ -181,7 +181,7 @@ When the command is executed, the schema you specified in the `book_validator` o
 
 If you print the output of the above command, you will see a similar output as below:
 
-~~~{.js caption="Output"}
+~~~{.python caption="Output"}
 
 {'ok': 1.0, '$clusterTime': {'clusterTime': Timestamp(1673361108, 3), \
 'signature': {'hash': b'\x7f\xd8\xa5G\xff\xb2\xca\xb7\xc0\x9e\x14\xde\x88\xc6\x9b2\x04\xbc\xff\xce', \
@@ -305,7 +305,7 @@ print(f'Author Validation: {library_db.get_collection("author").options()}')
 
 Output:
 
-~~~{.js caption="Output"}
+~~~{.python caption="Output"}
 
 Book Validation: {'validator': {'$jsonSchema': {'bsonType': 'object', \
 'required': ['title', 'authors', 'publication_date', 'type', 'copies'], \
@@ -407,7 +407,7 @@ insert_bulk_data()
 
 Output:
 
-~~~{.js caption="Output"}
+~~~{.python caption="Output"}
 Author IDs: [ObjectId('63bd78b8d7bbbf34d7a3826a'), \
 ObjectId('63bd78b8d7bbbf34d7a3826b'), \
 ObjectId('63bd78b8d7bbbf34d7a3826c')]
@@ -444,7 +444,7 @@ In the above code, you didn't pass the other required fields, and hence, the val
 
 Output:
 
-~~~{.js caption="Output"}
+~~~{.python caption="Output"}
 pymongo.errors.WriteError: Document failed validation, \
 full error: {'index': 0, 'code': 121, 'errInfo': \
 {'failingDocumentId': ObjectId('63b3bba1421a1d3a6001b4ad'), \
@@ -526,7 +526,7 @@ print(list(mongodb_books))
 
 Output:
 
-~~~{.js caption="Output"}
+~~~{.python caption="Output"}
 [{'_id': ObjectId('63bd78b9d7bbbf34d7a3826d'),
   'authors': [ObjectId('63bd78b8d7bbbf34d7a3826a'),
               ObjectId('63bd78b8d7bbbf34d7a3826b')],
@@ -575,7 +575,7 @@ This will perform a left outer join on the author and book collections. The `aut
 
 Output:
 
-~~~{.js caption="Output"}
+~~~{.python caption="Output"}
     [{'_id': ObjectId('63bd78b8d7bbbf34d7a3826a'),
   'books': [{'_id': ObjectId('63bd78b9d7bbbf34d7a3826d'),
              'authors': [ObjectId('63bd78b8d7bbbf34d7a3826a'),
@@ -675,7 +675,7 @@ The `$project` operator in MongoDB is used to reshape the documents in a collect
 
 Output:
 
-~~~{.js caption="Output}
+~~~{.python caption="Output}
   [{'first_name': 'John', 'last_name': 'Doe', 'total_books': 3},
   {'first_name': 'Jane', 'last_name': 'Doe', 'total_books': 3},
   {'first_name': 'Jack', 'last_name': 'Smith', 'total_books': 2}]
@@ -716,7 +716,7 @@ This will filter out all authors that have less than 3 books.
 
 Output:
 
-~~~{.js caption="Output"}
+~~~{.python caption="Output"}
     [{'first_name': 'John', 'last_name': 'Doe', 'total_books': 3},
     {'first_name': 'Jane', 'last_name': 'Doe', 'total_books': 3}]
 ~~~
@@ -766,7 +766,7 @@ print(list(authors_with_book_ages))
 
 Output:
 
-~~~{.js caption="Output"}
+~~~{.python caption="Output"}
 [{'_id': ObjectId('63bd78b8d7bbbf34d7a3826a'),
   'books': [{'age_in_days': 24, 'title': 'MongoDB, The Book for Beginners'},
             {'age_in_days': 8, 'title': 'MongoDB, \
