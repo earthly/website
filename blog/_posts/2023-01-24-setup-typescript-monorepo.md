@@ -23,7 +23,7 @@ A [monorepo](https://earthly.dev/blog/golang-monorepo/) is a software-developmen
 A [monorepos](/blog/go-workspaces) generally includes many applications and several packages; a package can depend on other packages. For example, the `ui` package may use functions exposed by the `utils` package. On the other hand, the apps are usually not dependent on each other.
 
 <div class="notice--big--primary">
-*Monorepo* is not to be confused with a [*monolithic application*](https://en.wikipedia.org/wiki/Monolithic_application)! A **monolith** is a single project whose components must be deployed together. A [monorepos](/blog/go-workspaces), on the other hand, consists of several independent applications that live in the same repository and share code through local packages, but can be deployed on their own. Thus, monorepos allow greater deployment flexibility than monoliths.
+*Monorepo* is not to be confused with a [*monolithic application*](https://en.wikipedia.org/wiki/Monolithic_application)! A **monolith** is a single project whose components must be deployed together. A [monorepo](/blog/go-workspaces), on the other hand, consists of several independent applications that live in the same repository and share code through local packages, but can be deployed on their own. Thus, monorepos allow greater deployment flexibility than monoliths.
 </div>
 
 ## What Are Some Benefits of a Monorepo?
