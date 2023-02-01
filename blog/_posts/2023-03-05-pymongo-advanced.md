@@ -44,17 +44,22 @@ Before proceeding with the tutorial, you will need to grant your MongoDB user an
 Follow the steps below to grant admin privileges to your MongoDB user:
 
 1. Click on **Database Access** in your MongoDB Cluster:
-<div class="wide">
-![Click on Database Access]({{site.images}}{{page.slug}}/ASe00NW.png)\
-</div>
+   <div class="wide">
+   ![Click on Database Access]({{site.images}}{{page.slug}}/ASe00NW.png)\
+   </div>
+
 2. Click on the **Edit** button:
-<div class="wide">
-![Click on Edit]({{site.images}}{{page.slug}}/Vm7W6x9.png)\
-</div>
+
+   <div class="wide">
+   ![Click on Edit]({{site.images}}{{page.slug}}/Vm7W6x9.png)\
+   </div>
+
 3. Select **Atlas admin** as the role in the Database User Privileges:
-<div class="wide">
-![Select Atlas admin]({{site.images}}{{page.slug}}/GQCOAHw.png)\
-</div>
+
+   <div class="wide">
+   ![Select Atlas admin]({{site.images}}{{page.slug}}/GQCOAHw.png)\
+   </div>
+
 4. Add `&authSource=admin` at the end of your MongoDB connection string:
 
 ~~~
