@@ -32,9 +32,9 @@ Flux is quickly gaining popularity because it integrates with Kubernetes and is 
 
 To follow along with this step-by-step tutorial, you should have the following:
 
-- Local installation of [Kubernetes](https://kubernetes.io/docs/tasks/tools/) and [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/)
-- A [GitHub account](https://docs.github.com/en/get-started/signing-up-for-github/signing-up-for-a-new-github-account) and [GitHub CLI](https://cli.github.com/manual/installation)
-- Local installations of [Git](https://git-scm.com/downloads) and [Chocolatey](https://chocolatey.org/install)
+* Local installation of [Kubernetes](https://kubernetes.io/docs/tasks/tools/) and [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/)
+* A [GitHub account](https://docs.github.com/en/get-started/signing-up-for-github/signing-up-for-a-new-github-account) and [GitHub CLI](https://cli.github.com/manual/installation)
+* Local installations of [Git](https://git-scm.com/downloads) and [Chocolatey](https://chocolatey.org/install)
 
 ## Installing Flux CLI
 
