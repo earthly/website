@@ -467,29 +467,29 @@ There are two main data modeling patterns that can be used to model these relati
 
 1. **Embedded pattern**: In this pattern, you will embed the entire `author` document or a subset of the `author` document within the `book` document. This allows you to retrieve all the information about a book and its authors in a single query, without having to perform multiple queries or join the collections.
 
-~~~{.python caption="main.py"}
-    {
-        "_id": ObjectId("1234567890"),
-        "title": "MongoDB, The Book for Beginners",
-        "authors": [
-            {
-                "first_name": "John",
-                "last_name": "Doe",
-                "date_of_birth": datetime.datetime(1990, 1, 20, 0, 0)
-            },
-            {
-                "first_name": "Jane",
-                "last_name": "Doe",
-                "date_of_birth": datetime.datetime(1990, 1, 1, 0, 0)
-            }
-        ],
-        "publication_date": datetime.datetime(2022, 12, 17, 0, 0),
-        "type": "hardcover",
-        "copies": 10
-    }
-~~~
+    ~~~{.python caption="main.py"}
+        {
+            "_id": ObjectId("1234567890"),
+            "title": "MongoDB, The Book for Beginners",
+            "authors": [
+                {
+                    "first_name": "John",
+                    "last_name": "Doe",
+                    "date_of_birth": datetime.datetime(1990, 1, 20, 0, 0)
+                },
+                {
+                    "first_name": "Jane",
+                    "last_name": "Doe",
+                    "date_of_birth": datetime.datetime(1990, 1, 1, 0, 0)
+                }
+            ],
+            "publication_date": datetime.datetime(2022, 12, 17, 0, 0),
+            "type": "hardcover",
+            "copies": 10
+        }
+    ~~~
 
-However, one of the disadvantages of this pattern is that it can take up more disk space. It can also be difficult to update the information of the authors if this information is embedded in multiple documents.
+    However, one of the disadvantages of this pattern is that it can take up more disk space. It can also be difficult to update the information of the authors if this information is embedded in multiple documents.
 
 2. **Reference pattern**: In this pattern, instead of embedding the `author` information within the `book` document, you will store a reference to the `author` document in the `book` document. This reference is a field in the `book` document that stores the unique identifier of the `author` document. This allows you to easily retrieve all the books written by a particular author by querying the `book` collection and using the `authors` field to filter the results.
 
