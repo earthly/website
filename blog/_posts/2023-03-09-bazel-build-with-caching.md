@@ -9,7 +9,7 @@ internal-links:
  - just an example
 ---
 
-# Using a Cache to Improve Bazel Build Times
+## Using a Cache to Improve Bazel Build Times
 
 [Bazel](https://bazel.build) is a tool that helps you automate the process of building and testing. For instance, with Bazel, you can automate the process of creating executables for [monorepo build systems](https://earthly.dev/blog/bazel-build/).
 
@@ -19,7 +19,7 @@ A Bazel cache can either be [local](https://github.com/bazelbuild/bazel/issues/5
 
 A remote Bazel cache is stored on a separate machine, typically accessed over a network. This approach improves Bazel's performance by allowing multiple computers to share the same build artifacts, which means you don't have to rebuild them on each machine. This is important if multiple machines are used to build the same application but the cache is too large to fit on a single computer.
 
-In this article, you'll learn how to set up a local and a remote cache to improve Bazel build performance. You’ll also understand the pros and cons of caching information.
+In this article, you'll learn how to set up a local and a remote cache to improve Bazel build performance. You'll also understand the pros and cons of caching information.
 
 ## Why You Need Bazel Caching
 
@@ -47,9 +47,9 @@ To configure the granularity of the cache, add the `--cache_granularity` flag in
 
 For example, to use a `medium-grained` cache, add the following to your `.bazelrc` file:
 
-```bash
+~~~
 build --cache_granularity=medium
-```
+~~~
 
 ## Comparing Local vs. Shared (Remote) Caching with Bazel
 
@@ -97,18 +97,18 @@ To use a GCP bucket as a remote cache for Bazel, you'll need to follow these ste
 2. Set up the credentials for accessing the GCP bucket. You should set up a service account and grant permission access to the bucket.
 3. Configure Bazel to use the GCP bucket as the remote cache. You can achieve this by adding the following lines to your `.bazelrc` file:
 
-```bash
+~~~
 build --remote_cache=gs://[BUCKET_NAME]
 build --google_credentials=[PATH_TO_CREDENTIALS_FILE]
-```
+~~~
 
 Alternatively, you can use the `--remote_cache` flag in your Bazel commands to specify the URL of your GCP bucket as the remote cache location.
 
 For example, to build a Bazel target using a GCP bucket as the remote cache, use the following command:
 
-```bash
+~~~
 bazel build --remote_cache=gs://my-gcp-bucket/path/to/cache my_target
-```
+~~~
 
 This command will use the GCP bucket `my-gcp-bucket` at the specified path as the remote cache for the build. Then Bazel will store the build artifacts in the cache and retrieve them from the cache as needed.
 
@@ -120,10 +120,10 @@ Like a GCP bucket, an [Amazon Simple Storage Service (S3) bucket](https://aws.am
 2. Set up the credentials for accessing the Amazon S3 bucket. Create an AWS Identity and Access Management (IAM) user and grant it the necessary permissions to access the bucket.
 3. Configure Bazel to use the S3 bucket as the remote cache by adding the following lines to your `.bazelrc` file:
 
-```bash
+~~~
 build --remote_cache=https://s3.amazonaws.com/[BUCKET_NAME]
 build --remote_instance_name=[INSTANCE_NAME]
-```
+~~~
 
 Use the Bazel build and test commands as usual, and Bazel will automatically cache the build outputs or retrieve build artifacts from the S3 bucket.
 
@@ -131,10 +131,10 @@ Use the Bazel build and test commands as usual, and Bazel will automatically cac
 
 Bazel supports using [remote build execution (RBE)](https://bazel.build/remote/rbe) to build and test applications remotely. This is useful when building and testing on multiple machines or when using a remote cache to speed up build times. To use RBE with a remote cache, you need to set up a remote execution instance and configure Bazel to use it. You can do this by adding the following lines to your `.bazelrc` file:
 
-```bash
+~~~
 build --remote_executor=<host>:<port>
 build --remote_cache=<host>:<port>
-```
+~~~
 
 Replace `<host>` and `<port>` with the hostname and port of your remote execution instance. Then use the build and test commands as usual, and Bazel will automatically use the remote cache and remote execution instance for your builds.
 
@@ -144,18 +144,19 @@ Using RBE and a remote cache extends build times because build output needs to b
 
 To clear the Bazel cache, you can use the `bazel clean` command with the `--expunge` flag. This will remove all files from the Bazel cache for both the build and test outputs. Here is an example of how to clear the Bazel cache:
 
-```bash
+~~~
 bazel clean --expunge
-```
+~~~
+
 <div class="notice--big--primary">
 Using `--expunge` permanently deletes the files in the Bazel cache. You cannot recover them. Use this command only if you want to delete all the files in the Bazel cache.
 </div>
 
-Alternatively, you can use the `bazel clean` command without the `--expunge` flag to remove only the build and test outputs from the Bazel cache. This command won't delete the build and test logs. You can then recover the files in the cache by running the Bazel build or test commands again. Here’s an example of how to use the `clean` command without the `--expunge` flag:
+Alternatively, you can use the `bazel clean` command without the `--expunge` flag to remove only the build and test outputs from the Bazel cache. This command won't delete the build and test logs. You can then recover the files in the cache by running the Bazel build or test commands again. Here's an example of how to use the `clean` command without the `--expunge` flag:
 
-```bash
+~~~
 bazel clean
-```
+~~~
 
 ### Disabling the Cache
 
@@ -163,15 +164,15 @@ To disable the Bazel cache, use the `--noinmemory_cache` or `--noremote_cache` f
 
 Following is an example of how to use the `--noinmemory_cache` flag when running the `bazel build` command:
 
-```bash
+~~~
 bazel build --noinmemory_cache [TARGETS]
-```
+~~~
 
 And here is an example of how to use the `--noremote_cache` flag when running the `bazel test` command:
 
-```bash
+~~~
 bazel test --noremote_cache [TARGETS]
-```
+~~~
 
 Disabling the Bazel cache can significantly increase your build and test time. However, all files must be rebuilt again by Bazel, even if they've already been built and are stored in the cache.
 
@@ -179,13 +180,13 @@ Disabling the Bazel cache can significantly increase your build and test time. H
 
 It's possible to use Bazel without a cache; however, this may result in slower build times. To use Bazel without a cache, you need to specify the `--nocache` flag when running the Bazel commands. Here are examples:
 
-```bash
+~~~
 bazel build --nocache //path/to/package:target
-```
+~~~
 
-```bash
+~~~
 bazel test --nocache //path/to/package:target
-```
+~~~
 
 Remember that using the `--nocache` causes Bazel to rebuild the necessary dependencies from scratch. You can use the cache unless there is a specific reason not to, such as the following:
 
@@ -205,7 +206,6 @@ In this guide, you learned about the concept of Bazel cache builds. After readin
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
 - [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
