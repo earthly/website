@@ -200,6 +200,8 @@ Using remote cache for Bazel significantly improves your builds' performance and
 
 In this guide, you learned about the concept of [Bazel](/blog/bazel-build) cache builds. After reading, you should be able to set up the local and remote cache to improve Bazel build performance. For more information, check out [this guide for any command line reference](https://bazel.build/reference/command-line-reference) you may need.
 
+{% include cta/cta1.html %}
+
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
@@ -207,4 +209,3 @@ In this guide, you learned about the concept of [Bazel](/blog/bazel-build) cache
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
-- [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
