@@ -15,13 +15,13 @@ internal-links:
 
 [MongoDB](https://www.mongodb.com/) is a powerful and flexible NoSQL database that has become increasingly popular in recent years due to its ability to handle large amounts of data and its support for a wide range of data types. [PyMongo](https://pymongo.readthedocs.io/en/stable/) is a Python library that provides a simple and efficient way to interact with [MongoDB](/blog/mongodb-docker) using the Python programming language.
 
-This article is a follow-up to the article titled ["Getting started with PyMongo"](https://earthly.dev/blog/starting-with-pymongo) where we:
+This article is a follow-up to the ["How to get started with PyMongo"](https://earthly.dev/blog/starting-with-pymongo) article where we:
 
 - Created a [MongoDB](/blog/mongodb-docker) database.
 - Connected to the database using the PyMongo library.
 - Performed CRUD operation on the database with the PyMongo library.
 
-This tutorial assumes that you have read and understand the concepts covered in the previous article.
+This tutorial assumes that you have read and understood the concepts covered in the previous article.
 
 In this tutorial, you will learn about schema validation, data modeling, and advanced MongoDB queries.
 
@@ -163,7 +163,7 @@ The [`bsonType`](https://www.mongodb.com/docs/manual/reference/bson-types/) prop
 
 - `title` (string)
 - `authors` (array of objectIds)
-- `publication_date (date)
+- `publication_date` (date)
 - `type` (enum with values "hardcover" and "paperback")
 - `copies` (integer greater than 0)
 
@@ -183,7 +183,7 @@ When the command is executed, the schema you specified in the `book_validator` o
 
 If you print the output of the above command, you will see a similar output as below:
 
-~~~{.python caption="Output"}
+~~~{ caption="Output"}
 
 {'ok': 1.0, '$clusterTime': {'clusterTime': Timestamp(1673361108, 3), \
 'signature': {'hash': b'\x7f\xd8\xa5G\xff\xb2\xca\xb7\xc0\x9e\x14\xde\x88\xc6\x9b2\x04\xbc\xff\xce', \
@@ -192,7 +192,7 @@ If you print the output of the above command, you will see a similar output as b
 
 In the output, the `'ok': 1.0` means the operation was successful.
 
-> Learn more about Database Commands, [link](https://www.mongodb.com/docs/manual/reference/command/).
+> Learn more about [Database Commands](https://www.mongodb.com/docs/manual/reference/command/).
 
 The code now looks as shown below:
 
@@ -291,7 +291,7 @@ The above code snippet defines a function named `create_author_collection` that:
 
 ● Defines a schema validator for the documents in the author collection.
 
-● Set the schema as the validator for the author collection with the `collMod` command
+● Set the schema as the validator for the author collection with the `collMod` command.
 
 When you run the code, it will create the`author` collection in the database [cluster](/blog/kube-bench). You can verify the creation in your MongoDB Atlas.
 
@@ -307,7 +307,7 @@ print(f'Author Validation: {library_db.get_collection("author").options()}')
 
 Output:
 
-~~~{.python caption="Output"}
+~~~{ caption="Output"}
 
 Book Validation: {'validator': {'$jsonSchema': {'bsonType': 'object', \
 'required': ['title', 'authors', 'publication_date', 'type', 'copies'], \
@@ -409,7 +409,7 @@ insert_bulk_data()
 
 Output:
 
-~~~{.python caption="Output"}
+~~~{ caption="Output"}
 Author IDs: [ObjectId('63bd78b8d7bbbf34d7a3826a'), \
 ObjectId('63bd78b8d7bbbf34d7a3826b'), \
 ObjectId('63bd78b8d7bbbf34d7a3826c')]
@@ -446,7 +446,7 @@ In the above code, you didn't pass the other required fields, and hence, the val
 
 Output:
 
-~~~{.python caption="Output"}
+~~~{ caption="Output"}
 pymongo.errors.WriteError: Document failed validation, \
 full error: {'index': 0, 'code': 121, 'errInfo': \
 {'failingDocumentId': ObjectId('63b3bba1421a1d3a6001b4ad'), \
@@ -465,7 +465,7 @@ In the above database design, we have two collections: the book collection and t
 
 There are two main data modeling patterns that can be used to model these relationships:
 
-1. Embedded pattern: In this pattern, you will embed the entire `author` document or a subset of the `author` document within the `book` document. This allows you to retrieve all the information about a book and its authors in a single query, without having to perform multiple queries or join the collections.
+1. **Embedded pattern**: In this pattern, you will embed the entire `author` document or a subset of the `author` document within the `book` document. This allows you to retrieve all the information about a book and its authors in a single query, without having to perform multiple queries or join the collections.
 
 ~~~{.python caption="main.py"}
     {
@@ -490,7 +490,8 @@ There are two main data modeling patterns that can be used to model these relati
 ~~~
 
 However, one of the disadvantages of this pattern is that it can take up more disk space. It can also be difficult to update the information of the authors if this information is embedded in multiple documents.
-2. Reference pattern: In this pattern, instead of embedding the `author` information within the `book` document, you will store a reference to the `author` document in the `book` document. This reference is a field in the `book` document that stores the unique identifier of the `author` document. This allows you to easily retrieve all the books written by a particular author by querying the `book` collection and using the `authors` field to filter the results.
+
+2. **Reference pattern**: In this pattern, instead of embedding the `author` information within the `book` document, you will store a reference to the `author` document in the `book` document. This reference is a field in the `book` document that stores the unique identifier of the `author` document. This allows you to easily retrieve all the books written by a particular author by querying the `book` collection and using the `authors` field to filter the results.
 
 ~~~{.python caption="main.py"}
      {
@@ -508,7 +509,7 @@ One of the disadvantages of this pattern is that you will either need multiple d
 
 Both of these patterns have their own advantages and disadvantages. The pattern to choose depends on your application's requirements. The key concept you should keep in mind while modeling data is *"store together what will be accessed together"*.
 
-> You can learn more about Data Modeling, [link](https://www.mongodb.com/docs/manual/tutorial/model-embedded-one-to-one-relationships-between-documents).
+> Learn more about [Data Modeling](https://www.mongodb.com/docs/manual/tutorial/model-embedded-one-to-one-relationships-between-documents).
 
 ## Advanced MongoDB Queries
 
@@ -528,7 +529,7 @@ print(list(mongodb_books))
 
 Output:
 
-~~~{.python caption="Output"}
+~~~{ caption="Output"}
 [{'_id': ObjectId('63bd78b9d7bbbf34d7a3826d'),
   'authors': [ObjectId('63bd78b8d7bbbf34d7a3826a'),
               ObjectId('63bd78b8d7bbbf34d7a3826b')],
@@ -577,7 +578,7 @@ This will perform a left outer join on the author and book collections. The `aut
 
 Output:
 
-~~~{.python caption="Output"}
+~~~{ caption="Output"}
     [{'_id': ObjectId('63bd78b8d7bbbf34d7a3826a'),
   'books': [{'_id': ObjectId('63bd78b9d7bbbf34d7a3826d'),
              'authors': [ObjectId('63bd78b8d7bbbf34d7a3826a'),
@@ -677,7 +678,7 @@ The `$project` operator in MongoDB is used to reshape the documents in a collect
 
 Output:
 
-~~~{.python caption="Output}
+~~~{ caption="Output}
   [{'first_name': 'John', 'last_name': 'Doe', 'total_books': 3},
   {'first_name': 'Jane', 'last_name': 'Doe', 'total_books': 3},
   {'first_name': 'Jack', 'last_name': 'Smith', 'total_books': 2}]
@@ -718,7 +719,7 @@ This will filter out all authors that have less than 3 books.
 
 Output:
 
-~~~{.python caption="Output"}
+~~~{ caption="Output"}
     [{'first_name': 'John', 'last_name': 'Doe', 'total_books': 3},
     {'first_name': 'Jane', 'last_name': 'Doe', 'total_books': 3}]
 ~~~
@@ -768,7 +769,7 @@ print(list(authors_with_book_ages))
 
 Output:
 
-~~~{.python caption="Output"}
+~~~{ caption="Output"}
 [{'_id': ObjectId('63bd78b8d7bbbf34d7a3826a'),
   'books': [{'age_in_days': 24, 'title': 'MongoDB, The Book for Beginners'},
             {'age_in_days': 8, 'title': 'MongoDB, \
@@ -800,7 +801,7 @@ In the code above:
 - The `$dateDiff` operator calculates the difference between the publication date of the book and the current date.
 - The pipeline is executed using the `aggregate()` method and the result is printed to the console.
 
-> You can learn more about MongoDB operators, [link](https://www.mongodb.com/docs/manual/reference/operator/).
+> Learn more about [MongoDB operators](https://www.mongodb.com/docs/manual/reference/operator/).
 
 ## Conclusion
 
