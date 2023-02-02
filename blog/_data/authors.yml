@@ -43,6 +43,13 @@ Adam:
                 </br><a href="mailto:adam+website@earthly.dev">✉Email Adam✉</a>
     avatar  : "/assets/images/authors/adamgordonbell.png"
     home    : "/authors/adam/"
+Evan:
+    name    : "Evan Pease"
+    bio     : |
+                Evan is a solutions architect focused on helping users get the most out of Earthly.
+                </br><a href="mailto:evan+website@earthly.dev">✉Email Evan✉</a>
+    avatar  : "/assets/images/authors/evan.jpeg"
+    home    : "/authors/evan/"
 Vivek Sonar:
     name    : "Vivek Sonar"
     bio     : "Vivek Sonar is a full-stack engineer who loves to solve complex infrastructure problems and work with public cloud platforms like AWS and GCP."
