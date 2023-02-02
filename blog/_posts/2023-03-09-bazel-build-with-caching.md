@@ -1,15 +1,16 @@
 ---
-title: "Put Your Best Title Here"
+title: "Using a Cache to Improve Bazel Build Times"
 categories:
   - Tutorials
 toc: true
 author: Rose Chege
 
 internal-links:
- - just an example
+ - Cache
+ - Bazel
+ - Local Caching
+ - Remote Caching
 ---
-
-## Using a Cache to Improve Bazel Build Times
 
 [Bazel](https://bazel.build) is a tool that helps you automate the process of building and testing. For instance, with Bazel, you can automate the process of creating executables for [monorepo build systems](https://earthly.dev/blog/bazel-build/).
 
@@ -47,7 +48,7 @@ To configure the granularity of the cache, add the `--cache_granularity` flag in
 
 For example, to use a `medium-grained` cache, add the following to your `.bazelrc` file:
 
-~~~
+~~~{ caption=".bazelrc"}
 build --cache_granularity=medium
 ~~~
 
@@ -97,7 +98,7 @@ To use a GCP bucket as a remote cache for Bazel, you'll need to follow these ste
 2. Set up the credentials for accessing the GCP bucket. You should set up a service account and grant permission access to the bucket.
 3. Configure Bazel to use the GCP bucket as the remote cache. You can achieve this by adding the following lines to your `.bazelrc` file:
 
-~~~
+~~~{ caption=".bazelrc"}
 build --remote_cache=gs://[BUCKET_NAME]
 build --google_credentials=[PATH_TO_CREDENTIALS_FILE]
 ~~~
@@ -106,7 +107,7 @@ Alternatively, you can use the `--remote_cache` flag in your Bazel commands to s
 
 For example, to build a Bazel target using a GCP bucket as the remote cache, use the following command:
 
-~~~
+~~~{ caption=".bazelrc"}
 bazel build --remote_cache=gs://my-gcp-bucket/path/to/cache my_target
 ~~~
 
@@ -131,7 +132,7 @@ Use the Bazel build and test commands as usual, and Bazel will automatically cac
 
 Bazel supports using [remote build execution (RBE)](https://bazel.build/remote/rbe) to build and test applications remotely. This is useful when building and testing on multiple machines or when using a remote cache to speed up build times. To use RBE with a remote cache, you need to set up a remote execution instance and configure Bazel to use it. You can do this by adding the following lines to your `.bazelrc` file:
 
-~~~
+~~~{ caption=".bazelrc"}
 build --remote_executor=<host>:<port>
 build --remote_cache=<host>:<port>
 ~~~
@@ -208,4 +209,3 @@ In this guide, you learned about the concept of [Bazel](/blog/bazel-build) cache
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Add keywords for internal links to front-matter
