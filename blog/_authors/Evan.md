@@ -1,6 +1,6 @@
 ---
 short_name: Evan 
-title: Evan Pease 
+title: Evan C. Pease 
 author: Evan 
 ---
 
