@@ -24,6 +24,8 @@ In this article, you'll learn how to set up a local and a remote cache to improv
 
 ## Why You Need Bazel Caching
 
+![Graphics]({{site.images}}{{page.slug}}/not.png)\
+
 As mentioned, a cache speeds up the build process and reduces build times. By storing build artifacts in a cache, Bazel ensures that the same artifacts are used each time a build is executed, even if the environment or dependencies change. This helps prevent build failures or inconsistencies due to changes in the build environment.
 
 For example, if you change a small part of your project, Bazel uses the cached results from previous builds and quickly rebuilds only the sections of your project affected by the change.
@@ -53,6 +55,8 @@ build --cache_granularity=medium
 ~~~
 
 ## Comparing Local vs. Shared (Remote) Caching with Bazel
+
+![Graphics]({{site.images}}{{page.slug}}/compare.png)\
 
 As discussed earlier, a Bazel build cache is stored either locally or remotely. Each of these approaches has its advantages and disadvantages, which you'll review in more detail later.
 
@@ -107,7 +111,7 @@ Alternatively, you can use the `--remote_cache` flag in your Bazel commands to s
 
 For example, to build a Bazel target using a GCP bucket as the remote cache, use the following command:
 
-~~~{ caption=".bazelrc"}
+~~~{.bash caption=">_"}
 bazel build --remote_cache=gs://my-gcp-bucket/path/to/cache my_target
 ~~~
 
@@ -121,7 +125,7 @@ Like a GCP bucket, an [Amazon Simple Storage Service (S3) bucket](https://aws.am
 2. Set up the credentials for accessing the Amazon S3 bucket. Create an AWS Identity and Access Management (IAM) user and grant it the necessary permissions to access the bucket.
 3. Configure Bazel to use the S3 bucket as the remote cache by adding the following lines to your `.bazelrc` file:
 
-~~~
+~~~{ caption=".bazelrc"}
 build --remote_cache=https://s3.amazonaws.com/[BUCKET_NAME]
 build --remote_instance_name=[INSTANCE_NAME]
 ~~~
@@ -145,7 +149,7 @@ Using RBE and a remote cache extends build times because build output needs to b
 
 To clear the Bazel cache, you can use the `bazel clean` command with the `--expunge` flag. This will remove all files from the Bazel cache for both the build and test outputs. Here is an example of how to clear the Bazel cache:
 
-~~~
+~~~{.bash caption=">_"}
 bazel clean --expunge
 ~~~
 
@@ -155,7 +159,7 @@ Using `--expunge` permanently deletes the files in the Bazel cache. You cannot r
 
 Alternatively, you can use the `bazel clean` command without the `--expunge` flag to remove only the build and test outputs from the Bazel cache. This command won't delete the build and test logs. You can then recover the files in the cache by running the Bazel build or test commands again. Here's an example of how to use the `clean` command without the `--expunge` flag:
 
-~~~
+~~~{.bash caption=">_"}
 bazel clean
 ~~~
 
@@ -165,13 +169,13 @@ To disable the [Bazel](/blog/monorepo-with-bazel) cache, use the `--noinmemory_c
 
 Following is an example of how to use the `--noinmemory_cache` flag when running the `bazel build` command:
 
-~~~
+~~~{.bash caption=">_"}
 bazel build --noinmemory_cache [TARGETS]
 ~~~
 
 And here is an example of how to use the `--noremote_cache` flag when running the `bazel test` command:
 
-~~~
+~~~{.bash caption=">_"}
 bazel test --noremote_cache [TARGETS]
 ~~~
 
@@ -181,11 +185,11 @@ Disabling the Bazel cache can significantly increase your build and test time. H
 
 It's possible to use [Bazel](/blog/bazel-build) without a cache; however, this may result in slower build times. To use Bazel without a cache, you need to specify the `--nocache` flag when running the Bazel commands. Here are examples:
 
-~~~
+~~~{.bash caption=">_"}
 bazel build --nocache //path/to/package:target
 ~~~
 
-~~~
+~~~{.bash caption=">_"}
 bazel test --nocache //path/to/package:target
 ~~~
 
@@ -202,9 +206,3 @@ Using remote cache for Bazel significantly improves your builds' performance and
 In this guide, you learned about the concept of [Bazel](/blog/bazel-build) cache builds. After reading, you should be able to set up the local and remote cache to improve Bazel build performance. For more information, check out [this guide for any command line reference](https://bazel.build/reference/command-line-reference) you may need.
 
 {% include cta/cta1.html %}
-
-## Outside Article Checklist
-
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
