@@ -9,6 +9,7 @@ sidebar:
 internal-links:
  - makefile flags
 ---
+<iframe width="560" height="315" src="https://www.youtube.com/embed/z4uPHjxYyPs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 `make` is a commonplace utility in the development world. It automates the process of generating executables, documentations, and other non-source files from the source code by dividing the build process into separate interrelated steps. Using `make` eliminates the need for typing out long and complex commands to compile the source code. `make` also compiles only the modified files, thereby saving time and processing resources.
 

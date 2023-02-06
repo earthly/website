@@ -4,7 +4,6 @@ categories:
   - Tutorials
 toc: true
 author: Antreas Antoniou
-
 internal-links:
  - Ninja
  - Build

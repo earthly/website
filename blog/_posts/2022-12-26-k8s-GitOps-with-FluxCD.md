@@ -32,9 +32,9 @@ Flux is quickly gaining popularity because it integrates with Kubernetes and is 
 
 To follow along with this step-by-step tutorial, you should have the following:
 
-Local installation of [Kubernetes](https://kubernetes.io/docs/tasks/tools/) and [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/)
-A [GitHub account](https://docs.github.com/en/get-started/signing-up-for-github/signing-up-for-a-new-github-account) and [GitHub CLI](https://cli.github.com/manual/installation)
-Local installations of [Git](https://git-scm.com/downloads) and [Chocolatey](https://chocolatey.org/install)
+* Local installation of [Kubernetes](https://kubernetes.io/docs/tasks/tools/) and [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/)
+* A [GitHub account](https://docs.github.com/en/get-started/signing-up-for-github/signing-up-for-a-new-github-account) and [GitHub CLI](https://cli.github.com/manual/installation)
+* Local installations of [Git](https://git-scm.com/downloads) and [Chocolatey](https://chocolatey.org/install)
 
 ## Installing Flux CLI
 
@@ -221,7 +221,7 @@ flux create kustomization kube-prometheus-stack \
 
 Let's parse the above command:
 
-* ** `flux create kustomization** kube-prometheus-stack` creates a Kustomization resource with the specified name in the Kubernetes cluster using the Flux tool.
+* `flux create kustomization kube-prometheus-stack` creates a Kustomization resource with the specified name in the Kubernetes cluster using the Flux tool.
 
 * **--interval=1h** sets the Kustomization resource to update every 1 hour.
 
@@ -427,8 +427,7 @@ Let's take a closer look at the fields in the above configuration:
 
 * **Url<https://github.com/segunjkf/2048>** specifies the URL for the GitHub repository that contains the manifests for the 2048 game deployment. Please make sure to change this to the URL of the GitHub repository you created.
 
-* **B
-ranch: main** specifies the branch to use for the GitRepository resource.
+* **Branch: main** specifies the branch to use for the GitRepository resource.
 
 ~~~{.yaml caption="flux.yaml"}
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
