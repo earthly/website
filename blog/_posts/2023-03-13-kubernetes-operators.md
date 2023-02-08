@@ -9,7 +9,7 @@ internal-links:
  - just an example
 ---
 
-When you opt to use Kubernetes for application deployment, out of the box, it provides a wide range of automation features that make it easy to deploy and manage stateless applications. However, for more complex, stateful applications, additional automation may be required to manage the specific requirements of the application.
+When you opt to use Kubernetes for application [deployment](/blog/deployment-strategies), out of the box, it provides a wide range of automation features that make it easy to deploy and manage stateless applications. However, for more complex, stateful applications, additional automation may be required to manage the specific requirements of the application.
 
 The key features of Kubernetes include its balance of simplicity and flexibility, its ability to automate various functions, and its capability to scale and adapt to diverse contexts and applications.
 
@@ -27,7 +27,7 @@ Kubernetes Operators are application-specific controllers that extend the capabi
 
 > The Kubernetes project defines "Kubernetes Operator" in a simple way: "Operators are software extensions that use custom resources to manage applications and their components".
 
-Operators, in a nutshell, allow for more specific management of an application within a Kubernetes cluster. Rather than managing a collection of basic building blocks like Pods, Deployments, Services, or [ConfigMaps](https://earthly.dev/blog/kubernetes-config-maps/), an application is viewed as a single object that only exposes the adjustments that are relevant to that particular application, such as scaling, self-healing, and updates, when using operators. In this way, operators allow you to make application-specific changes rather than managing each component individually.
+Operators, in a nutshell, allow for more specific management of an application within a Kubernetes cluster. Rather than managing a collection of basic building blocks like Pods, Deployments, Services, or [ConfigMaps](https://earthly.dev/blog/kubernetes-config-maps/), an application is viewed as a single object that only exposes the adjustments that are relevant to that particular application, such as scaling, self-healing, and updates, when using operators. In this way, operators allow you to [make](/blog/using-cmake) application-specific changes rather than managing each component individually.
 
 ## The Problem That Kubernetes Operators Solve
 
@@ -51,7 +51,7 @@ With Kubernetes Operator, the human operators are replaced with software operato
 
 ![Benefits of Using a Kubernetes Operator]({{site.images}}{{page.slug}}/eMx6OYy.png)\
 
-Kubernetes operators are controllers that execute loops to check the actual state of a cluster and the desired state, acting to reconcile them when the two states are drifting apart. Kubernetes operators provide a number of benefits, including:
+Kubernetes operators are controllers that execute loops to check the actual state of a [cluster](/blog/kube-bench) and the desired state, acting to reconcile them when the two states are drifting apart. Kubernetes operators provide a number of benefits, including:
 
 ### Simplicity and Flexibility
 
@@ -63,7 +63,7 @@ Kubernetes operators provide a high level of automation, which can help reduce t
 
 ### Easy Integration With Other Tools
 
-Kubernetes operators can be integrated with other tools, such as monitoring and observability tools, continuous delivery tools, and networking tools. This allows you to use them in conjunction with these other tools to manage and monitor your applications and infrastructure. For example, you can use an operator to automatically provision and configure a monitoring tool, such as Prometheus, and then use the monitoring tool to monitor the health and performance of your applications and infrastructure.
+Kubernetes operators can be integrated with other tools, such as monitoring and observability tools, continuous delivery tools, and [networking](/blog/docker-networking) tools. This allows you to use them in conjunction with these other tools to manage and monitor your applications and infrastructure. For example, you can use an operator to automatically provision and configure a monitoring tool, such as Prometheus, and then use the monitoring tool to monitor the health and performance of your applications and infrastructure.
 
 ### Extensibility
 
@@ -121,7 +121,7 @@ Local installation of [Git]
 
 ### Installing MongoDB Operator CRD
 
-As a first step, you must install the MongoDB operator's Custom Resource Definition (CRD). This is required because the CRD will be used to define the custom resource that the operator will use to manage the MongoDB cluster. To do so, run the following commands:
+As a first step, you must install the [MongoDB](/blog/mongodb-docker) operator's Custom Resource Definition (CRD). This is required because the CRD will be used to define the custom resource that the operator will use to manage the MongoDB cluster. To do so, run the following commands:
 
 ~~~
 # clone the repository containing the MongoDB operator and Crds manifest. 
@@ -388,4 +388,3 @@ Next, you can explore the use of Kubernetes operators in your own projects and o
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
