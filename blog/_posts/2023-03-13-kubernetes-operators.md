@@ -390,6 +390,8 @@ Kubernetes operators, in particular, automate the deployment and management of c
 
 Next, you can explore the use of Kubernetes operators in your own projects and organizations, or you can [learn more](https://operatorhub.io/) about the various types of operators available and how they can be used to manage specific types of applications.
 
+{% include cta/cta1.html %}
+
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
@@ -399,4 +401,3 @@ Next, you can explore the use of Kubernetes operators in your own projects and o
 - [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
