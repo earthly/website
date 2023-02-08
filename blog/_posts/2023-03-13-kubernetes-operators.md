@@ -6,7 +6,10 @@ toc: true
 author: Saka-Aiyedun Segun
 
 internal-links:
- - just an example
+ - Kubernetes
+ - Operators
+ - Deployment
+ - MongoDB
 ---
 
 When you opt to use Kubernetes for application [deployment](/blog/deployment-strategies), out of the box, it provides a wide range of automation features that make it easy to deploy and manage stateless applications. However, for more complex, stateful applications, additional automation may be required to manage the specific requirements of the application.
@@ -387,4 +390,3 @@ Next, you can explore the use of Kubernetes operators in your own projects and o
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Add keywords for internal links to front-matter
