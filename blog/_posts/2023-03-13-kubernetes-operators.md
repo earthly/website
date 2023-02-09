@@ -42,7 +42,7 @@ Stateful applications like databases can be challenging to manage and scale sinc
 
 This hand holding includes additional steps that need to be taken such as configuring persistent storage, data migration, and setting up appropriate [ReplicaSsets](https://earthly.dev/blog/use-replicasets-in-k8s/). During the running phase, managing the state of the application, scaling and performing updates, and ensuring data consistency across replicas can be complex tasks. Finally, when destroying stateful applications, special care must be taken to ensure that data is properly backed up and migrated before the application is terminated. Kubernetes does not automatically handle all these tasks for stateful applications. Consider the example of creating three replicas of the MongoDB database:
 
-![MongDB Pod and Three replicas]({{site.images}}{{page.slug}}/a/kxaLtW6)
+![MongDB Pod and Three replicas]({{site.images}}{{page.slug}}/kxaLtW6.jpeg)\
 
 Each replica has its own state and identity, making it difficult to keep them in sync. When performing updates or destroying the database, the order in which these actions are performed is critical to maintaining data consistency. Furthermore, constant synchronization between replicas must be maintained. This is just one example, but the management processes for various databases such as MySQL, Postgres, Cassandra, and Redis will also differ. This makes it difficult to have a single solution that can automate the entire process for all systems and applications.
 
@@ -84,7 +84,7 @@ In summary, *Kubernetes operators provide a powerful and efficient way to manage
 
 ### Understanding the Kubernetes Operator Architecture
 
-![Kubernetes Operator Architecture]({{site.images}}{{page.slug}}/a/MQOVoON)
+![Kubernetes Operator Architecture]({{site.images}}{{page.slug}}/MQOVoON.jpeg)\
 
 A Kubernetes operator at its core has the same control loop mechanism as Kubernetes that monitors changes to the application state. They typically consist of the following components:
 
@@ -126,10 +126,11 @@ Local installation of [Git]
 
 As a first step, you must install the [MongoDB](/blog/mongodb-docker) operator's Custom Resource Definition (CRD). This is required because the CRD will be used to define the custom resource that the operator will use to manage the MongoDB cluster. To do so, run the following commands:
 
-~~~
+~~~{.bash caption=">_"}
 # clone the repository containing the MongoDB operator and Crds manifest. 
 
-git clone https://github.com/segunjkf/mongodb-operator.git && cd mongodb-operator
+git clone https://github.com/segunjkf/mongodb-operator.git && \
+cd mongodb-operator
 
 # Apply the MongoDB CRD configuration 
 
@@ -140,31 +141,31 @@ kubectl apply -f mongodb-crd.yaml
 
 The next step is to create a namespace for the operator and its resources, which will create an isolated place in your Kubernetes cluster for the MongoDB operator resources to be deployed. Run the following commands to accomplish this.
 
-~~~
+~~~{.bash caption=">_"}
 kubectl create namespace mongodb-operator
 ~~~
 
 After creating the namespace, the next step is to create the role and role-binding needed to grant the required permission to the MongoDB operator. To do so, run the following commands:
 
-~~~
+~~~{.bash caption=">_"}
 kubectl apply -f mongo/ -n mongodb-operator
 ~~~
 
-![Applied role and role-binding]({{site.images}}{{page.slug}}/a/7fETMrw)
+![Applied role and role-binding]({{site.images}}{{page.slug}}/7fETMrw.jpeg)\
 
 You now have the required roles and permission for the operator to use, the next step is to deploy the MongoDB operator. To do run the following commands:
 
-~~~
+~~~{.bash caption=">_"}
 kubectl apply -f operator.yaml
 ~~~
 
 You now have the MongoDB operator in your cluster. You can confirm the operator pod by running the following command:
 
-~~~
+~~~{.bash caption=">_"}
 kubectl get pods -n mongodb-operator
 ~~~
 
-![MongoDB Operator running the namespace]({{site.images}}{{page.slug}}/a/fi6RC6X)
+![MongoDB Operator running the namespace]({{site.images}}{{page.slug}}/fi6RC6X.jpeg)\
 
 <div class="notice--big--primary">
 📑The GitHub repository you cloned was created specifically for this guide, and it has been modified so that you can quickly get started with the MongoDB operator. Please refer to the official MongoDB community operator [Github Repository](https://github.com/mongodb/mongodb-kubernetes-operator) for more information and the full source code.
@@ -174,10 +175,11 @@ kubectl get pods -n mongodb-operator
 
 With the MongoDB operator now running in your Kubernetes cluster, you will create a MongoDB custom resource (CR) that defines your desired MongoDB cluster state.
 
-~~~
+~~~{.bash caption=">_"}
 # Create a secret for the MongoDB cluster
 
-kubectl create secret generic admin-user-password -n mongodb-operator  --from-literal="password=admin123" 
+kubectl create secret generic admin-user-password -n mongodb-operator \
+ --from-literal="password=admin123" 
 
 # MongoDB Cluster YAML configuration
 
@@ -257,11 +259,13 @@ The `statefulSet` field is used to configure the Kubernetes StatefulSet that wil
 
 It may take a few seconds for your MongoDB cluster to be created. To make sure that the pod is running and passed all the health checks, run the following command:
 
-~~~
+~~~{.bash caption=">_"}
 kubectl get pods -n mongodb-operator
 ~~~
 
-![MongoDB pod running the mongodb-operator namespace]({{site.images}}{{page.slug}}/a/e5ARMIM)
+<div class="wide">
+![MongoDB pod running the mongodb-operator namespace]({{site.images}}{{page.slug}}/fi6RC6X.jpeg)\
+</div>
 
 The cluster is now up and running, under the hood, the MongoDB operator took care of creating and managing the necessary Kubernetes resources, such as pods, PVC, and services, to reach the desired state of the defined MongoDB cluster. The operator will also handle tasks such as scaling, updates, and ensuring data consistency across replicas.
 
@@ -271,38 +275,45 @@ Having set up MongoDB Cluster, you are now ready to start using it. You will tes
 
 Firstly, connect to the database. You are going to be using a mongosh shell to connect to the MongoDB cluster. To ensure access to the cluster locally, forward traffic to the mongoDB cluster. To do so, run the following commands
 
-~~~
+~~~{.bash caption=">_"}
 kubectl port-forward my-mongodb-0 27017 -n mongodb
 ~~~
 
 The next step is to connect to the database, but first, you must obtain the database password. Alternatively, open a new terminal and run the following commands:
 
-~~~
-kubectl get secret my-mongodb-admin-admin-user -n mongodb-operator -o json | jq -r '.data | with_entries(.value |= @base64d)'
+~~~{.bash caption=">_"}
+kubectl get secret my-mongodb-admin-admin-user -n \
+ mongodb-operator -o json | jq -r '.data | with_entries(.value |= @base64d)'
 
 ~~~
 
-![mongodb passwords]({{site.images}}{{page.slug}}/a/HXmV5zk)
+<div class="wide">
+![mongodb passwords]({{site.images}}{{page.slug}}/HXmV5zk.jpeg)\
+</div>
 
 Now run MongoSH to connect to the database:
 
-~~~
+~~~{.bash caption=">_"}
 Mongosh "mongodb://admin-user:admin123@127.0.0.1:27017/admin?directConnection=true&serverSelectionTimeoutMS=2000"
 ~~~
 
-![Mongosh Session]({{site.images}}{{page.slug}}/a/vjYMPsy)
+<div class="wide">
+![Mongosh Session]({{site.images}}{{page.slug}}/vjYMPsy.jpeg)\
+</div>
 
 You have now established a connection to the MongoDB cluster. Let's list the databases that are currently available:
 
-~~~
+~~~{.bash caption=">_"}
 show dbs
 ~~~
 
-![available database]({{site.images}}{{page.slug}}/a/5hwKWL9)
+<div class="wide">
+![available database]({{site.images}}{{page.slug}}/5hwKWL9.jpeg)\
+</div>
 
 You will now create a new user and grant read and write permissions. To do so run the following command:
 
-~~~
+~~~{.bash caption=">_"}
 db.createUser(
   {
     user: 'new-user',
@@ -312,39 +323,47 @@ db.createUser(
 );
 ~~~
 
-![Newly created MongoDB User]({{site.images}}{{page.slug}}/a/RqA6k72)
+<div class="wide">
+![Newly created MongoDB User]({{site.images}}{{page.slug}}/RqA6k72.jpeg)\
+</div>
 
 This command creates a new user in the MongoDB database with username "new-user" and password "new-user-password", and assigns the "readWrite" role to the user on the "store" database. This allows the "new user" to have read and write permissions on the store database.
 
 The next step is to confirm its access by authenticating it with its credentials against the current cluster. In order to do this, run the command below:
 
-~~~
+~~~{.bash caption=">_"}
 db.auth( 'new-user', 'new-user-password' )
 ~~~
 
-![authenticating new user credentials]({{site.images}}{{page.slug}}/a/Ge3QXle)
+<div class="wide">
+![authenticating new user credentials]({{site.images}}{{page.slug}}/Ge3QXle.jpeg)\
+</div>
 
 Following successful authentication, you will create a new database named 'store' for the new user. Run the following command to accomplish this.
 
-~~~
+~~~{.bash caption=">_"}
 use store
 ~~~
 
 Next, insert a record using the `insertOne` command:
 
-~~~
+~~~{.bash caption=">_"}
 db.employees.insertOne({name: "Anton"})
 ~~~
 
-![Inserting record]({{site.images}}{{page.slug}}/a/kM4zrS5)
+<div class="wide">
+![Inserting record]({{site.images}}{{page.slug}}/jZFuLkv.jpeg)\
+</div>
 
 This command created a new employee document with the field name "Anton" in the employees collection. Now you can try to retrieve all the records in the collection. To do so run the following command:
 
-~~~
+~~~{.bash caption=">_"}
 db.employees.find()
 ~~~
 
-![Retrieved from the database]( {{site.images}}{{page.slug}}/a/kBW75PZ)
+<div class="wide">
+![Retrieved from the database]( {{site.images}}{{page.slug}}/kBW75PZ.jpeg)\
+</div>
 
 To sum up, you deployed a MongoDB operator to your Kubernetes cluster, and declared the desired cluster state with an operator custom resource YAML, and the operator took care of meeting the desired state. You also connected to the database and performed some queries to test the setup.
 
@@ -383,9 +402,3 @@ Kubernetes operators, in particular, automate the deployment and management of c
 Next, you can explore the use of Kubernetes operators in your own projects and organizations, or you can [learn more](https://operatorhub.io/) about the various types of operators available and how they can be used to manage specific types of applications.
 
 {% include cta/cta1.html %}
-
-## Outside Article Checklist
-
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
