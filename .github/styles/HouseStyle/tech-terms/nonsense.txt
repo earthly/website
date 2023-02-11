@@ -73,3 +73,7 @@ ninjaception
 precompiling
 eslint
 utils
+
+Instana
+Hashicorp
+Mesos
