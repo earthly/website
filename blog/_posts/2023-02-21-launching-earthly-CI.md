@@ -133,6 +133,8 @@ Earthly CI is being made available today. As the platform is new, we are letting
 
 If this is interesting to you, [get started with Earthly CI](https://earthly.dev/signup/earthly-ci)! Let’s build the next generation of software together!
 
+{% include cta/cta1.html %}
+
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
@@ -142,4 +144,3 @@ If this is interesting to you, [get started with Earthly CI](https://earthly.dev
 - [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
