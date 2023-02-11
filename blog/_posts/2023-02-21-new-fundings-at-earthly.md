@@ -1,0 +1,31 @@
+---
+title: "Announcing Earthly’s $6.5M Seed+ round"
+categories:
+  - Tutorials
+toc: true
+author: Vlad
+
+internal-links:
+ - just an example
+---
+
+The developer tools market is shifting towards modern development workflows that include complex build scripts, varying code layouts (e.g. monorepos, polyrepos), mixed programming languages, and mixed architectures (e.g. Intel, Apple Silicon). Developers need tools that improve their experience and efficiency as well as deliver consistency across the varying operating systems and processor architectures the individual team members may be using. The incumbent technologies were not designed for this landscape, and so we believe this is the best time to rethink our developer infrastructure.
+
+Today, we are announcing Earthly’s $6.5M Seed+ funding, taking our total capital raised to date to $8.6M. The round was led by Davis Treybig from Innovation Endeavors, with participation from Florian Leibert of 468 Capital, and Salil Deshpande of Uncorrelated Ventures.
+
+Earthly’s complete set of investors includes founders of companies such as Cockroach Labs, DigitalOcean, Mesosphere, DataDog, Sentry, and Instana, as well as creators and maintainers of notable developer platforms, such as Docker, Elixir, VS Code, GitHub Copilot, Hashicorp, Envoy proxy, Cypress, Mesos, and others.
+
+The new funding will be used to improve and add more enterprise-friendly features to [Earthly CI TODO LINK](TODO: Link to other blog post). Earthly CI is a fast, repeatable CI/CD platform that is super simple to use. It gives teams repeatable CI pipelines that you write once and run anywhere; has an automatic and instantly available build cache that makes builds faster; and it's incredibly user-friendly. 
+
+If you’re a developer and this is interesting to you, [get started with Earthly CI](https://earthly.dev/signup/earthly-ci)! Let’s build the next generation of software together!
+
+## Outside Article Checklist
+
+- [ ] Create header image in Canva
+- [ ] Optional: Find ways to break up content with quotes or images
+- [ ] Verify look of article locally
+  - Would any images look better `wide` or without the `figcaption`?
+- [ ] Run mark down linter (`lint`)
+- [ ] Add keywords for internal links to front-matter
+- [ ] Run `link-opp` and find 1-5 places to incorporate links
+- [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
