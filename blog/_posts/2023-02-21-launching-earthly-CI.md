@@ -36,7 +36,7 @@ The remote caching strategies that most CI's implement today are crude. They all
 
 ## Problem #2: Misaligned Incentives
 
-<Large quote: The slower your build, the more the vendor profits>
+> The slower your build, the more the vendor profits
 
 As an industry, we have gotten used to consuming CI/CD by-the-minute. This worked fine for the previous era when CI/CD was merely a glorified bash script runner.
 
@@ -78,7 +78,7 @@ So we designed a new CI/CD platform from the ground-up. It's been three years in
 
 Earthly CI is built on the [open-source project Earthly](https://github.com/earthly/earthly). It allows you to write CI/CD pipelines using a simple, familiar syntax, and leverages containers for isolation.
 
-~~~
+~~~{.earthfile caption=""}
 build-pipeline:
     PIPELINE
     TRIGGER pr main
@@ -141,7 +141,3 @@ Earthly CI is being made available today. As the platform is new, we are letting
 If this is interesting to you, [get started with Earthly CI](https://earthly.dev/signup/earthly-ci)! Let's build the next generation of software together!
 
 {% include cta/cta1.html %}
-
-## Outside Article Checklist
-
-- [ ] Create header image in Canva
