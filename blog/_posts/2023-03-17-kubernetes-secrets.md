@@ -15,15 +15,15 @@ In this tutorial, you will learn what Kubernetes secrets are and how to do the f
 
 - Create a secret object in Kubernetes
 - Use a secret
-- Use a secret to pull an image from your private Docker repository
+- Use a secret to pull an image from your private [Docker](/blog/rails-with-docker) repository
 
 ## Prerequisites
 
-To follow along, you need a Kubernetes cluster that is up and running. This tutorial uses Minikube.
+To follow along, you need a Kubernetes cluster that is up and running. This tutorial uses [Minikube](/blog/k8s-dev-solutions).
 
 ## What Are Kubernetes Secrets and Why Should You Use Them?
 
-A Kubernetes secret is an object that holds some amount of *sensitive information*, such as authentication keys, tokens, usernames, passwords which can be used as external configurations for pods running in your Kubernetes cluster.
+A Kubernetes secret is an object that holds some amount of *sensitive information*, such as authentication keys, tokens, usernames, passwords which can be used as external configurations for pods running in your Kubernetes [cluster](/blog/kube-bench).
 
 [Secrets](https://kubernetes.io/docs/concepts/configuration/secret/) are similar to [ConfigMaps](https://kubernetes.io/docs/concepts/configuration/configmap/) but are specifically intended to hold sensitive information. It is a Kubernetes object on its own, which means it is totally isolated from the pods or other resources using it. So its contents cannot be accessed when viewing, creating, editing or accessing Pods or by other Kubernetes resources using its contents.
 
@@ -177,7 +177,7 @@ kubectl get secrets -n example
 
 There are two common ways that you can use a secret in Kubernetes. You can either use it as an environment variable or as a volume mount.
 
-When you use it as an environment variable, the secret gets created as an environment variable which you can then use within containers in Pods. When you use it as a volume mount, your secret will be mounted as individual files inside your container which you can make references to.
+When you use it as an environment variable, the secret gets created as an environment variable which you can then use within containers in Pods. When you use it as a volume mount, your secret will be mounted as individual files inside your [container](/blog/docker-slim) which you can make references to.
 
 To illustrate this, you'll deploy a PostgreSQL database that will make use of the *postgres-secret*. You will create a persistent volume to provision a piece of storage in the cluster and persistent volume claim to request some amount of storage from the persistent volume and then a *statefulSet* to deploy the PostgreSQL database, and then a service to spin up the PostgreSQL server.
 
@@ -351,7 +351,7 @@ Now type in the command `psql --username=admin postgres` to spin up the PostgreS
 
 ### Using a Kubernetes Secret as a Volume Mount
 
-When trying to use a Kubernetes secret, you can also mount it as a volume inside your deployment or Pod specification.
+When trying to use a Kubernetes secret, you can also mount it as a volume inside your [deployment](/blog/deployment-strategies) or Pod specification.
 
 Delete the statefulset using the command below:
 
@@ -547,7 +547,7 @@ kubectl get secret -n example
 
 ![Viewing *auth-token* secret ]({{site.images}}{{page.slug}}/XTQafNv.png)
 
-Create a Pod specification *private-pod.yaml* to pull the docker image from your private repository using the **auth-token** secret you created:
+Create a Pod specification *private-pod.yaml* to pull the [docker](/blog/rails-with-docker) image from your private repository using the **auth-token** secret you created:
 
 ~~~
 apiVersion: v1
@@ -577,7 +577,7 @@ Confirm if your pod is running without errors:
 kubectl get pods -n example
 ~~~
 
-If you have the below output, then your Kubernetes cluster was able to pull the image from your Dockerhub private repository using the `.docker/config.json` file which contains the authentication credentials for your DockerHub registry.
+If you have the below output, then your Kubernetes [cluster](/blog/kube-bench) was able to pull the image from your Dockerhub private repository using the `.docker/config.json` file which contains the authentication credentials for your DockerHub registry.
 
 ![Viewing pod private-pod]({{site.images}}{{page.slug}}/Zd61bEv.png)
 
@@ -598,4 +598,3 @@ Now that you have a good knowledge of Kubernetes secrets, you can now implement 
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
