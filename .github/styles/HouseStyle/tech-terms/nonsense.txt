@@ -73,3 +73,5 @@ ninjaception
 precompiling
 eslint
 utils
+
+statefulsets
