@@ -589,6 +589,8 @@ You then learned how to go through the process of authenticating your Kubernetes
 
 Now that you have a good knowledge of Kubernetes secrets, you can now implement it in your application and deploy safely to Kubernetes.
 
+{% include cta/cta1.html %}
+
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
@@ -598,4 +600,3 @@ Now that you have a good knowledge of Kubernetes secrets, you can now implement 
 - [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
