@@ -446,7 +446,7 @@ cat /var/lib/postgresql/secret/postgres_password
 cat /var/lib/postgresql/secret/postgres_username
 ~~~
 
-![Viewing values from secret file paths]({{site.images}}{{page.slug}}/Mb9ZoQt.png)/
+![Viewing values from secret file paths]({{site.images}}{{page.slug}}/Mb9ZoQt.png)\
 
 In the case of other applications that do not require environment variables to run you can have a secret mounted as a volume using the below pattern:
 
@@ -481,7 +481,7 @@ kubectl get pods -n example
 
 You can see below that the busybox pod was deployed successfully and is in a running state.
 
-![Viewing busybox pod](https://imgur.com/TvaSXz9)
+![Viewing busybox pod]({{site.images}}{{page.slug}}/TvaSXz9.png)
 
 So when you go into the busybox container using the command - `kubectl -n example exec -it busybox sh`. The below command will output the secret mounted as a volume in the busybox container file system:
 
@@ -597,6 +597,5 @@ Now that you have a good knowledge of Kubernetes secrets, you can now implement 
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
