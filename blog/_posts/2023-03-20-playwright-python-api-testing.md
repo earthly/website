@@ -9,7 +9,7 @@ internal-links:
  - just an example
 ---
 
-Playwright is a popular end-to-end testing framework that Microsoft backs. With support for popular programming languages, such as Javascript, Typescript, Python, and Java, you can use Playwright to test your existing software projects. In addition to end-to-end testing, Playwright also supports API testing using built-in methods in the `APIRequestContext` class. This allows you to use a single tool to implement both end-to-end testing and API testing. Moreover, Playwright provides customized reports with different types, such as CI report or [allure report](https://www.npmjs.com/package/allure-playwright).
+Playwright is a popular end-to-end testing framework that Microsoft backs. With support for popular programming languages, such as Javascript, Typescript, Python, and Java, you can use Playwright to test your existing software projects. In addition to end-to-end testing, Playwright also supports API testing using built-in methods in the `APIRequestContext` class. This allows you to use a single tool to implement both end-to-end testing and [API testing](/blog/continuous-testing-in-devops). Moreover, Playwright provides customized reports with different types, such as CI report or [allure report](https://www.npmjs.com/package/allure-playwright).
 
 In this article, you'll learn how you can implement API testing using Playwright with Python, then generate an allure report for API testing.
 
@@ -36,7 +36,7 @@ To follow along with this article, please prepare the following prerequisites:
 
 To simplify the demonstration, let's write the tests for an existing set of APIs so that you don't need to implement your service to test its API.
 
-GitHub provides the APIs for creating, updating, retrieving, and deleting GitHub repositories. Let's write the tests for GitHub APIs. You will implement the complete flow test scenarios to create a new repository, update it, and remove it.
+[GitHub](/blog/ci-comparison) provides the APIs for creating, updating, retrieving, and deleting GitHub repositories. Let's write the tests for GitHub APIs. You will implement the complete flow test scenarios to create a new repository, update it, and remove it.
 
 ## Step 1: Grab the GitHub API Token
 
@@ -280,7 +280,7 @@ By configuring `asyncio_mode=auto` in the `pytest.ini` file, pytest will execute
 
 ## Step 6: Run the Tests
 
-Since your test file now requires the environment variables for GitHub `API_TOKEN` and `USER_NAME`, you need to add the environment variables first.
+Since your test file now requires the [environment variables](/blog/bash-variables) for GitHub `API_TOKEN` and `USER_NAME`, you need to add the environment variables first.
 
 Grab the `API_TOKEN` you create at step one and your GitHub username to include in the following commands.
 
@@ -411,9 +411,9 @@ As seen, the tests are all passing now.
 
 ## Conclusion
 
-In this article, you learned how to implement API testing using Playwright with Python for testing GitHub APIs. Having API tests helps improve the quality of your software app and ensure new features keep the existing functionalities of your app intact. You also generated an allure report that stores the result of API tests so that you are aware of the results of the API tests and the reasons why the tests failed.
+In this article, you learned how to implement API testing using Playwright with Python for testing [GitHub](/blog/ci-comparison) APIs. Having API tests helps improve the quality of your software app and ensure new features keep the existing functionalities of your app intact. You also generated an allure report that stores the result of API tests so that you are aware of the results of the API tests and the reasons why the tests failed.
 
-With hands-on written tests you practiced through the article, you can apply Playwright using Python for your next API testing project.
+With hands-on written tests you practiced through the article, you can apply Playwright using Python for your next [API testing](/blog/continuous-testing-in-devops) project.
 
 {% include cta/cta1.html %}
 
@@ -425,4 +425,3 @@ With hands-on written tests you practiced through the article, you can apply Pla
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
