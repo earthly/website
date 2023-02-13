@@ -415,6 +415,8 @@ In this article, you learned how to implement API testing using Playwright with 
 
 With hands-on written tests you practiced through the article, you can apply Playwright using Python for your next API testing project.
 
+{% include cta/cta1.html %}
+
 ## Outside Article Checklist
 
 - [ ] Add in Author page
@@ -424,4 +426,3 @@ With hands-on written tests you practiced through the article, you can apply Pla
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
