@@ -667,9 +667,3 @@ You then learned how to go through the process of authenticating your Kubernetes
 Now that you have a good knowledge of Kubernetes secrets, you can now implement it in your application and deploy safely to Kubernetes.
 
 {% include cta/cta1.html %}
-
-## Outside Article Checklist
-
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-
