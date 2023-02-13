@@ -118,9 +118,8 @@ This section will walk you through installing, and configuring a MongoDB Communi
 
 To follow along with this step-by-step tutorial, you should have the following:
 
-- Local installation of [Kubernetes](https://kubernetes.io/docs/tasks/tools/) and  [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/),
-- Local installation of [Git]
-            (https://git-scm.com/downloads), [JQ](https://stedolan.github.io/jq/download/), and [Mongosh](https://www.mongodb.com/docs/mongodb-shell/install/).
+- Local installation of [Kubernetes](https://kubernetes.io/docs/tasks/tools/) and [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/)
+- Local installation of [Git](https://git-scm.com/downloads), [JQ](https://stedolan.github.io/jq/download/), and [Mongosh](https://www.mongodb.com/docs/mongodb-shell/install/).
 
 ### Installing MongoDB Operator CRD
 
