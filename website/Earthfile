@@ -60,7 +60,7 @@ update:
 build:
   FROM +base-or-cache-image
   CACHE _site
-  COPY --dir _data _sass _styles _layouts _includes assets .
+  COPY --dir _data _sass _styles _layouts _includes assets ci-interest .
   COPY *.md *.js *.html *.yml *.json _redirects Gemfile Gemfile.lock robots.txt .
   RUN bundle update
   RUN JEKYLL_ENV=production bundle exec jekyll build $FLAGS
