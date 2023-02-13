@@ -1,5 +1,5 @@
 ---
-title: "Building a Real-time Stock Price Dashboard Using Python, QuestDB, and Plotlye"
+title: "Stock Price Dashboard with QuestDB and Plotly"
 categories:
   - Tutorials
 toc: true
