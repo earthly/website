@@ -57,8 +57,7 @@ $ mkdir -p stock-prices/app
 Next you need to install the project's required services. In this project, you need Docker and [Docker Compose](/blog/youre-using-docker-compose-wrong) to avoid overloading the local system. Inside the project's root directory, create a new `.yml` file named `docker-compose.yml` file for Docker Compose as shown below. The `.yml` file lets you define the configuration or [container](/blog/docker-slim) environment for multiple Docker containers.. In this project it will allow you to run QuestDB and Redis services simultaneously. Later on, you will install other services as needed.
 
 ~~~{.yaml caption="docker-compose.yml"}
-# docker-compose.yml
- 
+
 version: "3"
  
 volumes:
@@ -412,6 +411,7 @@ In this section, you will set up the front end of the application using Plotly a
 This tutorial focuses less on the front-end of the application—meaning you won't be required to write stylesheets for the application—but just copy and paste existing code. You will create an `assets` directory in the root project directory and download the `styles.css` file using the `curl` command below. This is possible as Dash provides you with boilerplate code.
 
 ~~~{.bash caption=">_"}
+
 $ curl -o assets/style.css https://github.com/verah-tech/stock-market/blob/main/assets/style.css
 ~~~
 
