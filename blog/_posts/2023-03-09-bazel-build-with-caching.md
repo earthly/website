@@ -44,7 +44,7 @@ Bazel supports three levels of granularity for the cache:
 2. **Directory granularity (medium-grained)**: At the directory level, the cache stores the outputs of all files in a directory. If any file in a directory changes, the cached outputs of all files in that directory are invalidated, and all files will be rebuilt.
 3. **Package granularity (coarser-grained)**: At this level, the cache stores the outputs of all files in a package. If any file in a package is modified, the outputs of all files in that package are invalidated in the cache, and consequently, all the files in the package will be rebuilt.
 
-Bazel uses a fine-grained cache by default. This means it stores individual action results (such as compiling a single file) in the cache, avoiding repeating actions. You can choose to use the coarser-grained cache, which stores the results of larger groups of actions together. This can be useful when dealing with large builds that have many actions because it reduces the amount of data stored in the cache and improves [cache hit rates](https://bazel.build/remote/cache-remote).
+Bazel uses a *fine-grained cache* by default. This means it stores individual action results (such as compiling a single file) in the cache, avoiding repeating actions. You can choose to use the coarser-grained cache, which stores the results of larger groups of actions together. This can be useful when dealing with large builds that have many actions because it reduces the amount of data stored in the cache and improves [cache hit rates](https://bazel.build/remote/cache-remote).
 
 To configure the granularity of the cache, add the `--cache_granularity` flag in your `.bazelrc` file. Valid values for this flag include `fine`, `medium`, and `binary`, which correspond to the `fine-grained`, `medium-grained`, and `coarser-grained` cache levels, respectively.
 
@@ -68,7 +68,7 @@ The major advantages of using local caching include the following:
 - **Increased reliability**: There's no need for an internet connection to access build artifacts.
 - **Local caching is more secure**: Because build artifacts are only stored on the local machine, you can't access them over the network.
 
-However, local caching can create the following limitations:
+However, local caching has the following limitations:
 
 - **Limited storage space**: Local caching takes up more disk space on the local computer. This is problematic if the computer has limited storage capacity, especially if you're building large projects.
 - **Sharing limitations**: With local caching, build artifacts are only stored locally. You can't share them with other team members or across different computers. This is a huge setback when multiple team members work on the same Bazel built project.
@@ -141,7 +141,7 @@ build --remote_executor=<host>:<port>
 build --remote_cache=<host>:<port>
 ~~~
 
-Replace `<host>` and `<port>` with the hostname and port of your remote execution instance. Then use the build and test commands as usual, and Bazel will automatically use the remote cache and remote execution instance for your builds.
+Replace `<host>` and `<port>` with the hostname and port of your remote execution instance, respectively. Then use the build and test commands as usual, and Bazel will automatically use the remote cache and remote execution instance for your builds.
 
 Using RBE and a remote cache extends build times because build output needs to be transmitted over the network to the remote cache. However, it significantly speeds up incremental builds since the remote cache saves the outcomes of earlier builds rather than recreating them.
 
@@ -179,7 +179,7 @@ And here is an example of how to use the `--noremote_cache` flag when running th
 bazel test --noremote_cache [TARGETS]
 ~~~
 
-Disabling the Bazel cache can significantly increase your build and test time. However, all files must be rebuilt again by Bazel, even if they've already been built and are stored in the cache.
+Disabling the Bazel cache can significantly increase your build and test times. However, all files must be rebuilt again by Bazel, even if they've already been built and are stored in the cache.
 
 ### Testing Without the Cache
 
@@ -203,6 +203,6 @@ Remember that using the `--nocache` causes Bazel to rebuild the necessary depend
 
 Using remote cache for Bazel significantly improves your builds' performance and reliability, making storing and accessing build artifacts from multiple machines and locations easy.
 
-In this guide, you learned about the concept of [Bazel](/blog/bazel-build) cache builds. After reading, you should be able to set up the local and remote cache to improve Bazel build performance. For more information, check out [this guide for any command line reference](https://bazel.build/reference/command-line-reference) you may need.
+In this guide, you learned about the concept of [Bazel](/blog/bazel-build) cache builds. After reading, you should be able to set up the local and remote cache to improve Bazel build performance. For more information, check out [this guide for any command-line reference](https://bazel.build/reference/command-line-reference) you may need.
 
 {% include cta/cta1.html %}
