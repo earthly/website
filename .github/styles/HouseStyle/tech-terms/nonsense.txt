@@ -75,3 +75,6 @@ eslint
 utils
 
 statefulsets
+
+failover
+Alertmanager

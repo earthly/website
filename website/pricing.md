@@ -34,35 +34,35 @@ The cost of compute is based on the AWS rack price for the instances that are us
 <div class="grid grid-cols-4 border-b font-semibold pb-2 text-lg pt-8">amd64 instances:</div>
 <div class="grid grid-cols-4 border-b">
 <div class="py-4"><span class="font-semibold">xsmall</span><br/>linux/amd64</div>
-<div class="py-4">2 vCPUs | 2 GB RAM<br/>11 GB cache | 5 GB burst disk</div>
+<div class="py-4">2 vCPUs | 2 GB RAM<br/>16 GB cache disk</div>
 <div class="py-4">$0.0013</div>
 <div class="py-4">4X<br/><span class="text-xs">1000 min included = 4000 min on xsmall</span></div>
 </div>
 
 <div class="grid grid-cols-4 border-b">
 <div class="py-4"><span class="font-semibold">small</span><br/>linux/amd64</div>
-<div class="py-4">2 vCPUs | 4 GB RAM<br/>22 GB cache | 10 GB burst disk</div>
+<div class="py-4">2 vCPUs | 4 GB RAM<br/>32 GB cache disk</div>
 <div class="py-4">$0.0026</div>
 <div class="py-4">2X<br/><span class="text-xs">1000 min included = 2000 min on small</span></div>
 </div>
 
 <div class="grid grid-cols-4 border-b">
 <div class="py-4"><span class="font-semibold">medium</span><br/>linux/amd64</div>
-<div class="py-4">2 vCPUs | 8 GB RAM<br/>45 GB cache | 20 GB burst disk</div>
+<div class="py-4">2 vCPUs | 8 GB RAM<br/>65 GB cache disk</div>
 <div class="py-4">$0.0052</div>
 <div class="py-4">1X<br/><span class="text-xs">1000 min included = 1000 min on medium</span></div>
 </div>
 
 <div class="grid grid-cols-4 border-b">
 <div class="py-4"><span class="font-semibold">large</span><br/>linux/amd64</div>
-<div class="py-4">4 vCPUs | 16 GB RAM<br/>90 GB cache | 40 GB burst disk</div>
+<div class="py-4">4 vCPUs | 16 GB RAM<br/>130 GB cache disk</div>
 <div class="py-4">$0.0105</div>
 <div class="py-4">0.5X<br/><span class="text-xs">1000 min included = 500 min on large</span></div>
 </div>
 
 <div class="grid grid-cols-4 border-b">
 <div class="py-4"><span class="font-semibold">xlarge</span><br/>linux/amd64</div>
-<div class="py-4">8 vCPUs | 32 GB RAM<br/>180 GB cache | 80 GB burst disk</div>
+<div class="py-4">8 vCPUs | 32 GB RAM<br/>260 GB cache disk</div>
 <div class="py-4">$0.0210</div>
 <div class="py-4">0.25X<br/><span class="text-xs">1000 min included = 250 min on xlarge</span></div>
 </div>
@@ -70,35 +70,35 @@ The cost of compute is based on the AWS rack price for the instances that are us
 <div class="grid grid-cols-4 border-b font-semibold text-lg pb-2 pt-8">arm64 instances:</div>
 <div class="grid grid-cols-4 border-b">
 <div class="py-4"><span class="font-semibold">xsmall</span><br/>linux/arm64</div>
-<div class="py-4">2 vCPUs | 2 GB RAM<br/>11 GB cache | 5 GB burst disk</div>
+<div class="py-4">2 vCPUs | 2 GB RAM<br/>16 GB cache disk</div>
 <div class="py-4">$0.0012</div>
 <div class="py-4">4X<br/><span class="text-xs">1000 min included = 4000 min on xsmall</span></div>
 </div>
 
 <div class="grid grid-cols-4 border-b">
 <div class="py-4"><span class="font-semibold">small</span><br/>linux/arm64</div>
-<div class="py-4">2 vCPUs | 4 GB RAM<br/>22 GB cache | 10 GB burst disk</div>
+<div class="py-4">2 vCPUs | 4 GB RAM<br/>32 GB cache disk</div>
 <div class="py-4">$0.0025</div>
 <div class="py-4">2X<br/><span class="text-xs">1000 min included = 2000 min on small</span></div>
 </div>
 
 <div class="grid grid-cols-4 border-b">
 <div class="py-4"><span class="font-semibold">medium</span><br/>linux/arm64</div>
-<div class="py-4">2 vCPUs | 8 GB RAM<br/>45 GB cache | 20 GB burst disk</div>
+<div class="py-4">2 vCPUs | 8 GB RAM<br/>65 GB cache disk</div>
 <div class="py-4">$0.0050</div>
 <div class="py-4">1X<br/><span class="text-xs">1000 min included = 1000 min on medium</span></div>
 </div>
 
 <div class="grid grid-cols-4">
 <div class="py-4"><span class="font-semibold">large</span><br/>linux/arm64</div>
-<div class="py-4">4 vCPUs | 16 GB RAM<br/>90 GB cache | 40 GB burst disk</div>
+<div class="py-4">4 vCPUs | 16 GB RAM<br/>130 GB cache disk</div>
 <div class="py-4">$0.0100</div>
 <div class="py-4">0.5X<br/><span class="text-xs">1000 min included = 500 min on large</span></div>
 </div>
 
 <div class="grid grid-cols-4">
 <div class="py-4"><span class="font-semibold">xlarge</span><br/>linux/arm64</div>
-<div class="py-4">8 vCPUs | 32 GB RAM<br/>180 GB cache | 80 GB burst disk</div>
+<div class="py-4">8 vCPUs | 32 GB RAM<br/>260 GB cache disk</div>
 <div class="py-4">$0.0199</div>
 <div class="py-4">0.25X<br/><span class="text-xs">1000 min included = 250 min on xlarge</span></div>
 </div>
