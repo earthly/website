@@ -44,21 +44,26 @@ You can use the `kubectl` command to create a secret via the command line.
 
 Run the command below to create a namespace called *example*:
 
-~~~
+~~~{.bash caption=">_"}
 kubectl create -n example
 ~~~
 
 In this namespace you will deploy a PostgreSQL database that will pull confidential information from the secret you intend to create later on.
 
-![Creating namespace (example)]({{site.images}}{{page.slug}}/avTX0yc.png)
+<div class="wide">
+![Creating Namespace(example)]({{site.images}}{{page.slug}}/avTX0yc.png)
+</div>
 
 Execute the `kubectl` command below to create a secret object:
 
-~~~
-kubectl create -n example secret generic postgres-demo --from-literal=username=johndoe --from-literal=password=123456
+~~~{.bash caption=">_"}
+kubectl create -n example secret generic postgres-demo \
+--from-literal=username=johndoe --from-literal=password=123456
 ~~~
 
-![Creating secret postgres-demo]({{site.images}}{{page.slug}}/TmXatgQ.png)
+<div class="wide">
+![Creating Secret postgres-demo]({{site.images}}{{page.slug}}/TmXatgQ.png)
+</div>
 
 Considering the command above there are few things to note:
 
@@ -68,13 +73,15 @@ Considering the command above there are few things to note:
 
 Run the command below to view the secret:
 
-~~~
+~~~{.bash caption=">_"}
 kubectl get secret -n example
 ~~~
 
 You can see the secret `postgres-demo` was created with a secret type of **opaque:**
 
-![Viewing secret postgres-demo]({{site.images}}{{page.slug}}/83fPibh.png)
+<div class="wide">
+![Viewing Secret postgres-demo]({{site.images}}{{page.slug}}/83fPibh.png)
+</div>
 
 In Kubernetes there are various types of secrets, we have:
 
@@ -90,13 +97,15 @@ In this tutorial, we'll focus more on the **Opaque** secret type.
 
 Run the command below to see other information concerning the secret:
 
-~~~
+~~~{.bash caption=">_"}
 kubectl describe secret postgres-demo -n example
 ~~~
 
 The output below shows you the secret, the type, and its keys alongside its encrypted values:
 
-![Describing secret (postgres-demo)]({{site.images}}{{page.slug}}/mGG33fw.png)
+<div class="wide">
+![Describing Secret(postgres-demo)]({{site.images}}{{page.slug}}/mGG33fw.png)
+</div>
 
 ### Creating a Secret From a File
 
@@ -106,36 +115,45 @@ Using your preferred editor, create two files. A *username.txt* and *password.tx
 
 Type in *janedoe* and *123456789* in the *username.txt* and *password.txt* file respectively:
 
-~~~
+~~~{.bash caption=">_"}
 nano username # Type in *janedoe* and save the file 
 nano password # Type in *123456789* and save the file 
 ~~~
 
 Execute the command below to create this secret:
 
-~~~
-kubectl create -n example secret generic postgres-demo-0 --from-file=./username.txt --from-file=./password.txt
+~~~{.bash caption=">_"}
+kubectl create -n example secret generic postgres-demo-0 \
+--from-file=./username.txt --from-file=./password.txt
 ~~~
 
-![Creating secret (postgres-demo-0)]({{site.images}}{{page.slug}}/7GB0UUb.png)
+<div class="wide">
+![Creating Secret(postgres-demo-0)]({{site.images}}{{page.slug}}/7GB0UUb.png)
+</div>
+
 Run the command below, to see the newly created secret:
 
-~~~
+~~~{.bash caption=">_"}
 kubectl get secret -n example
 ~~~
 
 You should now have two secrets - *postgres-demo*  and *postgres-demo-0*, as shown below:
 
-![Viewing secrets in the example namespace]({{site.images}}{{page.slug}}/VgIuIYr.png)
+<div class="wide">
+![Viewing Secrets in the Example Namespace]({{site.images}}{{page.slug}}/VgIuIYr.png)
+</div>
+
 Execute the following command to see your secret:
 
-~~~
+~~~{.bash caption=">_"}
 kubectl describe secret postgres-demo-0 -n example
 ~~~
 
 You should see the *password.txt* and *username.txt* files and the number of bytes their values take:
 
-![Describing secret (postgres-demo-0)]({{site.images}}{{page.slug}}/DRSCpIZ.png)
+<div class="wide">
+![Describing Secret(postgres-demo-0)]({{site.images}}{{page.slug}}/DRSCpIZ.png)
+</div>
 
 ### Creating a Secret With YAML
 
@@ -145,7 +163,7 @@ To explain further, if you'd like to have a username and a password in your secr
 
 Create a file called *secret.yaml* and add the below configuration settings:
 
-~~~
+~~~{.yaml caption="secret.yaml"}
 apiVersion: v1
 kind: Secret
 metadata:
@@ -162,19 +180,23 @@ data:
 
 Now, run the command below to create this secret:
 
-~~~
+~~~{.bash caption=">_"}
 kubectl apply -f secret.yaml -n example
 ~~~
 
-![Creating secret (postgres-secret)]({{site.images}}{{page.slug}}/jziUEu8.png)
+<div class="wide">
+![Creating Secret (postgres-secret)]({{site.images}}{{page.slug}}/jziUEu8.png)
+</div>
 
 At this point, you should have three secrets in total *postgres-demo, postgres-demo-0, postgres-secret*, when you run the command below:
 
-~~~
+~~~{.bash caption=">_"}
 kubectl get secrets -n example
 ~~~
 
-![Viewing all secrets in Kubernetes cluster]({{site.images}}{{page.slug}}/Gsz9PcS.png)
+<div class="wide">
+![Viewing All Secrets in Kubernetes Cluster]({{site.images}}{{page.slug}}/Gsz9PcS.png)
+</div>
 
 ## How to Use a Secret in Kubernetes
 
@@ -188,7 +210,7 @@ You can refer to the guide on [Using Kubernetes Persistent Volumes](https://eart
 
 Create a file *pv.yaml*  and add the following configuration settings. This configuration setting will create a persistent volume with *2Gi* of storage and persistent volume claim to use *300Mi* of that storage in your Kubernetes cluster:
 
-~~~
+~~~{.yaml caption="pv.yaml"}
 apiVersion: v1
 kind: PersistentVolume
 metadata:
@@ -215,25 +237,32 @@ spec:
     - ReadWriteOnce # Indicates this claim can only be read and written once
   resources:
     requests:
-      storage: 300Mi # Indicates this claim requests only 300Mi of storage from a PV
+      storage: 300Mi # Indicates this claim requests only 300Mi 
+                     # of storage from a PV
 ~~~
 
 Run the command below to create the persistent volume and persistent volume claim:
 
-~~~
+~~~{.bash caption=">_"}
 kubectl apply -f pv.yaml -n example
 ~~~
 
-![Creating persistent volume and claim in kubernetes cluster]({{site.images}}{{page.slug}}/6IAuhuq.png)
+<div class="wide">
+![Creating Persistent Volume and Claim in Kubernetes Cluster]({{site.images}}{{page.slug}}/6IAuhuq.png)
+</div>
 
 Confirm the persistent volume and claim are up and running using the commands below:
 
-~~~
-kubectl get pv #gets the persistent volume for your kubernetes cluster
-kubectl get pvc -n example #gets the persistent volume claim in the *example* namespace
+~~~{.bash caption=">_"}
+kubectl get pv 
+# gets the persistent volume for your kubernetes cluster
+kubectl get pvc -n example 
+# gets the persistent volume claim in the *example* namespace
 ~~~
 
-![Verifying persistent volume and claim]({{site.images}}{{page.slug}}/7LGtteC.png)
+<div class="wide">
+![Verifying Persistent Volume and Claim]({{site.images}}{{page.slug}}/7LGtteC.png)\
+</div>
 
 ### Using a Kubernetes Secret as an Environment Variable
 
@@ -245,17 +274,19 @@ Create a file called *postgresql-ss.yaml* and add the following:
 
 The code below creates a StatefulSet, and uses a secret as an environment variable (*POSTGRES_USER* and *POSTGRES_PASSWORD*). It uses the `secretKeyRef` attribute to refer to the *postgres-secret* for the *postgres_username* and *posgres_password* key, respectively.  
 
-~~~
+~~~{.yaml caption="postgresql-ss.yaml"}
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: postgres # The name of the StatefulSet
 spec:
-  serviceName: postgres # The name of the service this StatefulSet should use
+  serviceName: postgres # The name of the service this StatefulSet 
+  # should use
   selector:
     matchLabels:
       app: postgres
-  replicas: 1 # Indicates this StatefulSet should only create one instance of the postgres database
+  replicas: 1 # Indicates this StatefulSet should only create one 
+  # instance of the postgres database
   template:
     metadata:
       labels:
@@ -280,35 +311,41 @@ spec:
           - containerPort: 5432 # The port number postgres listens on
             volumeMounts:
           - name: data
-            mountPath: /var/lib/postgresql/data # Data should be mounted onto this file path
+            mountPath: /var/lib/postgresql/data # Data should be mounted 
+            # onto this file path
       volumes:
       - name: data
         persistentVolumeClaim:
-          claimName: postgres-claim # Indicates the postgres database should use a PVC called postgres-claim
+          claimName: postgres-claim # Indicates the postgres database 
+          #should use a PVC called postgres-claim
 ~~~
 
 Execute the command below to create the StatefulSet:
 
-~~~
+~~~{.bash caption=">_"}
 kubectl apply -f postgres-ss.yaml -n example
 ~~~
 
-![Creating statefulset postgres]({{site.images}}{{page.slug}}/ZFq3luu.png)
+<div class="wide">
+![Creating Statefulset Postgres]({{site.images}}{{page.slug}}/ZFq3luu.png)
+</div>
 
 Confirm that the StatefulSet and the PostgreSQL Pod housing the PostgreSQL database is ready by executing the command below:
 
-~~~
+~~~{.bash caption=">_"}
 kubectl get statefulset -n example
 kubectl get pods -n example
 ~~~
 
 You are good to go with the below output:
 
-![Viewing statefulset and pods]({{site.images}}{{page.slug}}/PVrxMRQ.png)
+<div class="wide">
+![Viewing Statefulset and Pods]({{site.images}}{{page.slug}}/PVrxMRQ.png)
+</div>
 
 Create a file *postgres-sv.yaml*  and paste in the below code snippets. The code below will create a service so you can start up the PostgreSQL server:
 
-~~~
+~~~{.yaml caption="postgres-sv.yaml"}
 apiVersion: v1
 kind: Service 
 metadata:
@@ -327,30 +364,38 @@ spec:
 
 Create this service and confirm it is ready by executing the below commands:
 
-~~~
+~~~{.bash caption=">_"}
 kubectl apply -f postgres-sv.yaml -n example
 kubectl get service postgres -n example
 ~~~
 
-![Viewing service (postgres)]({{site.images}}{{page.slug}}/Odu7etg.png)
+<div class="wide">
+![Viewing Service (postgres)]({{site.images}}{{page.slug}}/Odu7etg.png)
+</div>
 
 Now run the below command to spin up the PostgreSQL server:
 
-~~~
+~~~{.bash caption=">_"}
 kubectl -n example exec -it postgres-0 bash
 ~~~
 
 If you have the below output, then you have successfully deployed a PostgreSQL database using a secret as an environment variable.
 
-![Executing postgres pod (postgres-0)]({{site.images}}{{page.slug}}/n9AEMF7.png)
+<div class="wide">
+![Executing Postgres pod (postgres-0)]({{site.images}}{{page.slug}}/n9AEMF7.png)
+</div>
 
 Now type in ***env*** to see all the environment variables available in the PostgreSQL container. The image below shows the secrets and other environment variables:
 
-![Viewing secrets as environment variables]({{site.images}}{{page.slug}}/cxlVxWe.png)
+<div class="wide">
+![Viewing Secrets as Environment Variables]({{site.images}}{{page.slug}}/cxlVxWe.png)
+</div>
 
 Now type in the command `psql --username=admin postgres` to spin up the PostgreSQL database server. With the below output, you are good to go:
 
-![Starting up postgres]({{site.images}}{{page.slug}}/F1UKsNi.png)
+<div class="wide">
+![Starting Up Postgres]({{site.images}}{{page.slug}}/F1UKsNi.png)
+</div>
 
 ### Using a Kubernetes Secret as a Volume Mount
 
@@ -358,23 +403,25 @@ When trying to use a Kubernetes secret, you can also mount it as a volume inside
 
 Delete the statefulset using the command below:
 
-~~~
+~~~{.bash caption=">_"}
 kubectl delete statefulset postgres -n example
 ~~~
 
 Edit the *postgres-ss.yaml* file to look like the following:
 
-~~~
+~~~{.yaml caption="postgres-ss.yaml"}
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: postgres # The name of the StatefulSet
 spec:
-  serviceName: postgres # The name of the service this StatefulSet should use
+  serviceName: postgres # The name of the service this StatefulSet 
+  # should use
   selector:
     matchLabels:
       app: postgres
-  replicas: 1 # Indicates this StatefulSet should only create one instance of the mysql database
+  replicas: 1 # Indicates this StatefulSet should only create one instance 
+  # of the mysql database
   template:
     metadata:
       labels:
@@ -393,13 +440,15 @@ spec:
           - containerPort: 5432 # The port number postgres listens on
           volumeMounts:
           - name: data
-            mountPath: /var/lib/postgresql/data # Data should be mounted onto this file path
+            mountPath: /var/lib/postgresql/data # Data should be mounted 
+            # onto this file path
           - name: secret-volume
             mountPath: /var/lib/postgresql/secret
       volumes:
       - name: data
         persistentVolumeClaim:
-                    claimName: postgres-claim # Indicates the postgres database should use a PVC called mysql-claim
+                    claimName: postgres-claim # Indicates the postgres 
+                    # database should use a PVC called mysql-claim
       - name: secret-volume
         secret:
           secretName: postgres-secret
@@ -423,39 +472,45 @@ Added a `env` section to get the POSTGRES_USER and POSTGRES_PASSWORD value form 
 
 Now run the following commands to recreate the statefulset and to view the pod created by the statefulset:
 
-~~~
+~~~{.bash caption=">_"}
 kubectl apply -f postgres-ss.yaml -n example
 kubectl get pods -n example
 ~~~
 
-![Viewing statefulsets and pods]({{site.images}}{{page.slug}}/cWLsptK.png)
+<div class="wide">
+![Viewing S0tatefulsets and Pods]({{site.images}}{{page.slug}}/cWLsptK.png)
+</div>
 
 Now go into the container and type in `env`:
 
-~~~
+~~~{.bash caption=">_"}
 kubectl -n example exec -it postgres-0 bash
 ~~~
 
 You can see in the image below that the value of the POSTGRES_PASSWORD and POSTGRES_USER are simply file paths containing the exact values of the POSTGRES_PASSWORD and POSTGRES_USER environment variables `/var/lib/postgresql/secret/postgres_password` and `/var/lib/postgresql/secret/postgres_username`, respectively.
 
-![Viewing secret as volume mount]({{site.images}}{{page.slug}}/FBv4Q8j.png)
+<div class="wide">
+![Viewing Secret as Volume Mount]({{site.images}}{{page.slug}}/FBv4Q8j.png)
+</div>
 
 So with the command below, you can retrieve the POSTGRES_PASSWORD and POSTGRES_USER values:
 
 In a real-world scenario, you might want to use a more secure password, but for this tutorial, the below values works just fine.
 
-~~~
+~~~{.bash caption=">_"}
 cat /var/lib/postgresql/secret/postgres_password
 cat /var/lib/postgresql/secret/postgres_username
 ~~~
 
-![Viewing values from secret file paths]({{site.images}}{{page.slug}}/Mb9ZoQt.png)\
+<div class="wide">
+![Viewing Values from Secret File Paths]({{site.images}}{{page.slug}}/Mb9ZoQt.png)
+</div>
 
 In the case of other applications that do not require environment variables to run you can have a secret mounted as a volume using the below pattern:
 
 Create a file *busy-box.yaml*, and paste in the below code snippet. The configuration settings below, uses the secret *postgres-demo-0*  as a volume mount for a busybox pod configuration:
 
-~~~
+~~~{.yaml caption="busy-box.yaml"}
 apiVersion: v1
 kind: Pod
 metadata:
@@ -477,32 +532,38 @@ spec:
 
 Now run the commands below to create the pod in the **example** namespace and also, to confirm if the busybox pod is running without errors:
 
-~~~
+~~~{.bash caption=">_"}
 kubectl apply -f busy-box.yaml -n example
 kubectl get pods -n example
 ~~~
 
 You can see below that the busybox pod was deployed successfully and is in a running state.
 
-![Viewing busybox pod]({{site.images}}{{page.slug}}/TvaSXz9.png)
+<div class="wide">
+![Viewing Busybox Pod]({{site.images}}{{page.slug}}/TvaSXz9.png)
+</div>
 
 So when you go into the busybox container using the command - `kubectl -n example exec -it busybox sh`. The below command will output the secret mounted as a volume in the busybox container file system:
 
-~~~
+~~~{.bash caption=">_"}
 ls /busybox-data
 ~~~
 
-![Viewing secret files *password.txt* and *username.txt*]({{site.images}}{{page.slug}}/HUcLWOp.png)
+<div class="wide">
+![Viewing Secret Files *password.txt* and *username.txt*]({{site.images}}{{page.slug}}/HUcLWOp.png)
+</div>
 
 Now, if you go into the *busybox-data* directory, you should be able to output the contents of the *password.txt* and *username.txt* files, as shown below:
 
-~~~
+~~~{.bash caption=">_"}
 cd busybox-data
 cat password.txt
 cat username.txt 
 ~~~
 
-![Outputting *password.txt* and *username.txt* data.]({{site.images}}{{page.slug}}/wy8FJif.png)
+<div class="wide">
+![Outputting *password.txt* and *username.txt* Data]({{site.images}}{{page.slug}}/wy8FJif.png)
+</div>
 
 ## Getting Resources From a Docker Private Registry Using Secrets
 
@@ -512,21 +573,25 @@ So to be able to pull images from your private repository and deploy on your Kub
 
 First, you'll need to make sure you are logged in to your DockerHub account on your machine. Run the command below to confirm:
 
-~~~
+~~~{.bash caption=">_"}
 docker login -u your-username -p your-password
 ~~~
 
 If you are logged in, you'll have the following output:
 
-![Logging in to docker from local machine]({{site.images}}{{page.slug}}/OdMXAnl.png)
+<div class="wide">
+![Logging in to Docker from Local Machine]({{site.images}}{{page.slug}}/OdMXAnl.png)
+</div>
 
 Like I stated earlier, your authentication credentials are stored in the `/.docker/config.json` file. Run the command below to confirm:
 
-~~~
+~~~{.bash caption=">_"}
 cat ~/.docker/config.json
 ~~~
 
-![Viewing auth credentials from *~/.docker/config.json*]({{site.images}}{{page.slug}}/rrHUQOg.png)
+<div class="wide">
+![Viewing Auth Credentials from *~/.docker/config.json*]({{site.images}}{{page.slug}}/rrHUQOg.png)
+</div>
 
 In the image above, you can see authentication credentials in the  `~/.docker/config.json` file.
 
@@ -534,25 +599,29 @@ Run the below command to create a secret from the `~/.docker/config.json` file:
 
 The command below will create a secret of type *[kubernetes.io/dockerconfigjson](http://kubernetes.io/dockerconfigjson)*  (which is the required secret type for this use case) called *auth-token* from the file `.docker/config.json` using the *[.dockerconfigjson](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/)* attribute.
 
-~~~
+~~~{.bash caption=">_"}
 kubectl create secret generic auth-token \
     --from-file=.dockerconfigjson=.docker/config.json \
     --type=kubernetes.io/dockerconfigjson -n example
 ~~~
 
-![Creating *auth-token* secret]({{site.images}}{{page.slug}}/k2b0Y2b.png)
+<div class="wide">
+![Creating *auth-token* Secret]({{site.images}}{{page.slug}}/k2b0Y2b.png)
+</div>
 
 Now execute the following command to see your secret:
 
-~~~
+~~~{.bash caption=">_"}
 kubectl get secret -n example
 ~~~
 
-![Viewing *auth-token* secret ]({{site.images}}{{page.slug}}/XTQafNv.png)
+<div class="wide">
+![Viewing *auth-token* Secret]({{site.images}}{{page.slug}}/XTQafNv.png)
+</div>
 
 Create a Pod specification *private-pod.yaml* to pull the [docker](/blog/rails-with-docker) image from your private repository using the **auth-token** secret you created:
 
-~~~
+~~~{.yaml caption="private-pod.yaml"}
 apiVersion: v1
 kind: Pod
 metadata:
@@ -569,20 +638,25 @@ spec:
 
 Apply this pod to your Kubernetes cluster using the command below:
 
-~~~
+~~~{.bash caption=">_"}
 kubectl apply -f private-pod.yaml -n example
 ~~~
 
-![Creating pod specification private-pod]({{site.images}}{{page.slug}}/qNc3YY6.png)
+<div class="wide">
+![Creating pod Specification private-pod]({{site.images}}{{page.slug}}/qNc3YY6.png)
+</div>
+
 Confirm if your pod is running without errors:
 
-~~~
+~~~{.bash caption=">_"}
 kubectl get pods -n example
 ~~~
 
 If you have the below output, then your Kubernetes [cluster](/blog/kube-bench) was able to pull the image from your Dockerhub private repository using the `.docker/config.json` file which contains the authentication credentials for your DockerHub registry.
 
+<div class="wide">
 ![Viewing pod private-pod]({{site.images}}{{page.slug}}/Zd61bEv.png)
+</div>
 
 ## Conclusion
 
@@ -598,5 +672,4 @@ Now that you have a good knowledge of Kubernetes secrets, you can now implement 
 
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
+
