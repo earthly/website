@@ -225,7 +225,7 @@ Sundeep Teki:
 Eze Onukwube:
     name    : "Eze Onukwube"
     bio     : "Eze is a professional writer with a background in software engineering, who loves intermarrying technology with well-written prose, culture, and process improvement."
-    avatar  : "/assets/images/authors/EzeOnukwube.jpg"
+    avatar  : "/assets/images/authors/ezeonukwube.jpg"
 Joseph Eshiett:
     name    : "Joseph Eshiett"
     bio     : "Joseph is a DevOps practitioner who is fascinated by cloud technologies, software development, and deployment processes. He is also a technical writer who enjoys documenting the processes and learning new things."
@@ -245,12 +245,12 @@ Mr. Unity Buddy:
 Sooter Saalu:
     name    : "Sooter Saalu"
     bio     : "Sooter Saalu is a data professional with experience as a data analyst, data scientist, and data engineer. He has an educational background in clinical psychology and is committed to writing engaging data stories for technical and non-technical audiences."
-    avatar  : "/assets/images/authors/Sootersaalu.jpeg"
+    avatar  : "/assets/images/authors/sootersaalu.jpeg"
 Kealan Parr:
     name    : "Kealan Parr"
     bio     : "Kealan is a senior software engineer and technical writer who works with clients on technical reviewing and software development. He is a member of the Unicode Consortium."
-    avatar  : "/assets/images/authors/Kealanparr.jpg"
-Saka-Aiyedun Segun :
+    avatar  : "/assets/images/authors/kealanparr.jpg"
+Saka-Aiyedun Segun:
     name    : "Saka-Aiyedun Segun"
     bio     : "Segun is DevOps engineer keen on automating the software delivery lifecycle. He is also a technical writer who enjoys documenting the processes and learning new things."
     avatar  : "/assets/images/authors/saka.jpg"
@@ -289,7 +289,7 @@ Vivek Kumar Singh:
 Fortune Adekogbe:
     name    : "Fortune Adekogbe"
     bio     : "Fortune is a Python developer with a knack for building intelligent systems. He is also a technical writer and process engineer with a focus on sustainable energy systems. Fortune likes listening to audio content and volunteering with the VFD in his free time."
-    avatar  : "/assets/images/authors/Fortune.jpg"
+    avatar  : "/assets/images/authors/fortune.jpg"
 Mercy Bassey:
     name    : "Mercy Bassey"
     bio     : "Mercy Bassey is a JavaScript programmer with a passion for technical writing. Her area of expertise is Full-stack web development and DevOps/IT."
@@ -297,7 +297,7 @@ Mercy Bassey:
 Ifihanagbara Olusheye:
     name    : "Ifihanagbara Olusheye"
     bio     : "Ifihanagbara Olusheye is a software developer and technical writer who loves analyzing technology concepts she learns through writing."
-    avatar  : "/assets/images/authors/Ifihanagbara.jpg"
+    avatar  : "/assets/images/authors/ifihanagbara.jpg"
 Rose Chege:
     name    : "Rose Chege"
     bio     : "Rose is a lover of technology and an upright individual who is not afraid to get out of her comfort zone and try out new programming paradigms."
@@ -313,11 +313,11 @@ Mustapha Ahmad Ayodeji:
 Temitope Oyedele:
     name    : "Temitope Oyedele"
     bio     : "Temitope Oyedele is a software developer and technical writer. He likes to write about things he's learned and experienced."
-    avatar  : "/assets/images/authors/Temitope.jpeg"
+    avatar  : "/assets/images/authors/temitope.jpeg"
 Somtochukwu Uchegbu:
     name    : "Somtochukwu Uchegbu"
     bio     : "Somtochukwu is a DevOps engineer and Technical Writer that likes writing technical articles that break down complex technical concepts."
-    avatar  : "/assets/images/authors/Somtochukwu.jpg"
+    avatar  : "/assets/images/authors/somtochukwu.jpg"
 Damaso Sanoja:
     name    : "Damaso Sanoja"
     bio     : "Damaso Sanoja is a mechanical engineer with a passion for cars and computers. He's written for both industries for more than two decades."
@@ -329,27 +329,23 @@ Roseline Bassey:
 Ndafara Tsamba:
     name    : "Ndafara Tsamba"
     bio     : "Ndafara Tsamba is a software engineer turned self-taught data engineer and technical content creator. When he is not working or creating technical tutorials, Ndafara plays chess and Call of Duty mobile."
-    avatar  : "/assets/images/authors/Ndafara.jpg"
+    avatar  : "/assets/images/authors/ndafara.jpg"
 Ashutosh Krishna:
     name    : "Ashutosh Krishna"
-    bio     : "Ashutosh is an Application Developer at Thoughtworks. He enjoys creating things that live on the internet. He is passionate about full stack development and DevOps. In his free time, he enjoys sharing his technical knowledge with others through articles and turorials."
-    avatar  : "/assets/images/authors/Ashutosh.jpeg"
+    bio     : "Ashutosh is an Application Developer at Thoughtworks. He enjoys creating things that live on the internet. He is passionate about full-stack development and DevOps. In his free time, he enjoys sharing his technical knowledge with others through articles and tutorials."
+    avatar  : "/assets/images/authors/ashutosh.jpeg"
 Muhammed Ali:
     name    : "Muhammed Ali"
     bio     : "I am a software developer passionate about technical writing and open-source contributions. My area of expertise is full-stack web development and DevOps."
     avatar  : "/assets/images/authors/muhammed.jpg"
-Aniket Bhattacharyea:
-    name    : "Aniket Bhattacharyea"
-    bio     : "Aniket is a Mathematics postgraduate who has a passion for computers and software. He likes to explore various areas related to coding and works as a web developer using Ruby on Rails and Vue.JS."
-    avatar  : "/assets/images/authors/Aniket.jpg"
 Antreas Antoniou:
     name    : "Antreas Antoniou"
     bio     : "I have spent the last 6 years doing research and teaching in machine learning, and in particular deep learning methods. My teaching experience in particular has been exceptionally useful in learning how to communicate very complex information efficiently to a diverse audience. As a researcher I got to tackle some of the most exciting new directions in the deep learning field, namely meta-learning. I was even part of a massive effort to write a survey paper that helps ease newcomers into meta-learning, and helps direct experts into the latest and greatest. This paper can be found at https://arxiv.org/abs/2004.05439 I have also spend the last 10 years working with software engineering, and the last 6 in particular in building state of the art deep learning systems. I have worked at Google and Amazon building such systems, as well as during my time as a PhD student."
-    avatar  : "/assets/images/authors/Antreas.jpg"
+    avatar  : "/assets/images/authors/antreas.jpg"
 Muhammad Badawy:
     name    : "Muhammad Badawy"
     bio     : "Living in the line between DevOps Engineering Enthusiasm and Arabic Calligraphy as a passion."
-    avatar  : "/assets/images/authors/Badawy.png"
+    avatar  : "/assets/images/authors/badawy.png"
 Sarah Lean:
     name    : "Sarah Lean"
     bio     : "I've been a subject matter expert in various solutions through my career including Microsoft Exchange, System Center Configuration Manager and Patch Management, to name a few. In 2022 I was awarded the Microsoft MVP award for Azure. I am a STEM Ambassador and am hopeful that by sharing my story with the next generation it can help to inspire them into a STEM career. I am also the founder of the Glasgow Azure User Group, which is a community group that meets every two months and aims to bring together people who are looking to learn and network with their peers."
@@ -378,3 +374,8 @@ Ubaydah Abdulwasiu:
     name    : "Ubaydah Abdulwasiu"
     bio     : "Ubaydah is a backend engineer who has built APIs using a variety of languages and frameworks such as Python Django, Golang, and Javascript. She also has experience writing technical documentation and articles. She enjoys passing on technical knowledge, reading, and learning about new technologies."
     avatar  : "/assets/images/authors/ubaydah.jpg"
+Arafat Olayiwola:
+    name    : "Arafat Olayiwola"
+    bio     : "Arafat is a passionate developer who is drawn to creating real-world solutions. He is currently a member of the AWS Community Builders. He is also constantly interested in learning more about distributed systems."
+    avatar  : "/assets/images/authors/arafat.jpeg"
+    

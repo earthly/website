@@ -3,3 +3,6 @@ Mongodb
 gqlgen
 Gqlgen
 Gorm
+
+Mongosh
+mongosh

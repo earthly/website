@@ -73,3 +73,6 @@ ninjaception
 precompiling
 eslint
 utils
+
+failover
+Alertmanager

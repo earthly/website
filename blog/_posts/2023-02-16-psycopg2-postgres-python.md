@@ -12,7 +12,7 @@ internal-links:
  - Context Managers
 ---
 
-Are you a Python programmer learning to work with PostgreSQL? If so, this guide on `psycopg2`, the PostgreSQL connector for Python, is for you. You can connect to PostgreSQL databases and run queries—all from within your Python script—using the `psycopg2` adapter.
+Are you a Python programmer learning to work with PostgreSQL? If so, this tutorial on **psycopg2**, the PostgreSQL connector for Python, is for you. You can connect to PostgreSQL databases and run queries—all from within your Python script—using the psycopg2 adapter.
 
 In this tutorial, you'll learn the basics of using `psycopg2` in Python to do the following:
 
@@ -98,7 +98,7 @@ If [TOML](https://toml.io/en/) is your preferred config file format, you can use
 
 A typical config file consists of multiple sections, with each section having a set of key-value pairs. The keys and values are separated by a `:` or `=`. Here's the general structure of a config file with one section and `n` key-value pairs:
 
-~~~{.python caption="main.py"}
+~~~{ caption="config file"}
 [section-name]
 key1=value1
 key2=value2
@@ -181,7 +181,7 @@ Suppose you enter an incorrect password (yeah, that happens often!). Open the co
 
 There'll be a runtime error. Focusing on the relevant information in the traceback, you'll see that an `OperationalError` exception is thrown as password authentication failed. Psycopg2 has an implementation of the `OperationalError` class.
 
-~~~{ caption="db_info.ini"}
+~~~{ caption="Output"}
 Traceback (most recent call last):
 ...
 psycopg2.OperationalError: connection to server at "localhost" (::1), \
@@ -190,7 +190,7 @@ port 5432 failed: FATAL:  password authentication failed for user "postgres"
 
 What happens when you try connecting to a database that does not exist? For example, I updated the `dbname` field in the config file from `test` to `test1` (the `test1` database does not exist). It's an `OperationalError` exception (again).
 
-~~~{ caption="db_info.ini"}
+~~~{ caption="Output"}
 Traceback (most recent call last):
 ...
 psycopg2.OperationalError: connection to server at "localhost" (::1), \
@@ -245,10 +245,10 @@ from psycopg2 import OperationalError
 
 try:
     # connecting to the db
-      # querying the db
+    # querying the db
 
 except OperationalError:
-# print out the error message
+    # print out the error message
 
 finally:
     # close the db connection
@@ -373,7 +373,7 @@ Inside the `main.py` file, import `generate_fake_data` from the `fake_data` modu
 
 Here, `records` is a tuple of records. We can loop through it and insert the records into the table by calling the `execute()` method on `db_cursor`.
 
-~~~{.python caption="fake_data.py"}
+~~~{.python caption="main.py"}
 from fake_data import generate_fake_data
 records = tuple(generate_fake_data(100)) #cast into a tuple for immutability
 insert_record = "INSERT INTO people (name,city,profession)\
@@ -397,14 +397,14 @@ Executing the select query, `SELECT * FROM people;` returns all the records in t
 
 Calling the `fetchone()` method on `db_cursor` fetches the *next* record in the result.
 
-~~~{.python caption="fake_data.py"}
+~~~{.python caption="main.py"}
 db_cursor.execute("SELECT * FROM people;")
 print(db_cursor.fetchone())
 ~~~
 
 As this is the first time we're fetching the record, it fetches the *first* record.
 
-~~~{.python caption="Output"}
+~~~{ caption="Output"}
 (1, 'Jane Lee', 'Rustmore', 'Rust programmer')
 ~~~
 
@@ -412,14 +412,14 @@ As this is the first time we're fetching the record, it fetches the *first* reco
 
 The `fetchmany()` method takes in the number of records to fetch (`n`) and fetches the next `n` records from the result.
 
-~~~{.python caption="fake_data.py"}
+~~~{.python caption="main.py"}
 for record in db_cursor.fetchmany(10):
-print(record)
+    print(record)
 ~~~
 
 As we've mentioned 10 in the `fetchmany()` method call, we get the next 10 records: records in rows 2 to 11 in the people table.
 
-~~~{.python caption="Output"}
+~~~{ caption="Output"}
 (2, 'Allison Hill', 'East Jill', 'Sports administrator')
 (3, 'Javier Johnson', 'East William', 'Aid worker')
 (4, 'Michelle Miles', 'Robinsonshire', 'Health physicist')
@@ -437,14 +437,14 @@ support/administrative officer')
 
 Calling the `fetchall()` method on the cursor object returns all the remaining records in the result.
 
-~~~{.python caption="fake_data.py"}
+~~~{.python caption="main.py"}
 for record in db_cursor.fetchall():
-print(record)
+    print(record)
 ~~~
 
 We've already fetched the first 11 records in the result. So `fetchall()` fetches all the remaining records.
 
-~~~{.python caption="Output"}
+~~~{ caption="Output"}
 # output (truncated)
 (12, 'Andrew Stewart', 'Carlshire', 'International aid/development worker')
 (13, 'Jonathan Wilkerson', 'Thomasberg', 'Fine artist')
@@ -464,7 +464,7 @@ We've already fetched the first 11 records in the result. So `fetchall()` fetche
 
 From the cities in the table, I'd like to get the list of all cities that occur more than once.
 
-~~~{.python caption="fake_data.py"}
+~~~{.python caption="main.py"}
 get_count ='''SELECT city, COUNT(*)
               FROM people
               GROUP BY city HAVING COUNT(*)>1;'''
@@ -474,7 +474,7 @@ print(db_cursor.fetchall())
 
 We see that 'Johnsonmouth' is the only city that appears more than once.
 
-~~~{.python caption="Output"}
+~~~{ caption="Output"}
 # Output
 [('Johnsonmouth', 2)]
 
@@ -482,7 +482,7 @@ We see that 'Johnsonmouth' is the only city that appears more than once.
 
 Let's update both the occurrences of 'Johnsonmouth' to another fictional city, say, 'Mathville'.
 
-~~~{.python caption="fake_data.py"}
+~~~{.python caption="main.py"}
 update_query = "UPDATE people SET city=%s WHERE city=%s"
 values = ('Mathville','Johnsonmouth')
 db_cursor.execute(update_query,values)
@@ -490,7 +490,7 @@ db_cursor.execute(update_query,values)
 
 Now let's delete the records where the `city` is 'Mathville'.
 
-~~~{.python caption="fake_data.py"}
+~~~{.python caption="main.py"}
 delete_record = "DELETE FROM people WHERE city=%s;"
 record = ('Mathville',) # pass in as a tuple
 db_cursor.execute(delete_record,record)
@@ -523,19 +523,19 @@ try:
       try:
           # running query #1
             
-      except <ErrorType>:
+      except <ErrorType1>:
             # roll back changes
 
       try:
           # running query #2
             
-      except <ErrorType>:
+      except <ErrorType2>:
             # roll back changes
      
       ...
 
 except OperationalError:
-# print out the error message
+    # print out the error message
 
 finally:
     # close the db connection
@@ -561,7 +561,7 @@ try:
         # run queries
 
 except OperationalError:
-# print out the error message
+    # print out the error message
 
 finally:
     # close the db connection
@@ -572,7 +572,7 @@ In the above snippet:
 - The outer `with` statement wraps a block that executes with the database connection instance as the context manager.
 - The inner `with` statement wraps a set of queries that run with the database cursor as the context manager.
 
-But how does this help?
+**But how does this help?**
 
 When you use the connection object as a context manager:
 
