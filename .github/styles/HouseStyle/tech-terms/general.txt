@@ -288,3 +288,6 @@ Deployer
 pipelining
 profiler
 Wix
+
+gsutil
+gcloud
