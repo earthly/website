@@ -417,7 +417,8 @@ $ curl -o assets/style.css https://github.com/verah-tech/stock-market/blob/main/
 
 ### Setting Up the Application
 
-![Setting Up the Application]({{site.images}}{{page.slug}}/3OFABqK.png)\
+![Setting Up the Application]({{site.images}}{{p
+age.slug}}/3OFABqK.png)\
 
 This is the last part of the application as you will be able to visualize the data you earlier fetched. You will create the `main.py` file in the `app` [packages](/blog/setup-typescript-monorepo) and performing several imports required by the project as below:
 
