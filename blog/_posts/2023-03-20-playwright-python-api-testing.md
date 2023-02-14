@@ -6,7 +6,10 @@ toc: true
 author: Donald Le
 
 internal-links:
- - just an example
+ - Python
+ - Testing
+ - API
+ - Framework
 ---
 
 Playwright is a popular end-to-end testing framework that Microsoft backs. With support for popular programming languages, such as Javascript, Typescript, Python, and Java, you can use Playwright to test your existing software projects. In addition to end-to-end testing, Playwright also supports API testing using built-in methods in the `APIRequestContext` class. This allows you to use a single tool to implement both end-to-end testing and [API testing](/blog/continuous-testing-in-devops). Moreover, Playwright provides customized reports with different types, such as CI report or [allure report](https://www.npmjs.com/package/allure-playwright).
@@ -423,4 +426,3 @@ With hands-on written tests you practiced through the article, you can apply Pla
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Add keywords for internal links to front-matter
