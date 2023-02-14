@@ -19,6 +19,8 @@ In this article, you'll learn how you can implement API testing using Playwright
 
 ## What Is API Testing?
 
+![Testing]({{site.images}}{{page.slug}}/testing.png)\
+
 API testing ensures that your services' APIs work as expected. With the rise of microservices architecture, API is now a crucial part of software applications: from web applications to mobile and embedded applications.
 
 In API testing, you verify whether the response of the API matches the expected response, given an input. You check the API status code and the API response body when verifying the API response. In addition to testing every API separately, you can combine multiple APIs into a test that fulfills a user scenario to simulate how users interact with your app through APIs. By checking users' flows through a combination of APIs, you can ensure that the users' journey works as expected without doing the end-to-end test on the user interface (UI), which is often known to be flaky and hard to maintain due to the ever-changing UI elements.
@@ -46,15 +48,21 @@ To simplify the demonstration, let's write the tests for an existing set of APIs
 
 From [GitHub Settings Page](https://github.com/settings/profile), and click on `Developer Settings` option on the sidebar. You should see a similar screen to the one below:
 
+<div class="wide">
 ![**Developer Settings** page]({{site.images}}{{page.slug}}/XmD3wBz.png)
+</div>
 
 From this page, click on `Personal access tokens`, and choose `Tokens (classic)`.
 
+<div class="wide">
 ![**Personal access tokens (classic)** page]({{site.images}}{{page.slug}}/cg41tcl.png)
+</div>
 
 Click on `Generate new token` > `Generate new token (classic)` to generate a new GitHub token.
 
+<div class="wide">
 ![**OAuth scope settings** page]({{site.images}}{{page.slug}}/ZY3Uuik.png)
+</div>
 
 Check the `repo` and `delete_repo` boxes so you can create, update, and delete a repository.
 
@@ -68,19 +76,19 @@ You will use this token when executing the API tests later on.
 
 From the `Home` directory of your machine, run the following command to create a new directory named `api-testing-python-playwright` inside the `Projects` directory:
 
-~~~
+~~~{.bash caption=">_"}
 mkdir -p Projects/api-testing-python-playwright
 ~~~
 
 Change to the `api-testing-python-playwright` directory by running:
 
-~~~
+~~~{.bash caption=">_"}
 cd Projects/api-testing-python-playwright
 ~~~
 
 Create a new virtualenv environment and activate it:
 
-~~~
+~~~{.bash caption=">_"}
 virtualenv venv
 source venv/bin/activate
 ~~~
@@ -93,7 +101,7 @@ After creating a new Python project and activating the Python virtual environmen
 
 From the terminal, run:
 
-~~~
+~~~{.bash caption=">_"}
 pip install pytest-playwright
 ~~~
 
@@ -103,24 +111,24 @@ By installing `pytest-playwright` dependency, you can get the `playwright` frame
 
 Create a new Python file to store Python functions for making API calls:
 
-~~~
+~~~{.bash caption=">_"}
 touch github_api.py
 ~~~
 
 Open up the `github_api.py`:
 
-~~~
+~~~{.bash caption=">_"}
 nano github_api.py
 ~~~
 
 Then copy the following content to the file:
 
-~~~
-# github_api.py
+~~~{.python caption="github_api.py"}
 from playwright.async_api import APIRequestContext
 
 
-async def create_new_repository(api_request_context: APIRequestContext, repo_name: str, is_private: bool,
+async def create_new_repository(api_request_context: APIRequestContext, \
+                                repo_name: str, is_private: bool,
                                 api_token: str):
     return await api_request_context.post(
         "/user/repos",
@@ -141,17 +149,20 @@ To create a new repository using the GitHub API, you need to use the `post` meth
 
 You have just defined a Python asynchronous function for creating a new repository. Copy the following code below the `create_a_new_repository` function inside `github_api.py` file to define the `update_repository`:
 
-~~~
-# github_api.py
-async def update_repository(api_request_context: APIRequestContext, repo_name: str, repo_update_name: str,
-                            username: str, description: str, is_private: bool, api_token: str):
+~~~{.python caption="github_api.py"}
+
+async def update_repository(api_request_context: APIRequestContext, \
+                            repo_name: str, repo_update_name: str,
+                            username: str, description: str, \
+                            is_private: bool, api_token: str):
     return await api_request_context.patch(
         f"/repos/{username}/{repo_name}",
         headers={
             "Accept": "application/vnd.github.v3+json",
             "Authorization": f"token {api_token}",
         },
-        data={"name": repo_update_name, "description": description, "private": is_private},
+        data={"name": repo_update_name, "description": description, \
+        "private": is_private},
     )
 ~~~
 
@@ -159,9 +170,10 @@ To update the repository, you need to set the API method to `patch`: `api_reques
 
 Add the following code to define the `remove_repository` function:
 
-~~~
-# github_api.py
-async def remove_repository(api_request_context: APIRequestContext, repo_name: str, username: str, api_token: str):
+~~~{.python caption="github_api.py"}
+
+async def remove_repository(api_request_context: APIRequestContext, \
+                            repo_name: str, username: str, api_token: str):
     return await api_request_context.delete(
         f"/repos/{username}/{repo_name}",
         headers={
@@ -179,13 +191,13 @@ In your `github_api.py` file now, you have defined the three functions to create
 
 The next step is creating a test file that defines the test functions for your test scenarios. To do it, from your terminal run:
 
-~~~
+~~~{.bash caption=">_"}
 touch test_github_api.py
 ~~~
 
 Open `test_github_api.py`:
 
-~~~
+~~~{.bash caption=">_"}
 nano test_github_api.py
 ~~~
 
@@ -193,12 +205,12 @@ To interact with the GitHub API, you need to add a GitHub username and GitHub AP
 
 In the test file `test_github_api.py`, you import `os` library to read the environment value for GitHub `USER_NAME` and `API_TOKEN`. You also import `APIRequestContext, async_playwright` and `pytest` to define the asynchronous test function and `pytest` fixture. To use the pre-defined functions for creating, updating and removing a GitHub repository, you import `create_new_repository, update_repository, remove_repository` from the `github_api.py` file.
 
-~~~
-# test_github_api.py
+~~~{.python caption="test_github_api.py"}
 import os
 from playwright.async_api import APIRequestContext, async_playwright
 import pytest
-from github_api import create_new_repository, update_repository, remove_repository
+from github_api import create_new_repository, update_repository, \
+remove_repository
 
 API_TOKEN = os.getenv('API_TOKEN')
 USER_NAME = os.getenv('USER_NAME')
@@ -211,44 +223,50 @@ The following code defines a `pytest` fixture. First, you need to add the `@pyte
 
 In the defined request context, you also add `base_url="https://api.github.com"` to tell Playwright to use the URL `https://api.github.com` for the tests so that you don't need to include the whole API path inside the tests.
 
-~~~
-# test_github_api.py
+~~~{.python caption="test_github_api.py"}
 @pytest.fixture()
 async def api_request_context():
     async with async_playwright() as p:
-        request_context = await p.request.new_context(base_url="https://api.github.com")
+        request_context = await p.request.new_context(base_url=\
+        "https://api.github.com")
         yield request_context
         await request_context.dispose()
 ~~~
 
 Next, you need to define the test function in your test file. To do it, copy the following content and put it below the current code:
 
-~~~
-# test_github_api.py
+~~~{.python caption="test_github_api.py"}
+
 async def test_full_flow_scenario(api_request_context: APIRequestContext):
     # Create a new repository
 
-    response_create_a_repo = await create_new_repository(api_request_context=api_request_context, repo_name="test-repo",
-                                                         is_private=True,
-                                                         api_token=API_TOKEN)
+    response_create_a_repo = await create_new_repository( \
+                                api_request_context=api_request_context, \
+                                repo_name="test-repo", is_private=True, \
+                                api_token=API_TOKEN)
     assert response_create_a_repo.status == 201
 
     # Update name and description of the repository
-    response_update_a_repo = await update_repository(api_request_context=api_request_context, repo_name="test-repo",
-                                                     repo_update_name="test-repo-update",
-                                                     username=USER_NAME, description="This is a description",
-                                                     is_private=False,
-                                                     api_token=API_TOKEN)
+    response_update_a_repo = await update_repository(\
+                                api_request_context=api_request_context, \
+                                repo_name="test-repo", \
+                                repo_update_name="test-repo-update", \
+                                username=USER_NAME, \
+                                description="This is a description", \
+                                is_private=False, \
+                                api_token=API_TOKEN)
     response_body_update_a_repo = await response_update_a_repo.json()
     assert response_update_a_repo.status == 200
     assert response_body_update_a_repo["name"] == "test-repo-update"
-    assert response_body_update_a_repo["description"] == "This is a description"
+    assert response_body_update_a_repo["description"] \
+    == "This is a description"
 
     # Remove the repository
-    response_delete_a_repo = await remove_repository(api_request_context=api_request_context,
-                                                     repo_name="test-repo-update",
-                                                     username=USER_NAME,
-                                                     api_token=API_TOKEN)
+    response_delete_a_repo = await remove_repository(\
+                                api_request_context=api_request_context, \
+                                repo_name="test-repo-update", \
+                                username=USER_NAME, \
+                                api_token=API_TOKEN)
     assert response_delete_a_repo.status == 204
 ~~~
 
@@ -256,26 +274,27 @@ In the test function, you first create a new repository, update the description 
 
 While creating, updating, and removing the repository, you check whether the API responses from the API satisfy the expected result using `assert` statement. For example:
 
-~~~
+~~~{.python caption="test_github_api.py"}
+
 assert response_body_update_a_repo["name"] == "test-repo-update"
 ~~~
 
 The expected status codes for creating a new repository, updating the repository, and deleting the repository are `201`, `200`, and `204`. For example, to check the status code of the removing repository API, you write the code as below:
 
-~~~
+~~~{.python caption="test_github_api.py"}
+
 assert response_delete_a_repo.status == 204
 ~~~
 
 To tell `pytest` to run the tests asynchronously, you also need to create a pytest configuration file called `pytest.ini`.
 
-~~~
+~~~{.bash caption=">_"}
 touch pytest.ini
 ~~~
 
 Then add the following content to it:
 
-~~~
-# pytest.ini
+~~~{ caption="pytest.ini"}
 [pytest]
 asyncio_mode=auto
 ~~~
@@ -288,27 +307,26 @@ Since your test file now requires the [environment variables](/blog/bash-variabl
 
 Grab the `API_TOKEN` you create at step one and your GitHub username to include in the following commands.
 
-~~~
+~~~{.bash caption=">_"}
 export API_TOKEN=${your_api_token}
 export USER_NAME=${your_user_name}
 ~~~
 
 To execute the test, run:
 
-~~~
+~~~{.bash caption=">_"}
 pytest
 ~~~
 
 You should see similar output, indicating the test has now passed.
 
-~~~
+~~~{ caption="Output"}
 plugins: playwright-0.3.0, asyncio-0.20.3, base-url-2.0.0
 asyncio: mode=auto
-collected 1 item                                                                                                                                                                                                                       
+collected 1 item            
+test_github_api.py .                                        [100%]
 
-test_github_api.py .                                                                                                                                                                                                             [100%]
-
-========================================================================================================== 1 passed in 4.05s ===========================================================================================================
+======================== 1 passed in 4.05s ========================
 ~~~
 
 ## Step 7: Generate an Allure Test Report
@@ -317,13 +335,13 @@ Now you have successfully executed the GitHub API test using Playwright. However
 
 First, you need to install `allure-pytest`.
 
-~~~
+~~~{.bash caption=">_"}
 pip install allure-pytest
 ~~~
 
 Execute the test again using allure required parameters.
 
-~~~
+~~~{.bash caption=">_"}
 pytest --alluredir=allure_result_folder test_github_api.py
 ~~~
 
@@ -331,13 +349,15 @@ pytest --alluredir=allure_result_folder test_github_api.py
 
 To view the allure report, run:
 
-~~~
+~~~{.bash caption=">_"}
 allure serve allure_result_folder
 ~~~
 
 You should see the automatically generated report like below:
 
+<div class="wide">
 ![**Auto-generated allure report**]({{site.images}}{{page.slug}}/verbR6S.png)
+</div>
 
 ## Step 9: Add a Failed Test
 
@@ -345,12 +365,15 @@ When implementing the test, there are times that your test will fail due to the 
 
 You will add another test function `test_create_a_new_repository` inside the test file named `test_github_api.py`. Inside the test function, you will make a request to the GitHub API to create a new repository in GitHub, and check whether the returned status of the API is 201 or not. The status code number 201 indicates that a new repository is created successfully. You can refer to [Mozilla HTTP response status code reference page](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/201) for a detailed explanation.
 
-~~~
-# test_github_api.py
-async def test_create_a_new_repository(api_request_context: APIRequestContext):
-    response_create_a_repo = create_new_repository(api_request_context=api_request_context, repo_name="test-repo",
-                                                   is_private=True,
-                                                   api_token=API_TOKEN)
+~~~{.python caption="test_github_api.py"}
+
+async def test_create_a_new_repository(api_request_context: \
+                                        APIRequestContext):
+    response_create_a_repo = create_new_repository(\
+                            api_request_context=api_request_context,\
+                            repo_name="test-repo",\
+                            is_private=True,\
+                            api_token=API_TOKEN)
     assert response_create_a_repo.status == 201
 
 ~~~
@@ -359,26 +382,32 @@ async def test_create_a_new_repository(api_request_context: APIRequestContext):
 
 Let's run the whole test file with the option to generate an allure report to see the result.
 
-~~~
+~~~{.bash caption=">_"}
 pytest --alluredir=allure_result_folder test_github_api.py
 ~~~
 
 Then open the allure report.
 
-~~~
+~~~{.bash caption=">_"}
 allure serve allure_result_folder
 ~~~
 
+<div class="wide">
 ![**One broken test**]({{site.images}}{{page.slug}}/j9H6RYQ.png)
+</div>
 
 From the allure report, we can see one broken test. Clicking on the "Suites" menu on the left panel, we see the test that has failed is "test_create_a_new_repository
 ".
 
+<div class="wide">
 ![**The test that failed**]({{site.images}}{{page.slug}}/fRU0G6C.png)
+</div>
 
 Clicking on that failed test in allure report, we see the error message is "AttributeError: 'coroutine' object has no attribute 'status'" and the line of code that caused the error is captured.
 
+<div class="wide">
 ![**Detailed capture message**]({{site.images}}{{page.slug}}/dnXMsv8.png)
+</div>
 
 `pytest` complains that the coroutine object `response_create_a_repo` does not have a `status` attribute. Usually, the response of the API should always have a `status` attribute, even if the API is successful and failed.
 
@@ -386,30 +415,34 @@ Taking a closer look at the definition of `response_create_a_repo` variable, we 
 
 To fix this, let's add the missing `await` keyword before the `create_new_repository` function call. The code will now look like below:
 
-~~~
-# test_github_api.py
+~~~{.python caption="test_github_api.py"}
 
-async def test_create_a_new_repository(api_request_context: APIRequestContext):
-    response_create_a_repo = await create_new_repository(api_request_context=api_request_context, repo_name="test-repo",
-                                                   is_private=True,
-                                                   api_token=API_TOKEN)
+async def test_create_a_new_repository(api_request_context:\
+                                        APIRequestContext):
+    response_create_a_repo = await create_new_repository(\
+                                api_request_context=api_request_context,\
+                                repo_name="test-repo", \
+                                is_private=True, \
+                                api_token=API_TOKEN)
     assert response_create_a_repo.status == 201
 
 ~~~
 
 Run the test file again.
 
-~~~
+~~~{.bash caption=">_"}
 pytest --alluredir=allure_result_folder test_github_api.py
 ~~~
 
 Then open the allure report.
 
-~~~
+~~~{.bash caption=">_"}
 allure serve allure_result_folder
 ~~~
 
+<div class="wide">
 ![**Passing tests**]({{site.images}}{{page.slug}}/t8sJuxo.png)
+</div>
 
 As seen, the tests are all passing now.
 
@@ -420,9 +453,3 @@ In this article, you learned how to implement API testing using Playwright with 
 With hands-on written tests you practiced through the article, you can apply Playwright using Python for your next [API testing](/blog/continuous-testing-in-devops) project.
 
 {% include cta/cta1.html %}
-
-## Outside Article Checklist
-
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
