@@ -200,6 +200,8 @@ kubectl get secrets -n example
 
 ## How to Use a Secret in Kubernetes
 
+![How]({{site.images}}{{page.slug}}/how.png)\
+
 There are two common ways that you can use a secret in Kubernetes. You can either use it as an environment variable or as a volume mount.
 
 When you use it as an environment variable, the secret gets created as an environment variable which you can then use within containers in Pods. When you use it as a volume mount, your secret will be mounted as individual files inside your [container](/blog/docker-slim) which you can make references to.
