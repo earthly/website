@@ -9,6 +9,7 @@ internal-links:
  - Python
  - Testing
  - API
+ - Playwright
  - Framework
 ---
 
@@ -422,7 +423,6 @@ With hands-on written tests you practiced through the article, you can apply Pla
 
 ## Outside Article Checklist
 
-- [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
