@@ -3,7 +3,7 @@ title: "API Testing Using Playwright With Python"
 categories:
   - Tutorials
 toc: true
-author: Adam
+author: Donald Le
 
 internal-links:
  - just an example
@@ -419,7 +419,6 @@ With hands-on written tests you practiced through the article, you can apply Pla
 
 ## Outside Article Checklist
 
-- [ ] Add in Author page
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
