@@ -6,7 +6,10 @@ toc: true
 author: Muhammad Badawy
 
 internal-links:
- - just an example
+ - Kubernetes
+ - Nginx
+ - Ingress
+ - Transport Layer Security
 ---
 
 ## The Problem That Mutual TLS Solves
@@ -309,4 +312,3 @@ You can continue learning about other security features available in Kubernetes,
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Add keywords for internal links to front-matter
