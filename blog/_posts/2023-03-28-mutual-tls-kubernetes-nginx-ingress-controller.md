@@ -17,17 +17,17 @@ Mutual TLS solves the problem of authenticating both the client and the server i
 
 Mutual TLS provides an additional layer of security by requiring the client to also present a digital certificate, which is verified by the server, ensuring that both parties in the communication are who they claim to be. This helps to prevent unauthorized access and protect against impersonation attacks.
 
-In this article, you'll learn the differences between TLS and mTLS, and demystify how to apply both TLS and mTLS connections between a client and a Kubernetes endpoint exposed through an Nginx Ingress Controller.
+In this article, you'll learn the differences between TLS and mTLS, and demystify how to apply both TLS and mTLS connections between a client and a Kubernetes endpoint exposed through an [Nginx](/blog/docker-slim) Ingress Controller.
 
 ## Differences Between TLS and MTLS
 
 [Transport Layer Security (TLS)](https://www.cloudflare.com/learning/ssl/transport-layer-security-tls/) is a protocol used to secure communication over a computer network. It provides a secure channel between two devices communicating over the internet, or between a client and a server.
 
-TLS uses a combination of [public key and TLS certificate](https://www.cloudflare.com/learning/ssl/what-is-ssl/) encryption to secure the transmission of data. In a TLS connection, the client and server exchange messages to negotiate a set of encryption keys that will be used to secure the connection. Once the keys have been negotiated, the client and server use them to encrypt and decrypt the data transmitted between them. TLS certificates can be named as SSL certificates and this is because [TLS is an evolved version of SSL (Secure Sockets Layer)](https://www.ssl.com/faqs/faq-what-is-ssl/).
+TLS uses a combination of [public key and TLS certificate](https://www.cloudflare.com/learning/ssl/what-is-ssl/) encryption to secure the transmission of data. In a TLS connection, the client and server exchange messages to negotiate a set of [encryption](/blog/encrypting-data-with-ssh-keys-and-golang) keys that will be used to secure the connection. Once the keys have been negotiated, the client and server use them to encrypt and decrypt the data transmitted between them. TLS certificates can be named as SSL certificates and this is because [TLS is an evolved version of SSL (Secure Sockets Layer)](https://www.ssl.com/faqs/faq-what-is-ssl/).
 
 Mutual TLS (mTLS) is an upgrade of TLS that requires both the client and the server to authenticate each other using digital certificates. In a mutual TLS connection, the client presents its own certificate to the server, and the server presents its own certificate to the client. This ensures that both the client and server are who they claim to be, providing an additional layer of security to the connection.
 
-The diagram below shows what we'll implement in the next steps. We'll start by deploying an Nginx Ingress Controller, then deploy a simple HTTP application and expose it. We'll then apply routing rules through a Kubernetes ingress resource. After that we'll learn how to apply TLS and mutual TLS connections between the client and a Kubernetes endpoint.
+The diagram below shows what we'll implement in the next steps. We'll start by deploying an Nginx [Ingress](/blog/building-on-kubernetes-ingress) Controller, then deploy a simple HTTP application and expose it. We'll then apply routing rules through a Kubernetes ingress resource. After that we'll learn how to apply TLS and mutual TLS connections between the client and a Kubernetes endpoint.
 
 <div class="wide">
 ![Kubernetes deployments diagram]({{site.images}}{{page.slug}}/ptpr1xB.png)
@@ -37,14 +37,14 @@ Let's get started!
 
 ## Deploying Nginx Ingress Controller to a Kubernetes cluster
 
-Nginx Ingress Controller is used to handle external traffic to a Kubernetes cluster. It provides [load balancing, SSL termination, and name-based virtual hosting](https://docs.nginx.com/nginx-ingress-controller/intro/overview/), among other features. Deploying an Nginx Ingress Controller to a Kubernetes cluster allows for easier and more efficient management of external traffic to the cluster and its services. Additionally, it can improve the scalability of the cluster.
+Nginx Ingress Controller is used to handle external traffic to a Kubernetes [cluster](/blog/kube-bench). It provides [load balancing, SSL termination, and name-based virtual hosting](https://docs.nginx.com/nginx-ingress-controller/intro/overview/), among other features. Deploying an Nginx Ingress Controller to a Kubernetes cluster allows for easier and more efficient management of external traffic to the cluster and its services. Additionally, it can improve the scalability of the cluster.
 
 To proceed, you should have the following prerequisites:
 
 - Up and running Kubernetes cluster. You can use [minikube](https://minikube.sigs.k8s.io/docs/start/) or [kind](https://kind.sigs.k8s.io/docs/user/quick-start/) to start one in a local environment.
 - Local installations of Kubectl and openssl
 
-Usually you need to check the Nginx Ingress official website to verify the installation steps according to your Kubernetes environment. You can check the [README](https://github.com/kubernetes/ingress-nginx/blob/main/README.md#readme) file and also the [Getting Started](https://kubernetes.github.io/ingress-nginx/deploy/) document related to the Nginx Ingress Controller.
+Usually you need to check the Nginx Ingress official website to verify the installation steps according to your Kubernetes environment. You can check the [README](https://github.com/kubernetes/ingress-nginx/blob/main/README.md#readme) file and also the [Getting Started](https://kubernetes.github.io/ingress-nginx/deploy/) document related to the [Nginx](/blog/docker-slim) Ingress Controller.
 
 For this demo, I'm using minikube as my Kubernetes cluster environment, so Nginx Ingress Controller can be enabled as below:
 
@@ -72,7 +72,7 @@ After making sure that all pods in the `ingress-nginx` namespace are up and runn
 $ kubectl create deployment demo-app --image=httpd --port=80
 ~~~
 
-Then expose this deployment locally through a service of [type ClusterIP](https://kubernetes.io/docs/concepts/services-networking/service/). The [Kubernetes service](https://earthly.dev/blog/dev-guideto-k8services/) resource is used to expose a deployment of an application either locally within the cluster or externally outside the cluster. It creates a stable endpoint for clients to access the applications running in the pods. It acts as a load balancer as it is designed to circulate the traffic to the set of pods running the application.
+Then expose this [deployment](/blog/deployment-strategies) locally through a service of [type ClusterIP](https://kubernetes.io/docs/concepts/services-networking/service/). The [Kubernetes service](https://earthly.dev/blog/dev-guideto-k8services/) resource is used to expose a deployment of an application either locally within the cluster or externally outside the cluster. It creates a stable endpoint for clients to access the applications running in the pods. It acts as a load balancer as it is designed to circulate the traffic to the set of pods running the application.
 
 In our demo, we choose to expose the deployment locally within the cluster through a Kubernetes service of type ClusterIP and externally through the Nginx Ingress Controller.
 
@@ -297,7 +297,7 @@ These notes are to be taken into consideration when you try the mutual TLS imple
 
 Mutual TLS provides end-to-end security for communication between a client and server. It ensures that the client is talking to the intended server and vice versa which makes it a vital feature for applications that handle sensitive information.
 
-In this article, we have discussed the differences between TLS and mTLS authentication methods, and demonstrated how to apply both methods to secure calling Kubernetes Nginx Ingress Controller endpoints.
+In this article, we have discussed the differences between TLS and mTLS authentication methods, and demonstrated how to apply both methods to secure calling Kubernetes Nginx [Ingress](/blog/building-on-kubernetes-ingress) Controller endpoints.
 
 You can continue learning about other security features available in Kubernetes, such as [Security Context in Kubernetes](https://earthly.dev/blog/k8s-cluster-security/), and [Kubernetes Compliance Scan](https://earthly.dev/blog/kubescape/).
 
@@ -310,4 +310,3 @@ You can continue learning about other security features available in Kubernetes,
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
