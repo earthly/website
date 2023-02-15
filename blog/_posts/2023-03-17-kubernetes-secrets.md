@@ -83,7 +83,7 @@ You can see the secret `postgres-demo` was created with a secret type of **opaqu
 ![Viewing Secret postgres-demo]({{site.images}}{{page.slug}}/83fPibh.png)
 </div>
 
-In Kubernetes there are various types of secrets, we have:
+In Kubernetes there are various types of secrets; we have:
 
 - **Opaque secrets** :  The default secret type if the type is not specified in a secret configuration file.
 - **Service accounts token secrets**: Used to store a token that references a service account. For this secret type the `kubernetes.io/service-account-token`annotation is set to an existing service account name.
@@ -137,7 +137,7 @@ Run the command below, to see the newly created secret:
 kubectl get secret -n example
 ~~~
 
-You should now have two secrets - *postgres-demo*  and *postgres-demo-0*, as shown below:
+You should now have two secrets: *postgres-demo*  and *postgres-demo-0*, as shown below:
 
 <div class="wide">
 ![Viewing Secrets in the Example Namespace]({{site.images}}{{page.slug}}/VgIuIYr.png)
@@ -270,7 +270,7 @@ kubectl get pvc -n example
 
 Up to this point you have created a persistent volume (PV) and a persistent volume claim (PVC), you are now ready to configure a [StatefulSet](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/) and a service to deploy a PostgreSQL database up to Kubernetes.
 
-The secret **postgres-secret* holds the credentials needed to access the PostgreSQL server, so you will use that secret as an environment variable to configure a statefulSet to deploy a PostgreSQL database.
+The secret **postgres-secret** holds the credentials needed to access the PostgreSQL server, so you will use that secret as an environment variable to configure a statefulSet to deploy a PostgreSQL database.
 
 Create a file called *postgresql-ss.yaml* and add the following:
 
@@ -465,12 +465,12 @@ spec:
 
 Here's what we are doing in the code above:
 
-Define a volume section under the statefulSet Pod specification, with a name *secret-volume*.
-Specify the type of volume (a secret volume type) and which secret it should use (*postgres-secret*).
-Include the keys Kubernetes should watch out for while creating the statefulset (*postgres_password* and *postgres_username*) alongside their paths which are required *postgres_password* and *postgres_username* (these paths could be anything, like *my-postgres-path*).
-Define a mode **511** which is optional.
-Mount the volume inside the containers section using *volumeMounts* , specify the name of the volume we'd like to mount which is *secret-volume* and then the *mountPath* `/secret` which is where the secret will be saved.
-Added a `env` section to get the POSTGRES_USER and POSTGRES_PASSWORD value form the  */var/lib/postgresql/secret/postgres_username* and */var/lib/postgresql/secret/postgres_password* file paths in the container's file system.
+- Define a volume section under the statefulSet Pod specification, with a name *secret-volume*.
+- Specify the type of volume (a secret volume type) and which secret it should use (*postgres-secret*).
+- Include the keys Kubernetes should watch out for while creating the statefulset (*postgres_password* and *postgres_username*) alongside their paths which are required (these paths could be anything, like *my-postgres-path*).
+- Define a mode **511** which is optional.
+- Mount the volume inside the containers section using *volumeMounts* , specify the name of the volume we'd like to mount which is *secret-volume* and then the *mountPath* `/secret` which is where the secret will be saved.
+- Add an `env` section to get the POSTGRES_USER and POSTGRES_PASSWORD value from the  */var/lib/postgresql/secret/postgres_username* and */var/lib/postgresql/secret/postgres_password* file paths in the container's file system.
 
 Now run the following commands to recreate the statefulset and to view the pod created by the statefulset:
 
@@ -666,6 +666,6 @@ In this tutorial, you have learned about Kubernetes secrets. You have also learn
 
 You then learned how to go through the process of authenticating your Kubernetes cluster to pull an image from your private repository on DockerHub by creating a secret from the `.docker/config.json` file, and pulling the image using the `imagePullSecrets` attribute.
 
-Now that you have a good knowledge of Kubernetes secrets, you can now implement it in your application and deploy safely to Kubernetes.
+Now that you have a good knowledge of Kubernetes secrets, you can implement it in your application and deploy safely to Kubernetes.
 
 {% include cta/cta1.html %}
