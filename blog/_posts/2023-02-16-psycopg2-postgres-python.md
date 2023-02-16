@@ -508,7 +508,7 @@ So far we've implemented exception handling for errors that arise when trying to
 
 In practice, however, some queries may not run as expected! We may run into errors: from syntax errors in the query string to errors arising from attempting invalid transactions.
 
-For example: retrieving, updating, and deleting records [make](/blog/makefiles-on-windows) sense only when there *is* a table with records. Psycopg2 provides several [exception classes](https://www.psycopg.org/docs/errors.html#sqlstate-exception-classes) such as `DatabaseError` and `ProgrammingError` that are triggered when the SQL queries fail to run successfully.
+For example: retrieving, updating, and deleting records make sense only when there *is* a table with records. Psycopg2 provides several [exception classes](https://www.psycopg.org/docs/errors.html#sqlstate-exception-classes) such as `DatabaseError` and `ProgrammingError` that are triggered when the SQL queries fail to run successfully.
 
 In summary: you're not only trying to connect to the database and run a set of queries. Rather, for *each* of the queries, you *try* to run the query (inside a `try` block) and catch any exception (inside the `except` block).
 
