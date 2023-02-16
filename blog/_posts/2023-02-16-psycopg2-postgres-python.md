@@ -73,6 +73,7 @@ print("Successfully connected to the database.")
 ~~~
 
 In the above code snippet:
+
 - `dbname` is the name of the database that you'd like to connect to. Here, I've connected to the `test` database.
 - `user` and `password` are the username and the password required for authentication.
 - `host` is the IP address of the server on which your database is running ('localhost' in this case).
