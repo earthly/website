@@ -73,10 +73,10 @@ print("Successfully connected to the database.")
 ~~~
 
 In the above code snippet:
-`dbname` is the name of the database that you'd like to connect to. Here, I've connected to the `test` database.
-`user` and `password` are the username and the password required for authentication.
-`host` is the IP address of the server on which your database is running ('localhost' in this case).
-`port` refers to the port number that the server listens to for incoming connection requests to the database. The default value is 5432.
+- `dbname` is the name of the database that you'd like to connect to. Here, I've connected to the `test` database.
+- `user` and `password` are the username and the password required for authentication.
+- `host` is the IP address of the server on which your database is running ('localhost' in this case).
+- `port` refers to the port number that the server listens to for incoming connection requests to the database. The default value is 5432.
 
 <div class="notice--big--primary">
 📑 Specifying the details of the database in the function call, as shown above, is a good example of **how not to connect to a database**.
