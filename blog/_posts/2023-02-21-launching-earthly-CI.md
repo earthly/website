@@ -1,7 +1,7 @@
 ---
 title: "Earthly CI: Launching a new era for CI"
 categories:
-  - Tutorials
+  - Articles
 toc: true
 author: Vlad
 
@@ -9,10 +9,7 @@ internal-links:
  - just an example
 ---
 
-Hello world! We have partnered up with some [cool people in Silicon Valley LINK](LINK) [1] to fix the world of CI. So today we are launching [Earthly CI](https://earthly.dev/signup/earthly-ci), the world's first CI/CD solution that merges together a CI and a build system. A more fine-grained understanding of the build allows Earthly CI to run faster than a CI ever could before. And it's not an incremental improvement. It's a dramatic improvement. We're talking 100% to 2,000% faster. Here's how we did it.
-
-(Footnote)
-[1] Innovation Endeavors led our [$6.5M Seed+ round LINK](LINK), and were joined by 468 Capital and Uncorrelated Ventures. A number of founders of companies such as Cockroach Labs, DigitalOcean, Mesosphere, DataDog, Sentry, and Instana, plus a number of creators and maintainers of notable developer platforms, such as Docker, Elixir, VS Code, GitHub Copilot, Hashicorp, Envoy proxy, Cypress, Mesos and many others, have also previously invested in Earthly.
+Hello world! We have partnered up with some [cool people in Silicon Valley LINK](LINK) [^1] to fix the world of CI. So today we are launching [Earthly CI](https://earthly.dev/signup/earthly-ci), the world's first CI/CD solution that merges together a CI and a build system. A more fine-grained understanding of the build allows Earthly CI to run faster than a CI ever could before. And it's not an incremental improvement. It's a dramatic improvement. We're talking 100% to 2,000% faster. Here's how we did it.
 
 ## But Why??
 
@@ -42,7 +39,7 @@ As an industry, we have gotten used to consuming CI/CD by-the-minute. This worke
 
 Nowadays, however, paying by compute time means that the slower your build, the more the vendor profits. This isn't right, because it creates a perverse incentive for the CI/CD vendor to never innovate in providing ways to speed things up. If a CI/CD tool is meant to deliver productivity gains, then correlating the value to how much less productive you are is the wrong way to go.
 
-## Problem #3: Ci/Cd Pipelines Are a Nightmare to Maintain
+## Problem #3: CI/CD Pipelines Are a Nightmare to Maintain
 
 Making the smallest changes to CI requires you to carve out hours of your day to implement them. The reason being that **there is no way to run CI locally**. So this means that you have to test pipelines live by doing `git commit -m "try again"` over and over until you get it right. Trying out a CI/CD pipeline only in the cloud is like only ever testing apps in production. We don't do that with the rest of the software development. Why do we do it for CI/CD pipelines?
 
@@ -78,7 +75,7 @@ So we designed a new CI/CD platform from the ground-up. It's been three years in
 
 Earthly CI is built on the [open-source project Earthly](https://github.com/earthly/earthly). It allows you to write CI/CD pipelines using a simple, familiar syntax, and leverages containers for isolation.
 
-~~~{.earthfile caption=""}
+~~~{.Dockerfile caption=""}
 build-pipeline:
     PIPELINE
     TRIGGER pr main
@@ -121,10 +118,7 @@ Earthly allows you to execute CI/CD pipelines on your computer, thus allowing yo
 
 In Earthly CI, every step involved in the build is cached automatically, and the cache is available instantly. No upload or download necessary. The cache always makes the build faster, there's no guesswork needed, and for that reason the cache is always on for every step of every pipeline.
 
-The syntax also allows the declaration of interdependencies. The interdependencies allow the system to build a directed acyclic graph (DAG) on the fly, and execute it with high parallelism. [2]
-
-(Footnote)
-[2] And because everything runs in containers, it is possible in the future to also distribute a single build across a compute cluster for maximum parallelization. Today, Earthly CI only runs on one machine at a time, however.
+The syntax also allows the declaration of interdependencies. The interdependencies allow the system to build a directed acyclic graph (DAG) on the fly, and execute it with high parallelism. [^2]
 
 In most cases this results in at least 2X speed-up compared to a traditional CI. Some teams we've been testing the technology with reported 20X improvements in extreme cases. Even the more modest improvements add up to dramatic productivity gains when taking into account the fact that developers perform builds many times every single day.
 
@@ -132,7 +126,7 @@ It's not just the raw time saved - that alone can pay for itself many times over
 
 In addition, Earthly CI's pricing includes Zero-Margin compute -- we make zero profit on compute. This means that if your builds are slow, we don't get rich from it. Our profit only comes from the number of active users on the platform. Plus, we only count people who perform at least three builds in a month as active users -- so if your colleague is on vacation, or if another team contributes only occasionally to your repository, we don't bill those. Conversely, if your organization uses Earthly regularly and widely, then it means it's delivering value, and that's the only situation when we actually make money. We think that this aligns our interests with those of our users better than previous models used in the industry.
 
-And finally, Earthly CI was designed to work with any code layout. And more specifically, it was designed and tested with both monorepos and polyrepos in mind. For monorepos, Earthly understands the interdependence of build targets, and the specific source files that contribute to those targets, allowing it cache and parallelize builds accordingly. If you're iterating on an integration test and you only change 1 out of 7 microservices, Earthly only rebuilds that 1 microservice before re-running the integration test. Similarly, Earthly has a strong understanding of setups where the build is split across many repositories. It is Git-hash-aware, and will only rebuild what has actually changed.
+And finally, Earthly CI was designed to work with any code layout. And more specifically, it was designed and tested with both monorepos and polyrepos in mind. For monorepos, Earthly understands the interdependence of build targets, and the specific source files that contribute to those targets, allowing it to cache and parallelize builds accordingly. If you're iterating on an integration test and you only change 1 out of 7 microservices, Earthly only rebuilds that 1 microservice before re-running the integration test. Similarly, Earthly has a strong understanding of setups where the build is split across many repositories. It is Git-hash-aware, and will only rebuild what has actually changed.
 
 ## Get Started With Earthly Ci
 
@@ -141,3 +135,8 @@ Earthly CI is being made available today. As the platform is new, we are letting
 If this is interesting to you, [get started with Earthly CI](https://earthly.dev/signup/earthly-ci)! Let's build the next generation of software together!
 
 {% include cta/cta1.html %}
+
+
+[^1] Innovation Endeavors led our [$6.5M Seed+ round LINK](LINK), and were joined by 468 Capital and Uncorrelated Ventures. A number of founders of companies such as Cockroach Labs, DigitalOcean, Mesosphere, DataDog, Sentry, and Instana, plus a number of creators and maintainers of notable developer platforms, such as Docker, Elixir, VS Code, GitHub Copilot, Hashicorp, Envoy proxy, Cypress, Mesos and many others, have also previously invested in Earthly.
+
+[^2] And because everything runs in containers, it is possible in the future to also distribute a single build across a compute cluster for maximum parallelization. Today, Earthly CI only runs on one machine at a time, however.
