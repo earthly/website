@@ -77,3 +77,8 @@ utils
 Instana
 Hashicorp
 Mesos
+
+statefulsets
+
+failover
+Alertmanager
