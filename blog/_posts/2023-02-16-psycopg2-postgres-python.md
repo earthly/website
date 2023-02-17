@@ -47,7 +47,7 @@ pip3 install psycopg2
 - Ensure that your PostgreSQL database server is up and running, and
 - You have a database that you can connect to.
 
-You can create a database on [pgAdmin](https://www.pgadmin.org/) or use the command-line client [psql](https://www.postgresql.org/docs/current/app-psql.html). If you use psql at the command line, check if you have the right permissions, and run `CREATE DATABASE <sample-db>;`. You can optionally specify the username, host, and port; else, <sample-db> is created with the default values for these fields.
+You can create a database on [pgAdmin](https://www.pgadmin.org/) or use the command-line client [psql](https://www.postgresql.org/docs/current/app-psql.html). If you use psql at the command line, check if you have the right permissions, and run `CREATE DATABASE <sample-db>;`. You can optionally specify the username, host, and port; else, `<sample-db>` is created with the default values for these fields.
 </div>
 
 ### The `connect()` Function in Psycopg2
@@ -73,10 +73,11 @@ print("Successfully connected to the database.")
 ~~~
 
 In the above code snippet:
-`dbname` is the name of the database that you'd like to connect to. Here, I've connected to the `test` database.
-`user` and `password` are the username and the password required for authentication.
-`host` is the IP address of the server on which your database is running ('localhost' in this case).
-`port` refers to the port number that the server listens to for incoming connection requests to the database. The default value is 5432.
+
+- `dbname` is the name of the database that you'd like to connect to. Here, I've connected to the `test` database.
+- `user` and `password` are the username and the password required for authentication.
+- `host` is the IP address of the server on which your database is running ('localhost' in this case).
+- `port` refers to the port number that the server listens to for incoming connection requests to the database. The default value is 5432.
 
 <div class="notice--big--primary">
 📑 Specifying the details of the database in the function call, as shown above, is a good example of **how not to connect to a database**.
@@ -500,7 +501,7 @@ With that, we've run a basic set of queries to insert, retrieve, update, and del
 
 It's a good practice to also close the database cursor. To do this, you can call the `close()` method on the cursor object. But this has to be inside the `finally` block too, before closing the database connection. This is because if the connection object does not exist, the cursor doesn't exist either!
 
-If needed, look up the [main.py](https://github.com/balapriyac/psycopg2-tutorial/blob/main/main.py) file to [make](/blog/makefiles-on-windows) sure you've understood it all.
+If needed, look up the [main.py](https://github.com/balapriyac/psycopg2-tutorial/blob/main/main.py) file to make sure you've understood it all.
 
 ## Simplifying Querying Using Context Managers
 
@@ -508,7 +509,7 @@ So far we've implemented exception handling for errors that arise when trying to
 
 In practice, however, some queries may not run as expected! We may run into errors: from syntax errors in the query string to errors arising from attempting invalid transactions.
 
-For example: retrieving, updating, and deleting records [make](/blog/makefiles-on-windows) sense only when there *is* a table with records. Psycopg2 provides several [exception classes](https://www.psycopg.org/docs/errors.html#sqlstate-exception-classes) such as `DatabaseError` and `ProgrammingError` that are triggered when the SQL queries fail to run successfully.
+For example: retrieving, updating, and deleting records make sense only when there *is* a table with records. Psycopg2 provides several [exception classes](https://www.psycopg.org/docs/errors.html#sqlstate-exception-classes) such as `DatabaseError` and `ProgrammingError` that are triggered when the SQL queries fail to run successfully.
 
 In summary: you're not only trying to connect to the database and run a set of queries. Rather, for *each* of the queries, you *try* to run the query (inside a `try` block) and catch any exception (inside the `except` block).
 
