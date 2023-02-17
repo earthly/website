@@ -33,7 +33,7 @@ To follow along with this article, please prepare the following prerequisites:
 
 - A Linux-based machine (preferably an [Ubuntu machine version 20.04](https://releases.ubuntu.com/focal/); this article uses Ubuntu 20.04)
 - A ready-to-use [Python environment version 3.7 or later](https://www.python.org/downloads/)
-- A ready-to-use virtual environment. You can use [virtualenv](https://virtualenv.pypa.io/en/latest/installation.html#via-pip) or the [built-in venv](https://docs.python.org/3/library/venv.html).
+- A Python virtual environment. You can use [virtualenv](https://virtualenv.pypa.io/en/latest/installation.html#via-pip) or the [built-in venv](https://docs.python.org/3/library/venv.html).
 - A GitHub account to interact with the GitHub APIs
 - Java version 11 for using the `allure` command line
 - [Allure CLI tool](https://www.npmjs.com/package/allure-commandline) to generate allure test report
@@ -93,7 +93,7 @@ virtualenv venv
 source venv/bin/activate
 ~~~
 
-Using the `virtualenv` tool is a great way to create a Python virtual environment. Using a virtual environment, you can isolate the dependencies amongst different projects in the same machine, allowing you to create different versions of dependencies, and mitigating the risks of having dependencies conflicts.
+Using the `virtualenv` tool is a great way to create a Python virtual environment. Using a virtual environment, you can isolate the dependencies amongst different projects in the same machine, allowing you to create different versions of dependencies, and mitigating the risks of having dependency conflicts.
 
 ## Step 3: Install the Dependencies
 
@@ -143,7 +143,7 @@ async def create_new_repository(api_request_context: APIRequestContext, \
 
 Since `pytest-playwright` offers two approaches for implementing tests: asynchronous and synchronous, you need to import the Python class `APIRequestContext` which supports asynchronous programming.
 
-You also defined the asynchronous Python function for creating a new repository on GitHub using GitHub API. The asynchronous Python function starts with `async def` syntax. Inside the asynchronous Python function, when making API calls, you need to add an `await` keyword before the calling functions so that when you work with the responses of the functions, your return values are ready to use.
+You also defined the asynchronous Python function for creating a new repository on GitHub using GitHub API. The asynchronous Python function starts with `async def` syntax. Inside the asynchronous Python function, when making API calls, you need to add the `await` keyword before the calling functions so that when you work with the responses of the functions, your return values are ready to use.
 
 To create a new repository using the GitHub API, you need to use the `post` method: `api_request_context.post()`. You also need to provide your GitHub token to authorize your API request: `"Authorization": f"token {api_token}"`. In the request body of the API, you need to include the name for the new repository, and specify whether you want the repository to be private or public: `data={"name": repo_name, "private": is_private}`.
 
@@ -361,7 +361,7 @@ You should see the automatically generated report like below:
 
 ## Step 9: Add a Failed Test
 
-When implementing the test, there are times that your test will fail due to the wrong setup in the test. Let's create a failed test to demonstrate this scenario and see how we can fix the failed test.
+When implementing the test, there are times when your tests may fail. Let's take an example to demonstrate this scenario and see how we can fix a failing test.
 
 You will add another test function `test_create_a_new_repository` inside the test file named `test_github_api.py`. Inside the test function, you will make a request to the GitHub API to create a new repository in GitHub, and check whether the returned status of the API is 201 or not. The status code number 201 indicates that a new repository is created successfully. You can refer to [Mozilla HTTP response status code reference page](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/201) for a detailed explanation.
 
@@ -378,7 +378,7 @@ async def test_create_a_new_repository(api_request_context: \
 
 ~~~
 
-## Step 10: Use `allure` To Capture The Failed Message Then Fix It
+## Step 10: Use `allure` To Capture The Failed Message, Then Fix It
 
 Let's run the whole test file with the option to generate an allure report to see the result.
 
@@ -396,20 +396,19 @@ allure serve allure_result_folder
 ![**One broken test**]({{site.images}}{{page.slug}}/j9H6RYQ.png)
 </div>
 
-From the allure report, we can see one broken test. Clicking on the "Suites" menu on the left panel, we see the test that has failed is "test_create_a_new_repository
-".
+From the allure report, we can see one broken test. Clicking on the "Suites" menu on the left panel, we see the test that has failed is `test_create_a_new_repository`.
 
 <div class="wide">
 ![**The test that failed**]({{site.images}}{{page.slug}}/fRU0G6C.png)
 </div>
 
-Clicking on that failed test in allure report, we see the error message is "AttributeError: 'coroutine' object has no attribute 'status'" and the line of code that caused the error is captured.
+Clicking on that failed test in allure report, we see the error message is `"AttributeError: 'coroutine' object has no attribute 'status'"` and the line of code that caused the error is captured.
 
 <div class="wide">
 ![**Detailed capture message**]({{site.images}}{{page.slug}}/dnXMsv8.png)
 </div>
 
-`pytest` complains that the coroutine object `response_create_a_repo` does not have a `status` attribute. Usually, the response of the API should always have a `status` attribute, even if the API is successful and failed.
+`pytest` complains that the coroutine object `response_create_a_repo` does not have a `status` attribute. Usually, the response of the API should always have a `status` attribute, regardless of the status of the API test.
 
 Taking a closer look at the definition of `response_create_a_repo` variable, we can see that we're missing the `await` keyword before the API request `create_new_repository`. Without the `await` keyword, `pytest` does not wait for the API request to finish, but moves on to the next line of code immediately, causing the variable `response_create_a_repo` not to have a `status` field.
 
