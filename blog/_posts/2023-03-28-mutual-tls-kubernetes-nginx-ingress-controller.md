@@ -52,7 +52,7 @@ Usually you need to check the Nginx Ingress official website to verify the insta
 For this demo, I'm using minikube as my Kubernetes cluster environment, so Nginx Ingress Controller can be enabled as below:
 
 ~~~{.bash caption=">_"}
-$minikube addons enable ingress
+$ minikube addons enable ingress
 ~~~
 
 The pods related to Nginx Ingress Controller are deployed in ingress-nginx namespace. Now let's do a pre-flight check to make sure these pods are up and running before proceeding with next steps:
@@ -94,7 +94,9 @@ $ kubectl create ingress test-localhost --class=nginx \
 
 So "test.localdev.me" will be our external gate to access the applications running in the Kubernetes cluster. When we `curl` "test.localdev.me" from the internet, the Nginx Ingress Controller will route the traffic to the "demo-app" service inside the cluster which will redirect the traffic to one of the application pods to serve it.
 
-**Note**: The entire wildcard domain entries of *.localdev.me points to 127.0.0.1 and this can be tested by executing the following command: `nslookup test.localdev.me`
+<div class="notice--info">
+The entire wildcard domain entries of *.localdev.me points to 127.0.0.1 and this can be tested by executing the following command: `nslookup test.localdev.me`.
+</div>
 
 Next, let's test the connection to our endpoint application from outside the cluster, which will be made through [port-forward technique](https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/) from our local machine on port 8080 to the Ingress Controller service on port 80 in the `ingress-nginx` namespace:
 
@@ -111,7 +113,7 @@ $ curl http://test.localdev.me:8080
 
 The response should be as shown below. This means that you are able to connect to the Kubernetes endpoint through the Nginx Ingress Controller but with an HTTP connection that is not secure.
 
-~~~{.bash caption=">_"}
+~~~{ caption="Output"}
 <html><body><h1>It works!</h1></body></html>
 ~~~
 
@@ -152,7 +154,7 @@ $ kubectl edit ingress test-localhost
 
 The above command will open a `vi` session to modify the ingress resource. You can refer to the YAML below to add the "tls:" section which will link the secret we just created "self-tls" to the hostname "test.localdev.me". So it is expected when a client hits this hostname with HTTPS protocol, "self-tls" server certificate will be provided to the client to be verified. After verification, the request will be redirected to inside the cluster and a secure session will be initiated.
 
-This YAML is the declarative representation of the ingress resource "test-localhost" that has been created in previous steps. It contains the needed rule to route the external traffic coming through "test.localdev.me" to the target service "demo-app"
+This YAML is the declarative representation of the ingress resource "test-localhost" that has been created in previous steps. It contains the needed rule to route the external traffic coming through "test.localdev.me" to the target service "demo-app".
 
 ~~~{.yaml caption=""}
 apiVersion: networking.k8s.io/v1
@@ -186,8 +188,10 @@ $ sudo kubectl port-forward -n ingress-nginx \
 service/ingress-nginx-controller 443:443
 ~~~
 
-**Note**: `sudo` is required here to allow incoming traffic on port 443.
+<div class="notice--info">
+`sudo` is required here to allow incoming traffic on port 443.
 Also keep that command running in a separate session as port-forwarding will be used for the rest of the article.
+</div>
 
 From another terminal, let's try to curl the local endpoint with HTTPS protocol:
 
@@ -195,7 +199,7 @@ From another terminal, let's try to curl the local endpoint with HTTPS protocol:
 $ curl -k -v https://test.localdev.me/
 ~~~
 
- -k is used to skip self-signed certificate verification and -v to see some logs.
+ `-k` is used to skip self-signed certificate verification and `-v` to see some logs.
 
 You can see through the logs that only one certificate has been verified which is the server certificate.
 ![TLS handshake]({{site.images}}{{page.slug}}/Xj3eaz8.png)
@@ -249,7 +253,7 @@ $ kubectl edit ingress test-localhost
 
 Below are the 4 annotations that need to be added to ingress resource to allow client TLS verification.
 
-~~~{.bash caption=">_"}
+~~~{.yaml caption=""}
 metadata:
   annotations:
     nginx.ingress.kubernetes.io/auth-tls-pass-certificate-to-upstream: \
