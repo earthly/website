@@ -70,3 +70,4 @@ openssl
 janedoe
 env
 dockerconfigjson
+nslookup
