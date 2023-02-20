@@ -1,48 +1,53 @@
-<section class="bg-light">
-    <div>
-        <div>
-            <h3 class="Home-heroText-title2">Why do developers ❤️  Earthly?</h3>
-        </div>
-        <div class="row">
-            <div class="half">
-                <div class="pad">
-                    <div>
-                        <p>{% include iterm.html number=351674 %}</p>
-                        <p style="text-align:center">Cache build steps automatically</p>
+<div class="w-full">
+    <div class="px-6 lg:px-10 max-w-7xl m-auto">
+        <section class="bg-light">
+            <div>
+                <div>
+                    <h3 class="Home-heroText-title2">Why do developers ❤️ Earthly?</h3>
+                </div>
+                <div class="row">
+                    <div class="half">
+                        <div class="pad">
+                            <div>
+                                <p>{% include iterm.html number=351674 %}</p>
+                                <p style="text-align:center">Cache build steps automatically</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="half">
+                        <div class="pad">
+                            <div>
+                                <h3 class="g-type-display-3">Caching that just works</h3>
+                                <p>Earthly uses the same caching technology as the Docker builder.</p>
+                                <p>If a step of your build would produce the same output as a previously cached run, it
+                                    uses the cache.</p>
+                                <p>Earthly cache can also be shared via the cloud.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="half">
-                <div class="pad">
-                    <div>
-                        <h3 class="g-type-display-3">Caching that just works</h3>
-                        <p>Earthly uses the same caching technology as the Docker builder.</p>
-                        <p>If a step of your build would produce the same output as a previously cached run, it uses the cache.</p>
-                        <p>Earthly cache can also be shared via the cloud.</p>
+                <div class="row">
+                    <div class="half">
+                        <div class="pad">
+                            <h3>Self-contained builds that work everywhere</h3>
+                            <p>No need to ask your team to install protoc, a specific version of Python, Java 1.6 or the
+                                .NET Core ecosystem. You only install once, in your Earthfile, and it works for
+                                everyone. Or even better, you can just make use of the rich Docker Hub ecosystem.</p>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="half">
-                <div class="pad">
-                    <h3>Self-contained builds that work everywhere</h3>
-                    <p>No need to ask your team to install protoc, a specific version of Python, Java 1.6 or the .NET Core ecosystem. You only install once, in your Earthfile, and it works for everyone. Or even better, you can just make use of the rich Docker Hub ecosystem.</p>
-                </div>
-            </div>
-            <div class="half">
-                <div class="pad">
-                    <p>
-                        <div class="Home-product-Earthfile">
-                            <header class="Home-product-Earthfile-header">
-                                <div class="Home-product-Earthfile-header-chromeDecoration">
-                                {% svg assets/svg/chrome-button.svg class="chrome-button1" %}
-                                {% svg assets/svg/chrome-button.svg class="chrome-button2" %}
-                                {% svg assets/svg/chrome-button.svg class="chrome-button3" %}
-                                </div>
-                                Earthfile
-                            </header>
-<code class="Home-product-Earthfile-code"><span class="earthfile-term">FROM</span> golang:1.13-alpine3.11
+                    <div class="half">
+                        <div class="pad">
+                            <p>
+                            <div class="Home-product-Earthfile">
+                                <header class="Home-product-Earthfile-header">
+                                    <div class="Home-product-Earthfile-header-chromeDecoration">
+                                        {% svg assets/svg/chrome-button.svg class="chrome-button1" %}
+                                        {% svg assets/svg/chrome-button.svg class="chrome-button2" %}
+                                        {% svg assets/svg/chrome-button.svg class="chrome-button3" %}
+                                    </div>
+                                    Earthfile
+                                </header>
+                                <code class="Home-product-Earthfile-code"><span class="earthfile-term">FROM</span> golang:1.13-alpine3.11
 <span class="earthfile-term">WORKDIR</span> /proto-example
 
 <span class="earthfile-target">proto:</span>
@@ -58,63 +63,66 @@
     <span class="earthfile-term">COPY</span> main.go ./
     <span class="earthfile-term">RUN</span> go build -o build/proto-example main.go
     <span class="earthfile-term">SAVE ARTIFACT</span> build/proto-example</code>
-                        </div>
-                    </p>
-                    <p style="text-align:center">A simple proto <a class="default" href="https://docs.earthly.dev/examples">example</a></p>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="half">
-                <div class="pad">
-                    <p>
-                        {% include iterm.html number=351678 %}
-                    </p>
-                </div>
-            </div>
-            <div class="half">
-                <div class="pad">
-                    <div>
-                        <h3 class="g-type-display-3">Parallelization with no strings attached</h3>
-                        <p>Whenever possible, Earthly automatically executes targets in parallel. </p>
-                        <div class="check">
-                            <strong>If your build has independent steps, Earthly will:</strong>
-                            <ul >
-                                <li>Build a directed acyclic graph</li>
-                                <li>Isolate execution of each step</li>
-                                <li>Run independent steps in parallel</li>
-                                <li>Cache results for future use</li>
-                            </ul>
+                            </div>
+                            </p>
+                            <p style="text-align:center">A simple proto <a class="default"
+                                    href="https://docs.earthly.dev/examples">example</a></p>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="half">
-                <div class="pad">
-                    <div>
-                        <h3 class="g-type-display-3">Modern import system</h3>
-                        <p>Copy artifacts across repositories in a single line.</p>
-                        <p>Earthly is cache-aware, based on the Git commit sha of the referenced repository.</p>
-                        <p>Combined with <a href="https://docs.earthly.dev/guides/shared-cache">shared caching</a>, you can create vast and efficient build hierarchies that only execute steps impacted by your changes.</p>
+                <div class="row">
+                    <div class="half">
+                        <div class="pad">
+                            <p>
+                                {% include iterm.html number=351678 %}
+                            </p>
+                        </div>
                     </div>
-                    <p></p>
-                </div>
-            </div>
-            <div class="half">
-                <div class="pad">
-                    <p>
-                        <div class="Home-product-Earthfile">
-                            <header class="Home-product-Earthfile-header">
-                                <div class="Home-product-Earthfile-header-chromeDecoration">
-                                {% svg assets/svg/chrome-button.svg class="chrome-button1" %}
-                                {% svg assets/svg/chrome-button.svg class="chrome-button2" %}
-                                {% svg assets/svg/chrome-button.svg class="chrome-button3" %}
+                    <div class="half">
+                        <div class="pad">
+                            <div>
+                                <h3 class="g-type-display-3">Parallelization with no strings attached</h3>
+                                <p>Whenever possible, Earthly automatically executes targets in parallel. </p>
+                                <div class="check">
+                                    <strong>If your build has independent steps, Earthly will:</strong>
+                                    <ul>
+                                        <li>Build a directed acyclic graph</li>
+                                        <li>Isolate execution of each step</li>
+                                        <li>Run independent steps in parallel</li>
+                                        <li>Cache results for future use</li>
+                                    </ul>
                                 </div>
-                                Earthfile
-                            </header>
-<code class="Home-product-Earthfile-code"><span class="earthfile-term">FROM</span> node:13.10.1-alpine3.11
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="half">
+                        <div class="pad">
+                            <div>
+                                <h3 class="g-type-display-3">Modern import system</h3>
+                                <p>Copy artifacts across repositories in a single line.</p>
+                                <p>Earthly is cache-aware, based on the Git commit sha of the referenced repository.</p>
+                                <p>Combined with <a href="https://docs.earthly.dev/guides/shared-cache">shared
+                                        caching</a>, you can create vast and efficient build hierarchies that only
+                                    execute steps impacted by your changes.</p>
+                            </div>
+                            <p></p>
+                        </div>
+                    </div>
+                    <div class="half">
+                        <div class="pad">
+                            <p>
+                            <div class="Home-product-Earthfile">
+                                <header class="Home-product-Earthfile-header">
+                                    <div class="Home-product-Earthfile-header-chromeDecoration">
+                                        {% svg assets/svg/chrome-button.svg class="chrome-button1" %}
+                                        {% svg assets/svg/chrome-button.svg class="chrome-button2" %}
+                                        {% svg assets/svg/chrome-button.svg class="chrome-button3" %}
+                                    </div>
+                                    Earthfile
+                                </header>
+                                <code class="Home-product-Earthfile-code"><span class="earthfile-term">FROM</span> node:13.10.1-alpine3.11
 <span class="earthfile-term">WORKDIR</span> /example-multirepo
 
 <span class="earthfile-target">docker:</span>
@@ -124,33 +132,39 @@
     <span class="earthfile-term">EXPOSE</span> 8080
     <span class="earthfile-term">ENTRYPOINT</span> ["http-server", "."]
     <span class="earthfile-term">SAVE IMAGE</span> --push earthly/examples:multirepo</code>
+                            </div>
+                            </p>
+                            <p style="text-align:center">A simple multi-repo <a class="default"
+                                    href="https://github.com/earthly/earthly/tree/main/examples/multirepo">example</a>
+                            </p>
                         </div>
-                    </p>
-                    <p style="text-align:center">A simple multi-repo <a class="default" href="https://github.com/earthly/earthly/tree/main/examples/multirepo">example</a></p>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="half">
-                <div class="pad">
-                        <p><img src="https://images.unsplash.com/photo-1532619675605-1ede6c2ed2b0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3900&q=80" alt="Engineers brainstorming on a whiteboard" /></p>
-                        <p style="text-align:center">Earthly is open-source and we welcome your contributions</p>
-                </div>
-            </div>
-            <div class="half">
-                <div class="pad">
-                    <h3>Strong Community</h3>
-                    <div class="check">
-                        <ul>
-                            <li>1000+ Commits</li>
-                            <li>120+ forks</li>
-                            <li>25+ contributors</li>
-                        </ul>
                     </div>
-                    <p>Open projects benefit from a collaborative community. Earthly encourages contributions.</p>
+                </div>
+                <div class="row">
+                    <div class="half">
+                        <div class="pad">
+                            <p><img src="https://images.unsplash.com/photo-1532619675605-1ede6c2ed2b0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3900&q=80"
+                                    alt="Engineers brainstorming on a whiteboard" /></p>
+                            <p style="text-align:center">Earthly is open-source and we welcome your contributions</p>
+                        </div>
+                    </div>
+                    <div class="half">
+                        <div class="pad">
+                            <h3>Strong Community</h3>
+                            <div class="check">
+                                <ul>
+                                    <li>1000+ Commits</li>
+                                    <li>120+ forks</li>
+                                    <li>25+ contributors</li>
+                                </ul>
+                            </div>
+                            <p>Open projects benefit from a collaborative community. Earthly encourages contributions.
+                            </p>
+                        </div>
+                    </div>
+
                 </div>
             </div>
-
-        </div>
+        </section>
     </div>
-</section>
+</div>
