@@ -2,7 +2,7 @@
     class="flex z-50 fixed w-full top-0 left-0 bg-white h-[70px] border-b border-[#e8f8fe] shadow-sm shadow-black/10">
     <div class="siteHeader-logoAndMenuButton pl-6">
         <a class="siteHeader-logoLink" href="{{site.landingurl}}/">
-            {% svg assets/svg/earthly-v2.svg class="siteHeader-logoLink-svg" height=70 %}
+            {% svg assets/svg/earthly-logo.svg class="siteHeader-logoLink-svg" height=70 %}
         </a>
     </div>
     <nav class="flex flex-1 justify-end">
@@ -40,17 +40,14 @@
                 </a>
             </div>
 
-            <div href="{{site.blogurl}}"
-                class="relative border-l w-[80px] xl:w-[100px] text-sm xl:text-base h-[70px] flex group/products items-center justify-center hover:bg-[#f1fbff]">
+            <div
+                class="relative border-l cursor-default w-[80px] xl:w-[100px] text-sm xl:text-base h-[70px] flex group items-center justify-center hover:bg-[#f1fbff]">
                 Products
 
                 <div
-                    class="border hidden w-[200px] group-hover/products:block absolute top-[68px] left-0 rounded-lg bg-white  shadow-md overflow-hidden">
+                    class="hidden group-hover:block border w-[200px] z-50 absolute top-[68px] left-0 rounded-lg bg-white shadow-md overflow-hidden">
                     <a href="/earthly-ci" class="border-b pl-4 py-2 flex items-center hover:bg-[#f1fbff]">Earthly CI</a>
                     <a href="/earthly-core" class="border-b pl-4 py-2 flex items-center hover:bg-[#f1fbff]">Earthly</a>
-                    <a href="https://docs.earthly.dev/earthly-cloud/satellites"
-                        class="pl-4 py-2 flex items-center hover:bg-[#f1fbff]">Earthly Satellites
-                    </a>
                 </div>
             </div>
 
@@ -58,24 +55,20 @@
                 class="border-l w-[80px] xl:w-[100px] text-sm xl:text-base flex items-center justify-center hover:bg-[#f1fbff]">
                 Docs
             </a>
-
             <a href="/pricing"
                 class="border-l w-[80px] xl:w-[100px] text-sm xl:text-base flex items-center justify-center hover:bg-[#f1fbff]">
                 Pricing
             </a>
-
             <a href="{{site.blogurl}}"
                 class="border-l border-r w-[80px] xl:w-[100px] text-sm xl:text-base flex items-center justify-center hover:bg-[#f1fbff]">
                 Blog
             </a>
-
             <div class="inline-flex items-center px-2 xl:px-4">
                 <a href="/faq"
                     class="py-4 h-10 px-4 xl:px-6 items-center text-sm xl:text-base text-center text-white bg-[#2d7e5d] hover:bg-green-800 rounded-lg inline-flex">
                     Try Earthly CI
                 </a>
             </div>
-
         </div>
     </nav>
 </header>
