@@ -4,7 +4,7 @@
             <div>
                 <div class="text-2xl lg:text-3xl font-semibold mb-4">
 
-                    First-class support for monorepos
+                    Great for monorepos and polyrepos
                 </div>
                 <div class="lg:grid grid-cols-10 gap-2">
                     <div
@@ -20,19 +20,15 @@
                         </svg>
                     </div>
                     <div class="text-gray-500 text-lg pt-8 lg:pt-2 pr-6 col-span-5 lg:pl-12">
-                        For monorepos, Earthly understands the interdependence of build
-                        targets and the specific source files that contribute to those
-                        targets, allowing it to cache and parallelize builds
-                        accordingly.
+                        Earthly CI is great for both monorepos and polyrepos. You define all
+                        of your CI pipelines in Earthly's super simple Earthfiles. You can
+                        split build logic across multiple Earthfiles, placing some deeper
+                        inside the directory structure or even in other repositories.
+                        Referencing targets from other Earthfiles is easy regardless of
+                        where they are stored. 
                         <div class="pt-4">
-                            If you're iterating on an integration test and you only change
-                            1 out of 7 microservices, Earthly only rebuilds that 1
-                            microservice before re-running the integration test.
-                        </div>
-                        <div class="pt-4">
-                            Similarly, Earthly has a strong understanding of setups where
-                            the build is split across many repositories. It is Git
-                            hash-aware, and will only rebuild what has actually changed.
+                            So you can organize your build logic however makes the most sense
+                            for your project.
                         </div>
                     </div>
                 </div>

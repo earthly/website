@@ -8,6 +8,26 @@
     code to a repository, and that push being picked up by a CI that uses a Earthly Satellites to perform the build.
 </div>
 
+<h2 class="text-2xl font-semibold mb-2 mt-10" id="how-are-active-users-tracked">How are active users tracked?<span
+  class="hide"><a href="#how-are-active-users-tracked">¶</a></span></h2>
+<div class="text-xl text-gray-600">
+The number of active users is tracked by monitoring who triggered the build. The build may be triggered either
+directly by the user in their terminal, or indirectly by a CI system. In the latter case, the triggering user is
+inferred via commit metadata. Each user needs to trigger the build at least three times during a month to be counted
+as an active user.
+
+At the end of a billing cycle, if the number of paid users is greater than the number of active users, the
+difference is refunded to the user in the form of statement credit.
+
+</div>
+
+<h2 class="text-2xl font-semibold mb-2 mt-10" id="what-is-easein-pricing">What is ease-in pricing?<span class="hide"><a
+  href="#compute">¶</a></span></h2>
+<div class="text-xl text-gray-600">
+Ease-in pricing allows you to pay the price of lower tiers for the first few active users of the higher tier. This
+prevents drastic bill increases when jumping from one tier to the next.
+</div>
+
 <h2 class="text-2xl font-semibold mb-2 mt-10" id="zero-margin-compute">What is zero-margin compute?<span class="hide"><a
             href="#zero-margin-compute">¶</a></span></h2>
 <div class="text-xl text-gray-600">
@@ -24,14 +44,7 @@
     per-minute cost and is then passed on directly to the user, without any profit-generating margin.
 </div>
 
-<h2 class="text-2xl font-semibold mb-2 mt-10" id="what-is-easein-pricing">What is ease-in pricing?<span class="hide"><a
-            href="#compute">¶</a></span></h2>
-<div class="text-xl text-gray-600">
-    Ease-in pricing allows you to pay the price of lower tiers for the first few active users of the higher tier. This
-    prevents drastic bill increases when jumping from one tier to the next.
-</div>
-
-<h2 class="text-2xl font-semibold mb-2 mt-10" id="compute">What are satellites?<span class="hide"><a
+<h2 class="text-2xl font-semibold mb-2 mt-10" id="compute">What are Satellites?<span class="hide"><a
             href="#what-are-satellites">¶</a></span></h2>
 <div class="text-xl text-gray-600">
     Satellites are remote runners managed by the Earthly team. Every CI pipeline created runs on its own dedicated
@@ -56,19 +69,6 @@
 
     Earthly prints information on build startup about how loaded the Satellite is currently. This can be used as a guide
     to determine if more Satellites are needed.
-
-</div>
-
-<h2 class="text-2xl font-semibold mb-2 mt-10" id="how-are-active-users-tracked">How are active users tracked?<span
-        class="hide"><a href="#how-are-active-users-tracked">¶</a></span></h2>
-<div class="text-xl text-gray-600">
-    The number of active users is tracked by monitoring who triggered the build. The build may be triggered either
-    directly by the user in their terminal, or indirectly by a CI system. In the latter case, the triggering user is
-    inferred via commit metadata. Each user needs to trigger the build at least three times during a month to be counted
-    as an active user.
-
-    At the end of a billing cycle, if the number of paid users is greater than the number of active users, the
-    difference is refunded to the user in the form of statement credit.
 
 </div>
 
