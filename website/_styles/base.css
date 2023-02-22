@@ -99,7 +99,7 @@ main.wave-main {
 }
 
 .selected-point {
-  @apply lg:bg-white/10 lg:border lg:border-gray-200 lg:text-white !important;
+  @apply lg:bg-white lg:border lg:border-white lg:shadow-md lg:font-semibold lg:text-black !important;
 }
 
 .display-icon {

@@ -6,7 +6,7 @@
         <div class="text-xl lg:text-2xl text-slate-500 pt-1 pb-3">
             Traditional CI/CD has many pain points
         </div>
-        <div class="rounded-xl px-6 py-6 bg-[#485665] text-lg text-gray-800">
+        <div class="rounded-xl px-6 py-6 bg-[#f6f3ea] text-lg text-gray-800">
             <script defer>
                 (function () {
                     $(document).ready(function () {
@@ -23,36 +23,36 @@
             </script>
             <div class="h-full rounded-lg pb-2">
                 <div class="w-full">
-                    <div class="lg:pr-10 lg:pl-4 pt-2 w-full border-gray-200 lg:grid grid-cols-10 ">
+                    <div class="lg:pr-10 lg:pl-4 pt-2 w-full  lg:grid grid-cols-10 ">
                         <div class="col-span-4">
                             <div data-item="item-1"
-                                class="hover-title-info lg:hover:bg-white/10 border border-gray-50/10 text-xl lg:mr-10 cursor-pointer py-4 rounded-lg px-4 lg:w-[90%] text-white/90 flex items-center mb-2">
+                                class="hover-title-info lg:hover:bg-white/50 border border-gray-300 text-xl lg:mr-10 cursor-pointer py-4 rounded-lg px-4 lg:w-[90%] text-black/90 flex items-center mb-2">
                                 Inconsistent builds
                             </div>
                             <div data-item="item-2"
-                                class="hover-title-info text-white/90 lg:hover:bg-white/10 text-xl lg:mr-10 border border-gray-50/10 cursor-pointer py-4 rounded-lg px-4 lg:w-[90%] flex items-center mb-2">
+                                class="hover-title-info text-black/90 lg:hover:bg-white/50 text-xl lg:mr-10 border border-gray-300 cursor-pointer py-4 rounded-lg px-4 lg:w-[90%] flex items-center mb-2">
                                 Slow builds
                             </div>
                             <div data-item="item-3"
-                                class="hover-title-info lg:hover:bg-white/10 text-xl lg:mr-10 border border-gray-50/10 cursor-pointer py-4 rounded-lg px-4 lg:w-[90%] text-white/90 flex items-center mb-2">
+                                class="hover-title-info lg:hover:bg-white/50 text-xl lg:mr-10 border border-gray-300 cursor-pointer py-4 rounded-lg px-4 lg:w-[90%] text-black/90 flex items-center mb-2">
                                 Complex build scripts
                             </div>
                             <div data-item="item-4"
-                                class="hover-title-info lg:hover:bg-white/10 text-xl lg:mr-10 border border-gray-50/10 cursor-pointer py-4 rounded-lg px-4 lg:w-[90%] text-white/90 flex items-center mb-2">
+                                class="hover-title-info lg:hover:bg-white/50 text-xl lg:mr-10 border border-gray-300 cursor-pointer py-4 rounded-lg px-4 lg:w-[90%] text-black/90 flex items-center mb-2">
                                 Scattered build logic
                             </div>
                             <div data-item="item-5"
-                                class="hover-title-info lg:hover:bg-white/10 text-xl lg:mr-10 border border-gray-50/10 cursor-pointer py-4 rounded-lg px-4 lg:w-[90%] text-white/90 flex items-center mb-2">
+                                class="hover-title-info lg:hover:bg-white/50 text-xl lg:mr-10 border border-gray-300 cursor-pointer py-4 rounded-lg px-4 lg:w-[90%] text-black/90 flex items-center mb-2">
                                 Poor monorepo support
                             </div>
                             <div data-item="item-6"
-                                class="hover-title-info lg:hover:bg-white/10 text-xl lg:mr-10 border border-gray-50/10 cursor-pointer py-4 rounded-lg px-4 lg:w-[90%] text-white/90 flex items-center mb-2">
+                                class="hover-title-info lg:hover:bg-white/50 text-xl lg:mr-10 border border-gray-300 cursor-pointer py-4 rounded-lg px-4 lg:w-[90%] text-black/90 flex items-center mb-2">
                                 Conflicting business models
                             </div>
                         </div>
                         <div
-                            class="col-span-6 items-center px-12 justify-center  bg-black/10 rounded-xl shadow-md hidden lg:flex ">
-                            <div class="text-xl px-6 text-white/80  font-normal  item-1 leading-8 pain-point">
+                            class="col-span-6 items-center px-12 justify-center bg-white rounded-xl shadow-md hidden lg:flex ">
+                            <div class="text-xl px-6 text-gray-600  font-normal  item-1 leading-8 pain-point">
                                 With traditional CI/CD platforms, CI processes can only be
                                 run on the CI server. So, even if a build executes
                                 correctly on your computer, it may not execute correctly
@@ -60,7 +60,7 @@
                                 execute successfully in CI outside of pushing a change in
                                 CI.
                             </div>
-                            <div class="font-normal  text-xl px-6 text-white/80 item-2 hidden leading-8 pain-point">
+                            <div class="font-normal  text-xl px-6 text-gray-600 item-2 hidden leading-8 pain-point">
                                 With traditional CI/CD platforms pipelines run in sandboxed environments.
                                 This makes
                                 pipeline
@@ -73,7 +73,7 @@
                                 situations. Sometimes it ends up being slower with the
                                 cache than without it.
                             </div>
-                            <div class="font-normal  text-xl px-6 text-white/80 item-3 hidden leading-8 pain-point">
+                            <div class="font-normal  text-xl px-6 text-gray-600 item-3 hidden leading-8 pain-point">
                                 Making the smallest changes in traditional CI/CD platforms
                                 can require you to carve out hours of your day. This is
                                 because there is no way to run CI pipelines locally. You
@@ -82,7 +82,7 @@
                                 that with the rest of the software development. Why do we
                                 do it for CI/CD pipelines?
                             </div>
-                            <div class="font-normal  text-xl px-6 text-white/80 item-4 hidden leading-8 pain-point">
+                            <div class="font-normal  text-xl px-6 text-gray-600 item-4 hidden leading-8 pain-point">
                                 With traditional CI/CD platforms, pipelines are always
                                 defined using YAML, as Bash scripts, or using the
                                 platform's programming language of choice. Often, it's a
@@ -92,7 +92,7 @@
                                 or two individuals – build gurus – end up being the only
                                 ones comfortable updating and maintaining pipelines.
                             </div>
-                            <div class="font-normal  text-xl px-6 text-white/80 item-5 hidden leading-8 pain-point">
+                            <div class="font-normal  text-xl px-6 text-gray-600 item-5 hidden leading-8 pain-point">
                                 Traditional CI/CD platforms have difficulty managing monorepos as they rely on watching
                                 a
                                 list
@@ -106,7 +106,7 @@
                                 abundance of caution, making builds impossibly slow for everybody.
 
                             </div>
-                            <div class="font-normal  text-xl px-6 text-white/80 item-6 hidden leading-8 pain-point">
+                            <div class="font-normal  text-xl px-6 text-gray-600 item-6 hidden leading-8 pain-point">
                                 With traditional CI/CD platforms, you pay for compute by-the-minute. This creates a
                                 perverse
                                 incentive for the CI/CD vendor to never innovate to speed up builds, as slower builds
