@@ -11,7 +11,7 @@ pageStyle: bg-background-pricing
 </div>
 
 <div class="text-base text-slate-500 -mt-4 pt-2 pb-3">
-   <em><span class="font-semibold"> Note:</span> A Free plan will be available in the near future.</em>
+   <span class="font-semibold"> Note:</span> A Free plan will be available in the near future.
 </div>
 
 <div class="grid grid-cols-1 gap-4 lg:gap-2 lg:grid-cols-4 mb-12 relative z-10">
