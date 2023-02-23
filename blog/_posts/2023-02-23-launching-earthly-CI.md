@@ -9,7 +9,7 @@ internal-links:
  - just an example
 ---
 
-Hello world! We have partnered up with some cool people in Silicon Valley [^1] to fix the world of CI. So today we are launching [Earthly CI](https://earthly.dev/signup/earthly-ci), the world's first CI/CD solution that merges together a CI and a build system. A more fine-grained understanding of the build allows Earthly CI to run faster than a CI ever could before. And it's not an incremental improvement. It's a dramatic improvement. We're talking 100% to 2,000% faster. Here's how we did it.
+*Hello world! We have partnered up with some [cool people in Silicon Valley](/blog/new-fundings-at-earthly/) to fix the world of CI. So today we are launching [Earthly CI](https://earthly.dev/signup/earthly-ci), the world's first CI/CD solution that merges together a CI and a build system. A more fine-grained understanding of the build allows Earthly CI to run faster than a CI ever could before. And it's not an incremental improvement. It's a dramatic improvement. We're talking 100% to 2,000% faster. Here's how we did it.*
 
 ## But Why??
 
@@ -17,7 +17,7 @@ The challenges facing modern software teams are vast and varied. We live in a wo
 
 And it's not just build times that are a problem. Managing your CI/CD pipelines can be a nightmare, especially as your team grows and the number of moving parts increases. It's all too common to find yourself in a situation where your builds take forever and there are no more low-hanging fruits left to improve performance. You're stuck.
 
-This is an increasingly familiar story. The point when you lose control, is the point when you have to rethink your CI/CD story from the ground-up. You need a way to make your CI pipelines faster, without throwing more humans at the problem, but rather by throwing more efficiency at the problem.
+This is an increasingly familiar story. The point when you lose control is the point when you have to rethink your CI/CD story from the ground-up. You need a way to make your CI pipelines faster, without throwing more humans at the problem, but rather by throwing more efficiency at the problem.
 
 That's why today, we are announcing the general availability of Earthly CI. It's a fast, repeatable CI/CD platform that is super simple to use.
 
@@ -41,7 +41,7 @@ Nowadays, however, paying by compute time means that the slower your build, the 
 
 ## Problem #3: CI/CD Pipelines Are a Nightmare to Maintain
 
-Making the smallest changes to CI requires you to carve out hours of your day to implement them. The reason being that **there is no way to run CI locally**. So this means that you have to test pipelines live by doing `git commit -m "try again"` over and over until you get it right. Trying out a CI/CD pipeline only in the cloud is like only ever testing apps in production. We don't do that with the rest of the software development. Why do we do it for CI/CD pipelines?
+Making the smallest changes to CI requires you to carve out hours of your day to implement them. The reason being that ***there is no way to run CI locally***. So this means that you have to test pipelines live by doing `git commit -m "try again"` over and over until you get it right. Trying out a CI/CD pipeline only in the cloud is like only ever testing apps in production. We don't do that with the rest of the software development. Why do we do it for CI/CD pipelines?
 
 In addition, there is usually no easy way to reuse CI/CD pipeline logic. Either because the language is too difficult to use (Bash, Groovy) or because it just simply doesn't have the capability to do so (YAML).
 
@@ -124,7 +124,7 @@ In most cases this results in at least 2X speed-up compared to a traditional CI.
 
 It's not just the raw time saved - that alone can pay for itself many times over. It's also the reduction in context switching. Beyond a certain threshold, longer builds mean you have to switch to doing something else in parallel to remain productive during the day. Shorter builds thus mean less context-switching, more sustained focus, more productivity, providing fast feedback while the context is still fresh in your mind.
 
-In addition, Earthly CI's pricing includes Zero-Margin compute -- we make zero profit on compute. This means that if your builds are slow, we don't get rich from it. Our profit only comes from the number of active users on the platform. Plus, we only count people who perform at least three builds in a month as active users -- so if your colleague is on vacation, or if another team contributes only occasionally to your repository, we don't bill those. Conversely, if your organization uses Earthly regularly and widely, then it means it's delivering value, and that's the only situation when we actually make money. We think that this aligns our interests with those of our users better than previous models used in the industry.
+In addition, Earthly CI's pricing includes ***zero-margin compute*** -- we make zero profit on compute. This means that if your builds are slow, we don't get rich from it. Our profit only comes from the number of active users on the platform. Plus, we only count people who perform at least three builds in a month as active users -- so if your colleague is on vacation, or if another team contributes only occasionally to your repository, we don't bill those. Conversely, if your organization uses Earthly regularly and widely, then it means it's delivering value, and that's the only situation when we actually make money. We think that this aligns our interests with those of our users better than previous models used in the industry.
 
 And finally, Earthly CI was designed to work with any code layout. And more specifically, it was designed and tested with both monorepos and polyrepos in mind. For monorepos, Earthly understands the interdependence of build targets, and the specific source files that contribute to those targets, allowing it to cache and parallelize builds accordingly. If you're iterating on an integration test and you only change 1 out of 7 microservices, Earthly only rebuilds that 1 microservice before re-running the integration test. Similarly, Earthly has a strong understanding of setups where the build is split across many repositories. It is Git-hash-aware, and will only rebuild what has actually changed.
 
