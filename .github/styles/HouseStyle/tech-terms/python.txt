@@ -56,3 +56,18 @@ mailtrap
 docstrings
 
 contexlib
+
+
+mypy
+Variadic
+toml
+Pythonic
+timeit
+pyperformance
+toml
+multiline
+
+virtualenv
+pytest
+coroutine
+

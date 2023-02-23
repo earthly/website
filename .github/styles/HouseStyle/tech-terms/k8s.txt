@@ -64,3 +64,10 @@ toolkits
 Toolkits
 
 Signoz
+
+openssl
+
+janedoe
+env
+dockerconfigjson
+nslookup
