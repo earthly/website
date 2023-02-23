@@ -74,6 +74,10 @@ precompiling
 eslint
 utils
 
+Instana
+Hashicorp
+Mesos
+
 statefulsets
 
 failover
