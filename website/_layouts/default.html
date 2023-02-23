@@ -1,15 +1,17 @@
 <!DOCTYPE html>
-<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+<html lang="{{ page.lang | default: site.lang | default: " en" }}">
 
-  {%- include head.html -%}
+{%- include head.html -%}
 
-  <body class="body body--{{ page.layout }}">
-    <div class="modal-background"></div>
+<body class="body body--{{ page.layout }}">
+  <div class="modal-background"></div>
 
-    <main class="page-content" aria-label="Content">
-          {{ content }}
-    </main>
+  {% include home/layout.html template='home/v2/header.html' %}
+  <main class="page-content" aria-label="Content">
+    {{ content }}
+  </main>
 
-    {% include home/footer.html %}
-  </body>
+  {% include home/v2/footer.html %}
+</body>
+
 </html>
