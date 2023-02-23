@@ -128,7 +128,7 @@ In addition, Earthly CI's pricing includes ***zero-margin compute*** -- we make 
 
 And finally, Earthly CI was designed to work with any code layout. And more specifically, it was designed and tested with both monorepos and polyrepos in mind. For monorepos, Earthly understands the interdependence of build targets, and the specific source files that contribute to those targets, allowing it to cache and parallelize builds accordingly. If you're iterating on an integration test and you only change 1 out of 7 microservices, Earthly only rebuilds that 1 microservice before re-running the integration test. Similarly, Earthly has a strong understanding of setups where the build is split across many repositories. It is Git-hash-aware, and will only rebuild what has actually changed.
 
-## Get Started With Earthly Ci
+## Get Started With Earthly CI
 
 Earthly CI is being made available today. As the platform is new, we are letting new users in gradually, to ensure overall platform stability.
 
