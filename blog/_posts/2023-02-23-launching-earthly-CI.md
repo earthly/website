@@ -137,7 +137,7 @@ If this is interesting to you, [get started with Earthly CI](https://earthly.dev
 {% include cta/cta1.html %}
 
 [^1]:
-    Innovation Endeavors led our [$6.5M Seed+ round LINK](LINK), and were joined by 468 Capital and Uncorrelated Ventures. A number of founders of companies such as Cockroach Labs, DigitalOcean, Mesosphere, DataDog, Sentry, and Instana, plus a number of creators and maintainers of notable developer platforms, such as Docker, Elixir, VS Code, GitHub Copilot, Hashicorp, Envoy proxy, Cypress, Mesos and many others, have also previously invested in Earthly.
+    Innovation Endeavors led our [$6.5M Seed+ round](/blog/new-fundings-at-earthly/), and were joined by 468 Capital and Uncorrelated Ventures. A number of founders of companies such as Cockroach Labs, DigitalOcean, Mesosphere, DataDog, Sentry, and Instana, plus a number of creators and maintainers of notable developer platforms, such as Docker, Elixir, VS Code, GitHub Copilot, Hashicorp, Envoy proxy, Cypress, Mesos and many others, have also previously invested in Earthly.
 
 [^2]:
     And because everything runs in containers, it is possible in the future to also distribute a single build across a compute cluster for maximum parallelization. Today, Earthly CI only runs on one machine at a time, however.
