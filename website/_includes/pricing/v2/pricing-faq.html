@@ -13,12 +13,14 @@
 <div class="text-xl text-gray-600">
 The number of active users is tracked by monitoring who triggered the build. The build may be triggered either
 directly by the user in their terminal, or indirectly by a CI system. In the latter case, the triggering user is
-inferred via commit metadata. Each user needs to trigger the build at least three times during a month to be counted
-as an active user.
+inferred via commit metadata. The triggering user does not have to be a user registered with Earthly.
+In some cases, if the triggering user cannot be inferred from commit metadata, then the user logged into
+Earthly CLI in the CI run is used as the triggering user.
+
+A triggering user becomes an active user if they trigger the build at least three times during a month.
 
 At the end of a billing cycle, if the number of paid users is greater than the number of active users, the
 difference is refunded to the user in the form of statement credit.
-
 </div>
 
 <h2 class="text-2xl font-semibold mb-2 mt-10" id="what-is-easein-pricing">What is ease-in pricing?<span class="hide"><a
