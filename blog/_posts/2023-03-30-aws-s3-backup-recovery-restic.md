@@ -6,7 +6,11 @@ toc: true
 author: Saka-Aiyedun Segun
 
 internal-links:
- - just an example
+ - AWS
+ - Backup
+ - Restic
+ - Amazon
+ - S3 Bucket
 ---
 
 In today's digital age, data is one of the most valuable assets for individuals and organizations alike. Losing data can have a significant impact on productivity, financial stability, and even an organization's reputation. This is why it is crucial to have a reliable and secure method of backing up your data.
@@ -388,5 +392,4 @@ You now know how to create an S3 bucket, user, and policy for Restic. You then l
 * [ ] Optional: Find ways to break up content with quotes or images
 * [ ] Verify look of article locally
   * Would any images look better `wide` or without the `figcaption`?
-* [ ] Add keywords for internal links to front-matter
 * [ ] Run `link-opp` and find 1-5 places to incorporate links
