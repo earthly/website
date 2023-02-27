@@ -14,7 +14,7 @@ internal-links:
 
 Are you a Python programmer learning to work with PostgreSQL? If so, this tutorial on **psycopg2**, the PostgreSQL connector for Python, is for you. You can connect to PostgreSQL databases and run queries—all from within your Python script—using the psycopg2 adapter.
 
-In this tutorial, you'll learn the basics of using `psycopg2` in Python to do the following:
+In this tutorial, you'll learn the basics of using psycopg2 in Python to do the following:
 
 - Connect to a PostgreSQL database
 - Run SQL queries against a database: create tables, insert, retrieve, and delete records
@@ -42,7 +42,7 @@ pip3 install psycopg2
 ![How to Connect]({{site.images}}{{page.slug}}/PJsScPe.png)\
 
 <div class="notice--info">
-**Before You Begin**
+### Before You Begin
 
 - Ensure that your PostgreSQL database server is up and running, and
 - You have a database that you can connect to.
@@ -52,7 +52,7 @@ You can create a database on [pgAdmin](https://www.pgadmin.org/) or use the comm
 
 ### The `connect()` Function in Psycopg2
 
-> [Download the code and follow along](https://github.com/balapriyac/psycopg2-tutorial).
+> Download the code used in this tutorial from [this GitHub repository](https://github.com/balapriyac/psycopg2-tutorial).
 
 After you've installed the psycopg2 library, you can import it into your working environment. As a first step, let's create a `main.py` file, import `psycopg2`, and connect to a PostgreSQL database.
 
