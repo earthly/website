@@ -6,7 +6,10 @@ toc: true
 author: Adam
 
 internal-links:
- - just an example
+ - Netlify
+ - Cloud
+ - Functions
+ - Serverless
 ---
 
 When building backend applications, we often have to add features that are not supported by the current stack or would slow down our applications. A possible workaround is to use cloud functions that help abstract away some of these tasks.
@@ -60,7 +63,9 @@ Let's say you are building a website that allows users to upload pictures. You w
 For example, if you want to access the cloud function to process the pictures uploaded by the user, the HTTP request would look like this,
  `http://localhost:8888/.netlify/functions/processPictures` This would allow your cloud function to be accessed and used to process the pictures uploaded by the user.
 
-![iprocess]({{site.images}}{{page.slug}}/YJz7bq0)\
+<div class="wide">
+![iprocess]({{site.images}}{{page.slug}}/YJz7bq0.png)\
+</div>
 
 ## How To Create Netlify Functions
 
@@ -77,13 +82,13 @@ Creating Netlify Functions is a fairly straightforward process. The first step i
 
 Run the following command in the project directory:
 
-~~~
- netlify init 
+~~~{.bash caption=">_"}
+netlify init 
 ~~~
 
 If you don't have Netlify set up, you can install it using `npm` using the following command:
 
-~~~
+~~~{.bash caption=">_"}
 npm install netlify-cli -g
 ~~~
 
@@ -91,7 +96,7 @@ This will create the necessary files and folder structure for your Netlify Funct
 
 Here is a simple example:
 
-~~~
+~~~{ caption="netlify.toml"}
 [build]
   functions = "netlify/functions/"
 
@@ -106,14 +111,14 @@ Here is a simple example:
 
 The toml file can be broken down into sections:
 
-~~~
+~~~{ caption="netlify.toml"}
 [build]
   functions = "netlify/functions/"
 ~~~
 
 This code above tells Netlify to look for functions in the "netlify/functions/" directory. This allows Netlify to deploy and run serverless functions from that directory.
 
-~~~
+~~~{ caption="netlify.toml"}
 [context.dev.environment]
   storageBucket = "***********"
   apiKey = "***********"
@@ -138,7 +143,7 @@ Once the configuration object is set up, we call `initializeApp()` from the Fire
 
 Finally, we export the Firebase app so that it can be used elsewhere in our application. This will allow us to access the Firebase API and save data to our database.
 
-~~~
+~~~{.js caption="subscriber.js"}
 //functions/subscriber.js
 const firebase = require("firebase")
 
@@ -165,11 +170,11 @@ Next, you'll need to create your function that would be able to perform our acti
 
 To do this, create a file called `subscriber.js` in the `functions` folder.
 
-~~~
+~~~{.bash caption=">_"}
 touch functions/subscriber.js
 ~~~
 
-~~~{.js caption=""}
+~~~{.js caption="subscriber.js"}
 //subscriber.js
 const FireBase = require("../config.js")
 
@@ -209,7 +214,7 @@ Once your function is written, you can deploy it to Netlify and it will be avail
 
 Running `netlify dev` in our terminal runs our function; we can access it using a post request at <http://localhost:8888/.netlify/functions/subscriber>:
 
-~~~
+~~~{.js caption="subscriber.js"}
 POST http://localhost:8888/.netlify/functions/subscriber
 {
     "email" : "test@earthly.com"
@@ -254,4 +259,3 @@ Now that you have a better understanding of what Netlify Functions are and how t
 * [ ] Optional: Find ways to break up content with quotes or images
 * [ ] Verify look of article locally
   * Would any images look better `wide` or without the `figcaption`?
-* [ ] Add keywords for internal links to front-matter
