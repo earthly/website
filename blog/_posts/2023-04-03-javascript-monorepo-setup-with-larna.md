@@ -6,7 +6,10 @@ toc: true
 author: Cameron Pavey
 
 internal-links:
- - just an example
+ - Javascript
+ - Monorepo
+ - Lerna
+ - Packages
 ---
 
 There are a lot of build tools in the JavaScript ecosystem. Some of them have overlaps in functionality, and others, like [Lerna](https://github.com/lerna/lerna), focus on solving a particular problem.
@@ -479,4 +482,3 @@ If you've configured CI workflows before, you know how frustrating it can be whe
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Add keywords for internal links to front-matter
