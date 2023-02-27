@@ -64,7 +64,7 @@ For example, if you want to access the cloud function to process the pictures up
  `http://localhost:8888/.netlify/functions/processPictures` This would allow your cloud function to be accessed and used to process the pictures uploaded by the user.
 
 <div class="wide">
-![iprocess]({{site.images}}{{page.slug}}/YJz7bq0.png)\
+![iprocess]({{site.images}}{{page.slug}}/YJz7bq0.png)
 </div>
 
 ## How To Create Netlify Functions
@@ -257,5 +257,3 @@ Now that you have a better understanding of what Netlify Functions are and how t
 * [ ] Add in Author page
 * [ ] Create header image in Canva
 * [ ] Optional: Find ways to break up content with quotes or images
-* [ ] Verify look of article locally
-  * Would any images look better `wide` or without the `figcaption`?
