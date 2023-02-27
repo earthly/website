@@ -495,6 +495,5 @@ If you've configured CI workflows before, you know how frustrating it can be whe
 
 ## Outside Article Checklist
 
-- [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
 
