@@ -471,6 +471,8 @@ In this tutorial, you've seen how to set up a monorepo with Lerna. You learned h
 
 If you've configured CI workflows before, you know how frustrating it can be when you aren't able to test your changes without pushing them. Earthly solves this problem by giving you portable, reproducible CI workflows that run the same locally as they do in the cloud, saving you time and giving you peace of mind when configuring CI.
 
+{% include cta/cta1.html %}
+
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
@@ -480,4 +482,3 @@ If you've configured CI workflows before, you know how frustrating it can be whe
 - [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
