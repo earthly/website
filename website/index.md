@@ -3,15 +3,16 @@ title: Earthly
 layout: default
 ---
 
-{% include home/layout.html template='home/header.html' %}
-{% include home/layout.html template='home/hero.html' %}
-{% include home/layout.html template='home/earthlyButtonWithWrap.html' %}
-{% include home/layout.html template='home/logos.html' %}
-{% include home/layout.html template='home/satellites.html' %}
-{% include home/layout.html template='home/why.html' %}
-{% include home/layout.html template='home/explanation.html' backgroundColor="green-20" %}
-{% include home/layout.html template='home/endorsements.html' %}
-{% include home/layout.html template='home/developers.html' backgroundColor="blue-20" %}
-{% include home/layout.html template='home/community.html' %}
-{% include home/layout.html template='home/support.html' %}
-{% include home/layout.html template='home/resources.html' %}
+{% include home/layout.html template='home/v2/hero.html' %}
+{% include home/layout.html template='home/v2/call-to-action.html' %}
+{% include home/layout.html template='home/v2/customers.html' %}
+{% include home/layout.html template='home/v2/pain-points.html' %}
+
+{% include home/layout.html template='home/v2/benefits-title.html' %}
+{% include home/layout.html template='home/v2/benefits-1.html' %}
+{% include home/layout.html template='home/v2/benefits-speed.html' %}
+{% include home/layout.html template='home/v2/benefits-earthfile.html' %}
+{% include home/layout.html template='home/v2/benefits-monorepo.html' %}
+{% include home/layout.html template='home/v2/benefits-pricing.html' %}
+
+{% include home/layout.html template='home/v2/customer-quotes.html' %}

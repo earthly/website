@@ -35,6 +35,14 @@ Ryan:
                 Ryan is a full-stack staff engineer at Earthly. Equipped with a rich background in web development Ryan prides himself on being a generalist capable of contributing in many different areas.
     avatar  : "/assets/images/authors/ryanlaforge.png"
     home    : "/authors/ryan/"
+Gavin:
+    name    : "Gavin Johnson"
+    bio     : |
+                Gavin is the director of product & marketing at Earthly. He's an ex-PMM at a bunch of tech co's, an ex-consultant at Deloitte, an ex-sys admin, and (sometimes) ex-developer. He's also a BJJ brown belt and dog dad to a Siberian Husky.
+                <br/><a href="https://twitter.com/gavinjtech">@gavinjtech</a>
+                </br><a href="mailto:gavin+blog@earthly.dev">✉Email Gavin✉</a>
+    avatar  : "/assets/images/authors/gavin-johnson.jpg"
+    home    : "/authors/gavin/"
 Adam:
     name    : "Adam Gordon Bell"
     bio     : |
@@ -306,10 +314,6 @@ James Walker:
     name    : "James Walker"
     bio     : "James Walker is the founder of Heron Web, a UK-based software development studio providing bespoke solutions for SMEs. He's experienced in delivering custom software using engineering workflows built around modern DevOps methodologies. James is also a freelance technical writer and has written extensively about the software development lifecycle, current industry trends, and DevOps concepts and technologies."
     avatar  : "/assets/images/authors/james.jpeg"
-Mustapha Ahmad Ayodeji:
-    name    : "Mustapha Ahmad Ayodeji"
-    bio     : "Ahmad is a Software developer and a Technical writer with so much interest for Django related frameworks."
-    avatar  : "/assets/images/authors/ahmad.jpg"
 Temitope Oyedele:
     name    : "Temitope Oyedele"
     bio     : "Temitope Oyedele is a software developer and technical writer. He likes to write about things he's learned and experienced."
@@ -374,4 +378,7 @@ Arafat Olayiwola:
     name    : "Arafat Olayiwola"
     bio     : "Arafat is a passionate developer who is drawn to creating real-world solutions. He is currently a member of the AWS Community Builders. He is also constantly interested in learning more about distributed systems."
     avatar  : "/assets/images/authors/arafat.jpeg"
-    
+Donald Le:
+    name    : "Donald Le"
+    bio     : "Donald Le is a quality engineer in software with 9 years of experience. He is passionate about creating software products fast with high quality."
+    avatar  : "/assets/images/authors/donald.png"
