@@ -15,7 +15,7 @@ There are a lot of build tools in the JavaScript ecosystem. Some of them have ov
 
 In this tutorial, you'll learn how to leverage Lerna to manage a simple TypeScript monorepo. You'll see how to set up Lerna, create some packages, and publish them to [npm](https://www.npmjs.com/). You will also see how you can use Lerna along with [GitHub Actions](https://github.com/features/actions) and [Earthly](https://earthly.dev/) to simplify the continuous integration (CI) of your monorepo.
 
-This article assumes you have a working understanding of JavaScript, knowledge of TypesScript, React, package management, and bundling with tools like [Rollup](https://rollupjs.org) is beneficial but not necessary. 
+This article assumes you have a working understanding of JavaScript, knowledge of TypesScript, React, package management, and bundling with tools like [Rollup](https://rollupjs.org) is beneficial but not necessary.
 
 ## Implementing a Lerna Monorepo for JavaScript Projects
 
@@ -52,68 +52,68 @@ This tutorial will use the default fixed mode for simplicity's sake, but you can
 
 The first package you will create is a simple button React component. To begin, you need to create a new directory for your monorepo and then initialize it with Lerna. You can do this by running the following commands:
 
-```bash
+~~~
 mkdir monorepo
 cd monorepo
 npx lerna init
 npm install
 git init
-```
+~~~
 
 > **Please note:** If you want to use independent mode, you can substitute `npx lerna init` with `npx lerna init --independent`.
 
 Now that your monorepo has been created, you can make your first package by running the following commands:
 
-```bash
+~~~
 cd packages
 mkdir my-button
 cd my-button
 npm init
-```
+~~~
 
 The last command will prompt you with several questions, the first of which will ask you what the package name should be:
 
-![`npm init` questions](https://i.imgur.com/49DYVTY.png)
+![`npm init` questions](({{site.images}}{{page.slug}}/49DYVTY.png)
 
 Set the package name as `@{your-npm-username}/my-button`, which will cause it to be scoped to your user account when you publish it later. This means you don't have to have a unique name for the package, as the prefix will differentiate it from any other packages with similar names. The default answers to the other questions are fine at this stage, as you will edit this file later to update the values.
 
 Next, you need to install the dependencies for this package. This package will be a simple [React](https://reactjs.org/) button component. You can install the dependencies with the following command:
 
-```bash
+~~~
 npm install rimraf react react-dom typescript @types/react rollup @rollup/plugin-node-resolve @rollup/plugin-typescript @rollup/plugin-commonjs rollup-plugin-dts jest ts-jest @testing-library/react @testing-library/user-event @types/jest jest-environment-jsdom --save-dev
-```
+~~~
 
 This will install all the dependencies that you will need for this package, including the dependencies for the upcoming testing and [bundling](https://rollupjs.org/introduction/#overview).
 
 You can create the basic structure of the package with the following command:
 
-```bash
+~~~
 mkdir -p src/components/Button
 touch src/index.ts
 touch src/components/Button/Button.tsx
 touch src/components/Button/Button.spec.tsx
 touch src/components/Button/index.ts
-```
+~~~
 
 After running this, you need to update the content of each of the created files like so:
 
-* **`src/index.ts`:**
+- **`src/index.ts`:**
 
-```ts
+~~~
 export * from "./components/Button";
 
-```
+~~~
 
-* **`src/components/Button/index.ts`:**
+- **`src/components/Button/index.ts`:**
 
-```ts
+~~~
 export * from "./Button";
 
-```
+~~~
 
-* **`src/components/Button/Button.tsx`:**
+- **`src/components/Button/Button.tsx`:**
 
-```tsx
+~~~
 import * as React from 'react';
 
 export interface ButtonProps {
@@ -125,11 +125,11 @@ export function Button({label, onClick}: ButtonProps) {
     return <button onClick={onClick}>{label}</button>
 };
 
-```
+~~~
 
-* **`src/components/Button/Button.spec.tsx`:**
+- **`src/components/Button/Button.spec.tsx`:**
 
-```tsx
+~~~
 /**
  * @jest-environment jsdom
  */
@@ -143,17 +143,17 @@ test('renders button', () => {
   expect(screen.getByRole('button', { name: 'button test' })).toBeDefined();
 });
 
-```
+~~~
 
 Next, from the `my-button` package's root directory, run the following command to initialize TypeScript:
 
-```bash
+~~~
 npx tsc --init
-```
+~~~
 
 This will create a `tsconfig.json` file. Open that file, and replace its content with the following:
 
-```json
+~~~
 {
   "compilerOptions": {
     "target": "es5",
@@ -172,23 +172,23 @@ This will create a `tsconfig.json` file. Open that file, and replace its content
     "emitDeclarationOnly": true,
   }
 }
-```
+~~~
 
 Next, create `jest.config.cjs` in the package's root with the following content:
 
-```js
+~~~
 module.exports = {
     testMatch: ['**/+(*.)+(spec|test).+(ts|js)?(x)'],
     moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
     transform: {
-   	 '^.+\\.tsx?$': 'ts-jest'
+        '^.+\\.tsx?$': 'ts-jest'
     }
 };
-```
+~~~
 
 This should allow your tests to run under TypeScript. You also need to add a configuration file for [Rollup](https://rollupjs.org/), which will be used for building the package. You can do this by creating `rollup.config.js` with the following content:
 
-```js
+~~~
 import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import typescript from "@rollup/plugin-typescript";
@@ -198,21 +198,21 @@ export default [
     {
       input: "src/index.ts",
       output: [
-   	 {
- 		 file: "dist/cjs/index.js",
- 		 format: "cjs",
- 		 sourcemap: true,
-   	 },
-   	 {
- 		 file: "dist/esm/index.js",
- 		 format: "esm",
- 		 sourcemap: true,
-   	 },
+        {
+          file: "dist/cjs/index.js",
+          format: "cjs",
+          sourcemap: true,
+        },
+        {
+          file: "dist/esm/index.js",
+          format: "esm",
+          sourcemap: true,
+        },
       ],
       plugins: [
-   	 resolve(),
-   	 commonjs(),
-   	 typescript({ tsconfig: "./tsconfig.json" }),
+        resolve(),
+        commonjs(),
+        typescript({ tsconfig: "./tsconfig.json" }),
       ],
     },
     {
@@ -221,11 +221,11 @@ export default [
       plugins: [dts()],
     },
   ];
-```
+~~~
 
 Finally, update `my-button`'s `package.json` file with the following keys, adding or overriding existing keys as needed:
 
-```json
+~~~
 {
 …
 "main": "dist/cjs/index.js",
@@ -243,14 +243,14 @@ Finally, update `my-button`'s `package.json` file with the following keys, addin
     "access": "public"
   },
 …
-```
+~~~
 
 You can test that everything works after these changes by running the two following commands from `my-button`'s root:
 
-```bash
+~~~
 npm run test
 npm run build
-```
+~~~
 
 If both of these commands pass, the package is usable. If you receive errors from either command, it's possible that something is misconfigured, or that you have missed some code. Double-check to make sure that you have included all relevant code snippets, and try again.
 
@@ -260,11 +260,11 @@ Having only a single package in a monorepo defeats the purpose of the endeavor, 
 
 Duplicate the package like so:
 
-```bash
+~~~
 # from monorepo/packages/
 cp -r my-button my-input
 cd my-input
-```
+~~~
 
 Next, change the package's name in `package.json` from `my-button` to `my-input` (leaving the username prefix intact.
 
@@ -281,9 +281,9 @@ You will also need to change the import paths in the following files if your IDE
 
 After this, replace the content of the component and test files with the following:
 
-* **`src/components/Input/Input.tsx`:**
+- **`src/components/Input/Input.tsx`:**
 
-```tsx
+~~~
 import * as React from 'react';
 
 export interface InputProps {
@@ -296,11 +296,11 @@ export interface InputProps {
 export function Input({ value, defaultValue, onChange, testId }: InputProps) {
     return <input type="text" value={value} defaultValue={defaultValue} onChange={onChange} data-testid={testId} />
 };
-```
+~~~
 
-* **`src/components/Input/Input.spec.tsx`:**
+- **`src/components/Input/Input.spec.tsx`:**
 
-```tsx
+~~~
 /**
  * @jest-environment jsdom
  */
@@ -322,18 +322,18 @@ test('renders input', async () => {
   });
 
 });
-```
+~~~
 
 Finally, verify that everything works by running the `test` and `build` commands in the new package:
 
-```bash
+~~~
 npm run test
 npm run build
-```
+~~~
 
 At this point, it is recommended to make a commit to save your work before continuing to the next section.
 
-### Publishing from the Monorepo
+### Publishing From the Monorepo
 
 One of the useful features of Lerna is that it allows you to manage the publishing of multiple packages at once. To see this in action, follow along.
 
@@ -341,21 +341,21 @@ Make sure that you've changed the package names in `my-button` and `my-input` to
 
 Next, make sure you're [logged into npm](http://npm.github.io/installation-setup-docs/installing/logging-in-and-out.html) by running the following command:
 
-```bash
+~~~
 npm login
-```
+~~~
 
 This will prompt you for some details, like your username, password, email, and two-factor authentication (2FA) code (if enabled). Once this is complete, you can run the following command to begin the publishing process:
 
-```bash
+~~~
 npx lerna publish
-```
+~~~
 
 > **Please note:** If you have 2FA enabled on npm, you will need to prefix this command with `NPM_CONFIG_OTP=xxxxxx`, where `xxxxxx` is your six-digit 2FA code.
 
 At this point, you will be asked to choose how the package versions will be updated:
 
-![Version prompt](https://i.imgur.com/iJXHrZ1.png)
+![Version prompt](({{site.images}}{{page.slug}}/iJXHrZ1.png)
 
 These version increments follow the [Semantic Versioning](https://semver.org/) scheme, where the following are true:
 
@@ -363,17 +363,17 @@ These version increments follow the [Semantic Versioning](https://semver.org/) s
 - Minor versions indicate a backward compatible feature
 - Patch versions indicate a backward compatible bugfix
 
-It's worth noting that Lerna will typically only publish versions for packages it [has detected changes for](https://lerna.js.org/docs/features/version-and-publish#fixedlocked-mode-default) through its hashing system. The exception to this is that if you have a major version of 0, *all changes are considered “breaking”*, so all packages will be updated and published, even if you haven't changed them since the last time they were published. You can force the publishing of unchanged packages at any time using the `--force-publish` option if you would like to.
+It's worth noting that Lerna will typically only publish versions for packages it [has detected changes for](https://lerna.js.org/docs/features/version-and-publish#fixedlocked-mode-default) through its hashing system. The exception to this is that if you have a major version of 0, *all changes are considered "breaking"*, so all packages will be updated and published, even if you haven't changed them since the last time they were published. You can force the publishing of unchanged packages at any time using the `--force-publish` option if you would like to.
 
 Upon selecting which version increment you want to use, Lerna will ask you to confirm the new versions:
 
-![Version bumps](https://i.imgur.com/IRWE4l7.png)
+![Version bumps](({{site.images}}{{page.slug}}/IRWE4l7.png)
 
 Once the `publish` command completes successfully, your packages should be built and available on npm. This is a very streamlined process for publishing packages, and you can see how this would scale well when there are dozens of packages under management.
 
 However, publishing packages aren't the only thing that Lerna helps with. You can also leverage its ability to run commands against all its packages to streamline your CI efforts.
 
-### Running CI with the Monorepo
+### Running CI With the Monorepo
 
 A common use case for CI pipelines is running builds and tests to ensure that everything is working as expected, and GitHub Actions are a popular choice for this. In this section, you'll see how to get your package's tests running in CI with the help of Lerna.
 
@@ -381,7 +381,7 @@ To prepare the CI workflow, you can use Earthly, a platform-agnostic CI tool tha
 
 Configuring Earthly for this use case is quite simple. Create a file called `Earthfile` in the root of your monorepo and add the following content:
 
-```Dockerfile
+~~~
 VERSION 0.6
 FROM node:18-alpine
 WORKDIR /monorepo
@@ -395,22 +395,22 @@ test:
     COPY . ./
     RUN npm install
     RUN npx lerna run test
-```
+~~~
 
 The syntax is inspired by Dockerfiles, so it will be familiar if you have worked with Docker before. To test your config, run `earthly +build` and `earthly +test` to run the `build` and `test` steps, respectively. This will download the necessary Docker image and use it to run the build or test scripts of your packages. If everything works, you should see an output that looks like this:
 
-![Earthly success](https://i.imgur.com/q651Aty.png)
+![Earthly success](({{site.images}}{{page.slug}}/q651Aty.png)
 
 If both commands are working locally, they should work in CI as well. To configure a GitHub Actions to use these, run the following commands to create a new workflow:
 
-```bash
+~~~
 mkdir -p .github/workflows
 touch .github/workflows/ci.yml
-```
+~~~
 
 Next, open the newly created `ci.yml` file, and add the following content:
 
-```yml
+~~~
 # .github/workflows/ci.yml
 
 name: CI
@@ -430,13 +430,13 @@ jobs:
     - uses: actions/checkout@v3
     - name: Put the git branch back into git (Earthly uses it for tagging)
       run: |
-   	 branch=""
-   	 if [ -n "$GITHUB_HEAD_REF" ]; then
- 		 branch="$GITHUB_HEAD_REF"
-   	 else
- 		 branch="${GITHUB_REF##*/}"
-   	 fi
-   	 git checkout -b "$branch" || true
+        branch=""
+        if [ -n "$GITHUB_HEAD_REF" ]; then
+          branch="$GITHUB_HEAD_REF"
+        else
+          branch="${GITHUB_REF##*/}"
+        fi
+        git checkout -b "$branch" || true
     - name: Download latest earthly
       run: "sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/download/v0.6.30/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly'"
     - name: Earthly version
@@ -445,13 +445,13 @@ jobs:
       run: earthly --ci --push +build
     - name: Run test
       run: earthly --ci --push +test
-```
+~~~
 
 This config is based on the [official reference example from Earthly](https://docs.earthly.dev/ci-integration/vendor-specific-guides/gh-actions-integration). It will execute your Earthly configuration in a GitHub action when you push code to the repository.
 
 Save and commit your changes and then push them to GitHub. When you visit your repo in the browser, navigate to the **Actions** tab, and you should see a CI pipeline running for the config you just pushed. Click on it, and you should see that your build and test steps have been completed successfully, running through Earthly and Lerna:
 
-![Finished CI run](https://i.imgur.com/5SzGyHZ.png)
+![Finished CI run](({{site.images}}{{page.slug}}/5SzGyHZ.png)
 
 ## When to Use Lerna
 
@@ -465,7 +465,7 @@ It's also worth noting that Lerna isn't the only player in this space anymore. T
 
 Whether you use Lerna or one of the package managers' solutions, such tools are indispensable when working with monorepos.
 
-## Wrapping up
+## Wrapping Up
 
 In this tutorial, you've seen how to set up a monorepo with Lerna. You learned how to add multiple packages to it, publish those packages to npm, and run CI workflows for those packages using GitHub Actions and [Earthly](https://earthly.dev).
 
@@ -479,6 +479,5 @@ If you've configured CI workflows before, you know how frustrating it can be whe
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
