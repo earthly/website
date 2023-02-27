@@ -245,6 +245,8 @@ Netlify Functions are a great way to add powerful serverless functionality to yo
 
 Now that you have a better understanding of what Netlify Functions are and how they work, you can explore more and integrate them into your own web projects. You can start by reading more about Netlify's documentation and tutorials to learn more about how to use and deploy your own functions. Additionally, you can also look into expanding your knowledge of [AWS Lambda](https://earthly.dev/blog/aws-lambda-node/) and exploring some of the other serverless technologies available.
 
+{% include cta/cta1.html %}
+
 ## Outside Article Checklist
 
 * [ ] Add in Author page
@@ -253,4 +255,3 @@ Now that you have a better understanding of what Netlify Functions are and how t
 * [ ] Verify look of article locally
   * Would any images look better `wide` or without the `figcaption`?
 * [ ] Add keywords for internal links to front-matter
-* [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
