@@ -11,7 +11,7 @@ internal-links:
 
 When building backend applications, we often have to add features that are not supported by the current stack or would slow down our applications. A possible workaround is to use cloud functions that help abstract away some of these tasks.
 
-This tutorial will cover how to create Netlify Functions, then explain an example use case, and best practices for using Netlify Functions. We will also take a look at how Netlify Functions compare to AWS Lambda and why you might prefer one over the other.
+This tutorial will cover how to create Netlify Functions, then explain an example use case, and best practices for using Netlify Functions. We will also take a look at how Netlify Functions compare to [AWS Lambda](/blog/aws-lambda-node) and why you might prefer one over the other.
 
 ## What Are Serverless Cloud Functions?
 
@@ -87,7 +87,7 @@ If you don't have Netlify set up, you can install it using `npm` using the follo
 npm install netlify-cli -g
 ~~~
 
-This will create the necessary files and folder structure for your Netlify Functions project. You will then need to create a `netlify.toml` file to define the configuration for your functions. Here you will specify the name of your function, the runtime, the entry point, and any environment variables that your function needs.
+This will create the necessary files and folder structure for your Netlify Functions project. You will then need to create a `netlify.toml` file to define the configuration for your functions. Here you will specify the name of your function, the runtime, the entry point, and any [environment variables](/blog/bash-variables) that your function needs.
 
 Here is a simple example:
 
@@ -235,13 +235,13 @@ AWS Lambda and Netlify Functions are both serverless compute services that run c
 
 [AWS Lambda](https://earthly.dev/blog/aws-lambda-docker/) is a fully managed service that takes care of all the operational and administrative complexities of deploying and managing your code. It is highly scalable and can be used to build applications of any size.
 
-Netlify Functions are also serverless functions, but they are designed to be used in conjunction with Netlify's hosting and deployment services. They are best for small-scale applications and are not as scalable as AWS Lambda. Additionally, Netlify functions require minimal setup and configuration.
+Netlify Functions are also serverless functions, but they are designed to be used in conjunction with Netlify's hosting and [deployment](/blog/deployment-strategies) services. They are best for small-scale applications and are not as scalable as AWS Lambda. Additionally, Netlify functions require minimal setup and configuration.
 
-With Netlify, you can deploy your functions with a single command, while with AWS Lambda, you need to set up an entire serverless infrastructure. Additionally, Netlify Cloud Functions are more cost-effective than AWS Lambda, as they are billed on a per-request basis, rather than a per-hour basis.
+With Netlify, you can deploy your functions with a single command, while with AWS [Lambda](/blog/aws-lambda-node), you need to set up an entire serverless infrastructure. Additionally, Netlify Cloud Functions are more cost-effective than AWS Lambda, as they are billed on a per-request basis, rather than a per-hour basis.
 
 ## Conclusion  
 
-Netlify Functions are a great way to add powerful serverless functionality to your web projects. They make it easy to spin up small APIs or add dynamic elements to your site without having to set up and manage a server. With a few simple steps, you can create a Netlify Function and quickly add powerful serverless functionality to your web project.
+Netlify Functions are a great way to add powerful serverless functionality to your web projects. They [make](/blog/makefiles-on-windows) it easy to spin up small APIs or add dynamic elements to your site without having to set up and manage a server. With a few simple steps, you can create a Netlify Function and quickly add powerful serverless functionality to your web project.
 
 Now that you have a better understanding of what Netlify Functions are and how they work, you can explore more and integrate them into your own web projects. You can start by reading more about Netlify's documentation and tutorials to learn more about how to use and deploy your own functions. Additionally, you can also look into expanding your knowledge of [AWS Lambda](https://earthly.dev/blog/aws-lambda-node/) and exploring some of the other serverless technologies available.
 
@@ -253,5 +253,4 @@ Now that you have a better understanding of what Netlify Functions are and how t
 * [ ] Verify look of article locally
   * Would any images look better `wide` or without the `figcaption`?
 * [ ] Add keywords for internal links to front-matter
-* [ ] Run `link-opp` and find 1-5 places to incorporate links
 * [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
