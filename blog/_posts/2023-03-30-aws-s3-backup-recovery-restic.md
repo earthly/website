@@ -17,13 +17,13 @@ In today's digital age, data is one of the most valuable assets for individuals 
 
 Enter Restic, a backup software that facilitates data protection. With its fast, efficient, and secure technology, Restic is the solution you need to protect your valuable data from potential threats.
 
-In this article, you will learn how to configure the Restic backup system on your Unix machine to AWS S3, restore the data, and create a cron job to back up your data automatically.
+In this article, you will learn how to configure the Restic backup system on your Unix machine to AWS [S3](/blog/aws-lambda-golang), restore the data, and create a cron job to back up your data automatically.
 
 Let's get started!
 
 ## What Is Restic?
 
-Restic is an open-source backup software designed to help individuals and organizations protect their data against potential threats. Restic is written in Golang and uses encryption and compression to secure the data and supports multiple platforms, including Windows, MacOS, and Linux. The software can back up data to various storage solutions, such as local drives, remote servers, and cloud services. With its fast, efficient, and secure technology, Restic is a valuable tool for protecting important data and ensuring that it can be recovered in the event of data loss.
+Restic is an open-source backup software designed to help individuals and organizations protect their data against potential threats. Restic is written in [Golang](/blog/top-3-resources-to-learn-golang-in-2021) and uses [encryption](/blog/encrypting-data-with-ssh-keys-and-golang) and compression to secure the data and supports multiple platforms, including Windows, MacOS, and Linux. The software can back up data to various storage solutions, such as local drives, remote servers, and cloud services. With its fast, efficient, and secure technology, Restic is a valuable tool for protecting important data and ensuring that it can be recovered in the event of data loss.
 
 ## Prerequisites
 
@@ -350,7 +350,7 @@ This will open up a file in vim for you. This file is essentially where you can 
 */1 * * * * . ~/.restic.env ; /usr/local/bin/restic backup --files-from=/Users/mac/backup-file/restic.files --tag automated 2>> ~/backup-file/restic.err >> ~/backup-file/restic.log
 ~~~
 
-This is a cron expression for scheduling a task (using cron) to run the restic backup program every minute (*/1* ** *). It starts by loading environment variables from the file ~/.restic.env using the . (dot) command. Then it runs the restic backup command with the following options:
+This is a cron expression for scheduling a task (using cron) to run the restic backup program every minute (*/1* ** *). It starts by loading [environment variables](/blog/bash-variables) from the file ~/.restic.env using the . (dot) command. Then it runs the restic backup command with the following options:
 
 * `--files-from` specifies the file containing the list of files to be backed up. Change this to the location of the restic.files you created earlier
 * `--tag` adds a tag "automated" to the backup.
@@ -392,4 +392,3 @@ You now know how to create an S3 bucket, user, and policy for Restic. You then l
 * [ ] Optional: Find ways to break up content with quotes or images
 * [ ] Verify look of article locally
   * Would any images look better `wide` or without the `figcaption`?
-* [ ] Run `link-opp` and find 1-5 places to incorporate links
