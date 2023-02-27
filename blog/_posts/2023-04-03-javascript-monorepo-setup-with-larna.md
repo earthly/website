@@ -11,9 +11,9 @@ internal-links:
 
 There are a lot of build tools in the JavaScript ecosystem. Some of them have overlaps in functionality, and others, like [Lerna](https://github.com/lerna/lerna), focus on solving a particular problem.
 
-[Lerna](https://lerna.js.org/) is a self-described "build system for managing and publishing multiple JavaScript/TypeScript packages from the same repository." You don't need a tool like Lerna to operate a monorepo — a version-controlled code repository that stores multiple projects or applications within a single, centralized repository — but it improves the developer experience by solving several common issues, including streamlining version management tasks, publishing or deploying new code, managing dependencies between projects, and running commands against multiple projects simultaneously.
+[Lerna](https://lerna.js.org/) is a self-described "build system for managing and publishing multiple JavaScript/TypeScript [packages](/blog/setup-typescript-monorepo) from the same repository." You don't need a tool like Lerna to operate a monorepo — a version-controlled code repository that stores multiple projects or applications within a single, centralized repository — but it improves the developer experience by solving several common issues, including streamlining version management tasks, publishing or deploying new code, managing dependencies between projects, and running commands against multiple projects simultaneously.
 
-In this tutorial, you'll learn how to leverage Lerna to manage a simple TypeScript monorepo. You'll see how to set up Lerna, create some packages, and publish them to [npm](https://www.npmjs.com/). You will also see how you can use Lerna along with [GitHub Actions](https://github.com/features/actions) and [Earthly](https://earthly.dev/) to simplify the continuous integration (CI) of your monorepo.
+In this tutorial, you'll learn how to leverage Lerna to manage a simple TypeScript [monorepo](/blog/golang-monorepo). You'll see how to set up Lerna, create some packages, and publish them to [npm](https://www.npmjs.com/). You will also see how you can use Lerna along with [GitHub Actions](https://github.com/features/actions) and [Earthly](https://earthly.dev/) to simplify the continuous integration (CI) of your monorepo.
 
 This article assumes you have a working understanding of JavaScript, knowledge of TypesScript, React, package management, and bundling with tools like [Rollup](https://rollupjs.org) is beneficial but not necessary.
 
@@ -363,7 +363,7 @@ These version increments follow the [Semantic Versioning](https://semver.org/) s
 - Minor versions indicate a backward compatible feature
 - Patch versions indicate a backward compatible bugfix
 
-It's worth noting that Lerna will typically only publish versions for packages it [has detected changes for](https://lerna.js.org/docs/features/version-and-publish#fixedlocked-mode-default) through its hashing system. The exception to this is that if you have a major version of 0, *all changes are considered "breaking"*, so all packages will be updated and published, even if you haven't changed them since the last time they were published. You can force the publishing of unchanged packages at any time using the `--force-publish` option if you would like to.
+It's worth noting that Lerna will typically only publish versions for [packages](/blog/setup-typescript-monorepo) it [has detected changes for](https://lerna.js.org/docs/features/version-and-publish#fixedlocked-mode-default) through its hashing system. The exception to this is that if you have a major version of 0, *all changes are considered "breaking"*, so all packages will be updated and published, even if you haven't changed them since the last time they were published. You can force the publishing of unchanged packages at any time using the `--force-publish` option if you would like to.
 
 Upon selecting which version increment you want to use, Lerna will ask you to confirm the new versions:
 
@@ -401,7 +401,7 @@ The syntax is inspired by Dockerfiles, so it will be familiar if you have worked
 
 ![Earthly success](({{site.images}}{{page.slug}}/q651Aty.png)
 
-If both commands are working locally, they should work in CI as well. To configure a GitHub Actions to use these, run the following commands to create a new workflow:
+If both commands are working locally, they should work in CI as well. To configure a [Github](/blog/ci-comparison Actions to use these, run the following commands to create a new workflow:
 
 ~~~
 mkdir -p .github/workflows
@@ -467,7 +467,7 @@ Whether you use Lerna or one of the package managers' solutions, such tools are 
 
 ## Wrapping Up
 
-In this tutorial, you've seen how to set up a monorepo with Lerna. You learned how to add multiple packages to it, publish those packages to npm, and run CI workflows for those packages using GitHub Actions and [Earthly](https://earthly.dev).
+In this tutorial, you've seen how to set up a monorepo with Lerna. You learned how to add multiple packages to it, publish those packages to npm, and run CI workflows for those packages using [Github Actions](/blog/continuous-integration) and [Earthly](https://earthly.dev).
 
 If you've configured CI workflows before, you know how frustrating it can be when you aren't able to test your changes without pushing them. Earthly solves this problem by giving you portable, reproducible CI workflows that run the same locally as they do in the cloud, saving you time and giving you peace of mind when configuring CI.
 
@@ -480,4 +480,3 @@ If you've configured CI workflows before, you know how frustrating it can be whe
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
