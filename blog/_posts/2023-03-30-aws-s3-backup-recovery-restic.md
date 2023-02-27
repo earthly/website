@@ -160,6 +160,8 @@ You now have Restic installed on your machine; you can verify the installation w
 
 ## Setting Restic Configuration
 
+![Configure]({{site.images}}{{page.slug}}/configure.png)\
+
 Restic protects your data by encrypting it. This way even if somebody gains access to your S3 bucket, they still cannot read your data. Generate a strong 24+ character password using [LastPass's password generator](https://www.lastpass.com/features/password-generator) or a secure password generator of your choice. Store a copy of this password in a secure location because, without it, your backups will be useless.
 
 After generating your password, using your favorite text editor, create a file named `.restic.env` in your home directory. Inside this file, you are going to add lines for each of the 4 required environment variables. Use the example block below, replacing the values with your own.
@@ -222,6 +224,8 @@ restic check
 </div>
 
 ## Backing Up Data to S3 Bucket
+
+![Backup]({{site.images}}{{page.slug}}/backup.png)\
 
 Following the successful initialization of the repository, you can start backing up data to S3. To begin, you will create a file that will be backed up to S3:
 
@@ -425,7 +429,3 @@ In this guide, you have learned the importance of backing up data and how Restic
 You now know how to create an S3 bucket, user, and policy for Restic. You then learned how to install Restic, write the config for it, initialize a new repository, back up your data, restore data from the repository, and even set up automatic backups with Restic and a cron job. By following these steps, you'll be well on your way to securing your data and protecting it from loss. So what are you waiting for? Start backing up your data today!
 
 {% include cta/cta1.html %}
-
-## Outside Article Checklist
-
-* [ ] Optional: Find ways to break up content with quotes or images
