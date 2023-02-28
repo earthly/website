@@ -18,7 +18,7 @@ We will assume a working understanding of how Django works.
 
 > Note that this article uses version 4.1.2 of Django.
 
-In this tutorial, you will learn to customize the admin site with the following features:  controlling field display, disabling models, making lists searchable, adding filters, thumbnails, links, custom validations, and overriding templates and forms.
+In this tutorial, you will learn to customize the admin site with the following features: controlling field display, disabling models, making lists searchable, adding filters, thumbnails, links, custom validations, and overriding templates and forms.
 
 All the code examples in this tutorial can be found in this Github [repository](https://github.com/chepkiruidorothy/SocialApp/tree/main/SocialApp_project)
 
@@ -32,7 +32,7 @@ Register the `SocialApp` app you created in the list of `INSTALLED_APPS` in the 
 
 Add the following in the *models.py*:
 
-```python
+~~~{.python caption="models.py"}
 from django.db import models
 
 class Author(models.Model):
@@ -53,16 +53,16 @@ class Post(models.Model):
     def __str__ (self):
         return self.title
 
-```
+~~~
 
 These models represent an author and a post. The Author model has a `first_name`, `last_name`, and an `image` field. The image will be uploaded to the `images` folder you specified in the image field.
 The `ImageField` requires that you install the [Pillow](https://pypi.org/project/Pillow/) package.
 
 You can install Pillow with the pip package manager as shown below:
 
-```bash
+~~~{.bash caption=">_"}
 pip install pillow
-```
+~~~
 
 The `Post` model has a  `title` field for the post title, a `details` field for the post details, and a `date` field for the date the post was created.
 
@@ -72,12 +72,12 @@ To configure the [media files](https://docs.djangoproject.com/en/4.1/topics/file
 
 Add the following code snippet to *settings.py*:
 
-```python
+~~~{.python caption="settings.py"}
 import os
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
-```
+~~~
 
 The [MEDIA_ROOT](https://docs.djangoproject.com/en/4.1/topics/files/)  setting specifies the path to where the media files are stored. The path is relative to the root directory (`BASEDIR`), while the [MEDIA_URL](https://docs.djangoproject.com/en/4.1/topics/files/) setting defines the base URL for accessing these media files.
 This configuration will let Django create an `images` directory under the *media*  folder when the author uploads an image.
@@ -93,19 +93,20 @@ When you register a model alone, Django will use the default `ModelAdmin` class,
 
 The following code registers the models with the default `ModelAdmin` class:
 
-```python
+~~~{.python caption="admin.py"}
 from django.contrib import admin
 from .models import  Author, Post
 
 admin.site.register(Author)
 admin.site.register(Post)
 
-```
+~~~
+
 If you want to customize the appearance or behavior of the admin interface for a model, you can create a subclass of the `ModelAdmin` class and register the model with that class.
 
 You can register the model with a subclass of the `ModelAdmin` class as shown below:
 
-```python
+~~~{.python caption="admin.py"}
 from django.contrib import admin
 from .models import  Author, Post
 
@@ -116,11 +117,11 @@ admin.site.register(Author, AuthorAdmin)
 class PostAdmin(admin.ModelAdmin):
     pass
 admin.site.register(Post, PostAdmin)
-```
+~~~
 
 Alternatively, you can register the models by decorating the subclass of the `ModelAdmin` class with the `admin.register()` decorator:
 
-```python
+~~~{.python caption="admin.py"}
 
 from django.contrib import admin
 from .models import  Author, Post
@@ -135,7 +136,7 @@ class PostAdmin(admin.ModelAdmin):
     pass
 admin.site.register(Post, PostAdmin)
 
-```
+~~~
 
 ## Accessing the Admin Site
 
@@ -143,65 +144,65 @@ Only a superuser or an admin user can access the admin site. Therefore, you need
 
 In the terminal, create a superuser that can access the admin site:
 
-```bash
+~~~{.bash caption=">_"}
 ./manage.py createsuperuser
-```
+~~~
 
 Follow the prompts, and you should create the superuser successfully.
 
-![superuser](https://i.imgur.com/yIOfVBG.png)
+![superuser]({{site.images}}{{page.slug}}/yIOfVBG.png)
 
 To access the admin site, run the server.
 
-```bash
+~~~{.bash caption=">_"}
 ./manage.py runserver
-```
+~~~
 
-![runserver](https://i.imgur.com/btZCfnq.png)
+![runserver]({{site.images}}{{page.slug}}/btZCfnq.png)
 
-Navigate to *http://127.0.0.1:8000/admin* in your browser to access the admin site:
+Navigate to *<http://127.0.0.1:8000/admin>* in your browser to access the admin site:
 
-![admin_site](https://i.imgur.com/Yt5BOLC.png)
+![admin_site]({{site.images}}{{page.slug}}/Yt5BOLC.png)
 
 You can add the author and post model objects here.
 
 Click the *Add* button to add details of a new author. Input their first name, last name, and image, then click on the *SAVE* button:
 
-![add_author](https://i.imgur.com/5Ag4k0f.png)
+![add_author]({{site.images}}{{page.slug}}/5Ag4k0f.png)
 
 You can add the posts data the same way:
 
-![add_post](https://i.imgur.com/Gs3qg78.png)
+![add_post]({{site.images}}{{page.slug}}/Gs3qg78.png)
 
 ## Customizing the Admin Site with the `ModelAdmin` Class
 
 The `ModelAdmin` class has a lot of options for you to modify the interface of the admin site. These options are usually specified as a class attribute or as a method in the `ModelAdmin`class.
 
-### Controlling the Fields to Display using the `list_display` Attribute
+### Controlling the Fields to Display Using the `list_display` Attribute
 
 The admin site only shows the string representation of a model when listing the model objects, for the Author model. It shows the first name which is the string representation of the Author model that you defined via the `__str __` method.
 
-```python
+~~~{.python caption="models.py"}
     def __str__ (self):
         return self.first_name
-```
+~~~
 
-![all](https://i.imgur.com/dGrvCiH.png)
+![all]({{site.images}}{{page.slug}}/dGrvCiH.png)
 
 Suppose you want to list the author's first name, last name, and image in the interface, you can use the `list_display` option of the `ModelAdmin` class as shown below:
 
-```python
+~~~{.python caption="models.py"}
 @admin.register(Post)
 class   PostAdmin(admin.ModelAdmin):
 
     list_display = ( "title","author","details","date")
-```
+~~~
 
-![author_list](https://i.imgur.com/sjZI5XA.png)
+![author_list]({{site.images}}{{page.slug}}/sjZI5XA.png)
 
 Clicking on the author's first name will take you to the *change author* page, where you can alter the author's details:
 
-![change_author](https://i.imgur.com/wFZbcIk.png)
+![change_author]({{site.images}}{{page.slug}}/wFZbcIk.png)
 
 ### Removing Models from the Admin Site
 
@@ -209,13 +210,13 @@ You can remove a model from the admin site by *unregistering* the model in the *
 
 To remove the default `Group` model or any model from the admin site, you need to unregister it in the *admin.py* file of your SocialApp project:
 
-```python
+~~~{.python caption="models.py"}
 from django.contrib.auth.models import Group
 
 admin.site.unregister(Group)
-```
+~~~
 
-![remove_group](https://i.imgur.com/8oP5JQg.png)
+![remove_group]({{site.images}}{{page.slug}}/8oP5JQg.png)
 
 ### Making the Model Object List Searchable
 
@@ -223,43 +224,45 @@ Django lets you create a search box in the admin interface by adding the [`searc
 
 You can add the `seach_fields` as shown below:
 
-```python
+~~~{.python caption="models.py"}
 @admin.register(Author)
 class AuthorAdmin(admin.ModelAdmin):
 
     list_display = ("first_name", "last_name","image")
     search_fields = ("first_name",)
 
-```
+~~~
+
 Searching for a word will return all model objects where the fields you specified in `search_fields` contain the searched query.
 
 The search bar comes in handy when dealing with a lot of data.
 
-You can search the author’s list as shown in the image below:
+You can search the author's list as shown in the image below:
 
-![search_first_name](https://i.imgur.com/3ixDVm1.png)
+![search_first_name]({{site.images}}{{page.slug}}/3ixDVm1.png)
 
 This searches through the list using the `first_name` field only. If you search using the last name, the results would be 0 authors.
 
-![search_author](https://i.imgur.com/r42xowB.png)
+![search_author]({{site.images}}{{page.slug}}/r42xowB.png)
 
 To search using the `first_name` and the `last_name`  fields, add them to the search fields list:
 
-```python
+~~~{.python caption="models.py"}
 @admin.register(Author)
 class AuthorAdmin(admin.ModelAdmin):
     
     list_display = ("first_name", "last_name","image")
-    search_fields = ("first_name",”last_name”)
+    search_fields = ("first_name","last_name")
 
-```
-![search_both](https://i.imgur.com/mtDbdn9.png)
+~~~
+
+![search_both]({{site.images}}{{page.slug}}/mtDbdn9.png)
 
 ### Adding Filters to the List of Model Object
 
- You can specify a [`list_filter`](https://docs.djangoproject.com/en/4.1/ref/contrib/admin/filters/) attribute in the `ModelAdmin` subclass  to narrow down the search space based on the filter that you selected:
+ You can specify a [`list_filter`](https://docs.djangoproject.com/en/4.1/ref/contrib/admin/filters/) attribute in the `ModelAdmin` subclass to narrow down the search space based on the filter that you selected:
 
-```python
+~~~{.python caption="models.py"}
 @admin.register(Author)
 class AuthorAdmin(admin.ModelAdmin):
     
@@ -267,15 +270,15 @@ class AuthorAdmin(admin.ModelAdmin):
     search_fields = ("first_name",)
     list_filter = ("first_name", )
 
-```
+~~~
 
 The List filters appear in the admin's right sidebar of the change list page:
 
-![filter](https://i.imgur.com/zcwmARt.png)
+![filter]({{site.images}}{{page.slug}}/zcwmARt.png)
 
 The filter list is automatically populated with the first name values of the authors.
 
-![filter_last_name](https://i.imgur.com/bup4JhZ.png)
+![filter_last_name]({{site.images}}{{page.slug}}/bup4JhZ.png)
 
 By clicking on a name, you will change the filter list to display only users with the selected first name.
 
@@ -283,11 +286,11 @@ By clicking on a name, you will change the filter list to display only users wit
 
 So far, images have been listed with their respective URLs, you can choose to display the image thumbnails instead.
 
-To display the thumbnail for a model object,  you will need to define an `image_tag` method in the model class of the object. The method returns an HTML `img` tag. You will need the Django’s [`mark_safe`](https://docs.djangoproject.com/en/4.1/ref/utils/#module-django.utils.safestring) function to mark the HTML tag safe for output. The `src` attribute of the `img` tag will specify the path to the image.
+To display the thumbnail for a model object, you will need to define an `image_tag` method in the model class of the object. The method returns an HTML `img` tag. You will need the Django's [`mark_safe`](https://docs.djangoproject.com/en/4.1/ref/utils/#module-django.utils.safestring) function to mark the HTML tag safe for output. The `src` attribute of the `img` tag will specify the path to the image.
 
 Add the following in the Author model in *models.py*:
 
-```python
+~~~{.python caption="models.py"}
 from django.utils.html import mark_safe
 
 class Author(models.Model):
@@ -303,26 +306,25 @@ class Author(models.Model):
         return mark_safe('<img src="%s" width="100px" height="100px" />'%(self.image.url))
     image_tag.short_description = 'Image'
 
-```
-
+~~~
 
 The `mark_safe`  function marks a string explicitly as safe for (HTML) output. The returned object can be used in any situation where a string or unicode object would be appropriate.
- 
+
 Add the `image_tag` to the `list_display` attribute in *admin.py*:
 
-```python
+~~~{.python caption="models.py"}
 @admin.register(Author)
 class AuthorAdmin(admin.ModelAdmin):
 
     list_display = ("first_name", "last_name","image_tag")
 
-```
+~~~
 
 You will [have to configure *media urls* in the *urls.py*](https://docs.djangoproject.com/en/4.1/howto/static-files/#serving-files-uploaded-by-a-user-during-development) before the images can appear.
 
 Add the following in the *urls.py*:
 
-```python
+~~~{.python caption="urls.py"}
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -330,24 +332,25 @@ urlpatterns = [
 path('admin/', admin.site.urls),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-```
+~~~
+
 This sets up a URL mapping to serve the images in the `MEDIA_ROOT` specified in the project's settings, allowing you to serve user-uploaded files.
 
 > This only works in debug mode
 
 The thumbnail of the images is displayed on the admin site as shown below:
 
-![image_tag](https://i.imgur.com/phEY3da.png)
+![image_tag]({{site.images}}{{page.slug}}/phEY3da.png)
 
 ### Linking Other Object Pages
 
 Objects can refer to other objects using foreign keys. The post model has a many-to-one relationship with the author via ForeignKey which is displayed as an unclickable text on the admin site. The title fields of the Post model are clickable, making it easy to change their details. If you want to change the author's details, you must go to the Author admin page to make the relevant changes. This can become tedious if a lot of changes are to be made.
 
-![unclickable](https://i.imgur.com/iKdP0kL.png)
+![unclickable]({{site.images}}{{page.slug}}/iKdP0kL.png)
 
 However, you can use Django's [URL-reversing](https://docs.djangoproject.com/en/4.1/ref/urlresolvers/) system to access the related object's admin page and make the changes more efficiently. URL reversing refers to the process of converting a named URL pattern to a URL string that can be used in an HTTP request. This makes it easier to link between pages, as you can refer to named URL patterns instead of hardcoded URLs.
 
-```python
+~~~{.python caption="urls.py"}
 from django.utils.html import mark_safe
 from django.urls import reverse
 
@@ -363,26 +366,26 @@ class   PostAdmin(admin.ModelAdmin):
     author_link.short_description = 'Author'
 
 
-```
-This code defines a custom method `author_link` which takes a Post object (`obj`)  and returns a link to the change page of its related author.
+~~~
 
-The URL for the author change page is generated using Django's URL reversing system and the `reverse` function with the named URL pattern `"admin:SocialApp_author_change"` that django creates for the author change page.
+This code defines a custom method `author_link` which takes a Post object (`obj`) and returns a link to the change page of its related author.
 
-The first part of the name, ` admin`, is a namespace that refers to the Django administration interface. `SocialApp_author_change` is a string that represents the URL pattern name for the change page of the author of a SocialApp model.
+The URL for the author change page is generated using Django's URL reversing system and the `reverse` function with the named URL pattern `"admin:SocialApp_author_change"` that Django creates for the author change page.
+
+The first part of the name, `admin`, is a namespace that refers to the Django administration interface. `SocialApp_author_change` is a string that represents the URL pattern name for the change page of the author of a SocialApp model.
 
 The naming follows a specific format: `admin:<app_label>_<model_name>_<action>`, where `app_label` refers to the name of the Django app where you defined the model. The `model_name` is the name of the model, in lowercase and `action` is one of several possible actions, such as change, delete, or add.
 
-
- The author's ID is passed to the URL pattern with `obj.author.id`, which returns the ID of the related `Author` instance. This ID is used to generate a URL to the change page of the `Author` model, which is then used in the `link` variable to create a link to the change page of the `Author` in the Django admin view. 
+ The author's ID is passed to the URL pattern with `obj.author.id`, which returns the ID of the related `Author` instance. This ID is used to generate a URL to the change page of the `Author` model, which is then used in the `link` variable to create a link to the change page of the `Author` in the Django admin view.
 The `mark_safe` function is used to indicate that the returned string is safe to be displayed. The `short_description` attribute is set to `"Author"` for the header in the Django admin site.
 
 This will hyperlink the author field to its change view, where you can change their first name, last name, and image by just clicking on the hyperlinked first name from the post view:
 
-![post_change](https://i.imgur.com/lcPetmg.png)
+![post_change]({{site.images}}{{page.slug}}/lcPetmg.png)
 
 The change view:
 
-![change_author](https://i.imgur.com/QHM3NPz.png)
+![change_author]({{site.images}}{{page.slug}}/QHM3NPz.png)
 
 ### Adding Custom Validation to the Admin
 
@@ -395,7 +398,7 @@ Depending on your project's needs, you will frequently need to create custom val
 Suppose you want the title to have a minimum character limit of 10 letters,
 add a `clean` method in the `Post` model as shown below:
 
-```python
+~~~{.python caption="urls.py"}
 from django.core.exceptions import ValidationError
 
 class Post(models.Model):
@@ -407,22 +410,21 @@ class Post(models.Model):
 
 
 
-```
+~~~
 
 The `clean` method is used in Django forms to perform custom validation logic on the form data.
-This helps ensure that the data entered by the author is consistent and valid before it is saved to the database, avoiding data integrity and consistency issues.  If the validation is successful, no errors are raised and the method simply returns None.
+This helps ensure that the data entered by the author is consistent and valid before it is saved to the database, avoiding data integrity and consistency issues. If the validation is successful, no errors are raised and the method simply returns None.
 If you enter a title that has a length that is less than 10, the validation fails and a `ValidationError` exception is raised:
 
-![title_length](https://i.imgur.com/MFnnaYW.png)
+![title_length]({{site.images}}{{page.slug}}/MFnnaYW.png)
 
 ### Overriding the Admin Templates
 
-
-You can override many of the templates the admin module uses to generate the various pages of an admin site. This allows you to customize the appearance of the admin site to match your site’s design, or to provide a better user experience.
+You can override many of the templates the admin module uses to generate the various pages of an admin site. This allows you to customize the appearance of the admin site to match your site's design, or to provide a better user experience.
 
 The admin templates folder is stored in your virtual environment.
 
-```
+~~~{ caption=""}
 ...SocialApp/venv/lib/python3.10/site-packages/django/contrib/admin/templates
 .
 ├── admin
@@ -481,7 +483,7 @@ The admin templates folder is stored in your virtual environment.
 └── password_reset_form.html
 
 
-```
+~~~
 
 The admin templates are saved in two directories:
 Registration - Templates for the various Django admin page, password change actions, and the Django admin logout page layout.
@@ -491,7 +493,7 @@ You can create a new template directory and copy the templates you want to overr
 
 Create a new folder called *templates* in the root directory and configure the *settings.py* to include the new template path.
 
-```python
+~~~{.python caption="settings.py"}
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -508,7 +510,8 @@ TEMPLATES = [
     },
 ]
 
-```
+~~~
+
 This defines a list of dictionaries, where each dictionary represents a template backend configuration. In this case, the only template backend defined is [`django.template.backends.django.DjangoTemplates`](https://docs.djangoproject.com/en/4.1/topics/templates/#django.template.backends.django.DjangoTemplates).
 The `DIRS` option specifies the directories where Django should look for templates. In this case, the directory is set to `BASE_DIR/templates`, which means that templates should be stored in a directory called *templates* located within the `BASE_DIR` (The root directory). The `APP_DIRS` option is set to `True` which means that Django will also look for templates in the templates directory of the installed apps.
 
@@ -517,16 +520,16 @@ Copy the templates you want to change into the new templates directory. The *ind
 
 The file tree is as shown below:
 
-```
+~~~{ caption=""}
 Templates
 └── admin
 └── index.html
 
-```
+~~~
 
 You can change the colors of the *Recent actions* and *My actions* titles as shown below:
 
-```html
+~~~{.html caption="index.html"}
 {% raw %}
 {% block sidebar %}
 <div id="content-related">
@@ -540,9 +543,9 @@ You can change the colors of the *Recent actions* and *My actions* titles as sho
 </div>
 {% endblock %}
 {% endraw %}
-```
+~~~
 
-![change_colour](https://i.imgur.com/siAR9bH.png)
+![change_colour]({{site.images}}{{page.slug}}/siAR9bH.png)
 
 Overriding the templates will give you a personalized look at each admin page.
 
@@ -552,9 +555,9 @@ Django provides the [`ModelForm`](https://docs.djangoproject.com/en/4.1/topics/f
 
 However, you can alter the look of the forms to suit your needs. For example, if the post details contained more words and needed more space to edit them, you would need to increase the editing area.
 
-![textarea](https://i.imgur.com/qFzqCh6.png)
+![textarea]({{site.images}}{{page.slug}}/qFzqCh6.png)
 
-```python
+~~~{.python caption="urls.py"}
 
 from django.forms import ModelForm, Textarea
 
@@ -573,14 +576,15 @@ class PostForm(ModelForm):
 
     form = PostForm
 
-```
+~~~
+
 This is a Django form defined using the `ModelForm` class. It represents a form for creating or updating instances of the `Post` model.
 
 The form will contain all fields of the `Post` model, as specified by the `fields` attribute in the Meta class. Additionally, the `widgets` attribute in the Meta class is used to specify the widget to be used for the `details` field, which is a textarea with 130 columns and 20 rows.
 
 This will increase the editing area as shown below:
 
-![add_post_details](https://i.imgur.com/GkRzGK8.png)
+![add_post_details]({{site.images}}{{page.slug}}/GkRzGK8.png)
 
 ## Conclusion
 
@@ -588,7 +592,7 @@ In conclusion, customizing the Django admin site can greatly enhance the user ex
 
 In this tutorial, you learn to customize the admin site by controlling field display, disabling models, making model lists searchable, adding filters, thumbnails, links, custom validations, and overriding templates and forms in the admin site.
 
-There is so much to customize in the Django admin. To fully delve into customizing the admin interface, visit the [Django documentation](https://docs.djangoproject.com/en/4.1/ref/contrib/admin/). 
+There is so much to customize in the Django admin. To fully delve into customizing the admin interface, visit the [Django documentation](https://docs.djangoproject.com/en/4.1/ref/contrib/admin/).
 
 ## Outside Article Checklist
 
@@ -596,7 +600,6 @@ There is so much to customize in the Django admin. To fully delve into customizi
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
 - [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
