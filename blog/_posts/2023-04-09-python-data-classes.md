@@ -12,7 +12,7 @@ internal-links:
 
 In Python, classes let you group together data and behavior by defining attributes and methods, respectively. Typically, a class contains both attributes and a set of methods that add functionality. But what if you have a class that stores—a lot of attributes—with almost no functionality? Do you still need to use regular classes, or is there a better alternative? 
 
-**Data classes**, first introduced in Python 3.7, provide a more convenient way of defining and managing such **data-oriented classes** (who would've guessed!).
+**Data classes**, first introduced in Python 3.7, provide a convenient way of defining and managing such **data-oriented classes** (who would've guessed!).
 
 **If you already have a Python class that exposes a lot of methods, you don't need a data class**. However, if you’re interested in learning about this new feature to manage your data-oriented classes better, then this tutorial is for you.
 
@@ -30,7 +30,15 @@ You can find the code examples used here in [this GitHub repository](https://git
 
 ## Python Classes and Boilerplate Code
 
+We’ll first create a regular [Python class](https://earthly.dev/blog/how-cls-obj-work-python/). And then rewrite it as a data class. In the process, we’ll try to understand some out-of-the-box features of data classes that make them a better choice.
+
+As our goal is to understand and use data classes—and not write fancy classes—we’ll create a simple class such as a `Student` or an `Employee` class.
+
+So `Student` or `Employee`? 
+
 ![student-vs-employee-class]({{site.images}}{{page.slug}}/5.png)\
+
+I’ll choose `Student` class for now.
 
 ### The `__init__()` Method
 
@@ -44,7 +52,9 @@ You can find the code examples used here in [this GitHub repository](https://git
 
 ## Type Hints and Default Values in Python Data Classes
 
-### Enforcing Types 
+### How Do Type Hints Help? 
+
+#### Enforcing Type Checks
 
 ### Setting Default Values for Data Class Attributes
 
