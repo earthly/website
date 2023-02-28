@@ -23,9 +23,10 @@ Let’s get started!
 <div class="notice--big--primary">
 #### 📑 Before You Begin
 
-To follow along, you need [Python 3.7 or a later version](https://www.python.org/downloads/) installed in your preferred development environment. 
-
-You can find the code examples used here in [this GitHub repository](https://github.com/balapriyac/dataclasses-tutorial).
+To follow along, you need [Python 3.7 or a later version](https://www.python.org/downloads/) installed in your preferred development environment. You can find the code examples used here in [this GitHub repository](https://github.com/balapriyac/dataclasses-tutorial).
+  
+This tutorial assumes you’re familiar with the working of [Python classes and objects](https://earthly.dev/blog/how-cls-obj-work-python/).
+  
 </div>
 
 ## Python Classes and Boilerplate Code
