@@ -197,7 +197,9 @@ class Student:
             return "InvalidComparison"
 ~~~
 
-Did we work extra hard here? No, we didn't. (Almost) all of this is boilerplate code that you'll write whenever you create a Python class.
+Did we work extra hard here? No, we didn't. 
+
+(Almost) all of this is boilerplate code that you'll write whenever you create a Python class.
 
 Now suppose you need to add the GPA for each student, remove the `name` attribute and add two new attributes: `first_name` and `last_name`, the list of classes each student has taken, and a bunch more. 
 
@@ -208,6 +210,8 @@ Now suppose you need to add the GPA for each student, remove the `name` attribut
 - Oh wait, you should update the `__eq__` method, too.
 
 Clearly, it's not super fun anymore!
+
+![not-fun]({{site.images}}{{page.slug}}/notfun.png)\
 
 And as you keep modifying the class, you'll *likely* forget to update one of these. No, I'm not challenging you!
 
