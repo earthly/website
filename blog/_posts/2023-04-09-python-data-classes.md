@@ -287,11 +287,11 @@ However, I prefer using the `@dataclass` decorator; the code is a lot easier to 
 ### How Do Type Hints Help? 
 
 <div class="wide">
-![type-hints-0]({{site.images}}{{page.slug}}/type-hints0.png)\
+![type-hints-0]({{site.images}}{{page.slug}}/th0.png)\
 </div>
 
 <div>
-![type-hints-1]({{site.images}}{{page.slug}}/type-hints1.png)\
+![type-hints-1]({{site.images}}{{page.slug}}/th1.png)\
 </div>
 
 #### Enforcing Type Checks
