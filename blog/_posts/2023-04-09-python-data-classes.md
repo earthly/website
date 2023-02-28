@@ -41,9 +41,9 @@ So which class do we pick: `Student` or `Employee`?
 
 I’ll choose `Student` class for now. Let's get coding!
 
-### The `__init__()` Method
+### The `__init__` Method
 
-Let’s create a `Student` class with the attributes: `name`, `roll_no`, `major`, and `year`. To initialize instances of the `Student` class by passing in values for these attributes in the constructor, you can define the `__init__()` method:
+Let’s create a `Student` class with the attributes: `name`, `roll_no`, `major`, and `year`. To initialize instances of the `Student` class by passing in values for these attributes in the constructor, you can define the `__init__` method:
 
 ~~~{.python caption="main.py"}
 # main.py
@@ -69,18 +69,18 @@ You inspect this object `jane` at the REPL:
 <main.Student object at 0x007EE628>
 ~~~
 
-As seen, the default representation returned `<main.Student object at 0x007EE628>` is not very helpful; it does *not* contain any information on the attributes of the instance `jane`. If you need a helpful string representation of the object, you should implement the `__repr__()` method. 
+As seen, the default representation returned `<main.Student object at 0x007EE628>` is not very helpful; it does *not* contain any information on the attributes of the instance `jane`. If you need a helpful string representation of the object, you should implement the `__repr__` method. 
 
-### Adding a Helpful `__repr__()`
+### Adding a Helpful `__repr__`
 
-Let’s add a `__repr__()` that includes the values of the instance attributes:
+Let’s add a `__repr__` method that returns a string containing the values of the instance attributes:
 
 ~~~{.python caption="main.py"}
     def __repr__(self):
         return f"Student: {self.name} {self.roll_no} {self.major} {self.year}"
 ~~~
 
-After adding the `__repr__()`, the `Student` class should look like this:
+After adding the `__repr__`, the `Student` class should look like this:
 
 ~~~{.python caption="main.py"}
 # main.py
@@ -104,7 +104,7 @@ Student: Jane CS1234 Computer Science junior
 
 That's much better! 
 
-But remember, you added the `__repr__()` method. *So it's only as helpful as you choose to make it*. You can as well write a `__repr__()` that only returns the string "Student object". Clearly, such a `__repr__` is not more helpful than the default `<main.Student object at 0x007EE628>` (just saying!).
+But remember, *you* added the `__repr__` method. *So it's only as helpful as you choose to make it*. You can as well write a `__repr__` that only returns the string "Student object". Clearly, such a `__repr__` is not more helpful than the default `<main.Student object at 0x007EE628>` (just saying!).
 
 Next, create another instance of the `Student` class `also_jane` with the same values for the instance attributes:
 
@@ -112,7 +112,7 @@ Next, create another instance of the `Student` class `also_jane` with the same v
 >>> also_jane = Student('Jane','CS1234','Computer Science','junior')
 ~~~
 
-You can verify the equality of the various attributes of `jane` and `also_jane` like so:
+You can verify the equality of the various attributes of `jane` and `also_jane`, like so:
 
 ~~~{.python caption=""}
 >>> jane.name == also_jane.name
@@ -132,11 +132,83 @@ True
 False
 ~~~
 
+Well, `jane == also_jane` returns `False`. **Why?**
+
 ![why]({{site.images}}{{page.slug}}/1.png)\
 
-### Implementing the `__eq__()` Method
+By default, the **==** operator compares the IDs of the two objects. And comparison of objects in terms of attributes doesn’t make sense until you implement the `__eq__` method. Okay, let's do that!
+
+### Implementing the `__eq__` Method
+
+For now, we know the following:
+
+- Comparison is valid *only* between two objects belonging to the *same* class. 
+- The values of the various instance variables of the two objects should be equal.
+
+Let’s define the `__eq__` method to compare any two instances of two instances of the `Student` class:
+
+~~~{.python caption="main.py"}
+ def __eq__(self, another):
+        if self.__class__ == another.__class__:
+            return (self.name, self.roll_no, self.major, self.year) == (
+                another.name,
+                another.roll_no,
+                another.major,
+                another.year,
+            )
+        else:
+            return "InvalidComparison"
+~~~
+
+When you try to check if `jane == also_jane` after adding the `__eq__` method, you'll see that it works as expected:
+
+~~~{.python caption=""}
+>>> jane == also_jane
+True
+~~~
+
+So to create `Student` class with *four* attributes that supports comparison of objects and has a helpful string representation, we have the following in main.py:
+
+~~~{.python caption="main.py"}
+# main.py
+class Student:
+    def __init__(self, name, roll_no, major, year):
+        self.name = name
+        self.roll_no = roll_no
+        self.major = major
+        self.year = year
+
+    def __repr__(self):
+        return f"Student: {self.name} {self.roll_no} {self.major} {self.year}"
+
+    def __eq__(self, another):
+        if self.__class__ == another.__class__:
+            return (self.name, self.roll_no, self.major, self.year) == (
+                another.name,
+                another.roll_no,
+                another.major,
+                another.year,
+            )
+        else:
+            return "InvalidComparison"
+~~~
+
+Suppose you need to add the GPA for each student, remove the `name` attribute and add two new attributes: `first_name` and `last_name`, the list of classes each student has taken, and a bunch more. 
+
+**What do you do next?**
+
+- You should first update the `__init__` method. Cool. 
+- How’ll you remember the newly added attributes if you don’t add them to the `__repr__`? Okay, so you’ll go and modify the `__repr__`. 
+- Oh wait, you should update the `__eq__` method, too.
+
+Clearly, it's not super fun anymore.
+
+And as you keep modifying the class, you'll *likely* forget to update one of these. No, I'm not challenging you!
 
 ## How to Create Data Classes in Python
+
+<div class="notice--info">
+</div>
 
 ## Type Hints and Default Values in Python Data Classes
 
