@@ -20,7 +20,7 @@ We will assume a working understanding of how Django works.
 
 In this tutorial, you will learn to customize the admin site with the following features: controlling field display, disabling models, making lists searchable, adding filters, thumbnails, links, custom validations, and overriding templates and forms.
 
-All the code examples in this tutorial can be found in this Github [repository](https://github.com/chepkiruidorothy/SocialApp/tree/main/SocialApp_project)
+All the code examples in this tutorial can be found in this [Github](/blog/ci-comparison) [repository](https://github.com/chepkiruidorothy/SocialApp/tree/main/SocialApp_project)
 
 ## Project Setup
 
@@ -344,11 +344,11 @@ The thumbnail of the images is displayed on the admin site as shown below:
 
 ### Linking Other Object Pages
 
-Objects can refer to other objects using foreign keys. The post model has a many-to-one relationship with the author via ForeignKey which is displayed as an unclickable text on the admin site. The title fields of the Post model are clickable, making it easy to change their details. If you want to change the author's details, you must go to the Author admin page to make the relevant changes. This can become tedious if a lot of changes are to be made.
+Objects can refer to other objects using foreign keys. The post model has a many-to-one relationship with the author via ForeignKey which is displayed as an unclickable text on the admin site. The title fields of the Post model are clickable, making it easy to change their details. If you want to change the author's details, you must go to the Author admin page to [make](/blog/using-cmake) the relevant changes. This can become tedious if a lot of changes are to be made.
 
 ![unclickable]({{site.images}}{{page.slug}}/iKdP0kL.png)
 
-However, you can use Django's [URL-reversing](https://docs.djangoproject.com/en/4.1/ref/urlresolvers/) system to access the related object's admin page and make the changes more efficiently. URL reversing refers to the process of converting a named URL pattern to a URL string that can be used in an HTTP request. This makes it easier to link between pages, as you can refer to named URL patterns instead of hardcoded URLs.
+However, you can use Django's [URL-reversing](https://docs.djangoproject.com/en/4.1/ref/urlresolvers/) system to access the related object's admin page and [make](/blog/using-cmake) the changes more efficiently. URL reversing refers to the process of converting a named URL pattern to a URL string that can be used in an HTTP request. This makes it easier to link between pages, as you can refer to named URL patterns instead of hardcoded URLs.
 
 ~~~{.python caption="urls.py"}
 from django.utils.html import mark_safe
@@ -601,5 +601,4 @@ There is so much to customize in the Django admin. To fully delve into customizi
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
 - [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
