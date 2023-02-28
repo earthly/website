@@ -205,7 +205,7 @@ The admin site only shows the string representation of a model when listing the 
 
 Suppose you want to list the author's first name, last name, and image in the interface, you can use the `list_display` option of the `ModelAdmin` class as shown below:
 
-~~~{.python caption="models.py"}
+~~~{.python caption="admin.py"}
 @admin.register(Post)
 class   PostAdmin(admin.ModelAdmin):
 
@@ -342,7 +342,7 @@ The `mark_safe`  function marks a string explicitly as safe for (HTML) output. T
 
 Add the `image_tag` to the `list_display` attribute in *admin.py*:
 
-~~~{.python caption="models.py"}
+~~~{.python caption="admin.py"}
 @admin.register(Author)
 class AuthorAdmin(admin.ModelAdmin):
 
@@ -384,7 +384,7 @@ Objects can refer to other objects using foreign keys. The post model has a many
 
 However, you can use Django's [URL-reversing](https://docs.djangoproject.com/en/4.1/ref/urlresolvers/) system to access the related object's admin page and [make](/blog/using-cmake) the changes more efficiently. URL reversing refers to the process of converting a named URL pattern to a URL string that can be used in an HTTP request. This makes it easier to link between pages, as you can refer to named URL patterns instead of hardcoded URLs.
 
-~~~{.python caption="urls.py"}
+~~~{.python caption="mosels.py"}
 from django.utils.html import mark_safe
 from django.urls import reverse
 
@@ -416,7 +416,7 @@ The `mark_safe` function is used to indicate that the returned string is safe to
 This will hyperlink the author field to its change view, where you can change their first name, last name, and image by just clicking on the hyperlinked first name from the post view:
 
 <div class="wide">
-![Navingating to change Author details]({{site.images}}{{page.slug}}/lcPetmg.png)
+![Navigating to change Author details]({{site.images}}{{page.slug}}/lcPetmg.png)
 </div>
 
 The change view:
@@ -436,7 +436,7 @@ Depending on your project's needs, you will frequently need to create custom val
 Suppose you want the title to have a minimum character limit of 10 letters,
 add a `clean` method in the `Post` model as shown below:
 
-~~~{.python caption="urls.py"}
+~~~{.python caption="models.py"}
 from django.core.exceptions import ValidationError
 
 class Post(models.Model):
@@ -601,7 +601,7 @@ However, you can alter the look of the forms to suit your needs. For example, if
 ![Post's textarea]({{site.images}}{{page.slug}}/qFzqCh6.png)
 </div>
 
-~~~{.python caption="urls.py"}
+~~~{.python caption="admin.py"}
 
 from django.forms import ModelForm, Textarea
 
