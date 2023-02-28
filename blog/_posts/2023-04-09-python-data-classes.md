@@ -10,7 +10,7 @@ internal-links:
  - Python Classes
 ---
 
-In Python, classes let you group together data and behavior by defining attributes and methods, respectively. Typically, a class contains both attributes and a set of methods that add functionality. But what if you have a class that stores—a lot of attributes—with almost no functionality? Do you still need to use regular classes, or is there a better alternative? 
+In Python, classes let you group together data and behavior by defining attributes and methods, respectively. Typically, a class contains both attributes and a set of methods that add functionality. **But what if you have a class that stores a lot of attributes with almost no functionality?** Do you still need to use regular classes, or is there a better alternative? 
 
 **Data classes**, first introduced in Python 3.7, provide a convenient way of defining and managing such **data-oriented classes** (who would've guessed!).
 
@@ -207,7 +207,36 @@ And as you keep modifying the class, you'll *likely* forget to update one of the
 
 ## How to Create Data Classes in Python
 
+~~~{.python caption="main.py"}
+from dataclasses import dataclass
+
+@dataclass
+class Student:
+    name: str
+    roll_no: str
+    major: str
+    year: str
+    gpa: float
+~~~
+
+~~~{.python caption=""}
+>>> from main import Student
+>>> jane = Student('Jane','CS1234','Computer Science','junior',3.98)
+~~~
+
+~~~{.python caption=""}
+>>> jane
+Student(name='Jane', roll_no='CS1234', major='Computer Science', year='junior', gpa=3.98)
+~~~
+
+~~~{.python caption=""}
+>>> also_jane = Student('Jane','CS1234','Computer Science','junior',3.98)
+>>> jane == also_jane
+True
+~~~
+
 <div class="notice--info">
+  ### Create Data Classes With `make_dataclass`
 </div>
 
 ## Type Hints and Default Values in Python Data Classes
