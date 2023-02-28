@@ -71,7 +71,7 @@ For example, if you want to access the cloud function to process the pictures up
 
 ## How To Create Netlify Functions
 
-![Fn]({{site.images}}{{page.slug}}/create.png)\
+![Create]({{site.images}}{{page.slug}}/create.png)\
 
 To sum up: A Netlify function is simply a file that is triggered by an HTTP request. Let's say you want to build a simple contact form for your website that stores subscribers to a firebase database. To read more on firebase and [documentation](https://firebase.google.com/docs/web/setup).
 
