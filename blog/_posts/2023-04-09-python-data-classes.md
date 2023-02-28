@@ -31,7 +31,7 @@ This tutorial assumes you’re familiar with the working of [Python classes and 
 
 ## Python Classes and Boilerplate Code
 
-We’ll first create a regular [Python class](https://earthly.dev/blog/how-cls-obj-work-python/), then rewrite it as a data class. In the process, we’ll try to understand some out-of-the-box features of data classes that make them a better choice.
+You’ll first create a regular [Python class](https://earthly.dev/blog/how-cls-obj-work-python/). In doing so, you'll realize how much bolierplate code you need to write to get a minimal working class. You'll then rewrite the existing Python class as a *data class* to understand how data classes can help you escape the monotony of boilerplate code.
 
 As our goal is to *understand and use* data classes—and not to write fancy classes—let's create a simple class such as a `Student` or an `Employee` class.
 
@@ -39,11 +39,54 @@ So `Student` or `Employee`?
 
 ![student-vs-employee-class]({{site.images}}{{page.slug}}/5.png)\
 
-I’ll choose `Student` class for now.
+I’ll choose `Student` class for now. Let's get coding!
 
 ### The `__init__()` Method
 
+Let’s create a `Student` class with the attributes: `name`, `roll_no`, `major`, and `year`. To initialize instances of the `Student` class by passing in values for these attributes in the constructor, you can define the `__init__()` method:
+
+~~~{.python caption="main.py"}
+# main.py
+class Student:
+    def __init__(self, name, roll_no, major, year):
+        self.name = name
+        self.roll_no = roll_no
+        self.major = major
+        self.year = year
+~~~
+
+Now that you’ve created the `Student` class, start a Python REPL, import the `Student` class, and create a student object `jane`:
+
+~~~{.python caption=""}
+>>> from main import Student
+>>> jane = Student('Jane','CS1234','Computer Science','junior')
+~~~
+
+You inspect this object `jane` at the REPL: 
+
+~~~{.python caption=""}
+>>> jane
+<main.Student object at 0x007EE628>
+~~~
+
+As seen, the default representation returned `<main.Student object at 0x007EE628>` is not very helpful; it does *not* contain any information on the attributes of the instance `jane`. If you need a helpful string representation of the object, you should implement the `__repr__()` method. 
+
 ### Adding a Helpful `__repr__()`
+
+After adding the `__repr__()`, the `Student` class should look like this:
+
+~~~{.python caption="main.py"}
+# main.py
+class Student:
+    def __init__(self, name, roll_no, major, year):
+        self.name = name
+        self.roll_no = roll_no
+        self.major = major
+        self.year = year
+
+    def __repr__(self):
+        return f"Student: {self.name} {self.roll_no} {self.major} {self.year}"
+~~~
 
 ![why]({{site.images}}{{page.slug}}/1.png)\
 
