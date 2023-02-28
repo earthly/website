@@ -197,7 +197,7 @@ Suppose you need to add the GPA for each student, remove the `name` attribute an
 
 **What do you do next?**
 
-- You should first update the `__init__` method. Cool. 
+- You need to first update the `__init__` method. Cool. 
 - How’ll you remember the newly added attributes if you don’t add them to the `__repr__`? Okay, so you’ll go and modify the `__repr__`. 
 - Oh wait, you should update the `__eq__` method, too.
 
@@ -283,7 +283,26 @@ Student = make_dataclass('Student',['name','roll_no','major','year','gpa'])
 
 ### How Do Type Hints Help? 
 
+<div class="wide">
+![type-hints-0]({{site.images}}{{page.slug}}/type-hints0.png)\
+</div>
+
+<div>
+![type-hints-1]({{site.images}}{{page.slug}}/type-hints1.png)\
+</div>
+
 #### Enforcing Type Checks
+
+~~~{.bash caption=">_"}
+$ pip3 install mypy
+~~~
+
+~~~{ caption="Output"}
+main.py:12: error: Argument 2 to "Student" has incompatible type "float"; expected "str"  [arg-type]
+main.py:12: error: Argument 5 to "Student" has incompatible type "str"; expected "float"  [arg-type]
+Found 2 errors in 1 file (checked 1 source file)
+~~~
+
 
 ### Setting Default Values for Data Class Attributes
 
