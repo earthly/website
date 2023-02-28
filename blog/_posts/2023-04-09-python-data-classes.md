@@ -201,7 +201,7 @@ Suppose you need to add the GPA for each student, remove the `name` attribute an
 - How’ll you remember the newly added attributes if you don’t add them to the `__repr__`? Okay, so you’ll go and modify the `__repr__`. 
 - Oh wait, you should update the `__eq__` method, too.
 
-Clearly, it's not super fun anymore.
+Clearly, it's not super fun anymore!
 
 And as you keep modifying the class, you'll *likely* forget to update one of these. No, I'm not challenging you!
 
@@ -235,8 +235,48 @@ Student(name='Jane', roll_no='CS1234', major='Computer Science', year='junior', 
 True
 ~~~
 
+<div class="notice--big--primary">
+### Where Did `__init__`, `__repr__`, and `__eq__` Come From?
+  
+![wondering]({{site.images}}{{page.slug}}/2.png)\
+
+~~~{.python caption="main.py"} 
+# main.py
+from inspect import getmembers,isfunction
+...
+print(getmembers(Student,isfunction))
+~~~
+
+~~~{ caption="Output"} 
+[('__eq__', <function __create_fn__.<locals>.__eq__ at 0x014F6A48>), ('__init__', <function __create_fn__.<locals>.__init__ at 0x014F6970>), ('__repr__', <function __create_fn__.<locals>.__repr__ at 0x014F6A00>)]
+~~~
+
+~~~{.python caption="main.py"} 
+# main.py
+from inspect import getmembers,isfunction
+from pprint import pprint
+...
+pprint(getmembers(Student,isfunction))
+~~~
+
+
+~~~{ caption="Output"} 
+[('__eq__', <function __create_fn__.<locals>.__eq__ at 0x014F6A48>),
+('__init__', <function __create_fn__.<locals>.__init__ at 0x014F6970>),
+('__repr__', <function __create_fn__.<locals>.__repr__ at 0x014F6A00>)]
+~~~
+
+
+
+</div>
+
 <div class="notice--info">
-  ### Create Data Classes With `make_dataclass`
+### Create Data Classes With `make_dataclass`
+  
+~~~{.python caption=""}
+from dataclasses import make_dataclass
+Student = make_dataclass('Student',['name','roll_no','major','year','gpa'])
+~~~
 </div>
 
 ## Type Hints and Default Values in Python Data Classes
