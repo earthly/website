@@ -102,7 +102,35 @@ Now go back to the REPL and look at the `__repr__` for `jane`:
 Student: Jane CS1234 Computer Science junior
 ~~~
 
-That's much better! But remember, you had to add the `__repr__()` method. *So it's only as helpful as you choose to make it*. You can as well write a `__repr__()` that only returns the string "Student object". Clearly, such a `__repr__` is not more helpful than the default `<main.Student object at 0x007EE628>` (just saying!)
+That's much better! 
+
+But remember, you added the `__repr__()` method. *So it's only as helpful as you choose to make it*. You can as well write a `__repr__()` that only returns the string "Student object". Clearly, such a `__repr__` is not more helpful than the default `<main.Student object at 0x007EE628>` (just saying!).
+
+Next, create another instance of the `Student` class `also_jane` with the same values for the instance attributes:
+
+~~~{.python caption=""}
+>>> also_jane = Student('Jane','CS1234','Computer Science','junior')
+~~~
+
+You can verify the equality of the various attributes of `jane` and `also_jane` like so:
+
+~~~{.python caption=""}
+>>> jane.name == also_jane.name
+True
+>>> jane.roll_no == also_jane.roll_no
+True
+>>> jane.major == also_jane.major
+True
+>>> jane.year == also_jane.year
+True
+~~~
+
+**But what happens when you try to compare `jane` and `also_jane`?**
+
+~~~{.python caption=""}
+>>> jane == also_jane
+False
+~~~
 
 ![why]({{site.images}}{{page.slug}}/1.png)\
 
@@ -120,9 +148,31 @@ That's much better! But remember, you had to add the `__repr__()` method. *So it
 
 <div class="notice--big--primary">
 #### The Curious Case of Mutable Default Arguments in Python
+
+![curious]({{site.images}}{{page.slug}}/3.png)\
+~~~{.python caption=""}
+>>> def add_to_reading_list(item,this_list=[]):
+...     if item not in this_list:
+...         this_list.append(item)
+...     return this_list
+...
+~~~
+ 
+~~~{.python caption=""}
+>>> books = ['Deep Work']
+>>> new_book = 'Hyperfocus'
+>>> add_to_reading_list(new_book,books)
+['Deep Work', 'Hyperfocus']
+~~~
   
-  ![curious]({{site.images}}{{page.slug}}/3.png)\
-  
+~~~{.python caption=""}
+>>> add_to_reading_list('Mindset')
+['Mindset']
+>>> add_to_reading_list('Grit')
+['Mindset', 'Grit']
+>>> add_to_reading_list('Flow')
+['Mindset', 'Grit', 'Flow']
+~~~
 </div>
 
 
