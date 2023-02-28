@@ -645,6 +645,5 @@ There is so much to customize in the Django admin. To fully delve into customizi
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
 
 
