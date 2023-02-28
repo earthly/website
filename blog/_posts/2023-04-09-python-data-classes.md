@@ -73,6 +73,13 @@ As seen, the default representation returned `<main.Student object at 0x007EE628
 
 ### Adding a Helpful `__repr__()`
 
+Let’s add a `__repr__()` that includes the values of the instance attributes:
+
+~~~{.python caption="main.py"}
+    def __repr__(self):
+        return f"Student: {self.name} {self.roll_no} {self.major} {self.year}"
+~~~
+
 After adding the `__repr__()`, the `Student` class should look like this:
 
 ~~~{.python caption="main.py"}
@@ -87,6 +94,15 @@ class Student:
     def __repr__(self):
         return f"Student: {self.name} {self.roll_no} {self.major} {self.year}"
 ~~~
+
+Now go back to the REPL and look at the `__repr__` for `jane`:
+
+~~~{.python caption="main.py"}
+>>> jane
+Student: Jane CS1234 Computer Science junior
+~~~
+
+That's much better! But remember, you had to add the `__repr__()` method. So it's only *as helpful* as you make it. You can as well have a `__repr__()` that returns the string "Student object" and is clearly not more helpful than the default `<main.Student object at 0x007EE628>`.
 
 ![why]({{site.images}}{{page.slug}}/1.png)\
 
