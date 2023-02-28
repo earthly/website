@@ -34,7 +34,7 @@ Netlify cloud functions can be used for a variety of purposes, including creatin
 
 ## Types of Netlify Functions
 
-![Fn]({{site.images}}{{page.slug}}/fn.png)\
+![functions]({{site.images}}{{page.slug}}/fn.png)\
 
 In this article, we'll take a look at the different types of Netlify functions, including background functions, trigger functions, and scheduled functions, and how they can be used to enhance your web development workflows.
 
