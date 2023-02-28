@@ -30,9 +30,9 @@ You can find the code examples used here in [this GitHub repository](https://git
 
 ## Python Classes and Boilerplate Code
 
-We’ll first create a regular [Python class](https://earthly.dev/blog/how-cls-obj-work-python/). And then rewrite it as a data class. In the process, we’ll try to understand some out-of-the-box features of data classes that make them a better choice.
+We’ll first create a regular [Python class](https://earthly.dev/blog/how-cls-obj-work-python/), then rewrite it as a data class. In the process, we’ll try to understand some out-of-the-box features of data classes that make them a better choice.
 
-As our goal is to understand and use data classes—and not write fancy classes—we’ll create a simple class such as a `Student` or an `Employee` class.
+As our goal is to *understand and use* data classes—and not to write fancy classes—let's create a simple class such as a `Student` or an `Employee` class.
 
 So `Student` or `Employee`? 
 
