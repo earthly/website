@@ -6,7 +6,9 @@ toc: true
 author: Chepkirui Dorothy
 
 internal-links:
- - just an example
+ - Django
+ - Python
+ - Model
 ---
 
 The Django framework comes with an [admin site](https://docs.djangoproject.com/en/4.1/ref/contrib/admin/#module-django.contrib.admin) which is a quick, model-centric interface that Django creates by reading metadata from your models. The interface allows trusted users to manage model content on your site.
@@ -602,5 +604,4 @@ There is so much to customize in the Django admin. To fully delve into customizi
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Add keywords for internal links to front-matter
 
