@@ -152,7 +152,9 @@ In the terminal, create a superuser that can access the admin site:
 
 Follow the prompts, and you should create the superuser successfully.
 
-![superuser]({{site.images}}{{page.slug}}/yIOfVBG.png)
+<div class="wide">
+![superuser]({{site.images}}{{page.slug}}/yIOfVBG.png)\
+</div>
 
 To access the admin site, run the server.
 
@@ -160,21 +162,29 @@ To access the admin site, run the server.
 ./manage.py runserver
 ~~~
 
-![runserver]({{site.images}}{{page.slug}}/btZCfnq.png)
+<div class="wide">
+![runserver]({{site.images}}{{page.slug}}/btZCfnq.png)\
+</div>
 
 Navigate to *<http://127.0.0.1:8000/admin>* in your browser to access the admin site:
 
-![admin_site]({{site.images}}{{page.slug}}/Yt5BOLC.png)
+<div class="wide">
+![Django admin_site]({{site.images}}{{page.slug}}/Yt5BOLC.png)
+</div>
 
 You can add the author and post model objects here.
 
 Click the *Add* button to add details of a new author. Input their first name, last name, and image, then click on the *SAVE* button:
 
-![add_author]({{site.images}}{{page.slug}}/5Ag4k0f.png)
+<div class="wide">
+![Adding new Author]({{site.images}}{{page.slug}}/5Ag4k0f.png)
+</div>
 
 You can add the posts data the same way:
 
-![add_post]({{site.images}}{{page.slug}}/Gs3qg78.png)
+<div class="wide">
+![Adding new Post]({{site.images}}{{page.slug}}/Gs3qg78.png)
+</div>
 
 ## Customizing the Admin Site with the `ModelAdmin` Class
 
@@ -189,7 +199,9 @@ The admin site only shows the string representation of a model when listing the 
         return self.first_name
 ~~~
 
-![all]({{site.images}}{{page.slug}}/dGrvCiH.png)
+<div class="wide">
+![all]({{site.images}}{{page.slug}}/dGrvCiH.png)\
+</div>
 
 Suppose you want to list the author's first name, last name, and image in the interface, you can use the `list_display` option of the `ModelAdmin` class as shown below:
 
@@ -200,11 +212,15 @@ class   PostAdmin(admin.ModelAdmin):
     list_display = ( "title","author","details","date")
 ~~~
 
-![author_list]({{site.images}}{{page.slug}}/sjZI5XA.png)
+<div class="wide">
+![Displaying author_list]({{site.images}}{{page.slug}}/sjZI5XA.png)
+</div>
 
 Clicking on the author's first name will take you to the *change author* page, where you can alter the author's details:
 
-![change_author]({{site.images}}{{page.slug}}/wFZbcIk.png)
+<div class="wide">
+![Django change_author page]({{site.images}}{{page.slug}}/wFZbcIk.png)
+</div>
 
 ### Removing Models from the Admin Site
 
@@ -218,7 +234,9 @@ from django.contrib.auth.models import Group
 admin.site.unregister(Group)
 ~~~
 
-![remove_group]({{site.images}}{{page.slug}}/8oP5JQg.png)
+<div class="wide">
+![remove_group]({{site.images}}{{page.slug}}/8oP5JQg.png)\
+</div>
 
 ### Making the Model Object List Searchable
 
@@ -241,11 +259,15 @@ The search bar comes in handy when dealing with a lot of data.
 
 You can search the author's list as shown in the image below:
 
-![search_first_name]({{site.images}}{{page.slug}}/3ixDVm1.png)
+<div class="wide">
+![Searching first_name]({{site.images}}{{page.slug}}/3ixDVm1.png)
+</div>
 
 This searches through the list using the `first_name` field only. If you search using the last name, the results would be 0 authors.
 
-![search_author]({{site.images}}{{page.slug}}/r42xowB.png)
+<div class="wide">
+![Searching author]({{site.images}}{{page.slug}}/r42xowB.png)
+</div>
 
 To search using the `first_name` and the `last_name`  fields, add them to the search fields list:
 
@@ -258,7 +280,9 @@ class AuthorAdmin(admin.ModelAdmin):
 
 ~~~
 
-![search_both]({{site.images}}{{page.slug}}/mtDbdn9.png)
+<div class="wide">
+![Search using First & Last name]({{site.images}}{{page.slug}}/mtDbdn9.png)
+</div>
 
 ### Adding Filters to the List of Model Object
 
@@ -276,11 +300,15 @@ class AuthorAdmin(admin.ModelAdmin):
 
 The List filters appear in the admin's right sidebar of the change list page:
 
-![filter]({{site.images}}{{page.slug}}/zcwmARt.png)
+<div class="wide">
+![Navigating search filter]({{site.images}}{{page.slug}}/zcwmARt.png)
+</div>
 
 The filter list is automatically populated with the first name values of the authors.
 
-![filter_last_name]({{site.images}}{{page.slug}}/bup4JhZ.png)
+<div class="wide">
+![Search filter_last_name]({{site.images}}{{page.slug}}/bup4JhZ.png)
+</div>
 
 By clicking on a name, you will change the filter list to display only users with the selected first name.
 
@@ -342,13 +370,17 @@ This sets up a URL mapping to serve the images in the `MEDIA_ROOT` specified in 
 
 The thumbnail of the images is displayed on the admin site as shown below:
 
-![image_tag]({{site.images}}{{page.slug}}/phEY3da.png)
+<div class="wide">
+![Author's image_tag]({{site.images}}{{page.slug}}/phEY3da.png)
+</div>
 
 ### Linking Other Object Pages
 
 Objects can refer to other objects using foreign keys. The post model has a many-to-one relationship with the author via ForeignKey which is displayed as an unclickable text on the admin site. The title fields of the Post model are clickable, making it easy to change their details. If you want to change the author's details, you must go to the Author admin page to [make](/blog/using-cmake) the relevant changes. This can become tedious if a lot of changes are to be made.
 
-![unclickable]({{site.images}}{{page.slug}}/iKdP0kL.png)
+<div class="wide">
+![unclickable]({{site.images}}{{page.slug}}/iKdP0kL.png)\
+</div>
 
 However, you can use Django's [URL-reversing](https://docs.djangoproject.com/en/4.1/ref/urlresolvers/) system to access the related object's admin page and [make](/blog/using-cmake) the changes more efficiently. URL reversing refers to the process of converting a named URL pattern to a URL string that can be used in an HTTP request. This makes it easier to link between pages, as you can refer to named URL patterns instead of hardcoded URLs.
 
@@ -383,11 +415,15 @@ The `mark_safe` function is used to indicate that the returned string is safe to
 
 This will hyperlink the author field to its change view, where you can change their first name, last name, and image by just clicking on the hyperlinked first name from the post view:
 
-![post_change]({{site.images}}{{page.slug}}/lcPetmg.png)
+<div class="wide">
+![Navingating to change Author details]({{site.images}}{{page.slug}}/lcPetmg.png)
+</div>
 
 The change view:
 
-![change_author]({{site.images}}{{page.slug}}/QHM3NPz.png)
+<div class="wide">
+![Changing Author details]({{site.images}}{{page.slug}}/QHM3NPz.png)
+</div>
 
 ### Adding Custom Validation to the Admin
 
@@ -418,7 +454,9 @@ The `clean` method is used in Django forms to perform custom validation logic on
 This helps ensure that the data entered by the author is consistent and valid before it is saved to the database, avoiding data integrity and consistency issues. If the validation is successful, no errors are raised and the method simply returns None.
 If you enter a title that has a length that is less than 10, the validation fails and a `ValidationError` exception is raised:
 
-![title_length]({{site.images}}{{page.slug}}/MFnnaYW.png)
+<div class="wide">
+![Title limit of new post]({{site.images}}{{page.slug}}/MFnnaYW.png)
+</div>
 
 ### Overriding the Admin Templates
 
@@ -547,7 +585,9 @@ You can change the colors of the *Recent actions* and *My actions* titles as sho
 {% endraw %}
 ~~~
 
-![change_colour]({{site.images}}{{page.slug}}/siAR9bH.png)
+<div class="wide">
+![Customized colors to template]({{site.images}}{{page.slug}}/siAR9bH.png)
+</div>
 
 Overriding the templates will give you a personalized look at each admin page.
 
@@ -557,7 +597,9 @@ Django provides the [`ModelForm`](https://docs.djangoproject.com/en/4.1/topics/f
 
 However, you can alter the look of the forms to suit your needs. For example, if the post details contained more words and needed more space to edit them, you would need to increase the editing area.
 
-![textarea]({{site.images}}{{page.slug}}/qFzqCh6.png)
+<div class="wide">
+![Post's textarea]({{site.images}}{{page.slug}}/qFzqCh6.png)
+</div>
 
 ~~~{.python caption="urls.py"}
 
@@ -586,7 +628,9 @@ The form will contain all fields of the `Post` model, as specified by the `field
 
 This will increase the editing area as shown below:
 
+<div class="wide">
 ![add_post_details]({{site.images}}{{page.slug}}/GkRzGK8.png)
+</div>
 
 ## Conclusion
 
@@ -602,6 +646,5 @@ There is so much to customize in the Django admin. To fully delve into customizi
 
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
+
 
