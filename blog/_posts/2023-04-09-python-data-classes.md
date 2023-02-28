@@ -160,6 +160,10 @@ Let’s define the `__eq__` method to compare any two instances of two instances
             return "InvalidComparison"
 ~~~
 
+<div class="notice--info">
+Instead of the "InvalidComparison" string, you can also use `return NotImplemented`. When you try to compare two objects of different classes, you'll now be notified that the `__eq__` method for such comparisons has not been implemented.
+</div>
+
 When you try to check if `jane == also_jane` after adding the `__eq__` method, you'll see that it evaluates to `True` as expected:
 
 ~~~{.python caption=""}
@@ -167,7 +171,7 @@ When you try to check if `jane == also_jane` after adding the `__eq__` method, y
 True
 ~~~
 
-To create `Student` class with *four* attributes, a helpful string representation, and support for object comparison, we have the following in main.py:
+To create the `Student` class with *four* attributes, a helpful string representation, and support for object comparison, we have the following in main.py:
 
 ~~~{.python caption="main.py"}
 # main.py
@@ -193,7 +197,9 @@ class Student:
             return "InvalidComparison"
 ~~~
 
-Suppose you need to add the GPA for each student, remove the `name` attribute and add two new attributes: `first_name` and `last_name`, the list of classes each student has taken, and a bunch more. 
+Did we work extra hard here? No, we didn't. (Almost) all of this is boilerplate code that you'll write whenever you create a Python class.
+
+Now suppose you need to add the GPA for each student, remove the `name` attribute and add two new attributes: `first_name` and `last_name`, the list of classes each student has taken, and a bunch more. 
 
 **What do you do next?**
 
