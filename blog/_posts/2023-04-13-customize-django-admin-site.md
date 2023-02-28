@@ -594,6 +594,8 @@ In this tutorial, you learn to customize the admin site by controlling field dis
 
 There is so much to customize in the Django admin. To fully delve into customizing the admin interface, visit the [Django documentation](https://docs.djangoproject.com/en/4.1/ref/contrib/admin/).
 
+{% include cta/cta1.html %}
+
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
@@ -601,4 +603,4 @@ There is so much to customize in the Django admin. To fully delve into customizi
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
-- [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
+
