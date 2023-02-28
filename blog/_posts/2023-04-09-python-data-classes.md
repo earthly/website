@@ -35,7 +35,7 @@ You’ll first create a regular [Python class](https://earthly.dev/blog/how-cls-
 
 As our goal is to *understand and use* data classes—and not to write fancy classes—let's create a simple class such as a `Student` or an `Employee` class.
 
-So `Student` or `Employee`? 
+So which class do we pick: `Student` or `Employee`? 
 
 ![student-vs-employee-class]({{site.images}}{{page.slug}}/5.png)\
 
@@ -102,7 +102,7 @@ Now go back to the REPL and look at the `__repr__` for `jane`:
 Student: Jane CS1234 Computer Science junior
 ~~~
 
-That's much better! But remember, you had to add the `__repr__()` method. So it's only *as helpful* as you make it. You can as well have a `__repr__()` that returns the string "Student object" and is clearly not more helpful than the default `<main.Student object at 0x007EE628>`.
+That's much better! But remember, you had to add the `__repr__()` method. *So it's only as helpful as you choose to make it*. You can as well write a `__repr__()` that only returns the string "Student object". Clearly, such a `__repr__` is not more helpful than the default `<main.Student object at 0x007EE628>` (just saying!)
 
 ![why]({{site.images}}{{page.slug}}/1.png)\
 
