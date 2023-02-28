@@ -203,7 +203,7 @@ Did we work extra hard here? No, we didn't.
 
 Now suppose you need to add the GPA for each student, remove the `name` attribute and add two new attributes: `first_name` and `last_name`, the list of classes each student has taken, and a bunch more. 
 
-**What do you do next?**
+**What should you do?**
 
 - You need to first update the `__init__` method. Cool. 
 - How’ll you remember the newly added attributes if you don’t add them to the `__repr__`? Okay, so you’ll go and modify the `__repr__`. 
