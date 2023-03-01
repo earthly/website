@@ -206,7 +206,7 @@ Now suppose you need to add the GPA for each student, remove the `name` attribut
 **What should you do?**
 
 - You need to first update the `__init__` method. Cool.
-- How'll you remember the newly added attributes if you don’t add them to the `__repr__`? Okay, so you'll go and modify the `__repr__`.
+- How'll you remember the newly added attributes if you don't add them to the `__repr__`? Okay, so you'll go and modify the `__repr__`.
 - Oh wait, you should update the `__eq__` method, too.
 
 Clearly, it's not super fun anymore!
@@ -706,7 +706,7 @@ You'll see that `some_method()` has also been included in the list:
  ('some_method', <function Student.some_method at 0x019B6928>)]
 ~~~
 
-🔖Data classes don’t provide an implementation of the `__str__` method (falls back to `__repr__` which is always implemented for a data class). If you’d like you can add a `__str__` for users of the class instead of `some_method()`.
+🔖Data classes don't provide an implementation of the `__str__` method (falls back to `__repr__` which is always implemented for a data class). If you'd like you can add a `__str__` for users of the class instead of `some_method()`.
 
 Though you can add methods to the data class, if you find yourself adding too many methods, you should consider rewriting the data class as a regular Python class instead.
 
