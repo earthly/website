@@ -370,7 +370,7 @@ Similarly, I set the `gpa` field to 'who cares!' while knowing that `gpa` should
 ![type-hints-1]({{site.images}}{{page.slug}}/th1.png)\
 </div>
 
-But why did I do that? Well, only to let you know that the type hints have *no effect at runtime*. But without the type hints, you wouldn't know if you're (un)intentionally using an incorrect data type.
+But why did I do that? Well, only to let you know that the type hints have *no effect at runtime*. But without the type hints, you wouldn't know if you're unintentionally using an incorrect data type.
 
 #### Enforcing Type Checks
 
@@ -427,7 +427,7 @@ It takes in one *required* positional argument `item` and *optionally* a list. W
 
 If you don't have a reading list, you're adding an item to an empty list, yes? Well, that's the behavior you'd expect.
   
-Howver, *default arguments* are bound to the function—only once—at the time of defining the function. 
+However, *default arguments* are bound to the function—only once—at the time of defining the function. 
   
 Therefore, when you don't pass in the list in the function call, you'll see that the *same* list is modified in each function call. A new empty list is not created for each function call without the list argument:
   
@@ -627,7 +627,7 @@ Student(name='Julia', roll_no=0.5, major='Statistics', year='sophomore', gpa=3.3
 However, it can sometimes be helpful to have immutable instances:
 
 - It prevents accidental modification of one or more instance fields.
-- Immutable instances are hashable by default. Therefore, this is helpful if you'd like to use the instance fields as keys of a dictionary, later dump it into a JSON string.
+- Immutable instances can be hashed by default. Therefore, this is helpful if you'd like to use the instance fields as keys of a dictionary, later dump it into a JSON string.
 
 To make instances immutable, set the `frozen` parameter in the `@dataclass` decorator to `True`.
 
@@ -718,6 +718,6 @@ I hope this tutorial helped you understand the basics of Python data classes. Le
 
 We covered how to create data classes (without much boilerplate code) and set default values for one or more fields. In addition, we looked at the usefulness of type hints and immutable data class instances. As a next step, you can try rewriting existing data-oriented Python classes as data classes. 
 
-In the next article in the series, we’ll cover subclassing Python data classes, performance optimizations that were introduced in Python 3.10, and more. Until then, keep coding!
+In the next article in the series, we’ll cover inheritance in Python data classes, performance optimizations that were introduced in Python 3.10, and more. Until then, keep coding!
 
 {% include cta/cta1.html %}
