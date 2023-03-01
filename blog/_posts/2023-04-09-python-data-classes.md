@@ -14,24 +14,24 @@ In Python, classes let you group data and behavior together by defining attribut
 
 **Data classes**, first introduced in Python 3.7, provide a convenient way of defining and managing such **data-oriented classes** (who would've guessed!).
 
-**If you already have a Python class that exposes a lot of methods, you don't need a data class**. However, if you’re interested in learning about this new feature to manage your data-oriented classes better, then this tutorial is for you.
+**If you already have a Python class that exposes a lot of methods, you don't need a data class**. However, if you're interested in learning about this new feature to manage your data-oriented classes better, then this tutorial is for you.
 
-You’ll learn the basics of data classes and how they’re different from regular Python classes. In addition, you’ll learn how data classes support type hints, default values beyond basic data types, immutability, and more.
+You'll learn the basics of data classes and how they're different from regular Python classes. In addition, you'll learn how data classes support type hints, default values beyond basic data types, immutability, and more.
 
-Let’s get started!
+Let's get started!
 
 <div class="notice--big--primary">
 #### 📑 Before You Begin
 
 To follow along, you need [Python 3.7 or a later version](https://www.python.org/downloads/) installed in your preferred development environment. You can find the code examples used here in [this GitHub repository](https://github.com/balapriyac/dataclasses-tutorial).
   
-This tutorial assumes you’re familiar with the working of [Python classes and objects](https://earthly.dev/blog/how-cls-obj-work-python/).
+This tutorial assumes you're familiar with the working of [Python classes and objects](https://earthly.dev/blog/how-cls-obj-work-python/).
   
 </div>
 
 ## Python Classes and Boilerplate Code
 
-You’ll first create a regular [Python class](https://earthly.dev/blog/how-cls-obj-work-python/). In doing so, you'll realize how much bolierplate code you need to write to get a minimal working class. You'll then rewrite the existing Python class as a *data class* to understand how data classes can help you escape the monotony of boilerplate code.
+You'll first create a regular [Python class](https://earthly.dev/blog/how-cls-obj-work-python/). In doing so, you'll realize how much bolierplate code you need to write to get a minimal working class. You'll then rewrite the existing Python class as a *data class* to understand how data classes can help you escape the monotony of boilerplate code.
 
 As our goal is to *understand and use* data classes—and not to write fancy classes—let's create a simple class such as a `Student` or an `Employee` class.
 
@@ -39,11 +39,11 @@ So which class do we pick: `Student` or `Employee`?
 
 ![student-vs-employee-class]({{site.images}}{{page.slug}}/5.png)\
 
-I’ll choose `Student` class for now. Let's get coding!
+I'll choose `Student` class for now. Let's get coding!
 
 ### The `__init__` Method
 
-Let’s create a `Student` class with the attributes: `name`, `roll_no`, `major`, and `year`. To initialize instances of the `Student` class by passing in values for these attributes in the constructor, you can define the `__init__` method:
+Let's create a `Student` class with the attributes: `name`, `roll_no`, `major`, and `year`. To initialize instances of the `Student` class by passing in values for these attributes in the constructor, you can define the `__init__` method:
 
 ~~~{.python caption="main.py"}
 # main.py
@@ -55,7 +55,7 @@ class Student:
         self.year = year
 ~~~
 
-Now that you’ve created the `Student` class, start a Python REPL, import the `Student` class, and create a student object `jane`:
+Now that you've created the `Student` class, start a Python REPL, import the `Student` class, and create a student object `jane`:
 
 ~~~{.python caption=""}
 >>> from main import Student
@@ -73,7 +73,7 @@ As seen, the default representation returned `<main.Student object at 0x007EE628
 
 ### Adding a Helpful `__repr__`
 
-Let’s add a `__repr__` method that returns a string containing the values of the instance attributes:
+Let's add a `__repr__` method that returns a string containing the values of the instance attributes:
 
 ~~~{.python caption="main.py"}
     def __repr__(self):
@@ -136,7 +136,7 @@ Well, `jane == also_jane` returns `False`. **Why?**
 
 ![why]({{site.images}}{{page.slug}}/1.png)\
 
-By default, the **==** operator compares the IDs of the two objects. And comparison of objects in terms of attributes doesn’t make sense until you implement the `__eq__` method. Okay, let's do that!
+By default, the **==** operator compares the IDs of the two objects. And comparison of objects in terms of attributes doesn't make sense until you implement the `__eq__` method. Okay, let's do that!
 
 ### Implementing the `__eq__` Method
 
@@ -145,7 +145,7 @@ For now, we know the following:
 - Comparison is valid *only* between two objects belonging to the *same* class.
 - The values of the various instance variables of the two objects should be equal.
 
-Let’s define the `__eq__` method to compare any two instances of two instances of the `Student` class:
+Let's define the `__eq__` method to compare any two instances of two instances of the `Student` class:
 
 ~~~{.python caption="main.py"}
  def __eq__(self, another):
@@ -206,7 +206,7 @@ Now suppose you need to add the GPA for each student, remove the `name` attribut
 **What should you do?**
 
 - You need to first update the `__init__` method. Cool.
-- How’ll you remember the newly added attributes if you don’t add them to the `__repr__`? Okay, so you’ll go and modify the `__repr__`.
+- How'll you remember the newly added attributes if you don’t add them to the `__repr__`? Okay, so you'll go and modify the `__repr__`.
 - Oh wait, you should update the `__eq__` method, too.
 
 Clearly, it's not super fun anymore!
@@ -251,7 +251,7 @@ We see that we get a helpful string representation—without implementing a `__r
 Student(name='Jane', roll_no='CS1234', major='Computer Science', year='junior', gpa=3.98)
 ~~~
 
-What about comparison of objects? Let’s instantiate another `also_jane` and try checking if `jane == also_jane` as before:
+What about comparison of objects? Let's instantiate another `also_jane` and try checking if `jane == also_jane` as before:
 
 ~~~{.python caption=""}
 >>> also_jane = Student('Jane','CS1234','Computer Science','junior',3.98)
@@ -712,10 +712,10 @@ Though you can add methods to the data class, if you find yourself adding too ma
 
 ## Conclusion
 
-I hope this tutorial helped you understand the basics of Python data classes. Let’s review what we’ve learned in this tutorial.
+I hope this tutorial helped you understand the basics of Python data classes. Let's review what we've learned in this tutorial.
 
 We covered how to create data classes (without much boilerplate code) and set default values for one or more fields. In addition, we looked at the usefulness of type hints and immutable data class instances. As a next step, you can try rewriting existing data-oriented Python classes as data classes.
 
-In the next article in the series, we’ll cover inheritance in Python data classes, performance optimizations that were introduced in Python 3.10, and more. Until then, keep coding!
+In the next article in the series, we'll cover inheritance in Python data classes, performance optimizations that were introduced in Python 3.10, and more. Until then, keep coding!
 
 {% include cta/cta1.html %}
