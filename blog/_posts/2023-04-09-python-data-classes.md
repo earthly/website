@@ -544,7 +544,7 @@ julia.gpa = 3.39
 print(julia)
 ~~~
 
-If you now try to update the `gpa` field, you'll run into a `FrozenInstanceError` exception:
+If you now try to update the `gpa` field as shown, you'll run into a `FrozenInstanceError` exception:
 
 ~~~{ caption="Output"}
 Traceback (most recent call last):
