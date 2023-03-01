@@ -405,6 +405,8 @@ Data classes give this flexibility, too. However, you should be aware of caveats
 #### The Curious Case of Mutable Default Arguments in Python
 
 ![curious]({{site.images}}{{page.slug}}/3.png)\
+  
+ 
 ~~~{.python caption=""}
 >>> def add_to_reading_list(item,this_list=[]):
 ...     if item not in this_list:
@@ -420,7 +422,7 @@ Data classes give this flexibility, too. However, you should be aware of caveats
 ['Deep Work', 'Hyperfocus']
 ~~~
 
-*Default arguments* are bound to the function—only once—at the time of defining the function. So the same list is modified in each function call without the list (as opposed to creating a new list). 
+*Default arguments* are bound to the function—only once—at the time of defining the function. So the same list is modified in each function call without the list (as opposed to a empty new list created for each function call without the list argument). 
   
 ~~~{.python caption=""}
 >>> add_to_reading_list('Mindset')
@@ -466,7 +468,7 @@ The above traceback provides helpful information on *what* needs to be fixed and
 The `field()` function in the `dataclasses` module lets you set default values, exclude certain fields from comparison, string representation, and more.
 One of the options that the `field()` function takes is `default_factory`, any Python callable that's called every time a new instance is created.
 
-So we can set `default_factory` to `list`:
+So we can set `default_factory` to `list`. I've also set `compare = False` to exclude the `classses` field from comparison:
 
 ~~~{.python caption="main.py"}
 # main.py
@@ -479,7 +481,7 @@ class Student:
     major: str
     year: str
     gpa: float
-    classes: list = field(default_factory=list)
+    classes: list = field(default_factory=list,compare=False)
 ~~~
 
 Now that we've set `default_factory` to the callable `list`, a new empty list is created—every time an instance of `Student` data class is created—to set the default value for the `classes` field.
@@ -506,7 +508,83 @@ Student(name='Jane', roll_no='CS1234', major='Computer Science', year='junior', 
 #### ⚠️ Specify Default Fields After Non-Default Fields 
 
 As with function arguments, data classes should list the fields *without* default values first, followed by the ones *with* default values.
+
+~~~{.python caption=""}
+from dataclasses import dataclass
+
+@dataclass
+class Coordinate3D:
+    x: float
+    y: float
+    z: float
+~~~
+
+When none of the coordinates `x`, `y`, and `z` are mentioned when creating an instance, the point should be the origin. So we set simple default values: 
+
+~~~{.python caption=""}
+from dataclasses import dataclass
+
+@dataclass
+class Coordinate3D:
+    x: float = 0.0
+    y: float = 0.0
+    z: float = 0.0
+
+
+origin = Coordinate3D()
+print(origin)
+~~~
   
+We see that it's the `origin`:
+  
+~~~{ caption="Output"}
+Coordinate3D(x=0.0, y=0.0, z=0.0)
+~~~
+  
+Suppose instead we'd like the initial coordinate to lie in the YZ-plane (where x = 0) when the `x` coordinate is not specified. So we don't need defaults for `y` and `z` but `x` takes a default of 0.0:
+
+![xyz]({{site.images}}{{page.slug}}/xyz.png)\
+  
+~~~{.python caption=""}
+from dataclasses import dataclass
+
+@dataclass
+class Coordinate3D:
+    x: float = 0.0
+    y: float
+    z: float 
+
+origin = Coordinate3D()
+print(origin)
+~~~
+
+~~~{ caption="Output"}
+Traceback (most recent call last):
+  File "main.py", line 4, in <module>
+    class Coordinate3D:
+    ...
+  TypeError: non-default argument 'y' follows default argument
+~~~
+  
+~~~{.python caption=""}
+from dataclasses import dataclass
+
+@dataclass
+class Coordinate3D:
+    #x: float = 0.0
+    y: float
+    z: float
+    x: float = 0.0
+
+
+point_yz = Coordinate3D(1.5,3)
+print(point_yz)
+~~~
+
+~~~{ caption="Output"}
+Coordinate3D(y=1.5, z=3, x=0.0)
+~~~
+
 </div>
 
 
@@ -538,7 +616,7 @@ To make instances immutable, set the `frozen` parameter in the `@dataclass` deco
 
 ~~~{.python caption="main.py"}
 # main.py
-from dataclasses import dataclass
+from dataclasses import dataclass,field
 ...
 @dataclass(frozen=True)
 class Student:
@@ -571,7 +649,7 @@ Python data classes are classes, too. So you can define methods. Let's add a sim
 
 ~~~{.python caption="main.py"}
 # main.py
-from dataclasses import dataclass
+from dataclasses import dataclass,field
 
 @dataclass()
 class Student:
