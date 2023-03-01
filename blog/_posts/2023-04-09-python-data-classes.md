@@ -62,7 +62,7 @@ Now that you’ve created the `Student` class, start a Python REPL, import the `
 >>> jane = Student('Jane','CS1234','Computer Science','junior')
 ~~~
 
-You inspect this object `jane` at the REPL: 
+You inspect this object `jane` at the REPL:
 
 ~~~{.python caption=""}
 >>> jane
@@ -352,9 +352,9 @@ Student(name='Julia', roll_no=0.5, major='Statistics', year='sophomore', gpa='wh
 
 So are type hints ~~useless~~ still helpful?
 
-### How Do Type Hints Help? 
+### How Do Type Hints Help?
 
-When you add type hints, the IDE or code editor you use will provide *hints* to help you use the right *data types* for the fields. 
+When you add type hints, the IDE or code editor you use will provide *hints* to help you use the right *data types* for the fields.
 
 I'm using VS Code. As you can tell, I set the `roll_no` field to 0.5 even when I was hinted to use a `str`:
 
@@ -512,7 +512,7 @@ Student(name='Jane', roll_no='CS1234', major='Computer Science', year='junior', 
 ~~~
 
 <div class="notice--info">
-#### ⚠️ Specify Default Fields After Non-Default Fields 
+#### ⚠️ Specify Default Fields After Non-Default Fields
 
 As with arguments in a function call, data classes should include the fields *without* default values first, followed by the ones *with* default values.
   
@@ -528,7 +528,7 @@ class Coordinate3D:
     z: float
 ~~~
 
-When none of the coordinates `x`, `y`, and `z` are mentioned when creating an instance, say, you'd like the point to be the origin. So we set simple default values: 
+When none of the coordinates `x`, `y`, and `z` are mentioned when creating an instance, say, you'd like the point to be the origin. So we set simple default values:
 
 ~~~{.python caption=""}
 from dataclasses import dataclass
@@ -553,7 +553,7 @@ Coordinate3D(x=0.0, y=0.0, z=0.0)
 Suppose instead we'd like the initial coordinate to lie in the YZ-plane (where x = 0) when the `x` coordinate is not specified. So we don't need defaults for `y` and `z` but `x` takes a default of 0.0:
 
 ![coordinate]({{site.images}}{{page.slug}}/xyz.png)\
- 
+
 If you do the following, you'll run into an error:
 
 ~~~{.python caption=""}
@@ -578,7 +578,7 @@ Traceback (most recent call last):
     ...
   TypeError: non-default argument 'y' follows default argument
 ~~~
- 
+
 To fix the error, simply move `x` as the last field in the class definition:
   
 ~~~{.python caption=""}
