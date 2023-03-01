@@ -300,3 +300,5 @@ validators
 textarea
 urls
 unclickable
+
+cyber
