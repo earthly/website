@@ -260,13 +260,15 @@ We see that the comparison returns `True` (as expected). But we did not write th
  
 We just checked that we get a string representation and can compare objects out of the box without having to write the `__repr__` and `__eq__` methods, respectively.
 
-If youtake a closer look, we didn't write the `__init__` method either; we only specified the fields and the expected data types as type hints in the data class definition.
+If you take a closer look, we didn't even write the `__init__` method; we only specified the fields and the expected data types as type hints in the data class definition.
   
 So where did the `__init__`, `__repr__`, and `__eq__` come from? 
   
 ![wondering]({{site.images}}{{page.slug}}/2.png)\
 
-Well, with data classes, you get a default implementation of these methods. I'll use built-in functionality from the [`inspect`](https://docs.python.org/3/library/inspect.html) module to get all the member functions implemented for the `Student` data class:
+Well, with data classes, you get a default implementation of these methods. 
+  
+You can use built-in functionality from the [`inspect`](https://docs.python.org/3/library/inspect.html) module to get all the member functions implemented for the `Student` data class:
   
 ~~~{.python caption="main.py"} 
 # main.py
@@ -281,7 +283,7 @@ print(getmembers(Student,isfunction))
   
 🧐 Where you able to spot `__init__`, `__repr__`, and `__eq__` in the output cell? If so, great work! 
   
-If not, I've used [pretty-print](https://docs.python.org/3/library/pprint.html) `pprint` and the output is certainly prettier and easy to parse now:
+If not, I've used [pretty-print](https://docs.python.org/3/library/pprint.html) `pprint` and the output is certainly prettier and easier to parse now:
 
 ~~~{.python caption="main.py"} 
 # main.py
@@ -362,14 +364,23 @@ I'm using VSCode. As you can tell, I set the `roll_no` field to 0.5 even when I 
 
 #### Enforcing Type Checks
 
+If you'd like to run type checks, you can use a static type checker like [mypy](https://mypy.readthedocs.io/en/stable/). You can install *mypy* uisng `pip`:
 
 ~~~{.bash caption=">_"}
 $ pip3 install mypy
 ~~~
 
+After you've installed mypy, you run type checks by running `mypy script_name` at the terminal:
+
+~~~{.bash caption=">_"}
+$ mypy main.py
+~~~
+
+In main.py, we have the instantiation of `julia` on line 11. mypy flags both Argument 2 (0.5 for `roll_no`) and Argument 5 ('who cares!' for `gpa`) for incompatible type:
+
 ~~~{ caption="Output"}
-main.py:12: error: Argument 2 to "Student" has incompatible type "float"; expected "str"  [arg-type]
-main.py:12: error: Argument 5 to "Student" has incompatible type "str"; expected "float"  [arg-type]
+main.py:11: error: Argument 2 to "Student" has incompatible type "float"; expected "str"  [arg-type]
+main.py:11: error: Argument 5 to "Student" has incompatible type "str"; expected "float"  [arg-type]
 Found 2 errors in 1 file (checked 1 source file)
 ~~~
 
