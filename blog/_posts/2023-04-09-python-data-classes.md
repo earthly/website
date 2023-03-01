@@ -476,7 +476,7 @@ The above traceback provides helpful information on *what* needs to be fixed and
 - **The solution**: Use `default_factory`
 
 The `field()` function in the `dataclasses` module lets you set default values, exclude certain fields from comparison, string representation, and more.
-One of the options that the `field()` function takes is `default_factory`, which is any Python callable that's called every time a new instance is created.
+One of the options the `field()` function takes is `default_factory`, which is any Python callable that's called every time a new instance is created.
 
 So we can set `default_factory` to `list`. I've also set `compare = False` to exclude the `classses` field from comparison:
 
