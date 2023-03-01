@@ -352,7 +352,7 @@ So are type hints ~~useless~~ still helpful?
 
 When you add type hints, the IDE or code editor you use will provide *hints* to help you use the right *data types* for the fields. 
 
-I'm using VSCode. As you can tell, I set the `roll_no` field to 0.5 even when I was hinted to use a `str`:
+I'm using VS Code. As you can tell, I set the `roll_no` field to 0.5 even when I was hinted to use a `str`:
 
 <div class="wide">
 ![type-hints-0]({{site.images}}{{page.slug}}/th0.png)\
@@ -364,7 +364,7 @@ Similarly, I set the `gpa` field to 'who cares!' while knowing that `gpa` should
 ![type-hints-1]({{site.images}}{{page.slug}}/th1.png)\
 </div>
 
-Why did I do that? Well, only to let you know that the type hints have *no effect at runtime*.
+Why did I do that? Well, only to let you know that the type hints have *no effect at runtime*. But without the type hints, you wouldn't know if you're (un)intentionally using an incorrect data type.
 
 #### Enforcing Type Checks
 
@@ -463,31 +463,99 @@ class Student:
 ~~~{.python caption="main.py"}
 # main.py
 ...
+julia = Student('Julia',0.5,'Statistics','sophomore','who cares!',classes=['Statistics 101','Graph theory','Real analysis'])
+print(julia)
 jane = Student('Jane','CS1234','Computer Science','junior',3.98)
 print(jane)
 ~~~
 
 ~~~{ caption="Output"}
+Student(name='Julia', roll_no=0.5, major='Statistics', year='sophomore', gpa='who cares!', classes=['Statistics 101', 'Graph theory', 'Real analysis'])
 Student(name='Jane', roll_no='CS1234', major='Computer Science', year='junior', gpa=3.98, classes=[])
+~~~
+
+## Are Immutable Data Classes Helpful?
+
+~~~{ .python caption="main.py"}
+# main.py
+...
+julia.gpa = 3.33
+print(julia)
+~~~
+
+~~~{ caption="Output"}
+Student(name='Julia', roll_no=0.5, major='Statistics', year='sophomore', gpa=3.33, classes=['Statistics 101', 'Graph theory', 'Real analysis'])
+~~~
+
+
+~~~{.python caption="main.py"}
+# main.py
+from dataclasses import dataclass
+
+@dataclass(frozen=True)
+class Student:
+    name: str
+    roll_no: str
+    major: str
+    year: str
+    gpa: float
+    classes: list = field(default_factory=list)
+...
+julia = Student('Julia',0.5,'Statistics','sophomore','who cares!',classes=['Statistics 101','Graph theory','Real analysis'])
+...
+julia.gpa = 3.33
+print(julia)
+~~~
+
+
+~~~{ caption="Output"}
+Traceback (most recent call last):
+  File "main.py", line 18, in <module>
+    julia.gpa = 3.33
+  File "<string>", line 4, in __setattr__
+dataclasses.FrozenInstanceError: cannot assign to field 'gpa'
 ~~~
 
 ## Defining Methods in a Python Data Class
 
-## Are Immutable Data Classes Helpful?
+~~~{.python caption="main.py"}
+# main.py
+from dataclasses import dataclass
 
+@dataclass()
+class Student:
+    name: str
+    roll_no: str
+    major: str
+    year: str
+    gpa: float
+    classes: list = field(default_factory=list)
+...
+julia = Student('Julia',0.5,'Statistics','sophomore','who cares!',classes=['Statistics 101','Graph theory','Real analysis'])
+...
+print(julia.some_method())
+~~~
 
+~~~{ caption="Output"}
+I'm an instance method in Student data class; here for some reason. :)
+~~~
 
-## Python Data Classes vs. NamedTuples
+~~~{ caption="Output"}
+[('__eq__', <function __create_fn__.<locals>.__eq__ at 0x019B6B20>),
+ ('__init__', <function __create_fn__.<locals>.__init__ at 0x019B69B8>),
+ ('__repr__', <function __create_fn__.<locals>.__repr__ at 0x019B68E0>),
+ ('some_method', <function Student.some_method at 0x019B6928>)]
+~~~
 
 ## Conclusion
 
+I hope this tutorial helped you understand the basics of Python data classes. Let’s review what we’ve learned in this tutorial. 
 
+We covered how to create data classes (without much boilerplate code) and set default values for one or more fields. In addition, we looked at the usefulness of type hints and immutable data class instances. As a next step, you can try rewriting existing data-oriented Python classes as data classes. 
 
+In the next article in the series, we’ll cover subclassing Python data classes, performance optimizations that were introduced in Python 3.10, and more. Until then, keep coding!
 
-
-
-
-
+{% include cta/cta1.html %}
 
 
 
