@@ -262,7 +262,7 @@ True
 We see that the comparison returns `True` (as expected). But we did not write the `__eq__` method either.
 
 <div class="notice--big--primary">
-### Where Did `__init__`, `__repr__`, and `__eq__` Come From?
+### Where Did `__init__` and Other Methods Come From?
 
 If you take a closer look, we did not write even the class constructor `__init__` method; we only specified the fields and the expected data types as type hints in the data class definition.
   
@@ -309,7 +309,7 @@ pprint(getmembers(Student,isfunction))
 <div class="notice--info">
 ### Create Data Classes With `make_dataclass`
 
-To create a data class, you can also use the `make_dataclass` constructor:
+To create a data class, you can also use the following constructor:
   
 ~~~{.python caption=""}
 from dataclasses import make_dataclass
