@@ -161,7 +161,7 @@ Let’s define the `__eq__` method to compare any two instances of two instances
 ~~~
 
 <div class="notice--info">
-Instead of the "InvalidComparison" string, you can also return `NotImplemented`. If you do so, when you try to compare two objects of different classes, you'll now be notified that the `__eq__` method for such comparisons has not been implemented.
+Instead of the "InvalidComparison" string, you can also return `NotImplemented`. If you do so, when you try to compare two objects of different classes, you'll be notified that the `__eq__` method for such comparisons has not been implemented.
 </div>
 
 When you try to check if `jane == also_jane` after adding the `__eq__` method, you'll see that it evaluates to `True` as expected:
@@ -216,6 +216,8 @@ Clearly, it's not super fun anymore!
 And as you keep modifying the class, you'll *likely* forget to update one of these. No, I'm not challenging you!
 
 ## How to Create Data Classes in Python
+
+Now let's rewrite the `Student` class as a data class (and see if it'll make things easier for us!).
 
 ~~~{.python caption="main.py"}
 from dataclasses import dataclass
@@ -476,6 +478,10 @@ Student(name='Jane', roll_no='CS1234', major='Computer Science', year='junior', 
 
 ## Are Immutable Data Classes Helpful?
 
+By default, all data class instances are **mutable**. Meaning you *can* modify the values of one or more fields after the instance is initialized.
+
+Let's update the `gpa` field of `julia` to 3.33 (a valid GPA this time):
+
 ~~~{ .python caption="main.py"}
 # main.py
 ...
@@ -483,10 +489,16 @@ julia.gpa = 3.33
 print(julia)
 ~~~
 
+The `gpa` field is now set to 3.33:
+
 ~~~{ caption="Output"}
 Student(name='Julia', roll_no=0.5, major='Statistics', year='sophomore', gpa=3.33, classes=['Statistics 101', 'Graph theory', 'Real analysis'])
 ~~~
 
+However, you may sometimes need these fields to be immutable. There are several advantages.
+
+
+To make instances immutable, set the `frozen` parameter in the `@dataclass` decorator to `True`.
 
 ~~~{.python caption="main.py"}
 # main.py
@@ -518,6 +530,8 @@ dataclasses.FrozenInstanceError: cannot assign to field 'gpa'
 
 ## Defining Methods in a Python Data Class
 
+Python data classes are classes, too. So you can define methods. Let's add a simple method `some_method()` that prints out a statement:
+
 ~~~{.python caption="main.py"}
 # main.py
 from dataclasses import dataclass
@@ -539,9 +553,13 @@ julia = Student('Julia',0.5,'Statistics','sophomore','who cares!',classes=['Stat
 print(julia.some_method())
 ~~~
 
+You can now access `some_method()` by calling it on any instance of the `Student` data class. Here, we've called it on `julia`:
+
 ~~~{ caption="Output"}
 I'm an instance method in Student data class; here for some reason. :)
 ~~~
+
+If you try to inspect the member functions of the `Student` class (again):
 
 ~~~{.python caption="main.py"}
 # main.py
@@ -549,12 +567,18 @@ I'm an instance method in Student data class; here for some reason. :)
 pprint(getmembers(Student,isfunction))
 ~~~
 
+You'll see that `some_method()` has also been included in the list:
+
 ~~~{ caption="Output"}
 [('__eq__', <function __create_fn__.<locals>.__eq__ at 0x019B6B20>),
  ('__init__', <function __create_fn__.<locals>.__init__ at 0x019B69B8>),
  ('__repr__', <function __create_fn__.<locals>.__repr__ at 0x019B68E0>),
  ('some_method', <function Student.some_method at 0x019B6928>)]
 ~~~
+
+🔖Data classes don’t provide an implementation of the `__str__` method (falls back to `__repr__` which is always implemented for a data class). If you’d like you can add a `__str__` for users of the class instead of `some_method()`. 
+
+Though you can add methods to the data class, if you find yourself adding too many methods, you should consider rewriting the data class as a regular Python class instead.
 
 ## Conclusion
 
