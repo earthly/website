@@ -314,7 +314,43 @@ However, I prefer using the `@dataclass` decorator; the code is a lot easier to 
 
 ## Type Hints and Default Values in Python Data Classes
 
+We've specified type hints for all the fields in the data class. However, Python is a dynamically typed language, so it does not enforce types at runtime.
+
+In main.py, let's create an instance of the `Student` data class with invalid types for one or more fields:
+
+~~~{.python caption="main.py"}
+from dataclasses import dataclass
+
+@dataclass
+class Student:
+    name: str
+    roll_no: str
+    major: str
+    year: str
+    gpa: float
+
+julia = Student('Julia',0.5,'Statistics','sophomore','who cares!')
+~~~
+
+Let's zoom into `julia = Student('Julia',0.5,'Statistics','sophomore','who cares!')`:
+
+- The `roll_no` field is expected to be a `str`, but I've set it to 0.5, which is of `float` data type.
+- The `gpa` field should be a `float`, but I've set it to the `str` 'who cares!'.
+
+If you (re)run main.py, you'll *not* run into any errors. And if you look at the object `julia` at the REPL, you'll see that `roll_no` and `gpa` have been assigned values 0.5 and 'who cares!', repsectively; they're not flagged for invalid data type.
+
+~~~{.python caption=""}
+>>> julia
+Student(name='Julia', roll_no=0.5, major='Statistics', year='sophomore', gpa='who cares!')
+~~~
+
+So are type hints ~~useless~~ still helpful?
+
 ### How Do Type Hints Help? 
+
+When you add type hints, the IDE or code editor you use will provide *hints* to help you use the right data types for the fields. 
+
+I'm using VSCode. As you can tell, I set the `roll_no` field to 0.5 even when I was hinted to use a `str`.
 
 <div class="wide">
 ![type-hints-0]({{site.images}}{{page.slug}}/th0.png)\
@@ -325,6 +361,7 @@ However, I prefer using the `@dataclass` decorator; the code is a lot easier to 
 </div>
 
 #### Enforcing Type Checks
+
 
 ~~~{.bash caption=">_"}
 $ pip3 install mypy
