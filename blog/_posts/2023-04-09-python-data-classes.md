@@ -263,8 +263,6 @@ We see that the comparison returns `True` (as expected). But we did not write th
 
 <div class="notice--big--primary">
 ### Where Did `__init__`, `__repr__`, and `__eq__` Come From?
- 
-We just checked that we get a string representation and can compare objects out of the box.
 
 If you take a closer look, we did not write even the class constructor `__init__` method; we only specified the fields and the expected data types as type hints in the data class definition.
   
@@ -311,7 +309,7 @@ pprint(getmembers(Student,isfunction))
 <div class="notice--info">
 ### Create Data Classes With `make_dataclass`
 
-To create a data class, you can also use the `make_dataclass` constructor from the `dataclasses` module:
+To create a data class, you can also use the `make_dataclass` constructor:
   
 ~~~{.python caption=""}
 from dataclasses import make_dataclass
@@ -555,7 +553,7 @@ Coordinate3D(x=0.0, y=0.0, z=0.0)
   
 Suppose instead we'd like the initial coordinate to lie in the YZ-plane (where x = 0) when the `x` coordinate is not specified. So we don't need defaults for `y` and `z` but `x` takes a default of 0.0:
 
-![xyz]({{site.images}}{{page.slug}}/xyz.png)\
+![coordinate]({{site.images}}{{page.slug}}/xyz.png)\
  
 If you do the following, you'll run into an error:
 ~~~{.python caption=""}
