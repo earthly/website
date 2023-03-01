@@ -22,4 +22,5 @@ ignore:
   - HouseStyle/tech-terms/mongo.txt
   - HouseStyle/tech-terms/go.txt
   - HouseStyle/tech-terms/db.txt
+  - HouseStyle/tech-terms/aws.txt
 
