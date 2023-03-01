@@ -10,7 +10,7 @@ internal-links:
  - Python Classes
 ---
 
-In Python, classes let you group data and behavior together by defining attributes and methods, respectively. Typically, a class contains both attributes and a set of methods that add functionality. **But what if you have a class that stores a lot of attributes with almost no functionality?** Do you still need to use regular classes, or is there a better alternative? 
+In Python, classes let you group data and behavior together by defining attributes and methods, respectively. Typically, a class contains both attributes and a set of methods that add functionality. **But what if you have a class that stores a lot of attributes with almost no functionality?** Do you still need to use regular classes, or is there a better alternative?
 
 **Data classes**, first introduced in Python 3.7, provide a convenient way of defining and managing such **data-oriented classes** (who would've guessed!).
 
@@ -35,7 +35,7 @@ You’ll first create a regular [Python class](https://earthly.dev/blog/how-cls-
 
 As our goal is to *understand and use* data classes—and not to write fancy classes—let's create a simple class such as a `Student` or an `Employee` class.
 
-So which class do we pick: `Student` or `Employee`? 
+So which class do we pick: `Student` or `Employee`?
 
 ![student-vs-employee-class]({{site.images}}{{page.slug}}/5.png)\
 
@@ -69,7 +69,7 @@ You inspect this object `jane` at the REPL:
 <main.Student object at 0x007EE628>
 ~~~
 
-As seen, the default representation returned `<main.Student object at 0x007EE628>` is not very helpful; it does *not* contain any information on the attributes of the instance `jane`. If you need a helpful string representation of the object, you should implement the `__repr__` method. 
+As seen, the default representation returned `<main.Student object at 0x007EE628>` is not very helpful; it does *not* contain any information on the attributes of the instance `jane`. If you need a helpful string representation of the object, you should implement the `__repr__` method.
 
 ### Adding a Helpful `__repr__`
 
@@ -102,7 +102,7 @@ Now go back to the REPL and look at the `__repr__` for `jane`:
 Student: Jane CS1234 Computer Science junior
 ~~~
 
-That's much better! 
+That's much better!
 
 But remember, *you* added the `__repr__` method. *So it's only as helpful as you choose to make it*. You can as well write a `__repr__` that only returns the string "Student object". Clearly, such a `__repr__` is not more helpful than the default `<main.Student object at 0x007EE628>` (just saying!).
 
@@ -142,7 +142,7 @@ By default, the **==** operator compares the IDs of the two objects. And compari
 
 For now, we know the following:
 
-- Comparison is valid *only* between two objects belonging to the *same* class. 
+- Comparison is valid *only* between two objects belonging to the *same* class.
 - The values of the various instance variables of the two objects should be equal.
 
 Let’s define the `__eq__` method to compare any two instances of two instances of the `Student` class:
@@ -197,16 +197,16 @@ class Student:
             return "InvalidComparison"
 ~~~
 
-Did we work extra hard here? No, we didn't. 
+Did we work extra hard here? No, we didn't.
 
 (Almost) all of this is boilerplate code that you'll write whenever you create a Python class.
 
-Now suppose you need to add the GPA for each student, remove the `name` attribute and add two new attributes: `first_name` and `last_name`, the list of classes each student has taken, and a bunch more. 
+Now suppose you need to add the GPA for each student, remove the `name` attribute and add two new attributes: `first_name` and `last_name`, the list of classes each student has taken, and a bunch more.
 
 **What should you do?**
 
-- You need to first update the `__init__` method. Cool. 
-- How’ll you remember the newly added attributes if you don’t add them to the `__repr__`? Okay, so you’ll go and modify the `__repr__`. 
+- You need to first update the `__init__` method. Cool.
+- How’ll you remember the newly added attributes if you don’t add them to the `__repr__`? Okay, so you’ll go and modify the `__repr__`.
 - Oh wait, you should update the `__eq__` method, too.
 
 Clearly, it's not super fun anymore!
@@ -266,22 +266,22 @@ We see that the comparison returns `True` (as expected). But we did not write th
 
 If you take a closer look, we did not write even the class constructor `__init__` method; we only specified the fields and the expected data types as type hints in the data class definition.
   
-So where did the `__init__`, `__repr__`, and `__eq__` come from? 
+So where did the `__init__`, `__repr__`, and `__eq__` come from?
   
 ![wondering]({{site.images}}{{page.slug}}/2.png)\
 
-Well, with data classes, you get a default implementation of these methods. 
+Well, with data classes, you get a default implementation of these methods.
   
 You can use built-in functionality from the [`inspect`](https://docs.python.org/3/library/inspect.html) module to get all the member functions implemented for the `Student` data class:
   
-~~~{.python caption="main.py"} 
+~~~{.python caption="main.py"}
 # main.py
 from inspect import getmembers,isfunction
 ...
 print(getmembers(Student,isfunction))
 ~~~
 
-~~~{ caption="Output"} 
+~~~{ caption="Output"}
 [('__eq__', <function __create_fn__.<locals>.__eq__ at 0x014F6A48>), ('__init__', <function __create_fn__.<locals>.__init__ at 0x014F6970>), ('__repr__', <function __create_fn__.<locals>.__repr__ at 0x014F6A00>)]
 ~~~
   
@@ -289,7 +289,7 @@ print(getmembers(Student,isfunction))
   
 If not, I've used [pretty-print](https://docs.python.org/3/library/pprint.html) `pprint` and the output is certainly prettier and easier to parse now:
 
-~~~{.python caption="main.py"} 
+~~~{.python caption="main.py"}
 # main.py
 from inspect import getmembers,isfunction
 from pprint import pprint
@@ -297,14 +297,15 @@ from pprint import pprint
 pprint(getmembers(Student,isfunction))
 ~~~
 
-~~~{ caption="Output"} 
+~~~{ caption="Output"}
 [('__eq__', <function __create_fn__.<locals>.__eq__ at 0x014F6A48>),
 ('__init__', <function __create_fn__.<locals>.__init__ at 0x014F6970>),
 ('__repr__', <function __create_fn__.<locals>.__repr__ at 0x014F6A00>)]
 ~~~
+
 </div>
 
-**To sum up: Python data classes have implementations of the `__init__`, `__repr__`, and `__eq__` methods.** 
+**To sum up: Python data classes have implementations of the `__init__`, `__repr__`, and `__eq__` methods.**
 
 ### Create Data Classes With `make_dataclass`
 
@@ -314,8 +315,8 @@ To create a data class, you can also use the `make_dataclass` constructor from t
 from dataclasses import make_dataclass
 Student = make_dataclass('Student',['name','roll_no','major','year','gpa'])
 ~~~
-However, I prefer using the `@dataclass` decorator; the code is a lot easier to read and maintain, especially when there are many fields.
 
+However, I prefer using the `@dataclass` decorator; the code is a lot easier to read and maintain, especially when there are many fields.
 
 ## Type Hints and Default Values in Python Data Classes
 
@@ -391,7 +392,6 @@ main.py:11: error: Argument 5 to "Student" has incompatible type "str"; expected
 Found 2 errors in 1 file (checked 1 source file)
 ~~~
 
-
 ### Setting Default Values for Data Class Attributes
 
 In a regular Python class, you can provide default values for fields in the `__init__()` method definition. Doing so, you can make certain fields optional when instantiating objects.
@@ -424,7 +424,7 @@ It takes in one *required* positional argument `item` and *optionally* a list. W
 
 If you don't have a reading list, you're adding an item to an empty list, yes? Well, that's the behavior you'd expect.
   
-However, *default arguments* are bound to the function—only once—at the time of defining the function. 
+However, *default arguments* are bound to the function—only once—at the time of defining the function.
   
 Therefore, when you don't pass in the list in the function call, you'll see that the *same* list is modified in each function call. A new empty list is not created for each function call without the list argument:
   
@@ -555,6 +555,7 @@ Suppose instead we'd like the initial coordinate to lie in the YZ-plane (where x
 ![coordinate]({{site.images}}{{page.slug}}/xyz.png)\
  
 If you do the following, you'll run into an error:
+
 ~~~{.python caption=""}
 from dataclasses import dataclass
 
@@ -599,8 +600,8 @@ We get the expected value:
 ~~~{ caption="Output"}
 Coordinate3D(y=1.5, z=3, x=0.0)
 ~~~
-</div>
 
+</div>
 
 ## Are Immutable Data Classes Helpful?
 
@@ -705,15 +706,15 @@ You'll see that `some_method()` has also been included in the list:
  ('some_method', <function Student.some_method at 0x019B6928>)]
 ~~~
 
-🔖Data classes don’t provide an implementation of the `__str__` method (falls back to `__repr__` which is always implemented for a data class). If you’d like you can add a `__str__` for users of the class instead of `some_method()`. 
+🔖Data classes don’t provide an implementation of the `__str__` method (falls back to `__repr__` which is always implemented for a data class). If you’d like you can add a `__str__` for users of the class instead of `some_method()`.
 
 Though you can add methods to the data class, if you find yourself adding too many methods, you should consider rewriting the data class as a regular Python class instead.
 
 ## Conclusion
 
-I hope this tutorial helped you understand the basics of Python data classes. Let’s review what we’ve learned in this tutorial. 
+I hope this tutorial helped you understand the basics of Python data classes. Let’s review what we’ve learned in this tutorial.
 
-We covered how to create data classes (without much boilerplate code) and set default values for one or more fields. In addition, we looked at the usefulness of type hints and immutable data class instances. As a next step, you can try rewriting existing data-oriented Python classes as data classes. 
+We covered how to create data classes (without much boilerplate code) and set default values for one or more fields. In addition, we looked at the usefulness of type hints and immutable data class instances. As a next step, you can try rewriting existing data-oriented Python classes as data classes.
 
 In the next article in the series, we’ll cover inheritance in Python data classes, performance optimizations that were introduced in Python 3.10, and more. Until then, keep coding!
 
