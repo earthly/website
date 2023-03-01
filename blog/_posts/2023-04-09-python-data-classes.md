@@ -10,7 +10,7 @@ internal-links:
  - Python Classes
 ---
 
-In Python, classes let you group together data and behavior by defining attributes and methods, respectively. Typically, a class contains both attributes and a set of methods that add functionality. **But what if you have a class that stores a lot of attributes with almost no functionality?** Do you still need to use regular classes, or is there a better alternative? 
+In Python, classes let you group data and behavior together by defining attributes and methods, respectively. Typically, a class contains both attributes and a set of methods that add functionality. **But what if you have a class that stores a lot of attributes with almost no functionality?** Do you still need to use regular classes, or is there a better alternative? 
 
 **Data classes**, first introduced in Python 3.7, provide a convenient way of defining and managing such **data-oriented classes** (who would've guessed!).
 
@@ -322,7 +322,7 @@ However, I prefer using the `@dataclass` decorator; the code is a lot easier to 
 
 ## Type Hints and Default Values in Python Data Classes
 
-We've specified type hints for all the fields in the data class. However, Python is a **dynamically typed language**, so it does not enforce types at runtime.
+We've specified type hints for all the fields in the data class. However, Python is a **dynamically typed language**, so it **does not enforce types** at runtime.
 
 In main.py, let's create an instance of the `Student` data class with invalid types for one or more fields:
 
@@ -370,7 +370,7 @@ Similarly, I set the `gpa` field to 'who cares!' while knowing that `gpa` should
 ![type-hints-1]({{site.images}}{{page.slug}}/th1.png)\
 </div>
 
-Why did I do that? Well, only to let you know that the type hints have *no effect at runtime*. But without the type hints, you wouldn't know if you're (un)intentionally using an incorrect data type.
+But why did I do that? Well, only to let you know that the type hints have *no effect at runtime*. But without the type hints, you wouldn't know if you're (un)intentionally using an incorrect data type.
 
 #### Enforcing Type Checks
 
@@ -399,9 +399,7 @@ Found 2 errors in 1 file (checked 1 source file)
 
 In a regular Python class, you can provide default values for fields in the `__init__()` method definition. Doing so, you can make certain fields optional when instantiating objects.
 
-Data classes give this flexibility, too.
-
-However, you should be aware of caveats such as **setting mutable defaults for fields**.
+Data classes give this flexibility, too. However, you should be aware of caveats such as **setting mutable defaults for fields**.
 
 <div class="notice--big--primary">
 #### The Curious Case of Mutable Default Arguments in Python
@@ -421,6 +419,8 @@ However, you should be aware of caveats such as **setting mutable defaults for f
 >>> add_to_reading_list(new_book,books)
 ['Deep Work', 'Hyperfocus']
 ~~~
+
+*Default arguments* are bound to the function—only once—at the time of defining the function. So the same list is modified in each function call without the list (as opposed to creating a new list). 
   
 ~~~{.python caption=""}
 >>> add_to_reading_list('Mindset')
@@ -448,7 +448,7 @@ class Student:
     classes: list = []
 ~~~
 
-Data classes *do not* allow you to define mutable defaults. And you'll get a ValueError:
+Data classes *do not* allow you to define mutable defaults. And you'll get a `ValueError`:
 
 ~~~{ caption="Output"}
 Traceback (most recent call last):
@@ -462,6 +462,11 @@ The above traceback provides helpful information on *what* needs to be fixed and
 
 - **The problem**: Mutable default
 - **The solution**: Use `default_factory`
+
+The `field()` function in the `dataclasses` module lets you set default values, exclude certain fields from comparison, string representation, and more.
+One of the options that the `field()` function takes is `default_factory`, any Python callable that's called every time a new instance is created.
+
+So we can set `default_factory` to `list`:
 
 ~~~{.python caption="main.py"}
 # main.py
@@ -477,12 +482,14 @@ class Student:
     classes: list = field(default_factory=list)
 ~~~
 
-We pass in the `classes` field when instantiating `julia` and do not pass in for `jane`:
+Now that we've set `default_factory` to the callable `list`, a new empty list is created—every time an instance of `Student` data class is created—to set the default value for the `classes` field.
+
+We pass in the `classes` list when instantiating `julia` and do not pass in for `jane`:
 
 ~~~{.python caption="main.py"}
 # main.py
 ...
-julia = Student('Julia',0.5,'Statistics','sophomore','who cares!',classes=['Statistics 101','Graph theory','Real analysis'])
+julia = Student('Julia',0.5,'Statistics','sophomore','who cares!',['Statistics 101','Graph theory','Real analysis'])
 print(julia)
 jane = Student('Jane','CS1234','Computer Science','junior',3.98)
 print(jane)
