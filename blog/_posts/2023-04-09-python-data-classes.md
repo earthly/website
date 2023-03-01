@@ -406,7 +406,8 @@ Data classes give this flexibility, too. However, you should be aware of caveats
 
 ![curious]({{site.images}}{{page.slug}}/3.png)\
   
- 
+Consider the following function `add_to_reading_list`:
+  
 ~~~{.python caption=""}
 >>> def add_to_reading_list(item,this_list=[]):
 ...     if item not in this_list:
@@ -414,7 +415,9 @@ Data classes give this flexibility, too. However, you should be aware of caveats
 ...     return this_list
 ...
 ~~~
- 
+
+It takes in one *required* positional argument `item` and *optionally* a list. When you provide both the item and the list in the function call, the function works as expected, returning a list where `item` is appended to the end of the list:
+  
 ~~~{.python caption=""}
 >>> books = ['Deep Work']
 >>> new_book = 'Hyperfocus'
@@ -422,7 +425,11 @@ Data classes give this flexibility, too. However, you should be aware of caveats
 ['Deep Work', 'Hyperfocus']
 ~~~
 
-*Default arguments* are bound to the function—only once—at the time of defining the function. So the same list is modified in each function call without the list (as opposed to a empty new list created for each function call without the list argument). 
+If you don't have a reading list, you're adding an item to an empty list, yes? Well, that's the behavior you'd expect.
+  
+Howver, *default arguments* are bound to the function—only once—at the time of defining the function. 
+  
+Therefore, when you don't pass in the list in the function call, you'll see that the *same* list is modified in each function call. A new empty list is not created for each function call without the list argument:
   
 ~~~{.python caption=""}
 >>> add_to_reading_list('Mindset')
@@ -432,6 +439,9 @@ Data classes give this flexibility, too. However, you should be aware of caveats
 >>> add_to_reading_list('Flow')
 ['Mindset', 'Grit', 'Flow']
 ~~~
+  
+This is why you should avoid using mutable defaults in Python.
+  
 </div>
 
 Let's add a `classes` field, a list of classes that a student has signed up for. If a student hasn't signed for classes as yet, we initialize `classes` to an empty list. As mentioned, setting it to the literal [], as shown here, won't work.  
@@ -450,7 +460,7 @@ class Student:
     classes: list = []
 ~~~
 
-Data classes *do not* allow you to define mutable defaults. And you'll get a `ValueError`:
+Luckily, data classes *do not* allow you to define mutable defaults such as lists and dictionaries. And you'll get a `ValueError`:
 
 ~~~{ caption="Output"}
 Traceback (most recent call last):
@@ -466,7 +476,7 @@ The above traceback provides helpful information on *what* needs to be fixed and
 - **The solution**: Use `default_factory`
 
 The `field()` function in the `dataclasses` module lets you set default values, exclude certain fields from comparison, string representation, and more.
-One of the options that the `field()` function takes is `default_factory`, any Python callable that's called every time a new instance is created.
+One of the options that the `field()` function takes is `default_factory`, which is any Python callable that's called every time a new instance is created.
 
 So we can set `default_factory` to `list`. I've also set `compare = False` to exclude the `classses` field from comparison:
 
@@ -507,7 +517,9 @@ Student(name='Jane', roll_no='CS1234', major='Computer Science', year='junior', 
 <div class="notice--info">
 #### ⚠️ Specify Default Fields After Non-Default Fields 
 
-As with function arguments, data classes should list the fields *without* default values first, followed by the ones *with* default values.
+As with arguments in a function call, data classes should include the fields *without* default values first, followed by the ones *with* default values.
+  
+Here's an example. `Coordinate3D` is a data class that stores the location of a point (x,y,z) in 3D space:  
 
 ~~~{.python caption=""}
 from dataclasses import dataclass
@@ -519,7 +531,7 @@ class Coordinate3D:
     z: float
 ~~~
 
-When none of the coordinates `x`, `y`, and `z` are mentioned when creating an instance, the point should be the origin. So we set simple default values: 
+When none of the coordinates `x`, `y`, and `z` are mentioned when creating an instance, say, you'd like the point to be the origin. So we set simple default values: 
 
 ~~~{.python caption=""}
 from dataclasses import dataclass
@@ -535,7 +547,7 @@ origin = Coordinate3D()
 print(origin)
 ~~~
   
-We see that it's the `origin`:
+And it works as expected. Origin is (0.0,0.0,0.0) as expected:
   
 ~~~{ caption="Output"}
 Coordinate3D(x=0.0, y=0.0, z=0.0)
@@ -544,7 +556,8 @@ Coordinate3D(x=0.0, y=0.0, z=0.0)
 Suppose instead we'd like the initial coordinate to lie in the YZ-plane (where x = 0) when the `x` coordinate is not specified. So we don't need defaults for `y` and `z` but `x` takes a default of 0.0:
 
 ![xyz]({{site.images}}{{page.slug}}/xyz.png)\
-  
+ 
+If you do the following, you'll run into an error:
 ~~~{.python caption=""}
 from dataclasses import dataclass
 
@@ -557,7 +570,9 @@ class Coordinate3D:
 origin = Coordinate3D()
 print(origin)
 ~~~
-
+  
+The error is due to `y`, a non-default field, following `x`, a field with default value:
+  
 ~~~{ caption="Output"}
 Traceback (most recent call last):
   File "main.py", line 4, in <module>
@@ -565,13 +580,14 @@ Traceback (most recent call last):
     ...
   TypeError: non-default argument 'y' follows default argument
 ~~~
+ 
+To fix the error, simply move `x` as the last field in the class definition:
   
 ~~~{.python caption=""}
 from dataclasses import dataclass
 
 @dataclass
 class Coordinate3D:
-    #x: float = 0.0
     y: float
     z: float
     x: float = 0.0
@@ -580,11 +596,12 @@ class Coordinate3D:
 point_yz = Coordinate3D(1.5,3)
 print(point_yz)
 ~~~
-
+  
+We get the expected value:
+  
 ~~~{ caption="Output"}
 Coordinate3D(y=1.5, z=3, x=0.0)
 ~~~
-
 </div>
 
 
