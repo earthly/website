@@ -217,9 +217,9 @@ And as you keep modifying the class, you'll *likely* forget to update one of the
 
 ## How to Create Data Classes in Python
 
-Now let's rewrite the `Student` class as a data class (and see if it'll make things easier for us!).
+Now let's rewrite the `Student` class as a data class (and see if it'll make things easier for us!). You may delete all the existing code in main.py.
 
-To create a data class, you can use the `@dataclass` decorator from Python's built-in `dataclasses` module. You can specify the name of the class and list the fields along with their type annotations:
+To create a data class, you can use the `@dataclass` decorator from Python's built-in `dataclasses` module. You can specify the name of the class and list the fields along with their type annotations as shown:
 
 ~~~{.python caption="main.py"}
 from dataclasses import dataclass
@@ -233,7 +233,9 @@ class Student:
     gpa: float
 ~~~
 
-Now that we’ve created the `Student` data class, let's run through the same steps that we did for the regular `Student` class.
+At first look, this version of the `Student` class is easy to read and the type hints indicate the expected data types for each field. There's no `__init__` method or any of the other methods that we added for the regular class. That's it! You can proceed to instantiate objects of the `Student` data class.
+
+Now, let's run through the same steps that we did for the regular `Student` class.
 
 Import the `Student` data class and instantiate the student object `jane`:
 
@@ -264,7 +266,7 @@ We see that the comparison returns `True` (as expected). But we did not write th
  
 We just checked that we get a string representation and can compare objects out of the box without having to write the `__repr__` and `__eq__` methods, respectively.
 
-If you take a closer look, we didn't even write the `__init__` method; we only specified the fields and the expected data types as type hints in the data class definition.
+If you take a closer look, we did not write even the class constructor `__init__` method; we only specified the fields and the expected data types as type hints in the data class definition.
   
 So where did the `__init__`, `__repr__`, and `__eq__` come from? 
   
@@ -285,7 +287,7 @@ print(getmembers(Student,isfunction))
 [('__eq__', <function __create_fn__.<locals>.__eq__ at 0x014F6A48>), ('__init__', <function __create_fn__.<locals>.__init__ at 0x014F6970>), ('__repr__', <function __create_fn__.<locals>.__repr__ at 0x014F6A00>)]
 ~~~
   
-🧐 Where you able to spot `__init__`, `__repr__`, and `__eq__` in the output cell? If so, great work! 
+🧐 Where you able to spot `__init__`, `__repr__`, and `__eq__` in the output cell?  
   
 If not, I've used [pretty-print](https://docs.python.org/3/library/pprint.html) `pprint` and the output is certainly prettier and easier to parse now:
 
@@ -320,7 +322,7 @@ However, I prefer using the `@dataclass` decorator; the code is a lot easier to 
 
 ## Type Hints and Default Values in Python Data Classes
 
-We've specified type hints for all the fields in the data class. However, Python is a dynamically typed language, so it does not enforce types at runtime.
+We've specified type hints for all the fields in the data class. However, Python is a **dynamically typed language**, so it does not enforce types at runtime.
 
 In main.py, let's create an instance of the `Student` data class with invalid types for one or more fields:
 
@@ -372,7 +374,7 @@ Why did I do that? Well, only to let you know that the type hints have *no effec
 
 #### Enforcing Type Checks
 
-If you'd like to run type checks, you can use a static type checker like [mypy](https://mypy.readthedocs.io/en/stable/). You can install *mypy* uisng `pip`:
+If you'd like to enforce types and get erors for mismatched data types, you can use a static type checker like [mypy](https://mypy.readthedocs.io/en/stable/). You can install mypy using `pip`:
 
 ~~~{.bash caption=">_"}
 $ pip3 install mypy
@@ -395,9 +397,11 @@ Found 2 errors in 1 file (checked 1 source file)
 
 ### Setting Default Values for Data Class Attributes
 
-<div class="notice--info">
-#### ⚠️ Specify Default Fields After Non-Default Fields 
-</div>
+In a regular Python class, you can provide default values for fields in the `__init__()` method definition. Doing so, you can make certain fields optional when instantiating objects.
+
+Data classes give this flexibility, too.
+
+However, you should be aware of caveats such as setting mutable default for fields.
 
 <div class="notice--big--primary">
 #### The Curious Case of Mutable Default Arguments in Python
@@ -450,6 +454,11 @@ Traceback (most recent call last):
   ValueError: mutable default <class 'list'> for field classes is not allowed: use default_factory
 ~~~
 
+The above traceback provides helpful information on *what* needs to be fixed and *how* you can fix it:
+
+- **The problem**: Mutable default
+- **The solution**: Use `default_factory`
+
 ~~~{.python caption="main.py"}
 # main.py
 from dataclasses import dataclass
@@ -464,6 +473,8 @@ class Student:
     classes: list = field(default_factory=list)
 ~~~
 
+We pass in the `classes` field when instantiating `julia` and do not pass in for `jane`:
+
 ~~~{.python caption="main.py"}
 # main.py
 ...
@@ -473,10 +484,20 @@ jane = Student('Jane','CS1234','Computer Science','junior',3.98)
 print(jane)
 ~~~
 
+In the output, we see that the provided and default (empty) lists are used for `julia` and `jane`, respectively:
+
 ~~~{ caption="Output"}
 Student(name='Julia', roll_no=0.5, major='Statistics', year='sophomore', gpa='who cares!', classes=['Statistics 101', 'Graph theory', 'Real analysis'])
 Student(name='Jane', roll_no='CS1234', major='Computer Science', year='junior', gpa=3.98, classes=[])
 ~~~
+
+<div class="notice--info">
+#### ⚠️ Specify Default Fields After Non-Default Fields 
+
+As with function arguments, data classes should list the fields *without* default values first, followed by the ones *with* default values.
+  
+</div>
+
 
 ## Are Immutable Data Classes Helpful?
 
@@ -497,8 +518,10 @@ The `gpa` field is now set to 3.33:
 Student(name='Julia', roll_no=0.5, major='Statistics', year='sophomore', gpa=3.33, classes=['Statistics 101', 'Graph theory', 'Real analysis'])
 ~~~
 
-However, you may sometimes need these fields to be immutable. There are several advantages.
+However, it can sometimes be helpful to have immutable instances:
 
+- It prevents accidental modification of one or more instance fields.
+- Immutable instances are hashable by default. Therefore, this is helpful if you'd like to use the instance fields as keys of a dictionary, later dump it into a JSON string.
 
 To make instances immutable, set the `frozen` parameter in the `@dataclass` decorator to `True`.
 
@@ -517,15 +540,16 @@ class Student:
 ...
 julia = Student('Julia',0.5,'Statistics','sophomore','who cares!',classes=['Statistics 101','Graph theory','Real analysis'])
 ...
-julia.gpa = 3.33
+julia.gpa = 3.39
 print(julia)
 ~~~
 
+If you now try to update the `gpa` field, you'll run into a `FrozenInstanceError` exception:
 
 ~~~{ caption="Output"}
 Traceback (most recent call last):
   File "main.py", line 18, in <module>
-    julia.gpa = 3.33
+    julia.gpa = 3.39
   File "<string>", line 4, in __setattr__
 dataclasses.FrozenInstanceError: cannot assign to field 'gpa'
 ~~~
@@ -591,8 +615,3 @@ We covered how to create data classes (without much boilerplate code) and set de
 In the next article in the series, we’ll cover subclassing Python data classes, performance optimizations that were introduced in Python 3.10, and more. Until then, keep coding!
 
 {% include cta/cta1.html %}
-
-
-
-
-
