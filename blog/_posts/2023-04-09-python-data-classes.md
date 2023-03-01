@@ -1,5 +1,5 @@
 ---
-title: "Getting Started with Python Data Classes"
+title: "What Are Python Data Classes?"
 categories:
   - Tutorials
 toc: true
@@ -401,7 +401,7 @@ In a regular Python class, you can provide default values for fields in the `__i
 
 Data classes give this flexibility, too.
 
-However, you should be aware of caveats such as setting mutable default for fields.
+However, you should be aware of caveats such as **setting mutable defaults for fields**.
 
 <div class="notice--big--primary">
 #### The Curious Case of Mutable Default Arguments in Python
@@ -432,6 +432,8 @@ However, you should be aware of caveats such as setting mutable default for fiel
 ~~~
 </div>
 
+Let's add a `classes` field, a list of classes that a student has signed up for. If a student hasn't signed for classes as yet, we initialize `classes` to an empty list. As mentioned, setting it to the literal [], as shown here, won't work.  
+
 ~~~{.python caption="main.py"}
 # main.py
 from dataclasses import dataclass
@@ -445,6 +447,8 @@ class Student:
     gpa: float
     classes: list = []
 ~~~
+
+Data classes *do not* allow you to define mutable defaults. And you'll get a ValueError:
 
 ~~~{ caption="Output"}
 Traceback (most recent call last):
@@ -461,7 +465,7 @@ The above traceback provides helpful information on *what* needs to be fixed and
 
 ~~~{.python caption="main.py"}
 # main.py
-from dataclasses import dataclass
+from dataclasses import dataclass,field
 
 @dataclass
 class Student:
@@ -528,7 +532,7 @@ To make instances immutable, set the `frozen` parameter in the `@dataclass` deco
 ~~~{.python caption="main.py"}
 # main.py
 from dataclasses import dataclass
-
+...
 @dataclass(frozen=True)
 class Student:
     name: str
