@@ -300,7 +300,7 @@ pprint(getmembers(Student,isfunction))
 ~~~
 </div>
 
-**To sum up: When you create a basic Python data class, you get out-of-the-box implementations of the `__init__`, `__repr__`, and `__eq__` methods.** 
+**To sum up: Python data classes have implementations of the `__init__`, `__repr__`, and `__eq__` methods.** 
 
 <div class="notice--info">
 ### Create Data Classes With `make_dataclass`
@@ -415,6 +415,27 @@ Found 2 errors in 1 file (checked 1 source file)
 ['Mindset', 'Grit', 'Flow']
 ~~~
 </div>
+
+~~~{.python caption="main.py"}
+from dataclasses import dataclass
+
+@dataclass
+class Student:
+    name: str
+    roll_no: str
+    major: str
+    year: str
+    gpa: float
+    classes: list = []
+~~~
+
+~~~{.python caption="Output"}
+Traceback (most recent call last):
+  File "main.py", line 3, in <module>
+    class Student:
+    …
+  ValueError: mutable default <class 'list'> for field classes is not allowed: use default_factory
+~~~
 
 
 ## Defining Methods in a Python Data Class
