@@ -219,6 +219,8 @@ And as you keep modifying the class, you'll *likely* forget to update one of the
 
 Now let's rewrite the `Student` class as a data class (and see if it'll make things easier for us!).
 
+To create a data class, you can use the `@dataclass` decorator from Python's built-in `dataclasses` module. You can specify the name of the class and list the fields along with their type annotations:
+
 ~~~{.python caption="main.py"}
 from dataclasses import dataclass
 
