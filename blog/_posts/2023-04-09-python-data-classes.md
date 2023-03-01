@@ -530,6 +530,9 @@ class Student:
     year: str
     gpa: float
     classes: list = field(default_factory=list)
+    
+    def some_method(self):
+        return f"I'm an instance method in {self.__class__.__name__} data class; here for some reason. :)"
 ...
 julia = Student('Julia',0.5,'Statistics','sophomore','who cares!',classes=['Statistics 101','Graph theory','Real analysis'])
 ...
@@ -538,6 +541,12 @@ print(julia.some_method())
 
 ~~~{ caption="Output"}
 I'm an instance method in Student data class; here for some reason. :)
+~~~
+
+~~~{.python caption="main.py"}
+# main.py
+...
+pprint(getmembers(Student,isfunction))
 ~~~
 
 ~~~{ caption="Output"}
