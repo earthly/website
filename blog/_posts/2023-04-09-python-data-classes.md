@@ -161,7 +161,7 @@ Let’s define the `__eq__` method to compare any two instances of two instances
 ~~~
 
 <div class="notice--info">
-Instead of the "InvalidComparison" string, you can also use `return NotImplemented`. When you try to compare two objects of different classes, you'll now be notified that the `__eq__` method for such comparisons has not been implemented.
+Instead of the "InvalidComparison" string, you can also return `NotImplemented`. If you do so, when you try to compare two objects of different classes, you'll now be notified that the `__eq__` method for such comparisons has not been implemented.
 </div>
 
 When you try to check if `jane == also_jane` after adding the `__eq__` method, you'll see that it evaluates to `True` as expected:
@@ -229,15 +229,23 @@ class Student:
     gpa: float
 ~~~
 
+Now that we’ve created the `Student` data class, let's run through the same steps that we did for the regular `Student` class.
+
+Import the `Student` data class and instantiate the student object `jane`:
+
 ~~~{.python caption=""}
 >>> from main import Student
 >>> jane = Student('Jane','CS1234','Computer Science','junior',3.98)
 ~~~
 
+We see that we get a helpful string representation—without implementing a `__repr__()`:
+
 ~~~{.python caption=""}
 >>> jane
 Student(name='Jane', roll_no='CS1234', major='Computer Science', year='junior', gpa=3.98)
 ~~~
+
+What about comparison of objects? Let’s instantiate another `also_jane` and try checking if `jane == also_jane` as before:
 
 ~~~{.python caption=""}
 >>> also_jane = Student('Jane','CS1234','Computer Science','junior',3.98)
@@ -245,11 +253,21 @@ Student(name='Jane', roll_no='CS1234', major='Computer Science', year='junior', 
 True
 ~~~
 
+We see that the comparison returns `True` (as expected). But we did not write the `__eq__` method either.
+
 <div class="notice--big--primary">
 ### Where Did `__init__`, `__repr__`, and `__eq__` Come From?
+ 
+We just checked that we get a string representation and can compare objects out of the box without having to write the `__repr__` and `__eq__` methods, respectively.
+
+If youtake a closer look, we didn't write the `__init__` method either; we only specified the fields and the expected data types as type hints in the data class definition.
+  
+So where did the `__init__`, `__repr__`, and `__eq__` come from? 
   
 ![wondering]({{site.images}}{{page.slug}}/2.png)\
 
+Well, with data classes, you get a default implementation of these methods. I'll use built-in functionality from the [`inspect`](https://docs.python.org/3/library/inspect.html) module to get all the member functions implemented for the `Student` data class:
+  
 ~~~{.python caption="main.py"} 
 # main.py
 from inspect import getmembers,isfunction
@@ -260,6 +278,10 @@ print(getmembers(Student,isfunction))
 ~~~{ caption="Output"} 
 [('__eq__', <function __create_fn__.<locals>.__eq__ at 0x014F6A48>), ('__init__', <function __create_fn__.<locals>.__init__ at 0x014F6970>), ('__repr__', <function __create_fn__.<locals>.__repr__ at 0x014F6A00>)]
 ~~~
+  
+🧐 Where you able to spot `__init__`, `__repr__`, and `__eq__` in the output cell? If so, great work! 
+  
+If not, I've used [pretty-print](https://docs.python.org/3/library/pprint.html) `pprint` and the output is certainly prettier and easy to parse now:
 
 ~~~{.python caption="main.py"} 
 # main.py
@@ -269,21 +291,19 @@ from pprint import pprint
 pprint(getmembers(Student,isfunction))
 ~~~
 
-
 ~~~{ caption="Output"} 
 [('__eq__', <function __create_fn__.<locals>.__eq__ at 0x014F6A48>),
 ('__init__', <function __create_fn__.<locals>.__init__ at 0x014F6970>),
 ('__repr__', <function __create_fn__.<locals>.__repr__ at 0x014F6A00>)]
 ~~~
-
-
-
 </div>
+
+**To sum up: When you create a basic Python data class, you get out-of-the-box implementations of the `__init__`, `__repr__`, and `__eq__` methods.** 
 
 <div class="notice--info">
 ### Create Data Classes With `make_dataclass`
 
-To create a data class, you can also use `make_dataclass` from the dataclasses module:
+To create a data class, you can also use `make_dataclass` from the `dataclasses` module:
   
 ~~~{.python caption=""}
 from dataclasses import make_dataclass
