@@ -306,17 +306,16 @@ pprint(getmembers(Student,isfunction))
 
 **To sum up: Python data classes have implementations of the `__init__`, `__repr__`, and `__eq__` methods.** 
 
-<div class="notice--info">
 ### Create Data Classes With `make_dataclass`
 
-To create a data class, you can also use the following constructor:
+To create a data class, you can also use the `make_dataclass` constructor from the `dataclasses` module:
   
 ~~~{.python caption=""}
 from dataclasses import make_dataclass
 Student = make_dataclass('Student',['name','roll_no','major','year','gpa'])
 ~~~
 However, I prefer using the `@dataclass` decorator; the code is a lot easier to read and maintain, especially when there are many fields.
-</div>
+
 
 ## Type Hints and Default Values in Python Data Classes
 
