@@ -350,17 +350,21 @@ So are type hints ~~useless~~ still helpful?
 
 ### How Do Type Hints Help? 
 
-When you add type hints, the IDE or code editor you use will provide *hints* to help you use the right data types for the fields. 
+When you add type hints, the IDE or code editor you use will provide *hints* to help you use the right *data types* for the fields. 
 
-I'm using VSCode. As you can tell, I set the `roll_no` field to 0.5 even when I was hinted to use a `str`.
+I'm using VSCode. As you can tell, I set the `roll_no` field to 0.5 even when I was hinted to use a `str`:
 
 <div class="wide">
 ![type-hints-0]({{site.images}}{{page.slug}}/th0.png)\
 </div>
 
-<div>
+Similarly, I set the `gpa` field to 'who cares!' while knowing that `gpa` should be a `float`:
+
+<div class="wide">
 ![type-hints-1]({{site.images}}{{page.slug}}/th1.png)\
 </div>
+
+Why did I do that? Well, only to let you know that the type hints have *no effect at runtime*.
 
 #### Enforcing Type Checks
 
@@ -386,6 +390,10 @@ Found 2 errors in 1 file (checked 1 source file)
 
 
 ### Setting Default Values for Data Class Attributes
+
+<div class="notice--info">
+#### ⚠️ Specify Default Fields After Non-Default Fields 
+</div>
 
 <div class="notice--big--primary">
 #### The Curious Case of Mutable Default Arguments in Python
@@ -417,6 +425,7 @@ Found 2 errors in 1 file (checked 1 source file)
 </div>
 
 ~~~{.python caption="main.py"}
+# main.py
 from dataclasses import dataclass
 
 @dataclass
@@ -429,7 +438,7 @@ class Student:
     classes: list = []
 ~~~
 
-~~~{.python caption="Output"}
+~~~{ caption="Output"}
 Traceback (most recent call last):
   File "main.py", line 3, in <module>
     class Student:
@@ -437,10 +446,36 @@ Traceback (most recent call last):
   ValueError: mutable default <class 'list'> for field classes is not allowed: use default_factory
 ~~~
 
+~~~{.python caption="main.py"}
+# main.py
+from dataclasses import dataclass
+
+@dataclass
+class Student:
+    name: str
+    roll_no: str
+    major: str
+    year: str
+    gpa: float
+    classes: list = field(default_factory=list)
+~~~
+
+~~~{.python caption="main.py"}
+# main.py
+...
+jane = Student('Jane','CS1234','Computer Science','junior',3.98)
+print(jane)
+~~~
+
+~~~{ caption="Output"}
+Student(name='Jane', roll_no='CS1234', major='Computer Science', year='junior', gpa=3.98, classes=[])
+~~~
 
 ## Defining Methods in a Python Data Class
 
 ## Are Immutable Data Classes Helpful?
+
+
 
 ## Python Data Classes vs. NamedTuples
 
