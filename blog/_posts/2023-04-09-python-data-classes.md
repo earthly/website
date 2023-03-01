@@ -345,7 +345,7 @@ Let's zoom into `julia = Student('Julia',0.5,'Statistics','sophomore','who cares
 - The `roll_no` field is expected to be a `str`, but I've set it to 0.5, which is of `float` data type.
 - The `gpa` field should be a `float`, but I've set it to the `str` 'who cares!'.
 
-If you (re)run main.py, you'll *not* run into any errors. And if you look at the object `julia` at the REPL, you'll see that `roll_no` and `gpa` have been assigned values 0.5 and 'who cares!', repsectively; they're not flagged for invalid data type.
+If you (re)run main.py, you'll *not* run into any errors. And if you look at the object `julia` at the REPL, you'll see that `roll_no` and `gpa` have been assigned values 0.5 and 'who cares!', respectively; they're not flagged for invalid data type.
 
 ~~~{.python caption=""}
 >>> julia
@@ -374,7 +374,7 @@ But why did I do that? Well, only to let you know that the type hints have *no e
 
 #### Enforcing Type Checks
 
-If you'd like to enforce types and get erors for mismatched data types, you can use a static type checker like [mypy](https://mypy.readthedocs.io/en/stable/). You can install mypy using `pip`:
+If you'd like to enforce types and get errors for mismatched data types, you can use a static type checker like [mypy](https://mypy.readthedocs.io/en/stable/). You can install mypy using `pip`:
 
 ~~~{.bash caption=">_"}
 $ pip3 install mypy
