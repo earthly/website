@@ -22,7 +22,7 @@ Let's get started!
 
 <div class="notice--big--primary">
 #### 📑 Before You Begin
-
+<br>
 To follow along, you need [Python 3.7 or a later version](https://www.python.org/downloads/) installed in your preferred development environment. You can find the code examples used here in [this GitHub repository](https://github.com/balapriyac/dataclasses-tutorial).
   
 This tutorial assumes you're familiar with the working of [Python classes and objects](https://earthly.dev/blog/how-cls-obj-work-python/).
@@ -513,7 +513,7 @@ Student(name='Jane', roll_no='CS1234', major='Computer Science', year='junior', 
 
 <div class="notice--info">
 #### ⚠️ Specify Default Fields After Non-Default Fields
-
+<br>
 As with arguments in a function call, data classes should include the fields *without* default values first, followed by the ones *with* default values.
   
 Here's an example. `Coordinate3D` is a data class that stores the location of a point (x,y,z) in 3D space:  
