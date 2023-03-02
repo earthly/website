@@ -550,7 +550,7 @@ And it works as expected. `origin` is (0.0,0.0,0.0):
 Coordinate3D(x=0.0, y=0.0, z=0.0)
 ~~~
   
-Suppose instead we'd like the initial coordinate to lie in the YZ-plane (where x = 0) when the `x` coordinate is not specified. So we don't need defaults for `y` and `z` but `x` takes a default of 0.0:
+Suppose we want the point to initially lie in the YZ-plane (where x = 0) when the `x` coordinate is not specified. So we don't need defaults for `y` and `z` but `x` takes a default of 0.0:
 
 ![coordinate]({{site.images}}{{page.slug}}/xyz.png)\
 
@@ -595,7 +595,7 @@ point_yz = Coordinate3D(1.5,3)
 print(point_yz)
 ~~~
   
-We get the expected value:
+Now we don't run into errors and the default value of 0.0 has been used for `x`:
   
 ~~~{ caption="Output"}
 Coordinate3D(y=1.5, z=3, x=0.0)
