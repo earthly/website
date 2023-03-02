@@ -281,7 +281,7 @@ from inspect import getmembers,isfunction
 print(getmembers(Student,isfunction))
 ~~~
 
-~~~{ caption="Output"}
+~~~{ caption=""}
 [('__eq__', <function __create_fn__.<locals>.__eq__ at 0x014F6A48>), ('__init__', <function __create_fn__.<locals>.__init__ at 0x014F6970>), ('__repr__', <function __create_fn__.<locals>.__repr__ at 0x014F6A00>)]
 ~~~
   
@@ -297,7 +297,7 @@ from pprint import pprint
 pprint(getmembers(Student,isfunction))
 ~~~
 
-~~~{ caption="Output"}
+~~~{ caption=""}
 [('__eq__', <function __create_fn__.<locals>.__eq__ at 0x014F6A48>),
 ('__init__', <function __create_fn__.<locals>.__init__ at 0x014F6970>),
 ('__repr__', <function __create_fn__.<locals>.__repr__ at 0x014F6A00>)]
@@ -386,7 +386,7 @@ $ mypy main.py
 
 In main.py, we have the instantiation of `julia` on line 11. mypy flags both Argument 2 (0.5 for `roll_no`) and Argument 5 ('who cares!' for `gpa`) for incompatible type:
 
-~~~{ caption="Output"}
+~~~{ caption=""}
 main.py:11: error: Argument 2 to "Student" has incompatible type "float"; expected "str"  [arg-type]
 main.py:11: error: Argument 5 to "Student" has incompatible type "str"; expected "float"  [arg-type]
 Found 2 errors in 1 file (checked 1 source file)
