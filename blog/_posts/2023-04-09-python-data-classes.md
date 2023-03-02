@@ -544,7 +544,7 @@ origin = Coordinate3D()
 print(origin)
 ~~~
   
-And it works as expected. `origin` is (0.0,0.0,0.0) as expected:
+And it works as expected. `origin` is (0.0,0.0,0.0):
   
 ~~~{ caption="Output"}
 Coordinate3D(x=0.0, y=0.0, z=0.0)
