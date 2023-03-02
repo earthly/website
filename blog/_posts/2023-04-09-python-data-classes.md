@@ -618,7 +618,7 @@ print(julia)
 
 The `gpa` field is now set to 3.33:
 
-~~~{ caption="Output"}
+~~~{ caption=""}
 Student(name='Julia', roll_no=0.5, major='Statistics', year='sophomore', gpa=3.33, classes=['Statistics 101', 'Graph theory', 'Real analysis'])
 ~~~
 
