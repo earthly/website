@@ -25,13 +25,13 @@ Let's get started!
 <br>
 To follow along, you need [Python 3.7 or a later version](https://www.python.org/downloads/) installed in your preferred development environment. You can find the code examples used here in [this GitHub repository](https://github.com/balapriyac/dataclasses-tutorial).
   
-This tutorial assumes you're familiar with the working of [Python classes and objects](https://earthly.dev/blog/how-cls-obj-work-python/).
+This tutorial assumes you're familiar with the working of [Python classes and objects](https://earthly.dev/blog/python-classes-and-objects/).
   
 </div>
 
 ## Python Classes and Boilerplate Code
 
-You'll first create a regular [Python class](https://earthly.dev/blog/how-cls-obj-work-python/). In doing so, you'll realize how much bolierplate code you need to write to get a minimal working class. You'll then rewrite the existing Python class as a *data class* to understand how data classes can help you escape the monotony of boilerplate code.
+You'll first create a regular [Python class](https://earthly.dev/blog/python-classes-and-objects/). In doing so, you'll realize how much bolierplate code you need to write to get a minimal working class. You'll then rewrite the existing Python class as a *data class* to understand how data classes can help you escape the monotony of boilerplate code.
 
 As our goal is to *understand and use* data classes—and not to write fancy classes—let's create a simple class such as a `Student` or an `Employee` class.
 
@@ -274,23 +274,6 @@ So where did the `__init__`, `__repr__`, and `__eq__` come from?
 Well, with data classes, you get a default implementation of these methods.
   
 You can use built-in functionality from the [`inspect`](https://docs.python.org/3/library/inspect.html) module to get all the member functions implemented for the `Student` data class:
-  
-~~~{.python caption="main.py"}
-# main.py
-from inspect import getmembers,isfunction
-...
-print(getmembers(Student,isfunction))
-~~~
-
-~~~{.md caption=""}
-[('__eq__',<function __create_fn__.<locals>.__eq__ at 0x014F6A48>), ↩
-('__init__',<function __create_fn__.<locals>.__init__ at 0x014F6970>),↩
-('__repr__',<function __create_fn__.<locals>.__repr__ at 0x014F6A00>)]
-~~~
-  
-🧐 Where you able to spot `__init__`, `__repr__`, and `__eq__` in the output cell?  
-  
-If not, I've used [pretty-print](https://docs.python.org/3/library/pprint.html) `pprint` and the output is certainly prettier and easier to parse now:
 
 ~~~{.python caption="main.py"}
 # main.py
