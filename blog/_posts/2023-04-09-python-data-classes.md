@@ -248,7 +248,8 @@ We see that we get a helpful string representation—without implementing a `__r
 
 ~~~{.python caption=""}
 >>> jane
-Student(name='Jane', roll_no='CS1234', major='Computer Science', year='junior', gpa=3.98)
+Student(name='Jane', roll_no='CS1234', major='Computer Science', year='junior',↩
+ gpa=3.98)
 ~~~
 
 What about comparison of objects? Let's instantiate another `also_jane` and try checking if `jane == also_jane` as before:
@@ -267,7 +268,7 @@ We see that the comparison returns `True` (as expected). But we did not write th
 If you take a closer look, we did not write even the class constructor `__init__` method; we only specified the fields and the expected data types as type hints in the data class definition.
   
 So where did the `__init__`, `__repr__`, and `__eq__` come from?
-  
+
 ![wondering]({{site.images}}{{page.slug}}/2.png)\
 
 Well, with data classes, you get a default implementation of these methods.
@@ -281,8 +282,10 @@ from inspect import getmembers,isfunction
 print(getmembers(Student,isfunction))
 ~~~
 
-~~~{ caption=""}
-[('__eq__', <function __create_fn__.<locals>.__eq__ at 0x014F6A48>), ('__init__', <function __create_fn__.<locals>.__init__ at 0x014F6970>), ('__repr__', <function __create_fn__.<locals>.__repr__ at 0x014F6A00>)]
+~~~{.md caption=""}
+[('__eq__',<function __create_fn__.<locals>.__eq__ at 0x014F6A48>), ↩
+('__init__',<function __create_fn__.<locals>.__init__ at 0x014F6970>),↩
+('__repr__',<function __create_fn__.<locals>.__repr__ at 0x014F6A00>)]
 ~~~
   
 🧐 Where you able to spot `__init__`, `__repr__`, and `__eq__` in the output cell?  
@@ -297,9 +300,9 @@ from pprint import pprint
 pprint(getmembers(Student,isfunction))
 ~~~
 
-~~~{ caption=""}
-[('__eq__', <function __create_fn__.<locals>.__eq__ at 0x014F6A48>),
-('__init__', <function __create_fn__.<locals>.__init__ at 0x014F6970>),
+~~~{.md caption=""}
+[('__eq__', <function __create_fn__.<locals>.__eq__ at 0x014F6A48>),↩
+('__init__', <function __create_fn__.<locals>.__init__ at 0x014F6970>),↩
 ('__repr__', <function __create_fn__.<locals>.__repr__ at 0x014F6A00>)]
 ~~~
 
@@ -347,7 +350,8 @@ If you (re)run main.py, you'll *not* run into any errors. And if you look at the
 
 ~~~{.python caption=""}
 >>> julia
-Student(name='Julia', roll_no=0.5, major='Statistics', year='sophomore', gpa='who cares!')
+Student(name='Julia', roll_no=0.5, major='Statistics', year='sophomore',↩ 
+gpa='who cares!')
 ~~~
 
 So are type hints ~~useless~~ still helpful?
@@ -387,8 +391,10 @@ $ mypy main.py
 In main.py, we have the instantiation of `julia` on line 11. mypy flags both Argument 2 (0.5 for `roll_no`) and Argument 5 ('who cares!' for `gpa`) for incompatible type:
 
 ~~~{ caption=""}
-main.py:11: error: Argument 2 to "Student" has incompatible type "float"; expected "str"  [arg-type]
-main.py:11: error: Argument 5 to "Student" has incompatible type "str"; expected "float"  [arg-type]
+main.py:11: error: Argument 2 to "Student" has incompatible type "float";↩
+ expected "str"  [arg-type]
+main.py:11: error: Argument 5 to "Student" has incompatible type "str";↩ 
+ expected "float"  [arg-type]
 Found 2 errors in 1 file (checked 1 source file)
 ~~~
 
@@ -464,7 +470,8 @@ Traceback (most recent call last):
   File "main.py", line 3, in <module>
     class Student:
     …
-  ValueError: mutable default <class 'list'> for field classes is not allowed: use default_factory
+  ValueError: mutable default <class 'list'> for field classes is not allowed:↩
+   use default_factory
 ~~~
 
 The above traceback provides helpful information on *what* needs to be fixed and *how* you can fix it:
@@ -498,7 +505,8 @@ We pass in the `classes` list when instantiating `julia` and do not pass in for 
 ~~~{.python caption="main.py"}
 # main.py
 ...
-julia = Student('Julia',0.5,'Statistics','sophomore','who cares!',['Statistics 101','Graph theory','Real analysis'])
+julia = Student('Julia',0.5,'Statistics','sophomore','who cares!',['Statistics↩
+ 101','Graph theory','Real analysis'])
 print(julia)
 jane = Student('Jane','CS1234','Computer Science','junior',3.98)
 print(jane)
@@ -507,8 +515,11 @@ print(jane)
 In the output, we see that the provided and default (empty) lists are used for `julia` and `jane`, respectively:
 
 ~~~{ caption="Output"}
-Student(name='Julia', roll_no=0.5, major='Statistics', year='sophomore', gpa='who cares!', classes=['Statistics 101', 'Graph theory', 'Real analysis'])
-Student(name='Jane', roll_no='CS1234', major='Computer Science', year='junior', gpa=3.98, classes=[])
+
+Student(name='Julia', roll_no=0.5, major='Statistics', year='sophomore',↩
+ gpa='who cares!', classes=['Statistics 101', 'Graph theory', 'Real analysis'])
+Student(name='Jane', roll_no='CS1234', major='Computer Science', year='junior',↩
+ gpa=3.98, classes=[])
 ~~~
 
 <div class="notice--info">
@@ -546,13 +557,13 @@ print(origin)
   
 And it works as expected. `origin` is (0.0,0.0,0.0):
   
-~~~{ caption="Output"}
+~~~{.md caption="Output"}
 Coordinate3D(x=0.0, y=0.0, z=0.0)
 ~~~
   
 Suppose we want the point to initially lie in the YZ-plane (where x = 0) when the `x` coordinate is not specified. So we don't need defaults for `y` and `z` but `x` takes a default of 0.0:
 
-![coordinate]({{site.images}}{{page.slug}}/xyz.png)\
+ {% picture grid {{site.pimages}}{{page.slug}}/xyz.png --picture --img width="300px" --alt {{ coordinate }} %}
 
 If you do the following, you'll run into an error:
 
@@ -571,7 +582,7 @@ print(origin)
   
 The error is due to `y`, a non-default field, following `x`, a field with default value:
   
-~~~{ caption="Output"}
+~~~{.md caption="Output"}
 Traceback (most recent call last):
   File "main.py", line 4, in <module>
     class Coordinate3D:
@@ -597,7 +608,7 @@ print(point_yz)
   
 Now we don't run into errors and the default value of 0.0 has been used for `x`:
   
-~~~{ caption="Output"}
+~~~{.md caption="Output"}
 Coordinate3D(y=1.5, z=3, x=0.0)
 ~~~
 
@@ -619,7 +630,8 @@ print(julia)
 The `gpa` field is now set to 3.33:
 
 ~~~{ caption=""}
-Student(name='Julia', roll_no=0.5, major='Statistics', year='sophomore', gpa=3.33, classes=['Statistics 101', 'Graph theory', 'Real analysis'])
+Student(name='Julia', roll_no=0.5, major='Statistics', year='sophomore',↩
+ gpa=3.33, classes=['Statistics 101', 'Graph theory', 'Real analysis'])
 ~~~
 
 However, it can sometimes be helpful to have immutable instances:
@@ -642,7 +654,8 @@ class Student:
     gpa: float
     classes: list = field(default_factory=list)
 ...
-julia = Student('Julia',0.5,'Statistics','sophomore','who cares!',classes=['Statistics 101','Graph theory','Real analysis'])
+julia = Student('Julia',0.5,'Statistics','sophomore','who cares!',↩
+ classes=['Statistics 101','Graph theory','Real analysis'])
 ...
 julia.gpa = 3.39
 print(julia)
@@ -678,7 +691,8 @@ class Student:
     def some_method(self):
         return f"I'm an instance method in {self.__class__.__name__} data class; here for some reason. :)"
 ...
-julia = Student('Julia',0.5,'Statistics','sophomore','who cares!',classes=['Statistics 101','Graph theory','Real analysis'])
+julia = Student('Julia',0.5,'Statistics','sophomore','who cares!',↩ 
+ classes=['Statistics 101','Graph theory','Real analysis'])
 ...
 print(julia.some_method())
 ~~~
@@ -700,6 +714,7 @@ pprint(getmembers(Student,isfunction))
 You'll see that `some_method()` has also been included in the list:
 
 ~~~{ caption="Output"}
+
 [('__eq__', <function __create_fn__.<locals>.__eq__ at 0x019B6B20>),
  ('__init__', <function __create_fn__.<locals>.__init__ at 0x019B69B8>),
  ('__repr__', <function __create_fn__.<locals>.__repr__ at 0x019B68E0>),
