@@ -9,6 +9,8 @@
 
 # Renamed article
 /blog/dont-use-earthly /blog/repeatable-builds-every-time
-
+/blog/how-cls-obj-work-python /blog/python-classes-and-objects
+/blog/strctl-ptrn-mtchng-py /blog/structural-pattern-matching-python
+/blog/workwith-yaml-in-py /blog/yaml-in-python
 # public-key-auth implementation details, referenced by earthly-core cli during account registration
 /public-key-auth https://docs.earthly.dev/docs/misc/public-key-auth
