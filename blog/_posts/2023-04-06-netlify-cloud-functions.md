@@ -63,10 +63,10 @@ Netlify organizes its cloud functions and files using a hierarchical structure. 
 Let's say you are building a website that allows users to upload pictures. You want to create a cloud function that will process the pictures that are uploaded by the users. The first step would be to create a folder named "functions" in your project directory. Inside this folder, you'll create a file called `processPictures.js` which contains the code for the cloud function. The name of this file would be included in the HTTP request to access the function.
 
 For example, if you want to access the cloud function to process the pictures uploaded by the user, the HTTP request would look like this,
- `http://localhost:8888/.netlify/functions/processPictures` This would allow your cloud function to be accessed and used to process the pictures uploaded by the user.
+ `http://localhost:8888/.netlify/functions/processPictures`. This would allow your cloud function to be accessed and used to process the pictures uploaded by the user.
 
 <div class="wide">
-![iprocess]({{site.images}}{{page.slug}}/YJz7bq0.png)
+![iprocess]({{site.images}}{{page.slug}}/YJz7bq0.jpg)
 </div>
 
 ## How To Create Netlify Functions
