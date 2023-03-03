@@ -418,7 +418,7 @@ The syntax is inspired by Dockerfiles, so it will be familiar if you have worked
 ![Earthly success]({{site.images}}{{page.slug}}/q651Aty.png)\
 </div>
 
-If both commands are working locally, they should work in CI as well. To configure a [Github](/blog/ci-comparison Actions to use these, run the following commands to create a new workflow:
+If both commands are working locally, they should work in CI as well. To configure a [Github Actions](/blog/ci-comparison) to use these, run the following commands to create a new workflow:
 
 ~~~{.bash caption=">_"}
 mkdir -p .github/workflows
@@ -485,7 +485,7 @@ It's also worth noting that Lerna isn't the only player in this space anymore. T
 
 Whether you use Lerna or one of the package managers' solutions, such tools are indispensable when working with monorepos.
 
-## Wrapping Up
+## Conclusion
 
 In this tutorial, you've seen how to set up a monorepo with Lerna. You learned how to add multiple packages to it, publish those packages to npm, and run CI workflows for those packages using [Github Actions](/blog/continuous-integration) and [Earthly](https://earthly.dev).
 
