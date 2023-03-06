@@ -386,3 +386,7 @@ Chepkirui Dorothy:
     name    : "Chepkirui Dorothy"
     bio     : "She is a backend developer and a technical writer. She has a passion for writing and is constantly looking for new tools and techniques to hone her skills."
     avatar  : "/assets/images/authors/chepkirui.JPG"
+El Achu:
+    name    : "El Achu"
+    bio     : "El is a dev living in europe building a bunch of small startup projects and wants to share some of the things he learns on his way."
+    avatar  : "/assets/images/authors/el.JPG"        
