@@ -124,8 +124,7 @@ It's kind of like a distributed state machine. There can be many different build
 To make the process resilient, multiple requests to start builds need to coordinate with each other so that only one of them actually calls 'wake' and the rest simply queue and wait for the state change.
 {% include quotes/end.html %}
 
-With the auto-sleep and coordinated wake-up inside Earthly Compute, our AWS bill got smaller, and no one noticed the start-up time. 
-
+With the auto-sleep and coordinated wake-up inside Earthly Compute, our AWS bill got smaller, and no one noticed the start-up time.
 
 Well, almost. Except, occasionally, that start-up time got much larger…
 
@@ -177,23 +176,3 @@ Speaking of which, stay tuned for the next article, which will invariably be abo
 {% include quotes/end.html %}
 
 See the [release announcement](/blog/launching-earthly-ci/) if you'd like to learn more about Earthly CI, which is powered by this service. And stay tuned for more sharing of engineering ~~complaints~~ challenges in the future.
-
-<!--
-### Writing Article Checklist
-
-- [ ] Write Outline
-- [ ] Write Draft
-- [ ] Fix Grammarly Errors
-- [ ] Read out loud
-- [ ] Write 5 or more titles and pick the best on
-- [ ] First two paragraphs: What's it about? Why listen to you?
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-- [ ] Run mark down linter (`lint`)
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links to other articles
-- [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
-- [ ] Raise PR
-
--->
