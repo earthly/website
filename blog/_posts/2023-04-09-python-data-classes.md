@@ -21,7 +21,7 @@ You'll learn the basics of data classes and how they're different from regular P
 Let's get started!
 
 <div class="notice--big--primary">
-#### 📑 Before You Begin
+**📑 Before You Begin**
 <br>
 To follow along, you need [Python 3.7 or a later version](https://www.python.org/downloads/) installed in your preferred development environment. You can find the code examples used here in [this GitHub repository](https://github.com/balapriyac/dataclasses-tutorial).
   
@@ -638,7 +638,7 @@ class Student:
     classes: list = field(default_factory=list)
 ...
 julia = Student('Julia',0.5,'Statistics','sophomore','who cares!',↩
- classes=['Statistics 101','Graph theory','Real analysis'])
+['Statistics 101','Graph theory','Real analysis'])
 ...
 julia.gpa = 3.39
 print(julia)
@@ -675,7 +675,7 @@ class Student:
         return f"I'm an instance method in {self.__class__.__name__} data class; here for some reason. :)"
 ...
 julia = Student('Julia',0.5,'Statistics','sophomore','who cares!',↩ 
- classes=['Statistics 101','Graph theory','Real analysis'])
+['Statistics 101','Graph theory','Real analysis'])
 ...
 print(julia.some_method())
 ~~~
