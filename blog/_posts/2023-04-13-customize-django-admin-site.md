@@ -384,7 +384,7 @@ Objects can refer to other objects using foreign keys. The post model has a many
 
 However, you can use Django's [URL-reversing](https://docs.djangoproject.com/en/4.1/ref/urlresolvers/) system to access the related object's admin page and [make](/blog/using-cmake) the changes more efficiently. URL reversing refers to the process of converting a named URL pattern to a URL string that can be used in an HTTP request. This makes it easier to link between pages, as you can refer to named URL patterns instead of hardcoded URLs.
 
-~~~{.python caption="mosels.py"}
+~~~{.python caption="models.py"}
 from django.utils.html import mark_safe
 from django.urls import reverse
 
