@@ -9,7 +9,7 @@ fbio: false
 internal-links:
  - just an example
 ---
-_Earthly Compute is an internal service that customers use indirectly via Earthly CI. Now that CI has been publicly announced, we ( two of the engineers behind it (and Adam)) have some stuff ~~to get off their chests~~ that we can finally share._
+_Earthly Compute is an internal service that customers use indirectly via Earthly CI. Now that CI has been publicly announced, we have some stuff ~~to get off their chests~~ that we can finally share._
 
 _Compared to our previous experiences, Earthly Compute was a quirky service to build. Nevertheless, we learned some things and made some mistakes, and in this write-up, we'll share how it went._[^1]
 
