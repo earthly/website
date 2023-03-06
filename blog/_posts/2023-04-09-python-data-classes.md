@@ -512,7 +512,7 @@ As with arguments in a function call, data classes should include the fields *wi
   
 Here's an example. `Coordinate3D` is a data class that stores the location of a point (x,y,z) in 3D space:  
 
-~~~{.python caption=""}
+~~~{.python caption="point3d.py"}
 from dataclasses import dataclass
 
 @dataclass
@@ -524,7 +524,7 @@ class Coordinate3D:
 
 When none of the coordinates `x`, `y`, and `z` are mentioned when creating an instance, say, you'd like the point to be the origin. So we set simple default values:
 
-~~~{.python caption=""}
+~~~{.python caption="point3d.py"}
 from dataclasses import dataclass
 
 @dataclass
@@ -546,11 +546,11 @@ Coordinate3D(x=0.0, y=0.0, z=0.0)
   
 Suppose we want the point to initially lie in the YZ-plane (where x = 0) when the `x` coordinate is not specified. So we don't need defaults for `y` and `z` but `x` takes a default of 0.0:
 
- {% picture grid {{site.pimages}}{{page.slug}}/xyz.png --picture --img width="300px" --alt {{ coordinate }} %}
+![coordinate]({{site.images}}{{page.slug}}/xyzplane.png)\
 
 If you do the following, you'll run into an error:
 
-~~~{.python caption=""}
+~~~{.python caption="point3d.py"}
 from dataclasses import dataclass
 
 @dataclass
@@ -575,7 +575,7 @@ Traceback (most recent call last):
 
 To fix the error, simply move `x` as the last field in the class definition:
   
-~~~{.python caption=""}
+~~~{.python caption="point3d.py"}
 from dataclasses import dataclass
 
 @dataclass
