@@ -27,7 +27,7 @@ Mesos? Is anything a good use case for Mesos?
 Mesos can handle workload types that K8s can't, and I recall liking Marathon. But anyways, it's just an example.
 {% include quotes/end.html %}
 
-We anticipated this type of workload when creating the initial version of Earthly compute. However, there was one issue that made container orchestration frameworks unsuitable: the workload. Earthly compute needs to execute customer-submitted Earthfiles, which are not dissimilar to Makefiles. Anything you can do on Linux, you can do in an Earthfile. This meant, from a security point of view, we were building remote code execution as a service (RCEAS).
+We anticipated this type of workload when creating the initial version of Earthly compute. However, there was one issue that made container orchestration frameworks unsuitable: the workload. Earthly compute needs to execute customer-submitted Earthfiles, which are not dissimilar to Makefiles. Anything you can do on Linux, you can do in an Earthfile. This meant – from a security point of view – we were building remote code execution as a service (RCEAS).
 
 {% include quotes/brandon.html %}
 Earthfiles are executed inside runC for isolation, and you have to declare your environment, so it's not exactly like running `make`. It's more like `./configure && make` inside a container.
@@ -47,7 +47,7 @@ Our first version used separate EC2 instances per client to properly separate cl
 Earthly on your local. Satellites in the cloud. Get it?
 {% include quotes/end.html %}
 
-Earthly, our build tool is open source and usable by anyone. We wanted to draw some clear separation between it and our CI solution but still make transitioning to CI very smooth.
+Earthly, our build tool, is open source and usable by anyone. We wanted to draw some clear separation between it and our CI solution but still make transitioning to CI very smooth.
 
 {% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/3600.png --alt {{ Earthly Cloud }} %}
 <figcaption>V1 ran from dev machines against Earthly Compute.</figcaption>
@@ -111,9 +111,9 @@ So the latency is minimal in theory.
 It's a lot like the EC2 instances are in an LRU cache. If they aren't used in a while, they're suspended, which is like cache eviction, and then they get lazily woken up on the subsequent request. That cache miss adds seconds to build time but saves hours of compute billing.
 {% include quotes/end.html %}
 
-The first sleep implementation used the AWS API to shut down an instance after 30 minutes of inactivity, and when someone queued a new build for that instance, we started it back up. Hooking this sleep stuff up presents some problems, though. If we sleep your build node, the gRPC request will fail. This led to the need for the router to not just route requests but wake things up.
+The first sleep implementation used the AWS API to shut down an instance after 30 minutes of inactivity, and when someone queued a new build for that instance, we started it back up. Hooking this sleep stuff up presents some problems though: if we sleep your build node, the gRPC request will fail. This led to the need for the router to not just route requests but wake things up.
 
-However, waking things up adds complexity. To the outside world, your satellite is always there, but inside the compute layer, we have to manage not just sleeping and waking your satellite but ensuring requests block while this is happening. Also, we must guarantee the machine only gets one sleep or wake request at a time and is given time to wake up.
+But waking things up adds complexity. To the outside world, your satellite is always there, but inside the compute layer, we have to manage not just sleeping and waking your satellite but ensuring requests block while this happens. Also, we have to guarantee the machine only gets one sleep or wake request at a time and that it's given time to wake up.
 
 {% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/4570.png --alt {{ Satellite States }} %}
 <figcaption>State transitions add some complexity.</figcaption>
@@ -124,7 +124,10 @@ It's kind of like a distributed state machine. There can be many different build
 To make the process resilient, multiple requests to start builds need to coordinate with each other so that only one of them actually calls 'wake' and the rest simply queue and wait for the state change.
 {% include quotes/end.html %}
 
-With the auto-sleep and coordinated wake-up inside Earthly Compute, our AWS bill got smaller, and no one noticed the start-up time. Except, occasionally, that start-up time got much larger…
+With the auto-sleep and coordinated wake-up inside Earthly Compute, our AWS bill got smaller, and no one noticed the start-up time. 
+
+
+Well, almost. Except, occasionally, that start-up time got much larger…
 
 ## V3: Hibernate Time
 
@@ -164,7 +167,7 @@ And with the service now powering both satellites and Earthly CI, we are now off
 {% include quotes/adam.html %}
 It's actually not remote code execution as a service, though.
 
-For users, it's just a faster CI. It's the build runner behind a CI Service. "arbitrary remote execution as a service" is just the name Corey used internally as a joke.
+For users, it's just a faster CI. It's the build runner behind a CI Service. "remote code execution as a service" is just the name Corey used internally as a joke.
 {% include quotes/end.html %}
 
 {% include quotes/corey.html %}
@@ -173,7 +176,7 @@ But – operationally – it is an arbitrary code execution service. I called it
 Speaking of which, stay tuned for the next article, which will invariably be about how we are fighting off crypto-miners 😀.
 {% include quotes/end.html %}
 
-See the release announcement if you'd like to learn more about Earthly CI, which is powered by this service.
+See the [release announcement](/blog/launching-earthly-ci/) if you'd like to learn more about Earthly CI, which is powered by this service. And stay tuned for more sharing of engineering ~~complaints~~ challenges in the future.
 
 <!--
 ### Writing Article Checklist
