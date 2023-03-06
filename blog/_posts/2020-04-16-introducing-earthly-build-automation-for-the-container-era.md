@@ -34,7 +34,7 @@ With the purpose of bringing these modern capabilities to people out in the real
 
 **A familiar Dockerfile-like syntax is used** , to help new users get up-to-speed quickly. It's like Dockerfile and Makefile had a baby. However, in contrast to Dockerfiles, you can also output regular artifacts (jars, packages, binaries, arbitrary files), in addition to Docker images.
 
-``` dockerfile
+~~~{.dockerfile caption=""}
 FROM golang:1.13-alpine3.11
 WORKDIR /go-example
 
@@ -47,7 +47,7 @@ docker:
   COPY +build/go-example .
   ENTRYPOINT ["/go-example/go-example"]
   SAVE IMAGE go-example:latest
-```
+~~~
 
 Earthly in the future will be about much more: for example, cloud-based build parallelization that has never been possible before. For now, you can run it on top of your existing CI, and you can run it locally for development. You still get the other benefits mentioned above.
 

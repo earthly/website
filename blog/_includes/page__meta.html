@@ -39,7 +39,14 @@
       <div class="author__avatar_top flex mb-4">
           {% picture author {{author.avatar }} --picture class="image-author" --alt {{ author.name }} % %}
           
-          {% if page.author2 %}
+          {% if page.author3 %}
+            {% assign author2 = site.data.authors[page.author2] %}
+            {% picture author {{author2.avatar }} --picture class="image-author ml-1" --alt {{ author2.name }} % %}
+
+            {% assign author3 = site.data.authors[page.author3] %}
+            {% picture author {{author3.avatar }} --picture class="image-author ml-1" --alt {{ author3.name }} % %}
+            <div class="items-center ml-2 flex">{{ author.name }}, {{ author2.name }} and {{ author3.name }}</div>
+          {% elsif page.author2 %}
             {% assign author2 = site.data.authors[page.author2] %}
             {% picture author {{author2.avatar }} --picture class="image-author ml-1" --alt {{ author2.name }} % %}
             <div class="items-center ml-2 flex">{{ author.name }} and {{ author2.name }}</div>

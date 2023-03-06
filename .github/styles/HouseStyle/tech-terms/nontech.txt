@@ -1,3 +1,6 @@
+publically
+bursty
+vulns
 vendoring
 formatters
 cacheable
