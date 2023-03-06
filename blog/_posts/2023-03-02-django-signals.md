@@ -47,6 +47,7 @@ Dispatchers are the built-in `connect()` and `disconnect()` methods of Django si
 To register a receiver function that gets called by signals, you use Django signals dispatcher `connect()` method. For instance, let's make a receiver function and connect to it once an HTTP request is sent.
 
 ~~~{.python caption="get_notified.py"}
+
     def get_notified(sender, **kwargs):
         """ Printing a notification string. """
         print("HTTP request finished")
@@ -57,6 +58,7 @@ The `get_notified()` function prints out the notification string. It is a receiv
 Now, let's connect the receiver with the dispatcher. There are two ways to achieve this. The first way is to import the `request_finished` class from Django signals and pass the receiver function created when calling the `connect()` method on `request_finished`, as shown:
 
 ~~~{.python caption="get_notified.py"}
+
     from django.core.signals import request_finished
 
     request_finished.connect(get_notified)
@@ -69,6 +71,7 @@ The other way to register a receiver function is through **decorators**.
 In a nutshell, [decorators](https://docs.python.org/3/glossary.html#term-decorator) are functions that return a different internal function that is abstracted away from usage outside the context of the decorator. This means that the `receiver` function will be passed into the internal method defined in the `connect()` method in the Django source code.
 
 ~~~{.python caption="receiver_as_decorator.py"}
+
     from django.core.signals import request_finished
     from django.dispatch import receiver
 
@@ -102,6 +105,7 @@ Here, we'll go over Django's most popular signals. These signals are typically t
 The model class `save()` method is always called whenever it is saving an instance to the database in Django. For example:
 
 ~~~{.python caption="django_models_example.py"}
+
     from django.db.models import models
 
     class User(models.Model):
@@ -141,6 +145,7 @@ This signal is useful in many real-world applications like keeping track of the 
 The snippet below will signal the `callback()` receiver function when the `User` model is ready to instantiate a new object of the class.
 
 ~~~{.python caption="pre_init.py"}
+
     from django.core.signals import pre_init
     from datetime import datetime
 
@@ -153,6 +158,7 @@ The snippet below will signal the `callback()` receiver function when the `User`
 Here's a sample output:
 
 ~~~{caption="Output"}
+
 User model __init()__  method is called initially at    
 2023-01-12 16:50:42.193280
 ~~~
@@ -269,6 +275,7 @@ The tomato groceries delete request was received on
 While the sample output for the `post_delete` signal will be like this:
 
 ~~~{caption="Output"}
+
 The grocery was deleted successfully on 2023-01-12-16:52:42.193290.
 ~~~
 
