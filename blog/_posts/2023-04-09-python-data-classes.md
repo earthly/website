@@ -215,9 +215,9 @@ Clearly, it's not super fun anymore!
 
 And as you keep modifying the class, you'll *likely* forget to update one of these. No, I'm not challenging you!
 
-## How to Create Data Classes in Python
-
 Now let's rewrite the `Student` class as a data class (and see if it'll make things easier for us!). You may delete all the existing code in main.py.
+
+## How to Create Data Classes in Python
 
 To create a data class, you can use the `@dataclass` decorator from Python's built-in `dataclasses` module. You can specify the name of the class and list the fields along with their type annotations as shown:
 
@@ -233,7 +233,7 @@ class Student:
     gpa: float
 ~~~
 
-At first look, this version of the `Student` class is easy to read and the type hints indicate the expected data types for each field. There's no `__init__` method or any of the other methods that we added for the regular class. That's it! You can proceed to instantiate objects of the `Student` data class.
+At first look, this version of the `Student` class is easy to read and the type hints indicate the expected data types for each field. There's no `__init__` method or any of the other methods that we added for the regular class. That's it! Your `Student` data class is ready and you can proceed to instantiate objects of this data class.
 
 Now, let's run through the same steps that we did for the regular `Student` class.
 
@@ -265,13 +265,13 @@ We see that the comparison returns `True` (as expected). But we did not write th
 <div class="notice--big--primary">
 ### Where Did `__init__` and Other Methods Come From?
 
-If you take a closer look, we did not write even the class constructor `__init__` method; we only specified the fields and the expected data types as type hints in the data class definition.
+To reiterate, we did not write even the class constructor `__init__` method; we only specified the fields and the expected data types as type hints in the data class definition.
   
-So where did the `__init__`, `__repr__`, and `__eq__` come from?
+So where did the `__init__`, `__repr__`, and `__eq__` methods come from?
 
 ![wondering]({{site.images}}{{page.slug}}/2.png)\
 
-Well, with data classes, you get a default implementation of these methods.
+Well, with data classes, you get a *default implementation* of these methods.
   
 You can use built-in functionality from the [`inspect`](https://docs.python.org/3/library/inspect.html) module to get all the member functions implemented for the `Student` data class:
 
@@ -426,11 +426,11 @@ Therefore, when you don't pass in the list in the function call, you'll see that
 ['Mindset', 'Grit', 'Flow']
 ~~~
   
-This is why you should avoid using mutable defaults in Python.
+❗ This is why you should avoid using mutable defaults in Python.
   
 </div>
 
-Let's add a `classes` field, a list of classes that a student has signed up for. If a student hasn't signed for classes as yet, we initialize `classes` to an empty list. As mentioned, setting it to the literal [], as shown here, won't work.  
+Let's add a `classes` field, a list of classes that a student has signed up for. If a student hasn't signed up for classes as yet, `classes` should be initialized to an empty list. But setting `classes` to the literal [], as shown here, won't work.  
 
 ~~~{.python caption="main.py"}
 # main.py
