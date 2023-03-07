@@ -388,7 +388,7 @@ In a regular Python class, you can provide default values for fields in the `__i
 Data classes give this flexibility, too. However, you should be aware of caveats such as **setting mutable defaults for fields**.
 
 <div class="notice--big--primary">
-#### The Curious Case of Mutable Default Arguments in Python
+#### ⚠️ The Curious Case of Mutable Default Arguments in Python
 
 ![curious]({{site.images}}{{page.slug}}/3.png)\
   
@@ -411,11 +411,11 @@ It takes in one *required* positional argument `item` and *optionally* a list. W
 ['Deep Work', 'Hyperfocus']
 ~~~
 
-If you don't have a reading list, you're adding an item to an empty list, yes? Well, that's the behavior you'd expect.
+If you don't have a reading list, you're adding an item to an empty list. So the function `add_to_reading_list` should return a list containing one item, namely, the `item`, yes? Well, that's the behavior you'd expect.
   
 However, *default arguments* are bound to the function—only once—at the time of defining the function.
   
-Therefore, when you don't pass in the list in the function call, you'll see that the *same* list is modified in each function call. A new empty list is not created for each function call without the list argument:
+Therefore, when you don't pass in the list in the function call, you'll see that the *same* list is modified in each function call. And a new empty list is *not* created for each function call that does *not* contain the list argument:
   
 ~~~{.python caption=""}
 >>> add_to_reading_list('Mindset')
@@ -522,7 +522,7 @@ class Coordinate3D:
     z: float
 ~~~
 
-When none of the coordinates `x`, `y`, and `z` are mentioned when creating an instance, say, you'd like the point to be the origin. So we set simple default values:
+Suppose you'd like the point to be the origin when *none* of the coordinates `x`, `y`, and `z` are mentioned when creating an instance. For this to happen, we set 0.0 as the default value of all the three coordinates `x`, `y`, and `z`:
 
 ~~~{.python caption="point3d.py"}
 from dataclasses import dataclass
@@ -538,13 +538,13 @@ origin = Coordinate3D()
 print(origin)
 ~~~
   
-And it works as expected. `origin` is (0.0,0.0,0.0):
+And it works as expected; `origin` is (0.0,0.0,0.0):
   
 ~~~{.md caption="Output"}
 Coordinate3D(x=0.0, y=0.0, z=0.0)
 ~~~
   
-Suppose we want the point to initially lie in the YZ-plane (where x = 0) when the `x` coordinate is not specified. So we don't need defaults for `y` and `z` but `x` takes a default of 0.0:
+Suppose we want the point to lie in the YZ-plane (where x = 0) when the `x` coordinate is not specified. We don't need defaults for `y` and `z`, but now `x` takes a default value of 0.0:
 
 ![coordinate]({{site.images}}{{page.slug}}/xyzplane.png)\
 
@@ -620,7 +620,7 @@ Student(name='Julia', roll_no=0.5, major='Statistics', year='sophomore',↩
 However, it can sometimes be helpful to have immutable instances:
 
 - It prevents accidental modification of one or more instance fields.
-- Immutable instances can be hashed by default. Therefore, this is helpful if you'd like to use the instance fields as keys of a dictionary, later dump it into a JSON string.
+- Immutable instances can be hashed by default. Therefore, this is helpful if you'd like to use the instance fields as keys of a dictionary or later dump it into a JSON string.
 
 To make instances immutable, set the `frozen` parameter in the `@dataclass` decorator to `True`.
 
@@ -704,7 +704,7 @@ You'll see that `some_method()` has also been included in the list:
  ('some_method', <function Student.some_method at 0x019B6928>)]
 ~~~
 
-🔖Data classes don't provide an implementation of the `__str__` method (falls back to `__repr__` which is always implemented for a data class). If you'd like you can add a `__str__` for users of the class instead of `some_method()`.
+🔖Data classes don't provide an implementation of the `__str__` method (falls back to `__repr__` which is always implemented for a data class). If you'd like, you can add a `__str__` for users of the class instead of `some_method()`.
 
 Though you can add methods to the data class, if you find yourself adding too many methods, you should consider rewriting the data class as a regular Python class instead.
 
