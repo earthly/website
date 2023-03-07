@@ -167,7 +167,7 @@ list-images() {
 
 double-image() { # Double size of image. Using imagemagick
     # Better to get a high quality image
-    mogrify -resize 200% "$1"
+    mogrify -colorspace RGB -resize 200% "$1"
 }
 
 next-date(){ # Get Next date for a post

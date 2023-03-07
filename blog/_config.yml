@@ -170,6 +170,7 @@ defaults:
       layout: single
       author_profile: true
       toc: false
+      fbio: true
       read_time: true
       comments: false
       share: false
