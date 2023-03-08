@@ -920,4 +920,3 @@ To learn more about template filters, consider reading through the [Django Docum
 ## Outside Article Checklist
 
 - [ ] Optional: Find ways to break up content with quotes or images
-
