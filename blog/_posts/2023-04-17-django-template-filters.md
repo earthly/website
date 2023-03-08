@@ -50,31 +50,35 @@ If the value is the list **['a', 'b', 'c']**, the output will be \
 the string **"a - b - c"**.  
 
 ~~~
+
 ~~~{.html caption=""}
 <!--  the value -->
 ['python', 'is', 'fun'] | join:" - "
 
 ~~~
+
 ~~~{.html caption=""}
 "python - is - fun"
 ~~~
+
 ~~~{.html caption=""}
 <!--  the value -->
 ['Monday', 'Tuesday', 'Wednesday'] | join:" // "
 ~~~
+
 ~~~{.html caption=""}
 "Monday // Tuesday // Wednesday"
 ~~~
 
-### Date Filter 
+### Date Filter
 
-The date filter is used to format a date according to a given format. There are numerous [format strings available for the date filter](Django documentation](https://docs.djangoproject.com/en/4.1/ref/templates/builtins/#date).
+The date filter is used to format a date according to a given format. There are numerous [format strings available for the date filter](Django documentation](<https://docs.djangoproject.com/en/4.1/ref/templates/builtins/#date>).
 
 Here's the syntax to use the date filter: `{% raw %}{{ value | date:"D d M Y" }}{% endraw %}`.
 
-If value is a **datetime** object (for example, the result of **datetime.datetime.now())** OR 2022-12-12T10:30:00.000123, the output will be the string **"Mon 12 Dec 2022"**. 
+If value is a **datetime** object (for example, the result of **datetime.datetime.now())** OR 2022-12-12T10:30:00.000123, the output will be the string **"Mon 12 Dec 2022"**.
 
-You can also use one of the predefined date formats such as DATE_FORMAT, DATETIME_FORMAT, SHORT_DATE_FORMAT or SHORT_DATETIME_FORMAT, or a custom format that uses the format specifiers as shown in the example above. 
+You can also use one of the predefined date formats such as DATE_FORMAT, DATETIME_FORMAT, SHORT_DATE_FORMAT, or SHORT_DATETIME_FORMAT, or a custom format that uses the format specifiers as shown in the example above.
 
 `{% raw %}{{ value|date:"SHORT_DATE_FORMAT" }}{% endraw %}`
 
@@ -84,6 +88,7 @@ The output would be the string **"12/12/2022"**.
 <!--  the value -->
 2023-01-12T10:30:00.000123 | date:"SHORT_DATE_FORMAT"
 ~~~
+
 ~~~{.html caption=""}
 '01/12/2023'
 ~~~
@@ -97,54 +102,60 @@ When used without a format string, the DATE_FORMAT format specifier is used. Ass
 2022-12-12T10:30:00.000123 | date
 
 ~~~
+
 ~~~{.html caption=""}
 
 'Dec. 12, 2022'
 
 ~~~
+
 ~~~{.html caption=""}
 <!--  the value -->
 2023-01-12T10:30:00.000123 | date:"D d M Y"
 
 ~~~
+
 ~~~{.html caption=""}
 
 "Sun 12 Jan 2023"
 
 ~~~
 
-### Default Filter 
+### Default Filter
 
-The default filter is used to set a default value to a variable. If the variable evaluates to False, it will use the default argument given. 
+The default filter is used to set a default value to a variable. If the variable evaluates to False, it will use the default argument given.
 
 Here's the syntax to use the default filter: `{% raw %}{{ value | default: "nothing here" }}{% endraw %}`.
 
-If the value is **" "** (the empty string), the output will be **"nothing here"**. 
+If the value is **" "** (the empty string), the output will be **"nothing here"**.
 
 ~~~{.html caption=""}
 <!-- the value -->
 " " | default: "an empty string"
 
 ~~~
+
 ~~~{.html caption=""}
 
 'an empty string'
 
 ~~~
+
 ~~~{.html caption=""}
 <!-- the value -->
 " " | default: "This is a default value"
 
 ~~~
+
 ~~~{.html caption=""}
 
 'This is a default value'
 
 ~~~
 
-### Add Filter 
+### Add Filter
 
-The add filter is used to add the argument to the value. This is useful for numeric data. 
+The add filter is used to add the argument to the value. This is useful for numeric data.
 
 Here's the syntax to use the add filter: `{% raw %}{{ value | add:"5" }}{% endraw %}`.
 
@@ -155,6 +166,7 @@ If the value is **10**, then the output will be **15**. This filter is used to i
 20 | add:"5"
 
 ~~~
+
 ~~~{.html caption=""}
 
 25
@@ -166,6 +178,7 @@ If the value is **10**, then the output will be **15**. This filter is used to i
 [1, 2, 3] | add:"[4, 5, 6]"
 
 ~~~
+
 ~~~{.html caption=""}
 
 [1, 2, 3, 4, 5, 6]
@@ -174,7 +187,7 @@ If the value is **10**, then the output will be **15**. This filter is used to i
 
 ### Capfirst Filter  
 
-The capfirst filter is used to capitalize the first character of the value. If the first character is not a letter, this filter has no effect. 
+The capfirst filter is used to capitalize the first character of the value. If the first character is not a letter, this filter has no effect.
 
 Here's the syntax to use the capfirst filter: `{% raw %}{{ value | capfirst }}{% endraw %}`.
 
@@ -185,16 +198,19 @@ If the value is **"earthly"**, the output will be **"Earthly"**.
 'christmas' | capfirst
 
 ~~~
+
 ~~~{.html caption=""}
 
 'Christmas'
 
 ~~~
+
 ~~~{.html caption=""}
 <!--  the value -->
 'django' | capfirst
 
 ~~~
+
 ~~~{.html caption=""}
 
 'Django'
@@ -203,41 +219,44 @@ If the value is **"earthly"**, the output will be **"Earthly"**.
 
 ### Cut Filter
 
-The cut filter is used to remove *all* occurrences of the argument from the given string. The argument you pass to the filter will be removed from the value. 
+The cut filter is used to remove *all* occurrences of the argument from the given string. The argument you pass to the filter will be removed from the value.
 
 Here's the syntax to use the cut filter:
 `{% raw %}{{ value | cut:" " }}{% endraw %}`.
 
-If the value is **"String with spaces"**, the output will be **"Stringwithspaces"**, the filter has cut out spaces from the value. 
+If the value is **"String with spaces"**, the output will be **"Stringwithspaces"**, the filter has cut out spaces from the value.
 
 ~~~{.html caption=""}
 <!--  the value  -->
 "Python is Fun" | cut:" "
 
 ~~~
+
 ~~~{.html caption=""}
 
 'PythonisFun'
 
 ~~~
+
 ~~~{.html caption=""}
 <!--  the value  -->
 "January - February - March" | cut:"-"
 
 ~~~
+
 ~~~{.html caption=""}
 
 'January February March'
 
 ~~~
 
-###  Dictsort Filter 
+### Dictsort Filter
 
 The dictsort filter is used to sort a list of dictionaries and returns that list *sorted by the key* specified as the argument.
 
 Here's the syntax to use the dictsort filter: `{% raw %}{{ value | dictsort:"name" }}{% endraw %}`
 
-If the value is: 
+If the value is:
 
 ~~~{.html caption=""}
 [
@@ -246,7 +265,8 @@ If the value is:
     {'name': 'Joe', 'age': 31},
 ]
 ~~~
-Then the output would be: 
+
+Then the output would be:
 
 ~~~{.html caption=""}
 
@@ -258,7 +278,7 @@ Then the output would be:
 ]
 ~~~
 
-You will notice that the dictionary was sorted by 'name' and 'Dave' being the lowest in the [character order](http://support.ecisolutions.com/doc-ddms/help/reportsmenu/ascii_sort_order_chart.htm) was moved to the top of the list. 
+You will notice that the dictionary was sorted by 'name' and 'Dave' being the lowest in the [character order](http://support.ecisolutions.com/doc-ddms/help/reportsmenu/ascii_sort_order_chart.htm) was moved to the top of the list.
 
 ~~~{.html caption=""}
 <!--  the value  -->
@@ -269,6 +289,7 @@ You will notice that the dictionary was sorted by 'name' and 'Dave' being the lo
 ]
 
 ~~~
+
 ~~~{.html caption=""}
 
 [
@@ -279,7 +300,7 @@ You will notice that the dictionary was sorted by 'name' and 'Dave' being the lo
 
 ~~~
 
-### Escape Filter 
+### Escape Filter
 
 The escape filter is used to escape a string's HTML. Specifically, it makes these replacements:
 
@@ -292,6 +313,7 @@ The escape filter is used to escape a string's HTML. Specifically, it makes thes
 & is converted to &amp;
 
 ~~~
+
 Here's the syntax to use the escape filter: `{% raw %}{{ value | escape }}{% endraw %}`.
 
 If the value is **`<p>You are <em>pretty</em> smart!</p>`**, the output will be **`<p>You are <em>pretty</em> smart!</p>`**. Without escaping it, the output will be, "You are pretty smart!".
@@ -300,6 +322,7 @@ If the value is **`<p>You are <em>pretty</em> smart!</p>`**, the output will be 
 <!--  the value -->
 <p>This <em>should be</em> fun!</p> | escape
 ~~~
+
 ~~~{.html caption=""}
 <p>This <em>should be</em> fun!</p>
 ~~~

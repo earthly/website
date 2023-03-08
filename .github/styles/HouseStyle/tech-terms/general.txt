@@ -323,3 +323,5 @@ Striptags
 striptags
 titlecolor
 templatetags
+Dictsort
+dictsort
