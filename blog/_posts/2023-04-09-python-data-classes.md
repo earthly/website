@@ -341,7 +341,7 @@ So are type hints ~~useless~~ still helpful?
 
 ### How Do Type Hints Help?
 
-When you add type hints, the IDE or code editor you use will provide *hints* to help you use the right *data types* for the fields.
+When you add type hints, the IDE or code editor can be configured to provide *hints* to help you use the right *data types* for the fields.
 
 I'm using VS Code. As you can tell, I set the `roll_no` field to 0.5 even when I was hinted to use a `str`:
 
