@@ -9,7 +9,7 @@ internal-links:
  - just an example
 ---
 
-Storing application passwords, usernames, authentication tokens, and SSH keys as secret objects when building in Kubernetes is safer than hard coding sensitive information into the application codebase. But here's the big question: Are these secrets secure? No, they aren't!
+Storing application passwords, usernames, authentication tokens, and [SSH](/blog/encrypting-data-with-ssh-keys-and-golang) keys as secret objects when building in Kubernetes is safer than hard coding sensitive information into the application codebase. But here's the big question: Are these secrets secure? No, they aren't!
 
 In this tutorial, you will learn why Kubernetes secrets aren't secure by default and also learn how to keep your secrets in Kubernetes sealed to protect your application from cyber vulnerabilities.
 
@@ -22,7 +22,7 @@ To follow along, you'll need to have the following:
 
 ## Why Kubernetes Secrets Are Not Secure by Default
 
-All secrets and other Kubernetes configuration data are stored in a key-value store called **[ETCD](https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/)**. Kubernetes uses this store to keep track of updates, configurations, and other resources like pods, services, and deployments within a cluster.
+All secrets and other Kubernetes configuration data are stored in a key-value store called **[ETCD](https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/)**. Kubernetes uses this store to keep track of updates, configurations, and other resources like pods, services, and deployments within a [cluster](/blog/kube-bench).
 
 Any change made in the Kubernetes cluster gets updated in the **ETCD** data store and any change made directly in the **ETCD** store will lead to changes in the Kubernetes cluster.
 
@@ -32,7 +32,7 @@ Talking about secrets in Kubernetes, they are stored in the Kubernetes **ETCD** 
 
 ## Ensuring Safety for Kubernetes Secrets
 
-In order to ensure that your cluster resources (pods, deployments, services) and secrets don't fall into wrong hands, you need to be sure your secrets are fully secure. You can consider **Enabling Encryption at Rest**,**Configuring RBAC Rules**, and/or  **Securing the ETCD Data-store** itself.
+In order to ensure that your cluster resources (pods, deployments, services) and secrets don't fall into wrong hands, you need to be sure your secrets are fully secure. You can consider **Enabling [Encryption](/blog/encrypting-data-with-ssh-keys-and-golang) at Rest**,**Configuring RBAC Rules**, and/or  **Securing the ETCD Data-store** itself.
 
 ### Enabling Encryption at Rest
 
@@ -129,7 +129,7 @@ mv enc.yaml /etc/kubernetes/pki
 
 </div>
 
-The **`/etc/kubernetes/pki/`** directory in Kubernetes stores Public Key Infrastructure (PKI) components that are used to secure the communication between various components of a Kubernetes cluster, such as SSL/TLS certificates, private keys, and public keys. These components are essential to ensuring the security and reliability of the cluster by establishing secure and encrypted connections between the different components of the cluster and are mounted on the `kube-apiserver` Pod already.
+The **`/etc/kubernetes/pki/`** directory in Kubernetes stores Public Key Infrastructure (PKI) components that are used to secure the communication between various components of a Kubernetes cluster, such as SSL/TLS certificates, private keys, and public keys. These components are essential to ensuring the security and [reliability](/blog/achieving-repeatability) of the cluster by establishing secure and encrypted connections between the different components of the cluster and are mounted on the `kube-apiserver` Pod already.
 
 <div class="wide">
 ![Viewing **`/etc/kubernetes/pki/`** as volumeMount]({{site.images}}{{page.slug}}/4PYu24m.png)
@@ -252,7 +252,7 @@ kubectl get ns marketing
 ![Creating namespace marketing]({{site.images}}{{page.slug}}/9pk9uSq.png)
 </div>
 
-Then we create a certificate private key for the user, John:
+Then we create a certificate [private key](/blog/creating-and-hosting-your-own-deb-packages-and-apt-repo) for the user, John:
 
 This command uses **OpenSSL** to generate a new RSA private key with a length of 2048 bits and outputs the resulting private key to the "john.key" file.
 
@@ -505,7 +505,7 @@ See the following [guide](https://github.com/justmeandopensource/kubernetes/blob
 
 ## Conclusion
 
-In this tutorial, you've learned all about securing secrets in Kubernetes, and you now know how to protect your sensitive information. You learned and understood the importance of enabling encryption at rest, implementing role-based access control, and securing ETCD to ensure that your secrets remain safe. So go ahead and take control of your secrets, and keep them secure with confidence.
+In this tutorial, you've learned all about securing secrets in Kubernetes, and you now know how to protect your sensitive information. You learned and understood the importance of enabling [encryption](/blog/encrypting-data-with-ssh-keys-and-golang) at rest, implementing role-based access control, and securing ETCD to ensure that your secrets remain safe. So go ahead and take control of your secrets, and keep them secure with confidence.
 
 {% include cta/cta1.html %}
 
@@ -516,4 +516,3 @@ In this tutorial, you've learned all about securing secrets in Kubernetes, and y
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
