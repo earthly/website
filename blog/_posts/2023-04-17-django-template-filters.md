@@ -911,6 +911,8 @@ By now, you should be able to use various in-built filters and also create your 
 
 To learn more about template filters, consider reading through the [Django Documentation](https://docs.djangoproject.com/en/4.1/ref/templates/builtins/).
 
+{% include cta/cta1.html %}
+
 ## Outside Article Checklist
 
 - [ ] Add in Author page
@@ -920,4 +922,3 @@ To learn more about template filters, consider reading through the [Django Docum
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
