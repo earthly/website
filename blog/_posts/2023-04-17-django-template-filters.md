@@ -9,7 +9,7 @@ internal-links:
  - just an example
 ---
 
-Django is a powerful Python web framework loaded with many useful built-in features that make building complex web-focused products a lot easier; one such feature is its **templating engine**.
+Django is a powerful Python web framework loaded with many useful built-in features that [make](/blog/using-cmake) building complex web-focused products a lot easier; one such feature is its **templating engine**.
 
 The Django templating engine allows you to build reusable and dynamic HTML pages that change based on data passed to the template language. It provides filters that are used to transform data in the HTML templates. Template filters can be used to transform the values of variables and tag arguments.
 
@@ -810,7 +810,7 @@ If the value is the string **"Ronaldo"**, the output would be the list **['R', '
 
 ### Summing Up
 
-Let's code an example to put together what we've learned in this section. If you are building a blog homepage or an archive page, you can use the "truncatewords" filter to display excerpts on your home or archive page instead of showing the entire article.
+Let's code an example to put together what we've learned in this section. If you are building a [blog](/blog/top-5-scala-blogs) homepage or an archive page, you can use the "truncatewords" filter to display excerpts on your home or archive page instead of showing the entire article.
 
 For example, we can create an excerpt from the long texts below using the **truncatewords** filter.
 
@@ -840,7 +840,7 @@ Now follow the steps below to create your Django custom template filter.
 
 ### Step 1: Create a "templatetags" Directory
 
-The first thing to do is to create a templatetags directory in our blog app, this directory can reside in any of your Django apps top-level directories. i.e. the same place where you have "models.py" or "views.py"
+The first thing to do is to create a templatetags directory in our [blog](/blog/top-5-scala-blogs) app, this directory can reside in any of your Django apps top-level directories. i.e. the same place where you have "models.py" or "views.py"
 
 ### Step 2: Create the `__init__.py` file
 
@@ -921,4 +921,3 @@ To learn more about template filters, consider reading through the [Django Docum
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
