@@ -35,6 +35,8 @@ Talking about secrets in Kubernetes, they are stored in the Kubernetes **ETCD** 
 
 ## Ensuring Safety for Kubernetes Secrets
 
+![Safety]({{site.images}}{{page.slug}}/safety.png)\
+
 In order to ensure that your cluster resources (pods, deployments, services) and secrets don't fall into wrong hands, you need to be sure your secrets are fully secure. You can consider **Enabling [Encryption](/blog/encrypting-data-with-ssh-keys-and-golang) at Rest**,**Configuring RBAC Rules**, and/or  **Securing the ETCD Data-store** itself.
 
 ### Enabling Encryption at Rest
@@ -530,4 +532,3 @@ In this tutorial, you've learned all about securing secrets in Kubernetes, and y
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
