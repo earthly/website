@@ -6,7 +6,10 @@ toc: true
 author: Mercy Bessey
 
 internal-links:
- - just an example
+ - Kubernetes Secrets
+ - Security
+ - Credentials
+ - Application Security
 ---
 
 Storing application passwords, usernames, authentication tokens, and [SSH](/blog/encrypting-data-with-ssh-keys-and-golang) keys as secret objects when building in Kubernetes is safer than hard coding sensitive information into the application codebase. But here's the big question: Are these secrets secure? No, they aren't!
@@ -515,4 +518,3 @@ In this tutorial, you've learned all about securing secrets in Kubernetes, and y
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Add keywords for internal links to front-matter
