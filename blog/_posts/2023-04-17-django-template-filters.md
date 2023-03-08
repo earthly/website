@@ -6,7 +6,11 @@ toc: true
 author: Adam
 
 internal-links:
- - just an example
+ - Django
+ - Template Filters
+ - Template Tags
+ - Filters
+ - Templates
 ---
 
 Django is a powerful Python web framework loaded with many useful built-in features that [make](/blog/using-cmake) building complex web-focused products a lot easier; one such feature is its **templating engine**.
@@ -920,4 +924,3 @@ To learn more about template filters, consider reading through the [Django Docum
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Add keywords for internal links to front-matter
