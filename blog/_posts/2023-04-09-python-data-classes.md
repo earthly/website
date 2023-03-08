@@ -31,7 +31,7 @@ This tutorial assumes you're familiar with the working of [Python classes and ob
 
 ## Python Classes and Boilerplate Code
 
-You'll first create a regular [Python class](https://earthly.dev/blog/python-classes-and-objects/). In doing so, you'll realize how much bolierplate code you need to write to get a minimal working class. You'll then rewrite the existing Python class as a *data class* to understand how data classes can help you escape the monotony of boilerplate code.
+You'll first create a regular [Python class](https://earthly.dev/blog/python-classes-and-objects/). In doing so, you'll realize how much boilerplate code you need to write to get a minimal working class. You'll then rewrite the existing Python class as a *data class* to understand how data classes can help you escape the monotony of boilerplate code.
 
 As our goal is to *understand and use* data classes—and not to write fancy classes—let's create a simple class such as a `Student` or an `Employee` class.
 
