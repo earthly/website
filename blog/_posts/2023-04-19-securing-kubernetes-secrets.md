@@ -3,7 +3,7 @@ title: "Securing Kubernetes Secrets Effectively"
 categories:
   - Tutorials
 toc: true
-author: Mercy Bessey
+author: Mercy Bassey
 
 internal-links:
  - Kubernetes Secrets
@@ -45,8 +45,9 @@ Enabling encryption at rest means encrypting your secrets' data before they are 
 
 By default, Kubernetes secrets are base64 encoded which can also be easily decoded. For example, the code snippet below will create a secret object called ***demo*** that will contain a username of ***myapp*** and a password of ***123456***:
 
-~~~
-kubectl create secret generic demo --from-literal=username=myapp --from-literal=password=123456
+~~~{.bash caption=">_"}
+kubectl create secret generic demo --from-literal=username=myapp \
+--from-literal=password=123456
 ~~~
 
 <div class="wide">
@@ -63,7 +64,7 @@ But since Kubernetes secrets are base64 encoded, anyone with knowledge of Kubern
 
 This command retrieves the *demo* secret object from the cluster and outputs the information in YAML format alongside the keys this secret contains with their base64 encoded values.
 
-~~~
+~~~{.bash caption=">_"}
 kubectl get secret demo -o yaml
 ~~~
 
@@ -75,7 +76,8 @@ To get the actual value of this secret, you'll need to run the commands below.
 
 These commands will output the decoded values for both the password and username keys.
 
-~~~
+~~~{.bash caption=">_"}
+
 echo MTIzNDU2 | base64 --decode #Get the actual value of the password key
 echo bXlhcHA= | base64 --decode #Gets the actual value of the username key
 ~~~
@@ -92,7 +94,7 @@ To create an **EncryptionConfiguration** resource, you need to first create a ke
 
 Execute the command below from your master node to create this key. This command will generate a 32-byte random key and base64 encode it.
 
-~~~
+~~~{.bash caption=">_"}
 head -c 32 /dev/urandom | base64
 ~~~
 
@@ -104,7 +106,7 @@ Next, create a file to store the configuration settings for the **EncryptionConf
 
  You can name it whatever you like - this tutorial uses ***enc.yaml***.
 
-~~~
+~~~{.yaml caption="enc.yaml"}
 apiVersion: apiserver.config.k8s.io/v1
 kind: EncryptionConfiguration
 resources: #specifies the lists of resources that should be encrypted
@@ -123,7 +125,7 @@ Next, you need to configure the encryption configuration in your API server. If 
 
 Move this file into the following directory - `/etc/kubernetes/pki/` .
 
-~~~
+~~~{.bash caption=">_"}
 mv enc.yaml /etc/kubernetes/pki
 ~~~
 
@@ -140,7 +142,7 @@ The **`/etc/kubernetes/pki/`** directory in Kubernetes stores Public Key Infrast
 
 To confirm if the file was successfully moved, execute the command below:
 
-~~~
+~~~{.bash caption=">_"}
 cat /etc/kubernetes/pki/enc.yaml
 ~~~
 
@@ -150,7 +152,7 @@ cat /etc/kubernetes/pki/enc.yaml
 
 Next, you'll need to edit the manifest file for the `kube-apiserver` static pod. Run the commands below to locate the `kube-apiserver` manifest file:
 
-~~~
+~~~{.bash caption=">_"}
 cd /etc/kubernetes/manifests
 ls
 ~~~
@@ -161,7 +163,7 @@ ls
 
 Open up the `kube-apiserver` manifest file using a code editor (nano or vim) and add the following configuration into the `command` section in the `containers` level of the manifest specification configuration settings:
 
-~~~
+~~~{.bash caption=">_"}
 - --encryption-provider-config=/etc/kubernetes/pki/enc.yaml
 ~~~
 
@@ -185,10 +187,12 @@ Since you have already created a secret *demo*, go ahead to replace it using the
 
 This command essentially retrieves the secrets in the **`default`** namespace, updates them with the latest information, and replaces the existing secrets in the cluster with the updated information.
 
-~~~
-kubectl get secrets --namespaces=default -o json | kubectl replace -f - #replace for a particular namespace
+~~~{.bash caption=">_"}
+kubectl get secrets --namespaces=default -o json | kubectl \
+replace -f - #replace for a particular namespace
 #or
-kubectl get secrets --all-namespaces -o json | kubectl replace -f - #replace across all namespaces
+kubectl get secrets --all-namespaces -o json | kubectl \
+replace -f - #replace across all namespaces
 ~~~
 
 <div class="wide">
@@ -197,7 +201,7 @@ kubectl get secrets --all-namespaces -o json | kubectl replace -f - #replace acr
 
 Now, you'll need to go into the **ETCD** data store to confirm your secrets are encrypted at rest. The **ETCD** pod runs in the ***kube-system*** namespace. You can run the below command to confirm:
 
-~~~
+~~~{.bash caption=">_"}
 kubectl get pods -n kube-system
 ~~~
 
@@ -207,8 +211,10 @@ kubectl get pods -n kube-system
 
 To see how the **demo**  secret is stored in the **ETCD** data store, execute the following command:
 
-~~~
-kubectl -n kube-system exec -it etcd-master -- sh -c "ETCDCTL_API=3 etcdctl \
+~~~{.bash caption="etcd.bash"}
+
+kubectl -n kube-system exec -it etcd-master \
+   -- sh -c "ETCDCTL_API=3 etcdctl \
    --cacert=/etc/kubernetes/pki/etcd/ca.crt   \
    --cert=/etc/kubernetes/pki/etcd/server.crt \
    --key=/etc/kubernetes/pki/etcd/server.key  \
@@ -246,7 +252,7 @@ So when John tries to access the cluster, Kubernetes will check for the trusted 
 
 Let's continue with the same example. We will start by creating the namespace we want John to only have access to which in this case is the *marketing* namespace using the below command:
 
-~~~
+~~~{.bash caption=">_"}
 kubectl create ns marketing
 kubectl get ns marketing
 ~~~
@@ -259,9 +265,9 @@ Then we create a certificate [private key](/blog/creating-and-hosting-your-own-d
 
 This command uses **OpenSSL** to generate a new RSA private key with a length of 2048 bits and outputs the resulting private key to the "john.key" file.
 
-~~~
- openssl genrsa -out john.key 2048
-  cat john.key
+~~~{.bash caption=">_"}
+openssl genrsa -out john.key 2048
+cat john.key
 ~~~
 
 The parameters in the command stand for the following:
@@ -278,9 +284,10 @@ Once we have successfully created John's certificate private key, we will create
 
 This command generates a new CSR using the private key stored in the *john.key* file and outputs the resulting CSR to the *john.csr* file. The subject of the CSR specifies the certificate will be issued to an entity with a common name of *john* and an organization name of *marketing* (namespace in this context).
 
-~~~
-    openssl req -new -key john.key -out john.csr -subj "/CN=john/O=marketing"
-    cat john.csr
+~~~{.bash caption=">_"}
+
+openssl req -new -key john.key -out john.csr -subj "/CN=john/O=marketing"
+cat john.csr
 ~~~
 
 The parameters in the command stand for the following:
@@ -293,7 +300,7 @@ The parameters in the command stand for the following:
 
 Copy the **ca.crt* and *ca.key* securely (SCP) from the `/etc/kubernetes/pki` directory from your master node using the below command, you will need the *ca.crt* and *ca.key* on your local machine to sign John's certificate:
 
-~~~
+~~~{.bash caption=">_"}
 scp root@96.126.114.208:/etc/kubernetes/pki/ca.{crt,key} .
 ls
 ~~~
@@ -306,8 +313,9 @@ Now we'll need to sign John's CSR using the Kubernetes cluster's certificate aut
 
 The following command creates a new X.509 certificate based on the certificate signing request stored in the *john.csr* file. The certificate is signed by the root CA specified in the *ca.crt* and *ca.key* files. The newly generated certificate is stored in the "john.crt" file and is valid for 365 days.
 
-~~~
-openssl x509 -req -in john.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out john.crt -days 365
+~~~{.bash caption=">_"}
+openssl x509 -req -in john.csr -CA ca.crt -CAkey ca.key \
+ -CAcreateserial -out john.crt -days 365
 ~~~
 
 The parameters in the command above stand for the following:
@@ -340,9 +348,10 @@ First, you need to get the base64 encoded value for John's certificate (*john.cr
 
 Paste the keys where you can easily access them.
 
-~~~
+~~~{.bash caption=">_"}
 cat john.crt | base64 -w0
-kubectl --kubeconfig john.kubeconfig get pods --namespace marketing
+kubectl --kubeconfig john.kubeconfig get \
+ pods --namespace marketing
 ~~~
 
 <div class="wide">
@@ -351,7 +360,7 @@ kubectl --kubeconfig john.kubeconfig get pods --namespace marketing
 
 Now, create a config file for John, for instance, *john.kubeconfig*, and paste in the below configuration settings:
 
-~~~
+~~~{ caption="john.kubeconfig"}
 apiVersion: v1
 clusters:
 - cluster:
@@ -386,9 +395,11 @@ But that's not all, you just created a user John. John isn't authenticated to ru
 
 At this point, if you execute the following command, you will see that John isn't authenticated yet:
 
-~~~
-kubectl --kubeconfig john.kubeconfig get pods --namespace marketing #Gets pods from the marketing namespace
-kubectl --kubeconfig john.kubeconfig get pods #Gets pods from the default namespace
+~~~{.bash caption=">_"}
+kubectl --kubeconfig john.kubeconfig get pods --namespace marketing \
+#Gets pods from the marketing namespace
+kubectl --kubeconfig john.kubeconfig get pods
+#Gets pods from the default namespace
 ~~~
 
 <div class="wide">
@@ -397,8 +408,9 @@ kubectl --kubeconfig john.kubeconfig get pods #Gets pods from the default namesp
 
 So we will create a role named "john-marketing" in the Kubernetes cluster with permissions to perform "*get*", "*list*", and "*watch*" actions on pods and secrets resources in the "marketing" namespace using the command below:
 
-~~~
-kubectl create role john-marketing --verb=get,list,watch --resource=pods,secrets --namespace marketing
+~~~{.bash caption=">_"}
+kubectl create role john-marketing --verb=get,list,watch \
+ --resource=pods,secrets --namespace marketing
 ~~~
 
 <div class="wide">
@@ -407,8 +419,9 @@ kubectl create role john-marketing --verb=get,list,watch --resource=pods,secrets
 
 Create a role binding named *john-marketing-rolebinding* that binds the role "john-marketing" to the user *john* in the "marketing" namespace.
 
-~~~
-kubectl create rolebinding john-marketing-rolebinding --role=john-marketing --user=john --namespace marketing
+~~~{.bash caption=">_"}
+kubectl create rolebinding john-marketing-rolebinding \
+ --role=john-marketing --user=john --namespace marketing
 ~~~
 
 <div class="wide">
@@ -417,7 +430,7 @@ kubectl create rolebinding john-marketing-rolebinding --role=john-marketing --us
 
 Confirm that the Role and RoleBinding for John were created using these commands:
 
-~~~
+~~~{.bash caption=">_"}
 kubectl get role -n marketing
 kubectl get rolebinding -n marketing
 ~~~
@@ -428,8 +441,10 @@ kubectl get rolebinding -n marketing
 
 Create a secret named *marketing-secret* in the *marketing* namespace containing two key-value pairs: *username* with value *myapp* and *password* with value *123456*.
 
-~~~
-kubectl create secret generic marketing-secret --from-literal=username=myapp --from-literal=password=123456 -n marketing
+~~~{.bash caption=">_"}
+kubectl create secret generic marketing-secret \
+ --from-literal=username=myapp --from-literal=password=123456 \
+ -n marketing
 ~~~
 
 <div class="wide">
@@ -449,7 +464,7 @@ get /registry/secrets/marketing/marketing-secret"`
 
 Confirm if John can access this secret using the command below:
 
-~~~
+~~~{.bash caption=">_"}
 kubectl --kubeconfig john.kubeconfig get secrets --namespace marketing
 ~~~
 
@@ -459,7 +474,7 @@ kubectl --kubeconfig john.kubeconfig get secrets --namespace marketing
 
 Optionally, you can edit the *john.kubeconfig* file to set the default namespace for John to the *marketing* namespace:
 
-~~~
+~~~{ caption="john.kubeconfig"}
 apiVersion: v1
 clusters:
 - cluster:
@@ -484,7 +499,7 @@ users:
 
 That way the following command only accesses the secrets in the marking namespace for John without you specifying the namespace explicitly:
 
-~~~
+~~~{.bash caption=">_"}
 kubectl --kubeconfig john.kubeconfig get secrets
 ~~~
 
@@ -516,5 +531,3 @@ In this tutorial, you've learned all about securing secrets in Kubernetes, and y
 
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
