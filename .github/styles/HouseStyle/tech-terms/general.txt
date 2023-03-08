@@ -310,3 +310,16 @@ Websockets
 bugfix
 
 cyber
+
+Linenumbers
+linenumbers
+Timesince
+timesince
+Wordcount
+wordcount
+Truncatewords
+truncatewords
+Striptags
+striptags
+titlecolor
+templatetags
