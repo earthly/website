@@ -42,7 +42,7 @@ The join filter is used to join the elements of a list with a string and outputs
 
 Here's the syntax to use the join filter.
 
-~~~{.{{ caption=""}
+~~~{ caption=""}
 
 -    ``` {{ value | join:" - " }} ``` : If the value is the list **['a', 'b', 'c']**, the output will be the string **"a - b - c"**.  
 
@@ -880,9 +880,8 @@ A decorator is a function that takes another function as an argument and adds fu
 Create an HTML template called "blog.html" in your app templates folder with the code below.
 
 ~~~
-{% extends 'base.html' %}
-{% load titlecolor_filter %}
-
+{% raw %} {% extends 'base.html' %}  {% endraw %}
+{% raw %} {% load titlecolor_filter %} {% endraw %}
 
         <div class="col-lg-7">
             <div class="container">
@@ -894,14 +893,13 @@ Create an HTML template called "blog.html" in your app templates folder with the
             <p>{{article.content}}</p>
           </div>
         </div>
-
 ~~~
 
 <div class="wide">
 ![Blog post title in Red color]({{site.images}}{{page.slug}}/ItdOTq4.png)
 </div>
 
-To be able to use our custom filter in a template, the first thing to do is to load our custom filter module at the top of the template HTML file as shown above with the `{% load titlecolor_filter %}` tag.
+To be able to use our custom filter in a template, the first thing to do is to load our custom filter module at the top of the template HTML file as shown above with the `{% raw %} {% load titlecolor_filter %} {% endraw %}` tag.
 
 Once the module is loaded, we can now apply our custom filter using the pipe operator inside double braces `{{ variable | filter_name }}`as shown above.
 The filter name is the name of the function in our **"titlecolor_filter.py"** module.
