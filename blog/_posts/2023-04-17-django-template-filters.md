@@ -3,7 +3,7 @@ title: "How to Use Django Template Filters"
 categories:
   - Tutorials
 toc: true
-author: Adam
+author: Joseph Adediji
 
 internal-links:
  - Django
@@ -21,14 +21,16 @@ In this article, you'll learn about the various built-in Django template filters
 
 ## Template Tags vs Template Filters
 
+![Versus]({{site.images}}{{page.slug}}/vs.jpg)\
+
 The Django template filters and tags are closely related, but they are quite distinct in what they do in the Django template language.
 
-Template tags are keywords and functions for the Django template engine, similar to how Python functions work. Template tags provide control flows and Python tools in the template, but they cannot modify the values of a variable. Template tags are denoted by braces and percent signs `{{ tagname }}`.
+Template tags are keywords and functions for the Django template engine, similar to how Python functions work. Template tags provide control flows and Python tools in the template, but they cannot modify the values of a variable. Template tags are denoted by braces and percent signs `{% raw %} {{ tag_name }} {% endraw %}`.
 
-On the other hand, Django template filters are used to modify the values of a variable or tag arguments and transform and increment the values of a variable as needed. Template filters can be used to format numbers, dates, and other data types in a specific way or to perform common operations such as string concatenation or truncation. Template filters are applied using the pipe operator inside double braces `{{ variable | filter_name }}`.
+On the other hand, Django template filters are used to modify the values of a variable or tag arguments and transform and increment the values of a variable as needed. Template filters can be used to format numbers, dates, and other data types in a specific way or to perform common operations such as string concatenation or truncation. Template filters are applied using the pipe operator inside double braces `{% raw %} {{ variable | filter_name }} {% endraw %}`.
 
 Filters can also be chained to perform a series of successive data transformations; this means that the first filter is applied to the next filter and the next until the end of the chain. For example:
-`{{ variable | filter_1 | filter_2 }}`.
+`{% raw %} {{ variable | filter_1 | filter_2 }} {% endraw %}`.
 
 ## Popular Built-in Django Template Filters
 
@@ -44,9 +46,11 @@ Here's the syntax to use the join filter.
 
 ~~~{ caption=""}
 
--    ``` {{ value | join:" - " }} ``` : If the value is the list **['a', 'b', 'c']**, the output will be the string **"a - b - c"**.  
+-    ``` {% raw %} {{ value | join:" - " }} {% endraw %} ``` : If the value is the list **['a', 'b', 'c']**, the output will be the string **"a - b - c"**.  
 
 ~~~
+~~~
+
 <!--  the value -->
 ['python', 'is', 'fun'] | join:" - "
 
@@ -71,13 +75,13 @@ Here's the syntax to use the join filter.
 
 The date filter is used to format a date according to a given format. There are numerous [format strings available for the date filter](Django documentation](https://docs.djangoproject.com/en/4.1/ref/templates/builtins/#date).
 
-Here's the syntax to use the date filter: `{{ value|date:"D d M Y" }}`
+Here's the syntax to use the date filter: `{% raw %} {{ value | date:"D d M Y" }} {% endraw %} `
 
 If value is a **datetime** object (for example, the result of **datetime.datetime.now())** OR 2022-12-12T10:30:00.000123, the output will be the string **"Mon 12 Dec 2022"**. 
 
 You can also use one of the predefined date formats such as DATE_FORMAT, DATETIME_FORMAT, SHORT_DATE_FORMAT or SHORT_DATETIME_FORMAT, or a custom format that uses the format specifiers as shown in the example above. 
 
-`{{ value|date:"SHORT_DATE_FORMAT" }}`
+`{% raw %} {{ value|date:"SHORT_DATE_FORMAT" }} {% endraw %}`
 
 The output would be the string **"12/12/2022"**.  
 
@@ -94,7 +98,7 @@ The output would be the string **"12/12/2022"**.
 
 When used without a format string, the DATE_FORMAT format specifier is used. Assuming the same date as the previous example:
 
-`{{ value | date }}`
+`{% raw %} {{ value | date }} {% endraw %}`
 
 ~~~
 <!-- the value -->
@@ -121,7 +125,7 @@ When used without a format string, the DATE_FORMAT format specifier is used. Ass
 
 The default filter is used to set a default value to a variable. If the variable evaluates to False, it will use the default argument given. 
 
-Here's the syntax to use the default filter: `{{ value | default: "nothing here" }}`
+Here's the syntax to use the default filter: `{% raw %} {{ value | default: "nothing here" }} {% endraw %}`
 
 If the value is **" "** (the empty string), the output will be **"nothing here"**. 
 
@@ -150,7 +154,7 @@ If the value is **" "** (the empty string), the output will be **"nothing here"*
 
 The add filter is used to add the argument to the value. This is useful for numeric data. 
 
-Here's the syntax to use the add filter: `{{ value | add:"5" }}`
+Here's the syntax to use the add filter: `{% raw %} {{ value | add:"5" }} {% endraw %}`
 
 If the value is **10**, then the output will be **15**. This filter is used to increment a variable in Django templates by adding a constant value to the variable.
 
@@ -180,7 +184,7 @@ If the value is **10**, then the output will be **15**. This filter is used to i
 
 The capfirst filter is used to capitalize the first character of the value. If the first character is not a letter, this filter has no effect. 
 
-Here's the syntax to use the capfirst filter: `{{ value | capfirst }} `
+Here's the syntax to use the capfirst filter: `{% raw %} {{ value | capfirst }} {% endraw %}`
 
 If the value is **"earthly"**, the output will be **"Earthly"**.
 
@@ -210,7 +214,7 @@ If the value is **"earthly"**, the output will be **"Earthly"**.
 The cut filter is used to remove *all* occurrences of the argument from the given string. The argument you pass to the filter will be removed from the value. 
 
 Here's the syntax to use the cut filter:
-`{{ value | cut:" " }}`
+`{% raw %} {{ value | cut:" " }} {% endraw %}`
 
 If the value is **"String with spaces"**, the output will be **"Stringwithspaces"**, the filter has cut out spaces from the value. 
 
@@ -239,19 +243,19 @@ If the value is **"String with spaces"**, the output will be **"Stringwithspaces
 
 The dictsort filter is used to sort a list of dictionaries and returns that list *sorted by the key* specified as the argument.
 
-Here's the syntax to use the dictsort filter: `{{ value | dictsort:"name" }}`
+Here's the syntax to use the dictsort filter: `{% raw %} {{ value | dictsort:"name" }} {% endraw %}`
 
 If the value is: 
-~~~
 
+~~~
 [
     {'name': 'Josh', 'age': 19},
     {'name': 'Dave', 'age': 22},
     {'name': 'Joe', 'age': 31},
 ]
-
 ~~~
 Then the output would be: 
+
 ~~~
 
 [
@@ -260,8 +264,8 @@ Then the output would be:
 {'name': 'Josh', 'age': 19},
 
 ]
-
 ~~~
+
 You will notice that the dictionary was sorted by 'name' and 'Dave' being the lowest in the [character order](http://support.ecisolutions.com/doc-ddms/help/reportsmenu/ascii_sort_order_chart.htm) was moved to the top of the list. 
 
 ~~~
@@ -296,7 +300,7 @@ The escape filter is used to escape a string's HTML. Specifically, it makes thes
 & is converted to &amp;
 
 ~~~
-Here's the syntax to use the escape filter: `{{ value | escape }}`
+Here's the syntax to use the escape filter: `{% raw %} {{ value | escape }} {% endraw %}`
 
 If the value is **`<p>You are <em>pretty</em> smart!</p>`**, the output will be **`<p>You are <em>pretty</em> smart!</p>`**. Without escaping it, the output will be, "You are pretty smart!".
 
@@ -312,7 +316,7 @@ If the value is **`<p>You are <em>pretty</em> smart!</p>`**, the output will be 
 
 The first filter is used to get the first item in a list.
 
-Here's the syntax to use the first filter: `{{ value | first }}`
+Here's the syntax to use the first filter: `{% raw %} {{ value | first }} {% endraw %}`
 
 If the value is **['Jane', 'Janet', 'Joe']**, the output will be **'Jane'**.
 
@@ -338,7 +342,7 @@ If the value is **['Jane', 'Janet', 'Joe']**, the output will be **'Jane'**.
 
 The last filter is used to get the last item in a list.  
 
-Here's the syntax to use the last filter: `{{ value | last }}`
+Here's the syntax to use the last filter: `{% raw %} {{ value | last }} {% endraw %}`
 
 If the value is **['Jane', 'Janet', 'Joe']**, the output will be **Joe**.
 
@@ -364,7 +368,7 @@ If the value is **['Jane', 'Janet', 'Joe']**, the output will be **Joe**.
 
 The length filter is used to return the length of the value. This works for both strings and lists.
 
-Here's the syntax to use the length filter: `{{ value | length }}`
+Here's the syntax to use the length filter: `{% raw %} {{ value | length }} {% endraw %}`
 
 If the value is **['a', 'b', 'c', 'd']** or "**abcd"**, the output will be **4**.
 
@@ -390,7 +394,7 @@ If the value is **['a', 'b', 'c', 'd']** or "**abcd"**, the output will be **4**
 
 The linenumbers filter is used to display text with line numbers.
 
-Here's the syntax to use the linenumbers filter: `{{ value | linenumbers }}`.
+Here's the syntax to use the linenumbers filter: `{% raw %} {{ value | linenumbers }} {% endraw %}`.
 
 If the value is:
 
@@ -430,7 +434,7 @@ The output will be:
 
 The lower filter is used to convert a string to lowercase. This will return a new string in lowercase.
 
-Here's the syntax to use the lower filter: `{{ value | lower }}`.
+Here's the syntax to use the lower filter: `{% raw %} {{ value | lower }} {% endraw %}`.
 
 If the value is **"I Am Groot"**, the output will be "**i am groot"**.
 
@@ -456,7 +460,7 @@ If the value is **"I Am Groot"**, the output will be "**i am groot"**.
 
 The upper filter is used to convert a string to uppercase. This will return a new string in upper case.
 
-Here's the syntax to use the upper filter: `{{ value | upper }}`.
+Here's the syntax to use the upper filter: `{% raw %} {{ value | upper }} {% endraw %}`.
 
 If the value is **"Moe is a slug"**, the output will be **"MOE IS A SLUG"**.
 
@@ -482,7 +486,7 @@ If the value is **"Moe is a slug"**, the output will be **"MOE IS A SLUG"**.
 
 The title filter is used to format a string in the title case. The first letter of each word is capitalized.
 
-Here's the syntax to use the title filter: `{{ value | title }}.`
+Here's the syntax to use the title filter: `{% raw %} {{ value | title }} {% endraw %}`.
 
 If the value is **"I LOVE dogs"**, the output will be **"I Love Dogs"**.
 
@@ -508,7 +512,7 @@ If the value is **"I LOVE dogs"**, the output will be **"I Love Dogs"**.
 
 The random filter is used to return a random item from the given list.
 
-Here's the syntax to use the random filter: `{{ value | random }}`.
+Here's the syntax to use the random filter: `{% raw %} {{ value | random }} {% endraw %}`.
 
 If the value is the list **['a', 'b', 'c', 'd']**, the output could be **"b"** or  **"d"** or  **"a"**.
 
@@ -534,7 +538,7 @@ If the value is the list **['a', 'b', 'c', 'd']**, the output could be **"b"** o
 
 The slice filter is used to return a slice of the given list. This filter will cut off a part of the list from the given index and returns a new list.
 
-Here's the syntax to use the slice filter: `{{ some_list | slice:":2" }}`.
+Here's the syntax to use the slice filter: `{% raw %} {{ some_list | slice:":2" }} {% endraw %}`.
 
 If `some_list` is **['a', 'b', 'c'],** the output will be **['a', 'b']**.
 
@@ -560,7 +564,7 @@ If `some_list` is **['a', 'b', 'c'],** the output will be **['a', 'b']**.
 
 The time filter is used to format time according to the given format. The given format can be the predefined TIME_FORMAT or a custom format.
 
-Here's the syntax to use the time filter: `{{ value | time:"H:i" }}`.
+Here's the syntax to use the time filter: `{% raw %} {{ value | time:"H:i" }} {% endraw %}`.
 
 If the value is equivalent to **datetime.datetime.now()**, the output will be the string **"01:23"**.
 
@@ -591,8 +595,8 @@ This filter also takes an *optional* argument that is a variable containing the 
 Here's an example that uses the timesince filter:
 
 ~~~
-{{ publication_date | timesince:comment_date }} 
-{{ publication_date | timesince }}
+{% raw %} {{ publication_date | timesince:comment_date }} {% endraw %}
+{% raw %} {{ publication_date | timesince }} {% endraw %}
 ~~~
 
 If `publication_date` is a date instance representing midnight on 1 December 2022, and `comment_date` is a date instance for 09:00 on 1 December 2022, then the output would be **"9 hours"**.
@@ -619,7 +623,7 @@ If `publication_date` is a date instance representing midnight on 1 December 202
 
 The truncatechars filter is used to truncate a string if it is longer than the specified number of characters. Truncated strings will end with an ellipsis character (...).
 
-Here's how you can use the truncatechars filter: `{{ value | truncatechars:7 }}`.
+Here's how you can use the truncatechars filter: `{% raw %} {{ value | truncatechars:7 }} {% endraw %}`.
 
 If the value is **"Moe is a slug"**, the output will be **"Moe is…"**.
 
@@ -677,7 +681,7 @@ In this previous section, we have looked at some of the most popular Django temp
 
 The wordcount filter returns the number of words in a string.
 
-Here's the syntax to use the wordcount filter: `{{ value | wordcount }}`.
+Here's the syntax to use the wordcount filter: `{% raw %} {{ value | wordcount }} {% endraw %}`.
 
 If the value is **"Moe is a cat"**, the output will be **4**.
 
@@ -703,7 +707,7 @@ If the value is **"Moe is a cat"**, the output will be **4**.
 
 The truncatewords filter is used to truncate a string after a certain number of words. This is similar to the truncatechars filter and it will be useful if you prefer to truncate by words instead of characters.
 
-You can use the truncatewords filter: `{{ value | truncatewords:3 }}`.
+You can use the truncatewords filter: `{% raw %} {{ value | truncatewords:3 }} {% endraw %}`.
 
 If the value is "**Joseph is a software engineer"**, the output will be **"Joseph is a …"**
 
@@ -729,7 +733,7 @@ If the value is "**Joseph is a software engineer"**, the output will be **"Josep
 
 The striptags is used to remove all [X]HTML tags from the value it is piped against. This will be useful if you want to convert HTML data into a string.
 
-Here's the syntax to use the striptags filter: `{{ value | striptags }}`.
+Here's the syntax to use the striptags filter: `{% raw %} {{ value | striptags }} {% endraw %}`.
 
 If the value is **"<b>Joseph</b> <button>is</button> a <span>developer</span>"**, the output will be **"Joseph is a developer"**.
 
@@ -758,7 +762,7 @@ The pluralize filter is used to return a plural suffix if the value is not 1, '1
 You can use the pluralize filter as shown:
 
 ~~~
-You have {{ num_messages }} message {{ num_messages | pluralize }}.
+You have {% raw %} {{ num_messages }} {% endraw %} message {% raw %} {{ num_messages | pluralize }} {% endraw %}.
 ~~~
 
 If `num_messages` is 1, the output will be **You have 1 message**. If `num_messages` is 2 the output will be **You have 2 messages**.
@@ -768,18 +772,18 @@ For words that require a suffix other than 's', you can provide an alternate suf
 Here's how you can use other suffixes with the pluralize filter:
 
 ~~~
-You have {{ num_tomato }} tomato {{ num_tomato | pluralize:"es" }}.
+You have {% raw %} {{ num_tomato }} {% endraw %} tomato {% raw %} {{ num_tomato | pluralize:"es" }} {% endraw %}.
 ~~~
 
 For words that cannot be pluralized by a simple suffix, you can specify both a singular and plural suffix, separated by a comma.
 
 ~~~
-You have {{ num_cherries }} cherr {{ num_cherries | pluralize:"y,ies" }}.
+You have {% raw %} {{ num_cherries }} {% endraw %} cherr {% raw %} {{ num_cherries | pluralize:"y,ies" }} {% endraw %}.
 ~~~
 
 ~~~
 <!--  the value -->
-You have {{ num_messages }} message {{ num_messages | pluralize }}.
+You have {% raw %} {{ num_messages }} {% endraw %} message {% raw %} {{ num_messages | pluralize }} {% endraw %}.
 ~~~
 
 ~~~
@@ -790,7 +794,7 @@ You have {{ num_messages }} message {{ num_messages | pluralize }}.
 
 The make_list filter is used to turn a value into a list. For a string, it's a list of characters. For an integer, the argument is cast to a string before creating a list.
 
-Here's the syntax to use the make_list filter: `{{ value | make_list }}`.
+Here's the syntax to use the make_list filter: `{% raw %} {{ value | make_list }} {% endraw %}`.
 
 If the value is the string **"Ronaldo"**, the output would be the list **['R', 'o', 'n', 'a', 'l', 'd','o']**. If the value is **1234**, the output will be the list **['1', '2', '3', '4']**.
 
@@ -829,6 +833,8 @@ For example, we can create an excerpt from the long texts below using the **trun
 
 ## How to Create a Custom Template Filter
 
+![Create]({{site.images}}{{page.slug}}/create.png)\
+
 Sometimes, the built-in template filters may not meet your exact needs, so Django also allows you to create custom template filters. You can easily create your own custom template filters that can be used anywhere in your templates.
 
 In this section, I'll assume you have a working knowledge of Django and that you can create a Django project and a Django app.
@@ -851,7 +857,7 @@ The first thing to do is to create a templatetags directory in our [blog](/blog/
 The templatetags directory created above needs to be treated as a Python package and to do that, we need to create an `__init__.py` in this directory. Do not add any code or content to this file.
 
 <div class="wide">
-![Folder structure]({{site.images}}{{page.slug}}/sCmO76o)
+![Folder structure]({{site.images}}{{page.slug}}/sCmO76o.png)
 </div>
 
 ### Step 3: Create the Custom Filter Python File - `titlecolor_filter.py`
@@ -886,22 +892,22 @@ Create an HTML template called "blog.html" in your app templates folder with the
         <div class="col-lg-7">
             <div class="container">
               <!-- the actual blog post: title/author/date/content -->
-              <div style="color: {{article.title | title_color}};"> <h1> {{article.title}} </h1> </div>
+              <div style="color: {% raw %}{{article.title | title_color}} {% endraw %};"> <h1> {% raw %}{{article.title}}{% endraw %} </h1> </div>
               <hr>
-              <p> <i class="fa fa-calendar"></i> Published on  {{article.date_posted|date}}</p>
+              <p> <i class="fa fa-calendar"></i> Published on {% raw %}{{article.date_posted|date}}{% endraw %}</p>
               <hr>
-            <p>{{article.content}}</p>
+            <p>{% raw %}{{article.content}}{% endraw %}</p>
           </div>
         </div>
 ~~~
 
 <div class="wide">
-![Blog post title in Red color]({{site.images}}{{page.slug}}/ItdOTq4.png)
+![Blog post title in Red color]({{site.images}}{{page.slug}}/sqSMt6Y.png)
 </div>
 
 To be able to use our custom filter in a template, the first thing to do is to load our custom filter module at the top of the template HTML file as shown above with the `{% raw %} {% load titlecolor_filter %} {% endraw %}` tag.
 
-Once the module is loaded, we can now apply our custom filter using the pipe operator inside double braces `{{ variable | filter_name }}`as shown above.
+Once the module is loaded, we can now apply our custom filter using the pipe operator inside double braces `{% raw %} {{ variable | filter_name }} {% endraw %}`as shown above.
 The filter name is the name of the function in our **"titlecolor_filter.py"** module.
 
 ## Conclusion
@@ -914,7 +920,3 @@ By now, you should be able to use various in-built filters and also create your 
 To learn more about template filters, consider reading through the [Django Documentation](https://docs.djangoproject.com/en/4.1/ref/templates/builtins/).
 
 {% include cta/cta1.html %}
-
-## Outside Article Checklist
-
-- [ ] Optional: Find ways to break up content with quotes or images
