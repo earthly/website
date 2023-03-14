@@ -660,7 +660,7 @@ If the value is **"Moe is a slug"**, the output will be **"Moe is…"**.
 'Cloud…'
 ~~~
 
-### Summing Up
+### Reviewing What We've Learned So Far
 
 Let's quickly review some of the most helpful filters before we proceed to learn about more filters. If we were building a news web app, we could use a combination of various Django template filters to transform our data in the HTML templates.
 
@@ -831,7 +831,7 @@ If the value is the string **"Ronaldo"**, the output would be the list **['R', '
 ['A', 'B', 'C', 'D', 'E', 'F']
 ~~~
 
-### Summing Up
+### Summing Up With a Quick Example
 
 Let's code an example to put together what we've learned in this section. If you are building a [blog](/blog/top-5-scala-blogs) homepage or an archive page, you can use the "truncatewords" filter to display excerpts on your home or archive page instead of showing the entire article.
 
