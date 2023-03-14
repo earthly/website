@@ -300,7 +300,7 @@ The parameters in the command stand for the following:
 - **`-out john.csr`**: This option specifies the filename of the output CSR. The resulting CSR will be stored in the file named "john.csr".
 - **`-subj "/CN=john/O=marketing"`**: This parameter specifies the subject of the CSR. The **`/CN=john`**  part of the subject shows the Common Name (CN) of the entity that the certificate will be issued to. The **`/O=marketing`** part of the subject specifies the name of the organization that the entity belongs to.
 
-Copy the **ca.crt* and *ca.key* securely (SCP) from the `/etc/kubernetes/pki` directory from your master node using the below command, you will need the *ca.crt* and *ca.key* on your local machine to sign John's certificate:
+Copy the *ca.crt* and *ca.key* securely (SCP) from the `/etc/kubernetes/pki` directory from your master node using the below command, you will need the *ca.crt* and *ca.key* on your local machine to sign John's certificate:
 
 ~~~{.bash caption=">_"}
 scp root@96.126.114.208:/etc/kubernetes/pki/ca.{crt,key} .
