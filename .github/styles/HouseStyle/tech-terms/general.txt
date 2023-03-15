@@ -311,6 +311,9 @@ bugfix
 
 cyber
 
+nano
+rolebinding
+
 Linenumbers
 linenumbers
 Timesince
