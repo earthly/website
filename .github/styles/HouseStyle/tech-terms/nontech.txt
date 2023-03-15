@@ -54,3 +54,6 @@ validator
 
 daemonless
 Buildkit
+
+christmas
+capfirst
