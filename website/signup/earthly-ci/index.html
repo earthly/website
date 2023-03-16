@@ -30,7 +30,7 @@ layout: default
 
                             <div class="lg:grid grid-cols-2 border bg-[#eafaf4] px-4 lg:px-10 py-7 rounded-lg">
                                 <div class="formkit-card">
-                                    <form method="POST" action="https://app.convertkit.com/forms/3735631/subscriptions"
+                                    <form id="earthly-ci-form" method="POST" action="https://app.convertkit.com/forms/3735631/subscriptions"
                                         data-sv-form="3735631" data-uid="5200e7e95c" class="formkit-form">
                                         <ul class="formkit-alert formkit-alert-error" data-element="errors"
                                             data-group="alert"></ul>
@@ -110,3 +110,13 @@ layout: default
     <script src="https://pages.convertkit.com/ckjs/ck.5.js"></script>
 </div>
 </div>
+<script>
+    const form = document.getElementById('earthly-ci-form');
+    form.addEventListener('submit', function(event) {
+      // console.log("Sent event to Google Analytics");
+      gtag('event', 'conversion', {
+        'event_category': 'Form Submission',
+        'event_label': 'earthly-ci-form'
+      });
+    });
+</script>
