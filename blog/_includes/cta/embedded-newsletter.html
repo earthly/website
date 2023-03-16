@@ -64,10 +64,10 @@ font-weight: 400;
   <script>
   const form = document.getElementById('embedded-newsletter-form');
   form.addEventListener('submit', function(event) {
+    // console.log("Sent event to Google Analytics");
     gtag('event', 'conversion', {
       'event_category': 'Form Submission',
       'event_label': 'embedded-newsletter-form'
     });
-
   });
   </script>
