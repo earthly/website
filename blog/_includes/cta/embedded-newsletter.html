@@ -62,21 +62,12 @@ font-weight: 400;
   </form>
 </div>
   <script>
-  // Select the form using its id
-  const form = document.getElementById('embedded-newsletter-form');
-
-  // Attach an event listener to the form's submit event
+  const form = document.getElementById('product-newsletter-form');
   form.addEventListener('submit', function(event) {
-    // Prevent the default form submission behavior
-    event.preventDefault();
-
-    // Send the event to Google Analytics
+    // console.log("Sent event to Google Analytics");
     gtag('event', 'conversion', {
       'event_category': 'Form Submission',
-      'event_label': 'embedded-newsletter-form'
+      'event_label': 'product-newsletter-form'
     });
-
-    // Submit the form after the event has been sent
-    form.submit();
   });
   </script>
