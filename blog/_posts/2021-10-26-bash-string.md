@@ -9,6 +9,7 @@ sidebar:
 internal-links:
  - bash strings
  - bash substring
+topic: cli
 ---
 
 <div class="narrow-code">

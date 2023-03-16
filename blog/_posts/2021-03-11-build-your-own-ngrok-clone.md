@@ -11,6 +11,8 @@ internal-links:
   - tunnel
   - local tunnel
   - tunnel proxy
+topic: cli
+funnel: 2
 ---
 <!-- vale WritingSuggestions.CorporateSpeak = NO -->
 

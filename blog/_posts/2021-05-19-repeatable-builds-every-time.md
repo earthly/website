@@ -13,6 +13,8 @@ tags:
 toc: true
 author: Vlad
 excerpt: "I wanted to sit down and write about all the tricks we learned and that we used every day to help make builds more manageable in the absence of Earthly. "
+topic: earthly
+funnel: 3
 ---
 <!-- vale WritingSuggestions.Cliches = NO -->
 <!-- vale HouseStyle.EG = NO -->

@@ -8,6 +8,7 @@ author: Bala Priya C
 internal-links:
  - Python
  - Subprocess
+topic: python
 ---
 
 Python ships with built-in modules such as [os](https://docs.python.org/3/library/os.html) and [sys](https://docs.python.org/3/library/sys.html) that provide some functionality to interact with the underlying operating system. However, it may sometimes be more convenient to run system programs from within a Python script. Python's subprocess module provides ready-to-use functionality to run external commands, capture and process outputs, redirect output to files and I/O streams, and much more!

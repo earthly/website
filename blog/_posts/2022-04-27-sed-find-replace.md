@@ -6,6 +6,7 @@ toc: true
 author: Zara Cooper
 internal-links:
  - sed
+topic: cli
 ---
 
 You need the ability to search and manipulate text on the command line, especially when performing repetitive tasks. This is what makes `sed`, or **s**tream **ed**itor, so valuable. `sed` is a Unix text processing and manipulation CLI tool. A stream editor takes in text from an input stream and transforms it into a specified output according to instructions. The input stream could be from [pipelines](https://en.wikipedia.org/wiki/Pipeline_(Unix)) or files.

@@ -7,6 +7,8 @@ categories:
 internal-links:
    - scala build
    - scala builds
+topic: earthly
+funnel: 3
 ---
 
 Have you ever had a test fail in the build but not locally? I have. Have you ever then burnt half a day pushing small changes and waiting for your build to get queued so that you could see if you had isolated the breaking change? &nbsp;Well I have, and I find the slow feedback process to be painful and I'd like to propose a solution.

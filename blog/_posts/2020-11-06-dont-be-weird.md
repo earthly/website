@@ -8,7 +8,8 @@ author: Corey
 internal-links:
    - weird
    - design decision
-as_related: false
+topic: kubernetes
+funnel: 2
 ---
 _Here at Earthly, we are building an internal platform on AWS using EKS. I talked to our lead architect Corey Larson about the decisions and trade offs he is making as he designs our platform._
 

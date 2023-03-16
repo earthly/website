@@ -14,6 +14,7 @@ internal-links:
  - apple silicon
  - m1
  - arm
+topic: cli
 ---
 
 Homebrew made some changes to where it installs packages if you are running it on a new M1 Mac, and these changes may throw you for a loop if you're moving over to an M1 from Intel. In this article I'll talk about what changed and why it changed. I'll also walk you through getting all your Homebrew packages from your Intel Mac reinstalled on your M1, and share a couple of issues I came across after migrating that will hopefully help you with any gotchas you encounter in the future.

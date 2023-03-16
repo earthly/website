@@ -8,6 +8,8 @@ author: Brandon
 internal-links:
  - mono repo
  - monorepo
+topic: monorepo
+funnel: 2
 ---
 <!-- markdownlint-disable MD036 -->
 A repository in Go traditionally contains a single Go Module, which lends naturally to a polyrepo setup – but

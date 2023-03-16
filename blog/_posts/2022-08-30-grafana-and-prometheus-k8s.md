@@ -11,6 +11,7 @@ internal-links:
  - Cluster
  - Prometheus
  - Namespace
+topic: kubernetes
 ---
 
 So you have a Kubernetes cluster, and you want to keep an eye on its memory CPU and storage usage? Well, look no further than Grafana and Prometheus monitoring.

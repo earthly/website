@@ -8,6 +8,7 @@ sidebar:
   nav: "lambdas"
 internal-links:
  - lambda container
+topic: docker
 ---
 
 Most of the code I've had running on AWS's cloud has been in docker containers, running in Kubernetes clusters. And from my perspective, AWS was invisible. All I needed to concern myself with was the intricacies of getting the YAML for `kubectl apply` right. Of course, the cluster's configuration was not my concern unless something went wrong, but I could then ping some Ops expert to help me out. But all that seems overkill for many tasks – the operational burden of maintaining Kubernetes is not free.

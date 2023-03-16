@@ -9,6 +9,7 @@ internal-links:
  - nchar
  - read files
  - nl 
+topic: cli
 ---
 [Bash](https://en.wikipedia.org/wiki/Bash_(Unix_shell)) (bourne again shell) scripts give you the ability to turn series of manual commands into an easily [runnable and repeatable script](https://earthly.dev/blog/understanding-bash/). This can be especially useful when working with files.
 

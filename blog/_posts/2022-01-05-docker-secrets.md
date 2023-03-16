@@ -8,6 +8,7 @@ sidebar:
   nav: "docker"
 internal-links:
  - docker secrets
+topic: docker
 ---
 Even if you've used [Docker](https://www.docker.com/) for your smaller or locally developed software, you might find that it can be daunting for more complex tasks. This can especially be true for secrets management and sharing—areas often overlooked when working with containerized applications.
 

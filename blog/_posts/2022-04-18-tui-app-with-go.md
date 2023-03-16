@@ -8,6 +8,7 @@ author: Josh
 internal-links:
  - terminal user interface
  - tui
+topic: go
 ---
 
 <script zoom="2" id="asciicast-2UWD3NMXowmPCfTlwYjyFDJSF" src="https://asciinema.org/a/2UWD3NMXowmPCfTlwYjyFDJSF.js" async data-loop="true"  data-fit="none" data-autoplay="true" data-speed="2" data-size="small" data-start-at=04 ></script>

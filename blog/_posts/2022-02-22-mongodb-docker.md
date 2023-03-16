@@ -6,6 +6,7 @@ toc: true
 author: Soumi Bardhan
 internal-links:
  - mongodb
+topic: docker
 ---
 [Docker](https://www.docker.com/) is a powerful development platform that enables users to containerize software. These containers can be run on any machine, as well as in a public or private cloud. Thanks to Docker's lightweight runtime and ability to run processes in isolation, multiple containers can run at the same time on the same VM or server.
 

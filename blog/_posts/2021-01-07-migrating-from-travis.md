@@ -8,6 +8,8 @@ internal-links:
    - travis
    - travis ci
    - travisci
+topic: ci
+funnel: 2
 ---
 
 Starting in early December, a mad dash has been underway to migrate open-source projects off of Travis CI. What happened and where should you move your project to?

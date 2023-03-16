@@ -9,7 +9,7 @@ internal-links:
  - lxc
  - lxd
  - chroot
-
+topic: docker
 ---
 [Linux Containers](https://linuxcontainers.org/) (LXC) is an OS-level virtualization technology that enables you to create and run multiple Linux operating systems (OS) simultaneously on a single Linux machine (LXC host). LXC provides a set of tools to manage your container as well as templates to create a virtual environment of [the most common Linux OS](https://uk.lxd.images.canonical.com/).
 

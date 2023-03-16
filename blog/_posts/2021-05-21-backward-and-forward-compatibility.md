@@ -9,6 +9,7 @@ internal-links:
  - backward compatibility
  - backwards compatibility
  - forwards compatibility
+topic: go
 ---
 [Protocol Buffers](https://developers.google.com/protocol-buffers "Protocol Buffers Documentation") serialize structured data so it can be efficiently stored or shared over a network. They were designed for internal use at Google in 2001 and released to the public under an open-source license in 2008.
 

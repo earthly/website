@@ -18,7 +18,7 @@ internal-links:
  - protoc
  - protoc-gen-go
  - protobuf vs json
-
+topic: go
 ---
 <!-- markdownlint-disable MD036 -->
 Welcome back. I'm an experienced developer, learning Golang by building an activity tracker. Last time I added SQLite persistence. Today, I'm going to be porting everything to gRPC.

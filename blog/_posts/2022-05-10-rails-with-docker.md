@@ -9,6 +9,7 @@ internal-links:
  - docker
  - rails
  - docker compose
+topic: docker
 ---
 
 When working with large distributed teams, you often run into the issue of something working on one computer but not others. When building and running applications, each developer has a slightly different development environment. For example, one developer may use a Windows PC to build and run an application that was developed on a Mac. Apart from the differences in the command line, the developer trying to run the applications may not have the required dependencies installed, and the process of finding and installing the correct versions of the dependencies slows development. This is where containerization tools, like [Docker](https://www.docker.com), can help.

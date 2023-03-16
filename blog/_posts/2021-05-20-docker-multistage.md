@@ -11,6 +11,7 @@ internal-links:
  - docker multistage build
  - docker multi-stage builds
  - multistage
+topic: docker
 ---
 At first glance, writing Dockerfiles appears to be a straightforward process. After all, most basic examples reflect the same set of steps. However, not all Dockerfiles are created equal. There is an optimal way of writing these files to produce the kind of Docker images you want for your final product. If you were to pop the hood, you'd see that Docker images actually consist of file system layers that correlate to the individual build steps involved in the creation of the image.
 

@@ -9,6 +9,7 @@ internal-links:
  - postgres docker
  - postgres containers
  - database containers
+topic: docker
 ---
 
 Relational databases have been an easy way to store relational data for the last few decades. Over the years, many popular database management systems have been created, but installing them can be tricky.

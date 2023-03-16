@@ -10,6 +10,7 @@ internal-links:
  - makefile
  - g\+\+
  - c\+\+
+topic: make
 ---
 <!-- vale WritingSuggestions.Cliches = NO -->
 C++ is one of the [most dominant programming languages](https://www.tiobe.com/tiobe-index/cplusplus/). Although there are many compilers available, [GCC](http://gcc.gnu.org/) still ranks as one of the most popular choices for C++. GCC is part of the GNU toolchain, which comes with utilities like GNU make, GNU bison, and GNU [AutoTools](/blog/autoconf).

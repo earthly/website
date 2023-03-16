@@ -10,6 +10,7 @@ internal-links:
  - Linux
  - K9s
  - Kubectl
+topic: kubernetes
 ---
 
 [Kubectl](https://kubernetes.io/docs/reference/kubectl/) is the de facto and most popular Kubernetes [command line tool](/blog/golang-command-line) used for accessing Kubernetes cluster metrics. However, one needs to know many commands to fetch metrics and operate a Kubernetes cluster using Kubectl. Though the CLI is robust, commands can quickly become cumbersome to run. For example, here is a command for editing a deployment:

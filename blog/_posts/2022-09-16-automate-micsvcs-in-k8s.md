@@ -6,11 +6,9 @@ toc: true
 author: Ayomide Akinola
 
 internal-links:
- - Kubernetes
- - Microservice
- - Docker
- - Earthly
- - Automate
+ - kubernetes
+topic: kubernetes
+funnel: 2
 ---
 
 ## Introduction

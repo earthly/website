@@ -10,7 +10,8 @@ tags:
 author: Vlad
 internal-links:
   - earthly open-source
-as_related: false
+topic: earthly
+funnel: 3
 ---
 
 *TLDR We are switching from a source-available license, to an open-source license for Earthly.*

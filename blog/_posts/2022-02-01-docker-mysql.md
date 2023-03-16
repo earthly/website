@@ -7,6 +7,7 @@ author: James Walker
 
 internal-links:
  - mysql
+topic: docker
 ---
 [Docker](https://www.docker.com/) is among the more popular platforms for developing and deploying containerized applications. Containers are isolated environments that hold an application along with all the software packages it needs. With Docker, you can run or scale your application in any environment.
 
