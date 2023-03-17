@@ -195,6 +195,5 @@ If you're looking for other ways to supercharge your CI workflows, consider [Ear
 
 ## Outside Article Checklist
 
-- [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
 
