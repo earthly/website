@@ -187,6 +187,8 @@ If you're using a language that GitHub maintains a `setup-*` action for, you can
 
 If you're looking for other ways to supercharge your CI workflows, consider [Earthly](https://earthly.dev/), a portable [CI/CD](/blog/ci-vs-cd) framework that runs everywhere. Earthly allows you to avoid vendor lock-in with your Git provider and gives you the tools to run your CI/CD workflows locally the same way they would run in the cloud, greatly simplifying the process of developing and testing workflows.
 
+{% include cta/cta1.html %}
+
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
@@ -194,4 +196,3 @@ If you're looking for other ways to supercharge your CI workflows, consider [Ear
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
-- [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
