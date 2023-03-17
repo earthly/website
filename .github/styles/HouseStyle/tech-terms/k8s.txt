@@ -71,3 +71,6 @@ janedoe
 env
 dockerconfigjson
 nslookup
+
+myapp
+pki

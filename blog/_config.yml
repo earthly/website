@@ -20,7 +20,7 @@ title                    : "Earthly Blog"
 title_separator          : "-"
 subtitle                 : "" 
 name                     : &name "Earthly"
-description              : &description "Build automation for the container era."
+description              : &description "Make CI/CD Super Simple."
 url                      : "https://earthly.dev"
 baseurl                  : "/blog" 
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
@@ -196,3 +196,4 @@ defaults:
 
 picture:
   fast_build: true
+  ignore_missing_images: false
