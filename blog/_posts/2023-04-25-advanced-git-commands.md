@@ -6,7 +6,10 @@ toc: true
 author: Temitope Oyedele
 
 internal-links:
- - just an example
+ - Git
+ - Github
+ - Advance Commands
+ - Terminal
 ---
 
 For many developers, truly harnessing the power of Git can be a daunting task. Git can seem intimidating when you first start using it. This is one of the reasons most developers limit themselves to using the standard push, pull, and merge commands.
@@ -360,4 +363,3 @@ The commands covered in this tutorial are just the start. There are many more. Y
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Add keywords for internal links to front-matter
