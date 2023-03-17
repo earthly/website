@@ -30,7 +30,7 @@ The [git rebase](https://git-scm.com/docs/git-rebase) command can solve that for
 
 A great advantage is that it easily traces your commits inside the main branch.
 
-~~~
+~~~{.bash caption=">_"}
 git rebase <base>
 ~~~
 
@@ -48,19 +48,21 @@ Have you ever wanted to search for a string in your repository history? Well, yo
 
 To search through files in your working directory (current project state) you can [make](/blog/using-cmake) use `git grep` :
 
-~~~
+~~~{.bash caption=">_"}
 git grep STRING
 ~~~
 
 Here's an example of searching for the word "blockchain" in a web3 repository:
 
-~~~
+~~~{.bash caption=">_"}
 git grep blockchain
 ~~~
 
 Here's the result:
 
+<div class="wide">
 ![searching for the word blockchain]({{site.images}}{{page.slug}}/ofd1LER.png)
+</div>
 
 ### Git Rev-List
 
@@ -68,7 +70,7 @@ You can also perform complex searches by adding the git rev-list. To understand 
 
 The `git rev-list` is a Git command used to list the revisions in a Git repository. It provides a list of all the commit objects in the repository, including the commit hash, author, date, and message, sorted in reverse chronological order. The output of the `git rev-list` command can be used to display the commit history, track the progression of a Git repository over time, or perform various operations on the commits.
 
-~~~
+~~~{.bash caption=">_"}
 git rev-list [OPTIONS] [<revision ranges>]
 ~~~
 
@@ -76,25 +78,26 @@ Here,`OPTIONS` is a list of optional parameters that control the output of the g
 
 For example, to list all the revisions in the repository, you can run:
 
-~~~
+~~~{.bash caption=">_"}
 git rev-list --all
 ~~~
 
 To list the revisions reachable from the current branch, you can run:
 
-~~~
+~~~{.bash caption=">_"}
 git rev-list HEAD
 ~~~
 
 To list the revisions between two branches, you can run:
 
-~~~
+~~~{.bash caption=">_"}
 git rev-list branch1..branch2
 ~~~
 
 You can use the `git rev-list` command in combination with other Git commands, such as xargs and git grep, to perform more complex searches.
 
-~~~
+~~~{.bash caption=">_"}
+
 git rev-list –all | xargs git grep -F '<your string>'
 ~~~
 
@@ -102,7 +105,8 @@ Using `xargs` is useful in this case because it takes the output of the `git rev
 
 You just have to replace the `<your string>` with the string you want to search for:
 
-~~~
+~~~{.bash caption=">_"}
+
 git rev-list --all | xargs git grep -F 'test'
 ~~~
 
@@ -110,19 +114,23 @@ This will search for the word 'test' and display the results.
 
 Here's the result:
 
+<div class="wide">
 ![searching the word 'test']({{site.images}}{{page.slug}}/h4tTNve.png)
+</div>
 
 ## Git Log
 
 The [`git log`](https://git-scm.com/docs/git-log) command is one of the most useful Git commands you should be familiar with. When you need to look at your commit history, you use the `git log` command. The git log command displays the most recent commits as well as the current state of the HEAD.
 
-~~~
+~~~{.bash caption=">_"}
 git log
 ~~~
 
 In the images below, you can see a log or history of the commits made so far.
 
+<div class="wide">
 ![git log]({{site.images}}{{page.slug}}/ndP0bBE.png)
+</div>
 
 Notice that each commit includes a unique `sha-id` created by the SHA algorithm. It also includes the `date`, `time`, `author`, and other information.
 
@@ -130,11 +138,13 @@ You can scroll through your log history by pressing the `k` key to move up and t
 
 You can also view your logs as a graph just by adding the `--graph` option:
 
-~~~
+~~~{.bash caption=">_"}
 git log --graph
 ~~~
 
+<div class="wide">
 ![git log graph]({{site.images}}{{page.slug}}/0xR1nbo.png)
+</div>
 
 ## Git Diff
 
@@ -146,11 +156,13 @@ Thankfully, with [git diff](https://git-scm.com/docs/git-diff), you can do that.
 
 To check the working directory against the local repository:
 
-~~~
+~~~{.bash caption=">_"}
 git diff 
 ~~~
 
+<div class="wide">
 ![git diff]({{site.images}}{{page.slug}}/Exy13XT.png)
+</div>
 
 This will show the differences between the file you are currently working on and the version in the last commit. The output will show a list of changes, with added or modified lines highlighted in green.
 
@@ -158,11 +170,13 @@ This will show the differences between the file you are currently working on and
 
 To see the differences between two branches:
 
-~~~
+~~~{.bash caption=">_"}
 git diff branch1 -- branch2
 ~~~
 
+<div class="wide">
 ![difference between two branches]({{site.images}}{{page.slug}}/bcsRBEv.png)
+</div>
 
 This will show the differences between the two specified branches. The output will show a list of changes for each file that has differences between the two branches, with added or modified lines highlighted in green.
 
@@ -170,11 +184,13 @@ This will show the differences between the two specified branches. The output wi
 
 To see the differences between two specific commits:
 
-~~~
+~~~{.bash caption=">_"}
 git diff commit1 commit2
 ~~~
 
+<div class="wide">
 ![difference between two commits]({{site.images}}{{page.slug}}/EutaRoA.png)
+</div>
 
 This will show the differences between `commit1` and `commit2`. The output will show a list of changes for each file that has differences between the two commits, with lines that were added or modified highlighted in green.
 
@@ -190,11 +206,13 @@ This command displays the most recent commits, pulls, resets, pushes, and so on 
 
 The `reflog` retains information about the previous status of branches and allows them to be restored if necessary. This is an excellent method for tracking down any issues like lost commits, [debugging](/blog/printf-debugging) problems, e.t.c that may have arisen and determining what you did to cause those issues.
 
-~~~
+~~~{.bash caption=">_"}
 git reflog
 ~~~
 
+<div class="wide">
 ![git reflog]({{site.images}}{{page.slug}}/ug7prC1.png)
+</div>
 
 ## Git Revert
 
@@ -202,7 +220,7 @@ The [revert](https://git-scm.com/docs/git-revert) command allows you to undo cha
 
 To use `git revert`, Simply give the commit you wish to reverse to the command, and it will undo all modifications made since that commit.
 
-~~~
+~~~{.bash caption=">_"}
 git revert <commit id>
 ~~~
 
@@ -212,7 +230,7 @@ Another thing to remember is that using `git revert` does not truly erase the pr
 
 You can also use this if you want to revert the latest commit:
 
-~~~
+~~~{.bash caption=">_"}
 git revert HEAD
 ~~~
 
@@ -222,8 +240,10 @@ git revert HEAD
 
 Git prune acts as a trash can for unused data in the git repository history. This function is an offspring of the garbage collection command and is not immediately executed. The git garbage collection command (`gc`) is in charge of keeping a repository alive. It clears out all the clutter in a repository and keeps it clean.
 
-~~~
-git prune < --dry-run>| <-v> | <--progress> |<--expire <time> |<-- > |<head>…
+~~~{.bash caption=">_"}
+
+git prune < --dry-run>| <-v> | <--progress> \
+|<--expire <time> |<-- > |<head>…
 ~~~
 
 - `--dry-run`: doesn't execute the prune but rather displays an output of what it will.
@@ -238,13 +258,13 @@ git prune < --dry-run>| <-v> | <--progress> |<--expire <time> |<-- > |<head>…
 
 It works by keeping or saving all of your uncommitted changes while also cleaning up your working tree. Stashing is helpful for you if you need to move away from what you are doing, say to fix an urgent bug, but aren't quite ready to commit what you've done so far.
 
-~~~
+~~~{.bash caption=">_"}
 git stash
 ~~~
 
 This simple command saves all your code modifications but does not commit them. Instead, it saves them locally on your computer. When you're ready to continue, you can pull your changes from the stash with this command below:
 
-~~~
+~~~{.bash caption=">_"}
 git stash pop
 ~~~
 
@@ -252,54 +272,58 @@ git stash pop
 
 Tags are references that point to specific commits. Tagging is generally used to capture a point in history that is used for a marked version release (i.e. v1.0.0). By default, tags are not transitive, meaning they don't move when new commits are added. A [Git tag](https://git-scm.com/docs/git-tag) is similar to a branch that won't change, although, unlike branches, tags have no further history of commits after they are established.
 
-~~~
+~~~{.bash caption=">_"}
 git tag <tagname>
 ~~~
 
 For example, if you want to create a new tag named v1.0.0, you can use the following command:
 
-~~~
+~~~{.bash caption=">_"}
 git tag v1.0.0
 ~~~
 
 This will create a new tag at the current commit. If you want to create a tag for a specific commit, you can specify the commit hash:
 
-~~~
+~~~{.bash caption=">_"}
 git tag v1.0.0 <commit hash>
 ~~~
 
 You can also use the `-a` flag to annotate the tag with a message:
 
-~~~
+~~~{.bash caption=">_"}
 git tag -a v1.0.0 -m "Release version 1.0.0"
 ~~~
 
 To push the tags to a remote repository, you can use the git push command with the `--tags` flag:
 
-~~~
+~~~{.bash caption=">_"}
 git push --tags
 ~~~
 
 This will push all of your local tags to the remote repository. To view the list of tags you made in your repository:
 
-~~~
+~~~{.bash caption=">_"}
 git tag --list
 ~~~
 
+<div class="wide">
 ![tag list]({{site.images}}{{page.slug}}/pboOjJ4.png)
+</div>
 
 ## Git Clean
 
 You can use the [`git clean`](https://git-scm.com/docs/git-clean) command to deal with untracked files. It functions differently from the `git checkout` and `git reset`, which work on files that have already been added to the Git tracking index. This command removes all untracked files from your working directory.
 
-~~~
+~~~{.bash caption=">_"}
 git clean
 ~~~
 
 The git clean command requires you to use either the `-f` or `-n` flag when running it. If you don't use either of these flags, the command will fail with an error message similar to "no f's given".
 For example, if you try to run `git clean` without any flags, you might see an error message like this:
 
+<div class="wide">
 ![error message]({{site.images}}{{page.slug}}/A5DPQZe.png)
+</div>
 
 Let's take a closer look at some of these flags used alongside `git clean`:
 
@@ -309,11 +333,13 @@ Let's take a closer look at some of these flags used alongside `git clean`:
 
 Here's an example, using the `-n` flag:
 
-~~~
+~~~{.bash caption=">_"}
 git clean -n
 ~~~
 
+<div class="wide">
 ![git clean dry]({{site.images}}{{page.slug}}/5BdWu3x.png)
+</div>
 
 As we can see, it is displaying the file that would be removed.
 
@@ -323,13 +349,15 @@ As we can see, it is displaying the file that would be removed.
 
 Here's an example, using the `-f` flag`:
 
-~~~
+~~~{.bash caption=">_"}
 git clean -f
 ~~~
 
  Here's a screenshot of the result:
 
+<div class="wide">
 ![git clean force]({{site.images}}{{page.slug}}/oU1XUWJ.png)
+</div>
 
 The command forcibly removes the `text.txt` file
 
@@ -339,11 +367,13 @@ The command forcibly removes the `text.txt` file
 
 Here's an example, using the `-f` `-d` flag:
 
-~~~
+~~~{.bash caption=">_"}
 git clean -f -d
 ~~~
 
+<div class="wide">
 ![git clean force directories]({{site.images}}{{page.slug}}/rEk7nN.png)
+</div>
 
 The command forcefully removes the untracked directories in our example.
 
@@ -358,8 +388,6 @@ The commands covered in this tutorial are just the start. There are many more. Y
 
 ## Outside Article Checklist
 
-- [ ] Add in Author page
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
+
