@@ -20,6 +20,8 @@ One way to save time is to cache your package manager dependencies in your GitHu
 
 ## How GitHub Actions Caching Works
 
+![How]({{site.images}}{{page.slug}}/how.png)\
+
 Initially, caching dependencies for GitHub Actions might seem insignificant, especially when starting a new project or working with a smaller team of developers. However, as your CI workflow grows in size and duration, the prospect of simplifying tasks wherever you can becomes increasingly appealing.
 
 Thankfully, caching package manager dependencies is a quick and easy way to save a nontrivial amount of time on many of your workflow runs. New dependencies will only need to be fetched when you change the installed packages.
@@ -57,6 +59,8 @@ This section will show you how to configure the `cache` action for a GitHub work
 After the `cache` action has finished running, it exposes a single output parameter, the `cache-hit`. This parameter is a Boolean value representing whether GitHub found an exact match for the specified `key`. If `true`, this is considered a cache hit, and the action will restore whatever files it has cached to the `path` directory. However, if `false`, a cache miss has happened, and GitHub will create a new cache after the current job. To generate the files that need to be cached, you can use the `cache-hit` output parameter to conditionally run your package manager in case of a cache miss.
 
 ### Implementing the Cache
+
+![How]({{site.images}}{{page.slug}}/implement.png)\
 
 To consolidate your understanding of how GitHub Actions caches work, you can follow along with this tutorial to set up a simple Yarn cache in a few minutes.
 
@@ -192,8 +196,3 @@ If you're using a language that GitHub maintains a `setup-*` action for, you can
 If you're looking for other ways to supercharge your CI workflows, consider [Earthly](https://earthly.dev/), a portable [CI/CD](/blog/ci-vs-cd) framework that runs everywhere. Earthly allows you to avoid vendor lock-in with your Git provider and gives you the tools to run your CI/CD workflows locally the same way they would run in the cloud, greatly simplifying the process of developing and testing workflows.
 
 {% include cta/cta1.html %}
-
-## Outside Article Checklist
-
-- [ ] Optional: Find ways to break up content with quotes or images
-
