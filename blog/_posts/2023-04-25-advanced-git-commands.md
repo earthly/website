@@ -351,6 +351,8 @@ Git is a very powerful collaboration tool. If all you ever learn is push, pull, 
 The commands covered in this tutorial are just the start. There are many more. You might want to check out [Git aliases
 ](https://git-scm.com/book/en/v2/Git-Basics-Git-Aliases) and [git bisect](https://git-scm.com/docs/git-bisect), and other interesting commands.
 
+{% include cta/cta1.html %}
+
 ## Outside Article Checklist
 
 - [ ] Add in Author page
@@ -361,4 +363,3 @@ The commands covered in this tutorial are just the start. There are many more. Y
 - [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
