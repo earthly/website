@@ -10,6 +10,10 @@ internal-links:
  - Python Classes
 ---
 
+Since their introduction in Python 3.7, data classes have emerged as a popular choice for classes that store data. In a [previous tutorial](/blog/python-data-classes), we talked about what data classes are and some of their features, including out-of-the-box support for object comparison, type hints, and default values of fields.
+
+In this follow-up tutorial, we'll continue to explore a few more features of Python data classes.
+
 ## Useful Features of Python Data Classes
 
 ### Set More Complex Default Values With `default_factory`
@@ -22,7 +26,7 @@ internal-links:
 
 ### Subclass Data Classes to Extend Functionality
 
-### Use Slots for Improved Performance (Python 3.10+)
+### Use Slots for Improved Performance
 
 ## Conclusion
 
