@@ -64,7 +64,7 @@ To consolidate your understanding of how GitHub Actions caches work, you can fol
 
 Start by creating a new project. Because caching is the focus of this exercise, the project itself doesn't matter as long as it has some dependencies to cache. This tutorial will use a simple bare-bones [vite](https://vitejs.dev/) app, which you can create by running the following command:
 
-~~~
+~~~{.bash caption=">_"}
 yarn create vite cache-action-demo --template react-ts
 ~~~
 
@@ -72,7 +72,7 @@ yarn create vite cache-action-demo --template react-ts
 
 Once your project has been generated, navigate into the newly created `cache-action-demo/` directory and install your dependencies:
 
-~~~
+~~~{.bash caption=">_"}
 cd cache-action demo
 yarn install
 ~~~
@@ -85,7 +85,7 @@ Before configuring the cache action, you should upload your project to GitHub. C
 
 Next, create a new workflow file in your repository by running the following commands:
 
-~~~
+~~~{.bash caption=">_"}
 mkdir -p .github/workflows
 touch .github/workflows/cache-action-demo.yml
 ~~~
@@ -94,7 +94,7 @@ touch .github/workflows/cache-action-demo.yml
 
 In your editor, open the `cache-action-demo.yml` file and add the following content:
 
-~~~
+~~~{.yml caption="cache-action-demo.yml"}
 name: Caching with yarn
 on: push
 jobs:
@@ -113,14 +113,15 @@ jobs:
         env:
           cache-name: cache-node-modules
         with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
+          path: $ {% raw %}{{ steps.yarn-cache-dir-path.outputs.dir }}{% endraw %}
+          key: ${% raw %}{{ runner.os }}{% endraw %}-build-${% raw %}{{ env.cache-name }}{% endraw %}\
+          -${% raw %}{{ hashFiles('**/yarn.lock') }}{% endraw %}
+          restore-keys:
+            ${% raw %}{{ runner.os }}{% endraw %}-build-${% raw %}{{ env.cache-name }}{% endraw %}-
+            ${% raw %}{{ runner.os }}{% endraw %}-build-
+            ${% raw %}{{ runner.os }}{% endraw %}-
 
-      - if: ${{ steps.cache-yarn.outputs.cache-hit != 'true' }}
+      - if: ${% raw %}{{ steps.cache-yarn.outputs.cache-hit != 'true' }}{% endraw %}
         name: List the state of node modules
         continue-on-error: true
         run: yarn list
@@ -147,7 +148,7 @@ If it was restored because of a `restore-key`, and there was no exact match beca
 
 You can see this workflow in action by committing the workflow file and pushing it to GitHub:
 
-~~~
+~~~{.bash caption=">_"}
 git add .
 git commit -m "add workflow file"
 git push
@@ -167,7 +168,7 @@ Here, you can see that the initial `Cache node modules` step could not find a su
 
 Next, return to your terminal, and run the following command to add and commit a new package:
 
-~~~
+~~~{.bash caption=">_"}
 yarn add axios
 git add .
 git commit -m "add package"
@@ -196,5 +197,4 @@ If you're looking for other ways to supercharge your CI workflows, consider [Ear
 
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
+
