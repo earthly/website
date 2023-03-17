@@ -31,9 +31,9 @@ A great advantage is that it easily traces your commits inside the main branch.
 git rebase <base>
 ~~~
 
-You should use the `git rebase` command to consolidate into a single branch when you have multiple private branches. And it will display the commit history in a linear form. In a linear history, it's easy to see the progression of changes because they are all applied one after the other, without any branches or merge commits. This can make it easier to understand how the code evolved over time.
+You should use the `git rebase` command to consolidate into a single branch when you have multiple private branches. And it will display the commit history in a linear form. In a linear history, it's easy to see the progression of changes because they are all applied one after the other, without any branches or merge commits. This can [make](/blog/using-cmake) it easier to understand how the code evolved over time.
 
-Additionally, a linear history can make it easier to track down bugs because you can more easily see when a particular change was introduced. It can also make it easier to revert changes since you can simply revert a single commit rather than dealing with the complexity of merging branches.
+Additionally, a linear history can [make](/blog/using-cmake) it easier to track down bugs because you can more easily see when a particular change was introduced. It can also make it easier to revert changes since you can simply revert a single commit rather than dealing with the complexity of merging branches.
 
 ## Searching a Git Repo
 
@@ -43,7 +43,7 @@ Have you ever wanted to search for a string in your repository history? Well, yo
 
 [`git grep`](https://git-scm.com/docs/git-grep) is a useful tool for quickly searching through the codebase of a Git repository to find specific information searches through the tracked files in the current branch of a Git repository and returns a list of lines that match the specified pattern. It can be used to search for code snippets, function calls, or specific strings of text.
 
-To search through files in your working directory (current project state) you can make use `git grep` :
+To search through files in your working directory (current project state) you can [make](/blog/using-cmake) use `git grep` :
 
 ~~~
 git grep STRING
@@ -185,7 +185,7 @@ Unlike the `git log` command which provides a history of the changes to the cont
 
 This command displays the most recent commits, pulls, resets, pushes, and so on your local machine. It allows you to return to any commit, even if a branch or tag doesn't reference it.
 
-The `reflog` retains information about the previous status of branches and allows them to be restored if necessary. This is an excellent method for tracking down any issues like lost commits, debugging problems, e.t.c that may have arisen and determining what you did to cause those issues.
+The `reflog` retains information about the previous status of branches and allows them to be restored if necessary. This is an excellent method for tracking down any issues like lost commits, [debugging](/blog/printf-debugging) problems, e.t.c that may have arisen and determining what you did to cause those issues.
 
 ~~~
 git reflog
@@ -360,6 +360,4 @@ The commands covered in this tutorial are just the start. There are many more. Y
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-
 - [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
