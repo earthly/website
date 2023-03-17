@@ -6,7 +6,10 @@ toc: true
 author: Cameron Pavey
 
 internal-links:
- - just an example
+ - Caching
+ - Dependencies
+ - Github Action
+ - Continuous Integration
 ---
 
 [GitHub Actions](https://docs.github.com/en/actions) is a [continuous integration](/blog/continuous-integration), continuous delivery (CI/CD) platform that allows you to build, test, and deploy your code with simple YAML-based configurations. While [GitHub](/blog/ci-comparison) Actions, like many other CI/CD platforms, is powerful enough to handle most use cases,, it's important to consider the cost and time associated with frequently running workflows.
@@ -195,4 +198,3 @@ If you're looking for other ways to supercharge your CI workflows, consider [Ear
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Add keywords for internal links to front-matter
