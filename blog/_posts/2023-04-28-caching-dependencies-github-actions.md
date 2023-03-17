@@ -39,7 +39,7 @@ Caching is a good fit for saving and reusing files that don't change too often s
 
 Another thing you need to know prior to starting this tutorial is how access restrictions work for caches. Generally speaking, a workflow run will only be able to access a cache that was created in the current branch, the base branch of a pull request, or the default branch of the repository (or the repository it was forked from). In practice, this means that if you have a branch called `feature-b` that is based on another branch, `feature-a`, which in turn was based on the default branch `main`, a workflow run in `feature-b` will be able to access caches created in `feature-b`, `feature-a`, and `main`. Whereas a workflow run in `feature-a` will only be able to access caches created in `feature-a` and `main`. You can see a visual representation of this below:
 
-![Diagram of cache control](https://i.imgur.com/rUk6C0W.png)
+![Diagram of cache control]({{site.images}}{{page.slug}}/rUk6C0W.png)
 
 This is because the cache access restrictions do not allow workflow runs to use caches created in sibling or child branches. Realistically, these restrictions shouldn't impede your use of the caching mechanism, as it's unlikely you would need to pull a cache from a branch other than your current, base, or default branch in most cases.
 
@@ -53,7 +53,6 @@ This section will show you how to configure the `cache` action for a GitHub work
 
 After the `cache` action has finished running, it exposes a single output parameter, the `cache-hit`. This parameter is a Boolean value representing whether GitHub found an exact match for the specified `key`. If `true`, this is considered a cache hit, and the action will restore whatever files it has cached to the `path` directory. However, if `false`, a cache miss has happened, and GitHub will create a new cache after the current job. To generate the files that need to be cached, you can use the `cache-hit` output parameter to conditionally run your package manager in case of a cache miss.
 
-
 ### Implementing the Cache
 
 To consolidate your understanding of how GitHub Actions caches work, you can follow along with this tutorial to set up a simple Yarn cache in a few minutes.
@@ -62,36 +61,37 @@ To consolidate your understanding of how GitHub Actions caches work, you can fol
 
 Start by creating a new project. Because caching is the focus of this exercise, the project itself doesn't matter as long as it has some dependencies to cache. This tutorial will use a simple bare-bones [vite](https://vitejs.dev/) app, which you can create by running the following command:
 
-```bash
+~~~
 yarn create vite cache-action-demo --template react-ts
-```
+~~~
 
 #### Installing the Required Dependencies
 
 Once your project has been generated, navigate into the newly created `cache-action-demo/` directory and install your dependencies:
 
-```bash
+~~~
 cd cache-action demo
 yarn install
-```
+~~~
 
 This command will trigger the creation of the `yarn.lock` file once the dependencies are installed. This file represents the currently installed versions of your project's dependencies, which you can use to generate an appropriate `key` for your cache action. This approach works because the cache will be rebuilt when the `key` changes, and if the `key` is based on your `yarn.lock` file, it will only change when your dependencies change.
 
-Before configuring the cache action, you should upload your project to GitHub. Create a new repository on GitHub, [and push your local repository to it](https://docs.github.com/en/get-started/importing-your-projects-to-github/importing-source-code-to-github/adding-locally-hosted-code-to-github). 
+Before configuring the cache action, you should upload your project to GitHub. Create a new repository on GitHub, [and push your local repository to it](https://docs.github.com/en/get-started/importing-your-projects-to-github/importing-source-code-to-github/adding-locally-hosted-code-to-github).
 
 #### Creating a Workflow File
 
 Next, create a new workflow file in your repository by running the following commands:
 
-```bash
+~~~
 mkdir -p .github/workflows
 touch .github/workflows/cache-action-demo.yml
-```
+~~~
+
 ##### Creating and Parsing the Config File
 
 In your editor, open the `cache-action-demo.yml` file and add the following content:
 
-```yaml
+~~~
 name: Caching with yarn
 on: push
 jobs:
@@ -101,42 +101,42 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Get yarn cache directory path
-   	 id: yarn-cache-dir-path
-   	 run: echo "::set-output name=dir::$(yarn cache dir)"
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
 
       - name: Cache node modules
-   	 id: cache-yarn
-   	 uses: actions/cache@v3
-   	 env:
- 		 cache-name: cache-node-modules
-   	 with:
- 		 path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
- 		 key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
- 		 restore-keys: |
-   		 ${{ runner.os }}-build-${{ env.cache-name }}-
-   		 ${{ runner.os }}-build-
-   		 ${{ runner.os }}-
+        id: cache-yarn
+        uses: actions/cache@v3
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
 
       - if: ${{ steps.cache-yarn.outputs.cache-hit != 'true' }}
-   	 name: List the state of node modules
-   	 continue-on-error: true
-   	 run: yarn list
+        name: List the state of node modules
+        continue-on-error: true
+        run: yarn list
 
       - name: Install dependencies
-   	 run: yarn install
+        run: yarn install
 
       - name: Build
-   	 run: yarn run build
+        run: yarn run build
 
-```
+~~~
 
 This config is a modified version of the [official npm example](https://docs.github.com/en/actions/using-workflows/caching-dependencies-to-speed-up-workflows#example-using-the-cache-action), tweaked slightly to work with Yarn. The most important part of this file to understand is the `cache-node-modules` step. Here, you can see that the `path` is set to the output of the `yarn cache dir` command from the previous step, which will point to Yarn's local global cache on the runner. Then the `yarn.lock` file is used to generate the hash for the `key`, so if any dependencies change, this hash will also change.
 
-You may also notice the `restore-keys` that use shortening forms of the `key`. Even if GitHub cannot find the hash changes and an exact match, it can still restore the cache to serve as a base for the `Install dependencies` step that will run. When you're defining your `key` and `restore-keys`, you can make use of any of GitHub's [contexts](https://docs.github.com/en/actions/learn-github-actions/contexts) or [expressions](https://docs.github.com/en/actions/learn-github-actions/expressions). 
+You may also notice the `restore-keys` that use shortening forms of the `key`. Even if GitHub cannot find the hash changes and an exact match, it can still restore the cache to serve as a base for the `Install dependencies` step that will run. When you're defining your `key` and `restore-keys`, you can make use of any of GitHub's [contexts](https://docs.github.com/en/actions/learn-github-actions/contexts) or [expressions](https://docs.github.com/en/actions/learn-github-actions/expressions).
 
 Using contexts gives you more control over how your keys are created, but for most cases, simply hashing your dependencies or a lock file that represents your dependencies should be more than adequate.
 
-Because you're targeting Yarn's global cache instead of the `node_modules/` directory, you can safely run the `yarn install` command regardless of whether or not a cache miss occurred. If GitHub restores a cache, the install command will run faster than it otherwise would, even if some dependencies still need to be fetched. 
+Because you're targeting Yarn's global cache instead of the `node_modules/` directory, you can safely run the `yarn install` command regardless of whether or not a cache miss occurred. If GitHub restores a cache, the install command will run faster than it otherwise would, even if some dependencies still need to be fetched.
 
 If it was restored because of a `restore-key`, and there was no exact match because the `yarn.lock` file has changed, the restored cache can be used for all the unchanged files, and Yarn will download new files for whatever packages have changed since the cache was saved. This is powerful because it means that even on a cache miss, you're still saving time and only downloading the difference. However, this might not be the case for all package managers, so in cases where you don't want a step to run if there is a cache hit, you can add a condition to the step, as seen in the `List the state of node modules` step, which only runs on a cache miss.
 
@@ -144,16 +144,19 @@ If it was restored because of a `restore-key`, and there was no exact match beca
 
 You can see this workflow in action by committing the workflow file and pushing it to GitHub:
 
-```bash
+~~~
 git add .
 git commit -m "add workflow file"
 git push
-```
+~~~
+
 #### Viewing the Workflow Run
 
 Once the push is complete, navigate to your repository on GitHub and go to the **Actions** tab. You should see your workflow running (or completed). Click on it, and you should see something like this:
 
-![Initial workflow](https://i.imgur.com/TjBAYiw.png)
+<div class="wide">
+![Initial workflow]({{site.images}}{{page.slug}}/TjBAYiw.png)
+</div>
 
 Here, you can see that the initial `Cache node modules` step could not find a suitable cache (as it is the first run). Consequently, the `Install dependencies` step took seven seconds, as it needed to download all the new packages. Finally, because the workflow was completed without issues, GitHub cached the packages with your specified key.
 
@@ -161,24 +164,26 @@ Here, you can see that the initial `Cache node modules` step could not find a su
 
 Next, return to your terminal, and run the following command to add and commit a new package:
 
-```bash
+~~~
 yarn add axios
 git add .
 git commit -m "add package"
 git push
-```
+~~~
 
 In your browser, view the new workflow run, and you should see something like this:
 
-![Subsequent workflow run](https://i.imgur.com/ndNd9Q4.png)
+<div class="wide">
+![Subsequent workflow run]({{site.images}}{{page.slug}}/ndNd9Q4.png)
+</div>
 
 If you compare the cache keys, you will notice that it's restored from your previously created cache even though you added a new dependency. This is because of the aforementioned `restore-keys`. Notably, the `Install dependencies` step was much faster this time, as it only had to deal with one new dependency (and its subdependencies). You can see a new cache was created with a different cache key, confirming that the `yarn.lock` file did indeed change.
 
-##  Conclusion
+## Conclusion
 
 In this article, you learned how to configure GitHub Actions workflows to use the `cache` action. This action allows you to save and restore files that don't change very often, like package dependencies, which enable you to speed up your workflow runs, saving you time and money.
 
-If you're using a language that GitHub maintains a `setup-*` action for, you can use that to get a low-config caching solution. Otherwise, if you want more control over the caching process or are using a language that doesn't have first-class support, you can use the `cache` action and get something up and running with a small amount of configuration. 
+If you're using a language that GitHub maintains a `setup-*` action for, you can use that to get a low-config caching solution. Otherwise, if you want more control over the caching process or are using a language that doesn't have first-class support, you can use the `cache` action and get something up and running with a small amount of configuration.
 
 If you're looking for other ways to supercharge your CI workflows, consider [Earthly](https://earthly.dev/), a portable CI/CD framework that runs everywhere. Earthly allows you to avoid vendor lock-in with your Git provider and gives you the tools to run your CI/CD workflows locally the same way they would run in the cloud, greatly simplifying the process of developing and testing workflows.
 
@@ -188,7 +193,6 @@ If you're looking for other ways to supercharge your CI workflows, consider [Ear
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
 - [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
