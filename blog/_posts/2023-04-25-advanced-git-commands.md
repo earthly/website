@@ -18,6 +18,8 @@ However, over the years, Git has emerged as the standard tool for version contro
 
 In this article, I'll discuss ten advanced Git commands every developer should know.
 
+![Top]({{site.images}}{{page.slug}}/top.png)\
+
 ## Git Rebase
 
 If you wanted to merge all your commits in a feature branch to the `main` branch, what probably comes to mind is using the `git merge` command. This will take all of the changes in the featured branch and stuff it into one merge commit and then put that merge commit into the main branch. After those changes are combined into that merge commit, it looks scattered, especially when you have a bunch of people working on the featured branch and pushing changes almost every time.
@@ -372,7 +374,7 @@ git clean -f -d
 ~~~
 
 <div class="wide">
-![git clean force directories]({{site.images}}{{page.slug}}/rEk7nN.png)
+![git clean force directories]({{site.images}}{{page.slug}}/n0WIkj8.png)
 </div>
 
 The command forcefully removes the untracked directories in our example.
@@ -385,9 +387,3 @@ The commands covered in this tutorial are just the start. There are many more. Y
 ](https://git-scm.com/book/en/v2/Git-Basics-Git-Aliases) and [git bisect](https://git-scm.com/docs/git-bisect), and other interesting commands.
 
 {% include cta/cta1.html %}
-
-## Outside Article Checklist
-
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-
