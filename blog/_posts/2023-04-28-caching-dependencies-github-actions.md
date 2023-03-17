@@ -9,9 +9,9 @@ internal-links:
  - just an example
 ---
 
-[GitHub Actions](https://docs.github.com/en/actions) is a continuous integration, continuous delivery (CI/CD) platform that allows you to build, test, and deploy your code with simple YAML-based configurations. While GitHub Actions, like many other CI/CD platforms, is powerful enough to handle most use cases,, it's important to consider the cost and time associated with frequently running workflows.
+[GitHub Actions](https://docs.github.com/en/actions) is a [continuous integration](/blog/continuous-integration), continuous delivery (CI/CD) platform that allows you to build, test, and deploy your code with simple YAML-based configurations. While [GitHub](/blog/ci-comparison) Actions, like many other CI/CD platforms, is powerful enough to handle most use cases,, it's important to consider the cost and time associated with frequently running workflows.
 
-These issues are especially impactful if you're on a large team with numerous developers and an already lengthy CI/CD workflow. In cases like this, you need to try to save time in CI/CD wherever you can.
+These issues are especially impactful if you're on a large team with numerous developers and an already lengthy [CI/CD](/blog/ci-vs-cd) workflow. In cases like this, you need to try to save time in CI/CD wherever you can.
 
 One way to save time is to cache your package manager dependencies in your GitHub Actions rather than download fresh packages for every workflow you run. In this article, you'll learn how to use the `cache` action to do this and improve the efficiency of your workflows.
 
@@ -132,7 +132,7 @@ jobs:
 
 This config is a modified version of the [official npm example](https://docs.github.com/en/actions/using-workflows/caching-dependencies-to-speed-up-workflows#example-using-the-cache-action), tweaked slightly to work with Yarn. The most important part of this file to understand is the `cache-node-modules` step. Here, you can see that the `path` is set to the output of the `yarn cache dir` command from the previous step, which will point to Yarn's local global cache on the runner. Then the `yarn.lock` file is used to generate the hash for the `key`, so if any dependencies change, this hash will also change.
 
-You may also notice the `restore-keys` that use shortening forms of the `key`. Even if GitHub cannot find the hash changes and an exact match, it can still restore the cache to serve as a base for the `Install dependencies` step that will run. When you're defining your `key` and `restore-keys`, you can make use of any of GitHub's [contexts](https://docs.github.com/en/actions/learn-github-actions/contexts) or [expressions](https://docs.github.com/en/actions/learn-github-actions/expressions).
+You may also notice the `restore-keys` that use shortening forms of the `key`. Even if GitHub cannot find the hash changes and an exact match, it can still restore the cache to serve as a base for the `Install dependencies` step that will run. When you're defining your `key` and `restore-keys`, you can [make](/blog/makefiles-on-windows) use of any of GitHub's [contexts](https://docs.github.com/en/actions/learn-github-actions/contexts) or [expressions](https://docs.github.com/en/actions/learn-github-actions/expressions).
 
 Using contexts gives you more control over how your keys are created, but for most cases, simply hashing your dependencies or a lock file that represents your dependencies should be more than adequate.
 
@@ -152,7 +152,7 @@ git push
 
 #### Viewing the Workflow Run
 
-Once the push is complete, navigate to your repository on GitHub and go to the **Actions** tab. You should see your workflow running (or completed). Click on it, and you should see something like this:
+Once the push is complete, navigate to your repository on [GitHub](/blog/ci-comparison) and go to the **Actions** tab. You should see your workflow running (or completed). Click on it, and you should see something like this:
 
 <div class="wide">
 ![Initial workflow]({{site.images}}{{page.slug}}/TjBAYiw.png)
@@ -185,7 +185,7 @@ In this article, you learned how to configure GitHub Actions workflows to use th
 
 If you're using a language that GitHub maintains a `setup-*` action for, you can use that to get a low-config caching solution. Otherwise, if you want more control over the caching process or are using a language that doesn't have first-class support, you can use the `cache` action and get something up and running with a small amount of configuration.
 
-If you're looking for other ways to supercharge your CI workflows, consider [Earthly](https://earthly.dev/), a portable CI/CD framework that runs everywhere. Earthly allows you to avoid vendor lock-in with your Git provider and gives you the tools to run your CI/CD workflows locally the same way they would run in the cloud, greatly simplifying the process of developing and testing workflows.
+If you're looking for other ways to supercharge your CI workflows, consider [Earthly](https://earthly.dev/), a portable [CI/CD](/blog/ci-vs-cd) framework that runs everywhere. Earthly allows you to avoid vendor lock-in with your Git provider and gives you the tools to run your CI/CD workflows locally the same way they would run in the cloud, greatly simplifying the process of developing and testing workflows.
 
 ## Outside Article Checklist
 
@@ -194,5 +194,4 @@ If you're looking for other ways to supercharge your CI workflows, consider [Ear
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
 - [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
