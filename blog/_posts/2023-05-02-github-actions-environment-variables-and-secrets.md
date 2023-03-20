@@ -9,17 +9,17 @@ internal-links:
  - just an example
 ---
 
-When you're working with continuous integration, continuous delivery (CI/CD) platforms, you'll work with environment variables and secrets, which are resources that help you conceal and reuse sensitive information, like keys and certificates, in your CI/CD processes. These environmental variables and secrets also make it easy for you to manage your application environments by maintaining configuration sets that you can swap and use when running in different environments. You can also utilize expanding functions (*ie* functions that substitute environment variable values at runtime) and dynamic string templates (*ie* a method to help create multiple strings out of a template literal with different sets of environment variable values) to reuse secrets and simplify your code.
+When you're working with continuous integration, continuous delivery (CI/CD) platforms, you'll work with environment variables and secrets, which are resources that help you conceal and reuse sensitive information, like keys and certificates, in your [CI/CD](/blog/ci-vs-cd) processes. These environmental variables and secrets also [make](/blog/using-cmake) it easy for you to manage your application environments by maintaining configuration sets that you can swap and use when running in different environments. You can also utilize expanding functions (*ie* functions that substitute [environment variable](/blog/bash-variables) values at runtime) and dynamic string templates (*ie* a method to help create multiple strings out of a template literal with different sets of environment variable values) to reuse secrets and simplify your code.
 
 Like most CI/CD platforms, [GitHub Actions](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions), a popular CI/CD platform, offers a way for you to manage your CI/CD environment variables and secrets. In this article, you'll learn how GitHub Actions work, when you should use them, and how to get started.
 
-To follow along, you'll need a GitHub account to fork the repo and try out GitHub Actions. You'll also need some familiarity with YAML, the standard language for writing and managing GitHub Actions configuration files.
+To follow along, you'll need a [GitHub](/blog/ci-comparison) account to fork the repo and try out GitHub Actions. You'll also need some familiarity with YAML, the standard language for writing and managing [GitHub Actions](/blog/continuous-integration) configuration files.
 
 ## What Are GitHub Actions Environment Variables and Secrets
 
 GitHub Actions' environment variables and secrets are just like regular secrets. They help you hide and reuse sensitive information in your workflows. In most cases, you can define environment variables under an `env` node in your workflow configuration file.
 
-While environment variables are simple dynamic values that are plugged in at runtime, secrets are meant to be more secure and are encrypted before storing. They're usually managed by dedicated tools known as [secrets managers](https://www.cyberark.com/what-is/secrets-management/) to help create and view secrets while maintaining encryption. GitHub offers a built-in secrets manager tool in the form of [Actions variables](https://docs.github.com/en/actions/learn-github-actions/variables#creating-configuration-variables-for-a-repository).
+While [environment variables](/blog/bash-variables) are simple dynamic values that are plugged in at runtime, secrets are meant to be more secure and are encrypted before storing. They're usually managed by dedicated tools known as [secrets managers](https://www.cyberark.com/what-is/secrets-management/) to help create and view secrets while maintaining encryption. GitHub offers a built-in secrets manager tool in the form of [Actions variables](https://docs.github.com/en/actions/learn-github-actions/variables#creating-configuration-variables-for-a-repository).
 
 ### When to Use Environment Variables and Secrets
 
@@ -51,7 +51,7 @@ Next, search for Gatsby and click **Configure** on the workflow meant to package
 
 ![Configure the Gatsby deploy workflow]({{site.images}}{{page.slug}}/ATKriD6.png)
 
-Now you should see the workflow YAML file in an editor where you can make changes to it before pushing it to your repo (and setting up the workflow in action). However, do not make any changes at this point. You'll revisit this file later on in the tutorial. For now, click on **Start commit > Commit new file**:
+Now you should see the workflow YAML file in an editor where you can make changes to it before pushing it to your repo (and setting up the workflow in action). However, do not [make](/blog/makefiles-on-windows) any changes at this point. You'll revisit this file later on in the tutorial. For now, click on **Start commit > Commit new file**:
 
 ![Commit the GitHub Actions workflow config]({{site.images}}{{page.slug}}/6u826yt.png)
 
@@ -84,7 +84,7 @@ This will add two steps to your Actions workflow. The first step defines a local
 
 ![Updated GitHub Actions workflow]({{site.images}}{{page.slug}}/GbRd31R.png)
 
-> To keep things simple, the environment variables have been statically defined in the workflow configuration file. For increased security via encryption, you can also use the [GitHub repo environment variables (or secrets)](https://docs.github.com/en/actions/learn-github-actions/variables#creating-configuration-variables-for-a-repository) to pull in the values of these variables from the GitHub repo variables when the workflow is triggered. More on this toward the end of the tutorial.
+> To keep things simple, the environment variables have been statically defined in the workflow configuration file. For increased security via [encryption](/blog/encrypting-data-with-ssh-keys-and-golang), you can also use the [GitHub repo environment variables (or secrets)](https://docs.github.com/en/actions/learn-github-actions/variables#creating-configuration-variables-for-a-repository) to pull in the values of these variables from the GitHub repo variables when the workflow is triggered. More on this toward the end of the tutorial.
 
 When you've finished adding the steps, click on **Start commit > Commit changes** (just like you did previously). Now, if you go back to the **Actions** tab, you'll notice another run has popped up:
 
@@ -229,5 +229,4 @@ In this article, you learned when to use environment variables and secrets, as w
 * [ ] Verify look of article locally
   * Would any images look better `wide` or without the `figcaption`?
 * [ ] Add keywords for internal links to front-matter
-* [ ] Run `link-opp` and find 1-5 places to incorporate links
 * [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
