@@ -19,12 +19,12 @@ You can find the code used in this article on [GitHub](https://github.com/khabdr
 
 If you would like to follow along with this tutorial, be sure you have the following:
 
-1. Basic knowledge of Golang
+1. Basic knowledge of [Golang](/blog/top-3-resources-to-learn-golang-in-2021)
 2. Golang set up on your local machine
 
 ## What Is a Zip File?
 
-A ZIP file is an archive format that contains a file or files that have been compressed to make them smaller. This compression is achieved through algorithms like LZ77, Huffman coding, and the like. To create a ZIP file, a user selects one or more files and applies the compression algorithm to them, creating a new file with the .zip extension. To access the files within the archive, the archive is opened, and the compressed data is decompressed and restored to its original form. This process can be done using various tools that are compatible with the ZIP file format, whether they are built into the language or developed by third parties.
+A ZIP file is an archive format that contains a file or files that have been compressed to [make](/blog/using-cmake) them smaller. This compression is achieved through algorithms like LZ77, Huffman coding, and the like. To create a ZIP file, a user selects one or more files and applies the compression algorithm to them, creating a new file with the .zip extension. To access the files within the archive, the archive is opened, and the compressed data is decompressed and restored to its original form. This process can be done using various tools that are compatible with the ZIP file format, whether they are built into the language or developed by third parties.
 
 When a file is compressed to create a ZIP file, the algorithm examines the data of the original file and identifies patterns and redundant information, replacing them with smaller equivalents, reducing the overall file size, and making it more convenient to transfer and store.
 
@@ -129,7 +129,7 @@ closing archive
 
 ## Listing the Contents of a Zip File
 
-In this section, we will import several packages such as `archive/zip`, `fmt`, and `log` packages. And we'll open the zip file using the `zip.OpenReader` function. The zip file here will be *archive.zip* created in the above code using the `archive/zip` package. Looping through the files in the zip file will output the names of each of the files contained in the zip file to the console. In this case, it'd be just *test.csv*.
+In this section, we will import several [packages](/blog/setup-typescript-monorepo) such as `archive/zip`, `fmt`, and `log` packages. And we'll open the zip file using the `zip.OpenReader` function. The zip file here will be *archive.zip* created in the above code using the `archive/zip` package. Looping through the files in the zip file will output the names of each of the files contained in the zip file to the console. In this case, it'd be just *test.csv*.
 
 ~~~{.go caption="main.go"}
 // main1.go
@@ -164,7 +164,7 @@ test.csv
 
 ## Using the `compress/gzip` Package for Compressing Files
 
-Here we will first import `[compress/gzip](https://pkg.go.dev/compress/gzip)`. In addition to importing the primary package, `compress/gzip`, we will also import the `os`, `io`, and `log` packages.
+Here we will first import `[compress/gzip](https://pkg.go.dev/compress/gzip)`. In addition to importing the primary package, `compress/gzip`, we will also import the `os`, `io`, and `log` [packages](/blog/setup-typescript-monorepo).
 
 The following code first opens the input file `read.txt` using the  `Open()` function from the `os` package. It then creates a new gzip-compressed file called `read.gz` which is passed to the `Create()` function from the `os` package.
 
@@ -375,7 +375,7 @@ exit status 2
 
 ## Extracting Files From Zip Files
 
-At this point, we'll need the `archive/zip` package and other packages to extract files from a ZIP archive to a folder.
+At this point, we'll need the `archive/zip` package and other [packages](/blog/setup-typescript-monorepo) to extract files from a ZIP archive to a folder.
 
 This first snippet imports the necessary packages for working with zip files, file paths, and input/output operations. The main function first sets the destination directory to "output" and then opens the zip file archive.zip using the zip package. If there is an error opening the zip file, the program will panic.
 
@@ -477,5 +477,4 @@ In this tutorial, we learned how to use the "archive/zip" package, which is buil
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
 - [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
