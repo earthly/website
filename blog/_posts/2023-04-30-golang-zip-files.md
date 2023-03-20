@@ -27,6 +27,8 @@ If you would like to follow along with this tutorial, be sure you have the follo
 
 ## What Is a Zip File?
 
+![What]({{site.images}}{{page.slug}}/what.png)\
+
 A ZIP file is an archive format that contains a file or files that have been compressed to [make](/blog/using-cmake) them smaller. This compression is achieved through algorithms like LZ77, Huffman coding, and the like. To create a ZIP file, a user selects one or more files and applies the compression algorithm to them, creating a new file with the .zip extension. To access the files within the archive, the archive is opened, and the compressed data is decompressed and restored to its original form. This process can be done using various tools that are compatible with the ZIP file format, whether they are built into the language or developed by third parties.
 
 When a file is compressed to create a ZIP file, the algorithm examines the data of the original file and identifies patterns and redundant information, replacing them with smaller equivalents, reducing the overall file size, and making it more convenient to transfer and store.
@@ -37,9 +39,9 @@ Inside a ZIP file, the compressed data is divided into segments, each containing
 
 In this section, you will learn how to create a zip file in Go. Here, we will use the `os` package to generate zip archives. The `os` package provides a platform-independent interface to operating system functionality.
 
-We'll first create a folder and open it in a text editor, then create a Go file (*main.go*) within the newly created folder, where we will run our code.
+We'll first create a folder and open it in a text editor, then create a Go file (`*main.go*`) within the newly created folder, where we will run our code.
 
-The main function (`main()`) in the following code creates a new zip archive file named "archive.zip" using the `os.Create` function:
+The main function (`main()`) in the following code creates a new zip archive file named `archive.zip` using the `os.Create` function:
 
 ~~~{.go caption="main.go"}
 // main.go
@@ -66,7 +68,7 @@ defer archive.Close()
 fmt.Println("archive file created successfully")
 ~~~
 
-Now you can add the following code to open the archived file and create a file with the name 'test.csv'.
+Now you can add the following code to open the archived file and create a file with the name `test.csv`.
 
 ~~~{.go caption="main.go"}
 
@@ -97,7 +99,7 @@ The `zip.NewWriter` function takes an `io.Writer` as its argument and returns a 
 
 If you try to run the code and `test.csv` does not exist, you will get the following output:
 
-~~~{.bash caption=">_"}
+~~~{.bash caption="Output"}
 creating zip archive
 archive file created successfully....
 archive file created successfully
@@ -106,12 +108,12 @@ panic: open test.csv: no such file or directory
 
 goroutine 1 [running]:
 main.main()
-        /home/muhammed/Desktop/dev/article_repos/zip_go/main.go:28 +0x4bc
+/home/user/Desktop/dev/article_repos/zip_go/main.go:28 +0x4bc
 exit status 2
 
 ~~~
 
-Finally, the code uses the `defer` keyword to close the "archive" file once it has been created. It is important to close the file after it has been created to ensure that the file is properly flushed into the file system. Before running the code, create a new file named *test.csv* in the same directory as *main.go*.
+Finally, the code uses the `defer` keyword to close the "archive" file once it has been created. It is important to close the file after it has been created to ensure that the file is properly flushed into the file system. Before running the code, create a new file named `*test.csv*` in the same directory as `*main.go*`.
 
 You can run the archive script on the terminal running the following command:
 
@@ -121,7 +123,7 @@ go run main.go
 
 You should see the following output showing that your code ran as expected:
 
-~~~{.bash caption=">_"}
+~~~{.bash caption="Output"}
 creating zip archive
 archive file created successfully....
 archive file created successfully
@@ -132,7 +134,7 @@ closing archive
 
 ## Listing the Contents of a Zip File
 
-In this section, we will import several [packages](/blog/setup-typescript-monorepo) such as `archive/zip`, `fmt`, and `log` packages. And we'll open the zip file using the `zip.OpenReader` function. The zip file here will be *archive.zip* created in the above code using the `archive/zip` package. Looping through the files in the zip file will output the names of each of the files contained in the zip file to the console. In this case, it'd be just *test.csv*.
+In this section, we will import several [packages](/blog/setup-typescript-monorepo) such as `archive/zip`, `fmt`, and `log` packages. And we'll open the zip file using the `zip.OpenReader` function. The zip file here will be `*archive.zip*` created in the above code using the `archive/zip` package. Looping through the files in the zip file will output the names of each of the files contained in the zip file to the console. In this case, it'd be just `test.csv`.
 
 ~~~{.go caption="main.go"}
 // main1.go
@@ -209,7 +211,7 @@ Now, we can copy the input file to the gzip writer using the `Copy()` function f
 
 Finally, the gzip writer is closed with the `Close()` function from the `zipWriter` (the variable which holds `read.gz`).
 
-Before running the code, create a new file named *read.txt* in the same directory as *main.go*.
+Before running the code, create a new file named `*read.txt*` in the same directory as `*main.go*`.
 
 ~~~{.go caption="main.go"}
 
@@ -228,12 +230,10 @@ zipWriter.Close()
 Go to the terminal and run this;
 
 ~~~{.bash caption=">_"}
-
 go run main.go
-
 ~~~
 
-By doing this, the compressed version of the file *read.txt* will be created as a zip file called *read.gz*.
+By doing this, the compressed version of the file `*read.txt*` will be created as a zip file called *read.gz*.
 
 <div class="wide">
 ![read zip file]({{site.images}}{{page.slug}}/Vet9Pp0.png)
@@ -244,7 +244,6 @@ By doing this, the compressed version of the file *read.txt* will be created as 
 In this section, you will learn how to add files to a zip file with some content in it. This code adds a file to an existing zip file without deleting the previous contents of the zip file. The following code snippet opens the zip file for reading using the `zip.OpenReader` function, and then opens the file for writing using the `os.OpenFile` function with the `os.O_APPEND` and `os.O_WRONLY` flags.
 
 ~~~{.go caption="main3.go"}
-
 // main3.go
 package main
 
@@ -274,31 +273,30 @@ func main() {
 It then creates a new zip writer using the `zip.NewWriter` function and creates a new zip header for the file using the `zip.FileInfoHeader` function. The header provides information about a file, such as its name, size, and modification time.
 
 ~~~{.go caption="main3.go"}
+// Create a new zip writer
+zipWriter := zip.NewWriter(zipfile)
+defer zipWriter.Close()
 
-  // Create a new zip writer
-  zipWriter := zip.NewWriter(zipfile)
-  defer zipWriter.Close()
+// Open the file you want to add to the zip
+newfile, err := os.Open("newfile.txt")
+if err != nil {
+    panic(err)
+}
+defer newfile.Close()
 
-  // Open the file you want to add to the zip
-  newfile, err := os.Open("newfile.txt")
-  if err != nil {
-      panic(err)
-  }
-  defer newfile.Close()
+// Create a new zip header for the file
+fileInfo, err := newfile.Stat()
+if err != nil {
+    panic(err)
+}
 
-  // Create a new zip header for the file
-  fileInfo, err := newfile.Stat()
-  if err != nil {
-      panic(err)
-  }
+header, err := zip.FileInfoHeader(fileInfo)
+if err != nil {
+    panic(err)
+}
 
-  header, err := zip.FileInfoHeader(fileInfo)
-  if err != nil {
-      panic(err)
-  }
-
-  // Set the file name in the zip header
-  header.Name = "newfile.txt"
+// Set the file name in the zip header
+header.Name = "newfile.txt"
 
 ~~~
 
@@ -307,19 +305,17 @@ Paste in the following to set the compression method. The code sets the file nam
 It then adds the file to the zip using the `zip.CreateHeader` function and copies the contents of the file into the zip using the `io.Copy` function.
 
 ~~~{.go caption="main3.go"}
+header.Method = zip.Deflate
 
-  header.Method = zip.Deflate
-
-  // Add the file to the zip
-  writer, err := zipWriter.CreateHeader(header)
-  if err != nil {
-      panic(err)
-  }
-  _, err = io.Copy(writer, newfile)
-  if err != nil {
-      panic(err)
-  }
-
+// Add the file to the zip
+writer, err := zipWriter.CreateHeader(header)
+if err != nil {
+    panic(err)
+}
+_, err = io.Copy(writer, newfile)
+if err != nil {
+    panic(err)
+}
 ~~~
 
 Finally, paste the following to add the files from the original zip to the new zip, except for a file named `newfile.txt` because we don't want to mistakenly overwrite the new file. The code snippet shown below does the following:
@@ -329,34 +325,31 @@ Finally, paste the following to add the files from the original zip to the new z
 - Then opens the file using the `File.Open` function, and copies the contents of the file into the new zip using the `io.Copy` function.
 
 ~~~{.go caption="main3.go"}
-
-  for _, file := range zipReader.File {
-      if file.Name != "newfile.txt" {
-          writer, err := zipWriter.Create(file.Name)
-          if err != nil {
-              panic(err)
-          }
-          reader, err := file.Open()
-          if err != nil {
-              panic(err)
-          }
-          _, err = io.Copy(writer, reader)
-          if err != nil {
-              panic(err)
-          }
-          reader.Close()
-      }
-  }
+for _, file := range zipReader.File {
+    if file.Name != "newfile.txt" {
+        writer, err := zipWriter.Create(file.Name)
+        if err != nil {
+            panic(err)
+        }
+        reader, err := file.Open()
+        if err != nil {
+            panic(err)
+        }
+        _, err = io.Copy(writer, reader)
+        if err != nil {
+            panic(err)
+        }
+        reader.Close()
+    }
+}
 }
 
 ~~~
 
-Before running the code, create a new file named *newfile.txt* in the same directory as *main.go*. To check the output go to the terminal and run the following:
+Before running the code, create a new file named `*newfile.txt*` in the same directory as `*main.go*`. To check the output go to the terminal and run the following:
 
 ~~~{.bash caption=">_"}
-
 go run main.go
-
 ~~~
 
 <div class="wide">
@@ -366,24 +359,23 @@ go run main.go
 If you try to run the code and `newfile.txt` does not exist, you will get the following output:
 
 ~~~{.bash caption="Output"}
-
 panic: open newfile.txt: no such file or directory
 
 goroutine 1 [running]:
 main.main()
-        /home/muhammed/Desktop/dev/article_repos/zip_go/main.go:31 +0x54b
+/home/user/Desktop/dev/article_repos/zip_go/main.go:31 +0x54b
 exit status 2
-
 ~~~
 
 ## Extracting Files From Zip Files
 
+![Extracting]({{site.images}}{{page.slug}}/extract.png)\
+
 At this point, we'll need the `archive/zip` package and other [packages](/blog/setup-typescript-monorepo) to extract files from a ZIP archive to a folder.
 
-This first snippet imports the necessary packages for working with zip files, file paths, and input/output operations. The main function first sets the destination directory to "output" and then opens the zip file archive.zip using the zip package. If there is an error opening the zip file, the program will panic.
+This first snippet imports the necessary packages for working with zip files, file paths, and input/output operations. The main function first sets the destination directory to "output" and then opens the zip file `archive.zip` using the zip package. If there is an error opening the zip file, the program will panic.
 
 ~~~{.go caption="main4.go"}
-
 //main4.go
 package main
 
@@ -406,7 +398,6 @@ func main() {
       panic(err)
   }
   defer archive.Close()
-
 ~~~
 
 The next snippet is the for loop that:
@@ -416,7 +407,6 @@ The next snippet is the for loop that:
 - Finally, it creates an empty destination folder, and copies the contents from the archived file to the destination folder.
 
 ~~~{.go caption="main4.go"}
-
 // Extract the files from the zip
 for _, f := range archive.File {
 
@@ -471,13 +461,6 @@ srcFile.Close()
 
 ## Conclusion
 
-In this tutorial, we learned how to use the "archive/zip" package, which is built into the Go standard library, to generate and extract compressed zip files, decompress zip archives, and create zip files using "compress/gzip". We learned how to add files to an existing zip file and finally how to extract content from zip files. As a next step, you may try using what you've learned in your next project.
+In this tutorial, we learned how to use the `archive/zip` package, which is built into the Go standard library, to generate and extract compressed zip files, decompress zip archives, and create zip files using `compress/gzip`. We learned how to add files to an existing zip file and finally how to extract content from zip files. As a next step, you may try using what you've learned in your next project.
 
 {% include cta/cta1.html %}
-
-## Outside Article Checklist
-
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
