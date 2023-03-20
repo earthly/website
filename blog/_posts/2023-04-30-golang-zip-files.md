@@ -470,6 +470,8 @@ srcFile.Close()
 
 In this tutorial, we learned how to use the "archive/zip" package, which is built into the Go standard library, to generate and extract compressed zip files, decompress zip archives, and create zip files using "compress/gzip". We learned how to add files to an existing zip file and finally how to extract content from zip files. As a next step, you may try using what you've learned in your next project.
 
+{% include cta/cta1.html %}
+
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
@@ -477,4 +479,3 @@ In this tutorial, we learned how to use the "archive/zip" package, which is buil
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
-- [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
