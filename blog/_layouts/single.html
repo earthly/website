@@ -156,7 +156,9 @@ layout: default
       {% assign topics = site.posts | where: "topic", page.topic | where: "funnel", 2 | sample: 10 %}
       {% assign everything = topics | concat: related  | slice: 0, 8 %}
       {% for post in everything %} 
-        {% include archive-single.html type="grid" lazy="true" %}
+        {% if page.id != post.id %}
+          {% include archive-single.html type="grid" lazy="true" %}
+        {% endif %}
       {% endfor %}
     </div>
   </div>

@@ -141,4 +141,4 @@ So this was a lot of information but the main take away is: Homebrew moved and i
 
 One of the reasons people love Homebrew is because it just works. And on Apple Silicon, that's still true, but you might encounter a couple of hiccups along the way. I ended up learning a lot about Homebrew and how it works while digging a little deeper into this issue. If you want to learn more about Homebrew you can checkout their website, or this excellent [getting started tutorial](https://mac.install.guide/homebrew/3.html). And if you haven't already, it's worth reading a bit about [Rosetta 2](https://screenrant.com/apple-rosetta-2-explained/), since it's at the heart of what makes the switch to Apple Silicon possible, not just for Homebrew, but for all software switching over from Intel to M1.
 
-{% include cta/cta1.html %}
+{% include_html cta/cta2.html %}

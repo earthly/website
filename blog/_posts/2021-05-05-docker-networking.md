@@ -16,6 +16,8 @@ Docker is the de facto model for building and running containers at scale in mos
 
 Once the application is inside a container, it's easier to scale and even runs on different cloud platforms, like AWS, GCP, and Azure. In this article, let's focus on the [networking aspect of Docker](https://docs.docker.com/network/).
 
+{% include_html cta/docker1.html %}
+
 ## What Is a Docker Network?
 
 Networking is about communication among processes, and Docker's networking is no different. Docker networking is primarily used to establish communication between Docker containers and the outside world via the host machine where the Docker daemon is running.
@@ -186,7 +188,7 @@ To create an overlay network so that standalone containers can communicate with 
 docker network create -d overlay --attachable my-attachable-overlay
 ```
 
-{% include cta/embedded-newsletter.html %}
+{% include_html cta/docker2.html %}
 
 ### The Macvlan Driver
 
@@ -703,4 +705,4 @@ In this article, we've covered the what and how of Docker networking in detail, 
 
 That should provide you with a decent overview of how Docker networking provides different modes of network drivers so that your containers can communicate on a single or multi-host setup. With this knowledge, you can pick and choose a network driver that fits your use case.
 
-{% include cta/cta1.html %}
+{% include_html cta/cta2.html %}

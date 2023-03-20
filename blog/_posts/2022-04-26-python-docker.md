@@ -63,6 +63,8 @@ This code pulls the base image from `python:3.8-slim-buster` and ensures the out
 
 Save and close the file.
 
+{% include_html cta/docker1.html %}
+
 ## Creating the Python App
 
 Create an `app.py` file and copy the below code:
@@ -143,6 +145,8 @@ Then, use `docker ps` to see the list of containers present:
 </div>
 
 You can now test your application using [http://localhost:5000](http://localhost:5000) on your preferred browser. You've run your Python app inside a Docker container.
+
+{% include_html cta/docker2.html %}
 
 ## Running Docker Push
 
@@ -282,4 +286,4 @@ You can optimize your use of containers even more with [Earthly](https://earthly
 
 To see the entire tutorial project at once, check out the [GitHub repo](https://github.com/adenicole/dockerpy).
 
-{% include cta/cta1.html %}
+{% include_html cta/cta2.html %}

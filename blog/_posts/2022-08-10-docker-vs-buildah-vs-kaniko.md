@@ -21,6 +21,8 @@ With the [removal of the Dockershim](https://kubernetes.io/blog/2022/02/17/docke
 
 In this article, you'll be introduced to three container image build tools: Docker, [Buildah](https://buildah.io), and [kaniko](https://github.com/GoogleContainerTools/kaniko). Tools like these can help you build your container images, getting you ready to deploy your applications to platforms like Kubernetes. You'll compare the tools based on features, supported platforms, and community; and by the end, you'll have seen the various ways that you can build container images as well as the pros and cons of each approach, which will help you make an informed decision about which tool is right for you.
 
+{% include_html cta/docker1.html %}
+
 ## Introduction to Docker, Buildah, and kaniko
 
 ![Docker logo]({{site.images}}{{page.slug}}/iFyvSui.png)\
@@ -50,6 +52,8 @@ Besides having the basic feature that you'd expect of a container image build to
 Secondly, Docker as a tool allows you to run containers, whereas the other two options only allow you to build the images. This is, of course, not relevant to the specific use case of container image building, but it's worth keeping in mind that Docker is a more fully formed development tool, while the others are meant to solve a specific problem.
 
 Besides that, not much sets [Docker](/blog/rails-with-docker) apart in terms of pros. This is not intended to make Docker sound like a poor tool choice; however, because it's the status quo, not much makes it stand out. This is more important for other tools, as they have to make a case for becoming the *new* status quo, whereas Docker mainly needs to make sure it provides existing features reliably.
+
+{% include_html cta/docker2.html %}
 
 ### Buildah
 
@@ -118,4 +122,4 @@ As you can see, Docker, Buildah, and kaniko are great options for choosing a con
 
 No matter the tool you choose to build your images, it's important that the applications inside them get deployed properly. For this, you can check out [Earthly](https://earthly.dev/), a tool to help you create idempotent CI/CD runs.
 
-{% include cta/cta1.html %}
+{% include_html cta/cta2.html %}

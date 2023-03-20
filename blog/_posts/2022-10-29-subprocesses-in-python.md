@@ -430,4 +430,4 @@ I hope this tutorial helped you understand how to use Python's `subprocess` modu
 
 If you need to run external programs within the Python application, try to run them as subprocesses. You can also leverage Python's threading capabilities to run subprocesses concurrently.
 
-{% include cta/cta1.html %}
+{% include_html cta/cta2.html %}

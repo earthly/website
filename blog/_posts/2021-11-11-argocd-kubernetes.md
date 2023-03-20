@@ -227,4 +227,4 @@ ArgoCD is a powerful tool that allows you to deploy your application by constant
 
 To further improve your CI/CD workflow with ArgoCD, you can use [Earthly](https://earthly.dev/). Earthly allows you to execute builds in Docker containers and can also run on popular CI tools like Jenkins, CircleCI, GitHub Actions, and AWS CodeBuild. [Earthly](https://earthly.dev/) acts as an interface between language-specific tooling and build specification.
 
-{% include cta/cta1.html %}
+{% include_html cta/cta2.html %}

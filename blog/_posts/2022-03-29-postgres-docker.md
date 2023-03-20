@@ -28,6 +28,8 @@ However, keep in mind that data is not persistent and gets removed as soon as th
 
 In addition to that, databases are stateful applications, while containers are built to run stateless applications. Also, databases are very resource-intensive applications, and running such databases on a [production workload is not ideal](https://vsupalov.com/database-in-docker/). An alternate solution might be to use any database-as-a-service offering from a cloud vendor, like AWS, [GCP](https://cloud.google.com/gcp/), or Azure in production but use containers for quick development.
 
+{% include_html cta/docker1.html %}
+
 ## Implement PostgreSQL Using Docker
 
 In this section, you're going to implement a PostgreSQL instance using Docker and use a graphical user interface (GUI) and pgAdmin to connect to the database. To begin, you need to have Docker installed on your machine. You can check if you already have Docker installed on your machine by running the following command on your terminal:
@@ -84,6 +86,8 @@ postgres                                   latest          5cd1494671e9   15 hou
 ~~~
 
 This command lists all the images that are installed in your local machine.
+
+{% include_html cta/docker2.html %}
 
 ## Run the PostgreSQL Container
 
@@ -212,4 +216,4 @@ In this article, you've learned about running a PostgreSQL instance on Docker. Y
 
 In order to deploy your container-based applications, you need to implement a CI/CD pipeline that will continuously build your Docker image and deploy it when new versions of your code are available. [Earthly](https://docs.earthly.dev/docs/guides/docker-in-earthly) is a popular CI tool that can be used to automate your container deployments. It provides integrations with most of the popular CI tools, like [Jenkins](https://www.jenkins.io), [AWS CodeBuild](https://aws.amazon.com/codebuild/), [CircleCI](https://circleci.com), and [GitHub Actions](https://github.com/features/actions). You can learn more about Earthly on their [website](https://earthly.dev/).
 
-{% include cta/cta1.html %}
+{% include_html cta/cta2.html %}

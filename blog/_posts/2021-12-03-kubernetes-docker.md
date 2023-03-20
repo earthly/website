@@ -86,4 +86,4 @@ If you are a software developer, your workflow will likely be more closely tied 
 
 Regardless of your tool of choice, [Earthly](https://earthly.dev/) can help you optimize your deployment process. This is possible because Earthly allows you to automate your Docker builds in a unique and innovative way, making them better and more repeatable.
 
-{% include cta/cta1.html %}
+{% include_html cta/cta2.html %}

@@ -451,4 +451,4 @@ In this article, you learned how to implement API testing using Playwright with 
 
 With hands-on written tests you practiced through the article, you can apply Playwright using Python for your next [API testing](/blog/continuous-testing-in-devops) project.
 
-{% include cta/cta1.html %}
+{% include_html cta/cta2.html %}

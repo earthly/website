@@ -20,6 +20,8 @@ If you're building a [Ruby on Rails](https://rubyonrails.org) application, Docke
 
 In this tutorial, you'll learn how to run a Ruby on Rails application inside a Docker container and what some best practices are for doing so.
 
+{% include_html cta/docker1.html %}
+
 ## Docker Image
 
 Before you begin this tutorial, you'll need the following prerequisites:
@@ -88,6 +90,8 @@ It's important to note that the `docker build` command doesn't run the container
 To create a container from this image, run the command `docker run -p 3000:3000 rubyapp`. This creates a container and binds port `3000` of your host computer to port `3000` of the container. Now navigate to [http://localhost:3000](http://localhost:3000) on your browser, and you should see the newly created Rails application.
 
 Finally, stop the container with `CTRL + C`.
+
+{% include_html cta/docker2.html %}
 
 ## Best Practices when Building Docker Images
 
@@ -236,4 +240,4 @@ In this article, you learned how to build a Docker image for a Ruby on Rails app
 
 [Earthly.dev](https://earthly.dev/) is a free and open source syntax for defining cacheable, parallelizable, and Git-aware build steps. Earthly takes some of the best ideas from Makefiles and Dockerfiles, and combines them into one specification. With Earthly, you can run unit and integration tests, create several Docker images at a time, and easily define multistage builds.
 
-{% include cta/cta1.html %}
+{% include_html cta/cta2.html %}

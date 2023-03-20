@@ -16,6 +16,8 @@ There isn't a standardized approach for accessing and managing secrets in contai
 
 This article will explain the benefits of using Docker secrets. You will learn how to set up [Docker Swarm](https://docs.docker.com/engine/swarm/) and leverage Docker secrets as part of your development flow.
 
+{% include_html cta/docker1.html %}
+
 ## What Is Docker Secrets?
 
 [Docker secrets](https://docs.docker.com/engine/swarm/secrets/) is Docker's secrets management service, offered as part of its container orchestration stack. In Docker, a secret is any piece of data, like passwords, SSH private credentials, certificates, or API keys, that shouldn't be stored unencrypted in plain text files. Docker secrets automates the process of keeping this data secure.
@@ -35,6 +37,8 @@ Secrets can be used to prove a user's identity and to authenticate and authorize
 A common use case is persisting and prepopulating sensitive data in our containers (for example, database credentials) that might change between environments; another common use case in a microservice architecture is sharing a known secure key or token to authenticate communication between services.
 
 There are several commonly used options for managing secrets.
+
+{% include_html cta/docker2.html %}
 
 ### Stored in Docker Compose and Stack Files
 
@@ -213,4 +217,4 @@ To further expand on the possibilities of your Docker containers, try [Earthly](
 
 For more information, check the [Earthly Documentation](https://docs.earthly.dev/).
 
-{% include cta/cta1.html %}
+{% include_html cta/cta2.html %}

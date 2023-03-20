@@ -1,43 +1,39 @@
-  <!-- Section: Design Block -->
-  <section class="mb-16 background-radial-gradient">
-    <style>
-      .background-radial-gradient {
-        background-color: hsl(218, 41%, 15%);
-        background-image: radial-gradient(
-          650px circle at 0% 0%,
+<section class="background-radial-gradient">
+  <style>
+    .background-radial-gradient {
+      background-color: hsl(218, 41%, 15%);
+      background-image: radial-gradient(650px circle at 0% 0%,
           hsl(218, 41%, 35%) 15%,
           hsl(218, 41%, 30%) 35%,
           hsl(218, 41%, 20%) 75%,
           hsl(218, 41%, 19%) 80%,
-          transparent 100%
-        ),
-        radial-gradient(
-          1250px circle at 100% 100%,
+          transparent 100%),
+        radial-gradient(1250px circle at 100% 100%,
           hsl(218, 41%, 45%) 15%,
           hsl(218, 41%, 30%) 35%,
           hsl(218, 41%, 20%) 75%,
           hsl(218, 41%, 19%) 80%,
-          transparent 100%
-        );
-      }
-    </style>
+          transparent 100%);
+    }
+  </style>
 
-    <div class="py-8 md:px-8 text-center lg:text-left">
-      <div class="container mx-auto">
-        <div class="grid lg:grid-cols-2 gap-4 flex items-center">
-          <div class="mt-12 lg:mt-0">
-            <h1 class="text-5xl md:text-6xl xl:text-7xl font-bold tracking-tight mb-12" style="color: hsl(218, 81%, 95%);">Better Docker <br /><span style="color: hsl(218, 81%, 75%);">Multi-stage builds</span></h1>
-            <a class="inline-block px-7 py-3 mr-2 bg-gray-200 text-gray-700 font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-gray-300 hover:shadow-lg focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 active:shadow-lg transition duration-150 ease-in-out" data-mdb-ripple="true" data-mdb-ripple-color="light" href="#!" role="button">Read More</a>
-          </div>
-          <div class="lg:mb-0">
-            <img
-              src="https://mdbootstrap.com/img/new/ecommerce/horizontal/058.jpg"
-              class="w-full rounded-lg shadow-lg"
-              alt=""
-            />
-          </div>
+  <div class="py-8 md:px-8 text-center lg:text-left">
+    <div class="container mx-auto">
+      <div class="grid lg:grid-cols-2 gap-4 flex items-center">
+        <div class="mt-12 lg:mt-0">
+          <h1 class="text-5xl md:text-6xl xl:text-7xl font-bold tracking-tight mb-12"
+            style="color: hsl(218, 81%, 95%);">Better Docker <br /><span style="color: hsl(218, 81%, 75%);">Multi-Stage
+              Builds</span></h1>
+          <a class="inline-block px-7 py-3 mr-2 bg-gray-200 text-gray-700 font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-gray-300 hover:shadow-lg focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 active:shadow-lg transition duration-150 ease-in-out"
+            data-mdb-ripple="true" data-mdb-ripple-color="light" href="/blog/docker-multistage" role="button">Read
+            More</a>
+        </div>
+        <div class="lg:mb-0 hidden md:flex">
+          <a href="/blog/docker-multistage">
+            <img src="{{site.images}}/cta/multistage.png" class="w-full rounded-lg shadow-lg" alt="" />
+          </a>
         </div>
       </div>
     </div>
-  </section>
-  <!-- Section: Design Block -->
+  </div>
+</section>

@@ -217,4 +217,4 @@ By now, you've seen how you can easily and quickly add Make to your project. The
 
 If you're looking at this and thinking to yourself that it's still a bit complex for you and your organization, check out [Earthly](https://earthly.dev/), a tool that combines the best of Dockerfiles and Makefiles to make builds as easy as possible.
 
-{% include cta/cta1.html %}
+{% include_html cta/cta2.html %}

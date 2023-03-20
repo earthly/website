@@ -716,4 +716,4 @@ We covered how to create data classes (without much boilerplate code) and set de
 
 In the next article in the series, we'll cover inheritance in Python data classes, performance optimizations that were introduced in Python 3.10, and more. Until then, keep coding!
 
-{% include cta/cta1.html %}
+{% include_html cta/cta2.html %}

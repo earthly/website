@@ -509,4 +509,4 @@ If you can get something running on your local machine, you can now capture and 
 
 The fun doesn't stop here, though.  [mitmproxy](https://mitmproxy.org/) can modify and replay requests and has an active ecosystem, including [mastermind](https://github.com/ustwo/mastermind) which lets you build mock services based on captured requests and [BDFProxy](https://github.com/secretsquirrel/BDFProxy), which uses mitmproxy to modify common security updates for <del>nefarious reasons</del> security research projects, and much more.  
 
-{% include cta/cta1.html %}
+{% include_html cta/cta2.html %}

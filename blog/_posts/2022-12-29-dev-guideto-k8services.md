@@ -440,4 +440,4 @@ While ClusterIP Service type is used to expose the IP address of the Pods to be 
 
 It's important to properly configure services in Kubernetes and make sure they are working as expected.
 
-{% include cta/cta1.html %}
+{% include_html cta/cta2.html %}

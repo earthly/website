@@ -504,7 +504,7 @@ I hope this overview of string manipulation in bash gave you enough details to c
 
 Also, if you're the type of person who's not afraid to solve problems in bash then take a look at [Earthly](https://earthly.dev/). It's a great tool for creating repeatable builds in a approachable syntax.
 
-{% include cta/cta1.html %}
+{% include_html cta/cta2.html %}
 
 <div class="no_toc_section">
 ## Feedback

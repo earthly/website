@@ -414,4 +414,4 @@ TUIs will never be able to compare to a full Graphical User Interface, but for c
 
 I'm definitely sold on them and will be looking for more opportunities to build them in the future. If you know of any cool TUI apps or libraries, please let me know.
 
-{% include cta/cta1.html %}
+{% include_html cta/cta2.html %}

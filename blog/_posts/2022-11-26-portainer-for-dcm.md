@@ -18,6 +18,8 @@ Portainer can be used to monitor your Docker installation, interact with contain
 
 This article will show you how to set up and start using Portainer. You'll also learn the benefits of some of Portainer's headline features, such as how to deploy apps with built-in templates and your own Compose files.
 
+{% include_html cta/docker1.html %}
+
 ## What Is Portainer?
 
 [Portainer](https://www.portainer.io) is a [container](/blog/docker-slim) management interface. It started out as a GUI for Docker but has expanded to support several other container environments. It has more than 1 million users and over [22,000 GitHub stars](https://github.com/portainer/portainer). Two versions are available: the free and open source Community Edition (CE) and a paid Enterprise Edition (EE).
@@ -42,6 +44,8 @@ Here's an overview of the steps required to get Portainer running:
 - Use Portainer or the Docker CLI to manage your Docker environment
 
 The following sections will detail each of these steps in turn.
+
+{% include_html cta/docker2.html %}
 
 ### Installing Docker
 
@@ -335,4 +339,4 @@ Wait while Portainer pulls your images and creates your containers. The containe
 
 Portainer is ideal for many different use cases, from your local development workstation to production app monitoring. You can also use it to track containers and images used by CI/CD pipelines and build systems, preventing excess resources from accumulating on your Docker host.
 
-{% include cta/cta1.html %}
+{% include_html cta/cta2.html %}

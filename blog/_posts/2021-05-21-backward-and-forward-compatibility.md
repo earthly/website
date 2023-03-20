@@ -146,4 +146,4 @@ Protocol Buffers are a relatively young technology, so changes now will have lon
 
 To deprecate a field, you can change the name to something deprecated or remove it and reserve the identifier. If you really want to change a field type, and you're able to follow the correct version of [the rules](https://developers.google.com/protocol-buffers/docs/proto3#updating "Updating messages"), remember to never change the numerical identifier for that field. Plan well, and it'll be easy to maintain backward and forward compatibility for your Protocol Buffer deployment.
 
-{% include cta/cta1.html %}
+{% include_html cta/cta2.html %}

@@ -99,4 +99,4 @@ data
 
 For a more in depth tutorial on what you can do after reading a `csv` file, check out [Plotting Precipitation with Python, Pandas and Matplotlib](https://earthly.dev/blog/plotting-rainfall-data-with-python-and-matplotlib/) by Alex Couture-Beil.
 
-{% include cta/cta1.html %}
+{% include_html cta/cta2.html %}
