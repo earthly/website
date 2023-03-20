@@ -6,7 +6,10 @@ toc: true
 author: Muhammed Ali
 
 internal-links:
- - just an example
+ - Zip File
+ - Go
+ - Archive
+ - Packages
 ---
 
 As a programming language, Go is often used to build a variety of applications, both small and large. During the development process, you may encounter tasks that involve working with zip files. This could include creating new zip files, opening existing zip files, extracting the contents of zip files, or modifying the contents of zip files by adding or removing files or updating the contents of existing files.
@@ -478,4 +481,3 @@ In this tutorial, we learned how to use the "archive/zip" package, which is buil
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Add keywords for internal links to front-matter
