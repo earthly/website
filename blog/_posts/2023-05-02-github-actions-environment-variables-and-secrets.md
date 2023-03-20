@@ -222,6 +222,8 @@ Commit the file and head over to the build execution logs to see this step in ac
 
 In this article, you learned when to use environment variables and secrets, as well as how to scope environment variables across workflows, jobs, and steps. You also learned how to store sensitive information like certificates with GitHub's repository secrets. If you're looking for a simpler experience managing environment variables and secrets, check out [Earthly](https://earthly.dev), an effortless CI/CD framework that can run everywhere. [Earthly makes secret management simple](https://docs.earthly.dev/docs/guides/build-args) and powerful by enabling multiple ways to set and manage your secrets and environment variables.
 
+{% include cta/cta1.html %}
+
 ## Outside Article Checklist
 
 * [ ] Create header image in Canva
@@ -229,4 +231,3 @@ In this article, you learned when to use environment variables and secrets, as w
 * [ ] Verify look of article locally
   * Would any images look better `wide` or without the `figcaption`?
 * [ ] Add keywords for internal links to front-matter
-* [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
