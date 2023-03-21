@@ -248,11 +248,11 @@ git prune < --dry-run>| <-v> | <--progress> \
 |<--expire <time> |<-- > |<head>…
 ~~~
 
-- `--dry-run`: doesn't execute the prune but rather displays an output of what it will.
-- `-v (--verbose)`: displays the output of pruned data and actions.
-- `--progress`: Displays output indicating the prune's progress.
-- `--expire <time>`: specifies when the wasted objects will expire.
-- `<head>…`: Specifies the options that are referenced from the commit's head.
+- `--dry-run`: doesn't execute the prune but rather lists what it will remove
+- `-v (--verbose)`: displays the output of pruned data and actions
+- `--progress`: displays output indicating the prune's progress
+- `--expire <time>`: specifies when the wasted objects will expire
+- `<head>…`: specifies the options that are referenced from the commit's head
 
 ## Git Stash
 
