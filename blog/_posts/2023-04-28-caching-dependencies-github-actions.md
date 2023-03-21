@@ -42,7 +42,9 @@ Before diving into the specifics of the `cache` action, it's important to unders
 
 Caching is a good fit for saving and reusing files that don't change too often such as third-party dependencies. In comparison, artifacts are more suitable for when you want to save and potentially download files that were generated as the output of a job, such as log files, binaries, and application builds. This article will focus only on caching, but it's important to know the difference.
 
-Another thing you need to know prior to starting this tutorial is how access restrictions work for caches. Generally speaking, a workflow run will only be able to access a cache that was created in the current branch, the base branch of a pull request, or the default branch of the repository (or the repository it was forked from). In practice, this means that if you have a branch called `feature-b` that is based on another branch, `feature-a`, which in turn was based on the default branch `main`, a workflow run in `feature-b` will be able to access caches created in `feature-b`, `feature-a`, and `main`. Whereas a workflow run in `feature-a` will only be able to access caches created in `feature-a` and `main`. You can see a visual representation of this below:
+Another thing you need to know prior to starting this tutorial is how access restrictions work for caches. Generally speaking, a workflow run will only be able to access a cache that was created in the current branch, the base branch of a pull request, or the default branch of the repository (or the repository it was forked from).
+
+In practice, this means that if you have a branch called `feature-b` that is based on another branch, `feature-a`, which in turn was based on the default branch `main`, a workflow run in `feature-b` will be able to access caches created in `feature-b`, `feature-a`, and `main`. Whereas a workflow run in `feature-a` will only be able to access caches created in `feature-a` and `main`. You can see a visual representation of this below:
 
 ![Diagram of cache control]({{site.images}}{{page.slug}}/rUk6C0W.png)
 
