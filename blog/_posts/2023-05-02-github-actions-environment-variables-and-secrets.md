@@ -269,6 +269,5 @@ In this article, you learned when to use environment variables and secrets, as w
 
 ## Outside Article Checklist
 
-* [ ] Create header image in Canva
 * [ ] Optional: Find ways to break up content with quotes or images
 
