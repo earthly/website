@@ -48,6 +48,8 @@ If you need a review of the basics of bash scripting, check out [Understanding B
 
 Let's start at the beginning.
 
+{% include_html cta/cli1.html %}
+
 ## Bash Concatenate Strings
 
 In bash, I can declare a variable like this:
@@ -265,6 +267,8 @@ ash
 sh
 h
 ~~~
+
+{% include_html cta/cli2.html %}
 
 ## Bash String Replace
 

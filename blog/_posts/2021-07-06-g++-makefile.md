@@ -23,6 +23,8 @@ The C++ compiler of GCC is known as `g++`. The `g++` utility supports almost all
 
 In this tutorial, you will learn how to compile C++ programs with the `g++` compiler provided by GCC, and how to use [Make](https://www.gnu.org/software/make/) to automate the compilation process.
 
+{% include_html cta/make1.html %}
+
 ## Installing GCC
 
 I'll touch briefly on installing for Linux, Mac, and Windows.
@@ -270,6 +272,8 @@ This time, `make` does not compile `func.c` because the file `func.o` exists, an
 On the other hand, the file `hello.cpp` is newer than `hello.o`. So it needs to be recompiled, and when `hello.o` is re-created, the target `hello` needs to be executed, since it depends on `hello.o`.
 
 You can also call `make` with the name of a specific rule. For example, running `make func.o` will only run the rule for `func.o`
+
+{% include_html cta/make2.html %}
 
 ## Comments in Makefile
 

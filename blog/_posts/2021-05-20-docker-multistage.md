@@ -150,7 +150,7 @@ This is only scratching the surface of what the open source Earthly project can 
 ### Using Earthly:
 
 * Mac users: `brew install earthly`. ([Other platforms](/get-earthly))
-* Rename `dockerfile` to `earthfile`.
+* Rename `Dockerfile` to `Earthfile`.
 * Build image  (`earthly +final` for above example).
 * Read more on [the website](/).
 

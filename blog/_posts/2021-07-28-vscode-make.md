@@ -28,6 +28,8 @@ A *Makefile* is a simple text file that defines rules to be executed. The usual 
 - Target notation
 - Project structure
 
+{% include_html cta/make1.html %}
+
 To illustrate this power, the [sample project](https://github.com/nickmancol/vscode_makefile) contains a single C++ source code file. The source code for the example is pretty simple —- it flips a coin as many times as the `iters` argument is passed, and then prints the number of heads and tails counted from each flip.
 
 ~~~
@@ -90,6 +92,8 @@ This sample Makefile defines five simple rules:
 - `CoinFlipper.cpp`: Compiles the single source file.
 - `test`: Delegates to `CoinFlipper.cpp`, then runs the output main function passing an argument.
 - `clean`: Deletes compiled files.
+
+{% include_html cta/make2.html %}
 
 ~~~
 #

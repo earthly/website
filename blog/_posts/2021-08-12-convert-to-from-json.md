@@ -42,6 +42,8 @@ So although it seems like CSV conversion can be done by hand in python, or your 
 
 With that in mind, let's review some tools for converting from JSON to CSV at the command line.
 
+{% include_html cta/cli1.html %}
+
 ## Convert JSON to CSV via the Command Line
 
 The simplest way to do this JSON to CSV conversion is with `dasel`. `dasel` is a tool for DAta SELection. Think of it as a `jq` that supports selection on formats besides just JSON.
@@ -85,7 +87,7 @@ blue,3,#00f
 
 `dasel` handles newlines and values containing commas as well.
 
-{% include cta/embedded-newsletter.html %}
+{% include_html cta/cli2.html %}
 
 ## Convert JSON to CSV via the Command Line Using JQ
 
@@ -183,5 +185,7 @@ csvtojson < sample.csv
 ## Conclusion
 
 You now have the knowledge and the tools you need to convert JSON to CSV and CSV to JSON. [`jq`](https://stedolan.github.io/jq/), [`dasel`](https://github.com/TomWright/dasel), [`csvtojson`](https://www.npmjs.com/package/csvtojson) and [`jsonv`](https://github.com/archan937/jsonv.sh) are handy command line tools that can be used on Linux, MacOS and Windows under WSL 2.
+
+Also, if you're the type of person who's not afraid to do things on the command line then you might like [Earthly](/):
 
 {% include_html cta/cta2.html %}

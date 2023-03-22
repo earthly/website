@@ -13,6 +13,8 @@ Error handling in Go is a little different than other mainstream programming lan
 
 In this article, I'll demonstrate the basics of handling errors in Go, as well as some simple strategies you can follow in your code to ensure your program is robust and easy to debug.
 
+{% include_html cta/go1.html %}
+
 ## The Error Type
 
 The error type in Go is implemented as the following interface:
@@ -185,6 +187,8 @@ Often in real-world programs, there can be many more functions involved - from t
 In Go 1.13, several new error APIs were introduced, including `errors.Wrap` and `errors.Unwrap`, which are useful in applying additional context to an error as it "bubbles up", as well as checking for particular error types, regardless of how many times the error has been wrapped.
 
 > **A bit of history**: Before Go 1.13 was released in 2019, the standard library didn't contain many APIs for working with errors - it was basically just `errors.New` and `fmt.Errorf`. As such, you may encounter legacy Go programs in the wild that do not implement some of the newer error APIs. Many legacy programs also used 3rd-party error libraries such as [`pkg/errors`](https://github.com/pkg/errors). Eventually, [a formal proposal](https://go.googlesource.com/proposal/+/master/design/go2draft-error-inspection.md) was documented in 2018, which suggested many of the features we see today in Go 1.13+.
+
+{% include_html cta/go2.html %}
 
 ### The Old Way (Before Go 1.13)
 
@@ -363,6 +367,8 @@ That's a wrap! In summary, here's the gist of what was covered here:
 
 I hope you found this guide to effective error handling useful. If you'd like to learn more, I've attached some related articles I found interesting during my own journey to robust error handling in Go.
 
+Also, checkout [Earthly](https://earthly.dev/). I work on it and its written in go and is open source.
+
 ## References
 
 * [Error handling and Go](https://go.dev/blog/error-handling-and-go)
@@ -371,4 +377,4 @@ I hope you found this guide to effective error handling useful. If you'd like to
 * [Go By Example: Errors](https://gobyexample.com/errors)
 * [Go By Example: Panic](https://gobyexample.com/errors)
 
-{% include cta/embedded-newsletter.html %}
+{% include_html cta/cta2.html %}

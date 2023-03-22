@@ -47,6 +47,8 @@ You should expect an output in the terminal to look something like this:
 
 ![Python Terminal Output]({{site.images}}{{page.slug}}/2370.png)
 
+{% include_html cta/python1.html %}
+
 ### 2. Using the Pandas Library
 
 ~~~{.python caption=""}
@@ -97,6 +99,6 @@ data
 
 ## Up Next
 
-For a more in depth tutorial on what you can do after reading a `csv` file, check out [Plotting Precipitation with Python, Pandas and Matplotlib](https://earthly.dev/blog/plotting-rainfall-data-with-python-and-matplotlib/) by Alex Couture-Beil.
+For a more in depth tutorial on what you can do after reading a `csv` file, check out [Plotting Precipitation with Python, Pandas and Matplotlib](https://earthly.dev/blog/plotting-rainfall-data-with-python-and-matplotlib/) by Alex Couture-Beil and if you want to bring your CI to the next level, check out [Earthly's open source build tool](/).
 
 {% include_html cta/cta2.html %}

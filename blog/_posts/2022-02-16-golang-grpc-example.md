@@ -25,6 +25,8 @@ Welcome back. I'm an experienced developer, learning Golang by building an activ
 
 If you're curious about gRPC – how it works, when to use it, what example code might look like – well, you are in luck because I'm going to be building a grpc client, a grpc server, and the protobuf files for my activity tracker. The full code is on [GitHub](https://github.com/adamgordonbell/cloudservices/tree/v4-grpc).
 
+{% include_html cta/go1.html %}
+
 ## Why gRPC
 
 If the primary consumer of your service is client-side JavaScript or if your project is going to have many clients, some of which you won't control, then a JSON-based REST service is a great way to go. JSON is human-readable, it's simple to make requests at the command-line or using tools like postman, and it's well understood how to write good REST APIs.
@@ -237,6 +239,8 @@ Another possible path to generating a REST client is [grpc-gateway](https://gith
 ### Golang Protobuf Types
 
 Now that I've got all my code generated, it's time for me to build the server-side. Let's start at the database layer and work upwards
+
+{% include_html cta/go2.html %}
 
 If you recall from when I was adding the `sqlite` feature, Activities handles all the data persistence. So the data persistence layer shouldn't have change much at all. I just need to make sure I'm using my `protoc` generated struct. I can do this with an import change:
 

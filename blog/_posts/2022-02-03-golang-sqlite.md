@@ -19,6 +19,8 @@ Welcome back. I'm an experienced developer, learning Golang by building an activ
 
 My plan is to add SQLite persistence to [the backend service](https://github.com/adamgordonbell/cloudservices) so that my workouts aren't lost if the service goes down. And once I have that, I'll add the `--list` command to my command line client and add an end point for it. it's the type of feature that is simple to do with a SQL backend.
 
+{% include_html cta/go1.html %}
+
 ## Install SQLite
 
 The first thing I need is to set up my dev environment. I need to install SQLite3 and SQLite-utils:
@@ -189,6 +191,8 @@ go get github.com/mattn/go-sqlite3
 *Installing go-sqlite3 requires `gcc` and `CGO_ENABLED=1`*
 
 Finally, let's jump into the Golang code.
+
+{% include_html cta/cta2.html %}
 
 ## Golang SQL Repository
 

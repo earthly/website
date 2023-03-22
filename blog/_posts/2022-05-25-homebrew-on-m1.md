@@ -19,6 +19,8 @@ topic: cli
 
 Homebrew made some changes to where it installs packages if you are running it on a new M1 Mac, and these changes may throw you for a loop if you're moving over to an M1 from Intel. In this article I'll talk about what changed and why it changed. I'll also walk you through getting all your Homebrew packages from your Intel Mac reinstalled on your M1, and share a couple of issues I came across after migrating that will hopefully help you with any gotchas you encounter in the future.
 
+{% include_html cta/cli1.html %}
+
 ## So What Changed?
 
 The big change is where things are.
@@ -67,6 +69,8 @@ It could be possible to move everything back to `/usr/local/bin` in the future, 
 3. Other package managers have been using `/opt/<manager_name>` for a while now.
 
 So in the long run this is a positive change, but not without a few growing pains along the way.
+
+{% include_html cta/cli2.html %}
 
 ## Migrating From Intel Mac
 
@@ -140,5 +144,7 @@ Luckily, the gem had already been patched to fix this issue, so once I did reali
 So this was a lot of information but the main take away is: Homebrew moved and if you're having issues with it or any of its packages, the reason might be because other tools haven't been made aware of Homebrew's new location. If you suspect that's the case, make sure you check that `/opt/homebrew/bin` is part of your PATH, and confirm that any third party software you're using has been updated to look in `/opt/homebrew/bin`.
 
 One of the reasons people love Homebrew is because it just works. And on Apple Silicon, that's still true, but you might encounter a couple of hiccups along the way. I ended up learning a lot about Homebrew and how it works while digging a little deeper into this issue. If you want to learn more about Homebrew you can checkout their website, or this excellent [getting started tutorial](https://mac.install.guide/homebrew/3.html). And if you haven't already, it's worth reading a bit about [Rosetta 2](https://screenrant.com/apple-rosetta-2-explained/), since it's at the heart of what makes the switch to Apple Silicon possible, not just for Homebrew, but for all software switching over from Intel to M1.
+
+Also, If you're homebrew, you probably and you haven't heard of [Earthly](/), then you should probably check it out. It's a open source tool for building linux software regardless of your host environment.  
 
 {% include_html cta/cta2.html %}

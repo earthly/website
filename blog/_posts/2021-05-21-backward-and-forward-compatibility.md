@@ -15,6 +15,8 @@ topic: go
 
 Protocol Buffers are compiled to a series of strictly arranged bytes, so they can be transmitted very efficiently. After reconstitution, they can also be understood by a wide range of languages. Let's examine protobufs first at a high level, then do a deep dive into best practices for working with them to see if they're a fit for your expanding data workflow.
 
+{% include_html cta/go1.html %}
+
 ## What Exactly Are Protocol Buffers?
 
 Protocol Buffers are designed with the concept of extensibility at their core. You can add fields without a care, though you do have to be attentive when modifying or removing fields. This article will go through how you can manage your messages to maintain forward and backward compatibility.
@@ -59,6 +61,8 @@ message Sample{
 ```
 
 These declarations in the `.proto` file are shared with both the message sender and receiver to construct immutable getters and setters that allow data to be read into and accessed from binary using a [compiler](/blog/compiling-containers-dockerfiles-llvm-and-buildkit), then accessed in a variety of programming languages.
+
+{% include_html cta/go2.html %}
 
 ## Tips for Maintaining Compatibility
 

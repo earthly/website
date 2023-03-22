@@ -21,6 +21,8 @@ Initially, it was Stuart Feldman who began working on the Make utility [back in 
 
 While the tool was originally meant to run on [Linux](https://www.linux.org), Make's popularity has interested those working on other operating systems as well. There are several ways to run Makefiles on Windows, and in this article you'll be introduced to each option and learn about their strengths and weaknesses.
 
+{% include_html cta/make1.html %}
+
 ## Using Make on Windows
 
 ![windows]({{site.images}}{{page.slug}}/windows.jpg) \

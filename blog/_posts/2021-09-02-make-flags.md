@@ -64,6 +64,8 @@ If you have a `main.c` file in the project directory, running `make` will automa
 
 Another reason is that these flags are standardized and have been used for a long time, so anyone building your software will expect you to use these flags. Using any other variable would force them to go through your `makefile` in order to figure out which variable is being used. Instead, by sticking to the standard, you can save them time.
 
+{% include_html cta/make1.html %}
+
 ## How to Use `Make` Flags
 
 You can use `make` flags just like any other `make` variable. Define the flags with default values using the `=` operator, and use the flags using the `$(...)` syntax:
@@ -240,3 +242,5 @@ Note that the options `-C`, `-f`, `-o`, and `-W` are not put into `MAKEFLAGS` an
 Using `make` flags ensures your `makefile` follows the standard and offers an easy and powerful way to customize the behaviors of the compilation tools by providing them options. However, `make` flags are limited and require a deep understanding of the right tools to use.
 
 If you are looking for a powerful alternative to `make`, [Earthly](https://earthly.dev/) may be the right choice for you. It is a modern take on the `make` utility. Tailored for the container era, Earthly provides reproducible and understandable builds with minimal effort.
+
+{% include_html cta/cta2.html %}

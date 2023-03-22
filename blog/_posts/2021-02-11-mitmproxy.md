@@ -22,6 +22,8 @@ This guide will walk you through installing and using mitmproxy to capture HTTPS
 
 mitmproxy is a command-line tool that acts as a HTTP and HTTPS proxy and records all the traffic. You can easily see what requests are being made and even replay them. It's great for diagnosing problems.
 
+{% include_html cta/cli1.html %}
+
 ## Installing It
 
 <div class="narrow-code">
@@ -181,6 +183,8 @@ On Debian-based Linux distributions, follow these steps:
 ## Great Success
 
 At this point, assuming you still have mitmproxy running and you still have your network interface setup to proxy through `localhost:8080`, you should be able to view all the HTTP and HTTPS network requests your machine is making in the mitmproxy (or mitmweb) window.
+
+{% include_html cta/cli2.html %}
 
 Here is Slack making requests:
 {% include imgf src="14.png" alt="mitmweb has captured a request from the slack application" caption="mitmweb has captured a request from the slack application" %}

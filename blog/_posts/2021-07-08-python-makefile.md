@@ -38,6 +38,8 @@ When you import a module into your code, Python compiles those modules into byte
 
 Although you cannot compile these modules using `make`, you can still use `make` for automation tasks like running tests, installing dependencies, cleaning the `.pyc` files etc.
 
+{% include_html cta/make1.html %}
+
 ## Using Make With Python
 
 In this tutorial, you'll create a simple app that makes requests to `http://numbersapi.com` and fetches random trivia about a user given number.
@@ -142,7 +144,7 @@ clean:
     rm -rf __pycache__
 ```
 
-{% include cta/embedded-newsletter.html %}
+{% include_html cta/make2.html %}
 
 ### Creating a Virtual Environment
 

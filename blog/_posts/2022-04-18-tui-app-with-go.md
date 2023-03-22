@@ -23,6 +23,8 @@ In addition to having a strong project behind it, the documentation for `Tview` 
 
 In this post I want to highlight some of `Tview`'s core functionality. In order to keep the focus on `Tview` and its features, we'll build a very simple app for storing and displaying contacts. Basically a terminal based rolodex. [All the code is up on Github](https://github.com/jalletto/tui-go-example).
 
+{% include_html cta/go1.html %}
+
 ## Widgets
 
 `Tview` is built on top of another Go package called [`tcell`](https://github.com/gdamore/tcell). `Tcell` provides an api for interacting with the terminal in Go. `Tview` builds on top of it by offering some pre-built components it calls [widgets](https://pkg.go.dev/github.com/rivo/tview#hdr-Widgets). These widgets help you create common UI elements like lists, forms, dropdown menus, and tables. It also includes tools to help you build layouts with grids, flexboxes, and multiple pages.
@@ -71,6 +73,8 @@ func main() {
 After creating a new app, we call a series of set up methods including enabling mouse detection and issuing a `Run` command. The `SetRoot` function tells the `tview` app which widget to display when the application starts. In this case we've chosen to use a [`Box`](https://pkg.go.dev/github.com/rivo/tview#Box) widget. Boxes are the parent type of all other widgets. They can do nothing but exist, which is fine for now.
 
 Run this code and marvel at the blank black nothing that fills your terminal screen. You can end the program by pressing `ctrl+c`. Not super exciting, but it's a start. We've created an app, but we haven't told it to display anything or to respond to any key presses.
+
+{% include_html cta/go2.html %}
 
 ## Adding Text
 
@@ -413,5 +417,7 @@ We've barely scratched the surface of what's possible with `Tview`. There's a lo
 TUIs will never be able to compare to a full Graphical User Interface, but for certain applications they can provide more options than you might think. They're particularly great for applications developers use frequently since not having to leave the terminal can be a plus, and sometimes you might be on a server that doesn't have access to a GUI at all.
 
 I'm definitely sold on them and will be looking for more opportunities to build them in the future. If you know of any cool TUI apps or libraries, please let me know.
+
+Also, if you're the type of person who's liked building a TUI in Go then you might like [Earthly](/):
 
 {% include_html cta/cta2.html %}

@@ -22,6 +22,8 @@ This guide will help you get started with the subprocess module in Python. By th
 
 Let's begin!
 
+{% include_html cta/python1.html %}
+
 ## Python Subprocesses Module: The Basics
 
 <div class="notice--big--primary">
@@ -165,6 +167,8 @@ None
 <div class="notice--big--primary">
 ⚠️ If you set `shell = True`, an instance of the underlying shell is used to run the command. Because this is susceptible to [shell injection attacks](https://owasp.org/www-community/attacks/Command_Injection), avoid setting `shell = True` to run commands that take in user inputs.
 </div>
+
+{% include_html cta/python2.html %}
 
 ## How to Capture and Redirect Outputs
 
@@ -429,5 +433,7 @@ I hope this tutorial helped you understand how to use Python's `subprocess` modu
 - To change the environment in which a subprocess runs, set the `env` parameter to the modified [environment](/blog/bash-variables). You can update one or more environment variables by creating a copy of the environment variables dictionary.
 
 If you need to run external programs within the Python application, try to run them as subprocesses. You can also leverage Python's threading capabilities to run subprocesses concurrently.
+
+And if you are looking for a more repeatable way to build python, take a look at [Earthly](/).
 
 {% include_html cta/cta2.html %}

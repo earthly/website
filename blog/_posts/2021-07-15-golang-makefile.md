@@ -106,6 +106,8 @@ These commands are very handy and help to streamline the development process. No
 - **Dependencies:** A target can have dependencies that need to be executed before running the target. For example, the `build_and_clean` command has two dependencies: `build` and `run`.
 - **Recipe:** Recipes are the actual commands that will be executed when the target is run. A recipe can be a single command or a collection of commands. You can specify multiple commands in a target using a line break. In the example above, the recipe for the run target is `./${BINARY_NAME}`. A recipe should always contain a tab at the start.
 
+{% include_html cta/make1.html %}
+
 ### Variables
 
 Variables are essential to any kind of script you write. So Makefiles also have a mechanism to use variables. These are useful when you want the same configs or outputs to be used for different targets. In the example above, I have added the `BINARY_NAME` variable, which is reused across different targets.

@@ -19,6 +19,8 @@ Using `sed` has its benefits. Since it's not interactive and doesn't require muc
 
 `sed` is also easily accessible from the command line, so it's helpful for regular tasks, like searching and filtering text files and streams. It's flexible enough to work with other CLI tools using pipelines. And it's efficient since you only have to run it once to process a file compared to other GUI-based text processing tools.
 
+{% include_html cta/cli1.html %}
+
 `sed` has a variety of use cases. It's a powerful tool for text processing tasks, like filtering, search, and substitutions, and works well in situations where high precision is needed. With `sed`, you can target a portion of input text using line addresses and regular expressions. It's also great for automation-like build processes. `sed` commands and conditions can be supplied in a script file or through arguments to the CLI command, then run automatically.
 
 Finally, it is appropriate for use cases in which text is provided as an input stream from other CLI tools, which may need to read the output stream that `sed` returns.
@@ -310,6 +312,8 @@ These are just a few of the twenty-five sed commands. You can check the rest in 
 ## Using `sed` With `awk`
 
 `awk` is another Unix text processing tool similar to sed. However, it's mostly used for data record extraction, processing, and reporting. Like sed, it processes text input line by line, it can take input from files or input streams, and it applies operations on the text based on supplied instructions.
+
+{% include_html cta/cli2.html %}
 
 It is possible to use [awk](/blog/awk-examples) and sed together through pipelines. Say you want to create mail-merged text messages from a list of customers in a [CSV](/blog/awk-csv) format. You'd use this command:
 

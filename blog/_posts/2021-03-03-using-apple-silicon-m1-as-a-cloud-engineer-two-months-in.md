@@ -45,7 +45,7 @@ The tools you use for development are likely still catching up to this architect
 * ✅ Docker. M1 native version is a must. Emulation doesn't have virtualization features, which the Docker app requires. You can download the [Docker App for M1](https://docs.docker.com/docker-for-mac/apple-m1/), which is in preview. As mentioned on the documentation page, there are some limitations currently related to HTTP proxy, VPN clients, and performance, but the Docker team is making progress fast. (A month or two ago [Kubernetes](/blog/building-on-kubernetes-ingress) wasn't working, but now it is!).
 * ✅ Brew (native, encountered some issues with git, but was able to fix them)
 * ✅ iTerm (native)
-* ✅ Earthly (`v0.5.1+` now supports M1 natively - just `brew install earthly/earthly/earthly`)
+* ✅ Earthly (`v0.5.1+` now supports M1 natively - just `brew install earthly`)
 
 I should also mention that during the first few weeks I had some issues with audio skips when using Bluetooth, but an OS update fixed it (just like [Apple promised](https://www.imore.com/fix-way-m1-mac-bluetooth-problems)).
 
