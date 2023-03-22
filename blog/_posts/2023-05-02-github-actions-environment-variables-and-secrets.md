@@ -44,27 +44,39 @@ Once you've forked the repo, set up a simple GitHub Actions workflow to build an
 
 To set up the workflow, you need to set up GitHub Pages. Go to the **Settings** tab, click on **Pages** from the left navigation pane, and click on the **Source** drop-down in the **Build and deployment** section:
 
+<div class="wide">
 ![Enabling GitHub Pages access]({{site.images}}{{page.slug}}/v4XAgCV.png)
+</div>
 
 Choose **GitHub Actions** from the drop-down list to enable GitHub Actions to deploy to GitHub Pages. Then click on the **Actions** tab on the repo page:
 
+<div class="wide">
 ![GitHub Actions from a GitHub repo]({{site.images}}{{page.slug}}/SxKVnpm.png)
+</div>
 
 Next, search for Gatsby and click **Configure** on the workflow meant to package Gatsby sites:
 
+<div class="wide">
 ![Configure the Gatsby deploy workflow]({{site.images}}{{page.slug}}/ATKriD6.png)
+</div>
 
 Now you should see the workflow YAML file in an editor where you can make changes to it before pushing it to your repo (and setting up the workflow in action). However, do not [make](/blog/makefiles-on-windows) any changes at this point. You'll revisit this file later on in the tutorial. For now, click on **Start commit > Commit new file**:
 
+<div class="wide">
 ![Commit the GitHub Actions workflow config]({{site.images}}{{page.slug}}/6u826yt.png)
+</div>
 
 Click on the **Actions** tab again to view the details of your workflow runs. A new, active run for the Gatsby workflow you just created should be on the list:
 
+<div class="wide">
 ![Active and running Actions runs]({{site.images}}{{page.slug}}/55ub3M9.png)
+</div>
 
 Wait for the build to complete (this should take two to three minutes). If it succeeds, this means that you've successfully set up GitHub Pages and GitHub Actions for your repo. You can view the live site at `https://<your GitHub username>.github.io/gh-actions-tutorial`:
 
+<div class="wide">
 ![Deployed site]({{site.images}}{{page.slug}}/zJwL6rt.png)
+</div>
 
 If the build failed, you'll need to investigate the logs to see what went wrong. In most cases, it's either a warning or error being thrown by your app when the `build` command is run, which causes a build failure in GitHub Actions. To fix the failure, you can make changes locally and push it to GitHub, which will automatically trigger another build.
 
@@ -85,21 +97,29 @@ Defining an environment variable for one [step](https://docs.github.com/en/actio
 
 This will add two steps to your Actions workflow. The first step defines a local `env` value that is used when running the `echo` command. The second step attempts to access the `env` value to use in a URL. This is what it will look like once you've added these steps:
 
+<div class="wide">
 ![Updated GitHub Actions workflow]({{site.images}}{{page.slug}}/GbRd31R.png)
+</div>
 
 > To keep things simple, the environment variables have been statically defined in the workflow configuration file. For increased security via [encryption](/blog/encrypting-data-with-ssh-keys-and-golang), you can also use the [GitHub repo environment variables (or secrets)](https://docs.github.com/en/actions/learn-github-actions/variables#creating-configuration-variables-for-a-repository) to pull in the values of these variables from the GitHub repo variables when the workflow is triggered. More on this toward the end of the tutorial.
 
 When you've finished adding the steps, click on **Start commit > Commit changes** (just like you did previously). Now, if you go back to the **Actions** tab, you'll notice another run has popped up:
 
+<div class="wide">
 ![New Actions run]({{site.images}}{{page.slug}}/5dDXRoI.png)
+</div>
 
 When you click on it, you'll see more details and find two jobs—build and deploy:
 
+<div class="wide">
 ![Actions run details]({{site.images}}{{page.slug}}/1MzTGPw.png)
+</div>
 
 At this point, you've added the two print steps to the build job, so click on the build job to see the output logs of its execution. You'll find your new steps at the third and fourth positions on the list. Click on the right-pointing arrows beside them to expand these steps and view their details:
 
+<div class="wide">
 ![Build step's output logs]({{site.images}}{{page.slug}}/cGtPsVI.png)
+</div>
 
 You should see that the **Print host name** step was able to print the value of the `HOST_NAME` variable since it was defined locally in the step. In comparison, the **Print homepage URL** step could not print anything for the `HOST_NAME` variable since the variable wasn't available in its scope.
 
@@ -109,11 +129,15 @@ In the next step, you'll see how to define variables that can be used across all
 
 To define an environment variable across a job, update the `.github/workflows/gatsby.yml` file to move the `env` description from the **Print host name** step to its parent (*ie* the build job):
 
+<div class="wide">
 ![Updated `gatsby.yml`]({{site.images}}{{page.slug}}/2rqgRIG.png)
+</div>
 
 Commit the file and head over to the run details to view the output of the job:
 
+<div class="wide">
 ![Run execution logs]({{site.images}}{{page.slug}}/CuZA4p5.png)
+</div>
 
 You'll notice that both steps can now access the value of the `HOST_NAME` variable and print the expected outputs. However, the `HOST_NAME` variable can currently only be accessed in the steps defined in the `build` job, and not in other jobs or the rest of the workflow. You'll learn how to define variables that are available to the entire workflow in the next section.
 
@@ -121,19 +145,27 @@ You'll notice that both steps can now access the value of the `HOST_NAME` variab
 
 You can also define environment variables in the scope of the entire workflow to be used by all jobs. To do that, move the `env` description from the `build` job to higher up in the workflow YAML, right after the `defaults` key:
 
+<div class="wide">
 ![Variable moved to the workflow scope]({{site.images}}{{page.slug}}/Af0qnYw.png)
+</div>
 
 To test whether the other job can access this variable, you'll need to add a step to the `deploy` job that prints the value of the same variable. Copy the `Print host name` step to the `deploy` job's steps before the `Deploy to GitHub Pages` step:
 
+<div class="wide">
 ![Step added to the deploy job]({{site.images}}{{page.slug}}/BY6kRZD.png)
+</div>
 
 Commit the file and go to the run details to see the output of these two jobs. As you can see, the `build` job works perfectly. It's able to pull in the value of the `HOST_NAME` variable from the workflow's scope:
 
+<div class="wide">
 ![`build` job execution logs]({{site.images}}{{page.slug}}/3fBpips.png)
+</div>
 
 The `deploy` job can also do this:
 
+<div class="wide">
 ![`deploy` job execution logs]({{site.images}}{{page.slug}}/2ImCNhD.png)
+</div>
 
 This indicates that the variable has been set up correctly in the workflow's scope. Next, you'll see how to store sensitive and/or long pieces of information, like SSL/TLS certificates, in your GitHub Actions workflows.
 
@@ -198,11 +230,15 @@ You can now use this in a GitHub repo environment variable.
 
 Head over to the **Settings** tab on your repo's page and click on **Secrets and variables > Actions** from the left navigation pane. Click on the **New repository secret** button to create a new repo environment variable:
 
+<div class="wide">
 ![Create a new repo-level environment variable]({{site.images}}{{page.slug}}/N6vuSa9.png)
+</div>
 
 Set a name for your secret and paste the Base64 encoded string. Once done, click on the **Add secret** button:
 
+<div class="wide">
 ![Add the secret's details]({{site.images}}{{page.slug}}/OQ77ePq.png)
+</div>
 
 Next, add a step in the `build` job of your `.github/workflows/gatsby.yml` workflow to decode and print the value of this environment variable:
 
@@ -211,11 +247,15 @@ Next, add a step in the `build` job of your `.github/workflows/gatsby.yml` workf
   run: echo "${% raw %} {{ secrets.BASE64_CERTIFICATE }} {% endraw %} " | base64 --decode
 ~~~
 
+<div class="wide">
 ![Certificate print step]({{site.images}}{{page.slug}}/rCyvGnt.png)
+</div>
 
 Commit the file and head over to the build execution logs to see this step in action:
 
+<div class="wide">
 ![Decoded certificate in execution logs]({{site.images}}{{page.slug}}/kOBQa4e.png)
+</div>
 
 > Please note that the secret's details were printed to the logs in this part of the tutorial only for ease of demonstration. In real-world applications, this is highly discouraged and can lead to security breaches. Instead of printing the secret to the logs, you should store the output of the `decode` command in a temporary file and use it during the build process.
 
@@ -231,5 +271,4 @@ In this article, you learned when to use environment variables and secrets, as w
 
 * [ ] Create header image in Canva
 * [ ] Optional: Find ways to break up content with quotes or images
-* [ ] Verify look of article locally
-  * Would any images look better `wide` or without the `figcaption`?
+
