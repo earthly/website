@@ -18,6 +18,8 @@ Like most CI/CD platforms, [GitHub Actions](https://docs.github.com/en/actions/l
 
 To follow along, you'll need a [GitHub](/blog/ci-comparison) account to fork the repo and try out GitHub Actions. You'll also need some familiarity with YAML, the standard language for writing and managing [GitHub Actions](/blog/continuous-integration) configuration files.
 
+![Guide]({{site.images}}{{page.slug}}/guide.png)\
+
 ## What Are GitHub Actions Environment Variables and Secrets
 
 GitHub Actions' environment variables and secrets are just like regular secrets. They help you hide and reuse sensitive information in your workflows. In most cases, you can define environment variables under an `env` node in your workflow configuration file.
@@ -86,7 +88,7 @@ You've now finished setting up the project. Next, you'll learn how to set up env
 
 Defining an environment variable for one [step](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions#jobs:~:text=Each%20step%20is%20either%20a%20shell%20script%20that%20will%20be%20executed%2C%20or%20an%20action%20that%20will%20be%20run.) is relatively simple. Open the `.github/workflows/gatsby.yml` file and add the following steps after the **Checkout** step:
 
-~~~
+~~~{.yml caption="gatsby.yml"}
 - name: Print host name
   run: echo "Host $HOST_NAME"
   env:
@@ -101,9 +103,11 @@ This will add two steps to your Actions workflow. The first step defines a local
 ![Updated GitHub Actions workflow]({{site.images}}{{page.slug}}/GbRd31R.png)
 </div>
 
-> To keep things simple, the environment variables have been statically defined in the workflow configuration file. For increased security via [encryption](/blog/encrypting-data-with-ssh-keys-and-golang), you can also use the [GitHub repo environment variables (or secrets)](https://docs.github.com/en/actions/learn-github-actions/variables#creating-configuration-variables-for-a-repository) to pull in the values of these variables from the GitHub repo variables when the workflow is triggered. More on this toward the end of the tutorial.
+<div class="notice--big--primary">
+To keep things simple, the environment variables have been statically defined in the workflow configuration file. For increased security via [encryption](/blog/encrypting-data-with-ssh-keys-and-golang), you can also use the [GitHub repo environment variables (or secrets)](https://docs.github.com/en/actions/learn-github-actions/variables#creating-configuration-variables-for-a-repository) to pull in the values of these variables from the GitHub repo variables when the workflow is triggered. More on this toward the end of the tutorial.
 
 When you've finished adding the steps, click on **Start commit > Commit changes** (just like you did previously). Now, if you go back to the **Actions** tab, you'll notice another run has popped up:
+</div>
 
 <div class="wide">
 ![New Actions run]({{site.images}}{{page.slug}}/5dDXRoI.png)
@@ -179,7 +183,7 @@ You also need to encode them to ensure that special (non-alphanumeric) character
 
 To encode and decode secrets, let's use the following self-signed certificate sample (taken from the [IBM docs](https://www.ibm.com/docs/en/zos/2.3.0?topic=certificates-sample-self-signed-certificate) and shortened):
 
-~~~
+~~~{ caption="certificate"}
 Certificate:
     Data:
         Version: 3 (0x2)
@@ -205,7 +209,8 @@ Certificate:
             X509v3 Subject Key Identifier:
                 4E:9E:53:8E:2E:0F:2B:04:CC:C4:EB:B4:41:FC:B0:67:5C:E0:6E:B8
             X509v3 Authority Key Identifier:
-                keyid:4E:9E:53:8E:2E:0F:2B:04:CC:C4:EB:B4:41:FC:B0:67:5C:E0:6E:B8
+                keyid:4E:9E:53:8E:2E:0F:2B:04:CC:C4:EB:B4:41:FC:B0:67:5C:E0\
+                :6E:B8
                 X509v3 Basic Constraints:
                 CA:TRUE
 Signature Algorithm: sha256WithRSAEncryption
@@ -220,8 +225,35 @@ To store this in a GitHub repo environment variable, you'll need to encode it us
 
 To encode it, you can use a CLI tool like [`openssl`](https://wiki.openssl.org/index.php/Base64) on macOS or [`certutil`](https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/cc732443(v=ws.11)) on Windows. You can also use an online tool like [Base64 Encode](https://base64encode.org) to encode data on the fly. Here's what the encoded string would look like:
 
-~~~
-Q2VydGlmaWNhdGU6CiAgICBEYXRhOgogICAgICAgIFZlcnNpb246IDMgKDB4MikKICAgICAgICBTZXJpYWwgTnVtYmVyOgogICAgICAgICAgICBkYTo1MDpjYjo5OTo1Mjo0MToyMjo4OAogICAgU2lnbmF0dXJlIEFsZ29yaXRobTogc2hhMjU2V2l0aFJTQUVuY3J5cHRpb24KICAgICAgICBJc3N1ZXI6IENOPU9zYUljY1RMU1NlcnZlcgogICAgICAgIFZhbGlkaXR5CiAgICAgICAgICAgIE5vdCBCZWZvcmU6IEphbiAyOSAxNjo1MTo0NCAyMDE2IEdNVAogICAgICAgICAgICBOb3QgQWZ0ZXIgOiBKYW4gMjggMTY6NTE6NDQgMjAxOSBHTVQKICAgICAgICBTdWJqZWN0OiBDTj1Pc2FJY2NUTFNTZXJ2ZXIKICAgICAgICBTdWJqZWN0IFB1YmxpYyBLZXkgSW5mbzoKICAgICAgICAgICAgUHVibGljIEtleSBBbGdvcml0aG06IHJzYUVuY3J5cHRpb24KICAgICAgICAgICAgICAgIFB1YmxpYy1LZXk6ICgyMDQ4IGJpdCkKICAgICAgICAgICAgICAgIE1vZHVsdXM6CiAgICAgICAgICAgICAgICAgICAgMDA6YzE6YmI6NDc6Y2I6ZGU6Nzc6MjI6NTk6NTE6NWI6M2U6NGU6ZjE6ZGI6CiAgICAgICAgICAgICAgICAgICAgOWI6MTQ6NWE6Yjc6NDI6ZWY6NTE6Nzg6ZTI6YjQ6YzU6NzM6MWE6Yzc6OTM6CiAgICAgICAgICAgICAgICAgICAgNDY6MTY6Yzg6Y2Y6Mzk6ZGE6MTA6MGM6ZDg6NzA6MTQ6ZGI6NmY6NTI6YzM6CiAgICAgICAgICAgICAgICAgICAgODk6N2M6MDk6NTE6NmI6MjA6ZWQ6MWE6Yjg6NTQ6NDM6ZjQ6Y2U6ODI6N2U6CiAgICAgICAgICAgICAgICAgICAgYTk6NWIKICAgICAgICAgICAgICAgIEV4cG9uZW50OiA2NTUzNyAoMHgxMDAwMSkKICAgICAgICBYNTA5djMgZXh0ZW5zaW9uczoKICAgICAgICAgICAgWDUwOXYzIFN1YmplY3QgS2V5IElkZW50aWZpZXI6CiAgICAgICAgICAgICAgICA0RTo5RTo1Mzo4RToyRTowRjoyQjowNDpDQzpDNDpFQjpCNDo0MTpGQzpCMDo2Nzo1QzpFMDo2RTpCOAogICAgICAgICAgICBYNTA5djMgQXV0aG9yaXR5IEtleSBJZGVudGlmaWVyOgogICAgICAgICAgICAgICAga2V5aWQ6NEU6OUU6NTM6OEU6MkU6MEY6MkI6MDQ6Q0M6QzQ6RUI6QjQ6NDE6RkM6QjA6Njc6NUM6RTA6NkU6QjgKICAgICAgICAgICAgICAgIFg1MDl2MyBCYXNpYyBDb25zdHJhaW50czoKICAgICAgICAgICAgICAgIENBOlRSVUUKU2lnbmF0dXJlIEFsZ29yaXRobTogc2hhMjU2V2l0aFJTQUVuY3J5cHRpb24KICAgICAgICAgMjM6ZWU6Zjc6MDI6ZmU6NDg6OTI6MGU6OGY6ZGY6MzY6YmM6YzI6MTY6ZTY6YjI6ZTQ6YTQ6CiAgICAgICAgIDc1OjY3OmQ1OmY1Ojc0OmM5OmViOjkxOjc2OmQ3OmQwOmIwOjQ0OmY2OjU4OmFjOjFiOmE4OgogICAgICAgICA0MDo2YjozNDozMTo4Yjo3NTphNTpjYjo3NTphZToxYjo0YjplOTplZTo4MDo1NDo4Yjo1NzoKICAgICAgICAgMTY6N2M6NTM6Njk6OTI6MDc6Njc6YWI6NWQ6OWM6NTk6YmQ6NDc6MDI6NTU6MmM6ZjA6MTg6CiAgICAgICAgIDY5OmMzOjE0OjIx
+~~~{.bash caption="BASE64_CERTIFICATE"}
+
+Q2VydGlmaWNhdGU6CiAgICBEYXRhOgogICAgICAgIFZlcnNpb246IDMgKDB4MikKICAgI
+CAgICBTZXJpYWwgTnVtYmVyOgogICAgICAgICAgICBkYTo1MDpjYjo5OTo1Mjo0MToyMj
+o4OAogICAgU2lnbmF0dXJlIEFsZ29yaXRobTogc2hhMjU2V2l0aFJTQUVuY3J5cHRpb24KICAg
+ICAgICBJc3N1ZXI6IENOPU9zYUljY1RMU1NlcnZlcgogICAgICAgIFZhbGlkaXR5CiAgIC
+AgICAgICAgIE5vdCBCZWZvcmU6IEphbiAyOSAxNjo1MTo0NCAyMDE2IEdNVAog
+ICAgICAgICAgICBOb3QgQWZ0ZXIgOiBKYW4gMjggMTY6NTE6NDQgMjAxOSBHTVQKICAgICAg
+ICBTdWJqZWN0OiBDTj1Pc2FJY2NUTFNTZXJ2ZXIKICAgICAgICBTdWJqZWN0IFB1YmxpYyBL
+ZXkgSW5mbzoKICAgICAgICAgICAgUHVibGljIEtleSBBbGdvcml0aG06IHJzYUVuY3J5cHRp
+b24KICAgICAgICAgICAgICAgIFB1YmxpYy1LZXk6ICgyMDQ4IGJpdCkKICAgICAgICAgICAgICAg
+IE1vZHVsdXM6CiAgICAgICAgICAgICAgICAgICAgMDA6YzE6YmI6NDc6Y2I6ZGU6Nzc6MjI6NT
+k6NTE6NWI6M2U6NGU6ZjE6ZGI6CiAgICAgICAgICAgICAgICAgICAgOWI6MTQ6NWE6Yjc6NDI6
+ZWY6NTE6Nzg6ZTI6YjQ6YzU6NzM6MWE6Yzc6OTM6CiAgICAgICAgICAgICAgICAgICAgNDY6M
+TY6Yzg6Y2Y6Mzk6ZGE6MTA6MGM6ZDg6NzA6MTQ6ZGI6NmY6NTI6YzM6CiAgICAgICAgICAgIC
+AgICAgICAgODk6N2M6MDk6NTE6NmI6MjA6ZWQ6MWE6Yjg6NTQ6NDM6ZjQ6Y2U6ODI6N2U6CiAg
+ICAgICAgICAgICAgICAgICAgYTk6NWIKICAgICAgICAgICAgICAgIEV4cG9uZW50OiA2NTUzNy
+AoMHgxMDAwMSkKICAgICAgICBYNTA5djMgZXh0ZW5zaW9uczoKICAgICAgICAgICAgWDUwOXYzI
+FN1YmplY3QgS2V5IElkZW50aWZpZXI6CiAgICAgICAgICAgICAgICA0RTo5RTo1Mzo4RToyRTow
+RjoyQjowNDpDQzpDNDpFQjpCNDo0MTpGQzpCMDo2Nzo1QzpFMDo2RTpCOAogICAgICAgICAgICBY
+NTA5djMgQXV0aG9yaXR5IEtleSBJZGVudGlmaWVyOgogICAgICAgICAgICAgICAga2V5aWQ6NE
+U6OUU6NTM6OEU6MkU6MEY6MkI6MDQ6Q0M6QzQ6RUI6QjQ6NDE6RkM6QjA6Njc6NUM6RTA6NkU6Q
+jgKICAgICAgICAgICAgICAgIFg1MDl2MyBCYXNpYyBDb25zdHJhaW50czoKICAgICAgICAgICAgI
+CAgIENBOlRSVUUKU2lnbmF0dXJlIEFsZ29yaXRobTogc2hhMjU2V2l0aFJTQUVuY3J5cHRpb24K
+ICAgICAgICAgMjM6ZWU6Zjc6MDI6ZmU6NDg6OTI6MGU6OGY6ZGY6MzY6YmM6YzI6MTY6ZTY6YjI
+6ZTQ6YTQ6CiAgICAgICAgIDc1OjY3OmQ1OmY1Ojc0OmM5OmViOjkxOjc2OmQ3OmQwOmIwOjQ0Om
+Y2OjU4OmFjOjFiOmE4OgogICAgICAgICA0MDo2YjozNDozMTo4Yjo3NTphNTpjYjo3NTphZTox
+Yjo0YjplOTplZTo4MDo1NDo4Yjo1NzoKICAgICAgICAgMTY6N2M6NTM6Njk6OTI6MDc6Njc6YW
+I6NWQ6OWM6NTk6YmQ6NDc6MDI6NTU6MmM6ZjA6MTg6CiAgICAgICAgIDY5OmMzOjE0OjIx
 ~~~
 
 You can now use this in a GitHub repo environment variable.
@@ -242,7 +274,7 @@ Set a name for your secret and paste the Base64 encoded string. Once done, click
 
 Next, add a step in the `build` job of your `.github/workflows/gatsby.yml` workflow to decode and print the value of this environment variable:
 
-~~~
+~~~{.yml caption="gatsby.yml"}
 - name: Print certificate
   run: echo "${% raw %} {{ secrets.BASE64_CERTIFICATE }} {% endraw %} " | base64 --decode
 ~~~
@@ -266,8 +298,3 @@ Commit the file and head over to the build execution logs to see this step in ac
 In this article, you learned when to use environment variables and secrets, as well as how to scope environment variables across workflows, jobs, and steps. You also learned how to store sensitive information like certificates with GitHub's repository secrets. If you're looking for a simpler experience managing environment variables and secrets, check out [Earthly](https://earthly.dev), an effortless CI/CD framework that can run everywhere. [Earthly makes secret management simple](https://docs.earthly.dev/docs/guides/build-args) and powerful by enabling multiple ways to set and manage your secrets and environment variables.
 
 {% include cta/cta1.html %}
-
-## Outside Article Checklist
-
-* [ ] Optional: Find ways to break up content with quotes or images
-
