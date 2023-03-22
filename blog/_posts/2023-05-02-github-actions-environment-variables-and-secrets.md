@@ -6,7 +6,10 @@ toc: true
 author: Kumar Harsh
 
 internal-links:
- - just an example
+ - CI/CD
+ - GitHub Actions
+ - Environment Variables
+ - Secrets
 ---
 
 When you're working with continuous integration, continuous delivery (CI/CD) platforms, you'll work with environment variables and secrets, which are resources that help you conceal and reuse sensitive information, like keys and certificates, in your [CI/CD](/blog/ci-vs-cd) processes. These environmental variables and secrets also [make](/blog/using-cmake) it easy for you to manage your application environments by maintaining configuration sets that you can swap and use when running in different environments. You can also utilize expanding functions (*ie* functions that substitute [environment variable](/blog/bash-variables) values at runtime) and dynamic string templates (*ie* a method to help create multiple strings out of a template literal with different sets of environment variable values) to reuse secrets and simplify your code.
@@ -230,4 +233,3 @@ In this article, you learned when to use environment variables and secrets, as w
 * [ ] Optional: Find ways to break up content with quotes or images
 * [ ] Verify look of article locally
   * Would any images look better `wide` or without the `figcaption`?
-* [ ] Add keywords for internal links to front-matter
