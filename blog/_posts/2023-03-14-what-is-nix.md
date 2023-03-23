@@ -1,7 +1,7 @@
 ---
 title: "Nix Turns 20, but What is It?"
 categories:
-  - Article
+  - Articles
 toc: true
 author: Josh
 
@@ -9,37 +9,292 @@ internal-links:
  - just an example
 ---
 
-I talked to Nix users across the spectrum, from hobbyists, to experts, to maintainers, trying to better understand what Nix is and what people user it for. I was hoping to come to single conclusion, a single thing that Nix is, but the truth Nix is many things to many people. The one thing everyone I talked to was excited about was Nix's ability to manage system packages in a way that was
+# Nix Turns 20. What the Hell is It?
+
+A few weeks ago, this true thing happened to me.
+
+I was at a bar with friends, and one of them mentioned that they’d heard that Nix was turning 20 this year. 
+
+“What exactly is Nix?” I asked.  
+
+“It’s a package manager, but like different,” they said. 
+
+Then someone else chimed in. “I thought it was a Linux distro?” 
+
+I pulled out my phone and Binged it, “Says here it’s a programming language for managing and building software?” 
+
+If you’re like me and my real friends, you’ve probably asked yourself similar questions about what  [Nix](https://nixos.org/) is. Is it an amazing build tool? Will it change software forever or is it just an intellectual trap for the 140 IQ crowd?
+
+I’ve played around with Nix, and it is very cool. But I'm an engineer turned writer at heart, and it's been a while since I last used build tools day-in-day-out for production work. I wanted to hear from experienced users to learn more about how they use Nix and what value it delivers.
+
+I spoke with a wide range of Nix users, from consultants to hobbyists, to devs using Nix in production, and even one Nix contributor, in order to understand how the average developer can leverage the full extent of Nix's capabilities.
+
+## What is Nix?
 
 
-There's a website with a graph of package managers and some info about how nix is the best or has the most or some shit.
-Yet Nick's package is, is, uh, the fourth biggest GitHub repository
+I started all my interviews by asking the users to define Nix in their own words.
+Théophane Hufschmitt, a developer at [Tweag](https://www.tweag.io/team/) and a contributor to Nix, focused on Nix’s ability to work as a build system
+
+{% include quotes/what_is_nix/theophane_hufschmitt.html %}
+
+I tend to describe it as a build system that pretends to be a package manager or the other way around. If you take Make, the grandfather of all build systems, Make has this nice interface where you just describe everything that you want to be built. You describe your dependencies, and then you build that…and it's nice; it's declarative. 
+Nix somewhat has this same idea, but at the package manager level, in that, rather than saying, well, I want to, apt-get install this thing and apt-get install this [other] thing...Nix takes the declarative approach of saying, in a file, that this project depends on this package and this package, and we are gonna make them available for you somewhere. You don't have to know where they are or install them globally because that could be annoying for other things. Just declare what you depend on, and this won't change the outside environment or anything else.
+
+{% include quotes/end.html %}
+
+Jonathan Lorimer, former Lead Software Engineer at [Mercury](https://mercury.com/) and an avid user of Nix, personally and professionally agrees with Hufschmitt, but finds the value best expressed in the _ideas_ Nix was built around.
+
+{% include quotes/what_is_nix/jonathan_lorimer.html %}
+
+Here's the key insight that Eelco Dolstra had in his PhD thesis: we're awful at labeling the software that we're using in the programming community. The insight that Nix has is that we need to be more precise about the way we label our software.
+For example, if you were to install Postgres with Homebrew on Mac, you would do 'brew install postgres'. That doesn't tell you what version of Postgres you're getting, which can be very confusing…But even if it was tagged with a version, there are many different versions between Postgres 14 and 15, like 14.1, 14.2, etc. Do you know which C compiler it was compiled with? Do you know which version of GCC was used or which flags were enabled for that compilation process? Do you know which environment it was compiled on? Was it cross-compiled for Mac from Linux?
+The entire value of Nix falls out of this one insight that software is so much more than just the name and version labels. It's the entire closure of dependencies that the software has.
+
+{% include quotes/end.html %}
+
+Andreas Herrmann leads the Scalable Build team at Tweag:
+
+{% include quotes/what_is_nix/andreas_herrmann.html %}
+
+I mean, something that's interesting about Nix is the foundations it's built on are very general. It's really taking this idea that building software is also just evaluation of code of some form, and applying this purely functional programming idea there. And it's essentially applying memory management discipline to software deployments. You have packages separated on the file system. You can trace back-references between them, you can garbage collect them, you can make sure that this installation is never in an inconsistent state. That's a really cool feature.
+
+{% include quotes/end.html %}
 
 
-## What is Nix
+Daniel Firth, a Software Research Development Specialist at [Homotopic.Tech](https://homotopic.tech/), was the first person I spoke with to really hone in on the value of the Nix language.
 
-It's a configuration language designed specifically for package management. It’s functional and not a general purpose language.
-NixOS which takes this idea of a configuratoin language and repeatable software builds and applies describing a Linux instillation.
+{% include quotes/what_is_nix/daniel_firth.html %}
 
-ChatGPT:
+Nix is a purely functional, declarative programming language for expressing build products.  It's a domain-specific language specifically for talking about the product of compilation.
 
-Nix is a purely functional package manager and system configuration tool that allows users to install and manage software packages, and to configure their system in a reliable, reproducible, and declarative way. Unlike traditional package managers, Nix treats packages as immutable and builds them from source code, ensuring that they are reproducible across different systems and platforms.
+So it's functional in that you can refer to functions as values, you can assign them to variables, you can pass them around. It's pure, in that the outputs are uniquely determined by the inputs, and there are no side effects. That's Nix.
 
-Ok, but what can I actually do with Nix?
+{% include quotes/end.html %}
 
-Nix is also a powerful system configuration tool that allows users to define and manage their entire system configuration in a declarative way, using the Nix expression language. This means that users can specify their desired system configuration in a text file, and Nix will take care of installing the necessary packages and configuring the system accordingly.
+This language is what is used to define Nix packages, and the functional, pure nature of it is what guarantees reproducibility. And this extends to NixOS as well. Firth continues: 
 
-Nix has several unique features that set it apart from other package managers and configuration tools. For example:
+{% include quotes/what_is_nix/daniel_firth.html %}
 
-    Nix allows users to install multiple versions of the same package side-by-side, without conflicts or dependencies.
-    Nix can build packages from source code in a sandboxed environment, ensuring that packages are built in a reproducible and secure way.
-    Nix can create isolated environments, called "Nix environments", that contain a specific set of packages and dependencies, allowing users to easily switch between different software configurations.
-    Nix can manage system configurations in a declarative way, using the Nix expression language, making it easy to version control and reproduce system configurations across different systems and platforms.
+So we're looking at being able to take a value and inspect it, see what it is, see what's inside it. And in that sense, because it's a language for talking about build products, the operating system itself is the result of calling some pure function that builds the operating system. And so that conceptual simplicity just extends everywhere. So the operating system itself is just the result of calling a function, you can refer to it in the programming language, and you can pass it around and it can be the input to other functions, like deployment functions, or whatever you want. So as long as you can figure out what it is you've got, then you can figure out how to use it.
 
-Overall, Nix is a powerful tool for managing software packages and system configurations in a reliable, reproducible, and declarative way, making it a popular choice for developers, system administrators, and other power users.
+{% include quotes/end.html %}
+
+This starts to give us an idea about how all these things, the package manager, the OS, and the language, are connected. 
+
+## The Nix Package Manager
+
+So, a big part of what makes Nix exciting is this new way of building, labeling, and installing software. To get a better understanding of how this works, let’s compare it to a popular package manager for Linux.
+
+APT installs packages into system-wide directories such as `/usr/bin` and `/usr/lib`. It does this partly because these directories are already part of your `PATH` and so software in them is easily accessible.  But this also means that, in most cases, multiple versions of the same package cannot coexist on the same system. It can also be difficult to manage dependencies  and versions with APT, at least at the level Nix allows. Furthermore, you’re never really sure what version of a package you’re getting. You may specify the version, but beyond that, you know little about the entire history, bill of materials, and supply chain.
+
+Nix, on the other hand, installs packages in `/nix/store/`, which is a dedicated directory for all Nix packages. Each package gets installed into a subdirectory. The name of the directory always starts with a cryptographic hash, for example `/nix/store/8wvqqiwk6lpy7j3q3rdbfb7g1ipifdvh-gcc-11.2.0`. The power is in what that hash represents. It’s computed based on the inputs for the build: the source files, the compiler, what flags were passed in, and more. In this way, Nix not only knows what dependencies a package needs but also what dependencies those packages have and exactly which versions with which inputs were used to build them.
+
+So Nix isn’t just giving you the version of the package you want; it’s giving you the entire history of how it was built. This not only gives you a level of control over which packages you are using, but it also allows you to rebuild them with an accuracy that other package managers can’t compete with.
+
+Jonathan Lorimer:
+
+{% include quotes/what_is_nix/jonathan_lorimer.html %}
+
+So when you pull a package from Nix, what you're doing is you're saying, Okay, give me the instructions to build that. There's some there's a step called evaluation, where it evaluates what the name of the software will eventually be, then what it does is it can check against the cache and say, Does this software already exist? Oh, yeah. Just pull that down. [But if] It checks, and it says, oh, no, it doesn't exist; this is a new piece of software that no one's built before, well, then your computer will go ahead and build it, and then you'll have it.
+
+{% include quotes/end.html %}
 
 
+Hufschmitt:
 
+{% include quotes/what_is_nix/theophane_hufschmitt.html %}
+
+And so you can say 'I have GCC'. I don't know, I have no idea what's the recent version of GCC, but let's say 7.8 for this project and 7.9 for this project. That works. But it goes even a bit further in that you can say, 'Well, this project depends on version 7.8, alright?' And this other project depends on GCC 7.8, but with this patch applied… it's nearly the same thing, but the inputs are slightly different because there's also this specific patch. So the path in which it's gonna be installed, it's gonna be slightly different. And so every single variation of the package that you could think about can be installed in a different place if you wanted to. But they are only going to be available in the environments in which you specify that they should be available.
+
+{% include quotes/end.html %}
+
+
+### Adding Packages
+
+One barrier to entry for users looking to adopt Nix in the early days was that it simply didn’t offer a lot of packages.
+
+Hufschmitt:
+
+{% include quotes/what_is_nix/theophane_hufschmitt.html %}
+
+Nix used to be like, because it was a small niche, it was pretty hard to find packages on it, or at least up-to-date and well-maintained packages. But actually, that has changed over the past, I would say, five years.
+
+One reason is that it’s much easier now to update packages for Nix than it is with other package managers.
+
+{% include quotes/end.html %}
+
+Herrmann:
+
+{% include quotes/what_is_nix/andreas_herrmann.html %}
+
+It's actually very easy to contribute packages to the Nix packages set. And it's also very easy to manage software that you depend on cleanly for the Nix packages set up on your own machine. So you don't even have to commit the package to the distribution, if you don't want to, you can still install it as a proper first-class package locally, on your own machine. Because it has these overlay mechanisms and these things, and the Nix packages, it's just a git repository on GitHub. So if you do want to contribute a new package, or make an update or something, it's just a PR, so it's super easy to do.
+
+{% include quotes/end.html %}
+
+Hufschmitt:
+
+{% include quotes/what_is_nix/theophane_hufschmitt.html %}
+
+If you've ever tried to modify a Debian package, it's really a huge pain. You have to find the source packages and modify things here and there. Repackage it, recompile it, and then get the binary package. Put that somewhere.
+
+That's a lot of manual steps. With Nix, because, at a certain level you are just like declaratively building the source code, you can just take the original expression that describes how this thing is built. You tweak it a bit, and you rebuild it… updating a package on Nix is essentially like it's the happy path. It's like three lines per request that you make on the GitHub repository. Which is like incredibly easy compared to most other package managers.
+
+{% include quotes/end.html %}
+
+Not only that but being able to define Nix packages using the Nix language also has benefits. 
+
+Daniel Firth:
+
+{% include quotes/what_is_nix/daniel_firth.html %}
+
+Yeah, so [other package managers] all have their own bespoke package format. So Ubuntu and Debian use .deb. Fedora and Red Hat use RPM…but they're all bespoke; they're all supposed to be interpreted specifically by Ubuntu package manager or the Fedora package manager.
+
+So you can't write programs, you can't write functions in those; they don't support that kind of ad hoc programming. Whereas with Nix, you can write programs which will produce derivation outputs. So you can start to condense the code. So you've got like 50 packages that you need to package, and they're all somewhat similar. In Ubuntu  Fedora, I imagine, they'll probably be 50 files, 50 RPM files, to package each of them, and they'll be copies of each other. With Nix, since you can deduplicate code, you can write some helper functions that would deduplicate as much of that as possible and parameterize the rest so that you can reduce all of those 50 expressions. And each of them would be pointing at a different source, but they'd all have roughly similar build logic.
+
+{% include quotes/end.html %}
+
+
+## Nix With Bazel
+
+At Tweag, they combine Nix with Bazel to help their clients set up repeatable build systems.
+
+{% include quotes/what_is_nix/andreas_herrmann.html %}
+
+The group I work in commonly uses the combination of Nix plus Bazel, and in that case, Nix fulfills two purposes. One is providing the developer environment. We use [Nix Shell](https://nixos.org/manual/nix/stable/command-ref/nix-shell.html), which is a feature of Nix where it can set up a shell environment with all the declared dependencies installed in the path, populated with those packages, and so on. We also use it to provision Bazel itself.
+
+…so that's the outer layer. The inner layer is for the Bazel build itself, we want to provide system dependencies and toolchains, and these kinds of third-party dependencies into our project. In principle, Bazel has its own notion of providing third-party dependencies.
+
+A more interesting example is using Nix to patch a GCC installation that is managed by Nix, and then importing that into the Bazel build as a C toolchain. Now I can use that to build my C++ targets in Bazel, and I can be sure that they use a specific compiler, namely the one that is provided by Nix.
+
+If my colleague builds on their own laptop using the same source repository configuration, they're going to use the exact same GCC version installation.
+
+{% include quotes/end.html %}
+
+### Nix vs Docker
+Nix can offer some similar benefits as Docker, but as Firth points out, there are some fundamental differences to be aware of.
+
+Daniel Firth:
+
+{% include quotes/what_is_nix/daniel_firth.html %}
+
+So the main difference with Docker is that Docker is imperative. It's not declarative. Obviously isn't. It's not a language really. All it says is execute the steps in order. And Docker will arbitrarily trust the internet. So if you make an Ubuntu image in Docker, and then you say, execute these apt install steps, it will go and contact the Ubuntu Package Manager. And it will trust the internet at that point. So there's no guarantee that if you try and build a Docker container using Docker today, that it will be the same Docker image that you build in a year. Whereas with Nix, the inputs completely determine the outputs, and all of the inputs are cryptographically hashed. And all of the outputs are cryptographically hashed. So it knows if there's a mismatch if someone has changed the source on the internet, for example, [or] a source has gone missing. There's no way it's going to accidentally introduce a source that you didn't intend to go into the image, whereas Docker will just pull whatever is there.
+
+{% include quotes/end.html %}
+
+
+Nix can also work with Docker in a couple of different ways.
+
+Jonathan:
+
+{% include quotes/what_is_nix/jonathan_lorimer.html %}
+
+So an amazing use case for Nix is to use it to generate Docker images. Docker and Nix are generally seen as competitors, but I think Nix is actually a fundamental value add to Docker. You can leverage the more granular caching that Nix has, and just have a build once Docker image. 
+
+Another great way to use it, if you don't want to rebuild Docker images, is you can use the default [Nix] Docker image that is pushed to Docker Hub; you can pull it down; it's very small, and lightweight. And what you do is you get access to the Nix CLI in there. And then you can use that to run the software that is described and stored. So you're just using a container or using Docker for what it does best, which is provide a uniform interface for being run in different environments. So you can hook into Kubernetes, you can run a bunch of different isolated Docker images on the server, but you aren't using Docker to sudo apt-get your software which is completely nondeterministic. You're using Nix to describe your software. And now you get all these benefits because your Docker image is completely uniform. You'll never have to rebuild it.
+
+{% include quotes/end.html %}
+
+Herrmann:
+
+{% include quotes/what_is_nix/andreas_herrmann.html %}
+
+I think some interesting differences with Nix is one, the reproducibility side on Docker is a little trickier, right? If you have a pinned Docker image, that's not gonna change. But if you need to make a change to a Docker file and rebuild it, it depends, right? I mean, a Dockerfile doesn't have updates. Right? At that point to make that reproducible, you have to have an entire app cache and it's very difficult. So that's a big difference. Where with Nix, if you make one incremental change, that's going to be the only thing that changes, the risk will stay the same. 
+
+Another is with Nix, you get more reuse and granularity. So with a Docker container, the images are layered linearly, right? They’re stacked on top of each other. But you cannot so easily say, those two containers, they happen to share those files in common. So load them on top of each other, and, you know, avoid the duplication, it's usually not not really possible. Whereas with Nix, you really get this granularity at the package level, where, since everything is installed in the Nix store in these dedicated paths that don't collide, if two of your packages use the same JDBC version, they can just point to the same Nix store path and reuse that bit. So that gives more reuse, more granularity. 
+
+And, I mean, it's also because you know exactly what each package depends on, you can generate quite minimal environments. So with Docker, images based on usual, like, more common Linux distributions, it can be hard to make a minimal Docker image that doesn't contain too much stuff that you don't actually need. Because, I mean, you can start from a really minimal image, but then maybe you're missing too many things. And then once you install something, it comes with its own predictive dependencies that come with it, and all of a sudden, you have too much stuff in the image again. You can do use Nix to generate Docker images. And they can be very minimal, really generate some really small. So Nix Packages comes with a set of tools called Docker tools. And you can either use regular pre-made Docker images as base images, you can even do some Ubuntu or Debian base image, or you can generate a new base image from Nix. And then really only install the things that you actually need in a container.
+
+{% include quotes/end.html %}
+
+## What About That OS?
+
+Up to this point, we’ve focused mainly on the Nix Package manager and the Nix language, but many of the people I talked to were just as excited about NixOS.
+
+Jeff Zellner is a Director of Engineering at [FireHydrant](https://firehydrant.com/). He doesn’t use Nix for work, but runs NixOS at homeott:
+
+{% include quotes/what_is_nix/jeff_zellner.html %}
+
+Nix is just something that I got into six or seven years ago. One of my friends ran NixOS on his laptop, and he showed it to me. And I was like, wow, this is unbelievable like this is, I don't know, it's like a holy grail of computing to just have that much kind of declarative configuration.
+
+{% include quotes/end.html %}
+
+
+NixOS is a Linux distribution built around the Nix Package manager. What that means is that, not only does it use Nix Package manager by default, but it takes the same concepts that make Nix Packages declarative and reproducible, and applies them to configuring your OS.
+You use the Nix language to define your configuration in a set of files, and Nix builds your system for you the same way, every time.
+
+For Zellner, this repeatability was all he needed to switch:
+
+{% include quotes/what_is_nix/jeff_zellner.html %}
+
+I think it's really magical because I love breaking things. I don't even really do that much development anymore, but I just like the idea that I can apply the configuration to my machine, I can revert it, I could destroy my machine and rebuild it... I don't leverage any of the, like real package manager capabilities to do development. In fact ,like, I don't even know how that works very well. I'm pretty much just focused on: I have this great monolithic, relatively monolithic, configuration file, and it makes my machine exactly how I want it, sets up my window manager, sets up my vim.rc, it sets up my terminal, just everything is exactly configured, not just at, you know, a package layer, but deep down into the configuration of packages. And that's really powerful, I think. 
+
+I don't use it for development and like building a nice environment to deploy software. I feel like that's probably its superpower. I just don't use it that way. So in my mind, like Nix, particularly, NixOS is just like, if you're the kind of person that runs a tiling Window Manager, install Nix OS, and you'll never look back. Like it just, it just gives you that level of configuration of a computer to just set up your environment exactly like you want it.
+
+{% include quotes/end.html %}
+
+Jonathan Lorimer: 
+
+{% include quotes/what_is_nix/jonathan_lorimer.html %}
+
+The package manager and the OS are so like, deeply ingrained because the whole point of an OS is to run software. So you can see why there's like a deep connection. But I actually think that using Nix, to specify your configuration is a nice to have, but it doesn't get at this philosophical core that I think is just so beautiful. Now, I say this as someone who uses Nix OS every day, I love it. The thing I hated about my Mac was it was always in a dirty state. From the moment I installed software. I like if I wanted to move Mac's, I had to reinstall everything. I never knew which version I was at. I never knew what I had to install. I stopped my Adobe subscription last year, and I haven't been able to get Adobe off my system. It's just been impossible. And so I've got this like Adobe cloud syncer using up tons of CPU in the background, and I just can't find a way to get rid of it.
+
+So I was a lifetime Mac user. And then I had been meaning to try out Linux, because, you know, I’d done software development, and all of our servers were Linux. And so I figured, you know, it was important to understand the environment that our code is running in. Now, having converted, I'm surprised that any developer uses Mac, I think, like, it makes sense to be closer to what you're deploying your code to.
+
+So I did Arch Linux first. Thinking that it would be a gateway into Nix OS. But ironically, Arch Linux was the hardest, hardest thing I've ever done. It was extremely confusing. And I ended up totally breaking my system within a month, which obviously, wasn't great, given that it was my main driver for work. So then, after I think, a month or two months, you know, I switch back to my personal Mac machine for work just to be productive. And then I tried Nix OS and got it up and running really quickly. And you know, I've never looked back. I had none of the issues that I had with Arch. It's a way easier mental model, in my opinion. And so I would actually even recommend Nix OS as a beginner Linux distro with the caveat that you need, like some programming experience to kind of work your way around Nix’s peculiarities.
+
+{% include quotes/end.html %}
+
+
+Daniel Firth:
+
+{% include quotes/what_is_nix/daniel_firth.html %}
+
+I've been using Nix for five or six years. So initially, I just dived in with the operating system, installed Nix OS on all of my machines. And some of those installations. I'm still running. I haven't changed them all since.
+
+{% include quotes/end.html %}
+
+
+## Learning Nix
+
+Once you are able to wrap your head around what Nix is and how it can be useful, you’ve still got to learn how to use it.
+
+Hufschmitt:
+
+{% include quotes/what_is_nix/theophane_hufschmitt.html %}
+
+So one of the big pushbacks is that the learning curve for Nix is pretty steep. We've actually invested quite a lot of effort in the past year to try and smoothen it as much as we could, which is still a huge work in progress. But both because it's a pretty big paradigm shift from the way people are used to working. And also because of like, accidental complexity in the way people tend to learn [Nix]. The documentation is not as good as it could be; the interface in a lot of places leaves a lot to be desired. There's a big, big investment that you need to make at the beginning to start using Nix.
+
+In practice most companies that I've seen that were using Nix, there were a handful of people that understood it well enough, and were maintaining these Nix files for everyone. And the others were just using them without trying to understand them too much. So reaching that setup works generally extremely well. But that requires a few people to start investing, investing in it. I think in that regard. It's very similar to something like Kubernetes. Once you get used to the way it works you certainly don't want to go back to well, not manual deployment, there's a whole lot of things between manually deploying and going from Kubernetes. But like, it's, it's really powerful once you get how it works and get familiar with the tool. But as long as you're not familiar with it, it's a whole big foreign galaxy that makes no sense whatsoever.
+
+{% include quotes/end.html %}
+
+Herrmann:
+
+{% include quotes/what_is_nix/andreas_herrmann.html %}
+
+It's also a question of who has to learn how much, right? So in larger teams, often you have those who are dedicated to the build system and the infrastructure and so on, and they're going to have to do a deeper dive. They're gonna have to get a good understanding of the system to be able to configure and fix it and so on.
+
+But then, you have those who are working on the product, and they use the build system and the environment as a tool, but they don't really configure it much themselves. They don't have to take as deep of a dive, and in particular, in the Nix plus Bazel setting, most of the time they won't really have to interact with Nix much.
+
+{% include quotes/end.html %}
+
+Firth:
+
+{% include quotes/what_is_nix/daniel_firth.html %}
+
+Yeah, the documentation for Nix is notoriously bad. Even comparatively with a lot of the other functional programming ecosystems. Most of the knowledge you will get either from reading the Nix packages GitHub repository directly or from word of mouth. There isn't really a full tutorial set for next year. I think some people have written ones very, very recently… but they historically haven't existed; you might have to ask somebody or know somebody or be able to read the code. And I just recommend that people just learn how to read the code. That's the only really reliable way you're going to get information about what some of these options are actually doing.
+
+{% include quotes/end.html %}
+
+## Conclusion
+
+Nix is a whole ecosystem of tools. What I learned talking to Nix users is that, if you’re willing to put in the time to learn, there’s a too
+
+My main takeaway with Nix is the functional programming concept of a pure function. If I give a function a certain set of inputs, it will return the same result every time, no matter what. Nix is about building software the same way, whether it’s your own software, someone else’s software, or your entire OS: You declare all your inputs explicitly and it will be built the same way every time.
+
+What I learned from talking to Nix users is that what really mattered to them, regardless of how they were using Nix, was its ability to bring the concepts of a pure function to areas of computing where it previously didn’t exist.
+
+From that idea you get a lot. You get a package manager that 
 
 
 ### Writing Article Checklist
@@ -58,89 +313,3 @@ Overall, Nix is a powerful tool for managing software packages and system config
 - [ ] Run `link-opp` and find 1-5 places to incorporate links to other articles
 - [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
 - [ ] Raise PR
-
-Andreas Herrmann - Tweag
-Théophane Hufschmitt - Tweag (contributor to Nix)
-
-
-
-Functional and Repeatable
-
-
-Category: Using Nix Nex Next
-
-Quotes:
-The group I work in most commonly, we use the combination of nex plus basil, and in that case, nex, uh, fulfills two purposes. Uh, one is NEX provides the developer environment. . Um, so there we use, uh, N'S Shell, um, which is a feature of N'S where it can sort of set up a shell environment with all the declared dependencies installed in the path, populated with those packages and so on…Um, and in fact, we also use that to provision basil itself.
-
-NEXT And then once you change directory into it, um, it will automatically load a shell environment that's defined by this dot NRC file, um, the first time you have to explicitly allow it for, you know, security concerns. Uh, once you do it remembers that and, um, you can use that to automatically load an next show.
-
-so that's sort of the outer layer. Um, and then the inner layer is where, uh, for the basal build itself, we want to provide system dependencies and tool chains, um, and these kinds of third party dependencies into our project. Um, and in principle, basil has its own notion of providing third party depend.
-
-Um, and of course a more interesting example then is, uh, use nix to patch a g ccc uh, installation that is managed by Nix. , um, and then import that into the basil build as a C tool chain. And now I can use, uh, that to build my cc plus plus targets in basil and I can be sure that they use a specific compiler, namely that one that is provided by.
-
-And if my colleague builds on their own laptop using the same source repository configuration, they're going to use the exact same GCC version installation. 
-
-
-
-Category: The Old Way
-quotes:
-So many of the software packages that you might want to install, you would quickly bump into all kinds of, uh, computability issues. Um, and then trying to install all those things in sort of a separate profile turned out to be really difficult to maintain. I mean, it used this, there is this. I don't know if this is still around, but at the time, this was a popular tool.
-
-It was called Modules, uh, no, lovely unambiguous name,  Implement implemented in Pearl. Uh, and this was a way of switching between profiles of software installations on a cluster so that you could say, oh, right now I need HDFS version X, and in the next project I'm gonna use Version Y. And you can switch between those profiles.
-
-But it relied on just handwritten configurations or all those packages, and essentially just relied on the authors of those package configurations, getting it right, and making sure that they passed all the right flags to all the builds and everything, which is of course very brittle. Yeah. Um, and then after I had Nicks available, all of a sudden I could do things that were previously completely impossible, for example, In one set of simulations that I had, there was a little bit of complicated logic around finding the right sets of parameters and so on.
-
-in the system administration world, um, traditional system administration is tends to be very, uh, low level imperative style where you have your file system, which is when giant mutable, uh, data structure.
-
-and you can install packages by mutating it in some places, uninstall packages by mutating it in what you hope is exactly the reverse of the installation process. Um, and yeah, and when you re a comment, you make assumptions about the state of the Global five system because you expect that all the files that you need will be there at the right magical places.
-
-And. , I mean, that, that works in practice. That's how we've been doing computing for, uh, more than 30 years. And, and it works fairly okay. But then Nick tried the other approach, uh, inspired by functional programming, by saying, well, let's just resign in terms of, um, we want to have. Access values, which are things which probably live somewhere on the disc, but we don't care where.
-
-We just want to get some kind of, um, pointer, some something that tells us how we acc, how we can access it, but without having to bother about where it's placed and just make it so that, uh, whenever we were want to run a comment, these comments get all the informations about where to find what it depends.
-
-that's also enables quite a lot of things because now you can say, well, I have this, I don't know. I want to build this program. I know it depends. G c c, this is this version of G c C, this version of lip through this version of lip bar.
-
-Um, but uh, I don't need to install them globally on my system. I just have a nix file that says, oh, I depend on that, that and that. And then NS will take care of putting them somewhere I don't care about where I just know they will be somewhere and like,  enriching my current environment so that the compiler, so that, well, first I, when I type GCC on the common line, uh, the shell knows where to find jcc, and then G CCC knows where to find my dependencies.
-
-
-
-
-category : Learning Nix
-Quotes: 
-It's, um, it's also a question of who. Has to learn how much, right? Yeah. Yeah. Um, so in larger teams, often you have those who are dedicated to the build system and the infrastructure and so on, and they're going to have to do a deeper dive. They're gonna have to get a good understanding of the system to be able to, uh, configure and fix it and so on.
-
-Um, but then, uh, you have those who are working on the product, um, and they use the build system and the environment as a tool, but they don't really configure it much themselves. Um, They don't have to take as deep of a dime. Um, and in particular in the n plus basil setting, most of the time they won't really have to interact with NS much.
-
-
-Category: Community
-quotes:
-I eventually got the, uh, the second official maintainer of NS after Elco. Um, and a few months later, uh, which is a few months before now, uh, I've started with a bunch of other people, uh, a proper team around the maintenance of ns, which is originally called the next team.
-
-
-
-Category: How Nix Works
-
-quotes:
-I tend to describe it as, uh, a build system, uh, that pretends to be a package manager or the other way around, uh, in that, If you take, uh, make right the text, make the, the grandfather of all build systems, um, make has this nice, um, um, interface where you just like describe everything that you want to be built.
-
-You describe your dependencies, um, and then you build that. Um, and that's cool. Cause if you say, well, I have. Final compilation step, which depends on this, this, and this. You just declare that and then when you run, make, it's gonna like know what has to be compiled and do that. And if you clo you like, you push your project to uh, get ripple, someone else pulls in, just trends make and all the intermediate artifacts will be rebuilt.
-
->>>
-
-Um, and so if you like, you can say I have gcc. I don't know, I, I have no idea what's the recent version of gccs, but let's say 7.8 okay for this project and 7.9 for this project. That works. But it goes even a bit further in that you can say, well, this project depends on version 7.8. Alright? And this other project depends on GCC 7.8, but with this patch applied, Oh yeah.
-
-Yeah. And, and you can do that and Mix will see that. Well, this gcc, like this is like Van GCC 7.8. I can, um, like. Yeah, I, I know I have all the inputs for the build. I, I can just like computer part based on that. Uh, like in practice it's using cryptographic hashes, uh, behind the scenes for that and put it somewhere that depends on this whole set of inputs.
-
-And then this other, this other thing which has G C C with that patch, it's nearly the same thing, but the inputs are slightly different because there's also this specific patch. So the path in which it's gonna be installed, it's gonna be slightly different. And so every single variation of the package that you could think about can be installed in, uh, will be installed in a different place if you wanted to.
-
-Category: Don’t Use Nix
-
-Quotes:
-Yeah. So there are, there's two kind of downsides I would say, which are, um, the biggest downsides are like, not so much theoretical downsides. Some theoretical downside that you can think of because it adds a bit more indirection, it can be slightly less performing.
-
-But that's, these are in practice, very minor. The main downside is more, are more practical based on two things. Uh, the first one is that, um, well that's not how computers generally work or how, how like, uh, operating systems and distributions generally work. So they don't expect this kind of things and.
-
-The system or the user or both? Don't expect it. Both. Both? Both. Both. Okay. Yeah, we can talk out to you about the, the user a bit later, but for the system, uh, yeah, that's not how it generally works. And fairly often you have to walk around packages, which for example, uh, won't, would, uh, would hardcode some path, uh, in.
-
-because with the traditional way, you know that you're gonna have, uh, I don't know, uh, slash bean slash bash available. Uh, well that one is not exactly true, but most of the time you will have it available. So you can just rent slash b slash slash bash something. And that in a, in a pure niche system, that's not gonna work cuz you won't have a slash bin slash back slash bash, for example.
-
