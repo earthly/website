@@ -147,6 +147,7 @@ timezone: "America/New_York"
 plugins:
   - jekyll-sitemap
   - jekyll-feed
+  - jekyll-inline-svg
   - jekyll-include-cache
   - jekyll_picture_tag
 
