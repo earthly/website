@@ -20,7 +20,7 @@ To follow along, you'll need a [GitHub](/blog/ci-comparison) account to fork the
 
 ![Guide]({{site.images}}{{page.slug}}/guide.png)\
 
-## What Are GitHub Actions Environment Variables and Secrets
+## What Are GitHub Actions Environment Variables and Secrets?
 
 GitHub Actions' environment variables and secrets are just like regular secrets. They help you hide and reuse sensitive information in your workflows. In most cases, you can define environment variables under an `env` node in your workflow configuration file.
 
