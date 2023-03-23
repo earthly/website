@@ -26,7 +26,7 @@ endunless %} {% endif %}
 
     <div class="page__inner-wrap flex relative">
 
-      <div class="w-[1px] h-full text-md sticky top-[-36px] z-50 hidden lg:block">
+      <div class="w-[1px] h-full text-md sticky top-[36px] z-50 hidden lg:block">
         <div class="w-[250px] pt-6 pl-3">
           <div class="mt-6">
             <a href="/blog/" class="text-xl text-blue-600 hover:underline">Blog</a>
@@ -40,12 +40,12 @@ endunless %} {% endif %}
           </div>
 
           {% if page.sidebar %}
-            {% if
-            page.sidebar.nav %}
-              {% include nav_list nav=page.sidebar.nav %}
-            {% endif %}
+          {% if
+          page.sidebar.nav %}
+          {% include nav_list nav=page.sidebar.nav %}
           {% endif %}
-          
+          {% endif %}
+
           {% if page.toc %}
           <div class="group mt-4">
             <header>
@@ -133,7 +133,7 @@ endunless %} {% endif %}
   {% comment %}
   <!-- only show related on a post page when `related: true` -->
   <!-- only show related on a post in prod, to speed rendering -->
-  {% endcomment %} 
+  {% endcomment %}
   {% if page.id and page.related and site.related_posts.size > 0
   %}
   {% if jekyll.environment == "production" %}
