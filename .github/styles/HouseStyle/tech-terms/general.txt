@@ -328,3 +328,8 @@ titlecolor
 templatetags
 Dictsort
 dictsort
+
+zipfile
+newfile
+filepath
+io
