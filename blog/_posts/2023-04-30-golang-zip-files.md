@@ -39,7 +39,7 @@ Inside a ZIP file, the compressed data is divided into segments, each containing
 
 In this section, you will learn how to create a zip file in Go. Here, we will use the `os` package to generate zip archives. The `os` package provides a platform-independent interface to operating system functionality.
 
-We'll first create a folder and open it in a text editor, then create a Go file (`*main.go*`) within the newly created folder, where we will run our code.
+We'll first create a folder and open it in a text editor, then create a Go file (`main.go`) within the newly created folder, where we will run our code.
 
 The main function (`main()`) in the following code creates a new zip archive file named `archive.zip` using the `os.Create` function:
 
@@ -113,7 +113,7 @@ exit status 2
 
 ~~~
 
-Finally, the code uses the `defer` keyword to close the "archive" file once it has been created. It is important to close the file after it has been created to ensure that the file is properly flushed into the file system. Before running the code, create a new file named `*test.csv*` in the same directory as `*main.go*`.
+Finally, the code uses the `defer` keyword to close the "archive" file once it has been created. It is important to close the file after it has been created to ensure that the file is properly flushed into the file system. Before running the code, create a new file named `*test.csv*` in the same directory as `main.go`.
 
 You can run the archive script on the terminal running the following command:
 
@@ -134,9 +134,9 @@ closing archive
 
 ## Listing the Contents of a Zip File
 
-In this section, we will import several [packages](/blog/setup-typescript-monorepo) such as `archive/zip`, `fmt`, and `log` packages. And we'll open the zip file using the `zip.OpenReader` function. The zip file here will be `*archive.zip*` created in the above code using the `archive/zip` package. Looping through the files in the zip file will output the names of each of the files contained in the zip file to the console. In this case, it'd be just `test.csv`.
+In this section, we will import several [packages](/blog/setup-typescript-monorepo) such as `archive/zip`, `fmt`, and `log` packages. And we'll open the zip file using the `zip.OpenReader` function. The zip file here will be `archive.zip` created in the above code using the `archive/zip` package. Looping through the files in the zip file will output the names of each of the files contained in the zip file to the console. In this case, it'd be just `test.csv`.
 
-~~~{.go caption="main.go"}
+~~~{.go caption="main1.go"}
 // main1.go
 package main
 import(
@@ -160,16 +160,16 @@ for _, file := range zipListing.File {
 After you have copied the code above, run this in the terminal with the command:
 
 ~~~{.bash caption=">_"}
-go run main.go
+go run main1.go
 ~~~
 
-~~~{.bash caption=">_"}
+~~~{ caption="Output"}
 test.csv
 ~~~
 
 ## Using the `compress/gzip` Package for Compressing Files
 
-Here we will first import `[compress/gzip](https://pkg.go.dev/compress/gzip)`. In addition to importing the primary package, `compress/gzip`, we will also import the `os`, `io`, and `log` [packages](/blog/setup-typescript-monorepo).
+Here we will first import [compress/gzip](https://pkg.go.dev/compress/gzip). In addition to importing the primary package, `compress/gzip`, we will also import the `os`, `io`, and `log` [packages](/blog/setup-typescript-monorepo).
 
 The following code first opens the input file `read.txt` using the  `Open()` function from the `os` package. It then creates a new gzip-compressed file called `read.gz` which is passed to the `Create()` function from the `os` package.
 
@@ -211,10 +211,10 @@ Now, we can copy the input file to the gzip writer using the `Copy()` function f
 
 Finally, the gzip writer is closed with the `Close()` function from the `zipWriter` (the variable which holds `read.gz`).
 
-Before running the code, create a new file named `*read.txt*` in the same directory as `*main.go*`.
+Before running the code, create a new file named `*read.txt*` in the same directory as `main.go`.
 
-~~~{.go caption="main.go"}
-
+~~~{.go caption="main2.go"}
+...
 // Copy the input file to the gzip writer
 _, err = io.Copy(zipWriter, inputFile)
 if err != nil {
@@ -230,10 +230,10 @@ zipWriter.Close()
 Go to the terminal and run this;
 
 ~~~{.bash caption=">_"}
-go run main.go
+go run main2.go
 ~~~
 
-By doing this, the compressed version of the file `*read.txt*` will be created as a zip file called *read.gz*.
+By doing this, the compressed version of the file `read.txt` will be created as a zip file called *read.gz*.
 
 <div class="wide">
 ![read zip file]({{site.images}}{{page.slug}}/Vet9Pp0.png)
@@ -346,10 +346,10 @@ for _, file := range zipReader.File {
 
 ~~~
 
-Before running the code, create a new file named `*newfile.txt*` in the same directory as `*main.go*`. To check the output go to the terminal and run the following:
+Before running the code, create a new file named `newfile.txt` in the same directory as `main3.go`. To check the output go to the terminal and run the following:
 
 ~~~{.bash caption=">_"}
-go run main.go
+go run main3.go
 ~~~
 
 <div class="wide">
@@ -358,7 +358,7 @@ go run main.go
 
 If you try to run the code and `newfile.txt` does not exist, you will get the following output:
 
-~~~{.bash caption="Output"}
+~~~{ caption="Output"}
 panic: open newfile.txt: no such file or directory
 
 goroutine 1 [running]:
