@@ -1,5 +1,5 @@
 ---
-title: "Nix Turns 20, but What is It?"
+title: "Nix Turns 20. What the Hell is It?"
 categories:
   - Articles
 toc: true
@@ -8,8 +8,6 @@ author: Josh
 internal-links:
  - just an example
 ---
-
-# Nix Turns 20. What the Hell is It?
 
 A few weeks ago, this true thing happened to me.
 
@@ -23,7 +21,7 @@ Then someone else chimed in. “I thought it was a Linux distro?”
 
 I pulled out my phone and Binged it, “Says here it’s a programming language for managing and building software?” 
 
-If you’re like me and my real friends, you’ve probably asked yourself similar questions about what  [Nix](https://nixos.org/) is. Is it an amazing build tool? Will it change software forever or is it just an intellectual trap for the 140 IQ crowd?
+If you’re like me and my real friends, you’ve probably asked yourself similar questions about what [Nix](https://nixos.org/) is. Is it an amazing build tool? Will it change software forever or is it just an intellectual trap for the 140 IQ crowd?
 
 I’ve played around with Nix, and it is very cool. But I'm an engineer turned writer at heart, and it's been a while since I last used build tools day-in-day-out for production work. I wanted to hear from experienced users to learn more about how they use Nix and what value it delivers.
 
@@ -91,7 +89,7 @@ Nix, on the other hand, installs packages in `/nix/store/`, which is a dedicated
 
 So Nix isn’t just giving you the version of the package you want; it’s giving you the entire history of how it was built. This not only gives you a level of control over which packages you are using, but it also allows you to rebuild them with an accuracy that other package managers can’t compete with.
 
-Jonathan Lorimer:
+Lorimer:
 
 {% include quotes/what_is_nix/jonathan_lorimer.html %}
 
@@ -143,7 +141,7 @@ That's a lot of manual steps. With Nix, because, at a certain level you are just
 
 Not only that but being able to define Nix packages using the Nix language also has benefits. 
 
-Daniel Firth:
+Firth:
 
 {% include quotes/what_is_nix/daniel_firth.html %}
 
@@ -152,7 +150,6 @@ Yeah, so [other package managers] all have their own bespoke package format. So 
 So you can't write programs, you can't write functions in those; they don't support that kind of ad hoc programming. Whereas with Nix, you can write programs which will produce derivation outputs. So you can start to condense the code. So you've got like 50 packages that you need to package, and they're all somewhat similar. In Ubuntu  Fedora, I imagine, they'll probably be 50 files, 50 RPM files, to package each of them, and they'll be copies of each other. With Nix, since you can deduplicate code, you can write some helper functions that would deduplicate as much of that as possible and parameterize the rest so that you can reduce all of those 50 expressions. And each of them would be pointing at a different source, but they'd all have roughly similar build logic.
 
 {% include quotes/end.html %}
-
 
 ## Nix With Bazel
 
@@ -171,6 +168,7 @@ If my colleague builds on their own laptop using the same source repository conf
 {% include quotes/end.html %}
 
 ### Nix vs Docker
+
 Nix can offer some similar benefits as Docker, but as Firth points out, there are some fundamental differences to be aware of.
 
 Daniel Firth:
@@ -184,7 +182,7 @@ So the main difference with Docker is that Docker is imperative. It's not declar
 
 Nix can also work with Docker in a couple of different ways.
 
-Jonathan:
+Lorimer:
 
 {% include quotes/what_is_nix/jonathan_lorimer.html %}
 
@@ -232,7 +230,7 @@ I don't use it for development and like building a nice environment to deploy so
 
 {% include quotes/end.html %}
 
-Jonathan Lorimer: 
+Lorimer: 
 
 {% include quotes/what_is_nix/jonathan_lorimer.html %}
 
@@ -245,7 +243,7 @@ So I did Arch Linux first. Thinking that it would be a gateway into Nix OS. But 
 {% include quotes/end.html %}
 
 
-Daniel Firth:
+Firth:
 
 {% include quotes/what_is_nix/daniel_firth.html %}
 
@@ -288,13 +286,28 @@ Yeah, the documentation for Nix is notoriously bad. Even comparatively with a lo
 
 ## Conclusion
 
-Nix is a whole ecosystem of tools. What I learned talking to Nix users is that, if you’re willing to put in the time to learn, there’s a too
-
-My main takeaway with Nix is the functional programming concept of a pure function. If I give a function a certain set of inputs, it will return the same result every time, no matter what. Nix is about building software the same way, whether it’s your own software, someone else’s software, or your entire OS: You declare all your inputs explicitly and it will be built the same way every time.
+My main take away after spending some time learning about Nix is that it embraces the functional programming concept of a pure function. If I give a function a certain set of inputs, it will return the same result every time, no matter what. Nix is about building software the same way, whether it’s your own software, someone else’s software, or your entire OS: You declare all your inputs explicitly and it will be built the same way every time.
 
 What I learned from talking to Nix users is that what really mattered to them, regardless of how they were using Nix, was its ability to bring the concepts of a pure function to areas of computing where it previously didn’t exist.
 
-From that idea you get a lot. You get a package manager that 
+From that single idea you get a whole [ecosystem]https://nixos.wiki/wiki/Nix_Ecosystem) of tools. We mainly covered the Nix language, the Nix Package Manager, and NixOS, but there's also a continuous build system called Hydra and a deployment and provisioning tool called NixOps. Probably, there's even more.
+
+If you're looking to experiment with Nix, the package manager seems to be the easiest to adopt. You don't need to learn how to write the Nix language to start using it. If you're someone who's constantly jumping from project to project and worried about conflicting dependencies or if you're constantly running into build issues related to package versions, it could be a solution.
+
+Learning the Nix language seems like the biggest lift, especially if you don't already have a background in functional programming, but it also seems to offer the most reward, as doing so makes working with other Nix tools much more intuitive.
+
+The OS itself seemed like the odd man out when I first started writing. I found expert Nix users using it, but I also talked to developers who didn't know the Nix language really, didn't mess with the package manger much, but absoluetly loved the OS. These tended to be people who'd grown frustrated with setting up the same Linux environments over and over. If that's you, the OS might be a great way to start exploring Nix.
+
+If you're interested in learning more about Nix here are some resources I found helpful while writing this article. 
+
+[The Nix wiki](https://nixos.wiki/wiki/Main_Page)
+
+[Nix Pkgs Repo](https://github.com/NixOS/nixpkgs)
+
+[Zero to Nix](https://zero-to-nix.com/) - "An unofficial, opinionated, gentle introduction to Nix" created by Determinate Systems. It's a great resource, though it does heavily favor that you use their [Determinate Nix Installer](https://zero-to-nix.com/concepts/nix-installer), which I didn't mess with. Still lots of great info on here.
+
+[This Graham Christensen talk](https://www.youtube.com/watch?v=pfIDYQ36X0k) about Nix and containers.
+
 
 
 ### Writing Article Checklist
