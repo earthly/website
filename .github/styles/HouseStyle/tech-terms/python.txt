@@ -71,3 +71,5 @@ virtualenv
 pytest
 coroutine
 
+pipenv
+vite
