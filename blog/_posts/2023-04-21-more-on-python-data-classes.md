@@ -1,5 +1,5 @@
 ---
-title: "Let's Learn More About Python Data Classes, Shall We?"
+title: "Let's Learn More About Python Data Classes"
 categories:
   - Tutorials
 toc: true
