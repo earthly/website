@@ -103,9 +103,12 @@ layout: default
 
             {% if page.share %}{% include social-share.html %}{% endif %}
 
+            {% if page.funnel != 3 %} 
+            <!-- On non-funnel pages, show newsletter sign up -->
             <div class="only-mobile">
               {% include_html cta/blog-newsletter1.html %}
             </div>
+            {% endif %}
           </div>
 
           {% if page.link %}
@@ -144,8 +147,8 @@ layout: default
     Putting related ones first.
   -->
   {% endcomment %} 
-  {% if page.id and page.related and site.related_posts.size > 0 %}
   {% if jekyll.environment == "production" %}
+  {% if page.id and page.related and site.related_posts.size > 0 %}
   <div class="page__related mt-8 ml-8 mr-8">
     <div class="page__related-title heading mb-2 text-2xl text-gray-400">
       {{ site.data.ui-text[site.locale].related_label | default: "You May Also
