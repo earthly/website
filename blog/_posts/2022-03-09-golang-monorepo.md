@@ -344,4 +344,6 @@ Continuous Integration more efficient.
 You can find the full working monorepo covered in this article in the official
 [Earthly examples collection](https://github.com/earthly/earthly/tree/main/examples/go-monorepo).
 
-{% include cta/embedded-newsletter.html %}
+For more on using Earthly to improve go builds checkout [Earthly.dev](https://earthly.dev/):
+
+{% include_html cta/cta2.html %}
