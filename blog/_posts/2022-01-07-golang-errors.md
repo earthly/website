@@ -355,8 +355,6 @@ There are some exceptions to the rule, however, where wrapping an error may not 
 
 Since wrapping the error always preserves the original error messages, sometimes exposing those underlying issues might be a security, privacy, or even UX concern. In such situations, it could be worth handling the error and returning a new one, rather than wrapping it. This could be the case if you're writing an open-source library or a REST API where you don't want the underlying error message to be returned to the 3rd-party user.
 
-{% include_html cta/cta2.html %}
-
 ## Conclusion
 
 That's a wrap! In summary, here's the gist of what was covered here:

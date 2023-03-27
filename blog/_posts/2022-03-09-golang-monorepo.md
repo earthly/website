@@ -337,7 +337,7 @@ release:
 
 ## Conclusion
 
-Building a mulit-module monorepo in Go is made possible and effective using the `replace` feature in `go.mod` to
+Building a multi-module monorepo in Go is made possible and effective using the `replace` feature in `go.mod` to
 import local modules. In a monorepo environment, using the right build tooling can also make development and
 Continuous Integration more efficient.
 
