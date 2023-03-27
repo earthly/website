@@ -1,6 +1,8 @@
+
 <div>
   <script src="https://f.convertkit.com/ckjs/ck.5.js"></script>
   <form
+  id="embedded-newsletter-form"
 action="https://app.convertkit.com/forms/2810221/subscriptions"
 markdown="0"
 class="border-t bg-white mt-10"
@@ -59,3 +61,13 @@ font-weight: 400;
 <style></style>
   </form>
 </div>
+  <script>
+  const form = document.getElementById('embedded-newsletter-form');
+  form.addEventListener('submit', function(event) {
+    // console.log("Sent event to Google Analytics");
+    gtag('event', 'conversion', {
+      'event_category': 'Form Submission',
+      'event_label': 'embedded-newsletter-form'
+    });
+  });
+  </script>

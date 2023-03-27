@@ -1,16 +1,10 @@
 <meta charset="utf-8" />
 <link rel="icon" type="image/png" href="/blog/assets/images/favicon.png" />
 {% include seo.html %} {% unless site.atom_feed.hide %}
-<link
-  href="{% if site.atom_feed.path %}{{ site.atom_feed.path }}{% else %}{{ '/feed.xml' | relative_url }}{% endif %}"
-  type="application/atom+xml"
-  rel="alternate"
-  title="{{ site.title }} Feed"
-/>
+<link href="{% if site.atom_feed.path %}{{ site.atom_feed.path }}{% else %}{{ '/feed.xml' | relative_url }}{% endif %}"
+    type="application/atom+xml" rel="alternate" title="{{ site.title }} Feed" />
 {% endunless %}
 
-<!-- PreLoad CSS -->
-<link rel="preload" as="style" href="/blog/assets/css/main.css" />
 
 <!-- Pre Connect to domains -->
 <link rel="preconnect" href="https://connect.facebook.net" />
@@ -26,28 +20,28 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 <script>
-  document.documentElement.className =
-    document.documentElement.className.replace(/\bno-js\b/g, "") + " js ";
+    document.documentElement.className =
+        document.documentElement.className.replace(/\bno-js\b/g, "") + " js ";
 </script>
 
 <!-- For all browsers -->
-<link rel="stylesheet" href="{{ '/assets/css/main.css?v=2' | relative_url }}" />
-<link
-  rel="stylesheet"
-  href="{{ '/assets/css/typography.min.css' | relative_url }}"
-/>
-<link rel="stylesheet" href="{{ '/assets/css/base.css' | relative_url }}" />
+<link rel="stylesheet" rel="preload" href="{{ '/assets/css/main.css?v=3' | relative_url }}" />
+<link rel="stylesheet" rel="preload" href="{{ '/assets/css/index.css?v=1' | relative_url }}" />
+<link rel="stylesheet" rel="preload" href="{{ '/assets/css/typography.min.css' | relative_url }}" />
+<link rel="stylesheet" rel="preload" href="{{ '/assets/css/base.css' | relative_url }}" />
 
+<script src="/blog/assets/js/jquery-3.5.1.min.js"></script>
+<script src="/blog/assets/js/button.js"></script>
+<script src="/blog/assets/js/star-cta.js"></script>
 
-
-{% if jekyll.environment == "production" %} 
-  {% include_cached head/google-analytics.html %} 
-  {% include_cached head/facebookpixel.html %} 
-  {% include_cached head/twitterpixel.html %} 
+{% if jekyll.environment == "production" %}
+{% include_cached head/google-analytics.html %}
+{% include_cached head/facebookpixel.html %}
+{% include_cached head/twitterpixel.html %}
 {% endif %}
 
 {% if jekyll.environment != "production" %}
-  <!-- Tailwind magic locally --> 
-  <!-- run `tailwind` from functions before hitting prod --> 
-  <script src="https://cdn.tailwindcss.com"></script>
+<!-- Tailwind magic locally -->
+<!-- run `tailwind` from functions before hitting prod -->
+<script src="https://cdn.tailwindcss.com"></script>
 {% endif %}

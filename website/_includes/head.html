@@ -2,16 +2,22 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="{{ "/assets/css/index.46bb9c23.css" | relative_url }}">
+  <link rel="stylesheet" href="{{ "/assets/css/index.46bb9c24.css" | relative_url }}">
   <link rel="icon" type="image/png" href="/assets/img/favicon.png">
-  <title>{{ page.title }} - {{ site.description }}</title>
+  <title>{{ page.title }} - {{ site.tagline }}</title>
+  <meta name="description" content="{{ site.description }}">
+  <meta property="og:url" content="https://earthly.dev/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Earthly - {{ site.tagline }}">
+  <meta property="og:description" content="{{ site.description }}">
+  <meta property="og:image" content="{{site.url}}/assets/img/twitter-card-large.png">
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Earthly - Better Builds" />
-  <meta name="twitter:description" content="Build automation for the container era" />
-  <meta name="twitter:url" content="https://earthly.dev/" />
+  <meta property="twitter:domain" content="earthly.dev">
+  <meta property="twitter:url" content="https://earthly.dev/">
+  <meta name="twitter:title" content="Earthly - {{ site.tagline }}" />
+  <meta name="twitter:description" content="{{ site.description }}" />
   <meta name="twitter:image" content="{{site.url}}/assets/img/twitter-card-large.png" />
   <meta name="twitter:site" content="@EarthlyTech" />
-  <meta name="Description" content="Earthly - The world deserves better builds" />
 
   <script src="/assets/js/jquery-3.5.1.min.js"></script>
   <script defer src="/assets/js/tabs.js"></script>

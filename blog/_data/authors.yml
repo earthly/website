@@ -390,3 +390,11 @@ El Achu:
     name    : "El Achu"
     bio     : "El is a dev living in europe building a bunch of small startup projects and wants to share some of the things he learns on his way."
     avatar  : "/assets/images/authors/el.JPG"        
+Joseph Adediji:
+    name    : "Joseph Adediji"
+    bio     : "Joseph is a Python and Django developer with a passion for writing technical documentation. He enjoys creating software that solves real-world problems."
+    avatar  : "/assets/images/authors/joseph-adediji.jpg"    
+Kumar Harsh:
+    name    : "Kumar Harsh"
+    bio     : "Kumar Harsh is an indie software developer and devrel enthusiast. He is a spirited writer who puts together content around popular web technologies like Serverless and JavaScript."
+    avatar  : "/assets/images/authors/kumar-harsh.jpg"
