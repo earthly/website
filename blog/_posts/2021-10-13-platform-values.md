@@ -66,7 +66,7 @@ Another consideration we made was the prioritization of these values. As **Appro
 
 {% picture content-nocrop {{site.pimages}}{{page.slug}}/header-reproducibility.jpg --picture --alt {{ Reproducibility }} %}
 
-Reproducibility is the ability to consistently get the same result from the platform given the same inputs. Although Earthly doesn't yet provide full [reproducibility](​​https://reproducible-builds.org/) -- i.e. byte-for-byte deterministic output -- it does achieve what we call **repeatability**: a level of guarantee that the execution environment is isolated from host-specific characteristics or customizations.
+Reproducibility is the ability to consistently get the same result from the platform given the same inputs. Although Earthly doesn't yet provide full [reproducibility](​​<https://reproducible-builds.org/)> -- i.e. byte-for-byte deterministic output -- it does achieve what we call **repeatability**: a level of guarantee that the execution environment is isolated from host-specific characteristics or customizations.
 
 Because we value repeatability, Earthly has been designed around container technology and just about every build step takes place isolated from one another and from the host itself. Repeatability is, for example, the reason for which we don't allow host mounts. Host mounts are… well… host-dependent. So they can be a source of inconsistency.
 
