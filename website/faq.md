@@ -108,7 +108,9 @@ Yes! You can use the command `FROM DOCKERFILE` to inherit the commands in an exi
   </code>
 </pre>
 
-You may also optionally port your Dockerfiles to Earthly entirely. Translating Dockerfiles to Earthfiles is usually a matter of copy-pasting and making minor adjustments. See the [getting started page](/get-earthly) for some Earthfile examples.
+One limitation to using `FROM DOCKERFILE` in Earthly is that you cannot `COPY` artifacts created in a previous Earthly step in the middle of the Dockerfile build. You also cannot use a base image produced by Earthly earlier in the build to be used as part of the Dockerfile build.
+
+As an alternative, you may port your Dockerfiles to Earthly entirely. Translating Dockerfiles to Earthfiles is usually a matter of copy-pasting and making minor adjustments. See the [basics tutorial](https://docs.earthly.dev/basics) for some Earthfile examples.
 
 {: .mb-6 .text-lg .font-medium .text-gray-600 .sm:w-full .sm:text-lg .sm:leading-8 .sm:mb-6 }
 
