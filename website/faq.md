@@ -25,9 +25,49 @@ To learn more about our pricing, please visit our [pricing page](/pricing). To l
 
 <h2 class="text-2xl font-semibold mb-5 mt-20" id="existing-ci">Can I use Earthly with my existing continuous integration (CI) system?<span class="hide"><a href="#existing-ci">¶</a></span></h2>
 
-Yes, both Earthly and Earthly Satellite can be used from existing continuous integration (CI) systems. We have documented integrations for some [popular CI systems](https://docs.earthly.dev/docs/ci-integration) but it is likely that you will be able to get earthly working with your existing CI System. Hop in our [Slack channel](/slack) and you may find others using your CI system of choice.
+Yes, both Earthly and Earthly Satellite can be used from existing continuous integration (CI) systems. We have documented integrations for some [popular CI systems](https://docs.earthly.dev/docs/ci-integration) but it is likely that you will be able to get earthly working with any other CI System. Hop in our [Slack channel](/slack) and you may find others using your CI system of choice.
 
-Earthly CI, on the other hand, does not work together with a traditional CI. Earthly CI is typically used instead of a traditional CI system.
+Earthly CI, on the other hand, does not work together with a traditional CI. Earthly CI is typically used as a replacement for a traditional CI system.
+
+<h2 class="text-2xl font-semibold mb-5 mt-20" id="performance">How does Earthly CI achieve 2-20X performance gain compared to traditional CIs?<span class="hide"><a href="#performance">¶</a></span></h2>
+
+Earthly was designed from the ground up to be fast and to reuse as much previous work as possible in every run, without compromising usability or versatility. Earthly achieves 2-20X performance gain via a combination of caching and parallelization.
+
+Earthly's caching is based on the idea of image building layer caching, except that it is extended beyond image building, to also include testing, linting, code generation, producing non-image artifacts (such as binaries), and other use-cases typically involved in the CI/CD process. The layer caching technique allows Earthly to reuse computation from a previous run for the parts of the build where nothing has changed.
+
+A key performance feature of Earthly CI and of Earthly Satellite is the fact that the cache does not require any uploads or downloads. It is just there, available instantly when the build runs. By contrast, a traditional CI has a caching system with significantly less capabilties, but it also requires uploads and downloads, which can be a significant performance bottleneck. With traditional CIs caching something usually results in slower build times, because of the upload/download overhead.
+
+Earthly's parallelization is based on the fact that every component of the build executes in a container. As the container has clear inputs and outputs and is otherwise isolated from the rest of the process, the system can create a dynamic direct acyclic graph (DAG) and parallelize its operations to the maximum extent possible. Although currently, Earthly executes builds on a single machine, it is designed to be able to scale even further to multiple machines in the future.
+
+To learn more about why we designed Earthly CI this way, check out our [launch blog post](https://earthly.dev/blog/launching-earthly-ci/).
+
+<h2 class="text-2xl font-semibold mb-5 mt-20" id="satellites">What are Earthly Satellites?<span class="hide"><a href="#satellites">¶</a></span></h2>
+
+Satellites are single-tenant remote runners managed by the Earthly team. Satellites power the Earthly CI backbone, and as such, every pipeline created runs on its own dedicated satellite. Satellites may also be created manually, to be used as remote executors in development workflows.
+
+A subscription to Earthly Satellite allows you to use only satellites directly, without the Earthly CI web interface or automated GitHub triggers. Common use-cases for using standalone satellites include:
+
+- Using satellites on top of a traditional CI, in order to take advantage of the Earthly caching and parallelization capabilities without switching the CI system to Earthly CI
+- Using satellites in local development workflows in order to share compute and cache with colleagues
+- Using satellites in order to execute x86 builds on ARM (or Apple Silicon) machines, or vice-versa
+
+A subscription to Earthly CI allows access to both the CI capabilities, and also to the standalone satellite capabilities.
+
+To learn more about our plans, please visit our [pricing page](/pricing).
+
+<h2 class="text-2xl font-semibold mb-5 mt-20" id="monorepo">How does Earthly CI handle monorepo setups and what makes it special?<span class="hide"><a href="#monorepo">¶</a></span></h2>
+
+Earthly CI is designed to perform minimal work when a build is triggered. In a monorepo setup this means only rebuilding the components within the repository that have actually changed. This allows Earthly CI to scale to large monorepo setups, without sacrificing performance.
+
+Additionally, Earthly's strong reusability constructs allows for parts of the build to be shared between different sub-projects. The interdependencies between the sub-projects are expressed in the Earthfile, and the system will automatically detect when a sub-project has changed and needs to be rebuilt.
+
+In a traditional CI system, the chain between a changed file and the set of deliverables that need to be rexecuted (artifacts to be rebuilt, tests to be rerun, deployments to be refreshed) is not known to the system. The only available setting is often configuring triggers based on changes to subdirectories of a monorepo. However that strategy has significant limitations that don't work well in the real world. Either the triggers are aggressive and result in builds that grind the team to a halt, or they are too conservative and result in accidentally shipping changes that do not pass testing. No traditional CI supports monorepos properly.
+
+<h2 class="text-2xl font-semibold mb-5 mt-20" id="polyrepo">How does Earthly CI handle polyrepo or hybrid setups and what makes it special?<span class="hide"><a href="#polyrepo">¶</a></span></h2>
+
+Earthly has strong reusability constructs that allow for parts of the build to be referenced or imported from other repositories. It is possible to import artifacts, images and recipes from other repositories, such that the build definition is not repeated.
+
+Earthly's caching system is designed to only rebuild referenced deliverables only when they have actually changed. It is git-hash-aware, and even when changes are present, it only rebuilds the parts that are actually impacted by the change.
 
 <h2 class="text-2xl font-semibold mb-5 mt-20" id="nix">How does Earthly compare to Nix?<span class="hide"><a href="#nix">¶</a></span></h2>
 
@@ -111,6 +151,10 @@ Yes! You can use the command `FROM DOCKERFILE` to inherit the commands in an exi
 One limitation to using `FROM DOCKERFILE` in Earthly is that you cannot `COPY` artifacts created in a previous Earthly step in the middle of the Dockerfile build. You also cannot use a base image produced by Earthly earlier in the build to be used as part of the Dockerfile build.
 
 As an alternative, you may port your Dockerfiles to Earthly entirely. Translating Dockerfiles to Earthfiles is usually a matter of copy-pasting and making minor adjustments. See the [basics tutorial](https://docs.earthly.dev/basics) for some Earthfile examples.
+
+<h2 class="text-2xl font-semibold mb-5 mt-20" id="host">Where does Earthly host the build runners?<span class="hide"><a href="#host">¶</a></span></h2>
+
+Earthly CI and Earthly Satellite runners are only available as a fully managed SaaS offering currently. The servers are hosted in AWS on the West Coast in the USA. The runners are single-tenant. For more information regarding our security measures please see our [security page](/security).
 
 {: .mb-6 .text-lg .font-medium .text-gray-600 .sm:w-full .sm:text-lg .sm:leading-8 .sm:mb-6 }
 
