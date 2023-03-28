@@ -13,13 +13,15 @@ Today the concerns are much more complex: can we do the above, but efficiently, 
 
 Earthly CI was created for the era of today. The era of the modern developer working with complex code-bases using a mix of open-source, containerized workloads, monorepo and polyrepo layouts, mixed platforms, and mixed programming languages. Earthly CI democratizes builds in a team, and brings simplicity to the world of ever-increasing complexity. Additionally, Earthly CI scales to the needs of the team via its parallelization and caching capabilities that brings 2-20X faster builds compared to traditional CI systems.
 
+To learn more about why we built Earthly CI, check out our [launch blog post](https://earthly.dev/blog/launching-earthly-ci/).
+
 <h2 class="text-2xl font-semibold mb-5 mt-20" id="pricing">How is Earthly CI pricing different?<span class="hide"><a href="#pricing">¶</a></span></h2>
 
 Traditional hosted CIs bill by the build minute. This creates a misalignment between the CI provider and the customer, because the slower the build is, the more the vendor profits.
 
 Earthly CI on the other hand, uses Zero-margin Compute pricing plus a seat-based price. This means that the customer pays for the compute with no additional markup. Thus, making builds faster is a win-win for both the customer and for us: the customer saves time, and we get to provide a better experience that creates customer retention, without sacrificing our profits. The seat-based component of our pricing is how we make money, and it is based on the number of developers who are actively using Earthly CI. This means that it is directly proportional to the value that the customer is getting out of the product: increased developer productivity.
 
-To learn more about our pricing, please visit our [pricing page](/pricing).
+To learn more about our pricing, please visit our [pricing page](/pricing). To learn more about the motivation behind Zero-margin Compute, check out the [Earthly CI launch blog post](https://earthly.dev/blog/launching-earthly-ci/).
 
 <h2 class="text-2xl font-semibold mb-5 mt-20" id="existing-ci">Can I use Earthly with my existing continuous integration (CI) system?<span class="hide"><a href="#existing-ci">¶</a></span></h2>
 
@@ -86,7 +88,7 @@ Still think you should just write your own wrapper? We have some tips on our [bl
 
 <h2 class="text-2xl font-semibold mb-5 mt-20" id="multistage">Is Earthly a way to define a Docker multi-stage build?<span class="hide"><a href="#multistage">¶</a></span></h2>
 
-Yes, although Earthly is typically used in much more complex use-cases than that. Earthly is not only a tool for producing container images. Earthly is a tool for building cross platform build specifications. It can produce container images but it can also be used to produce binary artifacts, to run tests, to lint code, and anything else you would normally do inside of a build pipeline in a continuous integration (CI) system.
+Defining [multi-stage image builds](https://earthly.dev/blog/docker-multistage/) is one possible use-case, although Earthly is typically used in much more complex use-cases than that. Earthly is not only a tool for producing container images. Earthly is a tool for building cross platform build specifications. It can produce container images but it can also be used to produce binary artifacts, to run tests, to lint code, and anything else you would normally do inside of a build pipeline in a continuous integration (CI) system.
 
 <h2 class="text-2xl font-semibold mb-5 mt-20" id="pl">Can I use Earthly with my programming language or command line build tools?<span class="hide"><a href="#pl">¶</a></span></h2>
 
