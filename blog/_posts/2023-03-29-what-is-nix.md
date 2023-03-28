@@ -315,9 +315,9 @@ Yeah, the documentation for Nix is notoriously bad. Even comparatively with a lo
 
 My main take away after spending some time learning about Nix is that it embraces the functional programming concept of a pure function. If I give a function a certain set of inputs, it will return the same result every time, no matter what. Nix is about building software the same way, whether it's your own software, someone else's software, or your entire OS: You declare all your inputs explicitly and it will be built the same way every time.
 
-What I learned from talking to Nix users is that what really mattered to them, regardless of how they were using Nix, was its ability to bring purely functional programming concepts to computing areas that were previously off-limits. 
+What I learned from talking to Nix users is that what really mattered to them, regardless of how they were using Nix, was its ability to bring purely functional programming concepts to computing areas that were previously off-limits.
 
-From that single idea you get a whole [ecosystem]<https://nixos.wiki/wiki/Nix_Ecosystem)> of tools. We mainly covered the Nix language, the Nix Package Manager, and NixOS, but there's also a continuous build system called Hydra, nix shell and a deployment and provisioning tool called NixOps. Probably, there's even more.
+From that single idea you get a whole [ecosystem](https://nixos.wiki/wiki/Nix_Ecosystem) of tools. We mainly covered the Nix language, the Nix Package Manager, and NixOS, but there's also a continuous build system called Hydra, nix shell, and a deployment and provisioning tool called NixOps. Probably, there's even more.
 
 ### Ok, Thanks. Now What?
 
