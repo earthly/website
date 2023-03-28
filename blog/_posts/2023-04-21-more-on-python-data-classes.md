@@ -16,13 +16,106 @@ In this follow-up tutorial, we'll continue to explore a few more features of Pyt
 
 ## Useful Features of Python Data Classes
 
+~~~{.python caption="main.py"}
+# main.py
+@dataclass
+class Student:
+    name: str
+    roll_no: str
+    major: str
+    year: str
+    gpa: float
+    classes: list = field(default_factory=list)
+~~~
+
+
+
 ### Set More Complex Default Values With `default_factory`
+
+~~~{.python caption="main.py"}
+# main.py
+@dataclass
+class Student:
+    name: str
+    roll_no: str
+    major: str
+    year: str
+    gpa: float
+~~~
+
+~~~{.python caption="main.py"}
+import random
+import string
+
+alphabet = string.ascii_uppercase + string.digits
+
+def generate_roll_num():
+    roll_num = ''.join(random.choices(alphabet,k=9))
+    return roll_num
+~~~
+
+~~~{.python caption="main.py"}
+# main.py
+@dataclass
+class Student:
+    name: str
+    major: str
+    year: str
+    gpa: float
+    roll_num: str = field(default_factory=generate_roll_num)
+~~~
 
 ### Exclude Fields from the Constructor
 
+~~~{.python caption="main.py"}
+# main.py
+@dataclass
+class Student:
+    name: str
+    major: str
+    year: str
+    gpa: float
+    roll_num: str = field(default_factory=generate_roll_num, init=False)
+~~~
+
+
 ### Use `__post_init__` to Create Fields Post Initialization
 
+~~~{.python caption="main.py"}
+@dataclass
+class Student:
+    first_name: str
+    last_name: str
+    major: str
+    year: str
+    gpa: float
+    roll_num: str = field(default_factory=generate_roll_num, init=False)
+    email: str = field(init=False)
+~~~
+
+~~~{.python caption="main.py"}
+# main.py
+    def __post_init__(self):
+        self.email = f"{self.first_name}.{self.last_name}@uni.edu"
+~~~
+
+
 ### Order and Sort Data Class Instances
+
+~~~{.python caption="main.py"}
+@dataclass(order=True)
+class Student:
+    sort_index:int = field(init=False,repr=False)
+    first_name: str
+    last_name: str
+    major: str
+    year: str
+    gpa: float
+    roll_num: str = field(default_factory=generate_roll_num, init=False)
+    email: str = field(init=False)
+    tuition: int = 10000
+~~~
+
 
 ### Subclass Data Classes to Extend Functionality
 
