@@ -10,14 +10,21 @@ internal-links:
  - Python Classes
 ---
 
-Since their introduction in Python 3.7, data classes have emerged as a popular choice for classes that store data. In a [previous tutorial](/blog/python-data-classes), we talked about what data classes are and some of their features, including out-of-the-box support for object comparison, type hints, and default values of fields.
+Since their introduction in Python 3.7, data classes have emerged as a popular choice for Python classes that store data. In a [previous tutorial](/blog/python-data-classes), we talked about what data classes are and some of their features, including out-of-the-box support for object comparison, type hints, and default values of fields.
 
-In this follow-up tutorial, we'll continue to explore a few more features of Python data classes.
+In this follow-up tutorial, we'll continue to explore a few more features of Python data classes. We'll take a closer look at setting default values with `default_factory` and initializing new fields from pre-existing fields with `__post_init__`. In addition, we'll learn how inheritance works in data classes improved support for the use of `__slots__` since Python 3.10.
+
+Let's get started!
 
 ## Useful Features of Python Data Classes
 
+To keep things simple, I'll use the `Student` class from the previous tutorial on data classes:
+
 ~~~{.python caption="main.py"}
 # main.py
+from dataclasses import dataclass, field
+
+
 @dataclass
 class Student:
     name: str
@@ -28,9 +35,24 @@ class Student:
     classes: list = field(default_factory=list)
 ~~~
 
+<div class="notice--big--primary">
+### Before You Begin
+To follow along, basic understanding of data classes will be helpful. 
+You need Python 3.10 to run the code example in the `__slots__` section. All other code snippets will work as expected on Python 3.7+.
+</div>
 
+**What we've learned thus far:**
+
+- Data classes have a default implementation of the `__init__`, `__repr__`, and `__eq__` methods. 
+- They support type hints and default values for fields. Data class definitions do not allow mutable default arguments for fields.
+- All data class instances are *mutable* by default, but you can set the `frozen` parameter to `True` in the `@dataclass` decorator to make instances immutable.
 
 ### Set More Complex Default Values With `default_factory`
+
+`classes: list = field(default_factory=list)`
+
+- Remove the `classes` field.
+- Rename the `roll_no` field to `roll_num`.
 
 ~~~{.python caption="main.py"}
 # main.py
@@ -175,4 +197,6 @@ TypeError: '>' not supported between instances of 'Student' and 'Student'
 ### Use Slots for Improved Performance
 
 ## Conclusion
+
+And that's a wrap. So did we cover *everything* about data classes? No. But these are what you'll need when working with data classes.
 
