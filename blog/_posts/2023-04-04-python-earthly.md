@@ -3,13 +3,11 @@ title: "Better Dependency management in Python"
 categories:
   - Tutorials
 toc: true
-author: Adam
-
-internal-links:
- - just an example
+author: Rebecca Hines
+topic: python
+funnel: 3
 ---
-
-
+<!-- markdownlint-disable MD036 -->
 
 ## Welcome to Dependency Hell
 
@@ -65,21 +63,21 @@ if __name__ == '__main__':
 
 We also have a `requirements.txt` and all the normal python stuff.
 
-
-# The EarthFile
+### The EarthFile
 
 The nice thing about the Earthfile is it works with all our standard python tooling, and the way I normally install packages, I just do it inside the Earthfile.
 
 First I pick my python version and working directory:
-```
+
+~~~
 # Use a specific Python version
 FROM python:3.8
 WORKDIR /code
-```
+~~~
 
 Then, I have a specific `target` in Earthly parlance where I install my system level dependencies and then python packages. I call this `deps` copying the Earthly docs but I think you can call it anything.
 
-```
+~~~
 deps:
     # Install system-level dependencies
     RUN apt-get update && apt-get install -y libpq-dev
@@ -90,15 +88,31 @@ deps:
 
     # Copy in code
     COPY --dir src tests
-```
+~~~
 
 You can see I just use apt-get to install whatever system packages I need. It works just like a dockerfile in this way. Next I have a unit test step:
 
-```
+~~~
+test:
+  FROM +deps
+  RUN python -m unittest tests/test_app.py
+~~~
 
-```
+Then I can run tests from the command-line with `earthly +test` and it will run the tests in a environment configured with just the dependencies I installed. I'm on a mac book, but my colleagues on Windows and that one data engineering person using PopOS get the same result.
 
+Running the app and packaging it up into a container for prod all follow the same pattern.
 
+~~~
+# Build the target and start the application
+docker:
+  ENV FLASK_APP=src/app.py
+  ENTRYPOINT ["flask", "run", "--host=0.0.0.0", "--port=3000"]
+  SAVE IMAGE my-python-app:latest
+~~~
+
+You get the idea. Or checkout the [Earthly docs](https://docs.earthly.dev/) or online [example folder](https://docs.earthly.dev/docs/examples).
+
+Some on my team use Earthly for CI and `pyenv` and manual steps for local and that can work to. But for me, it took a bit for it to all click but not that I get it, I'm not going back.
 
 ## Conclusion
 
@@ -106,7 +120,7 @@ As a Python developer, I've experienced several challenges during the developmen
 
 * **Dependency management:** In my Python projects, I often require a variety of libraries and packages. This can lead to dependency conflicts and difficulties in maintaining consistent environments across different stages of development. Earthly has helped me isolate dependencies and ensure that the same versions are used throughout the build process, regardless of the host system.
 
-* **Virtual environments:** To manage dependencies and create isolated environments, I used virtual environments like venv or conda. However, setting up and maintaining these environments was cumbersome. Earthly simplified this process by using containers to manage and isolate environments automatically.
+* **Virtual environments:** To manage dependencies and create isolated environments, I used virtual environments like `venv` or `conda`. However, setting up and maintaining these environments was cumbersome. Earthly simplified this process by using containers to manage and isolate environments automatically.
 
 * **Build consistency:** I've experienced situations where my Python projects behaved differently across various environments, causing issues when deploying applications. Earthly has ensured that my builds are consistent across different systems by using containerization, which helps me avoid the "it works on my machine" problem.
 
@@ -120,31 +134,6 @@ As a Python developer, I've experienced several challenges during the developmen
 
 Overall, Earthly has helped me streamline my Python projects' build processes, making them more consistent, faster, and easier to manage, particularly when working with complex dependencies or in a team setting.
 
-### Writing Article Checklist
+{% include_html cta/cta2.html %}
 
-* [ ] Write Outline
-* [ ] Write Draft
-* [ ] Fix Grammarly Errors
-* [ ] Read out loud
-* [ ] Write 5 or more titles and pick the best on
-* [ ] First two paragraphs: What's it about? Why listen to you?
-* [ ] Create header image in Canva
-* [ ] Optional: Find ways to break up content with quotes or images
-* [ ] Verify look of article locally
-* [ ] Run mark down linter (`lint`)
-* [ ] Add keywords for internal links to front-matter
-* [ ] Run `link-opp` and find 1-5 places to incorporate links to other articles
-* [ ] Add Earthly `CTA` at bottom `{% include_html cta/cta2.html %}`
-* [ ] Raise PR
-
-## Outside Article Checklist
-
-* [ ] Add in Author page
-* [ ] Create header image in Canva
-* [ ] Optional: Find ways to break up content with quotes or images
-* [ ] Verify look of article locally
-  * Would any images look better `wide` or without the `figcaption`?
-* [ ] Run mark down linter (`lint`)
-* [ ] Add keywords for internal links to front-matter
-* [ ] Run `link-opp` and find 1-5 places to incorporate links
-* [ ] Add Earthly `CTA` at bottom `{% include_html cta/cta2.html %}`
+_This Python and Earthly experience report was written by Rebecca Hines in collaboration with the marketing team at Earthly._
