@@ -11,7 +11,7 @@ internal-links:
  - Package Manager
 ---
 
-I was at a bar with friends, and one of them mentioned that they'd heard that Nix was turning 20 this month.
+I was at a bar with friends, and one of them mentioned that they'd heard that Nix is [turning 20 this month](https://discourse.nixos.org/t/nix-20th-anniversary-march-of-nix/24209).
 
 "What exactly is Nix?" I asked.  
 
