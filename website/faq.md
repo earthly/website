@@ -31,7 +31,7 @@ Earthly CI, on the other hand, does not work together with a traditional CI. Ear
 
 <h2 class="text-2xl font-semibold mb-5 mt-20" id="performance">How does Earthly CI achieve 2-20X performance gain compared to traditional CIs?<span class="hide"><a href="#performance">¶</a></span></h2>
 
-Earthly was designed from the ground up to be fast and to reuse as much previous work as possible in every run, without compromising usability or versatility. Earthly achieves 2-20X performance gain via a combination of caching and parallelization.
+Earthly was designed from the ground up to be fast and to reuse as much previous work as possible in every run, without compromising usability or versatility. Earthly CI achieves 2-20X performance gain via a combination of caching and parallelization.
 
 Earthly's caching is based on the idea of image building layer caching, except that it is extended beyond image building, to also include testing, linting, code generation, producing non-image artifacts (such as binaries), and other use-cases typically involved in the CI/CD process. The layer caching technique allows Earthly to reuse computation from a previous run for the parts of the build where nothing has changed.
 
@@ -61,7 +61,7 @@ Earthly CI is designed to perform minimal work when a build is triggered. In a m
 
 Additionally, Earthly's strong reusability constructs allows for parts of the build to be shared between different sub-projects. The interdependencies between the sub-projects are expressed in the Earthfile, and the system will automatically detect when a sub-project has changed and needs to be rebuilt.
 
-In a traditional CI system, the chain between a changed file and the set of deliverables that need to be rexecuted (artifacts to be rebuilt, tests to be rerun, deployments to be refreshed) is not known to the system. The only available setting is often configuring triggers based on changes to subdirectories of a monorepo. However that strategy has significant limitations that don't work well in the real world. Either the triggers are aggressive and result in builds that grind the team to a halt, or they are too conservative and result in accidentally shipping changes that do not pass testing. No traditional CI supports monorepos properly.
+In a traditional CI system, the chain between a changed file and the set of deliverables that need to be rexecuted (artifacts to be rebuilt, tests to be rerun, deployments to be refreshed) is not known to the system. The only available setting is often configuring triggers based on changes to subdirectories of a monorepo. However that strategy has significant limitations that don't work well in real-world scenarios. Either the triggers are too aggressive and result in builds that grind the team to a halt, or they are too conservative and result in accidentally shipping changes that do not pass testing. No traditional CI supports monorepos properly.
 
 <h2 class="text-2xl font-semibold mb-5 mt-20" id="polyrepo">How does Earthly CI handle polyrepo or hybrid setups and what makes it special?<span class="hide"><a href="#polyrepo">¶</a></span></h2>
 
