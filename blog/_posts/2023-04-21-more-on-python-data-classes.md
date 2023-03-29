@@ -37,7 +37,7 @@ class Student:
 @dataclass
 class Student:
     name: str
-    roll_no: str
+    roll_num: str
     major: str
     year: str
     gpa: float
@@ -47,6 +47,7 @@ class Student:
 import random
 import string
 
+random.seed(42)
 alphabet = string.ascii_uppercase + string.digits
 
 def generate_roll_num():
@@ -65,7 +66,26 @@ class Student:
     roll_num: str = field(default_factory=generate_roll_num)
 ~~~
 
+~~~{.python caption=""}
+>>> from main import Student
+>>> jane = Student('Jane','Computer Science','senior',3.99)
+>>> jane
+~~~
+
+~~~{ caption="Output"}
+Student(name='Jane', major='Computer Science', year='senior', gpa=3.99, roll_num='XAJI0Y6DP')
+~~~
+
 ### Exclude Fields from the Constructor
+
+~~~{.python caption=""}
+>>> julia = Student('Julia','Economics','junior',3.72,"don't know")
+>>> julia
+~~~
+
+~~~{ caption="Output"}
+Student(name='Julia', major='Economics', year='junior', gpa=3.72, roll_num="don't know")
+~~~
 
 ~~~{.python caption="main.py"}
 # main.py
@@ -78,6 +98,15 @@ class Student:
     roll_num: str = field(default_factory=generate_roll_num, init=False)
 ~~~
 
+~~~{.python caption=""}
+>>> jake = Student('Jake','Math','sophomore',3.33,'MyRollNum')
+~~~
+
+~~~{ caption="Output"}
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: __init__() takes 4 positional arguments but 5 were given
+~~~
 
 ### Use `__post_init__` to Create Fields Post Initialization
 
@@ -99,6 +128,15 @@ class Student:
         self.email = f"{self.first_name}.{self.last_name}@uni.edu"
 ~~~
 
+~~~{.python caption=""}
+>>> jane = Student('Jane','Lee','Computer Science','senior',3.99)
+>>> jane
+~~~
+
+~~~{ caption="Output"}
+Student(first_name='Jane', last_name='Lee', major='Computer Science', year='senior', gpa=3.99, roll_num='XAJI0Y6DP', email='Jane.Lee@uni.edu')
+~~~
+
 
 ### Order and Sort Data Class Instances
 
@@ -116,7 +154,22 @@ class Student:
     tuition: int = 10000
 ~~~
 
+~~~{.python caption="main.py"}
+jane = Student('Jane','Lee','Computer Science','senior',3.99)
+julia = Student('Julia','Doe','Economics','junior',3.63,27000)
+~~~
 
+~~~{.python caption="main.py"}
+print(julia > jane)
+~~~
+
+~~~{ caption="Output"}
+Traceback (most recent call last):
+  File "main.py", line 52, in <module>
+    print(julia > jane)
+TypeError: '>' not supported between instances of 'Student' and 'Student'
+~~~
+  
 ### Subclass Data Classes to Extend Functionality
 
 ### Use Slots for Improved Performance
