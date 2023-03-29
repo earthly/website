@@ -8,6 +8,8 @@ author3: Adam
 fbio: false
 internal-links:
  - just an example
+topic: engineering
+funnel: 2
 ---
 _Earthly Compute is an internal service that customers use indirectly via Earthly CI. Now that CI has been publicly announced, we have some stuff ~~to get off their chests~~ that we can finally share._
 

@@ -9,6 +9,7 @@ sidebar:
 internal-links:
  - bash strings
  - bash substring
+topic: cli
 ---
 
 <div class="narrow-code">
@@ -46,6 +47,8 @@ test
 If you need a review of the basics of bash scripting, check out [Understanding Bash](/blog/understanding-bash/). If not, know that everything covered will work in bash version 3.2 and greater. Much covered will also work in ZSH. That means everything here will work on macOS, Windows under WSL and WSL 2, and most Linux distributions. Of course, if you're on Alpine, or some minimal linux distribution, you will need to install bash first.
 
 Let's start at the beginning.
+
+{% include_html cta/cli1.html %}
 
 ## Bash Concatenate Strings
 
@@ -264,6 +267,8 @@ ash
 sh
 h
 ~~~
+
+{% include_html cta/cli2.html %}
 
 ## Bash String Replace
 
@@ -503,7 +508,7 @@ I hope this overview of string manipulation in bash gave you enough details to c
 
 Also, if you're the type of person who's not afraid to solve problems in bash then take a look at [Earthly](https://earthly.dev/). It's a great tool for creating repeatable builds in a approachable syntax.
 
-{% include cta/cta1.html %}
+{% include_html cta/cta2.html %}
 
 <div class="no_toc_section">
 ## Feedback

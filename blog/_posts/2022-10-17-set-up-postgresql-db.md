@@ -766,4 +766,4 @@ There is still a lot a long way to go forward from here. Using the same `seconda
 
 ° [Django official documentation on managing multiple databases](https://docs.djangoproject.com/en/4.1/topics/db/multi-db/#using-routers)
 
-{% include cta/cta1.html %}
+{% include_html cta/cta2.html %}

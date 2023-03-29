@@ -9,8 +9,8 @@ internal-links:
    - mitmproxy
    - proxy
 last_modified_at: 2022-11-17
+topic: cli
 ---
-
 ## Introduction
 
 Have you ever wanted to see what kinds of requests a service or application on your machine is making and what kind of responses it is getting back? Have you ever tried and failed to capture this traffic or modify it to investigate how something works (or doesn't work). If you have, then mitmproxy might be what you need. Being able to scan through and observe HTTP protocol traffic easily is a great debugging aid.
@@ -20,6 +20,8 @@ This guide will walk you through installing and using mitmproxy to capture HTTPS
 ## What Is mitmproxy?
 
 mitmproxy is a command-line tool that acts as a HTTP and HTTPS proxy and records all the traffic. You can easily see what requests are being made and even replay them. It's great for diagnosing problems.
+
+{% include_html cta/cli1.html %}
 
 ## Installing It
 
@@ -180,6 +182,8 @@ On Debian-based Linux distributions, follow these steps:
 ## Great Success
 
 At this point, assuming you still have mitmproxy running and you still have your network interface setup to proxy through `localhost:8080`, you should be able to view all the HTTP and HTTPS network requests your machine is making in the mitmproxy (or mitmweb) window.
+
+{% include_html cta/cli2.html %}
 
 Here is Slack making requests:
 {% include imgf src="14.png" alt="mitmweb has captured a request from the slack application" caption="mitmweb has captured a request from the slack application" %}
@@ -508,4 +512,4 @@ If you can get something running on your local machine, you can now capture and 
 
 The fun doesn't stop here, though.  [mitmproxy](https://mitmproxy.org/) can modify and replay requests and has an active ecosystem, including [mastermind](https://github.com/ustwo/mastermind) which lets you build mock services based on captured requests and [BDFProxy](https://github.com/secretsquirrel/BDFProxy), which uses mitmproxy to modify common security updates for <del>nefarious reasons</del> security research projects, and much more.  
 
-{% include cta/cta1.html %}
+{% include_html cta/cta2.html %}

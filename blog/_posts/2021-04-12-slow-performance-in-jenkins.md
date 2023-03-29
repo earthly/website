@@ -6,6 +6,7 @@ toc: true
 author: Milan Bhardwaj
 internal-links:
     - jenkins
+topic: ci
 ---
 There's nothing more frustrating than a sluggish continuous integration system. It slows down feedback loops and prevents code from reaching production quickly. While quick fixes like using a bigger CI server can buy you time, you ultimately have to invest in maintaining the performance of your continuous integration workflow.
 

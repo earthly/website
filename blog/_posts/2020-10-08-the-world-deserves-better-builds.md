@@ -4,6 +4,8 @@ featured: true
 author: Vlad
 categories:
   - News
+topic: earthly
+funnel: 3
 ---
 
 Hello, developers of planet Earth! Earlier this year, we at Earthly embarked on a journey to bring better builds to the world. We started with a deep belief that builds should be self-contained, reproducible, portable, and parallel. In addition, we think build tools should be friendly, accessible, and down to earth - hence our name.
@@ -44,7 +46,11 @@ There are lots of other goodies that Earthly does beyond this, such as automatic
 ## What's Next?
 
 Having reproducible builds is the first step in our journey. We plan to build shared caching and highly parallel cloud-based builds next. We have a deep belief that builds can create bridges between engineering teams - not roadblocks. This has become our mission, and we will not stop until we've achieved it!  
-Since our launch, we've worked with our users to address their needs and make the experience as pleasant and friendly as possible. We love feedback - check out [Earthly on GitHub](https://github.com/earthly/earthly), drop by our [Gitter channel](https://gitter.im/earthly-room/community) or open a GitHub [issue](https://github.com/earthly/earthly/issues/new) - tell us what you're building and how your experience can be improved. We're excited to have you join us on our journey!
+Since our launch, we've worked with our users to address their needs and make the experience as pleasant and friendly as possible. We love feedback - check out [Earthly](/), drop by our [slack channel](/slack) or tell us what you're building and how your experience can be improved.
+
+We're excited to have you join us on our journey!
+
+{% include_html cta/cta2.html %}
 
 > "Reproducible and parallelizable build and continuous integration, as well as explicit dependency management, are critical to scaling any organization. I'm extremely excited about Earthly bringing this functionality to existing container based build systems without requiring an extremely expensive retooling effort on top of something like Bazel. Earthly is a pragmatic and incremental solution to a thorny problem that all organizations face."
 >

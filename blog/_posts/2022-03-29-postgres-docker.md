@@ -9,6 +9,7 @@ internal-links:
  - postgres docker
  - postgres containers
  - database containers
+topic: docker
 ---
 
 Relational databases have been an easy way to store relational data for the last few decades. Over the years, many popular database management systems have been created, but installing them can be tricky.
@@ -26,6 +27,8 @@ When considering running PostgreSQL, you should take into account portability. I
 However, keep in mind that data is not persistent and gets removed as soon as the container is turned off when you're using PostgreSQL inside a Docker container. In order to address this issue, you can mount a local directory as a volume and store PostgreSQL data from the container into the local volume. You'll learn more about this below.
 
 In addition to that, databases are stateful applications, while containers are built to run stateless applications. Also, databases are very resource-intensive applications, and running such databases on a [production workload is not ideal](https://vsupalov.com/database-in-docker/). An alternate solution might be to use any database-as-a-service offering from a cloud vendor, like AWS, [GCP](https://cloud.google.com/gcp/), or Azure in production but use containers for quick development.
+
+{% include_html cta/docker1.html %}
 
 ## Implement PostgreSQL Using Docker
 
@@ -83,6 +86,8 @@ postgres                                   latest          5cd1494671e9   15 hou
 ~~~
 
 This command lists all the images that are installed in your local machine.
+
+{% include_html cta/docker2.html %}
 
 ## Run the PostgreSQL Container
 
@@ -211,4 +216,4 @@ In this article, you've learned about running a PostgreSQL instance on Docker. Y
 
 In order to deploy your container-based applications, you need to implement a CI/CD pipeline that will continuously build your Docker image and deploy it when new versions of your code are available. [Earthly](https://docs.earthly.dev/docs/guides/docker-in-earthly) is a popular CI tool that can be used to automate your container deployments. It provides integrations with most of the popular CI tools, like [Jenkins](https://www.jenkins.io), [AWS CodeBuild](https://aws.amazon.com/codebuild/), [CircleCI](https://circleci.com), and [GitHub Actions](https://github.com/features/actions). You can learn more about Earthly on their [website](https://earthly.dev/).
 
-{% include cta/cta1.html %}
+{% include_html cta/cta2.html %}

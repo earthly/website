@@ -473,7 +473,7 @@ As an activity tracker, what I have so far is pretty weak. But as a learning les
 
 Now I just have to start being active! Maybe building a command line client for this service will help.
 
-{% include cta/cta1.html %}
+{% include_html cta/cta2.html %}
 
 ## Appendix
 

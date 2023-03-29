@@ -11,6 +11,7 @@ internal-links:
  - Cluster
  - Prometheus
  - Namespace
+topic: kubernetes
 ---
 
 So you have a Kubernetes cluster, and you want to keep an eye on its memory CPU and storage usage? Well, look no further than Grafana and Prometheus monitoring.
@@ -273,4 +274,4 @@ Follow the same steps to select dashboards for Kubernetes resources you want to 
 
 When using Kubernetes, monitoring the cluster is a good idea. Visualizing usage with a Prometheus and Grafana dashboard can be extremely beneficial because it reduces the workload of monitoring your cluster.
 
-{% include cta/cta1.html %}
+{% include_html cta/cta2.html %}

@@ -258,4 +258,4 @@ In this article, the fundamentals of [Bazel](https://bazel.build), specifically 
 
 Bazel isn't the only solution for the automation of building and testing software. [Earthly](https://earthly.dev/) provides a convenient [CI/CD](/blog/ci-vs-cd) framework to build images or stand-alone artifacts by leveraging containers for the execution of pipelines. Earthly combines the best ideas from Dockerfiles and Makefiles into one specification, making the containers self-contained, repeatable, portable, and parallel.
 
-{% include cta/cta1.html %}
+{% include_html cta/cta2.html %}

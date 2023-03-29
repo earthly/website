@@ -64,4 +64,4 @@ As your application, and more importantly your user base, grows, you want to be 
 
 Many of the difficult pieces of implementing a canary deployment system can be mitigated with a tool like [Earthly](https://earthly.dev/). Earthly helps manage and automate your build process, which is a key component of managing the added complexity of a canary deployment process. With Earthly, all builds are containerized, repeatable, and language agnostic, ensuring that you get consistent results no matter what language or infrastructure your application currently uses.
 
-{% include cta/cta1.html %}
+{% include_html cta/cta2.html %}

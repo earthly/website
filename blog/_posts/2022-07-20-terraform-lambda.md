@@ -851,4 +851,4 @@ The Terraform code written here for sure could be improved. I could be extractin
 
 You can find the full all the source on [GitHub](https://github.com/adamgordonbell/cloudservices/tree/terraform-import).
 
-{% include cta/cta1.html %}
+{% include_html cta/cta2.html %}

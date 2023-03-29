@@ -8,6 +8,7 @@ internal-links:
  - vscode
 sidebar:
   nav: "makefile"
+topic: make
 ---
 <iframe width="560" height="315" src="https://www.youtube.com/embed/vAS4R5P0Orc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 Microsoft announced [recently](https://devblogs.microsoft.com/cppblog/now-announcing-makefile-support-in-visual-studio-code/) a new Visual Studio Code extension to handle Makefiles. This extension provides a set of commands to the editor that will facilitate working with projects that rely on a Makefile to speed up the build.
@@ -26,6 +27,8 @@ A *Makefile* is a simple text file that defines rules to be executed. The usual 
 - Regular expressions
 - Target notation
 - Project structure
+
+{% include_html cta/make1.html %}
 
 To illustrate this power, the [sample project](https://github.com/nickmancol/vscode_makefile) contains a single C++ source code file. The source code for the example is pretty simple —- it flips a coin as many times as the `iters` argument is passed, and then prints the number of heads and tails counted from each flip.
 
@@ -89,6 +92,8 @@ This sample Makefile defines five simple rules:
 - `CoinFlipper.cpp`: Compiles the single source file.
 - `test`: Delegates to `CoinFlipper.cpp`, then runs the output main function passing an argument.
 - `clean`: Deletes compiled files.
+
+{% include_html cta/make2.html %}
 
 ~~~
 #

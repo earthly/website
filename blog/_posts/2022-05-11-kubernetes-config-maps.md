@@ -7,6 +7,7 @@ author: James Walker
 
 internal-links:
  - just an example
+topic: kubernetes
 ---
 Most applications have configuration parameters that need to be provided at runtime. It's common to use command line arguments, environment variables, and static files to configure software deployed using traditional methods. These techniques are also available to containerized [Kubernetes](https://kubernetes.io/) workloads via the ConfigMap API object.
 

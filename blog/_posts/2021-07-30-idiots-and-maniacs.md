@@ -64,7 +64,7 @@ I'm not trying to pick on any of these languages - Typescript, Go, and Kotlin ar
 
 That doesn't mean that other people are never wrong, though. People choose the wrong tool for the job all the time. For example, if I were doing SQLite's level of testing for a low-reliability, low-traffic, state-less web service when a couple of integration tests would do, then that'd be a mistake, but you'd have to know the context to make that call.
 
-{% include cta/cta1.html %}
+{% include_html cta/cta2.html %}
 
 [^1]: Richard is the creator of SQLite. See my [interview](https://corecursive.com/066-sqlite-with-richard-hipp/#billions-of-tests) with him for a discussion of his testing approach.
 [^2]: **Article Update:** Apparently I've unintentionally stolen this idiot to maniac spectrum idea from [George Carlin](https://www.youtube.com/watch?v=XWPCE2tTLZQ). Thanks to tjones21xx on Reddit for pointing this out. All credit for this idea goes to Carlin.

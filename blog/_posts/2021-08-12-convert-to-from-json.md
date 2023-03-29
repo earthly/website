@@ -9,6 +9,7 @@ internal-links:
  - csv to json
  - json
  - convertion tool
+topic: cli
 ---
 How do you convert JSON values to CSV and back at the command line? I've done this task on many occasions and been stung by the edge cases frequently enough that **it's time for me to share my favorite tools for this conversion process.** But first, some background.
 
@@ -40,6 +41,8 @@ Things get more complex from there, and even the [CSV standard](https://datatrac
 So although it seems like CSV conversion can be done by hand in python, or your language of choice, using an existing tool that is known to handle the edges cases well it the way to go.
 
 With that in mind, let's review some tools for converting from JSON to CSV at the command line.
+
+{% include_html cta/cli1.html %}
 
 ## Convert JSON to CSV via the Command Line
 
@@ -84,7 +87,7 @@ blue,3,#00f
 
 `dasel` handles newlines and values containing commas as well.
 
-{% include cta/embedded-newsletter.html %}
+{% include_html cta/cli2.html %}
 
 ## Convert JSON to CSV via the Command Line Using JQ
 
@@ -183,4 +186,6 @@ csvtojson < sample.csv
 
 You now have the knowledge and the tools you need to convert JSON to CSV and CSV to JSON. [`jq`](https://stedolan.github.io/jq/), [`dasel`](https://github.com/TomWright/dasel), [`csvtojson`](https://www.npmjs.com/package/csvtojson) and [`jsonv`](https://github.com/archan937/jsonv.sh) are handy command line tools that can be used on Linux, MacOS and Windows under WSL 2.
 
-{% include cta/cta1.html %}
+Also, if you're the type of person who's not afraid to do things on the command line then you might like [Earthly](/):
+
+{% include_html cta/cta2.html %}

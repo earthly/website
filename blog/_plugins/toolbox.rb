@@ -7,7 +7,7 @@ module Jekyll
         result = collection.sort_by { |hsh| hsh["title"] }
         result
       end
-    end
   end
-  
-  Liquid::Template.register_filter(Jekyll::Toolbox)
+end
+
+Liquid::Template.register_filter(Jekyll::Toolbox)
