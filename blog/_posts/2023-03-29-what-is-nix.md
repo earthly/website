@@ -11,9 +11,7 @@ internal-links:
  - Package Manager
 ---
 
-A few weeks ago, this true thing happened to me:
-
-I was at a bar with friends, and one of them mentioned that they'd heard that Nix was turning 20 this year.
+I was at a bar with friends, and one of them mentioned that they'd heard that Nix was turning 20 this month.
 
 "What exactly is Nix?" I asked.  
 
@@ -21,9 +19,9 @@ I was at a bar with friends, and one of them mentioned that they'd heard that Ni
 
 Then someone else chimed in. "I thought it was a Linux distro, but like, different?"
 
-I pulled out my phone and Binged it, "Says here it's a programming language for managing and building software?"
+I pulled out my phone and looked it up, "Says here it's a programming language for managing and building software?"
 
-If you're like me and my real friends, you may have come across some similar confusion when trying to understand what exactly [Nix](https://nixos.org/) is. If so, I've got answers.
+You may have come across some similar confusion when trying to understand what exactly [Nix](https://nixos.org/) is. If so, I've got answers.
 
 ## To the Experts
 
