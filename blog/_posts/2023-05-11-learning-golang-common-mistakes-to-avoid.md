@@ -769,6 +769,8 @@ In conclusion, Golang is a powerful and efficient programming language that can 
 
 Let’s also remember to take advantage of the vast resources available online and in the Go community, as well as to practice and experiment with different code snippets and examples to improve our skills.
 
+{% include_html cta/cta2.html %}
+
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
@@ -778,4 +780,3 @@ Let’s also remember to take advantage of the vast resources available online a
 - [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/cta2.html %}`
