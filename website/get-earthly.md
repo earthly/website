@@ -227,7 +227,7 @@ See the <a href="https://docs.earthly.dev/earthly-cloud/earthly-ci" class="under
                 </a>
 
   <div class="text-2xl mt-6 border-t pt-4 border-gray-300">
-    Other CI integrations
+    Run Earthly in a traditional CI
   </div>
 <div class="mt-2">
 See the <a href="https://docs.earthly.dev/guides/ci-integration" class="underline  font-semibold blue-link">CI integration guide</a>
