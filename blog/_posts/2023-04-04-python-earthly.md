@@ -30,7 +30,7 @@ What we needed was a solution that could simplify the dependency management proc
 
 ## The Solution
 
-The solution I use today for this problem is Earthly. I use it for testing, CI, building container images and sometimes the local development workflow.[^1]
+The solution I use today for this problem is [Earthly](/). I use it for testing, CI, building container images and sometimes the local development workflow.[^1]
 
 [^1]: 'Use' is probably an understatement. I created the first version of Earthly, not only to deal with these build and dependency problems but also to make my life easier. I open-sourced Earthly, built a company around it, and I'm even considering getting an Earthly tattoo. In fact, I'm so into Earthly that I've been contemplating changing my name to "Earthling" and adopting "Build, Test, Deploy" as my personal motto. So yeah, you could say I'm a fan.
 
@@ -122,11 +122,11 @@ You get the idea. Earthly can also be great for integration tests.
 
 ## Integration Tests
 
-Before we role code out into production, we have some relatively large 'integration' tests. These tests don't just touch the python code but its dependendies as well. Database writes and read happen. Earthly makes it easy to do these in CI.
+Before we role code out into production, we have some relatively large 'integration' tests. These tests don't just touch the python code but its dependencies as well. Database writes and read happen. Earthly makes it easy to do these in CI.
 
 First I have a docker compose with all my service dependencies in it. Then I just have a target in my Earthfile that starts everything up and tears everything down, running the tests in-between.
 
-~~~
+~~~{.dockerfile caption="Earthfile"}
 integration-tests:
     FROM +deps 
     RUN apk update && apk add postgresql-client
