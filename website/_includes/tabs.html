@@ -1,19 +1,33 @@
-<div class="tabcontrol container">
-    <ul class="tabcontrol tabs" style="{{include.headerstyle}}">
-        {% for tab in include.tabs %}
-            <li class="tabcontrol tab {% if {tab[1].active %}active{% endif %}" data-name="{{tab[1].name}}" data-target="tab_{{include.id}}" data-source="{{include.id}}__{{tab[1].source}}">
-                {{tab[1].title}}
+<div class="shadow-lg rounded-xl border bg-gray-100 px-6 py-4 ">
+    <div class="text-3xl pb-4">
+        {{include.title}}
+
+    </div>
+
+    <div class="text-lg pb-1 text-gray-600">
+        {{include.selectDescription}}
+    </div>
+    <div class="tabcontrol container ">
+        <ul class="tabcontrol tabs">
+            {% for tab in include.tabs %}
+            <li class="tabcontrol tab flex text-lg cursor-default rounded-xl mr-2 px-4 py-1 items-center justify-center {% if {tab[1].active %}active bg-[#2d7e5d]{% endif %}"
+                data-name="{{tab[1].name}}" data-target="tab_{{include.id}}"
+                data-source="{{include.id}}__{{tab[1].source}}">
+                {{tab[1].title}} {% if tab[1].subtitle %}<span class="ml-2 text-base ">{{tab[1].subtitle}}</span> {%
+                endif %}
             </li>
             {% if tab[1].active %}
-                {% assign defaultsource = tab[1].source %}
+            {% assign defaultsource = tab[1].source %}
             {% endif %}
             {% if tab[1].content %}
             <div id="{{include.id}}__{{tab[1].source}}" class="hidden">
                 {{tab[1].content | markdownify }}
             </div>
             {% endif %}
-        {% endfor %}
-    </ul>
-</div>
-<div id="tab_{{include.id}}" class="tabcontrol body {{include.bodyclass}}" style="{{include.bodystyle}}" data-defaultsource="{{include.id}}__{{defaultsource}}">
+            {% endfor %}
+        </ul>
+    </div>
+    <div id="tab_{{include.id}}" class="tabcontrol body {{include.bodyclass}}" style="{{include.bodystyle}}"
+        data-defaultsource="{{include.id}}__{{defaultsource}}">
+    </div>
 </div>
