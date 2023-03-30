@@ -9,7 +9,7 @@ internal-links:
  - just an example
 ---
 
-Python is a versatile language used for various applications. However, managing dependencies, the packages a project relies on can be a complex and time-consuming task. With the growth of the Python ecosystem, developers need to manage a large number of packages and dependencies and ensure that they are compatible with each other.
+Python is a versatile language used for various applications. However, managing dependencies, the [packages](/blog/setup-typescript-monorepo) a project relies on can be a complex and time-consuming task. With the growth of the Python ecosystem, developers need to manage a large number of packages and dependencies and ensure that they are compatible with each other.
 
 Poetry provides a solution to these challenges. [Poetry](https://python-poetry.org/) is a package manager for Python that allows developers to manage dependencies, create virtual environments, and package their projects for distribution, all using a single command-line tool.
 
@@ -26,7 +26,7 @@ You can find the code samples used in this tutorial in [this repository](https:/
 
 ## Installation
 
-Poetry is designed to be compatible with multiple platforms, including Linux, macOS, and Windows. It features a customized installer that installs Poetry in a separate virtual environment, isolating it from the rest of the system. This prevents accidental upgrades or uninstalls of dependencies and enables Poetry to manage its environment effectively.
+Poetry is designed to be compatible with multiple platforms, including Linux, macOS, and [Windows](/blog/makefiles-on-windows). It features a customized installer that installs Poetry in a separate virtual environment, isolating it from the rest of the system. This prevents accidental upgrades or uninstalls of dependencies and enables Poetry to manage its environment effectively.
 
 To install Poetry on **Windows**, open the Windows Powershell and run the following command:
 
@@ -143,7 +143,7 @@ The `poetry init` command initiates an interactive session for creating the `pyp
 
 ## Managing Virtual Environments
 
-As you learn Python and start building different projects, you'll quickly find that each project may have different versions of libraries and dependencies. If these versions conflict with each other, it can lead to unexpected errors and make it difficult to manage the projects. This is where virtual environments can help.
+As you learn Python and start building different projects, you'll quickly find that each project may have different versions of libraries and dependencies. If these versions conflict with each other, it can lead to unexpected errors and [make](/blog/makefiles-on-windows) it difficult to manage the projects. This is where virtual environments can help.
 
 Virtual environments are isolated environments for your Python projects. This means that each project can have its own set of dependencies, without affecting other projects or your system's Python installation. This is particularly useful when you have multiple projects that require different versions of the same dependency.
 
@@ -673,7 +673,7 @@ Building weather-update (0.1.0)
   - Built weather_update-0.1.0-py3-none-any.whl
 ~~~
 
-Packaging a project before publishing it is important because it makes the project easier to distribute, install, and use for others. Poetry uses the information specified in the `pyproject.toml` file, such as the project name, version, and dependencies, to package the project in two different formats: `sdist` and `wheel`. Wheel distributions are pre-compiled packages that can be installed quickly, while source distributions contain the raw source code and require compilation.
+Packaging a project before publishing it is important because it makes the project easier to distribute, install, and use for others. Poetry uses the information specified in the `pyproject.toml` file, such as the project name, version, and dependencies, to package the project in two different formats: `sdist` and `wheel`. Wheel distributions are pre-compiled [packages](/blog/setup-typescript-monorepo) that can be installed quickly, while source distributions contain the raw source code and require compilation.
 
 Next, you have to [configure your PyPI credentials](https://python-poetry.org/docs/repositories/#configuring-credentials) properly as Poetry will publish the library to PyPI by default.
 
@@ -688,7 +688,7 @@ After publishing the package, you can search for it on PyPI. For example, you ca
 
 ## Conclusion
 
-Managing dependencies in Python development is crucial for ensuring the stability and reliability of your projects. Poetry offers a convenient and efficient solution for handling dependencies, making it a popular choice among Python developers.
+Managing dependencies in Python development is crucial for ensuring the stability and [reliability](/blog/achieving-repeatability) of your projects. Poetry offers a convenient and efficient solution for handling dependencies, making it a popular choice among Python developers.
 
 In this tutorial, you have explored the steps involved in using Poetry for managing dependencies in Python projects, from installation to publishing a package. Specifically, you have learned the creation of virtual environments, managing dependencies, including adding, removing, and synchronizing them, and publishing a Python project as a package. You can explore much more about Poetry in its [official documentation](https://python-poetry.org/).
 
@@ -701,4 +701,3 @@ In this tutorial, you have explored the steps involved in using Poetry for manag
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
