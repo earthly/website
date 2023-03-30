@@ -230,7 +230,7 @@ See the <a href="https://docs.earthly.dev/earthly-cloud/earthly-ci" class="under
     Run Earthly in a traditional CI
   </div>
 <div class="mt-2">
-See the <a href="https://docs.earthly.dev/guides/ci-integration" class="underline  font-semibold blue-link">CI integration guide</a>
+See the <a href="https://docs.earthly.dev/guides/ci-integration" class="underline  font-semibold blue-link">CI integration guide</a> to use Earthly in GitHub Actions, Circle CI, Jenkins, GitLab CI, and others.
 </div>
 
  <div class="text-2xl mt-6 border-t pt-4 border-gray-300">Learn Earthly</div>
