@@ -8,6 +8,7 @@ author: Kelly Moreira
 internal-links:
  - python csv
  - csv read
+topic: python
 ---
 <iframe width="560" height="315" src="https://www.youtube.com/embed/H-hagjt65cE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
@@ -45,6 +46,8 @@ We then iterate over all the rows.
 You should expect an output in the terminal to look something like this:
 
 ![Python Terminal Output]({{site.images}}{{page.slug}}/2370.png)
+
+{% include_html cta/python1.html %}
 
 ### 2. Using the Pandas Library
 
@@ -96,6 +99,6 @@ data
 
 ## Up Next
 
-For a more in depth tutorial on what you can do after reading a `csv` file, check out [Plotting Precipitation with Python, Pandas and Matplotlib](https://earthly.dev/blog/plotting-rainfall-data-with-python-and-matplotlib/) by Alex Couture-Beil.
+For a more in depth tutorial on what you can do after reading a `csv` file, check out [Plotting Precipitation with Python, Pandas and Matplotlib](https://earthly.dev/blog/plotting-rainfall-data-with-python-and-matplotlib/) by Alex Couture-Beil and if you want to bring your CI to the next level, check out [Earthly's open source build tool](/).
 
-{% include cta/cta1.html %}
+{% include_html cta/cta2.html %}

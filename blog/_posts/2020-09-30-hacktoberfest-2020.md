@@ -6,7 +6,6 @@ categories:
 internal-links:
    - hacktoberfest
    - contributor
-as_related: false
 ---
 
 We're excited to announce that Earthly is participating in Hacktoberfest this October.

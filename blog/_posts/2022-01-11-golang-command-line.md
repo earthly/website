@@ -9,6 +9,8 @@ internal-links:
  - golang cli
  - golang command line
  - command line tool
+topic: cli
+funnel: 2
 ---
 
 I'm an experienced software developer learning Golang by building an activity tracker[^1]. I want a low-effort way to track my physical activity, and building it seems like a fun learning project. [Last time](/blog/golang-http/) I built a REST service for storing my workout activities, and now I'm going to make a command-line client for it.

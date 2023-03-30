@@ -526,4 +526,4 @@ In addition, we discussed two ways of connecting signals with receiver functions
 
 Lastly, you developed a real-world application feature that showed you how to work with signals and threading to send emails. As a next step, try exploring more about [Django signals](https://docs.djangoproject.com/en/4.1/topics/signals/).
 
-{% include cta/cta1.html %}
+{% include_html cta/cta2.html %}

@@ -153,4 +153,4 @@ And if you've worked at both, let me know what you think.
 
 What did you find were the advantages and disadvantages?
 
-{% include cta/cta1.html %}
+{% include_html cta/cta2.html %}

@@ -7,10 +7,13 @@ author: Brandon
 
 internal-links:
  - just an example
+topic: go
 ---
 Error handling in Go is a little different than other mainstream programming languages like Java, JavaScript, or Python. Go's built-in errors don't contain stack traces, nor do they support conventional `try`/`catch` methods to handle them. Instead, errors in Go are just values returned by functions, and they can be treated in much the same way as any other datatype - leading to a surprisingly lightweight and simple design.
 
 In this article, I'll demonstrate the basics of handling errors in Go, as well as some simple strategies you can follow in your code to ensure your program is robust and easy to debug.
+
+{% include_html cta/go1.html %}
 
 ## The Error Type
 
@@ -185,6 +188,8 @@ In Go 1.13, several new error APIs were introduced, including `errors.Wrap` and 
 
 > **A bit of history**: Before Go 1.13 was released in 2019, the standard library didn't contain many APIs for working with errors - it was basically just `errors.New` and `fmt.Errorf`. As such, you may encounter legacy Go programs in the wild that do not implement some of the newer error APIs. Many legacy programs also used 3rd-party error libraries such as [`pkg/errors`](https://github.com/pkg/errors). Eventually, [a formal proposal](https://go.googlesource.com/proposal/+/master/design/go2draft-error-inspection.md) was documented in 2018, which suggested many of the features we see today in Go 1.13+.
 
+{% include_html cta/go2.html %}
+
 ### The Old Way (Before Go 1.13)
 
 It's easy to see just how useful the new error APIs are in Go 1.13+ by looking at some examples where the old API was limiting.
@@ -350,8 +355,6 @@ There are some exceptions to the rule, however, where wrapping an error may not 
 
 Since wrapping the error always preserves the original error messages, sometimes exposing those underlying issues might be a security, privacy, or even UX concern. In such situations, it could be worth handling the error and returning a new one, rather than wrapping it. This could be the case if you're writing an open-source library or a REST API where you don't want the underlying error message to be returned to the 3rd-party user.
 
-{% include cta/cta1.html %}
-
 ## Conclusion
 
 That's a wrap! In summary, here's the gist of what was covered here:
@@ -362,6 +365,8 @@ That's a wrap! In summary, here's the gist of what was covered here:
 
 I hope you found this guide to effective error handling useful. If you'd like to learn more, I've attached some related articles I found interesting during my own journey to robust error handling in Go.
 
+Also, checkout [Earthly](https://earthly.dev/). I work on it and its written in go and is open source.
+
 ## References
 
 * [Error handling and Go](https://go.dev/blog/error-handling-and-go)
@@ -370,4 +375,4 @@ I hope you found this guide to effective error handling useful. If you'd like to
 * [Go By Example: Errors](https://gobyexample.com/errors)
 * [Go By Example: Panic](https://gobyexample.com/errors)
 
-{% include cta/embedded-newsletter.html %}
+{% include_html cta/cta2.html %}

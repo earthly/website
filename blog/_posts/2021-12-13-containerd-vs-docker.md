@@ -241,4 +241,4 @@ Docker offers a full-featured toolkit to build, run, and manage container images
 
 [Earthly](https://earthly.dev/) is a container image building tool that allows you to define simple specifications for building Docker images in a repeatable way. Consider using it with your container services to automate and simplify deployment pipelines.
 
-{% include cta/cta1.html %}
+{% include_html cta/cta2.html %}

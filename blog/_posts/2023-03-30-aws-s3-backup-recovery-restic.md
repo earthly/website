@@ -428,4 +428,4 @@ In this guide, you have learned the importance of backing up data and how Restic
 
 You now know how to create an S3 bucket, user, and policy for Restic. You then learned how to install Restic, write the config for it, initialize a new repository, back up your data, restore data from the repository, and even set up automatic backups with Restic and a cron job. By following these steps, you'll be well on your way to securing your data and protecting it from loss. So what are you waiting for? Start backing up your data today!
 
-{% include cta/cta1.html %}
+{% include_html cta/cta2.html %}

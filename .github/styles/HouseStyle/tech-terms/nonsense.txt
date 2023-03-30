@@ -84,6 +84,7 @@ statefulsets
 failover
 Alertmanager
 
+deduplicate
 abcd
 Groot
 groot

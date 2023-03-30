@@ -51,7 +51,7 @@ os:
               </div>
               Terminal
           </header>
-          <code class="Home-product-Earthfile-code">brew install earthly/earthly/earthly && earthly bootstrap</code>
+          <code class="Home-product-Earthfile-code">brew install earthly && earthly bootstrap</code>
       </div>
 
       <div class="Home-product-note" markdown="1">

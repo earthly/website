@@ -392,4 +392,4 @@ In this article, you learned about the definition of distributed tracing. Distri
 
 Finally, you learned how to set up distributed tracing on your [cluster](/blog/kube-bench) by installing Application Performance Monitoring agents (APM) on every microservices that is needed to be traced using Signoz.  
 
-{% include cta/cta1.html %}
+{% include_html cta/cta2.html %}

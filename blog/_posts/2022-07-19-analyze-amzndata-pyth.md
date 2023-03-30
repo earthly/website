@@ -402,4 +402,4 @@ The key takeaways of this tutorial are:
 * Cleaning data before starting analysis with calculations is very important, and it makes the work easier.
 * Visualizing data in a graph makes the data clear.
 
-{% include cta/cta1.html %}
+{% include_html cta/cta2.html %}

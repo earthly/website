@@ -8,6 +8,7 @@ internal-links:
  - persistent volumes
  - kubernetes persistent volumes
  - kubernetes persistence
+topic: kubernetes
 ---
 Kubernetes [persistent volumes](https://kubernetes.io/docs/concepts/storage/persistent-volumes) provide data storage for stateful applications. They abstract a storage system's implementation from how it's consumed by your pods. A persistent volume could store data locally, on a network share, or in a block storage volume provided by a cloud vendor.
 
@@ -281,4 +282,4 @@ Persistent volumes let you store data independently of the pods in your Kubernet
 
 In this article, you've learned about the use cases for persistent volumes, the way persistent volumes differ from regular volumes, and the methods that let you add and use persistent volumes and persistent volume claims inside your Kubernetes cluster. You've also seen some kubectl utility commands to help you interact with your volumes. These will equip you to run stateful applications in Kubernetes without risking data loss after container restarts.
 
-{% include cta/cta1.html %}
+{% include_html cta/cta2.html %}

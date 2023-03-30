@@ -251,4 +251,4 @@ If you think our practices can be improved, [let me know](https://twitter.com/Vl
 
 If you liked this article, you might also like [my past writings on Engineering Management principles](https://vladaionescu.com/my-version-of-44-engineering-management-lessons-88f6c50568a2).
 
-{% include cta/cta1.html %}
+{% include_html cta/cta2.html %}

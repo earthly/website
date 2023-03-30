@@ -147,6 +147,7 @@ timezone: "America/New_York"
 plugins:
   - jekyll-sitemap
   - jekyll-feed
+  - jekyll-inline-svg
   - jekyll-include-cache
   - jekyll_picture_tag
 
@@ -175,8 +176,10 @@ defaults:
       comments: false
       share: false
       related: true
-      as_related: true
+      as_related: false
+      topic: doesnotexist
       newsletter_side: true
+      funnel: 0
   - scope:
       type: "category"
     values:

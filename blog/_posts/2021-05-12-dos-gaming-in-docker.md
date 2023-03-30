@@ -10,7 +10,18 @@ internal-links:
  - doom
  - js-dos
  - js dos
+topic: docker
+funnel: 2
 ---
+
+<div class="notice--info">
+### TLDR:
+
+* Quick install [Earthly](/).
+* Run `earthly github.com/earthly/example-dos-gaming:main+doom` to start container.
+* Play DOOM at `http://localhost:8000` in browser.
+
+</div>
 
 Its been three decades since the height of the DOS era, and look how far we've come! A machine that used to cost $2,000 can be emulated - _down to the processor!_ — in our [_web browsers_](https://bellard.org/jslinux/) while also checking email or watching a YouTube video. However, amidst these advancements, our old software falls by the wayside and stops working. Games are especially prone to this, since they often relied on incompatible tricks to eke out every ounce of performance from these old machines.
 
@@ -211,4 +222,8 @@ Make sure you replace the tag, URL, and args as appropriate.
 
 ## Conclusion
 
-It's neat that we can make independent, offline bundles, similar to those shareware floppy disks from back in the day. To see the project as a whole, check out the [repository](https://github.com/earthly/example-dos-gaming). Thanks for reading!
+It's neat that we can make independent, offline bundles, similar to those shareware floppy disks from back in the day. To see the project as a whole, check out the [repository](https://github.com/earthly/example-dos-gaming). And if you want a better way to build docker images and to build things in general take a look at [Earthly](https://earthly.dev/). It's pretty cool.
+
+Thanks for reading!
+
+{% include_html cta/cta2.html %}

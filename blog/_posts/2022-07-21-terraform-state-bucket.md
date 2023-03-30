@@ -157,4 +157,4 @@ commands will detect it and remind you to do so if necessary.
 
 And with that, all my state is now stored in S3. I can delete `terraform.tfstate` and `terraform.tfstate.backup` and I'm done.
 
-{% include cta/cta1.html %}
+{% include_html cta/cta2.html %}

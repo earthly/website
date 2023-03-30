@@ -9,6 +9,7 @@ sidebar:
 internal-links:
  - grpc gateway
  - grpc proxy
+topic: go
 ---
 
 Welcome back. I'm an experienced developer learning Golang. [Last time](/blog/golang-grpc-example) I moved my service from REST to gRPC, but there are times when a simple REST end-point is still needed. So today, I'm going to build a gRPC gateway that accepts HTTP requests and proxies it through to my gRPC service. And for fun, I'm going to do it three ways.
@@ -607,4 +608,4 @@ func main() {
 
 There we have it. Rest to gRPC in three ways, with all the complicated bits documented in a runnable [Earthfile](https://github.com/adamgordonbell/cloudservices/blob/v5-grpc-gateway/Earthfile). All the code is on [GitHub](https://github.com/adamgordonbell/cloudservices/tree/v5-grpc-gateway). And with the certs in place, this gRPC + REST service is not even that big of a lift from a standard gRPC end-point. In fact, this approach is in use in [`etcd`](https://github.com/etcd-io/etcd/blob/main/server/embed/serve.go) and [Istio](https://github.com/istio/istio/blob/f46f821fb13b7fc24b5d29193e2ad7c5c0a46877/pilot/pkg/bootstrap/server.go#L469).
 
-{% include cta/cta1.html %}
+{% include_html cta/cta2.html %}

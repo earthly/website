@@ -10,6 +10,7 @@ sidebar:
 internal-links:
  - python make
  - make python
+topic: make
 ---
 <iframe width="560" height="315" src="https://www.youtube.com/embed/w2UeLF7EEwk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
@@ -36,6 +37,8 @@ When you run a Python code, the interpreter implicitly compiles the code into by
 When you import a module into your code, Python compiles those modules into bytecode for caching purposes. These are stored in a directory named `__pycache__` in the current directory, which contains compiled `.pyc` files.
 
 Although you cannot compile these modules using `make`, you can still use `make` for automation tasks like running tests, installing dependencies, cleaning the `.pyc` files etc.
+
+{% include_html cta/make1.html %}
 
 ## Using Make With Python
 
@@ -141,7 +144,7 @@ clean:
     rm -rf __pycache__
 ```
 
-{% include cta/embedded-newsletter.html %}
+{% include_html cta/make2.html %}
 
 ### Creating a Virtual Environment
 

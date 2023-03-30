@@ -1,16 +1,22 @@
 ---
 layout: default
 ---
-{% comment %} Default header image {% endcomment %} {% assign header =
-"assets/images/" | append: page.slug | append: "/header.jpg" %} {% capture
-header_default %}{% file_exists {{ header }} %}{% endcapture %} {% if
-page.header.overlay_color or page.header.overlay_image or page.header.image %}
-{% include page__hero.html %} {% elsif header_default == "true" %} {% include
-page__hero.html %} {% elsif page.header.video.id and page.header.video.provider
-%} {% include page__hero_video.html %} {% else %} {{ "no header found under " |
-append: header | raise_error }} {% endif %} {% if page.url != "/" and
-site.breadcrumbs %} {% unless paginator %} {% include breadcrumbs.html %} {%
-endunless %} {% endif %}
+{% comment %} Default header image {% endcomment %} 
+{% assign header ="assets/images/" | append: page.slug | append: "/header.jpg" %} 
+{% capture header_default %}{% file_exists {{ header }} %}{% endcapture %} 
+
+{% if page.header.overlay_color or page.header.overlay_image or page.header.image %}
+  {% include page__hero.html %} {% elsif header_default == "true" %} 
+  {% include page__hero.html %} {% elsif page.header.video.id and page.header.video.provider %} 
+  {% include page__hero_video.html %} 
+{% else %} 
+  {{ "no header found under " | append: header | raise_error }} 
+{% endif %} 
+{% if page.url != "/" and site.breadcrumbs %} 
+  {% unless paginator %} 
+    {% include breadcrumbs.html %} 
+  {%endunless %} 
+{% endif %}
 
 <div id="main" role="main">
   <article class="page bg-white" itemscope itemtype="https://schema.org/CreativeWork">
@@ -26,7 +32,7 @@ endunless %} {% endif %}
 
     <div class="page__inner-wrap flex relative">
 
-      <div class="w-[1px] h-full text-md sticky top-[-36px] z-50 hidden lg:block">
+      <div class="w-[1px] h-full text-md sticky top-[36px] z-50 hidden lg:block">
         <div class="w-[250px] pt-6 pl-3">
           <div class="mt-6">
             <a href="/blog/" class="text-xl text-blue-600 hover:underline">Blog</a>
@@ -40,12 +46,12 @@ endunless %} {% endif %}
           </div>
 
           {% if page.sidebar %}
-            {% if
-            page.sidebar.nav %}
-              {% include nav_list nav=page.sidebar.nav %}
-            {% endif %}
+          {% if
+          page.sidebar.nav %}
+          {% include nav_list nav=page.sidebar.nav %}
           {% endif %}
-          
+          {% endif %}
+
           {% if page.toc %}
           <div class="group mt-4">
             <header>
@@ -97,9 +103,12 @@ endunless %} {% endif %}
 
             {% if page.share %}{% include social-share.html %}{% endif %}
 
+            {% if page.funnel != 3 %} 
+            <!-- On non-funnel pages, show newsletter sign up -->
             <div class="only-mobile">
-              {% include cta/embedded-newsletter.html %}
+              {% include_html cta/blog-newsletter1.html %}
             </div>
+            {% endif %}
           </div>
 
           {% if page.link %}
@@ -133,19 +142,27 @@ endunless %} {% endif %}
   {% comment %}
   <!-- only show related on a post page when `related: true` -->
   <!-- only show related on a post in prod, to speed rendering -->
+  <!-- 
+    Get related topics where funnel step is 2 and funnel=3 and combine them and grab first 8
+    Putting related ones first.
+  -->
   {% endcomment %} 
-  {% if page.id and page.related and site.related_posts.size > 0
-  %}
   {% if jekyll.environment == "production" %}
+  {% if page.id and page.related and site.related_posts.size > 0 %}
   <div class="page__related mt-8 ml-8 mr-8">
     <div class="page__related-title heading mb-2 text-2xl text-gray-400">
       {{ site.data.ui-text[site.locale].related_label | default: "You May Also
       Enjoy" }}
     </div>
     <div class="grid__wrapper grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-12">
-      {% assign related = site.posts | where: "as_related",true | sample: 2 %}
-      {% for post in related %} {% include archive-single.html type="grid"
-      lazy="true" %} {% endfor %}
+      {% assign related = site.posts | where: "funnel",3 | sample: 10 %}
+      {% assign topics = site.posts | where: "topic", page.topic | where: "funnel", 2 | sample: 10 %}
+      {% assign everything = topics | concat: related  | slice: 0, 8 %}
+      {% for post in everything %} 
+        {% if page.id != post.id %}
+          {% include archive-single.html type="grid" lazy="true" %}
+        {% endif %}
+      {% endfor %}
     </div>
   </div>
   {% endif %}

@@ -408,4 +408,4 @@ As you learned in this tutorial, [Tekton](https://tekton.dev/) can be a useful f
 
 Tekton increases your flexibility and scalability, thus giving you major advantages when you're using Kubernetes for your projects.
 
-{% include cta/cta1.html %}
+{% include_html cta/cta2.html %}

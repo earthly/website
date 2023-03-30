@@ -391,4 +391,4 @@ This tutorial has taught you how to use the popular and widely used Gin framewor
 
 You can check out the documentation of the [Gin](https://gin-gonic.com/docs/) framework to learn more about how you can build other specific functionalities for your web applications.
 
-{% include cta/cta1.html %}
+{% include_html cta/cta2.html %}

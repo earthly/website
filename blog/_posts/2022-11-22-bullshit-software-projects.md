@@ -150,7 +150,7 @@ So my advice to you is this: if you suspect you might be on a bullshit project, 
 
 > You're not even living your own lie. Most of the time, you're not even quite living somebody else's lie, either. Your job is more like a boss's unzippered fly that everyone can see but also knows better than to mention.
 
-{% include cta/cta1.html %}
+{% include_html cta/cta2.html %}
 
 [^1]:
     I asked these questions on a private slack group, lobste.rs and [twitter](https://twitter.com/adamgordonbell/status/1593245734723166208).

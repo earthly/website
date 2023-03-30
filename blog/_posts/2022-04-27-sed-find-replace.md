@@ -6,6 +6,7 @@ toc: true
 author: Zara Cooper
 internal-links:
  - sed
+topic: cli
 ---
 
 You need the ability to search and manipulate text on the command line, especially when performing repetitive tasks. This is what makes `sed`, or **s**tream **ed**itor, so valuable. `sed` is a Unix text processing and manipulation CLI tool. A stream editor takes in text from an input stream and transforms it into a specified output according to instructions. The input stream could be from [pipelines](https://en.wikipedia.org/wiki/Pipeline_(Unix)) or files.
@@ -17,6 +18,8 @@ You need the ability to search and manipulate text on the command line, especial
 Using `sed` has its benefits. Since it's not interactive and doesn't require much time for the editing process, it works quickly. To get output, you just supply commands and conditions, then run it. `sed` offers an extensive set of robust commands and other features, including addresses for precise edit targeting, backups, and external script processing, that supercharge your text editing.
 
 `sed` is also easily accessible from the command line, so it's helpful for regular tasks, like searching and filtering text files and streams. It's flexible enough to work with other CLI tools using pipelines. And it's efficient since you only have to run it once to process a file compared to other GUI-based text processing tools.
+
+{% include_html cta/cli1.html %}
 
 `sed` has a variety of use cases. It's a powerful tool for text processing tasks, like filtering, search, and substitutions, and works well in situations where high precision is needed. With `sed`, you can target a portion of input text using line addresses and regular expressions. It's also great for automation-like build processes. `sed` commands and conditions can be supplied in a script file or through arguments to the CLI command, then run automatically.
 
@@ -310,6 +313,8 @@ These are just a few of the twenty-five sed commands. You can check the rest in 
 
 `awk` is another Unix text processing tool similar to sed. However, it's mostly used for data record extraction, processing, and reporting. Like sed, it processes text input line by line, it can take input from files or input streams, and it applies operations on the text based on supplied instructions.
 
+{% include_html cta/cli2.html %}
+
 It is possible to use [awk](/blog/awk-examples) and sed together through pipelines. Say you want to create mail-merged text messages from a list of customers in a [CSV](/blog/awk-csv) format. You'd use this command:
 
 ~~~{.bash caption=">_"}
@@ -411,4 +416,4 @@ Another tool for defining repeatable builds is [Earthly](https://earthly.dev/), 
 
 To learn more about Earthly, check out its [documentation](https://docs.earthly.dev/).
 
-{% include cta/cta1.html %}
+{% include_html cta/cta2.html %}
