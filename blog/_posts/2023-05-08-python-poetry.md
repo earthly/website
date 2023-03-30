@@ -280,6 +280,8 @@ poetry export --output requirements.txt
 
 ### Developing Your Application
 
+![dev]({{site.images}}{{page.slug}}/dev.png)\
+
 So far, you have just installed the `requests` library. Your application has no functionality. Thus, in this section, you'll be adding your application logic. Create a `weather.py` file in the `src/weather_update` package and follow along.
 
 Import the `os`, `requests`, and `configparser` libraries for use in the rest of the code
@@ -573,6 +575,8 @@ Note that the above command will install just the dependencies in the `dev` grou
 
 ### Writing the Tests
 
+![dev]({{site.images}}{{page.slug}}/write.png)\
+
 To recall, you had created a `get_weather` function to get weather updates for a location. Now that you have installed the testing environment dependencies, you can write the code to test the functionality of your application.
 
 Create a `test_weather.py` file inside the `tests` package and add the following content:
@@ -706,8 +710,3 @@ Managing dependencies in Python development is crucial for ensuring the stabilit
 In this tutorial, you have explored the steps involved in using Poetry for managing dependencies in Python projects, from installation to publishing a package. Specifically, you have learned the creation of virtual environments, managing dependencies, including adding, removing, and synchronizing them, and publishing a Python project as a package. You can explore much more about Poetry in its [official documentation](https://python-poetry.org/).
 
 {% include cta/cta1.html %}
-
-## Outside Article Checklist
-
-- [ ] Optional: Find ways to break up content with quotes or images
-
