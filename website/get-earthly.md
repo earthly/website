@@ -209,6 +209,10 @@ This command executes the target <span class="font-semibold">hello</span> from t
 <div class="border rounded-xl bg-gray-100 px-6 py-4 mt-6 mb-6" markdown="1">
 
   <div class="text-3xl">
+    Next Steps
+  </div>
+
+  <div class="text-2xl mt-4">
     Earthly CI
   </div>
 
@@ -220,14 +224,14 @@ See the <a href="https://docs.earthly.dev/earthly-cloud/earthly-ci" class="under
                     Try Earthly CI
                 </a>
 
-  <div class="text-3xl mt-8">
+  <div class="text-2xl mt-6 border-t pt-4 border-gray-300">
     Other CI integrations
   </div>
 <div class="mt-2">
 See the <a href="https://docs.earthly.dev/guides/ci-integration" class="underline  font-semibold blue-link">CI integration guide</a>
 </div>
 
- <div class="text-3xl mt-6">Learn Earthly</div>
+ <div class="text-2xl mt-6 border-t pt-4 border-gray-300">Learn Earthly</div>
 
 <div class="mt-2 mb-2">
 To learn how to use Earthly, try:
@@ -237,7 +241,7 @@ To learn how to use Earthly, try:
 - [An introductory video](https://www.youtube.com/watch?v=B7Q7S2lpshw)
 - [The full documentation](https://docs.earthly.dev/)
 
- <div class="text-3xl mt-6 -mb-8">Example projects</div>
+ <div class="text-2xl mt-6 border-t pt-4 border-gray-300">Example projects</div>
  <div class="mt-2">
 Need some inspiration to get started with your project? <div class="mt-2 pb-4">Check out <a class="blue-link underline font-semibold " href="https://github.com/earthly/earthly/tree/main/examples">examples on GitHub</a></div>
 </div>
