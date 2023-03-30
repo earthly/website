@@ -10,7 +10,7 @@ internal-links:
  - Python Classes
 ---
 
-Since their introduction in Python 3.7, data classes have emerged as a popular choice for Python classes that store data. In a [previous tutorial](/blog/python-data-classes), we talked about what data classes are and some of their features, including out-of-the-box support for object comparison, type hints, and default values of fields. In this follow-up tutorial, we'll continue to explore a few more features of Python data classes. 
+Since their introduction in Python 3.7, data classes have emerged as a popular choice for Python classes that store data. In a [previous tutorial](/blog/python-data-classes), we talked about what data classes are and some of their features, including out-of-the-box support for object comparison, type hints, and default values of fields. In this follow-up tutorial, we'll continue to explore a few more features of Python data classes.
 
 Over the next few minutes, we'll take a closer look at setting default values with `default_factory`, initializing new fields from pre-existing fields with `__post_init__`, and much more. We'll also discuss the *improved* support for `__slots__` in data classes since Python 3.10.
 
@@ -40,11 +40,11 @@ class Student:
     classes: list = field(default_factory=list)
 ~~~
 
-Before we go any further, let's review what we know about data classes.
+Before we go any further, let's review what we *know* about data classes.
 
 **What we've learned thus far:**
 
-- Data classes have a default implementation of the `__init__`, `__repr__`, and `__eq__` methods. 
+- Data classes have a default implementation of the `__init__`, `__repr__`, and `__eq__` methods.
 - They support type hints and default values for fields. Data class definitions do not allow mutable default arguments for fields.
 - All data class instances are *mutable* by default, but you can set the `frozen` parameter to `True` in the `@dataclass` decorator to make instances immutable.
 
@@ -57,6 +57,9 @@ Before we go any further, let's review what we know about data classes.
 
 ~~~{.python caption="main.py"}
 # main.py
+from dataclasses import dataclass, field
+
+
 @dataclass
 class Student:
     name: str
@@ -80,6 +83,9 @@ def generate_roll_num():
 
 ~~~{.python caption="main.py"}
 # main.py
+from dataclasses import dataclass, field
+
+
 @dataclass
 class Student:
     name: str
@@ -112,6 +118,9 @@ Student(name='Julia', major='Economics', year='junior', gpa=3.72, roll_num="don'
 
 ~~~{.python caption="main.py"}
 # main.py
+from dataclasses import dataclass, field
+
+
 @dataclass
 class Student:
     name: str
@@ -133,7 +142,11 @@ TypeError: __init__() takes 4 positional arguments but 5 were given
 
 ### Use `__post_init__` to Create Fields Post Initialization
 
+Next, let's add an `email` field, a string of the form `first_name.last_name@uni.edu` (not super fancy, but works!).
+
 ~~~{.python caption="main.py"}
+from dataclasses import dataclass, field
+
 @dataclass
 class Student:
     first_name: str
@@ -146,7 +159,6 @@ class Student:
 ~~~
 
 ~~~{.python caption="main.py"}
-# main.py
     def __post_init__(self):
         self.email = f"{self.first_name}.{self.last_name}@uni.edu"
 ~~~
@@ -163,10 +175,12 @@ Student(first_name='Jane', last_name='Lee', major='Computer Science', year='seni
 
 ### Order and Sort Data Class Instances
 
+Let's add a `tuition` field to the `Student` data class:
+
+
 ~~~{.python caption="main.py"}
-@dataclass(order=True)
+@dataclass
 class Student:
-    sort_index:int = field(init=False,repr=False)
     first_name: str
     last_name: str
     major: str
@@ -191,6 +205,26 @@ Traceback (most recent call last):
   File "main.py", line 52, in <module>
     print(julia > jane)
 TypeError: '>' not supported between instances of 'Student' and 'Student'
+~~~
+
+~~~{.python caption="main.py"}
+@dataclass(order=True)
+class Student:
+    sort_index:int = field(init=False,repr=False)
+    first_name: str
+    last_name: str
+    major: str
+    year: str
+    gpa: float
+    roll_num: str = field(default_factory=generate_roll_num, init=False)
+    email: str = field(init=False)
+    tuition: int = 10000
+~~~
+
+~~~{.python caption="main.py"}
+    def __post_init__(self):
+        self.email = f"{self.first_name}.{self.last_name}@uni.edu"
+        self.sort_index = self.tuition
 ~~~
   
 ### Subclass Data Classes to Extend Functionality
