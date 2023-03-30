@@ -212,7 +212,9 @@ This command executes the target <span class="font-semibold">hello</span> from t
     Next Steps
   </div>
 
-  <div class="text-2xl mt-4">
+  <div class="text-gray-500 mt-2 text-lg">Try Earthly CI, use Earthly with your existing CI, or learn more about Earthly through docs, and examples.</div>
+
+  <div class="text-2xl mt-4 border-t pt-4 border-gray-300">
     Earthly CI
   </div>
 
