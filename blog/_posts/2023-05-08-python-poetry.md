@@ -692,6 +692,8 @@ Managing dependencies in Python development is crucial for ensuring the stabilit
 
 In this tutorial, you have explored the steps involved in using Poetry for managing dependencies in Python projects, from installation to publishing a package. Specifically, you have learned the creation of virtual environments, managing dependencies, including adding, removing, and synchronizing them, and publishing a Python project as a package. You can explore much more about Poetry in its [official documentation](https://python-poetry.org/).
 
+{% include cta/cta1.html %}
+
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
@@ -700,4 +702,3 @@ In this tutorial, you have explored the steps involved in using Poetry for manag
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include cta/cta1.html %}`
