@@ -9,13 +9,15 @@ internal-links:
  - lxc
  - lxd
  - chroot
-
+topic: docker
 ---
 [Linux Containers](https://linuxcontainers.org/) (LXC) is an OS-level virtualization technology that enables you to create and run multiple Linux operating systems (OS) simultaneously on a single Linux machine (LXC host). LXC provides a set of tools to manage your container as well as templates to create a virtual environment of [the most common Linux OS](https://uk.lxd.images.canonical.com/).
 
 [Docker](https://docs.docker.com/get-started/overview/) is an open-source containerization technology that focuses on running a single application in an isolated environment. Its [Docker Engine](https://docs.docker.com/engine/) enables you to create, run, or distribute containers. You can also share applications and collaborate with other developers using [Docker Hub](https://hub.docker.com/).
 
 While LXC and Docker have much in common in terms of their architecture and usage, they also differ in many ways. This article will compare their host machine utilization, simplicity, speed, security, ease of use, scalability, and tooling. We'll also discuss the best traits of these tools as well as their downsides.
+
+{% include_html cta/docker1.html %}
 
 ## Comparing LXC vs Docker
 
@@ -63,6 +65,8 @@ Linux containers (LXC) are more flexible in design. They are bit closer to virtu
 As we mentioned before, Docker containers were originally forked from the LXC project. However, the difference is in the design: Docker containers were designed specifically for microservices applications. That makes them very different from VMs. Docker is simple for developers to use; the [networking](/blog/docker-networking), [storage](/blog/docker-volumes), and [logging](/blog/understanding-docker-logging-and-log-files) abstraction make it so that devs need little (or no) prior Linux knowledge.
 
 The simplicity that Docker offers to developers is what made it so popular. Both platforms are simple to use, but target different audiences.
+
+{% include_html cta/docker2.html %}
 
 ### Speed
 
@@ -152,4 +156,4 @@ Docker is a complete solution to distribute applications and is particularly lov
 
 In the same way that Docker extended the features of LXC to make it easy to package applications and make operating them more developer-friendly, [Earthly](https://earthly.dev/) built on top of Dockerfile to create tools better suited to manage the CI/CD workload. Be sure to check it out to help automate and simplify your development pipeline using either Docker or LXC.
 
-{% include cta/cta1.html %}
+{% include_html cta/cta2.html %}

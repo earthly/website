@@ -106,4 +106,4 @@ More Background:
 - [GRPC Web Explained](https://grpc.io/blog/state-of-grpc-web/)
 - [Envoy GRPC Bridge](https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/grpc_http1_bridge_filter)
 
-{% include cta/cta1.html %}
+{% include_html cta/cta2.html %}

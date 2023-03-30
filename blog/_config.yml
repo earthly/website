@@ -176,8 +176,10 @@ defaults:
       comments: false
       share: false
       related: true
-      as_related: true
+      as_related: false
+      topic: doesnotexist
       newsletter_side: true
+      funnel: 0
   - scope:
       type: "category"
     values:

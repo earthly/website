@@ -194,4 +194,4 @@ Earthly.dev Presents:
 
 The code is on [GitHub](https://github.com/adamgordonbell/cloudservices/commit/e213af302cf6372aca4c099419bc6d2a0896ae7a)
 
-{% include cta/cta1.html %}
+{% include_html cta/cta2.html %}

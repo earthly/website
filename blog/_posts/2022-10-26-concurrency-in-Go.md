@@ -294,4 +294,4 @@ Go offers other tools and functions to help you write concurrent programs. You m
 
 Concurrent programming isn't safe heaven; [along with the pros come the cons](https://www.codingninjas.com/blog/2021/10/19/understanding-the-pros-and-cons-of-concurrency/). Concurrent programs may be tasking and challenging to write since they introduce more complexity, but if implemented correctly and used under the right conditions, they can help you improve speed and performance.
 
-{% include cta/cta1.html %}
+{% include_html cta/cta2.html %}

@@ -8,6 +8,8 @@ author: Brandon
 internal-links:
  - mono repo
  - monorepo
+topic: monorepo
+funnel: 2
 ---
 <!-- markdownlint-disable MD036 -->
 A repository in Go traditionally contains a single Go Module, which lends naturally to a polyrepo setup – but
@@ -335,11 +337,13 @@ release:
 
 ## Conclusion
 
-Building a mulit-module monorepo in Go is made possible and effective using the `replace` feature in `go.mod` to
+Building a multi-module monorepo in Go is made possible and effective using the `replace` feature in `go.mod` to
 import local modules. In a monorepo environment, using the right build tooling can also make development and
 Continuous Integration more efficient.
 
 You can find the full working monorepo covered in this article in the official
 [Earthly examples collection](https://github.com/earthly/earthly/tree/main/examples/go-monorepo).
 
-{% include cta/embedded-newsletter.html %}
+For more on using Earthly to improve go builds checkout [Earthly.dev](https://earthly.dev/):
+
+{% include_html cta/cta2.html %}

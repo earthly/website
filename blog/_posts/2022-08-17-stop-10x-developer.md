@@ -92,4 +92,4 @@ So what term should you use instead of 10x developer? Try expert. As in 'John is
 
 I guess what I'm saying is: terminology matters and we can do better than `10x`. We can be specific. Skills are not homogeneous, and people can quickly [improve their craft](https://danluu.com/p95-skill/) as long as we don't treat talent like some mythical quality.
 
-{% include cta/cta1.html %}
+{% include_html cta/cta2.html %}

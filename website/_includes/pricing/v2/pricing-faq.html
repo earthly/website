@@ -21,6 +21,10 @@ A triggering user becomes an active user if they trigger the build at least thre
 
 At the end of a billing cycle, if the number of paid users is greater than the number of active users, the
 difference is refunded to the user in the form of statement credit.
+
+If you would like to estimate the number of active users that a project uses, please check out the
+<a href="https://github.com/earthly/lib/tree/main/billing#active-users">
+github.com/earthly/lib/billing+active-users</a> target.
 </div>
 
 <h2 class="text-2xl font-semibold mb-2 mt-10" id="what-is-easein-pricing">What is ease-in pricing?<span class="hide"><a
@@ -49,8 +53,15 @@ prevents drastic bill increases when jumping from one tier to the next.
 <h2 class="text-2xl font-semibold mb-2 mt-10" id="what-are-satellites">What are Satellites?<span class="hide"><a
             href="#what-are-satellites">¶</a></span></h2>
 <div class="text-xl text-gray-600">
-    Satellites are remote runners managed by the Earthly team. Every CI pipeline created runs on its own dedicated
-    satellite. Satellites may also be created manually, to be used as remote executors in development workflows.
+    Satellites are single-tenant remote runners managed by the Earthly team. Satellites power the Earthly CI backbone, and as such, every pipeline created runs on its own dedicated satellite. Satellites may also be created manually, to be used as remote executors in development workflows.
+
+A subscription to Earthly Satellite allows you to use only satellites directly, without the Earthly CI web interface or automated GitHub triggers. Common use-cases for using standalone satellites include:
+
+- Using satellites on top of a traditional CI, in order to take advantage of the Earthly caching and parallelization capabilities without switching the CI system to Earthly CI
+- Using satellites in local development workflows in order to share compute and cache with colleagues
+- Using satellites in order to execute x86 builds on ARM (or Apple Silicon) machines, or vice-versa
+
+A subscription to Earthly CI allows access to both the CI capabilities, and also to the standalone satellite capabilities.
 </div>
 
 <h2 class="text-2xl font-semibold mb-2 mt-10" id="satellite-only-package">What is the Satellite-only package?<span class="hide"><a

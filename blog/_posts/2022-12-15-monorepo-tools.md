@@ -6,6 +6,8 @@ author: Adam
 internal-links:
  - monorepo tools
  - monorepo
+topic: monorepo
+funnel: 2
 ---
 <!-- markdownlint-disable-file MD001 -->
 <!-- vale HouseStyle.OxfordComma = NO -->

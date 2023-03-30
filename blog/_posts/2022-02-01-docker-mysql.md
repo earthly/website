@@ -7,6 +7,7 @@ author: James Walker
 
 internal-links:
  - mysql
+topic: docker
 ---
 [Docker](https://www.docker.com/) is among the more popular platforms for developing and deploying containerized applications. Containers are isolated environments that hold an application along with all the software packages it needs. With Docker, you can run or scale your application in any environment.
 
@@ -23,6 +24,8 @@ While using Docker with MySQL simplifies many aspects of your [deployment](/blog
 You need to use [Docker volumes](https://docs.docker.com/storage/volumes) when deploying a MySQL container. Volumes provide a mechanism to persist files after the container stops. You'll lose your database if you restart a MySQL container that's not using volumes.
 
 Volumes store data outside of any single container. After your MySQL container stops, the files stored in its mounted volumes will remain accessible on your host. You can mount the volumes back into new containers, avoiding data loss after you replace your MySQL instance with a new image version.
+
+{% include_html cta/docker1.html %}
 
 ## Use Cases for MySQL in Docker
 
@@ -103,6 +106,8 @@ docker rm mysql
 ![Stopping and removing a Docker container]({{site.images}}{{page.slug}}/bDEerXR.png)
 
 Repeat the `docker run` command with the same arguments. As the `mysql` named volume will already exist, the new container will retain the data created by the old one. If you want to destroy the volume, use `docker volume rm mysql`.
+
+{% include_html cta/docker2.html %}
 
 ### Using Container Networks
 
@@ -209,4 +214,4 @@ Running MySQL in a Docker container provides consistency and cross-environment i
 
 Once you're ready to move to production, you can reuse your development workflow to get your database live. Automate the process by launching your containers within your CI/CD pipeline, where tools such as [Earthly](https://docs.earthly.dev/docs/guides/docker-in-earthly) can offer repeatable builds and insights into any failures. Earthly offers on-demand Docker daemons and high reproducibility to help you automate your builds more quickly.
 
-{% include cta/cta1.html %}
+{% include_html cta/cta2.html %}

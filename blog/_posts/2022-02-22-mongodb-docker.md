@@ -6,6 +6,7 @@ toc: true
 author: Soumi Bardhan
 internal-links:
  - mongodb
+topic: docker
 ---
 [Docker](https://www.docker.com/) is a powerful development platform that enables users to containerize software. These containers can be run on any machine, as well as in a public or private cloud. Thanks to Docker's lightweight runtime and ability to run processes in isolation, multiple containers can run at the same time on the same VM or server.
 
@@ -16,6 +17,8 @@ MongoDB can be run in a Docker container. There is an [official image](https://h
 If you want to use your MongoDB database across several machines, using Docker containers for hosting MongoDB is a great approach – you can easily create new isolated instances. Furthermore, during development, it is easier to start a Docker instance than manually configure a server. If you are developing multiple applications, you can start multiple containers together using a `docker-compose.yaml` file.
 
 In this article, you'll learn the best practices for running a MongoDB container. You'll also learn how to host a simple [Flask](https://palletsprojects.com/p/flask/) app and how to use [Docker volumes](/blog/docker-volumes)  to persist data in a Docker container.
+
+{% include_html cta/docker1.html %}
 
 ## Docker Components
 
@@ -122,6 +125,8 @@ docker logs example-mongo --follow
 ~~~
 
 By using the `--follow` flag, the container logs will be updated on your terminal in real time.
+
+{% include_html cta/docker2.html %}
 
 ### Connecting From Another Container
 
@@ -323,4 +328,4 @@ There are many advantages of using containers as part of your day-to-day life as
 
 [Earthly](https://earthly.dev/) is an automation tool for managing all your [Docker components](https://docs.earthly.dev/docs/guides/docker-in-earthly), images, and containers. With Earthly, you can execute all your builds in containers and ensure uniformity across machines.
 
-{% include cta/cta1.html %}
+{% include_html cta/cta2.html %}

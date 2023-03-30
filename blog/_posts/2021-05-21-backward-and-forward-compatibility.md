@@ -9,10 +9,13 @@ internal-links:
  - backward compatibility
  - backwards compatibility
  - forwards compatibility
+topic: go
 ---
 [Protocol Buffers](https://developers.google.com/protocol-buffers "Protocol Buffers Documentation") serialize structured data so it can be efficiently stored or shared over a network. They were designed for internal use at Google in 2001 and released to the public under an open-source license in 2008.
 
 Protocol Buffers are compiled to a series of strictly arranged bytes, so they can be transmitted very efficiently. After reconstitution, they can also be understood by a wide range of languages. Let's examine protobufs first at a high level, then do a deep dive into best practices for working with them to see if they're a fit for your expanding data workflow.
+
+{% include_html cta/go1.html %}
 
 ## What Exactly Are Protocol Buffers?
 
@@ -58,6 +61,8 @@ message Sample{
 ```
 
 These declarations in the `.proto` file are shared with both the message sender and receiver to construct immutable getters and setters that allow data to be read into and accessed from binary using a [compiler](/blog/compiling-containers-dockerfiles-llvm-and-buildkit), then accessed in a variety of programming languages.
+
+{% include_html cta/go2.html %}
 
 ## Tips for Maintaining Compatibility
 
@@ -145,4 +150,4 @@ Protocol Buffers are a relatively young technology, so changes now will have lon
 
 To deprecate a field, you can change the name to something deprecated or remove it and reserve the identifier. If you really want to change a field type, and you're able to follow the correct version of [the rules](https://developers.google.com/protocol-buffers/docs/proto3#updating "Updating messages"), remember to never change the numerical identifier for that field. Plan well, and it'll be easy to maintain backward and forward compatibility for your Protocol Buffer deployment.
 
-{% include cta/cta1.html %}
+{% include_html cta/cta2.html %}

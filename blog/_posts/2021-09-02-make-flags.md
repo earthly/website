@@ -8,6 +8,7 @@ sidebar:
   nav: "makefile"
 internal-links:
  - makefile flags
+topic: make
 ---
 <iframe width="560" height="315" src="https://www.youtube.com/embed/z4uPHjxYyPs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
@@ -62,6 +63,8 @@ all: main.o
 If you have a `main.c` file in the project directory, running `make` will automatically compile it to `main.o`, even though you did not explicitly add any coding to build `main.o`. This is because `make` uses a built-in rule of the form `$(CC) $(CPPFLAGS) $(CFLAGS) -c -o x.o x.c` to compile any C file `x.c` into `x.o`. Thus, using implicit rules, you don't have to explicitly write the coding.
 
 Another reason is that these flags are standardized and have been used for a long time, so anyone building your software will expect you to use these flags. Using any other variable would force them to go through your `makefile` in order to figure out which variable is being used. Instead, by sticking to the standard, you can save them time.
+
+{% include_html cta/make1.html %}
 
 ## How to Use `Make` Flags
 
@@ -239,3 +242,5 @@ Note that the options `-C`, `-f`, `-o`, and `-W` are not put into `MAKEFLAGS` an
 Using `make` flags ensures your `makefile` follows the standard and offers an easy and powerful way to customize the behaviors of the compilation tools by providing them options. However, `make` flags are limited and require a deep understanding of the right tools to use.
 
 If you are looking for a powerful alternative to `make`, [Earthly](https://earthly.dev/) may be the right choice for you. It is a modern take on the `make` utility. Tailored for the container era, Earthly provides reproducible and understandable builds with minimal effort.
+
+{% include_html cta/cta2.html %}

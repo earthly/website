@@ -8,6 +8,7 @@ sidebar:
 author: Kasper Siig
 internal-links:
  - makefiles
+topic: make
 ---
 
 Deployments have been one of the hassles for many organizations for a long time, with companies sometimes even hiring engineers whose sole job is to get applications deployed more effectively. Because of this, many tools have been developed to help with this exact use case. However, some prefer to use tools that have already existed for many years: Docker and Makefiles.
@@ -216,4 +217,4 @@ By now, you've seen how you can easily and quickly add Make to your project. The
 
 If you're looking at this and thinking to yourself that it's still a bit complex for you and your organization, check out [Earthly](https://earthly.dev/), a tool that combines the best of Dockerfiles and Makefiles to make builds as easy as possible.
 
-{% include cta/cta1.html %}
+{% include_html cta/cta2.html %}

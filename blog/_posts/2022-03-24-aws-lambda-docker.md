@@ -8,11 +8,14 @@ sidebar:
   nav: "lambdas"
 internal-links:
  - lambda container
+topic: docker
 ---
 
 Most of the code I've had running on AWS's cloud has been in docker containers, running in Kubernetes clusters. And from my perspective, AWS was invisible. All I needed to concern myself with was the intricacies of getting the YAML for `kubectl apply` right. Of course, the cluster's configuration was not my concern unless something went wrong, but I could then ping some Ops expert to help me out. But all that seems overkill for many tasks – the operational burden of maintaining Kubernetes is not free.
 
 What if I want a simple container running in my AWS account, with some endpoints open to the world? What is the best way to get that in place? AWS offers many options: Amazon Elastic Container Service (ECS), Amazon Elastic Kubernetes Service (EKS), AWS App Runner, and AWS Lightsail. Maybe there are more options? I'm not sure how anyone keeps up with the myriad AWS possibilities. But, an option with some excellent attributes is AWS Lambda.
+
+{% include_html cta/docker1.html %}
 
 ## Containers on AWS Lambda
 
@@ -27,6 +30,8 @@ But then, in 2020, AWS added support for containers. This may be naive, but the 
 All of this to say, 8 years after its launch, I'm starting to see what the hype is about. So let me show you the setup for running a container in a Lambda.
 
 What I'm going to make will be pretty straightforward. It will be a small node.js app that will take a URL, download it, and return the results – basically a simple web proxy.
+
+{% include_html cta/docker2.html %}
 
 ## TypeScript Lambda
 
@@ -365,4 +370,4 @@ To call my deploy step I need to pass my aws config files as secrets like this:
 
 And with that, I have a container running in AWS, where I'm only billed for the milliseconds it runs, with a full – although simple – deployment pipeline.
 
-{% include cta/cta1.html %}
+{% include_html cta/cta2.html %}

@@ -765,4 +765,4 @@ In this tutorial, we explored Python's *structural pattern matching* feature tha
 
 The use case of this feature is not limited to matching the response of APIs in web development. It can be used in any application that involves matching the structure or shapes of values.
 
-{% include cta/cta1.html %}
+{% include_html cta/cta2.html %}

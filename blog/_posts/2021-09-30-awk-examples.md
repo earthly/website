@@ -1150,9 +1150,9 @@ $ ./average "The AWK "
 The AWK Programming Language                            👍👍
 ~~~
 
-Also, if you're the type of person who's not afraid to do things on the command line then you might like Earthly:
+Also, if you're the type of person who's not afraid to do things on the command line then you might like [Earthly](/):
 
-{% include cta/cta1.html %}
+{% include_html cta/cta2.html %}
 
 ### What's your Awk Trick or Book Pick?
 

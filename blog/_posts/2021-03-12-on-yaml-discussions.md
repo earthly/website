@@ -5,7 +5,6 @@ tags:
 categories:
   - Articles
 author: Adam
-as_related: false
 ---
 My article about how [YAML makes a bad programming language](https://earthly.dev/blog/intercal-yaml-and-other-horrible-programming-languages/) [^1] generated a lot of great discussions online.
 

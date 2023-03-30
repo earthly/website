@@ -11,6 +11,7 @@ internal-links:
  - makefile 
  - go makefile
  - golang make
+topic: make
 ---
 <iframe width="560" height="315" src="https://www.youtube.com/embed/QPfNopc6B_g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
@@ -104,6 +105,8 @@ These commands are very handy and help to streamline the development process. No
 - **Target:** Targets are the main component of a Makefile. The make command executes the recipe by its target name. As you saw in the last section, I used commands like `build`, `run`, and `build_and_clean`. These are called *targets*. Targets are the interface to the commands I want to execute.
 - **Dependencies:** A target can have dependencies that need to be executed before running the target. For example, the `build_and_clean` command has two dependencies: `build` and `run`.
 - **Recipe:** Recipes are the actual commands that will be executed when the target is run. A recipe can be a single command or a collection of commands. You can specify multiple commands in a target using a line break. In the example above, the recipe for the run target is `./${BINARY_NAME}`. A recipe should always contain a tab at the start.
+
+{% include_html cta/make1.html %}
 
 ### Variables
 

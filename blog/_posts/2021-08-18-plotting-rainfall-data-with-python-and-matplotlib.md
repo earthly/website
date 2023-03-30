@@ -571,6 +571,6 @@ On the other hand, my tomatoes have been loving the heat.
 If you would like to try generating the above graphs, all the code (and data) can be found under
 [github.com/earthly/example-plotting-precipitation](https://github.com/earthly/example-plotting-precipitation).
 
-{% include cta/cta1.html %}
+{% include_html cta/cta2.html %}
 
 [^1]: https://www.nssl.noaa.gov/education/svrwx101/winter/faq/

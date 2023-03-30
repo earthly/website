@@ -9,6 +9,7 @@ internal-links:
  - nchar
  - read files
  - nl 
+topic: cli
 ---
 [Bash](https://en.wikipedia.org/wiki/Bash_(Unix_shell)) (bourne again shell) scripts give you the ability to turn series of manual commands into an easily [runnable and repeatable script](https://earthly.dev/blog/understanding-bash/). This can be especially useful when working with files.
 
@@ -338,4 +339,4 @@ In this article, you learned how to use Bash for reading files and reviewed use 
 
 If you use Bash or tools like Make or Docker to automate the process of building software then you should take a look at Earthly. [Earthly](https://earthly.dev/) provides a simple and familiar syntax for defining cacheable, parallelizable, and Git-aware builds for any system that can be run anywhere. You can head to their [blog](https://earthly.dev/blog/) to learn more.
 
-{% include cta/cta1.html %}
+{% include_html cta/cta2.html %}

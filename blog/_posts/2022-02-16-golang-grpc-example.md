@@ -18,12 +18,14 @@ internal-links:
  - protoc
  - protoc-gen-go
  - protobuf vs json
-
+topic: go
 ---
 <!-- markdownlint-disable MD036 -->
 Welcome back. I'm an experienced developer, learning Golang by building an activity tracker. Last time I added SQLite persistence. Today, I'm going to be porting everything to gRPC.
 
 If you're curious about gRPC – how it works, when to use it, what example code might look like – well, you are in luck because I'm going to be building a grpc client, a grpc server, and the protobuf files for my activity tracker. The full code is on [GitHub](https://github.com/adamgordonbell/cloudservices/tree/v4-grpc).
+
+{% include_html cta/go1.html %}
 
 ## Why gRPC
 
@@ -237,6 +239,8 @@ Another possible path to generating a REST client is [grpc-gateway](https://gith
 ### Golang Protobuf Types
 
 Now that I've got all my code generated, it's time for me to build the server-side. Let's start at the database layer and work upwards
+
+{% include_html cta/go2.html %}
 
 If you recall from when I was adding the `sqlite` feature, Activities handles all the data persistence. So the data persistence layer shouldn't have change much at all. I just need to make sure I'm using my `protoc` generated struct. I can do this with an import change:
 
@@ -823,7 +827,7 @@ Also, [Earthly](https://earthly.dev/) made it simple to test the whole solution 
 
 Also if you have any feedback on this tutorial, you can find me [`@adamgordonbell`](https://twitter.com/adamgordonbell).
 
-{% include cta/cta1.html %}
+{% include_html cta/cta2.html %}
 
 [^1]:
   Yet another option is to use grpc-web to call grpc end points from client side JavaScript. You can find more out about this on [grpc-web's GitHub page](https://github.com/grpc/grpc-web). See also a comparison on the [gRPC-Gateway FAQ](https://grpc-ecosystem.github.io/grpc-gateway/docs/faq/#what-is-the-difference-between-the-grpc-gateway-and-grpc-web).

@@ -10,6 +10,7 @@ internal-links:
  - makefile
  - g\+\+
  - c\+\+
+topic: make
 ---
 <!-- vale WritingSuggestions.Cliches = NO -->
 C++ is one of the [most dominant programming languages](https://www.tiobe.com/tiobe-index/cplusplus/). Although there are many compilers available, [GCC](http://gcc.gnu.org/) still ranks as one of the most popular choices for C++. GCC is part of the GNU toolchain, which comes with utilities like GNU make, GNU bison, and GNU [AutoTools](/blog/autoconf).
@@ -21,6 +22,8 @@ C++ is one of the [most dominant programming languages](https://www.tiobe.com/ti
 The C++ compiler of GCC is known as `g++`. The `g++` utility supports almost all mainstream C++ standards, including `c++98`, `c++03`, `c++11`, `c++14`, `c++17`, and experimentally `c++20` and `c++23`. It also provides some GNU extensions to the standard to enable more useful features. You can check out the detailed standard support [on gnu.org](https://gcc.gnu.org/projects/cxx-status.html).
 
 In this tutorial, you will learn how to compile C++ programs with the `g++` compiler provided by GCC, and how to use [Make](https://www.gnu.org/software/make/) to automate the compilation process.
+
+{% include_html cta/make1.html %}
 
 ## Installing GCC
 
@@ -269,6 +272,8 @@ This time, `make` does not compile `func.c` because the file `func.o` exists, an
 On the other hand, the file `hello.cpp` is newer than `hello.o`. So it needs to be recompiled, and when `hello.o` is re-created, the target `hello` needs to be executed, since it depends on `hello.o`.
 
 You can also call `make` with the name of a specific rule. For example, running `make func.o` will only run the rule for `func.o`
+
+{% include_html cta/make2.html %}
 
 ## Comments in Makefile
 

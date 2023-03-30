@@ -6,6 +6,8 @@ categories:
 author: Alex
 internal-links:
    - grpc
+topic: python
+funnel: 2
 ---
 
 I was surprised to learn that Google protocol buffers (protobufs), were first introduced nearly two decades ago. They were used internally at google as early as 2001 and were open sourced 2008.
