@@ -6,7 +6,10 @@ toc: true
 author: Ashutosh Krishna
 
 internal-links:
- - just an example
+ - Python
+ - Dependencies
+ - Poetry
+ - Virtual Environments
 ---
 
 Python is a versatile language used for various applications. However, managing dependencies, the [packages](/blog/setup-typescript-monorepo) a project relies on can be a complex and time-consuming task. With the growth of the Python ecosystem, developers need to manage a large number of packages and dependencies and ensure that they are compatible with each other.
@@ -700,4 +703,3 @@ In this tutorial, you have explored the steps involved in using Poetry for manag
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Add keywords for internal links to front-matter
