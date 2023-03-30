@@ -709,6 +709,5 @@ In this tutorial, you have explored the steps involved in using Poetry for manag
 
 ## Outside Article Checklist
 
-- [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
 
