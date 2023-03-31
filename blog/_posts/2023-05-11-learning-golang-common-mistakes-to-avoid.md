@@ -1,5 +1,5 @@
 ---
-title: "Put Your Best Title Here"
+title: "Five Common Mistakes To Avoid When Learning Golang"
 categories:
   - Tutorials
 toc: true
@@ -9,22 +9,21 @@ internal-links:
  - just an example
 ---
 
-# Five Common Mistakes To Avoid When Learning Golang 
-Golang (or Go) is an open-source programming language that was developed by Google engineers. It was designed to build efficient, reliable, and robust applications, and it is a [statically compiled](https://stackoverflow.com/questions/12600296/dynamically-compiled-language-vs-statically-compiled-language) language used for building modern and scalable applications. 
+Golang (or Go) is an open-source programming language that was developed by Google engineers. It was designed to build efficient, reliable, and robust applications, and it is a [statically compiled](https://stackoverflow.com/questions/12600296/dynamically-compiled-language-vs-statically-compiled-language) language used for building modern and scalable applications.
 Go is known for its concurrency support, which makes it easy to write programs that can perform multiple tasks simultaneously. It has a [garbage-collected runtime](https://tip.golang.org/doc/gc-guide) and a rich standard library, making it easy to develop applications without relying on external dependencies.
 It has gained popularity among developers over the years for a variety of reasons. One of the main reasons is its simplicity. Go has a clean, easy-to-learn syntax, which makes it easy for new developers to pick up and start using. Additionally, it places a strong emphasis on readability, which makes it easier for teams to collaborate and maintain code.
 Go is also known for its performance. It is a compiled language, which means that it is compiled into machine code that can be directly executed by the computer's processor. This makes Go programs fast and efficient, especially when compared to interpreted languages like Python or Ruby.
-However, when learning Golang, there are common mistakes made by beginners or experienced developers in understanding basic concepts. 
+However, when learning Golang, there are common mistakes made by beginners or experienced developers in understanding basic concepts.
 
 In this article, we will go over these five common mistakes and how to ensure we avoid them.
 
 ## Prerequisites
 
 - Basic Understanding of Programming Concepts
-- Familiarity with Golang 
-- Understanding of basic Golang concepts 
- 
-All relevant codes utilized in this tutorial can be found in this [repository](https://github.com/Ubaydah/golang-mistakes-tutorial). 
+- Familiarity with Golang
+- Understanding of basic Golang concepts
+
+All relevant codes utilized in this tutorial can be found in this [repository](https://github.com/Ubaydah/golang-mistakes-tutorial).
 
 ## Mistake 1: Not Understanding Pointers And References
 
@@ -32,7 +31,7 @@ In Go, a pointer is a variable that stores the memory address of another variabl
 
 Here is an example of how we can use a pointer in Go:
 
-```go
+~~~
 package main
 
 import "fmt"
@@ -54,25 +53,28 @@ func main() {
     fmt.Println(x)  // Output: 20
 }
 
-```
+~~~
+
 This outputs:
 
-```
+~~~
 10
 20
-```
+~~~
 
 In the code block above, `p` is a pointer to the variable `x`. We use the `&` operator to get the memory address of `x`, and we use the `*` operator to dereference the pointer and access the value stored at that address.
 We can also use the [`new`](https://go.dev/doc/effective_go#allocation_new) function to allocate memory for a new variable and return a pointer to it:
 
-```go
+~~~
  p := new(int)  // We allocate memory for an int and return a pointer to it
 *p = 10        // We then assigned the value 10 to the memory location pointed to by p
 fmt.Println(*p) // Output: 10
-```
-For a [struct field](https://golangbot.com/structs/), we use the `&` operator to get the memory address 
-Here’s an example:
-```go
+~~~
+
+For a [struct field](https://golangbot.com/structs/), we use the `&` operator to get the memory address
+Here's an example:
+
+~~~
 // We declare a new struct named book
 type Book struct {
     Name string
@@ -87,27 +89,37 @@ func main() {
     fmt.Println(b.Price)  // Output: 7000
 }
 
-```
+~~~
+
 In the code block above, we declare a struct named `Book` with fields of `Name`, `Author`, and `Price`. Next, We create a variable `b` in our `main` function to assign values to the struct. The `&` operator gets the memory address of the `Price` field of the struct `b`. We then use the `*` operator to modify the value of the price.
 Not understanding how pointers and references work in Go can lead to certain errors and bugs in our codes. Here are some scenarios:
-### Not Using The  `*` And `&` Operators Correctly 
+
+### Not Using the `*` and `&` Operators Correctly
+
 If we use the `*` and `&` operators incorrectly, we will get errors from the compiler, and our codes will not behave as expected.
-Here’s an example:
-```go
+Here's an example:
+
+~~~
 x := 10
 p := *x  // Incorrect use of the * operator
 fmt.Println(p)  // invalid operation: cannot indirect x (variable of type int)
-```
+~~~
+
 This output:
-```
+
+~~~
 ./main.go:7:8: invalid operation: cannot indirect x (variable of type int)
-```
-In the example above, we tried to use the `*` operator to get the memory address of the variable `x` instead of the `&` operator. This will cause a compiler error because `x` is not a pointer, and our codes won’t run.
-### Deferencing A `Nil` Pointer
+~~~
+
+In the example above, we tried to use the `*` operator to get the memory address of the variable `x` instead of the `&` operator. This will cause a compiler error because `x` is not a pointer, and our codes won't run.
+
+### Deferencing a `Nil` Pointer
+
 A `nil` pointer is a pointer that doesn't point to any memory address. It is a pointer that is declared and not initialized to any value, hence it is set to `nil` by default.
 In Go, dereferencing a `nil` pointer returns a runtime error.
-Here’s an example
-```go
+Here's an example
+
+~~~
 package main
 import "fmt"
 
@@ -115,33 +127,39 @@ func main() {
     var q *int  // Declare a pointer q
     fmt.Println(*q) // Dereference q, which causes an error: panic: runtime error: invalid memory address or nil pointer dereference
 }
-```
+~~~
+
 This outputs:
-```panic: runtime error: invalid memory address or nil pointer dereference
+
+~~~{.runtime caption=""}
 [signal SIGSEGV: segmentation violation code=0x2 addr=0x0 pc=0x100c50024]
 goroutine 1 [running]:
 main.main()
         /Users/Me/Desktop/DSA/backtracking/main.go:7 +0x24
 exit status 
-```
-In the code block above, the pointer `p` is not initialized to point to any memory address. When we try to dereference `p` using the `*` operator, it causes a runtime error because we are trying to access the value stored at a `nil` memory address.
-To avoid this error, we should always ensure that a pointer is initialized to point to a valid memory address before dereferencing it. We can do this by using the ` new` function to allocate memory for a new variable and assigning the resulting pointer to the pointer variable:
+~~~
 
-```go
+In the code block above, the pointer `p` is not initialized to point to any memory address. When we try to dereference `p` using the `*` operator, it causes a runtime error because we are trying to access the value stored at a `nil` memory address.
+To avoid this error, we should always ensure that a pointer is initialized to point to a valid memory address before dereferencing it. We can do this by using the `new` function to allocate memory for a new variable and assigning the resulting pointer to the pointer variable:
+
+~~~
 p := new(int)  // Allocate memory for an int and return a pointer to it
 *p = 10        // Assign the value 10 to the memory location pointed to by p
 fmt.Println(*p) // Output: 10
-```
+~~~
 
 This outputs:
 
-```
+~~~
 10
-```
+~~~
+
 ### Dereferencing A Pointer To A Different Type
-If we dereference a pointer to a different type than the type it was originally declared as, we will get a runtime error. 
-Here’s an example:
-```go
+
+If we dereference a pointer to a different type than the type it was originally declared as, we will get a runtime error.
+Here's an example:
+
+~~~
 package main
 
 import "fmt"
@@ -153,25 +171,31 @@ func main() {
     var q *float64 = p  // cannot use p (variable of type *int) as type *float64 in variable declaration
     fmt.Println(*q)  
 }
-```
-In the code block above, we declared a new pointer `p` as an integer. Then we assigned a new type `float64` to it. This will result in a compiler "incompatible assignment" error in our codes. 
+~~~
+
+In the code block above, we declared a new pointer `p` as an integer. Then we assigned a new type `float64` to it. This will result in a compiler "incompatible assignment" error in our codes.
 It outputs:
-```
+
+~~~
 ./main.go:9:19: cannot use p (variable of type *int) as type *float64 in variable declaration
-```
-In conclusion, avoiding pointer and reference errors is very important when programming in Golang. We should ensure the right operator is used when deferencing pointers and avoid calling nil pointers. Mastering these concepts might be hard at first, but with enough practice, we get better. 
+~~~
+
+In conclusion, avoiding pointer and reference errors is very important when programming in Golang. We should ensure the right operator is used when deferencing pointers and avoid calling nil pointers. Mastering these concepts might be hard at first, but with enough practice, we get better.
+
 ## Mistake 2: Not Utilizing Interfaces Effectively
+
 Interfaces in Golang are a way to define a set of methods that a struct or other type must implement to conform to that interface.
 For example, let's say we have a struct called `Animal` and we want to make sure that any struct that is considered an `Animal` must have a method called `Speak()` that returns a string. We can create an interface called `Speakable` that defines this method:
 
-```go
+~~~
 type Speakable interface {
     Speak() string
 }
-```
+~~~
+
 We can then define our struct `Animal` and make sure it implements the `Speakable` interface by defining the `Speak()` method:
 
-```go
+~~~
 type Animal struct {
     Name string
 }
@@ -179,29 +203,36 @@ type Animal struct {
 func (a *Animal) Speak() string {
     return "I am an animal and my name is " + a.Name
 }
-```
+~~~
 
 Next, We can create an instance of a new animal struct in a `main` function and call the `Speak` method on it:
 
-``go
+~~~go
 func main() {
     a := Animal{
         Name: "goat",
     }
     fmt.Println(a.Speak())
 }
-```
+
+~~~
+
 In the code above, we created a new instance of an animal and defined its `Name` field as "goat." We then call the `Speak()` method on it as defined in our interface.
 This outputs:
-```
+
+~~~
+
 I am an animal and my name is goat
-```
+
+~~~
+
 Interfaces in Golang are important because they allow for loose coupling between structs and other types, making it easier to change and extend code. The only required methods in a `struct` that implement an interface are the ones we define on the `interface`. The struct can still have other methods and properties that are not part of the interface. This allows for flexibility in the implementation while still ensuring that certain functionality is available. Additionally, interfaces allow for [polymorphism](https://en.wikipedia.org/wiki/Polymorphism_(computer_science)), where a single function or method can work with multiple types that implement the same interface.
 In Go, interfaces are implemented implicitly, meaning that a struct does not need to explicitly declare that it implements an interface. A struct automatically implements an interface if it has all the methods defined in that interface. This makes it easy to add new interfaces to structs without changing the struct itself.
 
 For Example:
 
-```go
+~~~
+
 package main
 import "fmt"
 type Printer interface {
@@ -212,18 +243,19 @@ type LaserPrinter struct {}
 
 func (lp LaserPrinter) Print() {
     // Implement the Print method for LaserPrinter
-    fmt.Println(“Welcome”)	
+    fmt.Println("Welcome")
 }
-```
-In the code block above, we declared an interface `Printer` with the `Print()` method and a struct `LaserPrinter` that implements the `Print()` method of the interface.  Go considers that the `LaserPrinter` struct satisfies the `Printer` interface implicitly because the struct has the `Print` method that matches the signature of the `Print` method in the `Printer` interface. However, Go does not perform this check at compile time, and instead waits until we use the `LaserPrinter` struct as a `Printer`.
 
+~~~
 
+In the code block above, we declared an interface `Printer` with the `Print()` method and a struct `LaserPrinter` that implements the `Print()` method of the interface. Go considers that the `LaserPrinter` struct satisfies the `Printer` interface implicitly because the struct has the `Print` method that matches the signature of the `Print` method in the `Printer` interface. However, Go does not perform this check at compile time, and instead waits until we use the `LaserPrinter` struct as a `Printer`.
 
 The code can be extended to explicitly declare the `LaserPrinter` struct on the interface in a function.
 
 For example:
 
-```go
+~~~
+
 package main
 import "fmt"
 type Printer interface {
@@ -234,7 +266,7 @@ type LaserPrinter struct {}
 
 func (lp LaserPrinter) Print() {
     // Implement the Print method for LaserPrinter
-    fmt.Println(“Welcome”)	
+    fmt.Println("Welcome")
 }
 
 func main() {
@@ -243,16 +275,24 @@ func main() {
     p.Print()
 }
 
-```
+~~~
+
 This output:
-```
+
+~~~
+
 Welcome
-```
+
+~~~
+
 Not understanding how interfaces work in Go can lead to certain errors and bugs in our codes. Here are some scenarios:
-### Invoking An Unimplemented Method Defined In An Interface
+
+### Invoking an Unimplemented Method Defined in an Interface
+
 One common mistake when working with interfaces is calling a method that is not implemented by the struct but defined in the interface. For example, if we have an interface called `Speakable` with two methods, `Speak()` and `Listen()`, and we define a struct (that implements this interface) that only implements `Speak()` in our function but not the `Listen()` method of the interface. The program will not compile. If we try to invoke the `Listen()` method:
 
-```go
+~~~
+
 type Speakable interface {
     Speak() string
     Listen() string
@@ -273,20 +313,28 @@ func main() {
     fmt.Println(a.Listen()) // error: a.Listen undefined (type Animal has no field or method Listen)
 }
 
-```
+~~~
+
 This outputs an error:
-```
+
+~~~
+
 ./main.go:22:19: a.Listen undefined (type Animal has no field or method Listen)
-```
 
-In the code block above, we defined the interface `Speakable` and defined two methods for it, namely `Speak()` and ` Listen()`. We implemented only the `Speak()` method for the defined struct `Animal`.  When calling the interface methods on an instance of the struct, we invoked the unimplemented method `Listen()` which led to an error. 
+~~~
 
-> Note: A struct doesn’t necessarily need to implement all the methods defined in an interface but the struct mustn’t invoke an unimplemented function to avoid an error.
+In the code block above, we defined the interface `Speakable` and defined two methods for it, namely `Speak()` and `Listen()`. We implemented only the `Speak()` method for the defined struct `Animal`. When calling the interface methods on an instance of the struct, we invoked the unimplemented method `Listen()` which led to an error.
+
+> Note: A struct doesn't necessarily need to implement all the methods defined in an interface but the struct mustn't invoke an unimplemented function to avoid an error.
 
 To avoid unnecessary errors and bugs when defining interfaces in Go, we should ensure that only the methods defined in the interface and implemented by the structs are invoked.
-### Calling A `Nil` Interface 
+
+### Calling A `Nil` Interface
+
 A `nil` pointer dereference error in interfaces in Golang occurs when we call a function or method on a `nil` pointer, causing a [runtime panic](https://go.dev/ref/spec#Run_time_panics). The `nil` pointer error happens when a struct implements an interface but the struct pointer is not initialized. For example:
-```go
+
+~~~
+
 type Speakable interface {
     Speak() string
 }
@@ -304,9 +352,13 @@ func main() {
     var i Speakable
     i.Speak() // runtime error: invalid memory address or nil pointer dereference
 }
-```
+
+~~~
+
 This outputs:
-```
+
+~~~
+
 panic: runtime error: invalid memory address or nil pointer dereference
 [signal SIGSEGV: segmentation violation code=0x2 addr=0x0 pc=0x100952b10]
 
@@ -314,21 +366,27 @@ goroutine 1 [running]:
 main.main()
         /Users/Me/Desktop/DSA/backtracking/main.go:19 +0x20
 exit status 2
-```
+
+~~~
+
 In the code block above, we declared a variable `i` as an interface type, but it is not initialized with any value. When we call the `Speak()` method on `i`, it will cause a `nil` pointer dereference error because `i` is a `nil` pointer. To fix this, we need to initialize the variable `i` with a value of type `Animal` or any other type that implements the `Speakable` interface:
 
-```go
+~~~
+
 func main() {
     var i Speakable
     i = &Animal{Name: "john doe"}
     i.Speak()
 }
-```
+
+~~~
+
 We must check the variable of the initialized interface is not nil before calling any function or method on it to prevent such errors.
 
 For Example:
 
-```go
+~~~
+
 import "fmt"
 
 func main() {
@@ -341,26 +399,34 @@ func main() {
     }
 }
 
-```
+~~~
+
 This outputs:
 
-```
+~~~
+
 myInterface is nil
 
-```
-In the code block above, we declared an empty Interface and did a check if it isn't `nil` using the `!=` operator. 
+~~~
 
-### Type Assertion Errors 
+In the code block above, we declared an empty Interface and did a check if it isn't `nil` using the `!=` operator.
+
+### Type Assertion Errors
 
 A [type assertion error](https://www.golinuxcloud.com/golang-type-assertion/) in interfaces in Go occurs when a type assertion is used to convert an interface value to a specific type but the value does not implement that type. Type assertions are used to check if an interface value holds a specific concrete type and to extract that value. The syntax of a type assertion is:
-```go
+
+~~~
+
 x.(T)
-```
+
+~~~
+
 Where x is an interface value, and `T` is the type that x is being asserted to.
 
 For example, let's consider the following code:
 
-```go
+~~~
+
 type Speakable interface {
     Speak() string
 }
@@ -370,40 +436,44 @@ type People struct {
 
 func main() {
     var f Speakable
-    s := f.(*People) //impossible type assertion: f.(*People) 
+    s := f.(*People) //impossible type assertion: f.(*People)
 
     s.Speak()
 }
-```
+
+~~~
 
 This outputs:
 
-```
+~~~
+
 ./main.go:14:7: impossible type assertion: f.(*People)
         *People does not implement Speakable (missing Speak method)
 ./main.go:16:4: s.Speak undefined (type *People has no field or method Speak)
 
-```
-In the code block above, we defined a new struct `People` that doesn’t implement the `Speak()` method of the interface. We then initialized an interface type `f` and asserted it on the `People` struct. A type assertion error is returned because the `People` struct doesn't implement the interface `Speakable`. 
+~~~
+
+In the code block above, we defined a new struct `People` that doesn't implement the `Speak()` method of the interface. We then initialized an interface type `f` and asserted it on the `People` struct. A type assertion error is returned because the `People` struct doesn't implement the interface `Speakable`.
 
 To avoid this type of error, we should ensure the interface value implements the type we are asserting it to.
-
-
 
 ## Mistake 3: Not Utilizing Concurrency Effectively
 
 Concurrency in Go (also known as [goroutines](https://gobyexample.com/goroutines)) allows multiple tasks to be executed [concurrently rather than sequentially](https://medium.com/codex/go-concurrency-vs-parallelism-c3fc9cec55c8). This can improve performance by allowing the program to make better use of available resources such as the CPU and memory.
-A [goroutine](https://go.dev/tour/concurrency/1) is a lightweight thread of execution managed by the Go runtime. They are created by using the [go keyword](https://go.dev/ref/spec#Go_statements), followed by a function call. 
+A [goroutine](https://go.dev/tour/concurrency/1) is a lightweight thread of execution managed by the Go runtime. They are created by using the [go keyword](https://go.dev/ref/spec#Go_statements), followed by a function call.
 
 The syntax of the goroutine is:
 
-```go
+~~~
+
 go function()
-```
 
-Here’s an example:
+~~~
 
-```go
+Here's an example:
+
+~~~
+
 package main
 
 import (
@@ -423,17 +493,19 @@ func main() {
     time.Sleep(1 * time.Second)
     // main function continues to execute here
 }
-```
 
-In the code block above, we created a function named `printNumbers()` to print numbers between 1 and 10 by initializing a counter `i` and incrementing the counter in the loop. We then called the `printNumbers()` function as a goroutine twice, allowing them to execute simultaneously. The `time.Sleep()` method is used to pause the execution of the `main` function for 1 second so all the go routines get executed successfully. 
+~~~
 
->Note: Without the `time.Sleep()` method, the `main` function terminates without allowing the go routines to execute successfully, and nothing will output in our terminal. This happens because the `main` function executes prematurely, terminating the goroutine before it completes successfully.  
+In the code block above, we created a function named `printNumbers()` to print numbers between 1 and 10 by initializing a counter `i` and incrementing the counter in the loop. We then called the `printNumbers()` function as a goroutine twice, allowing them to execute simultaneously. The `time.Sleep()` method is used to pause the execution of the `main` function for 1 second so all the go routines get executed successfully.
+
+> Note: Without the `time.Sleep()` method, the `main` function terminates without allowing the go routines to execute successfully, and nothing will output in our terminal. This happens because the `main` function executes prematurely, terminating the goroutine before it completes successfully.  
 
 Goroutines can also be used in conjunction with [channels](https://go.dev/ref/spec#Channel_types), which enable goroutines to communicate and synchronize their execution. They are created with the [`make`](https://www.educative.io/answers/what-is-golang-function-maket-type-size-integertype-type)  function and have a specific type, for example, `chan int` for a channel that sends and receives integers.
 
 Here's an example:
 
-```go
+~~~
+
 func printNumbers(c chan int) {
     for i := 1; i <= 10; i++ {
         c <- i
@@ -449,20 +521,23 @@ func main() {
     }
 }
 
-```
+~~~
 
 In the code block above, the `printNumbers` function sends the numbers 1 through 10 to the channel `c`. The `main` function then receives those numbers from the channel and prints them. This allows the goroutine executing the `printNumbers` function to run concurrently with the `main` function, and also allows them to synchronize their execution using the channel.
 
 Concurrency in Go boosts performance by allowing a program to better utilize available resources, such as multiple CPU cores. It also enables a program to respond to multiple events at the same time, rather than waiting for one event to finish before moving on to the next.
 
 Not understanding how concurrency works in Go can lead to certain errors and bugs in our codes. Here are some scenarios:
+
 ### Not Using Channels To Synchronize Goroutines
+
 Channels are a key feature in Go's concurrency model and are used to coordinate and synchronize the execution of goroutines. They allow goroutines to communicate with each other and to share data in a safe and controlled way.
 Failure to use channels to synchronize our goroutines can result in unexpected code behavior and [race conditions](https://www.baeldung.com/cs/race-conditions), as multiple goroutines may attempt to access shared data at the same time without proper coordination.
 
-Here’s an example:
+Here's an example:
 
-```go
+~~~
+
 package main
 
 import "fmt"
@@ -479,21 +554,25 @@ func main() {
     go printNumbers()
     fmt.Println(counter)
 }
-```
+
+~~~
 
 It outputs:
 
-```
-0
-```
+~~~
 
-In the code block above, the `printNumbers` function is called twice as a goroutine, both are incrementing the same `counter` variable, but there's no synchronization between them, so the final value of the `counter` will be unpredictable. The output is `0` which is not what we expected. 
+0
+
+~~~
+
+In the code block above, the `printNumbers` function is called twice as a goroutine, both are incrementing the same `counter` variable, but there's no synchronization between them, so the final value of the `counter` will be unpredictable. The output is `0` which is not what we expected.
 
 This can be fixed by using channels to synchronize the two goroutines by sending and receiving data between them.
 
 For example:
 
-```go
+~~~
+
 func printNumbers(c chan int) {
     for i := 1; i <= 10; i++ {
         c <- i
@@ -514,9 +593,12 @@ func main() {
     }
 }
 
-```
+~~~
+
 This outputs:
-```
+
+~~~
+
 1
 2
 3
@@ -537,7 +619,7 @@ This outputs:
 8
 9
 
-```
+~~~
 
 In the code block above, we created two channels in our `main` function, `c` and `d` to receive data from our goroutines and output them. From the output, the channel synchronized the two go routines, and we got the expected output.
 This will ensure the goroutines are executed perfectly before the `main` function terminates.
@@ -548,7 +630,8 @@ A [goroutine leak](https://medium.com/golangspec/goroutine-leak-400063aef468) oc
 
 Here is an example of code that can cause a goroutine leak:
 
-```go
+~~~
+
 package main
 
 import "fmt"
@@ -563,12 +646,13 @@ func main() {
     go infiniteLoop()
 }
 
-```
+~~~
 
 In the code block above, we started the `infiniteLoop()` function as a goroutine, but it never terminates. This means that the goroutine will continue to run indefinitely, even after the `main()` function has finished executing.
 To fix this, we can use a channel to [signal](https://medium.com/@matryer/golang-advent-calendar-day-two-starting-and-stopping-things-with-a-signal-channel-f5048161018) when the goroutine should terminate:
 
-```go
+~~~
+
 func infiniteLoop(done chan bool) {
     for {
         select {
@@ -586,83 +670,93 @@ func main() {
     // Do something else
     done <- true
 }
-```
+
+~~~
 
 In the code block above, we passed the `done` channel to the `infiniteLoop()` function as an argument. Inside the loop, the function uses a [`select`](https://www.geeksforgeeks.org/select-statement-in-go-language/) statement to check for a message on the `done` channel. If a message is received, the function exits the loop and terminates the goroutine. In the `main()` function, a message is sent on the `done` channel to signal the goroutine to terminate.
 
->Note: The sign `<-` is used to send and receive values on the channel, i.e., `done <- true` means we are sending a bool value `true` to channel `done`. 
+> Note: The sign `<-` is used to send and receive values on the channel, i.e., `done <- true` means we are sending a bool value `true` to channel `done`.
 
-## Mistake 4: Not Using third-party Libraries Effectively 
+## Mistake 4: Not Using third-party Libraries Effectively
+
 There is a wide range of third-party libraries available for Golang that can help developers build high-performance and feature-rich applications. These libraries provide a variety of functionality, including:
 
-- Web Development 
+- Web Development
 There are several web development libraries available for Golang, such as the popular [Gin](https://github.com/gin-gonic/gin), [Fiber](https://github.com/gofiber/fiber), and [Echo](https://github.com/labstack/echo) frameworks, which provide a lightweight and fast way to build web applications.
 
--  Database Access 
+- Database Access
 Golang has several libraries for interacting with various types of databases, including SQL and NoSQL databases. Popular libraries include [Gorm](https://github.com/go-gorm/gorm) for interacting with MySQL, PostgreSQL, and SQLite, and [Mongo-Go-Driver](https://github.com/mongodb/mongo-go-driver) for interacting with MongoDB.
 
-- Logging 
+- Logging
 There are several libraries available for logging in Golang, such as [Logrus](https://github.com/sirupsen/logrus) and [Zap](https://github.com/uber-go/zap), which provide a way to log messages and trace errors in your application.
 
-- Package Management 
-There are many libraries available for package management in Golang, such as the Go module, [Glide] (https://github.com/Masterminds/glide), and [Dep] (https://github.com/golang/dep), which provide a way to manage dependencies and versioning in your application.
+- Package Management
+There are many libraries available for package management in Golang, such as the Go module, [Glide] (<https://github.com/Masterminds/glide>), and [Dep] (<https://github.com/golang/dep>), which provide a way to manage dependencies and versioning in your application.
 
-- Command Line Interface 
-Several libraries are available for building command-line interfaces in Golang, such as [Cobra] (https://github.com/spf13/cobra) and [Cmd] (https://github.com/devfacet/gocmd), which provide a way to build command-line applications.
+- Command Line Interface
+Several libraries are available for building command-line interfaces in Golang, such as [Cobra] (<https://github.com/spf13/cobra>) and [Cmd] (<https://github.com/devfacet/gocmd>), which provide a way to build command-line applications.
 
 Not using third-party libraries effectively in Golang can cause problems and errors; here are some examples of common errors:
 
-### Not Updating Third-Party Libraries 
+### Not Updating Third-Party Libraries
 
 When using third-party libraries in Golang, it's important to keep them up-to-date to ensure that they are compatible with the latest version of Golang and that they have the latest bug fixes and features.
 One way to do this is to use a package management tool like [Go modules](https://www.digitalocean.com/community/tutorials/how-to-use-go-modules) to automate updates or check the library's documentation to see if there are any updates available.
 
-Here’s the command to update a library in the Go module:
+Here's the command to update a library in the Go module:
 
-```bash
+~~~
+
 $ go get -u <package-name>
 
-```
+~~~
 
-### Importing An Unused Library 
+### Importing an Unused Library
 
-In Golang, importing an unused library will lead to the code not compiling properly, so it’s important to always check that all libraries imported are in use.
+In Golang, importing an unused library will lead to the code not compiling properly, so it's important to always check that all libraries imported are in use.
 
 For example:
 
-```go
+~~~
+
 package main
 
 import "fmt"
 
-
 func main(){
-    
+
 }
-```
 
-In the code block above, we imported the `fmt` library without utilizing it. Go won’t compile the code and will output the following error when the code is run:
+~~~
 
-```
+In the code block above, we imported the `fmt` library without utilizing it. Go won't compile the code and will output the following error when the code is run:
+
+~~~
+
 ./main.go:3:8: imported and not used: "fmt"
-```
+
+~~~
 
 We can run the following command to tidy up our code when working on a large codebase with `go.mod` file:
 
-```
-$ go mod tidy 
-```
+~~~
 
-### Not Checking For Errors When Using The Libraries
+$ go mod tidy
+
+~~~
+
+### Not Checking for Errors When Using the Libraries
 
 It is important to check for errors when using third-party libraries in Go, as they can indicate issues with the library or its configuration. For example, if we are using a library to connect to a database, we should check for errors when opening the connection.
 
-```go
+~~~
+
 connection, err := sql.Open("postgres", "user=pqgotest dbname=pqgotest sslmode=verify-full")
 if err != nil {
     log.Fatal(err)
 }
-```
+
+~~~
 
 Not checking for errors can lead to unexpected behaviors in our codes. It can also affect the maintainability of the codes as uncaught errors accumulate and make it hard to fix issues when they occur.
 
@@ -670,9 +764,10 @@ Not checking for errors can lead to unexpected behaviors in our codes. It can al
 
 Error handling in Golang is done using the built-in [`error` type and the `return` statement](https://earthly.dev/blog/golang-errors/). Unlike the `try..except` in other languages, Go handles errors by comparing the returned error to `nil` where a `nil` value indicates no error has occurred.
 
-Here’s an example:
+Here's an example:
 
-```go
+~~~
+
 package main
 
 import "fmt"
@@ -692,26 +787,30 @@ func main() {
     }
     fmt.Println(result)
 }
-```
+
+~~~
 
 This outputs:
 
-```
-cannot divide by zero
-```
+~~~
 
-In the code block above, we created a function to divide two integers and wrote an error statement when the number to divide with is `0`. We then handled the error in our `main` function when calling the `divide` function by checking if the error is `nil`. 
+cannot divide by zero
+
+~~~
+
+In the code block above, we created a function to divide two integers and wrote an error statement when the number to divide with is `0`. We then handled the error in our `main` function when calling the `divide` function by checking if the error is `nil`.
 This will ensure a proper error message is returned when `b` is 0 and will prevent our code from *panicking*.
 
 Here are some common mistakes made when handling errors in Go:
 
-### Panicking Instead Of Returning Errors 
+### Panicking Instead of Returning Errors
 
-Panicking an error instead of returning an actual error message isn’t a best practice when handling errors in Go because it leads to the program stopping its execution and closing all functions currently executing. Thereby, it’s recommended to return an actual error message so the program can handle the error in a more predictable and controlled manner. 
+Panicking an error instead of returning an actual error message isn't a best practice when handling errors in Go because it leads to the program stopping its execution and closing all functions currently executing. Thereby, it's recommended to return an actual error message so the program can handle the error in a more predictable and controlled manner.
 
-For example, let’s rewrite the previous code block by panicking the error message:
+For example, let's rewrite the previous code block by panicking the error message:
 
-```go
+~~~
+
 func divide(a, b int) int {
     if b == 0 {
         panic("Cannot divide by zero")
@@ -723,13 +822,15 @@ func main() {
     result := divide(5, 0)
     fmt.Println("Result:", result)
 }
-```
+
+~~~
 
 In the code block above, we use the built-in [`panic`](https://www.educative.io/answers/what-is-panic-in-golang)  function to stop the execution of the function when `b` is zero.
 
 This will output to our terminal:
 
-```
+~~~
+
 panic: Cannot divide by zero
 goroutine 1 [running]:
 main.divide(...)
@@ -737,24 +838,27 @@ main.divide(...)
 main.main()
         /Users/Me/Desktop/DSA/backtracking/main.go:106 +0x30
 exit status 2
-```
 
-### Not Providing Detailed Error Messages 
+~~~
 
-A vague error message doesn’t help when debugging, and it is best practice to provide a clear and helpful error message when handling errors in Golang.
+### Not Providing Detailed Error Messages
+
+A vague error message doesn't help when debugging, and it is best practice to provide a clear and helpful error message when handling errors in Golang.
 
 For example, in our `divide` function above, assuming we wrote a vague error message like this:
 
-```go
+~~~
+
 func divide(a, b int) (int, error) {
     if b == 0 {
         return 0, fmt.Errorf("an error occurred")
     }
     return a / b, nil
 }
-```
 
-This won't provide enough context for what might have caused the error compared to the former error message, which is `cannot divide by 0`. 
+~~~
+
+This won't provide enough context for what might have caused the error compared to the former error message, which is `cannot divide by 0`.
 A detailed error message helps in debugging faster and identifying what the issue is.
 
 ## Conclusion
@@ -762,12 +866,12 @@ A detailed error message helps in debugging faster and identifying what the issu
 In conclusion, Golang is a powerful and efficient programming language that can be used to build a wide range of applications. However, it is important to be aware of these common mistakes that can occur when learning the Go language, as they can save us time and frustration as we learn and work with Go. The five mistakes include:
 
 - Not properly understanding pointers and deferences
-- Not fully utilizing the interface effectively 
+- Not fully utilizing the interface effectively
 - Not utilizing concurrency effectively
 - Not using third-party libraries
 - Not properly handling errors
 
-Let’s also remember to take advantage of the vast resources available online and in the Go community, as well as to practice and experiment with different code snippets and examples to improve our skills.
+Let's also remember to take advantage of the vast resources available online and in the Go community, as well as to practice and experiment with different code snippets and examples to improve our skills.
 
 {% include_html cta/cta2.html %}
 
@@ -777,6 +881,5 @@ Let’s also remember to take advantage of the vast resources available online a
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
