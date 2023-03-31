@@ -12,8 +12,8 @@ internal-links:
 Golang (or Go) is an open-source programming language that was developed by Google engineers. It was designed to build efficient, reliable, and robust applications, and it is a [statically compiled](https://stackoverflow.com/questions/12600296/dynamically-compiled-language-vs-statically-compiled-language) language used for building modern and scalable applications.
 Go is known for its concurrency support, which makes it easy to write programs that can perform multiple tasks simultaneously. It has a [garbage-collected runtime](https://tip.golang.org/doc/gc-guide) and a rich standard library, making it easy to develop applications without relying on external dependencies.
 It has gained popularity among developers over the years for a variety of reasons. One of the main reasons is its simplicity. Go has a clean, easy-to-learn syntax, which makes it easy for new developers to pick up and start using. Additionally, it places a strong emphasis on readability, which makes it easier for teams to collaborate and maintain code.
-Go is also known for its performance. It is a compiled language, which means that it is compiled into machine code that can be directly executed by the computer's processor. This makes Go programs fast and efficient, especially when compared to interpreted languages like Python or Ruby.
-However, when learning Golang, there are common mistakes made by beginners or experienced developers in understanding basic concepts.
+Go is also known for its performance. It is a compiled language, which means that it is compiled into [machine code](/blog/compiling-containers-dockerfiles-llvm-and-buildkit) that can be directly executed by the computer's processor. This makes Go programs fast and efficient, especially when compared to interpreted languages like Python or Ruby.
+However, when learning [Golang](/blog/top-3-resources-to-learn-golang-in-2021), there are common mistakes made by beginners or experienced developers in understanding basic concepts.
 
 In this article, we will go over these five common mistakes and how to ensure we avoid them.
 
@@ -180,12 +180,12 @@ It outputs:
 ./main.go:9:19: cannot use p (variable of type *int) as type *float64 in variable declaration
 ~~~
 
-In conclusion, avoiding pointer and reference errors is very important when programming in Golang. We should ensure the right operator is used when deferencing pointers and avoid calling nil pointers. Mastering these concepts might be hard at first, but with enough practice, we get better.
+In conclusion, avoiding pointer and reference errors is very important when programming in [Golang](/blog/top-3-resources-to-learn-golang-in-2021). We should ensure the right operator is used when deferencing pointers and avoid calling nil pointers. Mastering these concepts might be hard at first, but with enough practice, we get better.
 
 ## Mistake 2: Not Utilizing Interfaces Effectively
 
 Interfaces in Golang are a way to define a set of methods that a struct or other type must implement to conform to that interface.
-For example, let's say we have a struct called `Animal` and we want to make sure that any struct that is considered an `Animal` must have a method called `Speak()` that returns a string. We can create an interface called `Speakable` that defines this method:
+For example, let's say we have a struct called `Animal` and we want to [make](/blog/makefiles-on-windows) sure that any struct that is considered an `Animal` must have a method called `Speak()` that returns a string. We can create an interface called `Speakable` that defines this method:
 
 ~~~
 type Speakable interface {
@@ -331,7 +331,7 @@ To avoid unnecessary errors and bugs when defining interfaces in Go, we should e
 
 ### Calling A `Nil` Interface
 
-A `nil` pointer dereference error in interfaces in Golang occurs when we call a function or method on a `nil` pointer, causing a [runtime panic](https://go.dev/ref/spec#Run_time_panics). The `nil` pointer error happens when a struct implements an interface but the struct pointer is not initialized. For example:
+A `nil` pointer dereference error in interfaces in [Golang](/blog/top-3-resources-to-learn-golang-in-2021) occurs when we call a function or method on a `nil` pointer, causing a [runtime panic](https://go.dev/ref/spec#Run_time_panics). The `nil` pointer error happens when a struct implements an interface but the struct pointer is not initialized. For example:
 
 ~~~
 
@@ -685,10 +685,10 @@ There is a wide range of third-party libraries available for Golang that can hel
 There are several web development libraries available for Golang, such as the popular [Gin](https://github.com/gin-gonic/gin), [Fiber](https://github.com/gofiber/fiber), and [Echo](https://github.com/labstack/echo) frameworks, which provide a lightweight and fast way to build web applications.
 
 - Database Access
-Golang has several libraries for interacting with various types of databases, including SQL and NoSQL databases. Popular libraries include [Gorm](https://github.com/go-gorm/gorm) for interacting with MySQL, PostgreSQL, and SQLite, and [Mongo-Go-Driver](https://github.com/mongodb/mongo-go-driver) for interacting with MongoDB.
+Golang has several libraries for interacting with various types of databases, including SQL and NoSQL databases. Popular libraries include [Gorm](https://github.com/go-gorm/gorm) for interacting with MySQL, PostgreSQL, and [SQLite](/blog/golang-sqlite), and [Mongo-Go-Driver](https://github.com/mongodb/mongo-go-driver) for interacting with MongoDB.
 
 - Logging
-There are several libraries available for logging in Golang, such as [Logrus](https://github.com/sirupsen/logrus) and [Zap](https://github.com/uber-go/zap), which provide a way to log messages and trace errors in your application.
+There are several libraries available for [logging](/blog/understanding-docker-logging-and-log-files) in Golang, such as [Logrus](https://github.com/sirupsen/logrus) and [Zap](https://github.com/uber-go/zap), which provide a way to log messages and trace errors in your application.
 
 - Package Management
 There are many libraries available for package management in Golang, such as the Go module, [Glide] (<https://github.com/Masterminds/glide>), and [Dep] (<https://github.com/golang/dep>), which provide a way to manage dependencies and versioning in your application.
@@ -859,7 +859,7 @@ func divide(a, b int) (int, error) {
 ~~~
 
 This won't provide enough context for what might have caused the error compared to the former error message, which is `cannot divide by 0`.
-A detailed error message helps in debugging faster and identifying what the issue is.
+A detailed error message helps in [debugging](/blog/printf-debugging) faster and identifying what the issue is.
 
 ## Conclusion
 
@@ -882,4 +882,3 @@ Let's also remember to take advantage of the vast resources available online and
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
