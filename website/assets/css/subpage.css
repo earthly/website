@@ -68,7 +68,6 @@ h2:hover span {
 ul.tabcontrol.tabs li.tab {
   border: 2px solid transparent;
   background: white;
-  min-width: 150px;
 }
 
 ul.tabcontrol.tabs li.tab:hover {
