@@ -66,7 +66,7 @@ poetry new weather-update
 
 The command creates a new folder `weather-update` with the following structure:
 
-~~~{ caption="file-hirarechy"}
+~~~{ caption=""}
 weather-update
 ├── pyproject.toml
 ├── README.md
@@ -519,7 +519,7 @@ Non-optional groups in Poetry refer to the groups of dependencies that are requi
 
 Optional and non-optional dependency groups are functionally independent and isolated. Packages in one group are not automatically made available to another group, and packages installed in one group do not affect packages installed in another group. This allows you to manage different sets of dependencies for different parts of your project, making it easier to manage the dependencies of your project as it evolves.
 
-> The default dependencies for a project in Poetry consist of two types of dependencies: the dependencies specified in the `tool.poetry.dependencies` table of the `pyproject.toml` file and the dependencies specified in the non-optional groups.
+The default dependencies for a project in Poetry consist of two types of dependencies: the dependencies specified in the `tool.poetry.dependencies` table of the `pyproject.toml` file and the dependencies specified in the non-optional groups.
 
 ### Removing Dependencies From a Group
 
@@ -709,4 +709,4 @@ Managing dependencies in Python development is crucial for ensuring the stabilit
 
 In this tutorial, you have explored the steps involved in using Poetry for managing dependencies in Python projects, from installation to publishing a package. Specifically, you have learned the creation of virtual environments, managing dependencies, including adding, removing, and synchronizing them, and publishing a Python project as a package. You can explore much more about Poetry in its [official documentation](https://python-poetry.org/).
 
-{% include cta/cta1.html %}
+{% include cta/cta2.html %}
