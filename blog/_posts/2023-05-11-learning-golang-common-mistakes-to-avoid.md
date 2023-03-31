@@ -6,7 +6,10 @@ toc: true
 author: Ubaydah Abdulwasiu
 
 internal-links:
- - just an example
+ - Golang
+ - Common Mistakes
+ - Improvement
+ - Learning
 ---
 
 Golang (or Go) is an open-source programming language that was developed by Google engineers. It was designed to build efficient, reliable, and robust applications, and it is a [statically compiled](https://stackoverflow.com/questions/12600296/dynamically-compiled-language-vs-statically-compiled-language) language used for building modern and scalable applications.
@@ -881,4 +884,3 @@ Let's also remember to take advantage of the vast resources available online and
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Add keywords for internal links to front-matter
