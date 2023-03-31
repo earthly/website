@@ -333,3 +333,8 @@ zipfile
 newfile
 filepath
 io
+
+subclass
+subclasses
+Subclass
+Subclassing
