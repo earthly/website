@@ -121,9 +121,10 @@ ide:
     content: |
       Add [Earthfile Syntax Highlighting](https://marketplace.visualstudio.com/items?itemName=earthly.earthfile-syntax-highlighting) to VS Code.
 
-      ```
+
+      <div class="font-mono">
       ext install earthly.earthfile-syntax-highlighting
-      ```
+      </div>
 
   tab2:
     name: vim
