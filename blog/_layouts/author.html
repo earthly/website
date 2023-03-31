@@ -5,20 +5,20 @@ layout: single
 {% include author-profile.html %}
 {{ content }}
 
-{% assign filtered_posts = site.posts | where: 'author', page.short_name | where:'featured', true  %}
+{% assign filtered_posts = site.posts | where: 'author', page.short_name | where:'featured', true %}
 {% if filtered_posts.size != 0 %}
-<h2>Featured</h2>
-<ul>
+<div class="text-2xl mt-4 mb-2">Featured</div>
+<ul class="-mt-1">
   {% for post in filtered_posts %}
-    <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
+  <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
   {% endfor %}
 </ul>
 {% endif %}
 
-<h2>All</h2>
-<ul>
+<div class="text-2xl mt-4 mb-2">All</div>
+<ul class="-mt-1">
   {% assign filtered_posts = site.posts | where: 'author', page.short_name %}
   {% for post in filtered_posts %}
-    <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
+  <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
   {% endfor %}
 </ul>
