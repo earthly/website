@@ -39,11 +39,11 @@
   class="layout--{{ page.layout | default: layout.layout }}{% if page.classes or layout.classes %}{{ page.classes | default: layout.classes | join: ' ' | prepend: ' ' }}{% endif %}">
   <a name="top"></a>
   <div class="flex justify-center">
-    <div class="flex flex-col min-w-[300px] max-w-[1260px]">
+    <div class="flex flex-col w-full min-w-[300px] max-w-[1260px]">
       {% include nav/layout.html template='nav/header.html' %}
 
 
-      <div class="initial-content pt-[70px]">
+      <div class="initial-content pt-[70px] w-full">
         {{ content }}
       </div>
       {% if site.search == true %}
