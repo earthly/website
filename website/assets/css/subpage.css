@@ -35,7 +35,7 @@ h3 {
 }
 
 #tab_os {
-  padding: 20px 20px;
+  padding: 20px 20px 20px 0;
 }
 
 ul {
@@ -66,23 +66,13 @@ h2:hover span {
 }
 
 ul.tabcontrol.tabs li.tab {
-  white-space: nowrap;
-  padding: 6px 13px;
-  cursor: pointer;
-  list-style-type: none;
-  border: 1px solid #9a9a9a;
-  border-bottom: none;
-  box-sizing: border-box;
-  min-height: 38px;
+  border: 2px solid transparent;
   background: white;
-  margin-right: 2px;
-  font-family: upgrade, sans-serif !important;
-  font-size: 17pt !important;
-  line-height: 100% !important;
-  border-radius: 2px 2px 0 0;
-  box-shadow: 1px 1px 1px 0px #00000033;
   min-width: 150px;
-  text-align: center;
+}
+
+ul.tabcontrol.tabs li.tab:hover {
+  border: 2px solid #2d7e5d;
 }
 
 ul.tabcontrol.tabs {
@@ -90,26 +80,19 @@ ul.tabcontrol.tabs {
   flex-direction: row;
   padding: 4px 0;
   margin: 0;
-  height: 40px;
+
   box-sizing: border-box;
-  overflow-x: auto;
-  overflow-y: hidden;
 }
 
 ul.tabcontrol.tabs li.tabcontrol.tab.active {
-  min-height: 42px;
-  font-weight: bold !important;
-  margin-top: -3px;
-  border-top: 3px solid #4fe2c8;
-  color: #000;
+  background: #2d7e5d;
+  border: 2px solid #2d7e5d;
+  color: #fff;
 }
 
 div.tabcontrol.body.fullborder {
-  border: 1px solid #9a9a9a;
-  padding: 10px 20px 20px 20px;
+  padding: 10px 20px 20px 0;
   box-sizing: border-box;
-  box-shadow: 1px 1px 2px 0px #00000077;
-  background-color: #80e8ff28;
   border-radius: 9px;
   border-top-left-radius: 0;
 }
@@ -126,11 +109,25 @@ ol {
   padding-top: 8px;
 }
 
+a.blue-link,
+a.blue-link:visited,
 li > a,
 li > a:visited,
 p > a,
 p > a:visited {
   color: rgb(59, 130, 246);
+  text-decoration: underline;
+}
+
+.get-started a,
+.get-started a:visited {
+  color: black;
+  text-decoration: underline;
+}
+
+.try-button {
+  color: white !important;
+  text-decoration: none !important;
 }
 
 .Home-product-Earthfile {
@@ -149,8 +146,9 @@ p > a:visited {
   font-family: inherit;
   padding-top: 4px;
   padding-bottom: 4px;
-  background-color: #eef1f1d5;
+  background-color: #4b5563;
   text-align: center;
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .Home-product-Earthfile-code {
@@ -177,4 +175,12 @@ p > a:visited {
   line-height: 1.3;
   line-height: 1.4;
   color: #eef1f1d5;
+}
+
+#tab_ide {
+  max-width: 760px;
+}
+
+#tab_ide li {
+  padding-bottom: 20px;
 }
