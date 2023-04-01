@@ -34,7 +34,8 @@ In Go, a pointer is a variable that stores the memory address of another variabl
 
 Here is an example of how we can use a pointer in Go:
 
-~~~
+~~~{.go caption="main.go"}
+
 package main
 
 import "fmt"
@@ -60,24 +61,32 @@ func main() {
 
 This outputs:
 
-~~~
+~~~{ caption="Output"}
+
 10
 20
+
 ~~~
 
 In the code block above, `p` is a pointer to the variable `x`. We use the `&` operator to get the memory address of `x`, and we use the `*` operator to dereference the pointer and access the value stored at that address.
 We can also use the [`new`](https://go.dev/doc/effective_go#allocation_new) function to allocate memory for a new variable and return a pointer to it:
 
-~~~
- p := new(int)  // We allocate memory for an int and return a pointer to it
-*p = 10        // We then assigned the value 10 to the memory location pointed to by p
-fmt.Println(*p) // Output: 10
+~~~{.go caption="main.go"}
+
+p := new(int)  
+// We allocate memory for an int and return a pointer to it
+*p = 10
+// We then assigned the value 10 to the memory location pointed to by p
+fmt.Println(*p) 
+// Output: 10
+
 ~~~
 
 For a [struct field](https://golangbot.com/structs/), we use the `&` operator to get the memory address
 Here's an example:
 
-~~~
+~~~{.go caption="main.go"}
+
 // We declare a new struct named book
 type Book struct {
     Name string
@@ -87,8 +96,10 @@ type Book struct {
 
 func main() {
     b := Book{"Half of a sun", "John doe", 8000}
-    p := &b.Price  // Let's get the memory address of the Price field of the Book struct
-    *p = 7000     // Let's modify the Price field using the pointer
+    p := &b.Price
+    // Let's get the memory address of the Price field of the Book struct
+    *p = 7000
+    // Let's modify the Price field using the pointer
     fmt.Println(b.Price)  // Output: 7000
 }
 
@@ -102,15 +113,20 @@ Not understanding how pointers and references work in Go can lead to certain err
 If we use the `*` and `&` operators incorrectly, we will get errors from the compiler, and our codes will not behave as expected.
 Here's an example:
 
-~~~
+~~~{.go caption="main.go"}
+
 x := 10
-p := *x  // Incorrect use of the * operator
-fmt.Println(p)  // invalid operation: cannot indirect x (variable of type int)
+p := *x
+// Incorrect use of the * operator
+fmt.Println(p)
+// invalid operation: cannot indirect x (variable of type int)
+
 ~~~
 
 This output:
 
-~~~
+~~~{ caption="Output"}
+
 ./main.go:7:8: invalid operation: cannot indirect x (variable of type int)
 ~~~
 
@@ -122,38 +138,49 @@ A `nil` pointer is a pointer that doesn't point to any memory address. It is a p
 In Go, dereferencing a `nil` pointer returns a runtime error.
 Here's an example
 
-~~~
+~~~{.go caption="main.go"}
+
 package main
 import "fmt"
 
 func main() {
-    var q *int  // Declare a pointer q
-    fmt.Println(*q) // Dereference q, which causes an error: panic: runtime error: invalid memory address or nil pointer dereference
+    var q *int
+    // Declare a pointer q
+    fmt.Println(*q)
+    // Dereference q, which causes an error: panic: runtime error: \
+    invalid memory address or nil pointer dereference
 }
+
 ~~~
 
 This outputs:
 
-~~~{.runtime caption=""}
+~~~{.runtime caption="Output"}
+
 [signal SIGSEGV: segmentation violation code=0x2 addr=0x0 pc=0x100c50024]
 goroutine 1 [running]:
 main.main()
-        /Users/Me/Desktop/DSA/backtracking/main.go:7 +0x24
+    /Users/Me/Desktop/DSA/backtracking/main.go:7 +0x24
 exit status 
 ~~~
 
 In the code block above, the pointer `p` is not initialized to point to any memory address. When we try to dereference `p` using the `*` operator, it causes a runtime error because we are trying to access the value stored at a `nil` memory address.
 To avoid this error, we should always ensure that a pointer is initialized to point to a valid memory address before dereferencing it. We can do this by using the `new` function to allocate memory for a new variable and assigning the resulting pointer to the pointer variable:
 
-~~~
-p := new(int)  // Allocate memory for an int and return a pointer to it
-*p = 10        // Assign the value 10 to the memory location pointed to by p
-fmt.Println(*p) // Output: 10
+~~~{.go caption="main.go"}
+
+p := new(int)
+// Allocate memory for an int and return a pointer to it
+*p = 10
+// Assign the value 10 to the memory location pointed to by p
+fmt.Println(*p) 
+// Output: 10
 ~~~
 
 This outputs:
 
-~~~
+~~~{ caption="Output"}
+
 10
 ~~~
 
@@ -162,7 +189,8 @@ This outputs:
 If we dereference a pointer to a different type than the type it was originally declared as, we will get a runtime error.
 Here's an example:
 
-~~~
+~~~{.go caption="main.go"}
+
 package main
 
 import "fmt"
@@ -171,16 +199,21 @@ func main() {
     p := new(int)
     *p = 10
 
-    var q *float64 = p  // cannot use p (variable of type *int) as type *float64 in variable declaration
+    var q *float64 = p
+    // cannot use p (variable of type *int) as type \
+    *float64 in variable declaration
     fmt.Println(*q)  
 }
 ~~~
 
 In the code block above, we declared a new pointer `p` as an integer. Then we assigned a new type `float64` to it. This will result in a compiler "incompatible assignment" error in our codes.
+
 It outputs:
 
-~~~
-./main.go:9:19: cannot use p (variable of type *int) as type *float64 in variable declaration
+~~~{ caption="Output"}
+
+./main.go:9:19: cannot use p (variable of type *int) \
+as type *float64 in variable declaration
 ~~~
 
 In conclusion, avoiding pointer and reference errors is very important when programming in [Golang](/blog/top-3-resources-to-learn-golang-in-2021). We should ensure the right operator is used when deferencing pointers and avoid calling nil pointers. Mastering these concepts might be hard at first, but with enough practice, we get better.
@@ -190,15 +223,18 @@ In conclusion, avoiding pointer and reference errors is very important when prog
 Interfaces in Golang are a way to define a set of methods that a struct or other type must implement to conform to that interface.
 For example, let's say we have a struct called `Animal` and we want to [make](/blog/makefiles-on-windows) sure that any struct that is considered an `Animal` must have a method called `Speak()` that returns a string. We can create an interface called `Speakable` that defines this method:
 
-~~~
+~~~{.go caption="main.go"}
+
 type Speakable interface {
     Speak() string
 }
+
 ~~~
 
 We can then define our struct `Animal` and make sure it implements the `Speakable` interface by defining the `Speak()` method:
 
-~~~
+~~~{.go caption="main.go"}
+
 type Animal struct {
     Name string
 }
@@ -206,11 +242,13 @@ type Animal struct {
 func (a *Animal) Speak() string {
     return "I am an animal and my name is " + a.Name
 }
+
 ~~~
 
 Next, We can create an instance of a new animal struct in a `main` function and call the `Speak` method on it:
 
-~~~go
+~~~{.go caption="main.go"}
+
 func main() {
     a := Animal{
         Name: "goat",
@@ -223,7 +261,7 @@ func main() {
 In the code above, we created a new instance of an animal and defined its `Name` field as "goat." We then call the `Speak()` method on it as defined in our interface.
 This outputs:
 
-~~~
+~~~{ caption="Output"}
 
 I am an animal and my name is goat
 
@@ -234,7 +272,7 @@ In Go, interfaces are implemented implicitly, meaning that a struct does not nee
 
 For Example:
 
-~~~
+~~~{.go caption="main.go"}
 
 package main
 import "fmt"
@@ -257,7 +295,7 @@ The code can be extended to explicitly declare the `LaserPrinter` struct on the 
 
 For example:
 
-~~~
+~~~{.go caption="main.go"}
 
 package main
 import "fmt"
@@ -282,7 +320,7 @@ func main() {
 
 This output:
 
-~~~
+~~~{caption="Output"}
 
 Welcome
 
@@ -294,7 +332,7 @@ Not understanding how interfaces work in Go can lead to certain errors and bugs 
 
 One common mistake when working with interfaces is calling a method that is not implemented by the struct but defined in the interface. For example, if we have an interface called `Speakable` with two methods, `Speak()` and `Listen()`, and we define a struct (that implements this interface) that only implements `Speak()` in our function but not the `Listen()` method of the interface. The program will not compile. If we try to invoke the `Listen()` method:
 
-~~~
+~~~{.go caption="main.go"}
 
 type Speakable interface {
     Speak() string
@@ -313,16 +351,19 @@ func main() {
     a := Animal{
         Name: "goat",
     }
-    fmt.Println(a.Listen()) // error: a.Listen undefined (type Animal has no field or method Listen)
+    fmt.Println(a.Listen())
+    // error: a.Listen undefined (type Animal has no field \
+    or method Listen)
 }
 
 ~~~
 
 This outputs an error:
 
-~~~
+~~~{ caption="Output"}
 
-./main.go:22:19: a.Listen undefined (type Animal has no field or method Listen)
+./main.go:22:19: a.Listen undefined (type Animal has \
+no field or method Listen)
 
 ~~~
 
@@ -336,7 +377,7 @@ To avoid unnecessary errors and bugs when defining interfaces in Go, we should e
 
 A `nil` pointer dereference error in interfaces in [Golang](/blog/top-3-resources-to-learn-golang-in-2021) occurs when we call a function or method on a `nil` pointer, causing a [runtime panic](https://go.dev/ref/spec#Run_time_panics). The `nil` pointer error happens when a struct implements an interface but the struct pointer is not initialized. For example:
 
-~~~
+~~~{.go caption="main.go"}
 
 type Speakable interface {
     Speak() string
@@ -353,14 +394,15 @@ func (a *Animal) Speak() string {
 
 func main() {
     var i Speakable
-    i.Speak() // runtime error: invalid memory address or nil pointer dereference
+    i.Speak()
+    // runtime error: invalid memory address or nil pointer dereference
 }
 
 ~~~
 
 This outputs:
 
-~~~
+~~~{ caption="Output"}
 
 panic: runtime error: invalid memory address or nil pointer dereference
 [signal SIGSEGV: segmentation violation code=0x2 addr=0x0 pc=0x100952b10]
@@ -374,7 +416,7 @@ exit status 2
 
 In the code block above, we declared a variable `i` as an interface type, but it is not initialized with any value. When we call the `Speak()` method on `i`, it will cause a `nil` pointer dereference error because `i` is a `nil` pointer. To fix this, we need to initialize the variable `i` with a value of type `Animal` or any other type that implements the `Speakable` interface:
 
-~~~
+~~~{.go caption="main.go"}
 
 func main() {
     var i Speakable
@@ -388,7 +430,7 @@ We must check the variable of the initialized interface is not nil before callin
 
 For Example:
 
-~~~
+~~~{.go caption="main.go"}
 
 import "fmt"
 
@@ -406,7 +448,7 @@ func main() {
 
 This outputs:
 
-~~~
+~~~{ caption="Output"}
 
 myInterface is nil
 
@@ -418,7 +460,7 @@ In the code block above, we declared an empty Interface and did a check if it is
 
 A [type assertion error](https://www.golinuxcloud.com/golang-type-assertion/) in interfaces in Go occurs when a type assertion is used to convert an interface value to a specific type but the value does not implement that type. Type assertions are used to check if an interface value holds a specific concrete type and to extract that value. The syntax of a type assertion is:
 
-~~~
+~~~{.go caption="main.go"}
 
 x.(T)
 
@@ -428,7 +470,7 @@ Where x is an interface value, and `T` is the type that x is being asserted to.
 
 For example, let's consider the following code:
 
-~~~
+~~~{.go caption="main.go"}
 
 type Speakable interface {
     Speak() string
@@ -448,11 +490,12 @@ func main() {
 
 This outputs:
 
-~~~
+~~~{ caption="Ouptut"}
 
 ./main.go:14:7: impossible type assertion: f.(*People)
         *People does not implement Speakable (missing Speak method)
-./main.go:16:4: s.Speak undefined (type *People has no field or method Speak)
+./main.go:16:4: s.Speak undefined (type *People has no field or \
+method Speak)
 
 ~~~
 
@@ -467,7 +510,7 @@ A [goroutine](https://go.dev/tour/concurrency/1) is a lightweight thread of exec
 
 The syntax of the goroutine is:
 
-~~~
+~~~{.go caption="main.go"}
 
 go function()
 
@@ -475,7 +518,7 @@ go function()
 
 Here's an example:
 
-~~~
+~~~{.go caption="main.go"}
 
 package main
 
@@ -507,7 +550,7 @@ Goroutines can also be used in conjunction with [channels](https://go.dev/ref/sp
 
 Here's an example:
 
-~~~
+~~~{.go caption="main.go"}
 
 func printNumbers(c chan int) {
     for i := 1; i <= 10; i++ {
@@ -539,7 +582,7 @@ Failure to use channels to synchronize our goroutines can result in unexpected c
 
 Here's an example:
 
-~~~
+~~~{.go caption="main.go"}
 
 package main
 
@@ -562,7 +605,7 @@ func main() {
 
 It outputs:
 
-~~~
+~~~{ caption="Ouput"}
 
 0
 
@@ -574,7 +617,7 @@ This can be fixed by using channels to synchronize the two goroutines by sending
 
 For example:
 
-~~~
+~~~{.go caption="main.go"}
 
 func printNumbers(c chan int) {
     for i := 1; i <= 10; i++ {
@@ -600,7 +643,7 @@ func main() {
 
 This outputs:
 
-~~~
+~~~{ caption="Output"}
 
 1
 2
@@ -633,7 +676,7 @@ A [goroutine leak](https://medium.com/golangspec/goroutine-leak-400063aef468) oc
 
 Here is an example of code that can cause a goroutine leak:
 
-~~~
+~~~{.go caption="main.go"}
 
 package main
 
@@ -654,7 +697,7 @@ func main() {
 In the code block above, we started the `infiniteLoop()` function as a goroutine, but it never terminates. This means that the goroutine will continue to run indefinitely, even after the `main()` function has finished executing.
 To fix this, we can use a channel to [signal](https://medium.com/@matryer/golang-advent-calendar-day-two-starting-and-stopping-things-with-a-signal-channel-f5048161018) when the goroutine should terminate:
 
-~~~
+~~~{.go caption="main.go"}
 
 func infiniteLoop(done chan bool) {
     for {
@@ -708,7 +751,7 @@ One way to do this is to use a package management tool like [Go modules](https:/
 
 Here's the command to update a library in the Go module:
 
-~~~
+~~~{.bash caption=">_"}
 
 $ go get -u <package-name>
 
@@ -720,7 +763,7 @@ In Golang, importing an unused library will lead to the code not compiling prope
 
 For example:
 
-~~~
+~~~{.go caption="main.go"}
 
 package main
 
@@ -734,7 +777,7 @@ func main(){
 
 In the code block above, we imported the `fmt` library without utilizing it. Go won't compile the code and will output the following error when the code is run:
 
-~~~
+~~~{caption="Output"}
 
 ./main.go:3:8: imported and not used: "fmt"
 
@@ -742,7 +785,7 @@ In the code block above, we imported the `fmt` library without utilizing it. Go 
 
 We can run the following command to tidy up our code when working on a large codebase with `go.mod` file:
 
-~~~
+~~~{.bash caption=">_"}
 
 $ go mod tidy
 
@@ -752,9 +795,10 @@ $ go mod tidy
 
 It is important to check for errors when using third-party libraries in Go, as they can indicate issues with the library or its configuration. For example, if we are using a library to connect to a database, we should check for errors when opening the connection.
 
-~~~
+~~~{.go caption="main.go"}
 
-connection, err := sql.Open("postgres", "user=pqgotest dbname=pqgotest sslmode=verify-full")
+connection, err := sql.Open("postgres", "user=pqgotest \
+dbname=pqgotest sslmode=verify-full")
 if err != nil {
     log.Fatal(err)
 }
@@ -769,7 +813,7 @@ Error handling in Golang is done using the built-in [`error` type and the `retur
 
 Here's an example:
 
-~~~
+~~~{.go caption="main.go"}
 
 package main
 
@@ -795,7 +839,7 @@ func main() {
 
 This outputs:
 
-~~~
+~~~{caption="Output"}
 
 cannot divide by zero
 
@@ -812,7 +856,7 @@ Panicking an error instead of returning an actual error message isn't a best pra
 
 For example, let's rewrite the previous code block by panicking the error message:
 
-~~~
+~~~{.go caption="main.go"}
 
 func divide(a, b int) int {
     if b == 0 {
@@ -832,7 +876,7 @@ In the code block above, we use the built-in [`panic`](https://www.educative.io/
 
 This will output to our terminal:
 
-~~~
+~~~{ caption="Output"}
 
 panic: Cannot divide by zero
 goroutine 1 [running]:
@@ -850,7 +894,7 @@ A vague error message doesn't help when debugging, and it is best practice to pr
 
 For example, in our `divide` function above, assuming we wrote a vague error message like this:
 
-~~~
+~~~{.go caption="main.go"}
 
 func divide(a, b int) (int, error) {
     if b == 0 {
@@ -882,5 +926,4 @@ Let's also remember to take advantage of the vast resources available online and
 
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
+
