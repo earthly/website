@@ -178,11 +178,25 @@ Traceback (most recent call last):
 TypeError: __init__() takes 4 positional arguments but 5 were given
 ~~~
 
-The traceback reads that the constructor can take *only* four positional arguments; it cannot take the fifth positional argument corresponding to the `roll_num` field. So now, the only way to initialize `roll_num` is to use the `generate_roll_num()` function. And that's the behavior we wanted. Cool. What's next?
+The traceback reads that the constructor can take *only* four positional arguments; it cannot take the fifth positional argument corresponding to the `roll_num` field. So now, the only way to initialize `roll_num` is to use the `generate_roll_num()` function. And that's the behavior we wanted, yes? Great. What's next?
 
 ### Use `__post_init__` to Create Fields Post Initialization
 
-Next, let's add an `email` field, a string of the form `first_name.last_name@uni.edu` (not super fancy, but works!).
+So far, we’ve learned how to use `default_factory` to generate default values from custom functions, and exclude fields from the constructor by setting `init` to `False`. Next, let’s learn how to construct new fields from existing fields.
+
+As a first step, remove the `name` field and add two new fields, `first_name` and `last_name`:
+
+~~~{.python caption="main.py"}
+from dataclasses import dataclass, field
+
+@dataclass
+class Student:
+    first_name: str
+    last_name: str
+    ...
+~~~
+
+Say you'd like to add an `email` field, a string of the form `first_name.last_name@uni.edu` (not super fancy, but works!). And we don't want the users of the class to initalize this field, so we set `init=False`:
 
 ~~~{.python caption="main.py"}
 from dataclasses import dataclass, field
@@ -198,15 +212,30 @@ class Student:
     email: str = field(init=False)
 ~~~
 
+We know the following:
+
+- To initialize the `email` field, use the `first_name` and the `last_name` fields.
+- To ensure users cannot initalize this field, set `init=False` in the `field()` function.
+
+So far so good. But, wait! We’ll get to know the `first_name` and the `last_name` only *after* the `Student` object has been instantiated. **So when and how do we initialize the `email` field?** Here's where the `__post_init__` method can help.
+
+The `__post_init__` special method is called immediately *after* an object is instantiated. Meaning by the time `__post_init__` is called, we already know the `first_name` and the `last_name`.
+
+So we can go ahead and set the `email` field to the f-string `f"{self.first_name}.{self.last_name}@uni.edu"`:
+
 ~~~{.python caption="main.py"}
     def __post_init__(self):
         self.email = f"{self.first_name}.{self.last_name}@uni.edu"
 ~~~
 
+Is the `__post_init__` method working as expected? Let's create a `Student` object to verify:
+
 ~~~{.python caption=""}
 >>> jane = Student('Jane','Lee','Computer Science','senior',3.99)
 >>> jane
 ~~~
+
+And yes! The `email` field has been set for the student 'Jane Lee':
 
 ~~~{ caption="Output"}
 Student(first_name='Jane', last_name='Lee', major='Computer Science', year='senior', gpa=3.99, roll_num='XAJI0Y6DP', email='Jane.Lee@uni.edu')
@@ -215,8 +244,9 @@ Student(first_name='Jane', last_name='Lee', major='Computer Science', year='seni
 
 ### Order and Sort Data Class Instances
 
-Let's add a `tuition` field to the `Student` data class:
+Sorting data class instances on a field can often be helpful. And we'll learn how. 
 
+Let's add a `tuition` field to the `Student` data class, an integer with a default value of 10000:
 
 ~~~{.python caption="main.py"}
 @dataclass
@@ -230,6 +260,8 @@ class Student:
     email: str = field(init=False)
     tuition: int = 10000
 ~~~
+
+Next, create two `Student` objects.
 
 ~~~{.python caption="main.py"}
 jane = Student('Jane','Lee','Computer Science','senior',3.99)
@@ -260,6 +292,10 @@ class Student:
     email: str = field(init=False)
     tuition: int = 10000
 ~~~
+
+Here again, we'd like to use `tuition` as the key to sort on, but we'll get to know the `tuition` only *after* the objects are instantiated. And you know what to do. Yes, use the `__post_init__` method. ✅
+
+Just the way you set the `email` field `__post_init__` method, you can set the `sort _index` to `tuition` in the `__post_init__` method, too:
 
 ~~~{.python caption="main.py"}
     def __post_init__(self):
