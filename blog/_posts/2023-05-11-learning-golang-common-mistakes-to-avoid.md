@@ -924,6 +924,5 @@ Let's also remember to take advantage of the vast resources available online and
 
 ## Outside Article Checklist
 
-- [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
 
