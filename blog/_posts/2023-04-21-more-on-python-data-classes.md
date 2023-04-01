@@ -85,6 +85,7 @@ Next, let's define a `generate_roll_num()` function that returns a `roll_num` st
 
 ~~~{.python caption="main.py"}
 import random
+random.seed(42)
 import string
 ...
 alphabet = string.ascii_uppercase + string.digits
