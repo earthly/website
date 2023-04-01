@@ -546,6 +546,8 @@ In the code block above, we created a function named `printNumbers()` to print n
 
 > Note: Without the `time.Sleep()` method, the `main` function terminates without allowing the go routines to execute successfully, and nothing will output in our terminal. This happens because the `main` function executes prematurely, terminating the goroutine before it completes successfully.  
 
+![sleep]({{site.images}}{{page.slug}}/sleep.png)\
+
 Goroutines can also be used in conjunction with [channels](https://go.dev/ref/spec#Channel_types), which enable goroutines to communicate and synchronize their execution. They are created with the [`make`](https://www.educative.io/answers/what-is-golang-function-maket-type-size-integertype-type)  function and have a specific type, for example, `chan int` for a channel that sends and receives integers.
 
 Here's an example:
@@ -795,6 +797,8 @@ $ go mod tidy
 
 It is important to check for errors when using third-party libraries in Go, as they can indicate issues with the library or its configuration. For example, if we are using a library to connect to a database, we should check for errors when opening the connection.
 
+![error]({{site.images}}{{page.slug}}/error.jpg)\
+
 ~~~{.go caption="main.go"}
 
 connection, err := sql.Open("postgres", "user=pqgotest \
@@ -853,6 +857,8 @@ Here are some common mistakes made when handling errors in Go:
 ### Panicking Instead of Returning Errors
 
 Panicking an error instead of returning an actual error message isn't a best practice when handling errors in Go because it leads to the program stopping its execution and closing all functions currently executing. Thereby, it's recommended to return an actual error message so the program can handle the error in a more predictable and controlled manner.
+
+![panick]({{site.images}}{{page.slug}}/panick.png)\
 
 For example, let's rewrite the previous code block by panicking the error message:
 
@@ -921,8 +927,3 @@ In conclusion, Golang is a powerful and efficient programming language that can 
 Let's also remember to take advantage of the vast resources available online and in the Go community, as well as to practice and experiment with different code snippets and examples to improve our skills.
 
 {% include_html cta/cta2.html %}
-
-## Outside Article Checklist
-
-- [ ] Optional: Find ways to break up content with quotes or images
-
