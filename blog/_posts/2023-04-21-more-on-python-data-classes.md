@@ -65,7 +65,7 @@ Now, let's modify the `Student` data class a bit:
 - Remove the `classes` field.
 - Rename the `roll_no` field to `roll_num`. (Why? `roll_num` reads better than `roll_no`!)
 
-At thsi point, the `Student` data class looks like this:
+At this point, the `Student` data class looks like this:
 
 ~~~{.python caption="main.py"}
 # main.py
@@ -93,6 +93,7 @@ alphabet = string.ascii_uppercase + string.digits
 def generate_roll_num():
     roll_num = ''.join(random.choices(alphabet,k=9))
     return roll_num
+...
 ~~~
 
 As default arguments should follow non-default arguments, let’s move `roll_num` as the last field in the data class definition. And set `default_factory` in the `field()` function to `generate_roll_num`.
@@ -124,11 +125,10 @@ Let’s instantiate a `Student` object to verify this:
 And we see that `jane` has a `roll_num` field:
 
 ~~~{ caption="Output"}
-Student(name='Jane', major='Computer Science', year='senior', gpa=3.99, roll_num='XAJI0Y6DP')
+Student(
+    name="Jane", major="Computer Science", year="senior", gpa=3.99, roll_num="XAJI0Y6DP"
+)
 ~~~
-
-<div class="notice--info">
-</div>
 
 ### Exclude Fields from the Constructor
 
@@ -171,7 +171,7 @@ Now try initializing the `roll_num` field by passing in a value to the construct
 >>> jake = Student('Jake','Math','sophomore',3.33,'MyRollNum')
 ~~~
 
-You'll not be able to do it anymore, and you'll get the following error:
+You'll get the following error:
 
 ~~~{ caption="Output"}
 Traceback (most recent call last):
@@ -236,10 +236,18 @@ Is the `__post_init__` method working as expected? Let's create a `Student` obje
 >>> jane
 ~~~
 
-And yes! The `email` field has been set for the student 'Jane Lee':
+And yes! 📧 The `email` field has been set for the student 'Jane Lee':
 
 ~~~{ caption="Output"}
-Student(first_name='Jane', last_name='Lee', major='Computer Science', year='senior', gpa=3.99, roll_num='XAJI0Y6DP', email='Jane.Lee@uni.edu')
+Student(
+    first_name="Jane",
+    last_name="Lee",
+    major="Computer Science",
+    year="senior",
+    gpa=3.99,
+    roll_num="XAJI0Y6DP",
+    email="Jane.Lee@uni.edu",
+)
 ~~~
 
 
@@ -303,6 +311,98 @@ Just the way you set the `email` field `__post_init__` method, you can set the `
         self.email = f"{self.first_name}.{self.last_name}@uni.edu"
         self.sort_index = self.tuition
 ~~~
+
+~~~{.python caption="main.py"}
+jane = Student('Jane','Lee','Computer Science','senior',3.99,30000)
+julia = Student('Julia','Doe','Economics','junior',3.63,27000)
+jake = Student('Jake','Langdon','Math','senior',3.89,28000)
+joy = Student('Joy','Smith','Political Science','sophomore',4.00)
+~~~
+
+~~~{.python caption="main.py"}
+instance_list = [jane,julia,jake,joy]
+instance_list.sort()
+pprint(instance_list)
+~~~
+
+~~~{ caption="Output"}
+[
+    Student(
+        first_name="Joy",
+        last_name="Smith",
+        major="Political Science",
+        year="sophomore",
+        gpa=4.0,
+        roll_num="D4V30T9NT",
+        email="Joy.Smith@uni.edu",
+        tuition=10000,
+    ),
+    Student(
+        first_name="Julia",
+        last_name="Doe",
+        major="Economics",
+        year="junior",
+        gpa=3.63,
+        roll_num="BHSAHXTHV",
+        email="Julia.Doe@uni.edu",
+        tuition=27000,
+    ),
+    Student(
+        first_name="Jake",
+        last_name="Langdon",
+        major="Math",
+        year="senior",
+        gpa=3.89,
+        roll_num="3A3ZMF8MD",
+        email="Jake.Langdon@uni.edu",
+        tuition=28000,
+    ),
+    Student(
+        first_name="Jane",
+        last_name="Lee",
+        major="Computer Science",
+        year="senior",
+        gpa=3.99,
+        roll_num="XAJI0Y6DP",
+        email="Jane.Lee@uni.edu",
+        tuition=30000,
+    ),
+]
+~~~
+
+~~~{.python caption="main.py"}
+for instance in instance_list:
+    print(f"{instance.first_name} {instance.last_name}'s tuition: {instance.tuition}")
+~~~
+
+~~~{ caption="Output"}
+Joy Smith's tuition: 10000
+Julia Doe's tuition: 27000
+Jake Langdon's tuition: 28000
+Jane Lee's tuition: 30000
+~~~
+
+
+  
+~~~{.python caption="main.py"}
+from inspect import getmembers,isfunction
+from pprint import pprint
+...
+pprint(getmembers(Student,isfunction))
+~~~
+
+~~~{ caption="Output"}
+[('__eq__', <function __create_fn__.<locals>.__eq__ at 0x01C93CD0>),
+ ('__ge__', <function __create_fn__.<locals>.__ge__ at 0x01C93DA8>),
+ ('__gt__', <function __create_fn__.<locals>.__gt__ at 0x01C93D60>),
+ ('__init__', <function __create_fn__.<locals>.__init__ at 0x01C93BF8>),
+ ('__le__', <function __create_fn__.<locals>.__le__ at 0x01C93D18>),
+ ('__lt__', <function __create_fn__.<locals>.__lt__ at 0x01C93C40>),
+ ('__post_init__', <function Student.__post_init__ at 0x01C93BB0>),
+ ('__repr__', <function __create_fn__.<locals>.__repr__ at 0x01C93C88>)]
+~~~
+
+
   
 ### Subclass Data Classes to Extend Functionality
 
@@ -310,7 +410,7 @@ Suppose you need a TA class to store information about students who work as teac
 
 **Well, TAs are students, too**. So each TA object will have *all* the fields that a Student object has. In addition, let's say TAs need to have the following three fields:
 
-- `courses` for which they work as teaching assistants,
+- `course` for which they work as a teaching assistant,
 - `hours_per_week`, and
 - `stipend`.
 
@@ -318,8 +418,48 @@ Instead of creating a new `TA` data class with the same attributes as the studen
 
 Let’s create a `TA` subclass that inherits from the `Student` class:
 
+~~~{.python caption="main.py"}
+@dataclass
+class TA(Student):
+    course: str = None
+    hours_per_week: int = 0
+    stipend: int = 100
+~~~
 
+~~~{.python caption=""}
+>>> from main import TA
+>>> fanny = TA('Fanny','Gray','Math','senior',4.00,33000,'Combinatorics',20,500)
+>>> fanny.course
+'Combinatorics'
+>>> fanny.hours_per_week
+20
+>>> fanny.stipend
+500
+~~~
+
+<div class="notice--info">
+### What You Should Know About Inheritance and Default Values for Fields
+  
+~~~{.python caption="main.py"}
+@dataclass
+class TA(Student):
+    course: str 
+    hours_per_week: int
+    stipend: int 
+~~~
+
+~~~{caption="Output"}
+Traceback (most recent call last):
+  File "main.py", line 47, in <module>
+    class TA(Student):
+    ...
+    raise TypeError(f'non-default argument {f.name!r} '
+TypeError: non-default argument 'course' follows default argument
+~~~
+</div>
+  
 ### Use Slots for Improved Performance
+
 
 <div class="notice--big--primary">
 #### What I Learned About `sys.getsizeof()`
