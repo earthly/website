@@ -357,7 +357,7 @@ instance_list.sort()
 pprint(instance_list)
 ~~~
 
-You can see that the instance list has been sorted in the increaisng order of `tuition`:
+🧐 You can see that the instance list has been sorted in the increasing order of `tuition`:
 
 ~~~{ caption="Output"}
 [
@@ -404,7 +404,7 @@ You can see that the instance list has been sorted in the increaisng order of `t
 ]
 ~~~
 
-If that's hard to parse, let's print out the names of the students and the corresponding `tuition`:
+If that's hard to parse, let's print out only the names of the students and the corresponding `tuition`:
 
 ~~~{.python caption="main.py"}
 for instance in instance_list:
