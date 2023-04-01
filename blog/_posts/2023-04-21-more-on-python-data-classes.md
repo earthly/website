@@ -30,7 +30,6 @@ This tutorial assumes a basic understanding of [Python data classes](/blog/pytho
 To keep things simple, I'll use the `Student` class from the previous tutorial on data classes:
 
 ~~~{.python caption="main.py"}
-# main.py
 from dataclasses import dataclass, field
 
 
@@ -132,7 +131,7 @@ Student(
 
 Setting a default value makes a field *optional* in the constructor. And the default value is used only if the user does *not* provide the value for that field in the constructor.
 
-So users of the class can still pass in whatever they like for the `roll_num` field. Here’s an example:
+So users of the class can still pass in whatever they like for the `roll_num` field. Here's an example:
 
 ~~~{.python caption=""}
 >>> julia = Student('Julia','Economics','junior',3.72,"don't know")
@@ -152,7 +151,6 @@ Suppose you need the following behavior instead: Users are *required* to use the
 **So how do we do that?** The field function also has an `init` parameter that we can set to `False`.
 
 ~~~{.python caption="main.py"}
-# main.py
 from dataclasses import dataclass, field
 
 
@@ -181,9 +179,14 @@ TypeError: __init__() takes 4 positional arguments but 5 were given
 
 The traceback reads that the constructor can take *only* four positional arguments; it cannot take the fifth positional argument corresponding to the `roll_num` field. So now, the only way to initialize `roll_num` is to use the `generate_roll_num()` function. And that's the behavior we wanted, yes? Great. What's next?
 
+<div class="notice--info">
+#### A Note on Keyword-Only Arguments
+In all the examples thus far, we've passed in the values as positional arguments in the constructor. However, if you want to enforce that the users specify *only* keyword arguments to instantiate objects, you can set the `kw_only` parameter in the `@dataclass` decorator to `True`. This can help improve readability.
+</div>
+
 ### Use `__post_init__` to Create Fields Post Initialization
 
-So far, we’ve learned how to use `default_factory` to generate default values from custom functions, and exclude fields from the constructor by setting `init` to `False`. Next, let’s learn how to construct new fields from existing fields.
+So far, we've learned how to use `default_factory` to generate default values from custom functions, and exclude fields from the constructor by setting `init` to `False`. Next, let's learn how to construct new fields from existing fields.
 
 As a first step, remove the `name` field and add two new fields, `first_name` and `last_name`:
 
@@ -220,7 +223,7 @@ We know the following:
 
 ![email]({{site.images}}{{page.slug}}/1.png)\
 
-So far so good. But, wait! We’ll get to know the `first_name` and the `last_name` only *after* the `Student` object has been instantiated. **So when and how do we initialize the `email` field?** Here's where the `__post_init__` method can help.
+So far so good. But, wait! We'll get to know the `first_name` and the `last_name` only *after* the `Student` object has been instantiated. **So when and how do we initialize the `email` field?** Here's where the `__post_init__` method can help.
 
 The `__post_init__` special method is called immediately *after* an object is instantiated. Meaning by the time `__post_init__` is called, we already know the `first_name` and the `last_name`.
 
@@ -231,7 +234,7 @@ So we can go ahead and set the `email` field to the f-string `f"{self.first_name
         self.email = f"{self.first_name}.{self.last_name}@uni.edu"
 ~~~
 
-Is the `__post_init__` method working as expected? Let's create a `Student` object to verify:
+Is the `__post_init__` method working as expected? Let's create a `Student` object to verify that:
 
 ~~~{.python caption=""}
 >>> jane = Student('Jane','Lee','Computer Science','senior',3.99)
@@ -275,16 +278,24 @@ class Student:
     tuition: int = 10000
 ~~~
 
-Next, create two `Student` objects.
+#### What's the Goal?
+
+Given a list of instances of the `Student` data class, we'd like to sort them in the increasing order of `tuition`. As of now, we don't quite know how to do that, but we'll get there soon!
+
+Next, create two `Student` objects:
 
 ~~~{.python caption="main.py"}
 jane = Student('Jane','Lee','Computer Science','senior',3.99)
 julia = Student('Julia','Doe','Economics','junior',3.63,27000)
 ~~~
 
+For `jane`, the deafult `tuition` of 10000 will be used. Let's try doing `julia > jane`:
+
 ~~~{.python caption="main.py"}
 print(julia > jane)
 ~~~
+
+We see that the comparison doesn't make sense as yet:
 
 ~~~{ caption="Output"}
 Traceback (most recent call last):
@@ -293,7 +304,19 @@ Traceback (most recent call last):
 TypeError: '>' not supported between instances of 'Student' and 'Student'
 ~~~
 
+If you remember, data classes come with the `__eq__` method that lets us compare two objects for equality of attributes. However, other comparisons between objects are not supported by default. So what's the plan? 🤔
+
+#### Enter `order` And `sort_index`
+
+To be able to enforce ordering among data class instances, and subsequently, sort them, you should set `order` to `True` in the `@dataclass` decorator and define a `sort_index`. 
+
+You can add the `sort_index` field to the data class. And you should see the patterns in the `field()` function already:
+
+- Users need not initialize the `sort_index`, so set `init` to `False`.
+- You can as well exclude the field from the representation string by setting `__repr__` to `False`.
+
 ~~~{.python caption="main.py"}
+...
 @dataclass(order=True)
 class Student:
     sort_index:int = field(init=False,repr=False)
@@ -307,15 +330,17 @@ class Student:
     tuition: int = 10000
 ~~~
 
-Here again, we'd like to use `tuition` as the key to sort on, but we'll get to know the `tuition` only *after* the objects are instantiated. And you know what to do. Yes, use the `__post_init__` method. ✅
+Here again, we'd like to use `tuition` as the key to sort on, but we'll get to know the `tuition` only *after* the objects are instantiated. And you already know what to do, right? Yeah, use the `__post_init__` method. ✅
 
-Just the way you set the `email` field `__post_init__` method, you can set the `sort _index` to `tuition` in the `__post_init__` method, too:
+Just the way you set the `email` field, you can set the `sort _index` to `tuition` in the `__post_init__` method, too:
 
 ~~~{.python caption="main.py"}
     def __post_init__(self):
         self.email = f"{self.first_name}.{self.last_name}@uni.edu"
         self.sort_index = self.tuition
 ~~~
+
+Now create a few more `Student` objects:
 
 ~~~{.python caption="main.py"}
 jane = Student('Jane','Lee','Computer Science','senior',3.99,30000)
@@ -324,11 +349,15 @@ jake = Student('Jake','Langdon','Math','senior',3.89,28000)
 joy = Student('Joy','Smith','Political Science','sophomore',4.00)
 ~~~
 
+Collect the instances in a list and call the `sort()` method on it - just the way you'd sort a list of integers or strings:
+
 ~~~{.python caption="main.py"}
 instance_list = [jane,julia,jake,joy]
 instance_list.sort()
 pprint(instance_list)
 ~~~
+
+You can see that the instance list has been sorted in the increaisng order of `tuition`:
 
 ~~~{ caption="Output"}
 [
@@ -375,10 +404,14 @@ pprint(instance_list)
 ]
 ~~~
 
+If that's hard to parse, let's print out the names of the students and the corresponding `tuition`:
+
 ~~~{.python caption="main.py"}
 for instance in instance_list:
     print(f"{instance.first_name} {instance.last_name}'s tuition: {instance.tuition}")
 ~~~
+
+Well, there you go! The sorting works as expected.
 
 ~~~{ caption="Output"}
 Joy Smith's tuition: 10000
@@ -387,7 +420,14 @@ Jake Langdon's tuition: 28000
 Jane Lee's tuition: 30000
 ~~~
 
+<div class="notice--big--primary">
+#### Setting `order=True` Facilitates Comparison. But How?
 
+We set `order=True` and specified the sorting index. Somehow the instance list was sorted, based on the `tuition` field, just the way we wanted. But how did it happen?
+  
+To achieve this in a regular Python class, you'll have to define the comparison methods `__gt__`, `__ge__`, `__lt__`, and `__le__`. But in a data class, when you set `order=True`, you get a ready-to-use implementation of these methods.
+
+Let's go ahead and get the methods associated with the `Student` data class:
   
 ~~~{.python caption="main.py"}
 from inspect import getmembers,isfunction
@@ -396,6 +436,8 @@ from pprint import pprint
 pprint(getmembers(Student,isfunction))
 ~~~
 
+And we see all the four comparison methods:
+  
 ~~~{ caption="Output"}
 [('__eq__', <function __create_fn__.<locals>.__eq__ at 0x01C93CD0>),
  ('__ge__', <function __create_fn__.<locals>.__ge__ at 0x01C93DA8>),
@@ -407,7 +449,8 @@ pprint(getmembers(Student,isfunction))
  ('__repr__', <function __create_fn__.<locals>.__repr__ at 0x01C93C88>)]
 ~~~
 
-
+So for anything we want to do with classes and their instances, **data classes = batteries included**? Yeah, it seems safe to say so.
+</div>
   
 ### Subclass Data Classes to Extend Functionality
 
