@@ -609,7 +609,7 @@ sys.getsizeof(jane_slots):104
 This can be attributed to how `sys.getsizeof()` calculates object sizes — without taking into account the referenced objects.
 </div>
 
-[Pympler](https://pympler.readthedocs.io/en/latest/), another Python package, provides functionality to compute the approximate sizes of the object in memory. The `asizeof()` function in Pympler’s `asizeof` module tries to recursively add up the sizes of the objects referenced within an object, and returns the approximate size of the object in bytes.
+[Pympler](https://pympler.readthedocs.io/en/latest/), another Python package, provides functionality to compute the approximate sizes of the object in memory. The `asizeof()` function in Pympler's `asizeof` module tries to recursively add up the sizes of the objects referenced within an object, and returns the approximate size of the object in bytes.
 
 <div class="wide">
 ![size-of-objects]({{site.images}}{{page.slug}}/5.png)\
