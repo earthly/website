@@ -16,15 +16,16 @@ Over the next few minutes, we'll take a closer look at setting default values wi
 
 Let's get started!
 
-## Useful Features of Python Data Classes
+## A Quick Review Before We Begin
 
 <div class="notice--big--primary">
-### Before You Begin
+### Prerequisites
 
 This tutorial assumes a basic understanding of [Python data classes](/blog/python-data-classes/).
 
 - To run the code example in the section on `__slots__`, you need Python 3.10 or a later version.
 - All other code snippets will work as expected with Python 3.7+.
+
 </div>
 
 To keep things simple, I'll use the `Student` class from the previous tutorial on data classes:
@@ -43,17 +44,17 @@ class Student:
     classes: list = field(default_factory=list)
 ~~~
 
-Before we go any further, let's review what we *know* about data classes.
+Before we go any further, let's review what we *know* about data classes:
 
-**What we've learned thus far**:
-
-- Data classes have a default implementation of the `__init__`, `__repr__`, and `__eq__` methods.
+- Data classes are great for defining data-oriented classes and have default implementations of the `__init__`, `__repr__`, and `__eq__` methods.
 - They support type hints and default values for fields. Data class definitions do not allow mutable default arguments for fields.
 - All data class instances are *mutable* by default, but you can set the `frozen` parameter to `True` in the `@dataclass` decorator to make instances immutable.
 
+Well, this was a quick review of data classes and *not* a replacement to reading the [data classes tutorial](/blog/python-data-classes/). 🙂
+
 Now let's go beyond the basics of data classes!
 
-### Set More Complex Default Values With `default_factory`
+## Set More Complex Default Values With `default_factory`
 
 Previously, we talked about how data classes allow us to specify [default values for fields](/blog/python-data-classes/), both literals and callables. We also learned that they *do not* allow us to use *mutable defaults*. If you remember, we added a `classes` field, and used the `field()` function with `default_factory` set to the callable `list`, `classes: list = field(default_factory=list)`.
 
@@ -79,7 +80,7 @@ class Student:
     gpa: float
 ~~~
 
-Next, let's define a `generate_roll_num()` function that returns a `roll_num` string. The returned string is nine characters long, the characters sampled at random from the `alphabet` of uppercase letters and the digits 0-9:
+Next, let's define a `generate_roll_num()` function that returns a `roll_num` string. The returned string is nine characters long, where the characters are sampled at random from the `alphabet` of uppercase letters and the digits 0-9:
 
 ~~~{.python caption="main.py"}
 import random
@@ -94,7 +95,7 @@ def generate_roll_num():
 ...
 ~~~
 
-As default arguments should follow non-default arguments, let’s move `roll_num` as the last field in the data class definition. And set `default_factory` in the `field()` function to `generate_roll_num`.
+As default arguments should follow non-default arguments, let's move `roll_num` as the last field in the data class definition. And set `default_factory` in the `field()` function to `generate_roll_num`.
 
 ~~~{.python caption="main.py"}
 from dataclasses import dataclass, field
@@ -111,7 +112,7 @@ class Student:
 
 The `default_factory` calls the `generate_roll_num` function to initialize the `roll_num` field with a *default* value - whenever an instance of the `Student` class is created.
 
-Let’s instantiate a `Student` object to verify this:
+Let's instantiate a `Student` object to verify this:
 
 ~~~{.python caption=""}
 >>> from main import Student
@@ -127,7 +128,7 @@ Student(
 )
 ~~~
 
-### Exclude Fields from the Constructor
+## Exclude Fields from the Constructor
 
 Setting a default value makes a field *optional* in the constructor. And the default value is used only if the user does *not* provide the value for that field in the constructor.
 
@@ -177,14 +178,14 @@ Traceback (most recent call last):
 TypeError: __init__() takes 4 positional arguments but 5 were given
 ~~~
 
-The traceback reads that the constructor can take *only* four positional arguments; it cannot take the fifth positional argument corresponding to the `roll_num` field. So now, the only way to initialize `roll_num` is to use the `generate_roll_num()` function. And that's the behavior we wanted, yes? Great. What's next?
+The traceback reads that the constructor takes *only* four positional arguments; it cannot take in the fifth positional argument corresponding to the `roll_num` field. So now, the only way to initialize `roll_num` is to use the `generate_roll_num()` function. And that's the behavior we wanted, yes? Great. What's next?
 
 <div class="notice--info">
-#### A Note on Keyword-Only Arguments
+### A Note on Keyword-Only Arguments [In Python 3.10+]
 In all the examples thus far, we've passed in the values as positional arguments in the constructor. However, if you want to enforce that the users specify *only* keyword arguments to instantiate objects, you can set the `kw_only` parameter in the `@dataclass` decorator to `True`. This can help improve readability.
 </div>
 
-### Use `__post_init__` to Create Fields Post Initialization
+## Use `__post_init__` to Create Fields Post Initialization
 
 So far, we've learned how to use `default_factory` to generate default values from custom functions, and exclude fields from the constructor by setting `init` to `False`. Next, let's learn how to construct new fields from existing fields.
 
@@ -227,7 +228,7 @@ So far so good. But, wait! We'll get to know the `first_name` and the `last_name
 
 The `__post_init__` special method is called immediately *after* an object is instantiated. Meaning by the time `__post_init__` is called, we already know the `first_name` and the `last_name`.
 
-So we can go ahead and set the `email` field to the f-string `f"{self.first_name}.{self.last_name}@uni.edu"`:
+So we can add the `__post_init__` and set the `email` field to the f-string `f"{self.first_name}.{self.last_name}@uni.edu"`:
 
 ~~~{.python caption="main.py"}
     def __post_init__(self):
@@ -255,8 +256,7 @@ Student(
 )
 ~~~
 
-
-### Order and Sort Data Class Instances
+## Order and Sort Data Class Instances
 
 Sorting data class instances on a field can often be helpful. And we'll learn how to do that.
 
@@ -278,7 +278,7 @@ class Student:
     tuition: int = 10000
 ~~~
 
-#### What's the Goal?
+### What's the Goal?
 
 Given a list of instances of the `Student` data class, we'd like to sort them in the increasing order of `tuition`. As of now, we don't quite know how to do that, but we'll get there soon!
 
@@ -304,11 +304,11 @@ Traceback (most recent call last):
 TypeError: '>' not supported between instances of 'Student' and 'Student'
 ~~~
 
-If you remember, data classes come with the `__eq__` method that lets us compare two objects for equality of attributes. However, other comparisons between objects are not supported by default. So what's the plan? 🤔
+If you remember, data classes come with the `__eq__` method that lets us compare two objects for **equality of attributes**. However, other comparisons between objects are not supported by default. So what's the plan? 🤔
 
-#### Enter `order` And `sort_index`
+### Enter `order` and `sort_index`
 
-To be able to enforce ordering among data class instances, and subsequently, sort them, you should set `order` to `True` in the `@dataclass` decorator and define a `sort_index`. 
+To enforce ordering among data class instances, and subsequently, sort them based on a specific field in the data class, you should set `order` to `True` in the `@dataclass` decorator and define a `sort_index`.
 
 You can add the `sort_index` field to the data class. And you should see the patterns in the `field()` function already:
 
@@ -354,57 +354,9 @@ Collect the instances in a list and call the `sort()` method on it - just the wa
 ~~~{.python caption="main.py"}
 instance_list = [jane,julia,jake,joy]
 instance_list.sort()
-pprint(instance_list)
 ~~~
 
-🧐 You can see that the instance list has been sorted in the increasing order of `tuition`:
-
-~~~{ caption="Output"}
-[
-    Student(
-        first_name="Joy",
-        last_name="Smith",
-        major="Political Science",
-        year="sophomore",
-        gpa=4.0,
-        roll_num="D4V30T9NT",
-        email="Joy.Smith@uni.edu",
-        tuition=10000,
-    ),
-    Student(
-        first_name="Julia",
-        last_name="Doe",
-        major="Economics",
-        year="junior",
-        gpa=3.63,
-        roll_num="BHSAHXTHV",
-        email="Julia.Doe@uni.edu",
-        tuition=27000,
-    ),
-    Student(
-        first_name="Jake",
-        last_name="Langdon",
-        major="Math",
-        year="senior",
-        gpa=3.89,
-        roll_num="3A3ZMF8MD",
-        email="Jake.Langdon@uni.edu",
-        tuition=28000,
-    ),
-    Student(
-        first_name="Jane",
-        last_name="Lee",
-        major="Computer Science",
-        year="senior",
-        gpa=3.99,
-        roll_num="XAJI0Y6DP",
-        email="Jane.Lee@uni.edu",
-        tuition=30000,
-    ),
-]
-~~~
-
-If that's hard to parse, let's print out only the names of the students and the corresponding `tuition`:
+Now that we've sorted `instance_list` in place, let's loop through it and print out only the names of the students and the corresponding `tuition`:
 
 ~~~{.python caption="main.py"}
 for instance in instance_list:
@@ -421,7 +373,7 @@ Jane Lee's tuition: 30000
 ~~~
 
 <div class="notice--big--primary">
-#### Setting `order=True` Facilitates Comparison. But How?
+### Setting `order=True` Facilitates Comparison. But How?
 
 We set `order=True` and specified the sorting index. Somehow the instance list was sorted, based on the `tuition` field, just the way we wanted. But how did it happen?
   
@@ -449,26 +401,26 @@ And we see all the four comparison methods:
  ('__repr__', <function __create_fn__.<locals>.__repr__ at 0x01C93C88>)]
 ~~~
 
-So for anything we want to do with classes and their instances, **data classes = batteries included**? Yeah, it seems safe to say so.
+So for anything we want to do with classes and their instances, data classes come with batteries included? Yeah, it seems safe to say so!	
 </div>
   
-### Subclass Data Classes to Extend Functionality
+## Subclass Data Classes to Extend Functionality
 
 Suppose you need a TA class to store information about students who work as teaching assistants.
 
 ![inheritance]({{site.images}}{{page.slug}}/4.png)\
 
-**Well, TAs are students, too**. So each TA object will have *all* the fields that a `Student` object has. In addition, let's say TAs need to have the following three fields:
+**Well, TAs are students, too**. So each TA object will have *all* the fields that a `Student` object has. In addition, let's say TAs have the following three fields:
 
 - `course` for which they work as a teaching assistant,
 - `hours_per_week`, and
 - `stipend`.
 
-Instead of creating a new `TA` data class with the same attributes as the student and a few additional attributes, we can extend the functionality of the `Student` class using inheritance.
+Instead of creating a new `TA` data class with the *same* attributes as the `Student` data class and a few additional attributes, we can extend the functionality of the `Student` class using inheritance.
 
 ![inheritance]({{site.images}}{{page.slug}}/inheritance.png)\
 
-Let’s create a `TA` subclass that inherits from the `Student` class:
+Let's create a `TA` subclass that inherits from the `Student` class:
 
 ~~~{.python caption="main.py"}
 @dataclass
@@ -478,6 +430,8 @@ class TA(Student):
     stipend: int = 100
 ~~~
 
+We can create `TA` objects and access the fields:
+	
 ~~~{.python caption=""}
 >>> from main import TA
 >>> fanny = TA('Fanny','Gray','Math','senior',4.00,33000,'Combinatorics',20,500)
@@ -491,7 +445,15 @@ class TA(Student):
 
 <div class="notice--info">
 ### What You Should Know About Inheritance and Default Values for Fields
-  
+
+In the `TA` example, we set default values for *all* fields in the child class (subclass), so we did not run into errors. But there's a caveat you should be aware of.
+	
+If you remember, when creating a data class, we mentioned that fields with default values should always come *after* those without default values. 
+	
+When you create a sublcass form an existing data class, the ordering of fields is preserved. Meaning the fields in the parent class come first, followed by the fields in the subclass. **If the parent data class has default values for one or more fields, all fields in the subclass should have default values, too**.
+	
+Try removing the deafult values from the `TA` subclass:
+	
 ~~~{.python caption="main.py"}
 @dataclass
 class TA(Student):
@@ -499,6 +461,8 @@ class TA(Student):
     hours_per_week: int
     stipend: int 
 ~~~
+
+And run the script again:
 
 ~~~{caption="Output"}
 Traceback (most recent call last):
@@ -508,9 +472,12 @@ Traceback (most recent call last):
     raise TypeError(f'non-default argument {f.name!r} '
 TypeError: non-default argument 'course' follows default argument
 ~~~
+
+We run into the `non-default argument 'course' follows default argument` error!
 </div>
-  
-### Use Slots for Improved Performance
+
+## Use Slots for Improved Performance
+
 
 ~~~{.python caption="main.py"}
 ...
@@ -558,7 +525,12 @@ class StudentSlots:
 ...
 ~~~
 
-#### Comparing Memory Footprint
+So how does using `__slots__` help?[^1] Well, it has the following advantages :
+
+- Substantially low memory footprint as the `__dict__` is not created for instances
+- Marginal improvement in attribute access speed
+	
+### Comparing Memory Footprint
 
 <div class="notice--big--primary">
 ##### What I Learned About `sys.getsizeof()`
@@ -597,18 +569,26 @@ sys.getsizeof(jane_slots):104
 
 </div>
 
+[Pympler](), another Python package, provides functionality to compute the approximate sizes of the object in memory. The `asizeof()` function in Pympler’s `asizeof` module tries to recursively add up the sizes of the objects referenced within an object, and returns the approximate size of the object in bytes.
+
 <div class="wide">
 ![size-of-objects]({{site.images}}{{page.slug}}/5.png)\
 </div>
 
+You can install pympler package using `pip`:
+	
 ~~~{.bash caption=">_"}
 $ pip3 install pympler
 ~~~
+
+Let's create two objects `jane_slots` and `jane` of the `StudentSlots` and `Student` data classes, respectively:
 
 ~~~{.python caption="main.py"}
 jane_slots = StudentSlots('Jane','Lee','Computer Science','senior',3.99,30000)
 jane = Student('Jane','Lee','Computer Science','senior',3.99,30000)
 ~~~
+
+We'll use the `asizeof()` function from pympler's `asizeof` module to get the sizes of the objects with and without slots:
 
 ~~~{.python caption="main.py"}
 from pympler.asizeof import asizeof
@@ -620,13 +600,19 @@ print(f"Size of `jane` without slots: {size_jane}")
 print(f"% Savings in memory: {(size_jane - size_jane_slots)/size_jane*100:.2f}")
 ~~~
 
+For this example, we get 51.09% memory savings, which is substantial:
+
 ~~~{ caption="Output"}
 Size of `jane` with slots: 536
 Size of `jane` without slots: 1096
 % Savings in memory: 51.09
 ~~~
+
+It'd be interesting to see how the memory saving scales with increasing number of attribues in the data class.
   
-#### Comparing Attribute Access Times
+### Comparing Attribute Access Times
+
+We have `jane_slots` and `jane`, `Student` objects created from data class with and without `__slots__`, respectively. To verify if attribute access is faster, we define a simple function `get_set_del()` that sets the value of a field, reads it, and deletes it.
 
 ~~~{.python caption="main.py"}
 from functools import partial
@@ -638,6 +624,8 @@ def get_set_del(student):
 	del student.first_name
 ~~~
 
+We'll use `timeit` to measure the access times with and without slots. Once we get the access times, we can compute the percentage improvement in speed.
+	
 ~~~{.python caption="main.py"}
 t1=min(timeit.repeat(partial(get_set_del,jane_slots)))
 t2=min(timeit.repeat(partial(get_set_del,jane)))
@@ -647,14 +635,23 @@ print(f"Access time without slots: {t2:.2f}")
 print(f"% Improvement: {(t2-t1)/t2*100:.2f}")
 ~~~
 
+I'm using Python 3.10.8 on Ubuntu 22.04 LTS, and the results suggest that the attribute access — with slots — is about 28.71% faster.
+
 ~~~{ caption="Output"}
 Access time with slots: 0.08
 Access time without slots: 0.11
 % Improvement: 28.71
 ~~~
 
+Cool, the memory savings and attribute access times when using data classes with slots seem promising! Be sure to try out for a few different classes to understand performance gains.
+
 ## Conclusion
 
-And that's a wrap. So did we cover *everything* about data classes? No. But these are what you'll need when working with data classes.
+And that's a wrap! In this second (and final part) of the data classes tutorial series, we tried to cover features such as `__post_init__` method, subclassing data classes, and performance gains using `__slot__`. 
+
+So did we cover *everything* about data classes? No. But we've covered what you'll need to write functional data classes. With less boilerplate to write, switching to data classes can save you hours per week.
 
 {% include cta/cta1.html %}
+
+[^1]:
+   This StackOverFlow discussion thread was of great help in understanding the advantages of `__slots__`. I recommend reading through it to further your understanding of `__slots__`.
