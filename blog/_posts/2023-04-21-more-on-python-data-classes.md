@@ -538,12 +538,12 @@ Can we do something so that this `__dict__` attribute is no longer created for i
 
 When you know that the data class instances always have a fixed set of attributes, you can use `__slots__` to store the values in slots instead of in dictionaries. So when you use `__slots__`, the `__dict__` is no longer created. Rather, the instance variables are now treated as [properties](https://docs.python.org/3/howto/descriptor.html#member-objects-and-slots).
 
-So how does using `__slots__` help?[^2] Well, you get the following advantages :
+So how does using `__slots__` help?[^1] Well, you get the following advantages :
 
 - Substantially low memory footprint as the `__dict__` is not created for instances
 - Marginal improvement in attribute access speed
 
-To use slots, you need to set `slots` to `True` in the `@dataclass` decorator[^1]:
+To use slots, you need to set `slots` to `True` in the `@dataclass` decorator[^2]:
 
 ~~~{.python caption="main.py"}
 ...
@@ -614,7 +614,7 @@ print(f"sys.getsizeof(jane):{sys.getsizeof(jane)}")
 print(f"sys.getsizeof(jane_slots):{sys.getsizeof(jane_slots)}")
 ~~~
 
-In this case, the data class instance with slots seems to take up more memory, which is contrary to our memory savings claim.
+In this case, the data class instance with slots seems to take up more memory, which contradicts our memory savings claim.
 
 ~~~{.md caption="Output"}
 sys.getsizeof(jane):48
@@ -639,6 +639,7 @@ $ pip3 install pympler
 Let's create two objects `jane_slots` and `jane` of the `StudentSlots` and `Student` data classes, respectively:
 
 ~~~{.python caption="main.py"}
+
 jane_slots = StudentSlots('Jane','Lee','Computer Science','senior',3.99,30000)
 jane = Student('Jane','Lee','Computer Science','senior',3.99,30000)
 ~~~
@@ -711,6 +712,6 @@ See you all soon in another tutorial. Until then, happy coding!
 {% include_html cta/cta2.html %}
 
 [^1]:
-When you set `slots` to `True`, you can no longer add attributes on the fly. But you can instead set `__slots__` manually and add a `__dict__` (in addition to the names of instance variables) be able to dynamically add fields. The memory footprint savings in this case may be lower.
-[^2]:
 I found [this StackOverFlow discussion thread](https://stackoverflow.com/questions/472000/usage-of-slots) super helpful to learn about `__slots__`. I recommend reading through it to further your understanding of `__slots__`.
+[^2]:
+When you set `slots` to `True`, you can no longer add attributes on the fly. But you can instead set `__slots__` manually and add a `__dict__` (in addition to the names of instance variables) be able to dynamically add fields. The memory footprint savings in this case may be lower.
