@@ -13,7 +13,7 @@ In software development, testing is an essential part of the development process
 
 [PyTest](https://docs.pytest.org/) is a popular testing framework for Python programming language. [Fixtures](https://docs.pytest.org/en/7.1.x/explanation/fixtures.html#about-fixtures) in PyTest provide a way to manage the resources and data required for running tests. They simplify the process of setting up, tearing down, and sharing test data between test functions. PyTest fixtures provide a convenient way to define these resources and data once and reuse them across multiple tests, saving time and reducing the chance of errors.
 
-In this tutorial, you will learn what PyTest fixtures are, why they are used, and how to define and use them in your tests. To explore the usage of Pytest fixtures, you'll be creating a simple note-taking application that lets users add, edit and get notes. 
+In this tutorial, you will learn what PyTest fixtures are, why they are used, and how to define and use them in your tests. To explore the usage of Pytest fixtures, you'll be creating a simple note-taking application that lets users add, edit, and get notes.
 
 ## Prerequisites
 
@@ -27,7 +27,7 @@ You can find all the code samples used in the tutorial in this [repository](http
 
 ## Why Use Pytest Fixtures?
 
-Fixtures are important in testing because they provide a reliable and consistent context for tests. This context may include a variety of components, such as content like a specific dataset or a pre-configured environment. Typically, a test follows the [**Arrange**, **Act**, and **Assert** (AAA) pattern](https://docs.pytest.org/en/7.1.x/explanation/anatomy.html#test-anatomy). Fixtures define the necessary steps and data for the "Arrange" phase of the test. In addition to that, you can also use fixtures to define the "Act" phase, which involves the actual execution of the test logic. However, this will be useful when you’re writing complex tests which is beyond the scope of this tutorial.
+Fixtures are important in testing because they provide a reliable and consistent context for tests. This context may include a variety of components, such as content like a specific dataset or a pre-configured environment. Typically, a test follows the [**Arrange**, **Act**, and **Assert** (AAA) pattern](https://docs.pytest.org/en/7.1.x/explanation/anatomy.html#test-anatomy). Fixtures define the necessary steps and data for the "Arrange" phase of the test. In addition to that, you can also use fixtures to define the "Act" phase, which involves the actual execution of the test logic. However, this will be useful when you're writing complex tests which is beyond the scope of this tutorial.
 
 Fixtures allow you to set up test data that a test function might have in a consistent and repeatable way. This can help make tests more reliable and easier to maintain. Fixtures also help to reduce code duplication by allowing you to reuse common setup and teardown logic across multiple tests.
 
@@ -45,44 +45,44 @@ There are several advantages to using PyTest fixtures. They include:
 
 5. **Easier maintenance**: Fixtures help make tests easier to maintain by reducing code duplication and simplifying the process of modifying how tests are set up and run.
 
-## Setting up a PyTest Project
+## Setting Up a Pytest Project
 
 Before following along with the tutorial, you need to set up a virtual environment for the project and install the Pytest library.
 
 You can create a virtual environment with [venv](https://docs.python.org/3/tutorial/venv.html) as shown below:
 
-```bash
+~~~
 mkdir pytest-project && cd pytest-project
 python3 -m venv venv
-```
+~~~
 
 > Note: The `python` may still refer to Python 2 instead of Python 3 on some systems. Hence, the tutorial recommends using `python3` to avoid confusion.
 
 Run the following command to activate the virtual environment:
 
-```bash
+~~~
 source venv/bin/activate
-```
+~~~
 
 You can install PyTest by running the following command in your terminal:
 
-```bash
+~~~
 pip3 install pytest
-```
+~~~
 
 You can run test(s) by executing the `pytest` command:
 
-```bash
+~~~
 pytest
-```
+~~~
 
 ### Creating a Note-Taking Application
 
-As discussed, you’ll create a note-taking application to learn the usage of Pytest fixtures. The application will contain three instance methods; `add_note`, `get_note`, and `edit_note`.
+As discussed, you'll create a note-taking application to learn the usage of Pytest fixtures. The application will contain three instance methods; `add_note`, `get_note`, and `edit_note`.
 
 You'll start by writing the application logic. Create a `notes_app.py` file in the `pytest-project` directory and add the following code:
 
-```python
+~~~
 class Note:
     def __init__(self, content):
         self.content = content
@@ -110,7 +110,7 @@ class NotesApp:
         except IndexError:
             return "Index out of range"
 
-```
+~~~
 
 The above code defines two classes: `Note` and `NotesApp`.
 
@@ -118,7 +118,7 @@ The `Note` class represents a single note in the application and has a single at
 
 The `NotesApp` class serves as the primary notes application and initializes an empty list attribute `notes_list` to store notes.
 
-The `NotesApp` class has the following three methods: 
+The `NotesApp` class has the following three methods:
 
 1. A `add_note` method that takes a string argument, `content`, and creates a new `Note` object with that content. It then appends the new `Note` object to the `notes_list` attribute. The method returns the string `"Note added successfully"`.
 
@@ -130,7 +130,7 @@ Next, you'll write the unit tests for the application. The following tests does 
 
 Create a `test_notes_app.py` file in the `pytest-project` directory, and add the following code:
 
-```python
+~~~
 from notes_app import NotesApp
 
 
@@ -168,7 +168,7 @@ def test_edit_note_index_error():
     result = notes.edit_note(0, "Test note 1 edited")
     assert result == "Index out of range"
 
-```
+~~~
 
 The above code is a set of unit tests that checks the various functionality of the `NotesApp` class such as adding a new note, getting a note by its index, editing an existing note, and handling exceptions when an invalid index is passed.
 
@@ -186,12 +186,13 @@ The code contains the following five test functions:
 
 Once you have the `notes_app.py` and `test_notes_app.py` files in place, execute the following command to run the tests:
 
-```bash
+~~~
 pytest -v
-```
+~~~
+
 Output:
 
-```
+~~~
 collected 5 items
 
 test_notes_app.py::test_add_note PASSED                                                                          [ 20%]
@@ -201,11 +202,11 @@ test_notes_app.py::test_edit_note PASSED                                        
 test_notes_app.py::test_edit_note_index_error PASSED                                                             [100%]
 
 ================================================== 5 passed in 0.07s ==================================================
-```
+~~~
 
-The `-v` option in the `pytest` command increases the verbosity of the output. The verbosity level controls how much information is printed to the console during the test execution. Since you’re running the tests for the first time, it makes more sense to increase the verbosity to print more detailed information about the tests being executed
+The `-v` option in the `pytest` command increases the verbosity of the output. The verbosity level controls how much information is printed to the console during the test execution. Since you're running the tests for the first time, it makes more sense to increase the verbosity to print more detailed information about the tests being executed
 
-You now have a simple note-taking application with the core logic and unit tests. However, you may notice that there is some code duplication in the unit tests functions. Specifically, you're creating the `NotesApp` object in each of the test methods, and you also need to have existing notes in some of the tests. 
+You now have a simple note-taking application with the core logic and unit tests. However, you may notice that there is some code duplication in the unit tests functions. Specifically, you're creating the `NotesApp` object in each of the test methods, and you also need to have existing notes in some of the tests.
 
 To avoid this duplication, you can use fixtures. In the next section, you'll learn how to use fixtures to simplify your test setup and improve your testing.
 
@@ -217,7 +218,7 @@ PyTest fixtures are functions that provide data, objects, or resources to test f
 
 To define a fixture, you simply create a function and decorate it with the [`@pytest.fixture`](https://docs.pytest.org/en/7.1.x/reference/reference.html#pytest.fixture) decorator. This function can then return any data or object that you want to make available to your test functions. For example, earlier you were creating a `NotesApp` object in each of the test methods. But now you can define a fixture to initialize the `NotesApp` class:
 
-```python
+~~~
 import pytest
 
 from notes_app import NotesApp
@@ -236,7 +237,7 @@ def app_with_notes():
     app.add_note("Test note 2")
     return app
 
-```
+~~~
 
 The above code defines two PyTest fixtures for the `NotesApp` class. These fixtures can be used in any test function by including them as arguments to the test function.
 
@@ -248,19 +249,19 @@ The `app_with_notes` fixture creates a new `NotesApp` object and adds two defaul
 
 To use a fixture in a test function, include it as an argument to the test function. For example, you can rewrite the `test_add_note` method to use the `app_without_notes` fixture:
 
-```python
+~~~
 def test_add_note(app_without_notes):
     result = app_without_notes.add_note("Test note 1")
     assert result == "Note added successfully"
     assert len(app_without_notes.notes_list) == 1
     assert app_without_notes.notes_list[0].content == "Test note 1"
-```
+~~~
 
 Instead of creating a new `NotesApp` object, the `test_add_note` method now uses the `app_without_notes` fixture. The test method adds a new note to the NotesApp object using the `add_note` method and then makes several assertions to verify that the method works correctly.
 
 Similarly, you can rewrite the other test methods to use the fixtures accordingly:
 
-```python
+~~~
 def test_get_note(app_with_notes):
     result = app_with_notes.get_note(0)
     assert result == "Test note 1"
@@ -281,17 +282,17 @@ def test_edit_note_index_error(app_without_notes):
     result = app_without_notes.edit_note(0, "Test note 1 edited")
     assert result == "Index out of range"
 
-```
+~~~
 
 You can run the test with the `pytest` command:
 
-```bash
+~~~
 pytest  -v
-```
+~~~
 
 Output:
 
-```
+~~~
 collected 5 items
 
 test_notes_app.py::test_add_note PASSED                                                                          [ 20%]
@@ -301,9 +302,9 @@ test_notes_app.py::test_edit_note PASSED                                        
 test_notes_app.py::test_edit_note_index_error PASSED                                                             [100%]
 
 ================================================== 5 passed in 0.09s ==================================================
-```
+~~~
 
->Note: The output of running these test case that utilize the Pytest fixture is not different from the one that doesn’t.
+>Note: The output of running these test case that utilize the Pytest fixture is not different from the one that doesn't.
 
 ### The `conftest.py` File
 
@@ -313,20 +314,20 @@ You can define fixtures in a `conftest.py` file in the root directory of your pr
 
 For example, let's say you have a directory structure like this:
 
-```bash
+~~~
 tests/
 ├── conftest.py
 ├── test_example1.py
 └── subdirectory/
     ├── conftest.py
     └── test_example2.py
-```
+~~~
 
 In this example, the fixtures defined in the `conftest.py` file in the root `tests/` directory could be used by all of your tests. However, the fixtures defined in the `conftest.py` file in the `subdirectory/` directory are specific to the tests in that `subdirectory`, and cannot be used by tests in other parts of the project.
 
 Create a `conftest.py` file in the same directory as the source and test file and move the import statements and fixtures from the `test_notes_app.py` file to this file:
 
-```python
+~~~
 import pytest
 
 from notes_app import NotesApp
@@ -347,14 +348,14 @@ def app_with_notes():
     app.add_note("Test note 2")
     return app
 
-```
+~~~
 
 Since you have already run the tests earlier, you might not want to see detailed information about the tests. Thus, you can decrease the verbosity of the output by adding the `-q` option to the `pytest` command:
 
-```
+~~~
 .....                                                                                                          [100%]
 5 passed in 0.02s
-```
+~~~
 
 ### Modularization in Fixtures
 
@@ -362,7 +363,7 @@ Fixtures are highly modular and allow the use of other fixtures within a fixture
 
 If you take a look at the fixtures in your `conftest.py` file, you might notice that you're creating the `NotesApp` object twice. However, you can create the `NotesApp` instance only once in a fresh fixture and request it from the other fixtures. It's that simple!
 
-```python
+~~~
 import pytest
 
 from notes_app import NotesApp
@@ -388,7 +389,7 @@ def app_with_notes(app):
     app.add_note("Test note 2")
     return app
     
-```
+~~~
 
 Notice how you passed the `app` fixture as an argument to the `app_without_notes`  and `app_with_notes` fixtures and used it inside them.
 
@@ -404,17 +405,17 @@ Pytest fixtures can have different scopes that determine when they are created a
 
 3. **Module/Package scope**: The fixture is created and destroyed once for each module or package. It means that the module-scoped or package-scoped fixtures are useful for fixtures that need to be shared across multiple test functions within the same module or package.
 
-4. **Session scope**: The fixture is created and destroyed once for the entire test session.  It means that session-scoped fixtures are useful for fixtures that need to be shared across multiple test functions for the entire test run.
+4. **Session scope**: The fixture is created and destroyed once for the entire test session. It means that session-scoped fixtures are useful for fixtures that need to be shared across multiple test functions for the entire test run.
 
 The appropriate scope for a fixture depends on its intended use and how expensive it is to create in terms of time and resources. If a fixture is cheap to create and does not depend on other fixtures, the `function` scope is usually sufficient. However, if a fixture is expensive to create or depends on other fixtures, a higher scope may be more appropriate to reduce the overall execution time of the test suite.
 
 Here's how you can set the scope of a fixture, say "session" in this case:
 
-```python
+~~~
 @pytest.fixture(scope="session")
 def your_function():
     ...
-```
+~~~
 
 Similarly, you can set the other scopes by passing a lowercase value of their name to the`scope` argument.
 
@@ -436,7 +437,7 @@ To avoid interfering with other tests and cluttering the system with unnecessary
 
 Here's a simple example that shows how you can use `yield` fixtures:
 
-```python
+~~~
 @pytest.fixture
 def app_with_notes(app):
     """Returns an instance of the NotesApp class with two notes."""
@@ -448,13 +449,13 @@ def app_with_notes(app):
     print("Cleaning up the data after the test...\n")
     app.notes_list = []
 
-```
+~~~
 
 The above fixture first sets up the test data (two notes) as earlier. It then yields the `app` instance, allowing the test function that uses this fixture to access the `app` instance. After the test function finishes using the `app` instance, the fixture's code after the `yield` statement is executed. In this case, the code cleans up the test data by resetting the `notes_list` attribute of the `app` instance to an empty list.
 
 The function also contains a few print statements to show the flow of execution. Run the tests by executing the `pytest -q` command:
 
-```bash
+~~~
 .Setting up the data for the test...
 Data is ready for the test...
 .Cleaning up the data after the test...
@@ -465,28 +466,28 @@ Data is ready for the test...
 
 .
 5 passed in 0.01s
-```
+~~~
 
-### Parametrizing Fixtures
+### Parameterizing Fixtures
 
 By using parameterization in fixtures, a fixture function can be called multiple times, running the dependent tests each time. It can be especially useful when testing components that can be configured in multiple ways, enabling the creation of more comprehensive and exhaustive functional tests.
 
 Similar to scopes, you can pass a `params` list in the `@pytest.fixture` decorator. For example, the below code shows how you can add parameters in a `note_data` fixture:
 
-```python
+~~~
 @pytest.fixture(params=[("Test note 1", "Note added successfully"),
                         ("Test note 2", "Note added successfully")])
 def note_data(request):
     """Returns a tuple containing an input value and an expected output value for the add_note method."""
     return request.param
 
-```
+~~~
 
 In this fixture, the `params` argument is a list of tuples, each containing an input value and the expected output value for the `add_note` method. The `note_data` fixture returns one tuple from this list each time it is called.
 
 You can then use the `note_data` fixture in a test function that tests the `add_note` method with different input values. Here's an example:
 
-```python
+~~~
 def test_add_note_with_param(note_data, app_without_notes):
     input_value, expected_output = note_data
     result = app_without_notes.add_note(input_value)
@@ -494,13 +495,13 @@ def test_add_note_with_param(note_data, app_without_notes):
     assert len(app_without_notes.notes_list) == 1
     assert app_without_notes.notes_list[0].content == input_value
 
-```
+~~~
 
 In this test function, the `note_data` fixture is used to parametrize the test with different input values and expected output values for the `add_note` method. Each tuple returned by the fixture is unpacked into `input_value` and `expected_output`, and the test is run once for each tuple.
 
-When you run the test using the `pytest -v` command, you’ll see the below output:
+When you run the test using the `pytest -v` command, you'll see the below output:
 
-```
+~~~
 collected 7 items                                                                                                     
 
 test_notes_app.py::test_add_note PASSED                                                                        [ 14%] 
@@ -513,7 +514,7 @@ test_notes_app.py::test_add_note_with_param[note_data1] PASSED                  
 
 ================================================= 7 passed in 0.04s ================================================= 
 
-```
+~~~
 
 Notice that the `test_add_note_with_param` test runs twice because you have passed two values in the parameters.
 
@@ -521,13 +522,13 @@ Notice that the `test_add_note_with_param` test runs twice because you have pass
 
 At times, you might have a fixture or multiple fixtures that all your tests will need to depend on. In such cases, the `autouse` option in pytest fixtures can be used to automatically apply the fixture to all tests within a certain scope. This feature removes the need for explicitly requesting the fixture in each test function.
 
-To use `autouse` with fixtures, you can simply add the `autouse` parameter to the fixture definition and set it to `True`. 
+To use `autouse` with fixtures, you can simply add the `autouse` parameter to the fixture definition and set it to `True`.
 
-```python
+~~~
 @pytest.fixture(autouse=True)
 def your_fixture():
-	...
-```
+    ...
+~~~
 
 > Note that using `autouse` fixtures can be risky, as they can potentially interfere with other fixtures or tests. So, use them with caution and only when necessary.
 
@@ -535,7 +536,7 @@ def your_fixture():
 
 PyTest fixtures are a powerful tool for creating test data and performing setup and teardown operations in automated testing. Fixtures help simplify test code by providing reusable and modular test data and setup functions and allow developers to focus on testing the code rather than creating test data.
 
-In this tutorial, you learned the basics of PyTest fixtures, including how to define and use fixtures, modularization, fixture scopes, and advanced topics like cleaning up data using yield fixtures, parametrizing fixtures, and `autouse` fixtures. 
+In this tutorial, you learned the basics of PyTest fixtures, including how to define and use fixtures, modularization, fixture scopes, and advanced topics like cleaning up data using yield fixtures, parameterizing fixtures, and `autouse` fixtures.
 
 By mastering fixtures, developers can greatly improve their testing workflow and the quality of their code. With this tutorial as a starting point, developers can go on to create robust and efficient test suites that provide confidence in their code and help prevent bugs and regressions in production.
 
@@ -548,6 +549,5 @@ By mastering fixtures, developers can greatly improve their testing workflow and
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
