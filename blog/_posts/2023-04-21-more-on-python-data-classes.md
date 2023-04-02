@@ -714,4 +714,4 @@ See you all soon in another tutorial. Until then, happy coding!
 [^1]:
 I found [this StackOverFlow discussion thread](https://stackoverflow.com/questions/472000/usage-of-slots) super helpful to learn about `__slots__`. I recommend reading through it to further your understanding of `__slots__`.
 [^2]:
-When you set `slots` to `True`, you can no longer add attributes on the fly. But you can instead set `__slots__` manually and add a `__dict__` (in addition to the names of instance variables) be able to dynamically add fields. The memory footprint savings in this case may be lower.
+When you set `slots` to `True`, you can no longer add instance attributes on the fly. But you can instead set `__slots__` manually and add a `__dict__` (in addition to the names of instance variables) to dynamically add fields. The memory footprint savings in this case may be lower.
