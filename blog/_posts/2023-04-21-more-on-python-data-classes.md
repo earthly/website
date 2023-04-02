@@ -512,9 +512,56 @@ TypeError: non-default argument 'course' follows default argument
   
 ### Use Slots for Improved Performance
 
+~~~{.python caption="main.py"}
+...
+@dataclass(slots=False)
+class Student:
+ 	first_name: str
+ 	last_name: str
+ 	major: str
+ 	year: str
+ 	gpa: float
+ 	roll_num: str = field(default_factory=generate_roll_num, init=False)
+ 	email: str = field(init=False)
+ 	tuition: int = 10000
+
+ 	def __post_init__(self):
+    	self.email = f"{self.first_name}.{self.last_name}@uni.edu"
+...
+~~~
+
+~~~{.python caption="main.py"}
+jane = Student('Jane','Lee','Computer Science','senior',3.99,30000)
+print(f"Instance variable dict: {jane.__dict__}")
+~~~
+  
+~~~{ caption="Output"}
+Instance variable dict:{'first_name': 'Jane', 'last_name': 'Lee', 'major': 'Computer Science', 'year': 'senior', 'gpa': 3.99,
+'roll_num': 'XAJI0Y6DP', 'email': 'Jane.Lee@uni.edu'}
+~~~
+
+~~~{.python caption="main.py"}
+...
+@dataclass(slots=True)
+class StudentSlots:
+	first_name: str
+	last_name: str
+	major: str
+	year: str
+	gpa: float
+	roll_num: str = field(default_factory=generate_roll_num, init=False)
+	email:str = field(init=False)
+	tuition:int = 10000
+
+	def __post_init__(self):
+    	self.email = f"{self.first_name}.{self.last_name}@uni.edu"
+...
+~~~
+
+#### Comparing Memory Footprint
 
 <div class="notice--big--primary">
-#### What I Learned About `sys.getsizeof()`
+##### What I Learned About `sys.getsizeof()`
   
 ~~~{.python caption=""}
 >>> dict_1 = {"key1": "value1"}
@@ -531,16 +578,80 @@ TypeError: non-default argument 'course' follows default argument
 >>> sys.getsizeof(dict_3)
 128
 ~~~
-  
-</div>
-  
-~~~{.bash caption=">_"}
-$ pip3 install pympler
+
+~~~{.python caption="main.py"}
+jane_slots = StudentSlots('Jane','Lee','Computer Science','senior',3.99,30000)
+jane = Student('Jane','Lee','Computer Science','senior',3.99,30000)
 ~~~
-  
+
+~~~{.python caption="main.py"}
+import sys
+print(f"sys.getsizeof(jane):{sys.getsizeof(jane)}")
+print(f"sys.getsizeof(jane_slots):{sys.getsizeof(jane_slots)}")
+~~~
+
+~~~{ caption="Output"}
+sys.getsizeof(jane):48
+sys.getsizeof(jane_slots):104
+~~~
+
+</div>
+
 <div class="wide">
 ![size-of-objects]({{site.images}}{{page.slug}}/5.png)\
 </div>
+
+~~~{.bash caption=">_"}
+$ pip3 install pympler
+~~~
+
+~~~{.python caption="main.py"}
+jane_slots = StudentSlots('Jane','Lee','Computer Science','senior',3.99,30000)
+jane = Student('Jane','Lee','Computer Science','senior',3.99,30000)
+~~~
+
+~~~{.python caption="main.py"}
+from pympler.asizeof import asizeof
+size_jane_slots = asizeof(jane_slots)
+size_jane = asizeof(jane)
+
+print(f"Size of `jane` with slots: {size_jane_slots}")
+print(f"Size of `jane` without slots: {size_jane}")
+print(f"% Savings in memory: {(size_jane - size_jane_slots)/size_jane*100:.2f}")
+~~~
+
+~~~{ caption="Output"}
+Size of `jane` with slots: 536
+Size of `jane` without slots: 1096
+% Savings in memory: 51.09
+~~~
+  
+#### Comparing Attribute Access Times
+
+~~~{.python caption="main.py"}
+from functools import partial
+import timeit
+
+def get_set_del(student):
+	student.first_name="Hello"
+	student.first_name
+	del student.first_name
+~~~
+
+~~~{.python caption="main.py"}
+t1=min(timeit.repeat(partial(get_set_del,jane_slots)))
+t2=min(timeit.repeat(partial(get_set_del,jane)))
+
+print(f"Access time with slots: {t1:.2f}")
+print(f"Access time without slots: {t2:.2f}")
+print(f"% Improvement: {(t2-t1)/t2*100:.2f}")
+~~~
+
+~~~{ caption="Output"}
+Access time with slots: 0.08
+Access time without slots: 0.11
+% Improvement: 28.71
+~~~
 
 ## Conclusion
 
