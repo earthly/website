@@ -533,8 +533,10 @@ So how does using `__slots__` help?[^1] Well, it has the following advantages :
 ### Comparing Memory Footprint
 
 <div class="notice--big--primary">
-##### What I Learned About `sys.getsizeof()`
-  
+#### What I Learned About `sys.getsizeof()`
+
+![dictionary-1]({{site.images}}{{page.slug}}/6.png)\
+
 ~~~{.python caption=""}
 >>> dict_1 = {"key1": "value1"}
 >>> dict_2 = {"key1": {"key2": "value2"}}
@@ -550,6 +552,8 @@ So how does using `__slots__` help?[^1] Well, it has the following advantages :
 >>> sys.getsizeof(dict_3)
 128
 ~~~
+
+![dictionary-2]({{site.images}}{{page.slug}}/7.png)\
 
 ~~~{.python caption="main.py"}
 jane_slots = StudentSlots('Jane','Lee','Computer Science','senior',3.99,30000)
@@ -649,9 +653,9 @@ Cool, the memory savings and attribute access times when using data classes with
 
 And that's a wrap! In this second (and final part) of the data classes tutorial series, we tried to cover features such as `__post_init__` method, subclassing data classes, and performance gains using `__slot__`. 
 
-So did we cover *everything* about data classes? No. But we've covered what you'll need to write functional data classes. With less boilerplate to write, switching to data classes can save you hours per week.
+So did we cover *everything* about data classes? No. But we've covered (almost) everything you'll need to write functional data classes. With less boilerplate to write, switching to data classes can save you hours per week.
 
 {% include cta/cta1.html %}
 
 [^1]:
-   I found [this StackOverFlow discussion thread]() super helpful to learn about `__slots__`. I recommend reading through it to further your understanding of `__slots__`.
+I found [this StackOverFlow discussion thread]() super helpful to learn about `__slots__`. I recommend reading through it to further your understanding of `__slots__`.
