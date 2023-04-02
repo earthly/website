@@ -401,7 +401,7 @@ And we see all the four comparison methods:
  ('__repr__', <function __create_fn__.<locals>.__repr__ at 0x01C93C88>)]
 ~~~
 
-So for anything we want to do with classes and their instances, data classes come with batteries included? Yeah, it seems safe to say so!	
+So for anything we want to do with classes and their instances, data classes come with batteries included? Yeah, it seems safe to say so!
 </div>
   
 ## Subclass Data Classes to Extend Functionality
@@ -431,7 +431,7 @@ class TA(Student):
 ~~~
 
 We can create `TA` objects and access the fields:
-	
+
 ~~~{.python caption=""}
 >>> from main import TA
 >>> fanny = TA('Fanny','Gray','Math','senior',4.00,33000,'Combinatorics',20,500)
@@ -447,13 +447,13 @@ We can create `TA` objects and access the fields:
 ### What You Should Know About Inheritance and Default Values for Fields
 
 In the `TA` example, we set default values for *all* fields in the child class (subclass), so we did not run into errors. But there's a caveat you should be aware of.
-	
-If you remember, when creating a data class, we mentioned that fields with default values should always come *after* those without default values. 
-	
+
+If you remember, when creating a data class, we mentioned that fields with default values should always come *after* those without default values.
+
 When you create a subclass form an existing data class, the ordering of fields is preserved. Meaning the fields in the parent class come first, followed by the fields in the subclass. **If the parent data class has default values for one or more fields, all fields in the subclass should have default values, too**.
-	
+
 Try removing the default values from the `TA` subclass:
-	
+
 ~~~{.python caption="main.py"}
 @dataclass
 class TA(Student):
@@ -486,17 +486,17 @@ We'll use the following version of the `Student` data class. The `@dataclass` de
 ...
 @dataclass(slots=False)
 class Student:
- 	first_name: str
- 	last_name: str
- 	major: str
- 	year: str
- 	gpa: float
- 	roll_num: str = field(default_factory=generate_roll_num, init=False)
- 	email: str = field(init=False)
- 	tuition: int = 10000
+    first_name: str
+    last_name: str
+    major: str
+    year: str
+    gpa: float
+    roll_num: str = field(default_factory=generate_roll_num, init=False)
+    email: str = field(init=False)
+    tuition: int = 10000
 
- 	def __post_init__(self):
-    	self.email = f"{self.first_name}.{self.last_name}@uni.edu"
+    def __post_init__(self):
+        self.email = f"{self.first_name}.{self.last_name}@uni.edu"
 ...
 ~~~
 
@@ -506,7 +506,7 @@ All data class instances have a special `__dict__` attribute that stores the val
 jane = Student('Jane','Lee','Computer Science','senior',3.99,30000)
 print(f"Instance variable dict: {jane.__dict__}")
 ~~~
- 
+
 Here's the `__dict__` corresponding to `jane`:
 
 ~~~{ caption="Output"}
@@ -518,7 +518,7 @@ This gives you the flexibility to add instance variables on the go. For example,
 
 But dictionaries take up memory. This is not a problem when you have fewer attributes and don't need to create a large number of instances. But it can be impactful when you need to create a large number of instances.
 
-Can we do something so that this __dict__ attribute is no longer created for instances? That way, we won't run into memory issues. Glad you asked.
+Can we do something so that this `__dict__` attribute is no longer created for instances? That way, we won't run into memory issues. Glad you asked.
 
 ### Enter `__slots__`
 
@@ -530,25 +530,25 @@ So how does using `__slots__` help?[^1] Well, you get the following advantages :
 - Marginal improvement in attribute access speed
 
 To use slots, you need to set `slots` to `True` in the `@dataclass` decorator:
-	
+
 ~~~{.python caption="main.py"}
 ...
 @dataclass(slots=True)
 class StudentSlots:
-	first_name: str
-	last_name: str
-	major: str
-	year: str
-	gpa: float
-	roll_num: str = field(default_factory=generate_roll_num, init=False)
-	email:str = field(init=False)
-	tuition:int = 10000
+    first_name: str
+    last_name: str
+    major: str
+    year: str
+    gpa: float
+    roll_num: str = field(default_factory=generate_roll_num, init=False)
+    email:str = field(init=False)
+    tuition:int = 10000
 
-	def __post_init__(self):
-    	self.email = f"{self.first_name}.{self.last_name}@uni.edu"
+    def __post_init__(self):
+        self.email = f"{self.first_name}.{self.last_name}@uni.edu"
 ...
 ~~~
-	
+
 ### Comparing Memory Footprint
 
 <div class="notice--big--primary">
@@ -616,7 +616,7 @@ This can be attributed to how `sys.getsizeof()` calculates object sizes — with
 </div>
 
 You can install pympler package using `pip`:
-	
+
 ~~~{.bash caption=">_"}
 $ pip3 install pympler
 ~~~
@@ -659,13 +659,13 @@ from functools import partial
 import timeit
 
 def get_set_del(student):
-	student.first_name="Hello"
-	student.first_name
-	del student.first_name
+    student.first_name="Hello"
+    student.first_name
+    del student.first_name
 ~~~
 
 We'll use `timeit` to measure the access times with and without slots. Once we get the access times, we can compute the percentage improvement in speed.
-	
+
 ~~~{.python caption="main.py"}
 t1=min(timeit.repeat(partial(get_set_del,jane_slots)))
 t2=min(timeit.repeat(partial(get_set_del,jane)))
@@ -687,10 +687,10 @@ Cool, the memory savings and attribute access times when using data classes with
 
 ## Conclusion
 
-And that's a wrap! In this second (and final part) of the data classes tutorial series, we covered the `__post_init__` method, how inheritance works in data classes, and performance gains using `__slot__`. 
+And that's a wrap! In this second (and final part) of the data classes tutorial series, we covered the `__post_init__` method, how inheritance works in data classes, and performance gains using `__slot__`.
 
-So did we cover *everything* about data classes? No. But what you've learned should help you hit the ground running when you start writing functional data classes. With less boilerplate to write and promising performance gains, switching to data classes can save you hours per week. 
-	
+So did we cover *everything* about data classes? No. But what you've learned should help you hit the ground running when you start writing functional data classes. With less boilerplate to write and promising performance gains, switching to data classes can save you hours per week.
+
 See you all soon in another tutorial. Until then, happy coding!
 
 {% include cta/cta1.html %}
