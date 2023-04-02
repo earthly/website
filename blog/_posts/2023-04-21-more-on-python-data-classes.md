@@ -128,7 +128,7 @@ Student(
 )
 ~~~
 
-## Exclude Fields from the Constructor
+## Exclude Fields From the Constructor
 
 Setting a default value makes a field *optional* in the constructor. And the default value is used only if the user does *not* provide the value for that field in the constructor.
 
@@ -201,7 +201,7 @@ class Student:
     ...
 ~~~
 
-Say you'd like to add an `email` field, a string of the form `first_name.last_name@uni.edu` (not super fancy, but works!). And we don't want the users of the class to initalize this field, so we set `init=False`:
+Say you'd like to add an `email` field, a string of the form `first_name.last_name@uni.edu` (not super fancy, but works!). And we don't want the users of the class to initialize this field, so we set `init=False`:
 
 ~~~{.python caption="main.py"}
 from dataclasses import dataclass, field
@@ -220,7 +220,7 @@ class Student:
 We know the following:
 
 - To initialize the `email` field, use the `first_name` and the `last_name` fields.
-- To ensure users cannot initalize this field, set `init=False` in the `field()` function.
+- To ensure users cannot initialize this field, set `init=False` in the `field()` function.
 
 ![email]({{site.images}}{{page.slug}}/1.png)\
 
@@ -450,9 +450,9 @@ In the `TA` example, we set default values for *all* fields in the child class (
 	
 If you remember, when creating a data class, we mentioned that fields with default values should always come *after* those without default values. 
 	
-When you create a sublcass form an existing data class, the ordering of fields is preserved. Meaning the fields in the parent class come first, followed by the fields in the subclass. **If the parent data class has default values for one or more fields, all fields in the subclass should have default values, too**.
+When you create a subclass form an existing data class, the ordering of fields is preserved. Meaning the fields in the parent class come first, followed by the fields in the subclass. **If the parent data class has default values for one or more fields, all fields in the subclass should have default values, too**.
 	
-Try removing the deafult values from the `TA` subclass:
+Try removing the default values from the `TA` subclass:
 	
 ~~~{.python caption="main.py"}
 @dataclass
@@ -648,7 +648,7 @@ Size of `jane` without slots: 1096
 % Savings in memory: 51.09
 ~~~
 
-It'd be interesting to see how the memory saving scales with increasing number of attribues in the data class.
+It'd be interesting to see how the memory saving scales with increasing number of attributes in the data class.
   
 ### Comparing Attribute Access Times
 
@@ -687,7 +687,7 @@ Cool, the memory savings and attribute access times when using data classes with
 
 ## Conclusion
 
-And that's a wrap! In this second (and final part) of the data classes tutorial series, we `__post_init__` method, subclassing data classes, and performance gains using `__slot__`. 
+And that's a wrap! In this second (and final part) of the data classes tutorial series, we covered the `__post_init__` method, how inheritance works in data classes, and performance gains using `__slot__`. 
 
 So did we cover *everything* about data classes? No. But what you've learned should help you hit the ground running when you start writing functional data classes. With less boilerplate to write and promising performance gains, switching to data classes can save you hours per week. 
 	
