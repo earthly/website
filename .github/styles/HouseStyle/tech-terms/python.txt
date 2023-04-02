@@ -90,3 +90,5 @@ dict_2
 dict_3
 dict
 slots
+subclassing
+callables
