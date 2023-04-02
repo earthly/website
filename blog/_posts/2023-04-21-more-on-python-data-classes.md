@@ -478,6 +478,9 @@ We run into the `non-default argument 'course' follows default argument` error!
 
 ## Use Slots for Improved Performance
 
+📌 This section requires Python 3.10 or later.
+
+We'll use the following version of the `Student` data class. The `@dataclass` decorator takes an optional `slots` parameter that's set to `False` by default.
 
 ~~~{.python caption="main.py"}
 ...
@@ -497,16 +500,37 @@ class Student:
 ...
 ~~~
 
+All data class instances have a special `__dict__` attribute that stores the values of instance variables:
+
 ~~~{.python caption="main.py"}
 jane = Student('Jane','Lee','Computer Science','senior',3.99,30000)
 print(f"Instance variable dict: {jane.__dict__}")
 ~~~
-  
+ 
+Here's the `__dict__` corresponding to `jane`:
+
 ~~~{ caption="Output"}
 Instance variable dict:{'first_name': 'Jane', 'last_name': 'Lee', 'major': 'Computer Science', 'year': 'senior', 'gpa': 3.99,
 'roll_num': 'XAJI0Y6DP', 'email': 'Jane.Lee@uni.edu'}
 ~~~
 
+This gives you the flexibility to add instance variables on the go. For example, you can add a `watches_anime` field to `jane` like so: `jane.watches_anime = True`.
+
+But dictionaries take up memory. This is not a problem when you have fewer attributes and don't need to create a large number of instances. But it can be impactful when you need to create a large number of instances.
+
+Can we do something so that this __dict__ attribute is no longer created for instances? That way, we won't run into memory issues. Glad you asked.
+
+### Enter `__slots__`
+
+When you know that the data class instances always have a fixed set of attributes, you can use `__slots__` to store the values in slots instead of in dictionaries. So when you use `__slots__`, the `__dict__` is no longer created. Rather, the instance variables are now treated as [properties](https://docs.python.org/3/howto/descriptor.html#member-objects-and-slots).
+
+So how does using `__slots__` help?[^1] Well, you get the following advantages :
+
+- Substantially low memory footprint as the `__dict__` is not created for instances
+- Marginal improvement in attribute access speed
+
+To use slots, you need to set `slots` to `True` in the `@dataclass` decorator:
+	
 ~~~{.python caption="main.py"}
 ...
 @dataclass(slots=True)
@@ -524,25 +548,32 @@ class StudentSlots:
     	self.email = f"{self.first_name}.{self.last_name}@uni.edu"
 ...
 ~~~
-
-So how does using `__slots__` help?[^1] Well, it has the following advantages :
-
-- Substantially low memory footprint as the `__dict__` is not created for instances
-- Marginal improvement in attribute access speed
 	
 ### Comparing Memory Footprint
 
 <div class="notice--big--primary">
-#### What I Learned About `sys.getsizeof()`
+#### 🧩 What I Learned About `sys.getsizeof()`
+
+I've (almost always) used `sys.getsizeof()` to get size of objects in Python. But only recently I learned that it does *not* account for the sizes of objects that are referenced inside the specific object. Let me explain this with a simple example.
+
+Suppose you have three Python dictionaries of the following form:
 
 ![dictionary-1]({{site.images}}{{page.slug}}/6.png)\
+
+Let's create three super simple dictionaries that take the above form:
 
 ~~~{.python caption=""}
 >>> dict_1 = {"key1": "value1"}
 >>> dict_2 = {"key1": {"key2": "value2"}}
 >>> dict_3 = {"key1": {"key2": {"key3": "value3"}}}
 ~~~
-  
+
+You'd expect the above dictionaries to have different sizes given that `dict_2` and `dict_3` reference dictionaries within them. However, `sys.getsizeof()` views them as dictionaries containing a single key-value pair. Which is technically right, though!
+
+![dictionary-2]({{site.images}}{{page.slug}}/7.png)\
+
+And we get the same size for the three objects:
+
 ~~~{.python caption=""}
 >>> import sys
 >>> sys.getsizeof(dict_1)
@@ -553,12 +584,14 @@ So how does using `__slots__` help?[^1] Well, it has the following advantages :
 128
 ~~~
 
-![dictionary-2]({{site.images}}{{page.slug}}/7.png)\
+We'll not use `sys.getsizeof()` to compute the sizes of instances of `Student` and `StudentSlots` data classes. But you can go ahead and try the following if you'd like:
 
 ~~~{.python caption="main.py"}
 jane_slots = StudentSlots('Jane','Lee','Computer Science','senior',3.99,30000)
 jane = Student('Jane','Lee','Computer Science','senior',3.99,30000)
 ~~~
+
+Now use `sys.getsizeof()` to get the size of the `jane` and `jane_slots` objects:
 
 ~~~{.python caption="main.py"}
 import sys
@@ -566,14 +599,17 @@ print(f"sys.getsizeof(jane):{sys.getsizeof(jane)}")
 print(f"sys.getsizeof(jane_slots):{sys.getsizeof(jane_slots)}")
 ~~~
 
+In this case, the data class instance with slots seems to take up more memory, which is contrary to our memory savings claim.
+
 ~~~{ caption="Output"}
 sys.getsizeof(jane):48
 sys.getsizeof(jane_slots):104
 ~~~
 
+This can be attributed to how `sys.getsizeof()` calculates object sizes — without taking into account the referenced objects.
 </div>
 
-[Pympler](), another Python package, provides functionality to compute the approximate sizes of the object in memory. The `asizeof()` function in Pympler’s `asizeof` module tries to recursively add up the sizes of the objects referenced within an object, and returns the approximate size of the object in bytes.
+[Pympler](https://pympler.readthedocs.io/en/latest/), another Python package, provides functionality to compute the approximate sizes of the object in memory. The `asizeof()` function in Pympler’s `asizeof` module tries to recursively add up the sizes of the objects referenced within an object, and returns the approximate size of the object in bytes.
 
 <div class="wide">
 ![size-of-objects]({{site.images}}{{page.slug}}/5.png)\
@@ -651,11 +687,13 @@ Cool, the memory savings and attribute access times when using data classes with
 
 ## Conclusion
 
-And that's a wrap! In this second (and final part) of the data classes tutorial series, we tried to cover features such as `__post_init__` method, subclassing data classes, and performance gains using `__slot__`. 
+And that's a wrap! In this second (and final part) of the data classes tutorial series, we `__post_init__` method, subclassing data classes, and performance gains using `__slot__`. 
 
-So did we cover *everything* about data classes? No. But we've covered (almost) everything you'll need to write functional data classes. With less boilerplate to write, switching to data classes can save you hours per week.
+So did we cover *everything* about data classes? No. But what you've learned should help you hit the ground running when you start writing functional data classes. With less boilerplate to write and promising performance gains, switching to data classes can save you hours per week. 
+	
+See you all soon in another tutorial. Until then, happy coding!
 
 {% include cta/cta1.html %}
 
 [^1]:
-I found [this StackOverFlow discussion thread]() super helpful to learn about `__slots__`. I recommend reading through it to further your understanding of `__slots__`.
+I found [this StackOverFlow discussion thread](https://stackoverflow.com/questions/472000/usage-of-slots) super helpful to learn about `__slots__`. I recommend reading through it to further your understanding of `__slots__`.
