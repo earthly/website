@@ -558,7 +558,7 @@ I've (almost always) used `sys.getsizeof()` to get size of objects in Python. Bu
 
 Suppose you have three Python dictionaries of the following form:
 
-![dictionary-1]({{site.images}}{{page.slug}}/6.png)\
+![dictionary-1]({{site.images}}{{page.slug}}/7.png)\
 
 Let's create three super simple dictionaries that take the above form:
 
@@ -570,7 +570,7 @@ Let's create three super simple dictionaries that take the above form:
 
 You'd expect the above dictionaries to have different sizes given that `dict_2` and `dict_3` reference dictionaries within them. However, `sys.getsizeof()` views them as dictionaries containing a single key-value pair. Which is technically right, though!
 
-![dictionary-2]({{site.images}}{{page.slug}}/7.png)\
+![dictionary-2]({{site.images}}{{page.slug}}/8.png)\
 
 And we get the same size for the three objects:
 
