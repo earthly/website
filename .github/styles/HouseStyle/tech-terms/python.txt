@@ -73,3 +73,12 @@ coroutine
 
 pipenv
 vite
+
+pympler
+post_init
+le
+ge
+lt
+gt
+asizeof
+eq
