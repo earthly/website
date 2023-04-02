@@ -289,7 +289,7 @@ jane = Student('Jane','Lee','Computer Science','senior',3.99)
 julia = Student('Julia','Doe','Economics','junior',3.63,27000)
 ~~~
 
-For `jane`, the deafult `tuition` of 10000 will be used. Let's try doing `julia > jane`:
+For `jane`, the default `tuition` of 10000 will be used. Let's try doing `julia > jane`:
 
 ~~~{.python caption="main.py"}
 print(julia > jane)
@@ -635,7 +635,7 @@ print(f"Access time without slots: {t2:.2f}")
 print(f"% Improvement: {(t2-t1)/t2*100:.2f}")
 ~~~
 
-I'm using Python 3.10.8 on Ubuntu 22.04 LTS, and the results suggest that the attribute access — with slots — is about 28.71% faster.
+I'm running Python 3.10.8 on Ubuntu 22.04 LTS, and the results suggest that the attribute access — with slots — is about 28.71% faster.
 
 ~~~{ caption="Output"}
 Access time with slots: 0.08
@@ -654,4 +654,4 @@ So did we cover *everything* about data classes? No. But we've covered what you'
 {% include cta/cta1.html %}
 
 [^1]:
-   This StackOverFlow discussion thread was of great help in understanding the advantages of `__slots__`. I recommend reading through it to further your understanding of `__slots__`.
+   I found [this StackOverFlow discussion thread]() super helpful to learn about `__slots__`. I recommend reading through it to further your understanding of `__slots__`.
