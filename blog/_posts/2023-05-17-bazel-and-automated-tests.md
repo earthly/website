@@ -20,6 +20,8 @@ In this tutorial, you'll learn how to use [Bazel](/blog/monorepo-with-bazel) to 
 
 ## Why Bazel?
 
+![why]({{site.images}}{{page.slug}}/why.png)\
+
 When running automated tests to aid the continuous integration, continuous delivery (CI/CD) process, time is critical. The [CI/CD](/blog/ci-vs-cd) pipeline is integral in allowing organizations to iterate quickly and increase production, and large organizations, like Google, Tesla, and Etsy, all incorporate CI/CD practices in their businesses.
 
 Bazel can help speed up the CI/CD process and build and test software quickly and reliably by utilizing several built-in features. One of Bazel's most notable features is caching. During testing, Bazel only rebuilds what's required instead of the entire project. Additionally, it caches all previously passed tests. For each test that's run, the unchanged parts are simply skipped. This helps avoid redundant testing, which saves you time and computing resources.
@@ -237,6 +239,8 @@ INFO: Build completed successfully, 2 total actions
 
 As you can see, all the tests pass successfully.
 
+![success]({{site.images}}{{page.slug}}/success.png)\
+
 Let's see what happens if there is a failing test. Modify `test_prime.py` and add a new test case that fails:
 
 ~~~{.python caption="test_prime.py"}
@@ -371,7 +375,3 @@ In this article, you learned about Bazel, a fast and reliable tool that supports
 Another useful tool to speed up automated testing is [Earthly](https://earthly.dev/). Earthly is a simple framework that enables the creation of pipelines that can be developed locally and executed on any platform. It uses containers to run the pipelines, making them self-sufficient, repeatable, portable, and capable of running in parallel. It helps speed up builds since the cache is retained between builds.
 
 {% include_html cta/cta2.html %}
-
-## Outside Article Checklist
-
-- [ ] Optional: Find ways to break up content with quotes or images
