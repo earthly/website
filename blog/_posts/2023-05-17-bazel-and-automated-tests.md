@@ -7,7 +7,9 @@ author: Ali Mannan Tirmizi
 author2: Aniket Bhattacharyea
 
 internal-links:
- - just an example
+ - Bazel
+ - Automation
+ - CI/CD
 ---
 
 To ensure that your code works as expected even when you ship it to production, you need to integrate automated testing. Automated testing is critical for enterprise-grade software development and delivery. It saves you time and money by rapidly running tests and improves software quality by allowing engineers to run lengthy and time-consuming tests in the background.
@@ -374,4 +376,3 @@ Another useful tool to speed up automated testing is [Earthly](https://earthly.d
 
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Add keywords for internal links to front-matter
