@@ -9,13 +9,13 @@ internal-links:
  - just an example
 ---
 
-Are you interested in learning more about Kubernetes security? While it's true that Kubernetes secrets provide a secure way to manage sensitive data in your applications, it's also wise to consider additional security measures. In my previous articles, I've covered how to get started with [Kubernetes secrets](/blog/kubernetes-secrets/) and [how to secure them effectively](/blog/securing-kubernetes-secrets/) within the cluster.
+Are you interested in learning more about Kubernetes security? While it's true that [Kubernetes](/blog/automate-micsvcs-in-k8s) secrets provide a secure way to manage sensitive data in your applications, it's also wise to consider additional security measures. In my previous articles, I've covered how to get started with [Kubernetes secrets](/blog/kubernetes-secrets/) and [how to secure them effectively](/blog/securing-kubernetes-secrets/) within the [cluster](/blog/kube-bench).
 
 How about keeping your secrets outside of the Kubernetes cluster? This provides an extra layer of security that can protect your applications in the event of a cluster breach. That's where external secret operators (ESOs) come in. By using an ESO, you can store your secrets securely outside of the Kubernetes cluster while still allowing your applications to access them.
 
 [External secret operators (ESO)](https://external-secrets.io/v0.7.2/introduction/getting-started/) is a Kubernetes operator that allows you to use secrets from centralized third-party secret management systems. This operator reads data from a third-party secret manager and automatically injects their values as Kubernetes secrets.
 
-These centralized third-party secret management systems include AWS Secrets Manager, HashiCorp Vault, and Google Secrets Manager, among others. These centralized third-party secret management systems provide a higher level of security and flexibility for managing secrets within your Kubernetes deployment compared to the native Kubernetes secret management.
+These centralized third-party secret management systems include AWS Secrets Manager, HashiCorp Vault, and Google Secrets Manager, among others. These centralized third-party secret management systems provide a higher level of security and flexibility for managing secrets within your Kubernetes [deployment](/blog/deployment-strategies) compared to the native Kubernetes secret management.
 
 This tutorial will teach you how to use the external secret operator with HashiCorp vault.
 
@@ -47,7 +47,7 @@ ESO allows you to manage secrets outside a Kubernetes cluster, while still allow
 - **Improved security**: ESO allows you to store sensitive information, such as passwords and API keys, outside of your Kubernetes cluster. This makes it more secure, as sensitive information is not stored within the cluster, reducing the risk of compromise.
 - **Centralized management**: With an ESO, you can manage your secrets in a centralized location, making it easier to manage and maintain.
 - **Better scalability**: External Secret Operators are designed to handle large-scale secrets, making them a great solution for clusters that need to scale.
-- **Improved performance**: External Secret Operators can provide improved performance as they are designed to handle secrets efficiently, reducing the load on your cluster.
+- **Improved performance**: External Secret Operators can provide improved performance as they are designed to handle secrets efficiently, reducing the load on your [cluster](/blog/kube-bench).
 - **Integration with other tools**: External Secret Operators can be integrated with other tools and systems, allowing you to leverage existing tools and processes to manage your secrets.
 
 ## Configuring a Vault Production-Ready Server
@@ -70,7 +70,7 @@ Add the Hashicorp release repository to the apt sources list, allowing for the i
 sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
 ~~~
 
-Install the Vault package via APT using the following command.
+Install the Vault package via [APT](/blog/creating-and-hosting-your-own-deb-packages-and-apt-repo) using the following command.
 
 ~~~
 sudo apt install vault
@@ -420,7 +420,7 @@ kubectl describe secret postgres-secret
 
 ## Deploying a Postgres Database for Testing
 
-Since we have used the **`ExternalSecret`** resource to create a secret in our Kubernetes cluster, let's see if we can use this secret, by injecting it into a Pod. To confirm, we will create a PostgreSQL instance and use the `postgres-secret` as an environment variable.
+Since we have used the **`ExternalSecret`** resource to create a secret in our Kubernetes cluster, let's see if we can use this secret, by injecting it into a Pod. To confirm, we will create a PostgreSQL instance and use the `postgres-secret` as an [environment variable](/blog/bash-variables).
 
 Create a file and paste in the below configuration settings, this tutorial calls this file *postgres.yaml*
 
@@ -588,5 +588,4 @@ I hope you understand how useful the External Secret Operator is in Kubernetes. 
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
 - [ ] Add Earthly `CTA` at bottom `{% include_html cta/cta2.html %}`
