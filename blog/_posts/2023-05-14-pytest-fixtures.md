@@ -22,8 +22,8 @@ In this tutorial, you will learn what PyTest fixtures are, why they are used, an
 
 To follow this tutorial, it is recommended that you have the following prerequisites:
 
-1. Basic knowledge of the Python programming language
-2. Familiarity with writing and running tests
+1. Basic knowledge of the Python programming language.
+2. Familiarity with writing and running tests.
 3. A computer with Python 3.8+ installed and a code editor to write code.
 
 You can find all the code samples used in the tutorial in this [repository](https://github.com/ashutoshkrris/pytest-fixtures-tutorial).
