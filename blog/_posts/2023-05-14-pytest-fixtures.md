@@ -29,7 +29,7 @@ You can find all the code samples used in the tutorial in this [repository](http
 
 Fixtures are important in testing because they provide a reliable and consistent context for tests. This context may include a variety of components, such as content like a specific dataset or a pre-configured environment. Typically, a test follows the [**Arrange**, **Act**, and **Assert** (AAA) pattern](https://docs.pytest.org/en/7.1.x/explanation/anatomy.html#test-anatomy). Fixtures define the necessary steps and data for the "Arrange" phase of the test. In addition to that, you can also use fixtures to define the "Act" phase, which involves the actual execution of the test logic. However, this will be useful when you're writing complex tests which is beyond the scope of this tutorial.
 
-Fixtures allow you to set up test data that a test function might have in a consistent and repeatable way. This can help make tests more reliable and easier to maintain. Fixtures also help to reduce code duplication by allowing you to reuse common setup and teardown logic across multiple tests.
+Fixtures allow you to set up test data that a test function might have in a consistent and repeatable way. This can help [make](/blog/using-cmake) tests more reliable and easier to maintain. Fixtures also help to reduce code duplication by allowing you to reuse common setup and teardown logic across multiple tests.
 
 ### Advantages of PyTest Fixtures
 
@@ -43,7 +43,7 @@ There are several advantages to using PyTest fixtures. They include:
 
 4. **Improved test reliability**: By using fixtures to manage test data, you can help ensure that tests are less prone to failing due to changes in the environment or other factors.
 
-5. **Easier maintenance**: Fixtures help make tests easier to maintain by reducing code duplication and simplifying the process of modifying how tests are set up and run.
+5. **Easier maintenance**: Fixtures help [make](/blog/using-cmake) tests easier to maintain by reducing code duplication and simplifying the process of modifying how tests are set up and run.
 
 ## Setting Up a Pytest Project
 
@@ -310,7 +310,7 @@ test_notes_app.py::test_edit_note_index_error PASSED                            
 
 To reuse fixtures in multiple test files, create a `conftest.py` file and define the fixtures in it. Pytest will automatically discover and use them in your test files. However, note that the file must be named `conftest.py` for Pytest to automatically discover it.
 
-You can define fixtures in a `conftest.py` file in the root directory of your project, and they will be available to all of your tests. But you can also define additional fixtures or configuration options in `conftest.py` files in subdirectories or packages, which will be available to tests in those directories and any subdirectories or packages contained within them.
+You can define fixtures in a `conftest.py` file in the root directory of your project, and they will be available to all of your tests. But you can also define additional fixtures or configuration options in `conftest.py` files in subdirectories or [packages](/blog/setup-typescript-monorepo), which will be available to tests in those directories and any subdirectories or packages contained within them.
 
 For example, let's say you have a directory structure like this:
 
@@ -421,7 +421,7 @@ Similarly, you can set the other scopes by passing a lowercase value of their na
 
 > Note that the scope names are case-sensitive. It means `@pytest.fixture(scope="Class")` will throw an error.
 
-For the `NotesApp` application, it's important to create and destroy fixtures used to create instances of the `NotesApp` class for each test function. Otherwise, the same instance of the `NotesApp` class will be reused across all test functions. This can cause unintended test results and make it difficult to isolate individual tests.
+For the `NotesApp` application, it's important to create and destroy fixtures used to create instances of the `NotesApp` class for each test function. Otherwise, the same instance of the `NotesApp` class will be reused across all test functions. This can cause unintended test results and [make](/blog/using-cmake) it difficult to isolate individual tests.
 
 For example, if the fixture that creates an instance of the `NotesApp` class is reused across multiple test functions, it could contain notes from a previous test that could interfere with the intended behavior of the current test. To avoid this, you should define the fixtures with the `function` scope, which ensures that a new instance of the `NotesApp` class is created and destroyed for each test function.
 
