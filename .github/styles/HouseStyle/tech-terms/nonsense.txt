@@ -92,3 +92,5 @@ groot
 Truncatechars
 truncatechars
 Stringwithspaces
+
+Etsy
