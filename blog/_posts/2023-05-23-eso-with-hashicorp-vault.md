@@ -11,9 +11,9 @@ internal-links:
 
 Are you interested in learning more about Kubernetes security? While it's true that Kubernetes secrets provide a secure way to manage sensitive data in your applications, it's also wise to consider additional security measures. In my previous articles, I've covered how to get started with [Kubernetes secrets](/blog/kubernetes-secrets/) and [how to secure them effectively](/blog/securing-kubernetes-secrets/) within the cluster.
 
-How about keeping your secrets outside of the Kubernetes cluster? This provides an extra layer of security that can protect your applications in the event of a cluster breach. That's where external secret operators (ESOs) come in. By using an ESO, you can store your secrets securely outside of the Kubernetes cluster while still allowing your applications to access them. 
+How about keeping your secrets outside of the Kubernetes cluster? This provides an extra layer of security that can protect your applications in the event of a cluster breach. That's where external secret operators (ESOs) come in. By using an ESO, you can store your secrets securely outside of the Kubernetes cluster while still allowing your applications to access them.
 
-[External secret operators (ESO)](https://external-secrets.io/v0.7.2/introduction/getting-started/) is a Kubernetes operator that allows you to use secrets from centralized third-party secret management systems. This operator reads data from a third-party secret manager and automatically injects their values as Kubernetes secrets. 
+[External secret operators (ESO)](https://external-secrets.io/v0.7.2/introduction/getting-started/) is a Kubernetes operator that allows you to use secrets from centralized third-party secret management systems. This operator reads data from a third-party secret manager and automatically injects their values as Kubernetes secrets.
 
 These centralized third-party secret management systems include AWS Secrets Manager, HashiCorp Vault, and Google Secrets Manager, among others. These centralized third-party secret management systems provide a higher level of security and flexibility for managing secrets within your Kubernetes deployment compared to the native Kubernetes secret management.
 
@@ -21,7 +21,7 @@ This tutorial will teach you how to use the external secret operator with HashiC
 
 ## Prerequisites
 
-To follow along in this tutorial, you’ll need to have the following:
+To follow along in this tutorial, you'll need to have the following:
 
 - A Linux virtual machine for running your vault instance; this tutorial uses the Ubuntu 22.04 LTS distribution.
 - A Kubernetes cluster with at least two nodes. This tutorial uses [Kind](https://kind.sigs.k8s.io/docs/user/configuration/#nodes).
@@ -36,10 +36,9 @@ The ClusterSecretStore CRD is used to define the connection details to the exter
 
 The External Secret Operator watches for changes to *ExternalSecret* resources and dynamically creates Kubernetes secrets as needed, populating them with the retrieved secret data. This way, the secrets remain secure and can be rotated regularly with no disruption to the applications using them.
 
-![how eso works with vault](https://imgur.com/7Qinp9m)
+![how eso works with vault]({{site.images}}{{page.slug}}/7Qinp9m)
 
 Firstly, the ESO authenticates with Vault using a Vault token created as a secret in the Kubernetes cluster, then the *SecretStore* or *ClusterSecretStore* uses this secret to connect to the Vault server. Next, the *ExternalSecret* CRD uses either the  *SecretStore* or *ClusterSecretStore* to gain access to the actual secret from the Vault server and creates a Kubernetes secret based on the actual secret from Vault to be utilized by the resources configured in the Kubernetes cluster.
-
 
 ## Why Should You Use an External Secret Operator?
 
@@ -55,51 +54,51 @@ ESO allows you to manage secrets outside a Kubernetes cluster, while still allow
 
 You can find the manifest files and vault configuration files in this [GitHub repository](https://github.com/mercybassey/external-secrets-operator).
 
-Prior to getting started with the external secret operator, we’ll configure the vault first by installing the vault and spinning up a vault production-ready server as the vault server provides a secure and centralized location to store and manage secrets. In this server, we will create two keys **POSTGRES_USER** and **POSTGRES_PASSWORD**, stored them in a vault, which we will use later to deploy a PostgreSQL database.
+Prior to getting started with the external secret operator, we'll configure the vault first by installing the vault and spinning up a vault production-ready server as the vault server provides a secure and centralized location to store and manage secrets. In this server, we will create two keys **POSTGRES_USER** and **POSTGRES_PASSWORD**, stored them in a vault, which we will use later to deploy a PostgreSQL database.
 
-To start, retrieve and add the GPG key for the Hashicorp apt repository into your package manager. This allows your system to verify signed packages from the Hashicorp package repository:
+To start, retrieve, and add the GPG key for the Hashicorp apt repository into your package manager. This allows your system to verify signed packages from the Hashicorp package repository:
 
-```bash
+~~~
 curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
-```
+~~~
 
-![Retrieving and adding the gpg key for the Hashicorp apt repository](https://imgur.com/6ivw1Eg)
+![Retrieving and adding the gpg key for the Hashicorp apt repository]({{site.images}}{{page.slug}}/6ivw1Eg)
 
 Add the Hashicorp release repository to the apt sources list, allowing for the installation of the Hashicorp software on your machine:
 
-```bash
+~~~
 sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
-```
+~~~
 
 Install the Vault package via APT using the following command.
 
-```bash
+~~~
 sudo apt install vault
-```
+~~~
 
-![Installing hashicorp vault](https://imgur.com/GdgI1vc)
+![Installing hashicorp vault]({{site.images}}{{page.slug}}/GdgI1vc)
 
 With the Vault package installed, we can spin up a vault server /instance to use as a centralized platform for managing secrets.
 
 Confirm if vault was installed successfully with the below command:
 
-```bash
+~~~
 vault --version
-```
+~~~
 
 You should have some version outputted to you if the installation was successful:
 
-![Outputting vault version](https://imgur.com/bPU4iYh)
+![Outputting vault version]({{site.images}}{{page.slug}}/bPU4iYh)
 
 ### Spinning Up a Vault Server
 
 Since you now have vault installed, the next step is to spin up a vault server and create some secrets in it. This step is important as the vault server serves as the main component of all our vault operations (creating secrets, deleting secrets, etc)
 
-Create a `[hcl` file](https://hub.packtpub.com/what-is-hcl-hashicorp-configuration-language-how-does-it-relate-to-terraform-and-why-is-it-growing-in-popularity/) and paste in the following configuration settings, you can name this file what you want, this tutorial uses `vault-config.hcl`.
+Create a `[hcl` file](<https://hub.packtpub.com/what-is-hcl-hashicorp-configuration-language-how-does-it-relate-to-terraform-and-why-is-it-growing-in-popularity/>) and paste in the following configuration settings, you can name this file what you want, this tutorial uses `vault-config.hcl`.
 
 This configuration file will create a standalone instance of HashiCorp Vault:
 
-```bash
+~~~
 cat <<EOF >> vault-config.hcl
 listener "tcp" {
 address = "0.0.0.0:8200"
@@ -114,172 +113,171 @@ cluster_addr = "http://127.0.0.1:8201"
 api_addr = "http://127.0.0.1:8200"
 EOF
 
-```
+~~~
 
 Confirm the file was created and populated with the configuration settings by executing the command below:
 
-```bash
+~~~
 cat vault-config.hcl
-```
+~~~
 
 If you have the below output then the file exists and is populated with the configuration settings:
 
-![Confirming vault config file](https://imgur.com/UIDOt1x)
+![Confirming vault config file]({{site.images}}{{page.slug}}/UIDOt1x)
 
-Create the `vault` directory that vault will use to store the data when running in server mode with the `[raft` storage backend](https://developer.hashicorp.com/vault/docs/configuration/storage/raft): 
+Create the `vault` directory that vault will use to store the data when running in server mode with the `[raft` storage backend](<https://developer.hashicorp.com/vault/docs/configuration/storage/raft>):
 
-The command below will create this directory if it doesn’t exist.
+The command below will create this directory if it doesn't exist.
 
-```bash
+~~~
 mkdir -p vault/data
-```
+~~~
 
 Initialize the vault server using the *vault-config.hcl* file:
 
-```bash
+~~~
 vault server -config=vault-config.hcl
-```
+~~~
 
-Once the server is up, take note of the *Api address*. You’ll need this address when you want to connect to the vault server.
+Once the server is up, take note of the *Api address*. You'll need this address when you want to connect to the vault server.
 
-![Spinning up the vault server](https://imgur.com/7YT4kYb)
+![Spinning up the vault server]({{site.images}}{{page.slug}}/7YT4kYb)
 
 Open up another terminal and execute the following command, this command allows you to connect to the vault server:
 
-```bash
+~~~
 export VAULT_ADDR=http://127.0.0.1:8200
-```
+~~~
 
 Initialize the vault server with the following command:
 
-```bash
+~~~
 vault operator init
-```
+~~~
 
 This command will return five unseal keys and an initial root token once executed. Make sure to copy the unseal keys and the initial root token to where you can easily access them as they will be used to gain administrative access to the vault server. If you lose access to them, you lose administrative access to the vault server.
 
-![Initializing vault](https://imgur.com/8BbOavR)
+![Initializing vault]({{site.images}}{{page.slug}}/8BbOavR)
 
-Export the `VAULT_TOKEN` environment variable to the value of your `Initial root Token` using the following command: 
+Export the `VAULT_TOKEN` environment variable to the value of your `Initial root Token` using the following command:
 
 This will provide the root token value which will be used to perform privileged operations on the vault server.
 
-```bash
+~~~
 export VAULT_TOKEN=<INITIAL_ROOT_TOKEN_VALUE>
-```
+~~~
 
-A vault server is sealed by default when it is started, you need to unseal the Vault server so you can get access to the vault server and the data stored in it. To unseal the server, a quorum of key shares must be provided. 
+A vault server is sealed by default when it is started, you need to unseal the Vault server so you can get access to the vault server and the data stored in it. To unseal the server, a quorum of key shares must be provided.
 
 Run the command below to provide one of the key shares and unseal the server:
 
-```bash
+~~~
 vault operator unseal
-```
+~~~
 
 Be sure to repeat this step thrice with different unseal keys until you have the below output:
 
-![Unsealing vault](https://imgur.com/MCea8QX)
+![Unsealing vault]({{site.images}}{{page.slug}}/MCea8QX)
 
 Enable a key-value [secrets engine](https://developer.hashicorp.com/vault/tutorials/getting-started/getting-started-secrets-engines) secret engine at a specified path in Vault using the following command, this configures Vault to allow secrets to be stored and retrieved using a key-value (K-V) store approach:
 
 The command below will use a key-value secret engine (kv) at a specified path called *data*. You can choose to name your path whatever you like.
 
-```bash
+~~~
 vault secrets enable -path=data kv
-```
+~~~
 
-![Enabling a key-value secret engine](https://imgur.com/rhKrFES)
+![Enabling a key-value secret engine]({{site.images}}{{page.slug}}/rhKrFES)
 
 Insert a secret using the following command:
 
 This command stores a key-value pair in a data path called *postgres* in the Vault server. The values stored are **POSTGRES_USER=admin** and **POSTGRES_PASSWORD=123456**.
 
-```bash
+~~~
 vault kv put data/postgres POSTGRES_USER=admin POSTGRES_PASSWORD=123456
-```
+~~~
 
-![Inserting secret POSTGRES_USER and POSTGRES_PASSWORD](https://imgur.com/K2b1z7t)
+![Inserting secret POSTGRES_USER and POSTGRES_PASSWORD]({{site.images}}{{page.slug}}/K2b1z7t)
 
 Now run the following command to read this secret:
 
 The command retrieves the key-value pairs stored in the **`postgres`** path of the **`data`**secret engine in Hashicorp Vault.
 
-```bash
+~~~
 vault kv get data/postgres
-```
+~~~
 
-![Retrieving key-value pairs stored in the (postgres) path of the (data) secret engine](https://imgur.com/WgyQPEr)
+![Retrieving key-value pairs stored in the (postgres) path of the (data) secret engine]({{site.images}}{{page.slug}}/WgyQPEr)
 
 Define the [policy](https://developer.hashicorp.com/vault/docs/concepts/policies) rules to allow the ESO to read and retrieve secrets stored in Vault using the following command:
 
-```bash
+~~~
 vault policy write external-secret-operator-policy -<<EOF
 path "data/postgres" {
   capabilities = ["read"]
 }
 EOF
-```
+~~~
 
-![Creating policy in vault](https://imgur.com/ehPYJF5)
+![Creating policy in vault]({{site.images}}{{page.slug}}/ehPYJF5)
 
 Assign the policy to the ESO by creating an authentication token with the necessary permissions using the command below:
 
-```bash
+~~~
 vault token create -policy="external-secret-operator-policy" -n example
-```
+~~~
 
 Be sure to copy the token to somewhere you can easily access:
 
-![Assigning token to vault policy](https://imgur.com/9QCPPrA)
+![Assigning token to vault policy]({{site.images}}{{page.slug}}/9QCPPrA)
 
-## Fetching secrets from HashiCorp vault with ESO
+## Fetching Secrets from Hashicorp Vault With Eso
 
 Now that you have the Vault server up and have added some secret to it, you are now ready to use the External Secret Operator (ESO) to fetch and use that secret from your HashiCorp vault server.
 
 ### Installing the External Secret Operator via Helm
 
-To use the External Secret operator, you need to first install it in your Kubernetes cluster.  We will install it via [Helm]((https://earthly.dev/blog/helm-k8s-mngr/). You can check for other means of installation [here](https://external-secrets.io/v0.7.2/introduction/getting-started/). 
+To use the External Secret operator, you need to first install it in your Kubernetes cluster. We will install it via [Helm]((<https://earthly.dev/blog/helm-k8s-mngr/>). You can check for other means of [installation guide](https://external-secrets.io/v0.7.2/introduction/getting-started/).
 
 First, you need to add the External Secrets repository using the following command:
 
-
-```jsx
+~~~
 helm repo add external-secrets https://charts.external-secrets.io
-```
+~~~
 
-![Adding external-secrets helm repository](https://imgur.com/y5C8K0C)
+![Adding external-secrets helm repository]({{site.images}}{{page.slug}}/y5C8K0C)
 
 This command adds the *external-secrets* repository to your local Helm chart repository list, located at the URL "**[https://charts.external-secrets.io](https://charts.external-secrets.io/)**".
 
 Ensure that you have access to the latest version of the external secret operator chart using the following command:
 
-```bash
+~~~
 helm repo update
-```
+~~~
 
-![Updating external-secret operator helm chart](https://imgur.com/2HmKRzC)
+![Updating external-secret operator helm chart]({{site.images}}{{page.slug}}/2HmKRzC)
 
 Now install the External Secret Operator using the following command:
 
 This command installs the *external-secrets* package using the Helm package manager. The package is sourced from the *external-secrets* repository and the installation process creates a new namespace named *external-secrets* and sets the *installCRDs* option to *true* so the Custom Resource Definitions for External Secrets Operator are installed with it (the *ClusterSecretStore*, *SecretStore* and *ExternalSecret* CRDs).
 
-```bash
+~~~
 helm install external-secrets \
     external-secrets/external-secrets \
     -n external-secrets \
     --create-namespace \
     --set installCRDs=true
-```
+~~~
 
-![Installing external secrets operator via helm](https://imgur.com/f4mlK9n)
+![Installing external secrets operator via helm]({{site.images}}{{page.slug}}/f4mlK9n)
 
 Confirm if the external-secret chart is up and running using the following command:
 
-```bash
+~~~
 kubectl get all -n external-secrets
-```
+~~~
 
-![Verifying external-secret installation](https://imgur.com/8kilAXl)
+![Verifying external-secret installation]({{site.images}}{{page.slug}}/8kilAXl)
 
 ### Creating a Cluster Secret Store
 
@@ -289,27 +287,27 @@ Prior to creating the **`clusterSecretStore`**  resource, you need to add your v
 
 Use the following command to create this token:
 
-```bash
+~~~
 kubectl create secret generic vault-token --from-literal=token=POLICY-TOKEN
-```
+~~~
 
-![Adding vault auth as a Kubernetes secret](https://imgur.com/XUYQIED)
+![Adding vault auth as a Kubernetes secret]({{site.images}}{{page.slug}}/XUYQIED)
 
 Confirm this secret is up and running using the following `kubectl` command;
 
-```bash
+~~~
 kubectl get secrets
-```
+~~~
 
 You should have the following output:
 
-![Verifying secret (vault-token)](https://imgur.com/y6jBFay)
+![Verifying secret (vault-token)]({{site.images}}{{page.slug}}/y6jBFay)
 
 Create a file *cluster-store.yaml* and paste into it the following configuration settings; you can name this file whatever you want.
 
 This file will create a **`ClusterSecretStore`** resource in your Kubernetes cluster using Vault as the provider.
 
-```yaml
+~~~
 #  cluster-store.yaml 
 apiVersion: external-secrets.io/v1beta1
 kind: ClusterSecretStore #Kubernetes resource type
@@ -325,25 +323,25 @@ spec:
         tokenSecretRef:
           name: "vault-token" #Use a secret called vault-token
           key: "token" #Use this key to access the vault token
-```
+~~~
 
 Go ahead and apply this file to your Kubernetes cluster using the following `kubectl` command:
 
-```bash
+~~~
 kubectl apply -f cluster-store.yaml
-```
+~~~
 
-![Creating (ClusterSecretStore) resource](https://imgur.com/NeZLyaH)
+![Creating (ClusterSecretStore) resource]({{site.images}}{{page.slug}}/NeZLyaH)
 
 Confirm this resource is active by executing the following `kubectl` command:
 
-```bash
+~~~
 kubectl get clustersecretstore
-```
+~~~
 
 The below output indicates that this resource is Valid:
 
-![Verifying ClusterSecretStore resource](https://imgur.com/d2zUgE5)
+![Verifying ClusterSecretStore resource]({{site.images}}{{page.slug}}/d2zUgE5)
 
 ### Creating an External Secret
 
@@ -351,7 +349,7 @@ Now, we will fetch our Vault secrets using the *ExternalSecret* CRD. An **`Exter
 
 Create a file and add the below configuration settings - this tutorial calls the file `ex-secrets.yaml`
 
-```yaml
+~~~
 # ex-secrets.yaml 
 apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret
@@ -374,58 +372,59 @@ spec:
       remoteRef:
         key: data/postgres
         property: POSTGRES_PASSWORD
-```
+~~~
 
 This code defines a Custom Resource Definition (CRD) of type **`ExternalSecret`**
  in the cluster.
+
 - The **`ExternalSecret`** resource specifies the interval at which to refresh the target secret, the name of the **`ClusterSecretStore`** that contains the secret, the target secret to be updated and the properties in the remote secret that will be mapped to the target secret.
 - The `**target**` field specifies the name of the target Kubernetes secret that the external secret ****data will be written to and the policy for creating it if it does not already exist.
 - The **`data`** field maps the properties in the remote secret to the target secret.
 
 Create this resource by executing the below `kubectl` command:
 
-```bash
+~~~
 kubectl apply -f ex-secrets.yaml
-```
+~~~
 
-![Creating (ExternalSecret) resource in Kubernetes cluster](https://imgur.com/nmAGxSW)
+![Creating (ExternalSecret) resource in Kubernetes cluster]({{site.images}}{{page.slug}}/nmAGxSW)
 
 Confirm this resource has been successfully created by executing the following commands:
 
-```bash
+~~~
 #lists all the external secret resources that have been created in your cluster in the default namespace
 kubectl get externalsecret 
 #lists all the CRDs that comes with the ESO that you have configured in your cluster in the default namespace
 kubectl get externalsecrets
-```
+~~~
 
-![Verifying (ExternalSecret) resource and (ExternalSecretOperator) CRDs](https://imgur.com/am5F937)
+![Verifying (ExternalSecret) resource and (ExternalSecretOperator) CRDs]({{site.images}}{{page.slug}}/am5F937)
 
 Confirm the **`ExternalSecret`** resource created the `postgres-secret` and it was configured to using the command below:
 
-```bash
+~~~
 kubectl get secrets
-```
+~~~
 
 You should see the secret `postgres-secret` created as shown below:
 
-![Verifying ExternalSecret target secret (postgres-secret)](https://imgur.com/bsoHoEX)
+![Verifying ExternalSecret target secret (postgres-secret)]({{site.images}}{{page.slug}}/bsoHoEX)
 
 Confirm the keys contained in this secret using the following command:
 
-```bash
+~~~
 kubectl describe secret postgres-secret
-```
+~~~
 
-![Verifying postgres-secret data](https://imgur.com/3amr1eO)
+![Verifying postgres-secret data]({{site.images}}{{page.slug}}/3amr1eO)
 
 ## Deploying a Postgres Database for Testing
 
-Since we have used the **`ExternalSecret`** resource to create a secret in our Kubernetes cluster, let’s see if we can use this secret, by injecting it into a Pod. To confirm, we will create a PostgreSQL instance and use the `postgres-secret` as an environment variable.
+Since we have used the **`ExternalSecret`** resource to create a secret in our Kubernetes cluster, let's see if we can use this secret, by injecting it into a Pod. To confirm, we will create a PostgreSQL instance and use the `postgres-secret` as an environment variable.
 
 Create a file and paste in the below configuration settings, this tutorial calls this file *postgres.yaml*
 
-```yaml
+~~~
 # postgres.yaml
 apiVersion: v1
 kind: Pod
@@ -450,25 +449,25 @@ spec:
               key: POSTGRES_PASSWORD
       ports:
         - containerPort: 5432
-```
+~~~
 
 Create this resource and confirm if it is running using the following commands:
 
-```bash
+~~~
 kubectl apply -f postgres.yaml 
 kubectl get pods
-```
+~~~
 
-![Creating and confirming (postgres-pod) pod](https://imgur.com/GMBB9Og)
+![Creating and confirming (postgres-pod) pod]({{site.images}}{{page.slug}}/GMBB9Og)
 
 Run the following commands to see if you can utilize the `postgres-secret`created by the `ESO` to log into the `postgres-pod` container:
 
-```bash
+~~~
 kubectl exec -it postgres-pod bash
 psql --username=admin
-```
+~~~
 
-![Logging into (postgres-pod) container](https://imgur.com/o4ChG9m)
+![Logging into (postgres-pod) container]({{site.images}}{{page.slug}}/o4ChG9m)
 
 ## Using a SecretStore with the ExternalSecret Resource
 
@@ -482,32 +481,31 @@ First, delete the **`ClusterSecretStore`** resource `kubectl delete ClusterSecre
 
 Create a namespace - `example`. This is the namespace we will create the **`SecretStore`** resource in.
 
-```bash
+~~~
 kubectl create namespace example
-```
+~~~
 
-![Creating namespace (example)](https://imgur.com/gtHjcWW)
+![Creating namespace (example)]({{site.images}}{{page.slug}}/gtHjcWW)
 
 ### Creating a SecretStore Resource
 
 First, create a secret that the **`ExternalSecret`** resource will use to gain access to your secret from Vault in a namespace - `example`
 
-```bash
+~~~
 kubectl create secret generic vault-token --from-literal=token=YOUR-VAULT-POLICY-TOKEN -n example 
-```
+~~~
 
 Confirm this secret has been created, using the following command:
 
-```bash
+~~~
 kubectl get secrets -n example
-```
+~~~
 
-![Creating vault policy token as a Kubernetes secret (vault-token)](https://imgur.com/34azNj4)
-
+![Creating vault policy token as a Kubernetes secret (vault-token)]({{site.images}}{{page.slug}}/34azNj4)
 
 Create a file and paste into it the following configuration settings to create a **`SecretStore`** resource. This tutorial calls this file `ss.yaml`.
 
-```yaml
+~~~
 # ss.yaml
 apiVersion: external-secrets.io/v1beta1
 kind: SecretStore
@@ -524,21 +522,20 @@ spec:
         tokenSecretRef:
           name: "vault-token"
           key: "token"
-```
+~~~
 
 Create and confirm this resource is up and running using the below command:
 
-```bash
+~~~
 kubectl apply -f ss.yaml
 kubectl get secretstore -n example
-```
+~~~
 
-![Creating and verifying SecretStore (vault-backend)](https://imgur.com/ih8zGcw)
-
+![Creating and verifying SecretStore (vault-backend)]({{site.images}}{{page.slug}}/ih8zGcw)
 
 Now edit the **`ExternalSecret`** configuration file `ex-secrets.yaml` to use a **`SecretStore`** as the **SecretStoreRef** and configure it to be created in the `example` namespace as shown below:
 
-```yaml
+~~~
 apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret
 metadata:
@@ -561,28 +558,28 @@ spec:
       remoteRef:
         key: data/postgres
         property: POSTGRES_PASSWORD
-```
+~~~
 
 Execute the following commands to create this resource and confirm if it was created in the `example` namespace:
 
-```bash
+~~~
 kubectl apply -f ex-secrets.yaml
 kubectl get externalsecret -n example
-```
+~~~
 
-![Creating and verifying ExternalSecret resource ](https://imgur.com/8fuSfDF)
- 
+![Creating and verifying ExternalSecret resource ]({{site.images}}{{page.slug}}/8fuSfDF)
+
 Run the command to check for the secret `postgres-secret` that you expect the **`ExternalSecret`** resource to create using the command below:
 
-```bash
+~~~
 kubectl get secret -n namespace
-```
+~~~
 
-![Verifying ExternalSecret resource target secret (postgres-secret)](https://imgur.com/BogK0YT)
+![Verifying ExternalSecret resource target secret (postgres-secret)]({{site.images}}{{page.slug}}/BogK0YT)
 
 ## Conclusion
 
-I hope you understand how useful the External Secret Operator is in Kubernetes. You’ve learned how to use it with HashiCorp vault by configuring a ClusterSecretStore, SecretStore, and an ExternalSecret resource. You now know how to secure your Kubernetes secrets further. You can explore further using another key management system if you like. 
+I hope you understand how useful the External Secret Operator is in Kubernetes. You've learned how to use it with HashiCorp vault by configuring a ClusterSecretStore, SecretStore, and an ExternalSecret resource. You now know how to secure your Kubernetes secrets further. You can explore further using another key management system if you like.
 
 ## Outside Article Checklist
 
@@ -590,7 +587,6 @@ I hope you understand how useful the External Secret Operator is in Kubernetes. 
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
 - [ ] Add Earthly `CTA` at bottom `{% include_html cta/cta2.html %}`
