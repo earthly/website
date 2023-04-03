@@ -13,7 +13,7 @@ internal-links:
 ---
 
 Golang (or Go) is an open-source programming language that was developed by Google engineers. It was designed to build efficient, reliable, and robust applications, and it is a [statically compiled](https://stackoverflow.com/questions/12600296/dynamically-compiled-language-vs-statically-compiled-language) language used for building modern and scalable applications.
-Go is known for its concurrency support, which makes it easy to write programs that can perform multiple tasks simultaneously. It has a [garbage-collected runtime](https://tip.golang.org/doc/gc-guide) and a rich standard library, making it easy to develop applications without relying on external dependencies.
+Go is known for it's concurrency support, which makes it easy to write programs that can perform multiple tasks simultaneously. It has a [garbage-collected runtime](https://tip.golang.org/doc/gc-guide) and a rich standard library, making it easy to develop applications without relying on external dependencies.
 
 It has gained popularity among developers over the years for a variety of reasons. One of the main reasons is its simplicity. Go has a clean, easy-to-learn syntax, which makes it easy for new developers to pick up and start using. Additionally, it places a strong emphasis on readability, which makes it easier for teams to collaborate and maintain code.
 Go is also known for its performance. It is a compiled language, which means that it is compiled into [machine code](/blog/compiling-containers-dockerfiles-llvm-and-buildkit) that can be directly executed by the computer's processor. This makes Go programs fast and efficient, especially when compared to interpreted languages like Python or Ruby.
