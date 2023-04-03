@@ -370,7 +370,7 @@ The `set_api_key` function sets the API key in the configuration file using the 
 
 To check whether the code works, you can create a `main.py` file and add the following code:
 
-~~~{.python caption="weather.py"}
+~~~{.python caption="main.py"}
 # main.py
 
 from src.weather_update.weather import get_weather
