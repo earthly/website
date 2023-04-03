@@ -14,6 +14,7 @@ internal-links:
 
 Golang (or Go) is an open-source programming language that was developed by Google engineers. It was designed to build efficient, reliable, and robust applications, and it is a [statically compiled](https://stackoverflow.com/questions/12600296/dynamically-compiled-language-vs-statically-compiled-language) language used for building modern and scalable applications.
 Go is known for its concurrency support, which makes it easy to write programs that can perform multiple tasks simultaneously. It has a [garbage-collected runtime](https://tip.golang.org/doc/gc-guide) and a rich standard library, making it easy to develop applications without relying on external dependencies.
+
 It has gained popularity among developers over the years for a variety of reasons. One of the main reasons is its simplicity. Go has a clean, easy-to-learn syntax, which makes it easy for new developers to pick up and start using. Additionally, it places a strong emphasis on readability, which makes it easier for teams to collaborate and maintain code.
 Go is also known for its performance. It is a compiled language, which means that it is compiled into [machine code](/blog/compiling-containers-dockerfiles-llvm-and-buildkit) that can be directly executed by the computer's processor. This makes Go programs fast and efficient, especially when compared to interpreted languages like Python or Ruby.
 However, when learning [Golang](/blog/top-3-resources-to-learn-golang-in-2021), there are common mistakes made by beginners or experienced developers in understanding basic concepts.
@@ -729,21 +730,20 @@ In the code block above, we passed the `done` channel to the `infiniteLoop()` fu
 
 There is a wide range of third-party libraries available for Golang that can help developers build high-performance and feature-rich applications. These libraries provide a variety of functionality, including:
 
-- Web Development
+- **Web Development**: 
 There are several web development libraries available for Golang, such as the popular [Gin](https://github.com/gin-gonic/gin), [Fiber](https://github.com/gofiber/fiber), and [Echo](https://github.com/labstack/echo) frameworks, which provide a lightweight and fast way to build web applications.
 
-- Database Access
+- **Database Access**: 
 Golang has several libraries for interacting with various types of databases, including SQL and NoSQL databases. Popular libraries include [Gorm](https://github.com/go-gorm/gorm) for interacting with MySQL, PostgreSQL, and [SQLite](/blog/golang-sqlite), and [Mongo-Go-Driver](https://github.com/mongodb/mongo-go-driver) for interacting with MongoDB.
 
-- Logging
+- **Logging**:
 There are several libraries available for [logging](/blog/understanding-docker-logging-and-log-files) in Golang, such as [Logrus](https://github.com/sirupsen/logrus) and [Zap](https://github.com/uber-go/zap), which provide a way to log messages and trace errors in your application.
 
-- Package Management
-There are many libraries available for package management in Golang, such as the Go module, [Glide] (<https://github.com/Masterminds/glide>), and [Dep] (<https://github.com/golang/dep>), which provide a way to manage dependencies and versioning in your application.
+- **Package Management**: 
+There are many libraries available for package management in Golang, such as the Go module, [Glide](https://github.com/Masterminds/glide), and [Dep](https://github.com/golang/dep), which provide a way to manage dependencies and versioning in your application.
 
-- Command Line Interface
-Several libraries are available for building command-line interfaces in Golang, such as [Cobra] (<https://github.com/spf13/cobra>) and [Cmd] (<https://github.com/devfacet/gocmd>), which provide a way to build command-line applications.
-
+- **Command-Line Interface**: 
+Several libraries are available for building command-line interfaces in Golang, such as [Cobra](https://github.com/spf13/cobra) and [Cmd](https://github.com/devfacet/gocmd), which provide a way to build command-line applications.
 Not using third-party libraries effectively in Golang can cause problems and errors; here are some examples of common errors:
 
 ### Not Updating Third-Party Libraries
