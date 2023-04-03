@@ -494,6 +494,8 @@ Ensuring your application works as expected is not enough. To retain users, you 
 
 To learn more about other types of testing that k6 provides such as [browser testing](https://k6.io/docs/testing-guides/load-testing-websites/) or [chaos testing](https://k6.io/blog/chaos-testing-microservices-with-xk6-disruptor/), please check out the [k6 documentation](https://k6.io/docs/).
 
+{% include_html cta/cta2.html %}
+
 ## Outside Article Checklist
 
 - [ ] Add in Author page
@@ -502,4 +504,3 @@ To learn more about other types of testing that k6 provides such as [browser tes
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/cta2.html %}`
