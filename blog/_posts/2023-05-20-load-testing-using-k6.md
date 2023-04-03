@@ -22,7 +22,9 @@ With k6, you can easily scale out the expected users' requests you need and be a
 
 A load test is one form of [performance testing](/blog/continuous-testing-in-devops) implemented to ensure your application works properly under an expected number of users' requests. Let's say you have a shopping application that allows users to buy clothes. On the launching day, you expect about one thousand customers to sign up for new accounts on the app every minute. To ensure the application can handle these user requests, you must write tests that simulate one thousand users signing up to the app every minute. These tests are called load tests.
 
-![Illustration of how load test works using k6](https://i.imgur.com/L72u0mx.png)
+<div class="wide">
+![Illustration of how load test works using k6]({{site.images}}{{page.slug}}/L72u0mx.png)
+</div>
 
 ## What Is K6?
 
@@ -50,7 +52,9 @@ You will build the backend service using the FastAPI framework with Python. Fast
 
 To store the database for the backend service, you will use MySQL database.
 
-![Illustration of how blog management service works](https://i.imgur.com/ZOKAbAL.png)
+<div class="wide">
+![Illustration of how blog management service works]({{site.images}}{{page.slug}}/ZOKAbAL.png)
+</div>
 
 The steps for building the backend service will be as below:
 
@@ -124,7 +128,8 @@ To initialize a Python virtualenv in the current directory, run the following co
 python3 -m venv
 ~~~
 
-<div class="notice--info>
+<div class="notice--info">
+
 You may need to install the below additional package if you get an error message stating `ensurepip is not available`.
 
 ~~~
@@ -294,7 +299,9 @@ uvicorn main:app --host 0.0.0.0 --port 8089
 
 Your application should run on port 8089 on the local machine now.
 
-![Application is up and running on port 8089](https://i.imgur.com/f9qYS0Z.png)
+<div class="wide">
+![Application is up and running on port 8089]({{site.images}}{{page.slug}}/f9qYS0Z.png)
+</div>
 
 Let's move on to install k6 to implement the application's load tests.
 
@@ -309,7 +316,7 @@ sudo apt-get update
 sudo apt-get install k6
 ~~~
 
-<div class="notice--info>
+<div class="notice--info">
 If you encounter the error similar to the below message:
 
 ~~~
@@ -456,15 +463,17 @@ From your browser, open the URL: <http://localhost:3000> to access Grafana. By d
 
 After logging in, click on "Configurations" on the left side panel of the Grafana page, and choose "Data sources" to configure the InfluxDB data source.
 
-![Choosing Data Sources to config InfluxDB datasource](https://i.imgur.com/5NewEEO.png)
+![Choosing Data Sources to config InfluxDB datasource]({{site.images}}{{page.slug}}/5NewEEO.png)
 
 Then click on "Add data source" to add a new data source.
 
-![Add a new data source](https://i.imgur.com/kHTZ5We.png)
+<div class="wide">
+![Add a new data source]({{site.images}}{{page.slug}}/kHTZ5We.png)
+</div>
 
 Click on "InfluxDB" option and configure your InfluxDB data source as below (Ignore the password input since we do not set a password for the "getStartedK6" database so we don't need to provide a password to access the database):
 
-![Configuration for InfluxDB](https://i.imgur.com/0tl8feY.png)
+![Configuration for InfluxDB]({{site.images}}{{page.slug}}/0tl8feY.png)
 
 Click the "Save & Test" button, and you should successfully connect to the InfluxDB database.
 
@@ -474,19 +483,25 @@ To view the k6 test metrics, you can create your own Grafana dashboard and custo
 
 From your browser, navigate to [Grafana dashboard template for integrating between k6 and InfluxDB](https://grafana.com/grafana/dashboards/2587-k6-load-testing-results/) and click on "Copy ID to clipboard" to get the Grafana template ID.
 
-![Grafana template for k6 integration](https://i.imgur.com/fUSgSEL.png)
+<div class="wide">
+![Grafana template for k6 integration]({{site.images}}{{page.slug}}/fUSgSEL.png)
+</div>
 
 Then, from the Grafana homepage, click on "Create button" and choose "Import" to import the above template.
 
-![Import the Grafana template](https://i.imgur.com/YCYh3DM.png)
+![Import the Grafana template]({{site.images}}{{page.slug}}/YCYh3DM.png)
 
 Enter the Grafana template ID into the ID textbox and load, you should see the following screen:
 
-![The Grafana template is loaded](https://i.imgur.com/HwffQT5.png)
+<div class="wide">
+![The Grafana template is loaded]({{site.images}}{{page.slug}}/HwffQT5.png)
+</div>
 
 Choose the "InfluxDB" option in the k6 input box, then click "Import". You should now be able to see the load test metrics.
 
-![Metrics from the k6 test are beautifully displayed](https://i.imgur.com/Hefd9ON.png)
+<div class="wide">
+![Metrics from the k6 test are beautifully displayed]({{site.images}}{{page.slug}}/Hefd9ON.png)
+</div>
 
 Here you have the visualization metrics for the number of "Virtual Users", "Requests Per Second", "Checks Per Second" along with a graph for showing HTTP duration metrics over a range of time so that you can get an idea of what went wrong at a particular time in your test.
 
@@ -502,8 +517,5 @@ To learn more about other types of testing that k6 provides such as [browser tes
 
 ## Outside Article Checklist
 
-- [ ] Add in Author page
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
