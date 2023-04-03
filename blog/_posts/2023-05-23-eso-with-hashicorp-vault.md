@@ -6,7 +6,11 @@ toc: true
 author: Mercy Bassey
 
 internal-links:
- - just an example
+ - External Secret Operators
+ - HashiCorp Vault
+ - Kubernetes
+ - Security
+ - Secret Management
 ---
 
 Are you interested in learning more about Kubernetes security? While it's true that [Kubernetes](/blog/automate-micsvcs-in-k8s) secrets provide a secure way to manage sensitive data in your applications, it's also wise to consider additional security measures. In my previous articles, I've covered how to get started with [Kubernetes secrets](/blog/kubernetes-secrets/) and [how to secure them effectively](/blog/securing-kubernetes-secrets/) within the [cluster](/blog/kube-bench).
@@ -581,11 +585,11 @@ kubectl get secret -n namespace
 
 I hope you understand how useful the External Secret Operator is in Kubernetes. You've learned how to use it with HashiCorp vault by configuring a ClusterSecretStore, SecretStore, and an ExternalSecret resource. You now know how to secure your Kubernetes secrets further. You can explore further using another key management system if you like.
 
+{% include_html cta/cta2.html %}
+
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Add keywords for internal links to front-matter
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/cta2.html %}`
