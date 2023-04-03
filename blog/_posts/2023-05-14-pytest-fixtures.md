@@ -1,5 +1,5 @@
 ---
-title: "PyTest Fixtures"
+title: "Getting Started With PyTest Fixtures"
 categories:
   - Tutorials
 toc: true
