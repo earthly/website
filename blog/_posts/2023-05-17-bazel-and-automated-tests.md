@@ -15,18 +15,18 @@ To ensure that your code works as expected even when you ship it to production, 
 
 If you're looking to improve your automated test suite, you may want to consider [Bazel](https://bazel.build/), an open source software tool used to automate software builds and test software for large projects with multi language dependencies.
 
-In this tutorial, you'll learn how to use Bazel to improve your automated test suite. You'll create a Python project and write tests using `pytest` while using Bazel to run the test suite.
+In this tutorial, you'll learn how to use [Bazel](/blog/monorepo-with-bazel) to improve your automated test suite. You'll create a Python project and write tests using `pytest` while using Bazel to run the test suite.
 
 ## Why Bazel?
 
-When running automated tests to aid the continuous integration, continuous delivery (CI/CD) process, time is critical. The CI/CD pipeline is integral in allowing organizations to iterate quickly and increase production, and large organizations, like Google, Tesla, and Etsy, all incorporate CI/CD practices in their businesses.
+When running automated tests to aid the continuous integration, continuous delivery (CI/CD) process, time is critical. The [CI/CD](/blog/ci-vs-cd) pipeline is integral in allowing organizations to iterate quickly and increase production, and large organizations, like Google, Tesla, and Etsy, all incorporate CI/CD practices in their businesses.
 
 Bazel can help speed up the CI/CD process and build and test software quickly and reliably by utilizing several built-in features. One of Bazel's most notable features is caching. During testing, Bazel only rebuilds what's required instead of the entire project. Additionally, it caches all previously passed tests. For each test that's run, the unchanged parts are simply skipped. This helps avoid redundant testing, which saves you time and computing resources.
 In addition, Bazel uses parallel execution, which allows efficient resource usage and increases throughput by running multiple jobs at the same time. Bazel is both scalable and reliable, making your deployments smoother and faster.
 
 Bazel also allows QA testers to specify a test time-out where tests are automatically aborted or failed when they reach a specified threshold value. This enables software engineers to abort code testing in a timely manner and ensure various nonfunctional requirements are met.
 
-Bazel can work with and build code for a variety of different languages and platforms, including C++, Python, Android, and iOS. Bazel uses designated workspaces and a powerful [query language](https://bazel.build/query/language) capable of evaluating dependencies.
+Bazel can work with and build code for a variety of different languages and platforms, including [C++](/blog/g++-makefile), Python, Android, and iOS. Bazel uses designated workspaces and a powerful [query language](https://bazel.build/query/language) capable of evaluating dependencies.
 
 ## How to Use Bazel to Improve Your Automated Test Suite
 
@@ -207,7 +207,7 @@ py_test(
 Here, two rules have been used:
 
 1. The [`py_library`](https://bazel.build/reference/be/python#py_library) rule builds a Python library. The `name` argument is used to provide a name to the target. You can use this name to refer to this particular target from other `BUILD` files. The `srcs` argument lists the source files, which in this case is `prime.py`. The `visibility` argument is used to set the visibility of this target as `public` so that you can use it from the root level `BUILD` file when you write that later.
-2. The [`py_test`](https://bazel.build/reference/be/python#py_test) rule builds a unit test from `test_primes.py`. Note that the `deps` array includes the `lib_prime` target mentioned previously. This will make sure the `lib_prime` target is built *before* the `test_prime` target is built. It also tells Bazel to rebuild `test_prime` if `lib_prime` is updated, which means that tests will be rerun if `prime.py` is modified.
+2. The [`py_test`](https://bazel.build/reference/be/python#py_test) rule builds a unit test from `test_primes.py`. Note that the `deps` array includes the `lib_prime` target mentioned previously. This will [make](/blog/makefiles-on-windows) sure the `lib_prime` target is built *before* the `test_prime` target is built. It also tells Bazel to rebuild `test_prime` if `lib_prime` is updated, which means that tests will be rerun if `prime.py` is modified.
 
 You can run the tests using the `bazel test` command from the root of the project like this:
 
@@ -293,7 +293,7 @@ FAILED lib/test_prime.py::test_failing - assert False == True
 
 Remove the failing test and rerun the `bazel test` command so that all the tests pass again.
 
-Let's now tell Bazel to run tests for the main application. Again, in order to tell Bazel what to build and how to build, you need a `BUILD` file. Create a `BUILD` file in the root directory and place the following code in it:
+Let's now tell [Bazel](/blog/monorepo-with-bazel) to run tests for the main application. Again, in order to tell Bazel what to build and how to build, you need a `BUILD` file. Create a `BUILD` file in the root directory and place the following code in it:
 
 ~~~
 # BUILD
@@ -361,7 +361,7 @@ Bazel is also infinitely customizable because you can create custom rules that c
 
 In this article, you learned about Bazel, a fast and reliable tool that supports multiple languages and helps you with automated tests.
 
-Bazel is useful when you're working with different operating systems utilizing different languages, as you would only have to write the code once. Bazel enables users to create rules for rapid application testing and provides the ability to define custom rules, resulting in increased flexibility.
+[Bazel](/blog/monorepo-with-bazel) is useful when you're working with different operating systems utilizing different languages, as you would only have to write the code once. Bazel enables users to create rules for rapid application testing and provides the ability to define custom rules, resulting in increased flexibility.
 
 Another useful tool to speed up automated testing is [Earthly](https://earthly.dev/). Earthly is a simple framework that enables the creation of pipelines that can be developed locally and executed on any platform. It uses containers to run the pipelines, making them self-sufficient, repeatable, portable, and capable of running in parallel. It helps speed up builds since the cache is retained between builds.
 
@@ -373,5 +373,4 @@ Another useful tool to speed up automated testing is [Earthly](https://earthly.d
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
 - [ ] Add Earthly `CTA` at bottom `{% include_html cta/cta2.html %}`
