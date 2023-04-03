@@ -6,7 +6,10 @@ toc: true
 author: Ashutosh Krishna
 
 internal-links:
- - just an example
+ - Python
+ - Pytest
+ - Testing
+ - Fixtures
 ---
 
 In software development, testing is an essential part of the development process. Tests help to ensure that the code works as expected and help catch bugs early on. To write effective tests, it's often necessary to set up some test data before running the tests and tear down (clean up) that test data after the tests have run. This can be time-consuming and error-prone if done manually.
@@ -544,10 +547,7 @@ By mastering fixtures, developers can greatly improve their testing workflow and
 
 ## Outside Article Checklist
 
-- [ ] Add in Author page
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
