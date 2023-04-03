@@ -353,14 +353,14 @@ Open up another terminal inside the root directory of the app, then run the belo
 cat script.js
 ~~~
 
-To interact with the blog app and check the status code from the blog APIs, you need to import the k6 `http` library to create the HTTP request  and `check` function to verify the status code of the APIs.
+To interact with the blog app and check the status code from the blog APIs, you need to import the k6 `http` library to create the HTTP request and `check` function to verify the status code of the APIs.
 
 ~~~{.js caption="script.js"}
 import http from 'k6/http';
 import {check } from 'k6';
 ~~~
 
-To define the test scenario for the load test,  you need to include the scenario inside the `export const options` code block. You can define the test scenario to ramp up the virtual user count slowly, or generate all of the users at once by using different values for `duration` and `target` parameters.
+To define the test scenario for the load test, you need to include the scenario inside the `export const options` code block. You can define the test scenario to ramp up the virtual user count slowly, or generate all of the users at once by using different values for `duration` and `target` parameters.
 
 ~~~{.js caption="script.js"}
 export const options = {
