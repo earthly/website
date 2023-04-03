@@ -82,7 +82,7 @@ The complete code is stored on [this GitHub repository](https://github.com/cuong
 
 Open your terminal, run the following command to create a new directory called `Projects`, and clone the code to that directory.
 
-~~~
+~~~{.bash caption=">_"}
 mkdir ~/Projects
 cd ~/Projects
 git clone git@github.com:cuongld2/earthly-k6-load-test-service.git
@@ -91,7 +91,7 @@ cd earthly-k6-load-test-service
 
 You should have the following directories and files in your current `earthly-k6-load-test-service` folder.
 
-~~~
+~~~{ caption=""}
 ├── app_utils.py
 ├── crud.py
 ├── database.py
@@ -124,7 +124,7 @@ There are several tools for creating Python virtual environments, such as [venv]
 
 To initialize a Python virtualenv in the current directory, run the following command:
 
-~~~
+~~~{.bash caption=">_"}
 python3 -m venv
 ~~~
 
@@ -132,7 +132,7 @@ python3 -m venv
 
 You may need to install the below additional package if you get an error message stating `ensurepip is not available`.
 
-~~~
+~~~{.bash caption=">_"}
 sudo apt install python3.10-venv
 ~~~
 
@@ -140,19 +140,19 @@ sudo apt install python3.10-venv
 
 Then activate the virtual environment by running the following command:
 
-~~~
+~~~{.bash caption=">_"}
 source bin/activate
 ~~~
 
 All the dependencies are listed in `requirements.txt` file, to install the dependencies, run the command below:
 
-~~~
+~~~{.bash caption=">_"}
 pip install -r requirements.txt
 ~~~
 
 Inside the `requirements.txt` file you can see the listed dependencies as follow:
 
-~~~
+~~~{ caption="requirements.txt"}
 asgiref==3.4.1
 atomicwrites==1.4.0
 attrs==21.2.0
@@ -195,13 +195,13 @@ Now that you successfully installed all the needed dependencies, let's move on t
 
 You need to access the MySQL database as the root account to create a new database and to create a new user later on. To access the MySQL database as a root account, run the following command:
 
-~~~
+~~~{.bash caption=">_"}
 sudo mysql
 ~~~
 
 Then run the following command to create a new database called `blogFastAPI`.
 
-~~~
+~~~{.bash caption=">_"}
 
 CREATE DATABASE blogFastAPI;
 
@@ -211,19 +211,19 @@ Then create a new MySQL user. As a best practice, you should not use the root us
 
 Create a user in MySQL database:
 
-~~~
+~~~{.bash caption=">_"}
 CREATE USER 'your_user'@'localhost' IDENTIFIED BY 'your_password';
 ~~~
 
 Then add permissions for the user to modify the `blogFastAPI` database:
 
-~~~
+~~~{.bash caption=">_"}
 GRANT ALL PRIVILEGES ON blogFastAPI.* TO 'your_user'@'localhost';
 ~~~
 
 Now exit the current session in the MySQL database, then try to access the MySQL database named `blogFastAPI` using the new MySQL user.
 
-~~~
+~~~{.bash caption=">_"}
 exit
 mysql -h localhost -p blogFastAPI -u your_user
 
@@ -233,13 +233,13 @@ MySQL will ask you to provide your user password, do so, then you should success
 
 Run the following command to use the `blogFastAPI`:
 
-~~~
+~~~{.bash caption=">_"}
 use blogFastAPI
 ~~~
 
 Then create two tables `user_info` and `blog` to store the User information and Blog data for the application. To do so, run the following command:
 
-~~~
+~~~{.bash caption=">_"}
 
 CREATE TABLE blog (
   id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -263,7 +263,7 @@ You have now successfully created the database `blogFastAPI` and the user has ac
 
 Navigate back to the terminal that is currently inside the root project directory of the app. Inside the file `database.py`, you have the codes to help the blog service access the MySQL database.
 
-~~~
+~~~{.bash caption=">_"}
 
 USER = os.getenv('DB_USER')
 PASSWORD = os.getenv('DB_PASSWORD')
@@ -282,7 +282,7 @@ The value of MySQL database URL is stored in the `SQLALCHEMY_DATABASE_URL` varia
 
 Now you need to create environment variables for `DB_USER` and `DB_PASSWORD` for your app to access the [MySQL](/blog/docker-mysql) database.
 
-~~~
+~~~{.bash caption=">_"}
 export DB_USER=your_user
 export DB_PASSWORD=your_password
 ~~~
@@ -293,7 +293,7 @@ In this article, you will use the uvicorn server to bring up the backend service
 
 Executing the below command will tell uvicorn to look for the entry point of the application in the `main.py` file and bring up the service at localhost (0.0.0.0) with the port number 8089.
 
-~~~
+~~~{.bash caption=">_"}
 uvicorn main:app --host 0.0.0.0 --port 8089
 ~~~
 
@@ -309,9 +309,13 @@ Let's move on to install k6 to implement the application's load tests.
 
 You can install k6 directly to your Ubuntu machine or using Docker. Let's go with option one. Open up a new terminal and run the following commands:
 
-~~~
-sudo gpg --no-default-keyring --keyring /usr/share/keyrings/k6-archive-keyring.gpg --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C5AD17C747E3415A3642D57D77C6C491D6AC1D69
-echo "deb [signed-by=/usr/share/keyrings/k6-archive-keyring.gpg] https://dl.k6.io/deb stable main" | sudo tee /etc/apt/sources.list.d/k6.list
+~~~{.bash caption=">_"}
+sudo gpg --no-default-keyring \
+--keyring /usr/share/keyrings/k6-archive-keyring.gpg \
+--keyserver hkp://keyserver.ubuntu.com:80 --recv-keys \
+C5AD17C747E3415A3642D57D77C6C491D6AC1D69
+echo "deb [signed-by=/usr/share/keyrings/k6-archive-keyring.gpg] \
+https://dl.k6.io/deb stable main" | sudo tee /etc/apt/sources.list.d/k6.list
 sudo apt-get update
 sudo apt-get install k6
 ~~~
@@ -319,15 +323,18 @@ sudo apt-get install k6
 <div class="notice--info">
 If you encounter the error similar to the below message:
 
-~~~
-gpg: failed to create temporary file '/root/.gnupg/.#lk0x0000557727b67100.donaldle-HP-ProBook-440-G7.15824': No such file or directory
-gpg: connecting dirmngr at '/root/.gnupg/S.dirmngr' failed: No such file or directory
+~~~{.bash caption=">_"}
+gpg: failed to create temporary file\
+'/root/.gnupg/.#lk0x0000557727b67100.donaldle-HP-ProBook-440-G7.15824': \
+No such file or directory
+gpg: connecting dirmngr at '/root/.gnupg/S.dirmngr' failed: \
+No such file or directory
 gpg: keyserver receive failed: No dirmngr
 ~~~
 
 You need to login the root session and create a directory named `.gnupg` inside `root` directory.
 
-~~~
+~~~{.bash caption=">_"}
 sudo -i
 cd /root
 mkdir .gnupg
@@ -342,20 +349,20 @@ After successfully installing k6, let's move on to write the load test using k6
 
 Open up another terminal inside the root directory of the app, then run the below command to view the script for implementing load tests.
 
-~~~
+~~~{.bash caption=">_"}
 cat script.js
 ~~~
 
 To interact with the blog app and check the status code from the blog APIs, you need to import the k6 `http` library to create the HTTP request  and `check` function to verify the status code of the APIs.
 
-~~~
+~~~{.js caption="script.js"}
 import http from 'k6/http';
 import {check } from 'k6';
 ~~~
 
 To define the test scenario for the load test,  you need to include the scenario inside the `export const options` code block. You can define the test scenario to ramp up the virtual user count slowly, or generate all of the users at once by using different values for `duration` and `target` parameters.
 
-~~~
+~~~{.js caption="script.js"}
 export const options = {
 
     vus: 10,
@@ -372,8 +379,10 @@ Currently, you are setting up the load test scenario to have 10 virtual users by
 
 Moving on to the next block of code, you have the defined function inside the `export default function` code block that tells k6 what each virtual user will do in each process. First, the virtual user will need to grab the access token using the authentication API.
 
-~~~
-const responseAuthen = http.post(serviceBaseUrl+'/authenticate',JSON.stringify({
+~~~{.js caption="script.js"}
+
+const responseAuthen = http.post(serviceBaseUrl+'/authenticate',\
+JSON.stringify({
         username: "earthly",
         password: "12345"
     }),{headers: { 'Content-Type': 'application/json' }})
@@ -383,14 +392,16 @@ const authenToken = responseAuthen.json().access_token
 
 Then, the user will use that token to access the creating [blog](/blog/top-5-scala-blogs) API to create a new blog with the request body containing title, content, and the author of the new blog.
 
-~~~
+~~~{.js caption="script.js"}
+
 const authenToken = responseAuthen.json().access_token
 
 const params = {
         headers: { 'Authorization': 'Bearer ' + authenToken },
           };
     
-const responseCreateNewBlog = http.post(serviceBaseUrl+'/blog',JSON.stringify({
+const responseCreateNewBlog = http.post(serviceBaseUrl+'/blog',\
+JSON.stringify({
         title:"Blog for Earthly",
         content:"Blog for Earthly",
         author:"Donald Le"
@@ -400,7 +411,8 @@ const responseCreateNewBlog = http.post(serviceBaseUrl+'/blog',JSON.stringify({
 
 Then you will check the status code of the APIs for authenticating user credentials and creating a new blog. You expect these APIs should show successful results by verifying the status code value should equal 200.
 
-~~~
+~~~{.js caption="script.js"}
+
 check(responseAuthen, { 'status was 200': (r) => r.status == 200 });
 check(responseCreateNewBlog, { 'status was 200': (r) => r.status == 200 });
 ~~~
@@ -411,7 +423,7 @@ You just went through the code implementation for the load test. Let's move on t
 
 Before running the k6 test, you must create a user for the blog app first, to have the access token to create a new blog. Run the following command to do so:
 
-~~~
+~~~{.bash caption=">_"}
 curl --location 'http://localhost:8089/user' \
 --header 'Content-Type: application/json' \
 --data '{
@@ -423,7 +435,7 @@ curl --location 'http://localhost:8089/user' \
 
 To run the k6 test, execute the following command:
 
-~~~
+~~~{.bash caption=">_"}
 k6 run script.js
 ~~~
 
@@ -433,19 +445,19 @@ Now that the test has been successfully executed, let's move on to integrate k6 
 
 You will use InfluxDB to store the test metrics and use Grafana for visualizing the metrics. Run the following command to install InfluxDB:
 
-~~~
+~~~{.bash caption=">_"}
 sudo apt install influxdb
 ~~~
 
 To install Grafana, run the following command:
 
-~~~
+~~~{.bash caption=">_"}
 sudo snap install grafana
 ~~~
 
 Now, rerun the test execution for k6 load testing, but this time you provide an option to send the test metrics to InfluxDB database.
 
-~~~
+~~~{.bash caption=">_"}
 k6 run --out influxdb=http://localhost:8086/getStartedK6 script.js
 ~~~
 
