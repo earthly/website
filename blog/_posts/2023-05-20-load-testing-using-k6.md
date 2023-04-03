@@ -6,8 +6,12 @@ toc: true
 author: Donald Le
 
 internal-links:
- - just an example
+ - Testing
+ - Load Test
+ - k6
+ - Services
 ---
+
 When it comes to software applications, ensuring your app works as expected is not enough. Users generally expect applications to work 24/7 – with minimal downtime – and especially when there's high traffic, say, during Black Friday sales. This is why implementing a load test for your application is crucial.
 
 Tools such as Jmeter, Gatling, or Load runner help to implement load tests for application services. These tools provide great features that support load testing, like simulating user requests or collecting test runner logs to show whether the service works as expected. However, scaling many requests and monitoring the test runner efficiently using these tools is complicated. This is where a tool like **k6** can help.
@@ -503,4 +507,3 @@ To learn more about other types of testing that k6 provides such as [browser tes
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Add keywords for internal links to front-matter
