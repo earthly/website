@@ -50,6 +50,8 @@ There are several advantages to using PyTest fixtures. They include:
 
 ## Setting Up a Pytest Project
 
+![Setup]({{site.images}}{{page.slug}}/setup.png)\
+
 Before following along with the tutorial, you need to set up a virtual environment for the project and install the Pytest library.
 
 You can create a virtual environment with [venv](https://docs.python.org/3/tutorial/venv.html) as shown below:
@@ -214,6 +216,8 @@ You now have a simple note-taking application with the core logic and unit tests
 To avoid this duplication, you can use fixtures. In the next section, you'll learn how to use fixtures to simplify your test setup and improve your testing.
 
 ## Understanding Fixtures
+
+![Understand]({{site.images}}{{page.slug}}/understand.png)\
 
 PyTest fixtures are functions that provide data, objects, or resources to test functions. Fixtures are defined in test files and can be shared across test functions. Fixtures can help simplify test code and make tests more modular and reusable.
 
@@ -430,6 +434,8 @@ For example, if the fixture that creates an instance of the `NotesApp` class is 
 
 ## Advanced Usage of Fixtures
 
+![Advanced]({{site.images}}{{page.slug}}/adv.png)\
+
 Until now, you've just learned how to set up fixtures. In this section, you'll dive into some advanced use cases of fixtures. These include cleaning up test data, parameterizing fixtures, and auto-using fixtures.
 
 ### Teardown Test Data Using `yield` Fixtures
@@ -550,6 +556,4 @@ By mastering fixtures, developers can greatly improve their testing workflow and
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
+
