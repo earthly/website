@@ -12,11 +12,11 @@ When it comes to software applications, ensuring your app works as expected is n
 
 Tools such as Jmeter, Gatling, or Load runner help to implement load tests for application services. These tools provide great features that support load testing, like simulating user requests or collecting test runner logs to show whether the service works as expected. However, scaling many requests and monitoring the test runner efficiently using these tools is complicated. This is where a tool like **k6** can help.
 
-With k6, you can easily scale out the expected users' requests you need and be able to visualize the status of your load test using several reporter tools like InfluxDB, Prometheus, or Grafana. In this article, you will learn how to implement a load test for a blog management service using k6 and create a visualization report for the load test result using InfluxDB and Grafana.
+With k6, you can easily scale out the expected users' requests you need and be able to visualize the status of your load test using several reporter tools like InfluxDB, Prometheus, or Grafana. In this article, you will learn how to implement a load test for a [blog](/blog/top-5-scala-blogs) management service using k6 and create a visualization report for the load test result using InfluxDB and Grafana.
 
 ## What Is a Load Test?
 
-A load test is one form of performance testing implemented to ensure your application works properly under an expected number of users' requests. Let's say you have a shopping application that allows users to buy clothes. On the launching day, you expect about one thousand customers to sign up for new accounts on the app every minute. To ensure the application can handle these user requests, you must write tests that simulate one thousand users signing up to the app every minute. These tests are called load tests.
+A load test is one form of [performance testing](/blog/continuous-testing-in-devops) implemented to ensure your application works properly under an expected number of users' requests. Let's say you have a shopping application that allows users to buy clothes. On the launching day, you expect about one thousand customers to sign up for new accounts on the app every minute. To ensure the application can handle these user requests, you must write tests that simulate one thousand users signing up to the app every minute. These tests are called load tests.
 
 ![Illustration of how load test works using k6](https://i.imgur.com/L72u0mx.png)
 
@@ -271,7 +271,7 @@ The value of MySQL database URL is stored in the `SQLALCHEMY_DATABASE_URL` varia
 - The port number of the database, the current value is `3306`.
 - The name of the database, the current value is `blogFastAPI`.
 
-Now you need to create environment variables for `DB_USER` and `DB_PASSWORD` for your app to access the MySQL database.
+Now you need to create environment variables for `DB_USER` and `DB_PASSWORD` for your app to access the [MySQL](/blog/docker-mysql) database.
 
 ~~~
 export DB_USER=your_user
@@ -370,7 +370,7 @@ const responseAuthen = http.post(serviceBaseUrl+'/authenticate',JSON.stringify({
 const authenToken = responseAuthen.json().access_token
 ~~~
 
-Then, the user will use that token to access the creating blog API to create a new blog with the request body containing title, content, and the author of the new blog.
+Then, the user will use that token to access the creating [blog](/blog/top-5-scala-blogs) API to create a new blog with the request body containing title, content, and the author of the new blog.
 
 ~~~
 const authenToken = responseAuthen.json().access_token
@@ -466,7 +466,7 @@ Click the "Save & Test" button, and you should successfully connect to the Influ
 
 #### Create a Grafana Dashboard
 
-To view the k6 test metrics, you can create your own Grafana dashboard and customize your desired metrics. Check out this [Grafana documentation](https://grafana.com/docs/grafana/latest/getting-started/build-first-dashboard/) for details on configuring the Grafana dashboard. To make the integration amongst k6, InfluxDB, and Grafana smoother, k6 has already provided the k6-InfluxDB-Grafana template for you.
+To view the k6 test metrics, you can create your own Grafana dashboard and customize your desired [metrics](/blog/incident-management-metrics). Check out this [Grafana documentation](https://grafana.com/docs/grafana/latest/getting-started/build-first-dashboard/) for details on configuring the Grafana dashboard. To make the integration amongst k6, InfluxDB, and Grafana smoother, k6 has already provided the k6-InfluxDB-Grafana template for you.
 
 From your browser, navigate to [Grafana dashboard template for integrating between k6 and InfluxDB](https://grafana.com/grafana/dashboards/2587-k6-load-testing-results/) and click on "Copy ID to clipboard" to get the Grafana template ID.
 
@@ -502,5 +502,4 @@ To learn more about other types of testing that k6 provides such as [browser tes
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
 - [ ] Add Earthly `CTA` at bottom `{% include_html cta/cta2.html %}`
