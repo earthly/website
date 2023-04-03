@@ -37,7 +37,7 @@ To begin, you need to create a project in Python with automated unit tests using
 
 You need to create a project directory and enable a virtual environment:
 
-~~~
+~~~{.bash caption=">_"}
 mkdir bazel-tutorial
 cd bazel-tutorial
 python -m venv env
@@ -46,13 +46,13 @@ source env/bin/activate
 
 Then install `pytest`:
 
-~~~
+~~~{.bash caption=">_"}
 pip install pytest
 ~~~
 
 Create a directory named `lib` and create an empty `__init__.py` file in it. Then create the file `prime.py` inside `lib` and place the following code in it:
 
-~~~
+~~~{.python caption="prime.py"}
 # lib/prime.py
 
 from math import sqrt
@@ -70,7 +70,7 @@ This file defines a function called `is_prime` that checks whether a given integ
 
 Next, you need to create `lib/test_prime.py`:
 
-~~~
+~~~{.python caption="test_prime.py"}
 # lib/test_prime.py
 
 from lib.prime import is_prime
@@ -91,24 +91,24 @@ if __name__ == "__main__":
 
 Here, two unit tests are defined for the `is_prime` function. Now you can use `pytest` to run the unit tests and verify that they pass:
 
-~~~
+~~~{.bash caption=">_"}
 $ pytest lib/test_prime.py
 ~~~
 
-~~~
-=============================================== test session starts ================================================
+~~~{ caption="Ouput"}
+==================== test session starts ==================
 platform linux -- Python 3.10.8, pytest-7.2.1, pluggy-1.0.0
 rootdir: /home/aniket/bazeltest
-collected 2 items                                                                                                  
+collected 2 items                           
 
-lib/test_prime.py ..                                                                                         [100%]
+lib/test_prime.py ..                                  [100%]
 
-================================================ 2 passed in 0.00s =================================================
+======================== 2 passed in 0.00s ================
 ~~~
 
 Then create a script that uses the `prime` library and write tests for that. In the root directory, create `main.py` and write the following code:
 
-~~~
+~~~{.python caption="main.py"}
 # main.py
 
 from lib.prime import is_prime
@@ -128,34 +128,35 @@ if __name__ == "__main__":
 
 This code uses the `is_prime` library function to calculate all primes between 1 and 100. Next, create `test_main.py` in the root directory:
 
-~~~
+~~~{.python caption="test_main.py"}
 # test_main.py
 
 from main import get_all_primes
 
 def test_main():
-    expected_primes = [1, 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97]
+    expected_primes = [1, 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, \
+    31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97]
     actual_primes = get_all_primes()
     assert expected_primes == actual_primes
 ~~~
 
 Now you can run `pytest` and verify that all the test cases pass:
 
-~~~
+~~~{.bash caption=">_"}
 $ pytest
 ~~~
 
 ~~~
 
-=============================================== test session starts ================================================
+======================= test session starts =====================
 platform linux -- Python 3.10.8, pytest-7.2.1, pluggy-1.0.0
 rootdir: /home/aniket/bazeltest
-collected 3 items                                                                                                  
+collected 3 items                                        
 
-test_main.py .                                                                                               [ 33%]
-lib/test_prime.py ..                                                                                         [100%]
+test_main.py .                                          [ 33%]
+lib/test_prime.py ..                                    [100%]
 
-================================================ 3 passed in 0.01s =================================================
+========================== 3 passed in 0.01s =====================
 ~~~
 
 ### Configuring Bazel
@@ -164,7 +165,7 @@ To get started with Bazel in a project, you need to declare a workspace. To do s
 
 For this particular project, you need to load the [Python rules](https://bazel.build/reference/be/python) by placing the following code in the `WORKSPACE` file:
 
-~~~
+~~~{ caption="WORKSPACE.bazel"}
 # WORKSPACE
 
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
@@ -185,7 +186,7 @@ To tell Bazel how to build, run, or test a particular code, you need to utilize 
 
 Let's start by creating a `BUILD` file in the `lib` directory with the following code:
 
-~~~
+~~~{ caption="BUILD.bazel"}
 # lib/BUILD
 
 py_library(
@@ -210,22 +211,23 @@ Here, two rules have been used:
 
 You can run the tests using the `bazel test` command from the root of the project like this:
 
-~~~
+~~~{.bash caption=">_"}
 bazel test //lib:test_prime
 ~~~
 
 You should see the following output:
 
-~~~
+~~~{ caption="Output"}
 Starting local Bazel server and connecting to it...
-INFO: Analyzed target //lib:test_prime (22 packages loaded, 271 targets configured).
+INFO: Analyzed target //lib:test_prime (22 packages loaded, \
+271 targets configured).
 INFO: Found 1 test target...
 Target //lib:test_prime up-to-date:
   bazel-bin/lib/test_prime
 INFO: Elapsed time: 1.760s, Critical Path: 0.25s
 INFO: 2 processes: 2 linux-sandbox.
 INFO: Build completed successfully, 2 total actions
-//lib:test_prime                                                         PASSED in 0.2s
+//lib:test_prime                                  PASSED in 0.2s
 
 Executed 1 out of 1 test: 1 test passes.
 INFO: Build completed successfully, 2 total actions
@@ -235,7 +237,7 @@ As you can see, all the tests pass successfully.
 
 Let's see what happens if there is a failing test. Modify `test_prime.py` and add a new test case that fails:
 
-~~~
+~~~{.python caption="test_prime.py"}
 # lib/test_prime.py
 
 def test_failing():
@@ -244,8 +246,10 @@ def test_failing():
 
 Rerun the `bazel tes //lib:test_primet` command. You should get the following output:
 
-~~~
-INFO: Analyzed target //lib:test_prime (0 packages loaded, 0 targets configured).
+~~~{ caption="Output"}
+
+INFO: Analyzed target //lib:test_prime (0 packages loaded, \
+0 targets configured).
 INFO: Found 1 test target...
 FAIL: //lib:test_prime (see /home/aniket/.cache/bazel/_bazel_aniket/ec2610a69f8eaaebf15791a22f7f56d5/execroot/__main__/bazel-out/k8-fastbuild/testlogs/lib/test_prime/test.log)
 Target //lib:test_prime up-to-date:
@@ -253,7 +257,7 @@ Target //lib:test_prime up-to-date:
 INFO: Elapsed time: 0.305s, Critical Path: 0.25s
 INFO: 2 processes: 2 linux-sandbox.
 INFO: Build completed, 1 test FAILED, 2 total actions
-//lib:test_prime                                                         FAILED in 0.2s
+//lib:test_prime                                       FAILED in 0.2s
   /home/aniket/.cache/bazel/_bazel_aniket/ec2610a69f8eaaebf15791a22f7f56d5/execroot/__main__/bazel-out/k8-fastbuild/testlogs/lib/test_prime/test.log
 
 INFO: Build completed, 1 test FAILED, 2 total actions
@@ -261,23 +265,23 @@ INFO: Build completed, 1 test FAILED, 2 total actions
 
 As you can see, it shows that the test fails. Bazel also creates a `bazel-testlogs` directory (among three other directories) where you can find more details about the tests that were run. The log will be stored in `bazel-testlogs/<target-name>/test.log`. In this case, it's `bazel-testlogs/lib/test_prime/test.log`:
 
-~~~
+~~~{.bash caption=">_"}
 $ cat bazel-testlogs/lib/test_prime/test.log
 ~~~
 
-~~~
-exec ${PAGER:-/usr/bin/less} "$0" || exit 1
+~~~{ caption="Output}
+exec ${PAGER:-/usr/bin/less} '$0' || exit 1
 Executing tests from //lib:test_prime
------------------------------------------------------------------------------
-============================= test session starts ==============================
+---------------------------------------------------
+================== test session starts =============
 platform linux -- Python 3.10.8, pytest-7.2.1, pluggy-1.0.0
 rootdir: /home/aniket/.cache/bazel/_bazel_aniket/ec2610a69f8eaaebf15791a22f7f56d5/sandbox/linux-sandbox/3/execroot/__main__/bazel-out/k8-fastbuild/bin/lib/test_prime.runfiles/__main__
 collected 3 items
 
-lib/test_prime.py ..F                                                    [100%]
+lib/test_prime.py ..F                        [100%]
 
-=================================== FAILURES ===================================
-_________________________________ test_failing _________________________________
+================== FAILURES ======================
+___________________ test_failing _________________
 
     def test_failing():
 >       assert is_prime(57) == True
@@ -285,16 +289,16 @@ E       assert False == True
 E        +  where False = is_prime(57)
 
 lib/test_prime.py:13: AssertionError
-=========================== short test summary info ============================
+================== short test summary info ====================
 FAILED lib/test_prime.py::test_failing - assert False == True
-========================= 1 failed, 2 passed in 0.02s ==========================
+================== 1 failed, 2 passed in 0.02s =================
 ~~~
 
 Remove the failing test and rerun the `bazel test` command so that all the tests pass again.
 
 Let's now tell [Bazel](/blog/monorepo-with-bazel) to run tests for the main application. Again, in order to tell Bazel what to build and how to build, you need a `BUILD` file. Create a `BUILD` file in the root directory and place the following code in it:
 
-~~~
+~~~{ caption="BUILD.bazel"}
 # BUILD
 
 py_binary(
@@ -318,20 +322,20 @@ This `BUILD` file is similar to the `BUILD` file of the `lib` package. The only 
 
 You can now run all the tests with the following command:
 
-~~~
+~~~{.bash caption=">_"}
 bazel test //...
 ~~~
 
 You should see the following output:
 
-~~~
+~~~{ caption="Output"}
 INFO: Analyzed 4 targets (0 packages loaded, 0 targets configured).
 INFO: Found 2 targets and 2 test targets...
 INFO: Elapsed time: 0.128s, Critical Path: 0.07s
 INFO: 2 processes: 2 linux-sandbox.
 INFO: Build completed successfully, 2 total actions
-//lib:test_prime                                                (cached) PASSED in 0.2s
-//:test_main                                                             PASSED in 0.1s
+//lib:test_prime                       (cached) PASSED in 0.2s
+//:test_main                           PASSED in 0.1s
 
 Executed 1 out of 2 tests: 2 tests pass.
 INFO: Build completed successfully, 2 total actions
@@ -339,14 +343,14 @@ INFO: Build completed successfully, 2 total actions
 
 Note that both test suites were run. In addition, note the output of `//lib:test_prime`. As you can see, it says "cached." This is because Bazel caches all passed tests, and since the `prime.py` file has not changed between the last two runs, there's no need to run the tests again, so Bazel loads the result from the cache. If you run the command again, you'll see both tests are now loaded from the cache:
 
-~~~
+~~~{ caption="Output"}
 INFO: Analyzed 4 targets (0 packages loaded, 0 targets configured).
 INFO: Found 2 targets and 2 test targets...
 INFO: Elapsed time: 0.048s, Critical Path: 0.01s
 INFO: 1 process: 1 internal.
 INFO: Build completed successfully, 1 total action
-//:test_main                                                    (cached) PASSED in 0.1s
-//lib:test_prime                                                (cached) PASSED in 0.2s
+//:test_main                           (cached) PASSED in 0.1s
+//lib:test_prime                       (cached) PASSED in 0.2s
 
 Executed 0 out of 2 tests: 2 tests pass.
 INFO: Build completed successfully, 1 total action
@@ -370,6 +374,4 @@ Another useful tool to speed up automated testing is [Earthly](https://earthly.d
 
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
