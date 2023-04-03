@@ -703,9 +703,9 @@ Cool, the memory savings and attribute access times when using data classes with
 
 ## Conclusion
 
-And that's a wrap! In this second (and final part) of the data classes tutorial series, we covered the `__post_init__` method, how inheritance works in data classes, and performance gains using `__slot__`.
+And that's a wrap! In this second (and final part) of the data classes tutorial series, we covered the `__post_init__` method, how inheritance works in data classes, and performance gains using `__slots__`.
 
-So did we cover *everything* about data classes? No. But what you've learned should help you hit the ground running when you start writing functional data classes. With less boilerplate to write and promising performance gains, switching to data classes can save you hours per week.
+So did we cover *everything* about data classes? No. But what you've learned should help you hit the ground running when you start writing functional data classes. With less boilerplate code to write and promising performance gains, switching to data classes can save you hours per week.
 
 See you all soon in another tutorial. Until then, happy coding!
 
