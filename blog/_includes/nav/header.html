@@ -72,6 +72,12 @@
                     Try Earthly CI
                 </a>
             </div>
+            {% if jekyll.environment != "production" %}
+            <a href="/blog/devlist"
+            class="border-l border-r w-[80px] xl:w-[100px] text-sm xl:text-base flex items-center justify-center hover:bg-[#f1fbff]">
+            Dev List
+            </a>
+            {% endif %}
         </div>
     </nav>
 </header>
