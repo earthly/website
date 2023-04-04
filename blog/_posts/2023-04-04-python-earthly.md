@@ -9,20 +9,20 @@ funnel: 3
 ---
 <!-- markdownlint-disable MD036 -->
 
-## Welcome to Dependency Hell
+Story time.
 
-As a Python developer, I remember working on a data visualization project that involved a web application built using Flask and data visualization with Matplotlib. The project's dependencies quickly became a challenge due to the numerous libraries and packages required for both Flask and Matplotlib, as well as their compatibility with different Python versions and different operating systems.
+I remember working on a data visualization project that involved Django and gevent. Don't ask... as the project grew it's dependencies kept growing. And then others had to contribute to the project and things got messy.
 
-One specific issue I faced was managing the dependencies in a consistent manner across different environments – my local development machine, my teammates' machines, and the production environment. We often encountered the dreaded "it works on my machine" problem, where the code ran flawlessly on one system but failed on another due to subtle differences in package versions or system libraries.
+One specific issue was managing the dependencies in a consistent manner across different environments – my local development machine, my teammates' machines, and the production environment. We often encountered the dreaded "it works on my machine" problem, where the code ran flawlessly on one system but failed on another.
 
-Another pain point was dealing with non-Python dependencies, such as the libraries required by Matplotlib for rendering images. These dependencies were really the core problem because they varied across platforms, adding an extra layer of complexity to the project.
+These were almost always because of non-Python dependencies, libraries required by Matplotlib for rendering images or whatever. These dependencies varied across platforms.
 
 <div>
 {% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/0230.png --alt {{ XKCD joke about Python }} %}
 <figcaption>How I used to manage my python packages.</figcaption>
 </div>
 
-We tried to address these challenges by using virtual environments and manually managing the dependencies. However, this while this approach worked at first, it proved to be error-prone and time-consuming, as each team member had to set up and maintain their environment, and subtle differences still crept in.
+We tried to address these challenges by using virtual environments and manually managing the dependencies. And while this approach worked at first, was error-prone and time-consuming, as each team member had to set up and maintain their environment. It was easy for subtle differences to creep in.
 
 It feels like Python works great a certain scale but as the dependencies grow – as the lines of code and the team grows – things get increasingly hard.
 
@@ -40,7 +40,7 @@ Let me show you a simplified example of how I'd introduce Earthly to a python pr
 
 ### The Example Code
 
-Here is some very simplified python code:
+Here is some very simplified Python code:
 
 ~~~{.python caption="src/app.py"}
 from flask import Flask
@@ -73,7 +73,7 @@ We also have a `requirements.txt` and all the [normal python stuff](https://gith
 
 ### The EarthFile
 
-The nice thing about the Earthfile is it works with all our standard python tooling, and the way I normally install packages, I just do it inside the Earthfile.
+The nice thing about the Earthfile is it works with all our standard Python tooling, and the way I normally install packages, I just do it inside the Earthfile.
 
 First I pick my python version and working directory:
 
