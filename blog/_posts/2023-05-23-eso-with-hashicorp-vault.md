@@ -673,5 +673,4 @@ I hope you understand how useful the External Secret Operator is in Kubernetes. 
 
 ## Outside Article Checklist
 
-- [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
