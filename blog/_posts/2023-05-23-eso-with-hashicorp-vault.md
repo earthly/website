@@ -652,7 +652,7 @@ kubectl get externalsecret -n example
 ~~~
 
 <div class="wide">
-![Creating and verifying ExternalSecret resource ]({{site.images}}{{page.slug}}/8fuSfDF.png)
+![Creating and verifying ExternalSecret resource]({{site.images}}{{page.slug}}/8fuSfDF.png)
 </div>
 
 Run the command to check for the secret `postgres-secret` that you expect the **`ExternalSecret`** resource to create using the command below:
