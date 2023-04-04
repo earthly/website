@@ -12,7 +12,7 @@ internal-links:
 
 Since their introduction in Python 3.7, data classes have emerged as a popular choice for Python classes that store data. In a [previous tutorial](/blog/python-data-classes), we talked about what data classes are and some of their features, including out-of-the-box support for object comparison, type hints, and default values of fields. In this follow-up tutorial, we'll continue to explore some more features of Python data classes.
 
-Over the next few minutes, we'll take a closer look at setting default values with `default_factory`, initializing new fields from pre-existing fields with `__post_init__`, and much more. We'll also discuss the *improved* support for `__slots__` in data classes since Python 3.10.
+We'll take a closer look at setting default values with `default_factory`, initializing new fields from pre-existing fields with `__post_init__`, and much more. We'll also discuss the *improved* support for `__slots__` in data classes since Python 3.10.
 
 Let's get started!
 
