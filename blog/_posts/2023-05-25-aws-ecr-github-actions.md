@@ -14,7 +14,7 @@ internal-links:
 
 CI/CD automates the application development pipeline. It eliminates manual deployments from your initial code commit to production deployment integrations. Deploying applications using [GitHub](/blog/ci-comparison) Actions as CI/CD pipeline provides a streamlined, secure approach to managing application releases.
 
-Its practice allows teams to build, test, and deploy applications quickly and reliably. This article will help you learn how to deploy applications to AWS ECR using [GitHub actions actions](/blog/continuous-integration) workflow.
+Its practice allows teams to build, test, and deploy applications quickly and reliably. This article will help you learn how to deploy applications to AWS ECR using [GitHub actions](/blog/continuous-integration) workflow.
 
 ## The Role of CI/CD and GitHub Actions
 
