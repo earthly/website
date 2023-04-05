@@ -202,9 +202,7 @@ sudo mysql
 Then run the following command to create a new database called `blogFastAPI`.
 
 ~~~{.bash caption=">_"}
-
 CREATE DATABASE blogFastAPI;
-
 ~~~
 
 Then create a new MySQL user. As a best practice, you should not use the root user to access the database but only a user with minimum permissions.
@@ -240,7 +238,6 @@ use blogFastAPI
 Then create two tables `user_info` and `blog` to store the User information and Blog data for the application. To do so, run the following command:
 
 ~~~{.bash caption=">_"}
-
 CREATE TABLE blog (
   id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   title VARCHAR(500) NOT NULL,
@@ -264,11 +261,10 @@ You have now successfully created the database `blogFastAPI` and the user has ac
 Navigate back to the terminal that is currently inside the root project directory of the app. Inside the file `database.py`, you have the codes to help the blog service access the MySQL database.
 
 ~~~{.bash caption=">_"}
-
 USER = os.getenv('DB_USER')
 PASSWORD = os.getenv('DB_PASSWORD')
 
-SQLALCHEMY_DATABASE_URL = (f"mysql+mysqlconnector://{USER}:{PASSWORD}@localhost:3306/blogFastAPI")
+SQLALCHEMY_DATABASE_URL = (f"mysql+mysqlconnector://{USER}:{PASSWORD}[@localhost:3306/blogFastAPI")](https://github.com/localhost:3306/blogFastAPI"))
 ~~~
 
 [SQLAlchemy](https://www.sqlalchemy.org/) is a Python library which helps the application to connect to several databases, including MySQL database. For SQLAlchemy to connect to MySQL Database, you need to provide the MySQL database URL.
