@@ -49,7 +49,7 @@ To allow GitHub Actions to communicate with AWS, you'll need an [AWS IAM user ac
 
 To create an IAM user, run the following command in your terminal:
 
-~~~
+~~~{.bash caption=">_"}
 aws iam create-user --user-name your_username
 ~~~
 
@@ -57,15 +57,16 @@ Replace `your_username` with your preferred username of choice.
 
 Give the created user access to the AWS Management Console by creating a login profile:
 
-~~~
-aws iam create-login-profile --user-name your_username --password your_password
+~~~{.bash caption=">_"}
+aws iam create-login-profile --user-name your_username \
+--password your_password
 ~~~
 
 Replace`your_username` with your preferred username and `--password` with your preferred password.
 
 This user requires a user group. In this example, give the user the Admins privilege for simplicity purposes:
 
-~~~
+~~~{.bash caption=">_"}
 aws iam create-group --group-name your_group_name
 ~~~
 
@@ -73,15 +74,16 @@ Replace `your_group_name` with your preferred group name such as `Admins`.
 
 Add the above user to the group to IAM:
 
-~~~
-aws iam add-user-to-group --user-name your_username --group-name your_group_name
+~~~{.bash caption=">_"}
+aws iam add-user-to-group --user-name your_username \
+--group-name your_group_name
 ~~~
 
 Replace `your_username` with your username and `your_group_name` with the group's name.
 
 To give programmatic access to the user, you will need to create the access keys below:
 
-~~~
+~~~{.bash caption=">_"}
 aws iam create-access-key --user-name your_username
 ~~~
 
@@ -107,7 +109,7 @@ On the resulting page under the JSON tab, paste in the following rules to give f
 ![Image guide]({{site.images}}{{page.slug}}/AI7eqgV.png)\
 </div>
 
-~~~
+~~~{.json caption=""}
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -151,20 +153,19 @@ This Repository will host a simple sample [Node.js application](https://nodejs.o
 
 From your terminal, initialize a Node.js application:
 
-~~~
+~~~{.bash caption=">_"}
 npm init -y
 ~~~
 
 Install express to create a simple web server:
 
-~~~
+~~~{.bash caption=">_"}
 npm install express
 ~~~
 
 Create an `app.js` to handle the application logic:
 
-~~~
-# app.js
+~~~{.js caption="app.js"}
 const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 4000;
@@ -179,7 +180,7 @@ app.listen(PORT, () => console.log(`App listening on port ${PORT} `));
 
 Add a script for starting the application on `package.json`:
 
-~~~
+~~~{.js caption="package.json"}
 "start":"node app.js"
 ~~~
 
@@ -187,7 +188,7 @@ Add a script for starting the application on `package.json`:
 
 Docker will use this application and build an image that has the application code and dependencies. GitHub action will then ship the image to ECR. Therefore, you need the correct Docker command for building the application image. On the Node.js application folder, create a `Dockerfile` with instructions for building the Docker image as follows:
 
-~~~
+~~~{.dockerfile caption="Dockerfile"}
 FROM node:16 
 # use node 16 image
 
@@ -208,7 +209,7 @@ CMD ["node","app.js"] # cmd command
 
 Create a `.dockerignore` to ignore the `node_modules` and npm log file on Docker while building the image. This reduces the image size by instructing Docker not to copy any unnecessary files and folders:
 
-~~~
+~~~{ caption=".dockerignore"}
 # .dockerignore
 node_modules
 npm-debug.log
@@ -216,38 +217,38 @@ npm-debug.log
 
 Likewise, the code will be pushed to GitHub. Therefore create a `.gitignore` to avoid shipping `node_modules` to GitHub as such:
 
-~~~
+~~~{ caption=".dockerignore"}
 # .dockerignore
 node_modules
 ~~~
 
 Once the application is ready, it's time to use the repository you just created. First, initialize a local GitHub repository:
 
-~~~
+~~~{.bash caption=">_"}
 git init .
 ~~~
 
 Add the project files and folders to the repository:
 
-~~~
+~~~{.bash caption=">_"}
 git add .
 ~~~
 
 Then commit them using the following command:
 
-~~~
+~~~{.bash caption=">_"}
 git commit -am "fix: initial commit"
 ~~~
 
 To publish the code you're the remote repository, add the remote GitHub Repository URL you just created:
 
-~~~
+~~~{.bash caption=">_"}
 git remote add origin <remote_origin_url>
 ~~~
 
 Finally, push the code to the online GitHub Repository:
 
-~~~
+~~~{.bash caption=">_"}
 git push origin <branch_name>
 ~~~
 
@@ -291,7 +292,7 @@ The most important part is to create a workflow that will trigger builds and dep
 
 The first step is to set up when the workflow should be triggered. In this case, a change to the main branch should always automatically triggers the workflow as follows:
 
-~~~
+~~~{.yml caption="deploy.yml"}
 # deploy.yml
 name: Deploy Node.js App to ECR # name
 
@@ -315,7 +316,7 @@ The defined job `build` defines the series of steps that should be executed sequ
 
 Once the workflow has the code repository ready, you can configure AWS credentials programmatically to trigger communication with AWS as follows:
 
-~~~
+~~~{.yml caption="deploy.yml"}
 # deploy.yml
 - name: Configure AWS credentials
   uses: aws-actions/configure-aws-credentials@v1
@@ -327,7 +328,7 @@ Once the workflow has the code repository ready, you can configure AWS credentia
 
 Note that the above secrets are the keys you added to your GitHub repository secrets. Once the workflow has access to AWS, it can then log in to Amazon ECR and get ready to store the application image as follows:
 
-~~~
+~~~{.yml caption="deploy.yml"}
 # deploy.yml
 - name: Login to Amazon ECR
   id: login-ecr
@@ -336,7 +337,7 @@ Note that the above secrets are the keys you added to your GitHub repository sec
 
 The workflow has now connected all the different stages of the pipeline. It can now trigger the build and deploy the image to ECR. Below is how the GitHub workflow will build, tag, and push the Docker image to Amazon ECR:
 
-~~~
+~~~{.yml caption="deploy.yml"}
 # deploy.yml
 - name: Build, tag, and push image to Amazon ECR
   env:
@@ -360,7 +361,7 @@ To execute the above workflow, on the project's GitHub repository page, navigate
 
 Name your workflow `deploy.yml` on the input section, and add your workflow code, ensuring you follow the indentation as follows:
 
-~~~
+~~~{.yml caption="deploy.yml"}
 # deploy.yml
 name: Deploy Node js App to ECR # name
 
@@ -378,10 +379,12 @@ jobs:
 
         steps: # sequence of tasks to be executed
 
-            - name: Check out code # Check  the Dockerfile to build the docker image
+            - name: Check out code 
+            # Check the Dockerfile to build the docker image
               uses: actions/checkout@v2
             
-            - name: Configure AWS credentials # Programmatic authentication to aws
+            - name: Configure AWS credentials 
+            # Programmatic authentication to aws
               uses: aws-actions/configure-aws-credentials@v1
               with:
                     aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
@@ -392,7 +395,9 @@ jobs:
               id: login-ecr
               uses: aws-actions/amazon-ecr-login@v1
 
-            - name: Build, tag, and push image to Amazon ECR # copying the code from repo i.e. Dockerfile, versioning the docker image, and pushing it to ECR.
+            - name: Build, tag, and push image to Amazon ECR 
+            # copying the code from repo i.e. Dockerfile, versioning 
+            # the docker image, and pushing it to ECR.
               env:
                 ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
                 ECR_REPOSITORY: simple_nodejs_app
