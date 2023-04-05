@@ -160,7 +160,7 @@ And that P in Pants now has come full circle, except now it's not that the imple
 Although I should mention we do now support Java, Scala, Kotlin, Go, and several more languages in the pipeline.
 {% include quotes/end.html %}
 
-So, as Python has moved from a scripting tool to something that powers ML pipelines, microservices, and whole companies code bases, Pants is positioning itself as the tool to help make this transition easier.
+So, as Python has moved from a scripting tool to something that powers ML pipelines, microservices, and whole companies' code bases, Pants is positioning itself as the tool to help make this transition easier.
 
 {% include quotes/bazel/quote_blank.html %}
 And so rather than rely on handwriting those laborious build files Pants relies a lot on static analysis of your files. So we essentially learn the fine grain structure and dependencies of your code base. And that allows us to do things like handle cycles and all the sort of weird unpleasant, real world dependency situations [that come up].
