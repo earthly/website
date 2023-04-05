@@ -97,11 +97,15 @@ To add the policy:
 - Under IAM > Users, locate the user you created and navigate to it.
 - On the permissions tab, click on `Add Inline Policy` as follows:
 
+<div class="wide">
 ![Image guide]({{site.images}}{{page.slug}}/9PB8QEH.png)\
+</div>
 
 On the resulting page under the JSON tab, paste in the following rules to give full access to `ecr` and `cloudtrail`. This will grant us full access to container images within these services.
 
+<div class="wide">
 ![Image guide]({{site.images}}{{page.slug}}/AI7eqgV.png)\
+</div>
 
 ~~~
 {
@@ -135,7 +139,9 @@ On the resulting page under the JSON tab, paste in the following rules to give f
 
 Review the above policy and enter the name of the policy; create the policy, and it will be added to your user.
 
+<div class="wide">
 ![Image guide]({{site.images}}{{page.slug}}/hSYnLji.png)
+</div>
 
 ## Creating a GitHub Repository
 
@@ -249,25 +255,35 @@ git push origin <branch_name>
 
 You will require an [ECR](https://aws.amazon.com/ecr/) to store the image the GitHub Action will build and deploy. Navigate to your AWS Management Console, and from the dashboard section, search for [Elastic Container Registry](https://aws.amazon.com/ecr/), then click on **Create a repository**.
 
+<div class="wide">
 ![Image guide]({{site.images}}{{page.slug}}/wnC3tR4.png)\
+</div>
 
 Ensure you have selected **Private**, enter the name of the repository, and create Repository:
 
+<div class="wide">
 ![Image guide]({{site.images}}{{page.slug}}/vWGHWIK.png)\
+</div>
 
 ## Configure GitHub With AWS ECR
 
 For your workflow to work, you must configure the permissions for GitHub Actions to access ECR. From the project's GitHub repository page, click on Settings. From this page, click on **Secrets and Variables** as follows:
 
+<div class="wide">
 ![Image guide]({{site.images}}{{page.slug}}/3nvIsQm.png)\
+</div>
 
 Then click on **New Repository Secret** and add the values for `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, and `AWS_REGION` (based on your AWS account: For example, us-east-1, ap-south-1, eu-central-1, etc.) as below:
 
+<div class="wide">
 ![Image guide]({{site.images}}{{page.slug}}/t10Zyir.png)\
+</div>
 
 You should have two keys added as follows:
 
+<div class="wide">
 ![Image guide]({{site.images}}{{page.slug}}/AwaxYcD.png)\
+</div>
 
 ## Writing the Workflow YAML File
 
@@ -336,7 +352,9 @@ In the above code example, ensure you replace `simple_nodejs_app` with the name 
 
 To execute the above workflow, on the project's GitHub repository page, navigate to the **Actions** menu and **set up a workflow yourself**:
 
+<div class="wide">
 ![Image guide]({{site.images}}{{page.slug}}/7f6mg71.png)\
+</div>
 
 ### The Final Workflow
 
@@ -388,15 +406,21 @@ jobs:
 
 To deploy your workflow, you only need to hit the `Start commit` as follows:
 
+<div class="wide">
 ![Image guide]({{site.images}}{{page.slug}}/7vNrG0d.png)\
+</div>
 
 Once you have committed, a workflow should be started automatically.
 
+<div class="wide">
 ![Image guide]({{site.images}}{{page.slug}}/XBwYXnx.png)\
+</div>
 
 Go ahead and refresh your ECR repository, and your application image will be deployed as follows:
 
+<div class="wide">
 ![Image guide]({{site.images}}{{page.slug}}/jfi5YV3.png)\
+</div>
 
 ## Conclusion
 
@@ -408,5 +432,4 @@ Deploying applications to AWS ECR with a GitHub Actions CI/CD creates a reliable
 
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
+
