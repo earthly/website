@@ -380,6 +380,8 @@ You should have a good understanding of how to handle errors in your Python proj
 
 The code for this article can be found on [GitHub](https://github.com/Boadzie/error-handling-in-python)
 
+{% include_html cta/cta2.html %}
+
 ## Outside Article Checklist
 
 - [ ] Add in Author page
@@ -388,4 +390,3 @@ The code for this article can be found on [GitHub](https://github.com/Boadzie/er
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/cta2.html %}`
