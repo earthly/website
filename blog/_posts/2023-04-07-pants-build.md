@@ -97,7 +97,7 @@ Every little library, every little project was its own repo. And there was just 
 Benjy wasn't the only former Google person at Twitter.
 
 {% include quotes/bazel/quote_blank.html %}
-So at Twitter, I met John Sirois, who is now my co-founder at Toolchain, and he had the same observation I did about, wow, there's a lot of repos here and the tooling is haphazard and there isn't any uniform way of building anything at.
+So at Twitter, I met John Sirois, who is now my co-founder at Toolchain, and he had the same observation I did about, wow, there's a lot of repos here and the tooling is haphazard and there isn't any uniform way of building anything at all.
 
 And he had already started hacking on that problem using Python to generate ant XML files for Ant. And so that's where the name pants came from. It was a sort of contraction of Python ANTs because he was using Python to generate ANT builds.
 {% include quotes/end.html %}
@@ -170,7 +170,7 @@ So if you want to adopt pants, you do not need to first refactor your code base 
 
 ## The Future Is Ready-To-Wear
 
-I work on Earthly, another build tool tackling similar problems. To Benjy, though, the important thing is not that potential for competition, it's the size of the problem.
+I work on Earthly, another open-source build tool tackling similar problems. To Benjy, though, the important thing is not the potential for competition, it's the size of the problem.
 
 {% include quotes/bazel/quote.html %}
 I think an example of how much work there is to do in this space is the fact that Earthly and Pants are so different in their approaches, and yet both really fill in these needs.
