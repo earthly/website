@@ -20,6 +20,8 @@ By the end of the article, you will have a comprehensive understanding of error 
 
 ## Types of Errors in Python
 
+![Error]({{site.images}}{{page.slug}}/error.png)\
+
 In Python, errors can be broadly classified into two categories: syntax errors and runtime errors. Understanding the difference between these two types of errors is important for effective [debugging](/blog/printf-debugging) and error handling in Python programs.
 
 1. **Syntax Errors**: Syntax errors, also known as parsing errors, occur when the Python interpreter is unable to parse a line of code due to a violation of the language's syntax rules. These errors are detected during the compilation phase, which means that the program will not run until the syntax errors are resolved. Some common examples of syntax errors include incorrect indentation, missing colons, and misspelled keywords. Here is an example of a syntax error in Python:
@@ -357,6 +359,8 @@ The `assert` statements are useful for catching errors early in the development 
 
 ## Best Practices for Error Handling
 
+![Error Handling]({{site.images}}{{page.slug}}/error comp.png)\
+
 When it comes to error handling in Python, there are a few best practices that can help you write more robust and reliable code. Here are some tips to keep in mind:
 
 1. **Handle exceptions at the appropriate level of abstraction:** When handling exceptions, it's important to consider the level of abstraction at which the exception occurs. For example, If you have a function that opens a file and reads its content, it would be best to handle any errors that may occur while opening or reading the file within that function. This way, you can catch and handle the error immediately, without passing it up to a higher-level function that may not have enough context to handle the error effectively.
@@ -387,5 +391,3 @@ The code for this article can be found on [GitHub](https://github.com/Boadzie/er
 ## Outside Article Checklist
 
 - [ ] Add in Author page
-- [ ] Optional: Find ways to break up content with quotes or images
-
