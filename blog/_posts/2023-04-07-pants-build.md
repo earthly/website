@@ -170,7 +170,7 @@ So if you want to adopt pants, you do not need to first refactor your code base 
 
 ## The Future Is Ready-To-Wear
 
-I work on Earthly, another build tool tackling similar problems. To Benjy, though, the important thing is not that potential for competition, it the size of the problem.
+I work on Earthly, another build tool tackling similar problems. To Benjy, though, the important thing is not that potential for competition, it's the size of the problem.
 
 {% include quotes/bazel/quote.html %}
 I think an example of how much work there is to do in this space is the fact that Earthly and Pants are so different in their approaches, and yet both really fill in these needs.
