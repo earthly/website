@@ -6,7 +6,10 @@ toc: true
 author: Daniel
 
 internal-links:
- - just an example
+ - Python
+ - Error Handling
+ - Debugging
+ - Exceptions
 ---
 
 Error handling is a critical aspect of programming, and it involves detecting and resolving errors that occur during program execution. Python is a high-level programming language that provides built-in features and libraries for error handling, making it easier for developers to detect and handle errors in their programs. In Python, errors can occur due to dynamic typing and a lack of compile-time checks, making it even more important to properly handle exceptions.
@@ -21,7 +24,7 @@ In Python, errors can be broadly classified into two categories: syntax errors a
 
 1. **Syntax Errors**: Syntax errors, also known as parsing errors, occur when the Python interpreter is unable to parse a line of code due to a violation of the language's syntax rules. These errors are detected during the compilation phase, which means that the program will not run until the syntax errors are resolved. Some common examples of syntax errors include incorrect indentation, missing colons, and misspelled keywords. Here is an example of a syntax error in Python:
 
-      ~~~
+      ~~~{.python caption="error-handling-in-python.ipynb"}
       # incorrect indentation
       def add_numbers(x, y):
       return x + y
@@ -29,7 +32,7 @@ In Python, errors can be broadly classified into two categories: syntax errors a
 
       In the above example, the function definition is missing the required indentation, which results in a syntax error:
 
-      ~~~
+      ~~~{ caption="Output"}
       File "<ipython-input-1-7163263e7970>", line 2
           return x + y
           ^
@@ -38,7 +41,7 @@ In Python, errors can be broadly classified into two categories: syntax errors a
 
 2. **Runtime Errors:** Runtime errors, also known as exceptions, occur during the execution of a program. These errors can occur due to a variety of reasons, such as invalid input, incorrect data types, or unexpected behavior of the program. Some common examples of runtime errors in Python include [ZeroDivisionError](https://docs.python.org/3/library/exceptions.html#ZeroDivisionError), [ValueError](https://docs.python.org/3/library/exceptions.html#ValueError), and [TypeError](https://docs.python.org/3/library/exceptions.html#TypeError). Here is an example of a runtime error in Python:
 
-~~~
+~~~{.python caption="error-handling-in-python.ipynb"}
 # dividing a number by zero
 a = 10
 b = 0
@@ -49,7 +52,8 @@ This code attempts to divide the value of the variable `a` which is equal to 10 
 
 Output:
 
-~~~
+~~~{ caption="Output"}
+
 ---------------------------------------------------------------------------
 ZeroDivisionError                         Traceback (most recent call last)
 Cell In[1], line 4
@@ -68,7 +72,7 @@ Understanding the different types of errors in Python is important for effective
 
 The `try-except` block is the primary mechanism for handling exceptions in Python. It allows developers to write code that can detect and handle runtime errors, without causing the program to crash. In a `try-except` block, the code that is likely to raise an exception is placed inside the `try` block, and the code that handles the exception is placed inside the `except` block. Here's an example of a simple `try-except` block in Python:
 
-~~~
+~~~{.python caption="error-handling-in-python.ipynb"}
 try:
     a = 10
     b = 0
@@ -81,7 +85,7 @@ When this code is run, the exception handler will catch the error raised when at
 
 Output:
 
-~~~
+~~~{ caption="Output"}
 Cannot divide by zero!
 ~~~
 
@@ -91,11 +95,11 @@ The try-except block works by first executing the code inside the try block. If 
 
 Here are a few scenarios where the `try-except` blocks can be useful for handling errors in Python:
 
-1. Reading a file: When reading a file in Python, there is a possibility that the file may not exist, or the program may not have sufficient permissions to read the file. In such cases, a try-except block can be used to catch the ![`FileNotFoundError `](https://docs.python.org/3/library/exceptions.html)and [`PermissionError`](https://docs.python.org/3/library/exceptions.html) exceptions that are raised respectively for the two scenarios. A user-friendly message can then be provided to the user.
+1. Reading a file: When reading a file in Python, there is a possibility that the file may not exist, or the program may not have sufficient permissions to read the file. In such cases, a try-except block can be used to catch the [`FileNotFoundError`](https://docs.python.org/3/library/exceptions.html) and [`PermissionError`](https://docs.python.org/3/library/exceptions.html) exceptions that are raised respectively for the two scenarios. A user-friendly message can then be provided to the user.
 
       This is shown in the code below:
 
-      ~~~
+      ~~~{.python caption="error-handling-in-python.ipynb"}
       try:
           with open('example.txt') as f:
                   data = f.read()
@@ -105,13 +109,13 @@ Here are a few scenarios where the `try-except` blocks can be useful for handlin
 
       Output:
 
-      ~~~
+      ~~~{ caption="Output"}
       Error: [Errno 2] No such file or directory: 'example.txt'
       ~~~
 
 2. Handling invalid input: When a user enters invalid input, such as a non-numeric value for a number, the program will raise a `ValueError`. A try-except block can be used to catch the exception and prompt the user to enter valid input as shown below:
 
-~~~
+~~~{.python caption="error-handling-in-python.ipynb"}
 try:
     x = int(input("Enter a number: "))
 except ValueError:
@@ -126,7 +130,7 @@ In Python, specific exceptions can be handled using the try-except block. When a
 
 Here's an example of how to handle the `FileNotFoundError` and the `ValueError` exceptions:
 
-~~~
+~~~{.python caption="error-handling-in-python.ipynb"}
 try:
            with open("file.txt") as f:
            content = f.read()
@@ -139,7 +143,7 @@ except ValueError:
 
 Output:
 
-~~~
+~~~{ caption="Output"}
 File not found!
 ~~~
 
@@ -147,7 +151,7 @@ In the above example, the code in the try block attempts to read the contents of
 
 Here's another example that demonstrates how to handle multiple exceptions in a single try-except block:
 
-~~~
+~~~{.python caption="error-handling-in-python.ipynb"}
 try:
     with open("example.txt", "r") as file:
             contents = file.read()
@@ -159,8 +163,6 @@ except ValueError:
     print("Cannot convert string to integer")
 except FileNotFoundError:
     print("Cannot find the file")
-
-
 ~~~
 
 In the above example, the code in the `try` block attempts to open and read the content of a file, divide a number by an integer value that the user enters, convert a string to an integer.
@@ -169,7 +171,7 @@ If the file does not exist, the `except` block for the `FileNotFoundError` excep
 
 Output:
 
-~~~
+~~~{ caption="Output"}
 Cannot find the file
 ~~~
 
@@ -177,7 +179,7 @@ If the user enters a zero value, the `except` block for the `ZeroDivisionError` 
 
 Output:
 
-~~~
+~~~{ caption="Output"}
 Cannot divide by zero
 ~~~
 
@@ -185,7 +187,7 @@ If the user enters a string value, it results in a `ValueError` exceptions as th
 
 Output:
 
-~~~
+~~~{ caption="Output"}
 Cannot convert string to integer
 ~~~
 
@@ -195,7 +197,7 @@ By handling specific exceptions, developers can write more robust and reliable c
 
 In Python, exceptions can be raised using the [`raise`](https://docs.python.org/3/tutorial/errors.html) statement. This allows developers to manually raise an exception when a specific error condition is detected. Here's a simple example:
 
-~~~
+~~~{.python caption="error-handling-in-python.ipynb"}
 x = 10
 if x > 5:
     raise ValueError("x should be less than or equal to 5")
@@ -205,9 +207,9 @@ The code above will produce the following output:
 
 Output:
 
-~~~
----------------------------------------------------------------------------
-ValueError                                Traceback (most recent call last)
+~~~{ caption="Output"}
+----------------------------------------------------------
+ValueError              Traceback (most recent call last)
 Cell In[7], line 3
       1 x = 10
       2 if x > 5:
@@ -219,7 +221,7 @@ In the above example, the `raise` statement is used to raise a `ValueError` exce
 
 Python built-in exceptions like `ValueError`, `TypeError`, and `IndexError` can be explicitly raised using the `raise` statement. Here's an example to demonstrate this:
 
-~~~
+~~~{.python caption="error-handling-in-python.ipynb"}
 def get_element(data, index):
     if index >= len(data):
            raise IndexError("Index out of range")
@@ -230,7 +232,7 @@ In the above example, the `get_element` function raises an `IndexError` if the s
 
 Developers can also create their own custom exceptions by creating a new class that inherits from the [`Exception`](https://docs.python.org/3/tutorial/errors.html) class. Here's an example:
 
-~~~
+~~~{.python caption="error-handling-in-python.ipynb"}
 class CustomException(Exception):
     pass
 
@@ -253,7 +255,7 @@ In Python, the finally block specifies code that should execute regardless of wh
 
 Here's an example of how to use the `finally` block:
 
-~~~
+~~~{.python caption="error-handling-in-python.ipynb"}
 file = None
 try:
     file = open("file.txt")
@@ -269,7 +271,7 @@ The code above opens a file named file.txt and performs some work on it, and the
 
 The `finally` block can also be used in combination with the `try-except` block to perform more complex cleanup tasks. Here's an example:
 
-~~~
+~~~{.python caption="error-handling-in-python.ipynb"}
 import os
 
 try:
@@ -294,7 +296,7 @@ By using the `finally` block, developers can ensure that resources are properly 
 In Python, the [`assert`](https://docs.python.org/3/reference/simple_stmts.html#the-assert-statement) statements are a [debugging](/blog/printf-debugging) tool used to check for certain conditions that should always be true. If the condition is not true, an [`AssertionError`](https://docs.python.org/3/library/exceptions.html) is raised, which can help identify bugs in the code. The `assert` statement takes an expression as its argument and an optional error message.
 Here's an example of using an `assert` statement:
 
-~~~
+~~~{.python caption="error-handling-in-python.ipynb"}
 def divide(a, b):
     assert b != 0, "Cannot divide by zero!"
     return a / b
@@ -302,16 +304,16 @@ def divide(a, b):
 
 In the above example, the `divide` function takes two arguments and uses an `assert` statement to check that the second argument (`b`) is not equal to zero. If `b` is zero, the `assert` statement raises an `AssertionError` with the message `"Cannot divide by zero!"`. If the condition is true, the function returns the result of the division.
 
-~~~
+~~~{.python caption="error-handling-in-python.ipynb"}
 divide(2, 0)
 ~~~
 
 Output:
 
-~~~
+~~~{ caption="Output"}
 divide(2, 0)
----------------------------------------------------------------------------
-AssertionError                            Traceback (most recent call last)
+------------------------------------------------------------
+AssertionError             Traceback (most recent call last)
 Cell In[9], line 1
 ----> 1 divide(2, 0)
 
@@ -325,7 +327,7 @@ AssertionError: Cannot divide by zero!
 
 The `assert` statements can also be used to check the type or value of a variable. Here's an example:
 
-~~~
+~~~{.python caption="error-handling-in-python.ipynb"}
 def greet(name):
     assert isinstance(name, str), "Name must be a string!"
     print(f"Hello, {name}!")
@@ -335,9 +337,9 @@ greet(23)
 
 Output:
 
-~~~
----------------------------------------------------------------------------
-AssertionError                            Traceback (most recent call last)
+~~~{ caption="Output"}
+---------------------------------------------------------
+AssertionError          Traceback (most recent call last)
 Cell In[11], line 1
 ----> 1 greet(23)
 
