@@ -76,7 +76,7 @@ These improvements to the build system sped things up.
 I very much remember it getting a lot better very quickly every time some new [build] thing was launched.
 {% include quotes/end.html %}
 
-But they were fighting against a growing google.
+But they were fighting against a growing Google.
 
 {% include quotes/bazel/quote_blank.html %}
 Against all those gains were the added drag of just more and more and more code, and more complexity and more dependencies.
