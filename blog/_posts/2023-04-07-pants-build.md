@@ -119,7 +119,7 @@ And you can do that for a while. Right? But you can't do it forever. And that's 
 One possible solution would be to talk to Google about open-sourcing Blaze. But that had its issues.
 
 {% include quotes/bazel/quote_blank.html %}
-It was designed for Google – for a giant C++ code base that had more or less the shape of Google's. You can use it for other things, but it's hard to do. It's hard to adopt. And we didn't feel like that was even possible. The idea that we could get Googled to open source it did not seem very likely at the time.
+It was designed for Google – for a giant C++ code base that had more or less the shape of Google's. You can use it for other things, but it's hard to do. It's hard to adopt. And we didn't feel like that was even possible. The idea that we could get Google to open source it did not seem very likely at the time.
 {% include quotes/end.html %}
 
 So Benjy contacted Twitter and asked them to open-source Pants. Both companies had big Scala code-bases, and with a shared solution they could help each other out.
