@@ -9,9 +9,9 @@ internal-links:
  - just an example
 ---
 
-CI/CD automates the application development pipeline. It eliminates manual deployments from your initial code commit to production deployment integrations. Deploying applications using GitHub Actions as CI/CD pipeline provides a streamlined, secure approach to managing application releases.
+CI/CD automates the application development pipeline. It eliminates manual deployments from your initial code commit to production deployment integrations. Deploying applications using [GitHub](/blog/ci-comparison) Actions as CI/CD pipeline provides a streamlined, secure approach to managing application releases.
 
-Its practice allows teams to build, test, and deploy applications quickly and reliably. This article will help you learn how to deploy applications to AWS ECR using GitHub actions workflow.
+Its practice allows teams to build, test, and deploy applications quickly and reliably. This article will help you learn how to deploy applications to AWS ECR using [GitHub actions actions](/blog/continuous-integration) workflow.
 
 ## The Role of CI/CD and GitHub Actions
 
@@ -25,7 +25,7 @@ CI allows your teams to merge code changes into the shared repository. Each code
 
 You require a packaged application that is easily portable throughout the pipeline. Docker provides a consistent and isolated environment for building, testing, and deploying applications. It allows you to create Docker images that package an application and its dependencies into a single portable artifact. This makes it easier to trigger changes across different stages of the pipeline.
 
-To manage a Docker image, you need infrastructures allowing you to store and retrieve images while maintaining application scalability. AWS provides [ECR](https://aws.amazon.com/ecr/) as a fully managed container registry service to deploy your application using Docker.
+To manage a [Docker](/blog/rails-with-docker) image, you need infrastructures allowing you to store and retrieve images while maintaining application scalability. AWS provides [ECR](https://aws.amazon.com/ecr/) as a fully managed container registry service to deploy your application using Docker.
 
 Let's dive in and create a GitHub Actions workflow that will automate deployments to [AWS ECR](https://docs.aws.amazon.com/AmazonECR/latest/userguide/what-is-ecr.html).
 
@@ -397,7 +397,7 @@ Go ahead and refresh your ECR repository, and your application image will be dep
 
 ## Conclusion
 
-Deploying applications to AWS ECR with a GitHub Actions CI/CD creates a reliable pipeline that automates Docker builds and deployment cycles. This guide helped you learn how to deploy an application to AWS ECR using a GitHub Actions CI/CD pipeline. I hope you found the GitHub Actions workflow useful while leveraging automation to AWS resources. To further improve your [CI/CD pipelines](https://earthly.dev/blog/ci-vs-cd/), leverage other AWS services, such as [CodePipeline](https://aws.amazon.com/codedeploy/) and [CodeDeploy](https://aws.amazon.com/codepipeline/), and streamline your pipeline infrastructure.
+Deploying applications to AWS ECR with a GitHub Actions CI/CD creates a reliable pipeline that automates Docker builds and [deployment](/blog/deployment-strategies) cycles. This guide helped you learn how to deploy an application to AWS ECR using a GitHub Actions CI/CD pipeline. I hope you found the GitHub Actions workflow useful while leveraging automation to AWS resources. To further improve your [CI/CD pipelines](https://earthly.dev/blog/ci-vs-cd/), leverage other AWS services, such as [CodePipeline](https://aws.amazon.com/codedeploy/) and [CodeDeploy](https://aws.amazon.com/codepipeline/), and streamline your pipeline infrastructure.
 
 {% include_html cta/cta2.html %}
 
@@ -408,4 +408,3 @@ Deploying applications to AWS ECR with a GitHub Actions CI/CD creates a reliable
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
