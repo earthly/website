@@ -99,7 +99,7 @@ Benjy wasn't the only former Google person at Twitter.
 {% include quotes/bazel/quote_blank.html %}
 So at Twitter, I met John Sirois, who is now my co-founder at Toolchain, and he had the same observation I did about, wow, there's a lot of repos here and the tooling is haphazard and there isn't any uniform way of building anything at.
 
-And he had already started hacking on that problem using Python to generate ant XML files for Ant. And so that's where the name pants came from. It was an sort of contraction of Python ANTs because he was using Python to generate ANT builds.
+And he had already started hacking on that problem using Python to generate ant XML files for Ant. And so that's where the name pants came from. It was a sort of contraction of Python ANTs because he was using Python to generate ANT builds.
 {% include quotes/end.html %}
 
 Pants v0 – as this ANT version has come to be known – had some limitations, so Benjy started requesting features, and soon enough, he was contributing to Pants himself.
