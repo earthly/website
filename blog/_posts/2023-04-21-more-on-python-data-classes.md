@@ -238,7 +238,7 @@ We'll get to know the `first_name` and the `last_name` only *after* the `Student
 
 The `__post_init__` special method is called immediately *after* an object is instantiated. Meaning by the time `__post_init__` is called, we already know the `first_name` and the `last_name`.
 
-So we can add the `__post_init__` and set the `email` field:
+So we can add the `__post_init__` method and set the `email` field:
 
 ~~~{.python caption="main.py"}
     def __post_init__(self):
@@ -323,7 +323,7 @@ To enforce ordering among data class instances, and subsequently, sort them base
 You can add the `sort_index` field to the data class. And you should see the patterns in the `field()` function already:
 
 - Users need not initialize the `sort_index`, so set `init` to `False`.
-- You can as well exclude the field from the representation string by setting `__repr__` to `False`.
+- You can as well exclude the field from the representation string by setting `repr` to `False`.
 
 ~~~{.python caption="main.py"}
 ...
@@ -530,9 +530,9 @@ Instance variable dict:{'first_name': 'Jane', 'last_name': 'Lee', 'major': 'Comp
 
 This gives you the flexibility to add instance variables on the go. For example, you can add a `watches_anime` field to `jane` like so: `jane.watches_anime = True`.
 
-But dictionaries take up memory. This is not a problem when you have fewer attributes and don't need to create a large number of instances. But it can be impactful when you need to create a large number of instances.
+But dictionaries take up memory. This is not a problem when you have fewer attributes and don't need to create too many data class instances. **But it can be impactful when you need to create a large number of instances**.
 
-Can we do something so that this `__dict__` attribute is no longer created for instances? That way, we won't run into memory issues. Glad you asked.
+Can we do something so that this `__dict__` attribute is no longer created for data class instances? That way, we won't run into memory issues. Glad you asked.
 
 ### Enter `__slots__`
 
