@@ -99,7 +99,7 @@ Here, two unit tests are defined for the `is_prime` function. Now you can use `p
 $ pytest lib/test_prime.py
 ~~~
 
-~~~{ caption="Ouput"}
+~~~{ caption="Output"}
 ==================== test session starts ==================
 platform linux -- Python 3.10.8, pytest-7.2.1, pluggy-1.0.0
 rootdir: /home/aniket/bazeltest
@@ -150,7 +150,7 @@ Now you can run `pytest` and verify that all the test cases pass:
 $ pytest
 ~~~
 
-~~~
+~~~{ caption="Output"}
 
 ======================= test session starts =====================
 platform linux -- Python 3.10.8, pytest-7.2.1, pluggy-1.0.0
@@ -169,7 +169,7 @@ To get started with Bazel in a project, you need to declare a workspace. To do s
 
 For this particular project, you need to load the [Python rules](https://bazel.build/reference/be/python) by placing the following code in the `WORKSPACE` file:
 
-~~~{ caption="WORKSPACE.bazel"}
+~~~{ caption="WORKSPACE"}
 # WORKSPACE
 
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
@@ -275,7 +275,7 @@ As you can see, it shows that the test fails. Bazel also creates a `bazel-testlo
 $ cat bazel-testlogs/lib/test_prime/test.log
 ~~~
 
-~~~{ caption="Output}
+~~~{ caption="Output"}
 exec ${PAGER:-/usr/bin/less} '$0' || exit 1
 Executing tests from //lib:test_prime
 ---------------------------------------------------
