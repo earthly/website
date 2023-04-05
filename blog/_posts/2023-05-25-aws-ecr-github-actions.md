@@ -6,7 +6,10 @@ toc: true
 author: Rose Chege
 
 internal-links:
- - just an example
+ - CI/CD
+ - GitHub
+ - AWS
+ - Deployment
 ---
 
 CI/CD automates the application development pipeline. It eliminates manual deployments from your initial code commit to production deployment integrations. Deploying applications using [GitHub](/blog/ci-comparison) Actions as CI/CD pipeline provides a streamlined, secure approach to managing application releases.
@@ -407,4 +410,3 @@ Deploying applications to AWS ECR with a GitHub Actions CI/CD creates a reliable
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Add keywords for internal links to front-matter
