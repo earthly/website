@@ -17,7 +17,7 @@ By the end of the article, you will have a comprehensive understanding of error 
 
 ## Types of Errors in Python
 
-In Python, errors can be broadly classified into two categories: syntax errors and runtime errors. Understanding the difference between these two types of errors is important for effective debugging and error handling in Python programs.
+In Python, errors can be broadly classified into two categories: syntax errors and runtime errors. Understanding the difference between these two types of errors is important for effective [debugging](/blog/printf-debugging) and error handling in Python programs.
 
 1. **Syntax Errors**: Syntax errors, also known as parsing errors, occur when the Python interpreter is unable to parse a line of code due to a violation of the language's syntax rules. These errors are detected during the compilation phase, which means that the program will not run until the syntax errors are resolved. Some common examples of syntax errors include incorrect indentation, missing colons, and misspelled keywords. Here is an example of a syntax error in Python:
 
@@ -62,7 +62,7 @@ ZeroDivisionError: division by zero
 
 In the above example, the program attempts to divide a number by zero, which results in a `ZeroDivisionError` during the runtime of the program.
 
-Understanding the different types of errors in Python is important for effective debugging and error handling. Syntax errors can be easily detected and resolved during the compilation phase, while runtime errors require a more sophisticated error handling mechanism such as the `try-except` blocks. By learning how to handle different types of errors, developers can create robust and reliable Python programs.
+Understanding the different types of errors in Python is important for effective [debugging](/blog/printf-debugging) and error handling. Syntax errors can be easily detected and resolved during the compilation phase, while runtime errors require a more sophisticated error handling mechanism such as the `try-except` blocks. By learning how to handle different types of errors, developers can create robust and reliable Python programs.
 
 ## `try-except` Block
 
@@ -291,7 +291,7 @@ By using the `finally` block, developers can ensure that resources are properly 
 
 ## The Assert Statements
 
-In Python, the [`assert`](https://docs.python.org/3/reference/simple_stmts.html#the-assert-statement) statements are a debugging tool used to check for certain conditions that should always be true. If the condition is not true, an [`AssertionError`](https://docs.python.org/3/library/exceptions.html) is raised, which can help identify bugs in the code. The `assert` statement takes an expression as its argument and an optional error message.
+In Python, the [`assert`](https://docs.python.org/3/reference/simple_stmts.html#the-assert-statement) statements are a [debugging](/blog/printf-debugging) tool used to check for certain conditions that should always be true. If the condition is not true, an [`AssertionError`](https://docs.python.org/3/library/exceptions.html) is raised, which can help identify bugs in the code. The `assert` statement takes an expression as its argument and an optional error message.
 Here's an example of using an `assert` statement:
 
 ~~~
@@ -351,7 +351,7 @@ AssertionError: Name must be a string!
 
 In the above example, the `greet` function uses an `assert` statement to verify that the `name` argument is a string. If the argument is not a string, an `AssertionError` is raised with the message `"Name must be a string!"`. If the argument is a string, the function prints a greeting message.
 
-The `assert` statements are useful for catching errors early in the development process and can help developers identify and fix bugs quickly. However, they should not be used as a replacement for proper error handling, as they are intended for debugging purposes only. It's also important to note that `assert` statements can be disabled globally using the [`-O` (optimize) command line option](https://docs.python.org/3/using/cmdline.html#cmdoption-O) or the [`PYTHONOPTIMIZE`](https://docs.python.org/3/using/cmdline.html#envvar-PYTHONOPTIMIZE) environment variable, so they should not be used for security checks or other critical conditions.
+The `assert` statements are useful for catching errors early in the development process and can help developers identify and fix bugs quickly. However, they should not be used as a replacement for proper error handling, as they are intended for [debugging](/blog/printf-debugging) purposes only. It's also important to note that `assert` statements can be disabled globally using the [`-O` (optimize) command line option](https://docs.python.org/3/using/cmdline.html#cmdoption-O) or the [`PYTHONOPTIMIZE`](https://docs.python.org/3/using/cmdline.html#envvar-PYTHONOPTIMIZE) environment variable, so they should not be used for security checks or other critical conditions.
 
 ## Best Practices for Error Handling
 
@@ -367,7 +367,7 @@ When it comes to error handling in Python, there are a few best practices that c
 
 5. **Document error handling:** It's important to document your error handling code so that other developers (and your future self) can understand how errors are handled and why. This includes documenting the types of errors that can be raised, how they are handled, and any relevant context or details.
 
-6. **Use logging to track errors:** Logging is a useful tool for tracking errors in your code. You can use the built-in Python [`logging` module](https://docs.python.org/3/library/logging.html) to log error messages and other information, which can help you debug issues and monitor the performance of your code.
+6. **Use logging to track errors:** [Logging](/blog/understanding-docker-logging-and-log-files) is a useful tool for tracking errors in your code. You can use the built-in Python [`logging` module](https://docs.python.org/3/library/logging.html) to log error messages and other information, which can help you debug issues and monitor the performance of your code.
 
 7. **Avoid bare `except` clauses:** In general, it's best to avoid using bare `except` clauses (which catch all exceptions) as they can make it harder to debug issues in your code. Instead, use specific exception types or catch exceptions at the appropriate level of abstraction.
 By following these best practices, you can write more reliable, maintainable, and robust code that is easier to debug and understand.
@@ -388,5 +388,4 @@ The code for this article can be found on [GitHub](https://github.com/Boadzie/er
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
 - [ ] Add Earthly `CTA` at bottom `{% include_html cta/cta2.html %}`
