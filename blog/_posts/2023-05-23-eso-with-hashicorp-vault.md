@@ -41,7 +41,7 @@ The ClusterSecretStore CRD is used to define the connection details to the exter
 The External Secret Operator watches for changes to *ExternalSecret* resources and dynamically creates Kubernetes secrets as needed, populating them with the retrieved secret data. This way, the secrets remain secure and can be rotated regularly with no disruption to the applications using them.
 
 <div class="wide">
-![how eso works with vault]({{site.images}}{{page.slug}}/7Qinp9m.png)
+![How ESO Works with Vault]({{site.images}}{{page.slug}}/7Qinp9m.png)
 </div>
 
 Firstly, the ESO authenticates with Vault using a Vault token created as a secret in the Kubernetes cluster, then the *SecretStore* or *ClusterSecretStore* uses this secret to connect to the Vault server. Next, the *ExternalSecret* CRD uses either the  *SecretStore* or *ClusterSecretStore* to gain access to the actual secret from the Vault server and creates a Kubernetes secret based on the actual secret from Vault to be utilized by the resources configured in the Kubernetes cluster.
@@ -107,7 +107,7 @@ You should have some version outputted to you if the installation was successful
 
 Since you now have vault installed, the next step is to spin up a vault server and create some secrets in it. This step is important as the vault server serves as the main component of all our vault operations (creating secrets, deleting secrets, etc)
 
-Create a `[hcl` file](<https://hub.packtpub.com/what-is-hcl-hashicorp-configuration-language-how-does-it-relate-to-terraform-and-why-is-it-growing-in-popularity/>) and paste in the following configuration settings, you can name this file what you want, this tutorial uses `vault-config.hcl`.
+Create a [`hcl` file](https://hub.packtpub.com/what-is-hcl-hashicorp-configuration-language-how-does-it-relate-to-terraform-and-why-is-it-growing-in-popularity/) and paste in the following configuration settings, you can name this file what you want, this tutorial uses `vault-config.hcl`.
 
 This configuration file will create a standalone instance of HashiCorp Vault:
 
@@ -140,7 +140,7 @@ If you have the below output then the file exists and is populated with the conf
 ![Confirming vault config file]({{site.images}}{{page.slug}}/UIDOt1x.png)
 </div>
 
-Create the `vault` directory that vault will use to store the data when running in server mode with the `[raft` storage backend](<https://developer.hashicorp.com/vault/docs/configuration/storage/raft>):
+Create the `vault` directory that vault will use to store the data when running in server mode with the [`raft` storage backend](https://developer.hashicorp.com/vault/docs/configuration/storage/raft):
 
 The command below will create this directory if it doesn't exist.
 
@@ -270,7 +270,7 @@ Now that you have the Vault server up and have added some secret to it, you are 
 
 ### Installing the External Secret Operator via Helm
 
-To use the External Secret operator, you need to first install it in your Kubernetes cluster. We will install it via [Helm]((<https://earthly.dev/blog/helm-k8s-mngr/>). You can check for other means of [installation guide](https://external-secrets.io/v0.7.2/introduction/getting-started/).
+To use the External Secret operator, you need to first install it in your Kubernetes cluster. We will install it via [Helm](https://earthly.dev/blog/helm-k8s-mngr/). You can check for other means of [installation guide](https://external-secrets.io/v0.7.2/introduction/getting-started/).
 
 First, you need to add the External Secrets repository using the following command:
 
@@ -297,8 +297,6 @@ helm repo update
 
 Now install the External Secret Operator using the following command:
 
-This command installs the *external-secrets* package using the Helm package manager. The package is sourced from the *external-secrets* repository and the installation process creates a new namespace named *external-secrets* and sets the *installCRDs* option to *true* so the Custom Resource Definitions for External Secrets Operator are installed with it (the *ClusterSecretStore*, *SecretStore* and *ExternalSecret* CRDs).
-
 ~~~{.bash caption=">_"}
 helm install external-secrets \
     external-secrets/external-secrets \
@@ -306,6 +304,8 @@ helm install external-secrets \
     --create-namespace \
     --set installCRDs=true
 ~~~
+
+This command installs the *external-secrets* package using the Helm package manager. The package is sourced from the *external-secrets* repository and the installation process creates a new namespace named *external-secrets* and sets the *installCRDs* option to *true* so the Custom Resource Definitions for External Secrets Operator are installed with it (the *ClusterSecretStore*, *SecretStore* and *ExternalSecret* CRDs).
 
 <div class="wide">
 ![Installing external secrets operator via helm]({{site.images}}{{page.slug}}/f4mlK9n.png)
@@ -440,7 +440,7 @@ This code defines a Custom Resource Definition (CRD) of type **`ExternalSecret`*
  in the cluster.
 
 - The **`ExternalSecret`** resource specifies the interval at which to refresh the target secret, the name of the **`ClusterSecretStore`** that contains the secret, the target secret to be updated and the properties in the remote secret that will be mapped to the target secret.
-- The `**target**` field specifies the name of the target Kubernetes secret that the external secret ****data will be written to and the policy for creating it if it does not already exist.
+- The **`target`** field specifies the name of the target Kubernetes secret that the external secret data will be written to and the policy for creating it if it does not already exist.
 - The **`data`** field maps the properties in the remote secret to the target secret.
 
 Create this resource by executing the below `kubectl` command:
