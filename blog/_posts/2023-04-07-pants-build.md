@@ -11,7 +11,7 @@ internal-links:
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/mEx8NWm4830" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-[Pants](https://www.pantsbuild.org/), the build system has a complex and multifaceted history. I reached out to Benjy Weinberger to get the whole story. 
+[Pants](https://www.pantsbuild.org/), the build system has a complex and multifaceted history. I reached out to Benjy Weinberger to get the whole story.
 
 _The full interview is embedded above, but here is an article summarizing the talk for those in a rush:_
 
@@ -25,7 +25,8 @@ and there was just a perception that this was almost part of the mystique of sof
 
 Compiling then was something that you did, and then you went and grabbed a coffee. But then Benjy moved to Google.
 
-## Off-The-Rack: MakeFiles at Google
+<!-- vale HouseStyle.H2 = NO -->
+## Off-the-Rack: Makefiles At Google
 
 Google at that time, in the early 2000s, had a lot of C++ code in a large perforce repository. And you would compile locally by running the large makefile that built the entire solution.
 
@@ -45,7 +46,7 @@ Sometimes – as software engineers – we are too busy and forget about the pow
 Unlike I think pretty much all other professionals that don't have it within their power to create their own tools – if you work in sales and you want better sales tools, you have to find a software engineer to do it for you – but we are software engineers and the tools that we use are themselves made out of software. So we have it in our power to fix them.
 {% include quotes/end.html %}
 
-Other large tech organizations solve this problem with a polyrepo setup. If each product, service or library lives in its own repository then builds may be faster ( though other problems can arise.) For Google, splitting that solution was worse than the problem, and so ways to build faster were needed.
+Other large tech organizations solve this problem with a polyrepo setup. If each product, service, or library lives in its own repository then builds may be faster ( though other problems can arise.) For Google, splitting that solution was worse than the problem, and so ways to build faster were needed.
 
 ### Hemming Make
 
@@ -58,7 +59,7 @@ Every time you want to do some operation. We should only be looking at the relev
 To do that, you could explicitly list the full transitive dependencies of each submodule. Then, if you knew the complete set of files you needed for working in an area, perhaps you could just check out those.
 
 {% include quotes/bazel/quote_blank.html %}
-Perforce – unlike git – allows you to check out only parts of the code base [you need]. So it's a very, very different model than what maybe many people are familiar with with Git.
+Perforce – unlike git – allows you to check out only parts of the code base [you need]. So it's a very, very different model than what maybe many people are familiar with, with Git.
 {% include quotes/end.html %}
 
 And then, what if the dependencies you weren't changing could be referenced differently?
@@ -85,7 +86,7 @@ So this system, internally called Blaze, kept improving and kept growing. And th
 
 ## Bespoke for Twitter: Pants V0
 
-At Twitter, Scala and a polyrepo approach to code was the common pattern.
+At Twitter, Scala – and a polyrepo approach to code – was the common pattern.
 
 {% include quotes/bazel/quote.html %}
 [There were] many, many more repos than there were engineers on the team.
@@ -110,7 +111,7 @@ Pants was a success, and then eventually, Benjy moved on from Twitter.
 {% include quotes/bazel/quote.html %}
 [I] went to work at Foursquare, I quickly noticed that Foursquare had the exact same problem.
 
-They had this big Scala code base and it wasn't scaling. The solution at the time – and I am not joking – was to give all of the engineers a stick of ram a a screwdriver and to say just upgrade your laptops.
+They had this big Scala code base and it wasn't scaling. The solution at the time – and I am not joking – was to give all of the engineers a stick of ram, a screwdriver, and to say just upgrade your laptops.
 
 And you can do that for a while. Right? But you can't do it forever. And that's when I realized I think I have a solution here.
 {% include quotes/end.html %}
@@ -143,12 +144,12 @@ Pants v0 and V1 were written in Python, but the build tooling for the build tool
 I love working in Python. Just the Python ecosystem did not have any tooling that was really designed for big, scalable repos. Everything was sort of implicitly and sometimes explicitly assumes that your Python code base is small and produces one thing. I want a monorepo and I want to be able to have tooling to be really effective in that space.
 {% include quotes/end.html %}
 
-## Custom-tailored for Python: Pants V2
+## Custom-Tailored for Python: Pants V2
 
 So Benjy and John Sirois start trying to take a crack at this problem of Python Monorepos.
 
 {% include quotes/bazel/quote.html %}
-We've essentially, in 2018 to 2020, rebuilt pretty much [all of Pants] from scratch and named it Pants V2,  because we're pretty bad at naming things.
+We've essentially, in 2018 to 2020, rebuilt pretty much [all of Pants] from scratch and named it Pants V2, because we're pretty bad at naming things.
 {% include quotes/end.html %}
 
 So Pants originally was written in Python, but the rewrite used Rust.
@@ -156,10 +157,10 @@ So Pants originally was written in Python, but the rewrite used Rust.
 {% include quotes/bazel/quote_blank.html %}
 And that P in Pants now has come full circle, except now it's not that the implementation is Python. It's that the language we're targeting is Python.
 
-Although I should mention we do now support Java, Scala, Kotlin, Go and several more languages in the pipeline.
+Although I should mention we do now support Java, Scala, Kotlin, Go, and several more languages in the pipeline.
 {% include quotes/end.html %}
 
-So, as Python has moved from a scripting tool to something that powers ML pipelines, microservices and whole companies code bases, Pants is positioning itself as the tool to help make this transition easier.
+So, as Python has moved from a scripting tool to something that powers ML pipelines, microservices, and whole companies code bases, Pants is positioning itself as the tool to help make this transition easier.
 
 {% include quotes/bazel/quote_blank.html %}
 And so rather than rely on handwriting those laborious build files Pants relies a lot on static analysis of your files. So we essentially learn the fine grain structure and dependencies of your code base. And that allows us to do things like handle cycles and all the sort of weird unpleasant, real world dependency situations [that come up].
@@ -167,7 +168,7 @@ And so rather than rely on handwriting those laborious build files Pants relies 
 So if you want to adopt pants, you do not need to first refactor your code base or write 10,000 lines of build files. You can just kind of set it up and run with it.
 {% include quotes/end.html %}
 
-## The Future is Ready-to-Wear
+## The Future Is Ready-To-Wear
 
 I work on Earthly, another build tool tackling similar problems. To Benjy, though, the important thing is not that potential for competition, it the size of the problem.
 
@@ -178,7 +179,7 @@ There's so much open space here to fill with good technology that two systems wi
 
 And so it's not like, oh, this is just a little bit of a gap here and it's very obvious what the architecture is that will solve this and so someone should just build that and then we'll be done.
 
-No, this is a big wide open field where Pants and Earthly and others are still pathfinding in this space and there's room for a hell of a lot of innovation.
+No, this is a big wide open field where Pants and Earthly and others are still path-finding in this space and there's room for a hell of a lot of innovation.
 {% include quotes/end.html %}
 
 That was the interview. Thank you so much Benjy Weinberger.
