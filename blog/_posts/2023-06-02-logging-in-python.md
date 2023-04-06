@@ -6,7 +6,10 @@ toc: true
 author: Ashutosh Krishna
 
 internal-links:
- - just an example
+ - Pyhton
+ - Logging
+ - Guide
+ - Logs
 ---
 
 Logging is an essential part of software development, serving as a means to track and analyze events that occur within an application. By recording and storing these events, developers can gain valuable insight into the behavior of their code, identify, and diagnose issues, and optimize application performance. Effective logging is crucial for creating stable, reliable, and scalable applications.
@@ -829,4 +832,3 @@ In addition, the article also discussed the Python logging hierarchy, which prov
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Add keywords for internal links to front-matter
