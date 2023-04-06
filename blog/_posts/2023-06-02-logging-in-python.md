@@ -36,7 +36,7 @@ Python's built-in `logging` module provides a flexible and powerful framework fo
 A logger is an object that allows you to record events that occur during the execution of a program. It provides a way to capture and store log messages and events that can be used for debugging, troubleshooting, and analysis of the application's behavior. To get started with logging in Python, you first need to set up the logger. The `logging` module provides a `root` logger by default.
 To setup the `root` logger in Python's logging module, you typically use the  [`basicConfig()`](https://docs.python.org/3/library/logging.html#logging.basicConfig) method with the default configuration after importing the logging module:
 
-~~~
+~~~{.python caption="basic_logging.py"}
 import logging
 
 logging.basicConfig()
@@ -72,7 +72,7 @@ In general, you should not use the `NOTSET` logging level directly. Instead, it 
 
 In the following code, you are using different functions provided by the `logging` module to output messages of different severity levels to the console:
 
-~~~
+~~~{.python caption="log_levels.py"}
 import logging
 
 logging.debug('A Debug Message')
@@ -84,7 +84,7 @@ logging.critical('A Critical Message')
 
 Note that it is not mandatory to call the `basicConfig()` method here as you're not required to customize the logger. When you execute the above program, you will observe the following output:
 
-~~~
+~~~{ caption="debug.log"}
 WARNING:root:A Warning Message
 ERROR:root:An Error Message
 CRITICAL:root:A Critical Message
@@ -92,7 +92,7 @@ CRITICAL:root:A Critical Message
 
 The output format for each record includes the log level (e.g. WARNING, ERROR) in uppercase, followed by the name of the default logger, `root`. Finally, the log message that was passed as an argument to the logging function is displayed. Thus the output format looks like this:
 
-~~~
+~~~{ caption="debug.log"}
 <LOG_LEVEL>:<logger_name>:<message>
 ~~~
 
@@ -100,7 +100,7 @@ As you would notice that only three messages were logged. The `DEBUG` and `INFO`
 
 You can use the `logging.basicConfig()` function to set the default severity level as follows:
 
-~~~
+~~~{.python caption="default_log_level.py"}
 import logging
 
 logging.basicConfig(level=logging.INFO)
@@ -116,7 +116,7 @@ The above code can now log messages with a severity level of `INFO` or higher.
 
 Output:
 
-~~~
+~~~{ caption="debug.log"}
 INFO:root:An Info Message
 WARNING:root:A Warning Message
 ERROR:root:An Error Message
@@ -139,7 +139,7 @@ For example, you might want to add a new log level called `VERBOSE` to represent
 
 Here's how you can create a custom `VERBOSE` log level:
 
-~~~
+~~~{.python caption="custom_log_level.py"}
 import logging
 
 # Define the custom log level
@@ -177,7 +177,7 @@ Next, you can test the `verbose` log level by creating a logger instance using t
 
 Output:
 
-~~~
+~~~{ caption="debug.log"}
 VERBOSE:root:This is a verbose message
 ~~~
 
@@ -187,7 +187,7 @@ VERBOSE:root:This is a verbose message
 
 By default, the `logging` module uses a simple format that shows the severity level, the name of the logger, and the log message. This format is shown below:
 
-~~~
+~~~{ caption="debug.log"}
 WARNING:root:A Warning Message
 ~~~
 
@@ -199,7 +199,7 @@ To customize the log format, you can use the `format` parameter of the `basicCon
 
 Here's an example showing how you can customize the log format using the `format` parameter:
 
-~~~
+~~~{.python caption="customized_log_format.py"}
 import logging
 
 logging.basicConfig(format='%(asctime)s | %(levelname)s : %(message)s')
@@ -219,7 +219,7 @@ The `"s"` at the end of `%(placeholder)s` is a code used in string formatting. I
 
 Output:
 
-~~~
+~~~{ caption="debug.log"}
 2023-03-05 11:05:50,528 | ERROR : An error occurred!
 ~~~
 
@@ -235,7 +235,7 @@ You can then configure the custom logger's behavior separately from the root log
 
 Here's an example of how to set up a custom logger:
 
-~~~
+~~~{.python caption="custom_logger.py"}
 import logging
 
 logger = logging.getLogger("my_module")
@@ -249,7 +249,7 @@ logger.critical('A Critical Message')
 
 The `getLogger()` method returns an instance of the `Logger` class with the specified name argument (in this case, "my_module"). By default, you only get the log message in the output:
 
-~~~
+~~~{ caption="debug.log"}
 A Warning Message
 An Error Message
 A Critical Message
@@ -269,7 +269,7 @@ Handlers can be configured to write logs to various destinations, such as a file
 
 Here's an example that sends the output of the logger to a file called `my_module.log` instead of the standard error:
 
-~~~
+~~~{.python caption="handlers.py"}
 import logging
 
 # Create a custom logger
@@ -289,7 +289,7 @@ The [`FileHandler`](https://docs.python.org/3/library/logging.handlers.html#file
 
 When you run the code for the first, you'll have a new `my_module.log` file created with the content below:
 
-~~~
+~~~{ caption="my_module.log"}
 This is a log entry for my_module
 ~~~
 
@@ -301,7 +301,7 @@ Formatters are an essential component of the Python logging system, used to spec
 
 By default, the log message from the `Logger` has a format of `%(message)s`. But you can customize the format by creating your own formatter instance and specifying the format. To create a custom formatter, you can use the `Formatter` class provided by the `logging` module. The class takes a string argument that specifies the format of the log message output.
 
-~~~
+~~~{.python caption="formatters.py"}
 import logging
 
 # Create a custom logger
@@ -327,8 +327,9 @@ This code sets up a custom logger named `example` and creates a file handler for
 
 When a log entry is made using the logger, the [log record](https://docs.python.org/3/library/logging.html#logging.LogRecord) is passed to the handler, which applies the formatter to the record and then outputs the resulting log message to a file named `example.log`. In this case, the log message will include the timestamp, logger name, log level, and log message.
 
-~~~
-2023-03-05 12:15:11,374 | example | CRITICAL : This is a log entry for example
+~~~{ caption="example.log"}
+2023-03-05 12:15:11,374 | example | CRITICAL : \
+This is a log entry for example
 ~~~
 
 ### Understanding Filters and Their Usage in Logging
@@ -339,7 +340,7 @@ Filters can be applied to both loggers and handlers. When applied to a logger, t
 
 To use a filter in a logger or handler, you create an instance of the filter class and add it to the logger or handler using the [`addFilter()`](https://docs.python.org/3/library/logging.html#logging.Logger.addFilter) method. For example:
 
-~~~
+~~~{.python caption="filters.py"}
 import logging
 
 
@@ -365,8 +366,9 @@ Next, you create a logger object named `filtered_logger` and add a file handler 
 
 You then log two messages using the logger object. If you see the newly created `filtered_log.log` file, you'll have the following content:
 
-~~~
-2023-03-05  12:33:14,810 | WARNING : Important: This message should be logged
+~~~{ caption="filtered_log.log"}
+2023-03-05  12:33:14,810 | WARNING : \
+Important: This message should be logged
 ~~~
 
 The first message starts with the string "Important:", so it passes the filter and is logged with a level of `WARNING`. The second message does not start with the string "Important:", so it fails the filter and is not logged.
@@ -381,13 +383,13 @@ The [`python-json-logger`](https://pypi.org/project/python-json-logger/) library
 
 To use this library, you first need to install it by running the following command:
 
-~~~
+~~~{.bash caption=">_"}
 pip install python-json-logger
 ~~~
 
 The `python-json-logger` library provides a custom formatter called [`JsonFormatter`](https://github.com/madzak/python-json-logger#integrating-with-pythons-logging-framework) to format log records as JSON strings. Once installed, you can use the `JsonFormatter`  as shown below:
 
-~~~
+~~~{.python caption="json_formatter.py"}
 import sys
 import logging
 from pythonjsonlogger import jsonlogger
@@ -412,15 +414,18 @@ The `jsonlogger.JsonFormatter("%(asctime)s | %(levelname)s : %(message)s")` crea
 
 Output:
 
-~~~
-{"asctime": "2023-03-05 12:46:07,625", "levelname": "WARNING", "message": "A Warning Message"}
-{"asctime": "2023-03-05 12:46:07,625", "levelname": "ERROR", "message": "An Error Message"}
-{"asctime": "2023-03-05 12:46:07,626", "levelname": "CRITICAL", "message": "A Critical Message"}
+~~~{ caption="debug.log"}
+{"asctime": "2023-03-05 12:46:07,625", "levelname": \
+"WARNING", "message": "A Warning Message"}
+{"asctime": "2023-03-05 12:46:07,625", "levelname": \
+"ERROR", "message": "An Error Message"}
+{"asctime": "2023-03-05 12:46:07,626", "levelname": \
+"CRITICAL", "message": "A Critical Message"}
 ~~~
 
 By default, you'll see the original names from the [LogRecord attributes](https://docs.python.org/3/library/logging.html#logrecord-attributes) as the keys. If you want to rename the keys, you can use the `rename_fields` argument as shown below:
 
-~~~
+~~~{.python caption="rename_fields.py"}
 format = jsonlogger.JsonFormatter(
     "%(asctime)s | %(levelname)s : %(message)s",
     rename_fields={"levelname": "log_level", "asctime": "timestamp"},
@@ -431,10 +436,13 @@ The above code renames the `levelname` key to `log_level` and the `asctime` key 
 
 Output:
 
-~~~
-{"timestamp": "2023-03-05 12:51:23,538", "log_level": "WARNING", "message": "A Warning Message"}
-{"timestamp": "2023-03-05 12:51:23,539", "log_level": "ERROR", "message": "An Error Message"}
-{"timestamp": "2023-03-05 12:51:23,539", "log_level": "CRITICAL", "message": "A Critical Message"}
+~~~{ caption="debug.log"}
+{"timestamp": "2023-03-05 12:51:23,538", "log_level": \
+"WARNING", "message": "A Warning Message"}
+{"timestamp": "2023-03-05 12:51:23,539", "log_level": \
+"ERROR", "message": "An Error Message"}
+{"timestamp": "2023-03-05 12:51:23,539", "log_level": \
+"CRITICAL", "message": "A Critical Message"}
 ~~~
 
 ### The `extra` Property
@@ -443,7 +451,7 @@ The `python-json-logger` library allows you to add contextual information to you
 
 In the previous example, you can add the `extra` property as:
 
-~~~
+~~~{.python caption="extra_property.py"}
 logger.warning('A Warning Message')
 logger.error('An Error Message', extra={'type': 'fatal error'})
 logger.critical('A Critical Message')
@@ -451,23 +459,28 @@ logger.critical('A Critical Message')
 
 Output:
 
-~~~
-{"timestamp": "2023-03-05 17:48:20,531", "log_level": "WARNING", "message": "A Warning Message"}
-{"timestamp": "2023-03-05 17:48:20,531", "log_level": "ERROR", "message": "An Error Message", "type": "fatal error"}
-{"timestamp": "2023-03-05 17:48:20,531", "log_level": "CRITICAL", "message": "A Critical Message"}
+~~~{ caption="debug.log"}
+{"timestamp": "2023-03-05 17:48:20,531", "log_level": \
+"WARNING", "message": "A Warning Message"}
+{"timestamp": "2023-03-05 17:48:20,531", "log_level": \
+"ERROR", "message": "An Error Message", "type": "fatal error"}
+{"timestamp": "2023-03-05 17:48:20,531", "log_level": \
+"CRITICAL", "message": "A Critical Message"}
 ~~~
 
 You can see that an extra `type` key has been added in the output for `logger.error()`.
 
 Note that you should avoid using default [LogRecord attribute names](https://docs.python.org/3/library/logging.html#logrecord-attributes) to prevent `KeyError` exceptions.
 
-~~~
+
+~~~{.python caption="extra_property.py"}
+
 logger.error('An Error Message', extra={'name': 'Ashutosh'})
 ~~~
 
 The above code throws a `KeyError` exception because `name` is one of the LogRecord attributes:
 
-~~~
+~~~{ caption="debug.log"}
 KeyError: "Attempt to overwrite 'name' in LogRecord"
 ~~~
 
@@ -481,7 +494,7 @@ To log exceptions, the module offers an [`exception()`](https://docs.python.org/
 
 Here's an example of logging an error with exception info:
 
-~~~
+~~~{.python caption="logging_error.py"}
 import sys
 import logging
 from pythonjsonlogger import jsonlogger
@@ -510,9 +523,19 @@ In the above code, a try-except block is used to simulate an error. An attempt i
 
 Output:
 
-~~~
-{"timestamp": "2023-03-05 18:04:10,876", "log_level": "ERROR", "message": "Failed to convert to int", "exc_info": "Traceback (most recent call last):\n  File \"D:\\Blog-Codes\\logging\\code14.py\", line 19, in <module>\n    num = int('A')\n          ^^^^^^^^\nValueError: invalid literal for int() with base 10: 'A'"}
-{"timestamp": "2023-03-05 18:04:10,877", "log_level": "ERROR", "message": "Failed to convert to int", "exc_info": "Traceback (most recent call last):\n  File \"D:\\Blog-Codes\\logging\\code14.py\", line 19, in <module>\n    num = int('A')\n          ^^^^^^^^\nValueError: invalid literal for int() with base 10: 'A'"}
+~~~{ caption="debug.log"}
+{"timestamp": "2023-03-05 18:04:10,876", 
+"log_level": "ERROR", "message": "Failed to convert to int", 
+"exc_info": "Traceback (most recent call last):\n  
+File \"D:\\Blog-Codes\\logging\\code14.py\", line 19, in <module>\n    
+num = int('A')\n          ^^^^^^^^\n
+ValueError: invalid literal for int() with base 10: 'A'"}
+{"timestamp": "2023-03-05 18:04:10,877", "log_level": "ERROR", 
+"message": "Failed to convert to int", 
+"exc_info": "Traceback (most recent call last):\n  
+File \"D:\\Blog-Codes\\logging\\code14.py\", line 19, in <module>\n    
+num = int('A')\n          ^^^^^^^^\n
+ValueError: invalid literal for int() with base 10: 'A'"}
 ~~~
 
 Both the log outputs are exactly the same. As mentioned, the `exception()` method is just a shortcut for `error(exc_info=True)` and will log both the error message and the traceback of the exception.
@@ -533,7 +556,7 @@ In the logging module, the [`RotatingFileHandler`](https://docs.python.org/3/lib
 
 Here is an example of how to use `RotatingFileHandler` to create a log file that is rotated when it reaches 1 MB in size:
 
-~~~
+~~~{.python caption="rotating_file_handler.py"}
 import logging
 from logging.handlers import RotatingFileHandler
 
@@ -557,7 +580,7 @@ Once the log file reaches the maximum size, the `RotatingFileHandler` will renam
 
 The [`TimedRotatingFileHandler`](https://docs.python.org/3/library/logging.handlers.html#timedrotatingfilehandler) is another handler provided by the Python logging module that can be used for rotating log files. This handler rotates the log files based on time intervals, rather than file size. The `TimedRotatingFileHandler` takes a few arguments, including the filename, the [interval](https://docs.python.org/3/library/logging.handlers.html#timedrotatingfilehandler) at which to rotate the log files (e.g., 'S' for seconds, 'M' for minutes, etc.), and the number of backups to keep. This handler is useful for applications that generate large log files and need to maintain a regular log rotation schedule.
 
-~~~
+~~~{.python caption="timed_rotating_file_handler.py"}
 import logging
 from logging.handlers import TimedRotatingFileHandler
 
@@ -565,7 +588,8 @@ from logging.handlers import TimedRotatingFileHandler
 logger = logging.getLogger(__name__)
 
 # Create the TimedRotatingFileHandler
-handler = TimedRotatingFileHandler(filename='myapp.log', when='midnight', backupCount=7)
+handler = TimedRotatingFileHandler(filename='myapp.log', \
+when='midnight', backupCount=7)
 
 # Set the log message format
 formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
@@ -581,7 +605,7 @@ The Python `logging` module provides a hierarchical structure for organizing log
 
 The logger hierarchy is organized in a dot-separated namespace, similar to the module namespace in Python. For example, a logger named "a.b.c" is a descendant of "a.b", which is, in turn, a descendant of "a". If a logger is not explicitly defined, it inherits from its parent logger.
 
-~~~
+~~~{.python caption="logging_hierarchy.py"}
 import logging
 
 abc_logger = logging.getLogger("a.b.c")
@@ -595,7 +619,7 @@ print(a_logger.parent)
 
 Output:
 
-~~~
+~~~{ caption="Output"}
 <Logger a.b (WARNING)>
 <Logger a (WARNING)>
 <RootLogger root (WARNING)>
@@ -607,7 +631,7 @@ The `propagate` method is a boolean attribute of a logger that controls whether 
 
 Consider an example where we have two loggers named "a.b" and "a". Here's an example of how the `propagate` attribute works in this scenario:
 
-~~~
+~~~{.python caption="propagate.py"}
 import logging
 
 # Create two loggers
@@ -636,7 +660,7 @@ logger_a_b.warning('warning message from logger_a_b')
 
 Output:
 
-~~~
+~~~{ caption="debug.log"}
 WARNING:a:warning message from logger_a
 WARNING:a.b:warning message from logger_a_b
 ~~~
@@ -671,20 +695,23 @@ The dictionary must have the following keys:
 
 Here's how you can define the configurations in the form of a dictionary using `dictConfig`:
 
-~~~
+~~~{.python caption="dictconfig.py"}
 import logging
 import logging.config
 
-# Declare handlers, formatters and all functions using dictionary 'key' : 'value' pair
+# Declare handlers, formatters and all functions \
+# using dictionary 'key' : 'value' pair
 logging.config.dictConfig({
     'version': 1,
     'disable_existing_loggers': False,
     'formatters': {
         'consoleFormatter': {
-            'format': '%(asctime)s | %(name)s | %(levelname)s : %(message)s',
+            'format': '%(asctime)s | %(name)s | \
+            %(levelname)s : %(message)s',
         },
         'fileFormatter': {
-            'format': '%(asctime)s | %(name)s | %(levelname)s : %(message)s',
+            'format': '%(asctime)s | %(name)s | \
+            %(levelname)s : %(message)s',
         },
     },
     'handlers': {
@@ -727,7 +754,7 @@ After configuring the logging system, a custom logger is created with the name `
 
 Here's the output you'll see in the `debug.log` file:
 
-~~~
+~~~{ caption="debug.log"}
 2023-03-15 08:53:22,046 | my_logger | DEBUG : A Debug Message
 2023-03-15 08:53:22,046 | my_logger | INFO : An Info Message
 2023-03-15 08:53:22,046 | my_logger | WARNING : A Warning Message
@@ -737,8 +764,9 @@ Here's the output you'll see in the `debug.log` file:
 
 But, in the console, you'll see this output:
 
-~~~
-2023-03-15 08:53:22,046 | my_logger | CRITICAL : A Critical Message
+~~~{ caption="debug.log"}
+2023-03-15 08:53:22,046 | my_logger | \
+CRITICAL : A Critical Message
 ~~~
 
 There is a difference in the outputs because the `file` handler handles messages of level DEBUG and higher. But the `console` handler only handles messages of level CRITICAL and higher.
@@ -747,7 +775,7 @@ Apart from this, the `logging` module in Python also provides the ability to con
 
 Here is an equivalent YAML configuration file called `config.yaml` for the above-shown configuration:
 
-~~~
+~~~{.yml caption="config.yaml"}
 version: 1
 disable_existing_loggers: False
 
@@ -776,13 +804,13 @@ loggers:
 
 To read this YAML configuration file in a Python application, you first need to install the [`PyYAML`](https://pypi.org/project/PyYAML/) library as below:
 
-~~~
+~~~{.bash caption=">_"}
 pip install pyyaml
 ~~~
 
 Once the library is installed, you can use this configuration file in your Python application as below:
 
-~~~
+~~~{.python caption="yaml_config.py"}
 import logging.config
 import yaml
 
