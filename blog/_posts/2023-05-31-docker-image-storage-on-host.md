@@ -24,24 +24,26 @@ Images are created using a layered file structure, making it simple to share, re
 
 For instance, the containerized version of the Ubuntu 22.04 image is 77.8 MB, whilst the official ISO image weighs 3.6 GB. The size has shrunk by about 98%.
 
-~~~
+~~~{.bash caption=">_"}
 $ docker images
 ~~~
 
-~~~
-REPOSITORY                    TAG       IMAGE ID       CREATED         SIZE
-ubuntu                        22.04     a8780b506fa4   5 weeks ago     77.8MB
+~~~{ caption="Output"}
+
+REPOSITORY               TAG       IMAGE ID       CREATED         SIZE
+ubuntu                   22.04     a8780b506fa4   5 weeks ago     77.8MB
 ~~~
 
 ## Docker Layers
 
 A Docker layer is a modification to an image file system. The addition of each command in the Dockerfile forms a new image layer. Docker images are formed by stacking multiple read-only layers on top of each other. The following example shows layers for each executed command:
 
-~~~
+~~~{.bash caption=">_"}
 $ docker history openjdk:8-jdk-alpine-with-bash-cli-mode
 ~~~
 
-~~~
+~~~{ caption="Output"}
+
 IMAGE          CREATED        CREATED BY                                      SIZE      COMMENT
 be9564ccef2f   3 months ago   /bin/sh                                         5.43MB    
 a3562aa0b991   3 years ago    /bin/sh -c set -x  && apk add --no-cache   o…   99.3MB
@@ -53,11 +55,11 @@ If multiple images share the same read-only layer, the layer will only be downlo
 
 The snippets below show that the two images (**edc5a3f3b57b**, **d181adc2b1e1**) share a common first layer. Here, we use the `docker inspect` command to get a detailed view of the Docker objects configuration and state. The output also includes information such as layer ID, name, labels, network settings, and so on:
 
-~~~
-$ docker inspect --format='{{json .RootFS}}' edc5a3f3b57b | jq
+~~~{.bash caption=">_"}
+$ docker inspect --format='{% raw %}{{json .RootFS}}{% endraw %}' edc5a3f3b57b | jq
 ~~~
 
-~~~
+~~~{ caption="Output"}
 {
   "Type": "layers",
   "Layers": [
@@ -67,11 +69,11 @@ $ docker inspect --format='{{json .RootFS}}' edc5a3f3b57b | jq
 }
 ~~~
 
-~~~
+~~~{.bash caption=">_"}
 $ docker inspect --format='{{json .RootFS}}' d181adc2b1e1 | jq
 ~~~
 
-~~~
+~~~{ caption="Output"}
 {
   "Type": "layers",
   "Layers": [
@@ -90,11 +92,11 @@ We generally pull the images from the Docker Hub registry. Though [Docker Hub](h
 
  Let's use the `docker pull` command to pull the latest MySQL image from DockerHub.
 
-~~~
+~~~{.bash caption=">_"}
 $ docker pull mysql:latest
 ~~~
 
-~~~
+~~~{ caption="Output"}
 latest: Pulling from library/mysql
 0ed027b72ddc: Pull complete
 0296159747f1: Pull complete
@@ -116,27 +118,28 @@ As we see, the image is downloaded from the Docker Hub blob store in numerous la
 
 Here, our mysql:latest image has eleven read-only layers stacked on top of each other to form a single, cohesive image object. Further, let's get the list of images in our local repository using the `docker images` command.
 
-~~~
+~~~{.bash caption=">_"}
 $ docker images
 ~~~
 
-~~~
-REPOSITORY                    TAG       IMAGE ID       CREATED         SIZE
-mysql                         latest    7484689f290f   2 days ago      538MB
-ubuntu                        22.04     a8780b506fa4   5 weeks ago     77.8MB
+~~~{ caption="Output"}
+
+REPOSITORY         TAG       IMAGE ID       CREATED         SIZE
+mysql              latest    7484689f290f   2 days ago      538MB
+ubuntu             22.04     a8780b506fa4   5 weeks ago     77.8MB
 ~~~
 
 Yet another method to view the layers of an image is by using the `docker inspect` command.
 
 Now let's examine the mysql:latest image using the `docker inspect` command and the image ID and obtain the SHA256 hashes for each layer.
 
-~~~
+~~~{.bash caption=">_"}
 $ docker inspect 7484689f290f
 ~~~
 
 Here, the first line in the layer's section represents the base layer of the image. In the below snippet the first layer or base layer has an SHA256 hash of **d3cc7b6aa7bc**. The second layer's hash is **a7f421510691** and so on.
 
-~~~
+~~~{ caption="Output"}
 [
     {
       "Id": "sha256:7484689f290f1defe06b65befc54cb6ad91a667cf0af59a265ffe76c46bd0478",
@@ -149,11 +152,17 @@ Here, the first line in the layer's section represents the base layer of the ima
        "RootFS": {
             "Type": "layers",
             "Layers": [
-                "sha256:d3cc7b6aa7bc15725c1a856ce06fe436da3fbccf0c9c06b04e45f79b3439c154",          "sha256:a7f421510691bf6a7b344d1efb738b3d343e252e7dde114a0dd86d432ef6000c",
-"sha256:6ac2db160c6cf3dcf1aff0ced069aa98da28c50cff5cd3c8881c04f42e3ef1fe",                "sha256:7fe65049a2a940ab927d3f5b2cf0687ecffbdf9d7e9df1daaeddb83bc601f3cb",             "sha256:da1824686db37bbf1ffbffea53295aa853731531a14e70bca24eeb6d91fd6327",
+"sha256:d3cc7b6aa7bc15725c1a856ce06fe436da3fbccf0c9c06b04e45f79b3439c154",
+"sha256:a7f421510691bf6a7b344d1efb738b3d343e252e7dde114a0dd86d432ef6000c",
+"sha256:6ac2db160c6cf3dcf1aff0ced069aa98da28c50cff5cd3c8881c04f42e3ef1fe",
+"sha256:7fe65049a2a940ab927d3f5b2cf0687ecffbdf9d7e9df1daaeddb83bc601f3cb",
+"sha256:da1824686db37bbf1ffbffea53295aa853731531a14e70bca24eeb6d91fd6327",
 "sha256:d410d4efd0e75456011f265fa113b206dd4da9dccf5151bca714ef6c69a3b8cd",
-"sha256:60c4dab21dc337e912d518acc56e5b776e3de4f1d277d074831bb678089b87a6",            "sha256:d00057f8969283fed84044f6103036e18a9d776579d705a85472535ba321df25",                "sha256:2f42ce9d7b80a286af13410c0b64e94c90eca3e7597f7fd82a783aa1f68c2373",
-"sha256:8408fed6a9d685236cb024ceea39692743b6c52ea6c4c068b22a6475f742e24a",                "sha256:336175ddf157a8f50c0aae8c0726b1462fd41f30f0b7f84caf6bf5cd02f8de77"
+"sha256:60c4dab21dc337e912d518acc56e5b776e3de4f1d277d074831bb678089b87a6",
+"sha256:d00057f8969283fed84044f6103036e18a9d776579d705a85472535ba321df25",
+"sha256:2f42ce9d7b80a286af13410c0b64e94c90eca3e7597f7fd82a783aa1f68c2373",
+"sha256:8408fed6a9d685236cb024ceea39692743b6c52ea6c4c068b22a6475f742e24a",
+"sha256:336175ddf157a8f50c0aae8c0726b1462fd41f30f0b7f84caf6bf5cd02f8de77"
             ]
         },
 ..
@@ -170,21 +179,21 @@ Docker Storage Drivers are the one which controls the storage of container's wri
 
 Additionally, Docker supports a wide range of storage drivers, including overlay2, fuse-overlay2, btrfs, zfs, aufs, overlay, devicemapper, and vfs. Let's obtain the storage driver information from the host machine using the `docker info` command:
 
-~~~
+~~~{.bash caption=">_"}
 $ docker info | grep -i "Storage Driver"
 ~~~
 
-~~~
+~~~{ caption="Output"}
 Storage Driver: overlay2
 ~~~
 
 In Docker, the root directory is one that hosts the entire data of Docker images and containers. Let's identify Docker's root directory information on the host machine using the `docker info` command.
 
-~~~
+~~~{.bash caption=">_"}
 $ docker info | grep "Root Dir"
 ~~~
 
-~~~
+~~~{ caption="Output"}
 Docker Root Dir: /var/lib/docker
 ~~~
 
@@ -194,11 +203,11 @@ We've identified that the root directory of Docker is `/var/lib/docker`.
 
 Every Docker image has a corresponding [JSON](/blog/convert-to-from-json) structure that contains information on the image's essential attributes, such as the date, the creator, and runtime configuration like entrypoint, networking, and volumes. Use `docker inspect` command to view the image attributes:
 
-~~~
+~~~{.bash caption=">_"}
 $ docker inspect alpine:latest
 ~~~
 
-~~~
+~~~{ caption="Output"}
 [
     {
       "Id": "sha256:9c6f0724472873bb50a2ae67a9e7adcb57673a183cea8b06eb778dca859181b5",
@@ -232,25 +241,25 @@ The ImageID in Docker is an SHA-256 hash of the image's content. It also include
 
 To get the Image ID from the local repository, we use the `docker images` command:
 
-~~~
+~~~{.bash caption=">_"}
 $ docker images
 ~~~
 
-~~~
-REPOSITORY                    TAG       IMAGE ID       CREATED         SIZE
-mysql                         latest    7484689f290f   2 days ago      538MB
-ubuntu                        22.04     a8780b506fa4   5 weeks ago     77.8MB
+~~~{ caption="Output"}
+REPOSITORY          TAG       IMAGE ID       CREATED         SIZE
+mysql               latest    7484689f290f   2 days ago      538MB
+ubuntu              22.04     a8780b506fa4   5 weeks ago     77.8MB
 ~~~
 
 ### DiffID Identification
 
 The Differential ID or DiffID is a unique identifier for all the Docker image layers. Each layer in a Docker image has its own DiffID, which is calculated based on the contents of the specific image layer. It is used to verify the integrity of an image. Also, when two Docker images share the same set of layers, they will have the same DiffIDs for those layers, which allows for efficient storage. We can use the `docker inspect` command to get the diffIDs of all layers under the RootFS section:
 
-~~~
+~~~{.bash caption=">_"}
 $ docker inspect 7484689f290f
 ~~~
 
-~~~
+~~~{.bash caption=">_"}
 [
 ..
 .. output truncated ..
@@ -258,16 +267,16 @@ $ docker inspect 7484689f290f
         "RootFS": {
             "Type": "layers",
             "Layers": [
-"sha256:d3cc7b6aa7bc15725c1a856ce06fe436da3fbccf0c9c06b04e45f79b3439c154",                
+"sha256:d3cc7b6aa7bc15725c1a856ce06fe436da3fbccf0c9c06b04e45f79b3439c154",
 "sha256:a7f421510691bf6a7b344d1efb738b3d343e252e7dde114a0dd86d432ef6000c",
-"sha256:6ac2db160c6cf3dcf1aff0ced069aa98da28c50cff5cd3c8881c04f42e3ef1fe",                
+"sha256:6ac2db160c6cf3dcf1aff0ced069aa98da28c50cff5cd3c8881c04f42e3ef1fe",
 "sha256:7fe65049a2a940ab927d3f5b2cf0687ecffbdf9d7e9df1daaeddb83bc601f3cb",
-"sha256:da1824686db37bbf1ffbffea53295aa853731531a14e70bca24eeb6d91fd6327",               
-"sha256:d410d4efd0e75456011f265fa113b206dd4da9dccf5151bca714ef6c69a3b8cd",               
-"sha256:60c4dab21dc337e912d518acc56e5b776e3de4f1d277d074831bb678089b87a6",               
-"sha256:d00057f8969283fed84044f6103036e18a9d776579d705a85472535ba321df25",                
-"sha256:2f42ce9d7b80a286af13410c0b64e94c90eca3e7597f7fd82a783aa1f68c2373",                
-"sha256:8408fed6a9d685236cb024ceea39692743b6c52ea6c4c068b22a6475f742e24a",                
+"sha256:da1824686db37bbf1ffbffea53295aa853731531a14e70bca24eeb6d91fd6327",
+"sha256:d410d4efd0e75456011f265fa113b206dd4da9dccf5151bca714ef6c69a3b8cd",
+"sha256:60c4dab21dc337e912d518acc56e5b776e3de4f1d277d074831bb678089b87a6",
+"sha256:d00057f8969283fed84044f6103036e18a9d776579d705a85472535ba321df25",
+"sha256:2f42ce9d7b80a286af13410c0b64e94c90eca3e7597f7fd82a783aa1f68c2373",
+"sha256:8408fed6a9d685236cb024ceea39692743b6c52ea6c4c068b22a6475f742e24a",
 "sha256:336175ddf157a8f50c0aae8c0726b1462fd41f30f0b7f84caf6bf5cd02f8de77"
             ]
         },
@@ -284,20 +293,21 @@ The ChainID is calculated by concatenating the DiffIDs of the layers in the imag
 DiffID = chainID if the layer is the lowest layer among other layers.
 If not, chainID(n) = sha256sum [diffID(n-1), diffID(n)]
 
-Let's calculate the ChainID for Layer-1:
+**Let's calculate the ChainID for Layer-1:** 
 
 ChainID(Layer-1) = diffID(Layer-1)
 
 ChainID(Layer-1) = d3cc7b6aa7bc15725c1a856ce06fe436da3fbccf0c9c06b04e45f79b3439c154
 
-Let's calculate the ChainID for Layer-2:
+**Let's calculate the ChainID for Layer-2:**
 
 ChainID(Layer-2) = sha256sum [diffID(Layer-1), diffID(Layer-2)
 
 diffID(Layer-1) = d3cc7b6aa7bc15725c1a856ce06fe436da3fbccf0c9c06b04e45f79b3439c154
 diffID(Layer-2) = a7f421510691bf6a7b344d1efb738b3d343e252e7dde114a0dd86d432ef6000c
 
-~~~
+~~~{.bash caption=">_"}
+
 $ echo -n 'sha256:d3cc7b6aa7bc15725c1a856ce06fe436da3fbccf0c9c06b04e45f79b3439c154 sha256:a7f421510691bf6a7b344d1efb738b3d343e252e7dde114a0dd86d432ef6000c' | sha256sum
 
 29bd3d7c6e1683e422776b9d3285e8a3f1272f07656fc63a941cb7729a169100
@@ -312,7 +322,8 @@ ChainID(Layer-3) = sha256sum [diffID(Layer-2), diffID(Layer-3)
 diffID(Layer-2) = a7f421510691bf6a7b344d1efb738b3d343e252e7dde114a0dd86d432ef6000c
 diffID(Layer-3) = 6ac2db160c6cf3dcf1aff0ced069aa98da28c50cff5cd3c8881c04f42e3ef1fe
 
-~~~
+~~~{.bash caption=">_"}
+
 $ echo -n "sha256:a7f421510691bf6a7b344d1efb738b3d343e252e7dde114a0dd86d432ef6000c sha256:6ac2db160c6cf3dcf1aff0ced069aa98da28c50cff5cd3c8881c04f42e3ef1fe" | sha256sum
 
 9b3abbf0ab6402c9bcb9cce411268ffe24573d790f0333d8ae06794313295dbd
@@ -326,21 +337,24 @@ The CacheID is another unique identifier that is assigned to each layer of the i
 
 The cacheID facilitates retrieval of the real contents for each layer that are indexed. So using the calculated chainID, navigate to the `/var/lib/docker/image/overlay2/layerdb/sha256/<ChainID>/` directory to obtain the content index known as cacheID. Also, the directory includes the parent information of the layer and its size.
 
-~~~
+~~~{.bash caption=">_"}
+
 $ cat /var/lib/docker/image/overlay2/layerdb/sha256/29bd3d7c6e1683e422776b9d3285e8a3f1272f07656fc63a941cb7729a169100/cache-id
 ~~~
 
-~~~
+~~~{ caption="Output"}
 5b05639e794f7b0074d8d622843f8816d9e78ac25b6f6f97c49dfda1a39ecd24
 ~~~
 
 Lastly, let's use the CacheID to navigate to the storage driver path `[/var/lib/docker/overlay2/]`. To access all the files and directories for that layer, navigate to the diff directory:
 
-~~~
+~~~{.bash caption=">_"}
+
 $ tree /var/lib/docker/overlay2/5b05639e794f7b0074d8d622843f8816d9e78ac25b6f6f97c49dfda1a39ecd24
 ~~~
 
-~~~
+~~~{ caption="Ouput"}
+
 /var/lib/docker/overlay2/5b05639e794f7b0074d8d622843f8816d9e78ac25b6f6f97c49dfda1a39ecd24
 .
 ├── committed
@@ -372,5 +386,3 @@ With this in-depth understanding of how [Docker](/blog/rails-with-docker) images
 ## Outside Article Checklist
 
 - [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
