@@ -6,7 +6,6 @@ blogurl: "/blog/"
 githuburl: "https://github.com/earthly/earthly"
 twitter_username: earthlytech
 github_username:  earthly
-google_analytics: "UA-161831101-5"
 slack_url: "/slack"
 tagline: "Make CI/CD Super Simple"
 description: "Fast, repeatable CI/CD with an instantly familiar syntax – like Dockerfile and Makefile had a baby."

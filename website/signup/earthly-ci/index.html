@@ -104,7 +104,7 @@ layout: default
                             class="formkit-input mb-3 w-full flex h-12 items-center space-x-3 rounded-lg bg-white py-3 px-4 text-left text-xl text-slate-800 shadow-sm ring-1 ring-slate-900/10 hover:ring-slate-300 focus:outline-none focus:ring-2 focus:ring-sky-500"
                             name="fields[company]" placeholder="Company" aria-label="Company" required="" />
                         </div>
-                        <div class="formkit-field"><input type="email"
+                        <div class="formkit-field"><input type="email" id="earthly-ci-form-email"
                             class="formkit-input mb-4 flex h-12 w-full items-center space-x-3 rounded-lg bg-white py-3 px-4 text-left text-xl text-slate-800 shadow-sm ring-1 ring-slate-900/10 hover:ring-slate-300 focus:outline-none focus:ring-2 focus:ring-sky-500"
                             name="email_address" placeholder="Email Address" aria-label="Email Address" required="" />
                         </div>
@@ -139,19 +139,19 @@ layout: default
 <script>
   const form = document.getElementById('earthly-ci-form');
   form.addEventListener('submit', function (event) {
-    // console.log("Sent event to Google Analytics");
-    gtag('event', 'conversion', {
-      'event_category': 'Form Submission',
-      'event_label': 'earthly-ci-form'
+    var formEmail = document.getElementById('earthly-ci-form-email').value;
+    analytics.identify(formEmail);
+    analytics.track('earthly-ci-form-submit', {
+      category: 'Form Submission',
+      label: 'earthly-ci-form-submit'
     });
   });
 
   const ss_form = document.getElementById('earthly-ci-self-serve-form');
   ss_form.addEventListener('submit', function (event) {
-    // console.log("Sent event to Google Analytics");
-    gtag('event', 'conversion', {
-      'event_category': 'Form Submission',
-      'event_label': 'earthly-ci-self-serve-form'
+    analytics.track('earthly-ci-self-serve-form-submit', {
+      category: 'Form Submission',
+      label: 'earthly-ci-self-serve-form-submit'
     });
   });
 </script>
