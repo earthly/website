@@ -243,9 +243,9 @@ write_yaml_to_file(data2, 'output2')
 
 ## Reading YAML in Python
 
-The *yaml* module comes with a function that can be used to read YAML files. This process of YAML files with PyYAML is also referred to as loading a YAML file. 
+The *yaml* module comes with a function that can be used to read YAML files. This process of YAML files with PyYAML is also referred to as loading a YAML file.
 
-### How to Read YAML Files With `safe_load()` 
+### How to Read YAML Files With `safe_load()`
 
 The `safe_load()` function is used to read YAML files with the PyYAML library. The other loader you can use but is not recommended is the `load()` function.
 
