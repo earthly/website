@@ -476,7 +476,6 @@ You can see that an extra `type` key has been added in the output for `logger.er
 
 Note that you should avoid using default [LogRecord attribute names](https://docs.python.org/3/library/logging.html#logrecord-attributes) to prevent `KeyError` exceptions.
 
-
 ~~~{.python caption="extra_property.py"}
 
 logger.error('An Error Message', extra={'name': 'Ashutosh'})
