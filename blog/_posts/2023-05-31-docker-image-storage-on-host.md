@@ -18,6 +18,8 @@ However, what exactly is an image? What does it include, and where does it resid
 
 ## Docker Images
 
+![DockerImages]({{site.images}}{{page.slug}}/copy.png)\
+
 Docker images are pre-built packages (portable artifacts) that contain all the files, configuration, and dependencies needed to run a piece of software. They are used to build and run Docker containers, which are isolated environments that allow applications to run in a predictable and consistent way, regardless of the host environment.
 
 Images are created using a layered file structure, making it simple to share, reuse, and update them. It is the simple cut-down version of the operating system, however it doesn't include a kernel or a driver. This is because the host system on which Docker Engine is installed provides these vital elements for the proper functioning of containers. They can be pulled from a centralized image repository such as Docker Hub.
@@ -35,6 +37,8 @@ ubuntu                   22.04     a8780b506fa4   5 weeks ago     77.8MB
 ~~~
 
 ## Docker Layers
+
+![DockerLayers]({{site.images}}{{page.slug}}/layer.png)\
 
 A Docker layer is a modification to an image file system. The addition of each command in the Dockerfile forms a new image layer. Docker images are formed by stacking multiple read-only layers on top of each other. The following example shows layers for each executed command:
 
@@ -288,6 +292,8 @@ $ docker inspect 7484689f290f
 
 ### ChainID Calculation
 
+![Calculation]({{site.images}}{{page.slug}}/calculation.png)\
+
 The ChainID is calculated by concatenating the DiffIDs of the layers in the image and hashing the result using the SHA256 algorithm. It is also used to verify the integrity of an image during transmission. Using the SHA256 values for the current and previous layers to determine the chainID. The formula is shown below.
 
 DiffID = chainID if the layer is the lowest layer among other layers.
@@ -382,7 +388,3 @@ In summary, understanding how Docker images are stored on the host machine is cr
 With this in-depth understanding of how [Docker](/blog/rails-with-docker) images are saved on the host machines, developers can better manage their Docker environments and resolve any problems that may arise. Further, developers may enhance their Docker processes and fully utilize the strength and adaptability of Docker containerization.
 
 {% include_html cta/cta2.html %}
-
-## Outside Article Checklist
-
-- [ ] Optional: Find ways to break up content with quotes or images
