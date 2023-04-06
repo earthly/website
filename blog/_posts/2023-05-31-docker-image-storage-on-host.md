@@ -6,7 +6,10 @@ toc: true
 author: Adam
 
 internal-links:
- - just an example
+ - Docker-Image
+ - Hosting
+ - Docker
+ - Hosting
 ---
 
 Developers and system administrators can create, deploy, and run distributed applications using the Docker platform. Docker containers, which offer a constant and isolated environment for applications to execute in, are running instances of [Docker](/blog/rails-with-docker)  images. They [make](/blog/makefiles-on-windows) it simple to maintain, scale, and guarantee that applications function reliably across many contexts.
@@ -373,4 +376,3 @@ With this in-depth understanding of how [Docker](/blog/rails-with-docker) images
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Add keywords for internal links to front-matter
