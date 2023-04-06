@@ -1,5 +1,5 @@
 ---
-title: "How the Docker Image Is Stored on the Host machine"
+title: "How the Docker Image Is Stored on the Host Machine"
 categories:
   - Tutorials
 toc: true
