@@ -34,7 +34,7 @@ Let's dive in and create a GitHub Actions workflow that will automate deployment
 
 ### Prerequisites
 
-Before proceeding with this guide, you require the following:
+To follow along with this guide, you require the following:
 
 - [Docker Engine](https://docs.docker.com/get-docker/) installed on your computer.
 - [AWS CLI](https://aws.amazon.com/cli/) installed.
@@ -429,6 +429,8 @@ Go ahead and refresh your ECR repository, and your application image will be dep
 
 ## Conclusion
 
-Deploying applications to AWS ECR with a GitHub Actions CI/CD creates a reliable pipeline that automates Docker builds and [deployment](/blog/deployment-strategies) cycles. This guide helped you learn how to deploy an application to AWS ECR using a GitHub Actions CI/CD pipeline. I hope you found the GitHub Actions workflow useful while leveraging automation to AWS resources. To further improve your [CI/CD pipelines](https://earthly.dev/blog/ci-vs-cd/), leverage other AWS services, such as [CodePipeline](https://aws.amazon.com/codedeploy/) and [CodeDeploy](https://aws.amazon.com/codepipeline/), and streamline your pipeline infrastructure.
+Deploying applications to AWS ECR with a GitHub Actions CI/CD creates a reliable pipeline that automates Docker builds and [deployment](/blog/deployment-strategies) cycles. This guide helped you learn how to deploy an application to AWS ECR using a GitHub Actions CI/CD pipeline. I hope you found the GitHub Actions workflow useful while leveraging automation to AWS resources.
+
+To further improve your [CI/CD pipelines](https://earthly.dev/blog/ci-vs-cd/), leverage other AWS services, such as [CodePipeline](https://aws.amazon.com/codedeploy/) and [CodeDeploy](https://aws.amazon.com/codepipeline/), and streamline your pipeline infrastructure.
 
 {% include_html cta/cta2.html %}
