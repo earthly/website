@@ -297,9 +297,10 @@ $ docker inspect 7484689f290f
 The ChainID is calculated by concatenating the DiffIDs of the layers in the image and hashing the result using the SHA256 algorithm. It is also used to verify the integrity of an image during transmission. Using the SHA256 values for the current and previous layers to determine the chainID. The formula is shown below.
 
 DiffID = chainID if the layer is the lowest layer among other layers.
+
 If not, chainID(n) = sha256sum [diffID(n-1), diffID(n)]
 
-**Let's calculate the ChainID for Layer-1:** 
+**Let's calculate the ChainID for Layer-1:**
 
 ChainID(Layer-1) = diffID(Layer-1)
 
@@ -310,6 +311,7 @@ ChainID(Layer-1) = d3cc7b6aa7bc15725c1a856ce06fe436da3fbccf0c9c06b04e45f79b3439c
 ChainID(Layer-2) = sha256sum [diffID(Layer-1), diffID(Layer-2)
 
 diffID(Layer-1) = d3cc7b6aa7bc15725c1a856ce06fe436da3fbccf0c9c06b04e45f79b3439c154
+
 diffID(Layer-2) = a7f421510691bf6a7b344d1efb738b3d343e252e7dde114a0dd86d432ef6000c
 
 ~~~{.bash caption=">_"}
