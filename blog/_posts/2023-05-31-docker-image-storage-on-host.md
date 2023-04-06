@@ -9,7 +9,7 @@ internal-links:
  - just an example
 ---
 
-Developers and system administrators can create, deploy, and run distributed applications using the Docker platform. Docker containers, which offer a constant and isolated environment for applications to execute in, are running instances of Docker images. They make it simple to maintain, scale, and guarantee that applications function reliably across many contexts.
+Developers and system administrators can create, deploy, and run distributed applications using the Docker platform. Docker containers, which offer a constant and isolated environment for applications to execute in, are running instances of [Docker](/blog/rails-with-docker)  images. They [make](/blog/makefiles-on-windows) it simple to maintain, scale, and guarantee that applications function reliably across many contexts.
 
 However, what exactly is an image? What does it include, and where does it reside after we have built it? This article will answer all these questions by explaining the internals of Docker images and how these images are stored on the host machine.
 
@@ -163,7 +163,7 @@ We'll take a closer look at the specifics of Docker image storage in the next se
 
 ## Docker Image Storage
 
-Docker Storage Drivers are the one which controls the storage of container's writable layers and image layers on the Docker host machine. The writable layer of the container is ideal for storing the ephemeral data that is created during the runtime; however, it does not survive after container deletion. Further, the storage drivers are also knowledgeable about the mechanics of how these levels interact with one another and its arrangements using the manifest files.
+Docker Storage Drivers are the one which controls the storage of container's writable layers and image layers on the Docker host machine. The writable layer of the container is ideal for storing the ephemeral data that is created during the runtime; however, it does not survive after [container](/blog/docker-slim) deletion. Further, the storage drivers are also knowledgeable about the mechanics of how these levels interact with one another and its arrangements using the manifest files.
 
 Additionally, Docker supports a wide range of storage drivers, including overlay2, fuse-overlay2, btrfs, zfs, aufs, overlay, devicemapper, and vfs. Let's obtain the storage driver information from the host machine using the `docker info` command:
 
@@ -189,7 +189,7 @@ We've identified that the root directory of Docker is `/var/lib/docker`.
 
 ## Image Internals
 
-Every Docker image has a corresponding JSON structure that contains information on the image's essential attributes, such as the date, the creator, and runtime configuration like entrypoint, networking, and volumes. Use `docker inspect` command to view the image attributes:
+Every Docker image has a corresponding [JSON](/blog/convert-to-from-json) structure that contains information on the image's essential attributes, such as the date, the creator, and runtime configuration like entrypoint, networking, and volumes. Use `docker inspect` command to view the image attributes:
 
 ~~~
 $ docker inspect alpine:latest
@@ -362,7 +362,7 @@ To sum up, the Docker images are stored in layers, each of which is identified b
 
 In summary, understanding how Docker images are stored on the host machine is crucial for developers who work with Docker on a daily basis. They can also gain more insights on how Docker is handling image management internally.
 
-With this in-depth understanding of how Docker images are saved on the host machines, developers can better manage their Docker environments and resolve any problems that may arise. Further, developers may enhance their Docker processes and fully utilize the strength and adaptability of Docker containerization.
+With this in-depth understanding of how [Docker](/blog/rails-with-docker) images are saved on the host machines, developers can better manage their Docker environments and resolve any problems that may arise. Further, developers may enhance their Docker processes and fully utilize the strength and adaptability of Docker containerization.
 
 ## Outside Article Checklist
 
@@ -372,5 +372,4 @@ With this in-depth understanding of how Docker images are saved on the host mach
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
 - [ ] Add Earthly `CTA` at bottom `{% include_html cta/cta2.html %}`
