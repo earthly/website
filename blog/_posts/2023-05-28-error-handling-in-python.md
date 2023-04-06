@@ -3,7 +3,7 @@ title: "Error Handling in Python"
 categories:
   - Tutorials
 toc: true
-author: Daniel
+author: Daniel Boadzie
 
 internal-links:
  - Python
@@ -387,7 +387,3 @@ You should have a good understanding of how to handle errors in your Python proj
 The code for this article can be found on [GitHub](https://github.com/Boadzie/error-handling-in-python)
 
 {% include_html cta/cta2.html %}
-
-## Outside Article Checklist
-
-- [ ] Add in Author page
