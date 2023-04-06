@@ -3,7 +3,7 @@ title: "How the Docker Image Is Stored on the Host machine"
 categories:
   - Tutorials
 toc: true
-author: Adam
+author: Sriram Ramanujam
 
 internal-links:
  - Docker-Image
@@ -371,7 +371,6 @@ With this in-depth understanding of how [Docker](/blog/rails-with-docker) images
 
 ## Outside Article Checklist
 
-- [ ] Add in Author page
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
