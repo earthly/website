@@ -26,7 +26,7 @@ You can find the code samples used in this tutorial in [this repository](https:/
 
 ## Getting Started with the Basic Logging
 
-Python's built-in `logging` module provides a flexible and powerful framework for implementing logging in software applications. In this section, you will learn the basics of logging using Python's logging module. These basics include setting up logging and using different log levels.
+Python's built-in `logging` module provides a flexible and powerful framework for implementing logging in software applications. In this section, you will learn the basics of logging using Python's logging module. These basics include setting up [logging](/blog/understanding-docker-logging-and-log-files) and using different log levels.
 
 ### Setting Up Basic Logging
 
@@ -45,7 +45,7 @@ However, it is important to note that it's not always necessary to use `basicCon
 
 ### Logging Messages using Different Log Levels
 
-Logging levels in Python's `logging` module allow you to control the verbosity and importance of the logged messages. Each logging level has a specific purpose and is useful in different situations. Each logging level has a numeric value associated with it that represents its severity. Here are the different logging levels (or severity levels) that you get with the `logging` module:
+Logging levels in Python's `logging` module allow you to control the verbosity and importance of the logged messages. Each logging level has a specific purpose and is useful in different situations. Each logging level has a numeric value associated with it that represents its severity. Here are the different [logging](/blog/understanding-docker-logging-and-log-files) levels (or severity levels) that you get with the `logging` module:
 
 - `NOTSET` (0): It is the lowest level in the logging hierarchy and is used to indicate that no specific logging level has been set for a logger or a handler (more on handler later on in the article). It is essentially a placeholder level that is used when the logging level is not explicitly defined.
 
@@ -61,7 +61,7 @@ Logging levels in Python's `logging` module allow you to control the verbosity a
 
 By using different logging levels, you can control the amount of information that is logged and focus on the messages that are most important for your application. This can help you diagnose problems quickly and efficiently, while also reducing the amount of noise in your logs.
 
-When a logger is created, its logging level is set to `NOTSET` by default. This means that the logger will inherit its effective logging level from its parent logger (more on this in the logging hierarchy section), and if no parent logger is set, it will behave as if its logging level is `NOTSET`.
+When a logger is created, its [logging](/blog/understanding-docker-logging-and-log-files) level is set to `NOTSET` by default. This means that the logger will inherit its effective logging level from its parent logger (more on this in the logging hierarchy section), and if no parent logger is set, it will behave as if its logging level is `NOTSET`.
 
 It's important to note that the `root` logger, which is the highest-level logger in the logging hierarchy, has a default logging level of `WARNING`.
 
@@ -370,7 +370,7 @@ The first message starts with the string "Important:", so it passes the filter a
 
 ## Structured JSON Logging and Error Logging
 
-Up to this point in the tutorial, we have been using a custom plain text format for logging that is designed to be readable by humans. Traditional logging can sometimes fall short in providing comprehensive insights into the application's behavior. Structured JSON logging aims to solve this problem by providing more structured, machine-readable log entries that can be easily analyzed and processed.
+Up to this point in the tutorial, we have been using a custom plain text format for logging that is designed to be readable by humans. Traditional logging can sometimes fall short in providing comprehensive insights into the application's behavior. Structured [JSON](/blog/convert-to-from-json) logging aims to solve this problem by providing more structured, machine-readable log entries that can be easily analyzed and processed.
 
 ### The `python-json-logger` Library
 
@@ -811,9 +811,9 @@ In order to effectively use logging in Python, you should consider the following
 - Consider using custom loggers to help organize and categorize your logs based on different parts of your code or different components of your application.
 - Rotate your logs to save disk space and ensure that you can easily find and analyze relevant logs from different points in time.
 - Make sure to handle errors and exceptions appropriately in your logging code to avoid unexpected behavior and ensure that you capture all relevant information.
-- Consider using structured logging formats like JSON or XML to make it easier to parse and analyze your logs with automated tools.
+- Consider using structured logging formats like [JSON](/blog/convert-to-from-json) or XML to make it easier to parse and analyze your logs with automated tools.
 
-## Wrapping Up
+## Conclusion
 
 Logging is an important aspect of software development that helps in monitoring, debugging, and analyzing the behavior of an application. Python provides a powerful and flexible logging module that allows developers to implement various logging features in their applications.
 
@@ -828,5 +828,4 @@ In addition, the article also discussed the Python logging hierarchy, which prov
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
 - [ ] Add Earthly `CTA` at bottom `{% include_html cta/cta2.html %}`
