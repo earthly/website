@@ -364,6 +364,8 @@ In summary, understanding how Docker images are stored on the host machine is cr
 
 With this in-depth understanding of how [Docker](/blog/rails-with-docker) images are saved on the host machines, developers can better manage their Docker environments and resolve any problems that may arise. Further, developers may enhance their Docker processes and fully utilize the strength and adaptability of Docker containerization.
 
+{% include_html cta/cta2.html %}
+
 ## Outside Article Checklist
 
 - [ ] Add in Author page
@@ -372,4 +374,3 @@ With this in-depth understanding of how [Docker](/blog/rails-with-docker) images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/cta2.html %}`
