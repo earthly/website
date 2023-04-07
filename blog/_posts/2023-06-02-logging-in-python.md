@@ -27,7 +27,7 @@ Before diving into this tutorial, you should have:
 
 You can find the code samples used in this tutorial in [this repository](https://github.com/ashutoshkrris/logging-tutorial).
 
-## Getting Started with Logging
+## Getting Started With Logging
 
 ![Start]({{site.images}}{{page.slug}}/start.png)\
 
