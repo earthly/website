@@ -100,11 +100,10 @@ Here are a few scenarios where the `try-except` blocks can be useful for handlin
 1. Reading a file: When reading a file in Python, there is a possibility that the file may not exist, or the program may not have sufficient permissions to read the file. In such cases, a try-except block can be used to catch the [`FileNotFoundError`](https://docs.python.org/3/library/exceptions.html) and [`PermissionError`](https://docs.python.org/3/library/exceptions.html) exceptions that are raised respectively for the two scenarios. A user-friendly message can then be provided to the user.
 
       This is shown in the code below:
-
       ~~~{.python caption="error-handling-in-python.ipynb"}
       try:
           with open('example.txt') as f:
-                  data = f.read()
+              data = f.read()
       except (FileNotFoundError, PermissionError) as e:
           print(f"Error: {e}")
       ~~~
@@ -134,9 +133,9 @@ Here's an example of how to handle the `FileNotFoundError` and the `ValueError` 
 
 ~~~{.python caption="error-handling-in-python.ipynb"}
 try:
-           with open("file.txt") as f:
-           content = f.read()
-       num = int("abc")
+    with open("file.txt") as f:
+        content = f.read()
+    num = int("abc")
 except FileNotFoundError:
     print("File not found!")
 except ValueError:
@@ -156,7 +155,7 @@ Here's another example that demonstrates how to handle multiple exceptions in a 
 ~~~{.python caption="error-handling-in-python.ipynb"}
 try:
     with open("example.txt", "r") as file:
-            contents = file.read()
+        contents = file.read()
     value = int(input("enter a number: "))
     num = 10 / value
 except ZeroDivisionError:
@@ -226,7 +225,7 @@ Python built-in exceptions like `ValueError`, `TypeError`, and `IndexError` can 
 ~~~{.python caption="error-handling-in-python.ipynb"}
 def get_element(data, index):
     if index >= len(data):
-           raise IndexError("Index out of range")
+        raise IndexError("Index out of range")
     return data[index]
 ~~~
 
@@ -266,7 +265,7 @@ except:
     print("An error occurred!")
 finally:
     if file:
-           file.close()
+         file.close()
 ~~~
 
 The code above opens a file named file.txt and performs some work on it, and then closes the file. If an error occurs while opening or working with the file, the code will catch the exception and print an error message. Regardless of whether an error occurred, the `finally` block is executed, which closes the file using the `close()` method. This ensures that the file is properly closed and any resources are released, even if an error occurred.
@@ -285,7 +284,7 @@ finally:
     if file:
           file.close()
     if os.path.exists("file.txt"):
-           os.remove("file.txt")
+          os.remove("file.txt")
 ~~~
 
 In the above example, the `os.remove()` function is called in the `finally` block to delete the file if it exists. This ensures that any resources associated with the file are released, even if an error occurred.
@@ -384,6 +383,6 @@ In conclusion, this article has provided an overview of error handling in Python
 
 You should have a good understanding of how to handle errors in your Python projects and should feel confident in your ability to write more robust and reliable code.
 
-The code for this article can be found on [GitHub](https://github.com/Boadzie/error-handling-in-python)
+The code for this article can be found on [GitHub](https://github.com/Boadzie/error-handling-in-python).
 
 {% include_html cta/cta2.html %}
