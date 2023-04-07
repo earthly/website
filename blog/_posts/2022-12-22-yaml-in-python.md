@@ -34,7 +34,7 @@ To follow along you'll need the following:
 - Local installation of Python 3.x
 - A text editor
 
-## The  Library
+## The PyYAML Library
 
 The [PyYAML](https://pyyaml.org/) library is widely used for working with YAML in Python. It comes with a *yaml* module that you can use to read, write, and modify contents of a YAML file, serialize YAML data, and convert YAML to other data formats like [JSON](https://www.json.org/json-en.html).
 
@@ -92,6 +92,8 @@ data = {
 }
 ~~~
 
+#### The `dump()` Function
+
 Now, to create a *yaml* representation of the `data` dictionary created above, you can use the `dump()` function in the *yaml* module . The `dump()` function expresses Python objects in YAML format. It accepts two arguments, data (which is a Python object) which is required, and optionally, a file to store the YAML format of the Python object.
 
 You can also pass in *optional* parameters that specify formatting details for the emitter. The commonly used optional parameters are `sort_keys` for sorting the keys of a Python object in alphabetical order, and `default_flow-style` for proper indentation of nested lists, which is set to `True` by default.
@@ -126,9 +128,9 @@ Languages:
   
 You can also create multiple blocks of *yaml* data from a Python object, such as a list of dictionaries into a single stream, where each dictionary is represented as a YAML document. To do this, you can use the `dump_all()` function.
 
-<aside>
+#### The `dump_all()` Function
+
 💡 The `dump_all()` function is used to serialize Python objects—in order—into a single stream. It only accepts Python objects represented as lists, such as a list of dictionaries. If you pass in a dictionary object instead of a Python object represented as lists, the `dump_all()` function will output each item of the dictionary as a YAML document.
-</aside>
 
 Let's define a list of dictionaries called `data2`.
 
@@ -241,7 +243,11 @@ write_yaml_to_file(data2, 'output2')
 
 ## Reading YAML in Python
 
-The *yaml* module comes with a function that can be used to read YAML files. This process of YAML files with PyYAML is also referred to as loading a YAML file. The `safe_load()` function is used to read YAML files with the PyYAML library. The other loader you can use but is not recommended is the `load()` function.
+The *yaml* module comes with a function that can be used to read YAML files. This process of YAML files with PyYAML is also referred to as loading a YAML file.
+
+### How to Read YAML Files With `safe_load()`
+
+The `safe_load()` function is used to read YAML files with the PyYAML library. The other loader you can use but is not recommended is the `load()` function.
 
 <aside>
 💡 The `safe_load()` function is used to read YAML from unreliable and untrusted sources. The `load()` function is not reliable, especially when it is used to load a supposedly malicious script. The authors recommend using the `safe_load()` function instead. However, both functions have Python objects as their return type.

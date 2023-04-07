@@ -30,9 +30,9 @@ In addition to that, databases are stateful applications, while containers are b
 
 {% include_html cta/docker1.html %}
 
-## Implement PostgreSQL Using Docker
+## How to Run PostgreSQL Using Docker
 
-In this section, you're going to implement a PostgreSQL instance using Docker and use a graphical user interface (GUI) and pgAdmin to connect to the database. To begin, you need to have Docker installed on your machine. You can check if you already have Docker installed on your machine by running the following command on your terminal:
+In this section, you're going to run a PostgreSQL instance using Docker and use a graphical user interface (GUI) and pgAdmin to connect to the database. To begin, you need to have Docker installed on your machine. You can check if you already have Docker installed on your machine by running the following command on your terminal:
 
 ~~~{.bash caption=">_"}
 $ docker --version
@@ -89,7 +89,7 @@ This command lists all the images that are installed in your local machine.
 
 {% include_html cta/docker2.html %}
 
-## Run the PostgreSQL Container
+## Run the PostgreSQL Docker Container
 
 Now that you have the PostgreSQL Docker image on your machine, you can start the container. As mentioned above, a container is an instance of a Docker image. In order to start the PostgreSQL container, there are a few parameters that you need to provide Docker, which are explained below:
 
