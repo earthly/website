@@ -296,23 +296,23 @@ $ docker inspect 7484689f290f
 
 The ChainID is calculated by concatenating the DiffIDs of the layers in the image and hashing the result using the SHA256 algorithm. It is also used to verify the integrity of an image during transmission. Using the SHA256 values for the current and previous layers to determine the chainID. The formula is shown below.
 
-DiffID = chainID if the layer is the lowest layer among other layers.
+**DiffID = ChainID** if the layer is the lowest layer among other layers.
 
-If not, chainID(n) = sha256sum [diffID(n-1), diffID(n)]
+If not, **ChainID(n) = sha256sum [DiffID(n-1), DiffID(n)]**
 
-**Let's calculate the ChainID for Layer-1:**
+**Let's calculate the ChainID for Layer 1:**
 
-ChainID(Layer-1) = diffID(Layer-1)
+ChainID(Layer 1) = DiffID(Layer 1)
 
-ChainID(Layer-1) = d3cc7b6aa7bc15725c1a856ce06fe436da3fbccf0c9c06b04e45f79b3439c154
+ChainID(Layer 1) = d3cc7b6aa7bc15725c1a856ce06fe436da3fbccf0c9c06b04e45f79b3439c154
 
 **Let's calculate the ChainID for Layer-2:**
 
-ChainID(Layer-2) = sha256sum [diffID(Layer-1), diffID(Layer-2)
+ChainID(Layer 2) = sha256sum [DiffID(Layer 1), DiffID(Layer 2)
 
-diffID(Layer-1) = d3cc7b6aa7bc15725c1a856ce06fe436da3fbccf0c9c06b04e45f79b3439c154
+DiffID(Layer 1) = d3cc7b6aa7bc15725c1a856ce06fe436da3fbccf0c9c06b04e45f79b3439c154
 
-diffID(Layer-2) = a7f421510691bf6a7b344d1efb738b3d343e252e7dde114a0dd86d432ef6000c
+DiffID(Layer 2) = a7f421510691bf6a7b344d1efb738b3d343e252e7dde114a0dd86d432ef6000c
 
 ~~~{.bash caption=">_"}
 
@@ -321,14 +321,15 @@ $ echo -n 'sha256:d3cc7b6aa7bc15725c1a856ce06fe436da3fbccf0c9c06b04e45f79b3439c1
 29bd3d7c6e1683e422776b9d3285e8a3f1272f07656fc63a941cb7729a169100
 ~~~
 
-ChainID(Layer-2) = 29bd3d7c6e1683e422776b9d3285e8a3f1272f07656fc63a941cb7729a169100
+ChainID(Layer 2) = 29bd3d7c6e1683e422776b9d3285e8a3f1272f07656fc63a941cb7729a169100
 
-Let's calculate the ChainID for Layer-3:
+**Next, let's calculate the ChainID for Layer 3:**
 
-ChainID(Layer-3) = sha256sum [diffID(Layer-2), diffID(Layer-3)
+ChainID(Layer 3) = sha256sum [DiffID(Layer 2), DiffID(Layer 3)
 
-diffID(Layer-2) = a7f421510691bf6a7b344d1efb738b3d343e252e7dde114a0dd86d432ef6000c
-diffID(Layer-3) = 6ac2db160c6cf3dcf1aff0ced069aa98da28c50cff5cd3c8881c04f42e3ef1fe
+DiffID(Layer 2) = a7f421510691bf6a7b344d1efb738b3d343e252e7dde114a0dd86d432ef6000c
+
+DiffID(Layer 3) = 6ac2db160c6cf3dcf1aff0ced069aa98da28c50cff5cd3c8881c04f42e3ef1fe
 
 ~~~{.bash caption=">_"}
 
@@ -337,7 +338,7 @@ $ echo -n "sha256:a7f421510691bf6a7b344d1efb738b3d343e252e7dde114a0dd86d432ef600
 9b3abbf0ab6402c9bcb9cce411268ffe24573d790f0333d8ae06794313295dbd
 ~~~
 
-ChainID(Layer-3) = 9b3abbf0ab6402c9bcb9cce411268ffe24573d790f0333d8ae06794313295dbd
+ChainID(Layer 3) = 9b3abbf0ab6402c9bcb9cce411268ffe24573d790f0333d8ae06794313295dbd
 
 ### CacheID
 
