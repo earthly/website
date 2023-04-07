@@ -334,6 +334,8 @@ newfile
 filepath
 io
 
+datasource
+
 dereference
 dereferences
 dereferencing
@@ -345,3 +347,8 @@ panick
 Cmd
 
 updation
+
+subclass
+subclasses
+Subclass
+Subclassing
