@@ -398,3 +398,7 @@ Kumar Harsh:
     name    : "Kumar Harsh"
     bio     : "Kumar Harsh is an indie software developer and devrel enthusiast. He is a spirited writer who puts together content around popular web technologies like Serverless and JavaScript."
     avatar  : "/assets/images/authors/kumar-harsh.jpg"
+Ali Mannan Tirmizi:
+    name    : "Ali Mannan Tirmizi"
+    bio     : "Electrical Engineer by Education. Served 3 years as CIO for Procter & Gamble's beauty manufacturing facility. Currently serving as senior DevOps manager P&G's supply chain platform."
+    avatar  : "/assets/images/authors/ali-mannan.jpg"
