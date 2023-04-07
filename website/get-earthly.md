@@ -18,7 +18,7 @@ os:
           <code class="Home-product-Earthfile-code">sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/latest/download/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly && /usr/local/bin/earthly bootstrap --with-autocomplete'</code>
 
 
-                  <div class="copy-item absolute pr-4 top-1 right-0 text-white z-10 cursor-pointer" data-clipboard-text="sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/latest/download/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly && /usr/local/bin/earthly bootstrap --with-autocomplete'">Copy</div>
+                  <div class="copy-item absolute pr-4 top-1 right-0 text-white z-10 cursor-pointer" data-clipboard-text="sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/latest/download/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly && /usr/local/bin/earthly bootstrap --with-autocomplete'" onclick="linuxCopyClick()">Copy</div>
 
       </div>
 
@@ -52,7 +52,7 @@ os:
           </header>
           <code class="Home-product-Earthfile-code">brew install earthly && earthly bootstrap</code>
 
-          <div class="copy-item absolute pr-4 top-1 right-0 text-white z-10 cursor-pointer" data-clipboard-text="brew install earthly && earthly bootstrap">Copy</div>
+          <div class="copy-item absolute pr-4 top-1 right-0 text-white z-10 cursor-pointer" data-clipboard-text="brew install earthly && earthly bootstrap" onclick="macCopyClick()">Copy</div>
       </div>
 
 
@@ -92,7 +92,7 @@ os:
           </header>
           <code class="Home-product-Earthfile-code">sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/latest/download/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly && /usr/local/bin/earthly bootstrap  --with-autocomplete'</code>
 
-              <div class="copy-item absolute pr-4 top-1 right-0 text-white z-10 cursor-pointer" data-clipboard-text="sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/latest/download/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly && /usr/local/bin/earthly bootstrap  --with-autocomplete'">Copy</div>
+              <div class="copy-item absolute pr-4 top-1 right-0 text-white z-10 cursor-pointer" data-clipboard-text="sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/latest/download/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly && /usr/local/bin/earthly bootstrap  --with-autocomplete'" onclick="windowsCopyClick()">Copy</div>
       </div>
 
 
@@ -195,7 +195,7 @@ For alternative installation options see the <a class="underline blue-link" href
         </header>
         <code class="Home-product-Earthfile-code">earthly github.com/earthly/hello-world+hello</code>
 
-  <div class="copy-item absolute pr-4 top-1 right-0 text-white z-10 cursor-pointer" data-clipboard-text="earthly github.com/earthly/hello-world+hello">Copy</div>
+  <div class="copy-item absolute pr-4 top-1 right-0 text-white z-10 cursor-pointer" data-clipboard-text="earthly github.com/earthly/hello-world+hello" onclick="verifyInstallCopyClick()">Copy</div>
     </div>
  
 </div>
@@ -252,3 +252,33 @@ Need some inspiration to get started with your project? <div class="mt-2 pb-4">C
 </div>
 
 </div>
+
+<script>
+  function linuxCopyClick() {
+    analytics.track('get-earthly-linux-copy-click', {
+      category: 'Copy Click',
+      label: 'get-earthly-linux-copy-click'
+    });
+  }
+
+  function macCopyClick() {
+    analytics.track('get-earthly-mac-copy-click', {
+      category: 'Copy Click',
+      label: 'get-earthly-mac-copy-click'
+    });
+  }
+
+  function windowsCopyClick() {
+    analytics.track('get-earthly-windows-copy-click', {
+      category: 'Copy Click',
+      label: 'get-earthly-windows-copy-click'
+    });
+  }
+
+  function verifyInstallCopyClick() {
+    analytics.track('get-earthly-verify-install-copy-click', {
+      category: 'Copy Click',
+      label: 'get-earthly-verify-install-copy-click'
+    });
+  }
+</script>
