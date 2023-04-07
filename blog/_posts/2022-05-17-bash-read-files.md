@@ -15,11 +15,11 @@ topic: cli
 
 For programmers, Bash enables you to efficiently search for particular keywords or phrases by reading each line separately. Bash can also be used for reading files for a variety of reasons, like shell scripting, searching, text processing, building processes, logging data, and automating administrative tasks. When you're done with this article, you'll be able to use Bash to read files line by line, use custom delimiters, assign variables, and more.
 
-## Using Bash
+## How to Read Files Using Bash
 
 Below, you'll learn about various reading operations with Bash, including reading a file line by line with the `read` command that loops over the contents of a file using a `while` loop, using custom delimiters, caching, and more.
 
-### Reading a File Line by Line with `read` and `while`
+### Reading a File Line by Line with `read` and `while` in Bash
 
 The following code illustrates how to use the `while` conditional loop to read a file:
 
@@ -70,7 +70,7 @@ $ chmod +x read_bash.sh
 $ sh read_bash.sh
 ~~~
 
-### Using Custom Delimiters
+### Using Custom Delimiters When Reading Files in Bash
 
 [Delimiters](https://techieroop.com/how-to-split-string-with-a-delimiter-in-shell-script/) are a sequence of one or more characters that specify the boundary between distinct parts of a file, including plain text, math, or other types of data streams.
 
@@ -273,7 +273,7 @@ brown
 Fox
 ~~~
 
-## Other File-Reading Options
+## Other File-Reading Options in Bash
 
 In addition to the file-reading operations described earlier, there are some other methods in Bash whose primary job is not related to reading input but is used for reading files.
 

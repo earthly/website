@@ -402,3 +402,7 @@ Daniel Boadzie:
     name    : "Daniel Boadzie"
     bio     : "As a passionate data scientist and full-stack web developer, I am constantly inspired by the power of data to drive meaningful insights and build robust solutions that can make a real impact. Whether it's working with complex data sets, developing machine learning models, or building intuitive web interfaces, I am dedicated to creating solutions that are both technically sound and user-friendly."
     avatar  : "/assets/images/authors/daniel-boadzie.jpg"
+Ali Mannan Tirmizi:
+    name    : "Ali Mannan Tirmizi"
+    bio     : "Electrical Engineer by Education. Served 3 years as CIO for Procter & Gamble's beauty manufacturing facility. Currently serving as senior DevOps manager P&G's supply chain platform."
+    avatar  : "/assets/images/authors/ali-mannan.jpg"

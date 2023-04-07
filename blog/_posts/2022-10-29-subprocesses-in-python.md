@@ -1,5 +1,5 @@
 ---
-title: "Understanding Subprocesses in Python"
+title: "Python Subprocess: Run Bash Commands and More in Python"
 categories:
   - Tutorials
 toc: true
@@ -24,7 +24,7 @@ Let's begin!
 
 {% include_html cta/python1.html %}
 
-## Python Subprocesses Module: The Basics
+## Python Subprocess Module: The Basics
 
 <div class="notice--big--primary">
 **Prerequisites**:
@@ -41,7 +41,7 @@ import subprocess
 
 [Download the code and follow along](https://github.com/balapriyac/Python-Subprocesses/tree/main)\
 
-### How Does Subprocess Execution Occur?
+### How Does Subprocess Execution Occur in Python?
 
 After importing the `subprocess` module, you can call the `run()` function with the syntax: `subprocess.run(command)` to run an external command. This call to the `run()` function invokes a subprocess.
 
@@ -54,11 +54,11 @@ When a subprocess is invoked, the following actions occur under the hood:
 
 ![parent-and-child-processes-python]({{site.images}}{{page.slug}}/Y1kRZww.png)\
 
-### The `CompletedProcess` Object
+### How to Run a Subprocess With `subprocess.run()`
 
 Calling the `subprocess.run()` function with an external command or program as the argument prints out the output of the command onto the console. The function call also returns a `CompletedProcess` object which has a set of useful attributes.
 
-As our first subprocess, let's run the `ls` command that lists the contents of the working directory.
+As our first subprocess, let's run the `ls` command that lists the contents of the working directory:
 
 ~~~{.python caption="main.py"}
 process_1 = subprocess.run("ls")
@@ -85,6 +85,8 @@ In the above output:
 - If the output of the command is captured, the `stdout` attribute contains the output; if we do not capture the output, `stdout` is `None`.
 
 <div class="notice--big--primary">
+### Subprocess Popen Constructor
+
 In the subprocess module, the [Popen class](https://docs.python.org/3/library/subprocess.html#subprocess.Popen) handles the creation and management of subprocesses. However, the `run()` function is recommended for invoking subprocesses and suffices for most common use cases.
 </div>
 
@@ -170,7 +172,7 @@ None
 
 {% include_html cta/python2.html %}
 
-## How to Capture and Redirect Outputs
+## How to Capture and Redirect Subprocess Outputs
 
 Running `subprocess.run(command)` prints the output of the command onto the console, and the `stdout` attribute is `None` by default if we don't capture the output. When you run Bash commands such as `chmod` to change file permissions or the `sleep` command, you don't need to process the output. However, you may sometimes need to capture the outputs and use them in next steps in your program.
 
@@ -216,6 +218,8 @@ py_subprocess.py
 py_unit_testing
 string_manipulation
 ~~~
+
+## 📋 A Note on Subprocess Pipe
 
 Under the hood, setting `capture_output` to `True` redirects both the output and the errors to `subprocess.PIPE`. Therefore, you can also set `stdout` to `subprocess.PIPE` when calling the `run()` function.
 
@@ -337,7 +341,7 @@ subprocess.TimeoutExpired: Command '['sleep', '10']' timed \
 out after 2 seconds
 ~~~
 
-The above traceback for the `TimeoutExpired` exception is difficult to parse. We can choose Python's `try` and `except` statements to handle the `TimeoutExpired` exception.
+The above traceback for the `TimeoutExpired` exception is difficult to parse. We can use Python's `try` and `except` statements to handle the `TimeoutExpired` exception.
 
 The general syntax to use `try-except` statements is as follows:
 
