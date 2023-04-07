@@ -27,7 +27,7 @@ Before diving into this tutorial, you should have:
 
 You can find the code samples used in this tutorial in [this repository](https://github.com/ashutoshkrris/logging-tutorial).
 
-## Getting Started with the Basic Logging
+## Getting Started with Logging
 
 ![Start]({{site.images}}{{page.slug}}/start.png)\
 
@@ -48,7 +48,7 @@ logging.basicConfig()
 
 However, it is important to note that it's not always necessary to use `basicConfig()` to set up the root logger. You can simply import the logging module and use the root logger directly, which will use a default configuration that allows messages with a level severity of `WARNING` or above (more about severity level in the next section) to be printed to the console.
 
-### Logging Messages using Different Log Levels
+### Logging Messages Using Different Log Levels
 
 Logging levels in Python's `logging` module allow you to control the verbosity and importance of the logged messages. Each logging level has a specific purpose and is useful in different situations. Each logging level has a numeric value associated with it that represents its severity. Here are the different [logging](/blog/understanding-docker-logging-and-log-files) levels (or severity levels) that you get with the `logging` module:
 
@@ -265,7 +265,7 @@ You can see that the Logger object logs to the [standard error](https://docs.pyt
 
 To customize the output format and behavior of a custom logger, the `logging` module provides the `Formatter` and the `Handler` classes. The [`Formatter`](https://docs.python.org/3/library/logging.html#formatter-objects) is responsible for formatting the log output, while the [`Handler`](https://docs.python.org/3/library/logging.html#handler-objects) specifies where the log messages should be sent, such as the console, a file, or an HTTP endpoint. The [`Filter`](https://docs.python.org/3/library/logging.html#filter-objects) objects are available to provide advanced filtering capabilities for both Loggers and Handlers.
 
-### Understanding the Handlers and Their Role in Logging
+### Understanding Handlers and Their Role in Logging
 
 Handlers are responsible for defining where the log messages should be sent. A Handler can be thought of as a "channel" through which log messages are passed. When a log message is created, it is sent to the associated logger which then passes the message to its Handlers.
 
