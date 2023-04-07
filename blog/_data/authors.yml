@@ -398,6 +398,10 @@ Kumar Harsh:
     name    : "Kumar Harsh"
     bio     : "Kumar Harsh is an indie software developer and devrel enthusiast. He is a spirited writer who puts together content around popular web technologies like Serverless and JavaScript."
     avatar  : "/assets/images/authors/kumar-harsh.jpg"
+Sriram Ramanujam:
+    name    : "Sriram Ramanujam"
+    bio     : "A seasoned Global Network & Security Automation Architect with 10+ years of rich industry experience in developing scalable solutions for network automation, engineering design, operation and telemetry.  Realizing the projects from a technical concept, design, architecture leads to a full-fledged development, deployment and lifecycle management."
+    avatar  : "/assets/images/authors/sriram.png"
 Daniel Boadzie:
     name    : "Daniel Boadzie"
     bio     : "As a passionate data scientist and full-stack web developer, I am constantly inspired by the power of data to drive meaningful insights and build robust solutions that can make a real impact. Whether it's working with complex data sets, developing machine learning models, or building intuitive web interfaces, I am dedicated to creating solutions that are both technically sound and user-friendly."

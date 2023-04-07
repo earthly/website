@@ -2,3 +2,6 @@ Postgresql
 postgresql
 
 django
+
+mysql:latest
+mysql
