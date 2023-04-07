@@ -100,7 +100,7 @@ Here are a few scenarios where the `try-except` blocks can be useful for handlin
 1. Reading a file: When reading a file in Python, there is a possibility that the file may not exist, or the program may not have sufficient permissions to read the file. In such cases, a try-except block can be used to catch the [`FileNotFoundError`](https://docs.python.org/3/library/exceptions.html) and [`PermissionError`](https://docs.python.org/3/library/exceptions.html) exceptions that are raised respectively for the two scenarios. A user-friendly message can then be provided to the user.
 
       This is shown in the code below:
-      
+
       ~~~{.python caption="error-handling-in-python.ipynb"}
       try:
           with open('example.txt') as f:
