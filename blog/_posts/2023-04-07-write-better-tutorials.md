@@ -113,7 +113,7 @@ For this first attempt, we'll do very little work to help our reader understand.
 
 To read from a CSV file you use the `encoding/csv` package. You use the `Read()` function to read one line at a time. Or, you can use the `ReadAll()` function to read all the lines at once.
 
-~~~
+~~~{.go}
 package main
 
 import (
@@ -161,7 +161,7 @@ For draft two, let's try to be a bit more patient. We'll take time to walk throu
 
 In order to read from a csv file in Go, we first need to import the `encoding/csv`, the `fmt` and the `os` packages.
 
-~~~
+~~~{.go}
 package main
 
 import (
@@ -173,23 +173,25 @@ import (
 
 We start by opening the file.
 
-~~~
+~~~{.go}
 func main() {
+    
     file, err := os.Open("test.csv")
     if err != nil {
         fmt.Println(err)
     }
+
 ~~~
 
 Next we create a reader and pass in the file. This will allow us to read lines from the csv.
 
-~~~
+~~~{.go}
     reader := csv.NewReader(file)
 ~~~
 
 Finally, we can use the `Read()` function to read one line at a time. We can use the `ReadAll()` function to read all the lines at once.
 
-~~~
+~~~{.go}
     record, _ := reader.Read()
 
     records, _ := reader.ReadAll()
@@ -221,7 +223,7 @@ Go has its own built in standard library for dealing with CSV data. It's not ver
 
 Let's start by importing the `encoding/csv` package. We will also import `os` because we will need it to open and close the file, and `fmt` so we can print some values to the terminal.
 
-~~~
+~~~{.go}
 import (
     "encoding/csv"
     "fmt"
@@ -231,7 +233,7 @@ import (
 
 To get started, we need to open the `csv` file so that we can use it in our code. This is easy with the `os` package.
 
-~~~
+~~~{.go}
 file, err := os.Open("movies.csv")
 if err != nil {
     fmt.Println(err)
@@ -243,7 +245,7 @@ if err != nil {
 
 To read the data we first need to pass the file to the `csv.NewReader()` function. This function is unique to CSV files. It knows what they are and how to read data from them.
 
-~~~
+~~~{.go}
 reader := csv.NewReader(file)
 ~~~
 
@@ -251,7 +253,7 @@ This returns a [`Reader` struct](https://pkg.go.dev/encoding/csv#Reader) that ha
 
 Let's start by reading all of the lines from the file at once.
 
-~~~
+~~~{.go}
 allLines, err := reader.ReadAll()
 
 if err != nil {
@@ -272,7 +274,7 @@ Actually, there's way more, but for the sake of brevity, I've only included the 
 
 From here we can treat the data like any slice. For example, we can loop through it and print one line at a time to the console. Remember that each line is also a slice, so I've imported the `string` package so I can join each line of data into a simple string. This isn't necessary, I just thought it looked a little better when it printed to the console.
 
-~~~
+~~~{.go}
 for _, line := range allLines {
       str := strings.Join(line[:], ",")
     fmt.Println(str)
@@ -288,7 +290,7 @@ You Will Meet a Tall Dark Stranger,Comedy,Independent,35,1.211818182,43,$26.66 ,
 
 Or we can get the average Audience Score for all the movies. Remember, we're dealing slices of `strings`, so we'll need to convert any number values to an `int` if we want to do any math.
 
-~~~
+~~~{.go}
     for _, movie := range movies {
         i, err := strconv.Atoi(movie[3]) // index of audience score
         if err != nil {
@@ -316,8 +318,8 @@ You may have noticed that the first line in our `movies.csv` is different than t
 
 The header row in `movies.csv` is what's breaking our code when we try to calculate the average audience score. Specifically, this line is breaking.
 
-~~~
-i, err := strconv.Atoi(movie[3]) // index of audience score
+~~~{.go}
+    i, err := strconv.Atoi(movie[3]) // index of audience score
 ~~~
 
 `strconv.Atoi()` is a function that takes a string and converts it into an int. So "3" (string) becomes `3` (int). That works for all the rows of data because all of those rows contain a string representation of a number at index 3. The header row, on the other hand, contains the string "Audience score %" at index 3. It's the label for the column of data.
@@ -326,7 +328,7 @@ We need to find a way to deal with this header row before we try to calculate th
 
 `Read()` reads one record at a time. Each time you call `Read()`, it gets the next line in the file.
 
-~~~
+~~~{.go}
     fmt.Println(reader.Read())
     fmt.Println(reader.Read())
     fmt.Println(reader.Read())
@@ -344,14 +346,14 @@ Another way `Read()` is useful is when dealing with Headers.
 
 We can first grab the header with `Read()`. It's the first line, so we can do it right away. Then we can load the rest of the data using `ReadAll()`, since we want' all the movie data to help us calculate the average audience score.
 
-~~~
-headers, err := reader.Read()
-movies, err := reader.ReadAll()
+~~~{.go}
+    headers, err := reader.Read()
+    movies, err := reader.ReadAll()
 ~~~
 
 This illustrates something important about `ReadAll()`, which is that it reads all the lines in the file **that haven't been read yet**. So if we print the results, you'll see that `headers` is a single slice with all the header values. Separately, `movies` will be a slice of slices containing all the movie data, but not the header data, because we already read that line and saved it to the `headers` variable.  
 
-~~~
+~~~{.go}
     fmt.Println(headers)
     fmt.Println("--------------")
     fmt.Println(movies)
@@ -365,7 +367,7 @@ This illustrates something important about `ReadAll()`, which is that it reads a
 
 Now we can finally get back to calculating our average audience score.
 
-~~~
+~~~{.go}
     for _, movie := range movies {
         i, err := strconv.Atoi(movie[3]) // index of audience score
         if err != nil {
@@ -397,6 +399,6 @@ You can think about writing a tutorial in a similar way to building an API. Ther
 There's a lot more to writing a great tutorial than just Patience, running code, and providing context. We didn't cover everything. Structuring your tutorial in a logical way and learning how to write great introductions and conclusions, for example, could be articles on their own. So could choosing your audience, finding your writing voice, or learning how to write and rework multiple drafts.
 <!--vale on-->
 
-But I think these are three of the biggest pieces of advice we find ourselves given writers over and over again.
+But I think these are three of the biggest pieces of advice we find ourselves given writers over and over again. I hope you'll find them useful next time you write a technical tutorial.
 
 {% include_html cta/cta2.html %}
