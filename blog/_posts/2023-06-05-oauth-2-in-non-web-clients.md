@@ -35,6 +35,8 @@ You'll also learn the following by implementing Facebook login for a discord bot
 
 ### Challenges Associated With Implementing OAuth 2.0 in Non-Web Clients
 
+![Challenges]({{site.images}}{{page.slug}}/challenge.png)\
+
 > "Although the web is the main platform for OAuth 2, the specification also describes how to handle this kind of delegated access to other client types (browser-based applications, server-side web applications, native/mobile apps, connected devices, etc". - [auth0.com](https://auth0.com/intro-to-iam/what-is-oauth-2)
 
 The above excerpt asserts that OAuth 2.0 flow is difficult to implement in non-web clients as OAuth 2.0 flow was originally designed for the web platform. This has led to several drawbacks including the need for a redirect URL which can be difficult to implement in a non-web client application.
@@ -687,9 +689,3 @@ By exploring how Heroku CLI works behind the scenes, you've learned about the De
 With this knowledge, you can apply OAuth 2.0 Device Authorization Grant flow to your non-web client applications and provide a more secure and user-friendly login experience for your users. As a next step, you can try creating a CLI application using Google Login.
 
 {% include_html cta/cta2.html %}
-
-## Outside Article Checklist
-
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-
