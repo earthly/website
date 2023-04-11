@@ -1,5 +1,5 @@
 ---
-title: "Python Subprocess: Run Bash Commands and More in Python"
+title: "How to Use Python's Subprocess Module"
 categories:
   - Tutorials
 toc: true
