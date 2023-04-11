@@ -9,7 +9,7 @@ internal-links:
  - just an example
 ---
 
-Docker images allow you to easily deploy your applications to different infrastructures such as Kubernetes clusters, Cloud platforms and CI/CD pipelines. The size of these docker images matters when deploying and managing your applications. A large image imposes restrictions that necessitate enlarging storage capacity, resulting in expenses. The size of your application's Docker image impacts critical aspects such as performance, scalability, portability, and the [potential for security vulnerabilities](https://developers.redhat.com/blog/2016/03/09/more-about-docker-images-size) to arise.
+Docker images allow you to easily deploy your applications to different infrastructures such as [Kubernetes](/blog/automate-micsvcs-in-k8s) clusters, Cloud platforms and CI/CD pipelines. The size of these docker images matters when deploying and managing your applications. A large image imposes restrictions that necessitate enlarging storage capacity, resulting in expenses. The size of your application's Docker image impacts critical aspects such as performance, scalability, portability, and the [potential for security vulnerabilities](https://developers.redhat.com/blog/2016/03/09/more-about-docker-images-size) to arise.
 
 Building and pushing large Docker images to a registry such as [DockerHub](https://www.docker.com/products/docker-hub/) and [ECR](https://aws.amazon.com/ecr/) requires a significant amount of time. Additionally, a large image also slows downloads whenever you need to pull the application image from the registry resulting in increased time to build and deploy your application.
 
@@ -20,7 +20,7 @@ Ensuring you have light Docker images speeds up the build and deployment of your
 To follow along with this guide, ensure:
 
 - You have Docker and [Docker Desktop](https://www.docker.com/products/docker-desktop/) installed and running on your computer.
-- You have basic knowledge of working with Docker.
+- You have basic knowledge of working with [Docker](/blog/rails-with-docker).
 
 ## Best Strategies to minimize Docker Images
 
@@ -69,7 +69,7 @@ This is a huge image to run such a small application. Let's slim this Docker ima
 
 ### Choosing Base Images
 
-The base image is the starting point for creating a Docker image, and it typically includes the underlying operating system as well as any necessary software and packages. Common base images for Docker include Alpine Linux, Ubuntu, Debian, CentOS, and Fedora. When running a Node.js application in Docker, one common base image is the [official Node.js](https://hub.docker.com/_/node)  image available on Docker Hub. However, Node.js provides other variant image distributions with different tags that result in slimmer Docker base images. These tags include:
+The base image is the starting point for creating a Docker image, and it typically includes the underlying operating system as well as any necessary software and [packages](/blog/setup-typescript-monorepo). Common base images for Docker include Alpine Linux, Ubuntu, Debian, CentOS, and Fedora. When running a Node.js application in Docker, one common base image is the [official Node.js](https://hub.docker.com/_/node)  image available on Docker Hub. However, Node.js provides other variant image distributions with different tags that result in slimmer Docker base images. These tags include:
 
 [Bullseye](https://hub.docker.com/_/buildpack-deps/) - Provides a Debian distribution to reduce the number of packages that images need to install and thereby reduce the overall size of the custom image.
 [Alpine](https://hub.docker.com/_/alpine/)  - Any Node.js Alpine tags are derived from Alpine Linux to provide smaller base image distributions of about ~5MB.
@@ -232,7 +232,7 @@ REPOSITORY     TAG       IMAGE ID       CREATED         SIZE
 node_example   latest    b066d92ab741   2 minutes ago   181MB
 ~~~
 
-Multistage builds are not limited to the same `FROM` statements with the same base image. It can be used to dockerize multiple applications at once to minimize overall resource utilization. [This multistage build example](https://earthly.dev/blog/docker-multistage/) uses two FROM statements using Node.js and Nginx base images to implement a multistage build concept.
+[Multistage](/blog/docker-multistage) builds are not limited to the same `FROM` statements with the same base image. It can be used to dockerize multiple applications at once to minimize overall resource utilization. [This multistage build example](https://earthly.dev/blog/docker-multistage/) uses two FROM statements using Node.js and [Nginx](/blog/docker-slim) base images to implement a multistage build concept.
 
 It's good to note that when using a multistage build, Docker doesn't know the exact environment you are in. Docker follows the instructions defined in your Dockerfile to create the final image. However, you can build the image for development and production, specifying the target stage using a Docker `--target` flag to run the Docker build command. To create images for both the development and production stages, specify the builder stage as follows:
 
@@ -284,7 +284,7 @@ Docker ensures you package your applications for easier portability across diffe
 - How to use multistage build to Docker reduce image size
 - Tools to reduce Docker image size
 
-Using these strategies, you managed to reduce the Docker image of 1.16GB to 162MB. You have learned the tools and tips that you need to use to reduce Docker image size to approximately 85.86%. I hope you found this post helpful.
+Using these strategies, you managed to reduce the Docker image of 1.16GB to 162MB. You have learned the tools and tips that you need to use to reduce [Docker](/blog/rails-with-docker) image size to approximately 85.86%. I hope you found this post helpful.
 
 {% include_html cta/cta2.html %}
 
@@ -295,4 +295,3 @@ Using these strategies, you managed to reduce the Docker image of 1.16GB to 162M
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
