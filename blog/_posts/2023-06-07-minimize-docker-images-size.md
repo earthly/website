@@ -286,6 +286,8 @@ Docker ensures you package your applications for easier portability across diffe
 
 Using these strategies, you managed to reduce the Docker image of 1.16GB to 162MB. You have learned the tools and tips that you need to use to reduce Docker image size to approximately 85.86%. I hope you found this post helpful.
 
+{% include_html cta/cta2.html %}
+
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
@@ -294,4 +296,3 @@ Using these strategies, you managed to reduce the Docker image of 1.16GB to 162M
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/cta2.html %}`
