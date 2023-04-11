@@ -151,19 +151,19 @@ The following Python [packages](/blog/setup-typescript-monorepo) will be used:
 
 Create a [virtual environment](https://realpython.com/python-virtual-environments-a-primer/) and install the packages listed above by running the command below:
 
-~~~
+~~~{.bash caption=">_"}
 pip install discord.py python-dotenv
 ~~~
 
 Create a `.env` file and store the bot token in it as an [environment variable](/blog/bash-variables).
 
-~~~
+~~~{.env caption=""}
 BOT_TOKEN=<YOUR_BOT_TOKEN>
 ~~~
 
 Create a file named `config.py` and add the following code to it:
 
-~~~
+~~~{.python caption="config.py"}
 # config.py
 
 from dotenv import load_dotenv
@@ -176,7 +176,7 @@ BOT_TOKEN = os.getenv("BOT_TOKEN")
 
 Next, create a file named `bot.py` and add this code to it:
 
-~~~
+~~~{.python caption="bot.py"}
 # bot.py
 
 import discord
@@ -208,7 +208,7 @@ The above code snippet does the following:
 
 Add the functions below to the `bot.py` file to `ping` & `login` commands:
 
-~~~
+~~~{.python caption="bot.py"}
 # bot.py
 ...
 @client.event
@@ -237,7 +237,7 @@ The above code snippet does the following:
 
 Run the `bot.py` by running the command below:
 
-~~~
+~~~{.bash caption=">_"}
 python bot.py
 ~~~
 
@@ -272,7 +272,7 @@ Go to the App settings and copy the client id and secret then save them as envir
 
 By adding your credentials this way, you are following the [12-factor app methodology](https://12factor.net/config).
 
-~~~
+~~~{.env caption=""}
 # .env
 
 FACEBOOK_CLIENT_ID=<YOUR_FACEBOOK_APP_CLIENT_ID>
@@ -283,7 +283,7 @@ Go to the `config.py` file and get the newly added environment variables. Also, 
 
 Keeping your constants in a single place like this makes it easier for you to change them later without modifying the main code.
 
-~~~
+~~~{.python caption="config.py"}
 # config.py
 
 FACEBOOK_CLIENT_ID = os.getenv("FACEBOOK_CLIENT_ID")
@@ -302,13 +302,13 @@ Run the command below in your terminal to install `authlib` and `httpx`.
 
 Installing Authlib and Httpx will enable you to handle OAuth requests and make API requests respectively in the implementation of OAuth 2.0.
 
-~~~
+~~~{.bash caption=">_"}
 pip install Authlib httpx
 ~~~
 
 Update the login command by adding the code below to `bot.py` file.
 
-~~~
+~~~{.python caption="bot.py"}
 # bot.py
 ...
 
@@ -334,7 +334,8 @@ async def login_with_fb(ctx) -> None:
         client_secret=FACEBOOK_CLIENT_SECRET,
         redirect_uri=REDIRECT_URI,
     )
-    uri, state = fb_client.create_authorization_url(FACEBOOK_LOGIN_URL, state="test")
+    uri, state = fb_client.create_authorization_url\
+    (FACEBOOK_LOGIN_URL, state="test")
     await ctx.send(f"Click this link to login with facebook {uri}")
 ~~~
 
@@ -364,7 +365,7 @@ Now back to using the `code` response type
 
 Create a file named `server.py` and add the following:
 
-~~~
+~~~{.python caption="server.py"}
 # server.py
 
 import http.server
@@ -380,14 +381,16 @@ class RedirectHandler(http.server.BaseHTTPRequestHandler):
         self.send_response(200)
         self.send_header("Content-type", "text/html")
         self.end_headers()
-        self.wfile.write(b"<html><body><h1>Authorization successful</h1></body></html>")
+        self.wfile.write(b"<html><body><h1>Authorization successful \
+        </h1></body></html>")
         asyncio.create_task(self.handle_authorization_response(self.path))
 
 def start(handle_code_callback, host: str="localhost", port: int=3000):
     server_address = (host, port)
     httpd = http.server.HTTPServer(
         server_address,
-        lambda *args, **kwargs: RedirectHandler(handle_code_callback, *args, **kwargs),
+        lambda *args, **kwargs: RedirectHandler(handle_code_callback, \
+         *args, **kwargs),
     )
     httpd.handle_request()
 ~~~
@@ -400,7 +403,7 @@ The above code snippet creates a simple HTTP server using the built-in server cl
 
 Update the `bot.py` file with the code below in order to obtain the access token.
 
-~~~
+~~~{.python caption="bot.py"}
 # bot.py
 ...
 import server
@@ -410,7 +413,8 @@ async def login_with_fb(ctx) -> None:
     ... 
     # define callback function to handle code parameter
     async def handle_authorization_response(authorization_response):
-        # update state of the fb_client so it can match the one sent in the authorization url
+        # update state of the fb_client so it can match the 
+        # one sent in the authorization url
         fb_client.state = state
         token = await fb_client.fetch_token(
             ACCESS_TOKEN_ENDPOINT,
@@ -431,7 +435,7 @@ The above code snippet does the following:
 
 Run the command below to test it out:
 
-~~~
+~~~{.bash caption=">_"}
 python bot.py
 ~~~
 
@@ -458,13 +462,13 @@ You also need to get `CLIENT_TOKEN`. The `CLIENT_TOKEN` will be used to generate
 
 Copy the client token obtained and add it to the `.env` file.
 
-~~~
+~~~{.bash caption=">_"}
 CLIENT_TOKEN=<YOUR_CLIENT_TOKEN>
 ~~~
 
 Get the newly added environment variables in the `config.py` and generate your Facebook app access token as shown below.
 
-~~~
+~~~{.python caption="config.py"}
 # config.py
 CLIENT_TOKEN = os.getenv("CLIENT_TOKEN")
 FACEBOOK_APP_ACCESS_TOKEN = f"{FACEBOOK_CLIENT_ID}|{CLIENT_TOKEN}"
@@ -474,7 +478,7 @@ FACEBOOK_APP_ACCESS_TOKEN = f"{FACEBOOK_CLIENT_ID}|{CLIENT_TOKEN}"
 
 Add the following constants to the `config.py` file.
 
-~~~
+~~~{.python caption="config.py"}
 # config.py
 
 DEVICE_ACCESS_TOKEN_URL = f"{BASE_URL}device/login_status"
@@ -484,7 +488,7 @@ POLLING_INTERVAL_FOR_ACCESS_TOKEN = 5
 
 Create a file named `utils.py` and add the following utility functions:
 
-~~~
+~~~{.python caption="utils.py"}
 # utils.py
 
 import httpx
@@ -500,7 +504,8 @@ async def get_device_login_codes() -> tuple[str]:
     """returns only the user_code and code to obtain access token"""
     async with httpx.AsyncClient() as client:
         resp = await client.post(
-            DEVICE_LOGIN_CODE_URL, params={"access_token": FACEBOOK_APP_ACCESS_TOKEN}
+            DEVICE_LOGIN_CODE_URL, params={"access_token": \
+            FACEBOOK_APP_ACCESS_TOKEN}
         )
         data = resp.json()
         return (data.get("code"), data.get("user_code"))
@@ -513,7 +518,7 @@ The above code snippet does the following:
 
 Add the function that will handle error from the OAuth 2.0 device authorization grant flow in `utils.py`.
 
-~~~
+~~~{.python caption="utils.py"}
 # utils.py
 …
 def _handle_error_from_login_code(data_error, should_poll):
@@ -547,7 +552,7 @@ The function `_handle_error_from_login_code` purpose is to ensure that polling c
 
 Update the `utils.py` file with the function that gets access tokens and handles polling:
 
-~~~
+~~~{.python caption="utils.py"}
 # utils.py
 
 async def get_access_token_from_login_code(
@@ -555,9 +560,11 @@ async def get_access_token_from_login_code(
 ):
     """Obtain access_token along its expiration details using the code
 
-    NB: Polls the login status on maximum: 84 times if 5 s is used as poll interval.
+    NB: Polls the login status on maximum: 84 times if 5 s is used 
+    as poll interval.
     """
-    # ensure poll interval isn't set when should_poll isn't True and vice versa.
+    # ensure poll interval isn't set when should_poll isn't True 
+    #and vice versa.
     if (
         should_poll == True
         and poll_interval < POLLING_INTERVAL_FOR_ACCESS_TOKEN
@@ -565,8 +572,10 @@ async def get_access_token_from_login_code(
         and poll_interval > 0
     ):
         msg = (
-            "Poll interval should not be set when should_poll is False and vice versa."
-            f" Poll interval must be greater than or equal to {POLLING_INTERVAL_FOR_ACCESS_TOKEN}"
+            "Poll interval should not be set when should_poll \
+            is False and vice versa."
+            f" Poll interval must be greater than or equal to \
+            {POLLING_INTERVAL_FOR_ACCESS_TOKEN}"
         )
         raise AssertionError(msg)
     async with httpx.AsyncClient() as client:
@@ -606,13 +615,14 @@ Additionally, the code uses [httpx](https://www.python-httpx.org/async/) instead
 
 Make use of the UI module from discord to create a button.
 
-~~~
+~~~{.python caption="bot.py"}
 # bot.py
 ...
 import utils
 
 class FacebookLogin(discord.ui.View):
-    @discord.ui.button(label="Login with Facebook", style=discord.ButtonStyle.primary)
+    @discord.ui.button(label="Login with Facebook", \
+    style=discord.ButtonStyle.primary)
     async def device_code_login(
         self, interaction: discord.Interaction, button: discord.ui.Button
     ):
@@ -624,7 +634,9 @@ class FacebookLogin(discord.ui.View):
         )
         login_code_embed.add_field(
             name="Instruction",
-            value="Next, visit facebook.com/device (http://facebook.com/device) on your desktop or smartphone and enter this code. "
+            value="Next, visit facebook.com/device \
+            (http://facebook.com/device) on your desktop or smartphone \
+            and enter this code. "
             "You could click the link below to avoid typing.",
         )
         code_link = f"http://facebook.com/device?user_code={user_code}"
@@ -654,7 +666,7 @@ The above code snippet does the following:
 
 Add the command that will display the Facebook Login button.
 
-~~~
+~~~{.python caption="bot.py"}
 # bot.py
 @client.command(name="dlogin")
 async def device_login(ctx) -> None:
