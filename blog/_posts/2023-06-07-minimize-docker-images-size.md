@@ -6,7 +6,10 @@ toc: true
 author: Rose Chege
 
 internal-links:
- - just an example
+ - Optimization
+ - Docker
+ - Docker Image
+ - Strategies
 ---
 
 Docker images allow you to easily deploy your applications to different infrastructures such as [Kubernetes](/blog/automate-micsvcs-in-k8s) clusters, Cloud platforms and CI/CD pipelines. The size of these docker images matters when deploying and managing your applications. A large image imposes restrictions that necessitate enlarging storage capacity, resulting in expenses. The size of your application's Docker image impacts critical aspects such as performance, scalability, portability, and the [potential for security vulnerabilities](https://developers.redhat.com/blog/2016/03/09/more-about-docker-images-size) to arise.
@@ -22,7 +25,7 @@ To follow along with this guide, ensure:
 - You have Docker and [Docker Desktop](https://www.docker.com/products/docker-desktop/) installed and running on your computer.
 - You have basic knowledge of working with [Docker](/blog/rails-with-docker).
 
-## Best Strategies to minimize Docker Images
+## Best Strategies to Minimize Docker Images
 
 Optimizing and reducing your Docker images to the smallest size significantly reduce the cost and time spent building and pushing images. In this section, we will discuss different strategies to slim down Docker images and reduce size.
 
@@ -294,4 +297,3 @@ Using these strategies, you managed to reduce the Docker image of 1.16GB to 162M
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Add keywords for internal links to front-matter
