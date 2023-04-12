@@ -81,7 +81,7 @@ From the exploration of the codebase, I gathered the following:
 - The Heroku CLI uses the hostname of the user's computer as a unique identifier for the user's authentication session.
 - The hostname can be thought of as the state used in normal web client flow.
 - The following will be returned when [the authorization process starts](https://github.com/heroku/heroku-cli-command/blob/master/src/login.ts#L145): `browser_url`, `cli_url` and `token`.
-- The token is what is being used as the bearer token in the request to the `cli_url`. The `cli_url` is the `access_token` endpoint. The `cli_url` generated has a code or [jwt](https://jwt.io/introduction) that links to the hostname and the token used to [make](/blog/makefiles-on-windows) a request to obtain `access_token`.
+- The token is what is being used as the bearer token in the request to the `cli_url`. The `cli_url` is the `access_token` endpoint. The `cli_url` generated has a code or [jwt](https://jwt.io/introduction) that links to the hostname and the token used to make a request to obtain `access_token`.
 - The `browser_url` is the one being displayed to you on the CLI that you click on to log in.
 - The [`fetchAuth` method](https://github.com/heroku/heroku-cli-command/blob/master/src/login.ts#L167) is where the polling request occurs.
 
@@ -93,7 +93,7 @@ Let's dive into the implementation of the OAuth 2.0 flow.
 
 You must have the following to continue with this article:
 
-- [Python](https://docs.python.org/) knowledge (the bot is written in Python 3.7+)
+- Familiarity with Python (the bot is written in Python 3.7+)
 - Understanding of OAuth 2.0 flow in web applications
 - Understanding of HTTP request and response cycle
 - A discord server you can control
@@ -201,12 +201,12 @@ The above code snippet does the following:
 
 - Imports the required [packages](/blog/setup-typescript-monorepo) and the credential (`BOT_TOKEN`) needed to run the bot.
 - Configures logging to make bug detection and monitoring the bot activity easy.
-- Gets discord default intents and sets the `message_content` to true.
+- Gets discord default intents and sets the `message_content` to `True`.
 
 - Creates a discord client - a bot and subscribes the bot to specific events specified in the `client_intents`.
 - Sets dot or period (".") as the commands prefix. This means all commands must be prefixed with a dot.
 
-**Note**: You must recall that you set the `message_content` to true as well while configuring the bot under the **privileged gateway intent** section.
+**Note**: You must recall that you set the `message_content` to `True` as well while configuring the bot under the **privileged gateway intent** section.
 
 Add the functions below to the `bot.py` file to `ping` & `login` commands:
 
@@ -607,8 +607,8 @@ The `get_access_token_from_login_code` function involves the following steps:
 - Calls the `_handle_error_from_login_code` function if there is an error. If the error is not a `PendingActionError` it raises an exception that terminates the function execution and if otherwise, delays the code by the 5s using `await asyncio.sleep()`.
 - The polling is achieved by using [recursion](https://users.cs.utah.edu/~germain/PPS/Topics/recursion.html). You can also use a loop to achieve the polling.
 
-<div class="notice--info">
-> The code is designed to avoid blocking the event loop for too long. [Blocking the event loop]((https://discordpy.readthedocs.io/en/stable/faq.html#what-does-blocking-mean)) for too long can cause the bot to freeze and become unresponsive. To avoid this, the code uses `asyncio.sleep()` instead of `time.sleep()`. The former is non-blocking, which means that other tasks can be processed while the function is waiting. The latter is blocking, which means that no other tasks can be processed while the function is waiting.
+<div class="notice--big--primary">
+The code is designed to avoid blocking the event loop for too long. [Blocking the event loop]((https://discordpy.readthedocs.io/en/stable/faq.html#what-does-blocking-mean)) for too long can cause the bot to freeze and become unresponsive. To avoid this, the code uses `asyncio.sleep()` instead of `time.sleep()`. The former is non-blocking, which means that other tasks can be processed while the function is waiting. The latter is blocking, which means that no other tasks can be processed while the function is waiting.
 
 Additionally, the code uses [httpx](https://www.python-httpx.org/async/) instead of the popular [requests](https://requests.readthedocs.io/en/latest/) library. The reason for this is that httpx is designed to be fully async-compatible, whereas `requests` is synchronous by default. This means that using requests in an async environment can cause blocking issues. Httpx, on the other hand, is designed to work seamlessly with asyncio, making it a better choice in this case.  
 </div>
