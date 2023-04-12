@@ -38,7 +38,7 @@ You can find the application code on this [GitHub repository](https://github.com
 
 Based on this Node.js application, the following will be an ideal Dockerfile to create an image:
 
-~~~
+~~~{.dockerfile caption="Dockerfile"}
 FROM node:19
 WORKDIR /app
 COPY package*.json ./
@@ -51,19 +51,19 @@ CMD npm start
 
 Run the following command to build the application image:
 
-~~~
+~~~{.bash caption=">_"}
 docker build -t node_example .
 ~~~
 
 Check if the image was successfully created using the following command:
 
-~~~
+~~~{.bash caption=">_"}
 docker images node_example
 ~~~
 
 An image for this application will be created with the following size:
 
-~~~
+~~~{ caption="Output"}
 REPOSITORY     TAG       IMAGE ID       CREATED          SIZE
 node_example   latest    a10aa8869a21   39 seconds ago   1.16GB
 ~~~
@@ -83,7 +83,7 @@ All these tags are available on the [Node.js official image page](https://hub.do
 
 Below is an example of using the alpine tag distribution:
 
-~~~
+~~~{.dockerfile caption="Dockerfile"}
 FROM node:19-alpine
 WORKDIR /app
 COPY package*.json ./
@@ -96,7 +96,7 @@ CMD npm start
 
 Applying this to your Dockerfile will reduce the image size as follows:
 
-~~~
+~~~{ caption="Output"}
 REPOSITORY     TAG       IMAGE ID       CREATED          SIZE
 node_example   latest    a10aa8869a21   39 seconds ago   338.7MB
 ~~~
@@ -107,7 +107,9 @@ Each base image you use provides its distributions. Ensure you always check your
 
 While creating the above images, the `COPY . .` command copy all the files and folders present in your project directory. In this simple example, the application has the following structure:
 
-![File Structure]({{site.images}}{{page.slug}}/o25CmQJ.png)\
+<div class="wide">
+![File Structure]({{site.images}}{{page.slug}}/o25CmQJ.png)
+</div>
 
 Looking closely, Docker doesn't need to copy all these folders and files. For example, the`RUN npm run build` command in the DockerFile will create the application *build* folder, and the `RUN npm install` command will create the *node_modules* folder. Therefore, you don't need to copy these files while building the Docker image.
 Each folder and file copied add to the size of the image. It is best to avoid unnecessary copy.
@@ -116,7 +118,7 @@ The `.dockerignore` file allows you to specify files and directories that should
 
 Add the following in your *.dockerignore* file:
 
-~~~
+~~~{ caption=".dockerignore"}
 node_modules
 Dockerfile
 build
@@ -124,7 +126,7 @@ build
 
 Rebuild your images and check the size:
 
-~~~
+~~~{ caption="Output"}
 REPOSITORY     TAG       IMAGE ID       CREATED          SIZE
 node_example   latest    c1b36fb72af3   12 seconds ago   264MB
 ~~~
@@ -137,7 +139,7 @@ Docker image layers are the building blocks of Docker image. A single image is b
 
 The Dockfile example we have created so far packages the application with all dependencies for production and development. The created Dockerfile builds an image suitable for the development level, and it's not optimized for production. The following Dockerfile creates an image that can be used for production purposes:
 
-~~~
+~~~{.dockerfile caption="Dockerfile"}
 FROM node:19-alpine
 WORKDIR /app
 COPY package*.json ./
@@ -152,7 +154,7 @@ CMD npm start
 
 This will create an image of the following size ready for production:
 
-~~~
+~~~{ caption="Output"}
 REPOSITORY     TAG       IMAGE ID       CREATED         SIZE
 node_example   latest    fbebed577ab2   2 minutes ago  266.34MB
 ~~~
@@ -161,13 +163,15 @@ These new commands add more layers to the Docker image.
 
 On the Docker Desktop in your local machine, navigate to your created image, and you should have a clear view of the image layers as follows:
 
+<div class="wide">
 ![An image showing the layers of the Docker image]({{site.images}}{{page.slug}}/uxvPYrj.png)
+</div>
 
 Docker shows that this image has 18 layers. This includes layers used to package the base image. However, you are accountable for ten layers that you can control based on the Dockerfile used to build this image.
 
 Layers are managed based on the command they execute. This means you can combine consecutive commands that perform the same function. The above example has multiple consecutive RUN commands. Each creates a layer of its own, creating 4 layers in this case. However, you can combine them into one as follows:
 
-~~~
+~~~{.dockerfile caption="Dockerfile"}
 FROM node:19-alpine
 WORKDIR /app
 COPY package*.json ./
@@ -182,11 +186,13 @@ CMD npm start
 
 When you build an image based on this, the Image layers will be reduced to 15:
 
+<div class="wide">
 ![An image showing a reduced Docker image layers]({{site.images}}{{page.slug}}/gSxioq2.png)
+</div>
 
 This drastically reduced the overall image size to 194MB from 266MB:
 
-~~~
+~~~{ caption="Output"}
 REPOSITORY     TAG       IMAGE ID       CREATED         SIZE
 node_example   latest    bd92d29f12ff   2 minutes ago   194MB
 ~~~
@@ -205,7 +211,7 @@ The [concept of multistage builds](https://earthly.dev/blog/docker-multistage/) 
 
 Using the production and development Dockerfiles examples, we can use the following multistage Dockerfile to build the same image:
 
-~~~
+~~~{.dockerfile caption="Dockerfile"}
 #Stage One: Build
 FROM node:19-alpine AS builder
 WORKDIR /app
@@ -226,11 +232,13 @@ In this case, the first stage created the application build. This build will be 
 
 In this case, you have one Dockerfile that builds the application for you and create the final production-ready image under one image. As a result, you reduce the number of layers in your image:
 
+<div class="wide">
 ![Docker multistage image layers]({{site.images}}{{page.slug}}/0jVOLIMa.png)
+</div>
 
 And so the total size of your Docker image:
 
-~~~
+~~~{ caption="Output"}
 REPOSITORY     TAG       IMAGE ID       CREATED         SIZE
 node_example   latest    b066d92ab741   2 minutes ago   181MB
 ~~~
@@ -239,7 +247,7 @@ node_example   latest    b066d92ab741   2 minutes ago   181MB
 
 It's good to note that when using a multistage build, Docker doesn't know the exact environment you are in. Docker follows the instructions defined in your Dockerfile to create the final image. However, you can build the image for development and production, specifying the target stage using a Docker `--target` flag to run the Docker build command. To create images for both the development and production stages, specify the builder stage as follows:
 
-~~~
+~~~{.bash caption=">_"}
 docker build --target builder -t node_example:dev .
 docker build --target final -t node_example:prod .
 ~~~
@@ -254,7 +262,7 @@ A few tools can help you reduce the image size even further. They offer built-in
 
 To use Docker-squash for compressing Docker images, you can add the `--squash` flag to the docker build command. For example:
 
-~~~
+~~~{.bash caption=">_"}
 docker build . -t node_example --squash
 ~~~
 
@@ -266,11 +274,13 @@ This is because the `--squash` feature is an experimental feature in Docker. It 
 
 Navigate to your **Docker settings** on the Docker Desktop and enable **experimental** to true as follows:
 
+<div class="wide">
 ![Changing Docker Engine experimental settings]({{site.images}}{{page.slug}}/4WyEvAI.png)
+</div>
 
 The image is further reduced to 162MB:
 
-~~~
+~~~{ caption="Output"}
 REPOSITORY     TAG       IMAGE ID       CREATED         SIZE
 node_example   latest    b066d92ab741   1 minutes ago   162MB
 ~~~
@@ -295,5 +305,4 @@ Using these strategies, you managed to reduce the Docker image of 1.16GB to 162M
 
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
+
