@@ -66,7 +66,7 @@ HELLO WORLD
 
 In the above command we have taken the output of the first command and then passed it through the `tr` command which capitalized all the letters.
 
-Let's take another example of installing [docker](/blog/rails-with-docker) on our system with the easy endpoint that Docker provide:
+Let's take another example of installing docker on our system with the easy endpoint that Docker provide:
 
 ~~~{.bash caption=">_"}
 curl -L https://get.docker.com | sh 
@@ -516,6 +516,10 @@ Output:
 kubernetes k8s k8s k8s
 ~~~
 
+<div class="notice--info">
+We have a whole post on [Using sed for Find and Replace](/blog/sed-find-replace/) if you'd like to learn more.
+</div>
+
 ### The `awk` Command
 
 The [awk](https://www.gnu.org/software/gawk/manual/gawk.html#Getting-Started) command is a versatile tool that can help you in text processing, searching for patterns in a file, scripting etc.
@@ -618,6 +622,10 @@ The above command retrieves all the links from a markdown document. The link in 
 
 So,the above command retrieves the link by looking for the pattern that matches how a link is embedded in a standard markdown.
 You can further use this to check if links are accessible or not.
+
+<div class="notice--info">
+We have a whole post on [Understanding Awk](/blog/awk-examples/) if you'd like to learn more.
+</div>
 
 ### The `tr` Command
 
@@ -731,7 +739,7 @@ Output:
 
 The `tee` command allows you to redirect the output of an operation to multiple streams simultaneously, such as the `stdout` and a file. This allows you to view the output in real-time and save it for future use.
 
-A use case can be in inspecting your [container](/blog/docker-slim) image:
+A use case can be in inspecting your container image:
 
 ~~~{.bash caption=">_"}
 $ docker buildx imagetools inspect --raw \
