@@ -235,7 +235,7 @@ In this case, the first stage created the application build. This build will be 
 In this case, you have one Dockerfile that builds the application for you and create the final production-ready image under one image. As a result, you reduce the number of layers in your image:
 
 <div class="wide">
-![Docker multistage image layers]({{site.images}}{{page.slug}}/0jVOLIMa.png)
+![Docker multistage image layers]({{site.images}}{{page.slug}}/0jVOLIM.png)
 </div>
 
 And so the total size of your Docker image:
