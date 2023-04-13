@@ -22,6 +22,8 @@ In this article, you'll learn how GitHub Actions and [Terraform](/blog/kubernete
 
 ## Using Terraform and GitHub Actions Together
 
+![Together]({{site.images}}{{page.slug}}/together.png)\
+
 If you're an experienced developer looking to better understand how to use Terraform and GitHub Actions, this tutorial is for you. This means you should already have some knowledge about [what Terraform is](https://developer.hashicorp.com/terraform/intro) and how it works to provision infrastructure. In addition, you should have a basic idea of how GitHub Actions [helps developers automate tasks within their repos](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions).
 
 ### Prerequisites
@@ -40,13 +42,17 @@ When you first set up your Terraform Cloud account and log in, you'll start by c
 
 Next, you need to create a new workspace and make sure to select **API-driven workflow** when choosing the type. This will ensure that GitHub Actions is able to connect to Terraform later on:
 
+<div class="wide">
 ![A screenshot showing the setup of a Terraform Cloud Workspace]({{site.images}}{{page.slug}}/iXfO755.png)
+</div>
 
 Next, you need to name your workspace. In this example, the workspace is named "ghactions-terraform-demo". This will create an empty workspace.
 
 Next, you need to add your AWS secrets (*ie* `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`) to your Terraform workspace under the **Variables** section of the sidebar. Make sure you add them as sensitive variables so that only Terraform can use them to authenticate with AWS.
 
+<div class="wide">
 ![Environment variables after getting added to Terraform Cloud]({{site.images}}{{page.slug}}/tXveUyy.png)
+</div>
 
 Once you have all that configured, head over to the [**Tokens** page](https://app.terraform.io/app/settings/tokens) and generate an API token. This is what you'll use to connect GitHub Actions to [Terraform](/blog/kubernetes-terraform) Cloud, so make sure you store this information in a safe place.
 
@@ -56,7 +62,9 @@ Now that you've set up Terraform and your API tokens are stored somewhere, head 
 
 Once you have your repository set up, go to **Settings > Secrets and Variables > Actions** and create a new secret. This is where you need to add the API key you retrieved from Terraform in the previous step. In this example, the secret is `TERRAFORM_API_KEY`, but you can name it whatever you like. If you're using the sample code as a reference, ensure that you replace the name of the secret with whatever you have named yours:
 
+<div class="wide">
 ![A screenshot showing a properly configured Terraform API key as a GitHub secret]({{site.images}}{{page.slug}}/QGrJluJ.png)
+</div>
 
 Now, you can clone your repository to your local system and create two important files within the directory that you just cloned down from GitHub: `.github/workflows/terraform.yml` and `main.tf`.
 
@@ -66,7 +74,7 @@ To fill the contents of these files, you can use the [Terraform example repo](ht
 
 This is the actual file that your GitHub action will run through every time it's triggered. There are a few important code snippets in this file:
 
-~~~
+~~~{.yml caption="terraform.yml"}
 on:
   push:
     branches:
@@ -75,7 +83,7 @@ on:
 
 This defines what triggers your workflow. In this case, your workflow is only triggered when code is pushed to the main branch or when any pull requests to the main branch are merged:
 
-~~~
+~~~{.yml caption="terraform.yml"}
 - name: Setup Terraform
         uses: hashicorp/setup-terraform@v1
         with:
@@ -99,19 +107,27 @@ Together, this is all the configuration information needed for your GitHub Actio
 
 ### Let's Test It
 
+![Test]({{site.images}}{{page.slug}}/test.png)\
+
 Now that you have everything configured, it's time to make sure your GitHub action runs and provisions your resources with Terraform.
 
 Create a new branch in your GitHub repository or locally via the command line. Inside this branch, navigate to your `main.tf` file and replace the `organization` and the `workspace` parameter value from the default placeholder `REPLACE_ME` with the actual organization and workspace names you created in Terraform Cloud earlier. Then commit and push your branch to GitHub:
 
+<div class="wide">
 ![Replacing the placeholders for `organization` and `workspace` name]({{site.images}}{{page.slug}}/p9AOwD8.png)
+</div>
 
 Once you push your branch, create a pull request (PR) against the main branch of your codebase with your changes and replacements. You'll be able to see the output of the Terraform plan inside your PR, informing you of what resources will be created and/or destroyed with that particular PR. At this point, no action has been taken yet, but this offers a preview of what will happen once the PR is merged:
 
+<div class="wide">
 ![GitHub Actions info on a PR within the repository]({{site.images}}{{page.slug}}/XhkC0K1.png)
+</div>
 
 > **Please note:** If you get an error when your action runs, head over to your GitHub Actions settings and make sure that GitHub Actions has read and write permissions enabled for your repository:
 
+<div class="wide">
 ![A correctly configured settings page for GitHub Actions permissions]({{site.images}}{{page.slug}}/L6Hsktr.png)
+</div>
 
 Once the GitHub action successfully runs on your pull request, you can merge the pull request into the `main` branch and Terraform will provision your infrastructure.
 
@@ -119,7 +135,9 @@ Once the GitHub action successfully runs on your pull request, you can merge the
 
 Once your pull request is merged and your infrastructure is provisioned, clicking on the GitHub action will show you all the information about the infrastructure you are creating or modifying:
 
+<div class="wide">
 ![Terraform output inside of GitHub Actions]({{site.images}}{{page.slug}}/KeD9WyT.png)
+</div>
 
 If you're using the infrastructure only for testing purposes and want to avoid charges for the provisioned infrastructure, consider deleting the AWS instance once you've confirmed that it has been provisioned.
 
@@ -130,11 +148,3 @@ Now that you have a taste for automatically provisioning infrastructure, you cou
 And if you're looking to continue building out your automation pipeline, consider using [Earthly](https://earthly.dev), a continuous integration, continuous delivery (CI/CD) platform that runs everywhere. Earthly makes [CI/CD](/blog/ci-vs-cd) easy and [works natively with GitHub Actions](https://docs.earthly.dev/ci-integration/vendor-specific-guides/gh-actions-integration), so it couldn't be easier to get started.
 
 {% include_html cta/cta2.html %}
-
-
-## Outside Article Checklist
-
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
