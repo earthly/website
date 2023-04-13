@@ -148,7 +148,8 @@ Following the **Deploy to Amazon ECS** workflow template that's been used here, 
         # be deployed to ECS.
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-        echo "image=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG" >> $GITHUB_OUTPUT
+        echo "image=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG" >> \
+        $GITHUB_OUTPUT
 ~~~
 
 This template's build step uses the `env` key since `ECR_REGISTRY` requires a login and SHA key.
