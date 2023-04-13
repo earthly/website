@@ -21,6 +21,8 @@ This tutorial aims to introduce you to the concept of Linux text processing, hig
 
 ## A Brief Overview Of STDIN, STDOUT & STDERR
 
+![Brief]({{site.images}}{{page.slug}}/brief.png)\
+
 Standard input (stdin), standard output (stdout), and standard error (stderr) are the three standard streams that allow users to interact with commands and scripts in Linux. Understanding how to use these streams is crucial for efficiently working with Linux commands and scripts. Without a clear understanding of stdin, stdout, and stderr, it can be challenging to effectively manage command output.
 
 This section introduces you to the different standard streams in Unix world. You will be able to visualize how text streams are connected to one another.
@@ -175,6 +177,8 @@ $ grep ^example blog.md
 This will search for all the word that starts with `example` in the document.
 
 ## Basic Linux Text Processing Commands
+
+![basic]({{site.images}}{{page.slug}}/basic.png)\
 
 The following include some of the common text processing commands in Linux.
 
@@ -1010,9 +1014,3 @@ Here are some more resources you can use to supplement your learning and fine-tu
 - [Awk Guide by Adam](https://earthly.dev/blog/awk-examples/)
 
 {% include_html cta/cta2.html %}
-
-## Outside Article Checklist
-
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-
