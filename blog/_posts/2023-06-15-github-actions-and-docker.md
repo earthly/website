@@ -15,7 +15,7 @@ internal-links:
 
 [GitHub Actions](https://github.com/features/actions) is a flexible tool that enables developers to automate a variety of processes, including developing, testing, and deploying, right from their GitHub repositories. The automation of [Docker](https://www.docker.com/) containers is no exception since GitHub Actions also enables developers to automate the process of developing containerized applications. As a result, developers can save time and focus on improving the overall quality of their software.
 
-In this article, you'll learn how to use [Github Actions](/blog/continuous-integration) to run, test, build, and deploy Docker containers using GitHub Actions.
+In this article, you'll learn how to use Github Actions to run, test, build, and deploy Docker containers using GitHub Actions.
 
 ## What Is GitHub Actions?
 
@@ -31,11 +31,11 @@ Before you begin this tutorial, you'll need the following:
 - Basic knowledge of Docker and Docker Compose
 - Basic knowledge of YAML files
 
-Once these prerequisites are met, it's time to begin. You'll start by creating a sample workflow, and then set a runner for the workflow. After that, you'll learn how to set up [GitHub](/blog/ci-comparison) Actions locally and then how to set up the build and test stage. Finally, you'll execute the workflow by running the action.
+Once these prerequisites are met, it's time to begin. You'll start by creating a sample workflow, and then set a runner for the workflow. After that, you'll learn how to set up GitHub Actions locally and then how to set up the build and test stage. Finally, you'll execute the workflow by running the action.
 
 ### Create a Workflow
 
-The first thing you need to do is create a workflow using GitHub Actions. This workflow defines the steps that GitHub Actions should take when triggered, including checking out the code, building a Docker [container](/blog/docker-slim), running tests, and deploying the application.
+The first thing you need to do is create a workflow using GitHub Actions. This workflow defines the steps that GitHub Actions should take when triggered, including checking out the code, building a Docker container, running tests, and deploying the application.
 
 To create a workflow, log into your GitHub account and navigate to the repo you want to automate. Select **Actions** from the navigation bar, which will take you to the **Actions** page:
 
@@ -156,13 +156,13 @@ This template's build step uses the `env` key since `ECR_REGISTRY` requires a lo
 
 ### Set Up the Test Stage
 
-Once you're done setting up the build stage, the next thing you need to do is set up the test stage. Because the **Deploy to Amazon ECS** workflow template is primarily a [deployment](/blog/deployment-strategies) template, the test stage isn't factored into it. However, the test stage is the recommended phase since it helps you verify the functionality and connections of your applications (including the workflow file) before pushing to GitHub to run the workflow actions.
+Once you're done setting up the build stage, the next thing you need to do is set up the test stage. Because the **Deploy to Amazon ECS** workflow template is primarily a deploymen template, the test stage isn't factored into it. However, the test stage is the recommended phase since it helps you verify the functionality and connections of your applications (including the workflow file) before pushing to GitHub to run the workflow actions.
 
 To set up the test stage, you can either create a test folder in your application or in a different folder outside your application, then develop all your test cases. Afterward, ensure your test folder is containerized in the same network as your application. If you're using [Docker Compose](/blog/youre-using-docker-compose-wrong), GitHub Actions will run the workflow in a user-defined network. And for communication to happen, your application and test folder must be in the same network. The network in this context is the Docker Compose network.
 
-The purpose of this network is to provide a Docker network for the containers defined in the `docker-compose` file, allowing them to communicate with each other and with the host system. Containers in separate networks cannot communicate, which means that API test cases won't be able to get a response from the services in other networks. You can learn more about creating a `docker-compose` file with a network [in this article](https://medium.com/@caysever/docker-compose-network-b86e424fad82).
+The purpose of this network is to provide a Docker network for the containers defined in the `docker-compose` file, allowing them to communicate with each other and with the host system. Containers in separate networks cannot communicate, which means that API test cases won't be able to get a response from the services in other networks. You can learn more about creating a `docker-compose` file with a network [in this article](/blog/docker-networking).
 
-When you're done adding the test cases folder to the same [container](/blog/docker-slim) network, you need to add a new value to the `steps` key of your workflow file. The new value will contain a `name`, `id`, and `run` key:
+When you're done adding the test cases folder to the same container network, you need to add a new value to the `steps` key of your workflow file. The new value will contain a `name`, `id`, and `run` key:
 
 ~~~{.yml caption=""}
 - name: Run test cases
@@ -196,8 +196,10 @@ You can also monitor the progress of the workflow by visiting the **Actions** ta
 
 ## Conclusion
 
-In this tutorial, you learned how to create a new workflow, edit an existing workflow, set up the runner for your workflow, and locally set up and work with GitHub Actions. At this point, you should be confident that you can build [GitHub](/blog/ci-comparison) Actions for your projects and speed up the development processes.
+In this tutorial, you learned how to create a new workflow, edit an existing workflow, set up the runner for your workflow, and locally set up and work with GitHub Actions. At this point, you should be confident that you can build GitHub Actions for your projects and speed up the development processes.
 
 After reading this article, it's recommended that you explore and experiment with the various actions, events, and workflows available in the GitHub Actions ecosystem to further enhance and automate your development processes.
+
+If you want to see how Github Actions stacks up against other CI services, check out our comparison of [CI Free Tiers](/blog/ci-comparison).
 
 {% include_html cta/cta2.html %}
