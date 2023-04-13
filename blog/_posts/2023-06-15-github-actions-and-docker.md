@@ -67,7 +67,7 @@ Once you've created your workflow, you need to set up a runner. A runner, in thi
 
 To set up a runner, open your workflow YAML file. Following the **Deploy to Amazon ECS** workflow template, you should see the `jobs` key with a `deploy` child key, followed by the `runs-on` key. The `runs-on` key is what defines the runner to be used for executing the job. See the following code snippet as an example:
 
-~~~
+~~~{.yml caption=""}
 jobs:
   deploy:
     name: Deploy
@@ -102,7 +102,7 @@ Then install [Act](https://github.com/nektos/act#installation) on your local mac
 
 Copy the generated token and run the following command:
 
-~~~
+~~~{.bash caption=">_"}
 act -s GITHUB_TOKEN={{YOUR_GITHUB_TOKEN}}
 ~~~
 
@@ -124,18 +124,19 @@ Once each step defined in the `steps` key of your workflow file is tested and wo
 
 The `name` key can be `Build docker images`, the `id` key will have any unique string, and the `run` key will contain the build command as the value:
 
-~~~
+~~~{.yml caption=""}
 - name: Build docker images
   Id: build-image
   run: | 
     echo ---Building images and starting up docker---
-    {{docker build [image-url] or docker-compose -f [docker-compose file] up -d }}
+    {{docker build [image-url] or docker-compose -f \
+    [docker-compose file] up -d }}
     echo ---Containers up—
 ~~~
 
 Following the **Deploy to Amazon ECS** workflow template that's been used here, the build step can be found on line 67:
 
-~~~
+~~~{.yml caption=""}
 - name: Build, tag, and push image to Amazon ECR
       id: build-image
       env:
@@ -162,12 +163,13 @@ The purpose of this network is to provide a Docker network for the containers de
 
 When you're done adding the test cases folder to the same [container](/blog/docker-slim) network, you need to add a new value to the `steps` key of your workflow file. The new value will contain a `name`, `id`, and `run` key:
 
-~~~
+~~~{.yml caption=""}
 - name: Run test cases
    id: run-test-cases
   run: |
     echo --- Running test cases ---
-    docker-compose -f {{docker-compose-file}} -p {{project-name}} up --build --exit-code-from {{container-name}}
+    docker-compose -f {{docker-compose-file}} -p {{project-name}} \
+    up --build --exit-code-from {{container-name}}
     echo --- Completed test cases ---
 ~~~
 
