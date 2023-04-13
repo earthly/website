@@ -6,7 +6,11 @@ toc: true
 author: Anurag Kumar
 
 internal-links:
- - just an example
+ - Linux
+ - Commands
+ - Text Processing
+ - CI/CD
+ - Docker
 ---
 
 Text processing in Linux involves manipulating text data to extract meaningful information or to transform it into a desired output. This is particularly useful because in Linux, everything is treated as a file, including text data. By mastering Linux text processing commands, you can complete tasks more efficiently, saving time and effort in your daily workflow.
@@ -992,4 +996,3 @@ Here are some more resources you can use to supplement your learning and fine-tu
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Add keywords for internal links to front-matter
