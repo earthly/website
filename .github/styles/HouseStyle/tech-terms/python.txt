@@ -98,3 +98,11 @@ dict
 slots
 subclassing
 callables
+
+Discordpy
+discordpy
+Asyncio
+asyncio
+Authlib
+authlib
+Dotenv
