@@ -126,6 +126,9 @@ Now that you have a taste for automatically provisioning infrastructure, you cou
 
 And if you're looking to continue building out your automation pipeline, consider using [Earthly](https://earthly.dev), a continuous integration, continuous delivery (CI/CD) platform that runs everywhere. Earthly makes [CI/CD](/blog/ci-vs-cd) easy and [works natively with GitHub Actions](https://docs.earthly.dev/ci-integration/vendor-specific-guides/gh-actions-integration), so it couldn't be easier to get started.
 
+{% include_html cta/cta2.html %}
+
+
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
@@ -133,4 +136,3 @@ And if you're looking to continue building out your automation pipeline, conside
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/cta2.html %}`
