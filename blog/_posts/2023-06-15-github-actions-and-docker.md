@@ -180,6 +180,8 @@ In this tutorial, you learned how to create a new workflow, edit an existing wor
 
 After reading this article, it's recommended that you explore and experiment with the various actions, events, and workflows available in the GitHub Actions ecosystem to further enhance and automate your development processes.
 
+{% include_html cta/cta2.html %}
+
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
@@ -189,4 +191,3 @@ After reading this article, it's recommended that you explore and experiment wit
 - [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/cta2.html %}`
