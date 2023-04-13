@@ -11,7 +11,7 @@ internal-links:
 
 [GitHub Actions](https://github.com/features/actions) is a flexible tool that enables developers to automate a variety of processes, including developing, testing, and deploying, right from their GitHub repositories. The automation of [Docker](https://www.docker.com/) containers is no exception since GitHub Actions also enables developers to automate the process of developing containerized applications. As a result, developers can save time and focus on improving the overall quality of their software.
 
-In this article, you'll learn how to use GitHub Actions to run, test, build, and deploy Docker containers using GitHub Actions. 
+In this article, you'll learn how to use GitHub Actions to run, test, build, and deploy Docker containers using GitHub Actions.
 
 ## What Is GitHub Actions?
 
@@ -27,7 +27,7 @@ Before you begin this tutorial, you'll need the following:
 - Basic knowledge of Docker and Docker Compose
 - Basic knowledge of YAML files
 
-Once these prerequisites are met, it's time to begin. You’ll start by creating a sample workflow, and then set a runner for the workflow. After that, you'll learn how to set up GitHub Actions locally and then how to set up the build and test stage. Finally, you'll execute the workflow by running the action.
+Once these prerequisites are met, it's time to begin. You'll start by creating a sample workflow, and then set a runner for the workflow. After that, you'll learn how to set up GitHub Actions locally and then how to set up the build and test stage. Finally, you'll execute the workflow by running the action.
 
 ### Create a Workflow
 
@@ -35,13 +35,17 @@ The first thing you need to do is create a workflow using GitHub Actions. This w
 
 To create a workflow, log into your GitHub account and navigate to the repo you want to automate. Select **Actions** from the navigation bar, which will take you to the **Actions** page:
 
-![GitHub Actions](https://i.imgur.com/UWSEDSN.png)
+<div class="wide">
+![GitHub Actions]({{site.images}}{{page.slug}}/UWSEDSN.png)
+</div>
 
 At this point, you have two options: you can either select any of the workflow examples/templates or create a new one from scratch. Here, the **Deploy to Amazon ECS** example was chosen under the **Deployment** template. This workflow example essentially deploys a container to an [Amazon Elastic Container Service (Amazon ECS)](https://aws.amazon.com/ecs/):
 
-![**Deploy to Amazon ECS** example template](https://i.imgur.com/J5BbN1U.png)
+<div class="wide">
+![**Deploy to Amazon ECS** example template]({{site.images}}{{page.slug}}/J5BbN1U.png)
+</div>
 
-<div class="notice--info”>
+<div class="notice--info">
 The GitHub workflow configuration is always in YAML format, and you'll see many of the following popular [parent key-value pairs](https://www.techopedia.com/definition/13645/key-value-pair-kvp) in your workflows:
 
 - **`name`** defines a unique name for the workflow.
@@ -50,15 +54,16 @@ The GitHub workflow configuration is always in YAML format, and you'll see many 
 - **`steps`** specifies a list of steps to run in a job.
 - **`env`** defines environment variables that will be used in the workflow.
 - **`runs-on`** specifies the type of runner to use for a job.
+
 </div>
 
 ### Set Up a Runner
 
 Once you've created your workflow, you need to set up a runner. A runner, in this context, is the environment or operating system that processes the actions when the workflow is executed. There are two types of runners in GitHub Actions: [self-hosted runners](https://docs.github.com/en/actions/hosting-your-own-runners/about-self-hosted-runners) and [GitHub-hosted runners](https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners).
 
-To set up a runner, open your workflow YAML file. Following the **Deploy to Amazon ECS** workflow template, you should see the `jobs` key with a `deploy` child key, followed by the `runs-on` key.  The `runs-on` key is what defines the runner to be used for executing the job. See the following code snippet as an example:
+To set up a runner, open your workflow YAML file. Following the **Deploy to Amazon ECS** workflow template, you should see the `jobs` key with a `deploy` child key, followed by the `runs-on` key. The `runs-on` key is what defines the runner to be used for executing the job. See the following code snippet as an example:
 
-```yaml
+~~~
 jobs:
   deploy:
     name: Deploy
@@ -69,13 +74,15 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
 …
-```
+~~~
 
 In this code snippet, the runner is the `ubuntu-latest` runner, which is a GitHub-hosted runner provided by GitHub Actions. Aside from `ubuntu-latest`, there are several other GitHub-hosted runners, such as `windows-latest`, `macos-latest`, and `centos-8`, that you can use in GitHub Actions.
 
 When the workflow is triggered, GitHub Actions will allocate an available runner of the specified type `ubuntu-latest`. The runner will then execute each step defined in the `steps` key, starting with the `Checkout` step. You can review the `steps` section in the **Deploy to Amazon ECS** as an example:
 
-![*Deploy to Amazon ECS* steps section](https://i.imgur.com/teXRquk.png)
+<div class="wide">
+![*Deploy to Amazon ECS* steps section]({{site.images}}{{page.slug}}/teXRquk.png)
+</div>
 
 ### Set Up GitHub Actions Locally
 
@@ -85,19 +92,23 @@ To set up GitHub Actions locally, you need to first clone or pull the latest cha
 
 Then install [Act](https://github.com/nektos/act#installation) on your local machine. Act is a tool that will enable you to run your GitHub Actions locally. After the installation, connect your GitHub token to Act by logging into your GitHub account and navigating to **Settings > Developer settings > Personal access tokens (classic)**. You can either use an existing token if you still have access to it or generate a new token:
 
-![**Personal access tokens** page](https://i.imgur.com/hKztz9s.png)
+<div class="wide">
+![**Personal access tokens** page]({{site.images}}{{page.slug}}/hKztz9s.png)
+</div>
 
 Copy the generated token and run the following command:
 
-```bash
+~~~
 act -s GITHUB_TOKEN={{YOUR_GITHUB_TOKEN}}
-```
+~~~
 
-Make sure to replace `{{YOUR_GITHUB_TOKEN}}` with your generated token. If it is your first time running the command, you will be asked to select the default image you want to use with `act`. You can select the “medium” image.
+Make sure to replace `{{YOUR_GITHUB_TOKEN}}` with your generated token. If it is your first time running the command, you will be asked to select the default image you want to use with `act`. You can select the "medium" image.
 
-When finished, clone your GitHub repo with the workflow file if you haven’t, and proceed to use Act to run your GitHub Actions locally by running the `act -n` command to [dry run](https://en.wikipedia.org/wiki/Dry_run_(testing)) the workflow. You should see the run log:
+When finished, clone your GitHub repo with the workflow file if you haven't, and proceed to use Act to run your GitHub Actions locally by running the `act -n` command to [dry run](https://en.wikipedia.org/wiki/Dry_run_(testing)) the workflow. You should see the run log:
 
-![Test workflow run log](https://i.imgur.com/ZT3S7It.png)
+<div class="wide">
+![Test workflow run log]({{site.images}}{{page.slug}}/ZT3S7It.png)
+</div>
 
 You can also run other commands, including the command that runs a specific job, lists all actions for all events, or runs a specific event. You can check out the [documentation](https://github.com/nektos/act#example-commands) to see a list of all the available commands.
 
@@ -109,18 +120,18 @@ Once each step defined in the `steps` key of your workflow file is tested and wo
 
 The `name` key can be `Build docker images`, the `id` key will have any unique string, and the `run` key will contain the build command as the value:
 
-```yaml
+~~~
 - name: Build docker images
   Id: build-image
   run: | 
     echo ---Building images and starting up docker---
     {{docker build [image-url] or docker-compose -f [docker-compose file] up -d }}
     echo ---Containers up—
-```
+~~~
 
 Following the **Deploy to Amazon ECS** workflow template that's been used here, the build step can be found on line 67:
 
-```yaml
+~~~
 - name: Build, tag, and push image to Amazon ECR
       id: build-image
       env:
@@ -133,7 +144,7 @@ Following the **Deploy to Amazon ECS** workflow template that's been used here, 
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         echo "image=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG" >> $GITHUB_OUTPUT
-```
+~~~
 
 This template's build step uses the `env` key since `ECR_REGISTRY` requires a login and SHA key.
 
@@ -147,23 +158,23 @@ The purpose of this network is to provide a Docker network for the containers de
 
 When you're done adding the test cases folder to the same container network, you need to add a new value to the `steps` key of your workflow file. The new value will contain a `name`, `id`, and `run` key:
 
-```yaml
+~~~
 - name: Run test cases
    id: run-test-cases
   run: |
     echo --- Running test cases ---
     docker-compose -f {{docker-compose-file}} -p {{project-name}} up --build --exit-code-from {{container-name}}
     echo --- Completed test cases ---
-```
+~~~
 
 In this code, `{{docker-compose-file}}` is the name of your `docker-compose` file, `{{project-name}}` is the project name, and `[{{container-name}}` is the container name.
 
 <div class="notice--big--primary">
-As an alternative to using a `docker-compose` file, you can leverage [Earthly](https://earthly.dev), which lets you define your containers and their dependencies, as well as specify your entire build process, including testing and deployment, in one **Earthfile**. 
+As an alternative to using a `docker-compose` file, you can leverage [Earthly](https://earthly.dev), which lets you define your containers and their dependencies, as well as specify your entire build process, including testing and deployment, in one **Earthfile**.
 
-In addition, Earthly allows you to define reusable builds that you can use across different machines, making it easier to collaborate and enabling you to run your builds anywhere. 
+In addition, Earthly allows you to define reusable builds that you can use across different machines, making it easier to collaborate and enabling you to run your builds anywhere.
 
-Moreover, Earthly caches your build components, making the process efficient and fast. Check out the [official documentation](https://docs.earthly.dev/basics) to learn more about getting started with Earthly. 
+Moreover, Earthly caches your build components, making the process efficient and fast. Check out the [official documentation](https://docs.earthly.dev/basics) to learn more about getting started with Earthly.
 </div>
 
 ### Run the Action
@@ -172,7 +183,9 @@ After you've set up the test stage, the final step is to run the action. To do t
 
 You can also monitor the progress of the workflow by visiting the **Actions** tab in your repository on GitHub and selecting a workflow that has previously been run or the currently running workflow:
 
-![Workflow history](https://i.imgur.com/VQCqOYR.png)
+<div class="wide">
+![Workflow history]({{site.images}}{{page.slug}}/VQCqOYR.png)
+</div>
 
 ## Conclusion
 
@@ -188,6 +201,5 @@ After reading this article, it's recommended that you explore and experiment wit
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
