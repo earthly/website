@@ -12,13 +12,13 @@ internal-links:
  - Pipelines
 ---
 
-[GitHub Actions](https://github.com/features/actions) is a powerful tool that allows software developers to automate almost everything inside a [GitHub](/blog/ci-comparison) repository. From running tests to linting your code, to automatically commenting on pull requests and issues, it's a complete solution that helps projects of all kinds to operate more efficiently.
+[GitHub Actions](https://github.com/features/actions) is a powerful tool that allows software developers to automate almost everything inside a GitHub repository. From running tests to linting your code, to automatically commenting on pull requests and issues, it's a complete solution that helps projects of all kinds to operate more efficiently.
 
 If you're managing IT infrastructure, you're likely using [Terraform](https://www.terraform.io), a popular tool for managing infrastructure as code. Thankfully, GitHub Actions and Terraform can work together to create powerful, automated workflows for creating and maintaining even the most complicated deployments.
 
 Using these tools together can help you automate your Terraform pipelines, which is important for making sure they run as frequently and consistently as you would like them to, making your pipelines more repeatable and reliable.
 
-In this article, you'll learn how GitHub Actions and [Terraform](/blog/kubernetes-terraform) work together so that you can benefit from this powerful combination.
+In this article, you'll learn how GitHub Actions and Terraform work together so that you can benefit from this powerful combination.
 
 ## Using Terraform and GitHub Actions Together
 
@@ -54,7 +54,7 @@ Next, you need to add your AWS secrets (*ie* `AWS_ACCESS_KEY_ID` and `AWS_SECRET
 ![Environment variables after getting added to Terraform Cloud]({{site.images}}{{page.slug}}/tXveUyy.png)
 </div>
 
-Once you have all that configured, head over to the [**Tokens** page](https://app.terraform.io/app/settings/tokens) and generate an API token. This is what you'll use to connect GitHub Actions to [Terraform](/blog/kubernetes-terraform) Cloud, so make sure you store this information in a safe place.
+Once you have all that configured, head over to the [**Tokens** page](https://app.terraform.io/app/settings/tokens) and generate an API token. This is what you'll use to connect GitHub Actions to Terraform Cloud, so make sure you store this information in a safe place.
 
 ### Creating a GitHub Repository and Configuring Your Action
 
