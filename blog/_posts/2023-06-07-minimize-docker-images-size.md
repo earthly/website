@@ -27,6 +27,8 @@ To follow along with this guide, ensure:
 
 ## Best Strategies to Minimize Docker Images
 
+![Strategies]({{site.images}}{{page.slug}}/strategies.png)\
+
 Optimizing and reducing your Docker images to the smallest size significantly reduce the cost and time spent building and pushing images. In this section, we will discuss different strategies to slim down Docker images and reduce size.
 
 Before then, You need to create a Docker image you will work.
@@ -300,9 +302,3 @@ Docker ensures you package your applications for easier portability across diffe
 Using these strategies, you managed to reduce the Docker image of 1.16GB to 162MB. You have learned the tools and tips that you need to use to reduce [Docker](/blog/rails-with-docker) image size to approximately 85.86%. I hope you found this post helpful.
 
 {% include_html cta/cta2.html %}
-
-## Outside Article Checklist
-
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-
