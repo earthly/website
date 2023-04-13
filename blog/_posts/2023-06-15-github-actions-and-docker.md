@@ -198,11 +198,3 @@ In this tutorial, you learned how to create a new workflow, edit an existing wor
 After reading this article, it's recommended that you explore and experiment with the various actions, events, and workflows available in the GitHub Actions ecosystem to further enhance and automate your development processes.
 
 {% include_html cta/cta2.html %}
-
-## Outside Article Checklist
-
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
-=
