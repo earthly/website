@@ -984,6 +984,8 @@ Here are some more resources you can use to supplement your learning and fine-tu
 - [Man Pages](https://www.kernel.org/doc/man-pages/)
 - [Awk Guide by Adam](https://earthly.dev/blog/awk-examples/)
 
+{% include_html cta/cta2.html %}
+
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
@@ -991,4 +993,3 @@ Here are some more resources you can use to supplement your learning and fine-tu
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/cta2.html %}`
