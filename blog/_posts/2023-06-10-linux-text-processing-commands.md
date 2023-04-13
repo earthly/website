@@ -11,7 +11,7 @@ internal-links:
 
 Text processing in Linux involves manipulating text data to extract meaningful information or to transform it into a desired output. This is particularly useful because in Linux, everything is treated as a file, including text data. By mastering Linux text processing commands, you can complete tasks more efficiently, saving time and effort in your daily workflow.
 
-These commands are especially useful in several scenarios, such as when working with log files during debugging, in CI/CD pipelines, or when handling large amounts of data.
+These commands are especially useful in several scenarios, such as when working with log files during [debugging](/blog/printf-debugging), in CI/CD pipelines, or when handling large amounts of data.
 
 This tutorial aims to introduce you to the concept of Linux text processing, highlight its benefits, and provide an overview of the commonly used text processing commands. You will also learn about their use cases and how they can help automate tedious tasks, making them more manageable in a matter of seconds.
 
@@ -60,7 +60,7 @@ HELLO WORLD
 
 In the above command we have taken the output of the first command and then passed it through the `tr` command which capitalized all the letters.
 
-Let's take another example of installing docker on our system with the easy endpoint that Docker provide:
+Let's take another example of installing [docker](/blog/rails-with-docker) on our system with the easy endpoint that Docker provide:
 
 ~~~
 curl -L https://get.docker.com | sh 
@@ -131,7 +131,7 @@ At its most fundamental level, regular expressions (regex) are used to search fo
 
 Modern shells such as  [bash](https://www.gnu.org/software/bash/), [zsh](https://zsh.sourceforge.io/), and [fish](https://fishshell.com/) support regular expressions, making regular expressions a valuable tool for manipulating and searching text data.
 
-Suppose, you have a directory which contains some Go programming language files as well as some markdown files, and you want to filter the files by the type so that you can perform an operation on files of the same type. You can make use of regex patterns in this case.
+Suppose, you have a directory which contains some Go programming language files as well as some [markdown](/blog/markdown-lint) files, and you want to filter the files by the type so that you can perform an operation on files of the same type. You can make use of regex patterns in this case.
 
 For example, you can select and run a Go command like `go fmt` on all the Go files in the current directory, as shown below:
 
@@ -707,7 +707,7 @@ Output:
 
 The `tee` command allows you to redirect the output of an operation to multiple streams simultaneously, such as the `stdout` and a file. This allows you to view the output in real-time and save it for future use.
 
-A use case can be in inspecting your container image:
+A use case can be in inspecting your [container](/blog/docker-slim) image:
 
 ~~~
 $ docker buildx imagetools inspect --raw hello-world | jq . | tee hello.json
@@ -925,7 +925,7 @@ You see that the output is almost the same. The only difference is that in `rg` 
 
 The [`bat`](https://github.com/sharkdp/bat#readme) command is a modern alternative to the `cat` command. It supports syntax highlighting for a bunch of languages and comes with a lot of configuration options. For configuring bat, you can edit the bat config file at `~/.config/bat/config`.
 
-Let's see a simple hello world program in Go and a CSV file:
+Let's see a simple hello world program in Go and a [CSV](/blog/awk-csv) file:
 ![bat_output](https://i.imgur.io/Ymoq9p1_d.webp)
 
 You can see the default syntax highlighting that the `bat` command ships with.
@@ -972,7 +972,7 @@ In this case, it's giving me all the files that have *bpf* in their names.
 
 ## Conclusion
 
-In this blog, we have covered a variety of Linux text processing command including the `sed`, `grep`, `awk`, `tr`, `wc`, `cut`, `sort`, `tac`, `bat`, `fd`, `uniq` and  `xargs`. The combination of these tools will help you perform a wide range of necessary text manipulation in your daily workflow, from searching and replacing text to extracting data from a file.
+In this [blog](/blog/top-5-scala-blogs), we have covered a variety of Linux text processing command including the `sed`, `grep`, `awk`, `tr`, `wc`, `cut`, `sort`, `tac`, `bat`, `fd`, `uniq` and  `xargs`. The combination of these tools will help you perform a wide range of necessary text manipulation in your daily workflow, from searching and replacing text to extracting data from a file.
 
 We have also discussed examples along with each command. As with everything in Unix, there are multiple ways to achieve them, so feel free to practise more according to your use cases.
 If you're new to text processing, it is encouraged to experiment with these commands.
@@ -991,5 +991,4 @@ Here are some more resources you can use to supplement your learning and fine-tu
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
 - [ ] Add Earthly `CTA` at bottom `{% include_html cta/cta2.html %}`
