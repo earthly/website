@@ -74,7 +74,7 @@ This is a huge image to run such a small application. Let's slim this Docker ima
 
 ### Choosing Base Images
 
-The base image is the starting point for creating a Docker image, and it typically includes the underlying operating system as well as any necessary software and [packages](/blog/setup-typescript-monorepo). Common base images for Docker include Alpine Linux, Ubuntu, Debian, CentOS, and Fedora. When running a Node.js application in Docker, one common base image is the [official Node.js](https://hub.docker.com/_/node)  image available on Docker Hub. However, Node.js provides other variant image distributions with different tags that result in slimmer Docker base images. These tags include:
+The base image is the starting point for creating a Docker image, and it typically includes the underlying operating system as well as any necessary software and packages. Common base images for Docker include Alpine Linux, Ubuntu, Debian, CentOS, and Fedora. When running a Node.js application in Docker, one common base image is the [official Node.js](https://hub.docker.com/_/node)  image available on Docker Hub. However, Node.js provides other variant image distributions with different tags that result in slimmer Docker base images. These tags include:
 
 [Bullseye](https://hub.docker.com/_/buildpack-deps/) - Provides a Debian distribution to reduce the number of packages that images need to install and thereby reduce the overall size of the custom image.
 [Alpine](https://hub.docker.com/_/alpine/)  - Any Node.js Alpine tags are derived from Alpine Linux to provide smaller base image distributions of about ~5MB.
@@ -201,7 +201,7 @@ node_example   latest    bd92d29f12ff   2 minutes ago   194MB
 
 ### Using Multistage Builds to Slim Docker Images
 
-Dockerfiles form the foundation for building Docker images. They specify the necessary instructions for Docker to package your application. Traditionally, applications follow the [build pattern](https://en.wikipedia.org/wiki/Builder_pattern) to bundle their assets, meaning that you need to build the application code to determine how it will be served in the production environment.
+Dockerfiles form the foundation for building Docker images. They specify the necessary instructions for Docker to package your application. Traditionally, applications follow the [builder pattern](https://en.wikipedia.org/wiki/Builder_pattern) to bundle their assets, meaning that you need to build the application code to determine how it will be served in the production environment.
 
 Using Docker while following the build pattern approach means you have to create two Dockerfiles to fully package your application. As a result, two images are eventually created, each taking its own disk space.
 
@@ -293,7 +293,7 @@ You can check out how to use [DockerSlim](https://earthly.dev/blog/docker-slim/)
 
 Docker ensures you package your applications for easier portability across different infrastructures such as Kubernetes clusters, Cloud platforms and CI/CD pipelines. This makes pushing changes to the existing application easier while sharing it with varying environments without affecting compatibility. Given that Docker image sizes can consume large disk sizes, in this guide, you learned the following Docker image optimization strategies:
 
-- Using the .dockerignore file
+- Using the `.dockerignore` file
 - Reducing Docker image layers
 - How to choose Docker base images
 - How to use multistage build to Docker reduce image size
