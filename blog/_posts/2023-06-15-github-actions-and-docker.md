@@ -6,7 +6,11 @@ toc: true
 author: James Olaogun
 
 internal-links:
- - just an example
+ - Github Actions
+ - Deployment
+ - Testing
+ - Build
+ - Docker Container
 ---
 
 [GitHub Actions](https://github.com/features/actions) is a flexible tool that enables developers to automate a variety of processes, including developing, testing, and deploying, right from their GitHub repositories. The automation of [Docker](https://www.docker.com/) containers is no exception since GitHub Actions also enables developers to automate the process of developing containerized applications. As a result, developers can save time and focus on improving the overall quality of their software.
@@ -201,4 +205,4 @@ After reading this article, it's recommended that you explore and experiment wit
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Add keywords for internal links to front-matter
+=
