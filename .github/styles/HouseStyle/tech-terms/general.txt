@@ -356,3 +356,8 @@ subclass
 subclasses
 Subclass
 Subclassing
+
+redirections
+redirection
+keyspaces
+subcommand
