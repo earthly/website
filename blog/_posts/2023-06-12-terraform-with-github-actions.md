@@ -6,7 +6,10 @@ toc: true
 author: Keanan Koppenhaver
 
 internal-links:
- - just an example
+ - Terraform
+ - Github Actions
+ - CI/CD
+ - Pipelines
 ---
 
 [GitHub Actions](https://github.com/features/actions) is a powerful tool that allows software developers to automate almost everything inside a [GitHub](/blog/ci-comparison) repository. From running tests to linting your code, to automatically commenting on pull requests and issues, it's a complete solution that helps projects of all kinds to operate more efficiently.
@@ -120,7 +123,7 @@ Once your pull request is merged and your infrastructure is provisioned, clickin
 
 If you're using the infrastructure only for testing purposes and want to avoid charges for the provisioned infrastructure, consider deleting the AWS instance once you've confirmed that it has been provisioned.
 
-## Wrapping Up
+## Conclusion
 
 Now that you have a taste for automatically provisioning infrastructure, you could make your `main.tf` file much more complicated and provision all sorts of different resources. Load balancers, databases, and more are now all within your reach using the combination of [GitHub Actions](https://github.com/features/actions) and [Terraform](https://www.terraform.io).
 
@@ -135,4 +138,3 @@ And if you're looking to continue building out your automation pipeline, conside
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Add keywords for internal links to front-matter
