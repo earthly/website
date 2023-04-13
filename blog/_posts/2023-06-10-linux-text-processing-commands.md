@@ -955,7 +955,10 @@ You see that the output is almost the same. The only difference is that in `rg` 
 The [`bat`](https://github.com/sharkdp/bat#readme) command is a modern alternative to the `cat` command. It supports syntax highlighting for a bunch of languages and comes with a lot of configuration options. For configuring bat, you can edit the bat config file at `~/.config/bat/config`.
 
 Let's see a simple hello world program in Go and a [CSV](/blog/awk-csv) file:
-![bat_output](https://i.imgur.io/Ymoq9p1_d.webp)
+
+<div class="wide">
+![bat_output]({{site.images}}{{page.slug}}/Ymoq9p1_d.png)
+</div>
 
 You can see the default syntax highlighting that the `bat` command ships with.
 
