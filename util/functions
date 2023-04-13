@@ -122,7 +122,7 @@ link-opp() { # List places you could link to other posts
 }
 
 lint() { # Run Linter
-    tailwind &
+
     # change code blocks
     cat "$(post)" | ./util/codeblock.awk | sponge "$(post)"
     # fix markdown
