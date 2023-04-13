@@ -156,7 +156,7 @@ This template's build step uses the `env` key since `ECR_REGISTRY` requires a lo
 
 ### Set Up the Test Stage
 
-Once you're done setting up the build stage, the next thing you need to do is set up the test stage. Because the **Deploy to Amazon ECS** workflow template is primarily a deploymen template, the test stage isn't factored into it. However, the test stage is the recommended phase since it helps you verify the functionality and connections of your applications (including the workflow file) before pushing to GitHub to run the workflow actions.
+Once you're done setting up the build stage, the next thing you need to do is set up the test stage. Because the **Deploy to Amazon ECS** workflow template is primarily a deployment template, the test stage isn't factored into it. However, the test stage is the recommended phase since it helps you verify the functionality and connections of your applications (including the workflow file) before pushing to GitHub to run the workflow actions.
 
 To set up the test stage, you can either create a test folder in your application or in a different folder outside your application, then develop all your test cases. Afterward, ensure your test folder is containerized in the same network as your application. If you're using [Docker Compose](/blog/youre-using-docker-compose-wrong), GitHub Actions will run the workflow in a user-defined network. And for communication to happen, your application and test folder must be in the same network. The network in this context is the Docker Compose network.
 
