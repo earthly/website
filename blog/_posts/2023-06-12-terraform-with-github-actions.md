@@ -9,13 +9,13 @@ internal-links:
  - just an example
 ---
 
-[GitHub Actions](https://github.com/features/actions) is a powerful tool that allows software developers to automate almost everything inside a GitHub repository. From running tests to linting your code, to automatically commenting on pull requests and issues, it's a complete solution that helps projects of all kinds to operate more efficiently.
+[GitHub Actions](https://github.com/features/actions) is a powerful tool that allows software developers to automate almost everything inside a [GitHub](/blog/ci-comparison) repository. From running tests to linting your code, to automatically commenting on pull requests and issues, it's a complete solution that helps projects of all kinds to operate more efficiently.
 
 If you're managing IT infrastructure, you're likely using [Terraform](https://www.terraform.io), a popular tool for managing infrastructure as code. Thankfully, GitHub Actions and Terraform can work together to create powerful, automated workflows for creating and maintaining even the most complicated deployments.
 
 Using these tools together can help you automate your Terraform pipelines, which is important for making sure they run as frequently and consistently as you would like them to, making your pipelines more repeatable and reliable.
 
-In this article, you'll learn how GitHub Actions and Terraform work together so that you can benefit from this powerful combination.
+In this article, you'll learn how GitHub Actions and [Terraform](/blog/kubernetes-terraform) work together so that you can benefit from this powerful combination.
 
 ## Using Terraform and GitHub Actions Together
 
@@ -45,11 +45,11 @@ Next, you need to add your AWS secrets (*ie* `AWS_ACCESS_KEY_ID` and `AWS_SECRET
 
 ![Environment variables after getting added to Terraform Cloud]({{site.images}}{{page.slug}}/tXveUyy.png)
 
-Once you have all that configured, head over to the [**Tokens** page](https://app.terraform.io/app/settings/tokens) and generate an API token. This is what you'll use to connect GitHub Actions to Terraform Cloud, so make sure you store this information in a safe place.
+Once you have all that configured, head over to the [**Tokens** page](https://app.terraform.io/app/settings/tokens) and generate an API token. This is what you'll use to connect GitHub Actions to [Terraform](/blog/kubernetes-terraform) Cloud, so make sure you store this information in a safe place.
 
 ### Creating a GitHub Repository and Configuring Your Action
 
-Now that you've set up Terraform and your API tokens are stored somewhere, head over to GitHub and [set up a new repository](https://github.com/new).
+Now that you've set up Terraform and your API tokens are stored somewhere, head over to [GitHub](/blog/ci-comparison) and [set up a new repository](https://github.com/new).
 
 Once you have your repository set up, go to **Settings > Secrets and Variables > Actions** and create a new secret. This is where you need to add the API key you retrieved from Terraform in the previous step. In this example, the secret is `TERRAFORM_API_KEY`, but you can name it whatever you like. If you're using the sample code as a reference, ensure that you replace the name of the secret with whatever you have named yours:
 
@@ -124,7 +124,7 @@ If you're using the infrastructure only for testing purposes and want to avoid c
 
 Now that you have a taste for automatically provisioning infrastructure, you could make your `main.tf` file much more complicated and provision all sorts of different resources. Load balancers, databases, and more are now all within your reach using the combination of [GitHub Actions](https://github.com/features/actions) and [Terraform](https://www.terraform.io).
 
-And if you're looking to continue building out your automation pipeline, consider using [Earthly](https://earthly.dev), a continuous integration, continuous delivery (CI/CD) platform that runs everywhere. Earthly makes CI/CD easy and [works natively with GitHub Actions](https://docs.earthly.dev/ci-integration/vendor-specific-guides/gh-actions-integration), so it couldn't be easier to get started.
+And if you're looking to continue building out your automation pipeline, consider using [Earthly](https://earthly.dev), a continuous integration, continuous delivery (CI/CD) platform that runs everywhere. Earthly makes [CI/CD](/blog/ci-vs-cd) easy and [works natively with GitHub Actions](https://docs.earthly.dev/ci-integration/vendor-specific-guides/gh-actions-integration), so it couldn't be easier to get started.
 
 ## Outside Article Checklist
 
@@ -133,5 +133,4 @@ And if you're looking to continue building out your automation pipeline, conside
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
 - [ ] Add Earthly `CTA` at bottom `{% include_html cta/cta2.html %}`
