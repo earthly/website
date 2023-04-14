@@ -96,3 +96,10 @@ sqrt
 it
 
 sudo
+
+tac
+uniq
+wc
+rg
+fd
+bpf
