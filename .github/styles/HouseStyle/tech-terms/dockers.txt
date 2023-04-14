@@ -6,3 +6,7 @@ portainer
 dockerhub
 distro
 Datasource
+
+dockerignore
+Dockfile
+dockerize
