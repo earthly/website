@@ -1,5 +1,5 @@
 ---
-title: "Python Subprocess: Run Bash Commands and More in Python"
+title: "How to Use Python's Subprocess Module"
 categories:
   - Tutorials
 toc: true
@@ -438,6 +438,6 @@ I hope this tutorial helped you understand how to use Python's `subprocess` modu
 
 If you need to run external programs within the Python application, try to run them as subprocesses. You can also leverage Python's threading capabilities to run subprocesses concurrently.
 
-And if you are looking for a more repeatable way to build python, take a look at [Earthly](/).
+And if you are looking for a more repeatable way to build Python, take a look at [Earthly](/).
 
 {% include_html cta/cta2.html %}
