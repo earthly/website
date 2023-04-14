@@ -1,20 +1,18 @@
 ---
-layout: default 
-title: Dev List
+layout: page 
+title: All Posts
 permalink: /devlist/
 regenerate: true
 ---
 {% if jekyll.environment != "production" %}
-<h1>Dev List</h1>
-<p><strong>You shouldn't see this page in production.</strong></p>
-<h2>All Posts:</h2>
-<p>
-<ul>
-    <li>
-        {% for post in site.posts %}
-        <p><a href="{{ post.url | relative_url }}">{{ post.title }}</a></p>
-        {% endfor %}
-    </li>
-</ul>
-</p>
+<h2>Archive</h2>
+{% assign postsByYearMonth = site.posts | group_by_exp:"post", "post.date | date: '%Y %B'"  %}
+{% for yearMonth in postsByYearMonth %}
+  <h3>{{ yearMonth.name }}</h3>
+    <ul>
+      {% for post in yearMonth.items %}
+        <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
+      {% endfor %}
+    </ul>
+    {% endfor %}
 {% endif %}

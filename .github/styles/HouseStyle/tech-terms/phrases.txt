@@ -27,3 +27,7 @@ Jmeter
 Uvicorn
 uvicorn
 Hypercorn
+
+jwt
+Httpx
+httpx
