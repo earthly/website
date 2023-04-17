@@ -13,7 +13,7 @@ Containerization is the process of bundling the components of an application (*i
 
 [Docker](https://www.docker.com) is a popular containerization solution because it allows you to build, test, deploy, and run applications within containers quickly. In combination with [Amazon Elastic Container Service (Amazon ECS)](https://aws.amazon.com/ecs/), which allows you to deploy, manage, and scale containerized applications, you can efficiently coordinate and manage your containers.
 
-You can use Amazon ECS to run cloud-native applications built using Docker and enforce DevOps and continuous integration, continuous delivery (CI/CD) pipelines. In this article, you'll learn how to run containers in the cloud using Amazon ECS.
+You can use Amazon ECS to run cloud-native applications built using Docker and enforce DevOps and [continuous integration](/blog/continuous-integration), continuous delivery (CI/CD) pipelines. In this article, you'll learn how to run containers in the cloud using Amazon ECS.
 
 ## Running Docker Containers Using Amazon ECS
 
@@ -37,7 +37,7 @@ in the ECS console:
 
 ### Create a New ECS Service
 
-An ECS Service is a way to define and run a group of related Docker containers on an Amazon Elastic Compute Cloud (EC2) or Fargate cluster.
+An [ECS](/blog/how-to-setup-and-use-amazons-elastic-container-registry)  Service is a way to define and run a group of related Docker containers on an Amazon Elastic Compute Cloud (EC2) or Fargate cluster.
 
 To create an ECS Service, you need to create a cluster, specify a task definition, configure load balancing, and then deploy the service. You'll walk through each of these steps in the following sections.
 
@@ -213,7 +213,7 @@ Like before, you should see that the service creation is in progress:
 
 After a few minutes, you'll see the "nginx-ecs-service-demo" service.
 
-If the service deployment goes through successfully, it will notify you and run the task:
+If the service [deployment](/blog/deployment-strategies) goes through successfully, it will notify you and run the task:
 
 <div class="wide">
 ![Service deployment was successful]({{site.images}}{{page.slug}}/5G6lE2s.png)
@@ -241,7 +241,7 @@ You should see your application running, and if it is i.e. showing you a *Welcom
 
 In this article, you learned how to run containers using Amazon ECS. You started by creating an ECS cluster (which is a logical grouping of resources that can be managed together) to host your containers. Then you used the latest NGINX container image hosted on Docker Hub and created a task definition. After that, you created an ECS Service which enables you to specify the number of tasks and the load balancing strategy for the container. Finally, you accessed the container using the public IP address of the service which allowed you to connect to the NGINX web server and view the default welcome page.
 
-To optimize your container environment and improve your development workflow, you may want to explore other CI/CD tools such as [Earthly](https://earthly.dev/). One of the primary benefits of Earthly is that it focuses on developer productivity—which means developers can focus on core development instead of orchestration. This, ultimately, streamlines the development process and reduces the time and effort required to build and deploy containerized applications.
+To optimize your container environment and improve your development workflow, you may want to explore other [CI/CD](/blog/ci-vs-cd) tools such as [Earthly](https://earthly.dev/). One of the primary benefits of Earthly is that it focuses on developer productivity—which means developers can focus on core development instead of orchestration. This, ultimately, streamlines the development process and reduces the time and effort required to build and deploy containerized applications.
 
 {% include_html cta/cta2.html %}
 
@@ -250,4 +250,3 @@ To optimize your container environment and improve your development workflow, yo
 * [ ] Create header image in Canva
 * [ ] Optional: Find ways to break up content with quotes or images
 * [ ] Add keywords for internal links to front-matter
-* [ ] Run `link-opp` and find 1-5 places to incorporate links
