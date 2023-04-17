@@ -21,11 +21,15 @@ In this article, you'll learn how to prepare your workspace, run, and test your 
 
 ## How Rust and Bazel Work Together
 
+![How]({{site.images}}{{page.slug}}/how.png)\
+
 Bazel supports Rust through its [built-in rules](https://github.com/bazelbuild/rules_rust), which are sets of instructions that tell Bazel how to build and test code written in specific languages. These rules allow you to build and test Rust code using Bazel's powerful execution capabilities.
 
 In addition, Bazel's Rust rules provide a set of common macros, which make it easy to perform common tasks, such as building libraries, running tests, and creating binaries. These macros can be used to simplify the development process and reduce the amount of boilerplate code that you have to write.
 
 ## Build and Develop a Rust Application with Bazel
+
+![Build]({{site.images}}{{page.slug}}/build.png)\
 
 Now that you know how Rust and Bazel work together, let's create a basic Rust application that makes use of a custom substring Rust library that you'll build and deploy using Bazel.
 
@@ -443,6 +447,8 @@ Overall, Bazel caching helps to improve the build performance and the repeatabil
 
 ### Test Your Application
 
+![Test]({{site.images}}{{page.slug}}/test.png)\
+
 Now, for testing, run the following command in your terminal to run the tests present within your crate:
 
 ~~~{.bash caption=">_"}
@@ -474,10 +480,3 @@ In this article, you learned how Bazel can be used to speed up the build and dep
 For more information and to check out other supported languages and platforms that [Bazel](/blog/bazel-build) offers, check out the official [documentation](https://bazel.build/).
 
 {% include_html cta/cta2.html %}
-
-## Outside Article Checklist
-
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
