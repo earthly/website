@@ -13,7 +13,7 @@ Building and deploying software can be a complicated and time-consuming process,
 
 One of the key features of Bazel is its ability to speed up builds and tests. Bazel's caching and dependency analysis features facilitate fast, incremental builds. This makes it possible to quickly iterate on code changes, which can be especially useful for large teams working on a codebase. Additionally, Bazel supports multiple languages and platforms, including [Rust](https://www.rust-lang.org), and can be extended to support new languages.
 
-In this article, you'll learn how to prepare your workspace, run and test your code, and develop a basic application using Rust with Bazel. By the end of this article, you'll know how to use Bazel to streamline your development workflow and improve the efficiency of your builds and tests.
+In this article, you'll learn how to prepare your workspace, run, and test your code, and develop a basic application using Rust with Bazel. By the end of this article, you'll know how to use Bazel to streamline your development workflow and improve the efficiency of your builds and tests.
 
 ## How Rust and Bazel Work Together
 
@@ -31,17 +31,17 @@ All the source code for this tutorial is available in this [GitHub repository](h
 
 To install and set up Rust, you need to start by installing [rustup](https://rustup.rs), the official Rust installer. You can do so with the following command:
 
-```bash
+~~~
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-```
+~~~
 
 This will download and run the rustup installer, which will guide you through the installation process.
 
 Once rustup is installed, you can use it to install the latest stable version of Rust by running the following command:
 
-```bash
+~~~
 rustup install stable
-```
+~~~
 
 ### Install Bazel
 
@@ -51,27 +51,27 @@ Next, you need to install and set up Bazel by [following the instructions on the
 
 Once Bazel is installed, you need to create a new Rust project called `rs-bazel` by running the following command:
 
-```bash
+~~~
 cargo new rs-bazel
-```
+~~~
 
 Then change the directory to your newly created project:
 
-```bash
+~~~
 cd rs-bazel
-```
+~~~
 
 For this demonstration, you need to create a Rust crate inside your project. To do so, run the following command in your current directory:
 
-```bash
+~~~
 cargo new --lib substring-library
-```
+~~~
 
-Here, you create the `substring-library` crate. 
+Here, you create the `substring-library` crate.
 
 After following these steps, your file structure should look like this:
 
-```
+~~~
 [rs-bazel]
    src/
       - main.rs
@@ -80,11 +80,11 @@ After following these steps, your file structure should look like this:
          - lib.rs
       Cargo.toml
    Cargo.toml
-```
+~~~
 
 Open your `lib.rs` file and add the following code:
 
-```rust
+~~~
 // lib.rs
 
 pub fn find_substring<'a>(s: &'a str, substring: &str) -> Option<&'a str> {
@@ -94,7 +94,7 @@ pub fn find_substring<'a>(s: &'a str, substring: &str) -> Option<&'a str> {
 pub fn replace_substring(s: &str, from: &str, to: &str) -> String {
     s.replace(from, to)
 }
-```
+~~~
 
 The `find_substring` function takes in two parameters: `s`, a string slice with a lifetime `'a`, and `substring`, a reference to a string slice. It returns an `Option<&'a str>` type if the first occurrence of the `substring` was found within the `s` string; otherwise, it returns `None`.
 
@@ -102,7 +102,7 @@ The `replace_substring` function takes in three parameters: references to string
 
 Next, you need to add tests for your crate. To do so, add the following lines of code to the `lib.rs` file:
 
-```rust
+~~~
 // lib.rs
 
 #[cfg(test)]
@@ -123,13 +123,13 @@ mod tests {
         assert_eq!(new_string, "Hello, Rust!");
     }
 }
-```
+~~~
 
 This test code checks the expected output of the `find_substring()` and `replace_substring()` functions, which are expected to return the first occurrence of a substring in a string and replace the substring, respectively.
 
 Next, navigate to your `main.rs` file, which is the entry point of your Rust project, and add the following code:
 
-```rust
+~~~
 // main.rs
 
 extern crate substring_library;
@@ -145,17 +145,17 @@ fn main() {
     let new_string = replace_substring(s, "World", "Rust");
     println!("New string: {}", new_string);
 }
-```
+~~~
 
 This code uses the `substring_library` crate you just created, which contains the `find_substring` and `replace_substring` functions to find a substring within a string and replace a substring with another one, respectively. It uses the `println!` macro to output the results.
 
 At this point, you've created your Rust program. Now, you need to set up your Bazel environment to be able to test, build, and deploy your program.
 
-### Build and Test with Bazel
+### Build and Test With Bazel
 
 To build and test with Bazel, create a `WORKSPACE` file in your root directory. Your file structure should look like this:
 
-```
+~~~
 [rs-bazel]
    src/
       - main.rs
@@ -165,13 +165,13 @@ To build and test with Bazel, create a `WORKSPACE` file in your root directory. 
       Cargo.toml
    Cargo.toml
    WORKSPACE
-```
+~~~
 
 The `WORKSPACE` file in Bazel serves as the root of your project. It defines the root and specifies the external dependencies that your project relies on. It's like a map that guides Bazel in finding all the necessary files and dependencies for your project. It helps Bazel know where to start building your project and ensures that all the dependencies are in place.
 
 Now, create a `WORKSPACE` file in your current directory and add this code to it:
 
-```starlark
+~~~
 # ./WORKSPACE
 
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
@@ -186,7 +186,7 @@ http_archive(
     # Specifies the URL of a compressed archived file to download.
     urls = ["https://github.com/bazelbuild/rules_rust/releases/download/0.16.1/rules_rust-v0.16.1.tar.gz"],
 )
-```
+~~~
 
 The `load` function is responsible for importing the necessary custom functions, macros, and logic needed in your `BUILD` file and [`.bazelrc`](https://bazel.build/run/bazelrc), which you will learn more about later in this tutorial.
 
@@ -194,29 +194,29 @@ The `http_archive` function is used for downloading a Bazel repository as a comp
 
 Next, in the same `WORKSPACE` file, add the following code:
 
-```starlark
+~~~
 # ./WORKSPACE
 
 # Loads the `rules_rust_dependencies` and `rust_register_toolchains` function definitions.
 load("@rules_rust//rust:repositories.bzl", "rules_rust_dependencies", "rust_register_toolchains")
-```
+~~~
 
 This loads the `rule_rust_dependencies` and `rust_register_toolchains` functions. Bazel uses the `rule_rust_dependencies`  function to know what dependencies your project needs to successfully run, build, or test your application.
 
 In the same `WORKSPACE` file, add the following line of code:
 
-```starlark
+~~~
 # WORKSPACE
 
 # Adds the necessary dependencies for the Rust rules.
 rules_rust_dependencies()
-```
+~~~
 
 The `rust_register_toolchains` function registers the Rust toolchains with the given versions and editions you will need to use within your project.
 
 And, in the same `WORKSPACE` file, add this line of code:
 
-```starlark
+~~~
 # ./WORKSPACE
 
 # Registers Rust toolchains with the given versions and editions.
@@ -226,7 +226,7 @@ rust_register_toolchains(
     # Specifies the Rust edition to use for the registered toolchains
     edition = "2021",
 )
-```
+~~~
 
 When another developer clones the project and runs the `bazel build` command, Bazel will check for the Rust version specified in the `rust_register_toolchains`, and if the correct version of Rust isn't already installed on the local system, Bazel will download and install it before building the project.
 
@@ -242,9 +242,9 @@ Bazel uses `labels` to determine which targets to build or run as well as to res
 
 When building a Rust project with Bazel, the following command is used for building and running build targets. Try running this command in the terminal inside your current directory:
 
-```bash
+~~~
 bazel run //:rs_bazel
-```
+~~~
 
 Here, the `//` signifies the root directory of the project. `rs_bazel`  signifies the Rust binary target defined in the `BUILD` file within your root directory.
 
@@ -252,7 +252,7 @@ Alternatively, you could also run the `bazel build //:rs_bazel` command, but thi
 
 Now, notice the error output from your terminal:
 
-```
+~~~
 Starting local Bazel server and connecting to it...
 ERROR: Skipping '//:rs-bazel': no such package '': BUILD file not found in any of the following directories. Add a BUILD file to a directory to mark it as a package.
  - /Users/apple/Documents/rs-bazel
@@ -263,7 +263,7 @@ INFO: Elapsed time: 4.276s
 INFO: 0 processes.
 FAILED: Build did NOT complete successfully (0 packages loaded)
 ERROR: Build failed. Not running target
-```
+~~~
 
 As you can see, your Rust application `BUILD` file is missing.
 
@@ -275,18 +275,18 @@ And now comes the exciting part! You're going to set up Bazel to build and deplo
 
 To start, create a `BUILD` file in the root of your project and paste the following code in it:
 
-```starlark
+~~~
 # ./BUILD
 
 # Loads the Rust rules and the `rust_binary` function definition.
 load("@rules_rust//rust:defs.bzl", "rust_binary")
-```
+~~~
 
 This line of code loads the `defs.bzl` file from the `@rules_rust//rust` package, specifically the `rust_binary` function definition. The `rust_binary` function is used to define a Rust binary target that can be built by Bazel. This function can be used to specify the dependencies, settings, and other information needed for building the Rust binary.
 
-Now, copy and paste the following code into the `BUILD` file:
+Now, copy, and paste the following code into the `BUILD` file:
 
-```starlark
+~~~
 # ./BUILD
 
 # Declares a Rust binary target with the given name.
@@ -305,11 +305,11 @@ rust_binary(
     # Specifies the Rust edition to use for this binary.
     edition = "2021"
 )
-```
+~~~
 
 Before running Bazel again, create another `BUILD` file within your `substring-library` crate directory. Your file structure should look similar to this:
 
-```
+~~~
 [rs-bazel]
    src/
       - main.rs
@@ -321,23 +321,23 @@ Before running Bazel again, create another `BUILD` file within your `substring-l
    BUILD
    Cargo.toml
    WORKSPACE
-```
+~~~
 
 Then add the following code in the `BUILD` file you just created within your `substring-library` crate directory:
 
-```starlark
+~~~
 # ./substring-library/BUILD
 
 load("@rules_rust//rust:defs.bzl", "rust_library", "rust_test")
-```
+~~~
 
 This is similar to what you did earlier when you imported the `rust_binary` function, but this time, you're defining your crate and its tests using the `rust_library` and `rust_test` functions. The `rust_library` and `rust_test` functions are used for defining a Rust library and Rust test target that can be built by Bazel.
 
-#### Verify Your Bazel Build Is Working Correctly 
+#### Verify Your Bazel Build Is Working Correctly
 
 To ensure your `substring-library` crate and it's tests are included in your Bazel build, copy and paste the following code in the `BUILD` file in that same crate directory:
 
-```starlark
+~~~
 # ./substring-library/BUILD
 
 # Declares a Rust library target with the given name.
@@ -367,17 +367,17 @@ rust_test(
     # Specifies the Rust edition to use for this test.
     edition = "2021"
 )
-```
+~~~
 
 In your terminal, try running Bazel again with the following command:
 
-```bash
+~~~
 bazel run //:rs_bazel
-```
+~~~
 
 You should get the following error:
 
-```
+~~~
 ERROR: /Users/apple/Documents/rs-bazel/BUILD:8:12: in rust_binary rule //:rs_bazel: target '//substring-library:substring_library' is not visible from target '//:rs_bazel'. Check the visibility declaration of the former target if you think the dependency is legitimate
 ERROR: /Users/apple/Documents/rs-bazel/BUILD:8:12: Analysis of target '//:rs_bazel' failed
 ERROR: Analysis of target '//:rs_bazel' failed; build aborted: 
@@ -385,22 +385,22 @@ INFO: Elapsed time: 0.264s
 INFO: 0 processes.
 FAILED: Build did NOT complete successfully (1 packages loaded, 2 targets configured)
 ERROR: Build failed. Not running target
-```
+~~~
 
 By default, all targets have their visibility set to private, meaning that only rules within the same package can depend on them. So when you declared your Rust binary target dependencies to depend on the `substring-library` crate you created, Bazel returned errors because it doesn't have access to the crate and is private by default.
 
-Now, copy and paste the following code directly below your load function within the `substring-library` crate `BUILD` file:
+Now, copy, and paste the following code directly below your load function within the `substring-library` crate `BUILD` file:
 
-```starklark
+~~~
 # Set the default visibility for the package to be public.
 package(default_visibility = ["//visibility:public"])
-```
+~~~
 
 This code sets the default visibility for the package to public. In Bazel, visibility controls which rules and targets can depend on a given target. By setting the default visibility to public, it allows rules in other packages to depend on the targets defined in this package, as long as they are not explicitly marked as private. This can be useful if you want to make the targets in this package available to other parts of your codebase.
 
 Now, try running the `bazel run //:rs_bazel` command again. You should see the following outputs:
 
-```
+~~~
 INFO: Analyzed target //:rs_bazel (0 packages loaded, 0 targets configured).
 INFO: Found 1 target...
 Target //:rs_bazel up-to-date:
@@ -411,7 +411,7 @@ INFO: Build completed successfully, 1 total action
 INFO: Running command line: bazel-bin/rs_bazel
 Found substring: Some("World")
 New string: Hello, Rust!
-```
+~~~
 
 And your application has been built successfully!
 
@@ -425,9 +425,9 @@ Overall, Bazel caching helps to improve the build performance and the repeatabil
 
 Now, for testing, run the following command in your terminal to run the tests present within your crate:
 
-```bash
+~~~
 bazel test //substring-library:substring_library_test
-```
+~~~
 
 When using Bazel to test a Rust project, the command `bazel test //package:target` is used to run tests for a specific crate; in this case, `bazel test //substring-library:substring_library_test`. Here, the `//` signifies the root directory of the project. `substring-library` is the name of the crate folder, and `substring_library_test` is the specific test target defined in the `BUILD` file within that crate.
 
@@ -442,10 +442,10 @@ The build executable generated after running `bazel run` can be found in the `ba
 
 In your terminal, you can run the executable by typing `./bazel-bin/rs_bazel`. This will execute the binary created by Bazel, and you should see the desired output:
 
-```
+~~~
 Found substring: Some("World")
 New string: Hello, Rust!
-```
+~~~
 
 ## Conclusion
 
@@ -459,7 +459,6 @@ For more information and to check out other supported languages and platforms th
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
 - [ ] Add Earthly `CTA` at bottom `{% include_html cta/cta2.html %}`
