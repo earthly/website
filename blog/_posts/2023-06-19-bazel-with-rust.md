@@ -31,7 +31,7 @@ In addition, Bazel's Rust rules provide a set of common macros, which make it ea
 
 ![Build]({{site.images}}{{page.slug}}/build.png)\
 
-Now that you know how Rust and Bazel work together, let's create a basic Rust application that makes use of a custom substring Rust library that you'll build and deploy using Bazel.
+Now that you know how Rust nd Bazel work together, let's create a basic Rust application that makes use of a custom substring Rust library that you'll build and deploy using Bazel.
 
 All the source code for this tutorial is available in this [GitHub repository](https://github.com/ECJ222/rs_bazel).
 
