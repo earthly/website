@@ -7,6 +7,7 @@ sidebar:
   nav: "docker"
 internal-links:
    - docker compose
+last_modified_at: 2023-04-17
 ---
 <!-- vale HouseStyle.H2 = NO -->
 Tell me if this sounds familiar? You were introduced to docker-compose either by choice or by force. You've been using it for a while, but you find it clunky. I'm here to tell you, you are probably using it wrong.
@@ -57,8 +58,6 @@ Docker's docs basically [recommend](https://docs.docker.com/compose/startup-orde
 Where it gets a bit more cumbersome is when you run an integration test and the routines meant for initializing the test environment (for example pre-populating the database with some test data) end up not being resilient to starting before the other service is ready. So the argument about "it should be resilient in production anyway" doesn't quite apply here, because the code to populate the DB with test data is never used in production.
 
 For such cases, you need something that waits for services to be ready. Docker recommends using [wait-for-it](https://github.com/vishnubob/wait-for-it), [Dockerize](https://github.com/jwilder/dockerize) or [wait-for](https://github.com/Eficode/wait-for). Note, however, that a port being ready isn't always a sign that the service is ready to be used. For example, in an integration test using a certain SQL DB with a certain schema, the port becomes available when the DB is initialized, however, the test might only work after a certain schema migration has been applied. You may need application-specific checks on top.
-
-{% include cta/embedded-newsletter.html %}
 
 ## Problem #4: You're running the DB in docker-compose, but the test on the host
 

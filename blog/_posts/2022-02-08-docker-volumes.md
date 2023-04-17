@@ -10,7 +10,10 @@ internal-links:
  - docker volumes
  - docker volume
 topic: docker
+last_modified_at: 2023-04-17
 ---
+**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. This article is about container volume management. If you're interested in a simple and containerized approach to building software then [check us out](/).**
+
 [Docker](https://www.docker.com/) is a common containerization solution that offers a user-friendly interface. It allows you to deploy your application as a lightweight process set rather than a complete virtual machine.
 
 Docker images are like a snapshot of a container's file system and contain both your application and its dependencies. When you run it, you recreate the container's state.
@@ -23,8 +26,6 @@ However, containers often need to use data beyond their container or share data 
 A Docker volume is an independent file system entirely managed by Docker and exists as a normal file or directory on the host, where data is persisted.
 
 In this guide, you'll learn how volumes work with Docker, what they do, and what the best practices are for keeping them secure and effective.
-
-{% include_html cta/docker1.html %}
 
 ## What Are Docker Volumes
 
@@ -50,8 +51,6 @@ Unlike bind mount, where you can mount any directory from your host, volumes are
 You can also save data to a remote server or in cloud Docker volumes with alternative [volume drivers](https://docs.docker.com/storage/volumes/#use-a-volume-driver) like [`sshfs`](https://github.com/vieux/docker-volume-sshfs).
 
 In addition, Docker enables you to manage volume with the command line `docker volume`, making their management simple.
-
-{% include_html cta/docker2.html %}
 
 ## Creating and Managing Docker Volumes
 

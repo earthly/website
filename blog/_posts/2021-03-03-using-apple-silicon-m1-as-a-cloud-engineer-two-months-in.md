@@ -10,10 +10,12 @@ tags:
 - arm64
 - aarch64
 author: Vlad
+last_modified_at: 2023-04-17
 internal-links:
   - m1
   - arm
 ---
+**We're [Earthly.dev](https://earthly.dev/). We make building software simpler and therefore faster – like Dockerfile and Makefile had a baby. In this article, Vlad reviews the Apple M1 as a cloud engineer.**
 
 So I've been using my new M1-based MacBook Pro for a couple of months for a mix of development, email, and other things an [open-source maintainer](https://github.com/earthly/earthly) does day-to-day.
 
@@ -86,8 +88,6 @@ One issue I encountered on both my M1 laptop and also a [MacStadium MacMini](htt
 (In any case, a very impressive effort to switch architecture so quickly for a project that hosts so many packages!)
 
 Back to fixing the issue now. Using `brew doctor` I was able to find out that Xcode needed a (re)install. Easy: `xcode-select --install`. However, the issue was still there. On the MacStadium instance, I was able to just uninstall brew and reinstall it and everything was fine. I was not as comfortable doing that on my laptop after having installed so much via casks. Instead, I was able to just remove the brew `git` via `brew uninstall git` and simply rely on `git` from Xcode, which seems to work just fine. (If anyone reading this knows what's up with my brew's git and can tell me how to fix it, ping me on Twitter: [`@vladaionescu`](https://twitter.com/VladAIonescu) )
-
-{% include cta/embedded-newsletter.html %}
 
 ## Using Docker
 
@@ -164,3 +164,7 @@ Overall I'm happy with my M1. I like bleeding-edge technology, and I had to use 
 If you're a developer and your coding productivity depends on your laptop, I would triple check that my setup works as expected on an ARM architecture before making a purchase. For the most part you should be fine outside the Java / Scala world - but you never know!
 
 If you're not a developer, or only use your laptop for browsing and email, I really don't see any reason why you would pick an Intel MacBook over this one. I would also assume that the MacBook Air version is also amazing (unlike the Intel version of MacBook Air, which is often on the slow side for modern web browsing). The M1 chip is very similar between Pro and Air and there's no need for fans.
+
+And if you liked this article you might like to hear a little about the [backstory behind](/blog/introducing-earthly-build-automation-for-the-container-era) [Earthly](https://earthly.dev/).
+
+{% include_html cta/cta2.html %}

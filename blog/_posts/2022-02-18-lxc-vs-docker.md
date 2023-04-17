@@ -10,14 +10,15 @@ internal-links:
  - lxd
  - chroot
 topic: docker
+last_modified_at: 2023-04-17
 ---
+**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. If you're interested in a simple and containerized approach to building software then [check us out](/).**
+
 [Linux Containers](https://linuxcontainers.org/) (LXC) is an OS-level virtualization technology that enables you to create and run multiple Linux operating systems (OS) simultaneously on a single Linux machine (LXC host). LXC provides a set of tools to manage your container as well as templates to create a virtual environment of [the most common Linux OS](https://uk.lxd.images.canonical.com/).
 
 [Docker](https://docs.docker.com/get-started/overview/) is an open-source containerization technology that focuses on running a single application in an isolated environment. Its [Docker Engine](https://docs.docker.com/engine/) enables you to create, run, or distribute containers. You can also share applications and collaborate with other developers using [Docker Hub](https://hub.docker.com/).
 
 While LXC and Docker have much in common in terms of their architecture and usage, they also differ in many ways. This article will compare their host machine utilization, simplicity, speed, security, ease of use, scalability, and tooling. We'll also discuss the best traits of these tools as well as their downsides.
-
-{% include_html cta/docker1.html %}
 
 ## Comparing LXC vs Docker
 
@@ -65,8 +66,6 @@ Linux containers (LXC) are more flexible in design. They are bit closer to virtu
 As we mentioned before, Docker containers were originally forked from the LXC project. However, the difference is in the design: Docker containers were designed specifically for microservices applications. That makes them very different from VMs. Docker is simple for developers to use; the [networking](/blog/docker-networking), [storage](/blog/docker-volumes), and [logging](/blog/understanding-docker-logging-and-log-files) abstraction make it so that devs need little (or no) prior Linux knowledge.
 
 The simplicity that Docker offers to developers is what made it so popular. Both platforms are simple to use, but target different audiences.
-
-{% include_html cta/docker2.html %}
 
 ### Speed
 

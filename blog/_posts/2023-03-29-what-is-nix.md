@@ -337,6 +337,6 @@ If you're interested in learning more about Nix here are some resources I found 
 
 - Check out how [Shopify](https://shopify.engineering/shipit-presents-how-shopify-uses-nix) and [Replit](https://blog.replit.com/nix) have started using Nix.
 
-{% include cta/cta1.html %}
+{% include cta/cta2.html %}
 
 [^1]: Eelco Dolstra created Nix as part of his PhD Thesis in 2003.

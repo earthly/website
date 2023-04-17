@@ -9,6 +9,7 @@ internal-links:
  - podman
  - rootless
  - docker alternative
+last_modified_at: 2023-04-17
 ---
 For many developers, [Docker](https://www.docker.com/) was their first exposure to the wonderful world of containers. Containers have changed the way we develop and ship software, and the pace of change isn't slowing down. As containerization technology matures and becomes more widely adopted, there is a growing desire to bring open standards to the field, and this is where [Podman](https://podman.io/) comes in. Podman is a rootless Docker alternative that implements Open Container Initiative (OCI) standards to give developers and companies the benefits of Docker, delivering some promising new features without some of the limitations, like requiring root access.
 
@@ -21,8 +22,6 @@ It's clear that the two have a lot in common, but where do the differences lie? 
 The second big difference is that, unlike Docker, Podman allows you to create and manage organizational groups of containers known as "pods". You are likely to be familiar with pods if you've spent much time working with Kubernetes; though this is a feature that Docker doesn't currently have at all.
 
 So even if Podman is a drop-in replacement, why would you want to use it over Docker? Aside from the presence of pods, which will be explored more below, Podman has some compelling benefits. Chief among these are the security improvements. Podman is [more secure than Docker](https://cloudnweb.dev/2019/10/heres-why-podman-is-more-secured-than-docker-devsecops/) in a few ways, but the most obvious one is that users do not need root privileges to run containers with Podman. Although best practices mitigate the risks, it is still possible for malicious software to [break out of its container](https://book.hacktricks.xyz/linux-unix/privilege-escalation/docker-breakout/docker-breakout-privilege-escalation) and cause havoc on the host. If this happens, you do not want to be flaunting root privileges where they are not strictly needed, as can often be the case with a poorly configured Docker host. Podman takes a different approach to running containers, which means these Docker security concerns are no longer an issue.
-
-{% include cta/embedded-newsletter.html %}
 
 ## Why Use Podman and When?
 

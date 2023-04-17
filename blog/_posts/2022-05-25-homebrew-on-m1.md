@@ -15,11 +15,11 @@ internal-links:
  - m1
  - arm
 topic: cli
+last_modified_at: 2023-04-17
 ---
+**We're [Earthly](https://earthly.dev/). We make building software simpler and, therefore, faster. This article is about Homebrew and some quirks of using it on the Mac M1. If you doing things at command line you might like [Earthly](https://earthly.dev/). It's a pretty great open-source build tool.**
 
 Homebrew made some changes to where it installs packages if you are running it on a new M1 Mac, and these changes may throw you for a loop if you're moving over to an M1 from Intel. In this article I'll talk about what changed and why it changed. I'll also walk you through getting all your Homebrew packages from your Intel Mac reinstalled on your M1, and share a couple of issues I came across after migrating that will hopefully help you with any gotchas you encounter in the future.
-
-{% include_html cta/cli1.html %}
 
 ## So What Changed?
 
@@ -69,8 +69,6 @@ It could be possible to move everything back to `/usr/local/bin` in the future, 
 3. Other package managers have been using `/opt/<manager_name>` for a while now.
 
 So in the long run this is a positive change, but not without a few growing pains along the way.
-
-{% include_html cta/cli2.html %}
 
 ## Migrating From Intel Mac
 

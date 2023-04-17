@@ -7,8 +7,11 @@ author: Adedoyin Adeyemi
 internal-links:
  - python docker
  - docker python
+last_modified_at: 2023-04-17
 ---
 <iframe width="560" height="315" src="https://www.youtube.com/embed/4bGtb2L4-VM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. This article is about one solution to the complexities of Python development. If you're interested in a simple and containerized approach to building python code then [check us out](/).**
 
 Python is a versatile programming language, but running it can be a handful when you have to manage its dependencies—especially when you are sharing projects with other developers.
 
@@ -62,8 +65,6 @@ CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0", "--port=5000"]
 This code pulls the base image from `python:3.8-slim-buster` and ensures the output is sent straight to the terminal. It confirms the current working directory location, the Python app to be copied to the current directory, and the packages in `requirements.txt` to be installed.
 
 Save and close the file.
-
-{% include_html cta/docker1.html %}
 
 ## Creating the Python App
 
@@ -145,8 +146,6 @@ Then, use `docker ps` to see the list of containers present:
 </div>
 
 You can now test your application using [http://localhost:5000](http://localhost:5000) on your preferred browser. You've run your Python app inside a Docker container.
-
-{% include_html cta/docker2.html %}
 
 ## Running Docker Push
 
