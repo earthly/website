@@ -6,7 +6,10 @@ toc: true
 author: Ndafara Tsamba
 
 internal-links:
- - just an example
+ - Containerization
+ - Amazon
+ - ECS
+ - Containers
 ---
 
 Containerization is the process of bundling the components of an application (*ie* files, libraries, and application code) into a single package that can be run consistently on any infrastructure. Containerization continues to grow in popularity because it's portable, has built-in fault tolerance, and is easily scalable.
@@ -249,4 +252,3 @@ To optimize your container environment and improve your development workflow, yo
 
 * [ ] Create header image in Canva
 * [ ] Optional: Find ways to break up content with quotes or images
-* [ ] Add keywords for internal links to front-matter
