@@ -453,6 +453,8 @@ In this article, you learned how Bazel can be used to speed up the build and dep
 
 For more information and to check out other supported languages and platforms that Bazel offers, check out the official [documentation](https://bazel.build/).
 
+{% include_html cta/cta2.html %}
+
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
@@ -461,4 +463,3 @@ For more information and to check out other supported languages and platforms th
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/cta2.html %}`
