@@ -247,8 +247,3 @@ In this article, you learned how to run containers using Amazon ECS. You started
 To optimize your container environment and improve your development workflow, you may want to explore other [CI/CD](/blog/ci-vs-cd) tools such as [Earthly](https://earthly.dev/). One of the primary benefits of Earthly is that it focuses on developer productivity—which means developers can focus on core development instead of orchestration. This, ultimately, streamlines the development process and reduces the time and effort required to build and deploy containerized applications.
 
 {% include_html cta/cta2.html %}
-
-## Outside Article Checklist
-
-* [ ] Create header image in Canva
-* [ ] Optional: Find ways to break up content with quotes or images
