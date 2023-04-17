@@ -9,9 +9,9 @@ internal-links:
  - just an example
 ---
 
-Building and deploying software can be a complicated and time-consuming process, especially as applications grow in size and complexity. One tool that can help simplify this process is [Bazel](https://bazel.build), an open-source build tool developed by Google. Bazel is designed to make it easy to build and test large and complex codebases and is particularly well-suited for monorepos, which are codebases that contain multiple projects or components.
+Building and deploying software can be a complicated and time-consuming process, especially as applications grow in size and complexity. One tool that can help simplify this process is [Bazel](https://bazel.build), an open-source build tool developed by Google. [Bazel](/blog/bazel-build) is designed to make it easy to build and test large and complex codebases and is particularly well-suited for monorepos, which are codebases that contain multiple projects or components.
 
-One of the key features of Bazel is its ability to speed up builds and tests. Bazel's caching and dependency analysis features facilitate fast, incremental builds. This makes it possible to quickly iterate on code changes, which can be especially useful for large teams working on a codebase. Additionally, Bazel supports multiple languages and platforms, including [Rust](https://www.rust-lang.org), and can be extended to support new languages.
+One of the key features of Bazel is its ability to speed up builds and tests. Bazel's caching and dependency analysis features facilitate fast, incremental builds. This makes it possible to quickly iterate on code changes, which can be especially useful for large teams working on a codebase. Additionally, [Bazel](/blog/monorepo-with-bazel) supports multiple languages and platforms, including [Rust](https://www.rust-lang.org), and can be extended to support new languages.
 
 In this article, you'll learn how to prepare your workspace, run, and test your code, and develop a basic application using Rust with Bazel. By the end of this article, you'll know how to use Bazel to streamline your development workflow and improve the efficiency of your builds and tests.
 
@@ -45,7 +45,7 @@ rustup install stable
 
 ### Install Bazel
 
-Next, you need to install and set up Bazel by [following the instructions on the Bazel website](https://bazel.build/start) for your operating system. If you're using Windows, Linux, or macOS, Bazel recommends installing it using [Bazelisk](https://bazel.build/install/bazelisk), which is useful for switching between different versions of Bazel and for keeping it updated to the latest release.
+Next, you need to install and set up Bazel by [following the instructions on the Bazel website](https://bazel.build/start) for your operating system. If you're using [Windows](/blog/makefiles-on-windows), Linux, or macOS, Bazel recommends installing it using [Bazelisk](https://bazel.build/install/bazelisk), which is useful for switching between different versions of Bazel and for keeping it updated to the latest release.
 
 ### Write a Basic Rust App
 
@@ -240,7 +240,7 @@ In addition to specifying the correct version of Rust, Bazel also uses `labels` 
 
 Bazel uses `labels` to determine which targets to build or run as well as to resolve dependencies between targets. By specifying the correct `labels`, developers can easily build and run specific parts of their projects without having to navigate through the entire codebase.
 
-When building a Rust project with Bazel, the following command is used for building and running build targets. Try running this command in the terminal inside your current directory:
+When building a Rust project with [Bazel](/blog/bazel-build), the following command is used for building and running build targets. Try running this command in the terminal inside your current directory:
 
 ~~~
 bazel run //:rs_bazel
@@ -451,7 +451,7 @@ New string: Hello, Rust!
 
 In this article, you learned how Bazel can be used to speed up the build and deployment process of a Rust application while still leveraging the features of the Rust language. You also saw how to set up a workspace and then run and test a Rust application using Bazel's rules for Rust.
 
-For more information and to check out other supported languages and platforms that Bazel offers, check out the official [documentation](https://bazel.build/).
+For more information and to check out other supported languages and platforms that [Bazel](/blog/bazel-build) offers, check out the official [documentation](https://bazel.build/).
 
 {% include_html cta/cta2.html %}
 
@@ -462,4 +462,3 @@ For more information and to check out other supported languages and platforms th
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
