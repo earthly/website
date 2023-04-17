@@ -6,7 +6,11 @@ toc: true
 author: Enoch Chejieh
 
 internal-links:
- - just an example
+ - Rust
+ - Bazel
+ - Deploy
+ - Applications
+ - Build
 ---
 
 Building and deploying software can be a complicated and time-consuming process, especially as applications grow in size and complexity. One tool that can help simplify this process is [Bazel](https://bazel.build), an open-source build tool developed by Google. [Bazel](/blog/bazel-build) is designed to make it easy to build and test large and complex codebases and is particularly well-suited for monorepos, which are codebases that contain multiple projects or components.
@@ -461,4 +465,3 @@ For more information and to check out other supported languages and platforms th
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Add keywords for internal links to front-matter
