@@ -32,10 +32,11 @@
 <script src="/blog/assets/js/jquery-3.5.1.min.js"></script>
 <script src="/blog/assets/js/button.js"></script>
 <script src="/blog/assets/js/star-cta.js"></script>
+<script src="/blog/assets/js/analytics.js"></script>
 
 {% if jekyll.environment == "production" %}
-{% include_cached head/google-analytics.html %}
-{% include_cached head/mouseflow.html %}
+<!-- {% include_cached head/google-analytics.html %} -->
+{% include_cached head/segment.html %}
 {% include_cached head/facebookpixel.html %}
 {% include_cached head/twitterpixel.html %}
 {% endif %}
