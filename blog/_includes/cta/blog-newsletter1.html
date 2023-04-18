@@ -22,7 +22,7 @@
         <div data-style="minimal">
           <div data-element="fields" data-stacked="false" class="seva-fields formkit-fields">
             <div class="formkit-field">
-              <input class="border rounded-md p-2 mb-2 w-3/4" name="email_address" aria-label="Email Address"
+              <input id="embedded-newsletter-form-email" class="border rounded-md p-2 mb-2 w-3/4" name="email_address" aria-label="Email Address"
                 placeholder="Email Address" required="" type="email" />
             </div>
             <button data-element="submit" class="formkit-submit formkit-submit w-44 pt-1 pb-1" style="
@@ -48,10 +48,11 @@
     <script>
       const form = document.getElementById('embedded-newsletter-form');
       form.addEventListener('submit', function (event) {
-        // console.log("Sent event to Google Analytics");
-        gtag('event', 'conversion', {
-          'event_category': 'Form Submission',
-          'event_label': 'embedded-newsletter-form'
+        var formEmail = document.getElementById('embedded-newsletter-form-email').value;
+        analytics.identify(formEmail);
+        analytics.track('embedded-newsletter-form', {
+          category: 'Form Submission',
+          label: 'embedded-newsletter-form'
         });
       });
     </script>
