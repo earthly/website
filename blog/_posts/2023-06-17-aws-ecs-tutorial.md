@@ -14,7 +14,7 @@ internal-links:
 
 Containerization is the process of bundling the components of an application (*ie* files, libraries, and application code) into a single package that can be run consistently on any infrastructure. Containerization continues to grow in popularity because it's portable, has built-in fault tolerance, and is easily scalable.
 
-Docker is a popular containerization solution because it allows you to build, test, deploy, and run applications within containers quickly. In combination with [Amazon Elastic Container Service (Amazon ECS)](https://aws.amazon.com/ecs/), which allows you to deploy, manage, and scale containerized applications, you can efficiently coordinate and manage your containers.
+Docker is a containerization solution because it allows you to build, test, deploy, and run applications within containers quickly. In combination with [Amazon Elastic Container Service (Amazon ECS)](https://aws.amazon.com/ecs/), which allows you to deploy, manage, and scale containerized applications, you can efficiently coordinate and manage your containers.
 
 You can use Amazon ECS to run cloud-native applications built using Docker and enforce DevOps and [continuous integration](/blog/continuous-integration), continuous delivery (CI/CD) pipelines. In this article, you'll learn how to run containers in the cloud using Amazon ECS.
 
