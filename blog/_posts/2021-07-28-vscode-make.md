@@ -9,8 +9,11 @@ internal-links:
 sidebar:
   nav: "makefile"
 topic: make
+last_modified_at: 2023-04-17
 ---
 <iframe width="560" height="315" src="https://www.youtube.com/embed/vAS4R5P0Orc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about using `make` and a `Makefile` in VS Code. If you're interested in a different approach to building and packaging software then [check us out](/).**
 
 Microsoft announced [recently](https://devblogs.microsoft.com/cppblog/now-announcing-makefile-support-in-visual-studio-code/) a new Visual Studio Code extension to handle Makefiles. This extension provides a set of commands to the editor that will facilitate working with projects that rely on a Makefile to speed up the build.
 
@@ -28,8 +31,6 @@ A *Makefile* is a simple text file that defines rules to be executed. The usual 
 - Regular expressions
 - Target notation
 - Project structure
-
-{% include_html cta/make1.html %}
 
 To illustrate this power, the [sample project](https://github.com/nickmancol/vscode_makefile) contains a single C++ source code file. The source code for the example is pretty simple —- it flips a coin as many times as the `iters` argument is passed, and then prints the number of heads and tails counted from each flip.
 
@@ -93,8 +94,6 @@ This sample Makefile defines five simple rules:
 - `CoinFlipper.cpp`: Compiles the single source file.
 - `test`: Delegates to `CoinFlipper.cpp`, then runs the output main function passing an argument.
 - `clean`: Deletes compiled files.
-
-{% include_html cta/make2.html %}
 
 ~~~
 #
@@ -175,8 +174,6 @@ Target all built successfully.
 
 As you can see from the previous image, the target was built successfully after cleaning, compiling, and running the compiled program. The extension also provides commands to run other targets easily without changing the configurations in the perspective.
 
-{% include cta/embedded-newsletter.html %}
-
 The following image shows the commands available for the Makefile in the sample project:
 
 ![The makefile commands palette.]({{site.images}}{{page.slug}}/9630.png)
@@ -195,8 +192,8 @@ In the **Commands** section of the Makefile Tools Extension perspective, you can
 
 ## Conclusion
 
-Large codebase projects need a build system to keep them under the development team's control, and Makefiles are one the most ubiquitous and flexible ways to define building these complex software projects.
+Large codebases need a build system to keep them under the development team's control, and Makefiles are one the most ubiquitous and flexible ways to define building these complex software projects.
 
 With the new [Makefile Tools Extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.makefile-tools), Visual Studio Code greatly simplifies access for new developers. Though it is still tagged as in preview, this extension has been thoroughly tested by the Microsoft Team, building over seventy open-source projects written in different languages (including C, C++, and Python) successfully.
 
-If you want to learn about the power of make and Makefile, consider checking out the [Makefile Tutorial](https://makefiletutorial.com/#include-makefiles), and if you want the simplicity of a Makefile with the isolation of containers take a look at [Earthly](https://earthly.dev/).
+If you want to learn about the power of make and Makefiles, consider checking out our [Makefile Series](/blog/series/makefile/), and if you want the simplicity of a Makefile with the isolation of containers take a look at [Earthly](https://earthly.dev/).

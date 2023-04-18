@@ -12,6 +12,7 @@ internal-links:
  - Image Container
 topic: docker
 ---
+**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. This article is about several different ways to build containers. If you're interested in a [simple way to build containers](/blog/docker-multistage) then [check us out](/).**
 
 When you first start learning about containerization, you're probably going to use [Docker](https://www.docker.com). Docker wasn't the first tool to introduce the world to containerization; however, it's definitely the most popular. As you familiarize yourself with Docker and containerization in general, you may begin to run into use cases where Docker isn't the ideal tool.
 
@@ -20,8 +21,6 @@ For instance, when you need to build your images based on [Dockerfiles](https://
 With the [removal of the Dockershim](https://kubernetes.io/blog/2022/02/17/dockershim-faq/) in [Kubernetes](https://kubernetes.io/), this is no longer possible, and engineers are looking to find other tools to help them build their container images.
 
 In this article, you'll be introduced to three container image build tools: Docker, [Buildah](https://buildah.io), and [kaniko](https://github.com/GoogleContainerTools/kaniko). Tools like these can help you build your container images, getting you ready to deploy your applications to platforms like Kubernetes. You'll compare the tools based on features, supported platforms, and community; and by the end, you'll have seen the various ways that you can build container images as well as the pros and cons of each approach, which will help you make an informed decision about which tool is right for you.
-
-{% include_html cta/docker1.html %}
 
 ## Introduction to Docker, Buildah, and kaniko
 
@@ -52,8 +51,6 @@ Besides having the basic feature that you'd expect of a container image build to
 Secondly, Docker as a tool allows you to run containers, whereas the other two options only allow you to build the images. This is, of course, not relevant to the specific use case of container image building, but it's worth keeping in mind that Docker is a more fully formed development tool, while the others are meant to solve a specific problem.
 
 Besides that, not much sets [Docker](/blog/rails-with-docker) apart in terms of pros. This is not intended to make Docker sound like a poor tool choice; however, because it's the status quo, not much makes it stand out. This is more important for other tools, as they have to make a case for becoming the *new* status quo, whereas Docker mainly needs to make sure it provides existing features reliably.
-
-{% include_html cta/docker2.html %}
 
 ### Buildah
 

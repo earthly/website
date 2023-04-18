@@ -10,15 +10,15 @@ internal-links:
  - Docker
  - Portainer
 topic: docker
+last_modified_at: 2023-04-17
 ---
+**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. If you're interested in a [simple way to build containers](/blog/docker-multistage) then [check us out](/).**
 
-[Docker's CLI](https://docs.docker.com/engine/reference/commandline/cli/) and [API](https://docs.docker.com/engine/api) are powerful tools, but they can be unwieldy when you're working with large container fleets or looking for a more visual experience. [Portainer](https://www.portainer.io), a web-based Docker management system that provides a convenient graphical user interface (GUI), lets you take charge of your containers, images, volumes, and other resources, without memorizing long terminal commands.
+Docker's CLI and API are powerful tools, but they can be unwieldy when you're working with large container fleets or looking for a more visual experience. [Portainer](https://www.portainer.io), a web-based Docker management system that provides a convenient graphical user interface (GUI), lets you take charge of your containers, images, volumes, and other resources, without memorizing long terminal commands.
 
 Portainer can be used to monitor your Docker installation, interact with containerized apps, and deploy new stacks with minimal effort. A single Portainer instance can connect to multiple Docker hosts, centralizing your container management around one application. It also supports other container environments beyond [Docker](/blog/rails-with-docker), including [Kubernetes](https://kubernetes.io/) clusters and [Azure Container Instances](https://azure.microsoft.com/en-us/products/container-instances/#features).
 
 This article will show you how to set up and start using Portainer. You'll also learn the benefits of some of Portainer's headline features, such as how to deploy apps with built-in templates and your own Compose files.
-
-{% include_html cta/docker1.html %}
 
 ## What Is Portainer?
 
@@ -44,8 +44,6 @@ Here's an overview of the steps required to get Portainer running:
 - Use Portainer or the Docker CLI to manage your Docker environment
 
 The following sections will detail each of these steps in turn.
-
-{% include_html cta/docker2.html %}
 
 ### Installing Docker
 

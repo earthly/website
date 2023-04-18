@@ -9,7 +9,9 @@ internal-links:
  - terminal user interface
  - tui
 topic: go
+last_modified_at: 2023-04-17
 ---
+**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. Earthly is open-source and written in go. So if you're interested in a simpler way to build then [check us out](/).**
 
 <script zoom="2" id="asciicast-2UWD3NMXowmPCfTlwYjyFDJSF" src="https://asciinema.org/a/2UWD3NMXowmPCfTlwYjyFDJSF.js" async data-loop="true"  data-fit="none" data-autoplay="true" data-speed="2" data-size="small" data-start-at=04 ></script>
 
@@ -22,8 +24,6 @@ There are a handful of [different packages](https://appliedgo.net/tui/) to help 
 In addition to having a strong project behind it, the documentation for `Tview` is pretty good, and there are a decent number of other example projects linked in their github repo, so it was relatively easy to get something up and running quickly.
 
 In this post I want to highlight some of `Tview`'s core functionality. In order to keep the focus on `Tview` and its features, we'll build a very simple app for storing and displaying contacts. Basically a terminal based rolodex. [All the code is up on Github](https://github.com/jalletto/tui-go-example).
-
-{% include_html cta/go1.html %}
 
 ## Widgets
 
@@ -73,8 +73,6 @@ func main() {
 After creating a new app, we call a series of set up methods including enabling mouse detection and issuing a `Run` command. The `SetRoot` function tells the `tview` app which widget to display when the application starts. In this case we've chosen to use a [`Box`](https://pkg.go.dev/github.com/rivo/tview#Box) widget. Boxes are the parent type of all other widgets. They can do nothing but exist, which is fine for now.
 
 Run this code and marvel at the blank black nothing that fills your terminal screen. You can end the program by pressing `ctrl+c`. Not super exciting, but it's a start. We've created an app, but we haven't told it to display anything or to respond to any key presses.
-
-{% include_html cta/go2.html %}
 
 ## Adding Text
 

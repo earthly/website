@@ -4,12 +4,13 @@ categories:
   - Tutorials
 toc: true
 author: Bala Priya C
-
 internal-links:
  - Python
  - Subprocess
 topic: python
+last_modified_at: 2023-04-17
 ---
+**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. If you're interested in a simple and containerized approach to CI that works well with Python and everything else then [check us out](/).**
 
 Python ships with built-in modules such as [os](https://docs.python.org/3/library/os.html) and [sys](https://docs.python.org/3/library/sys.html) that provide some functionality to interact with the underlying operating system. However, it may sometimes be more convenient to run system programs from within a Python script. Python's subprocess module provides ready-to-use functionality to run external commands, capture and process outputs, redirect output to files and I/O streams, and much more!
 
@@ -21,8 +22,6 @@ This guide will help you get started with the subprocess module in Python. By th
 - Change the environment in which a subprocess runs
 
 Let's begin!
-
-{% include_html cta/python1.html %}
 
 ## Python Subprocess Module: The Basics
 
@@ -169,8 +168,6 @@ None
 <div class="notice--big--primary">
 ⚠️ If you set `shell = True`, an instance of the underlying shell is used to run the command. Because this is susceptible to [shell injection attacks](https://owasp.org/www-community/attacks/Command_Injection), avoid setting `shell = True` to run commands that take in user inputs.
 </div>
-
-{% include_html cta/python2.html %}
 
 ## How to Capture and Redirect Subprocess Outputs
 
@@ -438,6 +435,6 @@ I hope this tutorial helped you understand how to use Python's `subprocess` modu
 
 If you need to run external programs within the Python application, try to run them as subprocesses. You can also leverage Python's threading capabilities to run subprocesses concurrently.
 
-And if you are looking for a more repeatable way to build Python, take a look at [Earthly](/).
+And if you are looking for a more repeatable way to build Python, take a look at [Earthly](/). [Better Dependency Management in Python](/blog/python-earthly/) is a great introduction to using Earthly with Python.
 
 {% include_html cta/cta2.html %}

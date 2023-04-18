@@ -11,7 +11,10 @@ internal-links:
  - g\+\+
  - c\+\+
 topic: make
+last_modified_at: 2023-04-17
 ---
+**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article covers GNU's gcc compiler. If you're interested in an approach to builds that allows you to keep gcc and build everywhere then [check us out](/).**
+
 <!-- vale WritingSuggestions.Cliches = NO -->
 C++ is one of the [most dominant programming languages](https://www.tiobe.com/tiobe-index/cplusplus/). Although there are many compilers available, [GCC](http://gcc.gnu.org/) still ranks as one of the most popular choices for C++. GCC is part of the GNU toolchain, which comes with utilities like GNU make, GNU bison, and GNU [AutoTools](/blog/autoconf).
 
@@ -22,8 +25,6 @@ C++ is one of the [most dominant programming languages](https://www.tiobe.com/ti
 The C++ compiler of GCC is known as `g++`. The `g++` utility supports almost all mainstream C++ standards, including `c++98`, `c++03`, `c++11`, `c++14`, `c++17`, and experimentally `c++20` and `c++23`. It also provides some GNU extensions to the standard to enable more useful features. You can check out the detailed standard support [on gnu.org](https://gcc.gnu.org/projects/cxx-status.html).
 
 In this tutorial, you will learn how to compile C++ programs with the `g++` compiler provided by GCC, and how to use [Make](https://www.gnu.org/software/make/) to automate the compilation process.
-
-{% include_html cta/make1.html %}
 
 ## Installing GCC
 
@@ -273,8 +274,6 @@ On the other hand, the file `hello.cpp` is newer than `hello.o`. So it needs to 
 
 You can also call `make` with the name of a specific rule. For example, running `make func.o` will only run the rule for `func.o`
 
-{% include_html cta/make2.html %}
-
 ## Comments in Makefile
 
 You can have comments in Makefile, which start with a # and last till the end of the line.
@@ -374,4 +373,6 @@ clean:
 
 Makefile is one of the most important components of compiling C++ using `g++`. It makes compilation easy and predictable and also saves time and resources by compiling only the necessary files. In this tutorial you learned how to install `g++`, and compile C++ programs with `g++`. You also learned how to write Makefiles and utilize `make` for increased productivity and automation.
 
-Because `make` is a feature rich utility and supports a wide range of systems, it has a steep learning curve. As your project grows in size, the Makefile also grows in complexity. If you are looking for a solution to avoid the complexities of Makefile, check out [Earthly](https://earthly.dev/). Earthly takes the best ideas from Makefile and Dockerfile, and provides understandable and repeatable build scripts, minus the head-scratching parts of the Makefile.
+Because `make` is a feature rich utility and supports a wide range of systems, it has a steep learning curve. As your project grows in size, the Makefile also grows in complexity. If you are looking for a solution to avoid the complexities of Makefile, check out [Earthly](https://earthly.dev/).
+
+**[Earthly](https://earthly.dev/) takes the best ideas from Makefile and Dockerfile, and provides understandable and repeatable build scripts, minus the head-scratching parts of the Makefile.**

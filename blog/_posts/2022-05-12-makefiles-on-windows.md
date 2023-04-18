@@ -11,7 +11,9 @@ internal-links:
  - windows
  - cpp
 topic: make
+last_modified_at: 2023-04-17
 ---
+**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. This article is about `make` and `Makefile`s but if you're interested in a different approach to building software then [check us out](/).**
 
 As the field of DevOps and build release engineering continues to grow, many new tools are being developed to help make building and releasing applications easier. One of the tools that has been in use for many years is [Make](https://en.wikipedia.org/wiki/Make_(software)), which is still heavily used by engineers today.
 
@@ -20,8 +22,6 @@ A *Makefile* is a simple text file consisting of targets, which can invoke diffe
 Initially, it was Stuart Feldman who began working on the Make utility [back in 1976](https://en.wikipedia.org/wiki/Make_(software)#Origin) at Bell Labs. However, the version of Make most commonly used today is [GNU Make](https://www.gnu.org/software/make/), which was introduced in the late 1980s.
 
 While the tool was originally meant to run on [Linux](https://www.linux.org), Make's popularity has interested those working on other operating systems as well. There are several ways to run Makefiles on Windows, and in this article you'll be introduced to each option and learn about their strengths and weaknesses.
-
-{% include_html cta/make1.html %}
 
 ## Using Make on Windows
 

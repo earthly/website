@@ -10,7 +10,10 @@ internal-links:
  - json
  - convertion tool
 topic: cli
+last_modified_at: 2023-04-17
 ---
+**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about CSV files but if you're interested in a different approach to building and packaging software then [check us out](/).**
+
 How do you convert JSON values to CSV and back at the command line? I've done this task on many occasions and been stung by the edge cases frequently enough that **it's time for me to share my favorite tools for this conversion process.** But first, some background.
 
 ## Background: You Probably Want a CSV Conversion Tool
@@ -41,8 +44,6 @@ Things get more complex from there, and even the [CSV standard](https://datatrac
 So although it seems like CSV conversion can be done by hand in python, or your language of choice, using an existing tool that is known to handle the edges cases well it the way to go.
 
 With that in mind, let's review some tools for converting from JSON to CSV at the command line.
-
-{% include_html cta/cli1.html %}
 
 ## Convert JSON to CSV via the Command Line
 
@@ -86,8 +87,6 @@ blue,3,#00f
 <figcaption>converting with `dasel`</figcaption>
 
 `dasel` handles newlines and values containing commas as well.
-
-{% include_html cta/cli2.html %}
 
 ## Convert JSON to CSV via the Command Line Using JQ
 

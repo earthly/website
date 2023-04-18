@@ -4,15 +4,17 @@ categories:
   - Tutorials
 toc: true
 author: Aniket Bhattacharyea
-author2: Adam
 sidebar:
   nav: "makefile"
 internal-links:
  - python make
  - make python
 topic: make
+last_modified_at: 2023-04-17
 ---
 <iframe width="560" height="315" src="https://www.youtube.com/embed/w2UeLF7EEwk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article covers using Python with a `makefile`. `make` is sometimes overlooked by Python devs but it can be a pretty helpful tool.**
 
 Even though Python is regarded as an interpreted language and the files need not be compiled separately, many developers are unaware that you can still use `make` to automate different parts of developing a Python project, like running tests, cleaning builds, and installing dependencies. It's honestly an underutilized function, and by integrating it into your routine, you can save time and avoid errors.
 
@@ -37,8 +39,6 @@ When you run a Python code, the interpreter implicitly compiles the code into by
 When you import a module into your code, Python compiles those modules into bytecode for caching purposes. These are stored in a directory named `__pycache__` in the current directory, which contains compiled `.pyc` files.
 
 Although you cannot compile these modules using `make`, you can still use `make` for automation tasks like running tests, installing dependencies, cleaning the `.pyc` files etc.
-
-{% include_html cta/make1.html %}
 
 ## Using Make With Python
 
@@ -143,8 +143,6 @@ Finally, let's have a `clean` rule to clean up the `__pycache__` folder:
 clean:
     rm -rf __pycache__
 ```
-
-{% include_html cta/make2.html %}
 
 ### Creating a Virtual Environment
 
@@ -283,3 +281,5 @@ To overcome this, `make` has something called a Phony target. By declaring a tar
 Using `make` in your Python projects opens the door to lots of possibilities in terms of automation. You can use `make` to run linters like `flake8`, run tests using `pytest`, or run code coverage using `coverage`. If you wish to learn all the features of `make`, be sure to check out the [manual](http://www.gnu.org/software/make/manual/make.html) by GNU.
 
 Being full of features, and primarily targeted towards compiled languages, `make` can be difficult to use in a Python project, especially in large ones. If you are looking for a solution to avoid the complexities of Makefile, while still retaining the powerful automation capabilities, check out [Earthly](https://earthly.dev/). Earthly takes a modern approach towards project builds and combines the best of both Makefile and Dockerfile. Earthly provides understandable and repeatable build scripts without any complexity.
+
+[Better Dependency Management in Python](/blog/python-earthly/) is a great introduction to using Earthly with Python.

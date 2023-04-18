@@ -11,12 +11,13 @@ internal-links:
     - host network
     - networking
 topic: docker
+last_modified_at: 2023-04-17
 ---
+**We're [Earthly.dev](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article covers docker networking in depth. If you want to know more about building in containers then [check us out](/).**
+
 Docker is the de facto model for building and running containers at scale in most enterprise organizations today. At a very high level, Docker is a combination of CLI and a daemon process that solves common software problems like installing, publishing, removing, and managing containers. It's perfect for microservices, where you have many services handling a typical business functionality; Docker makes the packaging easier, enabling you to encapsulate those services in containers.
 
 Once the application is inside a container, it's easier to scale and even runs on different cloud platforms, like AWS, GCP, and Azure. In this article, let's focus on the [networking aspect of Docker](https://docs.docker.com/network/).
-
-{% include_html cta/docker1.html %}
 
 ## What Is a Docker Network?
 
@@ -187,8 +188,6 @@ To create an overlay network so that standalone containers can communicate with 
 ```
 docker network create -d overlay --attachable my-attachable-overlay
 ```
-
-{% include_html cta/docker2.html %}
 
 ### The Macvlan Driver
 
@@ -704,5 +703,7 @@ Inspecting the network, you can see there are now two containers connected to th
 In this article, we've covered the what and how of Docker networking in detail, starting with Docker's network drivers available out-of-the-box and then some advanced concepts such as overlay and macvlan. We ran through some examples of the most common Docker network commands, and then discussed some common use cases and general pitfalls of the available network drivers. We also covered port publishing, which allows the outside world to connect with containers, and how Docker resolves DNS names. Finally, we explored Docker Compose networking with some examples.
 
 That should provide you with a decent overview of how Docker networking provides different modes of network drivers so that your containers can communicate on a single or multi-host setup. With this knowledge, you can pick and choose a network driver that fits your use case.
+
+Next you might like to read more about a better way to do [docker multi-stage builds](/blog/docker-multistage) or if you'd like a faster way to build software, check out [Earthly](/):
 
 {% include_html cta/cta2.html %}

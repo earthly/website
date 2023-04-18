@@ -10,7 +10,10 @@ internal-links:
  - bash strings
  - bash substring
 topic: cli
+last_modified_at: 2023-04-17
 ---
+
+**We're [Earthly](https://earthly.dev/). We make building software simpler and, therefore, faster. This article is about bash – which has its quirks but is a tool we find ourselves often reaching for. If you are looking for an open-source tool to improve how you build software, then [check us out](/).**
 
 <div class="narrow-code">
 One thing that bash is excellent at is manipulating strings of text. If you're at the command line or writing a small script, then knowing some bash string idioms can be a lot of help.
@@ -47,8 +50,6 @@ test
 If you need a review of the basics of bash scripting, check out [Understanding Bash](/blog/understanding-bash/). If not, know that everything covered will work in bash version 3.2 and greater. Much covered will also work in ZSH. That means everything here will work on macOS, Windows under WSL and WSL 2, and most Linux distributions. Of course, if you're on Alpine, or some minimal linux distribution, you will need to install bash first.
 
 Let's start at the beginning.
-
-{% include_html cta/cli1.html %}
 
 ## Bash Concatenate Strings
 
@@ -267,8 +268,6 @@ ash
 sh
 h
 ~~~
-
-{% include_html cta/cli2.html %}
 
 ## Bash String Replace
 
