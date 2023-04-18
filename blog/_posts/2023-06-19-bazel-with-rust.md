@@ -15,7 +15,7 @@ internal-links:
 
 Building and deploying software can be a complicated and time-consuming process, especially as applications grow in size and complexity. One tool that can help simplify this process is [Bazel](https://bazel.build), an open-source build tool developed by Google. [Bazel](/blog/bazel-build) is designed to make it easy to build and test large and complex codebases and is particularly well-suited for monorepos, which are codebases that contain multiple projects or components.
 
-One of the key features of Bazel is its ability to speed up builds and tests. Bazel's caching and dependency analysis features facilitate fast, incremental builds. This makes it possible to quickly iterate on code changes, which can be especially useful for large teams working on a codebase. Additionally, [Bazel](/blog/monorepo-with-bazel) supports multiple languages and platforms, including [Rust](https://www.rust-lang.org), and can be extended to support new languages.
+One of the key features of Bazel is its ability to speed up builds and tests. Bazel's caching and dependency analysis features facilitate fast, incremental builds. This makes it possible to quickly iterate on code changes, which can be especially useful for large teams working on a codebase. Additionally, Bazel supports multiple languages and platforms, including Rust, and can be extended to support new languages.
 
 In this article, you'll learn how to prepare your workspace, run, and test your code, and develop a basic application using Rust with Bazel. By the end of this article, you'll know how to use Bazel to streamline your development workflow and improve the efficiency of your builds and tests.
 
@@ -242,7 +242,9 @@ rust_register_toolchains(
 
 When another developer clones the project and runs the `bazel build` command, Bazel will check for the Rust version specified in the `rust_register_toolchains`, and if the correct version of Rust isn't already installed on the local system, Bazel will download and install it before building the project.
 
-> **Please note:** It's important to keep the Rust version in sync across all the developers working on the project, as different versions of Rust can cause compatibility issues and build errors.
+<div class="notice--info">
+It's important to keep the Rust version in sync across all the developers working on the project, as different versions of Rust can cause compatibility issues and build errors.
+</div>
 
 #### Using Labels to Identify and Build Specific Targets
 
@@ -252,7 +254,7 @@ In addition to specifying the correct version of Rust, Bazel also uses `labels` 
 
 Bazel uses `labels` to determine which targets to build or run as well as to resolve dependencies between targets. By specifying the correct `labels`, developers can easily build and run specific parts of their projects without having to navigate through the entire codebase.
 
-When building a Rust project with [Bazel](/blog/bazel-build), the following command is used for building and running build targets. Try running this command in the terminal inside your current directory:
+When building a Rust project with Bazel, the following command is used for building and running build targets. Try running this command in the terminal inside your current directory:
 
 ~~~{.bash caption=">_"}
 bazel run //:rs_bazel
