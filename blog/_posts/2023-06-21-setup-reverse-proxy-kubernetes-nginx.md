@@ -325,6 +325,9 @@ The code used in this tutorial can be found in this [Github repository](https://
 
 I hope you found this article informative and helpful.
 
+
+{% include_html cta/cta2.html %}
+
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
@@ -334,4 +337,3 @@ I hope you found this article informative and helpful.
 - [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/cta2.html %}`
