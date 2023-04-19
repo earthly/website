@@ -1,5 +1,5 @@
 ---
-title: "Create Automated CICD Builds using GitHub Actions and DockerHub"
+title: "Create Automated CI/CD Builds using GitHub Actions and DockerHub"
 categories:
   - Tutorials
 toc: true
@@ -463,9 +463,3 @@ This article has shown you how to create an automated CI/CD build with GitHub an
 The code used in this tutorial can be found in this [GitHub repository](https://github.com/Rose-stack/node_app)
 
 {% include_html cta/cta2.html %}
-
-## Outside Article Checklist
-
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-
