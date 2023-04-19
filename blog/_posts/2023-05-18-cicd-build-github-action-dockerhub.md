@@ -6,7 +6,10 @@ toc: true
 author: Rose Chege
 
 internal-links:
- - just an example
+ - CI/CD
+ - Github Actions
+ - DockerHub
+ - Automation
 ---
 
 [Continuous integration (CI) and continuous delivery (CD)](https://about.gitlab.com/topics/ci-cd/); (CI/CD) incorporate the operating principles used by application development teams to deliver the application code changes through built-in automation, testing, and collaboration workflows. It eliminates the manual development workflows to create automated processes that are predictable and repeatable.
@@ -460,8 +463,6 @@ The code used in this tutorial can be found in this [GitHub repository](https://
 
 ## Outside Article Checklist
 
-- [ ] Add in Author page
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
 
-- [ ] Add keywords for internal links to front-matter
