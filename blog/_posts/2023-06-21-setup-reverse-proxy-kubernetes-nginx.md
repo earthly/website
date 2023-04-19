@@ -14,12 +14,13 @@ Setting up a reverse proxy in kubernetes can seem a bit overwhelming if it is yo
 In this article, I will walk you through the steps to set up a reverse proxy in Kubernetes. We will cover how to configure the Nginx server, create a Kubernetes deployment, and set up a service to expose the deployment to the outside world.
 
 To follow this tutorial, you will have to meet these requirements:
--	You have a working knowledge of Kubernetes and Docker.
--	You have [Minikube](https://minikube.sigs.k8s.io/docs/start/) installed.
--	You have [Kubectl](https://kubernetes.io/docs/tasks/tools/) installed.
--	You have [Docker](https://docs.docker.com/engine/install/) installed.
 
-## What are Reverse Proxies
+- You have a working knowledge of Kubernetes and Docker.
+- You have [Minikube](https://minikube.sigs.k8s.io/docs/start/) installed.
+- You have [Kubectl](https://kubernetes.io/docs/tasks/tools/) installed.
+- You have [Docker](https://docs.docker.com/engine/install/) installed.
+
+## What Are Reverse Proxies
 
 ![Image of a Reverse Proxy, source-[Upguard](https://www.upguard.com/blog/what-is-a-reverse-proxy)](https://i.imgur.com/ck0oA2V.png)
 
@@ -33,66 +34,67 @@ Some examples of reverse proxy servers include [Nginx](https://www.nginx.com/), 
 
 Reverse proxies has diverse areas of applications. Here are some of the uses of reverse proxies.
 
-* **Protocol Translation**: They can be used to translate one protocol to another. This way, requests with different protocols e.g HTTPS from the client can be translated to a protocol HTTP the backend server can understand. 
+- **Protocol Translation**: They can be used to translate one protocol to another. This way, requests with different protocols e.g HTTPS from the client can be translated to a protocol HTTP the backend server can understand.
 
-* **Caching**: They can be used for caching information for a faster response time. For instance, a reverse proxy may receive repeated requests for a resource from the client, causing it to forward the request to the main server each time, resulting in a delay. The reverse proxy can be used to cache this resource and serve it directly to the client without involving the main server, thereby reducing latency. 
+- **Caching**: They can be used for caching information for a faster response time. For instance, a reverse proxy may receive repeated requests for a resource from the client, causing it to forward the request to the main server each time, resulting in a delay. The reverse proxy can be used to cache this resource and serve it directly to the client without involving the main server, thereby reducing latency.
 
-* **Load Balancing**: Reverse Proxies can serve as Load Balancers. This way they help to distribute incoming client requests to a connected network of servers at the backend. This is very useful because it reduced the load that one server handles. Different load-balancing algorithms can be configured on the reverse proxies o determine how incoming client requests are routed to other servers.
+- **Load Balancing**: Reverse Proxies can serve as Load Balancers. This way they help to distribute incoming client requests to a connected network of servers at the backend. This is very useful because it reduced the load that one server handles. Different load-balancing algorithms can be configured on the reverse proxies o determine how incoming client requests are routed to other servers.
 
-* **Security**: They can be used to secure your main server. Malicious attacks are thwarted because the reverse proxy’s IP address is provided instead of the main server. All incoming requests are handled by the reverse proxy, preventing any malicious attempts from reaching the main server. 
+- **Security**: They can be used to secure your main server. Malicious attacks are thwarted because the reverse proxy's IP address is provided instead of the main server. All incoming requests are handled by the reverse proxy, preventing any malicious attempts from reaching the main server.
 
-* **Site Blocking**: They can be used for restricting access to your main server. The reverse proxy achieves this by accepting all incoming requests and filtering them before passing them to the main server. 
+- **Site Blocking**: They can be used for restricting access to your main server. The reverse proxy achieves this by accepting all incoming requests and filtering them before passing them to the main server.
 
 ### Advantages of Using Reverse Proxies
 
 There are some advantages that come with using Reverse Proxies, some of which include:
--	Improved security
--	Increased server performance
--	Improved scalability
--	Better protocol translation, etc.
 
-## Setting up a Reverse Proxy In Kubernetes. 
+- Improved security
+- Increased server performance
+- Improved scalability
+- Better protocol translation, etc.
+
+## Setting Up a Reverse Proxy In Kubernetes
 
 In this section, you will look at how to set up a reverse proxy server in a Kubernetes cluster. You will set up an Nginx reverse proxy server for a simple Flask application.
 
-### Setting up your Flask Server
+### Setting Up Your Flask Server
 
 In this section, you will build a simple Flask server, create a Docker image from it and push the image to DockerHub.
 
 Firstly, Create a virtual environment that will house the dependencies for your Flask server:
 
-```bash
+~~~
 virtualenv env
-```
+~~~
 
 Next, Install the Flask web framework by running the following command:
 
-```bash
+~~~
 pip install flask
-```
+~~~
 
 Create a simple python file called *server.py* and add this piece of code:
 
-```python
+~~~
 from flask import Flask, jsonify
 app = Flask(__name__)
 
 @app.get("/")
 def hello():
     return jsonify({"message": "Hello from Flask!!"}), 200
-```
+~~~
 
 Generate a requirements.txt file for the dependencies:
 
-```bash
+~~~
 pip freeze > requirements.txt
-```
+~~~
 
 Create a Dockerfile that you will use to create a Flask image.
 
-Add the following Docker commads in the Dockerfile:
+Add the following Docker commands in the Dockerfile:
 
-```docker
+~~~
 FROM python:3.10-alpine
 WORKDIR /app
 COPY requirements.txt /app/requirements.txt
@@ -100,23 +102,23 @@ RUN pip install -r requirements.txt
 COPY . /app/
 EXPOSE 5000
 CMD ["python3", "server.py"]
-```
+~~~
 
 Build the Docker image:
 
-```bash
+~~~
 docker build -t <image-name>
-```
+~~~
 
-Push the Docker image to DockerHub so that you can access it in your Minikubue cluster:
+Push the Docker image to DockerHub so that you can access it in your Minikube cluster:
 
-```bash
+~~~
 docker push <image-name> 
-```
+~~~
 
-With the above steps, you are done with creating your flask server, creating a Docker image for your server, and pushing it to DockerHub, let’s start configuring your reverse proxy.
+With the above steps, you are done with creating your flask server, creating a Docker image for your server, and pushing it to DockerHub, let's start configuring your reverse proxy.
 
-### Setting up your Nginx Server
+### Setting Up Your Nginx Server
 
 In this section, you will configure Nginx as a reverse proxy and build a Docker image for it.
 
@@ -126,7 +128,7 @@ Next, Create a new file called **nginx.conf** in the **custome_nginx folder. Thi
 
 Add this block of code to the **nginx.conf** file:
 
-```nginx
+~~~
 events { }
 
 http {
@@ -139,24 +141,24 @@ http {
     }
   }
 }
-```
+~~~
 
-In this new configuration file, you are basically telling your Nginx server to listen on port 8080, and send any requests that come into the server with the path **/flask** to the kubernetes flask service **http://backend-svc:5000** which you are going to set up in your kubernetes cluster.
+In this new configuration file, you are basically telling your Nginx server to listen on port 8080, and send any requests that come into the server with the path **/flask** to the kubernetes flask service **<http://backend-svc:5000>** which you are going to set up in your kubernetes cluster.
 
 Note: the name of the server that you add as the `proxy_pass` must correspond with the name of your kubernetes flask service.
 
 Next, add the following block of code to your Dockerfile in the *custom_nginx* folder:
 
-```docker
+~~~
 FROM nginx
 COPY nginx.conf /etc/nginx/nginx.conf
-```
+~~~
 
 The Dockerfile instructs docker to copy your new nginx configuration file and replace the default nginx configuration file with it.
 
-Finally, Create and push your Docker image to DockerHub.
+Finally, Create, and push your Docker image to DockerHub.
 
-### Deploying your Flask Server to Minikube
+### Deploying Your Flask Server to Minikube
 
 Now, you need to deploy your Flask server to your minikube cluster.
 
@@ -166,7 +168,7 @@ You can do this by creating a deployment.yml and a service.yml files in the root
 
 In the deployment.yml file, add this block of code to it:
 
-```yaml
+~~~
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -189,7 +191,7 @@ spec:
             cpu: "200m"
         ports:
         - containerPort: 5000
-```
+~~~
 
 > Note: replace **your-flask-image** placeholder with the name of the Docker image you pushed to DockerHub
 
@@ -197,7 +199,7 @@ In the deployment configuration above, you assigned port 5000 to the container w
 
 Next, add this block of code to the service.yml file:
 
-```yaml
+~~~
 apiVersion: v1
 kind: Service
 metadata:
@@ -209,35 +211,34 @@ spec:
   ports:
   - port: 5000
     targetPort: 5000 
-```
+~~~
 
-
-You created a  service of type [ClusterIP](https://kubernetes.io/docs/concepts/services-networking/cluster-ip-allocation/) because you only want to expose your pods internally.
+You created a service of type [ClusterIP](https://kubernetes.io/docs/concepts/services-networking/cluster-ip-allocation/) because you only want to expose your pods internally.
 
 If you look closely, the name of this service is **backend-svc**, corresponding to the name of the server you added as the value for the `proxy_passs` in your Nginx configuration file.
 
 Run the following commands to deploy both services:
 
-```bash
+~~~
 kubectl apply -f deployment.yml
 
 kubectl apply -f service.yml
-```
+~~~
 
 You can access your Flask server with [port forwarding](https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/). Essentially, what port-forwarding does is that it allows you to access a port on the kubernetes cluster by creating a network tunnel between your local computer and the Kubernetes cluster, forwarding traffic from that port on the local machine to the assigned port on the Kubernetes Service. This allows you to access the backend application running in the Kubernetes cluster through your local machine.
 
 You can check out your Flask with port forwarding as shown below:
 
-```bash
+~~~
 kubectl port-forward svc/backend-svc 5000:5000
-```
+~~~
 
 Output:
 
-```
+~~~
 Forwarding from 127.0.0.1:5000 -> 5000
 Forwarding from [::1]:5000 -> 5000
-```
+~~~
 
 This forwards traffic from port 5000 on your local machine to port 5000 on the backend-svc Kubernetes Service.
 
@@ -245,9 +246,9 @@ Now when you visit localhost:5000 on your local machine, you should see your fla
 
 [Flask Homepage](https://i.imgur.io/iaQtJtX_d.webp)
 
-### Deploying your Nginx server to Minikube
+### Deploying Your Nginx Server to Minikube
 
-Now that you are done with deploying your Flask server, let’s do the same with your Nginx server.
+Now that you are done with deploying your Flask server, let's do the same with your Nginx server.
 
 The steps are similar to the ones you followed when deploying your Flask server.
 
@@ -255,7 +256,7 @@ Create your deployment.yml and service.yml manifest files for the Nginx server.
 
 Add the following block of code in the deployment.yml file:
 
-```yaml
+~~~
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -278,13 +279,13 @@ spec:
             cpu: "200m"
         ports:
         - containerPort: 8080
-```
+~~~
 
 As you can see you are assigning the `containerPort` the port 8080 which is the same port you instruct your nginx server to listen to in your nginx configuration file.
 
 Next, add this block of code to the service.yml file:
 
-```yaml
+~~~
 apiVersion: v1
 kind: Service
 metadata:
@@ -296,15 +297,15 @@ spec:
   ports:
   - port: 8080
     targetPort: 8080
-```
+~~~
 
 Now, to test your reverse proxy server, map the Nginx port 8080 to the Kubernetes port 8080 with the port forwarding command.
 
 Enter this command in your terminal:
 
-```bash
+~~~
 kubectl port-forward svc/reverse-proxy-svc 8080:8080
-```
+~~~
 
 When you visit the home page of your Nginx server, you should get this 404 response page:
 
@@ -316,15 +317,13 @@ But when you visit the /flask route, you should see that your request is being h
 
 [Reverse Proxy Flask Homepage](https://i.imgur.com/Hjz4Fl9.png)
 
-
 ## Conclusion
 
-In this article, we went over how to set up a reverse proxy in Kubernetes with Nginx. To do that,  you created a Flask server, configured Nginx as a reverse proxy, created a docker image for the Flask server and Nginx, then deployed both the Nginx and the Flask server to Kubernetes. 
+In this article, we went over how to set up a reverse proxy in Kubernetes with Nginx. To do that, you created a Flask server, configured Nginx as a reverse proxy, created a docker image for the Flask server and Nginx, then deployed both the Nginx and the Flask server to Kubernetes.
 
 The code used in this tutorial can be found in this [Github repository](https://github.com/somT-oss/flask-docker)
 
 I hope you found this article informative and helpful.
-
 
 {% include_html cta/cta2.html %}
 
