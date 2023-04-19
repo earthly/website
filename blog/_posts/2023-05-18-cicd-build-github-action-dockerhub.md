@@ -47,13 +47,13 @@ The simple Node.js application will be created as follows:
 
 From your preferred working directory, initialize the application:
 
-~~~
+~~~{.bash caption=">_"}
 npm init -y
 ~~~
 
 Install [express](https://expressjs.com/) for setting up the web server:
 
-~~~
+~~~{.bash caption=">_"}
 npm install express
 ~~~
 
@@ -61,20 +61,20 @@ Create an `app.js` file to host the application logic as follows:
 
 - Import the necessary packages:
 
-~~~
+~~~{.js caption="app.js"}
 const express = require('express');
 ~~~
 
 - Define the express instance and the port for the application:
 
-~~~
+~~~{.js caption="app.js"}
 const app = express();
 const PORT = process.env.PORT || 4000;
 ~~~
 
 - Define a default testing route:
 
-~~~
+~~~{.js caption="app.js"}
 app.get('/',(req,res) => {
     res.status(200);
     res.send("Hello World!!");
@@ -83,13 +83,14 @@ app.get('/',(req,res) => {
 
 - Start the application:
 
-~~~
+~~~{.js caption="app.js"}
+
 app.listen(PORT, () => console.log(`App listening on port ${PORT} `));
 ~~~
 
 The whole code in the *apps.js* looks as shown below:
 
-~~~
+~~~{.js caption="app.js"}
 const express = require('express');
 
 const app = express();
@@ -105,19 +106,21 @@ app.listen(PORT, () => console.log(`App listening on port ${PORT} `));
 
 - In the `package.json` add a script for running the application:
 
-~~~
+~~~{.js caption="package.json"}
 "start":"node app.js"
 ~~~
 
 You can test your application and ensure it works as expected by starting the development server using the following command:
 
-~~~
+~~~{.js caption="app.js"}
 npm run start
 ~~~
 
 From your browser, go to `http://localhost:4000` to check if the application works as expected.
 
-<div class="wide">![A simple Node.js app showing Hello World]({{site.images}}{{page.slug}}/FjB1m1G.png)
+<div class="wide">
+![A simple Node.js app showing Hello World]({{site.images}}{{page.slug}}/FjB1m1G.png)
+</div>
 
 To run this application with Docker, you need to provide the correct command for packaging it. To do this, you can use a Dockerfile, which specifies the instructions to build a Docker image. Once the image is built, it contains everything required to run the application, including the code, runtime, libraries, and settings. This results in a Docker executable package that can be used to run the application on any Docker-supported platform.
 
@@ -125,49 +128,49 @@ In your application directory, create a file named `Dockerfile`. In this `Docker
 
 Specify the base image to use, in this case, the node version:
 
-~~~
+~~~{.dockerfile caption="Dockerfile"}
 FROM node:19
 ~~~
 
 Define the working directory, where the application will reside inside the Docker:
 
-~~~
+~~~{.bash caption=">_"}
 WORKDIR /usr/src/app
 ~~~
 
 Copy `package.json` to the working directory:
 
-~~~
+~~~{.bash caption=">_"}
 COPY package*.json .
 ~~~
 
 Run the `npm install` command to install the application dependencies on Docker:
 
-~~~
+~~~{.bash caption=">_"}
 RUN npm install
 ~~~
 
 Copy the rest of the application files to Docker, i.e., `app.js`:
 
-~~~
+~~~{.bash caption=">_"}
 COPY . .
 ~~~
 
 Expose the port the application will run on:
 
-~~~
+~~~{.bash caption=">_"}
 EXPOSE 4000
 ~~~
 
 Define the command to run the application. This is the same command that Node.js runs on when creating the application locally:
 
-~~~
+~~~{.bash caption=">_"}
 CMD = ["npm","run", "start"]
 ~~~
 
 Your complete code in the Dockerfile should be as shown below:
 
-~~~
+~~~{.dockerfile caption="Dockerfile"}
 FROM node:19
 WORKDIR /usr/src/app
 COPY package*.json .
@@ -181,13 +184,13 @@ CMD = ["npm","run", "start"]
 
 Build the Docker image to check if these instructions work correctly on Docker:
 
-~~~
+~~~{.bash caption=">_"}
 docker build . --tag node_app 
 ~~~
 
 And run the application on docker:
 
-~~~
+~~~{.bash caption=">_"}
 docker run -it -p 4000:4000 node_app
 ~~~
 
@@ -305,7 +308,7 @@ On the resulting editor, add the following workflow to the `main.yml` file as fo
 
 Define the build trigger:
 
-~~~
+~~~{.yml caption="main.yml"}
 name: node_app
 
 on: # specify the build to trigger the automated ci/cd
@@ -318,7 +321,7 @@ GitHub Actions will name this configuration `node_app`. The code specifies the t
 
 Define the job that indicates the steps to checkout the code and build the Docker images:
 
-~~~
+~~~{.yml caption="main.yml"}
 jobs:
     build:
         name: Build Docker image
@@ -331,7 +334,7 @@ This steps are as follows:
 
 Define the steps that will checkout the code:
 
-~~~
+~~~{.yml caption="main.yml"}
 - # checkout to the repository on the build machine
     name: Checkout
     uses: actions/checkout@v3
@@ -341,7 +344,7 @@ The `uses: actions/checkout@v3` syntax clones your Github repository to the `ubu
 
 Define the step to sign in to DockerHub with the credentials in the GitHub Action environment variable secrets:
 
-~~~
+~~~{.yml caption="main.yml"}
 - # login to Docker Hub using the secrets provided
     name: Login to Docker Hub
     uses: docker/login-action@v2
@@ -354,7 +357,7 @@ The `uses: docker/login-action@v2` syntax allows GitHub Action to log in to your
 
 Define the step that setup the Docker Buildx:
 
-~~~
+~~~{.yml caption="main.yml"}
 - # create a build kit builder instance
     name: Set up Docker Buildx
     uses: docker/setup-buildx-action@v2
@@ -364,7 +367,7 @@ The `uses: docker/setup-buildx-action@v2` syntax creates a [Docker Buildx builde
 
 Define the step that build and push the docker image to DockerHub. The workflow will build the image based on the `Dockerfile` commands and tag the images. It will finally push and deploy the built image to your DockerHub as follows:
 
-~~~
+~~~{.yml caption="main.yml"}
 - # build the container image and push it to Docker Hub with the name clockbox.
     name: Build and push
     uses: docker/build-push-action@v4
@@ -379,7 +382,7 @@ The `uses: docker/build-push-action@v4` syntax will execute your Dockerfile, pus
 
 The whole workflow code is as shown below:
 
-~~~
+~~~{.yml caption="main.yml"}
 name: node_app
 
 on: # specify the build to trigger the automated ci/cd
