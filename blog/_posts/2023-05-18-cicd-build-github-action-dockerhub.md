@@ -368,7 +368,8 @@ The `uses: docker/setup-buildx-action@v2` syntax creates a [Docker Buildx builde
 Define the step that build and push the docker image to DockerHub. The workflow will build the image based on the `Dockerfile` commands and tag the images. It will finally push and deploy the built image to your DockerHub as follows:
 
 ~~~{.yml caption="main.yml"}
-- # build the container image and push it to Docker Hub with the name clockbox.
+- # build the container image and push it to Docker Hub with \
+ # the name clockbox.
     name: Build and push
     uses: docker/build-push-action@v4
     with:
@@ -407,7 +408,8 @@ jobs:
             - # create a build kit builder instance
                 name: Set up Docker Buildx
                 uses: docker/setup-buildx-action@v2
-            - # build the container image and push it to Docker Hub with the name clockbox.
+            - # build the container image and push it to Docker \
+                # Hub with the name clockbox.
                 name: Build and push
                 uses: docker/build-push-action@v4
                 with:
