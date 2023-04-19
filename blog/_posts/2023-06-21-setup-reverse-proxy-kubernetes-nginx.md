@@ -338,6 +338,4 @@ I hope you found this article informative and helpful.
 
 ## Outside Article Checklist
 
-- [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-
