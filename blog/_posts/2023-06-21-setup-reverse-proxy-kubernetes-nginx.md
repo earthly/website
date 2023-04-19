@@ -6,7 +6,10 @@ toc: true
 author: Somtochukwu Uchegbu
 
 internal-links:
- - just an example
+ - Reverse Proxy
+ - Kubernetes
+ - Performance
+ - Flask
 ---
 
 Setting up a reverse proxy in kubernetes can seem a bit overwhelming if it is your first time coming across them. However, it can greatly improve the performance and reliability of your application.
@@ -22,7 +25,7 @@ To follow this tutorial, you will have to meet these requirements:
 
 ## What Are Reverse Proxies
 
-![Image of a Reverse Proxy, source-[Upguard](https://www.upguard.com/blog/what-is-a-reverse-proxy)](https://i.imgur.com/ck0oA2V.png)
+![Image of a Reverse Proxy, source-[Upguard](https://www.upguard.com/blog/what-is-a-reverse-proxy)]({{site.images}}{{page.slug}}/ck0oA2V.png)
 
 A Reverse proxy is any piece of software or a server that intercepts the incoming request from a client to a server. They are basically used as middlemen between a client and a server.
 
@@ -309,13 +312,13 @@ kubectl port-forward svc/reverse-proxy-svc 8080:8080
 
 When you visit the home page of your Nginx server, you should get this 404 response page:
 
-[Nginx 404 Page](https://i.imgur.com/Rzf3uc4.png)
+[Nginx 404 Page]({{site.images}}{{page.slug}}/Rzf3uc4.png)
 
 You got the 404 error message because you did not define any rules for the home route in the Nginx configuration.
 
 But when you visit the /flask route, you should see that your request is being handled by the flask server now:
 
-[Reverse Proxy Flask Homepage](https://i.imgur.com/Hjz4Fl9.png)
+[Reverse Proxy Flask Homepage]({{site.images}}{{page.slug}}/Hjz4Fl9.png)
 
 ## Conclusion
 
@@ -333,4 +336,3 @@ I hope you found this article informative and helpful.
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Add keywords for internal links to front-matter
