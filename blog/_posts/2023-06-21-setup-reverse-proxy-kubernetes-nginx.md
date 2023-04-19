@@ -11,7 +11,7 @@ internal-links:
 
 Setting up a reverse proxy in kubernetes can seem a bit overwhelming if it is your first time coming across them. However, it can greatly improve the performance and reliability of your application.
 
-In this article, I will walk you through the steps to set up a reverse proxy in Kubernetes. We will cover how to configure the Nginx server, create a Kubernetes deployment, and set up a service to expose the deployment to the outside world.
+In this article, I will walk you through the steps to set up a reverse proxy in Kubernetes. We will cover how to configure the Nginx server, create a Kubernetes [deployment](/blog/deployment-strategies), and set up a service to expose the deployment to the outside world.
 
 To follow this tutorial, you will have to meet these requirements:
 
@@ -110,7 +110,7 @@ Build the Docker image:
 docker build -t <image-name>
 ~~~
 
-Push the Docker image to DockerHub so that you can access it in your Minikube cluster:
+Push the Docker image to DockerHub so that you can access it in your [Minikube](/blog/minikube) cluster:
 
 ~~~
 docker push <image-name> 
@@ -160,7 +160,7 @@ Finally, Create, and push your Docker image to DockerHub.
 
 ### Deploying Your Flask Server to Minikube
 
-Now, you need to deploy your Flask server to your minikube cluster.
+Now, you need to deploy your Flask server to your [minikube](/blog/minikube) cluster.
 
 Firstly, you will need to create a [deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/) and [service](https://kubernetes.io/docs/concepts/services-networking/service/) manifest which you will apply to create a deployment and service for your Flask server.
 
@@ -333,6 +333,4 @@ I hope you found this article informative and helpful.
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
