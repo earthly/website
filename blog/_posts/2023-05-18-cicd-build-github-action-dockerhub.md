@@ -19,7 +19,7 @@ You can streamline your workflow using [GitHub Action](https://github.com/featur
 
 To follow along with this article, it is essential to have the following:
 
-- [Nodejs](https://nodejs.org/en/) installed on your computer.
+- [Node.js](https://nodejs.org/en/) installed on your computer.
 - [Docker](https://www.docker.com/) installed on your computer.
 - [GitHub](https://github.com/) and [DockerHub](https://hub.docker.com/) accounts.
 - Basic knowledge of working with Docker.
@@ -28,7 +28,7 @@ To follow along with this article, it is essential to have the following:
 
 ## GitHub Actions and DockerHub
 
-CI/CD approach creates a pipeline between integrations and delivery cycles. The pipeline’s packaged application is easily integrated with different tools to check code and automatically deploy to production.
+CI/CD approach creates a pipeline between integrations and delivery cycles. The pipeline's packaged application is easily integrated with different tools to check code and automatically deploy to production.
 
 [GitHub Actions](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions) is one of the popular CI/CD tools. It allows you to automate workflows through code builds, tests, and code deployment through [GitHub](https://github.com/) repositories. GitHub Actions can run tests, build Docker images and deploy applications to cloud infrastructures.
 
@@ -44,49 +44,49 @@ The simple Node.js application will be created as follows:
 
 From your preferred working directory, initialize the application:
 
-```bash
+~~~
 npm init -y
-```
+~~~
 
 Install [express](https://expressjs.com/) for setting up the web server:
 
-```bash
+~~~
 npm install express
-```
+~~~
 
 Create an `app.js` file to host the application logic as follows:
 
 - Import the necessary packages:
 
-```js
+~~~
 const express = require('express');
-```
+~~~
 
 - Define the express instance and the port for the application:
 
-```js
+~~~
 const app = express();
 const PORT = process.env.PORT || 4000;
-```
+~~~
 
 - Define a default testing route:
 
-```js
+~~~
 app.get('/',(req,res) => {
     res.status(200);
     res.send("Hello World!!");
 });
-```
+~~~
 
 - Start the application:
 
-```js
+~~~
 app.listen(PORT, () => console.log(`App listening on port ${PORT} `));
-```
+~~~
 
 The whole code in the *apps.js* looks as shown below:
 
-```js
+~~~
 const express = require('express');
 
 const app = express();
@@ -98,23 +98,23 @@ app.get('/',(req,res) => {
 });
 
 app.listen(PORT, () => console.log(`App listening on port ${PORT} `));
-```
+~~~
 
 - In the `package.json` add a script for running the application:
 
-```json
+~~~
 "start":"node app.js"
-```
+~~~
 
 You can test your application and ensure it works as expected by starting the development server using the following command:
 
-```bash
+~~~
 npm run start
-```
+~~~
 
 From your browser, go to `http://localhost:4000` to check if the application works as expected.
 
-![A simple Node.js app showing Hello World](https://imgur.com/FjB1m1G.png)
+<div class="wide">![A simple Node.js app showing Hello World]({{site.images}}{{page.slug}}/FjB1m1G.png)
 
 To run this application with Docker, you need to provide the correct command for packaging it. To do this, you can use a Dockerfile, which specifies the instructions to build a Docker image. Once the image is built, it contains everything required to run the application, including the code, runtime, libraries, and settings. This results in a Docker executable package that can be used to run the application on any Docker-supported platform.
 
@@ -122,49 +122,49 @@ In your application directory, create a file named `Dockerfile`. In this `Docker
 
 Specify the base image to use, in this case, the node version:
 
-```Dockerfile
+~~~
 FROM node:19
-```
+~~~
 
 Define the working directory, where the application will reside inside the Docker:
 
-```Dockerfile
+~~~
 WORKDIR /usr/src/app
-```
+~~~
 
 Copy `package.json` to the working directory:
 
-```Dockerfile
+~~~
 COPY package*.json .
-```
+~~~
 
 Run the `npm install` command to install the application dependencies on Docker:
 
-```Dockerfile
+~~~
 RUN npm install
-```
+~~~
 
 Copy the rest of the application files to Docker, i.e., `app.js`:
 
-```Dockerfile
+~~~
 COPY . .
-```
+~~~
 
 Expose the port the application will run on:
 
-```Dockerfile
+~~~
 EXPOSE 4000
-```
+~~~
 
 Define the command to run the application. This is the same command that Node.js runs on when creating the application locally:
 
-```Dockerfile
+~~~
 CMD = ["npm","run", "start"]
-```
+~~~
 
 Your complete code in the Dockerfile should be as shown below:
 
-```Dockerfile
+~~~
 FROM node:19
 WORKDIR /usr/src/app
 COPY package*.json .
@@ -172,172 +172,196 @@ RUN npm install
 COPY . .
 EXPOSE 4000
 CMD = ["npm","run", "start"]
-```
+~~~
 
->If you are using a different application, ensure your `Dockerfile` reflects the instruction needed to dockerize your application. 
+>If you are using a different application, ensure your `Dockerfile` reflects the instruction needed to dockerize your application.
 
 Build the Docker image to check if these instructions work correctly on Docker:
 
-```bash
+~~~
 docker build . --tag node_app 
-```
+~~~
 
 And run the application on docker:
 
-```bash
+~~~
 docker run -it -p 4000:4000 node_app
-```
+~~~
 
 The results should remain the same as when you tested the application locally. Otherwise, recheck the above steps and ensure that you entered the code correctly.
 
 ## Creating a Github Repository and Pushing the Application to Github
 
-GitHub actions require you to host your application code on a remote repository, including the `Dockerfile` containing the Docker commands. A GitHub repository store and manage your code and related files. Teams can push changes to this repository to update the application codebase collaboratively. 
+GitHub actions require you to host your application code on a remote repository, including the `Dockerfile` containing the Docker commands. A GitHub repository store and manage your code and related files. Teams can push changes to this repository to update the application codebase collaboratively.
 
 [Create a GitHub repository](https://docs.github.com/en/get-started/quickstart/create-a-repo) to add all your code.
 
-Once you create the repository, add your application files by uploading them using [Git commands](https://git-scm.com/docs) or [GitHub Desktop](https://desktop.github.com/). 
+Once you create the repository, add your application files by uploading them using [Git commands](https://git-scm.com/docs) or [GitHub Desktop](https://desktop.github.com/).
 
 For simplicity, I recommend using a Git client with a graphical user interface (GUI), such as GitHub Desktop, [Sourcetree](https://www.sourcetreeapp.com/), or [GitKraken](https://www.gitkraken.com/), to make working with Git repositories on GitHub easier. Here's a brief overview of how to use GitHub Desktop to push code changes to your remote GitHub repository:
 
 - Open GitHub Desktop and log in using your GitHub account
 - Select the repository you have created on your GitHub page and open it with GithHub Desktop:
 
-![Open repository with GitHub Desktop](https://imgur.com/z3eCRBz.png)\
+<div class="wide">
+![Open repository with GitHub Desktop]({{site.images}}{{page.slug}}/z3eCRBz.png)
+</div>
 
 - Clone the repository:
 
-![Clone a GitHub repository](https://imgur.com/FM0FobH.png)\
+<div class="wide">
+![Clone a GitHub repository]({{site.images}}{{page.slug}}/FM0FobH.png)
+</div>
 
-- Add your application code in the local cloned repository 
+- Add your application code in the local cloned repository
 - Review the changes on GitHub Desktop, add a commit message summarizing your changes and click the Commit button:
 
-![Adding files using GitHub Desktop](https://imgur.com/ddRx6uU.png)\
+<div class="wide">
+![Adding files using GitHub Desktop]({{site.images}}{{page.slug}}/ddRx6uU.png)
+</div>
 
 - Click the Publish button to push your code to the remote GitHub repository:
 
-![Pushing changes to GitHub](https://imgur.com/ATE8WYC.png)\
+<div class="wide">
+![Pushing changes to GitHub]({{site.images}}{{page.slug}}/ATE8WYC.png)
+</div>
 
 If you get stuck, check this guide and learn more details on [how to use GitHub Desktop](https://docs.github.com/en/desktop/installing-and-configuring-github-desktop/overview/getting-started-with-github-desktop).
 
-## Setting up DockerHub
+## Setting Up DockerHub
 
 The GitHub action that you will set up will push the application image to the DockerHub repository. Therefore, you must have the correct access token for GitHub Actions to access your DockerHub account. On your DockerHub, you will create an access key for GitHub to connect to your DockerHub account. You can create a new access key as follows:
 
 Navigate to your account **setting**, **security** and click on the **New Access Token**:
 
-![Create a new DockerHub access token](https://imgur.com/WZEzcDF.jpg)\
+<div class="wide">
+![Create a new DockerHub access token]({{site.images}}{{page.slug}}/WZEzcDF.jpg)
+</div>
 
 Specify the access token description and permission:
 
-![Generate a new DockerHub access token](https://imgur.com/aoHh73M.jpg)\
+<div class="wide">
+![Generate a new DockerHub access token]({{site.images}}{{page.slug}}/aoHh73M.jpg)
+</div>
 
 Copy the access token:
 
-![Copy DockerHub access token](https://imgur.com/bQ5oYZj.jpg)\
+<div class="wide">
+![Copy DockerHub access token]({{site.images}}{{page.slug}}/bQ5oYZj.jpg)
+</div>
 
->Once the key is ready, it should be copied immediately and saved securely because it will be provided only once and cannot be retrieved, and it will not be stored on DockerHub. The key will be required for the upcoming steps. 
+>Once the key is ready, it should be copied immediately and saved securely because it will be provided only once and cannot be retrieved, and it will not be stored on DockerHub. The key will be required for the upcoming steps.
 
 ## Creating a GitHub Actions Workflow
 
 With all the application code available remotely, you can create a GitHub Actions workflow that will automate the build process and save the build artifacts to DockerHub.
 
-### Connecting GitHub Actions with DockerHub
+### Connecting GitHub Actions With DockerHub
 
-To set up a workflow, GitHub must communicate with DockerHub using the DockerHub access token (that you just created) and your DockerHub username. Your DockerHub access token is a confidential information, and you need to add it as a secret environment variable on GitHub.The workflows will execute this access token and username as secret environment variables on GitHub. 
+To set up a workflow, GitHub must communicate with DockerHub using the DockerHub access token (that you just created) and your DockerHub username. Your DockerHub access token is a confidential information, and you need to add it as a secret environment variable on GitHub. The workflows will execute this access token and username as secret environment variables on GitHub.
 
 To add the secret environment variables, navigate to the repository you created on Github
 
 In your repository, navigate to **Settings**, **Secrets and Variables**, and **Actions** sections as follows:
 
-![Creating GitHub Actions environment variables](https://imgur.com/jdGYMqh.jpg)\
+<div class="wide">
+![Creating GitHub Actions environment variables]({{site.images}}{{page.slug}}/jdGYMqh.jpg)
+</div>
 
 Click on the **New repository secret** button:
 
-![Adding GitHub Actions environment variables](https://imgur.com/fPge5wm.jpg)\
+<div class="wide">
+![Adding GitHub Actions environment variables]({{site.images}}{{page.slug}}/fPge5wm.jpg)
+</div>
 
 Create a `DOCKERHUB_USERNAME` variable and add your DockeHub username as the value:
 
-![New GitHub Actions environment variables](https://imgur.com/YdIyEoC.png)\
+<div class="wide">
+![New GitHub Actions environment variables]({{site.images}}{{page.slug}}/YdIyEoC.png)
+</div>
 
 Create a `DOCKERHUB_TOKEN` variable and add the access token you created earlier as the value. You should have the following results:
 
-![Docker access token and username as GitHub secret environment variables](https://imgur.com/Dz4Y51v.jpg)
+<div class="wide">
+![Docker access token and username as GitHub secret environment variables]({{site.images}}{{page.slug}}/Dz4Y51v.jpg)
+</div>
 
 ### Implementing the GitHub Actions Workflow
 
-GitHub Actions workflow includes creating the processes that trigger [events, jobs, and steps](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions) that set up a workflow. The docker image will be built and deployed to the DockerHub when you push the code to the main branch of the GitHub repository. Therefore,  the GitHub Actions workflow needs to initiate a push event on the main branch of the Github repository you hosted your application code. 
+GitHub Actions workflow includes creating the processes that trigger [events, jobs, and steps](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions) that set up a workflow. The docker image will be built and deployed to the DockerHub when you push the code to the main branch of the GitHub repository. Therefore, the GitHub Actions workflow needs to initiate a push event on the main branch of the Github repository you hosted your application code.
 
 To setup the workflow, you need to create the workflow file. You can create one as shown below:
 
 Click on the **Actions**` tab in your repository and click the **set up a workflow yourself**:
 
-![Creating a GitHub Action workflow](https://imgur.com/FfMgwbq.jpg)\
+<div class="wide">
+![Creating a GitHub Action workflow]({{site.images}}{{page.slug}}/FfMgwbq.jpg)
+</div>
 
-On the resulting editor, add the following workflow to the `main.yml` file as follows: 
+On the resulting editor, add the following workflow to the `main.yml` file as follows:
 
 Define the build trigger:
 
-```yaml
+~~~
 name: node_app
 
 on: # specify the build to trigger the automated ci/cd
     push:
         branches:
             - "main"
-```
+~~~
 
 GitHub Actions will name this configuration `node_app`. The code specifies the trigger as a push event (changes) to your application code's `main` branch on the GitHub repository you created.
 
 Define the job that indicates the steps to checkout the code and build the Docker images:
 
-```yaml
+~~~
 jobs:
     build:
         name: Build Docker image
         runs-on: ubuntu-latest # specify the build machine
         steps:
-```
+~~~
 
 GitHub Actions uses `jobs` to define one or more tasks that your CI/CD pipeline will run. In the code above, the `build` specifies the steps and it also specifies the machine type that the steps will run on using the [`runs-on`](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idruns-on) keyword. The value of `ubuntu-latest` indicates an ubuntu machine as the pipeline environment. The `steps` will define a list of stages to be executed in sequence to fulfill the pipeline objectives.
 This steps are as follows:
 
 Define the steps that will checkout the code:
 
-```yaml
+~~~
 - # checkout to the repository on the build machine
     name: Checkout
     uses: actions/checkout@v3
-```
+~~~
 
 The `uses: actions/checkout@v3` syntax clones your Github repository to the `ubuntu-latest` build machine. This will make the code available to the subsequent steps in executing the job.
 
 Define the step to sign in to DockerHub with the credentials in the GitHub Action environment variable secrets:
 
-```yaml
+~~~
 - # login to Docker Hub using the secrets provided
     name: Login to Docker Hub
     uses: docker/login-action@v2
     with:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
-```
+~~~
 
 The `uses: docker/login-action@v2` syntax allows GitHub Action to log in to your DockerHub registry based on the `DOCKERHUB_USERNAME` and `DOCKERHUB_TOKEN` you added as GitHub Actions environment variables.
 
 Define the step that setup the Docker Buildx:
 
-```yaml
+~~~
 - # create a build kit builder instance
     name: Set up Docker Buildx
     uses: docker/setup-buildx-action@v2
-```
+~~~
 
 The `uses: docker/setup-buildx-action@v2` syntax creates a [Docker Buildx builder](https://docs.docker.com/engine/reference/commandline/buildx_build/) instance. It uses a [`docker buildx`](https://docs.docker.com/engine/reference/commandline/buildx/) command that builds Docker images to your desired architectures.
 
 Define the step that build and push the docker image to DockerHub. The workflow will build the image based on the `Dockerfile` commands and tag the images. It will finally push and deploy the built image to your DockerHub as follows:
 
-```yaml
+~~~
 - # build the container image and push it to Docker Hub with the name clockbox.
     name: Build and push
     uses: docker/build-push-action@v4
@@ -346,13 +370,13 @@ Define the step that build and push the docker image to DockerHub. The workflow 
         file: ./Dockerfile
         push: true
         tags: ${{ secrets.DOCKERHUB_USERNAME }}/clockbox:latest
-```
+~~~
 
 The `uses: docker/build-push-action@v4` syntax will execute your Dockerfile, push the resulting image to your DockerHub registry, and tag it as `${{ secrets.DOCKERHUB_USERNAME }}/clockbox:latest`.
 
 The whole workflow code is as shown below:
 
-```yaml
+~~~
 name: node_app
 
 on: # specify the build to trigger the automated ci/cd
@@ -385,29 +409,39 @@ jobs:
                   file: ./Dockerfile
                   push: true
                   tags: ${{ secrets.DOCKERHUB_USERNAME }}/clockbox:latest
-```
+~~~
 
 ## Testing the Builds with GitHub Actions
 
 To deploy the workflow, click on **Start commit**, add a commit message, and submit:
 
-![The start commit button](https://imgur.com/9feGKlX.png)\
+<div class="wide">
+![The start commit button]({{site.images}}{{page.slug}}/9feGKlX.png)
+</div>
 
 Navigate to the `Actions` tab to view the job and the build status.
 
-![Checking the workflow](https://imgur.com/7QUay3g.jpg)\
+<div class="wide">
+![Checking the workflow]({{site.images}}{{page.slug}}/7QUay3g.jpg)
+</div>
 
 After committing from the previous step, the build should start automatically:
 
-![The GitHub Action build image stage](https://imgur.com/xSiA3A1.png)
+<div class="wide">
+![The GitHub Action build image stage]({{site.images}}{{page.slug}}/xSiA3A1.png)
+</div>
 
 Once The GitHub workflow executes all the steps, the build will be completed as follows:
 
-![The build steps and status](https://imgur.com/fvHxnna.png)\
+<div class="wide">
+![The build steps and status]({{site.images}}{{page.slug}}/fvHxnna.png)
+</div>
 
 From your DockerHub dashboard, you should be able to view the image that has just been deployed:
 
-![The Docker Image on DockerHub](https://imgur.com/UYadTPj.png)
+<div class="wide">
+![The Docker Image on DockerHub]({{site.images}}{{page.slug}}/UYadTPj.png)
+</div>
 
 ## Conclusion
 
@@ -427,9 +461,7 @@ The code used in this tutorial can be found in this [GitHub repository](https://
 - [ ] Add in Author page
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
+
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
 - [ ] Add Earthly `CTA` at bottom `{% include_html cta/cta2.html %}`
