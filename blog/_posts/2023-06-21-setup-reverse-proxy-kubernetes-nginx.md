@@ -68,19 +68,19 @@ In this section, you will build a simple Flask server, create a Docker image fro
 
 Firstly, Create a virtual environment that will house the dependencies for your Flask server:
 
-~~~
+~~~{.bash caption=">_"}
 virtualenv env
 ~~~
 
 Next, Install the Flask web framework by running the following command:
 
-~~~
+~~~{.bash caption=">_"}
 pip install flask
 ~~~
 
 Create a simple python file called *server.py* and add this piece of code:
 
-~~~
+~~~{.python caption="server.py"}
 from flask import Flask, jsonify
 app = Flask(__name__)
 
@@ -91,7 +91,7 @@ def hello():
 
 Generate a requirements.txt file for the dependencies:
 
-~~~
+~~~{.bash caption=">_"}
 pip freeze > requirements.txt
 ~~~
 
@@ -99,7 +99,7 @@ Create a Dockerfile that you will use to create a Flask image.
 
 Add the following Docker commands in the Dockerfile:
 
-~~~
+~~~{.dockerfile caption="Dockerfile"}
 FROM python:3.10-alpine
 WORKDIR /app
 COPY requirements.txt /app/requirements.txt
@@ -111,13 +111,13 @@ CMD ["python3", "server.py"]
 
 Build the Docker image:
 
-~~~
+~~~{.bash caption=">_"}
 docker build -t <image-name>
 ~~~
 
 Push the Docker image to DockerHub so that you can access it in your [Minikube](/blog/minikube) cluster:
 
-~~~
+~~~{.bash caption=">_"}
 docker push <image-name> 
 ~~~
 
@@ -133,7 +133,7 @@ Next, Create a new file called **nginx.conf** in the **custome_nginx folder. Thi
 
 Add this block of code to the **nginx.conf** file:
 
-~~~
+~~~{ caption="nginx.conf"}
 events { }
 
 http {
@@ -154,7 +154,7 @@ Note: the name of the server that you add as the `proxy_pass` must correspond wi
 
 Next, add the following block of code to your Dockerfile in the *custom_nginx* folder:
 
-~~~
+~~~{.dockerfile caption="Dockerfile"}
 FROM nginx
 COPY nginx.conf /etc/nginx/nginx.conf
 ~~~
@@ -173,7 +173,7 @@ You can do this by creating a deployment.yml and a service.yml files in the root
 
 In the deployment.yml file, add this block of code to it:
 
-~~~
+~~~{.yaml caption="deployment.yml"}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -204,7 +204,7 @@ In the deployment configuration above, you assigned port 5000 to the container w
 
 Next, add this block of code to the service.yml file:
 
-~~~
+~~~{.yaml caption="service.yml"}
 apiVersion: v1
 kind: Service
 metadata:
@@ -224,7 +224,7 @@ If you look closely, the name of this service is **backend-svc**, corresponding 
 
 Run the following commands to deploy both services:
 
-~~~
+~~~{.bash caption=">_"}
 kubectl apply -f deployment.yml
 
 kubectl apply -f service.yml
@@ -234,13 +234,13 @@ You can access your Flask server with [port forwarding](https://kubernetes.io/do
 
 You can check out your Flask with port forwarding as shown below:
 
-~~~
+~~~{.bash caption=">_"}
 kubectl port-forward svc/backend-svc 5000:5000
 ~~~
 
 Output:
 
-~~~
+~~~{ caption="Output"}
 Forwarding from 127.0.0.1:5000 -> 5000
 Forwarding from [::1]:5000 -> 5000
 ~~~
@@ -261,7 +261,7 @@ Create your deployment.yml and service.yml manifest files for the Nginx server.
 
 Add the following block of code in the deployment.yml file:
 
-~~~
+~~~{.yaml caption="deployment.yml"}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -290,7 +290,7 @@ As you can see you are assigning the `containerPort` the port 8080 which is the 
 
 Next, add this block of code to the service.yml file:
 
-~~~
+~~~{.yaml caption="service.yml"}
 apiVersion: v1
 kind: Service
 metadata:
@@ -308,7 +308,7 @@ Now, to test your reverse proxy server, map the Nginx port 8080 to the Kubernete
 
 Enter this command in your terminal:
 
-~~~
+~~~{.bash caption=">_"}
 kubectl port-forward svc/reverse-proxy-svc 8080:8080
 ~~~
 
