@@ -60,6 +60,8 @@ There are some advantages that come with using Reverse Proxies, some of which in
 
 ## Setting Up a Reverse Proxy In Kubernetes
 
+![Setup]]({{site.images}}{{page.slug}}/setup.png)\
+
 In this section, you will look at how to set up a reverse proxy server in a Kubernetes cluster. You will set up an Nginx reverse proxy server for a simple Flask application.
 
 ### Setting Up Your Flask Server
@@ -335,7 +337,3 @@ The code used in this tutorial can be found in this [Github repository](https://
 I hope you found this article informative and helpful.
 
 {% include_html cta/cta2.html %}
-
-## Outside Article Checklist
-
-- [ ] Optional: Find ways to break up content with quotes or images
