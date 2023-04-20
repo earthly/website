@@ -6,7 +6,11 @@ toc: true
 author: Saka-Aiyedun Segun
 
 internal-links:
- - just an example
+ - Aggregation
+ - Logs
+ - Grafana Loki
+ - Kubernetes
+ - Optimization
 ---
 
 As the application [deployment](/blog/deployment-strategies) landscape becomes more complex, monitoring system logs becomes even more important. From system and application logs to security events and performance metrics, this data contains valuable insights that can help organizations make informed decisions and optimize their operations. However, managing, and analyzing this data can be a daunting task, especially as the volume of data continues to grow.
@@ -292,4 +296,3 @@ By leveraging a distributed architecture and a powerful query language, Grafana 
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Add keywords for internal links to front-matter
