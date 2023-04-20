@@ -1,5 +1,5 @@
 ---
-title: "Create Automated CI/CD Builds using GitHub Actions and DockerHub"
+title: "Create Automated CI/CD Builds Using GitHub Actions and DockerHub"
 categories:
   - Tutorials
 toc: true
@@ -12,11 +12,11 @@ internal-links:
  - Automation
 ---
 
-[Continuous integration (CI) and continuous delivery (CD)](https://about.gitlab.com/topics/ci-cd/); (CI/CD) incorporate the operating principles used by application development teams to deliver the application code changes through built-in automation, testing, and collaboration workflows. It eliminates the manual development workflows to create automated processes that are predictable and repeatable.
+Continuous integration (CI) and continuous delivery (CD) incorporate the operating principles used by application development teams to deliver the application code changes through built-in automation, testing, and collaboration workflows. It eliminates the manual development workflows to create automated processes that are predictable and repeatable.
 
 This eliminates human interventions and reduces workflow errors while ensuring code quality. Teams can frequently implement small code changes that will be automatically tested and pushed for delivery and [deployment](/blog/deployment-strategies).
 
-You can streamline your workflow using [GitHub Action](https://github.com/features/actions) and automate CI/CD Builds. This guide will teach you how to leverage GitHub Action to automate Docker builds to DockerHub. You will build an automated CI/CD builds using GitHub Actions and DockerHub.
+You can streamline your workflow using GitHub Actions and automate CI/CD Builds. This guide will teach you how to leverage GitHub Action to automate Docker builds to DockerHub. You will build an automated CI/CD builds using GitHub Actions and DockerHub.
 
 ## Prerequisites
 
@@ -35,7 +35,7 @@ CI/CD approach creates a pipeline between integrations and delivery cycles. The 
 
 [GitHub Actions](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions) is one of the popular CI/CD tools. It allows you to automate workflows through code builds, tests, and code deployment through [GitHub](https://github.com/) repositories. GitHub Actions can run tests, build Docker images and deploy applications to cloud infrastructures.
 
-[DockerHub](https://hub.docker.com/) is a [container registry](/blog/how-to-setup-and-use-amazons-elastic-container-registry) service for storing and distributing Docker images. A Docker image packages the application setting, dependencies, and codebase to create a portable [artifact](https://www.jetbrains.com/teamcity/ci-cd-guide/concepts/artifact-repository/#:~:text=Build%20artifacts%20are%20the%20files,available%20to%20your%20CI%20server.) that is easier to integrate between different CI/CD pipeline phases.
+[DockerHub](https://hub.docker.com/) is a container registry service for storing and distributing Docker images. A Docker image packages the application setting, dependencies, and codebase to create a portable artifact that is easier to integrate between different CI/CD pipeline phases.
 
 By leveraging DockerHub and GitHub Actions, you can build, test, and deploy Docker-based applications and create a CI/CD pipeline. Let's dive and create a workflow to do exactly that.
 
@@ -206,7 +206,7 @@ Once you create the repository, add your application files by uploading them usi
 
 For simplicity, I recommend using a Git client with a graphical user interface (GUI), such as GitHub Desktop, [Sourcetree](https://www.sourcetreeapp.com/), or [GitKraken](https://www.gitkraken.com/), to make working with Git repositories on GitHub easier. Here's a brief overview of how to use GitHub Desktop to push code changes to your remote GitHub repository:
 
-- Open [GitHub](/blog/ci-comparison) Desktop and log in using your GitHub account
+- Open GitHub Desktop and log in using your GitHub account
 - Select the repository you have created on your GitHub page and open it with GithHub Desktop:
 
 <div class="wide">
