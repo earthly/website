@@ -386,4 +386,4 @@ Git is a very powerful collaboration tool. If all you ever learn is push, pull, 
 The commands covered in this tutorial are just the start. There are many more. You might want to check out [Git aliases
 ](https://git-scm.com/book/en/v2/Git-Basics-Git-Aliases) and [git bisect](https://git-scm.com/docs/git-bisect), and other interesting commands.
 
-{% include cta/cta2.html %}
+{% include_html cta/cta2.html %}
