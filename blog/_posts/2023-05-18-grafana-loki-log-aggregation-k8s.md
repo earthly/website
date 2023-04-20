@@ -284,6 +284,8 @@ In conclusion, Grafana Loki is a powerful and flexible log aggregation system th
 
 By leveraging a distributed architecture and a powerful query language, Grafana Loki provides organizations with a comprehensive log aggregation solution that can help them optimize their operations, improve their security, and make informed decisions. Whether you're a small business or a large enterprise, Grafana Loki is a tool you should consider adding to your toolkit.
 
+{% include_html cta/cta2.html %}
+
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
@@ -292,4 +294,3 @@ By leveraging a distributed architecture and a powerful query language, Grafana 
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/cta2.html %}`
