@@ -1,5 +1,5 @@
 ---
-title: "How to set up a Reverse Proxy in Kubernetes"
+title: "How to Set Up a Reverse Proxy in Kubernetes"
 categories:
   - Tutorials
 toc: true
@@ -14,7 +14,7 @@ internal-links:
 
 Setting up a reverse proxy in kubernetes can seem a bit overwhelming if it is your first time coming across them. However, it can greatly improve the performance and reliability of your application.
 
-In this article, I will walk you through the steps to set up a reverse proxy in Kubernetes. We will cover how to configure the Nginx server, create a Kubernetes [deployment](/blog/deployment-strategies), and set up a service to expose the deployment to the outside world.
+In this article, I will walk you through the steps to set up a reverse proxy in Kubernetes. We will cover how to configure the Nginx server, create a Kubernetes deployment, and set up a service to expose the deployment to the outside world.
 
 To follow this tutorial, you will have to meet these requirements:
 
@@ -23,7 +23,7 @@ To follow this tutorial, you will have to meet these requirements:
 - You have [Kubectl](https://kubernetes.io/docs/tasks/tools/) installed.
 - You have [Docker](https://docs.docker.com/engine/install/) installed.
 
-## What Are Reverse Proxies
+## What Are Reverse Proxies?
 
 <div class="wide">
 ![Image of a Reverse Proxy, source-[Upguard](https://www.upguard.com/blog/what-is-a-reverse-proxy)]({{site.images}}{{page.slug}}/ck0oA2V.png)
@@ -60,7 +60,7 @@ There are some advantages that come with using Reverse Proxies, some of which in
 
 ## Setting Up a Reverse Proxy In Kubernetes
 
-![Setup]]({{site.images}}{{page.slug}}/setup.png)\
+![Setup]({{site.images}}{{page.slug}}/setup.png)\
 
 In this section, you will look at how to set up a reverse proxy server in a Kubernetes cluster. You will set up an Nginx reverse proxy server for a simple Flask application.
 
@@ -131,7 +131,7 @@ In this section, you will configure Nginx as a reverse proxy and build a Docker 
 
 Create a separate folder called **custom_niginx**.This folder will house your Dockerfile for the Nginx image, and custom Nginx configuration files.
 
-Next, Create a new file called **nginx.conf** in the **custome_nginx folder. This file will hold the custom configurations for your reverse proxy server.
+Next, Create a new file called **nginx.conf** in the **custome_nginx** folder. This file will hold the custom configurations for your reverse proxy server.
 
 Add this block of code to the **nginx.conf** file:
 
@@ -251,7 +251,9 @@ This forwards traffic from port 5000 on your local machine to port 5000 on the b
 
 Now when you visit localhost:5000 on your local machine, you should see your flask server up and running:
 
-[Flask Homepage](https://i.imgur.io/iaQtJtX_d.webp)
+<div class="wide">
+![Flask Homepage]({{site.images}}{{page.slug}}/iaQtJtX.png)
+</div>
 
 ### Deploying Your Nginx Server to Minikube
 
