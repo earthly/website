@@ -294,7 +294,7 @@ It may not be concise to run a LogQL to retrieve all logs generated in a particu
 ![Running LogQL query]({{site.images}}{{page.slug}}/Krzja0n.png)
 </div>
 <div class="wide">
-![Result of the LoQL query]({{site.images}}{{page.slug}}/rieUI1n.png)
+![Result of the LogQL query]({{site.images}}{{page.slug}}/rieUI1n.png)
 </div>
 
 While the query process has become more efficient, sometimes you need to go even further. When searching through logs, you might want to refine your results beyond namespace and pod specifications. You may want to filter results based on specific log messages. In this case, you can use a query to retrieve logs from a particular container labeled `etcd` in the `kube-system` namespace but only display those logs that contain the word "error" in the message:
