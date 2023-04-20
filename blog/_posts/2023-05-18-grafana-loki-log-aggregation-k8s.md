@@ -9,9 +9,9 @@ internal-links:
  - just an example
 ---
 
-As the application deployment landscape becomes more complex, monitoring system logs becomes even more important. From system and application logs to security events and performance metrics, this data contains valuable insights that can help organizations make informed decisions and optimize their operations. However, managing, and analyzing this data can be a daunting task, especially as the volume of data continues to grow.
+As the application [deployment](/blog/deployment-strategies) landscape becomes more complex, monitoring system logs becomes even more important. From system and application logs to security events and performance metrics, this data contains valuable insights that can help organizations make informed decisions and optimize their operations. However, managing, and analyzing this data can be a daunting task, especially as the volume of data continues to grow.
 
-This is where log aggregation comes into play. By collecting and centralizing log data from various sources, log aggregation tools make it easier to manage and analyze log data, leading to faster troubleshooting, better security, and improved operational efficiency. Grafana Loki is a powerful and flexible log aggregation tool
+This is where log aggregation comes into play. By collecting and centralizing log data from various sources, log aggregation tools [make](/blog/makefiles-on-windows) it easier to manage and analyze log data, leading to faster troubleshooting, better security, and improved operational efficiency. Grafana Loki is a powerful and flexible log aggregation tool
 
 In this article, you will learn what log aggregation is, and how Grafana Loki can be used as a complete log aggregation solution in Kubernetes. You'll learn about the key features of Grafana Loki and how it works, and a step-by-step guide on how to set it up for your Kubernetes cluster.
 
@@ -41,7 +41,7 @@ In summary, by centralizing log data, organizations can improve visibility, enha
 
 ## What  Is Grafana Loki?
 
-[Loki](https://grafana.com/oss/loki/) is like [Prometheus](https://prometheus.io/) but for logs, as the Grafana Loki community says. It is an open-source log aggregation system that enables organizations to collect, store, and query log data efficiently and cost-effectively. Unlike traditional log aggregation systems, which typically rely on a centralized database to store logs, Loki uses a distributed architecture that leverages object storage systems like Amazon S3 or Google Cloud Storage to store logs.
+[Loki](https://grafana.com/oss/loki/) is like [Prometheus](https://prometheus.io/) but for logs, as the Grafana Loki community says. It is an open-source log aggregation system that enables organizations to collect, store, and query log data efficiently and cost-effectively. Unlike traditional log aggregation systems, which typically rely on a centralized database to store logs, Loki uses a distributed architecture that leverages object storage systems like Amazon [S3](/blog/aws-lambda-golang) or Google Cloud Storage to store logs.
 
 Loki uses a unique indexing strategy that allows it to store logs in a highly compressed format. This reduces the amount of storage space required and allows Loki to handle much larger volumes of log data than traditional systems.
 
@@ -83,7 +83,7 @@ The Ingester is responsible for receiving log data from the Distributor and stor
 
 ### Object Storage
 
-Object Storage systems such as [Amazon S3](https://earthly.dev/blog/aws-s3-backup-recovery-restic/), Google Cloud Storage, and Microsoft Azure Blob Storage provide durable, highly available, and scalable storage for logs. Using Object Storage with Loki allows log data to be easily queried and analyzed across multiple clusters or regions, and enables higher levels of redundancy and fault tolerance compared to local disk storage.
+Object Storage systems such as [Amazon S3](https://earthly.dev/blog/aws-s3-backup-recovery-restic/), Google Cloud Storage, and Microsoft [Azure](/blog/azure-functions-node) Blob Storage provide durable, highly available, and scalable storage for logs. Using Object Storage with Loki allows log data to be easily queried and analyzed across multiple clusters or regions, and enables higher levels of redundancy and fault tolerance compared to local disk storage.
 
 ### Query Frontend
 
@@ -293,4 +293,3 @@ By leveraging a distributed architecture and a powerful query language, Grafana 
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
