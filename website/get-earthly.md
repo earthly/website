@@ -226,6 +226,7 @@ See the <a href="https://docs.earthly.dev/earthly-cloud/earthly-ci" class="under
 <a href="/signup/earthly-ci" class="try-button py-4 h-10 px-4 xl:px-6 items-center text-sm xl:text-base text-center text-white bg-[#2d7e5d] hover:bg-green-800 rounded-lg inline-flex">
                     Try Earthly CI
                 </a>
+  <div>Have questions? <a class="blue-link underline font-semibold " href="/contact-us">Contact us</a></div>
 
   <div class="text-2xl mt-6 border-t pt-4 border-gray-300">
     Run Earthly in a traditional CI
