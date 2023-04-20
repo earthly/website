@@ -297,4 +297,4 @@ Commit the file and head over to the build execution logs to see this step in ac
 
 In this article, you learned when to use environment variables and secrets, as well as how to scope environment variables across workflows, jobs, and steps. You also learned how to store sensitive information like certificates with GitHub's repository secrets. If you're looking for a simpler experience managing environment variables and secrets, check out [Earthly](https://earthly.dev), an effortless CI/CD framework that can run everywhere. [Earthly makes secret management simple](https://docs.earthly.dev/docs/guides/build-args) and powerful by enabling multiple ways to set and manage your secrets and environment variables.
 
-{% include cta/cta2.html %}
+{% include_html cta/cta2.html %}
