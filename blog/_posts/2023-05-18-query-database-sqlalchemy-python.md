@@ -44,7 +44,7 @@ Some of the features of SQLAlchemy include the following:
 
 Before getting started with SQLAlchemy, you need to first install the SQLAlchemy library. Execute the following command in your terminal or command prompt. This command will install the SQLAlchemy library via [pip](https://pypi.org/project/pip/):
 
-~~~
+~~~{.bash caption=">_"}
 pip install SQLAlchemy
 ~~~
 
@@ -59,8 +59,9 @@ Create a file named `[main.py](http://main.py)` (you can of course name this fil
 **[`create_engine`](https://docs.sqlalchemy.org/en/20/core/engines.html#sqlalchemy.create_engine)**, **[`ForeignKey`](https://docs.sqlalchemy.org/en/20/core/constraints.html#sqlalchemy.schema.ForeignKey)**, **[`Column`](https://docs.sqlalchemy.org/en/20/core/metadata.html#sqlalchemy.schema.Column)**, **[`String`](https://docs.sqlalchemy.org/en/20/core/type_basics.html#sqlalchemy.types.String)**, **[`Integer`](https://docs.sqlalchemy.org/en/20/core/type_basics.html#sqlalchemy.types.Integer)**, **[`CHAR`](https://docs.sqlalchemy.org/en/20/core/type_basics.html#sqlalchemy.types.CHAR)**, and **[`CheckConstraint`](https://docs.sqlalchemy.org/en/20/core/constraints.html#check-constraint)**,
 **[`join`](https://docs.sqlalchemy.org/en/20/orm/queryguide/query.html#sqlalchemy.orm.Query.join)**.
 
-~~~
-from sqlalchemy import create_engine, ForeignKey, Column, String, Integer, CHAR, CheckConstraint, join
+~~~{.python caption="main.py"}
+from sqlalchemy import create_engine, ForeignKey, Column, \
+String, Integer, CHAR, CheckConstraint, join
 ~~~
 
 Here's what each class and functions are responsible for:
@@ -76,7 +77,7 @@ Here's what each class and functions are responsible for:
 
 Next, add the following line of code to import the **`declarative_base`** function from the **`sqlalchemy.ext.declarative`** module.
 
-~~~
+~~~{.python caption="main.py"}
 from sqlalchemy.ext.declarative import declarative_base
 ~~~
 
@@ -89,7 +90,7 @@ After creating the base class by using the **`declarative_base`** function, we c
 
 Add the following line of code to import the **`sessionmaker`** class and the **`relationship`** function from the SQLAlchemy ORM (Object Relational Mapper) module.
 
-~~~
+~~~{.python caption="main.py"}
 from sqlalchemy.orm import sessionmaker, relationship
 ~~~
 
@@ -100,7 +101,7 @@ These classes do the following;
 
 Finally, create a new instance of the **`declarative_base`** class provided by SQLAlchemy and assign it to the variable **`Base`**. This instance will be used as a base class for the definition of database models using the SQLAlchemy ORM (Object-Relational Mapping) framework.
 
-~~~
+~~~{.python caption="main.py"}
 Base = declarative_base()
 ~~~
 
@@ -110,7 +111,7 @@ Now that we have SQLAlchemy all setup, let's see how we can create a table and s
 
 First, we'll define an SQLAlchemy model class **`User`** that represents a table called *users* in a database, this could be any class of your choice (a **`Persons`** class or a **`Students`** class):
 
-~~~
+~~~{.python caption="main.py"}
 class User(Base):
     __tablename__ = "users"
 
@@ -118,7 +119,8 @@ class User(Base):
     firstname =  Column("FirstName", String)
     lastname = Column("LastName", String)
     country = Column("Country", String)
-    gender = Column("Gender", CHAR(1), CheckConstraint('gender = upper(gender)'))
+    gender = Column("Gender", CHAR(1), \
+    CheckConstraint('gender = upper(gender)'))
     expertise = Column("Expertise", String)
     age = Column("Age", Integer)
 ~~~
@@ -135,8 +137,10 @@ The class above has several attributes that correspond to columns in the databas
 
 Create a constructor method for the **`User`**class by adding the below code snippets:
 
-~~~
-def __init__(self, ssn, firstname, lastname, country, gender, expertise, age):
+~~~{.python caption="main.py"}
+
+def __init__(self, ssn, firstname, lastname, country, gender, \
+expertise, age):
         self.ssn = ssn
         self.firstname = firstname
         self.lastname = lastname
@@ -151,16 +155,17 @@ This takes in seven arguments **`ssn`**, **`firstname`**, **`lastname`**, **`cou
 
 Next, create a method that defines a string representation of the User object when you print a **`User`** object:
 
-~~~
+~~~{.python caption="main.py"}
 def __repr__(self):
-        return f"({self.ssn}) {self.firstname} {self.lastname} ({self.gender},{self.age})"
+        return f"({self.ssn}) {self.firstname} \
+        {self.lastname} ({self.gender},{self.age})"
 ~~~
 
 With the code above the string returned will include the user's *SSN*, *firstname*, *lastname*, *gender*, and *age*.
 
 Create a database engine using SQLAlchemy's **`create_engine`** method and set it to use an SQLite database file named *mydb.db*:
 
-~~~
+~~~{.python caption="main.py"}
 engine = create_engine("sqlite:///mydb.db", echo=True)
 Base.metadata.create_all(bind=engine)
 ~~~
@@ -171,19 +176,22 @@ If you'd like to use another type of relational database, say MySQL or MariaDB y
 
 Add the below code snippets to create a **`Session`** class using the **`sessionmaker`** class. The **`Session`**  is bound to the database engine created earlier using the **`create_engine`** function. This class will be responsible for managing database connections and transactions.
 
-~~~
+~~~{.python caption="main.py"}
 Session = sessionmaker(bind=engine)
 session = Session()
-
 ~~~
 
 Add instances of the **`User`**class to the session and commit the changes to the database by adding the following code snippets:
 
-~~~
-user1 =  User(1000, "John", "Doe", "San Fransisco", "F", "Software Engineer", 35)
+~~~{.python caption="main.py"}
+
+user1 =  User(1000, "John", "Doe", "San Fransisco", "F", \
+"Software Engineer", 35)
 user2 = User(1001, "Jane", "Doe", "Mexico", "M", "Data Analyst", 25)
-user3 = User(1002, "Bob", "Smith", "Los Angeles", "M", "Python Developer", 30)
-user4 = User(1003, "Brandy", "Smith", "Califonia", "F", "Technical Writer", 23)
+user3 = User(1002, "Bob", "Smith", "Los Angeles", "M", \
+"Python Developer", 30)
+user4 = User(1003, "Brandy", "Smith", "Califonia", "F", \
+"Technical Writer", 23)
 user5 = User(1004, "Blue", "Ivy", "Texas", "F", "Singer", 21)
 session.add(user1)
 session.add(user2)
@@ -195,8 +203,9 @@ session.commit()
 
 In total, the overall code looks like the following:
 
-~~~
-from sqlalchemy import create_engine, ForeignKey, Column, String, Integer, CHAR, CheckConstraint
+~~~{.python caption="main.py"}
+from sqlalchemy import create_engine, ForeignKey, Column, \
+String, Integer, CHAR, CheckConstraint
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, relationship
 
@@ -209,11 +218,13 @@ class User(Base):
     firstname =  Column("FirstName", String)
     lastname = Column("LastName", String)
     country = Column("Country", String)
-    gender = Column("Gender", CHAR(1), CheckConstraint('gender = upper(gender)'))
+    gender = Column("Gender", CHAR(1), \
+    CheckConstraint('gender = upper(gender)'))
     expertise = Column("Expertise", String)
     age = Column("Age", Integer)
 
-    def __init__(self, ssn, firstname, lastname, country, gender, expertise, age):
+    def __init__(self, ssn, firstname, lastname, \
+    country, gender, expertise, age):
         self.ssn = ssn
         self.firstname = firstname
         self.lastname = lastname
@@ -223,7 +234,8 @@ class User(Base):
         self.age = age
 
     def __repr__(self):
-        return f"({self.ssn}) {self.firstname} {self.lastname} ({self.gender},{self.age})"
+        return f"({self.ssn}) {self.firstname} {self.lastname} \
+        ({self.gender},{self.age})"
     
 engine = create_engine("sqlite:///mydb.db", echo=True)
 Base.metadata.create_all(bind=engine)
@@ -231,10 +243,13 @@ Base.metadata.create_all(bind=engine)
 Session = sessionmaker(bind=engine)
 session = Session()
 
-user1 =  User(1000, "John", "Doe", "San Fransisco", "F", "Software Engineer", 35)
+user1 =  User(1000, "John", "Doe", "San Fransisco", "F", \
+"Software Engineer", 35)
 user2 = User(1001, "Jane", "Doe", "Mexico", "M", "Data Analyst", 25)
-user3 = User(1002, "Bob", "Smith", "Los Angeles", "M", "Python Developer", 30)
-user4 = User(1003, "Brandy", "Smith", "Califonia", "F", "Technical Writer", 23)
+user3 = User(1002, "Bob", "Smith", "Los Angeles", "M", \
+"Python Developer", 30)
+user4 = User(1003, "Brandy", "Smith", "Califonia", "F", \
+"Technical Writer", 23)
 user5 = User(1004, "Blue", "Ivy", "Texas", "F", "Singer", 21)
 session.add(user1)
 session.add(user2)
@@ -246,11 +261,14 @@ session.commit()
 
 And when you execute this code, you should have the following output and a database file containing the table:
 
-~~~
+~~~{ caption="Output"}
+
 2023-03-25 20:53:48,932 INFO sqlalchemy.engine.Engine BEGIN (implicit)
-2023-03-25 20:53:48,932 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("users")
+2023-03-25 20:53:48,932 INFO sqlalchemy.engine.Engine PRAGMA \
+main.table_info("users")
 2023-03-25 20:53:48,933 INFO sqlalchemy.engine.Engine [raw sql] ()
-2023-03-25 20:53:48,933 INFO sqlalchemy.engine.Engine PRAGMA temp.table_info("users")
+2023-03-25 20:53:48,933 INFO sqlalchemy.engine.Engine PRAGMA \
+temp.table_info("users")
 2023-03-25 20:53:48,933 INFO sqlalchemy.engine.Engine [raw sql] ()
 2023-03-25 20:53:48,934 INFO sqlalchemy.engine.Engine 
 CREATE TABLE users (
@@ -267,8 +285,16 @@ CREATE TABLE users (
 2023-03-25 20:53:48,935 INFO sqlalchemy.engine.Engine [no key 0.00015s] ()
 2023-03-25 20:53:48,947 INFO sqlalchemy.engine.Engine COMMIT
 2023-03-25 20:53:48,950 INFO sqlalchemy.engine.Engine BEGIN (implicit)
-2023-03-25 20:53:48,953 INFO sqlalchemy.engine.Engine INSERT INTO users ("FirstName", "LastName", "Country", "Gender", "Expertise", "Age") VALUES (?, ?, ?, ?, ?, ?), (?, ?, ?, ?, ?, ?), (?, ?, ?, ?, ?, ?), (?, ?, ?, ?, ?, ?), (?, ?, ?, ?, ?, ?) RETURNING ssn
-2023-03-25 20:53:48,953 INFO sqlalchemy.engine.Engine [generated in 0.00025s (insertmanyvalues)] ('John', 'Doe', 'San Fransisco', 'F', 'Software Engineer', 35, 'Jane', 'Doe', 'Mexico', 'M', 'Data Analyst', 25, 'Bob', 'Smith', 'Los Angeles', 'M', 'Python Developer', 30, 'Brandy', 'Smith', 'Califonia', 'F', 'Technical Writer', 23, 'Blue', 'Ivy', 'Texas', 'F', 'Singer', 21)
+2023-03-25 20:53:48,953 INFO sqlalchemy.engine.Engine INSERT INTO users \
+("FirstName", "LastName", "Country", "Gender", "Expertise", "Age") \
+VALUES (?, ?, ?, ?, ?, ?), (?, ?, ?, ?, ?, ?), (?, ?, ?, ?, ?, ?), \
+(?, ?, ?, ?, ?, ?), (?, ?, ?, ?, ?, ?) RETURNING ssn
+2023-03-25 20:53:48,953 INFO sqlalchemy.engine.Engine [generated in \
+0.00025s (insertmanyvalues)] ('John', 'Doe', 'San Fransisco', 'F', \
+'Software Engineer', 35, 'Jane', 'Doe', 'Mexico', 'M', 'Data Analyst', \
+25, 'Bob', 'Smith', 'Los Angeles', 'M', 'Python Developer', 30, 'Brandy', \
+'Smith', 'Califonia', 'F', 'Technical Writer', 23, 'Blue', 'Ivy', 'Texas', \
+'F', 'Singer', 21)
 2023-03-25 20:53:48,955 INFO sqlalchemy.engine.Engine COMMIT
 ~~~
 
@@ -278,7 +304,7 @@ CREATE TABLE users (
 
 Since you have now created and populated the `users` table, you can now delete the following lines of code:
 
-~~~
+~~~{.python caption="main.py"}
 session.add(user1)
 session.add(user2)
 session.add(user3)
@@ -295,7 +321,7 @@ Now that you have seen how to create a table, it's time to create another table 
 
 First, let's create a relationship between the **`Users`**  table and the **`pets`**  table we are about to create by adding the following line of code before the `__init__` method in the  **`Users`** class:
 
-~~~
+~~~{.python caption="main.py"}
 pets = relationship('Pet', back_populates='owner')
 ~~~
 
@@ -303,7 +329,7 @@ The code above creates a relationship between the **`User`** and **`Pet`** model
 
 Now add the following code snippets below the **`User`** class:
 
-~~~
+~~~{.python caption="main.py"}
 class Pet(Base):
     __tablename__ = 'pets'
 
@@ -326,7 +352,7 @@ The code above defines a model for a pet with a name and an owner. The model has
 
 Now insert values into the pets table by adding the following lines of code at the bottom of the `main.py` file:
 
-~~~
+~~~{.python caption="main.py"}
 pet1 = Pet(1, "Dog", user1.ssn)
 pet2 = Pet(2, "Cat", user1.ssn)
 pet3 = Pet(3, "Rabbit", user4.ssn)
@@ -340,13 +366,17 @@ session.commit()
 
 When you execute this code, you will have the output below which shows that the `pets` table has been created and the values above have been added to the `pets` table:
 
-~~~
+~~~{ caption="Output"}
+
 2023-03-27 11:59:29,850 INFO sqlalchemy.engine.Engine BEGIN (implicit)
-2023-03-27 11:59:29,850 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("users")
+2023-03-27 11:59:29,850 INFO sqlalchemy.engine.Engine PRAGMA \
+main.table_info("users")
 2023-03-27 11:59:29,850 INFO sqlalchemy.engine.Engine [raw sql] ()
-2023-03-27 11:59:29,851 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("pets")
+2023-03-27 11:59:29,851 INFO sqlalchemy.engine.Engine PRAGMA \
+main.table_info("pets")
 2023-03-27 11:59:29,851 INFO sqlalchemy.engine.Engine [raw sql] ()
-2023-03-27 11:59:29,851 INFO sqlalchemy.engine.Engine PRAGMA temp.table_info("pets")
+2023-03-27 11:59:29,851 INFO sqlalchemy.engine.Engine PRAGMA \
+temp.table_info("pets")
 2023-03-27 11:59:29,851 INFO sqlalchemy.engine.Engine [raw sql] ()
 2023-03-27 11:59:29,853 INFO sqlalchemy.engine.Engine 
 CREATE TABLE pets (
@@ -360,8 +390,11 @@ CREATE TABLE pets (
 2023-03-27 11:59:29,853 INFO sqlalchemy.engine.Engine [no key 0.00017s] ()
 2023-03-27 11:59:29,871 INFO sqlalchemy.engine.Engine COMMIT
 2023-03-27 11:59:29,879 INFO sqlalchemy.engine.Engine BEGIN (implicit)
-2023-03-27 11:59:29,881 INFO sqlalchemy.engine.Engine INSERT INTO pets ("ID", "NAME", "OWNER") VALUES (?, ?, ?)
-2023-03-27 11:59:29,881 INFO sqlalchemy.engine.Engine [generated in 0.00031s] [(1, 'Dog', 1000), (2, 'Cat', 1000), (3, 'Rabbit', 1003), (4, 'Rabbit', 1002)]
+2023-03-27 11:59:29,881 INFO sqlalchemy.engine.Engine INSERT INTO pets \
+("ID", "NAME", "OWNER") VALUES (?, ?, ?)
+2023-03-27 11:59:29,881 INFO sqlalchemy.engine.Engine \
+[generated in 0.00031s] [(1, 'Dog', 1000), (2, 'Cat', 1000), \
+(3, 'Rabbit', 1003), (4, 'Rabbit', 1002)]
 2023-03-27 11:59:29,884 INFO sqlalchemy.engine.Engine COMMIT
 ~~~
 
@@ -377,8 +410,10 @@ Now that you have seen how to create relationships between tables, how about que
 
 Up until now, you are expected to have the following snippets in your *main.py*  file:
 
-~~~
-from sqlalchemy import create_engine, ForeignKey, Column, String, Integer, CHAR, CheckConstraint
+~~~{.python caption="main.py"}
+
+from sqlalchemy import create_engine, ForeignKey, Column, String, \
+Integer, CHAR, CheckConstraint
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, relationship
 
@@ -391,13 +426,15 @@ class User(Base):
     firstname =  Column("FirstName", String)
     lastname = Column("LastName", String)
     country = Column("Country", String)
-    gender = Column("Gender", CHAR(1), CheckConstraint('gender = upper(gender)'))
+    gender = Column("Gender", CHAR(1), \
+    CheckConstraint('gender = upper(gender)'))
     expertise = Column("Expertise", String)
     age = Column("Age", Integer)
 
     pets = relationship('Pet', back_populates='owner')
 
-    def __init__(self, ssn, firstname, lastname, country, gender, expertise, age):
+    def __init__(self, ssn, firstname, lastname, country, \
+    gender, expertise, age):
         self.ssn = ssn
         self.firstname = firstname
         self.lastname = lastname
@@ -407,7 +444,8 @@ class User(Base):
         self.age = age
 
     def __repr__(self):
-        return f"({self.ssn}) {self.firstname} {self.lastname} ({self.gender},{self.age})"
+        return f"({self.ssn}) {self.firstname} {self.lastname} \
+        ({self.gender},{self.age})"
     
 class Pet(Base):
     __tablename__ = 'pets'
@@ -432,10 +470,13 @@ Base.metadata.create_all(bind=engine)
 Session = sessionmaker(bind=engine)
 session = Session()
 
-user1 =  User(1000, "John", "Doe", "San Fransisco", "F", "Software Engineer", 35)
+user1 =  User(1000, "John", "Doe", "San Fransisco", \
+"F", "Software Engineer", 35)
 user2 = User(1001, "Jane", "Doe", "Mexico", "M", "Data Analyst", 25)
-user3 = User(1002, "Bob", "Smith", "Los Angeles", "M", "Python Developer", 30)
-user4 = User(1003, "Brandy", "Smith", "Califonia", "F", "Technical Writer", 23)
+user3 = User(1002, "Bob", "Smith", "Los Angeles", "M", \
+"Python Developer", 30)
+user4 = User(1003, "Brandy", "Smith", "Califonia", "F", \
+"Technical Writer", 23)
 user5 = User(1004, "Blue", "Ivy", "Texas", "F", "Singer", 21)
 
 pet1 = Pet(1, "Dog", user1.ssn)
@@ -446,7 +487,7 @@ pet4 = Pet(4, "Rabbit", user3.ssn)
 
 And now, we can use SQLAlchemy to list all the entries or data from the **`users`** table using the following command:
 
-~~~
+~~~{.python caption="main.py"}
 output = session.query(User).all()
 print(output)
 ~~~
@@ -459,13 +500,15 @@ The resulting list of User objects is stored in the **`output`** variable and th
 
 Now when you execute this code, you should have the following output:
 
+<div class="wide">
 ![Viewing all entries from the user's table]({{site.images}}{{page.slug}}/dU4fn9l.png)
+</div>
 
 You can see from the image above that the output was shown using the  `__repr__` method format for the **`User`** class as a list of Python objects.
 
 You can also output all entries from the **`pets`** table with the following command:
 
-~~~
+~~~{.python caption="main.py"}
 output = session.query(Pet).all()
 print(output)
 ~~~
@@ -478,7 +521,7 @@ print(output)
 
 You can also filter results based on certain conditions. The command below will output users that have `Doe` as their last names:
 
-~~~
+~~~{.python caption="main.py"}
 output = session.query(Pet).filter(User.lastname == "Doe")
 for i in output:
     print(i)
@@ -492,7 +535,7 @@ From the image above, we have two results, **`John Doe`** and **Jane Doe`**.
 
 Additionally, you can also search for all the pets in the database that have the name *Rabbit* using the below line of code:
 
-~~~
+~~~{.python caption="main.py"}
 output = session.query(Pet).filter(Pet.name == "Rabbit")
 for i in output:
     print(i)
@@ -508,7 +551,7 @@ From the output above you can see that you have two results, a pet named *Rabbit
 
 Finally, you can retrieve all the users whose country starts with the letter "M" from the ***`users`** table using the following command:
 
-~~~
+~~~{.python caption="main.py"}
 output = session.query(User).filter(User.country.like("M%"))
 for i in output:
     print(i)
@@ -526,7 +569,7 @@ Other than filtering you can also sort data too. To sort data with SQLAlchemy, y
 
 For example, let's say you want to sort the **`User`** objects by age in descending order. You can modify the query like the following:
 
-~~~
+~~~{.python caption="main.py"}
 output = session.query(User).order_by(User.age.desc()).all()
 for i in output:
     print(i)
@@ -543,8 +586,9 @@ The **`.desc()`** method sorts the data in descending order. You can also use th
 
 If you want to sort by multiple columns, you can pass multiple arguments to **`.order_by()`**. For example, if you want to sort by age first and then by first name, you can do:
 
-~~~
-output = session.query(User).order_by(User.age.desc(), User.firstname.asc()).all()
+~~~{.python caption="main.py"}
+output = session.query(User).order_by(User.age.desc(), \
+User.firstname.asc()).all()
 for i in output:
     print(i)
 ~~~
@@ -559,7 +603,7 @@ From the image above, the **`User`**object is sorted by age in descending order 
 
 SQLAlchemy allows you to join tables in a query by using the [**`join()`**](https://docs.sqlalchemy.org/en/14/orm/query.html#sqlalchemy.orm.join) function. Here's an example that demonstrates how to join the **`User`**and **`Pet`**tables and select data from both:
 
-~~~
+~~~{.python caption="main.py"}
 j = join(User, Pet, User.ssn == Pet.owner_id)
 result = session.query(User.firstname, Pet.name).select_from(j).all()
 
@@ -585,6 +629,4 @@ You can find all the code snippets for this tutorial in this [GitHub repository.
 
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
+
