@@ -557,6 +557,8 @@ In this article, you have seen how useful SQLAlchemy is when it comes to interac
 
 You can find all the code snippets for this tutorial in this [GitHub repository.](https://github.com/mercybassey/sqlalchemy-for-python.git)
 
+{% include_html cta/cta2.html %}
+
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
@@ -566,4 +568,3 @@ You can find all the code snippets for this tutorial in this [GitHub repository.
 - [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/cta2.html %}`
