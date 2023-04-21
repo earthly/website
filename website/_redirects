@@ -12,5 +12,12 @@
 /blog/how-cls-obj-work-python /blog/python-classes-and-objects
 /blog/strctl-ptrn-mtchng-py /blog/structural-pattern-matching-python
 /blog/workwith-yaml-in-py /blog/yaml-in-python
+/blog/undrstndng-and-usng-makefilevar /blog/makefile-variables
+/blog/subprocesses-in-python /blog/python-subprocess
+/blog/use-with-keyword-in-py /blog/python-with-statement
+/blog/dev-guideto-k8services /blog/kubernetes-services
+/blog/canary-dep-in-k8s /blog/canary-deployment-in-k8s
+/blog/setup-dstrbtd-tracing-k8s /blog/k8s-distributed-tracing
+
 # public-key-auth implementation details, referenced by earthly-core cli during account registration
 /public-key-auth https://docs.earthly.dev/docs/misc/public-key-auth
