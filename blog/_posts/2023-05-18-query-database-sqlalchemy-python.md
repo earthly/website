@@ -627,6 +627,5 @@ You can find all the code snippets for this tutorial in this [GitHub repository.
 
 ## Outside Article Checklist
 
-- [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
 
