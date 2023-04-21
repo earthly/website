@@ -197,4 +197,4 @@ If you're using a language that GitHub maintains a `setup-*` action for, you can
 
 If you're looking for other ways to supercharge your CI workflows, consider [Earthly](https://earthly.dev/), a portable [CI/CD](/blog/ci-vs-cd) framework that runs everywhere. Earthly allows you to avoid vendor lock-in with your Git provider and gives you the tools to run your CI/CD workflows locally the same way they would run in the cloud, greatly simplifying the process of developing and testing workflows.
 
-{% include cta/cta2.html %}
+{% include_html cta/cta2.html %}
