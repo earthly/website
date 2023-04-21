@@ -24,6 +24,8 @@ If you'd like to follow along in this tutorial, you'll need to have the followin
 
 ## What Is Sqlalchemy
 
+![What]({{site.images}}{{page.slug}}/what.png)\
+
 [SQLAlchemy](https://docs.sqlalchemy.org/en/20/) is a popular open-source SQL toolkit and Object-Relational Mapping (ORM) library for Python. It provides a set of high-level APIs and tools for interacting with relational databases such as MySQL, PostgreSQL, SQLite, Oracle, and Microsoft SQL Server. SQLAlchemy is designed to provide developers with a unified and consistent API for accessing different relational database systems.
 
 Relational databases are a type of database that store data in a structured format, using tables with columns and rows to represent data entities. They are designed to ensure data consistency and provide powerful querying capabilities, making them popular for many types of applications, including web applications, finance, and e-commerce.
@@ -624,8 +626,3 @@ In this article, you have seen how useful SQLAlchemy is when it comes to interac
 You can find all the code snippets for this tutorial in this [GitHub repository.](https://github.com/mercybassey/sqlalchemy-for-python.git)
 
 {% include_html cta/cta2.html %}
-
-## Outside Article Checklist
-
-- [ ] Optional: Find ways to break up content with quotes or images
-
