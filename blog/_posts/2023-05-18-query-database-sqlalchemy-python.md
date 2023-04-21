@@ -6,7 +6,10 @@ toc: true
 author: Mercy Bassey
 
 internal-links:
- - just an example
+ - Relational Databases
+ - SQLAlchemy
+ - Python
+ - Database
 ---
 
 If you are interested in working with relational databases in Python, then you need to know what SQLAlchemy is. It is a Python library that provides a high-level, SQL abstraction layer for relational databases. With SQLAlchemy, you can interact with databases using Python objects and methods, rather than writing raw SQL queries.
@@ -584,5 +587,4 @@ You can find all the code snippets for this tutorial in this [GitHub repository.
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
