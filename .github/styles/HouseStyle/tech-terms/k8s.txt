@@ -74,3 +74,14 @@ nslookup
 
 myapp
 pki
+
+Promtail
+promtail
+Ingester
+Ingesters
+ingester
+ingesters
+loki
+
+Treafik
+custome
