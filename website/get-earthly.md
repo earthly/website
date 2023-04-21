@@ -213,7 +213,22 @@ This command executes the target <span class="font-semibold">hello</span> from t
     Next Steps
   </div>
 
-  <div class="text-gray-500 mt-2 text-lg">Try Earthly CI, use Earthly with your existing CI, or learn more about Earthly through docs, and examples.</div>
+  <div class="text-gray-500 mt-2 text-lg">Learn more about Earthly through docs and examples, try Earthly CI, or use Earthly with your existing CI .</div>
+
+ <div class="text-2xl mt-6 border-t pt-4 border-gray-300">Learn Earthly</div>
+
+<div class="mt-2 mb-2">
+To learn how to use Earthly, try:
+</div>
+
+- [The getting started guide](https://docs.earthly.dev/guides/basics).
+- [An introductory video](https://www.youtube.com/watch?v=B7Q7S2lpshw)
+- [The full documentation](https://docs.earthly.dev/)
+
+ <div class="text-2xl mt-6 border-t pt-4 border-gray-300">Example projects</div>
+ <div class="mt-2">
+Need some inspiration to get started with your project? <div class="mt-2 pb-4">Check out <a class="blue-link underline font-semibold " href="https://github.com/earthly/earthly/tree/main/examples">examples on GitHub</a></div>
+</div>
 
   <div class="text-2xl mt-4 border-t pt-4 border-gray-300">
     Earthly CI
@@ -233,22 +248,6 @@ See the <a href="https://docs.earthly.dev/earthly-cloud/earthly-ci" class="under
 <div class="mt-2">
 See the <a href="https://docs.earthly.dev/guides/ci-integration" class="underline  font-semibold blue-link">CI integration guide</a> to use Earthly in GitHub Actions, Circle CI, Jenkins, GitLab CI, and others.
 </div>
-
- <div class="text-2xl mt-6 border-t pt-4 border-gray-300">Learn Earthly</div>
-
-<div class="mt-2 mb-2">
-To learn how to use Earthly, try:
-</div>
-
-- [The getting started guide](https://docs.earthly.dev/guides/basics).
-- [An introductory video](https://www.youtube.com/watch?v=B7Q7S2lpshw)
-- [The full documentation](https://docs.earthly.dev/)
-
- <div class="text-2xl mt-6 border-t pt-4 border-gray-300">Example projects</div>
- <div class="mt-2">
-Need some inspiration to get started with your project? <div class="mt-2 pb-4">Check out <a class="blue-link underline font-semibold " href="https://github.com/earthly/earthly/tree/main/examples">examples on GitHub</a></div>
-</div>
-
 </div>
 
 </div>
