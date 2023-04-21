@@ -22,12 +22,6 @@ If you're an **experienced technical writer** looking to expand your audience an
 
 If you're a **beginner writer** who is **eager to learn and improve**, we want to hear from you too! Our editors work hard with writers to help them level up their technical writing abilities.
 
-Here are just a couple of comments to our editors from writers we've worked with recently:
-
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">I'd like to THANK YOU for the high quality that you brought to the article. Your suggestions were very helpful, informative, and will help a lot with upcoming articles.</p>&mdash;Muhammad Badawy - Check out the article [Apply Mutual TLS Over a Kubernetes Nginx Ingress Controller](/blog/mutual-tls-kubernetes-nginx-ingress-controller) </blockquote>
-
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Thank you very much. This is one of the most insightful article reviews I have had. I really learned a lot.</p>&mdash; Mustapha Ahmad Ayodeji - Check out the article [Structural Pattern Matching in Python](/blog/structural-pattern-matching-python) </blockquote>
-
 ### Apply
 
 If you're interested, please fill out this <a href="https://docs.google.com/forms/d/e/1FAIpQLSdgpU8oYXvRRnvtxt5ZruAvJ3RPa4sEXgvbaY1xDOA98G3ycw/viewform">application</a>. Be sure to include some relevant writing samples. Take a look at the list below and peruse our blog to get an idea of the type of content we like to publish.
