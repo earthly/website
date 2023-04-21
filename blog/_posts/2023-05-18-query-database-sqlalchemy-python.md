@@ -56,7 +56,7 @@ If you have it installed successfully, you should have the following output:
 ![Installing the sqlalchemy library]({{site.images}}{{page.slug}}/oqHbE7L.png)
 </div>
 
-Create a file named `[main.py](http://main.py)` (you can of course name this file whatever you want) and import the following from the SQLAlchemy library:
+Create a file named `main.py` (you can of course name this file whatever you want) and import the following from the SQLAlchemy library:
 
 **[`create_engine`](https://docs.sqlalchemy.org/en/20/core/engines.html#sqlalchemy.create_engine)**, **[`ForeignKey`](https://docs.sqlalchemy.org/en/20/core/constraints.html#sqlalchemy.schema.ForeignKey)**, **[`Column`](https://docs.sqlalchemy.org/en/20/core/metadata.html#sqlalchemy.schema.Column)**, **[`String`](https://docs.sqlalchemy.org/en/20/core/type_basics.html#sqlalchemy.types.String)**, **[`Integer`](https://docs.sqlalchemy.org/en/20/core/type_basics.html#sqlalchemy.types.Integer)**, **[`CHAR`](https://docs.sqlalchemy.org/en/20/core/type_basics.html#sqlalchemy.types.CHAR)**, and **[`CheckConstraint`](https://docs.sqlalchemy.org/en/20/core/constraints.html#check-constraint)**,
 **[`join`](https://docs.sqlalchemy.org/en/20/orm/queryguide/query.html#sqlalchemy.orm.Query.join)**.
@@ -83,12 +83,11 @@ Next, add the following line of code to import the **`declarative_base`** functi
 from sqlalchemy.ext.declarative import declarative_base
 ~~~
 
-<aside>
+<div class="notice--big--primary">
 💡 The **`declarative_base`** function is used to create a base class that is used to define the database schema. This base class allows us to define the database schema in a way that is more like defining regular Python classes, and it makes it easy to create new database tables and columns.
 
 After creating the base class by using the **`declarative_base`** function, we can define classes that inherit from the base class, and each of these classes represents a table in the database. We can define the columns of the table as attributes of the class, and we can define relationships between tables using attributes as well. Once we have defined all of our classes, we can use SQLAlchemy to create the database schema and interact with the database using the classes we have defined.
-
-</aside>
+</div>
 
 Add the following line of code to import the **`sessionmaker`** class and the **`relationship`** function from the SQLAlchemy ORM (Object Relational Mapper) module.
 
@@ -111,7 +110,7 @@ Base = declarative_base()
 
 Now that we have SQLAlchemy all setup, let's see how we can create a table and store it in an SQLite database.
 
-First, we'll define an SQLAlchemy model class **`User`** that represents a table called *users* in a database, this could be any class of your choice (a **`Persons`** class or a **`Students`** class):
+First, we'll define an SQLAlchemy model class **`User`** that represents a table called *users* in a database. This could be any class of your choice (a **`Persons`** class or a **`Students`** class):
 
 ~~~{.python caption="main.py"}
 class User(Base):
@@ -410,7 +409,7 @@ Now if you view your database file, which is, in this case, called *mydb.db* you
 
 Now that you have seen how to create relationships between tables, how about querying a table with SQLAlchemy?
 
-Up until now, you are expected to have the following snippets in your *main.py*  file:
+Up until now, you are expected to have the following snippets in your main.py file:
 
 ~~~{.python caption="main.py"}
 
@@ -551,7 +550,7 @@ The code above searches for all the pets in the database that have the name *Rab
 
 From the output above you can see that you have two results, a pet named *Rabbit* for users with *ssn* numbers 1003 and 1002 respectively.
 
-Finally, you can retrieve all the users whose country starts with the letter "M" from the ***`users`** table using the following command:
+Finally, you can retrieve all the users whose country starts with the letter "M" from the `users` table using the following command:
 
 ~~~{.python caption="main.py"}
 output = session.query(User).filter(User.country.like("M%"))
