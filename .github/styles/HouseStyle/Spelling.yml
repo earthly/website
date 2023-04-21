@@ -24,4 +24,6 @@ ignore:
   - HouseStyle/tech-terms/db.txt
   - HouseStyle/tech-terms/aws.txt
   - HouseStyle/tech-terms/git.txt
+  - HouseStyle/tech-terms/rust.txt
+  - HouseStyle/tech-terms/bazel.txt
 
