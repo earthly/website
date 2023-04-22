@@ -23,9 +23,9 @@ This article will delve into the challenges and risks associated with CI/CD secu
 ![CI/CD Security Challenges]({{site.images}}{{page.slug}}//HOd4O2s.png)\
 </div>
 
-Security is essential in software development, especially in the context of CI/CD. Frequent releases increase the risk of security vulnerabilities, and hackers are always looking for new ways to exploit them. Security threats constantly evolve, so organizations need to integrate security measures throughout the CI/CD pipeline. 
+Security is essential in software development, especially in the context of CI/CD. Frequent releases increase the risk of security vulnerabilities, and hackers are always looking for new ways to exploit them. Security threats constantly evolve, so organizations need to integrate security measures throughout the CI/CD pipeline.
 
-This ensures that vulnerabilities are detected and addressed promptly, preventing the deployment of vulnerable applications to production. 
+This ensures that vulnerabilities are detected and addressed promptly, preventing the deployment of vulnerable applications to production.
 
 There are several challenges and risks associated with CI/CD security, including
 
@@ -33,14 +33,13 @@ There are several challenges and risks associated with CI/CD security, including
 
 #### Code Changes
 
-CI/CD requires frequent code changes, and this creates challenges in maintaining the security of the development process. As code changes are being made, it's important to ensure that they are thoroughly tested and verified before being integrated into the deployment pipeline. This includes verifying that code changes are compatible with existing code and configurations and that they don't introduce any new vulnerabilities or security flaws. 
+CI/CD requires frequent code changes, and this creates challenges in maintaining the security of the development process. As code changes are being made, it's important to ensure that they are thoroughly tested and verified before being integrated into the deployment pipeline. This includes verifying that code changes are compatible with existing code and configurations and that they don't introduce any new vulnerabilities or security flaws.
 
 For instance, if a developer adds new functionality to an application without properly considering potential security risks, this could introduce new vulnerabilities that could be exploited by attackers. Additionally, changes to configurations, such as access control policies, can inadvertently open up security holes that could be exploited.
 
 To mitigate these risks, it's important to implement security testing at every stage of the CI/CD pipeline. This includes using automated tools to scan for security vulnerabilities in the code and configurations, as well as conducting manual code reviews to identify potential security issues. Additionally, implementing secure coding practices can help reduce the likelihood of introducing new vulnerabilities with code changes.
 
-In general,  the key to ensuring security with CI/CD is to prioritize testing and verification at every stage of the development process. This will help identify and address security issues as soon as possible, reducing the risk of vulnerabilities being introduced into the deployment pipeline.
-
+In general, the key to ensuring security with CI/CD is to prioritize testing and verification at every stage of the development process. This will help identify and address security issues as soon as possible, reducing the risk of vulnerabilities being introduced into the deployment pipeline.
 
 #### Integration Issues
 
@@ -66,7 +65,7 @@ Test automation is an essential component of the CI/CD pipeline as it helps to b
 
 To address these concerns, it's essential to integrate security testing and vulnerability detection into the automated testing process. This involves incorporating security testing tools and practices into the test automation framework to ensure that all code changes are thoroughly evaluated for security risks. By doing so, organizations can identify and fix security vulnerabilities early in the development process, reducing the likelihood of security incidents in the production environment.
 
-#### Integration with Existing Security Tools
+#### Integration With Existing Security Tools
 
 Integrating security testing into existing CI/CD pipelines and tools can also be a challenge for several reasons. One reason is that security tools may not be designed to work seamlessly with existing development tools and processes. This can lead to compatibility issues and disruptions in the pipeline, which can ultimately slow down development and reduce productivity.
 
@@ -80,8 +79,7 @@ Finally, organizations may face challenges in integrating security testing into 
 
 This is another important component of CI/CD security, as misconfigured systems can potentially leave the system vulnerable to attacks. Ensuring that configurations are properly set up and secured can help reduce the risk of security breaches.
 
-
-#### Infrastructure as code (IAC)
+#### Infrastructure as Code(IAC)
 
 IAC is a technique for managing and provisioning IT infrastructure through machine-readable definition files, rather than manually configuring individual systems. IAC allows for the automation of the entire infrastructure lifecycle, including provisioning, configuration, and deployment, reducing the risk of human error and inconsistencies in configuration.
 
@@ -105,7 +103,7 @@ Similarly, when setting up a CI/CD pipeline using GitHub Actions, you can enforc
 
 Here's an example of how to implement an authentication middleware in a GitHub Actions pipeline using JWTs:
 
-```
+~~~
 name: My CI/CD Pipeline
 on:
   push:
@@ -130,13 +128,13 @@ jobs:
         if: steps.auth.outputs.valid == 'true'
         run: |
           # Perform build and deployment actions here
-```
+~~~
+
 In this example, the pipeline runs on a push to the main branch, and the build job is executed on an Ubuntu machine. The first step checks out the code from the repository, and the second step authenticates the user or component using an access token stored in GitHub Secrets. The access token is passed to the `jwt-actions/authenticate action`, which verifies the token's authenticity using a secret key.
 
 If the token is valid, the `valid` output variable is set to `true`, and the build and deployment actions are executed in the final step. If the token is invalid, the `valid` output variable is set to `false`, and the build and deployment actions are skipped.
 
 By enforcing authentication and authorization in your CI/CD pipeline, whether it's a custom pipeline or using GitHub Actions, you can ensure that only authorized users and components have access to the pipeline and prevent unauthorized access or malicious attacks.
-
 
 ### Securing the Code Repository
 
@@ -146,42 +144,42 @@ One way to secure the code repository is by implementing access controls and aut
 
 To set up access controls in Git, you can create a `.htaccess` file in the repository's root directory and add the following lines:
 
-```bash
+~~~
 AuthType Basic
 AuthName "Restricted Access"
 AuthUserFile /path/to/htpasswd
 Require valid-user
-```
+~~~
 
 This will prompt users to enter a username and password before they can access the repository. The `htpasswd` file contains a list of usernames and encrypted passwords, and can be generated using the `htpasswd` command-line tool. Here's an example:
 
-```bash
+~~~
 htpasswd -c /path/to/htpasswd alice
-```
+~~~
 
 This will create a new `htpasswd` file and add a user called Alice. You can add additional users by running the `htpasswd` command without the `-c` option.
 
 In addition to access controls, you can also use Git's built-in cryptographic features to sign commits and tags, which helps ensure their integrity and authenticity. To sign a commit, you can use the `-S` option when committing changes:
 
-```bash
+~~~
 git commit -S -m "Add new feature"
-```
+~~~
 
 This will prompt you to enter your GPG passphrase and sign the commit using your private key. You can also configure Git to always sign your commits by adding the following line to your `.gitconfig` file:
 
-```bash
+~~~
 [commit]
     gpgsign = true
-```
+~~~
 
-By implementing access controls and cryptographic features in your code repository, you can help ensure the security and integrity of your codebase, and reduce the risk of unauthorized access or tampering. To learn more about GitHub access controls, check out the documentation: https://docs.github.com/en/get-started/learning-about-github/access-permissions-on-github
+By implementing access controls and cryptographic features in your code repository, you can help ensure the security and integrity of your codebase, and reduce the risk of unauthorized access or tampering. To learn more about GitHub access controls, check out the documentation: <https://docs.github.com/en/get-started/learning-about-github/access-permissions-on-github>
 
 ### Implementing Security Testing in the Pipeline
 
 One of the best practices for implementing security testing in the pipeline is to use automated security testing tools such as [OWASP ZAP](https://www.zaproxy.org/) or [SonarQube](https://www.sonarsource.com/products/sonarqube/). This ensures that security vulnerabilities are identified and resolved as early as possible in the development cycle.
 Here is an example of how to use OWASP ZAP in a pipeline:
 
-```bash
+~~~
 # First, download and start OWASP ZAP
 wget https://github.com/zaproxy/zaproxy/releases/download/v2.12.0/ZAP_2.12.0_Crossplatform.zip
 unzip ZAP_2.12.0_Crossplatform.zip
@@ -198,7 +196,7 @@ zaproxy quick-scan -u http://localhost:3000 -l High -r report.html
 
 # Finally, stop OWASP ZAP
 zaproxy shutdown
-```
+~~~
 
 This example shows how to download and start OWASP ZAP, configure it to run in a pipeline, and scan an application for security vulnerabilities. The `-l` flag sets the alert level (e.g. High, Medium, Low) and the `-r` flag specifies the output file for the report. The report generated by OWASP ZAP can be used to identify and fix security vulnerabilities in the application.
 
@@ -208,9 +206,9 @@ The pipeline is constantly evolving, making it susceptible to potential security
 
 This can be achieved by using a logging framework such as Winston in a Node.js environment. Winston provides a simple and scalable logging solution that can be easily integrated into the pipeline.
 
-Here is an example of how to use Winston to log pipeline activity in Nodejs:
+Here is an example of how to use Winston to log pipeline activity in Node.js:
 
-```js
+~~~
 const winston = require("winston");
 const { createLogger, format, transports } = winston;
 const { combine, timestamp, label, printf } = format;
@@ -234,7 +232,7 @@ const logger = createLogger({
 logger.info("Starting pipeline...");
 // Some pipeline code here
 logger.info("Pipeline completed successfully");
-```
+~~~
 
 In the example above, the `createLogger` function is used to create a logger instance that logs messages at the info level or higher. The format function is used to specify the format of the log messages, which includes a timestamp, label, log level, and message.
 
@@ -250,7 +248,7 @@ For example, in an AWS environment, you can use AWS Identity and Access Manageme
 
 Here's an example IAM policy that enforces RBAC:
 
-```json
+~~~
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -284,7 +282,7 @@ Here's an example IAM policy that enforces RBAC:
         }
     ]
 }
-```
+~~~
 
 In this example, the policy allows the user to start, stop, and terminate EC2 instances and perform certain actions on an S3 bucket but denies all other actions. The policy can be assigned to a user or group to enforce RBAC.
 
@@ -322,7 +320,7 @@ IAST tools analyze an application's code and runtime behavior to identify securi
 
 Choosing the right security tools for your organization can be a daunting task. Here are some factors to consider when selecting security tools for your CI/CD pipeline:
 
-#### Compatibility with your Stack
+#### Compatibility With Your Stack
 
 When it comes to compatibility, it's important to look for tools that support your programming languages, frameworks, and other technologies. For example, if you're developing a web application with a frontend built in React and a backend built in Node.js, you might want to consider a tool like `ESLint` for static code analysis or the OWASP ZAP proxy for dynamic application security testing, both of which have plugins or integrations for both React and Node.js.
 
@@ -336,11 +334,11 @@ When considering the cost of security tools, it's important to weigh the benefit
 
 These are just a few examples of the many security tools available and how they might fit into your CI/CD pipeline. The most important thing is to carefully evaluate the needs of your organization and the specific applications you're developing, and choose the tools that will provide the most value and best meet your requirements.
 
-### Integration with CI/CD Pipeline
+### Integration With CI/CD Pipeline
 
 Integrating security tools into your CI/CD pipeline is essential for detecting and fixing security issues. Here are some steps you can take to integrate security tools into your pipeline:
 
-#### Integrate the tools into your pipeline
+#### Integrate The Tools Into Your Pipeline
 
 The first step is to integrate the security tools you choose into your pipeline. This integration should be seamless, and the tool should not interfere with the existing workflow.
 
@@ -354,23 +352,25 @@ Automating the testing process can save time and resources. By automating tests,
 
 Here's an example of how you can integrate static code analysis into your pipeline using the open-source tool SonarQube:
 
-1. Download the SonarQube package from the official website: https://www.sonarqube.org/downloads/
+1. Download the SonarQube package from the official website: <https://www.sonarqube.org/downloads/>
 
 2. Unzip the downloaded package to a directory on your system.
+
 3. Install a Java Runtime Environment (JRE) if one is not already installed.
+
 4. Configure the database connection in SonarQube by editing the `sonar.properties` file located in the `conf` directory. For example, if you are using MySQL, you would uncomment the following line and provide your database credentials:
 
-```bash
-#sonar.jdbc.url=jdbc:mysql://localhost:3306/sonar?useUnicode=true&characterEncoding=utf8&rewriteBatchedStatements=true&useConfigs=maxPerformance
-#sonar.jdbc.username=root
-#sonar.jdbc.password=root
-```
+   ~~~
+   #sonar.jdbc.url=jdbc:mysql://localhost:3306/sonar?useUnicode=true&characterEncoding=utf8&rewriteBatchedStatements=true&useConfigs=maxPerformance
+   #sonar.jdbc.username=root
+   #sonar.jdbc.password=root
+   ~~~
 
 5. Start the SonarQube server by running the bin/[your-os]/sonar.sh start command in the root directory of the extracted package. For example, on Linux or macOS, you would run:
 
-   ```bash
-   ./bin/linux-x86-64/sonar.sh start
-   ```
+   ~~~
+      ./bin/linux-x86-64/sonar.sh start
+   ~~~
 
 6. Verify that SonarQube is running by accessing the web interface at `http://localhost:9000` (assuming you have not changed the default port).
 
@@ -393,6 +393,5 @@ In conclusion, organizations need to prioritize CI/CD security to ensure secure 
 - [ ] Add in Author page
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
