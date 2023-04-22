@@ -6,12 +6,15 @@ toc: true
 author: Adam
 
 internal-links:
- - just an example
+ - CI/CD
+ - Security
+ - Continuous Deployment
+ - Github
 ---
 
 ![Image]({{site.images}}{{page.slug}}/HOd6Gcu.png)\
 
-In today's fast-paced world of software development, speed, and agility are important to stay ahead of the competition. Continuous Integration and Continuous Deployment (CI/CD) have emerged as the go-to methodologies to achieve this goal. CI/CD is a practice that allows developers to continuously integrate and deploy their code changes into production, enabling them to rapidly deliver features and updates to their users.
+In today's fast-paced world of software development, speed, and agility are important to stay ahead of the competition. [Continuous Integration](/blog/continuous-integration) and Continuous Deployment (CI/CD) have emerged as the go-to methodologies to achieve this goal. CI/CD is a practice that allows developers to continuously integrate and deploy their code changes into production, enabling them to rapidly deliver features and updates to their users.
 
 However, with the speed and efficiency of CI/CD comes the risk of security breaches. As the software development process becomes more automated, security must be integrated into every stage of the pipeline to mitigate these risks. CI/CD security is crucial to ensure that software is developed and deployed securely and reliably.
 
@@ -393,5 +396,3 @@ In conclusion, organizations need to prioritize CI/CD security to ensure secure 
 - [ ] Add in Author page
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
