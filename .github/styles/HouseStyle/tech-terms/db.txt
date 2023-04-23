@@ -5,3 +5,6 @@ django
 
 mysql:latest
 mysql
+
+visitorid
+timedelta
