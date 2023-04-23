@@ -23,7 +23,9 @@ In this article, we'll take you on a journey to explore Apache Airflow's archite
 
 Knowing the architecture of Airflow is crucial for effective workflow orchestration and data pipeline management. We'll explore the key components and interactions that makeup Airflow's architecture.
 
+<div class="wide">
 ![Architecture of Apache Airflow]({{site.images}}{{page.slug}}/Kf56Je0.png)
+</div>
 
 Airflow has a modular architecture that consists of several components, each responsible for a specific task. The core components of Airflow are:
 
@@ -172,7 +174,9 @@ curl -LfO "https://airflow.apache.org/docs/apache-airflow/2.2.3/docker-compose.y
 
 The resulting output should be as shown below
 
+<div class="wide">
 ![Fetch docker-compose.yaml]({{site.images}}{{page.slug}}/8ggBwzV.png)
+</div>
 
 This file contains several service definitions:
 
@@ -212,7 +216,9 @@ docker-compose up airflow-init
 
  The resulting output should be as shown below. Exited with code 0 means it's deployed successfully. You may get a warning that AIRFLOW_UID is not set, but you can ignore it.
 
+<div class="wide">
 ![airflow-init]({{site.images}}{{page.slug}}/xxNP2Vp.png)
+</div>
 
 Now that all the related services have been initialized, it's time to run Airflow.
 
@@ -222,7 +228,9 @@ docker-compose up -d
 
 The resulting output should be as shown below
 
+<div class="wide">
 ![docker-compose up output]({{site.images}}{{page.slug}}/Fc0VASw.png)
+</div>
 
 To check if the airflow service is running, Execute the following command in the command prompt
 
@@ -232,15 +240,21 @@ docker ps
 
 The resulting output should be as shown below:
 
+<div class="wide">
 ![docker ps output]({{site.images}}{{page.slug}}/w7WtevZ.png)
+</div>
 
 Open a web browser and enter the following localhost URL: <http://localhost:8080>. Set the username "airflow" and the password "airflow"
 
+<div class="wide">
 ![Apache Airflow Interface]({{site.images}}{{page.slug}}/iDSiwrt.png)
+</div>
 
 Finally, Apache Airflow is up as shown below
 
+<div class="wide">
 ![Apache Airflow up]({{site.images}}{{page.slug}}/7h0VQhG.png)
+</div>
 
 ## Running ETL Pipelines With Airflow
 
@@ -335,11 +349,15 @@ download=BashOperator(
 
 As you can see below, `web_server_log.txt` file has been downloaded
 
+<div class="wide">
 ![web_server_log.txt]({{site.images}}{{page.slug}}/RISGSc5.png)
+</div>
 
 And the `web_server_log.txt` file contains many columns like timestamp, latitude, longitude, visitorid, and so on as shown below
 
+<div class="wide">
 ![Web Server log columns]({{site.images}}{{page.slug}}/ymAJw53.jpg)
+</div>
 
 We will extract two columns (timestamp,visitorId) from the file downloaded. So we will use the bash command to extract the two columns and create a new file with the name `web_server_log_extracted.txt`
 
@@ -354,7 +372,9 @@ extract=BashOperator(
 
 As you can see below, `web_server_log_extracted.txt` file has been created with the extracted columns.
 
+<div class="wide">
 ![web_server_log_extracted.txt]({{site.images}}{{page.slug}}/LCyiQR3.jpg)
+</div>
 
 Now we will transform the extracted columns to be all lowercase and create a new file with the transformed data.
 
@@ -369,7 +389,9 @@ transform=BashOperator(
 
 As you can see below, `Transformed.txt` file has been created with the transformed columns.
 
+<div class="wide">
 ![Transformed.txt]({{site.images}}{{page.slug}}/bjdcytd.jpg)
+</div>
 
 The last step is to compress the transformed and extracted data
 
@@ -384,7 +406,9 @@ load=BashOperator(
 
 As you can see below, the `web_server_log_processing.tar` file has been created.
 
+<div class="wide">
 ![web_server_log_processing.tar]({{site.images}}{{page.slug}}/a7RjQZN.png)
+</div>
 
 ### 5. Define the Task Dependencies
 
@@ -396,7 +420,9 @@ download >> extract >> transform >> load
 
 And when the workflow is successful, the output will be like this:
 
+<div class="wide">
 ![DAG]({{site.images}}{{page.slug}}/cD9L2XX.jpg)
+</div>
 
 In the previous example, we used sequential execution but sometimes we need another type of execution like
 
@@ -454,5 +480,3 @@ Looking to the future, potential developments for Apache Airflow may include bet
 - [ ] Add in Author page
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
