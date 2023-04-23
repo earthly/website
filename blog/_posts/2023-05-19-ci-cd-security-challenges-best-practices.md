@@ -110,7 +110,7 @@ Similarly, when setting up a CI/CD pipeline using GitHub Actions, you can enforc
 
 Here's an example of how to implement an authentication middleware in a GitHub Actions pipeline using JWTs:
 
-~~~
+~~~{ caption=""}
 name: My CI/CD Pipeline
 on:
   push:
@@ -151,7 +151,7 @@ One way to secure the code repository is by implementing access controls and aut
 
 To set up access controls in Git, you can create a `.htaccess` file in the repository's root directory and add the following lines:
 
-~~~
+~~~{ caption=".htaccess"}
 AuthType Basic
 AuthName "Restricted Access"
 AuthUserFile /path/to/htpasswd
@@ -160,7 +160,7 @@ Require valid-user
 
 This will prompt users to enter a username and password before they can access the repository. The `htpasswd` file contains a list of usernames and encrypted passwords, and can be generated using the `htpasswd` command-line tool. Here's an example:
 
-~~~
+~~~{.bash caption=">_"}
 htpasswd -c /path/to/htpasswd alice
 ~~~
 
@@ -168,13 +168,13 @@ This will create a new `htpasswd` file and add a user called Alice. You can add 
 
 In addition to access controls, you can also use Git's built-in cryptographic features to sign commits and tags, which helps ensure their integrity and authenticity. To sign a commit, you can use the `-S` option when committing changes:
 
-~~~
+~~~{.bash caption=">_"}
 git commit -S -m "Add new feature"
 ~~~
 
 This will prompt you to enter your GPG passphrase and sign the commit using your private key. You can also configure Git to always sign your commits by adding the following line to your `.gitconfig` file:
 
-~~~
+~~~{ caption=".gitconfig"}
 [commit]
     gpgsign = true
 ~~~
@@ -186,7 +186,7 @@ By implementing access controls and cryptographic features in your code reposito
 One of the best practices for implementing security testing in the pipeline is to use automated security testing tools such as [OWASP ZAP](https://www.zaproxy.org/) or [SonarQube](https://www.sonarsource.com/products/sonarqube/). This ensures that security vulnerabilities are identified and resolved as early as possible in the development cycle.
 Here is an example of how to use OWASP ZAP in a pipeline:
 
-~~~
+~~~{.bash caption=">_"}
 # First, download and start OWASP ZAP
 wget https://github.com/zaproxy/zaproxy/releases/download/v2.12.0/ZAP_2.12.0_Crossplatform.zip
 unzip ZAP_2.12.0_Crossplatform.zip
@@ -217,7 +217,7 @@ This can be achieved by using a logging framework such as Winston in a Node.js e
 
 Here is an example of how to use Winston to log pipeline activity in Node.js:
 
-~~~
+~~~{.js caption=""}
 const winston = require("winston");
 const { createLogger, format, transports } = winston;
 const { combine, timestamp, label, printf } = format;
@@ -257,7 +257,7 @@ For example, in an AWS environment, you can use AWS Identity and Access Manageme
 
 Here's an example IAM policy that enforces RBAC:
 
-~~~
+~~~{ caption=""}
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -281,7 +281,8 @@ Here's an example IAM policy that enforces RBAC:
                 "s3:DeleteObject",
                 "s3:ListBucket"
             ],
-            "Resource": ["arn:aws:s3:::my-bucket/*", "arn:aws:s3:::my-bucket"]
+            "Resource": ["arn:aws:s3:::my-bucket/*", \
+            "arn:aws:s3:::my-bucket"]
         },
         {
             "Sid": "DenyAll",
@@ -371,7 +372,8 @@ Here's an example of how you can integrate static code analysis into your pipeli
 
 4. Configure the database connection in SonarQube by editing the `sonar.properties` file located in the `conf` directory. For example, if you are using MySQL, you would uncomment the following line and provide your database credentials:
 
-   ~~~
+   ~~~{ caption="sonar.properties"}
+   
    #sonar.jdbc.url=jdbc:mysql://localhost:3306/sonar?useUnicode=true&characterEncoding=utf8&rewriteBatchedStatements=true&useConfigs=maxPerformance
    #sonar.jdbc.username=root
    #sonar.jdbc.password=root
@@ -379,7 +381,7 @@ Here's an example of how you can integrate static code analysis into your pipeli
 
 5. Start the SonarQube server by running the bin/[your-os]/sonar.sh start command in the root directory of the extracted package. For example, on Linux or macOS, you would run:
 
-   ~~~
+   ~~~{.bash caption=">_"}
       ./bin/linux-x86-64/sonar.sh start
    ~~~
 
