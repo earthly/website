@@ -149,7 +149,9 @@ The `EmailOperator` class is used to send an email notification. The instance cr
 
 Each operator has its own set of parameters that define its behavior, such as the command to run in a BashOperator, or the SQL query to execute in an SQLOperator. By combining these operators in a DAG (Directed Acyclic Graph), you can create complex workflows that orchestrate the execution of multiple tasks.
 
-## Connections and  Hooks
+## Connections and Hooks
+
+![connections]({{site.images}}{{page.slug}}/connection.png)\
 
 Connections and Hooks are two important concepts in Apache Airflow that enable users to interact with external systems and resources within their workflows.
 
@@ -488,4 +490,3 @@ Looking to the future, potential developments for Apache Airflow may include bet
 ## Outside Article Checklist
 
 - [ ] Add in Author page
-- [ ] Optional: Find ways to break up content with quotes or images
