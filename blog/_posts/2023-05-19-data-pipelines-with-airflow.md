@@ -3,7 +3,7 @@ title: "Automating Data Pipelines and Workflows Using Apache Airflow"
 categories:
   - Tutorials
 toc: true
-author: Adam
+author: Ansam Yousry
 
 internal-links:
  - Automating
@@ -61,7 +61,7 @@ Airflow comes with a variety of built-in operators for different types of tasks,
 
 Use the BashOperator when you need to execute a Bash command or script on the Airflow server. This can be useful for running shell scripts, calling command-line utilities, or interacting with the file system. Here is an example that runs a simple Bash command:
 
-~~~{.python caption=""}
+~~~{.python caption="ETL_DAG_Code.py"}
 extract_data = BashOperator(
     task_id='extract_data',
     bash_command='python /path/to/extract_script.py',
@@ -81,7 +81,7 @@ Here's what each of the arguments in the BashOperator() function call represents
 
 Use the PythonOperator when you need to execute a Python function on the Airflow server. This can be useful for performing custom business logic, interacting with APIs, or manipulating data. Here's an example:
 
-~~~{.python caption=""}
+~~~{.python caption="ETL_DAG_Code.py"}
 transform_data = PythonOperator(
     task_id='transform_data',
     python_callable=transform_data,
@@ -102,7 +102,7 @@ Here's what each of the arguments in the `PythonOperator()` function call repres
 
 The PostgresOperator is used to execute SQL commands on a PostgreSQL database as part of an Airflow ETL workflow. It can be used to load data, run queries, create, or drop tables, and perform backups, or restores. The operator takes SQL commands as a parameter and requires a PostgreSQL connection ID defined in Airflow's connections settings. Here's an example:
 
-~~~{.python caption=""}
+~~~{.python caption="ETL_DAG_Code.py"}
 load_data = PostgresOperator(
     task_id='load_data',
     postgres_conn_id='my_postgres_conn',
@@ -127,7 +127,7 @@ Here's what each of the arguments in the `PostgresOperator()` function call repr
 
 Suppose you have an Airflow DAG that runs a series of ETL jobs on a daily basis. You want to receive an email notification each time the DAG completes so that you can be alerted if there are any issues with the workflow. To do this, you can use the EmailOperator to send an email to your inbox with the status of the DAG run. Here's an example code:
 
-~~~{.python caption=""}
+~~~{.python caption="ETL_DAG_Code.py"}
     send_email_task = EmailOperator(
         task_id='send_email',
         to=['you@example.com'],
@@ -281,7 +281,7 @@ Now we can start writing DAG code:
 
 Import the necessary modules and packages, including the `DAG` class from Airflow, the `BashOperator` class, and the days_ago and timedelta functions from Airflow's dates module.
 
-~~~{.python caption=""}
+~~~{.python caption="ETL_DAG_Code.py"}
 from airflow import DAG
 from datetime import timedelta
 from airflow.utils.dates import days_ago
@@ -292,7 +292,7 @@ from airflow.operators.bash_operator import BashOperator
 
 Default arguments are a key component of defining DAGs in Airflow. These arguments provide a way to specify common settings and behaviors for all tasks in a DAG, such as the start date, email notifications, retries, and other properties. By setting default arguments, you can avoid having to repeat the same settings for each individual task and ensure that all tasks in a DAG are configured consistently.
 
-~~~{.python caption=""}
+~~~{.python caption="ETL_DAG_Code.py"}
 default_args = {
     'owner': 'airflow',
     'depends_on_past': False,
@@ -325,7 +325,7 @@ In this step we will define the dag. And it will include:
 - `description`: An optional string that describes the purpose of the DAG. In this case, it is set to `ETL DAG using Bash`.
 - `schedule_interval`: The frequency with which the DAG should run. In this case, it is set to run once per day, as indicated by the timedelta(days=1) argument.
 
-~~~{.python caption=""}
+~~~{.python caption="ETL_DAG_Code.py"}
 dag = DAG(
     dag_id='ETL_DAG',
     default_args=default_args,
@@ -342,7 +342,7 @@ In this step, we will define the tasks that make up the ETL workflow. Each task 
 - The Bash command that the task should execute.
 - The DAG that the task belongs to, as defined in the previous steps.
 
-~~~{.python caption=""}
+~~~{.python caption="ETL_DAG_Code.py"}
 #Download the file from the URL located
 download=BashOperator(
     task_id='download',
@@ -365,7 +365,7 @@ And the `web_server_log.txt` file contains many columns like timestamp, latitude
 
 We will extract two columns (timestamp,visitorId) from the file downloaded. So we will use the bash command to extract the two columns and create a new file with the name `web_server_log_extracted.txt`
 
-~~~{.python caption=""}
+~~~{.python caption="ETL_DAG_Code.py"}
 #Extract two columns from the file downloaded
 extract=BashOperator(
     task_id='extract',
@@ -384,7 +384,7 @@ As you can see below, `web_server_log_extracted.txt` file has been created with 
 
 Now we will transform the extracted columns to be all lowercase and create a new file with the transformed data.
 
-~~~{.python caption=""}
+~~~{.python caption="ETL_DAG_Code.py"}
 #Transform the extracted columns to be all lowercase
 transform=BashOperator(
     task_id='transform',
@@ -403,7 +403,7 @@ As you can see below, `Transformed.txt` file has been created with the transform
 
 The last step is to compress the transformed and extracted data
 
-~~~{.python caption=""}
+~~~{.python caption="ETL_DAG_Code.py"}
 #Compress the transformed and extracted data
 load=BashOperator(
     task_id='load',
@@ -438,7 +438,7 @@ In the previous example, we used sequential execution but sometimes we need anot
 
 - **Parallel execution**: In some workflows, you may have multiple tasks that can be executed in parallel, rather than in a strict sequential order. For example, you may have a task that downloads data from multiple sources in parallel, followed by a task that merges the data. In this case, the order of execution may not be strict, and the upstream and downstream tasks would need to be identified based on their dependencies. Here is an example:
 
-~~~{.python caption=""}
+~~~{.python caption="ETL_DAG_Code.py"}
 
 with DAG('parallel_execution', start_date=datetime(2023, 3, 29), \
 schedule_interval=None) as dag:
@@ -485,8 +485,3 @@ In this article, you have learned about Apache Airflow's architecture and compon
 Looking to the future, potential developments for Apache Airflow may include better integration with cloud platforms, improved support for streaming data, and enhanced visualization and monitoring features. Apache Airflow is a flexible tool with a wide range of use cases, and its continued improvement will only make it more valuable to users.
 
 {% include_html cta/cta2.html %}
-
-
-## Outside Article Checklist
-
-- [ ] Add in Author page
