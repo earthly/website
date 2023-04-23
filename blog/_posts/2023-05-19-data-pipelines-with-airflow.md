@@ -106,7 +106,8 @@ The PostgresOperator is used to execute SQL commands on a PostgreSQL database as
 load_data = PostgresOperator(
     task_id='load_data',
     postgres_conn_id='my_postgres_conn',
-    sql='INSERT INTO my_table (col1, col2) SELECT col1, col2 FROM transformed_data;',
+    sql='INSERT INTO my_table (col1, col2) SELECT col1, col2 FROM \
+    transformed_data;',
     dag=dag
 )
 ~~~
@@ -162,13 +163,14 @@ It is recommended that you install Docker Desktop.
 
 It is possible to verify the installation of Docker by executing the following command in the command prompt:
 
-~~~{.bash caption=""}
+~~~{.bash caption=">_"}
 docker --version
 ~~~
 
 To deploy Airflow on Docker Compose, We should fetch docker-compose.yaml by executing the following command in the command prompt.
 
-~~~{.bash caption=""}
+~~~{.bash caption=">_"}
+
 curl -LfO "https://airflow.apache.org/docs/apache-airflow/2.2.3/docker-compose.yaml"
 ~~~
 
@@ -204,13 +206,13 @@ Some directories in the container are mounted, which means that their contents a
 - ./logs - contains logs from task execution and scheduler.
 - ./plugins - you can put your custom plugins here.
 
-~~~{.bash caption=""}
+~~~{.bash caption=">_"}
 mkdir -p ./dags ,  ./logs , ./plugins
 ~~~
 
 Airflow instance can now be initialized using the 'airflow-init' service
 
-~~~{.bash caption=""}
+~~~{.bash caption=">_"}
 docker-compose up airflow-init
 ~~~
 
@@ -222,7 +224,7 @@ docker-compose up airflow-init
 
 Now that all the related services have been initialized, it's time to run Airflow.
 
-~~~{.bash caption=""}
+~~~{.bash caption=">_"}
 docker-compose up -d
 ~~~
 
@@ -234,7 +236,7 @@ The resulting output should be as shown below
 
 To check if the airflow service is running, Execute the following command in the command prompt
 
-~~~{.bash caption=""}
+~~~{.bash caption=">_"}
 docker ps
 ~~~
 
@@ -365,7 +367,9 @@ We will extract two columns (timestamp,visitorId) from the file downloaded. So w
 #Extract two columns from the file downloaded
 extract=BashOperator(
     task_id='extract',
-    bash_command='cut -f1,4 -d"#" /opt/airflow/dags/web_server_log.txt > /opt/airflow/dags/web_server_log_extracted.txt',
+    bash_command='cut -f1,4 -d"#" \
+    /opt/airflow/dags/web_server_log.txt > \
+    /opt/airflow/dags/web_server_log_extracted.txt',
     dag=dag,
 )
 ~~~
@@ -382,7 +386,9 @@ Now we will transform the extracted columns to be all lowercase and create a new
 #Transform the extracted columns to be all lowercase
 transform=BashOperator(
     task_id='transform',
-    bash_command='tr  "[A-Z]" "[a-z]"  < /opt/airflow/dags/web_server_log_extracted.txt > /opt/airflow/dags/Transformed.txt',
+    bash_command='tr  "[A-Z]" "[a-z]"  < \
+    /opt/airflow/dags/web_server_log_extracted.txt > \
+    /opt/airflow/dags/Transformed.txt',
     dag=dag,
 )
 ~~~
@@ -399,7 +405,9 @@ The last step is to compress the transformed and extracted data
 #Compress the transformed and extracted data
 load=BashOperator(
     task_id='load',
-    bash_command='tar cfv /opt/airflow/dags/web_server_log_processing.tar /opt/airflow/dags/web_server_log_extracted.txt /opt/airflow/dags/Transformed.txt',
+    bash_command='tar cfv /opt/airflow/dags/web_server_log_processing.tar  \
+    /opt/airflow/dags/web_server_log_extracted.txt \
+    /opt/airflow/dags/Transformed.txt',
     dag=dag,
 )
 ~~~
@@ -429,7 +437,9 @@ In the previous example, we used sequential execution but sometimes we need anot
 - **Parallel execution**: In some workflows, you may have multiple tasks that can be executed in parallel, rather than in a strict sequential order. For example, you may have a task that downloads data from multiple sources in parallel, followed by a task that merges the data. In this case, the order of execution may not be strict, and the upstream and downstream tasks would need to be identified based on their dependencies. Here is an example:
 
 ~~~{.python caption=""}
-with DAG('parallel_execution', start_date=datetime(2023, 3, 29), schedule_interval=None) as dag:
+
+with DAG('parallel_execution', start_date=datetime(2023, 3, 29), \
+schedule_interval=None) as dag:
 
 
     download_task_1 = PythonOperator(
