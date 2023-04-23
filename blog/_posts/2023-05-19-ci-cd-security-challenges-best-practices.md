@@ -3,7 +3,7 @@ title: "CI/CD Security: Challenges and Best Practices"
 categories:
   - Tutorials
 toc: true
-author: Adam
+author: David Chibueze Ndubuisi
 
 internal-links:
  - CI/CD
@@ -393,6 +393,5 @@ In conclusion, organizations need to prioritize CI/CD security to ensure secure 
 
 ## Outside Article Checklist
 
-- [ ] Add in Author page
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
