@@ -488,5 +488,4 @@ Looking to the future, potential developments for Apache Airflow may include bet
 ## Outside Article Checklist
 
 - [ ] Add in Author page
-- [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
