@@ -393,5 +393,4 @@ In conclusion, organizations need to prioritize CI/CD security to ensure secure 
 
 ## Outside Article Checklist
 
-- [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
