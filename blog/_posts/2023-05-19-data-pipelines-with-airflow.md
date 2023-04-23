@@ -6,7 +6,11 @@ toc: true
 author: Adam
 
 internal-links:
- - just an example
+ - Automating
+ - Airflow
+ - Pipelines
+ - Data Workflows
+ - Apache
 ---
 
 Are you seeking a powerful, user-friendly platform to manage your data workflows? If so, Apache Airflow might be just what you need. Apache Airflow is a powerful, open-source platform for managing complex data workflows and machine learning tasks. Its Python-based architecture seamlessly integrates with other Python tools and its web-based interface simplifies monitoring and managing workflows. With features like task dependency management and retries, Airflow streamlines workflow management to improve efficiency for teams of any size.
@@ -452,5 +456,3 @@ Looking to the future, potential developments for Apache Airflow may include bet
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
