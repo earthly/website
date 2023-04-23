@@ -58,6 +58,8 @@ For instance, a common security flaw is when a developer includes a hard-coded p
 
 ### Continuous Security Testing Challenges
 
+![Challenges]({{site.images}}{{page.slug}}/challenges.png)\
+
 #### Speed vs. Accuracy
 
 One of the biggest challenges with continuous security testing is finding the right balance between speed and accuracy. While it's important to test code changes as quickly as possible, it's also important to ensure that the testing is accurate and thorough.
@@ -95,6 +97,8 @@ This is another essential component of CI/CD security. This includes ensuring th
 ## Best Practices for CI/CD Security
 
 When it comes to CI/CD security, several best practices can help ensure your pipeline and code are safe from security threats. Here are some of the most important steps you can take:
+
+![Practices]({{site.images}}{{page.slug}}/practice.png)\
 
 ### Securing the Pipeline
 
@@ -205,6 +209,8 @@ This example shows how to download and start OWASP ZAP, configure it to run in a
 
 ### Monitoring the Pipeline for Security Breaches
 
+![Monitoring]({{site.images}}{{page.slug}}/monitoring.jpg)\
+
 The pipeline is constantly evolving, making it susceptible to potential security breaches. To maintain a secure CI/CD process, continuous monitoring of the pipeline for security breaches is essential. You can achieve this by setting up alerts and notifications for suspicious activities and implementing a robust logging system that tracks all pipeline activity.
 
 This can be achieved by using a logging framework such as Winston in a Node.js environment. Winston provides a simple and scalable logging solution that can be easily integrated into the pipeline.
@@ -299,6 +305,8 @@ By following these best practices, you can help ensure that your CI/CD pipeline 
 
 ## CI/CD Security Tools and Technologies
 
+![Tools]({{site.images}}{{page.slug}}/toolbox.png)\
+
 Now that you understand the importance of CI/CD security and the best practices to follow, it's time to explore the tools and technologies available for securing your pipeline. There are several tools and techniques that you can use to ensure that your CI/CD pipeline is secure. Let's explore some of them below:
 
 ### Static Code Analysis
@@ -390,7 +398,3 @@ Additionally, organizations need to leverage security tools and technologies suc
 In conclusion, organizations need to prioritize CI/CD security to ensure secure and efficient software development and deployment. By adopting best practices and leveraging the right tools and technologies, organizations can mitigate security risks and improve the quality of their software products.
 
 {% include_html cta/cta2.html %}
-
-## Outside Article Checklist
-
-- [ ] Optional: Find ways to break up content with quotes or images
