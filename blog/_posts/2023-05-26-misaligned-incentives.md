@@ -38,11 +38,11 @@ There is this platitude about how you are the product if you aren't paying for s
 TailScale is the only company I've seen talk explicitly about the incentives around free products and what they get out of free users:
 
 > Perhaps we're not supposed to say the quiet part out loud, but it's important for the discussion. Our architectural decisions were made carefully, and are paying off.
-
+>
 > We avoid touching your packets—for privacy, but also to reduce our costs.
 > You get free stuff. You enjoy it. You tell your boss. Your boss gives us money (eventually).
-
-> - TailScale
+>
+> [TailScale](https://tailscale.com/blog/free-plan/)
 
 ## Compute Pricing
 
