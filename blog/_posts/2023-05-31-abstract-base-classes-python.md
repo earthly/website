@@ -6,7 +6,11 @@ toc: true
 author: Adam
 
 internal-links:
- - just an example
+ - OOP
+ - Python
+ - Abstract Class
+ - Inheritance
+ - Abstraction
 ---
 
 Object-oriented programming (OOP) is a popular programming paradigm used in many modern programming languages, including Python. At the core of OOP are classes that allow us to create objects with attributes and methods. However, regular classes in Python have limitations that can make it challenging to create modular and maintainable code.
@@ -468,6 +472,4 @@ In this article, we have explained what abstract base classes are and how they d
 - [ ] Add in Author page
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
-]- [ ] Add keywords for internal links to front-matter
+
