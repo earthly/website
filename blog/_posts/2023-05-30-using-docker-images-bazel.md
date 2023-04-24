@@ -38,7 +38,7 @@ Before you begin, you'll need the following:
 
 * **Docker:** You'll need active Docker credentials to pull and push images to Docker Hub. You can define your [custom Docker configuration](https://github.com/bazelbuild/rules_docker#container_pull-custom-client-configuration) in Bazel or run the following command in your terminal to grant access to your subsequent commands:
 
-~~~
+~~~{.bash caption=">_"}
 docker login 
 ~~~
 
@@ -52,7 +52,7 @@ A `BUILD` file contains the instructions given to Bazel to execute. It should co
 
 Your Bazel structure can look like this with multiple workspaces and different packages defined within them. Workspaces and the packages within them can be referenced anywhere within your main directory:
 
-~~~
+~~~{ caption=""}
 main_directory
 └── bazel_files
     ├──workspace1
@@ -83,7 +83,7 @@ main_directory
 
 To create a sample project, you need to create a directory on your terminal and then create a `WORKSPACE` file within that directory:
 
-~~~{.shell caption=""}
+~~~{.bash caption=">_"}
 mkdir bazel_test
 cd bazel_test
 touch WORKSPACE
@@ -91,13 +91,16 @@ touch WORKSPACE
 
 The contents of your `WORKSPACE` file are dependent on your project and the rules you declare. Insert the following code in your `WORKSPACE` file:
 
-~~~
+~~~{ caption="WORKSPACE.bazel"}
 workspace(
-    # Naming your workspace can help you reference it elsewhere, in other workspaces or projects 
+    # Naming your workspace can help you reference it elsewhere, \
+    in other workspaces or projects 
     name = "bazel_docker_test",
 )
 
-## Download the Bazel repository (rules_docker) as a compressed archive file, decompresses it, and makes its targets or functions available for binding.
+## Download the Bazel repository (rules_docker) as a compressed archive \
+file, decompresses it, and makes its targets or functions available \
+for binding.
 
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
@@ -109,15 +112,18 @@ http_archive(
 
 ### Docker Setup: loading the archived repository as well as its dependencies
 
-load("@io_bazel_rules_docker//repositories:repositories.bzl", container_repositories = "repositories")
+load("@io_bazel_rules_docker//repositories:repositories.bzl", \
+container_repositories = "repositories")
 
 container_repositories()
 
-load("@io_bazel_rules_docker//repositories:deps.bzl", container_deps = "deps")
+load("@io_bazel_rules_docker//repositories:deps.bzl", \
+container_deps = "deps")
 
 container_deps()
 
-## loading a specific function from the rules_docker repository, the container_pull function
+## loading a specific function from the rules_docker repository, \
+the container_pull function
 
 load(
     "@io_bazel_rules_docker//container:container.bzl",
@@ -136,19 +142,23 @@ Here, you define your workspace, call the `rules_docker` repository and its depe
 
 Next, you need to create your `BUILD` file:
 
-~~~
+~~~{.bash caption=">_"}
 nano BUILD
 ~~~
 
 Insert the following code in your `BUILD` file to define the rules you're using, their targets, and the outputs of Bazel's execution process:
 
-~~~
-## loading the needed functions from the rules_docker repository
+~~~{ caption="BUILD.bazel"}
 
-load("@io_bazel_rules_docker//container:container.bzl", "container_image")
-load("@io_bazel_rules_docker//container:container.bzl", "container_push")
+## Loading the needed functions from the rules_docker repository
 
-# container_image packages a new docker image, new layers can be added to a base image using its parameters
+load("@io_bazel_rules_docker//container:container.bzl", \
+"container_image")
+load("@io_bazel_rules_docker//container:container.bzl", \
+"container_push")
+
+# container_image packages a new docker image, new layers \
+can be added to a base image using its parameters
 
 container_image(
     name = "my_app",
@@ -160,7 +170,8 @@ container_image(
     ports = ["5000"],
 )
 
-# container_push pushes a local image to a registry of your choice (Docker Hub, Google Registry, Gitlab registry or Github packages)
+# container_push pushes a local image to a registry of your\
+ choice (Docker Hub, Google Registry, Gitlab registry or Github packages)
 
 container_push(
     name = "publish",
@@ -178,13 +189,13 @@ With this, you're building an image with the [`container_image`](https://github.
 
 You will need a `main.py` file for your image. This code file will contain the mechanics of the application you're enclosing within your image. This is necessary for the application to operate correctly inside the Docker container:
 
-~~~
+~~~{.bash caption=">_"}
 nano main.py
 ~~~
 
 Add the following code to create a basic Flask application that functions as a simple calculator:
 
-~~~
+~~~{.python caption="main.py"}
 from flask import Flask
 from random import randint
 
@@ -196,7 +207,8 @@ def my_calculator(self, x, y): return x + y
 def randomcal():
   num1 = randint(0, 100)
   num2 = randint(0, 100)
-  message = "{} + {} = {}!".format(num1, num2, my_calculator.add(num1, num2))
+  message = "{} + {} = {}!".format(num1, num2, \
+  my_calculator.add(num1, num2))
   return message
 
 if __name__ == '__main__':
@@ -210,7 +222,7 @@ With your workspace set up, you can start utilizing Bazel commands to execute th
 
 Run the following command in your terminal:
 
-~~~
+~~~{.bash caption=">_"}
 bazel build "//…"
 ~~~
 
@@ -222,7 +234,7 @@ The `"//…"` parameter tells Bazel to build all the targets it finds in your di
 
 Then run each of your targets to execute the instructions declared in your `BUILD` file:
 
-~~~
+~~~{.bash caption=">_"}
 bazel run :my_app
 bazel run publish
 ~~~
