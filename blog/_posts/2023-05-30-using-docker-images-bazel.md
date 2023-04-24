@@ -28,6 +28,8 @@ Moreover, Bazel provides an easy-to-use interface for building and testing proje
 
 ## Using Docker With Bazel
 
+![Using]({{site.images}}{{page.slug}}/using.jpg)\
+
 In this tutorial, you're going to use Docker with Bazel by pulling a Docker image, using that image as a base to create another image, and finally pushing the created image to [Docker Hub](https://hub.docker.com/), all within a Bazel workflow.
 
 Before you begin, you'll need the following:
@@ -256,7 +258,3 @@ The primary benefits of using Docker images with Bazel include the ability to de
 Overall, Bazel provides a robust and extensive set of functionality for dealing with Docker, making it a great choice for developers who wish to automate their containerization process. Whether you're looking to design, test, or deploy software, Bazel's efficient and dependable methodology will help you optimize your development process and accomplish your objectives more quickly.
 
 {% include_html cta/cta2.html %}
-
-## Outside Article Checklist
-
-* [ ] Optional: Find ways to break up content with quotes or images
