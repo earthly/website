@@ -469,5 +469,4 @@ In this article, we have explained what abstract base classes are and how they d
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
 ]- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
 - [ ] Add Earthly `CTA` at bottom `{% include_html cta/cta2.html %}`
