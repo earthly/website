@@ -69,9 +69,9 @@ extract_data = BashOperator(
 )
 ~~~
 
-This code creates an Airflow BashOperator object called extract_data, the task will run a Python script located at /path/to/extract_script.py.
+This code creates an Airflow BashOperator object called `extract_data`, the task will run a Python script located at `/path/to/extract_script.py`.
 
-Here's what each of the arguments in the BashOperator() function call represents:
+Here's what each argument in the `BashOperator()` function call represents:
 
 - `task_id`: A string that uniquely identifies the task. In this case, it is set to `extract_data`.
 - `bash_command`: The Bash command that the task should execute. In this case, it is set to `python /path/to/extract_script.py`, which will execute the Python script that extracts data from a source file.
@@ -91,11 +91,12 @@ transform_data = PythonOperator(
 
 This code creates an Airflow PythonOperator object called `transform_data`, the task will execute a Python function called `transform_data()`.
 
-Here's what each of the arguments in the `PythonOperator()` function call represents:
+Let's take a closer look at the arguments in the `PythonOperator()` function call:
 
 - `task_id`: A string that uniquely identifies the task. In this case, it is set to `transform_data`.
 
-- `python_callable`: The Python function that the task should execute. In this case, it is set to the transform_data function, which is defined elsewhere in the code and performs the necessary data transformation operations.
+- `python_callable`: The Python function that the task should execute. In this case, it is set to the `transform_data` function, which is defined elsewhere in the code and performs the necessary data transformation operations.
+
 - `dag`: The DAG that the task belongs to. In this case, it is set to the dag object that we defined earlier.
 
 ### PostgresOperator
@@ -114,11 +115,11 @@ load_data = PostgresOperator(
 
 This code creates an Airflow PostgresOperator object called `load_data`, the task will execute a SQL statement that loads transformed data into a PostgreSQL database.
 
-Here's what each of the arguments in the `PostgresOperator()` function call represents:
+In the `PostgresOperator()` function call:
 
 - `task_id`: A string that uniquely identifies the task. In this case, it is set to `load_data`.
 - `postgres_conn_id`: The connection ID for the PostgreSQL database that the task should load data into. In this case, it is set to `my_postgres_conn`, which must be defined in Airflow's connections configuration and provide the necessary credentials to access the database.
-- `sql`: The SQL statement that the task should execute. In this case, it is set to `INSERT INTO my_table (col1, col2) SELECT col1, col2 FROM transformed_data;`, which will insert data from the transformed_data table (which was created in the transform_data task) into the my_table table in the connected PostgreSQL database.
+- `sql`: The SQL statement that the task should execute. In this case, it is set to `INSERT INTO my_table (col1, col2) SELECT col1, col2 FROM transformed_data;`, which will insert data from the `transformed_data` table (which was created in the `transform_data` task) into the `my_table` table in the connected PostgreSQL database.
 - `dag`: The DAG that the task belongs to. In this case, it is set to the dag object that we defined earlier.
 
 ### EmailOperator
@@ -153,30 +154,30 @@ Each operator has its own set of parameters that define its behavior, such as th
 
 ![connections]({{site.images}}{{page.slug}}/connection.png)\
 
-Connections and Hooks are two important concepts in Apache Airflow that enable users to interact with external systems and resources within their workflows.
+Connections and hooks are two important concepts in Apache Airflow that enable users to interact with external systems and resources within their workflows.
 
 Connections are a way to define reusable credentials and other settings for external systems, such as databases, APIs, and cloud services. Hooks are a higher-level abstraction over Connections, providing a simplified interface for interacting with external systems from within tasks in a DAG. Hooks allow users to write code that interacts with external systems without having to worry about the underlying details of the connection.
 
-For example, the PostgresHook automatically looks for the Connection with a conn_id of postgres_default if you don't pass one in.
+For example, the PostgresHook automatically looks for the connection with a `conn_id` of `postgres_default` if you don't pass one in.
 
 ## How to Install Apache Airflow via Docker
 
 It is recommended that you install Docker Desktop.
 
-It is possible to verify the installation of Docker by executing the following command in the command prompt:
+You can verify the installation of Docker by executing the following command in the command prompt:
 
 ~~~{.bash caption=">_"}
 docker --version
 ~~~
 
-To deploy Airflow on Docker Compose, We should fetch docker-compose.yaml by executing the following command in the command prompt.
+To deploy Airflow on Docker Compose, We should fetch `docker-compose.yaml` by executing the following command in the command prompt.
 
 ~~~{.bash caption=">_"}
 
 curl -LfO "https://airflow.apache.org/docs/apache-airflow/2.2.3/docker-compose.yaml"
 ~~~
 
-The resulting output should be as shown below
+The resulting output should be as shown below:
 
 <div class="wide">
 ![Fetch docker-compose.yaml]({{site.images}}{{page.slug}}/8ggBwzV.png)
@@ -218,7 +219,7 @@ Airflow instance can now be initialized using the 'airflow-init' service
 docker-compose up airflow-init
 ~~~
 
- The resulting output should be as shown below. Exited with code 0 means it's deployed successfully. You may get a warning that AIRFLOW_UID is not set, but you can ignore it.
+The resulting output should be as shown below. Exited with code 0 means it's deployed successfully. You may get a warning that `AIRFLOW_UID` is not set, but you can ignore it.
 
 <div class="wide">
 ![airflow-init]({{site.images}}{{page.slug}}/xxNP2Vp.png)
@@ -236,7 +237,7 @@ The resulting output should be as shown below
 ![docker-compose up output]({{site.images}}{{page.slug}}/Fc0VASw.png)
 </div>
 
-To check if the airflow service is running, Execute the following command in the command prompt
+To check if the Airflow service is running, execute the following command in the command prompt:
 
 ~~~{.bash caption=">_"}
 docker ps
@@ -248,7 +249,7 @@ The resulting output should be as shown below:
 ![docker ps output]({{site.images}}{{page.slug}}/w7WtevZ.png)
 </div>
 
-Open a web browser and enter the following localhost URL: <http://localhost:8080>. Set the username "airflow" and the password "airflow"
+Open a web browser and enter the following localhost URL: <http://localhost:8080>. Set the username "airflow" and the password "airflow":
 
 <div class="wide">
 ![Apache Airflow Interface]({{site.images}}{{page.slug}}/iDSiwrt.png)
@@ -273,13 +274,13 @@ Your team has a defined process for this task that includes the following steps:
 - **Transform**: Transform the extracted columns to be all lowercase.
 -**Load**: Compress the transformed and extracted data.
 
-You can get the full DAG Python code through this [GitHub link](https://github.com/ansamAY/airflow/blob/main/ETL_DAG_Code.py)
+You can get the full DAG Python code at this [GitHub link](https://github.com/ansamAY/airflow/blob/main/ETL_DAG_Code.py)
 
 Now we can start writing DAG code:
 
 ### 1. Import Libraries
 
-Import the necessary modules and packages, including the `DAG` class from Airflow, the `BashOperator` class, and the days_ago and timedelta functions from Airflow's dates module.
+Import the necessary modules and packages, including the `DAG` class from Airflow, the `BashOperator` class, and the `days_ago` and `timedelta` functions from Airflow's `dates` module.
 
 ~~~{.python caption="ETL_DAG_Code.py"}
 from airflow import DAG
@@ -307,14 +308,14 @@ default_args = {
 
 In the above snippet:
 
-- **Owner**: Specifies the owner of the DAG. This is typically the name of the person or team responsible for maintaining the DAG.
-- **Depends_on_past**: Specifies whether a task instance should depend on the success of the previous task instance.
-- **Start_date**: Specifies the date and time when the DAG should start running.
-- **Email_on_failure**: Specifies whether to send an email notification when a task fails.
-- **Email_on_retry**: Specifies whether to send an email notification when a task is retried.
-- **Schedule_interval**: The frequency with which the task should run. In this case, it is set to run once per day.
-- **Retries**: Specifies the number of times to retry a failed task.
-- **Retry_delay**: Specifies the delay between retries. In this case, we're using a delay of 5 seconds.
+- `Owner`: Specifies the owner of the DAG. This is typically the name of the person or team responsible for maintaining the DAG.
+- `Depends_on_past`: Specifies whether a task instance should depend on the success of the previous task instance.
+- `Start_date`: Specifies the date and time when the DAG should start running.
+- `Email_on_failure`: Specifies whether to send an email notification when a task fails.
+- `Email_on_retry`: Specifies whether to send an email notification when a task is retried.
+- `Schedule_interval`: The frequency with which the task should run. In this case, it is set to run once per day.
+- `Retries`: Specifies the number of times to retry a failed task.
+- `retry_delay`: Specifies the delay between retries. In this case, we're using a delay of 5 seconds.
 
 ### 3. Define the DAG
 
@@ -338,7 +339,7 @@ dag = DAG(
 
 In this step, we will define the tasks that make up the ETL workflow. Each task will include:
 
-- A task_id string that uniquely identifies the task.
+- A `task_id` string that uniquely identifies the task.
 - The Bash command that the task should execute.
 - The DAG that the task belongs to, as defined in the previous steps.
 
@@ -351,7 +352,7 @@ download=BashOperator(
 )
 ~~~
 
-As you can see below, `web_server_log.txt` file has been downloaded
+As you can see below, `web_server_log.txt` file has been downloaded:
 
 <div class="wide">
 ![web_server_log.txt]({{site.images}}{{page.slug}}/RISGSc5.png)
@@ -363,7 +364,7 @@ And the `web_server_log.txt` file contains many columns like timestamp, latitude
 ![Web Server log columns]({{site.images}}{{page.slug}}/ymAJw53.jpg)
 </div>
 
-We will extract two columns (timestamp,visitorId) from the file downloaded. So we will use the bash command to extract the two columns and create a new file with the name `web_server_log_extracted.txt`
+We will extract two columns (`timestamp`,`visitorId`) from the file downloaded. So we will use the bash command to extract the two columns and create a new file with the name `web_server_log_extracted.txt`
 
 ~~~{.python caption="ETL_DAG_Code.py"}
 #Extract two columns from the file downloaded
@@ -401,7 +402,7 @@ As you can see below, `Transformed.txt` file has been created with the transform
 ![Transformed.txt]({{site.images}}{{page.slug}}/bjdcytd.jpg)
 </div>
 
-The last step is to compress the transformed and extracted data
+The last step is to compress the transformed and extracted data.
 
 ~~~{.python caption="ETL_DAG_Code.py"}
 #Compress the transformed and extracted data
@@ -468,7 +469,7 @@ schedule_interval=None) as dag:
     [download_task_1, download_task_2, download_task_3] >> merge_task
 ~~~
 
-The three download tasks can be executed in parallel since they don't have any dependencies on each other. The merge_task is downstream of all three download tasks, and can only be executed after they have all been completed successfully.
+The three download tasks can be executed in parallel since they don't have any dependencies on each other. The `merge_task` is downstream of all three download tasks, and can only be executed after they have all been completed successfully.
 
 ## Best Practices for Using Apache Airflow
 
