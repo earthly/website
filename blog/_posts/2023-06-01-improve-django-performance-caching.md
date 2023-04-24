@@ -6,7 +6,10 @@ toc: true
 author: Vivek Kumar Singh
 
 internal-links:
- - just an example
+ - Django
+ - Performance
+ - Caching
+ - Optimization
 ---
 
 Performance is a crucial aspect of web development that significantly impacts user experience. The speed and reliability of a website influence users' engagement and overall satisfaction with the site. Inadequate performance, such as slow page loading times or frequent crashes, can lead to reduced traffic and potential loss.
@@ -203,4 +206,3 @@ Django comes with a full set of caching framework out of the box which lets the 
 
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Add keywords for internal links to front-matter
