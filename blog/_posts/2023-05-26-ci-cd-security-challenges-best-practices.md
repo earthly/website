@@ -12,9 +12,7 @@ internal-links:
  - Github
 ---
 
-![Image]({{site.images}}{{page.slug}}/HOd6Gcu.png)\
-
-In today's fast-paced world of software development, speed, and agility are important to stay ahead of the competition. [Continuous Integration](/blog/continuous-integration) and Continuous Deployment (CI/CD) have emerged as the go-to methodologies to achieve this goal. CI/CD is a practice that allows developers to continuously integrate and deploy their code changes into production, enabling them to rapidly deliver features and updates to their users.
+In today's fast-paced world of software development, speed, and agility are important to stay ahead of the competition. Continuous Integration and Continuous Deployment (CI/CD) have emerged as the go-to methodologies to achieve this goal. CI/CD is a practice that allows developers to continuously integrate and deploy their code changes into production, enabling them to rapidly deliver features and updates to their users.
 
 However, with the speed and efficiency of CI/CD comes the risk of security breaches. As the software development process becomes more automated, security must be integrated into every stage of the pipeline to mitigate these risks. CI/CD security is crucial to ensure that software is developed and deployed securely and reliably.
 
@@ -33,6 +31,8 @@ This ensures that vulnerabilities are detected and addressed promptly, preventin
 There are several challenges and risks associated with CI/CD security, including
 
 ### Continuous Integration and Deployment Challenges
+
+![Image]({{site.images}}{{page.slug}}/HOd6Gcu.png)\
 
 #### Code Changes
 
@@ -179,7 +179,11 @@ This will prompt you to enter your GPG passphrase and sign the commit using your
     gpgsign = true
 ~~~
 
-By implementing access controls and cryptographic features in your code repository, you can help ensure the security and integrity of your codebase, and reduce the risk of unauthorized access or tampering. To learn more about GitHub access controls, check out the documentation: <https://docs.github.com/en/get-started/learning-about-github/access-permissions-on-github>
+By implementing access controls and cryptographic features in your code repository, you can help ensure the security and integrity of your codebase, and reduce the risk of unauthorized access or tampering.
+
+<div class="notice--info">
+To learn more about GitHub access controls, check out the [documentation](https://docs.github.com/en/get-started/learning-about-github/access-permissions-on-github).
+</div>
 
 ### Implementing Security Testing in the Pipeline
 
@@ -245,13 +249,13 @@ logger.info("Pipeline completed successfully");
 
 In the example above, the `createLogger` function is used to create a logger instance that logs messages at the info level or higher. The format function is used to specify the format of the log messages, which includes a timestamp, label, log level, and message.
 
-The logger instance is configured to log messages to the console and to a file called pipeline.log. In the example, the logger is used to log the starting and completion of the pipeline, but it can be used to log any activity that needs to be monitored for security breaches.
+The logger instance is configured to log messages to the console and to a file called `pipeline.log`. In the example, the logger is used to log the starting and completion of the pipeline, but it can be used to log any activity that needs to be monitored for security breaches.
 
 By implementing a logging system like this, pipeline activity can be easily monitored and audited for security breaches.
 
 ### Securing the Infrastructure
 
-To enforce access control policies in the infrastructure, an example of best practice is to use role-based access control (RBAC). This involves defining roles with specific sets of permissions and assigning those roles to users or groups.
+To enforce access control policies in the infrastructure, an example of best practice is to use [role-based access control (RBAC)](https://earthly.dev/blog/guide-rolebased-ctrl/). This involves defining roles with specific sets of permissions and assigning those roles to users or groups.
 
 For example, in an AWS environment, you can use AWS Identity and Access Management (IAM) to manage access to resources. You can create an IAM role with a specific set of permissions and then assign that role to a user or group. This ensures that users only have access to the resources they need to perform their job functions and nothing more.
 
@@ -305,8 +309,6 @@ One recommended practice is to use a code review process that includes security 
 By following these best practices, you can help ensure that your CI/CD pipeline and code are secure from the start.
 
 ## CI/CD Security Tools and Technologies
-
-![Tools]({{site.images}}{{page.slug}}/toolbox.png)\
 
 Now that you understand the importance of CI/CD security and the best practices to follow, it's time to explore the tools and technologies available for securing your pipeline. There are several tools and techniques that you can use to ensure that your CI/CD pipeline is secure. Let's explore some of them below:
 
@@ -364,7 +366,7 @@ Automating the testing process can save time and resources. By automating tests,
 
 Here's an example of how you can integrate static code analysis into your pipeline using the open-source tool SonarQube:
 
-1. Download the SonarQube package from the official website: <https://www.sonarqube.org/downloads/>
+1. [Download the SonarQube package](https://www.sonarqube.org/downloads/) from the official website.
 
 2. Unzip the downloaded package to a directory on your system.
 
@@ -387,7 +389,7 @@ Here's an example of how you can integrate static code analysis into your pipeli
 
 6. Verify that SonarQube is running by accessing the web interface at `http://localhost:9000` (assuming you have not changed the default port).
 
-Note that these are general steps and may vary depending on your specific setup and requirements. It is recommended to refer to the official SonarQube documentation for detailed installation instructions.
+Note that these are general steps and may vary depending on your specific setup and requirements. It is recommended to refer to the [official SonarQube documentation](https://docs.sonarqube.org/latest/) for detailed installation instructions.
 
 ## Conclusion
 
