@@ -43,8 +43,7 @@ Python, unlike other languages, does not natively support interfaces, therefore 
 
 Here is an example of an interface for a shape that requires implementing classes to have methods for calculating area and perimeter.
 
-~~~
-
+~~~{.python caption="shape.py"}
 # shape.py
 
 from abc import ABC, abstractmethod
@@ -61,8 +60,7 @@ class Shape(ABC):
 
 In the above code we have defined an interface `Shape` and any class that inherits this interface must implement the `area` and `perimeter` methods. Therefore, a `Rectangle` class that implements a `Shape`  interface would look like this.
 
-~~~
-
+~~~{.python caption="shape.py"}
 # shape.py
 
 class Rectangle(Shape):
@@ -81,8 +79,7 @@ In the above code we have a `Rectangle` class that is a subclass of the `Shape` 
 
 Let's then look at an abstract base class that has abstract methods and one concrete method.
 
-~~~
-
+~~~{.python caption="vehicle_I.py"}
 # vehicle_I.py
 
 from abc import ABC, abstractmethod
@@ -104,8 +101,7 @@ In the above example we have a `Vehicle` ABC that has two abstract methods, `sta
 
 Let's create a `Car` subclass that will implement the `start` and `stop` methods, it will also inherit the `beep` method. So when we create an instance of the `Car` it will have access to all the methods.
 
-~~~
-
+~~~{.python caption="vehicle_I.py"}
 # vehicle_I.py
 
 class Car(Vehicle):
@@ -119,8 +115,7 @@ my_car = Car()
 
 ~~~
 
-~~~
-
+~~~{.python caption="vehicle_I.py"}
 #  vehicle_I.py
 
 my_car.start() # Output: Starting the car.
@@ -140,8 +135,7 @@ When you define a class in Python, you can specify its `metaclass` using the met
 
 To better understand how metaclasses work, let's consider an example. We are going to create a custom metaclass that ensures that objects of a subclass are only instantiated with strings.
 
-~~~
-
+~~~{.python caption="string_meta.py"}
 # string_meta.py
 
 class StringOnlyMeta(type):
@@ -161,8 +155,7 @@ In this implementation, the `__call__` method checks each positional argument to
 
 This metaclass can be used to enforce the requirement that certain arguments passed to the constructor of a class must be strings. Here is an example of its use in a class.
 
-~~~
-
+~~~{.python caption="string_meta.py"}
 # string_meta.py
 
 class MyStringOnlyClass(metaclass=StringOnlyMeta):
@@ -174,8 +167,7 @@ class MyStringOnlyClass(metaclass=StringOnlyMeta):
 
 In the above code we have a class `MyStringOnlyClass` that takes the `StringOnlyMeta` metaclass, it has a constructor that takes in two string arguments `name` and `description`. Therefore, when an object of `MyStringOnlyClass` is created the `StringOnlyMeta` metaclass will ensure that the arguments supplied to the object are strings. Let's see an example
 
-~~~
-
+~~~{.python caption="string_meta.py"}
 # string_meta.py
 
 # This will work because both arguments are strings
@@ -206,8 +198,7 @@ Let's, therefore, go ahead and look at how we implement an ABC in Python. To imp
 
 The first step is to import the  `abc`  module using the code below.
 
-~~~
-
+~~~{.python caption="main.py"}
 # main.py
 
 from abc import ABCMeta, abstractmethod
@@ -223,8 +214,7 @@ This will avail the `ABCMeta` metaclass and the `abstractmethod` decorator.
 
 To create an ABC we will use the `ABCMeta` metaclass that we imported above. We will also define one abstract method in our class and denote it using the `@abstractmethod` decorator. Here is an example.
 
-~~~
-
+~~~{.python caption="main.py"}
 #  main.py
 
 class MyAbstractClass(metaclass=ABCMeta):
@@ -238,8 +228,7 @@ The code defines an abstract class called `MyAbstractClass`, it is an ABC since 
 
 Here is an example of a `Vehicle` ABC that has two abstract methods `start` and `stop`.
 
-~~~
-
+~~~{.python caption="vehicle_II.py"}
 # vehicle_II.py
 
 from abc import ABC, abstractmethod
@@ -256,8 +245,7 @@ class Vehicle(ABC):
 
 Now that we have a `Vehicle` ABC let's define a `Truck` concrete class that inherits from `Vehicle` and we are going to only implement the `start` method and try to create an instance of the `Truck` subclass.
 
-~~~
-
+~~~{.python caption="vehicle_II.py"}
 # vehicle_II.py
 
 class Truck(Vehicle):
@@ -272,7 +260,7 @@ my_truck.start()
 
 In the `Truck` subclass we will just implement the `start` method. Then create an instance of the `Truck`  subclass and call the `start` method using the `Truck` instance. However, doing that gives us the error below since `Truck` is a subclass of the `Vehicle` class which is an ABC that requires all methods of the parent ABC to be implemented in the subclasses.
 
-~~~
+~~~{ caption="Output"}
 
 TypeError: Can't instantiate abstract class Truck with abstract method stop 
 ~~~
@@ -287,8 +275,7 @@ ABCs on the other hand define the structure and behavior of subclasses, they ens
 
 Let's consider the `Shape` ABC we defined in the interfaces section, we have different shapes such as circles, rectangles, and triangles. Each shape has an area and a perimeter, so any class that inherits from `Shape` must implement both the `area` and `perimeter` methods. For example, we can define a `Square` concrete class that will inherit from `Shape` and provide implementations for both methods.
 
-~~~
-
+~~~{.python caption="shape.py"}
 # shape.py
 
 class Square(Shape):
@@ -306,8 +293,7 @@ In the above code we have a concrete class `Square` that inherits from the `Shap
 
 By inheriting from the `Shape` abstract class, the `Square` class ensures that it has a common behavior with other shapes, such as circles, rectangles, and triangles. This means that any code that works with a `Shape` object will also work with a `Square` object, without needing to know the specifics of the `Square` class. Let's look at an example
 
-~~~
-
+~~~{.python caption="shape.py"}
 # shape.py
 
 def print_shape_info(shape):
@@ -344,8 +330,7 @@ Let's see an illustration first showing the `Animal` ABC and different types of 
 
 Let's implement the parent ABC
 
-~~~
-
+~~~{.python caption="animal.py"}
 # animal.py
 
 from abc import ABC, abstractmethod
@@ -364,8 +349,7 @@ Here we have the `Animal` ABC that defines two abstract methods, `get_name` and 
 
 Here is an example of the implementation of the `Bird` subclass.
 
-~~~
-
+~~~{.python caption="animal.py"}
 # animal.py 
 
 class Bird(Animal):
@@ -391,8 +375,7 @@ By defining an `Animal` abstract class with abstract methods `get_name` and `mak
 
 For example, we could create a list of different types of animals and call their `get_name` and `make_sound` methods:
 
-~~~
-
+~~~{.python caption="animal.py"}
 # animal.py
 
 animals = [Dog("Rufus"), Cat("Whiskers"), Bird("Tweety")]
@@ -416,9 +399,8 @@ A plugin architecture could be used in a content management system(CMS), allowin
 
 Say we have a CMS called "MyCMS" and we want to allow developers to create plugins for it. We could define an ABC called `MyCMSPlugin` that specifies the required methods and attributes for a plugin to interact with MyCMS:
 
-~~~
-
-#  cmsplugin.py
+~~~{.python caption="cmsplugin.py"}
+# cmsplugin.py
 
 from abc import ABC, abstractmethod
 
@@ -437,8 +419,7 @@ In the above code, we define the `MyCMSPlugin` ABC with two abstract methods `ge
 
 Now, a developer who wants to create a plugin for MyCMS can subclass `MyCMSPlugin` and provide concrete implementations for the `get_config` and `render` methods. Here's an example of a plugin for an image gallery:
 
-~~~
-
+~~~{.python caption="cmsplugin.py"}
 # cmsplugin.py
 
 class ImageGalleryPlugin(MyCMSPlugin):
