@@ -6,7 +6,10 @@ toc: true
 author: Sooter Saalu
 
 internal-links:
- - just an example
+ - Docker Images
+ - Bazel
+ - Automate
+ - Scalability
 ---
 
 [Bazel](https://bazel.build/about/intro) is an open source build and test tool that helps you automate your software tasks using a defined set of rules from an abstract, human-readable source code. Initially developed by Google, Bazel is a versatile tool that supports multiple programming languages and software environments.
@@ -246,4 +249,3 @@ Overall, Bazel provides a robust and extensive set of functionality for dealing 
 
 * [ ] Create header image in Canva
 * [ ] Optional: Find ways to break up content with quotes or images
-* [ ] Add keywords for internal links to front-matter
