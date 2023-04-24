@@ -13,7 +13,7 @@ internal-links:
 
 Using [Docker](https://www.docker.com/) images with Bazel allows for even more scalability than what Docker or Bazel could offer you alone. This is because different parts of the project can be run in lightweight, portable, and isolated containers and can be executed in parallel across multiple machines or clusters. Moreover, Bazel offers easy compatibility with [rules_docker](https://github.com/bazelbuild/rules_docker), which are premade rules for carrying out Docker tasks. What's great about these rules is that you don't need to write Docker commands for pulling, building, or pushing images as the rules will take care of all these, thereby simplifying the development process. This can be particularly useful for large-scale projects that require the use of multiple Docker images, as it streamlines the process of building and deploying those images
 
-As an experienced developer, in this article, you'll learn more about how Docker and Bazel work together and how to use and push Docker images as part of the Bazel build process. 
+As an experienced developer, in this article, you'll learn more about how Docker and Bazel work together and how to use and push Docker images as part of the Bazel build process.
 
 ## Docker and Bazel
 
@@ -23,7 +23,7 @@ As previously mentioned, Bazel's `rules_docker` allows you to download base imag
 
 Moreover, Bazel provides an easy-to-use interface for building and testing projects with Docker, enabling you to easily create and manage consistent and isolated container environments for your projects.
 
-## Using Docker with Bazel
+## Using Docker With Bazel
 
 In this tutorial, you're going to use Docker with Bazel by pulling a Docker image, using that image as a base to create another image, and finally pushing the created image to [Docker Hub](https://hub.docker.com/), all within a Bazel workflow.
 
@@ -35,9 +35,9 @@ Before you begin, you'll need the following:
 
 * **Docker:** You'll need active Docker credentials to pull and push images to Docker Hub. You can define your [custom Docker configuration](https://github.com/bazelbuild/rules_docker#container_pull-custom-client-configuration) in Bazel or run the following command in your terminal to grant access to your subsequent commands:
 
-```bash
+~~~
 docker login 
-```
+~~~
 
 ### Sample Project Creation
 
@@ -49,7 +49,7 @@ A `BUILD` file contains the instructions given to Bazel to execute. It should co
 
 Your Bazel structure can look like this with multiple workspaces and different packages defined within them. Workspaces and the packages within them can be referenced anywhere within your main directory:
 
-```txt
+~~~
 main_directory
 └── bazel_files
     ├──workspace1
@@ -76,19 +76,19 @@ main_directory
        │   └── executable2.h
        └── WORKSPACE
 
-```
+~~~
 
 To create a sample project, you need to create a directory on your terminal and then create a `WORKSPACE` file within that directory:
 
-``` shell
+~~~{.shell caption=""}
 mkdir bazel_test
 cd bazel_test
 touch WORKSPACE
-```
+~~~
 
 The contents of your `WORKSPACE` file are dependent on your project and the rules you declare. Insert the following code in your `WORKSPACE` file:
 
-```starlark
+~~~
 workspace(
     # Naming your workspace can help you reference it elsewhere, in other workspaces or projects 
     name = "bazel_docker_test",
@@ -127,19 +127,19 @@ container_pull(
   tag = "v.0.1"
 )
 
-```
+~~~
 
 Here, you define your workspace, call the `rules_docker` repository and its dependents, and pull a Docker image from Docker Hub. The `flask_base` image that is called provides the dependencies for creating a flask application, installing Python and Flask in the created container.
 
 Next, you need to create your `BUILD` file:
 
-```shell
+~~~
 nano BUILD
-```
+~~~
 
 Insert the following code in your `BUILD` file to define the rules you're using, their targets, and the outputs of Bazel's execution process:
 
-```starlark
+~~~
 ## loading the needed functions from the rules_docker repository
 
 load("@io_bazel_rules_docker//container:container.bzl", "container_image")
@@ -167,7 +167,7 @@ container_push(
     repository = "{your_repository}/bazel_docker_test",
     tag = "1",
 )
-```
+~~~
 
 > **Please note:** You should update `{your_repository}` to your specific Docker repository.
 
@@ -175,13 +175,13 @@ With this, you're building an image with the [`container_image`](https://github.
 
 You will need a `main.py` file for your image. This code file will contain the mechanics of the application you're enclosing within your image. This is necessary for the application to operate correctly inside the Docker container:
 
-```shell
+~~~
 nano main.py
-```
+~~~
 
 Add the following code to create a basic Flask application that functions as a simple calculator:
 
-```python
+~~~
 from flask import Flask
 from random import randint
 
@@ -199,7 +199,7 @@ def randomcal():
 if __name__ == '__main__':
   app.run(host='0.0.0.0')
 
-```
+~~~
 
 ### Bazel Execution
 
@@ -207,24 +207,28 @@ With your workspace set up, you can start utilizing Bazel commands to execute th
 
 Run the following command in your terminal:
 
-```shell
+~~~
 bazel build "//…"
-```
+~~~
 
 The `"//…"` parameter tells Bazel to build all the targets it finds in your directory:
 
-![Bazel build command results](https://i.imgur.com/jNU5tRe.png)
+<div class="wide">
+![Bazel build command results]({{site.images}}{{page.slug}}/jNU5tRe.png)
+</div>
 
 Then run each of your targets to execute the instructions declared in your `BUILD` file:
 
-```shell
+~~~
 bazel run :my_app
 bazel run publish
-```
+~~~
 
 This code creates an image in the terminal using your previously declared Docker image as a base, then pushes the created image to Docker Hub under the repository you defined in your `BUILD` file:
 
-![`bazel run` command results](https://i.imgur.com/0nIOQ7i.png)
+<div class="wide">
+![`bazel run` command results]({{site.images}}{{page.slug}}/0nIOQ7i.png)
+</div>
 
 You can find all the code for this tutorial in this [GitHub repo](https://github.com/Soot3/bazel_docker_article).
 
@@ -238,11 +242,8 @@ Overall, Bazel provides a robust and extensive set of functionality for dealing 
 
 ## Outside Article Checklist
 
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/cta2.html %}`
+* [ ] Create header image in Canva
+* [ ] Optional: Find ways to break up content with quotes or images
+* [ ] Add keywords for internal links to front-matter
+* [ ] Run `link-opp` and find 1-5 places to incorporate links
+* [ ] Add Earthly `CTA` at bottom `{% include_html cta/cta2.html %}`
