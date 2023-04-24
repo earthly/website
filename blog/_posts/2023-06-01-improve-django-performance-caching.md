@@ -48,7 +48,7 @@ In the upcoming section, you will learn about various caching strategies that ca
 
 Database Cache stores cached data in the database. This backend provides a reliable and persistent caching solution and can be further customized to use a specific database engine such as SQLite or Redis. To configure the Database Cache, you can add the following code to your `settings.py` file:
 
-~~~
+~~~{.python caption="settings.py"}
 CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
@@ -61,7 +61,7 @@ In the code snippet above, the `BACKEND` setting specifies the in-built caching 
 
 Your Cache Backend is now set up, to specify the target you have to make changes into the [`MIDDLEWARE` setting](https://docs.djangoproject.com/en/4.2/topics/http/middleware/) in the `settings.py` file:
 
-~~~
+~~~{.python caption="settings.py"}
 MIDDLEWARE = [
 # – code-omitted –
     "django.contrib.sessions.middleware.SessionMiddleware",
@@ -74,7 +74,7 @@ MIDDLEWARE = [
 
 ~~~
 
-These three middleware classes work together to enable caching in your Django application. The `[UpdateCacheMiddleware](https://docs.djangoproject.com/en/4.2/ref/middleware/#django.middleware.cache.UpdateCacheMiddleware)` class intercepts the response and stores it in the cache, while the `[FetchFromCacheMiddleware](https://docs.djangoproject.com/en/4.2/ref/middleware/#django.middleware.cache.FetchFromCacheMiddleware)` class retrieves cached responses and serves them. The `[CommonMiddleware](https://docs.djangoproject.com/en/4.2/ref/middleware/#django.middleware.common.CommonMiddleware)` class performs other common middleware tasks such as setting the cache-related headers, `Content-Length` header and handling conditional GET requests. By adding these middleware classes to your `MIDDLEWARE` setting, you can enable caching in your Django application and improve website performance. Please note that the [order of Middleware](https://docs.djangoproject.com/en/4.2/topics/cache/#order-of-middleware) is important.
+These three middleware classes work together to enable caching in your Django application. The [`UpdateCacheMiddleware`](https://docs.djangoproject.com/en/4.2/ref/middleware/#django.middleware.cache.UpdateCacheMiddleware) class intercepts the response and stores it in the cache, while the [`FetchFromCacheMiddleware`](https://docs.djangoproject.com/en/4.2/ref/middleware/#django.middleware.cache.FetchFromCacheMiddleware) class retrieves cached responses and serves them. The [`CommonMiddleware`](https://docs.djangoproject.com/en/4.2/ref/middleware/#django.middleware.common.CommonMiddleware) class performs other common middleware tasks such as setting the cache-related headers, `Content-Length` header and handling conditional GET requests. By adding these middleware classes to your `MIDDLEWARE` setting, you can enable caching in your Django application and improve website performance. Please note that the [order of Middleware](https://docs.djangoproject.com/en/4.2/topics/cache/#order-of-middleware) is important.
 
 Before testing your newly added cache backend you have to run `python manage.py createcachetable` to create a new table in the database so that Django can store cached data in the table. After running this command you can run your server using `python manage.py runserver` and visit <http://127.0.0.1:8000/> to check if your cache works or not. After refreshing the page a few times you will find that the time in the navbar is constant. This is because the value of response time is cached by Django and it is returning the cached value.
 
@@ -94,7 +94,7 @@ Before implementing Redis as a caching backend you must have Redis installed in 
 
 Also, make sure to remove `UpdateCacheMiddleware` and `FetchFromCacheMiddleware` from the `MIDDLEWARE` setting to remove the whole site cache. Now you are ready to implement caching using Redis, open the `settings.py` file and make the following changes in your `CACHES` setting:
 
-~~~
+~~~{.python caption="settings.py"}
 CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.redis.RedisCache',
@@ -104,13 +104,13 @@ CACHES = {
 
 ~~~
 
-The above setting specifies the `[RedisCache](https://docs.djangoproject.com/en/4.1/topics/cache/#redis)` Backend and the Location where the Caches should be stored. In this case, Location uses port 6379 which is the default port where Redis runs.
+The above setting specifies the [`RedisCache`](https://docs.djangoproject.com/en/4.1/topics/cache/#redis) Backend and the Location where the Caches should be stored. In this case, Location uses port 6379 which is the default port where Redis runs.
 
 After completing the backend setup, the next step is to set the target for the per-view caching strategy. This strategy involves specifically selecting the views that need to be cached. It is particularly beneficial for websites that have content that changes frequently. Such content should not be cached to display the most up-to-date information on the website. By utilizing the per-view caching strategy, we can ensure that only the intended views are cached and that the website's visitors are provided with the latest information.
 
-The per-view caching strategy uses a built-in `[cache_page](https://docs.djangoproject.com/en/4.2/topics/cache/#django.views.decorators.cache.cache_page)` decorator on the view. Open the views.py file and apply the decorator on the `all` view as shown in the following code:
+The per-view caching strategy uses a built-in [`cache_page`](https://docs.djangoproject.com/en/4.2/topics/cache/#django.views.decorators.cache.cache_page) decorator on the view. Open the views.py file and apply the decorator on the `all` view as shown in the following code:
 
-~~~
+~~~{.python caption="settings.py"}
 from django.views.decorators.cache import cache_page
 
 @cache_page(60)
@@ -120,7 +120,8 @@ def all(request):
     all_pokemon = list(Pokemon.objects.all())
     return render(
         request,
-        "all.html",{"all_pokemon": all_pokemon,"response_time": f"{(time.perf_counter()-start):6f} seconds"},
+        "all.html",{"all_pokemon": all_pokemon,"response_time": \
+        f"{(time.perf_counter()-start):6f} seconds"},
     )
 
 ~~~
@@ -139,7 +140,7 @@ Next, visit the <http://127.0.0.1:8000/all> endpoint and refresh the page. You w
 
 The File System Caching Backend is suitable for small projects where integrating with an external service like Redis is a bit of overkill. File System Caching stores cached data in a specified directory in your system. You can implement this backend by making the following changes in your CACHES setting in your settings.py file:
 
-~~~
+~~~{.python caption="settings.py"}
 CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
@@ -151,11 +152,12 @@ CACHES = {
 
 In the above code, you instructed Django to use the `FileBasedCache` backend and store cached data in a cache directory in your project's folder.
 
-In the Template Fragment caching strategy of Django, a portion of the template can be cached exclusively by using the `cache` template tag. This technique is particularly useful for caching repetitive and dynamic data in the same template. By wrapping the code block with the `[cache](https://docs.djangoproject.com/en/4.2/topics/cache/#template-fragment-caching)`  template tag, the contents within it are cached.
+In the Template Fragment caching strategy of Django, a portion of the template can be cached exclusively by using the `cache` template tag. This technique is particularly useful for caching repetitive and dynamic data in the same template. By wrapping the code block with the [`cache`](https://docs.djangoproject.com/en/4.2/topics/cache/#template-fragment-caching) template tag, the contents within it are cached.
 
 Open the `templates/all.html` file and make the following changes to it:
 
-~~~
+~~~{.html caption="all.html"}
+{% raw %}
 {% extends 'base.html' %}
 {% load cache %}
 {% block title %}
@@ -169,14 +171,14 @@ All Pokemons
 </table>
 {% endcache content_cache %}
 {% endblock content %}
-
+{% endraw %}
 ~~~
 
 In the above code snippet, the cache template tag was loaded and subsequently used to cache a specific block of content within a Django template. Enclosing the content block within the cache template tag enables it to be cached.
 
 To test it, run the Django server and visit <http://127.0.0.1:8000/all> , on refreshing the page repeatedly you will find that the time on the nav bar is now changing. Additionally, you can verify that the caching strategy is working by checking the Django Debug Toolbar, which will show that the `all` endpoint is picking up cache hits from the cache folder where the cached content is being stored.
 
-</div class="wide">
+<div class="wide">
 ![Template Fragment Caching]({{site.images}}{{page.slug}}/yR9KDrS.png)
 </div>
 
@@ -201,7 +203,3 @@ Cache optimization, commonly referred to as cache tuning, is an important techni
 Django comes with a full set of caching framework out of the box which lets the developers build robust applications which are easier to scale. Caching is an essential aspect of optimizing web application performance, and Django provides excellent support for caching. In this article, we discussed the various caching strategies available in Django and explored how they can be used to improve application performance. We also discussed the benefits of caching, such as reducing the number of database queries and improving response times for users. Additionally, we looked at the importance of cache invalidation and explored strategies for optimizing cache performance. Overall, caching is a powerful tool that can significantly improve the performance of Django applications, and developers should leverage it to ensure their applications deliver the best possible user experience.
 
 {% include_html cta/cta2.html %}
-
-## Outside Article Checklist
-
-- [ ] Optional: Find ways to break up content with quotes or images
