@@ -204,5 +204,4 @@ Django comes with a full set of caching framework out of the box which lets the 
 
 ## Outside Article Checklist
 
-- [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
