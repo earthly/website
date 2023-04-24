@@ -308,13 +308,13 @@ default_args = {
 
 In the above snippet:
 
-- `Owner`: Specifies the owner of the DAG. This is typically the name of the person or team responsible for maintaining the DAG.
-- `Depends_on_past`: Specifies whether a task instance should depend on the success of the previous task instance.
-- `Start_date`: Specifies the date and time when the DAG should start running.
-- `Email_on_failure`: Specifies whether to send an email notification when a task fails.
-- `Email_on_retry`: Specifies whether to send an email notification when a task is retried.
-- `Schedule_interval`: The frequency with which the task should run. In this case, it is set to run once per day.
-- `Retries`: Specifies the number of times to retry a failed task.
+- `owner`: Specifies the owner of the DAG. This is typically the name of the person or team responsible for maintaining the DAG.
+- `depends_on_past`: Specifies whether a task instance should depend on the success of the previous task instance.
+- `start_date`: Specifies the date and time when the DAG should start running.
+- `email_on_failure`: Specifies whether to send an email notification when a task fails.
+- `email_on_retry`: Specifies whether to send an email notification when a task is retried.
+- `schedule_interval`: The frequency with which the task should run. In this case, it is set to run once per day.
+- `retries`: Specifies the number of times to retry a failed task.
 - `retry_delay`: Specifies the delay between retries. In this case, we're using a delay of 5 seconds.
 
 ### 3. Define the DAG
