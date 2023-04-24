@@ -33,7 +33,7 @@ Vlad mentioned in a meeting early after my joining Earthly that the line between
 
 ![COST]({{site.images}}{{page.slug}}/cost.png)\
 
-There is this platitude about how you are the product if you aren't paying for something. It's not 100% true, but it does get at an important point. If you cost a business money, they will want to recoup that at some point. (Even if it means angering everyone by trying to charge for Dockerhub or Docker Desktop.)
+There is this platitude about how you are the product if you aren't paying for something. It's not 100% true, but it does get at an important point. If you cost a business money, they will want to recoup that at some point. (Even if it means angering everyone by trying to charge for [Dockerhub](https://www.theregister.com/2023/03/17/docker_free_teams_plan/) or [Docker Desktop](https://www.theregister.com/2021/08/31/docker_desktop_no_longer_free/).)
 
 TailScale is the only company I've seen talk explicitly about the incentives around free products and what they get out of free users:
 
