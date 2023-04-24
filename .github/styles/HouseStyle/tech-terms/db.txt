@@ -5,3 +5,5 @@ django
 
 mysql:latest
 mysql
+
+Memurai
