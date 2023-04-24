@@ -29,6 +29,8 @@ In summary, ABCs are a way of defining a set of common methods or attributes tha
 
 ### What Then Is Abstraction?
 
+![Confused]({{site.images}}{{page.slug}}/confused.png)\
+
 To understand abstraction in Python, it is important to first understand the concept of regular Python classes. In Python, we can create classes that define a set of behaviors and properties, and then create objects from those classes. However, when we inherit from a regular class, we are inheriting both the attributes and methods of the parent class, and we can override or add new methods as needed.
 On the other hand, ABCs allow us to create abstract methods that must be implemented by any subclass of the ABC, without specifying how those methods should be implemented. This is the key difference between regular classes and ABCs - ABCs allow us to define a set of behaviors that must be implemented by any class that inherits from the ABC.
 Abstraction, therefore, is the process of defining a set of behaviors or properties without specifying how they should be implemented. This allows us to create generic classes that can be reused across different parts of our code and also creates interfaces that specify the required behavior of a class without getting bogged down in the implementation details. ABCs are a powerful tool for achieving abstraction in Python, as they allow us to enforce a consistent set of behaviors across different classes and promote code reuse and modularity.
@@ -192,7 +194,9 @@ In summary, we, therefore, see that metaclasses are used to customize the behavi
 
 Before we implement an ABC let's look at an illustration that shows a `Vehicle` ABC and how its subclasses will implement the abstract methods it defines. We are going to use the interface we defined above of a `Vehicle` and a `Car` subclass.
 
-![How-to-inherit-from-an-ABC](https://i.ibb.co/4JbntCc/ABC-inheritance-illustration.png)
+<div class="wide">
+![How to inherit from an ABC]({{site.images}}{{page.slug}}/ABC-inheritance-illustration.png)
+</div>
 
 In the above illustration we have a `Vehicle` ABC that defines two abstract methods `start` and `stop`  and then we have two subclasses `Car` and `MotorCycle` that inherit from the ABC and implement the `start` and `stop` methods.
 
@@ -334,7 +338,9 @@ You could define an ABC called `Animal` with abstract methods `get_name` and `ma
 
 Let's see an illustration first showing the `Animal` ABC and different types of animal subclasses that have to implement the methods it has defined.
 
-![An-abc-and-concrete-subclasses](https://i.ibb.co/376SgLj/animal-abc-and-concrete-classes.png)
+<div class="wide">
+![An abc and concrete subclasses]({{site.images}}{{page.slug}}/animal-abc-and-concrete-classes.png)
+</div>
 
 Let's implement the parent ABC
 
@@ -454,6 +460,8 @@ By using an ABC to define the required interface for plugins, we ensure that all
 
 ## Benefits of ABCs
 
+![Benefits]({{site.images}}{{page.slug}}/benefits.png)\
+
 Throughout the article we have covered how to create ABCs and the application of ABCs in real-world scenarios. In this section, let's look at some of their benefits.
 
 - They encourage consistency and modularity, by defining a set of common methods and attributes that must be implemented by subclasses, this makes sure that our code is broken into self-contained modules that do just the things laid out in the ABC, the code is also easier to read and more predictable.
@@ -470,6 +478,3 @@ In this article, we have explained what abstract base classes are and how they d
 ## Outside Article Checklist
 
 - [ ] Add in Author page
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-
