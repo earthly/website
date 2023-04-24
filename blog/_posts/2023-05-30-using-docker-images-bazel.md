@@ -240,9 +240,10 @@ The primary benefits of using Docker images with Bazel include the ability to de
 
 Overall, Bazel provides a robust and extensive set of functionality for dealing with Docker, making it a great choice for developers who wish to automate their containerization process. Whether you're looking to design, test, or deploy software, Bazel's efficient and dependable methodology will help you optimize your development process and accomplish your objectives more quickly.
 
+{% include_html cta/cta2.html %}
+
 ## Outside Article Checklist
 
 * [ ] Create header image in Canva
 * [ ] Optional: Find ways to break up content with quotes or images
 * [ ] Add keywords for internal links to front-matter
-* [ ] Add Earthly `CTA` at bottom `{% include_html cta/cta2.html %}`
