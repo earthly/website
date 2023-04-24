@@ -247,5 +247,4 @@ Overall, Bazel provides a robust and extensive set of functionality for dealing 
 
 ## Outside Article Checklist
 
-* [ ] Create header image in Canva
 * [ ] Optional: Find ways to break up content with quotes or images
