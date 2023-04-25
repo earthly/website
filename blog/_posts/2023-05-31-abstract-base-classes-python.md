@@ -14,32 +14,47 @@ internal-links:
 ---
 
 Object-oriented programming (OOP) is a popular programming paradigm used in many modern programming languages, including Python. At the core of OOP are classes that allow us to create objects with attributes and methods. However, regular classes in Python have limitations that can make it challenging to create modular and maintainable code.
+
 One limitation of regular classes is that they cannot enforce the implementation of certain methods or attributes, making it difficult for objects of different classes to be used interchangeably in code. Additionally, regular classes cannot be used for type checking at runtime, which can lead to errors in code.
-Abstract Base Classes (ABCs) offer a solution to these limitations by allowing us to define a set of common methods and attributes that must be implemented by any class that inherits from the ABC. This ensures that objects of different classes can be used interchangeably in our code and provides a way to catch errors at runtime through type checking. ABCs also promote code reuse and modularity by enforcing consistency across their subclasses. They ensure consistent behavior in subclasses and enable objects of different classes to be used interchangeably.
+
+**Abstract Base Classes** (ABCs) offer a solution to these limitations by allowing us to define a set of common methods and attributes that must be implemented by any class that inherits from the ABC. This ensures that objects of different classes can be used interchangeably in our code and provides a way to catch errors at runtime through type checking. ABCs also promote code reuse and modularity by enforcing consistency across their subclasses. They ensure consistent behavior in subclasses and enable objects of different classes to be used interchangeably.
+
 In this article, we will explore the concept of ABCs and learn how they differ from regular classes. We will also examine the relationship between ABCs and interfaces and show how to implement them in Python. Finally, we will discuss the benefits of using ABCs and provide some real-world examples to illustrate their usefulness.
+
 The code examples used in this tutorial can be found in [this GitHub repository](https://github.com/KabakiAntony/abstract_base_classes_tutorial).
 
 ## What Are Abstract Base Classes?
 
 In Python, classes are user-defined blueprints for creating objects that have attributes and methods. When we define a regular Python class, we can add any number of attributes and methods to it. We can then create instances of the class and use them to perform operations.
+
 However, one limitation of regular Python classes is that they do not enforce the implementation of certain methods or attributes in the classes that inherit from them. This means that if we have two classes that are related in some way, there is no guarantee that they will have the same methods or attributes. As a result, objects of different classes may not be able to be used interchangeably in our code.
+
 This is where Abstract Base Classes (ABCs) come in. An ABC is a special type of class that contains one or more abstract methods. Abstract methods are methods that have no implementation in the ABC but must be implemented in any class that inherits from the ABC. In other words, an ABC provides a set of common methods or attributes that its subclasses must implement.
+
 The main difference between an ABC and a regular class is that you cannot create an instance of an ABC. Instead, you can only inherit from it and implement all the abstract methods it has defined. This ensures that all subclasses of the ABC have the same set of methods or attributes, making them interchangeable in our code.
+
 In summary, ABCs are a way of defining a set of common methods or attributes that must be implemented by any class that inherits from the ABC. This promotes code reuse, consistency, and modularity in our code.
 
 ### What Then Is Abstraction?
 
 ![Confused]({{site.images}}{{page.slug}}/confused.png)\
-
 To understand abstraction in Python, it is important to first understand the concept of regular Python classes. In Python, we can create classes that define a set of behaviors and properties, and then create objects from those classes. However, when we inherit from a regular class, we are inheriting both the attributes and methods of the parent class, and we can override or add new methods as needed.
+
 On the other hand, ABCs allow us to create abstract methods that must be implemented by any subclass of the ABC, without specifying how those methods should be implemented. This is the key difference between regular classes and ABCs - ABCs allow us to define a set of behaviors that must be implemented by any class that inherits from the ABC.
-Abstraction, therefore, is the process of defining a set of behaviors or properties without specifying how they should be implemented. This allows us to create generic classes that can be reused across different parts of our code and also creates interfaces that specify the required behavior of a class without getting bogged down in the implementation details. ABCs are a powerful tool for achieving abstraction in Python, as they allow us to enforce a consistent set of behaviors across different classes and promote code reuse and modularity.
+
+<div class="notice--info">
+Abstraction, therefore, is the process of defining a set of behaviors or properties without specifying how they should be implemented. This allows us to create generic classes that can be reused across different parts of our code and also creates interfaces that specify the required behavior of a class without getting bogged down in the implementation details. 
+</div>
+
+ABCs are a powerful tool for achieving abstraction in Python, as they allow us to enforce a consistent set of behaviors across different classes and promote code reuse and modularity.
 
 ### Interfaces and ABCs
 
 Interfaces define a common behavior that can be shared by multiple classes. So that any class that implements some given interface has to provide the behavior specified by the interface, this ensures that all classes that implement that particular interface have certain common behaviors. This is very beneficial in that we can write code that can work with any object that implements that interface, without having to know the specific implementation detail.
 
-Python, unlike other languages, does not natively support interfaces, therefore to implement an interface in Python we use the `abc`  module. Therefore ABCs are very similar to interfaces, the only subtle difference between an interface and an ABC is that an ABC can have concrete methods whereas an interface will just have the method signature in this case just abstract methods. Another difference is that a class can implement multiple interfaces and only inherit from a single ABC. Another difference even though it is not clear in Python due to the lack of native support of interfaces is that you implement an interface and inherit an ABC, to expound on this is that other languages have keywords like `implements` and `extends` that clearly indicate the action you are taking in child class in relation to a parent class.
+Python, unlike other languages, does not natively support interfaces, therefore to implement an interface in Python we use the `abc`  module. Therefore ABCs are very similar to interfaces, the only subtle difference between an interface and an ABC is that an ABC can have concrete methods whereas an interface will just have the method signature in this case just abstract methods. Another difference is that a class can implement multiple interfaces and only inherit from a single ABC.
+
+Another difference even though it is not clear in Python due to the lack of native support of interfaces is that you implement an interface and inherit an ABC, to expound on this is that other languages have keywords like `implements` and `extends` that clearly indicate the action you are taking in child class in relation to a parent class.
 
 Here is an example of an interface for a shape that requires implementing classes to have methods for calculating area and perimeter.
 
@@ -151,7 +166,7 @@ In the above code we have a custom metaclass that ensures that objects are only 
 
 The `__call__` method takes in the class object `cls` as its first argument, followed by any positional arguments (*args) and keyword arguments (**kwargs) that were passed to the constructor.
 
-In this implementation, the `__call__` method checks each positional argument to make sure it is an instance of the `str` class. If any argument is not a string, a `TypeError` is raised. If all arguments are strings, the super().__call__ method is called to create and return a new instance of the class.
+In this implementation, the `__call__` method checks each positional argument to make sure it is an instance of the `str` class. If any argument is not a string, a `TypeError` is raised. If all arguments are strings, the `super().__call__` method is called to create and return a new instance of the class.
 
 This metaclass can be used to enforce the requirement that certain arguments passed to the constructor of a class must be strings. Here is an example of its use in a class.
 
@@ -180,7 +195,7 @@ obj2 = MyStringOnlyClass("name", 123)
 
 We have seen that the `StringOnlyMeta` metaclass can be used to ensure that objects are only instantiated with strings, by checking the arguments passed to the constructor and raising a `TypeError` if any argument is not a string. Therefore, the `StringOnlyMeta` customizes the behavior of the other classes that inherit from it.
 
-In summary, we, therefore, see that metaclasses are used to customize the behavior of classes in Python. ABCs are special classes that are used as blueprints for other classes, and they are defined using the `abc.ABC` metaclass.
+In summary, we see that metaclasses are used to customize the behavior of classes in Python. ABCs are special classes that are used as blueprints for other classes, and they are defined using the `abc.ABC` metaclass.
 
 ## Implementing ABCs
 
@@ -328,7 +343,7 @@ Let's see an illustration first showing the `Animal` ABC and different types of 
 ![An abc and concrete subclasses]({{site.images}}{{page.slug}}/animal-abc-and-concrete-classes.png)
 </div>
 
-Let's implement the parent ABC
+Let's implement the parent ABC:
 
 ~~~{.python caption="animal.py"}
 # animal.py
@@ -395,7 +410,7 @@ A plugin in software development is where a software application is designed to 
 
 So they will define an ABC that will specify the required methods and attributes for a plugin to interact with the application and this will ensure that plugins are compatible and follow the same set of rules.
 
-A plugin architecture could be used in a content management system(CMS), allowing developers to create custom plugins for things like image galleries, contact forms, and others. The CMS will then define an ABC that specifies the required methods and attributes for the plugin to interact with the CMS, such as configuration and how to render on a webpage. The developer then will create the concrete class that implements the required methods. This will ensure the plugin is compatible with the CMS and follows the same set of rules as other plugins.
+A plugin architecture could be used in a content management system (CMS), allowing developers to create custom plugins for things like image galleries, contact forms, and others. The CMS will then define an ABC that specifies the required methods and attributes for the plugin to interact with the CMS, such as configuration and how to render on a webpage. The developer then will create the concrete class that implements the required methods. This will ensure the plugin is compatible with the CMS and follows the same set of rules as other plugins.
 
 Say we have a CMS called "MyCMS" and we want to allow developers to create plugins for it. We could define an ABC called `MyCMSPlugin` that specifies the required methods and attributes for a plugin to interact with MyCMS:
 
