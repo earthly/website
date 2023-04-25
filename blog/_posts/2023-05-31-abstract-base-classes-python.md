@@ -38,12 +38,13 @@ In summary, ABCs are a way of defining a set of common methods or attributes tha
 ### What Then Is Abstraction?
 
 ![Confused]({{site.images}}{{page.slug}}/confused.png)\
+
 To understand abstraction in Python, it is important to first understand the concept of regular Python classes. In Python, we can create classes that define a set of behaviors and properties, and then create objects from those classes. However, when we inherit from a regular class, we are inheriting both the attributes and methods of the parent class, and we can override or add new methods as needed.
 
 On the other hand, ABCs allow us to create abstract methods that must be implemented by any subclass of the ABC, without specifying how those methods should be implemented. This is the key difference between regular classes and ABCs - ABCs allow us to define a set of behaviors that must be implemented by any class that inherits from the ABC.
 
 <div class="notice--info">
-Abstraction, therefore, is the process of defining a set of behaviors or properties without specifying how they should be implemented. This allows us to create generic classes that can be reused across different parts of our code and also creates interfaces that specify the required behavior of a class without getting bogged down in the implementation details. 
+Abstraction, therefore, is the process of defining a set of behaviors or properties without specifying how they should be implemented. This allows us to create generic classes that can be reused across different parts of our code and also creates interfaces that specify the required behavior of a class without getting bogged down in the implementation details.
 </div>
 
 ABCs are a powerful tool for achieving abstraction in Python, as they allow us to enforce a consistent set of behaviors across different classes and promote code reuse and modularity.
