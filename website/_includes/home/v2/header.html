@@ -10,7 +10,7 @@
         <div class="hidden lg:flex">
             <div class="star-cta flex items-center mr-4 xl:mr-12 relative top-[2px]">
                 <a class="github-button" href="https://github.com/earthly/earthly" data-size="large"
-                    data-show-count="true" aria-label="Star earthly/earthly on GitHub">Star</a>
+                    data-show-count="true" aria-label="Star earthly/earthly on GitHub" onclick="navGithubClick()">Star</a>
             </div>
 
             <div class="flex items-center content-start mt-4 sm:mt-0 mr-4 xl:mr-12 h-[70px]">
@@ -33,7 +33,7 @@
                             fill="#E01E5A"></path>
                     </g>
                 </svg>
-                <a href="/slack">
+                <a href="/slack" onclick="navSlackClick()">
                     <span class="font-bold underline ml-2 text-lg cursor-pointer">
                         Slack
                     </span>
@@ -68,10 +68,34 @@
             </a>
             <div class="inline-flex items-center px-2 xl:px-4">
                 <a href="/get-earthly"
-                    class="py-4 h-10 px-4 xl:px-6 items-center text-sm xl:text-base text-center text-white bg-[#2d7e5d] hover:bg-green-800 rounded-lg inline-flex">
+                    class="py-4 h-10 px-4 xl:px-6 items-center text-sm xl:text-base text-center text-white bg-[#2d7e5d] hover:bg-green-800 rounded-lg inline-flex"
+                    onclick="navGetEarthlyClick()">
                     Try Earthly
                 </a>
             </div>
         </div>
     </nav>
+
+    <script>
+      function navGetEarthlyClick() {
+        analytics.track('nav-get-earthly-click', {
+          category: 'Get Earthly Click',
+          label: 'nav-get-earthly-click'
+        });
+      }
+
+      function navGithubClick() {
+        analytics.track('nav-github-click', {
+          category: 'Github Click',
+          label: 'nav-github-click'
+        });
+      }
+
+      function navSlackClick() {
+        analytics.track('nav-slack-click', {
+          category: 'Slack Click',
+          label: 'nav-slack-click'
+        });
+      }
+    </script>
 </header>
