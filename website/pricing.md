@@ -6,21 +6,22 @@ pageStyle: bg-background-pricing
 
 <link rel="stylesheet" href="/assets/css/subpage.css">
 
-<div class="text-xl lg:text-2xl text-slate-500 -mt-4 pt-1 pb-3">
-    Pricing plans for Earthly CI 
-</div>
-
-<div class="text-base text-slate-500 -mt-4 pt-2 pb-3">
+<div class="text-base text-slate-500">
    <span class="font-semibold"> Note:</span> A Free plan will be available in the near future.
 </div>
 
-<div class="flex items-center mb-4">
-  <label class="toggle-switch">
-    <input id="pricing-toggle-switch" type="checkbox" checked>
-    <span class="slider"></span>
-  </label>
+<div class="sm:flex items-center lg:-mt-2 mb-4 md:pt-2">
+  <span class="text-xl lg:text-2xl text-slate-500">Pricing plans for Earthly CI</span>
 
-  <span class="ml-2">Annual Pricing</span>
+  <div class="flex items-center">
+    <label class="toggle-switch">
+      <input id="pricing-toggle-switch" type="checkbox" checked>
+      <span class="slider"></span>
+
+      <span class="label left-0">Monthly</span>
+      <span class="label right-0">Annual</span>
+    </label>
+  </div>
 </div>
 
 <div class="grid grid-cols-1 gap-4 lg:gap-2 lg:grid-cols-4 mb-12 relative z-10">
