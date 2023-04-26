@@ -33,6 +33,8 @@ Typically, each line in a CSV file represents one record or row of data, with co
 
 ## Encoding/CSV and GoCSV for Reading CSV
 
+![Reading]({{site.images}}{{page.slug}}/reading.png)\
+
 Golang provides built-in packages such as [`encoding/csv`](https://pkg.go.dev/encoding/csv) and third-party packages such as [`Gocsv`](https://pkg.go.dev/github.com/gocarina/gocsv) for handling CSV data. In this section, we will discuss these two packages and discuss which one is better for handling CSV data in Golang.
 
 ### Using `Encoding/csv` To Work with CSV Files
@@ -559,9 +561,6 @@ Working with CSV files in Go is straightforward thanks to the built-in encoding/
 
 Mastering these techniques can greatly enhance your ability to work with CSV files in Go.
 
+![Mastering]({{site.images}}{{page.slug}}/mastering.png)\
+
 {% include_html cta/cta2.html %}
-
-## Outside Article Checklist
-
-- [ ] Optional: Find ways to break up content with quotes or images
-
