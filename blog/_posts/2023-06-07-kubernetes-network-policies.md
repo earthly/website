@@ -6,7 +6,11 @@ toc: true
 author: Muhammad Badawy
 
 internal-links:
- - just an example
+ - Kubernetes
+ - Security
+ - Network Policies
+ - Rules
+ - Namespaces
 ---
 
 Kubernetes Network Policy is a set of rules that define how network traffic flows within a Kubernetes cluster. It is used to control and secure communication between pods and services in a Kubernetes cluster.
@@ -492,4 +496,3 @@ You can continue learning about other features available in Kubernetes, such as 
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
 
-- [ ] Add keywords for internal links to front-matter
