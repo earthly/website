@@ -83,7 +83,7 @@ In case you run the demo on EKS, then the [Amazon VPC CNI plugin](https://docs.a
 
 Our goal in this section is to check the default connectivity between pods in different namespaces before applying any network policies. Let's create 3 namespaces (frontend, backend, and db) and label these namespaces as below:
 
-~~~
+~~~{.bash caption=">_"}
 $ kubectl create ns frontend
 $ kubectl label namespace frontend ns=frontend
 $ kubectl create ns backend
@@ -96,13 +96,13 @@ These labels will be used later in our network policies to specify a namespace t
 
 Also you need to label `kube-system` namespace which contains the core components of the Kubernetes cluster, as this label will be used later in a network policy to allow communication to `coredns` pod in `kube-system` namespace which acts as the DNS in the Kubernetes cluster.
 
-~~~
+~~~{.bash caption=">_"}
 $ kubectl label namespace kube-system contains=coredns
 ~~~
 
 For ease, we will run nginx pods in each namespace. This is to have a simple application running and curl these applications endpoints and test the connectivity. Feel free to run whatever app you want to run across different namespaces.
 
-~~~
+~~~{.bash caption=">_"}
 $ kubectl run frontend --image=nginx -n frontend
 $ kubectl run backend --image=nginx -n backend
 $ kubectl run db --image=nginx -n db
@@ -110,7 +110,7 @@ $ kubectl run db --image=nginx -n db
 
 Make sure the pods are up and running in each namespace. Note that each pod is created with a default label which will be used later to select these pods.
 
-~~~
+~~~{.bash caption=">_"}
 $ kubectl get pods -n frontend --show-labels
 $ kubectl get pods -n backend --show-labels
 $ kubectl get pods -n db --show-labels
@@ -122,7 +122,7 @@ $ kubectl get pods -n db --show-labels
 
 Then, we will expose each pod internally through a service resource as below.
 
-~~~
+~~~{.bash caption=">_"}
 $ kubectl expose pod frontend --name=frontend-svc -n frontend --port=80
 $ kubectl expose pod backend --name=backend-svc -n backend --port=80
 $ kubectl expose pod db --name=db-svc -n db --port=80
@@ -134,7 +134,7 @@ This is to be able to communicate with the applications running on pods through 
 
 Also check that service has been applied as expected:
 
-~~~
+~~~{.bash caption=">_"}
 $ kubectl get svc -n frontend
 $ kubectl get svc -n backend
 $ kubectl get svc -n db
@@ -148,7 +148,7 @@ After applying the above commands, you will be able to communicate with nginx ap
 
 Now let's try to test the connectivity to the backend application inside the `backend` namespace from the frontend application inside the `frontend` namespace.
 
-~~~
+~~~{.bash caption=">_"}
 $ kubectl -n frontend exec frontend -- curl backend-svc.backend
 ~~~
 
@@ -176,8 +176,7 @@ Network policies will be created in `YAML` files then applied via `kubectl` comm
 
 Create a new file `deny_all.yaml` and place the following YAML content inside:
 
-~~~
-#deny_all.yaml
+~~~{.yaml caption="deny_all.yaml"}
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
@@ -249,13 +248,13 @@ A network policy with these configurations will deny all traffic between pods in
 
 To apply the above network policies, you can use the below command:
 
-~~~
+~~~{.bash caption=">_"}
 $ kubectl apply -f deny_all.yaml
 ~~~
 
 Then let's rerun the same `kubectl exec` command to test the connectivity between pods in frontend and backend namespaces:
 
-~~~
+~~~{.bash caption=">_"}
 $ kubectl -n frontend exec frontend -- curl backend-svc.backend
 ~~~
 
@@ -282,8 +281,7 @@ Our goal in this section is to allow traffic from frontend namespace only to bac
 
 Create a new file `allow_frontend_egress.yaml` and place the following YAML content inside:
 
-~~~
-#allow_frontend_egress.yaml
+~~~{.yaml caption="allow_frontend_egress.yaml"}
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
@@ -309,7 +307,7 @@ So the above network policy will be applied in the frontend namespace to the pod
 
 Apply the network policy with the below command:
 
-~~~
+~~~{.bash caption=">_"}
 $ kubectl apply -f allow_frontend_egress.yaml
 ~~~
 
@@ -319,8 +317,7 @@ Then you create another YAML file for the network policy which will be applied t
 
 Create a new file `allow_backend_ingress_egress.yaml` and place the following YAML content inside:
 
-~~~
-#allow_backend_ingress_egress.yaml
+~~~{.yaml caption="allow_backend_ingress_egress.yaml"}
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
@@ -355,7 +352,7 @@ This policy will be applied in the `backend` namespace to pods with label `run=b
 
 Apply the network policy with the below command:
 
-~~~
+~~~{.bash caption=">_"}
 $ kubectl apply -f allow_backend_ingress_egress.yaml
 ~~~
 
@@ -365,8 +362,7 @@ Next you will allow ingress (incoming) traffic to the `db` pod from `backend` po
 
 Create a new file `allow_db_ingress.yaml` and place the following YAML content inside:
 
-~~~
-#allow_db_ingress.yaml
+~~~{.yaml caption="allow_db_ingress.yaml"}
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
@@ -392,7 +388,7 @@ This policy will be applied in `db` namespace to pods with label `run=db` as men
 
 Apply the network policy with the below command:
 
-~~~
+~~~{.bash caption=">_"}
 $ kubectl apply -f allow_db_ingress.yaml
 ~~~
 
@@ -400,8 +396,7 @@ Final step in this section is to allow frontend pods and backend pods to communi
 
 Create a new file `allow_frontend_backend_egress_dns.yaml` and place the following YAML content inside:
 
-~~~
-#allow_frontend_backend_egress_dns.yaml
+~~~{.yaml caption="allow_frontend_backend_egress_dns.yaml"}
 kind: NetworkPolicy
 apiVersion: networking.k8s.io/v1
 metadata:
@@ -441,7 +436,7 @@ spec:
 
 Apply the network policy with the below command
 
-~~~
+~~~{.bash caption=">_"}
 $ kubectl apply -f allow_frontend_backend_egress_dns.yaml
 ~~~
 
@@ -449,7 +444,7 @@ Now let's execute different commands to make sure the network policies are worki
 
 - Let's check access between frontend and backend namespaces.
 
-~~~
+~~~{.bash caption=">_"}
 $ kubectl exec frontend -n frontend -- curl backend-svc.backend
 ~~~
 
@@ -459,7 +454,7 @@ $ kubectl exec frontend -n frontend -- curl backend-svc.backend
 
 - Access between frontend and db namespaces.
 
-~~~
+~~~{.bash caption=">_"}
 $ kubectl exec frontend -n frontend -- curl db-svc.db
 ~~~
 
@@ -476,7 +471,7 @@ $ kubectl exec frontend -n frontend -- curl db-svc.db
 As you see, traffic is now moving between pods across [namespaces](/blog/k8s-namespaces) as we configured.
 You can apply more tests through the below additional commands:
 
-~~~
+~~~{.bash caption=">_"}
 $ kubectl -n backend exec backend -- curl frontend-svc.frontend ## denied
 $ kubectl -n db exec db  -- curl backend-svc.backend ##denied
 ~~~
