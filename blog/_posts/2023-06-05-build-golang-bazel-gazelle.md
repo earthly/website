@@ -6,7 +6,10 @@ toc: true
 author: Amarachi Aso
 
 internal-links:
- - just an example
+ - Golang
+ - Gazelle
+ - Bazel
+ - Builds
 ---
 
 [Bazel](https://bazel.build/), an open source build system created by Google, offers fast and incremental builds for your project through advanced local and distributed caching. It's popular due to its built-in support for multiple languages, extensibility, and ability to scale alongside your codebase, organization, and continuous integration (CI) systems.
@@ -213,4 +216,3 @@ Bazel and Gazelle help simplify the build process in cases where there would hav
 
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Add keywords for internal links to front-matter
