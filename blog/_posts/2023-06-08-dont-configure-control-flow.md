@@ -6,7 +6,10 @@ toc: true
 author: Adam
 
 internal-links:
- - just an example
+ - Control Flow
+ - YAML
+ - Conditionals
+ - Scripts
 ---
 
 ## Introduction
@@ -293,6 +296,3 @@ And tool users: Don't assume that because something only requires configuration,
 
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
-- [ ] Add keywords for internal links to front-matter
