@@ -6,7 +6,10 @@ toc: true
 author: Muhammed Ali
 
 internal-links:
- - just an example
+ - CSV
+ - Go
+ - Tabular Data
+ - GoCSV
 ---
 
 Tabular data is frequently stored in [CSV files](https://en.m.wikipedia.org/wiki/Comma-separated_values), a popular file format. In data processing and analysis projects, managing CSV files is a common task.
@@ -563,4 +566,3 @@ Mastering these techniques can greatly enhance your ability to work with CSV fil
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
 
-- [ ] Add keywords for internal links to front-matter
