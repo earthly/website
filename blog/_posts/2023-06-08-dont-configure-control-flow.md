@@ -28,7 +28,7 @@ It's a pretty old-fashioned bash script that checks some conditions and runs som
 
 It's something like this:
 
-~~~
+~~~{.bash caption=">_"}
 #!/bin/bash
 
 if [ -n "$(echo 'First Condition')" ]; then
@@ -56,7 +56,7 @@ The first step is to pull some of the commands out of bash and use YAML instead.
 
 Let's refactor to `commands.yaml`:
 
-~~~
+~~~{.yaml caption="commands.yaml"}
 commands:
   - echo "Hello, World!"
   - ls
@@ -66,7 +66,7 @@ commands:
 
 Then I need a CI runner to actually do my CI process. Let's use Python to whip one up:
 
-~~~
+~~~{.yaml caption="commands.yaml"}
 import yaml
 import subprocess
 
@@ -88,7 +88,7 @@ I could just inline the ifs into the YAML fields, but that seems a little hacky.
 
 So no problem, I can add conditions:
 
-~~~
+~~~{.yaml caption="commands.yaml"}
 commands:
   - command: echo "Hello, World!"
     if: '[ -n "$(echo 'First Condition')" ]'
@@ -103,7 +103,7 @@ Now the thing we are missing is running the first two jobs in parallel and then 
 
 So we change things to this:
 
-~~~
+~~~{.yaml caption="commands.yaml"}
 commands:
   - command: one 
     run: echo "Hello, World!"
@@ -120,7 +120,7 @@ That is strictly more generic than the `WAIT` version written in bash because yo
 
 Here is the same idea in GitHub Actions:
 
-~~~
+~~~{.yaml caption="commands.yaml"}
 name: GitHub Actions Demo
 jobs:
   one: 
@@ -150,7 +150,7 @@ I've excluded a few details to save space, but you can see that this whole thing
 
 Travis CI has a slightly different approach to programming parallelism in YAML:
 
-~~~
+~~~{.yaml caption="commands.yaml"}
 language: minimal
 
 jobs:
@@ -173,9 +173,11 @@ Stages are executed in order, each waiting on the next but items that share a st
 
 ## Understanding Required
 
+![Understanding]({{site.images}}{{page.slug}}/understanding.png)\
+
 Here's a question: What does this Travis CI build output?
 
-~~~
+~~~{.yaml caption="commands.yaml"}
 language: minimal
 
 jobs:
@@ -198,7 +200,7 @@ But when you specify parallelism in YAML, it doesn't save you from understanding
 
 So the details that are present in this:
 
-~~~
+~~~{.bash caption=">_"}
 #!/bin/bash
 
 if [ -n "$(echo 'First Condition')" ]; then
@@ -218,7 +220,7 @@ echo "Third thing:"
 
 Are sort of obscured in
 
-~~~
+~~~{.yaml caption="commands.yaml"}
 name: GitHub Actions Demo
 jobs:
   one: 
@@ -250,7 +252,7 @@ Or if you want the constraints that configuration offers, then it's also super e
 
 Here is one way to do this for my blog build script example:
 
-~~~
+~~~{.bash caption=">_"}
 job first PARALLEL {
    echo "Hello, World!"
 } when {
@@ -284,6 +286,7 @@ if YAML shouldn't be used to 'declare' a program that later runs, then why is th
 
 ## Conclusion
 
+![conclusion]({{site.images}}{{page.slug}}/conclusion.png)\
 So here is my conclusion.
 
 Tool authors: If you are trying to 'configure' the evaluation or control flow of something, use an existing programming language or write a parser. A packrat or PEG parser is not that much code. Try to avoid building ill-defined little languages whose AST is hand-written in YAML.
@@ -291,7 +294,3 @@ Tool authors: If you are trying to 'configure' the evaluation or control flow of
 And tool users: Don't assume that because something only requires configuration, you won't need to learn a partially-defined embedded-in-config programming language. You might be better off choosing a tool like a Makefile, an Earthfile, or even Gradle than one of the 100s of things that are 'configured' in YAML (Ansible, GHA, Azure Pipelines, and so on).
 
 {% include_html cta/cta2.html %}
-
-## Outside Article Checklist
-
-- [ ] Optional: Find ways to break up content with quotes or images
