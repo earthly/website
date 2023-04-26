@@ -15,7 +15,7 @@ Network policies allow administrators to define rules based on the source and de
 
 To use network policies in Kubernetes, you must have a [network plugin](https://kubernetes.io/docs/concepts/extend-kubernetes/compute-storage-net/network-plugins/) that supports the NetworkPolicy API. Network policies in Kubernetes are implemented by the network plugin, and creating a NetworkPolicy resource will not have any effect if there is no controller that implements it.
 
-In this article, you’ll understand the need to implement security policies in a Kubernetes cluster and how they affect the network flow within the cluster. You will also learn how to apply a network policy in a Kubernetes cluster and control traffic based on namespaces. In addition, you'll get to learn Kubernetes network concepts like Ingress, Egress and Container Network Plugin (CNI).
+In this article, you'll understand the need to implement security policies in a Kubernetes cluster and how they affect the network flow within the cluster. You will also learn how to apply a network policy in a Kubernetes cluster and control traffic based on namespaces. In addition, you'll get to learn Kubernetes network concepts like Ingress, Egress, and Container Network Plugin (CNI).
 
 ## Why You Should Use Network Policy in Kubernetes
 
@@ -60,10 +60,10 @@ Next, you will work on a demo to apply different network policies to a Kubernete
 
 ## Applying Network Policies to Control Traffic Between Namespaces (Demo)
 
-Now let’s proceed with a demo to apply network policies to a Kubernetes cluster. We will limit traffic from/to pods in different namespaces using namespace and pod selectors.
+Now let's proceed with a demo to apply network policies to a Kubernetes cluster. We will limit traffic from/to pods in different namespaces using namespace and pod selectors.
 
 <div class="wide">
-![Demo overview](https://i.imgur.com/T9DWs2n.png)
+![Demo overview]({{site.images}}{{page.slug}}/T9DWs2n.png)
 </div>
 
 The above diagram shows an overview of Kubernetes components that will be created during the demo. You will create three namespaces (frontend, backend, and db) and attach a network policy to each namespace to control the incoming (Ingress) and outgoing (Egress) traffic.
@@ -77,50 +77,52 @@ In case you run the demo on EKS, then the [Amazon VPC CNI plugin](https://docs.a
 
 ### Pods Communication Across Different Namespaces
 
-Our goal in this section is to check the default connectivity between pods in different namespaces before applying any network policies. Let’s create 3 namespaces (frontend, backend, and db) and label these namespaces as below:
+Our goal in this section is to check the default connectivity between pods in different namespaces before applying any network policies. Let's create 3 namespaces (frontend, backend, and db) and label these namespaces as below:
 
-```bash
+~~~
 $ kubectl create ns frontend
 $ kubectl label namespace frontend ns=frontend
 $ kubectl create ns backend
 $ kubectl label namespace backend ns=backend
 $ kubectl create ns db
 $ kubectl label namespace db ns=db
-```
+~~~
+
 These labels will be used later in our network policies to specify a namespace to filter traffic based on its label.
 
 Also you need to label `kube-system` namespace which contains the core components of the Kubernetes cluster, as this label will be used later in a network policy to allow communication to `coredns` pod in `kube-system` namespace which acts as the DNS in the Kubernetes cluster.
 
-```bash
+~~~
 $ kubectl label namespace kube-system contains=coredns
-```
+~~~
 
 For ease, we will run nginx pods in each namespace. This is to have a simple application running and curl these applications endpoints and test the connectivity. Feel free to run whatever app you want to run across different namespaces.
 
-```bash
+~~~
 $ kubectl run frontend --image=nginx -n frontend
 $ kubectl run backend --image=nginx -n backend
 $ kubectl run db --image=nginx -n db
-```
+~~~
+
 Make sure the pods are up and running in each namespace. Note that each pod is created with a default label which will be used later to select these pods.
 
-```bash
+~~~
 $ kubectl get pods -n frontend --show-labels
 $ kubectl get pods -n backend --show-labels
 $ kubectl get pods -n db --show-labels
-```
+~~~
 
 <div class="wide">
-![kubectl get pods](https://i.imgur.com/j6kxMk0.png)
+![kubectl get pods]({{site.images}}{{page.slug}}/j6kxMk0.png)
 </div>
 
-Then, we will expose each pod internally through a service resource as below. 
+Then, we will expose each pod internally through a service resource as below.
 
-```bash
+~~~
 $ kubectl expose pod frontend --name=frontend-svc -n frontend --port=80
 $ kubectl expose pod backend --name=backend-svc -n backend --port=80
 $ kubectl expose pod db --name=db-svc -n db --port=80
-```
+~~~
 
 <div class="notice--info">
 This is to be able to communicate with the applications running on pods through Kubernetes services. Because in real life scenarios, pods are not communicating directly but through service resources.
@@ -128,26 +130,28 @@ This is to be able to communicate with the applications running on pods through 
 
 Also check that service has been applied as expected:
 
-```bash
+~~~
 $ kubectl get svc -n frontend
 $ kubectl get svc -n backend
 $ kubectl get svc -n db
-```
+~~~
+
 <div class="wide">
-![kubectl get svc](https://i.imgur.com/Fs6wGKp.png)
+![kubectl get svc]({{site.images}}{{page.slug}}/Fs6wGKp.png)
 </div>
 
 After applying the above commands, you will be able to communicate with nginx applications through `frontend-svc`, `backend-svc`, and `db-svc services`.
 
-Now let’s try to test the connectivity to the backend application inside the `backend` namespace from the frontend application inside the `frontend` namespace.
+Now let's try to test the connectivity to the backend application inside the `backend` namespace from the frontend application inside the `frontend` namespace.
 
-```bash
+~~~
 $ kubectl -n frontend exec frontend -- curl backend-svc.backend
-```
+~~~
+
 <div class="notice--info">
 The above command is following this pattern:
 
-` kubectl -n <SOURCE_NAMESPACE> exec <SOURCE_POD_NAME> -- curl <TARGET_SERVICE_NAME>.<TARGET_NAMESPACE>`
+`kubectl -n <SOURCE_NAMESPACE> exec <SOURCE_POD_NAME> -- curl <TARGET_SERVICE_NAME>.<TARGET_NAMESPACE>`
 
 For more information about pod and service DNS, you can check [this article](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/).
 </div>
@@ -155,7 +159,7 @@ For more information about pod and service DNS, you can check [this article](htt
 You should be able to see that it is a successful connection. Which means that **access is allowed by default between pods in different namespaces**.
 
 <div class="wide">
-![Welcome to Nginx](https://i.imgur.com/tT4TUaM.png)
+![Welcome to Nginx]({{site.images}}{{page.slug}}/tT4TUaM.png)
 </div>
 
 ### Applying Network Policy to Deny All Traffic Across Namespaces
@@ -168,7 +172,7 @@ Network policies will be created in `YAML` files then applied via `kubectl` comm
 
 Create a new file `deny_all.yaml` and place the following YAML content inside:
 
-```yaml
+~~~
 #deny_all.yaml
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
@@ -220,9 +224,9 @@ spec:
  egress:
  - to:
    - podSelector: {}
-```
+~~~
 
-This is a YAML definition for a network policy which will be applied to frontend, backend and db namespaces, to block all incoming and outgoing traffic from the namespace.
+This is a YAML definition for a network policy which will be applied to frontend, backend, and db namespaces, to block all incoming and outgoing traffic from the namespace.
 
 Let's go through each section of this YAML file:
 
@@ -237,32 +241,33 @@ Let's go through each section of this YAML file:
 - `egress`: This section defines the rules for outgoing traffic.
 - `to`: This specifies the destination of the outgoing traffic. In our case, the `podSelector` is empty which means denying all outgoing traffic.
 
-A network policy with these configurations will deny all traffic between pods in frontend, backend and db namespaces. Let’s apply then test these configurations.
+A network policy with these configurations will deny all traffic between pods in frontend, backend, and db namespaces. Let's apply then test these configurations.
 
 To apply the above network policies, you can use the below command:
 
-```bash
+~~~
 $ kubectl apply -f deny_all.yaml
-```
-Then let’s rerun the same `kubectl exec` command to test the connectivity between pods in frontend and backend namespaces:
+~~~
 
-```bash
+Then let's rerun the same `kubectl exec` command to test the connectivity between pods in frontend and backend namespaces:
+
+~~~
 $ kubectl -n frontend exec frontend -- curl backend-svc.backend
-```
+~~~
+
 <div class="wide">
-![kubectl exec command](https://i.imgur.com/jb6lSfg.png)
+![kubectl exec command]({{site.images}}{{page.slug}}/jb6lSfg.png)
 </div>
 
-As you see, it doesn’t work this time because we applied a network policy to deny all outgoing traffic from the frontend namespace. So the frontend pod is not able to communicate with `coredns` pod in `kube-system` namespace to resolve the backend service DNS record.
+As you see, it doesn't work this time because we applied a network policy to deny all outgoing traffic from the frontend namespace. So the frontend pod is not able to communicate with `coredns` pod in `kube-system` namespace to resolve the backend service DNS record.
 In the next section, we will apply another network policy to allow incoming and outgoing traffic between certain pods and certain namespaces based on labels. Let's do it.
-
 
 ### Allowing Ingress and Egress Traffic Between Pods Across Different Namespaces
 
 In this section, you will apply another network policy to allow traffic from `frontend` namespace to `backend` namespace and from `backend` namespace to `db` namespace.
 
 <div class="wide">
-![Network Policy in Namespaces](https://i.imgur.com/oxkHxZt.png)
+![Network Policy in Namespaces]({{site.images}}{{page.slug}}/oxkHxZt.png)
 </div>
 
 As mentioned in the above diagram, we need to apply Egress network policy in `frontend` namespace, Ingress and Egress network policies in `backend` namespace and Ingress network policy in `db` namespace.
@@ -273,7 +278,7 @@ Our goal in this section is to allow traffic from frontend namespace only to bac
 
 Create a new file `allow_frontend_egress.yaml` and place the following YAML content inside:
 
-```yaml
+~~~
 #allow_frontend_egress.yaml
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
@@ -282,27 +287,27 @@ metadata:
   namespace: frontend
 spec:
   podSelector:
-	matchLabels:
-  	run: frontend
+    matchLabels:
+      run: frontend
   policyTypes:
   - Egress
   egress:
   - to:
-	- namespaceSelector:
-    	matchLabels:
-      	ns: backend
-	- podSelector:
-    	matchLabels:
-      	run: backend
-```
+    - namespaceSelector:
+        matchLabels:
+          ns: backend
+    - podSelector:
+        matchLabels:
+          run: backend
+~~~
 
 So the above network policy will be applied in the frontend namespace to the pods with labels `run=frontend` as mentioned in `spec/podSelection` section. It will apply an Egress policy to allow outgoing traffic to running pods in `backend` namespace labelled with `run=backend`
 
 Apply the network policy with the below command:
 
-```bash
+~~~
 $ kubectl apply -f allow_frontend_egress.yaml
-```
+~~~
 
 Then you create another YAML file for the network policy which will be applied to the backend namespace.
 
@@ -310,7 +315,7 @@ Then you create another YAML file for the network policy which will be applied t
 
 Create a new file `allow_backend_ingress_egress.yaml` and place the following YAML content inside:
 
-```yaml
+~~~
 #allow_backend_ingress_egress.yaml
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
@@ -319,36 +324,36 @@ metadata:
   namespace: backend
 spec:
   podSelector:
-	matchLabels:
-  	run: backend
+    matchLabels:
+      run: backend
   policyTypes:
   - Ingress
   - Egress
   ingress:
   - from:
-	- namespaceSelector:
-    	matchLabels:
-      	ns: frontend
-	- podSelector:
-    	matchLabels:
-      	run: frontend
+    - namespaceSelector:
+        matchLabels:
+          ns: frontend
+    - podSelector:
+        matchLabels:
+          run: frontend
   egress:
   - to:
-	- namespaceSelector:
-    	matchLabels:
-      	ns: db
-	- podSelector:
-    	matchLabels:
-      	run: db
-```
+    - namespaceSelector:
+        matchLabels:
+          ns: db
+    - podSelector:
+        matchLabels:
+          run: db
+~~~
 
 This policy will be applied in the `backend` namespace to pods with label `run=backend` as mentioned in `spec/podSelector` section. It will allow ingress traffic from pods with label `run=frontend` in `frontend` namespace. And will allow egress traffic to pods with label `run=db` in `db` namespace
 
 Apply the network policy with the below command:
 
-```bash
+~~~
 $ kubectl apply -f allow_backend_ingress_egress.yaml
-```
+~~~
 
 Next you will allow ingress (incoming) traffic to the `db` pod from `backend` pods, which can be applied through the below network policy.
 
@@ -356,7 +361,7 @@ Next you will allow ingress (incoming) traffic to the `db` pod from `backend` po
 
 Create a new file `allow_db_ingress.yaml` and place the following YAML content inside:
 
-```yaml
+~~~
 #allow_db_ingress.yaml
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
@@ -365,33 +370,33 @@ metadata:
   namespace: db
 spec:
   podSelector:
-	matchLabels:
-  	run: db
+    matchLabels:
+      run: db
   policyTypes:
   - Ingress
   ingress:
   - from:
-	- namespaceSelector:
-    	matchLabels:
-      	ns: backend
-	- podSelector:
-    	matchLabels:
-      	run: backend
-```
+    - namespaceSelector:
+        matchLabels:
+          ns: backend
+    - podSelector:
+        matchLabels:
+          run: backend
+~~~
 
 This policy will be applied in `db` namespace to pods with label `run=db` as mentioned in `spec/podSelector` section. It will allow ingress traffic from pods with label `run=backend` in `backend` namespace.
 
 Apply the network policy with the below command:
 
-```bash
+~~~
 $ kubectl apply -f allow_db_ingress.yaml
-```
+~~~
 
 Final step in this section is to allow frontend pods and backend pods to communicate with `coredns` pod in `kube-system` namespace, to be able to resolve services' DNS names.
 
 Create a new file `allow_frontend_backend_egress_dns.yaml` and place the following YAML content inside:
 
-```yaml
+~~~
 #allow_frontend_backend_egress_dns.yaml
 kind: NetworkPolicy
 apiVersion: networking.k8s.io/v1
@@ -403,13 +408,13 @@ spec:
   policyTypes:
   - Egress
   egress:
-	- to:
-  	- namespaceSelector:
-      	matchLabels:
-        	contains: coredns
-    	podSelector:
-      	matchLabels:
-        	k8s-app: kube-dns
+    - to:
+      - namespaceSelector:
+          matchLabels:
+            contains: coredns
+        podSelector:
+          matchLabels:
+            k8s-app: kube-dns
 ---
 kind: NetworkPolicy
 apiVersion: networking.k8s.io/v1
@@ -421,61 +426,62 @@ spec:
   policyTypes:
   - Egress
   egress:
-	- to:
-  	- namespaceSelector:
-      	matchLabels:
-        	contains: coredns
-    	podSelector:
-      	matchLabels:
-        	k8s-app: kube-dns
-```
+    - to:
+      - namespaceSelector:
+          matchLabels:
+            contains: coredns
+        podSelector:
+          matchLabels:
+            k8s-app: kube-dns
+~~~
 
 Apply the network policy with the below command
 
-```bash
+~~~
 $ kubectl apply -f allow_frontend_backend_egress_dns.yaml
-```
+~~~
 
 Now let's execute different commands to make sure the network policies are working as expected.
 
 - Let's check access between frontend and backend namespaces.
 
-```bash
+~~~
 $ kubectl exec frontend -n frontend -- curl backend-svc.backend
-```
+~~~
+
 <div class="wide">
-![Access Allowed](https://i.imgur.com/heuXqPB.png)
+![Access Allowed]({{site.images}}{{page.slug}}/heuXqPB.png)
 </div>
 
 - Access between frontend and db namespaces.
 
-```bash
+~~~
 $ kubectl exec frontend -n frontend -- curl db-svc.db
-```
+~~~
 
 <div class="wide">
-![Access Denied](https://i.imgur.com/mIA5V4a.png)
+![Access Denied]({{site.images}}{{page.slug}}/mIA5V4a.png)
 </div>
 
 - Access between backend and db namespaces.
 
 <div class="wide">
-![Access Allowed](https://i.imgur.com/LrckuRL.png)
+![Access Allowed]({{site.images}}{{page.slug}}/LrckuRL.png)
 </div>
 
 As you see, traffic is now moving between pods across namespaces as we configured.
 You can apply more tests through the below additional commands:
 
-```bash
+~~~
 $ kubectl -n backend exec backend -- curl frontend-svc.frontend ## denied
 $ kubectl -n db exec db  -- curl backend-svc.backend ##denied
-```
+~~~
 
 ## Conclusion
 
-By using network policies, organizations can ensure that their Kubernetes workloads are isolated, protected, and compliant with industry standards and best practices. However, implementing network policies can be complex and requires careful planning and testing.  Overall, network policies are an essential component of any Kubernetes security strategy and should be carefully considered and implemented to ensure the safety and integrity of your cluster.
+By using network policies, organizations can ensure that their Kubernetes workloads are isolated, protected, and compliant with industry standards and best practices. However, implementing network policies can be complex and requires careful planning and testing. Overall, network policies are an essential component of any Kubernetes security strategy and should be carefully considered and implemented to ensure the safety and integrity of your cluster.
 
-In this article, you have learned about network policies in Kubernetes and general network concepts like Ingress, Egress and CNI. In addition, you’ve also learned how to apply multiple network policies with different conditions to fulfil certain network requirements.
+In this article, you have learned about network policies in Kubernetes and general network concepts like Ingress, Egress, and CNI. In addition, you've also learned how to apply multiple network policies with different conditions to fulfil certain network requirements.
 
 You can continue learning about other features available in Kubernetes, such as [Security Context in Kubernetes](https://earthly.dev/blog/k8s-cluster-security/) and [Mutual TLS over Kubernetes Nginx Ingress Controller](https://earthly.dev/blog/mutual-tls-kubernetes-nginx-ingress-controller/).
 
@@ -487,6 +493,5 @@ You can continue learning about other features available in Kubernetes, such as 
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
