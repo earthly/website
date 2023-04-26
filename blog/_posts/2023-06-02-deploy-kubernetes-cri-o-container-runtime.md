@@ -50,7 +50,7 @@ Swap is a space on a hard disk that is used as a temporary storage area for data
 </div>
 Execute the following command on both of your servers (master and worker node) to [disable swap](https://discuss.kubernetes.io/t/swap-off-why-is-it-necessary/6879/4). This step is crucial as leaving `swap` enabled can interfere with the performance and stability of the Kubernetes cluster:
 
-~~~
+~~~{.bash caption=">_"}
 swapoff -a
 ~~~
 
@@ -62,7 +62,7 @@ So, the swapoff -a command disables all swap devices or files on a Linux system,
 
 Remove any reference to swap space from the **`/etc/fstab`** file on both servers using the command below:
 
-~~~
+~~~{.bash caption=">_"}
 sed -i '/swap/d' /etc/fstab
 ~~~
 
@@ -73,7 +73,7 @@ This ensures that your servers will not attempt to activate swap at boot time.
 
 Now display the status of swap devices or files on your servers using the following command:
 
-~~~
+~~~{.bash caption=">_"}
 swapon -s
 ~~~
 
@@ -94,7 +94,7 @@ By adding the **`overlay`** and **`br_netfilter`** modules to the **`/etc/module
 
 </div>
 
-~~~
+~~~{.bash caption=">_"}
 cat >>/etc/modules-load.d/crio.conf<<EOF
 overlay
 br_netfilter
@@ -103,7 +103,7 @@ EOF
 
 Enable the kernel modules for the current session manually using the following commands:
 
-~~~
+~~~{.bash caption=">_"}
 modprobe overlay
 modprobe br_netfilter
 ~~~
@@ -116,7 +116,7 @@ By running the commands **`modprobe overlay`** and **`modprobe br_netfilter`**, 
 
 Confirm that the kernel modules required by CRI-O are loaded and available on both servers using the following commands:
 
-~~~
+~~~{.bash caption=">_"}
 lsmod | grep overlay
 lsmod | grep br_netfilter
 ~~~
@@ -127,7 +127,7 @@ lsmod | grep br_netfilter
 
 Provide networking capabilities to containers by executing the following command:
 
-~~~
+~~~{.bash caption=">_"}
 cat >>/etc/sysctl.d/kubernetes.conf<<EOF
 net.bridge.bridge-nf-call-ip6tables = 1
 net.bridge.bridge-nf-call-iptables  = 1
@@ -146,7 +146,7 @@ By appending these lines to **`/etc/sysctl.d/kubernetes.conf`**, the settings wi
 
 Be sure to run the command below so the *sysctl* settings above take effect for the current session:
 
-~~~
+~~~{.bash caption=">_"}
 sysctl --system
 ~~~
 
@@ -164,7 +164,7 @@ Therefore, you will follow the steps in this section to set up a firewall on you
 
 Firstly, execute the following command on both servers to enable the [Uncomplicated Firewall (UFW](https://en.wikipedia.org/wiki/Uncomplicated_Firewall)) on the system. Once enabled, UFW will start automatically at boot and enforce the firewall rules you configure:
 
-~~~
+~~~{.bash caption=">_"}
 ufw enable
 ~~~
 
@@ -180,7 +180,7 @@ According to the [Kubernetes official documentation](https://kubernetes.io/docs/
 - Port `10259`  for the kube scheduler.
 - Port `10257`  for the Kube controller manager.
 
-~~~
+~~~{.bash caption=">_"}
 # Opening ports for Control Plane
 sudo ufw allow 6443/tcp
 sudo ufw allow 2379:2380/tcp
@@ -195,12 +195,16 @@ sudo ufw allow 10257/tcp
 
 Then execute the following commands on the same server to open ports for the [Calico CNI](https://docs.tigera.io/calico/3.25/getting-started/kubernetes/requirements#network-requirements) as this is the Kubernetes network plugin we will be using:
 
-~~~
+~~~{.bash caption=">_"}
 # Opening ports for Calico CNI
-sudo ufw allow 179/tcp #allows incoming TCP traffic on port 179, which is used by the Kubernetes API server for communication with the etcd datastore
-sudo ufw allow 4789/udp #allows incoming UDP traffic on port 4789, which is used by the Kubernetes networking plugin (e.g. Calico) for overlay networking.
-sudo ufw allow 4789/tcp #allows incoming TCP traffic on port 4789, which is also used by the Kubernetes networking plugin for overlay networking.
-sudo ufw allow 2379/tcp #allows incoming TCP traffic on port 2379, which is used by the etcd datastore for communication between cluster nodes.
+sudo ufw allow 179/tcp #allows incoming TCP traffic on port 179, 
+#which is used by the Kubernetes API server for communication with the etcd datastore
+sudo ufw allow 4789/udp #allows incoming UDP traffic on port 4789, 
+#which is used by the Kubernetes networking plugin (e.g. Calico) for overlay networking.
+sudo ufw allow 4789/tcp #allows incoming TCP traffic on port 4789, 
+#which is also used by the Kubernetes networking plugin for overlay networking.
+sudo ufw allow 2379/tcp #allows incoming TCP traffic on port 2379, 
+#which is used by the etcd datastore for communication between cluster nodes.
 ~~~
 
 <div class="wide">
@@ -209,7 +213,7 @@ sudo ufw allow 2379/tcp #allows incoming TCP traffic on port 2379, which is used
 
 Now display the current status of the Uncomplicated Firewall (UFW) on the supposed control plane using the following command:
 
-~~~
+~~~{.bash caption=">_"}
 sudo ufw status
 ~~~
 
@@ -221,7 +225,7 @@ You should see a list of the active firewall rules, including which ports are al
 
 Next, run the following commands on the server that will be used as a worker node. If you have multiple worker nodes, execute these commands on all of them:
 
-~~~
+~~~{.bash caption=">_"}
 # Opening ports for Worker Nodes
 sudo ufw allow 10250/tcp #Kubelet API
 sudo ufw allow 30000:32767/tcp #NodePort Services
@@ -239,7 +243,7 @@ sudo ufw allow 2379/tcp
 
 Display the current status of the Uncomplicated Firewall (UFW) on the supposed worker node(s) using the following command:
 
-~~~
+~~~{.bash caption=">_"}
 sudo ufw status
 ~~~
 
@@ -258,7 +262,7 @@ In Kubernetes, a container runtime is responsible for managing the lifecycle of 
 
 Create two environment variables **OS*** and **CRIO-VERSION** on all your servers and set them to the following values **22.04** and **1.26** using the commands below:
 
-~~~
+~~~{.bash caption=">_"}
 OS=xUbuntu_22.04
 CRIO_VERSION=1.26
 ~~~
@@ -267,7 +271,8 @@ This ensures that the correct version of CRI-O is installed on the specific vers
 
 Execute the following commands to add the cri-o repository via `apt`, so that the package manager can find and install the required packages:
 
-~~~
+~~~{.bash caption=">_"}
+
 echo "deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/$OS/ /"|sudo tee /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list
 echo "deb http://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable:/cri-o:/$CRIO_VERSION/$OS/ /"|sudo tee /etc/apt/sources.list.d/devel:kubic:libcontainers:stable:cri-o:$CRIO_VERSION.list
 ~~~
@@ -284,7 +289,8 @@ Download the GPG key of the CRI-O repository via curl:
 In the context of the CRI-O repository, downloading the GPG key helps to ensure that the packages we are downloading are genuine and have not been tampered with. This is important for security reasons, as it helps to prevent the installation of malicious software on our system.
 </div>
 
-~~~
+~~~{.bash caption=">_"}
+
 curl -L https://download.opensuse.org/repositories/devel:kubic:libcontainers:stable:cri-o:$CRI_VERSION/$OS/Release.key | sudo apt-key --keyring /etc/apt/trusted.gpg.d/libcontainers.gpg add -
 curl -L https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/$OS/Release.key | sudo apt-key --keyring /etc/apt/trusted.gpg.d/libcontainers.gpg add -
 ~~~
@@ -295,7 +301,7 @@ curl -L https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/
 
 Update the package repository and install the CRI-O container runtime along with its dependencies using the following commands:
 
-~~~
+~~~{.bash caption=">_"}
 sudo apt-get update 
 sudo apt-get install -qq -y cri-o cri-o-runc cri-tools
 ~~~
@@ -306,7 +312,7 @@ sudo apt-get install -qq -y cri-o cri-o-runc cri-tools
 
 Run the following commands to reload the systemd configuration and then enable and start the CRI-O service:
 
-~~~
+~~~{.bash caption=">_"}
 systemctl daemon-reload
 systemctl enable --now crio
 ~~~
@@ -317,7 +323,7 @@ systemctl enable --now crio
 
 Verify the status and configuration of the CRI-O container runtime after installation with the following command:
 
-~~~
+~~~{.bash caption=">_"}
 crictl info
 ~~~
 
@@ -329,7 +335,7 @@ You should see the following output which implies that the CRI-O container runti
 
 You can further check the CRI-O version with the following command:
 
-~~~
+~~~{.bash caption=">_"}
 crictl version
 ~~~
 
@@ -343,11 +349,13 @@ Since you have now installed the CRI-O container runtime, the next step is to in
 
 Add the GPG key for the Kubernetes repository, download the Kubernetes repository, and install the Kubernetes components with the following commands:
 
-~~~
+~~~{.bash caption=">_"}
 # Add GPG key for Kubernetes repository
-curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
+curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg \
+| apt-key add -
 
-# Add the Kubernetes apt repository to the local apt repository configuration
+# Add the Kubernetes apt repository to the local apt repository 
+# configuration
 apt-add-repository "deb http://apt.kubernetes.io/ kubernetes-xenial main"
 
 # installs the Kubernetes components/packages
@@ -373,10 +381,11 @@ Initializing a Kubernetes cluster on the control plane involves setting up the m
 
 First, run the following commands to enable the *kubelet* service and initialize the master node as the machine to run the control plane components (the API server, etcd, controller manager, and scheduler) :
 
-~~~
+~~~{.bash caption=">_"}
 # Enable the Kubelet service
 systemctl enable kubelet
-# Lists and pulls all images that Kubeadm requires specified in the configuration file
+# Lists and pulls all images that Kubeadm requires \
+#specified in the configuration file
 kubeadm config images pull
 ~~~
 
@@ -386,8 +395,10 @@ kubeadm config images pull
 
 To initialize a Kubernetes cluster on the control plane, execute the following command:
 
-~~~
-kubeadm init --pod-network-cidr=192.168.0.0/16 --cri-socket unix:///var/run/crio/crio.sock
+~~~{.bash caption=">_"}
+
+kubeadm init --pod-network-cidr=192.168.0.0/16 \
+--cri-socket unix:///var/run/crio/crio.sock
 ~~~
 
 This initializes a Kubernetes control plane with CRI-O as the container runtime and specifies the [Pod network CIDR range](https://sookocheff.com/post/kubernetes/understanding-kubernetes-networking-model/) as well as the CRI socket for communication with the container runtime.
@@ -411,13 +422,14 @@ Deploying [Calico Network in Kubernetes](https://docs.tigera.io/calico/3.25/gett
 
 First, execute the following command, so you can use and interact with the Kubernetes cluster:
 
-~~~
+~~~{.bash caption=">_"}
 export KUBECONFIG=/etc/kubernetes/admin.conf
 ~~~
 
 Run the command on the master node to deploy the Calico Network:
 
-~~~
+~~~{.bash caption=">_"}
+
 kubectl apply -f https://raw.githubusercontent.com/projectcalico/calico/v3.25.0/manifests/calico.yaml
 ~~~
 
@@ -431,7 +443,7 @@ Joining the worker node(s) with the master node is very important as the worker 
 
 Execute the below command on the control plane node to generate a join command that can be used by worker nodes to join the Kubernetes cluster:
 
-~~~
+~~~{.bash caption=">_"}
 kubeadm token create --print-join-command
 ~~~
 
@@ -451,7 +463,7 @@ If the joining successful, you should have the below output:
 
 To verify, run the command on the control plane node (master node) to get the nodes available in the cluster:
 
-~~~
+~~~{.bash caption=">_"}
 kubectl get nodes
 ~~~
 
@@ -467,8 +479,10 @@ Now that you have your Kubernetes cluster up and running, it's time to test this
 
 First, download the Kubeconfig file of your cluster to your local machine with the following commands:
 
-~~~
-scp root@CONTROL_PLANE_IP_ADDRESS:/etc/kubernetes/admin.conf ~/.kube/config
+~~~{.bash caption=">_"}
+
+scp root@CONTROL_PLANE_IP_ADDRESS:/etc/kubernetes/admin.conf \
+~/.kube/config
 ~~~
 
 If you don't do this, you won't be able to use and interact with your cluster.
@@ -479,7 +493,7 @@ If you don't do this, you won't be able to use and interact with your cluster.
 
 Verify the status of the cluster and its components using the following command:
 
-~~~
+~~~{.bash caption=">_"}
 kubectl cluster-info
 ~~~
 
@@ -491,7 +505,7 @@ When executed, it displays the URLs for the Kubernetes API server as well as the
 
 Retrieve the information about the nodes in the Kubernetes cluster, including their name, status, and IP addresses, and the information about all the pods running in the cluster, including the namespace, name, status, and IP address of each pod with the following commands:
 
-~~~
+~~~{.bash caption=">_"}
 kubectl get nodes
 kubectl get pods -A
 ~~~
@@ -502,7 +516,7 @@ kubectl get pods -A
 
 Lastly, create an Nginx deployment with the following command to test the Kubernetes cluster:
 
-~~~
+~~~{.bash caption=">_"}
 kubectl create deploy nginx-web-server --image nginx
 ~~~
 
@@ -512,7 +526,7 @@ kubectl create deploy nginx-web-server --image nginx
 
 Create a NodePort service with the following command to expose the **`nginx-web-server`** deployment on a static port (port 80) on each node in the cluster, which allows external traffic to access the service:
 
-~~~
+~~~{.bash caption=">_"}
 kubectl expose deploy nginx-web-server --port 80 --type NodePort
 ~~~
 
@@ -522,7 +536,7 @@ kubectl expose deploy nginx-web-server --port 80 --type NodePort
 
 To view the nginx web server, execute the following over your preferred web browser:
 
-~~~
+~~~{.bash caption=">_"}
 # MASTER_IP:NODEPORT_SERVICE_PORT
 http://170.187.169.145:32141/
 
@@ -544,7 +558,7 @@ For illustration purposes, we will verify by deploying a [**`busybox`**](https:/
 
 Create a new pod running a busybox container with the name **`busybox`** and attach a terminal session to it with the following command:
 
-~~~
+~~~{.bash caption=">_"}
 kubectl run -it --rm busybox --image busybox
 ~~~
 
@@ -554,7 +568,7 @@ kubectl run -it --rm busybox --image busybox
 
 If you open another terminal and run the following command, you will see that the **`busy-box`** pod has been created and is running :
 
-~~~
+~~~{.bash caption=">_"}
 kubectl get pods -o wide -A
 ~~~
 
@@ -571,13 +585,13 @@ Take note of the other network IP addresses, as we will be using them to demonst
 
 You can also execute the following command in the **`busybox`** shell to confirm:
 
-~~~
+~~~{.bash caption=">_"}
 hostname -i
 ~~~
 
 Execute the following command to check the network connectivity between the worker node running the **`busybox`** container and one of the master node network IP addresses - `10.85.0.4` for instance:
 
-~~~
+~~~{.bash caption=">_"}
 ping ANY_OF_THE_MASTER_NODE_NETWORK_IP
 ping 10.85.0.4
 ~~~
@@ -590,7 +604,7 @@ From the image above you can see that you have outputted an error message **perm
 
 Even if you try pinging another network IP, you should still have the same error, as shown below:
 
-~~~
+~~~{.bash caption=">_"}
 ping 170.187.169.145
 ~~~
 
@@ -616,14 +630,14 @@ Firstly, delete the **`busybox`**  container by simply typing the command `exit`
 
 SSH into the worker node using the following command:
 
-~~~
+~~~{.bash caption=">_"}
 ssh root@WORKER_NODE_IP
 ssh root@170.187.169.226
 ~~~
 
 Run the following command to open up the **`/etc/crio/crio.conf`** file using the nano text editor, you can use any text editor of your choice too:
 
-~~~
+~~~{.bash caption=">_"}
 nano /etc/crio/crio.conf
 ~~~
 
