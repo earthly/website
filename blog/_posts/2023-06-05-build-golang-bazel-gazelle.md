@@ -24,6 +24,8 @@ The code for this tutorial is available in this [GitHub repo](https://github.com
 
 ## How Go and Bazel Work Together
 
+![Together]({{site.images}}{{page.slug}}/together.png)\
+
 Bazel can be used to build a Go project of any size, and the [`Go build`](https://pkg.go.dev/cmd/go#hdr-Compile_packages_and_dependencies) command is often sufficient for small applications. However, if your Go project is considerably large, supports code generation, or is in the same repository as code written in other languages, these variables can add multiple layers of complexity to your build process and the `Go build` command might not be sufficient.
 
 For example, with complex projects, you may need to manage more than one build
@@ -41,13 +43,13 @@ To install Bazel, follow the [installation instructions](https://bazel.build/ins
 
 Once you've installed Bazel, Gazelle is easy to install. You just need to open a terminal and run the following command:
 
-~~~
+~~~{.bash caption=">_"}
 go install github.com/bazelbuild/bazel-gazelle/cmd/gazelle@latest
 ~~~
 
 After installation, prior to running any `gazelle` commands, you need to make sure that your `GOPATH/bin` is added to `$PATH`. On Linux, you can do this with the following command:
 
-~~~
+~~~{.bash caption=">_"}
 export PATH="$PATH:$HOME/go/bin/"
 ~~~
 
@@ -56,6 +58,8 @@ Adding `GOPATH/bin` to `$PATH` is needed to ensure that the gazelle command can 
 However, this will only stay valid while your current terminal session is still in use. Make sure you rerun this command after you close and reopen your terminal, or for a permanent solution, add `GOPATH/bin` to `$PATH` [permanently](https://phoenixnap.com/kb/linux-add-to-path).
 
 ### Set Up the Project and Generate Build Files
+
+![Generate]({{site.images}}{{page.slug}}/generate.png)\
 
 The Go project you'll be creating is a build process for a simple web application. It depends on a package `greetings` that returns a simple greeting or a map of greetings to different names.
 
@@ -69,13 +73,15 @@ Download the starting project from this [GitHub branch](https://github.com/Shula
 
 Or clone the repository and checkout to the branch `before-bazel` with the following command:
 
-~~~
-git clone https://github.com/Shulammite-Aso/bazel-demo-app.git && cd bazel-demo-app && git checkout before-bazel
+~~~{.bash caption=">_"}
+git clone https://github.com/Shulammite-Aso/bazel-demo-app.git \
+&& cd bazel-demo-app && git checkout before-bazel
 ~~~
 
 Once downloaded, it's time to prepare the project for building with Bazel. To do so, create a `WORKSPACE` file on the root directory of this project. The existence of the `WORKSPACE` file lets Bazel know that the current directory is a Bazel project. The `WORKSPACE` file is also used to load project-specific dependencies and settings. Insert the following [Starlark code](https://bazel.build/rules/language) in the `WORKSPACE` file:
 
-~~~
+~~~{ caption="WORKSPACE.bazel"}
+
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
 http_archive(
@@ -97,7 +103,8 @@ http_archive(
 )
 
 
-load("@io_bazel_rules_go//go:deps.bzl", "go_register_toolchains", "go_rules_dependencies")
+load("@io_bazel_rules_go//go:deps.bzl", "go_register_toolchains", \
+"go_rules_dependencies")
 load("@bazel_gazelle//:deps.bzl", "gazelle_dependencies", "go_repository")
 
 ############################################################
@@ -117,7 +124,8 @@ This code loads Bazel and Gazelle, as well as their dependencies, into your work
 
 The following comment is seen in the Starlark code you just put into your `WORKSPACE` file:
 
-~~~
+~~~{ caption="WORKSPACE.bazel"}
+
 ############################################################
 # Define your own dependencies here using go_repository.
 # Else, dependencies declared by rules_go/gazelle will be used.
@@ -131,7 +139,7 @@ Now you need to generate `BUILD` files for your `src` codes. In Bazel, every sub
 
 Instead of manually creating and writing these files, you can generate them with Gazelle by running the following command from the root of your project and replacing `github.com/example/project` with the name of your project, which you can find in your `go.mod` file:
 
-~~~
+~~~{.bash caption=">_"}
 gazelle -go_prefix github.com/example/project
 ~~~
 
@@ -141,14 +149,16 @@ Once you run the previous command, you should have a `BUILD.bazel` file in all t
 
 To build your `src` files, run the following Bazel command from the root of your project:
 
-~~~
+~~~{.bash caption=">_"}
 bazel build //...
 ~~~
 
 You should receive this error:
 
-~~~
-no such package '@com_github_gorilla_mux//': The repository '@com_github_gorilla_mux' could not be resolved: ……
+~~~{ caption="Output"}
+
+no such package '@com_github_gorilla_mux//': \
+The repository '@com_github_gorilla_mux' could not be resolved: ……
 ~~~
 
 This error message tells you that Bazel could not locate the package `github.com/gorilla/mux` because `gorilla/mux` is an external package, and there is no definition of how or where to load the package from.
@@ -158,21 +168,26 @@ Again, instead of writing this definition by hand, Gazelle can look into the `go
 To define your external dependencies, you'll use the `gazelle update-repo` command. The flags on the following command tell Gazelle to import repositories from `go.mod`, update macro, and remove the `go_repository` rules that no longer have equivalent repos in the
 `Gopkg.lock/go.mod` file. You need to run this command from the root of your project:
 
-~~~
-gazelle update-repos -from_file=go.mod -to_macro=deps.bzl%go_dependencies -prune
+~~~{.bash caption=">_"}
+gazelle update-repos -from_file=go.mod \
+-to_macro=deps.bzl%go_dependencies -prune
 ~~~
 
 This will create the file `deps.bzl` on the root directory.
 
 Then run `bazel build //...` again. You should find that the previous error has been resolved; however, you'll experience another issue:
 
-~~~
-ERROR: Error computing the main repository mapping: Every .bzl file must have a corresponding package, but '//:deps.bzl' does not have one. Please create a BUILD file in the same or any parent directory. Note that this BUILD file does not need to do anything except exist.
+~~~{ caption="Output"}
+ERROR: Error computing the main repository mapping: \
+Every .bzl file must have a corresponding package, \
+but '//:deps.bzl' does not have one. Please create a \
+BUILD file in the same or any parent directory. Note \
+that this BUILD file does not need to do anything except exist.
 ~~~
 
 This tells you that you need to create a `BUILD` file in the same directory as the generated `deps.bzl` file. This file doesn't need to do anything but exist, and you can create it with the following command:
 
-~~~
+~~~{.bash caption=">_"}
 touch BUILD.bazel
 ~~~
 
@@ -180,7 +195,7 @@ Rerun `bazel build //...`, and you should find that your build is running succes
 
 In your project, a test has been written for the package `greeting`. Run the test on the `greeting` package with the following command:
 
-~~~
+~~~{.bash caption=">_"}
 bazel test //...
 ~~~
 
@@ -192,13 +207,13 @@ Your test should pass with the following output:
 
 Before you finish, run your application with this Bazel command:
 
-~~~
+~~~{.bash caption=">_"}
 bazel run //cmd
 ~~~
 
 This web application should now run with a log output on the terminal that says the following:
 
-~~~
+~~~{.bash caption=">_"}
 server started at port :5000
 ~~~
 
@@ -211,7 +226,3 @@ In this tutorial, you learned how Bazel and Gazelle can be used to build a Go ap
 Bazel and Gazelle help simplify the build process in cases where there would have been multiple complex layers. In addition, it's also significantly faster to build with Bazel since it doesn't have to rebuild your whole project every time it runs.
 
 {% include_html cta/cta2.html %}
-
-## Outside Article Checklist
-
-- [ ] Optional: Find ways to break up content with quotes or images
