@@ -198,13 +198,17 @@ Then execute the following commands on the same server to open ports for the [Ca
 ~~~{.bash caption=">_"}
 # Opening ports for Calico CNI
 sudo ufw allow 179/tcp #allows incoming TCP traffic on port 179, 
-#which is used by the Kubernetes API server for communication with the etcd datastore
+#which is used by the Kubernetes API server for communication 
+# with the etcd datastore
 sudo ufw allow 4789/udp #allows incoming UDP traffic on port 4789, 
-#which is used by the Kubernetes networking plugin (e.g. Calico) for overlay networking.
+#which is used by the Kubernetes networking plugin (e.g. Calico) 
+# for overlay networking.
 sudo ufw allow 4789/tcp #allows incoming TCP traffic on port 4789, 
-#which is also used by the Kubernetes networking plugin for overlay networking.
+#which is also used by the Kubernetes networking plugin for 
+# overlay networking.
 sudo ufw allow 2379/tcp #allows incoming TCP traffic on port 2379, 
-#which is used by the etcd datastore for communication between cluster nodes.
+#which is used by the etcd datastore for communication 
+# between cluster nodes.
 ~~~
 
 <div class="wide">
@@ -396,7 +400,6 @@ kubeadm config images pull
 To initialize a Kubernetes cluster on the control plane, execute the following command:
 
 ~~~{.bash caption=">_"}
-
 kubeadm init --pod-network-cidr=192.168.0.0/16 \
 --cri-socket unix:///var/run/crio/crio.sock
 ~~~
@@ -480,7 +483,6 @@ Now that you have your Kubernetes cluster up and running, it's time to test this
 First, download the Kubeconfig file of your cluster to your local machine with the following commands:
 
 ~~~{.bash caption=">_"}
-
 scp root@CONTROL_PLANE_IP_ADDRESS:/etc/kubernetes/admin.conf \
 ~/.kube/config
 ~~~
@@ -664,8 +666,3 @@ In this article, you have seen how to get started with CRI-O, install it on an U
 There is no doubt that its focus on performance, security, and compatibility with Kubernetes makes it a great choice for organizations looking to deploy containerized applications at scale.
 
 {% include_html cta/cta2.html %}
-
-## Outside Article Checklist
-
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
