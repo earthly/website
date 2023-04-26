@@ -9,7 +9,7 @@ internal-links:
  - just an example
 ---
 
-Tabular data is frequently stored in [CSV files](https://en.m.wikipedia.org/wiki/Comma-separated_values), a popular file format. In data processing and analysis projects, managing CSV files is a common task. 
+Tabular data is frequently stored in [CSV files](https://en.m.wikipedia.org/wiki/Comma-separated_values), a popular file format. In data processing and analysis projects, managing CSV files is a common task.
 
 And to work with CSV files, a number of packages are available. In this tutorial, we will explore various techniques for managing CSV files using the Go programming language. We will cover topics such as reading and appending CSV files, converting between CSV and JSON file formats.
 
@@ -22,7 +22,7 @@ To follow along with this tutorial, be sure you have the following:
 1. Basic knowledge of Golang
 2. Golang is set up on your local machine
 
-## What is a CSV File?
+## What Is a CSV File?
 
 A CSV (Comma Separated Values) file is a straightforward and popular file format. It is made up of data records, where each record corresponds to a single row in the table and where each field is delimited by a comma.
 
@@ -32,18 +32,15 @@ Typically, each line in a CSV file represents one record or row of data, with co
 
 Golang provides built-in packages such as [`encoding/csv`](https://pkg.go.dev/encoding/csv) and third-party packages such as [`Gocsv`](https://pkg.go.dev/github.com/gocarina/gocsv) for handling CSV data. In this section, we will discuss these two packages and discuss which one is better for handling CSV data in Golang.
 
-### Using `encoding/csv` to Work with CSV Files
+### Using `Encoding/csv` To Work with CSV Files
 
-[`encoding/CSV`](https://pkg.go.dev/encoding/csv) is a standard package in Golang’s standard library that provides functionality for encoding and decoding CSV data. In this section, we’ll use the `encoding/CSV` package to read and write CSV data.
+[`encoding/CSV`](https://pkg.go.dev/encoding/csv) is a standard package in Golang's standard library that provides functionality for encoding and decoding CSV data. In this section, we'll use the `encoding/CSV` package to read and write CSV data.
 
-We’ll first create a folder and open it in a text editor, then create a Go file (`main.go`) within the newly created folder, where we will run our code. Also, create a CSV file named `data.csv`. You can as well and get the sample data from [GitHub](https://github.com/khabdrick/go-csv/blob/master/data.csv).
+We'll first create a folder and open it in a text editor, then create a Go file (`main.go`) within the newly created folder, where we will run our code. Also, create a CSV file named `data.csv`. You can as well and get the sample data from [GitHub](https://github.com/khabdrick/go-csv/blob/master/data.csv).
 
 The code below demonstrates how to read data from a CSV file. And also how to write data to a new CSV file:
 
-
-
-
-```go
+~~~
 //main.go
 package main
 
@@ -60,14 +57,15 @@ func main() {
        panic(err)
    }
    defer file.Close()
-```
+~~~
+
 Here, we first open the file using the `os.Open()` function and assign it to the variable `file`. We check for any errors using an if statement and panic if there's an error. We use the `defer` keyword to ensure that the file is properly closed at the end of the program.
 
 Next, we create a new `csv.Reader` object called `reader` and read the data from the opened file. We use `reader.FieldPerRecord=-1` to allow for a variable number of fields in each record. We then use `reader.ReadAll()` to read all the records from the file and assign them to the `data` variable. If there's any error while reading the file, the program will panic and stop.
 
 We then loop through the data using a nested `for` loop to access each row and column of the CSV file. We print each column value to the console, followed by a comma separator and a newline:
 
-```go
+~~~
    // Read the CSV data
    reader := csv.NewReader(file)
    reader.FieldsPerRecord = -1 // Allow variable number of fields
@@ -83,11 +81,11 @@ We then loop through the data using a nested `for` loop to access each row and c
        }
        fmt.Println()
    }
-```
+~~~
 
 The following part of this code creates a new CSV file named `data1.csv` and populates it with some data. It creates a new CSV file named `data1.csv` using the `os.Create()` function and assigns it to the variable `file2`. We check for any errors using an `if` statement and `panic` if there's an error.
 
-```
+~~~
 panic: nil
 
 goroutine 1 [running]:
@@ -95,14 +93,15 @@ main.main()
         /home/muhammed/Desktop/dev/article_repos/go-csv/main.go:36 +0x675
 exit status 2
 
-```
+~~~
+
 Next, we create a new `csv.Writer` object called `writer` for writing data to the new file.
 
 We use defer `writer.Flush()` to ensure that any buffered data is written to the file before it's closed. Next, we define the header and data values for the new CSV file as slices of strings (represents a collection of string values) and write the header values to the new file using the `writer.Write(header)` statement. We then loop through the data rows and write each row to the new CSV file using the `writer.Write(row)` statement.
 
 Finally, we use the `defer` statement to close both the old and new CSV files.
 
-```go
+~~~
 //main.go
    // Write the CSV data
    file2, err := os.Create("data1.csv")
@@ -126,31 +125,33 @@ Finally, we use the `defer` statement to close both the old and new CSV files.
        writer.Write(row)
    }
 }
-```
-
+~~~
 
 Now run main.go from your terminal:
 
-```bash
+~~~
 go run main.go
-```
+~~~
 
-![CSV extraction](https://i.imgur.com/54tNaOw.png)
+<div class="wide">
 
-![CSV creation with Encoding/CSV](https://i.imgur.com/5tgyj8J.png)
+![CSV extraction]({{site.images}}{{page.slug}}/54tNaOw.png)
 
-### Using `goCSV` to Create a CSV file
+![CSV creation with Encoding/CSV]({{site.images}}{{page.slug}}/5tgyj8J.png)
+</div>
+
+### Using `goCSV` to Create a CSV File
 
 In this section, we'll use a third-party package called [`goCSV`](https://pkg.go.dev/github.com/gocarina/gocsv) to easily handle CSV data in Golang. The `goCSV` package provides advanced functionality for handling CSV data, such as the automatic mapping of CSV data to struct fields.
 
 To download GoCsv, run the following command in your terminal or command prompt:
 
-```go
+~~~
 go mod init csv
 go get github.com/gocarina/GoCsv
-```
+~~~
 
-First, we import two packages: `os` for file handling and `github.com/gocarina/gocsv` for CSV marshaling and unmarshaling. 
+First, we import two packages: `os` for file handling and `github.com/gocarina/gocsv` for CSV marshaling and unmarshaling.
 
 Marshaling is the process of converting Go data structures (such as structs, maps, and slices) to a serialized format, typically JSON, XML, or YAML while unmarshaling is the process of decoding data in serialized format into Go data structure.  
 
@@ -162,7 +163,7 @@ We then create a slice of `Person` structs (a collection of struct values of the
 
 After successfully marshaling the data, we close the CSV file using the `defer` statement to ensure proper cleanup and then exit.
 
-```go
+~~~
 //main1.go
 package main
 
@@ -195,15 +196,17 @@ func main() {
        panic(err)
    }
 }
-```
+~~~
 
 After copying the code to your text editor run this command below;
 
-```bash
+~~~
 go run main1.go
-```
+~~~
 
-![using gocsv](https://i.imgur.com/XjeaRTr.png)
+<div class="wide">
+![Using gocsv]({{site.images}}{{page.slug}}/XjeaRTr.png)
+</div>
 
 The example code below reads a CSV file named `data2.csv` using the GoCsv library. We define a struct `Record` with two fields, `Name` and `Gender`, each with a corresponding CSV column specified using struct tags `csv:"name"` and `csv:"gender"`.
 
@@ -211,7 +214,7 @@ Next, we read the CSV file into a slice of `Record` structs using `gocsv.Unmarsh
 
 Finally, we print the contents of the CSV file to the console using a `for` loop and the `fmt.Printf()` function. We print the name and gender fields of each record in the CSV file.
 
-```go
+~~~
 //main2.go
 
 package main
@@ -246,15 +249,15 @@ func main() {
        fmt.Printf("Name: %s, Gender: %s\n", record.Name, record.Gender)
    }
 }
-```
+~~~
 
 After copying the code to your text editor run this command below;
 
-```bash
+~~~
 go run main2.go
-```
+~~~
 
-## Appending To a CSV File
+## Appending to a CSV File
 
 Using the [`encoding/csv`](https://pkg.go.dev/encoding/csv) package, we will be appending using the code below to the `data1.csv` file created above.
 
@@ -264,7 +267,7 @@ Next, the code creates a CSV writer using the `csv.NewWriter()` function and ass
 
 Then, the code creates a new row of data to add to the CSV file as a slice of strings and writes this row to the CSV file using the `writer.Write()` function. If the write operation encounters an error, the code again uses the "panic" function to terminate the program immediately and print the error message.
 
-```go
+~~~
 //main3.go
 package main
 
@@ -292,13 +295,13 @@ func main() {
        panic(err)
    }
 }
-```
+~~~
 
 Go to the terminal and run this;
 
-```bash
+~~~
 go run main3.go
-```
+~~~
 
 ## Converting JSON File Into CSV
 
@@ -306,9 +309,9 @@ In this section, we will learn how to convert JSON data to CSV using Golang. It 
 
 To get the package, run the following command:
 
-```bash
+~~~
 go get github.com/yukithm/json2csv
-```
+~~~
 
 This example code below reads a JSON file named [`input.json`](https://github.com/khabdrick/go-csv/blob/master/input.json) and converts it to a CSV file named `output.csv`.
 
@@ -322,7 +325,7 @@ In Go, maps are a built-in data structure that associates data in key-value pair
 A slice of maps in Go is a data structure that combines the features of slices and maps. It is a dynamic sequence of maps, where each map represents a collection of key-value pairs. In other words, it is a slice where each element is a map.
 </div>
 
-```go
+~~~
 //main4.go
 package main
 
@@ -345,13 +348,13 @@ func main() {
    if err != nil {
        log.Fatal(err)
    }
-```
+~~~
 
 In the next snippet, we will convert the JSON to CSV using the `JSON2CSV` function from the json2csv package. This function takes a slice of maps with string keys and `interface{}` values, which represents the JSON data, and returns a byte slice containing the CSV data. Next, the CSV data is written to a buffer using the `WriteCSV` method.
 
 Finally, a helper function named `createFileAppendText` is called to create a file with the name "output.csv" and append the CSV data to it. This function takes the filename and text as arguments and returns an error if there is a problem opening the file or writing to it.
 
-```go
+~~~
 // convert json to CSV
    csv, err := json2csv.JSON2CSV(x)
    if err != nil {
@@ -370,11 +373,11 @@ Finally, a helper function named `createFileAppendText` is called to create a fi
    // create file and append if you want
    createFileAppendText("output.csv", got)
 }
-```
+~~~
 
-Now we will create the helper function `createFileAppendText` that handles the details of opening the “output.csv” file, writing to it, and closing it.
+Now we will create the helper function `createFileAppendText` that handles the details of opening the "output.csv" file, writing to it, and closing it.
 
-```go
+~~~
 //
 func createFileAppendText(filename string, text string) {
    f, err := os.OpenFile(filename, os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600)
@@ -388,17 +391,19 @@ func createFileAppendText(filename string, text string) {
        panic(err)
    }
 }
-```
+~~~
 
 Go to the terminal and run this;
 
-```bash
+~~~
 go run main4.go
-```
+~~~
 
 The output should look like this:
 
-![json to csv](https://i.imgur.com/jSkrisz.png)
+<div class="wide">
+![Json to csv]({{site.images}}{{page.slug}}/jSkrisz.png)
+</div>
 
 ## Converting CSV File Into JSON File
 
@@ -406,8 +411,7 @@ In this section, we will delve into the process of converting a CSV file into a 
 
 To begin, we must first open the CSV file and create a CSV reader. This will enable us to access and extract information from the headers and data rows of the CSV file. We can accomplish this with the following code:
 
-
-```go
+~~~
 file, err := os.Open("data1.csv")
 if err != nil {
    log.Fatal(err)
@@ -415,22 +419,22 @@ if err != nil {
 defer file.Close()
 
 csvReader := csv.NewReader(file)
-```
+~~~
 
 Next, we will read the headers from the CSV file. The headers are the first row in the CSV file and contain the names of the fields in the JSON objects. Here is the code to read the headers:
 
-```go
+~~~
 headers, err := csvReader.Read()
 if err != nil {
    log.Fatal(err)
 }
-```
+~~~
 
-After reading the headers, we can start reading the data rows from the CSV file. For each data row, we will create a `map[string]interface{}` where the keys are the header names and the values are the row values. We will use `strconv.ParseFloat` and `strconv.ParseBool` to convert the row values to the appropriate types (float64 and bool, respectively). 
+After reading the headers, we can start reading the data rows from the CSV file. For each data row, we will create a `map[string]interface{}` where the keys are the header names and the values are the row values. We will use `strconv.ParseFloat` and `strconv.ParseBool` to convert the row values to the appropriate types (float64 and bool, respectively).
 
 Here is the code to read the data rows:
 
-```go
+~~~
 var data []map[string]interface{}
 for {
    row, err := csvReader.Read()
@@ -458,20 +462,21 @@ for {
    data = append(data, m)
 }
 
-```
+~~~
 
 Finally, we will encode the data as a JSON array and write it to `stdout`. Here is the code to do this:
 
-```go
+~~~
 encoder := json.NewEncoder(os.Stdout)
 if err := encoder.Encode(data); err != nil {
    log.Fatal(err)
 }
 
-```
+~~~
+
 All the code snippets working together should look like the following:
 
-```go
+~~~
 //main5.go
 package main
 
@@ -531,19 +536,19 @@ func main() {
 
    // Encode the JSON data and write
 
-```
+~~~
 
 Now run this:
 
-```bash
+~~~
 go run main5.go
-```
+~~~
 
 Your output should look like the following:
 
-```
+~~~
 [{"age":25,"gender":"Female","name":"Alice"},{"age":30,"gender":"Male","name":"Bob"},{"age":35,"gender":"Male","name":"Charlie"},{"age":30,"gender":"Male","name":"David"}]
-```
+~~~
 
 ## Conclusion
 
@@ -557,8 +562,6 @@ Mastering these techniques can greatly enhance your ability to work with CSV fil
 
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
+
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links

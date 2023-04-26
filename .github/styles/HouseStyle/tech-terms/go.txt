@@ -7,3 +7,5 @@ Waitgroup
 sqlite
 
 Logrus
+
+gocsv
