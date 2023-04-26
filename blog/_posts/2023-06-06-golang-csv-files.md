@@ -144,7 +144,6 @@ go run main.go
 
 ![CSV creation with Encoding/CSV]({{site.images}}{{page.slug}}/5tgyj8J.png)
 
-
 ### Using `goCSV` to Create a CSV File
 
 In this section, we'll use a third-party package called [`goCSV`](https://pkg.go.dev/github.com/gocarina/gocsv) to easily handle CSV data in Golang. The `goCSV` package provides advanced functionality for handling CSV data, such as the automatic mapping of CSV data to struct fields.
