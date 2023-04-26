@@ -646,10 +646,11 @@ In this article, you have seen how to get started with CRI-O, install it on an U
 
 There is no doubt that its focus on performance, security, and compatibility with Kubernetes makes it a great choice for organizations looking to deploy containerized applications at scale.
 
+{% include_html cta/cta2.html %}
+
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/cta2.html %}`
