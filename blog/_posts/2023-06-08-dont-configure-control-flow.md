@@ -294,5 +294,4 @@ And tool users: Don't assume that because something only requires configuration,
 
 ## Outside Article Checklist
 
-- [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
