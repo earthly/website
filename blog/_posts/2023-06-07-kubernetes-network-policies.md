@@ -485,9 +485,3 @@ In this article, you have learned about network policies in Kubernetes and gener
 You can continue learning about other features available in Kubernetes, such as [Security Context in Kubernetes](https://earthly.dev/blog/k8s-cluster-security/) and [Mutual TLS over Kubernetes Nginx Ingress Controller](https://earthly.dev/blog/mutual-tls-kubernetes-nginx-ingress-controller/).
 
 {% include_html cta/cta2.html %}
-
-## Outside Article Checklist
-
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-
