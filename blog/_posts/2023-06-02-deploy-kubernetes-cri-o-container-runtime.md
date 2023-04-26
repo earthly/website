@@ -6,7 +6,10 @@ toc: true
 author: Mercy Bassey
 
 internal-links:
- - just an example
+ - Kubernetes
+ - Container
+ - CRI-O
+ - Automation
 ---
 
 Are you tired of managing your containerized applications manually? Do you want a more efficient and automated way to deploy and manage your applications? Look no further than Kubernetes!
@@ -652,4 +655,3 @@ There is no doubt that its focus on performance, security, and compatibility wit
 
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Add keywords for internal links to front-matter
