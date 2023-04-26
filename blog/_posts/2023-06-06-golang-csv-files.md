@@ -43,7 +43,7 @@ We'll first create a folder and open it in a text editor, then create a Go file 
 
 The code below demonstrates how to read data from a CSV file. And also how to write data to a new CSV file:
 
-~~~
+~~~{.go caption="main.go"}
 //main.go
 package main
 
@@ -68,7 +68,7 @@ Next, we create a new `csv.Reader` object called `reader` and read the data from
 
 We then loop through the data using a nested `for` loop to access each row and column of the CSV file. We print each column value to the console, followed by a comma separator and a newline:
 
-~~~
+~~~{.go caption="main.go"}
    // Read the CSV data
    reader := csv.NewReader(file)
    reader.FieldsPerRecord = -1 // Allow variable number of fields
@@ -88,7 +88,7 @@ We then loop through the data using a nested `for` loop to access each row and c
 
 The following part of this code creates a new CSV file named `data1.csv` and populates it with some data. It creates a new CSV file named `data1.csv` using the `os.Create()` function and assigns it to the variable `file2`. We check for any errors using an `if` statement and `panic` if there's an error.
 
-~~~
+~~~{ caption="Output"}
 panic: nil
 
 goroutine 1 [running]:
@@ -104,7 +104,7 @@ We use defer `writer.Flush()` to ensure that any buffered data is written to the
 
 Finally, we use the `defer` statement to close both the old and new CSV files.
 
-~~~
+~~~{.go caption="main.go"}
 //main.go
    // Write the CSV data
    file2, err := os.Create("data1.csv")
@@ -132,16 +132,16 @@ Finally, we use the `defer` statement to close both the old and new CSV files.
 
 Now run main.go from your terminal:
 
-~~~
+~~~{.bash caption=">_"}
 go run main.go
 ~~~
 
 <div class="wide">
-
 ![CSV extraction]({{site.images}}{{page.slug}}/54tNaOw.png)
+</div>
 
 ![CSV creation with Encoding/CSV]({{site.images}}{{page.slug}}/5tgyj8J.png)
-</div>
+
 
 ### Using `goCSV` to Create a CSV File
 
@@ -149,7 +149,7 @@ In this section, we'll use a third-party package called [`goCSV`](https://pkg.go
 
 To download GoCsv, run the following command in your terminal or command prompt:
 
-~~~
+~~~{.bash caption=">_"}
 go mod init csv
 go get github.com/gocarina/GoCsv
 ~~~
@@ -166,7 +166,7 @@ We then create a slice of `Person` structs (a collection of struct values of the
 
 After successfully marshaling the data, we close the CSV file using the `defer` statement to ensure proper cleanup and then exit.
 
-~~~
+~~~{.go caption="main1.go"}
 //main1.go
 package main
 
@@ -203,13 +203,11 @@ func main() {
 
 After copying the code to your text editor run this command below;
 
-~~~
+~~~{.bash caption=">_"}
 go run main1.go
 ~~~
 
-<div class="wide">
 ![Using gocsv]({{site.images}}{{page.slug}}/XjeaRTr.png)
-</div>
 
 The example code below reads a CSV file named `data2.csv` using the GoCsv library. We define a struct `Record` with two fields, `Name` and `Gender`, each with a corresponding CSV column specified using struct tags `csv:"name"` and `csv:"gender"`.
 
@@ -217,7 +215,7 @@ Next, we read the CSV file into a slice of `Record` structs using `gocsv.Unmarsh
 
 Finally, we print the contents of the CSV file to the console using a `for` loop and the `fmt.Printf()` function. We print the name and gender fields of each record in the CSV file.
 
-~~~
+~~~{.go caption="main2.go"}
 //main2.go
 
 package main
@@ -256,7 +254,7 @@ func main() {
 
 After copying the code to your text editor run this command below;
 
-~~~
+~~~{.bash caption=">_"}
 go run main2.go
 ~~~
 
@@ -270,7 +268,7 @@ Next, the code creates a CSV writer using the `csv.NewWriter()` function and ass
 
 Then, the code creates a new row of data to add to the CSV file as a slice of strings and writes this row to the CSV file using the `writer.Write()` function. If the write operation encounters an error, the code again uses the "panic" function to terminate the program immediately and print the error message.
 
-~~~
+~~~{.go caption="main3.go"}
 //main3.go
 package main
 
@@ -302,7 +300,7 @@ func main() {
 
 Go to the terminal and run this;
 
-~~~
+~~~{.bash caption=">_"}
 go run main3.go
 ~~~
 
@@ -312,7 +310,7 @@ In this section, we will learn how to convert JSON data to CSV using Golang. It 
 
 To get the package, run the following command:
 
-~~~
+~~~{.bash caption=">_"}
 go get github.com/yukithm/json2csv
 ~~~
 
@@ -328,7 +326,7 @@ In Go, maps are a built-in data structure that associates data in key-value pair
 A slice of maps in Go is a data structure that combines the features of slices and maps. It is a dynamic sequence of maps, where each map represents a collection of key-value pairs. In other words, it is a slice where each element is a map.
 </div>
 
-~~~
+~~~{.go caption="main4.go"}
 //main4.go
 package main
 
@@ -357,7 +355,7 @@ In the next snippet, we will convert the JSON to CSV using the `JSON2CSV` functi
 
 Finally, a helper function named `createFileAppendText` is called to create a file with the name "output.csv" and append the CSV data to it. This function takes the filename and text as arguments and returns an error if there is a problem opening the file or writing to it.
 
-~~~
+~~~{.go caption="main4.go"}
 // convert json to CSV
    csv, err := json2csv.JSON2CSV(x)
    if err != nil {
@@ -380,10 +378,11 @@ Finally, a helper function named `createFileAppendText` is called to create a fi
 
 Now we will create the helper function `createFileAppendText` that handles the details of opening the "output.csv" file, writing to it, and closing it.
 
-~~~
+~~~{.go caption="main4.go"}
 //
 func createFileAppendText(filename string, text string) {
-   f, err := os.OpenFile(filename, os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600)
+   f, err := os.OpenFile(filename, os.O_APPEND|os.O_WRONLY|\
+   os.O_CREATE, 0600)
    if err != nil {
        panic(err)
    }
@@ -398,15 +397,13 @@ func createFileAppendText(filename string, text string) {
 
 Go to the terminal and run this;
 
-~~~
+~~~{.bash caption=">_"}
 go run main4.go
 ~~~
 
 The output should look like this:
 
-<div class="wide">
 ![Json to csv]({{site.images}}{{page.slug}}/jSkrisz.png)
-</div>
 
 ## Converting CSV File Into JSON File
 
@@ -414,7 +411,7 @@ In this section, we will delve into the process of converting a CSV file into a 
 
 To begin, we must first open the CSV file and create a CSV reader. This will enable us to access and extract information from the headers and data rows of the CSV file. We can accomplish this with the following code:
 
-~~~
+~~~{.go caption="main5.go"}
 file, err := os.Open("data1.csv")
 if err != nil {
    log.Fatal(err)
@@ -426,7 +423,7 @@ csvReader := csv.NewReader(file)
 
 Next, we will read the headers from the CSV file. The headers are the first row in the CSV file and contain the names of the fields in the JSON objects. Here is the code to read the headers:
 
-~~~
+~~~{.go caption="main5.go"}
 headers, err := csvReader.Read()
 if err != nil {
    log.Fatal(err)
@@ -437,7 +434,7 @@ After reading the headers, we can start reading the data rows from the CSV file.
 
 Here is the code to read the data rows:
 
-~~~
+~~~{.go caption="main5.go"}
 var data []map[string]interface{}
 for {
    row, err := csvReader.Read()
@@ -469,7 +466,7 @@ for {
 
 Finally, we will encode the data as a JSON array and write it to `stdout`. Here is the code to do this:
 
-~~~
+~~~{.go caption="main5.go"}
 encoder := json.NewEncoder(os.Stdout)
 if err := encoder.Encode(data); err != nil {
    log.Fatal(err)
@@ -479,7 +476,7 @@ if err := encoder.Encode(data); err != nil {
 
 All the code snippets working together should look like the following:
 
-~~~
+~~~{.go caption="main5.go"}
 //main5.go
 package main
 
@@ -543,14 +540,17 @@ func main() {
 
 Now run this:
 
-~~~
+~~~{.bash caption=">_"}
 go run main5.go
 ~~~
 
 Your output should look like the following:
 
-~~~
-[{"age":25,"gender":"Female","name":"Alice"},{"age":30,"gender":"Male","name":"Bob"},{"age":35,"gender":"Male","name":"Charlie"},{"age":30,"gender":"Male","name":"David"}]
+~~~{.csv caption="data2.csv"}
+[{"age":25,"gender":"Female","name":"Alice"},\
+{"age":30,"gender":"Male","name":"Bob"},\
+{"age":35,"gender":"Male","name":"Charlie"},\
+{"age":30,"gender":"Male","name":"David"}]
 ~~~
 
 ## Conclusion
