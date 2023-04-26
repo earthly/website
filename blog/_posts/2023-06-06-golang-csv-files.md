@@ -551,6 +551,8 @@ Working with CSV files in Go is straightforward thanks to the built-in encoding/
 
 Mastering these techniques can greatly enhance your ability to work with CSV files in Go.
 
+{% include_html cta/cta2.html %}
+
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
@@ -560,4 +562,3 @@ Mastering these techniques can greatly enhance your ability to work with CSV fil
 - [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/cta2.html %}`
