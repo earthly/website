@@ -159,7 +159,9 @@ go get github.com/gocarina/GoCsv
 First, we import two packages: `os` for file handling and `github.com/gocarina/gocsv` for CSV marshaling and unmarshaling.
 
 <div class="notice--info">
-Marshaling is the process of converting Go data structures (such as structs, maps, and slices) to a serialized format, typically JSON, XML, or YAML while unmarshaling is the process of decoding data in serialized format into Go data structure. 
+
+Marshaling is the process of converting Go data structures (such as structs, maps, and slices) to a serialized format, typically JSON, XML, or YAML while unmarshaling is the process of decoding data in serialized format into Go data structure.
+
 </div>
 
 We then define a struct called `Person` with three fields: `Name`, `Age`, and `Gender`. The `csv` tag on each field specifies the column name in the CSV file.
