@@ -1,5 +1,5 @@
 ---
-title: "Building Golang with Bazel and Gazelle"
+title: "Building Golang With Bazel and Gazelle"
 categories:
   - Tutorials
 toc: true
@@ -26,7 +26,7 @@ The code for this tutorial is available in this [GitHub repo](https://github.com
 
 ![Together]({{site.images}}{{page.slug}}/together.png)\
 
-Bazel can be used to build a Go project of any size, and the [`Go build`](https://pkg.go.dev/cmd/go#hdr-Compile_packages_and_dependencies) command is often sufficient for small applications. However, if your Go project is considerably large, supports code generation, or is in the same repository as code written in other languages, these variables can add multiple layers of complexity to your build process and the `Go build` command might not be sufficient.
+Bazel can be used to build a Go project of any size, and the [`go build`](https://pkg.go.dev/cmd/go#hdr-Compile_packages_and_dependencies) command is often sufficient for small applications. However, if your Go project is considerably large, supports code generation, or is in the same repository as code written in other languages, these variables can add multiple layers of complexity to your build process and the `go build` command might not be sufficient.
 
 For example, with complex projects, you may need to manage more than one build
 tool for various sections of your application, or you may be forced to spend too much time rebuilding your whole application every time you implement a new feature. The simple `go build` command cannot work with that level of complexity. However, Bazel can help simplify this process.
@@ -153,7 +153,7 @@ To build your `src` files, run the following Bazel command from the root of your
 bazel build //...
 ~~~
 
-You should receive this error:
+You should get this error:
 
 ~~~{ caption="Output"}
 
