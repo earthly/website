@@ -1,5 +1,5 @@
 ---
-title: "How to Deploy a Kubernetes Cluster Using the CRI-O Container Runtime"
+title: "How To Deploy a Kubernetes Cluster Using the CRI-O Container Runtime"
 categories:
   - Tutorials
 toc: true
@@ -33,7 +33,7 @@ To follow along in this tutorial, you'll need the following:
 | Master | 2GB RAM and 2CPUs | 170.187.169.145 |
 | Worker | 1GB RAM and 1CPU | 170.187.169.226 |
 
-## What Is CRI-O
+## What Is CRI-O?
 
 **[CRI-O](https://cri-o.io/)** pronounced as (*cry-oh)* stands for Container Runtime Interface (CRI) for OpenShift (O); It is an open-source project for running Kubernetes containers on Linux operating systems and is designed specifically for Kubernetes, providing a lightweight and optimized runtime for running containers in a Kubernetes cluster. It implements the Kubernetes [Container Runtime Interface (CRI)](https://kubernetes.io/blog/2016/12/container-runtime-interface-cri-in-kubernetes/), which is a standard interface between Kubernetes and container runtimes.
 
@@ -41,11 +41,12 @@ It is fully compatible with the Kubernetes Container Runtime Interface (CRI) and
 
 Deploying a Kubernetes cluster using the CRI-O container runtime can help you streamline your container management processes, improve the security of your applications, and simplify the overall management of your infrastructure.
 
-## **Configuring Kernel Modules, Sysctl Settings, and Swap**
+## Configuring Kernel Modules, Sysctl Settings, and Swap
 
 Prior to setting up a cluster with CRI-O, the [Kubernetes official documentation](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/#before-you-begin) instructs that you have the following requirements setup on all your servers (both master and worker nodes) before you can begin to setup Kubernetes; these requirements include enabling kernel modules, configuring some [sysctl](https://linuxize.com/post/sysctl-command-in-linux/) settings, and disabling [swap](https://linuxhint.com/swap_memory_linux/).
 
 <div class="notice--info">
+
 Swap is a space on a hard disk that is used as a temporary storage area for data that cannot be stored in RAM at that time. When the system runs out of physical memory (RAM), inactive pages from memory are moved to the swap space, freeing up RAM for other tasks. The swap space is used by the operating system as an extension of the RAM, allowing the system to run more programs or larger programs than it could otherwise handle. Swap is commonly used in modern operating systems like Linux and Windows.
 </div>
 Execute the following command on both of your servers (master and worker node) to [disable swap](https://discuss.kubernetes.io/t/swap-off-why-is-it-necessary/6879/4). This step is crucial as leaving `swap` enabled can interfere with the performance and stability of the Kubernetes cluster:
@@ -55,9 +56,10 @@ swapoff -a
 ~~~
 
 <div class="notice--info">
+
 In the context of Kubernetes, it is recommended to disable swap space because it can interfere with the performance and stability of the Kubernetes cluster. This is because the Kubernetes scheduler may not be aware of the memory usage on the host system if swap space is enabled, which can lead to issues with pod scheduling and resource allocation.
 
-So, the swapoff -a command disables all swap devices or files on a Linux system, ensuring that Kubernetes can manage the host system's memory resources accurately.
+So, the `swapoff -a` command disables all swap devices or files on a Linux system, ensuring that Kubernetes can manage the host system's memory resources accurately.
 </div>
 
 Remove any reference to swap space from the **`/etc/fstab`** file on both servers using the command below:
@@ -260,7 +262,7 @@ Be sure to also allow connections to your server(s) by adding the following fire
 
 </div>
 
-## **Installing the CRI-O Container Runtime**
+## Installing the CRI-O Container Runtime
 
 In Kubernetes, a container runtime is responsible for managing the lifecycle of containers. It is the component that actually runs the container images and provides an interface between Kubernetes and the container. Since the container runtime we will be using is CRI-O, we'll go ahead to install it on our two servers (master and worker nodes).
 
@@ -618,9 +620,9 @@ Pinging master node with IP(170.187.169.145)
 
 This error is CRI-O-specific, in the sense that some capabilities were removed to make CRI-O more secure.
 
-Since the release of **[CRI-O v1.18.0](https://cri-o.github.io/cri-o/v1.18.0.html)**, The **CRI-O** container runtime now runs containers without the NET_RAW capability by default. This change was made for security reasons to reduce the attack surface of containerized applications.
+Since the release of **[CRI-O v1.18.0](https://cri-o.github.io/cri-o/v1.18.0.html)**, The **CRI-O** container runtime now runs containers without the `NET_RAW` capability by default. This change was made for security reasons to reduce the attack surface of containerized applications.
 
-The NET_RAW capability is used to create and manipulate raw network packets, which could potentially be used to launch a variety of network-based attacks.
+The `NET_RAW` capability is used to create and manipulate raw network packets, which could potentially be used to launch a variety of network-based attacks.
 
 So to correct the **permission denied (are you root)?** error, we need to configure CRI-O to run containers with this capability enabled by default.
 
@@ -649,9 +651,9 @@ Scroll through the file, stop where you see the lists of capabilities and add th
 ![Adding net_raw capability]({{site.images}}{{page.slug}}/zyiTs1c.png)
 </div>
 
-Save the file and run the **`systemctl restart crio`** command to restart cri-o.
+Save the file and run the **`systemctl restart crio`** command to restart CRI-O.
 
-Now from your local machine execute the following command again `kubectl run -it --rm busybox --image busybox` and try the `ping MASTER_NODE_IP` command:
+Now from your local machine execute the `kubectl run -it --rm busybox --image busybox` command again and try running the `ping MASTER_NODE_IP` command:
 
 <div class="wide">
 ![Pinging master node with IP(170.187.169.145)]({{site.images}}{{page.slug}}/aFiWUhV.png)
