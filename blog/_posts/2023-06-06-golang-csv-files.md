@@ -16,14 +16,14 @@ Tabular data is frequently stored in [CSV files](https://en.m.wikipedia.org/wiki
 
 And to work with CSV files, a number of packages are available. In this tutorial, we will explore various techniques for managing CSV files using the Go programming language. We will cover topics such as reading and appending CSV files, converting between CSV and JSON file formats.
 
-You can find the code used in this article on [GitHub](https://github.com/khabdrick/go-csv).
-
 ### Prerequisites
-
 To follow along with this tutorial, be sure you have the following:
 
 1. Basic knowledge of Golang
+
 2. Golang is set up on your local machine
+
+You can find the code used in this article on [GitHub](https://github.com/khabdrick/go-csv).
 
 ## What Is a CSV File?
 
@@ -157,7 +157,9 @@ go get github.com/gocarina/GoCsv
 
 First, we import two packages: `os` for file handling and `github.com/gocarina/gocsv` for CSV marshaling and unmarshaling.
 
-Marshaling is the process of converting Go data structures (such as structs, maps, and slices) to a serialized format, typically JSON, XML, or YAML while unmarshaling is the process of decoding data in serialized format into Go data structure.  
+<div class="notice--info">
+Marshaling is the process of converting Go data structures (such as structs, maps, and slices) to a serialized format, typically JSON, XML, or YAML while unmarshaling is the process of decoding data in serialized format into Go data structure. 
+</div>
 
 We then define a struct called `Person` with three fields: `Name`, `Age`, and `Gender`. The `csv` tag on each field specifies the column name in the CSV file.
 
@@ -305,7 +307,7 @@ Go to the terminal and run this;
 go run main3.go
 ~~~
 
-## Converting JSON File Into CSV
+## Converting a JSON File To CSV
 
 In this section, we will learn how to convert JSON data to CSV using Golang. It has a built-in support for JSON encoding and decoding, which makes it easy to work with JSON data. Additionally, we will be using a third-party package, [json2csv](https://github.com/yukithm/json2csv), to convert the JSON data to CSV format.
 
@@ -322,9 +324,11 @@ In the `main` function, we create a new buffer using the `bytes.Buffer` function
 Next, we read the JSON data from a file using the `os.ReadFile` function. We use the `json.Unmarshal` function to unmarshal the JSON data into a slice of maps. The maps represent the rows of the CSV file, and the keys represent the columns.
 
 <div class="notice--info">
-In Go, maps are a built-in data structure that associates data in key-value pairs. A map provides constant-time access to its elements, based on their keys. A slice provides a way to reference a subset of an array or map without getting the whole map.
+### Maps and Slice of Maps in Golang
 
-A slice of maps in Go is a data structure that combines the features of slices and maps. It is a dynamic sequence of maps, where each map represents a collection of key-value pairs. In other words, it is a slice where each element is a map.
+In Go, **maps** are a built-in data structure that associates data in key-value pairs. A map provides constant-time access to its elements, based on their keys. A slice provides a way to reference a subset of an array or map without getting the whole map.
+
+A **slice of maps** in Go is a data structure that combines the features of slices and maps. It is a dynamic sequence of maps, where each map represents a collection of key-value pairs. In other words, it is a slice where each element is a map.
 </div>
 
 ~~~{.go caption="main4.go"}
@@ -406,7 +410,7 @@ The output should look like this:
 
 ![Json to csv]({{site.images}}{{page.slug}}/jSkrisz.png)
 
-## Converting CSV File Into JSON File
+## Converting a CSV File To JSON
 
 In this section, we will delve into the process of converting a CSV file into a JSON file. The procedure that we are about to discuss assumes that the CSV file's structure is unknown to us, making it more challenging to convert the data into the desired JSON format.
 
@@ -559,7 +563,5 @@ Your output should look like the following:
 Working with CSV files in Go is straightforward thanks to the built-in encoding/csv package and third-party libraries such as goCSV. Whether you need to read, append, or convert CSV files, Go provides the tools you need to get the job done. By using the code examples in this article as a starting point, you can explore the benefits that the CSV file format provides for storing and analyzing data.
 
 Mastering these techniques can greatly enhance your ability to work with CSV files in Go.
-
-![Mastering]({{site.images}}{{page.slug}}/mastering.png)\
 
 {% include_html cta/cta2.html %}
