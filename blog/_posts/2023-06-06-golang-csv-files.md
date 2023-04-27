@@ -17,6 +17,7 @@ Tabular data is frequently stored in [CSV files](https://en.m.wikipedia.org/wiki
 And to work with CSV files, a number of packages are available. In this tutorial, we will explore various techniques for managing CSV files using the Go programming language. We will cover topics such as reading and appending CSV files, converting between CSV and JSON file formats.
 
 ### Prerequisites
+
 To follow along with this tutorial, be sure you have the following:
 
 1. Basic knowledge of Golang
