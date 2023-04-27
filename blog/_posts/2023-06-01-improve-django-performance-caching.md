@@ -14,7 +14,7 @@ internal-links:
 
 Performance is a crucial aspect of web development that significantly impacts user experience. The speed and reliability of a website influence users' engagement and overall satisfaction with the site. Inadequate performance, such as slow page loading times or frequent crashes, can lead to reduced traffic and potential loss.
 
-Django is a powerful web framework that makes building web applications in Python a breeze. However, as your application grows, you might encounter performance issues. Caching is a technique that can help optimize your application's performance by reducing the amount of time it takes to retrieve data. It is a way of storing frequently accessed data in memory for quick access. Properly implementing caching in your Django application can lead to faster response times and a better user experience. Caching can also help reduce the load on the database server. This can help free up database resources and improve the overall performance of the application. Django's caching framework provides a flexible and configurable way to implement caching in an application.
+Django is a powerful web framework that makes building web applications in Python a breeze. However, as your application grows, you might encounter performance issues. **Caching** is a technique that can help optimize your application's performance by reducing the amount of time it takes to retrieve data. It is a way of storing frequently accessed data in memory for quick access. Properly implementing caching in your Django application can lead to faster response times and a better user experience. Caching can also help reduce the load on the database server. This can help free up database resources and improve the overall performance of the application. Django's caching framework provides a flexible and configurable way to implement caching in an application.
 
 In this post, you'll explore the best practices and techniques for implementing caching in Django. We'll cover everything from how to identify which parts of your application to cache, to which caching backend to use, to how to cache templates and views. By the end of this post, you'll have a clear understanding of how to improve your Django application's performance with caching.
 
@@ -34,9 +34,11 @@ To illustrate the concept of caching in Django, a sample [Django Starter Project
 ![Home Screen of Sample Project]({{site.images}}{{page.slug}}/oKtJx4S.png)
 </div>
 
-The Caching implementation in Django can be divided into two steps which are -
-Cache Backend: A cache backend in Django is a critical component that serves as an intermediary between the database and the application. Its primary function is to temporarily store frequently accessed data in a specified location, which can include memory, disk, or other external storage systems, for rapid retrieval. In Django, there are mainly three important backends - Database, File System Caching and Local Memory Cache.
-Target: The target for caching refers to the specific block of code that is marked for caching, which can range from the entire website to individual views or templates. To specify the target for caching, developers can use decorators or middleware to identify the code block. Depending on the cache backend chosen, the cache can be stored in memory, disk, or other external storage systems.
+The Caching implementation in Django can be divided into two steps:
+
+- **Cache Backend**: A cache backend in Django is a critical component that serves as an intermediary between the database and the application. Its primary function is to temporarily store frequently accessed data in a specified location, which can include memory, disk, or other external storage systems, for rapid retrieval. In Django, there are mainly three important backends - Database, File System Caching, and Local Memory Cache.
+
+- **Target**: The target for caching refers to the specific block of code that is marked for caching, which can range from the entire website to individual views or templates. To specify the target for caching, developers can use decorators or middleware to identify the code block. Depending on the cache backend chosen, the cache can be stored in memory, disk, or other external storage systems.
 
 In Django, the `CACHES` setting is a crucial element that allows developers to specify the cache backend for their application. This setting can be defined in the settings.py file and specifies which cache backend will be used to store frequently accessed data temporarily, improving the application's overall performance. The target can be specified in either the settings.py file or the views file.
 
@@ -57,7 +59,7 @@ CACHES = {
 }
 ~~~
 
-In the code snippet above, the `BACKEND` setting specifies the in-built caching backend(DatabaseCache) and the `LOCATION` setting specifies the name of the cache table as `cache_table` where all the cache data will be stored and retrieved. You can modify this setting to use a different table name.
+In the code snippet above, the `BACKEND` setting specifies the in-built caching backend (DatabaseCache) and the `LOCATION` setting specifies the name of the cache table as `cache_table` where all the cache data will be stored and retrieved. You can modify this setting to use a different table name.
 
 Your Cache Backend is now set up, to specify the target you have to make changes into the [`MIDDLEWARE` setting](https://docs.djangoproject.com/en/4.2/topics/http/middleware/) in the `settings.py` file:
 
@@ -108,7 +110,7 @@ The above setting specifies the [`RedisCache`](https://docs.djangoproject.com/en
 
 After completing the backend setup, the next step is to set the target for the per-view caching strategy. This strategy involves specifically selecting the views that need to be cached. It is particularly beneficial for websites that have content that changes frequently. Such content should not be cached to display the most up-to-date information on the website. By utilizing the per-view caching strategy, we can ensure that only the intended views are cached and that the website's visitors are provided with the latest information.
 
-The per-view caching strategy uses a built-in [`cache_page`](https://docs.djangoproject.com/en/4.2/topics/cache/#django.views.decorators.cache.cache_page) decorator on the view. Open the views.py file and apply the decorator on the `all` view as shown in the following code:
+The per-view caching strategy uses a built-in [`cache_page`](https://docs.djangoproject.com/en/4.2/topics/cache/#django.views.decorators.cache.cache_page) decorator on the view. Open the `views.py` file and apply the decorator on the `all` view as shown in the following code:
 
 ~~~{.python caption="settings.py"}
 from django.views.decorators.cache import cache_page
@@ -138,7 +140,7 @@ Next, visit the <http://127.0.0.1:8000/all> endpoint and refresh the page. You w
 
 ### Using File System to Cache With Template Fragment Strategy
 
-The File System Caching Backend is suitable for small projects where integrating with an external service like Redis is a bit of overkill. File System Caching stores cached data in a specified directory in your system. You can implement this backend by making the following changes in your CACHES setting in your settings.py file:
+The File System Caching Backend is suitable for small projects where integrating with an external service like Redis is a bit of overkill. File System Caching stores cached data in a specified directory in your system. You can implement this backend by making the following changes in your `CACHES` setting in your `settings.py` file:
 
 ~~~{.python caption="settings.py"}
 CACHES = {
@@ -182,7 +184,7 @@ To test it, run the Django server and visit <http://127.0.0.1:8000/all> , on ref
 ![Template Fragment Caching]({{site.images}}{{page.slug}}/yR9KDrS.png)
 </div>
 
-Take a look at your project directory, you will see a cache directory which contains all the cache for your application. Since these files are binary you cannot read their content they are meant to be used by Django Caching Backend
+Take a look at your project directory, you will see a cache directory that contains all the cache for your application. Since these files are binary you cannot read their content. They are meant to be used by Django Caching Backend.
 
 These are the main Django Caching Backends and Caching strategies, you can use any strategy with any of the given Backends interchangeably. Ultimately, the choice of caching backend and strategy depends on the specific needs and constraints of your application.
 
@@ -190,9 +192,9 @@ These are the main Django Caching Backends and Caching strategies, you can use a
 
 Cache invalidation is a critical process in software development, involving the removal or invalidation of cached data that is no longer in use by the application. By discarding outdated cache, invalidation frees up space for new data to be stored, ultimately improving the efficiency and speed of the caching process. Effective cache invalidation is essential to maintaining optimal application performance, as stale or expired data can lead to inaccurate or misleading results. The most widely used cache invalidation strategies used in modern software development are:
 
-Time-Based Invalidation: Time-Based cache invalidation is when the cache is cleared after a certain amount of time has passed. This is great for content that doesn't change frequently, as it reduces the load on the server by serving the same data from the cache.
+- **Time-Based Invalidation**: Time-Based cache invalidation is when the cache is cleared after a certain amount of time has passed. This is great for content that doesn't change frequently, as it reduces the load on the server by serving the same data from the cache.
 
-Key-Based Invalidation: In key-based invalidation, a unique identifier is assigned to each cached item or set of items. When changes are made to the data that corresponds to a specific key, the cache item associated with that key can be invalidated or deleted, ensuring that the next request for that data will result in a fresh retrieval from the original source. This approach offers more granular control over cache invalidation compared to time-based invalidation, which relies solely on time limits to determine when cached data should be cleared.
+- **Key-Based Invalidation**: In key-based invalidation, a unique identifier is assigned to each cached item or set of items. When changes are made to the data that corresponds to a specific key, the cache item associated with that key can be invalidated or deleted, ensuring that the next request for that data will result in a fresh retrieval from the original source. This approach offers more granular control over cache invalidation compared to time-based invalidation, which relies solely on time limits to determine when cached data should be cleared.
 
 ## Cache Optimization
 
@@ -200,6 +202,8 @@ Cache optimization, commonly referred to as cache tuning, is an important techni
 
 ## Conclusion
 
-Django comes with a full set of caching framework out of the box which lets the developers build robust applications which are easier to scale. Caching is an essential aspect of optimizing web application performance, and Django provides excellent support for caching. In this article, we discussed the various caching strategies available in Django and explored how they can be used to improve application performance. We also discussed the benefits of caching, such as reducing the number of database queries and improving response times for users. Additionally, we looked at the importance of cache invalidation and explored strategies for optimizing cache performance. Overall, caching is a powerful tool that can significantly improve the performance of Django applications, and developers should leverage it to ensure their applications deliver the best possible user experience.
+Django comes with a full set of caching framework out of the box which lets the developers build robust applications which are easier to scale. Caching is an essential aspect of optimizing web application performance, and Django provides excellent support for caching. In this article, we discussed the various caching strategies available in Django and explored how they can be used to improve application performance. We also discussed the benefits of caching, such as reducing the number of database queries and improving response times for users.
+
+Additionally, we looked at the importance of cache invalidation and explored strategies for optimizing cache performance. Overall, caching is a powerful tool that can significantly improve the performance of Django applications, and developers should leverage it to ensure their applications deliver the best possible user experience.
 
 {% include_html cta/cta2.html %}
