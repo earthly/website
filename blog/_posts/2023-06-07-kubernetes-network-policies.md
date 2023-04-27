@@ -1,5 +1,5 @@
 ---
-title: "Securing Kubernetes with Network Policies"
+title: "Securing Kubernetes With Network Policies"
 categories:
   - Tutorials
 toc: true
@@ -129,7 +129,7 @@ $ kubectl expose pod db --name=db-svc -n db --port=80
 ~~~
 
 <div class="notice--info">
-This is to be able to communicate with the applications running on pods through Kubernetes services. Because in real life scenarios, pods are not communicating directly but through service resources.
+Communication with the applications running on pods is facilitated by [Kubernetes services](/blog/kubernetes-services/). Because in real-world applications, pods are not communicating directly but through service resources.
 </div>
 
 Also check that service has been applied as expected:
@@ -440,7 +440,7 @@ Apply the network policy with the below command
 $ kubectl apply -f allow_frontend_backend_egress_dns.yaml
 ~~~
 
-Now let's execute different commands to make sure the network policies are working as expected.
+Now let's execute different commands to make sure the network policies are working as expected:
 
 - Let's check access between frontend and backend namespaces.
 
