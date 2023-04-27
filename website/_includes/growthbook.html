@@ -1,0 +1,33 @@
+<script src="https://cdn.jsdelivr.net/npm/@growthbook/growthbook/dist/bundles/index.js"></script>
+
+<script>
+  // Create a GrowthBook instance
+  const gb = new growthbook.GrowthBook({
+    apiHost: "https://cdn.growthbook.io",
+    clientKey: "sdk-abc123",
+    // Enable easier debugging during development
+    enableDevMode: true,
+    // Targeting attributes
+    attributes: {
+      id: "123",
+      country: "US"
+    },
+    // Only required for A/B testing
+    // Called every time a user is put into an experiment
+    trackingCallback: (experiment, result) => {
+      console.log("Experiment Viewed", {
+        experimentId: experiment.key,
+        variationId: result.key,
+      });
+    },
+  });
+
+  // Wait for features to be available
+  gb.loadFeatures({ autoRefresh: true }).then(() => {
+    console.log("GrowthBook features loaded");
+  });
+
+//   await gb.loadFeatures({ autoRefresh: true });
+
+
+</script>
