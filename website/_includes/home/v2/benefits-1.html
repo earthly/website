@@ -5,14 +5,11 @@
                 Write builds once, run them anywhere
             </div>
             <div class="lg:grid grid-cols-10 gap-2">
-                <div class="text-gray-500 text-lg pt-2 pr-4 col-span-6">
-                    All CI pipelines run in containers, making them self-contained,
-                    isolated, repeatable, and portable.
-                    <div class="pt-4">
-                        It doesn't matter if it's on your machine, your coworker's machine, or on Earthly CI. Same
-                        build, every time.
-                    </div>
-                </div>
+                <ul class="text-gray-500 text-lg pt-2 pr-4 col-span-6 ml-4 list-disc">
+                  <li class="pb-2">All builds run in containers, making them self-contained, isolated, repeatable, and portable.</li>
+                  <li class="pb-2">Builds execute correctly regardless of the platform or specifics of the environment.</li>
+                  <li>No need to configure language-specific tooling or install extra dependencies.</li>
+                </ul>
                 <div class="col-span-4">
                     <div class="bg-white shadow-md rounded-3xl h-64 w-full mt-6 lg:mt-0 lg:w-64 flex flex-col pt-1">
                         <div class="relative flex flex-col items-center">
