@@ -1,5 +1,5 @@
 ---
-title: "Using and Pushing Docker Images with Bazel"
+title: "Using and Pushing Docker Images With Bazel"
 categories:
   - Tutorials
 toc: true
@@ -14,7 +14,7 @@ internal-links:
 
 [Bazel](https://bazel.build/about/intro) is an open source build and test tool that helps you automate your software tasks using a defined set of rules from an abstract, human-readable source code. Initially developed by Google, Bazel is a versatile tool that supports multiple programming languages and software environments.
 
-Using [Docker](https://www.docker.com/) images with Bazel allows for even more scalability than what Docker or Bazel could offer you alone. This is because different parts of the project can be run in lightweight, portable, and isolated containers and can be executed in parallel across multiple machines or clusters. Moreover, Bazel offers easy compatibility with [rules_docker](https://github.com/bazelbuild/rules_docker), which are premade rules for carrying out Docker tasks. What's great about these rules is that you don't need to write Docker commands for pulling, building, or pushing images as the rules will take care of all these, thereby simplifying the development process. This can be particularly useful for large-scale projects that require the use of multiple Docker images, as it streamlines the process of building and deploying those images
+Using Docker images with Bazel allows for even more scalability than what Docker or Bazel could offer you alone. This is because different parts of the project can be run in lightweight, portable, and isolated containers and can be executed in parallel across multiple machines or clusters. Moreover, Bazel offers easy compatibility with [rules_docker](https://github.com/bazelbuild/rules_docker), which are premade rules for carrying out Docker tasks. What's great about these rules is that you don't need to write Docker commands for pulling, building, or pushing images as the rules will take care of all these, thereby simplifying the development process. This can be particularly useful for large-scale projects that require the use of multiple Docker images, as it streamlines the process of building and deploying those images
 
 As an experienced developer, in this article, you'll learn more about how Docker and Bazel work together and how to use and push Docker images as part of the Bazel build process.
 
@@ -34,11 +34,11 @@ In this tutorial, you're going to use Docker with Bazel by pulling a Docker imag
 
 Before you begin, you'll need the following:
 
-* **Bazel:** This is available for installation across Linux, macOS, and Windows systems. You can follow the instructions in their [installation guide](https://bazel.build/install) to download the version of Bazel that you need.
+* **Bazel**: This is available for installation across Linux, macOS, and Windows systems. You can follow the instructions in their [installation guide](https://bazel.build/install) to download the version of Bazel that you need.
 
 > **Please note:** Bazel's rules_docker is currently not supported on [Windows](https://github.com/bazelbuild/rules_docker#:~:text=Note%20use%20of%20these%20rules%20on%20Windows%20is%20currently%20not%20supported.).
 
-* **Docker:** You'll need active Docker credentials to pull and push images to Docker Hub. You can define your [custom Docker configuration](https://github.com/bazelbuild/rules_docker#container_pull-custom-client-configuration) in Bazel or run the following command in your terminal to grant access to your subsequent commands:
+* **Docker**: You'll need active Docker credentials to pull and push images to Docker Hub. You can define your [custom Docker configuration](https://github.com/bazelbuild/rules_docker#container_pull-custom-client-configuration) in Bazel or run the following command in your terminal to grant access to your subsequent commands:
 
 ~~~{.bash caption=">_"}
 docker login 
@@ -255,6 +255,6 @@ In this article, you learned how Bazel can be utilized to develop and manage Doc
 
 The primary benefits of using Docker images with Bazel include the ability to define, build, and test images using custom definitions, as well as the scalability of your builds and tests. By utilizing the capabilities of Bazel's rules_docker, developers can enjoy a straightforward and efficient procedure for designing, managing, testing, and deploying applications in containers.
 
-Overall, Bazel provides a robust and extensive set of functionality for dealing with Docker, making it a great choice for developers who wish to automate their containerization process. Whether you're looking to design, test, or deploy software, Bazel's efficient and dependable methodology will help you optimize your development process and accomplish your objectives more quickly.
+Overall, [Bazel](/blog/bazel-build/) provides a robust and extensive set of functionality for dealing with Docker, making it a great choice for developers who wish to automate their containerization process. Whether you're looking to design, test, or deploy software, Bazel's efficient and dependable methodology will help you optimize your development process and accomplish your objectives more quickly.
 
 {% include_html cta/cta2.html %}
