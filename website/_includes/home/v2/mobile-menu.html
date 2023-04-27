@@ -62,14 +62,15 @@
         </a>
 
         <a href="/get-earthly"
-            class="h-10 px-4 my-10 items-center flex w-fit text-xl py-4 text-center text-white bg-[#2d7e5d] hover:bg-green-700 rounded-lg">
+            class="h-10 px-4 my-10 items-center flex w-fit text-xl py-4 text-center text-white bg-[#2d7e5d] hover:bg-green-700 rounded-lg"
+            onclick="navMobileGetEarthlyClick()">
             Try Earthly
         </a>
 
 
         <div class="star-cta mb-4 flex items-center relative top-[2px]">
             <a class="github-button" href="https://github.com/earthly/earthly" data-size="large" data-show-count="true"
-                aria-label="Star earthly/earthly on GitHub">Star</a>
+                aria-label="Star earthly/earthly on GitHub" onclick="navMobileGithubClick()">Star</a>
         </div>
 
         <div class="flex  items-center content-start h-[70px]">
@@ -92,7 +93,7 @@
                         fill="#E01E5A"></path>
                 </g>
             </svg>
-            <a href="/slack">
+            <a href="/slack" onclick="navMobileSlackClick()">
                 <span class="font-bold underline ml-2 text-lg cursor-pointer">
                     Slack
                 </span>
@@ -102,3 +103,26 @@
 
     </div>
 </div>
+
+<script>
+  function navMobileGetEarthlyClick() {
+    analytics.track('nav-mobile-get-earthly-click', {
+      category: 'Get Earthly Click',
+      label: 'nav-mobile-get-earthly-click'
+    });
+  }
+
+  function navMobileGithubClick() {
+    analytics.track('nav-mobile-github-click', {
+      category: 'Github Click',
+      label: 'nav-mobile-github-click'
+    });
+  }
+
+  function navMobileSlackClick() {
+    analytics.track('nav-mobile-slack-click', {
+      category: 'Slack Click',
+      label: 'nav-mobile-slack-click'
+    });
+  }
+</script>
