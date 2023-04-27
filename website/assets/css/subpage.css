@@ -185,8 +185,8 @@ p > a:visited {
 }
 
 .toggle-switch {
-  width: 220px;
-  height: 50px;
+  width: 234px;
+  height: 54px;
   align-items: center;
   display: flex;
   margin-top: 12px;
@@ -199,9 +199,9 @@ p > a:visited {
 }
 
 .toggle-switch .label {
-  width: 110px;
+  width: 117px;
   cursor: pointer;
-  font-size: 17px;
+  font-size: 18px;
   font-weight: 500;
   padding: 0 20px;
   position: absolute;
@@ -222,8 +222,8 @@ p > a:visited {
 }
 
 .toggle-switch .slider:before {
-  width: 110px;
-  height: 50px;
+  width: 117px;
+  height: 54px;
   background-color: #006A4F;
   border-radius: 25px;
   position: absolute;
@@ -243,9 +243,9 @@ p > a:visited {
 }
 
 .toggle-switch input:checked + .slider:before {
-  transform: translateX(110px);
-  -ms-transform: translateX(110px);
-  -webkit-transform: translateX(110px);
+  transform: translateX(117px);
+  -ms-transform: translateX(117px);
+  -webkit-transform: translateX(117px);
 }
 
 @media screen and (min-width: 640px) {
