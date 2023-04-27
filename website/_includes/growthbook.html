@@ -4,7 +4,7 @@
   // Create a GrowthBook instance
   const gb = new growthbook.GrowthBook({
     apiHost: "https://cdn.growthbook.io",
-    clientKey: "sdk-abc123",
+    clientKey: "{{ site.growthbook_client_key }}",
     // Enable easier debugging during development
     enableDevMode: true,
     // Targeting attributes
