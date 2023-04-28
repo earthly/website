@@ -103,3 +103,8 @@ wc
 rg
 fd
 bpf
+
+swapoff
+tcp
+systemd
+crictl
