@@ -250,7 +250,7 @@ Or if you want the constraints that configuration offers, then it's also super e
 
 Here is one way to do this for my blog build script example:
 
-~~~{.bash caption=">_"}
+~~~{.bash caption="test1.job"}
 job first PARALLEL {
    echo "Hello, World!"
 } when {
