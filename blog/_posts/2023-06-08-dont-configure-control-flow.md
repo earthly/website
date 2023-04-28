@@ -274,7 +274,7 @@ I wrote a Python implementation for this little job runner using a [PEG parser](
 
 ### Declaring Code as Data
 
-**So does that mean that YAML is always a bad idea?** Not at all, there are reasons to dislike YAML, but that's not my point here. 
+**So does that mean that YAML is always a bad idea?** Not at all, there are reasons to dislike YAML, but that's not my point here.
 
 YAML (or JSON or TOML) works fine when declaring something. `Name=Adam`, `ID=7`, or even `UseParallelGC=True`, but the more you need to know about what is done with those values, the less declarative your config is and the further you are drifting from configuration data to configuration code.
 
