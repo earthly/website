@@ -280,7 +280,7 @@ In my opinion, once you have to branch or have conditionals in your config, you 
 
 ### How Did We Get Here?
 
-if YAML shouldn't be used to 'declare' a program that later runs, then why is this pattern so prevalent in modern DevOps tooling? One reason is that there was a sense at some point that a tool that configuring something was less complicated than programming it. Hopefully, I've shown why that might not be true: You still need to understand the semantics of the 'code' even if you're embedding it in YAML. A second reason is that sometimes it's an excuse to save the effort of writing a parser.
+If YAML shouldn't be used to 'declare' a program that later runs, then why is this pattern so prevalent in modern DevOps tooling? One reason is that there was a sense at some point that a tool that configuring something was less complicated than programming it. Hopefully, I've shown why that might not be true: You still need to understand the semantics of the 'code' even if you're embedding it in YAML. A second reason is that sometimes it's an excuse to save the effort of writing a parser.
 
 ## Conclusion
 
