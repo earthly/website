@@ -1,29 +1,26 @@
-<div class="w-full">
-    <div class="mb-6 lg:mb-12 -mt-20 max-w-7xl m-auto">
-        <div class="lg:grid grid-cols-2 border-0 border-[#f1fbff] rounded-xl lg:px-4 z-10 relative px-6">
-            <div
-                class="flex flex-col items-start lg:border-r-2 border-[#f1fbff] lg:pl-20 lg:pr-16 col-span-1 py-2 lg:py-6">
-                <div class="font-semibold text-2xl lg:text-4xl">Earthly CI</div>
-                <div class="text-slate-400 my-0.5 lg:my-2 text-xl">
-                    Fast, repeatable CI/CD platform
-                </div>
-                <a href="/signup/earthly-ci"
-                    class="py-6 text-2xl text-center cursor-pointer shadow-sm  text-white bg-[#2d7e5d] hover:bg-[#2d7e5d] rounded-lg w-full inline-block">
-                    Try Earthly CI
-                </a>
-            </div>
-            <div class="flex flex-col items-start lg:pl-16 lg:pr-20 col-span-1 py-2 lg:py-6">
-                <div class="font-semibold text-2xl lg:text-4xl">Earthly</div>
-                <div class="text-slate-400 my-0.5 lg:my-2 text-xl">
-                    Open source CI/CD framework
-                </div>
-
-                <a href="/get-earthly"
-                    class="py-6 text-2xl cursor-pointer text-center shadow-sm  text-gray-800 bg-[#eafaf4] hover:bg-[#eafaf4] rounded-lg w-full inline-block">
-                    Install Earthly
-                </a>
-
-            </div>
-        </div>
-    </div>
+<div class="flex flex-col items-center max-w-lg mx-auto mb-6 lg:mb-12 -mt-20 px-6 lg:px-10">
+  <!-- Gavin, 20230427: Added id for A/B test - homepage-hero-copy-20220427 -->
+  <div id="homepage-cta-kicker-div-control" class="text-center text-slate-400 text-xl">
+    Simple, Fast, Repeatable CI/CD platform
+  </div>
+  <!-- Gavin, 20230427: Added for A/B test - homepage-hero-copy-20220427 -->
+  <div id="homepage-cta-kicker-div-test" class="text-center text-slate-400 text-xl" style="display: none;">
+    Simple, Fast, Repeatable Builds
+  </div>
+  <a
+    href="/get-earthly"
+    class="my-0.5 lg:my-2 py-6 text-2xl text-center cursor-pointer shadow-sm text-white bg-[#2d7e5d] hover:bg-[#2d7e5d] rounded-lg w-full inline-block"
+    onclick="homepageGetEarthlyClick()"
+  >
+    Try Earthly
+  </a>
 </div>
+
+<script>
+  function homepageGetEarthlyClick() {
+    analytics.track('homepage-get-earthly-click', {
+      category: 'Get Earthly Click',
+      label: 'homepage-get-earthly-click'
+    });
+  }
+</script>
