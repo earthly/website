@@ -426,3 +426,7 @@ Kabaki Antony:
     name    : "Kabaki Antony"
     bio     : "Kabaki Antony is a Fullstack Software Engineer and a Technical writer with a passion for creating innovative digital experiences. When I'm not coding, I enjoy sharing my knowledge with others by writing technical articles to help developers hone their skills."
     avatar  : "/assets/images/authors/kabaki-antony.jpg"
+Ansam Yousry:
+    name    : "Ansam Yousry"
+    bio     : "Ansam Yousry is a highly skilled data engineer with over six years of experience working as a BI analyst. With expertise in ETL tools and SQL, Ansam Yousry has developed an impressive skillset in managing data integration and transforming data into valuable insights that drive business decisions."
+    avatar  : "/assets/images/authors/ansam_yousry.jpg"

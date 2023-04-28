@@ -238,9 +238,10 @@ Need some inspiration to get started with your project? <div class="mt-2 pb-4">C
 See the <a href="https://docs.earthly.dev/earthly-cloud/earthly-ci" class="underline blue-link  font-semibold">Earthly CI docs</a>
 </div>
 
-<a href="/signup/earthly-ci" class="try-button py-4 h-10 px-4 xl:px-6 items-center text-sm xl:text-base text-center text-white bg-[#2d7e5d] hover:bg-green-800 rounded-lg inline-flex">
+<a href="/signup/earthly-ci" class="try-button py-4 h-10 px-4 xl:px-6 items-center text-sm xl:text-base text-center text-white bg-[#2d7e5d] hover:bg-green-800 rounded-lg inline-flex" onclick="tryEarthlyCIClick()">
                     Try Earthly CI
                 </a>
+  <div>Have questions? <a class="blue-link underline font-semibold " href="/contact-us">Contact us</a></div>
 
   <div class="text-2xl mt-6 border-t pt-4 border-gray-300">
     Run Earthly in a traditional CI
@@ -278,6 +279,13 @@ See the <a href="https://docs.earthly.dev/guides/ci-integration" class="underlin
     analytics.track('get-earthly-verify-install-copy-click', {
       category: 'Copy Click',
       label: 'get-earthly-verify-install-copy-click'
+    });
+  }
+
+  function tryEarthlyCIClick() {
+    analytics.track('get-earthly-try-earthly-ci-click', {
+      category: 'Earthly CI Sign Up Click',
+      label: 'get-earthly-try-earthly-ci-click'
     });
   }
 </script>

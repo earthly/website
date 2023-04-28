@@ -20,9 +20,7 @@ layout: default
       <div class="lg:grid grid-cols-2">
         <div class="py-2 lg:py-6  lg:pr-4">
           <div class="text-xl lg:text-2xl text-slate-500 pb-1">
-            <span class="font-bold">Individuals and small teams <span class="font-normal">(up to 4 users)</span></span>
-            <div class="text-lg"> Follow the self-guided
-              onboarding.</div>
+            Follow the self-guided onboarding.
           </div>
           <div class="text-base lg:text-lg m pt-2 pb-3">
             This will take you to our documentation that has step-by-step instructions on how to onboard onto Earthly
@@ -35,6 +33,7 @@ layout: default
               Get Started Now
             </button>
           </form>
+          <div class="mt-3">Have questions? <a class="blue-link underline font-semibold " href="/contact-us">Contact us</a></div>
         </div>
         <div class=" border bg-[#eafaf4] px-4 lg:px-10 py-2 lg:py-6 rounded-lg mt-4 lg:mt-0">
           <div class="lg:block text-gray-600">
@@ -66,70 +65,6 @@ layout: default
           </div>
         </div>
       </div>
-      <div class="formkit-container py-2 lg:py-6 mt-10 pt-4 border-t">
-        <div class="formkit-main">
-          <div>
-
-            <div class="text-xl lg:text-2xl text-slate-500 pb-1 mb-2">
-              <span class="font-bold">Have a larger team? </span>
-              <div class="text-lg"> Sign up here so we can help you onboard your team.</div>
-            </div>
-            <div class="text-base lg:text-lg pb-3">
-              We will schedule a call with you to start your onboarding with Earthly CI and answer any
-              questions you may have.
-            </div>
-            <div class="formkit-content">
-              <div class="formkit-text " style="color:#060606" type="Text" id="425443429"
-                content="&lt;p&gt;Sign Up for Earthly CI&lt;/p&gt;" element_id="b9d0d453-1beb-4c25-9a90-fc92314a526b"
-                order="0" region="content">
-
-                <div class="lg:w-1/2 border bg-[#eafaf4] px-4 lg:px-10 py-7 rounded-lg">
-                  <div class="formkit-card">
-                    <form id="earthly-ci-form" method="POST"
-                      action="https://app.convertkit.com/forms/3735631/subscriptions" data-sv-form="3735631"
-                      data-uid="5200e7e95c" class="formkit-form">
-                      <ul class="formkit-alert formkit-alert-error" data-element="errors" data-group="alert"></ul>
-                      <div class="formkit-fields w-full">
-                        <div class="grid grid-cols-2 gap-2 mb-3">
-                          <div class="formkit-field"><input type="text"
-                              class="formkit-input  w-full  flex h-12 items-center space-x-3 rounded-lg bg-white py-4 px-4 text-left text-xl text-slate-800 shadow-sm ring-1 ring-slate-900/10 hover:ring-slate-300 focus:outline-none focus:ring-2 focus:ring-sky-500"
-                              name="fields[first_name]" placeholder="First Name" aria-label="First Name" required="" />
-                          </div>
-                          <div class="formkit-field"><input type="text"
-                              class="formkit-input  w-full flex h-12 items-center space-x-3 rounded-lg bg-white py-3 px-4 text-left text-xl text-slate-800 shadow-sm ring-1 ring-slate-900/10 hover:ring-slate-300 focus:outline-none focus:ring-2 focus:ring-sky-500"
-                              name="fields[last_name]" placeholder="Last Name" aria-label="Last Name" required="" />
-                          </div>
-                        </div>
-                        <div class="formkit-field"><input type="text"
-                            class="formkit-input mb-3 w-full flex h-12 items-center space-x-3 rounded-lg bg-white py-3 px-4 text-left text-xl text-slate-800 shadow-sm ring-1 ring-slate-900/10 hover:ring-slate-300 focus:outline-none focus:ring-2 focus:ring-sky-500"
-                            name="fields[company]" placeholder="Company" aria-label="Company" required="" />
-                        </div>
-                        <div class="formkit-field"><input type="email" id="earthly-ci-form-email"
-                            class="formkit-input mb-4 flex h-12 w-full items-center space-x-3 rounded-lg bg-white py-3 px-4 text-left text-xl text-slate-800 shadow-sm ring-1 ring-slate-900/10 hover:ring-slate-300 focus:outline-none focus:ring-2 focus:ring-sky-500"
-                            name="email_address" placeholder="Email Address" aria-label="Email Address" required="" />
-                        </div>
-                        <button
-                          class="pt-3 pb-3 text-xl text-center text-white font-medium bg-green-500 hover:bg-green-700 rounded-lg w-full lg:w-80 inline-block"
-                          data-element="submit">
-                          <div class="formkit-spinner">
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                          </div>
-                          Sign Up
-                        </button>
-                      </div>
-                    </form>
-
-                  </div>
-                </div>
-
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
     </div>
   </div>
   <script src="https://pages.convertkit.com/templates/landing-page.hydrate.js"></script>
@@ -137,16 +72,6 @@ layout: default
 </div>
 </div>
 <script>
-  const form = document.getElementById('earthly-ci-form');
-  form.addEventListener('submit', function (event) {
-    var formEmail = document.getElementById('earthly-ci-form-email').value;
-    analytics.identify(formEmail);
-    analytics.track('earthly-ci-form-submit', {
-      category: 'Form Submission',
-      label: 'earthly-ci-form-submit'
-    });
-  });
-
   const ss_form = document.getElementById('earthly-ci-self-serve-form');
   ss_form.addEventListener('submit', function (event) {
     analytics.track('earthly-ci-self-serve-form-submit', {
