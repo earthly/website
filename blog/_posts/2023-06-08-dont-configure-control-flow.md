@@ -22,7 +22,7 @@ To find out, let's take a small problem, use YAML to make it more declarative, s
 
 So I have this little build script I run as part of the build process for my podcast website.
 
-It's a pretty old-fashioned bash script that checks some conditions and runs some stuff. The end result is some files end up where Netlify needs them, so they show up on the website.
+It's a pretty old-fashioned Bash script that checks some conditions and runs some stuff. The end result is some files end up where Netlify needs them, so they show up on the website.
 
 It's something like this:
 
