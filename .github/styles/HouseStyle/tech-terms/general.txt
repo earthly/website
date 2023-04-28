@@ -362,5 +362,13 @@ redirection
 keyspaces
 subcommand
 
+firstname
+lastname
+
 Sourcetree
 walkthrough
+
+uncomment
+cpu
+premade
+triggerer
