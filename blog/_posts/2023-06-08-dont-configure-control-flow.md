@@ -194,7 +194,7 @@ Answer: It's indeterminate because the default stage is the last used stage, and
 
 That's kind of neat!
 
-But when you specify parallelism in YAML, it doesn't save you from understanding the semantics and the runtime execution that they influence and control. The valid syntax is a subset of YAML, but the semantics can be anything.
+But when you specify parallelism in YAML, it *doesn't* save you from understanding the semantics and the runtime execution that they influence and control. The valid syntax is a subset of YAML, but the semantics can be *anything*.
 
 So the details that are present in this:
 
