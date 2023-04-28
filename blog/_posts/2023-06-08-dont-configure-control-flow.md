@@ -270,7 +270,7 @@ job third  {
 }
 ~~~
 
-I wrote a Python implementation for this little job runner using a PEG parser and futures (GitHub), and it's like 100 lines of Python, and it works. You put whatever bash code within the `job` and `when` blocks, which works as expected. I will try it for a bit and probably end up back at Bash, but it's certainly better than the YAML embedded solution.
+I wrote a Python implementation for this little job runner using a [PEG parser](https://github.com/erikrose/parsimonious) and [futures](https://docs.python.org/3/library/concurrent.futures.html) ([GitHub](https://github.com/adamgordonbell/job-runner)), and it's like 100 lines of Python, and it works. You put whatever bash code within the `job` and `when` blocks, which works as expected. I will try it for a bit and probably end up back at Bash, but it's certainly better than the YAML-embedded solution.
 
 ### Declaring Code as Data
 
