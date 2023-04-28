@@ -287,8 +287,8 @@ if YAML shouldn't be used to 'declare' a program that later runs, then why is th
 ![conclusion]({{site.images}}{{page.slug}}/conclusion.png)\
 So here is my conclusion.
 
-Tool authors: If you are trying to 'configure' the evaluation or control flow of something, use an existing programming language or write a parser. A packrat or PEG parser is not that much code. Try to avoid building ill-defined little languages whose AST is hand-written in YAML.
+**Tool authors**: If you are trying to 'configure' the evaluation or control flow of something, use an existing programming language or write a parser. A packrat or PEG parser is not that much code. Try to avoid building ill-defined little languages whose AST is hand-written in YAML.
 
-And tool users: Don't assume that because something only requires configuration, you won't need to learn a partially-defined embedded-in-config programming language. You might be better off choosing a tool like a Makefile, an Earthfile, or even Gradle than one of the 100s of things that are 'configured' in YAML (Ansible, GHA, Azure Pipelines, and so on).
+**And tool users**: Don't assume that because something only requires configuration, you won't need to learn a partially-defined embedded-in-config programming language. You might be better off choosing a tool like a Makefile, an Earthfile, or even Gradle than one of the 100s of things that are 'configured' in YAML (Ansible, GHA, Azure Pipelines, and so on).
 
 {% include_html cta/cta2.html %}
