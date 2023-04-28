@@ -26,7 +26,7 @@ It's a pretty old-fashioned Bash script that checks some conditions and runs som
 
 It's something like this:
 
-~~~{.bash caption=">_"}
+~~~{.bash caption="build.sh"}
 #!/bin/bash
 
 if [ -n "$(echo 'First Condition')" ]; then
@@ -64,7 +64,7 @@ commands:
 
 Then I need a CI runner to actually do my CI process. Let's use Python to whip one up:
 
-~~~{.yaml caption="commands.yaml"}
+~~~{.python caption="job_runner.py"}
 import yaml
 import subprocess
 
@@ -118,7 +118,7 @@ That is strictly more generic than the `WAIT` version written in Bash because yo
 
 Here is the same idea in GitHub Actions:
 
-~~~{.yaml caption="commands.yaml"}
+~~~{.yaml caption="sample_GHA.yaml"}
 name: GitHub Actions Demo
 jobs:
   one: 
@@ -148,7 +148,7 @@ I've excluded a few details to save space, but you can see that this whole thing
 
 Travis CI has a slightly different approach to programming parallelism in YAML:
 
-~~~{.yaml caption="commands.yaml"}
+~~~{.yaml caption="sample_Travis.yaml"}
 language: minimal
 
 jobs:
@@ -198,7 +198,7 @@ But when you specify parallelism in YAML, it *doesn't* save you from understandi
 
 So the details that are present in this:
 
-~~~{.bash caption="test1.sh"}
+~~~{.bash caption="build.sh"}
 #!/bin/bash
 
 if [ -n "$(echo 'First Condition')" ]; then
@@ -218,7 +218,7 @@ echo "Third thing:"
 
 Are sort of obscured in
 
-~~~{.yaml caption="commands.yaml"}
+~~~{.yaml caption="sample_GHA.yaml"}
 name: GitHub Actions Demo
 jobs:
   one: 
@@ -278,11 +278,11 @@ I wrote a Python implementation for this little job runner using a PEG parser an
 
 YAML (or JSON or TOML) works fine when declaring something. `Name=Adam`, `ID=7`, or even `UseParallelGC=True`, but the more you need to know about what is done with those values, the less declarative your config is and the further you are drifting from configuration data to configuration code.
 
-In my opinion, once you have to branch or have conditionals in your config, you are coding and should put the config file down and grab a better tool.
+**In my opinion, once you have to branch or have conditionals in your config, you are coding and should put the config file down and grab a better tool.**
 
 ### How Did We Get Here?
 
-If YAML shouldn't be used to 'declare' a program that later runs, then why is this pattern so prevalent in modern DevOps tooling? One reason is that there was a sense at some point that a tool that configuring something was less complicated than programming it. Hopefully, I've shown why that might not be true: You still need to understand the semantics of the 'code' even if you're embedding it in YAML. A second reason is that sometimes it's an excuse to save the effort of writing a parser.
+If YAML shouldn't be used to 'declare' a program that later runs, then why is this pattern so prevalent in modern DevOps tooling? One reason is that there was a sense at some point that configuring something was less complicated than programming it. Hopefully, I've shown why that might not be true: You still need to understand the semantics of the 'code' even if you're embedding it in YAML. A second reason is that sometimes it's an excuse to save [the effort of writing a parser](https://buttondown.email/hillelwayne/archive/code-is-data-is-yaml/).
 
 ## Conclusion
 
