@@ -12,7 +12,7 @@ internal-links:
  - Scripts
 ---
 
-When I first worked with YAML config, it was a breath of fresh air. No more XML! No Angle brackets. It was so plain and clear.
+When I first worked with YAML config, it was a breath of fresh air. No more XML! No angle brackets. It was so plain and clear.
 
 But now, too often, when I see YAML, it's a complex mess of nested lists hundreds of lines long. So where did things go wrong?
 
