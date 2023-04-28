@@ -50,7 +50,7 @@ The real version is messier than this, but I thought it'd be interesting to code
 
 ## YAML
 
-The first step is to pull some of the commands out of bash and use YAML instead.
+The first step is to pull some of the commands out of Bash and use YAML instead.
 
 Let's refactor to `commands.yaml`:
 
