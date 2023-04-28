@@ -56,7 +56,7 @@ Grafana Loki was created using Prometheus' architecture as a model, which makes 
 ## How Does Grafana Loki Work?
 
 <div class="wide">
-/pVl3qaE.jpeg)
+![Overview Of Grafana Loki]({{site.images}}{{page.slug}}/pVl3qaE.jpeg)
 </div>
 
 At its core, Grafana Loki is a log aggregation system that is designed to handle large volumes of log data in a distributed environment. It is made up of three primary components: the Loki logs collector (Promtail), the Loki logs storage system, and the Grafana UI.
