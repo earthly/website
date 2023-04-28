@@ -362,8 +362,16 @@ redirection
 keyspaces
 subcommand
 
+firstname
+lastname
+
 Sourcetree
 walkthrough
 
 unmarshaling
 unmarshal
+
+uncomment
+cpu
+premade
+triggerer
