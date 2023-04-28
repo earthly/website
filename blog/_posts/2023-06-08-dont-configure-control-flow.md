@@ -198,7 +198,7 @@ But when you specify parallelism in YAML, it *doesn't* save you from understandi
 
 So the details that are present in this:
 
-~~~{.bash caption=">_"}
+~~~{.bash caption="test1.sh"}
 #!/bin/bash
 
 if [ -n "$(echo 'First Condition')" ]; then
