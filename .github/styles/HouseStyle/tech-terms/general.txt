@@ -362,7 +362,11 @@ redirection
 keyspaces
 subcommand
 
+firstname
+lastname
+
 Sourcetree
 walkthrough
 
 premade
+triggerer
