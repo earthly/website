@@ -1,5 +1,5 @@
 ---
-title: Sign up for Earthly CI
+title: Contact us
 layout: default
 ---
 <div class="w-full">
@@ -14,53 +14,59 @@ layout: default
     <script>!function (e, n) { "object" == typeof exports && "undefined" != typeof module ? n() : "function" == typeof define && define.amd ? define(n) : n() }(0, function () { "use strict"; function e(e) { var n = this.constructor; return this.then(function (t) { return n.resolve(e()).then(function () { return t }) }, function (t) { return n.resolve(e()).then(function () { return n.reject(t) }) }) } function n() { } function t(e) { if (!(this instanceof t)) throw new TypeError("Promises must be constructed via new"); if ("function" != typeof e) throw new TypeError("not a function"); this._state = 0, this._handled = !1, this._value = undefined, this._deferreds = [], u(e, this) } function o(e, n) { for (; 3 === e._state;)e = e._value; 0 !== e._state ? (e._handled = !0, t._immediateFn(function () { var t = 1 === e._state ? n.onFulfilled : n.onRejected; if (null !== t) { var o; try { o = t(e._value) } catch (f) { return void i(n.promise, f) } r(n.promise, o) } else (1 === e._state ? r : i)(n.promise, e._value) })) : e._deferreds.push(n) } function r(e, n) { try { if (n === e) throw new TypeError("A promise cannot be resolved with itself."); if (n && ("object" == typeof n || "function" == typeof n)) { var o = n.then; if (n instanceof t) return e._state = 3, e._value = n, void f(e); if ("function" == typeof o) return void u(function (e, n) { return function () { e.apply(n, arguments) } }(o, n), e) } e._state = 1, e._value = n, f(e) } catch (r) { i(e, r) } } function i(e, n) { e._state = 2, e._value = n, f(e) } function f(e) { 2 === e._state && 0 === e._deferreds.length && t._immediateFn(function () { e._handled || t._unhandledRejectionFn(e._value) }); for (var n = 0, r = e._deferreds.length; r > n; n++)o(e, e._deferreds[n]); e._deferreds = null } function u(e, n) { var t = !1; try { e(function (e) { t || (t = !0, r(n, e)) }, function (e) { t || (t = !0, i(n, e)) }) } catch (o) { if (t) return; t = !0, i(n, o) } } var c = setTimeout; t.prototype["catch"] = function (e) { return this.then(null, e) }, t.prototype.then = function (e, t) { var r = new this.constructor(n); return o(this, new function (e, n, t) { this.onFulfilled = "function" == typeof e ? e : null, this.onRejected = "function" == typeof n ? n : null, this.promise = t }(e, t, r)), r }, t.prototype["finally"] = e, t.all = function (e) { return new t(function (n, t) { function o(e, f) { try { if (f && ("object" == typeof f || "function" == typeof f)) { var u = f.then; if ("function" == typeof u) return void u.call(f, function (n) { o(e, n) }, t) } r[e] = f, 0 == --i && n(r) } catch (c) { t(c) } } if (!e || "undefined" == typeof e.length) throw new TypeError("Promise.all accepts an array"); var r = Array.prototype.slice.call(e); if (0 === r.length) return n([]); for (var i = r.length, f = 0; r.length > f; f++)o(f, r[f]) }) }, t.resolve = function (e) { return e && "object" == typeof e && e.constructor === t ? e : new t(function (n) { n(e) }) }, t.reject = function (e) { return new t(function (n, t) { t(e) }) }, t.race = function (e) { return new t(function (n, t) { for (var o = 0, r = e.length; r > o; o++)e[o].then(n, t) }) }, t._immediateFn = "function" == typeof setImmediate && function (e) { setImmediate(e) } || function (e) { c(e, 0) }, t._unhandledRejectionFn = function (e) { void 0 !== console && console && console.warn("Possible Unhandled Promise Rejection:", e) }; var l = function () { if ("undefined" != typeof self) return self; if ("undefined" != typeof window) return window; if ("undefined" != typeof global) return global; throw Error("unable to locate global object") }(); "Promise" in l ? l.Promise.prototype["finally"] || (l.Promise.prototype["finally"] = e) : l.Promise = t });</script>
 
     <div class="pt-28">
-      <div class="text-3xl lg:text-4xl font-semibold pb-3">
-        Try Earthly CI
-      </div>
-      <div class="lg:grid grid-cols-2">
-        <div class="py-2 lg:py-6  lg:pr-4">
-          <div class="text-xl lg:text-2xl text-slate-500 pb-1">
-            Follow the self-guided onboarding.
-          </div>
-          <div class="text-base lg:text-lg m pt-2 pb-3">
-            This will take you to our documentation that has step-by-step instructions on how to onboard onto Earthly
-            CI.
-          </div>
-          <form id="earthly-ci-self-serve-form" method="GET" action="https://docs.earthly.dev/earthly-cloud/earthly-ci">
-            <button
-              class="pt-3 pb-3 text-xl text-center text-white font-medium bg-green-500 hover:bg-green-700 rounded-lg w-full lg:w-80 inline-block"
-              type="submit">
-              Get Started Now
-            </button>
-          </form>
-          <div class="mt-3">Have questions? <a class="blue-link underline font-semibold " href="/contact-us">Contact us</a></div>
-        </div>
-        <div class=" border bg-[#eafaf4] px-4 lg:px-10 py-2 lg:py-6 rounded-lg mt-4 lg:mt-0">
-          <div class="lg:block text-gray-600">
+      <div class="formkit-container pb-2 lg:pb-6">
+        <div class="formkit-main">
+          <div>
+            <div class="text-3xl lg:text-4xl pb-1 mb-2">
+              <span class="font-semibold">Contact Us</span>
+              <div class="text-lg text-slate-500">Submit the form to get in touch with our team, and we will 
+                schedule a call to answer any questions you have.</div>
+            </div>
+            <div class="formkit-content">
+              <div class="formkit-text " style="color:#060606" type="Text" id="425443429"
+                content="&lt;p&gt;Sign Up for Earthly CI&lt;/p&gt;" element_id="b9d0d453-1beb-4c25-9a90-fc92314a526b"
+                order="0" region="content">
 
-            <div class="pb-4 text-gray-600">
-              Earthly CI is a super simple CI/CD platform that gives you fast, repeatable
-              pipelines that run exactly the same in CI as on your laptop.
-            </div>
-            <div class="flex pb-2">
-              <img src="../../assets/svg/done-check.svg" alt="Checked bullet" class="" />
-              <div class="px-2">Repeatable CI pipelines</div>
-            </div>
-            <div class="flex pb-2">
-              <img src="../../assets/svg/done-check.svg" alt="Checked bullet" class="" />
-              <div class="px-2">Ridiculously fast builds</div>
-            </div>
-            <div class="flex pb-2">
-              <img src="../../assets/svg/done-check.svg" alt="Checked bullet" class="" />
-              <div class="px-2">Super simple</div>
-            </div>
-            <div class="flex pb-2">
-              <img src="../../assets/svg/done-check.svg" alt="Checked bullet" class="" />
-              <div class="px-2">Great for monorepos and polyrepos</div>
-            </div>
-            <div class="flex pb-2">
-              <img src="../../assets/svg/done-check.svg" alt="Checked bullet" class="" />
-              <div class="px-2">Remote build runners built-in</div>
+                <div class="lg:w-1/2 border bg-[#eafaf4] px-4 lg:px-10 py-7 rounded-lg">
+                  <div class="formkit-card">
+                    <form id="earthly-ci-form" method="POST"
+                      action="https://app.convertkit.com/forms/3735631/subscriptions" data-sv-form="3735631"
+                      data-uid="5200e7e95c" class="formkit-form">
+                      <ul class="formkit-alert formkit-alert-error" data-element="errors" data-group="alert"></ul>
+                      <div class="formkit-fields w-full">
+                        <div class="grid grid-cols-2 gap-2 mb-3">
+                          <div class="formkit-field"><input type="text"
+                              class="formkit-input  w-full  flex h-12 items-center space-x-3 rounded-lg bg-white py-4 px-4 text-left text-xl text-slate-800 shadow-sm ring-1 ring-slate-900/10 hover:ring-slate-300 focus:outline-none focus:ring-2 focus:ring-sky-500"
+                              name="fields[first_name]" placeholder="First Name" aria-label="First Name" required="" />
+                          </div>
+                          <div class="formkit-field"><input type="text"
+                              class="formkit-input  w-full flex h-12 items-center space-x-3 rounded-lg bg-white py-3 px-4 text-left text-xl text-slate-800 shadow-sm ring-1 ring-slate-900/10 hover:ring-slate-300 focus:outline-none focus:ring-2 focus:ring-sky-500"
+                              name="fields[last_name]" placeholder="Last Name" aria-label="Last Name" required="" />
+                          </div>
+                        </div>
+                        <div class="formkit-field"><input type="text"
+                            class="formkit-input mb-3 w-full flex h-12 items-center space-x-3 rounded-lg bg-white py-3 px-4 text-left text-xl text-slate-800 shadow-sm ring-1 ring-slate-900/10 hover:ring-slate-300 focus:outline-none focus:ring-2 focus:ring-sky-500"
+                            name="fields[company]" placeholder="Company" aria-label="Company" required="" />
+                        </div>
+                        <div class="formkit-field"><input type="email" id="earthly-ci-form-email"
+                            class="formkit-input mb-4 flex h-12 w-full items-center space-x-3 rounded-lg bg-white py-3 px-4 text-left text-xl text-slate-800 shadow-sm ring-1 ring-slate-900/10 hover:ring-slate-300 focus:outline-none focus:ring-2 focus:ring-sky-500"
+                            name="email_address" placeholder="Email Address" aria-label="Email Address" required="" />
+                        </div>
+                        <button
+                          class="pt-3 pb-3 text-xl text-center text-white font-medium bg-green-500 hover:bg-green-700 rounded-lg w-full lg:w-80 inline-block"
+                          data-element="submit">
+                          <div class="formkit-spinner">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                          </div>
+                          Sign Up
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -70,13 +76,15 @@ layout: default
   <script src="https://pages.convertkit.com/templates/landing-page.hydrate.js"></script>
   <script src="https://pages.convertkit.com/ckjs/ck.5.js"></script>
 </div>
-</div>
+
 <script>
-  const ss_form = document.getElementById('earthly-ci-self-serve-form');
-  ss_form.addEventListener('submit', function (event) {
-    analytics.track('earthly-ci-self-serve-form-submit', {
+  const form = document.getElementById('earthly-ci-form');
+  form.addEventListener('submit', function (event) {
+    var formEmail = document.getElementById('earthly-ci-form-email').value;
+    analytics.identify(formEmail);
+    analytics.track('earthly-ci-form-submit', {
       category: 'Form Submission',
-      label: 'earthly-ci-self-serve-form-submit'
+      label: 'earthly-ci-form-submit'
     });
   });
 </script>

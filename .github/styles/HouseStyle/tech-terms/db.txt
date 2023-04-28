@@ -8,3 +8,5 @@ mysql
 
 visitorid
 timedelta
+sqlalchemy
+ssn
