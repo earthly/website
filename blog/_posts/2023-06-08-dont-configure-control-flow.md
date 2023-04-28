@@ -114,7 +114,7 @@ commands:
     run: echo "Third thing"
 ~~~
 
-That is strictly more generic than the `WAIT` version written in bash because you can have dependencies of dependencies, but it does match how GitHub Actions structures things.
+That is strictly more generic than the `WAIT` version written in Bash because you can have dependencies of dependencies, but it does match how GitHub Actions structures things.
 
 Here is the same idea in GitHub Actions:
 
