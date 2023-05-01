@@ -237,4 +237,4 @@ In this article, you learned how to build a Docker image for a Ruby on Rails app
 
 [Earthly.dev](https://earthly.dev/) is a free and open source syntax for defining cacheable, parallelizable, and Git-aware build steps. Earthly takes some of the best ideas from Makefiles and Dockerfiles, and combines them into one specification. With Earthly, you can run unit and integration tests, create several Docker images at a time, and easily define multistage builds.
 
-{% include_html cta/bottom_cta.html %}
+{% include_html cta/bottom-cta.html %}

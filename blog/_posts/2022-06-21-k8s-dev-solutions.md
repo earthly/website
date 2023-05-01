@@ -241,4 +241,4 @@ If you're looking for something that is as close to your production cluster as p
 
 No matter what option you choose for developing your applications locally, you'll have to deploy mthe platform into production. For this, check out [Earthly](https://earthly.dev/), a framework to help you effortlessly deploy your services.
 
-{% include_html cta/bottom_cta.html %}
+{% include_html cta/bottom-cta.html %}

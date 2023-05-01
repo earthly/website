@@ -176,4 +176,4 @@ Of course, Azure functions development is a big topic. If you are interested in 
 
 To further assist your build process, try [Earthly](https://earthly.dev/). This free automation tool helps you execute your builds in containers. It works with multiple platforms and offers flexible caching and parallelism, so you can quickly build, test, and [deploy](/blog/deployment-strategies) your projects.
 
-{% include_html cta/bottom_cta.html %}
+{% include_html cta/bottom-cta.html %}

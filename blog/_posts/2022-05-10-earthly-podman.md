@@ -359,4 +359,4 @@ Hello World
 
 As you can see there's much we can do today using the latest version of podman in rootless mode. Additionally to being a substitute for Docker's core functionality, we can to run docker-compose services and use the containerized build tool, Earthly, to build images. There are definitely some rough edges which hopefully get smoothened out as podman gradually gains more traction; just make sure to expect some bumps along the way when you give it a try :).
 
-{% include_html cta/bottom_cta.html %}
+{% include_html cta/bottom-cta.html %}

@@ -169,4 +169,4 @@ The best CI tool for any project depends on the project and factors like its siz
 
 To improve on whichever tool you choose, [try Earthly](https://earthly.dev/get-earthly). It will make your builds easier to understand, more reproducible, and more robust, providing better productivity and faster delivery.
 
-{% include_html cta/bottom_cta.html %}
+{% include_html cta/bottom-cta.html %}

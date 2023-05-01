@@ -87,4 +87,4 @@ As simple as blue/green deployments appear on the surface, the actual build proc
 
 However, the benefits and seamless application versioning experience often outweigh the costs and complexities associated with blue/green deployments. Also, a solid, repeatable build – which can be achieved with tools like  [Earthly](https://earthly.dev/) – can help ease the complexities of a blue/green deployment cycle.
 
-{% include_html cta/bottom_cta.html %}
+{% include_html cta/bottom-cta.html %}

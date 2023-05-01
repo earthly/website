@@ -418,4 +418,4 @@ I'm definitely sold on them and will be looking for more opportunities to build 
 
 Also, if you're the type of person who's liked building a TUI in Go then you might like [Earthly](/):
 
-{% include_html cta/bottom_cta.html %}
+{% include_html cta/bottom-cta.html %}

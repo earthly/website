@@ -19,4 +19,4 @@ The new funding will be used to improve and add more enterprise-friendly feature
 
 If you're a developer and this is interesting to you, [get started with Earthly CI](https://earthly.dev/signup/earthly-ci)! Let's build the next generation of software together!
 
-{% include_html cta/bottom_cta.html %}
+{% include_html cta/bottom-cta.html %}

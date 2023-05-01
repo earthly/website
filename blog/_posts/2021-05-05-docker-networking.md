@@ -706,4 +706,4 @@ That should provide you with a decent overview of how Docker networking provides
 
 Next you might like to read more about a better way to do [docker multi-stage builds](/blog/docker-multistage) or if you'd like a faster way to build software, check out [Earthly](/):
 
-{% include_html cta/bottom_cta.html %}
+{% include_html cta/bottom-cta.html %}

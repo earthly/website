@@ -688,4 +688,4 @@ By exploring how Heroku CLI works behind the scenes, you've learned about the De
 
 With this knowledge, you can apply OAuth 2.0 Device Authorization Grant flow to your non-web client applications and provide a more secure and user-friendly login experience for your users. As a next step, you can try creating a CLI application using Google Login.
 
-{% include_html cta/bottom_cta.html %}
+{% include_html cta/bottom-cta.html %}

@@ -586,4 +586,4 @@ The image above shows the response received after an HTTP request was sent to Ng
 
 In this article, you've learned how kubeadm allows you to quickly and easily bootstrap minimal viable clusters as well as upgrade the cluster without downtime. Though kubeadm is great for development and workloads that do not require autoscaling, it is not suitable for large production clusters that require autoscaling functionality. Because node [autoscaling](/blog/k8s-autoscaling) necessitates the management of the underlying infrastructure and hardware, kubeadm delegates this responsibility to infrastructure providers.
 
-{% include_html cta/bottom_cta.html %}
+{% include_html cta/bottom-cta.html %}

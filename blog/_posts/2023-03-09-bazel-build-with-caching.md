@@ -205,4 +205,4 @@ Using remote cache for Bazel significantly improves your builds' performance and
 
 In this guide, you learned about the concept of [Bazel](/blog/bazel-build) cache builds. After reading, you should be able to set up the local and remote cache to improve Bazel build performance. For more information, check out [this guide for any command-line reference](https://bazel.build/reference/command-line-reference) you may need.
 
-{% include_html cta/bottom_cta.html %}
+{% include_html cta/bottom-cta.html %}

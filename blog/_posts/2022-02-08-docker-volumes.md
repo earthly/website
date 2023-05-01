@@ -289,4 +289,4 @@ In this guide, you looked at how volumes work with Docker, what they do, and whe
 
 Docker plays an important role in the DevOps ecosystem, so if you want to improve your continuous integration process, consider [Earthly](https://earthly.dev/). Earthly is a build automation tool that allows you to build anything via containers, making your builds self-contained, repeatable, portable, and parallel.
 
-{% include_html cta/bottom_cta.html %}
+{% include_html cta/bottom-cta.html %}

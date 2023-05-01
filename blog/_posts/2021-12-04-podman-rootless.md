@@ -53,4 +53,4 @@ Podman is a promising development in the containerization landscape. While Docke
 
 Earthly provides an abstraction layer for your build process to make it repeatable, portable, and most importantly, understandable. Instead of juggling multiple different tools in your builds, Earthly handles this for you and helps you iterate on build scripts by making them run the same no matter where they are running, whether it is your laptop or CI.
 
-{% include_html cta/bottom_cta.html %}
+{% include_html cta/bottom-cta.html %}

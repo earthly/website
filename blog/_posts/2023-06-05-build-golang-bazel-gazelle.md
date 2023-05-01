@@ -225,4 +225,4 @@ In this tutorial, you learned how Bazel and Gazelle can be used to build a Go ap
 
 Bazel and Gazelle help simplify the build process in cases where there would have been multiple complex layers. In addition, it's also significantly faster to build with Bazel since it doesn't have to rebuild your whole project every time it runs.
 
-{% include_html cta/bottom_cta.html %}
+{% include_html cta/bottom-cta.html %}

@@ -683,4 +683,4 @@ terraform destroy
 
 In this tutorial, you've learned how to use [Terraform](/blog/kubernetes-terraform) to automate your cloud infrastructure tasks. You started by creating and running an application locally. Using the configured AWS, you used Terraform to automate the deployment of the same application to the AWS ECS platform. I hope you found this guide helpful.
 
-{% include_html cta/bottom_cta.html %}
+{% include_html cta/bottom-cta.html %}

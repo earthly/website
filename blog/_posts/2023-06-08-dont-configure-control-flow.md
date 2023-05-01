@@ -293,4 +293,4 @@ So here is my conclusion.
 
 **And tool users**: Don't assume that because something only requires configuration, you won't need to learn a partially-defined embedded-in-config programming language. You might be better off choosing a tool like a Makefile, an Earthfile, or even Gradle than one of the 100s of things that are 'configured' in YAML (Ansible, GHA, Azure Pipelines, and so on).
 
-{% include_html cta/bottom_cta.html %}
+{% include_html cta/bottom-cta.html %}

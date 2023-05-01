@@ -475,4 +475,4 @@ In this tutorial, you have learned how to work with YAML using the Python progra
 
 As a next step, you may try converting [JSON to CSV](https://earthly.dev/blog/convert-to-from-json/).
 
-{% include_html cta/bottom_cta.html %}
+{% include_html cta/bottom-cta.html %}

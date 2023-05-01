@@ -388,4 +388,4 @@ Kubernetes operators, in particular, automate the deployment and management of c
 
 Next, you can explore the use of Kubernetes operators in your own projects and organizations, or you can [learn more](https://operatorhub.io/) about the various types of operators available and how they can be used to manage specific types of applications.
 
-{% include_html cta/bottom_cta.html %}
+{% include_html cta/bottom-cta.html %}

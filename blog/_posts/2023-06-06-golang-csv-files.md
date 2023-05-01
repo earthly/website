@@ -567,4 +567,4 @@ Working with CSV files in Go is straightforward thanks to the built-in encoding/
 
 Mastering these techniques can greatly enhance your ability to work with CSV files in Go.
 
-{% include_html cta/bottom_cta.html %}
+{% include_html cta/bottom-cta.html %}

@@ -219,4 +219,4 @@ In this article, you've learned about various Kubernetes networking topics rangi
 
 Kubernetes and container orchestration have become vital aspects of the DevOps workflow. If you want to further improve your continuous integration process, [Earthly](https://earthly.dev/) is the tool for you. It helps you generate repeatable, complex, idempotent container builds between your local development and [continuous integration](/blog/continuous-integration) environment, with achievable outcomes.
 
-{% include_html cta/bottom_cta.html %}
+{% include_html cta/bottom-cta.html %}

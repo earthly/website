@@ -130,4 +130,4 @@ By now, you should have a good grasp of what namespaces are, what the default na
 
 If you're running your applications on Kubernetes and you want a simple and effective way of deploying your application to your clusters, check out [Earthly](https://earthly.dev/), a tool designed to help with repeatable and easy builds.
 
-{% include_html cta/bottom_cta.html %}
+{% include_html cta/bottom-cta.html %}

@@ -170,4 +170,4 @@ Centralizing Dotfiles online via a version control tool like [Github](/blog/ci-c
 
 As you will have understood, taking an interest in _dotfile_ files is not only reserved for people who want to know the finer cogs of system administration. On the contrary, it can allow you to optimize your development environment(s) in order to increase productivity.
 
-{% include_html cta/bottom_cta.html %}
+{% include_html cta/bottom-cta.html %}

@@ -512,4 +512,4 @@ The fun doesn't stop here, though.  [mitmproxy](https://mitmproxy.org/) can modi
 
 And if you liked this article you might like to hear a little about the [backstory behind](/blog/introducing-earthly-build-automation-for-the-container-era) [Earthly](https://earthly.dev/).
 
-{% include_html cta/bottom_cta.html %}
+{% include_html cta/bottom-cta.html %}

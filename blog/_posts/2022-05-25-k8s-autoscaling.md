@@ -80,4 +80,4 @@ After reading this article, you know the basics of Kubernetes autoscaling. You'r
 
 If you're looking to make your life easier in terms of Kubernetes deployments, it's worth checking out [Earthly](https://earthly.dev/). They combine the best of Makefiles and Dockerfiles to provide a seamless deployment system.
 
-{% include_html cta/bottom_cta.html %}
+{% include_html cta/bottom-cta.html %}

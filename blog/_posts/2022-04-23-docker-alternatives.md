@@ -159,4 +159,4 @@ The key is to be aware of your project needs. If you're just starting out with c
 
 If you want to make your build process easier, try [Earthly](https://earthly.dev/). It lets you run repeatable, cached builds and works with all the tools listed above. It's also free and open-source, making it ideal for teams of all sizes and budgets.
 
-{% include_html cta/bottom_cta.html %}
+{% include_html cta/bottom-cta.html %}

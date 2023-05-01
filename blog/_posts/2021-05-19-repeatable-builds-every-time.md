@@ -493,4 +493,4 @@ Getting everyone to write containerized builds is difficult in a growing organiz
 
 Give Earthly a try and tell us what you think via our [Slack](https://earthly.dev/slack) or our [GitHub issue tracker](https://github.com/earthly/earthly/issues).
 
-{% include_html cta/bottom_cta.html %}
+{% include_html cta/bottom-cta.html %}

@@ -212,4 +212,4 @@ Running MySQL in a Docker container provides consistency and cross-environment i
 
 Once you're ready to move to production, you can reuse your development workflow to get your database live. Automate the process by launching your containers within your CI/CD pipeline, where tools such as [Earthly](https://docs.earthly.dev/docs/guides/docker-in-earthly) can offer repeatable builds and insights into any failures. Earthly offers on-demand Docker daemons and high reproducibility to help you automate your builds more quickly.
 
-{% include_html cta/bottom_cta.html %}
+{% include_html cta/bottom-cta.html %}

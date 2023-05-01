@@ -186,4 +186,4 @@ That was the interview. Thank you so much Benjy Weinberger.
 
 You can find Benjy on the Pants slack at [pantsbuild.org](https://www.pantsbuild.org/) and I'm, of course, very fond of [Earthly](/), which you can find right on this very website.
 
-{% include_html cta/bottom_cta.html %}
+{% include_html cta/bottom-cta.html %}

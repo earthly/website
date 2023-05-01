@@ -1152,7 +1152,7 @@ The AWK Programming Language                            👍👍
 
 Also, if you're the type of person who's not afraid to do things on the command line then you might like [Earthly](/):
 
-{% include_html cta/bottom_cta.html %}
+{% include_html cta/bottom-cta.html %}
 
 ### What's your Awk Trick or Book Pick?
 

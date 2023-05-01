@@ -347,4 +347,4 @@ In this tutorial, you have learned how to install K9s on Linux, get information 
 
 As Kubernetes third-party tools and out-tree plugins increase and simplify container orchestration procedures, Kubernetes will become easier and more friendly to beginners who don't know what containers are. K9s has definitely proved to be a third-party tool that eliminates Kubernetes pain points at a specific level. It is also a good tool to recommend to Kubernetes beginners who find managing resources using Kubectl difficult.
 
-{% include_html cta/bottom_cta.html %}
+{% include_html cta/bottom-cta.html %}

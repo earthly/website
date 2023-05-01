@@ -202,4 +202,4 @@ And with that, I have a simpler, more declarative protocol buffer generation pro
 
 And I'm just scratching the surface on `buf`, most of the steps above are highly configurable, and their schema registry and remote generation feature look very cool. But for now, I think it's been an improvement.
 
-{% include_html cta/bottom_cta.html %}
+{% include_html cta/bottom-cta.html %}

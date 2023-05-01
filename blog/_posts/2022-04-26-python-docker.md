@@ -285,4 +285,4 @@ You can optimize your use of containers even more with [Earthly](https://earthly
 
 To see the entire tutorial project at once, check out the [GitHub repo](https://github.com/adenicole/dockerpy).
 
-{% include_html cta/bottom_cta.html %}
+{% include_html cta/bottom-cta.html %}

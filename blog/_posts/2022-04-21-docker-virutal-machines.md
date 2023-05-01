@@ -64,4 +64,4 @@ Now that you have seen how VMs and Docker containers compare, it should be clear
 
 If you like Docker's excellence when it comes to replicability and find yourself frustrated over hard-to-replicate issues with your CI/CD pipelines, be sure to consider [Earthly.dev](https://earthly.dev/). Earthly.dev allows you to easily define repeatable builds that work the same locally as in the cloud, streamlining the CI development and debugging process, and saving you from endless `fix ci` commit messages.
 
-{% include_html cta/bottom_cta.html %}
+{% include_html cta/bottom-cta.html %}

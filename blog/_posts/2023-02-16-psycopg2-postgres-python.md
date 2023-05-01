@@ -606,4 +606,4 @@ In this tutorial, I used a simple example to walk you through the basics of quer
 
 As a next step, you can add more tables to the database, define relationships among them, and query data from multiple tables. Also, try exploring other [features of psycopg2](https://www.psycopg.org/docs/index.html).
 
-{% include_html cta/bottom_cta.html %}
+{% include_html cta/bottom-cta.html %}

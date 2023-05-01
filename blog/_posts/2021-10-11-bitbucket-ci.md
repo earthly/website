@@ -162,4 +162,4 @@ In this article you've seen that Bitbucket provides many ways to run a CI workfl
 
 An issue that you may run into while creating CI pipelines is that things don't always build the same on your server as on your development machine. Usually it's quite frustrating to troubleshoot. If you'd like to avoid the headache, check out the open-source project [Earthly](https://earthly.dev).
 
-{% include_html cta/bottom_cta.html %}
+{% include_html cta/bottom-cta.html %}

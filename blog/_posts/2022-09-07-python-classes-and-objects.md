@@ -472,4 +472,4 @@ We then learned how to use class variables for attributes that take the _same_ v
 
 In the next tutorial in the series, we'll go over how we can leverage and extend the functionality of existing classes using inheritance in Python.
 
-{% include_html cta/bottom_cta.html %}
+{% include_html cta/bottom-cta.html %}

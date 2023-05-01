@@ -127,4 +127,4 @@ As you can see, CMake can be a great aid when you want to create a build process
 
 If you like the format of using CMake and Makefiles, in general, but have a hard time seeing how to specifically fit it into your application, check out [Earthly](https://earthly.dev/). Earthly is a tool that takes the best parts of Makefiles and combines them with Docker to make builds easier.
 
-{% include_html cta/bottom_cta.html %}
+{% include_html cta/bottom-cta.html %}

@@ -415,4 +415,4 @@ Another tool for defining repeatable builds is [Earthly](https://earthly.dev/), 
 
 To learn more about Earthly, check out its [documentation](https://docs.earthly.dev/).
 
-{% include_html cta/bottom_cta.html %}
+{% include_html cta/bottom-cta.html %}

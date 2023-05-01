@@ -473,7 +473,7 @@ As an activity tracker, what I have so far is pretty weak. But as a learning les
 
 Now I just have to start being active! Maybe building a command line client for this service will help.
 
-{% include_html cta/bottom_cta.html %}
+{% include_html cta/bottom-cta.html %}
 
 ## Appendix
 
