@@ -338,4 +338,4 @@ The code used in this tutorial can be found in this [Github repository](https://
 
 I hope you found this article informative and helpful.
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom_cta.html %}

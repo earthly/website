@@ -102,4 +102,4 @@ data
 
 [Better Dependency Management in Python](/blog/python-earthly/) is a great introduction to using Earthly with Python and if you want to bring your CI to the next level, check out [Earthly's open source build tool](/).
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom_cta.html %}

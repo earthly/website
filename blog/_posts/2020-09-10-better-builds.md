@@ -150,4 +150,4 @@ We haven't solved all the problems of CI, however. What about build parallelizat
 
 For now, you can find more details, such as how to install earthly and many more examples on **[Earthly's homepage](/)**.
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom_cta.html %}

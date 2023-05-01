@@ -624,4 +624,4 @@ In this article, you have seen how useful SQLAlchemy is when it comes to interac
 
 You can find all the code snippets for this tutorial in this [GitHub repository.](https://github.com/mercybassey/sqlalchemy-for-python.git)
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom_cta.html %}

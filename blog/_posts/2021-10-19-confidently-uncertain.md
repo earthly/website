@@ -106,6 +106,6 @@ So that is how you can be confidently uncertain: Explain why things are uncertai
 
 This brings me back to Alex and Amy: if I could go back in time, I would tell them that instead of saying "Oh God, why did my task fail again" or "How can you fail it when you don't know the requirements" they should have just said, "Let me look into that." I'd also bring them each a copy of [The Scout Mindset](https://www.goodreads.com/book/show/42041926-the-scout-mindset) - That's where I got this idea from.
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom_cta.html %}
 
 [^1]: I've changed Alex and Amy's names but, yeah, you probably know who you are. Hopefully you'll forgive me for the characterization. You are both solid developers and we should catch up.

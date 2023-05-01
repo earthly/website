@@ -352,4 +352,4 @@ with col2:
 
 In this tutorial, we have learned about Streamlit: what it is, and why we should use it, and the basics of data visualization with Streamlit. You've also learned how to create interactive visualizations by programmatically adding interactivity to a Plotly chart. As a next step, you can try building a data dashboard for a dataset of your choice.
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom_cta.html %}

@@ -162,4 +162,4 @@ These five common monorepo tools—Bazel, Gradle, Lage, Lerna, and Rush—all ha
 
 As an open source [CI/CD](/blog/ci-vs-cd) framework, Earthly allows you to develop locally and run anywhere. Builds are containerized and language agnostic, and tasks are executed in parallel, which makes it fast. Check out Earthly's detailed [documentation](https://docs.earthly.dev/) to see how you can get started with it easily.
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom_cta.html %}

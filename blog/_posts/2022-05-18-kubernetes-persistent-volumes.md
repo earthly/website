@@ -282,4 +282,4 @@ Persistent volumes let you store data independently of the pods in your Kubernet
 
 In this article, you've learned about the use cases for persistent volumes, the way persistent volumes differ from regular volumes, and the methods that let you add and use persistent volumes and persistent volume claims inside your Kubernetes cluster. You've also seen some kubectl utility commands to help you interact with your volumes. These will equip you to run stateful applications in Kubernetes without risking data loss after container restarts.
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom_cta.html %}

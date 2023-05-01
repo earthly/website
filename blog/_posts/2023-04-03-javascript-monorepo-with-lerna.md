@@ -491,4 +491,4 @@ In this tutorial, you've seen how to set up a monorepo with Lerna. You learned h
 
 If you've configured CI workflows before, you know how frustrating it can be when you aren't able to test your changes without pushing them. Earthly solves this problem by giving you portable, reproducible CI workflows that run the same locally as they do in the cloud, saving you time and giving you peace of mind when configuring CI.
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom_cta.html %}

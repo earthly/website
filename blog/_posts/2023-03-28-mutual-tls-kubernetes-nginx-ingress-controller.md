@@ -308,4 +308,4 @@ In this article, we have discussed the differences between TLS and mTLS authenti
 
 You can continue learning about other security features available in Kubernetes, such as [Security Context in Kubernetes](https://earthly.dev/blog/k8s-cluster-security/), and [Kubernetes Compliance Scan](https://earthly.dev/blog/kubescape/).
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom_cta.html %}

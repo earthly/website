@@ -229,4 +229,4 @@ From above, the server is running on port 8080. Proceed to `http://localhost:808
 
 This guide helped us create Node.js with [Bazel](/blog/monorepo-with-bazel). We were able to configure Bazel, set up Bazel builds, and, most importantly, run tests using Bazel for the Node.js app. I hope you found this guide helpful. Happy Go coding!
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom_cta.html %}

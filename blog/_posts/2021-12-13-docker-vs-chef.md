@@ -87,4 +87,4 @@ Chef and Docker, while originally conceived for different purposes, are both use
 
 Earthly helps simplify your build syntax, so you can use Docker and Chef to construct a robust build and deploy pipeline that will take your DevOps team to the next level.
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom_cta.html %}

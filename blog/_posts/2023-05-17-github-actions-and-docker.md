@@ -202,4 +202,4 @@ After reading this article, it's recommended that you explore and experiment wit
 
 If you want to see how Github Actions stacks up against other CI services, check out our comparison of [CI Free Tiers](/blog/ci-comparison).
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom_cta.html %}

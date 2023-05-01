@@ -161,4 +161,4 @@ Overall, Earthly helps streamlines Python projects as they mature and build step
 
 So [try it out](/) and let me know what you think. We have a [slack channel](/slack) if you have questions or feedback to share.
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom_cta.html %}

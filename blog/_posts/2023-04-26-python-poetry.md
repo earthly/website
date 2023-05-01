@@ -709,4 +709,4 @@ Managing dependencies in Python development is crucial for ensuring the stabilit
 
 In this tutorial, you have explored the steps involved in using Poetry for managing dependencies in Python projects, from installation to publishing a package. Specifically, you have learned the creation of virtual environments, managing dependencies, including adding, removing, and synchronizing them, and publishing a Python project as a package. You can explore much more about Poetry in its [official documentation](https://python-poetry.org/).
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom_cta.html %}

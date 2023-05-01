@@ -274,4 +274,4 @@ Before PyScript, it wasn't this easy to run Python REPL in the browser, run Pyth
 
 PyScript could become an important tool in your toolset. it's still very new, in its alpha stage ( so don't use it for production yet) but it looks very promising.
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom_cta.html %}

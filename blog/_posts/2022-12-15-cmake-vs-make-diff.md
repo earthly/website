@@ -418,4 +418,4 @@ More recently, CMake added the `FetchContent` module, which is a better way to f
 
 In this article, you've learned the differences between CMake and Make, as well as the advantages of using CMake including its active development, dependency management, and cross-platform capabilities. If you're looking to explore other build tools, check out [Apache Buildr](https://buildr.apache.org), [Apache Maven](https://maven.apache.org), and [Gradle](https://gradle.org).
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom_cta.html %}

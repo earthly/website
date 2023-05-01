@@ -289,4 +289,4 @@ In this tutorial, you have learned how to validate files using Kubeval and how t
 
 Kubernetes security should never be an afterthought; use these two tools to help you apply secure resources to your cluster. Kubernetes is dynamic and complex, using these security tools will help you simplify Kubernetes security tasks and catch Kubernetes cluster errors more easily. There are can be many errors and bugs that you do not know exist in your manifests; Kubescape and ValidKube will detect and show you flaws that you never knew before. Consistently applying valid manifests to your cluster will improve and maintain your cluster's health over time.
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom_cta.html %}

@@ -36,4 +36,4 @@ My answer for this one is pretty simple: I love writing, teaching, and learning.
 
 Keep a look out for Josh's writing here on the Earthly blog in the coming weeks. He's already hard at work on a few tutorials and articles. We look forward to having him as part of the Earthly team moving forward.
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom_cta.html %}

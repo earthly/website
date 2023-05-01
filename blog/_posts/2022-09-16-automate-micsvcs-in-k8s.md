@@ -787,4 +787,4 @@ That's it! You have successfully automated your microservices setup and deployme
 
 In this article, you have learned what kubernetes and microservices are, and also why it is necessary to automate your microservice setup(configuration and deployment) in kubernetes. You were introduced to Earthly(Earthly is a [CI/CD](/blog/ci-vs-cd) framework that helps you Develop CI/CD pipelines locally and run them anywhere.) Finally, you learned the steps involved in automating your microservice setup.
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom_cta.html %}

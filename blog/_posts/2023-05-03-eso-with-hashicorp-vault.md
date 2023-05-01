@@ -669,4 +669,4 @@ kubectl get secret -n namespace
 
 I hope you understand how useful the External Secret Operator is in Kubernetes. You've learned how to use it with HashiCorp vault by configuring a ClusterSecretStore, SecretStore, and an ExternalSecret resource. You now know how to secure your Kubernetes secrets further. You can explore further using another key management system if you like.
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom_cta.html %}

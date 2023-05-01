@@ -280,4 +280,4 @@ You'll be using cryptography and [encryption](/blog/encrypting-data-with-ssh-key
 
 In this article, you learned how to secure your applications and programs cryptographically using hashing and encryption algorithms and how to generate cryptographically secure random values for your Go programs.
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom_cta.html %}

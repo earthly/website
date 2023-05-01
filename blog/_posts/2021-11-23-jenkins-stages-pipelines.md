@@ -225,4 +225,4 @@ Earthly is a container [build automation](/blog/introducing-earthly-build-automa
 
 Earthly is designed to be used on your development computer as well as in continuous integration. It can be installed on top of existing CI systems (like Jenkins, [Circle CI](https://docs.earthly.dev/examples/circle-integration), or [GitHub Actions](https://docs.earthly.dev/examples/gh-actions-integration)). It serves as a layer between language-specific tools (such as Maven, Gradle, npm, pip, and go build) and the CI build standard. For more information, learn how to [integrate Earthly with Jenkins](https://docs.earthly.dev/ci-integration/vendor-specific-guides/jenkins).
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom_cta.html %}

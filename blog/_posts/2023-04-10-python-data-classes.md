@@ -716,4 +716,4 @@ We covered how to create data classes (without much boilerplate code) and set de
 
 The [next article](/blog/more-on-python-data-classes/) in the series covers inheritance in Python data classes, performance optimizations that were introduced in Python 3.10, and much more. Happy coding!
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom_cta.html %}

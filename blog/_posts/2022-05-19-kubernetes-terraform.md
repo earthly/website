@@ -127,4 +127,4 @@ Terraform's ability to automate infrastructure management means it becomes propo
 
 Both platforms can drastically boost your productivity if they fit your use case, and combining them can be even more effective.
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom_cta.html %}

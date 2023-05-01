@@ -115,4 +115,4 @@ This strategy will also work with [1Password](https://app-updates.agilebits.com/
 
 So now you know what I know about MFA secret keys and how to store them, and use them to generate tokens and time-based one-time passwords for authentication.
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom_cta.html %}

@@ -214,4 +214,4 @@ In this article, you've learned about running a PostgreSQL instance on Docker. Y
 
 In order to deploy your container-based applications, you need to implement a CI/CD pipeline that will continuously build your Docker image and deploy it when new versions of your code are available. [Earthly](https://docs.earthly.dev/docs/guides/docker-in-earthly) is a popular CI tool that can be used to automate your container deployments. It provides integrations with most of the popular CI tools. You can learn more about Earthly on their [website](https://earthly.dev/).
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom_cta.html %}

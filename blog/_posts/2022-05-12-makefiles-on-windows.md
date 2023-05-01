@@ -107,4 +107,4 @@ As you can see, there are a few different ways you can be successful in running 
 
 If all this becomes too tedious for you and you're looking for an easier alternative to optimize your builds, then check out [Earthly](https://earthly.dev/). Earthly has taken all the best parts of Makefiles and combined them with the best parts of Dockerfiles to help make your build processes more streamlined and effective.
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom_cta.html %}

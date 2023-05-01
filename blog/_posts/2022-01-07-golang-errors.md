@@ -374,4 +374,4 @@ Also, checkout [Earthly](https://earthly.dev/). I work on it and its written in 
 * [Go By Example: Errors](https://gobyexample.com/errors)
 * [Go By Example: Panic](https://gobyexample.com/errors)
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom_cta.html %}

@@ -175,4 +175,4 @@ Through the example of file handling in Python, you learned:
 
 The with statement is commonly used for reading from or writing to a file, but it can also be utilized for other purposes. You are welcome to further explore the capabilities of the `with` statement and context managers.
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom_cta.html %}

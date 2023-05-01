@@ -470,4 +470,4 @@ Throughout the article we have covered how to create ABCs and the application of
 
 In this article, we have explained what abstract base classes are and how they differ from regular classes. We have also discussed the concept of abstraction in programming and how ABCs relate to interfaces in object-oriented programming. We provided step-by-step instructions on how to create and use ABCs and showed examples of how they can be used in real-world scenarios. Finally, we discussed the benefits of using ABCs in Python programming, including promoting code reuse and modularity, enforcing consistent behavior, and improving code organization.
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom_cta.html %}

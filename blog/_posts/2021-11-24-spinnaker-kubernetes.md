@@ -471,4 +471,4 @@ And of course there are tons of [other configuration options](https://www.opsmx.
 
 To further improve your CI/CD workflow, check out [Earthly](https://earthly.dev/). Earthly is a continuous integration tool for both your development machine and the CI server, ensuring repeatable builds for everyone.
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom_cta.html %}

@@ -153,4 +153,4 @@ To deprecate a field, you can change the name to something deprecated or remove 
 
 If you enjoyed this article, take a look at [Building a Monorepo in Golang](/blog/golang-monorepo/) or if you want to bring your CI to the next level then check out [Earthly](/).
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom_cta.html %}

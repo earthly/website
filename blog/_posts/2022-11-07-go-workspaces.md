@@ -196,4 +196,4 @@ Workspaces are unique to each developer and should not be checked into source co
 
 The beauty is that if I add any other modules to this workspace that have my `adder` library listed as a requirement, they will also default to using this local version that I'm making changes to. All without having to edit anything in the `go.mod` for each module.
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom_cta.html %}

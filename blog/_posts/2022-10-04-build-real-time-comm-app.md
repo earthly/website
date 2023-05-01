@@ -1200,4 +1200,4 @@ In this tutorial, you were able to build a real-time communication application u
 
 [Code for the project](https://github.com/DrAnonymousNet/DiscussIt)
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom_cta.html %}

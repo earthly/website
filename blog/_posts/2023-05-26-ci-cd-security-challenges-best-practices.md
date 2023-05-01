@@ -401,4 +401,4 @@ Additionally, organizations need to leverage security tools and technologies suc
 
 In conclusion, organizations need to prioritize CI/CD security to ensure secure and efficient software development and deployment. By adopting best practices and leveraging the right tools and technologies, organizations can mitigate security risks and improve the quality of their software products.
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom_cta.html %}

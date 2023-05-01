@@ -1024,4 +1024,4 @@ Here are some more resources you can use to supplement your learning and fine-tu
 - [Man Pages](https://www.kernel.org/doc/man-pages/)
 - [Awk Guide by Adam](https://earthly.dev/blog/awk-examples/)
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom_cta.html %}

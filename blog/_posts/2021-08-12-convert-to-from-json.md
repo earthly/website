@@ -187,4 +187,4 @@ You now have the knowledge and the tools you need to convert JSON to CSV and CSV
 
 Also, if you're the type of person who's not afraid to do things on the command line then you might like [Earthly](/):
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom_cta.html %}

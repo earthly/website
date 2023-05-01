@@ -175,4 +175,4 @@ The advent of containerized applications has helped scale up the development and
 
 In this article, you learned about Docker Slim and how it can be used to optimize your Docker resources, utilizing the `lint`, `xray`, `profile`, and `build` Docker Slim commands to optimize your Docker images and containers.
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom_cta.html %}

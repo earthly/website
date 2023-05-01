@@ -50,7 +50,7 @@ Since our launch, we've worked with our users to address their needs and make th
 
 We're excited to have you join us on our journey!
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom_cta.html %}
 
 > "Reproducible and parallelizable build and continuous integration, as well as explicit dependency management, are critical to scaling any organization. I'm extremely excited about Earthly bringing this functionality to existing container based build systems without requiring an extremely expensive retooling effort on top of something like Bazel. Earthly is a pragmatic and incremental solution to a thorny problem that all organizations face."
 >

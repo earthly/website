@@ -481,4 +481,4 @@ In this article, you learned how Bazel can be used to speed up the build and dep
 
 For more information and to check out other supported languages and platforms that [Bazel](/blog/bazel-build) offers, check out the official [documentation](https://bazel.build/).
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom_cta.html %}

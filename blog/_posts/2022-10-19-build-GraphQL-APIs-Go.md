@@ -626,4 +626,4 @@ Go is a speedy steady-growing language for building your backend applications. I
 
 I hope you found this guide helpful. Happy Go coding!
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom_cta.html %}

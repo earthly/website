@@ -334,4 +334,4 @@ Threat visibility is a key component in security analysis as it keeps you alert 
 
 When your production environment has passed the Kubescape scan with a 0% risk, your cluster will be compliant with the NSA and MITRE and other frameworks. You can go ahead and apply for different compliance badges. These badges will boost your business's brand and many clients will trust your services because the security badge is a symbol of high security standards.
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom_cta.html %}

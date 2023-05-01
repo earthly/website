@@ -359,4 +359,4 @@ But if you do, remember to utilize the correct syntax. Bash (especially sh) is c
 
 Because Earthly's builds are neatly encapsulated and language-independent, they're easier to initiate and manage. If you're trying to build and deploy repeatable multiplatform software, Earthly is a great solution.
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom_cta.html %}

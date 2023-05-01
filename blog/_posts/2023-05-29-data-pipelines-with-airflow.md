@@ -485,4 +485,4 @@ In this article, you have learned about Apache Airflow's architecture and compon
 
 Looking to the future, potential developments for Apache Airflow may include better integration with cloud platforms, improved support for streaming data, and enhanced visualization and monitoring features. Apache Airflow is a flexible tool with a wide range of use cases, and its continued improvement will only make it more valuable to users.
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom_cta.html %}

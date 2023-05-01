@@ -167,4 +167,4 @@ If you're not a developer, or only use your laptop for browsing and email, I rea
 
 And if you liked this article you might like to hear a little about the [backstory behind](/blog/introducing-earthly-build-automation-for-the-container-era) [Earthly](https://earthly.dev/).
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom_cta.html %}

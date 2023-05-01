@@ -401,4 +401,4 @@ There's a lot more to writing a great tutorial than just Patience, running code,
 
 But I think these are three of the biggest pieces of advice we find ourselves given writers over and over again. I hope you'll find them useful next time you write a technical tutorial.
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom_cta.html %}

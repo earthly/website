@@ -327,4 +327,4 @@ There are many advantages of using containers as part of your day-to-day life as
 
 [Earthly](https://earthly.dev/) is an automation tool for managing all your [Docker components](https://docs.earthly.dev/docs/guides/docker-in-earthly), images, and containers. With Earthly, you can execute all your builds in containers and ensure uniformity across machines.
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom_cta.html %}

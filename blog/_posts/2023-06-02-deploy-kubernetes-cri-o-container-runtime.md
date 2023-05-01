@@ -667,4 +667,4 @@ In this article, you have seen how to get started with CRI-O, install it on an U
 
 There is no doubt that its focus on performance, security, and compatibility with Kubernetes makes it a great choice for organizations looking to deploy containerized applications at scale.
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom_cta.html %}

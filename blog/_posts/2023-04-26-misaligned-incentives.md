@@ -64,4 +64,4 @@ Similarly – for dev tools – aligned incentives lead to good outcomes, and ev
 
 So, now I see incentives everywhere, and I'm happy to work at a place that thought them through ahead of time because when free usage or product improvement isn't a win/win, things will eventually get messy.
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom_cta.html %}

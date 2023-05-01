@@ -437,4 +437,4 @@ If you need to run external programs within the Python application, try to run t
 
 And if you are looking for a more repeatable way to build Python, take a look at [Earthly](/). [Better Dependency Management in Python](/blog/python-earthly/) is a great introduction to using Earthly with Python.
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom_cta.html %}
