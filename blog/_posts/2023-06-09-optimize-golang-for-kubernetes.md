@@ -29,38 +29,42 @@ In addition, you need to have [Go](https://go.dev/doc/install), [Docker](https:/
 
 You can verify that you've installed Go by opening a terminal or command prompt and typing the following command:
 
-~~~
+~~~{.bash caption=">_"}
 go version
 ~~~
 
 It should return something similar to this:
 
-~~~
+~~~{.bash caption=">_"}
 go version go1.19.3 darwin/amd64
 ~~~
 
 Then, verify Docker is installed with:
 
-~~~
+~~~{.bash caption=">_"}
 docker --version
 ~~~
 
 Which will output something like this:
 
-~~~
+~~~{ caption="Output"}
 Docker version 20.10.22, build 3a2c30b
 ~~~
 
 Also, verify Kubernetes is installed on your PC with:
 
-~~~
+~~~{.bash caption=">_"}
 kubectl version --client
 ~~~
 
 The output should be something similar to:
 
-~~~
-Client Version: version.Info{Major:"1", Minor:"25", GitVersion:"v1.25.4", GitCommit:"872a965c6c6526caa949f0c6ac028ef7aff3fb78", GitTreeState:"clean", BuildDate:"2022-11-09T13:36:36Z", GoVersion:"go1.19.3", Compiler:"gc", Platform:"darwin/amd64"}
+~~~{ caption="Output"}
+Client Version: version.Info{Major:"1", Minor:"25", \
+GitVersion:"v1.25.4", \
+GitCommit:"872a965c6c6526caa949f0c6ac028ef7aff3fb78", \
+GitTreeState:"clean", BuildDate:"2022-11-09T13:36:36Z", \
+GoVersion:"go1.19.3", Compiler:"gc", Platform:"darwin/amd64"}
 Kustomize Version: v4.5.7
 ~~~
 
@@ -98,7 +102,7 @@ Some of these optimization techniques include:
 
     The following is an example of Docker code that uses the official Golang base image:
 
-    ~~~
+    ~~~{.dockerfile caption="Earthfile"}
     # Use the official Golang base image
     FROM golang:1.16
 
@@ -115,7 +119,7 @@ Some of these optimization techniques include:
 
     The Docker command below uses a specific version of the official Go base image that is based on the Alpine Linux:
 
-    ~~~
+    ~~~{.dockerfile caption="Earthfile"}
     FROM golang:1.16-alpine
     ~~~
 
@@ -126,7 +130,7 @@ Efficiently allocating resources to your Golang containers is crucial for reduci
 
     To demonstrate optimizing resource allocations, we will create a YAML file where we can set resource limits and requests for our container:
 
-    ~~~
+    ~~~{.yaml caption="deployment.yaml"}
     #.....
     #   .....
           containers:
@@ -159,7 +163,7 @@ Efficiently allocating resources to your Golang containers is crucial for reduci
 
     The complete Kubernetes deployment configuration for setting resource limits and requests looks like this:
 
-    ~~~
+    ~~~{.yaml caption="deployment.yaml"}
     apiVersion: apps/v1
     kind: Deployment
     metadata:
@@ -193,7 +197,7 @@ Efficiently allocating resources to your Golang containers is crucial for reduci
 
     The following code optimizes garbage collection settings in Golang. In the code, we need to import two packages: ["os"](https://pkg.go.dev/os) and ["fmt"](https://pkg.go.dev/fmt). The "fmt" package is used for formatting input and output, the "os" package provides a platform-independent interface to operating system functionality :
 
-    ~~~
+    ~~~{.go caption="gogc.go"}
     package main
 
     import (
@@ -205,13 +209,13 @@ Efficiently allocating resources to your Golang containers is crucial for reduci
 
     Define the main function of the Go program:
 
-    ~~~
+    ~~~{.go caption="gogc.go"}
     func main() {
     ~~~
 
     We decide to get the current value of the "GOGC" variable to the console, using the `fmt.Println()` function. [The "GOGC" variable](https://www.cs.ubc.ca/~bestchai/teaching/cs416_2015w2/go1.4.3-docs/pkg/runtime/index.html#:~:text=The%20GOGC%20variable%20sets%20the%20initial%20garbage%20collection%20target%20percentage.%20A%20collection%20is%20triggered%20when%20the%20ratio%20of%20freshly%20allocated%20data%20to%20live%20data%20remaining%20after%20the%20previous%20collection%20reaches%20this%20percentage.%20The%20default%20is%20GOGC%3D100.%20Setting%20GOGC%3Doff%20disables%20the%20garbage%20collector%20entirely.) is a setting that controls the garbage collector in Go.
 
-    ~~~
+    ~~~{.go caption="gogc.go"}
         // Get current GOGC value
         gogc := os.Getenv("GOGC")
         fmt.Println("Current GOGC value:", gogc);
@@ -219,7 +223,7 @@ Efficiently allocating resources to your Golang containers is crucial for reduci
 
     We can now go ahead to set the "GOGC" variable to a value of 50. This changes the behavior of the Go garbage collector and may improve the performance of the program:
 
-    ~~~
+    ~~~{.go caption="gogc.go"}
         // Set GOGC value to 50
         os.Setenv("GOGC", "50")
 
@@ -230,7 +234,7 @@ Efficiently allocating resources to your Golang containers is crucial for reduci
 
     The whole code looks as shown below:
 
-    ~~~
+    ~~~{.go caption="gogc.go"}
     package main
 
     import (
@@ -268,13 +272,13 @@ Connection pooling is a technique that allows you to reuse database connections 
 
     We start by defining package main statement to identify this Go code file as part of [the main package](https://www.educative.io/answers/what-are-the-main-and-init-functions-in-go#:~:text=The%20main%20package%20in%20the%20Go%20language%20contains%20a%20main%20function%2C%20which%20shows%20that%20the%20file%20is%20executable.). The main package is required for creating an executable program:
 
-    ~~~
+    ~~~{.go caption="connection-pool.go"}
     package main
     ~~~
 
     We also have to import a list of external packages that this Go program will require. We import the standard library packages database/sql, fmt, and [log](https://pkg.go.dev/log), as well as a third-party package github.com/go-sql-driver/mysql, which provides a MySQL driver for the database/sql package:
 
-    ~~~
+    ~~~{.go caption="connection-pool.go"}
     import (
         "database/sql"
         "fmt"
@@ -287,7 +291,7 @@ Connection pooling is a technique that allows you to reuse database connections 
 
     We create a new database connection pool using the [`sql.Open()`](https://pkg.go.dev/database/sql#Open) function, which takes two arguments: the name of the database driver to use (mysql) and a connection string with the user credentials, hostname, port, and database name. If the connection to the database fails, the program logs the error message and exits using the `log.Fatal()` method. Otherwise, the program defers the closing of the database connection until the end of the function:
 
-    ~~~
+    ~~~{.go caption="connection-pool.go"}
         // Create a database connection pool
         db, err := sql.Open("mysql", "user:password@tcp(db-hostname:3306)/mydb")
         if err != nil {
@@ -298,7 +302,7 @@ Connection pooling is a technique that allows you to reuse database connections 
 
     We have a connection pool but we need to configure the database connection pool settings using methods on the db object. The [`SetMaxOpenConns()`](https://pkg.go.dev/database/sql#DB.SetMaxOpenConns) method sets the maximum number of open connections to the database (10 in this example), while [`SetMaxIdleConns()`](https://pkg.go.dev/database/sql#DB.SetMaxIdleConns) method sets the maximum number of idle connections to keep in the pool (5). Finally, [`SetConnMaxLifetime()`](https://pkg.go.dev/database/sql#DB.SetConnMaxLifetime) method sets the maximum lifetime of a connection (5 minutes in this example):
 
-    ~~~
+    ~~~{.go caption="connection-pool.go"}
         // Set connection pool settings
         db.SetMaxOpenConns(10)
         db.SetMaxIdleConns(5)
@@ -311,7 +315,7 @@ Connection pooling is a technique that allows you to reuse database connections 
 
     The whole code looks as shown below:
 
-    ~~~
+    ~~~{.go caption="connection-pool.go"}
     package main
 
     import (
@@ -367,7 +371,7 @@ Kubernetes provides health checks and readiness probes that allow you to monitor
 
 To monitor the status of your containers, let's start by adding a readiness probe:
 
-~~~
+~~~{.yaml caption="health-checks.yaml"}
 ....
     ....
         containers:
@@ -392,7 +396,7 @@ To monitor the status of your containers, let's start by adding a readiness prob
 
 Now we can add a liveness probe immediately after the readiness probe:
 
-~~~
+~~~{.yaml caption="health-checks.yaml"}
 ....
     ....
         containers:
@@ -419,7 +423,7 @@ Now we can add a liveness probe immediately after the readiness probe:
 
 The YAML file should look like this:
 
-~~~
+~~~{.yaml caption="health-checks.yaml"}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
