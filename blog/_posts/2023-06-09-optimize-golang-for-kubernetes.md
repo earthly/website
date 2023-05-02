@@ -6,7 +6,11 @@ toc: true
 author: IFEDAYO ADESIYAN
 
 internal-links:
- - just an example
+ - Golang
+ - Server Load
+ - Kubernetes
+ - Optimize
+ - Load Balancing
 ---
 
 Optimizing server load is crucial for ensuring efficient performance and scalability of Golang applications running on Kubernetes. As organizations increasingly adopt containerization and Kubernetes for deploying and managing their applications, it becomes imperative to implement best practices for reducing server load to achieve optimal resource utilization, cost-efficiency, and an improved user experience.
@@ -476,7 +480,3 @@ Cheers 🥂! You're a step closer to optimizing Golang applications for Kubernet
 - [ ] Add in Author page
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
