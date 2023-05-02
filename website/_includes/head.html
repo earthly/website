@@ -27,12 +27,9 @@
   <script src="/assets/js/analytics.js"></script>
 
   {% if jekyll.environment == "production" %}
-  {%- include intercom.html -%}
   {%- include segment.html -%}
-  {%- include growthbook.html -%}
+  <!-- {%- include growthbook.html -%} -->
   {%- include clearbit.html -%}
-  {%- include facebookpixel.html -%}
-  {%- include twitterpixel.html -%}
   {% endif %}
 
 </head>

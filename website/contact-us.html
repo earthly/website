@@ -82,9 +82,9 @@ layout: default
   form.addEventListener('submit', function (event) {
     var formEmail = document.getElementById('earthly-ci-form-email').value;
     analytics.identify(formEmail);
-    analytics.track('earthly-ci-form-submit', {
+    analytics.track('contact-us-contact-us-form-submit', {
       category: 'Form Submission',
-      label: 'earthly-ci-form-submit'
+      label: 'contact-us-contact-us-form-submit'
     });
   });
 </script>
