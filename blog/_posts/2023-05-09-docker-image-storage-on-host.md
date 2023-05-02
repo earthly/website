@@ -74,7 +74,9 @@ $ docker inspect --format='{% raw %}{{json .RootFS}}{% endraw %}' edc5a3f3b57b |
 ~~~
 
 ~~~{.bash caption=">_"}
+{% raw %}
 $ docker inspect --format='{{json .RootFS}}' d181adc2b1e1 | jq
+{% endraw %}
 ~~~
 
 ~~~{ caption="Output"}
