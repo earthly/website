@@ -469,6 +469,8 @@ In summary, optimizing Golang applications for Kubernetes is crucial to ensuring
 
 Cheers 🥂! You're a step closer to optimizing Golang applications for Kubernetes.
 
+{% include_html cta/cta2.html %}
+
 ## Outside Article Checklist
 
 - [ ] Add in Author page
@@ -478,4 +480,3 @@ Cheers 🥂! You're a step closer to optimizing Golang applications for Kubernet
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/cta2.html %}`
