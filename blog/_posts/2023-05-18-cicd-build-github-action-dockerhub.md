@@ -464,4 +464,4 @@ This article has shown you how to create an automated CI/CD build with GitHub an
 
 The code used in this tutorial can be found in this [GitHub repository](https://github.com/Rose-stack/node_app)
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom-cta.html %}

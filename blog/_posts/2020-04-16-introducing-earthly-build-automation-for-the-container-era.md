@@ -57,6 +57,6 @@ There are many other goodies that Earthly provides. For more information and als
 
 This is the first release of Earthly. We will continue to iterate, make improvements and, most importantly, incorporate user feedback. We can't wait to see what you build with it!
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom-cta.html %}
 
 <script id="asciicast-314104" src="https://asciinema.org/a/314104.js" async></script>

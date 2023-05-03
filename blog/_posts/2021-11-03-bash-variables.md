@@ -437,7 +437,7 @@ Those are the basics of bash shell variables. There is much that I haven't cover
 
 Also, if you're the type of person who's not afraid to solve problems in bash, then take a look at Earthly. It's a excellent tool for creating repeatable builds in an approachable syntax.
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom-cta.html %}
 
 <div class="no_toc_section">
 ## Feedback

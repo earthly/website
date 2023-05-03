@@ -119,4 +119,4 @@ As you can see, Docker, Buildah, and kaniko are great options for choosing a con
 
 No matter the tool you choose to build your images, it's important that the applications inside them get deployed properly. For this, you can check out [Earthly](https://earthly.dev/), a tool to help you create idempotent CI/CD runs.
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom-cta.html %}

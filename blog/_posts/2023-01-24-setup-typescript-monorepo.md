@@ -522,4 +522,4 @@ As you know, a monorepo consists of several applications, with each application 
 
 [Earthly](https://earthly.dev/) can help you with that. It's a build automation tool that enables you to run all your builds in containers. Earthly runs on top of the most popular CI systems, such as [Jenkins](/blog/slow-performance-in-jenkins), [CircleCI](/blog/continuous-integration), GitHub Actions, and AWS CodeBuild, and you can easily adopt it to set up your monorepo pipeline.
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom-cta.html %}

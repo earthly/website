@@ -36,4 +36,4 @@ Our commitment to security doesn't end with SOC 2 Type 1. We are already working
 
 *To request a copy of our SOC 2 Type 1 report, contact security@earthly.dev.*
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom-cta.html %}

@@ -145,4 +145,4 @@ One of the reasons people love Homebrew is because it just works. And on Apple S
 
 Also, If you're homebrew, you probably and you haven't heard of [Earthly](/), then you should probably check it out. It's a open source tool for building linux software regardless of your host environment.  
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom-cta.html %}

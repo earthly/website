@@ -323,4 +323,4 @@ This will give you all the warnings, pass & failed checks with respect to your G
 
 When running Kubernetes in production, we can use kube-bench to benchmark your cluster against CIS benchmark. You can avoid any misconfigurations in your Kubernetes cluster. With CIS benchmarks, You can be extra sure that you're following the best practices when it comes to running Kubernetes in production. I hope this guide will help you in understanding kube-bench, and you're now ready to benchmark your cluster against CIS benchmarks.
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom-cta.html %}

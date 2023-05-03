@@ -193,7 +193,7 @@ go get github.com/mattn/go-sqlite3
 
 Finally, let's jump into the Golang code.
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom-cta.html %}
 
 ## Golang SQL Repository
 

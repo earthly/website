@@ -185,4 +185,4 @@ When a new developer tooling innovation is discovered, newer programming languag
 
 So newer languages have one clear, well thought out way to do something, and older languages will have either many contradictory ways, or no ways at all, to do the same thing. And this makes older languages feel old.
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom-cta.html %}
