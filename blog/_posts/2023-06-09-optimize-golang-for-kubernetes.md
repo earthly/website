@@ -3,7 +3,7 @@ title: "Optimizing Golang Applications for Kubernetes: Best Practices for Reduci
 categories:
   - Tutorials
 toc: true
-author: IFEDAYO ADESIYAN
+author: Ifedayo Adesiyan
 
 internal-links:
  - Golang
@@ -488,6 +488,5 @@ Cheers 🥂! You're a step closer to optimizing Golang applications for Kubernet
 
 ## Outside Article Checklist
 
-- [ ] Add in Author page
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
