@@ -1,73 +1,57 @@
 <div class="w-full">
-    <div class="px-6 lg:px-10 pt-12 pb-12 max-w-7xl m-auto">
-        <div class="text-3xl lg:text-4xl font-semibold">
-            Nobody likes their CI/CD
-        </div>
-        <div class="text-xl lg:text-2xl text-slate-500 pt-1 pb-3">
-            Traditional CI/CD has many pain points
-        </div>
-        <div class="rounded-xl px-6 py-6 bg-[#f6f3ea] text-lg text-gray-800">
-            <script defer>
-                (function () {
-                    $(document).ready(function () {
-                        $('.hover-title-info').hover(function () {
-                            $('.hover-title-info').removeClass('selected-point');
-                            $(this).addClass('selected-point');
-                            var item = $(this).data('item');
-                            $('.pain-point').addClass('hidden');
-                            $('.' + item).removeClass('hidden');
-                        });
-                        $('.hover-title-info').eq(0).addClass('selected-point');
-                    })
-                })();
-            </script>
-            <div class="h-full rounded-lg pb-2">
-                <div class="w-full">
-                    <div class="lg:pr-10 lg:pl-4 pt-2 w-full  lg:grid grid-cols-10 ">
-                        <div class="col-span-4">
-                            <div data-item="item-1"
-                                class="hover-title-info lg:hover:bg-white/50 border border-gray-300 text-xl lg:mr-10 cursor-pointer py-4 rounded-lg px-4 lg:w-[90%] text-black/90 flex items-center mb-2">
-                                Nightmare to Maintain
-                            </div>
-                            <div data-item="item-2"
-                                class="hover-title-info text-black/90 lg:hover:bg-white/50 text-xl lg:mr-10 border border-gray-300 cursor-pointer py-4 rounded-lg px-4 lg:w-[90%] flex items-center mb-2">
-                                Slow Builds
-                            </div>
-                            <div data-item="item-3"
-                                class="hover-title-info lg:hover:bg-white/50 text-xl lg:mr-10 border border-gray-300 cursor-pointer py-4 rounded-lg px-4 lg:w-[90%] text-black/90 flex items-center mb-2">
-                                Slower = More Vendor Profit
-                            </div>
-                            <div data-item="item-4"
-                                class="hover-title-info lg:hover:bg-white/50 text-xl lg:mr-10 border border-gray-300 cursor-pointer py-4 rounded-lg px-4 lg:w-[90%] text-black/90 flex items-center mb-2">
-                                Poor Monorepo Support
-                            </div>
-                        </div>
-                        <div
-                            class="col-span-6 items-center p-12 justify-center bg-white rounded-xl shadow-md hidden lg:flex ">
-                            <ul class="text-xl px-6 text-gray-600  font-normal  item-1 leading-8 pain-point list-disc">
-                              <li>CI/CD pipelines are challenging to maintain due to the inability to run locally and reliance on live testing.</li>
-                              <li>Limited ability to reuse logic results in complexity and duplicated code across build scripts.</li>
-                              <li>Traditional CI/CD platforms often require specific languages like YAML, Bash, or Groovy.</li>
-                              <li>Achieving pipeline parallelization typically requires rearchitecting CI scripts, adding to maintenance challenges.</li>
-                            </ul>
-                            <ul class="font-normal  text-xl px-6 text-gray-600 item-2 hidden leading-8 pain-point list-disc">
-                              <li>More than half of CI/CD run time is spent re-executing things that haven't changed.</li>
-                              <li>Sandboxed CI environments provide consistency and security but sacrifice build performance.</li>
-                              <li>Builds require dependency downloads, installations, and container image rebuilds every time.</li>
-                              <li>Remote caching strategies are crude and limited, only benefiting very specific situations.</li>
-                            </ul>
-                            <ul class="font-normal  text-xl px-6 text-gray-600 item-3 hidden leading-8 pain-point list-disc">
-                              <li>Slower builds result in more profit for vendors, discouraging innovation that makes builds faster.</li>
-                              <li>The CI/CD industry's pay-by-the-minute model misaligns vendor incentives with user productivity.</li>
-                            </ul>
-                            <ul class="font-normal  text-xl px-6 text-gray-600 item-4 hidden leading-8 pain-point list-disc">
-                              <li>CI/CD platforms are ill-equipped for today's era of monorepo and polyrepo code layouts.</li>
-                              <li>Complex setups require heavy DIY scripting for marginal improvements, and are difficult to maintain.</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <div class="px-6 lg:px-10 pt-12 pb-12 max-w-7xl m-auto">
+    <div class="text-3xl lg:text-4xl font-semibold">
+      Nobody likes their CI/CD
     </div>
+    <div class="text-xl lg:text-2xl text-slate-500 pt-1 pb-3">
+      Traditional CI/CD has many pain points
+    </div>
+
+    <div class="rounded-xl px-6 py-6 bg-[#f6f3ea] text-lg text-gray-800">
+      <script defer>
+        (function () {
+          $(document).ready(function () {
+            $(".hover-title-info").hover(function () {
+              $(".hover-title-info").removeClass("selected-point");
+              $(this).addClass("selected-point");
+              var item = $(this).data("item");
+              $(".pain-point").addClass("hidden");
+              $("." + item).removeClass("hidden");
+            });
+            $(".hover-title-info").eq(0).addClass("selected-point");
+          });
+        })();
+      </script>
+
+      <div class="h-full rounded-lg pb-2">
+        <div class="w-full">
+          <div class="lg:pr-10 lg:pl-4 pt-2 w-full lg:grid grid-cols-10">
+            <div class="col-span-4">
+              {% for item in site.data.pain-points %}
+                <div
+                  data-item="item-{{ forloop.index }}"
+                  class="hover-title-info lg:hover:bg-white/50 border border-gray-300 text-xl lg:mr-10 cursor-pointer py-4 rounded-lg px-4 lg:w-[90%] text-black/90 flex items-center mb-2"
+                >
+                  {{ item.title }}
+              </div>
+              {% endfor %}
+            </div>
+
+            <div class="bg-white col-span-6 items-center min-h-[400px] xl:min-h-[340px] px-12 rounded-xl shadow-md hidden lg:flex">
+              {% for item in site.data.pain-points %}
+                <div class="item-{{ forloop.index }} pain-point {% if forloop.index > 1 %}hidden{% endif %}">
+                  <span class="font-bold leading-8 text-xl text-gray-600">{{ item.headline }}</span>
+                  <ul class="font-normal list-disc px-6 text-gray-600">
+                    {% for point in item.points %}
+                      <li class="pt-2">{{ point }}</li>
+                    {% endfor %}
+                  </ul>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
