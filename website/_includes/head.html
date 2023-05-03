@@ -24,15 +24,12 @@
   <script defer src="/assets/js/tabs.js"></script>
   <script defer src="/assets/js/star-cta.js"></script>
   <script defer src="/assets/js/button.js"></script>
-  <script defer src="/assets/js/analytics.js"></script>
+  <script src="/assets/js/analytics.js"></script>
 
   {% if jekyll.environment == "production" %}
-  <!-- {%- include google-analytics.html -%} -->
-  {%- include intercom.html -%}
   {%- include segment.html -%}
+  {%- include growthbook.html -%}
   {%- include clearbit.html -%}
-  {%- include facebookpixel.html -%}
-  {%- include twitterpixel.html -%}
   {% endif %}
 
 </head>
