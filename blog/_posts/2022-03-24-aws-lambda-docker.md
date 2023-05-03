@@ -368,4 +368,4 @@ To call my deploy step I need to pass my aws config files as secrets like this:
 
 And with that, I have a container running in AWS, where I'm only billed for the milliseconds it runs, with a full – although simple – deployment pipeline.
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom-cta.html %}

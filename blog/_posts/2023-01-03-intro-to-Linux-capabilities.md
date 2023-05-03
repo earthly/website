@@ -355,4 +355,4 @@ I hope this guide helped you understand Linux capabilities and why they're impor
 By setting the right capabilities for your [container](/blog/docker-slim), you are reducing the attack surface. Even if someone breaks into the container, you can control the damage.
 As with most other Linux commands, you can use the `man` page to learn more about capabilities.
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom-cta.html %}

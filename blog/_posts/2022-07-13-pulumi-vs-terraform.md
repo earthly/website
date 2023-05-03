@@ -114,4 +114,4 @@ In this article, you've looked at a quick comparison of Terraform and Pulumi, tw
 
 So which tool should you use? [Terraform](/blog/kubernetes-terraform) is still considered the industry leader in IaC tools, but Pulumi is quickly rising in popularity. Both tools help you accomplish the same thing, so for most organizations and developers, this comes down to whether you're willing to invest your time and resources into learning HCL and Terraform. If you prefer the consistency of using HCL for your infrastructure and want a tool with a more robust community, Terraform is the way to go. If you need to optimize for efficiency and would prefer to use a language you're already comfortable with, Pulumi might be the better solution. Either tool will get you on the way to properly scaling your infrastructure code.
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom-cta.html %}

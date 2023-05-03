@@ -441,7 +441,7 @@ Second, I've learned you shouldn't overlook the education and training aspects e
 
 But most importantly, I've learned - and all the people I talked to agreed: Bazel does deliver on its promise of fast and correct builds. Other tools like Pants and Buck exist, but Bazel is the clear category leader. If I had a mono-repo with several million lines of code in it, I'd want a consistent way to build things and a fast way to get feedback on those changes. Doing so would pay for itself over time because developer time is expensive. Bazel is the tool for that job.
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom-cta.html %}
 
 [^1]: Quotes have been edited for clarity.
       Thank you Oscar, Son, Jason, Andreas, Jens, and Julien for letting me pick your brains about builds.

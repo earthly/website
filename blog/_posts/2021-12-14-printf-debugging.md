@@ -77,4 +77,4 @@ So I still reach for a debugger when a problem is too big to fit in my head or i
 
 [^1]: With Visual Studio's edit and continue features, I could even write in the new code and try running it in the same session. And now Visual studio has time travel debugging, so you can move backward and forward in execution whenever you like. It's a fantastic feat of engineering.
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom-cta.html %}

@@ -261,4 +261,4 @@ If you have any tips or suggested resources for property-based testing, please l
 
 And if you care about reliable software, take a look at Earthly. Earthly makes continuous integration less flakey and works with your existing workflow.
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom-cta.html %}

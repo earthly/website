@@ -386,4 +386,4 @@ You should have a good understanding of how to handle errors in your Python proj
 
 The code for this article can be found on [GitHub](https://github.com/Boadzie/error-handling-in-python).
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom-cta.html %}
