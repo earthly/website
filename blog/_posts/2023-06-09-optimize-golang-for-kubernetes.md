@@ -485,7 +485,3 @@ In summary, optimizing Golang applications for Kubernetes is crucial to ensuring
 Cheers 🥂! You're a step closer to optimizing Golang applications for Kubernetes.
 
 {% include_html cta/cta2.html %}
-
-## Outside Article Checklist
-
-- [ ] Optional: Find ways to break up content with quotes or images
