@@ -24,25 +24,46 @@
   document.addEventListener("DOMContentLoaded", function () {
     // Wait for features to be available
     gb.loadFeatures({ autoRefresh: true, timeout: 2000 }).then(() => {
-      // Uncomment for testing
       // console.log("Features loaded");
-      if(document.getElementById("homepage-hero-headline-div-control")){
-        //console.log("on homepage");
-        if(gb.isOn("homepage-hero-copy-20220427")) {
-            document.getElementById("homepage-hero-headline-div-control").style.display = "none";
-            document.getElementById("homepage-hero-headline-div-test").style.display = "inline";
-            document.getElementById("homepage-hero-headline-p-control").style.display = "none";
-            document.getElementById("homepage-hero-headline-p-test").style.display = "inline";
-            document.getElementById("homepage-cta-kicker-div-control").style.display = "none";
-            document.getElementById("homepage-cta-kicker-div-test").style.display = "inline";
-          } else {
-            document.getElementById("homepage-hero-headline-div-control").style.display = "inline";
-            document.getElementById("homepage-hero-headline-div-test").style.display = "none";
-            document.getElementById("homepage-hero-headline-p-control").style.display = "inline";
-            document.getElementById("homepage-hero-headline-p-test").style.display = "none";
-            document.getElementById("homepage-cta-kicker-div-control").style.display = "inline";
-            document.getElementById("homepage-cta-kicker-div-test").style.display = "none";
-          }
+      if(document.getElementById("nav-cta-button-copy-control")){
+        //console.log("control element rendered");
+        
+        // Gavin, 20230502: Added for homepage-and-nav-cta-button-copy test
+        const ctaOpt = gb.getFeatureValue("homepage-and-nav-cta-button-copy", 0);
+        switch(ctaOpt) {
+          case 1:
+            document.getElementById("nav-cta-button-copy-control").style.display = "none";
+            document.getElementById("nav-cta-button-copy-test1").style.display = "inline-flex";
+            document.getElementById("nav-cta-button-copy-test2").style.display = "none";
+            document.getElementById("nav-mobile-cta-button-copy-control").style.display = "none";
+            document.getElementById("nav-mobile-cta-button-copy-test1").style.display = "flex";
+            document.getElementById("nav-mobile-cta-button-copy-test2").style.display = "none";
+            document.getElementById("homepage-cta-button-copy-control").style.display = "none";
+            document.getElementById("homepage-cta-button-copy-test1").style.display = "inline-block";
+            document.getElementById("homepage-cta-button-copy-test2").style.display = "none";
+            break;
+          case 2:
+            document.getElementById("nav-cta-button-copy-control").style.display = "none";
+            document.getElementById("nav-cta-button-copy-test1").style.display = "none";
+            document.getElementById("nav-cta-button-copy-test2").style.display = "inline-flex";
+            document.getElementById("nav-mobile-cta-button-copy-control").style.display = "none";
+            document.getElementById("nav-mobile-cta-button-copy-test1").style.display = "none";
+            document.getElementById("nav-mobile-cta-button-copy-test2").style.display = "flex";
+            document.getElementById("homepage-cta-button-copy-control").style.display = "none";
+            document.getElementById("homepage-cta-button-copy-test1").style.display = "none";
+            document.getElementById("homepage-cta-button-copy-test2").style.display = "inline-block";
+            break;
+          default:
+            document.getElementById("nav-cta-button-copy-control").style.display = "inline-flex";
+            document.getElementById("nav-cta-button-copy-test1").style.display = "none";
+            document.getElementById("nav-cta-button-copy-test2").style.display = "none";
+            document.getElementById("nav-mobile-cta-button-copy-control").style.display = "flex";
+            document.getElementById("nav-mobile-cta-button-copy-test1").style.display = "none";
+            document.getElementById("nav-mobile-cta-button-copy-test2").style.display = "none";
+            document.getElementById("homepage-cta-button-copy-control").style.display = "inline-block";
+            document.getElementById("homepage-cta-button-copy-test1").style.display = "none";
+            document.getElementById("homepage-cta-button-copy-test2").style.display = "none";
+        }
       }
     });
   });
