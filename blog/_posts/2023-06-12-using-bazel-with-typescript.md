@@ -383,9 +383,10 @@ You've now completed a basic build of a TypeScript application with Bazel. You l
 
 Bazel is a powerful and flexible build system that can be used to manage projects of any size and complexity. By leveraging its caching and parallelization features, Bazel can provide significant speed improvements in building and testing large projects. To further enhance your knowledge of Bazel, it is recommended to explore its documentation in depth. The official Bazel documentation contains a vast collection of resources, including tutorials, guides, and reference materials that can help you become an expert in using Bazel for your projects. So, if you want to learn more about Bazel and its capabilities, visit [Bazel's docs](https://bazel.build/docs) for more resources.
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
