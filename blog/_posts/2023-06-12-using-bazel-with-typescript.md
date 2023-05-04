@@ -382,7 +382,7 @@ $ bash publish.sh
 ~~~
 
 <div class="wide">
-![Terminal output of publishing to npm]({{site.images}}{{page.slug}}/aLpK3PG.png)
+![Terminal output of publishing to `npm`]({{site.images}}{{page.slug}}/aLpK3PG.png)
 </div>
 
 You can browse your package on npm. The URL is `https://npmjs.com/package/<your-package-name>`. For this tutorial, it is [https://npmjs.com/package/demo_bzl_app](https://npmjs.com/package/demo_bzl_app). Make sure you increase the version of your release in `package.json` the next time you attempt to publish to avoid getting an error.
