@@ -9,16 +9,35 @@
 
     <div class="rounded-xl px-6 py-6 bg-[#f6f3ea] text-lg text-gray-800">
       <script defer>
+        function selectPoint(element) {
+          $(".hover-title-info").removeClass("selected-point");
+          element.addClass("selected-point");
+          var item = element.data("item");
+          $(".pain-point").addClass("hidden");
+          $("." + item).removeClass("hidden");
+        }
+
         (function () {
           $(document).ready(function () {
             $(".hover-title-info").hover(function () {
-              $(".hover-title-info").removeClass("selected-point");
-              $(this).addClass("selected-point");
-              var item = $(this).data("item");
-              $(".pain-point").addClass("hidden");
-              $("." + item).removeClass("hidden");
+              selectPoint($(this))
             });
             $(".hover-title-info").eq(0).addClass("selected-point");
+            $(".hover-title-info").click(function () {
+              if (window.innerWidth >= 1024) {
+                selectPoint($(this))
+              } else {
+                var item = $(this).data("item");
+                item = $(".mobile-" + item).first();
+                if (item.hasClass("active")) {
+                  $(this).removeClass("active");
+                  item.removeClass("active");
+                } else {
+                  $(this).addClass("active");
+                  item.addClass("active");
+                }
+              }
+            });
           });
         })();
       </script>
@@ -30,10 +49,24 @@
               {% for item in site.data.pain-points %}
                 <div
                   data-item="item-{{ forloop.index }}"
-                  class="hover-title-info lg:hover:bg-white/50 border border-gray-300 text-xl lg:mr-10 cursor-pointer py-4 rounded-lg px-4 lg:w-[90%] text-black/90 flex items-center mb-2"
+                  class="hover-title-info lg:hover:bg-white/50 border border-gray-300 text-xl lg:mr-10 cursor-pointer py-4 rounded-lg px-4 lg:w-[90%] text-black/90 flex justify-between items-center mb-2"
                 >
                   {{ item.title }}
-              </div>
+                  <img
+                    class="ml-2 lg:hidden"
+                    src="../../../assets/svg/chevron.svg"
+                    alt="Chevron icon"
+                  />
+                </div>
+
+                <div class="bg-white mobile-item-{{ forloop.index }} mobile-pain-point rounded-xl shadow-md lg:hidden">
+                  <span class="font-bold leading-8 text-xl text-gray-600">{{ item.headline }}</span>
+                  <ul class="font-normal list-disc px-6 text-gray-600">
+                    {% for point in item.points %}
+                      <li class="pt-2">{{ point }}</li>
+                    {% endfor %}
+                  </ul>
+                </div>
               {% endfor %}
             </div>
 

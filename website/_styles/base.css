@@ -102,6 +102,32 @@ main.wave-main {
   @apply lg:bg-white lg:border lg:border-white lg:shadow-md lg:font-semibold lg:text-black !important;
 }
 
+.hover-title-info.active img {
+  transform: rotate(180deg);
+}
+
+.hover-title-info img {
+  transform: rotate(0);
+  transition: all 0.25s ease-in-out;
+}
+
+.mobile-pain-point {
+  height: auto;
+  margin-bottom: 0;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  padding: 0 24px;
+  transition: all 0.25s ease-in-out;
+}
+
+.mobile-pain-point.active {
+  margin-bottom: 8px;
+  max-height: 600px;
+  opacity: 1;
+  padding: 24px;
+}
+
 .display-icon {
   stroke: #2d7e5d;
 }
