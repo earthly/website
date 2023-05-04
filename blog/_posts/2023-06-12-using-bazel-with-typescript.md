@@ -35,25 +35,27 @@ While using Bazel, you will come across several Bazel rules built around the Typ
 
 See the [rules_nodejs docs](https://bazelbuild.github.io/rules_nodejs/TypeScript.html) for more Bazel TypeScript rules.
 
+![Rules]({{site.images}}{{page.slug}}/rules.png)\
+
 ## Build a TypeScript App with Bazel
 
 For the purpose of this tutorial, you'll will put together a basic TypeScript application and then build and test it with Bazel. Ensure that you have Node.js installed on your computer.
 
 Start by creating a directory called `demo_bzl_app`:
 
-~~~
+~~~{.bash caption=">_"}
 $ mkdir demo_bzl_app && cd demo_bzl_app
 ~~~
 
 Start a Node.js project by running the following command:
 
-~~~
+~~~{.bash caption=">_"}
 $ npm init
 ~~~
 
 Next, install TypeScript:
 
-~~~
+~~~{.bash caption=">_"}
 $ npm config set save-prefix=''
 $ npm install typescript@4.9.5 --save-dev
 ~~~
@@ -62,22 +64,22 @@ In your directory, you should now have a `package.json` file and a `package-lock
 
 Next, you will create a `tsconfig.json` file, which is where you will define the TypeScript compiler options. This can be done automatically by running the following:
 
-~~~
-npx tsc --init --rootDir src --esModuleInterop --resolveJsonModule --lib 'es6, dom' \
---module commonjs --allowJs true --noImplicitAny true
+~~~{.bash caption=">_"}
+npx tsc --init --rootDir src --esModuleInterop --resolveJsonModule \
+--lib 'es6, dom' --module commonjs --allowJs true --noImplicitAny true
 ~~~
 
 To learn more about what these options mean, see the [TSConfig Reference doc](https://www.typescriptlang.org/tsconfig). At this point, you should have the `tsconfig.json` file in the root directory.
 
 Now create an `src` directory where the application code will live. Inside it, create a file called `index.ts`. The `.ts` extension indicates that the file is a TypeScript file:
 
-~~~
+~~~{.bash caption=">_"}
 $ mkdir src && touch readme.MD && touch src/index.ts
 ~~~
 
 In the `index.ts` file, add the following code:
 
-~~~
+~~~{.js caption="index.js"}
 #!/usr/bin/env node
 
 "use strict";
@@ -108,7 +110,7 @@ The `WORKSPACE` file helps Bazel identify a directory as a Bazel project, while 
 
 Create a `WORKSPACE` file and a `BUILD` file in the `demo_bzl_app` root directory:
 
-~~~
+~~~{.bash caption=">_"}
 touch WORKSPACE && touch BUILD
 ~~~
 
@@ -116,7 +118,8 @@ In future projects, you can designate a directory as a Bazel workspace by creati
 
 In your `WORKSPACE` file, add the following code:
 
-~~~
+~~~{ caption="WORKSPACE"}
+
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 http_archive(
     name = "aspect_rules_ts",
@@ -136,7 +139,8 @@ http_archive(
 load("@aspect_rules_ts//ts:repositories.bzl", "rules_ts_dependencies")
 
 rules_ts_dependencies(
-    # This keeps the TypeScript version in-sync with the editor, which is typically best.
+    # This keeps the TypeScript version in-sync with the editor, \
+    which is typically best.
     ts_version_from = "//:package.json",
 
     # Alternatively, you could pick a specific version, or use
@@ -145,7 +149,8 @@ rules_ts_dependencies(
 )
 
 # Fetch and register node, if you haven't already
-load("@rules_nodejs//nodejs:repositories.bzl", "DEFAULT_NODE_VERSION", "nodejs_register_toolchains")
+load("@rules_nodejs//nodejs:repositories.bzl", "DEFAULT_NODE_VERSION", \
+"nodejs_register_toolchains")
 
 nodejs_register_toolchains(
     name= "node",
@@ -153,8 +158,11 @@ nodejs_register_toolchains(
 )
 
 # Register aspect_bazel_lib toolchains;
-# If you use npm_translate_lock or npm_import from aspect_rules_js you can omit this block.
-load("@aspect_bazel_lib//lib:repositories.bzl", "register_copy_directory_toolchains", "register_copy_to_directory_toolchains")
+# If you use npm_translate_lock or npm_import from aspect_rules_js \
+you can omit this block.
+load("@aspect_bazel_lib//lib:repositories.bzl", \
+"register_copy_directory_toolchains", \
+"register_copy_to_directory_toolchains")
 
 register_copy_directory_toolchains()
 
@@ -163,7 +171,7 @@ register_copy_to_directory_toolchains()
 
 A `BUILD` file contains several instructions for Bazel on how to build the package; these instructions are called rules. In the `BUILD` file, add the following rules for building the TypeScript file in `src/index.ts`:
 
-~~~
+~~~{ caption="WORKSPACE"}
 load("@aspect_rules_ts//ts:defs.bzl", "ts_project")
 
 ts_project(
@@ -185,7 +193,7 @@ The previous rules in the `BUILD` file tell Bazel the following:
 
 To build this package, run the following command:
 
-~~~
+~~~{.bash caption=">_"}
 $ bazel build //:transpile
 ~~~
 
@@ -201,21 +209,23 @@ Run the output file by running `bazel-out/darwin-fastbuild/bin/src/index.js`. Yo
 
 ### Add Tests With Jest
 
+![Add]({{site.images}}{{page.slug}}/add.png)\
+
 In this tutorial, you'll be using [Jest](https://jestjs.io/) to add tests to the `demo_bzl_app` project. Start by adding Jest to npm:
 
-~~~
+~~~{.bash caption=">_"}
 npm install --save-dev jest ts-jest @types/jest
 ~~~
 
 Next, you need to configure Jest by running the following:
 
-~~~
+~~~{.bash caption=">_"}
 npx ts-jest config:init
 ~~~
 
 This will create a `jest.config.js` file, which tells Jest and `ts-jest` how to handle `.ts` files. Also, in your `WORKSPACE` file, you have to load a dependency called [`rules_jest`](https://github.com/aspect-build/rules_jest). This is a Bazel library that makes it easier to use Jest with Bazel. Append the following to your `WORKSPACE` file:
 
-~~~
+~~~{ caption="WORKSPACE"}
 http_archive(
     name = "aspect_rules_jest",
     sha256 = "9f327ea58950c88274ea7243419256c74ae29a55399d2f5964eb7686c7a5660d",
@@ -236,20 +246,21 @@ load("@aspect_rules_jest//jest:repositories.bzl", "jest_repositories")
 
 jest_repositories(name = "jest")
 
-load("@jest//:npm_repositories.bzl", jest_npm_repositories = "npm_repositories")
+load("@jest//:npm_repositories.bzl", jest_npm_repositories = \
+"npm_repositories")
 
 jest_npm_repositories()
 ~~~
 
 Next, create a test folder and a test file:
 
-~~~
+~~~{.bash caption=">_"}
 mkdir tests && touch tests/index.test.ts
 ~~~
 
 In `index.test.ts`, add the following:
 
-~~~
+~~~{.ts caption="index.test.ts"}
 let { adder, concatenate } = require('../src/index.ts');
 
 describe('adder module', () => {
@@ -260,7 +271,8 @@ describe('adder module', () => {
 
 describe('concatenate module', () => {
     test('test_concatenate', ()=> {
-        expect(concatenate('mary',' had a little lamb')).toBe('mary had a little lamb')
+        expect(concatenate('mary',' had a little lamb'))\
+        .toBe('mary had a little lamb')
     });
 });
 ~~~
@@ -269,7 +281,7 @@ The code above add test cases for the functions in `src/index.ts`.
 
 You still need to add a way for Bazel to call Jest. In the `BUILD` file, add the following:
 
-~~~
+~~~{ caption="Bazel.BUILD"}
 load("@aspect_rules_jest//jest:defs.bzl", "jest_test")
 
 jest_test(
@@ -286,7 +298,7 @@ jest_test(
 
 Now you can run your tests with Bazel using the following code:
 
-~~~
+~~~{.bash caption=">_"}
 $ bazel run //:test
 ~~~
 
@@ -298,7 +310,7 @@ $ bazel run //:test
 
 To publish this package to npm, you'll first make some changes to the `BUILD` file by adding a new rule. Append the following to your `BUILD` file:
 
-~~~
+~~~{ caption="Bazel.BUILD"}
 load("@aspect_rules_js//npm:defs.bzl", "npm_package")
 
 npm_package(
@@ -312,7 +324,7 @@ Here, the rule is named `demo_bzl_app`. `srcs` is asking Bazel to use the output
 
 Now all you need to do is run the following command:
 
-~~~
+~~~{.bash caption=">_"}
 $ bazel build //:demo_bzl_app
 ~~~
 
@@ -320,7 +332,7 @@ Navigate to the `bazel-out/darwin-fastbuild/bin/` folder. You should see a folde
 
 Next, create a `.gitignore` file and add the following to it:
 
-~~~
+~~~{ caption=".gitignore"}
 bazel-*
 node_modules
 ~~~
@@ -331,7 +343,7 @@ Before you can publish your package, you'll need to create an npm account at [ht
 
 Next, create a file called `publish.sh` and add the following:
 
-~~~
+~~~{.sh caption="publish.sh"}
 #!/bin/bash
 
 echo "Removing old Bazel outputs"
@@ -365,7 +377,7 @@ The previous script will remove old Bazel outputs and then run the tests and bui
 
 Now, you can publish:
 
-~~~
+~~~{.bash caption=">_"}
 $ bash publish.sh
 ~~~
 
@@ -384,7 +396,3 @@ You've now completed a basic build of a TypeScript application with Bazel. You l
 Bazel is a powerful and flexible build system that can be used to manage projects of any size and complexity. By leveraging its caching and parallelization features, Bazel can provide significant speed improvements in building and testing large projects. To further enhance your knowledge of Bazel, it is recommended to explore its documentation in depth. The official Bazel documentation contains a vast collection of resources, including tutorials, guides, and reference materials that can help you become an expert in using Bazel for your projects. So, if you want to learn more about Bazel and its capabilities, visit [Bazel's docs](https://bazel.build/docs) for more resources.
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-- [ ] Optional: Find ways to break up content with quotes or images
