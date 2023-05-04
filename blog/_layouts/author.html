@@ -5,20 +5,32 @@ layout: single
 {% include author-profile.html %}
 {{ content }}
 
-{% assign filtered_posts = site.posts | where: 'author', page.short_name | where:'featured', true %}
-{% if filtered_posts.size != 0 %}
+{% assign filtered_writing_posts = site.posts | where: 'author', page.short_name | where:'featured', true %}
+{% assign filtered_edited_posts = site.posts | where: 'editor', page.short_name %}
+
+{% if filtered_writing_posts.size != 0 %}
 <div class="text-2xl mt-4 mb-2">Featured</div>
 <ul class="-mt-1">
-  {% for post in filtered_posts %}
+  {% for post in filtered_writing_posts %}
   <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
   {% endfor %}
 </ul>
 {% endif %}
 
-<div class="text-2xl mt-4 mb-2">All</div>
+<div class="text-2xl mt-4 mb-2">Author</div>
 <ul class="-mt-1">
-  {% assign filtered_posts = site.posts | where: 'author', page.short_name %}
-  {% for post in filtered_posts %}
+  {% assign filtered_writing_posts = site.posts | where: 'author', page.short_name %}
+  {% for post in filtered_writing_posts %}
   <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
   {% endfor %}
 </ul>
+
+{% if filtered_edited_posts.size != 0 %}
+<div class="text-2xl mt-4 mb-2">Edited</div>
+<ul class="-mt-1">
+  {% assign filtered_edited_posts = site.posts | where: 'author', page.short_name %}
+  {% for post in filtered_edited_posts %}
+  <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
+  {% endfor %}
+</ul>
+{% endif %}

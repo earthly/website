@@ -4,6 +4,7 @@ categories:
   - Tutorials
 toc: true
 author: Ashutosh Krishna
+editor: Bala Priya C
 
 internal-links:
  - Python
@@ -12,7 +13,7 @@ internal-links:
  - Virtual Environments
 ---
 
-Python is a versatile language used for various applications. However, managing dependencies, the [packages](/blog/setup-typescript-monorepo) a project relies on can be a complex and time-consuming task. With the growth of the Python ecosystem, developers need to manage a large number of packages and dependencies and ensure that they are compatible with each other.
+<!-- Python is a versatile language used for various applications. However, managing dependencies, the [packages](/blog/setup-typescript-monorepo) a project relies on can be a complex and time-consuming task. With the growth of the Python ecosystem, developers need to manage a large number of packages and dependencies and ensure that they are compatible with each other.
 
 Poetry provides a solution to these challenges. [Poetry](https://python-poetry.org/) is a package manager for Python that allows developers to manage dependencies, create virtual environments, and package their projects for distribution, all using a single command-line tool.
 
@@ -668,7 +669,7 @@ You can use the `--sync` option with the other dependency group-related options 
 poetry install --without dev --sync
 poetry install --with dev --sync
 poetry install --only dev --sync
-~~~
+~~~ -->
 
 ## Publishing a Package
 
