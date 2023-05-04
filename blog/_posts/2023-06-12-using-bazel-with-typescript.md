@@ -98,7 +98,9 @@ Ordinarily, TypeScript `.ts` files have to be compiled into `.js` files in order
 
 To start using Bazel, install it on your computer. Bazel can be installed on Linux, macOS, and Windows. To learn how to install it for your platform, use their [installation guide](https://bazel.build/install). Confirm that you have it installed by typing `bazel` in your command line:
 
-![Bazel screenshot](https://i.imgur.com/HuPjlpi.png)
+<div class="wide">
+![Bazel screenshot]({{site.images}}{{page.slug}}/HuPjlpi.png)
+</div>
 
 To define a Bazel project, you need to turn it into a [workspace](https://bazel.build/concepts/build-ref#workspace). A *workspace* is a directory that holds the project's source code and Bazel's build outputs. There are two important files that make this possible: the `WORKSPACE` file and the `BUILD` file.
 
@@ -187,7 +189,9 @@ To build this package, run the following command:
 $ bazel build //:transpile
 ~~~
 
-![Screenshot of the `$ bazel build //:transpile` terminal output](https://i.imgur.com/9bSkkHm.png)
+<div class="wide">
+![Screenshot of the `$ bazel build //:transpile` terminal output]({{site.images}}{{page.slug}}/9bSkkHm.png)
+</div>
 
 This will compile the TypeScript file in `src/index.js` to JavaScript files. By now, you should have freshly generated Bazel folders, such as `bazel-bin` and `bazel-out`. These are the folders where Bazel places your build outputs. If you ever need to get rid of them, you can just run `bazel clean` which will delete outputs from your build and reset internal caches.
 
@@ -286,7 +290,9 @@ Now you can run your tests with Bazel using the following code:
 $ bazel run //:test
 ~~~
 
-![Screenshot of the `$ bazel run //:test` terminal output](https://i.imgur.com/DfTtAcK.png)
+<div class="wide">
+![Screenshot of the `$ bazel run //:test` terminal output]({{site.images}}{{page.slug}}/DfTtAcK.png)
+</div>
 
 #### Publish to npm
 
@@ -363,7 +369,9 @@ Now, you can publish:
 $ bash publish.sh
 ~~~
 
-![Terminal output of publishing to npm](https://i.imgur.com/aLpK3PG.png)
+<div class="wide">
+![Terminal output of publishing to npm]({{site.images}}{{page.slug}}/aLpK3PG.png)
+</div>
 
 You can browse your package on npm. The URL is `https://npmjs.com/package/<your-package-name>`. For this tutorial, it is [https://npmjs.com/package/demo_bzl_app](https://npmjs.com/package/demo_bzl_app). Make sure you increase the version of your release in `package.json` the next time you attempt to publish to avoid getting an error.
 
@@ -379,8 +387,5 @@ Bazel is a powerful and flexible build system that can be used to manage project
 
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
 - [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
