@@ -389,4 +389,3 @@ Bazel is a powerful and flexible build system that can be used to manage project
 
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
