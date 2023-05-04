@@ -949,4 +949,4 @@ By now, you should be able to use various in-built filters and also create your 
 
 To learn more about template filters, consider reading through the [Django Documentation](https://docs.djangoproject.com/en/4.1/ref/templates/builtins/).
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom-cta.html %}

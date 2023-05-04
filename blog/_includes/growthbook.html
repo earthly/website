@@ -1,0 +1,44 @@
+<script src="https://cdn.jsdelivr.net/npm/@growthbook/growthbook/dist/bundles/index.js"></script>
+<script>
+  // Uncomment for testing
+  // var earthlyID = uuidv4();
+  var earthlyID = getAnalyticCookie();
+
+  // Create a GrowthBook instance
+  const gb = new growthbook.GrowthBook({
+    apiHost: "https://cdn.growthbook.io",
+    clientKey: "sdk-7wtJG1WYaaYBiQ",
+    enableDevMode: true,
+    attributes: {
+      id: earthlyID
+    },
+    trackingCallback: (experiment, result) => {
+      analytics.track("Experiment Viewed", {
+        experimentId: experiment.key,
+        variationId: result.key,
+      });
+    }
+  });
+
+  //Page loaded
+  document.addEventListener("DOMContentLoaded", function () {
+    // Wait for features to be available
+    gb.loadFeatures({ autoRefresh: true, timeout: 2000 }).then(() => {
+      // Uncomment for testing
+      // console.log("Features loaded");
+      if(document.getElementById("blog-bottom-cta-control")){
+        if(gb.isOn("blog-bottom-cta-20230501")) {
+            console.log("blog-bottom-cta-20230501 on");
+            document.getElementById("blog-bottom-cta-control").style.display = "none";
+            document.getElementById("blog-bottom-cta-test").style.display = "";
+          } else {
+            console.log("blog-bottom-cta-20230501 off");
+            document.getElementById("blog-bottom-cta-control").style.display = "";
+            document.getElementById("blog-bottom-cta-test").style.display = "none";
+          }
+      } else {
+        console.log("blog-bottom-cta-control not found");
+      }
+    });
+  });
+</script>

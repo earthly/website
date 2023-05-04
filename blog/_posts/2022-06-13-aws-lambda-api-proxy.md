@@ -379,4 +379,4 @@ The complete source code is [on GitHub](https://github.com/adamgordonbell/clouds
 
 I think this can be a powerful model for deploying stateless HTTP services without getting too intertwined and locked into AWS-specific features. It's just a container and a proxy lib. Everything else works just like you are used to.
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom-cta.html %}

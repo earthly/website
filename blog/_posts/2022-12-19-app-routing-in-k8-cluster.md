@@ -297,4 +297,4 @@ In this article, you learned how to make a deployment and create a service for t
 
 You can build on what you have learned here by using a legit TLS certificate. Or you can build 2 applications and see if you can configure the routing for those applications on the same domain.
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom-cta.html %}

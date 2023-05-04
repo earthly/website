@@ -195,4 +195,4 @@ In this article, you learned that CMake is a tool that can help with [build auto
 
 CMake gives you the flexibility to ensure your application can be built and executed on any platform. While [Cmake](/blog/using-cmake) might not be the right tool for everyone, for the right developer, team, or project, it can be a powerful solution.
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom-cta.html %}

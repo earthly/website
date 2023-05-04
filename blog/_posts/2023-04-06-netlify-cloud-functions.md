@@ -254,4 +254,4 @@ Netlify Functions are a great way to add powerful serverless functionality to yo
 
 Now that you have a better understanding of what Netlify Functions are and how they work, you can explore more and integrate them into your own web projects. You can start by reading more about Netlify's documentation and tutorials to learn more about how to use and deploy your own functions. Additionally, you can also look into expanding your knowledge of [AWS Lambda](https://earthly.dev/blog/aws-lambda-node/) and exploring some of the other serverless technologies available.
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom-cta.html %}

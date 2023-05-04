@@ -448,4 +448,4 @@ This article gave you an overview of loops in Bash, using `while`, `until`, and 
 
 If you love building things in Bash, you're sure to love [Earthly](https://earthly.dev). Supercharge your build system with the clean and approachable syntax, and repeatable builds, of Earthly.
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom-cta.html %}

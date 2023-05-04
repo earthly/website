@@ -243,4 +243,4 @@ Octopus Deploy contains numerous other features that cannot be covered in the sc
 
 If you want to take your continuous integration pipeline to the next level, consider a tool like [Earthly](https://earthly.dev). [Earthly](https://earthly.dev) allows you to execute your builds in containers, thereby making them self-contained, portable, and repeatable. Earthly can be easily used instead of, or in conjunction with, Octopus. And Earthly's caching and parallel mechanisms make your builds repeatable and fast.
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom-cta.html %}
