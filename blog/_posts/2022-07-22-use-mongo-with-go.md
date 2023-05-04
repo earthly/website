@@ -437,4 +437,4 @@ You can refer to these resources to learn more about using [MongoDB](/blog/mongo
 
 There are numerous cases where you'll want to use MongoDB with Go, like backend development, data science, machine learning, and DevOps. Your MQL skills still Go a long way as you perform MongoDB operations with Go, especially if you'll be performing more complex functions.
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom-cta.html %}

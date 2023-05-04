@@ -102,4 +102,4 @@ We publish all kinds of well-written content targeting experienced software deve
 * Go
 * Python
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom-cta.html %}

@@ -319,4 +319,4 @@ There's still tons more to look into when it comes to setting up a secure AWS ne
 
 Again I want to point out that everything we've done so far is what AWS gives you for free with the default VPCs it sets up in each region, and you are fine to use those resources out of the box. I for one love when things are done for me, but hate not knowing how things are done. It's a real personal problem.
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom-cta.html %}

@@ -139,4 +139,4 @@ Overall, if speed is your primary concern and you're on a budget, then Circle CI
 
 Remember, we only looked at the free tiers offered by these services. As your project grows, performance may vary. Also, each service scales differently so even though you may like the convenience of Github Actions, you may find that Travis CI becomes more cost-effective as you run larger and more complicated pipelines.
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom-cta.html %}

@@ -426,4 +426,4 @@ With that, we have just successfully deployed our docker container.
 
 In this article, we covered one solution to container [deployment](/blog/deployment-strategies). We got to understand the different container services that exist, and the benefits of using AWS ECS, and finally, we looked at how to deploy a simple docker container.
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom-cta.html %}

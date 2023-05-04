@@ -320,4 +320,4 @@ This article introduced you to build systems and Ninja before explaining how to 
 
 Tools that help automate the building, testing, and deployment of software, such as the build systems discussed in this article, are essential to the success of any software project. Ninja is a great tool that can save time and effort when building [C++](/blog/g++-makefile) projects. You can as well explore other build tools like [Bazel](https://earthly.dev/blog/bazel-build/).
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom-cta.html %}

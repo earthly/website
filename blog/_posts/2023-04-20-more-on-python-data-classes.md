@@ -709,7 +709,7 @@ So did we cover *everything* about data classes? No. But what you've learned sho
 
 See you all soon in another tutorial. Until then, happy coding!
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom-cta.html %}
 
 [^1]:
 I found [this StackOverFlow discussion thread](https://stackoverflow.com/questions/472000/usage-of-slots) super helpful to learn about `__slots__`. I recommend reading through it to further your understanding of `__slots__`.

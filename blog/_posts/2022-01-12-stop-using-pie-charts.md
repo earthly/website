@@ -297,4 +297,4 @@ The code provides a minimal set of functions which wrap the matplotlib functions
 
 Even the code to generate the [Pac-Man pie-chart](https://github.com/earthly/example-dont-use-pie-charts/blob/main/dontusepiecharts/pacman.py) is included, but please don't use it.
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom-cta.html %}
