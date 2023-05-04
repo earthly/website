@@ -1,123 +1,57 @@
 <div class="w-full">
-    <div class="px-6 lg:px-10 pt-12 pb-12 max-w-7xl m-auto">
-        <div class="text-3xl lg:text-4xl font-semibold">
-            Nobody likes their CI/CD
-        </div>
-        <div class="text-xl lg:text-2xl text-slate-500 pt-1 pb-3">
-            Traditional CI/CD has many pain points
-        </div>
-        <div class="rounded-xl px-6 py-6 bg-[#f6f3ea] text-lg text-gray-800">
-            <script defer>
-                (function () {
-                    $(document).ready(function () {
-                        $('.hover-title-info').click(function () {
-                            $('.hover-title-info').removeClass('selected-point');
-                            $(this).addClass('selected-point');
-                            var item = $(this).data('item');
-                            $('.pain-point').addClass('hidden');
-                            $('.' + item).removeClass('hidden');
-                        });
-                        $('.hover-title-info').eq(0).addClass('selected-point');
-                    })
-                })();
-            </script>
-            <div class="h-full rounded-lg pb-2">
-                <div class="w-full">
-                    <div class="lg:pr-10 lg:pl-4 pt-2 w-full  lg:grid grid-cols-10 ">
-                        <div class="col-span-4">
-                            <div data-item="item-1"
-                                class="hover-title-info lg:hover:bg-white/50 border border-gray-300 text-xl lg:mr-10 cursor-pointer py-4 rounded-lg px-4 lg:w-[90%] text-black/90 flex items-center mb-2">
-                                Inconsistent builds
-                            </div>
-                            <div data-item="item-2"
-                                class="hover-title-info text-black/90 lg:hover:bg-white/50 text-xl lg:mr-10 border border-gray-300 cursor-pointer py-4 rounded-lg px-4 lg:w-[90%] flex items-center mb-2">
-                                Slow builds
-                            </div>
-                            <div data-item="item-3"
-                                class="hover-title-info lg:hover:bg-white/50 text-xl lg:mr-10 border border-gray-300 cursor-pointer py-4 rounded-lg px-4 lg:w-[90%] text-black/90 flex items-center mb-2">
-                                Complex build scripts
-                            </div>
-                            <div data-item="item-4"
-                                class="hover-title-info lg:hover:bg-white/50 text-xl lg:mr-10 border border-gray-300 cursor-pointer py-4 rounded-lg px-4 lg:w-[90%] text-black/90 flex items-center mb-2">
-                                Scattered build logic
-                            </div>
-                            <div data-item="item-5"
-                                class="hover-title-info lg:hover:bg-white/50 text-xl lg:mr-10 border border-gray-300 cursor-pointer py-4 rounded-lg px-4 lg:w-[90%] text-black/90 flex items-center mb-2">
-                                Poor monorepo support
-                            </div>
-                            <div data-item="item-6"
-                                class="hover-title-info lg:hover:bg-white/50 text-xl lg:mr-10 border border-gray-300 cursor-pointer py-4 rounded-lg px-4 lg:w-[90%] text-black/90 flex items-center mb-2">
-                                Conflicting business models
-                            </div>
-                        </div>
-                        <div
-                            class="col-span-6 items-center px-12 justify-center bg-white rounded-xl shadow-md hidden lg:flex ">
-                            <div class="text-xl px-6 text-gray-600  font-normal  item-1 leading-8 pain-point">
-                                With traditional CI/CD platforms, CI processes can only be
-                                run on the CI server. So, even if a build executes
-                                correctly on your computer, it may not execute correctly
-                                in CI. And there is no real way to validate that it will
-                                execute successfully in CI outside of pushing a change in
-                                CI.
-                            </div>
-                            <div class="font-normal  text-xl px-6 text-gray-600 item-2 hidden leading-8 pain-point">
-                                With traditional CI/CD platforms pipelines run in sandboxed environments.
-                                This makes
-                                pipeline
-                                execution more consistent and secure,
-                                but this comes at a cost of build performance.
-                                Dependencies need to be downloaded and installed and
-                                images need to be pulled and rebuilt every time. The only
-                                caching option available is remote caching, which is
-                                limited in its effectiveness and only works in certain
-                                situations. Sometimes it ends up being slower with the
-                                cache than without it.
-                            </div>
-                            <div class="font-normal  text-xl px-6 text-gray-600 item-3 hidden leading-8 pain-point">
-                                Making the smallest changes in traditional CI/CD platforms
-                                can require you to carve out hours of your day. This is
-                                because there is no way to run CI pipelines locally. You
-                                have to test pipelines live by doing <code>git commit -m "try
-                                again"</code> over and over until you get it right. We don't do
-                                that with the rest of the software development. Why do we
-                                do it for CI/CD pipelines?
-                            </div>
-                            <div class="font-normal  text-xl px-6 text-gray-600 item-4 hidden leading-8 pain-point">
-                                With traditional CI/CD platforms, pipelines are always
-                                defined using YAML, as Bash scripts, or using the
-                                platform's programming language of choice. Often, it's a
-                                mix of these. And there is usually no easy way to reuse
-                                CI/CD pipeline logic. So build scripts end up being
-                                littered with copied code and complexity. Invariably, one
-                                or two individuals – build gurus – end up being the only
-                                ones comfortable updating and maintaining pipelines.
-                            </div>
-                            <div class="font-normal  text-xl px-6 text-gray-600 item-5 hidden leading-8 pain-point">
-                                Traditional CI/CD platforms have difficulty managing monorepos as they rely on watching
-                                a
-                                list
-                                of directories for changes to trigger pipelines.
-
-                                With this approach you end up in situations where you thought your changes passed
-                                integration testing and were shipped to production,
-                                only to find out your integration tests never ran. Or the opposite, where you're running
-                                too
-                                many tests in an
-                                abundance of caution, making builds impossibly slow for everybody.
-
-                            </div>
-                            <div class="font-normal  text-xl px-6 text-gray-600 item-6 hidden leading-8 pain-point">
-                                With traditional CI/CD platforms, you pay for compute by-the-minute. This creates a
-                                perverse
-                                incentive for the CI/CD vendor to never innovate to speed up builds, as slower builds
-                                result
-                                in more profit. If a CI/CD platform is meant to deliver productivity gains, then its
-                                financial success should not be tied to the amount of time you spend waiting.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <div class="px-6 lg:px-10 pt-12 pb-12 max-w-7xl m-auto">
+    <div class="text-3xl lg:text-4xl font-semibold">
+      Nobody likes their CI/CD
     </div>
+    <div class="text-xl lg:text-2xl text-slate-500 pt-1 pb-3">
+      Traditional CI/CD has many pain points
+    </div>
+
+    <div class="rounded-xl px-6 py-6 bg-[#f6f3ea] text-lg text-gray-800">
+      <script defer>
+        (function () {
+          $(document).ready(function () {
+            $(".hover-title-info").hover(function () {
+              $(".hover-title-info").removeClass("selected-point");
+              $(this).addClass("selected-point");
+              var item = $(this).data("item");
+              $(".pain-point").addClass("hidden");
+              $("." + item).removeClass("hidden");
+            });
+            $(".hover-title-info").eq(0).addClass("selected-point");
+          });
+        })();
+      </script>
+
+      <div class="h-full rounded-lg pb-2">
+        <div class="w-full">
+          <div class="lg:pr-10 lg:pl-4 pt-2 w-full lg:grid grid-cols-10">
+            <div class="col-span-4">
+              {% for item in site.data.pain-points %}
+                <div
+                  data-item="item-{{ forloop.index }}"
+                  class="hover-title-info lg:hover:bg-white/50 border border-gray-300 text-xl lg:mr-10 cursor-pointer py-4 rounded-lg px-4 lg:w-[90%] text-black/90 flex items-center mb-2"
+                >
+                  {{ item.title }}
+              </div>
+              {% endfor %}
+            </div>
+
+            <div class="bg-white col-span-6 items-center min-h-[400px] xl:min-h-[340px] px-12 rounded-xl shadow-md hidden lg:flex">
+              {% for item in site.data.pain-points %}
+                <div class="item-{{ forloop.index }} pain-point {% if forloop.index > 1 %}hidden{% endif %}">
+                  <span class="font-bold leading-8 text-xl text-gray-600">{{ item.headline }}</span>
+                  <ul class="font-normal list-disc px-6 text-gray-600">
+                    {% for point in item.points %}
+                      <li class="pt-2">{{ point }}</li>
+                    {% endfor %}
+                  </ul>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
