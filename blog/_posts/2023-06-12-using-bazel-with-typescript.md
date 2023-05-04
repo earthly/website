@@ -306,7 +306,7 @@ $ bazel run //:test
 ![Screenshot of the `$ bazel run //:test` terminal output]({{site.images}}{{page.slug}}/DfTtAcK.png)
 </div>
 
-#### Publish to npm
+#### Publish to `npm`
 
 To publish this package to npm, you'll first make some changes to the `BUILD` file by adding a new rule. Append the following to your `BUILD` file:
 
