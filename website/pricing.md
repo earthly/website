@@ -2,11 +2,12 @@
 title: Pricing
 layout: page
 pageStyle: bg-background-pricing
+headingStyles: "margin-bottom: 8px"
 ---
 
 <link rel="stylesheet" href="/assets/css/subpage.css">
 
-<div class="text-base text-slate-500">
+<div class="text-base text-[#abb6c3]">
    <span class="font-semibold"> Note:</span> A Free plan will be available in the near future.
 </div>
 

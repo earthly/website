@@ -133,7 +133,7 @@ Earthly CI is being made available today. As the platform is new, we are letting
 
 If this is interesting to you, [get started with Earthly CI](https://earthly.dev/signup/earthly-ci)! Let's build the next generation of software together!
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom-cta.html %}
 
 [^1]:
     Innovation Endeavors led our [$6.5M Seed+ round](/blog/new-fundings-at-earthly/), and were joined by 468 Capital and Uncorrelated Ventures. A number of founders of companies such as Cockroach Labs, DigitalOcean, Mesosphere, DataDog, Sentry, and Instana, plus a number of creators and maintainers of notable developer platforms, such as Docker, Elixir, VS Code, GitHub Copilot, Hashicorp, Envoy proxy, Cypress, Mesos and many others, have also previously invested in Earthly.

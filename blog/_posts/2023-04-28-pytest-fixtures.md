@@ -551,4 +551,4 @@ In this tutorial, you learned the basics of PyTest fixtures, including how to de
 
 By mastering fixtures, developers can greatly improve their testing workflow and the quality of their code. With this tutorial as a starting point, developers can go on to create robust and efficient test suites that provide confidence in their code and help prevent bugs and regressions in production.
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom-cta.html %}

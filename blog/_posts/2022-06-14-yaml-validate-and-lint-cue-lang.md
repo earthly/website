@@ -518,4 +518,4 @@ To that end, [cuetorials.com](cuetorials.com) and [bitfieldconsulting](https://b
 
 And also, if you're the type of person who thinks validating YAML is a worthy goal, you might be the type of person who cares about software builds. If that's you, take a look at Earthly.
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom-cta.html %}

@@ -1,0 +1,32 @@
+- title: Nightmare to Maintain
+  headline: CI/CD pipelines are a nightmare to maintain.
+  points:
+    - Slow dev-test cycle
+    - No local pipeline execution
+    - Limited code reuse
+    - Clunky language (e.g. YAML, Bash, Groovy)
+    - Difficult to parallelize
+
+- title: Slow Builds
+  headline: More than half of CI/CD run time is spent re-executing things that haven't changed.
+  points:
+    - Reinstalls dependencies every time
+    - Unnecessary task re-execution
+    - Ineffective caching
+    - Sandboxed CI environments sacrifice speed
+
+- title: Slower Means More Profit
+  headline: The slower the build, the more the vendor profits.
+  points:
+    - Profits tied to build minutes
+    - Slower builds benefit vendors
+    - Incentive against speed innovation
+
+- title: Poor Monorepo Support
+  headline: CI/CD platforms falter with monorepo/polyrepo layouts, causing compatibility and efficiency issues.
+  points:
+    - Limited monorepo compatibility
+    - Changes trigger all pipelines every time
+    - No robust way to trigger a subset of pipelines
+    - No easy way to import build results across repositories
+    - Requires complex DIY scripting

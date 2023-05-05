@@ -125,6 +125,7 @@ Once each step defined in the `steps` key of your workflow file is tested and wo
 The `name` key can be `Build docker images`, the `id` key will have any unique string, and the `run` key will contain the build command as the value:
 
 ~~~{.yml caption=""}
+{% raw %}
 - name: Build docker images
   Id: build-image
   run: | 
@@ -132,11 +133,13 @@ The `name` key can be `Build docker images`, the `id` key will have any unique s
     {{docker build [image-url] or docker-compose -f \
     [docker-compose file] up -d }}
     echo ---Containers up—
+{% endraw %}
 ~~~
 
 Following the **Deploy to Amazon ECS** workflow template that's been used here, the build step can be found on line 67:
 
 ~~~{.yml caption=""}
+{% raw %}
 - name: Build, tag, and push image to Amazon ECR
       id: build-image
       env:
@@ -150,6 +153,7 @@ Following the **Deploy to Amazon ECS** workflow template that's been used here, 
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         echo "image=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG" >> \
         $GITHUB_OUTPUT
+{% endraw %}
 ~~~
 
 This template's build step uses the `env` key since `ECR_REGISTRY` requires a login and SHA key.
@@ -202,4 +206,4 @@ After reading this article, it's recommended that you explore and experiment wit
 
 If you want to see how Github Actions stacks up against other CI services, check out our comparison of [CI Free Tiers](/blog/ci-comparison).
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom-cta.html %}

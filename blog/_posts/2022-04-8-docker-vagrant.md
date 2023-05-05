@@ -179,4 +179,4 @@ It's a developer's choice to use Vagrant, Docker, or any other tool to create th
 
 To see how it works, check out the sample [GitHub Action workflow](https://docs.earthly.dev/ci-integration/vendor-specific-guides/gh-actions-integration) that uses Earthly.
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom-cta.html %}
