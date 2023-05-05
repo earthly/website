@@ -1,17 +1,30 @@
 ---
-layout: single
+layout: page
 ---
 {% assign author_data = site.data.authors[page.short_name] %}
 {% include author-profile.html %}
+
+{% if author.avatar %}
+<div class="author__avatar_bio justify-center  flex">
+    {% picture author {{author.avatar }} --picture class="image-author" --alt {{ author.name }} % %} 
+</div>
+{% endif %}
+
+<h1 id="page-title" class="page__title text-4xl font-extrabold leading-none tracking-tight text-gray-900 flex justify-center"
+itemprop="headline">
+  {{ author.name }}
+</h1>
+
+
 {{ content }}
 
-{% assign filtered_writing_posts = site.posts | where: 'author', page.short_name | where:'featured', true %}
+{% assign filtered_written_posts = site.posts | where: 'author', page.short_name | where:'featured', true %}
 {% assign filtered_edited_posts = site.posts | where: 'editor', page.short_name %}
 
-{% if filtered_writing_posts.size != 0 %}
+{% if filtered_written_posts.size != 0 %}
 <div class="text-2xl mt-4 mb-2">Featured</div>
 <ul class="-mt-1">
-  {% for post in filtered_writing_posts %}
+  {% for post in filtered_written_posts %}
   <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
   {% endfor %}
 </ul>
@@ -19,16 +32,16 @@ layout: single
 
 <div class="text-2xl mt-4 mb-2">Author</div>
 <ul class="-mt-1">
-  {% assign filtered_writing_posts = site.posts | where: 'author', page.short_name %}
-  {% for post in filtered_writing_posts %}
+  {% assign filtered_written_posts = site.posts | where: 'author', page.short_name %}
+  {% for post in filtered_written_posts %}
   <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
   {% endfor %}
 </ul>
 
 {% if filtered_edited_posts.size != 0 %}
-<div class="text-2xl mt-4 mb-2">Edited</div>
+<div class="text-2xl mt-4 mb-2">Editor</div>
 <ul class="-mt-1">
-  {% assign filtered_edited_posts = site.posts | where: 'author', page.short_name %}
+  {% assign filtered_edited_posts = site.posts | where: 'editor', page.short_name %}
   {% for post in filtered_edited_posts %}
   <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
   {% endfor %}
