@@ -4,7 +4,6 @@ categories:
   - Tutorials
 toc: true
 author: Ubaydah Abdulwasiu
-editor: Bala Priya C
 
 internal-links:
  - Linux

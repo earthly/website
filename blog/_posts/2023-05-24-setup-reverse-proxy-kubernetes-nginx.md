@@ -4,7 +4,6 @@ categories:
   - Tutorials
 toc: true
 author: Somtochukwu Uchegbu
-editor: Mustapha Ahmad Ayodeji
 
 internal-links:
  - Reverse Proxy

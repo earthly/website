@@ -4,7 +4,6 @@ categories:
   - Tutorials
 toc: true
 author: Barine Sambaris
-editor: Bala Priya C
 
 internal-links:
  - Python

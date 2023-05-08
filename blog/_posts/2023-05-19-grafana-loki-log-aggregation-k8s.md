@@ -4,7 +4,6 @@ categories:
   - Tutorials
 toc: true
 author: Saka-Aiyedun Segun
-editor: Bala Priya C
 
 internal-links:
  - Aggregation

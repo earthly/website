@@ -95,49 +95,5 @@
     </div>
   </div>
   {% endif %}
-
-  {% if page.editor %}
-  {% assign editor = page.editor %} 
-  {% assign editor = site.data.authors[editor]%} 
-  
-
-  <div
-  itemscope
-  itemtype="https://schema.org/Person"
-  class="border rounded-md mt-2"
->
-  <div class="flex flex-col">
-    <div class="text-sm px-4 pt-3">
-      <em>Writers at Earthly work closely with our talented editors to help them create high quality tutorials. This article was edited by: </em>
-    </div>
-
-    <div class="flex items-center">
-      {{ site.editor }}
-      {% if editor.avatar %}
-      <div class="author__avatar ml-2 min-w-[100px] max-w-[100px] flex">
-        {% picture author {{editor.avatar }} --picture class="image-author" --alt {{ editor.name }} %}
-      </div>
-      {% endif %}
-      <div class="author__content">
-        <div class="author__name heading pl-4 text-xl font-bold mt-4" itemprop="name">
-          {% if editor.home %}
-          <a href="{{ editor.home | relative_url }}">
-            {{ editor.name }}
-          </a>
-          {% else %}
-          {{ editor.name }}
-          {% endif %}
-        </div>
-        {% if editor.bio %}
-        <div class="author__bio text-sm px-4" itemprop="description">
-          {{ editor.bio | markdownify }}
-        </div>
-        {% endif %}
-      </div>
-    </div>
-  </div>
-</div>
-{% endif %}
-
 {% endif %}
 {% endif %}

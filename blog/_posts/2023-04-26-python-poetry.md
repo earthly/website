@@ -4,7 +4,6 @@ categories:
   - Tutorials
 toc: true
 author: Ashutosh Krishna
-editor: Bala Priya C
 
 internal-links:
  - Python

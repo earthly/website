@@ -4,7 +4,6 @@ categories:
   - Tutorials
 toc: true
 author: Sooter Saalu
-editor: Mustapha Ahmad Ayodeji
 
 internal-links:
  - Docker Images

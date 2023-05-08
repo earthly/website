@@ -4,7 +4,6 @@ categories:
   - Tutorials
 toc: true
 author: Keanan Koppenhaver
-editor: Mustapha Ahmad Ayodeji
 
 internal-links:
  - Terraform
