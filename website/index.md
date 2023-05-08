@@ -17,3 +17,4 @@ layout: default
 {% include home/layout.html template='home/v2/benefits-pricing.html' %}
 
 {% include home/layout.html template='home/v2/customer-quotes.html' %}
+{% include home/layout.html template='cta-home-button.html' %}
