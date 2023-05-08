@@ -4,7 +4,6 @@ categories:
   - Tutorials
 toc: true
 author: Mustapha Ahmad Ayodeji
-editor: Bala Priya C
 
 internal-links:
  - Python

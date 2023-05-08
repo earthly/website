@@ -4,7 +4,6 @@ categories:
   - Tutorials
 toc: true
 author: Joseph Adediji
-editor: Bala Priya C
 
 internal-links:
  - Django

@@ -4,7 +4,6 @@ categories:
   - Tutorials
 toc: true
 author: Ubaydah Abdulwasiu
-editor: Mustapha Ahmad Ayodeji
 
 internal-links:
  - Golang

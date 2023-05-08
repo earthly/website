@@ -4,7 +4,6 @@ categories:
   - Tutorials
 toc: true
 author: Antonello Zanini
-editor: Bala Priya C
 
 internal-links:
  - TypeScript

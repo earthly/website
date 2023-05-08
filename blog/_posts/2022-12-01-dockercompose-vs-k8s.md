@@ -4,7 +4,6 @@ categories:
   - Tutorials
 toc: true
 author: Roseline Bassey
-editor: Bala Priya C
 
 internal-links:
  - Docker Compose

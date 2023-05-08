@@ -4,7 +4,6 @@ categories:
   - Tutorials
 toc: true
 author: Mercy Bassey
-editor: Bala Priya C
 
 internal-links:
  - YAML

@@ -4,7 +4,6 @@ categories:
   - Tutorials
 toc: true
 author: Muhammed Ali
-editor: Bala Priya C
 
 internal-links:
  - CSV

@@ -4,7 +4,6 @@ categories:
   - Tutorials
 toc: true
 author: El Achu
-editor: Bala Priya C
 
 internal-links:
  - Netlify

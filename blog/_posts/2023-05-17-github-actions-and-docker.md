@@ -4,7 +4,6 @@ categories:
   - Tutorials
 toc: true
 author: James Olaogun
-editor: Bala Priya C
 
 internal-links:
  - Github Actions

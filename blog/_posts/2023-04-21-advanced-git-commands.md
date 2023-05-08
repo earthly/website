@@ -4,7 +4,6 @@ categories:
   - Tutorials
 toc: true
 author: Temitope Oyedele
-editor: Bala Priya C
 
 internal-links:
  - Git

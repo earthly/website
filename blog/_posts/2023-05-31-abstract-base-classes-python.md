@@ -4,7 +4,6 @@ categories:
   - Tutorials
 toc: true
 author: Kabaki Antony
-editor: Bala Priya C
 
 internal-links:
  - OOP
