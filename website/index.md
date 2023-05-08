@@ -3,6 +3,12 @@ title: Earthly
 layout: default
 ---
 
+<script defer src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+<div style="width: 100%; height: 400px; margin-top: 70px;">
+  <p>Lottie library loaded from external source</p>
+  <lottie-player src="/assets/js/animation.json" background="transparent" speed="1" style="width: 100%; height: 400px;" loop autoplay></lottie-player>
+</div>
+
 {% include home/layout.html template='home/v2/hero.html' %}
 {% include home/layout.html template='home/v2/call-to-action.html' %}
 {% include home/layout.html template='home/v2/customers.html' %}
