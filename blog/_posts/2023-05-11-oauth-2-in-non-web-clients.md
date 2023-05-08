@@ -4,6 +4,7 @@ categories:
   - Tutorials
 toc: true
 author: Boluwatife Fayemi
+editor: Bala Priya C
 
 internal-links:
  - OAuth

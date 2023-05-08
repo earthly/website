@@ -4,6 +4,7 @@ categories:
   - Tutorials
 toc: true
 author: Enoch Chejieh
+editor: Bala Priya C
 
 internal-links:
  - Rust
