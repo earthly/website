@@ -4,6 +4,7 @@ categories:
   - Tutorials
 toc: true
 author: Sooter Saalu
+editor: Bala Priya C
 
 internal-links:
  - Kubernetes

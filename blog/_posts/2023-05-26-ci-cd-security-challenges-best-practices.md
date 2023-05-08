@@ -4,6 +4,7 @@ categories:
   - Tutorials
 toc: true
 author: David Chibueze Ndubuisi
+editor: Bala Priya C
 
 internal-links:
  - CI/CD

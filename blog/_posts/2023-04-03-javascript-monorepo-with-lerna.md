@@ -4,6 +4,8 @@ categories:
   - Tutorials
 toc: true
 author: Cameron Pavey
+editor: Mustapha Ahmad Ayodeji
+
 
 internal-links:
  - Javascript

@@ -4,6 +4,7 @@ categories:
   - Tutorials
 toc: true
 author: Ansam Yousry
+editor: Bala Priya C
 
 internal-links:
  - Automating

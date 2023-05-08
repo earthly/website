@@ -5,6 +5,7 @@ categories:
 toc: true
 author: Ali Mannan Tirmizi
 author2: Aniket Bhattacharyea
+editor: Bala Priya C
 
 internal-links:
  - Bazel

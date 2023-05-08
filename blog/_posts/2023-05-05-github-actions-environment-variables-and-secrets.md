@@ -4,6 +4,7 @@ categories:
   - Tutorials
 toc: true
 author: Kumar Harsh
+editor: Mustapha Ahmad Ayodeji
 
 internal-links:
  - CI/CD

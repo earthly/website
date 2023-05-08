@@ -4,6 +4,7 @@ categories:
   - Tutorials
 toc: true
 author: Arafat Olayiwola
+editor: Bala Priya C
 
 internal-links:
  - Django

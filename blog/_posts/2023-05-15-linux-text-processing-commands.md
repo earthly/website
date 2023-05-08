@@ -4,6 +4,7 @@ categories:
   - Tutorials
 toc: true
 author: Anurag Kumar
+editor: Mustapha Ahmad Ayodeji
 
 internal-links:
  - Linux
