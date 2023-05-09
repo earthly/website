@@ -19,7 +19,7 @@ Cross-compilation is the process of compiling your program on a different host t
 
 When cross-compiling your software, [CMake](https://cmake.org/) and the [GNU Compiler Collection (GCC)](https://gcc.gnu.org/) can be helpful. CMake is a robust build system generator that uses configuration files to create cross-compiled binaries, and GCC is a toolchain that includes compilers for various programming languages, including C, C++, Objective C, and Fortran.
 
-In this tutorial, you'll learn how to build a simple C++ program and then cross-compile it for AArch64 or ARM64-based devices using CMake and GCC.
+In this tutorial, you'll learn how to build a simple C++ program and then cross-compile it for AArch64 or ARM64-based devices using [CMake](/blog/using-cmake) and GCC.
 
 ## Building a Simple C++ Program
 
@@ -45,7 +45,7 @@ GNU make comes preinstalled on most Linux distributions. You can check if it's i
 make --version
 ~~~
 
-If make is not installed, use the following command to install it on Debian/Ubuntu:
+If [make](/blog/makefiles-on-windows) is not installed, use the following command to install it on Debian/Ubuntu:
 
 ~~~
 sudo apt-get install make
@@ -285,4 +285,3 @@ For further reading, consult the official [CMake](https://cmake.org/documentatio
 
 * [ ] Create header image in Canva
 * [ ] Optional: Find ways to break up content with quotes or images
-* [ ] Run `link-opp` and find 1-5 places to incorporate links
