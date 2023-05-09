@@ -493,4 +493,4 @@ With this skill, you can now go ahead to schedule tasks in your Kubernetes clust
 
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
+
