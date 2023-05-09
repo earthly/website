@@ -321,6 +321,8 @@ In this guide, you've learned how to use the `ls` command to see the current own
 
 Linux file permissions and ownership can be very complex topics to navigate and master. However, there are additional resources available to help you learn more about Linux permissions, including the official documentation from your particular distribution's website, online tutorials, and user forums. Some popular resources include the [Linux Documentation Project](https://tldp.org), [LinuxQuestions.org](https://www.linuxquestions.org), and the [Ubuntu Community Help Wiki](https://help.ubuntu.com/community/CommunityHelpWiki).
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
@@ -330,4 +332,3 @@ Linux file permissions and ownership can be very complex topics to navigate and 
 - [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
