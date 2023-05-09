@@ -28,7 +28,9 @@ In RabbitMQ [the  **Producers** send messages to the **exchanges**](https://www.
 
 To work with RabbitMQ on Python we will use the [Pika](https://pika.readthedocs.io/en/stable/) library. Pika is a Python library that provides a framework for working with RabbitMQ. Pika allows developers to easily connect to a RabbitMQ server, declare and manage exchanges and queues, and publish and consume messages using the AMQP.
 
+<div class="wide">
 ![Framework of RabbitMQ]({{site.images}}{{page.slug}}/mc7y8Yn.png)
+</div>
 
 We will use [CloudAMQP](https://www.cloudamqp.com/), a cloud-based message queue service, to manage our RabbitMQ server.
 
@@ -38,21 +40,29 @@ We will use [CloudAMQP](https://www.cloudamqp.com/), a cloud-based message queue
 
 To get started, go to the CloudAMPQ [homepage](https://www.cloudamqp.com/) and click on the **Get a managed message broker today** button:
 
+<div class="wide">
 ![Cloud AMQP home page]({{site.images}}{{page.slug}}/tM9X9sB.png)
+</div>
 
 We will be prompted to create a new account. After we are done signing up, fill out the *Team name* form:
 
+<div class="wide">
 ![create team page]({{site.images}}{{page.slug}}/mywjrQ4.png)
+</div>
 
 Click the *All instances* dropdown, then click the *Create new instance* button:
 
-![CloudAMQP instance]({{site.images}}{{page.slug}}/DwhVciY.png)\
+<div class="wide">
+![CloudAMQP instance]({{site.images}}{{page.slug}}/DwhVciY.png)
+</div>\
 
 From there, we can create a free instance and get its URL.
 
 To get the instance URL, click on the instance created and copy the URL from there:
 
-![CloudAMQP overview]({{site.images}}{{page.slug}}/Xn5Zji3.png)\
+<div class="wide">
+![CloudAMQP overview]({{site.images}}{{page.slug}}/Xn5Zji3.png)
+</div>\
 
 Later in this article, We will use this URL provided by CloudAMQP to connect the microservice to the message queue to send or receive messages.
 
@@ -486,10 +496,15 @@ Output:
 
 We can go to our instance on CloudAMQP and click the "**RabbitMQ Manager**" button, and we should see a dashboard as shown in the image below. This shows that there are some activities between the microservices:
 
+<div class="wide">
 ![RabbitMQ manager]({{site.images}}{{page.slug}}/ywOa2xY.png)
+</div>
 
-Now we can go to the Django admin, and we will see that a recipe was created. And we can also see a comment attached to it.  
+Now we can go to the Django admin, and we will see that a recipe was created. And we can also see a comment attached to it.
+
+<div class="wide">
 ![Django admin]({{site.images}}{{page.slug}}/7p1oo8H.png)
+</div>
 
 ## Conclusion
 
@@ -503,7 +518,5 @@ If you already have a full-fledged application, you can try breaking it down int
 
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
