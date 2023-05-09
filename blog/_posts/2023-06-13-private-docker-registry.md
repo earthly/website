@@ -11,7 +11,7 @@ internal-links:
  - Linux
  - Security
  - Container
- - Image
+ - Images
 ---
 
 If you're working with Docker images in an enterprise environment where security is a concern, a private Docker registry is a great solution. While public registries like Docker Hub allow anyone to push and pull images, they have limitations on the number of image pull requests per six hours and limited control over the registry security.
