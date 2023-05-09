@@ -22,6 +22,8 @@ You have some choices when it comes to setting up a private registry. You could 
 
 In this step-by-step guide, you'll learn how to set up your own private Docker registry on Linux. But first, let's take a closer look at Docker registries and the difference between public and private registries.
 
+![step-by-step]({{site.images}}{{page.slug}}/step.png)\
+
 ## Prerequisites
 
 To follow this guide, you will need the following:
@@ -36,44 +38,47 @@ The Docker package is already included in the [Ubuntu](https://ubuntu.com/) defa
 
 Let's start by updating the existing package index.
 
-~~~
+~~~{.bash caption=">_"}
 apt update -y
 ~~~
 
 Next, you'll need to grab some dependencies to get packages over the secure HTTPS connection.
 
-~~~
+~~~{.bash caption=">_"}
 apt install curl apt-transport-https ca-certificates  -y
 ~~~
 
 Next, import the [GPG key](https://www.digitalocean.com/community/tutorials/how-to-use-gpg-to-encrypt-and-sign-messages) for Docker to install only authenticate package and add Docker's official repository to APT sources.
 
-~~~
-echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | tee /etc/apt/sources.list.d/docker.list 
+~~~{.bash caption=">_"}
+echo "deb [arch=$(dpkg --print-architecture) \
+signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] \
+https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" \
+| tee /etc/apt/sources.list.d/docker.list 
 ~~~
 
 Since we've added a new software repository to apt, we'll need to update again.
 
-~~~
+~~~{.bash caption=">_"}
 apt update -y
 ~~~
 
 Finally, install the latest Docker and Docker Compose packages:
 
-~~~
+~~~{.bash caption=">_"}
 apt install docker-ce docker-compose -y
 ~~~
 
 This command will install both Docker and Docker Compose packages to your server, start the Docker service and enable it to start after the system reboot. You can verify the Docker installation by executing the command given below.
 
-~~~
+~~~{.bash caption=">_"}
 docker --version
 ~~~
 
 This will show you the Docker version.
 
 <div class="wide">
-Verify Docker Installation]({{site.images}}{{page.slug}}/p1.png)
+![Verify Docker Installation]({{site.images}}{{page.slug}}/p1.png)
 </div>
 
 <div class="notice--info">
@@ -94,21 +99,21 @@ We'll [use Docker Compose](/blog/youre-using-docker-compose-wrong) to define all
 
 Let's start by creating a directory to store all configurations for the private registry.
 
-~~~
+~~~{.bash caption=">_"}
 mkdir ~/private-registry
 mkdir ~/private-registry/registry-data
 ~~~
 
 Next, change the directory to the `private-registry` directory and create a `docker-compose.yml` file.
 
-~~~
+~~~{.bash caption=">_"}
 cd ~/private-registry
 nano docker-compose.yml
 ~~~
 
 Add the following section to define the `registry` service and set the registry `image` using the latest tag. The `image` directive downloads the latest version of the `registry`  Docker image from the Docker Hub public registry.
 
-~~~
+~~~{.yml caption="docker-compose.yml"}
 version: '3'
 
 services:
@@ -120,7 +125,7 @@ The Docker `registry` image is an official Docker image. It is essentially a ser
 
 Next, add the `port` section to map the host machine port `5000` to the container port `5000`.
 
-~~~
+~~~{.yml caption="docker-compose.yml"}
     ports:
     - "5000:5000"
 ~~~
@@ -133,7 +138,7 @@ We also need to set the `REGISTRY_AUTH_HTPASSWD_REALM` variable. Here we are set
 
 The last two variables we need to set up, `REGISTRY_AUTH_HTPASSWD_PATH` and `REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY` will tell our registry where to store passwords and where to store the actual images and image data.
 
-~~~
+~~~{.yml caption="docker-compose.yml"}
     environment:
       REGISTRY_AUTH: htpasswd
       REGISTRY_AUTH_HTPASSWD_REALM: Registry
@@ -145,7 +150,7 @@ Next, add the `volumes` section to bind the `/auth` and `/registry-data` directo
 
 [Docker volumes](/blog/docker-volumes) play an important role to persist data in Docker containers and services. The `registry-data` volume will store all Docker images and registry configuration information while the `auth` volume will store and persist all user's passwords. Later, we'll also set up an HTTP authentication to ensure that only authenticated users can access the registry.
 
-~~~
+~~~{.yml caption="docker-compose.yml"}
     volumes:
       - ./auth:/auth
       - ./registry-data:/registry-data
@@ -153,7 +158,7 @@ Next, add the `volumes` section to bind the `/auth` and `/registry-data` directo
   
 When you are finished, your final configuration file will look something like this:
 
-~~~
+~~~{.yml caption="docker-compose.yml"}
 version: '3'
 
 services:
@@ -179,19 +184,19 @@ NGINX is open-source and the most popular software that you can use as a web ser
 
 Let's start by installing the `nginx` and `apache2-utils` packages on your server. The `apache2-utils` package will download the `htpasswd` utility needed to set up basic HTTP authentication.
 
-~~~
+~~~{.bash caption=">_"}
 apt install nginx apache2-utils -y
 ~~~
 
 Now, create an NGINX virtual server block to serve the Docker registry. Basically, this is where we will define how NGINX should handle requests.
 
-~~~
+~~~{.bash caption=">_"}
 nano /etc/nginx/conf.d/registry.conf
 ~~~
 
 First, add the `listen` directive to specify the NGINX listening port. Next, define the `server_name` with your domain name. Finally, add the error and access log path.
 
-~~~
+~~~{ caption="registry.conf"}
 server {
     listen 80;
     server_name private.linuxbuz.com;
@@ -201,7 +206,7 @@ server {
 
 Next, in the `location /` section, set the `proxy_pass` directive to forward all incoming traffic on domain `private.linuxbuz.com` to the localhost on registry container port `5000`.
 
-~~~
+~~~{ caption="registry.conf"}
 location / {
     if ($http_user_agent ~ "^(docker\/1\.(3|4|5(?!\.[0-9]-dev))|Go ).*$" ) {
     return 404;
@@ -219,7 +224,7 @@ location / {
 
 Your final NGINX configuration file will look something like this:
 
-~~~
+~~~{ caption="registry.conf"}
 server {
     listen 80;
     server_name private.linuxbuz.com;
@@ -251,26 +256,26 @@ Next, we'll need to define two more settings for NGINX..
 
 To update these, edit the NGINX main configuration file.
 
-~~~
+~~~{.bash caption=">_"}
 nano /etc/nginx/nginx.conf
 ~~~
 
 Define both directives below the line `http {`:
 
-~~~
+~~~{ caption="nginx.conf"}
 client_max_body_size 4000m;
 server_names_hash_bucket_size 64;
 ~~~
 
 Restart the NGINX service to reload the changes.
 
-~~~
+~~~{.bash caption=">_"}
 systemctl restart nginx
 ~~~
 
 Run the following command to verify the NGINX running status
 
-~~~
+~~~{.bash caption=">_"}
 systemctl status nginx
 ~~~
 
@@ -288,7 +293,7 @@ SSL is an encryption security protocol that encrypts the sensitive information s
 
 First, install the [Certbot](https://certbot.eff.org/) Let's Encrypt client package to install and manage the SSL certificate.
 
-~~~
+~~~{.bash caption=">_"}
 snap install --classic certbot
 ~~~
 
@@ -300,7 +305,7 @@ ln -s /snap/bin/certbot /usr/bin/certbot
 
 Then, run the `certbot` command followed by your domain name to download the SSL certificates, and configure NGINX to use the downloaded certificates for your domain..
 
-~~~
+~~~{.bash caption=">_"}
 certbot --nginx -d private.linuxbuz.com
 ~~~
 
@@ -318,13 +323,13 @@ Security is crucial if you are going to set up a private Docker registry for an 
 
 First, create an `auth` directory to store the password file.
 
-~~~
+~~~{.bash caption=">_"}
 mkdir ~/private-registry/auth
 ~~~
 
 Next, navigate to the `auth` directory and use the `htpasswd` command to create a `registry.password` file. The `htpasswd` is a utility used to create a file to store username and password information for Apache basic authentication.
 
-~~~
+~~~{.bash caption=">_"}
 cd ~/private-registry/auth
 htpasswd -Bc registry.password adminuser
 ~~~
@@ -343,7 +348,7 @@ Now that we have set up NGINX to route remote traffic to our registry over the s
 
 Let's run the below command to launch the registry container.
 
-~~~
+~~~{.bash caption=">_"}
 cd ~/private-registry
 docker compose up -d
 ~~~
@@ -356,7 +361,7 @@ This command will download the registry docker container image and start the con
 
 Run the following command to check the Docker registry container status.
 
-~~~
+~~~{.bash caption=">_"}
 docker-compose ps
 ~~~
 
@@ -374,13 +379,13 @@ Now, let's test our new registry by creating a custom docker image on the client
 
 First, pull the latest Ubuntu image from the Docker Hub registry.
 
-~~~
+~~~{.bash caption=">_"}
 docker pull ubuntu:latest
 ~~~
 
 Then, run the container using the downloaded image.
 
-~~~
+~~~{.bash caption=">_"}
 docker run -t -i ubuntu:latest /bin/bash
 ~~~
 
@@ -392,32 +397,32 @@ This will start the image and put you into the Ubuntu shell as shown below.
 
 Next, update the Ubuntu repository and install the NGINX package inside the container.
 
-~~~
+~~~{.bash caption=">_"}
 apt update -y
 apt install nginx -y
 ~~~
 
 Next, verify the NGINX version.
 
-~~~
+~~~{.bash caption=">_"}
 nginx -v
 ~~~
 
 You should see the NGINX version in the following output.
 
-~~~
+~~~{.bash caption=">_"}
 nginx version: nginx/1.18.0 (Ubuntu)
 ~~~
 
 Then, exit from the Ubuntu container.
 
-~~~
+~~~{.bash caption=">_"}
 exit
 ~~~
 
 Next, create a new image from the running Ubuntu container.
 
-~~~
+~~~{.bash caption=">_"}
 docker commit $(docker ps -lq) ubuntu22-image
 ~~~
 
@@ -425,7 +430,7 @@ This will create a new custom image named `ubuntu22-image` on your client server
 
 You can verify the created image using the following command.
 
-~~~
+~~~{.bash caption=">_"}
 docker images
 ~~~
 
@@ -443,7 +448,7 @@ Now, you will need to upload this image from the client server to your private d
 
 First, use the `docker login` command on the client server to log in to your private registry.
 
-~~~
+~~~{.bash caption=">_"}
 docker login https://private.linuxbuz.com
 ~~~
 
@@ -456,13 +461,13 @@ After successfully authenticating to the registry. You should see the following 
 
 Next, tag your custom Ubuntu image that matches your registry server domain name.
 
-~~~
+~~~{.bash caption=">_"}
 docker tag ubuntu22-image private.linuxbuz.com/ubuntu22-image
 ~~~
 
 Next, verify the tagged image using the following command.
 
-~~~
+~~~{.bash caption=">_"}
 docker images
 ~~~
 
@@ -472,7 +477,7 @@ docker images
 
 Finally, run the `docker push` command to upload your custom Ubuntu image to the private Docker Registry.
 
-~~~
+~~~{.bash caption=">_"}
 docker push private.linuxbuz.com/ubuntu22-image
 ~~~
 
@@ -490,13 +495,13 @@ Now let's test out pulling images from the registry.
 
 Again, make sure you log into your private registry using the `docker login` command.
 
-~~~
+~~~{.bash caption=">_"}
 docker login https://private.linuxbuz.com
 ~~~
 
 Next, pull the Ubuntu image from the private registry to your client server.
 
-~~~
+~~~{.bash caption=">_"}
 docker pull private.linuxbuz.com/ubuntu22-image
 ~~~
 
@@ -508,7 +513,7 @@ After the successful download, you should see the following screen.
 
 Now, run the `docker run` command to create a container from the downloaded image.
 
-~~~
+~~~{.bash caption=">_"}
 docker run -it private.linuxbuz.com/ubuntu22-image /bin/bash
 ~~~
 
@@ -520,19 +525,19 @@ This will start the container and put you into the container shell like before.
 
 Now, verify the NGINX which you installed earlier.
 
-~~~
+~~~{.bash caption=">_"}
 nginx -v
 ~~~
 
 This will show you the NGINX version.
 
-~~~
+~~~{.bash caption=">_"}
 nginx version: nginx/1.18.0 (Ubuntu)
 ~~~
 
 Now, log out from the running container using the `exit` command.
 
-~~~
+~~~{.bash caption=">_"}
 exit
 ~~~
 
@@ -547,4 +552,3 @@ Docker registry is a great tool for modern software development environments. It
 ## Outside Article Checklist
 
 * [ ] Add in Author page
-* [ ] Optional: Find ways to break up content with quotes or images
