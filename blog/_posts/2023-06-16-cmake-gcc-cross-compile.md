@@ -263,6 +263,7 @@ For successful cross-compilation using CMake and GCC, you need to make sure you 
 
 For further reading, consult the official [CMake](https://cmake.org/documentation/) and [GCC](https://gcc.gnu.org/onlinedocs/) documentations, as well as [platform-specific resources](https://github.com/topics/cross-compilation?o=desc&s=stars) and [forums](https://stackoverflow.com/questions/tagged/cross-compiling?sort=MostVotes&edited=true). These resources provide more information and insights on your target platform's optimization, troubleshooting, and integration techniques.
 
+{% include_html cta/bottom-cta.html %}
 
 ## Outside Article Checklist
 
@@ -273,4 +274,3 @@ For further reading, consult the official [CMake](https://cmake.org/documentatio
 - [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
