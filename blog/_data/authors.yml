@@ -438,3 +438,7 @@ Ansam Yousry:
     name    : "Ansam Yousry"
     bio     : "Ansam Yousry is a highly skilled data engineer with over six years of experience working as a BI analyst. With expertise in ETL tools and SQL, Ansam Yousry has developed an impressive skillset in managing data integration and transforming data into valuable insights that drive business decisions."
     avatar  : "/assets/images/authors/ansam_yousry.jpg"
+Rubaiat Hossain:
+    name    : "Rubaiat Hossain"
+    bio     : "Rubaiat is a CS grad with a strong passion for open-source. Apart from being a Unix veteran, he's also into network security, cryptography, and functional programming. He's an avid collector of secondhand books and has a never-ending admiration for classic rock."
+    avatar  : "/assets/images/authors/rubaiat-hossain.jpg"
