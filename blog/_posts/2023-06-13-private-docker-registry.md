@@ -6,7 +6,12 @@ toc: true
 author: Adam
 
 internal-links:
- - just an example
+ - Docker
+ - Registry
+ - Linux
+ - Security
+ - Container
+ - Image
 ---
 
 If you're working with Docker images in an enterprise environment where security is a concern, a private Docker registry is a great solution. While public registries like Docker Hub allow anyone to push and pull images, they have limitations on the number of image pull requests per six hours and limited control over the registry security.
@@ -21,7 +26,7 @@ In this step-by-step guide, you'll learn how to set up your own private Docker r
 
 To follow this guide, you will need the following:
 
-* Two Ubuntu 22.04 servers. One for the Docker registry, and one to use as a client machine where you will push and pull images.
+- Two Ubuntu 22.04 servers. One for the Docker registry, and one to use as a client machine where you will push and pull images.
 
 ## Installing Docker and Docker Compose
 
@@ -238,9 +243,9 @@ Save the file when you are done.
 
 Next, we'll need to define two more settings for NGINX..
 
-* `client_max_body_size`: Sets the upload limit per file. By default, NGINX has an upload limit of 1 MB per file. To allow larger image upload to the Docker registry, you will need to define this value as per your requirement.
+- `client_max_body_size`: Sets the upload limit per file. By default, NGINX has an upload limit of 1 MB per file. To allow larger image upload to the Docker registry, you will need to define this value as per your requirement.
 
-* `server_names_hash_bucket_size`: This directive is aligned to a size that is a multiple of the processor's cache line size. The default value of `server_names_hash_bucket_size` is `32` in NGINX. When you define a large server name then you will get the error `could not build the server_names_hash, you should increase server_names_hash_bucket_size: 32`
+- `server_names_hash_bucket_size`: This directive is aligned to a size that is a multiple of the processor's cache line size. The default value of `server_names_hash_bucket_size` is `32` in NGINX. When you define a large server name then you will get the error `could not build the server_names_hash, you should increase server_names_hash_bucket_size: 32`
 
 To update these, edit the NGINX main configuration file.
 
@@ -520,5 +525,4 @@ Docker registry is a great tool for modern software development environments. It
 * [ ] Optional: Find ways to break up content with quotes or images
 * [ ] Verify look of article locally
   * Would any images look better `wide` or without the `figcaption`?
-* [ ] Add keywords for internal links to front-matter
 * [ ] Run `link-opp` and find 1-5 places to incorporate links
