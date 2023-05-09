@@ -4,6 +4,7 @@ categories:
   - Tutorials
 toc: true
 author: James Walker
+editor: Bala Priya C
 
 internal-links:
  - NVIDIA

@@ -4,6 +4,7 @@ categories:
   - Tutorials
 toc: true
 author: Damaso Sanoja
+editor: Bala Priya C
 
 internal-links:
  - Rancher
