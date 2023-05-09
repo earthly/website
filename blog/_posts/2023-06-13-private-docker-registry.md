@@ -511,6 +511,8 @@ In this guide, you learned how to set up a private Docker registry server on Lin
 
 Docker registry is a great tool for modern software development environments. It can help developers to store and manage their images securely. You can now implement security best practices in an enterprise environment to secure your docker containers and images.
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 * [ ] Add in Author page
@@ -520,4 +522,3 @@ Docker registry is a great tool for modern software development environments. It
   * Would any images look better `wide` or without the `figcaption`?
 * [ ] Add keywords for internal links to front-matter
 * [ ] Run `link-opp` and find 1-5 places to incorporate links
-* [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
