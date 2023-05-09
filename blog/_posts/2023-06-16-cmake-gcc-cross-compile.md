@@ -6,7 +6,11 @@ toc: true
 author: Rubaiat Hossain
 
 internal-links:
- - just an example
+ - CMake
+ - GCC
+ - Cross-Compile Binaries
+ - Cross-compilation
+ - C++
 ---
 
 **We're [Earthly](https://earthly.dev/). We make building software simpler—and faster—using containerization. This article covers cross-compiling binaries using CMake and GCC. If you want to see what can be done by combining ideas from a `Makefile` and a `Dockerfile` then [check us out](/).**
@@ -281,5 +285,4 @@ For further reading, consult the official [CMake](https://cmake.org/documentatio
 
 * [ ] Create header image in Canva
 * [ ] Optional: Find ways to break up content with quotes or images
-* [ ] Add keywords for internal links to front-matter
 * [ ] Run `link-opp` and find 1-5 places to incorporate links
