@@ -261,6 +261,8 @@ As you can see, this cross-compiled `hello` executable is running as expected on
 
 ## Troubleshooting Common Issues During Cross-Compiling
 
+![Troubleshooting]({{site.images}}{{page.slug}}/troubleshoot.png)\
+
 Even with the help of tools like CMake and GCC, cross-compiling C++ programs can be challenging. During cross-compiling, common issues you may encounter include compiler incompatibility, lack of readily available libraries, and toolchain conflicts.
 
 If you're facing some of these issues, here are a few tips:
@@ -280,7 +282,3 @@ For successful cross-compilation using CMake and GCC, you need to make sure you 
 For further reading, consult the official [CMake](https://cmake.org/documentation/) and [GCC](https://gcc.gnu.org/onlinedocs/) documentations, as well as [platform-specific resources](https://github.com/topics/cross-compilation?o=desc&s=stars) and [forums](https://stackoverflow.com/questions/tagged/cross-compiling?sort=MostVotes&edited=true). These resources provide more information and insights on your target platform's optimization, troubleshooting, and integration techniques.
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-* [ ] Optional: Find ways to break up content with quotes or images
