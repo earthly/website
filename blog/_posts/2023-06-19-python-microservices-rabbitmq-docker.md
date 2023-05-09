@@ -20,7 +20,7 @@ We will also be introduced to [RabbitMQ](https://www.rabbitmq.com/) and its usag
 
 To follow up with this article, we need to have a working knowledge of Django, Flask and Docker.
 
-## A Brief Introduction to RabbitMQ
+## A Brief Introduction To RabbitMQ
 
 [RabbitMQ](https://www.rabbitmq.com/) is an open-source message broker software that implements the [Advanced Message Queuing Protocol (AMQP)](https://www.amqp.org/). It allows applications to communicate and exchange messages (data) asynchronously, enabling loose coupling and promoting system resilience. RabbitMQ provides features such as routing, reliability, and scalability, making it a popular choice for many distributed systems. It can be used in a variety of scenarios, including serving as the backbone for microservices, handling background jobs, and implementing communication between different systems.
 
@@ -28,31 +28,31 @@ In RabbitMQ [the  **Producers** send messages to the **exchanges**](https://www.
 
 To work with RabbitMQ on Python we will use the [Pika](https://pika.readthedocs.io/en/stable/) library. Pika is a Python library that provides a framework for working with RabbitMQ. Pika allows developers to easily connect to a RabbitMQ server, declare and manage exchanges and queues, and publish and consume messages using the AMQP.
 
-![Framework of RabbitMQ](https://i.imgur.com/mc7y8Yn.png)
+![Framework of RabbitMQ]({{site.images}}{{page.slug}}/mc7y8Yn.png)
 
 We will use [CloudAMQP](https://www.cloudamqp.com/), a cloud-based message queue service, to manage our RabbitMQ server.
 
 ## Get CloudAMQP URL
 
-[CloudAMQP](https://www.cloudamqp.com/) is a cloud-based message queue service that allows developers to easily and securely integrate messaging functionality into their applications. It is based on RabbitMQ, and offers a variety of features and benefits. It is also has a dashboard where we can manage and our RabbitMQ instances as well as see the metrics and logs to give us insight about the the communication between our microservices.
+[CloudAMQP](https://www.cloudamqp.com/) is a cloud-based message queue service that allows developers to easily and securely integrate messaging functionality into their applications. It is based on RabbitMQ, and offers a variety of features and benefits. It is also has a dashboard where we can manage and our RabbitMQ instances as well as see the metrics and logs to give us insight about the communication between our microservices.
 
 To get started, go to the CloudAMPQ [homepage](https://www.cloudamqp.com/) and click on the **Get a managed message broker today** button:
 
-![Cloud AMQP home page](https://i.imgur.com/tM9X9sB.png)
+![Cloud AMQP home page]({{site.images}}{{page.slug}}/tM9X9sB.png)
 
 We will be prompted to create a new account. After we are done signing up, fill out the *Team name* form:
 
-![create team page](https://i.imgur.com/mywjrQ4.png)
+![create team page]({{site.images}}{{page.slug}}/mywjrQ4.png)
 
 Click the *All instances* dropdown, then click the *Create new instance* button:
 
-![CloudAMQP instance](https://i.imgur.com/DwhVciY.png)\
+![CloudAMQP instance]({{site.images}}{{page.slug}}/DwhVciY.png)\
 
 From there, we can create a free instance and get its URL.
 
 To get the instance URL, click on the instance created and copy the URL from there:
 
-![CloudAMQP overview](https://i.imgur.com/Xn5Zji3.png)\
+![CloudAMQP overview]({{site.images}}{{page.slug}}/Xn5Zji3.png)\
 
 Later in this article, We will use this URL provided by CloudAMQP to connect the microservice to the message queue to send or receive messages.
 
@@ -406,7 +406,7 @@ volumes:
   db:
 ~~~
 
-## Run All components with Docker Compose
+## Run All Components With Docker Compose
 
 Let us first build the Docker images for the project.
 
@@ -486,10 +486,10 @@ Output:
 
 We can go to our instance on CloudAMQP and click the "**RabbitMQ Manager**" button, and we should see a dashboard as shown in the image below. This shows that there are some activities between the microservices:
 
-![RabbitMQ manager](https://i.imgur.com/ywOa2xY.png)
+![RabbitMQ manager]({{site.images}}{{page.slug}}/ywOa2xY.png)
 
 Now we can go to the Django admin, and we will see that a recipe was created. And we can also see a comment attached to it.  
-![Django admin](https://i.imgur.com/7p1oo8H.png)
+![Django admin]({{site.images}}{{page.slug}}/7p1oo8H.png)
 
 ## Conclusion
 
@@ -505,6 +505,5 @@ If you already have a full-fledged application, you can try breaking it down int
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
