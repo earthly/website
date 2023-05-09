@@ -25,41 +25,41 @@ To start, you need to create a simple C++ program and then build it using [Makef
 
 You can install GCC on Debian/Ubuntu using the following command:
 
-```bash
+~~~
 sudo apt update && sudo apt install build-essentials
-```
+~~~
 
 For Red Hat Enterprise Linux (RHEL) and Fedora, use the following command:
 
-```bash
+~~~
 sudo dnf groupinstall 'Development Tools'
-```
+~~~
 
 GNU make comes preinstalled on most Linux distributions. You can check if it's installed on your machine using the following command:
 
-```bash
+~~~
 make --version
-```
+~~~
 
 If make is not installed, use the following command to install it on Debian/Ubuntu:
 
-```bash
+~~~
 sudo apt-get install make
-```
+~~~
 
 Or for RHEL or Fedora, use this command:
 
-```bash
+~~~
 sudo dnf install make
-```
+~~~
 
-Now that the necessary tools are set up, go ahead and create your C++ program. 
+Now that the necessary tools are set up, go ahead and create your C++ program.
 
 ### Creating and Compiling a C++ Program
 
 Create a new file named `hello.cpp` and populate it with the following code:
 
-```cpp 
+~~~
 // hello.cpp
 #include<iostream>
 
@@ -68,66 +68,66 @@ int main() {
 
     return 0;
 }
-```
+~~~
 
-This program prints the string `Hello, World!` onto your console. 
+This program prints the string `Hello, World!` onto your console.
 
-#### Compiling with g++
+#### Compiling With `g++`
 
 You can compile the `hello.cpp` file using g++, the C++ compiler component of GCC:
 
-```bash
+~~~
 g++ -o hello hello.cpp
-```
+~~~
 
 This command generates a new binary executable called `hello` in your current directory. If you don't use the `-o` flag, g++ generates an executable file named `a.out` instead.
 
 Next, run your program:
 
-```bash
+~~~
 ./hello
-```
+~~~
 
 This command should print out the string on your screen:
 
-![`hello` binary](https://i.imgur.com/LviXqVY.png)
+![`hello` binary]({{site.images}}{{page.slug}}/LviXqVY.png)
 
-#### Compiling with Make
+#### Compiling With Make
 
 Now that you've compiled your program with GCC, compile the program with Make, a popular build automation tool that provides granular control over the build process by defining dependencies between files and targets. In doing so, Make can determine the correct order of operations needed to build a project efficiently.
 
 The working procedure of Make revolves around a simple text file called the Makefile. It contains rules that tell Make how to build the project from scratch:
 
-![Make diagram](https://i.imgur.com/SshQwn3.png)
+![Make diagram]({{site.images}}{{page.slug}}/SshQwn3.png)
 
 To build your simple C++ program using a Makefile, create a `Makefile` and populate it with the following:
 
-```makefile
+~~~
 # Makefile
 hello: hello.cpp
-	g++ -o hello hello.cpp
+    g++ -o hello hello.cpp
 
 clean:
-	rm -f hello
-```
+    rm -f hello
+~~~
 
 This Makefile contains two rules. The first rule specifies that the target is the `hello` executable and that it depends on `hello.cpp`. This rule has a single command that uses `g++` to compile and link the source file into an executable binary named `hello`.
 
-The second rule specifies that the target is `clean`, which uses the `rm` command to remove the `hello` executable. It's important to note that Makefiles use tabs for indentation, not spaces. 
+The second rule specifies that the target is `clean`, which uses the `rm` command to remove the `hello` executable. It's important to note that Makefiles use tabs for indentation, not spaces.
 
 Once you verify that your Makefile is formatted correctly, you can run the `make` command to generate the binary:
 
-```bash
+~~~
 make
-```
+~~~
 
 Make goes through the Makefile and compiles the `hello.cpp` program using the specified g++ command. Next, delete the generated executable:
 
-```bash
+~~~
 make clean
-```
+~~~
 
-## Cross-Compiling with CMake and GCC
+## Cross-Compiling With CMake and GCC
 
 Now that you have a simple C++ program running, it's time to cross-compile it to run on a different architecture using CMake. CMake is a popular tool for managing the build process of C and C++ projects, and it has built-in support for cross-compiling.
 
@@ -135,48 +135,48 @@ Cross-compiling involves configuring CMake to use a cross-compiler and setting t
 
 To begin, you need to make sure that CMake is installed in your system. If not, you can install it using the following command in Debian/Ubuntu:
 
-```bash
+~~~
 sudo apt-get install cmake
-```
+~~~
 
 Or if you're working with RHEL or Fedora, use the following command:
 
-```bash
+~~~
 sudo dnf install cmake
-```
+~~~
 
 After you've installed CMake, you need to install the following two cross-compilers to produce the target binary for your selected architecture. Here, the selected architecture the target executable runs on is AArch64 and the host that we've compiled on thus far is x86-64.
 
 Use the following command to install these compilers on Debian or Ubuntu:
 
-```bash
+~~~
 sudo apt-get install gcc-aarch64-linux-gnu
 sudo apt-get install g++-aarch64-linux-gnu
-```
+~~~
 
 Or use this command if you're using RHEL or Fedora:
 
-```bash
+~~~
 sudo dnf install epel-release
 sudo dnf install gcc-aarch64-linux-gnu
 sudo dnf install gcc-c++-aarch64-linux-gnu
-```
+~~~
 
 Before using CMake to cross-compile your program, you need to obtain the prebuilt root file system for the ARM64 target system. This contains the libraries, headers, and other files needed to build and run software on the target system. Here, you'll use the Ubuntu ARM64 image, but you can download a prebuilt image or build one yourself using a tool like [debootstrap](https://wiki.debian.org/Debootstrap).
 
 [Download the ISO image](https://cdimage.ubuntu.com/releases/) to your local machine and extract the content of this image to get the Ubuntu ARM64 root file system:
 
-```bash
+~~~
 sudo mkdir /mnt/iso
 sudo mount -o loop /path/to/iso /mnt/iso
 sudo cp -r /mnt/iso/* /path/to/rootfs/
-```
+~~~
 
 Substitute `/path/to/iso/` with the actual path of the downloaded ISO image. The final copy command extracts the contents of this image to `/path/to/rootfs`. Make sure you use the exact paths for these on your machine.
 
 After extracting the content of the image, the cross-compilation environment should now be set up. To cross-compile your C++ program with CMake, create a new file called `CMakeLists.txt` and fill it with the following:
 
-```
+~~~
 # CMakeLists.txt
 
 cmake_minimum_required(VERSION 3.0)
@@ -192,7 +192,7 @@ set(CMAKE_CXX_COMPILER /usr/bin/aarch64-linux-gnu-g++)
 set(CMAKE_FIND_ROOT_PATH /path/to/rootfs/)
 
 add_executable(hello hello.cpp)
-```
+~~~
 
 The first line sets the minimum version of CMake required to build this project to version 3.0. The second line sets the project name to `Hello`, and the following two lines set the target system name and processor architecture. The target system is `Linux`, and the target processor is `aarch64` (ARM64).
 
@@ -200,46 +200,46 @@ The following two lines set the C and C++ compilers to be used for cross-compili
 
 Save and close this file. Then create a new directory to hold the build files generated by CMake:
 
-```bash
+~~~
 mkdir build
 cd build
-```
+~~~
 
 Run CMake using the following command:
 
-```bash
+~~~
 cmake ..
-```
+~~~
 
-![CMake cross-compilation](https://i.imgur.com/ZhUWs93.png)
+![CMake cross-compilation]({{site.images}}{{page.slug}}/ZhUWs93.png)
 
 Now, CMake generates the build files, including a Makefile for your project. Use the following code to build the target binary:
 
-```bash
+~~~
 make
-```
+~~~
 
 This creates the binary executable `hello` in the build directory:
 
-![Make for cross-compilation](https://i.imgur.com/7qwn2o7.png)
+![Make for cross-compilation]({{site.images}}{{page.slug}}/7qwn2o7.png)
 
 ## Testing the Executable
 
 Now that you've cross-compiled your C++ program for an ARM64 system, see if it works. To verify that the binary produced by CMake is what you want, run the following command:
 
-```bash
+~~~
 file hello
-```
+~~~
 
-![`hello` binary](https://i.imgur.com/xqjStAZ.png)
+![`hello` binary]({{site.images}}{{page.slug}}/xqjStAZ.png)
 
 This should show that the `hello` executable is an `ELF 64-bit LSB` executable based on the ARM AArch64 architecture.
 
-You can test this program in multiple ways: copying it to a 64-bit ARM device like a Raspberry Pi or transferring the binary to an ARM64 virtual machine (VM). 
+You can test this program in multiple ways: copying it to a 64-bit ARM device like a Raspberry Pi or transferring the binary to an ARM64 virtual machine (VM).
 
 A VM based on ARM64 has been set up on Microsoft Azure to test the binary. You have the option to choose any cloud provider or self-host the VM. However, it's important to ensure that the file permissions are properly configured:  
 
-![Cross-compiled `hello`](https://i.imgur.com/oMNapDN.png)
+![Cross-compiled `hello`]({{site.images}}{{page.slug}}/oMNapDN.png)
 
 As you can see, this cross-compiled `hello` executable is running as expected on an ARM64 VM.
 
@@ -267,10 +267,9 @@ For further reading, consult the official [CMake](https://cmake.org/documentatio
 
 ## Outside Article Checklist
 
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
+* [ ] Create header image in Canva
+* [ ] Optional: Find ways to break up content with quotes or images
+* [ ] Verify look of article locally
+  * Would any images look better `wide` or without the `figcaption`?
+* [ ] Add keywords for internal links to front-matter
+* [ ] Run `link-opp` and find 1-5 places to incorporate links
