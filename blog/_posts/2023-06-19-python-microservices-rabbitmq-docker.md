@@ -4,6 +4,7 @@ categories:
   - Tutorials
 toc: true
 author: Muhammed Ali
+editor: Mustapha Ahmad Ayodeji
 
 internal-links:
  - just an example
@@ -23,7 +24,7 @@ To follow up with this article, we need to have a working knowledge of Django, F
 
 [RabbitMQ](https://www.rabbitmq.com/) is an open-source message broker software that implements the [Advanced Message Queuing Protocol (AMQP)](https://www.amqp.org/). It allows applications to communicate and exchange messages (data) asynchronously, enabling loose coupling and promoting system resilience. RabbitMQ provides features such as routing, reliability, and scalability, making it a popular choice for many distributed systems. It can be used in a variety of scenarios, including serving as the backbone for microservices, handling background jobs, and implementing communication between different systems.
 
-In RabbitMQ [the  **Producers** send messages to the **exchanges**](https://www.rabbitmq.com/tutorials/tutorial-three-java.html#:~:text=A%20producer%20is%20a%20user,user%20application%20that%20receives%20messages.), which then route the messages to one or many queues based on a specified rules. The Exchange checks if the *[routing key](https://www.cloudamqp.com/blog/part4-rabbitmq-for-beginners-exchanges-routing-keys-bindings.html?gclid=CjwKCAiA0cyfBhBREiwAAtStHNofBeG35nsG_iI6lQhtE62oPQNL9hsomiT8EPYm8hbI46eBUfSPdBoC-hIQAvD_BwE#:~:text=The%20routing%20key%20is%20a%20message%20attribute%20the%20exchange%20looks%20at%20when%20deciding%20how%20to%20route%20the%20message%20to%20queues%20(depending%20on%20exchange%20type).) matches a *queue name* before allowing the message to pass to its destination (the **consumer**). The messages could be from or to either of the Django or Flask application.
+In RabbitMQ [the  **Producers** send messages to the **exchanges**](https://www.rabbitmq.com/tutorials/tutorial-three-java.html#:~:text=A%20producer%20is%20a%20user,user%20application%20that%20receives%20messages.), which then route the messages to one or many queues based on a specified rules. The Exchange checks if the *[routing key](https://www.cloudamqp.com/blog/part4-rabbitmq-for-beginners-exchanges-routing-keys-bindings.html?gclid=CjwKCAiA0cyfBhBREiwAAtStHNofBeG35nsG_iI6lQhtE62oPQNL9hsomiT8EPYm8hbI46eBUfSPdBoC-hIQAvD_BwE#:~:text=The%20routing%20key%20is%20a%20message%20attribute%20the%20exchange%20looks%20at%20when%20deciding%20how%20to%20route%20the%20message%20to%20queues%20(depending%20on%20exchange%20type).) matches a*queue name* before allowing the message to pass to its destination (the **consumer**). The messages could be from or to either of the Django or Flask application.
 
 To work with RabbitMQ on Python we will use the [Pika](https://pika.readthedocs.io/en/stable/) library. Pika is a Python library that provides a framework for working with RabbitMQ. Pika allows developers to easily connect to a RabbitMQ server, declare and manage exchanges and queues, and publish and consume messages using the AMQP.
 
@@ -66,7 +67,7 @@ Finally, we will create Docker and Docker compose configurations for running the
 
 We will first start with the Producer. The following is the code that sends messages from the Django microservice. We can get this going by copying the following code from the *django-microservice/app/producer.py*:
 
-```python
+~~~
 import pika, json
 
 params = pika.URLParameters('amqps://tyfodnmd:t0Ps2Jnw97Epl3YNe67zm2mjdDdir5Y8@rat.rmq2.cloudamqp.com/tyfodnmd')
@@ -79,7 +80,7 @@ channel = connection.channel()
 def publish(method, body):
     properties = pika.BasicProperties(method)
     channel.basic_publish(exchange='', routing_key='django', body=json.dumps(body), properties=properties) # routing key here must match the queue name in the consumer of the flask app
-```
+~~~
 
 > Please be sure to replace the value of `params` with the URL we got from CloudAMQP.
 
@@ -96,7 +97,7 @@ Now we will call this producer in the `create`, `update` and `destroy` methods o
 Now, when an action takes place in `RecipeView`, RabbitMQ will be notified through this producer.
 To do this, update our *django-microservice/app/views.py* file to look like the following:
 
-```python
+~~~
 ...
 from .producer import publish
 
@@ -117,13 +118,13 @@ class RecipeView(viewsets.ViewSet):
         ...
         publish('recipe_deleted', pk) #new
         return Response(status=status.HTTP_204_NO_CONTENT)
-```
+~~~
+
 In the code above, we added the `publish()` function (which we created earlier) to each of the viewset action so that when an action is performed on those views, JSON data is sent to the message queue. This data will be consumed by the Flask microservice and it will update the database as necessary.
 
 For the Django microservice consumer, paste the following code in *django_microservice/consumer.py* to add a comment to the specified recipe. The data for the comment text and recipe ID is sent from the Flask microservice:
 
-
-```python
+~~~
 import pika, json, os, django
 from django.http import JsonResponse
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "recipe.settings")
@@ -161,7 +162,7 @@ channel.start_consuming()
 
 channel.close()
 
-```
+~~~
 
 The code import the necessary modules and then sets up the Django environment. This is important for ensuring that the Django web application is configured correctly, and that the Python interpreter knows which settings module to use for the Django application.
 
@@ -175,7 +176,7 @@ The Recipe ID and comment text is obtained from the JSON serialized body and the
 
 At this moment, our Django microservice can send a message to the Flask microservice whenever a recipe is created, updated, or deleted. The Django microservice can also receive a message from the Flask microservice whenever a comment is made on a recipe.
 
-Now that we have the Django part ready, we can now package it with Docker to isolate it from the Flask microservice. 
+Now that we have the Django part ready, we can now package it with Docker to isolate it from the Flask microservice.
 
 ### Dockerize the Django Microservice
 
@@ -183,7 +184,7 @@ Docker allows developers to package the application, including its dependencies 
 
 To Dockerize our application, add the following configuration in *django_microservice/Dockerfile*. The following code initializes a Python Docker image that the Django microservice will run on and installs the necessary dependencies. This Dockerfile will be the base for the Django server and the RabbitMQ server:
 
-```docker
+~~~
 FROM python:3.7
 
 ENV PYTHONUNBUFFERED 1
@@ -192,11 +193,11 @@ WORKDIR /app
 COPY . .
 
 RUN pip install -r requirements.txt
-```
+~~~
 
-Now, we can create the Docker Compose configuration by adding the following code in *django_microservice/docker-compose.yaml.* The following code uses the Dockerfile we created earlier to run the Django service. The `python -u consumer.py` command runs the *consumer.py* script that listen for messages that are sent from the Flask service. We also set the configuration to set up and run the PostgreSQL database. 
+Now, we can create the Docker Compose configuration by adding the following code in *django_microservice/docker-compose.yaml.* The following code uses the Dockerfile we created earlier to run the Django service. The `python -u consumer.py` command runs the *consumer.py* script that listen for messages that are sent from the Flask service. We also set the configuration to set up and run the PostgreSQL database.
 
-```yaml
+~~~
 version: '3.8'
 services:
   django:
@@ -232,7 +233,7 @@ services:
 
 volumes:
   db:
-```
+~~~
 
 ## Add RabbitMQ to Flask Microservice
 
@@ -244,7 +245,7 @@ Finally, we will develop the Docker and Docker compose configurations for runnin
 
 We will start with the Producer. The following is the initial code that receives a message from the Django microservice. We can get this going by adding the following code in *flask_microservice/producer.py*:
 
-```python
+~~~
 import pika, json
 
 params = pika.URLParameters('amqps://tyfodnmd:t0Ps2Jnw97Epl3YNe67zm2mjdDdir5Y8@rat.rmq2.cloudamqp.com/tyfodnmd') 
@@ -256,15 +257,15 @@ channel = connection.channel()
 def publish(method, body):
     properties = pika.BasicProperties(method)
     channel.basic_publish(exchange='', routing_key='flask', body=json.dumps(body), properties=properties)
-```
+~~~
 
 > Please be sure to replace the value of `params` with the URL we got from CloudAMQP.
 
-The code is similar to the `producer` code in the Django microservice, however, we published the message to the `flask` queue which is specified by the `routing_key = “flask”`. The Django service listen to messages sent to this `queue`. 
+The code is similar to the `producer` code in the Django microservice, however, we published the message to the `flask` queue which is specified by the `routing_key = "flask"`. The Django service listen to messages sent to this `queue`.
 
 The data we need to publish to the Django microservice is the recipe comment data, so we will add the `publish()`  function to the `comment()` function in the *flask_microservice/main.py* file:
 
-```python
+~~~
 ...
 
 from producer import publish
@@ -289,13 +290,13 @@ def comment():
 
 …
 
-```
+~~~
 
 We will create a consumer that gets the published data from the Django microservice because we need the Flask microservice to be aware of the changes made to the recipes. Then the consumer updates the Flask database based on the data it receives.
 
-Add the following code in the *consumer.py* of the Flask microservice: 
+Add the following code in the *consumer.py* of the Flask microservice:
 
-```python
+~~~
 import pika, json
 
 from main import Recipe, db
@@ -344,18 +345,17 @@ print('Started Consuming')
 channel.start_consuming()
 
 channel.close()
-```
+~~~
 
-This code sets up a RabbitMQ consumer that listens to a queue named ‘django’ for messages.. When a message is received, it is parsed from a JSON format and the content type of the message is checked to determine the appropriate action to take.
+This code sets up a RabbitMQ consumer that listens to a queue named 'django' for messages.. When a message is received, it is parsed from a JSON format and the content type of the message is checked to determine the appropriate action to take.
 
 If the content type is `recipe_created`, a new recipe object is created and added to a database. If the content type is `recipe_updated`, an existing recipe object is updated with the new data provided in the message. If the content type is `recipe_deleted`, the corresponding recipe object is deleted from the database. The consumer uses a `callback` function to handle the received messages.
-
 
 ### Dockerize the Flask Service
 
 The Dockerfile for the Flask side is the same as the Django. So, just add the following code in *flask_microservice/Dockerfile*:
 
-```docker
+~~~
 FROM python:3.7
 
 ENV PYTHONUNBUFFERED 1
@@ -364,11 +364,11 @@ WORKDIR /app
 COPY . .
 
 RUN pip install -r requirements.txt
-```
+~~~
 
 The Docker compose configuration here will run the Flask, PostgreSQL, and RabbitMQ servers at once. We can get this done by adding the following code in *flask_microservice/docker-compose.yaml*:
 
-```yaml
+~~~
 version: '3.8'
 services:
   flask:
@@ -404,90 +404,91 @@ services:
 
 volumes:
   db:
-```
+~~~
 
 ## Run All components with Docker Compose
 
-Let us first build the Docker images for the project. 
+Let us first build the Docker images for the project.
 
 Build the Django microservice by running the following in the *django_microservice* directory:
 
-```bash
+~~~
 docker compose build
-```
+~~~
 
 We can build the Flask microservice by running the following in the *flask_microservice* directory:
 
-```bash
+~~~
 docker compose build
-```
+~~~
 
 Before we run the application, we need to run migrations and create a superuser that we can use to access data from the Django admin.
 
 Navigate to the *django_microservice/* directory and run the migration commands for the database:
 
-```bash
+~~~
 docker compose run django sh -c "python manage.py makemigrations" 
 docker compose run django sh -c "python manage.py migrate"
-```
+~~~
 
 Then run the following to create a superuser:
 
-```bash
+~~~
 docker compose run django sh -c "python manage.py createsuperuser"
-```
+~~~
 
 Now run the migration commands for the Flask microservice in *flask_microservice/* directory:
 
-```bash
+~~~
 docker compose run flask sh -c "python manager.py db init"
 docker compose run flask sh -c "python manager.py db migrate"
-```
+~~~
 
-Now run the Django microservice with the following command and access the application on the browser with *http://0.0.0.0:8000/admin/*:
+Now run the Django microservice with the following command and access the application on the browser with *<http://0.0.0.0:8000/admin/>*:
 
-```bash
+~~~
 docker compose up
-```
+~~~
 
  Fill out the login form with the superuser credentials we just created, and we will be able to access our application.
 
 Run the Flask microservice with the following command while in the *flask_microservice* directory:
 
-```bash
+~~~
 docker compose up
-```
+~~~
 
 On another terminal window, run the following [cURL command](https://curl.se/docs/manpage.html) to create a new recipe:
 
-```bash
+~~~
 curl -H 'Content-Type: application/json'  -d  '{"title":"French toast","time_minutes":35, "price":45,"description":"This is the description", "ingredients":"this is ingredient"}'  -X POST http://0.0.0.0:8000/recipe
-```
+~~~
 
 Output:
 
-```
+~~~
 {"id":23,"title":"French toast","time_minutes":35,"price":"45.00","description":"This is the description","ingredients":"this is ingredient"}
-```
+~~~
 
 We can now comment by running the following command:
 
-```bash
+~~~
 curl -X POST http://127.0.0.1:5005/api/comment -H 'Accept: application/json' -H 'Content-Type: application/json' -d '{"recipe_id": 23, "comment_text":"This recipe is time efficient :)"}'
-```
+~~~
 
 Output:
 
-```
+~~~
 {
     "message": "success"
 }
-```
-We can go to our instance on CloudAMQP and click the “**RabbitMQ Manager**” button, and we should see a dashboard as shown in the image below. This shows that there are some activities between the microservices:
+~~~
+
+We can go to our instance on CloudAMQP and click the "**RabbitMQ Manager**" button, and we should see a dashboard as shown in the image below. This shows that there are some activities between the microservices:
 
 ![RabbitMQ manager](https://i.imgur.com/ywOa2xY.png)
 
-Now we can go to the Django admin, and we will see that a recipe was created.  And we can also see a comment attached to it.  
+Now we can go to the Django admin, and we will see that a recipe was created. And we can also see a comment attached to it.  
 ![Django admin](https://i.imgur.com/7p1oo8H.png)
 
 ## Conclusion
