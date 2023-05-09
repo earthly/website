@@ -72,7 +72,9 @@ docker --version
 
 This will show you the Docker version.
 
-![Verify Docker Installation](http://linuxbuz.com/wp-content/uploads/2023/04/p1.png)
+<div class="wide">
+Verify Docker Installation]({{site.images}}{{page.slug}}/p1.png)
+</div>
 
 <div class="notice--info">
 Remember, you'll need to run all of the above commands on both servers before moving on to the next step.
@@ -274,7 +276,9 @@ systemctl status nginx
 
 You should see the NGINX running status in the below screenshot.
 
-![Verify NGINX status](http://linuxbuz.com/wp-content/uploads/2023/04/p2.png)
+<div class="wide">
+![Verify NGINX status]({{site.images}}{{page.slug}}/p2.png)
+</div>
 
 At this point, the NGINX web server is installed and configured to forward traffic to the private registry server.
 
@@ -302,7 +306,9 @@ certbot --nginx -d private.linuxbuz.com
 
 You will be asked to provide your real email address and accept the term of service to finish the SSL installation.
 
-![Install SSL on registry domain](http://linuxbuz.com/wp-content/uploads/2023/04/p8.png)
+<div class="wide">
+![Install SSL on registry domain]({{site.images}}{{page.slug}}/p8.png)
+</div>
 
 At this point, Let's Encrypt SSL is installed and configured for `private.linuxbuz.com` domain.
 
@@ -325,7 +331,9 @@ htpasswd -Bc registry.password adminuser
 
 You should be prompted to define a password as shown below.
 
-![Create a registry user](http://linuxbuz.com/wp-content/uploads/2023/04/p3.png)
+<div class="wide">
+![Create a registry user]({{site.images}}{{page.slug}}/p3.png)
+</div>
 
 At this point, password-based authentication is configured on the registry. We already defined this auth file when we set up the `REGISTRY_AUTH` in the docker compose. Now, only authenticated users can access the registry.
 
@@ -342,7 +350,9 @@ docker compose up -d
 
 This command will download the registry docker container image and start the container as shown below.
 
-![Launch registry container](http://linuxbuz.com/wp-content/uploads/2023/04/p4.png)
+<div class="wide">
+![Launch registry container]({{site.images}}{{page.slug}}/p4.png)
+</div>
 
 Run the following command to check the Docker registry container status.
 
@@ -352,7 +362,9 @@ docker-compose ps
 
 This will show you the active status of the registry container.
 
-![Verify registry container](http://linuxbuz.com/wp-content/uploads/2023/04/p5.png)
+<div class="wide">
+![Verify registry container]({{site.images}}{{page.slug}}/p5.png)
+</div>
 
 At this point, your private registry server is started and running.
 
@@ -374,7 +386,9 @@ docker run -t -i ubuntu:latest /bin/bash
 
 This will start the image and put you into the Ubuntu shell as shown below.
 
-![Run Ubuntu Container](http://linuxbuz.com/wp-content/uploads/2023/04/p6.png)
+<div class="wide">
+![Run Ubuntu Container]({{site.images}}{{page.slug}}/p6.png)
+</div>
 
 Next, update the Ubuntu repository and install the NGINX package inside the container.
 
@@ -417,7 +431,9 @@ docker images
 
 You should see your newly created image in the following screenshot.
 
-![Verify the custom image](http://linuxbuz.com/wp-content/uploads/2023/04/p7.png)
+<div class="wide">
+![Verify the custom image]({{site.images}}{{page.slug}}/p7.png)
+</div>
 
 At this point, you have created a custom image called `ubuntu22-image` on the client server.
 
@@ -434,7 +450,9 @@ docker login https://private.linuxbuz.com
 We will need credentials that we set up on the registry server to authenticate the registry.
 After successfully authenticating to the registry. You should see the following screen.
 
-![Login to registry server](http://linuxbuz.com/wp-content/uploads/2023/04/p9.png)
+<div class="wide">
+![Login to registry server]({{site.images}}{{page.slug}}/p9.png)
+</div>
 
 Next, tag your custom Ubuntu image that matches your registry server domain name.
 
@@ -448,7 +466,9 @@ Next, verify the tagged image using the following command.
 docker images
 ~~~
 
-![Verify tagged image](http://linuxbuz.com/wp-content/uploads/2023/04/p10.png)
+<div class="wide">
+![Verify tagged image]({{site.images}}{{page.slug}}/p10.png)
+</div>
 
 Finally, run the `docker push` command to upload your custom Ubuntu image to the private Docker Registry.
 
@@ -458,7 +478,9 @@ docker push private.linuxbuz.com/ubuntu22-image
 
 This will upload your custom image to the private registry server as shown below.
 
-![Upload image to registry server](http://linuxbuz.com/wp-content/uploads/2023/04/p11.png)
+<div class="wide">
+![Upload image to registry server]({{site.images}}{{page.slug}}/p11.png)
+</div>
 
 At this point, you have uploaded the custom Ubuntu image to your private registry server.
 
@@ -480,7 +502,9 @@ docker pull private.linuxbuz.com/ubuntu22-image
 
 After the successful download, you should see the following screen.
 
-![Download image from registry server](http://linuxbuz.com/wp-content/uploads/2023/04/p12.png)
+<div class="wide">
+![Download image from registry server]({{site.images}}{{page.slug}}/p12.png)
+</div>
 
 Now, run the `docker run` command to create a container from the downloaded image.
 
@@ -490,7 +514,9 @@ docker run -it private.linuxbuz.com/ubuntu22-image /bin/bash
 
 This will start the container and put you into the container shell like before.
 
-![Run custom ubuntu image](http://linuxbuz.com/wp-content/uploads/2023/04/p13.png)
+<div class="wide">
+![Run custom ubuntu image]({{site.images}}{{page.slug}}/p13.png)
+</div>
 
 Now, verify the NGINX which you installed earlier.
 
@@ -523,6 +549,4 @@ Docker registry is a great tool for modern software development environments. It
 * [ ] Add in Author page
 * [ ] Create header image in Canva
 * [ ] Optional: Find ways to break up content with quotes or images
-* [ ] Verify look of article locally
-  * Would any images look better `wide` or without the `figcaption`?
 * [ ] Run `link-opp` and find 1-5 places to incorporate links
