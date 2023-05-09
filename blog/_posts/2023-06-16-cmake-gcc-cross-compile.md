@@ -90,7 +90,9 @@ Next, run your program:
 
 This command should print out the string on your screen:
 
+<div class="wide">
 ![`hello` binary]({{site.images}}{{page.slug}}/LviXqVY.png)
+</div>
 
 #### Compiling With Make
 
@@ -98,7 +100,9 @@ Now that you've compiled your program with GCC, compile the program with Make, a
 
 The working procedure of Make revolves around a simple text file called the Makefile. It contains rules that tell Make how to build the project from scratch:
 
+<div class="wide">
 ![Make diagram]({{site.images}}{{page.slug}}/SshQwn3.png)
+</div>
 
 To build your simple C++ program using a Makefile, create a `Makefile` and populate it with the following:
 
@@ -211,7 +215,9 @@ Run CMake using the following command:
 cmake ..
 ~~~
 
+<div class="wide">
 ![CMake cross-compilation]({{site.images}}{{page.slug}}/ZhUWs93.png)
+</div>
 
 Now, CMake generates the build files, including a Makefile for your project. Use the following code to build the target binary:
 
@@ -221,7 +227,9 @@ make
 
 This creates the binary executable `hello` in the build directory:
 
+<div class="wide">
 ![Make for cross-compilation]({{site.images}}{{page.slug}}/7qwn2o7.png)
+</div>
 
 ## Testing the Executable
 
@@ -231,7 +239,9 @@ Now that you've cross-compiled your C++ program for an ARM64 system, see if it w
 file hello
 ~~~
 
+<div class="wide">
 ![`hello` binary]({{site.images}}{{page.slug}}/xqjStAZ.png)
+</div>
 
 This should show that the `hello` executable is an `ELF 64-bit LSB` executable based on the ARM AArch64 architecture.
 
@@ -239,7 +249,9 @@ You can test this program in multiple ways: copying it to a 64-bit ARM device li
 
 A VM based on ARM64 has been set up on Microsoft Azure to test the binary. You have the option to choose any cloud provider or self-host the VM. However, it's important to ensure that the file permissions are properly configured:  
 
+<div class="wide">
 ![Cross-compiled `hello`]({{site.images}}{{page.slug}}/oMNapDN.png)
+</div>
 
 As you can see, this cross-compiled `hello` executable is running as expected on an ARM64 VM.
 
@@ -269,7 +281,5 @@ For further reading, consult the official [CMake](https://cmake.org/documentatio
 
 * [ ] Create header image in Canva
 * [ ] Optional: Find ways to break up content with quotes or images
-* [ ] Verify look of article locally
-  * Would any images look better `wide` or without the `figcaption`?
 * [ ] Add keywords for internal links to front-matter
 * [ ] Run `link-opp` and find 1-5 places to incorporate links
