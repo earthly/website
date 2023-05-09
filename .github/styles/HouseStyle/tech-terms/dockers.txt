@@ -12,3 +12,5 @@ Dockfile
 dockerize
 
 Buildx
+
+htpasswd
