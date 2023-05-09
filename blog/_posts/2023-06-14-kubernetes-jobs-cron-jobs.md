@@ -456,6 +456,8 @@ Also, consider the following to ensure that your Jobs and CronJobs are reliable,
 
 With this skill, you can now go ahead to schedule tasks in your Kubernetes cluster.
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
@@ -465,4 +467,3 @@ With this skill, you can now go ahead to schedule tasks in your Kubernetes clust
 - [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
