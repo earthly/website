@@ -3,7 +3,7 @@ title: "How to Set Up a Private Docker Registry on Linux"
 categories:
   - Tutorials
 toc: true
-author: Adam
+author: Hitesh Jethva
 
 internal-links:
  - Docker
@@ -548,7 +548,3 @@ In this guide, you learned how to set up a private Docker registry server on Lin
 Docker registry is a great tool for modern software development environments. It can help developers to store and manage their images securely. You can now implement security best practices in an enterprise environment to secure your docker containers and images.
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-* [ ] Add in Author page
