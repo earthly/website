@@ -4,6 +4,7 @@ categories:
   - Tutorials
 toc: true
 author: Cameron Pavey
+editor: Bala Priya C
 
 internal-links:
  - Caching

@@ -4,6 +4,7 @@ categories:
   - Tutorials
 toc: true
 author: Ashutosh Krishna
+editor: Mustapha Ahmad Ayodeji
 
 internal-links:
  - Pyhton

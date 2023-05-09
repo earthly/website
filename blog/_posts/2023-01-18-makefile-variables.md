@@ -4,6 +4,7 @@ categories:
   - Tutorials
 toc: true
 author: Aniket Bhattacharyea
+editor: Bala Priya C
 
 internal-links:
  - Makefile
