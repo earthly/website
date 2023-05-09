@@ -333,4 +333,3 @@ Linux file permissions and ownership can be very complex topics to navigate and 
 * [ ] Optional: Find ways to break up content with quotes or images
 * [ ] Verify look of article locally
   * Would any images look better `wide` or without the `figcaption`?
-* [ ] Run `link-opp` and find 1-5 places to incorporate links
