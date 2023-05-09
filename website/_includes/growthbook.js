@@ -1,7 +1,12 @@
-<script src="https://cdn.jsdelivr.net/npm/@growthbook/growthbook/dist/bundles/index.js"></script>
-<script>
+var script = document.createElement("script")
+script.id = "growthbookScript"
+script.src = "https://cdn.jsdelivr.net/npm/@growthbook/growthbook/dist/bundles/index.js"
+document.head.appendChild(script)
+
+var script = document.querySelector("#growthbookScript");
+script.addEventListener("load", function () {
   // Uncomment for testing
-  //var earthlyID = uuidv4();
+  // var earthlyID = uuidv4();
   var earthlyID = getAnalyticCookie();
 
   // Create a GrowthBook instance
@@ -67,4 +72,4 @@
       }
     });
   });
-</script>
+});

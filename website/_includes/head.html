@@ -25,13 +25,18 @@
   <script defer src="/assets/js/star-cta.js"></script>
   <script defer src="/assets/js/button.js"></script>
   <script src="/assets/js/utils.js"></script>
-  <script src="/assets/js/analytics.js"></script>
 
   {% if jekyll.environment == "production" %}
-  {%- include segment.html -%}
-  {%- include growthbook.html -%}
-  {%- include clearbit.html -%}
-  {%- include intercom.html -%}
-  {% endif %}
+    {%- include intercom.html -%}
 
+    <script>
+      var privacyPolicyCookie = getCookie("privacyPolicy");
+      if (privacyPolicyCookie == "true") {
+        {% include analytics.js %}
+        {% include clearbit.js %}
+        {% include growthbook.js %}
+        {% include segment.js %}
+      }
+    </script>
+  {% endif %}
 </head>

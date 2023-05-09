@@ -28,13 +28,16 @@
 <script>
   $(document).ready(function () {
     var privacyPolicyCookie = getCookie("privacyPolicy");
-    if (!privacyPolicyCookie) {
+    if (privacyPolicyCookie != "true") {
       $("#privacy-policy-box").removeClass("hidden");
     }
   });
 
   function handleClick(accepted) {
-    setCookie("privacyPolicy", accepted + "", 365);
     $("#privacy-policy-box").addClass("hidden");
+    if (accepted) {
+      setCookie("privacyPolicy", accepted, 365);
+      location.reload();
+    }
   }
 </script>
