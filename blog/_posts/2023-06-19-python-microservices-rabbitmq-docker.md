@@ -496,6 +496,8 @@ In this article, we have demonstrated how to connect Django and Flask microservi
 
 If you already have a full-fledged application, you can try breaking it down into smaller parts based on features and see if you can utilize RabbitMQ to connect the parts.
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
@@ -505,4 +507,3 @@ If you already have a full-fledged application, you can try breaking it down int
 - [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
