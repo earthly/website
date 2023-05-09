@@ -6,7 +6,11 @@ toc: true
 author: Mercy Bassey
 
 internal-links:
-- just an example
+- Jobs
+- Cron Jobs
+- Kubernetes
+- scheduled tasks
+- Management
 ---
 
 Modern software applications require efficient and reliable management of jobs and scheduled tasks. As applications become more complex and Kubernetes clusters increase in size, automating repetitive tasks like backups, batch processing, and data analysis becomes essential.
@@ -32,7 +36,7 @@ In summary, Jobs, and CronJobs are an essential part of Kubernetes, and understa
 
 ## Creating and Managing Jobs in Kubernetes
 
- As mentioned, Jobs are Kubernetes objects that run a container or pod(s) to completion, either once or as part of a batch process. In this section, we'll explore how to create and manage jobs in Kubernetes.
+As mentioned, Jobs are Kubernetes objects that run a container or pod(s) to completion, either once or as part of a batch process. In this section, we'll explore how to create and manage jobs in Kubernetes.
 
 ### Creating a Job Manifest File
 
@@ -489,5 +493,4 @@ With this skill, you can now go ahead to schedule tasks in your Kubernetes clust
 
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
