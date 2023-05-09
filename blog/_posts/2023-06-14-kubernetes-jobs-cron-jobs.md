@@ -488,8 +488,3 @@ Also, consider the following to ensure that your Jobs and CronJobs are reliable,
 With this skill, you can now go ahead to schedule tasks in your Kubernetes cluster.
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-- [ ] Optional: Find ways to break up content with quotes or images
-
