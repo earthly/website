@@ -44,7 +44,7 @@ Before you can run a job in Kubernetes, you need to create a job manifest file t
 
 To create your first job, create a *yaml* file, open it up with your preferred code editor, and paste in the following code snippets; this tutorial uses the *[nano](https://docs.nano.org/)* text editor and calls this file `job.yaml`:
 
-~~~
+~~~{.yaml caption="job.yaml"}
 # job.yaml
 apiVersion: batch/v1
 kind: Job
@@ -77,7 +77,7 @@ When a job is created, Kubernetes creates a pod to run the container image speci
 
 Now create and view this job with the following `kubectl` commands:
 
-~~~
+~~~{.bash caption=">_"}
 kubectl apply -f job.yaml
 kubectl get jobs
 ~~~
@@ -88,7 +88,7 @@ kubectl get jobs
 
 Run the following command to view the pod and its logs created by the job:
 
-~~~
+~~~{.bash caption=">_"}
 kubectl get pods
 kubectl logs <name of the pod>
 ~~~
@@ -124,7 +124,7 @@ Additionally, when you create a job in Kubernetes, this job runs to completion e
 
 To see this in action, delete the job you created above `kubectl delete job hello-world` and edit the `job.yaml` file to look like the following:
 
-~~~
+~~~{.yaml caption="job.yaml"}
 # job.yaml
 apiVersion: batch/v1
 kind: Job
@@ -167,7 +167,7 @@ If the `completions` field is not specified, the default value is `1`. The job i
 
 Delete the current job and edit the `job.yaml` file to look like the following:
 
-~~~
+~~~{.yaml caption="job.yaml"}
 # job.yaml
 apiVersion: batch/v1
 kind: Job
@@ -196,7 +196,7 @@ The code above creates a Kubernetes Job with a `completions` value of 2. The `co
 
 Delete the current job and edit the `job.yaml` file to look like the following:
 
-~~~
+~~~{.yaml caption="job.yaml"}
 #job.yaml
 apiVersion: batch/v1
 kind: Job
@@ -227,7 +227,7 @@ The `parallelism` field specifies the maximum number of pods that should be crea
 
 Delete the current job and edit the `job.yaml` file to look like the following:
 
-~~~
+~~~{.yaml caption="job.yaml"}
 #job.yaml
 apiVersion: batch/v1
 kind: Job
@@ -255,7 +255,7 @@ From the clip above, you can see that the job continues to create pods until it 
 
 Delete the job and edit the `job.yaml`  file to look like the following:
 
-~~~
+~~~{.yaml caption="job.yaml"}
 #job.yaml
 apiVersion: batch/v1
 kind: Job
@@ -280,7 +280,7 @@ Once you create this job, you should have the following output; which illustrate
 </div>
 
 <div class="wide">
-![Verifying backOffLimit for hello-world job]({{site.images}}{{page.slug}}/QHLMrMg.gif)
+![Verifying `backOffLimit` for hello-world job]({{site.images}}{{page.slug}}/QHLMrMg.gif)
 </div>
 
 #### ActiveDeadlineSeconds
@@ -289,7 +289,7 @@ Once you create this job, you should have the following output; which illustrate
 
 Delete the current job and edit the `job.yaml` file to look like the following:
 
-~~~
+~~~{.yaml caption="job.yaml"}
 #job.yaml
 apiVersion: batch/v1
 kind: Job
@@ -309,7 +309,7 @@ spec:
 In the code above, the `activeDeadlineSeconds` field is set to `15`, which specifies that the job should be automatically terminated if it has been running for more than 15 seconds.
 
 <div class="wide">
-![Verifying activeDeadlineSeconds for hello-world job]({{site.images}}{{page.slug}}/Xmihcfq.gif)
+![Verifying `activeDeadlineSeconds` for hello-world job]({{site.images}}{{page.slug}}/Xmihcfq.gif)
 </div>
 
 ## Creating and Managing CronJobs in Kubernetes
@@ -322,7 +322,7 @@ A CronJob manifest file in Kubernetes looks similar to a job manifest file but w
 
 Create a *yaml* file and paste in the following configuration settings, this tutorial calls this file, `cron-job.yaml`:
 
-~~~
+~~~{.yaml caption="cron-job.yaml"}
 # cron-job.yaml
 apiVersion: batch/v1
 kind: CronJob
@@ -347,7 +347,7 @@ The job to be run is defined in the *jobTemplate* section of the CronJob spec. T
 
 Execute the following `kubectl` command to create this CronJob:
 
-~~~
+~~~{.bash caption=">_"}
 kubectl apply -f cron-job.yaml
 ~~~
 
@@ -363,7 +363,7 @@ Just like jobs, CronJobs also have several specifications that can be customized
 
 To illustrate the ***successfulJobHistoryLimit*** and ***failedJobsHistoryLimit*** specifications, delete the CronJob `kubectl delete cronjob hello-kubernetes` and edit the `cron-job.yaml` file to look like the following:
 
-~~~
+~~~{.yaml caption="cron-job.yaml"}
 # cron-job.yaml
 apiVersion: batch/v1
 kind: CronJob
@@ -401,7 +401,7 @@ ConcurrencyPolicy specifies how the CronJob handles concurrent job execution. **
 
 To manage concurrency policies, the CronJob manifest file is expected to look like the following:
 
-~~~
+~~~{.yaml caption="cron-job.yaml"}
 # cron-job.yaml
 apiVersion: batch/v1
 kind: CronJob
@@ -440,7 +440,7 @@ Suspending a CronJob can be done using `kubectl apply` or `patch` commands. This
 
 To suspend this CronJob, edit the `cron-job.yaml` file to look like the following:
 
-~~~
+~~~{.yaml caption="cron-job.yaml"}
 # cron-job.yaml
 apiVersion: batch/v1
 kind: CronJob
