@@ -4,6 +4,7 @@ categories:
   - Tutorials
 toc: true
 author: Ifedayo Adesiyan
+editor: Mustapha Ahmad Ayodeji
 
 internal-links:
  - Golang
