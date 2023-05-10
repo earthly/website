@@ -4,6 +4,7 @@ categories:
   - Tutorials
 toc: true
 author: Ndafara Tsamba
+editor: Bala Priya C
 
 internal-links:
  - CMake
