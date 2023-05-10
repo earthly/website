@@ -4,6 +4,7 @@ categories:
   - Tutorials
 toc: true
 author: Adeyinka Adegbenro
+editor: Mustapha Ahmad Ayodeji
 
 internal-links:
  - Bazel
