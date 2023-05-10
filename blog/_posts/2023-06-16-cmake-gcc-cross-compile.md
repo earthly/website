@@ -4,6 +4,7 @@ categories:
   - Tutorials
 toc: true
 author: Rubaiat Hossain
+editor: Bala Priya C
 
 internal-links:
  - CMake
