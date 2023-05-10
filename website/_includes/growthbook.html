@@ -25,10 +25,10 @@
     // Wait for features to be available
     gb.loadFeatures({ autoRefresh: true, timeout: 2000 }).then(() => {
       // console.log("Features loaded");
+      /*
       if(document.getElementById("nav-cta-button-copy-control")){
         //console.log("control element rendered");
         
-        // Gavin, 20230502: Added for homepage-and-nav-cta-button-copy test
         const ctaOpt = gb.getFeatureValue("homepage-and-nav-cta-button-copy", 0);
         switch(ctaOpt) {
           case 1:
@@ -64,7 +64,7 @@
             document.getElementById("homepage-cta-button-copy-test1").style.display = "none";
             document.getElementById("homepage-cta-button-copy-test2").style.display = "none";
         }
-      }
+      }*/
     });
   });
 </script>
