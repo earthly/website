@@ -8,10 +8,10 @@
     - Difficult to parallelize
 
 - title: Slow Builds
-  headline: More than half of CI/CD run time is spent re-executing things that haven't changed.
+  headline: More than half of CI/CD run time is spent reexecuting things that haven't changed.
   points:
     - Reinstalls dependencies every time
-    - Unnecessary task re-execution
+    - Unnecessary task reexecution
     - Ineffective caching
     - Sandboxed CI environments sacrifice speed
 
