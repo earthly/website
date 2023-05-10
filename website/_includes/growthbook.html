@@ -1,8 +1,8 @@
 <script src="https://cdn.jsdelivr.net/npm/@growthbook/growthbook/dist/bundles/index.js"></script>
 <script>
   // Uncomment for testing
-  //var earthlyID = uuidv4();
-  var earthlyID = getAnalyticCookie();
+  var earthlyID = uuidv4();
+  //var earthlyID = getAnalyticCookie();
 
   // Create a GrowthBook instance
   const gb = new growthbook.GrowthBook({
@@ -25,46 +25,23 @@
     // Wait for features to be available
     gb.loadFeatures({ autoRefresh: true, timeout: 2000 }).then(() => {
       // console.log("Features loaded");
-      /*
-      if(document.getElementById("nav-cta-button-copy-control")){
+      if(document.getElementById("homepage-hero-repeatable-vs-consistent-control")){
         //console.log("control element rendered");
         
-        const ctaOpt = gb.getFeatureValue("homepage-and-nav-cta-button-copy", 0);
-        switch(ctaOpt) {
-          case 1:
-            document.getElementById("nav-cta-button-copy-control").style.display = "none";
-            document.getElementById("nav-cta-button-copy-test1").style.display = "inline-flex";
-            document.getElementById("nav-cta-button-copy-test2").style.display = "none";
-            document.getElementById("nav-mobile-cta-button-copy-control").style.display = "none";
-            document.getElementById("nav-mobile-cta-button-copy-test1").style.display = "flex";
-            document.getElementById("nav-mobile-cta-button-copy-test2").style.display = "none";
-            document.getElementById("homepage-cta-button-copy-control").style.display = "none";
-            document.getElementById("homepage-cta-button-copy-test1").style.display = "inline-block";
-            document.getElementById("homepage-cta-button-copy-test2").style.display = "none";
-            break;
-          case 2:
-            document.getElementById("nav-cta-button-copy-control").style.display = "none";
-            document.getElementById("nav-cta-button-copy-test1").style.display = "none";
-            document.getElementById("nav-cta-button-copy-test2").style.display = "inline-flex";
-            document.getElementById("nav-mobile-cta-button-copy-control").style.display = "none";
-            document.getElementById("nav-mobile-cta-button-copy-test1").style.display = "none";
-            document.getElementById("nav-mobile-cta-button-copy-test2").style.display = "flex";
-            document.getElementById("homepage-cta-button-copy-control").style.display = "none";
-            document.getElementById("homepage-cta-button-copy-test1").style.display = "none";
-            document.getElementById("homepage-cta-button-copy-test2").style.display = "inline-block";
-            break;
-          default:
-            document.getElementById("nav-cta-button-copy-control").style.display = "inline-flex";
-            document.getElementById("nav-cta-button-copy-test1").style.display = "none";
-            document.getElementById("nav-cta-button-copy-test2").style.display = "none";
-            document.getElementById("nav-mobile-cta-button-copy-control").style.display = "flex";
-            document.getElementById("nav-mobile-cta-button-copy-test1").style.display = "none";
-            document.getElementById("nav-mobile-cta-button-copy-test2").style.display = "none";
-            document.getElementById("homepage-cta-button-copy-control").style.display = "inline-block";
-            document.getElementById("homepage-cta-button-copy-test1").style.display = "none";
-            document.getElementById("homepage-cta-button-copy-test2").style.display = "none";
+        // Gavin, 20230510: Added for homepage-hero-repeatable-vs-consistent experiment
+        const repVsConsOpt = gb.isOn("homepage-hero-repeatable-vs-consistent")
+        if(repVsConsOpt) {
+          document.getElementById("homepage-hero-repeatable-vs-consistent-control").style.display = "none";
+          document.getElementById("homepage-hero-repeatable-vs-consistent-test").style.display = "block";
+          document.getElementById("homepage-cta-repeatable-vs-consistent-control").style.display = "none";
+          document.getElementById("homepage-cta-repeatable-vs-consistent-test").style.display = "block";
+        } else {
+          document.getElementById("homepage-hero-repeatable-vs-consistent-control").style.display = "block";
+          document.getElementById("homepage-hero-repeatable-vs-consistent-test").style.display = "none";
+          document.getElementById("homepage-cta-repeatable-vs-consistent-control").style.display = "block";
+          document.getElementById("homepage-cta-repeatable-vs-consistent-test").style.display = "none";
         }
-      }*/
+      }
     });
   });
 </script>
