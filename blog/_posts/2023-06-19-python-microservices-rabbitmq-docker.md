@@ -58,7 +58,7 @@ Click the *All instances* dropdown, then click the *Create new instance* button:
 
 <div class="wide">
 ![CloudAMQP instance]({{site.images}}{{page.slug}}/DwhVciY.png)
-</div>\
+</div>
 
 From there, we can create a free instance and get its URL.
 
@@ -66,7 +66,7 @@ To get the instance URL, click on the instance created and copy the URL from the
 
 <div class="wide">
 ![CloudAMQP overview]({{site.images}}{{page.slug}}/Xn5Zji3.png)
-</div>\
+</div>
 
 Later in this article, We will use this URL provided by CloudAMQP to connect the microservice to the message queue to send or receive messages.
 
@@ -81,7 +81,7 @@ Finally, we will create Docker and Docker compose configurations for running the
 
 We will first start with the Producer. The following is the code that sends messages from the Django microservice. We can get this going by copying the following code from the *django-microservice/app/producer.py*:
 
-~~~
+~~~{.python caption="producer.py"}
 import pika, json
 
 params = pika.URLParameters('amqps://tyfodnmd:t0Ps2Jnw97Epl3YNe67zm2mjdDdir5Y8@rat.rmq2.cloudamqp.com/tyfodnmd')
@@ -93,7 +93,10 @@ channel = connection.channel()
 
 def publish(method, body):
     properties = pika.BasicProperties(method)
-    channel.basic_publish(exchange='', routing_key='django', body=json.dumps(body), properties=properties) # routing key here must match the queue name in the consumer of the flask app
+    channel.basic_publish(exchange='', routing_key='django', \
+    body=json.dumps(body), properties=properties) 
+    # routing key here must match the queue name in the consumer\
+    # of the flask app
 ~~~
 
 > Please be sure to replace the value of `params` with the URL we got from CloudAMQP.
@@ -104,14 +107,14 @@ It then creates a `BlockingConnection` and a `channel` object. The `BlockingConn
 
 The `publish` function accepts a `message` and a `body` argument. It handles the publishing of messages with the provided `method` and `body`. The `body` argument represents the message or data to be published and the `method` argument is used to set the properties of the message.
 
- The `body` is serialized to JSON format before being sent to channel with the `'main'` routing key.
+The `body` is serialized to JSON format before being sent to channel with the `'main'` routing key.
 
 Now we will call this producer in the `create`, `update` and `destroy` methods of our `RecipeView` class in the [*view.py*](https://github.com/khabdrick/recipe-app/blob/master/django-microservice/app/views.py) file. This is so that RabbitMQ can receive the messages when it is sent from the [viewset actions](https://www.django-rest-framework.org/api-guide/viewsets/#viewset-actions).
 
 Now, when an action takes place in `RecipeView`, RabbitMQ will be notified through this producer.
 To do this, update our *django-microservice/app/views.py* file to look like the following:
 
-~~~
+~~~{.python caption="views.py"}
 ...
 from .producer import publish
 
@@ -138,7 +141,7 @@ In the code above, we added the `publish()` function (which we created earlier) 
 
 For the Django microservice consumer, paste the following code in *django_microservice/consumer.py* to add a comment to the specified recipe. The data for the comment text and recipe ID is sent from the Flask microservice:
 
-~~~
+~~~{.python caption="consumer.py"}
 import pika, json, os, django
 from django.http import JsonResponse
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "recipe.settings")
@@ -152,7 +155,8 @@ connection = pika.BlockingConnection(params)
 
 channel = connection.channel()
 
-channel.queue_declare(queue='flask') # this will match the routing key in the producer of the flask app
+channel.queue_declare(queue='flask') # this will match the 
+# routing key in the producer of the flask app
 
 
 def callback(ch, method, properties, body):
@@ -168,7 +172,8 @@ def callback(ch, method, properties, body):
     print('Added a comment')
 
 
-channel.basic_consume(queue='flask', on_message_callback=callback, auto_ack=True)
+channel.basic_consume(queue='flask', on_message_callback=callback, \
+auto_ack=True)
 
 print('Started Consuming')
 
@@ -198,7 +203,7 @@ Docker allows developers to package the application, including its dependencies 
 
 To Dockerize our application, add the following configuration in *django_microservice/Dockerfile*. The following code initializes a Python Docker image that the Django microservice will run on and installs the necessary dependencies. This Dockerfile will be the base for the Django server and the RabbitMQ server:
 
-~~~
+~~~{.dockerfile caption="Dockerfile"}
 FROM python:3.7
 
 ENV PYTHONUNBUFFERED 1
@@ -211,7 +216,7 @@ RUN pip install -r requirements.txt
 
 Now, we can create the Docker Compose configuration by adding the following code in *django_microservice/docker-compose.yaml.* The following code uses the Dockerfile we created earlier to run the Django service. The `python -u consumer.py` command runs the *consumer.py* script that listen for messages that are sent from the Flask service. We also set the configuration to set up and run the PostgreSQL database.
 
-~~~
+~~~{.yaml caption="docker-compose.yaml"}
 version: '3.8'
 services:
   django:
@@ -259,7 +264,7 @@ Finally, we will develop the Docker and Docker compose configurations for runnin
 
 We will start with the Producer. The following is the initial code that receives a message from the Django microservice. We can get this going by adding the following code in *flask_microservice/producer.py*:
 
-~~~
+~~~{.python caption="producer.py"}
 import pika, json
 
 params = pika.URLParameters('amqps://tyfodnmd:t0Ps2Jnw97Epl3YNe67zm2mjdDdir5Y8@rat.rmq2.cloudamqp.com/tyfodnmd') 
@@ -270,7 +275,8 @@ channel = connection.channel()
 
 def publish(method, body):
     properties = pika.BasicProperties(method)
-    channel.basic_publish(exchange='', routing_key='flask', body=json.dumps(body), properties=properties)
+    channel.basic_publish(exchange='', routing_key='flask', \
+    body=json.dumps(body), properties=properties)
 ~~~
 
 > Please be sure to replace the value of `params` with the URL we got from CloudAMQP.
@@ -279,7 +285,7 @@ The code is similar to the `producer` code in the Django microservice, however, 
 
 The data we need to publish to the Django microservice is the recipe comment data, so we will add the `publish()`  function to the `comment()` function in the *flask_microservice/main.py* file:
 
-~~~
+~~~{.python caption="main.py"}
 ...
 
 from producer import publish
@@ -310,7 +316,7 @@ We will create a consumer that gets the published data from the Django microserv
 
 Add the following code in the *consumer.py* of the Flask microservice:
 
-~~~
+~~~{.python caption="consumer.py"}
 import pika, json
 
 from main import Recipe, db
@@ -321,7 +327,8 @@ connection = pika.BlockingConnection(params)
 
 channel = connection.channel()
 
-channel.queue_declare(queue='django') # this must match the routing key of the Django microservice 
+channel.queue_declare(queue='django') # this must match the 
+# routing key of the Django microservice 
 
 
 def callback(ch, method, properties, body):
@@ -330,7 +337,9 @@ def callback(ch, method, properties, body):
     print(data)
 
     if properties.content_type == 'recipe_created':
-        recipe = Recipe(id=data['id'], title=data['title'], time_minutes=data['time_minutes'], price=data['price'], description=data['description'], ingredients=data['ingredients'])
+        recipe = Recipe(id=data['id'], title=data['title'], \
+        time_minutes=data['time_minutes'], price=data['price'], \
+        description=data['description'], ingredients=data['ingredients'])
         db.session.add(recipe)
         db.session.commit()
         print('recipe Created')
@@ -352,7 +361,8 @@ def callback(ch, method, properties, body):
         print('recipe Deleted')
 
 
-channel.basic_consume(queue='django', on_message_callback=callback, auto_ack=True)
+channel.basic_consume(queue='django', on_message_callback=callback, \
+auto_ack=True)
 
 print('Started Consuming')
 
@@ -369,7 +379,7 @@ If the content type is `recipe_created`, a new recipe object is created and adde
 
 The Dockerfile for the Flask side is the same as the Django. So, just add the following code in *flask_microservice/Dockerfile*:
 
-~~~
+~~~{.dockerfile caption="Dockerfile"}
 FROM python:3.7
 
 ENV PYTHONUNBUFFERED 1
@@ -382,7 +392,7 @@ RUN pip install -r requirements.txt
 
 The Docker compose configuration here will run the Flask, PostgreSQL, and RabbitMQ servers at once. We can get this done by adding the following code in *flask_microservice/docker-compose.yaml*:
 
-~~~
+~~~{.yaml caption="docker-compose.yaml"}
 version: '3.8'
 services:
   flask:
@@ -426,13 +436,13 @@ Let us first build the Docker images for the project.
 
 Build the Django microservice by running the following in the *django_microservice* directory:
 
-~~~
+~~~{.bash caption=">_"}
 docker compose build
 ~~~
 
 We can build the Flask microservice by running the following in the *flask_microservice* directory:
 
-~~~
+~~~{.bash caption=">_"}
 docker compose build
 ~~~
 
@@ -440,27 +450,27 @@ Before we run the application, we need to run migrations and create a superuser 
 
 Navigate to the *django_microservice/* directory and run the migration commands for the database:
 
-~~~
+~~~{.bash caption=">_"}
 docker compose run django sh -c "python manage.py makemigrations" 
 docker compose run django sh -c "python manage.py migrate"
 ~~~
 
 Then run the following to create a superuser:
 
-~~~
+~~~{.bash caption=">_"}
 docker compose run django sh -c "python manage.py createsuperuser"
 ~~~
 
 Now run the migration commands for the Flask microservice in *flask_microservice/* directory:
 
-~~~
+~~~{.bash caption=">_"}
 docker compose run flask sh -c "python manager.py db init"
 docker compose run flask sh -c "python manager.py db migrate"
 ~~~
 
 Now run the Django microservice with the following command and access the application on the browser with *<http://0.0.0.0:8000/admin/>*:
 
-~~~
+~~~{.bash caption=">_"}
 docker compose up
 ~~~
 
@@ -468,31 +478,39 @@ docker compose up
 
 Run the Flask microservice with the following command while in the *flask_microservice* directory:
 
-~~~
+~~~{.bash caption=">_"}
 docker compose up
 ~~~
 
 On another terminal window, run the following [cURL command](https://curl.se/docs/manpage.html) to create a new recipe:
 
-~~~
-curl -H 'Content-Type: application/json'  -d  '{"title":"French toast","time_minutes":35, "price":45,"description":"This is the description", "ingredients":"this is ingredient"}'  -X POST http://0.0.0.0:8000/recipe
+~~~{.bash caption=">_"}
+curl -H 'Content-Type: application/json'  -d \ 
+'{"title":"French toast","time_minutes":35, "price":45, \
+"description":"This is the description", \
+"ingredients":"this is ingredient"}'  \
+-X POST http://0.0.0.0:8000/recipe
 ~~~
 
 Output:
 
-~~~
-{"id":23,"title":"French toast","time_minutes":35,"price":"45.00","description":"This is the description","ingredients":"this is ingredient"}
+~~~{ caption="Output"}
+{"id":23,"title":"French toast","time_minutes":35,\
+"price":"45.00","description":"This is the description",\
+"ingredients":"this is ingredient"}
 ~~~
 
 We can now comment by running the following command:
 
-~~~
-curl -X POST http://127.0.0.1:5005/api/comment -H 'Accept: application/json' -H 'Content-Type: application/json' -d '{"recipe_id": 23, "comment_text":"This recipe is time efficient :)"}'
+~~~{.bash caption=">_"}
+curl -X POST http://127.0.0.1:5005/api/comment -H \
+'Accept: application/json' -H 'Content-Type: application/json' \
+-d '{"recipe_id": 23, "comment_text":"This recipe is time efficient :)"}'
 ~~~
 
 Output:
 
-~~~
+~~~{ caption="Output"}
 {
     "message": "success"
 }
