@@ -1,7 +1,6 @@
 presets:
   default:
     link_source: false
-    # fallback_width: 800
     fallback_format: original
     noscript: false
     quality: 100
@@ -30,7 +29,7 @@ presets:
 
   2up-lazy:
     formats: [webp, original]
-    widths: [600, 800]
+    widths: [750, 1500]
     crop: '3:1'
     keep: center
     markup: data_auto
@@ -40,7 +39,7 @@ presets:
 
   header:
     formats: [webp, png]
-    widths: [400, 600, 800, 1000, 1200]
+    widths: [750, 1500]
     quality: 100
     format_quality:
       webp: 100

@@ -7,7 +7,6 @@ author: Vlad
 topic: earthly
 funnel: 3
 ---
-
 *Hello world! We have partnered up with some [cool people in Silicon Valley](/blog/new-fundings-at-earthly/) [^1] to fix the world of CI. So today we are launching [Earthly CI](https://earthly.dev/signup/earthly-ci), the world's first CI/CD solution that merges together a CI and a build system. A more fine-grained understanding of the build allows Earthly CI to run faster than a CI ever could before. And it's not an incremental improvement. It's a dramatic improvement. We're talking 100% to 2,000% faster. Here's how we did it.*
 
 ## But Why??
