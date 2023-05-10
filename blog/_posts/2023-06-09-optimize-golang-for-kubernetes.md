@@ -78,13 +78,13 @@ Google developed [Golang](https://go.dev/doc/install), sometimes known as "Go", 
 The deployment, scaling, and management of containerized applications are all automated by the open-source container orchestration platform [Kubernetes](https://kubernetes.io/releases/download/). By abstracting away the underlying infrastructure's specifics and facilitating effective resource usage, scalability, and fault tolerance, it offers a flexible and scalable framework for deploying and managing containerized applications across a cluster of nodes.
 
 <div class="wide">
-![Image of a docker container]({{site.images}}{{page.slug}}/2Kf7IWF.png)
+![A Docker container]({{site.images}}{{page.slug}}/2Kf7IWF.png)
 </div>
 
 Golang applications are generally packaged as Docker containers when they are deployed on Kubernetes. These segregated, lightweight environments isolate the program and all of its dependencies. These containers may be simply deployed and managed by Kubernetes, enabling effective resource use and automatic scaling according to the requirements of the application.
 
 <div class="wide">
-![Image of Dockerfile and Kubernetes pod lifecycle]({{site.images}}{{page.slug}}/652Ncpc.png)
+![Dockerfile to Kubernetes pod lifecycle]({{site.images}}{{page.slug}}/652Ncpc.png)
 </div>
 
 Golang applications running on Kubernetes can take advantage of several features that improve performance, scalability, and resilience. For instance, Kubernetes enables the deployment of numerous instances of the same application across various cluster nodes to disperse the load and improve [availability](https://www.fiixsoftware.com/glossary/system-availability/). The deployment, upkeep, and scalability of Golang programs can also be enhanced by [load balancing](https://kubernetes.io/docs/concepts/services-networking/ingress/#load-balancing), [service discovery](https://kubernetes.io/docs/concepts/services-networking/service/), and [rolling update tools](https://kubernetes.io/docs/tutorials/kubernetes-basics/update/update-intro/) in Kubernetes.
@@ -371,7 +371,7 @@ Connection pooling is a technique that allows you to reuse database connections 
 5. **Utilize Health Checks and Readiness Probes**
 
 <div class="wide">
-![Image of health check and readiness probe.]({{site.images}}{{page.slug}}/DQx6fZD.png)
+![Health check and readiness probe.]({{site.images}}{{page.slug}}/DQx6fZD.png)
 </div>
 
 Kubernetes provides health checks and readiness probes that allow you to monitor the status of your containers and determine their readiness to receive traffic. By utilizing these features, you can ensure that only healthy and ready containers receive traffic, reducing server load caused by unhealthy or unready containers. You can implement custom health checks and readiness probes in your Golang application to provide accurate information about its status.
