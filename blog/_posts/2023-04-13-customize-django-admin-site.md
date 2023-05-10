@@ -4,6 +4,7 @@ categories:
   - Tutorials
 toc: true
 author: Chepkirui Dorothy
+editor: Mustapha Ahmad Ayodeji
 
 internal-links:
  - Django

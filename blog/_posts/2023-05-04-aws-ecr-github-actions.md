@@ -4,6 +4,7 @@ categories:
   - Tutorials
 toc: true
 author: Rose Chege
+editor: Bala Priya C
 
 internal-links:
  - CI/CD

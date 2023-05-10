@@ -270,6 +270,7 @@ Bala Priya C:
     name    : "Bala Priya C"
     bio     : "Bala is a technical writer who enjoys creating long-form content. Her areas of interest include math and programming. She shares her learning with the developer community by authoring tutorials, how-to guides, and more."
     avatar  : "/assets/images/authors/bala-priya.jpg"
+    home    : "/authors/bala/"
 Hrittik Roy:
     name    : "Hrittik Roy"
     bio     : "Hrittik is a writer and a software engineer who specializes in cloud native ecosystems. He has worked on many large-scale projects and has experience in both the technical and the business aspects of cloud computing. He is a frequent speaker at conferences and has written numerous articles on software development and distributed systems. In his free time, he likes to go for long walks."
@@ -442,3 +443,7 @@ Hitesh Jethva:
     name    : "Hitesh Jethva"
     bio     : "Hitesh Jethva is a Linux system administrator and technical writer with over 15 years of experience in Linux, DevOps, and Kubernetes. He’s an active blogger and technical writer who loves Linux, Docker, DevOps, and the cloud."
     avatar  : "/assets/images/authors/hitesh-jethva.JPG"
+Adeyinka Adegbenro:
+    name    : "Adeyinka Adegbenro"
+    bio     : "Adeyinka is a software engineer based in Lagos, Nigeria, currently at BriteCore. She loves researching and writing in-depth technical content."
+    avatar  : "/assets/images/authors/adeyinka_adegbenro.jpg"
