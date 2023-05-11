@@ -173,15 +173,15 @@ double-image() { # Double size of image. Using imagemagick
 }
 
 jpg-large-images() { # Convert png to jpg for large images
-   find ./blog/assets/ -type f  -size +5400k -print0 | xargs -0 -I {} sips -s format jpeg {}
+   find ./blog/assets/ -type f  -size +3400k -print0 | xargs -0 -I {} sips -s format jpeg {}
 }
 
 compress-large-images() { # Find large images and compress them
-  find  ./blog/assets/images -type f -size +4M | while IFS= read -r file; do
+  find  ./blog/assets/images -type f -size +3400k | while IFS= read -r file; do
     if file --mime-type "$file" | grep -q 'image/png'; then
       echo "Compressing PNG file: $file"
       tmp_file="$(mktemp)"
-      pngquant --force --quality=65-80 -o "$tmp_file" "$file" && mv "$tmp_file" "$file"
+      pngquant --verbose --skip-if-larger --speed 1 --force --quality=75-90 -o "$tmp_file" "$file" && mv "$tmp_file" "$file"
     elif file --mime-type "$file" | grep -q 'image/jpeg'; then
       echo "Compressing JPEG file: $file"
       jpegoptim --max=80 --overwrite "$file"
