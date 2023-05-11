@@ -172,6 +172,22 @@ double-image() { # Double size of image. Using imagemagick
     mv "$1_new.png" "$1"
 }
 
+jpg-large-images() { # Convert png to jpg for large images
+   find ./blog/assets/ -type f  -size +5400k -print0 | xargs -0 -I {} sips -s format jpeg {}
+}
+
+compress-large-images() { # Find large images and compress them
+  find  ./blog/assets/images/authors -type f -size +4M | while IFS= read -r file; do
+    if file --mime-type "$file" | grep -q 'image/png'; then
+      echo "Compressing PNG file: $file"
+      pngquant --quality=65-80 --force --ext .png "$file"
+    elif file --mime-type "$file" | grep -q 'image/jpeg'; then
+      echo "Compressing JPEG file: $file"
+      jpegoptim --max=80 --overwrite "$file"
+    fi
+  done
+}
+
 next-date(){ # Get Next date for a post
 # Gets all Tues, Wed, Thurs dates from today that don't have posts
     os="$(uname -a)"
