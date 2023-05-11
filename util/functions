@@ -177,7 +177,7 @@ jpg-large-images() { # Convert png to jpg for large images
 }
 
 compress-large-images() { # Find large images and compress them
-  find  ./blog/assets/images/authors -type f -size +4M | while IFS= read -r file; do
+  find  ./blog/assets/images -type f -size +4M | while IFS= read -r file; do
     if file --mime-type "$file" | grep -q 'image/png'; then
       echo "Compressing PNG file: $file"
       tmp_file="$(mktemp)"
