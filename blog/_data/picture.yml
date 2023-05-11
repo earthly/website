@@ -39,7 +39,7 @@ presets:
 
   header:
     formats: [webp, png]
-    widths: [750, 1500]
+    widths: [750, 1500, 2560]
     quality: 100
     format_quality:
       webp: 100

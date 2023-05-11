@@ -167,8 +167,9 @@ list-images() {
 }
 
 double-image() { # Double size of image. Using imagemagick
-    # Better to get a high quality image
-    mogrify -colorspace RGB -resize 200% "$1"
+    ./util/superresolution/realesrgan-ncnn-vulkan -i "$1" -o "$1_new.png" -m "./util/superresolution/models" -s 2
+    rm "$1"
+    mv "$1_new.png" "$1"
 }
 
 next-date(){ # Get Next date for a post
