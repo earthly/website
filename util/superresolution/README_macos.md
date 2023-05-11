@@ -1,3 +1,5 @@
+From https://github.com/xinntao/Real-ESRGAN
+
 # RealESRGAN
 
 We have provided the following models:
