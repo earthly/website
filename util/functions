@@ -180,7 +180,8 @@ compress-large-images() { # Find large images and compress them
   find  ./blog/assets/images/authors -type f -size +4M | while IFS= read -r file; do
     if file --mime-type "$file" | grep -q 'image/png'; then
       echo "Compressing PNG file: $file"
-      pngquant --quality=65-80 --force --ext .png "$file"
+      tmp_file="$(mktemp)"
+      pngquant --force --quality=65-80 -o "$tmp_file" "$file" && mv "$tmp_file" "$file"
     elif file --mime-type "$file" | grep -q 'image/jpeg'; then
       echo "Compressing JPEG file: $file"
       jpegoptim --max=80 --overwrite "$file"
