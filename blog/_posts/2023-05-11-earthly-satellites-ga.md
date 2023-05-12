@@ -50,7 +50,7 @@ I could go on and on about how Earthly Satellites works and why it's great, but,
 
 {% include quotes/earthly_satellites_ga/ses.html %}
 
-OCD is a global health epidemic in the sense that 2% of the world's population is estimated to have OCD. We offer online Zoom therapy specifically tailored for people that have OCD. We're different from the Talkspaces and BetterHelps of the world by being hyper-focused on OCD and making people with OCD better. We provide a particular type of therapy, called exposure and response prevention therapy, which has been clinically shown to be the most effective treatment for people who have OCD.
+OCD is a global health epidemic in the sense that 2% of the world's population is estimated to have OCD. Our mission at NOCD is to restore hope for people with OCD through better awareness and treatment. We provide a particular type of therapy, called exposure and response prevention therapy, which has been clinically shown to be the most effective treatment for people who have OCD.
 
 {% include quotes/end.html %}
 
@@ -97,17 +97,7 @@ When you're using a public service like GitHub Actions or Semaphore or Circle CI
 {% include quotes/end.html %}
 
 <!-- vale off -->
-### When did NOCD start using Earthly Satellites?
-<!-- vale on -->
-
-{% include quotes/earthly_satellites_ga/ses.html %}
-
-October 2022.
-
-{% include quotes/end.html %}
-
-<!-- vale off -->
-### What initially attracted you to Satellites?
+### What initially attracted you to Earthly Satellites?
 <!-- vale on -->
 
 {% include quotes/earthly_satellites_ga/ses.html %}
