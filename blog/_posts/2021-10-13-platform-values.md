@@ -150,4 +150,4 @@ Note that these principles aren't meant as hard and fast rules - they are mainly
 
 If you're new, come give [Earthly a spin to experience Repeatable and Understandable builds](https://earthly.dev).
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom-cta.html %}

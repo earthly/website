@@ -7,8 +7,8 @@ githuburl: "https://github.com/earthly/earthly"
 twitter_username: earthlytech
 github_username:  earthly
 slack_url: "/slack"
-tagline: "Make CI/CD Super Simple"
-description: "Fast, repeatable CI/CD with an instantly familiar syntax – like Dockerfile and Makefile had a baby."
+tagline: "Make Builds Super Simple"
+description: "Fast, repeatable builds with an instantly familiar syntax – like Dockerfile and Makefile had a baby."
 include:
   - _redirects
 sass:

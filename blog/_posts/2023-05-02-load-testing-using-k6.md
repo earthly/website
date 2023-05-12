@@ -4,6 +4,7 @@ categories:
   - Tutorials
 toc: true
 author: Donald Le
+editor: Bala Priya C
 
 internal-links:
  - Testing
@@ -521,4 +522,4 @@ Ensuring your application works as expected is not enough. To retain users, you 
 
 To learn more about other types of testing that k6 provides such as [browser testing](https://k6.io/docs/testing-guides/load-testing-websites/) or [chaos testing](https://k6.io/blog/chaos-testing-microservices-with-xk6-disruptor/), please check out the [k6 documentation](https://k6.io/docs/).
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom-cta.html %}

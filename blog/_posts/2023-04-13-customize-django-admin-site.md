@@ -4,6 +4,7 @@ categories:
   - Tutorials
 toc: true
 author: Chepkirui Dorothy
+editor: Mustapha Ahmad Ayodeji
 
 internal-links:
  - Django
@@ -640,4 +641,4 @@ In this tutorial, you learn to customize the admin site by controlling field dis
 
 There is so much to customize in the Django admin. To fully delve into customizing the admin interface, visit the [Django documentation](https://docs.djangoproject.com/en/4.1/ref/contrib/admin/).
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom-cta.html %}

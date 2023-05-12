@@ -4,6 +4,7 @@ categories:
   - Tutorials
 toc: true
 author: Ashutosh Krishna
+editor: Mustapha Ahmad Ayodeji
 
 internal-links:
  - PyMongo
@@ -813,4 +814,4 @@ Finally, you learned about some advanced MongoDB queries, which can be used to p
 
 Overall, by mastering these concepts, you should be well-equipped to effectively work with [MongoDB](/blog/mongodb-docker) and build robust and efficient applications.
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom-cta.html %}

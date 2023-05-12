@@ -4,6 +4,7 @@ categories:
   - Tutorials
 toc: true
 author: Rose Chege
+editor: Mustapha Ahmad Ayodeji
 
 internal-links:
  - Optimization
@@ -301,4 +302,4 @@ Docker ensures you package your applications for easier portability across diffe
 
 Using these strategies, you managed to reduce the Docker image of 1.16GB to 162MB. You have learned the tools and tips that you need to use to reduce [Docker](/blog/rails-with-docker) image size to approximately 85.86%. I hope you found this post helpful.
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom-cta.html %}

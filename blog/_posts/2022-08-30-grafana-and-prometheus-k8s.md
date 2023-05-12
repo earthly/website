@@ -274,4 +274,4 @@ Follow the same steps to select dashboards for Kubernetes resources you want to 
 
 When using Kubernetes, monitoring the cluster is a good idea. Visualizing usage with a Prometheus and Grafana dashboard can be extremely beneficial because it reduces the workload of monitoring your cluster.
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom-cta.html %}

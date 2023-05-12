@@ -244,7 +244,7 @@ Great question. Earthly is a great piece of engineering, but what makes Earthly 
 
 Also, I just wanted to write up a list of great online programming streamers and explain why they are a valuable resource. But while you are here, take a moment to check out Earthly.
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom-cta.html %}
 
 [^1]: This example is not great, but it's hard to communicate examples of tacit knowledge easily. It's subjective and not formally expressed by definition.
 

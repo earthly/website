@@ -4,6 +4,7 @@ categories:
   - Tutorials
 toc: true
 author: Donald Le
+editor: Bala Priya C
 
 internal-links:
  - Python
@@ -451,4 +452,4 @@ In this article, you learned how to implement API testing using Playwright with 
 
 With hands-on written tests you practiced through the article, you can apply Playwright using Python for your next [API testing](/blog/continuous-testing-in-devops) project.
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom-cta.html %}

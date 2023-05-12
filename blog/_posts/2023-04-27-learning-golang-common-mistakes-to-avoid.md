@@ -4,6 +4,7 @@ categories:
   - Tutorials
 toc: true
 author: Ubaydah Abdulwasiu
+editor: Mustapha Ahmad Ayodeji
 
 internal-links:
  - Golang
@@ -926,4 +927,4 @@ In conclusion, Golang is a powerful and efficient programming language that can 
 
 Let's also remember to take advantage of the vast resources available online and in the Go community, as well as to practice and experiment with different code snippets and examples to improve our skills.
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom-cta.html %}

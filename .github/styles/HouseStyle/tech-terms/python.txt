@@ -106,3 +106,8 @@ asyncio
 Authlib
 authlib
 Dotenv
+
+Metaclasses
+metaclass
+metaclasses
+kwargs

@@ -212,4 +212,4 @@ In this article, you've gotten an overview of the Graviton processor architectur
 
 Companies around the world have used Graviton architecture to solve problems in their cloud workflows. Graviton isn't something that only benefits big companies, though—its high performance and low power consumption offer the flexibility to run cloud workflows of any size and take advantage of the savings Graviton provides.
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom-cta.html %}

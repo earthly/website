@@ -268,4 +268,4 @@ That being said, the practice of configuring builds for multiple application env
 
 Earthly is a build automation tool that works on top of popular CI platforms, like Travis CI, operating in the layer between language-specific tools (like Maven, Gradle, npm, pip, and Go Build) and the CI build specification. A tool like Earthly can give your build automation process the edge it needs when it comes to repeatability and portability.
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom-cta.html %}

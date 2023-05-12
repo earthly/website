@@ -4,6 +4,7 @@ categories:
   - Tutorials
 toc: true
 author: James Walker
+editor: Bala Priya C
 
 internal-links:
  - Container
@@ -337,4 +338,4 @@ Wait while Portainer pulls your images and creates your containers. The containe
 
 Portainer is ideal for many different use cases, from your local development workstation to production app monitoring. You can also use it to track containers and images used by CI/CD pipelines and build systems, preventing excess resources from accumulating on your Docker host.
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom-cta.html %}

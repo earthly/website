@@ -4,6 +4,7 @@ categories:
   - Tutorials
 toc: true
 author: Keanan Koppenhaver
+editor: Mustapha Ahmad Ayodeji
 
 internal-links:
  - Terraform
@@ -147,4 +148,4 @@ Now that you have a taste for automatically provisioning infrastructure, you cou
 
 And if you're looking to continue building out your automation pipeline, consider using [Earthly](https://earthly.dev), a continuous integration, continuous delivery (CI/CD) platform that runs everywhere. Earthly makes [CI/CD](/blog/ci-vs-cd) easy and [works natively with GitHub Actions](https://docs.earthly.dev/ci-integration/vendor-specific-guides/gh-actions-integration), so it couldn't be easier to get started.
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom-cta.html %}

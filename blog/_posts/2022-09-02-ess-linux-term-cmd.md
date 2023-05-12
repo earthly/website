@@ -484,4 +484,4 @@ This post went through many popular, powerful commands, including some that will
 
 When you're building an application, the best-practice approach is using a system to define your build. [Earthly](https://earthly.dev/) is a cacheable, Git-aware, parallelizable, and self-contained tool for defining build steps. It works with the tools you're already using and ensures that your builds will run the same way, no matter what they're running on.
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom-cta.html %}

@@ -4,6 +4,7 @@ categories:
   - Tutorials
 toc: true
 author: Mercy Bassey
+editor: Bala Priya C
 
 internal-links:
  - Kubernetes Secrets
@@ -527,4 +528,4 @@ See the following [guide](https://github.com/justmeandopensource/kubernetes/blob
 
 In this tutorial, you've learned all about securing secrets in Kubernetes, and you now know how to protect your sensitive information. You learned and understood the importance of enabling [encryption](/blog/encrypting-data-with-ssh-keys-and-golang) at rest, implementing role-based access control, and securing ETCD to ensure that your secrets remain safe. So go ahead and take control of your secrets, and keep them secure with confidence.
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom-cta.html %}

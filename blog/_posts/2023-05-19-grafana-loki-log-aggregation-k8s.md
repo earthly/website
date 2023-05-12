@@ -4,6 +4,7 @@ categories:
   - Tutorials
 toc: true
 author: Saka-Aiyedun Segun
+editor: Bala Priya C
 
 internal-links:
  - Aggregation
@@ -140,7 +141,9 @@ After adding the Grafana repository helm chart the next set is to use it to depl
 loki:
   enabled: true
   isDefault: true
+  {% raw %}
   url: http://{{(include "loki.serviceName" .)}}:{{ .Values.loki.service.port }}
+  {% endraw %}
   readinessProbe:
     httpGet:
       path: /ready
@@ -163,7 +166,9 @@ promtail:
     logLevel: info
     serverPort: 3101
     clients:
+{% raw %}
       - url: http://{{ .Release.Name }}:3100/loki/api/v1/push
+{% endraw %}
 
 grafana:
   enabled: true
@@ -320,4 +325,4 @@ In conclusion, Grafana Loki is a powerful and flexible log aggregation system th
 
 By leveraging a distributed architecture and a powerful query language, Grafana Loki provides organizations with a comprehensive log aggregation solution that can help them optimize their operations, improve their security, and make informed decisions. Whether you're a small business or a large enterprise, Grafana Loki is a tool you should consider adding to your toolkit.
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom-cta.html %}

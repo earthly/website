@@ -4,6 +4,7 @@ categories:
   - Tutorials
 toc: true
 author: Sriram Ramanujam
+editor: Bala Priya C
 
 internal-links:
  - Docker-Image
@@ -74,7 +75,9 @@ $ docker inspect --format='{% raw %}{{json .RootFS}}{% endraw %}' edc5a3f3b57b |
 ~~~
 
 ~~~{.bash caption=">_"}
+{% raw %}
 $ docker inspect --format='{{json .RootFS}}' d181adc2b1e1 | jq
+{% endraw %}
 ~~~
 
 ~~~{ caption="Output"}
@@ -390,4 +393,4 @@ In summary, understanding how Docker images are stored on the host machine is cr
 
 With this in-depth understanding of how [Docker](/blog/rails-with-docker) images are saved on the host machines, developers can better manage their Docker environments and resolve any problems that may arise. Further, developers may enhance their Docker processes and fully utilize the strength and adaptability of Docker containerization.
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom-cta.html %}

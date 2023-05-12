@@ -4,6 +4,7 @@ categories:
   - Tutorials
 toc: true
 author: Mercy Bassey
+editor: Bala Priya C
 
 internal-links:
  - YAML
@@ -475,4 +476,4 @@ In this tutorial, you have learned how to work with YAML using the Python progra
 
 As a next step, you may try converting [JSON to CSV](https://earthly.dev/blog/convert-to-from-json/).
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom-cta.html %}

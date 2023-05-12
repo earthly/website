@@ -4,6 +4,7 @@ categories:
   - Tutorials
 toc: true
 author: Mercy Bassey
+editor: Bala Priya C
 
 internal-links:
  - Kubernetes
@@ -551,4 +552,4 @@ I hope you understand how Helm is a helpful tool when working with Kubernetes. I
 - Deploy an Nginx [Ingress](/blog/k8s-networking) controller to handle browser requests to view the Mongo-Express UI over the internet using Helm, without configuring it all by yourself.
 As a next step, you can create and publish your own Helm chart.See the [Helm documentation](https://helm.sh/docs/chart_template_guide/getting_started/) to get started.
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom-cta.html %}

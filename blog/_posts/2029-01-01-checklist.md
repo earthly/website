@@ -22,7 +22,7 @@ internal-links:
 - [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links to other articles
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/cta2.html %}`
+- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
 - [ ] Raise PR
 
 ## Outside Article Checklist
@@ -35,4 +35,4 @@ internal-links:
 - [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/cta2.html %}`
+- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`

@@ -244,4 +244,4 @@ If you're ever unsure if you have any Codespaces running, you can see all your C
 
 We just started using Dev Containers and Codespaces at Earthly. They've allowed us to collaborate more easily with freelancers. One thing you lose with this set up is a lot of the customizations a developer might have on their own machine. Could be something as simple as losing your preferred command prompt, or no longer having access to aliases and custom scripts. There [are ways around this](https://docs.github.com/en/codespaces/customizing-your-codespace/personalizing-codespaces-for-your-account), but best leave that for another article.
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom-cta.html %}

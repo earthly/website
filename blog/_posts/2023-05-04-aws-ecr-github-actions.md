@@ -4,6 +4,7 @@ categories:
   - Tutorials
 toc: true
 author: Rose Chege
+editor: Bala Priya C
 
 internal-links:
  - CI/CD
@@ -433,4 +434,4 @@ Deploying applications to AWS ECR with a GitHub Actions CI/CD creates a reliable
 
 To further improve your [CI/CD pipelines](https://earthly.dev/blog/ci-vs-cd/), leverage other AWS services, such as [CodePipeline](https://aws.amazon.com/codedeploy/) and [CodeDeploy](https://aws.amazon.com/codepipeline/), and streamline your pipeline infrastructure.
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom-cta.html %}

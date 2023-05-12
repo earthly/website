@@ -4,6 +4,7 @@ categories:
   - Tutorials
 toc: true
 author: Muhammed Ali
+editor: Bala Priya C
 
 internal-links:
  - Zip File
@@ -463,4 +464,4 @@ srcFile.Close()
 
 In this tutorial, we learned how to use the `archive/zip` package, which is built into the Go standard library, to generate and extract compressed zip files, decompress zip archives, and create zip files using `compress/gzip`. We learned how to add files to an existing zip file and finally how to extract content from zip files. As a next step, you may try using what you've learned in your next project.
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom-cta.html %}

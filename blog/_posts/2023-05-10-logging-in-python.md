@@ -4,6 +4,7 @@ categories:
   - Tutorials
 toc: true
 author: Ashutosh Krishna
+editor: Mustapha Ahmad Ayodeji
 
 internal-links:
  - Pyhton
@@ -857,4 +858,4 @@ In this article, you learned the basics of logging in Python, including setting 
 
 In addition, the article also discussed the Python logging hierarchy, which provides a way to organize loggers in a hierarchy and control how log messages are propagated up the hierarchy. The article also highlighted best practices for logging in Python, such as using meaningful log messages, logging at the appropriate level, using custom loggers, and rotating logs to save disk space. By following best practices and leveraging the advanced features of the logging module, developers can ensure that their applications are well-architected and easily maintainable.
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom-cta.html %}

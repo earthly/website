@@ -4,6 +4,7 @@ categories:
   - Tutorials
 toc: true
 author: Mercy Bassey
+editor: Bala Priya C
 
 internal-links:
  - Kubernetes
@@ -668,4 +669,4 @@ You then learned how to go through the process of authenticating your Kubernetes
 
 Now that you have a good knowledge of Kubernetes secrets, you can implement it in your application and deploy safely to Kubernetes.
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom-cta.html %}

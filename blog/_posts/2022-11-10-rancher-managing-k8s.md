@@ -4,6 +4,7 @@ categories:
   - Tutorials
 toc: true
 author: Damaso Sanoja
+editor: Bala Priya C
 
 internal-links:
  - Rancher
@@ -343,4 +344,4 @@ In this article, you learned what Rancher is and how it can help you better mana
 
 Another tool that is as flexible and easy to use as Rancher is [Earthly](https://earthly.dev), the effortless [CI/CD](/blog/ci-vs-cd) framework that allows you to develop pipelines locally and run them anywhere.
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom-cta.html %}
