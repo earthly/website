@@ -48,7 +48,7 @@ In the upcoming section, you will learn about various caching strategies that ca
 
 ### Using Database Caching in Per-Site Cache Strategy
 
-Database Cache stores cached data in the database. This backend provides a reliable and persistent caching solution and can be further customized to use a specific database engine such as SQLite or Redis. To configure the Database Cache, you can add the following code to your `settings.py` file:
+Database cache stores cached data in the database. This backend provides a reliable and persistent caching solution and can be further customized to use a specific database engine such as SQLite or Redis. To configure the Database cache, you can add the following code to your `settings.py` file:
 
 ~~~{.python caption="settings.py"}
 CACHES = {
@@ -61,7 +61,7 @@ CACHES = {
 
 In the code snippet above, the `BACKEND` setting specifies the in-built caching backend (DatabaseCache) and the `LOCATION` setting specifies the name of the cache table as `cache_table` where all the cache data will be stored and retrieved. You can modify this setting to use a different table name.
 
-Your Cache Backend is now set up, to specify the target you have to make changes into the [`MIDDLEWARE` setting](https://docs.djangoproject.com/en/4.2/topics/http/middleware/) in the `settings.py` file:
+Your cache backend is now set up, to specify the target you have to make changes into the [`MIDDLEWARE` setting](https://docs.djangoproject.com/en/4.2/topics/http/middleware/) in the `settings.py` file:
 
 ~~~{.python caption="settings.py"}
 MIDDLEWARE = [
@@ -106,7 +106,7 @@ CACHES = {
 
 ~~~
 
-The above setting specifies the [`RedisCache`](https://docs.djangoproject.com/en/4.1/topics/cache/#redis) Backend and the Location where the Caches should be stored. In this case, Location uses port 6379 which is the default port where Redis runs.
+The above setting specifies the [`RedisCache`](https://docs.djangoproject.com/en/4.1/topics/cache/#redis) backend and the Location where the cache should be stored. In this case, Location uses port 6379 which is the default port where Redis runs.
 
 After completing the backend setup, the next step is to set the target for the per-view caching strategy. This strategy involves specifically selecting the views that need to be cached. It is particularly beneficial for websites that have content that changes frequently. Such content should not be cached to display the most up-to-date information on the website. By utilizing the per-view caching strategy, we can ensure that only the intended views are cached and that the website's visitors are provided with the latest information.
 
@@ -132,7 +132,7 @@ The above code snippet demonstrates the use of the `cache_page` decorator. First
 
 To validate the functionality of the implemented caching, ensure that your Django server is running and navigate to <http://127.0.0.1:8000/> in your web browser. You will observe that the time displayed in the navigation bar changes with every page refresh, indicating that the content is not cached.
 
-Next, visit the <http://127.0.0.1:8000/all> endpoint and refresh the page. You will notice that the time displayed in the navigation bar remains the same. This is because Django is caching this view for 60 seconds, as specified in the `cache_page` decorator. To confirm the caching, you can check the Cache section in the Django Debug Toolbar.
+Next, visit the <http://127.0.0.1:8000/all> endpoint and refresh the page. You will notice that the time displayed in the navigation bar remains the same. This is because Django is caching this view for 60 seconds, as specified in the `cache_page` decorator. To confirm the caching, you can check the cache section in the Django Debug Toolbar.
 
 <div class="wide">
 ![Working of per-view cache]({{site.images}}{{page.slug}}/kPk0kFW.png)
