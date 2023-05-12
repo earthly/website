@@ -75,16 +75,6 @@ We primarily used GitHub Actions with plain old Docker. And builds were notoriou
 {% include quotes/end.html %}
 
 <!-- vale off -->
-### When did NOCD start using Earthly?
-<!-- vale on -->
-
-{% include quotes/earthly_satellites_ga/ses.html %}
-
-February 2022.
-
-{% include quotes/end.html %}
-
-<!-- vale off -->
 ### What initially attracted you to Earthly?
 <!-- vale on -->
 
