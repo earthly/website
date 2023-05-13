@@ -38,19 +38,19 @@ Bazel queries are composed using a specialized query language that lets you filt
 
 For Bazel to execute your DSL, it uses a query engine to evaluate the query expressions and generate the results. For instance, if you want to [find the dependencies](https://bazel.build/query/language#deps) of a given rule, you need to define the following query:
 
-~~~
+~~~{.bash caption=">_"}
 bazel query "deps(//path/to:your_rule)"
 ~~~
 
 The output of this query includes all direct and transitive dependencies of the target. If you have a target `//test-app`, your query syntax would look like this:
 
-~~~
+~~~{.bash caption=">_"}
 bazel query "deps(//test-app)"
 ~~~
 
 This basic example lets you find all the targets you need to build `//test-app`. However, its output also includes dependencies the `//test-app` target inherits. This means if another target, `//test-app/test-app2`, depends on `//test-app`, which in turn depends on `//test-app/test-app-dep`, the output of the query would include all three targets as dependencies of the main `//test-app` target:
 
-~~~
+~~~{.bash caption=">_"}
 bazel query "deps(//test-app)"
 //test-app/test-app2
 //test-app/test-app-dep
@@ -60,13 +60,14 @@ bazel query "deps(//test-app)"
 
 Bazel queries find the dependencies of a rule; identify packages, rules, and targets; and analyze file dependencies. Because of this, its syntax supports query operators, functions, and keywords to ensure you can run all the aforementioned operations. For instance, the following query uses the `kind` function to filter targets whose name ends with packages, rules, and targets in the dependencies list of the target `runner`:
 
-~~~
-bazel query "kind("package", deps(":runner")) union kind("rule", deps(:runner)) union kind("target", deps(":runner))"
+~~~{.bash caption=">_"}
+bazel query "kind("package", deps(":runner")) union \
+kind("rule", deps(:runner)) union kind("target", deps(":runner))"
 ~~~
 
 To find `BUILD` files that contain a given Bazel rule, the following syntax uses a `buildfiles` function based on the Bazel package location:
 
-~~~
+~~~{.bash caption=">_"}
 bazel query "buildfiles(//path/to:your_rule)" --output=build
 ~~~
 
@@ -86,7 +87,7 @@ Take a look at some key concepts you should keep in mind when working with BQL t
 
 A large list of implicit dependencies can sometimes add an unexpected and unreasonable overhead in build times and performance. However, Bazel helps you disable implicit dependencies using the `--[no]implicit_deps` flag to only return direct/explicit dependencies listed in your `BUILD` file:
 
-~~~
+~~~{.bash caption=">_"}
 bazel query --noimplicit_deps 'deps(//App:test_app)'
 ~~~
 
@@ -106,19 +107,20 @@ Bazel queries use [partial ordering constraints](https://bazel.build/query/langu
 
 For example, assume you have the following three targets in your `BUILD` files:
 
-~~~
-//package1:test_target1 --> //package2:test_target2 --> //package3:test_target3
+~~~{.bash caption=">_"}
+//package1:test_target1 --> //package2:test_target2 --> \
+//package3:test_target3
 ~~~
 
 Let's say the following query finds the transitive closure of dependencies of `//package1:test_target1`:
 
-~~~
+~~~{.bash caption=">_"}
 bazel query "deps(//package1:test_target1)"
 ~~~
 
 The results look like this:
 
-~~~
+~~~{ caption="Output"}
 //package1:test_target1
 //package2:test_target2
 //package3:test_target3
@@ -126,13 +128,13 @@ The results look like this:
 
 And let's say the query finds the dependencies of `//package2:test_target2`:
 
-~~~
+~~~{.bash caption=">_"}
 bazel query "deps(//package2:test_target2)"
 ~~~
 
 Bazel still preserves and ensures the ordering constraints inherited from their subexpressions in the `BUILD` files. The targets are ordered based on the dependency graph:
 
-~~~
+~~~{ caption="Output"}
 //package2:test_target2
 //package3:test_target3
 ~~~
@@ -153,8 +155,9 @@ A [Sky Query](https://bazel.build/query/guide#reverse-dependencies) operates on 
 
 The following Sky Query finds all the reverse dependencies of a target within the given universal set:
 
-~~~
-bazel query "allrdeps(//node/some_component:component_target)" --universe_scope=//node:parent_target --order_output=no
+~~~{.bash caption=">_"}
+bazel query "allrdeps(//node/some_component:component_target)" \
+--universe_scope=//node:parent_target --order_output=no
 ~~~
 
 In this case, the `allrdeps` function finds all the reverse dependencies of `component_target` using the flag `--universe_scope` to instruct Bazel to preload the transitive closure of `parent_target` and evaluate the query within that scope. This allows you to find the reverse dependencies of a component across projects, which might not normally be possible through the `rdeps` function if the dependency was used outside of the scope that it was defined.
@@ -165,7 +168,7 @@ Now that you know more about Bazel queries in general, take a look at a few exam
 
 This Bazel workspace has a `//apps/node_web` Bazel target. If you want to find direct and transitive dependencies of the target, run the following code to find the `deps` query of a rule:
 
-~~~
+~~~{.bash caption=">_"}
 bazel query "deps(//apps/node_web)"
 ~~~
 
@@ -177,7 +180,7 @@ bazel query "deps(//apps/node_web)"
 
 To find the `BUILD` files containing the dependencies of `//apps/node_web`, the following query lists the packages in your Bazel workspace:
 
-~~~
+~~~{.bash caption=">_"}
 bazel query "buildfiles(deps(//apps/node_web))" --output package
 ~~~
 
@@ -187,7 +190,7 @@ bazel query "buildfiles(deps(//apps/node_web))" --output package
 
 If you have a package (*ie* `express`), you can check the existing packages that this particular package depends on:
 
-~~~
+~~~{.bash caption=">_"}
 bazel query "@npm//express" --output package
 ~~~
 
@@ -197,8 +200,9 @@ bazel query "@npm//express" --output package
 
 And you can find rules defined in a package:
 
-~~~
-bazel query "kind(rule, @build_bazel_rules_nodejs//internal/runfiles:*)" --output label_kind
+~~~{.bash caption=">_"}
+bazel query "kind(rule, @build_bazel_rules_nodejs//internal/runfiles:*)" \
+--output label_kind
 ~~~
 
 <div class="wide">
@@ -207,7 +211,7 @@ bazel query "kind(rule, @build_bazel_rules_nodejs//internal/runfiles:*)" --outpu
 
 In addition, you can find the reverse dependencies:
 
-~~~
+~~~{.bash caption=">_"}
 bazel query "rdeps(..., //apps/node_web:index.js)" --output package
 ~~~
 
@@ -217,7 +221,7 @@ bazel query "rdeps(..., //apps/node_web:index.js)" --output package
 
 And you can select all rules with a particular value:
 
-~~~
+~~~{.bash caption=">_"}
 bazel query "attr("tags", "[\[ ]node[,\]]", deps(//apps/node_web))"
 ~~~
 
