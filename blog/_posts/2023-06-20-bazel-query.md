@@ -6,7 +6,10 @@ toc: true
 author: Rose Chege
 
 internal-links:
- - just an example
+ - Bazel
+ - Query
+ - Graph
+ - Optimize
 ---
 
 [Bazel](https://earthly.dev/blog/bazel-build/) is a build system that streamlines repetitive tasks to ensure build consistency. Thanks to features such as scalability, multilanguage platform support, [caching]((<https://earthly.dev/blog/bazel-build-with-caching/>), remote executions, and Bazel queries, developers can use Bazel to reproduce deterministic builds and tests for their projects.
@@ -230,4 +233,3 @@ By using [Bazel](/blog/bazel-build) queries alongside your builds, you can fully
 
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Add keywords for internal links to front-matter
