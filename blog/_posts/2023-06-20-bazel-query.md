@@ -212,6 +212,8 @@ In summary, Bazel queries are a powerful tool for understanding and managing pro
 
 By using Bazel queries alongside your builds, you can fully leverage their usefulness in your development process.
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
@@ -221,4 +223,3 @@ By using Bazel queries alongside your builds, you can fully leverage their usefu
 - [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
