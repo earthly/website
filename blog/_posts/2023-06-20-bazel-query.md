@@ -23,7 +23,7 @@ For instance, a project built with Bazel has all kinds of different elements (*i
 
 Bazel queries use dependency analysis to isolate [direct](https://bazel.build/concepts/dependencies) and [transitive](https://bazel.build/basics/dependencies) dependencies. Dependency analysis helps identify any deprecated and insecure dependencies, as well as direct dependencies with various transitive dependencies. This improves build performance by identifying slow targets and dependencies.
 
-Looking through the query results can help you identify slow or redundant dependencies and possibly replace them with better, more appropriate dependencies to help improve build performance and reduce binary size. Additionally, Bazel queries let you query test suites. You can identify tests for a target and its dependents to ensure all relevant tests are run when making changes to your code.
+Looking through the query results can help you identify slow or redundant dependencies and possibly replace them with better, more appropriate dependencies to help improve build performance and reduce binary size. Additionally, [Bazel](/blog/bazel-build) queries let you query test suites. You can identify tests for a target and its dependents to ensure all relevant tests are run when making changes to your code.
 
 ## How Bazel Queries Work
 
@@ -222,7 +222,7 @@ These are just a few examples of how to construct practical Bazel queries. Check
 
 In summary, Bazel queries are a powerful tool for understanding and managing project dependencies. In this article, you learned about their syntax and how they can be written within your dependencies graph.
 
-By using Bazel queries alongside your builds, you can fully leverage their usefulness in your development process.
+By using [Bazel](/blog/bazel-build) queries alongside your builds, you can fully leverage their usefulness in your development process.
 
 {% include_html cta/bottom-cta.html %}
 
@@ -231,4 +231,3 @@ By using Bazel queries alongside your builds, you can fully leverage their usefu
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
