@@ -231,5 +231,4 @@ By using [Bazel](/blog/bazel-build) queries alongside your builds, you can fully
 
 ## Outside Article Checklist
 
-- [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
