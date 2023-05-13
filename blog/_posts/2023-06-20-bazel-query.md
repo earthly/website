@@ -12,7 +12,7 @@ internal-links:
  - Optimize
 ---
 
-[Bazel](https://earthly.dev/blog/bazel-build/) is a build system that streamlines repetitive tasks to ensure build consistency. Thanks to features such as scalability, multilanguage platform support, [caching]((<https://earthly.dev/blog/bazel-build-with-caching/>), remote executions, and Bazel queries, developers can use Bazel to reproduce deterministic builds and tests for their projects.
+[Bazel](https://earthly.dev/blog/bazel-build/) is a build system that streamlines repetitive tasks to ensure build consistency. Thanks to features such as scalability, multilanguage platform support, [caching](<https://earthly.dev/blog/bazel-build-with-caching/), remote executions, and Bazel queries, developers can use Bazel to reproduce deterministic builds and tests for their projects.
 
 More specifically, Bazel queries simplify the process of searching and analyzing the build graph by examining project build files and dependencies. This helps developers gain a better understanding of their dependencies, optimize build performance, and debug builds.
 
@@ -29,6 +29,8 @@ Bazel queries use dependency analysis to isolate [direct](https://bazel.build/co
 Looking through the query results can help you identify slow or redundant dependencies and possibly replace them with better, more appropriate dependencies to help improve build performance and reduce binary size. Additionally, [Bazel](/blog/bazel-build) queries let you query test suites. You can identify tests for a target and its dependents to ensure all relevant tests are run when making changes to your code.
 
 ## How Bazel Queries Work
+
+![How]({{site.images}}{{page.slug}}/how.png)\
 
 Bazel queries are composed using a specialized query language that lets you filter specific target dependencies based on unique criteria. The query language contains keywords, operators, and filters that can be used to execute the queries as domain-specific languages (DSL), typically with file paths, labels, and build attributes serving as the primary components.
 
@@ -70,6 +72,8 @@ bazel query "buildfiles(//path/to:your_rule)" --output=build
 
 ## Overview of Bazel Query Language Concepts
 
+![Overview]({{site.images}}{{page.slug}}/overview.png)\
+
 [Bazel Query Language (BQL)](https://docs-staging.bazel.build/5813/versions/3.7.0/query.html) follows a set of concepts to query your build graph. A build graph is a collection of target dependencies that represents the dependencies between the targets. BQL concepts allow you to write expressions that evaluate a partially ordered set of [targets or a graph of targets](https://bazel.build/extending/aspects) as the only data type.
 
 In the case of the set, the [partial order of the targets](https://bazel.build/query/language#language-concepts) isn't important. The order of the elements in a query set doesn't affect its meaning. Instead, you need to focus on the partial order of targets in a graph.
@@ -95,6 +99,8 @@ Bazel queries are designed to ensure their results are always [sound](https://ba
 This happens because the query phase occurs before configurations are introduced and evaluated in the build process. As a result, your query results might contain a larger number of elements than what you might end up with after you run the build with a particular configuration.
 
 ### Preservation of Graph Order
+
+![Graph]({{site.images}}{{page.slug}}/graph.png)\
 
 Bazel queries use [partial ordering constraints](https://bazel.build/query/language#results-ordering) to determine the order in which query results should be arranged. If you execute operators such as `allpaths`, `rdeps`, `somepath`, `deps`, `package:*`, and `dir`, Bazel query results use guaranteed ordering constraints inherited from their subexpressions.
 
@@ -228,7 +234,3 @@ In summary, Bazel queries are a powerful tool for understanding and managing pro
 By using [Bazel](/blog/bazel-build) queries alongside your builds, you can fully leverage their usefulness in your development process.
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-- [ ] Optional: Find ways to break up content with quotes or images
