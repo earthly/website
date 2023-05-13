@@ -9,7 +9,7 @@ internal-links:
  - just an example
 ---
 
-[Bazel](https://earthly.dev/blog/bazel-build/) is a build system that streamlines repetitive tasks to ensure build consistency. Thanks to features such as scalability, multilanguage platform support, [caching]((https://earthly.dev/blog/bazel-build-with-caching/), remote executions, and Bazel queries, developers can use Bazel to reproduce deterministic builds and tests for their projects.
+[Bazel](https://earthly.dev/blog/bazel-build/) is a build system that streamlines repetitive tasks to ensure build consistency. Thanks to features such as scalability, multilanguage platform support, [caching]((<https://earthly.dev/blog/bazel-build-with-caching/>), remote executions, and Bazel queries, developers can use Bazel to reproduce deterministic builds and tests for their projects.
 
 More specifically, Bazel queries simplify the process of searching and analyzing the build graph by examining project build files and dependencies. This helps developers gain a better understanding of their dependencies, optimize build performance, and debug builds.
 
@@ -33,37 +33,37 @@ Bazel queries are composed using a specialized query language that lets you filt
 
 For Bazel to execute your DSL, it uses a query engine to evaluate the query expressions and generate the results. For instance, if you want to [find the dependencies](https://bazel.build/query/language#deps) of a given rule, you need to define the following query:
 
-```bash
+~~~
 bazel query "deps(//path/to:your_rule)"
-```
+~~~
 
 The output of this query includes all direct and transitive dependencies of the target. If you have a target `//test-app`, your query syntax would look like this:
 
-```bash
+~~~
 bazel query "deps(//test-app)"
-```
+~~~
 
 This basic example lets you find all the targets you need to build `//test-app`. However, its output also includes dependencies the `//test-app` target inherits. This means if another target, `//test-app/test-app2`, depends on `//test-app`, which in turn depends on `//test-app/test-app-dep`, the output of the query would include all three targets as dependencies of the main `//test-app` target:
 
-```bash
+~~~
 bazel query "deps(//test-app)"
 //test-app/test-app2
 //test-app/test-app-dep
-```
+~~~
 
 ### Query Operators, Functions, and Keywords
 
 Bazel queries find the dependencies of a rule; identify packages, rules, and targets; and analyze file dependencies. Because of this, its syntax supports query operators, functions, and keywords to ensure you can run all the aforementioned operations. For instance, the following query uses the `kind` function to filter targets whose name ends with packages, rules, and targets in the dependencies list of the target `runner`:
 
-```bash
+~~~
 bazel query "kind("package", deps(":runner")) union kind("rule", deps(:runner)) union kind("target", deps(":runner))"
-```
+~~~
 
 To find `BUILD` files that contain a given Bazel rule, the following syntax uses a `buildfiles` function based on the Bazel package location:
 
-```bash
+~~~
 bazel query "buildfiles(//path/to:your_rule)" --output=build
-```
+~~~
 
 ## Overview of Bazel Query Language Concepts
 
@@ -79,9 +79,9 @@ Take a look at some key concepts you should keep in mind when working with BQL t
 
 A large list of implicit dependencies can sometimes add an unexpected and unreasonable overhead in build times and performance. However, Bazel helps you disable implicit dependencies using the `--[no]implicit_deps` flag to only return direct/explicit dependencies listed in your `BUILD` file:
 
-```bash
+~~~
 bazel query --noimplicit_deps 'deps(//App:test_app)'
-```
+~~~
 
 Keep in mind that you can only omit implicit dependencies from query results with the help of this flag. Bazel still uses implicit dependencies in its builds. It's a good idea to check implicit dependencies regularly and keep their number as few as possible to reduce build time and, possibly, build binary size.
 
@@ -97,36 +97,36 @@ Bazel queries use [partial ordering constraints](https://bazel.build/query/langu
 
 For example, assume you have the following three targets in your `BUILD` files:
 
-```bash
+~~~
 //package1:test_target1 --> //package2:test_target2 --> //package3:test_target3
-```
+~~~
 
 Let's say the following query finds the transitive closure of dependencies of `//package1:test_target1`:
 
-```bash
+~~~
 bazel query "deps(//package1:test_target1)"
-```
+~~~
 
 The results look like this:
 
-```bash
+~~~
 //package1:test_target1
 //package2:test_target2
 //package3:test_target3
-```
+~~~
 
 And let's say the query finds the dependencies of `//package2:test_target2`:
 
-```bash
+~~~
 bazel query "deps(//package2:test_target2)"
-```
+~~~
 
 Bazel still preserves and ensures the ordering constraints inherited from their subexpressions in the `BUILD` files. The targets are ordered based on the dependency graph:
 
-```bash
+~~~
 //package2:test_target2
 //package3:test_target3
-```
+~~~
 
 However, running these queries only affects the [ordering of results](https://bazel.build/query/language#results-ordering). It doesn't change the targets in the result set or how the query is computed.
 
@@ -144,9 +144,9 @@ A [Sky Query](https://bazel.build/query/guide#reverse-dependencies) operates on 
 
 The following Sky Query finds all the reverse dependencies of a target within the given universal set:
 
-```bash
+~~~
 bazel query "allrdeps(//node/some_component:component_target)" --universe_scope=//node:parent_target --order_output=no
-```
+~~~
 
 In this case, the `allrdeps` function finds all the reverse dependencies of `component_target` using the flag `--universe_scope` to instruct Bazel to preload the transitive closure of `parent_target` and evaluate the query within that scope. This allows you to find the reverse dependencies of a component across projects, which might not normally be possible through the `rdeps` function if the dependency was used outside of the scope that it was defined.
 
@@ -156,53 +156,65 @@ Now that you know more about Bazel queries in general, take a look at a few exam
 
 This Bazel workspace has a `//apps/node_web` Bazel target. If you want to find direct and transitive dependencies of the target, run the following code to find the `deps` query of a rule:
 
-```bash
+~~~
 bazel query "deps(//apps/node_web)"
-```
+~~~
 
 > **Please note:** Targets that `//apps/node_web` depend on are part of the result of this query, even though you didn't include their labels in your build query. It explains the Bazel query soundness concept.
 
-![Dependencies](https://imgur.com/D1T2tGs.png)
+<div class="wide">
+![Dependencies]({{site.images}}{{page.slug}}/D1T2tGs.png)
+</div>
 
 To find the `BUILD` files containing the dependencies of `//apps/node_web`, the following query lists the packages in your Bazel workspace:
 
-```bash
+~~~
 bazel query "buildfiles(deps(//apps/node_web))" --output package
-```
+~~~
 
-![`BUILD` files program](https://imgur.com/Qrasa3S.png)
+<div class="wide">
+![`BUILD` files program]({{site.images}}{{page.slug}}/Qrasa3S.png)
+</div>
 
 If you have a package (*ie* `express`), you can check the existing packages that this particular package depends on:
 
-```bash
+~~~
 bazel query "@npm//express" --output package
-```
+~~~
 
-![Package beneath another](https://imgur.com/0Z8Iw6k.png)
+<div class="wide">
+![Package beneath another]({{site.images}}{{page.slug}}/0Z8Iw6k.png)
+</div>
 
 And you can find rules defined in a package:
 
-```bash
+~~~
 bazel query "kind(rule, @build_bazel_rules_nodejs//internal/runfiles:*)" --output label_kind
-```
+~~~
 
-![Package rules](https://imgur.com/hsdiFZM.png)
+<div class="wide">
+![Package rules]({{site.images}}{{page.slug}}/hsdiFZM.png)
+</div>
 
 In addition, you can find the reverse dependencies:
 
-```bash
+~~~
 bazel query "rdeps(..., //apps/node_web:index.js)" --output package
-```
+~~~
 
-![Reverse dependencies](https://imgur.com/Xc8wkWW.png)
+<div class="wide">
+![Reverse dependencies]({{site.images}}{{page.slug}}/Xc8wkWW.png)
+</div>
 
 And you can select all rules with a particular value:
 
-```bash
+~~~
 bazel query "attr("tags", "[\[ ]node[,\]]", deps(//apps/node_web))"
-```
+~~~
 
-![Value rules](https://imgur.com/0intLpl.png)
+<div class="wide">
+![Value rules]({{site.images}}{{page.slug}}/0intLpl.png)
+</div>
 
 These are just a few examples of how to construct practical Bazel queries. Check out this [Bazel query guide](https://bazel.build/query/quickstart) to learn more query writing techniques.
 
@@ -218,8 +230,5 @@ By using Bazel queries alongside your builds, you can fully leverage their usefu
 
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
