@@ -12,7 +12,7 @@ internal-links:
  - Optimize
 ---
 
-[Bazel](https://earthly.dev/blog/bazel-build/) is a build system that streamlines repetitive tasks to ensure build consistency. Thanks to features such as scalability, multilanguage platform support, [caching](<https://earthly.dev/blog/bazel-build-with-caching/), remote executions, and Bazel queries, developers can use Bazel to reproduce deterministic builds and tests for their projects.
+[Bazel](https://earthly.dev/blog/bazel-build/) is a build system that streamlines repetitive tasks to ensure build consistency. Thanks to features such as scalability, multilanguage platform support, [caching](https://earthly.dev/blog/bazel-build-with-caching/), remote executions, and Bazel queries, developers can use Bazel to reproduce deterministic builds and tests for their projects.
 
 More specifically, Bazel queries simplify the process of searching and analyzing the build graph by examining project build files and dependencies. This helps developers gain a better understanding of their dependencies, optimize build performance, and debug builds.
 
@@ -164,7 +164,7 @@ In this case, the `allrdeps` function finds all the reverse dependencies of `com
 
 ## Bazel Query Examples
 
-Now that you know more about Bazel queries in general, take a look at a few examples that run queries in a project using this [basic Node.js app created with Bazel](https://earthly.dev/blog/build-nodejs-app-with-bazel/).
+Now that you know more about Bazel queries in general, take a look at a few examples that run queries in a project using this [basic Node.js app created with Bazel](https://earthly.dev/blogbuild-nodejs-app-with-bazel/).
 
 This Bazel workspace has a `//apps/node_web` Bazel target. If you want to find direct and transitive dependencies of the target, run the following code to find the `deps` query of a rule:
 
