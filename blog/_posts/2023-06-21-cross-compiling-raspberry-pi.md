@@ -6,7 +6,11 @@ toc: true
 author: Aniket Bhattacharyea
 
 internal-links:
- - just an example
+ - Cross-Compiling
+ - Raspberry Pi
+ - Troubleshooting
+ - Debian
+ - Raspbian
 ---
 
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article covers cross compiling. If you're someone who builds software often, you might want to [check us out](/) and see if Earthly can help you build faster and easier.**
@@ -540,4 +544,3 @@ To learn more about cross-compilation with CMake, check out the [official docume
 
 * [ ] Create header image in Canva
 * [ ] Optional: Find ways to break up content with quotes or images
-* [ ] Add keywords for internal links to front-matter
