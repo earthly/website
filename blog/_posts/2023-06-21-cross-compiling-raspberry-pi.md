@@ -23,7 +23,7 @@ Before you get started with this tutorial, make sure you have the following:
 
 * **A machine running Ubuntu:** This is where you'll compile the program and is often referred to as the host machine. Note that although it's possible to cross-compile from any Linux distribution, for simplicity, this article will use some Debian- and Ubuntu-based tools. If you don't have an Ubuntu machine, it's recommended to spin up an Ubuntu virtual machine (VM) to follow along. This tutorial was tested with Ubuntu 22.04.
 
-* **A Raspberry Pi:** This should be connected to the local network and accessable using the Secure Shell Protocol (SSH) from the host machine. This article was tested on a Raspberry Pi 4B running Raspbian 10. If you have another board, such as a Raspberry Pi Zero, you need to tweak the commands appropriately. The Raspberry Pi used in this article was available in the local network with `pi.local` hostname and had a `pi` user.
+* **A Raspberry Pi:** This should be connected to the local network and accessible using the Secure Shell Protocol (SSH) from the host machine. This article was tested on a Raspberry Pi 4B running Raspbian 10. If you have another board, such as a Raspberry Pi Zero, you need to tweak the commands appropriately. The Raspberry Pi used in this article was available in the local network with `pi.local` hostname and had a `pi` user.
 
 ### Setting Up SSH
 
@@ -159,11 +159,13 @@ This command runs the `mk-sbuild` tool which creates the root file system. It's 
 
 After a while, you should have the sysroot ready with the following output:
 
-![sysroot ready](https://i.imgur.com/7rBUoVW.png)
+<div class="wide">
+![sysroot ready]({{site.images}}{{page.slug}}/7rBUoVW.png)
+</div>
 
 #### Installing the Toolchain
 
-Once the sysroot is compiled, you'll need to to install a [toolchain](https://en.wikipedia.org/wiki/Toolchain) that can cross-compile for Raspberry Pi. A toolchain is simply a collection of tools (compiler, linker, or debugger) that is used to compile and debug programs. For cross-compilation, you need a special toolchain that can compile programs into executables specifically for the target architecture.
+Once the sysroot is compiled, you'll need to install a [toolchain](https://en.wikipedia.org/wiki/Toolchain) that can cross-compile for Raspberry Pi. A toolchain is simply a collection of tools (compiler, linker, or debugger) that is used to compile and debug programs. For cross-compilation, you need a special toolchain that can compile programs into executables specifically for the target architecture.
 
 The cross-compilation toolchains in the Ubuntu repository are not compatible with Raspberry Pi boards, so you need to build your own or get them from elsewhere. In this article, you'll use the ones found in [this GitHub repo](https://github.com/tttapa/docker-arm-cross-toolchain). For Raspberry Pi 4 specifically, you need to use the `armv8-rpi3-linux-gnueabihf` toolchain. If you have another board, you need to choose the appropriate toolchain for your use case. You can check out the `README` file in the repo for more info.
 
@@ -192,7 +194,9 @@ Next, verify that you can run `g++` from this toolchain:
 armv8-rpi3-linux-gnueabihf-g++ --version # Replace armv8-rpi3-linux-gnueabihf with your chosen toolchain name
 ~~~
 
-![Verifying that you can run`g++`](https://i.imgur.com/uU16OmX.png)
+<div class="wide">
+![Verifying that you can run`g++`]({{site.images}}{{page.slug}}/uU16OmX.png)
+</div>
 
 Out of the box, the Raspbian OS uses an older compiler and C++ standard library version. So install the standard library from the toolchain into the Raspberry Pi. Run the following command on the host machine:
 
@@ -441,7 +445,9 @@ Make sure you verify the installation:
 ssh rpi gdbserver --version
 ~~~
 
-![Verify the installation](https://i.imgur.com/3L152a5.png)
+<div class="wide">
+![Verify the installation]({{site.images}}{{page.slug}}/3L152a5.png)
+</div>
 
 The Raspbian OS also uses a custom `memcpy` implementation, which GDB needs to be present in the sysroot. For that, you need to install the `raspi-copies-and-fills` package to the sysroot:
 
@@ -468,7 +474,9 @@ Inside the GDB session, set the sysroot and connect to `gdbserver` on the Raspbe
 (gdb) continue
 ~~~
 
-![Connect to `gdbserver`](https://i.imgur.com/zAsVpNC.png)
+<div class="wide">
+![Connect to `gdbserver`]({{site.images}}{{page.slug}}/zAsVpNC.png)
+</div>
 
 ## Troubleshooting Common Errors
 
@@ -524,7 +532,7 @@ Raspberry Pi is an affordable general-purpose PC that is limited by its relative
 
 In this article, you learned how to set up the development environment for cross-compilation, including setting up the sysroot and the toolchain. You also learned how to write a toolchain file for CMake and compile a C++ program and link it to a shared library. Finally, you learned how to debug the program running on Raspberry Pi using GDB.
 
-To learn more about cross-compilation with CMake, check out the [official documentation](<https://cmake.org/cmake/help/book/mastering-cmake/chapter/Cross%20Compiling%20With%20CM>
+To learn more about cross-compilation with CMake, check out the [official documentation](https://cmake.org/cmake/help/book/mastering-cmake/chapter/Cross%20Compiling%20With%20CM).
 
 {% include_html cta/bottom-cta.html %}
 
@@ -532,8 +540,5 @@ To learn more about cross-compilation with CMake, check out the [official docume
 
 * [ ] Create header image in Canva
 * [ ] Optional: Find ways to break up content with quotes or images
-* [ ] Verify look of article locally
-  * Would any images look better `wide` or without the `figcaption`?
-* [ ] Run mark down linter (`lint`)
 * [ ] Add keywords for internal links to front-matter
 * [ ] Run `link-opp` and find 1-5 places to incorporate links

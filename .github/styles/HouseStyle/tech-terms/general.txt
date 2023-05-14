@@ -391,3 +391,8 @@ overprovisioning
 superset
 transpiles
 nodejs
+
+Raspbian
+sysroot
+Raspeberry
+gdbserver
