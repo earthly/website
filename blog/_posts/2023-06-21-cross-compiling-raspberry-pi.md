@@ -11,9 +11,6 @@ internal-links:
 
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article covers cross compiling. If you're someone who builds software often, you might want to [check us out](/) and see if Earthly can help you build faster and easier.**
 
-
-
-
 Thanks to its Debian-based OS, Raspberry Pi offers a robust developer experience. However, at times, it can be difficult to compile programs. For instance, maybe your project is large and your board doesn't have enough resources to compile it at a reasonable speed, especially if you're using a low-end board like the Raspberry Pi Zero. Or maybe your Virtual Network Computing (VNC) session is lagging, or the Raspberry Pi is in a location where it's not possible to attach a keyboard, mouse, or display. In these situations, you can use a readily available and efficient development machine, such as a laptop or another PC, to compile programs for the Raspberry Pi using a process known as cross-compilation.
 
 With cross-compilation, you can compile an executable that can run on Raspberry Pi using ARM architecture but on a machine that is using a different architecture, such as x86.
@@ -24,7 +21,7 @@ In this article, you'll learn how to cross-compile a simple C++ program for a Ra
 
 Before you get started with this tutorial, make sure you have the following:
 
-* **A machine running Ubuntu:** This is where you’ll compile the program and is often referred to as the host machine. Note that although it's possible to cross-compile from any Linux distribution, for simplicity, this article will use some Debian- and Ubuntu-based tools. If you don't have an Ubuntu machine, it's recommended to spin up an Ubuntu virtual machine (VM) to follow along. This tutorial was tested with Ubuntu 22.04.
+* **A machine running Ubuntu:** This is where you'll compile the program and is often referred to as the host machine. Note that although it's possible to cross-compile from any Linux distribution, for simplicity, this article will use some Debian- and Ubuntu-based tools. If you don't have an Ubuntu machine, it's recommended to spin up an Ubuntu virtual machine (VM) to follow along. This tutorial was tested with Ubuntu 22.04.
 
 * **A Raspberry Pi:** This should be connected to the local network and accessable using the Secure Shell Protocol (SSH) from the host machine. This article was tested on a Raspberry Pi 4B running Raspbian 10. If you have another board, such as a Raspberry Pi Zero, you need to tweak the commands appropriately. The Raspberry Pi used in this article was available in the local network with `pi.local` hostname and had a `pi` user.
 
@@ -34,39 +31,39 @@ To begin, you need to set up SSH on the host machine so that you can SSH into th
 
 Run the following command from the `Host` machine:
 
-```bash
+~~~
 cat >> ~/.ssh/config << 'EOF'
 Host rpi
-	HostName pi.local
-	User pi
+    HostName pi.local
+    User pi
 EOF
-```
+~~~
 
 Replace `pi.local` with the hostname of your Raspberry Pi board and `pi` with the username of your user on the Raspberry Pi. Finally, copy your SSH key into the Raspberry Pi:
 
-```bash
+~~~
 ssh-copy-id -i ~/.ssh/id_rsa.pub rpi
-```
+~~~
 
 This command assumes that you already have an SSH key. If you don't, you can create one using the following command:
 
-```bash
+~~~
 ssh-keygen -t rsa
-```
+~~~
 
 Make sure that you can SSH into the Raspberry Pi with only `rpi`:
 
-```bash
+~~~
 ssh rpi
-```
+~~~
 
 ### Setting Up the Development Machine
 
 After setting up the SSH, it's time to get the host machine ready for development. You need to install a few programs first:
 
-```bash
+~~~
 sudo apt install ubuntu-dev-tools cmake curl
-```
+~~~
 
 The [ubuntu-dev-tools](https://packages.ubuntu.com/bionic/ubuntu-dev-tools) package contains the tools necessary to build a Raspbian OS root file system, which you'll do in a moment.
 
@@ -78,25 +75,25 @@ You can't link the executable to libraries present on your host machine as it's 
 
 Import the necessary keys into the GNU Privacy Guard (GPG) and export them to a file:
 
-```bash
+~~~
 curl -sL http://archive.raspbian.org/raspbian.public.key | gpg --import -
 gpg --export 9165938D90FDDD2E > $HOME/raspbian-archive-keyring.gpg
-```
+~~~
 
 These keys will be used to verify the integrity of the packages that will be installed soon.
 
 Create `rpi.sources` with the list of package mirrors:
 
-```bash
+~~~
 cat > $HOME/rpi.sources <<EOF
 deb http://archive.raspbian.org/raspbian/ RELEASE main contrib non-free rpi
 deb-src http://archive.raspbian.org/raspbian/ RELEASE main contrib non-free rpi
 EOF
-```
+~~~
 
 And then create `.mk-sbuild.rc` with the necessary settings:
 
-```bash
+~~~
 cat > $HOME/.mk-sbuild.rc <<EOF
 SOURCE_CHROOTS_DIR="$HOME/chroots"
 DEBOOTSTRAP_KEYRING="$HOME/raspbian-archive-keyring.gpg"
@@ -106,20 +103,20 @@ SKIP_PROPOSED="1"
 SKIP_SECURITY="1"
 EATMYDATA="1"
 EOF
-```
+~~~
 
 This file adds some settings for `mk-sbuild`. Specifically, `$HOME/chroots` is set as the directory where the root file system will be stored. The GPG file and the sources files created in the previous steps are also used here.
 
 Before you continue to create the root file system, you need to know the architecture and Raspbian release version of your Raspberry Pi. Run the following command on the Raspberry Pi to do so:
 
-```bash
+~~~
 $ dpkg --print-architecture
 armhf
-```
+~~~
 
 And run the following command to get the Raspbian release version:
 
-```bash
+~~~
 $ cat /etc/os-release
 PRETTY_NAME="Raspbian GNU/Linux 10 (buster)"
 NAME="Raspbian GNU/Linux"
@@ -131,7 +128,7 @@ ID_LIKE=debian
 HOME_URL="http://www.raspbian.org/"
 SUPPORT_URL="http://www.raspbian.org/RaspbianForums"
 BUG_REPORT_URL="http://www.raspbian.org/RaspbianBugs"
-```
+~~~
 
 > Note the `VERSION_CODENAME` (*ie* `buster`).
 
@@ -139,24 +136,24 @@ For the next two commands, you need to come back to the host machine.
 
 For ease of use, export these as variables:
 
-```bash
+~~~
 export ARCH=armhf
 export RELEASE=buster
-```
+~~~
 
 Then run the following command:
 
-```bash
+~~~
 mk-sbuild --arch=$ARCH $RELEASE --debootstrap-mirror=http://archive.raspbian.org/raspbian/ --name=rpi-$RELEASE
-```
+~~~
 
 If you're running `mk-sbuild` for the first time, you'll be prompted to edit the `.sbuildrc` file. Accept the defaults, and it will add your user to the `sbuild` group. You need to log out and log in again for the changes to take effect. Don't forget to export the `$ARCH` and `$RELEASE` variables again.
 
 After logging in again, repeat the command:
 
-```bash
+~~~
 mk-sbuild --arch=$ARCH $RELEASE --debootstrap-mirror=http://archive.raspbian.org/raspbian/ --name=rpi-$RELEASE
-```
+~~~
 
 This command runs the `mk-sbuild` tool which creates the root file system. It's named `rpi-$RELEASE` (*ie* `rpi-buster`).
 
@@ -172,55 +169,55 @@ The cross-compilation toolchains in the Ubuntu repository are not compatible wit
 
 For easy access, make sure you store the toolchain name in a variable:
 
-```bash
+~~~
 export TC=armv8-rpi3-linux-gnueabihf
-```
+~~~
 
 And download and install the toolchain:
 
-```bash
+~~~
 mkdir -p ~/opt
 wget -qO- https://github.com/tttapa/docker-arm-cross-toolchain/releases/latest/download/x-tools-$TC.tar.xz | tar xJ -C ~/opt
-```
+~~~
 
 This code installs the toolchain in `!/opt/x-tools/armv8-rpi3-linux-gnueabihf`. You need to add it to your `PATH` so that you can run the compilers from there:
 
-```bash
+~~~
 export PATH="$HOME/opt/x-tools/$TC/bin:$PATH"
-```
+~~~
 
 Next, verify that you can run `g++` from this toolchain:
 
-```bash
+~~~
 armv8-rpi3-linux-gnueabihf-g++ --version # Replace armv8-rpi3-linux-gnueabihf with your chosen toolchain name
-```
+~~~
 
 ![Verifying that you can run`g++`](https://i.imgur.com/uU16OmX.png)
 
 Out of the box, the Raspbian OS uses an older compiler and C++ standard library version. So install the standard library from the toolchain into the Raspberry Pi. Run the following command on the host machine:
 
-```bash
+~~~
 scp ~/opt/x-tools/$TC/$TC/sysroot/lib/libstdc++.so.6.0.30 rpi:~
 ssh rpi bash << 'EOF'
-	sudo mkdir -p /usr/local/lib/arm-linux-gnueabihf
-	sudo mv libstdc++.so.6.0.30 $_
-	sudo ldconfig
+    sudo mkdir -p /usr/local/lib/arm-linux-gnueabihf
+    sudo mv libstdc++.so.6.0.30 $_
+    sudo ldconfig
 EOF
-```
+~~~
 
 > **Note:** Change `6.0.30` to whatever version your toolchain is using.
 
 This command installs the newer standard library to `/usr/local` so that it doesn't interfere with the system-installed standard library.
 
-Next, you need to install the standard library to the sysroot as well. Ensuring that the library is installed both on the Raspeberry PI and the sysroot is crucial. This is because during development, the libraries in the sysroot are used for the linking process. 
+Next, you need to install the standard library to the sysroot as well. Ensuring that the library is installed both on the Raspeberry PI and the sysroot is crucial. This is because during development, the libraries in the sysroot are used for the linking process.
 
 Run the following command to install the newer standard library into the sysroot. Note that it is also installed in `/usr/local`:
 
-```bash
+~~~
 sudo mkdir -p /var/lib/schroot/chroots/rpi-$RELEASE-$ARCH/usr/local/lib/arm-linux-gnueabihf
 sudo cp ~/opt/x-tools/$TC/$TC/sysroot/lib/libstdc++.so.6.0.30 $_
 sudo schroot -c source:rpi-$RELEASE-$ARCH -u root -d / ldconfig
-```
+~~~
 
 #### Installing the Libraries
 
@@ -228,15 +225,15 @@ After you've installed your toolchain and updated the standard library version, 
 
 Start by installing the GMP library in the sysroot:
 
-```bash
+~~~
 sudo sbuild-apt rpi-$RELEASE-$ARCH apt-get install libgmp-dev
-```
+~~~
 
 And then install it on the Raspberry Pi:
 
-```bash
+~~~
 ssh rpi sudo apt install -y libgmp-dev
-```
+~~~
 
 ### Writing the Program and Setting Up CMake
 
@@ -244,14 +241,14 @@ Once you've installed the GMP library, you're at the heart of the project: writi
 
 Create a directory named `cross-compile` and `cd` into it. Then create a file `main.cpp` with the following code:
 
-```c++
+~~~
 #include <iostream>
 #include "gmpxx.h"
  
 mpz_class fact(mpz_class n) {
     mpz_class f = 1;
     for (mpz_class i = 1; i <= n; i++) {
-   	 f *= i;
+        f *= i;
     }
     return f;
 }
@@ -262,13 +259,13 @@ int main() {
     std::cout << "The factorial of " << n << " = " << f << std::endl;
     return 0;
 }
-```
+~~~
 
 This code uses the GMP library to calculate the factorial of `1000`, which is out of bounds using regular long integers.
 
 To compile the code [using CMake](/blog/using-cmake), you need to tell CMake how to build the project. Create `CMakeLists.txt` with the following code:
 
-```cmake
+~~~
 cmake_minimum_required(VERSION 3.16)
 project(fact VERSION 0.1.0 LANGUAGES C CXX Fortran)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/modules/")
@@ -279,8 +276,8 @@ target_link_libraries(fact gmp gmpxx)
  
 include(GNUInstallDirs)
 install(TARGETS fact
-    	RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
-```
+        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
+~~~
 
 Here's a brief explanation of the most important parts of this code:
 
@@ -292,7 +289,7 @@ Here's a brief explanation of the most important parts of this code:
 
 Next, create the `cmake/modules` directory and create a file named `FindGMP.cmake` inside it with the following code:
 
-```cmake
+~~~
 include(FindPackageHandleStandardArgs)
  
 # Try to find libraries
@@ -326,19 +323,19 @@ if (GMP_FOUND)
   list(REMOVE_DUPLICATES GMP_INCLUDE_DIRS)
  
   if (NOT TARGET GMP::GMP)
-	add_library(GMP::GMP UNKNOWN IMPORTED)
-	set_target_properties(GMP::GMP PROPERTIES
-  	INTERFACE_INCLUDE_DIRECTORIES "${GMP_C_INCLUDES}"
-  	IMPORTED_LOCATION "${GMP_C_LIBRARIES}")
+    add_library(GMP::GMP UNKNOWN IMPORTED)
+    set_target_properties(GMP::GMP PROPERTIES
+      INTERFACE_INCLUDE_DIRECTORIES "${GMP_C_INCLUDES}"
+      IMPORTED_LOCATION "${GMP_C_LIBRARIES}")
   endif()
 endif()
-```
+~~~
 
 This script simply tells CMake how to find the GMP headers and libraries.
 
 Now comes the important part: the way you tell CMake to cross-compile using a specified toolchain is to use a [toolchain file](https://cmake.org/cmake/help/latest/manual/cmake-toolchains.7.html#cross-compiling). The following command creates `cmake/armv8-rpi3-linux-gnueabihf.cmake` (or `<your toolchain name>.cmake`):
 
-```bash
+~~~
 cat > cmake/$TC.cmake << EOF
 # https://cmake.org/cmake/help/book/mastering-cmake/chapter/Cross%20Compiling%20With%20CMake.html
  
@@ -376,18 +373,18 @@ set(CMAKE_FIND_ROOT_PATH_MODE_PACKAGE ONLY)
  
 set(CPACK_DEBIAN_PACKAGE_ARCHITECTURE armhf)
 EOF
-```
+~~~
 
 Let's break this code down: `set(CMAKE_SYSTEM_PROCESSOR arm)` tells CMake that the target process is using ARM instructions. Then `set(CMAKE_SYSROOT /var/lib/schroot/chroots/rpi-buster-armhf)` sets the `CMAKE_SYSROOT` variable to the sysroot location. Make sure you replace `rpi-buster-armhf` with your sysroot name.
 
 Finally, `set(CMAKE_STAGING_PREFIX $ENV{HOME}/RPi-dev/staging-armv8-rpi3)` creates a staging directory on the host machine where the final file is installed.
 
-```cmake
+~~~
 set(RPI_GCC_TRIPLE "armv8-rpi3-linux-gnueabihf")
 set(CMAKE_C_COMPILER ${RPI_GCC_TRIPLE}-gcc CACHE FILEPATH "C compiler")
 set(CMAKE_CXX_COMPILER ${RPI_GCC_TRIPLE}-g++ CACHE FILEPATH "C++ compiler")
 set(CMAKE_Fortran_COMPILER ${RPI_GCC_TRIPLE}-gfortran CACHE FILEPATH "Fortran compiler")
-```
+~~~
 
 This code tells CMake where to find the compilers. Make sure you replace `armv8-rpi3-linux-gnueabihf` with your toolchain name.
 
@@ -395,11 +392,11 @@ This code tells CMake where to find the compilers. Make sure you replace `armv8-
 
 Now that you've written the program and have set up CMake, it's time to compile the program with the following commands:
 
-```bash
+~~~
 cmake -S . -B build -DCMAKE_TOOLCHAIN_FILE=cmake/$TC.cmake
 cmake --build build -j
 cmake --install build
-```
+~~~
 
 If it executes properly, you should have a file named `fact` in `~/RPi-dev/staging-armv8-rpi3/bin`.
 
@@ -407,69 +404,69 @@ If it executes properly, you should have a file named `fact` in `~/RPi-dev/stagi
 
 To transfer and run the program after compiling it, copy the executable over to the Raspberry Pi:
 
-```bash
+~~~
 scp ~/RPi-dev/staging-armv8-rpi3/bin/fact rpi:~
-```
+~~~
 
 SSH into the Raspberry Pi:
 
-```bash
+~~~
 ssh rpi
-```
+~~~
 
 And run the executable:
 
-```bash
+~~~
 ./fact
-```
+~~~
 
 If you did everything correctly, it should run without errors and produce the following output:
 
-```
+~~~
 The factorial of 1000 = 40238726007709377354370243392300398571937486421071463254379991042993851239862902059204420848696940480047998861019719605863166687299480855890132382966994459099742450408707375991882362772718873251977950595099527612087497546249704360141827809464649629105639388743788648733711918104582578364784997701247663288983595573543251318532395846307555740911426241747434934755342864657661166779739666882029120737914385371958824980812686783837455973174613608537953452422158659320192809087829730843139284440328123155861103697680135730421616874760967587134831202547858932076716913244842623613141250878020800026168315102734182…….
-```
+~~~
 
 ### Debugging
 
 To debug the program using the GNU Debugger (GDB), you need to install `gdbserver` on the Raspberry Pi. The `gdbserver` runs on the Raspberry Pi and allows GDB to connect with it via SSH from the host machine. The toolchain already includes the `gdbserver` binary, which you need to copy to the Raspberry Pi:
 
-```bash
+~~~
 scp ~/opt/x-tools/$TC/$TC/debug-root/usr/bin/gdbserver rpi:~
 ssh rpi sudo mv gdbserver /usr/local/bin
-```
+~~~
 
 Make sure you verify the installation:
 
-```bash
+~~~
 ssh rpi gdbserver --version
-```
+~~~
 
 ![Verify the installation](https://i.imgur.com/3L152a5.png)
 
 The Raspbian OS also uses a custom `memcpy` implementation, which GDB needs to be present in the sysroot. For that, you need to install the `raspi-copies-and-fills` package to the sysroot:
 
-```bash
+~~~
 echo "deb http://archive.raspberrypi.org/debian/ buster main" | sudo tee /var/lib/schroot/chroots/rpi-$RELEASE-$ARCH/etc/apt/sources.list.d/raspi.list
 wget -qO- https://archive.raspberrypi.org/debian/raspberrypi.gpg.key | sudo schroot -c source:rpi-$RELEASE-$ARCH -u root -d / -- apt-key add -
 sudo sbuild-apt rpi-$RELEASE-$ARCH apt-get update
 sudo sbuild-apt rpi-$RELEASE-$ARCH apt-get install raspi-copies-and-fills
-```
+~~~
 
 You can debug the program with the ARM version of GDB that is bundled in the toolchain:
 
-```bash
+~~~
 armv8-rpi3-linux-gnueabihf-gdb ./build/fact # Replace armv8-rpi3-linux-gnueabihf with your toolchain name
-```
+~~~
 
 > **Note:** If you run into an error regarding missing Python 3.6 libraries, check out the following ["Troubleshooting Common Errors" section](#troubleshooting-common-errors) for a solution.
 
 Inside the GDB session, set the sysroot and connect to `gdbserver` on the Raspberry Pi:
 
-```
+~~~
 (gdb) set sysroot /var/lib/schroot/chroots/rpi-buster-armhf
 (gdb) target remote | ssh rpi gdbserver - '~/fact'
 (gdb) continue
-```
+~~~
 
 ![Connect to `gdbserver`](https://i.imgur.com/zAsVpNC.png)
 
@@ -481,13 +478,13 @@ When cross-compiling for Raspberry Pi, you can run into several different errors
 
 If you see the following error when running the CMake commands, it indicates that the toolchain is not installed correctly or it isn't added to `$PATH`:
 
-```
+~~~
 The CMAKE_C_COMPILER:
  
- 	armv8-rpi3-linux-gnueabihf-gcc
+     armv8-rpi3-linux-gnueabihf-gcc
  
    is not a full path and was not found in the PATH.
-```
+~~~
 
 If you have already restarted the shell or the machine, you need to run the command again.
 
@@ -495,9 +492,9 @@ If you have already restarted the shell or the machine, you need to run the comm
 
 You may also encounter the following issue when running the binary on the Raspberry Pi:
 
-```
+~~~
 ./fact: error while loading shared libraries: libgmpxx.so.4: cannot open shared object file: No such file or directory
-```
+~~~
 
 This means you did not install the `libgmp` library on the Raspberry Pi. Remember that any library you link against must be installed both in the `sysroot` as well as on the Raspberry Pi.
 
@@ -505,21 +502,21 @@ This means you did not install the `libgmp` library on the Raspberry Pi. Remembe
 
 The GDB binary bundled with the toolchain has a dependency against Python 3.6, and if Python 3.6 isn't installed, you may see an error like this:
 
-```bash
+~~~
 armv8-rpi3-linux-gnueabihf-gdb: error while loading shared libraries: libpython3.6m.so.1.0: cannot open shared object file: No such file or directory
-```
+~~~
 
 To fix this, you need to install Python 3.6 on your system. If you're using Ubuntu 22.04 or later, it isn't available in the repositories anymore. You can [build it from the source](https://stackoverflow.com/questions/72102435/how-to-install-python3-6-on-ubuntu-22-04/72135545#72135545), but a better approach is to use the `gdb-multiarch` package instead of the bundled GDB. For instance, you can install it with the following code:
 
-```bash
+~~~
 sudo apt install gdb-multiarch
-```
+~~~
 
 And run it with this:
 
-```bash
+~~~
 gdb-multiarch ./build/fact
-```
+~~~
 
 ## Conclusion
 
@@ -527,15 +524,16 @@ Raspberry Pi is an affordable general-purpose PC that is limited by its relative
 
 In this article, you learned how to set up the development environment for cross-compilation, including setting up the sysroot and the toolchain. You also learned how to write a toolchain file for CMake and compile a C++ program and link it to a shared library. Finally, you learned how to debug the program running on Raspberry Pi using GDB.
 
-To learn more about cross-compilation with CMake, check out the [official documentation](https://cmake.org/cmake/help/book/mastering-cmake/chapter/Cross%20Compiling%20With%20CM
+To learn more about cross-compilation with CMake, check out the [official documentation](<https://cmake.org/cmake/help/book/mastering-cmake/chapter/Cross%20Compiling%20With%20CM>
+
+{% include_html cta/bottom-cta.html %}
 
 ## Outside Article Checklist
 
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
+* [ ] Create header image in Canva
+* [ ] Optional: Find ways to break up content with quotes or images
+* [ ] Verify look of article locally
+  * Would any images look better `wide` or without the `figcaption`?
+* [ ] Run mark down linter (`lint`)
+* [ ] Add keywords for internal links to front-matter
+* [ ] Run `link-opp` and find 1-5 places to incorporate links
