@@ -248,7 +248,7 @@ location / {
 
 Save the file when you are done.
 
-Next, we'll need to define two more settings for NGINX..
+Next, we'll need to define two more settings for NGINX.
 
 - `client_max_body_size`: Sets the upload limit per file. By default, NGINX has an upload limit of 1 MB per file. To allow larger image upload to the Docker registry, you will need to define this value as per your requirement.
 
@@ -273,7 +273,7 @@ Restart the NGINX service to reload the changes.
 systemctl restart nginx
 ~~~
 
-Run the following command to verify the NGINX running status
+Run the following command to verify the NGINX running status.
 
 ~~~{.bash caption=">_"}
 systemctl status nginx
@@ -303,7 +303,7 @@ Next, copy the snap binary to the system path.
 ln -s /snap/bin/certbot /usr/bin/certbot
 ~~~
 
-Then, run the `certbot` command followed by your domain name to download the SSL certificates, and configure NGINX to use the downloaded certificates for your domain..
+Then, run the `certbot` command followed by your domain name to download the SSL certificates, and configure NGINX to use the downloaded certificates for your domain.
 
 ~~~{.bash caption=">_"}
 certbot --nginx -d private.linuxbuz.com
