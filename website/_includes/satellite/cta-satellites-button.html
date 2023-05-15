@@ -1,0 +1,30 @@
+<div class="w-full mt-2">
+  <div class="px-6 lg:px-10 pt-4 max-w-7xl m-auto">
+    <div class="bg-[#f1fbff] flex flex-col items-center px-6 rounded-lg">
+      <p class="font-semibold pt-14 text-4xl text-center tracking-tight">
+        Get Started with Earthly Satellites now!
+      </p>
+
+      <p class="pt-6 text-center text-slate-400 text-xl">
+        Fast, Simple Remote Build Runners
+      </p>
+
+      <a
+        href="https://docs.earthly.dev/earthly-cloud/satellites"
+        class="w-full max-w-md mb-20 mt-4 py-6 text-2xl text-center cursor-pointer shadow-sm text-white bg-[#2d7e5d] hover:bg-[#2d7e5d] rounded-lg inline-block"
+        onclick="bottomCtaTryEarthlySatellitesClick()"
+      >
+        Try Earthly Satellites
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+  function bottomCtaTryEarthlySatellitesClick() {
+    analytics.track("bottom-cta-try-earthly-satellites-click", {
+      category: "Earthly Satellites Sign Up Click",
+      label: "bottom-cta-try-earthly-satellites-click",
+    });
+  }
+</script>

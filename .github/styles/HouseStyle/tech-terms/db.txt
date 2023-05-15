@@ -6,7 +6,11 @@ django
 mysql:latest
 mysql
 
+Memurai
+
 visitorid
 timedelta
 sqlalchemy
 ssn
+
+sql

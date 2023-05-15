@@ -4,6 +4,7 @@ categories:
   - Tutorials
 toc: true
 author: Amarachi Aso
+editor: Mustapha Ahmad Ayodeji
 
 internal-links:
  - Golang
