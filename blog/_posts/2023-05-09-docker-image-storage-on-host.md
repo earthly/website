@@ -4,6 +4,7 @@ categories:
   - Tutorials
 toc: true
 author: Sriram Ramanujam
+editor: Bala Priya C
 
 internal-links:
  - Docker-Image

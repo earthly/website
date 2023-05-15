@@ -11,11 +11,11 @@ internal-links:
 topic: engineering
 funnel: 2
 ---
-_Earthly Compute is an internal service that customers use indirectly via Earthly CI. Now that CI has been publicly announced, we have some stuff ~~to get off their chests~~ that we can finally share._
+_Earthly Compute is an internal service that customers use indirectly via [Earthly Satellites](https://earthly.dev/earthly-satellites) and [Earthly CI](https://earthly.dev/earthly-ci). Now that both Satellites and CI have been publicly announced, we have some stuff ~~to get off their chests~~ that we can finally share._
 
 _Compared to our previous experiences, Earthly Compute was a quirky service to build. Nevertheless, we learned some things and made some mistakes, and in this write-up, we'll share how it went._[^1]
 
-[^1]: I'd like to thank Brandon and Corey for sharing the journey of building this service publically - challenges and successes. Your openness is appreciated. - Adam
+[^1]: I'd like to thank Brandon and Corey for sharing the journey of building this service publicly - challenges and successes. Your openness is appreciated. - Adam
 
 ## Background
 
@@ -54,7 +54,7 @@ Earthly, our build tool, is open source and usable by anyone. We wanted to draw 
 {% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/3600.png --alt {{ Earthly Cloud }} %}
 <figcaption>V1 ran from dev machines against Earthly Compute.</figcaption>
 
-Earthly has always had a front-end CLI program and a backend build service. So when you run Earthly CLI, it talks to the backend over gRPC. This works the same in satellites. It's just the gRPC service is now in EC2.
+Earthly has always had a front-end CLI program and a backend build service. So when you run Earthly CLI, it talks to the backend over gRPC. This works the same in Satellites. It's just the gRPC service is now in EC2.
 
 {% include quotes/corey.html %}
 To get this working, we had to programmatically spin up EC2 instances, auth build requests and route them to the correct node.
@@ -72,13 +72,13 @@ Turns out CI workloads vary a lot.
 
 Disks filled up with cache faster than could be GC'd. Networking issues happened. Average builds would be fast but with tail latencies that seemed to go to infinity.
 
-Getting the first version of satellites working smoothly, with all kinds of different CI jobs, was an adventure.
+Getting the first version of Satellites working smoothly, with all kinds of different CI jobs, was an adventure.
 {% include quotes/end.html %}
 
 Even before all this, Earthly supported shared remote caching. But with the kinks worked out, something else became very apparent. The disk on the satellite instance acting as a fast local cache makes a big difference.
 
 {% include quotes/adam.html %}
-The earthly blog was an early user of satellites, and it was surprising how well it worked.
+The Earthly blog was an early user of Satellites, and it was surprising how well it worked.
 
 Jekyll generates all these optimized images in different sizes for different browsers, and there is a ton of them. Previously I was caching them in GitHub actions, and that helped.  
 
@@ -163,12 +163,12 @@ With all that in place, and some fine-tuning, we saved much compute time.
 {% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/5360.png --alt {{ Graph of sleep usage }} %}
 <figcaption>Sleeping works really well.</figcaption>
 
-And with the service now powering both satellites and Earthly CI, we are now offering secure and fast 'remote execution as a service.'
+And with the service now powering both Satellites and Earthly CI, we are now offering secure and fast 'remote execution as a service.'
 
 {% include quotes/adam.html %}
 It's actually not remote code execution as a service, though.
 
-For users, it's just a faster CI. It's the build runner behind a CI Service. "remote code execution as a service" is just the name Corey used internally as a joke.
+For users, it's just a faster CI. It's the build runner behind a CI service. "remote code execution as a service" is just the name Corey used internally as a joke.
 {% include quotes/end.html %}
 
 {% include quotes/corey.html %}
@@ -177,4 +177,4 @@ But – operationally – it is an arbitrary code execution service. I called it
 Speaking of which, stay tuned for the next article, which will invariably be about how we are fighting off crypto-miners 😀.
 {% include quotes/end.html %}
 
-See the [release announcement](/blog/launching-earthly-ci/) if you'd like to learn more about Earthly CI, which is powered by this service. And stay tuned for more sharing of engineering ~~complaints~~ challenges in the future.
+See the [GA announcement for Earthly Satellites](/blog/earthly-satellites-ga/) and the [release announcement for Earthly CI](/blog/launching-earthly-ci/) if you'd like to learn more about the products this service powers. And stay tuned for more sharing of engineering ~~complaints~~ challenges in the future.
