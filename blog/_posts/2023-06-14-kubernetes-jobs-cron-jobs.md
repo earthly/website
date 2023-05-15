@@ -16,7 +16,7 @@ internal-links:
 
 Modern software applications require efficient and reliable management of jobs and scheduled tasks. As applications become more complex and Kubernetes clusters increase in size, automating repetitive tasks like backups, batch processing, and data analysis becomes essential.
 
-Kubernetes provides two critical resources to manage these tasks: Jobs and CronJobs. Jobs are ideal for running one-off or batch tasks, while a CronJob is perfect for scheduling recurring tasks. By using these resources, developers, DevOps engineers, and cluster administrators can focus on more critical tasks and ensure the reliability and efficiency of Kubernetes deployments.
+Kubernetes provides two critical resources to manage these tasks: **Jobs** and **CronJobs**. Jobs are ideal for running one-off or batch tasks, while a CronJob is perfect for scheduling recurring tasks. By using these resources, developers, DevOps engineers, and cluster administrators can focus on more critical tasks and ensure the reliability and efficiency of Kubernetes deployments.
 
 Whether you're a seasoned developer or a Kubernetes novice, understanding Jobs and CronJobs is essential for efficient and reliable application management. In this tutorial, we'll explore how to run and schedule tasks with Kubernetes Jobs and CronJobs. You'll learn how to create (define the desired state), monitor (watch their completion status), and customize these powerful resources in Kubernetes!
 
@@ -25,7 +25,7 @@ Whether you're a seasoned developer or a Kubernetes novice, understanding Jobs a
 To follow along in this tutorial, you'll need to have:
 
 - A Kubernetes cluster up and running (A single node cluster will work fine).
-- This tutorial uses a Linux machine with the Ubuntu 22.04LTS distro (Any other OS will work fine as long as you have Kubernetes set up).
+- This tutorial uses a Linux machine with the Ubuntu 22.04 LTS distro (Any other OS will work fine as long as you have [Kubernetes set up](/blog/k8s-dev-solutions/)).
 
 ## Overview of Jobs and CronJobs in Kubernetes
 
@@ -68,7 +68,7 @@ The code snippet above does the following:
 - Executes the command *echo Hello World!* and then exits.
 
 <div class="notice--info">
-💡The *`restartPolicy: Never`* specifies that the container should not be restarted if it fails or exits.
+💡 The `restartPolicy: Never` specifies that the container should not be restarted if it fails or exits.
 
 </div>
 
