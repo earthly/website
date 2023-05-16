@@ -14,6 +14,8 @@ internal-links:
 - Management
 ---
 
+**We're [Earthly.dev](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article covers jobs and cron jobs in Kubernetes. If you want to know more about building in containers then [check us out](/).**
+
 Modern software applications require efficient and reliable management of jobs and scheduled tasks. As applications become more complex and Kubernetes clusters increase in size, automating repetitive tasks like backups, batch processing, and data analysis becomes essential.
 
 Kubernetes provides two critical resources to manage these tasks: **Jobs** and **CronJobs**. Jobs are ideal for running one-off or batch tasks, while a CronJob is perfect for scheduling recurring tasks. By using these resources, developers, DevOps engineers, and cluster administrators can focus on more critical tasks and ensure the reliability and efficiency of Kubernetes deployments.
