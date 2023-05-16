@@ -4,6 +4,7 @@ categories:
   - Tutorials
 toc: true
 author: Muhammad Badawy
+editor: Bala Priya C
 
 internal-links:
  - Kubernetes

@@ -270,6 +270,7 @@ Bala Priya C:
     name    : "Bala Priya C"
     bio     : "Bala is a technical writer who enjoys creating long-form content. Her areas of interest include math and programming. She shares her learning with the developer community by authoring tutorials, how-to guides, and more."
     avatar  : "/assets/images/authors/bala-priya.jpg"
+    home    : "/authors/bala/"
 Hrittik Roy:
     name    : "Hrittik Roy"
     bio     : "Hrittik is a writer and a software engineer who specializes in cloud native ecosystems. He has worked on many large-scale projects and has experience in both the technical and the business aspects of cloud computing. He is a frequent speaker at conferences and has written numerous articles on software development and distributed systems. In his free time, he likes to go for long walks."
@@ -442,3 +443,11 @@ Thinus Swart:
     name    : "Thinus Swart"
     bio     : "Thinus has been interested in computers and technology ever since the day he painstakingly typed out every line from a library book about BASIC games into a ZX Spectrum as a young child. From there, he's been employed as a developer, a network admin, a database admin, and a Linux admin, all in the pursuit of building up his knowledge. He considers himself a 'jack-of-all-trades, master of some'. He is currently employed as a cybersecurity specialist at a large financial services company in South Africa, making full use of his Splunk Architect certification to analyze the terabytes of data that a company of that size can generate daily."
     avatar  : "/assets/images/authors/thinus-swart.jpg"
+Ifedayo Adesiyan:
+    name    : "Ifedayo Adesiyan"
+    bio     : "I am a software engineer with over 3 years of experience in technology and a track record in backend and DevOps engineering. I enjoy communicating complex information in a clear way."
+    avatar  : "/assets/images/authors/ifedayo-adesiyan.jpeg"
+Adeyinka Adegbenro:
+    name    : "Adeyinka Adegbenro"
+    bio     : "Adeyinka is a software engineer based in Lagos, Nigeria, currently at BriteCore. She loves researching and writing in-depth technical content."
+    avatar  : "/assets/images/authors/adeyinka_adegbenro.jpg"
