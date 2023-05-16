@@ -4,6 +4,7 @@ categories:
   - Tutorials
 toc: true
 author: Donald Le
+editor: Bala Priya C
 
 internal-links:
  - Python

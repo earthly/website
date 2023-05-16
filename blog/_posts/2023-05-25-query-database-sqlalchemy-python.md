@@ -4,6 +4,7 @@ categories:
   - Tutorials
 toc: true
 author: Mercy Bassey
+editor: Mustapha Ahmad Ayodeji
 
 internal-links:
  - Relational Databases
