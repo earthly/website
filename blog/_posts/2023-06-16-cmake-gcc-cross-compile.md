@@ -14,7 +14,7 @@ internal-links:
  - C++
 ---
 
-**We're [Earthly](https://earthly.dev/). We make building software simpler—and faster—using containerization. This article covers cross-compiling binaries using CMake and GCC. If you want to see what can be done by combining ideas from a `Makefile` and a `Dockerfile` then [check us out](/).**
+**We're [Earthly](https://earthly.dev/). We make building software simpler—and faster—using containerization. This article covers cross-compiling binaries using CMake and GCC. If you want to see what can be done by combining ideas from a `Makefile` and a `Dockerfile`, then [check us out](/).**
 
 Cross-compilation is the process of compiling your program on a different host than the target system. This enables developers to build binaries for different architectures without using those specific architectures themselves. For example, with cross-compilation, you can compile a binary for ARM-based devices like a Raspberry Pi on your standard x86-64 development machine.
 
@@ -46,7 +46,7 @@ GNU make comes preinstalled on most Linux distributions. You can check if it's i
 make --version
 ~~~
 
-If [make](/blog/makefiles-on-windows) is not installed, use the following command to install it on Debian/Ubuntu:
+If make is not installed, use the following command to install it on Debian/Ubuntu:
 
 ~~~{.bash caption=">_"}
 sudo apt-get install make
@@ -106,7 +106,7 @@ Now that you've compiled your program with GCC, compile the program with Make, a
 The working procedure of Make revolves around a simple text file called the Makefile. It contains rules that tell Make how to build the project from scratch:
 
 <div class="wide">
-![Make diagram]({{site.images}}{{page.slug}}/SshQwn3.png)
+![Make diagram]({{site.images}}{{page.slug}}/SshQwn3.png)\
 </div>
 
 To build your simple C++ program using a Makefile, create a `Makefile` and populate it with the following:
@@ -138,7 +138,7 @@ make clean
 
 ## Cross-Compiling With CMake and GCC
 
-Now that you have a simple C++ program running, it's time to cross-compile it to run on a different architecture using CMake. CMake is a popular tool for managing the build process of C and C++ projects, and it has built-in support for cross-compiling.
+Now that you have a simple C++ program running, it's time to cross-compile it to run on a different architecture using CMake. [CMake](/blog/using-cmake/) is a popular tool for managing the build process of C and C++ projects, and it has built-in support for cross-compiling.
 
 Cross-compiling involves configuring CMake to use a cross-compiler and setting the appropriate build settings for the target platform. Once you've done that, you can build your project and produce a binary that can be run on the target platform.
 
@@ -264,9 +264,9 @@ As you can see, this cross-compiled `hello` executable is running as expected on
 
 ![Troubleshooting]({{site.images}}{{page.slug}}/troubleshoot.png)\
 
-Even with the help of tools like CMake and GCC, cross-compiling C++ programs can be challenging. During cross-compiling, common issues you may encounter include compiler incompatibility, lack of readily available libraries, and toolchain conflicts.
+Even with the help of tools like CMake and GCC, cross-compiling C++ programs can be challenging.
 
-If you're facing some of these issues, here are a few tips:
+During cross-compiling, common issues you may encounter include compiler incompatibility, lack of readily available libraries, and toolchain conflicts. If you're facing some of these issues, here are a few tips:
 
 * Make sure you've installed the correct cross-compilation toolchain for your target platform. If you use a different toolchain or an older version, you may encounter compatibility issues.
 * Check that your CMake configuration is correct and make sure you set the right paths and compilers in your `CMakeLists.txt` file.
