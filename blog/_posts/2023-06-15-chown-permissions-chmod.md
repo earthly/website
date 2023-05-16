@@ -13,7 +13,7 @@ internal-links:
  - Permissions
 ---
 
-**We're [Earthly](https://earthly.dev/). We make building software simpler and, therefore, faster. This article is about Linux file permissions and ownership If you enjoy doing things at command line you might like [Earthly](https://earthly.dev/). It's a pretty great open-source build tool.**
+**We're [Earthly](https://earthly.dev/). We make building software simpler and, therefore, faster. This article is about Linux file permissions and ownership. If you enjoy doing things at the command line you might like [Earthly](https://earthly.dev/). It's a pretty great open-source build tool.**
 
 In Linux, file, and directory ownership is a core aspect of the operating system's security and file management model. Each file and directory has an *owner* and a *group* assigned to it. The owner of a file or directory is the user who created it, and the group is a collection of users who share the same permissions for that file or directory.
 
@@ -102,7 +102,9 @@ root@localhost:~# chown notdemo /home/demo/todo.txt
 root@localhost:~# exit
 ~~~
 
-> **Please note:** Your Linux configuration or distribution may have a different method for interacting with or becoming the `root` user. Consult with your specific online documentation on how to use the [`sudo`](https://tldp.org/LDP/GNU-Linux-Tools-Summary/html/c6239.htm) command properly.
+<div class="notice--info">
+Your Linux configuration or distribution may have a different method for interacting with or becoming the `root` user. Consult with your specific online documentation on how to use the [`sudo`](https://tldp.org/LDP/GNU-Linux-Tools-Summary/html/c6239.htm) command properly.
+</div>
 
 Notice how you now need to specify the full path to the file. That's because the root user gets logged into its own home directory and not the home directory of the demo user. The `exit` command breaks you out of the root shell and back into your standard user shell.
 
