@@ -393,6 +393,8 @@ This tutorial explored how to build Java projects with Bazel by showing you how 
 
 While it's only a starting point, you should now you an idea of how Bazel can optimize your workflows and large project builds. To learn more about Bazel's more advanced features, its [official user guides](https://bazel.build/docs) contains a plethora of helpful tutorials and other resources to help you along.
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 * [ ] Create header image in Canva
@@ -401,4 +403,3 @@ While it's only a starting point, you should now you an idea of how Bazel can op
   * Would any images look better `wide` or without the `figcaption`?
 * [ ] Add keywords for internal links to front-matter
 * [ ] Run `link-opp` and find 1-5 places to incorporate links
-* [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
