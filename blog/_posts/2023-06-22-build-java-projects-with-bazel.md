@@ -1,12 +1,17 @@
 ---
-title: "How to Build Java Projects with Bazel"
+title: "How to Build Java Projects with "
 categories:
   - Tutorials
 toc: true
 author: Mdu Sibisi
+editor: Bala Priya C
 
 internal-links:
- - just an example
+ - Java
+ - Bazel
+ - Projects
+ - Build
+ - Optimization
 ---
 
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about building Java projects with Bazel. If you want to see what can be done by combining ideas from a `Makefile` and a `Dockerfile` then [check us out](/).**
@@ -405,6 +410,4 @@ While it's only a starting point, you should now you an idea of how Bazel can op
 
 * [ ] Create header image in Canva
 * [ ] Optional: Find ways to break up content with quotes or images
-
-* [ ] Add keywords for internal links to front-matter
 * [ ] Run `link-opp` and find 1-5 places to incorporate links
