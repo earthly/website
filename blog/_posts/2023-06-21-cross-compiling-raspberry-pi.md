@@ -23,6 +23,8 @@ In this article, you'll learn how to cross-compile a simple C++ program for a Ra
 
 ## Setting Up a Cross-Compiling Environment
 
+![Setting Up]({{site.images}}{{page.slug}}/setup.png)\
+
 Before you get started with this tutorial, make sure you have the following:
 
 * **A machine running Ubuntu:** This is where you'll compile the program and is often referred to as the host machine. Note that although it's possible to cross-compile from any Linux distribution, for simplicity, this article will use some Debian- and Ubuntu-based tools. If you don't have an Ubuntu machine, it's recommended to spin up an Ubuntu virtual machine (VM) to follow along. This tutorial was tested with Ubuntu 22.04.
@@ -508,6 +510,8 @@ Inside the GDB session, set the sysroot and connect to `gdbserver` on the Raspbe
 
 ## Troubleshooting Common Errors
 
+![Troubleshooting]({{site.images}}{{page.slug}}/troubleshoot.png)\
+
 When cross-compiling for Raspberry Pi, you can run into several different errors. Following are some common errors and their fixes:
 
 ### Compiler Not Found
@@ -566,7 +570,3 @@ In this article, you learned how to set up the development environment for cross
 To learn more about cross-compilation with CMake, check out the [official documentation](https://cmake.org/cmake/help/book/mastering-cmake/chapter/Cross%20Compiling%20With%20CM).
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-* [ ] Optional: Find ways to break up content with quotes or images
