@@ -14,6 +14,8 @@ internal-links:
  - Images
 ---
 
+**We're [Earthly.dev](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article covers setting up a private Docker registry on Linux. If you want to know more about building in containers then [check us out](/).**
+
 If you're working with Docker images in an enterprise environment where security is a concern, a private Docker registry is a great solution. While public registries like Docker Hub allow anyone to push and pull images, they have limitations on the number of image pull requests per six hours and limited control over the registry security.
 
 On the other hand, a private registry provides central image management, cost-saving, scanning capabilities, access control, support for external storage, and more security features. With a private registry, you can define your own storage location for all your images and set your own policies to prevent deploying images that don't meet your policy standard.
