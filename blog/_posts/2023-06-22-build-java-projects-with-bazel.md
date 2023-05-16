@@ -288,7 +288,9 @@ bazel build //:Salutations
 
 This builds your project and combines all the targets into a single package. The initial build may take a while, as Bazel has to download the necessary files in addition to compiling your class files. However long it takes, the final output should look similar to this:
 
+<div class="wide">
 ![Bazel Build Command]({{site.images}}{{page.slug}}/JbKsrTB.jpeg)
+</div>
 
 Use your file explorer to navigate to the project folder, and you'll find a collection of new folders and shortcuts. You can run the application by using:
 
@@ -300,7 +302,9 @@ bazel-bin/Salutations
 
 To test your Java application, follow the prompts to enter a username and password.
 
+<div class="wide">
 ![Run the application]({{site.images}}{{page.slug}}/lUgZEV9.jpeg)
+</div>
 
 ### Generating a Dependency Graph with Bazel
 
@@ -351,7 +355,9 @@ digraph mygraph {
 
 Copy and paste the output once again into the Graphviz generator, and the hierarchy should look something like this:
 
+<div class="wide">
 ![Graphviz Bazel graph]({{site.images}}{{page.slug}}/RMXpaaU.jpeg)
+</div>
 
 ## Package the Binary for Deployment
 
@@ -399,7 +405,6 @@ While it's only a starting point, you should now you an idea of how Bazel can op
 
 * [ ] Create header image in Canva
 * [ ] Optional: Find ways to break up content with quotes or images
-* [ ] Verify look of article locally
-  * Would any images look better `wide` or without the `figcaption`?
+
 * [ ] Add keywords for internal links to front-matter
 * [ ] Run `link-opp` and find 1-5 places to incorporate links
