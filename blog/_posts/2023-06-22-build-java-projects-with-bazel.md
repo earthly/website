@@ -1,5 +1,5 @@
 ---
-title: "How to Build Java Projects with "
+title: "How to Build Java Projects with Bazel"
 categories:
   - Tutorials
 toc: true
