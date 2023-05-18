@@ -118,6 +118,8 @@ You now have all the essentials required to build this tutorial's project. Howev
 
 ### Adding Dependencies and Splitting Your Project
 
+![Adding]({{site.images}}{{page.slug}}/adding.png)\
+
 So you've established the foundation of your workspace and build. Now you need to add TextIO as an external dependency, or you'll run into a compilation error.
 
 #### Adding an External Dependency
@@ -125,6 +127,7 @@ So you've established the foundation of your workspace and build. Now you need t
 To add a mechanism to fetch external dependencies and add them to your build, open the  `WORKSPACE` file you created earlier in a source code editor of your choice. Add the following contents to it:
 
 ~~~{ caption="WORKSPACE"}
+
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
 #USE Latest version of RULES_JVM_EXTERNAL
@@ -326,7 +329,8 @@ That should return a long wall of text. Copy the output and paste it into  [Grap
 You can simplify the graph by querying only the dependencies that are relevant to you and the core of your project:
 
 ~~~{.bash caption=">_"}
-bazel query  --notool_deps --noimplicit_deps "deps(//:Salutations)" --output graph 
+bazel query  --notool_deps --noimplicit_deps "deps(//:Salutations)" \
+--output graph 
 ~~~
 
 The above query ignores tooling and implicit dependencies, so the output should now be far more manageable:
@@ -405,7 +409,3 @@ This tutorial explored how to build Java projects with Bazel by showing you how 
 While it's only a starting point, you should now you an idea of how Bazel can optimize your workflows and large project builds. To learn more about Bazel's more advanced features, its [official user guides](https://bazel.build/docs) contains a plethora of helpful tutorials and other resources to help you along.
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-* [ ] Optional: Find ways to break up content with quotes or images
