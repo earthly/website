@@ -408,5 +408,4 @@ While it's only a starting point, you should now you an idea of how Bazel can op
 
 ## Outside Article Checklist
 
-* [ ] Create header image in Canva
 * [ ] Optional: Find ways to break up content with quotes or images
