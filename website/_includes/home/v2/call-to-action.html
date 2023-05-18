@@ -1,30 +1,19 @@
 <div class="flex flex-col items-center max-w-lg mx-auto mb-6 lg:mb-12 -mt-20 px-6 lg:px-10">
-  <div class="text-center text-slate-400 text-xl">
+  <!-- Gavin, 20230510: Added id for homepage-hero-repeatable-vs-consistent experiment -->
+  <div id="homepage-cta-repeatable-vs-consistent-control" class="text-center text-slate-400 text-xl">
     Simple, Fast, Repeatable Builds
   </div>
-  <!-- Gavin, 20230502: Added id for homepage-and-nav-cta-button-copy test -->
-  <a id="homepage-cta-button-copy-control"
-    href="/get-earthly"
+  <!-- Gavin, 20230510: Added for homepage-hero-repeatable-vs-consistent experiment -->
+  <div  class="text-center text-slate-400 text-xl"
+        id="homepage-cta-repeatable-vs-consistent-test"
+        style="display: none;">
+    Simple, Fast, Consistent Builds
+  </div>
+  <a href="/get-earthly"
     class="my-0.5 lg:my-2 py-6 text-2xl text-center cursor-pointer shadow-sm text-white bg-[#2d7e5d] hover:bg-[#2d7e5d] rounded-lg w-full inline-block"
     onclick="homepageGetEarthlyClick()"
   >
-    Try Earthly
-  </a>
-  <!-- Gavin, 20230502: Added for homepage-and-nav-cta-button-copy test -->
-  <a id="homepage-cta-button-copy-test1" style="display: none;"
-    href="/get-earthly"
-    class="my-0.5 lg:my-2 py-6 text-2xl text-center cursor-pointer shadow-sm text-white bg-[#2d7e5d] hover:bg-[#2d7e5d] rounded-lg w-full inline-block"
-    onclick="homepageGetEarthlyClick()"
-  >
-    Get Earthly
-  </a>
-  <!-- Gavin, 20230502: Added for homepage-and-nav-cta-button-copy test -->
-  <a id="homepage-cta-button-copy-test2" style="display: none;"
-    href="/get-earthly"
-    class="my-0.5 lg:my-2 py-6 text-2xl text-center cursor-pointer shadow-sm text-white bg-[#2d7e5d] hover:bg-[#2d7e5d] rounded-lg w-full inline-block"
-    onclick="homepageGetEarthlyClick()"
-  >
-    Install Earthly
+  Install Earthly
   </a>
   <div class="text-center text-slate-400 text-l">
     Earthly is Open Source
