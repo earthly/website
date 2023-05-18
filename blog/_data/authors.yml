@@ -439,3 +439,11 @@ Ansam Yousry:
     name    : "Ansam Yousry"
     bio     : "Ansam Yousry is a highly skilled data engineer with over six years of experience working as a BI analyst. With expertise in ETL tools and SQL, Ansam Yousry has developed an impressive skillset in managing data integration and transforming data into valuable insights that drive business decisions."
     avatar  : "/assets/images/authors/ansam_yousry.jpg"
+Ifedayo Adesiyan:
+    name    : "Ifedayo Adesiyan"
+    bio     : "I am a software engineer with over 3 years of experience in technology and a track record in backend and DevOps engineering. I enjoy communicating complex information in a clear way."
+    avatar  : "/assets/images/authors/ifedayo-adesiyan.jpeg"
+Adeyinka Adegbenro:
+    name    : "Adeyinka Adegbenro"
+    bio     : "Adeyinka is a software engineer based in Lagos, Nigeria, currently at BriteCore. She loves researching and writing in-depth technical content."
+    avatar  : "/assets/images/authors/adeyinka_adegbenro.jpg"

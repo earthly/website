@@ -87,6 +87,18 @@ For linting locally (and in vs code):
 export PATH=/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH
 ```
 
+# Image compression
+
+If you want to resize images for the blog, and recompress them using functions in `functions` on a mac install these:
+
+**Warning: these take a while and install a lot of dependencies**
+
+```
+brew install pngquant
+brew install jpegoptim
+brew install imagemagick
+``
+
 ## Helper Bash Functions
 
 There are helper functions in `util/functions`. Once sourced, `list` lists them.
