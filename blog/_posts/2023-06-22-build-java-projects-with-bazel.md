@@ -155,7 +155,9 @@ http_archive(
 
 The first thing the code does is load an [HTTP Repository Rule](https://bazel.build/rules/lib/repo/http) (`http_archive`). Again, Bazel needs some way to fetch the necessary dependency files, hence the addition of the `rules_jvm_external` extension. It enables Bazel to retrieve the right libraries from the right sources.
 
-> I recommend that you use [the latest version](https://registry.bazel.build/modules/rules_jvm_external) of the extension. At the time of writing, that's version 5.1.
+<div class="notice--info">
+I recommend that you use [the latest version](https://registry.bazel.build/modules/rules_jvm_external) of the extension. At the time of writing, that's version 5.1.
+</div>
 
 You may notice that the code fetches the `bazel_skylib` library, too. The latest versions of the `rule_jvm_external` extension depend on it, so the build would fail without its inclusion.
 
@@ -196,7 +198,9 @@ java_binary (
 
 This adds the `org.beryx.text-io` dependency to your project. The `deps` rule uses the [Canonical](https://developers.google.com/search/docs/crawling-indexing/canonicalization) path to point toward the dependencies. Any slashes and dashes in the package name are replaced with underscores (`_`).
 
-> That's how you add external dependencies, but what about local dependencies? The best way to add a local dependency is to split your project and create separate targets for your local libraries or class files.
+<div class="notice--big--primary">
+**That's how you add external dependencies, but what about local dependencies?** The best way to add a local dependency is to split your project and create separate targets for your local libraries or class files.
+</div>
 
 #### Splitting Your Project and Adding Local Dependencies
 
@@ -306,7 +310,9 @@ Use your file explorer to navigate to the project folder, and you'll find a coll
 bazel-bin/Salutations        
 ~~~
 
-> You may encounter a warning message in regard to a missing `SLF4J` logger. You can ignore this.
+<div class="notice--info">
+⚠You may encounter a warning message in regard to a missing `SLF4J` logger. You can ignore this.
+</div>
 
 To test your Java application, follow the prompts to enter a username and password.
 
