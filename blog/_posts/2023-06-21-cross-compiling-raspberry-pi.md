@@ -27,9 +27,9 @@ In this article, you'll learn how to cross-compile a simple C++ program for a Ra
 
 Before you get started with this tutorial, make sure you have the following:
 
-* **A machine running Ubuntu:** This is where you'll compile the program and is often referred to as the host machine. Note that although it's possible to cross-compile from any Linux distribution, for simplicity, this article will use some Debian- and Ubuntu-based tools. If you don't have an Ubuntu machine, it's recommended to spin up an Ubuntu virtual machine (VM) to follow along. This tutorial was tested with Ubuntu 22.04.
+* **A machine running Ubuntu**: This is where you'll compile the program and is often referred to as the host machine. Note that although it's possible to cross-compile from any Linux distribution, for simplicity, this article will use some Debian- and Ubuntu-based tools. If you don't have an Ubuntu machine, it's recommended to spin up an Ubuntu virtual machine (VM) to follow along. This tutorial was tested with Ubuntu 22.04.
 
-* **A Raspberry Pi:** This should be connected to the local network and accessible using the Secure Shell Protocol (SSH) from the host machine. This article was tested on a Raspberry Pi 4B running Raspbian 10. If you have another board, such as a Raspberry Pi Zero, you need to tweak the commands appropriately. The Raspberry Pi used in this article was available in the local network with `pi.local` hostname and had a `pi` user.
+* **A Raspberry Pi**: This should be connected to the local network and accessible using the Secure Shell Protocol (SSH) from the host machine. This article was tested on a Raspberry Pi 4B running Raspbian 10. If you have another board, such as a Raspberry Pi Zero, you need to tweak the commands appropriately. The Raspberry Pi used in this article was available in the local network with `pi.local` hostname and had a `pi` user.
 
 ### Setting Up SSH
 
