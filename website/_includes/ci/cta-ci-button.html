@@ -2,29 +2,29 @@
   <div class="px-6 lg:px-10 pt-4 max-w-7xl m-auto">
     <div class="bg-[#f1fbff] flex flex-col items-center px-6 rounded-lg">
       <p class="font-semibold pt-14 text-4xl text-center tracking-tight">
-        Get Started with Earthly now!
+        Get Started with Earthly CI now!
       </p>
 
       <p class="pt-6 text-center text-slate-400 text-xl">
-        Simple, Fast, Consistent Builds
+        Simple, Fast, Consistent CI
       </p>
 
       <a
-        href="/get-earthly"
+        href="/signup/earthly-ci/"
         class="w-full max-w-md mb-20 mt-4 py-6 text-2xl text-center cursor-pointer shadow-sm text-white bg-[#2d7e5d] hover:bg-[#2d7e5d] rounded-lg inline-block"
-        onclick="bottomCtaGetEarthlyClick()"
+        onclick="bottomCtaTryEarthlyCiClick()"
       >
-        Install Earthly
+        Try Earthly CI
       </a>
     </div>
   </div>
 </div>
 
 <script>
-  function bottomCtaGetEarthlyClick() {
-    analytics.track("bottom-cta-get-earthly-click", {
-      category: "Get Earthly Click",
-      label: "bottom-cta-get-earthly-click",
+  function bottomCtaTryEarthlyCiClick() {
+    analytics.track("bottom-cta-try-earthly-ci-click", {
+      category: "Earthly CI Sign Up Click",
+      label: "bottom-cta-try-earthly-ci-click",
     });
   }
 </script>
