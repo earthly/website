@@ -12,6 +12,8 @@ internal-links:
  - Optimize
 ---
 
+**We're [Earthly](https://earthly.dev/). We make building software simpler—and faster—using containerization. This article is about Bazel query. If you want to see what can be done by combining ideas from a `Makefile` and a `Dockerfile` then [check us out](/).**
+
 [Bazel](https://earthly.dev/blog/bazel-build/) is a build system that streamlines repetitive tasks to ensure build consistency. Thanks to features such as scalability, multilanguage platform support, [caching](https://earthly.dev/blog/bazel-build-with-caching/), remote executions, and Bazel queries, developers can use Bazel to reproduce deterministic builds and tests for their projects.
 
 More specifically, Bazel queries simplify the process of searching and analyzing the build graph by examining project build files and dependencies. This helps developers gain a better understanding of their dependencies, optimize build performance, and debug builds.
@@ -72,8 +74,6 @@ bazel query "buildfiles(//path/to:your_rule)" --output=build
 ~~~
 
 ## Overview of Bazel Query Language Concepts
-
-![Overview]({{site.images}}{{page.slug}}/overview.png)\
 
 [Bazel Query Language (BQL)](https://docs-staging.bazel.build/5813/versions/3.7.0/query.html) follows a set of concepts to query your build graph. A build graph is a collection of target dependencies that represents the dependencies between the targets. BQL concepts allow you to write expressions that evaluate a partially ordered set of [targets or a graph of targets](https://bazel.build/extending/aspects) as the only data type.
 
@@ -172,7 +172,9 @@ This Bazel workspace has a `//apps/node_web` Bazel target. If you want to find d
 bazel query "deps(//apps/node_web)"
 ~~~
 
-> **Please note:** Targets that `//apps/node_web` depend on are part of the result of this query, even though you didn't include their labels in your build query. It explains the Bazel query soundness concept.
+<div class="notice--info">
+Targets that `//apps/node_web` depend on are part of the result of this query, even though you didn't include their labels in your build query. It explains the Bazel query soundness concept.
+</div>
 
 <div class="wide">
 ![Dependencies]({{site.images}}{{page.slug}}/D1T2tGs.png)
