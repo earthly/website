@@ -439,6 +439,10 @@ Ansam Yousry:
     name    : "Ansam Yousry"
     bio     : "Ansam Yousry is a highly skilled data engineer with over six years of experience working as a BI analyst. With expertise in ETL tools and SQL, Ansam Yousry has developed an impressive skillset in managing data integration and transforming data into valuable insights that drive business decisions."
     avatar  : "/assets/images/authors/ansam_yousry.jpg"
+Thinus Swart:
+    name    : "Thinus Swart"
+    bio     : "Thinus has been interested in computers and technology ever since the day he painstakingly typed out every line from a library book about BASIC games into a ZX Spectrum as a young child. From there, he's been employed as a developer, a network admin, a database admin, and a Linux admin, all in the pursuit of building up his knowledge. He considers himself a 'jack-of-all-trades, master of some'. He is currently employed as a cybersecurity specialist at a large financial services company in South Africa, making full use of his Splunk Architect certification to analyze the terabytes of data that a company of that size can generate daily."
+    avatar  : "/assets/images/authors/thinus-swart.jpg"
 Hitesh Jethva:
     name    : "Hitesh Jethva"
     bio     : "Hitesh Jethva is a Linux system administrator and technical writer with over 15 years of experience in Linux, DevOps, and Kubernetes. He’s an active blogger and technical writer who loves Linux, Docker, DevOps, and the cloud."
