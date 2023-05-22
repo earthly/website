@@ -30,10 +30,9 @@ script.addEventListener("load", function () {
     // Wait for features to be available
     gb.loadFeatures({ autoRefresh: true, timeout: 2000 }).then(() => {
       // console.log("Features loaded");
-      if(document.getElementById("homepage-hero-repeatable-vs-consistent-control")){
+      /*if(document.getElementById("homepage-hero-repeatable-vs-consistent-control")){
         //console.log("control element rendered");
         
-        // Gavin, 20230510: Added for homepage-hero-repeatable-vs-consistent experiment
         const repVsConsOpt = gb.isOn("homepage-hero-repeatable-vs-consistent")
         if(repVsConsOpt) {
           document.getElementById("homepage-hero-repeatable-vs-consistent-control").style.display = "none";
@@ -46,7 +45,7 @@ script.addEventListener("load", function () {
           document.getElementById("homepage-cta-repeatable-vs-consistent-control").style.display = "block";
           document.getElementById("homepage-cta-repeatable-vs-consistent-test").style.display = "none";
         }
-      }
+      }*/
     });
   });
 });
