@@ -56,7 +56,7 @@ finally:
 
 The above code opens a file called `sample2.txt` in a similar fashion as the previous example, but here we use the `write()` method inside a `try` block and the `close()` method inside the `finally` block. The `finally` block ensures that the file closes properly if an exception occurs or not.
 
-> Learn more about exception handling in Python in this [tutorial](https://python.plainenglish.io/exception-handling-in-python-faad6a9d6c17).
+> Learn more about exception handling in Python in this [tutorial](/blog/error-handling-in-python/).
 
 ### File Handling using the `with` Statement
 
