@@ -616,6 +616,8 @@ Shell scripts can reduce errors, increase productivity, and improve system relia
 
 Choosing the correct tool for the job is critical since shell scripting has limitations, just like any tool. Despite this, mastering shell scripting can be an excellent way to improve your developer or system administrator skills. It can lead to new opportunities in DevOps and automation.
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
@@ -625,4 +627,3 @@ Choosing the correct tool for the job is critical since shell scripting has limi
 - [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
