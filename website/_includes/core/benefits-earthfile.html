@@ -30,15 +30,23 @@
               <code class="text-sm sm:text-md pt-6 lg:pt-10 lg:pl-6 pb-6 font-mono block bg-[#111214] text-gray-100 min-h-[310px] lg:min-h-[350px]">
                 <div class=" rounded-lg pb-4 text-white text-sm font-mono relative">
                   <div class="cursor-default pl-6"><span class="text-[#7dcfff]">VERSION</span> 0.7</div> 
-                  <div class="cursor-default pl-6"><span class="text-[#7dcfff]">PROJECT</span> my-org/my-project</div>
-                  <div class="mt-3 cursor-default pl-6"><span class="text-[#7dcfff]">FROM</span> alpine:3.15</div>
-                  <div class="mt-3 text-[#b395ed] cursor-default pl-6">my-pipeline:</div>
-                  <div class="pl-10 cursor-default"><span class="text-[#7dcfff]">PIPELINE</span></div>
-                  <div class="pl-10 cursor-default"><span class="text-[#7dcfff]">TRIGGER</span> push main</div>
-                  <div class="pl-10 cursor-default"><span class="text-[#7dcfff]">TRIGGER</span> pr main</div>
-                  <div class="pl-10 cursor-default "><span class="text-[#7dcfff]">BUILD</span> +my-build </div>
-                  <div class="mt-3 text-[#b395ed] cursor-default pl-6">my-build:</div>
-                  <div class="pl-10 cursor-default"><span class="text-[#7dcfff] ">RUN</span> echo Hello world</div>
+                  <div class="cursor-default pl-6"><span class="text-[#7dcfff]">FROM</span> golang:1.13-alpine3.11</div>
+                  <div class="cursor-default pl-6"><span class="text-[#7dcfff]">RUN</span> apk --update --no-cache add git</div>
+                  <div class="cursor-default pl-6"><span class="text-[#7dcfff]">WORKDIR</span> /go-example</div>
+
+                  <div class="mt-3 text-[#b395ed] cursor-default pl-6">all:</div>
+                  <div class="pl-10 cursor-default"><span class="text-[#7dcfff]">BUILD</span> +build</div>
+                  <div class="pl-10 cursor-default"><span class="text-[#7dcfff]">BUILD</span> +lint</div>
+
+                  <div class="mt-3 text-[#b395ed] cursor-default pl-6">build:</div>
+                  <div class="pl-10 cursor-default"><span class="text-[#7dcfff]">COPY</span> main.go .</div>
+                  <div class="pl-10 cursor-default"><span class="text-[#7dcfff]">RUN</span> go build -o build/go-example main.go</div>
+                  <div class="pl-10 cursor-default"><span class="text-[#7dcfff]">SAVE ARTIFACT</span> build/go-example <span class="text-[#7dcfff]">AS LOCAL</span> build/go-example</div>
+
+                  <div class="mt-3 text-[#b395ed] cursor-default pl-6">lint:</div>
+                  <div class="pl-10 cursor-default"><span class="text-[#7dcfff]">RUN</span> go get golang.org/x/lint/golint</div>
+                  <div class="pl-10 cursor-default"><span class="text-[#7dcfff]">COPY</span> main.go .</div>
+                  <div class="pl-10 cursor-default"><span class="text-[#7dcfff]">RUN</span> golint -set_exit_status ./...</div>
                 </div>
               </code>
             </div>
