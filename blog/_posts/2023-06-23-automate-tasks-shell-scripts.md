@@ -10,7 +10,7 @@ internal-links:
  - Shell Scripts
  - Autamating Tasks
  - Bash
- - Shell
+ - Shell Scripts
 ---
 
 **We're [Earthly.dev](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about how to automate common tasks with shell scripts but if you're interested in a different approach to building and packaging software then [check us out](/).**
