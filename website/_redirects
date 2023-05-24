@@ -19,7 +19,7 @@
 /blog/canary-dep-in-k8s /blog/canary-deployment-in-k8s
 /blog/setup-dstrbtd-tracing-k8s /blog/k8s-distributed-tracing
 /blog/guide-rolebased-ctrl/ /blog/k8s-role-based-access-control
-/blog/portainer-for-dcm /blog/portainer-docker-container-management
+/blog/portainer-for-dcm /blog/portainer-for-docker-container-management
 /blog/k8cluster-mnging-blding-kubeadm /blog/managing-k8s-with-kubeadm
 /blog/helm-k8s-mngr /blog/helm-k8s-package-manager
 /blog/docker-virutal-machine /blog/docker-vs-vm
