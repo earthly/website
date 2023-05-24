@@ -383,6 +383,9 @@ cpu
 premade
 triggerer
 
+deserialized
+debootstrap
+
 liveness
 Liveness
 overutilization
@@ -391,3 +394,8 @@ overprovisioning
 superset
 transpiles
 nodejs
+
+Raspbian
+sysroot
+Raspeberry
+gdbserver
