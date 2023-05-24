@@ -290,7 +290,7 @@ This task demonstrates how shell scripts can efficiently process data. It introd
 
 Check out [this article](https://earthly.dev/blog/linux-text-processing-commands) to learn more about text-processing commands in Linux.
 
-<div>
+</div>
 
 ## Task 3: Automating Log Analysis
 
@@ -626,7 +626,4 @@ Choosing the correct tool for the job is critical since shell scripting has limi
 
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
