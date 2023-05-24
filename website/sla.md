@@ -1,6 +1,6 @@
 ---
 title: Earthly Service Level Agreement
-layout: agreement
+layout: page
 ---
 
 <link rel="stylesheet" href="/assets/css/subpage.css">
