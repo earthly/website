@@ -14,7 +14,7 @@ internal-links:
 
 Are you a Python programmer learning to work with PostgreSQL? If so, this tutorial on **psycopg2**, the PostgreSQL connector for Python, is for you. You can connect to PostgreSQL databases and run queries—all from within your Python script—using the psycopg2 adapter.
 
-In this tutorial, you'll learn the basics of using `psycopg2` in Python to do the following:
+In this tutorial, you'll learn the basics of using psycopg2 in Python to do the following:
 
 - Connect to a PostgreSQL database
 - Run SQL queries against a database: create tables, insert, retrieve, and delete records
@@ -86,7 +86,7 @@ In practice, you should store the details of the database and the credentials re
 
 **But why is this helpful?** When working on a project, you may need to connect to multiple databases or connect to a database from more than one module. In such cases, if the database credentials change, you can only modify the contents of the config file *without* introducing breaking changes elsewhere.
 
-Also, exposing sensitive info like passwords in source code is a security risk. So you should always store the credentials in a config file or set them as [environment variables](/blog/bash-variables) whose values you can fetch as needed.
+Also, exposing sensitive info like passwords in source code is a security risk. So you should always store the credentials in a config file or set them as [environment variables](/blog/bash-variables/#environmental-variables) whose values you can fetch as needed.
 </div>
 
 ### How to Parse Config Files in Python
