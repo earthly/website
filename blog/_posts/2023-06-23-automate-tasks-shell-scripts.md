@@ -4,6 +4,7 @@ categories:
   - Tutorials
 toc: true
 author: Prince Onyeanuna
+editor: Mustapha Ahmad Ayodeji
 
 internal-links:
  - Automate
