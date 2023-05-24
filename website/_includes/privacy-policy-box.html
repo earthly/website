@@ -1,0 +1,43 @@
+<div
+  id="privacy-policy-box"
+  class="bg-[#2c2b2b] border border-[#979797] fixed bottom-4 left-4 right-4 hidden max-w-xl px-9 py-8 rounded-[20px] z-50"
+>
+  <p class="leading-7 sm:ml-3.5 text-white tracking-tight">
+    We care about your data, and we’d like to use cookies to make your
+    experience better.
+    <a class="underline" href="/privacy-policy">Privacy policy</a>
+  </p>
+
+  <div class="flex sm:ml-1.5 mt-9">
+    <button
+      class="w-[166px] bg-[#2d7e5d] cursor-pointer py-2 rounded-lg text-center text-lg text-white"
+      onclick="handleClick(true)"
+    >
+      Okay!
+    </button>
+
+    <button
+      class="w-[166px] border border-[#979797] cursor-pointer ml-4 py-2 rounded-lg text-center text-lg text-white"
+      onclick="handleClick(false)"
+    >
+      No, thanks
+    </button>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function () {
+    var privacyPolicyCookie = getCookie("privacyPolicy");
+    if (privacyPolicyCookie != "true") {
+      $("#privacy-policy-box").removeClass("hidden");
+    }
+  });
+
+  function handleClick(accepted) {
+    $("#privacy-policy-box").addClass("hidden");
+    if (accepted) {
+      setCookie("privacyPolicy", accepted, 365);
+      location.reload();
+    }
+  }
+</script>
