@@ -34,6 +34,8 @@ To fully utilize this article, you should have basic knowledge of software devel
 
 ## Task Selection
 
+![Task]({{site.images}}{{page.slug}}/task.png)\
+
 Developers can automate many typical software development tasks with shell scripts. These tasks range from simple file backups to complicated data processing and system maintenance. This article focuses on five tasks developers often perform and can be automated using shell scripts.
 
 Common software development tasks include:
@@ -51,6 +53,8 @@ Common software development tasks include:
 The tasks above were chosen because they are common procedures in software development and can be performed using shell scripts. By automating these tasks, developers can save time, reduce errors, and increase productivity. The following section is a step-by-step guide on automating each task using shell scripts.
 
 ## Task 1: Automating File Backup
+
+![Backup]({{site.images}}{{page.slug}}/backup.png)\
 
 File backups prevent data loss due to unexpected incidents. Performing a backup manually can expose data to the possibility of human errors, such as the omission of important files, incorrect selection, inconsistent backup schedules, or failure to configure the backup system correctly. This can also be time-consuming, especially when you regularly back up large data volumes. Automating file backup can simplify this task.
 
@@ -185,6 +189,8 @@ With this procedure, you can back up files faster and more efficiently.
 
 ## Task 2: Automating Data Processing
 
+![Processing]({{site.images}}{{page.slug}}/process.png)\
+
 Processing large amounts of data can be time-consuming and error-prone if done manually. However, shell scripts enable automated data processing, reducing mistakes and saving time.
 
 ### Concepts Covered
@@ -298,6 +304,8 @@ Check out [this article](https://earthly.dev/blog/linux-text-processing-commands
 
 ## Task 3: Automating Log Analysis
 
+![Analysis]({{site.images}}{{page.slug}}/analysis.png)\
+
 Any software system needs log files to keep track of significant events and diagnose problems. In this task, you will automate log file analysis using shell scripts.
 
 ### Concepts Covered
@@ -406,6 +414,8 @@ The following steps will guide you in creating an automated log analysis script:
    <div>
 
 ## Task 4: Automating System Maintenance
+
+![Maintenance]({{site.images}}{{page.slug}}/maintenance.png)\
 
 Among the most critical aspects of software development is system maintenance. System maintenance involves a set of tasks and processes that are performed regularly to keep the system running smoothly and efficiently.
 
@@ -552,6 +562,8 @@ Automating system maintenance tasks using shell scripts can save time and reduce
 
 ## Task 5: Automating Local Application Deployment with Docker
 
+![Deployment]({{site.images}}{{page.slug}}/deploy.png)\
+
 Software deployment involves moving an application from development to production. It can be complex and time-consuming, but it is necessary for software development. Automation can streamline deployment and reduce errors.
 
 ### Concepts Covered
@@ -629,4 +641,3 @@ Choosing the correct tool for the job is critical since shell scripting has limi
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
