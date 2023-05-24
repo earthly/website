@@ -641,7 +641,7 @@ The steps below can be used to create an automated deployment script:
       When you're done, your script should look like this:
 
       ~~~{ caption="Task 5 - Automating Local Application Deployment with Docker.sh"}
-      
+
          #!/bin/bash
 
          git clone <repository-url>
@@ -665,7 +665,3 @@ Shell scripts can reduce errors, increase productivity, and improve system relia
 Choosing the correct tool for the job is critical since shell scripting has limitations, just like any tool. Despite this, mastering shell scripting can be an excellent way to improve your developer or system administrator skills. It can lead to new opportunities in DevOps and automation.
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-- [ ] Create header image in Canva
