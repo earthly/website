@@ -1,5 +1,5 @@
 ---
-title: "A guide to swiftly managing your Kubernetes resources using K9s"
+title: "How to Manage Kubernetes Resources Using K9s"
 categories:
   - Tutorials
 toc: true

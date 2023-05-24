@@ -17,7 +17,7 @@ Streamlit is an open-source Python framework that lets you turn data scripts int
 
 You need almost no experience with building front ends to get started with Streamlit. It is designed to do the heavy lifting of generating an intuitive and responsive interface from a simple Python script.
 
-This tutorial will teach you how to build a dashboard for a [Github](/blog/ci-comparison) dataset of movie records. You'll then learn how to deploy the web app and interactively explore the dataset, visualize, and retrieve information from it.
+This tutorial will teach you how to build a dashboard for a Github dataset of movie records. You'll then learn how to deploy the web app and interactively explore the dataset, visualize, and retrieve information from it.
 
 ## Why Should You Use Streamlit?
 
@@ -68,7 +68,7 @@ You can find the code for this project [on Github](https://github.com/barrisam/I
 
 ### Adding a Matplotlib Chart
 
-`st.pyplot()` is the Streamlit function to create figure objects and plots. To create a [matplotlib](/blog/plotting-rainfall-data-with-python-and-matplotlib) visualization, you have to perform data analysis and then create the visualization. For this section, we will use [this movie industry dataset from
+`st.pyplot()` is the Streamlit function to create figure objects and plots. To create a matplotlib visualization, you have to perform data analysis and then create the visualization. For this section, we will use [this movie industry dataset from
 Github](https://github.com/danielgrijalva/movie-stats).
 
 This dataset contains over 7000 movie entries—from the period 1986-2016—scraped from IMDb (Internet Movie Database). It lists movies of different genres and countries. I'll be using this dataset to create different interactive plots for this tutorial.
@@ -170,7 +170,7 @@ Calling the `count()` method on the dataframe: `movies_data.count()` returns the
 movies_data.dropna()
 ~~~
 
-We dropped all columns with missing data using `movies_data.dropna()`. The output is a new dataframe. Next, we'll create a [Matplotlib](/blog/stop-using-pie-charts) bar chart that shows the average movie budget of movies in different genres.
+We dropped all columns with missing data using `movies_data.dropna()`. The output is a new dataframe. Next, we'll create a Matplotlib bar chart that shows the average movie budget of movies in different genres.
 
 ~~~{.python caption="data_analysis.py"}
 st.write("""
@@ -182,7 +182,7 @@ genre = avg_budget['genre']
 avg_bud = avg_budget['budget']
 ~~~
 
-The `groupby` method groups data by categories using the columns of a dataset and applies a function to it. Here we group by the 'genre' and the 'budget'. And we apply the  `mean()` and the `round()` functions. The `mean()` function returns the average of a list of numbers while the `round()` function rounds up digits and returns a float. The `reset_index()` method resets the index of an updated dataframe; creating a new row index that starts at 0. Resetting indexes is important so [pandas](/blog/plotting-rainfall-data-with-python-and-matplotlib) can find the indexes of elements.
+The `groupby` method groups data by categories using the columns of a dataset and applies a function to it. Here we group by the 'genre' and the 'budget'. And we apply the  `mean()` and the `round()` functions. The `mean()` function returns the average of a list of numbers while the `round()` function rounds up digits and returns a float. The `reset_index()` method resets the index of an updated dataframe; creating a new row index that starts at 0. Resetting indexes is important so pandas can find the indexes of elements.
 
 ~~~{.python caption="data_analysis.py"}
 fig = plt.figure(figsize = (19, 10))
@@ -194,7 +194,7 @@ plt.title('Matplotlib Bar Chart Showing the Average \
 Budget of Movies in Each Genre')
 ~~~
 
-[Matplotlib](/blog/plotting-rainfall-data-with-python-and-matplotlib) has a function called `show()` that creates a figure object. In Streamlit, this line should be replaced with `st.pyplot(variable_name)` where `variable_name` is the variable of visualization.
+Matplotlib has a function called `show()` that creates a figure object. In Streamlit, this line should be replaced with `st.pyplot(variable_name)` where `variable_name` is the variable of visualization.
 
 ~~~{.python caption="data_analysis.py"}
 st.pyplot(fig)
@@ -215,7 +215,7 @@ Streamlit offers a couple of options to lay out elements on a screen. Columns ar
 
 Columns in Streamlit operate just as they do in documents and on web pages. They are also highly responsive and automatically resize on different screens.
 
-To create columns, simply assign them to the variables that match the number of columns you need. Here, `col1` and   `col2` are the variable names because we need two columns.
+To create columns, simply assign them to the variables that match the number of columns you need. Here, `col1` and `col2` are the variable names because we need two columns.
 
 ~~~{.python caption="data_analysis.py"}
 col1, col2 = st.columns(2)
@@ -251,7 +251,7 @@ Widgets are the elements that allow us to interact with data. Streamlit offers d
 
 ### Why Are Widgets Important?
 
-Widgets are important to interact with the rendered plots and charts. Before starting out, determine which widgets will be best for the project. A couple of steps are needed to [make](/blog/using-cmake) a widget interactive. We'll look at them as we create widgets.
+Widgets are important to interact with the rendered plots and charts. Before starting out, determine which widgets will be best for the project. A couple of steps are needed to make a widget interactive. We'll look at them as we create widgets.
 
 Here's an overview of widgets used in this tutorial:
 

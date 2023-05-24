@@ -275,3 +275,25 @@ p > a:visited {
   padding-left: 48px;
   padding-top: 12px;
 }
+
+.agreement-table {
+  width: 100%;
+  border: 1px solid #000;
+}
+
+.agreement-table * {
+  font-size: 18px;
+  line-height: 2rem;
+  color: rgb(75, 85, 99);
+}
+
+.agreement-table th {
+  border-bottom: 1px solid #000;
+  padding: 8px;
+}
+
+.agreement-table td {
+  border-bottom: 1px solid #000;
+  border-right: 1px solid #000;
+  padding: 8px;
+}
