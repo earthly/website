@@ -84,13 +84,13 @@ To automate the backup of a file using a bash script, follow the steps below:
 
 1. Create a file with the  `.sh` extension in your terminal and open it using any text editor such as [Vim](https://www.vim.org/) or [Nano](https://www.nano-editor.org/). For example, you can call this file `backup.sh`:
 
-   ~~~
+   ~~~{.bash caption=">_"}
       vim backup.sh
    ~~~
 
 2. Define the source and destination variables:
 
-   ~~~
+   ~~~{ caption="backup.sh"}
       #!/bin/bash
 
       SRC_DIR=/path/to/source/directory
@@ -105,7 +105,7 @@ To automate the backup of a file using a bash script, follow the steps below:
 
 3. Check if the destination directory exists using a conditional statement. If the directory doesn't exist, create one using the [`mkdir` command](https://en.m.wikipedia.org/wiki/Mkdir):
 
-   ~~~
+   ~~~{ caption="backup.sh"}
       if [ ! -d "$DST_DIR" ]; then
          mkdir -p "$DST_DIR"
       fi
@@ -123,7 +123,7 @@ To automate the backup of a file using a bash script, follow the steps below:
 
 4. Add error handling to the script:
 
-   ~~~
+   ~~~{ caption="backup.sh"}
       if [ ! -d "$SRC_DIR" ]; then
          echo "Error: Source directory does not exist"
          exit 1
@@ -132,7 +132,8 @@ To automate the backup of a file using a bash script, follow the steps below:
 
 5. Copy the files from the source directory to the destination directory using a loop:
 
-   ~~~
+   ~~~{ caption="backup.sh"}
+
       for file in "$SRC_DIR"/*; do # Loops over each file in the SRC_DIR.
          cp "$file" "$DST_DIR" # Copy the files to the DST_DIR.
       done
@@ -150,19 +151,19 @@ To automate the backup of a file using a bash script, follow the steps below:
 
 7. Update the script permissions using `chmod`. The command `chmod u+x backup.sh` grants the user of the `backup.sh` file [execute permission](https://superuser.com/questions/117704/what-does-the-execute-permission-do). It allows the user to execute the script as a program. The `u` stands for user, and `+x` adds the execute permission to the file for the user:
 
-   ~~~
+   ~~~{ caption="backup.sh"}
       chmod u+x backup.sh
    ~~~
 
 8. Run the script to backup files:
 
-   ~~~
+   ~~~{ caption="backup.sh"}
       ./backup.sh
    ~~~
 
    When you're done, your script should look like this:
 
-   ~~~
+   ~~~{ caption="backup.sh"}
       #!/bin/bash
       
       SRC_DIR=/path/to/source/directory
@@ -205,7 +206,8 @@ To create an automated data processing script, follow the steps below:
 
 1. Write a function to process the data. This function should take the input data as an argument and return the processed data:
 
-   ~~~
+   ~~~{ caption="Task 2 - Automating Data Processing.sh"}
+
       #!/bin/bash
 
       # Define the processing function
@@ -237,7 +239,8 @@ To create an automated data processing script, follow the steps below:
 
    Here's an example of how you would call the `process_data` function and pass an input file as an argument:
 
-   ~~~
+   ~~~{ caption="Task 2 - Automating Data Processing.sh"}
+
    input_file="path/to/input/file.txt"
    process_data "$input_file"
    ~~~
@@ -250,7 +253,8 @@ To create an automated data processing script, follow the steps below:
 
 2. Write a loop to process multiple files. This loop should call the processing function on each file:
 
-   ~~~
+   ~~~{ caption="Task 2 - Automating Data Processing.sh"}
+
       # Loop through each file and call the processing function
       for file in /path/to/files/*.txt; do
          # Call the processing function on the current file
@@ -269,7 +273,8 @@ Here's an explanation of the code block above:
 
 When you're done, your script should look like this:
 
-~~~
+~~~{ caption="Task 2 - Automating Data Processing.sh"}
+
     #!/bin/bash
 
     # Define the processing function
@@ -329,7 +334,8 @@ The following steps will guide you in creating an automated log analysis script:
 
 1. Define the log file to be analyzed using a variable:
 
-   ~~~
+   ~~~{ caption="Task 3 - Automating Log Analysis.sh"}
+
       #!/bin/bash
 
       # Define the log file
@@ -338,7 +344,8 @@ The following steps will guide you in creating an automated log analysis script:
 
 2. Use the `[grep](https://man7.org/linux/man-pages/man1/grep.1.html)` command to search for specific keywords or patterns in the log file:
 
-   ~~~
+   ~~~{ caption="Task 3 - Automating Log Analysis.sh"}
+
       # Search for errors in the log file
       ERRORS=$(grep "error" "$LOG_FILE")
    ~~~
@@ -353,7 +360,8 @@ The following steps will guide you in creating an automated log analysis script:
 
 3. Use the `[sed](https://earthly.dev/blog/sed-find-replace/)` command to modify or filter log file data. The code below aims to remove any leading text before the string error and any trailing text after the string at:
 
-   ~~~
+   ~~~{ caption="Task 3 - Automating Log Analysis.sh"}
+
       # Filter out irrelevant data
       ERRORS=$(echo "$ERRORS" | sed -e "s/.*error: //" -e "s/ at .*$//")
    ~~~
@@ -362,7 +370,8 @@ The following steps will guide you in creating an automated log analysis script:
 
 4. Use the [`wc` command](https://man7.org/linux/man-pages/man1/wc.1p.html) to count the number of errors:
 
-   ~~~
+   ~~~{ caption="Task 3 - Automating Log Analysis.sh"}
+
       # Count the number of errors
       ERROR_COUNT=$(echo "$ERRORS" | wc -l)
    ~~~
@@ -377,7 +386,8 @@ The following steps will guide you in creating an automated log analysis script:
 
 5. Write the log analysis output to the file or display it in the terminal:
 
-   ~~~
+   ~~~{ caption="Task 3 - Automating Log Analysis.sh"}
+
       # Display the results
       echo "Found $ERROR_COUNT errors:"
       echo "$ERRORS" > errors.txt
@@ -385,7 +395,8 @@ The following steps will guide you in creating an automated log analysis script:
 
    In the end, your script should look like this:
 
-   ~~~
+   ~~~{ caption="Task 3 - Automating Log Analysis.sh"}
+
       #!/bin/bash
 
       # Define the log file
@@ -443,15 +454,18 @@ You can use the following steps to create an automated system maintenance script
 
 1. Get user confirmation from the user:
 
-      ~~~
+      ~~~{ caption="Task 4 - Automating System Maintenance.sh"}
+
          #!/bin/bash
 
          # Get user confirmation before proceeding
-         read -p "This script will perform system maintenance tasks. Are you sure you want to proceed? (y/n) " confirm
+         read -p "This script will perform system maintenance tasks. 
+         Are you sure you want to proceed? (y/n) " confirm
       
          # Check if user confirmation is not "y" or "Y"  
          if [[ $confirm != [yY] ]]; then
-            echo "Aborting script." # Print a message indicating script abortion
+            echo "Aborting script." 
+            # Print a message indicating script abortion
             exit 1 # Exit the script
          fi
       ~~~
@@ -465,21 +479,24 @@ You can use the following steps to create an automated system maintenance script
 
 2. Define the `log_file` location in a variable:
 
-      ~~~
+      ~~~{ caption="Task 4 - Automating System Maintenance.sh"}
+
          # Define variables
          log_file="/var/log/system_maintenance.log"
       ~~~
 
 3. Create a log file if it doesn't exist:
 
-      ~~~
+      ~~~{ caption="Task 4 - Automating System Maintenance.sh"}
+
          # Create a log file if it doesn't exist
          touch $log_file
       ~~~
 
 4. Check the system disk usage and append the result to the log file:
 
-      ~~~
+      ~~~{ caption="Task 4 - Automating System Maintenance.sh"}
+
          df -h >> $log_file
       ~~~
 
@@ -491,7 +508,8 @@ You can use the following steps to create an automated system maintenance script
 
 5. Remove the old files:
 
-      ~~~
+      ~~~{ caption="Task 4 - Automating System Maintenance.sh"}
+
          # Remove old log files
          find /var/log/ -type f -name "*.log" -mtime +30 -delete >> $log_file
       ~~~
@@ -506,7 +524,8 @@ You can use the following steps to create an automated system maintenance script
 
 6. Restart the Apache webserver service:
 
-      ~~~
+      ~~~{ caption="Task 4 - Automating System Maintenance.sh"}
+
          service apache2 restart >> $log_file
       ~~~
 
@@ -517,9 +536,11 @@ You can use the following steps to create an automated system maintenance script
 
 7. Send an email to the system admin:
 
-      ~~~
+      ~~~{ caption="Task 4 - Automating System Maintenance.sh"}
+
          # Send email to the sysadmin with the log file attached
-         mailx -a $log_file -s "System maintenance report" sysadmin@example.com
+         mailx -a $log_file -s "System maintenance report" \
+         sysadmin@example.com
       ~~~
 
       - [`mailx`](https://docs.oracle.com/cd/E19683-01/806-7612/mail-1/index.html): This command is used to send emails from the command line.
@@ -529,11 +550,12 @@ You can use the following steps to create an automated system maintenance script
 
       The complete script looks like the following:
 
-      ~~~
+      ~~~{ caption="Task 4 - Automating System Maintenance.sh"}
          #!/bin/bash
 
          # Get user confirmation before proceeding
-         read -p "This script will perform system maintenance tasks. Are you sure you want to proceed? (y/n) " confirm
+         read -p "This script will perform system maintenance tasks. 
+         Are you sure you want to proceed? (y/n) " confirm
 
          if [[ $confirm != [yY] ]]; then
             echo "Aborting script."
@@ -555,7 +577,8 @@ You can use the following steps to create an automated system maintenance script
          service apache2 restart >> $log_file
 
          # Send an email to the sysadmin with the log file attached
-         mailx -a $log_file -s "System maintenance report" sysadmin@example.com
+         mailx -a $log_file -s "System maintenance report" \
+         sysadmin@example.com
       ~~~
 
 Automating system maintenance tasks using shell scripts can save time and reduce errors. Furthermore, introducing user input and error handling can create robust and reliable shell scripts that simplify our system's maintenance.
@@ -584,7 +607,8 @@ The steps below can be used to create an automated deployment script:
 
 1. Clone the Git repository containing your application code:
   
-      ~~~
+      ~~~{ caption="Task 5 - Automating Local Application Deployment with Docker.sh"}
+
          #!/bin/bash
 
          git clone <repository-url>
@@ -592,20 +616,23 @@ The steps below can be used to create an automated deployment script:
 
 2. Set environment variables in your shell script to store sensitive information such as API keys and passwords:
 
-      ~~~
+      ~~~{ caption="Task 5 - Automating Local Application Deployment with Docker.sh"}
+
          export DB_PASSWORD=<password>
          export API_KEY=<api-key>
       ~~~
 
 3. Build a Docker image of your application using a Dockerfile:
 
-      ~~~
+      ~~~{ caption="Task 5 - Automating Local Application Deployment with Docker.sh"}
+
          docker build -t <image-name> .
       ~~~
 
 4. Run the Docker container with the following command:
 
-      ~~~
+      ~~~{ caption="Task 5 - Automating Local Application Deployment with Docker.sh"}
+
          docker run -p 8080:8080 -e DB_PASSWORD=$DB_PASSWORD -e API_KEY=$API_KEY <image-name>
       ~~~
 
@@ -613,7 +640,8 @@ The steps below can be used to create an automated deployment script:
 
       When you're done, your script should look like this:
 
-      ~~~
+      ~~~{ caption="Task 5 - Automating Local Application Deployment with Docker.sh"}
+      
          #!/bin/bash
 
          git clone <repository-url>
