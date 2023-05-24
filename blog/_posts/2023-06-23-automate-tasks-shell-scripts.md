@@ -6,7 +6,11 @@ toc: true
 author: Prince Onyeanuna
 
 internal-links:
- - just an example
+ - Automate
+ - Shell Scripts
+ - Autamating Tasks
+ - Bash
+ - Shell
 ---
 
 **We're [Earthly.dev](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about how to automate common tasks with shell scripts but if you're interested in a different approach to building and packaging software then [check us out](/).**
@@ -626,4 +630,3 @@ Choosing the correct tool for the job is critical since shell scripting has limi
 
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Add keywords for internal links to front-matter
