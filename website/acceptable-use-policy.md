@@ -1,6 +1,6 @@
 ---
 title: Earthly Acceptable Use Policy Attachment
-layout: agreement
+layout: page
 ---
 
 <link rel="stylesheet" href="/assets/css/subpage.css">
