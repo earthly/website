@@ -1,5 +1,5 @@
 ---
-title: "The Difference Between Docker and VMs"
+title: "Docker vs. Virtual Machine: What Are the Differences?"
 categories:
   - Tutorials
 toc: true
