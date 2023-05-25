@@ -498,3 +498,31 @@ span.syntax-label-wide {
     display: none;
   }
 }
+
+div.sourceCode > pre.sourceCode {
+  padding-top: 3em;
+
+  .toolbar {
+    background-color: #4b5563;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    color: rgba(255, 255, 255, 0.8);
+    display: flex;
+    font-family: ui-sans-serif, system-ui, -apple-system, "system-ui", "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: 16px;
+    line-height: 32px;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    text-align: center;
+  }
+
+  .copy-item {
+    color: #fff;
+    cursor: pointer;
+    position: absolute;
+    right: 16px;
+  }
+}
