@@ -54,6 +54,9 @@ publish:
   # https://github.com/earthly/earthly/issues/2086
   ARG DATE
 
+  # Work around for netlify DNS issue
+  HOST api.netlify.com 18.188.245.61
+
   IF [ "$DESTINATION" = "PROD" ]
     COPY (./blog/+build/_site --DATE="$DATE") ./blog
     COPY ./website/+build/_site ./website
