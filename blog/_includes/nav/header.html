@@ -1,9 +1,18 @@
 <header
     class="flex z-50 fixed w-full top-0 left-0 bg-white h-[70px] border-b border-[#e8f8fe] shadow-sm shadow-black/10">
     <div class="siteHeader-logoAndMenuButton pl-6">
-        <a class="siteHeader-logoLink" href="{{site.landingurl}}/">
+        <!-- Gavin, 20230525: added id -->
+        <a id="headerLogoControl" onclick="navEarthlyLogoClick()" class="siteHeader-logoLink" href="{{site.landingurl}}/">
             {% svg assets/svg/earthly-logo.svg class="siteHeader-logoLink-svg" height=70 %}
         </a>
+        <!-- Gavin, 20230525: added a href -->
+        <a id="headerLogoTest1" onclick="navEarthlyLogoClick()" display="none;" class="siteHeader-logoLink" href="{{site.landingurl}}/">
+          {% svg assets/svg/earthly-logo-test-1.svg class="siteHeader-logoLink-svg" height=70 %}
+      </a>
+      <!-- Gavin, 20230525: added a href -->
+      <a id="headerLogoTest2" onclick="navEarthlyLogoClick()" display="none;" class="siteHeader-logoLink" href="{{site.landingurl}}/">
+        {% svg assets/svg/earthly-logo-test-2.svg class="siteHeader-logoLink-svg" height=70 %}
+    </a>
     </div>
     <nav class="flex flex-1 justify-end">
         {% include nav/inline.html template='nav/mobile-menu.html' %}
@@ -87,6 +96,13 @@
         analytics.track('blog-nav-learn-earthly-click', {
           category: 'Learn Earthly Click',
           label: 'blog-nav-learn-earthly-click'
+        });
+      }
+
+      function navEarthlyLogoClick() {
+        analytics.track('blog-nav-earthly-logo-click', {
+          category: 'Earthly Logo Click',
+          label: 'blog-nav-earthly-logo-click'
         });
       }
     </script>
