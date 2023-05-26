@@ -258,7 +258,7 @@ Then the [`sed`](https://earthly.dev/blog/sed-find-replace/) command is replacin
 
 ### Implementing a Cleaner Output
 
-Suppose you only want to display the country names and their distinct value counts. You're going to need the help of the `[cut](https://www.tutorialspoint.com/unix_commands/cut.htm)` command. The `cut` command in Linux allows you to extract specific sections or columns of text from files or command output:
+Suppose you only want to display the country names and their distinct value counts. You're going to need the help of the [`cut`](https://www.tutorialspoint.com/unix_commands/cut.htm) command. The `cut` command in Linux allows you to extract specific sections or columns of text from files or command output:
 
 ~~~{.bash caption=">_"}
 user@localhost:~$ tail -n +2 meteorites.csv | cut -d"," -f3 | \
