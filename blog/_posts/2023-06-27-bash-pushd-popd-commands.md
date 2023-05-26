@@ -4,6 +4,7 @@ categories:
   - Tutorials
 toc: true
 author: Christoph Berger
+editor: Bala Priya C
 
 internal-links:
  - just an example
