@@ -1,9 +1,18 @@
 <header
     class="flex z-50 fixed w-full top-0 left-0 bg-white h-[70px] border-b border-[#e8f8fe] shadow-sm shadow-black/10">
     <div class="siteHeader-logoAndMenuButton pl-6">
-        <a class="siteHeader-logoLink" href="{{site.landingurl}}/">
+        <!-- Gavin, 20230525: added id -->
+        <a id="headerLogoControl" onclick="navEarthlyLogoClick()" class="siteHeader-logoLink" href="{{site.landingurl}}/">
             {% svg assets/svg/earthly-logo.svg class="siteHeader-logoLink-svg" height=70 %}
         </a>
+        <!-- Gavin, 20230525: added a href -->
+        <a id="headerLogoTest1" onclick="navEarthlyLogoClick()" display="none;" class="siteHeader-logoLink" href="{{site.landingurl}}/">
+          {% svg assets/svg/earthly-logo-test-1.svg class="siteHeader-logoLink-svg" height=70 %}
+      </a>
+      <!-- Gavin, 20230525: added a href -->
+      <a id="headerLogoTest2" onclick="navEarthlyLogoClick()" display="none;" class="siteHeader-logoLink" href="{{site.landingurl}}/">
+        {% svg assets/svg/earthly-logo-test-2.svg class="siteHeader-logoLink-svg" height=70 %}
+    </a>
     </div>
     <nav class="flex flex-1 justify-end">
         {% include nav/inline.html template='nav/mobile-menu.html' %}
@@ -67,9 +76,10 @@
                 Blog
             </a>
             <div class="inline-flex items-center px-2 xl:px-4">
-                <a href="/signup/earthly-ci"
-                    class="py-4 h-10 px-4 xl:px-6 items-center text-sm xl:text-base text-center text-white bg-[#2d7e5d] hover:bg-green-800 rounded-lg inline-flex">
-                    Try Earthly CI
+                <a href="https://earthly.dev/"
+                    class="py-4 h-10 px-4 xl:px-6 items-center text-sm xl:text-base text-center text-white bg-[#2d7e5d] hover:bg-green-800 rounded-lg inline-flex"
+                    onclick="navLearnEarthlyClick()">
+                    Learn Earthly
                 </a>
             </div>
             {% if jekyll.environment != "production" %}
@@ -80,4 +90,20 @@
             {% endif %}
         </div>
     </nav>
+
+    <script>
+      function navLearnEarthlyClick() {
+        analytics.track('blog-nav-learn-earthly-click', {
+          category: 'Learn Earthly Click',
+          label: 'blog-nav-learn-earthly-click'
+        });
+      }
+
+      function navEarthlyLogoClick() {
+        analytics.track('blog-nav-earthly-logo-click', {
+          category: 'Earthly Logo Click',
+          label: 'blog-nav-earthly-logo-click'
+        });
+      }
+    </script>
 </header>

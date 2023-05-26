@@ -25,8 +25,17 @@
         class="flex-col justify-start items-center border-10 hidden mobile-nav-menu fixed top-1 right-0 left-0 h-full w-full bg-white ml-0 mt-0 px-10 pt-2 border rounded-xl">
         <div class="flex w-full">
             <div class="siteHeader-logoAndMenuButton flex w-full justify-start pb-6">
-                <a class="siteHeader-logoLink " href="{{site.landingurl}}/">
+                <!-- Gavin, 20230525: added id -->
+                <a id="mobileHeaderLogoControl" onclick="navMobileEarthlyLogoClick()" class="siteHeader-logoLink " href="{{site.landingurl}}/">
                     {% svg assets/svg/earthly-logo.svg class="siteHeader-logoLink-svg" height=70 %}
+                </a>
+                <!-- Gavin, 20230525: added a href -->
+                <a id="mobileHeaderLogoTest1" onclick="navMobileEarthlyLogoClick()" display="none;" class="siteHeader-logoLink " href="{{site.landingurl}}/">
+                  {% svg assets/svg/earthly-logo-test-1.svg class="siteHeader-logoLink-svg" height=70 %}
+                </a>
+                <!-- Gavin, 20230525: added a href -->
+                <a id="mobileHeaderLogoTest2" onclick="navMobileEarthlyLogoClick()" display="none;" class="siteHeader-logoLink " href="{{site.landingurl}}/">
+                  {% svg assets/svg/earthly-logo-test-2.svg class="siteHeader-logoLink-svg" height=70 %}
                 </a>
             </div>
 
@@ -61,9 +70,10 @@
             Blog
         </a>
 
-        <a href="/signup/earthly-ci"
-            class="h-10 px-4 my-10 items-center flex w-40  text-xl py-4 text-center text-white bg-[#2d7e5d] hover:bg-green-700 rounded-lg">
-            Try Earthly CI
+        <a href="https://earthly.dev/"
+            class="h-10 px-4 my-10 items-center flex w-40  text-xl py-4 text-center text-white bg-[#2d7e5d] hover:bg-green-700 rounded-lg justify-center"
+            onclick="navMobileLearnEarthlyClick()">
+            Learn Earthly
         </a>
 
 
@@ -102,3 +112,19 @@
 
     </div>
 </div>
+
+<script>
+  function navMobileLearnEarthlyClick() {
+    analytics.track('blog-nav-mobile-learn-earthly-click', {
+      category: 'Learn Earthly Click',
+      label: 'blog-nav-mobile-learn-earthly-click'
+    });
+  }
+
+  function navMobileEarthlyLogoClick() {
+    analytics.track('blog-nav-mobile-earthly-logo-click', {
+      category: 'Earthly Logo Click',
+      label: 'blog-nav-mobile-earthly-logo-click'
+    });
+  }
+</script>
