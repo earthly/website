@@ -24,7 +24,7 @@ There are two main ways to use the `uniq` command. You can either interact direc
 
 The syntax for using `uniq` directly with a file is simple:
 
-~~~
+~~~{.bash caption=">_"}
 uniq <optional-arguments> <filename>
 ~~~
 
@@ -34,7 +34,7 @@ This runs the `uniq` command with any of your chosen arguments on a specified fi
 
 If you have a file that you want to process using other commands before you run the `uniq` command on the output, your syntax might look like this:
 
-~~~
+~~~{.bash caption=">_"}
 cat <filename> | grep -oP '<regular-expression>' | sort | uniq
 ~~~
 
@@ -55,7 +55,7 @@ Now that you understand the basic syntax of the `uniq` command, try to use `uniq
 
 If you want to follow along, create a file called `lyrics.txt` somewhere on your system and add the lyrics to one of your favorite songs. The example in this guide uses the lyrics for the song "Happy Birthday":
 
-~~~
+~~~{.bash caption=">_"}
 user@localhost:~$ cat lyrics.txt
 Happy birthday to you
 Happy birthday to you
@@ -67,7 +67,7 @@ Happy birthday to you
 
 To remove duplicate lines, run the `uniq` command on your `lyrics.txt` file to see the output:
 
-~~~
+~~~{.bash caption=">_"}
 user@localhost:~$ uniq lyrics.txt 
 Happy birthday to you
 Happy birthday, dear person
@@ -82,7 +82,7 @@ If you don't specify any optional arguments for the command, this is the *defaul
 
 You can also count the number of duplicate lines in a file by providing the `-c` argument to your command:
 
-~~~
+~~~{.bash caption=">_"}
 user@localhost:~$ uniq -c lyrics.txt 
       2 Happy birthday to you
       1 Happy birthday, dear person
@@ -95,7 +95,7 @@ As you can see, the count isn't perfect. The first, and last lines are actually 
 
 You can sort the file before using `uniq` to count the unique lines. For instance, take a look at what the sort command does to the `lyrics.txt` file:
 
-~~~
+~~~{.bash caption=">_"}
 user@localhost:~$ sort lyrics.txt 
 Happy birthday, dear person
 Happy birthday to you
@@ -107,7 +107,7 @@ Happy birthday to you
 
 You can process the results from `sort` by piping the results of that command to the `uniq` command:
 
-~~~
+~~~{.bash caption=">_"}
 thinus@devnull:~$ sort lyrics.txt | uniq -c
       1 Happy birthday, dear person
       3 Happy birthday to you
@@ -121,7 +121,7 @@ So far, you've been introduced to the `-c` argument for the `uniq` command. Howe
 
 As with almost any command in Linux, you can run the `--help` or `-h` parameter to find out what arguments are available to you for any particular command:
 
-~~~
+~~~{.bash caption=">_"}
 user@localhost:~$ uniq --help
 Usage: uniq [OPTION]... [INPUT [OUTPUT]]
 Filter adjacent matching lines from INPUT (or standard input),
@@ -166,7 +166,7 @@ If you have a more structured data file, like a CSV, you can also use `uniq` to 
 
 Suppose you have a CSV file that tracks meteorite landings around the world with the following format: `day, time, country`:
 
-~~~
+~~~{.bash caption=">_"}
 user@localhost:~$ cat meteorites.csv 
 day,time,country
 2022-01-08,13:47:05,Germany
@@ -187,7 +187,7 @@ You may want to see how many times each country has experienced a meteorite stri
 
 As you can see, this file has a very specific character count, so you can use the `--skip-chars=N` option to skip a specified number of characters on each line so that you only compare the values of the `country` field. This is only possible because the file has a rigid structure and a precise number of characters preceding the `country` field:
 
-~~~
+~~~{.bash caption=">_"}
 user@localhost:~$ cat meteorites.csv | uniq --skip-chars=20 -c
       1 date,time,country
       1 2022-01-08,13:47:05,Germany
@@ -206,8 +206,9 @@ At this point, you're probably realizing that the `uniq` command has some limita
 
 Sort the file and then count the output with `uniq` again:
 
-~~~
-user@localhost:~$ cat meteorites.csv | sort -t, -k3 | uniq --skip-chars=20 -c
+~~~{.bash caption=">_"}
+user@localhost:~$ cat meteorites.csv | sort -t, -k3 | \
+uniq --skip-chars=20 -c
       1 2022-01-11,11:49:15,Australia
       2 2022-07-14,14:09:32,Canada
       1 date,time,country
@@ -221,8 +222,9 @@ This time, you're telling `sort` that you're using commas for your value delimit
 
 Now, the `uniq` command can properly check for duplicates because the sorted column makes sure that all duplicate values are adjacent to one another. However, the output isn't very clean. You can fix that by using [`tail`](https://www.geeksforgeeks.org/tail-command-linux-examples/) instead of `cat` and displaying everything except the CSV header line:
 
-~~~
-user@localhost:~$ tail -n +2 meteorites.csv | sort -t, -k3 | uniq --skip-chars=20 -c
+~~~{.bash caption=">_"}
+user@localhost:~$ tail -n +2 meteorites.csv | sort -t, -k3 | \
+uniq --skip-chars=20 -c
       1 2022-01-11,11:49:15,Australia
       2 2022-07-14,14:09:32,Canada
       1 2023-03-05,23:59:09,Finland
@@ -235,8 +237,10 @@ user@localhost:~$ tail -n +2 meteorites.csv | sort -t, -k3 | uniq --skip-chars=2
 
 You can tell `uniq` to compare specific fields first. However, the `uniq` command expects fields to be space-delimited. That means you have to replace the commas with spaces after sorting the output:
 
-~~~
-user@localhost:~$ tail -n +2 meteorites.csv | sort -t, -k3 | sed "s/,/ /g" | uniq --skip-fields=2 -c
+~~~{.bash caption=">_"}
+user@localhost:~$ tail -n +2 meteorites.csv | sort -t, -k3 | \
+sed "s/,/ /g" | \
+uniq --skip-fields=2 -c
       1 2022-01-11 11:49:15 Australia
       2 2022-07-14 14:09:32 Canada
       1 2023-03-05 23:59:09 Finland
@@ -253,8 +257,9 @@ Then the [`sed`](https://earthly.dev/blog/sed-find-replace/) command is replacin
 
 Suppose you only want to display the country names and their distinct value counts. You're going to need the help of the `[cut](https://www.tutorialspoint.com/unix_commands/cut.htm)` command. The `cut` command in Linux allows you to extract specific sections or columns of text from files or command output:
 
-~~~
-user@localhost:~$ tail -n +2 meteorites.csv | cut -d"," -f3 | sort | uniq -c
+~~~{.bash caption=">_"}
+user@localhost:~$ tail -n +2 meteorites.csv | cut -d"," -f3 | \
+sort | uniq -c
       1 Australia
       2 Canada
       1 Finland
@@ -265,8 +270,9 @@ user@localhost:~$ tail -n +2 meteorites.csv | cut -d"," -f3 | sort | uniq -c
 
 Now you can even sort the count column to display the results in descending order:
 
-~~~
-thinus@devnull:~$ tail -n +2 meteorites.csv | cut -d"," -f3 | sort | uniq -c | sort -nr
+~~~{.bash caption=">_"}
+thinus@devnull:~$ tail -n +2 meteorites.csv | cut -d"," -f3 | sort | \
+uniq -c | sort -nr
       3 United States
       2 Germany
       2 Canada
@@ -291,8 +297,9 @@ It's a lot more complex to use than `uniq` and requires you to learn a separate 
 
 Let's use [`awk` with our sample CSV file](https://earthly.dev/blog/awk-csv/):
 
-~~~
-user@localhost:~$ awk -F, 'NR!=1;{A[$3]++}END{for(i in A)print i,A[i]}' meteorites.csv 
+~~~{.bash caption=">_"}
+user@localhost:~$ awk -F, 'NR!=1;{A[$3]++}END{for(i in A)print i,A[i]}' \
+meteorites.csv 
 2022-01-08,13:47:05,Germany
 2022-01-11,11:49:15,Australia
 2022-03-02,09:23:27,Germany
@@ -320,7 +327,7 @@ The biggest change here is that you used *only* the `awk` command to achieve thi
 
 You can also use the `sort` command to remove duplicates:
 
-~~~
+~~~{.bash caption=">_"}
 user@localhost:~$ tail -n +2 meteorites.csv | sort -t, -k3 -u 
 2022-01-11,11:49:15,Australia
 2022-07-14,14:09:32,Canada
