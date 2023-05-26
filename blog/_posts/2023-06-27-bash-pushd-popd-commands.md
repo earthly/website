@@ -38,7 +38,7 @@ So how do we use the `pushd` and `popd` commands? Take a look at the basic synta
 
 The basic form of `pushd` takes a single argument—the path to `cd` to. This can be a relative or absolute path:
 
-~~~
+~~~{.bash caption=">_"}
 pushd <path>  
 ~~~
 
@@ -48,7 +48,7 @@ Additionally, `pushd` prints the current directory stack to the console so that 
 
 Here's an example. The following sequence moves from `$HOME` to `/etc`, then to `/var/log`, and finally, to `/tmp`; it pushes the previous directory to the directory stack each time and prints the resulting stack. Take a look at how the stack grows with each `pushd`:
 
-~~~
+~~~{.bash caption=">_"}
 ~$ pushd /etc
 /etc ~
 /etc$ pushd /var/log
@@ -62,7 +62,7 @@ Here's an example. The following sequence moves from `$HOME` to `/etc`, then to 
 
 `popd` takes no arguments:
 
-~~~
+~~~{.bash caption=">_"}
 popd
 ~~~
 
@@ -70,7 +70,7 @@ If the directory stack contains at least one directory, `popd` removes the most 
 
 Here is how `popd` moves back through the stack of directories that was created with the previous `popd` sequence:
 
-~~~
+~~~{.bash caption=">_"}
 /tmp$ popd
 /var/log /etc ~
 /var/log$ popd
@@ -92,14 +92,14 @@ It's possible that the last use of `pushd` or `popd` has already scrolled out of
 
 To print the stack, you can use the `dirs` command:
 
-~~~
+~~~{.bash caption=">_"}
 /tmp$ dirs
 /tmp /var/log /etc ~
 ~~~
 
 And since a single-line horizontal stack can be difficult to read, `dirs` has the option `-v` to print the stack vertically and with numbering:
 
-~~~
+~~~{.bash caption=">_"}
 /tmp$ dirs -v
  0  /tmp
  1  /var/log
@@ -117,7 +117,7 @@ Take a look at some of your `pushd` options first:
 
 The `-n` flag adds the current directory to the stack *without* making the actual change to the target directory. The most recent directory on the directory stack will be the one that you're currently in:
 
-~~~
+~~~{.bash caption=">_"}
 pushd -n <path>
 ~~~
 
@@ -141,7 +141,7 @@ The `-N` flag rotates the stack to the right so that the `N`th directory (counti
 
 For example, the current directory stack is `/tmp /var/log /etc ~`, and the `pushd` command rotates to the left, making the second entry from the left (*ie* `/var/log`) the top of the stack. Then the `pushd` command rotates to the right, making the rightmost entry (*ie* `/tmp`) the top of the stack:
 
-~~~
+~~~{.bash caption=">_"}
 /tmp$ dirs
 /tmp /var/log /etc ~
 /tmp$ pushd +1
@@ -155,7 +155,7 @@ For example, the current directory stack is `/tmp /var/log /etc ~`, and the `pus
 
 For example, you can rotate to entry number 2, which is `/etc`:
 
-~~~
+~~~{.bash caption=">_"}
 /tmp$ dirs -v
  0  /tmp
  1  /var/log
@@ -178,7 +178,7 @@ Likewise, `popd -0` removes the last (*ie* oldest) directory, and `popd -1` remo
 
 In the following example, `popd -1` removes the second directory counting from the right (`/var/log`), and a subsequent `popd +0` removes the top of the stack (`~`):
 
-~~~
+~~~{.bash caption=">_"}
 /etc$ dirs
 ~ /tmp /var/log /etc
 ~$ popd -1
@@ -218,7 +218,7 @@ When you work with `pushd` and `popd` long enough, you might observe new usage p
 
 Once you start using the `pushd +1` and `pushd -0` commands regularly, you want to create handy aliases for these commands, like this:
 
-~~~
+~~~{.bash caption=">_"}
 alias next='pushd +1'
 alias prev='pushd -0'
 ~~~
@@ -229,7 +229,7 @@ With these commands, you can simply call `next` and `prev` to cycle through the 
 
 `pushd` and `popd` print the current call stack at every invocation. If you find this is too noisy, use aliases for redirecting the output into the void:
 
-~~~
+~~~{.bash caption=">_"}
 alias pu='pushd >/dev/null'
 alias po='popd >/dev/null'
 ~~~
@@ -246,7 +246,7 @@ If you find yourself constantly switching between two directories without naviga
 
 Whenever you `cd` to another directory, `cd` keeps track of the last directory you visited. Once your work in the current directory is done, you can go back to the last visited directory by calling the following:
 
-~~~
+~~~{.bash caption=">_"}
 $ cd -
 ~~~
 
@@ -262,7 +262,7 @@ Chances are that you have a few directories that you frequently `cd` into. For e
 
 Sooner or later, you'll be tired of typing these paths over and over again when `cd`-ing there. To get rid of this excessive and repetitive typing, you can set shell variables for these directories in your `.bashrc`:
 
-~~~
+~~~{.bash caption=">_"}
 export mygh=$HOME/dev/repos/github/yourname
 export docs=$HOME/dev/docs
 export scratch=$HOME/documents/notes/scratchpad
@@ -270,13 +270,13 @@ export scratch=$HOME/documents/notes/scratchpad
 
 With these variables sourced into your environment, you can reach your favorite directories from whatever directory you are currently in by typing the following, for example:
 
-~~~
+~~~{.bash caption=">_"}
 $ cd $mygh
 ~~~
 
 Or alternatively, type the following:
 
-~~~
+~~~{.bash caption=">_"}
 $ cd $docs
 ~~~
 
