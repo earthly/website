@@ -7,7 +7,10 @@ author: Thinus Swart
 editor: Bala Priya C
 
 internal-links:
- - just an example
+ - Linux
+ - Uniq
+ - Guide
+ - Files
 ---
 
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about using the `uniq` command for text processing. If you're interested in a different approach to building and packaging software, then [check us out](/).**
@@ -49,7 +52,7 @@ The previous code snippet does the following:
 
 This example may look advanced to you, but in the next section, you'll review a few more code samples so you can become more comfortable processing and analyzing data using the `uniq` command as well as other Linux commands.
 
-## Using the uniq Command on a File
+## Using the `uniq` Command on a File
 
 Now that you understand the basic syntax of the `uniq` command, try to use `uniq` on a file on your system.
 
@@ -360,5 +363,4 @@ As you continue experimenting with analyzing files and displaying the outputs yo
 * [ ] Optional: Find ways to break up content with quotes or images
 * [ ] Verify look of article locally
   * Would any images look better `wide` or without the `figcaption`?
-* [ ] Add keywords for internal links to front-matter
 * [ ] Run `link-opp` and find 1-5 places to incorporate links
