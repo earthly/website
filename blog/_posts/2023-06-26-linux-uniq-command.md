@@ -345,6 +345,8 @@ In this guide, you've learned the following:
 
 As you continue experimenting with analyzing files and displaying the outputs you require, you'll continue to face challenges. Many of the commands used in this guide have links pointing to resources with more information. You can also peruse the [**Text Processing Commands** page](https://tldp.org/LDP/abs/html/textproc.html) of [The Linux Documentation Project](https://tldp.org), which lists even more text-processing commands that you can use to manipulate text output and files on your own system.
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 * [ ] Create header image in Canva
@@ -353,4 +355,3 @@ As you continue experimenting with analyzing files and displaying the outputs yo
   * Would any images look better `wide` or without the `figcaption`?
 * [ ] Add keywords for internal links to front-matter
 * [ ] Run `link-opp` and find 1-5 places to incorporate links
-* [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
