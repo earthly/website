@@ -7,7 +7,11 @@ author: Christoph Berger
 editor: Bala Priya C
 
 internal-links:
- - just an example
+ - Directories
+ - Bash
+ - Navigation
+ - Terminal
+ - Commands
 ---
 
 Do you get lost in path navigation? Do you have more terminal windows open than browser tabs because you worry about not finding your way back to the previous working directory?
@@ -23,7 +27,7 @@ A stack is a storage structure that works like a physical stack of items. For ex
 The stack structure allows you to easily return to the directory that was pushed to the stack last. All you have to do is call `popd`. This call removes the most recent directory from the stack and `cd`s to that directory.
 
 <div class="wide">
-![`pushd` and `popd` courtesy of Christoph Berger ]({{site.images}}{{page.slug}}/Mv9GXQX.png)
+![`pushd` and `popd` courtesy of Christoph Berger]({{site.images}}{{page.slug}}/Mv9GXQX.png)
 </div>
 
 ### Basic Syntax
@@ -303,5 +307,4 @@ To learn more about Bash, check out our [Bash series](https://earthly.dev/blog/s
 * [ ] Create header image in Canva
 * [ ] Optional: Find ways to break up content with quotes or images
 
-* [ ] Add keywords for internal links to front-matter
 * [ ] Run `link-opp` and find 1-5 places to incorporate links
