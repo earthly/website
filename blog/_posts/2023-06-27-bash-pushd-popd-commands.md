@@ -20,6 +20,8 @@ If you answered yes, then it's the perfect time to learn two more bash commands:
 
 ## How `pushd` and `popd` Work
 
+![How]({{site.images}}{{page.slug}}/how.png)\
+
 The `pushd` command works like [`cd`](https://www.educative.io/answers/what-is-cd-in-linux) since it changes the current directory. However, it also pushes the current directory to an internal stack before changing to the target directory.
 
 A stack is a storage structure that works like a physical stack of items. For example, imagine a stack of books on a table. New entries are put on top of the stack (push), and only the top entry can be removed from the stack (pop).
@@ -236,6 +238,8 @@ alias po='popd >/dev/null'
 
 ## Alternatives To `popd` and `pushd`
 
+![Alternate]({{site.images}}{{page.slug}}/alternates.png)\
+
 As useful as `popd` and `pushd` are, they induce a (slight) mental load, as you need to keep track of the directory stack when navigating between the directories. Many scenarios are simple enough to use two easier techniques based on a tool that you already know: `cd`.
 
 ### Alternating Between Two Directories
@@ -301,8 +305,3 @@ $ dirs --help
 To learn more about Bash, check out our [Bash series](https://earthly.dev/blog/series/bash/).
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-* [ ] Optional: Find ways to break up content with quotes or images
-
