@@ -21,7 +21,9 @@ A stack is a storage structure that works like a physical stack of items. For ex
 
 The stack structure allows you to easily return to the directory that was pushed to the stack last. All you have to do is call `popd`. This call removes the most recent directory from the stack and `cd`s to that directory.
 
+<div class="wide">
 ![`pushd` and `popd` courtesy of Christoph Berger ]({{site.images}}{{page.slug}}/Mv9GXQX.png)
+</div>
 
 ### Basic Syntax
 
@@ -299,7 +301,6 @@ To learn more about Bash, check out our [Bash series](https://earthly.dev/blog/s
 
 * [ ] Create header image in Canva
 * [ ] Optional: Find ways to break up content with quotes or images
-* [ ] Verify look of article locally
-  * Would any images look better `wide` or without the `figcaption`?
+
 * [ ] Add keywords for internal links to front-matter
 * [ ] Run `link-opp` and find 1-5 places to incorporate links
