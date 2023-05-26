@@ -361,6 +361,3 @@ As you continue experimenting with analyzing files and displaying the outputs yo
 
 * [ ] Create header image in Canva
 * [ ] Optional: Find ways to break up content with quotes or images
-* [ ] Verify look of article locally
-  * Would any images look better `wide` or without the `figcaption`?
-* [ ] Run `link-opp` and find 1-5 places to incorporate links
