@@ -304,6 +304,5 @@ To learn more about Bash, check out our [Bash series](https://earthly.dev/blog/s
 
 ## Outside Article Checklist
 
-* [ ] Create header image in Canva
 * [ ] Optional: Find ways to break up content with quotes or images
 
