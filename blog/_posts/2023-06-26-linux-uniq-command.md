@@ -360,4 +360,3 @@ As you continue experimenting with analyzing files and displaying the outputs yo
 ## Outside Article Checklist
 
 * [ ] Create header image in Canva
-* [ ] Optional: Find ways to break up content with quotes or images
