@@ -55,7 +55,9 @@ When you clone a Git repository that includes Git LFS pointers, the repository i
 
 The files are stored separately on a Git LFS server, typically a cloud-based storage system. This server is responsible for storing large files and making them accessible to those who need them. The server stores the contents as binary files, each with a unique identifier. Typically, the file contents are compressed to reduce storage requirements and enhance transfer times.
 
+<div class="wide">
 ![How Git lfs works - source [GIT LFS page](https://git-lfs.com/)]({{site.images}}{{page.slug}}/Z9XMtea.gif)
+</div>
 
 To manage large files in Git repositories, Git LFS provides a client and server that are responsible for managing big file transfers between the local Git repository and the Git LFS server. The Git LFS client is in charge of uploading and downloading file contents to and from the Git LFS server, while the Git LFS server is in charge of keeping and making files available to users who want them.
 
@@ -81,7 +83,9 @@ The next step will be to install the Git LFS package:
 curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
 ~~~
 
+<div class="wide">
 ![Install git lfs package]({{site.images}}{{page.slug}}/dlkVWC7.png)
+</div>
 
 This command downloads and executes a script from [Packagecloud](packagecloud.io) that adds the GitHub Git LFS repository to your list of software sources and installs the package for Debian-based distributions. The script aims to add the GitHub Git LFS repository to the list of software sources on Debian-based distributions and install the corresponding package.
 
@@ -93,7 +97,9 @@ sudo apt install git-lfs
 
 This will install Git LFS and its dependencies on your system.
 
+<div class="wide">
 ![Install git lfs]({{site.images}}{{page.slug}}/WLW1wSk.png)
+</div>
 
 Once you have installed *git-lfs*, you need to initialize it. You can initialize it with the command below:
 
@@ -145,7 +151,9 @@ The [`value_counts()`](https://pandas.pydata.org/docs/reference/api/pandas.Serie
 
 The output executing this script is shown below:
 
+<div class="wide">
 ![Cities by accidents]({{site.images}}{{page.slug}}/GZ1FENH.png)
+</div>
 
 The accidents folder should contain the following file:
 
@@ -156,7 +164,9 @@ The accidents folder should contain the following file:
 
 Add, commit, and push these files to the repository:
 
+<div class="wide">
 ![Add, commit, and push files]({{site.images}}{{page.slug}}/REHVqxW.png)
+</div>
 
 Pushing this file gives the following error:
 
@@ -233,11 +243,15 @@ git commit -m "add csv file"
 git push origin main
 ~~~
 
+<div class="wide">
 ![git push]({{site.images}}{{page.slug}}/fu0v69y.png)
+</div>
 
 Once the files are uploaded to your remote Git repository, you can check the files that are pushed:
 
+<div class="wide">
 ![git add]({{site.images}}{{page.slug}}/8e0gcKN.png)
+</div>
 
 You can also list the files that are currently being tracked using Git LFS by running the [`git lfs ls-files`](https://manpages.ubuntu.com/manpages/bionic/man1/git-lfs-ls-files.1.html) command lists:
 
@@ -284,7 +298,9 @@ git commit -m "removed csv file from git lfs"
 git push origin main
 ~~~
 
+<div class="wide">
 ![delete git lfs file]({{site.images}}{{page.slug}}/rOik8QH.png)
+</div>
 
 ## Git Lfs Advanced Features
 
@@ -313,7 +329,9 @@ git commit -m "add new files"
 git push origin main 
 ~~~
 
+<div class="wide">
 ![add new files]({{site.images}}{{page.slug}}/Kngwknu.png)
+</div>
 
 So, our repository contains the `Us_Accidents.csv` as a Git LFS pointer file and the `NYC_Accidents_2020.csv` and `pexels-kelly-4324074-3840x2160-24fps.mp4` files as large files.
 
@@ -328,7 +346,9 @@ The command `git lfs migrate import --include="NYC Accidents 2020.csv"  --includ
 
 After following these steps, the files "NYC Accidents 2020.csv" and "pexels-kelly-4324074-3840x2160-24fps.mp4" will be migrated to Git LFS, and their contents will be managed separately from the Git repository itself.
 
+<div class="wide">
 ![git lfs migrate]({{site.images}}{{page.slug}}/FqouP0d.png)
+</div>
 
 ### File Locking
 
@@ -416,7 +436,6 @@ To learn more about Git LFS, visit the [official documentation](https://docs.git
 
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
+
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
