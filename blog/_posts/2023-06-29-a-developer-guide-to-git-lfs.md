@@ -7,7 +7,11 @@ author: Chepkirui Dorothy
 editor: Mustapha Ahmad Ayodeji
 
 internal-links:
- - just an example
+ - Git
+ - Guide
+ - LFS
+ - Storage
+ - Large Files
 ---
 
 **We're [Earthly.dev](https://earthly.dev/). We make building software simpler and therefore faster – like Dockerfile and Makefile had a baby. This article explains how to use Git LFS**
@@ -436,6 +440,3 @@ To learn more about Git LFS, visit the [official documentation](https://docs.git
 
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
