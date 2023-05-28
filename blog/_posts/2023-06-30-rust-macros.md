@@ -651,6 +651,8 @@ In this article, you learned about two types of macros, declarative, and procedu
 
 If you're looking for more information about Rust macros, check out the [Rust docs](https://doc.rust-lang.org/book/ch19-06-macros.html). In addition, the e-book [*The Little Book of Rust Macros*](https://danielkeep.github.io/tlborm/book/README.html) has a thorough explanation of macros, and [this GitHub repo](https://github.com/thepacketgeek/rust-macros-demo) contains some practical examples.
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 * [ ] Create header image in Canva
@@ -659,4 +661,3 @@ If you're looking for more information about Rust macros, check out the [Rust do
   * Would any images look better `wide` or without the `figcaption`?
 * [ ] Add keywords for internal links to front-matter
 * [ ] Run `link-opp` and find 1-5 places to incorporate links
-* [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
