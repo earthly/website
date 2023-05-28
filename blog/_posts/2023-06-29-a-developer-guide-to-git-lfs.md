@@ -3,7 +3,7 @@ title: "A Developer's Guide to Git LFS"
 categories:
   - Tutorials
 toc: true
-author: Dorothy Chepkirui
+author: Chepkirui Dorothy
 editor: Mustapha Ahmad Ayodeji
 
 internal-links:
