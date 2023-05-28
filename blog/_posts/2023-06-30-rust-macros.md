@@ -24,6 +24,8 @@ In this article, you'll see some practical examples of macros and learn some tip
 
 ## Rust Macros Basics
 
+![Macros]({{site.images}}{{page.slug}}/macro.png)\
+
 <div class="notice--info">
 This tutorial assumes familiarity with the basics of Rust programming.
 </div>
@@ -343,7 +345,7 @@ This code won't compile because `my_macro::bar` isn't imported when `foo` is cal
 
 ~~~{.rust caption="lib.rs"}
 macro_rules! foo {
-    () => { {% raw %}$crate::bar!(){% endraw %} }
+    () => { {% raw %}${% endraw %}crate::bar{% raw %}!{% endraw %}() }
 }
 ~~~
 
@@ -358,18 +360,23 @@ Now that you know how macros can be defined and used, you're ready to look at so
 It's possible to use declarative macros to implement simple loop unrolling using recursion. The following `unroll_loop` macro can unroll loops of up to four iterations:
 
 ~~~{.rust caption="lib.rs"}
+{% raw %}
 macro_rules! unroll_loop {
     (0, |$i:ident| $s:stmt) => {};
     (1, |$i:ident| $s:stmt) => {{ let $i: usize = 0; $s; }};
-    (2, |$i:ident| $s:stmt) => {{ unroll!(1, |$i| $s); let $i: usize = 1; $s; }};
-    (3, |$i:ident| $s:stmt) => {{ unroll!(2, |$i| $s); let $i: usize = 2; $s; }};
-    (4, |$i:ident| $s:stmt) => {{ unroll!(3, |$i| $s); let $i: usize = 3; $s; }};
+    (2, |$i:ident| $s:stmt) => {{ unroll!(1, |$i| $s); let $i: usize = 1; \
+    $s; }};
+    (3, |$i:ident| $s:stmt) => {{ unroll!(2, |$i| $s); let $i: usize = 2; \
+    $s; }};
+    (4, |$i:ident| $s:stmt) => {{ unroll!(3, |$i| $s); let $i: usize = 3; \
+    $s; }};
     // ...
 }
 
 fn main() {
     unroll_loop!(3, |i| println!("i: {}", i));
 }
+{% endraw %}
 ~~~
 
 Since a declarative macro is restricted by pattern matching and is unable to perform operations on its input, the `unroll_loop` macro is limited in the sense that it's not possible to dynamically set up the recursion. You must explicitly write the cases for every integer that you want to use as the index of the loop. The solution to this is to use a procedural macro, but for obvious reasons, that's more complex.
@@ -414,12 +421,13 @@ The `json_internal` macro is where the magic happens. It's similar to the `add` 
 
 ~~~{.rust caption="lib.rs"}
 macro_rules! json_internal {
-    //////////////////////////////////////////////////////////////////////////
-    // TT muncher for parsing the inside of an array [...]. Produces a vec![...]
+    ///////////////////////////////////////////////////////////
+    // TT muncher for parsing the inside of an array [...]. \
+    Produces a vec![...]
     // of the elements.
     //
     // Must be invoked as: json_internal!(@array [] $($tt)*)
-    //////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////
 
     // Done with trailing comma.
     (@array [$($elems:expr,)*]) => {
@@ -541,7 +549,8 @@ macro_rules! query (
         $crate::sqlx_macros::expand_query!(source = $query)
     });
     ($query:expr, $($args:tt)*) => ({
-        $crate::sqlx_macros::expand_query!(source = $query, args = [$($args)*])
+        $crate::sqlx_macros::expand_query!(source = $query, \
+        args = [$($args)*])
     })
 );
 ~~~
@@ -567,6 +576,8 @@ pub fn expand_query(input: TokenStream) -> TokenStream {
 ~~~
 
 ## Tips for Using Macros Efficiently
+
+![Tips]({{site.images}}{{page.slug}}/tips.png)\
 
 It's essential to know how to use macros efficiently. To that end, the following tips can help.
 
@@ -624,7 +635,8 @@ macro_rules! give_me_foo_or_bar {
     }
 }
 
-give_me_foo_or_bar!(neither); // Error: "This macro only accepts `foo` or `bar`"
+give_me_foo_or_bar!(neither); // Error: \
+"This macro only accepts `foo` or `bar`"
 ~~~
 
 You can also use the [`proc_macro_error`](https://docs.rs/proc-macro-error/latest/proc_macro_error/) crate that provides a powerful API for handling errors in macros.
@@ -656,8 +668,3 @@ In this article, you learned about two types of macros, declarative, and procedu
 If you're looking for more information about Rust macros, check out the [Rust docs](https://doc.rust-lang.org/book/ch19-06-macros.html). In addition, the e-book [*The Little Book of Rust Macros*](https://danielkeep.github.io/tlborm/book/README.html) has a thorough explanation of macros, and [this GitHub repo](https://github.com/thepacketgeek/rust-macros-demo) contains some practical examples.
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-* [ ] Optional: Find ways to break up content with quotes or images
-
