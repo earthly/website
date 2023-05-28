@@ -3,7 +3,7 @@ title: "Demystifying Nix-shell: A Deep Dive into its Features, Benefits, and Usa
 categories:
   - Tutorials
 toc: true
-author: Sunday Eze
+author: Eze Sunday Eze
 editor: Mustapha Ahmad Ayodeji
 
 internal-links:
@@ -399,7 +399,6 @@ I hope this article gives you a clear understanding of what `nix-shell` is and h
 
 ## Outside Article Checklist
 
-- [ ] Add in Author page
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
