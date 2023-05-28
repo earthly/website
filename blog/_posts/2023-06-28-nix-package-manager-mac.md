@@ -324,6 +324,5 @@ In conclusion, Nix offers a powerful and efficient package management solution f
 
 ## Outside Article Checklist
 
-- [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
 
