@@ -44,7 +44,7 @@ Creating packages with Homebrew and Nix follows different approaches. With Homeb
 
 For example, let's consider the [`imagemagick`](https://imagemagick.org/index.php) package in Homebrew. The formula for `imagemagick` is defined in a Ruby script that specifies the source URL, dependencies, and installation instructions. Here's an excerpt from the formula:
 
-~~~
+~~~{.ruby caption=""}
 class Imagemagick < Formula
   desc "Tools and libraries to manipulate images in many formats"
   homepage "https://imagemagick.org/"
@@ -80,7 +80,7 @@ In contrast, Nix packages are defined using a functional programming language ca
 
 For example, let's consider the `imagemagick` package in Nix. The expression for `imagemagick` specifies the source URL, dependencies, and build instructions. Here's an excerpt from the expression:
 
-~~~
+~~~{.ruby caption=""}
 { stdenv, libjpeg, libheif, libpng, libtiff, lcms2, openexr, webp }:
 
 stdenv.mkDerivation rec {
@@ -132,7 +132,8 @@ In this section, we'll walk through the step-by-step process of installing Node.
 
 1. Install Homebrew by opening the terminal and running the following command:
 
-    ~~~
+    ~~~{.bash caption=">_"}
+
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     ~~~
 
@@ -145,13 +146,13 @@ In this section, we'll walk through the step-by-step process of installing Node.
 
     - If you still can't see the version number, check your PATH environment variable to make sure that `/usr/local/bin` is included. You can do this by running:
 
-    ~~~
+    ~~~{.bash caption=">_"}
     echo $PATH
     ~~~
 
     If `/usr/local/bin` is not included in the output, add it to your `PATH` by adding the following line to your shell profile file (e.g. `~/.bash_profile` or `~/.zshrc`):
 
-    ~~~
+    ~~~{.bash caption=">_"}
     export PATH="/usr/local/bin:$PATH"
     ~~~
 
@@ -161,19 +162,19 @@ In this section, we'll walk through the step-by-step process of installing Node.
     </div>
 3. Once Homebrew is installed, run the following command to install the latest version of Node.js:
 
-    ~~~
+    ~~~{.bash caption=">_"}
     brew install node
     ~~~
 
 4. To install a specific version of Node.js, in this case, version `16.x`, use the following command:
 
-    ~~~
+    ~~~{.bash caption=">_"}
     brew install node@16
     ~~~
 
 5. To switch between installed versions of Node.js, use the following command:
 
-    ~~~
+    ~~~{.bash caption=">_"}
     brew unlink node && brew link node@16
     ~~~
 
@@ -184,7 +185,7 @@ In the example we just followed, we installed Nodejs using the Homebrew package 
 
 1. Install Nix by opening the terminal and running the following command:
 
-    ~~~
+    ~~~{.bash caption=">_"}
     sh <(curl -L https://nixos.org/nix/install)
     ~~~
 
@@ -201,7 +202,7 @@ In the example we just followed, we installed Nodejs using the Homebrew package 
 
 3. Once Nix is installed, you can follow the following steps to install the latest version of Node.js:
 
-    ~~~
+    ~~~{.bash caption=">_"}
     nix-env --install --attr nodejs
     ~~~
 
@@ -210,7 +211,7 @@ In the example we just followed, we installed Nodejs using the Homebrew package 
 
 4. To install a specific version of Node.js, use the following command:
 
-    ~~~
+    ~~~{.bash caption=">_"}
     nix-env --install --attr nodejs-16
     ~~~
 
@@ -218,7 +219,7 @@ In the example we just followed, we installed Nodejs using the Homebrew package 
 
 5. To switch between different Node.js versions, for example, `node 16.x`, you can run the following command:
 
-    ~~~
+    ~~~{.bash caption=">_"}
     nix-env --switch --use-nodejs-16
     ~~~
 
@@ -232,7 +233,7 @@ Now that you have successfully installed Nix on your Mac, this section will focu
 
 Before you can install a package with Nix, you need to ensure that it is available. To search for available packages on the Nix repository, you can use the `nix-env` command, which is an essential tool for package management using the Nix package manager. Apart from installing and managing packages, `nix-env` also allows you to search for available packages that you may want to install on your system. So, to search for the Node.js package, for example, you would run:
 
-~~~
+~~~{.bash caption=">_"}
 nix-env -f '<nixpkgs>' -P -A nodejs
 ~~~
 
@@ -249,7 +250,7 @@ So, the command searches for the Nodejs package in the "nixpkgs" package set and
 
 Once you've found the package you want to install, you can use the `nix-env` command to install it. To install Node.js, for example, you would run:
 
-~~~
+~~~{.bash caption=">_"}
 nix-env --install --attr nodejs
 ~~~
 
@@ -265,7 +266,7 @@ Nix will download and install the latest version of the Node.js package along wi
 
 Just like we discussed above, Nix allows you to install multiple versions of the same package side-by-side, without conflict. To install both Node.js version `18.14.1` and version `16.13.1`, for example, you would run:
 
-~~~
+~~~{.bash caption=">_"}
 nix-env -iA nixpkgs.nodejs-18_14_1 nixpkgs.nodejs-16_13_1
 ~~~
 
@@ -281,7 +282,7 @@ So, the overall effect of this command is to install both versions of Node.js, a
 
 To upgrade a package to a newer version, you can use the `nix-env --upgrade` command. For example, to upgrade Node.js to the latest version, you would run:
 
-~~~
+~~~{.bash caption=">_"}
 nix-env --upgrade nodejs
 ~~~
 
@@ -291,7 +292,7 @@ This command upgrades the `nodejs` package to the latest version available in th
 
 To remove a package that you no longer need, you can use the `nix-env --uninstall` command. For example, to remove Node.js version `16.13.1`, you would run:
 
-~~~
+~~~{.bash caption=">_"}
 nix-env --uninstall nodejs-16.13.1
 ~~~
 
@@ -301,7 +302,7 @@ This command removes the specified version of the `nodejs` package from your Mac
 
 Once you've installed a package with Nix, you can use it just like any other program on your system. To use Node.js, for example, you can run:
 
-~~~
+~~~{.bash caption=">_"}
 node --version
 ~~~
 
