@@ -7,7 +7,11 @@ author: David Chibueze Ndubuisi
 editor: Mustapha Ahmad Ayodeji
 
 internal-links:
- - just an example
+ - Nix
+ - Mac
+ - Package Manager
+ - Management
+ - Homebrew
 ---
 
 **We're [Earthly.dev](https://earthly.dev/). We make building software simpler and therefore faster – like Dockerfile and Makefile had a baby. This article shows use how to use Nix package manager on Mac.**
@@ -321,5 +325,4 @@ In conclusion, Nix offers a powerful and efficient package management solution f
 
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Add keywords for internal links to front-matter
 
