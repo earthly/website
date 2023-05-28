@@ -7,7 +7,11 @@ author: Aniket Bhattacharyea
 editor: Bala Priya C
 
 internal-links:
- - just an example
+ - Rust Macros
+ - Metaprogramming
+ - Macro
+ - Programming
+ - Efficient
 ---
 
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article presents practical examples for using macros in Rust. If you're interested in a different approach to building and packaging software then [check us out](/).**
@@ -657,7 +661,4 @@ If you're looking for more information about Rust macros, check out the [Rust do
 
 * [ ] Create header image in Canva
 * [ ] Optional: Find ways to break up content with quotes or images
-* [ ] Verify look of article locally
-  * Would any images look better `wide` or without the `figcaption`?
-* [ ] Add keywords for internal links to front-matter
-* [ ] Run `link-opp` and find 1-5 places to incorporate links
+
