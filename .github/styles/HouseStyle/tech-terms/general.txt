@@ -399,3 +399,6 @@ Raspbian
 sysroot
 Raspeberry
 gdbserver
+
+Cachix
+nixos
