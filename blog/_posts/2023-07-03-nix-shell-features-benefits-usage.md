@@ -59,7 +59,7 @@ The expression language allows you to define complex configurations, including m
 
 Here is an example of what the Nix expression language looks like, it should be saved with a `.nix` file extension :
 
-~~~
+~~~{.nix caption=".nix"}
 { pkgs ? import <nixpkgs> {} }:
 
 pkgs.python3Packages.buildPythonApplication {
@@ -88,13 +88,14 @@ This package and environment management is made possible by leveraging the Nix-s
 
 To do anything with Nix-shell, we'll need to first install Nix on our computer. If you are on a *nix operating system* you can run the following command to install it
 
-~~~
-curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
+~~~{.bash caption=">_"}
+curl --proto '=https' --tlsv1.2 -sSf -L \
+https://install.determinate.systems/nix | sh -s -- install
 ~~~
 
 Otherwise, go to the [official website and download](https://nixos.org/download) the right version for your operating system. Once the installation is complete run `nix --version` to verify that it's all good. It should return the version of Nix you just installed as shown below:
 
-~~~
+~~~{.bash caption=">_"}
 nix --version
 ~~~
 
@@ -106,8 +107,8 @@ Nix has several commands for different purposes. The `nix-shell` command is one 
 
 To see what the `nix-shell` command can do, you can run a nix expression in the terminal that sets up a nix-shell environment, installs, `vim`  and `stdenv` packages and then opens the vim in the terminal.
 
-~~~
- nix-shell --pure -p stdenv -p vim 
+~~~{.bash caption=">_"}
+nix-shell --pure -p stdenv -p vim 
 ~~~
 
 The command above will install [Vim editor](https://www.vim.org/) in a new shell environment and `vim` will exist there alone. The `--pure` flag ensures the shell environment is clean and doesn't inherit any packages or configurations from the user's current environment. Also, the `-p` flag is used to specify the packages to install in the nix shell environment. So, essentially, we are making `stdenv` and vim available using the `-p` flag.
@@ -132,7 +133,7 @@ We'll also write tests for these two functions.
 
 For the two functions, create an `app.py` file and add the following content to it:
 
-~~~
+~~~{.python caption="app.py"}
 # app.py
 
 import csv
@@ -155,7 +156,7 @@ def multiply(a, b):
 
 For the tests, create an `app_unit_tests.py` file and add the test code below into it:
 
-~~~
+~~~{.python caption="app_unit_tests.py"}
 # app_unit_tests.py
 
 import unittest
@@ -184,7 +185,7 @@ Now that our project is ready, let's create a Nix environment with nix-shell to 
 
 Before we run the nix-shell command, create a `shell.nix`file and add the following Nix expression that defines all the dependencies and how to run the program:
 
-~~~
+~~~{.nix caption="shell.nix"}
 { pkgs ? import <nixpkgs> {} }:
 
 let
@@ -204,7 +205,7 @@ shellHook = ''
 
 If you have lots of dependencies, you can create a `requirement.txt` to manage them in your project, add `numpy` as the only dependency for this exercise:
 
-~~~
+~~~{.bash caption=">_"}
 numpy
 ~~~
 
@@ -212,8 +213,8 @@ Run the command the `nix-shell` on your terminal
 
 When you run the `nix-shell` command in the directory that has the `shell.nix` file above, it will activate a nix environment, install python3 in it, install all the python packages defined in the `requirements.txt` file, in our case the [numpy](https://numpy.org/) package and then run the unit test. The output will look like below:
 
-~~~
-----------------------------------------------------------------------
+~~~{ caption="Output"}
+------------------------------------------
 Ran 2 tests in 0.002s
 
 OK
@@ -233,7 +234,7 @@ To understand it better, let's break it down:
 
 `pkgs`: This is an optional argument defined within the function. It acts as a placeholder, allowing us to either use a custom package set or fall back to the default package set if no value is provided. Essentially, while the default Nixpkgs package set offers an extensive collection of packages, sometimes you may require additional or modified packages specific to your project or environment this is where custom packages come to play. But if you don't need to import a custom package, you can easily use the with statement which just imports the packages concisely by their name like so:
 
-~~~
+~~~{.nix caption="shell.nix"}
 with import <nixpkgs> {};
 ~~~
 
@@ -245,7 +246,7 @@ with import <nixpkgs> {};
 
 Now that we have all the components of the function demistified, let's move on to the next part of the script. In our code notice we are using the`pkgs` attribute to import the python3.8 collection and assign it to the `python` variable. We are assigning it because we want to use the keyword python later instead of `pkgs.python38`:
 
-~~~
+~~~{.nix caption="shell.nix"}
 let
 python = pkgs.python38;
 In
@@ -253,7 +254,7 @@ In
 
 Next, we use the `pkgs.mkShell {}`  block to create a Nix shell environment:
 
-~~~
+~~~{.nix caption="shell.nix"}
 pkgs.mkShell {
  buildInputs = [ python ];
  shellHook = ''
@@ -267,13 +268,13 @@ pkgs.mkShell {
 
 Inside the shell we define our `buildInputs`. The `buildInputs` contain all the packages we want to install. In this case, we want to install Python3.8 that is referenced by the `python` variable:
 
-~~~
- buildInputs = [ python ];
+~~~{.nix caption="shell.nix"}
+buildInputs = [ python ];
 ~~~
 
 We also define a `shell-hook` inside the block:
 
-~~~
+~~~{.nix caption="shell.nix"}
  shellHook = ''
    python -m venv venv
    source venv/bin/activate
@@ -292,7 +293,7 @@ Let's integrate the sample code into our CI pipeline with GitHub Actions and Nix
 
 Here is an example `yaml` file that runs our python test in a CI pipeline using GitHub action — it runs when there is a new pull request or push on an Ubuntu machine, installs Nix from Cachix, and then runs a Nix shell which will execute the Python test.
 
-~~~
+~~~{.yaml caption="test.yml"}
 name: "Test"
 on:
  pull_request:
@@ -325,13 +326,13 @@ The [Nixpkgs repository](https://search.nixos.org/) is a collection of thousands
 
 Downloading packages from the Nixpkgs repository is easy and they are various paths to it. You can use the `nix-shell` command. For example, to install the [Emacs editor](https://www.gnu.org/software/emacs/), you can run `nix-shell -p emacs` or you can add it in your `shell.nix` file in the `buildInputs` section like so:
 
-~~~
+~~~{.nix caption="shell.nix"}
  buildInputs = [ python pkgs.emacs ];
 ~~~
 
 You may also add it to the NixOS configuration file if you run the NixOS. The configuration file is located here in nixos directory `/etc/nixos/configuration.nix`.
 
-~~~
+~~~{.nix caption="configuration.nix"}
  environment.systemPackages = [
     pkgs.emacs
   ];
@@ -367,7 +368,7 @@ A **flake** is a self-contained and reproducible package configuration that can 
 
 [Nix Flakes](https://nixos.wiki/wiki/Flakes) is a newer feature of Nix that provide a more flexible way of managing package collections. You can easily specify your app's dependencies in the `flake.nix` file by simply listing them as inputs as we have done by adding home-manager as a dependency in the code below:
 
-~~~
+~~~{.nix caption="flake.nix"}
 {
   inputs = {
     home-manager.url = "github:nix-community/home-manager";
@@ -401,6 +402,3 @@ I hope this article gives you a clear understanding of what `nix-shell` is and h
 
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
