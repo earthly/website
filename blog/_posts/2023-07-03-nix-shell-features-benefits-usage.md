@@ -7,9 +7,12 @@ author: Sunday Eze
 editor: Mustapha Ahmad Ayodeji
 
 internal-links:
- - just an example
+ - Nix
+ - Features
+ - Package Manager
+ - Shell
+ - Builds
 ---
-
 
 **We're [Earthly.dev](https://earthly.dev/). We make building software simpler and therefore faster – like Dockerfile and Makefile had a baby. This article explores the features, benefits usage of Nix-Shell**
 
@@ -401,5 +404,4 @@ I hope this article gives you a clear understanding of what `nix-shell` is and h
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
