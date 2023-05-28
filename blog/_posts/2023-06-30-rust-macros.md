@@ -34,7 +34,7 @@ A `match` expression takes as input an expression and matches it with a set of p
 
 The following example shows a declarative macro in action:
 
-~~~
+~~~{.rust caption="declarative_macro.rs"}
 //declarative_macro.rs
 
 macro_rules! greetings {
@@ -54,7 +54,7 @@ The input code is replaced by this resulting code during compilation, which mean
 
 It's possible to have multiple patterns just like a `match` expression:
 
-~~~
+~~~{.rust caption="declarative_macro.rs"}
 //declarative_macro.rs
 
 macro_rules! greetings {
@@ -78,7 +78,7 @@ In this example, another arm has been added in the `greetings` macro, which matc
 
 In addition, it's also possible to match repeated expressions using a special syntax:
 
-~~~
+~~~{.rust caption="declarative_macro.rs"}
 //declarative_macro.rs
 
 macro_rules! add {
@@ -138,7 +138,7 @@ There are three types of procedural macros:
 
 Every procedural macro must be defined in its own crate, which needs to be added as a dependency to any project where the macro is used. For instance, the following must be added to the `Cargo.toml` file of the project where a procedural macro is defined:
 
-~~~
+~~~{ caption="Cargo.toml"}
 [lib]
 proc-macro = true
 ~~~
@@ -151,7 +151,7 @@ In this article, you'll get a simple overview of the three types of procedural m
 
 A derive macro lets you create new inputs for the [`derive` attribute](https://doc.rust-lang.org/reference/attributes/derive.html), which can operate on structs, unions, and enums to create new items. The following example shows a derive macro that implements the `MyTrait` trait:
 
-~~~
+~~~{.rust caption="lib.rs"}
 //macro_demo/macro_demo_derive/src/lib.rs
 
 use proc_macro::TokenStream;
@@ -191,7 +191,7 @@ Following are a few important things to note:
 
 The macro can be used as follows:
 
-~~~
+~~~{.rust caption="main.rs"}
 //procedural_macro/src/main.rs
 
 #[derive(MyMacro)]
@@ -210,7 +210,7 @@ An attribute macro is defined with the `#[proc_macro_attribute]` and receives tw
 
 In the following example, a macro named `trace` has been defined, which operates on a function definition (denoted by the `ItemFn` type from the `syn` crate). It prints the name of the function and the arguments passed to the attribute and replaces the function definition with itself:
 
-~~~
+~~~{.rust caption="lib.rs"}
 //macro_demo/macro_demo_derive/src/lib.rs
 
 use proc_macro::TokenStream;
@@ -228,7 +228,7 @@ pub fn trace(_attr: TokenStream, item: TokenStream) -> TokenStream {
 
 The macro can be used, as seen here:
 
-~~~
+~~~{.rust caption="main.rs"}
 //procedural_macro/src/main.rs
 
 #[trace]
@@ -261,7 +261,7 @@ Function-like macros are procedural macros that are invoked with the macro invoc
 
 The following example defines a function-like macro that simply prints its inputs and then replaces the macro invocation with a function definition:
 
-~~~
+~~~{.rust caption="lib.rs"}
 //macro_demo/macro_demo_derive/src/lib.rs
 
 use proc_macro::TokenStream;
@@ -275,7 +275,7 @@ pub fn print_and_replace(input: TokenStream) -> TokenStream {
 
 And this is how it can be used:
 
-~~~
+~~~{.rust caption="main.rs"}
 //procedural_macro/src/main.rs
 
 fn main() {
@@ -290,7 +290,7 @@ In the context of macros, hygiene refers to whether the macro is influenced by t
 
 In general, declarative macros are partially hygienic. A declarative macro is hygienic for local variables and labels but not for anything else. Consider the following example:
 
-~~~
+~~~{.rust caption="lib.rs"}
 macro_rules! foo {
     ($x: expr) => {
         a + $x
@@ -304,7 +304,7 @@ fn main() {
 
 After macro expansion, the previous code should transform into the following:
 
-~~~
+~~~{.rust caption="lib.rs"}
 fn main() {
     let a = 42;
     println!("{}", a + 5);
@@ -315,7 +315,7 @@ However, this code doesn't compile because the macro is hygienic and the definit
 
 In contrast, the following is a scenario where the macro is unhygienic:
 
-~~~
+~~~{.rust caption="lib.rs"}
 //// Definitions in the `my_macro` crate.
 #[macro_export]
 macro_rules! foo {
@@ -337,7 +337,7 @@ fn unit() {
 
 This code won't compile because `my_macro::bar` isn't imported when `foo` is called. This is a situation where the surrounding code (or lack thereof) affects the macro. A solution is to use `$crate::bar`:
 
-~~~
+~~~{.rust caption="lib.rs"}
 macro_rules! foo {
     () => { $crate::bar!() }
 }
@@ -353,7 +353,7 @@ Now that you know how macros can be defined and used, you're ready to look at so
 
 It's possible to use declarative macros to implement simple loop unrolling using recursion. The following `unroll_loop` macro can unroll loops of up to four iterations:
 
-~~~
+~~~{.rust caption="lib.rs"}
 macro_rules! unroll_loop {
     (0, |$i:ident| $s:stmt) => {};
     (1, |$i:ident| $s:stmt) => {{ let $i: usize = 0; $s; }};
@@ -372,7 +372,7 @@ Since a declarative macro is restricted by pattern matching and is unable to per
 
 Here's a real-life example in the [seq-macro](https://crates.io/crates/seq-macro/) crate:
 
-~~~
+~~~{.rust caption="lib.rs"}
 seq!(N in 0..=10 {
     println!("{}", N);
 });
@@ -382,7 +382,7 @@ seq!(N in 0..=10 {
 
 The [Serde JSON](https://github.com/serde-rs/json) crate uses a declarative macro `json` to parse and serialize a JSON. The `json` macro provides a familiar interface for creating JSON objects:
 
-~~~
+~~~{.rust caption="lib.rs"}
 let user = json!({
     "id": 1,
     "name": "John Doe",
@@ -394,7 +394,7 @@ println!("Name of user: {}", user["name"]);
 
 `json` is a declarative macro that looks like this:
 
-~~~
+~~~{.rust caption="lib.rs"}
 #[macro_export(local_inner_macros)]
 macro_rules! json {
     // Hide distracting implementation details from the generated rustdoc.
@@ -408,7 +408,7 @@ macro_rules! json {
 
 The `json_internal` macro is where the magic happens. It's similar to the `add` macro you saw previously because it implements a TT muncher that produces a `vec![]` of the elements:
 
-~~~
+~~~{.rust caption="lib.rs"}
 macro_rules! json_internal {
     //////////////////////////////////////////////////////////////////////////
     // TT muncher for parsing the inside of an array [...]. Produces a vec![...]
@@ -447,7 +447,7 @@ For more details, check out the [source code](https://docs.rs/serde_json/1.0.96/
 
 The popular [Rocket framework](https://github.com/SergioBenitez/Rocket) uses attribute-like procedural macros to create server routes. There are several macros that correspond to HTTP verbs, such as `get`, `post`, and `put`. You can use them with a function definition to annotate the function to be invoked when an HTTP request is made to that route:
 
-~~~
+~~~{.rust caption="lib.rs"}
 #[get("/hello")]
 fn hello() -> String {
     "Hello, World!"
@@ -456,7 +456,7 @@ fn hello() -> String {
 
 The macros are defined using another helper macro—a declarative macro named [`route_attribute`](https://github.com/SergioBenitez/Rocket/blob/9b0564ed27f90686b333337d9f6ed76484a84b27/core/codegen/src/lib.rs#L95):
 
-~~~
+~~~{.rust caption="lib.rs"}
 macro_rules! route_attribute {
     ($name:ident => $method:expr) => (
         #[proc_macro_attribute]
@@ -469,7 +469,7 @@ macro_rules! route_attribute {
 
 The actual attributes are then defined as follows:
 
-~~~
+~~~{.rust caption="lib.rs"}
 route_attribute!(route => None);
 route_attribute!(get => Method::Get);
 route_attribute!(put => Method::Put);
@@ -482,7 +482,7 @@ route_attribute!(options => Method::Options);
 
 As an example, after the `route_attribute` macro is expanded, the `get` macro is defined like this:
 
-~~~
+~~~{.rust caption="lib.rs"}
 #[proc_macro_attribute]
 pub fn get(args: TokenStream, input: TokenStream) -> TokenStream {
     emit!(attribute::route::route_attribute(Method::Get, args, input))
@@ -491,7 +491,7 @@ pub fn get(args: TokenStream, input: TokenStream) -> TokenStream {
 
 [`emit`](https://github.com/SergioBenitez/Rocket/blob/9b0564ed27f90686b333337d9f6ed76484a84b27/core/codegen/src/lib.rs#L77) itself is a declarative macro that generates the final output:
 
-~~~
+~~~{.rust caption="lib.rs"}
 macro_rules! emit {
     ($tokens:expr) => ({
         use devise::ext::SpanDiagnosticExt;
@@ -515,7 +515,7 @@ macro_rules! emit {
 
 The [SQLx macro](https://github.com/launchbadge/sqlx) uses a combination of declarative and procedural macros to parse and verify SQL queries during compilation, as shown here:
 
-~~~
+~~~{.rust caption="lib.rs"}
 let usernames = sqlx::query!(
         "
 SELECT username
@@ -531,7 +531,7 @@ WHERE country = ?
 
 The `query` macro is a declarative macro [defined in this link](https://github.com/launchbadge/sqlx/blob/4f1ac1d6060ee73edf83c8365fafb12df44deecc/src/macros/mod.rs#L305):
 
-~~~
+~~~{.rust caption="lib.rs"}
 macro_rules! query (
     ($query:expr) => ({
         $crate::sqlx_macros::expand_query!(source = $query)
@@ -544,7 +544,7 @@ macro_rules! query (
 
 The `expand_query` macro is a function-like procedural macro [defined in this link](https://github.com/launchbadge/sqlx/blob/4f1ac1d6060ee73edf83c8365fafb12df44deecc/sqlx-macros/src/lib.rs#L7):
 
-~~~
+~~~{.rust caption="lib.rs"}
 pub fn expand_query(input: TokenStream) -> TokenStream {
     let input = syn::parse_macro_input!(input as query::QueryMacroInput);
 
@@ -584,7 +584,7 @@ Since macros operate on Rust code, if you're not careful, they can be difficult 
 
 Generous documentation is your friend here. You can also try to keep your macros simple by extracting the macro logic to a separate function or macro. The following example from the [Rust documentation](https://doc.rust-lang.org/book/ch19-06-macros.html) shows this in action:
 
-~~~
+~~~{.rust caption="lib.rs"}
 #[proc_macro_derive(HelloMacro)]
 pub fn hello_macro_derive(input: TokenStream) -> TokenStream {
     // Construct a representation of Rust code as a syntax tree
@@ -602,7 +602,7 @@ Here, the actual implementation is extracted inside `impl_hello_macro`. This kee
 
 Since macros are inherently complex, it's a good idea to provide thorough error messages that clearly indicate what went wrong and, if possible, how to fix it. To do so, you can use `panic` in a procedural macro:
 
-~~~
+~~~{.rust caption="lib.rs"}
 #[proc_macro]
 pub fn foo(tokens: TokenStream) -> TokenStream {
     panic!("Boom")
@@ -611,7 +611,7 @@ pub fn foo(tokens: TokenStream) -> TokenStream {
 
 Or you can use the [`compile_error`](https://doc.rust-lang.org/stable/std/macro.compile_error.html) macro, which raises a compiler error:
 
-~~~
+~~~{.rust caption="lib.rs"}
 macro_rules! give_me_foo_or_bar {
     (foo) => {};
     (bar) => {};
@@ -633,7 +633,7 @@ To test your macros, the [enums](https://crates.io/crates/trybuild) crate can be
 
 You can use the crate as shown here:
 
-~~~
+~~~{.rust caption="lib.rs"}
 #[test]
 fn test_macro() {
     let t = trybuild::TestCases::new();
