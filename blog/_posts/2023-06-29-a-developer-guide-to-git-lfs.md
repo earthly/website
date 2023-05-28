@@ -77,13 +77,14 @@ To install it in Ubuntu, you will use [`apt-get`](https://manpages.ubuntu.com/ma
 
 To install GIT LFS on Ubuntu, You will need to update the package list using the `apt-get update` command. In the terminal:
 
-~~~
+~~~{.bash caption=">_"}
 sudo apt get update
 ~~~
 
 The next step will be to install the Git LFS package:
 
-~~~
+~~~{.bash caption=">_"}
+
 curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
 ~~~
 
@@ -95,7 +96,7 @@ This command downloads and executes a script from [Packagecloud](packagecloud.io
 
 Now that the packagecloud repository has been added, you can use the [`apt`](https://manpages.ubuntu.com/manpages/xenial/man8/apt.8.html) package manager to install Git LFS using the following command:
 
-~~~
+~~~{.bash caption=">_"}
 sudo apt install git-lfs
 ~~~
 
@@ -107,13 +108,13 @@ This will install Git LFS and its dependencies on your system.
 
 Once you have installed *git-lfs*, you need to initialize it. You can initialize it with the command below:
 
-~~~
- git lfs install
+~~~{.bash caption=">_"}
+git lfs install
 ~~~
 
 You will get the following output:
 
-~~~
+~~~{ caption="Output"}
 Git LFS initialized
 ~~~
 
@@ -129,7 +130,7 @@ Create a new repository in your GitHub account called "accidents". Follow the in
 
 Clone the repository to your local machine and create a new folder called `accidents`:
 
-~~~
+~~~{.bash caption=">_"}
 git clone <repository_URL>
 mkdir accidents
 cd accidents
@@ -139,7 +140,7 @@ Copy and paste the US_Accidents.csv file, which you downloaded from Kaggle and c
 
 Create an `accident.py` file and add this code:
 
-~~~
+~~~{.python caption="accident.py"}
 
 import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
 
@@ -161,7 +162,7 @@ The output executing this script is shown below:
 
 The accidents folder should contain the following file:
 
-~~~
+~~~{ caption=""}
 ├── accidents.py
 └── US_Accidents.csv
 ~~~
@@ -184,13 +185,13 @@ Trying to push large files gives an error that GitHub's file limit is 100MB, whi
 
 To use Git LFS in this repository, the first step will be to initialize Git LFS inside the `accidents` folder.
 
-~~~
+~~~{.bash caption=">_"}
 git lfs install
 ~~~
 
 This will return the output:
 
-~~~
+~~~{ caption="Output"}
 Updated Git Hooks 
 Git LFS initialized
 ~~~
@@ -203,19 +204,19 @@ To track a specific type of file in the repository, you can use the `git lfs tra
 
 The `git-lfs track` command specifies which files should be managed by Git Large File Storage (LFS) in a Git repository. For example, to track all CSV files, run the following command:
 
-~~~
+~~~{.bash caption=">_"}
 git lfs track "*.csv"
 ~~~
 
 This will output:
 
-~~~
+~~~{ caption="Output"}
 Tracking "*.csv"
 ~~~
 
 This command will modify the repository's ([`.gitattributes`](https://git-scm.com/docs/gitattributes) file by adding the following in the file". If the `.gitattributes` does not exist, the command will create it and add the following:
 
-~~~
+~~~{.bash caption=">_"}
 *.csv  filter=lfs diff=lfs merge=lfs -text
 ~~~
 
@@ -235,37 +236,37 @@ This line is a Git configuration command that specifies how Git should handle fi
 
 After you've defined the file types to be monitored with Git LFS, you must add the `.gitattributes` file to the staging area to ensure that Git tracks the file:
 
-~~~
+~~~{.bash caption=">_"}
 git add .attributes
 ~~~
 
 Once Git LFS is all set up in the repository, you can now add, commit, and push the changes to your remote repository:
 
-~~~
+~~~{.bash caption=">_"}
 git add .
 git commit -m "add csv file"
 git push origin main
 ~~~
 
 <div class="wide">
-![git push]({{site.images}}{{page.slug}}/fu0v69y.png)
+![`git push`]({{site.images}}{{page.slug}}/fu0v69y.png)
 </div>
 
 Once the files are uploaded to your remote Git repository, you can check the files that are pushed:
 
 <div class="wide">
-![git add]({{site.images}}{{page.slug}}/8e0gcKN.png)
+![`git add`]({{site.images}}{{page.slug}}/8e0gcKN.png)
 </div>
 
 You can also list the files that are currently being tracked using Git LFS by running the [`git lfs ls-files`](https://manpages.ubuntu.com/manpages/bionic/man1/git-lfs-ls-files.1.html) command lists:
 
-~~~
+~~~{.bash caption=">_"}
 git lfs ls-files
 ~~~
 
 This will output:
 
-~~~
+~~~{ caption="Output"}
 2aa88f5d38   US_Accidents.csv
 ~~~
 
@@ -279,7 +280,7 @@ You can stop tracking a file by using the [`git lfs untrack`](https://www.mankie
 
  For example, you can stop tracking all CSV files in your repository with the command:
 
-~~~
+~~~{.bash caption=">_"}
 git lfs untrack "*.csv"
 ~~~
 
@@ -291,19 +292,19 @@ By removing pointer files from your Git repository, you can keep your repository
 
 Remove the pointer file from your Git repository using the `git rm` command:
 
-~~~
+~~~{.bash caption=">_"}
 git rm US_Accidents.csv
 ~~~
 
 Commit and push the changes to the Git repository:
 
-~~~
+~~~{.bash caption=">_"}
 git commit -m "removed csv file from git lfs"
 git push origin main
 ~~~
 
 <div class="wide">
-![delete git lfs file]({{site.images}}{{page.slug}}/rOik8QH.png)
+![Delete git lfs file]({{site.images}}{{page.slug}}/rOik8QH.png)
 </div>
 
 ## Git Lfs Advanced Features
@@ -321,28 +322,29 @@ Consider the following scenario: you need to include a new dataset and a video f
 
 You will first use the Git LFS to track the dataset file by specifying it as a file to track using the `git lfs track` command. After tracking, you can commit the changes and push them to the main branch of the Git repository. This will add the new files to your project and make them available to other collaborators.
 
-~~~
+~~~{.bash caption=">_"}
 git lfs track "*.mp4"  "*.csv"
 ~~~
 
 Commit and push the changes:
 
-~~~
+~~~{.bash caption=">_"}
 git add .
 git commit -m "add new files"
 git push origin main 
 ~~~
 
 <div class="wide">
-![add new files]({{site.images}}{{page.slug}}/Kngwknu.png)
+![Add new files]({{site.images}}{{page.slug}}/Kngwknu.png)
 </div>
 
 So, our repository contains the `Us_Accidents.csv` as a Git LFS pointer file and the `NYC_Accidents_2020.csv` and `pexels-kelly-4324074-3840x2160-24fps.mp4` files as large files.
 
 To convert these newly committed files that are already on the remote repository to a Git LFS pointer, you will need to use the `git lfs migrate` command:
 
-~~~
-git lfs migrate import --include="NYC Accidents 2020.csv" --include="pexels-kelly-4324074-3840x2160-24fps.mp4"
+~~~{.bash caption=">_"}
+git lfs migrate import --include="NYC Accidents 2020.csv" \
+--include="pexels-kelly-4324074-3840x2160-24fps.mp4"
 
 ~~~
 
@@ -351,7 +353,7 @@ The command `git lfs migrate import --include="NYC Accidents 2020.csv"  --includ
 After following these steps, the files "NYC Accidents 2020.csv" and "pexels-kelly-4324074-3840x2160-24fps.mp4" will be migrated to Git LFS, and their contents will be managed separately from the Git repository itself.
 
 <div class="wide">
-![git lfs migrate]({{site.images}}{{page.slug}}/FqouP0d.png)
+![`git lfs migrate`]({{site.images}}{{page.slug}}/FqouP0d.png)
 </div>
 
 ### File Locking
@@ -360,13 +362,13 @@ Git LFS provides file locking, preventing multiple users from simultaneously mod
 
 Run the command `git lfs lock <filename>` to lock a specific file. In this case, the filename is US_Accidents.csv:
 
-~~~
+~~~{.bash caption=">_"}
 git lfs lock US_Accidents.csv
 ~~~
 
 This will output:
 
-~~~
+~~~{ caption="Output"}
 Locked US_Accidents.csv
 ~~~
 
@@ -374,7 +376,7 @@ This will create a lock for the specified file and prevent other users from modi
 
  To view the locked files, run the command below:
 
-~~~
+~~~{.bash caption=">_"}
 git lfs locks
 ~~~
 
@@ -384,7 +386,7 @@ This is useful for determining which files are currently locked in the repositor
 
 To unlock the file, you can run the following command:
 
-~~~
+~~~{.bash caption=">_"}
 git lfs unlock --id 3015896
 ~~~
 
@@ -393,7 +395,7 @@ This will release the lock with the specified ID and allow other users to modify
 
 Alternatively, you can unlock it using its filename.
 
-~~~
+~~~{.bash caption=">_"}
 git lfs unlock US_Accidents.csv
 ~~~
 
@@ -405,8 +407,9 @@ To use custom storage for Git LFS, you must set up a separate server or service 
 
 Once you have set up your custom storage, you can configure Git LFS to use it by setting the [`lfs.url`](https://www.mankier.com/5/git-lfs-config) configuration option to the URL of your custom storage service. For example:
 
-~~~
-git config -f .lfsconfig lfs.url https://customstorage.com/myrepository.git/info/lfs
+~~~{.bash caption=">_"}
+git config -f .lfsconfig lfs.url \
+https://customstorage.com/myrepository.git/info/lfs
 ~~~
 
 You must replace `customstorage.com` and `myrepository.git` with your custom storage service's URL and repository name.
@@ -417,7 +420,7 @@ Concurrent transfers refer to the ability of Git LFS to perform multiple file tr
 
 The number of concurrent transfers can be configured in the Git LFS client or server configuration file. By default, Git LFS is configured to allow three concurrent transfers, which can be adjusted to suit the user's specific needs.
 
-~~~
+~~~{.bash caption=">_"}
 git config --global lfs.concurrenttransfers 10
 ~~~
 
