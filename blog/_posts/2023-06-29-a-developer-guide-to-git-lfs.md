@@ -410,6 +410,8 @@ of Git LFS, such as batch operations, file locking, custom storage, and concurre
 
 To learn more about Git LFS, visit the [official documentation](https://docs.github.com/en/repositories/working-with-files/managing-large-files/installing-git-large-file-storage).
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
@@ -418,4 +420,3 @@ To learn more about Git LFS, visit the [official documentation](https://docs.git
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
