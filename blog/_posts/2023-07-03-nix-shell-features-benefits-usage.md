@@ -121,7 +121,9 @@ Here is how the output will look:
 
 You'll notice that when the command is completed the Terminal was prefixed with `nix-shell`, that is how you know you are in the nix-shell environment. You can now open vim by running the command `vim` on your terminal:
 
+<div class="wide">
 ![A screenshot of the Vim Editor from Nix-shell environment]({{site.images}}{{page.slug}}/3Ab74HC.png)
+</div>
 
 To get a better understanding of how the `nix-shell` works, let's create a basic Python project in the `nix-shell` environment.
 
@@ -209,7 +211,7 @@ If you have lots of dependencies, you can create a `requirement.txt` to manage t
 numpy
 ~~~
 
-Run the command the `nix-shell` on your terminal
+Run the command the `nix-shell` on your terminal.
 
 When you run the `nix-shell` command in the directory that has the `shell.nix` file above, it will activate a nix environment, install python3 in it, install all the python packages defined in the `requirements.txt` file, in our case the [numpy](https://numpy.org/) package and then run the unit test. The output will look like below:
 
@@ -222,7 +224,7 @@ OK
 [nix-shell:~/Development/apps/python-app]$ 
 ~~~
 
-As you can see, it ran the test
+As you can see, it ran the test.
 
 Let's take a closer look at some important elements in the `shell.nix` file. At the beginning of the nix-shell script, we come across a function called `{ pkgs ? import <nixpkgs> {} }:`
 
@@ -284,6 +286,7 @@ We also define a `shell-hook` inside the block:
 ~~~
 
 The  `shellHook` is a mechanism that allows you to execute arbitrary shell code when you enter a Nix shell environment. This can be useful for setting environment variables, configuring aliases or functions, or any other shell-related tasks that you need to perform when you enter the Nix shell environment.
+
 In our example, we created a Python virtual environment, activated it, installed all the required packages, and then ran our test script in the `shellHook`.
 There is more to the nix expression language. To learn more about the language, you should check the [docs](https://nixos.org/manual/nix/stable/quick-start.html).
 
@@ -350,6 +353,8 @@ When you use Nix to install packages, the daemon retrieves the packages from the
 
 ### How to Start and Stop the Daemon
 
+![Start]({{site.images}}{{page.slug}}/start.png)\
+
 In most cases, you might not need to start the daemon as it's always started when your computer starts up. However, if you do come to a point where you need to start it, simply run the command `nix-daemon` in the terminal. This will start the daemon in the background, and it will continue to run until it is stopped.
 
 To stop the daemon, run the command `nix-daemon --stop`. This will stop the daemon and any running builds, you can do this for any reason. One reason could be that you figured it's taking too much memory or you don't want it anymore but it's refusing to uninstall, even though this is not something I've seen happen but of course, you should be prepared for surprises.
@@ -397,8 +402,3 @@ Here is a summary of what we've learned so far:
 I hope this article gives you a clear understanding of what `nix-shell` is and how you can leverage it to make your builds reproducible. If you are looking to explore the code further, you can find the entire code used in this tutorial on [GitHub](https://github.com/ezesundayeze/nix-python)
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
