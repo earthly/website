@@ -399,3 +399,5 @@ Raspbian
 sysroot
 Raspeberry
 gdbserver
+
+Imagemagick
