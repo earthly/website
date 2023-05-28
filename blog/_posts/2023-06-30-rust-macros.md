@@ -343,7 +343,7 @@ This code won't compile because `my_macro::bar` isn't imported when `foo` is cal
 
 ~~~{.rust caption="lib.rs"}
 macro_rules! foo {
-    () => { $crate::bar!() }
+    () => { {% raw %}$crate::bar!(){% endraw %} }
 }
 ~~~
 
@@ -659,6 +659,5 @@ If you're looking for more information about Rust macros, check out the [Rust do
 
 ## Outside Article Checklist
 
-* [ ] Create header image in Canva
 * [ ] Optional: Find ways to break up content with quotes or images
 
