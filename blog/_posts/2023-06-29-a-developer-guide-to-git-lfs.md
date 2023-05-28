@@ -35,6 +35,8 @@ All the code examples in this tutorial can be found in this Github [repository](
 
 ## Problem with Storing Large Files in Git
 
+![Problem]({{site.images}}{{page.slug}}/problems.png)\
+
 Git is a powerful version control system with many benefits, including storing and managing large files. However, it's important to note that storing large files directly in Git can significantly slow down operations like pulling, pushing, and cloning the repository. This can frustrate collaborators who rely on these operations to work efficiently.
 
 When a large file is added to a Git repository, every collaborator on the repository must download the entire file, including all versions of it. This process can be time-consuming, especially for collaborators with slower internet connections. Additionally, storing large files on Git can result in a large repository size, making collaboration difficult.
@@ -438,7 +440,3 @@ of Git LFS, such as batch operations, file locking, custom storage, and concurre
 To learn more about Git LFS, visit the [official documentation](https://docs.github.com/en/repositories/working-with-files/managing-large-files/installing-git-large-file-storage).
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-- [ ] Optional: Find ways to break up content with quotes or images
