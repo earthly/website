@@ -315,6 +315,8 @@ In the second half of the article, we walked through the steps to install and ve
 
 In conclusion, Nix offers a powerful and efficient package management solution for Mac users, with unique features and benefits that make it a valuable alternative to Homebrew and other package managers. By learning and utilizing the capabilities of Nix, users can effectively manage their packages, maintain system configurations, and ensure determinism in their workflows. So if you're a Mac user looking for an alternative to Homebrew or other package managers, Nix is definitely worth considering.
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
@@ -323,4 +325,4 @@ In conclusion, Nix offers a powerful and efficient package management solution f
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
+
