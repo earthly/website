@@ -392,6 +392,8 @@ Here is a summary of what we've learned so far:
 
 I hope this article gives you a clear understanding of what `nix-shell` is and how you can leverage it to make your builds reproducible. If you are looking to explore the code further, you can find the entire code used in this tutorial on [GitHub](https://github.com/ezesundayeze/nix-python)
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 - [ ] Add in Author page
@@ -401,4 +403,3 @@ I hope this article gives you a clear understanding of what `nix-shell` is and h
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
