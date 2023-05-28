@@ -32,6 +32,8 @@ Package managers are vital tools for developers and users alike, as they simplif
 
 ### Difference Between HomeBrew and Nix
 
+![Difference]({{site.images}}{{page.slug}}/difference.png)\
+
 One of the key differences between Homebrew and Nix is how they handle package creation, storage, and management. Homebrew uses a [formula system](https://docs.brew.sh/Formula-Cookbook), where each package is defined by a formula file that specifies how to download, compile, and install the package. Nix, on the other hand, uses a functional programming language – called [Nix Expression Language](https://nixos.org/manual/nix/stable/#chap-writing-nix-expressions) – to define packages, making it easier to manage dependencies and ensure package compatibility.
 
 Another significant difference between Homebrew and Nix is how they handle multiple versions of the same package. Homebrew only allows for one version of a package to be installed at a time, while Nix can manage multiple versions of the same package concurrently. This feature is particularly useful for developers who need to test their software against different versions of a library or package.
@@ -102,6 +104,8 @@ In general, both approaches have their strengths and weaknesses. Homebrew's form
 Nix's functional programming approach provides a high degree of flexibility and reproducibility, making it ideal for managing complex system configurations. However, the learning curve for Nix expression language can be steep for some users, as it requires familiarity with [functional programming](https://en.wikipedia.org/wiki/Functional_programming) concepts. This can be challenging for developers who are used to [imperative programming languages](https://learn.microsoft.com/en-us/dotnet/standard/linq/functional-vs-imperative-programming). This may result in users spending more time learning how to use Nix effectively. Additionally, Nix does not have a centralized package repository like Homebrew, which can make it more difficult to discover and distribute packages. As a result, users may need to spend more time finding the packages they need.
 
 ### Package Storage
+
+![Storage]({{site.images}}{{page.slug}}/storage.png)\
 
 Both Homebrew and Nix have different approaches to package storage on Mac systems. Homebrew stores packages in the `/usr/local/Cellar` directory and creates [symbolic links](https://en.wikipedia.org/wiki/Symbolic_link) (symlink) in the `/usr/local/bin` directory for easy access. This means that each package has its directory in Cellar, and when you install a package, Homebrew creates a symlink to the package's executable file in `/usr/local/bin`.
 
@@ -227,6 +231,8 @@ In the example we just followed, we installed Node.js using the Nix package mana
 
 ## Using the Nix Package Manager
 
+![Using]({{site.images}}{{page.slug}}/using.png)\
+
 Now that you have successfully installed Nix on your Mac, this section will focus solely on exploring its powerful features. We will dive into how to use Nix to search for and install packages, handle multiple versions of the same package, upgrade, and remove packages, and effectively use them in your workflow. So let's get started!
 
 ### Searching for Packages With Nix
@@ -321,8 +327,3 @@ In the second half of the article, we walked through the steps to install and ve
 In conclusion, Nix offers a powerful and efficient package management solution for Mac users, with unique features and benefits that make it a valuable alternative to Homebrew and other package managers. By learning and utilizing the capabilities of Nix, users can effectively manage their packages, maintain system configurations, and ensure determinism in their workflows. So if you're a Mac user looking for an alternative to Homebrew or other package managers, Nix is definitely worth considering.
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-- [ ] Optional: Find ways to break up content with quotes or images
-
