@@ -441,5 +441,4 @@ To learn more about Git LFS, visit the [official documentation](https://docs.git
 
 ## Outside Article Checklist
 
-- [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
