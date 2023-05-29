@@ -1,4 +1,4 @@
-VERSION --use-cache-command 0.6
+VERSION 0.7
 FROM alpine
 
 ## Dev Build
@@ -53,6 +53,9 @@ publish:
   # Date is only used to bust the cache and get around this issue
   # https://github.com/earthly/earthly/issues/2086
   ARG DATE
+
+  # Work around for netlify DNS issue
+  HOST api.netlify.com 18.188.245.61
 
   IF [ "$DESTINATION" = "PROD" ]
     COPY (./blog/+build/_site --DATE="$DATE") ./blog
