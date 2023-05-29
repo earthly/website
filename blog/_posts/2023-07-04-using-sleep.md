@@ -174,5 +174,4 @@ Bash is a powerful language and can empower Linux users to do more with their sy
 
 ## Outside Article Checklist
 
-* [ ] Create header image in Canva
 * [ ] Optional: Find ways to break up content with quotes or images
