@@ -6,7 +6,12 @@ toc: true
 author: James Konik
 
 internal-links:
- - just an example
+ - Shell
+ - Scripting
+ - sleep
+ - Command
+ - Delays
+ - Linux
 ---
 
 Timing is key to many applications, but making things happen at the right time can be challenging. For instance, sometimes you need to introduce a delay to a script to make sure actions are taken precisely when you want them to. The good news is that the `sleep` command lets you do that. With it, you can pause your Linux scripts, ensuring everything happens when it should.
@@ -171,5 +176,3 @@ Bash is a powerful language and can empower Linux users to do more with their sy
 
 * [ ] Create header image in Canva
 * [ ] Optional: Find ways to break up content with quotes or images
-* [ ] Add keywords for internal links to front-matter
-* [ ] Run `link-opp` and find 1-5 places to incorporate links
