@@ -22,6 +22,8 @@ In this article, you'll learn more about the `sleep` command, how it works, and 
 
 ## Understanding the `sleep` Command
 
+![Understanding]({{site.images}}{{page.slug}}/understand.png)\
+
 The `sleep` command works by introducing pauses into your scripts. When you use `sleep`, the system waits before moving on to the next command. The exact time to wait is specified as an argument to the command.
 
 By default, `sleep` works in seconds. [On some systems, such as macOS and FreeBSD](https://www.cyberciti.biz/faq/linux-unix-sleep-bash-scripting/), that's all you can use.
@@ -39,10 +41,8 @@ In addition to affixing suffixes, you can also specify multiple arguments to `sl
 
 For more information on the parameters available, consult `sleep`'s manual page, by typing the following:
 
-~~~{.Bash caption=""}
-
+~~~{.bash caption=">_"}
 man sleep
-
 ~~~
 
 Here's a screenshot of the manual output:
@@ -61,7 +61,7 @@ There are several use cases for `sleep`. Let's run through a few of them.
 
 In addition, web-based services take time to complete. You can utilize `sleep` if you want to allow time for that to happen before moving on with your program. It can also help if you have computationally expensive tasks running, [allowing time for them to finish](https://phoenixnap.com/kb/linux-sleep) before continuing.
 
-### Using sleep to Pace a Script's Execution
+### Using `sleep` to Pace a Script's Execution
 
 There are all kinds of reasons you may want to pace a script's execution, and the `sleep` command can help you do that. For instance, if a script consumes resources, then pacing it can limit its consumption, leaving sufficient resources available for other tasks. Or for commands that don't need to be run frequently, such as monitoring [an alert](https://www.tecmint.com/linux-sleep-command-examples/) or checking if a website is online, it may be beneficial to space out their execution.
 
@@ -70,6 +70,8 @@ In addition, you may want to leave a delay so that other parts of the system can
 You can also add timing effects to scripts that require user interaction. You can give people a second or so to see that a particular service has been installed before continuing with configuration. If you're writing a text adventure, you could add a dramatic pause or you could simply thank users after providing input, pausing for a couple of seconds before moving on.
 
 ### Simulating Slow Network Connections
+
+![Simulating]({{site.images}}{{page.slug}}/simulate.png)\
 
 In addition to adding delays and pausing a script's execution, `sleep` lets you simulate problems. If you want to know how your stack is affected if a process takes longer than usual, then an artificial delay can help. Simply add a `sleep` command to the script that runs when your service is called.
 
@@ -93,8 +95,7 @@ You can also use conditionals to choose whether to pause. If a service may not f
 
 Following is an example using a loop to give the user a countdown. This is a trivial example, but it could easily be expanded for use as an alarm or a regular task reminder, or adapted to trigger any kind of code regularly:
 
-~~~{.Bash caption=""}
-
+~~~{.bash caption=">_"}
 count=5
 declare -i count
 echo "Prepare to launch"
@@ -105,7 +106,6 @@ while [[ $count -gt 0 ]]; do
 done
 sleep 1
 echo "Lift Off"
-
 ~~~
 
 Here's what that looks like when running in the Linux command line:
@@ -116,6 +116,8 @@ Here's what that looks like when running in the Linux command line:
 
 ## Alternative Commands to `sleep`
 
+![Alternate]({{site.images}}{{page.slug}}/alternate.png)\
+
 `sleep` isn't the only tool in your toolbox when it comes to pacing your scripts. Let's look at some other commands and learn when they're helpful.
 
 ### The `wait` Command
@@ -124,14 +126,11 @@ Whereas `sleep` creates a pause between commands, `wait` [waits for a process to
 
 The following code, adapted from [an example on ItsLinuxFOSS](https://itslinuxfoss.com/bash-wait-command-explained/), shows you how to run the process out of order using `wait`:
 
-~~~{.Bash caption=""}
-
+~~~{.bash caption=">_"}
 echo "Background" &
 echo "Foreground"
 wait
 echo "After"
-
-
 ~~~
 
 The `&` after the first line makes that command run in the background.
@@ -144,20 +143,16 @@ You can specify the process being waited for as well as the state to wait for.
 
 Linux doesn't include a pause command, but you can [create pauses using `read`](https://www.cyberciti.biz/tips/linux-unix-pause-command.html) by adding the `-p` flag followed by a message. This allows you to instruct Linux to wait for user input before continuing:
 
-~~~{.Bash caption=""}
-
+~~~{.bash caption=">_"}
 read -p "Hello"
-
 ~~~
 
 That's a good way to make sure the user has read input or to request they take an action or even make a decision. You can also use `read` if you want a user to be able to start something at a specific time; for instance, if you want to launch process when the user presses a button.
 
 Using the `-t` flag lets you specify the number of seconds to wait. However, in this case, you won't wait for user input:
 
-~~~{.Bash caption=""}
-
+~~~{.bash caption=">_"}
 read -t 3 -p "Hello"
-
 ~~~
 
 This lets you give users a chance to read important output; however, here, the script continues after a delay, with no further action on their part.
@@ -171,7 +166,3 @@ However, there's more to it than just providing an integer, so explore its capab
 Bash is a powerful language and can empower Linux users to do more with their systems. If you want to learn more about `sleep`, check out [its official documentation](https://man7.org/linux/man-pages/man1/sleep.1.html), or you can read more about Bash programming in general in our [bash series](https://earthly.dev/blog/series/bash/).
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-* [ ] Optional: Find ways to break up content with quotes or images
