@@ -165,10 +165,11 @@ However, there's more to it than just providing an integer, so explore its capab
 
 Bash is a powerful language and can empower Linux users to do more with their systems. If you want to learn more about `sleep`, check out [its official documentation](https://man7.org/linux/man-pages/man1/sleep.1.html), or you can read more about Bash programming in general in our [bash series](https://earthly.dev/blog/series/bash/).
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 * [ ] Create header image in Canva
 * [ ] Optional: Find ways to break up content with quotes or images
 * [ ] Add keywords for internal links to front-matter
 * [ ] Run `link-opp` and find 1-5 places to incorporate links
-* [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
