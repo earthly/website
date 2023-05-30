@@ -23,7 +23,7 @@ function syntaxLabel() {
       } else {
         b.innerHTML =
           `<div class="toolbar"><div>${caption}</div><div class="copy-item" data-clipboard-text="${
-            b.querySelector("code").innerText
+            b.querySelector("code").innerText.replace(/"/g, '&quot;')
           }">Copy</div></div>` + b.innerHTML;
       };
     };
