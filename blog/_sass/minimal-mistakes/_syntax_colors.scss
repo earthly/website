@@ -500,8 +500,6 @@ span.syntax-label-wide {
 }
 
 div.sourceCode > pre.sourceCode {
-  padding-top: 3em;
-
   .toolbar {
     background-color: #4b5563;
     border-top-left-radius: 6px;
@@ -517,6 +515,12 @@ div.sourceCode > pre.sourceCode {
     right: 0;
     left: 0;
     text-align: center;
+  }
+
+  .terminal {
+    color: #41ff00;
+    position: absolute;
+    left: 16px;
   }
 
   .copy-item {
