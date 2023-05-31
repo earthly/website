@@ -19,10 +19,18 @@ Let's take a closer look at both data classes and namedtuples, and try to answer
 
 ### Python Data Classes
 
+~~~{.python caption="main.py"}
+from dataclasses import dataclass
 
+
+
+~~~
 
 ### What Are Named Tuples?
 
+~~~{.python caption="main.py"}
+
+~~~
 
 ## Data Classes vs Named Tuples: A Comprehensive Comparison
 
@@ -34,15 +42,25 @@ TL; DR: If you want an immutable container data type with a small subset of fiel
 
 Data class instances are mutable by default. So you can modify the value of one or more fields after the instance has been created.
 
+~~~{.python caption="main.py"}
+from dataclasses import dataclass
+
+~~~
+
+~~~{caption="main.py"}
+from dataclasses import dataclass
+~~~
+
 Namedtuples are tuples, so they are immutable. Meaning you cannot modify them in place. 
 
-In this example,you cannot modify namedtuple instances after they are created. If you try doing so you will run into errors.
+In this example, you cannot modify namedtuple instances after they are created. If you try doing so you will run into errors.
 
-<Create instances of both the data class and namedtuple and explain.>
+~~~{.python caption="main.py"}
 
-But can we have immutable data class instances and mutable namedtuple instances?
+~~~
 
-You can make data class instances immutable by setting `frozen` to True. But you cannot have mutable namedtuple instances.
+**Can we have immutable data class instances and mutable namedtuple instances?**
+You can make data class instances immutable by setting `frozen` to `True`. But you cannot have mutable namedtuple instances.
 
 <div class="notice--info">
 #### A Note on _replace()
@@ -55,7 +73,9 @@ This `_replace()` method can also be used to create shallow copies of data class
 
 When you create data classes you can specify the default values for one or more fields. With Python data classes, you can also use `default_factory` to use any callable to initialize a field with default values.
 
-<Set some simple little default literally defaults for fields in the example data class>
+~~~{.python caption="main.py"}
+
+~~~
 
 But can you set default values in namedtuples? 
 
@@ -63,7 +83,11 @@ Though this may not be obvious, in Python 3.7+, you can use the `defaults` field
 
 Using defaults, you can specify the default values for the last k fields.
 
-Downside: When you have too many optional fields, namedtuples can be a pain to maintain.
+~~~{.python caption="main.py"}
+
+~~~
+
+downside: This can be hard to maintain if there are too many fields.
 
 Aside: get default values
 You can get all the default values using the `get_default()` method on the namedtuple instance. 
@@ -85,12 +109,22 @@ Since Python 3.6, you can use `NamedTuples` from the typing module to add type h
 
 <show the list of tuples [(field_name,type),...] syntax here>
 
-Downside: This can be hard to maintain if there are too many fields.
+~~~{.python caption="main.py"}
+from dataclasses import dataclass, field
+
+
+~~~
 
 In Python 3.8 and later, you can use the familiar class syntax and create NamedTuple instances with type hints. (Very similar to how you can create data classes.)
 
+~~~{.python caption="main.py"}
+
+
+
+~~~
+
 <div class="notice--big--primary">
-Aside: Not to be confused with inheritance!
+All Instances are Tuple Subclasses
 ```
 class Derived(Base):
      pass 
