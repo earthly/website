@@ -22,7 +22,7 @@
 /blog/portainer-for-dcm /blog/portainer-for-docker-container-management
 /blog/k8cluster-mnging-blding-kubeadm /blog/managing-k8s-with-kubeadm
 /blog/helm-k8s-mngr /blog/helm-k8s-package-manager
-/blog/docker-virutal-machine /blog/docker-vs-vm
+/blog/docker-virutal-machines /blog/docker-vs-vm
 
 # public-key-auth implementation details, referenced by earthly-core cli during account registration
 /public-key-auth https://docs.earthly.dev/docs/misc/public-key-auth
