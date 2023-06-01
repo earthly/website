@@ -463,3 +463,7 @@ Prince Onyeanuna:
     name    : "Prince Onyeanuna"
     bio     : "Prince is a technical writer and DevOps engineer who believes in the power of showing up. He is passionate about helping others learn and grow through writing and coding."
     avatar  : "/assets/images/authors/prince-onyeanuna.jpg"
+Christoph Berger:
+    name    : "Christoph Berger"
+    bio     : "Christoph is a technical writer specializing in Go (the language) and has a broad interest in IT. When he's not writing articles, he helps developers become successful with Go."
+    avatar  : "/assets/images/authors/christoph-berger.jpg"
