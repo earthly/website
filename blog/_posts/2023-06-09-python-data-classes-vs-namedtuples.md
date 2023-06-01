@@ -99,18 +99,38 @@ book2.title = 'Digital Minimalism'
 ~~~{caption="Output"}
 Traceback (most recent call last):
   File "main.py", line 30, in <module>
-    book3.title = 'Digital Minimalism'
+    book2.title = 'Digital Minimalism'
 AttributeError: can't set attribute
 ~~~
 
+<div class="notice--big--primary">
 **Can we have immutable data class instances and mutable namedtuple instances?**
-You can make data class instances immutable by setting `frozen` to `True` in the `@dataclass` decorator. But you *cannot* have mutable namedtuple instances.
+  
+- You can make data class instances immutable by setting `frozen` to `True` in the `@dataclass` decorator. 
+- But you *cannot* have mutable namedtuple instances.
+
+</div>
 
 <div class="notice--info">
 #### A Note on `_replace()`
 Using the `_replace()` method, you can get a shallow copy of a namedtuple instance where the value of a particular field is replaced with an updated value. 
-  
-This `_replace()` method can also be used to create shallow copies of data class instances.
+
+~~~{caption="main.py"}
+book2 = BookNT('Deep Work','Cal Newport','Nonfiction', True)
+book2_copy = book2._replace(title='Digital Minimalism')
+~~~
+
+~~~{caption="main.py"}
+print(book2.title)
+print(book2_copy.title)
+~~~
+
+~~~{caption="Output"}
+Deep Work
+Digital Minimalism
+~~~
+
+You can as well use the `_replace()` method to create shallow copies of data class instances.
 </div>
 
 ### Setting Default Values
@@ -162,6 +182,33 @@ Aside: get default values
 You can get all the default values using the `get_default()` method on the namedtuple instance. 
 
 With Python data classes, you can also use `default_factory` to use any callable to initialize a field with default values.
+
+~~~{.python caption="main.py"}
+from dataclasses import dataclass, field
+import random
+
+
+def get_rating():
+    return random.choice(range(3,6))
+
+
+@dataclass
+class BookDC:
+    title:str
+    author:str
+    genre:str
+    standalone:bool=True
+    rating:str=field(default_factory=get_rating)
+~~~
+
+~~~{.python caption="main.py"}
+book4 = BookDC('Coraline','Neil Gaiman','Fantasy')
+print(book4)
+~~~
+
+~~~{caption="Output"}
+BookDC(title='Coraline', author='Neil Gaiman', genre='Fantasy', standalone=True, rating=5)
+~~~
 
 ### Comparing Objects
 
