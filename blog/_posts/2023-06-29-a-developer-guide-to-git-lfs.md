@@ -14,7 +14,7 @@ internal-links:
  - Large Files
 ---
 
-**We're [Earthly.dev](https://earthly.dev/). We make building software simpler and therefore faster – like Dockerfile and Makefile had a baby. This article explains how to use Git LFS**
+**We're [Earthly](https://earthly.dev/). We make building software simpler and, therefore, faster. This article explains how to use Git LFS. If you are doing things at the command line you might like [Earthly](https://earthly.dev/). It's a pretty great open-source build tool.**
 
 Have you ever tried adding large files to your Git repository, like video or audio files, and found that it slows down any operations involving the repository? Fortunately, a solution is available in the form of Git Large File Storage (LFS).
 
