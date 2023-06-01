@@ -14,6 +14,8 @@ internal-links:
  - Commands
 ---
 
+**We're [Earthly.dev](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article covers bash pushd and popd. If you want to know more about building in containers then [check us out](/).**
+
 Do you get lost in path navigation? Do you have more terminal windows open than browser tabs because you worry about not finding your way back to the previous working directory?
 
 If you answered yes, then it's the perfect time to learn two more bash commands: `pushd` and `popd`. In this article, you'll learn how `pushd` and `popd` work, as well as a couple of alternative commands. By the end of this article, you'll have added two more useful commands to your repertoire.
