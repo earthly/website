@@ -111,3 +111,6 @@ crictl
 
 Chown
 chgrp
+
+pushd
+popd
