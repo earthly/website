@@ -288,9 +288,15 @@ Since Python 3.6, you can use `NamedTuple` from the [typing]() module to add typ
 <show the list of tuples [(field_name,type),...] syntax here>
 
 ~~~{.python caption="main.py"}
-from dataclasses import dataclass, field
+BookNT = NamedTuple(
+    "BookNT", [("title", str), ("author", str), ("genre", str), ("standalone", bool)]
+)
+book = BookNT("Six of Crows", "Leigh Bardugo", "Fantasy", False)
+print(book)
+~~~
 
-
+~~~{caption="Output"}
+BookNT(title='Six of Crows', author='Leigh Bardugo', genre='Fantasy', standalone=False)
 ~~~
 
 In Python 3.8 and later, you can use the familiar class syntax and create NamedTuple instances with type hints. (Very similar to how you can create data classes.)
@@ -315,12 +321,23 @@ BookNT(title='Six of Crows', author='Leigh Bardugo', genre='Fantasy', standalone
 ~~~
 
 <div class="notice--big--primary">
-All Instances are Tuple Subclasses
-```
+NamedTuple Types Are Tuple Subclasses
+
+This means the `Derived` class inherits from the `Base` class. But this is not the case here. The namedtuple object is not a subclass of NamedTuple. Rather it’s a subclass of tuple.
+~~~{.python caption="main.py"}
 class Derived(Base):
      pass 
-```
-This means the `Derived` class inherits from the `Base` class. But this is not the case here. The namedtuple object is not a subclass of NamedTuple. Rather it’s a subclass of tuple.
+~~~
+
+~~~{.python caption="main.py"}  
+print(issubclass(BookNT,NamedTuple))
+# False
+
+print(issubclass(BookNT,tuple))
+# True 
+~~~
+  
+
 </div>
 
 ### Creating Objects and Accessing Fields
