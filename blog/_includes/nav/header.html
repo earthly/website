@@ -1,9 +1,18 @@
 <header
     class="flex z-50 fixed w-full top-0 left-0 bg-white h-[70px] border-b border-[#e8f8fe] shadow-sm shadow-black/10">
     <div class="siteHeader-logoAndMenuButton pl-6">
-        <a class="siteHeader-logoLink" href="{{site.landingurl}}/">
+        <!-- Gavin, 20230525: added id -->
+        <a id="headerLogoControl" onclick="navEarthlyLogoClick()" class="siteHeader-logoLink" href="{{site.landingurl}}/">
             {% svg assets/svg/earthly-logo.svg class="siteHeader-logoLink-svg" height=70 %}
         </a>
+        <!-- Gavin, 20230525: added a href -->
+        <a id="headerLogoTest1" onclick="navEarthlyLogoClick()" display="none;" class="siteHeader-logoLink" href="{{site.landingurl}}/">
+          {% svg assets/svg/earthly-logo-test-1.svg class="siteHeader-logoLink-svg" height=70 %}
+      </a>
+      <!-- Gavin, 20230525: added a href -->
+      <a id="headerLogoTest2" onclick="navEarthlyLogoClick()" display="none;" class="siteHeader-logoLink" href="{{site.landingurl}}/">
+        {% svg assets/svg/earthly-logo-test-2.svg class="siteHeader-logoLink-svg" height=70 %}
+    </a>
     </div>
     <nav class="flex flex-1 justify-end">
         {% include nav/inline.html template='nav/mobile-menu.html' %}
@@ -44,13 +53,18 @@
                 class="relative border-l cursor-default w-[80px] xl:w-[100px] text-sm xl:text-base h-[70px] flex group items-center justify-center hover:bg-[#f1fbff]">
                 Products
 
-                <div
-                    class="hidden group-hover:block border w-[200px] z-50 absolute top-[68px] left-0 rounded-lg bg-white shadow-md overflow-hidden">
-                    <a href="/earthly-ci" class="border-b pl-4 py-2 flex items-center hover:bg-[#f1fbff]">Earthly CI</a>
-                    <a href="/earthly-core" class="border-b pl-4 py-2 flex items-center hover:bg-[#f1fbff]">Earthly</a>
-                    <a href="https://docs.earthly.dev/earthly-cloud/satellites"
-                        class="pl-4 py-2 flex items-center hover:bg-[#f1fbff]">Earthly Satellites
-                    </a>
+                <div class="hidden group-hover:flex border xl:w-[540px] z-50 absolute top-[68px] left-0 rounded-lg bg-white shadow-md overflow-hidden pb-4 pt-5 text-base">
+                  <div class="border-r pb-5">
+                    <p class="w-[220px] xl:w-[254px] font-bold text-xl mb-0 mt-0 pb-2 pl-7">Products</p>
+                    <div class="pl-7 pr-8 hover:bg-[#f1fbff]"><a href="/earthly-ci" class="border-b py-3 flex items-center">Earthly CI</a></div>
+                    <div class="pl-7 pr-8 hover:bg-[#f1fbff]"><a href="/earthly-core" class="border-b py-3 flex items-center">Earthly</a></div>
+                    <div class="pl-7 pr-8 hover:bg-[#f1fbff]"><a href="/earthly-satellites" class="py-3 flex items-center">Earthly Satellites</a></div>
+                  </div>
+
+                  <div>
+                    <p class="w-[220px] xl:w-[254px] font-bold text-xl mb-0 mt-0 pb-2 pl-7">Resources</p>
+                    <div class="pl-7 pr-8 hover:bg-[#f1fbff]"><a href="/faq" class="py-3 flex items-center">FAQ</a></div>
+                  </div>
                 </div>
             </div>
 
@@ -87,6 +101,13 @@
         analytics.track('blog-nav-learn-earthly-click', {
           category: 'Learn Earthly Click',
           label: 'blog-nav-learn-earthly-click'
+        });
+      }
+
+      function navEarthlyLogoClick() {
+        analytics.track('blog-nav-earthly-logo-click', {
+          category: 'Earthly Logo Click',
+          label: 'blog-nav-earthly-logo-click'
         });
       }
     </script>

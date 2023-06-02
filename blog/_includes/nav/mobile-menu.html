@@ -25,8 +25,17 @@
         class="flex-col justify-start items-center border-10 hidden mobile-nav-menu fixed top-1 right-0 left-0 h-full w-full bg-white ml-0 mt-0 px-10 pt-2 border rounded-xl">
         <div class="flex w-full">
             <div class="siteHeader-logoAndMenuButton flex w-full justify-start pb-6">
-                <a class="siteHeader-logoLink " href="{{site.landingurl}}/">
+                <!-- Gavin, 20230525: added id -->
+                <a id="mobileHeaderLogoControl" onclick="navMobileEarthlyLogoClick()" class="siteHeader-logoLink " href="{{site.landingurl}}/">
                     {% svg assets/svg/earthly-logo.svg class="siteHeader-logoLink-svg" height=70 %}
+                </a>
+                <!-- Gavin, 20230525: added a href -->
+                <a id="mobileHeaderLogoTest1" onclick="navMobileEarthlyLogoClick()" display="none;" class="siteHeader-logoLink " href="{{site.landingurl}}/">
+                  {% svg assets/svg/earthly-logo-test-1.svg class="siteHeader-logoLink-svg" height=70 %}
+                </a>
+                <!-- Gavin, 20230525: added a href -->
+                <a id="mobileHeaderLogoTest2" onclick="navMobileEarthlyLogoClick()" display="none;" class="siteHeader-logoLink " href="{{site.landingurl}}/">
+                  {% svg assets/svg/earthly-logo-test-2.svg class="siteHeader-logoLink-svg" height=70 %}
                 </a>
             </div>
 
@@ -46,6 +55,11 @@
                 class="pl-4 py-4 flex items-center hover:bg-[#f1fbff]">Earthly Satellites
 
             </a>
+        </div>
+
+        <div class="border-b w-full text-xl pt-4 flex flex-col pl-2">
+            <div> Resources</div>
+            <a href="/faq" class="pl-4 py-4 flex items-center hover:bg-[#f1fbff]">FAQ</a>
         </div>
 
         <a href="https://docs.earthly.dev/"
@@ -109,6 +123,13 @@
     analytics.track('blog-nav-mobile-learn-earthly-click', {
       category: 'Learn Earthly Click',
       label: 'blog-nav-mobile-learn-earthly-click'
+    });
+  }
+
+  function navMobileEarthlyLogoClick() {
+    analytics.track('blog-nav-mobile-earthly-logo-click', {
+      category: 'Earthly Logo Click',
+      label: 'blog-nav-mobile-earthly-logo-click'
     });
   }
 </script>
