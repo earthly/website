@@ -176,6 +176,14 @@ print(book5)
 BookNT(title='Piranesi', author='Susanna Clarke', genre='Fantasy', standalone=True)
 ~~~
 
+~~~{.python caption="main.py"}
+print(book_5._field_defaults)
+~~~
+
+~~~{caption="Output"}
+{'standalone': True}
+~~~
+
 downside: This can be hard to maintain if there are too many fields.
 
 Aside: get default values
