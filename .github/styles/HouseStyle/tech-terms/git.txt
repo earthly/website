@@ -11,3 +11,7 @@ gists
 Snyk
 Veracode
 Checkmarx
+
+lfs
+packagecloud
+Packagecloud
