@@ -361,6 +361,62 @@ Named tuples are memory efficient than data classes. (But data classes with slot
 
 Also check if attribute access is faster for namedtuples than for data classes.
 
+~~~{.python caption="main.py"}
+from pympler.asizeof import asizeof
+
+book_dc = BookDC('Hyperfocus','Chris Bailey','Nonfiction',True)
+book_nt = BookNT('Hyperfocus','Chris Bailey','Nonfiction',True)
+
+s1 = asizeof(book_dc)
+s2 = asizeof(book_nt)
+
+print(f"Size of BookDC data class: {s1}")
+print(f"Size of BookNT named tuple: {s2}")
+~~~
+
+~~~{caption="Output"}
+Size of BookDC data class: 608
+Size of BookNT named tuple: 296
+~~~
+
+~~~{.python caption="main.py"}
+from dataclasses import dataclass, field
+
+@dataclass(slots=True)
+class BookDC:
+    title:str
+    author:str
+    genre:str
+    standalone:bool=True
+~~~
+
+~~~{.python caption="main.py"}
+book_dc_slots = BookDC('Hyperfocus','Chris Bailey','Nonfiction',True)
+~~~
+
+~~~{caption="Output"}
+Size of BookDC data class with slots: 288
+~~~
+
+~~~{.python caption="main.py"}
+from functools import partial
+import timeit
+def get(book):
+    book.title
+
+t1 = min(timeit.repeat(partial(get,book_dc)))
+t2 = min(timeit.repeat(partial(get,book_nt)))
+
+print(f"Attribute access time for data class instance: {t1:.2f}")
+print(f"Attribute access time for named tuple instance: {t2:.2f}")
+~~~
+
+~~~{caption="Output"}
+Attribute access time for data class instance: 0.05
+Attribute access time for named tuple instance: 0.06
+~~~
+
+
 ## Summing Up the Discussion
 
 Let's wrap up our discussion by summarizing the key differences between data classes and named tuples.
