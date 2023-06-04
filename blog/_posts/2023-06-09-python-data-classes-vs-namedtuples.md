@@ -15,9 +15,13 @@ Given that Python data classes are popular, are named tuples still relevant? Wha
 
 Let's take a closer look at both data classes and named tuples, and try to answer these questions.
 
+To follow along, you need to have Python 3.8 or later version. To run the example on slots, you need Python 3.10.
+
 ## Python Data Classes and Named Tuples: An Overview
 
 ### Python Data Classes
+
+In Python data classes are good choices when you need to create classes that store information and do not have a ton of functionality. Unlike regular Python classes, data classes require less boilerplate code, and come with default implementation of methods for string representation and comparing equality of attributes.
 
 ~~~{.python caption="main.py"}
 from dataclasses import dataclass
@@ -46,6 +50,13 @@ BookDC(
 ~~~
 
 ### What Are Named Tuples?
+
+When you want to store attributes and efficiently look up and use the values, do we need classes at all? Won't basic data structures like lists, tuples, and dictionaries suffice?
+
+We would often need such objects to be immutable, perhaps, we can use tuples? However, with tuples, you need to remember what each of the field stands for—and access them using the index. You can consider switching to a dictionary because the keys will now indicate what the fields are. But you can modify a dictionary in place, so you may accidentally modify fields that you do not intend to. And each created tuple or dictionary object is an independent entity; there is no template that we can use to create objects of similar type.
+
+Here's where named tuples can help. Named tuples are tuples with named attributes. So they give you the immutability of tuples and readability of dictionaries. In addition, once you define a named tuple of a specific type, you can use that to create many instances of that named tuple type.
+
 
 ~~~{.python caption="main.py"}
 from collections import namedtuple
@@ -349,6 +360,8 @@ Named tuples are memory efficient than data classes. (But data classes with slot
 Also check if attribute access is faster for namedtuples than for data classes.
 
 ## Summing Up the Discussion
+
+Let's wrap up our discussion by summarizing the key differences between data classes and named tuples.
  
 |Features| Data Classes| NamedTuples|
 |--------|-------------|------------|
@@ -361,7 +374,6 @@ Also check if attribute access is faster for namedtuples than for data classes.
 
 ## Conclusion
 
-<wrap up discussion>
-<pointers to explore other related pkgs>
+In this article we explored how data classes and named tuples can both help us create classes that store attributes. We then compared them across a set of features: from immutability to memory efficiency.
 
-When sifting through Python codebases, you’d have also come across third-party Python packages like [Pydantic]() and [atrrs](). These provide support for building such data classes and automating some best practices to work with Python classes.
+We chose data classes and named tuples for this discussion as they are both built into the Python standard library, but there are popular third-party Python packages—data class alternatives—to build such classes. When sifting through Python codebases, you'll have likely come across Python packages like [Pydantic]() and [atrrs](). These provide support for building such data classes while automating some best practices to work with Python classes. You may explore these packages and use them in your upcoming projects as needed.
