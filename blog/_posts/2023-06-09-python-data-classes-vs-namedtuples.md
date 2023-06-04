@@ -19,6 +19,8 @@ To follow along, you need to have Python 3.8 or later version. To run the exampl
 
 ## Python Data Classes and Named Tuples: An Overview
 
+We’ll start by reviewing the basics of data classes and named tuples.
+
 ### Python Data Classes
 
 In Python data classes are good choices when you need to create classes that store information and do not have a ton of functionality. Unlike regular Python classes, data classes require less boilerplate code, and come with default implementation of methods for string representation and comparing equality of attributes.
