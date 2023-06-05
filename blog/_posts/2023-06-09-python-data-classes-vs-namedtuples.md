@@ -258,6 +258,8 @@ Unlike a regular Python class that requires you to define dunder methods such as
 
 We can compare two data class instances for equality. And when we compare two instances of different data classes with the same values for each attribute, we get `False` as expected. 
 
+Suppose we have `AnotherBookDC`, another data class with the same fields as `BookDC`.
+
 ~~~{.python caption="main.py"}
 from dataclasses import dataclass
 
@@ -269,6 +271,8 @@ class AnotherBookDC:
     standalone:bool=True
 ~~~
 
+In this example, `book_a` and `book_b` are instances of `BookDC` and `AnotherBookDC`, respectively:
+
 ~~~{.python caption="main.py"}
 book_a = BookDC('Coraline','Neil Gaiman','Fantasy')
 print(book_a)
@@ -276,24 +280,31 @@ print(book_a)
 book_b = AnotherBookDC('Coraline','Neil Gaiman','Fantasy')
 print(book_b)
 ~~~
+And both the instances take the same values for all the fields:
 
 ~~~{caption="Output"}
 BookDC(title='Coraline', author='Neil Gaiman', genre='Fantasy', standalone=True)
 AnotherBookDC(title='Coraline', author='Neil Gaiman', genre='Fantasy', standalone=True)
 ~~~
 
+But when we check for equality, we get `False`:
+
 ~~~{.python caption="main.py"}
 print(book_a == book_b)
-False
+# False
 ~~~
 
-But named tuples are just tuples. So compare two instances of different named tuple types with same values returns `True`.
+Which is expected because they are instances of two *different* data classes—though they have identical values.
+
+But what happens when you try to do the same for name tuples? Well, named tuples are just tuples. So comparing two named tuples with identical values — instances of the same or different named tuple type — returns `True`.
 
 ~~~{.python caption="main.py"}
 from collections import namedtuple
 
 AnotherBookNT = namedtuple('AnotherBookNT','title author genre standalone',defaults=[True])
 ~~~
+
+Create instances of both `BookNT` and `AnotherBookNT`. Make sure they have identical values for the fields:
 
 ~~~{.python caption="main.py"}
 book_a = BookNT('Piranesi','Susanna Clarke','Fantasy')
@@ -308,6 +319,8 @@ BookNT(title='Piranesi', author='Susanna Clarke', genre='Fantasy', standalone=Tr
 AnotherBookNT(title='Piranesi', author='Susanna Clarke', genre='Fantasy', standalone=True)
 ~~~
 
+Though they are instances of two different named tuple types, element-wise equality between them holds `True` and the comparison returns `True`.
+
 ~~~{.python caption="main.py"}
 print(book_a == book_b)
 True
@@ -320,6 +333,8 @@ From the way we create data classes and named tuples, it’s easy to see how dat
 Since Python 3.6, you can use `NamedTuple` from the [typing]() module to add type hints for fields.
 
 <show the list of tuples [(field_name,type),...] syntax here>
+
+Here's how you can add type hints to the `BookNT` named tuple:
 
 ~~~{.python caption="main.py"}
 BookNT = NamedTuple(
@@ -355,11 +370,19 @@ BookNT(title='Six of Crows', author='Leigh Bardugo', genre='Fantasy', standalone
 ~~~
 
 <div class="notice--big--primary">
-NamedTuple Types Are Tuple Subclasses
+#### All NamedTuple Types Are Tuple Subclasses
+<br>
+Consider the following code snippet:
 
-This means the `Derived` class inherits from the `Base` class. But this is not the case here. The named tuple object is not a subclass of NamedTuple. Rather it's a subclass of tuple.
-~~~{.python caption="main.py"}
+~~~{.python caption=""}
 class Derived(Base):
+     pass 
+~~~
+
+This means the `Derived` class inherits from the `Base` class. Notice that we use a similar syntax when creating named tuple types.
+  
+~~~{.python caption=""}
+class SomeNamedTuple(NamedTuple):
      pass 
 ~~~
 
@@ -395,10 +418,16 @@ print(f"Size of BookDC data class: {s1}")
 print(f"Size of BookNT named tuple: {s2}")
 ~~~
 
+We see that the name tuple instance takes up much less memory than the data class instance:
+
 ~~~{caption="Output"}
 Size of BookDC data class: 608
 Size of BookNT named tuple: 296
 ~~~
+
+You can use slots to make [data classes more memory efficient](). Using slots prevents the creation of the instance variables dictionary resulting in substantial memory savings.
+
+To use slots you can set `slots` to `True` in the `@dataclass` decorator:
 
 ~~~{.python caption="main.py"}
 from dataclasses import dataclass, field
@@ -419,6 +448,10 @@ book_dc_slots = BookDC('Hyperfocus','Chris Bailey','Nonfiction',True)
 Size of BookDC data class with slots: 288
 ~~~
 
+When comparing attribute access speeds—both data classes and named tuples seem to have almost similar performance—with attribute access for data class being marginally faster.
+
+In this example, we access the `title` field of both the data class and named tuple instance:
+
 ~~~{.python caption="main.py"}
 from functools import partial
 import timeit
@@ -432,11 +465,12 @@ print(f"Attribute access time for data class instance: {t1:.2f}")
 print(f"Attribute access time for named tuple instance: {t2:.2f}")
 ~~~
 
+The following results are for Python 3.10 on Ubuntu 22.04 LTS:
+
 ~~~{caption="Output"}
 Attribute access time for data class instance: 0.05
 Attribute access time for named tuple instance: 0.06
 ~~~
-
 
 ## Summing Up the Discussion
 
