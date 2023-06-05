@@ -63,8 +63,8 @@ bazel query "deps(//test-app)"
 Bazel queries find the dependencies of a rule; identify packages, rules, and targets; and analyze file dependencies. Because of this, its syntax supports query operators, functions, and keywords to ensure you can run all the aforementioned operations. For instance, the following query uses the `kind` function to filter targets whose name ends with packages, rules, and targets in the dependencies list of the target `runner`:
 
 ~~~{.bash caption=">_"}
-bazel query ‘kind("package", deps(":runner")) \
-union kind("rule", deps(:runner)) union kind("target", deps(":runner))’
+bazel query 'kind("package", deps(":runner")) \
+union kind("rule", deps(:runner)) union kind("target", deps(":runner))'
 ~~~
 
 To find all `BUILD` files that are required to build a given Bazel rule, the following syntax uses a `buildfiles` function based on the Bazel package location:
