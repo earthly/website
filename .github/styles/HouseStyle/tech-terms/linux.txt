@@ -108,3 +108,9 @@ swapoff
 tcp
 systemd
 crictl
+
+Chown
+chgrp
+
+pushd
+popd

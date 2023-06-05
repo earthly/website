@@ -383,6 +383,9 @@ cpu
 premade
 triggerer
 
+deserialized
+debootstrap
+
 liveness
 Liveness
 overutilization
@@ -394,3 +397,12 @@ nodejs
 
 subexpressions
 preload
+
+Raspbian
+sysroot
+Raspeberry
+gdbserver
+
+untracking
+Untracking
+Pexels
