@@ -6,7 +6,11 @@ toc: true
 author: Mercy Bessey
 
 internal-links:
- - just an example
+ - Pulumi
+ - AWS EKS
+ - GO
+ - Cloud
+ - Infrastructure
 ---
 
 **We're [Earthly](https://earthly.dev/). We make building software simpler and, therefore, faster. Earthly is open-source and written in Go. So if you're interested in a simpler way to build, [check us out](/).**
@@ -729,5 +733,4 @@ Remember, the possibilities with Pulumi are vast, so let your creativity run wil
 
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
+
