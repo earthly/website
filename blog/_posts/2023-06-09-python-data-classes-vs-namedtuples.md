@@ -15,15 +15,15 @@ Given that Python data classes are popular, are named tuples still relevant? Wha
 
 Let's take a closer look at both data classes and named tuples, and try to answer these questions.
 
-To follow along, you need to have Python 3.8 or later version. To run the example on slots, you need Python 3.10.
+To follow along, you need to have Python 3.8 or later version. To run the example on slots, you need Python 3.10. You can find the code examples used in this tutorial [here]().
 
 ## Python Data Classes and Named Tuples: An Overview
 
-We’ll start by reviewing the basics of data classes and named tuples.
+We'll start by reviewing the basics of data classes and named tuples.
 
 ### Python Data Classes
 
-In Python data classes are good choices when you need to create classes that store information and do not have a ton of functionality. Unlike regular Python classes, data classes require less boilerplate code, and come with default implementation of methods for string representation and comparing equality of attributes.
+In Python data classes are good choices when you need to create classes that store information and do not have a ton of functionality. [Unlike regular Python classes](), data classes require less boilerplate code, and come with default implementation of methods for string representation and comparing equality of attributes.
 
 ~~~{.python caption="main.py"}
 from dataclasses import dataclass
@@ -85,9 +85,13 @@ TL; DR: If you want an immutable container data type with a small subset of fiel
 
 Data class instances are mutable by default. So you can modify the value of one or more fields after the instance has been created.
 
+Consider the following instance of the `BookDC` data class:
+
 ~~~{.python caption="main.py"}
 book3 = BookDC('Elantris','Brandon Sanderson','Epic Fantasy',True)
 ~~~
+
+Let's update the `title` and `standalone` fields of `book3`:
 
 ~~~{.python caption="main.py"}
 book3.title = 'Mistborn'
@@ -102,12 +106,16 @@ BookDC(
 )
 ~~~
 
-Named tuples are tuples, too. s\So they are immutable. Meaning you cannot modify them in place. In this example, you cannot modify named tuple instances after they are created. If you try doing so you will run into errors.
+**Named tuples are tuples, too**. So they are immutable. Meaning you cannot modify them in place. In this example, you cannot modify named tuple instances after they are created. If you try doing so you will run into errors.
+
+Try updating the `title` field of the `book2` instance we created:
 
 ~~~{caption="main.py"}
 book2 = BookNT('Deep Work','Cal Newport','Nonfiction', True)
 book2.title = 'Digital Minimalism'
 ~~~
+
+You'll see that it results in an `AttributeError` exception:
 
 ~~~{caption="Output"}
 Traceback (most recent call last):
@@ -117,7 +125,8 @@ AttributeError: can't set attribute
 ~~~
 
 <div class="notice--big--primary">
-**Can we have immutable data class instances and mutable named tuple instances?**
+
+So far, we know that data class instances are mutable by default, and named tuple instances are immutable. **But can we have immutable data class instances and mutable named tuple instances?**
   
 - You can make data class instances immutable by setting `frozen` to `True` in the `@dataclass` decorator. 
 - But you *cannot* have mutable named tuple instances.
@@ -150,6 +159,8 @@ You can as well use the `_replace()` method to create shallow copies of data cla
 
 When you create data classes you can specify the default values for one or more fields. 
 
+Here we set the `standalone` field in the `BookDC` data class to take a default value of `True`:
+
 ~~~{.python caption="main.py"}
 from dataclasses import dataclass
 
@@ -160,25 +171,32 @@ class BookDC:
     genre:str
     standalone:bool=True
 ~~~
+We instantiate an object for Neil Gaiman’s book Coraline *without* specifying the value of `standalone` in the constructor:
 
 ~~~{.python caption="main.py"}
 book4 = BookDC('Coraline','Neil Gaiman','Fantasy')
 print(book4)
 ~~~
 
+And the `standalone` field takes the default value of `True`:
+
 ~~~{caption="Output"}
 BookDC(title='Coraline', author='Neil Gaiman', genre='Fantasy', standalone=True)
 ~~~
 
-But can you set default values in namedtuples? 
+**But can you set default values in namedtuples?**
 
 Though this may not be obvious, in Python 3.7+, you can use the `defaults` field in the `namedtuple()` factory function to set default values. You can set `defaults` to a list of `k` values to specify the default values for the last `k` fields.
+
+Let's specify the default value for `standalone` in the the `BookNT` named tuple. Here the `defaults` list contains only one element, `True`, the default value of the last field `standlone`:
 
 ~~~{.python caption="main.py"}
 from collections import namedtuple
 
 BookNT = namedtuple('BookNT','title author genre standalone',defaults=[True])
 ~~~
+
+The `standalone` field of any instance created without the specifying its value in the function call will now be set to `True`:
 
 ~~~{.python caption="main.py"}
 book5 = BookNT('Piranesi','Susanna Clarke','Fantasy')
@@ -189,29 +207,31 @@ print(book5)
 BookNT(title='Piranesi', author='Susanna Clarke', genre='Fantasy', standalone=True)
 ~~~
 
+When you want to look up all the default values, you can check the `_field_defaults` attribute of the named tuple instances:
+
 ~~~{.python caption="main.py"}
 print(book_5._field_defaults)
 ~~~
+
+The `_field_defaults` attribute is a dictionary of containing the fields with default values and the corresponding default values as key-value pairs:
 
 ~~~{caption="Output"}
 {'standalone': True}
 ~~~
 
-downside: This can be hard to maintain if there are too many fields.
+Though we can add literal defaults in named tuples, it can be hard to maintain if there are too many fields.
 
-Aside: get default values
-You can get all the default values using the `get_default()` method on the namedtuple instance. 
-
-With Python data classes, you can also use `default_factory` to use any callable to initialize a field with default values.
+<div class="notice--info">
+Both data classes and named tuples support setting literal defaults. With Python data classes, you can also use `default_factory` to use any callable to initialize a field with default values.
+  
+For the `BookDC` class, we can add a `rating` field that takes a default value whenever a data class instance is created—without specifying the `rating` field. Here `get_rating()` is a simple function that returns a number between 1 and 5. The `default_factory` initializes the `rating` field with a default value by calling the `get_rating()` function.
 
 ~~~{.python caption="main.py"}
 from dataclasses import dataclass, field
 import random
 
-
 def get_rating():
     return random.choice(range(3,6))
-
 
 @dataclass
 class BookDC:
@@ -230,6 +250,7 @@ print(book4)
 ~~~{caption="Output"}
 BookDC(title='Coraline', author='Neil Gaiman', genre='Fantasy', standalone=True, rating=5)
 ~~~
+</div>
 
 ### Comparing Objects
 
@@ -336,7 +357,7 @@ BookNT(title='Six of Crows', author='Leigh Bardugo', genre='Fantasy', standalone
 <div class="notice--big--primary">
 NamedTuple Types Are Tuple Subclasses
 
-This means the `Derived` class inherits from the `Base` class. But this is not the case here. The namedtuple object is not a subclass of NamedTuple. Rather it’s a subclass of tuple.
+This means the `Derived` class inherits from the `Base` class. But this is not the case here. The named tuple object is not a subclass of NamedTuple. Rather it's a subclass of tuple.
 ~~~{.python caption="main.py"}
 class Derived(Base):
      pass 
