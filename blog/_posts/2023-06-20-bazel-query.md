@@ -28,7 +28,7 @@ For instance, a project built with Bazel has all kinds of different elements (*i
 
 Bazel queries use dependency analysis to isolate [direct](https://bazel.build/concepts/dependencies) and [transitive](https://bazel.build/basics/dependencies) dependencies. Dependency analysis helps identify any deprecated and insecure dependencies, as well as direct dependencies with various transitive dependencies. This improves build performance by identifying slow targets and dependencies.
 
-Looking through the query results can help you identify slow or redundant dependencies and possibly replace them with better, more appropriate dependencies to help improve build performance and reduce binary size. Additionally, [Bazel](/blog/bazel-build) queries let you query test suites. You can identify tests for a target and its dependents to ensure all relevant tests are run when making changes to your code.
+Looking through the query results can help you identify slow or redundant dependencies and possibly replace them with better, more appropriate dependencies to help improve build performance and reduce binary size. Additionally, Bazel queries let you query test suites. You can identify tests for a target and its dependents to ensure all relevant tests are run when making changes to your code.
 
 ## How Bazel Queries Work
 
@@ -63,14 +63,14 @@ bazel query "deps(//test-app)"
 Bazel queries find the dependencies of a rule; identify packages, rules, and targets; and analyze file dependencies. Because of this, its syntax supports query operators, functions, and keywords to ensure you can run all the aforementioned operations. For instance, the following query uses the `kind` function to filter targets whose name ends with packages, rules, and targets in the dependencies list of the target `runner`:
 
 ~~~{.bash caption=">_"}
-bazel query "kind("package", deps(":runner")) union \
-kind("rule", deps(:runner)) union kind("target", deps(":runner))"
+bazel query ‘kind("package", deps(":runner")) \
+union kind("rule", deps(:runner)) union kind("target", deps(":runner))’
 ~~~
 
-To find `BUILD` files that contain a given Bazel rule, the following syntax uses a `buildfiles` function based on the Bazel package location:
+To find all `BUILD` files that are required to build a given Bazel rule, the following syntax uses a `buildfiles` function based on the Bazel package location:
 
 ~~~{.bash caption=">_"}
-bazel query "buildfiles(//path/to:your_rule)" --output=build
+bazel query "buildfiles(//path/to:your_rule)" --output build
 ~~~
 
 ## Overview of Bazel Query Language Concepts
@@ -88,7 +88,7 @@ Take a look at some key concepts you should keep in mind when working with BQL t
 A large list of implicit dependencies can sometimes add an unexpected and unreasonable overhead in build times and performance. However, Bazel helps you disable implicit dependencies using the `--[no]implicit_deps` flag to only return direct/explicit dependencies listed in your `BUILD` file:
 
 ~~~{.bash caption=">_"}
-bazel query --noimplicit_deps 'deps(//App:test_app)'
+bazel query --noimplicit_deps 'deps(//app:test_app)'
 ~~~
 
 Keep in mind that you can only omit implicit dependencies from query results with the help of this flag. Bazel still uses implicit dependencies in its builds. It's a good idea to check implicit dependencies regularly and keep their number as few as possible to reduce build time and, possibly, build binary size.
@@ -129,7 +129,7 @@ The results look like this:
 And let's say the query finds the dependencies of `//package2:test_target2`:
 
 ~~~{.bash caption=">_"}
-bazel query "deps(//package2:test_target2)"
+bazel query "deps(//package2:test_target2)"\
 ~~~
 
 Bazel still preserves and ensures the ordering constraints inherited from their subexpressions in the `BUILD` files. The targets are ordered based on the dependency graph:
@@ -164,7 +164,7 @@ In this case, the `allrdeps` function finds all the reverse dependencies of `com
 
 ## Bazel Query Examples
 
-Now that you know more about Bazel queries in general, take a look at a few examples that run queries in a project using this [basic Node.js app created with Bazel](https://earthly.dev/blogbuild-nodejs-app-with-bazel/).
+Now that you know more about Bazel queries in general, take a look at a few examples that run queries in a project using this [basic Node.js app created with Bazel](https://earthly.dev/blog/build-nodejs-app-with-bazel/).
 
 This Bazel workspace has a `//apps/node_web` Bazel target. If you want to find direct and transitive dependencies of the target, run the following code to find the `deps` query of a rule:
 
@@ -179,6 +179,7 @@ Targets that `//apps/node_web` depend on are part of the result of this query, e
 <div class="wide">
 ![Dependencies]({{site.images}}{{page.slug}}/D1T2tGs.png)
 </div>
+
 
 To find the `BUILD` files containing the dependencies of `//apps/node_web`, the following query lists the packages in your Bazel workspace:
 
@@ -237,6 +238,6 @@ These are just a few examples of how to construct practical Bazel queries. Check
 
 In summary, Bazel queries are a powerful tool for understanding and managing project dependencies. In this article, you learned about their syntax and how they can be written within your dependencies graph.
 
-By using [Bazel](/blog/bazel-build) queries alongside your builds, you can fully leverage their usefulness in your development process.
+By using Bazel queries alongside your builds, you can fully leverage their usefulness in your development process.
 
 {% include_html cta/bottom-cta.html %}
