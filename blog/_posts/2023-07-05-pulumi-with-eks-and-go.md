@@ -720,7 +720,10 @@ Consider the possibilities of using Pulumi with the Google Cloud Platform (GCP).
 
 To expand your Pulumi knowledge and explore its adaptability to different cloud environments, take a look at this guide on using Pulumi with [Google Cloud](https://www.pulumi.com/docs/clouds/gcp/get-started/).
 
-Remember, the possibilities with Pulumi are vast, so let your creativity run wild as you architect your cloud in
+Remember, the possibilities with Pulumi are vast, so let your creativity run wild as you architect your cloud infrastructure.
+
+
+{% include_html cta/bottom-cta.html %}
 
 ## Outside Article Checklist
 
@@ -728,4 +731,3 @@ Remember, the possibilities with Pulumi are vast, so let your creativity run wil
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
