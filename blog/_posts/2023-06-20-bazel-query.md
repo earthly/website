@@ -180,7 +180,6 @@ Targets that `//apps/node_web` depend on are part of the result of this query, e
 ![Dependencies]({{site.images}}{{page.slug}}/D1T2tGs.png)
 </div>
 
-
 To find the `BUILD` files containing the dependencies of `//apps/node_web`, the following query lists the packages in your Bazel workspace:
 
 ~~~{.bash caption=">_"}
