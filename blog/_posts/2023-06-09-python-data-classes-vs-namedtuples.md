@@ -9,7 +9,7 @@ internal-links:
  - Python
 ---
 
-Data classes, introduced in Python 3.7, provide a convenient way to define classes that are a collection of fields. But for such use cases, named tuples, built into the collections module in the Python standard library, are good choices too. Named tuples have been around since Python 2.6, and several features have been added in the recent Python 3.x releases.
+[Data classes](/blog/python-data-classes), introduced in Python 3.7, provide a convenient way to define classes that are a collection of fields. But for such use cases, named tuples, built into the collections module in the Python standard library, are good choices too. Named tuples have been around since Python 2.6, and several features have been added in the recent Python 3.x releases.
 
 Given that Python data classes are popular, are named tuples still relevant? What are the key differences between the two? Are there advantages of using one over the other—depending on what we’d like to do?
 
@@ -23,7 +23,7 @@ We'll start by reviewing the basics of data classes and named tuples.
 
 ### Python Data Classes
 
-In Python data classes are good choices when you need to create classes that store information and do not have a ton of functionality. [Unlike regular Python classes](), data classes require less boilerplate code, and come with default implementation of methods for string representation and comparing equality of attributes.
+In Python data classes are good choices when you need to create classes that store information and do not have a ton of functionality. [Unlike regular Python classes](/blog/python-data-classes/#python-classes-and-boilerplate-code), data classes require less boilerplate code, and come with default implementation of methods for string representation and comparing equality of attributes.
 
 ~~~{.python caption="main.py"}
 from dataclasses import dataclass
@@ -55,7 +55,9 @@ BookDC(
 
 When you want to store attributes and efficiently look up and use the values, do we need classes at all? Won't basic data structures like lists, tuples, and dictionaries suffice?
 
-We would often need such objects to be immutable, perhaps, we can use tuples? However, with tuples, you need to remember what each of the field stands for—and access them using the index. You can consider switching to a dictionary because the keys will now indicate what the fields are. But you can modify a dictionary in place, so you may accidentally modify fields that you do not intend to. And each created tuple or dictionary object is an independent entity; there is no template that we can use to create objects of similar type.
+![image]({{site.images}}{{page.slug}}/1.png)\
+
+We would often need such objects to be immutable, perhaps, we can use tuples? However, with tuples, we need to remember what each of the field stands for—and access them using the index. We can consider switching to a dictionary because the keys will now indicate what the fields are. But we *can* modify a dictionary in place, so we may accidentally modify fields that you do not intend to. And each created tuple or dictionary object is an independent entity; there is no template that we can use to create objects of similar type.
 
 Here's where named tuples can help. Named tuples are tuples with named attributes. So they give you the immutability of tuples and readability of dictionaries. In addition, once you define a named tuple of a specific type, you can use that to create many instances of that named tuple type.
 
@@ -135,6 +137,7 @@ So far, we know that data class instances are mutable by default, and named tupl
 
 <div class="notice--info">
 #### A Note on `_replace()`
+<br>
 Using the `_replace()` method, you can get a shallow copy of a named tuple instance where the value of a particular field is replaced with an updated value. 
 
 ~~~{caption="main.py"}
@@ -252,7 +255,9 @@ BookDC(title='Coraline', author='Neil Gaiman', genre='Fantasy', standalone=True,
 ~~~
 </div>
 
-### Comparing Objects
+### Comparing Instances
+
+![image]({{site.images}}{{page.slug}}/4.png)\
 
 Unlike a regular Python class that requires you to define dunder methods such as `__repr__` and `__eq__`, both data classes and namedtuples come with some built-in support for representation and object comparison.
 
@@ -399,11 +404,7 @@ print(issubclass(BookNT,tuple))
 
 ### Creating Objects and Accessing Fields
 
-What this section should cover:
-
-Named tuples are memory efficient than data classes. (But data classes with slots are more efficient.)
-
-Also check if attribute access is faster for namedtuples than for data classes.
+![image]({{site.images}}{{page.slug}}/3.png)\
 
 ~~~{.python caption="main.py"}
 from pympler.asizeof import asizeof
@@ -425,7 +426,7 @@ Size of BookDC data class: 608
 Size of BookNT named tuple: 296
 ~~~
 
-You can use slots to make [data classes more memory efficient](). Using slots prevents the creation of the instance variables dictionary resulting in substantial memory savings.
+You can use slots to make [data classes more memory efficient](/blog/more-on-python-data-classes/#use-slots-for-more-efficient-data-classes). Using slots prevents the creation of the instance variables dictionary resulting in substantial memory savings.
 
 To use slots you can set `slots` to `True` in the `@dataclass` decorator:
 
@@ -474,6 +475,8 @@ Attribute access time for named tuple instance: 0.06
 
 ## Summing Up the Discussion
 
+![image]({{site.images}}{{page.slug}}/2.png)\
+
 Let's wrap up our discussion by summarizing the key differences between data classes and named tuples.
  
 |Features| Data Classes| NamedTuples|
@@ -489,4 +492,4 @@ Let's wrap up our discussion by summarizing the key differences between data cla
 
 In this article we explored how data classes and named tuples can both help us create classes that store attributes. We then compared them across a set of features: from immutability to memory efficiency.
 
-We chose data classes and named tuples for this discussion as they are both built into the Python standard library, but there are popular third-party Python packages—data class alternatives—to build such classes. When sifting through Python codebases, you'll have likely come across Python packages like [Pydantic]() and [atrrs](). These provide support for building such data classes while automating some best practices to work with Python classes. You may explore these packages and use them in your upcoming projects as needed.
+We chose data classes and named tuples for this discussion as they are both built into the Python standard library, but there are popular third-party Python packages—data class alternatives—to build such classes. When sifting through Python codebases, you'll have likely come across Python packages like [Pydantic](https://docs.pydantic.dev/latest/) and [atrrs](https://pypi.org/project/attrs/). These provide support for building such data classes while automating some best practices to work with Python classes. You may explore these packages and use them in your upcoming projects as needed.
