@@ -399,12 +399,14 @@ class Derived(Base):
      pass 
 ~~~
 
-This means the `Derived` class inherits from the `Base` class. Notice that we use a similar syntax when creating named tuple types.
+We use such a construct when creating subclasses that inherit from a base class. Here, this means the `Derived` class inherits from the `Base` class. Notice that we use a similar syntax when creating named tuple types.
   
 ~~~{.python caption=""}
 class SomeNamedTuple(NamedTuple):
      pass 
 ~~~
+
+Though this may look like `SomeNamedTuple` is a subclass of `NamedTuple`, `SomeNamedTuple` *is* a subclass of tuple and not `NamedTuple`. You can verify this using the built-in `issubclass()` function:
 
 ~~~{.python caption="main.py"}  
 print(issubclass(BookNT,NamedTuple))
@@ -417,9 +419,15 @@ print(issubclass(BookNT,tuple))
 
 </div>
 
-### Creating Objects and Accessing Fields
+### Memory Footprint and Attribute Access
 
 ![image]({{site.images}}{{page.slug}}/3.png)\
+
+How do data classes and named tuples compare in terms of memory footprint? Is one more memory efficient than the other? We'll answer these questions in a bit. 
+
+To get the approximate size of the objects in memory, we'll use [Pympler](https://pypi.org/project/Pympler/)'s `asizeof` module.  Install `pympler` using `pip`: `pip install pympler`.
+
+In the snippet below, `book_dc` and `book_nt` are instances of the `Book_DC` and `Book_NT` data class, respectively.
 
 ~~~{.python caption="main.py"}
 from pympler.asizeof import asizeof
@@ -456,21 +464,24 @@ class BookDC:
     standalone:bool=True
 ~~~
 
+Create an instance of data class that uses slots:
+
 ~~~{.python caption="main.py"}
 book_dc_slots = BookDC('Hyperfocus','Chris Bailey','Nonfiction',True)
 ~~~
+
+As seen, the size of a data class instance with slots is smaller than that of a named tuple.
 
 ~~~{caption="Output"}
 Size of BookDC data class with slots: 288
 ~~~
 
-When comparing attribute access speeds—both data classes and named tuples seem to have almost similar performance—with attribute access for data class being marginally faster.
-
-In this example, we access the `title` field of both the data class and named tuple instance:
+When comparing attribute access speeds, both data classes and named tuples seem to have almost similar performance. In this example, we access the `title` field of both the data class and named tuple instance:
 
 ~~~{.python caption="main.py"}
 from functools import partial
 import timeit
+
 def get(book):
     book.title
 
@@ -494,7 +505,7 @@ Attribute access time for named tuple instance: 0.06
 
 Let's wrap up our discussion by summarizing the key differences between data classes and named tuples.
  
-|Features| Data Classes| NamedTuples|
+|Features| Data Classes| Named Tuples|
 |--------|-------------|------------|
 |Immutability of instances|Mutable by default; Set `frozen = True` in the `@dataclass` to create immutable instances| Immutable by default|
 |Default Values|Can set both literal defaults and complex defaults using `default_factory`| Use `defaults` to specify a list of default values for the last `k` fields|
