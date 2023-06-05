@@ -242,7 +242,7 @@ Though we can add literal defaults in named tuples, it can be hard to maintain i
 <br>
 Both data classes and named tuples support setting literal defaults. With Python data classes, you can also use `default_factory` to use any callable to initialize a field with default values.
   
-For the `BookDC` class, we can add a `rating` field that takes a default value whenever a data class instance is created—without specifying the `rating` field. Here `get_rating()` is a simple function that returns a number between 1 and 5. The `default_factory` initializes the `rating` field with a default value by calling the `get_rating()` function.
+For the `BookDC` class, we can add a `rating` field that is initialized with a default value whenever a data class instance is created without specifying the `rating` field. Here `get_rating()` is a simple function that returns a number between 1 and 5 (yeah, not the best way to rate a book!). The `default_factory` initializes the `rating` field with a default value by calling the `get_rating()` function.
 
 ~~~{.python caption="main.py"}
 from dataclasses import dataclass, field
@@ -358,9 +358,9 @@ Here's how you can add type hints to the `BookNT` named tuple:
 
 ~~~{.python caption="main.py"}
 BookNT = NamedTuple(
-    "BookNT", [("title", str), ("author", str), ("genre", str), ("standalone", bool)]
+    'BookNT', [('title', str), ('author', str), ('genre', str), ('standalone', bool)]
 )
-book = BookNT("Six of Crows", "Leigh Bardugo", "Fantasy", False)
+book = BookNT('Six of Crows', 'Leigh Bardugo', 'Fantasy', False)
 print(book)
 ~~~
 
