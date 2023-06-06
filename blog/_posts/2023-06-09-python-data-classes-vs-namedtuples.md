@@ -377,7 +377,7 @@ print(book)
 BookNT(title='Six of Crows', author='Leigh Bardugo', genre='Fantasy', standalone=False)
 ~~~
 
-In Python 3.8 and later, you can use the familiar class syntax and create named tuple instances with type hints. This is very similar to how you create data classes:
+You can also use the familiar class syntax and create named tuple instances with type hints. This is very similar to how you create data classes:
 
 ~~~{.python caption="main.py"}
 from typing import NamedTuple
