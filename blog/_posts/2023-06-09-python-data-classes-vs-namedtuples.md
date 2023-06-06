@@ -41,6 +41,7 @@ class BookDC:
 After creating the `BookDC` data class, we can create instances by passing in the values for the various fields in the constructor:
 
 ~~~{.python caption="main.py"}
+
 book1 = BookDC('To the Lighthouse','Virginia Woolf','Modernism',True)
 print(book1)
 ~~~
@@ -60,7 +61,9 @@ When you want to store attributes and efficiently look up and use the values, do
 
 ![image]({{site.images}}{{page.slug}}/1.png)\
 
-We would often need such objects to be immutable, perhaps, we can use tuples? However, with tuples, we need to remember what each of the field stands for—and access them using the index. We can consider switching to a dictionary because the keys will now indicate what the fields are. But we *can* modify a dictionary in place, so we may accidentally modify fields that you do not intend to. And each created tuple or dictionary object is an independent entity; there is no template that we can use to create objects of similar type.
+We would often need such objects to be immutable, perhaps, we can use tuples? However, with tuples, we need to remember what each of the field stands for—and access them using the index.
+
+We can consider switching to a dictionary because the keys will now indicate what the fields are. But we *can* modify a dictionary in place, so we may accidentally modify fields that you do not intend to. And each created tuple or dictionary object is an independent entity; there is no template that we can use to create objects of similar type.
 
 Here's where named tuples can help. Named tuples are tuples with **named attributes**. So they give you the immutability of tuples and readability of dictionaries. In addition, once you define a named tuple of a specific type, you can use that to create many instances of that named tuple type.
 
@@ -88,7 +91,9 @@ BookNT(title='Deep Work', author='Cal Newport', genre='Nonfiction', standalone=T
 ## Data Classes vs Named Tuples: A Comprehensive Comparison
 
 <div class="notice--big--primary">
-🔖 **TL; DR**: If you want an immutable container data type with a small subset of fields taking default values, consider named tuples. If you want all the features and extensibility of Python classes, use data classes instead. Factoring in the memory footprint: named tuples are much more memory efficient than data classes, but data classes with slots are more memory efficient.
+🔖 **TL; DR**: If you want an immutable container data type with a small subset of fields taking default values, consider named tuples. If you want all the features and extensibility of Python classes, use data classes instead.
+  
+Factoring in the memory footprint: named tuples are much more memory efficient than data classes, but data classes with slots are more memory efficient.
 </div>
 
 ### Immutability
@@ -134,33 +139,29 @@ Traceback (most recent call last):
 AttributeError: can't set attribute
 ~~~
 
-<div class="notice--big--primary">
-
 📑 So far, we know that data class instances are mutable by default, and named tuple instances are immutable. **But can we have immutable data class instances and mutable named tuple instances?**
   
 - You can make data class instances immutable by setting `frozen` to `True` in the `@dataclass` decorator.
 - But you *cannot* have mutable named tuple instances.
-
-</div>
 
 <div class="notice--info">
 #### A Note on `_replace()`
 <br>
 Using the `_replace()` method, you can get a *shallow copy* of a named tuple instance where the value of a particular field is replaced with an updated value. As an example, create a shallow copy of the `book2` instance with a modified `title` field:
 
-~~~{caption="main.py"}
+~~~{.python caption="main.py"}
 book2 = BookNT('Deep Work','Cal Newport','Nonfiction', True)
 book2_copy = book2._replace(title='Digital Minimalism')
 ~~~
 
 The `title` field of the shallow copy `book2_copy` has been updated while the `title` of `book2` remains unchanged:
 
-~~~{caption="main.py"}
+~~~{.python caption="main.py"}
 print(book2.title)
 print(book2_copy.title)
 ~~~
 
-~~~{caption="Output"}
+~~~{.md caption="Output"}
 Deep Work
 Digital Minimalism
 ~~~
@@ -240,7 +241,9 @@ Though we can add literal defaults in named tuples, it can be hard to maintain i
 <br>
 Both data classes and named tuples support setting literal defaults. With Python data classes, you can also use `default_factory` to use any callable to initialize a field with default values.
   
-For the `BookDC` class, we can add a `rating` field that is initialized with a default value whenever a data class instance is created without specifying the `rating` field. Here `get_rating()` is a simple function that returns a number between 1 and 5 (yeah, not the best way to rate a book!). The `default_factory` initializes the `rating` field with a default value by calling the `get_rating()` function.
+For the `BookDC` class, we can add a `rating` field that is initialized with a default value whenever a data class instance is created without specifying the `rating` field.
+
+Here `get_rating()` is a simple function that returns a number between 1 and 5 (yeah, not the best way to rate a book!). The `default_factory` initializes the `rating` field with a default value by calling the `get_rating()` function.
 
 ~~~{.python caption="main.py"}
 from dataclasses import dataclass, field
@@ -265,7 +268,8 @@ book4 = BookDC('Coraline','Neil Gaiman','Fantasy')
 print(book4)
 ~~~
 
-~~~{caption="Output"}
+~~~{.md caption="Output"}
+
 BookDC(title='Coraline', author='Neil Gaiman', genre='Fantasy', standalone=True, rating=5)
 ~~~
 
@@ -303,6 +307,7 @@ print(book_b)
 And both the instances take the same values for all the fields:
 
 ~~~{caption="Output"}
+
 BookDC(title='Coraline', author='Neil Gaiman', genre='Fantasy', standalone=True)
 AnotherBookDC(title='Coraline', author='Neil Gaiman', genre='Fantasy', standalone=True)
 ~~~
@@ -335,6 +340,7 @@ print(book_b)
 ~~~
 
 ~~~{caption="Output"}
+
 BookNT(title='Piranesi', author='Susanna Clarke', genre='Fantasy', standalone=True)
 AnotherBookNT(title='Piranesi', author='Susanna Clarke', genre='Fantasy', standalone=True)
 ~~~
@@ -365,10 +371,11 @@ print(book)
 ~~~
 
 ~~~{caption="Output"}
+
 BookNT(title='Six of Crows', author='Leigh Bardugo', genre='Fantasy', standalone=False)
 ~~~
 
-In Python 3.8 and later, you can use the familiar class syntax and create NamedTuple instances with type hints. (Very similar to how you can create data classes.)
+In Python 3.8 and later, you can use the familiar class syntax and create NamedTuple instances with type hints. This is very similar to how you create data classes.
 
 ~~~{.python caption="main.py"}
 from typing import NamedTuple
@@ -386,6 +393,7 @@ print(book)
 ~~~
 
 ~~~{caption="Output"}
+
 BookNT(title='Six of Crows', author='Leigh Bardugo', genre='Fantasy', standalone=False)
 ~~~
 
@@ -399,7 +407,7 @@ class Derived(Base):
      pass 
 ~~~
 
-We use such a construct when creating subclasses that inherit from a base class. Here, this means the `Derived` class inherits from the `Base` class. Notice that we use a similar syntax when creating named tuple types.
+We use such a construct when creating subclasses that inherit from a base class; the `Derived` class inherits from the `Base` class. Notice that we use a similar syntax when creating named tuple types.
   
 ~~~{.python caption=""}
 class SomeNamedTuple(NamedTuple):
@@ -466,6 +474,7 @@ class BookDC:
 Create an instance of data class that uses slots:
 
 ~~~{.python caption="main.py"}
+
 book_dc_slots = BookDC('Hyperfocus','Chris Bailey','Nonfiction',True)
 ~~~
 
@@ -506,15 +515,17 @@ Let's wrap up our discussion by summarizing the key differences between data cla
 
 |Features| Data Classes| Named Tuples|
 |--------|-------------|------------|
-|Immutability of instances|Mutable by default; Set `frozen = True` in the `@dataclass` to create immutable instances| Immutable by default|
-|Default Values|Can set both literal defaults and complex defaults using `default_factory`| Use `defaults` to specify a list of default values for the last `k` fields|
-|Type Hints|Out-of-the-box support for type hints|Use `typing.NamedTuple` to specify type hints for fields|
-|Comparison|Comparison works as expected between two instances of the *same* data class| Comparison between two instances of *any* named tuple type returns `True` so long as the attributes are equal|
-|Memory Efficiency|Data classes with slots have lower memory footprint|More efficient than regular data classes|
-|Maintainability|(Almost always) easy to maintain|Can be hard to maintain, especially when there are many default fields|
+|**Immutability of instances**|Mutable by default; Set `frozen = True` in the `@dataclass` to create immutable instances.| Instances are immutable by default.|
+|**Default Values**|Can set both literal defaults and complex defaults using `default_factory`.| Use `defaults` to specify a list of default values for the last `k` fields.|
+|**Type Hints**|Out-of-the-box support for type hints.|Use `typing.NamedTuple` to specify type hints for fields.|
+|**Comparison**|Comparison works as expected between two instances of the *same* data class.| Comparison between two instances of *any* named tuple type returns `True` so long as the attributes are equal.|
+|**Memory Efficiency**|Data classes with slots have lower memory footprint.|More efficient than regular data classes.|
+|**Maintainability**|(Almost always) easy to maintain.|Can be hard to maintain, especially when there are many default fields.|
 
 ## Conclusion
 
 In this article we explored how data classes and named tuples can both help us create classes that store attributes. We then compared them across a set of features: from immutability to memory efficiency.
 
-We chose data classes and named tuples for this discussion as they are both built into the Python standard library, but there are popular third-party Python packages—data class alternatives—to build such classes. When sifting through Python codebases, you'll have likely come across Python packages like [Pydantic](https://docs.pydantic.dev/latest/) and [attrs](https://pypi.org/project/attrs/). These provide support for building such data classes while automating some best practices to work with Python classes. You may explore these packages and use them in your upcoming projects as needed.
+We chose data classes and named tuples for this discussion as they are both built into the Python standard library, but there are popular third-party Python packages—data class alternatives—to build such classes.
+
+When sifting through Python codebases, you'll have likely come across Python packages like [Pydantic](https://docs.pydantic.dev/latest/) and [attrs](https://pypi.org/project/attrs/). These provide support for building such data classes while automating some best practices to work with Python classes. You may explore these packages and use them in your upcoming projects as needed.
