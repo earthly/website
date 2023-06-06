@@ -194,6 +194,8 @@ In the **Commands** section of the Makefile Tools Extension perspective, you can
 
 Large codebases need a build system to keep them under the development team's control, and Makefiles are one the most ubiquitous and flexible ways to define building these complex software projects.
 
-With the new [Makefile Tools Extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.makefile-tools), Visual Studio Code greatly simplifies access for new developers. Though it is still tagged as in preview, this extension has been thoroughly tested by the Microsoft Team, building over seventy open-source projects written in different languages (including C, C++, and Python) successfully.
+With the new Makefile Tools Extension, Visual Studio Code greatly simplifies access for new developers.
 
-If you want to learn about the power of make and Makefiles, consider checking out our [Makefile Series](/blog/series/makefile/), and if you want the simplicity of a Makefile with the isolation of containers take a look at [Earthly](https://earthly.dev/).
+{% include_html cta/makefile-cta.html %}
+
+<!-- If you want to learn about the power of make and Makefiles, consider checking out our [Makefile Series](/blog/series/makefile/), and if you want the simplicity of a Makefile with the isolation of containers take a look at [Earthly](https://earthly.dev/). -->

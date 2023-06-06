@@ -217,4 +217,6 @@ Any CI/CD tool that you are using can now simply use these targets.
 
 Golang is a popular language for developing large-scale projects. Larger projects have multiple developers and require continuous automation to scale. Streamlining the development process by automating the tasks that are required during development, testing, and release will pay off with a faster and more reliable development process and a easier release process.
 
-For next-level automation and to further improve the automation, tools like [Earthly](https://earthly.dev/) can be helpful. If you are also using Docker along with Makefile, Earthly can help make your development process smoother, taking some of the best ideas from Makefiles and Dockerfiles and combining them into one specification. It's also a great solution for [mono-repos](/blog/golang-monorepo).
+{% include_html cta/makefile-cta.html %}
+
+<!-- For next-level automation and to further improve the automation, tools like [Earthly](https://earthly.dev/) can be helpful. If you are also using Docker along with Makefile, Earthly can help make your development process smoother, taking some of the best ideas from Makefiles and Dockerfiles and combining them into one specification. It's also a great solution for [mono-repos](/blog/golang-monorepo). -->

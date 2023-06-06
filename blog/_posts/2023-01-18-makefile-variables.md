@@ -517,6 +517,6 @@ Learn more about [Makefile flags](https://earthly.dev/blog/make-flags/).
 
 ## Conclusion
 
-Variables in Make are similar to variables in other programming languages. However, certain features and quirks [make](/blog/using-cmake) them powerful and convenient to use, albeit slightly difficult to wrap your head around. This article gave you an overview of the different types of variables in Make and how you can use them.
+Variables in Make are similar to variables in other programming languages. However, certain features and quirks [make](/blog/using-cmake) them powerful and convenient to use, albeit slightly difficult to wrap your head around.
 
-{% include_html cta/bottom-cta.html %}
+{% include_html cta/makefile-cta.html %}

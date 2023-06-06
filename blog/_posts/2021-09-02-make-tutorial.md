@@ -291,4 +291,6 @@ This tutorial shows how to automate the writing of Makefiles by using Autotools.
 
 The `make` tool is a valuable one to master in software development. Using it can speed up your development and ensure an easier process overall. However, due to its feature-rich nature, `make` can be hard to master.
 
-If you're familiar with Docker, consider using [Earthly](https://earthly.dev). Earthly combines the best aspects of `make` and Docker to give you an easy-to-understand and reproducible build with minimal effort.
+{% include_html cta/makefile-cta.html %}
+
+<!-- If you're familiar with Docker, consider using [Earthly](https://earthly.dev). Earthly combines the best aspects of `make` and Docker to give you an easy-to-understand and reproducible build with minimal effort. -->
