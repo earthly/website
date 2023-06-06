@@ -6,10 +6,7 @@ toc: true
 author: Adam
 
 internal-links:
- - Control Flow
  - YAML
- - Conditionals
- - Scripts
 ---
 
 When I first worked with YAML config, it was a breath of fresh air. No more XML! No angle brackets. It was so plain and clear.
