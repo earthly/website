@@ -471,6 +471,7 @@ size_book_t = asizeof(book_t)
 print(size_book_t)
 # 296 (equal to the size of `book_nt`)
 ~~~
+
 </div>
 
 You can use slots to make [data classes more memory efficient](/blog/more-on-python-data-classes/#use-slots-for-more-efficient-data-classes). Using slots prevents the creation of the instance variables dictionary resulting in substantial memory savings.
