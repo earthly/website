@@ -499,28 +499,24 @@ span.syntax-label-wide {
   }
 }
 
-div.sourceCode > pre.sourceCode {
-  .toolbar {
-    background-color: #4b5563;
-    border-top-left-radius: 6px;
-    border-top-right-radius: 6px;
-    color: rgba(255, 255, 255, 0.8);
-    display: flex;
-    font-family: ui-sans-serif, system-ui, -apple-system, "system-ui", "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    font-size: 16px;
-    line-height: 32px;
-    justify-content: center;
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    text-align: center;
-  }
+pre > .toolbar {
+  background-color: #4b5563;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  font-family: ui-sans-serif, system-ui, -apple-system, "system-ui", "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 14px;
+  line-height: 32px;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  text-align: center;
 
-  .terminal {
-    color: #41ff00;
-    position: absolute;
-    left: 16px;
+  @media (min-width: 640px) {
+    font-size: 16px;
   }
 
   .copy-item {
