@@ -85,6 +85,7 @@ print(book2)
 ~~~
 
 ~~~{caption="Output"}
+
 BookNT(title='Deep Work', author='Cal Newport', genre='Nonfiction', standalone=True)
 ~~~
 
@@ -103,6 +104,7 @@ Data class instances are mutable by default. So you can modify the value of one 
 Consider the following instance of the `BookDC` data class:
 
 ~~~{.python caption="main.py"}
+
 book3 = BookDC('Elantris','Brandon Sanderson','Epic Fantasy',True)
 ~~~
 
@@ -145,7 +147,7 @@ AttributeError: can't set attribute
 - But you *cannot* have mutable named tuple instances.
 
 <div class="notice--info">
-#### A Note on `_replace()`
+#### 📌 A Note on `_replace()`
 <br>
 Using the `_replace()` method, you can get a *shallow copy* of a named tuple instance where the value of a particular field is replaced with an updated value. As an example, create a shallow copy of the `book2` instance with a modified `title` field:
 
@@ -196,6 +198,7 @@ print(book4)
 And the `standalone` field takes the default value of `True`:
 
 ~~~{caption="Output"}
+
 BookDC(title='Coraline', author='Neil Gaiman', genre='Fantasy', standalone=True)
 ~~~
 
@@ -219,6 +222,7 @@ print(book5)
 ~~~
 
 ~~~{caption="Output"}
+
 BookNT(title='Piranesi', author='Susanna Clarke', genre='Fantasy', standalone=True)
 ~~~
 
@@ -237,7 +241,7 @@ The `_field_defaults` attribute is a dictionary of containing the fields with de
 Though we can add literal defaults in named tuples, it can be hard to maintain if there are too many fields.
 
 <div class="notice--info">
-#### Default Factory to Initialize Default Values
+#### Initializing Default Values With Default Factory
 <br>
 Both data classes and named tuples support setting literal defaults. With Python data classes, you can also use `default_factory` to use any callable to initialize a field with default values.
   
@@ -321,7 +325,7 @@ print(book_a == book_b)
 
 Which is expected because they are instances of two *different* data classes—though they have identical values.
 
-But what happens when you try to do the same for name tuples? Well, named tuples are just tuples. So comparing two named tuples with identical values — instances of the same or different named tuple type — returns `True`.
+But what happens when you try to do the same for name tuples? Well, named tuples are just tuples. So comparing two named tuples with identical values — whether they are instances of the same or different named tuple type — returns `True`.
 
 ~~~{.python caption="main.py"}
 from collections import namedtuple
@@ -349,7 +353,7 @@ Though they are instances of two different named tuple types, element-wise equal
 
 ~~~{.python caption="main.py"}
 print(book_a == book_b)
-True
+# True
 ~~~
 
 ### Type Hints
@@ -447,12 +451,27 @@ print(f"Size of BookDC data class: {s1}")
 print(f"Size of BookNT named tuple: {s2}")
 ~~~
 
-We see that the name tuple instance takes up much less memory than the data class instance:
+We see that the name tuple instance `book_nt` takes up much less memory than the data class instance `book_dc`:
 
 ~~~{caption="Output"}
 Size of BookDC data class: 608
 Size of BookNT named tuple: 296
 ~~~
+
+<div class="notice--info">
+#### Named Tuples and Tuples Have the Same Memory Footprint
+<br>
+The size of any named tuple instance is the same as that of a simple tuple. Let's verify this:
+
+~~~{.python caption="main.py"}
+book_t = ('Hyperfocus','Chris Bailey','Nonfiction',True)
+
+from pympler.asizeof import asizeof
+size_book_t = asizeof(book_t)
+print(size_book_t)
+# 296 (equal to the size of `book_nt`)
+~~~
+</div>
 
 You can use slots to make [data classes more memory efficient](/blog/more-on-python-data-classes/#use-slots-for-more-efficient-data-classes). Using slots prevents the creation of the instance variables dictionary resulting in substantial memory savings.
 
