@@ -63,15 +63,20 @@ These permissions include the following:
 
 Next, add an [inline policy](https://docs.aws.amazon.com/acm/latest/userguide/authen-inlinepolicies.html) with the following code, you can name it what you like. This tutorial calls this policy *eksCreateCluser*:
 
-~~~
+~~~{.go caption="main.go"}
 {
     "Version": "2012-10-17",  // The version of the policy language
-    "Statement": [ // An array of individual statements, each describing one set of permissions.
+    "Statement": [ // An array of individual statements, each describing \
+    one set of permissions.
         {
             "Sid": "EKSPermissions",  //Policy statement identifier
-            "Effect": "Allow", // Specifies whether the statement results in an allow or an explicit deny. In this case, it's "Allow".
-            "Action": [ // Describes the specific action or actions that the statement will allow or deny.
-    // Allow creation, reading, modifying, listing, and deleting the EKS cluster. And then,  allow adding and removing tags from the EKS cluster, respectively.
+            "Effect": "Allow", // Specifies whether the statement results \
+            in an allow or an explicit deny. In this case, it's "Allow".
+            "Action": [ // Describes the specific action or actions that \
+            the statement will allow or deny.
+    // Allow creation, reading, modifying, listing, and deleting the EKS \
+    cluster. And then,  allow adding and removing tags from the EKS \
+    cluster, respectively.
                 "eks:CreateCluster",
                 "eks:DescribeCluster", 
                 "eks:UpdateClusterConfig", 
@@ -81,7 +86,9 @@ Next, add an [inline policy](https://docs.aws.amazon.com/acm/latest/userguide/au
                 "eks:TagResource", 
                 "eks:UntagResource" 
             ],
-            "Resource": [ // Specifies the object or objects to which the action(s) apply. "*" indicates that the action(s) apply to all resources.
+            "Resource": [ // Specifies the object or objects to which the \
+            action(s) apply. "*" indicates that the action(s) apply to all \
+            resources.
                 "*"
             ]
         },
@@ -95,8 +102,10 @@ Lastly, open up your terminal app and run the following commands sequentially to
 aws configure
 AWS Access Key ID [****************K3PQ]: <YOUR_ACCESS_KEY_ID>
 AWS Secret Access Key [****************dNMD]: <YOUR_SECRET_ACCESS_KEY_ID>
-Default region name [us-east-1]: <YOUR_REGION> #This tutorial uses the default
-Default output format [json]: <YOUR_PREFERRED_OUTPUT_FORMAT> #This tutorial uses the default
+Default region name [us-east-1]: <YOUR_REGION> \
+#This tutorial uses the default
+Default output format [json]: <YOUR_PREFERRED_OUTPUT_FORMAT> \
+#This tutorial uses the default
 ~~~
 
 With that done correctly, you are ready to start with infrastructure as code with Pulumi and Go for AWS.
@@ -269,7 +278,8 @@ func main() {
     pulumi.Run(func(ctx *pulumi.Context) error {
         for i := 0; i < 3; i++ {
             // Create an AWS resource (S3 Bucket)
-            bucket, err := s3.NewBucket(ctx, fmt.Sprintf("my-bucket-%d", i), nil) // use a unique bucket name.
+            bucket, err := s3.NewBucket(ctx, fmt.Sprintf("my-bucket-%d", i) \
+            , nil) // use a unique bucket name.
             if err != nil {
                 return err
             }
@@ -342,7 +352,8 @@ func main() {
             return err
         }
         // Create an EKS cluster
-        eksCluster, err := eks.NewCluster(ctx, "my-pulumi-eks-cluster", &eks.ClusterArgs{
+        eksCluster, err := eks.NewCluster(ctx, "my-pulumi-eks-cluster", \
+        &eks.ClusterArgs{
             Name: pulumi.String("my-pulumi-eks-cluster"),
             VpcId: vpc.VpcId,
             PublicSubnetIds:              vpc.PublicSubnetIds,
@@ -397,10 +408,10 @@ Now that you have your EKS cluster created, it's time to test it. You'll achieve
 First, add the following SDKs in your `main.go` file imports:
 
 ~~~{.go caption="main.go"}
-    "github.com/pulumi/pulumi-kubernetes/sdk/v3/go/kubernetes"
-    corev1 "github.com/pulumi/pulumi-kubernetes/sdk/v3/go/kubernetes/core/v1"
-    metav1 "github.com/pulumi/pulumi-kubernetes/sdk/v3/go/kubernetes/meta/v1"
-    appsv1 "github.com/pulumi/pulumi-kubernetes/sdk/v3/go/kubernetes/apps/v1"
+   "github.com/pulumi/pulumi-kubernetes/sdk/v3/go/kubernetes"
+   corev1 "github.com/pulumi/pulumi-kubernetes/sdk/v3/go/kubernetes/core/v1"
+   metav1 "github.com/pulumi/pulumi-kubernetes/sdk/v3/go/kubernetes/meta/v1"
+   appsv1 "github.com/pulumi/pulumi-kubernetes/sdk/v3/go/kubernetes/apps/v1"
 ~~~
 
 Importing these SDKs will give you access to the functionalities and types for working with Kubernetes resources.
@@ -420,7 +431,9 @@ This will create and initialize three variables: `imageName`, `imageTag`, and `i
 Below the EKS cluster creation function, add the following code:
 
 ~~~{.main caption="main.go"}
-eksProvider, err := kubernetes.NewProvider(ctx, "eks-provider", &kubernetes.ProviderArgs{
+
+eksProvider, err := kubernetes.NewProvider(ctx, "eks-provider", \
+&kubernetes.ProviderArgs{
             Kubeconfig: eksCluster.KubeconfigJson,
         })
         if err != nil {
@@ -436,7 +449,8 @@ Next, add the following code to create a namespace:
 // Create the Kubernetes provider
 …
 // Create a Kubernetes Namespace
-        namespace, err := corev1.NewNamespace(ctx, "my-eks-namespace", &corev1.NamespaceArgs{
+        namespace, err := corev1.NewNamespace(ctx, "my-eks-namespace", \
+        &corev1.NamespaceArgs{
             Metadata: &metav1.ObjectMetaArgs{
                 Name: pulumi.String("my-eks-namespace"),
                 Labels: pulumi.StringMap{
@@ -457,7 +471,8 @@ Next, add the following code to create a deployment in the EKS cluster:
 // Create a Kubernetes Namespace
 …
 // Deploy the Docker image to the EKS cluster using a Kubernetes deployment
-deployment, err := appsv1.NewDeployment(ctx, "my-eks-deployment", &appsv1.DeploymentArgs{
+deployment, err := appsv1.NewDeployment(ctx, "my-eks-deployment", \
+&appsv1.DeploymentArgs{
     Metadata: &metav1.ObjectMetaArgs{
         Name:      pulumi.String("my-eks-deployment"),
         Namespace: pulumi.String("my-eks-namespace"),
@@ -501,6 +516,7 @@ This will deploy a Docker image `mercybassey/node-service` set to the `imageFull
 Finally, add the following code to export the `kubeconfig`, `deployment-name`, and `namespace-name` to make them accessible outside the stack:
 
 ~~~{.go caption="main.go"}
+
 // Deploy the Docker image to the EKS cluster using Kubernetes deployment
 …
 // Export important resources
@@ -517,13 +533,13 @@ The complete code is expected to look like the following:
 package main
 
 import (
-    "github.com/pulumi/pulumi-awsx/sdk/go/awsx/ec2"
-    "github.com/pulumi/pulumi-eks/sdk/go/eks"
-    "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-    "github.com/pulumi/pulumi-kubernetes/sdk/v3/go/kubernetes"
-    corev1 "github.com/pulumi/pulumi-kubernetes/sdk/v3/go/kubernetes/core/v1"
-    metav1 "github.com/pulumi/pulumi-kubernetes/sdk/v3/go/kubernetes/meta/v1"
-    appsv1 "github.com/pulumi/pulumi-kubernetes/sdk/v3/go/kubernetes/apps/v1"
+   "github.com/pulumi/pulumi-awsx/sdk/go/awsx/ec2"
+   "github.com/pulumi/pulumi-eks/sdk/go/eks"
+   "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+   "github.com/pulumi/pulumi-kubernetes/sdk/v3/go/kubernetes"
+   corev1 "github.com/pulumi/pulumi-kubernetes/sdk/v3/go/kubernetes/core/v1"
+   metav1 "github.com/pulumi/pulumi-kubernetes/sdk/v3/go/kubernetes/meta/v1"
+   appsv1 "github.com/pulumi/pulumi-kubernetes/sdk/v3/go/kubernetes/apps/v1"
 )
 
 func main() {
@@ -540,7 +556,8 @@ func main() {
 
         
         // Create an EKS cluster
-        eksCluster, err := eks.NewCluster(ctx, "my-pulumi-eks-cluster", &eks.ClusterArgs{
+        eksCluster, err := eks.NewCluster(ctx, "my-pulumi-eks-cluster", \
+        &eks.ClusterArgs{
             Name: pulumi.String("my-pulumi-eks-cluster"),
             VpcId: vpc.VpcId,
             PublicSubnetIds:              vpc.PublicSubnetIds,
@@ -551,14 +568,16 @@ func main() {
             return err
         }
 
-        eksProvider, err := kubernetes.NewProvider(ctx, "eks-provider", &kubernetes.ProviderArgs{
+        eksProvider, err := kubernetes.NewProvider(ctx, "eks-provider", \
+        &kubernetes.ProviderArgs{
             Kubeconfig: eksCluster.KubeconfigJson,
         })
         if err != nil {
             return err
         }
 
-        namespace, err := corev1.NewNamespace(ctx, "my-eks-namespace", &corev1.NamespaceArgs{
+        namespace, err := corev1.NewNamespace(ctx, "my-eks-namespace", \
+        &corev1.NamespaceArgs{
             Metadata: &metav1.ObjectMetaArgs{
                 Name: pulumi.String("my-eks-namespace"),
                 Labels: pulumi.StringMap{
@@ -571,8 +590,10 @@ func main() {
         }
         
 
-        // Deploy the Docker image to the EKS cluster using Kubernetes deployment
-        deployment, err := appsv1.NewDeployment(ctx, "my-eks-deployment", &appsv1.DeploymentArgs{
+        // Deploy the Docker image to the EKS cluster using \
+        Kubernetes deployment
+        deployment, err := appsv1.NewDeployment(ctx, "my-eks-deployment", \
+        &appsv1.DeploymentArgs{
             Metadata: &metav1.ObjectMetaArgs{
                 Name: pulumi.String("my-eks-deployment"),
                 Namespace: pulumi.String("my-eks-namespace"),
@@ -728,9 +749,3 @@ Remember, the possibilities with Pulumi are vast, so let your creativity run wil
 
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-
