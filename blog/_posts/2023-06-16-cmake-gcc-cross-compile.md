@@ -5,7 +5,8 @@ categories:
 toc: true
 author: Rubaiat Hossain
 editor: Bala Priya C
-
+sidebar:
+  nav: "makefile"
 internal-links:
  - CMake
  - GCC
