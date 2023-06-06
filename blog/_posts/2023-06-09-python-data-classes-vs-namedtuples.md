@@ -15,7 +15,7 @@ Given that Python data classes are popular, are named tuples still relevant? Wha
 
 Let's take a closer look at both data classes and named tuples, and try to answer these questions.
 
-To follow along, you need to have Python 3.8 or later version. To run the example on slots, you need Python 3.10. You can find the code examples used in this tutorial [here](https://github.com/balapriyac/dataclasses-tutorial/tree/main/dataclasses-vs-namedtuples).
+To follow along, you need to have Python 3.8 or later version. To run the example on slots, you need Python 3.10. You can find the code examples used in this tutorial [on GitHub](https://github.com/balapriyac/dataclasses-tutorial/tree/main/dataclasses-vs-namedtuples).
 
 ## Python Data Classes and Named Tuples: An Overview
 
@@ -200,11 +200,11 @@ And the `standalone` field takes the default value of `True`:
 BookDC(title='Coraline', author='Neil Gaiman', genre='Fantasy', standalone=True)
 ~~~
 
-**But can you set default values in namedtuples?**
+**But can you set default values in named tuples?**
 
 Though this may not be obvious, in Python 3.7+, you can use the `defaults` field in the `namedtuple()` factory function to set default values. You can set `defaults` to a list of `k` values to specify the default values for the last `k` fields.
 
-Let's specify the default value for `standalone` in the the `BookNT` named tuple. Here the `defaults` list contains only one element, `True`, the default value of the last field `standlone`:
+Let's specify the default value for `standalone` in the `BookNT` named tuple. Here the `defaults` list contains only one element, `True`, the default value of the last field `standlone`:
 
 ~~~{.python caption="main.py"}
 from collections import namedtuple
@@ -276,7 +276,7 @@ BookDC(title='Coraline', author='Neil Gaiman', genre='Fantasy', standalone=True,
 
 ![image]({{site.images}}{{page.slug}}/4.png)\
 
-Unlike a regular Python class that requires you to define dunder methods such as `__repr__` and `__eq__`, both data classes and namedtuples come with some built-in support for representation and object comparison.
+Unlike a regular Python class that requires you to define dunder methods such as `__repr__` and `__eq__`, both data classes and named tuples come with some built-in support for representation and object comparison.
 
 Suppose we have `AnotherBookDC`, another data class with the same fields as `BookDC`.
 
@@ -425,7 +425,7 @@ print(issubclass(BookNT,tuple))
 
 How do data classes and named tuples compare in terms of memory footprint? Is one more memory efficient than the other? We'll answer these questions in a bit. 
 
-To get the approximate size of the objects in memory, we'll use [Pympler](https://pypi.org/project/Pympler/)'s `asizeof` module.  Install `pympler` using `pip`: `pip install pympler`.
+To get the approximate size of the objects in memory, we'll use [Pympler](https://pypi.org/project/Pympler/)'s `asizeof` module. Install `pympler` using `pip`: `pip install pympler`.
 
 In the snippet below, `book_dc` and `book_nt` are instances of the `Book_DC` and `Book_NT` data class, respectively.
 
@@ -510,9 +510,9 @@ Let's wrap up our discussion by summarizing the key differences between data cla
 |Immutability of instances|Mutable by default; Set `frozen = True` in the `@dataclass` to create immutable instances| Immutable by default|
 |Default Values|Can set both literal defaults and complex defaults using `default_factory`| Use `defaults` to specify a list of default values for the last `k` fields|
 |Type Hints|Out-of-the-box support for type hints|Use `typing.NamedTuple` to specify type hints for fields|
-|Comparison|Comparison works as expected between two instances of the *same* data class| Comparison between two instances of *any* namedtuple type returns `True` so long as the attributes are equal|
+|Comparison|Comparison works as expected between two instances of the *same* data class| Comparison between two instances of *any* named tuple type returns `True` so long as the attributes are equal|
 |Memory Efficiency|Data classes with slots have lower memory footprint|More efficient than regular data classes|
-|Maintability|(Almost always) easy to maintain|Can be hard to maintain, especially when there are many default fields|
+|Maintainability|(Almost always) easy to maintain|Can be hard to maintain, especially when there are many default fields|
 
 ## Conclusion
 
