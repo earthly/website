@@ -68,20 +68,6 @@
             break;
         }
       }
-
-      if(document.getElementById("blog-bottom-cta-control")){
-        if(gb.isOn("blog-bottom-cta-20230501")) {
-            console.log("blog-bottom-cta-20230501 on");
-            document.getElementById("blog-bottom-cta-control").style.display = "none";
-            document.getElementById("blog-bottom-cta-test").style.display = "";
-          } else {
-            console.log("blog-bottom-cta-20230501 off");
-            document.getElementById("blog-bottom-cta-control").style.display = "";
-            document.getElementById("blog-bottom-cta-test").style.display = "none";
-          }
-      } else {
-        console.log("blog-bottom-cta-control not found");
-      }
     });
   });
 </script>

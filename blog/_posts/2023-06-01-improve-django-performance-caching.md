@@ -206,4 +206,4 @@ Django comes with a full set of caching framework out of the box which lets the 
 
 Additionally, we looked at the importance of cache invalidation and explored strategies for optimizing cache performance. Overall, caching is a powerful tool that can significantly improve the performance of Django applications, and developers should leverage it to ensure their applications deliver the best possible user experience.
 
-{% include_html cta/cta2.html %}
+{% include_html cta/bottom-cta.html %}
