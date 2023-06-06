@@ -747,5 +747,4 @@ To expand your Pulumi knowledge and explore its adaptability to different cloud 
 
 Remember, the possibilities with Pulumi are vast, so let your creativity run wild as you architect your cloud infrastructure.
 
-
 {% include_html cta/bottom-cta.html %}
