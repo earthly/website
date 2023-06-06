@@ -88,7 +88,7 @@ BookNT(title='Deep Work', author='Cal Newport', genre='Nonfiction', standalone=T
 ## Data Classes vs Named Tuples: A Comprehensive Comparison
 
 <div class="notice--big--primary">
-🔖 **TL; DR**: If you want an immutable container data type with a small subset of fields taking default values, consider named tuples. If you want all the features and extensibility of Python classes, use data classes instead.
+🔖 **TL; DR**: If you want an immutable container data type with a small subset of fields taking default values, consider named tuples. If you want all the features and extensibility of Python classes, use data classes instead. Factoring in the memory footprint: named tuples are much more memory efficient than data classes, but data classes with slots are more memory efficient.
 </div>
 
 ### Immutability
