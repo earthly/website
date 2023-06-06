@@ -356,13 +356,11 @@ True
 
 From the way we create data classes and named tuples, it's easy to see how data classes support type hints out of the box.
 
-Since Python 3.6, you can use `NamedTuple` from the [typing](https://docs.python.org/3/library/typing.html) module to add type hints for fields.
-
-<show the list of tuples [(field_name,type),...] syntax here>
-
-Here's how you can add type hints to the `BookNT` named tuple:
+Since Python 3.6, you can use `NamedTuple` from the [typing](https://docs.python.org/3/library/typing.html) module to add type hints for fields. You can pass in the field names and their corresponding types as a *list of tuples*. Here's how you can add type hints to the `BookNT` named tuple:
 
 ~~~{.python caption="main.py"}
+from typing import NamedTuple
+
 BookNT = NamedTuple(
     'BookNT', [('title', str), ('author', str), ('genre', str), ('standalone', bool)]
 )
@@ -375,7 +373,7 @@ print(book)
 BookNT(title='Six of Crows', author='Leigh Bardugo', genre='Fantasy', standalone=False)
 ~~~
 
-In Python 3.8 and later, you can use the familiar class syntax and create NamedTuple instances with type hints. This is very similar to how you create data classes.
+In Python 3.8 and later, you can use the familiar class syntax and create named tuple instances with type hints. This is very similar to how you create data classes:
 
 ~~~{.python caption="main.py"}
 from typing import NamedTuple
