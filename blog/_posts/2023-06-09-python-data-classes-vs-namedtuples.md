@@ -11,7 +11,7 @@ internal-links:
 
 [Data classes](/blog/python-data-classes), introduced in Python 3.7, provide a convenient way to define classes that are a collection of fields. But for such use cases, named tuples, built into the collections module in the Python standard library, are good choices too. Named tuples have been around since Python 2.6, and several features have been added in the recent Python 3.x releases.
 
-Given that Python data classes are popular, are named tuples still relevant? What are the key differences between the two? Are there advantages of using one over the other—depending on what we’d like to do?
+Given that Python data classes are popular, are named tuples still relevant? What are the key differences between the two? Are there advantages of using one over the other—depending on what we'd like to do?
 
 Let's take a closer look at both data classes and named tuples, and try to answer these questions.
 
@@ -185,7 +185,7 @@ class BookDC:
     standalone:bool=True
 ~~~
 
-We instantiate an object for Neil Gaiman’s book Coraline *without* specifying the value of `standalone` in the constructor:
+We instantiate an object for Neil Gaiman's book Coraline *without* specifying the value of `standalone` in the constructor:
 
 ~~~{.python caption="main.py"}
 book4 = BookDC('Coraline','Neil Gaiman','Fantasy')
@@ -348,7 +348,7 @@ True
 
 ### Type Hints
 
-From the way we create data classes and named tuples, it’s easy to see how data classes support type hints out of the box.
+From the way we create data classes and named tuples, it's easy to see how data classes support type hints out of the box.
 
 Since Python 3.6, you can use `NamedTuple` from the [typing](https://docs.python.org/3/library/typing.html) module to add type hints for fields.
 
