@@ -2,14 +2,26 @@
   <div class="px-6 lg:px-10  max-w-7xl m-auto">
     <div class="py-6 px-6 lg:px-10 rounded-xl bg-[#f1fbff] pb-10 mt-6">
       <div>
-        <div class="text-2xl lg:text-3xl font-semibold mb-6">
+        <!-- Gavin, 20230605, homepage-shorter-copy: added id -->
+        <div id="homepage-shorter-copy-benefits-earthfile-headline-control" class="text-2xl lg:text-3xl font-semibold mb-6">
           Super simple
         </div>
+        <!-- Gavin, 20230605, homepage-shorter-copy: added div -->
+        <div id="homepage-shorter-copy-benefits-earthfile-headline-test" style="display: none;" class="text-2xl lg:text-3xl font-semibold mb-6">
+          Super simple, not just for the build guru
+        </div>
         <div class="flex flex-col-reverse lg:grid grid-cols-10">
-          <ul class="text-gray-500 text-lg col-span-5 lg:pr-6 pt-8 lg:pt-0 ml-4 list-disc">
+          <!-- Gavin, 20230605, homepage-shorter-copy: added id -->
+          <ul id="homepage-shorter-copy-benefits-earthfile-body-control" class="text-gray-500 text-lg col-span-5 lg:pr-6 pt-8 lg:pt-0 ml-4 list-disc">
             <li class="pb-2">All builds are defined in Earthfiles and use a syntax that is easy to write and understand.</li>
             <li class="pb-2">Engineers can quickly grasp Earthfiles without prior knowledge of Earthly or Earthly CI.</li>
             <li>It's like Dockerfile and Makefile had a baby.</li>
+          </ul>
+          <!-- Gavin, 20230605, homepage-shorter-copy: added ul -->
+          <ul id="homepage-shorter-copy-benefits-earthfile-body-test" style="display: none;" class="text-gray-500 text-lg col-span-5 lg:pr-6 pt-8 lg:pt-0 ml-4 list-disc">
+            <li class="pb-2">Quickly grasp Earthfiles without prior knowledge</li>
+            <li class="pb-2">Syntax that is easy to write and understand by all engineers</li>
+            <li>It's like Dockerfile and Makefile had a baby</li>
           </ul>
           <div class="bg-gray-600 col-span-5 rounded-xl overflow-hidden shadow-md">
             <div class="">
@@ -31,23 +43,28 @@
                 Earthfile
               </header>
 
-              <code
-                class="text-sm sm:text-md pt-6 lg:pt-10 lg:pl-6 pb-6 font-mono block bg-[#111214] text-gray-100 min-h-[310px] lg:min-h-[350px]">
-
+              <code class="text-sm sm:text-md pt-6 lg:pt-10 lg:pl-6 pb-6 font-mono block bg-[#111214] text-gray-100 min-h-[310px] lg:min-h-[350px]">
                 <div class=" rounded-lg pb-4 text-white text-sm font-mono relative">
-                  <div class=" cursor-default pl-6"><span class="text-[#7dcfff]">VERSION</span> 0.7</div> 
-                  <div class=" cursor-default pl-6"><span class="text-[#7dcfff]">PROJECT</span> my-org/my-project</div>
-                  <div class="mt-3  cursor-default pl-6"><span class="text-[#7dcfff]">FROM</span> alpine:3.15</div>
-                  <div class="mt-3 text-[#b395ed]  cursor-default pl-6">my-pipeline:</div>
-                  <div class="pl-10  cursor-default"><span class="text-[#7dcfff]">PIPELINE</span></div>
-                  <div class="pl-10  cursor-default"><span class="text-[#7dcfff]">TRIGGER</span> push main</div>
-                  <div class="pl-10  cursor-default"><span class="text-[#7dcfff]">TRIGGER</span> pr main</div>
-                  <div class="pl-10  cursor-default "><span class="text-[#7dcfff]">BUILD</span> +my-build </div>
-                  <div class="mt-3 text-[#b395ed]  cursor-default pl-6">my-build:</div>
-                  <div class="pl-10  cursor-default"><span class="text-[#7dcfff] ">RUN</span> echo Hello world</div>
-                </div>
+                  <div class="cursor-default pl-6"><span class="text-[#7dcfff]">VERSION</span> 0.7</div> 
+                  <div class="cursor-default pl-6"><span class="text-[#7dcfff]">FROM</span> golang:1.13-alpine3.11</div>
+                  <div class="cursor-default pl-6"><span class="text-[#7dcfff]">RUN</span> apk --update --no-cache add git</div>
+                  <div class="cursor-default pl-6"><span class="text-[#7dcfff]">WORKDIR</span> /go-example</div>
 
-            </code>
+                  <div class="mt-3 text-[#b395ed] cursor-default pl-6">all:</div>
+                  <div class="pl-10 cursor-default"><span class="text-[#7dcfff]">BUILD</span> +build</div>
+                  <div class="pl-10 cursor-default"><span class="text-[#7dcfff]">BUILD</span> +lint</div>
+
+                  <div class="mt-3 text-[#b395ed] cursor-default pl-6">build:</div>
+                  <div class="pl-10 cursor-default"><span class="text-[#7dcfff]">COPY</span> main.go .</div>
+                  <div class="pl-10 cursor-default"><span class="text-[#7dcfff]">RUN</span> go build -o build/go-example main.go</div>
+                  <div class="pl-10 cursor-default"><span class="text-[#7dcfff]">SAVE ARTIFACT</span> build/go-example <span class="text-[#7dcfff]">AS LOCAL</span> build/go-example</div>
+
+                  <div class="mt-3 text-[#b395ed] cursor-default pl-6">lint:</div>
+                  <div class="pl-10 cursor-default"><span class="text-[#7dcfff]">RUN</span> go get golang.org/x/lint/golint</div>
+                  <div class="pl-10 cursor-default"><span class="text-[#7dcfff]">COPY</span> main.go .</div>
+                  <div class="pl-10 cursor-default"><span class="text-[#7dcfff]">RUN</span> golint -set_exit_status ./...</div>
+                </div>
+              </code>
 
             </div>
           </div>
