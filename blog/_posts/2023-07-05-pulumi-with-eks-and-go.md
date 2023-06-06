@@ -91,7 +91,7 @@ This policy allows the IAM user to perform actions required to create, manage, a
 
 Lastly, open up your terminal app and run the following commands sequentially to configure the AWS CLI with your IAM user credentials:
 
-~~~
+~~~{.bash caption=">_"}
 aws configure
 AWS Access Key ID [****************K3PQ]: <YOUR_ACCESS_KEY_ID>
 AWS Secret Access Key [****************dNMD]: <YOUR_SECRET_ACCESS_KEY_ID>
@@ -105,7 +105,7 @@ With that done correctly, you are ready to start with infrastructure as code wit
 
 To begin using infrastructure as code with Pulumi and AWS, installing, and configuring Pulumi for Go is necessary. The Pulumi official documentation provides commands to install Pulumi for most kinds of [operating systems](https://www.pulumi.com/docs/get-started/install/). Since this tutorial uses a Linux OS with an Ubuntu 22.04 LTS distro, we'll install Pulumi with the following command:
 
-~~~
+~~~{.bash caption=">_"}
 curl -fsSL https://get.pulumi.com | sh
 ~~~
 
@@ -119,7 +119,7 @@ After a successful installation, you should have something similar to the follow
 
 With Pulumi installed, you must create a Pulumi project specifically for Go. To achieve this, create a directory with the following command; you can call this directory whatever you want. This tutorial uses `pulumi-eks`:
 
-~~~
+~~~{.bash caption=">_"}
 mkdir pulumi-eks #Creates directory
 cd pulumi-eks #Sets the directory as the current and working directory
 ~~~
@@ -130,7 +130,7 @@ cd pulumi-eks #Sets the directory as the current and working directory
 
 Create a new Pulumi project in the current directory with the following command:
 
-~~~
+~~~{.bash caption=">_"}
 pulumi new
 ~~~
 
@@ -177,7 +177,7 @@ With our installation complete and our code generated, it's time to delve deeper
 
 Upon opening the `main.go` file, you will encounter example code that demonstrates how Pulumi can be used to create an S3 bucket resource within AWS, which looks something like this:
 
-~~~
+~~~{.go caption="main.go"}
 package main
 
 import (
@@ -256,7 +256,7 @@ Now that we've seen how to create a single resource and have a better understand
 
 Pulumi leverages the power of a programming language to manage infrastructure, enabling us to scale our operations effortlessly. To witness this capability firsthand, let's modify our code to create multiple S3 buckets:
 
-~~~
+~~~{.go caption="main.go"}
 package main
 
 import (
@@ -323,9 +323,9 @@ You can see the three buckets created with pulumi and that each bucket name uses
 
 Now it's time to do some advanced stuff. This section will explore how to first create an Amazon Elastic Kubernetes Service (EKS) cluster with Pulumi and Go. Then go through creating a [namespace](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/) and then create a deployment in that namespace.
 
-Edit the `main.go`  file to look like the following:
+Edit the `main.go` file to look like the following:
 
-~~~
+~~~{.go caption="main.go"}
 package main
 
 import (
@@ -368,7 +368,7 @@ Courtesy of the [official pulumi documentation](https://www.pulumi.com/docs/guid
 
 Before executing the above pulumi program, run the following commands sequentially to install the SDKs:
 
-~~~
+~~~{.bash caption=">_"}
 go get github.com/pulumi/pulumi-awsx/sdk/go/awsx/ec2
 go get github.com/pulumi/pulumi-eks/sdk/go/eks
 ~~~
@@ -396,7 +396,7 @@ From the image above, you can see that it's active and uses Kubernetes version `
 Now that you have your EKS cluster created, it's time to test it. You'll achieve this by creating a namespace and then deploying a sample image `mercybassey/node-service` in that namespace.
 First, add the following SDKs in your `main.go` file imports:
 
-~~~
+~~~{.go caption="main.go"}
     "github.com/pulumi/pulumi-kubernetes/sdk/v3/go/kubernetes"
     corev1 "github.com/pulumi/pulumi-kubernetes/sdk/v3/go/kubernetes/core/v1"
     metav1 "github.com/pulumi/pulumi-kubernetes/sdk/v3/go/kubernetes/meta/v1"
@@ -407,7 +407,7 @@ Importing these SDKs will give you access to the functionalities and types for w
 
 Next, inside the `pulumi.Run` function, add the following code above the VPC creation function:
 
-~~~
+~~~{.go caption="main.go"}
 imageName := "mercybassey/node-service"
 imageTag := "latest"
 imageFullName := imageName + ":" + imageTag
@@ -419,7 +419,7 @@ This will create and initialize three variables: `imageName`, `imageTag`, and `i
 
 Below the EKS cluster creation function, add the following code:
 
-~~~
+~~~{.main caption="main.go"}
 eksProvider, err := kubernetes.NewProvider(ctx, "eks-provider", &kubernetes.ProviderArgs{
             Kubeconfig: eksCluster.KubeconfigJson,
         })
@@ -432,7 +432,7 @@ This will create a Kubernetes provider that uses the `kubeconfig` of the created
 
 Next, add the following code to create a namespace:
 
-~~~
+~~~{.go caption="main.go"}
 // Create the Kubernetes provider
 …
 // Create a Kubernetes Namespace
@@ -453,7 +453,7 @@ This will create a new Kubernetes namespace, `my-eks-namespace` in the EKS clust
 
 Next, add the following code to create a deployment in the EKS cluster:
 
-~~~
+~~~{.go caption="main.go"}
 // Create a Kubernetes Namespace
 …
 // Deploy the Docker image to the EKS cluster using a Kubernetes deployment
@@ -500,7 +500,7 @@ This will deploy a Docker image `mercybassey/node-service` set to the `imageFull
 
 Finally, add the following code to export the `kubeconfig`, `deployment-name`, and `namespace-name` to make them accessible outside the stack:
 
-~~~
+~~~{.go caption="main.go"}
 // Deploy the Docker image to the EKS cluster using Kubernetes deployment
 …
 // Export important resources
@@ -511,9 +511,9 @@ ctx.Export("namespace-name", namespace.Metadata.Elem().Name())
 return nil
 ~~~
 
- The complete code is expected to look like the following:
+The complete code is expected to look like the following:
 
-~~~
+~~~{.go caption="main.go"}
 package main
 
 import (
@@ -646,13 +646,13 @@ Now, execute the following command from your working directory to interact with 
 
 This command takes the `kubeconfig` output from a Pulumi stack and writes it to the `~/.kube/config` file on the local machine, so it can be used by other Kubernetes tools (`kubectl`) and utilities to interact with the cluster.
 
-~~~
+~~~{.bash caption=">_"}
 pulumi stack output kubeconfig > ~/.kube/config
 ~~~
 
 On your terminal app, run the following commands sequentially to view the resources you have created in your EKS cluster:
 
-~~~
+~~~{.bash caption=">_"}
 kubectl get nodes
 kubectl get ns
 kubectl get deployments -n my-eks-namespace
@@ -669,13 +669,13 @@ You should have the following output:
 
 You can choose to keep the cluster and its resources for as long as you want; otherwise, you can execute the following command to delete them completely:
 
-~~~
+~~~{.bash caption=">_"}
 pulumi destroy
 ~~~
 
 or
 
-~~~
+~~~{.bash caption=">_"}
 pulumi destroy -y
 ~~~
 
@@ -699,7 +699,7 @@ Now, if you head over to the EKS page on the AWS management console, you should 
 
 You can also run the following command if you'd like to delete the stack:
 
-~~~
+~~~{.bash caption=">_"}
 pulumi stack rm <name-of-stack> 
 ~~~
 
