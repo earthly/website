@@ -138,7 +138,7 @@ AttributeError: can't set attribute
 
 So far, we know that data class instances are mutable by default, and named tuple instances are immutable. **But can we have immutable data class instances and mutable named tuple instances?**
   
-- You can make data class instances immutable by setting `frozen` to `True` in the `@dataclass` decorator. 
+- You can make data class instances immutable by setting `frozen` to `True` in the `@dataclass` decorator.
 - But you *cannot* have mutable named tuple instances.
 
 </div>
@@ -146,9 +146,7 @@ So far, we know that data class instances are mutable by default, and named tupl
 <div class="notice--info">
 #### A Note on `_replace()`
 <br>
-Using the `_replace()` method, you can get a *shallow copy* of a named tuple instance where the value of a particular field is replaced with an updated value. 
-
-As an example, create a shallow copy of the `book2` instance with a modified `title` field:
+Using the `_replace()` method, you can get a *shallow copy* of a named tuple instance where the value of a particular field is replaced with an updated value. As an example, create a shallow copy of the `book2` instance with a modified `title` field:
 
 ~~~{caption="main.py"}
 book2 = BookNT('Deep Work','Cal Newport','Nonfiction', True)
@@ -172,7 +170,7 @@ You can as well use the `_replace()` method to create shallow copies of data cla
 
 ### Setting Default Values
 
-When you create data classes you can specify the default values for one or more fields. 
+When you create data classes you can specify the default values for one or more fields.
 
 Here we set the `standalone` field in the `BookDC` data class to take a default value of `True`:
 
@@ -270,6 +268,7 @@ print(book4)
 ~~~{caption="Output"}
 BookDC(title='Coraline', author='Neil Gaiman', genre='Fantasy', standalone=True, rating=5)
 ~~~
+
 </div>
 
 ### Comparing Instances
@@ -300,6 +299,7 @@ print(book_a)
 book_b = AnotherBookDC('Coraline','Neil Gaiman','Fantasy')
 print(book_b)
 ~~~
+
 And both the instances take the same values for all the fields:
 
 ~~~{caption="Output"}
@@ -415,7 +415,6 @@ print(issubclass(BookNT,NamedTuple))
 print(issubclass(BookNT,tuple))
 # True 
 ~~~
-  
 
 </div>
 
@@ -423,7 +422,7 @@ print(issubclass(BookNT,tuple))
 
 ![image]({{site.images}}{{page.slug}}/3.png)\
 
-How do data classes and named tuples compare in terms of memory footprint? Is one more memory efficient than the other? We'll answer these questions in a bit. 
+How do data classes and named tuples compare in terms of memory footprint? Is one more memory efficient than the other? We'll answer these questions in a bit.
 
 To get the approximate size of the objects in memory, we'll use [Pympler](https://pypi.org/project/Pympler/)'s `asizeof` module. Install `pympler` using `pip`: `pip install pympler`.
 
@@ -504,7 +503,7 @@ Attribute access time for named tuple instance: 0.06
 ![image]({{site.images}}{{page.slug}}/2.png)\
 
 Let's wrap up our discussion by summarizing the key differences between data classes and named tuples.
- 
+
 |Features| Data Classes| Named Tuples|
 |--------|-------------|------------|
 |Immutability of instances|Mutable by default; Set `frozen = True` in the `@dataclass` to create immutable instances| Immutable by default|
