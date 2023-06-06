@@ -59,11 +59,11 @@ BookDC(
 
 When you want to store attributes and efficiently look up and use the values, do we need classes at all? Won't basic data structures like lists, tuples, and dictionaries suffice?
 
-![image]({{site.images}}{{page.slug}}/1.png)\
-
 We would often need such objects to be immutable, perhaps, we can use tuples? However, with tuples, we need to remember what each of the field stands for—and access them using the index.
 
 We can consider switching to a dictionary because the keys will now indicate what the fields are. But we *can* modify a dictionary in place, so we may accidentally modify fields that you do not intend to. And each created tuple or dictionary object is an independent entity; there is no template that we can use to create objects of similar type.
+
+![image]({{site.images}}{{page.slug}}/1.png)\
 
 Here's where named tuples can help. Named tuples are tuples with **named attributes**. So they give you the immutability of tuples and readability of dictionaries. In addition, once you define a named tuple of a specific type, you can use that to create many instances of that named tuple type.
 
@@ -241,7 +241,7 @@ The `_field_defaults` attribute is a dictionary of containing the fields with de
 Though we can add literal defaults in named tuples, it can be hard to maintain if there are too many fields.
 
 <div class="notice--info">
-#### Initializing Default Values With Default Factory
+#### 📑 Initializing Default Values With Default Factory
 <br>
 Both data classes and named tuples support setting literal defaults. With Python data classes, you can also use `default_factory` to use any callable to initialize a field with default values.
   
@@ -400,7 +400,7 @@ BookNT(title='Six of Crows', author='Leigh Bardugo', genre='Fantasy', standalone
 ~~~
 
 <div class="notice--big--primary">
-#### All NamedTuple Types Are Tuple Subclasses
+#### 🏷️ All NamedTuple Types Are Tuple Subclasses
 <br>
 Consider the following code snippet:
 
@@ -459,7 +459,7 @@ Size of BookNT named tuple: 296
 ~~~
 
 <div class="notice--info">
-#### Named Tuples and Tuples Have the Same Memory Footprint
+#### 🔖 Named Tuples and Tuples Have the Same Memory Footprint
 <br>
 The size of any named tuple instance is the same as that of a simple tuple. Let's verify this:
 
@@ -527,9 +527,9 @@ Attribute access time for named tuple instance: 0.06
 
 ## Summing Up the Discussion
 
-![image]({{site.images}}{{page.slug}}/2.png)\
-
 Let's wrap up our discussion by summarizing the key differences between data classes and named tuples.
+
+![image]({{site.images}}{{page.slug}}/2.png)\
 
 |Features| Data Classes| Named Tuples|
 |--------|-------------|------------|
