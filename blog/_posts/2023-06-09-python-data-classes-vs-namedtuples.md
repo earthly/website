@@ -136,7 +136,7 @@ AttributeError: can't set attribute
 
 <div class="notice--big--primary">
 
-So far, we know that data class instances are mutable by default, and named tuple instances are immutable. **But can we have immutable data class instances and mutable named tuple instances?**
+📑 So far, we know that data class instances are mutable by default, and named tuple instances are immutable. **But can we have immutable data class instances and mutable named tuple instances?**
   
 - You can make data class instances immutable by setting `frozen` to `True` in the `@dataclass` decorator.
 - But you *cannot* have mutable named tuple instances.
@@ -153,7 +153,7 @@ book2 = BookNT('Deep Work','Cal Newport','Nonfiction', True)
 book2_copy = book2._replace(title='Digital Minimalism')
 ~~~
 
-The original `title` remains unchanged:
+The `title` field of the shallow copy `book2_copy` has been updated while the `title` of `book2` remains unchanged:
 
 ~~~{caption="main.py"}
 print(book2.title)
