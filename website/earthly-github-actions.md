@@ -5,7 +5,7 @@ layout: default
 
 {% include home/layout.html template='github-actions/hero.html' %}
 {% include home/layout.html template='github-actions/call-to-action.html' %}
-{% include home/layout.html template='home/why.html' %}
+{% include home/layout.html template='github-actions/why.html' %}
 
 {% include home/layout.html template='github-actions/benefits-title.html' %}
 {% include home/layout.html template='github-actions/benefits-improvement.html' %}
