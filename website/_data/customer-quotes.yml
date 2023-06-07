@@ -1,0 +1,47 @@
+- name: Jesús Valencia
+  image: jesus-rodriguez-valencia.jpg
+  headline:
+    - Principal Engineer at
+    - Roche
+  link: https://www.roche.com/
+  quote: We enabled developers to execute complex CI pipelines on their laptops!
+
+- name: Florian Leibert
+  image: Florian-Leibert.jpg
+  headline:
+    - Founder of
+    - Mesosphere/D2IQ
+  link: https://d2iq.com/
+  quote: The first solution to bring the power of repeatable builds at scale to market
+
+- name: Spencer Kimball
+  image: spencer-kimball.png
+  headline:
+    - Founder of
+    - Cockroach Labs
+  link: https://www.cockroachlabs.com/
+  quote: Earthly reduces the context switching overhead in engineering organizations
+
+- name: Matt Klein
+  image: Matt-Klein.jpg
+  headline:
+    - Creator of
+    - Envoy proxy
+  link: https://www.envoyproxy.io/
+  quote: ... a pragmatic and incremental solution to a thorny problem that all organizations face
+
+- name: Jesse Anger
+  image: jesse-anger.jpg
+  headline:
+    - Head of IT at
+    - Deep Genomics
+  link: https://www.deepgenomics.com/
+  quote: "... an essential element of a contemporary CI system: rapid build times, intelligent caching, and repeatability"
+
+- name: Ses Goe
+  image: jesse-anger.jpg
+  headline:
+    - Director of Internal Tools at
+    - NOCD
+  link: https://www.deepgenomics.com/
+  quote: the most magical software experience I have ever had
