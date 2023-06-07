@@ -52,6 +52,12 @@ makefile:
         url: /golang-makefile/
       - title: "Makefiles and VS Code"
         url: /vscode-make/
+      - title: "CMake and GCC to Cross-Compile"
+        url: /cmake-gcc-cross-compile/
+      - title: "Using CMake"
+        url: /using-cmake/
+      - title: "CMake vs Make"
+        url: /cmake-vs-make-diff/
   - title: Makefile Guides
     children:
       - title: "Using Autotools"
@@ -62,6 +68,12 @@ makefile:
         url: /repeatable-builds-every-time/#tips-for-taming-makefiles-in-large-teams
       - title: "Docker and Makefiles"
         url: /docker-and-makefiles
+      - title: "Makefiles on Windows"
+        url: /makefiles-on-windows
+      - title: "Makefile Wildcards"
+        url: /using-makefile-wildcards
+      - title: "Makefile Variables"
+        url: /makefile-variables
 bash:
   - title: Bash
     children:
