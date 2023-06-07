@@ -4,7 +4,8 @@ categories:
   - Tutorials
 toc: true
 author: Kasper Siig
-
+sidebar:
+  nav: "makefile"
 internal-links:
  - make
  - makefile

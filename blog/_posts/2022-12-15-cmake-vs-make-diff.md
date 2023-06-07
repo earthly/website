@@ -5,7 +5,8 @@ categories:
 toc: true
 author: Ndafara Tsamba
 editor: Bala Priya C
-
+sidebar:
+  nav: "makefile"
 internal-links:
  - CMake
  - Make
