@@ -28,27 +28,7 @@
       // Uncomment for testing
       // console.log("Features loaded");
       
-      // Gavin, 20230525: Added for blog-header-logo experiment
-      const blogHeaderLogoVal = gb.getFeatureValue("blog-header-logo",0);
-      if(document.getElementById("headerLogoControl")){
-        switch(blogHeaderLogoVal) {
-          case 1:
-            document.getElementById("headerLogoControl").style.display = "none";
-            document.getElementById("headerLogoTest1").style.display = "block";
-            document.getElementById("headerLogoTest2").style.display = "none";
-            break;
-          case 2:
-            document.getElementById("headerLogoControl").style.display = "none";
-            document.getElementById("headerLogoTest1").style.display = "none";
-            document.getElementById("headerLogoTest2").style.display = "block";
-            break;
-          default:
-            document.getElementById("headerLogoControl").style.display = "block";
-            document.getElementById("headerLogoTest1").style.display = "none";
-            document.getElementById("headerLogoTest2").style.display = "none";
-            break;
-        }
-      }
+      /*const blogHeaderLogoVal = gb.getFeatureValue("blog-header-logo",0);
       if(document.getElementById("mobileHeaderLogoControl")){
         switch(blogHeaderLogoVal) {
           case 1:
@@ -67,7 +47,7 @@
             document.getElementById("mobileHeaderLogoTest2").style.display = "none";
             break;
         }
-      }
+      }*/
     });
   });
 </script>
