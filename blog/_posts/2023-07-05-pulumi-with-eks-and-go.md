@@ -3,8 +3,8 @@ title: "Infrastructure as Code with Pulumi and AWS EKS for GO Developers"
 categories:
   - Tutorials
 toc: true
-author: Mercy Bessey
-
+author: Mercy Bassey
+editor: Ubaydah Abdulwasiu
 internal-links:
  - Pulumi
  - AWS EKS
@@ -133,7 +133,7 @@ mkdir pulumi-eks #Creates directory
 cd pulumi-eks #Sets the directory as the current and working directory
 ~~~
 
-<div class="info">
+<div class="notice--info">
 💡 If you are using Pulumi for the first time, visit the following address [https://app.pulumi.com/account/tokens](https://app.pulumi.com/account/tokens), login to pulumi cloud and authenticate Pulumi, with either GitHub, Gitlab or Atlassian and generate a token.
 </div>
 
@@ -211,7 +211,7 @@ func main() {
 
 This code imports the required AWS S3 `"github.com/pulumi/pulumi-aws/sdk/v5/go/aws/s3"`  and Pulumi `"github.com/pulumi/pulumi/sdk/v3/go/pulumi"` packages, creates a new Pulumi stack with a single resource (an S3 bucket), and exports the name of the bucket (named `my-bucket`) as an output value.
 
-<div class="info">
+<div class="notice--info">
 💡In Pulumi, a "stack" is an independently configurable instance of a Pulumi program, serving as an isolated environment within a project. Stacks, which can represent different development stages (like 'development', 'staging', 'production'), each have unique configurations and states. They allow for the management of environment-specific settings through variable parameters during deployment
 
 In the context of our program, this Pulumi stack consists of a single resource, which is an Amazon S3 bucket. To identify this bucket for future reference and to expose its value outside the stack, we're designating it as an output value under the name `my-bucket`. This structure of the stack allows us to manage this set of infrastructure in isolation, ensuring that changes, updates, or configurations are encapsulated within this stack, thereby ensuring environmental isolation and reconfigurability.
@@ -245,7 +245,7 @@ Once selected, Pulumi will create an S3 bucket on your AWS account:
 
 Additionally, you can confirm this change on the preview link below; according to the image above; this particular link is `https://app.pulumi.com/mercybassey/pulumi-eks/dev/updates/2`. So Pulumi creates a preview link before the change is made and an update link after the change has been successfully made.
 
-<div class="info">
+<div class="notice--info">
 💡The preview link shows what will happen if you run the update, and the update link shows what happened when you ran the update.
 </div>
 
@@ -300,14 +300,14 @@ The GO code above does the following:
 - Calls the `pulumi.Run` function in the `main` function to create a new Pulumi program that can be executed with the `pulumi up` command.
 - Uses the `s3.NewBucket` function to create a new S3 bucket resource named "my-bucket".
 
-<div class="info">
+<div class="notice--info">
 💡It is crucial to note that every S3 bucket name must be unique across all of Amazon S3. That means no two buckets can share the same name, not just within your account, but across all AWS accounts globally. So, when naming your buckets, ensure that you're using unique identifiers. You may need to use a bucket name other than `my-bucket` for this tutorial since `my-bucket-<some-number>` is likely taken. This will help avoid potential conflicts as you follow along in the tutorial.
 </div>
 
 - Calls the `bucket.ID()` method to retrieve the ID of the created bucket.
 - Uses the `ctx.Export` function to export the bucket name and the ARN as the `bucketID` output of the Pulumi program so that other programs can use it. This means, if you have multiple Pulumi stacks within a project or across projects, one stack might create resources that other stacks depend upon. By exporting a resource property (like bucket name or ARN in this case), other stacks can import and use that value in their own configuration.
 
-<div class="info">
+<div class="notice--info">
 💡 `bucket.arn` returns the Amazon Resource Name (ARN) of the S3 bucket resource created in the Pulumi program. The ARN is a unique identifier for a resource in the AWS ecosystem. It can be used to identify and access the resource from other AWS services or external applications. Therefore, the `ctx.export` function makes the bucket name and ARN available as an output of the Pulumi program. This means the bucket name and ARN can be accessed in other parts of this Pulumi stack, in other Pulumi stacks, or even outside of Pulumi altogether.
 
 On the other hand, if you need to access exported values within the same Pulumi stack, you can directly reference the exported values. For accessing exported values from another stack or programmatically outside Pulumi, you can use the `getOutput` method on the [`StackReference`](https://www.pulumi.com/docs/concepts/stack/#stackreferences) object or leverage the Pulumi CLI command [`pulumi stack output <output-name>`](https://www.pulumi.com/docs/cli/commands/pulumi_stack_output/) respectively.
@@ -430,7 +430,7 @@ This will create and initialize three variables: `imageName`, `imageTag`, and `i
 
 Below the EKS cluster creation function, add the following code:
 
-~~~{.main caption="main.go"}
+~~~{.go caption="main.go"}
 
 eksProvider, err := kubernetes.NewProvider(ctx, "eks-provider", \
 &kubernetes.ProviderArgs{
@@ -651,7 +651,7 @@ So in summary, the code above uses Pulumi to deploy a Docker image into a partic
 
 Once you execute the `pulumi up` command, you should have the following output, showing that the namespace and deployment have been created:
 
-<div class="info">
+<div class="notice--info">
 💡 If you are so sure of the update, you can bypass the pulumi confirmation question using the following command `pulumi up -y`
 </div>
 
@@ -744,6 +744,8 @@ Pulumi isn't confined to just one cloud provider or a single programming languag
 Consider the possibilities of using Pulumi with the Google Cloud Platform (GCP). You could manage GCP resources as seamlessly as we've done with AWS in this tutorial. Pulumi provides robust support for GCP, adding another dimension to your cloud management toolbox.
 
 To expand your Pulumi knowledge and explore its adaptability to different cloud environments, take a look at this guide on using Pulumi with [Google Cloud](https://www.pulumi.com/docs/clouds/gcp/get-started/).
+
+To learn more about how Pulumi compares to Terraform, check out article [Pulumi Vs Terraform](blog/pulumi-vs-terraform).
 
 Remember, the possibilities with Pulumi are vast, so let your creativity run wild as you architect your cloud infrastructure.
 
