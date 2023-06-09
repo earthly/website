@@ -28,27 +28,7 @@
       // Uncomment for testing
       // console.log("Features loaded");
       
-      // Gavin, 20230525: Added for blog-header-logo experiment
-      const blogHeaderLogoVal = gb.getFeatureValue("blog-header-logo",0);
-      if(document.getElementById("headerLogoControl")){
-        switch(blogHeaderLogoVal) {
-          case 1:
-            document.getElementById("headerLogoControl").style.display = "none";
-            document.getElementById("headerLogoTest1").style.display = "block";
-            document.getElementById("headerLogoTest2").style.display = "none";
-            break;
-          case 2:
-            document.getElementById("headerLogoControl").style.display = "none";
-            document.getElementById("headerLogoTest1").style.display = "none";
-            document.getElementById("headerLogoTest2").style.display = "block";
-            break;
-          default:
-            document.getElementById("headerLogoControl").style.display = "block";
-            document.getElementById("headerLogoTest1").style.display = "none";
-            document.getElementById("headerLogoTest2").style.display = "none";
-            break;
-        }
-      }
+      /*const blogHeaderLogoVal = gb.getFeatureValue("blog-header-logo",0);
       if(document.getElementById("mobileHeaderLogoControl")){
         switch(blogHeaderLogoVal) {
           case 1:
@@ -67,21 +47,7 @@
             document.getElementById("mobileHeaderLogoTest2").style.display = "none";
             break;
         }
-      }
-
-      if(document.getElementById("blog-bottom-cta-control")){
-        if(gb.isOn("blog-bottom-cta-20230501")) {
-            console.log("blog-bottom-cta-20230501 on");
-            document.getElementById("blog-bottom-cta-control").style.display = "none";
-            document.getElementById("blog-bottom-cta-test").style.display = "";
-          } else {
-            console.log("blog-bottom-cta-20230501 off");
-            document.getElementById("blog-bottom-cta-control").style.display = "";
-            document.getElementById("blog-bottom-cta-test").style.display = "none";
-          }
-      } else {
-        console.log("blog-bottom-cta-control not found");
-      }
+      }*/
     });
   });
 </script>

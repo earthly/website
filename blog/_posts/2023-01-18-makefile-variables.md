@@ -5,7 +5,8 @@ categories:
 toc: true
 author: Aniket Bhattacharyea
 editor: Bala Priya C
-
+sidebar:
+  nav: "makefile"
 internal-links:
  - Makefile
  - Variables
