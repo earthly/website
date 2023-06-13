@@ -455,10 +455,11 @@ Once you head over to the S3 page on the AWS management console, you should see 
 
 I believe you now know the benefits of using CronJobs in Kubernetes for automated and periodic tasks, such as log management. You have seen how to create, build, and deploy a script that retrieves and compresses logs from a Statefulset in a specific namespace and uploads them to an AWS S3 bucket. With this knowledge, you can now go ahead to implement your own reliable and scalable solution for scheduling tasks with [CronJobs](./) in a Kubernetes environment.
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
