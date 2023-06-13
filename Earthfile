@@ -55,7 +55,7 @@ publish:
   ARG DATE
 
   # Work around for netlify DNS issue
-  HOST api.netlify.com 18.188.245.61
+  HOST api.netlify.com 3.130.174.239
 
   IF [ "$DESTINATION" = "PROD" ]
     COPY (./blog/+build/_site --DATE="$DATE") ./blog
