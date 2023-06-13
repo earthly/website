@@ -4,6 +4,7 @@ categories:
   - Tutorials
 toc: true
 author: Mercy Bassey
+editor: Muhammad Badawy
 
 internal-links:
  - Kubernetes
