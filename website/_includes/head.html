@@ -5,7 +5,11 @@
   <link rel="stylesheet" href="{{ "/assets/css/index.46bb9c26.css" | relative_url }}">
   <link rel="icon" type="image/png" href="/assets/img/favicon.png">
   <title>{{ page.title }} - {{ site.tagline }}</title>
-  <meta name="description" content="{{ site.description }}">
+  {% if page.description != null && page.description != "" %}
+    <meta name="description" content="{{ page.description }}">
+  {% else %}
+    <meta name="description" content="{{ site.description }}">
+  {% endif %}
   <meta property="og:url" content="https://earthly.dev/">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Earthly - {{ site.tagline }}">

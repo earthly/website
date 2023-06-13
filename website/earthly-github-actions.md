@@ -1,5 +1,6 @@
 ---
 title: Earthly + GitHub Actions
+description: GitHub Actions are better with Earthly. Get faster build speeds, improved consistency, and local testing along with an easy-to-use syntax – no YAML – and better monorepo support.
 layout: default
 ---
 
