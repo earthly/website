@@ -40,7 +40,7 @@ To implement log compression and uploading to AWS S3 with Kubernetes CronJobs, s
 
 Create a `database` namespace with the following `kubectl` command:
 
-~~~
+~~~{.bash caption=">_"}
 kubectl create ns database
 ~~~
 
@@ -50,8 +50,9 @@ kubectl create ns database
 
 Execute the following line of code to create a Kubernetes secret object in the `databse` namespace. This Kubernetes secret will store a username and password for the PostgreSQL database securely. This is the secret we'll use in our PostgreSQL Statefulset, later on, to authenticate with the PostgreSQL database server.:
 
-~~~
-kubectl create -n database secret generic postgres-secret --from-literal=username=admin --from-literal=password=123456
+~~~{.bash caption=">_"}
+kubectl create -n database secret generic postgres-secret \
+--from-literal=username=admin --from-literal=password=123456
 ~~~
 
 <div class="wide">
@@ -60,7 +61,7 @@ kubectl create -n database secret generic postgres-secret --from-literal=usernam
 
 Create a file `postgres-statefulset.yaml` and paste in the following configuration settings to create a Kubernetes Statefulset object for a PostgreSQL database with two replicas:
 
-~~~
+~~~{.yaml caption="postgres-statefulset.yaml"}
 #postgres-statefulset.yaml
 apiVersion: apps/v1
 kind: StatefulSet 
@@ -119,7 +120,7 @@ Also, we set another environment variable `POSTGRES_PASSWORD` from the same secr
 
 Execute the following commands to create and view the Statefulset resource:
 
-~~~
+~~~{.bash caption=">_"}
 kubectl apply -n database -f postgres-statefulset.yaml  
 kubectl get statefulsets -n database 
 kubectl get pods -n database
@@ -135,7 +136,7 @@ The image below shows that the Postgres StatefulSet is being created with the `2
 
 When interacting with a PostgreSQL server running as a StatefulSet in a Kubernetes cluster, we need to create a [service](https://kubernetes.io/docs/concepts/services-networking/service/) to expose it. You can create a Kubernetes service through the below YAML configuration file. You can create a file *postgres-service.yaml* and paste into it the following configuration settings:
 
-~~~
+~~~{.yaml caption="postgres-service.yaml"}
 #postgres-service.yaml
 apiVersion: v1
 kind: Service
@@ -154,7 +155,7 @@ This will create a service named `postgres-service` to expose the Postgres State
 
 Execute the following command to create the Kubernetes service:
 
-~~~
+~~~{.bash caption=">_"}
 kubectl apply -f postgres-service.yaml -n database
 ~~~
 
@@ -177,14 +178,14 @@ Once the scripts have been written and tested, we will containerize them using D
 
 Create a working directory with the following command and change the directory to it:
 
-~~~
+~~~{.bash caption=">_"}
 mkdir cronjob
 cd cronjob
 ~~~
 
 Initialize a NodeJS project and install the NodeJS Kubernetes client library with the following commands:
 
-~~~
+~~~{.bash caption=">_"}
 npm init -y
 npm install @kubernetes/client-node
 ~~~
@@ -197,7 +198,7 @@ This will provide a set of APIs and tools to interact with Kubernetes clusters p
 
 Execute the following command to install the AWS SDK for JavaScript module that provides functionality for working with Amazon S3, specifically the `@aws-sdk/client-s3` module:
 
-~~~
+~~~{.bash caption=">_"}
 npm install @aws-sdk/client-s3 
 ~~~
 
@@ -213,8 +214,8 @@ Once you have AWS SDK installed, follow these instructions to proceed to the nex
 
 - Open up the `package.json` file and make the edits to match the following configuration below:
 
-~~~
-# package.json
+~~~{.js caption="package.json"}
+#package.json
 {
   ...
   "scripts": {
@@ -243,7 +244,8 @@ Here's a brief explanation of what each section in the code does:
 Doing this will ensure that the script can locate and load the configuration settings for your Kubernetes cluster correctly. You have the flexibility to choose any name for this file according to your preference.
 </div>
 
-~~~
+~~~{.js caption="index.js"}
+
 const { S3Client, PutObjectCommand } = require("@aws-sdk/client-s3");
 const { gzipSync } = require("zlib");
 const k8s = require("@kubernetes/client-node");
@@ -254,19 +256,21 @@ kc.loadFromFile("./cronjob-kubeconfig.yaml");
 
 - Secondly, we create instances of the Kubernetes API clients for `AppsV1Api` and `CoreV1Api` by defining the Kubernetes namespace from which the logs will be retrieved which is in this case called `database`, the name of the StatefulSet `postgres`, and the name of the compressed log file.
 
-~~~
+~~~{.js caption="index.js"}
 const k8sApi = kc.makeApiClient(k8s.AppsV1Api);
 const coreApi = kc.makeApiClient(k8s.CoreV1Api);
-const namespace = "database"; // Define the namespace where the logs will be retrieved from
+const namespace = "database"; 
+// Define the namespace where the logs will be retrieved from
 
 const statefulSetName = "postgres"; 
 
-const compressedLogFilename = `${statefulSetName}-logs-` + new Date().toISOString() + ".gz";
+const compressedLogFilename = `${statefulSetName}-logs-` \
++ new Date().toISOString() + ".gz";
 ~~~
 
 Also, we initialize an instance of the AWS S3 client with our specified AWS region and access credentials. And then, define the name of the S3 bucket where the compressed log file will be uploaded.
 
-~~~
+~~~{.js caption="index.js"}
 const s3 = new S3Client({
   region: "YOUR_REGION", 
   credentials: {
@@ -284,18 +288,22 @@ Be sure to replace the following `REGION`, `ACCESS_ID` and `SECRET_ACCESS_ID` wi
 
 Next, we define an asynchronous function `retrieveLogs()` to retrieve logs from all pods in the `postgres` StatefulSet. We then fetch the StatefulSet object, extract the pod labels, and list the pods using those labels. After that, we iterate over the pods and retrieve their logs; then we compress and upload them to our pre-existing S3 bucket using the AWS SDK for JavaScript. Finally, we log a success message for each pod indicating that its logs have been uploaded.
 
-~~~
+~~~{.js caption="index.js"}
 async function retrieveLogs() {
   
-  const statefulSet = await k8sApi.readNamespacedStatefulSet(statefulSetName, namespace);
+  const statefulSet = await k8sApi.readNamespacedStatefulSet\
+  (statefulSetName, namespace);
   const podLabels = statefulSet.body.spec.selector.matchLabels;
 
 
-  const pods = await coreApi.listNamespacedPod(namespace, undefined, undefined, undefined, undefined, Object.keys(podLabels).map(key => `${key}=${podLabels[key]}`).join(','));
+  const pods = await coreApi.listNamespacedPod(namespace, undefined, \
+   undefined, undefined, undefined, Object.keys(podLabels).map \
+   (key => `${key}=${podLabels[key]}`).join(','));
 
  
   for (const pod of pods.body.items) {
-    const logsResponse = await coreApi.readNamespacedPodLog(pod.metadata.name, namespace);
+    const logsResponse = await coreApi.readNamespacedPodLog \
+    (pod.metadata.name, namespace);
     const compressedLogs = gzipSync(logsResponse.body);
     const uploadParams = {
       Bucket: bucketName,
@@ -304,14 +312,15 @@ async function retrieveLogs() {
     };
     const uploadCommand = new PutObjectCommand(uploadParams);
     await s3.send(uploadCommand);
-    console.log(`Logs for pod ${pod.metadata.name} uploaded to S3 bucket ${bucketName} as ${pod.metadata.name}-${compressedLogFilename}`);
+    console.log(`Logs for pod ${pod.metadata.name} uploaded to S3 \
+    bucket ${bucketName} as ${pod.metadata.name}-${compressedLogFilename}`);
   }
 }
 ~~~
 
 Finally, we invoke the `retrieveLogs()` function and handle any errors that may occur during its execution.
 
-~~~
+~~~{.js caption="index.js"}
 retrieveLogs().catch((err) => console.error(err));
 ~~~
 
@@ -321,7 +330,7 @@ Now that we have our script, it's time to containerize it using Docker. We will 
 
 Create a file `Dockerfile`  in your working directory and paste the following code snippets into it:
 
-~~~
+~~~{.dockerfile caption=""}
 FROM node:18
 
 WORKDIR /app
@@ -346,7 +355,7 @@ Considering the `Dockerfile` above, each command specifies the following:
 
 Build the image for our Node.js script with the command below:
 
-~~~
+~~~{.bash caption=">_"}
 docker build -t <your-dockerhub-username/your-repo-name:tagname> .
 ~~~
 
@@ -362,7 +371,7 @@ This command will prompt you to enter your DockerHub username and password. You 
 
 Now push this image to your DockerHub repository with the following command:
 
-~~~
+~~~{.bash caption=">_"}
 docker push <your-dockerhub-username/your-repo-name:tagname>
 ~~~
 
@@ -376,7 +385,7 @@ Since we now have our script on DockerHub, the next step is to create a CronJob 
 
 Create a file *cronjob.yaml* and paste into it the following configuration settings:
 
-~~~
+~~~{.yaml caption="cron-job.yaml"}
 # cron-job.yaml
 apiVersion: batch/v1
 kind: CronJob
@@ -417,7 +426,7 @@ This is what each section in the configuration settings above stand for:
 
 To deploy the CronJob resource in our Kubernetes cluster, run the following commands.
 
-~~~
+~~~{.bash caption=">_"}
 kubectl apply -f cronjob.yaml -n database
 kubectl get cronjob -n database
 ~~~
@@ -432,7 +441,7 @@ You can see from the image below that the CronJob is scheduled to run every `10`
 
 You might want to execute the above command more than once to keep track of its active state. Once it is in an active state, execute the following commands sequentially to view the outcome of the CronJob:
 
-~~~
+~~~{.bash caption=">_"}
 kubectl get job -n database
 kubectl get pods -n database
 kubectl log <THE_POD_NAME_CREATED_BY_THE_JOB> -n database
@@ -459,8 +468,3 @@ Once you head over to the S3 page on the AWS management console, you should see 
 I believe you now know the benefits of using CronJobs in Kubernetes for automated and periodic tasks, such as log management. You have seen how to create, build, and deploy a script that retrieves and compresses logs from a Statefulset in a specific namespace and uploads them to an AWS S3 bucket. With this knowledge, you can now go ahead to implement your own reliable and scalable solution for scheduling tasks with [CronJobs](./) in a Kubernetes environment.
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
