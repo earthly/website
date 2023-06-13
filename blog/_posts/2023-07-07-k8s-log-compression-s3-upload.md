@@ -6,7 +6,10 @@ toc: true
 author: Mercy Bassey
 
 internal-links:
- - just an example
+ - Kubernetes
+ - CronJobs
+ - AWS S3
+ - Log Compression
 ---
 
 **We're [Earthly.dev](https://earthly.dev/). We make building software simpler and therefore faster – like Dockerfile and Makefile had a baby. This article shows us how to compress Kubernetes logs and send them to S3 periodically.**
@@ -34,7 +37,7 @@ To implement log compression and uploading to AWS S3 with Kubernetes CronJobs, s
 <div class="info">
 💡Stateful applications, such as databases, are deployed and managed in Kubernetes using resources called [StatefulSets](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/). For database systems to guarantee data consistency and durability, they provide stable and distinct network identities, orderly deployment, and scaling, and stable storage for each instance.
 </div>
-<br>
+
 Create a `database` namespace with the following `kubectl` command:
 
 ~~~
@@ -275,7 +278,7 @@ const s3 = new S3Client({
 const bucketName = "postgres-database-logs"; 
 ~~~
 
-<div class="info>
+<div class="info">
 Be sure to replace the following `REGION`, `ACCESS_ID` and `SECRET_ACCESS_ID` with your own data.
 </div>
 
@@ -461,5 +464,3 @@ I believe you now know the benefits of using CronJobs in Kubernetes for automate
 
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
