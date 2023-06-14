@@ -8,7 +8,6 @@ function externalLinks() {
 
 externalLinks();
 
-
 // Add label to code blocks
 //.caption
 function addStuff(label, action){
@@ -21,12 +20,20 @@ function addStuff(label, action){
     } else if (b.tagName == "DIV" && b.firstChild.tagName == "PRE") {
       elem = b.firstChild;
     }
-    if(elem)
-    {
-      action(elem, caption)
+    if(elem && caption) {
+      if (!elem.classList.contains('output') && !["Results", "Output", ">_"].includes(caption)) {
+        elem.classList.add("relative", "pt-11");
+        elem.innerHTML =
+          `<div class="toolbar"><div>${caption}</div><div class="copy-item" data-clipboard-text="${
+            b.querySelector("code").innerText.replace(/"/g, '&quot;')
+          }">Copy</div></div>` + elem.innerHTML;
+      } else {
+        action(elem, caption)
+      }
     }
   }
 }
+
 function syntaxLabel() {
     //mobile version
     // use ~~~{captionm="filename"}
