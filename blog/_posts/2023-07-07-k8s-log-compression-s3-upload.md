@@ -35,7 +35,7 @@ To follow along in this tutorial, you should have the following:
 
 To implement log compression and uploading to AWS S3 with Kubernetes CronJobs, several steps must be implemented to set up the necessary environment. In this section, we will walk through the process of setting up the environment for our implementation. This includes creating a Kubernetes Statefulset for PostgreSQL, verifying the Statefulset, and creating an S3 bucket in AWS for compressed log files.
 
-<div class="info">
+<div class="notice--info">
 💡Stateful applications, such as databases, are deployed and managed in Kubernetes using resources called [StatefulSets](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/). For database systems to guarantee data consistency and durability, they provide stable and distinct network identities, orderly deployment, and scaling, and stable storage for each instance.
 </div>
 
@@ -163,13 +163,14 @@ kubectl apply -f postgres-service.yaml -n database
 <div class="wide">
 ![Creating and viewing Postgres Service ]({{site.images}}{{page.slug}}/PTGyrRH.png)
 </div>
+
 Now, the Postgres Statefulset is exposed internally - inside the Kubernetes Cluster - and we can interact with it through the service we just created.
 
 ## Scripting and Dockerization
 
 Since we have set up the environment and created a Statefulset for the PostgreSQL database, the next step is to create a script using NodeJS, that will enable us to programmatically retrieve, compress, and upload the logs to a centralized location such as AWS S3.
 
-<div class="info">
+<div class="notice--info">
 💡 This tutorial uses NodeJS to write the script, you can use any programming language you are conversant with.
 </div>
 
@@ -239,7 +240,7 @@ Here's a brief explanation of what each section in the code does:
 
 - First, we import the libraries needed for our script to run successfully which are the AWS SDK for JavasScript V3, the `gzipSync` function from the Node.js [`zlib`](https://nodejs.org/api/zlib.html) library and the Kubernetes client for Node.js. Then we load the Kubernetes configuration from a file named `cronjob-kubeconfig.yaml`.
 
-<div class="info">
+<div class="notice--info">
 💡In this scenario, you need to create a file called `cronjob-kubeconfig.yaml` that contains your cluster's *kubeconfig* (i.e the information about your Kubernetes cluster, such as the API server address, authentication credentials, and cluster context) in your working directory.
 
 Doing this will ensure that the script can locate and load the configuration settings for your Kubernetes cluster correctly. You have the flexibility to choose any name for this file according to your preference.
@@ -283,7 +284,7 @@ const s3 = new S3Client({
 const bucketName = "postgres-database-logs"; 
 ~~~
 
-<div class="info">
+<div class="notice--info">
 Be sure to replace the following `REGION`, `ACCESS_ID` and `SECRET_ACCESS_ID` with your own data.
 </div>
 
@@ -360,7 +361,7 @@ Build the image for our Node.js script with the command below:
 docker build -t <your-dockerhub-username/your-repo-name:tagname> .
 ~~~
 
-<div class="info">
+<div class="notice--info">
 Considering the command above, ensure you are logged in to your DockerHub account. Logging in is necessary to interact with your DockerHub account, such as pushing or pulling images. To log in, you can run the `docker login` command on your terminal or command prompt.
 
 This command will prompt you to enter your DockerHub username and password. You will be logged in once you provide the correct credentials associated with your DockerHub account. Once logged in, you'll be able to perform various actions, such as pushing your local Docker images to your DockerHub repository or pulling images from DockerHub to your local machine; indicating that you have the necessary permissions and authentication to interact with DockerHub services.
