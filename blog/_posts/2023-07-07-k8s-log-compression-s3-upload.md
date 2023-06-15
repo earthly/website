@@ -132,7 +132,7 @@ These commands will create a Statefulset and then list all Statefulsets and pods
 The image below shows that the Postgres StatefulSet is being created with the `2` replicas (pods) up and running:
 
 <div class="wide">
-![Creating and viewing Statefulset (*postgres*]({{site.images}}{{page.slug}}/1GfxYOA.png)
+![Creating and viewing Statefulset (*postgres*)]({{site.images}}{{page.slug}}/1GfxYOA.png)
 </div>
 
 When interacting with a PostgreSQL server running as a StatefulSet in a Kubernetes cluster, we need to create a [service](https://kubernetes.io/docs/concepts/services-networking/service/) to expose it. You can create a Kubernetes service through the below YAML configuration file. You can create a file *postgres-service.yaml* and paste into it the following configuration settings:
@@ -161,7 +161,7 @@ kubectl apply -f postgres-service.yaml -n database
 ~~~
 
 <div class="wide">
-![Creating and viewing Postgres Service ]({{site.images}}{{page.slug}}/PTGyrRH.png)
+![Creating and viewing Postgres Service]({{site.images}}{{page.slug}}/PTGyrRH.png)
 </div>
 
 Now, the Postgres Statefulset is exposed internally - inside the Kubernetes Cluster - and we can interact with it through the service we just created.
@@ -229,7 +229,7 @@ Once you have AWS SDK installed, follow these instructions to proceed to the nex
 ~~~
 
 <div class="wide">
-![Editing package.json file]({{site.images}}{{page.slug}}/nIPaegf.png)
+![Editing `package.json` file]({{site.images}}{{page.slug}}/nIPaegf.png)
 </div>
 
 Doing this will set the `index.js` file as the main entry point and set the script to run with the `npm start` command.
