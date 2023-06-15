@@ -462,7 +462,7 @@ You can also see from the image above that the naming convention for the compres
 Once you head over to the S3 page on the AWS management console, you should see the log objects as shown below, which you can then download and use to suit your needs:
 
 <div class="wide">
-![Viewing compressed logs uploads to aws s3]({{site.images}}{{page.slug}}/hjxJYKC.png)
+![Viewing compressed logs uploads to AWS S3]({{site.images}}{{page.slug}}/hjxJYKC.png)
 </div>
 
 ## Conclusion
