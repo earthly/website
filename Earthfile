@@ -53,7 +53,6 @@ publish:
   # Date is only used to bust the cache and get around this issue
   # https://github.com/earthly/earthly/issues/2086
   ARG DATE
-  ARG IP
 
   # Work around for netlify DNS issue
   HOST api.netlify.com 3.130.174.239
