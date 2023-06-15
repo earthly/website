@@ -68,6 +68,21 @@
             break;
         }
       }
+
+      // Adam -> testing makefile cta
+      if(document.getElementById("makefile-cta-control")){
+        if(gb.isOn("blog-bottom-cta-20230501")) {
+            console.log("blog-bottom-cta-20230501 on");
+            document.getElementById("makefile-cta-control").style.display = "none";
+            document.getElementById("makefile-cta-change").style.display = "";
+          } else {
+            console.log("blog-bottom-cta-20230501 off");
+            document.getElementById("makefile-cta-control").style.display = "";
+            document.getElementById("makefile-cta-change").style.display = "none";
+          }
+      } else {
+        console.log("blog-bottom-cta-control not found");
+      }
     });
   });
 </script>
