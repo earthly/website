@@ -5,7 +5,7 @@ categories:
 toc: true
 author: Ubaydah Abdulwasiu
 editor: Bala Priya C
-
+excerpt: This tutorial will introduce you to the Linux `echo` command, go over its options and their usage, and show you how you can use it.
 internal-links:
  - Linux
  - Command
