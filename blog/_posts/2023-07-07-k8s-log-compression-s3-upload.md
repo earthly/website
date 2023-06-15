@@ -385,7 +385,7 @@ docker push <your-dockerhub-username/your-repo-name:tagname>
 
 Since we now have our script on DockerHub, the next step is to create a CronJob in our cluster to use that script.
 
-Create a file *cronjob.yaml* and paste into it the following configuration settings:
+Create a file *`cronjob.yaml`* and paste into it the following configuration settings:
 
 ~~~{.yaml caption="cron-job.yaml"}
 # cron-job.yaml
