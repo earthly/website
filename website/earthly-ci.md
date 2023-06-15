@@ -1,5 +1,6 @@
 ---
 title: Earthly CI
+description: Continuous integration that is fast, consistent, and super simple to use.
 layout: default
 ---
 
