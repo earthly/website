@@ -1,6 +1,8 @@
 ---
 title: Earthly
 layout: default
+banner: Drone.io Joins the Harness Family. [Read the Announcement](https://www.prnewswire.com/news-releases/harness-acquires-continuous-integration-pioneer-droneio-and-commits-to-open-source-301106473.html)
+mobileBanner: Drone.io Joins the Harness Family. [Learn more](https://www.prnewswire.com/news-releases/harness-acquires-continuous-integration-pioneer-droneio-and-commits-to-open-source-301106473.html)
 ---
 
 {% include home/layout.html template='home/v2/hero.html' %}

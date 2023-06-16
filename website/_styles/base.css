@@ -166,3 +166,15 @@ main.wave-main {
 .background-pricing {
   background: linear-gradient(180deg, #e8f8ff 0%, #ffffff 30%, #ffffff 100%);
 }
+
+.announcement-banner {
+  width: 100%;
+  background-color: #2d7e5d;
+  color: #fff;
+  padding: 5px 10px;
+  text-align: center;
+}
+
+.announcement-banner a {
+  text-decoration: underline;
+}
