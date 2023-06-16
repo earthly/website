@@ -215,6 +215,6 @@ This does add some complexity to your project, but it makes everything much more
 
 By now, you've seen how you can easily and quickly add Make to your project. The advantages of using Make can range from simple use cases like avoiding typing out long commands, getting everyone on the team used to the same syntax in all projects, and even being able to create dynamic targets that create new possibilities for you and your team.
 
-If you're looking at this and thinking to yourself that it's still a bit complex for you and your organization, check out [Earthly](https://earthly.dev/), a tool that combines the best of Dockerfiles and Makefiles to make builds as easy as possible.
+{% include_html cta/makefile-cta.html %}
 
-{% include_html cta/bottom-cta.html %}
+<!-- If you're looking at this and thinking to yourself that it's still a bit complex for you and your organization, check out [Earthly](https://earthly.dev/), a tool that combines the best of Dockerfiles and Makefiles to make builds as easy as possible. -->

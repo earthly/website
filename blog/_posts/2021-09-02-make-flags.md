@@ -242,6 +242,8 @@ Note that the options `-C`, `-f`, `-o`, and `-W` are not put into `MAKEFLAGS` an
 
 Using `make` flags ensures your `makefile` follows the standard and offers an easy and powerful way to customize the behaviors of the compilation tools by providing them options. However, `make` flags are limited and require a deep understanding of the right tools to use.
 
-If you are looking for a powerful alternative to `make`, [Earthly](https://earthly.dev/) may be the right choice for you. It is a modern take on the `make` utility. Tailored for the container era, [Earthly](https://earthly.dev/) provides reproducible and understandable builds with minimal effort.
+{% include_html cta/makefile-cta.html %}
 
-{% include_html cta/bottom-cta.html %}
+<!-- If you are looking for a powerful alternative to `make`, [Earthly](https://earthly.dev/) may be the right choice for you. It is a modern take on the `make` utility. Tailored for the container era, [Earthly](https://earthly.dev/) provides reproducible and understandable builds with minimal effort.
+
+{% include_html cta/bottom-cta.html %} -->
