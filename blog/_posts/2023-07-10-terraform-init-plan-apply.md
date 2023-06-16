@@ -6,7 +6,10 @@ toc: true
 author: Damaso Sanoja
 
 internal-links:
- - just an example
+ - Infrastructure
+ - Terraform
+ - Virtual Machines
+ - Kubernetes
 ---
 
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is on the basics of Terraform but if you're interested in a different approach to building and packaging software then [check us out](/).**
@@ -302,5 +305,4 @@ There is still much to learn about Terraform! That's why we recommend reviewing 
 * [ ] Optional: Find ways to break up content with quotes or images
 * [ ] Verify look of article locally
   * Would any images look better `wide` or without the `figcaption`?
-* [ ] Add keywords for internal links to front-matter
 * [ ] Run `link-opp` and find 1-5 places to incorporate links
