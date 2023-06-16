@@ -303,6 +303,4 @@ There is still much to learn about Terraform! That's why we recommend reviewing 
 
 * [ ] Create header image in Canva
 * [ ] Optional: Find ways to break up content with quotes or images
-* [ ] Verify look of article locally
-  * Would any images look better `wide` or without the `figcaption`?
-* [ ] Run `link-opp` and find 1-5 places to incorporate links
+
