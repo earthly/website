@@ -294,6 +294,8 @@ In this article, you learned about the Terraform workflow and its different stag
 
 There is still much to learn about Terraform! That's why we recommend reviewing the [tutorials](https://developer.hashicorp.com/terraform/tutorials) or, better yet, trying [Terraform Cloud](https://app.terraform.io/session). You can practice everything you've learned about syntax and workflow in Terraform Cloud, with the added benefit of having the state backed up in the cloud and the convenience of managing providers, variables, and commands from the Terraform UI.
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 * [ ] Create header image in Canva
@@ -302,4 +304,3 @@ There is still much to learn about Terraform! That's why we recommend reviewing 
   * Would any images look better `wide` or without the `figcaption`?
 * [ ] Add keywords for internal links to front-matter
 * [ ] Run `link-opp` and find 1-5 places to incorporate links
-* [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
