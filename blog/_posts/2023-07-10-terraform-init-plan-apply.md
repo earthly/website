@@ -32,7 +32,7 @@ It's important to note that if you want to install [Terraform Enterprise](https:
 
 Once you've installed Terraform on your local machine, you can verify the installation by running the following command:
 
-~~~
+~~~{.bash caption=">_"}
 % terraform -h
 Usage: terraform [global options] <subcommand> [args]
 
@@ -95,7 +95,7 @@ The `provider` block is a core element of the Terraform configuration because it
 
 Following is an example where the provider is defined as AWS:
 
-~~~
+~~~{.bash caption=">_"}
 provider "aws" {
     region = "us-east-1"
 }
@@ -107,7 +107,7 @@ Notice how the region where the resource will be deployed (`us-east-1`) is defin
 
 After establishing the provider, you need to define what `resource` you want to deploy. [Resources](https://developer.hashicorp.com/terraform/language/resources/syntax) represent infrastructure objects, such as VMs, virtual networks, or DNS records. Here's an example that creates an AWS instance:
 
-~~~
+~~~{.bash caption=">_"}
 resource "aws_instance" "web" {
   ami           = "ami-abcdef"
   instance_type = "t2.micro"
@@ -120,7 +120,7 @@ Note that the `resource` block declares both the resource type `aws_instance` an
 
 Each cloud provider has its own distinctive set of data sources. [Data sources](https://developer.hashicorp.com/terraform/language/data-sources) allow users to fetch infrastructure information or data stored outside of Terraform and incorporate it into their configurations. Following is a sample data source block:
 
-~~~
+~~~{.bash caption=">_"}
 data "aws_ami" "example" {
   most_recent = true
 
@@ -140,7 +140,7 @@ Modules are a concept that gives Terraform a lot of flexibility. If your setup i
 
 That means you can use a single `main.tf` configuration file or a structure similar to this:
 
-~~~
+~~~{ caption=""}
 .
 └── tf/
     ├── main.tf
@@ -153,7 +153,7 @@ That means you can use a single `main.tf` configuration file or a structure simi
 
 In addition, you can also use a structure similar to the following if required:
 
-~~~
+~~~{ caption=""}
 .
 └── tf/
     ├── modules/
@@ -190,7 +190,7 @@ Let's review the configuration files used here:
 
 One of the advantages of using variables and separate configuration files is that it makes it easier to reuse the code. For example, instead of hardcoding the provider attributes, you can create a `variables.tf` file like the following to define `aws_region` as `us-east-1`:
 
-~~~
+~~~{.bash caption=">_"}
 variable "aws_region" {
   description = "AWS region"
   type        = string
