@@ -29,7 +29,7 @@ It's important to note that if you want to install [Terraform Enterprise](https:
 
 Once you've installed Terraform on your local machine, you can verify the installation by running the following command:
 
-```bash
+~~~
 % terraform -h
 Usage: terraform [global options] <subcommand> [args]
 
@@ -38,39 +38,39 @@ The primary workflow commands are given first, followed by
 less common or more advanced commands.
 
 Main commands:
-  init      	Prepare your working directory for other commands
-  validate  	Check whether the configuration is valid
-  plan      	Show changes required by the current configuration
-  apply     	Create or update infrastructure
-  destroy   	Destroy previously-created infrastructure
+  init          Prepare your working directory for other commands
+  validate      Check whether the configuration is valid
+  plan          Show changes required by the current configuration
+  apply         Create or update infrastructure
+  destroy       Destroy previously-created infrastructure
 
 All other commands:
-  console   	Try Terraform expressions at an interactive command prompt
-  fmt       	Reformat your configuration in the standard style
+  console       Try Terraform expressions at an interactive command prompt
+  fmt           Reformat your configuration in the standard style
   force-unlock  Release a stuck lock on the current workspace
-  get       	Install or upgrade remote Terraform modules
-  graph     	Generate a Graphviz graph of the steps in an operation
-  import    	Associate existing infrastructure with a Terraform resource
-  login     	Obtain and save credentials for a remote host
-  logout    	Remove locally-stored credentials for a remote host
-  metadata  	Metadata related commands
-  output    	Show output values from your root module
-  providers 	Show the providers required for this configuration
-  refresh   	Update the state to match remote systems
-  show      	Show the current state or a saved plan
-  state     	Advanced state management
-  taint     	Mark a resource instance as not fully functional
-  test      	Experimental support for module integration testing
-  untaint   	Remove the 'tainted' state from a resource instance
-  version   	Show the current Terraform version
-  workspace 	Workspace management
+  get           Install or upgrade remote Terraform modules
+  graph         Generate a Graphviz graph of the steps in an operation
+  import        Associate existing infrastructure with a Terraform resource
+  login         Obtain and save credentials for a remote host
+  logout        Remove locally-stored credentials for a remote host
+  metadata      Metadata related commands
+  output        Show output values from your root module
+  providers     Show the providers required for this configuration
+  refresh       Update the state to match remote systems
+  show          Show the current state or a saved plan
+  state         Advanced state management
+  taint         Mark a resource instance as not fully functional
+  test          Experimental support for module integration testing
+  untaint       Remove the 'tainted' state from a resource instance
+  version       Show the current Terraform version
+  workspace     Workspace management
 
 Global options (use these before the subcommand, if any):
-  -chdir=DIR	Switch to a different working directory before executing the
-            	given subcommand.
-  -help     	Show this help output, or the help for a specified subcommand.
-  -version  	An alias for the "version" subcommand.
-```
+  -chdir=DIR    Switch to a different working directory before executing the
+                given subcommand.
+  -help         Show this help output, or the help for a specified subcommand.
+  -version      An alias for the "version" subcommand.
+~~~
 
 As you can see, this command lists the most commonly used commands in Terraform (more on this shortly). For more help installing Terraform, you can check out the [official documentation](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli) where you'll find a video and an interactive tutorial.
 
@@ -90,11 +90,11 @@ The `provider` block is a core element of the Terraform configuration because it
 
 Following is an example where the provider is defined as AWS:
 
-```terraform
+~~~
 provider "aws" {
-	region = "us-east-1"
+    region = "us-east-1"
 }
-```
+~~~
 
 Notice how the region where the resource will be deployed (`us-east-1`) is defined between curly brackets. That's an AWS-specific attribute. You can learn more about the syntax of this block of code on the official [Terraform documentation](https://developer.hashicorp.com/terraform/language/providers). In addition, you can check out available Terraform providers in the [Terraform Registry](https://registry.terraform.io/browse/providers).
 
@@ -102,32 +102,32 @@ Notice how the region where the resource will be deployed (`us-east-1`) is defin
 
 After establishing the provider, you need to define what `resource` you want to deploy. [Resources](https://developer.hashicorp.com/terraform/language/resources/syntax) represent infrastructure objects, such as VMs, virtual networks, or DNS records. Here's an example that creates an AWS instance:
 
-```terraform
+~~~
 resource "aws_instance" "web" {
-  ami       	= "ami-abcdef"
+  ami           = "ami-abcdef"
   instance_type = "t2.micro"
 }
-```
+~~~
 
-Note that the `resource` block declares both the resource type `aws_instance` and the desired resource name, `web`. Then the specific configuration arguments for that resource (*ie* `ami` and `instance_type`) are defined between curly brackets. 
+Note that the `resource` block declares both the resource type `aws_instance` and the desired resource name, `web`. Then the specific configuration arguments for that resource (*ie* `ami` and `instance_type`) are defined between curly brackets.
 
 ### Terraform Data Sources
 
 Each cloud provider has its own distinctive set of data sources. [Data sources](https://developer.hashicorp.com/terraform/language/data-sources) allow users to fetch infrastructure information or data stored outside of Terraform and incorporate it into their configurations. Following is a sample data source block:
 
-```terraform
+~~~
 data "aws_ami" "example" {
   most_recent = true
 
   owners = ["self"]
   tags = {
-	Name   = "app-server"
-	Tested = "true"
+    Name   = "app-server"
+    Tested = "true"
   }
 }
-```
+~~~
 
-This code allows you to use the `example` Amazon Machine Image (AMI) through the `aws_ami` data source. 
+This code allows you to use the `example` Amazon Machine Image (AMI) through the `aws_ami` data source.
 
 ### Terraform Modules
 
@@ -135,44 +135,44 @@ Modules are a concept that gives Terraform a lot of flexibility. If your setup i
 
 That means you can use a single `main.tf` configuration file or a structure similar to this:
 
-```
+~~~
 .
 └── tf/
-	├── main.tf
-	├── versions.tf
-	├── variables.tf
-	├── provider.tf
-	├── outputs.tf
-	├── data-sources.tf
-```
+    ├── main.tf
+    ├── versions.tf
+    ├── variables.tf
+    ├── provider.tf
+    ├── outputs.tf
+    ├── data-sources.tf
+~~~
 
 In addition, you can also use a structure similar to the following if required:
 
-```
+~~~
 .
 └── tf/
-	├── modules/
-	│   ├── network/
-	│   │   ├── main.tf
-	│   │   ├── dns.tf
-	│   │   ├── outputs.tf
-	│   │   └── variables.tf
-	│   └── data-sources/
-	│   	├── main.tf
-	│   	├── outputs.tf
-	│   	└── variables.tf
-	└── applications/
-    	├── backend/
-    	│   ├── env/
-    	│   │   ├── dev.tfvars
-    	│   │   └── production.tfvars
-    	│   └── main.tf
-    	└── frontend-app/
-        	├── env/
-        	│   ├── dev.tfvars
-        	│   └── production.tfvars
-        	└── main.tf
-```
+    ├── modules/
+    │   ├── network/
+    │   │   ├── main.tf
+    │   │   ├── dns.tf
+    │   │   ├── outputs.tf
+    │   │   └── variables.tf
+    │   └── data-sources/
+    │       ├── main.tf
+    │       ├── outputs.tf
+    │       └── variables.tf
+    └── applications/
+        ├── backend/
+        │   ├── env/
+        │   │   ├── dev.tfvars
+        │   │   └── production.tfvars
+        │   └── main.tf
+        └── frontend-app/
+            ├── env/
+            │   ├── dev.tfvars
+            │   └── production.tfvars
+            └── main.tf
+~~~
 
 Let's review the configuration files used here:
 
@@ -185,13 +185,13 @@ Let's review the configuration files used here:
 
 One of the advantages of using variables and separate configuration files is that it makes it easier to reuse the code. For example, instead of hardcoding the provider attributes, you can create a `variables.tf` file like the following to define `aws_region` as `us-east-1`:
 
-```
+~~~
 variable "aws_region" {
   description = "AWS region"
-  type    	= string
-  default 	= "us-east-1"
+  type        = string
+  default     = "us-east-1"
 }
-```
+~~~
 
 If you're looking to learn more, check out this article about [customizing Terraform configuration with variables](https://developer.hashicorp.com/terraform/tutorials/configuration-language/variables) or this one about [protecting sensitive input variables](https://developer.hashicorp.com/terraform/tutorials/configuration-language/sensitive-variables).
 
@@ -236,7 +236,7 @@ Remember that you only have to define the final state of the infrastructure and 
 
 During this stage, your team can preview the actions Terraform would take to modify your infrastructure and fix any potential problems that may arise during execution. To that end, you can instruct Terraform to create a `tfplan` file using the `terraform plan -out tfplan` command.
 
-This allows your team to verify resource changes without applying them. Once done, you can use the saved plan to run `terraform apply`, knowing that all changes have been reviewed and approved beforehand. 
+This allows your team to verify resource changes without applying them. Once done, you can use the saved plan to run `terraform apply`, knowing that all changes have been reviewed and approved beforehand.
 
 At this point, you've initialized the Terraform working directory and reviewed the changes to be made to the infrastructure. Now it's time to apply those changes using `terraform apply`.
 
@@ -296,11 +296,10 @@ There is still much to learn about Terraform! That's why we recommend reviewing 
 
 ## Outside Article Checklist
 
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
+* [ ] Create header image in Canva
+* [ ] Optional: Find ways to break up content with quotes or images
+* [ ] Verify look of article locally
+  * Would any images look better `wide` or without the `figcaption`?
+* [ ] Add keywords for internal links to front-matter
+* [ ] Run `link-opp` and find 1-5 places to incorporate links
+* [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
