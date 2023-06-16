@@ -1,8 +1,8 @@
 ---
 title: Earthly
 layout: default
-banner: Drone.io Joins the Harness Family. [Read the Announcement](https://www.prnewswire.com/news-releases/harness-acquires-continuous-integration-pioneer-droneio-and-commits-to-open-source-301106473.html)
-mobileBanner: Drone.io Joins the Harness Family. [Learn more](https://www.prnewswire.com/news-releases/harness-acquires-continuous-integration-pioneer-droneio-and-commits-to-open-source-301106473.html)
+banner: <b>Earthly Satellites is now GA!</b> Remote build runners that are fast, super simple to use, and work seamlessly with any CI. [Learn more](https://earthly.dev/blog/earthly-satellites-ga/).
+mobileBanner: Earthly Satellites is now GA! [Learn more](https://earthly.dev/blog/earthly-satellites-ga/).
 ---
 
 {% include home/layout.html template='home/v2/hero.html' %}
