@@ -81,6 +81,8 @@ With the installation out of the way, it's time to move on to creating your firs
 
 ## Terraform Configuration
 
+![Configuration]({{site.images}}{{page.slug}}/conf.png)\
+
 The IaC methodology revolves around using a declarative syntax to describe through code the desired infrastructure state. To that end, understanding Terraform's syntax is essential.
 
 Terraform uses a syntax known as [HashiCorp Configuration Language (HCL)](https://github.com/hashicorp/hcl). This language was designed to be both human-readable and machine-friendly, which allows developers to easily describe resources and their configurations. Using well-defined building blocks in its syntax, HCL lets you define the desired infrastructure state without specifying the exact steps to achieve it. This enables DevOps teams to create complex configurations that are easy for all stakeholders to understand.
@@ -273,6 +275,8 @@ You may notice that all the solutions revolve around the state file, which is wh
 
 ## Managing State in Terraform
 
+![Managing]({{site.images}}{{page.slug}}/manage.png)\
+
 Throughout this article, the concept of [state](https://developer.hashicorp.com/terraform/language/state) is frequently mentioned. This is because, in Terraform, state data files store information about infrastructure and configuration, mapping real-world resources to user-defined settings.
 
 Consequently, whenever you run `terraform init`, `terraform plan`, or `terraform apply` commands, the saved state is referenced and updated with the latest resources and configuration at the end of the execution process.
@@ -298,8 +302,3 @@ In this article, you learned about the Terraform workflow and its different stag
 There is still much to learn about Terraform! That's why we recommend reviewing the [tutorials](https://developer.hashicorp.com/terraform/tutorials) or, better yet, trying [Terraform Cloud](https://app.terraform.io/session). You can practice everything you've learned about syntax and workflow in Terraform Cloud, with the added benefit of having the state backed up in the cloud and the convenience of managing providers, variables, and commands from the Terraform UI.
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-* [ ] Optional: Find ways to break up content with quotes or images
-
