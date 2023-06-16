@@ -301,6 +301,5 @@ There is still much to learn about Terraform! That's why we recommend reviewing 
 
 ## Outside Article Checklist
 
-* [ ] Create header image in Canva
 * [ ] Optional: Find ways to break up content with quotes or images
 
