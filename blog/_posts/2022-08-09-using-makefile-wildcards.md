@@ -152,6 +152,6 @@ In this example, the relevant projects files are `foo.c bar.c foo.o bar.o`, but 
 
 Wildcards are a handy utility when creating your Makefiles. You can use them directly in your rules, however, you have to ensure that you're using them correctly and consider whether you need to use the `wildcard` function. Besides by using the wildcards directly in your targets, you can also use pattern matching in your rules to create more dynamic targets.
 
-While Make is a popular tool with many possibilities and some downsides. For a modern approach to builds, check out [Earthly](https://earthly.dev/), a tool that has combined the best parts of Makefiles and [Dockerfiles](https://docs.docker.com/engine/reference/builder/).
+{% include_html cta/makefile-cta.html %}
 
-{% include_html cta/bottom-cta.html %}
+<!-- While Make is a popular tool with many possibilities and some downsides. For a modern approach to builds, check out [Earthly](https://earthly.dev/), a tool that has combined the best parts of Makefiles and [Dockerfiles](https://docs.docker.com/engine/reference/builder/). -->

@@ -373,6 +373,10 @@ clean:
 
 Makefile is one of the most important components of compiling C++ using `g++`. It makes compilation easy and predictable and also saves time and resources by compiling only the necessary files. In this tutorial you learned how to install `g++`, and compile C++ programs with `g++`. You also learned how to write Makefiles and utilize `make` for increased productivity and automation.
 
-Because `make` is a feature rich utility and supports a wide range of systems, it has a steep learning curve. As your project grows in size, the Makefile also grows in complexity. If you are looking for a solution to avoid the complexities of Makefile, check out [Earthly](https://earthly.dev/).
+Because `make` is a feature rich utility and supports a wide range of systems, it has a steep learning curve. As your project grows in size, the Makefile also grows in complexity.
 
-**[Earthly](https://earthly.dev/) takes the best ideas from Makefile and Dockerfile, and provides understandable and repeatable build scripts, minus the head-scratching parts of the Makefile.**
+{% include_html cta/makefile-cta.html %}
+
+<!-- If you are looking for a solution to avoid the complexities of Makefile, check out [Earthly](https://earthly.dev/).
+
+**[Earthly](https://earthly.dev/) takes the best ideas from Makefile and Dockerfile, and provides understandable and repeatable build scripts, minus the head-scratching parts of the Makefile.** -->
