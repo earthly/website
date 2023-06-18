@@ -62,7 +62,7 @@ You can find all the code used in the tutorial in this [GitHub repository](https
 
 As a first step, you need to install the node-exporter binary in the instance you want to monitor (node one). To do this ssh in the monitored node(Node-1) and run the following commands:
 
-~~~
+~~~{.bash caption=">_"}
 ## Download  the Node Exporter Binary
 wget https://github.com/prometheus/node_exporter/releases/download/v1.3.1/node_exporter-1.3.1.linux-amd64.tar.gz
 
@@ -71,7 +71,6 @@ ls
 
 ## Extract Node Exporter binary
 tar xvf node_exporter-1.3.1.linux-amd64.tar.gz
-
 ~~~
 
 <div class="wide">
@@ -80,7 +79,7 @@ tar xvf node_exporter-1.3.1.linux-amd64.tar.gz
 
 After extracting the node exporter binary the next step is for you is to move the binary file node_exporter to the /usr/local/bin directory of your system.
 
-~~~
+~~~{.bash caption=">_"}
 ## Change the directory into the node exporter folder
 
 cd node_exporter-1.3.1.linux-amd64
@@ -92,25 +91,23 @@ sudo cp node_exporter /usr/local/bin
 
 After copying the node exporter binary to the /usr/local/bin of your machine, As a good practice, you will create a user in the system for Node Exporter run as instead of running as root.
 
-~~~
+~~~{.bash caption=">_"}
 sudo useradd --no-create-home --shell /bin/false node-exporter
 
 ##  set the owner of the binary node_exporter to the recently created user
 
 sudo chown node-exporter:node-exporter /usr/local/bin/node_exporter
-
 ~~~
 
 After creating the node-exporter user the next step is to create and start the node-exporter service. First, you will create a node-exporter config and paste the following configuration into it:
 
-~~~
+~~~{.bash caption=">_"}
 sudo nano /etc/systemd/system/node_exporter.service
-
 ~~~
 
 Next, paste the following content in the file:
 
-~~~
+~~~{ caption="node_exporter.service"}
 ## node_exporter.service
 
 [Unit]
@@ -133,7 +130,7 @@ You define the service's general information, parameters, and dependencies in th
 
 As a next step, close nano and save the changes to the file. Proceed to reload the daemon:
 
-~~~
+~~~{.bash caption=">_"}
 sudo systemctl daemon-reload
 
 ## Finally start the node-exporter service 
@@ -143,7 +140,7 @@ sudo systemctl start node_exporter
 
 At this point, your node exporter should be up and running but you can confirm that your node exporter service is by running the following:
 
-~~~
+~~~{.bash caption=">_"}
 sudo systemctl status node_exporter
 ~~~
 
@@ -161,7 +158,7 @@ Your node-exporter is now up and running but you can further test the node-expor
 
 After successfully installing a node-exporter on the node that requires monitoring, the next step is to set up Prometheus, Grafana, and Alert Manager. Firstly, you need to establish an `alert.rules` file that will hold a pre-defined collection of alerts designed to activate when specific conditions are met. You can create this file by executing the following set of commands:
 
-~~~
+~~~{.bash caption=">_"}
 ## Create a directory called monitoring and change the directory into it 
 
 mkdir monitoring && cd monitoring
@@ -172,7 +169,7 @@ nano alert.rules
 
 Next, Paste the configuration below:
 
-~~~
+~~~{ caption="alert.rules"}
 ## alert.rules
 
 groups:
@@ -230,17 +227,14 @@ groups:
       severity: warning
     annotations:
       description: '{{ $labels.instance }} requires a reboot.'
-      summary: 'Instance {{ $labels.instance }} - reboot required'    
-
-
-
+      summary: 'Instance {{ $labels.instance }} - reboot required'
 ~~~
 
 The alert configuration you provided includes two primary types of rules: targets and hosts. The target group is responsible for defining rules to monitor the status of a particular service on a target. If the service becomes unavailable for a duration exceeding 30 seconds, an alert of critical severity will be generated. Meanwhile, the hosts group includes rules that oversee the CPU, memory, disk space, and RAM usage of a host, with a threshold set at 75%. Should any of these usage levels surpass the set threshold, a warning message is triggered, prompting the need for further analysis to avert potential issues.
 
 Following the definition of alerting rules, the Prometheus configuration must be created. To do so run the following commands in the current directory
 
-~~~
+~~~{.bash caption=">_"}
 ## Create a file called prometheus.yml
 
 nano prometheus.yml
@@ -248,7 +242,7 @@ nano prometheus.yml
 
 Next, paste the following config into the yaml you just created
 
-~~~
+~~~{.yaml caption="prometheus.yml"}
 ## prometheus.yml
 
 rule_files:
@@ -275,8 +269,6 @@ alerting:
       static_configs:
         - targets: 
             - 'alertmanager:9093'
-
-
 ~~~
 
 Starting with the `rule_files` section, the `alert.rules` file is explicitly designated to contain alerting rules that stipulate the circumstances under which alerts should be activated. These rules were previously created as part of the configuration process.
@@ -293,15 +285,14 @@ Having configured the alerting rule and custom Prometheus settings, the next ste
 
 After obtaining the Slack webhook URL, create the alert-manager YAML file and add the following configuration:
 
-~~~
+~~~{.bash caption=">_"}
 ## create the alert-manager.yml
 nano alert-manager.yml
 ~~~
 
 Next, add the following configuration:
 
-~~~
-
+~~~{.yaml caption="alert-manager.yml"}
 ## alert-manager.yml
 
 global:
@@ -359,7 +350,7 @@ At this point, you have already set up your alerting rules, Prometheus, and aler
 
 As a first step, you will create a file called `datasource.yml`
 
-~~~
+~~~{.bash caption=">_"}
 ## create a file called datasource.yml
 
 nano datasource.yml
@@ -367,7 +358,7 @@ nano datasource.yml
 
 And paste the following configuration into it:
 
-~~~
+~~~{.yaml caption="datasource.yml"}
 ## datasource.yml
 
 # config file version
@@ -470,18 +461,15 @@ Overall, this configuration file provides a way to manage and configure data sou
 
 You now have all the custom configurations of your monitoring stacks (Alerting Rules, Prometheus, Grafana), next define the docker-compose configuration for all the stacks and start all the services.
 
-~~~
-
+~~~{.bash caption=">_"}
 ## Create a file and name is docker-compose.yml
 
 nano docker-compose.yml
-
 ~~~
 
 Next, paste the following configuration:
 
-~~~
-
+~~~{.yaml caption="docker-compose.yml"}
 ## docker-compose.yml
 
 version: '3.1'
@@ -546,18 +534,14 @@ Your monitoring stacks are now ready to be started after the Docker compose file
 
 After confirming the folder set-up the next is to start all the services with docker-compose. To do so run the following command:
 
-~~~
-
+~~~{.bash caption=">_"}
 docker-compose up -d
-
 ~~~
 
 To confirm that all your containers are running the following command
 
-~~~
-
+~~~{.bash caption=">_"}
 docker-compose ps
-
 ~~~
 
 <div class="wide">
@@ -620,12 +604,12 @@ This dashboard shows the CPU usage, CPU request commitment, limitations, memory 
 
 Your monitoring system is now operational. It's time to evaluate your configuration by activating some alerts from your defined alerting rules. To proceed with this, sign in to the monitored node (node-1) and execute the given command. The `high_cpu_utilization` alert can be initiated by leveraging the stress utility, which will mimic excessive CPU consumption.
 
-~~~
+~~~{.bash caption=">_"}
+sudo apt update && sudo apt install stress 
+## update and the install stress
 
-sudo apt update && sudo apt install stress ## update and the install stress
-
-stress --cpu 2 --timeout 60s ## You might need to increase CPU depending on the size of your node
-
+stress --cpu 2 --timeout 60s 
+## You might need to increase CPU depending on the size of your node
 ~~~
 
 Wait a few minutes and Check the Slack channel you created, you should have received a warning alert telling you the error and which node it occurs on.
