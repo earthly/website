@@ -7,7 +7,11 @@ author: Saka-Aiyedun Segun
 editor: Bala Priya C
 
 internal-links:
- - just an example
+ - Grafana
+ - Prometheus
+ - Monitoring
+ - System Metrics
+ - Performance
 ---
 
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about monitoring system metrics but if you're interested in a different approach to building and packaging software then [check us out](/).**
@@ -634,6 +638,3 @@ Monitoring is an ongoing process, and as you continue to use your custom monitor
 
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
-
