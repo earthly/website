@@ -185,8 +185,11 @@ groups:
     labels:
       severity: critical
     annotations:
-      summary: "Critical: Monitored service {{ $labels.instance }} is non-responsive"
-      description: "The {{ $labels.instance }} service has failed and is currently not responsive. Immediate attention is required to restore service functionality."  
+      summary: "Critical: Monitored service {% raw %}{{ $labels.instance }}{% endraw %} 
+      is non-responsive"
+      description: "The {% raw %}{{ $labels.instance }}{% endraw %} service has failed
+      and is currently not responsive. Immediate attention is required to 
+      restore service functionality."
      
 - name: hosts
   rules:
@@ -196,34 +199,58 @@ groups:
     labels:
       severity: warning
     annotations:
-      summary: "High CPU utilization detected on {{ $labels.instance }}: {{ $value }}"
-      description: "The {{ $labels.instance }} has experienced a high level of CPU utilization, with a load average of {{ $value }} for the last 30 seconds. This may indicate an issue with the performance of the host, and requires investigation."
+      summary: "High CPU utilization detected on {% raw %}{{ $labels.instance }}{% endraw %}: 
+      {% raw %}{{ $value }}{% endraw %}"
+      description: "The {% raw %}{{ $labels.instance }}{% endraw %} has 
+      experienced a high level of CPU utilization, with a load average 
+      of {% raw %}{{ $value }}{% endraw %} for the last 30 seconds. This may indicate an 
+      issue with the performance of the host, and requires investigation."
       
   - alert: low_memory_availability
-    expr: (sum(node_memory_MemTotal_bytes) - sum(node_memory_MemFree_bytes + node_memory_Buffers_bytes + node_memory_Cached_bytes) ) / sum(node_memory_MemTotal_bytes) * 100 > 75
+    expr: (sum(node_memory_MemTotal_bytes) - 
+    sum(node_memory_MemFree_bytes +
+    node_memory_Buffers_bytes + node_memory_Cached_bytes) ) / 
+    sum(node_memory_MemTotal_bytes) * 100 > 75
     for: 30s
     labels:
       severity: warning
     annotations:
-      summary: "Low memory availability detected on {{ $labels.instance }}: {{ $value }}%"
-      description: "The {{ $labels.instance }} has experienced a low level of available memory, with utilization at {{ $value }}% for the last 30 seconds. This may indicate an issue with the memory management on the host, and requires investigation."
+      summary: "Low memory availability detected on {% raw %}{{ $labels.instance }}{% endraw %}: 
+      {% raw %}{{ $value }}{% endraw %}%"
+      description: "The {% raw %}{{ $labels.instance }}{% endraw %} has experienced a 
+      low level of available memory, with utilization at {% raw %}{{ $value }}{% endraw %}% 
+      for the last 30 seconds. This may indicate an issue with the 
+      memory management on the host, and requires investigation."
       
   - alert: high_disk_space_utilization
-    expr: (node_filesystem_size_bytes{mountpoint="/"} - node_filesystem_free_bytes{mountpoint="/"}) / node_filesystem_size_bytes{mountpoint="/"} * 100 > 75
+    expr: (node_filesystem_size_bytes{mountpoint="/"} - 
+    node_filesystem_free_bytes{mountpoint="/"}) / 
+    node_filesystem_size_bytes{mountpoint="/"} * 100 > 75
     for: 30s
     labels:
       severity: warning
     annotations:
-      summary: "High disk space utilization detected on {{ $labels.instance }}: {{ $value }}%"
-      description: "The {{ $labels.instance }} has experienced a high level of disk space utilization, with utilization at {{ $value }}% for the last 30 seconds. This may indicate an issue with the storage management on the host, and requires investigation."
+      summary: "High disk space utilization detected on 
+      {% raw %}{{ $labels.instance }}{% endraw %}: {% raw %}{{ $value }}{% endraw %}%"
+      description: "The {% raw %}{{ $labels.instance }}{% endraw %} has 
+      experienced a high level of disk space utilization, with 
+      utilization at {% raw %}{{ $value }}{% endraw %}% for the 
+      last 30 seconds. This may indicate an issue with the storage 
+      management on the host, and requires investigation."
 
-  - alert: hig_ram_utilization
-    expr: 100 * (1 - ((node_memory_MemFree_bytes + node_memory_Buffers_bytes + node_memory_Cached_bytes) / node_memory_MemTotal_bytes)) > 75
+  - alert: high_ram_utilization
+    expr: 100 * (1 - ((node_memory_MemFree_bytes + 
+    node_memory_Buffers_bytes + node_memory_Cached_bytes) / 
+    node_memory_MemTotal_bytes)) > 75
     labels:
       severity: warning
     annotations:
-      summary: "High RAM utilization detected on {{ $labels.instance }}: {{ $value }}%"
-      description: "The {{ $labels.instance }} has experienced a high level of RAM utilization, with utilization at {{ $value }}% for the last 30 seconds. This may indicate an issue on the host, and requires investigation."    
+      summary: "High RAM utilization detected on 
+      {% raw %}{{ $labels.instance }}{% endraw %}: {% raw %}{{ $value }}{% endraw %}%"
+      description: "The {% raw %}{{ $labels.instance }}{% endraw %} has 
+      experienced a high level of RAM utilization, with utilization at 
+      {% raw %}{{ $value }}{% endraw %}% for the last 30 seconds. 
+      This may indicate an issue on the host, and requires investigation."    
 
   - alert: RebootRequired
     expr: 'node_reboot_required > 0'
