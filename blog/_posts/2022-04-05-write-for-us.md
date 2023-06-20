@@ -6,14 +6,23 @@ author: Adam
 internal-links:
  - write for us
 ---
+
 <div class="notice--info notice--big">
+
+## Submissions Closed
+
+Write for Us submissions are temporarily closed.
+
+</div>
+
+<!-- <div class="notice--info notice--big">
 
 ## Join Writing Wait List
 
 We aren't taking new writers at the moment but will be soon.
 
 Please [fill out this form](https://docs.google.com/forms/d/e/1FAIpQLSdgpU8oYXvRRnvtxt5ZruAvJ3RPa4sEXgvbaY1xDOA98G3ycw/viewform) to join the wait-list.
-</div>
+</div> -->
 
 Do you love writing about software development? Then, write for Earthly, and you'll get access to a larger audience, and we'll pay you.
 
@@ -27,7 +36,7 @@ Eathly's blog gets tens of thousands of visitors each month and is a respected s
 Suggest a topic you'd like to write about or get suggestions from us.
   
 <div class="notice--info">
-Please send us your topic pitch after you've <a href="https://docs.google.com/forms/d/e/1FAIpQLSdgpU8oYXvRRnvtxt5ZruAvJ3RPa4sEXgvbaY1xDOA98G3ycw/viewform">applied</a> and been approved.
+Please send us your topic pitch after you've applied and been approved.
   
 A pitch topic is an article title, a paragraph sample introduction, and a bullet point outline. Digital Ocean has a great guide on writing an [article proposal](https://www.digitalocean.com/community/tutorials/how-to-write-a-proposal-and-outline-for-a-digitalocean-community-tutorial)
 </div>
