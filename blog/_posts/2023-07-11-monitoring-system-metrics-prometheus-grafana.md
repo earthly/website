@@ -349,17 +349,20 @@ receivers:
 - name: 'default-notifications' # Define default receiver here
   slack_configs:
   - channel: "#mointoring-tutorial"
-    text: "summary: {{ .CommonAnnotations.summary }}: {{ .CommonAnnotations.description }}"
+    text: "summary: {% raw %}{{ .CommonAnnotations.summary }}{% endraw %}: 
+    {% raw %}{{ .CommonAnnotations.description }}{% endraw %}"
 
 - name: 'warning-notifications'
   slack_configs:
   - channel: "#mointoring-tutorial"
-    text: "Warning alert: {{ .CommonAnnotations.summary }}: {{ .CommonAnnotations.description }}"
+    text: "Warning alert: {% raw %}{{ .CommonAnnotations.summary }}{% endraw %}: 
+    {% raw %}{{ .CommonAnnotations.description }}{% endraw %}"
 
 - name: 'critical-notifications'
   slack_configs:
   - channel: "#mointoring-tutorial"
-    text: "Critical alert: {{ .CommonAnnotations.summary }}: {{ .CommonAnnotations.description }}"
+    text: "Critical alert: {% raw %}{{ .CommonAnnotations.summary }}{% endraw %}: 
+    {% raw %}{{ .CommonAnnotations.description }}{% endraw %}"
 
 ~~~
 
@@ -660,8 +663,3 @@ Now that you have successfully set up a custom monitoring stack, you can expand 
 Monitoring is an ongoing process, and as you continue to use your custom monitoring stack, it is essential to monitor its performance regularly, make necessary adjustments, and expand its capabilities as your needs evolve.
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
