@@ -9,7 +9,6 @@ internal-links:
  - just an example
 ---
 
-
 <div class="notice--info notice--big">
 
 ## Submissions Closed
@@ -17,7 +16,6 @@ internal-links:
 Write for Us submissions are temporarily closed.
 
 </div>
-
 
 It's been a year since we started [taking outside submissions](/blog/write-for-us) to the Earthly blog, and we just wanted to take the time to celebrate and say thank you to all the writers who've contributed!
 

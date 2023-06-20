@@ -15,8 +15,6 @@ Write for Us submissions are temporarily closed.
 
 </div>
 
-
-
 <!-- <div class="notice--info notice--big">
 
 ## Join Writing Wait List
