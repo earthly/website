@@ -4,6 +4,7 @@ categories:
   - Tutorials
 toc: true
 author: Emediong Samuel
+editor: Muhammad Badawy
 
 internal-links:
  - Grafana
