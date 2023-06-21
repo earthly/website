@@ -374,6 +374,8 @@ The importance of HTTPS cannot be overstated, particularly in today's ever-evolv
 
 For more articles similar to this one, stay in the loop, [Earthly.dev](https://earthly.dev/blog/) is a valuable resource to explore.
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 * [ ] Add in Author page
@@ -381,4 +383,3 @@ For more articles similar to this one, stay in the loop, [Earthly.dev](https://e
 * [ ] Optional: Find ways to break up content with quotes or images
 * [ ] Add keywords for internal links to front-matter
 * [ ] Run `link-opp` and find 1-5 places to incorporate links
-* [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
