@@ -128,8 +128,8 @@ Charles Odili:
     avatar  : "/assets/images/authors/charles-odili.jpg"
 Mohammed Osman:
     name    : "Mohammed Osman"
-    bio     : ""
-    avatar  : "/assets/images/authors/person.jpg"
+    bio     : "Mohammed Osman is a senior software engineer who started coding at the age of thirteen. His core skill set is a .NET ecosystem with a strong focus on C#, Azure, and data science. He enjoys the soft side of software engineering and leads scrum teams, and he shares coding and career tips on his blog."
+    avatar  : "/assets/images/authors/mohammed-osman.jpg"
 Sanni Michael:
     name    : "Sanni Michael"
     bio     : "Sanni is a software engineer with a passion to build and understand how things work on a subliminal level. He has over 3 years of experience building applications that meet customer expectations."
