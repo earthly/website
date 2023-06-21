@@ -383,8 +383,3 @@ The importance of HTTPS cannot be overstated, particularly in today's ever-evolv
 For more articles similar to this one, stay in the loop, [Earthly.dev](https://earthly.dev/blog/) is a valuable resource to explore.
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-* [ ] Add in Author page
-
