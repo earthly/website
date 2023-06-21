@@ -35,6 +35,8 @@ Now that you comprehend the significance of HTTPS security, let's delve into the
 
 ## Installing and Configuring Grafana and Nginx
 
+![Installing]({{site.images}}{{page.slug}}/installing.png)\
+
 This section will guide you through the installation and configuration process of Nginx and Grafana and setting up a reverse proxy with Nginx.
 
 Let's start by discussing Nginx. Nginx is an open-source web server and [reverse proxy](https://www.nginx.com/resources/glossary/reverse-proxy-server/#:~:text=A%20reverse%20proxy%20server%20is,traffic%20between%20clients%20and%20servers.) software that is renowned for its exceptional performance, stability, and capability to handle heavy traffic loads. While its primary function is to serve web content, it can also act as a reverse proxy. This means that Nginx can receive client requests, forward them to other servers or applications, and then deliver the response back to the client. Consequently, the client appears to be communicating directly with the proxy server.
@@ -385,5 +387,4 @@ For more articles similar to this one, stay in the loop, [Earthly.dev](https://e
 ## Outside Article Checklist
 
 * [ ] Add in Author page
-* [ ] Optional: Find ways to break up content with quotes or images
 
