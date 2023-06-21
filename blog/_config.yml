@@ -199,4 +199,4 @@ defaults:
 
 picture:
   fast_build: true
-  ignore_missing_images: false
+  ignore_missing_images: true
