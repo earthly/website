@@ -409,3 +409,5 @@ Iac
 pulumi
 Pulumi
 reconfigurability
+
+hardcode
