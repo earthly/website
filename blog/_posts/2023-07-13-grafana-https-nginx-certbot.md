@@ -17,9 +17,7 @@ In this article, I'll provide you with a comprehensive guide on how to secure yo
 
 ## Why You Should Care About HTTPS Security
 
-<div class="wide">
-![An Http image]({{site.images}}{{page.slug}}/TrNLHGf.png)
-</div>
+![An Http image]({{site.images}}{{page.slug}}/TrNLHGf.png)\
 
 In today's digital landscape, the significance of HTTPS security cannot be overstated. Modern web browsers, including Google Chrome, have implemented warning messages that alert users when they attempt to visit sites lacking HTTPS encryption. This warning can discourage users from accessing the site altogether. Without HTTPS security, any data transmitted between your Grafana server and client, such as credentials, queries, usernames, and passwords, are sent in plain text. This means that it can be intercepted and read by malicious third parties.
 
@@ -49,7 +47,7 @@ Note: If you are using a different Linux distribution other than Ubuntu, [Link](
 
 To begin, open your terminal and execute the following command to update your local package list and install Nginx:
 
-~~~
+~~~{.bash caption=">_"}
 sudo apt-get update && sudo apt-get upgrade 
 sudo apt-get install nginx
 ~~~
@@ -68,7 +66,7 @@ If such prompts appear, press `ENTER` to allow the default option, which will re
 
 Nginx and its required dependencies will be installed on your local machine. Once installation is complete, Nginx should already be up and running. To verify this, type the command:
 
-~~~
+~~~{.bash caption=">_"}
 systemctl status nginx
 ~~~
 
@@ -80,7 +78,7 @@ You will see the `active (running)` message highlighted in green, indicating tha
 
 However, a more reliable way to verify your Nginx installation is by requesting a page directly from Nginx. To do this, open your web browser and enter the URL `http://your_server_ip`, i.e. your server's public `IP address` or the associated `domain name` assigned to access your server. This is if you're using a server on a cloud platform. However, If you're implementing this on your local machine, you can use this command on your terminal:
 
-~~~
+~~~{.bash caption=">_"}
 curl -4 icanhazip.com
 ~~~
 
@@ -96,7 +94,7 @@ You can also use a private browser window to access `http://your_server_ip` to a
 
 After installing Nginx, it is best practice to verify the accessibility of your target port and make necessary adjustments if needed. Nginx uses `port 80` for `HTTP` traffic and `port 443` for `HTTPS` traffic. Since we are setting up a reverse proxy functionality, we need to allow incoming traffic on `port 80`. To achieve this, run the following command:
 
-~~~
+~~~{.bash caption=">_"}
 sudo ufw enable
 ~~~
 
@@ -104,13 +102,13 @@ The `ufw` command is ubuntu-specific. It manages, enables, and activates the con
 
 Next, allow traffic to `port 80`
 
-~~~
+~~~{.bash caption=">_"}
 sudo ufw allow 80
 ~~~
 
 To verify the changes, use the command below:
 
-~~~
+~~~{.bash caption=">_"}
 sudo ufw status
 ~~~
 
@@ -124,35 +122,38 @@ For Ubuntu/Debian;
 
 Download the Grafana `GPG key` with the `wget` command:
 
-~~~
-wget -q -O - https://packages.grafana.com/gpg.key | gpg --dearmor | sudo tee /usr/share/keyrings/grafana.gpg > /dev/null
+~~~{.bash caption=">_"}
+wget -q -O - https://packages.grafana.com/gpg.key | \
+gpg --dearmor | sudo tee /usr/share/keyrings/grafana.gpg > /dev/null
 ~~~
 
 This command retrieves the Grafana [GPG key](https://www.goanywhere.com/blog/what-is-gpg), converts it to plain text, and saves it to the `/usr/share/keyrings/grafana.gpg` file with sudo privileges.
 
 Next, add the [Grafana repository](https://packages.grafana.com/) to your [APT](https://wiki.debian.org/Apt) sources:
 
-~~~
-echo "deb [signed-by=/usr/share/keyrings/grafana.gpg] https://packages.grafana.com/oss/deb stable main" | sudo tee -a /etc/apt/sources.list.d/grafana.list
+~~~{.bash caption=">_"}
+echo "deb [signed-by=/usr/share/keyrings/grafana.gpg] \
+https://packages.grafana.com/oss/deb stable main" | sudo \
+tee -a /etc/apt/sources.list.d/grafana.list
 ~~~
 
 Adding the Grafana `repository` to `APT sources` allows for seamless updates of Grafana packages. `APT` can automatically check and install the latest version of Grafana, ensuring access to new features, bug fixes, and security patches.
 
 Update your package list and install Grafana:
 
-~~~
+~~~{.bash caption=">_"}
 sudo apt-get update && sudo apt-get install grafana
 ~~~
 
 Start the Grafana server using the `systemctl` command:
 
-~~~
+~~~{.bash caption=">_"}
 sudo systemctl start grafana-server
 ~~~
 
 Next, check the service status to ensure that your Grafana is active:
 
-~~~
+~~~{.bash caption=">_"}
 sudo systemctl status grafana-server
 ~~~
 
@@ -164,7 +165,7 @@ You will see the `active (running)` status, as shown in the screenshot below.
 
 Lastly, set up your Grafana service to start automatically upon boot.
 
-~~~
+~~~{.bash caption=">_"}
 sudo systemctl enable grafana-server
 ~~~
 
@@ -182,7 +183,7 @@ In many Linux distributions, including Ubuntu, Nginx comes with a default server
 
 To begin, execute the following command in your terminal to create the necessary directory:
 
-~~~
+~~~{.bash caption=">_"}
 sudo mkdir /var/www/`your_domain`
 ~~~
 
@@ -190,7 +191,7 @@ On Ubuntu (and many other Linux distributions), Nginx typically uses the user ac
 
 Then, granting ownership of the directory to the `www-data` user and group is important. This ensures that Nginx has proper access and permissions for reading and serving web files and directories to fulfill web requests.
 
-~~~
+~~~{.bash caption=">_"}
 sudo chown -R www-data:www-data /var/www/`your_domain`
 ~~~
 
@@ -200,14 +201,13 @@ Now, let's proceed to modify the `default` Nginx configuration file. The `defaul
 
 Open your preferred editor, for example, `vim` or `nano` and input the following command:  
 
-~~~
+~~~{.bash caption=">_"}
 sudo nano /etc/nginx/sites-available/default
 ~~~
 
 You can comment out or delete the existing configuration and replace it with the following code block:
 
-~~~
-
+~~~{.bash caption=">_"}
 server {
     listen 80;
     server_name your_domain;
@@ -245,13 +245,13 @@ The above configuration is designed to establish a reverse proxy that forwards r
 
 Next, ensure that there are no syntax errors in your Nginx configuration file by typing the command:
 
-~~~
+~~~{.bash caption=">_"}
 sudo nginx -t
 ~~~
 
 If your file is error-free, restart `Nginx` to apply changes:
 
-~~~
+~~~{.bash caption=">_"}
 sudo systemctl restart nginx
 ~~~
 
@@ -279,13 +279,13 @@ For Ubuntu/Debian:
 
 Install the Certbot `snap` package:
 
-~~~
+~~~{.bash caption=">_"}
 sudo apt install snapd
 ~~~
 
 Next, update your package list, and enable `classic snap` support:
 
-~~~
+~~~{.bash caption=">_"}
 sudo apt update && sudo snap install core; sudo snap refresh core
 ~~~
 
@@ -293,13 +293,13 @@ The above command fetches the latest version of each package and dependency inst
 
 To ensure a clean installation, remove any old version of `certbot` packages if you have any. This will create a clean slate for the subsequent steps:
 
-~~~
+~~~{.bash caption=">_"}
 sudo apt remove certbot
 ~~~
 
 Next, install certbot
 
-~~~
+~~~{.bash caption=">_"}
 sudo snap install --classic certbot
 ~~~
 
@@ -311,7 +311,7 @@ By enabling the `--classic` flag support, It installs the Certbot snap package i
 
 Afterward, create a symbolic link for certbot:
 
-~~~
+~~~{.bash caption=">_"}
 sudo ln -s /snap/bin/certbot /usr/bin/certbot
 ~~~
 
@@ -319,13 +319,13 @@ By creating this symbolic link, you can run the `certbot` command from anywhere 
 
 Now that `certbot` is installed, let's adjust the firewall settings to allow `HTTPS` traffic and remove any `HTTP` rule if earlier created:
 
-~~~
+~~~{.bash caption=">_"}
 sudo ufw allow 'Nginx Full'
 ~~~
 
 This command enables [UFW](https://wiki.ubuntu.com/UncomplicatedFirewall#:~:text=The%20Uncomplicated%20Firewall,and%20graphical%20frontends.) to open the required ports for Nginx, allowing external requests to reach your server and access your website via HTTP and HTTPS.
 
-~~~
+~~~{.bash caption=">_"}
 sudo ufw delete allow 'Nginx HTTP'
 ~~~
 
@@ -333,7 +333,7 @@ This command removes any previously created firewall rule for HTTP, allowing you
 
 Next, run the following command to fetch an SSL/TLS certificate for your domain.
 
-~~~
+~~~{.bash caption=">_"}
 sudo certbot --nginx -d `your_domain`
 ~~~
 
@@ -352,7 +352,7 @@ The screenshots above show that the SSL/TLS certificate for the domain `emediong
 
 Now that your HTTPS connection is set up, it's time to test it. Open your web browser and enter your domain, but this time use the `HTTPS` protocol:
 
-~~~
+~~~{.bash caption=">_"}
 https://your_domain.com
 ~~~
 
