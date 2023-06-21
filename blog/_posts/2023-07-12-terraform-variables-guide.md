@@ -293,10 +293,11 @@ In this article, you learned all about Terraform variables, how to use them, and
 
 If you want to learn more about Terraform variables, check out the [official documentation](https://developer.hashicorp.com/terraform/language/values/variables) or [this tutorial](https://upcloud.com/resources/tutorials/terraform-variables).
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
