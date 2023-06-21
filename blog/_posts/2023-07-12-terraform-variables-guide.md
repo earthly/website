@@ -4,6 +4,7 @@ categories:
   - Tutorials
 toc: true
 author: Mohammed Osman
+editor: Muhammad Badawy
 
 internal-links:
  - Terraform Variable
@@ -36,7 +37,7 @@ A Terraform variable block supports several optional arguments. For instance, th
 
 As an example, the following code shows a `region` variable of the type `string`, a `default` value of `us-west-2`, and a `description`:
 
-~~~
+~~~{.tf caption=""}
 variable "region" {
 description = "The AWS region where resources will be created"
 type  = string
@@ -45,6 +46,8 @@ default  = "us-west-2"
 ~~~
 
 ## Variable Types and Usage
+
+![Types]({{site.images}}{{page.slug}}/types.png)\
 
 Terraform supports several types of variables, including environment variables, local variables, and input variables. Let's tTake an in-depth look at each:
 
@@ -58,13 +61,13 @@ You define a Terraform environment variable by giving it a name in the following
 
 In Unix-based systems (such as Linux and macOS), you can define environment variables in the terminal using the export command:
 
-~~~
+~~~{.bash caption=">_"}
 hcl export TF_VAR_region=us-west-2
 ~~~
 
 In Windows, you define environment variables in the command prompt using this command:
 
-~~~
+~~~{.bash caption=">_"}
 set TF_VAR_region=us-west-2
 ~~~
 
@@ -72,7 +75,7 @@ set TF_VAR_region=us-west-2
 
 Local variables in Terraform modules simplify complex expressions and increase the readability of your modules and are defined using the `locals` block. Here's an example:
 
-~~~
+~~~{.tf caption=""}
 locals {
 instance_type = "t2.micro"
 }
@@ -96,7 +99,7 @@ In the following examples, you'll learn how you can define and use the different
 
 String variables are used to represent text values. The following code block defines a variable named `instance_type` of type `string` and has a `default` value of `t2.micro`. The variable is used in a Terraform `aws_instance` resource that has the name `example` to specify the type of AWS instance. The variable is accessed using the syntax `var.<variableName>`:
 
-~~~
+~~~{.tf caption=""}
 variable "instance_type" {
 type  = string
 default = "t2.micro"
@@ -113,7 +116,7 @@ Number variables are used to represent numerical values.
 
 The following code block defines a variable named `instance_type` of type `number` and has a `default` value of `5`. The variable is used in a Terraform resource of type `aws_instance`, which has the name `example` to specify the count of the AWS instances:
 
-~~~
+~~~{.tf caption=""}
 variable "instance_count" {
 type  = number
 default = 5
@@ -132,7 +135,7 @@ The count parameter in a resource block in Terraform allows you to create multip
 
 The following code shows a list variable of a string type that is used to create multiple Amazon Web Services (AWS) subnets using the `count` parameter:
 
-~~~
+~~~{.tf caption=""}
 variable "subnet_ids" {
 type  = list(string)
 default = ["subnet-abcde012", "subnet-bcde012a", "subnet-fghi345a"]
@@ -150,7 +153,7 @@ subnet_id  = var.subnet_ids[count.index]
 
 For example, this code block shows a map variable of a string type that assigns `Environment` and `Team` keys to an AWS resource:
 
-~~~
+~~~{.tf caption=""}
 variable "tag_values" {
 description = "Map of tags to assign to the resources"
 type  = map(string)
@@ -172,7 +175,7 @@ tags  = var.tag_values
 
 For example, this code shows an `is_prod` Terraform variable with the `default` value of `false`. The variable is used to conditionally decide the instance type and the environment tags of an AWS resource:
 
-~~~
+~~~{.tf caption=""}
 variable "is_prod" {
 description = "Boolean flag indicating if the environment is production"
 type  = bool
@@ -191,7 +194,7 @@ Environment = var.is_prod ? "Production" : "Development"
 
 Object variables group related attributes together. For example, the following code shows a Terraform variable called `instance_config` containing configurations for the instance type, Amazon Machine Image (AMI), and key name:
 
-~~~
+~~~{.tf caption=""}
 variable "instance_config" {
 description = "Configuration for the EC2 instance"
 type = object({
@@ -214,6 +217,8 @@ key_name  = var.instance_config.key_name
 
 ## Using Terraform Variables
 
+![Using]({{site.images}}{{page.slug}}/using.png)\
+
 After you define the Terraform variables in your Terraform module, there are several ways to assign values to these variables, including the following:
 
 - **Default values:** As you've already seen, `default` values can be used to assign default values to the variable in its `variable` block declaration.
@@ -228,7 +233,7 @@ In Terraform, you can perform variable interpolation (also referred to as string
 
 As an example, the following code shows a variable called `filename` and its usage as a string interpolation in a resource called `index` of type `local_file`, which creates a file in the operating system:
 
-~~~
+~~~{.tf caption=""}
 variable "filename" {
 description = "The name of the file to be created"
 type  = string
@@ -248,7 +253,7 @@ In addition to using variable interpolation to include a variable value within a
 
 For instance, in the following code block, you override the value of the variable `instance_type` to be equal to `t2.medium` when running `terraform apply` to apply the IaC changes:
 
-~~~
+~~~{.bash caption=">_"}
 terraform apply -var 'instance_type=t2.medium'
 ~~~
 
@@ -256,7 +261,7 @@ terraform apply -var 'instance_type=t2.medium'
 
 In Terraform, you have the option to utilize configuration files to define variable values to your IaC. Say you have a `main.tf` file that defines an `AWS EC2` configuration like this:
 
-~~~
+~~~{.tf caption=""}
 provider "aws" {
 region = var.region
 }
@@ -270,7 +275,7 @@ Here, the configuration uses `var.region`, `var.ami`, and `var.instance_type` va
 
 In addition, the configuration values can be provided in another configuration file named `terraform.tvfars` or any file ending with `.auto.tfvars`. Here's an example of a `terraform.tfvars` file:
 
-~~~
+~~~{.tf caption=""}
 region  = "us-west-2"
 ami  = "ami-0c94855ba95c574c8"
 instance_type = "t2.micro"
@@ -280,8 +285,8 @@ When you run the `terraform apply` command to apply the changes to your infrastr
 
 Moreover, you can manually load variable files with different names using the `-var-file` flag when running `terraform apply` or `terraform plan`:
 
-~~~
- terraform apply -var-file="variables.tfvars"
+~~~{.bash caption=">_"}
+terraform apply -var-file="variables.tfvars"
 ~~~
 
 ## Limitations of Variables and Workarounds
@@ -298,8 +303,3 @@ In this article, you learned all about Terraform variables, how to use them, and
 If you want to learn more about Terraform variables, check out the [official documentation](https://developer.hashicorp.com/terraform/language/values/variables) or [this tutorial](https://upcloud.com/resources/tutorials/terraform-variables).
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-- [ ] Optional: Find ways to break up content with quotes or images
-
