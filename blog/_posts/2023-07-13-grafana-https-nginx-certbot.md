@@ -6,7 +6,12 @@ toc: true
 author: Emediong Samuel
 
 internal-links:
- - just an example
+ - Grafana
+ - Security
+ - HTTPS
+ - Nginx
+ - Certbot
+ - Analytics
 ---
 
 [Grafana](https://grafana.com/), a widely used open-source analytics and monitoring platform, has gained immense importance as an essential tool for tech companies and organizations globally. Its real-time [data visualization](https://www.tableau.com/learn/articles/data-visualization#:~:text=Data%20visualization%20is%20the%20graphical,outliers%2C%20and%20patterns%20in%20data.), querying, and analysis capabilities make it invaluable for monitoring system performance, network traffic, and other metrics.
@@ -381,5 +386,4 @@ For more articles similar to this one, stay in the loop, [Earthly.dev](https://e
 * [ ] Add in Author page
 * [ ] Create header image in Canva
 * [ ] Optional: Find ways to break up content with quotes or images
-* [ ] Add keywords for internal links to front-matter
-* [ ] Run `link-opp` and find 1-5 places to incorporate links
+
