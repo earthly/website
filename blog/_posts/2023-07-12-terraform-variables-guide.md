@@ -6,7 +6,11 @@ toc: true
 author: Mohammed Osman
 
 internal-links:
- - just an example
+ - Terraform Variable
+ - Terraform
+ - Guide
+ - Reusability
+ - Automate
 ---
 
 [Terraform](https://www.terraform.io/) is a widespread [infrastructure-as-code (IaC)](https://en.wikipedia.org/wiki/Infrastructure_as_code) tool that lets you automate the provisioning and management of cloud resources using the [HashiCorp Configuration Language (HCL)](https://www.linode.com/docs/guides/introduction-to-hcl/).
@@ -299,5 +303,4 @@ If you want to learn more about Terraform variables, check out the [official doc
 
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
+
