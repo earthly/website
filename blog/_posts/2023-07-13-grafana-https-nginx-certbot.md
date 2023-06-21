@@ -384,6 +384,5 @@ For more articles similar to this one, stay in the loop, [Earthly.dev](https://e
 ## Outside Article Checklist
 
 * [ ] Add in Author page
-* [ ] Create header image in Canva
 * [ ] Optional: Find ways to break up content with quotes or images
 
