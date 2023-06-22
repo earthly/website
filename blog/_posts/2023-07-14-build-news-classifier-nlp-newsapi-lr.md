@@ -555,6 +555,8 @@ In this tutorial, we have successfully built a logistic regression text classifi
 
 You can get the code here on [Github](https://github.com/barrisam/Text-Classifier-with-NLP-NewsAPI-and-Logistic-Regression)
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
@@ -563,4 +565,3 @@ You can get the code here on [Github](https://github.com/barrisam/Text-Classifie
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
