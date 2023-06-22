@@ -112,7 +112,9 @@ To get started, we need a dataset that contains news and the different categorie
 
 To use the NewsAPI's API, we also need an API key, and we can only get that by [creating an account](https://newsapi.org/register). This is pretty straightforward, and once the registration is successful, a page with the API key is displayed.
 
-![Successful registration page](https://res.cloudinary.com/barine/image/upload/v1681956268/Logistic%20regression/news_api_registration_1.png)
+<div class="wide">
+![Successful registration page]({{site.images}}{{page.slug}}/news_api_registration_1.png)
+</div>
 
 Make sure to copy the key somewhere safe. We will need it later.
 
@@ -145,7 +147,9 @@ tech_articles
 
 The output is a dictionary of 100 news articles related to tech:
 
-![Tech news output](https://res.cloudinary.com/barine/image/upload/v1681956269/Logistic%20regression/tech_news.png)
+<div class="wide">
+![Tech news output]({{site.images}}{{page.slug}}/tech_news.png)
+</div>
 
 ## Transform Output Data Into Pandas DataFrame
 
@@ -173,7 +177,9 @@ tech = pd.DataFrame(tech_articles['articles'])
 tech
 ~~~
 
-![Tech news data in  a dataframe](https://res.cloudinary.com/barine/image/upload/v1681956269/Logistic%20regression/tech_dataframe_one.png)
+<div class="wide">
+![Tech news data in a dataframe]({{site.images}}{{page.slug}}/tech_dataframe_one.png)
+</div>
 
 The output is 100 rows of tech data with 8 columns.
 
@@ -193,7 +199,9 @@ tech['category'] = 'Tech'
 tech 
 ~~~
 
-[Tech news data with category column](https://res.cloudinary.com/barine/image/upload/v1681956269/Logistic%20regression/tech_dataframe_with_category.png)
+<div class="wide">
+![Tech news data with category column]({{site.images}}{{page.slug}}/tech_dataframe_with_category.png)
+</div>
 
 Prediction model algorithms like logistic regression typically benefit from having an adequate dataset size to mitigate the risk of overfitting and inaccurate outputs. However, logistic regression stands out as a suitable choice for small datasets due to its simplicity, interpretability, low risk of overfitting, and reduced computational requirements. Generally, a suitable dataset size can vary depending on several factors including the complexity and diversity of the dataset, the complexity of the algorithm, and the number of outputs needed.
 
@@ -561,7 +569,5 @@ You can get the code here on [Github](https://github.com/barrisam/Text-Classifie
 
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
