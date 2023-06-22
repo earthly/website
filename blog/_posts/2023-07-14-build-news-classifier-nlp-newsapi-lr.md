@@ -71,6 +71,8 @@ Or models with multiclass, categorical values like:
 
 ## Tools To Be Used in The Project
 
+![Tools]({{site.images}}{{page.slug}}/tools.png)\
+
 We will need to make sure we have the proper tools before we can start building our classifier. Let's start by installing Scikit-Learn.
 
 [**Scikit-Learn, **](https://scikit-learn.org/stable/), also called Sklearn. This is the most important library for building this classifier. It provides a selection of efficient tools for building machine-learning models.
@@ -131,20 +133,20 @@ Each method requires different request parameters. These request parameters incl
 
 To extract the news articles for a specific query, we will first import the NewsAPIClient class:
 
-~~~{.bash caption=">_"}
+~~~{.python caption="newsclassifier.py"}
 from newsapi import NewApiClient
 ~~~
 
 Instantiate the NewsAPIClient class with your API key:
 
-~~~{.bash caption=">_"}
+~~~{.python caption="newsclassifier.py"}
 newsapi = NewsApiClient(api_key='2a7dd9f4dd8fxxxxxxxxxxxxxxxxx') 
 #use your API key here
 ~~~
 
 Then extract with the query, language, and page size parameters:
 
-~~~{.bash caption=">_"}
+~~~{.python caption="newsclassifier.py"}
 tech_articles = newsapi.get_everything(q='tech', language='en', \
 page_size=100)
 tech_articles
@@ -162,7 +164,7 @@ NewsAPI search result returns a JSON object when the API is called. Although JSO
 
 A quick look at the `tech_articles` object keys shows that there are three dictionary keys returned.
 
-~~~{.bash caption=">_"}
+~~~{.python caption="newsclassifier.py"}
 tech_articles.keys()
 ~~~
 
@@ -569,8 +571,3 @@ In this tutorial, we have successfully built a logistic regression text classifi
 You can get the code here on [Github](https://github.com/barrisam/Text-Classifier-with-NLP-NewsAPI-and-Logistic-Regression)
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
