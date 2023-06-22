@@ -74,18 +74,16 @@ We will need it to import the classes like the [LogisticRegression](https://scik
 
 Install scikit-learn with pip:
 
-~~~
+~~~{.bash caption=">_"}
 pip install scikit-learn 
-
 ~~~
 
 Next, we will install the [**NLTK.**](https://www.nltk.org/) package. The Natural Language Toolkit (NLTK) is a Python package for Natural Language Processing (NLP). We will need it to tokenize the text and remove stopwords.
 
 Install with pip:
 
-~~~
+~~~{.bash caption=">_"}
 pip install --user -U nltk
-
 ~~~
 
 The next library that we need is the Python [**re**](https://docs.python.org/3/library/re.html) module which allows us to work with regular expressions. This will be needed for cleaning and processing text. We don't need to install it as it's inbuilt into Python.
@@ -94,7 +92,7 @@ The **NewsAPI** Python client library is a wrapper for the NewsAPI API. The API 
 
 Install with pip:
 
-~~~
+~~~{.bash caption=">_"}
 pip install newsapi-python
 ~~~
 
@@ -102,7 +100,7 @@ Finally, we need the [**Pandas**](https://pandas.pydata.org/docs/) library for d
 
 Install using pip:
 
-~~~
+~~~{.bash caption=">_"}
 pip install pandas
 ~~~
 
@@ -126,20 +124,22 @@ Each method requires different request parameters. These request parameters incl
 
 To extract the news articles for a specific query, we will first import the NewsAPIClient class:
 
-~~~
+~~~{.bash caption=">_"}
 from newsapi import NewApiClient
 ~~~
 
 Instantiate the NewsAPIClient class with your API key:
 
-~~~
-newsapi = NewsApiClient(api_key='2a7dd9f4dd8fxxxxxxxxxxxxxxxxx') #use your API key here
+~~~{.bash caption=">_"}
+newsapi = NewsApiClient(api_key='2a7dd9f4dd8fxxxxxxxxxxxxxxxxx') 
+#use your API key here
 ~~~
 
 Then extract with the query, language, and page size parameters:
 
-~~~
-tech_articles = newsapi.get_everything(q='tech', language='en', page_size=100)
+~~~{.bash caption=">_"}
+tech_articles = newsapi.get_everything(q='tech', language='en', \
+page_size=100)
 tech_articles
 ~~~
 
@@ -153,20 +153,20 @@ NewsAPI search result returns a JSON object when the API is called. Although JSO
 
 A quick look at the `tech_articles` object keys shows that there are three dictionary keys returned.
 
-~~~
+~~~{.bash caption=">_"}
 tech_articles.keys()
 ~~~
 
 Output:
 
-~~~
+~~~{ caption="Output"}
 #output
 dict_keys(['status', 'totalResults', 'articles'])
 ~~~
 
 We only need the object of the articles, which will be transformed into a Pandas data frame:
 
-~~~
+~~~{.python caption="newsclassifier.py"}
 import pandas as pd
 
 tech = pd.DataFrame(tech_articles['articles'])
@@ -187,7 +187,7 @@ The dependent variables are the outcome variable. They are the variables that we
 
 We have gotten our news headlines and content on the data frame, however, we don't have a column for news categories. We'll need to add one:
 
-~~~
+~~~{.python caption="newsclassifier.py"}
 #adding the tech category
 tech['category'] = 'Tech'
 tech 
@@ -205,19 +205,26 @@ We only have the tech category available. We will need to go through the steps a
 
 So let's grab some more articles by category:
 
-~~~
-entertainment_articles = newsapi.get_everything(q='entertainment',language='en', page_size=100)
-business_articles = newsapi.get_everything(q='business',language='en', page_size=100)
-sports_articles = newsapi.get_everything(q='sports',language='en', page_size=100)
-politics_articles = newsapi.get_everything(q='politics',language='en', page_size=100)
-travel_articles = newsapi.get_everything(q='travel',language='en', page_size=100)
-food_articles = newsapi.get_everything(q='food',language='en', page_size=100)
-health_articles = newsapi.get_everything(q='health',language='en', page_size=100)
+~~~{.python caption="newsclassifier.py"}
+entertainment_articles = newsapi.get_everything(q='entertainment',\
+language='en', page_size=100)
+business_articles = newsapi.get_everything(q='business',\
+language='en', page_size=100)
+sports_articles = newsapi.get_everything(q='sports',\
+language='en', page_size=100)
+politics_articles = newsapi.get_everything(q='politics',\
+language='en', page_size=100)
+travel_articles = newsapi.get_everything(q='travel',\
+language='en', page_size=100)
+food_articles = newsapi.get_everything(q='food',\
+language='en', page_size=100)
+health_articles = newsapi.get_everything(q='health',\
+language='en', page_size=100)
 ~~~
 
 And remember to convert them into a DataFrame and add the category column:
 
-~~~
+~~~{.python caption="newsclassifier.py"}
 entertainment = pd.DataFrame(entertainment_articles['articles'])
 entertainment['category'] = 'Entertainment'
 business = pd.DataFrame(business_articles['articles'])
@@ -236,15 +243,16 @@ health['category'] = 'Health
 
 Merge everything into one Pandas DataFrame using the [`concat`](https://pandas.pydata.org/docs/reference/api/pandas.concat.html) function from the Pandas library. This puts all the information in one data frame, making it easier to access, analyse and train:
 
-~~~
-categories = [tech, entertainment, business, sports, politics, travel, food, health]
+~~~{.python caption="newsclassifier.py"}
+categories = [tech, entertainment, business, sports, politics, \
+travel, food, health]
 df = pd.concat(categories)
 df.info()
 ~~~
 
 Output:
 
-~~~
+~~~{ caption="Output"}
 # output
 
 <class 'pandas.core.frame.DataFrame'>
@@ -285,7 +293,7 @@ Finally, remove stopwords. Stopwords are common words in a language that adds ve
 
 At our first stage of preprocessing, we will use `re` to remove all punctuations, special characters, full stops, commas, extra spaces, and quotes:
 
-~~~
+~~~{.python caption="newsclassifier.py"}
 import re
 
 # Define the function to clean the title column
@@ -306,7 +314,7 @@ def cleaned_desc_column(text):
 We must get rid of anything insignificant to the classifier from the text. Punctuations, extra spaces, and special characters only add variations to a text. Hyphens on the other hand do not need to be removed. They teach the classifier how to handle compound words.
 Next, we tokenize the text:
 
-~~~
+~~~{.python caption="newsclassifier.py"}
 import nltk
 nltk.download('punkt')
 
@@ -316,8 +324,7 @@ def cleaned_desc_column(text):
 
 [Punkt](https://www.nltk.org/api/nltk.tokenize.punkt.html) is a tokenizer that divides the text into a list of sentences using an [unsupervised learning algorithm](https://www.ibm.com/topics/unsupervised-learning). We could use a pre-trained punkt or train one on a large collection of text. The NLTK package comes with a pre-trained punkt tokenizer for English. We'll use this - rather than train one - to initialize the `word_tokenizer()` function:
 
-~~~
-
+~~~{.python caption="newsclassifier.py"}
 from nltk.tokenize import word_tokenize
         …
 
@@ -330,7 +337,7 @@ To tokenize our text, we used NLTK's inbuilt function [`word_tokenize()`](https:
 Next, we need to remove stop words:
 To remove stopwords, we used NLTK's `stopword` function and set the language to English. English has over 170 stop words. The `stopword` function goes through the text and whenever it comes across a word in its corpus (which is the 170 stopwords in its collection), it removes it.
 
-~~~
+~~~{.python caption="newsclassifier.py"}
 from nltk.corpus import stopwords
         …
 nltk.download('stopwords')
@@ -352,7 +359,7 @@ def cleaned_desc_column:
 
 Here is what the whole code block looks like:
 
-~~~
+~~~{.python caption="newsclassifier.py"}
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 import nltk
@@ -388,7 +395,7 @@ def cleaned_desc_column(text):
 
 In the code below, we successfully processed our data, now we apply the `cleaned_desc_column`  function to the 'title' column since that is our independent variable:
 
-~~~
+~~~{.python caption="newsclassifier.py"}
 # Apply the clean_text_column function to the text_column in the DataFrame
 df['news_title'] = df['title'].apply(cleaned_desc_column)
 df
@@ -397,7 +404,7 @@ df
 
 To get the categories we need for training and testing, we'll use the cleaned `title` column as the independent variable and the `category` column as a dependent variable:
 
-~~~
+~~~{.python caption="newsclassifier.py"}
 #getting the category we need for testing
 X = df['news_title']
 y = df['category']
@@ -407,18 +414,19 @@ y = df['category']
 
 At this stage, we need to divide the data into training and testing datasets using the `train_test_split` class from the `sklearn` library::
 
-~~~
+~~~{.python caption="newsclassifier.py"}
 import sklearn
 from sklearn.model_selection import train_test_split
 
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.30, random_state = 90)
+X_train, X_test, y_train, y_test = \
+train_test_split(X, y, test_size = 0.30, random_state = 90)
 print(X_train.shape)
 print(X_test.shape)
 ~~~
 
 Output:
 
-~~~
+~~~{ caption="Output"}
 (560,)
 (240,) 
 ~~~
@@ -439,19 +447,21 @@ TF-IDF is a combination of two techniques. The first part, TF (Term Frequency) f
 
 TF-IDF calculates a weight (score) that reflects the importance of every word in a category. While TF assigns weight to words as they appear. The basic formula for computing TF is:
 
-~~~
-TF = (Number of occurrences of the term in the document)/(Total number of terms in the document. 
+~~~{.python caption="newsclassifier.py"}
+TF = (Number of occurrences of the term in the document)
+/(Total number of terms in the document. 
 ~~~
 
 IDF measures the rarity of a word in a document. It considers that a word that occurs too often might not be relevant or informative to the text and so reduces the weight attached to the word. IDF formula is calculated as:
 
-~~~
-IDF = log((Total number of documents in the collection)/(Number of documents containing the term)). 
+~~~{.python caption="newsclassifier.py"}
+IDF = log((Total number of documents in the collection)
+/(Number of documents containing the term)). 
 ~~~
 
 To compute the final score of a term within a document, TF, and IDF are multiplied together. This multiplication emphasizes terms that are both frequent and rare within a document. The formula for calculating the TF-IDF score is:
 
-~~~
+~~~{.python caption="newsclassifier.py"}
 TF-IDF = TF * IDF
 ~~~
 
@@ -465,9 +475,9 @@ To convert our text to numeric representation and calculate the TF-IDF score, we
 
 ## Training the Classifier
 
-With a pipeline, we will instantiate our LogisticRegression`, and`tfidfVectorizer`classes. Next, we train the logistic regression model on the training set using the logistic regression [`fit`](<https://scikit-learn.org/stable/developers/develop.html#fitting>) class:
+With a pipeline, we will instantiate our `LogisticRegression`, and `tfidfVectorizer` classes. Next, we train the logistic regression model on the training set using the logistic regression [`fit`](<https://scikit-learn.org/stable/developers/develop.html#fitting>) class:
 
-~~~
+~~~{.python caption="newsclassifier.py"}
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
 
@@ -482,7 +492,7 @@ lr.fit(X_train,y_train)
 
 After training the dataset, we move on to making predictions:
 
-~~~
+~~~{.python caption="newsclassifier.py"}
 # Make predictions on the test set
 y_pred = lr.predict(X_test)
 ~~~
@@ -491,7 +501,7 @@ y_pred = lr.predict(X_test)
 
 After training the dataset, we need to evaluate its performance. There are different ways to evaluate the performance of the model. For this tutorial, we will use the most straightforward which is the accuracy score. The accuracy score compares the accuracy of predicted labels to the test set and calculates the proportion of correct predictions. Models with accuracy scores between 70% - 90% are generally considered to have good performance.
 
-~~~
+~~~{.python caption="newsclassifier.py"}
 from sklearn.metrics import accuracy_score
 # Calculate the accuracy of the model
 print(f"Accuracy is: {accuracy_score(y_pred,y_test)}")
@@ -499,7 +509,7 @@ print(f"Accuracy is: {accuracy_score(y_pred,y_test)}")
 
 Output:
 
-~~~
+~~~{ caption="Output"}
 #Output
 Accuracy is: 0.7208333333333333
 ~~~
@@ -508,14 +518,16 @@ Accuracy is: 0.7208333333333333
 
 Once the model is trained, we can make predictions with the `predict()` method and unseen data. For this, we'll choose headlines that are not in the dataset:
 
-~~~
+~~~{.python caption="newsclassifier.py"}
 news = ["Biden to Sign Executive Order That Aims to Make Child Care Cheaper",
-       "Google Stock Loses $57 Billion Amid Microsoft's AI 'Lead'—And Reports It Could Be Replaced By Bing On Some Smartphones",
+       "Google Stock Loses $57 Billion Amid Microsoft's AI 'Lead'—And \
+       Reports It Could Be Replaced By Bing On Some Smartphones",
        "Poland suspends food imports from Ukraine to assist its farmers",
        "Can AI Solve The Air Traffic Control Problem? Let's Find Out",
        "Woman From Odisha Runs 42.5 KM In UK Marathon Wearing A Saree",
        "Hillary Clinton: Trump cannot win the election - but Biden will",
-       "Jennifer Aniston and Adam Sandler starrer movie 'Murder Mystery 2' got released on March 24, this year"]
+       "Jennifer Aniston and Adam Sandler starrer movie 'Murder Mystery 2' \
+       got released on March 24, this year"]
 
 predicted = lr.predict(news)
 
@@ -525,7 +537,7 @@ for doc, category in zip(news, predicted):
 
 Output:
 
-~~~
+~~~{ caption="Output"}
 Health
 Tech
 Food
