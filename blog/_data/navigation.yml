@@ -41,6 +41,7 @@ docker:
       - title: "Compiling Containers"
         url: /compiling-containers-dockerfiles-llvm-and-buildkit/
 makefile:
+  - title: Makefiles
   - title: Tutorials
     children:
       - title: Overview Tutorial
@@ -76,6 +77,7 @@ makefile:
       - title: "Makefile Variables"
         url: /makefile-variables
 bash:
+  - title: Linux
   - title: Bash
     children:
       - title: "Bash Basics" 
@@ -183,7 +185,7 @@ lambdas:
         url: /aws-lambda-api-proxy/
       - title: "Terraform Import"
         url: /terraform-lambda/
-gha:
+github-actions:
   - title: GitHub Actions
     children:
       - title: "Working with GitHub Actions Environment Variables and Secrets"
