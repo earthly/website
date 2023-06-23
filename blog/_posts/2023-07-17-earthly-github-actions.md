@@ -6,7 +6,9 @@ toc: true
 author: Adam
 
 internal-links:
- - just an example
+ - Earthly
+ - Github Actions
+ - Github
 ---
 
 ## Introduction
@@ -19,7 +21,9 @@ For the project, I chose to build an application using a polyglot monorepo layou
 
 Obviously an application with 4 separate backends that do the same thing is not very practical. But the pattern does mirror many of the challenges that larger, multi-team projects encounter with monorepos and polyrepos.
 
+<div class="wide">
 ![diagram]({{site.images}}{{page.slug}}/diagram.png)\
+</div>
 
 - Project root/
 - Go_server/ (Go server package)
@@ -31,7 +35,9 @@ Obviously an application with 4 separate backends that do the same thing is not 
 
 And here is what the front-end looks like with everything is running:
 
+<div class="wide">
 ![app]({{site.images}}{{page.slug}}/app.png)\
+</div>
 
 Let's dive into each of the main aspects of Earthly and see how they compared to Github Actions for this project.
 
@@ -45,7 +51,9 @@ One of the main pain points with CI systems is the speed of iteration. With Gith
 
 This is where the real pain of traditional CI workflows lies, as it slows down the speed of iteration. I have several pages of this in my Github actions history from when I started working on porting my CI pipeline to Github Actions for this article:
 
+<div class="wide">
 ![gha-builds]({{site.images}}{{page.slug}}/gha-builds.png)\
+</div>
 
 We've all run into this before, at least to some degree, regardless of the CI system. And that's ok! Especially when you're learning something new or refactoring your pipeline. What's not ok though, is the delay and friction in between iterations. This is a real drag on developer productivity.
 
@@ -53,7 +61,9 @@ We've all run into this before, at least to some degree, regardless of the CI sy
 
 Another problem I ran into with Github Actions (and one we hear repeatedly from customers) is the inconsistency of caching behavior. In order to get the best performance out of my workflow, I implemented caching everywhere I could by using the official [cache](https://github.com/actions/cache) plugin and the official Docker [build-push-action](https://github.com/docker/build-push-action) with caching. Occasionally I ran into timeout errors on builds that should have been fully cached. In this particular case I had to wait 7 minutes to find out. I'll touch on caching again later in the article.
 
+<div class="wide">
 ![node-timeout]({{site.images}}{{page.slug}}/node-timeout.png)\
+</div>
 
 When it works, it can complete the build in as low as 2 minutes but it varies wildly between 2 and 8 minutes as of this writing.
 
@@ -67,7 +77,9 @@ For my project, I trigger the pipeline from the project's root directory with th
 
 This is especially useful when working on a monorepo because I'm often only working in one package (sub-directory) at a time. I can still run the main-pipeline from my root directory and I don't have to worry about wasted code execution rebuilding the parts that I didn't touch. The Earthly logs show me explicitly what parts of the build are cached:
 
+<div class="wide">
 ![earthly-cached]({{site.images}}{{page.slug}}/earthly-cached.png)\
+</div>
 
 In larger teams, a developer may only work within one package or subdirectory for long periods of time. Having the ability to quickly test the entire pipeline locally before pushing code reduces the risk of introducing changes that break CI or other team member's builds - further improving productivity.
 
@@ -269,7 +281,9 @@ L is a very easy language to write in. But there is definitely a learning curve 
 
 With Earthly, executing the same pipeline locally completes in 7 seconds consistently. With [](https://earthly.dev/earthly-ci)[Earthly Satellites](https://earthly.dev/earthly-satellites), it also completes in 7 seconds. This is another data point that speaks to the reproducibility and consistency that Earthly offers.
 
+<div class="wide">
 ![7-secs]({{site.images}}{{page.slug}}/7-secs.png)\
+</div>
 
 When it comes to developer speed. There really is no comparison. Composing my CI pipeline in Earthly felt natural and elegant compared to writing it out in YAML. If you've ever written Dockerfiles or Makefiles, Earthly language is easy to learn. And the ability to run my pipeline locally before shipping to CI meant that I was able to iterate really fast and not make a bunch of commits to test my CI pipelines.
 
@@ -281,7 +295,9 @@ As part of this project I also created a Github Actions workflow that uses an Ea
 
 The other major benefit is that using Earthly in any form with GitHub Actions greatly reduces the complexity and amount of YAML needed in the Github Actions workflow. You can see it on [GitHub](https://github.com/earthly/earthly-vs-gha/blob/main/.github/workflows/ci-satellites.yml).
 
+<div class="wide">
 ![side-by-side]({{site.images}}{{page.slug}}/side-by-side.png)\
+</div>
 
 ### Building and Running the Project
 
@@ -301,8 +317,3 @@ Thank you for taking the time to read our article about Github Actions and Earth
 
 - [ ] Add in Author page
 - [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
