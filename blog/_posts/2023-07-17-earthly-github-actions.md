@@ -145,7 +145,9 @@ For the sake of conciseness, here is the code required to orchestrate the steps 
         working-directory: node_server
         run: npm test
 +
+
 # Dockerfile for node service
+
 FROM node:19-alpine3.16
 
 WORKDIR /app
@@ -155,7 +157,6 @@ RUN npm install
 COPY quotes.txt ./quotes.txt
 EXPOSE 8003
 ENTRYPOINT [ "node", "src/index.js" ]
-
 ~~~
 </td>
 <td>```
