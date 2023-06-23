@@ -8,6 +8,8 @@ internal-links:
    - build automation
 topic: earthly
 funnel: 3
+banner: Page specific banner
+mobileBanner: Page specific banner for mobile
 ---
 
 We live in an era of continuous delivery, containers, automation, rich set of programming languages, varying code structures (mono/poly-repos) and open-source. And yet, our most popular CI/CD platform was started 15 years ago when the industry looked very different. CI systems have not changed much since — they are still largely glorified bash scripts, and the limitations are starting to show their age. For context, Docker's first release was 7 years ago and Kubernetes is only 5 years old. There is no way Jenkins ("Hudson" back then) could have been built with containers in mind, as Docker didn't even exist at the time.

@@ -1,5 +1,7 @@
-<header
-    class="flex z-50 fixed w-full top-0 left-0 bg-white h-[70px] border-b border-[#e8f8fe] shadow-sm shadow-black/10">
+<header class="z-50 w-full top-0 left-0 bg-white shadow-sm shadow-black/10 sticky">
+    {% include banner.html %}
+
+    <div class="flex h-[70px]">
     <div class="siteHeader-logoAndMenuButton pl-6">
         <a onclick="navEarthlyLogoClick()" class="siteHeader-logoLink" href="{{site.landingurl}}/">
             {% svg assets/svg/earthly-logo.svg class="siteHeader-logoLink-svg" height=70 %}
@@ -87,6 +89,7 @@
             {% endif %}
         </div>
     </nav>
+    </div>
 
     <script>
       function navLearnEarthlyClick() {

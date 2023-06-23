@@ -32,7 +32,7 @@ layout: default
 
     <div class="page__inner-wrap flex relative">
 
-      <div class="w-[1px] h-full text-md sticky top-[36px] z-50 hidden lg:block">
+      <div id="breadcrumbs" class="w-[1px] h-full text-md sticky top-[36px] z-50 hidden lg:block">
         <div class="w-[250px] pt-6 pl-3">
           <div class="mt-6">
             <a href="/blog/" class="text-xl text-blue-600 hover:underline">Blog</a>
@@ -168,3 +168,11 @@ layout: default
   {% endif %}
   {% endif %}
 </div>
+
+{% if page.banner or page.mobileBanner or site.banner or site.mobileBanner %}
+  <script>
+    var banner = document.getElementsByClassName('announcement-banner')
+    var breadcrumbs = document.getElementById('breadcrumbs')
+    breadcrumbs.style.top = banner[0].scrollHeight + 36 + 'px'
+  </script>
+{% endif %}
