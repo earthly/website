@@ -79,7 +79,7 @@ For this project the CI pipeline needs to do 4 things for each package in the mo
 
 Also, Github Actions relies on plugins for certain tasks like setting up runtimes or caching. Depending on the plugin, there can be quite a few nuances that you have to learn and consider. The caching plugin, for example, requires you to specify which directories should be cached and how they should be keyed for cache hits. If you configure either of these incorrectly, there may be nothing in the logs that will tell you. For example, here I have the caching plugin configured for the Rust server with **a directory that does not exist**:
 
-~~~
+~~~{.yaml caption="ci-actions-only.yml"}
     - uses: actions/cache@v2
         with:
           path: |
@@ -106,7 +106,7 @@ For the sake of conciseness, here is the code required to orchestrate the steps 
     <th>EARTHLY CODE</th>
   </tr>
   <tr>
-    <td>~~~
+    <td>~~~{.yaml caption="ci-actions-only.yml"}
 # Node service snipped from GHA yaml
   node_service_build:
     environment: "Actions Demo"
@@ -145,6 +145,8 @@ For the sake of conciseness, here is the code required to orchestrate the steps 
         working-directory: node_server
         run: npm test
 +
+~~~
+~~~{.dockerfile caption=""}
 # Dockerfile for node service
 FROM node:19-alpine3.16
 
@@ -159,7 +161,7 @@ ENTRYPOINT [ "node", "src/index.js" ]
 ~~~
 
 </td>
-<td>~~~
+<td>~~~{.dockerfile caption=""}
 # Node service Earthfile
 
 VERSION 0.7
@@ -211,7 +213,7 @@ In contrast, Earthly was designed with monorepos in mind. You obviously don't ne
 
 But, I mentioned in the beginning of this article that there is a shared dependency (as is usually the case in monorepos). At build time, I need to make sure the quotes text file (quotes.txt) is generated and copied into the builds for each of my servers. I can do that with this line:
 
-~~~
+~~~{.bash caption=">_"}
 COPY ../quote_generator+build/quotes.txt quotes.txt
 ~~~
 
@@ -221,7 +223,7 @@ In this case, I'm using the relative path of the dependency that needs to be bui
 
 In the root directory of the monorepo I have the "main" Earthfile where the `+main-pipeline` I referenced earlier is defined. `+main-pipeline` is once again referencing other targets - this time targets from the same Earthfile, which are then referencing the targets of specific packages. All build logic is local to its respective package with the root Earthfile orchestrating the monorepo build. The `BUILD` commands are executed in parallel. This approach allows you to layout your build logic in a way that matches the layout of your repository and Earthly automatically figures out what is cached, what needs to be run and the order of execution.
 
-~~~
+~~~{.dockerfile caption=""}
 main-pipeline:
   BUILD +all-test
   ARG tag=ci-demo
