@@ -277,7 +277,9 @@ Because you can use Earthly pretty much anywhere where the Earthly CLI can be in
 
 As part of this project I also created a Github Actions workflow that uses an Earthly Satellite. Below you can see a comparison of the performance. Using a Satellite cuts the build time by more than half (conservatively) and the performance is extremely consistent relative to building with Github Actions only. Because the cache on Earthly Satellites is local to the runner, it is instantly available (no upload/download is necessary).
 
-The other major benefit is that using Earthly in any form with GitHub Actions greatly reduces the complexity and amount of YAML needed in the Github Actions workflow. You can see it [here](https://github.com/earthly/earthly-vs-gha/blob/main/.github/workflows/ci-satellites.yml).![](img/side-by-side.png)
+The other major benefit is that using Earthly in any form with GitHub Actions greatly reduces the complexity and amount of YAML needed in the Github Actions workflow. You can see it [here](https://github.com/earthly/earthly-vs-gha/blob/main/.github/workflows/ci-satellites.yml).
+
+![side-by-side]({{site.images}}{{page.slug}}/side-by-side.png)\
 
 ### Building and Running the Project
 
