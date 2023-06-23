@@ -3,6 +3,7 @@ title: "Using Terraform with GitHub Actions"
 categories:
   - Tutorials
 toc: true
+nav: gha
 author: Keanan Koppenhaver
 editor: Mustapha Ahmad Ayodeji
 

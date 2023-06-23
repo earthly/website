@@ -3,6 +3,7 @@ title: "Using GitHub Actions to Run, Test, Build, and Deploy Docker Containers"
 categories:
   - Tutorials
 toc: true
+nav: gha
 author: James Olaogun
 editor: Bala Priya C
 

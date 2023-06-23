@@ -3,6 +3,7 @@ title: "Caching Dependencies on GitHub Actions"
 categories:
   - Tutorials
 toc: true
+nav: gha
 author: Cameron Pavey
 editor: Bala Priya C
 

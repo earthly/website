@@ -4,6 +4,7 @@ makefile: 'Makefile'
 bash: 'Bash'
 thoughts: 'Programming Thoughts'
 activity-tracker: 'Activity Tracker'
+pongo: "Build Pong in the Terminal"
 deployment-strategies: 'Deployment'
 lambdas: "Lambda's in GoLang"
-pongo: "Build Pong in the Terminal"
+gha: "GitHub Actions"

@@ -3,6 +3,7 @@ title: "Working with GitHub Actions Environment Variables and Secrets"
 categories:
   - Tutorials
 toc: true
+nav: gha
 author: Kumar Harsh
 editor: Mustapha Ahmad Ayodeji
 

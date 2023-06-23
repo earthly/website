@@ -11,6 +11,7 @@ main:
   - title: "GitHub"
     url: https://github.com/earthly/earthly
 docker:
+  - title: Docker
   - title: Container Tutorials
     children:
       - title: "Docker Logging"
@@ -182,3 +183,18 @@ lambdas:
         url: /aws-lambda-api-proxy/
       - title: "Terraform Import"
         url: /terraform-lambda/
+gha:
+  - title: GitHub Actions
+    children:
+      - title: "Working with GitHub Actions Environment Variables and Secrets"
+        url: /github-actions-environment-variables-and-secrets/
+      - title: "Caching Dependencies on GitHub Actions"
+        url: /caching-dependencies-github-actions/
+      - title: "Using Terraform with GitHub Actions"
+        url: /terraform-with-github-actions/
+      - title: "Deploy to ECR with a GitHub Actions"
+        url: /aws-ecr-github-actions/
+      - title: "Using GitHub Actions to Deploy Docker Containers"
+        url: /github-actions-and-docker/
+      - title: "Using Dockerhub with GitHub Actions"
+        url: /cicd-build-github-action-dockerhub/

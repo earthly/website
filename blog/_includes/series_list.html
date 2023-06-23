@@ -1,21 +1,22 @@
-<div class="p-4 pl-6 {{include.style}}">
-    <div class="font-semibold text-2xl hover:underline"><a href="/blog/series/{{  include.type }}">{{ include.name }}</a></div>
-    {% for navigation in site.data.navigation[include.type] %}
-    <div class="mb-1 font-semibold mt-4">{{ navigation.title }}</div>
-    {% for nav in navigation.children %}
-    <div class="mb-1">
-      <a href="{{ nav.url | relative_url }}" class="hover:underline"><span class="nav__sub-title">{{ nav.title }}</span></a>
-      {% if nav.children != null %}
-        {% for child in nav.children %}
-        <li class="mb-1 series-item"><a href="{{ child.url | relative_url }}" {% if child.url==page.url %}
-            class="active text-sm font-semibold hover:underline" {% else %} class="text-sm text-gray-600 hover:underline"
-            {% endif %}>
-            {% if child.url == page.url %}<div class="series-indicator">&#x2192;</div>{% endif %} {{ child.title }}
-          </a>
-        </li>
-        {% endfor %}
+<div class="p-4 pl-6 {{ include.style }}">
+  <div class="font-semibold text-2xl hover:underline"><a href="/blog/series/{{ include.type }}">{{ include.name }}</a></div>
+  {% for navigation in site.data.navigation[include.type] %}
+      {% if navigation.children %}
+          <div class="mb-1 font-semibold mt-4">{{ navigation.title }}</div>
+          {% for nav in navigation.children %}
+              <div class="mb-1">
+                  <a href="{{ nav.url | relative_url }}" class="hover:underline"><span class="nav__sub-title">{{ nav.title }}</span></a>
+                  {% if nav.children %}
+                      {% for child in nav.children %}
+                          <li class="mb-1 series-item">
+                              <a href="{{ child.url | relative_url }}" {% if child.url==page.url %}class="active text-sm font-semibold hover:underline"{% else %}class="text-sm text-gray-600 hover:underline"{% endif %}>
+                                  {% if child.url == page.url %}<div class="series-indicator">&#x2192;</div>{% endif %} {{ child.title }}
+                              </a>
+                          </li>
+                      {% endfor %}
+                  {% endif %}
+              </div>
+          {% endfor %}
       {% endif %}
-      </div>  
-    {% endfor %}
-    {% endfor %}
-  </div>
+  {% endfor %}
+</div>

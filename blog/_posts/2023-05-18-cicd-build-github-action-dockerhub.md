@@ -3,9 +3,9 @@ title: "Create Automated CI/CD Builds Using GitHub Actions and DockerHub"
 categories:
   - Tutorials
 toc: true
+nav: gha
 author: Rose Chege
 editor: Mustapha Ahmad Ayodeji
-
 internal-links:
  - CI/CD
  - Github Actions
