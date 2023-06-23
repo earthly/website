@@ -295,6 +295,8 @@ Thank you for taking the time to read our article about Github Actions and Earth
 - [Earthly Github project](https://github.com/earthly/)
 - [The code for this article](https://github.com/earthly/earthly-vs-gha)
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 - [ ] Add in Author page
@@ -304,4 +306,3 @@ Thank you for taking the time to read our article about Github Actions and Earth
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
