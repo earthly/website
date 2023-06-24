@@ -315,5 +315,4 @@ Thank you for taking the time to read our article about Github Actions and Earth
 
 ## Outside Article Checklist
 
-- [ ] Add in Author page
 - [ ] Create header image in Canva
