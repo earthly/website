@@ -467,3 +467,7 @@ Christoph Berger:
     name    : "Christoph Berger"
     bio     : "Christoph is a technical writer specializing in Go (the language) and has a broad interest in IT. When he's not writing articles, he helps developers become successful with Go."
     avatar  : "/assets/images/authors/christoph-berger.jpg"
+Rahul K:
+    name    : "Rahul K"
+    bio     : "Rahul is developer and tech enthusiast. He also writes for technology focused companies. He is interested in programming, learning, and sharing knowledge."
+    avatar  : "/assets/images/authors/rahul-k.png"

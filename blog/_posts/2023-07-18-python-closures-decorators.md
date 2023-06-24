@@ -3,7 +3,7 @@ title: "An Introduction To Closures and Decorators in Python"
 categories:
   - Tutorials
 toc: true
-author: Adam
+author: Rahul K
 
 internal-links:
  - just an example
@@ -378,7 +378,6 @@ Closures and decorators are programming concepts in Python that enable developer
 
 ## Outside Article Checklist
 
-- [ ] Add in Author page
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
