@@ -372,5 +372,4 @@ Closures and decorators are programming concepts in Python that enable developer
 
 ## Outside Article Checklist
 
-- [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
