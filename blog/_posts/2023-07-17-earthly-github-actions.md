@@ -3,7 +3,7 @@ title: "Better Together - Earthly + Github Actions"
 categories:
   - Tutorials
 toc: true
-author: Adam
+author: Evan Pease
 
 internal-links:
  - Earthly
@@ -312,7 +312,3 @@ Thank you for taking the time to read our article about Github Actions and Earth
 - [The code for this article](https://github.com/earthly/earthly-vs-gha)
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-- [ ] Create header image in Canva
