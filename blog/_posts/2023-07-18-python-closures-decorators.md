@@ -19,13 +19,13 @@ At the outset, it is imperative to mention that closures and decorators might lo
 
 Before diving deeper into the concept of closures and decorators, let's start with simple pedagogical examples of both using code.
 
-##  A Simple Closure Example
+## A Simple Closure Example
 
 Put simply, a closure is a function that can remember and access the values of variables from its surrounding environment, even after the execution of the outer function has finished.
 
 In Python, closures can be created by defining a function inside another function and returning the inner function. Here is an example:
 
-```python
+~~~
 
 def outer_function(x):
     def inner_function(y):
@@ -34,7 +34,7 @@ def outer_function(x):
 
 closure = outer_function(5)
 print(closure(3))  # Output: 8
-```
+~~~
 
 In the example provided above, the 'outer_function' takes an argument 'x' and defines an inner function called 'inner_function' that takes another argument 'y' and returns the sum of 'x' and 'y.'
 
@@ -56,7 +56,7 @@ Implementing decorators: Closures are also used to implement decorators in Pytho
 
 Now you will learn how data hiding can be simplified with the use of closures compared to the class method. Therefore a comparative approach will be followed to explain it better. To start with, here is an example of how to use a class to hide data in Python
 
-```python
+~~~
 
 class SecureData:
     def __init__(self, data):
@@ -73,7 +73,8 @@ secure_data = SecureData('my sensitive data')
 
 print(secure_data.get_data('secret'))  # Output: 'my sensitive data'
 print(secure_data.get_data('wrong password'))  # Output: None
-```
+~~~
+
 The `SecureData` class has an `__init__` method that initializes two instance variables: `data` and `password`.
 
 The `get_data` method is defined within the `SecureData` class, which takes a password as a parameter. It compares the provided password with the `password` instance variable of the class. If they match, it returns the `data` instance variable. Otherwise, it returns `None`.
@@ -82,11 +83,11 @@ To retrieve the secure data, an instance of the `SecureData` class is created (`
 
 The output of this code is `my sensitive data` when the correct password is provided and `None` when an incorrect password is provided.
 
-By using a class, the data and associated behavior are encapsulated within the class methods. The instance variables (`data` and `password`) are accessible and modifiable only through the defined methods of the class, providing data hiding and access control. 
+By using a class, the data and associated behavior are encapsulated within the class methods. The instance variables (`data` and `password`) are accessible and modifiable only through the defined methods of the class, providing data hiding and access control.
 
 Now let us move to the closures. Here is an example of how to use closures to hide data in Python:
 
-```python
+~~~
 
 def create_secure_data(data):
     password = 'secret'
@@ -108,16 +109,16 @@ secure_data = create_secure_data('my sensitive data')
 print(secure_data('secret')) # Output: 'my sensitive data'
 print(secure_data('wrong password')) 
 
-```
+~~~
 
 In this example, the `create_secure_data` function takes in some data and returns an inner function `get_data`. The `get_data` function takes in a password as an argument and checks if it matches the password variable defined in the outer function. If the password is correct, the `get_data` function returns the enclosed data variable, otherwise, it returns `None`.
 By using closures in this way, you have hidden the data variable and only allow access to it if the correct password is provided. This provides a simple way of implementing data hiding in Python.
 
-## What are Decorators
+## What Are Decorators
 
 A decorator is a higher-order function that takes another function as an argument, adds some functionality to it, and returns a new function without modifying the original function's source code. Decorators allow you to modify the behavior of functions or classes by wrapping them inside another function. Here is an example:
 
-```python
+~~~
 
 def decorator_function(func):
     def wrapper_function():
@@ -131,29 +132,29 @@ def hello():
     print("Hello, world!")
 
 hello()
-```
+~~~
 
 Run the above code and you will receive an output similar to this:
 
-```output
+~~~
 
 Before function is called.
 Hello, world!
 After function is called.
-```
+~~~
 
 In the example provided above, you define a decorator function 'decorator_function' that takes a function 'func' as an argument and returns a new function 'wrapper_function.' The 'wrapper_function' adds some functionality to the original function 'func.'
 The '@decorator_function' syntax is used to decorate the 'hello' function with the 'decorator_function' decorator. When 'hello' is called, it is actually calling the 'wrapper_function' returned by 'decorator_function.' This allows modifying the behavior of `hello` without changing its source code directly.
 
 When 'hello' is called, it prints "Before function is called." using the print function, then it calls the original func (which in this case is print("Hello, world!")), and finally it prints "After function is called."
 
-##  Exploring Decorators in Detail
+## Exploring Decorators in Detail
 
 In Python, decorators enable [meta-programming](https://en.wikipedia.org/wiki/Metaprogramming), which refers to a programming technique in which the code can manipulate other code at either compile-time or run-time. So as an example of metaprogramming technique, decorators provide a means to modify the behavior of functions or classes without modifying their source code.
 
 Here's an example of how to use decorators for meta-programming in Python:
 
-```python
+~~~
 
 def debug(func):
     def wrapper(*args, **kwargs):
@@ -170,7 +171,7 @@ def add(a, b):
 
 result = add(3, 5)
 print(result)  
-```
+~~~
 
 In this example, you define a decorator called `debug` that adds debugging information to the decorated function. The `debug` decorator wraps the original function (`add`) with a closure function called `wrapper`. The `wrapper` function prints the function name, arguments, and keyword arguments before calling the original function. It also prints the returned result after executing the original function.
 
@@ -180,39 +181,40 @@ When you call `add(3, 5)`, the `debug` decorator intercepts the function call, p
 
 So, the output of the example would be:
 
-```output
+~~~
 Calling add with args: (3, 5), kwargs: {}
 add returned: 8
 8
-```
+~~~
 
 Now, to test the `add` function further, let us feed the keyword arguments to the `add` function. For example, run the following modified code:
 
-```python
+~~~
 
 result2 = add(a="pin", b="point")
 print(result2)  
-```
+~~~
 
 And you will get the following output, printing the keys and :
 
-```output
+~~~
 
 Calling add with args: (), kwargs: {'a': 'pin', 'b': 'point'}
 add returned: pinpoint
 pinpoint
-```
+~~~
+
 You see once you created your debug decorator it can be applied to any function which takes arguments or keyword arguments.
 
 In summary, decorators are a powerful feature in Python that can be used for meta-programming, enabling you to modify the behavior of functions and classes without altering their source code.
 
 Having understood the meta-programming example, you should turn to another use, i.e., runtime modification of a function.
 
-###  Runtime Modification of a Class Using Decorators in Python
+### Runtime Modification of a Class Using Decorators in Python
 
-In Python, decorators can be used for runtime modification of a class as well. Decorators can add or modify behavior of a class without modifying its source code. Here you will understand how to implement  [the singleton pattern](https://python-patterns.guide/gang-of-four/singleton/) using decorators. In software design, the singleton pattern is a pattern where only a single instance of a class is instantiated and used throughout the designed system.  Here's an example code: 
+In Python, decorators can be used for runtime modification of a class as well. Decorators can add or modify behavior of a class without modifying its source code. Here you will understand how to implement  [the singleton pattern](https://python-patterns.guide/gang-of-four/singleton/) using decorators. In software design, the singleton pattern is a pattern where only a single instance of a class is instantiated and used throughout the designed system. Here's an example code:
 
-```python
+~~~
 
 def make_singleton(cls):
     instances = {}
@@ -238,7 +240,7 @@ connection1 = DatabaseConnection("https://example.com/db")
 connection2 = DatabaseConnection("https://example.com/db")
 
 print(connection1 is connection2)  # Output: True
-```
+~~~
 
 In this example, you define a decorator called `make_singleton` that transforms a class into a singleton. The `make_singleton` decorator wraps the class with a closure function called `wrapper`. The `wrapper` function maintains a dictionary `instances` to keep track of instances of the class. When creating a new instance, the decorator checks if an instance of the class already exists. If it does, the existing instance is returned. Otherwise, a new instance is created and stored in the `instances` dictionary.
 
@@ -254,7 +256,7 @@ This approach can be used to add any kind of behavior to a function or class at 
 
 In Python, decorators can be used for timing purposes to measure the execution time of a function. Timing a function can be useful for optimizing its performance or measuring its efficiency. Here's an example of how to use decorators for timing purposes:
 
-```python
+~~~
 
 import time
 
@@ -272,12 +274,13 @@ def my_function():
     time.sleep(2)
 
 my_function()
-```
+~~~
+
 Run the above code, you will receive an output similar to this:
 
-```
+~~~
 Execution time: 2.0001144409179688
-```
+~~~
 
 You observe that applying the decorator `@timer to my_funcation()` also prints the time duration of the execution of the function.
 
@@ -286,7 +289,7 @@ You observe that applying the decorator `@timer to my_funcation()` also prints t
 You can apply multiple decorators to a single function in Python. When you apply multiple decorators to a function, the decorators are applied from the inside out. That is, the innermost decorator is applied first, followed by the next innermost, and so on until the outermost decorator is applied.
 Here's an example of how to apply multiple decorators to a single function:
 
-```python
+~~~
 
 def decorator1(func):
     def wrapper():
@@ -308,20 +311,20 @@ def my_function():
     print("my_function")
 
 my_function()
-```
+~~~
 
 In the above example, two decorators, `decorator1` and `decorator2`, are defined, which add some print statements before and after the decorated function is called. Then, both decorators are applied to the `my_function` function using the `@decorator1` and `@decorator2` syntax.
 
 When you call `my_function()`, the output will be:
 
-```output
+~~~
 
 Before decorator1
 Before decorator2
 my_function
 After decorator2
 After decorator1
-```
+~~~
 
 As you can see, the decorators are applied from the inside out, so `decorator2` is applied first, followed by `decorator1`.
 
@@ -330,7 +333,7 @@ As you can see, the decorators are applied from the inside out, so `decorator2` 
 As the most advanced application of decorators in Python, you can also use decorators to perform type-checking of function parameters. This approach can be useful if you want to add type-checking to existing functions without modifying their source code.
 Here's an example of how to use a decorator to do type checking of function parameters:
 
-```python
+~~~
 
 def type_check(func):
     def wrapper(*args, **kwargs):
@@ -342,13 +345,13 @@ def type_check(func):
         # call the original function with the given arguments
         return func(*args, **kwargs)
     return wrapper
-```
+~~~
 
-This decorator function takes the original function as an argument and returns a new  wrapper function that can take any number of positional and keyword arguments `*args` and `**kwargs`. It then iterates over the function arguments and their types, which are specified using function annotations. For each argument, it checks if the argument type is correct using the `isinstance()` function. If the argument type is incorrect, it raises a `TypeError` with a helpful error message. If all the arguments are of the correct type, it calls the original function with the given arguments and returns its result.
+This decorator function takes the original function as an argument and returns a new wrapper function that can take any number of positional and keyword arguments `*args` and `**kwargs`. It then iterates over the function arguments and their types, which are specified using function annotations. For each argument, it checks if the argument type is correct using the `isinstance()` function. If the argument type is incorrect, it raises a `TypeError` with a helpful error message. If all the arguments are of the correct type, it calls the original function with the given arguments and returns its result.
 
 Here's an example usage of this decorator:
 
-```python
+~~~
 
 @type_check
 def add(x: int, y: int) -> int:
@@ -356,14 +359,14 @@ def add(x: int, y: int) -> int:
 
 print(add(1, 2))  # Output: 3
 print(add("1", "2"))  # Raises: TypeError: Argument 1 has incorrect type <class 'str'>
-```
+~~~
 
 In this example, the `add()` function is decorated with the `type_check()` decorator. The function takes two integer arguments, `x` and `y`, and returns their sum as an integer. The function annotations specify the argument types and the return type of the function.
 When you call the `add()` function with two integer arguments, it returns their sum as expected. However, when you call the function with two string arguments, the decorator raises a `TypeError` with a helpful error message indicating that the first argument has an incorrect type.
 
 This approach can be used to add type-checking to any function that you want to modify. You can apply the `type_check` decorator to any function that you want to check, and it will automatically perform type-checking on its arguments.
 
-In summary, decorators can be used for  performing type checking of function parameters in Python. This approach allows you to add type checking to existing functions without modifying their source code and can be helpful in catching type errors before the code is executed.
+In summary, decorators can be used for performing type checking of function parameters in Python. This approach allows you to add type checking to existing functions without modifying their source code and can be helpful in catching type errors before the code is executed.
 
 You have seen multiple uses of decorators above. So it can be summarised that decorators are a powerful feature in Python that can be used for runtime modification of a function or class, allowing you to add or modify behavior without changing their source code.
 
@@ -380,6 +383,5 @@ Closures and decorators are programming concepts in Python that enable developer
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
