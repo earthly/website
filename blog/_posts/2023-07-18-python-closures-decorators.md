@@ -371,6 +371,8 @@ You have seen multiple uses of decorators above. So it can be summarised that de
 
 Closures and decorators are programming concepts in Python that enable developers to write more flexible and powerful code. Closures enable you to create functions that can retain access to the values in their outer scope, even after the execution of the outer function has finished. On the other hand, decorators allow you to modify the behavior of functions or classes without altering their source code. By combining closures and decorators, you can create even more powerful and flexible functions and classes that can further enhance the functionality and reusability of your code.
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 - [ ] Add in Author page
@@ -381,4 +383,3 @@ Closures and decorators are programming concepts in Python that enable developer
 - [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
