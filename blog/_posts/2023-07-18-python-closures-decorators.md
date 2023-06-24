@@ -19,7 +19,7 @@ At the outset, it is imperative to mention that closures and decorators might lo
 
 **Closures**: A closure is a function object that remembers values in the enclosing scope, even if they are not present in memory. A closure is created when a nested function references variables from its enclosing scope. The closure "closes over" the variables it references, thus preserving their values even if the enclosing scope is no longer active. Closures are often used to implement data encapsulation and maintain the state between function calls.
 
-**Decorators: A decorator is a way to modify the behavior of a function or a class without directly changing its source code. It allows adding functionality to an existing function or class by wrapping it with another function or class. Decorators are commonly used for tasks such as logging, timing, input validation, authentication, and more. They provide a method to separate concerns and keep the code modular and reusable.
+**Decorators**: A decorator is a way to modify the behavior of a function or a class without directly changing its source code. It allows adding functionality to an existing function or class by wrapping it with another function or class. Decorators are commonly used for tasks such as logging, timing, input validation, authentication, and more. They provide a method to separate concerns and keep the code modular and reusable.
 
 Before diving deeper into the concept of closures and decorators, let's start with simple pedagogical examples of both using code.
 
@@ -50,6 +50,8 @@ Finally, `closure` is called with argument '3', which adds '3' to the value of '
 Therefore, the output of the code is '8', which demonstrates that the inner function 'inner_function' has retained the value of 'x' from the outer scope, even after the execution of the 'outer_function' has finished.
 
 ## Why and How to Use Closures
+
+![Why]({{site.images}}{{page.slug}}/why.png)\
 
 Closures are used in Python for various reasons, such as:
 
@@ -149,6 +151,8 @@ The '@decorator_function' syntax is used to decorate the 'hello' function with t
 When 'hello' is called, it prints "Before function is called." using the print function, then it calls the original func (which in this case is print("Hello, world!")), and finally it prints "After function is called."
 
 ## Exploring Decorators in Detail
+
+![Exploring]({{site.images}}{{page.slug}}/exploring.png)\
 
 In Python, decorators enable [meta-programming](https://en.wikipedia.org/wiki/Metaprogramming), which refers to a programming technique in which the code can manipulate other code at either compile-time or run-time. So as an example of metaprogramming technique, decorators provide a means to modify the behavior of functions or classes without modifying their source code.
 
@@ -250,6 +254,8 @@ This approach is useful when you need to have a single instance of a class share
 This approach can be used to add any kind of behavior to a function or class at runtime. For example, you can use a decorator to add logging, error handling, performance monitoring, or any other functionality that you want to apply to multiple functions.
 
 ## Decorators for Timing Purposes in Python
+
+![Timing]({{site.images}}{{page.slug}}/timing.png)\
 
 In Python, decorators can be used for timing purposes to measure the execution time of a function. Timing a function can be useful for optimizing its performance or measuring its efficiency. Here's an example of how to use decorators for timing purposes:
 
@@ -369,7 +375,3 @@ You have seen multiple uses of decorators above. So it can be summarised that de
 Closures and decorators are programming concepts in Python that enable developers to write more flexible and powerful code. Closures enable you to create functions that can retain access to the values in their outer scope, even after the execution of the outer function has finished. On the other hand, decorators allow you to modify the behavior of functions or classes without altering their source code. By combining closures and decorators, you can create even more powerful and flexible functions and classes that can further enhance the functionality and reusability of your code.
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-- [ ] Optional: Find ways to break up content with quotes or images
