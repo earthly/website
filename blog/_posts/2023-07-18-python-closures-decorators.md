@@ -29,8 +29,7 @@ Put simply, a closure is a function that can remember and access the values of v
 
 In Python, closures can be created by defining a function inside another function and returning the inner function. Here is an example:
 
-~~~
-
+~~~{.python caption=""}
 def outer_function(x):
     def inner_function(y):
         return x + y
@@ -60,8 +59,7 @@ Implementing decorators: Closures are also used to implement decorators in Pytho
 
 Now you will learn how data hiding can be simplified with the use of closures compared to the class method. Therefore a comparative approach will be followed to explain it better. To start with, here is an example of how to use a class to hide data in Python
 
-~~~
-
+~~~{.python caption=""}
 class SecureData:
     def __init__(self, data):
         self.data = data
@@ -91,8 +89,7 @@ By using a class, the data and associated behavior are encapsulated within the c
 
 Now let us move to the closures. Here is an example of how to use closures to hide data in Python:
 
-~~~
-
+~~~{.python caption=""}
 def create_secure_data(data):
     password = 'secret'
 
@@ -106,13 +103,14 @@ def create_secure_data(data):
 
 secure_data = create_secure_data('my sensitive data')
 
-# Now, the 'secure_data' variable contains a reference to the inner function 'get_data'
-# which can access the 'password' and 'data' variables of the outer function 'create_secure_data'.
+# Now, the 'secure_data' variable contains a reference to 
+# the inner function 'get_data' which can access the 'password' 
+# and 'data' variables of the outer function 'create_secure_data'.
 
-# To retrieve the secure data, you need to call the 'secure_data' function with the correct password.
+# To retrieve the secure data, you need to call the 'secure_data' 
+# function with the correct password.
 print(secure_data('secret')) # Output: 'my sensitive data'
 print(secure_data('wrong password')) 
-
 ~~~
 
 In this example, the `create_secure_data` function takes in some data and returns an inner function `get_data`. The `get_data` function takes in a password as an argument and checks if it matches the password variable defined in the outer function. If the password is correct, the `get_data` function returns the enclosed data variable, otherwise, it returns `None`.
@@ -122,8 +120,7 @@ By using closures in this way, you have hidden the data variable and only allow 
 
 A decorator is a higher-order function that takes another function as an argument, adds some functionality to it, and returns a new function without modifying the original function's source code. Decorators allow you to modify the behavior of functions or classes by wrapping them inside another function. Here is an example:
 
-~~~
-
+~~~{.python caption=""}
 def decorator_function(func):
     def wrapper_function():
         print("Before function is called.")
@@ -140,8 +137,7 @@ hello()
 
 Run the above code and you will receive an output similar to this:
 
-~~~
-
+~~~{ caption="Output"}
 Before function is called.
 Hello, world!
 After function is called.
@@ -158,11 +154,11 @@ In Python, decorators enable [meta-programming](https://en.wikipedia.org/wiki/Me
 
 Here's an example of how to use decorators for meta-programming in Python:
 
-~~~
-
+~~~{.python caption=""}
 def debug(func):
     def wrapper(*args, **kwargs):
-        print(f"Calling {func.__name__} with args: {args}, kwargs: {kwargs}")
+        print(f"Calling {func.__name__} with args: {args}, \
+        kwargs: {kwargs}")
         result = func(*args, **kwargs)
         print(f"{func.__name__} returned: {result}")
         return result
@@ -185,7 +181,7 @@ When you call `add(3, 5)`, the `debug` decorator intercepts the function call, p
 
 So, the output of the example would be:
 
-~~~
+~~~{ caption="Output"}
 Calling add with args: (3, 5), kwargs: {}
 add returned: 8
 8
@@ -193,16 +189,14 @@ add returned: 8
 
 Now, to test the `add` function further, let us feed the keyword arguments to the `add` function. For example, run the following modified code:
 
-~~~
-
+~~~{.python caption=""}
 result2 = add(a="pin", b="point")
 print(result2)  
 ~~~
 
 And you will get the following output, printing the keys and :
 
-~~~
-
+~~~{ caption="Output"}
 Calling add with args: (), kwargs: {'a': 'pin', 'b': 'point'}
 add returned: pinpoint
 pinpoint
@@ -218,8 +212,7 @@ Having understood the meta-programming example, you should turn to another use, 
 
 In Python, decorators can be used for runtime modification of a class as well. Decorators can add or modify behavior of a class without modifying its source code. Here you will understand how to implement  [the singleton pattern](https://python-patterns.guide/gang-of-four/singleton/) using decorators. In software design, the singleton pattern is a pattern where only a single instance of a class is instantiated and used throughout the designed system. Here's an example code:
 
-~~~
-
+~~~{.python caption=""}
 def make_singleton(cls):
     instances = {}
 
@@ -260,8 +253,7 @@ This approach can be used to add any kind of behavior to a function or class at 
 
 In Python, decorators can be used for timing purposes to measure the execution time of a function. Timing a function can be useful for optimizing its performance or measuring its efficiency. Here's an example of how to use decorators for timing purposes:
 
-~~~
-
+~~~{.python caption=""}
 import time
 
 def timer(func):
@@ -282,7 +274,7 @@ my_function()
 
 Run the above code, you will receive an output similar to this:
 
-~~~
+~~~{ caption="Output"}
 Execution time: 2.0001144409179688
 ~~~
 
@@ -293,8 +285,7 @@ You observe that applying the decorator `@timer to my_funcation()` also prints t
 You can apply multiple decorators to a single function in Python. When you apply multiple decorators to a function, the decorators are applied from the inside out. That is, the innermost decorator is applied first, followed by the next innermost, and so on until the outermost decorator is applied.
 Here's an example of how to apply multiple decorators to a single function:
 
-~~~
-
+~~~{.python caption=""}
 def decorator1(func):
     def wrapper():
         print("Before decorator1")
@@ -321,8 +312,7 @@ In the above example, two decorators, `decorator1` and `decorator2`, are defined
 
 When you call `my_function()`, the output will be:
 
-~~~
-
+~~~{ caption="Output"}
 Before decorator1
 Before decorator2
 my_function
@@ -337,15 +327,15 @@ As you can see, the decorators are applied from the inside out, so `decorator2` 
 As the most advanced application of decorators in Python, you can also use decorators to perform type-checking of function parameters. This approach can be useful if you want to add type-checking to existing functions without modifying their source code.
 Here's an example of how to use a decorator to do type checking of function parameters:
 
-~~~
-
+~~~{.python caption=""}
 def type_check(func):
     def wrapper(*args, **kwargs):
         # iterate over the function arguments and their types
         for arg, arg_type in zip(args, func.__annotations__.values()):
             # check if the argument type is correct
             if not isinstance(arg, arg_type):
-                raise TypeError(f"Argument {arg} has incorrect type {type(arg)}")
+                raise TypeError(f"Argument {arg} has incorrect type \
+                {type(arg)}")
         # call the original function with the given arguments
         return func(*args, **kwargs)
     return wrapper
@@ -355,14 +345,14 @@ This decorator function takes the original function as an argument and returns a
 
 Here's an example usage of this decorator:
 
-~~~
-
+~~~{.python caption=""}
 @type_check
 def add(x: int, y: int) -> int:
     return x + y
 
 print(add(1, 2))  # Output: 3
-print(add("1", "2"))  # Raises: TypeError: Argument 1 has incorrect type <class 'str'>
+print(add("1", "2"))  
+# Raises: TypeError: Argument 1 has incorrect type <class 'str'>
 ~~~
 
 In this example, the `add()` function is decorated with the `type_check()` decorator. The function takes two integer arguments, `x` and `y`, and returns their sum as an integer. The function annotations specify the argument types and the return type of the function.
