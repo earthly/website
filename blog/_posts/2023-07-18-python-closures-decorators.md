@@ -6,7 +6,11 @@ toc: true
 author: Rahul K
 
 internal-links:
- - just an example
+ - Closures
+ - Decorators
+ - Python
+ - Function Modification
+ - Variable Hiding
 ---
 
 Python is a high-level general-purpose language that supports classes as part of its built-in object-oriented programming (OOP) paradigm. Occasionally, when working with variables in Python, you may want to hide a variable without writing an unnecessary class to keep the code more maintainable. Moreover, you may want to add minor functionality to a function without creating another redundant function. In such scenarios, closures, and decorators can be used as solutions: closures for variable hiding and decorators for function modification. This guide will demonstrate the concept of closures and decorators, explain how and where to use them, and explain when it's most appropriate to use them instead of traditional classes and unnecessary functions.
@@ -380,5 +384,3 @@ Closures and decorators are programming concepts in Python that enable developer
 
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-
-- [ ] Add keywords for internal links to front-matter
