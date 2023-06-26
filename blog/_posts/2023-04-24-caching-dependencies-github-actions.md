@@ -7,7 +7,7 @@ sidebar:
   nav: github-actions
 author: Cameron Pavey
 editor: Bala Priya C
-
+last_modified_at: 2023-06-26
 internal-links:
  - Caching
  - Dependencies
@@ -22,7 +22,7 @@ These issues are especially impactful if you're on a large team with numerous de
 
 One way to save time is to cache your package manager dependencies in your GitHub Actions rather than download fresh packages for every workflow you run. In this article, you'll learn how to use the `cache` action to do this and improve the efficiency of your workflows.
 
-## How GitHub Actions Caching Works
+## How The GitHub Actions Cache Works
 
 ![How]({{site.images}}{{page.slug}}/how.png)\
 
@@ -54,7 +54,7 @@ In practice, this means that if you have a branch called `feature-b` that is bas
 
 This is because the cache access restrictions do not allow workflow runs to use caches created in sibling or child branches. Realistically, these restrictions shouldn't impede your use of the caching mechanism, as it's unlikely you would need to pull a cache from a branch other than your current, base, or default branch in most cases.
 
-## Using the Cache Action
+## Using the Cache Action: `actions/cache@v3`
 
 This section will show you how to configure the `cache` action for a GitHub workflow. As with any other action, there are a few input parameters that you can define to control the behavior of the action. These include the following:
 
