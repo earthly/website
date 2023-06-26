@@ -3,7 +3,8 @@ title: "Using GitHub Actions to Run, Test, Build, and Deploy Docker Containers"
 categories:
   - Tutorials
 toc: true
-nav: github-actions
+sidebar:
+  nav: github-actions
 author: James Olaogun
 editor: Bala Priya C
 
@@ -14,16 +15,11 @@ internal-links:
  - Build
  - Docker Container
 ---
+**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. This article is about GitHub Actions, if you'd like to see how Earthly can improve your GitHub Actions builds then [check us out](/earthly-github-actions).**
 
-[GitHub Actions](https://github.com/features/actions) is a flexible tool that enables developers to automate a variety of processes, including developing, testing, and deploying, right from their GitHub repositories. The automation of [Docker](https://www.docker.com/) containers is no exception since GitHub Actions also enables developers to automate the process of developing containerized applications. As a result, developers can save time and focus on improving the overall quality of their software.
+GitHub Actions is a flexible tool that enables developers to automate a variety of processes, including developing, testing, and deploying, right from their GitHub repositories. The automation of Docker containers is no exception since GitHub Actions also enables developers to automate the process of developing containerized applications. As a result, developers can save time and focus on improving the overall quality of their software.
 
 In this article, you'll learn how to use Github Actions to run, test, build, and deploy Docker containers using GitHub Actions.
-
-## What Is GitHub Actions?
-
-As previously stated, GitHub Actions is a platform for automating software workflows directly from a GitHub repository. With GitHub Actions, you can create workflows that are triggered by events, such as a push to the main branch or the creation of a new pull request in your GitHub repo. These workflows then run a series of actions, such as checking the code for syntax errors, building a Docker image, or deploying to a hosting platform.
-
-In this tutorial, you'll be making use of the [GitHub Actions starter workflow](https://docs.github.com/en/actions/using-workflows/using-starter-workflows) examples. These examples can be used as a starting point for your automation pipelines and provide a good foundation for understanding how GitHub Actions works.
 
 ## How to Run, Test, Build, and Deploy Docker Containers Using GitHub Actions
 
@@ -52,7 +48,7 @@ At this point, you have two options: you can either select any of the workflow e
 </div>
 
 <div class="notice--info">
-The GitHub workflow configuration is always in YAML format, and you'll see many of the following popular [parent key-value pairs](https://www.techopedia.com/definition/13645/key-value-pair-kvp) in your workflows:
+The GitHub workflow configuration is always in YAML format, and you'll see many of the following popular parent key-value pairs in your workflows:
 
 - **`name`** defines a unique name for the workflow.
 - **`on`** specifies the trigger for the workflow, such as when a push is made to the repository or a pull request is opened.
@@ -109,6 +105,16 @@ act -s GITHUB_TOKEN={{YOUR_GITHUB_TOKEN}}
 ~~~
 
 Make sure to replace `{{YOUR_GITHUB_TOKEN}}` with your generated token. If it is your first time running the command, you will be asked to select the default image you want to use with `act`. You can select the "medium" image.
+
+<div class="notice--warning">
+
+### ❗Act Problems? 
+
+`Act` can run simple GitHub Action workflow locally using a farily large docker container. But not all features of GitHub Actions work well with `Act`. 
+
+An alternate approach covered in [other articles](/earthly-github-actions) is to write your workflow in an Earthfile. An Earthfile can be run locally or in any CI.
+
+</div>
 
 When finished, clone your GitHub repo with the workflow file if you haven't, and proceed to use Act to run your GitHub Actions locally by running the `act -n` command to [dry run](https://en.wikipedia.org/wiki/Dry_run_(testing)) the workflow. You should see the run log:
 
@@ -204,8 +210,6 @@ You can also monitor the progress of the workflow by visiting the **Actions** ta
 
 In this tutorial, you learned how to create a new workflow, edit an existing workflow, set up the runner for your workflow, and locally set up and work with GitHub Actions. At this point, you should be confident that you can build GitHub Actions for your projects and speed up the development processes.
 
-After reading this article, it's recommended that you explore and experiment with the various actions, events, and workflows available in the GitHub Actions ecosystem to further enhance and automate your development processes.
+And if you're looking to continue building out your GHA workflows, consider using [Earthly](https://earthly.dev). Earthly runs everywhere, including GitHub Actions and can improve the reliability of your CI/CD pipelines. It works great with [GitHub Actions](/earthly-github-actions) and docker.
 
-If you want to see how Github Actions stacks up against other CI services, check out our comparison of [CI Free Tiers](/blog/ci-comparison).
-
-{% include_html cta/bottom-cta.html %}
+{% include_html cta/gha-cta1.html %}

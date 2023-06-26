@@ -4,7 +4,7 @@ categories:
   - Tutorials
 toc: true
 sidebar:
-  nav: "github-actions"
+  nav: github-actions
 author: Kumar Harsh
 editor: Mustapha Ahmad Ayodeji
 
