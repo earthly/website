@@ -23,7 +23,7 @@ To follow along with this guide, you require the following:
 
 - [Docker Engine](https://docs.docker.com/get-docker/) installed on your computer.
 - [AWS CLI](https://aws.amazon.com/cli/) installed.
-- [Git](https://git-scm.com/downloads) installed. 
+- [Git](https://git-scm.com/downloads) installed.
 - Basic knowledge of working with AWS and GitHub.
 
 The code used in this guide is on [GitHub](https://github.com/Rose-stack/nodes-app).
@@ -134,7 +134,7 @@ Review the above policy and enter the name of the policy; create the policy, and
 
 GitHub Actions requires a repository for hosting and sharing the code. It will trigger its workflow based on your current code on a GitHub repository.
 
-This Repository will host a simple sample Node.js applicatio. First, create the application locally as follows:
+This Repository will host a simple sample Node.js application. First, create the application locally as follows:
 
 From your terminal, initialize a Node.js application:
 

@@ -108,9 +108,9 @@ Make sure to replace `{{YOUR_GITHUB_TOKEN}}` with your generated token. If it is
 
 <div class="notice--warning">
 
-### ❗Act Problems? 
+### ❗Act Problems?
 
-`Act` can run simple GitHub Action workflow locally using a farily large docker container. But not all features of GitHub Actions work well with `Act`. 
+`Act` can run simple GitHub Action workflow locally using a fairly large docker container. But not all features of GitHub Actions work well with `Act`.
 
 An alternate approach covered in [other articles](/earthly-github-actions) is to write your workflow in an Earthfile. An Earthfile can be run locally or in any CI.
 

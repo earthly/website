@@ -187,11 +187,11 @@ The results should remain the same as when you tested the application locally. O
 
 ## Creating a Github Repository and Pushing the Application to Github
 
-GitHub actions require you to host your application code on a remote repository, including the `Dockerfile` containing the Docker commands. A GitHub repository stores your code and related files. 
+GitHub actions require you to host your application code on a remote repository, including the `Dockerfile` containing the Docker commands. A GitHub repository stores your code and related files.
 
 [Create a GitHub repository](https://docs.github.com/en/get-started/quickstart/create-a-repo) to add all your code and add you project so far to it.
 
-If you're not familar with Git then I recommend using a Git client with a graphical user interface (GUI), such as GitHub Desktop to make working with Git repositories on GitHub easier. Here's a brief overview of how to use GitHub Desktop to push code changes to your remote GitHub repository:
+If you're not familiar with Git then I recommend using a Git client with a graphical user interface (GUI), such as GitHub Desktop to make working with Git repositories on GitHub easier. Here's a brief overview of how to use GitHub Desktop to push code changes to your remote GitHub repository:
 
 - Open GitHub Desktop and log in using your GitHub account
 - Select the repository you have created on your GitHub page and open it with GithHub Desktop:
