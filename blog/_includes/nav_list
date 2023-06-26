@@ -1,5 +1,5 @@
 {% assign navigation = site.data.navigation[include.nav] %}
-{% assign navigation_title = site.data.series[include.nav] %}
+{% assign navigation_title = site.data.navigation[include.nav][0].title %}
 
 <div class="pt-3">
     <div class="group">

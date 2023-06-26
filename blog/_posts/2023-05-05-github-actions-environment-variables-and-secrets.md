@@ -3,7 +3,8 @@ title: "Working with GitHub Actions Environment Variables and Secrets"
 categories:
   - Tutorials
 toc: true
-nav: gha
+sidebar:
+  nav: "github-actions"
 author: Kumar Harsh
 editor: Mustapha Ahmad Ayodeji
 
@@ -13,7 +14,6 @@ internal-links:
  - Environment Variables
  - Secrets
 ---
-
 When you're working with continuous integration, continuous delivery (CI/CD) platforms, you'll work with environment variables and secrets, which are resources that help you conceal and reuse sensitive information, like keys and certificates, in your [CI/CD](/blog/ci-vs-cd) processes. These environmental variables and secrets also [make](/blog/using-cmake) it easy for you to manage your application environments by maintaining configuration sets that you can swap and use when running in different environments. You can also utilize expanding functions (*ie* functions that substitute [environment variable](/blog/bash-variables) values at runtime) and dynamic string templates (*ie* a method to help create multiple strings out of a template literal with different sets of environment variable values) to reuse secrets and simplify your code.
 
 Like most CI/CD platforms, [GitHub Actions](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions), a popular CI/CD platform, offers a way for you to manage your CI/CD environment variables and secrets. In this article, you'll learn how GitHub Actions work, when you should use them, and how to get started.

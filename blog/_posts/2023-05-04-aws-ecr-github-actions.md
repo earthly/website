@@ -3,7 +3,8 @@ title: "Deploy Applications to AWS ECR with a GitHub Actions CI/CD Pipeline"
 categories:
   - Tutorials
 toc: true
-nav: gha
+sidebar:
+  nav: github-actions
 author: Rose Chege
 editor: Bala Priya C
 internal-links:
