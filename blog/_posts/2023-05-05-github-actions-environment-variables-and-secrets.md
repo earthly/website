@@ -14,11 +14,11 @@ internal-links:
  - Environment Variables
  - Secrets
 ---
-When you're working with continuous integration, continuous delivery (CI/CD) platforms, you'll work with environment variables and secrets, which are resources that help you conceal and reuse sensitive information, like keys and certificates, in your [CI/CD](/blog/ci-vs-cd) processes. These environmental variables and secrets also [make](/blog/using-cmake) it easy for you to manage your application environments by maintaining configuration sets that you can swap and use when running in different environments. You can also utilize expanding functions (*ie* functions that substitute [environment variable](/blog/bash-variables) values at runtime) and dynamic string templates (*ie* a method to help create multiple strings out of a template literal with different sets of environment variable values) to reuse secrets and simplify your code.
+**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. This article is about GitHub Actions, if you'd like to see how Earthly can improve your GitHub Actions builds then [check us out](/earthly-github-actions).**
 
-Like most CI/CD platforms, [GitHub Actions](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions), a popular CI/CD platform, offers a way for you to manage your CI/CD environment variables and secrets. In this article, you'll learn how GitHub Actions work, when you should use them, and how to get started.
+When you're working with continuous integration, continuous delivery (CI/CD) platforms, you'll work with environment variables and secrets, which are resources that help you conceal and reuse sensitive information, like keys and certificates, in your CI/CD processes. These environmental variables and secrets also make it easy for you to manage your application environments by maintaining configuration sets that you can swap and use when running in different environments. You can also utilize expanding functions (*ie* functions that substitute [environment variable](/blog/bash-variables) values at runtime) and dynamic string templates (*ie* a method to help create multiple strings out of a template literal with different sets of environment variable values) to reuse secrets and simplify your code.
 
-To follow along, you'll need a [GitHub](/blog/ci-comparison) account to fork the repo and try out GitHub Actions. You'll also need some familiarity with YAML, the standard language for writing and managing [GitHub Actions](/blog/continuous-integration) configuration files.
+In this article, you'll learn how GitHub Actions work, when you should use them, and how to get started. To follow along, you'll need a GitHub account to fork the repo and try out GitHub Actions. You'll also need some familiarity with YAML, the standard language for writing and managing GitHub Actions configuration files.
 
 ![Guide]({{site.images}}{{page.slug}}/guide.png)\
 
@@ -26,7 +26,7 @@ To follow along, you'll need a [GitHub](/blog/ci-comparison) account to fork the
 
 GitHub Actions' environment variables and secrets are just like regular secrets. They help you hide and reuse sensitive information in your workflows. In most cases, you can define environment variables under an `env` node in your workflow configuration file.
 
-While [environment variables](/blog/bash-variables) are simple dynamic values that are plugged in at runtime, secrets are meant to be more secure and are encrypted before storing. They're usually managed by dedicated tools known as [secrets managers](https://www.cyberark.com/what-is/secrets-management/) to help create and view secrets while maintaining encryption. GitHub offers a built-in secrets manager tool in the form of [Actions variables](https://docs.github.com/en/actions/learn-github-actions/variables#creating-configuration-variables-for-a-repository).
+While environment variables are simple dynamic values that are plugged in at runtime, secrets are more secure and are encrypted at rest. They're usually managed by dedicated tools known as secrets managers to help create and view secrets while maintaining encryption. GitHub offers a built-in secrets manager tool in the form of [Actions variables](https://docs.github.com/en/actions/learn-github-actions/variables#creating-configuration-variables-for-a-repository).
 
 ### When to Use Environment Variables and Secrets
 
@@ -42,9 +42,9 @@ Now that you know when to use environment variables and secrets, the following w
 
 ### Getting the Repo Ready
 
-To make the tutorial easier, a [GitHub repo](https://github.com/krharsh17/gh-actions-tutorial) with a [Gatsby project](https://www.gatsbyjs.com/) has been created and hosted. You can get started by forking the repo to your own account.
+To make the tutorial easier, a [GitHub repo](https://github.com/krharsh17/gh-actions-tutorial) with a Gatsby project has been created and hosted. You can get started by forking the repo to your own account.
 
-Once you've forked the repo, set up a simple GitHub Actions workflow to build and deploy the app to [GitHub Pages](https://pages.github.com/), a static file hosting service offered by GitHub.
+Once you've forked the repo, set up a simple GitHub Actions workflow to build and deploy the app to GitHub Pages, a static file hosting service offered by GitHub.
 
 To set up the workflow, you need to set up GitHub Pages. Go to the **Settings** tab, click on **Pages** from the left navigation pane, and click on the **Source** drop-down in the **Build and deployment** section:
 
@@ -64,7 +64,7 @@ Next, search for Gatsby and click **Configure** on the workflow meant to package
 ![Configure the Gatsby deploy workflow]({{site.images}}{{page.slug}}/ATKriD6.png)
 </div>
 
-Now you should see the workflow YAML file in an editor where you can make changes to it before pushing it to your repo (and setting up the workflow in action). However, do not [make](/blog/makefiles-on-windows) any changes at this point. You'll revisit this file later on in the tutorial. For now, click on **Start commit > Commit new file**:
+Now you should see the workflow YAML file in an editor where you can make changes to it before pushing it to your repo (and setting up the workflow in action). However, do not make any changes at this point. You'll revisit this file later on in the tutorial. For now, click on **Start commit > Commit new file**:
 
 <div class="wide">
 ![Commit the GitHub Actions workflow config]({{site.images}}{{page.slug}}/6u826yt.png)
@@ -88,7 +88,7 @@ You've now finished setting up the project. Next, you'll learn how to set up env
 
 ### How to Define an Environment Variable for a Step
 
-Defining an environment variable for one [step](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions#jobs:~:text=Each%20step%20is%20either%20a%20shell%20script%20that%20will%20be%20executed%2C%20or%20an%20action%20that%20will%20be%20run.) is relatively simple. Open the `.github/workflows/gatsby.yml` file and add the following steps after the **Checkout** step:
+Defining an environment variable for one step is relatively simple. Open the `.github/workflows/gatsby.yml` file and add the following steps after the **Checkout** step:
 
 ~~~{.yml caption="gatsby.yml"}
 - name: Print host name
@@ -177,7 +177,7 @@ This indicates that the variable has been set up correctly in the workflow's sco
 
 ### How to Store a Certificate in GitHub Actions
 
-You might encounter use cases where you need your GitHub Actions workflows to be able to access certificates to sign builds or attach [SSL certificates/keys](https://www.kaspersky.com/resource-center/definitions/what-is-a-ssl-certificate) to your builds. These keys/certificates are highly sensitive, and you don't want to expose them in your build logs. This means you need to hide them behind GitHub repo environment variables instead of defining them in the workflow config file itself.
+You might encounter use cases where you need your GitHub Actions workflows to be able to access certificates to sign builds or attach SSL certificates/keys to your builds. These keys/certificates are highly sensitive, and you don't want to expose them in your build logs. This means you need to hide them behind GitHub repo environment variables instead of defining them in the workflow config file itself.
 
 You also need to encode them to ensure that special (non-alphanumeric) characters may not be misinterpreted by the build environment when fetching the value from the repo `env` variables.
 
@@ -223,7 +223,7 @@ Signature Algorithm: sha256WithRSAEncryption
          69:c3:14:21
 ~~~
 
-To store this in a GitHub repo environment variable, you'll need to encode it using the [Base64](https://developer.mozilla.org/en-US/docs/Glossary/Base64) encoding scheme. Base64 is a good option for this job since it's one of the most popular lossless encoding schemes for ASCII data and can be easily decoded using one of the many utility libraries available across various languages and frameworks.
+To store this in a GitHub repo environment variable, you'll need to encode it using the Base64 encoding scheme. Base64 is a good option for this job since it's one of the most popular lossless encoding schemes for ASCII data and can be easily decoded using one of the many utility libraries available across various languages and frameworks.
 
 To encode it, you can use a CLI tool like [`openssl`](https://wiki.openssl.org/index.php/Base64) on macOS or [`certutil`](https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/cc732443(v=ws.11)) on Windows. You can also use an online tool like [Base64 Encode](https://base64encode.org) to encode data on the fly. Here's what the encoded string would look like:
 
@@ -295,8 +295,6 @@ Commit the file and head over to the build execution logs to see this step in ac
 
 ## Conclusion
 
-[GitHub Actions](https://github.com/features/actions) is a popular CI/CD platform that can quickly create workflows that help you build, test, and deploy your code. Environment variables and secrets are an integral part of all CI/CD processes because they control access to resources and permissions in your systems. This is why it's crucial to understand how to define and use them correctly in your CI/CD platform.
+In this article, you learned when to use environment variables and secrets, as well as how to scope environment variables across workflows, jobs, and steps. You also learned how to store sensitive information like certificates with GitHub's repository secrets. If you're looking for a simpler experience managing environment variables and secrets, check out [Earthly](https://earthly.dev), an build tool that can run everywhere. Including in [GitHub Actions](/earthly-github-actions).
 
-In this article, you learned when to use environment variables and secrets, as well as how to scope environment variables across workflows, jobs, and steps. You also learned how to store sensitive information like certificates with GitHub's repository secrets. If you're looking for a simpler experience managing environment variables and secrets, check out [Earthly](https://earthly.dev), an effortless CI/CD framework that can run everywhere. [Earthly makes secret management simple](https://docs.earthly.dev/docs/guides/build-args) and powerful by enabling multiple ways to set and manage your secrets and environment variables.
-
-{% include_html cta/bottom-cta.html %}
+{% include_html cta/gha-cta1.html %}

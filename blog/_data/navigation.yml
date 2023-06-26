@@ -188,15 +188,15 @@ lambdas:
 github-actions:
   - title: GitHub Actions
     children:
-      - title: "Working with GitHub Actions Environment Variables and Secrets"
+      - title: "GHA Environment Variables and Secrets"
         url: /github-actions-environment-variables-and-secrets/
-      - title: "Caching Dependencies on GitHub Actions"
+      - title: "Caching Dependencies with GHA"
         url: /caching-dependencies-github-actions/
       - title: "Using Terraform with GitHub Actions"
         url: /terraform-with-github-actions/
       - title: "Deploy to ECR with a GitHub Actions"
         url: /aws-ecr-github-actions/
-      - title: "Using GitHub Actions to Deploy Docker Containers"
+      - title: "Using GitHub Actions to Deploy Containers"
         url: /github-actions-and-docker/
       - title: "Using Dockerhub with GitHub Actions"
         url: /cicd-build-github-action-dockerhub/
