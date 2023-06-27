@@ -13,7 +13,7 @@ internal-links:
 
 ## Introduction
 
-After joining Earthly, I set out to build a project that I could use to highlight Earthly's strengths as a Continuous Integration (CI) solution. Namely that it enables consistent, repeatable builds, is simple to work with, is fast, and works great with monorepos. I wanted the project to be a resource I could use to help explain Earthly to someone brand new to it. At the same time I was having a lot of conversations with developers in and outside of the Earthly community and it seemed that many of them were using Github Actions to run at least some part of their build process. So, I thought it would be a good exercise to set up my test project with Github Actions as well as with Earthly to see how the two compare. I ended up learning a lot about how they performed when it came to build consistency, developer experience, and monorepo support. . I've used Github Actions a lot over the past few years and so have many Earthly users. There are some things that I really love about Github Actions. For one, it has a generous free tier and is tightly integrated with Github (obviously). This makes it an obvious choice when starting out if you're already pushing code to Github. But it definitely has many limitations especially as your builds grow in size and complexity. It's not a problem unique to Github Actions by a long shot. Finding the solution is [why Earthly exists](https://earthly.dev/blog/new-fundings-at-earthly/) in the first place.
+I joined Earthly at the beginning of 2023. I lead solution architecture. One of my primary roles is helping potential customers figure out how they can best leverage Earthly. That often requires building demonstrations that show how developers might use Earthly in their projects. So when I first started at Earthly, I set out to build a project that I could use to highlight Earthly's strengths as a Continuous Integration (CI) solution. Namely that it enables consistent, repeatable builds, is simple to work with, is fast, and works great with monorepos. I wanted the project to be a resource I could use to help explain Earthly to someone brand new to it. At the same time I was having a lot of conversations with developers in and outside of the Earthly community and it seemed that many of them were using Github Actions to run at least some part of their build process. So, I thought it would be a good exercise to set up my test project with Github Actions as well as with Earthly to see how the two compare. I ended up learning a lot about how they performed when it came to build consistency, developer experience, and monorepo support. I've used Github Actions a lot over the past few years and so have many Earthly users. There are some things that I really love about Github Actions. For one, it has a generous free tier and is tightly integrated with Github (obviously). This makes it an obvious choice when starting out if you're already pushing code to Github. But it definitely has many limitations especially as your builds grow in size and complexity. It's not a problem unique to Github Actions by a long shot. Finding the solution is [why Earthly exists](https://earthly.dev/blog/new-fundings-at-earthly/) in the first place.
 
 ## What We Are Building
 
@@ -33,13 +33,13 @@ Obviously an application with 4 separate backends that do the same thing is not 
 - Quote_client/ (React front-end package)
 - Quote_generator/ (Generates a text file of quotes used by the servers)
 
-And here is what the front-end looks like with everything is running:
+And here is what the front-end looks like with everything running:
 
 <div class="wide">
 ![app]({{site.images}}{{page.slug}}/app.png)\
 </div>
 
-Let's dive into each of the main aspects of Earthly and see how they compared to Github Actions for this project.
+Let's take a look at the project the following lenses: build consistency, simplicity, Monorepo support, and speed.
 
 ## Build Consistency
 
@@ -273,19 +273,17 @@ all-docker:
 
 Build speed is one of the less subjective dimensions to look at for this comparison. In my tests, for this project, I was able to get builds to complete in about 2 minutes and 15 seconds on Github Actions with caching and concurrency fully configured. Although times fluctuate wildly between as low as 1 minute and 30 seconds to 6 minutes for identical builds. And as mentioned early, occasionally Github Action's Docker caching times-out and fails the build at around 6 minutes.
 
-Developer speed is also an important dimension to consider. As I mentioned earlier in this article, the lag time in between iterations is a drag on developer productivity. And it just takes more lines of YAML to do what Earthly can do in fewer lines. YAM
-
-L is a very easy language to write in. But there is definitely a learning curve to mastering Github Actions and the nuances of its various plugins. Especially when applied to a more complex pattern like a monorepo.
+Developer speed is also an important dimension to consider. As I mentioned earlier in this article, the lag time in between iterations is a drag on developer productivity. And it just takes more lines of YAML to do what Earthly can do in fewer lines. YAML is a very easy language to write in. But there is definitely a learning curve to mastering Github Actions and the nuances of its various plugins. Especially when applied to a more complex pattern like a monorepo.
 
 ### **Earthly**
 
-With Earthly, executing the same pipeline locally completes in 7 seconds consistently. With [](https://earthly.dev/earthly-ci)[Earthly Satellites](https://earthly.dev/earthly-satellites), it also completes in 7 seconds. This is another data point that speaks to the reproducibility and consistency that Earthly offers.
+With Earthly, executing the same pipeline locally completes in 7 seconds consistently. With [](https://earthly.dev/earthly-ci)[Earthly Satellites](https://earthly.dev/earthly-satellites) (our managed remote build runners), it also completes in 7 seconds. This is another data point that speaks to the reproducibility and consistency that Earthly offers.
 
 <div class="wide">
 ![7-secs]({{site.images}}{{page.slug}}/7-secs.png)\
 </div>
 
-When it comes to developer speed. There really is no comparison. Composing my CI pipeline in Earthly felt natural and elegant compared to writing it out in YAML. If you've ever written Dockerfiles or Makefiles, Earthly language is easy to learn. And the ability to run my pipeline locally before shipping to CI meant that I was able to iterate really fast and not make a bunch of commits to test my CI pipelines.
+When it comes to developer speed. There really is no comparison. Composing my CI pipeline in Earthly felt natural and elegant compared to writing it out in YAML. If you've ever written Dockerfiles or Makefiles, Earthly's language is easy to learn. And the ability to run my pipeline locally before shipping to CI meant that I was able to iterate really fast and not make a bunch of commits to test my CI pipelines.
 
 ### Better Together: Earthly + Github Actions
 
@@ -306,9 +304,5 @@ If you're interested in running this build yourself - you can find everything at
 ### Next Steps
 
 Thank you for taking the time to read our article about Github Actions and Earthly. If you're interested in learning more, please [schedule](https://calendly.com/d/y22-s9m-cqn/earthly-demo) a demo or conversation with us. Or, skip the call and try [Earthly Satellites](https://earthly.dev/earthly-satellites). They are remote build runners that make builds fast with an automatic and instantly available build cache. Builds can be triggered by GitHub Actions (or any CI) as well as from your laptop. And they're super simple to use. Get started by following [the steps in our documentation to self-serve Satellites](https://docs.earthly.dev/earthly-cloud/satellites).
-
-- [Earthly website](https://earthly.dev)
-- [Earthly Github project](https://github.com/earthly/)
-- [The code for this article](https://github.com/earthly/earthly-vs-gha)
 
 {% include_html cta/bottom-cta.html %}
