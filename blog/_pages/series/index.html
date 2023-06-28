@@ -4,34 +4,17 @@ title: Series
 permalink: /series/
 ---
 
-
+{% assign navigation = site.data.navigation %}
 <div class="mb-6 text-4xl font-bold">Series</div>
-
 <div class="bg-blue-50 rounded-lg px-2">
     <div class="entries-grid grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4">
-
-        {% include series_list.html name="Docker" type="docker" style="md:border-r md:border-slate-300" %}
-        {% include series_list.html name="Bash" type="bash" style="md:border-r md:border-slate-300" %}
-        {% include series_list.html name="Make Files" type="makefile" %}
-
-    </div>
-</div>
-
-<div class="bg-blue-50 rounded-lg px-2 mt-8">
-    <div class="entries-grid grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4">
-
-        {% include series_list.html name="Activity Tracker" type="activity-tracker" style="md:border-r md:border-slate-300" %}
-        {% include series_list.html name="Deployment" type="deployment-strategies" style="md:border-r md:border-slate-300" %}
-        {% include series_list.html name="Programming" type="thoughts" %}
-
-    </div>
-</div>
-
-<div class="bg-blue-50 rounded-lg px-2 mt-8">
-    <div class="entries-grid grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4">
-
-        {% include series_list.html name="AWS Lambdas" type="lambdas" %}
-        {% include series_list.html name="Pongo" type="pongo" %}
-
+        {% for series in navigation %}
+            {% assign seriesName = series[0] %}
+            {% assign seriesItems = series[1][0].title %}
+            {% if seriesName == 'main' %}
+                {% continue %}
+            {% endif %}
+            {% include series_list.html name=seriesItems type=seriesName %}
+        {% endfor %}
     </div>
 </div>
