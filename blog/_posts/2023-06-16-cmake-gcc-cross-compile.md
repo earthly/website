@@ -5,7 +5,8 @@ categories:
 toc: true
 author: Rubaiat Hossain
 editor: Bala Priya C
-
+sidebar:
+  nav: "makefile"
 internal-links:
  - CMake
  - GCC
@@ -280,6 +281,6 @@ This tutorial covered the essentials of cross-compiling a C++ program for ARM64-
 
 For successful cross-compilation using CMake and GCC, you need to make sure you have the appropriate toolchain installed, verify your CMake configuration, and make sure your code is compatible with the target platform. Additionally, double-check the required library dependencies to reduce build failures.
 
-For further reading, consult the official [CMake](https://cmake.org/documentation/) and [GCC](https://gcc.gnu.org/onlinedocs/) documentations, as well as [platform-specific resources](https://github.com/topics/cross-compilation?o=desc&s=stars) and [forums](https://stackoverflow.com/questions/tagged/cross-compiling?sort=MostVotes&edited=true). These resources provide more information and insights on your target platform's optimization, troubleshooting, and integration techniques.
+{% include_html cta/makefile-cta.html %}
 
-{% include_html cta/bottom-cta.html %}
+<!-- For further reading, consult the official [CMake](https://cmake.org/documentation/) and [GCC](https://gcc.gnu.org/onlinedocs/) documentations, as well as [platform-specific resources](https://github.com/topics/cross-compilation?o=desc&s=stars) and [forums](https://stackoverflow.com/questions/tagged/cross-compiling?sort=MostVotes&edited=true). These resources provide more information and insights on your target platform's optimization, troubleshooting, and integration techniques. -->

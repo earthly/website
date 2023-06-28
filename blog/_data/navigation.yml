@@ -11,6 +11,7 @@ main:
   - title: "GitHub"
     url: https://github.com/earthly/earthly
 docker:
+  - title: Docker
   - title: Container Tutorials
     children:
       - title: "Docker Logging"
@@ -40,6 +41,7 @@ docker:
       - title: "Compiling Containers"
         url: /compiling-containers-dockerfiles-llvm-and-buildkit/
 makefile:
+  - title: Makefiles
   - title: Tutorials
     children:
       - title: Overview Tutorial
@@ -52,6 +54,12 @@ makefile:
         url: /golang-makefile/
       - title: "Makefiles and VS Code"
         url: /vscode-make/
+      - title: "CMake and GCC to Cross-Compile"
+        url: /cmake-gcc-cross-compile/
+      - title: "Using CMake"
+        url: /using-cmake/
+      - title: "CMake vs Make"
+        url: /cmake-vs-make-diff/
   - title: Makefile Guides
     children:
       - title: "Using Autotools"
@@ -62,7 +70,14 @@ makefile:
         url: /repeatable-builds-every-time/#tips-for-taming-makefiles-in-large-teams
       - title: "Docker and Makefiles"
         url: /docker-and-makefiles
+      - title: "Makefiles on Windows"
+        url: /makefiles-on-windows
+      - title: "Makefile Wildcards"
+        url: /using-makefile-wildcards
+      - title: "Makefile Variables"
+        url: /makefile-variables
 bash:
+  - title: Linux
   - title: Bash
     children:
       - title: "Bash Basics" 
@@ -170,3 +185,18 @@ lambdas:
         url: /aws-lambda-api-proxy/
       - title: "Terraform Import"
         url: /terraform-lambda/
+github-actions:
+  - title: GitHub Actions
+    children:
+      - title: "GHA Environment Variables and Secrets"
+        url: /github-actions-environment-variables-and-secrets/
+      - title: "Caching Dependencies with GHA"
+        url: /caching-dependencies-github-actions/
+      - title: "Using Terraform with GitHub Actions"
+        url: /terraform-with-github-actions/
+      - title: "Deploy to ECR with a GitHub Actions"
+        url: /aws-ecr-github-actions/
+      - title: "Using GitHub Actions to Deploy Containers"
+        url: /github-actions-and-docker/
+      - title: "Using Dockerhub with GitHub Actions"
+        url: /cicd-build-github-action-dockerhub/

@@ -4,7 +4,8 @@ categories:
   - Tutorials
 toc: true
 author: Kasper Siig
-
+sidebar:
+  nav: "makefile"
 internal-links:
  - make
  - makefile
@@ -125,6 +126,7 @@ A lot of the things you have to worry about when it comes to CMake have to do wi
 
 As you can see, CMake can be a great aid when you want to create a build process around your application. With CMake, you only have to write a `CMakeLists.txt` file to ensure that your application can be built and executed on any platform. This is a big advantage to many and, without a doubt, is one of the reasons the tool has gained popularity.
 
-If you like the format of using CMake and Makefiles, in general, but have a hard time seeing how to specifically fit it into your application, check out [Earthly](https://earthly.dev/). Earthly is a tool that takes the best parts of Makefiles and combines them with Docker to make builds easier.
+{% include_html cta/makefile-cta.html %}
 
-{% include_html cta/bottom-cta.html %}
+<!-- If you like the format of using CMake and Makefiles, in general, but have a hard time seeing how to specifically fit it into your application, check out [Earthly](https://earthly.dev/). Earthly is a tool that takes the best parts of Makefiles and combines them with Docker to make builds easier.
+ -->

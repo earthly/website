@@ -111,3 +111,7 @@ Metaclasses
 metaclass
 metaclasses
 kwargs
+
+Pydantic
+attrs
+dunder

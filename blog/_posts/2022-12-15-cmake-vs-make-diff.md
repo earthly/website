@@ -5,7 +5,8 @@ categories:
 toc: true
 author: Ndafara Tsamba
 editor: Bala Priya C
-
+sidebar:
+  nav: "makefile"
 internal-links:
  - CMake
  - Make
@@ -417,6 +418,6 @@ More recently, CMake added the `FetchContent` module, which is a better way to f
 
 ## Conclusion
 
-In this article, you've learned the differences between CMake and Make, as well as the advantages of using CMake including its active development, dependency management, and cross-platform capabilities. If you're looking to explore other build tools, check out [Apache Buildr](https://buildr.apache.org), [Apache Maven](https://maven.apache.org), and [Gradle](https://gradle.org).
+In this article, you've learned the differences between CMake and Make, as well as the advantages of using CMake including its active development, dependency management, and cross-platform capabilities.
 
-{% include_html cta/bottom-cta.html %}
+{% include_html cta/makefile-cta.html %}

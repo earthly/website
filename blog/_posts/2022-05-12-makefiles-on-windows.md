@@ -4,7 +4,8 @@ categories:
   - Tutorials
 toc: true
 author: Kasper Siig
-
+sidebar:
+  nav: "makefile"
 internal-links:
  - make
  - makefile
@@ -105,6 +106,6 @@ You should look into WSL if what you care about most is having Windows as your r
 
 As you can see, there are a few different ways you can be successful in running Makefiles on Windows. However, you do need to be wary of the fact that it will never be a perfect solution. Every solution is in some way a workaround, and the closest you'll get to feeling like you're using native Makefiles while using Windows is to install something like WSL.
 
-If all this becomes too tedious for you and you're looking for an easier alternative to optimize your builds, then check out [Earthly](https://earthly.dev/). Earthly has taken all the best parts of Makefiles and combined them with the best parts of Dockerfiles to help make your build processes more streamlined and effective.
+{% include_html cta/makefile-cta.html %}
 
-{% include_html cta/bottom-cta.html %}
+<!-- If all this becomes too tedious for you and you're looking for an easier alternative to optimize your builds, then check out [Earthly](https://earthly.dev/). Earthly has taken all the best parts of Makefiles and combined them with the best parts of Dockerfiles to help make your build processes more streamlined and effective. -->

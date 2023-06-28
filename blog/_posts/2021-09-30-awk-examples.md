@@ -10,6 +10,8 @@ internal-links:
  - awk
 excerpt: "It turns out Awk is pretty simple. It has only a couple of conventions and only a small amount of syntax. It's straightforward to learn, and once you understand it, it will come in handy more often than you'd think."
 ---
+<iframe width="560" height="315" src="https://www.youtube.com/embed/yJek26lyXZ0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 ## Background
 
 I have a confession to make: I don't know how to use Awk. Or at least I didn't know how to use it before I started writing this article. I would hear people mention Awk and how often they used it, and I was pretty certain I was missing out on some minor superpower.

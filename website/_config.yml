@@ -8,7 +8,9 @@ twitter_username: earthlytech
 github_username:  earthly
 slack_url: "/slack"
 tagline: "Make Builds Super Simple"
-description: "Fast, consistent builds with an instantly familiar syntax – like Dockerfile and Makefile had a baby."
+description: "Fast, consistent builds with an instantly familiar syntax – like Dockerfile and Makefile had a baby. 
+              Write builds once, and run them anywhere – on your laptop, remote, and in any CI. Great for monorepos 
+              and polyrepos. Open source, 9000+ stars."
 include:
   - _redirects
 sass:

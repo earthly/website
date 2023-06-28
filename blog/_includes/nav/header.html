@@ -1,18 +1,11 @@
-<header
-    class="flex z-50 fixed w-full top-0 left-0 bg-white h-[70px] border-b border-[#e8f8fe] shadow-sm shadow-black/10">
+<header class="z-50 w-full top-0 left-0 bg-white shadow-sm shadow-black/10 sticky">
+    {% include banner.html %}
+
+    <div class="flex h-[70px]">
     <div class="siteHeader-logoAndMenuButton pl-6">
-        <!-- Gavin, 20230525: added id -->
-        <a id="headerLogoControl" onclick="navEarthlyLogoClick()" class="siteHeader-logoLink" href="{{site.landingurl}}/">
+        <a onclick="navEarthlyLogoClick()" class="siteHeader-logoLink" href="{{site.landingurl}}/">
             {% svg assets/svg/earthly-logo.svg class="siteHeader-logoLink-svg" height=70 %}
         </a>
-        <!-- Gavin, 20230525: added a href -->
-        <a id="headerLogoTest1" onclick="navEarthlyLogoClick()" display="none;" class="siteHeader-logoLink" href="{{site.landingurl}}/">
-          {% svg assets/svg/earthly-logo-test-1.svg class="siteHeader-logoLink-svg" height=70 %}
-      </a>
-      <!-- Gavin, 20230525: added a href -->
-      <a id="headerLogoTest2" onclick="navEarthlyLogoClick()" display="none;" class="siteHeader-logoLink" href="{{site.landingurl}}/">
-        {% svg assets/svg/earthly-logo-test-2.svg class="siteHeader-logoLink-svg" height=70 %}
-    </a>
     </div>
     <nav class="flex flex-1 justify-end">
         {% include nav/inline.html template='nav/mobile-menu.html' %}
@@ -63,7 +56,8 @@
 
                   <div>
                     <p class="w-[220px] xl:w-[254px] font-bold text-xl mb-0 mt-0 pb-2 pl-7">Resources</p>
-                    <div class="pl-7 pr-8 hover:bg-[#f1fbff]"><a href="/faq" class="py-3 flex items-center">FAQ</a></div>
+                    <div class="pl-7 pr-8 hover:bg-[#f1fbff]"><a href="/faq" class="border-b py-3 flex items-center">FAQ</a></div>
+                    <div class="pl-7 pr-8 hover:bg-[#f1fbff]"><a href="/earthly-github-actions" class="py-3 flex items-center">Earthly + Github Actions</a></div>
                   </div>
                 </div>
             </div>
@@ -95,6 +89,7 @@
             {% endif %}
         </div>
     </nav>
+    </div>
 
     <script>
       function navLearnEarthlyClick() {

@@ -114,188 +114,6 @@ os:
         * Rootless Podman is [not officially supported](https://docs.earthly.dev/docs/guides/podman#rootless-podman). Run podman with `sudo`
       </div>
 
-os-test:
-  tab1:
-    name: linux
-    title: Linux
-    source: source1
-    active: 1
-    content: |
-
-      <div class="Home-product-Earthfile relative">
-          <header class="Home-product-Earthfile-header">
-              <div class="Home-product-Earthfile-header-chromeDecoration">
-              </div>
-              Terminal
-          </header>
-          <code class="Home-product-Earthfile-code">sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/latest/download/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly && /usr/local/bin/earthly bootstrap --with-autocomplete'</code>
-
-
-                  <div class="copy-item absolute pr-4 top-1 right-0 text-white z-10 cursor-pointer" data-clipboard-text="sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/latest/download/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly && /usr/local/bin/earthly bootstrap --with-autocomplete'" onclick="linuxCopyClick()">Copy</div>
-
-      </div>
-
-      <div class="mt-4" markdown="1">
-      Verify installation
-      </div>
-      <div class="Home-product-Earthfile relative">
-        <header class="Home-product-Earthfile-header">
-            <div class="Home-product-Earthfile-header-chromeDecoration">
-            </div>
-            Terminal
-        </header>
-        <code class="Home-product-Earthfile-code">earthly github.com/earthly/hello-world+hello</code>
-
-        <div class="copy-item absolute pr-4 top-1 right-0 text-white z-10 cursor-pointer" data-clipboard-text="earthly github.com/earthly/hello-world+hello" onclick="verifyInstallCopyClick()">Copy</div>
-      </div>
-      <div class="mt-2">
-        This command executes the target <span class="font-semibold">hello</span> from the repository <a class="underline  blue-link" href="https://github.com/earthly/hello-world">github.com/earthly/hello-world</a>.
-      </div>
-
-        <div class="mt-4" markdown="1">
-        Learn how to use Earthly
-        - <a href="https://docs.earthly.dev/guides/basics" onclick="learnGettingStartedClick()">The getting started guide</a>
-        - <a href="https://www.youtube.com/watch?v=B7Q7S2lpshw" onclick="learnIntroVideoClick()">An introductory video</a>
-        - <a href="https://docs.earthly.dev/" onclick="learnDocsClick()">The full documentation</a>
-
-        ---
-       Pre-requisites
-      * [Docker](https://docs.docker.com/install/) or [Podman](https://github.com/containers/podman/blob/main/docs/tutorials/podman_tutorial.md)
-      * [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
-
-      </div>
-
-      <div class="Home-product-note" markdown="1">
-      `sudo` is used for:
-        * placing the `earthly` binary in `/usr/local/bin/` and marking it as executable
-        * installing auto-completion for your shell
-
-      For Podman:
-        * Rootless Podman is [not officially supported](https://docs.earthly.dev/docs/guides/podman#rootless-podman). Run podman with `sudo`
-      </div>
-
-  tab2:
-    name: mac
-    title: Mac
-    source: source2
-    content: |
-
-      <div class="Home-product-Earthfile relative"> 
-          <header class="Home-product-Earthfile-header">
-              <div class="Home-product-Earthfile-header-chromeDecoration">
-              </div>
-              Terminal
-          </header>
-          <code class="Home-product-Earthfile-code">brew install earthly && earthly bootstrap</code>
-
-          <div class="copy-item absolute pr-4 top-1 right-0 text-white z-10 cursor-pointer" data-clipboard-text="brew install earthly && earthly bootstrap" onclick="macCopyClick()">Copy</div>
-      </div>
-
-
-        <div class="mt-4 " markdown="1">
-        <div class="mt-4" markdown="1">
-      Verify installation
-      </div>
-      <div class="Home-product-Earthfile relative">
-        <header class="Home-product-Earthfile-header">
-            <div class="Home-product-Earthfile-header-chromeDecoration">
-            </div>
-            Terminal
-        </header>
-        <code class="Home-product-Earthfile-code">earthly github.com/earthly/hello-world+hello</code>
-
-        <div class="copy-item absolute pr-4 top-1 right-0 text-white z-10 cursor-pointer" data-clipboard-text="earthly github.com/earthly/hello-world+hello" onclick="verifyInstallCopyClick()">Copy</div>
-      </div>
-      <div class="mt-2">
-        This command executes the target <span class="font-semibold">hello</span> from the repository <a class="underline  blue-link" href="https://github.com/earthly/hello-world">github.com/earthly/hello-world</a>.
-      </div>
-
-        <div class="mt-4" markdown="1">
-        Learn how to use Earthly
-        - <a href="https://docs.earthly.dev/guides/basics" onclick="learnGettingStartedClick()">The getting started guide</a>
-        - <a href="https://www.youtube.com/watch?v=B7Q7S2lpshw" onclick="learnIntroVideoClick()">An introductory video</a>
-        - <a href="https://docs.earthly.dev/" onclick="learnDocsClick()">The full documentation</a>
-
-        ---
-       Pre-requisites
-      * [Homebrew for Mac](https://brew.sh/)
-      * [Docker for Mac](https://docs.docker.com/docker-for-mac/install/) or [Podman](https://github.com/containers/podman/blob/main/docs/tutorials/podman_tutorial.md)
-      * [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
-
-      </div>
-
-      <div class="Home-product-note" markdown="1">
-      For shell auto-completion:
-        * Homebrew may require [additional configuration](https://docs.brew.sh/Shell-Completion) in your profile
-
-      For Podman:
-        * Ensure [Podman Machine](https://docs.podman.io/en/latest/markdown/podman-machine.1.html) is running before running bootstrap
-        * Rootless Podman is [not officially supported](https://docs.earthly.dev/docs/guides/podman#rootless-podman). Learn how to [switch to rootful mode](https://docs.podman.io/en/latest/markdown/podman-machine-set.1.html#rootful)
-      </div>
-
-  tab3:
-    name: windows
-    title: Windows
-    subtitle: ( WSL 2 )
-    source: source3
-    content: |
-
-      <div class="text-base text-gray-700 mb-1 -mt-1">
-      Under <span class="font-semibold">wsl</span>, run the following to install earthly.
-      </div>
-
-      <div class="Home-product-Earthfile relative">
-          <header class="Home-product-Earthfile-header bg-[#4B5563]">
-              <div class="Home-product-Earthfile-header-chromeDecoration">
-              </div>
-              Terminal
-          </header>
-          <code class="Home-product-Earthfile-code">sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/latest/download/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly && /usr/local/bin/earthly bootstrap  --with-autocomplete'</code>
-
-              <div class="copy-item absolute pr-4 top-1 right-0 text-white z-10 cursor-pointer" data-clipboard-text="sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/latest/download/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly && /usr/local/bin/earthly bootstrap  --with-autocomplete'" onclick="windowsCopyClick()">Copy</div>
-      </div>
-
-
-        <div class="mt-4 " markdown="1">
-        <div class="mt-4" markdown="1">
-      Verify installation
-      </div>
-      <div class="Home-product-Earthfile relative">
-        <header class="Home-product-Earthfile-header">
-            <div class="Home-product-Earthfile-header-chromeDecoration">
-            </div>
-            Terminal
-        </header>
-        <code class="Home-product-Earthfile-code">earthly github.com/earthly/hello-world+hello</code>
-
-        <div class="copy-item absolute pr-4 top-1 right-0 text-white z-10 cursor-pointer" data-clipboard-text="earthly github.com/earthly/hello-world+hello" onclick="verifyInstallCopyClick()">Copy</div>
-      </div>
-      <div class="mt-2">
-        This command executes the target <span class="font-semibold">hello</span> from the repository <a class="underline  blue-link" href="https://github.com/earthly/hello-world">github.com/earthly/hello-world</a>.
-      </div>
-
-        <div class="mt-4" markdown="1">
-        Learn how to use Earthly
-        - <a href="https://docs.earthly.dev/guides/basics" onclick="learnGettingStartedClick()">The getting started guide</a>
-        - <a href="https://www.youtube.com/watch?v=B7Q7S2lpshw" onclick="learnIntroVideoClick()">An introductory video</a>
-        - <a href="https://docs.earthly.dev/" onclick="learnDocsClick()">The full documentation</a>
-
-        ---
-       Pre-requisites
-      * [WSL 2](https://docs.microsoft.com/en-us/windows/wsl/install-win10)
-      * [Docker Desktop with WSL2 backend](https://docs.docker.com/docker-for-windows/wsl/) or [Podman with WSL2 backend](https://github.com/containers/podman/blob/main/docs/tutorials/podman-for-windows.md)
-      * [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
-      </div>
-
-      <div class="Home-product-note" markdown="1">
-      `sudo` is used for:
-        * placing the `earthly` binary in `/usr/local/bin/` and marking it as executable
-        * installing auto-completion for your shell
-
-       For Podman:
-        * Rootless Podman is [not officially supported](https://docs.earthly.dev/docs/guides/podman#rootless-podman). Run podman with `sudo`
-      </div>
-
 ide:
   tab1:
     name: vscode
@@ -359,21 +177,13 @@ ide:
 
 <div class="get-started">
 
-<!--- Gavin, 20230524: Added div -->
-<div id="get-earthly-funnel-items-on-top-install-control">
 {% include tabs.html title="Install Earthly CLI" selectDescription="Select your OS:" tabs=page.os id="os" %}
-</div>
-<!--- Gavin, 20230524: Added -->
-<div id="get-earthly-funnel-items-on-top-install-test" display="none;">
-{% include tabs.html title="Install Earthly CLI" selectDescription="Select your OS:" tabs=page.os-test id="os-test" %}
-</div>
 
 <div class="text-base max-w-[800px] mt-2 text-gray-600 pl-2 font-normal">
 For alternative installation options see the <a class="underline blue-link" href="https://docs.earthly.dev/docs/misc/alt-installation">alternative installation page in the Earthly docs</a>. To install Earthly from source, see the <a class="underline blue-link" href="https://github.com/earthly/earthly/blob/main/CONTRIBUTING.md">contributing page in GitHub</a>
 </div>
 
-<!--- Gavin, 20230524: Added id -->
-<div id="get-earthly-funnel-items-on-top-verify-control" class="border rounded-xl bg-gray-100 px-6 py-4 mt-6 mb-6">
+<div class="border rounded-xl bg-gray-100 px-6 py-4 mt-6 mb-6">
     <div class="text-3xl pb-4">
         Verify installation
     </div>
@@ -396,10 +206,8 @@ For alternative installation options see the <a class="underline blue-link" href
 This command executes the target <span class="font-semibold">hello</span> from the repository <a class="underline  blue-link" href="https://github.com/earthly/hello-world">github.com/earthly/hello-world</a>.</div>
 
 </div>
-<!--- Gavin, 20230524: Added div -->
-<div class="mt-6">
+
 {% include tabs.html title="Add Syntax highlighting" selectDescription="Select your IDE:" tabs=page.ide id="ide" %}
-</div>
 
 <div class="border rounded-xl bg-gray-100 px-6 py-4 mt-6 mb-6" markdown="1">
 

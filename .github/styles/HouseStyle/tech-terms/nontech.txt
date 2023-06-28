@@ -52,6 +52,8 @@ tracee
 
 validator
 
+Coraline
+
 daemonless
 Buildkit
 
