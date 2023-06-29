@@ -637,6 +637,8 @@ In this article, you learned how to use CDKTF to provision infrastructure. But y
 To learn more about CDKTF, check out this HashiCorp article that discusses [integrating existing Terraform modules with CDKTF](https://developer.hashicorp.com/terraform/cdktf/concepts/modules) or this article about
 [constructs building blocks](https://developer.hashicorp.com/terraform/cdktf/concepts/constructs).
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
@@ -646,4 +648,3 @@ To learn more about CDKTF, check out this HashiCorp article that discusses [inte
 - [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
