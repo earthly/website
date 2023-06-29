@@ -7,7 +7,12 @@ author: Aniket Bhattacharyea
 editor: Ubaydah Abdulwasiu
 
 internal-links:
- - just an example
+ - Shell
+ - Scripts
+ - Functions
+ - Arguments
+ - Automation
+ - Bash
 ---
 
 **We're [Earthly](https://earthly.dev/). We make building software simpler and, therefore, faster by using containerization. This article is about autotools and make. If you're interested in a different building and packaging software approach, then [check us out](/).**
@@ -439,5 +444,4 @@ If you want to learn more about what you can do with scripting and the methodolo
 * [ ] Optional: Find ways to break up content with quotes or images
 * [ ] Verify look of article locally
   * Would any images look better `wide` or without the `figcaption`?
-* [ ] Add keywords for internal links to front-matter
 * [ ] Run `link-opp` and find 1-5 places to incorporate links
