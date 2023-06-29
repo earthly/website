@@ -431,6 +431,8 @@ If you want to learn more about what you can do with scripting and the methodolo
 * [Command line arguments in Bash scripts](https://www.baeldung.com/linux/use-command-line-arguments-in-bash-script)
 * [Bash scripts and function libraries](https://medium.com/swlh/bash-scripts-part-6-functions-and-library-development-2411adbf962)
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 * [ ] Create header image in Canva
@@ -439,4 +441,3 @@ If you want to learn more about what you can do with scripting and the methodolo
   * Would any images look better `wide` or without the `figcaption`?
 * [ ] Add keywords for internal links to front-matter
 * [ ] Run `link-opp` and find 1-5 places to incorporate links
-* [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
