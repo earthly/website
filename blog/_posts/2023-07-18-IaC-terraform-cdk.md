@@ -41,7 +41,9 @@ CDKTF itself is written in TypeScript and relies on tools like [jsii](https://aw
 
 The following illustration demonstrates the CDKTF process:
 
+<div class="wide">
 ![CDKTF process courtesy of Alexandre Couëdelo]({{site.images}}{{page.slug}}/ltT056e.png)
+</div>
 
 The code you write with CDKTF [synthesizes](https://developer.hashicorp.com/terraform/cdktf/cli-reference/commands#synth) a JSON-compatible configuration that Terraform uses to [plan infrastructure configuration](https://developer.hashicorp.com/terraform/cli/commands/plan). In sum, the CDKTF process happens before the regular Terraform plan process.
 
@@ -378,11 +380,15 @@ Please review the diff output above for typescript-aws-stack
 
 Press **Enter** to approve the changes, then wait a few minutes for the provisioning to finish. If you go to the AWS Management Console, you should see your EC2 instance up and running:
 
+<div class="wide">
 ![AWS Management Console]({{site.images}}{{page.slug}}/j7Z8EMd.png)
+</div>
 
 In GitHub, you should also find the IP address for this instance in **Security > Secrets and variables > Actions > Variables > Repository variables**. Everything is ready for your CI/CD to call that instance:
 
+<div class="wide">
 ![GitHub Actions Settings]({{site.images}}{{page.slug}}/l8CiW8I.png)
+</div>
 
 ### Modifying and Deleting Resources
 
@@ -456,7 +462,9 @@ typescript-aws-stack  aws_instance.compute (compute): Modifications complete aft
 
 Once the provisioning is completed, go to the AWS Management Console and look at the instance tags. You should see that your `repo` tag has been added to that instance:
 
+<div class="wide">
 ![EC2 instance tags]({{site.images}}{{page.slug}}/jGUj8ai.png)
+</div>
 
 Finally, do some cleanup and delete the instance you created. To do so, call the following:
 
@@ -620,7 +628,9 @@ Applications are the top-level concept defined in `main.ts` and are the entry po
 
 For this reason, you should aim to build a library of composable stacks or constructs. This means that your app imports those resources to define the infrastructure configuration:
 
+<div class="wide">
 ![CDKTF app organization]({{site.images}}{{page.slug}}/dRa2Hkq.png)
+</div>
 
 ### Incorporate Testing and Continuous Integration
 
@@ -643,7 +653,5 @@ To learn more about CDKTF, check out this HashiCorp article that discusses [inte
 
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
