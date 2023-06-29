@@ -667,8 +667,3 @@ To learn more about CDKTF, check out this HashiCorp article that discusses [inte
 [constructs building blocks](https://developer.hashicorp.com/terraform/cdktf/concepts/constructs).
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-- [ ] Optional: Find ways to break up content with quotes or images
-
