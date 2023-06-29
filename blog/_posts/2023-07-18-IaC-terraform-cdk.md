@@ -6,7 +6,12 @@ toc: true
 author: Alexandre Couedelo
 
 internal-links:
- - just an example
+ - Terraform
+ - Infrastructure
+ - IaC
+ - Guide
+ - CDK
+ - Cloud Development
 ---
 
 **We're [Earthly.dev](https://earthly.dev/). We make building software simpler and therefore faster – like Dockerfile and Makefile had a baby. This article shows you how to use the Terraform CDK**
@@ -59,19 +64,19 @@ Before you get started creating infrastructure with CDKTF, you need to set up yo
 
 For Linux and macOS users relying on [Homebrew](https://brew.sh/), you can use the following command to get everything you need:
 
-~~~
+~~~{.bash caption=">_"}
 brew install nvm tfenv cdktf
 ~~~
 
 To get the last version of Node.js, use `nvm`:
 
-~~~
+~~~{.bash caption=">_"}
 nvm use lts
 ~~~
 
 And to get the latest version of Terraform, use `tfenv`:
 
-~~~
+~~~{.bash caption=">_"}
 tfenv install latest && tfenv use latest
 ~~~
 
@@ -79,38 +84,38 @@ Finally, check your version of `terraform`, `node`, and `cdktf`. As a reference,
 
 Terraform version:
 
-~~~
+~~~{.bash caption=">_"}
 terraform -version
 ~~~
 
 Terraform version output:
 
-~~~
+~~~{ caption="Output"}
 Terraform v1.4.6
 on linux_amd64
 ~~~
 
 Node version:
 
-~~~
+~~~{.bash caption=">_"}
 node -v
 ~~~
 
 Node version output:
 
-~~~
+~~~{ caption="Output"}
 v18.15.0
 ~~~
 
 CDKTF version:
 
-~~~
+~~~{.bash caption=">_"}
 cdktf --version
 ~~~
 
 CDKTF version output:
 
-~~~
+~~~{ caption="Output"}
 0.16.1
 ~~~
 
@@ -120,14 +125,14 @@ You can find all the code for this tutorial in [this GitHub repo](https://github
 
 The `cdktf` CLI lets you easily bootstrap a project. To do so, create a new folder and change the current directory to that folder:
 
-~~~
+~~~{.bash caption=">_"}
 mkdir typescript-aws-stack
 cd typescript-aws-stack
 ~~~
 
 Then execute the `cdktf init` command:
 
-~~~
+~~~{.bash caption=">_"}
 cdktf init --template="typescript" --providers="aws@~>4.65"
 ~~~
 
@@ -137,35 +142,39 @@ Then, you're prompted with a series of questions. The initial one is this: "Do y
 
 If you want to use another remote backend solution, answer no and refer to the [remote backend documentation](https://developer.hashicorp.com/terraform/cdktf/concepts/remote-backends). However, this tutorial assumes you chose Terraform Cloud.
 
-~~~
+~~~{.bash caption=">_"}
 └ cdktf init --template="typescript" --providers="aws@~>4.65"
 ~~~
 
 Output:
 
-~~~
+~~~{ caption="Output"}
 Welcome to CDK for Terraform!
 
-By default, `cdktf` lets you manage the state of your stacks using Terraform Cloud for free.
+By default, `cdktf` lets you manage the state of your stacks using 
+Terraform Cloud for free.
 `cdktf` will request an API token for app.terraform.io using your browser.
 
 If login is successful, `cdktf` will store the token in plain text in
-the following file for use by subsequent Terraform commands: `/home/gitpod/.terraform.d/credentials.tfrc.json`.
+the following file for use by subsequent Terraform commands: 
+`/home/gitpod/.terraform.d/credentials.tfrc.json`.
 
-Note: The local storage mode isn't recommended for storing the state of your stacks.
+Note: The local storage mode isn't recommended for storing the 
+state of your stacks.
 
-? Do you want to continue with Terraform Cloud remote state management? Yes
+? Do you want to continue with Terraform Cloud remote state 
+management? Yes
 ~~~
 
 The `cdktf` generates the following template:
 
-~~~
+~~~{.bash caption=">_"}
 └ tree -L 1
 ~~~
 
 Output:
 
-~~~
+~~~{ caption="Output"}
 .
 ├── cdktf.json
 ├── help
@@ -181,7 +190,7 @@ Output:
 
 Here, the only thing you need to pay attention to is the `main.ts` file. This file is the entry point for `cdktf` and is executed whenever you invoke a `cdktf` command. The minimal viable code creates a `cdktf` and calls the `synth` method:
 
-~~~
+~~~{.ts caption="main.ts"}
 import { App } from "cdktf";
 
 const app = new App();
@@ -190,7 +199,7 @@ app.synth();
 
 The [synthesize](https://developer.hashicorp.com/terraform/cdktf/cli-reference/commands#synth) process (*, i.e.,* `synth`) is the core of CDKTF; it combines all [the stacks](https://developer.hashicorp.com/terraform/cdktf/concepts/stacks) and converts them into [JSON configuration files](https://developer.hashicorp.com/terraform/language/syntax/json) that Terraform can use to plan and apply infrastructure configurations. This means a CDKTF program defines a set of `TerraformStack`s and registers them in the `App`. Following is exactly what the generated code does:
 
-~~~
+~~~{.ts caption="main.ts"}
 // Your stack definition
 class MyStack extends TerraformStack {
   constructor(scope: Construct, id: string) {
@@ -225,7 +234,7 @@ Ultimately, this means you can import classes from the [`@cdktf/provider-aws`](h
 
 Import `AwsProvider` and invoke its constructor in the `MyStack` constructor method:
 
-~~~
+~~~{.ts caption="main.ts"}
 import { AwsProvider } from "@cdktf/provider-aws/lib/provider";
 
 // You stack definition
@@ -242,7 +251,7 @@ class MyStack extends TerraformStack {
 
 > **Please note:** `AwsProvider` requires authentication to your AWS account. The implied way is to use credentials by setting them in your terminal:
 
-~~~
+~~~{.bash caption=">_"}
 AWS_ACCESS_KEY_ID=
 AWS_SECRET_ACCESS_KEY=
 ~~~
@@ -251,13 +260,13 @@ Please refer to the official documentation for more information about the [diffe
 
 To illustrate how to install a provider outside the `init` process, install a GitHub provider via npm. Later in the tutorial, you'll use this provider to add environment variables to [GitHub Actions](https://github.com/features/actions) via Terraform. This is a common practice to bridge the gap between infrastructure provisioning and CI/CD:
 
-~~~
+~~~{.bash caption=">_"}
 npm install --save @cdktf/provider-github
 ~~~
 
 Now that the provider is installed, you can instantiate the provider in `MyStack`:
 
-~~~
+~~~{.ts caption="main.ts"}
 import { AwsProvider } from "@cdktf/provider-aws/lib/provider";
 import { GithubProvider } from "@cdktf/provider-github/lib/provider";
 
@@ -277,7 +286,7 @@ class MyStack extends TerraformStack {
 
 The GitHub provider requires a personal access token to perform actions on your behalf. Follow [this official GitHub tutorial](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) to create an access token and define the corresponding environment variable in your terminal:
 
-~~~
+~~~{.bash caption=">_"}
 GITHUB_TOKEN=
 ~~~
 
@@ -289,7 +298,7 @@ Now that your project is configured, you can add resources to `MyStack`.
 
 Resources are a TypeScript `class` exported by a provider. In this case, you need `Instance` from `provider-aws` to create an [Amazon Elastic Compute Cloud (Amazon EC2)](https://aws.amazon.com/ec2/) instance as well as `ActionsVariable` and `DataGithubRepository` from `provider-github` to configure the action variables for your repository:
 
-~~~
+~~~{.ts caption="main.ts"}
 // [...] previous import
 import { Instance } from "@cdktf/provider-aws/lib/instance";
 import { ActionsVariable } from "@cdktf/provider-github/lib/actions-variable"
@@ -300,7 +309,7 @@ import { DataGithubRepository } from "@cdktf/provider-github/lib/data-github-rep
 
 In the `MyStack` constructor, you need to instantiate and configure those resources. For instance, to create a new EC2 instance, you need to instantiate `Instance`. The first parameter is always the stack itself (i.e., `this`), which is a unique identifier for the resources (the name must be unique across all resources), and the second is a map of configuration for the resource:
 
-~~~
+~~~{.ts caption="main.ts"}
 const ec2Instance = new Instance(
             this,      // stack reference
       "compute,"// unique ID
@@ -313,7 +322,7 @@ const ec2Instance = new Instance(
 
 Now you need to repeat the operation and define each of the resources. Let's add an  `ActionsVariable` and a `DataGithubRepository` to the Stack:
 
-~~~
+~~~{.ts caption="main.ts"}
 class MyStack extends TerraformStack {
   constructor(scope: Construct, id: string) {
     super(scope, id);
@@ -355,13 +364,13 @@ In this snippet, you also utilize [`TerraformOutput`](https://developer.hashicor
 
 At this point, you're done coding, and your stack is ready to be deployed. Simply call the following:
 
-~~~
+~~~{.bash caption=">_"}
 cdktf deploy
 ~~~
 
 This triggers the `synth` process of turning your code into Terraform JSON representation, then immediately calls `terraform apply`. You should already be familiar with the output from `cdktf deploy`; this is the `terraform plan` output asking you if you want to apply those changes:
 
-~~~
+~~~{.ts caption="main.ts"}
 [...]
 Plan: 2 to add, 0 to change, 0 to destroy.
                       
@@ -394,7 +403,7 @@ In GitHub, you should also find the IP address for this instance in **Security >
 
 After the initial creation, you can modify resources by editing the code and calling `cdktf deploy` again. For this example, you need to add tags to that AWS instance. In AWS, tags help you identify and organize your resources. For instance, adding a tag stating which Git repository is associated with that instance is beneficial to figure out how resources are provisioned. To do so, simply edit the code to look like this:
 
-~~~
+~~~{.ts caption="main.ts"}
 // AWS
     const ec2Instance = new Instance(this, "compute", {
       ami: "ami-01456a894f71116f2",
@@ -407,13 +416,13 @@ After the initial creation, you can modify resources by editing the code and cal
 
 Then trigger a new deployment plan:
 
-~~~
+~~~{.bash caption=">_"}
 cdktf deploy
 ~~~
 
 You should see the changes outputted in your console:
 
-~~~
+~~~{.ts caption="main.ts"}
 typescript-aws-stack  Terraform used the selected providers to generate the following execution plan.
   Resource actions are indicated with the following symbols:
   ~ update in-place
@@ -447,7 +456,7 @@ Please review the diff output above for typescript-aws-stack
 
 Approve the changes and wait for the task to complete:
 
-~~~
+~~~{.ts caption="main.ts"}
 typescript-aws-stack  aws_instance.compute (compute): Modifying... [id=i-0691ac8513c7242fa]
 typescript-aws-stack  aws_instance.compute (compute): Modifications complete after 1s [id=i-0691ac8513c7242fa]
 
@@ -468,13 +477,13 @@ Once the provisioning is completed, go to the AWS Management Console and look at
 
 Finally, do some cleanup and delete the instance you created. To do so, call the following:
 
-~~~
+~~~{.bash caption=">_"}
 cdktf destoy
 ~~~
 
 Once again, you see the plan, and Terraform prompts you to approve it. Approve the changes and wait for the operation to complete:
 
-~~~
+~~~{.ts caption="main.ts"}
 Plan: 0 to add, 0 to change, 2 to destroy.
                       
                       Changes to Outputs:
@@ -499,7 +508,7 @@ The second approach opens up even more possibilities that are out of the scope o
 
 To use variables in accordance with the Terraform way, you utilize the [`TerraformVariable` class](https://developer.hashicorp.com/terraform/language/values/variables). In this case, you can add variable definitions to your stack:
 
-~~~
+~~~{.ts caption="main.ts"}
    const imageId = new TerraformVariable(this, "imageId", {
       type: "string",
       default: "ami-01456a894f71116f2",
@@ -531,7 +540,7 @@ Always use a Terraform variable when dealing with secret/sensitive variables. Th
 
 The following is only one example of how you could structure your code to fetch variables from an external source. Ideally, you want to define a new interface, `MyStackConfig` that defines the type structure for your configuration:
 
-~~~
+~~~{.ts caption="main.ts"}
 interface MyStackConfig {
   imageID: string;
   imageSize: string;
@@ -541,7 +550,7 @@ interface MyStackConfig {
 
 Then `MyStack` constructor should accept an attribute `config` of type `MyStackConfig`:
 
-~~~
+~~~{.ts caption="main.ts"}
 class MyStack extends TerraformStack {
   constructor(scope: Construct, id: string, config: MyStackConfig) {
      super(scope, id);
@@ -552,7 +561,7 @@ class MyStack extends TerraformStack {
 
 Lastly, before registering `MyStack` to the `App`, you need a function that provides the config (*e.g.,* an object of type `MyStackConfig`). Here, the function is called `fetchConfig`:
 
-~~~
+~~~{.ts caption="main.ts"}
 // fetching the config
 const fetchedMyStackConfig = fetchConfig("typescript-aws-stack")
 
@@ -576,7 +585,7 @@ Now the question is: How can you retrieve configs to create your stack? or, in o
 
 One option is to define a configuration format in YAML or JSON that developers use to provision the resources they need. Following is a minimal example to retrieve configs from YAML configurations:
 
-~~~
+~~~{.ts caption="main.ts"}
 import {load} from 'js-yaml';
 import {readFileSync} from 'fs';
 
@@ -596,7 +605,7 @@ export function fetchConfig(stack: string): MyStackConfig {
 
 Another option is to create an API that acts as a service catalog that returns the required resources for an application and desired configuration. Here's an example where you retrieve configuration from an API:
 
-~~~
+~~~{.ts caption="main.ts"}
 import fetch from 'node-fetch';
 
 interface MyStackConfig {
@@ -653,5 +662,4 @@ To learn more about CDKTF, check out this HashiCorp article that discusses [inte
 
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
+
