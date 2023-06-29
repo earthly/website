@@ -370,14 +370,15 @@ cdktf deploy
 
 This triggers the `synth` process of turning your code into Terraform JSON representation, then immediately calls `terraform apply`. You should already be familiar with the output from `cdktf deploy`; this is the `terraform plan` output asking you if you want to apply those changes:
 
-~~~{.ts caption="main.ts"}
+~~~{ caption="Output"}
 [...]
 Plan: 2 to add, 0 to change, 0 to destroy.
                       
                       Changes to Outputs:
                         + public_ip = (known after apply)
 typescript-aws-stack  
-                      Do you want to perform these actions in workspace "typescript-aws-stack"?
+                      Do you want to perform these actions in workspace 
+                      "typescript-aws-stack"?
                         Terraform will perform the actions described above.
                         Only 'yes' will be accepted to approve.
 
@@ -422,13 +423,15 @@ cdktf deploy
 
 You should see the changes outputted in your console:
 
-~~~{.ts caption="main.ts"}
-typescript-aws-stack  Terraform used the selected providers to generate the following execution plan.
+~~~{ caption="Output"}
+typescript-aws-stack  Terraform used the selected providers to generate 
+the following execution plan.
   Resource actions are indicated with the following symbols:
   ~ update in-place
 
 Terraform will perform the following actions:
-typescript-aws-stack    # aws_instance.compute (compute) will be updated in-place
+typescript-aws-stack    # aws_instance.compute (compute) will be updated 
+in-place
   ~ resource "aws_instance" "compute" {
         id                                   = "i-0691ac8513c7242fa"
       ~ tags                                 = {
@@ -444,7 +447,8 @@ typescript-aws-stack    # aws_instance.compute (compute) will be updated in-plac
 
 Plan: 0 to add, 1 to change, 0 to destroy.
 typescript-aws-stack  
-                      Do you want to perform these actions in workspace "typescript-aws-stack"?
+                      Do you want to perform these actions in workspace 
+                      "typescript-aws-stack"?
                         Terraform will perform the actions described above.
                         Only 'yes' will be accepted to approve.
 
@@ -456,11 +460,14 @@ Please review the diff output above for typescript-aws-stack
 
 Approve the changes and wait for the task to complete:
 
-~~~{.ts caption="main.ts"}
-typescript-aws-stack  aws_instance.compute (compute): Modifying... [id=i-0691ac8513c7242fa]
-typescript-aws-stack  aws_instance.compute (compute): Modifications complete after 1s [id=i-0691ac8513c7242fa]
+~~~{ caption="Output"}
+typescript-aws-stack  aws_instance.compute (compute): 
+Modifying... [id=i-0691ac8513c7242fa]
+typescript-aws-stack  aws_instance.compute (compute): 
+Modifications complete after 1s [id=i-0691ac8513c7242fa]
 
-                      Apply complete! Resources: 0 added, 1 changed, 0 destroyed.
+                      Apply complete! Resources: 0 added, 1 changed, 
+                      0 destroyed.
 
                       Outputs:
                       public_ip = "50.18.32.211"
@@ -483,15 +490,18 @@ cdktf destoy
 
 Once again, you see the plan, and Terraform prompts you to approve it. Approve the changes and wait for the operation to complete:
 
-~~~{.ts caption="main.ts"}
+~~~{ caption="Output"}
 Plan: 0 to add, 0 to change, 2 to destroy.
                       
                       Changes to Outputs:
                         - public_ip = "50.18.32.211" -> null
 typescript-aws-stack  
-                      Do you really want to destroy all resources in workspace "typescript-aws-stack"?
-                        Terraform will destroy all your managed infrastructure, as shown above.
-                        There is no undo. Only 'yes' will be accepted to confirm.
+                      Do you really want to destroy all resources in 
+                      workspace "typescript-aws-stack"?
+                        Terraform will destroy all your managed 
+                        infrastructure, as shown above.
+                        There is no undo. Only 'yes' will be accepted 
+                        to confirm.
 ~~~
 
 Now you're back to square one. Everything should be removed, the instance terminated, and the repository variable removed.
@@ -540,7 +550,7 @@ Always use a Terraform variable when dealing with secret/sensitive variables. Th
 
 The following is only one example of how you could structure your code to fetch variables from an external source. Ideally, you want to define a new interface, `MyStackConfig` that defines the type structure for your configuration:
 
-~~~{.ts caption="main.ts"}
+~~~{.ts caption="fetchConfig.ts"}
 interface MyStackConfig {
   imageID: string;
   imageSize: string;
@@ -550,7 +560,7 @@ interface MyStackConfig {
 
 Then `MyStack` constructor should accept an attribute `config` of type `MyStackConfig`:
 
-~~~{.ts caption="main.ts"}
+~~~{.ts caption="fetchConfig.ts"}
 class MyStack extends TerraformStack {
   constructor(scope: Construct, id: string, config: MyStackConfig) {
      super(scope, id);
@@ -561,7 +571,7 @@ class MyStack extends TerraformStack {
 
 Lastly, before registering `MyStack` to the `App`, you need a function that provides the config (*e.g.,* an object of type `MyStackConfig`). Here, the function is called `fetchConfig`:
 
-~~~{.ts caption="main.ts"}
+~~~{.ts caption="fetchConfig.ts"}
 // fetching the config
 const fetchedMyStackConfig = fetchConfig("typescript-aws-stack")
 
@@ -585,7 +595,7 @@ Now the question is: How can you retrieve configs to create your stack? or, in o
 
 One option is to define a configuration format in YAML or JSON that developers use to provision the resources they need. Following is a minimal example to retrieve configs from YAML configurations:
 
-~~~{.ts caption="main.ts"}
+~~~{.ts caption="fetchConfig.ts"}
 import {load} from 'js-yaml';
 import {readFileSync} from 'fs';
 
@@ -605,7 +615,7 @@ export function fetchConfig(stack: string): MyStackConfig {
 
 Another option is to create an API that acts as a service catalog that returns the required resources for an application and desired configuration. Here's an example where you retrieve configuration from an API:
 
-~~~{.ts caption="main.ts"}
+~~~{.ts caption="fetchConfig.ts"}
 import fetch from 'node-fetch';
 
 interface MyStackConfig {
@@ -660,6 +670,5 @@ To learn more about CDKTF, check out this HashiCorp article that discusses [inte
 
 ## Outside Article Checklist
 
-- [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
 
