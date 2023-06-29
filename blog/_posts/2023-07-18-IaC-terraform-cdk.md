@@ -4,6 +4,7 @@ categories:
   - Tutorials
 toc: true
 author: Alexandre Couedelo
+editor: Mustapha Ahmad Ayodeji
 
 internal-links:
  - Terraform
