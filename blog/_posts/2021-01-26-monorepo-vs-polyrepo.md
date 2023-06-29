@@ -27,7 +27,7 @@ The decision of whether to use a monorepo or a polyrepo structure for your sourc
 
 In the following, I will attempt to draw objective, logical arguments for both approaches and also throw in a very popular third option: the hybrid.
 
-## Quick Intro to Monorepos
+## A Quick Intro To Monorepos
 
 The **monorepo layout** consists of a single code repository where multiple projects coexist in a hierarchical directory structure. For example:
 
@@ -175,7 +175,7 @@ Of course, with any set of related changes that go out independently across mult
 
 **Verdict**: Multiple factors can influence your decision here: team layout, release frequency requirements, MTTR requirements, level of cohesion of separate projects, and so on. Generally, polyrepos have the added benefit that the better engineering process decisions fall in place more naturally. In addition, the collection of tags usually make more sense for polyrepos.
 
-### Builds and CI 
+### Builds and CI
 
 ![Cranes building skyscraper]({{site.images}}{{page.slug}}/8Gg2Ne_uTcM.jpg)\
 

@@ -58,7 +58,7 @@ monorepo.
 
 We'll try our best to address some of these potential downsides in a Go monorepo in the rest of the article.
 
-## What Does a Monorepo Layout Look Lik in Golang?
+## What Does a Monorepo Layout Look Like in Golang?
 
 A monorepo may contain multiple components, such as applications and libraries. Let's consider how we might organize
 those components as distinct Go modules.

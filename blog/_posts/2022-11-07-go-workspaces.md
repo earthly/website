@@ -38,7 +38,7 @@ replace github.com/jalletto/parserGo => ./local-path/parserGo
 
 This works for small projects, but you still need to remember to remove the replace before pushing your code since you can't be certain other devs will have the same local set up as you. And if you are working on a project with dozens of modules, you can see how this would become cumbersome. These are the problems Go workspaces aim to solve.
 
-## What are Golang Workspaces?
+## What Are Golang Workspaces?
 
 Go introduced the concept of workspaces in `1.18`. Workspaces allow you to create projects of several modules that share a common list of dependencies through a new file called `go.work`. The dependencies in this file can span multiple modules and anything declared in the `go.work` file will override dependencies in the modules' `go.mod`.
 
