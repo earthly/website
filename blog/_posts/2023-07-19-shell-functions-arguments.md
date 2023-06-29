@@ -32,59 +32,61 @@ In the next section, you'll look at how to work with functions and arguments in 
 
 Like any other programming language, functions in Bash must be defined before use. Defining a function in Bash uses the following syntax:
 
-```bash
+~~~
 function_name() {
-	function_body
+    function_body
 }
-```
+~~~
+
 Or, equivalently
 
-```bash
+~~~
 function function_name() {
-	function_body
+    function_body
 }
-```
+~~~
 
 Both syntaxes give the same result, which means you can use either without worrying about whether different syntaxes do different things.
 
 Take a look at an example where you define a function named `greet`, which prints "Hello, Earthly" when run:
 
-```bash
+~~~
 greet() {
-	echo "Hello, Earthly"
+    echo "Hello, Earthly"
 }
-```
+~~~
 
 You can execute the function simply by typing its name:
 
-```bash
+~~~
 greet
-```
+~~~
 
 This will output
 
-```
+~~~
 Hello, Earthly
-```
+~~~
 
 You can also define a function that takes parameters:
 
-```bash
+~~~
 greet() {
-	echo "Hello, $1"
+    echo "Hello, $1"
 }
-```
+~~~
 
 And you can call it with arguments:
 
-```bash
+~~~
 greet "John"
-```
+~~~
+
 This will output:
 
-```
+~~~
 Hello, John
-```
+~~~
 
 You may have noticed two striking differences between functions in Bash and functions in other programming languages, such as C, Java, and Python:
 
@@ -97,137 +99,138 @@ What does this mean for you when working with function parameters? Well, rest ea
 
 You might be tempted to define variables inside functions using the typical Bash syntax:
 
-```bash
+~~~
 oops() {
-	my_var="I'm a variable"
-	echo $my_var
+    my_var="I'm a variable"
+    echo $my_var
 }
-```
+~~~
 
 This code works as you'd expect it to and outputs "I'm a variable". However, it also throws the `my_var` variable into the global scope, and `$my_var` can be accessed from outside the function:
 
-```bash
+~~~
 $ oops
 I'm a variable
-```
-```bash
+~~~
+
+~~~
 $ echo $my_var
 I'm a variable
-```
+~~~
 
 This might seem innocent, but it can be problematic if you already have a variable in the global scope with the same name. The function may accidentally overwrite the global variable and cause bugs:
 
-```bash
+~~~
 my_bank_balance=1000
 
 boom() {
-	my_bank_balance=0
-	echo "I stole your money"
+    my_bank_balance=0
+    echo "I stole your money"
 }
 
 Boom
 echo $my_bank_balance
-```
+~~~
 
 This will output:
 
-```
+~~~
 I stole your money
 0
-```
+~~~
 
 In this code, the `boom` function modifies the `my_bank_balance` variable from the global scope instead of defining a local variable named `my_bank_balance`.
 
 To define a local variable, you must prefix the `local` keyword:
 
-```bash
+~~~
 my_bank_balance=1000
 
 boom() {
-	local my_bank_balance=0
-	echo "I stole your money"
+    local my_bank_balance=0
+    echo "I stole your money"
 }
 
 boom
 echo $my_bank_balance
-```
+~~~
 
 This outputs:
 
-```
+~~~
 I stole your money
 1000
-```
+~~~
 
 As you can see, the `my_bank_balance` variable is now intact. Using `local` creates a new variable local to the function, and the function can't access the global variable.
 
-In the next section, you’ll learn how to return a value from a function, a common pattern in other programming languages.
+In the next section, you'll learn how to return a value from a function, a common pattern in other programming languages.
 
 ### Using the Return Value of a Function
 
 Return values are tricky in Bash because, unlike other languages, you cannot return whatever you want. You must return a numeric value:
 
-```bash
+~~~
 foo() {
-	return "Hi"
+    return "Hi"
 }
 
 foo
-```
+~~~
 
 In this code, the `foo` function returns `Hi`, which is not numeric, and the script fails with the error: `bash: return: Hi: numeric argument required`.
 
 Although you're free to return any numeric value you want, by convention, it denotes the exit status of the function, where zero denotes a successful execution and a nonzero value denotes an error has occurred. This exit status is stored in the `$?` variable after the function executes:
 
-```bash
+~~~
 foo() {
-	return 0
+    return 0
 }
 foo
 echo $?
-```
+~~~
 
 In this code, `foo` returns `0`. After executing `foo`, the return value is stored in `$?`, which will output `0`.
 
 With this technique, you can use the return value of a function as a condition in an `if` statement or on the left-hand side of the short circuit operators (`&&` and `||`). Remember that an exit status of zero means successful execution:
 
-```bash
+~~~
 foo() {
-	return 0
+    return 0
 }
 
 bar() {
-	return 1
+    return 1
 }
 
 foo && echo "foo executed successfully"
 bar && echo "bar executed successfully"
-```
+~~~
 
 This code outputs "foo executed successfully". However, since `bar` returns a nonzero value, it's not classified as a successful execution. The same thing can also be written with an `if` statement:
 
-```bash
+~~~
 if foo
 then
-	echo “foo executed successfully”
+    echo "foo executed successfully"
 fi
 
 if bar
 then
-	echo “bar executed successfully”
+    echo "bar executed successfully"
 fi
-```
+~~~
 
 So now the question is: How do you return some nonnumerical value? The trick is to print to `stdout` whatever you want to return and then capture this output to a variable using `$()`:
 
-```bash
+~~~
 greet() {
-	echo "Hello, Earthly"
+    echo "Hello, Earthly"
 }
 
 output=$(greet)
 echo "Output is: $output"
-```
+~~~
 
 This code prints "Output is: Hello, Earthly", and the `greet` function outputs "Hello, Earthly". But instead of running `greet` normally and letting it print to `stdout`, the output is captured using `$()` and stored in the `output` variable.
 
@@ -237,55 +240,55 @@ Now that you know how to use variables in functions, it's time to learn how to d
 
 Like other programming languages, Bash functions can accept arguments. However, they're not mentioned in the definition, and Bash doesn't enforce the number of arguments. This means you can pass any number of arguments to any function without an error:
 
-```bash
+~~~
 foo() {
-	echo "I don't accept arguments. Please don't pass any"
+    echo "I don't accept arguments. Please don't pass any"
 }
 
 foo "Take an argument" # No error
-```
+~~~
 
 To use the arguments inside the function body, you need to know the position of the argument. This is why these arguments are called positional parameters/arguments. You can access the first argument with `$1`, the second argument with `$2`, and so on:
 
-```bash
+~~~
 bar() {
-	echo "First argument: $1"
-	echo "Second argument: $2"
+    echo "First argument: $1"
+    echo "Second argument: $2"
 }
-```
+~~~
 
 > **Please note:** A space must separate the arguments. Additionally, you need to use double quotes if your argument contains a space:
 
-```bash
+~~~
 bar arg1 "Argument 2"
-```
+~~~
 
 Output:
 
-```
+~~~
 First argument: arg1
 Second argument: Argument 2
-```
+~~~
 
 If you have more than nine arguments, something interesting occurs:
 
-```bash
+~~~
 foo() {
-	echo $10
+    echo $10
 }
 
 foo This is a lot of arguments what will happen now
-```
+~~~
 
-Instead of outputting `now `,  the tenth argument, this code prints `This0`. This is because `$10` is expanded as `($1)0` (*ie* the first argument followed by a `0`). To solve this, use `${}`:
+Instead of outputting `now`, the tenth argument, this code prints `This0`. This is because `$10` is expanded as `($1)0` (*ie* the first argument followed by a `0`). To solve this, use `${}`:
 
-```bash
+~~~
 foo() {
-	echo ${10}
+    echo ${10}
 }
 
 foo This is a lot of arguments what will happen now
-```
+~~~
 
 This outputs `now` as expected.
 
@@ -293,44 +296,45 @@ There are a few special variables available inside a function body. Take a quick
 
 * The **`$#`** variable holds the number of arguments passed to the function:
 
-```bash
+~~~
 foo() {
-	echo $#
+    echo $#
 }
 
 foo 1 2 3
-```
+~~~
 
 Here, three arguments are passed to `foo`, and the code outputs `3`.
 
 * **`$*`** expands to list all positional arguments. When double-quoted, it expands to a string of all positional arguments separated by a space (or the first character of `$IFS`):
 
-```bash
+~~~
 count_args() {
-	echo "$# arguments passed"
+    echo "$# arguments passed"
 }
 
 foo() {
-	count_args "$*"
+    count_args "$*"
 }
 
 foo 1 2 3
-```
-This code snippet defines a `count-args` function that prints the number of arguments. Inside `foo`, the `count_args` function is called, and `”$*”` is passed as the argument. This code snippet outputs "1 arguments passed" since `"$*"` expands to a single string `"1 2 3"`.
+~~~
 
-* **`$@`** is similar to `$*`. When not double-quoted, they're the same. However, when you use double quotes, `$@` expands to a list of separate strings. Here’s the previous example with `$@` in place of `$*`:
+This code snippet defines a `count-args` function that prints the number of arguments. Inside `foo`, the `count_args` function is called, and `"$*"` is passed as the argument. This code snippet outputs "1 arguments passed" since `"$*"` expands to a single string `"1 2 3"`.
 
-```bash
+* **`$@`** is similar to `$*`. When not double-quoted, they're the same. However, when you use double quotes, `$@` expands to a list of separate strings. Here's the previous example with `$@` in place of `$*`:
+
+~~~
 count_args() {
-	echo "$# arguments passed"
+    echo "$# arguments passed"
 }
 
 foo() {
-	count_args "$@"
+    count_args "$@"
 }
 
 foo 1 2 3
-```
+~~~
 
 Here, it outputs "3 arguments passed", as `$@` expands to `"1" "2" "3"`.
 
@@ -354,60 +358,60 @@ One advantage of breaking down a script into functions is its modularity and reu
 
 To ensure your functions are modular and reusable, make them as single-purpose as possible. Consider the following script where the `setUpStudent` function creates a student, registers a student, and saves the student:
 
-```bash
+~~~
 setUpStudent() {
-	# Create a student
-	…
-	# Register the student
-	…
-	# Save the student
-	…
+    # Create a student
+    …
+    # Register the student
+    …
+    # Save the student
+    …
 }
-```
+~~~
 
-If, in a particular case, you need to save a student without registering it, you can’t reuse the `setUpStudent` function. The better solution is to separate the different functions into single-purpose functions:
+If, in a particular case, you need to save a student without registering it, you can't reuse the `setUpStudent` function. The better solution is to separate the different functions into single-purpose functions:
 
-```bash
+~~~
 createStudent() {
-	…
+    …
 }
 
 registerStudent() {
-	…
+    …
 }
 
 saveStudent() {
-	…
+    …
 }
-```
+~~~
 
 ### Create Function Libraries in Shell Scripts
 
 You can create a [function library](https://bash.cyberciti.biz/guide/Shell_functions_library) to reuse functions between scripts. This library is a single file that stores the functions you want to make available between scripts. For example, if you wish to insert a library called "all_my_math_functions" (remember, descriptive names!), you must save the functions into a single file. Then you would insert the file into the beginning of the script with two dots and the library file name, like this:
 
-```
+~~~
 #!/bin/bash
 . ./all_my_math_functions
-```
+~~~
 
 ### Insert Error Handling in Each Function
 
 As you may have noticed, Bash is lax regarding what would be considered errors in other languages (*eg* passing the wrong number of arguments). This makes it necessary to handle errors in functions because Bash won't handle them for you. And there are many ways you can do this. For example, you can use a conditional statement to check for the correctness of arguments:
 
-```bash
+~~~
 foo() {
-	if [ $# -ne 3 ]
-	then
-	echo "Error: Need 3 arguments"
-	return 1
-	fi
+    if [ $# -ne 3 ]
+    then
+    echo "Error: Need 3 arguments"
+    return 1
+    fi
 
-	echo "All good"
+    echo "All good"
 }
 
 foo # Error: Need 3 arguments
 foo 1 2 3 # All good
-```
+~~~
 
 Here, the `$#` variable is checked before executing the rest of the function. The function exits if exactly three arguments are not passed.
 
@@ -423,17 +427,16 @@ In this article, you learned about functions in Bash—how to define and use the
 
 If you want to learn more about what you can do with scripting and the methodology behind it, check out these resources:
 
-- [Bash error handling](https://linuxhint.com/bash_error_handling/)
-- [Command line arguments in Bash scripts](https://www.baeldung.com/linux/use-command-line-arguments-in-bash-script)
-- [Bash scripts and function libraries](https://medium.com/swlh/bash-scripts-part-6-functions-and-library-development-2411adbf962)
+* [Bash error handling](https://linuxhint.com/bash_error_handling/)
+* [Command line arguments in Bash scripts](https://www.baeldung.com/linux/use-command-line-arguments-in-bash-script)
+* [Bash scripts and function libraries](https://medium.com/swlh/bash-scripts-part-6-functions-and-library-development-2411adbf962)
 
 ## Outside Article Checklist
 
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
+* [ ] Create header image in Canva
+* [ ] Optional: Find ways to break up content with quotes or images
+* [ ] Verify look of article locally
+  * Would any images look better `wide` or without the `figcaption`?
+* [ ] Add keywords for internal links to front-matter
+* [ ] Run `link-opp` and find 1-5 places to incorporate links
+* [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`

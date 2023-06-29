@@ -412,3 +412,5 @@ Iac
 pulumi
 Pulumi
 reconfigurability
+
+syntaxes
