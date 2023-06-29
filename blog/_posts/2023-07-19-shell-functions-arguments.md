@@ -440,5 +440,4 @@ If you want to learn more about what you can do with scripting and the methodolo
 
 ## Outside Article Checklist
 
-* [ ] Create header image in Canva
 * [ ] Optional: Find ways to break up content with quotes or images
