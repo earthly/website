@@ -415,4 +415,14 @@ reconfigurability
 
 hardcode
 
+multinomial
+multiclass
+overfitting
+interpretability
+Tokenization
+hyperparameter
+vectorizers
+overfit
+vectorizer
+
 deduplicating
