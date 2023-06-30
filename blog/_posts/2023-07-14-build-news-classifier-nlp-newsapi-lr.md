@@ -360,7 +360,7 @@ nltk.download('stopwords')
         …
 def cleaned_desc_column:
                …
-        stop_words = set(stopwords.words('English))
+        stop_words = set(stopwords.words('English'))
 
         filtered_text = [] 
 
