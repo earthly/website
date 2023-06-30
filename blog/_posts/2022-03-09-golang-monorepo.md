@@ -4,6 +4,9 @@ categories:
   - Tutorials 
 toc: true 
 author: Brandon
+last_modified_at: 2023-06-29
+sidebar:
+  nav: monorepos
 
 internal-links:
  - mono repo
@@ -11,6 +14,9 @@ internal-links:
 topic: monorepo
 funnel: 2
 ---
+
+**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article discusses some of the benefits of using a Monorepo. Earthly is particularly useful if you're working with a Monorepo. [Check us out](/).**
+
 <!-- markdownlint-disable MD036 -->
 A repository in Go traditionally contains a single Go Module, which lends naturally to a polyrepo setup – but
 what if you try to build multiple Golang projects in a single monorepo?
@@ -22,7 +28,7 @@ module independently (and efficiently!) manages its own build, test, and release
 
 ## Why Build in a Monorepo?
 
-Whether to build your Go projects in a [monorepo or polyrepo](https://earthly.dev/blog/monorepo-vs-polyrepo/)
+Whether to build your Go projects in a [monorepo or polyrepo](/blog/monorepo-vs-polyrepo/)
 may depend on your organization and personal preferences.
 <!-- vale HouseStyle.OxfordComma = NO -->
 I find a monorepo especially appealing when working with a small team, where a few developers collectively maintain
@@ -52,7 +58,7 @@ monorepo.
 
 We'll try our best to address some of these potential downsides in a Go monorepo in the rest of the article.
 
-## Monorepo Layout in Go
+## What Does a Monorepo Layout Look Like in Golang?
 
 A monorepo may contain multiple components, such as applications and libraries. Let's consider how we might organize
 those components as distinct Go modules.
@@ -344,6 +350,6 @@ Continuous Integration more efficient.
 You can find the full working monorepo covered in this article in the official
 [Earthly examples collection](https://github.com/earthly/earthly/tree/main/examples/go-monorepo).
 
-For more on using Earthly to improve go builds checkout [Earthly.dev](https://earthly.dev/):
+For more on using Earthly to improve Go builds checkout [Earthly.dev](https://earthly.dev/):
 
 {% include_html cta/bottom-cta.html %}

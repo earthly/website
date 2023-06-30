@@ -3,24 +3,30 @@ title: "Monorepo Build Tools"
 categories:
   - Articles
 author: Adam
+sidebar:
+  nav: monorepos
+
 internal-links:
  - monorepo tools
  - monorepo
 topic: monorepo
 funnel: 2
 ---
+
+**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about Monorepo build tools. Earthly is particularly useful if you're working with a Monorepo [check us out](/).**
+
 <!-- markdownlint-disable-file MD001 -->
 <!-- vale HouseStyle.OxfordComma = NO -->
 
 In the software development world, there is a growing trend of using monorepos to manage codebases. A monorepo is a single repository that contains the code of many interrelated but distinct projects. While monorepos have their benefits, they also come with their own set of challenges. And guess what? The challenges are primarily around tooling. In this article, I'll compare some of the most popular monorepo build tools on the market and see how they stack up against each other.
 
-## Problems Presented by Monorepos
+## What Are the Problems Presented by Monorepos?
 
 Here is the situation. Building things is relatively simple if you have one build artifact per source repository: you have a build process, you rebuild when code changes, and you get a new artifact. Of course, this codebase can grow, and perhaps as it grows, caching steps will need to be introduced, but generally, every change will lead to one new build artifact.
 
 Things get more complex when code repositories contain multiple partially-independent pieces of software. For example, if a repo has tens or hundreds of services, many services likely depend on each other. Still, changes to one do not necessarily mean all others need to be retested, rebuilt, or redeployed. This is why monorepos build tools, to do a good job, need to track project dependencies.
 
-## Not Just for MonoRepos
+## Not Just for Monorepos
 
 The opposite of a monorepo is a collection of source code repositories, where each build artifact has its own repository. But this distinction can be a bit meaningless. Many monorepo shops have multiple monorepos, and many places with a polyrepo structure have repositories that produce multiple artifacts. So the code organization solution space is a gradient from maximally conjoined to maximally separated. However, large repos have pushed legacy build tools to a breaking point, and new tools and techniques are now needed. All the tools I'm covering today tightly track dependencies and aggressively cache build steps, but these tools shouldn't just be limited to just maximally homogeneous source code layouts. Caching and tracking dependencies benefits lots of build use cases.
 
