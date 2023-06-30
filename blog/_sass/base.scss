@@ -258,3 +258,15 @@ blockquote p:first-of-type::after {
 .blockquote p:last-of-type {
   margin-bottom: 0px !important;
 }
+
+.announcement-banner {
+  width: 100%;
+  background-color: #2d7e5d;
+  color: #fff;
+  padding: 5px 10px;
+  text-align: center;
+}
+
+.announcement-banner a {
+  text-decoration: underline;
+}
