@@ -29,9 +29,11 @@ There are two main benefits of using Terraform variables:
 
 You declare a Terraform variable using the `variable` block. The label after the `variable` keyword is the variable's name, which should be unique across all the variables in the same module:
 
-<div class="wide">
-![Terraform variable example]({{site.images}}{{page.slug}}/NgePUkR.png)
-</div>
+~~~{.tf caption=""}
+variable "image_id" {
+  type = string
+}
+~~~
 
 A Terraform variable block supports several optional arguments. For instance, the `default` argument sets a variable's default value. And the `type` indicates what value types are accepted for the variable. In addition, the `description` specifies the variable documentation. For more information about optional arguments, check out the [official Terraform documentation](https://developer.hashicorp.com/terraform/language/values/variables#arguments).
 
@@ -39,9 +41,9 @@ As an example, the following code shows a `region` variable of the type `string`
 
 ~~~{.tf caption=""}
 variable "region" {
-description = "The AWS region where resources will be created"
-type  = string
-default  = "us-west-2"
+  description = "The AWS region where resources will be created"
+  type  = string
+  default  = "us-west-2"
 }
 ~~~
 
@@ -77,11 +79,11 @@ Local variables in Terraform modules simplify complex expressions and increase t
 
 ~~~{.tf caption=""}
 locals {
-instance_type = "t2.micro"
+  instance_type = "t2.micro"
 }
 resource "aws_instance" "example" {
-instance_type = local.instance_type
-# Rest of config
+  instance_type = local.instance_type
+  # Rest of config
 }
 ~~~
 
@@ -101,12 +103,12 @@ String variables are used to represent text values. The following code block def
 
 ~~~{.tf caption=""}
 variable "instance_type" {
-type  = string
-default = "t2.micro"
+  type  = string
+  default = "t2.micro"
 }
 resource "aws_instance" "example" {
-instance_type = var.instance_type
-# Rest of config
+  instance_type = var.instance_type
+  # Rest of config
 }
 ~~~
 
@@ -118,12 +120,12 @@ The following code block defines a variable named `instance_type` of type `numbe
 
 ~~~{.tf caption=""}
 variable "instance_count" {
-type  = number
-default = 5
+  type  = number
+  default = 5
 }
 resource "aws_instance" "example" {
-count = var.instance_count
-# Rest of config
+  count = var.instance_count
+  # Rest of config
 }
 ~~~
 
@@ -137,13 +139,13 @@ The following code shows a list variable of a string type that is used to create
 
 ~~~{.tf caption=""}
 variable "subnet_ids" {
-type  = list(string)
-default = ["subnet-abcde012", "subnet-bcde012a", "subnet-fghi345a"]
+  type  = list(string)
+  default = ["subnet-abcde012", "subnet-bcde012a", "subnet-fghi345a"]
 }
 resource "aws_instance" "example" {
-count  = length(var.subnet_ids)
-subnet_id  = var.subnet_ids[count.index]
-# Rest of code
+  count  = length(var.subnet_ids)
+  subnet_id  = var.subnet_ids[count.index]
+  # Rest of code
 }
 ~~~
 
@@ -154,18 +156,18 @@ subnet_id  = var.subnet_ids[count.index]
 For example, this code block shows a map variable of a string type that assigns `Environment` and `Team` keys to an AWS resource:
 
 ~~~{.tf caption=""}
-variable "tag_values" {
-description = "Map of tags to assign to the resources"
-type  = map(string)
-default  = {
-Environment = "Development"
-Team  = "DevOps"
-}
+  variable "tag_values" {
+  description = "Map of tags to assign to the resources"
+  type  = map(string)
+  default  = {
+  Environment = "Development"
+  Team  = "DevOps"
+  }
 }
 resource "aws_instance" "example" {
-ami  = "ami-0c94855ba95c574c8"
-instance_type = "t2.micro"
-tags  = var.tag_values
+  ami  = "ami-0c94855ba95c574c8"
+  instance_type = "t2.micro"
+  tags  = var.tag_values
 }
 ~~~
 
@@ -177,16 +179,16 @@ For example, this code shows an `is_prod` Terraform variable with the `default` 
 
 ~~~{.tf caption=""}
 variable "is_prod" {
-description = "Boolean flag indicating if the environment is production"
-type  = bool
-default  = false
+  description = "Boolean flag indicating if the environment is production"
+  type  = bool
+  default  = false
 }
 resource "aws_instance" "example" {
-ami  = "ami-0c94855ba95c574c8"
-instance_type = var.is_prod ? "t2.large" : "t2.micro"
-tags = {
-Environment = var.is_prod ? "Production" : "Development"
-}
+  ami  = "ami-0c94855ba95c574c8"
+  instance_type = var.is_prod ? "t2.large" : "t2.micro"
+  tags = {
+    Environment = var.is_prod ? "Production" : "Development"
+  }
 }
 ~~~
 
@@ -196,17 +198,17 @@ Object variables group related attributes together. For example, the following c
 
 ~~~{.tf caption=""}
 variable "instance_config" {
-description = "Configuration for the EC2 instance"
-type = object({
-instance_type = string
-ami  = string
-key_name  = string
-})
-default = {
-instance_type = "t2.micro"
-ami  = "ami-0c94855ba95c574c8"
-key_name  = "my_key_pair"
-}
+  description = "Configuration for the EC2 instance"
+  type = object({
+  instance_type = string
+  ami  = string
+  key_name  = string
+  })
+  default = {
+    instance_type = "t2.micro"
+    ami  = "ami-0c94855ba95c574c8"
+    key_name  = "my_key_pair"
+  }
 }
 resource "aws_instance" "example" {
 ami  = var.instance_config.ami
@@ -235,13 +237,13 @@ As an example, the following code shows a variable called `filename` and its usa
 
 ~~~{.tf caption=""}
 variable "filename" {
-description = "The name of the file to be created"
-type  = string
-default  = "index"
+  description = "The name of the file to be created"
+  type  = string
+  default  = "index"
 }
 resource "local_file" "index" {
-filename = "${var.filename}.txt"
-content  = "foo!"
+  filename = "${var.filename}.txt"
+  content  = "foo!"
 }
 ~~~
 
@@ -262,12 +264,12 @@ terraform apply -var 'instance_type=t2.medium'
 In Terraform, you have the option to utilize configuration files to define variable values to your IaC. Say you have a `main.tf` file that defines an `AWS EC2` configuration like this:
 
 ~~~{.tf caption=""}
-provider "aws" {
-region = var.region
+  provider "aws" {
+  region = var.region
 }
 resource "aws_instance" "example" {
-ami  = var.ami
-instance_type = var.instance_type
+  ami  = var.ami
+  instance_type = var.instance_type
 }
 ~~~
 
