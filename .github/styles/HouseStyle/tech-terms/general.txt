@@ -395,6 +395,9 @@ superset
 transpiles
 nodejs
 
+subexpressions
+preload
+
 Raspbian
 sysroot
 Raspeberry
@@ -415,3 +418,4 @@ autostart
 certbot
 Certbot
 Certbots
+deduplicating

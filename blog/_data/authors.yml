@@ -471,3 +471,7 @@ Emediong Samuel:
     name    : "Emediong Samuel"
     bio     : " Emediong Samuel is an excellent technical writer. Hailing from a DevOps background, he now writes about the things he used to code ...and more. Be it good words, fewer words, or more impact, whatever message you want to convey, He knows the best way to say it."
     avatar  : "/assets/images/authors/emediong-samuel.png"
+Evan Pease:
+    name    : "Evan Pease"
+    bio     : "Sr. Solutions Architect at Earthly. Ex AWS, Couchbase, and Wavefront (acquired by VMWare). Passionate about coding, search/NLP and guitars."
+    avatar  : "/assets/images/authors/evan-pease.png"

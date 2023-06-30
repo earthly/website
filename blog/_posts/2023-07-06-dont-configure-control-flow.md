@@ -177,7 +177,7 @@ language: minimal
 
 jobs:
   include:
-    - stage: tasks
+    - stage: parallel tasks
       name: "First"
       script: echo "1"
     - name: "Second"

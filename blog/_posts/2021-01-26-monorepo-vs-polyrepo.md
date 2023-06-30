@@ -3,6 +3,10 @@ title: Monorepo vs Polyrepo
 featured: true
 categories:
   - Articles
+sidebar:
+  nav: monorepos
+last_modified_at: 2023-06-29
+
 tags:
 - monorepo
 - polyrepo
@@ -16,11 +20,14 @@ internal-links:
 topic: monorepo
 funnel: 2
 ---
+
+**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article talks about the benefits of using a Monorepo. Earthly is particularly useful if you're working with a Monorepo. [Check us out](/).**
+
 The decision of whether to use a monorepo or a polyrepo structure for your source code can be a very emotional (maybe even religious!) battle. On its surface, it's not much different than "tabs vs spaces" or "vim vs emacs". Or is it?
 
 In the following, I will attempt to draw objective, logical arguments for both approaches and also throw in a very popular third option: the hybrid.
 
-## Quick Intro
+## A Quick Intro To Monorepos
 
 The **monorepo layout** consists of a single code repository where multiple projects coexist in a hierarchical directory structure. For example:
 
@@ -247,3 +254,5 @@ It is usually the integration of components together that is the most time-consu
 [^1]: In some extreme cases, the segmentation can be so aggressive, that you end up with micro-repos: repositories that perform specific functions. See for example this [collection of micro npm packages](https://github.com/parro-it/awesome-micro-npm-packages). There's a package for checking if an array is sorted?? Huh...
 
 [^2]: Care must be taken, however, as even though a PR is merged as a single atomic change, the way this lands in production is never atomic. Certain considerations still apply as usual.
+
+{% include_html cta/bottom-cta.html %}
