@@ -413,6 +413,7 @@ pulumi
 Pulumi
 reconfigurability
 
+obliviating
 multinomial
 multiclass
 overfitting
