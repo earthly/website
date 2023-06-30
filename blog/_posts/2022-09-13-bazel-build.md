@@ -374,7 +374,7 @@ Like it does feel sometimes like I made a small change, you know, I'm making a r
 
 But then IntelliJ doesn't know about my build targets. And so like the build target got moved along with everything else. And I mean, sometimes that works, like sometimes in Google, the build target automatically gets updated if you use a tool.
 
-But when I'm working on [claro](clarolang.com) then, I have to like manually follow the Bazel error messages to update the targets of everything. And it'll become a thing that will prevent me from doing refactorings because I'll be like that's gonna be such a pain to update all my build targets. [So] I save it to be a project where I'm like: today the only thing I'm gonna do is just move build targets around.
+But when I'm working on [claro](http://clarolang.com) then, I have to like manually follow the Bazel error messages to update the targets of everything. And it'll become a thing that will prevent me from doing refactorings because I'll be like that's gonna be such a pain to update all my build targets. [So] I save it to be a project where I'm like: today the only thing I'm gonna do is just move build targets around.
 {% include quotes/end.html %}
 
 ## Migration Helper: Gazelle
