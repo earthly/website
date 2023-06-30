@@ -414,3 +414,14 @@ Pulumi
 reconfigurability
 
 obliviating
+multinomial
+multiclass
+overfitting
+interpretability
+Tokenization
+hyperparameter
+vectorizers
+overfit
+vectorizer
+
+deduplicating

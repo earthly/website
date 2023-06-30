@@ -5,6 +5,8 @@ categories:
 toc: true
 author: Antonello Zanini
 editor: Bala Priya C
+sidebar:
+  nav: monorepos
 
 internal-links:
  - TypeScript
@@ -12,6 +14,8 @@ internal-links:
  - Node
  - packages
 ---
+
+**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article discusses some of the benefits of using a Monorepo. Earthly is particularly useful if you're working with a Monorepo. [Check us out](/).**
 
 In recent years, monorepos have become a trending topic in the IT community. When using a monorepo, an organization stores all its projects in the same repo. Monorepos are particularly popular among web developers, since most of their projects use JavaScript or TypeScript and rely on the same npm dependencies.
 
