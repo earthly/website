@@ -156,7 +156,7 @@ resource "aws_instance" "example" {
 For example, this code block shows a map variable of a string type that assigns `Environment` and `Team` keys to an AWS resource:
 
 ~~~{.tf caption=""}
-  variable "tag_values" {
+variable "tag_values" {
   description = "Map of tags to assign to the resources"
   type  = map(string)
   default  = {
@@ -211,9 +211,9 @@ variable "instance_config" {
   }
 }
 resource "aws_instance" "example" {
-ami  = var.instance_config.ami
-instance_type = var.instance_config.instance_type
-key_name  = var.instance_config.key_name
+  ami  = var.instance_config.ami
+  instance_type = var.instance_config.instance_type
+  key_name  = var.instance_config.key_name
 }
 ~~~
 
