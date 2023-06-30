@@ -102,7 +102,10 @@ Defining an environment variable for one step is relatively simple. Open the `.g
 This will add two steps to your Actions workflow. The first step defines a local `env` value that is used when running the `echo` command. The second step attempts to access the `env` value to use in a URL. This is what it will look like once you've added these steps:
 
 <div class="wide">
-![Updated GitHub Actions workflow]({{site.images}}{{page.slug}}/GbRd31R.png)
+![Updated GitHub Actions workflow]({{site.images}}{{page.slug}}/GbRd31R.png)\
+<figcaption>
+Updated GitHub Actions workflow (Source: [github](https://github.com/krharsh17/gh-actions-tutorial/blob/765bf3dfc67b9ff99e15f118f4ebc1fa2ff1aa2f/.github/workflows/gatsby.yml))
+</figcaption>
 </div>
 
 <div class="notice--big--primary">
@@ -139,6 +142,26 @@ To define an environment variable across a job, update the `.github/workflows/ga
 ![Updated `gatsby.yml`]({{site.images}}{{page.slug}}/2rqgRIG.png)
 </div>
 
+~~~{.diff caption="gatsby.yml"}
+  # Build job
+  build:
+    runs-on: ubuntu-latest
++   env:
++       HOST_NAME: Earthly
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Print host name
+        run: echo "Host -> $HOST_NAME"
+-       env:
+-         HOST_NAME: Earthly
+      - name: Print homepage URL
+        run: echo "URL -> https://$HOST_NAME.dev"
+      - name: Detect package manager
+~~~
+
+<figcaption>Source: [github](https://github.com/krharsh17/gh-actions-tutorial/commit/6f055bbad7810ad580fe864f91cd228fadae87c5)</figcaption>
+
 Commit the file and head over to the run details to view the output of the job:
 
 <div class="wide">
@@ -154,6 +177,24 @@ You can also define environment variables in the scope of the entire workflow to
 <div class="wide">
 ![Variable moved to the workflow scope]({{site.images}}{{page.slug}}/Af0qnYw.png)
 </div>
+
+~~~{.diff caption="gatsby.yml"}
+  defaults:
+    run:
+      shell: bash
++  
++ env:
++   HOST_NAME: Earthly
+
+  jobs:
+    # Build job
+    build:
+      runs-on: ubuntu-latest
+-     env:
+-         HOST_NAME: Earthly
+~~~
+
+<figcaption>Source: [github](https://github.com/krharsh17/gh-actions-tutorial/commit/441326b0f9568e801adb83ee2724de99ab6b893c)</figcaption>
 
 To test whether the other job can access this variable, you'll need to add a step to the `deploy` job that prints the value of the same variable. Copy the `Print host name` step to the `deploy` job's steps before the `Deploy to GitHub Pages` step:
 
@@ -292,6 +333,56 @@ Commit the file and head over to the build execution logs to see this step in ac
 </div>
 
 > Please note that the secret's details were printed to the logs in this part of the tutorial only for ease of demonstration. In real-world applications, this is highly discouraged and can lead to security breaches. Instead of printing the secret to the logs, you should store the output of the `decode` command in a temporary file and use it during the build process.
+
+## Local Secrets and ENVs
+
+One of the challenges when working with environmental variables and secrets is being able to debug the build process with these in scope. In fact, making changes to GitHub Actions in general can be a slow process once your build begins to take several minutes.
+
+Using Earthly within GitHub Actions is a great way around these problems. We can convert our Gatsby build to an Earthfile and call earthly in our CI.
+
+The Earthfile would look like this:
+
+~~~{.dockerfile caption="Earthfile"}
+VERSION 0.7
+FROM alpine:latest
+WORKDIR /app
+
+deps:
+    FROM alpine:latest
+    RUN apk add --update nodejs npm
+    RUN npm install
+    COPY README.md .
+    COPY log.txt .
+    COPY package-lock.json .
+    COPY package.json .
+    COPY gatsby-config.js .
+    COPY data/ data/
+    COPY src/ src/
+
+build:
+    FROM +deps
+    RUN npm run build
+    RUN echo "Host -> $host"
+    RUN echo "URL -> https://$host.dev"
+    RUN --secret cert echo "$cert" | base64 --decode
+    SAVE ARTIFACT ./public AS LOCAL public
+~~~
+
+And in GitHubActions, and on our local dev machine, or in any other CI we could run the build like this `earthly +build --host=bla --secret cert`, passing in the args and secrets we need.
+
+Args are available to any step after they have been declared, similar to GitHub Actions above. But secrets must always be scoped explicitly to a specific run step, preventing any potential code inject attacks from occurring outside that line.
+
+~~~~~~{.diff caption="Earthfile"}
+build:
+    FROM +deps
+    RUN npm run build
+    RUN echo "Host -> $host"
+    RUN echo "URL -> https://$host.dev"
++   RUN --secret cert echo "$cert" | base64 --decode
+    SAVE ARTIFACT ./public AS LOCAL public
+~~~
+
+<figcaption>Secret `cert` is only accessible on the line where it's explicitly made in scope</figcaption>
 
 ## Conclusion
 
