@@ -1,52 +1,39 @@
 {% assign navigation = site.data.navigation[include.nav] %}
-{% assign navigation_title = site.data.series[include.nav] %}
+{% assign navigation_title = site.data.navigation[include.nav][0].title %}
 
 <div class="pt-3">
-  <div class="group">
-    <div class="text-xl mt-4 hover:underline flex"><a href="/blog/series/{{include.nav}}/">{{navigation_title}}</a>
-      <span>
-        <!-- <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1 relative top-[4px]" fill="none" viewBox="0 0 24 24"
-          stroke="#888" stroke-width="2">
-          <path stroke-linecap="round" stroke-linejoin="round"
-            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-        </svg> -->
-      </span>
+    <div class="group">
+        <div class="text-xl mt-4 hover:underline flex"><a href="/blog/series/{{ include.nav }}/">{{ navigation_title }}</a>
+            <span>
+            </span>
+        </div>
+        <nav class="border-gray-300 relative bg-white pb-2 pt-2w border rounded-md shadow-md pl-4 mt-2 hidden group-hover:block transition ease-in-out">
+            <div class="arrow border-l border-t border-gray-300"></div>
+            <div class="font-semibold text-slate-600 text-lg mt-1 relative z-10">In this Series</div>
+                    <h3 class="nav__title font-semibold mb-2" style="padding-left: 0;">{{ page.sidebar.title }}</h3>
+            <ul class="nav__items -mt-2">
+                {% for nav in navigation %}
+                    {% if nav.children != null %}
+                    {% if nav.url %}
+                        <a href="{{ nav.url | relative_url }}"><span class="nav__sub-title">{{ nav.title }}</span></a>
+                    {% else %}
+                        <span class="nav__sub-title font-semibold block pt-4">{{ nav.title }}</span>
+                    {% endif %}
+                        <ul>
+                            {% for child in nav.children %}
+                                <li class="mb-1 series-item">
+                                    <a href="{{ child.url | relative_url }}" {% if child.url == page.url %}
+                                        class="active text-sm text-blue-600 font-semibold hover:underline"
+                                        {% else %}
+                                        class="text-sm text-gray-600 hover:underline" {% endif %}>
+                                        {{ child.title }}
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </nav>
     </div>
-
-    <nav
-      class="border-gray-300 relative bg-white pb-2 pt-2w border rounded-md shadow-md pl-4 mt-2 hidden group-hover:block transition ease-in-out">
-      <div class="arrow border-l border-t border-gray-300"></div>
-      <div class="font-semibold text-slate-600 text-lg mt-1 relative z-10">In this Series</div>
-      {% if page.sidebar.title %}<h3 class="nav__title font-semibold mb-2" style="padding-left: 0;">{{
-        page.sidebar.title }}
-      </h3>{% endif %}
-      <!-- <input id="ac-toc" name="accordion-toc" type="checkbox" />
-  <label for="ac-toc">{{ site.data.ui-text[site.locale].menu_label | default: "Toggle Menu" }}</label> -->
-
-      <ul class="nav__items -mt-2">
-        {% for nav in navigation %}
-        <li>
-          {% if nav.url %}
-          <a href="{{ nav.url | relative_url }}"><span class="nav__sub-title">{{ nav.title }}</span></a>
-          {% else %}
-          <span class="nav__sub-title font-semibold block pt-4">{{ nav.title }}</span>
-          {% endif %}
-
-          {% if nav.children != null %}
-          <ul>
-            {% for child in nav.children %}
-            <li class="mb-1 series-item"><a href="{{ child.url | relative_url }}" {% if child.url==page.url %}
-                class="active text-sm text-blue-600 font-semibold hover:underline" {% else %}
-                class="text-sm text-gray-600 hover:underline" {% endif %}>
-                {{ child.title }}
-              </a>
-            </li>
-            {% endfor %}
-          </ul>
-          {% endif %}
-        </li>
-        {% endfor %}
-      </ul>
-    </nav>
-  </div>
 </div>

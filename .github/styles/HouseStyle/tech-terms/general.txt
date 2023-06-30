@@ -395,6 +395,9 @@ superset
 transpiles
 nodejs
 
+subexpressions
+preload
+
 Raspbian
 sysroot
 Raspeberry
@@ -409,3 +412,15 @@ Iac
 pulumi
 Pulumi
 reconfigurability
+
+multinomial
+multiclass
+overfitting
+interpretability
+Tokenization
+hyperparameter
+vectorizers
+overfit
+vectorizer
+
+deduplicating

@@ -471,3 +471,7 @@ Rahul K:
     name    : "Rahul K"
     bio     : "Rahul is developer and tech enthusiast. He also writes for technology focused companies. He is interested in programming, learning, and sharing knowledge."
     avatar  : "/assets/images/authors/rahul-k.png"
+Evan Pease:
+    name    : "Evan Pease"
+    bio     : "Sr. Solutions Architect at Earthly. Ex AWS, Couchbase, and Wavefront (acquired by VMWare). Passionate about coding, search/NLP and guitars."
+    avatar  : "/assets/images/authors/evan-pease.png"
