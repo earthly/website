@@ -264,7 +264,7 @@ terraform apply -var 'instance_type=t2.medium'
 In Terraform, you have the option to utilize configuration files to define variable values to your IaC. Say you have a `main.tf` file that defines an `AWS EC2` configuration like this:
 
 ~~~{.tf caption=""}
-  provider "aws" {
+provider "aws" {
   region = var.region
 }
 resource "aws_instance" "example" {
