@@ -105,3 +105,9 @@ ga
 
 th
 ing
+
+Sklearn
+Ynet
+Punkt
+punkt
+Lequipe
