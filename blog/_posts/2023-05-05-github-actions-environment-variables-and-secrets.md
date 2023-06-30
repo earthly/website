@@ -9,10 +9,9 @@ author: Kumar Harsh
 editor: Mustapha Ahmad Ayodeji
 last_modified_at: 2023-06-26
 internal-links:
- - CI/CD
- - GitHub Actions
- - Environment Variables
- - Secrets
+ - github actions
+ - github actions env
+ - github actions secrets
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. This article is about GitHub Actions, if you'd like to see how Earthly can improve your GitHub Actions builds then [check us out](/earthly-github-actions).**
 
@@ -372,7 +371,7 @@ And in GitHubActions, and on our local dev machine, or in any other CI we could 
 
 Args are available to any step after they have been declared, similar to GitHub Actions above. But secrets must always be scoped explicitly to a specific run step, preventing any potential code inject attacks from occurring outside that line.
 
-~~~~~~{.diff caption="Earthfile"}
+~~~{.diff caption="Earthfile"}
 build:
     FROM +deps
     RUN npm run build
@@ -383,6 +382,40 @@ build:
 ~~~
 
 <figcaption>Secret `cert` is only accessible on the line where it's explicitly made in scope</figcaption>
+
+## Extra Tip: Read `.env` File From GitHub Actions
+
+An .env file is a plain text file used to store configuration variables and sensitive information as key-value pairs. **Usually you wouldn't have it in your git repository because you'd not want to commit potentially sensitive information to git.** But workflows differ and so if you want GitHub Actions to load Environmental Variables from an `.env` file, then you can do so very easily using the `dotenv-actions` action:
+
+~~~{.dockerfile caption=".env"}
+API_KEY=your_api_key
+DB_PASSWORD=your_db_password
+~~~
+
+~~~{.yml caption="workflow.yml"}
+- name: Load environment variables
+  uses: dotenv-actions/setup-dotenv@v2
+  with:
+    dotenv_path: .env
+  run: echo "Host -> $API_KEY"
+~~~
+
+## Default Environment Variables
+
+Every workflow in GitHub Actions has certain environmental variables already set. Here are the most commonly used ones:
+
+Here's a shorter list of 10 important GitHub Actions environment variables:
+
+1. `GITHUB_WORKSPACE` - The default working directory for steps and location of your repo.
+1. `GITHUB_ACTOR` - The name of the person or app that initiated the workflow.
+1. `GITHUB_REPOSITORY` - The owner and repository name.
+1. `GITHUB_EVENT_NAME` - The name of the event that triggered the workflow.
+1. `GITHUB_SHA` - The commit SHA that triggered the workflow.
+1. `GITHUB_REF` - The branch or tag ref that triggered the workflow.
+1. `GITHUB_JOB` - The ID of the current job.
+1. `GITHUB_RUN_NUMBER` - A unique number for each run of a workflow.  
+1. `GITHUB_WORKFLOW` - The name of the workflow.
+1. `RUNNER_OS` - The OS of the runner executing the job (Linux, Windows, macOS).
 
 ## Conclusion
 
