@@ -37,7 +37,7 @@ In the next section, you'll look at how to work with functions and arguments in 
 
 Like any other programming language, functions in Bash must be defined before use. Defining a function in Bash uses the following syntax:
 
-~~~
+~~~{.bash caption=">_"}
 function_name() {
     function_body
 }
@@ -45,7 +45,7 @@ function_name() {
 
 Or, equivalently
 
-~~~
+~~~{.bash caption=">_"}
 function function_name() {
     function_body
 }
@@ -55,7 +55,7 @@ Both syntaxes give the same result, which means you can use either without worry
 
 Take a look at an example where you define a function named `greet`, which prints "Hello, Earthly" when run:
 
-~~~
+~~~{.bash caption=">_"}
 greet() {
     echo "Hello, Earthly"
 }
@@ -63,19 +63,19 @@ greet() {
 
 You can execute the function simply by typing its name:
 
-~~~
+~~~{.bash caption=">_"}
 greet
 ~~~
 
 This will output
 
-~~~
+~~~{ caption="Output"}
 Hello, Earthly
 ~~~
 
 You can also define a function that takes parameters:
 
-~~~
+~~~{.bash caption=">_"}
 greet() {
     echo "Hello, $1"
 }
@@ -83,13 +83,13 @@ greet() {
 
 And you can call it with arguments:
 
-~~~
+~~~{.bash caption=">_"}
 greet "John"
 ~~~
 
 This will output:
 
-~~~
+~~~{ caption="Output"}
 Hello, John
 ~~~
 
@@ -100,11 +100,13 @@ You may have noticed two striking differences between functions in Bash and func
 
 What does this mean for you when working with function parameters? Well, rest easy, dear reader! That question will be answered soon, but you'll learn about variables inside functions before that.
 
+![Easy]({{site.images}}{{page.slug}}/easy.png)\
+
 ### Using Variables in Functions
 
 You might be tempted to define variables inside functions using the typical Bash syntax:
 
-~~~
+~~~{.bash caption=">_"}
 oops() {
     my_var="I'm a variable"
     echo $my_var
@@ -113,19 +115,19 @@ oops() {
 
 This code works as you'd expect it to and outputs "I'm a variable". However, it also throws the `my_var` variable into the global scope, and `$my_var` can be accessed from outside the function:
 
-~~~
+~~~{.bash caption=">_"}
 $ oops
 I'm a variable
 ~~~
 
-~~~
+~~~{.bash caption=">_"}
 $ echo $my_var
 I'm a variable
 ~~~
 
 This might seem innocent, but it can be problematic if you already have a variable in the global scope with the same name. The function may accidentally overwrite the global variable and cause bugs:
 
-~~~
+~~~{.bash caption=">_"}
 my_bank_balance=1000
 
 boom() {
@@ -139,7 +141,7 @@ echo $my_bank_balance
 
 This will output:
 
-~~~
+~~~{ caption="Output"}
 I stole your money
 0
 ~~~
@@ -148,7 +150,7 @@ In this code, the `boom` function modifies the `my_bank_balance` variable from t
 
 To define a local variable, you must prefix the `local` keyword:
 
-~~~
+~~~{.bash caption=">_"}
 my_bank_balance=1000
 
 boom() {
@@ -162,7 +164,7 @@ echo $my_bank_balance
 
 This outputs:
 
-~~~
+~~~{ caption="Output"}
 I stole your money
 1000
 ~~~
@@ -175,7 +177,7 @@ In the next section, you'll learn how to return a value from a function, a commo
 
 Return values are tricky in Bash because, unlike other languages, you cannot return whatever you want. You must return a numeric value:
 
-~~~
+~~~{.bash caption=">_"}
 foo() {
     return "Hi"
 }
@@ -187,7 +189,7 @@ In this code, the `foo` function returns `Hi`, which is not numeric, and the scr
 
 Although you're free to return any numeric value you want, by convention, it denotes the exit status of the function, where zero denotes a successful execution and a nonzero value denotes an error has occurred. This exit status is stored in the `$?` variable after the function executes:
 
-~~~
+~~~{.bash caption=">_"}
 foo() {
     return 0
 }
@@ -199,7 +201,7 @@ In this code, `foo` returns `0`. After executing `foo`, the return value is stor
 
 With this technique, you can use the return value of a function as a condition in an `if` statement or on the left-hand side of the short circuit operators (`&&` and `||`). Remember that an exit status of zero means successful execution:
 
-~~~
+~~~{.bash caption=">_"}
 foo() {
     return 0
 }
@@ -214,7 +216,7 @@ bar && echo "bar executed successfully"
 
 This code outputs "foo executed successfully". However, since `bar` returns a nonzero value, it's not classified as a successful execution. The same thing can also be written with an `if` statement:
 
-~~~
+~~~{.bash caption=">_"}
 if foo
 then
     echo "foo executed successfully"
@@ -228,7 +230,7 @@ fi
 
 So now the question is: How do you return some nonnumerical value? The trick is to print to `stdout` whatever you want to return and then capture this output to a variable using `$()`:
 
-~~~
+~~~{.bash caption=">_"}
 greet() {
     echo "Hello, Earthly"
 }
@@ -245,7 +247,7 @@ Now that you know how to use variables in functions, it's time to learn how to d
 
 Like other programming languages, Bash functions can accept arguments. However, they're not mentioned in the definition, and Bash doesn't enforce the number of arguments. This means you can pass any number of arguments to any function without an error:
 
-~~~
+~~~{.bash caption=">_"}
 foo() {
     echo "I don't accept arguments. Please don't pass any"
 }
@@ -255,29 +257,31 @@ foo "Take an argument" # No error
 
 To use the arguments inside the function body, you need to know the position of the argument. This is why these arguments are called positional parameters/arguments. You can access the first argument with `$1`, the second argument with `$2`, and so on:
 
-~~~
+~~~{.bash caption=">_"}
 bar() {
     echo "First argument: $1"
     echo "Second argument: $2"
 }
 ~~~
 
-> **Please note:** A space must separate the arguments. Additionally, you need to use double quotes if your argument contains a space:
+<div class="notice--info">
+**Please note:** A space must separate the arguments. Additionally, you need to use double quotes if your argument contains a space:
+</div>
 
-~~~
+~~~{.bash caption=">_"}
 bar arg1 "Argument 2"
 ~~~
 
 Output:
 
-~~~
+~~~{ caption="Output"}
 First argument: arg1
 Second argument: Argument 2
 ~~~
 
 If you have more than nine arguments, something interesting occurs:
 
-~~~
+~~~{.bash caption=">_"}
 foo() {
     echo $10
 }
@@ -287,7 +291,7 @@ foo This is a lot of arguments what will happen now
 
 Instead of outputting `now`, the tenth argument, this code prints `This0`. This is because `$10` is expanded as `($1)0` (*ie* the first argument followed by a `0`). To solve this, use `${}`:
 
-~~~
+~~~{.bash caption=">_"}
 foo() {
     echo ${10}
 }
@@ -301,7 +305,7 @@ There are a few special variables available inside a function body. Take a quick
 
 * The **`$#`** variable holds the number of arguments passed to the function:
 
-~~~
+~~~{.bash caption=">_"}
 foo() {
     echo $#
 }
@@ -313,7 +317,7 @@ Here, three arguments are passed to `foo`, and the code outputs `3`.
 
 * **`$*`** expands to list all positional arguments. When double-quoted, it expands to a string of all positional arguments separated by a space (or the first character of `$IFS`):
 
-~~~
+~~~{.bash caption=">_"}
 count_args() {
     echo "$# arguments passed"
 }
@@ -329,7 +333,7 @@ This code snippet defines a `count-args` function that prints the number of argu
 
 * **`$@`** is similar to `$*`. When not double-quoted, they're the same. However, when you use double quotes, `$@` expands to a list of separate strings. Here's the previous example with `$@` in place of `$*`:
 
-~~~
+~~~{.bash caption=">_"}
 count_args() {
     echo "$# arguments passed"
 }
@@ -347,6 +351,8 @@ However, if you remove the double quotes, both `$*` and `$@` will expand to thre
 
 ## Best Practices for Shell Script Functions and Arguments
 
+![Best]({{site.images}}{{page.slug}}/best.png)\
+
 Now that you're familiar with functions and arguments, this section covers some best practices that can enhance the readability of your scripts and make them more user-friendly for yourself and others. Some of these practices are essential, while others are recommended for convenience.
 
 ### Choose Descriptive Names for Functions and Arguments
@@ -363,7 +369,7 @@ One advantage of breaking down a script into functions is its modularity and reu
 
 To ensure your functions are modular and reusable, make them as single-purpose as possible. Consider the following script where the `setUpStudent` function creates a student, registers a student, and saves the student:
 
-~~~
+~~~{.bash caption=">_"}
 setUpStudent() {
     # Create a student
     …
@@ -376,7 +382,7 @@ setUpStudent() {
 
 If, in a particular case, you need to save a student without registering it, you can't reuse the `setUpStudent` function. The better solution is to separate the different functions into single-purpose functions:
 
-~~~
+~~~{.bash caption=">_"}
 createStudent() {
     …
 }
@@ -394,7 +400,7 @@ saveStudent() {
 
 You can create a [function library](https://bash.cyberciti.biz/guide/Shell_functions_library) to reuse functions between scripts. This library is a single file that stores the functions you want to make available between scripts. For example, if you wish to insert a library called "all_my_math_functions" (remember, descriptive names!), you must save the functions into a single file. Then you would insert the file into the beginning of the script with two dots and the library file name, like this:
 
-~~~
+~~~{.bash caption=">_"}
 #!/bin/bash
 . ./all_my_math_functions
 ~~~
@@ -403,7 +409,7 @@ You can create a [function library](https://bash.cyberciti.biz/guide/Shell_funct
 
 As you may have noticed, Bash is lax regarding what would be considered errors in other languages (*eg* passing the wrong number of arguments). This makes it necessary to handle errors in functions because Bash won't handle them for you. And there are many ways you can do this. For example, you can use a conditional statement to check for the correctness of arguments:
 
-~~~
+~~~{.bash caption=">_"}
 foo() {
     if [ $# -ne 3 ]
     then
@@ -437,7 +443,3 @@ If you want to learn more about what you can do with scripting and the methodolo
 * [Bash scripts and function libraries](https://medium.com/swlh/bash-scripts-part-6-functions-and-library-development-2411adbf962)
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-* [ ] Optional: Find ways to break up content with quotes or images
