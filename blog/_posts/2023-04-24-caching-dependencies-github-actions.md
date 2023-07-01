@@ -9,10 +9,10 @@ author: Cameron Pavey
 editor: Bala Priya C
 last_modified_at: 2023-06-26
 internal-links:
- - Caching
- - Dependencies
- - Github Action
- - Continuous Integration
+ - cache github actions
+ - caching github actions
+ - github actions cache
+ - github actions caching
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. This article is about GitHub Actions, if you'd like to see how Earthly can improve your GitHub Actions builds then [check us out](/earthly-github-actions).**
 
@@ -192,6 +192,40 @@ In your browser, view the new workflow run, and you should see something like th
 </div>
 
 If you compare the cache keys, you will notice that it's restored from your previously created cache even though you added a new dependency. This is because of the aforementioned `restore-keys`. Notably, the `Install dependencies` step was much faster this time, as it only had to deal with one new dependency (and its subdependencies). You can see a new cache was created with a different cache key, confirming that the `yarn.lock` file did indeed change.
+
+## Next Level Caching
+
+GitHub Actions cache can do a great job of holding onto files from previous runs. As we've shown, this means that if your tools are cache aware they can often skip significant amounts of rework. But there are ways to get more aggressive caching done in your GitHub Actions without risky flaky builds from stale cache keys.
+
+You can transform your build to use Earthly.
+
+~~~{.dockerfile caption="Earthfile"}
+VERSION 0.7
+FROM alpine:latest
+WORKDIR /app
+
+build:
+  CACHE /app/cache/
+  COPY . .
+  RUN yarn list
+  RUN yarn install
+  RUN yarn run build
+~~~
+
+And then call Earthly from your Github Action:
+
+~~~{.diff caption="workflow.yml"}
+    steps:
+      - uses: FranzDiebold/github-env-vars-action@v2
+      - name: Checkout code
+        uses: actions/checkout@v3
++     - name: Download released earth
++       run: "sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/download/v0.7.0/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly'"
++     - name: Build Site
++       run: earthly +build
+~~~
+
+And with that, most of the GitHub Actions logic can be replaced with Earthly. You can then get caching of yarn dependencies and you'll be able to run the build locally as well.
 
 ## Conclusion
 
