@@ -415,6 +415,7 @@ reconfigurability
 
 hardcode
 
+obliviating
 multinomial
 multiclass
 overfitting
