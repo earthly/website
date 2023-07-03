@@ -742,6 +742,8 @@ If you're looking to learn more about concurrency patterns, check out the follow
 * [*Asynchronous Programming in Rust*](https://rust-lang.github.io/async-book/02_execution/02_future.html) covers the fundamentals.
 * [*Rust Cookbook*](https://rust-lang-nursery.github.io/rust-cookbook/) offers a collection of practical recipes for Rust programming.
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
@@ -751,4 +753,3 @@ If you're looking to learn more about concurrency patterns, check out the follow
 - [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
