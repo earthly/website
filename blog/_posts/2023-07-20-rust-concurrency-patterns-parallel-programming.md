@@ -6,7 +6,10 @@ toc: true
 author: Ikeh Akinyemi
 
 internal-links:
- - just an example
+ - patterns for parallel programming
+ - rust concurrency patterns
+ - concurrency patterns
+ - parallel programming
 ---
 
 **We're [Earthly.dev](https://earthly.dev/). We make building software simpler and, therefore faster – like Dockerfile and Makefile had a baby. This is about Rust Concurrency Patterns for Parallel Programming**
@@ -750,5 +753,4 @@ If you're looking to learn more about concurrency patterns, check out the follow
 * [ ] Optional: Find ways to break up content with quotes or images
 * [ ] Verify look of article locally
   * Would any images look better `wide` or without the `figcaption`?
-* [ ] Add keywords for internal links to front-matter
 * [ ] Run `link-opp` and find 1-5 places to incorporate links
