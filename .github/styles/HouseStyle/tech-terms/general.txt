@@ -413,6 +413,8 @@ pulumi
 Pulumi
 reconfigurability
 
+syntaxes
+
 autostart
 
 certbot
