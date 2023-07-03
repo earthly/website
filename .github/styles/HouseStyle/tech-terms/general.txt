@@ -413,6 +413,8 @@ pulumi
 Pulumi
 reconfigurability
 
+hardcode
+
 obliviating
 multinomial
 multiclass
