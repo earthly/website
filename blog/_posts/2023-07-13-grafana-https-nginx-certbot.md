@@ -15,6 +15,8 @@ internal-links:
  - Analytics
 ---
 
+**We're [Earthly.dev](https://earthly.dev/). We make building software simpler and therefore faster using containerization. If you want to know more about building in containers then [check us out](/).**
+
 [Grafana](https://grafana.com/), a widely used open-source analytics and monitoring platform, has gained immense importance as an essential tool for tech companies and organizations globally. Its real-time [data visualization](https://www.tableau.com/learn/articles/data-visualization#:~:text=Data%20visualization%20is%20the%20graphical,outliers%2C%20and%20patterns%20in%20data.), querying, and analysis capabilities make it invaluable for monitoring system performance, network traffic, and other metrics.
 
 However, Grafana's default setting comes without a secure connection, meaning that unauthorized parties may intercept and access sensitive data transmitted through Grafana. Fortunately, [Nginx](https://nginx.org/en/) and [Certbot](https://certbot.eff.org/pages/about) can help provide additional security measures beyond these defaults. Nginx acts as a reverse proxy while Certbot generates and installs an [SSL/TLS](https://www.cloudflare.com/learning/ssl/transport-layer-security-tls/) certificate, allowing for [HTTPS](https://www.thesslstore.com/blog/what-is-https-what-https-stands-for/#:~:text=What%20Does%20HTTPS%20Stand%20For%3F%20A%20Simple%20Definition%20and%20Explanation%20of%20What%20HTTPS%20Is) encryption and enhanced security.
