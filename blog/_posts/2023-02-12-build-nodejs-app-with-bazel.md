@@ -11,6 +11,7 @@ internal-links:
  - Application
  - JavaScript
 ---
+**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. This article is about when to reach for Bazel. If you are looking for a simpler approach to building monorepos then [check us out](/).**
 
 [Bazel](https://earthly.dev/blog/bazel-build/) is an open-source build tool to speed up your builds and tests. Bazel is generally used on very large projects to scale the organization's codebase. Bazel is a multilingual build system. This guide will help you run and build Bazel with Node.js apps. We will create a Bazel workspace from scratch to build and test Node.js code.
 

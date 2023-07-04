@@ -12,8 +12,9 @@ internal-links:
  - Bazel
  - Builds
 ---
+**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. This article is about when to reach for Bazel. If you are looking for a simpler approach to building monorepos then [check us out](/).**
 
-[Bazel](https://bazel.build/), an open source build system created by Google, offers fast and incremental builds for your project through advanced local and distributed caching. It's popular due to its built-in support for multiple languages, extensibility, and ability to scale alongside your codebase, organization, and continuous integration (CI) systems.
+[Bazel](https://earthly.dev/blog/bazel-build/), an open source build system created by Google, offers fast and incremental builds for your project through advanced local and distributed caching. It's popular due to its built-in support for multiple languages, extensibility, and ability to scale alongside your codebase, organization, and continuous integration (CI) systems.
 
 Meanwhile, [Gazelle](https://github.com/bazelbuild/bazel-gazelle) is a build file–generation tool specifically designed for Bazel projects. It has native support for Golang (Go) and it can be extended to support new languages and custom rule sets.
 

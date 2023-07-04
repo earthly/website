@@ -12,8 +12,9 @@ internal-links:
  - Automate
  - Scalability
 ---
+**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. This article is about when to reach for Bazel. If you are looking for a simpler approach to building monorepos then [check us out](/).**
 
-[Bazel](https://bazel.build/about/intro) is an open source build and test tool that helps you automate your software tasks using a defined set of rules from an abstract, human-readable source code. Initially developed by Google, Bazel is a versatile tool that supports multiple programming languages and software environments.
+[Bazel](https://earthly.dev/blog/bazel-build/) is an open source build and test tool that helps you automate your software tasks using a defined set of rules from an abstract, human-readable source code. Initially developed by Google, Bazel is a versatile tool that supports multiple programming languages and software environments.
 
 Using Docker images with Bazel allows for even more scalability than what Docker or Bazel could offer you alone. This is because different parts of the project can be run in lightweight, portable, and isolated containers and can be executed in parallel across multiple machines or clusters. Moreover, Bazel offers easy compatibility with [rules_docker](https://github.com/bazelbuild/rules_docker), which are premade rules for carrying out Docker tasks. What's great about these rules is that you don't need to write Docker commands for pulling, building, or pushing images as the rules will take care of all these, thereby simplifying the development process. This can be particularly useful for large-scale projects that require the use of multiple Docker images, as it streamlines the process of building and deploying those images
 

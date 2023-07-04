@@ -13,6 +13,7 @@ internal-links:
  - Applications
  - Build
 ---
+**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. This article is about when to reach for Bazel. If you are looking for a simpler approach to building monorepos then [check us out](/).**
 
 Building and deploying software can be a complicated and time-consuming process, especially as applications grow in size and complexity. One tool that can help simplify this process is [Bazel](https://bazel.build), an open-source build tool developed by Google. [Bazel](/blog/bazel-build) is designed to make it easy to build and test large and complex codebases and is particularly well-suited for monorepos, which are codebases that contain multiple projects or components.
 

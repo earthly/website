@@ -7,6 +7,8 @@ author: Adam
 internal-links:
  - bazel
 ---
+**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. This article is about when to reach for Bazel. If you are looking for a simpler approach to monorepos then [check us out](/).**
+
 ## Bazel Build?
 
 Here at Earthly, we care a lot about builds and talk to many people about their struggles with builds and CI. A frequent topic of conversation, especially if an organization has a monorepo and more than 500 developers, is Bazel, Google's open-sourced monorepo build system.

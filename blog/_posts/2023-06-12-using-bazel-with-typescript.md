@@ -13,8 +13,9 @@ internal-links:
  - Jest
  - Caching
 ---
+**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. This article is about when to reach for Bazel. If you are looking for a simpler approach to building monorepos then [check us out](/).**
 
-[Bazel](https://bazel.build/) is an open source project originally created by Google, refined, and tested for years to run heavy-duty, mission-critical services, and applications. It is a great choice for building, and testing projects. Bazel's advanced distributed caching execution creates fast incremental and customizable builds by only rebuilding what is necessary. It works across several languages and platforms, such as Java, Go, and JavaScript, and across operating systems, such as IOS, Android, Linux, and Windows.
+[Bazel](https://earthly.dev/blog/bazel-build/) is an open source project originally created by Google, refined, and tested for years to run heavy-duty, mission-critical services, and applications. It is a great choice for building, and testing projects. Bazel's advanced distributed caching execution creates fast incremental and customizable builds by only rebuilding what is necessary. It works across several languages and platforms, such as Java, Go, and JavaScript, and across operating systems, such as IOS, Android, Linux, and Windows.
 
 Bazel automates software builds and tests for tasks like running compilers and linkers to produce executable programs and libraries, such as transforming a JAVA file into a JAR executable. Bazel can be compared to tools like [Apache Maven](https://maven.apache.org/), [Apache Ant](https://ant.apache.org/), [GNU Make](https://www.gnu.org/software/make/), or [Gradle](https://gradle.org/), but it rises above the crop due to its multilanguage and multiplatform support. It comes with a customizable high-level language, [Starlark](https://github.com/bazelbuild/starlark), that describes how a project should be built. Bazel's scalability allows it to grow along with your codebase and organization. It can handle codebases of any size, whether huge monolith repositories or multiple repositories.
 
