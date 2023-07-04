@@ -1,105 +1,34 @@
-<div class="text-3xl font-semibold mt-12">Pricing FAQ</div>
+<div class="bg-[#f4f5f7] mt-12 px-5 lg:px-10 py-8 rounded-xl">
+  <div class="font-medium mb-12 text-3xl lg:text-4xl tracking-tighter">
+    Frequently Asked Questions
+  </div>
 
-<h2 class="text-2xl font-semibold mb-2 mt-10" id="what-is-an-active-user">What is an active user?<span class="hide"><a
-            href="#what-is-an-active-user">¶</a></span></h2>
-<div class="text-xl text-gray-600">
-    An active user is a user that has triggered a Satellite build at least three times during a month. Triggering a
-    build can be done by either performing a Satellite build directly via the earthly CLI, or indirectly, by pushing
-    code to a repository, and that push being picked up by a CI that uses a Earthly Satellites to perform the build.
+  {% for item in site.data.pricing-faqs %}
+    <div class="border-b border-gray-300 mt-5 pb-2.5 pricing-faq">
+      <div class="cursor-pointer flex items-center" onclick="toggleFAQ(this)">
+        <div class="relative">
+          <img src="../../../assets/svg/minus.svg" alt="Minus Icon" />
+          <img
+            src="../../../assets/svg/minus.svg"
+            alt="Minus Icon"
+          />
+        </div>
+        <div class="flex-1 font-medium text-2xl ml-2">{{ item.question }}</div>
+      </div>
+
+      <div class="answer leading-8 text-gray-500 text-lg ml-7 mt-3">
+        {{ item.answer }}
+      </div>
+    </div>
+  {% endfor %}
 </div>
 
-<h2 class="text-2xl font-semibold mb-2 mt-10" id="how-are-active-users-tracked">How are active users tracked?<span
-  class="hide"><a href="#how-are-active-users-tracked">¶</a></span></h2>
-<div class="text-xl text-gray-600">
-The number of active users is tracked by monitoring who triggered the build. The build may be triggered either
-directly by the user in their terminal, or indirectly by a CI system. In the latter case, the triggering user is
-inferred via commit metadata. The triggering user does not have to be a user registered with Earthly.
-In some cases, if the triggering user cannot be inferred from commit metadata, then the user logged into
-Earthly CLI in the CI run is used as the triggering user.
-
-A triggering user becomes an active user if they trigger the build at least three times during a month.
-
-At the end of a billing cycle, if the number of paid users is greater than the number of active users, the
-difference is refunded to the user in the form of statement credit.
-
-If you would like to estimate the number of active users that a project uses, please check out the
-<a href="https://github.com/earthly/lib/tree/main/billing#active-users">
-github.com/earthly/lib/billing+active-users</a> target.
-</div>
-
-<h2 class="text-2xl font-semibold mb-2 mt-10" id="what-is-easein-pricing">What is ease-in pricing?<span class="hide"><a
-  href="#what-is-easein-pricing">¶</a></span></h2>
-<div class="text-xl text-gray-600">
-Ease-in pricing allows you to pay the price of lower tiers for the first few active users of the higher tier. This
-prevents drastic bill increases when jumping from one tier to the next.
-</div>
-
-<h2 class="text-2xl font-semibold mb-2 mt-10" id="zero-margin-compute">What is zero-margin compute?<span class="hide"><a
-            href="#zero-margin-compute">¶</a></span></h2>
-<div class="text-xl text-gray-600">
-    Zero-margin compute is a pricing model where the cost of compute is passed on directly to the user, without any
-    profit-generating margin. This allows us, the CI vendor, to better align our incentives with the end-user. Slow
-    builds should not mean more profit for us.
-</div>
-
-<h2 class="text-2xl font-semibold mb-2 mt-10" id="compute">How much does compute cost?<span class="hide"><a
-            href="#compute">¶</a></span></h2>
-<div class="text-xl text-gray-600">
-    The cost of compute is based on the AWS rack price for the instances that are used underneath, plus the cost of
-    cache storage and the cost of network ingress/egress incurred. All of these costs are packaged as an all-inclusive
-    per-minute cost and is then passed on directly to the user, without any profit-generating margin.
-</div>
-
-<h2 class="text-2xl font-semibold mb-2 mt-10" id="what-are-satellites">What are Satellites?<span class="hide"><a
-            href="#what-are-satellites">¶</a></span></h2>
-<div class="text-xl text-gray-600">
-    Satellites are single-tenant remote runners managed by the Earthly team. Satellites power the Earthly CI backbone, and as such, every pipeline created runs on its own dedicated satellite. Satellites may also be created manually, to be used as remote executors in development workflows.
-
-A subscription to Earthly Satellite allows you to use only satellites directly, without the Earthly CI web interface or automated GitHub triggers. Common use-cases for using standalone satellites include:
-
-- Using satellites on top of a traditional CI, in order to take advantage of the Earthly caching and parallelization capabilities without switching the CI system to Earthly CI
-- Using satellites in local development workflows in order to share compute and cache with colleagues
-- Using satellites in order to execute x86 builds on ARM (or Apple Silicon) machines, or vice-versa
-
-A subscription to Earthly CI allows access to both the CI capabilities, and also to the standalone satellite capabilities.
-</div>
-
-<h2 class="text-2xl font-semibold mb-2 mt-10" id="satellite-only-package">What is the Satellite-only package?<span class="hide"><a
-            href="#satellite-only-package">¶</a></span></h2>
-<div class="text-xl text-gray-600">
-    Satellites are remote runners managed by the Earthly team. The Satellite-only package contains the same
-    features and limits of the respective CI tier, except that it does not include the CI functionality.
-    Satellites can be used via the Earthly CLI, either from developer machines or
-    from a traditional CI, but they do not trigger automatically from GitHub activity the way a CI would.
-    To read more about Satellites visit the <a href="https://docs.earthly.dev/earthly-cloud/satellites" class="underline">Earthly Satellites product</a> page.
-</div>
-
-<h2 class="text-2xl font-semibold mb-2 mt-10" id="usage-tracked">How is my usage of Satellites tracked?<span
-        class="hide"><a href="#usage-tracked">¶</a></span></h2>
-<div class="text-xl text-gray-600">
-    The usage of Satellites is tracked by monitoring the Satellites for active builds. If there are no active builds,the
-    Satellite goes to sleep automatically after some time. When a Satellite is asleep, it is not billed for compute.
-    When a build is started, the Satellite is woken up automatically and billed for compute.
-</div>
-
-<h2 class="text-2xl font-semibold mb-2 mt-10" id="how-many-satellites">How many Satellites do I need?<span
-        class="hide"><a href="#how-many-satellites">¶</a></span></h2>
-<div class="text-xl text-gray-600">
-    The number of Satellites depends on the amount of workload they need to handle. For maximum performance, you can
-    create a different Satellite for each CI pipeline. In some setups, where the CI pipelines are small, that might be
-    an overkill. The best method to determine the number of satellites is to start with one or two, and add more as
-    needed.
-
-    Earthly prints information on build startup about how loaded the Satellite is currently. This can be used as a guide
-    to determine if more Satellites are needed.
-
-</div>
-
-<h2 class="text-2xl font-semibold mb-2 mt-10" id="can-i-use-starter">Can I use the Starter or Team tiers if I
-    have a small team?<span class="hide"><a href="#can-i-use-starter">¶</a></span></h2>
-<div class="text-xl text-gray-600">
-
-    Yes, but you have to pay for 5 seats minimum for Starter, and 15 seats minimum for Team, even if you are only using
-    a few active user seats.
-
-</div>
+<script>
+  function toggleFAQ(elem) {
+    if (elem.parentElement.classList.contains('open')) {
+      elem.parentElement.classList.remove('open')
+    } else {
+      elem.parentElement.classList.add('open')
+    }
+  }
+</script>
