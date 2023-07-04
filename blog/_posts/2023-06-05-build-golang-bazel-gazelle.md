@@ -227,4 +227,8 @@ In this tutorial, you learned how Bazel and Gazelle can be used to build a Go ap
 
 Bazel and Gazelle help simplify the build process in cases where there would have been multiple complex layers. In addition, it's also significantly faster to build with Bazel since it doesn't have to rebuild your whole project every time it runs.
 
+Yet, while Bazel is a fantastic tool for building apps, and Gazelle a great tool for generating those build files, the combination can also be complex and intricate. It may be overkill for smaller projects or for teams that aren't familiar with its intricacies. That's where [Earthly](/) comes into the picture.
+
+Earthly offers a simpler approach to building monorepos and containerization, focusing on streamlining the build process, maintaining a minimal setup, and promoting the use of best practices. It aims to simplify the build system and make it accessible for more developers, offering a potentially lower learning curve compared to Bazel. [Earthly](/) can handle both small and large projects, offering you scalability without the additional complexity.
+
 {% include_html cta/bottom-cta.html %}

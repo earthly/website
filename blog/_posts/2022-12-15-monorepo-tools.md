@@ -272,9 +272,11 @@ If your organization is Google-like – in terms of language use, workflow, and 
 
 If your monorepo is a frontend web dev monorepo, mainly full of JavaScript and Typescript, then Bazel is often a significant change, and Pants isn't ready for you. For those reasons and because of its popularity among front-end devs, NX is a great choice.
 
-If you are working with containerized microservices, or if your software has system-level dependencies, or if you'd like to use your language's existing build tools or need to do something a bit non-standard, then Earthly, with its containerized glue layer approach, can be a great choice to build in an efficient and reproducible way.
+If you are working with containerized microservices, or if your software has system-level dependencies, or if you'd like to use your language's existing build tools or need to do something a bit non-standard, then [Earthly](/), with its containerized glue layer approach, can be a great choice to build in an efficient and reproducible way.
 
 (Also, you can combine many of these tools together. Earlier I mentioned NX backed by Bazel, but Bazel inside of Earthly and Pants inside of Earthly has also been done. The only real way to find out what tool will work best for your specific use case is to give it a try with a small proof of concept.)
+
+{% include_html cta/bottom-cta.html %}
 
 [^1]:
    There are so many tools that can help build a monorepo. There are other Bazel-inspired tools like Amazon's Brazil and Facebook's Buck and Buck2. There are JS-only build tools like Lerna, Rush, Turborepo, Lage. There are traditional build tools like Gradle, CMake, ninja, and shake. And even package management languages like Nix, when you throw in its build system Hydra, could be considered for building a monorepo. So, I've only picked a few representative builds. If there are others you'd like to see covered, please let me know.

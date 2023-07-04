@@ -228,6 +228,36 @@ From above, the server is running on port 8080. Proceed to `http://localhost:808
 
 ## Conclusion
 
-This guide helped us create Node.js with [Bazel](/blog/monorepo-with-bazel). We were able to configure Bazel, set up Bazel builds, and, most importantly, run tests using Bazel for the Node.js app. I hope you found this guide helpful. Happy Go coding!
+This guide helped us create Node.js with [Bazel](/blog/monorepo-with-bazel). We were able to configure Bazel, set up Bazel builds, and, most importantly, run tests using Bazel for the Node.js app. I hope you found this guide helpful. 
+
+Bazel isn’t the only solution for the automation of building and testing software. Earthly provides a convenient framework to build images or stand-alone artifacts by leveraging containers for the execution of pipelines.
+
+A Earthfile for building, testing and containerizing our app could look like this:
+
+~~~{.dockerfile caption="Earthfile"}
+VERSION 0.7
+FROM node:14
+WORKDIR /app
+
+deps:
+    COPY package.json package-lock.json ./
+    RUN npm ci
+
+build:
+    FROM +deps
+    COPY . .
+    RUN npm run build
+
+test:
+    FROM +build
+    RUN npm test
+
+run:
+    FROM +build
+    ENTRYPOINT ["npm", "start"]
+    SAVE IMAGE --push npm-example:latest
+~~~
+
+[Earthly](/) combines the best ideas from Dockerfiles and Makefiles into one specification, making the containers self-contained, repeatable, portable, and parallel.
 
 {% include_html cta/bottom-cta.html %}

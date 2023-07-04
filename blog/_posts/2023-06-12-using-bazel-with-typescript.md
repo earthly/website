@@ -395,6 +395,12 @@ If you'd like to see the complete source code from this tutorial, visit [this Gi
 
 You've now completed a basic build of a TypeScript application with Bazel. You learned how to define a workspace as well as a package. You also learned how to load dependencies, add rules, build, and test a project, and publish to npm, all using Bazel.
 
-Bazel is a powerful and flexible build system that can be used to manage projects of any size and complexity. By leveraging its caching and parallelization features, Bazel can provide significant speed improvements in building and testing large projects. To further enhance your knowledge of Bazel, it is recommended to explore its documentation in depth. The official Bazel documentation contains a vast collection of resources, including tutorials, guides, and reference materials that can help you become an expert in using Bazel for your projects. So, if you want to learn more about Bazel and its capabilities, visit [Bazel's docs](https://bazel.build/docs) for more resources.
+Bazel is indeed a powerful and flexible build system that can be used to manage projects of any size and complexity. By leveraging its caching and parallelization features, Bazel can provide significant speed improvements in building and testing large projects.
+
+However, despite all these advantages, Bazel's complex configuration and steep learning curve can sometimes be a hurdle for developers, especially when dealing with large monorepos. This is where Earthly comes into the picture. As a simpler, more intuitive alternative to Bazel, Earthly aims to make building software easier and faster. Our philosophy revolves around simplicity and usability without compromising on performance.
+
+Earthly supports most languages and CI systems, and it also works with monorepos, microservices, and everything in between. So, while you've explored the capabilities of Bazel through this tutorial, you might also want to consider checking out Earthly. It may just be the tool you need to streamline your software building process, irrespective of the scale and complexity of your projects.
+
+Remember, the right tool for your needs will always depend on your specific context, requirements, and constraints. Therefore, knowing your options will only make you more prepared to make the best choices for your software development endeavors. Happy building!
 
 {% include_html cta/bottom-cta.html %}

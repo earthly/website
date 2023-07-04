@@ -253,10 +253,12 @@ You can find all the code for this tutorial in this [GitHub repo](https://github
 
 ## Conclusion
 
-In this article, you learned how Bazel can be utilized to develop and manage Docker images. By following the steps outlined here, you used Bazel's rules to create and test your software within Docker containers and then uploaded generated images to Docker Hub.
+In conclusion, Docker and Bazel can work together efficiently to optimize your development process. Bazel's powerful rule-based structure simplifies the task of managing Docker images, testing software within Docker containers, and deploying applications. This rule-based system provides flexibility, extensibility, and reliability that few other build systems can match.
 
-The primary benefits of using Docker images with Bazel include the ability to define, build, and test images using custom definitions, as well as the scalability of your builds and tests. By utilizing the capabilities of Bazel's rules_docker, developers can enjoy a straightforward and efficient procedure for designing, managing, testing, and deploying applications in containers.
+Yet, while Bazel is a fantastic tool for managing Docker images and containerizing software, it can also be complex and intricate. It may be overkill for smaller projects or for teams that aren't familiar with its intricacies. That's where [Earthly](/) comes into the picture.
 
-Overall, [Bazel](/blog/bazel-build/) provides a robust and extensive set of functionality for dealing with Docker, making it a great choice for developers who wish to automate their containerization process. Whether you're looking to design, test, or deploy software, Bazel's efficient and dependable methodology will help you optimize your development process and accomplish your objectives more quickly.
+Earthly offers a simpler approach to building monorepos and containerization, focusing on streamlining the build process, maintaining a minimal setup, and promoting the use of best practices. It aims to simplify the build system and make it accessible for more developers, offering a potentially lower learning curve compared to Bazel.  [Earthly](/) can handle both small and large projects, offering you scalability without the additional complexity.
+
+Remember, the ultimate goal is to choose a tool that not only suits your current needs but also has the capacity to grow with you and your project, all the while ensuring a simpler, faster, and more efficient software development process. Be it Bazel, Docker, Earthly, or any other tool, the choice should make your build process a breeze, not a hurdle.
 
 {% include_html cta/bottom-cta.html %}
