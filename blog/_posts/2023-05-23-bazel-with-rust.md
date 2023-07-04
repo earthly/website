@@ -5,7 +5,8 @@ categories:
 toc: true
 author: Enoch Chejieh
 editor: Bala Priya C
-
+sidebar:
+  nav: "bazel"
 internal-links:
  - Rust
  - Bazel

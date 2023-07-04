@@ -5,7 +5,8 @@ categories:
 toc: true
 author: Sooter Saalu
 editor: Mustapha Ahmad Ayodeji
-
+sidebar:
+  nav: "bazel"
 internal-links:
  - Docker Images
  - Bazel

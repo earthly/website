@@ -5,7 +5,8 @@ categories:
 toc: true
 author: Amarachi Aso
 editor: Mustapha Ahmad Ayodeji
-
+sidebar:
+  nav: "bazel"
 internal-links:
  - Golang
  - Gazelle

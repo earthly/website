@@ -5,7 +5,6 @@ categories:
 author: Adam
 sidebar:
   nav: monorepos
-
 internal-links:
  - monorepo tools
  - monorepo

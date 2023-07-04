@@ -4,6 +4,8 @@ categories:
   - Articles
 toc: true
 author: Adam
+sidebar:
+  nav: "bazel"
 internal-links:
  - bazel
 ---

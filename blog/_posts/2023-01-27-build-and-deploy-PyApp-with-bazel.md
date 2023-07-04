@@ -4,7 +4,8 @@ categories:
   - Tutorials
 toc: true
 author: Artem Oppermann
-
+sidebar:
+  nav: "bazel"
 internal-links:
  - Python
  - Bazel

@@ -5,7 +5,8 @@ categories:
 toc: true
 author: Adeyinka Adegbenro
 editor: Mustapha Ahmad Ayodeji
-
+sidebar:
+  nav: "bazel"
 internal-links:
  - Bazel
  - Typescript

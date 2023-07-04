@@ -4,7 +4,8 @@ categories:
   - Tutorials
 toc: true
 author: Rose Chege
-
+sidebar:
+  nav: "bazel"
 internal-links:
  - Node JS
  - Bazel
