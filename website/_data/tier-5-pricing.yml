@@ -7,11 +7,11 @@
   - Fully managed, single-tenant satellite fleet
   - Unlimited active users
   - XS, S, M, L, and XL satellites
-  - Unlimited logs retention
+  - Unlimited log retention
 - points:
-  - Single sign-on
   - x86 & arm64 satellites
   - Dedicated IP address
+  - Single sign-on
   - 24/7 support
 - points:
   - Self-hosted satellites (coming soon)

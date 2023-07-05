@@ -1,10 +1,10 @@
-- Satellites
-- CI
+- <a href="/earthly-satellites">Satellites</a>
+- <a href="/earthly-ci">CI</a>
 - Log Sharing
-- Secrets
+- <a href="https://docs.earthly.dev/earthly-cloud/cloud-secrets">Secrets</a>
 - XS and S satellites
 - 8 days cache retention
 - 2 hour max build time
-- x86 satellites
+- x86 satellites only
 - Latest version of Earthly only
 - Community support

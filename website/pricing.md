@@ -8,7 +8,7 @@ headingStyles: "margin-bottom: 8px"
 <link rel="stylesheet" href="/assets/css/subpage.css">
 
 <div class="sm:flex items-center lg:mt-6 mb-4 md:pt-2">
-  <span class="text-xl lg:text-2xl text-slate-500">Pricing plans for Earthly CI</span>
+  <span class="text-xl lg:text-2xl text-slate-500">Pricing plans for Earthly Cloud</span>
 
   <div class="flex items-center">
     <label class="toggle-switch">
@@ -38,9 +38,9 @@ headingStyles: "margin-bottom: 8px"
 
     checkbox.addEventListener('change', function () {
       if (checkbox.checked) {
-        document.getElementById("tier-2-pricing").innerText = 9
-        document.getElementById("tier-3-pricing").innerText = 29
-        document.getElementById("tier-4-pricing").innerText = 49
+        document.getElementById("tier-2-pricing").innerText = 9.17
+        document.getElementById("tier-3-pricing").innerText = 29.17
+        document.getElementById("tier-4-pricing").innerText = 49.17
       } else {
         document.getElementById("tier-2-pricing").innerText = 11
         document.getElementById("tier-3-pricing").innerText = 35
