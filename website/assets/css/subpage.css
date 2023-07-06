@@ -325,7 +325,7 @@ p > a:visited {
 }
 
 .pricing-faq.open .answer {
-  max-height: 1000px;
+  max-height: 1056px;
 }
 
 @media screen and (min-width: 640px) {
