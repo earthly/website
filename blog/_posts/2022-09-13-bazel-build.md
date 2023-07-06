@@ -445,7 +445,7 @@ Second, I've learned you shouldn't overlook the education and training aspects e
 
 But most importantly, I've learned - and all the people I talked to agreed: Bazel does deliver on its promise of fast and correct builds. Other tools like Pants and Buck exist, but Bazel is the clear category leader. If I had a mono-repo with several million lines of code in it, I'd want a consistent way to build things and a fast way to get feedback on those changes. Doing so would pay for itself over time because developer time is expensive. Bazel is the tool for that job.
 
-If I had less than a million lines of code or I was worried about the adoptoin costs or if wanted a more gradual approach to monorepo build performance, then I'd take a look at [Earthly](/). But then I work for Earthly so I'm a bit biased.
+If I had less than a million lines of code or I was worried about the adoption costs or if wanted a more gradual approach to monorepo build performance, then I'd take a look at [Earthly](/). But then I work for Earthly so I'm a bit biased.
 
 {% include_html cta/bottom-cta.html %}
 
