@@ -257,8 +257,8 @@ groups:
     labels:
       severity: warning
     annotations:
-      description: '{{ $labels.instance }} requires a reboot.'
-      summary: 'Instance {{ $labels.instance }} - reboot required'
+      description: '{% raw %}{{ $labels.instance }}{% endraw %} requires a reboot.'
+      summary: 'Instance {% raw %}{{ $labels.instance }}{% endraw %} - reboot required'
 ~~~
 
 The alert configuration you provided includes two primary types of rules: targets and hosts. The target group is responsible for defining rules to monitor the status of a particular service on a target. If the service becomes unavailable for a duration exceeding 30 seconds, an alert of critical severity will be generated. Meanwhile, the hosts group includes rules that oversee the CPU, memory, disk space, and RAM usage of a host, with a threshold set at 75%. Should any of these usage levels surpass the set threshold, a warning message is triggered, prompting the need for further analysis to avert potential issues.
