@@ -219,3 +219,33 @@ pongo:
       url: /pongo/
     - title: "Pongo Part Two"
       url: /pong-part2/
+bazel:
+  - title: "Big Builds"
+  - title: "Bazel"
+    children:
+    - title: "When to use Bazel?"
+      url: /bazel-build/
+    - title: "Building a Monorepo with Bazel"
+      url: /monorepo-with-bazel/
+    - title: "Using Bazel to Improve Your Automated Test Suite"
+      url: /bazel-and-automated-tests/
+    - title: "Pushing Docker Images With Bazel"
+      url: /push-docker-image-bazel/
+  - title: "Using Bazel"
+    children:
+    - title: "Bazel and Python"
+      url: /build-and-deploy-pyapp-with-bazel/
+    - title: "Bazel and Rust"
+      url: /bazel-with-rust/
+    - title: "Bazel and Node.js"
+      url: /build-nodejs-app-with-bazel/
+    - title: "Bazel and GoLang"
+      url: /build-golang-bazel-gazelle/
+    - title: "Bazel and TypeScript"
+      url: /using-bazel-with-typescript/
+  - title: "Large Scale Builds"
+    children:
+    - title: "Monorepo Build Tools"
+      url: /monorepo-tools/
+    - title: "Pants for Python - Interview"
+      url: /pants-build/
