@@ -240,7 +240,7 @@ Need some inspiration to get started with your project? <div class="mt-2 pb-4">C
 See the <a href="https://docs.earthly.dev/earthly-cloud/earthly-ci" class="underline blue-link  font-semibold">Earthly CI docs</a>
 </div>
 
-<a href="/signup/earthly-cloud" class="try-button py-4 h-10 px-4 xl:px-6 items-center text-sm xl:text-base text-center text-white bg-[#2d7e5d] hover:bg-green-800 rounded-lg inline-flex" onclick="tryEarthlyCIClick()">
+<a href="https://cloud.earthly.dev/login" class="try-button py-4 h-10 px-4 xl:px-6 items-center text-sm xl:text-base text-center text-white bg-[#2d7e5d] hover:bg-green-800 rounded-lg inline-flex" onclick="tryEarthlyCIClick()">
                     Get Started Free
                 </a>
   <div>Have questions? <a class="blue-link underline font-semibold " href="/contact-us">Contact us</a></div>
