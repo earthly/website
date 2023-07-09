@@ -435,3 +435,8 @@ overfit
 vectorizer
 
 deduplicating
+
+subtyping
+Subtyping
+Shawshank
+deallocation
