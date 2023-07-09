@@ -26,6 +26,8 @@ Rust is an ideal language for writing concurrent programs because it was designe
 
 ## Threads in Rust
 
+![Threads]({{site.images}}{{page.slug}}/threads.png)\
+
 One of the most basic primitives for concurrency in Rust is threads. A thread is an independent path of execution within a program that can run concurrently with other threads.
 
 Threads allow developers to take full advantage of multicore processors by dividing a task into smaller subtasks that can be executed in parallel.
@@ -162,6 +164,8 @@ Back in the primary thread, `let data = 42; match sender.send(data) {...}` sends
 To prevent data races and other concurrency bugs that may arise when multiple threads access shared data, Rust offers various [thread synchronization primitives](https://doc.rust-lang.org/book/ch16-03-shared-state.html), such as locks, mutexes, and atomic variables, which you'll learn about in the following sections.
 
 ## Concurrency Patterns
+
+![Patterns]({{site.images}}{{page.slug}}/patterns.png)\
 
 Concurrency patterns are reusable solutions to common problems that occur in concurrent programming. In Rust, several patterns are available, and the following sections will discuss three of them: mutexes and locks, channels, and atomic reference counting.
 
@@ -414,6 +418,8 @@ Now let's run the code and see the output:
 In this example, `Arc` is used to ensure safe concurrent access to the shared vector `shared_data`. By cloning the `Arc` using `Arc::clone`, each thread obtains its own reference to the shared data. The reference counting mechanism of `Arc` ensures that the shared data is deallocated only when all references are dropped, allowing multiple threads to safely read and modify the shared vector.
 
 ## Concepts Related to Concurrency Patterns
+
+![Concepts]({{site.images}}{{page.slug}}/concept.png)\
 
 There are also other concepts related to concurrent programming that provide insights into effective strategies and techniques for writing robust and efficient concurrent Rust code. In the following sections, you'll learn about concepts such as error handling in concurrent code, balancing performance and readability, testing concurrent code, parallel programming with [Rayon](https://github.com/rayon-rs/rayon), and async programming using the [Tokio](https://tokio.rs/) library.
 
@@ -751,9 +757,3 @@ If you're looking to learn more about concurrency patterns, check out the follow
 * [*Rust Cookbook*](https://rust-lang-nursery.github.io/rust-cookbook/) offers a collection of practical recipes for Rust programming.
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-* [ ] Optional: Find ways to break up content with quotes or images
-* [ ] Verify look of article locally
-
