@@ -808,6 +808,8 @@ In this article, you learned all about the basics of Rust lifetimes, including b
 
 With the information and examples provided here, you should have a solid understanding of Rust's lifetimes and their importance in writing safe and efficient code. If you want to keep learning, try exploring the [official Rust documentation and community resources](<https://www.rust-lang.org/lea>
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 - [ ] Add in Author page
@@ -817,4 +819,3 @@ With the information and examples provided here, you should have a solid underst
   - Would any images look better `wide` or without the `figcaption`?
 \- [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
