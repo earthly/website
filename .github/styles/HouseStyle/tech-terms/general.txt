@@ -413,6 +413,16 @@ pulumi
 Pulumi
 reconfigurability
 
+syntaxes
+
+autostart
+
+certbot
+Certbot
+Certbots
+
+hardcode
+
 obliviating
 multinomial
 multiclass

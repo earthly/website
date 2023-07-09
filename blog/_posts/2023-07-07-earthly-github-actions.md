@@ -99,7 +99,7 @@ Also, Github Actions relies on plugins for certain tasks like setting up runtime
             ~/.cargo/git
             ~/.you/dont/exist
             examples/polyglot-repo/rust_server/target
-          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+          key: ${{ runner.os }}-cargo-{% raw %}${{ hashFiles('**/Cargo.lock') }}{% endraw %}
 ~~~
 
 Not only does the build still work, **it provides no feedback** that the caching may not be set up properly.
@@ -146,7 +146,7 @@ For the sake of conciseness, here is the code required to orchestrate the steps 
       - uses: actions/cache@v2
         with:
           path: node_server/node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          key: ${{ runner.os }}-node-{% raw %}${{ hashFiles('**/package-lock.json') }}{% endraw %}
       - uses: actions/setup-node@v3
         with:
           node-version: "19.x"

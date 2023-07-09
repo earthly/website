@@ -6,12 +6,15 @@ toc: true
 author: Ali Mannan Tirmizi
 author2: Aniket Bhattacharyea
 editor: Bala Priya C
-
+sidebar:
+  nav: "bazel"
 internal-links:
  - Bazel
  - Automation
  - CI/CD
 ---
+
+**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. This article is about when to reach for Bazel. If you are looking for a simpler approach to building monorepos then [check us out](/).**
 
 To ensure that your code works as expected even when you ship it to production, you need to integrate automated testing. Automated testing is critical for enterprise-grade software development and delivery. It saves you time and money by rapidly running tests and improves software quality by allowing engineers to run lengthy and time-consuming tests in the background.
 

@@ -3,6 +3,8 @@ title: "To Understand Pants, Understand Bazel's History"
 categories:
   - Tutorials
 toc: true
+sidebar:
+  nav: "bazel"
 author: Adam
 internal-links:
  - pants
