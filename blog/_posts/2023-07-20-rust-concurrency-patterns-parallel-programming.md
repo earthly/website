@@ -38,7 +38,7 @@ To create a new thread in Rust, you can use the [`std::thread::spawn`](https://d
 
 For example, you can use the following code to create a new thread:
 
-~~~
+~~~{.rust caption="main.rs"}
 use std::thread;
 
 fn main() {
@@ -50,7 +50,7 @@ fn main() {
 
 In the above snippet, you imported the `thread` module with the statement use std::thread;. In the main function, you utilize the `thread::spawn` function to create a new thread. This function returns a [`JoinHandle`](https://doc.rust-lang.org/std/thread/struct.JoinHandle.html) type, which represents the new thread. You can utilize the `JoinHandle` type to synchronize and wait for the thread to complete its execution. This is achieved by invoking the `join` method on the `Joinhandle` like this:
 
-~~~
+~~~{.rust caption="main.rs"}
 use std::thread;
 
 fn main() {
@@ -79,7 +79,7 @@ For multiple threads to work together, they need to be able to share data. Rust 
 
 One way to share data between threads is to use shared ownership with the [`Arc`](https://doc.rust-lang.org/std/sync/struct.Arc.html) (Atomically Reference Counted) smart pointer. An `Arc` allows multiple threads to share ownership of a value, making sure the value is not dropped until all threads are finished using it:
 
-~~~
+~~~{.rust caption="main.rs"}
 use std::sync::Arc;
 use std::thread;
 
@@ -117,7 +117,7 @@ Another way to share data between threads is to use message passing with [channe
 
 For instance, in the following example, a message is passed using two threads: a primary thread and a spawned thread. In this example, the primary thread sends data through a channel, and the spawned thread receives the data through the same channel:
 
-~~~
+~~~{.rust caption="main.rs"}
 use std::sync::mpsc;
 use std::thread;
 
@@ -171,7 +171,7 @@ A mutex, derived from the term *mutual exclusion*, serves as a synchronization m
 
 To create a mutex in Rust, you need to use the `Mutex` type from the `std::sync` module. For example, the following example shows you how to use the mutex to wrap shared data, ensuring only one thread can modify it at a time:
 
-~~~
+~~~{.rust caption="main.rs"}
 use std::sync::{Arc, Mutex};
 use std::thread;
 
@@ -208,7 +208,7 @@ In the following example, you'll see how channels can be used to coordinate task
 
 Import the necessary modules:
 
-~~~
+~~~{.rust caption="main.rs"}
 use std::sync::mpsc;
 use std::thread;
 use std::time::{Duration, Instant};
@@ -218,7 +218,7 @@ This code imports the necessary modules for multi-threading, creating channels, 
 
 Define the worker function:
 
-~~~
+~~~{.rust caption="main.rs"}
 fn worker(receiver: mpsc::Receiver<Instant>) {
     loop {
         let deadline = match receiver.recv() {
@@ -231,7 +231,8 @@ fn worker(receiver: mpsc::Receiver<Instant>) {
             println!("Worker received a task after the deadline!");
         } else {
             let remaining_time = deadline - now;
-            println!("Worker received a task. Deadline in {:?}.", remaining_time);
+            println!("Worker received a task. Deadline in {:?}.", \
+            remaining_time);
             thread::sleep(remaining_time);
             println!("Task completed!");
         }
@@ -259,7 +260,7 @@ The worker function continues to loop, waiting for new tasks to be received thro
 
 Define the `main` function:
 
-~~~
+~~~{.rust caption="main.rs"}
 fn main() {
     let (sender, receiver) = mpsc::channel();
 
@@ -285,7 +286,7 @@ Next, you send several tasks with different deadlines to the worker by calling `
 
 Now let's run the code and see the output:
 
-~~~
+~~~{ caption="Output"}
 Worker received a task. Deadline in 2.999960875s.
 Task completed!
 Worker received a task. Deadline in 1.994807292s.
@@ -305,7 +306,7 @@ For instance, let's simulate a scenario where you might have three files, and yo
 
 Import the required module:
 
-~~~
+~~~{.rust caption="main.rs"}
 use std::sync::{Arc, Mutex};
 use std::fs::File;
 use std::io::{self, BufRead};
@@ -316,7 +317,7 @@ This code imports the required modules for multi-threading, file operations, I/O
 
 Define the `main` function:
 
-~~~
+~~~{.rust caption="main.rs"}
 fn main() {
     // File paths to read
     let file_paths = vec!["file1.txt", "file2.txt", "file3.txt"];
@@ -357,7 +358,8 @@ fn main() {
     // Explicitly drop the Arc
     drop(shared_data);
 
-    // Attempting to access the shared data after dropping the Arc would result in a compile-time error
+    // Attempting to access the shared data after dropping /
+    // the Arc would result in a compile-time error
     // Uncomment the following line to see the error:
     // let data = shared_data.lock().unwrap();
 }
@@ -367,7 +369,7 @@ In this snippet, a vector of file paths and a `shared_data` variable of type `Ar
 
 Within each thread's execution, the file is opened, and its contents are read line by line, storing them in a vector of strings.
 
-To access the shared data, the thread locks the associated mutex using the [`lock()`] method(<https://doc.rust-lang.org/std/sync/struct.Mutex.html#method.lock>), guaranteeing exclusive access to the shared vector.
+To access the shared data, the thread locks the associated mutex using the [`lock()` method](https://doc.rust-lang.org/std/sync/struct.Mutex.html#method.lock), guaranteeing exclusive access to the shared vector.
 
 The lines read from the file are then appended to the shared vector using the [`extend()` method](https://doc.rust-lang.org/std/iter/trait.Extend.html#method.extend), modifying the shared data in a synchronized manner. Once a thread finishes processing a file, it releases the lock, enabling other threads to access the shared data concurrently. The main thread waits for all the spawned threads to complete execution by utilizing the `join()` method.
 
@@ -377,20 +379,20 @@ Before executing this code, make sure to create the three text files named "file
 
 Filename: `./file1.txt`:
 
-~~~
+~~~{ caption="file1.txt"}
 Get a sneak peak of your memory
 Pragmatism policy
 ~~~
 
 Filename: `./file2.txt`:
 
-~~~
+~~~{ caption="file2.txt"}
 Big team big win
 ~~~
 
 Filename: `./file3.txt`:
 
-~~~
+~~~{ caption="file3.txt"}
 Set deliverable 
 before 
 you burnout.
@@ -398,7 +400,7 @@ you burnout.
 
 Now let's run the code and see the output:
 
-~~~
+~~~{ caption="Output"}
 [
     "Set deliverable ",
     "before ",
@@ -421,7 +423,7 @@ Rust's error-handling mechanism is designed to be expressive, concise, and safe.
 
 In previous code blocks, you've utilized error handling, but in the following example, you'll focus on the constructs used for error handling, specifically in the context of threading and message passing:
 
-~~~
+~~~{.rust caption="main.rs"}
 use std::thread;
 use std::sync::mpsc::channel;
 
@@ -432,7 +434,7 @@ fn main() {
 
 The code above imports `thread` and `channel`, which are necessary modules from the standard library. The `channel()` function creates the sender and receiver ends of the channel, which are destructured and assigned to the variables `tx` and `rx`, respectively. Next, it's time to spawn a thread:
 
-~~~
+~~~{.rust caption="main.rs"}
     …
     let handle = thread::spawn(move || {
         // Perform some computation...
@@ -442,7 +444,7 @@ The code above imports `thread` and `channel`, which are necessary modules from 
 
 Here, you spawn a thread and perform some computations (represented here with the assignment of the value `42` to `result`) in the thread that you spawned. Then, you send the computed result over the channel using `tx.send(result)`:
 
-~~~
+~~~{.rust caption="main.rs"}
     …
         // Send the result over the channel
         let send_result = tx.send(result);
@@ -458,16 +460,18 @@ The `send` method returns a `Result` type which is stored in `send_result`. If t
 
 Then, you need to use the `handle.join().unwrap()` function to wait for the spawned thread to finish:
 
-~~~
+~~~{.rust caption="main.rs"}
         …
     // Wait for the thread to finish and handle any errors that occur
-    let thread_result = handle.join().unwrap(); // Note: unwrap is safe here because we're propagating any errors through the Result type
+    let thread_result = handle.join().unwrap(); 
+    // Note: unwrap is safe here because we are propagating any \
+    // errors through the Result type
         …
 ~~~
 
 The `unwrap()` method extracts the `Ok` variant value from the `Result` returned by `handle.join()`. If the `Result` is `Err`, `unwrap()` will panic and crash the program. This is safe in this context because the error from the `Result` type is propagated:
 
-~~~
+~~~{.rust caption="main.rs"}
     …
     match thread_result {
         Ok(_) => {
@@ -501,7 +505,7 @@ One approach is to use a mutex to ensure that the test is run in a thread-safe m
 
 Let's write a multi-threading test involving three threads trying to increase a shared resource. In the following code, you write a function that checks if it's the thread's turn to access/increment the shared resource. If it's not, it waits on the condition variable for a certain condition to be met and notifies you when the condition might be met, making the threads work together in a synchronized manner:
 
-~~~
+~~~{.rust caption="main.rs"}
 use std::sync::{Arc, Mutex, Condvar};
 use std::thread;
 
@@ -532,7 +536,7 @@ If it's the thread's turn to count, you increment the count by 1 and then call `
 
 If it's not the thread's turn to count, you call `cvar.wait(count).unwrap()` to wait on the condition variable until it's signaled by another thread. This releases the lock on the mutex and puts the thread to sleep until it is awakened by a call to `cvar.notify_all()`.
 
-~~~
+~~~{.rust caption="main.rs"}
 #[test]
 fn test_count_to_10() {
     let shared_data = Arc::new((Mutex::new(0), Condvar::new()));
@@ -568,11 +572,12 @@ The `unwrap()` method is used to propagate any potential errors that might occur
 
 Now let's test the code and see the output:
 
-~~~
+~~~{ caption="Output"}
 running 1 test
 test test_count_to_10 ... ok
 
-test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 
+0 filtered out; finished in 0.00s
 ~~~
 
 After the threads finish counting, the test function asserts that the final count is `10`, ensuring that the synchronization was successful.
@@ -583,14 +588,14 @@ After the threads finish counting, the test function asserts that the final coun
 
 To use Rayon, you need to add the `rayon` crate to your `Cargo.toml` file:
 
-~~~
+~~~{.rust caption="main.rs"}
 [dependencies]
 rayon = "1.7"
 ~~~
 
 Next, let's explore how to use Rayon to parallelize a merge sort algorithm, which is a divide-and-conquer sorting algorithm that works by recursively splitting an array into halves, sorting those halves, and merging them back together until it reaches the base case with only one element or an empty array:
 
-~~~
+~~~{.rust caption="main.rs"}
 
 fn merge_sort_par(arr: &mut [i32]) {
     if arr.len() <= 1 {
@@ -612,7 +617,7 @@ Next, it calculates the middle index of the array and splits it into two halves 
 
 The `rayon::join` function then sorts these two halves in parallel. It takes two closures that it executes concurrently. In this case, each closure is a recursive call to `merge_sort_par` on one half of the array.
 
-~~~
+~~~{.rust caption="main.rs"}
     //...
 
     let mut i = 0;
@@ -651,7 +656,7 @@ If there are remaining elements in either half (which means one half had fewer e
 
 Finally, it copies the sorted elements from `temp` back into the original array with the `copy_from_slice` function.
 
-~~~
+~~~{.rust caption="main.rs"}
 fn main() {
     let mut arr = vec![8, 2, 5, 9, 1, 3, 7, 6, 4];
     merge_sort_par(&mut arr);
@@ -661,7 +666,7 @@ fn main() {
 
 In the `main` function, a mutable array `arr` is created and passed to `merge_sort_par` to be sorted. The sorted array is then printed to the console:
 
-~~~
+~~~{ caption="Output"}
 [1, 2, 3, 4, 5, 6, 7, 8, 9]
 ~~~
 
@@ -677,14 +682,14 @@ The Tokio library provides an asynchronous runtime that can run multiple tasks c
 
 To use Tokio, you need to add it as a dependency in your `Cargo.toml` file:
 
-~~~
+~~~{.rust caption="main.rs"}
 [dependencies]
 tokio = { version = "1.11.0", features = ["full"] }
 ~~~
 
 Once you've added it as a dependency, write a simple program that downloads the content of a web page asynchronously using the `request` crate to perform the HTTP request:
 
-~~~
+~~~{.rust caption="main.rs"}
 use tokio::io::{AsyncReadExt, AsyncWriteExt};
 use tokio::net::TcpStream;
 
@@ -710,7 +715,7 @@ In this example, you use the `tokio::net::TcpStream` type to open a TCP connecti
 
 You can also use Tokio to perform parallel computation using `tokio::task::spawn`:
 
-~~~
+~~~{.rust caption="parallel computing.rs"}
 use tokio::task;
 
 #[tokio::main]
@@ -737,7 +742,7 @@ Tokio also provides a set of abstractions for working with asynchronous streams,
 
 Rust's concurrency features make it a powerful language for writing high-performance, concurrent programs. In addition, Rust's memory safety guarantees, ownership, and borrowing system, and support for fearless concurrency make it a great choice for writing safe and performant concurrent code.
 
-In this article, you learned all about the basics of Rust's concurrency primitives. In addition, you learned about some more advanced concepts, such as error handling, performance optimization, testing, parallel programming, and async programming. The code example used in this tutorial can be found in this GitHub repository](<https://github.com/Ikeh-Akinyemi/earthly-draftdev>).
+In this article, you learned all about the basics of Rust's concurrency primitives. In addition, you learned about some more advanced concepts, such as error handling, performance optimization, testing, parallel programming, and async programming. The code example used in this tutorial can be found in this [GitHub repository](https://github.com/Ikeh-Akinyemi/earthly-draftdev).
 
 If you're looking to learn more about concurrency patterns, check out the following resources:
 
