@@ -4,6 +4,7 @@ categories:
   - Tutorials
 toc: true
 author: Ikeh Akinyemi
+editor: Mustapha Ahmad Ayodeji
 
 internal-links:
  - patterns for parallel programming
