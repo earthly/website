@@ -1,14 +1,16 @@
 ---
 title: "Better Together - Earthly + Github Actions"
 categories:
-  - Tutorials
+  - Articles
 toc: true
 author: Evan Pease
-
+topic: earthly
+funnel: 3
 internal-links:
  - Earthly
  - Github Actions
  - Github
+excerpt: "For the project, I chose to build an application using a polyglot monorepo layout. This is one of the more challenging types of repo layouts for traditional CI systems to handle (more on this later) so it seemed like a good way to put the capabilities of Earthly and Github Actions to the test."
 ---
 
 ## Introduction
@@ -118,7 +120,7 @@ For the sake of conciseness, here is the code required to orchestrate the steps 
     <th>EARTHLY CODE</th>
   </tr>
   <tr>
-    <td>~~~{.yaml caption="ci-actions-only.yml"}
+    <td>~~~{.yaml}
 # Node service snipped from GHA yaml
   node_service_build:
     environment: "Actions Demo"
