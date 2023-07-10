@@ -29,7 +29,7 @@ In comparison, borrowing refers to borrowing a reference to a resource from its 
 
 To demonstrate how borrowing works, take a look at the following example:
 
-~~~
+~~~{.rust caption="how_borrowing_works.rs"}
 // how_borrowing_works.rs
 
 fn main() {
@@ -41,7 +41,7 @@ fn main() {
 
 This is what your output should look like:
 
-~~~
+~~~{ caption="Output"}
 5
 ~~~
 
@@ -55,7 +55,7 @@ Immutable references allow read-only access to a resource. Immutable references 
 
 Say you have a vector of integers, and you want to print each element in the vector. You can create an immutable reference to the vector using the following code:
 
-~~~
+~~~{.rust caption="immutable_references.rs"}
 // immutable_references.rs
 
 fn main()
@@ -68,7 +68,7 @@ fn main()
 
 Your output would look like this:
 
-~~~
+~~~{ caption="Output"}
 10 
 11
 ~~~
@@ -77,7 +77,7 @@ In comparison, mutable references are created using the [`&mut`](https://doc.rus
 
 For example, suppose you have a mutable vector of integers, and you want to modify its first element. In that case, you can create a mutable reference to the vector using the following code:
 
-~~~
+~~~{.rust caption="mutable_references.rs"}
 // mutable_references.rs
 fn main() {
    let mut vec = vec![10, 11];
@@ -89,7 +89,7 @@ fn main() {
 
 Here's the output:
 
-~~~
+~~~{ caption="Output"}
 [6, 11]
 ~~~
 
@@ -113,7 +113,7 @@ Lifetimes are a way of tracking the scope of a reference to an object in memory.
 
 In Rust, lifetimes are denoted using the `'a` syntax, where the `'a` is a placeholder for the actual lifetime. The lifetime can be defined as a generic parameter in a [function](https://web.mit.edu/rust-lang_v1.25/arch/amd64_ubuntu1404/share/doc/rust/html/book/first-edition/functions.html), [struct](https://web.mit.edu/rust-lang_v1.25/arch/amd64_ubuntu1404/share/doc/rust/html/book/first-edition/structs.html), or [trait](https://web.mit.edu/rust-lang_v1.25/arch/amd64_ubuntu1404/share/doc/rust/html/book/first-edition/traits.html) using angle brackets. The following is an example:
 
-~~~
+~~~{.rust caption="basic_lifetime_example.rs"}
 // basic_lifetime_example.rs
 
 struct Path<'a> {
@@ -131,7 +131,7 @@ fn main() {
 
 Your output would look like this:
 
-~~~
+~~~{ caption="Output"}
 x = 3200, y = 1600
 ~~~
 
@@ -139,7 +139,7 @@ Here, a `struct Path` is defined with two fields: `point_x` and `point_y`, which
 
 Now, take a look at this example which is similar to the code above but results in an error:
 
-~~~
+~~~{.rust caption="basic_lifetime_example.rs"}
     …
 fn main() {
     let p_x = 3200;
@@ -154,22 +154,22 @@ fn main() {
 
 Can you see the error? Your output will look like this:
 
-~~~
+~~~{ caption="Output"}
 |
- |     let p_y = {
-   |         --- borrow later stored here
- |         let temp = 42;
+|     let p_y = {
+|         --- borrow later stored here
+|         let temp = 42;
 |         &temp
-   |         ^^^^^ borrowed value does not live long enough
+|         ^^^^^ borrowed value does not live long enough
 |     };
-   |     - `temp` dropped here while still borrowed
+|     - `temp` dropped here while still borrowed
 ~~~
 
 In this example, the compiler detects an error when the lifetime reference of `temp` goes out of scope. This error prevents the further use of `p_y` in the program because the value of `temp` has already been dropped. The issue arises because `p_y` is assigned a borrowed reference, `&temp`, which cannot exist outside the scope of `p_y`. This error occurs due to the mismatched lifetimes.
 
 Take a look at a modified version of the previous code snippet:
 
-~~~
+~~~{.rust caption="basic_lifetime_example.rs"}
     …
 
 fn main() {
@@ -200,7 +200,7 @@ By following these rules, the Rust compiler can automatically infer the correct 
 
 Here's an example of how the lifetime elision rules work:
 
-~~~
+~~~{.rust caption="lifetimes_elision.rs"}
 // lifetimes_elision.rs
 
 #[derive(Debug)]
@@ -227,7 +227,7 @@ fn main() {
 
 Here's the output:
 
-~~~
+~~~{ caption="Output"}
 Num { x: 3 }
 ~~~
 
@@ -241,7 +241,7 @@ Therefore, the code benefits from lifetime elision by avoiding the need to expli
 
 Take a look at another similar example below:
 
-~~~
+~~~{.rust caption="lifetimes_elision.rs"}
 impl Num {
     fn compare(&self, other: &Self) -> &Self {
         if self.x > other.x {
@@ -263,15 +263,14 @@ Notice the lifetime elisions removed from your `compare` function.
 
 The code above results in the following error:
 
-~~~
- |     fn compare(&self, other: &Self) -> &Self {
-   |                              -----     -----
-   |                              |
-   |                              this parameter and the return type are declared with different lifetimes...
+~~~{ caption="Output"}
+| fn compare(&self, other: &Self) -> &Self {
+| -----     -----
+| |
+| this parameter and the return type are declared with different lifetimes
 ...
-|             other
-   |             ^^^^^ ...but data from `other` is returned here
-
+| other
+| ^^^^^ ...but data from `other` is returned here
 error: aborting due to previous error
 ~~~
 
@@ -289,7 +288,7 @@ A lifetime bound is a way to specify the minimum lifetime that a reference must 
 
 Here's an example:
 
-~~~
+~~~{.rust caption="lifetime_bounds.rs"}
 // lifetime_bounds.rs
 
 use std::fmt::Display;
@@ -317,7 +316,7 @@ fn main() {
 
 Your output would look like this:
 
-~~~
+~~~{ caption="Output"}
 Movie {
      title: "The Shawshank Redemption",
      rating: 9.3,
@@ -332,7 +331,7 @@ In the `main` function, a new `Movie` object is created with the title "The Shaw
 
 Try changing the rating type value in the `Movie` instance being created in your main function:
 
-~~~
+~~~{.rust caption="lifetime_bounds.rs"}
 fn main() {
     let movie = Movie::new("The Shawshank Redemption", [9.8]);
     println!("{:#?}", movie);
@@ -341,20 +340,20 @@ fn main() {
 
 Notice the errors:
 
-~~~
-|     let movie = Movie::new("The Shawshank Redemption", &String::from("9.8"));
-   |                                                         ^^^^^^^^^^^^^^^^^^^ - temporary value is freed at the end of this statement
-   |                                                         |
-   |                                                         creates a temporary which is freed while still in use
-|     println!("{:#?}", movie);
-   |                       ----- borrow later used here
+~~~{ caption="Output"}
+| let movie = Movie::new("The Shawshank Redemption", 
+&String::from("9.8"));
+| ^|
+| creates a temporary which is freed while still in use
+| println!("{:#?}", movie);
+| ----- borrow later used here
 ~~~
 
 This creates a [dangling reference](https://en.wikipedia.org/wiki/Dangling_pointer) error; A dangling reference error occurs when a temporary value that is not assigned to any variable is borrowed as a reference to nothing and used. In this example, you are passing a borrowed `String` reference into the `new` function, which it's lifetime only lives as long as the `new` function and not the `Movie` instance itself, so even though the `String` type implements both bounds `Display` and `PartialOrd` it still fails due to this reason.
 
 Now try the same example but assign the borrowed `String` reference to a variable.
 
-~~~
+~~~{.rust caption="lifetime_bounds.rs"}
 fn main() {
   let string_ref = &String::from("9.8");
   let movie = Movie::new("The Shawshank Redemption", string_ref);
@@ -370,7 +369,7 @@ Lifetime constraints are similar to lifetime bounds, but they specify an upper b
 
 Here's an example:
 
-~~~
+~~~{.rust caption="lifetime_constraints.rs"}
 // lifetime_constraints.rs
 
 // Declare the Movie struct with a title and a rating
@@ -413,19 +412,20 @@ The `Reviewer` struct `new` function parameters specify those lifetimes paramete
 
 Now run your code.
 
-~~~
-   |
- |     fn new(name: &'a str, movie: &'a Movie) -> Self {
-   |                                  --------- help: add explicit lifetime `'b` to the type of `movie`: `&'a Movie<'b>`
- |         Reviewer { movie: movie, name: name }
-   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ lifetime `'b` required
+~~~{ caption="Output"}
+|
+| fn new(name: &'a str, movie: &'a Movie) -> Self {
+| --------- help: add explicit lifetime `'b` to the type of `movie`: \
+`&'a Movie<'b>`
+| Reviewer { movie: movie, name: name }
+| ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ lifetime `'b` required
 ~~~
 
 This code fails at compile time; why?
 
 Notice the `Reviewer` struct defined in the code:
 
-~~~
+~~~{.rust caption="lifetime_constraints.rs"}
 #[derive(Debug)]
 struct Reviewer<'a, 'b: 'a> {
     movie: &'a Movie<'b>,
@@ -443,7 +443,7 @@ This is useful to prevent the `Movie` instance passed to the new function from b
 
 Now to modify the `new` function a bit so the code stops throwing errors:
 
-~~~
+~~~{.rust caption="lifetime_constraints.rs"}
 impl<'a, 'b> Reviewer<'a, 'b> {
     // Create a new review
     fn new(name: &'a str, movie: &'b Movie) -> Self {
@@ -457,8 +457,9 @@ impl<'a, 'b> Reviewer<'a, 'b> {
 
 Here is the output:
 
-~~~
-Reviewer { movie: Movie { title: "The Rust Movie", rating: 8 }, name: "Alice" }
+~~~{ caption="Output"}
+Reviewer { movie: Movie { title: "The Rust Movie", 
+rating: 8 }, name: "Alice" }
 ~~~
 
 Great! Now it works.
@@ -469,7 +470,7 @@ In this modification, the `name` reference has the lifetime `'a`, while the movi
 
 The `'static` lifetime is a special lifetime that represents the entire duration of the program. Any reference with a `'static` lifetime can be used anywhere without worrying about its scope. Here's an example:
 
-~~~
+~~~{.rust caption="static_lifetime.rs"}
 // static_lifetime.rs
 
 const SECRET_PHRASE: &'static str = "Hello, world!";
@@ -487,7 +488,7 @@ To help solidify your understanding of the Rust lifetimes, explore practical exa
 
 Take a look at an example:
 
-~~~
+~~~{.rust caption="function_signatures_with_lifetimes.rs"}
 // function_signatures_with_lifetimes.rs
 
 fn shortest_route<'a>(a: &'a i32, b: &'a i32) -> &'a i32 {
@@ -507,7 +508,7 @@ fn main () {
 
 Here's the output:
 
-~~~
+~~~{ caption="Output"}
 100000km
 ~~~
 
@@ -517,7 +518,7 @@ Here, a function called `shortest_route` is created that takes two signed intege
 
 Lifetimes are often used when defining [structs](https://doc.rust-lang.org/book/ch05-01-defining-structs.html) in Rust, particularly when a struct contains references to other values. Consider the following example:
 
-~~~
+~~~{.rust caption="structs_with_lifetimes.rs"}
 // structs_with_lifetimes.rs
 
 struct ImportantExcerpt<'a> {
@@ -529,7 +530,8 @@ impl<'a> ImportantExcerpt<'a> {
         ImportantExcerpt { part }
     }
 
-    fn announce_and_return_part(&self, announcement: &str) -> &str {
+    fn announce_and_return_part(&self, announcement: &str) -> \
+    &str {
         println!("Attention please: {}", announcement);
         self.part
     }
@@ -537,7 +539,8 @@ impl<'a> ImportantExcerpt<'a> {
 
 fn main() { 
   let novel = String::from("Call me Ishmael. Some years ago..."); 
-  let first_sentence = novel.split('.').next().expect("Could not find a '.'"); 
+  let first_sentence = \
+  novel.split('.').next().expect("Could not find a '.'"); 
   let i = ImportantExcerpt::new(first_sentence); 
   println!("{}", i.announce_and_return_part("Hello, world!"));
 }
@@ -545,7 +548,7 @@ fn main() {
 
 Your output would be:
 
-~~~
+~~~{ caption="Output"}
 Attention please: Hello, world!
 Call me Ishmael
 ~~~
@@ -554,10 +557,11 @@ In this example, a struct `ImportantExcerpt` is created and contains a reference
 
 Here's another example using this same code above, but this code could lead to errors by just changing the values passed to the struct in the `main` function:
 
-~~~
+~~~{.rust caption="structs_with_lifetimes.rs"}
 fn main() { 
   let novel = String::from("Call me Ishmael. Some years ago..."); 
-  let first_sentence = novel.split('.').next().expect("Could not find a '.'"); 
+  let first_sentence = \
+  novel.split('.').next().expect("Could not find a '.'"); 
   let i = ImportantExcerpt::new(&first_sentence.to_string()); 
   println!("{}", i.announce_and_return_part("Hello, world!"));
 }
@@ -567,7 +571,7 @@ The key difference between the two main functions is how the `ImportantExcerpt` 
 
 If the `ImportantExcerpt` struct were to hold a reference to a `String` with a shorter lifetime than the struct itself, it would result in a dangling reference error. However, Rust's compile-time checks prevent this error from occurring, which is shown below:
 
-~~~
+~~~{ caption="Output"}
 |   let i = ImportantExcerpt::new(&first_sentence.to_string()); 
    |                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^ - temporary value is freed at the end of this statement
    |                                  |
@@ -580,7 +584,7 @@ If the `ImportantExcerpt` struct were to hold a reference to a `String` with a s
 
 [Trait implementations](https://web.mit.edu/rust-lang_v1.25/arch/amd64_ubuntu1404/share/doc/rust/html/book/first-edition/traits.html) can also use lifetimes when dealing with references. Here's an example:
 
-~~~
+~~~{.rust caption="slifetimes_in_trait.rs"}
 // lifetimes_in_trait.rs
 
 trait Summary<'a> {
@@ -614,7 +618,7 @@ fn main() {
 
 And here's the output:
 
-~~~
+~~~{ caption="Output"}
 A brand new world by John Doe (New York)
 ~~~
 
@@ -632,7 +636,7 @@ In addition to the core concepts of Rust lifetimes, there are some advanced topi
 
 For example, imagine a function that takes two references with different lifetimes and returns a reference with a lifetime that is a sub-lifetime of both inputs. To demonstrate lifetime subtyping, this relationship can be expressed using the `'a` and `'b` lifetime parameters:
 
-~~~
+~~~{.rust caption="lifetime_subtyping.rs"}
 // lifetime_subtyping.rs
 
 fn lifetime_subtyping<'a, 'b: 'a>(x: &'a str, y: &'b str) -> &'a str {
@@ -649,7 +653,7 @@ fn main() {
 
 This is what your output would look like:
 
-~~~
+~~~{ caption="Output"}
 The longest string is abcd
 ~~~
 
@@ -661,10 +665,11 @@ In this example, the returned reference has a lifetime of `'b`, which is a sub-l
 
 Consider the following example:
 
-~~~
+~~~{.rust caption="higher_rank_trait_bounds.rs"}
 // higher_rank_trait_bounds.rs
 
-// Define a trait with a method that takes a closure with a reference parameter.
+// Define a trait with a method that takes a closure with a \
+// reference parameter.
 trait RefProcessor {
     fn process_refs<F>(&self, f: F)
     where
@@ -683,8 +688,10 @@ impl RefProcessor for Vec<i32> {
     }
 }
 
-// A function that takes a type implementing RefProcessor and a closure with a generic lifetime.
-fn process_all_items<T>(ref_processor: &T, closure: impl for<'a> Fn(&'a i32))
+// A function that takes a type implementing RefProcessor and a closure \
+// with a generic lifetime.
+fn process_all_items<T>(ref_processor: &T, \
+closure: impl for<'a> Fn(&'a i32))
 where
     T: RefProcessor,
 {
@@ -701,7 +708,7 @@ fn main() {
 
 Your output would look like this:
 
-~~~
+~~~{ caption="Output"}
 1
 4
 9
@@ -717,7 +724,7 @@ Here, a trait called `RefProcessor` is defined with a method called `process_ref
 
 For example, imagine a trait that defines a method for iterating over a data structure. You might want to associate the type of the iterator with the trait while also specifying a lifetime for the reference to the data structure:
 
-~~~
+~~~{.rust caption="associated_types_and_lifetimes.rs"}
 // associated_types_and_lifetimes.rs
 
 trait Iter<'a> {
@@ -728,7 +735,7 @@ trait Iter<'a> {
 }
 ~~~
 
-~~~
+~~~{.rust caption="associated_types_and_lifetimes.rs"}
 // using the Iter<'a> trait
 
 struct List<T> {
@@ -765,7 +772,8 @@ struct ListIter<'a, T> {
 impl<'a, T> Iterator for ListIter<'a, T> {
     type Item = &'a T;
 
-   // Returns a reference to the current item and moves the iterator to the next item.
+   // Returns a reference to the current item and moves the iterator \
+   // to the next item.
     fn next(&mut self) -> Option<Self::Item> {
         match self.next {
             Some(node) => {
@@ -793,7 +801,7 @@ fn main() {
 
 Here's the output:
 
-~~~
+~~~{ caption="Output"}
 5
 4
 3
