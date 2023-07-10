@@ -14,6 +14,7 @@ internal-links:
  - go workspaces
  - monorepos
  - multiple modules
+excerpt: "Learn how to simplify your Go development process with Golang Workspaces. This article explains how workspaces allow you to manage dependencies across multiple modules and avoid the hassle of editing `go.mod` files. Discover how to set up a workspace and make local changes to your modules without affecting other developers."
 ---
 
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article mentions Monorepos as a great use case for Go Workspaces. Earthly is particularly useful if you're working with a Monorepo. [Check us out](/).**

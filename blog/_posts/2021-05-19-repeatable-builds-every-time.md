@@ -12,7 +12,7 @@ tags:
   - Glue layer
 toc: true
 author: Vlad
-excerpt: "I wanted to sit down and write about all the tricks we learned and that we used every day to help make builds more manageable in the absence of Earthly. "
+excerpt: "Learn how to improve your build process and make it more manageable with tips and tricks for using Makefiles, Dockerfiles, and Bash scripts. Discover how to achieve repeatability, manage complex builds, handle parallelism, and share caching. Plus, explore options for managing secrets and maintaining consistency in your build setup."
 topic: earthly
 funnel: 3
 ---

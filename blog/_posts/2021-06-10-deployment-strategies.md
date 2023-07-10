@@ -10,6 +10,7 @@ internal-links:
  - deployment strategies
  - deployment
  - continous deployment
+excerpt: "Learn about different deployment strategies, from the basic to the complex, and find the best approach for your application. Discover the pros and cons of each strategy and gain insights into how they can impact downtime and deployment complexity."
 ---
 There are many ways to deploy applications to a production server environment, and the terminology around deploy strategies is often confusing. In this short guide, I'll review software deployment options starting from the most basic and straightforward and moving towards the more complex.  
 

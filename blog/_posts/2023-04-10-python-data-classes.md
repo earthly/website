@@ -8,6 +8,7 @@ author: Bala Priya C
 internal-links:
  - Python
  - Python Classes
+excerpt: "Learn how to create Python data classes, a convenient way to define and manage data-oriented classes. Discover the basics of data classes, including type hints, default values, immutability, and more. Plus, find out how data classes compare to regular Python classes and how they can simplify your code."
 ---
 
 In Python, classes let you group data and behavior together by defining attributes and methods, respectively. Typically, a class contains both attributes and a set of methods that add functionality. **But what if you have a class that stores a lot of attributes with almost no functionality?** Do you still need to use regular classes, or is there a better alternative?

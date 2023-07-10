@@ -10,6 +10,7 @@ internal-links:
  - CI/CD
  - IDE
  - Cluster
+excerpt: "Learn about the essential developer tools for Kubernetes, including integrated development environments like Lens and Gitpod, and package managers like Helm and Kustomize. Discover how these tools can improve your efficiency and simplify your Kubernetes workflow."
 ---
 
 When you get started on your path as a developer, you may notice from the beginning that there's an abundance of different tools to choose from. At the same time, it may not even be clear why you need to use specialized tools rather than simply using the programs natively.

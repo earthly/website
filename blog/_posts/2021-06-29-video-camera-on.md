@@ -5,6 +5,7 @@ categories:
 author: Adam
 internal-links:
  - just an example
+excerpt: "In this article, the author shares a personal experience of encountering a SQL error while developing a report. They discuss the importance of non-verbal communication and how it can help identify and solve problems more efficiently. The article also provides a solution to the SQL issue and emphasizes the value of using video cameras in remote team collaborations."
 ---
 <div class="narrow-code">
 

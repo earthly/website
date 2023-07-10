@@ -5,6 +5,7 @@ categories:
 author: Adam
 internal-links:
    - golang
+excerpt: "If you're an experienced developer looking to learn Go, this article provides a list of the top 3 resources for learning the language in 2021. From interactive tutorials to in-depth explanations of Go's idioms, these resources will help you get up to speed with Go and start building your own projects."
 ---
 
 ## Why Learn Go

@@ -10,6 +10,7 @@ internal-links:
  - YAML
  - Python
  - Data
+excerpt: "Learn how to work with YAML in Python, including creating, writing, reading, and modifying YAML files. This tutorial covers the basics of YAML, the PyYAML library, and how to convert YAML to JSON. If you've ever worked with Docker or Kubernetes, this tutorial is for you!"
 ---
 
 If you've ever worked with Docker or Kubernetes, you'll have likely used YAML files. From configuring an application's services in [Docker](/blog/rails-with-docker) to defining Kubernetes objects like pods, services, and more—YAML is used for them all.

@@ -8,7 +8,7 @@ sidebar:
   nav: "thoughts"
 toc: true
 featured: true
-excerpt: "I've noticed something interesting about the types of programming languages people like. It's something that doesn't seem to come up in various discussions of programming language preferences."
+excerpt: "In this article, the author explores the relationship between programming languages and the level of dread or love developers have for them. They analyze data from the Stack Overflow Developer Survey and the TIOBE index to determine if the languages people dread are more likely to be used in existing projects (brown languages) while the loved languages are more commonly used in new projects (green languages). The findings suggest that the maintenance aspect of programming languages plays a significant role in developers' preferences."
 ---
 ## The Data
 

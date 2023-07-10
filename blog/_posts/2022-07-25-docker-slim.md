@@ -9,6 +9,7 @@ internal-links:
  - nginx
  - Docker Slim
  - container
+excerpt: "Learn how to optimize your Docker images and containers with Docker Slim. This tool can reduce image size up to thirty times without any manual optimization, making your containers smaller and more efficient. Plus, it automatically generates security profiles for your images, ensuring they are protected from internal and external threats."
 ---
 
 [Docker](https://www.docker.com/) is an open containerization platform for developing, shipping, and running applications. It enables you to package your applications in isolated environments, called containers, where they can run independently from infrastructure. In the container, they have all the dependencies needed for the application to run.

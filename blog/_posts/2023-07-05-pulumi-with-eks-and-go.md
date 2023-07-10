@@ -12,6 +12,7 @@ internal-links:
  - GO
  - Cloud
  - Infrastructure
+excerpt: "Learn how to use Pulumi and Go to provision an Amazon S3 bucket and an Amazon Elastic Kubernetes Service (EKS) cluster. This tutorial walks you through the steps required to set up your environment and create the necessary infrastructure, providing a hands-on introduction to Infrastructure as Code with Pulumi and AWS EKS for Go developers."
 ---
 
 **We're [Earthly](https://earthly.dev/). We make building software simpler and, therefore, faster. Earthly is open-source and written in Go. So if you're interested in a simpler way to build, [check us out](/).**

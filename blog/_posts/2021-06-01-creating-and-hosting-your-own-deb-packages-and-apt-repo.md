@@ -16,6 +16,7 @@ internal-links:
   - private key
   - rsa
 topic: packaging
+excerpt: "Learn how to create and host your own deb packages and apt repository in Ubuntu. This tutorial covers the steps to create a deb package, set up an apt repository, sign it with a PGP key, and verify the repository contents."
 ---
 
 <!-- vale HouseStyle.TLA = NO -->

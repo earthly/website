@@ -3,6 +3,7 @@ title: "Earthly on Ruby Rogues"
 categories:
   - News
 author: Earthly
+excerpt: "In this episode of Ruby Rogues, Adam Gordon Bell shares his insights on language tooling, software consulting, and other programming topics. If you're interested in learning about the latest developments in command-line tools and how Earthly can enhance your builds, this podcast is a must-listen!"
 ---
 
 Adam was on [Ruby Rogues](https://topenddevs.com/podcasts/ruby-rogues/episodes/programming-language-tooling-with-adam-gordon-bell-ruby-561) discussing language tooling and using Earthly for builds.

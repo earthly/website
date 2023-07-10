@@ -11,6 +11,7 @@ internal-links:
  - docker volume
 topic: docker
 last_modified_at: 2023-04-17
+excerpt: "Learn how to use Docker volumes to persist data outside of containers and easily share data between containers. This tutorial covers the basics of Docker volumes, including how to create and manage them, mount them to containers, and configure them using Docker Compose. If you're looking to improve your containerization and data management skills, this article is a must-read."
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. This article is about container volume management. If you're interested in a simple and containerized approach to building software then [check us out](/).**
 

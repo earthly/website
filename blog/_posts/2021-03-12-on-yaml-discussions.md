@@ -5,6 +5,7 @@ tags:
 categories:
   - Articles
 author: Adam
+excerpt: "In this article, the author discusses the pitfalls of using YAML as a programming language and highlights the discussions that arose from their previous article on the topic. They explore alternative solutions, such as using full programming languages for configuration files, and provide insights from various online communities. If you're interested in the challenges of YAML and its impact on development, this article offers valuable insights and perspectives."
 ---
 My article about how [YAML makes a bad programming language](https://earthly.dev/blog/intercal-yaml-and-other-horrible-programming-languages/) [^1] generated a lot of great discussions online.
 

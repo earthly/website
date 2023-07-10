@@ -13,6 +13,7 @@ internal-links:
  - Github Actions
  - DockerHub
  - Automation
+excerpt: "Learn how to automate your CI/CD builds using GitHub Actions and DockerHub in this tutorial. Discover how to leverage GitHub Actions to automate Docker builds and seamlessly deploy your applications to DockerHub."
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. This article is about GitHub Actions, if you'd like to see how Earthly can improve your GitHub Actions builds then [check us out](/earthly-github-actions).**
 

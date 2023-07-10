@@ -10,6 +10,7 @@ internal-links:
  - Container
  - ECS
  - AWS
+excerpt: "Learn how to deploy Docker containers with AWS ECS, a beginner-friendly and cost-effective container service. Discover the benefits of using ECS, such as auto-scaling and serverless options, and follow a step-by-step guide to deploy a Django application."
 ---
 
 ## What Is AWS ECS

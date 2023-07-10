@@ -12,6 +12,7 @@ internal-links:
  - Restic
  - Amazon
  - S3 Bucket
+excerpt: "Learn how to use Restic, an open-source backup software, to protect your valuable data by backing it up to an AWS S3 bucket. This step-by-step tutorial covers everything from creating the bucket and configuring access permissions to performing backups, restoring data, and automating the backup process with cron jobs. Don't wait until it's too late - start securing your data today!"
 ---
 
 In today's digital age, data is one of the most valuable assets for individuals and organizations alike. Losing data can have a significant impact on productivity, financial stability, and even an organization's reputation. This is why it is crucial to have a reliable and secure method of backing up your data.

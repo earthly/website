@@ -6,7 +6,7 @@ toc: true
 author: Vlad
 internal-links:
  - platform values
-excerpt: "As creators of a new approach to build automation, we have always strived to create products that we ourselves would have wished we had. While this may sound easier than it actually is, the reality of the matter is that as creators it is hard to put ourselves in the shoes of a first-time user. To address this tendency, we've put together some design principles that we want to stay true to as we continue to evolve Earthly."
+excerpt: "Learn about the platform values of Earthly, a new approach to build automation. Discover the design principles that Earthly strives to uphold, including versatility, approachability, and reproducibility, to create a tool that is user-friendly and adaptable to various build scenarios."
 as_related: true
 topic: earthly
 funnel: 3

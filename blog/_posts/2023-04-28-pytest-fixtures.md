@@ -11,6 +11,7 @@ internal-links:
  - Pytest
  - Testing
  - Fixtures
+excerpt: "Learn how to use PyTest fixtures to simplify your test setup and improve your testing in this tutorial. Fixtures provide a way to manage test data and resources, making tests more reliable and easier to maintain."
 ---
 
 In software development, testing is an essential part of the development process. Tests help to ensure that the code works as expected and help catch bugs early on. To write effective tests, it's often necessary to set up some test data before running the tests and tear down (clean up) that test data after the tests have run. This can be time-consuming and error-prone if done manually.

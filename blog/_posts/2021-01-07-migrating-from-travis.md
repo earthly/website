@@ -10,6 +10,7 @@ internal-links:
    - travisci
 topic: ci
 funnel: 2
+excerpt: "Learn why many open-source projects are migrating off of Travis CI and discover alternative options for your project's builds, such as Circle CI and GitHub Actions. Find out how to minimize the effort of moving between build platforms and explore the benefits of using neutral build specifications like Makefiles and Dockerfiles or tools like Earthly."
 ---
 
 Starting in early December, a mad dash has been underway to migrate open-source projects off of Travis CI. What happened and where should you move your project to?

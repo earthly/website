@@ -8,6 +8,7 @@ sidebar:
   nav: "lambdas"
 internal-links:
  - just an example
+excerpt: "Learn how to combine GRPC and AWS Lambdas using GoLang in this informative article. Discover different approaches, such as setting up a web proxy or using GRPC Web, and find out the limitations and workarounds for running a GRPC service on an AWS Lambda."
 ---
 <!-- vale HouseStyle.Link = NO -->
 

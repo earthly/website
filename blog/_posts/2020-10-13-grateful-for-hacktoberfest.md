@@ -4,6 +4,7 @@ featured: true
 author: Vlad
 categories:
   - News
+excerpt: ""
 ---
 
 Since [Hacktoberfest](/blog/hacktoberfest-2020) started two weeks ago, we've seen a spike in traffic to [Earthly](https://github.com/earthly/earthly). We saw developers of all levels coming together to improve our project in one way or another. Many developers didn't know what Earthly was, so this was a great occasion for them to also get familiar with our reproducible builds.

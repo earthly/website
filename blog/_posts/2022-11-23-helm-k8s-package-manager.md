@@ -11,6 +11,7 @@ internal-links:
  - Helm 
  - Deployment
  - Charts
+excerpt: "Learn how to use Helm, the Kubernetes package manager, to deploy complex applications quickly and efficiently. With Helm charts, you can package and distribute collections of Kubernetes YAML files, making your applications more maintainable and reusable. Dive into practical use cases and see how Helm can increase your productivity and scalability."
 ---
 
 For production and hybrid cloud environments, manual deployments with Kubernetes are time consuming and non reusable. As you deploy different applications with similar configuration settings to Kubernetes, you'll have a large number of YAML files and substantial duplication; this makes the applications difficult to maintain. This is where Helm can help.

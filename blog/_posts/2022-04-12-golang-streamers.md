@@ -5,6 +5,7 @@ categories:
 author: Adam
 internal-links:
  - live coding
+excerpt: "Learn how to absorb tacit knowledge and improve your programming skills by watching experienced developers code on platforms like YouTube and Twitch. Discover a list of GoLang and cloud-native streamers who share their expertise and provide valuable insights into building software."
 ---
 
 I've learned so much from watching other people code. It's never a thing I'm specifically trying to learn. It's more like someone is walking me through a problem, and they do something I didn't know could be done. Maybe they just have a low friction way to exploratory test some set of services, where I could only test things by deploying to staging, or they use some shortcut I didn't know about, and I have to ask them how they did that.

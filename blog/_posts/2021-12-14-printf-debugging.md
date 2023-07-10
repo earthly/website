@@ -10,6 +10,7 @@ internal-links:
  - printf debugging
  - debuggers
  - debugging
+excerpt: "In this article, the author explores the concept of "printf" debugging and its similarities to the learning methods of mathematician Srinivasa Ramanujan. They discuss why many skilled software engineers prefer not to use debuggers and instead rely on careful thought and print statements to debug their code. The article highlights the importance of deepening one's understanding of the code and how this approach can make you a better software engineer."
 ---
 The Visual Studio debugger is fantastic. When I was a C# developer, I used it all the time.
 

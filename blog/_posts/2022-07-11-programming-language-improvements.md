@@ -5,6 +5,7 @@ categories:
 author: Adam
 sidebar:
   nav: "thoughts"
+excerpt: "In this article, the author explores the slow progress in programming language tooling and how it affects the developer experience. They discuss the importance of language tooling and how newer languages are incorporating innovative tools to improve the development process. The article highlights various aspects of tooling, such as standard libraries, package managers, documentation support, and code formatters, and how they contribute to a better developer experience."
 ---
 The 2022 Stack Overflow developer survey is out!
 

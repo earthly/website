@@ -6,7 +6,7 @@ featured: true
 author: Adam
 sidebar:
   nav: "thoughts"
-excerpt: In 1972, two students learning FORTRAN came up with a fantastic new programming language called INTERCAL. 
+excerpt: "In this article, the author explores the world of unconventional programming languages like INTERCAL and YAML. They discuss the unique features and quirks of these languages, as well as the challenges and pitfalls of using them. The article also delves into the blurred line between configuration and programming languages, and the potential problems that arise when control flow is embedded in config files."
 internal-links:
   - intercal
 ---

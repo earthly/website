@@ -7,6 +7,7 @@ internal-links:
  - pandas
 
 author: Alex
+excerpt: "Learn how to plot precipitation data using Python, Pandas, and Matplotlib. This tutorial covers parsing data, plotting interactive and static graphs, comparing annual data, accounting for missing data, and accounting for snowfall."
 ---
 <!-- vale HouseStyle.EG = NO -->
 <!-- vale WritingSuggestions.Cliches = NO -->

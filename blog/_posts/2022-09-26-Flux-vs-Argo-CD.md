@@ -12,6 +12,7 @@ internal-links:
  - GitOps
  - Kubernetes
 topic: ci
+excerpt: "This article compares the Flux and Argo CD GitOps tools, exploring their features and capabilities. It discusses aspects such as reconciliation, source tracking, configuration, Helm support, scaling out, permissions, and multi-cluster deployment. Whether you're new to GitOps or looking to choose between these two tools, this comparison will provide valuable insights."
 ---
 
 Since February we have been working on adopting Kubernetes and cloud-native technologies for our cell simulation platform at [Turbine.ai](https://turbine.ai).

@@ -12,6 +12,7 @@ internal-links:
  - Kubernetes
  - Security
  - Secret Management
+excerpt: "Learn how to use the External Secret Operator (ESO) with HashiCorp Vault to securely manage secrets in your Kubernetes cluster. This tutorial covers the steps to configure a ClusterSecretStore, SecretStore, and ExternalSecret resource, providing an extra layer of security for your applications."
 ---
 
 Are you interested in learning more about Kubernetes security? While it's true that [Kubernetes](/blog/automate-micsvcs-in-k8s) secrets provide a secure way to manage sensitive data in your applications, it's also wise to consider additional security measures. In my previous articles, I've covered how to get started with [Kubernetes secrets](/blog/kubernetes-secrets/) and [how to secure them effectively](/blog/securing-kubernetes-secrets/) within the [cluster](/blog/kube-bench).

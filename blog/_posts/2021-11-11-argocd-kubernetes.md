@@ -10,6 +10,7 @@ sidebar:
 internal-links:
  - argocd
  - kubernetes deployment
+excerpt: "Learn how to simplify Kubernetes deployments and achieve constant software delivery with ArgoCD, a lightweight tool that uses GitOps practices. Discover its features, use cases, and step-by-step implementation process in this informative article by Sanni Michael."
 ---
 Kubernetes has simplified the container management process for microservice applications, but developers often face challenges when using this notoriously complex platform to achieve constant software delivery.
 

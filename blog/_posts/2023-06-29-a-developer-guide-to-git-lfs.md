@@ -12,6 +12,7 @@ internal-links:
  - LFS
  - Storage
  - Large Files
+excerpt: "Learn how to use Git LFS (Large File Storage) to efficiently manage large files in your Git repository. Git LFS replaces large files with text pointers, improving performance and collaboration for developers working with multimedia content, datasets, and more."
 ---
 
 **We're [Earthly](https://earthly.dev/). We make building software simpler and, therefore, faster. This article explains how to use Git LFS. If you are doing things at the command line you might like [Earthly](https://earthly.dev/). It's a pretty great open-source build tool.**

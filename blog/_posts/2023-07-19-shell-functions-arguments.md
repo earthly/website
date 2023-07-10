@@ -11,6 +11,7 @@ internal-links:
  - shell script functions
  - functions and arguments
  - shell script functions and arguments
+excerpt: "Learn how to create and use functions in shell scripting with this comprehensive guide. Discover the fundamentals of shell scripting functions and arguments, best practices for creating modular and reusable functions, and how to handle errors in your scripts. Whether you're a beginner or an experienced shell scripter, this article will help you level up your scripting skills."
 ---
 
 **We're [Earthly](https://earthly.dev/). We make building software simpler and, therefore, faster by using containerization. This article is about autotools and make. If you're interested in a different building and packaging software approach, then [check us out](/).**

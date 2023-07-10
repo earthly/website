@@ -8,6 +8,7 @@ internal-links:
  - python docker
  - docker python
 last_modified_at: 2023-04-17
+excerpt: "Learn how to simplify Python development by using Docker to manage dependencies and run applications in an isolated system. This tutorial guides you through the process of building a Docker container for a simple Python application, providing step-by-step instructions and helpful tips along the way."
 ---
 <iframe width="560" height="315" src="https://www.youtube.com/embed/4bGtb2L4-VM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 

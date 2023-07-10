@@ -7,6 +7,7 @@ author: Vlad
 
 internal-links:
  - just an example
+excerpt: "Earthly has announced a $6.5M Seed+ funding round to improve their developer infrastructure and add more enterprise-friendly features to Earthly CI. This fast and user-friendly CI/CD platform offers repeatable pipelines and an automatic build cache, making it a must-have tool for developers."
 ---
 
 The developer tools market is shifting towards modern development workflows that include complex build scripts, varying code layouts (e.g. monorepos, polyrepos), mixed programming languages, and mixed architectures (e.g. Intel, Apple Silicon). Developers need tools that improve their experience and efficiency as well as deliver consistency across the varying operating systems and processor architectures the individual team members may be using. The incumbent technologies were not designed for this landscape, and so we believe this is the best time to rethink our developer infrastructure.

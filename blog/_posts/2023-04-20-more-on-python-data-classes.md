@@ -8,6 +8,7 @@ author: Bala Priya C
 internal-links:
  - Python
  - Python Classes
+excerpt: "In this tutorial, we continue exploring Python data classes and their features. We cover setting default values with `default_factory`, excluding fields from the constructor, creating fields post-initialization, sorting data class instances, subclassing data classes, and using slots for more efficient memory usage."
 ---
 
 Since their introduction in Python 3.7, data classes have emerged as a popular choice for Python classes that store data. In a [previous tutorial](/blog/python-data-classes), we talked about what data classes are and some of their features, including out-of-the-box support for object comparison, type hints, and default values of fields. In this follow-up tutorial, we'll continue to explore some more features of Python data classes.

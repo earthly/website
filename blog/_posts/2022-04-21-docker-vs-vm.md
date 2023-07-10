@@ -7,6 +7,7 @@ author: Cameron Pavey
 internal-links:
  - virtual machine 
  - hypervisor
+excerpt: "Learn about the differences between Docker containers and virtual machines (VMs) in this article. Discover the strengths and limitations of each technology, including their interaction with the host machine, simplicity, speed, security, and ease of replicability. Whether you're a developer or a system administrator, understanding these differences will help you make informed decisions about which technology to use for your specific use case."
 ---
 [Docker](https://www.docker.com/) and similar containerization technologies have taken the tech world by storm. They have largely displaced virtual machines (VMs) as the de facto segmentation methodology for servers and software developer workflows. However, it's important to note that Docker containers and VMs do not make for an apples-to-apples comparison. One is not inherently better than the other, with each having its pros and cons and use cases that might be better suited to one than the other.
 

@@ -4,7 +4,7 @@ categories:
   - Tutorials
 toc: true
 author: Adam
-excerpt: Have you ever wanted to see what kinds of requests a service or application on your machine is making and what kind of responses it is getting back?
+excerpt: "Learn how to use mitmproxy to capture and inspect HTTP and HTTPS traffic on your machine, including requests made by Docker containers. This tutorial provides step-by-step instructions for installing and configuring mitmproxy on macOS, Windows, and Linux, as well as adding the necessary certificates to trust the proxy. With mitmproxy, you can easily debug and analyze network traffic, making it a valuable tool for developers and system administrators."
 internal-links:
    - mitmproxy
    - proxy

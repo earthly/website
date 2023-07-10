@@ -8,6 +8,7 @@ author: Eze Onukwube
 internal-links:
  - kubernetes networking
  - ingress
+excerpt: "Learn about the ins and outs of Kubernetes networking, from understanding the network model to implementing IP allocation and managing services. This guide is a must-read for anyone working with Kubernetes and wanting to optimize their container orchestration."
 ---
 
 [Kubernetes](https://kubernetes.io) networking enables the components that make up the Kubernetes ecosystem, like containers, pods, and services, to communicate effectively with each other. As a result, networking permeates Kubernetes.

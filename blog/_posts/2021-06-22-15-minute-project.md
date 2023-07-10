@@ -4,7 +4,7 @@ title: The 15-Minute Project
 categories:
   - Articles
 author: Corey
-excerpt: Applying city planning to software development
+excerpt: "Discover how the principles of city planning can be applied to software development in this intriguing article. Learn how concepts like zoning, building codes, transportation, equity, and taxes can help create a more efficient and inclusive software project."
 toc: true
 internal-links:
   - planning

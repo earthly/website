@@ -4,7 +4,7 @@ title: DOS Gaming In Docker
 categories:
 - Tutorials
 author: Corey
-excerpt: Distributing shareware from the 90's in modern Docker images.
+excerpt: ""
 internal-links:
  - gaming
  - doom

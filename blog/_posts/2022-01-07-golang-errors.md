@@ -9,6 +9,7 @@ internal-links:
  - just an example
 topic: go
 last_modified_at: 2023-04-17
+excerpt: "Learn the basics of error handling in Go and discover simple strategies to ensure your program is robust and easy to debug. Explore how to construct errors, define expected errors, and wrap errors to provide additional context."
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. Earthly is open-source and written in go. So if you're interested in a simple way to build then [check us out](/).**
 

@@ -11,6 +11,7 @@ internal-links:
  - database containers
 topic: docker
 last_modified_at: 2023-04-17
+excerpt: "Learn how to use Docker with Postgres to simplify data management and improve portability. This tutorial covers best practices for running PostgreSQL on Docker containers and includes step-by-step instructions for setting up and connecting to a PostgreSQL instance."
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. This article is about data management for Postgres containers. If you're interested in a simple and containerized approach to building software then [check us out](/).**
 

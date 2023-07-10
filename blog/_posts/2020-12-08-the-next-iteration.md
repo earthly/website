@@ -4,7 +4,7 @@ featured: true
 categories:
   - News
 author: Vlad
-excerpt: We've been working with many of you to better understand your pains and use-cases when it comes to builds.
+excerpt: "In this article, the Earthly team shares their roadmap for future improvements and directions for the project. They are seeking feedback from the community to prioritize and implement these proposals, making it a must-read for Earthly users who want to have a say in the platform's development."
 internal-links:
   - road map
   - roadmap

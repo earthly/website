@@ -10,6 +10,7 @@ internal-links:
  - Kubernetes
  - Pods
  - Cluster
+excerpt: "Learn how to use ReplicaSets in Kubernetes to ensure fault tolerance and high availability for your applications. This tutorial will guide you through the installation process and show you how to create and manage ReplicaSets using YAML files."
 ---
 
 ## What Is Kubernetes?

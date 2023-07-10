@@ -11,6 +11,7 @@ internal-links:
  - list merging
 topic: python
 funnel: 2
+excerpt: "Learn how to improve the performance of your Python program by merging sorted lists using a custom C extension. Discover how this approach can beat Python's built-in TimSort algorithm in certain scenarios."
 ---
 <iframe width="560" height="315" src="https://www.youtube.com/embed/9fcWnAf6rEY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 

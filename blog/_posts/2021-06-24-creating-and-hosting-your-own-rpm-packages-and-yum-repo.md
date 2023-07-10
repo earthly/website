@@ -8,6 +8,7 @@ internal-links:
   - rpm
   - yum
   - dnf
+excerpt: "Learn how to create and host your own RPM packages and Yum repository for Redhat-based Linux distributions like Fedora, CentOS, and Rocky Linux. This tutorial covers the step-by-step process, including creating a simple "Hello World" program, packaging it into an RPM, creating a Yum repository, and testing the repository. Whether you're a data engineer or a Linux enthusiast, this tutorial will help you distribute your programs and make them easily accessible to others."
 ---
 
 <div class="narrow-code">

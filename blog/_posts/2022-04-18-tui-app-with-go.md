@@ -10,6 +10,7 @@ internal-links:
  - tui
 topic: go
 last_modified_at: 2023-04-17
+excerpt: "Learn how to build a terminal user interface (TUI) using the Go programming language and the Tview library. Discover how to create forms, lists, and text views, and how to switch between different views using the Pages widget. See how to capture user input, display contact information, and refresh the UI to avoid duplication. Explore the possibilities of TUIs and find out how they can be useful for certain applications."
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. Earthly is open-source and written in go. So if you're interested in a simpler way to build then [check us out](/).**
 

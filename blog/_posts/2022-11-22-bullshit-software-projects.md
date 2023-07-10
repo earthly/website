@@ -4,6 +4,7 @@ categories:
   - Articles
 toc: true
 author: Adam
+excerpt: "Discover the world of "bullshit work" in software development as the author explores pointless projects that offer no value. From busy work to zombie projects and executive pet projects, this article delves into the frustrations and challenges faced by software developers in their quest for meaningful work."
 ---
 I was frying a couple of dozen walnut crunch when I first got in trouble at Tim Horton's.
 

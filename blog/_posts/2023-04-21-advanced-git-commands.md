@@ -11,6 +11,7 @@ internal-links:
  - Github
  - Advance Commands
  - Terminal
+excerpt: "Learn ten advanced Git commands that can vastly improve your workflow as a developer. From Git rebase to Git clean, these commands will help you harness the power of Git and take your version control skills to the next level."
 ---
 
 For many developers, truly harnessing the power of Git can be a daunting task. Git can seem intimidating when you first start using it. This is one of the reasons most developers limit themselves to using the standard push, pull, and merge commands.

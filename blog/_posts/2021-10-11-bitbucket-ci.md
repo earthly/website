@@ -8,6 +8,7 @@ author: Ben Force
 internal-links:
  - bitbucket
  - groovy 
+excerpt: "Learn how to connect build systems like Jenkins and AWS CodeBuild to Bitbucket and set up continuous integration workflows to automatically test your code before release. Alternatively, discover Bitbucket's native CI/CD service, Bitbucket Pipelines, which allows you to define your pipeline in a YAML file and easily integrate it into your project."
 ---
 How do you rapidly deliver new features without delivering bugs at the same rate? By running automatic builds and tests on all of your code before it gets into a release. And that's exactly what continuous integration is.
 

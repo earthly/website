@@ -4,7 +4,7 @@ categories:
   - Tutorials
 toc: true
 author: Corey
-excerpt: Ngrok is a tool that allows you to create secure, publically accessible URLs for your locally running code.
+excerpt: "Learn how to create your own Ngrok clone using AWS, Nginx, and Earthly. This tutorial provides step-by-step instructions on setting up a secure, publicly accessible URL for your locally running code without the need for expensive third-party tools."
 internal-links:
   - ngrok
   - ec2

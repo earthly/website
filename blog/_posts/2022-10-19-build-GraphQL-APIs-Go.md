@@ -10,6 +10,7 @@ internal-links:
  - API
  - Go
  - MySQL
+excerpt: "Learn how to build GraphQL APIs using Go and MySQL in this tutorial. Discover how to set up the necessary prerequisites, generate GraphQL resolvers with Gqlgen, and implement the logic for mutations and queries. Get hands-on experience with Go and GraphQL to create powerful APIs."
 ---
 
 ## Prerequisites

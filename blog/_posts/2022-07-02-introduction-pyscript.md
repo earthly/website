@@ -4,7 +4,7 @@ categories:
   - Tutorials
 toc: true
 author: Ukeje Goodness
-excerpt: "Introduction Python is widely used in so many applications, from data science to machine learning, robotics, and artificial intelligence. On the we.."
+excerpt: "Learn how to use PyScript, a Python-based front-end web framework, to run Python code in HTML and implement various functionalities such as using external packages, running Python REPLs, and visualizing images in the browser. PyScript simplifies the process of running Python in the browser and has the potential to become a valuable tool in web development."
 internal-links:
  - Pyhton
  - Numpy

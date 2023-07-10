@@ -5,7 +5,7 @@ title: Compiling Containers - Dockerfiles, LLVM, and BuildKit
 categories:
   - Tutorials
 toc: true
-excerpt: How are containers made? Usually, from a series of statements like RUN, FROM, and COPY, which are put into a Dockerfile and built. But how are those commands turned into a container image and then a running container? 
+excerpt: "Learn how containers are made and how commands in a Dockerfile are turned into a container image and a running container. This article explores the phases involved in container creation, introduces BuildKit as a compiler for Docker images, and demonstrates how to programmatically create a container image using Go. It also discusses the concept of intermediate representations and how they are used in both traditional compilers and BuildKit. Finally, it showcases the development of a custom frontend for Docker build using the existing dockerfile frontend as a starting point."
 author: Adam
 sidebar:
   nav: "docker"
