@@ -109,6 +109,8 @@ When you follow these rules, you'll be able to write safer and more efficient co
 
 ## Lifetimes
 
+![Lifetimes]({{site.images}}{{page.slug}}/lifetimes.png)\
+
 Lifetimes are a way of tracking the scope of a reference to an object in memory. In Rust, every value has one owner, and when the owner goes out of scope, the value is dropped, and its memory is freed. Lifetimes allow Rust to ensure that a reference to an object remains valid for as long as it's needed.
 
 In Rust, lifetimes are denoted using the `'a` syntax, where the `'a` is a placeholder for the actual lifetime. The lifetime can be defined as a generic parameter in a [function](https://web.mit.edu/rust-lang_v1.25/arch/amd64_ubuntu1404/share/doc/rust/html/book/first-edition/functions.html), [struct](https://web.mit.edu/rust-lang_v1.25/arch/amd64_ubuntu1404/share/doc/rust/html/book/first-edition/structs.html), or [trait](https://web.mit.edu/rust-lang_v1.25/arch/amd64_ubuntu1404/share/doc/rust/html/book/first-edition/traits.html) using angle brackets. The following is an example:
@@ -628,6 +630,8 @@ By using lifetimes in trait implementations, you can ensure that the lifetimes o
 
 ## Advanced Topics
 
+![Advanced]({{site.images}}{{page.slug}}/level.png)\
+
 In addition to the core concepts of Rust lifetimes, there are some advanced topics worth exploring. They include Lifetime Subtyping and Higher-Ranked trait bounds.
 
 ### Lifetime Subtyping
@@ -820,8 +824,3 @@ In this article, you learned all about the basics of Rust lifetimes, including b
 With the information and examples provided here, you should have a solid understanding of Rust's lifetimes and their importance in writing safe and efficient code. If you want to keep learning, try exploring the [official Rust documentation and community resources](<https://www.rust-lang.org/lea>
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-- [ ] Optional: Find ways to break up content with quotes or images
-
