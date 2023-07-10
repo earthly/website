@@ -2,6 +2,8 @@
 title: Earthly + GitHub Actions
 description: GitHub Actions are better with Earthly. Get faster build speeds, improved consistency, and local testing along with an easy-to-use syntax – no YAML – and better monorepo support.
 layout: default
+banner: Learn how Earthly Satellites makes GitHub Actions more consistent, faster, and easier to use in our blog post <b><a href="https://earthly.dev/blog/earthly-github-actions/" onclick="bannerLinkClick()">Better Together - Earthly + Github Actions</a></b>.
+mobileBanner: Read our blog post <b><a href="https://earthly.dev/blog/earthly-github-actions/" onclick="bannerLinkClick()">Better Together - Earthly + Github Actions</a></b>.
 ---
 
 {% include home/layout.html template='github-actions/hero.html' %}
