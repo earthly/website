@@ -7,7 +7,10 @@ author: Enoch Chejieh
 editor: Mustapha Ahmad Ayodeji
 
 internal-links:
- - just an example
+ - guide to ownership and borrowing
+ - rust lifetimes
+ - ownership and borrowing
+ - rust guide
 ---
 
 **We're [Earthly.dev](https://earthly.dev/). We make building software simpler and, therefore, faster – like Dockerfile and Makefile had a baby. This article is all about the Rust Lifetimes**.
@@ -812,10 +815,8 @@ With the information and examples provided here, you should have a solid underst
 
 ## Outside Article Checklist
 
-- [ ] Add in Author page
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-\- [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
