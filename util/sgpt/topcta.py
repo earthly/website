@@ -1,5 +1,10 @@
 import os
 import argparse
+from textwrap import dedent
+
+process = dedent(f"""
+            cat "$(post)" | sgpt --model gpt-3.5-turbo-16k "This is a post in markdown. I need a three word summary of the article in sentence form of 'This article is about ....' .  For example: 'This article is about large scale builds.' or 'This article is about python list comprehensions.'. It should be just the topic in that form of sentence and should make sense." 
+            """) 
 
 def add_paragraph_if_word_missing(filename):
     # Read the file
