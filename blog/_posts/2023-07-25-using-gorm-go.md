@@ -36,7 +36,7 @@ To follow along in this tutorial, you are required to have the following:
 
 To get started, you will need to set up your development environment. Begin by installing the GORM library, which can be done using the following command:
 
-~~~
+~~~{.bash caption=">_"}
 go get -u gorm.io/gorm
 ~~~
 
@@ -46,7 +46,7 @@ Next, you need to install the database driver for [PostgreSQL](https://gorm.io/d
 
 Execute the following command to install the PostgreSQL driver:
 
-~~~
+~~~{.bash caption=">_"}
 go get -u gorm.io/driver/postgres
 ~~~
 
@@ -56,7 +56,9 @@ This will install the PostgreSQL driver specifically designed for the GORM libra
 ![Installing postgresql driver for gorm]({{site.images}}{{page.slug}}/GzT6sfO.png)
 </div>
 
-> The GORM library also provides database drivers for [MySQL](https://gorm.io/docs/connecting_to_the_database.html#MySQL), [SQLite](https://gorm.io/docs/connecting_to_the_database.html#SQLite), [SQL Server](https://gorm.io/docs/connecting_to_the_database.html#SQL-Server), [TiDB](https://gorm.io/docs/connecting_to_the_database.html#TiDB) and [Clickhouse](https://gorm.io/docs/connecting_to_the_database.html#Clickhouse). You can visit the [GORM library documentation](https://gorm.io/docs/connecting_to_the_database.html) to see how to use these database drivers and create your custom drivers.
+<div class="notice--info">
+The GORM library also provides database drivers for [MySQL](https://gorm.io/docs/connecting_to_the_database.html#MySQL), [SQLite](https://gorm.io/docs/connecting_to_the_database.html#SQLite), [SQL Server](https://gorm.io/docs/connecting_to_the_database.html#SQL-Server), [TiDB](https://gorm.io/docs/connecting_to_the_database.html#TiDB) and [Clickhouse](https://gorm.io/docs/connecting_to_the_database.html#Clickhouse). You can visit the [GORM library documentation](https://gorm.io/docs/connecting_to_the_database.html) to see how to use these database drivers and create your custom drivers.
+</div>
 
 Once you have installed the GORM library and the PostgreSQL database driver, you can connect to your PostgreSQL database and perform database operations.
 
@@ -64,7 +66,7 @@ Once you have installed the GORM library and the PostgreSQL database driver, you
 
 In this section, you will explore how the GORM library handles database connections. To begin, you need to import the GORM library and the PostgreSQL driver package like this:
 
-~~~
+~~~{.go caption="main.go"}
 # main.go
 package main
 
@@ -78,11 +80,12 @@ Next, you must provide the connection details to your PostgreSQL database, such 
 
 Add the following code in your `main.go` function to establish a connection:
 
-~~~
+~~~{.go caption="main.go"}
 # main.go
 func main() {
     //Create a new Postgresql database connection
-    dsn := "host=<your_host> user=<your_user> password=<your_password> dbname=<your_dbname> port=<your_port>"
+    dsn := "host=<your_host> user=<your_user> \
+    password=<your_password> dbname=<your_dbname> port=<your_port>"
 
     // Open a connection to the database
     db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
@@ -96,7 +99,9 @@ In the code snippet, here's what the code does:
 
 - A connection string using the `dsn` variable is defined. This variable represents the Data Source Name. It contains the necessary information to connect to the PostgreSQL database.
 
-> In this case, be sure to replace the following placeholders - `<your_host>`, `<your_user>`, `<your_password>`, `<your_dbname>`, and `<your_port>` with the actual values corresponding to your own PostgreSQL database configuration.
+<div class="notice--info">
+In this case, be sure to replace the following placeholders - `<your_host>`, `<your_user>`, `<your_password>`, `<your_dbname>`, and `<your_port>` with the actual values corresponding to your own PostgreSQL database configuration.
+</div>
 
 - Next, a connection is established to the PostgreSQL database using the `gorm.Open()` function, which takes in two arguments: the first argument is the driver for PostgreSQL, `postgres.Open(dsn)`, which is provided by the GORM library, and the second argument is the configuration, `&gorm.Config{}`. This function returns a database instance (`db`) and an error (`err`).
 - Finally, it checks if an error occurs while connecting to the database `(err != nil)`. If an error occurs, the `panic()` function is called with an error message concatenated to it `"failed to connect to the database: " + err.Error()`. This causes the program to exit and print the provided error message alongside the actual error, indicating the failure to connect to the database.
@@ -107,7 +112,7 @@ Once you have established a connection to the database using the GORM library, t
 
 Add the following code to your main function:
 
-~~~
+~~~{.go caption="main.go"}
 #main.go
 import (
   ...
@@ -132,7 +137,9 @@ type User struct {
 
 In the code snippet above, the `time` package is imported to track when a user record is created, updated, and deleted. Then a `User` struct is defined with fields corresponding to the database table's columns. Here's what each field and its associated tag do:
 
-> The GORM library uses [tags](https://gorm.io/docs/models.html#Fields-Tags), which are annotations added to struct fields using backticks (``), to provide additional metadata or instructions to the ORM framework. These tags are crucial in mapping struct fields to database columns, defining column names, specifying data types, enforcing constraints, and configuring table relationships. They provide essential information about the structure and characteristics of the database table and its columns.
+<div class="notice--info">
+The GORM library uses [tags](https://gorm.io/docs/models.html#Fields-Tags), which are annotations added to struct fields using backticks (``), to provide additional metadata or instructions to the ORM framework. These tags are crucial in mapping struct fields to database columns, defining column names, specifying data types, enforcing constraints, and configuring table relationships. They provide essential information about the structure and characteristics of the database table and its columns.
+</div>
 
 - `gorm.Model`: This field embeds the `gorm.Model` struct, which provides common fields like `ID`, `CreatedAt`, `UpdatedAt`, and `DeletedAt` for tracking the model's metadata.
 - `FirstName` and `LastName`: These fields represent the user's first name and last name and have the `gorm:"uniqueIndex"` tag, indicating that the combination of first name and last name is unique in the database, which means you won't be able to have two users with the same first name and last name.
@@ -141,7 +148,9 @@ In the code snippet above, the `time` package is imported to track when a user r
 - `CreatedAt`  and `UpdatedAt`: These fields represent the timestamp when the user record was created and updated. They are of type `time.Time` and have the `gorm:"autoCreateTime"` and `gorm:"autoUpdateTime"` tags, respectively, indicating that they should be automatically populated with the current timestamp when a new user record is created or modified.
 - `DeletedAt`: This field is of type `gorm.DeletedAt` and is used to handle soft-deletes in GORM. It allows GORM to track the deletion timestamp of a user record and handle logical deletions instead of physically removing the record from the database.
 
-> In the GORM library, "[soft delete](https://gorm.io/docs/delete.html#Soft-Delete)" is a mechanism where records are marked as deleted instead of being physically removed from the database. By defining a `DeletedAt` field with the `gorm.DeletedAt` type in your Go struct, the GORM library sets the value of this field to the current timestamp when a record is deleted, indicating that it's considered deleted but still retained in the database. This provides advantages such as easy retrieval and restoration of deleted records, maintaining a history of changes, and data integrity control. If you prefer not to use the soft delete, you can omit the `DeletedAt` field from your Go struct; that way, the GORM library will perform a hard delete by physically removing the records from the database when you delete them.
+<div class="notice--info">
+In the GORM library, "[soft delete](https://gorm.io/docs/delete.html#Soft-Delete)" is a mechanism where records are marked as deleted instead of being physically removed from the database. By defining a `DeletedAt` field with the `gorm.DeletedAt` type in your Go struct, the GORM library sets the value of this field to the current timestamp when a record is deleted, indicating that it's considered deleted but still retained in the database. This provides advantages such as easy retrieval and restoration of deleted records, maintaining a history of changes, and data integrity control. If you prefer not to use the soft delete, you can omit the `DeletedAt` field from your Go struct; that way, the GORM library will perform a hard delete by physically removing the records from the database when you delete them.
+</div>
 
 By defining the `User` struct with these fields and tags, the GORM library can automatically handle database operations such as inserting, updating, querying, and deleting records.
 
@@ -151,12 +160,13 @@ Once you have defined the Go struct that represents your data model, the next cr
 
 Add the following code snippets to your `main` function right after the database connection code:
 
-~~~
+~~~{.go caption="main.go"}
 # main.go
 // ... Main function ...
 // ... Database connection setup code ...
 
-// AutoMigrate will create the necessary tables based on the defined models/structs
+// AutoMigrate will create the necessary tables based on the \
+// defined models/structs
 err = db.AutoMigrate(&User{})
 if err != nil {
     panic("failed to perform migrations: " + err.Error())
@@ -171,7 +181,7 @@ Creating records is a fundamental operation when working with databases, as it a
 
 Import the `fmt` package and add the following code snippet to your main function:
 
-~~~
+~~~{.go caption="main.go"}
 main.go
 
 import (
@@ -199,7 +209,8 @@ func main() {
         panic("failed to create user: " + result.Error.Error())
     }
      // ... Handle successful creation ...
-    fmt.Printf("New user %s %s was created successfully!\\n", newUser.FirstName, newUser.LastName)
+    fmt.Printf("New user %s %s was created successfully!\\n", \
+    newUser.FirstName, newUser.LastName)
 }
 ~~~
 
@@ -207,7 +218,9 @@ The code snippet above does the following:
 
 - Defines a new `User` struct instance with the desired field values for the user, such as `first_name`, `last_name`, `email`, `country`, `role`, and `age`.
 
-> When working with the GORM library, whether you define field names in your struct with uppercase or lowercase letters, the field names will be automatically converted to lowercase letters in the database. If a field name contains more than one word, an underscore (_) will separate it in the database.
+<div class="notice--info">
+When working with the GORM library, whether you define field names in your struct with uppercase or lowercase letters, the field names will be automatically converted to lowercase letters in the database. If a field name contains more than one word, an underscore (_) will separate it in the database.
+</div>
 
 - Uses the `db.Create(&newUser)` method to create a new user record in the database. The `&newUser` is a pointer to the `newUser` struct, allowing the GORM library to modify the struct with an auto-generated primary key and other database-managed fields.
 - Checks for any error that occurs during the creation process. If an error is encountered, the application panics and displays the error message `"failed to create user: " + result.Error.Error()` alongside the actual error.
@@ -215,7 +228,7 @@ The code snippet above does the following:
 
 Now, execute the `go run` command and head to your Postgres database to confirm the `User` record has been created.
 
-~~~
+~~~{ caption="Output"}
 New User Jane Doe was created successfully!
 ~~~
 
@@ -233,7 +246,7 @@ You can use the `First` method when retrieving a single record.
 
 Let's start by retrieving the `User` record created in the previous section, `Jane Doe`. You can achieve this using the following code:
 
-~~~
+~~~{.go caption="main.go"}
 # main.go
 func main() {
         // ...AutoMigrate code ...
@@ -246,7 +259,8 @@ func main() {
     }
 
     // Use the user record
-    fmt.Printf("User ID: %d, Name: %s %s, Email: %s\n", user.ID, user.FirstName, user.LastName, user.Email)
+    fmt.Printf("User ID: %d, Name: %s %s, Email: %s\n", user.ID, \
+    user.FirstName, user.LastName, user.Email)
 }
 ~~~
 
@@ -259,21 +273,25 @@ Considering the updated code snippet above, the following actions were performed
 - A variable `user` of type `User` (i.e., the struct called `User` ) was declared to store the retrieved user record.
 - The database was queried, and the first user record was retrieved using the  `db.First(&user)` method call.
 
- > When retrieving a single record, the GORM library provides multiple methods to suit different scenarios; it offers additional methods like [`Take`](https://gorm.io/docs/query.html) and [`Last`](https://gorm.io/docs/query.html) alongside the [`First`](https://gorm.io/docs/query.html) method. These methods allow you to fetch a single record based on different criteria. For detailed information and examples on using these methods, I recommend referring to the comprehensive [GORM library documentation](https://gorm.io/docs/query.html#Retrieving-a-single-object), which will help you effectively leverage them in your code.
+<div class="notice--info">
+When retrieving a single record, the GORM library provides multiple methods to suit different scenarios; it offers additional methods like [`Take`](https://gorm.io/docs/query.html) and [`Last`](https://gorm.io/docs/query.html) alongside the [`First`](https://gorm.io/docs/query.html) method. These methods allow you to fetch a single record based on different criteria. For detailed information and examples on using these methods, I recommend referring to the comprehensive [GORM library documentation](https://gorm.io/docs/query.html#Retrieving-a-single-object), which will help you effectively leverage them in your code.
+</div>
 
 - If an error occurs during retrieval, such as the user not being found, the code will panic and display an error message `"failed to retrieve user: " + result.Error.Error()"`; alongside the actual error; otherwise, the `user` variable is used to access and work with the user's attributes and then print out the user's `ID`, `first_name`, `last_name`, and `email` in a formatted string `fmt.Printf`.
 
 Once you run the code, you are expected to have the following output:
 
-~~~
+~~~{ caption="Output"}
 User ID: 1, Name: Jane Doe, Email: janedoe@gmail.com
 ~~~
 
-> Additionally, you can retrieve a record using its primary key. The following example is from the [GORM library documentation](https://gorm.io/docs/query.html#Retrieving-objects-with-primary-key). Or, If you'd like to fetch more than one record by their primary keys, you can pass the primary key value(s) to the `Find` method. See how to use the [`Find` method](https://gorm.io/docs/query.html#Retrieving-objects-with-primary-key).
+<div class="notice--info">
+Additionally, you can retrieve a record using its primary key. The following example is from the [GORM library documentation](https://gorm.io/docs/query.html#Retrieving-objects-with-primary-key). Or, If you'd like to fetch more than one record by their primary keys, you can pass the primary key value(s) to the `Find` method. See how to use the [`Find` method](https://gorm.io/docs/query.html#Retrieving-objects-with-primary-key).
+</div>
 
 For cases where you'd need to retrieve records based on certain conditions, you can use the [`Where`](https://gorm.io/docs/query.html#Conditions) method like this:
 
-~~~
+~~~{.go caption="main.go"}
 # main.go
 ...
 var users []User
@@ -284,7 +302,8 @@ if result.Error != nil {
 
 // iterate over the users slice and print the details of each user
 for _, user := range users {
-    fmt.Printf("User ID: %d, Name: %s %s, Email: %s\n", user.ID, user.FirstName, user.LastName, user.Email)
+    fmt.Printf("User ID: %d, Name: %s %s, Email: %s\n", user.ID, \
+    user.FirstName, user.LastName, user.Email)
 }
 ~~~
 
@@ -292,32 +311,36 @@ Here, records are retrieved from the `User` table where the ID equals `1` using 
 
 If you'd like to chain multiple conditions, you can say:
 
-~~~
+~~~{.go caption="main.go"}
 # main.go
 ...
 var users []User
-result := db.Where("FirstName = ?", "Jane").Where("Country = ?", "Spain").Find(&users)
+result := db.Where("FirstName = ?", "Jane").Where("Country = ?", "Spain")/
+.Find(&users)
 if result.Error != nil {
     panic("failed to retrieve users: " + result.Error.Error())
 }
 
 // Use the user records
 for _, user := range users {
-    fmt.Printf("User ID: %d, Name: %s %s, Email: %s\n", user.ID, user.FirstName, user.LastName, user.Email)
+    fmt.Printf("User ID: %d, Name: %s %s, Email: %s\n", user.ID, /
+    user.FirstName, user.LastName, user.Email)
 }
 ~~~
 
 This will retrieve the record where the `first_name` is `Jane` and the `country` is `Spain`:
 
-~~~
+~~~{ caption="Output"}
 User ID: 1, Name: Jane Doe, Email: janedoe@gmail.com
 ~~~
 
-> For other condition types like [`Or`](https://gorm.io/docs/query.html#Or-Conditions) and [`Not`](https://gorm.io/docs/query.html#Not-Conditions) you can see the following [guide](https://gorm.io/docs/query.html#Specify-Struct-search-fields)
+<div class="notice--info">
+For other condition types like [`Or`](https://gorm.io/docs/query.html#Or-Conditions) and [`Not`](https://gorm.io/docs/query.html#Not-Conditions) you can see the following [guide](https://gorm.io/docs/query.html#Specify-Struct-search-fields)
+</div>
 
 Finally, using the `Find` method, you can retrieve multiple records without specific conditions. Here's an example code snippet:
 
-~~~
+~~~{.go caption="main.go"}
 # main.go
 var users []User
 result := db.Find(&users)
@@ -328,7 +351,8 @@ if result.Error != nil {
 
 // Iterate over the users slice and print the details of each user
 for _, user := range users {
-    fmt.Printf("User ID: %d, Name: %s %s, Email: %s\n", user.ID, user.FirstName, user.LastName, user.Email)
+    fmt.Printf("User ID: %d, Name: %s %s, Email: %s\n", user.ID, \
+    user.FirstName, user.LastName, user.Email)
 }
 ~~~
 
@@ -340,7 +364,7 @@ When working with the GORM library, you can update records by modifying the fiel
 
 To update records with the GORM library, you typically retrieve the record, modify the record, save the changes, and handle errors. Here's an example:
 
-~~~
+~~~{.go caption="main.go"}
 # main.go
     // Retrieve the record you want to update
     var user User
@@ -349,7 +373,8 @@ To update records with the GORM library, you typically retrieve the record, modi
         panic("failed to retrieve user: " + result.Error.Error())
     }
 
-    // Modify the attributes of the retrieved record, in this case, the first three columns
+    // Modify the attributes of the retrieved record, in this case, \
+    // the first three columns
     user.FirstName = "Agnes"
     user.LastName = "Doe"
     user.Email = "agnesdoe@example.com"
@@ -369,9 +394,11 @@ Then, it modifies the attributes of the retrieved record, specifically the `firs
 
 Finally, it prints a message indicating the user has been updated successfully.
 
-> If you want to update a single column with the GORM library, use the `Update` or `Updates` method with a `map` or `struct` specifying the column and its new value. Here's an example of updating a single column using the `update` method with a `struct`:
->
-~~~
+<div class="notice--info">
+If you want to update a single column with the GORM library, use the `Update` or `Updates` method with a `map` or `struct` specifying the column and its new value. Here's an example of updating a single column using the `update` method with a `struct`:
+</div>
+
+~~~{.go caption="main.go"}
  // Update the 'role' column of the record with ID 1
  result := db.Model(&User{}).Where("id = ?", 1).Update("role", "admin")
  if result.Error != nil {
@@ -383,7 +410,7 @@ Finally, it prints a message indicating the user has been updated successfully.
 
 When you execute the code above, you should have the following output:
 
-~~~
+~~~{ caption="Output"}
 User updated successfully
 ~~~
 
@@ -393,7 +420,7 @@ User updated successfully
   
 Alternatively, you can update records using a struct `User` to define the changes. Here's an example:
 
-~~~
+~~~{.go caption="main.go"}
 # main.go
 // Update the record with ID 1
     result := db.Model(&User{}).Where("id = ?", 1).Updates(User{
@@ -408,7 +435,7 @@ Alternatively, you can update records using a struct `User` to define the change
     fmt.Println("User updated successfully")
 ~~~
 
-~~~
+~~~{ caption="Output"}
 User updated successfully
 ~~~
 
@@ -420,7 +447,7 @@ The GORM library provides several methods to delete records based on different c
 
 To delete a single record, you can use the [`Delete`](https://gorm.io/docs/delete.html) method from the GORM library. The `Delete` method takes the model instance as an argument and deletes the corresponding record from the database. Here's an example:
 
-~~~
+~~~{.go caption="main.go"}
 # main.go
 var user User
 result := db.First(&user)
@@ -440,11 +467,13 @@ if result.Error != nil {
 
 The code retrieves the first user record from the database using the GORM library's  `First` method and then deletes that user record using the `Delete` method. If any error occurs during the retrieval or deletion, the code panics with the corresponding error messages. Additionally, it checks if any user records were deleted and prints a success message if the deletion is successful.
 
-> In the given code, the condition `else if result.RowsAffected == 0` determines the number of rows affected by the database operation. It represents the number of rows that were successfully deleted from the database. By checking the value of `RowsAffected`, different scenarios can be handled based on whether any records were deleted.
+<div class="notice--info">
+In the given code, the condition `else if result.RowsAffected == 0` determines the number of rows affected by the database operation. It represents the number of rows that were successfully deleted from the database. By checking the value of `RowsAffected`, different scenarios can be handled based on whether any records were deleted.
+</div>
 
 You can use the `Delete` method with a condition to delete multiple records that match certain criteria. The condition is specified using the `Where` method as shown below:
 
-~~~
+~~~{.go caption="main.go"}
 # main.go
 // Delete the record where the country is "Spain"
 record := db.Where("country = ?", "Spain").Delete(&User{})
@@ -456,7 +485,7 @@ fmt.Println(record.RowsAffected, "user record(s) deleted successfully")
 
 Once you run this code, the following output is expected, meaning that one row has been affected and a record with the country `Spain` has been marked deleted:
 
-~~~
+~~~{ caption="Output"}
 1 user record(s) deleted successfully
 ~~~
 
@@ -472,7 +501,7 @@ The GORM library is used to perform basic CRUD operations and provides several a
 
 Transactions allow you to group a set of database operations into a unit of work. This ensures that all operations succeed or fail. You can use the GORM library transaction methods to begin a transaction, perform database operations within the transaction, and commit or roll back the transaction based on success or failure. Here's an example:
 
-~~~
+~~~{.go caption="main.go"}
 #main.go
 // ... Auto migration code ...
 // Begin a transaction
@@ -511,7 +540,7 @@ The code above starts a transaction with `db.Begin()`. A new user is created and
 
 Once you run this code, the following output is expected:
 
-~~~
+~~~{caption="Output"}
 User created and updated successfully
 ~~~
 
@@ -523,7 +552,7 @@ The GORM library preloading feature enhances data fetching by automatically join
 
 Finally, hooks are callback functions executed at various stages of the ORM lifecycle. Hooks enable you to perform custom actions before or after specific database operations such as create, update, delete, or query. You can define hooks for your models to implement custom logic, validations, or trigger side effects based on specific events. Here's an example:
 
-~~~
+~~~{.go caption="main.go"}
 # main.go
 // ... User Struct ...
 func (u *User) BeforeCreate(tx *gorm.DB) error {
@@ -572,7 +601,7 @@ This defines two hooks, `BeforeCreate` and `AfterCreate`, for the `User` struct.
 
 Once you run this code, the following output is expected:
 
-~~~
+~~~{caption="Output"}
 Preparing to create user: John Mark
 User created successfully: John Mark
 User created and updated successfully
