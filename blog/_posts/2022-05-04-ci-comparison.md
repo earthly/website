@@ -15,7 +15,6 @@ internal-links:
 excerpt: |
     In this article, we compare the free tiers of four popular CI/CD platforms - Github Actions, GitLab CI, Circle CI, and Travis CI. We evaluate their documentation, compute power, available disk space, free build minutes, and speed and performance. Find out which platform offers the most value for your CI/CD needs.
 ---
-<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about comparing the free tiers of four popular CI/CD platforms. Earthly is a powerful build tool that can greatly enhance your CI/CD workflows. [Check us out](/).**
 
 ## How Much Can You Get For Free?
 
@@ -81,4 +80,65 @@ For this metric, we simply ran `df -h` as part of our builds and noted the avail
 
 With one exception, all the services we looked at limited usage by allotting a certain amount of build minutes per month. Run out of build minutes and you'll be forced to pay for more. Again Circle CI won out by offering three times the build minutes as Github Actions, which came in second.
 
-Travis does not use the concept of build minutes. Instead, it offers build credits. The amount of credits you use for each build [depends on several factors](https://docs.travis-ci.com/user/billing-overview/#usage
+Travis does not use the concept of build minutes. Instead, it offers build credits. The amount of credits you use for each build [depends on several factors](https://docs.travis-ci.com/user/billing-overview/#usage---credits), but we saw about 10 credits deducted per run when conducting our benchmark tests. It's hard to say just how exactly this compares to build minutes offered, but since you have to use your free 10,000 credits within the first month of signing up for Travis CI, we considered it to be last when it comes to value. Travis's free tier was the only one that expired. One month after sign-up there is no way to use Travis for free.
+
+### Speed Test
+
+![Average total run times for our benchmark test.]({{site.images}}{{page.slug}}/speedtest.png)
+
+To test the performance of each service, we needed something to build. We wanted something open source that also showcased a variety of programming languages. With those criteria in mind, we landed on this open-source [benchmarks project](https://github.com/kostya/benchmarks). This repo contains a handful of different benchmark tests that run on over two dozen languages and frameworks. Some of the tests can take a long time to run, so in order to keep the test manageable, we decided to just use the [Base64](<https://github.com/jalletto/benchmarks/tree/master/base64>) encoding/decoding benchmark. You can check out our [fork](https://github.com/jalletto/benchmarks) to see how we set up the config files for each pipeline.
+
+This is how we ran the test on each platform.
+
+1. Build the project with Docker (This builds every test, not just the Base64).
+2. Push the image to Docker Hub.
+3. In a new job, pull the image.
+4. Run the Base64 benchmark.
+
+We repeated this 5 times to get a sense of how much variation you might expect.
+
+For each service, you'll see three sets of data.
+
+1. **Build**: The amount of time it took to build all the benchmark tests from the included Dockerfile.
+2. **Base64**: The amount of time it took to pull and run the base64 benchmark for all languages.
+3. **Total Time**: How long did the entire process take *including the time it took to spin up the environment*.
+
+![Circle CI Benchmark Test Results]({{site.images}}{{page.slug}}/circle-table.png)
+
+![Github Actions Benchmark Test Results]({{site.images}}{{page.slug}}/github-table.png)
+
+![Travis CI Benchmark Test Results]({{site.images}}{{page.slug}}/travis-table.png)
+
+<div class="notice--info">
+
+### Where Is GitLab?
+
+GitLab CI's free tier was the weakest of the bunch across the board. As a result, we were unable to build the benchmarks nor run the Base64 test without encountering an out of disk space error.
+
+If you'd like to get some idea of how GitLab performs, we were able to get it to run the Earthly examples in the next section.
+</div>
+
+## With Earthly
+
+At Earthly, our goal has always been to create better builds. We build Earthly so it can run anywhere, so naturally, we were curious to see how it would perform on each service's free tier. The Earthly repo contains [dozens of examples](https://github.com/jalletto/earthly/tree/main/examples) in Python, Go, Ruby, react, C, and many more. You can checkout this [fork](https://github.com/jalletto/earthly/) if you want to see how we set up our config files for each pipeline.
+
+This is how we ran the test on each platform.
+
+1. Download Earthly.
+2. Build every example with `earthly -P +examples`.
+
+![Even though it came in second in our benchmark test, Github ended up running Earthly the fastest.]({{site.images}}{{page.slug}}/earthly-run-table.png)
+
+In this case, Github Actions had a slight advantage over Circle CI. GitLab CI was able to run the job to completion, but it came in dead last, nearly doubling the time of our second runner-up, Travis CI.
+
+## Conclusion
+
+![A summary of the results]({{site.images}}{{page.slug}}/summary.png)
+
+Overall, if speed is your primary concern and you're on a budget, then Circle CI is the clear choice. If you're not looking to run a ton of builds each month and your code is already in Github, then Github Actions can offer similar performance with the added convenience of having everything under one service. Even though we liked Travis better, our main criteria was value, and since you can't use Travis for free after the first month, GitLab was able to grab the third slot, despite it being weaker in almost every other category.
+
+![final rankings]({{site.images}}{{page.slug}}/rankings.png)\
+
+Remember, we only looked at the free tiers offered by these services. As your project grows, performance may vary. Also, each service scales differently so even though you may like the convenience of Github Actions, you may find that Travis CI becomes more cost-effective as you run larger and more complicated pipelines.
+
+{% include_html cta/bottom-cta.html %}

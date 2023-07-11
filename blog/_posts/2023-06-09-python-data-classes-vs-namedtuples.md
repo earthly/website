@@ -10,7 +10,6 @@ internal-links:
 excerpt: |
     In this article, we explore the differences between Python data classes and named tuples. We discuss their features, such as immutability, default values, type hints, comparison, memory efficiency, and maintainability. Whether you're a beginner or an experienced Python developer, understanding these differences can help you make informed decisions when choosing between data classes and named tuples for your projects.
 ---
-<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about Python data classes vs named tuples. Earthly is a powerful build tool that can be used in conjunction with Python projects, including those that utilize data classes and named tuples. [Check us out](/).**
 
 [Data classes](/blog/python-data-classes), introduced in Python 3.7, provide a convenient way to define classes that are a collection of fields. But for such use cases, named tuples, built into the collections module in the Python standard library, are good choices too. Named tuples have been around since Python 2.6, and several features have been added in the recent Python 3.x releases.
 
@@ -535,4 +534,18 @@ Let's wrap up our discussion by summarizing the key differences between data cla
 ![image]({{site.images}}{{page.slug}}/2.png)\
 
 |Features| Data Classes| Named Tuples|
-|
+|--------|-------------|------------|
+|**Immutability of instances**|Mutable by default; Set `frozen = True` in the `@dataclass` to create immutable instances.| Instances are immutable by default.|
+|**Default Values**|Can set both literal defaults and complex defaults using `default_factory`.| Use `defaults` to specify a list of default values for the last `k` fields.|
+|**Type Hints**|Out-of-the-box support for type hints.|Use `typing.NamedTuple` to specify type hints for fields.|
+|**Comparison**|Comparison works as expected between two instances of the *same* data class.| Comparison between two instances of *any* named tuple type returns `True` so long as the attributes are equal.|
+|**Memory Efficiency**|Data classes with slots have lower memory footprint.|More efficient than regular data classes.|
+|**Maintainability**|(Almost always) easy to maintain.|Can be hard to maintain, especially when there are many default fields.|
+
+## Conclusion
+
+In this article we explored how data classes and named tuples can both help us create classes that store attributes. We then compared them across a set of features: from immutability to memory efficiency.
+
+We chose data classes and named tuples for this discussion as they are both built into the Python standard library, but there are popular third-party Python packages—data class alternatives—to build such classes.
+
+When sifting through Python codebases, you'll have likely come across Python packages like [Pydantic](https://docs.pydantic.dev/latest/) and [attrs](https://pypi.org/project/attrs/). These provide support for building such data classes while automating some best practices to work with Python classes. You may explore these packages and use them in your upcoming projects as needed.

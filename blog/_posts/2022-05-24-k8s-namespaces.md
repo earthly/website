@@ -10,7 +10,6 @@ internal-links:
 excerpt: |
     Learn how and when to use Kubernetes namespaces to isolate workloads and manage resources more efficiently in your Kubernetes cluster. Discover the benefits of namespaces and how to create and manage them effectively.
 ---
-<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about Kubernetes namespaces. Earthly is a powerful tool that can be used in conjunction with Kubernetes namespaces to streamline the build and deployment process of your applications. [Check us out](/).**
 
 When you start learning about Kubernetes, you quickly learn about the key components that you need in order to run your applications, such as pods, deployments, and persistent volumes, but the components that aren't absolute necessities often come a little later in your learning journey. One of these components is namespaces, which helps you isolate workloads. This comes in handy when you have several different projects under the same cluster. For example you may have your main application and several internal tools all running together on the same cluster.
 
@@ -88,3 +87,49 @@ test              Active   8s
 As noted, it's usually more appropriate to create resources like namespaces by using manifest files. This is an example of a simple manifest file to create a Kubernetes namespace:
 
 ~~~{.bash caption=">_"}
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: production
+  labels:
+    name: production
+~~~
+
+First and foremost, you'll notice the three fields that are needed for every Kubernetes resource; `apiVersion`, `kind`, and `metadata`. These should be fairly familiar to you, as they just provide the information that Kubernetes needs in order to create any resource. Inside the `metadata` field, you'll see that a `name` is defined. This is the name that is shown when you run `kubectl get namespaces`. Finally, a label of `name:production` is given as an identifier. To create this namespace you can simply run:
+
+~~~{.bash caption=">_"}
+$ kubectl create -f https://k8s.io/examples/admin/namespace-prod.json
+~~~
+
+As you can see, creating namespaces is incredibly simple, but the flexibility and structure it brings to your cluster is incredible.
+
+## When to Use Namespaces
+
+There's no definitive answer as to when namespaces are appropriate, but there is a somewhat general consensus, from which you can then define your own standard. You should create a namespace for every application you're running. This means that if you have an application that handles authorization, it should be given a namespace; if you have any specific group of resources, like an ingress controller, that should also be given a namespace.
+
+It's best to try to isolate your resources as much as it makes logical sense to do so. If resources can be grouped under a single definition like a [bounded context](https://martinfowler.com/bliki/BoundedContext.html), then it's likely those resources should be in their own namespace.
+
+## Kubectx + Kubens
+
+Once you get started working with multiple namespaces, you're likely going to find yourself frequently switching between namespaces. The official way to do it is quite inelegant; if you want to switch to the namespace `production` inside the current cluster, you would have to type the following:
+
+~~~{.bash caption=">_"}
+$ kubectl config set-context --current --namespace=production
+~~~
+
+As you can probably tell, not only can it be troublesome to remember the entire command, but also quite frustrating to type out many times throughout a workday.
+
+Thankfully, a team has created the tool [kubectx + kubens](https://github.com/ahmetb/kubectx) which makes managing namespaces in Kubernetes much easier. Once you install this tool, you can simply execute `kubens <namespace>` to switch a given namespace.
+
+If you want to supercharge the utility, you should also install [Fzf](https://github.com/junegunn/fzf), a fuzzy finder tool. Once Fzf is installed, you can just execute `kubens` and it will show you a list of all the available namespaces in your cluster. From here, you can type a partial name to search for namespaces, or you can simply use the arrow keys to navigate through the list.
+
+![kubens demo]({{site.images}}{{page.slug}}/bsfBcct.gif)\
+
+## Conclusion
+
+By now, you should have a good grasp of what namespaces are, what the default namespaces do, and how you can create your own. Additionally, you've learned about when you should use namespaces to create a logical separation of your applications and workloads.
+
+If you're running your applications on Kubernetes and you want a simple and effective way of deploying your application to your clusters, check out [Earthly](https://earthly.dev/), a tool designed to help with repeatable and easy builds.
+
+{% include_html cta/bottom-cta.html %}
