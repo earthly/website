@@ -34,7 +34,9 @@ In fact, Earthly's docs are bigger than the context window. So one of my challen
 GPT-4 needs to learn more about the Earthfile format to translate it independently. Right now – without any outside information – it will just hallucinate some parts of the Earthfile syntax.
 
 Among other issues. MATRIX is not a keyword in Earthly.
+<div class="wide">
 ![Image]({{site.images}}{{page.slug}}/HJv2EYQ.png)\
+</div>
 
 Perhaps its next training run will consume more of our docs, and it will just know how to translate, but right now, it doesn't. It does know Dockerfiles, and makefiles, though. Ask it to write a dockerfile for a project, and it does an alright job. And so, prompting it with the shorthand 'Earthly is like a Dockerfile but with targets like a makefile' was able to get me a better result. Less Earthly documentation was needed in the prompt (saving precious context window).
 
@@ -66,7 +68,9 @@ Critique-prompting: after generating an Earthfile, I asked GPT-4 to identify way
 Structured COT: COT can be adapted to JSON output as well. If labeling data, have a JSON field called "reasoning" that contains the reasoning for the label before outputting the actual label. This will force more 'thinking' to happen before choosing the label.
 
 Chain-of-Thought adapted to structured labeling. (Blue / white input, Green output)
+<div class="wide">
 ![Image]({{site.images}}{{page.slug}}/Dr5CN0c.png)/
+</div>
 
 Most online tricks follow this formula: Make your LLM think more about the question in several ways before giving an answer.
 
@@ -77,7 +81,9 @@ Next Tip: Say you want to make a speech of yours more humorous using an LLM. Now
 But you can't just let go on forever, telling it to make your speech funnier and funnier because it doesn't have access to the ground truth. It has no way to verify humor. It may generate a funny joke and then three nonsense jokes. When LLM don't have the answer, they just make things up. This is the biggest complaint I see about LLMs. But it's often not a problem if you can verify answers.
 
 SAVE CACHE and LOAD CACHE are not Earthly commands.
+<div class="wide">
 ![Image]({{site.images}}{{page.slug}}/2ftx7m3.png)/
+</div>
 
 For my Earthfile project, GPT occasionally makes things up, but I can quickly check and correct them against Earthly. No need for open mic nights with a laptop. Tasks like these - NP-complete tasks, where the solution is expensive to generate but verifying is cheap - are an excellent fit for LLMs. All you need is a problem domain where you can cheaply validate results and a way to provide corrective feedback.
 
@@ -87,7 +93,9 @@ Ok, corrective feedback. It's great that I know a correct answer when I see one 
 
 When the LLM translated a section of GHA that wasn't relevant into made up Earthly commands, how could I tell it to ignore that section? Easy; I can correct the generated chain of thought results and feed them back to it as part of the prompt.
 
+<div class="wide">
 ![Image]({{site.images}}{{page.slug}}/HJv2EYQ.png)\
+</div>
 
 Because it is sharing its thinking with you, you can edit the thinking and feed it back as an example. In the above, I included an example where it ignored that `on` section. The LLM then learned the correct process by pattern matching on that example. This is called few-shot chain of thought, and it's an excellent way to show the LLM the correct approach for a specific example.
 
@@ -114,7 +122,5 @@ If you're building things with LLMs, I'd love to hear about any tricks you've le
 - [ ] Add in Author page
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
