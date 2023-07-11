@@ -4,15 +4,23 @@ import subprocess
 from textwrap import dedent
 
 def build_paragraph(filename):
-    command = dedent(f"""
+    command1 = dedent(f"""
             cat "{filename}" | sgpt --model gpt-3.5-turbo-16k "This is a post in markdown. I need a three word summary of the article in sentence form of 'This article is about ....' .  For example: 'This article is about large scale builds.' or 'This article is about python list comprehensions.'. It should be just the topic in that form of sentence and should make sense." 
             """).strip() 
-    result = subprocess.run(command, capture_output=True, text=True, shell=True)
+    result = subprocess.run(command1, capture_output=True, text=True, shell=True)
     article_sentence = result.stdout.strip()
-    tie_in_sentence = "" # Earthly is particularly useful if you're working with a Monorepo.
-    # article_sentnce = "This article discusses some of the benefits of using a Monorepo"
+
+    command2 = dedent(f"""
+             cat "{filename}" | sgpt --model gpt-3.5-turbo-16k "This is a post in markdown. I need a very short sentence explaining why Earthly would be interested to readers of this article. So summarize the article and then return a small bridging sentence. Earthly is an open source build tool for CI. The sentence should be of the form 'Earthly is popular with users of bash.' Example: 'Earthly is great in combination with Dockerfiles.', 'Earthly is particularly useful if you are working with Monorepos', 'If you are looking for a way to build your Ruby code then Earthly is a great option.' It should be a sentence that bridges between the topic and Earthly.
+             
+             This is a post in markdown. I need a very short sentence explaining why Earthly would be interested to readers of this article."
+                      """)
+    result = subprocess.run(command2, capture_output=True, text=True, shell=True)
+    tie_in_sentence = result.stdout.strip().split(".",1)[0] # Earthly is particularly useful if you're working with a Monorepo.
+    print(f"tie in: {tie_in_sentence}")
+
     template = dedent(f"""
-        <!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. {article_sentence} {tie_in_sentence} [Check us out](/).**
+        <!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. {article_sentence} {tie_in_sentence}. [Check us out](/).**
                 """).strip()
     return template
 
