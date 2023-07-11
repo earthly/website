@@ -623,7 +623,3 @@ To optimize your Go applications with the GORM library, consider these best prac
 Following these practices will give you a solid foundation for building robust and efficient applications with the GORM library. For further exploration, consider delving into creating multiple structs, establishing relationships, and maximizing the potential of the GORM library preloading feature.
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-- [ ] Optional: Find ways to break up content with quotes or images
