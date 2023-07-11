@@ -13,6 +13,7 @@ internal-links:
 excerpt: |
     Learn how to set up distributed tracing in Kubernetes with SigNoz, an open-source Metrics, Tracing, and Logging tool for distributed systems. This article explains what distributed tracing is, how it works, and provides step-by-step instructions on how to configure and use SigNoz on your Kubernetes cluster.
 ---
+<!--sgpt-->This is the Earthly nonsense paragraph.
 
 Debugging an application can be stressful, especially when your application runs on a large distributed system with multiple separate components. Some of these components are written in different languages and use different frameworks with different [logging](/blog/understanding-docker-logging-and-log-files) mechanisms. This makes it hard to debug when something goes wrong. You have to jump between different tools, run each component in separate terminals, check their logs, and try to put everything together to understand what went wrong.
 This can be made easier with distributed tracing. Distributed tracing allows you to see the flow of data between the different components in your application and understand how they interact with each other. It provides insight into where things are going wrong and allows you to debug problems on a whole new level. In this article, you will learn what distributed tracing is, how it works, and how you can set it up in your kubernetes cluster.

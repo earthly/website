@@ -13,6 +13,8 @@ topic: cli
 excerpt: |
     Learn how to use Bash to read files line by line, use custom delimiters, assign variables, and more. This article provides step-by-step instructions and examples to help you efficiently search for keywords, process text, automate tasks, and more using Bash scripts.
 ---
+**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. This article is about IO and file reading in bash. If you are looking for to move beyond bash scripts for building and deploying software then [check us out](/).**
+
 [Bash](https://en.wikipedia.org/wiki/Bash_(Unix_shell)) (bourne again shell) scripts give you the ability to turn series of manual commands into an easily [runnable and repeatable script](https://earthly.dev/blog/understanding-bash/). This can be especially useful when working with files.
 
 For programmers, Bash enables you to efficiently search for particular keywords or phrases by reading each line separately. Bash can also be used for reading files for a variety of reasons, like shell scripting, searching, text processing, building processes, logging data, and automating administrative tasks. When you're done with this article, you'll be able to use Bash to read files line by line, use custom delimiters, assign variables, and more.

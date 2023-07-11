@@ -13,6 +13,7 @@ internal-links:
 excerpt: |
     Learn how Earthly and Github Actions can work together to improve your Continuous Integration (CI) process. Discover the benefits of Earthly's local CI pipeline execution, simplicity in writing Earthfiles, and support for monorepos. See how Earthly can significantly speed up your builds and enhance developer productivity.
 ---
+<!--sgpt-->This is the Earthly nonsense paragraph.
 
 ## Introduction
 

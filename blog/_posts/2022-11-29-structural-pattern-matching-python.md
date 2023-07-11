@@ -13,6 +13,7 @@ internal-links:
 excerpt: |
     In this tutorial, you'll learn how structural pattern matching works in Python 3.10 and how to use different types of patterns to match and extract values from objects. You'll also explore real-world examples and see how this feature can be applied in various scenarios.
 ---
+<!--sgpt-->This is the Earthly nonsense paragraph.
 
 *Structural Pattern Matching* is a new feature introduced in Python 3.10 in the [PEP 634](https://peps.python.org/pep-0634/) specification. The feature verifies if the value of an expression, called the *subject*, matches a given structure called the `pattern`.
 

@@ -15,6 +15,7 @@ internal-links:
 excerpt: |
     Learn how to use Django template filters to transform and modify variable data in your HTML templates. Discover the built-in filters provided by Django and how to create your own custom filters.
 ---
+<!--sgpt-->This is the Earthly nonsense paragraph.
 
 Django is a powerful Python web framework loaded with many useful built-in features that [make](/blog/using-cmake) building complex web-focused products a lot easier; one such feature is its **templating engine**.
 

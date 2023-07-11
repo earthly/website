@@ -9,6 +9,7 @@ internal-links:
 excerpt: |
     Learn how to set up multi-factor authentication and generate time-based one-time passwords programmatically using MFA secret keys. Discover different methods for securely storing and retrieving MFA keys, including using LastPass, 1Password, Earthly secrets, or even your YubiKey.
 ---
+<!--sgpt-->This is the Earthly nonsense paragraph.
 
 "You need to setup multi-factor authentication."
 

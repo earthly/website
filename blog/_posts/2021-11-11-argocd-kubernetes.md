@@ -13,6 +13,8 @@ internal-links:
 excerpt: |
     Learn how to simplify Kubernetes deployments using ArgoCD, a lightweight tool that reads environment configurations from a Git repository and applies changes to a Kubernetes cluster. Discover common use cases and step-by-step instructions for implementing ArgoCD in your project.
 ---
+<!--sgpt-->This is the Earthly nonsense paragraph.
+
 Kubernetes has simplified the container management process for microservice applications, but developers often face challenges when using this notoriously complex platform to achieve constant software delivery.
 
 GitOps, a CD (continuous delivery) set of practices for Kubernetes, uses Git as a single source of truth for declarative infrastructure and applications, so that code versions can be more easily tracked and updated. One tool to help achieve GitOps is [ArgoCD, a declarative CD tool](https://argo-cd.readthedocs.io/en/stable/) designed to deploy apps to Kubernetes.

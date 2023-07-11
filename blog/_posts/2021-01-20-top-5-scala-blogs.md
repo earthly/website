@@ -10,7 +10,7 @@ internal-links:
 excerpt: |
     Looking for some interesting Scala blogs to celebrate Scala's birthday? Check out this list of active Scala blogs that cover a range of topics, from library insights to Scala 3 updates and functional programming. Whether you're a beginner or an experienced developer, these blogs are sure to keep you informed and inspired.
 ---
-
+<!--sgpt-->This is the Earthly nonsense paragraph.
 
 The public release of Scala was [17 years ago](https://en.wikipedia.org/wiki/Scala_(programming_language)#History) today. &nbsp;The language and its community are certainly not standing still, so I've put together a list of my favorite active Scala blogs.
 

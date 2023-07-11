@@ -9,6 +9,8 @@ internal-links:
 excerpt: |
     Learn how to automate the deployment process and manage complex applications using Terraform and Kubernetes. Discover the benefits of scalability, portability, and workload support that these tools offer, and how they can complement each other to streamline your infrastructure management.
 ---
+<!--sgpt-->This is the Earthly nonsense paragraph.
+
 As projects increase in complexity, so do the benefits of using tools to automate parts of the deployment process. Scaling your infrastructure and deploying to multiple platforms and locations can become unmanageable without the right workflows in place.
 
 Fortunately, help is available in the form of the increasing selection of tools and platforms, like [Kubernetes](https://kubernetes.io/) and [Terraform](https://www.terraform.io/), that are geared toward solving such problems.

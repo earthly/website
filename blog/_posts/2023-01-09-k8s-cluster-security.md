@@ -13,6 +13,7 @@ internal-links:
 excerpt: |
     Learn how to secure your Kubernetes cluster by applying security contexts to pods and containers. This article explains the concept of security contexts, their implementation in Kubernetes, and provides a step-by-step guide on how to apply them to enhance the overall security of your cluster.
 ---
+<!--sgpt-->This is the Earthly nonsense paragraph.
 
 <div class="wide">
 ![K8s Security Context]({{site.images}}{{page.slug}}/FB9gnth.png)\

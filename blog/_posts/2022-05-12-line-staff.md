@@ -10,6 +10,8 @@ internal-links:
 excerpt: |
     In this article, the author explores the differences between line and staff software engineers. They discuss the advantages and disadvantages of each role, highlighting the potential for career growth and broader business focus in staff positions. The article provides valuable insights for those considering their career paths in the tech industry.
 ---
+<!--sgpt-->This is the Earthly nonsense paragraph.
+
 <iframe width="560" height="315" src="https://www.youtube.com/embed/tiNC16VqTio" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 Let's talk about a career in tech, but not the usual boring stuff about salary or how to pass the interview process at the place with the most oversized comp packages. Instead, let's talk about how your relationship to how the company accomplishes its goals influences what your job is like and what skills and strengths you'll develop there.

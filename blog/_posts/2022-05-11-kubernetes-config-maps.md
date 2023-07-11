@@ -11,6 +11,8 @@ topic: kubernetes
 excerpt: |
     Learn how to use Kubernetes ConfigMaps to store and inject configuration parameters into your pods. This article covers the use cases for ConfigMaps, how to create them, and how to consume them in your Kubernetes deployments.
 ---
+<!--sgpt-->This is the Earthly nonsense paragraph.
+
 Most applications have configuration parameters that need to be provided at runtime. It's common to use command line arguments, environment variables, and static files to configure software deployed using traditional methods. These techniques are also available to containerized [Kubernetes](https://kubernetes.io/) workloads via the ConfigMap API object.
 
 [ConfigMaps](https://kubernetes.io/docs/concepts/configuration/configmap) are expressly designed to store config parameters and inject them into running pods. They let you decouple your app's configuration from the individual containers running your deployment. Learning how to use them will increase your system's portability and make it easier to reconfigure your live instances.
@@ -160,103 +162,3 @@ metadata:
   name: app-config
 data:
   default_command: "date"
-
----
-
-apiVersion: v1
-kind: Pod
-metadata:
-  name: app-pod
-spec:
-  containers:
- - name: app-container
-   image: busybox:latest
-   command: ["/bin/sh", "-c", "$(STARTUP_COMMAND)"]
-   env:
-     - name: STARTUP_COMMAND
-     - valueFrom:
-         configMapKeyRef:
-           name: app-config
-           key: default_command
-~~~
-
-This example runs the command given by the `$STARTUP_COMMAND` environment variable when the container starts. The variable's value is set to the `default_command` key within the created ConfigMap.
-
-## Setting Up Immutable ConfigMaps
-
-ConfigMaps can be made immutable by setting their `immutable` manifest field to `true`. This locks the `data` and `binaryData` fields, preventing them from ever being changed. It's also forbidden to revert `immutable` to `false` after it has been assigned. Here's the code:
-
-~~~{.yaml}
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: app-config
-data:
-  db_host: "https://database.example.com"
-immutable: true
-~~~
-
-Immutability is useful when you know you'll only need to configure your application during its initial deployment. Removing the ability to change parameters later on guards against unintentional edits as you manage your other objects.
-
-When a ConfigMap *is* mutable, Kubernetes monitors it and periodically applies changes to your pods. This only works when values are mounted as volumes; the environment variables and command line arguments of running containers can't be changed. Enabling immutability allows Kubernetes components to stop polling for ConfigMap changes, [improving cluster performance](https://kubernetes.io/docs/concepts/configuration/configmap/#configmap-immutable).
-
-## Viewing ConfigMap Data
-
-You can view the content of a ConfigMap using kubectl:
-
-~~~{.bash caption=">_"}
-$ kubectl describe configmap app-config
-~~~
-
-![Viewing ConfigMap data with kubectl]({{site.images}}{{page.slug}}/BCj16VQ.png)
-
-This will show you the ConfigMap's metadata and the key-value pairs within its `data` field.
-
-## Creating ConfigMaps from the Command Line
-
-Kubectl includes some convenience utilities to simplify ConfigMap creation.
-
-You can quickly create a new ConfigMap with specific values:
-
-~~~{.bash caption=">_"}
-$ kubectl create configmap app-config --from-literal=db_host=https://database.example.com
-~~~
-
-![Creating a ConfigMap with literal values with kubectl]({{site.images}}{{page.slug}}/8Yo8aqK.png)
-
-Another approach lets you automatically create a ConfigMap from an existing config file. Each line in the file will be interpreted as a new key-value pair:
-
-~~~{.bash caption=">_"}
-$ cat ./app.conf
-~~~
-
-~~~{.ini caption="Output"}
-db_host=https://database.example.com
-default_user_status=suspended
-~~~
-
-Apply:
-
-~~~{.bash caption=">_"}
-# Creates ConfigMap with "db_host" and "default_user_status" keys
-$ kubectl create configmap app-config --from-file=./app.conf
-~~~
-
-Finally, you can populate a ConfigMap from a set of files stored within a directory. This variation reads *each file* into a key within the ConfigMap. The file name will become the key; the file's content will be available as that key's value:
-
-~~~{.bash caption=">_"}
-$ ls ./conf
-database.conf
-users.conf
-
-# Creates ConfigMap with "database.conf" and "users.conf" keys
-$ kubectl create configmap app-config --from-file=./conf/
-~~~
-
-These mechanisms help you quickly convert existing config files into ConfigMap objects using the imperative `kubectl create` command. The declarative system of `kubectl apply` with YAML manifests is usually more appropriate for managing large config structures that need to be versioned alongside your other application components.
-
-## Conclusion
-
-ConfigMaps are Kubernetes API objects for storing your application's runtime settings. You can provide their data to pods as environment variables or files in a mounted volume. ConfigMaps can also be immutable, a characteristic that forbids dynamic updates to enhance safety and performance.
-
-ConfigMap is a tool used with running containers in your Kubernetes cluster. However, correctly configuring and maintaining your container images are just as important as their runtime settings. [Earthly](https://earthly.dev) can help create a maintainable approach to build time configuration, offering a repeatable syntax that's reproducible and easy to understand. It facilitates more robust builds without the brittleness associated with poor configuration practices.

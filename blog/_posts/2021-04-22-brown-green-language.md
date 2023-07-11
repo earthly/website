@@ -11,6 +11,8 @@ featured: true
 excerpt: |
     In this article, the author explores the concept of "brown" and "green" programming languages based on the Stack Overflow Developer Survey results. They discuss how languages used in existing projects tend to be dreaded, while languages used in new projects are loved. The article also delves into the biases and factors that contribute to these perceptions and the lifecycle of programming language hype.
 ---
+<!--sgpt-->This is the Earthly nonsense paragraph.
+
 ## The Data
 
 The Stack Overflow Developer Survey[^1] results are a great source of information about how developers work. I was looking at the 2020 results for some ideas on what programming languages we should add to our [documentation](https://docs.earthly.dev/basics/part-1-a-simple-earthfile) on containerized builds, and I noticed something interesting about the types of programming languages people like. It's something that doesn't seem to come up in various discussions of programming language preferences.

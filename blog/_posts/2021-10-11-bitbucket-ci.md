@@ -11,6 +11,8 @@ internal-links:
 excerpt: |
     Learn about the different options for continuous integration with Bitbucket, including using Jenkins, integrating with cloud CI/CD tools like AWS, and utilizing Bitbucket's native CI/CD service, Bitbucket Pipelines. Discover the benefits and costs of each option to determine the best fit for your project.
 ---
+<!--sgpt-->This is the Earthly nonsense paragraph.
+
 How do you rapidly deliver new features without delivering bugs at the same rate? By running automatic builds and tests on all of your code before it gets into a release. And that's exactly what continuous integration is.
 
 To run these automated code checks, you'll need to keep your code in a repository. There are a lot of options, but if you're already using [Jira](https://www.atlassian.com/software/jira), then [Bitbucket](https://bitbucket.org/product) is a natural choice. Beyond good integration with Jira, Bitbucket offers integrations with a lot of build systems.
@@ -116,52 +118,4 @@ In addition to the pipeline cost, you'll need to pay for any build time that you
 There are currently six build instance types available. The more powerful instance types do cost more per minute, but they can also decrease the number of minutes to build. Assuming your build job can run in Linux, here's how much you'd pay for 200 build minutes per month (pricing and availability can vary depending on your region). For more details see the [AWS CodeBuild pricing page](https://aws.amazon.com/codebuild/pricing/).
 
 | Instance         |    Cost |
-| ---------------- | ------: |
-| arm1.small | $0.68 |
-| general1.small   |   $1.00 |
-| general1.medium  |   $2.00 |
-| arm1.large       |   $3.00 |
-| general1.large   |   $4.00 |
-| general1.2xlarge |  $40.00 |
-| gpu1.large       | $130.00 |
-
-## Native Support of CI in Bitbucket
-
-If you want to keep your entire workflow on the same system, Bitbucket offers its own CI/CD service, appropriately called [Bitbucket Pipelines](https://bitbucket.org/product/features/pipelines). All you need to do is create a YAML file in the root directory, and Bitbucket will detect it and execute whatever jobs you have defined.
-
-There are several benefits to using an all-in-one setup like this. You don't have to set up communication between multiple systems. The only configuration required is managed in your project's source, and you can show reports from continuous integration testing [right in your pull requests](https://support.atlassian.com/bitbucket-cloud/docs/code-insights/).
-
-### Creating a Pipeline
-
-The configuration for Bitbucket Pipelines is stored in `bitbucket-pipelines.yml` in the root of your project. This file will define all of the stages, jobs, artifacts, and reports that you want to be a part of your pipeline. The following sample will run your Jest unit tests and store the results.
-
-```yaml
-image: node:14-slim
-pipelines:
-  pull-requests:
-    "**":
-      - step:
-          caches:
-            - node
-          script:
-            - npm install
-            - npm test -- --ci
-          artifacts:
-            - test-reports/**
-```
-
-Now if you introduce an error in your pull request, you'll see a failed build in the right sidebar. Clicking on the title of the pipeline will take you directly to the test results page.
-
-![View Test Results]({{site.images}}{{page.slug}}/9500.png)
-
-### What's the Cost?
-
-Bitbucket pipelines are charged based on the number of minutes used per month. Depending on your plan, you get between 50 and 3500 build minutes per month. If you need more minutes, you can buy them at a rate of $10 for 1000 minutes. For the most up to date pricing, see the [Bitbucket pricing page](https://www.atlassian.com/software/bitbucket/pricing).
-
-## Conclusion
-
-In this article you've seen that Bitbucket provides many ways to run a CI workflow. Each one has its own areas where it outshines the rest. Ultimately you'll need to decide what's important to your project before committing to one method over another.
-
-An issue that you may run into while creating CI pipelines is that things don't always build the same on your server as on your development machine. Usually it's quite frustrating to troubleshoot. If you'd like to avoid the headache, check out the open-source project [Earthly](https://earthly.dev).
-
-{% include_html cta/bottom-cta.html %}
+|

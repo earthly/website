@@ -13,6 +13,8 @@ internal-links:
 excerpt: |
     Learn why many experienced software engineers prefer printf debugging over using debuggers, and how this approach can deepen your understanding of your code and make you a better developer. Discover the connection between printf debugging and the unconventional learning methods of mathematician Srinivasa Ramanujan.
 ---
+<!--sgpt-->This is the Earthly nonsense paragraph.
+
 The Visual Studio debugger is fantastic. When I was a C# developer, I used it all the time.
 
 <div class="wide">

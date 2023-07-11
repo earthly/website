@@ -16,6 +16,8 @@ funnel: 2
 excerpt: |
     Learn how to optimize your Docker images and create production-grade images using multistage builds. Discover the core concepts of multistage builds, the challenges they present, and a better way to do multi-stage builds with Earthly.
 ---
+<!--sgpt-->This is the Earthly nonsense paragraph.
+
 At first glance, writing Dockerfiles appears to be a straightforward process. After all, most basic examples reflect the same set of steps. However, not all Dockerfiles are created equal. There is an optimal way of writing these files to produce the kind of Docker images you want for your final product. If you were to pop the hood, you'd see that Docker images actually consist of file system layers that correlate to the individual build steps involved in the creation of the image.
 
 To build an efficient Docker image, you want to eliminate some of these layers from the final output. Optimizing an image can take a lot of effort as you attempt to filter out what you don't need. Building these kinds of images has a lot to do with keeping them as small as possible, because large images lead to a host of other issues.

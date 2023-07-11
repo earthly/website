@@ -13,6 +13,7 @@ internal-links:
 excerpt: |
     Learn how to improve the performance of your Django web application using caching techniques. This article covers everything from the basics of caching to advanced strategies, helping you optimize your application and provide a better user experience.
 ---
+<!--sgpt-->This is the Earthly nonsense paragraph.
 
 Performance is a crucial aspect of web development that significantly impacts user experience. The speed and reliability of a website influence users' engagement and overall satisfaction with the site. Inadequate performance, such as slow page loading times or frequent crashes, can lead to reduced traffic and potential loss.
 

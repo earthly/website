@@ -8,6 +8,8 @@ sidebar:
 excerpt: |
     Discover how programming language tooling has evolved over time and why newer languages like Go and Rust have gained popularity due to their comprehensive tooling and developer experience. Learn about innovations such as batteries-included standard libraries, third-party package repositories, documentation support, cross-platform development, package managers, and code formatters that have improved the usability of programming languages.
 ---
+<!--sgpt-->This is the Earthly nonsense paragraph.
+
 The 2022 Stack Overflow developer survey is out!
 
 And what's fascinating to me is which popular programming languages are either loved or dreaded.[^1]

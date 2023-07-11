@@ -14,6 +14,7 @@ internal-links:
 excerpt: |
     Learn how to implement load testing for your backend services using k6, a powerful performance testing tool. Discover how to create test scenarios, run load tests, and visualize the test metrics using InfluxDB and Grafana.
 ---
+<!--sgpt-->This is the Earthly nonsense paragraph.
 
 When it comes to software applications, ensuring your app works as expected is not enough. Users generally expect applications to work 24/7 – with minimal downtime – and especially when there's high traffic, say, during Black Friday sales. This is why implementing a load test for your application is crucial.
 

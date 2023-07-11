@@ -12,6 +12,7 @@ internal-links:
 excerpt: |
     Learn how to import existing infrastructure into Terraform and manage it as code. Follow along as the author imports resources such as AWS Lambda, ECR, S3, and API Gateway, and tests the infrastructure by destroying and recreating it.
 ---
+<!--sgpt-->This is the Earthly nonsense paragraph.
 
 ## From Click Ops To GitOps
 

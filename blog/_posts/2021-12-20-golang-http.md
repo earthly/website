@@ -13,6 +13,8 @@ internal-links:
 excerpt: |
     Learn how to build a JSON HTTP server using Golang in this tutorial. Discover the basics of creating a Golang web service, handling HTTP requests, and working with JSON data.
 ---
+<!--sgpt-->This is the Earthly nonsense paragraph.
+
 If you want to build a simple JSON HTTP web service that runs natively on a Linux server, then Golang is a great choice. At least this is what I've been told, my coworkers are big fans and report having a small memory footprint, a shallow learning curve, and an excellent standard library.
 
 So in this article, I'm going to give it a try with a simple project I've been wanting to build: an activity tracker. You see, I'm a bit out of shape, and I'd like to start tracking my activity levels. It will be a bit of a toy application, but I'm hoping it will encourage me to start adding more activity to sedentary winter habits.
@@ -488,16 +490,4 @@ In the first version of this example I used `Id` everywhere instead of `ID`, whi
 I hit a number of errors building this. If you hit them, here are the solutions.
 
 | Error      | Solution |
-| ----------- | ----------- |
-| illegal base64 data at input byte      | I was using `[]byte` for my json Description. If you do this then base64 encoded data is expected. Switching to `string` fixed this.         |
-| invalid character 't' looking for beginning of object key string   |  I was sending invalid JSON to my service. I needed to validate my input and found I wasn't quoting a string. |
-
-### What's Next
-
-My current plan is to build a command-line client for this service next. This should make it a bit easier to use – and I also really want to develop a command-line client. After that, I'm thinking about adding other features, but I'll keep those to myself for now.
-
-Two minor improvements I explored but then abandoned were better validation of the JSON coming in using `gojsonschema` and testing with `net/http/httptest`, but if the solution grows, I might revisit those.
-
-If you want to be notified about the next installment, sign up for the newsletter:
-
-{% include cta/embedded-newsletter.html %}
+|

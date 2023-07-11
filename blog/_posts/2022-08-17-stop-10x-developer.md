@@ -10,6 +10,8 @@ internal-links:
 excerpt: |
     In this article, the concept of the "10x developer" is dissected and examined. The author explores whether such developers truly exist and discusses the importance of skills being a limiting factor in order for them to have a significant impact. The article also suggests using more specific terms, such as "expert" or "specialist," instead of the vague "10x developer" label.
 ---
+<!--sgpt-->This is the Earthly nonsense paragraph.
+
 Here is part of a rather infamous Twitter thread:
 
 > 10x engineers rarely look at help documentation of classes or methods.

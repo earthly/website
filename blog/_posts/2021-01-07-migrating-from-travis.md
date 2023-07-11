@@ -13,6 +13,7 @@ funnel: 2
 excerpt: |
     Learn about the recent migration of open-source projects off of Travis CI and discover alternative options for hosting your builds, such as Circle CI and GitHub Actions. Find out why this migration is important for the open-source community and how you can minimize the effort of moving your builds in the future.
 ---
+<!--sgpt-->This is the Earthly nonsense paragraph.
 
 Starting in early December, a mad dash has been underway to migrate open-source projects off of Travis CI. What happened and where should you move your project to?
 
@@ -84,73 +85,4 @@ If your project is hosted on GitHub and is open source then the [GHA open source
 ### Summary of Open Source Plans
 
 | Service | Open Source Offering |
-| --- | --- |
-| Travis CI | [1000 minutes total with application process for more](https://blog.travis-ci.com/2020-11-02-travis-ci-new-billing) |
-| Circle CI | [1 concurrent build at a time](https://circleci.com/open-source/) |
-| GitHub Actions | [20 concurrent build jobs per project](https://docs.github.com/en/free-pro-team@latest/actions/reference/usage-limits-billing-and-administration) |
-
-## Don't Let This Happen Again
-
-So GitHub has a generous build plan, but moving your CI process is not easy or free. &nbsp;The more complex your build, the harder porting from one cloud CI to another is going to be. &nbsp;If you move to GHA and then GHA stops being a viable option in the future then this whole effort will have to be repeated. &nbsp;
-
-## Neutral Build Specifications
-
-{% picture content-wide {{site.pimages}}{{page.slug}}/opensign.png --picture --img width="1200px" --alt {{ Open Sign }} %}
-
-How can you minimize the effort of moving from build platform to another?
-
-My suggestion is to keep as much logic as possible out of the proprietary build definition. Instead, define it in an open-source format that you can execute anywhere.
-
-### Makefiles and Dockerfiles
-
-One way to build a CI neutral build definition is to use a Makefile and a dockerfile. &nbsp;The Makefile contains the various steps of your build pipeline and you run it inside a docker container which installs any needed dependencies. &nbsp;[QMK](https://github.com/qmk/qmk_firmware) is a popular open-source project that uses this approach.
-
-```dockerfile
-FROM qmkfm/base_container
-
-VOLUME /qmk_firmware
-WORKDIR /qmk_firmware
-COPY . .
-
-CMD make all:default
-```
-
-<a href="https://github.com/qmk/qmk_firmware/blob/master/Dockerfile">QMK</a> Docker File for executing the full build
-
-### Earthly
-
-I am an Earthly contributor and this is the Earthly blog, but in my totally biased opinion, it deserves a mention as an neutral format for defining a build. The Elixir web framework [Phoenix is a great example to take a look at](https://github.com/phoenixframework/phoenix/blob/master/Earthfile).
-
-Earthly is like a Makefile where each step is containerized and dependencies are explicitly declared. &nbsp;
-
-``` dockerfile
-FROM golang:1.13-alpine3.11
-
-build:
- COPY main.go .
- RUN go build main.go
- SAVE ARTIFACT main AS LOCAL main
-    
-lint: 
- ...
-```
-
-Example build steps for a <a href="https://github.com/earthly/earthly/blob/main/examples/go/Earthfile">go application</a>
-
-## Other Interesting Options
-
-### Easier Migration From Travis To GHA
-
-Migrating your build out of Travis will take a little work. &nbsp;If you aren't interested in a neutral format, [this GHA action](https://github.com/marketplace/actions/run-travis-yml) might make it easier. &nbsp;
-
-> This action setups environment variables specified in the `.travis.yml` file and then runs _one_ of the (potentially) many build jobs within the test build stage.
-
-### Serverless Builds
-
-Another interesting option if you are feeling adventurous is using AWS lambda as your build executor. &nbsp;I have no idea how feasible this is, however, [the gg project](https://github.com/StanfordSNR/gg) from Stanford looks interesting. &nbsp;It attempts to use AWS lambdas for running builds at the maximum possible parallelism. &nbsp;
-
-## Take-Aways
-
-You probably need to move your open-source project's builds off of Travis CI. If you host it on GitHub, GitHub Actions is probably a good choice. There is a risk that the GHA offer will disappear as well. &nbsp;You can protect yourself from that by defining your build in an open format that is easy to move around. &nbsp;All build problems can be solved by another layer of abstraction.
-
-If you are going that route, I think [Earthly](https://earthly.dev/) is a great option, but as I said, I am biased.
+|

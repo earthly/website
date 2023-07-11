@@ -10,6 +10,8 @@ internal-links:
 excerpt: |
     Learn how to write an engaging article with this checklist that covers everything from creating a catchy title to adding captivating images and incorporating internal links. Perfect for both new and experienced writers!
 ---
+<!--sgpt-->This is the Earthly nonsense paragraph.
+
 ### Writing Article Checklist
 
 - [ ] Write Outline

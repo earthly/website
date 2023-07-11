@@ -13,6 +13,8 @@ internal-links:
  - Pyodide
  - Django
 ---
+<!--sgpt-->This is the Earthly nonsense paragraph.
+
 <div class="wide">
 
 <img src="{{site.images}}{{page.slug}}/image 1.png" alt="Pyscript header image">
@@ -250,29 +252,4 @@ Some features of Pyodide include:
 ### Comparing Pyscript To Pyodide
 
 | Metric | Pyscript | Pyodide |
-| --- | --- | --- |
-| Javascript Interoperability | One way (Python - Javascript only) | Two way |
-| Experience | Beginner Friendly | Expert knowledge is required |
-| Web API functionality | Simply API provision | Flexible, Powerful API provision |
-
-So, as you can see, Pyscript is great to get started, but if you need to use C-based packages or have performance issues, you may want to take a look at Pyodide.
-
-PyScript was built using Pyodide, Web assembly, and Emscripten allowing PyScript to inherit important features from Pyodide while simplifying functionality to run Python in the browser.
-
-Pyodide would be a more suitable option if you're building performance-intensive applications, especially machine learning-related applications.
-
-Learn more about PyScript and Pyodide from these resources.
-
-- [The PyScript website.](https://pyscript.net/)
-- [The Pyodide official documentation.](https://pyodide.org/en/stable/usage/index.html)
-- [PyScript Examples](https://pyscript.net/examples/)
-
-### Conclusion
-
-In this tutorial, you learned how to use PyScript to run Python code in HTML, and how to implement various PyScript functionalities such as using external packages, running Python REPLs, and visualizing images generated in Python code in a browser.
-
-Before PyScript, it wasn't this easy to run Python REPL in the browser, run Python scripts in HTML, or use the Python scientific stack(Numpy, Pandas, MatPlotLib, Seaborn, e.t.c) on the client side.
-
-PyScript could become an important tool in your toolset. it's still very new, in its alpha stage ( so don't use it for production yet) but it looks very promising.
-
-{% include_html cta/bottom-cta.html %}
+|

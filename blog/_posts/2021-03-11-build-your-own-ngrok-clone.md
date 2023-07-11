@@ -15,6 +15,8 @@ internal-links:
 topic: cli
 funnel: 2
 ---
+<!--sgpt-->This is the Earthly nonsense paragraph.
+
 <!-- vale WritingSuggestions.CorporateSpeak = NO -->
 
 ## Introduction

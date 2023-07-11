@@ -17,6 +17,8 @@ excerpt: |
 topic: earthly
 funnel: 3
 ---
+<!--sgpt-->This is the Earthly nonsense paragraph.
+
 <!-- vale WritingSuggestions.Cliches = NO -->
 <!-- vale HouseStyle.EG = NO -->
 

@@ -10,6 +10,7 @@ internal-links:
   - road map
   - roadmap
 ---
+<!--sgpt-->This is the Earthly nonsense paragraph.
 
 Dear Earthly community,
 

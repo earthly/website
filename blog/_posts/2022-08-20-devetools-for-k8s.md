@@ -13,6 +13,7 @@ internal-links:
 excerpt: |
     Learn about the essential developer tools for Kubernetes that can help you become more efficient and productive in your workload. From integrated development environments to package managers and tools for faster development, this article covers a range of tools that can simplify your Kubernetes journey.
 ---
+<!--sgpt-->This is the Earthly nonsense paragraph.
 
 When you get started on your path as a developer, you may notice from the beginning that there's an abundance of different tools to choose from. At the same time, it may not even be clear why you need to use specialized tools rather than simply using the programs natively.
 

@@ -11,6 +11,7 @@ internal-links:
 excerpt: |
     Learn the differences between unit testing and integration testing and when to use each approach. Discover how unit tests focus on small, isolated pieces of code, while integration tests ensure that different components of your software work together seamlessly.
 ---
+<!--sgpt-->This is the Earthly nonsense paragraph.
 
 In 1998, Kent Beck wrote sUnit, a unit testing framework for SmallTalk. Beck later ported this framework to Java as jUnit. From there, xUnit frameworks spread to the most popular languages. Newer languages, like [GoLang](/blog/top-3-resources-to-learn-golang-in-2021) and Rust, have incorporated testing into the compiler and standard library directly.
 
@@ -57,65 +58,4 @@ Many external systems will have a documented way to use them in an integration t
 The closer integration tests are to real-world interactions the more likely they are to catch problems and provide real value.
 
 | Service | Integration Test Strategy |
-| --- | --- |
-| Amazon SES | [Test email addresses](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-simulator.html) |
-| PayPal | [Test credit card numbers](https://developer.paypal.com/docs/payflow/payflow-pro/payflow-pro-testing/) |
-| UPS | [Test api mode](https://www.ups.com/us/en/help-center/sri/developer-instruct.page) |
-
-## An E-Commerce Example
-
-Imagine you are coding a simple e-commerce site, a simple miniature amazon.com. The details matter here so let's assume that you are going to use PostgreSQL as your datastore, PayPal for payments, UPS for shipping, and Amazon Simple Email Service for emailing invoices.
-
-### Unit Testing
-
-Your unit testing strategy will be testing the logic of your application, in an isolated fashion. This may include:
-
-- Testing that the tax calculating logic correctly calculates the taxes for various jurisdictions.
-- Testing that items placed into a cart data structure are correctly added up.
-- Testing that discount codes are properly applied.
-
-Each of these areas will likely have several tests. Each test will verify a small piece of functionality. Unit testing power comes from their number, simplicity, and their speed and ease of execution.
-
-### Integration Testing
-
-Your integration testing on the other hand will focus on testing where your e-commerce code interacts with other systems. This means testing not just the integration with the data store but also with email sending services, payment services and more. These may include:
-
-- Testing that the shipping rates can be retrieved from the external shipping service.
-- Testing that the invoices can be generated and properly sent out.
-- Testing that the order information can be persisted and properly retrieved from the datastore.
-- Testing that the transactions can be sent and properly processed from the payment processor.
-
-Each of these will likely be verified by one or two integration tests. These tests will be slower to run and probably involve some setup and teardown steps. The payoff is that the code coverage of each test will be quite large. These tests will generate value by catching problems that unit tests could never catch. However, the maintenance cost and execution time will be likely higher.
-
-## Integration Tests vs Unit Tests
-
-{% include imgf src="unit-vs-integration.png" alt="comparing unit tests to integrations tests" caption="Time for a head to head comparison" %}
-
-So which type of test should be preferred? Neither alone is sufficient. Both are parts of a comprehensive testing plan. Let's compare them directly:
-
-| Unit Tests | Integration Tests |
-| --- | --- |
-| The goal is to make sure a piece of code works as expected | The goal is to make sure pieces of code, including external interfaces work together, as expected |
-| Isolated | Integrated |
-| Quick to run | Slower to run |
-| Many in number | Fewer in number |
-| No access to file system, database, or external services | Directly testing areas where software interacts with external systems |
-| Tests a single piece of functionality | Tests the interaction of several pieces of functionality |
-| Minimal setup and teardown | May involve extensive setup and teardown of external resources like file systems of database state |
-| Stateless | Possibly Stateful |
-
-## Working Software Over Idealized Testing
-
-> Each situation is unique and advice that is written based on what works in other contexts should be not followed blindly.
-
-Now we understand that unit tests should not touch the file system and that integration tests should only integrate across loose components. But really, splitting testing into two clear-cut categories is a bit reductionist and if we focus only on the definition we lose sight of the goal, which is correct working software.
-
-Some very thoughtful developers think [unit tests can and should round trip to the database](https://dhh.dk/2014/tdd-is-dead-long-live-testing.html). Others claim that unit tests are a wasted effort and coarse grain integration tests offer the most value.
-
-The thing is that each situation is unique and advice that is written based on what works in other contexts should be not followed blindly. A question to keep in mind is what kind of defects would this test catch. If each test is written thoughtfully to improve software reliability, and if tests are removed when they no longer have value then the specific testing approach that delivers the most value for a particular project will be discovered over time.
-
-## See Also
-
-- [You are using Docker Compose wrong](/blog/youre-using-docker-compose-wrong/)
-- [Integration testing guide](https://docs.earthly.dev/guides/integration)
-- [Making Integration tests less flaky](https://dev.to/adamgordonbell/how-to-make-integration-tests-less-flaky-bel)
+|

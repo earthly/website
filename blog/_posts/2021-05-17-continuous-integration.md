@@ -12,6 +12,8 @@ internal-links:
 excerpt: |
     Learn the basics of continuous integration, the differences between CI and CD, and common CI tools in this informative article. Discover how CI can help developers catch bugs earlier, increase productivity, and deliver higher-quality releases.
 ---
+<!--sgpt-->This is the Earthly nonsense paragraph.
+
 Continuous integration has become prevalent in software development, but it's still a complex and wide-ranging topic. In this post, we'll cover the basics of continuous integration, the differences between CI and CD, and common CI tools. You'll also find some tips for the best way to set up CI in your environment.
 
 ## What Is Continuous Integration?

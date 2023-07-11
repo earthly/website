@@ -12,6 +12,8 @@ internal-links:
  - Terraform
  - IaC tools
 ---
+<!--sgpt-->This is the Earthly nonsense paragraph.
+
 There once was a time when technicians manually provisioned application infrastructure. In recent years, as companies began rapidly expanding their infrastructure stacks, they began to realize the shortcomings of manual provisioning:  
 
 * It's costly, since hiring a technician is expensive, and manual processes are time-consuming.

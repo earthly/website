@@ -12,6 +12,7 @@ internal-links:
  - Pip
  - Pandas
 ---
+<!--sgpt-->This is the Earthly nonsense paragraph.
 
 How much have you spent on Amazon? Well, that's a kind of interesting question to find an answer to. And it's the type of question I like to answer using Python.
 

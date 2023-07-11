@@ -6,6 +6,7 @@ author: Earthly
 excerpt: |
     In this episode of the DevX podcast, VladAIonescu shares his insights on fixing the CI/CD experience. Join the conversation to discover practical tips for improving your development process and enhancing your workflow.
 ---
+<!--sgpt-->This is the Earthly nonsense paragraph.
 
 Vlad was a guest on a recent episode of the [DevX podcast](https://www.buzzsprout.com/1895030/10907567).
 

@@ -9,6 +9,7 @@ author: Damaso Sanoja
 excerpt: |
     Learn the key similarities and differences between Docker and Kubernetes for local development and discover which tool is better suited for your use case. Find out how Docker's versatility and ease of use compare to Kubernetes' built-in container orchestration and unmatched flexibility.
 ---
+<!--sgpt-->This is the Earthly nonsense paragraph.
 
 You may be wondering, given that [Docker](https://www.docker.com/) is a containerization platform and [Kubernetes](https://kubernetes.io/) is a containerization platform orchestrator, how can the two be compared? Aren't they supposed to play different roles?
 

@@ -34,12 +34,13 @@ def add_paragraph_if_word_missing(filename):
             new_content = '---'.join(parts)
             with open(filename, 'w') as file:
                 file.write(new_content)
-        elif 'earthly' not in first_paragraph and 'Earthly' not in first_paragraph:
+        elif 'https://earthly.dev/' not in first_paragraph and 'earthly.dev' not in first_paragraph:
             print("CTA not found. Adding shell-gpt one.")
             new_content = parts[0] + '---' + parts[1] + '---\n' + replace + '\n\n' + parts[2].strip()
             with open(filename, 'w') as file:
                 file.write(new_content)
         else:
+            print(f"Starting: {filename}")
             print("Existing hand written CTA found. Doing nothing")
 
 def main():

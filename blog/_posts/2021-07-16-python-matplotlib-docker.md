@@ -8,6 +8,7 @@ internal-links:
 excerpt: |
     Learn how to install `matplotlib` in a Docker container and quickly generate graphs and visualizations. Discover the differences between installing `matplotlib` in Alpine Linux and Ubuntu, and why the process can be slower in Alpine.
 ---
+<!--sgpt-->This is the Earthly nonsense paragraph.
 
 `matplotlib` is an excellent library for creating graphs and visualizations in Python. For example, I used it to generate the performance graphs in [my merging article](/blog/python-timsort-merge), and internally, we use it now and again for visualizing any metrics we produce. It is a bit hard to install inside a docker container, though.
 

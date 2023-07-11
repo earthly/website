@@ -14,6 +14,8 @@ internal-links:
 excerpt: |
     Learn how to use wildcards in Makefiles to create flexible and automated build processes. This tutorial provides examples and explanations of common wildcard use, the wildcard function, and rules with wildcards. Whether you're new to Make or looking to enhance your Makefile skills, this article is a must-read.
 ---
+<!--sgpt-->This is the Earthly nonsense paragraph.
+
 <iframe width="560" height="315" src="https://www.youtube.com/embed/z4uPHjxYyPs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 Although many of the new modern programming frameworks, like [Node.js](https://nodejs.org/en/) and [.NET](https://en.wikipedia.org/wiki/.NET), come with their own way of packaging and distributing their programs, there's no doubt that [Make](https://www.gnu.org/software/make/) originally created a lot of the founding principles for building and distributing software.

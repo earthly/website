@@ -10,6 +10,7 @@ internal-links:
 excerpt: |
     Join Vlad as he shares his insights on Earthly and the world of open source in a casual and engaging conversation on the popular podcast "Coffee and Open Source". Discover his unique perspective that will leave you wanting more.
 ---
+<!--sgpt-->This is the Earthly nonsense paragraph.
 
 Vlad was on [Coffee and Open Source](https://www.coffeeandopensource.com/guest/vlad-ionescu.html)!
 

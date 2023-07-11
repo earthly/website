@@ -10,6 +10,7 @@ internal-links:
 excerpt: |
     Learn how to write effective technical tutorials by providing context, being patient, and running code. This article explores the common pitfalls of tutorial writing and offers advice on how to improve your tutorials.
 ---
+<!--sgpt-->This is the Earthly nonsense paragraph.
 
 We've been running the Earthly blog for [over a year](/blog/write-for-us-anniversary) now, and in that time we've worked with dozens of talented writers on nearly a hundred programming tutorials.
 
@@ -357,50 +358,4 @@ This illustrates something important about `ReadAll()`, which is that it reads a
 
 ~~~{.go}
     fmt.Println(headers)
-    fmt.Println("--------------")
-    fmt.Println(movies)
-~~~
-
-~~~
-[Film Genre Lead Studio Audience score % Profitability Rotten Tomatoes % Worldwide Gross Year]
---------------
-[[Youth in Revolt Comedy The Weinstein Company 52 1.09 68 $19.62  2010] [You Will Meet a Tall Dark Stranger Comedy Independent 35 1.211818182 43 $26.66  2010] [When in Rome Comedy Disney 44 0 15 $43.04  2010] [What Happens in Vegas Comedy Fox 72 6.267647029 28 $219.37  2008]...
-~~~
-
-Now we can finally get back to calculating our average audience score.
-
-~~~{.go}
-    for _, movie := range movies {
-        i, err := strconv.Atoi(movie[3]) // index of audience score
-        if err != nil {
-            fmt.Println("Error converting string to int:", err)
-            return
-        }
-
-        sum += i
-    }
-    avg := sum / len(movies)
-    fmt.Println(avg)
-~~~
-
-~~~
-63
-~~~
-
-</div>
-
-This is starting to feel a lot better. We've slowed down our tutorial quite a bit and taken time to answer questions that might come up, like: "What does the data look like after we've read it from the csv file?", or "Why would I need to use `Read` instead of `ReadAll`?" In doing so we've talked about header rows, what they are, and how you might deal with them. We've introduced the idea that you can use `Read` and `ReadAll` together. We've added context by mentioning real world applications for what we are learning, and we ran the code several times and watched it break.
-
-Is this the perfect CSV tutorial? No. But I hope it helped illustrate how context, patience, and running code can help you write tutorials that teach instead of just show.
-
-## Conclusion
-
-You can think about writing a tutorial in a similar way to building an API. There are patterns that you can follow to make it easier to write and easier to use, but those patterns are never going to cover every use case. You'll need to make decisions along the way, alter, and even break patterns in some cases to achieve the desired outcome.
-
-<!--vale off-->
-There's a lot more to writing a great tutorial than just Patience, running code, and providing context. We didn't cover everything. Structuring your tutorial in a logical way and learning how to write great introductions and conclusions, for example, could be articles on their own. So could choosing your audience, finding your writing voice, or learning how to write and rework multiple drafts.
-<!--vale on-->
-
-But I think these are three of the biggest pieces of advice we find ourselves given writers over and over again. I hope you'll find them useful next time you write a technical tutorial.
-
-{% include_html cta/bottom-cta.html %}
+    fmt.Println("

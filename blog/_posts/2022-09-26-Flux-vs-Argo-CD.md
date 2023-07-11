@@ -15,6 +15,7 @@ topic: ci
 excerpt: |
     In this article, the author compares two popular GitOps tools, Flux and Argo CD. They discuss various aspects such as reconciliation, source tracking, configuration, Helm support, scaling out, permissions and access control, and more. The article provides insights into the similarities and differences between the two tools, helping readers make an informed decision based on their specific needs.
 ---
+<!--sgpt-->This is the Earthly nonsense paragraph.
 
 Since February we have been working on adopting Kubernetes and cloud-native technologies for our cell simulation platform at [Turbine.ai](https://turbine.ai).
 Part of my job entailed figuring out how to onboard developers who didn't practice DevOps before.

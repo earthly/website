@@ -12,6 +12,8 @@ topic: kubernetes
 excerpt: |
     Learn how to use Kubernetes persistent volumes to store data for stateful applications in your Kubernetes cluster. This article explains what persistent volumes are, why they're important, and how to create and manage them using kubectl.
 ---
+<!--sgpt-->This is the Earthly nonsense paragraph.
+
 Kubernetes [persistent volumes](https://kubernetes.io/docs/concepts/storage/persistent-volumes) provide data storage for stateful applications. They abstract a storage system's implementation from how it's consumed by your pods. A persistent volume could store data locally, on a network share, or in a block storage volume provided by a cloud vendor.
 
 Persistent volumes solve the challenges of storing persistent data, such as databases and logs, in Kubernetes. Containers running inside pods are stateless and have ephemeral filesystems. Although your applications can read and write files within their containers, any changes will be lost when the pod is restarted or terminated.
@@ -247,41 +249,3 @@ $ kubectl describe pvc example-pvc
 ...
 Events:
   Type  Reason              Age                 From                                                                         Message
-  ----  ------              ----                ----                                                                         -------
-  Normal   Provisioning        9m30s               dobs.csi.digitalocean.com_master_68ea6d30-36fe-4f9f-9161-0db299cb0a9c        External provisioner is provisioning volume for claim "pv-demo/example-pvc"
-  Normal   ProvisioningSucceeded  9m24s               dobs.csi.digitalocean.com_master_68ea6d30-36fe-4f9f-9161-0db299cb0a9c        Successfully provisioned volume pvc-f90a46bd-fac0-4cb5-b020-18b3e74dd3b6
-~~~
-
-To edit your volumes and claims, it's usually best to modify your YAML file and reapply it to your cluster with kubectl:
-
-~~~{.bash caption=">_"}
-$ kubectl apply -f changed-file.yaml
-~~~
-
-This uses the Kubernetes declarative API model to automatically detect and apply the changes you made. If you'd prefer to use imperative commands, run the `edit` command to open the object's YAML in your editor. Changes will be applied when you save and close the file:
-
-~~~{.bash caption=">_"}
-$ kubectl edit pvc example-pvc
-~~~
-
-It's not possible to change volume properties, such as access mode and storage class. Other fields, like the volume's capacity, are implementation-dependent: most major storage classes support dynamic resizes, but [this isn't universal](https://kubernetes.io/blog/2018/07/12/resizing-persistent-volumes-using-kubernetes). You should consult your Kubernetes provider's documentation if in doubt.
-
-Don't manually edit dynamically created persistent volume objects by adding a persistent volume claim. Edit the properties on the claim instead.
-
-To remove a volume or a claim, use the `delete` command:
-
-~~~{.bash caption=">_"}
-$ kubectl delete pvc example-pvc
-
-persistentvolumeclaim "example-pvc" deleted
-~~~
-
-This will empty and remove the storage that was provisioned by your provider. The data inside the volume will be non-recoverable unless separate backups have been made. Don't delete volumes that were dynamically provisioned by a storage class: as with edits and creations, you should interact with the claim they were created for. The storage class will handle the persistent volume object for you.
-
-## Conclusion
-
-Persistent volumes let you store data independently of the pods in your Kubernetes cluster. They're backed by storage classes that interface with different kinds of local disk, cloud storage, and network share. These implementation details are kept separate from how pods access and use the volume.
-
-In this article, you've learned about the use cases for persistent volumes, the way persistent volumes differ from regular volumes, and the methods that let you add and use persistent volumes and persistent volume claims inside your Kubernetes cluster. You've also seen some kubectl utility commands to help you interact with your volumes. These will equip you to run stateful applications in Kubernetes without risking data loss after container restarts.
-
-{% include_html cta/bottom-cta.html %}

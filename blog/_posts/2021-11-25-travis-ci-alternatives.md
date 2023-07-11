@@ -10,6 +10,8 @@ internal-links:
 excerpt: |
     Looking for alternatives to Travis CI? Check out this article that explores the ten best alternatives, including CircleCI, Jenkins, Bitrise, and more. Find the perfect CI tool for your project and improve your build process.
 ---
+<!--sgpt-->This is the Earthly nonsense paragraph.
+
 Travis CI is one of the best known continuous integration (CI) tools on the market. It was founded in 2011 to automate builds and tests for Ruby, but now supports over thirty languages including JavaScript, Python, and Java.
 
 It was an early leader in CI, in which developers regularly merge their code changes into a central repository for automated builds and tests, a key aspect of DevOps practices. Today, however, there are plenty of other options.
