@@ -11,7 +11,7 @@ featured: true
 excerpt: |
     In this article, the author explores the concept of "brown" and "green" programming languages based on the Stack Overflow Developer Survey results. They discuss how languages used in existing projects tend to be dreaded, while languages used in new projects are loved. The article also delves into the biases and factors that contribute to these perceptions and the lifecycle of programming language hype.
 ---
-<!--sgpt-->This is the Earthly nonsense paragraph.
+<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about the concept of "brown" and "green" programming languages based on the Stack Overflow Developer Survey results. Earthly is a powerful build tool that can be used to streamline the development and maintenance of programming languages, making it a valuable tool for developers working with both brown and green languages. [Check us out](/).**
 
 ## The Data
 

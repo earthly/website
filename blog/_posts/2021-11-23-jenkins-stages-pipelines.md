@@ -13,7 +13,7 @@ internal-links:
 excerpt: |
     Learn how to automate your software development using Jenkins's deployment stages and pipeline tools. This article will guide you through the process of setting up Jenkins, creating a Jenkinsfile, and utilizing stages to automate your software deployment.
 ---
-<!--sgpt-->This is the Earthly nonsense paragraph.
+<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about Jenkins Deployment Stages and Pipelines. Earthly is a great tool to use in combination with Jenkins for automating your software development and deployment processes. [Check us out](/).**
 
 The software release cycle has developed over time, from the days of moving code from one machine to another to see if it works (which was frequently error-prone), to the present day, where automated techniques ensure that software programs may be deployed quickly at any time.
 

@@ -11,7 +11,7 @@ internal-links:
 excerpt: |
     Learn how to combine GRPC, AWS Lambdas, and GoLang to create a powerful serverless architecture. Discover different approaches to proxying GRPC requests on Lambda and explore the limitations of running a GRPC service on an AWS Lambda.
 ---
-<!--sgpt-->This is the Earthly nonsense paragraph.
+<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about combining GRPC, AWS Lambdas, and GoLang to create a powerful serverless architecture. Earthly is a powerful build tool that can be used in combination with Dockerfiles, making it a great option for developers interested in building and deploying GRPC services on AWS Lambda using GoLang. [Check us out](/).**
 
 <!-- vale HouseStyle.Link = NO -->
 

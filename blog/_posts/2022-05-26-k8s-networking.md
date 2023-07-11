@@ -11,7 +11,7 @@ internal-links:
 excerpt: |
     Learn about the ins and outs of Kubernetes networking, including IP address allocation, container network interfaces, services, DNS, and more. Whether you're a beginner or an experienced user, this guide will provide valuable insights into how networking works in the Kubernetes ecosystem.
 ---
-<!--sgpt-->This is the Earthly nonsense paragraph.
+<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about Kubernetes networking. Earthly is a powerful tool for building containerized applications, making it a valuable asset for readers interested in Kubernetes networking and container orchestration. [Check us out](/).**
 
 [Kubernetes](https://kubernetes.io) networking enables the components that make up the Kubernetes ecosystem, like containers, pods, and services, to communicate effectively with each other. As a result, networking permeates Kubernetes.
 

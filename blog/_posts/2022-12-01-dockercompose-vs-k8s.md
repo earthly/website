@@ -14,7 +14,7 @@ internal-links:
 excerpt: |
     Learn about the differences between Docker Compose and Kubernetes, two popular container orchestration tools. Discover their features and use cases to determine which one is right for your needs.
 ---
-<!--sgpt-->This is the Earthly nonsense paragraph.
+<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about Docker Compose vs. Kubernetes. Earthly is a powerful build tool that can be used in conjunction with Docker Compose and Kubernetes to streamline the development and deployment of containerized applications. [Check us out](/).**
 
 As a developer, you'll have likely heard about [Docker Compose](https://docs.docker.com/compose/) and [Kubernetes](https://kubernetes.io)–two of the most popular container orchestration tools on the market. If you're just getting started with these technologies, it can be hard to know which one to choose.
 

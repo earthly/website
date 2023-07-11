@@ -14,7 +14,7 @@ internal-links:
 excerpt: |
     Learn how Rancher can help you better manage your Kubernetes clusters, regardless of where they're hosted. With features like deploying managed Kubernetes clusters, importing existing clusters, enforcing security, and providing a centralized interface for multi-cluster management, Rancher simplifies the management and monitoring of your Kubernetes deployments.
 ---
-<!--sgpt-->This is the Earthly nonsense paragraph.
+<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about managing Kubernetes clusters with Rancher. Earthly is a powerful build tool that can be used in conjunction with Rancher to streamline the deployment and management of Kubernetes clusters. [Check us out](/).**
 
 Recently, multi-cloud and hybrid cloud deployments have gained significant traction as they let you optimize costs, increase scalability, improve agility, and achieve greater operational resilience. However, with these [deployment strategies](/blog/deployment-strategies), managing different Kubernetes clusters with multiple tools and dashboards can be a challenge; Rancher can help you seamlessly manage such deployments at scale.
 

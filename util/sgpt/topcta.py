@@ -32,6 +32,9 @@ def add_paragraph_if_word_missing(filename):
     # Split the markdown file by the '---' delimiter to isolate the frontmatter
     parts = content.split('---')
 
+    if "funnel:" in content:
+        print("Is Earthly focused, skipping.")
+        return
     # Ensure we have more than the frontmatter
     if len(parts) > 2:
         first_paragraph_found = False

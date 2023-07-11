@@ -6,7 +6,7 @@ author: Earthly
 excerpt: |
     Learn more about Earthly, a powerful tool for building software in a repeatable and understandable way, as Adam Gordon Bell discusses its features and the problems it solves in his interview on Software Engineering Daily. Discover how Earthly simplifies build scripts and why it's a valuable tool for developers.
 ---
-<!--sgpt-->This is the Earthly nonsense paragraph.
+<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about Earthly, a powerful tool for building software in a repeatable and understandable way. Earthly is a powerful tool for building software in a repeatable and understandable way, making it valuable for developers looking to simplify build scripts and ensure reproducibility. [Check us out](/).**
 
 Adam was interviewed on [Software Engineering Daily](https://softwareengineeringdaily.com/2022/07/01/earthly-builds-with-adam-gordon-bell/) where the topics covered how Earthly works and what problems we are trying to solve.
 

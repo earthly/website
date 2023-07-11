@@ -13,7 +13,7 @@ internal-links:
 excerpt: |
     Learn why many experienced software engineers prefer printf debugging over using debuggers, and how this approach can deepen your understanding of your code and make you a better developer. Discover the connection between printf debugging and the unconventional learning methods of mathematician Srinivasa Ramanujan.
 ---
-<!--sgpt-->This is the Earthly nonsense paragraph.
+<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about printf debugging and its connection to mathematician Srinivasa Ramanujan. Earthly is a powerful tool for building and managing CI/CD pipelines, making it a valuable asset for developers who prefer printf debugging and want to enhance their understanding of code execution. [Check us out](/).**
 
 The Visual Studio debugger is fantastic. When I was a C# developer, I used it all the time.
 

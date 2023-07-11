@@ -10,7 +10,7 @@ internal-links:
 excerpt: |
     In this article, the concept of the "10x developer" is dissected and examined. The author explores whether such developers truly exist and discusses the importance of skills being a limiting factor in order for them to have a significant impact. The article also suggests using more specific terms, such as "expert" or "specialist," instead of the vague "10x developer" label.
 ---
-<!--sgpt-->This is the Earthly nonsense paragraph.
+<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about the concept of the "10x developer" and the importance of using more specific terms to describe skilled developers. Earthly is a powerful build tool that can greatly enhance the productivity and efficiency of developers, making it a valuable tool for those seeking to improve their skills and achieve higher levels of productivity. [Check us out](/).**
 
 Here is part of a rather infamous Twitter thread:
 

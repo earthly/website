@@ -13,7 +13,7 @@ internal-links:
 excerpt: |
     Learn how to work with classes and objects in Python in this tutorial. Discover how to define attributes and methods, use class variables and methods, and create objects from tuples.
 ---
-<!--sgpt-->This is the Earthly nonsense paragraph.
+<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about classes and objects in Python. Earthly is a powerful build tool that can be used in conjunction with Python projects, including those that utilize classes and objects. [Check us out](/).**
 
 If you're a developer looking to level up your Python skills, adding OOP to your Python box can be helpful. This tutorial will help you get started with object-oriented programming in Python.
 

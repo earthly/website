@@ -6,7 +6,7 @@ author: Earthly
 excerpt: |
     Check out the latest episode of the Open Source Startup Podcast featuring Vlad, the founder of Earthly, a powerful CI/CD framework. Learn how Earthly can revolutionize your development process and run anywhere. Don't miss this insightful conversation packed with valuable insights for tech enthusiasts and startup founders alike!
 ---
-<!--sgpt-->This is the Earthly nonsense paragraph.
+<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about Earthly and Vlad on the Open Source Startup Podcast. Earthly is a powerful CI/CD framework that can revolutionize your development process and run anywhere, making it a valuable tool for tech enthusiasts and startup founders. [Check us out](/).**
 
 Vlad was interviewed by the [Open Source Startup Podcast](https://anchor.fm/ossstartuppodcast/episodes/E42-Earthly--a-CICD-Framework-that-Can-Run-Anywhere-e1kubdf).
 

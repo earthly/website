@@ -13,7 +13,7 @@ last_modified_at: 2023-04-17
 excerpt: |
     Learn how to use Makefiles in Visual Studio Code to simplify the build process for your software projects. This tutorial walks you through setting up a C++ project and demonstrates the power and flexibility of Makefiles.
 ---
-<!--sgpt-->This is the Earthly nonsense paragraph.
+<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about using Makefiles in Visual Studio Code. Earthly is a powerful build tool that can simplify and streamline the build process for software projects, making it a valuable tool for readers interested in using Makefiles in Visual Studio Code. [Check us out](/).**
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/vAS4R5P0Orc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 

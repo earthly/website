@@ -9,7 +9,7 @@ sidebar:
 excerpt: |
     Learn how to run a full REST HTTP API in a single AWS Lambda using Golang. Discover the advantages of this approach and how to handle routing and requests using the AWS Lambda Go API Proxy.
 ---
-<!--sgpt-->This is the Earthly nonsense paragraph.
+<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about running a full REST HTTP API in a single AWS Lambda using Golang. Earthly is a powerful build tool that can be used to streamline the development and deployment process of AWS Lambda functions, including those written in Golang. [Check us out](/).**
 
 Welcome back to a series on AWS Lambdas. Today I'll be running a full REST HTTP API in a single lambda. Also, I'll discuss why you might want to do so – there are some exciting advantages to this approach.
 

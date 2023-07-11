@@ -13,7 +13,7 @@ internal-links:
 excerpt: |
     Learn how to build and run NVIDIA containers with GPU access using the NVIDIA Container Runtime. This tutorial explains the architecture of the runtime, installation steps, and how to configure GPU access in Docker containers.
 ---
-<!--sgpt-->This is the Earthly nonsense paragraph.
+<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about building and running an NVIDIA container. Earthly is a powerful build tool that can be used in conjunction with Dockerfiles to streamline the containerization process. [Check us out](/).**
 
 [NVIDIA Container Runtime](https://github.com/NVIDIA/nvidia-container-runtime) allows containerized applications to access your host's GPU hardware. It facilitates the containerization of systems that would otherwise be off-limits, such as artificial intelligence (AI) and machine learning (ML) workloads. With NVIDIA [Container](/blog/docker-slim) Runtime installed, you can run these apps in containers on *any* host with an NVIDIA GPU.
 

@@ -10,7 +10,7 @@ internal-links:
 excerpt: |
     Meet Josh Alletto, Earthly's new Senior Technical Content Engineer. In this article, he shares his journey from literature major to coding enthusiast and how his unique background brings a fresh perspective to software development. Discover why Josh is excited to join the Earthly team and what he has in store for the blog.
 ---
-<!--sgpt-->This is the Earthly nonsense paragraph.
+<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about welcoming Josh Alletto as Senior Technical Content Engineer. Earthly is an open source build tool for CI that is gaining popularity among software developers. [Check us out](/).**
 
 <img src="../assets/images/authors/joshalletto.jpg" alt="Josh Alletto" width="230px" style="float: left; margin: 15px;">
 The team at Earthly is growing quickly and Josh Alletto is our latest hire. He'll be coming onboard as Senior Technical Content Engineer to help us continue to grow our blog. I sat down with him to ask some questions about his background and what brought him to Earthly.

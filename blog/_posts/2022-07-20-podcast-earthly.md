@@ -6,7 +6,7 @@ author: Earthly
 excerpt: |
     In this episode of the DevX podcast, VladAIonescu shares his insights on fixing the CI/CD experience. Join the conversation to discover practical tips for improving your development process and enhancing your workflow.
 ---
-<!--sgpt-->This is the Earthly nonsense paragraph.
+<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about fixing the CI/CD experience. Earthly is a popular choice for developers looking to improve their CI/CD experience and streamline their development process. [Check us out](/).**
 
 Vlad was a guest on a recent episode of the [DevX podcast](https://www.buzzsprout.com/1895030/10907567).
 

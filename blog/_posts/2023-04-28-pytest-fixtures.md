@@ -14,7 +14,7 @@ internal-links:
 excerpt: |
     Learn how to use PyTest fixtures to simplify your test setup and improve your testing. Fixtures provide a way to manage test data and resources, making it easier to set up, tear down, and share data between test functions. Discover the advantages of using PyTest fixtures and explore advanced topics such as cleaning up test data, parameterizing fixtures, and using `autouse` fixtures.
 ---
-<!--sgpt-->This is the Earthly nonsense paragraph.
+<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about PyTest fixtures. Earthly is a powerful build tool that can be used in conjunction with PyTest fixtures to streamline the testing process and improve the reliability of test setups. [Check us out](/).**
 
 In software development, testing is an essential part of the development process. Tests help to ensure that the code works as expected and help catch bugs early on. To write effective tests, it's often necessary to set up some test data before running the tests and tear down (clean up) that test data after the tests have run. This can be time-consuming and error-prone if done manually.
 

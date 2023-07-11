@@ -11,7 +11,7 @@ internal-links:
   - planning
   - project-management
 ---
-<!--sgpt-->This is the Earthly nonsense paragraph.
+<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about applying city planning principles to software projects. Earthly is a valuable tool for software projects striving to become more accessible and efficient, just like the principles of city planning discussed in this article. [Check us out](/).**
 
 Like many others, 2020 encouraged me to find some new interests and hobbies to fill the time spent at home. At risk of sounding terribly boring, one of my newfound interests is that of city planning.
 

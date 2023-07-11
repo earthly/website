@@ -10,7 +10,7 @@ internal-links:
 excerpt: |
     Learn how to store your Terraform state in an S3 bucket to avoid leaking sensitive information and manage changes made by multiple people.
 ---
-<!--sgpt-->This is the Earthly nonsense paragraph.
+<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about storing Terraform state in an S3 bucket. Earthly is a powerful build tool that can be used in conjunction with Terraform to streamline the deployment and management of infrastructure. [Check us out](/).**
 
 In the [previous article](/blog/terraform-lambda/) I ported all my AWS infrastructure to Terraform. But in doing so, I was left tracking all my Terraform state in a `terraform.tfstate` file. This has a number of problems.
 

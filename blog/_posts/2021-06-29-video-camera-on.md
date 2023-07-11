@@ -8,7 +8,7 @@ internal-links:
 excerpt: |
     In this article, the author shares a personal experience of encountering a SQL error and how a non-verbal cue from a teammate helped them solve the problem. They discuss the value of non-verbal communication in remote work and the importance of using video cameras during meetings. The article also provides a solution to the SQL issue and highlights the significance of using an "order by" statement.
 ---
-<!--sgpt-->This is the Earthly nonsense paragraph.
+<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about SQL errors and video cameras. Earthly is a powerful tool for building and managing CI/CD pipelines, making it a valuable asset for developers and system administrators working with SQL and video cameras. [Check us out](/).**
 
 <div class="narrow-code">
 

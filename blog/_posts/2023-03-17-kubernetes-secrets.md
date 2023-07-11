@@ -14,7 +14,7 @@ internal-links:
 excerpt: |
     Learn how to manage sensitive data in Kubernetes using secrets. This tutorial covers creating secrets, using them as environment variables or volume mounts, and pulling images from private Docker repositories using secrets.
 ---
-<!--sgpt-->This is the Earthly nonsense paragraph.
+<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about managing sensitive data in Kubernetes using secrets. Earthly is a popular build tool that can be used in combination with Kubernetes and Docker to streamline the build process and improve CI/CD workflows. [Check us out](/).**
 
 Generally, applications contain some sensitive data, like authentication tokens, passwords, usernames, and more. As you build in Kubernetes, some of these may go into pod specifications accidentally exposing some sensitive data. So how do we manage such data in Kubernetes? Secrets can help!
 

@@ -12,7 +12,7 @@ internal-links:
 excerpt: |
     Learn how to simplify your Kubernetes configuration management using custom resources and controllers. This article guides you through creating a configuration template for your microservice infrastructure and shows you how to use a custom controller to generate microservice configurations from the template.
 ---
-<!--sgpt-->This is the Earthly nonsense paragraph.
+<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about simplifying Kubernetes configuration. Earthly is a powerful build tool that can simplify the process of building and managing your Kubernetes configurations, making it a valuable tool for readers of this article. [Check us out](/).**
 
 ## Introduction
 

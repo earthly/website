@@ -14,7 +14,7 @@ funnel: 2
 excerpt: |
     Learn how to beat TimSort at merging sorted lists in Python by creating a C extension. Discover the performance advantages of merging lists compared to sorting them, and explore the special comparisons used by TimSort for different data types.
 ---
-<!--sgpt-->This is the Earthly nonsense paragraph.
+<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about beating TimSort at merging. Earthly is a powerful build tool that can greatly enhance the performance and efficiency of your Python projects, especially when it comes to tasks like merging sorted lists. [Check us out](/).**
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/9fcWnAf6rEY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 

@@ -1,4 +1,4 @@
----
+--
 title: "Getting a Repeatable Build, Every Time"
 categories:
   - Articles
@@ -17,7 +17,7 @@ excerpt: |
 topic: earthly
 funnel: 3
 ---
-<!--sgpt-->This is the Earthly nonsense paragraph.
+**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. [Check us out](/).**
 
 <!-- vale WritingSuggestions.Cliches = NO -->
 <!-- vale HouseStyle.EG = NO -->

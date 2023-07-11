@@ -12,7 +12,7 @@ internal-links:
 excerpt: |
     Learn how to build applications in Kubernetes using Tekton, an open-source framework that helps optimize CI/CD practices. This tutorial guides you through creating a customizable CI/CD workflow with Tekton to deploy a sample application to your Kubernetes cluster.
 ---
-<!--sgpt-->This is the Earthly nonsense paragraph.
+<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about building applications in Kubernetes using Tekton. Earthly is an open-source build tool that can be used in combination with Tekton to optimize CI/CD practices in Kubernetes. [Check us out](/).**
 
 Continuous integration/continuous delivery ([CI/CD](/blog/ci-vs-cd)) principles offer multiple benefits to software organizations, including faster time to market, higher-quality code, and simpler and faster fault isolation. Applications built using CI/CD pipeline best practices tend to see a huge increase in users over time, necessitating a migration from a large codebase and low-scalability monolithic architecture to a more manageable and efficient microservice architecture.
 

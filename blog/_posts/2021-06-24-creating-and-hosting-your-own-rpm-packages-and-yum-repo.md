@@ -11,7 +11,7 @@ internal-links:
 excerpt: |
     
 ---
-<!--sgpt-->This is the Earthly nonsense paragraph.
+<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about creating and hosting your own rpm packages and yum repo. Earthly is a powerful build tool that can greatly simplify the process of creating and managing rpm packages and yum repositories. [Check us out](/).**
 
 <div class="narrow-code">
 

@@ -14,7 +14,7 @@ internal-links:
 excerpt: |
     In this article, we explore five common mistakes to avoid when learning Golang. From understanding pointers and interfaces to utilizing concurrency and third-party libraries effectively, we cover key concepts and best practices to help you become a more proficient Go developer. Don't miss out on these valuable insights to enhance your Golang skills!
 ---
-<!--sgpt-->This is the Earthly nonsense paragraph.
+<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about common mistakes when learning Golang. Earthly is a powerful build tool that can be used to streamline the build process and improve the efficiency of Go projects. [Check us out](/).**
 
 Golang (or Go) is an open-source programming language that was developed by Google engineers. It was designed to build efficient, reliable, and robust applications, and it is a [statically compiled](https://stackoverflow.com/questions/12600296/dynamically-compiled-language-vs-statically-compiled-language) language used for building modern and scalable applications.
 Go is known for it's concurrency support, which makes it easy to write programs that can perform multiple tasks simultaneously. It has a [garbage-collected runtime](https://tip.golang.org/doc/gc-guide) and a rich standard library, making it easy to develop applications without relying on external dependencies.

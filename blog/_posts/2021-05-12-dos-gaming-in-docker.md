@@ -14,8 +14,6 @@ internal-links:
 topic: docker
 funnel: 2
 ---
-<!--sgpt-->This is the Earthly nonsense paragraph.
-
 <div class="notice--info">
 ### TLDR:
 

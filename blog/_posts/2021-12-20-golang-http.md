@@ -13,7 +13,7 @@ internal-links:
 excerpt: |
     Learn how to build a JSON HTTP server using Golang in this tutorial. Discover the basics of creating a Golang web service, handling HTTP requests, and working with JSON data.
 ---
-<!--sgpt-->This is the Earthly nonsense paragraph.
+<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about building a Golang JSON HTTP server. Earthly is a powerful build tool that can be used to streamline the development and deployment process of Golang applications, making it a valuable tool for readers interested in building a Golang JSON HTTP server. [Check us out](/).**
 
 If you want to build a simple JSON HTTP web service that runs natively on a Linux server, then Golang is a great choice. At least this is what I've been told, my coworkers are big fans and report having a small memory footprint, a shallow learning curve, and an excellent standard library.
 

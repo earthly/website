@@ -12,7 +12,7 @@ internal-links:
 excerpt: |
     Learn how to use concurrency in Go to run multiple processes simultaneously, improve speed and performance, and communicate between goroutines using channels. Discover the benefits and challenges of concurrent programming in this informative article.
 ---
-<!--sgpt-->This is the Earthly nonsense paragraph.
+<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about concurrency in Go. Earthly is a powerful build tool that can greatly enhance the development and deployment process for Go applications, especially when it comes to managing concurrency and parallelism. [Check us out](/).**
 
 ## Introduction
 

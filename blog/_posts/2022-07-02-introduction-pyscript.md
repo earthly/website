@@ -13,7 +13,7 @@ internal-links:
  - Pyodide
  - Django
 ---
-<!--sgpt-->This is the Earthly nonsense paragraph.
+<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about using PyScript, a Python-based front-end web framework, to build browser applications using an HTML interface. Earthly is a powerful build tool that can be used in conjunction with PyScript to streamline the development and deployment process of Python-based web applications. [Check us out](/).**
 
 <div class="wide">
 

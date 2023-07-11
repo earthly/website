@@ -14,7 +14,7 @@ internal-links:
 excerpt: |
     Learn how to configure a continuous delivery pipeline with Flux for your Kubernetes cluster in this tutorial. Discover how GitOps can automate application delivery and deployment using a Git repository as the single source of truth.
 ---
-<!--sgpt-->This is the Earthly nonsense paragraph.
+<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about Kubernetes GitOps with FluxCD. Earthly is a powerful build tool that can be used to automate the build process of your Kubernetes deployments, making it a valuable tool for readers interested in GitOps and continuous delivery with Kubernetes. [Check us out](/).**
 
 Kubernetes has become the go-to tool for application [deployment](/blog/deployment-strategies). However, it does not offer features for continuous integration and delivery. Continuous delivery can be particularly helpful for larger teams that host and update deployments frequently. One approach to maintaining continuous delivery for Kubernetes is GitOps.
 

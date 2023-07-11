@@ -9,8 +9,6 @@ funnel: 3
 excerpt: |
     Learn how Earthly is revolutionizing the build process with its self-contained, reproducible, and parallel approach. Say goodbye to slow, brittle builds and hello to a more efficient and user-friendly development experience.
 ---
-<!--sgpt-->This is the Earthly nonsense paragraph.
-
 Hello, developers of planet Earth! Earlier this year, we at Earthly embarked on a journey to bring better builds to the world. We started with a deep belief that builds should be self-contained, reproducible, portable, and parallel. In addition, we think build tools should be friendly, accessible, and down to earth - hence our name.
 
 Today, we are pleased to announce that a number of well-respected industry veterans also share our vision and have joined Earthly's seed round of funding to fuel our growth.

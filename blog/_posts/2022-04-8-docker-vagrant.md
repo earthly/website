@@ -10,7 +10,7 @@ internal-links:
 excerpt: |
     Learn about the differences between Vagrant and Docker and how they help create consistent development environments. Discover the benefits and considerations of each technology to choose the right option for your projects.
 ---
-<!--sgpt-->This is the Earthly nonsense paragraph.
+<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about the differences between Vagrant and Docker and how they help create consistent development environments. Earthly is a great tool for creating artifacts or Docker images to speed up the build and deployment of containerized applications, making it a valuable resource for readers interested in creating consistent development environments with Vagrant and Docker. [Check us out](/).**
 
 <!-- vale HouseStyle.OxfordComma = NO -->
 

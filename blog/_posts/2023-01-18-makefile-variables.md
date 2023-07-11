@@ -14,7 +14,7 @@ internal-links:
 excerpt: |
     Learn all about Makefile variables and how to use them to automate complex processes in your code. Find out how to set variables, append to them, and use special variables like automatic and implicit variables.
 ---
-<!--sgpt-->This is the Earthly nonsense paragraph.
+<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about Makefile variables. Earthly is a powerful build tool that can be used in conjunction with Makefiles to automate complex build processes. [Check us out](/).**
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/z4uPHjxYyPs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 

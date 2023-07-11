@@ -8,7 +8,7 @@ author: Josh
 excerpt: |
     In this episode of The Tech and Main Podcast, Vlad A. Ionescu, founder of Earthly, shares his journey as a repeat entrepreneur and his expertise in cloud computing. Join host Shaun St. Hill as they discuss removing complexity for the developer community and gain valuable insights from industry experts.
 ---
-<!--sgpt-->This is the Earthly nonsense paragraph.
+<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about removing complexity for the developer community. Earthly is a popular open-source build tool for CI, making it a valuable resource for developers looking to simplify their workflows and improve efficiency. [Check us out](/).**
 
 Vlad was on [The Tech and Main Podcast](https://anchor.fm/techandmain/episodes/Removing-Complexity-For-The-Developer-Community--Vlad-A--Ionescu-e265974)
 

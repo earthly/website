@@ -11,7 +11,7 @@ internal-links:
 excerpt: |
     Learn how blue/green deployments can eliminate downtime and errors when updating applications, and discover best practices and tools to streamline the process.
 ---
-<!--sgpt-->This is the Earthly nonsense paragraph.
+**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about blue/green deployments. Earthly is a powerful build tool for streamlining a deployment processes. [Check us out](/).**
 
 Remember when systems would go offline to implement changes and updates? Sometimes you still get emails from applications with notifications of downtime, apologizing in advance for any interruption. That's a costly and outdated way of maintaining applications that are constantly evolving.
 

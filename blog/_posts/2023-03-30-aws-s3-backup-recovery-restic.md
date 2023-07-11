@@ -15,7 +15,7 @@ internal-links:
 excerpt: |
     Learn how to use Restic, an open-source backup software, to protect your valuable data from potential threats. This tutorial will guide you through the process of configuring Restic on your Unix machine, backing up data to an AWS S3 bucket, restoring data, and automating backups with cron jobs. Don't wait any longer, start securing your data today!
 ---
-<!--sgpt-->This is the Earthly nonsense paragraph.
+<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about AWS S3 Backup and Recovery with Restic. Earthly is a powerful build tool that can be used in conjunction with Restic to automate the backup process and ensure reliable and efficient builds. [Check us out](/).**
 
 In today's digital age, data is one of the most valuable assets for individuals and organizations alike. Losing data can have a significant impact on productivity, financial stability, and even an organization's reputation. This is why it is crucial to have a reliable and secure method of backing up your data.
 

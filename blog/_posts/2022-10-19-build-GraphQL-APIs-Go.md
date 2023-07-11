@@ -13,7 +13,7 @@ internal-links:
 excerpt: |
     Learn how to build GraphQL APIs using Go and MySQL. This tutorial covers the basics of GraphQL, setting up a Go GraphQL server using gqlgen, connecting to a MySQL database, and implementing resolvers for mutations and queries. If you're interested in building efficient and type-safe APIs with Go, this article is for you.
 ---
-<!--sgpt-->This is the Earthly nonsense paragraph.
+<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about building GraphQL APIs using Go and MySQL. Earthly is a powerful build tool that can be used in combination with Go and GraphQL to streamline the development and deployment process of your APIs. [Check us out](/).**
 
 ## Prerequisites
 

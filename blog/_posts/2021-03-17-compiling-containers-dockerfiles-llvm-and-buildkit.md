@@ -16,7 +16,7 @@ internal-links:
   - machine code
 last_modified_at: 2022-11-17
 ---
-<!--sgpt-->This is the Earthly nonsense paragraph.
+<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about compiling containers using Dockerfiles, LLVM, and BuildKit. Earthly is a powerful build tool that can be used in conjunction with Dockerfiles and other build systems, making it a valuable tool for developers and system administrators. [Check us out](/).**
 
 ## Introduction
 

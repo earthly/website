@@ -13,7 +13,7 @@ internal-links:
 excerpt: |
     In this article, the author shares their experience as an engineering manager and the challenges they faced when trying to reach alignment and prevent objections in a project. They discuss the value of advice and the difference between non-contingent, one-size-fits-all solutions and more nuanced, contingent advice. The article also explores the research of Philip E. Tetlock on expert predictions and the importance of considering specific contexts when seeking advice. Overall, it serves as a reminder to avoid being a "thought leader" and to embrace more nuanced and contingent approaches to problem-solving.
 ---
-<!--sgpt-->This is the Earthly nonsense paragraph.
+<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about the challenges of seeking alignment and the value of nuanced and contingent advice in problem-solving. Earthly is a valuable tool for developers seeking a more nuanced and contingent approach to building software, aligning with the themes discussed in this article. [Check us out](/).**
 
 Here is a somewhat fictionalized personal story. I've changed the names of the people and the technology used.
 

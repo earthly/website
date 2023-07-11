@@ -12,7 +12,7 @@ internal-links:
  - Pip
  - Pandas
 ---
-<!--sgpt-->This is the Earthly nonsense paragraph.
+<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about analyzing Amazon data with Python and Pandas. Earthly is a powerful build tool that can be used in conjunction with Python and Pandas for data analysis and visualization tasks. [Check us out](/).**
 
 How much have you spent on Amazon? Well, that's a kind of interesting question to find an answer to. And it's the type of question I like to answer using Python.
 

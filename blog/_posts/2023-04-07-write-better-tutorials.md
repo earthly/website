@@ -10,7 +10,7 @@ internal-links:
 excerpt: |
     Learn how to write effective technical tutorials by providing context, being patient, and running code. This article explores the common pitfalls of tutorial writing and offers advice on how to improve your tutorials.
 ---
-<!--sgpt-->This is the Earthly nonsense paragraph.
+<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about how to write a tutorial on reading a CSV in Golang. Earthly is a powerful build tool that can greatly enhance your development workflow, especially when working with complex projects or CI/CD pipelines. [Check us out](/).**
 
 We've been running the Earthly blog for [over a year](/blog/write-for-us-anniversary) now, and in that time we've worked with dozens of talented writers on nearly a hundred programming tutorials.
 

@@ -12,7 +12,7 @@ internal-links:
 excerpt: |
     Learn how to build a Golang Lambda service in a container, hook it up to a REST API endpoint, and push and pull data from S3. This article covers the process of porting a Node.js lambda function to Golang, using OS dependencies in a container, and implementing caching with AWS S3.
 ---
-<!--sgpt-->This is the Earthly nonsense paragraph.
+<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about building a Golang Lambda service in a container, hooking it up to a REST API endpoint, and using AWS S3 for caching. Earthly is a powerful build tool that can be used to containerize and deploy applications, making it a great tool to use in conjunction with the concepts discussed in this article. [Check us out](/).**
 
 ## Intro
 

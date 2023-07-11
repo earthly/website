@@ -10,7 +10,7 @@ internal-links:
 excerpt: |
     In this article, the author explores the differences between line and staff software engineers. They discuss the advantages and disadvantages of each role, highlighting the potential for career growth and broader business focus in staff positions. The article provides valuable insights for those considering their career paths in the tech industry.
 ---
-<!--sgpt-->This is the Earthly nonsense paragraph.
+<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about the differences between line and staff software engineers and the advantages and disadvantages of each role. Earthly is a powerful tool for building software projects, and it can be particularly useful for developers in both line and staff software engineering roles. [Check us out](/).**
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/tiNC16VqTio" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 

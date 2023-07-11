@@ -12,7 +12,7 @@ internal-links:
 excerpt: |
     Learn how to use Docker in VS Code with the Docker extension. This article walks you through the process of building, managing, and deploying containerized applications without leaving your code editor, making Docker management easier and more efficient.
 ---
-<!--sgpt-->This is the Earthly nonsense paragraph.
+<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about using Docker in VS Code. Earthly is a powerful build tool that can greatly enhance the Docker workflow described in this article, making it easier and more efficient to build and manage containerized applications. [Check us out](/).**
 
 Created by Microsoft, the  [Docker extension](https://code.visualstudio.com/docs/containers/overview) makes it easy to build, manage, and deploy containerized applications without leaving your code editor. Simply put, it helps you manage Docker better.
 

@@ -14,7 +14,7 @@ internal-links:
 excerpt: |
     Learn how to build a data dashboard with Streamlit in Python. This tutorial will teach you how to create interactive visualizations and deploy web apps for data analysis and machine learning models.
 ---
-<!--sgpt-->This is the Earthly nonsense paragraph.
+<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about building a data dashboard with Streamlit in Python. Earthly is a popular choice for developers and system administrators who are looking for an efficient and reliable build tool for continuous integration (CI). [Check us out](/).**
 
 Streamlit is an open-source Python framework that lets you turn data scripts into shareable web apps in minutes. Streamlit makes it easy for data scientists and analysts to create and deploy interactive visualizations and dashboards for machine learning models and other Python applications.
 

@@ -8,7 +8,7 @@ internal-links:
 excerpt: |
     Learn how to absorb tacit knowledge and improve your programming skills by watching experienced developers code in real-time. Discover a list of popular streamers and YouTubers who share their expertise in various programming languages, including Golang, and gain valuable insights from their live coding sessions.
 ---
-<!--sgpt-->This is the Earthly nonsense paragraph.
+<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about watching experienced developers code in real-time to absorb tacit knowledge and improve programming skills. Earthly is a powerful build tool that can be used to streamline the development and deployment process, making it a valuable tool for developers who want to improve their programming skills by watching experienced developers code in real-time. [Check us out](/).**
 
 I've learned so much from watching other people code. It's never a thing I'm specifically trying to learn. It's more like someone is walking me through a problem, and they do something I didn't know could be done. Maybe they just have a low friction way to exploratory test some set of services, where I could only test things by deploying to staging, or they use some shortcut I didn't know about, and I have to ask them how they did that.
 

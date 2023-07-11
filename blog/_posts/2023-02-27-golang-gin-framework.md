@@ -14,7 +14,7 @@ internal-links:
 excerpt: |
     Learn how to build web applications in Go using the Gin framework. This tutorial will guide you through developing a CRUD API and using features like routing, JSON parsing, and database operations with GORM.
 ---
-<!--sgpt-->This is the Earthly nonsense paragraph.
+<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about building web applications in Go using the Gin framework. Earthly is a powerful build tool that can be used in conjunction with the Gin framework to streamline the development and deployment process of web applications built with Go. [Check us out](/).**
 
 Go is increasing in popularity for many reasons, from speed to ease of use and so much more. The Go standard library has most of the functionalities you'll need to build web applications in the `net/http` package. There are many web-based [packages](/blog/setup-typescript-monorepo) in the Go ecosystem to build fast web applications.
 
