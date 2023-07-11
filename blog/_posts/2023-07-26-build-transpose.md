@@ -107,6 +107,8 @@ These techniques were invaluable in helping me understand how to apply LLMs to r
 
 If you're building things with LLMs, I'd love to hear about any tricks you've learned. Also, if you are using GitHub actions, you should give Earthly a try. Earthly can improve the consistency of your build, so you never get a build failure you can't reproduce locally. It works great with GitHub actions. And want your GitHub Actions to be even faster? Our satellites can make that happen.
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 - [ ] Add in Author page
@@ -116,4 +118,3 @@ If you're building things with LLMs, I'd love to hear about any tricks you've le
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
