@@ -9,7 +9,8 @@ internal-links:
  - Kubernetes
  - Cluster
  - RBAC
-excerpt: Learn how to implement Role-Based Access Control (RBAC) in Kubernetes to secure resources and components from unauthorized access. This tutorial covers the creation of Roles and RoleBindings at both the cluster and namespace levels, as well as the differences between ClusterRoles and Roles.
+excerpt: |
+    Learn how to implement Role-Based Access Control (RBAC) in Kubernetes to secure resources and components from unauthorized access. This tutorial covers the creation of Roles and RoleBindings at both the cluster and namespace levels, as well as the differences between ClusterRoles and Roles.
 ---
 
 Kubernetes has many resources and components that must be kept out of reach of certain users and service accounts. Resources such as secrets have to be encrypted and have strict access. If everyone in a company who has access to the cluster is given limitless power when using the cluster; this is dangerous because Kubernetes secrets and keys can be stolen and used inappropriately. Mostly, anyone can change the cluster's configurations, and it will be hard to know who made changes in case of vulnerability detection.

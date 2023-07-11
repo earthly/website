@@ -10,7 +10,8 @@ internal-links:
  - thought leaders
  - hedgehog
  - advice
-excerpt: In this article, the author shares their experience as an engineering manager and the challenges they faced when trying to reach alignment and prevent objections in a project. They discuss the value of advice and the difference between non-contingent, one-size-fits-all solutions and more nuanced, contingent advice. The article also explores the research of Philip E. Tetlock on expert predictions and the importance of considering specific contexts when seeking advice. Overall, it serves as a reminder to avoid being a "thought leader" and to embrace more nuanced and contingent approaches to problem-solving.
+excerpt: |
+    In this article, the author shares their experience as an engineering manager and the challenges they faced when trying to reach alignment and prevent objections in a project. They discuss the value of advice and the difference between non-contingent, one-size-fits-all solutions and more nuanced, contingent advice. The article also explores the research of Philip E. Tetlock on expert predictions and the importance of considering specific contexts when seeking advice. Overall, it serves as a reminder to avoid being a "thought leader" and to embrace more nuanced and contingent approaches to problem-solving.
 ---
 Here is a somewhat fictionalized personal story. I've changed the names of the people and the technology used.
 

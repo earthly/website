@@ -12,7 +12,8 @@ internal-links:
  - Integration
  - Circle CI
  - Travis CI
-excerpt: In this article, we compare the free tiers of four popular CI/CD platforms - Github Actions, GitLab CI, Circle CI, and Travis CI. We evaluate their documentation, compute power, available disk space, free build minutes, and speed and performance. Find out which platform offers the most value for your CI/CD needs.
+excerpt: |
+    In this article, we compare the free tiers of four popular CI/CD platforms - Github Actions, GitLab CI, Circle CI, and Travis CI. We evaluate their documentation, compute power, available disk space, free build minutes, and speed and performance. Find out which platform offers the most value for your CI/CD needs.
 ---
 
 ## How Much Can You Get For Free?

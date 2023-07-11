@@ -9,7 +9,8 @@ author: Kasper Siig
 internal-links:
  - makefiles
 topic: make
-excerpt: Learn how to effectively use Docker and Makefiles together to simplify your deployment process. Discover the advantages of integrating Make into your Docker projects and see how it can streamline building, pushing, releasing, and versioning your Docker images.
+excerpt: |
+    Learn how to effectively use Docker and Makefiles together to simplify your deployment process. Discover the advantages of integrating Make into your Docker projects and see how it can streamline building, pushing, releasing, and versioning your Docker images.
 ---
 
 Deployments have been one of the hassles for many organizations for a long time, with companies sometimes even hiring engineers whose sole job is to get applications deployed more effectively. Because of this, many tools have been developed to help with this exact use case. However, some prefer to use tools that have already existed for many years: Docker and Makefiles.

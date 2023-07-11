@@ -12,7 +12,8 @@ sidebar:
 internal-links:
  - bazel
  - monorepo
-excerpt: Learn how to build a monorepo with Bazel, an open-source build tool developed by Google. Discover the benefits of using a monorepo and how Bazel simplifies the process of building and compiling code in multiple languages and platforms.
+excerpt: |
+    Learn how to build a monorepo with Bazel, an open-source build tool developed by Google. Discover the benefits of using a monorepo and how Bazel simplifies the process of building and compiling code in multiple languages and platforms.
 ---
 
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article discusses some of the benefits of using a Monorepo. Earthly is particularly useful if you're working with a Monorepo. [Check us out](/).**

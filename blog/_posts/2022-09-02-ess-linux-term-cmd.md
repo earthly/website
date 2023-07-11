@@ -11,7 +11,8 @@ internal-links:
  - Curl
  - Pipe
  - Commands
-excerpt: Learn fifteen essential Linux terminal commands that will supercharge you as a Linux user. From searching for patterns in files to managing permissions and scheduling tasks, these commands will make your workflow optimized and efficient.
+excerpt: |
+    Learn fifteen essential Linux terminal commands that will supercharge you as a Linux user. From searching for patterns in files to managing permissions and scheduling tasks, these commands will make your workflow optimized and efficient.
 ---
 
 [Linux](https://www.linux.org/), a powerful, free, stable, secure, and highly customizable operating system, is essential for any developer's workflow. The Linux terminal interacts with the operating system for all basic and advanced tasks. Moreover, most web servers run Linux, and tools like [Docker](/blog/rails-with-docker) work by providing an additional layer of abstraction and automation on top of Linux.

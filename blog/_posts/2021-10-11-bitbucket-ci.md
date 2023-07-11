@@ -8,7 +8,8 @@ author: Ben Force
 internal-links:
  - bitbucket
  - groovy 
-excerpt: Learn about the different options for continuous integration with Bitbucket, including using Jenkins, integrating with cloud CI/CD tools like AWS, and utilizing Bitbucket's native CI/CD service, Bitbucket Pipelines. Discover the benefits and costs of each option to determine the best fit for your project.
+excerpt: |
+    Learn about the different options for continuous integration with Bitbucket, including using Jenkins, integrating with cloud CI/CD tools like AWS, and utilizing Bitbucket's native CI/CD service, Bitbucket Pipelines. Discover the benefits and costs of each option to determine the best fit for your project.
 ---
 How do you rapidly deliver new features without delivering bugs at the same rate? By running automatic builds and tests on all of your code before it gets into a release. And that's exactly what continuous integration is.
 

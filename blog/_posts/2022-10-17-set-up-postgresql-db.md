@@ -9,7 +9,8 @@ internal-links:
  - Postgresql
  - Django
  - Database
-excerpt: Learn how to configure Postgres database replication in Django and connect it to a Django application. This tutorial covers the steps to set up a primary database and a hot standby database, create a Django database router, and route queries to the appropriate databases.
+excerpt: |
+    Learn how to configure Postgres database replication in Django and connect it to a Django application. This tutorial covers the steps to set up a primary database and a hot standby database, create a Django database router, and route queries to the appropriate databases.
 ---
 
 ## Introduction

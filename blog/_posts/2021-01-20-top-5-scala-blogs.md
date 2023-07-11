@@ -7,7 +7,8 @@ internal-links:
   - scala
   - blog
   - blogs
-excerpt: Looking for some interesting Scala blogs to celebrate Scala's birthday? Check out this list of active Scala blogs that cover a range of topics, from library insights to Scala 3 updates and functional programming. Whether you're a beginner or an experienced developer, these blogs are sure to keep you informed and inspired.
+excerpt: |
+    Looking for some interesting Scala blogs to celebrate Scala's birthday? Check out this list of active Scala blogs that cover a range of topics, from library insights to Scala 3 updates and functional programming. Whether you're a beginner or an experienced developer, these blogs are sure to keep you informed and inspired.
 ---
 
 

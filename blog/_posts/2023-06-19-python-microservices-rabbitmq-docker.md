@@ -12,7 +12,8 @@ internal-links:
  - RabbitMQ
  - Docker
  - Software
-excerpt: Learn how to convert a monolith recipe API into microservices using Django and Flask. This article covers the usage of RabbitMQ for communication between microservices and provides a step-by-step guide on Dockerizing the microservices.
+excerpt: |
+    Learn how to convert a monolith recipe API into microservices using Django and Flask. This article covers the usage of RabbitMQ for communication between microservices and provides a step-by-step guide on Dockerizing the microservices.
 ---
 
 Microservices are a software architectural style where an application is composed of small, independently deployable services. Each microservice has a single, narrowly defined responsibility and communicates with other microservices through APIs.

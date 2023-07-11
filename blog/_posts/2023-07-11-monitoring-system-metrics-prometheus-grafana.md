@@ -12,7 +12,8 @@ internal-links:
  - Monitoring
  - System Metrics
  - Performance
-excerpt: Learn how to set up a monitoring stack using Prometheus, Grafana, and Alertmanager to track system metrics and identify performance issues. This step-by-step tutorial will guide you through the process of configuring and starting the monitoring services, accessing the web UIs, and triggering alerts to test the system.
+excerpt: |
+    Learn how to set up a monitoring stack using Prometheus, Grafana, and Alertmanager to track system metrics and identify performance issues. This step-by-step tutorial will guide you through the process of configuring and starting the monitoring services, accessing the web UIs, and triggering alerts to test the system.
 ---
 
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about monitoring system metrics but if you're interested in a different approach to building and packaging software then [check us out](/).**

@@ -6,7 +6,8 @@ author: Adam
 
 internal-links:
  - just an example
-excerpt: Learn how to use property-based testing in Go to automatically generate unit tests and ensure the reliability of your code. Property-based testing is a powerful technique that generates specific test cases based on the properties you want to test, making it easier to catch bugs and ensure the correctness of your code.
+excerpt: |
+    Learn how to use property-based testing in Go to automatically generate unit tests and ensure the reliability of your code. Property-based testing is a powerful technique that generates specific test cases based on the properties you want to test, making it easier to catch bugs and ensure the correctness of your code.
 ---
 Have you ever wanted your unit tests written for you? Property based testing is a powerful testing technique that, in a sense, is just that. You describe the properties you'd like to test, and the specific cases are generated for you.
 

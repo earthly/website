@@ -11,7 +11,8 @@ internal-links:
  - Linux
  - Containers
  - Pods
-excerpt: Learn about Linux capabilities and how they allow for fine-grained control over the privileges of running processes. Discover how to use capabilities in Docker containers and Kubernetes, and understand the importance of setting the right capabilities for your containerized workloads.
+excerpt: |
+    Learn about Linux capabilities and how they allow for fine-grained control over the privileges of running processes. Discover how to use capabilities in Docker containers and Kubernetes, and understand the importance of setting the right capabilities for your containerized workloads.
 ---
 
 In Linux, capabilities are a way to assign specific privileges to a running process. They allow us to have more fine-grained control over the privileges that processes have on a Linux system.

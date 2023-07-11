@@ -13,7 +13,8 @@ internal-links:
  - GitHub
  - AWS
  - Deployment
-excerpt: Learn how to automate the testing, building, and deployment processes of your applications using GitHub Actions and Docker deployments with AWS ECR. This tutorial provides step-by-step instructions on setting up the necessary tools and configuring the workflow to seamlessly deploy your applications to AWS ECR.
+excerpt: |
+    Learn how to automate the testing, building, and deployment processes of your applications using GitHub Actions and Docker deployments with AWS ECR. This tutorial provides step-by-step instructions on setting up the necessary tools and configuring the workflow to seamlessly deploy your applications to AWS ECR.
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. This article is about GitHub Actions, if you'd like to see how Earthly can improve your GitHub Actions builds then [check us out](/earthly-github-actions).**
 

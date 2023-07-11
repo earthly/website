@@ -6,7 +6,8 @@ toc: true
 author: Vlad
 internal-links:
  - platform values
-excerpt: Learn about the platform values of Earthly, a new approach to build automation. Discover the principles that guide Earthly's design, including versatility, approachability, and reproducibility, and how they prioritize these values to create a tool that is user-friendly and adaptable.
+excerpt: |
+    Learn about the platform values of Earthly, a new approach to build automation. Discover the principles that guide Earthly's design, including versatility, approachability, and reproducibility, and how they prioritize these values to create a tool that is user-friendly and adaptable.
 as_related: true
 topic: earthly
 funnel: 3

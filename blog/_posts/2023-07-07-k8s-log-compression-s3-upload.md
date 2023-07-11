@@ -11,7 +11,8 @@ internal-links:
  - CronJobs
  - AWS S3
  - Log Compression
-excerpt: Learn how to compress Kubernetes logs and send them to AWS S3 periodically using Kubernetes CronJobs. This tutorial will guide you through the process of setting up the environment, scripting and Dockerizing the solution, and creating the CronJob in your Kubernetes cluster.
+excerpt: |
+    Learn how to compress Kubernetes logs and send them to AWS S3 periodically using Kubernetes CronJobs. This tutorial will guide you through the process of setting up the environment, scripting and Dockerizing the solution, and creating the CronJob in your Kubernetes cluster.
 ---
 
 **We're [Earthly.dev](https://earthly.dev/). We make building software simpler and therefore faster – like Dockerfile and Makefile had a baby. This article shows us how to compress Kubernetes logs and send them to S3 periodically.**

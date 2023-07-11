@@ -6,7 +6,8 @@ featured: true
 author: Adam
 sidebar:
   nav: "thoughts"
-excerpt: Discover the bizarre world of INTERCAL, a parody programming language that will leave you scratching your head. Then, delve into the blurred line between configuration and programming languages, and why YAML might not be the best choice for control flow.
+excerpt: |
+    Discover the bizarre world of INTERCAL, a parody programming language that will leave you scratching your head. Then, delve into the blurred line between configuration and programming languages, and why YAML might not be the best choice for control flow.
 internal-links:
   - intercal
 ---

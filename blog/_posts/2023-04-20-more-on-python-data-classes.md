@@ -8,7 +8,8 @@ author: Bala Priya C
 internal-links:
  - Python
  - Python Classes
-excerpt: Learn more about Python data classes and their features in this tutorial. Discover how to set default values, exclude fields from the constructor, create fields post-initialization, and use slots for more efficient data classes.
+excerpt: |
+    Learn more about Python data classes and their features in this tutorial. Discover how to set default values, exclude fields from the constructor, create fields post-initialization, and use slots for more efficient data classes.
 ---
 
 Since their introduction in Python 3.7, data classes have emerged as a popular choice for Python classes that store data. In a [previous tutorial](/blog/python-data-classes), we talked about what data classes are and some of their features, including out-of-the-box support for object comparison, type hints, and default values of fields. In this follow-up tutorial, we'll continue to explore some more features of Python data classes.

@@ -8,7 +8,8 @@ internal-links:
   - rsa
   - encrypting
   - encryption
-excerpt: Learn how to generate public/private key pairs, encrypt and decrypt data using RSA encryption in Golang. This tutorial provides step-by-step instructions and sample code to help you understand the process and implement it in your own projects.
+excerpt: |
+    Learn how to generate public/private key pairs, encrypt and decrypt data using RSA encryption in Golang. This tutorial provides step-by-step instructions and sample code to help you understand the process and implement it in your own projects.
 ---
 
 We're currently working on a server for sharing secrets between developers and CI systems, and one of the features we decided to support is passwordless login via ssh keys. I had never used any of the public/private key encryption libraries in Go before, so I wanted to spend some time experimenting with them to familiarise myself with the libraries.

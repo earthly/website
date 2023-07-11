@@ -326,3 +326,7 @@ frontmatter() {
 excerpt() {
     python ./util/sgpt/excerpt.py --file "$(post)"
 }
+
+excerpt-all() {
+    python ./util/sgpt/excerpt.py --dir "./blog/_posts/"
+}

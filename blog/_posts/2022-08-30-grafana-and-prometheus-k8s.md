@@ -12,7 +12,8 @@ internal-links:
  - Prometheus
  - Namespace
 topic: kubernetes
-excerpt: Learn how to monitor your Kubernetes cluster using Grafana and Prometheus. This tutorial will guide you through the process of setting up your own monitoring dashboard, visualizing internal state metrics, and accessing Grafana dashboards for resource monitoring.
+excerpt: |
+    Learn how to monitor your Kubernetes cluster using Grafana and Prometheus. This tutorial will guide you through the process of setting up your own monitoring dashboard, visualizing internal state metrics, and accessing Grafana dashboards for resource monitoring.
 ---
 
 So you have a Kubernetes cluster, and you want to keep an eye on its memory CPU and storage usage? Well, look no further than Grafana and Prometheus monitoring.

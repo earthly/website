@@ -9,7 +9,8 @@ internal-links:
  - Amazon
  - AWS
  - EC2
-excerpt: Learn about AWS Graviton, a type of processor made by Amazon, and discover its benefits, use cases, and how to deploy applications on it. Find out how Graviton processors offer strong performance, extensive software support, improved security, and the best performance per watt of energy use in Amazon EC2.
+excerpt: |
+    Learn about AWS Graviton, a type of processor made by Amazon, and discover its benefits, use cases, and how to deploy applications on it. Find out how Graviton processors offer strong performance, extensive software support, improved security, and the best performance per watt of energy use in Amazon EC2.
 ---
 
 [Amazon Web Services (AWS)](https://aws.amazon.com/) is one of the most popular—and comprehensive—cloud service providers. It has over [200 fully-featured services](https://aws.amazon.com/what-is-aws/) on offer. There are enough services that it can be hard to remember them all.

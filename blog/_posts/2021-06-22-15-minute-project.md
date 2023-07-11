@@ -4,7 +4,8 @@ title: The 15-Minute Project
 categories:
   - Articles
 author: Corey
-excerpt: Discover how the principles of city planning can be applied to software projects, creating a more accessible and efficient development environment. Learn how concepts like zoning, building codes, transportation, equity, and taxes can improve collaboration and make your project a desirable place for contributors.
+excerpt: |
+    Discover how the principles of city planning can be applied to software projects, creating a more accessible and efficient development environment. Learn how concepts like zoning, building codes, transportation, equity, and taxes can improve collaboration and make your project a desirable place for contributors.
 toc: true
 internal-links:
   - planning

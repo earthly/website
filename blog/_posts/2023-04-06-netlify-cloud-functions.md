@@ -11,7 +11,8 @@ internal-links:
  - Cloud
  - Functions
  - Serverless
-excerpt: Learn how to create powerful serverless applications with Netlify Functions. This tutorial covers the basics of Netlify Functions, different types of functions, and how they compare to AWS Lambda.
+excerpt: |
+    Learn how to create powerful serverless applications with Netlify Functions. This tutorial covers the basics of Netlify Functions, different types of functions, and how they compare to AWS Lambda.
 ---
 
 When building backend applications, we often have to add features that are not supported by the current stack or would slow down our applications. A possible workaround is to use cloud functions that help abstract away some of these tasks.

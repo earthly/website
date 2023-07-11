@@ -9,7 +9,8 @@ sidebar:
 internal-links:
  - aws lambda
  - lambda
-excerpt: Learn how to set up your first AWS Lambda deployment for a Node application in this tutorial. Discover how to leverage AWS Lambda to execute backend applications without worrying about server configurations or maintenance.
+excerpt: |
+    Learn how to set up your first AWS Lambda deployment for a Node application in this tutorial. Discover how to leverage AWS Lambda to execute backend applications without worrying about server configurations or maintenance.
 ---
 <!-- vale HouseStyle.Link = NO -->
 AWS Lambda is a cloud computing solution that allows you to execute your backend applications without having to worry about server configurations or maintenance.

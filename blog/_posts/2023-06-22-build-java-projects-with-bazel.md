@@ -12,7 +12,8 @@ internal-links:
  - Projects
  - Build
  - Optimization
-excerpt: Learn how to build Java projects with Bazel, an open-source automatic build tool that offers extensibility, scalability, and flexibility. This tutorial walks you through the process of configuring your workspace, creating a build file, adding dependencies, and building your project with Bazel.
+excerpt: |
+    Learn how to build Java projects with Bazel, an open-source automatic build tool that offers extensibility, scalability, and flexibility. This tutorial walks you through the process of configuring your workspace, creating a build file, adding dependencies, and building your project with Bazel.
 ---
 
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about building Java projects with Bazel. If you want to see what can be done by combining ideas from a `Makefile` and a `Dockerfile` then [check us out](/).**

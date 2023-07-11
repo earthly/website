@@ -11,7 +11,8 @@ internal-links:
  - Docker
  - Grafana
  - Container
-excerpt: Learn how to implement Grafana in Docker containers to add observability to your infrastructure, making debugging and performance optimization easier. Discover the benefits of using Grafana, its use cases, and how to create and configure Grafana containers with persistent storage.
+excerpt: |
+    Learn how to implement Grafana in Docker containers to add observability to your infrastructure, making debugging and performance optimization easier. Discover the benefits of using Grafana, its use cases, and how to create and configure Grafana containers with persistent storage.
 ---
 
 When you have a potentially complex infrastructure, adding observability helps with easier [debugging](/blog/printf-debugging) and performance optimization.

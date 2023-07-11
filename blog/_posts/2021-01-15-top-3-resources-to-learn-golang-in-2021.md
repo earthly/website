@@ -5,7 +5,8 @@ categories:
 author: Adam
 internal-links:
    - golang
-excerpt: Looking to learn GoLang in 2021? Check out this article for the top 3 resources recommended by an experienced developer. From interactive tours to in-depth explanations, these resources will help you get started and build familiarity with the language. Plus, there are bonus resources and recommendations for further learning. Don't miss out on this valuable guide!
+excerpt: |
+    Looking to learn GoLang in 2021? Check out this article for the top 3 resources recommended by an experienced developer. From interactive tours to in-depth explanations, these resources will help you get started and build familiarity with the language. Plus, there are bonus resources and recommendations for further learning. Don't miss out on this valuable guide!
 ---
 
 ## Why Learn Go

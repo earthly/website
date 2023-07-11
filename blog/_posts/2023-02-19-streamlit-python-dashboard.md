@@ -11,7 +11,8 @@ internal-links:
  - Data
  - OpenSource
  - Matplotlib
-excerpt: Learn how to build a data dashboard with Streamlit in Python. This tutorial will teach you how to create interactive visualizations and deploy web apps for data analysis and machine learning models.
+excerpt: |
+    Learn how to build a data dashboard with Streamlit in Python. This tutorial will teach you how to create interactive visualizations and deploy web apps for data analysis and machine learning models.
 ---
 
 Streamlit is an open-source Python framework that lets you turn data scripts into shareable web apps in minutes. Streamlit makes it easy for data scientists and analysts to create and deploy interactive visualizations and dashboards for machine learning models and other Python applications.

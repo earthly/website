@@ -16,7 +16,8 @@ internal-links:
  - arm
 topic: cli
 last_modified_at: 2023-04-17
-excerpt: Learn about the changes in Homebrew installation on M1 Macs and how to migrate your packages from an Intel Mac. Discover the reasons behind the change and the potential issues you may encounter. Plus, get insights into updating old and third-party code to ensure smooth functioning.
+excerpt: |
+    Learn about the changes in Homebrew installation on M1 Macs and how to migrate your packages from an Intel Mac. Discover the reasons behind the change and the potential issues you may encounter. Plus, get insights into updating old and third-party code to ensure smooth functioning.
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and, therefore, faster. This article is about Homebrew and some quirks of using it on the Mac M1. If you doing things at command line you might like [Earthly](https://earthly.dev/). It's a pretty great open-source build tool.**
 

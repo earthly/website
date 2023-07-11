@@ -8,7 +8,8 @@ sidebar:
 author: Adam
 internal-links:
  - awk
-excerpt: Learn the basics of Awk, a powerful text processing tool, in this informative article. Discover how to use Awk to manipulate and analyze data, calculate averages, and even score books based on reviews. Whether you're a beginner or an experienced programmer, this article will help you unlock the potential of Awk.
+excerpt: |
+    Learn the basics of Awk, a powerful text processing tool, in this informative article. Discover how to use Awk to manipulate and analyze data, calculate averages, and even score books based on reviews. Whether you're a beginner or an experienced programmer, this article will help you unlock the potential of Awk.
 ---
 <iframe width="560" height="315" src="https://www.youtube.com/embed/yJek26lyXZ0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 

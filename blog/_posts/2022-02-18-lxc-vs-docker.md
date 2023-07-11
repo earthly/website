@@ -11,7 +11,8 @@ internal-links:
  - chroot
 topic: docker
 last_modified_at: 2023-04-17
-excerpt: Are you confused about whether to use LXC or Docker for your containerization needs? This article compares the two container platforms in terms of host machine utilization, simplicity, speed, security, ease of use, scalability, and tooling. Whether you're a developer looking for simplicity or a system administrator in need of control, this article will help you make an informed decision.
+excerpt: |
+    Are you confused about whether to use LXC or Docker for your containerization needs? This article compares the two container platforms in terms of host machine utilization, simplicity, speed, security, ease of use, scalability, and tooling. Whether you're a developer looking for simplicity or a system administrator in need of control, this article will help you make an informed decision.
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. If you're interested in a simple and containerized approach to building software then [check us out](/).**
 

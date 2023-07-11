@@ -7,7 +7,8 @@ author: Josh
 
 internal-links:
  - just an example
-excerpt: Learn how to set up CircleCI for your Python Django project and automate tasks like linting, running tests, and pushing Docker images to Docker Hub. CircleCI offers a free tier with generous build minutes and easy integration with GitHub or Bitbucket.
+excerpt: |
+    Learn how to set up CircleCI for your Python Django project and automate tasks like linting, running tests, and pushing Docker images to Docker Hub. CircleCI offers a free tier with generous build minutes and easy integration with GitHub or Bitbucket.
 ---
 I'm currently working on a project comparing different CI/CD pipelines, trying to get a better idea of what each offers, how they run, and how much it takes to get them set up. My first stop was CircleCi.
 

@@ -13,7 +13,8 @@ internal-links:
  - Nginx
  - Certbot
  - Analytics
-excerpt: Learn how to secure your Grafana site with HTTPS using Nginx and Certbot in this comprehensive guide. Protect your sensitive data, establish trust, and enhance your website's reputation with HTTPS encryption and enhanced security.
+excerpt: |
+    Learn how to secure your Grafana site with HTTPS using Nginx and Certbot in this comprehensive guide. Protect your sensitive data, establish trust, and enhance your website's reputation with HTTPS encryption and enhanced security.
 ---
 
 **We're [Earthly.dev](https://earthly.dev/). We make building software simpler and therefore faster using containerization. If you want to know more about building in containers then [check us out](/).**

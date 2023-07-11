@@ -10,7 +10,8 @@ internal-links:
  - PyMongo
  - Python
  - Cluster
-excerpt: 
+excerpt: |
+    Learn how to get started with PyMongo, the official MongoDB driver for Python. This tutorial covers setting up a remote MongoDB database using MongoDB Atlas, connecting to the database with PyMongo, and performing CRUD operations on the database.
 ---
 
 In this article, you will learn about MongoDB and how to use it with Python. Specifically, you will learn how to set up a remote MongoDB database using a tool called Atlas and how to connect with that database using PyMongo, the official MongoDB driver for Python. The article explains the MongoDB document model and how to perform CRUD operations on the database. Finally, the article also discusses relationships using document embeddings and foreign keys.

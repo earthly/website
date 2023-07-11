@@ -5,7 +5,8 @@ tags:
 categories:
   - Articles
 author: Adam
-excerpt: Learn about the pitfalls and discussions surrounding the use of YAML as a programming language, including the challenges of config traps, alternative solutions like Dhall and HCL, the creation of DSLs, and the benefits of using a full programming language for configuration files. Dive into the lively discussions on Reddit, Hacker News, and Lobste.rs to gain insights from the programming community.
+excerpt: |
+    Learn about the pitfalls and discussions surrounding the use of YAML as a programming language, including the challenges of config traps, alternative solutions like Dhall and HCL, the creation of DSLs, and the benefits of using a full programming language for configuration files. Dive into the lively discussions on Reddit, Hacker News, and Lobste.rs to gain insights from the programming community.
 ---
 My article about how [YAML makes a bad programming language](https://earthly.dev/blog/intercal-yaml-and-other-horrible-programming-languages/) [^1] generated a lot of great discussions online.
 

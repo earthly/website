@@ -11,7 +11,8 @@ internal-links:
  - Canary
  - CI/CD
  - Deployments
-excerpt: Learn how to use canary deployments in Kubernetes to mitigate the risks of application updates and ensure zero downtime for your users. This article explains the concept of canary deployments, how they work in Kubernetes, and how to implement them in your CI/CD pipeline.
+excerpt: |
+    Learn how to use canary deployments in Kubernetes to mitigate the risks of application updates and ensure zero downtime for your users. This article explains the concept of canary deployments, how they work in Kubernetes, and how to implement them in your CI/CD pipeline.
 ---
 
 Has a seemingly harmless update ever caused your application to fail in production? [Canary deployments](https://earthly.dev/blog/canary-deployment/), like the proverbial canary in a coal mine, can help you mitigate the chaotic outcomes of such updates that can potentially cause critical downtime.
