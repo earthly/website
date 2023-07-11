@@ -123,5 +123,4 @@ If you're building things with LLMs, I'd love to hear about any tricks you've le
 
 ## Outside Article Checklist
 
-- [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
