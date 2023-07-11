@@ -19,7 +19,7 @@ internal-links:
   - polyrepo
 topic: monorepo
 funnel: 2
-excerpt: "This article explores the debate between using a monorepo or a polyrepo structure for source code. It discusses the benefits and challenges of each approach, as well as the hybrid option. Whether you're interested in optimizing collaboration, managing dependencies, or improving release agility, this article provides insights to help you make an informed decision."
+excerpt: This article explores the debate between using a monorepo or a polyrepo structure for source code. It discusses the benefits and challenges of each approach, as well as the hybrid option. Whether you're interested in ease of importing, contributions within and across projects, viewing diffs, structure of releases, builds and CI, open-source considerations, or issue tracking, this article provides insights to help you make an informed decision.
 ---
 
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article talks about the benefits of using a Monorepo. Earthly is particularly useful if you're working with a Monorepo. [Check us out](/).**

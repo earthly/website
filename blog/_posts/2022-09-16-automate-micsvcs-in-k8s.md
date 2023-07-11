@@ -9,7 +9,7 @@ internal-links:
  - kubernetes
 topic: kubernetes
 funnel: 2
-excerpt: "Learn how to automate your microservice setup in Kubernetes using Earthly. This tutorial will guide you through the process of creating a template, building and deploying your microservices, and automating the entire setup process."
+excerpt: Learn how to automate your microservice setup in Kubernetes using Earthly. This tutorial walks you through the process of creating a template, building and deploying your microservices, and automating the entire setup process.
 ---
 
 ## Introduction

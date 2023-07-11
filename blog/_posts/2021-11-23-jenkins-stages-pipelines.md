@@ -10,7 +10,7 @@ internal-links:
  - jenkins
  - jenkins pipeline
  - jenkinsfile
-excerpt: "Learn how to automate your software development using Jenkins's deployment stages and pipeline tools. This article will guide you through the process of setting up Jenkins, creating a Jenkinsfile, and utilizing stages to automate your software deployment."
+excerpt: Learn how to automate your software development using Jenkins's deployment stages and pipeline tools. This article will guide you through the process of setting up Jenkins, creating a Jenkinsfile, and utilizing stages to automate your software deployment.
 ---
 
 The software release cycle has developed over time, from the days of moving code from one machine to another to see if it works (which was frequently error-prone), to the present day, where automated techniques ensure that software programs may be deployed quickly at any time.

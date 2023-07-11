@@ -11,7 +11,7 @@ internal-links:
  - kaniko
  - Image Container
 topic: docker
-excerpt: "This article compares three popular container image build tools: Docker, Buildah, and kaniko. It explores their features, compatibility, and community support, helping readers make an informed decision about which tool is right for them. Whether you're new to containerization or looking for alternatives to Docker, this article provides valuable insights into building container images for platforms like Kubernetes."
+excerpt: 
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. This article is about several different ways to build containers. If you're interested in a [simple way to build containers](/blog/docker-multistage) then [check us out](/).**
 

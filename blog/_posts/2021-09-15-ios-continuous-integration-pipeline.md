@@ -9,7 +9,7 @@ internal-links:
  - ios build
  - ios ci
  - io pipeline
-excerpt: "Learn how to set up a continuous integration pipeline for your iOS app using fastlane and GitHub Actions. Automate your build, test, and deployment phases to streamline your development process."
+excerpt: Learn how to set up a continuous integration pipeline for your iOS app using fastlane and GitHub Actions. Automate your build, test, and deployment phases to streamline your development process and focus on writing code.
 ---
 
 When I started writing applications in 2010, things were simple. I would write the code, perform merges, run tests (if any), build, and upload to the App Store. The test, build, and upload process didn't require much mental effort, but those tasks took time away from coding.

@@ -11,7 +11,7 @@ internal-links:
  - Yaml
  - Services
  - ClusterIP
-excerpt: "Learn how to create and use services in Kubernetes to improve the communication and scalability of your containerized applications. This article covers the different types of services available in Kubernetes, such as ClusterIP, Headless, NodePort, and LoadBalancer, and provides step-by-step instructions on how to define and configure them using YAML files. Whether you're a beginner or an experienced developer, this guide will help you understand and leverage the power of services in Kubernetes."
+excerpt: Learn how to create and use services in Kubernetes to improve the communication and scalability of your containerized applications. This article covers the different types of services, such as ClusterIP, Headless, NodePort, and LoadBalancer, and provides step-by-step instructions on how to define and configure them using YAML files. Whether you're a beginner or an experienced developer, this guide will help you understand and leverage the power of services in Kubernetes.
 ---
 
 Kubernetes is a tool for managing containerized applications, designed to [make](/blog/using-cmake) it easy to deploy and scale applications. It is designed to work with a variety of container technologies like [Docker and containerd](https://earthly.dev/blog/containerd-vs-docker/). In a Kubernetes [cluster](/blog/kube-bench), your application runs in a **Pod**. In Kubernetes, Pods are *ephemeral*; they are temporary resources which are created and destroyed as needed .

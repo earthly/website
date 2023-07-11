@@ -12,7 +12,7 @@ tags:
 toc: false
 last_modified_at: 2020-04-15
 author: Vlad
-excerpt: "Learn how Earthly is revolutionizing containerized build and testing automation with the help of industry veteran Wes McKinney, the creator of pandas and CEO of Ursa Computing. Discover how Earthly's innovative approach can save time and improve productivity for complex projects in the data engineering community."
+excerpt: Learn how Earthly is bringing repeatable builds to the world with the help of industry veteran Wes McKinney, the creator of pandas and CEO of Ursa Computing. Discover how Earthly is revolutionizing containerized build and testing automation, and why Wes is excited to be a part of this innovative project.
 internal-links:
     - pandas
     - data engineering

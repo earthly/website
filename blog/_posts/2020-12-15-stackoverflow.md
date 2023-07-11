@@ -3,7 +3,7 @@ title: "Earthly on Stack Overflow podcast"
 categories:
   - News
 author: Earthly
-excerpt: "In this episode of The Stack Overflow podcast, Adam Gordon Bell, Director of Developer Relations at Earthly, talks about the fascinating world of build systems and the importance of storytelling in engineering. Discover how Earthly is revolutionizing build scripts and why engineers love sharing stories about their assumptions."
+excerpt: In this episode of The Stack Overflow podcast, Adam Gordon Bell, Director of Developer Relations at Earthly, talks about Earthly's mission to improve build scripts and shares entertaining stories about engineers' mistaken assumptions. Tune in for a fun and insightful conversation!
 ---
 Adam was a guest on The Stack Overflow podcast:
 

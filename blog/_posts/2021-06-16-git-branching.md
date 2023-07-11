@@ -9,7 +9,7 @@ internal-links:
  - git merge
  - source control branch
  - git branch
-excerpt: "Learn about the evolution of git branching strategies, from trunk-based development to GitFlow and beyond. Follow the journey of a fictional software company, AshelySoft, as they navigate the complexities of release branches, hot fixes, and continuous integration. Gain insights into the benefits and trade-offs of different branching models and discover how cloud-based workflows have simplified the development process."
+excerpt: Learn about the evolution of git branching strategies and how they have changed over time. Follow the story of Ashley, a software developer, as she navigates different branching models and discovers the benefits and challenges of each approach. Gain insights into the importance of continuous integration, deployment, and the impact of cloud-based workflows on branching strategies.
 ---
 
 Some modern development practices are easiest to understand from a historical perspective: things started a certain way, and then steps were added or removed as conditions changed. Git branching, for example, is like that.

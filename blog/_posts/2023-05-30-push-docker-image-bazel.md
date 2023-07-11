@@ -12,7 +12,7 @@ internal-links:
  - Bazel
  - Automate
  - Scalability
-excerpt: "Learn how to use Docker images with Bazel to enhance scalability and simplify the development process. This article explores the integration of Docker and Bazel, providing step-by-step instructions on how to pull, create, and push Docker images within a Bazel workflow."
+excerpt: Learn how to use Docker images with Bazel to enhance scalability and simplify the development process. This article explores the integration of Docker and Bazel, provides a step-by-step tutorial, and highlights the benefits of using these tools together.
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. This article is about when to reach for Bazel. If you are looking for a simpler approach to building monorepos then [check us out](/).**
 

@@ -7,7 +7,7 @@ author: Josh
 
 internal-links:
  - just an example
-excerpt: "Are you an experienced technical writer or a beginner looking to improve your skills? Join us at Earthly blog as we celebrate one year of accepting outside submissions. With over 70 technical tutorials and a growing audience, this is your chance to expand your reach and get paid for your work. Don't miss out on this opportunity to learn, grow, and contribute to our community of developers."
+excerpt: Join us in celebrating one year of Write With Us! We've had the pleasure of working with over 25 talented tech writers on over 70 technical tutorials. If you're an experienced writer looking to expand your audience or a beginner eager to learn and improve, we'd love to hear from you!
 ---
 
 <div class="notice--info notice--big">

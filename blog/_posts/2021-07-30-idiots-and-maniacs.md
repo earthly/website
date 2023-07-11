@@ -5,7 +5,7 @@ categories:
 author: Adam
 sidebar:
   nav: "thoughts"
-excerpt: "In this article, the author explores the concept of observability in software development and draws parallels to driving in the snow. They discuss how perceptions of others as either idiots or maniacs can depend on the context and trade-offs made in different situations. The article offers humorous examples and encourages readers to consider the reasons behind different approaches in order to make informed judgments."
+excerpt: In this article, the author explores the concept of "idiots and maniacs" in software development, drawing parallels to driving in the snow. They discuss how different approaches and perspectives can be seen as either idiotic or maniacal depending on one's own context and experience. The article highlights the importance of understanding different trade-offs and contexts in order to make informed decisions in software development.
 ---
 ## Observability
 

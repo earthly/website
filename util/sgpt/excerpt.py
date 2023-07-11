@@ -23,12 +23,12 @@ def add_excerpt_to_md_file(filename):
     for i, line in enumerate(lines[1:], start=1):
         if line.strip().startswith('excerpt:'):
             # Replace the existing excerpt
-            lines[i] = f"excerpt: \"{excerpt}\"\n"
+            lines[i] = f"excerpt: {excerpt}\n"
             excerpt_exists = True
             break
         if not excerpt_exists and line.strip() == "---":
             # Add the excerpt before the second ---
-            lines.insert(i, f"excerpt: \"{excerpt}\"\n")
+            lines.insert(i, f"excerpt: {excerpt}\n")
             break
 
     with open(filename, 'w') as f:

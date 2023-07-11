@@ -12,7 +12,7 @@ internal-links:
  - MongoDB
  - Database
  - Schema
-excerpt: "Learn how to use advanced features of MongoDB with PyMongo, including schema validation, data modeling, and advanced queries. This tutorial will help you understand how to design and validate your database schema, insert data in bulk, and perform complex queries to retrieve and manipulate your data. Whether you're a beginner or an experienced MongoDB user, this article will provide valuable insights and techniques to enhance your MongoDB skills."
+excerpt: Learn how to use advanced features of MongoDB with PyMongo, including schema validation, data modeling patterns, and advanced queries. This tutorial will help you optimize your MongoDB database and improve the efficiency of your applications.
 ---
 
 [MongoDB](https://www.mongodb.com/) is a powerful and flexible NoSQL database that has become increasingly popular in recent years due to its ability to handle large amounts of data and its support for a wide range of data types. [PyMongo](https://pymongo.readthedocs.io/en/stable/) is a Python library that provides a simple and efficient way to interact with [MongoDB](/blog/mongodb-docker) using the Python programming language.

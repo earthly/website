@@ -9,7 +9,7 @@ author: Adam
 
 internal-links:
  - terraform import
-excerpt: "Learn how to import existing infrastructure into Terraform and manage it as code. Follow along as the author imports resources such as AWS Lambda, ECR, S3, API Gateway, and more, and shares their thought process and takeaways. Discover the benefits of using Terraform and gain insights into working with infrastructure as code."
+excerpt: Learn how to import existing infrastructure into Terraform and manage it as code. Follow along as the author imports resources such as AWS Lambda, ECR, S3, and API Gateway, and tests the infrastructure by destroying and recreating it.
 ---
 
 ## From Click Ops To GitOps

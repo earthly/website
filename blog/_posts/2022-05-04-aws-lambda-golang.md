@@ -9,7 +9,7 @@ sidebar:
 internal-links:
  - s3
  - aws lambda
-excerpt: "Learn how to build a Golang Lambda service in a container, hook it up to a REST API endpoint, and push and pull data from S3. This article covers the process of porting a Node.js lambda function to Golang, using OS dependencies in a container, and implementing caching with AWS S3."
+excerpt: Learn how to build a Golang Lambda service in a container, hook it up to a REST API endpoint, and push and pull data from S3. This article covers the process of porting a Node.js lambda function to Golang, using OS dependencies in a container, and implementing caching with AWS S3.
 ---
 
 ## Intro

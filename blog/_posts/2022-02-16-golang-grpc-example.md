@@ -20,7 +20,7 @@ internal-links:
  - protobuf vs json
 topic: go
 last_modified_at: 2023-04-17
-excerpt: "In this article, the author explores how to build a gRPC client and server in Golang. They explain the advantages of using gRPC over REST, demonstrate how to generate code using `protoc`, and provide examples of implementing the server and client. The author also discusses error handling and testing the gRPC service."
+excerpt: Learn how to build a gRPC server and client in Golang using protocol buffers. This tutorial covers the basics of gRPC, including generating code with `protoc`, implementing server-side and client-side logic, and handling errors. The use of Earthly for build and test automation is also demonstrated.
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. Earthly is open-source and written in go. So if you're interested in a simpler way to build then [check us out](/).**
 

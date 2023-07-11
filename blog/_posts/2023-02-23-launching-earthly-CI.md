@@ -6,7 +6,7 @@ toc: true
 author: Vlad
 topic: earthly
 funnel: 3
-excerpt: "Earthly CI is a new CI/CD platform that aims to revolutionize the world of continuous integration. With its fast and efficient build system, Earthly CI promises to dramatically improve build times, simplify pipeline maintenance, and support monorepos and polyrepos. If you're tired of slow builds and complex CI/CD pipelines, Earthly CI might just be the solution you've been waiting for."
+excerpt: Earthly CI is revolutionizing the world of CI/CD with its fast and efficient platform. Say goodbye to slow builds, complex pipelines, and outdated approaches. With Earthly CI, you can experience dramatic improvements in build times, simplified pipeline maintenance, and seamless integration with monorepos. Get started today and join the next generation of software development.
 ---
 
 *Hello world! We have partnered up with some [cool people in Silicon Valley](/blog/new-fundings-at-earthly/) [^1] to fix the world of CI. So today we are launching [Earthly CI](https://earthly.dev/signup/earthly-ci), the world's first CI/CD solution that merges together a CI and a build system. A more fine-grained understanding of the build allows Earthly CI to run faster than a CI ever could before. And it's not an incremental improvement. It's a dramatic improvement. We're talking 100% to 2,000% faster. Here's how we did it.*

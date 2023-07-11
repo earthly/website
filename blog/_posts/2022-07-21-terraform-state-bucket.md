@@ -7,7 +7,7 @@ sidebar:
   nav: "lambdas"
 internal-links:
  - terraform backend
-excerpt: "Learn how to store your Terraform state in an S3 bucket to avoid leaking sensitive information and manage changes made by multiple people. Follow the step-by-step guide to set up the bucket and migrate your state, ensuring a more secure and efficient infrastructure management process."
+excerpt: Learn how to store your Terraform state in an S3 bucket to avoid leaking sensitive information and manage changes made by multiple people.
 ---
 In the [previous article](/blog/terraform-lambda/) I ported all my AWS infrastructure to Terraform. But in doing so, I was left tracking all my Terraform state in a `terraform.tfstate` file. This has a number of problems.
 

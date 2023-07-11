@@ -10,7 +10,7 @@ internal-links:
  - Kube-Bench
  - Kubernetes
  - cluster
-excerpt: "Learn how to use Kube-Bench to benchmark your Kubernetes cluster against CIS benchmarks and ensure the security and best practices of your system. Find out how to install and configure Kube-Bench, understand its output, and fix any warnings or failures. Plus, discover how to automate the benchmarking process using Kubernetes jobs and explore cloud-specific benchmarks for managed Kubernetes offerings."
+excerpt: Learn how to benchmark your Kubernetes cluster against CIS benchmarks using Kube-Bench. This tutorial provides step-by-step instructions on installing and configuring Kube-Bench, running benchmarks via CLI, fixing WARN and FAIL benchmarks, and automating the process using Kubernetes jobs and cronjobs.
 ---
 
 ## What Is CIS?

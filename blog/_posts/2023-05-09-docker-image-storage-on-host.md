@@ -11,7 +11,7 @@ internal-links:
  - Hosting
  - Docker
  - Image-Management
-excerpt: "This article explains how Docker images are stored on the host machine, covering topics such as Docker images, layers, and image storage. It provides insights into the internal workings of Docker and is a must-read for developers and system administrators working with Docker."
+excerpt: Learn how Docker images are stored on the host machine and gain a deeper understanding of Docker image management. Discover the internals of Docker images, including layers, DiffIDs, and ChainIDs, and explore the storage drivers used by Docker.
 ---
 
 Developers and system administrators can create, deploy, and run distributed applications using the Docker platform. Docker containers, which offer a constant and isolated environment for applications to execute in, are running instances of [Docker](/blog/rails-with-docker) images. They [make](/blog/makefiles-on-windows) it simple to maintain, scale, and guarantee that applications function reliably across many contexts.

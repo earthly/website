@@ -4,7 +4,7 @@ categories:
   - Tutorials
 toc: true
 author: Mr. Unity Buddy
-excerpt: "Learn how to analyze your Amazon data using Python and Pandas. Find out how much you've spent, the most expensive and cheapest items you've ordered, your average expenses, and even visualize your spending habits in a graph."
+excerpt: Learn how to analyze your Amazon data using Python and Pandas. Find out how much you've spent, the most expensive and cheapest items you've ordered, your average expenses, and even visualize your spending habits in a graph.
 internal-links:
  - Amazon
  - Python

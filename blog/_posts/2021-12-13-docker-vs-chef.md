@@ -8,7 +8,7 @@ sidebar:
   nav: "docker"
 internal-links:
  - chef
-excerpt: "Learn the differences between Chef and Docker and how they can be used together in build and deployment pipelines. Discover the strengths of each tool and how they can enhance your infrastructure management and code deployment processes."
+excerpt: Learn the differences between Chef and Docker and how they can be used together in build and deployment pipelines. Discover the strengths of each tool and how they can enhance your infrastructure provisioning and containerization processes.
 ---
 [Docker](https://www.docker.com) and [Chef](https://www.chef.io) are two popular tools in the development world and are used extensively in build and deployment pipelines. However, even though they are used in similar contexts, the two are very different tools.
 

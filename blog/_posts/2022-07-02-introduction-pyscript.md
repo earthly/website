@@ -4,7 +4,7 @@ categories:
   - Tutorials
 toc: true
 author: Ukeje Goodness
-excerpt: "Learn how to use PyScript, a Python-based front-end web framework, to run Python code in HTML and implement various functionalities such as using external packages, running Python REPLs, and visualizing images in the browser. PyScript simplifies the process of running Python in the browser and has the potential to become a valuable tool in web development."
+excerpt: Learn how to use PyScript, a Python-based front-end web framework, to build powerful browser applications using an HTML interface. Discover its features, such as browser support, ecosystem support, Python-Javascript interoperability, and flexibility, and see how you can run Python code in HTML, import files and libraries, and visualize data and images in the browser. Whether you're a beginner or an expert, PyScript offers a user-friendly experience for creating web applications with Python.
 internal-links:
  - Pyhton
  - Numpy

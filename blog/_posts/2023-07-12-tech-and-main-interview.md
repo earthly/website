@@ -5,7 +5,7 @@ categories:
 toc: true
 author: Josh
 
-excerpt: "In this episode of The Tech and Main Podcast, Vlad A. Ionescu, founder of Earthly, shares his insights on removing complexity for the developer community. With his extensive background in cloud computing and experience at Google and VMWare, Vlad offers valuable tips and advice for developers looking to streamline their processes. Don't miss out on this informative conversation!"
+excerpt: In this episode of The Tech and Main Podcast, Vlad A. Ionescu, founder of Earthly, discusses his journey as a repeat entrepreneur and his expertise in cloud computing. Join host Shaun St. Hill as they delve into removing complexity for the developer community and gain valuable insights from industry experts.
 ---
 
 Vlad was on [The Tech and Main Podcast](https://anchor.fm/techandmain/episodes/Removing-Complexity-For-The-Developer-Community--Vlad-A--Ionescu-e265974)

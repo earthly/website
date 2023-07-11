@@ -10,7 +10,7 @@ internal-links:
  - csv read
 topic: python
 last_modified_at: 2023-04-17
-excerpt: "Learn how to read a CSV file in Python using both the `csv` and `pandas` libraries. Discover the different methods and techniques for reading and manipulating CSV data, including handling different delimiters. Whether you're a beginner or an experienced Python developer, this tutorial will provide you with the knowledge and skills to effectively work with CSV files in your projects."
+excerpt: Learn how to read a CSV file in Python using both the `csv` and `pandas` libraries. Discover the different methods and possible delimiter issues, and find out how to overcome them.
 ---
 <iframe width="560" height="315" src="https://www.youtube.com/embed/H-hagjt65cE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 

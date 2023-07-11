@@ -7,7 +7,7 @@ internal-links:
  - pandas
 
 author: Alex
-excerpt: "Learn why using pie charts can be misleading and ineffective for visualizing data. This article explores the limitations of pie charts and provides alternative plots, along with Python and Matplotlib code, to create more accurate and informative visualizations."
+excerpt: Learn why you should stop using pie charts and discover alternative plots that are easier to interpret. This article provides examples and code for creating horizontal bar charts, lollipop charts, and box plots using Python and Matplotlib.
 ---
 ## What's Wrong With Pie Charts
 

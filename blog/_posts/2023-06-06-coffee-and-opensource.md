@@ -7,7 +7,7 @@ author: Josh
 
 internal-links:
  - just an example
-excerpt: "Check out Vlad's interview on Coffee and Open Source, where he discusses his experience with Earthly and the world of open source. Don't miss this casual and informative conversation!"
+excerpt: In this post, Vlad shares his experience on the popular podcast "Coffee and Open Source". Join him as he discusses his insights on Earthly and the world of open source, offering a casual and engaging perspective that will leave you wanting more.
 ---
 
 Vlad was on [Coffee and Open Source](https://www.coffeeandopensource.com/guest/vlad-ionescu.html)!

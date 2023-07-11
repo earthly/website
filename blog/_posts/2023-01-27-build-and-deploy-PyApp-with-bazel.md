@@ -11,7 +11,7 @@ internal-links:
  - Bazel
  - Deploy
  - Dependencies
-excerpt: "This article introduces Bazel, a build tool that automates the build process and testing of software. It explains the benefits of using Bazel for incremental builds and provides a step-by-step tutorial on how to implement Bazel for building and deploying a Python app with Flask. The tutorial covers creating the folder structure, declaring dependencies, implementing the calculator app and unit tests, and running the application. The article also mentions an alternative solution, Earthly, for building and testing software using containers."
+excerpt: Learn how to build and deploy a Python app with Bazel, a build automation tool. This article explains the basics of Bazel and provides a step-by-step guide on implementing Bazel for building Python apps. It also demonstrates how to create a Flask app using Bazel and run unit tests. If you're interested in simplifying your software builds and deployments, this article is a must-read.
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. This article is about Bazel. If you are looking for a simpler approach to monorepo builds then [check us out](/).**
 

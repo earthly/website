@@ -3,7 +3,7 @@ title: "DevX Podcast Interview"
 categories:
   - News
 author: Earthly
-excerpt: "In this episode of the DevX podcast, Vlad discusses the challenges of the CI/CD experience and shares insights on how to fix them. If you're interested in improving your development workflow, this conversation is a must-listen!"
+excerpt: In this episode of the DevX podcast, VladAIonescu discusses the challenges of fixing the CI/CD experience. Join the conversation to gain insights on improving your development process and enhancing your workflow.
 ---
 
 Vlad was a guest on a recent episode of the [DevX podcast](https://www.buzzsprout.com/1895030/10907567).

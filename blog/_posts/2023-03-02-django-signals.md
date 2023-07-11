@@ -10,7 +10,7 @@ internal-links:
  - Django
  - Python
  - Signals
-excerpt: "Learn all about Django signals and how to use them in your project. This article covers the different types of signals, methods in the Django Signals module, and how to send, receive, and listen to signals. Plus, you'll see a practical application of signals in designing a Forgot Password endpoint."
+excerpt: Learn all about Django signals and how to use them in your project. This article covers the different types of signals, methods in the Django Signals module, and how to send, receive, and listen to signals. Plus, you'll see a practical application of signals in designing a Forgot Password endpoint.
 ---
 
 In Django, signals allow certain senders to inform a set of receivers that specific actions have occurred. Django signals are used to send and receive specific essential information whenever a data model is saved, changed, or even removed. This relates to specific past or present client-provided events that occur in real time.

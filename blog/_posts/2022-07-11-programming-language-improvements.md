@@ -5,7 +5,7 @@ categories:
 author: Adam
 sidebar:
   nav: "thoughts"
-excerpt: "In this article, the author explores the slow progress in programming language tooling and how it affects the developer experience. They discuss the importance of language tooling and how newer languages are incorporating innovative tools to improve the development process. The article highlights various aspects of tooling, such as standard libraries, package managers, documentation support, and code formatters, and how they contribute to a better developer experience."
+excerpt: Discover how programming language tooling has evolved over time and why newer languages like Go and Rust have gained popularity due to their comprehensive tooling and developer experience. Learn about innovations such as batteries-included standard libraries, third-party package repositories, documentation support, cross-platform development, package managers, and code formatters that have improved the usability of programming languages.
 ---
 The 2022 Stack Overflow developer survey is out!
 

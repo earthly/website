@@ -8,7 +8,7 @@ sidebar:
   nav: "docker"
 internal-links:
  - containerd
-excerpt: "This article compares the features and functionalities of container runtimes Docker and containerd. It explores their history, deep dives into their capabilities, and discusses their use cases in different environments. Whether you're a developer or a DevOps engineer, understanding the differences between these container runtimes can help you make informed decisions for your containerized applications."
+excerpt: Learn about the differences between container runtimes containerd and Docker in this informative article. Discover their features, how they work together, and what they can do individually, helping you make an informed decision for your containerized applications.
 ---
 <!-- vale HouseStyle.Setup = NO -->
 You can't have a conversation about modern infrastructure technology without talking about containers. They provide a simple, secure way to package, distribute, and run applications, and because they run within an isolated namespace in a computer, failures within containers won't affect the entire computing environment. And they're lighter than VMs because they don't have to abstract physical resources or require an installed operating system.

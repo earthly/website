@@ -5,7 +5,7 @@ categories:
 toc: true
 author: Vlad
 published: true
-excerpt: "In this article, the author shares their opinionated approach to interviewing engineers. They discuss the importance of problem-solving skills, the need for a "spark" in candidates, and the significance of culture fit. They also provide insights into their specific interviewing process and offer tips for improving your own."
+excerpt: In this article, the author shares their opinionated approach to interviewing engineers. They discuss the importance of problem-solving skills, the need for a "spark" in candidates, and the significance of culture fit. The article also provides insights into their specific interviewing process and offers tips for improving your own.
 ---
 Interviewing engineers is an impossible task. You have to use a few hours to figure out if a person will be a good employee for several years to come. No process will ever be perfect and the various approaches out there each come with their pros and cons.
 

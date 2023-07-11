@@ -314,18 +314,15 @@ stop-website(){ # kill what is on port 4001
     kill "$(lsof -i :4001 | tail -n 1 | awk '{ print $2 }')" 
 }
 
-lint-frontmatter(){ #requires yamllint
-# pip install --user yamllint
+lint-frontmatter(){ # Use when you are getting a weird error about frontmatter of a post
+    # pip install --user yamllint
     frontmatter | yamllint -c ./util/yamlconfig.yaml -
 }
-
-## Test Chat GPT stuff
-
-excerpt() {
-     cat "$(post)"  | sgpt --role excerpt --model gpt-3.5-turbo-16k "This is a post in markdown. I need a two sentence  summary that will make people want to read it that is casual in tone."
-}
-
 frontmatter() {
     f="${1:=$(post)}"
     ./util/frontmatter.awk < "$f"
+}
+
+excerpt() {
+    python ./util/sgpt/excerpt.py --file "$(post)"
 }

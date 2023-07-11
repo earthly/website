@@ -3,7 +3,7 @@ title: "Earthly And Vlad on Open Source Startup Podcast"
 categories:
   - News
 author: Earthly
-excerpt: "Check out the latest episode of the Open Source Startup Podcast featuring Vlad, the founder of Earthly, a powerful CI/CD framework. Learn how Earthly can revolutionize your development process and run anywhere. Don't miss this insightful conversation!"
+excerpt: Check out the latest episode of the Open Source Startup Podcast featuring Vlad, the founder of Earthly, a powerful CI/CD framework. Learn how Earthly can revolutionize your development process and run anywhere. Don't miss this insightful conversation packed with valuable insights for tech enthusiasts and startup founders alike!
 ---
 Vlad was interviewed by the [Open Source Startup Podcast](https://anchor.fm/ossstartuppodcast/episodes/E42-Earthly--a-CICD-Framework-that-Can-Run-Anywhere-e1kubdf).
 

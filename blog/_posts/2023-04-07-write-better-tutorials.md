@@ -7,7 +7,7 @@ author: Josh
 
 internal-links:
  - just an example
-excerpt: "Learn how to write effective programming tutorials by providing context, being patient, and running code. This article explores the common pitfalls of tutorial writing and offers advice on how to improve your tutorials."
+excerpt: Learn how to write effective technical tutorials by providing context, being patient, and running code. This article explores the common pitfalls of tutorial writing and offers advice on how to improve your tutorials.
 ---
 
 We've been running the Earthly blog for [over a year](/blog/write-for-us-anniversary) now, and in that time we've worked with dozens of talented writers on nearly a hundred programming tutorials.

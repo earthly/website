@@ -8,7 +8,7 @@ sidebar:
   nav: "deployment-strategies"
 internal-links:
  - spinnaker
-excerpt: "Learn how to use Spinnaker, an open-source continuous delivery platform, to automate and standardize software releases to Kubernetes clusters. This tutorial provides step-by-step instructions on setting up Spinnaker, configuring providers and storage, and deploying applications with pipelines."
+excerpt: Learn how to use Spinnaker, an open-source continuous delivery platform, to automate and standardize software releases to Kubernetes clusters. This tutorial provides step-by-step instructions on setting up Spinnaker, configuring providers and storage, and deploying applications with pipelines.
 ---
 
 [Kubernetes has become the standard for deploying and managing containerized applications](https://newrelic.com/blog/how-to-relic/what-is-kubernetes), but there are a lot of questions to be answered in the cloud native space. And they all seem to center around a single theme:

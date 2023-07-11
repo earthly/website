@@ -10,7 +10,7 @@ internal-links:
  - MD5
  - Hashing
  - Algorithm
-excerpt: "Learn how to implement cryptography and encryption in Go with this tutorial. Discover how to use hashing functions, encrypt and decrypt text, and generate cryptographically secure random values in your Go programs."
+excerpt: Learn how to implement cryptography and encryption in Go with this tutorial. Discover how to use hashing functions, encrypt and decrypt text, and generate cryptographically secure random values in your Go programs.
 ---
 
 One of the biggest concerns for modern web developers is security. Whether your goal is protecting a user's personal data, effectively authenticating a user's identity, or securing company databases, cryptography, and [encryption](/blog/encrypting-data-with-ssh-keys-and-golang) can help.

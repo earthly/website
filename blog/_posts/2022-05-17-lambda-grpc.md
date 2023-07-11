@@ -8,7 +8,7 @@ sidebar:
   nav: "lambdas"
 internal-links:
  - just an example
-excerpt: "Learn how to combine GRPC and AWS Lambdas using GoLang in this informative article. Discover different approaches, such as setting up a web proxy or using GRPC Web, and find out the limitations and workarounds for running a GRPC service on an AWS Lambda."
+excerpt: Learn how to combine GRPC, AWS Lambdas, and GoLang to create a powerful serverless architecture. Discover different approaches to proxying GRPC requests on Lambda and explore the limitations of running a GRPC service on an AWS Lambda.
 ---
 <!-- vale HouseStyle.Link = NO -->
 

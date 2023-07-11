@@ -7,7 +7,7 @@ author: Adam
 published: false
 internal-links:
  - just an example
-excerpt: "This article provides a checklist for writing and optimizing articles, ensuring that they are well-structured, error-free, and engaging. Whether you're a beginner or experienced writer, this checklist will help you create compelling content that captivates your audience."
+excerpt: Learn how to write an engaging article with this checklist that covers everything from creating a catchy title to adding captivating images and incorporating internal links. Perfect for both new and experienced writers!
 ---
 ### Writing Article Checklist
 

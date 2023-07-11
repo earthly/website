@@ -8,7 +8,7 @@ internal-links:
  - continuous testing
  - api testing
  - performance testing
-excerpt: "Learn how to implement continuous testing in your DevOps workflows using GitHub Actions. This tutorial covers the basics of continuous testing, including unit tests, code coverage reports, API testing, end-to-end testing, and performance testing. Discover how to improve the speed and quality of your software development process with continuous testing."
+excerpt: Learn how to implement continuous testing in your DevOps workflows using GitHub Actions. This tutorial covers the basics of continuous testing, including unit tests, API testing, end-to-end testing, and performance testing. Discover how to automate your testing process and improve the quality of your software releases.
 ---
 Automation testing is a crucial element to speed up your delivery process. It aims to flush out any potential regressions. The more you automate, the more confidence you gain in the quality of your software because the quality of each release of your application or library is measurable. Additionally, you reduce costs and save time and effort by reducing manual testing.
 

@@ -9,7 +9,7 @@ sidebar:
 internal-links:
   - environment variables
   - environment variable
-excerpt: "Learn the basics of bash variables and how they work in the UNIX shell. Discover how to define and access local shell variables, work with arrays, handle command-line arguments, and use environmental variables. Gain a deeper understanding of how variables function in bash and how they can be useful in your day-to-day work."
+excerpt: Learn the basics of bash variables and how they work in the UNIX shell. Discover how to define and access local shell variables, work with arrays, handle command-line arguments, and use environmental variables. Gain a solid understanding of bash variables to enhance your scripting skills.
 ---
 
 <div class="narrow-code">

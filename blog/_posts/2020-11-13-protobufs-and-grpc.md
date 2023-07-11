@@ -8,7 +8,7 @@ internal-links:
    - grpc
 topic: python
 funnel: 2
-excerpt: "Learn how to use gRPC with Golang, Python, and Ruby to implement a key-value store microservice. This article provides step-by-step instructions and code examples for each language, making it easy to understand and implement gRPC in your own projects."
+excerpt: Learn how to use gRPC with Golang, Python, and Ruby to implement a key-value store microservice. This tutorial provides step-by-step instructions and code examples for each language, making it easy to understand and follow along.
 ---
 
 I was surprised to learn that Google protocol buffers (protobufs), were first introduced nearly two decades ago. They were used internally at google as early as 2001 and were open sourced 2008.

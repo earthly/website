@@ -10,7 +10,7 @@ internal-links:
  - thought leaders
  - hedgehog
  - advice
-excerpt: "In this article, the author shares their experience as an engineering manager and the challenges they faced in dealing with advice from various stakeholders. They discuss the difference between non-contingent, one-size-fits-all advice and more nuanced, context-specific advice. Drawing on research by Philip E. Tetlock, the author argues that contingent advice from "foxes" is often more valuable than confident predictions from "hedgehogs." The article encourages readers to question universal solutions and seek advice that is tailored to their specific problems."
+excerpt: In this article, the author shares their experience as an engineering manager and the challenges they faced when trying to reach alignment and prevent objections in a project. They discuss the value of advice and the difference between non-contingent, one-size-fits-all solutions and more nuanced, contingent advice. The article also explores the research of Philip E. Tetlock on expert predictions and the importance of considering specific contexts when seeking advice. Overall, it serves as a reminder to avoid being a "thought leader" and to embrace more nuanced and contingent approaches to problem-solving.
 ---
 Here is a somewhat fictionalized personal story. I've changed the names of the people and the technology used.
 

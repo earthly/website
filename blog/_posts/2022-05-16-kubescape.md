@@ -6,7 +6,7 @@ toc: true
 author: Boemo Wame Mmopelwa
 internal-links:
  - kubescape
-excerpt: "Learn how to use Kubescape, a free tool that improves Kubernetes security by scanning clusters and detecting YAML files that are not compliant with security standards. This tutorial will guide you through the installation process and show you how to analyze the scan results to identify and fix vulnerabilities in your Kubernetes cluster."
+excerpt: Learn how to improve the security of your Kubernetes cluster with Kubescape, a free tool that scans for non-compliant YAML files and image vulnerabilities. Find out how to install Kubescape on Windows, macOS, and Linux, and discover how to analyze the scan results to identify and fix security risks.
 ---
 Kubescape is a free tool that improves Kubernetes security by scanning clusters and detecting YAML files that are not compliant with security standards such as the [National Security Agency](https://www.nsa.gov/)(NSA) guidelines. It also scans for image vulnerabilities. After scanning and analyzing your cluster it will output your cluster's risk analysis into a report in PDF or JSON format.
 

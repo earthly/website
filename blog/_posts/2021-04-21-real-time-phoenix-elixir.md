@@ -8,7 +8,7 @@ internal-links:
     - phoenix
     - elixir
     - liveview
-excerpt: "Learn how to build a real-time crowdfunding application using the Phoenix Framework and Elixir. Discover the power of Phoenix LiveView and how to leverage PubSub to create interactive, server-rendered user experiences without the need for JavaScript."
+excerpt: Learn how to build a real-time crowdfunding application using the Phoenix Framework and Elixir. Discover the power of Phoenix LiveView and how to leverage PubSub to broadcast updates to all users in real time.
 ---
 
 The Elixir language, along with the [Phoenix framework](https://phoenixframework.org/), has been growing in popularity at a quick pace, and with good reason. Phoenix offers productivity levels comparable to frameworks like Ruby on Rails while being one of the [fastest web frameworks](https://github.com/mroth/phoenix-showdown/blob/master/RESULTS_v3.md) available.

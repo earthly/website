@@ -11,7 +11,7 @@ internal-links:
   - bash script
   - shebang
 
-excerpt: "Learn how to write bash scripts and improve your scripting skills with this tutorial. From understanding shebangs to error handling and variable naming, this article covers all the essentials for creating efficient and reliable bash scripts."
+excerpt: Learn the ins and outs of bash scripting and how it can make your life easier. From understanding shebangs to error handling and variable naming, this article covers all the essentials for writing efficient and effective bash scripts.
 ---
 <div class="narrow-code">
 

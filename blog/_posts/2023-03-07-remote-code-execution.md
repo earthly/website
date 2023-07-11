@@ -10,7 +10,7 @@ internal-links:
  - just an example
 topic: engineering
 funnel: 2
-excerpt: "Learn how Earthly Compute, a remote code execution as a service, was built to handle bursty workloads and provide secure and fast remote execution for Earthly Satellites and Earthly CI. Discover the challenges faced and the optimizations made to save compute time and improve efficiency."
+excerpt: Learn how Earthly Compute, a remote code execution as a service, was built to handle bursty workloads and provide secure and fast remote execution for Earthly Satellites and Earthly CI. Discover the challenges faced and the optimizations made to save compute time and improve efficiency.
 ---
 _Earthly Compute is an internal service that customers use indirectly via [Earthly Satellites](https://earthly.dev/earthly-satellites) and [Earthly CI](https://earthly.dev/earthly-ci). Now that both Satellites and CI have been publicly announced, we have some stuff ~~to get off their chests~~ that we can finally share._
 

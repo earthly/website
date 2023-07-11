@@ -11,7 +11,7 @@ internal-links:
  - Github
  - Gitlab
  - Bash
-excerpt: "Learn how to manage your dotfiles using Git and make your environment configuration easier to maintain and synchronize across multiple machines. Say goodbye to the hassle of manually reinstalling programs and customizing settings every time you format your computer or switch machines."
+excerpt: Learn how to manage your dotfiles using Git and make your environment configuration easier to maintain and synchronize across multiple machines. Say goodbye to the hassle of manually reinstalling programs and customizing settings every time you switch computers.
 ---
 
 Have you ever found yourself in a situation where you had to format your computer and manually reinstall all the programs you were using? Or did you change machines and have to go to the page of each of the software you use and download and run the installer one by one? Or even customize some mouse/keyboard settings?

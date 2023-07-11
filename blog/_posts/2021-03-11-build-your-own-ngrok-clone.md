@@ -4,7 +4,7 @@ categories:
   - Tutorials
 toc: true
 author: Corey
-excerpt: "Learn how to create your own Ngrok clone using AWS, Nginx, and Earthly. This tutorial provides step-by-step instructions on setting up a secure, publicly accessible URL for your locally running code without the need for expensive third-party tools."
+excerpt: Learn how to create your own ngrok clone using AWS, Nginx, and Earthly. This tutorial provides a step-by-step guide to setting up a secure, publicly accessible URL for your locally running code without the recurring costs of ngrok.
 internal-links:
   - ngrok
   - ec2

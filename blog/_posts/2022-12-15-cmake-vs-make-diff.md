@@ -12,7 +12,7 @@ internal-links:
  - Make
  - Compilation
  - Dependency-Management
-excerpt: "Learn the key differences between CMake and Make, two popular tools used in the software build process. Discover how CMake offers cross-platform capabilities, better dependency handling, and a user-friendly GUI, making it a valuable choice for developers."
+excerpt: Learn the key differences between CMake and Make, two popular build automation tools. Discover how CMake's cross-platform capabilities, GUI, and better dependency handling make it a preferred choice for software development.
 ---
 
 Creating software isn't only about writing code; you need to build all the source code to get a usable software artifact. This build process can be done manually, but it can become difficult as you start working on larger projects. This is where tools like [CMake](https://cmake.org/) and [Make](https://www.make.com/en) can help you automate the process. Both of these tools allow you to go from source code to executables.

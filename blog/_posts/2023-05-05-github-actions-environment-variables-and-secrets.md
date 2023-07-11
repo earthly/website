@@ -12,7 +12,7 @@ internal-links:
  - github actions
  - github actions env
  - github actions secrets
-excerpt: "Learn how to work with environment variables and secrets in GitHub Actions. Discover when to use each method, how to define variables for different scopes, and how to store sensitive information securely. Plus, find out how Earthly can simplify your GitHub Actions builds."
+excerpt: Learn how to work with GitHub Actions environment variables and secrets in this tutorial. Discover when to use them, how to define them for different scopes, and even how to store sensitive information like certificates. Plus, find out how Earthly can simplify your GitHub Actions builds.
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. This article is about GitHub Actions, if you'd like to see how Earthly can improve your GitHub Actions builds then [check us out](/earthly-github-actions).**
 

@@ -7,7 +7,7 @@ internal-links:
   - scala
   - blog
   - blogs
-excerpt: "Looking to stay up-to-date with the latest in the Scala community? Check out this list of active Scala blogs, featuring exciting posts that cover everything from new concepts to problem-solving stories. From in-depth coverage of Scala libraries to insights on Java 15 through a Scala programmer's eyes, these blogs are a must-read for any Scala enthusiast."
+excerpt: Looking for some interesting Scala blogs to celebrate Scala's birthday? Check out this list of active Scala blogs that cover a range of topics, from library insights to Scala 3 updates and functional programming. Whether you're a beginner or an experienced developer, these blogs are sure to keep you informed and inspired.
 ---
 
 

@@ -10,7 +10,7 @@ internal-links:
    - design decision
 topic: kubernetes
 funnel: 2
-excerpt: "In this article, Corey Larson, the lead architect at Earthly, shares his insights on making technology choices for their internal platform. He emphasizes the importance of not being too "weird" and staying on the beaten path to maximize community support and long-term benefits. If you're curious about the trade-offs and considerations involved in technology selection, this casual and informative read is for you."
+excerpt: In this article, Corey Larson, lead architect at Earthly, discusses the importance of not being "weird" when making technology choices for your platform. He emphasizes the value of staying on the beaten path and only deviating when there is a strong justification, as it allows for better community support and long-term dividends.
 ---
 _Here at Earthly, we are building an internal platform on AWS using EKS. I talked to our lead architect Corey Larson about the decisions and trade offs he is making as he designs our platform._
 

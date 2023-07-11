@@ -9,7 +9,7 @@ internal-links:
  - circleci
  - github actions
  - azure
-excerpt: "Learn about continuous integration, its importance in software development, and the best practices for setting it up. Discover popular CI tools like Jenkins, CircleCI, GitHub Actions, and Azure DevOps, and how they can streamline your development process."
+excerpt: Learn the basics of continuous integration, the differences between CI and CD, and common CI tools in this informative article. Discover how CI can help developers catch bugs earlier, increase productivity, and deliver higher-quality releases.
 ---
 Continuous integration has become prevalent in software development, but it's still a complex and wide-ranging topic. In this post, we'll cover the basics of continuous integration, the differences between CI and CD, and common CI tools. You'll also find some tips for the best way to set up CI in your environment.
 

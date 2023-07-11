@@ -11,7 +11,7 @@ internal-links:
  - Security
  - Credentials
  - Application Security
-excerpt: "Learn how to secure your Kubernetes secrets effectively by enabling encryption at rest, configuring RBAC rules, and securing the ETCD data store. Protect your sensitive information and keep your secrets safe from unauthorized access."
+excerpt: Learn how to secure your Kubernetes secrets effectively by enabling encryption at rest, implementing role-based access control, and securing the ETCD data store. Protect your sensitive information and keep your secrets safe from unauthorized access.
 ---
 
 Storing application passwords, usernames, authentication tokens, and [SSH](/blog/encrypting-data-with-ssh-keys-and-golang) keys as secret objects when building in Kubernetes is safer than hard coding sensitive information into the application codebase. But here's the big question: Are these secrets secure? No, they aren't!

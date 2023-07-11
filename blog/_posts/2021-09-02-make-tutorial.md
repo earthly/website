@@ -9,7 +9,7 @@ sidebar:
 internal-links:
  - makefile tutorial
  - make tutorial
-excerpt: "Learn how to automate the software build process using `make`, a powerful tool that saves time and resources. This article covers the basics of writing a Makefile, important components such as variables and pattern rules, and provides examples of using `make` with different languages and frameworks."
+excerpt: Learn how to automate the software building process using `make`, a powerful tool that saves time and resources. This article covers the basics of writing a Makefile, important components of `make`, and provides examples of using `make` with different technologies.
 ---
 Building software is a multi-step process—installing or updating dependencies, compiling the source code, testing, installing, and so on. In any moderately sized project, you might find it difficult to perform all these steps manually. This is where `make` can help you.
 

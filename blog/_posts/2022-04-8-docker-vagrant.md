@@ -7,7 +7,7 @@ author: Gineesh Madapparambath
 
 internal-links:
  - vagrant
-excerpt: "Learn about the differences between Vagrant and Docker and how they help create consistent development environments. Discover the benefits and considerations of each technology to choose the right option for your projects."
+excerpt: Learn about the differences between Vagrant and Docker and how they help create consistent development environments. Discover the benefits and considerations of each technology to choose the right option for your projects.
 ---
 <!-- vale HouseStyle.OxfordComma = NO -->
 

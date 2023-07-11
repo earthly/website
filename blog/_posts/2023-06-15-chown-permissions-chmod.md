@@ -11,7 +11,7 @@ internal-links:
  - File Ownership
  - chown
  - Permissions
-excerpt: "Learn how to change file and directory ownership in Linux using the `chown` command. This article explains the importance of ownership in Linux, how permissions work, and provides examples of using `chown` to change ownership."
+excerpt: Learn how to change file and directory ownership in Linux using the `chown` command. This article explains the importance of ownership in Linux, how permissions work, and provides examples of using `chown` to change ownership.
 ---
 
 **We're [Earthly](https://earthly.dev/). We make building software simpler and, therefore, faster. This article is about Linux file permissions and ownership. If you enjoy doing things at the command line you might like [Earthly](https://earthly.dev/). It's a pretty great open-source build tool.**

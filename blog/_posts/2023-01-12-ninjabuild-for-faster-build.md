@@ -10,7 +10,7 @@ internal-links:
  - Ninja
  - Build
  - Build System
-excerpt: "Learn how to use Ninja, a fast build system, to speed up the building of your software projects. Ninja only rebuilds what you have modified or added, making it a time-saving tool for developers."
+excerpt: Learn how to use Ninja, a fast build system, to speed up the building of your software projects. Discover its advantages, limitations, and how to implement a Ninja build for your C++ projects.
 ---
 
 [Ninja](https://ninja-build.org/) is a compact build system with a focus on fast incremental builds. It was originally developed by [Evan Martin](https://github.com/evmar), a Google dev, partly in response to the needs of building large projects such as Google Chrome.

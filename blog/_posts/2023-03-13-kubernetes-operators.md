@@ -11,7 +11,7 @@ internal-links:
  - Operators
  - Deployment
  - MongoDB
-excerpt: "Learn how Kubernetes operators can simplify the deployment and management of complex, stateful applications in a Kubernetes cluster. Discover the benefits of using operators, how they work, and explore examples of popular Kubernetes operators."
+excerpt: Learn how Kubernetes operators can simplify the deployment and management of complex, stateful applications in a Kubernetes cluster. Discover the benefits of using operators, how they work, and explore real-world examples of popular Kubernetes operators.
 ---
 
 When you opt to use Kubernetes for application [deployment](/blog/deployment-strategies), out of the box, it provides a wide range of automation features that make it easy to deploy and manage stateless applications. However, for more complex, stateful applications, additional automation may be required to manage the specific requirements of the application.

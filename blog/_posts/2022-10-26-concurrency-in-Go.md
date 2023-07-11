@@ -9,7 +9,7 @@ internal-links:
  - Concurrency
  - Go
  - Goroutines
-excerpt: "Learn how to use concurrency in Go to run multiple processes simultaneously, improve speed and performance, and communicate between goroutines using channels. This tutorial provides a comprehensive overview of concurrency in Go and includes practical examples to help you understand and implement it effectively."
+excerpt: Learn how to use concurrency in Go to run multiple processes simultaneously, improve speed and performance, and communicate between goroutines using channels. Discover the benefits and challenges of concurrent programming in this informative article.
 ---
 
 ## Introduction

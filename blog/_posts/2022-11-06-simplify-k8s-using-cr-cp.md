@@ -9,7 +9,7 @@ internal-links:
  - Kubernetes
  - Cluster
  - Microservices
-excerpt: "Learn how to simplify your Kubernetes configuration management using custom resources and controllers. This article guides you through creating a configuration template for your microservice infrastructure and shows you how to use a custom controller to generate microservice configurations from the template."
+excerpt: Learn how to simplify your Kubernetes configuration management using custom resources and controllers. This article guides you through creating a configuration template for your microservice infrastructure and shows you how to use a custom controller to generate microservice configurations from the template.
 ---
 
 ## Introduction

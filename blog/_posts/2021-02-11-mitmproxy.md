@@ -4,7 +4,7 @@ categories:
   - Tutorials
 toc: true
 author: Adam
-excerpt: "Learn how to use mitmproxy to capture and inspect HTTP and HTTPS traffic on your machine, including requests made by Docker containers. This tutorial provides step-by-step instructions for installing and configuring mitmproxy on macOS, Windows, and Linux, as well as adding the necessary certificates to trust the proxy. With mitmproxy, you can easily debug and analyze network traffic, making it a valuable tool for developers and system administrators."
+excerpt: Learn how to use mitmproxy, a command-line tool that acts as an HTTP and HTTPS proxy, to capture and modify network traffic. This tutorial provides step-by-step instructions for installing and using mitmproxy on macOS, Linux, and Windows, as well as capturing traffic from Docker containers.
 internal-links:
    - mitmproxy
    - proxy

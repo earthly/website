@@ -10,7 +10,7 @@ internal-links:
  - Windows
  - Visual Studio
  - Automation
-excerpt: "Learn how to install and run CMake on Windows, a powerful open-source tool for build automation, testing, packaging, and software installation. Discover the pros and cons of using CMake and how it can enhance your development workflow."
+excerpt: Learn how to install and run CMake on Windows, a powerful tool for build automation, testing, packaging, and software installation. Discover the pros and cons of using CMake and how it can enhance your development workflow.
 ---
 
 CMake is an open source multiplatform tool that you can use to help with build automation, testing, packaging, and the installation of software. One of the main advantages of CMake is that it supports generating build scripts for a wide variety of platforms including [Windows](/blog/makefiles-on-windows), macOS, and Linux. This gives developers the flexibility they need when building a new project and hopefully helps speed up the build.

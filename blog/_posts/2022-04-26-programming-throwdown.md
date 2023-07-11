@@ -3,7 +3,7 @@ title: "Earthly on Programming Throwdown"
 categories:
   - News
 author: Earthly
-excerpt: "Join Adam from the CoRecursive Podcast as he co-hosts Programming Throwdown to discuss how open-source projects can thrive financially. Discover valuable insights on funding open source projects and Earthly's recent license change in this engaging episode."
+excerpt: In this week's episode of Programming Throwdown, Adam from the CoRecursive Podcast joins as a guest co-host to discuss the financial survival of open-source projects. Find out how these projects can thrive and learn about Earthly's recent license change. Don't miss this casual and informative conversation!
 ---
 [Adam](https://earthly.dev/blog/authors/adam/) co-hosted [Programming Throwdown](https://www.programmingthrowdown.com/2022/04/132-funding-open-source-projects.html) this week where the topic was funding open source projects and Earthly's recent license change.
 

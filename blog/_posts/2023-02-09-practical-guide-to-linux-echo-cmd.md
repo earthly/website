@@ -5,7 +5,7 @@ categories:
 toc: true
 author: Ubaydah Abdulwasiu
 editor: Bala Priya C
-excerpt: "Learn how to use the Linux `echo` command to display text, format output, and perform various actions. This tutorial covers the options and uses of the `echo` command, including omitting newlines, using escape characters, appending text to files, displaying variables, and changing output colors."
+excerpt: Learn how to use the `echo` command in Linux to display text, format output, add and overwrite text in files, display variables, search for files, and more. Discover the various options and practical examples of using the `echo` command, as well as how to change the output colors.
 internal-links:
  - Linux
  - Command

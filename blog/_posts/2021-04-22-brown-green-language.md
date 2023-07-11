@@ -8,7 +8,7 @@ sidebar:
   nav: "thoughts"
 toc: true
 featured: true
-excerpt: "In this article, the author explores the relationship between programming languages and the level of dread or love developers have for them. They analyze data from the Stack Overflow Developer Survey and the TIOBE index to determine if the languages people dread are more likely to be used in existing projects (brown languages) while the loved languages are more commonly used in new projects (green languages). The findings suggest that the maintenance aspect of programming languages plays a significant role in developers' preferences."
+excerpt: In this article, the author explores the concept of "brown" and "green" programming languages based on the Stack Overflow Developer Survey results. They discuss how languages used in existing projects tend to be dreaded, while languages used in new projects are loved. The article also delves into the biases and factors that contribute to these perceptions and the lifecycle of programming language hype.
 ---
 ## The Data
 

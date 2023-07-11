@@ -11,7 +11,7 @@ internal-links:
  - command line tool
 topic: cli
 funnel: 2
-excerpt: "Learn how to create a command-line JSON client in Golang to interact with a REST service for tracking physical activity. The article covers topics such as parsing command-line flags, making HTTP requests, handling JSON data, and error handling. The author also provides insights into GoLang CLI flags and converting to and from strings."
+excerpt: Learn how to build a command-line JSON client in Golang to interact with a REST service for storing workout activities. The article covers topics such as parsing command-line flags, making HTTP requests, handling errors, and testing the client.
 ---
 
 I'm an experienced software developer learning Golang by building an activity tracker[^1]. I want a low-effort way to track my physical activity, and building it seems like a fun learning project. [Last time](/blog/golang-http/) I built a REST service for storing my workout activities, and now I'm going to make a command-line client for it.

@@ -12,7 +12,7 @@ internal-links:
 - Kubernetes
 - scheduled tasks
 - Management
-excerpt: "Learn how to manage jobs and scheduled tasks in Kubernetes with Jobs and CronJobs. This tutorial covers everything from creating and managing jobs to customizing specifications and monitoring job status. Whether you're a seasoned developer or new to Kubernetes, this article will help you improve the reliability and efficiency of your application management."
+excerpt: Learn how to manage jobs and scheduled tasks in Kubernetes with this tutorial on Jobs and CronJobs. Discover how to create, monitor, and customize these resources to improve the reliability and efficiency of your Kubernetes deployments.
 ---
 
 **We're [Earthly.dev](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article covers jobs and cron jobs in Kubernetes. If you want to know more about building in containers then [check us out](/).**

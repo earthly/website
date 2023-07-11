@@ -6,7 +6,7 @@ featured: true
 author: Adam
 sidebar:
   nav: "thoughts"
-excerpt: "In this article, the author explores the world of unconventional programming languages like INTERCAL and YAML. They discuss the unique features and quirks of these languages, as well as the challenges and pitfalls of using them. The article also delves into the blurred line between configuration and programming languages, and the potential problems that arise when control flow is embedded in config files."
+excerpt: Discover the bizarre world of INTERCAL, a parody programming language that will leave you scratching your head. Then, delve into the blurred line between configuration and programming languages, and why YAML might not be the best choice for control flow.
 internal-links:
   - intercal
 ---

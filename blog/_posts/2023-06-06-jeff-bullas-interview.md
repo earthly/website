@@ -7,7 +7,7 @@ author: Josh
 
 internal-links:
  - just an example
-excerpt: "In this episode of The Jeff Bullas Show, software engineer Vlad shares his journey and insights into cloud computing, AI, and entrepreneurship. Discover the story behind Earthly and gain valuable lessons from Vlad's experience as a tech business owner. Don't miss out on this engaging conversation!"
+excerpt: In this episode of The Jeff Bullas Show, software engineer Vlad discusses his journey into the world of technology and the importance of cloud computing for businesses. He also dives into the exciting implications of AI for entrepreneurs and shares valuable lessons learned as a tech business owner. Don't miss out on this insightful conversation!
 ---
 
 Vlad was on [The Jeff Bullas Show](https://www.jeffbullas.com/podcast/)!

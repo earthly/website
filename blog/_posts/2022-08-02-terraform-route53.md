@@ -7,7 +7,7 @@ internal-links:
  - terraform route53
  - aws route53
  - route53
-excerpt: "In this article, the author shares their experience of encountering a DNS issue with their Terraform setup and how they resolved it. They explain the problem they faced, the steps they took to import their DNS records into Terraform, and the changes they made to ensure their DNS records were updated when making changes to their HTTP API. The article provides a step-by-step guide and includes code snippets for reference. If you're interested in learning how to fix DNS issues in Terraform and ensure your DNS records are up to date, this article is for you."
+excerpt: Learn how to fix DNS issues and import DNS records from AWS's Route53 into Terraform in this informative article by Adam. Discover the steps he took to update his HTTP API and ensure that his DNS records were updated as well.
 ---
 In my previous article [about terraform](/blog/terraform-lambda/) I moved my lambda and all related infrastructure to Terraform. I even tested things by destroying everything and then recreating it.
 
