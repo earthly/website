@@ -6,7 +6,8 @@ featured: true
 author: Adam
 sidebar:
   nav: "thoughts"
-excerpt: In 1972, two students learning FORTRAN came up with a fantastic new programming language called INTERCAL. 
+excerpt: |
+    Discover the bizarre world of INTERCAL, a parody programming language that will leave you scratching your head. Then, delve into the blurred line between configuration and programming languages, and why YAML might not be the best choice for control flow.
 internal-links:
   - intercal
 ---

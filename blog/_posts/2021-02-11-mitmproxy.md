@@ -4,7 +4,8 @@ categories:
   - Tutorials
 toc: true
 author: Adam
-excerpt: Have you ever wanted to see what kinds of requests a service or application on your machine is making and what kind of responses it is getting back?
+excerpt: |
+    Learn how to use mitmproxy, a command-line tool that acts as an HTTP and HTTPS proxy, to capture and modify network traffic. This tutorial provides step-by-step instructions for installing and using mitmproxy on macOS, Linux, and Windows, as well as capturing traffic from Docker containers.
 internal-links:
    - mitmproxy
    - proxy

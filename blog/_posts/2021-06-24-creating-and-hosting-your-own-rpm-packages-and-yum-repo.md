@@ -8,6 +8,8 @@ internal-links:
   - rpm
   - yum
   - dnf
+excerpt: |
+    
 ---
 
 <div class="narrow-code">
