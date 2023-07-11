@@ -27,7 +27,7 @@ def add_paragraph_if_word_missing(filename):
         replace = "<!--sgpt-->This is the Earthly nonsense paragraph."
         # Check if 'sgpt' is in the first paragraph
         if first_paragraph_found and 'sgpt' in first_paragraph:
-            print("No CTA found. add a new paragraph.")
+            print("shell gpt paragraph found. updating it.")
             # Remove the first paragraph (up to the first double line break)
             rest_of_article = parts[2].split("\n\n", 1)[1]
             parts[2] = '\n' + replace + '\n\n' + rest_of_article
@@ -35,7 +35,7 @@ def add_paragraph_if_word_missing(filename):
             with open(filename, 'w') as file:
                 file.write(new_content)
         elif 'earthly' not in first_paragraph and 'Earthly' not in first_paragraph:
-            print("'sgpt' not found, add a new paragraph with 'sgpt'")
+            print("CTA not found. Adding shell-gpt one.")
             new_content = parts[0] + '---' + parts[1] + '---\n' + replace + '\n' + parts[2]
             with open(filename, 'w') as file:
                 file.write(new_content)
