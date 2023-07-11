@@ -22,6 +22,7 @@ def add_paragraph_if_word_missing(filename):
         replace = "<!--sgpt-->This is the Earthly nonsense paragraph."
         # Check if 'sgpt' is in the first paragraph
         if first_paragraph_found and 'sgpt' in first_paragraph:
+            print("No CTA found. add a new paragraph.")
             # Remove the first paragraph (up to the first double line break)
             rest_of_article = parts[2].split("\n\n", 1)[1]
             parts[2] = '\n' + replace + '\n\n' + rest_of_article
@@ -29,16 +30,34 @@ def add_paragraph_if_word_missing(filename):
             with open(filename, 'w') as file:
                 file.write(new_content)
         elif 'earthly' not in first_paragraph and 'Earthly' not in first_paragraph:
-            # 'sgpt' not found, add a new paragraph with 'sgpt'
+            print("'sgpt' not found, add a new paragraph with 'sgpt'")
             new_content = parts[0] + '---' + parts[1] + '---\n' + replace + '\n' + parts[2]
             with open(filename, 'w') as file:
                 file.write(new_content)
+        else:
+            print("Existing hand written CTA found. Doing nothing")
 
 def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument("filename", help="The name of the markdown file")
+    parser = argparse.ArgumentParser(description='Add an excerpt to a markdown file.')
+    parser.add_argument('--dir', help='The directory containing the markdown files.')
+    parser.add_argument('--file', help='The path to a single markdown file.')
+
     args = parser.parse_args()
-    add_paragraph_if_word_missing(args.filename)
+
+    if args.dir:
+        # Process each markdown file in the directory
+        for root, dirs, files in os.walk(args.dir):
+            for file in files:
+                if file.endswith('.md'):
+                    path = os.path.join(root, file)
+                    print(f"Starting: {path}")
+                    add_paragraph_if_word_missing(os.path.join(root, file))
+                    print(f"Finishing: {path}")
+    elif args.file:
+        add_paragraph_if_word_missing(args.file)
+    else:
+        print("Please provide either --dir or --file.")
+        exit(1)
 
 if __name__ == "__main__":
     main()
