@@ -10,9 +10,11 @@ internal-links:
  - large language models
  - meaningful methods from large language
  - mining methods
+excerpt: |
+  Learn strategies for working with LLMs, such managing context, framing the problem, thinking outloud and more in this newbs’s guide to applying large language models.
 ---
 
-We're Earthly. We simplify building software with containerization. This article shares lessons from a POC Earthfile generator project. Curious about getting better build times by combining ideas from Makefile and Dockerfile? Check us out.
+**We're [Earthly](https://earthly.dev/). We simplify building software with containerization. This article shares lessons from a POC Earthfile generator project. Curious about getting better build times by combining ideas from Makefile and Dockerfile? [Check us out](https://earthly.dev/).**
 
 A month ago, the whole Earthly team was gathered in a board room at the Hilton Garden Inn in Minnesota. After a fun day of boating and then curling, we were getting down to planning. Our CEO was saying that one of the biggest adoption hurdles with Earthly is the time investment customers need to spend to change over their builds. The investment quickly pays off, but it's also not zero, and so represents an onboarding challenge.
 
@@ -22,7 +24,7 @@ This is hard because while I find Earthfiles easier to write than GHA workflows,
 
 But there was a plan for how to close this gap. The theory went that GPT-4 could fill in the details. Or at least that volunteer could find out if that was possible. And that poor volunteer, did I mention that was me?
 
-So my task was to build a translator using an LLM. It's not entirely done, but it works well so far (here it is). Building it was different than I thought, and I learned some lessons that are generally helpful if you are thinking of building on top of an LLM. Let's go through them.
+So my task was to build a translator using an LLM. It's not entirely done, but it works well so far ([here it is](https://github.com/adamgordonbell/to-earthly)). Building it was different than I thought, and I learned some lessons that are generally helpful if you are thinking of building on top of an LLM. Let's go through them.
 
 ## Context: A Scarcity in a Sea of Surplus
 
@@ -47,7 +49,7 @@ Perhaps its next training run will consume more of our docs, and it will just kn
 
 My next trick was to break my task into manageable pieces. Instead of tackling the entire conversion in one go, I introduced an intermediary step. First, translate GitHub Actions into bash scripts and Dockerfiles. Then, convert those to Earthly. This is more steps but makes the conversion somewhat mechanical.
 
-There are more generic solutions to breaking tasks up. One method – related to "Tree of Thought" prompting – is to prompt the LLM for a list of steps for accomplishing a goal: "What are the key steps to convert between a GitHub Actions build and Earthly?" Then each substep could be turned into a further query. If the first step generated was "Understand the differences between GHA and Earthly," then you'd prompt again, asking for the differences. You keep iterating on the steps until, hopefully, the substeps coalesce into a solution. For the type of very specific conversion I'm doing, though, this seems more like a gimmick than a viable solution. Instead, what really helped me make progress was understanding how to structure my messaging.
+There are more generic solutions to breaking tasks up. One method – related to ["Tree of Thought"](https://github.com/kyegomez/tree-of-thoughts) prompting – is to prompt the LLM for a list of steps for accomplishing a goal: "What are the key steps to convert between a GitHub Actions build and Earthly?" Then each substep could be turned into a further query. If the first step generated was "Understand the differences between GHA and Earthly," then you'd prompt again, asking for the differences. You keep iterating on the steps until, hopefully, the substeps coalesce into a solution. For the type of very specific conversion I'm doing, though, this seems more like a gimmick than a viable solution. Instead, what really helped me make progress was understanding how to structure my messaging.
 
 ## Messaging the Machine
 
@@ -66,9 +68,9 @@ This no-internal-dialogue insight leads to a straightforward solution to getting
 Instead of asking for an answer, I ask the LLM to translate by going through the input file line by line. It should describe what needs to be done for each translation step. Then, I request the answer, using the previous stream-of-non-conscious as part of the prompt, and I get a better, more intelligent answer. It works so well that it is my biggest tip: Tell it to think out loud! Use more tokens, and get a better answer.
 
 Here are a couple of variations on this idea:
-Experts-prompting: First, ask the transformer for 3 experts' names. Then, ask each expert to solve the problem. Finally, request the transformer to synthesize an answer from their responses.
-Critique-prompting: after generating an Earthfile, I asked GPT-4 to identify ways it can be improved. It then describes possible improvements. In this way, it finds mistakes by checking its own work.
-Structured COT: COT can be adapted to JSON output as well. If labeling data, have a JSON field called "reasoning" that contains the reasoning for the label before outputting the actual label. This will force more 'thinking' to happen before choosing the label.
+- Experts-prompting: First, ask the transformer for 3 experts' names. Then, ask each expert to solve the problem. Finally, request the transformer to synthesize an answer from their responses.
+- Critique-prompting: after generating an Earthfile, I asked GPT-4 to identify ways it can be improved. It then describes possible improvements. In this way, it finds mistakes by checking its own work.
+- Structured COT: COT can be adapted to JSON output as well. If labeling data, have a JSON field called "reasoning" that contains the reasoning for the label before outputting the actual label. This will force more 'thinking' to happen before choosing the label.
 
 <div class="wide">
 
@@ -101,7 +103,7 @@ When the LLM translated a section of GHA that wasn't relevant into made up Earth
 ![Image]({{site.images}}{{page.slug}}/HJv2EYQ.png)\
 </div>
 
-Because it is sharing its thinking with you, you can edit the thinking and feed it back as an example. In the above, I included an example where it ignored that `on` section. The LLM then learned the correct process by pattern matching on that example. This is called few-shot chain of thought, and it's an excellent way to show the LLM the correct approach for a specific example.
+Because it is sharing its thinking with you, you can edit the thinking and feed it back as an example. In the above, I included an example where it ignored that `on` section. The LLM then learned the correct process by pattern matching on that example. This is called [few-shot chain of thought](https://learnprompting.org/docs/intermediate/chain_of_thought), and it's an excellent way to show the LLM the correct approach for a specific example.
 
 (Ideally, you only need a few of these because it will quickly eat your 8k context window, and you'll have to move to fine-tuning, or beg for GPT4-32k access. Context is Precious.)
 
@@ -115,8 +117,8 @@ As a newcomer to working with large language models, I found the experience of b
 - Using "thinking out loud" prompting and asking the model to reason through problems step-by-step produced better results. The model could connect its knowledge in a gradual, guided way. Variations like "expert prompting" and "critique prompting" offer added benefits.
 - Providing corrective feedback when the model struggled was an effective way for me to teach it appropriate approaches. Examples of input, reasoning, and the correct output I wanted helped the model learn.
 
-These techniques were invaluable in helping me understand how to apply LLMs to real-world problems. The potential of these technologies, combined with thoughtful instructional approaches to overcome their limitations, is fantastic.
+These techniques were invaluable in helping me understand how to apply LLMs to [real-world problems](https://github.com/adamgordonbell/to-earthly). The potential of these technologies, combined with thoughtful instructional approaches to overcome their limitations, is fantastic.
 
-If you're building things with LLMs, I'd love to hear about any tricks you've learned. Also, if you are using GitHub actions, you should give Earthly a try. Earthly can improve the consistency of your build, so you never get a build failure you can't reproduce locally. It works great with GitHub actions. And want your GitHub Actions to be even faster? Our satellites can make that happen.
+If you're building things with LLMs, I'd love to hear about any tricks you've learned. Also, if you are using GitHub actions, you should [give Earthly a try](https://github.com/adamgordonbell/to-earthly). Earthly can improve the consistency of your build, so you never get a build failure you can't reproduce locally. It works great with GitHub actions. And want your GitHub Actions to be even faster? [Our satellites can make that happen](https://earthly.dev/pricing).
 
 {% include_html cta/bottom-cta.html %}
