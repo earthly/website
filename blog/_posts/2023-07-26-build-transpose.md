@@ -38,7 +38,7 @@ GPT-4 needs to learn more about the Earthfile format to translate it independent
 
 <div class="wide">
 
-![Among other issues. MATRIX is not a keyword in Earthly.]({{site.images}}{{page.slug}}/ffxifNz.png)
+![Among other issues. MATRIX is not a keyword in Earthly.]({{site.images}}{{page.slug}}/44xlfNz.png)
 </div>
 
 Perhaps its next training run will consume more of our docs, and it will just know how to translate, but right now, it doesn't. It does know Dockerfiles, and makefiles, though. Ask it to write a dockerfile for a project, and it does an alright job. And so, prompting it with the shorthand 'Earthly is like a Dockerfile but with targets like a makefile' was able to get me a better result. Less Earthly documentation was needed in the prompt (saving precious context window).
@@ -120,7 +120,3 @@ These techniques were invaluable in helping me understand how to apply LLMs to r
 If you're building things with LLMs, I'd love to hear about any tricks you've learned. Also, if you are using GitHub actions, you should give Earthly a try. Earthly can improve the consistency of your build, so you never get a build failure you can't reproduce locally. It works great with GitHub actions. And want your GitHub Actions to be even faster? Our satellites can make that happen.
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-- [ ] Optional: Find ways to break up content with quotes or images
