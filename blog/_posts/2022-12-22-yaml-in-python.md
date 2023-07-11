@@ -13,7 +13,6 @@ internal-links:
 excerpt: |
     Learn how to work with YAML in Python, including creating, reading, modifying, and converting YAML files. This tutorial covers the basics of YAML, the PyYAML library, and how to perform various operations on YAML files using Python. Whether you're new to YAML or looking to expand your Python skills, this tutorial is a great resource.
 ---
-<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about working with YAML in Python. Earthly is a powerful build tool that can be used in combination with YAML files to streamline the build process and improve CI/CD workflows. [Check us out](/).**
 
 If you've ever worked with Docker or Kubernetes, you'll have likely used YAML files. From configuring an application's services in [Docker](/blog/rails-with-docker) to defining Kubernetes objects like pods, services, and more—YAML is used for them all.
 
@@ -186,3 +185,297 @@ accessModes:
 - ReadWriteOnce
 hostpath:
   path: /mnt/data
+---
+apiVersion: v1
+kind: persistentVolume
+metadata:
+  name: mysql-pv
+  labels:
+    type: local
+spec:
+  storageClassName: hostpath
+capacity:
+  storage: 2Gi
+accessModes:
+- ReadWriteOnce
+hostpath:
+  path: /mnt/data
+
+~~~
+
+## Writing YAML to a File in Python
+
+![Writing YAML to a File in Python]({{site.images}}{{page.slug}}/XUdOKxs.png)\
+
+Now that you've learned how to create YAML documents from Python objects, let's learn how to write them into a file for future use.
+
+The `dump()` function optionally accepts a file object as one of its arguments. When you provide this optional file object argument, the `dump()` function will write the produced YAML document into the file.
+
+Let's define a Python function `write_yaml_to_file()` that converts a Python object into YAML and writes it into a file.
+
+~~~{.python caption="script.py"}
+def write_yaml_to_file(py_obj,filename):
+    with open(f'{filename}.yaml', 'w',) as f :
+        yaml.dump(py_obj,f,sort_keys=False) 
+    print('Written to file successfully')
+write_yaml_to_file(data, 'output')
+~~~
+
+Upon calling the `write_yaml_to_file()` function with the `data` dictionary as the argument, the YAML file will be created in the working directory, as shown below:
+
+<div class="wide">
+![Viewing *data* dictionary in *yaml* format in the file *output.yaml* ]({{site.images}}{{page.slug}}/YF5c7y0.png)
+</div>
+
+Similarly, you can call the `write_yaml_to_file()` function with `data2` as the argument to convert it to YAML and store it into a YAML file.
+
+~~~{.python caption="script.py"}
+def write_yaml_to_file(py_obj,filename) :
+    with open(f'{filename}.yaml', 'w',) as f :
+        yaml.dump_all(py_obj,f,sort_keys=False)
+    print('written to file successfully')
+write_yaml_to_file(data2, 'output2')
+
+~~~
+
+<div class="wide">
+
+![Viewing (*data2*) list of dictionaries in *yaml* format in a file (*output2.yaml*)]({{site.images}}{{page.slug}}/XoFh6F9.png)
+
+</div>
+
+## Reading YAML in Python
+
+The *yaml* module comes with a function that can be used to read YAML files. This process of YAML files with PyYAML is also referred to as loading a YAML file.
+
+### How to Read YAML Files With `safe_load()`
+
+The `safe_load()` function is used to read YAML files with the PyYAML library. The other loader you can use but is not recommended is the `load()` function.
+
+<aside>
+💡 The `safe_load()` function is used to read YAML from unreliable and untrusted sources. The `load()` function is not reliable, especially when it is used to load a supposedly malicious script. The authors recommend using the `safe_load()` function instead. However, both functions have Python objects as their return type.
+</aside>
+
+The function `read_one_block_of_yaml_data` will open a *yaml* file in read mode, load its contents using the `safe_load()` function, and print out the output as a dictionary of dictionaries.
+
+~~~{.python caption="script.py"}
+def read_one_block_of_yaml_data(filename):
+    with open(f'{filename}.yaml','r') as f:
+        output = yaml.safe_load(f)
+    print(output) 
+    
+read_one_block_of_yaml_data('output')
+~~~
+
+~~~{.yaml caption="Output"}
+{'Name': 'John Doe', 'Position': 'DevOps Engineer', \
+'Location': 'England', 'Age': '30', 'Experience': \
+{'GitHub': 'Software Engineer', 'Google': 'Technical Engineer', \
+'Linkedin': 'Data Analyst'}, 'Languages': {'Markup': ['HTML'],\
+ 'Programming': ['Python', 'JavaScript', 'Golang']}}
+~~~
+
+You can also read the contents of a YAML file, copy, and write its contents into another file. The code below will read a file *output.yaml* and write the content of that file, into another file *output3.yaml*.
+
+~~~{.python caption="script.py"}
+def read_and_write_one_block_of_yaml_data(filename,write_file):
+    with open(f'{filename}.yaml','r') as f: 
+        data = yaml.safe_load(f)
+    with open(f'{write_file}.yaml', 'w') as file:
+        yaml.dump(data,file,sort_keys=False)
+    print('done!') 
+
+read_and_write_one_block_of_yaml_data('output', 'output3')
+~~~
+
+You should have the following output:
+
+<div class="wide">
+
+![Viewing contents of read yaml *output.yaml* in file `output3.yaml`]({{site.images}}{{page.slug}}/O8N1jqh.png)
+
+</div>
+
+For reading *yaml* with multiple blocks of YAML data, you'll use the `safe_load_all()` function and convert the output to a list:
+
+~~~{.python caption="script.py"}
+def read_multiple_block_of_yaml_data(filename):
+    with open(f'{filename}.yaml','r') as f:
+        data = yaml.safe_load_all(f)
+        print(list(data)) 
+read_multiple_block_of_yaml_data('output2')
+~~~
+
+The output below shows the result as a list of dictionaries:
+
+~~~{caption="Output"}
+[{'apiVersion': 'v1', 'kind': 'persistentVolume', 'metadata': \
+{'name': 'mongodb-pv', 'labels': {'type': 'local'}}, 'spec': \
+{'storageClassName': 'hostpath'}, 'capacity': {'storage': '3Gi'}, \
+'accessModes': ['ReadWriteOnce'], 'hostpath': {'path': '/mnt/data'}}, \
+{'apiVersion': 'v1', 'kind': 'persistentVolume', 'metadata': \
+{'name': 'mysql-pv', 'labels': {'type': 'local'}}, 'spec': \
+{'storageClassName': 'hostpath'}, 'capacity': {'storage': '2Gi'}, \
+'accessModes': ['ReadWriteOnce'], 'hostpath': {'path': '/mnt/data'}}]
+~~~
+
+If you try to load the data as it is, without converting it to a list, you'll get a generator object and a memory location and not the contents of the *yaml* file:
+
+~~~{caption="Output"}
+<generator object load_all at 0x7f9e0e0b6880>
+~~~
+
+<aside>
+If you'd like to learn more about generators in Python and how they work, you can check out the [docs on Python generator expressions](https://docs.python.org/3/reference/expressions.html#generator-expressions)
+</aside>
+
+Similarly, you can also write the loaded data into another file:
+
+~~~{.python caption="script.py"}
+with open(f'{filename}.yaml','r') as f:
+        data = yaml.safe_load_all(f)
+        loaded_data = list(data)
+with open('output4.yaml', 'w') as file:
+        yaml.dump_all(loaded_data,file, sort_keys=False)
+print('done!') 
+~~~
+
+And you have the complete function as follows:
+
+~~~{.python caption="script.py"}
+def read_multiple_block_of_yaml_data(filename,write_file):
+    with open(f'{filename}.yaml','r') as f:
+        data = yaml.safe_load_all(f)
+        loaded_data = list(data)
+    with open(f'{write_file}.yaml', 'w') as file:
+        yaml.dump_all(loaded_data,file, sort_keys=False)
+    print('done!') 
+
+read_multiple_block_of_yaml_data('output2','output4')
+~~~
+
+<div class="wide">
+
+![Reading and writing multiple blocks of yaml data]({{site.images}}{{page.slug}}/nghXeJI.png)
+
+</div>
+
+## Modifying YAML in Python
+
+![Modifying YAML in Python]({{site.images}}{{page.slug}}/1Loo6M7.png)\
+
+You can modify the contents of a YAML file using the `yaml` module with PyYAML. All you have to do is ensure the function takes in the following arguments: a YAML file to read and the key with the new value.
+
+As an example, you'll replace the `data` dictionary `Age` key to have a value of `30` instead of `26`. The code below will create a function `read_and_modify_one_block_of_yaml_data` that takes in any YAML file as an argument. Then, it will read that file and modify the `Age` key to have a value of `30` and output the modified data.
+
+~~~{.python caption="script.py"}
+def read_and_modify_one_block_of_yaml_data(filename, key, value):
+    with open(f'{filename}.yaml', 'r') as f:
+        data = yaml.safe_load(f)
+        data[f'{key}'] = f'{value}' 
+        print(data) 
+    print('done!')
+    
+read_and_modify_one_block_of_yaml_data('output', key='Age', value=30)
+~~~
+
+~~~{caption="Output"}
+{'Name': 'John Doe', 'Position': 'DevOps Engineer', 'Location': \
+'England', 'Age': '30', 'Experience': {'GitHub': 'Software Engineer', \
+'Google': 'Technical Engineer', 'Linkedin': 'Data Analyst'}, \
+'Languages': {'Markup': ['HTML'], 'Programming': \
+['Python', 'JavaScript', 'Golang']}}
+done!
+~~~
+
+You can optionally write the modified data into another file. The code below writes the modified data into another file *output5.yaml*.
+
+~~~{.python caption="script.py"}
+
+ def read_and_modify_one_block_of_yaml_data(filename,write_file, key,value):
+    with open(f'{filename}.yaml', 'r') as f:
+        data = yaml.safe_load(f)
+        data[f'{key}'] = f'{value}'
+        print(data)
+    with open(f'{write_file}.yaml', 'w') as file:
+        yaml.dump(data,file,sort_keys=False)
+    print('done!') 
+    
+read_and_modify_one_block_of_yaml_data('output', \
+'output5', key='Age', value=30)
+~~~
+
+Once executed successfully, you should have the following output:
+
+<div class="wide">
+
+![Modifying yaml data with one block of yaml data]({{site.images}}{{page.slug}}/Vx75ygy.png)\
+
+</div>
+
+To illustrate further, you can modify the *output2.yaml* file also. The code below, will modify the first block of YAML data and edit the `accessMode` to be both 'ReadAccessModes' and 'ReadOnlyMany' and write it to a file *output6.yaml*
+
+~~~{.python caption="script.py"}
+
+def read_modify_save_yaml_data(filename,index,key,value,write_file):
+    with open(f'{filename}.yaml','r') as f:
+        data = yaml.safe_load_all(f)
+        loaded_data = list(data)
+        loaded_data[index][f'{key}'].append(f'{value}')
+    with open(f'{write_file}.yaml', 'w') as file:
+        yaml.dump_all(loaded_data,file, sort_keys=False)
+    print(loaded_data) 
+    
+read_modify_save_yaml_data('output2', 0, 'accessModes', \
+'ReadOnlyMany', 'output6')
+~~~
+
+Once this code is executed, you should have the following output:
+
+<div class="wide">
+
+![Viewing modified *yaml*]({{site.images}}{{page.slug}}/1zYum42.png)\
+
+</div>
+
+## How to Convert YAML to JSON in Python
+
+You can convert YAML to another data-serialization format like JSON.
+
+Firstly, you'll need to import the `json` module from the Python standard library:
+
+~~~{.bash caption=">_"}
+import json 
+~~~
+
+Now, run the code below to convert a YAML document to a JSON object and save it in a file called `output.json`.
+
+~~~{.python caption="script.py"}
+def convert_yaml_to_json(yfile, jfile):
+    with open(f'{yfile}.yaml', 'r') as f:
+        yaml_file = yaml.safe_load(f)
+    with open(f'{jfile}.json', 'w') as json_file:
+        json.dump(yaml_file, json_file, indent=3)
+    print('done!')
+convert_yaml_to_json('output','output')
+~~~
+
+<aside>
+The `json.dump()` function converts a Python object (YAML in this case) into a [JSON](/blog/convert-to-from-json) object. It takes in the following arguments: the Python object you want to convert, the JSON file you'd like to write it to, and an optional `index` value to specify how you want the JSON object to be formatted.
+</aside>
+
+Once converted successfully, you should have an `output.json` file in your working directory:
+
+<div class="wide">
+
+![new-3.png]({{site.images}}{{page.slug}}/WJ7ZS6j.png)\
+
+</div>
+
+## Conclusion
+
+In this tutorial, you have learned how to work with YAML using the Python programming language. You have used the PyYAML library to read, write, modify, and convert YAML to [JSON](/blog/convert-to-from-json. You've learned how to use the `safe_load()` and `safe_load_all()` functions to read single and multiple blocks of YAML data, respectively. To read and write both single and multiple blocks of YAML data, you used the `dump()` and `dump_all` functions, respectively. You then learned how to use the `dump()` function from Python's built-in `json` to convert a YAML document to JSON.
+
+As a next step, you may try converting [JSON to CSV](https://earthly.dev/blog/convert-to-from-json/).
+
+{% include_html cta/bottom-cta.html %}

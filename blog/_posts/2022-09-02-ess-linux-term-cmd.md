@@ -14,7 +14,6 @@ internal-links:
 excerpt: |
     Learn fifteen essential Linux terminal commands that will supercharge you as a Linux user. From searching for patterns in files to managing permissions and scheduling tasks, these commands will make your workflow optimized and efficient.
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about essential Linux terminal commands. Earthly is a powerful build for building linux tools. [Check us out](/).**
 
 [Linux](https://www.linux.org/), a powerful, free, stable, secure, and highly customizable operating system, is essential for any developer's workflow. The Linux terminal interacts with the operating system for all basic and advanced tasks. Moreover, most web servers run Linux, and tools like [Docker](/blog/rails-with-docker) work by providing an additional layer of abstraction and automation on top of Linux.
 
@@ -405,4 +404,86 @@ To remove all permissions from a file you can use `chmod -rwx [file_name]`
 The permissions can also be represented by numbers. One, two, and four stand for execute, write, and read, respectively; three, five, six, and seven indicate more than one permission and are the sum of the permissions granted, as shown in the following table:
 
 | Number | Permission Granted   | Sum              | Symbolic Equivalent |
-|
+|--------|--------------------------|---------------------------------|-----|
+| 0      | No permission            |                                 | --- |
+| 1      | Execute permission       |                                 | --x |
+| 2      | Write permission         |                                 | -w- |
+| 3      | Execute and write permission | 1 (execute) + 2 (write) = 3 | -wx |
+| 4      | Read permission          |                                 | r-- |
+| 5      | Read and execute permission | 4 (read) + 1 (execute) = 5   | r-x |
+| 6      | Read and write permission | 4 (read) + 2 (write) = 6       | rw- |
+| 7      | All permissions | 4 (read) + 2 (write) + 1 (execute) = 7   | rwx |
+
+Each entity, as described above, gets a single digit that describes their permissions. Using numeric representation, to give the file owner read, write, and execute permissions while denying all permissions to other users, you would use `700` as the chmod option. `7` for the owner, and `0`, or no permission, for the group and for people outside the group.
+
+<div class="wide">
+
+![Owner read, write, and execute permission added]({{site.images}}{{page.slug}}/VRHWrgu.png)\
+
+</div>
+
+If you wish to provide permission to every group and user, you can do so by using the code `777`, where the first `7` represents the user, the next `7` the group, and the last `7` the users outside the group, as shown below:
+
+<div class="wide">
+
+![Permission for all the groups]({{site.images}}{{page.slug}}/GBdpxed.png)\
+
+</div>
+
+Other common examples are `chmod 400 [filename]`, which prevents a file from being overwritten by allowing the owner to read it and disallowing all other permissions, and `chmod 755 [filename]`, which restricts write access to the file's creator, but allows anyone else to read and execute the file.
+
+## Crontab
+
+Crontab, short for "cron table," is a commonly used tool that runs a task at a user-designated interval. It can be used in various ways, like updating your system once a week or regularly pinging your server to check that it's running.
+
+### Syntax
+
+~~~{.bash caption=">_"}
+* * * * * CMD
+~~~
+
+The asterisks each hold a specific value, and the values are separated by a space. In order, the asterisks represent the minute, hour, day of the month, month, and day of the week. `CMD` is the command that will be run upon execution of the task.
+
+Using a comma, such as `15,45`, allows you to specify a list of values; if this value were in the minute field, for example, the task would be executed twice an hour at :15 and :45. A hyphen allows you to specify a range of values: `9-5` in the hour field would execute your task once an hour during working hours. Finally, a slash allows you to run tasks at an interval. `*/30` in the minute field will run the task every thirty minutes.
+
+To open the configuration file for the current user, you can use the following command:
+
+~~~{.bash caption=">_"}
+crontab -e
+~~~
+
+The first time you open cron, you can select the editor as per your preferences.
+
+<div class="wide">
+
+![Text editor]({{site.images}}{{page.slug}}/LqvWuwQ.png)\
+
+</div>
+
+After selecting an editor, the configuration file opens in that editor, with usage instructions at the bottom:
+
+<div class="wide">
+
+![Crontab initial configuration]({{site.images}}{{page.slug}}/5t3HxzP.png)\
+
+</div>
+
+For example, if you want to check the status of your server periodically. In this case, you can use crontab to run a Python script every thirty minutes to check if a server is up:
+
+~~~{.bash caption=">_"}
+*/30 * * * * python3 /path/to/script/server_status.py
+~~~
+
+The crontab configuration is stored in your system, and you can view them all using `crontab -l`.
+
+![All cron jobs]({{site.images}}{{page.slug}}/Vx0k7gn.png)\
+
+ If you're interested in a more complex expression, consider using something like [crontab guru](https://crontab.guru/). Scheduling can be nuanced, so before diving in, take a look at more examples in this [guide](https://linuxize.com/post/scheduling-cron-jobs-with-crontab/).
+
+## Conclusion
+
+This post went through many popular, powerful commands, including some that will make everyday tasks faster and easier. Again, the best way to remember and get comfortable with the commands is to try them, so don't be afraid—open up your terminal and test them out.
+
+When you're building an application, the best-practice approach is using a system to define your build. [Earthly](https://earthly.dev/) is a cacheable, Git-aware, parallelizable, and self-contained tool for defining build steps. It works with the tools you're already using and ensures that your builds will run the same way, no matter what they're running on.
+
+{% include_html cta/bottom-cta.html %}

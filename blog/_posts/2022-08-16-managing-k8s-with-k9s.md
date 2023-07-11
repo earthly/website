@@ -14,7 +14,6 @@ topic: kubernetes
 excerpt: |
     Learn how to manage your Kubernetes cluster more efficiently with K9s, a terminal UI tool that simplifies common `kubectl` commands and provides a faster and easier way to interact with your cluster. Install K9s on Linux, explore its features, and discover how it can help you fetch cluster metrics and manage your resources with ease.
 ---
-<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about managing Kubernetes resources using K9s. Earthly is a powerful tool for building software using containerization, and it can greatly enhance your Kubernetes workflow when combined with K9s. [Check us out](/).**
 
 [Kubectl](https://kubernetes.io/docs/reference/kubectl/) is the de facto and most popular Kubernetes [command line tool](/blog/golang-command-line) used for accessing Kubernetes cluster metrics. However, one needs to know many commands to fetch metrics and operate a Kubernetes cluster using Kubectl. Though the CLI is robust, commands can quickly become cumbersome to run. For example, here is a command for editing a deployment:
 
@@ -239,3 +238,115 @@ spec:
   clusterIP: None
   selector:
     app: nginx
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: earth
+spec:
+  selector:
+    matchLabels:
+      app: nginx
+  serviceName: "nginx"
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      terminationGracePeriodSeconds: 10
+      containers:
+      - name: nginx
+        image: k8s.gcr.io/nginx-slim:0.8
+        ports:
+        - containerPort: 80
+          name: earth
+~~~
+
+Use the following command to apply the above objects to the cluster:
+
+~~~{.bash caption=">_"}
+kubectl apply -f new-statefulset.yaml
+~~~
+
+Next, create a file called `deployment.yaml` and add the following contents:
+
+~~~{.yaml caption="deployment.yaml"}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: boemo-app
+  namespace: earth
+  labels:
+    app: boemo-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: boemo-app
+  template:
+    metadata:
+      labels:
+        app: boemo-app
+    spec:
+      containers:
+      - name: server
+        image: nginx:1.17
+        volumeMounts:
+          - name: boemo-app
+            mountPath: /usr/share/nginx/html
+        ports:
+        - containerPort: 80
+          protocol: TCP
+        resources:
+          requests:
+            cpu: 100m
+            memory: "128M"
+          limits:
+            cpu: 100m
+            memory: "256M"
+        env:
+        - name: LOG_LEVEL
+          value: "DEBUG"
+      volumes:
+      - name: boemo-app
+        configMap:
+          name: boemo-app
+          items:
+          - key: body
+            path: index.html
+~~~
+
+Apply the above object to your cluster. To get the number of resources and objects available type `:pulses` on the K9s terminal and you will get the following output:
+
+<div class="wide">
+
+![Object metrics]({{site.images}}{{page.slug}}/K2adC8G.jpg)\
+
+</div>
+
+## Draining Nodes and Killing Pods
+
+If you want to drain your node, start by searching for the node and then select it. Press `r` to drain the node. You will get the following dialogue which will request information on the grace period and timeout.
+
+<div class="wide">
+
+![Draining pods]({{site.images}}{{page.slug}}/wSZn9vS.jpg)\
+
+</div>
+
+Press `ctrl + d` to delete a resource or `ctrl+k` if you want to kill a pod:
+
+<div class="wide">
+
+![Deleting a resource]({{site.images}}{{page.slug}}/pXrRkc2.jpg)\
+
+</div>
+
+## Conclusion
+
+In this tutorial, you have learned how to install K9s on Linux, get information about your cluster, and manage your cluster using K9s.
+
+As Kubernetes third-party tools and out-tree plugins increase and simplify container orchestration procedures, Kubernetes will become easier and more friendly to beginners who don't know what containers are. K9s has definitely proved to be a third-party tool that eliminates Kubernetes pain points at a specific level. It is also a good tool to recommend to Kubernetes beginners who find managing resources using Kubectl difficult.
+
+{% include_html cta/bottom-cta.html %}

@@ -14,11 +14,10 @@ internal-links:
 excerpt: |
     Learn how to use canary deployments in Kubernetes to mitigate the risks of application updates and ensure zero downtime for your users. This article explains the concept of canary deployments, how they work in Kubernetes, and how to implement them in your CI/CD pipeline.
 ---
-<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about using canary deployments in Kubernetes. Earthly is a powerful tool that can greatly enhance your CI/CD pipeline when working with canary deployments in Kubernetes. [Check us out](/).**
 
-Has a seemingly harmless update ever caused your application to fail in production? Canary deployments, like the proverbial canary in a coal mine, can help you mitigate the chaotic outcomes of such updates that can potentially cause critical downtime.
+Has a seemingly harmless update ever caused your application to fail in production? [Canary deployments](https://earthly.dev/blog/canary-deployment/), like the proverbial canary in a coal mine, can help you mitigate the chaotic outcomes of such updates that can potentially cause critical downtime.
 
-[Canary deployments](https://earthly.dev/blog/canary-deployment/) are based on the routing of user traffic such that you can compare, test, and observe the behavior of any update for a small percentage of users. They are an important roll-out strategy in [Kubernetes](https://kubernetes.io), especially when tweaks, updates, or entirely new deployments need to be tested. A canary deployment is an improved iteration of an existing deployment that includes all the necessary dependencies and application code. It exists alongside the original deployment and allows you to compare the behavior of different versions of your application side by side. It helps you test new features on a small percentage of users with minimal downtime and less impact on user experience.
+Canary deployments are based on the routing of user traffic such that you can compare, test, and observe the behavior of any update for a small percentage of users. They are an important roll-out strategy in [Kubernetes](https://kubernetes.io), especially when tweaks, updates, or entirely new deployments need to be tested. A canary deployment is an improved iteration of an existing deployment that includes all the necessary dependencies and application code. It exists alongside the original deployment and allows you to compare the behavior of different versions of your application side by side. It helps you test new features on a small percentage of users with minimal downtime and less impact on user experience.
 
 In this article, you'll learn about canary deployments, why they're important, and how to use them to optimize your deployment process. You'll also learn how to fit them into an automatic CI/CD framework.
 
@@ -146,3 +145,94 @@ Suppose you have a running deployment. To set up a canary deployment, you need t
 As such, most of the changes will be in the ingress file for canary development:
 
 ~~~{.yaml caption=""}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: canary-deployment
+  labels:
+    app: nginx-canary
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx-canary
+  template:
+    metadata:
+      labels:
+        app: nginx-canary
+    spec:
+      containers:
+      - name: nginx-canary
+        image: nginx:1.23.1
+        ports:
+        - containerPort: 8080
+~~~
+
+Here, you create a deployment named `canary-deployment` with an updated app name and an updated image base. These labels will be used in the service creation as well. The service uses the `nginx-canary` tag and connects to pods with that label:
+
+~~~{.yaml caption=""}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: canary-service
+spec:
+  selector:
+    app: nginx-canary
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+~~~
+
+Here, you add additional annotations that tell Kubernetes that this ingress is a canary one, and the weight annotation denotes the percentage of traffic to be routed to the canary service and, from there, to the canary deployment.
+
+~~~{.yaml caption=""}
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: canary-ingress
+  label:
+    app: nginx-canary
+  annotations:
+    nginx.ingress.kubernetes.io/canary: "true"
+    nginx.ingress.kubernetes.io/canary-weight: "20"
+spec:
+  rules:
+  -host: example.com
+  - http:
+      paths:
+      - path: /
+        backend:
+          service:
+            name: canary-service
+            port:
+              number: 80
+---
+~~~
+
+In the first deployment example, any new update will immediately start replacing previous deployments for all your user bases. At the same time, you can roll back updates if any errors occur after the entire user base has been potentially affected.
+
+With canary deployment, your stable version is still online, ideally taking up or servicing a large number of users, while the canary version is given time and the user behavior is observed.
+
+## Canary Deployments in CI/CD Frameworks
+
+![Deployment]({{site.images}}{{page.slug}}/deploy.png)\
+
+You can use canary deployments in a CI/CD process, in synergy with monitoring and telemetry. In addition, CI/CD frameworks like [Earthly](https://earthly.dev/) allow you to set automated shifts between versions—with percentages of your user base utilizing different versions of your application—generating metrics that are critical to optimizing application performance and user experience.
+
+You can build a [CI/CD](/blog/ci-vs-cd) pipeline that accepts application updates, adjusts traffic for a section of users, and collates data to be compared with the stable version. With checks on which version performs better, traffic can be fully rerouted to the updated version, or the updated version can be taken offline.
+
+With Earthly, you can create templates for Kubernetes request flows and set arguments for the parameters you want to automate. These templates will be built and deployed on your Kubernetes environment by Earthly and updated with your programmed logic.
+
+For instance, the `nginx.ingress.kubernetes.io/canary-weight` annotation in the ingress template can be an automated parameter that will change with each programmed deployment cycle, increasing the percentage of users exposed to the updates.
+
+Automating your Kubernetes process is especially helpful for large architectures with multiple  [deployments](/blog/deployment-strategies) that need frequent updates. A microservices architecture where applications run on different environments and need to be configured separately will benefit from an automated deployment process. Such automated deployments also help standardize configurations and their changes over time and improve the repeatability of the process.
+
+## Conclusion
+
+In this article, you learned about canary deployments in Kubernetes, why they're needed, how they work, how they differ from normal deployments, and how to utilize them. Canary deployments can be beneficial to your production process if you create and utilize application updates in Kubernetes often.
+
+{% include_html cta/bottom-cta.html %}

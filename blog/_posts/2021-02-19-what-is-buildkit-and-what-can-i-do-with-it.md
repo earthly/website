@@ -16,8 +16,6 @@ last_modified_at: 2022-11-17
 excerpt: |
     Learn how to use BuildKit, an open-source project that turns Dockerfiles into Docker images. Discover its history, how to install it, and how to build images using BuildKit directly. Explore different output types and gain insights into the inner workings of BuildKit.
 ---
-<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about BuildKit, an open-source project that turns Dockerfiles into Docker images. Earthly is an open-source build tool that can be used in combination with BuildKit to enhance CI/CD pipelines and improve the efficiency of Docker image builds. [Check us out](/).**
-
 There is an excellent open-source project that you have probably used without realizing it. It's called BuildKit, and it is what turns a Dockerfile into a Docker image. And it doesn't just build Docker images; it can build OCI images and several other output formats. [OpenFasS](https://www.openfaas.com/) uses it to turn functions into full containers, and here at Earthly, we use it to create complete continuous integration pipelines.  
 
 You may not know you've used BuildKit because other applications wrap it. Modern versions of `docker build` can use BuildKit and it will soon be enabled by default. Today let's look at how to use BuildKit directly.
@@ -198,3 +196,201 @@ CMD ["/bin/sh"]
     --frontend=dockerfile.v0 \
     --local context=. \
     --local dockerfile=. \
+------
+ > [internal] load metadata for docker.io/agbell/test:local:
+------
+error: failed to solve: rpc error: code = Unknown desc = failed to solve 
+with frontend dockerfile.v0: failed to create LLB definition: docker.io/agbell/
+test:local: not found
+
+~~~
+
+It doesn't work. It looks like it is trying to fetch the image from docker.io, the default docker hub registry.  
+
+We can verify this by quickly [capturing requests](https://earthly.dev/blog/mitmproxy/) from buildkitd:
+
+~~~{.dockerfile caption="Dockerfile"}
+FROM moby/buildkit 
+RUN apk update && apk add curl
+WORKDIR /usr/local/share/ca-certificates
+COPY mitmproxy.crt mitmproxy.crt
+RUN update-ca-certificates
+~~~
+
+~~~{.bash caption=">_"}
+> docker build . -t buildkit:mitm
+ ...
+> docker run --rm --privileged -d --name buildkit buildkit:mitm
+6676dc0109eb3f5f09f7380d697005b6aae401bb72a4ee366f0bb279c0be137b
+~~~
+
+![404 on mitmproxy](/blog/assets/images/what-is-buildkit-and-what-can-i-do-with-it/2.png)
+
+We can see a `404`, and this confirms buildkitd is expecting registry that it can access over the network using the docker registry v2 api.
+
+## Watching It Build
+
+`buildkitd` is responsible for building the image, but `runc` does the actual execution of each step. `runc` executes each `RUN` command in your dockerfile in a separate process. runc requires Linux kernel 5.2 or later with support for cgroups, and is why buildkitd can't run natively on macOS or Windows.
+
+### What Is `runc`?
+
+> "Please note that runc is a low-level tool not designed with an end-user in mind. It is mostly employed by other higher-level container software. Therefore, unless there is some specific use case that prevents the use of tools like Docker or Podman, it is not recommended to use runc directly." - [runc readme](https://github.com/opencontainers/runc)
+
+We can watch the execution of our build by using `pstree` and `watch`. Open two side by side terminals, run `docker exec -it buildkit "/bin/watch" "-n1" "pstree -p"` in one and call `buildctl build ...` in the other. You will see `buildkitd` start a `buildkit-runc` process and then a separate process for each `RUN` command.
+
+<div class="wide">
+![Diagram of BuildKit running and pstree showing the process tree of buildkitd](/blog/assets/images/what-is-buildkit-and-what-can-i-do-with-it/3.png)
+</div>
+
+## How to See Docker Processes on macOS and Windows
+
+On macOS and Windows, Docker processes run on a separate virtual machine (VM). If you're using the default and recommended Docker Desktop, this VM is the Linux container host.  
+
+*Note: Docker Machine is an earlier approach to running Docker on macOS and Windows where the Docker VM runs in VirtualBox or VMware. Docker Machine steps may differ.*
+
+The above `exec` trick lets us see the processes inside a specific container, but to see all the processes running across all the containers, we need a different technique. To do that, we can use `docker run` and `nsenter`:
+
+~~~{.bash caption=">_"}
+docker run -it --rm --privileged --pid=host ubuntu \
+  nsenter -t 1 -m -u -n -i s
+~~~
+
+We can now use `watch` and `pstree` to view the whole container host in a single view:
+
+~~~{caption="pstree -p"}
+init(1)-+-containerd(983)
+        |-containerd-shim(1018)---acpid(1039)
+        |-containerd-shim(1064)---diagnosticsd(1085)---sh(1354)
+        |-containerd-shim(1109)-+-containerd-shim(2495)-+-buildkitd(2522)
+        |                       |                       `-sh(2614)---watch(2903)
+        |                       |-containerd-shim(4035)---sh(4062)---pstree(5058)
+        |                       |-docker-init(1136)---entrypoint.sh(1154)---logwrite(1183)---lifecycle-serve(1188)-+-logwrite(1340)---containerd(1345)
+        |                       |                                                                                  |-logwrite(1550)---dockerd(1555)
+        |                       |                                                                                  `-logwrite(1800)
+        |                       |-rpc.statd(1293)
+        |                       `-rpcbind(1265)
+        |-containerd-shim(1162)---host-timesync-d(1199)
+        |-containerd-shim(1245)---kmsg(1282)
+        |-containerd-shim(1310)---start(1347)---sntpc(1397)
+        |-containerd-shim(1374)
+        |-containerd-shim(1433)---trim-after-dele(1460)
+        |-containerd-shim(1483)---vpnkit-forwarde(1517)
+        |-memlogd(442)
+        |-rungetty.sh(429)---login(431)---sh(443)
+        |-rungetty.sh(432)---login(433)---sh(437)
+        `-vpnkit-bridge(452)
+~~~
+
+We can use pstree with a process id (pid) while a build is running to focus on just the buildkitd tree:
+
+~~~{.bash caption=">_"}
+> docker-desktop:/# watch -n 1 pstree -p 2522 
+~~~
+
+## BuildKit Output Types
+
+So far, we have only used `output type=image,` but BuildKit supports several types of outputs.
+
+We can output a tar:
+
+~~~{.bash caption=">_"}
+buildctl build \
+    --frontend=dockerfile.v0 \
+    --local context=. \
+    --local dockerfile=. \
+    --output type=tar,dest=out.tar
+ => [internal] load build definition from Dockerfile      0.0s
+ => => transferring dockerfile: 31B                       0.0s
+ => [internal] load .dockerignore                         0.0s
+ => => transferring context: 2B                           0.0s
+...
+ => exporting to client                                   2.6s
+ => => sending tarball                                    2.6s
+~~~
+
+~~~{.bash caption=">_"}
+> ls *.tar
+ out.tar
+~~~
+
+And if we try to load it as a docker image, it will fail:
+
+~~~{.bash caption=">_"}
+> docker load < out.tar
+open /var/lib/docker/tmp/docker-import-013443725/bin/json: 
+ no such file or directory
+~~~
+
+This tag isn't an image of any sort. There are no layers or manifests, just the full filesystem that the built image would contain.
+
+We can also export directly to the local filesystem:
+
+~~~{.bash caption=">_"}
+buildctl build \
+   --frontend dockerfile.v0 \
+   --local context=. \
+   --local dockerfile=. \
+   --output type=local,dest=output   
+[+] Building 2.6s (10/10) FINISHED                             
+ => [internal] load build definition from Dockerfile      0.0s
+ => => transferring dockerfile: 31B                       0.0s
+ => [internal] load .dockerignore                         0.0s
+ => => transferring context: 2B                           0.0s
+ => [internal] load metadata for docker.io/library/alpin  0.6s
+ => [auth] library/alpine:pull token for registry-1.dock  0.0s
+ => [1/5] FROM docker.io/library/alpine@sha256:08d6ca16c  0.0s
+ => => resolve docker.io/library/alpine@sha256:08d6ca16c  0.0s
+ => CACHED [2/5] RUN apk update                           0.0s
+ => CACHED [3/5] RUN apk upgrade                          0.0s
+ => CACHED [4/5] RUN apk add gcc                          0.0s
+ => CACHED [5/5] RUN sleep 1                              0.0s
+ => exporting to client                                   1.9s
+ => => copying files 121.14MB                             1.9sr
+~~~
+
+This filesystem output could be useful if we were trying to trim our image down. We could look through the output and find things to remove and use a multi-stage build to remove them. [broot](https://github.com/Canop/broot) is pretty handy for this:
+
+<div class="wide">
+![tree view of alpine image showing space used in each directory]({{site.images}}{{page.slug}}/4.png)
+</div>
+
+## What Is in `FROM scratch`
+
+One thing we can do with our newfound powers is investigate the `scratch` keyword. The scratch keyword doesn't correspond to an actual image. We can't run it:
+
+~~~{.bash caption=">_"}
+docker run scratch
+Unable to find image' scratch:latest' locally
+docker: Error response from daemon: 'scratch' is a reserved name.
+~~~
+
+However, does it actually contain anything? Is a `FROM scratch` image literally empty or are there certain required elements of unix filesystem that `scratch` provides? Let's find out:
+
+~~~{.bash caption=">_"}
+> mkdir scratch
+> cat .\Dockerfile
+FROM scratch
+> buildctl build --frontend dockerfile.v0 --local context=. --local dockerfile=. --output type=local,dest=scratch
+[+] Building 0.1s (3/3) FINISHED                               
+ => [internal] load build definition from Dockerfile      0.0s
+ => => transferring dockerfile: 31B                       0.0s
+ => [internal] load .dockerignore                         0.0s
+ => => transferring context: 2B                           0.0s
+ => exporting to client                                   0.0s
+ => => copying files                                      0.0s
+ > ls scratch
+ > br -s scratch
+ 0 ./output
+~~~
+
+It's empty! The scratch keyword indicates a completely empty docker layer. The more you know! *(The more you know is a trademark of The National Broadcasting Company, who in no way endorse this article 😀 )*
+
+## Conclusion
+
+Alright, we have now covered some ways to use BuildKit directly. BuildKit is used internally by `docker build` in modern docker versions, but using it directly unlocks some extra options.
+
+One use we covered was changing the output type. We can use BuildKit to export tars and local file systems. We also use `pstree` and `mitmProxy` to watch how buildkitd forks processes and make network requests.  
+
+There is much more to learn, though. BuildKit is behind the `docker buildx` multi-platform build feature and supports the ability to have multiple workers execute builds in parallel. BuildKit also supports caching, different frontends, docker-compose builds, faster multi-stage builds, and several other features.
+
+In a future article, we will cover creating a custom frontend and leaving the Dockerfile syntax behind.

@@ -14,8 +14,6 @@ internal-links:
 excerpt: |
     Learn the ins and outs of bash scripting and how it can make your life easier. From understanding shebangs to error handling and variable naming, this article covers all the essentials for writing efficient and effective bash scripts.
 ---
-<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about understanding bash scripting. Bash scripting is a powerful tool for automating tasks and improving productivity. [Check us out](/).**
-
 <div class="narrow-code">
 
 Bash scripts give you the ability to turn a tedious series of commands into an easily runnable and repeatable script. With many real-world use cases, like using a bash script to run a continuous deployment process, create a series of files in a folder, or download the contents of several URLs, it's worth your time to make sure bash scripting is in your programming toolbox.
@@ -209,4 +207,125 @@ read NAME
 
 In greeting.sh line 3:
 echo Hello $NAME
-           ^
+           ^---^ SC2086: Double quote to prevent globbing and word splitting.
+
+```
+
+As you can see, `shellcheck` doesn't just tell you what you need to change, but also why it needs to be changed. This is a valuable resource, not just for improving your scripts, but also to get better at writing them in the first place.
+
+With these tips, you'll end up with the following script:
+
+```bash
+#!/bin/bash
+echo "What's your name?"
+read -r NAME
+echo Hello "$NAME"
+```
+
+## Understand Variable Naming and Declaration
+
+As you saw earlier, we tried to use the `$TEST` variable. Variables can open up a whole world of opportunities, but they can also be tricky to work with. Let's go over some of the common scenarios for working with variables.
+
+### Assigning Variables
+
+Assigning a variable in bash is reasonably straightforward, using the `=` symbol. Here's an example of assigning "Hello World" to a `$TEST` variable:
+
+```bash
+$ MSG="Hello world!"
+$ echo $MSG
+Hello world!
+```
+
+### Using Variables Inside Strings
+
+There are multiple ways to use a variable that you've assigned a value. As an example, we've assigned `foo=uname`.
+
+#### Double Quotes
+
+If you want to echo the contents of a variable, then use double quotes. It will expand what's inside the variable and print that to the screen.
+
+```bash
+$ foo="uname"
+$ echo "$foo"
+uname
+```
+
+#### Single Quotes
+
+In some cases, you don't want to output a variable's contents, but maybe write an explanation of what that variable is used for. To avoid expansion, use single quotes:
+
+```bash
+$ foo="uname"
+$ echo '$foo'
+$foo
+```
+
+This also means that you don't have to manually escape the `$` symbol, which you otherwise would need to in the case of double quotes.
+
+#### Backticks
+
+The third option for using a variable is backticks. Use this when you want the contents of the variable to be run as a shell command:
+
+```bash
+$ foo="uname"
+$ echo `$foo`
+Linux
+```
+
+### Using Curly Brackets
+
+You can get away with merely referring to a variable by writing `$FOO`. However, you may want to refer to a variable inside a string or concatenate it with another. Take a look at the following example:
+
+<!-- markdownlint-disable MD014 -->
+```bash
+$ FOO="Hel"
+$ echo "$FOOlo World"
+Hello World
+```
+
+In this case, bash would try to find the variable `$FOOlo`, but we just wanted to print "Hello world." To make this work, you will have to do the following:
+
+```bash
+$ FOO="Hel"
+$ echo "${FOO}lo World"
+Hello World
+```
+
+This is most likely useful when you want to use a variable to define a path, like `/opt/${ENVIRONMENT}_build.txt`. Without curly brackets, the script would try to look up `$ENVIRONMENT_build`.
+
+## Properly Set Permissions
+
+One of the pitfalls that I remember running into time and time again when I started making bash scripts was remembering that [permissions](https://www.guru99.com/file-permissions.html) had to be set right. See, when you make a file with, for example, `touch`, it gives read/write permissions to the owner and read rights to everyone else. This means that you'll get a `permission denied` error when you try to run the script.
+
+Luckily this is easily fixed. Run `chmod +x script.sh`, and now everyone is allowed to run the script.
+
+However, do be aware that changing permissions can impose security risks. Read more about [Linux file permissions](https://www.linux.com/training-tutorials/understanding-linux-file-permissions/) before you start changing permissions blindly.
+
+## Ensure Readability
+
+One of the biggest pitfalls that newcomers run into is forgetting about readability. It's easy to get caught up in wanting to have a working script, and maybe you're even used to running everything manually in the terminal, where you want to type as little as possible.
+
+When it comes to scripts, you want to make sure that you can still easily remember what's happening six months down the line. An easy way to do this is by using more extended options (`--quiet` instead of `-q`), using longer variable names (`MESSAGE` instead of `MSG`), and writing comments.
+
+You can write commands using a hash mark, after which you can write your comment, like so:
+
+```
+# Below line will echo "Hello World!"
+echo "Hello World!"
+```
+
+## Understand Your Script in Relation to CLI
+
+When reading this article, you may have noticed that many code examples are being run straight in the terminal rather than written as a bash script. There's a good reason for that! You can write everything you write in a bash script directly in the terminal.
+
+There is one significant difference between executing a script and typing the commands in your terminal. When you run a script, it'll start up a new, clean shell in which the script will run. This means that no variables set in your terminal will interfere with your script.
+
+For example, if you set `TEST="hello"` in your shell and run `echo $TEST` inside a script, it will print nothing to your screen.
+
+<div class="no_toc_section">
+## Conclusion
+</div>
+
+At this point, you should be ready to venture into the exciting world of bash scripting. You've learned about common shebangs, what `set` does, and how it can improve the error handling of your scripts, as well as understanding some general pitfalls developers run into with bash.
+
+So go ahead and automate those annoying commands you've been typing out every day. Tired of manually going into your browser and finding the git repository you're working on? Make a script to parse the remote git URL and open it automatically. Maybe you have to rename a bunch of files. Make a script that can loop through them and rename them. The world is your oyster.

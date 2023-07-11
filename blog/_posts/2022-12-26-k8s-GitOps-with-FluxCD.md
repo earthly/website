@@ -14,7 +14,6 @@ internal-links:
 excerpt: |
     Learn how to configure a continuous delivery pipeline with Flux for your Kubernetes cluster in this tutorial. Discover how GitOps can automate application delivery and deployment using a Git repository as the single source of truth.
 ---
-<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about Kubernetes GitOps with FluxCD. Earthly is a powerful build tool that can be used to automate the build process of your Kubernetes deployments, making it a valuable tool for readers interested in GitOps and continuous delivery with Kubernetes. [Check us out](/).**
 
 Kubernetes has become the go-to tool for application [deployment](/blog/deployment-strategies). However, it does not offer features for continuous integration and delivery. Continuous delivery can be particularly helpful for larger teams that host and update deployments frequently. One approach to maintaining continuous delivery for Kubernetes is GitOps.
 
@@ -375,3 +374,231 @@ spec:
         name: 2048-game
         ports:
         - containerPort: 80
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: game-service
+  labels:
+    app: game-service
+spec:
+  ports:
+  - name: 2048-game
+    port: 80
+  selector:
+    app: 2048-game  
+~~~
+
+This YAML file defines a Deployment and a Service resource in the Kubernetes cluster. The Deployment resource creates two replicas of the 2048 game app and exposes them through a Service.
+
+The Deployment resource uses the specified image for the 2048 game app and sets the container port to 80. It uses the specified labels to identify the app and the replicas, and it uses a matching selector to determine which replicas should be part of the deployment.
+
+The Service resource exposes the 2048 game app replicas through a Service with the specified name and labels. It uses the specified port for the Service and uses the matching selector to determine which replicas should be included in the Service. This allows external clients to access the 2048 game app through the Service.
+
+### Creating a Flux Configuration Manifest
+
+The next step is to create a manifest for Flux configuration to deploy your 2048 game application. In the root folder, create a file named `flux.yaml` and add the following configuration.
+
+~~~{.bash caption=">_"}
+## change directory to the root folder (2048)
+cd ..
+~~~
+
+~~~{.yaml caption="flux.yaml"}
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: GitRepository  
+metadata:
+  name: 2048-game 
+  namespace: flux-system  
+spec:
+  interval: 1m  
+  url: https://github.com/segunjkf/2048  
+  ref:
+    branch: main 
+~~~
+
+Let's take a closer look at the fields in the above configuration:
+
+* **ApiVersion: source.toolkit.fluxcd.io/v1beta2** denotes the API version for the GitRepository resource.
+
+* **Kind: GitRepository** specifies that this is a GitRepository resource.
+
+* **Name: 2048-game** and **namespace: flux-system** are the metadata fields that specify the name of the GitRepository resource and the namespace in which the GitRepository resource should be created, respectively.
+
+* **Interval:1m** sets the GitRepository resource to update every 1 minute.
+
+* **Url<https://github.com/segunjkf/2048>** specifies the URL for the GitHub repository that contains the manifests for the 2048 game deployment. Please make sure to change this to the URL of the GitHub repository you created.
+
+* **Branch: main** specifies the branch to use for the GitRepository resource.
+
+~~~{.yaml caption="flux.yaml"}
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: 2048-game
+  namespace: flux-system
+spec:
+  interval: 5m0s 
+  path: ./apps 
+  prune: true
+  sourceRef: 
+    kind: GitRepository
+    name: 2048-game
+  targetNamespace: 2048-game 
+~~~
+
+Here,
+
+* **ApiVersion: kustomize.toolkit.fluxcd.io/v1beta2** specifies the API version for the Kustomization resource.
+
+* **Kind: Kustomization** indicates that this is a Kustomization resource.
+
+* **Metadata** specifies the metadata for the resource, including the name and namespace.
+
+* Other specifications include setting **interval: 5m0s** to update the Kustomization resource every 5 minutes and **path: ./apps** specifies the path to the Kubernetes deployment manifest in the Git repository. In this case, the path is "./apps".
+
+At this point, the flux.yaml file would look like this:
+
+~~~{.yaml caption="flux.yaml"}
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: GitRepository  
+metadata:
+  name: 2048-game 
+  namespace: flux-system  
+spec:
+  interval: 1m 
+  url: https://github.com/segunjkf/2048  
+  ref:
+    branch: main 
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: 2048-game
+  namespace: flux-system
+spec:
+  interval: 5m0s 
+  path: ./apps 
+  prune: true
+  sourceRef: 
+    kind: GitRepository
+    name: 2048-game
+  targetNamespace: 2048-game 
+~~~
+
+Now stage, commit, and push these files to your Git repository.
+
+~~~{.bash caption=">_"}
+cd ..
+
+git add .
+
+git commit -m "Automating Flux deployment" 
+
+git branch -M main
+
+## Replace the URL below with the url of the Git Repository you created 
+
+git remote add origin https://github.com/segunjkf/2048.git
+
+git push -u origin main
+~~~
+
+<div class="wide">
+
+![Pushing changes to Github]({{site.images}}{{page.slug}}/3VMrhrw.jpeg)
+
+</div>
+
+Before applying the FluxCD configuration file, you must first create a namespace called '2048-game'. This is the namespace where the 2048 game will be hosted. To do so, run the following command:
+
+~~~{.bash caption=">_"}
+kubectl create namespace 2048-game
+~~~
+
+### Deploying the Application With Flux
+
+Now apply the flux.yaml file to deploy your application with Flux:
+
+~~~{.bash caption=">_"}
+kubectl apply -f flux.yaml
+~~~
+
+After applying the Flux configuration file, you need to verify if FluxCD has deployed your application. To do so run the following command:
+
+~~~{.bash caption=">_"}
+kubectl get pods -n 2048-game
+~~~
+
+<div class="wide">
+
+![Pods in the namespace]({{site.images}}{{page.slug}}/sKNfRwQ.jpeg)
+
+</div>
+
+Now, run the below kubectl command to port-forward port 8085 to port 80, the HTTP port for the 2048 game application running in a container. Doing so provides you access to the 2048 game application via a web browser.
+
+~~~{.bash caption=">_"}
+kubectl port-forward svc\2048-service -n 2048 8086:80
+~~~
+
+As you can see below, the 2048 service has been configured and listens for incoming connections via port 80.
+
+<div class="wide">
+
+![Port forwarding Session]({{site.images}}{{page.slug}}/xjl3AmT.jpeg)
+
+</div>
+
+Finally, open your favorite web browser and navigate to one of the following endpoints:
+
+* <http://localhost:8086> (local) – If you're running a local Kubernetes cluster on your computer
+
+* <http://SERVER_IP:8086> (cloud) – If you're running a Kubernetes cluster on a VM provisioned with a cloud provider. Replace <SERVER_IP> with your server's actual IP address.
+
+![Accessing the 2048 game web UI]({{site.images}}{{page.slug}}/EsDYHXk.jpeg)
+
+### Demonstrating FluxCD's Capabilities
+
+To demonstrate FluxCD continuous delivery capabilities, you make changes to the Git repository and verify that Flux automatically applies the changes to your Kubernetes cluster.
+
+ Open your favorite web browser and navigate to `https://github.com/segunjkf/2048/edit/main/apps/2048.yaml`. Make sure you replace `segunjkf` with your GitHub username.
+
+<div class="wide">
+
+![Making Changes to Git Repository]({{site.images}}{{page.slug}}/Why4uN6.jpeg)
+
+</div>
+
+Now edit the deployment file; change the `replicas` from 2 to 3, save, and commit the changes.
+
+<div class="wide">
+
+![Edited Kubernetes Manifest]({{site.images}}{{page.slug}}/PZsT4GN.jpeg)
+
+</div>
+
+Wait for a few minutes and confirm that FluxCD has applied the new changes to your cluster. ✅
+
+~~~{.bash caption=">_"}
+kubectl get pods -n 2048-game
+~~~
+
+<div class="wide">
+
+![Pods running in the Namespace]({{site.images}}{{page.slug}}/Ep0PJ7V.jpeg)
+
+</div>
+
+To sum up, you have used Flux to set up a continuous delivery pipeline to your cluster. You deployed a Flux Prometheus and Grafana monitoring stack imperatively and the 2048-game application declaratively.
+
+FluxCD also supports deployments with [Helm](https://fluxcd.io/flux/guides/helmreleases/) and [alerting system](https://fluxcd.io/flux/guides/notifications/) for notification.
+
+## Conclusion
+
+In this guide, you learned how Flux allows you to easily automate Kubernetes manifest deployment; you can push commits to watched repositories and have them automatically applied to your cluster, following GitOps practices.
+
+In addition to GitHub, Flux can also retrieve and bootstrap Git repositories hosted on GitLab. For more information, visit the [official docs](https://fluxcd.io/docs/cmd/flux_bootstrap_gitlab/). Another popular GitOps tool is [ArgoCD](https://earthly.dev/blog/argocd-kubernetes/). Check out this [comprehensive guide](https://earthly.dev/blog/flux-vs-argo-cd/) to see how Flux and ArgoCD compare.
+
+{% include_html cta/bottom-cta.html %}

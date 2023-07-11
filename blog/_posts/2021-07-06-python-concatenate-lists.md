@@ -14,8 +14,6 @@ internal-links:
 excerpt: |
     Learn how to concatenate lists in Python using different methods, such as the `+` operator and the `extend()` function. Discover the best practices for combining lists and optimize performance in various scenarios.
 ---
-<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about concatenating lists in Python. Earthly is a powerful build tool that can optimize and streamline the process of building and managing Python projects. [Check us out](/).**
-
 <iframe width="560" height="315" src="https://www.youtube.com/embed/Ko6OESfhxbw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 <div class="narrow-code">
@@ -262,4 +260,14 @@ These are the main variants of combining lists in python. Use this table to guid
 Also, if you are looking for a nice way to standardize the processes around your python projects -- running tests, installing dependencies, and linting code -- take a look at Earthly for [Repeatable Builds](https://earthly.dev/).
 
 |  Condition  |  Solution  | Performance Optimization[^2]   |
-|
+|--- |--- |:-: |
+| 2 lists   | `x + y`   |   No  |
+| 1 large list, 1 small list   | `x.extend(y)`  |   Yes   |
+| Known number of N lists   | `x + y + z`   |   No  |
+| Unknown number of N lists | `list(chain.from_iterable(l))`   |   No  |
+| List of Lists    |  `list(chain.from_iterable(l))`     |  No  |
+| 1 large list, many small lists    |  `for l1 in l: x.extend(...)`  |   Yes  |
+
+[^1]: I did all the performance testing using Python 3.9.5 on MacOS BigSur.
+[^2]: If you don't have a performance bottleneck, clarity trumps performance, and you should ignore the performance suggestions.
+</div>

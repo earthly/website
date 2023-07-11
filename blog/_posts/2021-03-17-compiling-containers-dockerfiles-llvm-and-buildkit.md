@@ -16,8 +16,6 @@ internal-links:
   - machine code
 last_modified_at: 2022-11-17
 ---
-<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about compiling containers using Dockerfiles, LLVM, and BuildKit. Earthly is a powerful build tool that can be used in conjunction with Dockerfiles and other build systems, making it a valuable tool for developers and system administrators. [Check us out](/).**
-
 ## Introduction
 
 How are containers made? Usually, from a series of statements like `RUN`, `FROM`, and `COPY`, which are put into a Dockerfile and built. But how are those commands turned into a container image and then a running container? We can build up an intuition for how this works by understanding the phases involved and creating a container image ourselves. We will create an image programmatically and then develop a trivial syntactic frontend and use it to build an image.
@@ -449,4 +447,89 @@ Building a tokenizer and a parser as a GRPC service is beyond the scope of this 
 So far, we've only used the docker commands `FROM`, `RUN` and `COPY`. At a surface level, with its capitalized commands, Dockerfile syntax looks a lot like the programming language [INTERCAL](https://earthly.dev/blog/intercal-yaml-and-other-horrible-programming-languages/). Let change these commands to their INTERCAL equivalent and develop our own Ickfile format [^2].
 
 | Dockerfile        | Ickfile           |
-|
+| ------------- |:-------------:|
+| FROM          | COME FROM |
+| RUN           | PLEASE        |
+| COPY          | STASH      |
+
+The modules in the dockerfile frontend split the parsing of the input file into several discreet steps, with execution flowing this way:
+
+<div class="wide">
+![ControlFlow from main.go to Dockerfile2LLB to Parser to Command.go]({{site.images}}{{page.slug}}/controlflow.png)
+</div>
+
+For this tutorial, we are only going to make trivial changes to the frontend. We will leave all the stages intact and focus on customizing the existing commands to our tastes. To do this, all we need to do is change `command.go`:
+
+~~~{.go caption="command.go"}
+package command
+
+// Define constants for the command strings
+const (
+ Copy        = "stash"
+ Run         = "please"
+ From        = "come_from"
+ ...
+)
+~~~
+
+Then we build our image:
+
+~~~{.bash caption=">_"}
+> docker build . -t agbell/ick
+~~~
+
+And we can use this image as a BuildKit frontend and build images with it like this:
+
+~~~{.dockerfile caption="Ickfile"}
+#syntax=agbell/ick
+COME_FROM alpine
+STASH README.md README.md
+PLEASE echo "custom frontend built" > /built.txt"
+
+~~~
+
+~~~{.bash caption=">_"}
+> DOCKER_BUILDKIT=1 docker build . -f ./Ickfile -t ick 
+~~~
+
+And we can run it just like any other image:
+
+~~~{.bash caption=">_"}
+> docker run -it ick /bin/sh
+~~~
+
+And we can then see results of our `STASH` and `PLEASE` commands:
+
+~~~{.bash caption=">_"}
+> cat built.txt 
+custom frontend built
+> ls README.md
+README.md
+~~~
+
+I've pushed this image to Docker Hub. Anyone can start building images using our `ickfile` format by adding `#syntax=agbell/ick` to an existing Dockerfile. No manual installation is required!
+
+<div class="notice--info">
+
+### Enabling BuildKit  
+
+ BuildKit is included but not enabled by default in the current version of Docker (`version 20.10.2`). To instruct `docker build` to use BuildKit set the following environment variable `DOCKER_BUILDKIT=1`. This will not be necessary once BuildKit reaches general availability.
+</div>
+
+## Conclusion
+
+We have learned that a three-phased structure borrowed from compilers powers building images, that an intermediate representation called LLB is the key to that structure. Empowered by the knowledge, we have produced two frontends for building images.  
+
+This deep dive on frontends still leaves much to explore. If you want to learn more, I suggest looking into BuildKit workers. Workers do the actual building and are the secret behind `docker buildx`, and [multi-archtecture builds](https://docs.docker.com/buildx/working-with-buildx/). `docker build` also has support for remote workers and cache mounts, both of which can lead to faster builds.
+
+[Earthly](https://earthly.dev/) uses BuildKit internally for its repeatable build syntax. Without it, our containerized Makefile-like syntax would not be possible. If you want a saner CI process, then [you should check it out](https://earthly.dev/).
+
+There is also much more to explore about how modern compilers work. Modern compilers often have many stages and more than one intermediate representation, and they are often able to do very sophisticated optimizations.[^3]
+
+[^1]: Fun Fact: You may have heard the term transpiler or transcompiler in the past. Transpilers are compilers that transform one programming language into another. If all compilers translate from one language to another, then what makes something a transpiler?
+
+  The difference between the two is murky, but I like to think of a transpiler as something that translates from one human-readable text-based programming language to another. The java compiler translates Java code to java byte code, which is a binary format. Meanwhile, PureScript, which translates to JavaScript, is regarded as a transpiler because JavaScript is text-based.
+
+[^2]: Ick is the name of the INTERCAL compiler. Therefore Ickfile can be its Dockerfile equivalent.
+
+[^3]: If you want to learn more about optimizing compilers, Matt Godbolt's article on [C++ Optimizations](https://queue.acm.org/detail.cfm?id=3372264) is a great place to start. The book [Building an Optimizing Compiler](https://www.amazon.com/Building-Optimizing-Compiler-Bob-Morgan/dp/155558179X) is also often recommended online.
