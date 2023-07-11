@@ -68,9 +68,9 @@ This no-internal-dialogue insight leads to a straightforward solution to getting
 Instead of asking for an answer, I ask the LLM to translate by going through the input file line by line. It should describe what needs to be done for each translation step. Then, I request the answer, using the previous stream-of-non-conscious as part of the prompt, and I get a better, more intelligent answer. It works so well that it is my biggest tip: Tell it to think out loud! Use more tokens, and get a better answer.
 
 Here are a couple of variations on this idea:
-- Experts-prompting: First, ask the transformer for 3 experts' names. Then, ask each expert to solve the problem. Finally, request the transformer to synthesize an answer from their responses.
-- Critique-prompting: after generating an Earthfile, I asked GPT-4 to identify ways it can be improved. It then describes possible improvements. In this way, it finds mistakes by checking its own work.
-- Structured COT: COT can be adapted to JSON output as well. If labeling data, have a JSON field called "reasoning" that contains the reasoning for the label before outputting the actual label. This will force more 'thinking' to happen before choosing the label.
+ - Experts-prompting: First, ask the transformer for 3 experts' names. Then, ask each expert to solve the problem. Finally, request the transformer to synthesize an answer from their responses.
+ - Critique-prompting: after generating an Earthfile, I asked GPT-4 to identify ways it can be improved. It then describes possible improvements. In this way, it finds mistakes by checking its own work.
+ - Structured COT: COT can be adapted to JSON output as well. If labeling data, have a JSON field called "reasoning" that contains the reasoning for the label before outputting the actual label. This will force more 'thinking' to happen before choosing the label.
 
 <div class="wide">
 
@@ -111,11 +111,11 @@ Because it is sharing its thinking with you, you can edit the thinking and feed 
 
 As a newcomer to working with large language models, I found the experience of building an Earthfile generator both challenging and enlightening. Through trial and error, I discovered several techniques that helped me overcome limited context windows and model limitations to achieve meaningful results:
 
-- Managing context carefully was essential. I learned to keep prompts focused and only provide the minimum necessary information. Context is scarce.
-- Framing the problem in familiar terms the model already understood helped minimize the new information I had to provide. For example, describing Earthly as "like Dockerfiles with Makefiles" required less additional explanation.
-- Breaking down the complex task into smaller steps made solving the problem more manageable. Solving subproblems was less frustrating than tackling the entire end-to-end process at once.
-- Using "thinking out loud" prompting and asking the model to reason through problems step-by-step produced better results. The model could connect its knowledge in a gradual, guided way. Variations like "expert prompting" and "critique prompting" offer added benefits.
-- Providing corrective feedback when the model struggled was an effective way for me to teach it appropriate approaches. Examples of input, reasoning, and the correct output I wanted helped the model learn.
+ - Managing context carefully was essential. I learned to keep prompts focused and only provide the minimum necessary information. Context is scarce.
+ - Framing the problem in familiar terms the model already understood helped minimize the new information I had to provide. For example, describing Earthly as "like Dockerfiles with Makefiles" required less additional explanation.
+ - Breaking down the complex task into smaller steps made solving the problem more manageable. Solving subproblems was less frustrating than tackling the entire end-to-end process at once.
+ - Using "thinking out loud" prompting and asking the model to reason through problems step-by-step produced better results. The model could connect its knowledge in a gradual, guided way. Variations like "expert prompting" and "critique prompting" offer added benefits.
+ - Providing corrective feedback when the model struggled was an effective way for me to teach it appropriate approaches. Examples of input, reasoning, and the correct output I wanted helped the model learn.
 
 These techniques were invaluable in helping me understand how to apply LLMs to [real-world problems](https://github.com/adamgordonbell/to-earthly). The potential of these technologies, combined with thoughtful instructional approaches to overcome their limitations, is fantastic.
 
