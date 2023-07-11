@@ -14,7 +14,7 @@ internal-links:
 excerpt: |
     Learn how to concatenate lists in Python using different methods, such as the `+` operator and the `extend()` function. Discover the best practices for combining lists and optimize performance in various scenarios.
 ---
-<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about concatenating lists in Python. Earthly is a powerful build tool that can be used to optimize and streamline the process of building and managing Python projects. [Check us out](/).**
+<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about concatenating lists in Python. Earthly is a powerful build tool that can optimize and streamline the process of building and managing Python projects. [Check us out](/).**
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/Ko6OESfhxbw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 

@@ -14,7 +14,7 @@ topic: kubernetes
 excerpt: |
     Learn how to manage your Kubernetes cluster more efficiently with K9s, a terminal UI tool that simplifies common `kubectl` commands and provides a faster and easier way to interact with your cluster. Install K9s on Linux, explore its features, and discover how it can help you fetch cluster metrics and manage your resources with ease.
 ---
-<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about managing Kubernetes resources using K9s. K9s is a terminal UI tool that simplifies common `kubectl` commands and provides a faster and easier way to interact with your Kubernetes cluster. [Check us out](/).**
+<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about managing Kubernetes resources using K9s. Earthly is a powerful tool for building software using containerization, and it can greatly enhance your Kubernetes workflow when combined with K9s. [Check us out](/).**
 
 [Kubectl](https://kubernetes.io/docs/reference/kubectl/) is the de facto and most popular Kubernetes [command line tool](/blog/golang-command-line) used for accessing Kubernetes cluster metrics. However, one needs to know many commands to fetch metrics and operate a Kubernetes cluster using Kubectl. Though the CLI is robust, commands can quickly become cumbersome to run. For example, here is a command for editing a deployment:
 

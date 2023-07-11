@@ -14,7 +14,7 @@ internal-links:
 excerpt: |
     Learn how to use Helm, the Kubernetes package manager, to deploy complex applications quickly and efficiently. With Helm charts, you can package and distribute collections of Kubernetes YAML files, making deployments more manageable and reusable. Dive into this tutorial to deploy a MongoDB database on Kubernetes using Helm and explore the benefits of using Helm for your application deployments.
 ---
-<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about Helm, the Kubernetes package manager. Helm is a popular tool for managing Kubernetes deployments and can greatly simplify the process of deploying complex applications. [Check us out](/).**
+<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about Helm, the Kubernetes package manager. Earthly is a great tool for building and managing containerized applications, which aligns well with the use of Helm and Kubernetes in this tutorial. [Check us out](/).**
 
 For production and hybrid cloud environments, manual deployments with Kubernetes are time consuming and non reusable. As you deploy different applications with similar configuration settings to Kubernetes, you'll have a large number of YAML files and substantial duplication; this makes the applications difficult to maintain. This is where Helm can help.
 

@@ -10,7 +10,7 @@ internal-links:
 excerpt: |
     Join Vlad as he shares his insights on Earthly and the world of open source in a casual and engaging conversation on the popular podcast "Coffee and Open Source". Discover his unique perspective that will leave you wanting more.
 ---
-<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization.  Earthly is an open source build tool for CI that is gaining popularity among developers and system administrators. [Check us out](/).**
+<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about Earthly on Coffee and Open Source. Earthly is gaining popularity among developers and system administrators as an open source build tool for CI. [Check us out](/).**
 
 Vlad was on [Coffee and Open Source](https://www.coffeeandopensource.com/guest/vlad-ionescu.html)!
 

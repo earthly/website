@@ -9,7 +9,7 @@ internal-links:
 excerpt: |
     Learn how to automate the deployment process and manage complex applications using Terraform and Kubernetes. Discover the benefits of scalability, portability, and workload support that these tools offer, and how they can complement each other to streamline your infrastructure management.
 ---
-<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about deploying complex applications using Terraform and Kubernetes. Earthly is a powerful build tool that can greatly enhance the automation and management of complex application deployments, making it a valuable tool for readers interested in Terraform and Kubernetes. [Check us out](/).**
+<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about deploying complex applications. Earthly is a powerful build tool that can greatly enhance the automation and management of complex application deployments, making it a valuable tool for readers interested in Terraform and Kubernetes. [Check us out](/).**
 
 As projects increase in complexity, so do the benefits of using tools to automate parts of the deployment process. Scaling your infrastructure and deploying to multiple platforms and locations can become unmanageable without the right workflows in place.
 

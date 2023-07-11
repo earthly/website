@@ -19,7 +19,7 @@ internal-links:
     - data engineering
 as_related: false
 ---
-<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about Wes McKinney joining Earthly as an advisor. Earthly is revolutionizing containerized build and testing automation, and Wes McKinney, the creator of pandas and CEO of Ursa Computing, is excited to be a part of it. [Check us out](/).**
+<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about Wes McKinney joining Earthly as an advisor. Earthly. [Check us out](/).**
 
 In our journey to bring repeatable builds to the world, we have had the pleasure to talk to a number of industry veterans about the challenges surrounding CIs today. One person that was particularly excited about our mission is [Wes McKinney](https://en.wikipedia.org/wiki/Wes_McKinney), the author of [Python for Data Analysis](https://www.oreilly.com/library/view/python-for-data/9781449323592/), the creator of the very popular [pandas](https://github.com/pandas-dev/pandas) Python package, co-creator of [Apache Arrow](https://arrow.apache.org/), and CEO of [Ursa Computing](https://ursacomputing.com/).
 

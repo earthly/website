@@ -10,7 +10,7 @@ internal-links:
 excerpt: |
     Earthly has achieved SOC 2 Type 1 compliance, ensuring the security of users' data. Find out what this means for Earthly CI and Satellites users and their data protection in this informative article.
 ---
-<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about Earthly achieving SOC 2 Type 1 compliance. Earthly is a popular choice for users looking to ensure the security of their data and protect sensitive information, making it a valuable tool for those interested in SOC 2 compliance. [Check us out](/).**
+<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about Earthly achieving SOC 2 Type 1 compliance. Earthly is a valuable tool for users interested in SOC 2 compliance, ensuring the security of their data and protecting sensitive information. [Check us out](/).**
 
 We take security very seriously here at Earthly. As a user, you shouldn't have to worry about a SaaS vendor being sloppy with your or your business' data. We have an information security program that has been in place and communicated throughout our organization for quite some time now, but that assurance only means so much. That's why we are excited to announce that Earthly achieved SOC 2 Type 1 compliance on March 29, 2023.
 

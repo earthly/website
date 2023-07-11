@@ -19,7 +19,7 @@ topic: packaging
 excerpt: |
     Learn how to create and host your own deb packages and apt repository in this tutorial. You'll discover the step-by-step process of creating a deb package, setting up an apt repository, signing it with a PGP key, and testing it with apt commands.
 ---
-<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about creating and hosting your own deb packages and apt repo. Earthly is a powerful build tool that can be used to automate the packaging and deployment process of deb packages and apt repositories, making it a valuable tool for developers and system administrators working with Ubuntu and Debian-based systems. [Check us out](/).**
+<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about creating and hosting your own deb packages and apt repo. Earthly is a powerful build tool that can automate the packaging and deployment process of deb packages and apt repositories, making it a valuable tool for developers and system administrators working with Ubuntu and Debian-based systems. [Check us out](/).**
 
 <!-- vale HouseStyle.TLA = NO -->
 <!-- vale HouseStyle.ListStart = NO -->

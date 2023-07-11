@@ -14,7 +14,7 @@ internal-links:
 excerpt: |
     Learn fifteen essential Linux terminal commands that will supercharge you as a Linux user. From searching for patterns in files to managing permissions and scheduling tasks, these commands will make your workflow optimized and efficient.
 ---
-<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about essential Linux terminal commands. Earthly is a powerful build tool that can greatly enhance your Linux terminal workflow, making it easier to manage and automate your build processes. [Check us out](/).**
+**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about essential Linux terminal commands. Earthly is a powerful build for building linux tools. [Check us out](/).**
 
 [Linux](https://www.linux.org/), a powerful, free, stable, secure, and highly customizable operating system, is essential for any developer's workflow. The Linux terminal interacts with the operating system for all basic and advanced tasks. Moreover, most web servers run Linux, and tools like [Docker](/blog/rails-with-docker) work by providing an additional layer of abstraction and automation on top of Linux.
 

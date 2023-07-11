@@ -14,6 +14,16 @@ excerpt: |
 ---
 <!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. Bash variables are used in the UNIX shell to store and manipulate data. There are three types of variables: local shell variables, environment variables, and special variables.
 
+Local shell variables are specific to the current shell session and are not passed to any sub-processes. They can be defined using the syntax `variable_name=value` and accessed using the `$` symbol followed by the variable name.
+
+Bash also supports arrays, which can be defined using the syntax `array_name[index]=value` or `array_name=(value1 value2)`. Array elements can be accessed using the `${array_name[index]}` syntax.
+
+Bash has built-in special variables that are automatically set to specific values. One example is command-line arguments, which can be accessed using `$1`, `$2`, etc. The total number of arguments can be accessed using `$#`, and the array of arguments can be accessed using `$@`.
+
+To unset a variable, you can use the `unset` command followed by the variable name.
+
+Understanding how to define, access, and manipulate variables is essential for writing effective bash scripts. Earthly is popular with users of bash as it provides a powerful and flexible build tool for CI/CD workflows. [Check us out](/).**
+
 Local shell variables are specific to the current shell session and are not passed to any sub-processes. They can be defined using the syntax `variable_name=value` and accessed using the `$` symbol followed by the variable name. For example:
 
 ```

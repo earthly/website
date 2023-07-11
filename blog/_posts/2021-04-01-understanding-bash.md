@@ -14,7 +14,7 @@ internal-links:
 excerpt: |
     Learn the ins and outs of bash scripting and how it can make your life easier. From understanding shebangs to error handling and variable naming, this article covers all the essentials for writing efficient and effective bash scripts.
 ---
-<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about understanding bash scripting. Earthly is popular with users of bash scripting as it provides a powerful and efficient way to build and manage complex workflows, making it a valuable tool for automating tasks and improving productivity. [Check us out](/).**
+<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about understanding bash scripting. Bash scripting is a powerful tool for automating tasks and improving productivity. [Check us out](/).**
 
 <div class="narrow-code">
 
