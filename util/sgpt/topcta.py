@@ -6,14 +6,14 @@ from textwrap import dedent
 def build_paragraph(filename):
     command = dedent(f"""
             cat "{filename}" | sgpt --model gpt-3.5-turbo-16k "This is a post in markdown. I need a three word summary of the article in sentence form of 'This article is about ....' .  For example: 'This article is about large scale builds.' or 'This article is about python list comprehensions.'. It should be just the topic in that form of sentence and should make sense." 
-            """) 
+            """).strip() 
     result = subprocess.run(command, capture_output=True, text=True, shell=True)
     article_sentence = result.stdout.strip()
     tie_in_sentence = "" # Earthly is particularly useful if you're working with a Monorepo.
     # article_sentnce = "This article discusses some of the benefits of using a Monorepo"
     template = dedent(f"""
         <!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. {article_sentence} {tie_in_sentence} [Check us out](/).**
-                """)
+                """).strip()
     return template
 
 def add_paragraph_if_word_missing(filename):
@@ -39,7 +39,7 @@ def add_paragraph_if_word_missing(filename):
         if first_paragraph_found and 'sgpt' in first_paragraph:
             print("shell gpt paragraph found. updating it.")
             # Remove the first paragraph (up to the first double line break)
-            rest_of_article = parts[2].split("\n\n", 1)[1]
+            rest_of_article = parts[2].lstrip().split("\n\n", 1)[1]
             parts[2] = '\n' + replace + '\n\n' + rest_of_article
             new_content = '---'.join(parts)
             with open(filename, 'w') as file:
