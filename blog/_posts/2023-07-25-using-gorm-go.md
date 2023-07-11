@@ -57,6 +57,7 @@ This will install the PostgreSQL driver specifically designed for the GORM libra
 </div>
 
 <div class="notice--info">
+
 The GORM library also provides database drivers for [MySQL](https://gorm.io/docs/connecting_to_the_database.html#MySQL), [SQLite](https://gorm.io/docs/connecting_to_the_database.html#SQLite), [SQL Server](https://gorm.io/docs/connecting_to_the_database.html#SQL-Server), [TiDB](https://gorm.io/docs/connecting_to_the_database.html#TiDB) and [Clickhouse](https://gorm.io/docs/connecting_to_the_database.html#Clickhouse). You can visit the [GORM library documentation](https://gorm.io/docs/connecting_to_the_database.html) to see how to use these database drivers and create your custom drivers.
 </div>
 
@@ -100,6 +101,7 @@ In the code snippet, here's what the code does:
 - A connection string using the `dsn` variable is defined. This variable represents the Data Source Name. It contains the necessary information to connect to the PostgreSQL database.
 
 <div class="notice--info">
+
 In this case, be sure to replace the following placeholders - `<your_host>`, `<your_user>`, `<your_password>`, `<your_dbname>`, and `<your_port>` with the actual values corresponding to your own PostgreSQL database configuration.
 </div>
 
@@ -138,6 +140,7 @@ type User struct {
 In the code snippet above, the `time` package is imported to track when a user record is created, updated, and deleted. Then a `User` struct is defined with fields corresponding to the database table's columns. Here's what each field and its associated tag do:
 
 <div class="notice--info">
+
 The GORM library uses [tags](https://gorm.io/docs/models.html#Fields-Tags), which are annotations added to struct fields using backticks (``), to provide additional metadata or instructions to the ORM framework. These tags are crucial in mapping struct fields to database columns, defining column names, specifying data types, enforcing constraints, and configuring table relationships. They provide essential information about the structure and characteristics of the database table and its columns.
 </div>
 
@@ -149,6 +152,7 @@ The GORM library uses [tags](https://gorm.io/docs/models.html#Fields-Tags), whic
 - `DeletedAt`: This field is of type `gorm.DeletedAt` and is used to handle soft-deletes in GORM. It allows GORM to track the deletion timestamp of a user record and handle logical deletions instead of physically removing the record from the database.
 
 <div class="notice--info">
+
 In the GORM library, "[soft delete](https://gorm.io/docs/delete.html#Soft-Delete)" is a mechanism where records are marked as deleted instead of being physically removed from the database. By defining a `DeletedAt` field with the `gorm.DeletedAt` type in your Go struct, the GORM library sets the value of this field to the current timestamp when a record is deleted, indicating that it's considered deleted but still retained in the database. This provides advantages such as easy retrieval and restoration of deleted records, maintaining a history of changes, and data integrity control. If you prefer not to use the soft delete, you can omit the `DeletedAt` field from your Go struct; that way, the GORM library will perform a hard delete by physically removing the records from the database when you delete them.
 </div>
 
@@ -219,6 +223,7 @@ The code snippet above does the following:
 - Defines a new `User` struct instance with the desired field values for the user, such as `first_name`, `last_name`, `email`, `country`, `role`, and `age`.
 
 <div class="notice--info">
+
 When working with the GORM library, whether you define field names in your struct with uppercase or lowercase letters, the field names will be automatically converted to lowercase letters in the database. If a field name contains more than one word, an underscore (_) will separate it in the database.
 </div>
 
@@ -274,6 +279,7 @@ Considering the updated code snippet above, the following actions were performed
 - The database was queried, and the first user record was retrieved using the  `db.First(&user)` method call.
 
 <div class="notice--info">
+
 When retrieving a single record, the GORM library provides multiple methods to suit different scenarios; it offers additional methods like [`Take`](https://gorm.io/docs/query.html) and [`Last`](https://gorm.io/docs/query.html) alongside the [`First`](https://gorm.io/docs/query.html) method. These methods allow you to fetch a single record based on different criteria. For detailed information and examples on using these methods, I recommend referring to the comprehensive [GORM library documentation](https://gorm.io/docs/query.html#Retrieving-a-single-object), which will help you effectively leverage them in your code.
 </div>
 
@@ -286,6 +292,7 @@ User ID: 1, Name: Jane Doe, Email: janedoe@gmail.com
 ~~~
 
 <div class="notice--info">
+
 Additionally, you can retrieve a record using its primary key. The following example is from the [GORM library documentation](https://gorm.io/docs/query.html#Retrieving-objects-with-primary-key). Or, If you'd like to fetch more than one record by their primary keys, you can pass the primary key value(s) to the `Find` method. See how to use the [`Find` method](https://gorm.io/docs/query.html#Retrieving-objects-with-primary-key).
 </div>
 
@@ -335,6 +342,7 @@ User ID: 1, Name: Jane Doe, Email: janedoe@gmail.com
 ~~~
 
 <div class="notice--info">
+
 For other condition types like [`Or`](https://gorm.io/docs/query.html#Or-Conditions) and [`Not`](https://gorm.io/docs/query.html#Not-Conditions) you can see the following [guide](https://gorm.io/docs/query.html#Specify-Struct-search-fields)
 </div>
 
@@ -395,6 +403,7 @@ Then, it modifies the attributes of the retrieved record, specifically the `firs
 Finally, it prints a message indicating the user has been updated successfully.
 
 <div class="notice--info">
+
 If you want to update a single column with the GORM library, use the `Update` or `Updates` method with a `map` or `struct` specifying the column and its new value. Here's an example of updating a single column using the `update` method with a `struct`:
 </div>
 
@@ -468,6 +477,7 @@ if result.Error != nil {
 The code retrieves the first user record from the database using the GORM library's  `First` method and then deletes that user record using the `Delete` method. If any error occurs during the retrieval or deletion, the code panics with the corresponding error messages. Additionally, it checks if any user records were deleted and prints a success message if the deletion is successful.
 
 <div class="notice--info">
+
 In the given code, the condition `else if result.RowsAffected == 0` determines the number of rows affected by the database operation. It represents the number of rows that were successfully deleted from the database. By checking the value of `RowsAffected`, different scenarios can be handled based on whether any records were deleted.
 </div>
 
