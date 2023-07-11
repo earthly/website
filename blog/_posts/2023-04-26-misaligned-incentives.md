@@ -11,6 +11,8 @@ internal-links:
  - Open Source
  - Softwares
  - Business 
+excerpt: |
+    Discover the hidden pitfalls of dev tool businesses and how misaligned incentives can lead to bloated software and unsatisfied users. Learn how Earthly tackles these challenges and prioritizes customer needs in this insightful article.
 ---
 <!-- markdownlint-disable MD028 -->
 Back around when Barack Obama was president of the United States, I worked as a software developer on an enterprise 'learning management software.' The work could be challenging but was always adding more complexity. For example, users took classes and classes could have prerequisites. There were optional and mandatory prerequisites, but I was there when we added 'optional-mandatory' prerequisites. And then after that, 'mandatory-optional' prerequisites. These were highly requested features.

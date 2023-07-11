@@ -4,7 +4,8 @@ categories:
   - Tutorials
 toc: true
 author: Ukeje Goodness
-excerpt: "Introduction Python is widely used in so many applications, from data science to machine learning, robotics, and artificial intelligence. On the we.."
+excerpt: |
+    Learn how to use PyScript, a Python-based front-end web framework, to build powerful browser applications using an HTML interface. Discover its features, such as browser support, ecosystem support, Python-Javascript interoperability, and flexibility, and see how you can run Python code in HTML, import files and libraries, and visualize data and images in the browser. Whether you're a beginner or an expert, PyScript offers a user-friendly experience for creating web applications with Python.
 internal-links:
  - Pyhton
  - Numpy

@@ -12,6 +12,8 @@ internal-links:
  - Security
  - Container
  - Images
+excerpt: |
+    Learn how to set up a private Docker registry on Linux and secure your Docker images in an enterprise environment. This step-by-step guide covers everything from installing Docker and Docker Compose to configuring NGINX and implementing authentication, allowing you to have full control over your Docker registry and ensure the security of your images.
 ---
 
 **We're [Earthly.dev](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article covers setting up a private Docker registry on Linux. If you want to know more about building in containers then [check us out](/).**

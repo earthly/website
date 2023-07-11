@@ -12,6 +12,8 @@ internal-links:
  - Monorepo
  - Ecosystem
  - Pipelines 
+excerpt: |
+    Learn about the different monorepo tools available for building JavaScript projects, including Bazel, Gradle, Lage, Lerna, and Rush. Discover their features, benefits, and drawbacks to determine which one is the best fit for your needs.
 ---
 
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about building a Monorepo with JavaScript. Earthly is particularly useful if you're working with a Monorepo [check us out](/).**
