@@ -49,7 +49,9 @@ go get -u gorm.io/driver/postgres
 
 This will install the PostgreSQL driver specifically designed for the GORM library.
 
+<div class="wide">
 ![Installing postgresql driver for gorm]({{site.images}}{{page.slug}}/GzT6sfO.png)
+</div>
 
 > The GORM library also provides database drivers for [MySQL](https://gorm.io/docs/connecting_to_the_database.html#MySQL), [SQLite](https://gorm.io/docs/connecting_to_the_database.html#SQLite), [SQL Server](https://gorm.io/docs/connecting_to_the_database.html#SQL-Server), [TiDB](https://gorm.io/docs/connecting_to_the_database.html#TiDB) and [Clickhouse](https://gorm.io/docs/connecting_to_the_database.html#Clickhouse). You can visit the [GORM library documentation](https://gorm.io/docs/connecting_to_the_database.html) to see how to use these database drivers and create your custom drivers.
 
@@ -214,7 +216,9 @@ Now, execute the `go run` command and head to your Postgres database to confirm 
 New User Jane Doe was created successfully!
 ~~~
 
+<div class="wide">
 ![Verifying the user record in a postgres database]({{site.images}}{{page.slug}}/7uHtxtu.png)
+</div>
 
 At this point, you have successfully created a record with the GORM library.
 
@@ -380,8 +384,10 @@ When you execute the code above, you should have the following output:
 User updated successfully
 ~~~
 
-![Viewing a record (*Agnes Doe*)  ]({{site.images}}{{page.slug}}/U7Jix1x.png)  
-
+<div class="wide">
+![Viewing a record (*Agnes Doe*)]({{site.images}}{{page.slug}}/U7Jix1x.png)
+</div>
+  
 Alternatively, you can update records using a struct `User` to define the changes. Here's an example:
 
 ~~~
@@ -453,7 +459,9 @@ Once you run this code, the following output is expected, meaning that one row h
 
 On your PostgreSQL database, you should have the following output:
 
+<div class="wide">
 ![Viewing record marked as deleted]({{site.images}}{{page.slug}}/RTIqD2d.png)
+</div>
 
 ## Exploring Advanced Features with the GORM Library
 
@@ -504,7 +512,9 @@ Once you run this code, the following output is expected:
 User created and updated successfully
 ~~~
 
+<div class="wide">
 ![Viewing record (*Billy John)*]({{site.images}}{{page.slug}}/yhu18kH.png)
+</div>
 
 The GORM library preloading feature enhances data fetching by automatically joining tables and fetching related data in a single query, improving efficiency. However, since this tutorial focuses on a single table scenario, exploring the preloading feature is beyond its scope. For a comprehensive understanding of this powerful feature, refer to the [official GORM library documentation](https://gorm.io/docs/preload.html).
 
@@ -586,7 +596,6 @@ Following these practices will give you a solid foundation for building robust a
 
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
+
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
