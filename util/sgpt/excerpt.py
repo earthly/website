@@ -3,32 +3,36 @@ import subprocess
 import os
 
 def add_excerpt_to_md_file(filename):
-    # Construct the shell command
     command = f'cat "{filename}" | sgpt --role excerpt --model gpt-3.5-turbo-16k "This is a post in markdown. I need a two sentence  summary that will make people want to read it that is casual in tone."'
 
-    # Call the shell command to generate the excerpt
     result = subprocess.run(command, capture_output=True, text=True, shell=True)
     excerpt = result.stdout.strip()
 
     with open(filename, 'r') as f:
         lines = f.readlines()
 
-     # Assert the first line is ---
     assert lines[0].strip() == "---", "The file does not start with '---'."
 
-    # Flag to check if excerpt already exists
     excerpt_exists = False
+    excerpt_start = 0
 
-    # Start from the second line
+
     for i, line in enumerate(lines[1:], start=1):
         if line.strip().startswith('excerpt:'):
-            # Replace the existing excerpt
-            lines[i] = f"excerpt: {excerpt}\n"
+            # Start replacing the existing excerpt
+            excerpt_start = i
             excerpt_exists = True
-            break
-        if not excerpt_exists and line.strip() == "---":
+        elif excerpt_exists:
+            # If the line is indented, it's part of the existing excerpt and should be removed
+            if line.startswith('    '):
+                lines[i] = ''
+            else:
+                # We've reached the end of the existing excerpt
+                lines[excerpt_start] = f"excerpt: |\n    {excerpt}\n"
+                break
+        elif not excerpt_exists and line.strip() == "---":
             # Add the excerpt before the second ---
-            lines.insert(i, f"excerpt: {excerpt}\n")
+            lines.insert(i, f"excerpt: |\n    {excerpt}\n")
             break
 
     with open(filename, 'w') as f:
