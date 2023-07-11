@@ -44,19 +44,20 @@ def add_paragraph_if_word_missing(filename):
                 first_paragraph_found = True
                 break
         
-        replace = build_paragraph(filename) #"<!--sgpt-->This is the Earthly nonsense paragraph."
         # Check if 'sgpt' is in the first paragraph
         if first_paragraph_found and 'sgpt' in first_paragraph:
             print(f"Starting: {filename}")
             # print("shell gpt paragraph found. updating it.")
             # Remove the first paragraph (up to the first double line break)
-            rest_of_article = parts[2].lstrip().split("\n\n", 1)[1]
-            parts[2] = '\n' + replace + '\n\n' + rest_of_article
-            new_content = '---'.join(parts)
-            with open(filename, 'w') as file:
-                file.write(new_content)
+            # replace = build_paragraph(filename) 
+            # rest_of_article = parts[2].lstrip().split("\n\n", 1)[1]
+            # parts[2] = '\n' + replace + '\n\n' + rest_of_article
+            # new_content = '---'.join(parts)
+            # with open(filename, 'w') as file:
+            #     file.write(new_content)
         elif 'https://earthly.dev/' not in first_paragraph and 'earthly.dev' not in first_paragraph:
             # print("CTA not found. Adding shell-gpt one.")
+            replace = build_paragraph(filename) 
             new_content = parts[0] + '---' + parts[1] + '---\n' + replace + '\n\n' + parts[2].strip()
             with open(filename, 'w') as file:
                 file.write(new_content)
