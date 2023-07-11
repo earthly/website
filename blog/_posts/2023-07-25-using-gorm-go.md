@@ -580,6 +580,8 @@ To optimize your Go applications with the GORM library, consider these best prac
 
 Following these practices will give you a solid foundation for building robust and efficient applications with the GORM library. For further exploration, consider delving into creating multiple structs, establishing relationships, and maximizing the potential of the GORM library preloading feature.
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
@@ -588,4 +590,3 @@ Following these practices will give you a solid foundation for building robust a
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
