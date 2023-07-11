@@ -24,7 +24,7 @@ This is hard because while I find Earthfiles easier to write than GHA workflows,
 
 But there was a plan for how to close this gap. The theory went that GPT-4 could fill in the details. Or at least that volunteer could find out if that was possible. And that poor volunteer, did I mention that was me?
 
-So my task was to build a translator using an LLM. It's not entirely done, but it works well so far ([here it is](https://github.com/adamgordonbell/to-earthly)). Building it was different than I thought, and I learned some lessons that are generally helpful if you are thinking of building on top of an LLM. Let's go through them.
+So my task was to build a translator using an LLM. It's not entirely done, but it works well so far, ([GitHub link](https://github.com/adamgordonbell/to-earthly)). Building it was different than I thought, and I learned some lessons that are generally helpful if you are thinking of building on top of an LLM. Let's go through them.
 
 ## Context: A Scarcity in a Sea of Surplus
 
