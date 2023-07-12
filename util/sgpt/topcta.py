@@ -50,9 +50,8 @@ def add_paragraph_if_word_missing(filename, dryrun):
         rest_of_file = content
 
     if "funnel:" in frontmatter or "News" in frontmatter or " Write Outline" in rest_of_file or "topcta: false" in frontmatter:
-        # print("Is Earthly focused, skipping.")
+        print(f"{filename}:Is Earthly focused, skipping.")
         return
-    # Ensure we have more than the frontmatter
     else:
         first_paragraph_found = False
         paragraphs = rest_of_file.split("\n")
@@ -62,9 +61,8 @@ def add_paragraph_if_word_missing(filename, dryrun):
                 first_paragraph_found = True
                 break
 
-        # Check if 'sgpt' is in the first paragraph
         if first_paragraph_found and 'sgpt' in first_paragraph:
-            print(f"Starting: {filename}")
+            print(f"Updating CTA:\t {filename}")
             if not dryrun:
                 # print("shell gpt paragraph found. updating it.")
                 # Remove the first paragraph (up to the first double line break)
@@ -74,13 +72,14 @@ def add_paragraph_if_word_missing(filename, dryrun):
                 new_content = frontmatter + '\n' + replace + '\n\n' + rest_of_article
                 with open(filename, 'w') as file:
                     file.write(new_content)
-        # elif 'https://earthly.dev/' not in first_paragraph and 'earthly.dev' not in first_paragraph:
-            # print("CTA not found. Adding shell-gpt one.")
-            # if not dryrun:
-            #     replace = build_paragraph(filename) 
-            #     new_content = frontmatter + '\n' + replace + '\n\n' + rest_of_file.strip()
-            #     with open(filename, 'w') as file:
-            #         file.write(new_content)
+        elif 'https://earthly.dev/' not in first_paragraph and 'earthly.dev' not in first_paragraph:
+            print(f"Adding CTA:\t {filename}")
+            if not dryrun:
+                replace = build_paragraph(filename) 
+                replace = "<!--sgpt-->"+shorter(replace)
+                new_content = frontmatter + '\n' + replace + '\n\n' + rest_of_file.strip()
+                with open(filename, 'w') as file:
+                    file.write(new_content)
 
 def find_nth(haystack, needle, n):
     start = haystack.find(needle)
@@ -193,14 +192,11 @@ def main():
         print("Dryrun mode activated. No changes will be made.")
 
     if args.dir:
-        # Process each markdown file in the directory
         for root, dirs, files in os.walk(args.dir):
-            for file in files[:100]:
+            for file in files[:30]:
                 if file.endswith('.md'):
                     path = os.path.join(root, file)
-                    # print(f"Starting: {path}")
                     add_paragraph_if_word_missing(os.path.join(root, file), args.dryrun)
-                    # print(f"Finishing: {path}")
     elif args.file:
         add_paragraph_if_word_missing(args.file)
     else:
