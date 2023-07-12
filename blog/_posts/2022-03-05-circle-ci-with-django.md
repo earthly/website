@@ -10,7 +10,7 @@ internal-links:
 excerpt: |
     Learn how to set up CircleCI for your Python Django project and automate tasks like linting, running tests, and pushing Docker images to Docker Hub. CircleCI offers a free tier with generous build minutes and easy integration with GitHub or Bitbucket.
 ---
-<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about setting up CircleCI for Python Django projects and automating tasks like linting, running tests, and pushing Docker images to Docker Hub. Earthly is a great tool to use in combination with CircleCI for building and automating CI/CD pipelines. [Check us out](/).**
+**Hey there, we're [Earthly](https://earthly.dev/). We simplify and speed up software building with containerization. Combining Earthly with CircleCI can streamline your Python Django project. Curious? [Check us out](/).**
 
 I'm currently working on a project comparing different CI/CD pipelines, trying to get a better idea of what each offers, how they run, and how much it takes to get them set up. My first stop was CircleCi.
 

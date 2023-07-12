@@ -12,7 +12,7 @@ internal-links:
 excerpt: |
     Learn the basics of continuous integration, the differences between CI and CD, and common CI tools in this informative article. Discover how CI can help developers catch bugs earlier, increase productivity, and deliver higher-quality releases.
 ---
-<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about continuous integration. Earthly is a powerful build automation tool that can greatly enhance your continuous integration process, allowing for faster iteration on build scripts and easier debugging. [Check us out](/).**
+**We're [Earthly](https://earthly.dev/). We simplify and speed up software builds with containerization. Got a continuous integration process in place? Earthly can boost it with faster iterations and simpler debugging. [Check it out](/).**
 
 Continuous integration has become prevalent in software development, but it's still a complex and wide-ranging topic. In this post, we'll cover the basics of continuous integration, the differences between CI and CD, and common CI tools. You'll also find some tips for the best way to set up CI in your environment.
 

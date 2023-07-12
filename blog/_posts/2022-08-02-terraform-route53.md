@@ -10,7 +10,7 @@ internal-links:
 excerpt: |
     Learn how to fix DNS issues and import DNS records from AWS's Route53 into Terraform in this informative article by Adam. Discover the steps he took to update his HTTP API and ensure that his DNS records were updated as well.
 ---
-<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about fixing DNS issues and importing DNS records from AWS's Route53 into Terraform. Earthly is a powerful build tool that can be used in combination with Terraform to automate the management of DNS records and ensure that changes to infrastructure are reflected in DNS configurations. [Check us out](/).**
+**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. Managing DNS records with Terraform? Earthly can complement your automation efforts. [Check it out](/).**
 
 In my previous article [about terraform](/blog/terraform-lambda/) I moved my lambda and all related infrastructure to Terraform. I even tested things by destroying everything and then recreating it.
 

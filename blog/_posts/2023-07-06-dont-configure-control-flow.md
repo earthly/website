@@ -10,7 +10,7 @@ internal-links:
 excerpt: |
     Learn why using YAML for control flow configuration can lead to complex and hard-to-understand code, and why it's better to use existing programming languages or write a parser instead. Discover the pitfalls of using YAML as a programming language and explore alternative tools like Makefile or Earthfile.
 ---
-<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about the pitfalls of using YAML for control flow configuration and the importance of using existing programming languages or writing a parser instead. Earthly is a powerful build tool that can be used as an alternative to complex YAML configurations, making it a great option for users looking for a simpler and more efficient way to manage their build processes. [Check us out](/).**
+<!--sgpt-->**We're [Earthly](https://earthly.dev/). We use simple, declarative syntax and containerization to make building software simpler and faster. Done pulling your hair out over complex YAML configurations? Earthly could be your alternative. [Check us out](/).**
 
 When I first worked with YAML config, it was a breath of fresh air. No more XML! No angle brackets. It was so plain and clear.
 

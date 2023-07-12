@@ -13,7 +13,7 @@ internal-links:
 excerpt: |
     In this tutorial, you'll learn how structural pattern matching works in Python 3.10 and how to use different types of patterns to match and extract values from objects. You'll also explore real-world examples and see how this feature can be applied in various scenarios.
 ---
-<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about structural pattern matching in Python. Earthly is a powerful build tool that can be used in conjunction with Python projects, making it a valuable tool for developers interested in optimizing their build processes. [Check us out](/).**
+**We're [Earthly](https://earthly.dev/). We speed up and simplify your software builds with containers. Ideal for any Python projects you're tinkering with. [Give us a try](/).**
 
 *Structural Pattern Matching* is a new feature introduced in Python 3.10 in the [PEP 634](https://peps.python.org/pep-0634/) specification. The feature verifies if the value of an expression, called the *subject*, matches a given structure called the `pattern`.
 
