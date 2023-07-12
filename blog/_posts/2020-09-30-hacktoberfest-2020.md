@@ -9,8 +9,6 @@ internal-links:
 excerpt: |
     Join Earthly in celebrating Hacktoberfest 2020! Contribute to open-source projects, win a free t-shirt, and get sticker rewards from Earthly. Don't miss out on this exciting opportunity to showcase your skills and support the open-source community.
 ---
-<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about Hacktoberfest 2020. Earthly is an open-source build tool that simplifies CI/CD processes, making it a valuable tool for developers participating in Hacktoberfest 2020. [Check us out](/).**
-
 We're excited to announce that Earthly is participating in Hacktoberfest this October.
 
 Last year's fest saw more than 400,000 pull requests opened and this year should prove to be even larger.

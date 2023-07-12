@@ -9,7 +9,7 @@ internal-links:
 excerpt: |
     Learn how to set up multi-factor authentication and generate time-based one-time passwords programmatically using MFA secret keys. Discover different methods for securely storing and retrieving MFA keys, including using LastPass, 1Password, Earthly secrets, or even your YubiKey.
 ---
-<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about programmatic multi-factor authentication and time-based one-time passwords. Earthly is a popular choice for developers looking to automate their build processes and ensure reliable and reproducible builds. [Check us out](/).**
+**We're [Earthly](https://earthly.dev/). We simplify and speed up software building using containerization. Earthly is perfect for automating your build processes and ensuring reliable builds. [Check it out](/).**
 
 "You need to setup multi-factor authentication."
 

@@ -15,7 +15,7 @@ topic: kubernetes
 excerpt: |
     Learn how to monitor your Kubernetes cluster using Grafana and Prometheus. This tutorial will guide you through the process of setting up your own monitoring dashboard, visualizing internal state metrics, and accessing Grafana dashboards for resource monitoring.
 ---
-<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about Grafana & Prometheus Kubernetes Cluster Monitoring. Earthly is a powerful build tool that can be used in conjunction with Kubernetes and Grafana to streamline the monitoring and deployment process of your Kubernetes cluster. [Check us out](/).**
+**We're [Earthly](https://earthly.dev/). We simplify software building using containerization. Earthly can streamline your Kubernetes container building process. [Check it out](/).**
 
 So you have a Kubernetes cluster, and you want to keep an eye on its memory CPU and storage usage? Well, look no further than Grafana and Prometheus monitoring.
 

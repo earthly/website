@@ -12,7 +12,7 @@ internal-links:
 excerpt: |
     Learn how to set up your first AWS Lambda deployment for a Node application in this tutorial. Discover how to leverage AWS Lambda to execute backend applications without worrying about server configurations or maintenance.
 ---
-<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about setting up AWS Lambda deployment for a Node application. Earthly is a great tool to use in combination with AWS Lambda for building and deploying your Node. [Check us out](/).**
+**We're [Earthly](https://earthly.dev/). We simplify and speed up software builds. Earthly works great with Node.js. [Check it out](/).**
 
 <!-- vale HouseStyle.Link = NO -->
 AWS Lambda is a cloud computing solution that allows you to execute your backend applications without having to worry about server configurations or maintenance.
