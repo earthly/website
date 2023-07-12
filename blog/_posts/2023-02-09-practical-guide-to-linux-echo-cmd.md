@@ -12,7 +12,7 @@ internal-links:
  - Command
  - Echo
 ---
-<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and faster using containerization. If you're working with Linux commands like `echo`, Earthly can automate your build process making it even more efficient. [Check it out](/).**
+**We're [Earthly](https://earthly.dev/). We make building software simpler and faster using containerization. If you're working with Linux commands like `echo`... `echo`, Earthly can automate your build process making it even more efficient. [Check it out](/).**
 
 **Linux** is one of the most popular operating systems. It has a powerful command-line interface that allows various commands to be passed as instructions to be executed by the computer. The `echo` command is one of the most commonly used Linux commands.
 

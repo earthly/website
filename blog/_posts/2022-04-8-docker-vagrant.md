@@ -10,7 +10,7 @@ internal-links:
 excerpt: |
     Learn about the differences between Vagrant and Docker and how they help create consistent development environments. Discover the benefits and considerations of each technology to choose the right option for your projects.
 ---
-<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about the differences between Vagrant and Docker and how they help create consistent development environments. Earthly is a valuable resource for readers interested in creating consistent development environments with Vagrant and Docker. [Check us out](/).**
+<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and faster using containerization. If you're interested in enhancing your workflow with Vagrant and Docker, Earthly could be a game-changer. [Check it out](/).**
 
 <!-- vale HouseStyle.OxfordComma = NO -->
 

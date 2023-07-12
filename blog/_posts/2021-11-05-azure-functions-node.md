@@ -13,7 +13,7 @@ related: true
 excerpt: |
     Learn how to deploy Azure functions using Node.js with this tutorial. Discover the benefits of serverless computing and how it can simplify your application deployment process.
 ---
-<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about Azure Functions Deployment for Node.js Developers. Earthly is a great tool for developers interested in optimizing their build process and deploying applications quickly and efficiently. [Check us out](/).**
+**We're [Earthly](https://earthly.dev/). We make building software simpler and faster using containerization. If you're a Node.js Developer, Earthly can help optimize your build process. [Check it out](/).**
 
 Deploying an application once meant provisioning a virtual machine, ensuring security protocols were in place, and installing the required frameworks—a complicated series of steps that led to unnecessary processing charges when the applications were idle.
 

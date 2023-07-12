@@ -13,7 +13,7 @@ internal-links:
 excerpt: |
     Learn how to customize the Django Admin site to enhance the user experience and increase efficiency in managing data within a Django project. This tutorial covers various customization options such as controlling field display, adding filters and thumbnails, linking related objects, and overriding templates and forms.
 ---
-<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization.  Earthly is a powerful tool for CI/CD that can be used to automate the build and deployment process of Django projects, including customizing the Django Admin site. [Check us out](/).**
+**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. If you're building Django services, Earthly can automate your build process. [Check it out](/).**
 
 The Django framework comes with an [admin site](https://docs.djangoproject.com/en/4.1/ref/contrib/admin/#module-django.contrib.admin) which is a quick, model-centric interface that Django creates by reading metadata from your models. The interface allows trusted users to manage model content on your site.
 You can easily create, read, update, and delete model content on the admin site. This saves you a lot of time during development.

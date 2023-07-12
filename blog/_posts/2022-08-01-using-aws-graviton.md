@@ -12,7 +12,7 @@ internal-links:
 excerpt: |
     Learn about AWS Graviton, a type of processor made by Amazon, and discover its benefits, use cases, and how to deploy applications on it. Find out how Graviton processors offer strong performance, extensive software support, improved security, and the best performance per watt of energy use in Amazon EC2.
 ---
-<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about AWS Graviton processors. Earthly is a powerful tool for building and managing CI/CD pipelines, making it a valuable resource for developers and system administrators working with AWS Graviton processors. [Check us out](/).**
+**We're [Earthly](https://earthly.dev/). We simplify and speed up software builds using containerization. Earthly could be the tool to streamline your CI/CD pipelines. [Give it a try](/).**
 
 [Amazon Web Services (AWS)](https://aws.amazon.com/) is one of the most popular—and comprehensive—cloud service providers. It has over [200 fully-featured services](https://aws.amazon.com/what-is-aws/) on offer. There are enough services that it can be hard to remember them all.
 
