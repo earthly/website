@@ -49,7 +49,7 @@ def add_paragraph_if_word_missing(filename):
         frontmatter = ''
         rest_of_file = content
 
-    if "funnel:" in frontmatter or "News" in frontmatter or " Write Outline" in rest_of_file:
+    if "funnel:" in frontmatter or "News" in frontmatter or " Write Outline" in rest_of_file or "topcta: false" in frontmatter:
         # print("Is Earthly focused, skipping.")
         return
     # Ensure we have more than the frontmatter
@@ -140,7 +140,7 @@ def main():
     if args.dir:
         # Process each markdown file in the directory
         for root, dirs, files in os.walk(args.dir):
-            for file in files[:60]:
+            for file in files[:80]:
                 if file.endswith('.md'):
                     path = os.path.join(root, file)
                     # print(f"Starting: {path}")

@@ -5,11 +5,10 @@ categories:
 author: Adam
 internal-links:
  - write for us
+topcta: false
 excerpt: |
     Are you passionate about software development? Write for Earthly and reach a larger audience while getting paid. With tens of thousands of monthly visitors and a respected reputation, Earthly's blog is the perfect platform for your expertise. Apply now and start sharing your knowledge with the developer community.
 ---
-<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about writing for Earthly's blog and getting paid for sharing your knowledge with the developer community. Earthly is a popular choice for developers interested in CI/CD, builds, and containerization. [Check us out](/).**
-
 <div class="notice--info notice--big">
 
 ## Submissions Closed
