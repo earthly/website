@@ -12,7 +12,7 @@ internal-links:
 excerpt: |
     Learn what Nix is and how it can revolutionize software development with its unique approach to package management and operating system configuration. Discover how Nix brings the power of purely functional programming to build systems and ensures reproducibility and control over software dependencies.
 ---
-<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about Nix, a unique approach to package management and operating system configuration. Earthly is a powerful build tool that can complement Nix by providing a more user-friendly and efficient way to define and manage build processes, making it a valuable tool for Nix users. [Check us out](/).**
+**Hey, we're [Earthly](https://earthly.dev/). We simplify and speed up software builds through containerization. Earthly aligns well with Nix's approach but also adds efficiencies in managing builds. It's worth a peek, especially for Nix users. [Check us out](/).**
 
 I was at a bar with friends, and one of them mentioned that they'd heard that Nix is [turning 20 this month](https://discourse.nixos.org/t/nix-20th-anniversary-march-of-nix/24209).
 

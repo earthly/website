@@ -12,7 +12,7 @@ internal-links:
 excerpt: |
     Learn how to configure Postgres database replication in Django and connect it to a Django application. This tutorial covers the steps to set up a primary database and a hot standby database, create a Django database router, and route queries to the appropriate databases.
 ---
-<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about configuring Postgres database replication in Django. Earthly is a powerful tool that can be used in conjunction with Docker to streamline the build process of your Django application, including the replication setup and database routing described in this article. [Check us out](/).**
+**We're [Earthly](https://earthly.dev/). We make building software simpler and faster using containerization. Earthly can make Django easier to build and deploy. [Give it a try](/).**
 
 ## Introduction
 

@@ -12,7 +12,7 @@ internal-links:
 excerpt: |
     Learn about the evolution of git branching strategies and how they have changed over time. Follow the story of Ashley, a software developer, as she navigates different branching models and discovers the benefits and challenges of each approach. Gain insights into the importance of continuous integration, deployment, and the impact of cloud-based workflows on branching strategies.
 ---
-<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about Git branching strategies and their evolution over time. Earthly is a powerful tool for continuous integration and deployment, making it a valuable asset for developers and teams looking to streamline their git branching strategies and improve their software development workflows. [Check us out](/).**
+**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. If you're dealing with Git branches, consider how much quicker building and testing can be with Earthly. [Check it out](/).**
 
 Some modern development practices are easiest to understand from a historical perspective: things started a certain way, and then steps were added or removed as conditions changed. Git branching, for example, is like that.
 
