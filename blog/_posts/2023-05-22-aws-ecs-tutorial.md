@@ -11,6 +11,8 @@ internal-links:
  - Amazon
  - ECS
  - Containers
+excerpt: |
+    Learn how to run your containers on Amazon using AWS ECS. This tutorial will guide you through the process of creating an ECS cluster, deploying a containerized application, and accessing it using the public IP address.
 ---
 
 Containerization is the process of bundling the components of an application (*ie* files, libraries, and application code) into a single package that can be run consistently on any infrastructure. Containerization continues to grow in popularity because it's portable, has built-in fault tolerance, and is easily scalable.

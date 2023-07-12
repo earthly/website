@@ -12,6 +12,8 @@ internal-links:
  - c\+\+
 topic: make
 last_modified_at: 2023-04-17
+excerpt: |
+    Learn how to compile C++ programs with the g++ compiler provided by GCC and automate the compilation process using Make. This tutorial covers the installation of GCC on Linux, Mac, and Windows, as well as the compilation process and the use of the make utility to simplify complex compilation tasks.
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article covers GNU's gcc compiler. If you're interested in an approach to builds that allows you to keep gcc and build everywhere then [check us out](/).**
 

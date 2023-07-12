@@ -9,6 +9,8 @@ internal-links:
  - Github
  - Codespaces
  - Dev Containers
+excerpt: |
+    Learn how to use Dev Containers and Github Codespaces to simplify development and make it more portable. These tools allow you to define a development environment and run your project in a Docker container, either locally or in the cloud. With Dev Containers and Codespaces, you can code from anywhere and standardize development across your team.
 ---
 
 We recently started using Dev Containers and Codespaces for development on our Jekyll blog here at Earthly. We have a lot of different plugins and dependencies to make things like linting, spell check, and image importing much easier. The problem is, a lot of this was originally set up on an Intel Mac. Now that the team has grown, there are developers using M1s, Linux, and Windows, and so as you can imagine, a lot of our teammates who just want to write a simple blog entry were getting stuck trying to get the blog working locally. Not only did Dev Containers with Codespaces solve this issue for us, it made development in general much easier and more portable.

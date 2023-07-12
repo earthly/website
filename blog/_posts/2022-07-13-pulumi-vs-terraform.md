@@ -4,7 +4,8 @@ categories:
   - Tutorials
 toc: true
 author: Alexander Yu
-excerpt: "There once was a time when technicians manually provisioned application infrastructure. In recent years, as companies began rapidly expanding their infrastr..."
+excerpt: |
+    Learn about the differences between Pulumi and Terraform, two popular Infrastructure as Code (IaC) tools. Discover their functionality, learning curves, compatibility, modularity, and community support to help you decide which tool is best for your infrastructure needs.
 internal-links:
  - just an example
  - Pulumi

@@ -4,7 +4,6 @@ layout: default
 ---
 
 {% include home/layout.html template='home/v2/hero.html' %}
-{% include home/layout.html template='home/v2/call-to-action.html' %}
 {% include home/layout.html template='home/v2/customers.html' %}
 {% include home/layout.html template='home/why.html' %}
 

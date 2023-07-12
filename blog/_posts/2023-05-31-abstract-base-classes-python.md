@@ -12,6 +12,8 @@ internal-links:
  - Abstract Class
  - Inheritance
  - Abstraction
+excerpt: |
+    Learn how to create Abstract Base Classes (ABCs) in Python to enforce the implementation of certain methods or attributes in subclasses. ABCs promote code reuse, consistency, and modularity, and can be used for type checking at runtime. Discover the benefits of using ABCs and explore real-world use cases for this powerful feature in Python programming.
 ---
 
 Object-oriented programming (OOP) is a popular programming paradigm used in many modern programming languages, including Python. At the core of OOP are classes that allow us to create objects with attributes and methods. However, regular classes in Python have limitations that can make it challenging to create modular and maintainable code.

@@ -10,6 +10,8 @@ internal-links:
  - docker compose
 topic: docker
 last_modified_at: 2023-04-17
+excerpt: |
+    Learn how to run a Ruby on Rails application inside a Docker container and discover best practices for building Docker images. This tutorial covers topics such as creating a Dockerfile, reducing image size with Alpine base images and multistage builds, and running multiple containers with Docker Compose.
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. This article is about one solution to the complexities of building and deploying Ruby and Rails projects. If you're interested in a containerized approach to building Ruby code then [check us out](/).**
 

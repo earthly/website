@@ -18,6 +18,8 @@ internal-links:
   - logging driver
   - side car logging
   - side-car logging
+excerpt: |
+    Learn how to effectively manage Docker logging and log files to improve the performance and reliability of your containerized applications. Discover different logging strategies, Docker logging commands, and the various logging drivers supported by Docker.
 ---
 
 Docker logging and its management are an important part of the containerization of your application. Once you've deployed your application, logging is one of the best tools to help reveal errors, aid in debugging, and optimize your application's performance.
