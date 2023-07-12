@@ -33,7 +33,7 @@ def build_paragraph(filename):
                 """).strip()
     return template
 
-def add_paragraph_if_word_missing(filename):
+def add_paragraph_if_word_missing(filename, dryrun):
     # Read the file
     with open(filename, 'r') as file:
         content = file.read()
@@ -65,20 +65,22 @@ def add_paragraph_if_word_missing(filename):
         # Check if 'sgpt' is in the first paragraph
         if first_paragraph_found and 'sgpt' in first_paragraph:
             print(f"Starting: {filename}")
-            # print("shell gpt paragraph found. updating it.")
-            # Remove the first paragraph (up to the first double line break)
-            replace = build_paragraph(filename) 
-            replace = "<!--sgpt-->"+shorter(replace)
-            rest_of_article = rest_of_file.lstrip().split("\n\n", 1)[1]
-            new_content = frontmatter + '\n' + replace + '\n\n' + rest_of_article
-            with open(filename, 'w') as file:
-                file.write(new_content)
+            if not dryrun:
+                # print("shell gpt paragraph found. updating it.")
+                # Remove the first paragraph (up to the first double line break)
+                replace = build_paragraph(filename) 
+                replace = "<!--sgpt-->"+shorter(replace)
+                rest_of_article = rest_of_file.lstrip().split("\n\n", 1)[1]
+                new_content = frontmatter + '\n' + replace + '\n\n' + rest_of_article
+                with open(filename, 'w') as file:
+                    file.write(new_content)
         # elif 'https://earthly.dev/' not in first_paragraph and 'earthly.dev' not in first_paragraph:
-        #     # print("CTA not found. Adding shell-gpt one.")
-        #     replace = build_paragraph(filename) 
-        #     new_content = frontmatter + '\n' + replace + '\n\n' + rest_of_file.strip()
-        #     with open(filename, 'w') as file:
-        #         file.write(new_content)
+            # print("CTA not found. Adding shell-gpt one.")
+            # if not dryrun:
+            #     replace = build_paragraph(filename) 
+            #     new_content = frontmatter + '\n' + replace + '\n\n' + rest_of_file.strip()
+            #     with open(filename, 'w') as file:
+            #         file.write(new_content)
 
 def find_nth(haystack, needle, n):
     start = haystack.find(needle)
@@ -131,11 +133,13 @@ def shorter(input: str) -> str:
     Earthly is commonly used for building, testing and shipping applications, especially those with components in different languages. It simplifies build automation for monorepos and complex projects.
 
     Overall, Earthly is a developer-focused build tool that leverages containers to provide reproducible, portable and parallel builds for modern applications. Its declarative Earthfile syntax and built-in caching help optimize build performance.
+    Earthly helps with continuous development but not with continuous deployment and works with any programming language.  
     ---
 
     Task:
     Write a shortened version of this call to action for getting readers of an article that is about another topic interested in Earthly. 
     A great call to action explains why Earthly might interest them by connecting to the topic of the article. But if the connection is not clear, a straight-forward request to look at Earthly is second best.
+    Shorter and casual is preffered and the benefits of Earthly or Description of Earthly can be changed to better match the topic at hand.
     {{~/system}}
     {{~#each examples}}
     {{#user~}}
@@ -149,10 +153,13 @@ def shorter(input: str) -> str:
     {{input}}
     {{~/user}}
     {{#assistant~}}
-    {{gen 'options' n=5 temperature=0.7 max_tokens=500}}
+    {{gen 'options' n=6 temperature=0.7 max_tokens=500}}
     {{~/assistant}}
     {{#user~}}
     Can you please comment on the pros and cons of each of these replacements?
+
+    Shorter is better. More connected to the topic at hand is better. Natural sounding, like a casual recommendation is better.
+    Overstating things, with many adjectives, is worse. Implying Earthly does something it does not is worse. 
     ---{{#each options}}
     Option {{@index}}: {{this}}{{/each}}
     ---
@@ -178,17 +185,21 @@ def main():
     parser = argparse.ArgumentParser(description='Add an excerpt to a markdown file.')
     parser.add_argument('--dir', help='The directory containing the markdown files.')
     parser.add_argument('--file', help='The path to a single markdown file.')
+    parser.add_argument('--dryrun', help='Dry run mode', action='store_true')
 
     args = parser.parse_args()
+
+    if args.dryrun:
+        print("Dryrun mode activated. No changes will be made.")
 
     if args.dir:
         # Process each markdown file in the directory
         for root, dirs, files in os.walk(args.dir):
-            for file in files:
+            for file in files[:85]:
                 if file.endswith('.md'):
                     path = os.path.join(root, file)
                     # print(f"Starting: {path}")
-                    add_paragraph_if_word_missing(os.path.join(root, file))
+                    add_paragraph_if_word_missing(os.path.join(root, file), args.dryrun)
                     # print(f"Finishing: {path}")
     elif args.file:
         add_paragraph_if_word_missing(args.file)

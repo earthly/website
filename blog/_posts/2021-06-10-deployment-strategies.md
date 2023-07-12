@@ -13,7 +13,7 @@ internal-links:
 excerpt: |
     Learn about different deployment strategies, their pros and cons, and how they can impact downtime and deployment complexity. Find the best approach for your application and gain insights into optimizing your deployment process.
 ---
-<!--sgpt-->**We're [Earthly](https://earthly.dev/), simplifying software builds with containerization. Optimize your build process with our powerful tool, regardless of your deployment strategy. [Check it out](/).**
+**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. If you're into deployment strategies, Earthly can streamline your build process. [Check it out](/).**
 
 There are many ways to deploy applications to a production server environment, and the terminology around deploy strategies is often confusing. In this short guide, I'll review software deployment options starting from the most basic and straightforward and moving towards the more complex.  
 
