@@ -153,7 +153,7 @@ def shorter(input: str) -> str:
     {{input}}
     {{~/user}}
     {{#assistant~}}
-    {{gen 'options' n=6 temperature=0.7 max_tokens=500}}
+    {{gen 'options' n=7 temperature=0.9 max_tokens=500}}
     {{~/assistant}}
     {{#user~}}
     Can you please comment on the pros and cons of each of these replacements?
@@ -174,8 +174,8 @@ def shorter(input: str) -> str:
     {{gen 'answer' temperature=0 max_tokens=500}}
     {{~/assistant}}
     '''), llm=gpt4, silent=True)
-    # with open(os.devnull, 'w') as f, contextlib.redirect_stdout(f):
-    out = score(examples=examples,input=input) 
+    with open(os.devnull, 'w') as f, contextlib.redirect_stdout(f):
+        out = score(examples=examples,input=input) 
     return out["answer"].strip()
 
 
@@ -195,7 +195,7 @@ def main():
     if args.dir:
         # Process each markdown file in the directory
         for root, dirs, files in os.walk(args.dir):
-            for file in files[:85]:
+            for file in files[:100]:
                 if file.endswith('.md'):
                     path = os.path.join(root, file)
                     # print(f"Starting: {path}")
