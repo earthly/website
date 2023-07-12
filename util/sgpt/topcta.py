@@ -194,7 +194,7 @@ def main():
 
     if args.dir:
         for root, dirs, files in os.walk(args.dir):
-            for file in files[:30]:
+            for file in files[:50]:
                 if file.endswith('.md'):
                     path = os.path.join(root, file)
                     add_paragraph_if_word_missing(os.path.join(root, file), args.dryrun)
