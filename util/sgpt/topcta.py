@@ -133,6 +133,7 @@ def shorter(input: str) -> str:
 
     Overall, Earthly is a developer-focused build tool that leverages containers to provide reproducible, portable and parallel builds for modern applications. Its declarative Earthfile syntax and built-in caching help optimize build performance.
     Earthly helps with continuous development but not with continuous deployment and works with any programming language.  
+    Earthly helps with build software on linux, using containers. It doesn't help with every SDLC process, but it improves build times which can help other steps indirectly.
     ---
 
     Task:
