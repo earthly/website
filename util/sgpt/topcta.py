@@ -106,7 +106,36 @@ examples = [
 def shorter(input: str) -> str:
     score = guidance(dedent('''
     {{#system~}}
-    Write a shortened version of this call to action for getting readers of an article interested in Earthly. 
+    Background:
+    ---
+    Here are some key things to know about Earthly and why it is used in tech:
+
+    Earthly is an open source build automation tool released in 2020. It allows you to define builds using a domain-specific language called Earthfile.
+
+    Key features of Earthly include:
+
+    Reproducible builds - Earthly containers isolate dependencies and build steps so you get consistent, repeatable builds regardless of the environment.
+    Portable builds - Earthfiles define each step so you can build on any platform that supports containers like Docker.
+    Declarative syntax - Earthfiles use a simple, declarative syntax to define steps, reducing boilerplate.
+    Built-in caching - Earthly caches steps and layers to optimize incremental builds.
+    Parallel builds - Earthly can distribute work across containers to build parts of a project in parallel.
+    Reasons developers use Earthly:
+
+    Simpler configuration than bash scripts or Makefiles.
+    Avoid dependency conflicts by isolating dependencies in containers.
+    Consistent builds across different environments (local dev, CI, production).
+    Efficient caching for faster build times.
+    Can build and integrate with any language or framework that runs in containers.
+    Integrates with CI systems like GitHub Actions.
+    Enables building complex multi-language, multi-component projects.
+    Earthly is commonly used for building, testing and shipping applications, especially those with components in different languages. It simplifies build automation for monorepos and complex projects.
+
+    Overall, Earthly is a developer-focused build tool that leverages containers to provide reproducible, portable and parallel builds for modern applications. Its declarative Earthfile syntax and built-in caching help optimize build performance.
+    ---
+
+    Task:
+    Write a shortened version of this call to action for getting readers of an article that is about another topic interested in Earthly. 
+    A great call to action explains why Earthly might interest them by connecting to the topic of the article. But if the connection is not clear, a straight-forward request to look at Earthly is second best.
     {{~/system}}
     {{~#each examples}}
     {{#user~}}
@@ -120,11 +149,26 @@ def shorter(input: str) -> str:
     {{input}}
     {{~/user}}
     {{#assistant~}}
-    {{gen "answer"}}
-    {{~/assistant}}   
+    {{gen 'options' n=5 temperature=0.7 max_tokens=500}}
+    {{~/assistant}}
+    {{#user~}}
+    Can you please comment on the pros and cons of each of these replacements?
+    ---{{#each options}}
+    Option {{@index}}: {{this}}{{/each}}
+    ---
+    {{~/user}}
+    {{#assistant~}}
+    {{gen 'thinking' temperature=0 max_tokens=2000}}
+    {{~/assistant}}
+    {{#user~}} 
+    Please return the text of the best option, based on above thinking.
+    {{~/user}}
+    {{#assistant~}}
+    {{gen 'answer' temperature=0 max_tokens=500}}
+    {{~/assistant}}
     '''), llm=gpt4, silent=True)
-    with open(os.devnull, 'w') as f, contextlib.redirect_stdout(f):
-        out = score(examples=examples,input=input) 
+    # with open(os.devnull, 'w') as f, contextlib.redirect_stdout(f):
+    out = score(examples=examples,input=input) 
     return out["answer"].strip()
 
 
@@ -140,7 +184,7 @@ def main():
     if args.dir:
         # Process each markdown file in the directory
         for root, dirs, files in os.walk(args.dir):
-            for file in files[:80]:
+            for file in files:
                 if file.endswith('.md'):
                     path = os.path.join(root, file)
                     # print(f"Starting: {path}")
