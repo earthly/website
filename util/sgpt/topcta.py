@@ -140,7 +140,7 @@ def main():
     if args.dir:
         # Process each markdown file in the directory
         for root, dirs, files in os.walk(args.dir):
-            for file in files[:40]:
+            for file in files[:50]:
                 if file.endswith('.md'):
                     path = os.path.join(root, file)
                     # print(f"Starting: {path}")
