@@ -62,12 +62,12 @@ def add_paragraph_if_word_missing(filename):
             new_content = frontmatter + '\n' + replace + '\n\n' + rest_of_article
             with open(filename, 'w') as file:
                 file.write(new_content)
-        elif 'https://earthly.dev/' not in first_paragraph and 'earthly.dev' not in first_paragraph:
-            # print("CTA not found. Adding shell-gpt one.")
-            replace = build_paragraph(filename) 
-            new_content = frontmatter + '\n' + replace + '\n\n' + rest_of_file.strip()
-            with open(filename, 'w') as file:
-                file.write(new_content)
+        # elif 'https://earthly.dev/' not in first_paragraph and 'earthly.dev' not in first_paragraph:
+        #     # print("CTA not found. Adding shell-gpt one.")
+        #     replace = build_paragraph(filename) 
+        #     new_content = frontmatter + '\n' + replace + '\n\n' + rest_of_file.strip()
+        #     with open(filename, 'w') as file:
+        #         file.write(new_content)
 
 def find_nth(haystack, needle, n):
     start = haystack.find(needle)
@@ -86,7 +86,7 @@ def main():
     if args.dir:
         # Process each markdown file in the directory
         for root, dirs, files in os.walk(args.dir):
-            for file in files:
+            for file in files[:30]:
                 if file.endswith('.md'):
                     path = os.path.join(root, file)
                     # print(f"Starting: {path}")

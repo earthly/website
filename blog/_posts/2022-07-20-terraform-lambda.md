@@ -12,7 +12,7 @@ internal-links:
 excerpt: |
     Learn how to import existing infrastructure into Terraform and manage it as code. Follow along as the author imports resources such as AWS Lambda, ECR, S3, and API Gateway, and tests the infrastructure by destroying and recreating it.
 ---
-<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about importing existing infrastructure into Terraform and managing it as code. Earthly is a powerful tool for building and managing infrastructure as code, making it a valuable tool for readers interested in Terraform and managing their infrastructure more efficiently. [Check us out](/).**
+**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about importing existing infrastructure into Terraform. Earthly is a powerful build tool that any infrastructure as code project might benefit from. [Check it out](/).**
 
 ## From Click Ops To GitOps
 
