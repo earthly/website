@@ -15,7 +15,7 @@ internal-links:
 excerpt: |
     Learn how to convert a monolith recipe API into microservices using Django and Flask. This article covers the usage of RabbitMQ for communication between microservices and provides a step-by-step guide on Dockerizing the microservices.
 ---
-<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about building Python microservices with Docker and RabbitMQ. Earthly is a powerful tool that can be used to build and manage Docker containers, making it a valuable tool for developers working with microservices and containerized applications like the ones described in this article. [Check us out](/).**
+**We're [Earthly](https://earthly.dev/). We simplify and speed up software building using containerization. Earthly ideal for developers building microservices. [Check it out](/).**
 
 Microservices are a software architectural style where an application is composed of small, independently deployable services. Each microservice has a single, narrowly defined responsibility and communicates with other microservices through APIs.
 
