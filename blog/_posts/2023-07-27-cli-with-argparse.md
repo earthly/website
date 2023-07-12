@@ -7,7 +7,11 @@ author: Kabaki Antony
 editor: Ubaydah Abdulwasiu
 
 internal-links:
- - just an example
+ - building a cli application
+ - cli application
+ - building a with argparse
+ - application
+ - command line interface
 ---
 
 **We're [Earthly](https://earthly.dev/). We make building software simpler and, therefore, faster. If you're interested in a simple and containerized approach to building Python code, then [check us out](/).**
@@ -781,7 +785,3 @@ You can find the code examples used in this tutorial [in this GitHub repository]
 
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
