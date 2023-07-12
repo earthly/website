@@ -10,7 +10,7 @@ internal-links:
 excerpt: |
     Learn how to balance social confidence and epistemic confidence in order to succeed in your career. Find out why being confidently uncertain can be a valuable mindset, and discover tips on how to navigate uncertainty with confidence.
 ---
-<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about balancing social confidence and epistemic confidence in order to succeed in your career. Earthly is a powerful tool for building and managing CI/CD pipelines, making it a valuable asset for developers looking to navigate uncertainty and confidently deliver high-quality software. [Check us out](/).**
+**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. [Give us a go](/).**
 
 ## "OH GAWD"
 

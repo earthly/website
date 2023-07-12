@@ -13,7 +13,7 @@ internal-links:
 excerpt: |
     Learn how to connect to PostgreSQL databases and run queries using the psycopg2 library in Python. This tutorial covers the basics of connecting to a database, running SQL queries, handling connection errors, and simplifying querying using context managers.
 ---
-<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about using psycopg2 to connect to PostgreSQL databases in Python. Earthly is a powerful build tool that can be used in conjunction with psycopg2 to automate the build process and ensure consistent and reproducible results. [Check us out](/).**
+**We're [Earthly](https://earthly.dev/). We make building software simpler and faster using containerization. If you're dealing with Python, Earthly can help simplify the build and test process. [Check it out](/).**
 
 Are you a Python programmer learning to work with PostgreSQL? If so, this tutorial on **psycopg2**, the PostgreSQL connector for Python, is for you. You can connect to PostgreSQL databases and run queries—all from within your Python script—using the psycopg2 adapter.
 

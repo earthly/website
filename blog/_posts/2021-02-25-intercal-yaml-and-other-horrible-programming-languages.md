@@ -11,7 +11,7 @@ excerpt: |
 internal-links:
   - intercal
 ---
-<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about INTERCAL, YAML, and other horrible programming languages. Earthly is a powerful build tool that can simplify and streamline the build process for projects written in INTERCAL, YAML, or any other programming language, making it a valuable tool for developers and system administrators. [Check us out](/).**
+**We're [Earthly](https://earthly.dev/). We simplify and speed up software building with containerization. Earthly helps you avoid YAML hell. [Check it out](/).**
 
 ## PROGRAM REJECTED FOR MENTAL HEALTH REASONS
 

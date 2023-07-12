@@ -12,7 +12,7 @@ internal-links:
  - Command
  - Echo
 ---
-<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about the Linux `echo` command. Earthly is a powerful build tool that can be used in conjunction with the `echo` command to enhance the build process and automate tasks in Linux. [Check us out](/).**
+<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and faster using containerization. If you're working with Linux commands like `echo`, Earthly can automate your build process making it even more efficient. [Check it out](/).**
 
 **Linux** is one of the most popular operating systems. It has a powerful command-line interface that allows various commands to be passed as instructions to be executed by the computer. The `echo` command is one of the most commonly used Linux commands.
 

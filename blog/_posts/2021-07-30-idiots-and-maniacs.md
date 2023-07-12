@@ -8,7 +8,7 @@ sidebar:
 excerpt: |
     In this article, the author explores the concept of "idiots and maniacs" in software development, drawing parallels to driving in the snow. They discuss how different approaches and perspectives can be seen as either idiotic or maniacal depending on one's own context and experience. The article highlights the importance of understanding different trade-offs and contexts in order to make informed decisions in software development.
 ---
-<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about idiots and maniacs in software development. Earthly is a powerful build tool that can greatly enhance the development and deployment process for software projects, making it a valuable tool for readers interested in optimizing their software development workflows. [Check us out](/).**
+**We're [Earthly](https://earthly.dev/). We make building software simpler and faster using containerization. In this chaos of software development, Earthly provides you with a straightforward and efficient tool to manage your build processes. No idiocy, just smart, fast builds. [Check it out](/).**
 
 ## Observability
 
