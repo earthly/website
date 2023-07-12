@@ -57,11 +57,11 @@ def add_paragraph_if_word_missing(filename):
             print(f"Starting: {filename}")
             # print("shell gpt paragraph found. updating it.")
             # Remove the first paragraph (up to the first double line break)
-            replace = build_paragraph(filename) 
-            rest_of_article = rest_of_file.lstrip().split("\n\n", 1)[1]
-            new_content = frontmatter + '\n' + replace + '\n\n' + rest_of_article
-            with open(filename, 'w') as file:
-                file.write(new_content)
+            # replace = build_paragraph(filename) 
+            # rest_of_article = rest_of_file.lstrip().split("\n\n", 1)[1]
+            # new_content = frontmatter + '\n' + replace + '\n\n' + rest_of_article
+            # with open(filename, 'w') as file:
+            #     file.write(new_content)
         # elif 'https://earthly.dev/' not in first_paragraph and 'earthly.dev' not in first_paragraph:
         #     # print("CTA not found. Adding shell-gpt one.")
         #     replace = build_paragraph(filename) 
