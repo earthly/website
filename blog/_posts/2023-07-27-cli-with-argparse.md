@@ -17,10 +17,10 @@ A Command-Line Interface (CLI) is a method of interacting with a computer progra
 In this tutorial, let's explore using the `argparse` module by building a ToDo application that will be operated through the Command-Line. This project will serve as an example to introduce the various concepts of `argparse` and demonstrate their practical use. Therefore, throughout the tutorial, we will build the application incrementally while exploring the different features of the `argparse` module.
 The ToDo application will allow users to manage tasks by providing commands to add tasks, view the task list, mark tasks as done, and delete tasks.
 
-## Setting up the Environment
+## Setting Up the Environment
 
 Setting up the environment for the ToDo CLI project will involve getting some things ready. Let's look at what you will need:
-The first thing you need is to have Python installed. If you don't have Python installed on your system, download it [here](https://www.python.org/downloads/) and select the Python version appropriate for your operating system.
+The first thing you need is to have Python installed. If you don't have Python installed on your system, [download](https://www.python.org/downloads/) it and select the Python version appropriate for your operating system.
 The next thing you need to do is create the project directory; You can create the directory in your integrated development environment (IDE), or you can create it on the terminal using the following command:
 
 ~~~
@@ -127,7 +127,7 @@ if __name__ == "__main__":
     main()
 ~~~
 
-Run the application and provide a task,  enclosing it with quotation marks `""`
+Run the application and provide a task, enclosing it with quotation marks `""`
 
 ~~~
 python todo_cli.py "clean the house"
@@ -244,7 +244,7 @@ import json
 TASKS_FILE = 'tasks.json'
 ~~~
 
-To save tasks to the file, create the `save_task` function (it will take a tasks parameter). The function uses the `open` function to open the specified file ('TASKS_FILE')  in write mode ('w'). Then, the `json.dump` function is used to write the tasks to the file in JSON format.
+To save tasks to the file, create the `save_task` function (it will take a tasks parameter). The function uses the `open` function to open the specified file ('TASKS_FILE') in write mode ('w'). Then, the `json.dump` function is used to write the tasks to the file in JSON format.
 
 ~~~
 # todo_2_cli.py
@@ -267,7 +267,7 @@ def read_tasks():
 ~~~
 
 You can now save and read data from the JSON file using the `read_tasks` and `save_task` functions. The `view` and `add` subcommands need supporting functions that will be called whenever a user specifies an action on the command line. Let's define the functions next.
-The `add_task` function will be called when a user passes the `add` subcommand on the command line. It will take one parameter,  the `args` namespace object. To read the tasks it will call the `read_tasks` function and the `save_tasks` function to save tasks to the file.
+The `add_task` function will be called when a user passes the `add` subcommand on the command line. It will take one parameter, the `args` namespace object. To read the tasks it will call the `read_tasks` function and the `save_tasks` function to save tasks to the file.
 
 ~~~
 def add_task(args):
@@ -447,7 +447,7 @@ def main():
 ~~~
 
 By utilizing choices in command-line arguments, you can enforce specific valid values for certain arguments and ensure that the user provides valid input based on the available choices. So if a user runs the script and provides the `add` command with the `--priority` argument, `argparse` will enforce that the value of `--priority` must be one of the specified choices. If the user provides an invalid value, `argparse` will raise an error and display the appropriate error message.
-Here is  an example of how you could use the `add` command with the `--priority` argument and supply one of the choices:
+Here is an example of how you could use the `add` command with the `--priority` argument and supply one of the choices:
 
 ~~~
 python todo_2_cli.py add "Edit this article" –priority high
@@ -666,8 +666,8 @@ def print_task(task):
 ~~~
 
 In the `main()` function, you will add the following options:
-**Due Date**: An optional `--due-date` argument, enabling setting a due date for the task. You should provide the due date  in the format "YYYY-MM-DD".
-**Sorting**: Add  a `--sort` option to the `view` subcommand. When this option is specified, the tasks will be sorted by their due dates in ascending order. The `--sort` option has no value.
+**Due Date**: An optional `--due-date` argument, enabling setting a due date for the task. You should provide the due date in the format "YYYY-MM-DD".
+**Sorting**: Add a `--sort` option to the `view` subcommand. When this option is specified, the tasks will be sorted by their due dates in ascending order. The `--sort` option has no value.
 **Filtering**: Add a `--filter` option to the `view` subcommand, which takes values from any of the following choices: "low", "medium", and "high". Only tasks with specified choices will be displayed when this option is specified.
 
 ~~~
@@ -783,6 +783,5 @@ You can find the code examples used in this tutorial [in this GitHub repository]
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
