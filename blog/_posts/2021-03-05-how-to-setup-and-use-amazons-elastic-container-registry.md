@@ -15,7 +15,7 @@ internal-links:
 excerpt: |
     Learn how to setup and use Amazon's Elastic Container Registry (ECR) to store and manage your container images. Discover the benefits of using ECR over Docker Hub and how it integrates with other AWS services like IAM, EKS, and ECS.
 ---
-<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about setting up and using Amazon's Elastic Container Registry (ECR). Earthly is a powerful build tool that can enhance your containerization workflow, making it easier to build and manage your Docker images. [Check us out](/).**
+**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. If you're setting up and using Amazon's ECR, using Earthly to build your containers could really enhance your workflow. [Check it out](/).**
 
 A container is a simple unit that packages all your code and its dependencies so your application can run quickly and reliably from any computing environment. That means you could quickly move from your local environment to your staging and into production. Due to their portability, small size, and convenience, containers are becoming [a method of choice](https://www.cio.com/article/3434010/more-enterprises-are-using-containers-here-s-why.html) for shipping modern applications.
 

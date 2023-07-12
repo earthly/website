@@ -13,7 +13,7 @@ internal-links:
 excerpt: |
     Learn how to simplify Kubernetes deployments using ArgoCD, a lightweight tool that reads environment configurations from a Git repository and applies changes to a Kubernetes cluster. Discover common use cases and step-by-step instructions for implementing ArgoCD in your project.
 ---
-<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about using ArgoCD for Kubernetes deployments. ArgoCD is a powerful tool for simplifying Kubernetes deployments and managing applications in a GitOps manner. [Check us out](/).**
+<!--sgpt-->**We're [Earthly](https://earthly.dev/). We streamline software builds with containerization. If you're into using ArgoCD for Kubernetes deployments, Earthly can complement your stack by automating and speeding up your build process. [Check it out](/).**
 
 Kubernetes has simplified the container management process for microservice applications, but developers often face challenges when using this notoriously complex platform to achieve constant software delivery.
 

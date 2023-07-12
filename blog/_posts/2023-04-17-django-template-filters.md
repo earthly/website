@@ -15,7 +15,7 @@ internal-links:
 excerpt: |
     Learn how to use Django template filters to transform and modify variable data in your HTML templates. Discover the built-in filters provided by Django and how to create your own custom filters.
 ---
-<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about Django template filters. Earthly is a powerful build tool that can be used in conjunction with Django projects to streamline the build process and improve development workflows. [Check us out](/).**
+**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. Earthly can streamline your Django build process. [Check it out](/).**
 
 Django is a powerful Python web framework loaded with many useful built-in features that [make](/blog/using-cmake) building complex web-focused products a lot easier; one such feature is its **templating engine**.
 
