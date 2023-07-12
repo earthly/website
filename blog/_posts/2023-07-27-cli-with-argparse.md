@@ -775,6 +775,8 @@ By following this tutorial, you should have understood how to develop command-li
 
 You can find the code examples used in this tutorial [in this GitHub repository](https://github.com/KabakiAntony/cli_with_argparse_tutorial).
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
@@ -784,4 +786,3 @@ You can find the code examples used in this tutorial [in this GitHub repository]
 - [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
