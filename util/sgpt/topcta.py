@@ -28,42 +28,53 @@ def add_paragraph_if_word_missing(filename):
     with open(filename, 'r') as file:
         content = file.read()
 
-    # Split the markdown file by the '---' delimiter to isolate the frontmatter
-    parts = content.split('---')
+    # Identify the frontmatter by finding the end index of the second '---'
+    frontmatter_end = find_nth(content, '---', 2)
 
-    if "funnel:" in content:
+    # If frontmatter end exists
+    if frontmatter_end != -1:
+        frontmatter = content[:frontmatter_end + len('---')]  # Include '---' in frontmatter
+        rest_of_file = content[frontmatter_end + len('---'):]  # rest_of_file starts after '---'
+    else:
+        frontmatter = ''
+        rest_of_file = content
+
+    if "funnel:" in frontmatter:
         # print("Is Earthly focused, skipping.")
         return
     # Ensure we have more than the frontmatter
-    if len(parts) > 2:
+    else:
         first_paragraph_found = False
-        paragraphs = parts[2].split("\n")
+        paragraphs = rest_of_file.split("\n")
         for paragraph in paragraphs:
             if paragraph.strip():
                 first_paragraph = paragraph.strip()
                 first_paragraph_found = True
                 break
-        
+
         # Check if 'sgpt' is in the first paragraph
         if first_paragraph_found and 'sgpt' in first_paragraph:
             print(f"Starting: {filename}")
             # print("shell gpt paragraph found. updating it.")
             # Remove the first paragraph (up to the first double line break)
-            # replace = build_paragraph(filename) 
-            # rest_of_article = parts[2].lstrip().split("\n\n", 1)[1]
-            # parts[2] = '\n' + replace + '\n\n' + rest_of_article
-            # new_content = '---'.join(parts)
-            # with open(filename, 'w') as file:
-            #     file.write(new_content)
+            replace = build_paragraph(filename) 
+            rest_of_article = rest_of_file.lstrip().split("\n\n", 1)[1]
+            new_content = frontmatter + '\n' + replace + '\n\n' + rest_of_article
+            with open(filename, 'w') as file:
+                file.write(new_content)
         elif 'https://earthly.dev/' not in first_paragraph and 'earthly.dev' not in first_paragraph:
             # print("CTA not found. Adding shell-gpt one.")
             replace = build_paragraph(filename) 
-            new_content = parts[0] + '---' + parts[1] + '---\n' + replace + '\n\n' + parts[2].strip()
+            new_content = frontmatter + '\n' + replace + '\n\n' + rest_of_file.strip()
             with open(filename, 'w') as file:
                 file.write(new_content)
-        # else:
-            # print(f"Starting: {filename}")
-            # print("Existing hand written CTA found. Doing nothing")
+
+def find_nth(haystack, needle, n):
+    start = haystack.find(needle)
+    while start >= 0 and n > 1:
+        start = haystack.find(needle, start+len(needle))
+        n -= 1
+    return start
 
 def main():
     parser = argparse.ArgumentParser(description='Add an excerpt to a markdown file.')
