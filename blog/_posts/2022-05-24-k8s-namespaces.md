@@ -10,6 +10,7 @@ internal-links:
 excerpt: |
     Learn how and when to use Kubernetes namespaces to isolate workloads and manage resources more efficiently in your Kubernetes cluster. Discover the benefits of namespaces and how to create and manage them effectively.
 ---
+<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and faster using containerization. If you're dealing with Kubernetes namespaces, Earthly can be a game-changer for your build process. [Check it out](/).**
 
 When you start learning about Kubernetes, you quickly learn about the key components that you need in order to run your applications, such as pods, deployments, and persistent volumes, but the components that aren't absolute necessities often come a little later in your learning journey. One of these components is namespaces, which helps you isolate workloads. This comes in handy when you have several different projects under the same cluster. For example you may have your main application and several internal tools all running together on the same cluster.
 
