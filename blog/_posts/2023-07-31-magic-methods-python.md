@@ -4,6 +4,7 @@ categories:
   - Tutorials
 toc: true
 author: Ashutosh Krishna
+editor: Ubaydah Abdulwasiu
 
 internal-links:
  - just an example
