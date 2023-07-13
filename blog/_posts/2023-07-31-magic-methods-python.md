@@ -767,6 +767,8 @@ However, this is just the tip of the iceberg. There is much more to discover and
 
 You can find all the code samples used in the tutorial in this [GitHub repository](<https://github.com/as>
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
@@ -775,4 +777,3 @@ You can find all the code samples used in the tutorial in this [GitHub repositor
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
