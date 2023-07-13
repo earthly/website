@@ -8,6 +8,8 @@ internal-links:
   - integration testing
   - unit test
   - unit testing
+excerpt: |
+    Learn the differences between unit testing and integration testing and when to use each approach. Discover how unit tests focus on small, isolated pieces of code, while integration tests ensure that different components of your software work together seamlessly.
 ---
 
 In 1998, Kent Beck wrote sUnit, a unit testing framework for SmallTalk. Beck later ported this framework to Java as jUnit. From there, xUnit frameworks spread to the most popular languages. Newer languages, like [GoLang](/blog/top-3-resources-to-learn-golang-in-2021) and Rust, have incorporated testing into the compiler and standard library directly.

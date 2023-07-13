@@ -8,6 +8,8 @@ internal-links:
  - repeatability
  - reusability
  - reliability
+excerpt: |
+    Learn how to achieve repeatability in your continuous integration pipeline and improve the reliability, reproducibility, reusability, and speed of your builds. Discover best practices for test automation, adopting continuous integration, and fixing broken builds immediately.
 ---
 <!-- vale HouseStyle.EG = NO -->
 > In software engineering, continuous integration is the practice of merging all developers' working copies to a shared mainline several times a day. Grady Booch first proposed the term CI in his 1991 method, although he did not advocate integrating several times a day. —[Wikipedia](https://en.wikipedia.org/wiki/Continuous_integration "Wikipedia article on continuous integration")

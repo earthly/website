@@ -8,7 +8,8 @@ sidebar:
   nav: "thoughts"
 toc: true
 featured: true
-excerpt: "I've noticed something interesting about the types of programming languages people like. It's something that doesn't seem to come up in various discussions of programming language preferences."
+excerpt: |
+    In this article, the author explores the concept of "brown" and "green" programming languages based on the Stack Overflow Developer Survey results. They discuss how languages used in existing projects tend to be dreaded, while languages used in new projects are loved. The article also delves into the biases and factors that contribute to these perceptions and the lifecycle of programming language hype.
 ---
 ## The Data
 

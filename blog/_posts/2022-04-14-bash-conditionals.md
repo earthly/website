@@ -10,6 +10,8 @@ internal-links:
  - bash test
  - bash tests
  - flow control
+excerpt: |
+    Learn how to use conditionals in Bash to improve your scripting skills and automate tasks. This comprehensive guide covers everything from test commands and operators to conditional statements and case statements. Whether you're a beginner or an experienced Bash user, this article will help you level up your Bash programming skills.
 ---
 
 [Bash (bourne again shell)](https://www.gnu.org/software/bash/manual/html_node/What-is-Bash_003f.html) has been around since 1989 and owes its longevity to its usefulness and flexibility. While it's the default login and command shell for most [Linux](https://www.linux.org) distros, its value extends beyond that.

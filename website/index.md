@@ -6,7 +6,6 @@ mobileBanner: Earthly Satellites is now GA! <a href="https://earthly.dev/blog/ea
 ---
 
 {% include home/layout.html template='home/v2/hero.html' %}
-{% include home/layout.html template='home/v2/call-to-action.html' %}
 {% include home/layout.html template='home/v2/customers.html' %}
 {% include home/layout.html template='home/why.html' %}
 

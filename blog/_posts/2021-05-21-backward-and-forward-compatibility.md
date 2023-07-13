@@ -11,6 +11,8 @@ internal-links:
  - forwards compatibility
 topic: go
 last_modified_at: 2023-04-17
+excerpt: |
+    This article explores best practices for maintaining backward and forward compatibility with Protocol Buffers. Learn how to manage your messages and make changes without breaking your system.
 ---
 **We're [Earthly.dev](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article covers protocol buffers and forward and backward compatibility. If you want to know more about building in containers then [check us out](/).**
 

@@ -314,3 +314,19 @@ stop-website(){ # kill what is on port 4001
     kill "$(lsof -i :4001 | tail -n 1 | awk '{ print $2 }')" 
 }
 
+lint-frontmatter(){ # Use when you are getting a weird error about frontmatter of a post
+    # pip install --user yamllint
+    frontmatter | yamllint -c ./util/yamlconfig.yaml -
+}
+frontmatter() {
+    f="${1:=$(post)}"
+    ./util/frontmatter.awk < "$f"
+}
+
+excerpt() {
+    python ./util/sgpt/excerpt.py --file "$(post)"
+}
+
+excerpt-all() {
+    python ./util/sgpt/excerpt.py --dir "./blog/_posts/"
+}

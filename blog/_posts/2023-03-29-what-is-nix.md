@@ -9,6 +9,8 @@ internal-links:
  - Nix
  - Docker
  - Package Manager
+excerpt: |
+    Learn what Nix is and how it can revolutionize software development with its unique approach to package management and operating system configuration. Discover how Nix brings the power of purely functional programming to build systems and ensures reproducibility and control over software dependencies.
 ---
 
 I was at a bar with friends, and one of them mentioned that they'd heard that Nix is [turning 20 this month](https://discourse.nixos.org/t/nix-20th-anniversary-march-of-nix/24209).

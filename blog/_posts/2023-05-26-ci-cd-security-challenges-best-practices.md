@@ -11,6 +11,8 @@ internal-links:
  - Security
  - Continuous Deployment
  - Github
+excerpt: |
+    Learn about the challenges and best practices for securing your CI/CD pipeline in this informative article. Discover how to mitigate security risks and ensure the reliability and integrity of your software development and deployment process.
 ---
 
 In today's fast-paced world of software development, speed, and agility are important to stay ahead of the competition. Continuous Integration and Continuous Deployment (CI/CD) have emerged as the go-to methodologies to achieve this goal. CI/CD is a practice that allows developers to continuously integrate and deploy their code changes into production, enabling them to rapidly deliver features and updates to their users.

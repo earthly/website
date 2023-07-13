@@ -1,18 +1,44 @@
-<main class="flex flex-col justify-center text-center wave-main relative z-0 overflow-hidden">
-    <h1
-        class="relative z-10 mx-auto max-w-4xl font-display text-5xl font-medium tracking-tight text-slate-900 sm:text-7xl">
-        <div>
-          Earthly makes builds
-        </div>
-        <span class="relative whitespace-nowrap text-[#2d7e5d]">
-            <span class="relative ml-4 block pt-4">super simple</span>
-        </span>
+<main class="homepage mb-6 lg:mb-12 mt-[70px] overflow-hidden wave-main">
+  <div class="wave"></div>
+  <div class="wave"></div>
+  <div class="wave"></div>
+
+  <div class="max-w-7xl mt-12 mx-auto px-6 lg:px-10 relative z-10">
+    <h1 class="font-medium text-5xl sm:text-7xl text-center xl:text-left text-slate-900 tracking-tight">
+      Earthly makes builds
+      <span class="block pt-4 text-[#2d7e5d] whitespace-nowrap">super simple</span>
     </h1>
-    <p  class="relative lg:leading-8 z-10 mx-auto mt-10 max-w-lg text-xl tracking-tight px-4 lg:px-0 text-slate-600">
+
+    <p class="lg:leading-8 max-w-lg mt-10 mx-auto xl:mx-0 text-center xl:text-left text-xl text-slate-600 tracking-tight">
       Fast, consistent builds with an instantly familiar syntax – like
       Dockerfile and Makefile had a baby.
     </p>
-    <div class="wave"></div>
-    <div class="wave"></div>
-    <div class="wave"></div>
+
+    <p class="mt-9 text-center xl:text-left text-slate-400 text-xl">Simple, Fast, Consistent Builds</p>
+
+    <div class="max-w-md mx-auto xl:mx-0">
+      <a
+        class="w-full bg-[#2d7e5d] hover:bg-[#2d7e5d] cursor-pointer inline-block my-0.5 lg:my-2 py-6 rounded-lg shadow-sm text-2xl text-center text-white"
+        href="/get-earthly"
+        onclick="homepageGetEarthlyClick()"
+      >
+        Install Earthly
+      </a>
+    </div>
+
+    <p class="text-center xl:text-left text-slate-400">Earthly is Open Source</p>
+  </div>
+
+  <div class="xl:w-fit bg-white xl:bg-transparent relative xl:absolute bottom-0 right-0 top-0 xl:top-24 earthly-animation xl:flex items-center z-10">
+    {% svg assets/svg/earthly-animation.svg class="h-full min-h-[280px] pt-10 lg:pt-12 xl:pt-0 relative xl:absolute -right-5 sm:right-[-10vw] xl:right-0 pb-4 lg:pb-0" %}
+  </div>
 </main>
+
+<script>
+  function homepageGetEarthlyClick() {
+    analytics.track("homepage-get-earthly-click", {
+      category: "Get Earthly Click",
+      label: "homepage-get-earthly-click",
+    });
+  }
+</script>

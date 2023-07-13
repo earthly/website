@@ -11,6 +11,8 @@ internal-links:
   - bash script
   - shebang
 
+excerpt: |
+    Learn the ins and outs of bash scripting and how it can make your life easier. From understanding shebangs to error handling and variable naming, this article covers all the essentials for writing efficient and effective bash scripts.
 ---
 <div class="narrow-code">
 
