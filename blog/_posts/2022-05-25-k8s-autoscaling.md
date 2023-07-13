@@ -8,6 +8,8 @@ author: Kasper Siig
 internal-links:
  - k8s
  - autoscaling
+excerpt: |
+    
 ---
 
 There are many reasons engineers look to [Kubernetes](https://kubernetes.io/) when running their workloads, like support for containers and orchestration. Another major reason for choosing Kubernetes, though, is being able to automatically scale the services found within a cluster.

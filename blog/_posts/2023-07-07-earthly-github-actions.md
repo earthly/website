@@ -1,14 +1,17 @@
 ---
 title: "Better Together - Earthly + Github Actions"
 categories:
-  - Tutorials
+  - Articles
 toc: true
 author: Evan Pease
-
+topic: earthly
+funnel: 3
 internal-links:
  - Earthly
  - Github Actions
  - Github
+excerpt: |
+    Learn how Earthly and Github Actions can work together to improve your Continuous Integration (CI) process. Discover the benefits of Earthly's local CI pipeline execution, simplicity in writing Earthfiles, and support for monorepos. See how Earthly can significantly speed up your builds and enhance developer productivity.
 ---
 
 ## Introduction
@@ -118,7 +121,7 @@ For the sake of conciseness, here is the code required to orchestrate the steps 
     <th>EARTHLY CODE</th>
   </tr>
   <tr>
-    <td>~~~{.yaml caption="ci-actions-only.yml"}
+    <td>~~~{.yaml}
 # Node service snipped from GHA yaml
   node_service_build:
     environment: "Actions Demo"

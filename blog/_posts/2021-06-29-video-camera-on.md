@@ -5,6 +5,8 @@ categories:
 author: Adam
 internal-links:
  - just an example
+excerpt: |
+    In this article, the author shares a personal experience of encountering a SQL error and how a non-verbal cue from a teammate helped them solve the problem. They discuss the value of non-verbal communication in remote work and the importance of using video cameras during meetings. The article also provides a solution to the SQL issue and highlights the significance of using an "order by" statement.
 ---
 <div class="narrow-code">
 
