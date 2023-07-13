@@ -36,7 +36,7 @@ The code for all the examples in this tutorial can be found in [this GitHub repo
 
 In Go, you can define structs with certain methods like this:
 
-~~~
+~~~{.go caption="animals.go"}
 type (
     dog struct {
         name string
@@ -66,7 +66,7 @@ As you can see, while Go's type-safety system is helpful in most cases, it can s
 
 [*Head First Go*](https://a.co/d/1fk7wVs) author Jay McGavren informs you that interfaces allow you to "define variables and function parameters that will hold *any* type, as long as that type defines certain methods." Defining an interface in Go is fairly straightforward:
 
-~~~
+~~~{.go caption="animals.go"}
 type walkable interface { 
 walk() 
 }
@@ -74,7 +74,7 @@ walk()
 
 In this example, `walkable` is the name of the interface, and it contains one method, `walk()`. If you want to define two interfaces, you can write a shorthand like the following:
 
-~~~
+~~~{.go caption="animals.go"}
 type (
     walkable interface {
         walk()
@@ -89,7 +89,7 @@ type (
 
 When it comes to implementing an interface, Go is a bit unique. As opposed to explicitly defining the class as implementing a specific interface, Go simply requires you to define a type that has the same method signatures as the interface. This means it only needs the following:
 
-~~~
+~~~{.go caption="animals.go"}
 type cat struct{}
 func (c cat) walk() { // however the function works }
 ~~~
@@ -98,7 +98,7 @@ In this example, `cat` implements the `walkable` interface because it implements
 
 Since both `cat` and `dog` have their own `walk()` methods, you can assume that they both implement the `walkable` interface. Now you can refactor the `requiresBath` function to take in both `cat` and `dog` objects by accepting any object that implements `walkable` instead:
 
-~~~
+~~~{.go caption="animals.go"}
 func requiresBath(i walkable) bool {
 return true
 }
@@ -108,7 +108,7 @@ return true
 
 In addition to defining interfaces with specific method signatures, Go also has an empty interface, a typewritten as `interface{}` or `any`:
 
-~~~
+~~~{.go caption="print.go"}
 var i interface{}
 var a any  
 ~~~
@@ -117,7 +117,7 @@ Using what you've learned earlier, you know that for a `cat` to implement the `w
 
 Just like an `any` type in any programming language, an empty interface can be useful in situations where you need a generic function that accepts and returns multiple types. For instance, say you have a function that you want to create that automatically loops through a slice and prints each value individually. Since Go's type-safety system requires you to define the type of slice in the parameter, you would have to create multiple functions that take in different kinds of slices. In this way, having an empty interface allows you to create a workaround of Go's type-safety system for cases that require exceptions:
 
-~~~
+~~~{.go caption="print.go"}
 // instead of this:
 func printStrings(s []string) { //loop and print}
 func printIntegers(s []int) { //loop and print}
@@ -139,7 +139,7 @@ Look at some practical examples of how interfaces can be used to design modular,
 
 Suppose you're building a system that needs to store data. There are several different types of storage systems you might want to use, such as file-based storage, database storage, or cloud storage. Instead of tying your code to a specific storage system, you can define an interface for the storage system like this:
 
-~~~
+~~~{.go caption="storage.go"}
 type Storage interface { 
 ListValues(prefix string) ([]byte, error)
 GetValue(path string) (byte, error)
@@ -152,7 +152,7 @@ This interface defines standard CRUD (create, read, update, delete) methods for 
 
 For example, if you have a `database` struct that implements the `Storage` interface, you can then create a `saveToStorage` function that takes in a `Storage` interface as one of the parameters:
 
-~~~
+~~~{.go caption="storage.go"}
 type database struct {}
 
 func (d *database) ListValues(prefix string) ([]byte, error) {
@@ -168,7 +168,7 @@ func saveToStorage(Storage, path string, values []byte) error {
 
 However, when you actually call that function, you can pass a specific struct that implements the `Storage` interface instead. This ensures that your function remains agnostic as to what type of storage is being sent:
 
-~~~
+~~~{.go caption="storage.go"}
 func main() {
     db := &database{}
            values := make([]byte, 0)
@@ -182,7 +182,7 @@ Now, if you want to change which storage you save to, you don't need to touch th
 
 Creating a logger interface is a common use case for interfaces in Go. A logger interface can be used as a simple interface that provides a method for writing log messages and (once again) is agnostic of the specific type of logger you use:
 
-~~~
+~~~{.go caption="logger.go"}
 type logger interface { 
 log(message string) 
 }
@@ -190,7 +190,7 @@ log(message string)
 
 To use this interface, you can implement it in different ways, depending on your needs. For example, you might implement a console logger that writes log messages to the console. You can also add a file logger that writes log messages to a file. Both would implement the logger interface by holding the same method signature:
 
-~~~
+~~~{.go caption="logger.go"}
 type (
     consoleLogger struct{}
     fileLogger    struct{ filePath string }
@@ -201,13 +201,15 @@ func (cl consoleLogger) log(message string) {
 }
 
 func (fl fileLogger) log(message string) {
-    file, err := os.OpenFile(fl.filePath, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+    file, err := os.OpenFile(fl.filePath, \
+    os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
     if err != nil {
         fmt.Println("Error opening log file:", err)
         return
     }
     defer file.Close()
-    logMessage := fmt.Sprintf("%v - %v\n", time.Now().Format(time.RFC3339), message)
+    logMessage := fmt.Sprintf("%v - %v\n", \
+    time.Now().Format(time.RFC3339), message)
     if _, err = file.WriteString(logMessage); err != nil {
         fmt.Println("Error writing to log file:", err)
     }
@@ -228,14 +230,16 @@ Go provides a way to extract an underlying value of an interface if it exists. T
 
 For instance, in the previous `Logger` example, both `ConsoleLogger` and `FileLogger` implement the `Logger` interface. If you were to initialize a variable of the `Logger` interface type and assign it a `FileLogger` struct, you could grab the `FilePath` property and assign it to a variable like this:
 
-~~~
+~~~{.go caption="logger.go"}
 func main() {
     var i logger = fileLogger{filePath: "Hello"}
     s := i.(fileLogger)
     fmt.Println(s)
      /// This will print out "Hello"
     s, ok := i.(fileLogger)
-    /// Type assertion also returns true/false depending on if the underlying type exists
+    /// Type assertion also returns true/false depending 
+    
+    /// on if the underlying type exists
     fmt.Println(s, ok)
     /// This will print out "Hello true"
 }
@@ -247,7 +251,7 @@ Another related advanced technique is performing type switches to test the under
 
 For example, if you were to write a function that determines the type of `Logger` being passed, you could do something like this:
 
-~~~
+~~~{.go caption="logger.go"}
 func determineLogger(l Logger) string {
     switch v := l.(type) {
     case fileLogger:
@@ -267,7 +271,7 @@ func determineLogger(l Logger) string {
 
 Using the previous example with `bathable` and `walkable` interfaces, you can create a third interface, `talkable`, that combines the two. This means that any struct implementing `talkable` must have all the methods listed in the `bathable` and `walkable` interface:
 
-~~~
+~~~{.go caption="animals.go"}
 type (
     walkable interface {
         walk()
@@ -288,7 +292,7 @@ type (
 
 Lastly, methods or values that are part of the interface can be accessed freely regardless of the struct implementing the interface. Say you have a method that runs the `Log()` method of a `Logger` interface regardless of the specific struct like this:
 
-~~~
+~~~{.go caption="logger.go"}
 func main() {
     var l logger = consoleLogger{}
     useLogger(l)
@@ -307,7 +311,7 @@ Interfaces can be useful for testing code because they allow you to replace real
 
 For example, in this test file, you're testing the function `determineLogger(l Logger)`, which takes in the `Logger` interface as a parameter. Creating a `mockLogger` type and defining the `Log` method in accordance with the `Logger` interface means that you can now pass it into the `determineLogger(l Logger)` function since it fulfills the requirements of the interface:
 
-~~~
+~~~{.go caption="logger_test.go"}
 type mockLogger struct {}
 
 func (m mockLogger) log(message string) {
@@ -315,7 +319,8 @@ func (m mockLogger) log(message string) {
 }
 func TestDetermineLogger_UnknownLogger(t *testing.T) {
     m := mockLogger{}
-    // My expected result of the test is that it would return the string below:
+    // My expected result of the test is that it would return the 
+    // string below:
     expected := "It's an unknown logger!"
     // I call the function and pass in the mockLogger object:
     result := determineLogger(m)
@@ -346,6 +351,4 @@ Interfaces can be used for purposes such as creating generic storage systems or 
 
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
 
