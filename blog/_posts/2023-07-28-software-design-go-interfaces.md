@@ -337,6 +337,8 @@ Go interfaces are a powerful tool for designing extensible and modular software.
 
 Interfaces can be used for purposes such as creating generic storage systems or loggers, among many other abstractions. While interfaces can be useful, it's important to use interfaces only when the need arises and to make them as tiny as possible.
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
@@ -345,4 +347,3 @@ Interfaces can be used for purposes such as creating generic storage systems or 
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
