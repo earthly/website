@@ -7,7 +7,11 @@ author: Ben Smitthimedhin
 editor: Muhammad Badawy
 
 internal-links:
- - just an example
+ - designing extensible software
+ - designing software
+ - designing software with go interfaces
+ - go interfaces
+ - extensible software with go
 ---
 
 [Go](https://go.dev/), also known as Golang, is a simple and efficient programming language that's been adopted by many tech companies, including Uber, Twitch, and Microsoft. Similar to other programming languages such as Java and C++, Go supports interfaces, which provide a powerful mechanism for ensuring that class objects inherit a defined set of properties.
@@ -344,5 +348,4 @@ Interfaces can be used for purposes such as creating generic storage systems or 
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
+
