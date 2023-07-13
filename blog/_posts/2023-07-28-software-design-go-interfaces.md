@@ -22,6 +22,8 @@ In this article, you'll learn how to use interfaces in Go to design extensible, 
 
 ## Why You Need Interfaces
 
+![Why]({{site.images}}{{page.slug}}/why.png)\
+
 Interfaces have played a fundamental role in programming since the need to abstract the definition of a function from the implementation arose in [object-oriented programming](https://www.geeksforgeeks.org/introduction-of-object-oriented-programming/). A great example of why you need interfaces can be found in Eric Freeman and Elisabeth Robson's book [*Head First Design Patterns*](https://a.co/d/bCjS9z5). In it, Freeman and Robson mention a scenario in which a software engineer, Joe, creates a `Duck` superclass that can `quack()`, `swim()`, and `display()`, something all ducks can do. A `MallardDuck` and a `RedheadDuck` class can, therefore, be created that inherits the `Duck` superclass. Although these two classes must have the `quack()`, `swim()`, and `display()` functions since they inherit the `Duck` superclass, they can customize how these functions work according to their class.
 
 However, when Joe is asked by his boss to add a `fly()` function, he quickly realizes that he needs to customize his whole stack since not all ducks can fly.
@@ -222,6 +224,8 @@ By using interfaces to define a common set of methods, you can easily switch bet
 
 ## Advanced Interface Techniques
 
+![Interface]({{site.images}}{{page.slug}}/interface.png)\
+
 When it comes to advanced interface techniques, type assertions, type switches, interface embedding, and interface values emerge as powerful tools, enabling developers to navigate and manipulate complex data structures with finesse and precision. Take a look at each of these techniques:
 
 ### Type Assertion
@@ -333,6 +337,8 @@ Interfaces can also be useful for test-driven development because they allow you
 
 ## Best Practices for Interfaces
 
+![Best]({{site.images}}{{page.slug}}/best.png)\
+
 When using interfaces, it's important to consider when they're appropriate. Interfaces can be useful for defining a common set of methods for different types, but they can also add unnecessary complexity if overused.
 
 It's important to design interfaces that are small and focused, with a clear and well-defined purpose. This means having as few methods as possible for a given interface since implementing the interface requires defining the same methods for that particular struct with its own logic. Having multiple structs that implement multiple methods in an interface can quickly lead to cluttered code.
@@ -346,8 +352,3 @@ Go interfaces are a powerful tool for designing extensible and modular software.
 Interfaces can be used for purposes such as creating generic storage systems or loggers, among many other abstractions. While interfaces can be useful, it's important to use interfaces only when the need arises and to make them as tiny as possible.
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-- [ ] Optional: Find ways to break up content with quotes or images
-
