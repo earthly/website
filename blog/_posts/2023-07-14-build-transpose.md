@@ -14,9 +14,11 @@ excerpt: |
   Learn strategies for working with LLMs, such managing context, framing the problem, thinking outloud and more in this newbs's guide to applying large language models.
 ---
 
-**We're [Earthly](https://earthly.dev/). We simplify building software with containerization. This article shares lessons from a [Proof of Concept Earthfile generator project](https://github.com/earthly/build-transpose/).**
+**We're [Earthly](https://earthly.dev/). We simplify building software with containerization. This article shares lessons from a Proof-of-Concept [Earthfile generator](https://github.com/earthly/build-transpose/) project.**
 
 <!-- Curious about getting better build times by combining ideas from Makefile and Dockerfile? [Check us out](https://earthly.dev/). -->
+
+## A Newbs’s Guide to Applying Large Language Models
 
 A month ago, the whole Earthly team was gathered in a board room at the Hilton Garden Inn in Minnesota. After a fun day of boating and then curling, we were getting down to planning. Our CEO was saying that one of the biggest adoption hurdles with Earthly is the time investment customers need to spend to change over their builds. The investment quickly pays off, but it's also not zero, and so represents an onboarding challenge.
 
