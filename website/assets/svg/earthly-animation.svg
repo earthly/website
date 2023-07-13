@@ -1,8 +1,30 @@
 <svg viewBox="-34 -2 755 372" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- T1, A1, A9, T2, B1, B2, T3, T4, D1, T5 -->
+  <defs>
+    <g id="dot" transform="translate(-6.7 -7.5)">
+      <circle cx="7.71752" cy="7.71789" r="5.88976" fill="#D7FEF9" stroke="#4175DD" stroke-width="2"/>
+      <circle cx="7.71752" cy="7.71874" r="4.00683" fill="#4175DD" stroke="#4175DD" stroke-width="1.17988"/>
+      <circle cx="7.71753" cy="7.71777" r="1.47949" fill="#D7FEF9"/>
+      <circle cx="7.71756" cy="7.71744" r="0.840486" fill="#4175DD"/>
+    </g>
+
+    <g id="cacheText">
+      <rect y="0.182617" width="60" height="21" rx="4" fill="white" fill-opacity="0.8"/>
+      <text x="7" y="15.5" fill="#2D7E5D" style="font-family: system-ui; font-size: 14px; font-weight: 500; letter-spacing: -0.05em">Cached</text>
+    </g>
+
+    <linearGradient id="gradient">
+      <stop offset="0%" stop-color="#A5A5A5"/>
+      <stop offset="55%" stop-color="#A5A5A5" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- T1 -->
+  <line class="min-[1800px]:hidden" x1="718.517" y1="176.421" x2="461.87" y2="176.42" stroke="#A5A5A5" stroke-width="2.62489"/>
+  <line class="max-[1799px]:hidden" x1="718.517" y1="176.421" x2="461.87" y2="176.42" stroke="url(#gradient)" stroke-width="2.62489"/>
+
+  <!-- A1, A9, T2, B1, B2, T3, T4, D1, T5 -->
   <path
     d="
-      M718.517 176.42H461.87
       M461.87 176.42V256.184C461.87 257.151 461.086 257.934 460.12 257.934H395.94
       M309.16 329.474H373.903C374.87 329.474 375.653 328.69 375.653 327.724V259.684C375.653 258.718 376.437 257.934 377.403 257.934H395.94
       M461.87 176.42H415.274C414.308 176.42 413.525 175.636 413.525 174.67V154.487
@@ -51,20 +73,6 @@
   <path d="M137 154.487H48.2565M48.2565 154.487V188M48.2565 154.487H3.73944" stroke="#A5A5A5" stroke-width="2.8">
     <animate attributeName="stroke" begin="t5.end" dur="1.5s" fill="freeze" keyTimes="0; 0.167; 0.667; 1" values="#A5A5A5; #34F8BB; #34F8BB; #A5A5A5"/>
   </path>
-
-  <defs>
-    <g id="dot" transform="translate(-6.7 -7.5)">
-      <circle cx="7.71752" cy="7.71789" r="5.88976" fill="#D7FEF9" stroke="#4175DD" stroke-width="2"/>
-      <circle cx="7.71752" cy="7.71874" r="4.00683" fill="#4175DD" stroke="#4175DD" stroke-width="1.17988"/>
-      <circle cx="7.71753" cy="7.71777" r="1.47949" fill="#D7FEF9"/>
-      <circle cx="7.71756" cy="7.71744" r="0.840486" fill="#4175DD"/>
-    </g>
-
-    <g id="cacheText">
-      <rect y="0.182617" width="60" height="21" rx="4" fill="white" fill-opacity="0.8"/>
-      <text x="7" y="15.5" fill="#2D7E5D" style="font-family: system-ui; font-size: 14px; font-weight: 500; letter-spacing: -0.05em">Cached</text>
-    </g>
-  </defs>
 
   <!-- T1 -->
   <use href="#dot" opacity="0">
