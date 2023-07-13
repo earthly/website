@@ -521,4 +521,17 @@ Save this script to a file , say, myscript.sh, [make](/blog/makefiles-on-windows
 Here are the ANSI escape color codes for some colors:
 
 |Colors|Codes|
-|
+|-------|----|
+|Red | 0;31|
+|Yellow|1;33|
+|Green|0;32|
+|Blue|0;34|
+|White|1;37|
+
+## Conclusion
+
+You should now have working knowledge on how to use the `echo` command. In this tutorial, you learned about the `echo` command and its options, such as `-n` to omit trailing lines, `-e` to interpret escape characters, and `-E` to ignore escape characters.
+
+The tutorial also explained the various scenarios in which the `echo` command can be used, such as adding and overwriting texts in a file, outputting declared variables to the terminal, and printing files of a specific kind in a directory. You've also learned how the command can be piped with other commands using the pipe operator and how to customize the output colors.
+
+{% include_html cta/bottom-cta.html %}
