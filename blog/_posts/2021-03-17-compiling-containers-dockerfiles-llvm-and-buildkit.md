@@ -16,7 +16,7 @@ internal-links:
   - machine code
 last_modified_at: 2022-11-17
 ---
-**We're [Earthly](https://earthly.dev/). We simplify and speed up software build processes with containerization. Earthly can enhance the reliablity of your CI/CD process. [Check it out](/).**
+**We're [Earthly](https://earthly.dev/). We simplify and speed up software build processes with containerization. Earthly can enhance the reliability of your CI/CD process. [Check it out](/).**
 
 ## Introduction
 

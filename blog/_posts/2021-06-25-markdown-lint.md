@@ -12,7 +12,7 @@ internal-links:
 excerpt: |
     Learn how to ensure the quality of your markdown files and documentation with linting tools. Discover various tools like markdownlint, mdspell, alex, write-good, textlint, proselint, and Vale that can help you catch formatting errors, spelling mistakes, grammar errors, and improve writing clarity. Find the right tool for your needs and automate their usage to maintain high-quality documentation.
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and faster using containerization. Need to automate your documetation? Earthly can help by simplifying the build process in a CI environment. [Check us out](/).**
+**We're [Earthly](https://earthly.dev/). We make building software simpler and faster using containerization. Need to automate your documentation? Earthly can help by simplifying the build process in a CI environment. [Check us out](/).**
 
 Many linting, code formatting, and static analysis tools exist for code. You can use `eslint`, `gofmt`, or many other static analysis tools, combined with a great continuous integration process, and ensure that your code stays in good shape. But what about markdown files and documentation? How do you ensure you aren't committing spelling and grammar mistakes? How do you ensure your files are valid markdown and that the language you are using is clear and correct? You can do this and more with a documentation linter.
 
@@ -52,9 +52,9 @@ Additionally, I will rate tools based on their feature set:
 
 You can disable specific rules inline ( `<!-- markdownlint-disable-file MD001 -->` ) and set up a per-project config in a `.markdownlintrc` file. It also supports writing custom rules in JavaScript and can remediate many problems itself with the `fix` option:
 
-```
+~~~
 markdownlint --fix "./_posts/*.md"
-```
+~~~
 
 It doesn't handle spelling, grammar, or sentence structure, but it can't be beaten for dealing with markdown structure and it has a great online [demo site](https://dlaa.me/markdownlint/).
 
@@ -81,15 +81,15 @@ It doesn't handle spelling, grammar, or sentence structure, but it can't be beat
 
 `mdspell` is a tool specifically for spelling checking markdown documents. Install it like this:
 
-```
+~~~
 npm i markdown-spellcheck -g    
-```
+~~~
 
 You can run it on markdown files in an interactive mode that builds up a custom dictionary of exceptions. You can then use that list later in a continuous integration process.
 
-```
+~~~
 mdspell -n -a --en-us  ./blog/_posts/2021-02-11-mitmproxy.md
-```
+~~~
 
 The downsides of `mdspell` are that the dictionary will likely complain about lots of words that are quite common. It may take some time to build up a list of exceptions. As a shortcut, you might be able to find some more `.spelling` files on GitHub.
 
@@ -141,13 +141,13 @@ The downsides of `mdspell` are that the dictionary will likely complain about lo
 
 Install:
 
-```
+~~~
 npm install -g write-good
-```
+~~~
 
 Run:
 
-```
+~~~
 $ write-good ./blog/_posts/2021-02-11-mitmproxy.md
 here are several ways to accomplish this.
                          ^^^^^^^^^^
@@ -156,7 +156,7 @@ here are several ways to accomplish this.
 e-ca-certificates` is an excellent proof of concept, but if you want to run a do
                          ^^^^^^^^^
 "excellent" is a weasel word on line 367 at column 84
-```
+~~~
 
 `write-good` has many exciting suggestions. It will highlight passive voice, cliches, weak adverbs, and much more. Unfortunately, it's not easy to exclude items or configure rules. It might be helpful as a writing suggestion tool, but this lack of configurability means you will have difficulty using it in a continuous integration process.
 
@@ -185,19 +185,19 @@ e-ca-certificates` is an excellent proof of concept, but if you want to run a do
 
 Install:
 
-```
+~~~
 $ npm install textlint --global
 # install each plugin
 $ npm install --global textlint-rule-no-todo
 ....
 
-```
+~~~
 
 Run:
 
-```
+~~~
 textlint "docs/**"
-```
+~~~
 
 `textlint` is configurable via an `textlintrc` and has inline exclude rules ( `<!-- textlint-disable ruleA,ruleB -->` ) -- which may make it a possible way to use `write-good` or other tools that lack this functionality.
 
@@ -228,32 +228,32 @@ textlint "docs/**"
 
 Some of the writing advice included is great:
 
-```
+~~~
 echo "The very first thing you'll see at the top of every (well-written) bash script " | proselint
 <stdin>:1:5: weasel_words.very Substitute 'damn' every time you're inclined to write 'very'; your editor will delete it and the writing will be just as it should be.
-```
+~~~
 
-```
+~~~
 echo "Thankfully, not all the advice I received was bad. " | proselint
 <stdin>:1:2: skunked_terms.misc 'Thankfully,' is a bit of a skunked term — impossible to use without issue. Find some other way to say it.
-```
+~~~
 
-```
+~~~
 echo "it is worth noting that both for CI and CD, the operating principles and coding philosophy are equally as important as the technical aspect of the implementation." | proselint
 <stdin>:1:96: after_the_deadline.redundancy Redundancy. Use 'as' instead of 'equally as'.
-```
+~~~
 
 This one is awesome considering the context of the [original article](/blog/thought-leaders/):
 
-```
+~~~
 echo "thought leaders" | proselint
 <stdin>:1:2: cliches.garner 'thought leaders' is cliché.
-```
+~~~
 
-```
+~~~
  echo "One elephant in the room with ngrok is" | proselint
 <stdin>:1:5: corporate_speak.misc Minimize your use of corporate catchphrases like this one.
-```
+~~~
 
 Learning from all the best writers is a very lofty objective, and `proselint` has accumulated some valuable rules, but it falls short of its goal of collecting all the worlds writing advice in a parsable form. Ignoring and excluding rules are also not fully supported.
 
@@ -283,12 +283,12 @@ Vale, created by Joseph Kato, supports spelling, grammar, and clarity checks. It
 
 Vale is fast and configurable but not necessarily easy to get started with. Initially, I couldn't get it to find any problems until I realized that it needs a config file to run:
 
-```
+~~~
 MinAlertLevel = suggestion
 
 [*]
 BasedOnStyles = Vale
-```
+~~~
 
 <figcaption>.vale.ini</figcaption>
 
