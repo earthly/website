@@ -349,6 +349,5 @@ Interfaces can be used for purposes such as creating generic storage systems or 
 
 ## Outside Article Checklist
 
-- [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
 
