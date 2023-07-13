@@ -8,7 +8,6 @@ editor: Muhammad Badawy
 
 internal-links:
  - just an example
-
 ---
 
 [Go](https://go.dev/), also known as Golang, is a simple and efficient programming language that's been adopted by many tech companies, including Uber, Twitch, and Microsoft. Similar to other programming languages such as Java and C++, Go supports interfaces, which provide a powerful mechanism for ensuring that class objects inherit a defined set of properties.
