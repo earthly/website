@@ -21,6 +21,7 @@ internal-links:
 excerpt: |
     Learn how to effectively manage Docker logging and log files to improve the performance and reliability of your containerized applications. Discover different logging strategies, Docker logging commands, and the various logging drivers supported by Docker.
 ---
+**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containers. Earthly is a fantastic resource for anyone digging into Docker logs. [Why not give it a try?](/)**
 
 Docker logging and its management are an important part of the containerization of your application. Once you've deployed your application, logging is one of the best tools to help reveal errors, aid in debugging, and optimize your application's performance.
 

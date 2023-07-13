@@ -6,8 +6,6 @@ author: Earthly
 excerpt: |
     In this episode of The Stack Overflow podcast, Adam Gordon Bell, Director of Developer Relations at Earthly, shares entertaining stories about engineers' mistaken assumptions and talks about Earthly's mission to improve build scripts. Tune in for a fun and insightful conversation!
 ---
-<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about improving build scripts. Earthly is a valuable resource for developers interested in improving build scripts and optimizing their workflow. [Check us out](/).**
-
 Adam was a guest on The Stack Overflow podcast:
 
 [Podcast 294: Cleaning up build systems and gathering computer history](https://stackoverflow.blog/2020/12/11/podcast-294-cleaning-up-build-systems-and-gathering-computer-history/).

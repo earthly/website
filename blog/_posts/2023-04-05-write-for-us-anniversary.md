@@ -10,8 +10,6 @@ internal-links:
 excerpt: |
     Join us in celebrating one year of Write With Us! We've had the pleasure of working with over 25 talented tech writers on over 70 technical tutorials. If you're an experienced writer looking to expand your audience or a beginner eager to learn and improve, we'd love to hear from you!
 ---
-<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about celebrating one year of Write With Us! Earthly is an open-source build tool for CI/CD that is popular with developers working on topics such as CI/CD, builds, containers, and developer tools. [Check us out](/).**
-
 <div class="notice--info notice--big">
 
 ## Submissions Closed

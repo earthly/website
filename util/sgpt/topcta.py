@@ -52,6 +52,9 @@ def add_paragraph_if_word_missing(filename, dryrun):
     if "funnel:" in frontmatter or "News" in frontmatter or " Write Outline" in rest_of_file or "topcta: false" in frontmatter:
         print(f"{filename}:Is Earthly focused, skipping.")
         return
+    elif "iframe" in rest_of_file:
+        print(f"{filename}:Youtube CTA, skipping.")
+        return
     else:
         first_paragraph_found = False
         paragraphs = rest_of_file.split("\n")
@@ -199,7 +202,7 @@ def main():
                     path = os.path.join(root, file)
                     add_paragraph_if_word_missing(os.path.join(root, file), args.dryrun)
     elif args.file:
-        add_paragraph_if_word_missing(args.file)
+        add_paragraph_if_word_missing(args.file, args.dryrun)
     else:
         print("Please provide either --dir or --file.")
         exit(1)

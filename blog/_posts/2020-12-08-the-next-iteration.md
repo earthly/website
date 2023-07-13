@@ -10,8 +10,6 @@ internal-links:
   - road map
   - roadmap
 ---
-<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about future improvements and directions for the Earthly project. Earthly is an open source build tool for CI that aims to make build processes more efficient and user-friendly. [Check us out](/).**
-
 Dear Earthly community,
 
 We've been working with many of you to better understand your pains and use-cases when it comes to builds.

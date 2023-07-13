@@ -8,8 +8,6 @@ internal-links:
 excerpt: |
     Looking to learn GoLang in 2021? Check out this article for the top 3 resources recommended by an experienced developer. From interactive tours to in-depth explanations, these resources will help you get started and build familiarity with the language. Plus, there are bonus resources and recommendations for further learning. Don't miss out on this valuable guide!
 ---
-<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about the top 3 resources for learning GoLang in 2021. Earthly is a powerful build tool that can greatly enhance the development and deployment process for GoLang projects. [Check us out](/).**
-
 ## Why Learn Go
 
 <blockquote class="twitter-tweet" data-width="550">

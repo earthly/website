@@ -15,7 +15,7 @@ internal-links:
 topic: cli
 funnel: 2
 ---
-<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about building a Ngrok clone with AWS and Earthly. [Check us out](/).**
+**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about building a Ngrok clone with AWS and Earthly. [Check out Earthly](/).**
 
 <!-- vale WritingSuggestions.CorporateSpeak = NO -->
 

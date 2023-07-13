@@ -7,8 +7,6 @@ categories:
 excerpt: |
     Discover how Hacktoberfest has brought developers together to contribute to the open-source project Earthly, resulting in exciting improvements such as syntax highlighting for Sublime Text and Vim, support for edge cases, and more. Find out how Earthly managed contributions and why they are looking forward to more in this engaging post.
 ---
-<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about the impact of Hacktoberfest on the open-source project Earthly. Earthly is a valuable tool for developers interested in participating in Hacktoberfest, as it simplifies and speeds up the process of building software using containerization. [Check us out](/).**
-
 Since [Hacktoberfest](/blog/hacktoberfest-2020) started two weeks ago, we've seen a spike in traffic to [Earthly](https://github.com/earthly/earthly). We saw developers of all levels coming together to improve our project in one way or another. Many developers didn't know what Earthly was, so this was a great occasion for them to also get familiar with our reproducible builds.
 
 Although there were a few obviously spammy PRs, most interactions were actually from legitimate developers, excited at the opportunity to contribute to open-source.

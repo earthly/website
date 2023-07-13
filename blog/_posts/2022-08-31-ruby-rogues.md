@@ -6,8 +6,6 @@ author: Earthly
 excerpt: |
     Check out Adam's latest appearance on Ruby Rogues where he discusses language tooling, shares insights into programming topics, and talks about using Earthly for builds. If you're interested in command-line tools and want to save time, don't miss his previous episode where he shares must-know tools for developers in 2022.
 ---
-<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about language tooling and Earthly builds. Earthly is a powerful build tool that can greatly enhance the efficiency and reliability of your CI/CD pipelines, making it a valuable tool for developers interested in language tooling and using Earthly for builds. [Check us out](/).**
-
 Adam was on [Ruby Rogues](https://topenddevs.com/podcasts/ruby-rogues/episodes/programming-language-tooling-with-adam-gordon-bell-ruby-561) discussing language tooling and using Earthly for builds.
 
 > Adam Gordon Bell is back on the show again!  Today he shares his views on language tooling, new articles he has recently written, documentation for Ruby, software consulting, and insights into other programming topics.
