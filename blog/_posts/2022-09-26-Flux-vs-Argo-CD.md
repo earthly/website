@@ -15,6 +15,7 @@ topic: ci
 excerpt: |
     In this article, the author compares two popular GitOps tools, Flux and Argo CD. They discuss various aspects such as reconciliation, source tracking, configuration, Helm support, scaling out, permissions and access control, and more. The article provides insights into the similarities and differences between the two tools, helping readers make an informed decision based on their specific needs.
 ---
+**We're [Earthly](https://earthly.dev/). We streamline building software using containers - perfect for using alongside GitOps tools like Flux and Argo CD. It's all about simplifying your CI/CD process. [Give it a look](/).**
 
 Since February we have been working on adopting Kubernetes and cloud-native technologies for our cell simulation platform at [Turbine.ai](https://turbine.ai).
 Part of my job entailed figuring out how to onboard developers who didn't practice DevOps before.
@@ -109,7 +110,7 @@ kubectl annotate --field-manager=flux-client-side-apply --overwrite \
 kustomization/podinfo reconcile.fluxcd.io/requestedAt="$(date +%s)"
 ~~~
 
-It's worth noting that running `flux reconcile` against a suspended resource will __not__ trigger the reconciliation. Requiring a manual edit to the cluster state for this override was [an intentional design choice](https://github.com/fluxcd/flux2/issues/959). Essentially, on-demand, manual synchronization doesn't have a declarative setting, so Flux doesn't wish to support it via its CLI either.
+It's worth noting that running `flux reconcile` against a suspended resource will **not** trigger the reconciliation. Requiring a manual edit to the cluster state for this override was [an intentional design choice](https://github.com/fluxcd/flux2/issues/959). Essentially, on-demand, manual synchronization doesn't have a declarative setting, so Flux doesn't wish to support it via its CLI either.
 
 <div class="notice--info">
 Another way to trigger reconciliation is to temporarily `flux resume` the resource. One can argue that this is an imperative action too. The difference is that `suspend` has a declarative setting, so the command effectively edits an in-cluster resource, similarly to e.g `kubectl scale deployment`. Admittedly, this still hurts auditability, since the GitOps state is overridden (at least until the next reconciliation).
@@ -238,7 +239,7 @@ Tracking changes in Helm releases with GitOps is more complicated than Kustomize
 
 ### Helm Charts in Helm Registries
 
-Helm uses [SemVer](https://semver.org/) for versioning. Helm charts are expected to be immutable, similarly to other software packages. This means, __whenever the template is changed, the chart version must be bumped__.
+Helm uses [SemVer](https://semver.org/) for versioning. Helm charts are expected to be immutable, similarly to other software packages. This means, **whenever the template is changed, the chart version must be bumped**.
 
 For charts in Helm registries, both [Flux](https://fluxcd.io/docs/components/helm/helmreleases/#helm-chart-template) and [Argo CD](https://argo-cd.readthedocs.io/en/stable/user-guide/tracking_strategies/#helm) support specifying SemVer ranges, so you may receive updates on new package versions. For example using a range of `>=4.0.0 <5.0.0`, your cluster will automatically receive updates for major version 4.
 
@@ -246,7 +247,7 @@ For charts in Helm registries, both [Flux](https://fluxcd.io/docs/components/hel
 
 Source tracking of Helm charts works similarly to Kustomizations using both platforms, i.e they can be configured so that reconciliation tracks commits on a branch, a tag pattern, or is fixed to a commit hash.
 
-However, there is a very important property in Flux that you should be aware of. Under the hood, Flux packages the Helm chart contained in the git repository and caches it for internal consumption by HelmReleases. By default (i.e with the `ChartVersion` reconcile strategy), it assumes that __the chart is unchanged unless the version is different in `Chart.yaml`, no matter the git revision__. In other words, __it assumes immutable packages__, even for git sources. This means that if you don't want surprises, you should bump the Chart version on each revision that changes a template.
+However, there is a very important property in Flux that you should be aware of. Under the hood, Flux packages the Helm chart contained in the git repository and caches it for internal consumption by HelmReleases. By default (i.e with the `ChartVersion` reconcile strategy), it assumes that **the chart is unchanged unless the version is different in `Chart.yaml`, no matter the git revision**. In other words, **it assumes immutable packages**, even for git sources. This means that if you don't want surprises, you should bump the Chart version on each revision that changes a template.
 
 This behavior can be changed however by setting the [reconcile strategy](https://fluxcd.io/docs/components/helm/api/#helm.toolkit.fluxcd.io/v2beta1.HelmChartTemplateSpec) to `Revision`. This will configure Flux to append build metadata containing the git commit SHA to the version, thus reflecting every commit in a new package version.
 
@@ -265,9 +266,9 @@ You [shouldn't use](https://www.weave.works/blog/profile-layering-for-helm-encou
 
 ## Reconciliation Caveat in Flux
 
-Argo CD provides self healing for Helm releases. Flux [does __not__](https://github.com/fluxcd/flux2/discussions/2812).
+Argo CD provides self healing for Helm releases. Flux [does **not**](https://github.com/fluxcd/flux2/discussions/2812).
 
-This limitation of Flux is problematic enough for apps. However, it is even worse when you try to use Helm for managing GitOps resources (in a multi-level hierarchy), because e.g if someone suspends the reconciliation of an app by adding `suspend: true` to its owning GitOps resource, which is in turn owned by a `HelmRelease`, the drift will never be corrected in the child, and will linger there indefinitely. This can be problematic as entire hierarchies can drift away. Therefore, __my advice is to use Helm only for leaf GitOps resources__ (i.e those that directly manage application resources), until drift correction is implemented for Helm.
+This limitation of Flux is problematic enough for apps. However, it is even worse when you try to use Helm for managing GitOps resources (in a multi-level hierarchy), because e.g if someone suspends the reconciliation of an app by adding `suspend: true` to its owning GitOps resource, which is in turn owned by a `HelmRelease`, the drift will never be corrected in the child, and will linger there indefinitely. This can be problematic as entire hierarchies can drift away. Therefore, **my advice is to use Helm only for leaf GitOps resources** (i.e those that directly manage application resources), until drift correction is implemented for Helm.
 </div>
 
 ## Summary
@@ -277,7 +278,7 @@ This limitation of Flux is problematic enough for apps. However, it is even wors
 |Configured with CRDs|✅|✅|
 |Cluster drift reconciliation (Self heal)|⛔|✅|
 |OTS chart support|✅|⚠️ The OTS chart has to be wrapped in a local chart if you wish to override with values outside the chart|
-|Replace default values.yaml with custom values.yaml(s) shipped __with__ the chart|✅|⚠️ Only for charts hosted in git.|
+|Replace default values.yaml with custom values.yaml(s) shipped **with** the chart|✅|⚠️ Only for charts hosted in git.|
 |Inline values in the GitOps resource|✅|⛔ See [issue on GitHub](https://github.com/argoproj/argo-cd/issues/2789) for workarounds.|
 |Upgrade chart stored in git on template change without changing chart version|✅ Using the [`Revision` reconcile strategy](https://fluxcd.io/docs/components/source/helmcharts/#artifact-example).|✅|
 |Receive auto-updates from versioned charts using semver version ranges|✅|✅|

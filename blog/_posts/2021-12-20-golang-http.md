@@ -13,6 +13,8 @@ internal-links:
 excerpt: |
     Learn how to build a JSON HTTP server using Golang in this tutorial. Discover the basics of creating a Golang web service, handling HTTP requests, and working with JSON data.
 ---
+**We're [Earthly](https://earthly.dev/). We make building software simpler and faster using containerization. Earthly can streamline your Golang build process, making your HTTP server projects a breeze. [Give it a go](/).**
+
 If you want to build a simple JSON HTTP web service that runs natively on a Linux server, then Golang is a great choice. At least this is what I've been told, my coworkers are big fans and report having a small memory footprint, a shallow learning curve, and an excellent standard library.
 
 So in this article, I'm going to give it a try with a simple project I've been wanting to build: an activity tracker. You see, I'm a bit out of shape, and I'd like to start tracking my activity levels. It will be a bit of a toy application, but I'm hoping it will encourage me to start adding more activity to sedentary winter habits.

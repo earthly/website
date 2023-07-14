@@ -10,7 +10,6 @@ internal-links:
   - road map
   - roadmap
 ---
-
 Dear Earthly community,
 
 We've been working with many of you to better understand your pains and use-cases when it comes to builds.

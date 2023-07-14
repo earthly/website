@@ -14,6 +14,8 @@ internal-links:
 excerpt: |
     Learn the ins and outs of bash scripting and how it can make your life easier. From understanding shebangs to error handling and variable naming, this article covers all the essentials for writing efficient and effective bash scripts.
 ---
+**We're [Earthly](https://earthly.dev/). We make building software easier and quicker using containerization. If you're into bash scripting, you'll get the value of Earthly right away. Why not [give it a try](/)?**
+
 <div class="narrow-code">
 
 Bash scripts give you the ability to turn a tedious series of commands into an easily runnable and repeatable script. With many real-world use cases, like using a bash script to run a continuous deployment process, create a series of files in a folder, or download the contents of several URLs, it's worth your time to make sure bash scripting is in your programming toolbox.

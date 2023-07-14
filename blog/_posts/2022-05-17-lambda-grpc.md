@@ -11,6 +11,8 @@ internal-links:
 excerpt: |
     Learn how to combine GRPC, AWS Lambdas, and GoLang to create a powerful serverless architecture. Discover different approaches to proxying GRPC requests on Lambda and explore the limitations of running a GRPC service on an AWS Lambda.
 ---
+**We're [Earthly](https://earthly.dev/). We make building software simpler and faster with containerization. Earthly is a great tool that can streamline your build process. [Check it out](/).**
+
 <!-- vale HouseStyle.Link = NO -->
 
 Previously, I built some [GRPC things](/blog/golang-grpc-example), and some [AWS Lambda](/blog/aws-lambda-golang) things, but can both be combined together? That is can I set up a go service, that runs as lambda, and can respond to GRPC requests.
