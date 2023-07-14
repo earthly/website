@@ -784,7 +784,9 @@ Closed the file...
 
 The above output shows the sequence of events. First, "Opening the file..." is printed, indicating that the `__enter__` method is being executed and the file is being opened. Then, "Writing to the file..." is printed, demonstrating that the code performs some operations with the file. Finally, "Closed the file..." is printed, signifying that the `__exit__` method is being executed and the context manager has properly closed the file.
 
-> Learn more about context managers and the `with` statement in Python in [this tutorial](https://earthly.dev/blog/python-with-statement/).
+<div class="notice--info">
+Learn more about context managers and the `with` statement in Python in [this tutorial](https://earthly.dev/blog/python-with-statement/).
+</div>
 
 ## Conclusion
 
