@@ -18,7 +18,7 @@ excerpt: |
 
 <!-- Curious about getting better build times by combining ideas from Makefile and Dockerfile? [Check us out](https://earthly.dev/). -->
 
-## A Newbs’s Guide to Applying Large Language Models
+## A Newbs's Guide to Applying Large Language Models
 
 A month ago, the whole Earthly team was gathered in a board room at the Hilton Garden Inn in Minnesota. After a fun day of boating and then curling, we were getting down to planning. Our CEO was saying that one of the biggest adoption hurdles with Earthly is the time investment customers need to spend to change over their builds. The investment quickly pays off, but it's also not zero, and so represents an onboarding challenge.
 
@@ -31,7 +31,7 @@ But there was a plan for how to close this gap. The theory went that GPT-4 could
 So my task was to build a translator using an LLM. It's not entirely done, but it works well so far, ([GitHub link](https://github.com/adamgordonbell/to-earthly)). Building it was different than I thought, and I learned some lessons that are generally helpful if you are thinking of building on top of an LLM. Let's go through them.
 
 <div class="wide">
-{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/4700.png --alt {{  }} %}
+{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/4700.png --alt {{ A Three Stage conversion, where each stage uses few-show chain-of-thought prompting worked surprisingly well. }} %}
 <figcaption>A Three Stage conversion, where each stage uses few-show chain-of-thought prompting worked surprisingly well.</figcaption>
 </div>
 
