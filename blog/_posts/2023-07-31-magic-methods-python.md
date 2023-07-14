@@ -36,6 +36,7 @@ Magic methods are an integral part of the object-oriented programming paradigm i
 Consider the following basic example to demonstrate these concepts:
 
 ~~~{.python caption="example1.py"}
+#example1.py
 class Rectangle:
     def __init__(self, width, height):
         self.width = width
@@ -68,6 +69,7 @@ You can observe that when the `rect` object is printed, the output shows the obj
 To provide a more meaningful representation of the `rect` object when printing, you can implement the `__str__` magic method within the class to return a string with the desired information about the object.
 
 ~~~{.python caption="example2.py"}
+#example2.py
 class Rectangle:
     def __init__(self, width, height):
         self.width = width
@@ -109,6 +111,7 @@ The `__init__` method is used to initialize objects of a class. It is called aut
 Consider a `Playlist` class as an example:
 
 ~~~{.python caption="example1.py"}
+#commonly-used/example1.py
 class Playlist:
     def __init__(self, name):
         self.name = name
@@ -133,6 +136,7 @@ The `__str__` method provides a string representation of an object. It is called
 Let's extend the previous example to include the `__str__` method:
 
 ~~~{.python caption="example2.py"}
+#commonly-used/example2.py
 class Playlist:
     def __init__(self, name):
         self.name = name
@@ -160,6 +164,7 @@ The `__repr__` method provides a formal string representation of an object, typi
 Let's extend the previous example to include the `__repr__` method:
 
 ~~~{.python caption="example3.py"}
+#commonly-used/example3.py
 class Playlist:
     def __init__(self, name):
         self.name = name
@@ -209,7 +214,7 @@ True
 
 Note that when you use the Python interactive shell and evaluate the line containing only the variable name `playlist`, the output displays the string representation returned by `__repr__()`.
 
-~~~{.python caption="example1.py"}
+~~~{.python caption=""}
 >>> playlist = Playlist(name='My Favorite Songs') 
 >>> playlist
 Playlist(name=My Favorite Songs)
@@ -230,7 +235,9 @@ The `__len__` method allows objects to define their length or size. It is called
 
 For example, let's add a `songs` attribute to the `Playlist` class and implement the `__len__` method:
 
-~~~{.python caption="example1.py"}
+~~~{.python caption="example4.py"}
+#commonly-used/example4.py
+
 class Playlist:
     def __init__(self, name, songs=[]):
         self.name = name
@@ -266,7 +273,7 @@ The `__getitem__` method enables objects to support indexing and accessing eleme
 
 As of now, if you try to access any song of the playlist using the index, say `playlist[1]`, you'll get a `TypeError` as below:
 
-~~~{.python caption="example1.py"}
+~~~{.python caption=""}
 print(playlist[1])
       ~~~~~~~~^^^
 TypeError: 'Playlist' object is not subscriptable
@@ -275,6 +282,7 @@ TypeError: 'Playlist' object is not subscriptable
 Now, let's implement the `__getitem` method in the `Playlist` class to allow indexing to retrieve songs:
 
 ~~~{.python caption="example1.py"}
+#commonly-used/example5.py
 class Playlist:
     def __init__(self, name, songs=[]):
         self.name = name
@@ -302,7 +310,8 @@ The `__setitem__` method allows objects to support item assignment using indexin
 
 Let's enhance the `Playlist` class to support item assignment:
 
-~~~{.python caption="example1.py"}
+~~~{.python caption="example6.py"}
+#commonly-used/example6.py
 class Playlist:
     def __init__(self, name, songs=[]):
         self.name = name
@@ -335,7 +344,8 @@ The `__delitem__` method allows objects to support item deletion using indexing.
 
 Let's extend the `Playlist` class to enable removing songs from the playlist:
 
-~~~{.python caption="example1.py"}
+~~~{.python caption="example7.py"}
+#commonly-used/example7.py
 class Playlist:
     def __init__(self, name, songs=[]):
         self.name = name
@@ -368,7 +378,8 @@ The `__call__` method enables objects to be called as if they were functions. It
 
 Let's implement the `__call__` method in the `Playlist` class:
 
-~~~{.python caption="example1.py"}
+~~~{.python caption="example8.py"}
+#commonly-used/example8.py
 class Playlist:
     def __init__(self, name, songs=[]):
         self.name = name
@@ -421,6 +432,7 @@ Here's a table that lists the internal magic methods associated with the arithme
 Consider a `Vector` class that represents a two-dimensional vector:
 
 ~~~{.python caption="example1.py"}
+#operator-overloading/example1.py
 class Vector:
     def __init__(self, x, y):
         self.x = x
@@ -439,8 +451,9 @@ This method overloads the `+` operator and is used for adding two objects togeth
 For example:
 
 ~~~{.python caption="example1.py"}
+#operator-overloading/example1.py
 def __add__(self, other):
-return Vector(self.x + other.x, self.y + other.y)
+    return Vector(self.x + other.x, self.y + other.y)
 
 # Addition
 result = v1 + v2
@@ -459,8 +472,9 @@ This method overloads the `-` operator and is used for subtracting one object fr
 For example:
 
 ~~~{.python caption="example1.py"}
+#operator-overloading/example1.py
 def __sub__(self, other):
-return Vector(self.x - other.x, self.y - other.y)
+    return Vector(self.x - other.x, self.y - other.y)
 
 # Subtraction
 result = v2 - v1
@@ -479,6 +493,7 @@ This method overloads the `*` operator and is used for multiplying two objects t
 For example:
 
 ~~~{.python caption="example1.py"}
+#operator-overloading/example1.py
 def __mul__(self, scalar):
     return Vector(self.x * scalar, self.y * scalar)
 
@@ -499,6 +514,7 @@ This method overloads the `/` operator and is used for dividing one object by an
 For example:
 
 ~~~{.python caption="example1.py"}
+#operator-overloading/example1.py
 def __truediv__(self, scalar):
     return Vector(self.x / scalar, self.y / scalar)
 
@@ -532,8 +548,8 @@ Here's a table that lists the internal magic methods associated with the compari
 
 For instance, consider a `Point` class that represents a point in a two-dimensional space:
 
-~~~{.python caption="example1.py"}
-
+~~~{.python caption="example2.py"}
+#operator-overloading/example2.py
 import math
 
 
@@ -559,7 +575,8 @@ Next, you can define the magic methods to compare points based on their distance
 This method overloads the `<` operator and is used for comparing if an object is less than another object. In the `Point` class example, the method compares the distances from the origin of two points and returns True if the distance of the current point is less than the distance of the other point.
 For example:
 
-~~~{.python caption="example1.py"}
+~~~{.python caption="example2.py"}
+#operator-overloading/example2.py
 def __lt__(self, other):
         return self.distance_from_origin() < other.distance_from_origin()
 
@@ -579,7 +596,8 @@ True
 This method overloads the `>` operator and is used for comparing if an object is greater than another object. In the Point class example, it compares the distances from the origin of two points and returns True if the distance of the current point is greater than the distance of the other point.
 For example:
 
-~~~{.python caption="example1.py"}
+~~~{.python caption="example2.py"}
+#operator-overloading/example2.py
 def __gt__(self, other):
         return self.distance_from_origin() > other.distance_from_origin()
 
@@ -599,7 +617,8 @@ False
 This method overloads the `==` operator and is used for comparing if two objects are equal. In the `Point` class example, it compares the distances from the origin of two points and returns True if the distance of the current point is equal to the distance of the other point.
 For example:
 
-~~~{.python caption="example1.py"}
+~~~{.python caption="example2.py"}
+#operator-overloading/example2.py
 def __eq__(self, other):
 return self.distance_from_origin() == other.distance_from_origin()
 
@@ -619,7 +638,8 @@ False
 This method overloads the `!=` operator and is used for comparing if two objects are not equal. In the `Point` class example, it compares the distances from the origin of two points and returns True if the distance of the current point is not equal to the distance of the other point.
 For example:
 
-~~~{.python caption="example1.py"}
+~~~{.python caption="example2.py"}
+#operator-overloading/example2.py
 def __ne__(self, other):
         return self.distance_from_origin() != other.distance_from_origin()
 
@@ -640,7 +660,8 @@ Logical operators `and` and `or` can also be customized for objects by implement
 
 Consider a `Boolean` class that represents a boolean value and define the `__and__` and `__or__` magic methods to customize the behavior of logical operators:
 
-~~~{.python caption="example1.py"}
+~~~{.python caption="example3.py"}
+#operator-overloading/example3.py
 class Boolean:
     def __init__(self, value):
         self.value = value
@@ -654,7 +675,8 @@ class Boolean:
 
 In the above code, the `__and__` method performs a logical AND operation on boolean objects, and the `__or__` method performs a logical OR operation.
 
-~~~{.python caption="example1.py"}
+~~~{.python caption="example3.py"}
+#operator-overloading/example3.py
 # Creating two boolean objects
 b1 = Boolean(True)
 b2 = Boolean(False)
@@ -681,7 +703,8 @@ Membership operators `in` and `not in` can be customized using the `__contains__
 
 Consider a `ShoppingBasket` class that represents your general shopping baskets. You can define the `__contains__` magic method to customize the behavior of the `in` operator:
 
-~~~{.python caption="example1.py"}
+~~~{.python caption="example4.py"}
+#operator-overloading/example4.py
 class ShoppingBasket:
     def __init__(self, items):
         self.items = items
@@ -692,7 +715,8 @@ class ShoppingBasket:
 
 In this example, the `__contains__` method checks if an item is present in the `items` list of the `ShoppingBasket` object.
 
-~~~{.python caption="example1.py"}
+~~~{.python caption="example4.py"}
+#operator-overloading/example4.py
 # Creating a shopping basket object
 my_basket = ShoppingBasket(["Apple", "Mango", "Pineapple"])
 
@@ -725,7 +749,9 @@ The `__enter__` and `__exit__` methods allow you to automatically set up and tea
 
 Here's an example that demonstrates the usage of `__enter__` and `__exit__` methods in a context manager:
 
-~~~{.python caption="example1.py"}
+~~~{.python caption="example.py"}
+#context-managers/example.py
+
 class FileHandler:
     def __init__(self, filename):
         self.filename = filename
@@ -768,10 +794,6 @@ Next, you discovered the power of context managers with the `__enter__` and `__e
 
 However, this is just the tip of the iceberg. There is much more to discover and learn about magic methods. The best way to master magic methods is through practice and hands-on experience. So, go ahead and dive into your projects, explore different use cases, and unleash the power of magic methods to create elegant and powerful code in Python's object-oriented world. Happy coding!
 
-You can find all the code samples used in the tutorial in this [GitHub repository](https://github.com/as)
+You can find all the code samples used in the tutorial in this [GitHub repository](https://github.com/ashutoshkrris/magic-methods-tutorial)
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-- [ ] Optional: Find ways to break up content with quotes or images
