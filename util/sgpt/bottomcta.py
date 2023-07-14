@@ -121,7 +121,7 @@ def merge_tie_in(summary: str, conclusion : str, tie_in : str) -> str:
         Can you add the tie in to the conclusion in a way that makes sense and blends in? Rewrite it if needed. 
         {{~/user}}
         {{#assistant~}}
-        {{gen 'answer' temperature=0 max_tokens=500}}
+        {{gen 'answer' temperature=0 max_tokens=2000}}
         {{~/assistant}}
     '''), llm=gpt4, silent=True)
     with open(os.devnull, 'w') as f, contextlib.redirect_stdout(f):
