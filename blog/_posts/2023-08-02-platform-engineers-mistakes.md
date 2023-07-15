@@ -11,7 +11,7 @@ internal-links:
 ---
 <!--sgpt-->**We're [Earthly](https://earthly.dev/). We simplify and speed up software building with containerization. Earthly is a powerful tool that enhances your CI/CD workflows. [Check it out](/).**
 
-Platform engineering is an essential function in modern software development that is responsible for designing, building, and maintaining platforms that support the organization's applications and services. A platform engineer's role is to ensure that the platform is scalable, reliable, and secure, while also optimizing performance and minimizing downtime. However, like any other profession, platform engineers are prone to making mistakes that can negatively impact the system's stability and performance. 
+Platform engineering is an essential function in modern software development that is responsible for designing, building, and maintaining platforms that support the organization's applications and services. A platform engineer's role is to ensure that the platform is scalable, reliable, and secure, while also optimizing performance and minimizing downtime. However, like any other profession, platform engineers are prone to making mistakes that can negatively impact the system's stability and performance.
 
 This article delves into nine common mistakes made by platform engineers and provides practical insights on how to avoid them. Key areas of focus include performance optimization, version control, security best practices, disaster recovery planning, automation, testing, keeping up with updates, documentation, and monitoring. The goal is to empower platform engineers with the knowledge and tools needed to enhance the efficiency and reliability of their platforms.
 
@@ -21,7 +21,7 @@ Avoiding mistakes in platform engineering is crucial for ensuring that the platf
 
 ## 9 Mistakes Made by Platform Engineers
 
-Let’s explore nine of these mistakes in the following subsections and also discover effective strategies to overcome them thus, ensuring the delivery of high-quality platforms.
+Let's explore nine of these mistakes in the following subsections and also discover effective strategies to overcome them thus, ensuring the delivery of high-quality platforms.
 
 ### Ignoring Performance Optimization
 
@@ -45,7 +45,7 @@ Documenting changes is another important aspect of version control. Developers s
 
 ### Not Following Security Best Practices
 
-Security best practices involve a combination of technical measures, processes, and policies aimed at ensuring the confidentiality, integrity, and availability of the platform. It is critical to platform engineering because platforms often handle sensitive and valuable data, including personal information, financial information, and intellectual property. 
+Security best practices involve a combination of technical measures, processes, and policies aimed at ensuring the confidentiality, integrity, and availability of the platform. It is critical to platform engineering because platforms often handle sensitive and valuable data, including personal information, financial information, and intellectual property.
 
 Without adequate security measures, this data is at risk of being accessed, modified, or stolen by unauthorized individuals or groups, leading to data breaches, financial losses, legal liabilities, and damage to a company's reputation. In addition, platforms often interact with various third-party systems and APIs, which can introduce additional security risks.
 
@@ -53,7 +53,7 @@ It is therefore essential for platform engineers to implement robust security me
 
 - **Multi-factor authentication(MFA)**: To ensure the security of your online accounts, it is essential to implement multi-factor authentication. This can be achieved by enabling and configuring it properly, using a combination of something you know, something you have, and something you are.
 
-- **Encryption:** Encryption is another critical measure to protect your sensitive information. You can implement encryption by using secure protocols like `HTTPS` or` SSL/TLS`, and by using tools like [BitLocker](https://learn.microsoft.com/en-us/windows/security/information-protection/bitlocker/bitlocker-overview) or [VeraCrypt](https://www.veracrypt.fr/en/Home.html) to encrypt hard drives and sensitive files. Always ensure that encryption keys are managed and stored securely.
+- **Encryption:** Encryption is another critical measure to protect your sensitive information. You can implement encryption by using secure protocols like `HTTPS` or`SSL/TLS`, and by using tools like [BitLocker](https://learn.microsoft.com/en-us/windows/security/information-protection/bitlocker/bitlocker-overview) or [VeraCrypt](https://www.veracrypt.fr/en/Home.html) to encrypt hard drives and sensitive files. Always ensure that encryption keys are managed and stored securely.
   
 - **Regular security audits:** Conducting regular security audits can help identify vulnerabilities and potential threats to the system. This can be achieved by using automated vulnerability scanners, penetration testing, and security assessments. It is important to also have a process in place to address any vulnerabilities or weaknesses found during the audit.
 
@@ -173,12 +173,10 @@ You can continue learning and exploring a wide range of technologies through [Ea
 
 ## Outside Article Checklist
 
-- [ ] Add in Author page
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
 - [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
