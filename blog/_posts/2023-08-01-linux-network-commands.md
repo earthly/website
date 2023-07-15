@@ -7,7 +7,10 @@ author: Adam
 editor: Muhammad Badawy
 
 internal-links:
- - just an example
+ - mastering linux networking
+ - linux networking
+ - linux networking commands
+ - comprehensive guide
 ---
 <!--sgpt-->**We're [Earthly](https://earthly.dev/). We simplify and speed up software building with containerization. Earthly is a powerful tool that enhances your CI/CD workflows. [Check it out](/).**
 
@@ -436,5 +439,4 @@ You can continue learning about networking technologies, such as [AWS Networking
 * [ ] Add in Author page
 * [ ] Create header image in Canva
 * [ ] Optional: Find ways to break up content with quotes or images
-* [ ] Add keywords for internal links to front-matter
-* [ ] Run `link-opp` and find 1-5 places to incorporate links
+
