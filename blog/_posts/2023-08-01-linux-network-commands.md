@@ -27,7 +27,9 @@ Although the [Open Systems Interconnection (OSI)](https://www.cloudflare.com/lea
 
 Imagine you want to message a friend who lives far away. To make sure your message reaches them correctly, the internet defines a set of rules and steps your message must follow. The rules here refer to the TCP/IP protocol.
 
-![TCP/IP protocol stack vs the OSI reference model](https://i.imgur.com/n6vOgde.png) 
+<div class="wide">
+![TCP/IP protocol stack vs the OSI reference model]({{site.images}}{{page.slug}}/n6vOgde.png)
+</div>
 
 The TCP/IP protocol stack consists of four layers, each serving a specific purpose in the transmission of data across a network. Let's clarify each layer in the stack:
 
@@ -41,7 +43,7 @@ The TCP/IP protocol stack consists of four layers, each serving a specific purpo
 
 Understanding the protocol stack lets you comprehend how data is encapsulated, addressed, and transmitted across a network. It also helps you troubleshoot network issues, as it helps identify the layer a problem exists.
 
-To gain more knowledge about network protocols and their workings, take advantage of the various [resources available online](https://www.comptia.org/content/guides/what-is-a-network-protocol). 
+To gain more knowledge about network protocols and their workings, take advantage of the various [resources available online](https://www.comptia.org/content/guides/what-is-a-network-protocol).
 
 ### Linux Network Interfaces and Configuration
 
@@ -65,7 +67,7 @@ Understanding network interfaces and their configuration is crucial for setting 
 
 In this section, we will see essential Linux networking commands that allow you to configure, monitor, and troubleshoot network connections.
 
-### Packet Internet Groper - ping
+### Packet Internet Groper - `ping`
 
 `ping` is a network diagnostic tool used to test the connectivity between two devices on a network. It sends a small packet of data (echo request) to a specified IP address or hostname and measures the time it takes for the packet to reach the destination and return (echo reply).
 
@@ -75,14 +77,17 @@ In this section, we will see essential Linux networking commands that allow you 
 
 * **Command**: ping with interval.
 
-	```bash
-	ping -i 2 google.com
-	```
-![ping command output](https://i.imgur.com/LNBRQPE.png?1)  
+~~~
+    ping -i 2 google.com
+~~~
+
+<div class="wide">
+![ping command output]({{site.images}}{{page.slug}}/LNBRQPE.png)
+</div>  
 
 The command continuously sends Internet Control Message Protocol (ICMP) echo requests at intervals (`-i 2`) to the specified destination (`google.com`) and displays the round-trip time for each response received from the destination.
 
-### Interface Configuration - ifconfig
+### Interface Configuration - `ifconfig`
 
 The `ifconfig` command enables the configuration of network interfaces. It provides various functionalities such as displaying the current configuration, assigning an IP address, and modifying the parameters of a network interface.
 
@@ -92,12 +97,13 @@ The `ifconfig` command enables the configuration of network interfaces. It provi
 
 * **Command**: Configure both IP address and netmask simultaneously.
 
-	```bash
-	ifconfig enp2s0 197.210.55.20 netmask 255.255.255.0
-	```
+~~~
+    ifconfig enp2s0 197.210.55.20 netmask 255.255.255.0
+~~~
+
 The command assigns the IP address, `197.210.55.20` to the interface, `enp2s0`, along with the netmask, `255.255.255.0`. This ensures communication within the specified network.
 
-### Internet Protocol - ip
+### Internet Protocol - `ip`
 
 The `ip` command is preferred for configuring network interfaces on modern Linux distributions. It is more powerful and flexible than the `ifconfig` command and offers more advanced networking functionalities.
 
@@ -107,13 +113,13 @@ The `ip` command is preferred for configuring network interfaces on modern Linux
 
 * **Command**: Remove an IP address from a network interface.
 
-	```bash
-	ip address del 192.168.82.100/24 dev enp2s0
-	```
+~~~
+    ip address del 192.168.82.100/24 dev enp2s0
+~~~
 
 The `ip address del` command removes the specified IP address (`192.168.82.100/24`) from the interface (`enp2s0`). This disassociates the IP from the interface and prevents it from being used for network communication.
 
-### Network Statistics - netstat
+### Network Statistics - `netstat`
 
 `netstat` is a versatile networking utility that offers comprehensive information on network connections, routing tables, and network statistics. Its functionality facilitates monitoring and troubleshooting of various network-related activities on your system.
 
@@ -123,14 +129,17 @@ The `ip address del` command removes the specified IP address (`192.168.82.100/2
 
 * **Command**: Network traffic in real-time.
 
-	```bash
-	netstat -c
-	```
-![netstat command output](https://i.imgur.com/XfXlOl8.png) 
+~~~
+    netstat -c
+~~~
+
+<div class="wide">
+![netstat command output]({{site.images}}{{page.slug}}/XfXlOl8.png)
+</div>
 
 The command continuously (`-c`) displays the network connection status, including open ports, active connections, and network traffic information. The output updates dynamically, allowing you to monitor the network activity on your system in real time.
 
-### Managing Routing Tables - route
+### Managing Routing Tables - `route`
 
 The `route` command lets you view and manipulate the IP routing table. The IP routing table determines how network traffic is directed and forwarded between different networks or hosts.
 
@@ -140,12 +149,13 @@ The `route` command lets you view and manipulate the IP routing table. The IP ro
 
 * **Command**: Add a route to a network.
 
-	```bash
-	route add -net 198.166.0.0/24 gw 10.0.0.1
-	```
+~~~
+    route add -net 198.166.0.0/24 gw 10.0.0.1
+~~~
+
 The command configures the routing table to direct network traffic destined for the `198.166.0.0/24` network to the gateway `10.0.0.1`. This ensures that network packets intended for the specified network are correctly forwarded through the appropriate gateway.
 
-### Tracing the Path to a Destination - traceroute
+### Tracing the Path to a Destination - `traceroute`
 
 The `traceroute` command traces the route packets take from a source to a destination over a network. It provides information about the number of hops (intermediate devices) between the source and destination and the round-trip time (latency) for each hop.
 
@@ -155,14 +165,17 @@ The `traceroute` command traces the route packets take from a source to a destin
 
 * **Command**: Traceroute with maximum hops and specific probe count.
 
-	```bash
-	traceroute -m 30 -q 3 google.com
-	```
-![traceroute command output](https://i.imgur.com/HpSRvTn.png) 
+~~~
+    traceroute -m 30 -q 3 google.com
+~~~
+
+<div class="wide">
+![traceroute command output]({{site.images}}{{page.slug}}/HpSRvTn.png)
+</div>
 
 The command traces the packet's path from the source to the destination (`google.com`) while showing the IP addresses of intermediate devices and their round-trip time. The `-m 30` option limits the hops to 30, and `-q 3` specifies the number of probes per hop. This helps identify the network path and measure latency between the source and destination.
 
-### Domain Information Groper - dig
+### Domain Information Groper - `dig`
 
 `dig` is a powerful DNS (Domain Name System) tool used to perform DNS queries and retrieve DNS-related information. It provides detailed information about DNS records, name servers, and DNS resolution.
 
@@ -172,15 +185,17 @@ The command traces the packet's path from the source to the destination (`google
 
 * **Command**: DNS query with trace.
 
-	```bash
-	dig +trace google.com
-	```
+~~~
+    dig +trace google.com
+~~~
 
-![dig command with trace output](https://i.imgur.com/dgDyiSN.png) 
+<div class="wide">
+![dig command with trace output]({{site.images}}{{page.slug}}/dgDyiSN.png)
+</div>
 
 The command traces(`+trace`) and shows the DNS resolution process from root DNS servers to authoritative DNS servers. The output includes detailed DNS records and IP addresses associated with the domain (`google.com`). This command aids in troubleshooting DNS issues and understanding the domain's DNS infrastructure.
 
-### Configuring Firewall Rules - iptables
+### Configuring Firewall Rules - `iptables`
 
 `iptables` is a [firewall utility](https://www.simplilearn.com/tutorials/cyber-security-tutorial/what-is-firewall) that allows you to configure and manage the netfilter firewall rules. It provides a flexible framework for filtering and manipulating network traffic, enabling network administrators to set up rules to control incoming and outgoing connections.
 
@@ -190,9 +205,10 @@ The command traces(`+trace`) and shows the DNS resolution process from root DNS 
 
 * **Command**: Delete a rule from the firewall.
 
-	```bash
-	iptables --delete INPUT -s 192.168.0.10 -j DROP
-	```
+~~~
+    iptables --delete INPUT -s 192.168.0.10 -j DROP
+~~~
+
 The command removes the rule that **DROP**s incoming network traffic from the specified source IP address, `192.168.0.10` in the target chain, `INPUT`. This enables control over network traffic based on various criteria.
 
 These commands form the foundation for effective network control and troubleshooting in Linux.
@@ -201,7 +217,7 @@ These commands form the foundation for effective network control and troubleshoo
 
 In this section, we will explore advanced Linux networking commands for network analysis, performance testing, and security assessment.
 
-### Socket Statistics - ss
+### Socket Statistics - `ss`
 
 The `ss` command displays information about active network connections, sockets, and network statistics. It provides a more detailed and comprehensive view of network connections than the traditional `netstat` command.
 
@@ -211,14 +227,17 @@ The `ss` command displays information about active network connections, sockets,
 
 * **Command**: Display established TCP connection.
 
-	```bash
-	ss -t state established
-	```
-![ss command output](https://i.imgur.com/PqEc98O.png) 
+~~~
+    ss -t state established
+~~~
+
+<div class="wide">
+![ss command output]({{site.images}}{{page.slug}}/PqEc98O.png)
+</div>
 
 The command displays information about all `established` TCP (`-t`) connections, the `state` of the connection, and other relevant details which are useful for monitoring active connections and troubleshooting networking issues.
 
-### My Traceroute - mtr
+### My Traceroute - `mtr`
 
 The `mtr` command combines `ping` and `traceroute` functionality. It provides continuous network monitoring and troubleshooting capabilities. The `mtr` command sends packets to a specific destination and displays detailed information about the network path, including latency (round-trip time) and packet loss for each hop along the route.
 
@@ -228,10 +247,13 @@ The `mtr` command combines `ping` and `traceroute` functionality. It provides co
 
 * **Command**: `mtr` with a specific packet count.
 
-	```bash
-	mtr -c 10 google.com
-	```
-![mtr command output](https://i.imgur.com/TrlH9GR.png) 
+~~~
+    mtr -c 10 google.com
+~~~
+
+<div class="wide">
+![mtr command output]({{site.images}}{{page.slug}}/TrlH9GR.png)
+</div>
 
 The command continuously sends packets to the specified destination (`google.com`) and displays detailed information about each hop along the network path. The option `-c` sets the number of pings sent. The output helps in understanding the network route.
 
@@ -245,15 +267,17 @@ The command continuously sends packets to the specified destination (`google.com
 
 * **Command**: Capture packets on the wlp1s0 interface.
 
-	```bash
-	tcpdump -i wlp1s0 -s 20
-	```
+~~~
+    tcpdump -i wlp1s0 -s 20
+~~~
 
-![tcpdump command output](https://i.imgur.com/zNBMAoA.png) 
+<div class="wide">
+![tcpdump command output]({{site.images}}{{page.slug}}/zNBMAoA.png)
+</div>
 
 The command captures network packets on the specified interface (`-i wlp1s0`) and displays detailed information about each packet. The option, `-s 20` specifies the snap length. Based on the output you can diagnose network issues, analyze network protocols, and monitor network traffic for security threats.
 
-### Monitoring Network Bandwidth Usage - iftop
+### Monitoring Network Bandwidth Usage - `iftop`
 
 The `iftop` command allows you to monitor real-time network bandwidth usage on selected interfaces by displaying a continuously updated list of connections and their corresponding bandwidth usage.
 
@@ -263,14 +287,17 @@ The `iftop` command allows you to monitor real-time network bandwidth usage on s
 
 * **Command**: Bandwidth usage on the `wlp1s0` interface.
 
-	```bash
-	iftop -i wlp1s0
-	```
-![iftop command output](https://i.imgur.com/mstx9Kw.png) 
+~~~
+    iftop -i wlp1s0
+~~~
+
+<div class="wide">
+![iftop command output]({{site.images}}{{page.slug}}/mstx9Kw.png)
+</div>
 
 The command displays a continuously updated list of connections on the specified interface (`-i wlp1s0`) and their corresponding bandwidth usage. It provides real-time insights into network bandwidth usage, allowing you to identify heavy network traffic or potential bandwidth bottlenecks.
 
-### Internet Protocol Performance - iperf
+### Internet Protocol Performance - `iperf`
 
 The `iperf` command is widely used for measuring network performance. It lets you test the network bandwidth between two networked devices by generating TCP or UDP traffic.
 
@@ -280,13 +307,13 @@ The `iperf` command is widely used for measuring network performance. It lets yo
 
 * **Command**: Run an `iperf` client with UDP traffic.
 
-	```bash
-	iperf -c 192.168.1.100 -u
-	```
+~~~
+    iperf -c 192.168.1.100 -u
+~~~
 
 The command initiates a network performance test between the local machine (iperf client) and the specified server IP address (`192.168.1.100`) using UDP(-u) traffic. It measures the bandwidth, throughput, packet loss, and latency. The `-c` implies client mode. The output provides insights into the quality of the network connection between the client and server.
 
-### Network Mapper - nmap
+### Network Mapper - `nmap`
 
 `nmap` is a network scanning tool for network exploration and security auditing. It allows you to discover hosts on a network, identify open ports, gather information about services running on those ports, and even detect security vulnerabilities.
 
@@ -296,10 +323,13 @@ The command initiates a network performance test between the local machine (iper
 
 * **Command**: Perform a basic TCP SYN scan on a target host.
 
-	```bash
-	nmap -sS 216.58.223.206
-	```
-![nmap command output](https://i.imgur.com/XK2zaf5.png) 
+~~~
+    nmap -sS 216.58.223.206
+~~~
+
+<div class="wide">
+![nmap command output]({{site.images}}{{page.slug}}/XK2zaf5.png)
+</div>
 
 The command performs [TCP SYN scan](https://nmap.org/book/synscan.html) (`-sS`) on the specified target host (`216.58.223.206`) to identify open ports and gather information about the services running on those ports. The output provides a list of discovered open ports, along with their corresponding service information. This can help in network reconnaissance, identifying potential vulnerabilities or misconfiguration in the network, and assessing the security posture of a target host.
 
@@ -314,35 +344,33 @@ In this section, we will explore strategies and techniques for troubleshooting c
 When faced with issues or difficulties in establishing and maintaining network connections between systems. You can follow these steps:
 
 * Verify physical connections.
-    
+
 * Check the network interface status using the `ifconfig` command.
-    
+
 * Test IP connectivity with the `traceroute` command.
-    
+
 * Ensure correct IP configuration with the `ip` command.
-    
+
 * Use `tcpdump` to capture packets and examine headers for anomalies.
-    
 
 ### DNS Related Issues
 
 DNS (Domain Name System) related issues are problems or challenges encountered with the DNS infrastructure. To resolve DNS issues follow these steps:
 
 * Confirm DNS server settings in `/etc/resolv.conf`.
-    
+
 * Test DNS resolution using `dig`.
-    
+
 * Clear DNS caches if necessary.
-    
 
 ### Firewall Configurations
 
 Firewall configurations refer to the settings and rules implemented within a firewall to control and manage network traffic. To resolve firewall issues follow these steps:
 
 * Verify the status of firewall services (`iptables`).
-    
+
 * Review firewall rules using the `iptables -L` command.
-    
+
 * Test traffic by temporarily disabling the firewall or adding specific rules.
 
 Finally, common networking errors like "Destination Host Unreachable" or "Connection Refused" require checking IP configurations, service availability, and routing tables.
@@ -366,21 +394,27 @@ Use the `history` command or Up and Down arrow keys to cycle through previously 
 Pay close attention to command output and error messages, as they often provide valuable insights on the status of network configurations, connectivity, or errors.
 
 ### Command Manuals
+
 Read the command's manual page (`man <command>`) or refer to online documentation to understand different output fields and error messages.
 
 ### Pipe Commands
+
 Leverage pipes (`|`) to combine multiple commands, allowing you to filter, process, or analyze command output.
 
-### Output Redirection    
+### Output Redirection
+
 Redirect (`>`, `>>`, `<`) command output to files or read input from files.
-    
+
 ### Automation
+
 Create shell scripts to automate repetitive tasks or complex command sequences, saving time and ensuring consistency in network configurations.
-    
+
 ### Documentation
+
 Document and maintain accurate records of network configurations, including IP addresses, netmasks, gateways, DNS servers, and firewall rules.
-    
+
 ### Management Tools
+
 Use configuration management tools like Ansible to enforce consistent network configurations across multiple systems.
 
 These tips allow you to streamline your Linux networking workflows, improve productivity, and ensure a reliable and well-managed network environment.
@@ -399,11 +433,8 @@ You can continue learning about networking technologies, such as [AWS Networking
 
 ## Outside Article Checklist
 
-- [ ] Add in Author page
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
+* [ ] Add in Author page
+* [ ] Create header image in Canva
+* [ ] Optional: Find ways to break up content with quotes or images
+* [ ] Add keywords for internal links to front-matter
+* [ ] Run `link-opp` and find 1-5 places to incorporate links

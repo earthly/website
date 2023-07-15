@@ -39,3 +39,10 @@ ezeev
 gh
 
 jsii
+
+ttl
+mtr
+tcpdump
+iftop
+iperf
+nmap
