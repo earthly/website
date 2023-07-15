@@ -80,12 +80,12 @@ In this section, we will see essential Linux networking commands that allow you 
 
 * **Command**: ping with interval.
 
-~~~
-    ping -i 2 google.com
+~~~{.bash caption=">_"}
+ping -i 2 google.com
 ~~~
 
 <div class="wide">
-![ping command output]({{site.images}}{{page.slug}}/LNBRQPE.png)
+![`ping` command output]({{site.images}}{{page.slug}}/LNBRQPE.png)
 </div>  
 
 The command continuously sends Internet Control Message Protocol (ICMP) echo requests at intervals (`-i 2`) to the specified destination (`google.com`) and displays the round-trip time for each response received from the destination.
@@ -100,8 +100,8 @@ The `ifconfig` command enables the configuration of network interfaces. It provi
 
 * **Command**: Configure both IP address and netmask simultaneously.
 
-~~~
-    ifconfig enp2s0 197.210.55.20 netmask 255.255.255.0
+~~~{.bash caption=">_"}
+ifconfig enp2s0 197.210.55.20 netmask 255.255.255.0
 ~~~
 
 The command assigns the IP address, `197.210.55.20` to the interface, `enp2s0`, along with the netmask, `255.255.255.0`. This ensures communication within the specified network.
@@ -116,8 +116,8 @@ The `ip` command is preferred for configuring network interfaces on modern Linux
 
 * **Command**: Remove an IP address from a network interface.
 
-~~~
-    ip address del 192.168.82.100/24 dev enp2s0
+~~~{.bash caption=">_"}
+ip address del 192.168.82.100/24 dev enp2s0
 ~~~
 
 The `ip address del` command removes the specified IP address (`192.168.82.100/24`) from the interface (`enp2s0`). This disassociates the IP from the interface and prevents it from being used for network communication.
@@ -132,12 +132,12 @@ The `ip address del` command removes the specified IP address (`192.168.82.100/2
 
 * **Command**: Network traffic in real-time.
 
-~~~
-    netstat -c
+~~~{.bash caption=">_"}
+netstat -c
 ~~~
 
 <div class="wide">
-![netstat command output]({{site.images}}{{page.slug}}/XfXlOl8.png)
+![`netstat` command output]({{site.images}}{{page.slug}}/XfXlOl8.png)
 </div>
 
 The command continuously (`-c`) displays the network connection status, including open ports, active connections, and network traffic information. The output updates dynamically, allowing you to monitor the network activity on your system in real time.
@@ -152,8 +152,8 @@ The `route` command lets you view and manipulate the IP routing table. The IP ro
 
 * **Command**: Add a route to a network.
 
-~~~
-    route add -net 198.166.0.0/24 gw 10.0.0.1
+~~~{.bash caption=">_"}
+route add -net 198.166.0.0/24 gw 10.0.0.1
 ~~~
 
 The command configures the routing table to direct network traffic destined for the `198.166.0.0/24` network to the gateway `10.0.0.1`. This ensures that network packets intended for the specified network are correctly forwarded through the appropriate gateway.
@@ -168,12 +168,12 @@ The `traceroute` command traces the route packets take from a source to a destin
 
 * **Command**: Traceroute with maximum hops and specific probe count.
 
-~~~
-    traceroute -m 30 -q 3 google.com
+~~~{.bash caption=">_"}
+traceroute -m 30 -q 3 google.com
 ~~~
 
 <div class="wide">
-![traceroute command output]({{site.images}}{{page.slug}}/HpSRvTn.png)
+![`traceroute` command output]({{site.images}}{{page.slug}}/HpSRvTn.png)
 </div>
 
 The command traces the packet's path from the source to the destination (`google.com`) while showing the IP addresses of intermediate devices and their round-trip time. The `-m 30` option limits the hops to 30, and `-q 3` specifies the number of probes per hop. This helps identify the network path and measure latency between the source and destination.
@@ -188,12 +188,12 @@ The command traces the packet's path from the source to the destination (`google
 
 * **Command**: DNS query with trace.
 
-~~~
-    dig +trace google.com
+~~~{.bash caption=">_"}
+dig +trace google.com
 ~~~
 
 <div class="wide">
-![dig command with trace output]({{site.images}}{{page.slug}}/dgDyiSN.png)
+![`dig` command with trace output]({{site.images}}{{page.slug}}/dgDyiSN.png)
 </div>
 
 The command traces(`+trace`) and shows the DNS resolution process from root DNS servers to authoritative DNS servers. The output includes detailed DNS records and IP addresses associated with the domain (`google.com`). This command aids in troubleshooting DNS issues and understanding the domain's DNS infrastructure.
@@ -208,8 +208,8 @@ The command traces(`+trace`) and shows the DNS resolution process from root DNS 
 
 * **Command**: Delete a rule from the firewall.
 
-~~~
-    iptables --delete INPUT -s 192.168.0.10 -j DROP
+~~~{.bash caption=">_"}
+iptables --delete INPUT -s 192.168.0.10 -j DROP
 ~~~
 
 The command removes the rule that **DROP**s incoming network traffic from the specified source IP address, `192.168.0.10` in the target chain, `INPUT`. This enables control over network traffic based on various criteria.
@@ -230,12 +230,12 @@ The `ss` command displays information about active network connections, sockets,
 
 * **Command**: Display established TCP connection.
 
-~~~
-    ss -t state established
+~~~{.bash caption=">_"}
+ss -t state established
 ~~~
 
 <div class="wide">
-![ss command output]({{site.images}}{{page.slug}}/PqEc98O.png)
+![`ss` command output]({{site.images}}{{page.slug}}/PqEc98O.png)
 </div>
 
 The command displays information about all `established` TCP (`-t`) connections, the `state` of the connection, and other relevant details which are useful for monitoring active connections and troubleshooting networking issues.
@@ -250,12 +250,12 @@ The `mtr` command combines `ping` and `traceroute` functionality. It provides co
 
 * **Command**: `mtr` with a specific packet count.
 
-~~~
-    mtr -c 10 google.com
+~~~{.bash caption=">_"}
+mtr -c 10 google.com
 ~~~
 
 <div class="wide">
-![mtr command output]({{site.images}}{{page.slug}}/TrlH9GR.png)
+![`mtr` command output]({{site.images}}{{page.slug}}/TrlH9GR.png)
 </div>
 
 The command continuously sends packets to the specified destination (`google.com`) and displays detailed information about each hop along the network path. The option `-c` sets the number of pings sent. The output helps in understanding the network route.
@@ -270,12 +270,12 @@ The command continuously sends packets to the specified destination (`google.com
 
 * **Command**: Capture packets on the wlp1s0 interface.
 
-~~~
-    tcpdump -i wlp1s0 -s 20
+~~~{.bash caption=">_"}
+tcpdump -i wlp1s0 -s 20
 ~~~
 
 <div class="wide">
-![tcpdump command output]({{site.images}}{{page.slug}}/zNBMAoA.png)
+![`tcpdump` command output]({{site.images}}{{page.slug}}/zNBMAoA.png)
 </div>
 
 The command captures network packets on the specified interface (`-i wlp1s0`) and displays detailed information about each packet. The option, `-s 20` specifies the snap length. Based on the output you can diagnose network issues, analyze network protocols, and monitor network traffic for security threats.
@@ -290,12 +290,12 @@ The `iftop` command allows you to monitor real-time network bandwidth usage on s
 
 * **Command**: Bandwidth usage on the `wlp1s0` interface.
 
-~~~
-    iftop -i wlp1s0
+~~~{.bash caption=">_"}
+iftop -i wlp1s0
 ~~~
 
 <div class="wide">
-![iftop command output]({{site.images}}{{page.slug}}/mstx9Kw.png)
+![`iftop` command output]({{site.images}}{{page.slug}}/mstx9Kw.png)
 </div>
 
 The command displays a continuously updated list of connections on the specified interface (`-i wlp1s0`) and their corresponding bandwidth usage. It provides real-time insights into network bandwidth usage, allowing you to identify heavy network traffic or potential bandwidth bottlenecks.
@@ -310,8 +310,8 @@ The `iperf` command is widely used for measuring network performance. It lets yo
 
 * **Command**: Run an `iperf` client with UDP traffic.
 
-~~~
-    iperf -c 192.168.1.100 -u
+~~~{.bash caption=">_"}
+iperf -c 192.168.1.100 -u
 ~~~
 
 The command initiates a network performance test between the local machine (iperf client) and the specified server IP address (`192.168.1.100`) using UDP(-u) traffic. It measures the bandwidth, throughput, packet loss, and latency. The `-c` implies client mode. The output provides insights into the quality of the network connection between the client and server.
@@ -326,12 +326,12 @@ The command initiates a network performance test between the local machine (iper
 
 * **Command**: Perform a basic TCP SYN scan on a target host.
 
-~~~
-    nmap -sS 216.58.223.206
+~~~{.bash caption=">_"}
+nmap -sS 216.58.223.206
 ~~~
 
 <div class="wide">
-![nmap command output]({{site.images}}{{page.slug}}/XK2zaf5.png)
+![`nmap` command output]({{site.images}}{{page.slug}}/XK2zaf5.png)
 </div>
 
 The command performs [TCP SYN scan](https://nmap.org/book/synscan.html) (`-sS`) on the specified target host (`216.58.223.206`) to identify open ports and gather information about the services running on those ports. The output provides a list of discovered open ports, along with their corresponding service information. This can help in network reconnaissance, identifying potential vulnerabilities or misconfiguration in the network, and assessing the security posture of a target host.
