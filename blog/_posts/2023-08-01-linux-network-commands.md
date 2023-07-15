@@ -395,6 +395,8 @@ By experimenting with different commands and scenarios, you can expand your know
 
 You can continue learning about networking technologies, such as [AWS Networking](https://earthly.dev/blog/aws-networks/), and [Docker Networking](https://earthly.dev/blog/docker-networking/).
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 - [ ] Add in Author page
@@ -405,4 +407,3 @@ You can continue learning about networking technologies, such as [AWS Networking
 - [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
