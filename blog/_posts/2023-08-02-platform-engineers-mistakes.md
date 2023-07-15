@@ -24,9 +24,13 @@ Avoiding mistakes in platform engineering is crucial for ensuring that the platf
 
 ## 9 Mistakes Made by Platform Engineers
 
+![Mistakes]({{site.images}}{{page.slug}}/mistakes.png)\
+
 Let's explore nine of these mistakes in the following subsections and also discover effective strategies to overcome them thus, ensuring the delivery of high-quality platforms.
 
 ### Ignoring Performance Optimization
+
+![Ignoring]({{site.images}}{{page.slug}}/ignore.png)\
 
 Performance optimization is the process of improving the speed, efficiency, and scalability of a platform or application. It involves identifying and resolving bottlenecks, inefficiencies, and areas of improvement to improve the system's performance, responsiveness, and overall user experience. Performance optimization is a critical part of platform engineering as it directly affects the efficiency and user experience of a platform. Failure to optimize performance can result in decreased system performance, bad user experience, and potential system crashes.
 
@@ -95,6 +99,8 @@ To avoid the mistake of not automating repetitive tasks in the context of deploy
 By following these tips, you can automate deployments and configuration changes, which reduces the workload on developers, improves consistency, and minimizes the potential for human error. This can help you deliver applications and services more quickly and with higher quality, which improves customer satisfaction and can provide a competitive advantage.
 
 ### Not Testing Changes Before Deployment
+
+![Testing]({{site.images}}{{page.slug}}/testing.png)\
 
 Testing changes before deployment refers to the practice of thoroughly evaluating and validating modifications or updates made to a platform before they are released into the production environment. It involves executing a series of tests to ensure that the changes function as intended, do not introduce any new issues, and do not adversely impact the platform's stability or performance.
 
@@ -175,8 +181,3 @@ Platform engineering is critical for the smooth functioning of applications and 
 You can continue learning and exploring a wide range of technologies through [Earthly blog](https://earthly.dev/blog/).
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-- [ ] Optional: Find ways to break up content with quotes or images
-
