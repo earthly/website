@@ -22,6 +22,8 @@ This article aims to equip you with the knowledge and skills required to utilize
 
 ## Basic Networking Concepts
 
+![Concepts]({{site.images}}{{page.slug}}/concepts.png)\
+
 In this section, we will discuss the fundamental networking concepts that form the basis of networking in Linux.
 
 ### Understanding TCP/IP Protocol Stack
@@ -218,6 +220,8 @@ These commands form the foundation for effective network control and troubleshoo
 
 ## Advanced Networking Commands
 
+![Advanced]({{site.images}}{{page.slug}}/advanced.png)\
+
 In this section, we will explore advanced Linux networking commands for network analysis, performance testing, and security assessment.
 
 ### Socket Statistics - `ss`
@@ -340,6 +344,8 @@ By leveraging these commands, you can capture and analyze network traffic, monit
 
 ## Troubleshooting Network Issues
 
+![Troubleshoot]({{site.images}}{{page.slug}}/troubleshoot.png)\
+
 In this section, we will explore strategies and techniques for troubleshooting common network issues in Linux.
 
 ### Diagnose Connectivity Problems
@@ -437,5 +443,3 @@ You can continue learning about networking technologies, such as [AWS Networking
 ## Outside Article Checklist
 
 * [ ] Add in Author page
-* [ ] Optional: Find ways to break up content with quotes or images
-
