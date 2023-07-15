@@ -479,3 +479,7 @@ Evan Pease:
     name    : "Evan Pease"
     bio     : "Sr. Solutions Architect at Earthly. Ex AWS, Couchbase, and Wavefront (acquired by VMWare). Passionate about coding, search/NLP and guitars."
     avatar  : "/assets/images/authors/evan-pease.png"
+Princewill Inyang:
+    name    : "Princewill Inyang"
+    bio     : "Princewill is an experienced backend developer whose expertise extends beyond coding. With a passion for DevOps and technical writing, he combines his technical prowess with exceptional communication skills to build seamless and efficient software solutions."
+    avatar  : "/assets/images/authors/princewill-inyang.jpg"

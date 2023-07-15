@@ -3,7 +3,7 @@ title: "Mastering Linux Networking Commands: A Comprehensive Guide"
 categories:
   - Tutorials
 toc: true
-author: Adam
+author: Princewill Inyang
 editor: Muhammad Badawy
 
 internal-links:
@@ -439,7 +439,3 @@ By experimenting with different commands and scenarios, you can expand your know
 You can continue learning about networking technologies, such as [AWS Networking](https://earthly.dev/blog/aws-networks/), and [Docker Networking](https://earthly.dev/blog/docker-networking/).
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-* [ ] Add in Author page
