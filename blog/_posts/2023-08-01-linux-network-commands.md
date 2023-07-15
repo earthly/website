@@ -4,6 +4,7 @@ categories:
   - Tutorials
 toc: true
 author: Adam
+editor: Muhammad Badawy
 
 internal-links:
  - just an example
