@@ -1,5 +1,5 @@
 ---
-title: "Put Your Best Title Here"
+title: "9 Platfrom Engineers' Mistakes"
 categories:
   - Tutorials
 toc: true
@@ -7,7 +7,10 @@ author: Temitope Oyedele
 editor: Muhammad Badawy
 
 internal-links:
- - just an example
+ - platfrom engineers
+ - engineers mistakes
+ - software development
+ - scalable platfrom
 ---
 <!--sgpt-->**We're [Earthly](https://earthly.dev/). We simplify and speed up software building with containerization. Earthly is a powerful tool that enhances your CI/CD workflows. [Check it out](/).**
 
@@ -178,4 +181,3 @@ You can continue learning and exploring a wide range of technologies through [Ea
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
 
-- [ ] Add keywords for internal links to front-matter
