@@ -335,7 +335,7 @@ kubectl get pods
 You are expected to have the following output:
 
 <div class="wide">
-![Creating and viewing *hello-world-express-app*  deployments and pods]({{site.images}}{{page.slug}}/PCzVhBa.png)
+![Creating and viewing *hello-world-express-app* deployments and pods]({{site.images}}{{page.slug}}/PCzVhBa.png)
 </div>
 
 Create a file `svc.yaml` and paste in the following code to expose the deployment:
