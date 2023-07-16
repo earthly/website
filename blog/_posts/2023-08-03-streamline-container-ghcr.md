@@ -14,7 +14,6 @@ internal-links:
  - streamline workflow
  - container registry
 ---
-<!--sgpt-->**We're [Earthly](https://earthly.dev/). We simplify and speed up software building with containerization. Earthly is a powerful tool that enhances your CI/CD workflows. [Check it out](/).**
 
 **We're [Earthly](https://earthly.dev/). We make building software simpler and, therefore, faster by using containerization. If you're interested in a different approach to building and packaging software, then [check us out](/).**
 
