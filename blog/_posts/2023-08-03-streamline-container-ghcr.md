@@ -379,10 +379,10 @@ You can now agree that integrating the GitHub Container Registry into your conta
 - Pull and use docker images from GHCR in a Kubernetes environment.
 With this newfound knowledge, you can use GCHR to its full potential and maximize the potential of your container-based workflows.
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
