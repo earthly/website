@@ -12,6 +12,7 @@ internal-links:
  - gitHub container registry
  - container workflow
  - streamline workflow
+ - container registry
 ---
 <!--sgpt-->**We're [Earthly](https://earthly.dev/). We simplify and speed up software building with containerization. Earthly is a powerful tool that enhances your CI/CD workflows. [Check it out](/).**
 
