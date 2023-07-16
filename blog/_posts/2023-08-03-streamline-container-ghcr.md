@@ -77,14 +77,14 @@ Once you have your personal access token, you can authenticate with the GitHub C
 
 > To set up the demo application for this tutorial, clone the repository `hello-world-express-app` from the GitHub account `mercybassey` using the command `git clone git@github.com:mercybassey/hello-world-express-app.git`. Open the cloned repository in your preferred code editor, update the remote origin to your repository using the following commands, and proceed with the tutorial using this application as an example.
 
-~~~
+~~~{.bash caption=">_"}
 git remote remove origin
 git remote add origin <your_repository_url> 
 ~~~
 
 You can authenticate your local machine with the GitHub Container Registry with the personal access token. Using the Docker CLI, execute the following command:
 
-~~~
+~~~{.bash caption=">_"}
 docker login ghcr.io -u <GITHUB_USERNAME> -p <PERSONAL_ACCESS_TOKEN>
 ~~~
 
@@ -104,7 +104,7 @@ Deploying Docker images to the GitHub Container Registry follows a similar proce
 
 To begin, execute the following command to build the docker image for the express app:
 
-~~~
+~~~{.bash caption=">_"}
 docker build -t ghcr.io/GITHUB_USERNAME/IMAGE_NAME:TAG .
 ~~~
 
@@ -112,7 +112,7 @@ Here,   `GITHUB_USERNAME` is your GitHub username,  `IMAGE_NAME` is the desired 
 
 This should take some time, but once the build is finished, you can confirm if it is listed among the Docker images you have on your machine using the following command:
 
-~~~
+~~~{.bash caption=">_"}
 docker images
 ~~~
 
@@ -122,7 +122,7 @@ docker images
 
 Before pushing the Docker image to the GitHub container registry, you must confirm if this image works as expected. One way to achieve this is to run the image locally; execute the following command:
 
-~~~
+~~~{.bash caption=">_"}
 docker run -p 3000:3000 ghcr.io/GITHUB_USERNAME/IMAGE_NAME
 ~~~
 
@@ -140,7 +140,7 @@ Now open up the following web address `http://localhost/3000](http://localhost/3
 
 To push this image up to the GitHub container registry, execute the following command:
 
-~~~
+~~~{.bash caption=">_"}
 docker push ghcr.io/USERNAME/REPOSITORY/IMAGE_NAME:TAG
 ~~~
 
@@ -162,7 +162,7 @@ The first thing to do is create a `.github/workflows` directory in the root dire
 
 In this file, add the following code snippets:
 
-~~~
+~~~{.yml caption="gchr.yaml}
 # .github/workflows/gchr.yaml 
 
 name: Build and Push to GHCR
@@ -182,7 +182,8 @@ jobs:
       
       - name: Build and Push the Image to GHCR
         run: |
-          docker login ghcr.io -u <YOUR_GITHUB_USERNAME> -p ${{ secrets.PERSONAL_ACCESS_TOKEN}}
+          docker login ghcr.io -u <YOUR_GITHUB_USERNAME> \
+          -p ${{ secrets.PERSONAL_ACCESS_TOKEN}}
           docker build -t ghcr.io/<YOUR_GITHUB_USERNAME>/hello-world:latest .
           docker push ghcr.io/<YOUR_GITHUB_USERNAME>/hello-world:latest
 ~~~
@@ -210,7 +211,7 @@ At the moment, this workflow will be triggered automatically when you make a com
 
 Now to trigger the GitHub actions pipeline, edit the `index.js` file in your root directory to say `Hello GCHR` instead of `Hello World` as shown below:
 
-~~~
+~~~{.js caption="index.js"}
 # index.js
 ...
 
@@ -223,7 +224,7 @@ app.get('/', (req, res) => {
 
 Now, commit this change to your repository to trigger the pipeline by executing the following Git commands sequentially:
 
-~~~
+~~~{.bash caption=">_"}
 git add .
 git commit -m "Configured GitHub Actions"
 git push origin main
@@ -263,13 +264,17 @@ However, there is something to note; the visibility of container images in the G
 
 To begin, generate a Kubernetes Secret with credentials to authenticate with the GitHub Container Registry. We can do this by running the command:
 
-~~~
-kubectl create secret docker-registry k8s-ghcr --docker-server=https://ghcr.io --docker-username=<YOUR_GITHUB_USERNAME> --docker-password=<YOUR_GITHUB_PERSONAL_ACCESS-TOKEN> --docker-email=<YOUR_GITHUB_EMAIL>
+~~~{.bash caption=">_"}
+kubectl create secret docker-registry k8s-ghcr \
+--docker-server=https://ghcr.io \
+--docker-username=<YOUR_GITHUB_USERNAME> \
+--docker-password=<YOUR_GITHUB_PERSONAL_ACCESS-TOKEN> \
+--docker-email=<YOUR_GITHUB_EMAIL>
 ~~~
 
 To view the secret created:
 
-~~~
+~~~{.bash caption=">_"}
 kubectl get secret
 ~~~
 
@@ -289,7 +294,7 @@ Once the secret is created, you should have the following output:
 
 Now, create a file `express-app.yaml` and paste in the following configuration settings:
 
-~~~
+~~~{.yml caption="express-app.yaml"}
 # express-app.yaml
 
 apiVersion: apps/v1
@@ -321,7 +326,7 @@ The code snippet above will set up a ' hello-world-express-app' deployment with 
 
 To create and view this deployment, execute the following commands sequentially:
 
-~~~
+~~~{.bash caption=">_"}
 kubectl apply -f express-app.yaml
 kubectl get deployments
 kubectl get pods
@@ -335,7 +340,7 @@ You are expected to have the following output:
 
 Create a file `svc.yaml` and paste in the following code to expose the deployment:
 
-~~~
+~~~{.yml caption="svc.yaml"}
 # svc.yaml
 apiVersion: v1
 kind: Service
@@ -354,17 +359,19 @@ The code above will create a service of type `ClusterIP` named `hello-world-serv
 
 Execute the following commands sequentially to create, view, and test this service:
 
-~~~
+~~~{.bash caption=">_"}
 # Creates the service
 kubectl apply -f svc.yaml
 
 # view the service
 kubectl get service
 
-# Creates a pod named "curl" using the "radial/busyboxplus:curl" image to allow interactive shell access to resources.
+# Creates a pod named "curl" using the "radial/busyboxplus:curl" 
+# image to allow interactive shell access to resources.
 kubectl run curl --image=radial/busyboxplus:curl -i --tty
 
-# Sends an HTTP request to the specified <cluster-ip> and port 3000 using the curl container image 
+# Sends an HTTP request to the specified <cluster-ip> and port 
+# 3000 using the curl container image 
 curl http:<cluster-ip>:3000
 ~~~
 
@@ -384,8 +391,3 @@ You can now agree that integrating the GitHub Container Registry into your conta
 With this newfound knowledge, you can use GCHR to its full potential and maximize the potential of your container-based workflows.
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
