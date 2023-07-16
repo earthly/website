@@ -7,7 +7,11 @@ author: Mercy Bassey
 editor: Ubaydah Abdulwasiu
 
 internal-links:
- - just an example
+ - streamline container workflow
+ - container workflow with gitHub container registry
+ - gitHub container registry
+ - container workflow
+ - streamline workflow
 ---
 <!--sgpt-->**We're [Earthly](https://earthly.dev/). We simplify and speed up software building with containerization. Earthly is a powerful tool that enhances your CI/CD workflows. [Check it out](/).**
 
@@ -385,4 +389,3 @@ With this newfound knowledge, you can use GCHR to its full potential and maximiz
 
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Add keywords for internal links to front-matter
