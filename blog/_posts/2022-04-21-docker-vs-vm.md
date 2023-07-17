@@ -10,6 +10,8 @@ internal-links:
 excerpt: |
     Learn about the differences between Docker containers and virtual machines (VMs) in this article. Discover the strengths and limitations of each technology, including factors such as host machine utilization, simplicity, speed, security, and ease of replicability. Whether you're new to containerization or looking to optimize your virtualized deployments, this article provides valuable insights to help you make informed decisions.
 ---
+**We're [Earthly](https://earthly.dev/). We make building software simpler and faster using containers. If you're grappling with Docker containers vs VMs, Earthly certainly help on the container side. [Give it a go](/).**
+
 [Docker](https://www.docker.com/) and similar containerization technologies have taken the tech world by storm. They have largely displaced virtual machines (VMs) as the de facto segmentation methodology for servers and software developer workflows. However, it's important to note that Docker containers and VMs do not make for an apples-to-apples comparison. One is not inherently better than the other, with each having its pros and cons and use cases that might be better suited to one than the other.
 
 In this article, you will see a breakdown of these two virtualization technologies. We'll highlight the strengths and limitations of each by focusing on various factors such as interaction with the host machine, ease of use for the user, performance, security, and ease of replicability.

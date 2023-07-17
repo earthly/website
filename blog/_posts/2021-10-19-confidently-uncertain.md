@@ -10,6 +10,8 @@ internal-links:
 excerpt: |
     Learn how to balance social confidence and epistemic confidence in order to succeed in your career. Find out why being confidently uncertain can be a valuable mindset, and discover tips on how to navigate uncertainty with confidence.
 ---
+**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. [Give us a go](/).**
+
 ## "OH GAWD"
 
 Around the time of the subprime mortgage collapse, I was working in an enterprise software company. I worked in a large open space full of cubicles. Several times a week, I would hear a slightly panicked voice say, "oh god!"

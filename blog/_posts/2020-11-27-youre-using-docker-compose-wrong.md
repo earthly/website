@@ -11,6 +11,8 @@ last_modified_at: 2023-04-17
 excerpt: |
     Learn how to avoid common mistakes when using docker-compose for integration testing and development environments. Discover the cardinal sins to avoid and best practices to follow for a smoother Docker experience.
 ---
+**We're [Earthly](https://earthly.dev/). We make building software simpler and faster using containerization. Regardless of your Docker-compose practices, Earthly can still be a game-changer for your development workflow. [Check us out](/).**
+
 <!-- vale HouseStyle.H2 = NO -->
 Tell me if this sounds familiar? You were introduced to docker-compose either by choice or by force. You've been using it for a while, but you find it clunky. I'm here to tell you, you are probably using it wrong.
 

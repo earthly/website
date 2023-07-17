@@ -14,7 +14,6 @@ internal-links:
 topic: docker
 funnel: 2
 ---
-
 <div class="notice--info">
 ### TLDR:
 

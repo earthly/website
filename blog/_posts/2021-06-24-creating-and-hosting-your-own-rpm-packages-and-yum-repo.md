@@ -11,6 +11,7 @@ internal-links:
 excerpt: |
     
 ---
+>**We're [Earthly](https://earthly.dev/). If you're dealing with rpms and yum, you'll want to check this out. [Take a look](/).**
 
 <div class="narrow-code">
 
