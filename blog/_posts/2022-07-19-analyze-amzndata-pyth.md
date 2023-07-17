@@ -4,13 +4,15 @@ categories:
   - Tutorials
 toc: true
 author: Mr. Unity Buddy
-excerpt: How much have you spent on Amazon?
+excerpt: |
+    Learn how to analyze your Amazon data using Python and Pandas. Find out how much you've spent, the most expensive and cheapest items you've ordered, your average expenses, and even visualize your spending habits in a graph.
 internal-links:
  - Amazon
  - Python
  - Pip
  - Pandas
 ---
+**We're [Earthly](https://earthly.dev/). We simplify and speed up software building with containerization. Working with Python and Pandas for data analysis? Earthly can be a game-changer for your CI tests! [Give it a try](/).**
 
 How much have you spent on Amazon? Well, that's a kind of interesting question to find an answer to. And it's the type of question I like to answer using Python.
 

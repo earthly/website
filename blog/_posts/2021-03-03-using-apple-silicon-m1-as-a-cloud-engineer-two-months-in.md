@@ -14,6 +14,8 @@ last_modified_at: 2023-04-17
 internal-links:
   - m1
   - arm
+excerpt: |
+    In this article, Vlad shares his experience using the Apple M1 as a cloud engineer. He discusses the compatibility of various software, including Docker and VS Code, and provides insights on performance, battery life, and cost. If you're curious about using Apple Silicon as a cloud engineer, this article offers valuable insights and recommendations.
 ---
 **We're [Earthly.dev](https://earthly.dev/). We make building software simpler and therefore faster – like Dockerfile and Makefile had a baby. In this article, Vlad reviews the Apple M1 as a cloud engineer.**
 

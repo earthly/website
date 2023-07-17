@@ -10,7 +10,10 @@ internal-links:
  - Classes
  - OOP
  - Objects
+excerpt: |
+    Learn how to work with classes and objects in Python in this tutorial. Discover how to define attributes and methods, use class variables and methods, and create objects from tuples.
 ---
+**We're [Earthly](https://earthly.dev/). We streamline software building using containerization. If you're working with Python, Earthly can simplify your build process. [Check it out](/).**
 
 If you're a developer looking to level up your Python skills, adding OOP to your Python box can be helpful. This tutorial will help you get started with object-oriented programming in Python.
 

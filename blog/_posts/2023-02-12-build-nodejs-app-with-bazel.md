@@ -11,6 +11,8 @@ internal-links:
  - Bazel
  - Application
  - JavaScript
+excerpt: |
+    Learn how to build a Node.js application with Bazel, an open-source build tool that speeds up builds and tests. This tutorial guides you through setting up the Bazel environment, implementing and testing a simple calculator application, and exposing it on a web server.
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. This article is about when to reach for Bazel. If you are looking for a simpler approach to building monorepos then [check us out](/).**
 

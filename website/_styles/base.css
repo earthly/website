@@ -14,7 +14,7 @@ main.wave-main {
   background: #e8f8fe;
   height: 500px;
   flex: 1;
-  width: 100vw;
+  width: 100%;
   position: relative;
 }
 
@@ -65,6 +65,44 @@ main.wave-main {
 
 .wave:nth-of-type(3) {
   z-index: 3;
+}
+
+main.wave-main.homepage {
+  height: fit-content;
+}
+
+.homepage .wave:nth-of-type(1) {
+  top: 148px;
+}
+
+.homepage .wave:nth-of-type(2) {
+  top: 178px;
+}
+
+.homepage .wave:nth-of-type(3) {
+  top: 188px;
+}
+
+@media screen and (min-width: 1280px) {
+  .homepage .wave {
+    animation: none;
+  }
+
+  .earthly-animation {
+    right: -148px;
+  }
+}
+
+@media screen and (min-width: 1366px) {
+  .earthly-animation {
+    right: -96px;
+  }
+}
+
+@media screen and (min-width: 1536px) {
+  .earthly-animation {
+    right: 0;
+  }
 }
 
 .earthfile-term {
@@ -169,10 +207,11 @@ main.wave-main {
 
 .announcement-banner {
   width: 100%;
-  background-color: #2d7e5d;
-  color: #fff;
+  background-color: #f6f8f7;
   padding: 5px 10px;
   text-align: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
 }
 
 .announcement-banner a {

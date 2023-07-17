@@ -11,7 +11,10 @@ internal-links:
  - Python
  - Function Modification
  - Variable Hiding
+excerpt: |
+    Learn how to use closures and decorators in Python to hide variables, modify function behavior, and add functionality to existing functions or classes. This guide provides examples and explanations of closures and decorators, as well as their practical applications in Python programming.
 ---
+**We're [Earthly](https://earthly.dev/). We simplify and speed up software building with containerization. Earthly works great with Python projects. [Check it out](/).**
 
 Python is a high-level general-purpose language that supports classes as part of its built-in object-oriented programming (OOP) paradigm. Occasionally, when working with variables in Python, you may want to hide a variable without writing an unnecessary class to keep the code more maintainable. Moreover, you may want to add minor functionality to a function without creating another redundant function. In such scenarios, closures, and decorators can be used as solutions: closures for variable hiding and decorators for function modification. This guide will demonstrate the concept of closures and decorators, explain how and where to use them, and explain when it's most appropriate to use them instead of traditional classes and unnecessary functions.
 

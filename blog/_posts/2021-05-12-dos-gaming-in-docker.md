@@ -4,7 +4,8 @@ title: DOS Gaming In Docker
 categories:
 - Tutorials
 author: Corey
-excerpt: Distributing shareware from the 90's in modern Docker images.
+excerpt: |
+    Learn how to play classic DOS games in your web browser using Docker! This tutorial shows you how to create a Docker container with JS-DOS and a shareware game, allowing you to relive the nostalgia of the DOS era.
 internal-links:
  - gaming
  - doom
@@ -13,7 +14,6 @@ internal-links:
 topic: docker
 funnel: 2
 ---
-
 <div class="notice--info">
 ### TLDR:
 

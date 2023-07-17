@@ -11,8 +11,12 @@ internal-links:
  - Makefile
  - Variables
  - Assignment
+excerpt: |
+    Learn all about Makefile variables and how to use them to automate complex processes in your code. Find out how to set variables, append to them, and use special variables like automatic and implicit variables.
 ---
 <iframe width="560" height="315" src="https://www.youtube.com/embed/z4uPHjxYyPs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+**We're [Earthly](https://earthly.dev/). Ever struggled with complex Makefile variables? That's where we come in. We simplify your build processes for quicker, efficient results. [Check us out](/).**
 
 Since its appearance in 1976, [Make](https://www.make.com/en) has been helping developers automate complex processes for compiling code, building executables, and generating documentation.
 

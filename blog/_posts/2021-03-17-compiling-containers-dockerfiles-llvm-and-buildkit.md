@@ -5,7 +5,8 @@ title: Compiling Containers - Dockerfiles, LLVM, and BuildKit
 categories:
   - Tutorials
 toc: true
-excerpt: How are containers made? Usually, from a series of statements like RUN, FROM, and COPY, which are put into a Dockerfile and built. But how are those commands turned into a container image and then a running container? 
+excerpt: |
+    Learn how containers are compiled using Dockerfiles, LLVM, and BuildKit in this tutorial. Explore the phases involved in creating a container image, the similarities between compiling code and building images, and how to programmatically generate container images using BuildKit and Go. Discover the concept of intermediate representations and see the development of a custom frontend for Docker build using the Ickfile format.
 author: Adam
 sidebar:
   nav: "docker"
@@ -15,6 +16,8 @@ internal-links:
   - machine code
 last_modified_at: 2022-11-17
 ---
+**We're [Earthly](https://earthly.dev/). We simplify and speed up software build processes with containerization. Earthly can enhance the reliability of your CI/CD process. [Check it out](/).**
+
 ## Introduction
 
 How are containers made? Usually, from a series of statements like `RUN`, `FROM`, and `COPY`, which are put into a Dockerfile and built. But how are those commands turned into a container image and then a running container? We can build up an intuition for how this works by understanding the phases involved and creating a container image ourselves. We will create an image programmatically and then develop a trivial syntactic frontend and use it to build an image.

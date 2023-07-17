@@ -9,7 +9,10 @@ sidebar:
 internal-links:
   - environment variables
   - environment variable
+excerpt: |
+    Learn the basics of bash variables and how they work in the UNIX shell. Discover how to define and access local shell variables, work with arrays, handle command-line arguments, and use environmental variables. Gain a solid understanding of bash variables to enhance your scripting skills.
 ---
+**We're [Earthly](https://earthly.dev/). We make building software simpler and faster. If you're deep into bash scripting, know that Earthly can take care of the complex build automation, allowing you to focus more on your scripts. [Check it out](/).**
 
 <div class="narrow-code">
 
