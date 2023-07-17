@@ -172,37 +172,9 @@ plugins:
 Because of the nested nature of yaml, I find this much easier to understand than a lengthy `protoc` call. So then instead of `protoc` I call `buf generate`, and all the generated code is produced.
 
 ## Earthly CI Changes
+<!--sgpt-->
+To make my build process super consistent, I've packed all my build steps into an `Earthfile`. So, instead of using `buf lint`, `buf breaking`, or `buf generate` in CI or locally, I simply call `earthly +proto`. It's a more straightforward and predictable protocol buffer generation method. Plus, with `buf lint` and `buf breaking`, I can dodge some gRPC pitfalls. Everything gets neatly bundled in a reusable build script, ensuring no lint violations or breaking changes sneak into my main branch. 
 
-In order to ensure my build process is repeatable, I've wrapped up all the build steps into an `Earthfile` (see [previous discussion](/blog/golang-grpc-example/#playing-nice-with-others)). So I don't call `buf lint`, `buf breaking` or `buf generate` in CI or locally. Instead I call `earthly +proto` after changing it like this:
-
-~~~{.diff caption="/activity-log/Earthfile"}
-proto:
-    FROM +proto-deps
-    WORKDIR /activity-log
-    COPY go.mod go.sum ./ 
-    COPY api ./api
--   RUN protoc api/v1/*.proto \
--           --go_out=. \
--           --go_opt=paths=source_relative \
--           --go-grpc_out=. \
--           --go-grpc_opt=paths=source_relative \
--           --grpc-gateway_out . \
--           --grpc-gateway_opt logtostderr=true \
--           --grpc-gateway_opt paths=source_relative \
--           --grpc-gateway_opt generate_unbound_methods=true \
--           --openapiv2_out . \
--           --openapiv2_opt logtostderr=true \
--           --openapiv2_opt generate_unbound_methods=true \
--           --proto_path=.
-+    COPY buf.* .
-+    RUN buf lint
-+    RUN buf breaking --against "https://github.com/adamgordonbell/cloudservices.git#branch=buf,subdir=activity-log" 
-+    RUN buf generate 
-    SAVE ARTIFACT ./api AS LOCAL ./api 
-~~~
-
-And with that, I have a simpler, more declarative protocol buffer generation process, and `buf lint` and `buf breaking` help me avoid some gRPC foot-guns, and it's all wrapped up in a reusable build script, so no breaking change or lint violation will even make it into my main branch.
-
-And I'm just scratching the surface on `buf`, most of the steps above are highly configurable, and their schema registry and remote generation feature look very cool. But for now, I think it's been an improvement.
+And this is just the tip of the iceberg with `buf` - it's super customizable and has some awesome features like schema registry and remote generation. It's been a positive change for sure. If you're looking for a smarter build process, give [Earthly](https://www.earthly.dev/) a go. Your Protobuf workflow will thank you.
 
 {% include_html cta/bottom-cta.html %}

@@ -10,8 +10,8 @@ import guidance
 gpt4 = guidance.llms.OpenAI("gpt-4")
 gpt35turbo = guidance.llms.OpenAI("gpt-3.5-turbo-16k")
 
-# should_cache = True
-should_cache = False
+should_cache = True
+# should_cache = False
 
 def get_summary(lines: str) -> str:
     score = guidance(dedent('''

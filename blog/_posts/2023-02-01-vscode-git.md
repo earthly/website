@@ -31,33 +31,10 @@ Next, locate your settings.json file by opening it in VS Code (Ctrl-Shift-P or C
 
 ## Copy Over
 
-In your terminal, copy these files into your new settings repo:
+In your terminal, simply copy your settings and keybindings files into your new settings repo. After committing them (`git add . && git commit -a -m "settings.json"`), remove the old copies. Next, symlink the new versions in their place. Make sure VS Code is closed during this process. Now, any changes you make to your settings will be saved in the repo, allowing you to commit or undo changes as needed. 
 
-~~~
-> cp /Users/adam/Library/Application Support/Code/User/settings.json ↩
-  /Users/adam/sandbox/vs-code-styles/settings.json
-> cp /Users/adam/Library/Application Support/Code/User/keybindings.json ↩
-  /Users/adam/sandbox/vs-code-styles/keybindings.json
-~~~
+Once you've got your settings optimized, you might want to consider streamlining your build process as well. Check out [Earthly](https://www.earthly.dev/) for efficient build automation. It could be the perfect complement to your newly optimized VS Code settings. 
 
-After committing these (`git add . && git commit -a -m "settings.json"`) remove the old copies.
-
-~~~
-> rm  /Users/adam/Library/Application Support/Code/User/settings.json
-> rm  /Users/adam/Library/Application Support/Code/User/keybindings.json
-~~~
-
-Then symlink the new versions into place.
-
-~~~
-> ln -s /Users/adam/sandbox/vs-code-styles/keybindings.json ↩
-      /Users/adam/Library/Application Support/Code/User/keybindings.json
-> ln -s /Users/adam/sandbox/vs-code-styles/settings.json ↩
-      /Users/adam/Library/Application Support/Code/User/settings.json
-~~~
-
-If you have any issues with that, ensure that VS Code (all copies) are closed. After this change any settings changes you make are written to the repo and you can commit and or revert the changes as needed.
-
-Now my settings are stored on [GitHub](https://github.com/adamgordonbell/vs-code-styles).
+Here's where my [settings](https://github.com/adamgordonbell/vs-code-styles) live on GitHub.
 
 {% include cta/cta1.html %}
