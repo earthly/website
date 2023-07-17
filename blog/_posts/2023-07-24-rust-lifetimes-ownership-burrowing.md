@@ -17,7 +17,7 @@ internal-links:
 
 As a software developer, you're probably familiar with common memory-related bugs, such as [buffer overflows](https://en.wikipedia.org/wiki/Buffer_overflow), [use-after-free errors](https://encyclopedia.kaspersky.com/glossary/use-after-free/), and [data races](https://web.mit.edu/rust-lang_v1.25/arch/amd64_ubuntu1404/share/doc/rust/html/nomicon/races.html). These issues can cause a wide range of problems, including crashes, data corruption, and even security vulnerabilities.
 
-[Rust](https://www.rust-lang.org/) is a programming language that uses [ownership and borrowing](https://doc.rust-lang.org/book/ch04-00-understanding-ownership.html) to address memory management issues while prioritizing both performance and memory safety. The approach is based on the concept of [lifetimes](https://doc.rust-lang.org/rust-by-example/scope/lifetime.html), where the lifetime system tracks the lifespan of every value, ensuring that references do not outlive their intended lifetime and preventing issues, such as dangling pointers/references and memory leaks.
+Rust is a programming language that uses [ownership and borrowing](https://doc.rust-lang.org/book/ch04-00-understanding-ownership.html) to address memory management issues while prioritizing both performance and memory safety. The approach is based on the concept of [lifetimes](https://doc.rust-lang.org/rust-by-example/scope/lifetime.html), where the lifetime system tracks the lifespan of every value, ensuring that references do not outlive their intended lifetime and preventing issues, such as dangling pointers/references and memory leaks.
 
 Unfortunately, Rust's lifetimes can be difficult to understand, but they're essential to Rust's design, and they enable you to write secure and high-performing code while avoiding common memory-related problems found in other languages. In this article, you'll learn all about lifetimes and the concepts of ownership, borrowing, and resource management in Rust.
 
@@ -574,6 +574,7 @@ The key difference between the two main functions is how the `ImportantExcerpt` 
 If the `ImportantExcerpt` struct were to hold a reference to a `String` with a shorter lifetime than the struct itself, it would result in a dangling reference error. However, Rust's compile-time checks prevent this error from occurring, which is shown below:
 
 ~~~{ caption="Output"}
+
 |   let i = ImportantExcerpt::new(&first_sentence.to_string()); 
    |                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^ - temporary value is freed at the end of this statement
    |                                  |
