@@ -15,7 +15,7 @@ internal-links:
 
 **We're [Earthly.dev](https://earthly.dev/). We make building software simpler and, therefore faster – like Dockerfile and Makefile had a baby. This is about Rust Concurrency Patterns for Parallel Programming**
 
-[Rust](https://www.rust-lang.org/) is a modern programming language that prioritizes performance, safety, and concurrency. It's a unique language thanks to its memory safety guarantees, [ownership](https://doc.rust-lang.org/book/ch04-01-what-is-ownership.html#what-is-ownership), and [borrowing](https://doc.rust-lang.org/book/ch04-02-references-and-borrowing.html#references-and-borrowing) system, and support for [fearless concurrency](https://doc.rust-lang.org/book/ch16-00-concurrency.html).
+Rust is a modern programming language that prioritizes performance, safety, and concurrency. It's a unique language thanks to its memory safety guarantees, ownership, and borrowing system, and support for [fearless concurrency](https://doc.rust-lang.org/book/ch16-00-concurrency.html).
 
 Concurrency gives programs the capability to execute multiple tasks simultaneously, enabling enhanced efficiency and responsiveness. It allows programs to take full advantage of modern hardware with multiple cores and processors.
 
@@ -37,7 +37,7 @@ Now that you know what threads are, let's explore how threads are created and jo
 
 ### Creating and Joining Threads
 
-To create a new thread in Rust, you can use the [`std::thread::spawn`](https://doc.rust-lang.org/std/thread/fn.spawn.html) function, which requires a [closure](https://doc.rust-lang.org/book/ch13-01-closures.html) as its argument. This closure contains the code that executes in the new thread.
+To create a new thread in Rust, you can use the [`std::thread::spawn`](https://doc.rust-lang.org/std/thread/fn.spawn.html) function, which requires a closure as its argument. This closure contains the code that executes in the new thread.
 
 For example, you can use the following code to create a new thread:
 
