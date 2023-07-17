@@ -12,6 +12,8 @@ internal-links:
  - sqlite-utils
  - "database/sql"
 last_modified_at: 2023-04-17
+excerpt: |
+    Learn how to use Golang's `database/sql` package to work with SQLite databases. This tutorial covers topics such as installing SQLite, creating a database schema, populating the database, inserting and retrieving data, and more. If you're interested in learning how to persist data using SQLite in Golang, this article is for you.
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. Earthly is open-source and written in go. So if you're interested in a simpler way to build then [check us out](/).**
 

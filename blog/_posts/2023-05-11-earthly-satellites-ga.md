@@ -7,6 +7,8 @@ author: Gavin
 
 internal-links:
  - just an example
+excerpt: |
+    Learn how Earthly Satellites can speed up your CI builds, share compute and cache with your team, and execute builds on different architectures. Find out why users like Ses Goe from NOCD are raving about the performance and simplicity of Earthly Satellites.
 ---
 
 We're excited to announce that [Earthly Satellites](https://earthly.dev/earthly-satellites) have moved from Beta to General Availability (GA)! Satellites are remote build runners managed by the Earthly team. Satellites make builds fast, are super simple to use, and work with any CI as well as builds triggered from your laptop.

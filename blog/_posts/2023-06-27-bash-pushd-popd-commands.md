@@ -12,6 +12,8 @@ internal-links:
  - Navigation
  - Terminal
  - Commands
+excerpt: |
+    Learn how to navigate directories like a pro with the bash commands pushd and popd. These commands allow you to easily switch between directories and keep track of your navigation history, making your terminal workflow more efficient.
 ---
 
 **We're [Earthly.dev](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article covers bash pushd and popd. If you want to know more about building in containers then [check us out](/).**

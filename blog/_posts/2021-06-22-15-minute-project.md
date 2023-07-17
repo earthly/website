@@ -4,12 +4,14 @@ title: The 15-Minute Project
 categories:
   - Articles
 author: Corey
-excerpt: Applying city planning to software development
+excerpt: |
+    Discover how the principles of city planning can be applied to software projects, creating a more accessible and efficient development environment. Learn how concepts like zoning, building codes, transportation, equity, and taxes can improve collaboration and make your project a desirable place for contributors.
 toc: true
 internal-links:
   - planning
   - project-management
 ---
+**We're [Earthly](https://earthly.dev/). We simplify software builds using containers, making your software projects more streamlined and efficient - just like city planning. [Take a peek](/).**
 
 Like many others, 2020 encouraged me to find some new interests and hobbies to fill the time spent at home. At risk of sounding terribly boring, one of my newfound interests is that of city planning.
 

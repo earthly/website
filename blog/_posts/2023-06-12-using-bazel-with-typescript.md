@@ -13,6 +13,8 @@ internal-links:
  - Automation
  - Jest
  - Caching
+excerpt: |
+    Learn how to use Bazel with TypeScript to build and test your projects faster and more efficiently. Discover the benefits of Bazel's advanced caching and parallelization features, and explore how to customize Bazel for your TypeScript project.
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. This article is about when to reach for Bazel. If you are looking for a simpler approach to building monorepos then [check us out](/).**
 

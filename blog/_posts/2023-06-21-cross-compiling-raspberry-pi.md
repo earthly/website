@@ -11,6 +11,8 @@ internal-links:
  - Troubleshooting
  - Debian
  - Raspbian
+excerpt: |
+    Learn how to cross-compile programs for Raspberry Pi using a more powerful PC with this step-by-step tutorial. Discover how to set up the development environment, write a C++ program, and debug it using GDB.
 ---
 
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article covers cross compiling. If you're someone who builds software often, you might want to [check us out](/) and see if Earthly can help you build faster and easier.**

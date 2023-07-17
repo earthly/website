@@ -77,6 +77,24 @@ imgur-fix-links(){
    rg --passthru -N 'https?://(i\.)?imgur\.com/' "$(post)" -r '{{site.images}}{{page.slug}}/' | sponge "$(post)"
 }
 
+frontmatter() {
+    f="${1:=$(post)}"
+    ./util/frontmatter.awk < "$f"
+}
+
+backmatter() {
+    f="${1:=$(post)}"
+    ./util/backmatter.awk < "$f"
+}
+
+excerpt() { # Write excerpt to frontmatter. Needs shell-gpt
+    python ./util/sgpt/excerpt.py --file "$(post)"
+}
+
+excerpt-all() { # Write excerpt to frontmatter for all posts. Needs shell-gpt
+    python ./util/sgpt/excerpt.py --dir "./blog/_posts/"
+}
+
 # INIT_LOCATION is used by list to find this file
 INIT_LOCATION="./util/functions"
 
@@ -314,3 +332,7 @@ stop-website(){ # kill what is on port 4001
     kill "$(lsof -i :4001 | tail -n 1 | awk '{ print $2 }')" 
 }
 
+lint-frontmatter(){ # Use when you are getting a weird error about frontmatter of a post
+    # pip install --user yamllint
+    frontmatter | yamllint -c ./util/yamlconfig.yaml -
+}

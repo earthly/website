@@ -13,6 +13,8 @@ internal-links:
  - caching github actions
  - github actions cache
  - github actions caching
+excerpt: |
+    Learn how to cache your package manager dependencies in GitHub Actions to save time and improve the efficiency of your workflows. This article provides step-by-step instructions on using the `cache` action and explores how caching can be combined with Earthly for even more advanced caching capabilities.
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. This article is about GitHub Actions, if you'd like to see how Earthly can improve your GitHub Actions builds then [check us out](/earthly-github-actions).**
 

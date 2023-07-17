@@ -1,15 +1,15 @@
 {% if page.banner or page.mobileBanner %}
-  <div class="announcement-banner">
-    <div class="hidden sm:block">{{ page.banner | default: page.mobileBanner | markdownify }}</div>
-    <div class="sm:hidden">{{ page.mobileBanner | default: page.banner | markdownify }}</div>
-  </div>
+<div class="announcement-banner text-sm">
+  <div class="hidden sm:block">{{ page.banner | default: page.mobileBanner | markdownify }}</div>
+  <div class="sm:hidden">{{ page.mobileBanner | default: page.banner | markdownify }}</div>
+</div>
 
-  <script>
-    function bannerLinkClick() {
-      analytics.track('banner-link-click', {
-        category: 'Banner Link Click',
-        label: 'banner-link-click'
-      });
-    }
-  </script>
+<script>
+  function bannerLinkClick() {
+    analytics.track('banner-link-click', {
+      category: 'Banner Link Click',
+      label: 'banner-link-click'
+    });
+  }
+</script>
 {% endif %}
