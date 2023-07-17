@@ -16,6 +16,8 @@ internal-links:
   - machine code
 last_modified_at: 2022-11-17
 ---
+**We're [Earthly](https://earthly.dev/). We simplify and speed up software build processes with containerization. Earthly can enhance the reliability of your CI/CD process. [Check it out](/).**
+
 ## Introduction
 
 How are containers made? Usually, from a series of statements like `RUN`, `FROM`, and `COPY`, which are put into a Dockerfile and built. But how are those commands turned into a container image and then a running container? We can build up an intuition for how this works by understanding the phases involved and creating a container image ourselves. We will create an image programmatically and then develop a trivial syntactic frontend and use it to build an image.

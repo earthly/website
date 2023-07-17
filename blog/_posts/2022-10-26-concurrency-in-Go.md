@@ -12,6 +12,7 @@ internal-links:
 excerpt: |
     Learn how to use concurrency in Go to run multiple processes simultaneously, improve speed and performance, and communicate between goroutines using channels. Discover the benefits and challenges of concurrent programming in this informative article.
 ---
+**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. Love Go's concurrency model? Check out Earthly for managing your builds efficiently. [Check us out](/).**
 
 ## Introduction
 

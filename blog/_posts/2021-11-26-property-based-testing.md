@@ -9,6 +9,8 @@ internal-links:
 excerpt: |
     Learn how to use property-based testing in Go to automatically generate unit tests and ensure the reliability of your code. Property-based testing is a powerful technique that generates specific test cases based on the properties you want to test, making it easier to catch bugs and ensure the correctness of your code.
 ---
+**We're [Earthly](https://earthly.dev/). We simplify and speed up software building through containerization. If you're into property-based testing, you care about reliability and then Earthly is a great fit. [Give us a try](/)!**
+
 Have you ever wanted your unit tests written for you? Property based testing is a powerful testing technique that, in a sense, is just that. You describe the properties you'd like to test, and the specific cases are generated for you.
 
 Property-based testing can be a bit trickier to learn, and not every problem can be well tested in this manner, but it's a powerful technique that's well supported by the go std-lib (`testing/quick`) and that is under-utilized.
