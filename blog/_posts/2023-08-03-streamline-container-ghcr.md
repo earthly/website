@@ -163,8 +163,6 @@ The first thing to do is create a `.github/workflows` directory in the root dire
 In this file, add the following code snippets:
 
 ~~~{.yml caption="gchr.yaml}
-# .github/workflows/gchr.yaml 
-
 name: Build and Push to GHCR
 
 on:
@@ -212,7 +210,6 @@ At the moment, this workflow will be triggered automatically when you make a com
 Now to trigger the GitHub actions pipeline, edit the `index.js` file in your root directory to say `Hello GCHR` instead of `Hello World` as shown below:
 
 ~~~{.js caption="index.js"}
-# index.js
 ...
 
 app.get('/', (req, res) => {
@@ -295,8 +292,6 @@ Once the secret is created, you should have the following output:
 Now, create a file `express-app.yaml` and paste in the following configuration settings:
 
 ~~~{.yml caption="express-app.yaml"}
-# express-app.yaml
-
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -341,7 +336,6 @@ You are expected to have the following output:
 Create a file `svc.yaml` and paste in the following code to expose the deployment:
 
 ~~~{.yml caption="svc.yaml"}
-# svc.yaml
 apiVersion: v1
 kind: Service
 metadata:
