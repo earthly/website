@@ -11,7 +11,10 @@ internal-links:
  - Ingress
  - Cluster
  - Routing
+excerpt: |
+    Learn how to define application routing in a Kubernetes cluster with this comprehensive guide. Discover the key concepts of Ingress and Service, and how to use them effectively for routing. Plus, explore how to configure multiple paths and enable HTTPS forwarding for your applications.
 ---
+**We're [Earthly](https://earthly.dev/). We streamline software building with containerization. Earthly can help simplify your Kubernetes application builds during the CI/CD process. [Check it out](/).**
 
 ## Defining Application Routing in Kubernetes Cluster
 

@@ -1,66 +1,50 @@
-<div class="flex flex-col p-6 pt-4  text-gray-900 bg-white rounded-lg border-2 border-gray-300 shadow ">
-    <div class="mb-3 text-3xl font-semibold">Enterprise</div>
-    <div class="font-light text-gray-500 sm:text-lg dark:text-gray-400">
-        For enterprise
+<div class="bg-white border-2 border-gray-300 flex flex-col p-6 pt-4 rounded-lg shadow text-gray-900">
+  <div class="font-semibold mb-1 text-3xl">Team</div>
+  <div class="font-light text-gray-500 sm:text-lg dark:text-gray-400">
+    For large teams
+  </div>
+
+  <div class="h-48 xl:h-44 bg-gray-50 border flex flex-col items-center justify-center mt-1 p-3 lg:p-1 xl:p-3 pt-4 lg:pt-4 rounded-lg text-2xl text-gray-600 dark:text-gray-400">
+    <div class="flex flex-1 flex-col text-3xl">
+      <div class="flex font-semibold justify-center text-5xl text-black">
+        <span class="font-normal text-gray-600 text-lg">$</span>
+        <span id="tier-4-pricing">49.17</span>
+      </div>
+
+      <div class="font-mono mt-1 text-gray-500">
+        <div class="text-center text-sm">
+          per user/month
+        </div>
+      </div>
     </div>
 
-    <div
-        class="flex flex-col border items-center bg-gray-50 mt-2 rounded-lg justify-center  py-4 h-40 text-gray-600 text-2xl dark:text-gray-400">
-        <div class="text-3xl flex flex-col ">
-            <div class="justify-center flex text-3xl font-semibold text-black mb-2">Contact Us
-            </div>
-
-        </div>
+    <div class="w-full h-16 bg-white border border-gray-300 flex items-center justify-center mt-2 rounded-lg text-sm">
+      <div>
+        <span class="font-semibold text-base text-black">50,000</span>&nbsp;minutes/month
+        <br />
+        +&nbsp;<span class="font-semibold text-base text-black text-sm">4,000</span>&nbsp;per user
+      </div>
     </div>
-    <a href="/contact-us" class="flex mt-1 mb-6">
-        <div
-            class="mt-2 py-3 text-xl text-center text-white bg-green-700 hover:bg-green-800 rounded-lg w-full  inline-block">
-            Contact Us
-        </div>
-    </a>
-    <div class="px-2 flex flex-col flex-1">
-        <div class="flex pb-2">
-            <img src="./../../assets/svg/done-check.svg" alt="Checked bullet" style="height:24px;" />
-            <div class="px-2">Fully managed single-tenant satellite fleet
-            </div>
-        </div>
-        <div class="flex pb-2">
-            <img src="./../../assets/svg/done-check.svg" alt="Checked bullet" style="height:24px;" />
-            <div class="px-2">Unlimited active users</div>
-        </div>
-        <div class="flex pb-2">
-            <img src="./../../assets/svg/done-check.svg" alt="Checked bullet" style="height:24px;" />
-            <div class="px-2">XS, S, M, L, and XL satellites
-            </div>
-        </div>
-        <div class="flex pb-2">
-            <img src="./../../assets/svg/done-check.svg" alt="Checked bullet" style="height:24px;" />
-            <div class="px-2">Unlimited logs retention</div>
-        </div>
-        <div class="flex pb-2">
-            <img src="./../../assets/svg/done-check.svg" alt="Checked bullet" style="height:24px;" />
-            <div class="px-2">24/7 support</div>
-        </div>
-        <div class="flex pb-2">
-            <img src="./../../assets/svg/done-check.svg" alt="Checked bullet" style="height:24px;" />
-            <div class="px-2">Dedicated IP address</div>
-        </div>
+  </div>
 
-        <div class="flex pb-2">
-            <img src="./../../assets/svg/done-check.svg" alt="Checked bullet" style="height:24px;" />
-            <div class="pl-2">ARM satellites</div>
-        </div>
-
-        <div class="flex pb-2">
-            <img src="./../../assets/svg/done-check.svg" alt="Checked bullet" style="height:24px;" />
-            <div class="px-2">Single sign-on</div>
-        </div>
-
-        <div class="flex pb-2">
-            <img src="./../../assets/svg/done-check.svg" alt="Checked bullet" style="height:24px;" />
-            <div class="px-2"> Self-hosted satellites (coming soon)</div>
-        </div>
-
+  <a href="https://cloud.earthly.dev/login" class="flex mt-1 mb-6">
+    <div class="w-full bg-green-700 hover:bg-green-800 inline-block mt-2 py-3 rounded-lg text-center text-white text-xl">
+      Sign Up
     </div>
+  </a>
 
+  <div class="flex flex-1 flex-col px-2">
+    <div class="mb-4 text-gray-500">Everything in <b>Pro</b> plus:</div>
+
+    {% for item in site.data.tier-4-pricing %}
+      <div class="flex pb-2">
+        <img
+          style="height: 24px"
+          src="./../../assets/svg/done-check.svg"
+          alt="Checked bullet"
+        />
+        <div class="px-2 tracking-tight">{{ item }}</div>
+      </div>
+    {% endfor %}
+  </div>
 </div>
