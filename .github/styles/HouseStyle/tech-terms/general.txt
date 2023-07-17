@@ -436,8 +436,23 @@ vectorizer
 
 deduplicating
 
+subtyping
+Subtyping
+Shawshank
+deallocation
+Tokio
+mutex
+mutexes
+Mutexes
+condvar
+Condvar
+destructured
+destructures
+subtasks
+multicore
+deallocates
+deallocated
 substep
 substeps
 subproblems
-
 Familarity
