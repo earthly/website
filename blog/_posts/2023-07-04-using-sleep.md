@@ -161,11 +161,13 @@ read -t 3 -p "Hello"
 This lets you give users a chance to read important output; however, here, the script continues after a delay, with no further action on their part.
 
 ## Conclusion
-
+<!--sgpt-->
 The `sleep` command is a simple but powerful tool. With it, you can control the rhythm of your scripts. It's useful for conserving resources, running tasks regularly, and making sure things happen when the rest of the system is ready. It's also useful for making scripts friendlier.
 
 However, there's more to it than just providing an integer, so explore its capabilities in full to get the most out of it. Be aware of its alternatives, too. Those can help you in conditions where `sleep` is not the precise tool for the job. The `wait` and `read` commands are both subtly different.
 
 Bash is a powerful language and can empower Linux users to do more with their systems. If you want to learn more about `sleep`, check out [its official documentation](https://man7.org/linux/man-pages/man1/sleep.1.html), or you can read more about Bash programming in general in our [bash series](https://earthly.dev/blog/series/bash/).
+
+And if you're looking to make your scripting tasks even simpler, you might want to give [Earthly](https://www.earthly.dev/) a whirl. It's an efficient tool for creating reproducible builds, which can be a great addition to your scripting toolkit.
 
 {% include_html cta/bottom-cta.html %}

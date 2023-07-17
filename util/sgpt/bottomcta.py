@@ -36,10 +36,14 @@ def get_summary(lines: str) -> str:
 
 def add_tie_in(summary: str, conclusion : str) -> str:    
     # print(f"Summary:{summary}")
-    # print(f"Original Conclusion:{conclusion}")
-    tie_in = generate_tie_in(summary, conclusion)
+    print(f"Original Conclusion:{conclusion}")
+    betterconclusion = generate_better_conclusion(conclusion)
+    print(f"betterconclusion:{betterconclusion}")
+    tie_in = generate_tie_in(summary, betterconclusion)
     print(f"Tie In:{tie_in}")
-    combined = merge_tie_in(summary,conclusion, tie_in)
+    better_tie_in = generate_better_tie_in(summary, conclusion, tie_in)
+    print(f"Better Tie In:{better_tie_in}")
+    combined = merge_tie_in(summary,conclusion, better_tie_in)
     print(f"Combined:{combined}")
     comment = '<!--sgpt-->\n'
     return comment+ combined
@@ -208,6 +212,150 @@ def generate_tie_in(summary: str, conclusion : str) -> str:
     out = run_llm_program(score, conclusion=conclusion, examples=examples, summary=summary) 
     return out["answer"].strip()
 
+def generate_better_tie_in(summary: str, conclusion : str, tie_in : str) -> str:
+    examples = [
+    {'tie_in': dedent("""
+    For more efficient and reproducible build automation in your Linux environment, you might find [Earthly](https://www.earthly.dev/) a valuable tool to explore. 
+                      """),
+    'better': dedent("""
+    Ready to take your Linux build automation to the next level? Check out [Earthly](https://www.earthly.dev/).    
+                     """),
+    }
+]
+    score = guidance(dedent('''
+        {{#system~}}
+        Background:
+        ---
+        Here are some key things to know about Earthly and why it is used in tech:
+
+        Earthly is an open source build automation tool released in 2020. It allows you to define builds using a domain-specific language called Earthfile.
+
+        Key features of Earthly include:
+
+        Reproducible builds - Earthly containers isolate dependencies and build steps so you get consistent, repeatable builds regardless of the environment.
+        Portable builds - Earthfiles define each step so you can build on any platform that supports containers like Docker.
+        Declarative syntax - Earthfiles use a simple, declarative syntax to define steps, reducing boilerplate.
+        Built-in caching - Earthly caches steps and layers to optimize incremental builds.
+        Parallel builds - Earthly can distribute work across containers to build parts of a project in parallel.
+        Reasons developers use Earthly:
+
+        Simpler configuration than bash scripts or Makefiles.
+        Avoid dependency conflicts by isolating dependencies in containers.
+        Consistent builds across different environments (local dev, CI, production).
+        Efficient caching for faster build times.
+        Can build and integrate with any language or framework that runs in containers.
+        Integrates with CI systems like GitHub Actions.
+        Enables building complex multi-language, multi-component projects.
+        Earthly is commonly used for building, testing and shipping applications, especially those with components in different languages. It simplifies build automation for monorepos and complex projects.
+
+        Overall, Earthly is a developer-focused build tool that leverages containers to provide reproducible, portable and parallel builds for modern applications. Its declarative Earthfile syntax and built-in caching help optimize build performance.
+        Earthly helps with continuous development but not with continuous deployment and works with any programming language.  
+        Earthly helps with build software on linux, using containers. It doesn't help with every SDLC process, but it improves build times which can help other steps indirectly.
+        {{~/system}}
+        {{~#each examples}}
+        {{#user~}}
+        Tie In:
+        {{this.tie_in}}
+        ---
+        Write a shortened version of Tie In for getting readers of an article they've just finsished reading to learn about Earthly. 
+        A great call to action explains why Earthly might interest them by connecting to the topic of the article. But if the connection is not clear, a straight-forward request to look at Earthly is second best.
+        Shorter and casual is preffered and the benefits of Earthly or Description of Earthly can be changed to better match the topic at hand.
+        {{~/user}}
+        {{#assistant~}}
+        {{this.better}}
+        {{~/assistant}}    
+        {{~/each}}
+        {{#user~}}
+        Summary:
+        {{summary}}
+
+        Post Conclusion:
+        {{conclusion}} 
+
+        Tie In:
+        {{tie_in}}
+        ---
+        Write a shortened version of Tie In for getting readers of an article they've just finsished reading to learn about Earthly. 
+        A great call to action explains why Earthly might interest them by connecting to the topic of the article. But if the connection is not clear, a straight-forward request to look at Earthly is second best.
+        Shorter and casual is preffered and the benefits of Earthly or Description of Earthly can be changed to better match the topic at hand.
+        {{~/user}}
+        {{#assistant~}}
+        {{gen 'options' n=7 temperature=0.9 max_tokens=100}}
+        {{~/assistant}}
+        {{#user~}}
+        Can you please comment on the pros and cons of each of these replacements?
+
+        Shorter is better. More connected to the topic at hand is better. Natural sounding, like a casual recommendation is better.
+        Overstating things, with many adjectives, is worse. Implying Earthly does something it does not is worse. 
+        ---{{#each options}}
+        Option {{@index}}: {{this}}{{/each}}
+        ---
+        {{~/user}}
+        {{#assistant~}}
+        {{gen 'thinking' temperature=0 max_tokens=2000}}
+        {{~/assistant}}
+        {{#user~}} 
+        Please return the text of the best option, based on above thinking.
+        {{~/user}}
+        {{#assistant~}}
+        {{gen 'answer' temperature=0 max_tokens=100}}
+    {{~/assistant}}
+    '''), llm=gpt4, caching=should_cache)
+    out = run_llm_program(score, conclusion=conclusion, summary=summary, tie_in=tie_in, examples=examples) 
+    return out["answer"].strip()
+
+def generate_better_conclusion(conclusion : str) -> str:
+    examples = [
+    {'before': dedent("""
+    Docker Slim works to optimize your Docker development process, utilizing both static and dynamic analysis to generate information about your Docker resources that can be used to optimize and secure your images. It does this by disposing of miscellaneous packages and files, and streamlining your container to reduce its attack surface and vulnerabilities.
+
+    The advent of containerized applications has helped scale up the development and production process for DevOps teams. However, Docker's containerization is not perfect, and improvements can be made.
+
+    In this article, you learned about Docker Slim and how it can be used to optimize your Docker resources, utilizing the `lint`, `xray`, `profile`, and `build` Docker Slim commands to optimize your Docker images and containers.
+                      """),
+    'after': dedent("""
+        Docker Slim serves as a handy tool to streamline your Docker development process. It acts like a cleaner for your Docker images, eliminating excess and thereby enhancing their efficiency and security. While Docker has revolutionized the world of DevOps, there's always room for refinement. In this article, we've explored how Docker Slim, with its lint, xray, profile, and build commands, can significantly optimize your Docker images and containers.
+                     """),
+    }
+]
+    score = guidance(dedent('''
+        {{#system~}}
+        You are a friendly AI, helping to write coding tutorials.
+        I will give you a tutorial conclusion and you make it shorter, more casual and more to the point?
+        {{~/system}}
+        {{~#each examples}}
+        {{#user~}}
+        {{this.before}} 
+        {{~/user}}
+        {{#assistant~}}
+        {{this.after}}
+        {{~/assistant}}    
+        {{~/each}}
+        {{#user~}}
+        {{conclusion}} 
+        {{~/user}}
+        {{#assistant~}}
+        {{gen 'options' n=7 temperature=0.9 max_tokens=500}}
+        {{~/assistant}}
+        {{#user~}}
+        Can you please comment on the pros and cons of each of these replacements?
+        ---{{#each options}}
+        Option {{@index}}: {{this}}{{/each}}
+        ---
+        {{~/user}}
+        {{#assistant~}}
+        {{gen 'thinking' temperature=0 max_tokens=2000}}
+        {{~/assistant}}
+        {{#user~}} 
+        Please return the text of the best option, based on above thinking.
+        {{~/user}}
+        {{#assistant~}}
+        {{gen 'answer' temperature=0 max_tokens=500}}
+    {{~/assistant}}
+    '''), llm=gpt4, caching=should_cache)
+    out = run_llm_program(score, conclusion=conclusion, examples=examples) 
+    return out["answer"].strip()
+
 def run_llm_program(program, *args, **kwargs):
     with open("log.txt", "a") as f, contextlib.redirect_stdout(
         f
@@ -224,6 +372,15 @@ def add_comment_to_section(text_after_last_heading: str, excerpt : str) -> str:
         text_after_last_heading = add_tie_in(excerpt, text_after_last_heading)
     return text_after_last_heading
 
+def skip(fulltext : str, conclusion: str) -> bool:
+    if 'Earthly' in conclusion:
+        print("Skipping bc Earthly CTA exists")
+        return True
+    if "funnel:" in fulltext or "News" in fulltext or " Write Outline" in fulltext or "topcta: false" in fulltext:
+        print("Skipping bc Funnel artile already")
+        return True
+    return False
+
 def update_text_after_last_heading(filename: str) -> Optional[None]:
     with open(filename, 'r') as f:
         content = f.read()
@@ -236,7 +393,7 @@ def update_text_after_last_heading(filename: str) -> Optional[None]:
             # Get all lines after the last heading
             text_after_last_heading = '\n'.join(lines[i+1:])
             # If 'Earthly' is in the text, skip the file
-            if 'Earthly' in text_after_last_heading:
+            if skip(content, text_after_last_heading):
                 return
             # Separate lines starting with '{%' (includes)
             include_lines = [line for line in text_after_last_heading.split('\n') if line.strip().startswith('{%')]
