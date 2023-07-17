@@ -25,17 +25,22 @@ def get_summary(lines: str) -> str:
     {{lines}} 
     ---
     Can you summarize this blog post?
+    I need a two sentence  summary that will make people want to read it that is casual in tone.
     {{~/user}}
     {{#assistant~}}
-    {{gen 'answer' temperature=0 max_tokens=500}}
+    {{gen 'answer' temperature=0 max_tokens=100}}
     {{~/assistant}}
     '''), llm=gpt4, caching=should_cache)
     out = run_llm_program(score, lines=lines)
     return out["answer"].strip() 
 
 def add_tie_in(summary: str, conclusion : str) -> str:    
+    # print(f"Summary:{summary}")
+    # print(f"Original Conclusion:{conclusion}")
     tie_in = generate_tie_in(summary, conclusion)
-    combined = merge_tie_in(conclusion, summary, tie_in)
+    print(f"Tie In:{tie_in}")
+    combined = merge_tie_in(summary,conclusion, tie_in)
+    print(f"Combined:{combined}")
     return combined
 
 def merge_tie_in(summary: str, conclusion : str, tie_in : str) -> str:
@@ -180,7 +185,7 @@ def generate_tie_in(summary: str, conclusion : str) -> str:
         Post Conclusion:
         {{this.conclusion}} 
         ---
-        Can write a short sentence with a markdown link to Earthly that will explain the reader of this article might be interested in Earthly?
+        Can write a short sentence with a markdown link to Earthly that will explain to the reader of this article why they might be interested in Earthly?
         {{~/user}}
         {{#assistant~}}
         {{this.result}}
@@ -193,14 +198,14 @@ def generate_tie_in(summary: str, conclusion : str) -> str:
         Post Conclusion:
         {{conclusion}} 
         ---
-        Can write a short sentence with a markdown link to Earthly that will explain the reader of this article might be interested in Earthly?
+        Can write a short sentence with a markdown link to Earthly that will explain to the reader of this article why they might be interested in Earthly?
         {{~/user}}
         {{#assistant~}}
-        {{gen 'answer' temperature=0 max_tokens=500}}
+        {{gen 'answer' temperature=0 max_tokens=100}}
         {{~/assistant}}
     '''), llm=gpt4, caching=should_cache)
     out = run_llm_program(score, conclusion=conclusion, examples=examples, summary=summary) 
-    return conclusion + out["answer"].strip()
+    return out["answer"].strip()
 
 def run_llm_program(program, *args, **kwargs):
     with open("log.txt", "a") as f, contextlib.redirect_stdout(
@@ -239,10 +244,10 @@ def update_text_after_last_heading(filename: str) -> Optional[None]:
             lines[i+1:] = text_after_last_heading.split('\n')
             break
             
-    updated_content = '\n'.join(lines)
+    # updated_content = '\n'.join(lines)
 
-    with open(filename, 'w') as f:
-        f.write(updated_content)
+    # with open(filename, 'w') as f:
+    #     f.write(updated_content)
 
 
 def main():
