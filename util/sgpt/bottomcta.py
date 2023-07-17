@@ -9,6 +9,9 @@ import guidance
 
 gpt4 = guidance.llms.OpenAI("gpt-4")
 
+# should_cache = True
+should_cache = False
+
 def get_summary(lines: str) -> str:
     score = guidance(dedent('''
     {{#system~}}
@@ -26,9 +29,8 @@ def get_summary(lines: str) -> str:
     {{#assistant~}}
     {{gen 'answer' temperature=0 max_tokens=500}}
     {{~/assistant}}
-    '''), llm=gpt4, silent=True)
-    with open(os.devnull, 'w') as f, contextlib.redirect_stdout(f):
-        out = score(lines=lines) 
+    '''), llm=gpt4, caching=should_cache)
+    out = run_llm_program(score, lines=lines)
     return out["answer"].strip() 
 
 def add_tie_in(summary: str, conclusion : str) -> str:    
@@ -123,9 +125,8 @@ def merge_tie_in(summary: str, conclusion : str, tie_in : str) -> str:
         {{#assistant~}}
         {{gen 'answer' temperature=0 max_tokens=2000}}
         {{~/assistant}}
-    '''), llm=gpt4, silent=True)
-    with open(os.devnull, 'w') as f, contextlib.redirect_stdout(f):
-        out = score(conclusion=conclusion, tie_in=tie_in, examples=examples, summary=summary) 
+    '''), llm=gpt4, caching=should_cache)
+    out = run_llm_program(score, conclusion=conclusion, tie_in=tie_in, examples=examples, summary=summary)
     return out["answer"].strip()
 
 def generate_tie_in(summary: str, conclusion : str) -> str:
@@ -197,10 +198,15 @@ def generate_tie_in(summary: str, conclusion : str) -> str:
         {{#assistant~}}
         {{gen 'answer' temperature=0 max_tokens=500}}
         {{~/assistant}}
-    '''), llm=gpt4, silent=True)
-    with open(os.devnull, 'w') as f, contextlib.redirect_stdout(f):
-        out = score(conclusion=conclusion, examples=examples, summary=summary) 
+    '''), llm=gpt4, caching=should_cache)
+    out = run_llm_program(score, conclusion=conclusion, examples=examples, summary=summary) 
     return conclusion + out["answer"].strip()
+
+def run_llm_program(program, *args, **kwargs):
+    with open("log.txt", "a") as f, contextlib.redirect_stdout(
+        f
+    ), contextlib.redirect_stderr(f):
+        return program(*args, **kwargs)
 
 def add_comment_to_section(text_after_last_heading: str, excerpt : str) -> str:
     comment = '<!--sgpt-->\n'
