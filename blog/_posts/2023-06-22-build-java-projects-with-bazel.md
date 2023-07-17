@@ -411,9 +411,7 @@ jar -tf bazel-bin/Salutations_deploy.jar
 This should return a list of all the classes packed into the `.jar`. The list is too long to share here, but you can either run this `.jar` on its own or you can use the executable, depending on the project's needs.
 
 ## Conclusion
-
-This tutorial explored how to build Java projects with Bazel by showing you how to configure your workspace and builds and how to run a basic application.
-
-While it's only a starting point, you should now you an idea of how Bazel can optimize your workflows and large project builds. To learn more about Bazel's more advanced features, its [official user guides](https://bazel.build/docs) contains a plethora of helpful tutorials and other resources to help you along.
+<!--sgpt-->
+We've walked through the basics of building Java projects with Bazel in this tutorial. Now you should have a rough idea of how Bazel can improve your workflows and big project builds. If you enjoyed learning about Bazel, then you'll love exploring [Earthly](https://www.earthly.dev/) - another nifty build automation tool for your tech stack. Check it out! Eager for more? Dive into Bazel's [official user guides](https://bazel.build/docs) for more advanced stuff. Happy coding!
 
 {% include_html cta/bottom-cta.html %}

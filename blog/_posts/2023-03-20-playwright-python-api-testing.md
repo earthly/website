@@ -450,9 +450,9 @@ allure serve allure_result_folder
 As seen, the tests are all passing now.
 
 ## Conclusion
+<!--sgpt-->
+In this piece, we've gone through how to use Playwright with Python for API testing, specifically on GitHub APIs. This powerful approach will enhance your app quality, ensuring new features don't mess up the existing ones. Plus, thanks to generated allure reports, you'll have full visibility of your API test results, including any failures. 
 
-In this article, you learned how to implement API testing using Playwright with Python for testing [GitHub](/blog/ci-comparison) APIs. Having API tests helps improve the quality of your software app and ensure new features keep the existing functionalities of your app intact. You also generated an allure report that stores the result of API tests so that you are aware of the results of the API tests and the reasons why the tests failed.
-
-With hands-on written tests you practiced through the article, you can apply Playwright using Python for your next [API testing](/blog/continuous-testing-in-devops) project.
+If you've enjoyed learning about API testing with Playwright and Python, why not take your build process up a notch? Check out [Earthly](https://www.earthly.dev/), a tool that can further streamline your development workflow. Feel ready to apply what you've learned here in Python and Playwright for your next API testing gig, and explore how Earthly can enhance your build process!
 
 {% include_html cta/bottom-cta.html %}

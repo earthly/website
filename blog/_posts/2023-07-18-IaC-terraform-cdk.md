@@ -661,12 +661,11 @@ Testing and continuous integration are crucial to ensure that your software func
 That's not the case anymore. With CDKTF, you can use your language's testing framework. Additionally, CDKTF provides an [assertion library](https://developer.hashicorp.com/terraform/cdktf/test/unit-testscloud%20testing) to test for the synth process.
 
 ## Conclusion
+<!--sgpt-->
+CDKTF offers a cool way to build Infrastructure as Code (IaC) using your favorite programming languages. It generates a JSON configuration that Terraform can use instead of the usual HCL. This article showed you basics of using CDKTF. While it may seem unnecessary for simple tasks, its true power shines in complex Terraform modules. 
 
-CDKTF provides a programmatic way to create IaC. With it, you can use the programming languages of your choice to write complex and maintainable IaC. The CDKTF process acts before the classic Terraform plan/apply process and generates a JSON configuration that can later be used by Terraform instead of the usual HCL.
+To dig deeper into CDKTF, check out these HashiCorp articles about [integrating existing Terraform modules with CDKTF](https://developer.hashicorp.com/terraform/cdktf/concepts/modules) and [constructs building blocks](https://developer.hashicorp.com/terraform/cdktf/concepts/constructs). 
 
-In this article, you learned how to use CDKTF to provision infrastructure. But you barely scratched the surface. In this example, there's no reason to choose CDKTF over HCL. However, you will experience HCL limitations when building complex modules or creating an abstraction on top of Terraform.
-
-To learn more about CDKTF, check out this HashiCorp article that discusses [integrating existing Terraform modules with CDKTF](https://developer.hashicorp.com/terraform/cdktf/concepts/modules) or this article about
-[constructs building blocks](https://developer.hashicorp.com/terraform/cdktf/concepts/constructs).
+And if you're looking to streamline your build automation process further, you might want to give [Earthly](https://www.earthly.dev/) a try! It's a powerful tool that can complement your use of CDKTF by providing a consistent and efficient build environment.
 
 {% include_html cta/bottom-cta.html %}

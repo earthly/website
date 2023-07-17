@@ -193,9 +193,7 @@ If any changes have been made since the last time you built the project, the deb
 The [`launch.vs.json`](https://learn.microsoft.com/cpp/build/configure-cmake-debugging-sessions?view=msvc-170&WT.mc_id=AZ-MVP-5004737#launchvsjson-reference) file can be used to customize your CMake debugging session. This file can be used to input any [environment variables](/blog/bash-variables) or command line arguments that you might want to pass into the program during [debugging](/blog/printf-debugging).
 
 ## Conclusion
-
-In this article, you learned that CMake is a tool that can help with [build automation](/blog/introducing-earthly-build-automation-for-the-container-era), testing, packaging, and installation of software. It can be integrated into several IDE solutions, allowing developers the option of using their favorite IDE while taking advantage of CMake for their build solution.
-
-CMake gives you the flexibility to ensure your application can be built and executed on any platform. While [Cmake](/blog/using-cmake) might not be the right tool for everyone, for the right developer, team, or project, it can be a powerful solution.
+<!--sgpt-->
+CMake is a versatile tool that aids in build automation, testing, packaging, and software installation. It integrates with many IDEs, giving developers the flexibility to stick with their preferred IDE. It ensures your application's compatibility across any platform. While CMake isn't for everyone, it can be a robust solution for the right developer or project. If you're looking to optimize your builds further, you might want to give [Earthly](https://www.earthly.dev/) a shot for its efficient caching and straightforward syntax.
 
 {% include_html cta/bottom-cta.html %}

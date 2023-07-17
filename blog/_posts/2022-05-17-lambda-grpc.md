@@ -97,16 +97,13 @@ The whole problem is getting an HTTP/2 connection to the lambda. The integration
 However, this endpoint can be used to make GRPCWeb requests. GRPCWeb is a different wire protocol than GRPC and does work over HTTP/1.1 and is usable from a JavaScript http/1.1 based client.
 
 ## Why No HTTP 2?
+<!--sgpt-->
+HTTP/2 and AWS's API Gateway don't play well when it comes to lambdas. Although you can connect via HTTP/2, the API Gateway sticks to HTTP/1.1 for lambda calls which is a bummer for GRPC, as it's bound with HTTP/2. You'd need to switch to GRPC-Web to work over HTTP/1.1, but its client support is limited. 
 
-The reason why none of this works, is that although you can make an HTTP/2 connection with AWS's API Gateway, the API Gateway won't call the lambda over HTTP/2, it will use HTTP/1.1. It seems like this should be easy to overcome, but my understanding is that GRPC is heavily integrated with HTTP/2.
+A GRPC service on an AWS Lambda might not be feasible unless more GRPCWeb clients emerge, or you're okay with JavaScript or not using Lambdas. If you find a workaround, hit me up! In the meantime, if you're struggling with build automation in your serverless architecture, [Earthly](https://www.earthly.dev/) could make things easier. Check it out!
 
-What you'd need is a different wire protocol than GRPC if you wanted to work over HTTP/1.1 and this protocol does exists. It's called GRPC-Web. Unfortunately, the GRPC-Web clients seems to be limited to JavaScript and TypeScript. There is a Golang client but the ["IMPLEMENTATION IS LACKING"](https://github.com/ktr0731/grpc-web-go-client). So, unless I missed something, its not possible to run a GRPC service on an AWS Lambda. GRPCWeb is a good compromise if you clients are going to written in JavaScript or if more GRPCWeb clients start appearing. Otherwise you're probably going to end up with REST or not using Lambdas.
-
-If you found a way to get around this limitation or I missed something then please let me know. My email is below.
-
-More Background:
-
-- [Relevant Stack Overflow Question](https://stackoverflow.com/questions/67281831/)
+For more information, you can check out these resources:
+- [Stack Overflow Question](https://stackoverflow.com/questions/67281831/)
 - [GRPC Web Explained](https://grpc.io/blog/state-of-grpc-web/)
 - [Envoy GRPC Bridge](https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/grpc_http1_bridge_filter)
 

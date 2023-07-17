@@ -471,7 +471,9 @@ Throughout the article we have covered how to create ABCs and the application of
 - ABCs allow for type checking, by defining  common methods and attributes, ABCs allow for type checking at runtime.
 
 ## Conclusion
+<!--sgpt-->
+In this piece, we've covered the ins and outs of abstract base classes (ABCs) - what they are, how they differ from regular classes, and their relation to interfaces in object-oriented programming. We walked you through creating and using ABCs while sharing some practical examples. We also shed light on how ABCs in Python shape your code, making it more reusable, modular, consistent, and organized. 
 
-In this article, we have explained what abstract base classes are and how they differ from regular classes. We have also discussed the concept of abstraction in programming and how ABCs relate to interfaces in object-oriented programming. We provided step-by-step instructions on how to create and use ABCs and showed examples of how they can be used in real-world scenarios. Finally, we discussed the benefits of using ABCs in Python programming, including promoting code reuse and modularity, enforcing consistent behavior, and improving code organization.
+Just as ABCs simplify and streamline your Python code, [Earthly](https://www.earthly.dev/) can simplify your build process. If you've enjoyed exploring Python's ABCs, you'll love how Earthly can make your build process more efficient and manageable. Give it a glance!
 
 {% include_html cta/bottom-cta.html %}

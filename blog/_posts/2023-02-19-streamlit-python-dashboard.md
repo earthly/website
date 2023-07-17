@@ -353,7 +353,9 @@ with col2:
 </div>
 
 ## Conclusion
+<!--sgpt-->
+Look at you, you've just aced the basics of Streamlit and discovered how to crank up your data visualization with interactive Plotly charts. Why not take it a step further and design a data dashboard with your favorite dataset? Go on, give it a shot! 
 
-In this tutorial, we have learned about Streamlit: what it is, and why we should use it, and the basics of data visualization with Streamlit. You've also learned how to create interactive visualizations by programmatically adding interactivity to a Plotly chart. As a next step, you can try building a data dashboard for a dataset of your choice.
+And if you're building data apps with Streamlit, consider boosting your build process with [Earthly](https://www.earthly.dev/). It's a tool that could significantly enhance your development workflow. Check it out!
 
 {% include_html cta/bottom-cta.html %}

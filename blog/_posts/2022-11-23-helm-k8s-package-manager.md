@@ -547,12 +547,11 @@ http://104-200-26-90-ip.linodeusercontent.com
 </div>
 
 ## Conclusion
+<!--sgpt-->
+That's Helm for you - a real lifesaver for Kubernetes. You've learned how to deploy a MongoDB database, come up with a mongo-express service for a UI, and use Helm to deploy an Nginx Ingress controller, all without the headaches of manual configuration. 
 
-I hope you understand how Helm is a helpful tool when working with Kubernetes. In this tutorial, you've learned how to:
+If you've enjoyed the simplicity and consistency Helm brings to Kubernetes, you might also love [Earthly](https://www.earthly.dev/), a tool designed to make build automation even simpler and more consistent. It's definitely worth checking out.
 
-- Deploy a MongoDB database.
-- Create a mongo-express service to provide a UI for the MongoDB database, and
-- Deploy an Nginx [Ingress](/blog/k8s-networking) controller to handle browser requests to view the Mongo-Express UI over the internet using Helm, without configuring it all by yourself.
-As a next step, you can create and publish your own Helm chart.See the [Helm documentation](https://helm.sh/docs/chart_template_guide/getting_started/) to get started.
+Next up, try creating and publishing your own Helm chart. Check out the [Helm documentation](https://helm.sh/docs/chart_template_guide/getting_started/) to dive in.
 
 {% include_html cta/bottom-cta.html %}

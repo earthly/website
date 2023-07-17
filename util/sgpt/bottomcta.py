@@ -328,7 +328,8 @@ def generate_better_conclusion(conclusion : str) -> str:
     score = guidance(dedent('''
         {{#system~}}
         You are a friendly AI, helping to write coding tutorials.
-        I will give you a tutorial conclusion and you make it shorter, more casual and more to the point?
+        I will give you a tutorial conclusion and you make it shorter, and more to the point. The tone should be informative and not formal.
+
         A conclusion goes at the end of an article, so should have the perspective of having read the article and wanting a brief summary and next steps.
         {{~/system}}
         {{~#each examples}}
@@ -347,7 +348,7 @@ def generate_better_conclusion(conclusion : str) -> str:
         {{~/assistant}}
         {{#user~}}
         Can you please comment on the pros and cons of each of these replacements? 
-        How do they work as tutorial conclusions?
+        How do they work as tutorial conclusions? Are they consise, informative and natural sounding without being too formal or flippant?
         ---{{#each options}}
         Option {{@index}}: {{this}}{{/each}}
         ---
@@ -405,14 +406,16 @@ def update_text_after_last_heading(filename: str) -> Optional[None]:
             # If 'Earthly' is in the text, skip the file
             if skip(content, text_after_last_heading):
                 return
-            # Separate lines starting with '{%' (includes)
+            # Separate lines starting with '{%' (includes) and lines starting with '[^' (footnotes)
             include_lines = [line for line in text_after_last_heading.split('\n') if line.strip().startswith('{%')]
-            # Remove include lines from the text after the last heading
-            text_after_last_heading = '\n'.join(line for line in text_after_last_heading.split('\n') if not line.strip().startswith('{%'))
+            footnote_lines = [line for line in text_after_last_heading.split('\n') if line.strip().startswith('[^')]
+            # Remove include lines and footnote lines from the text after the last heading
+            text_after_last_heading = '\n'.join(line for line in text_after_last_heading.split('\n') if not (line.strip().startswith('{%') or line.strip().startswith('[^')))
+
             # Add the comment to the beginning of the section
             text_after_last_heading = add_comment_to_section(text_after_last_heading, excerpt)
-            # Add the include lines back
-            text_after_last_heading += '\n\n' + '\n'.join(include_lines)
+            # Add the include lines and footnote lines back
+            text_after_last_heading += '\n\n' + '\n'.join(include_lines + footnote_lines)
             lines[i+1:] = text_after_last_heading.split('\n')
             break
 
@@ -420,6 +423,7 @@ def update_text_after_last_heading(filename: str) -> Optional[None]:
 
     with open(filename, 'w') as f:
         f.write(updated_content)
+
 
 
 def main():
@@ -446,3 +450,5 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+

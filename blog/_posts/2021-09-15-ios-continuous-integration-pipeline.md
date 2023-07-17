@@ -387,8 +387,8 @@ jobs:
 
 ## Conclusion
 
-CI/CD pipelines are an integral part of an efficient development lifecycle, but it takes time and resources to maintain the infrastructure, required software, and workflows/pipelines. GitHub Actions simplify these tasks so you can focus on your workflows.
+CI/CD pipelines are key to smooth development, but they need some upkeep. Enter GitHub Actions, which eases this workload so you can zero in on your workflows. We hope our tutorial sets you up for creating the perfect workflow for your project, even if it's not an exact fit. 
 
-You should have a good understanding of how to set up a CI/CD workflow. This tutorial might not be suitable for your current project, but it's a good starting point to create the one that will work best for you.
+If you've enjoyed automating with fastlane and GitHub Actions, then you might love exploring [Earthly](https://www.earthly.dev/) for even more streamlined build automation. It's another tool that can further enhance your development process.
 
-The code used in this example can be found on [GitHub](ttps://github.com/tzatzosm/MyWallet).
+The example code for our tutorial is accessible on [GitHub](https://github.com/tzatzosm/MyWallet). Happy coding!

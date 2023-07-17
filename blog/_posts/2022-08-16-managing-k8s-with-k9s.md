@@ -345,9 +345,9 @@ Press `ctrl + d` to delete a resource or `ctrl+k` if you want to kill a pod:
 </div>
 
 ## Conclusion
+<!--sgpt-->
+In this tutorial, we nailed the basics of installing K9s on Linux and managing your cluster with it. Kubernetes is getting friendlier for newbies, thanks to out-of-tree plugins and tools like K9s. If you're just starting on Kubernetes and find Kubectl a bit tough, give K9s a shot - it's definitely a game-changer! 
 
-In this tutorial, you have learned how to install K9s on Linux, get information about your cluster, and manage your cluster using K9s.
-
-As Kubernetes third-party tools and out-tree plugins increase and simplify container orchestration procedures, Kubernetes will become easier and more friendly to beginners who don't know what containers are. K9s has definitely proved to be a third-party tool that eliminates Kubernetes pain points at a specific level. It is also a good tool to recommend to Kubernetes beginners who find managing resources using Kubectl difficult.
+Speaking of game-changers, if you're loving K9s for Kubernetes management, you might also dig [Earthly](https://www.earthly.dev/) for simplifying your build automation. It's another tool that can make your development process smoother and more efficient. Check it out!
 
 {% include_html cta/bottom-cta.html %}

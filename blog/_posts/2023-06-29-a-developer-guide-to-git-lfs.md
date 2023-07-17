@@ -433,12 +433,11 @@ This command sets the [`concurrenttransfers`](https://manpages.ubuntu.com/manpag
 The `--global` flag applies the option globally to all Git repositories on the user's system. If you just want to set the parameter for a single repository, drop the `--global` flag and run the command within the repository directory.
 
 ## Conclusion
+<!--sgpt-->
+Git LFS is a game changer for managing big files in Git repos. Instead of swallowing up storage with massive files, LFS swaps them for text pointers on a separate server, speeding up operations and saving space. You've learned how to set up Git LFS, add files to it, and the perks it provides. This tool's versatility makes it appealing across fields like software dev, game dev, and data science. 
 
-In conclusion, Git LFS is crucial for managing large files in Git repositories. It replaces large files with text pointers stored separately in a Git LFS server. This is different from how Git usually tracks files, and it provides numerous benefits, including improved performance, faster cloning and pulling of repositories, and more efficient use of storage space. Git LFS is used in various fields, such as software development, game development, and data science, to manage large datasets, media files, machine learning models, game assets, and builds.
+While you're optimizing your workflow, why not take a look at your build process too? [Earthly](https://www.earthly.dev/) can help streamline and simplify your builds, making your development process even more efficient. 
 
-In this tutorial, you learned how to configure Git LFS, how Git LFS works, how to add files to Git LFS, and how it differs from Git in storing large files. You also learn how the advanced features
-of Git LFS, such as batch operations, file locking, custom storage, and concurrent transfers, make it a versatile tool for managing large files. By using Git LFS in a sample project, you can see firsthand how it simplifies storing and managing large datasets in a Git repository.
-
-To learn more about Git LFS, visit the [official documentation](https://docs.github.com/en/repositories/working-with-files/managing-large-files/installing-git-large-file-storage).
+To dig deeper into Git LFS, the [official docs](https://docs.github.com/en/repositories/working-with-files/managing-large-files/installing-git-large-file-storage) are worth a read.
 
 {% include_html cta/bottom-cta.html %}

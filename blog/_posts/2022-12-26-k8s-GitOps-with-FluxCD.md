@@ -598,8 +598,10 @@ FluxCD also supports deployments with [Helm](https://fluxcd.io/flux/guides/helmr
 
 ## Conclusion
 
-In this guide, you learned how Flux allows you to easily automate Kubernetes manifest deployment; you can push commits to watched repositories and have them automatically applied to your cluster, following GitOps practices.
+You've now got a good grip on how Flux can automate your Kubernetes manifest deployment by tracking updates in your repos, following the GitOps logic. And you aren't just limited to GitHub; it works with GitLab repositories too. 
 
-In addition to GitHub, Flux can also retrieve and bootstrap Git repositories hosted on GitLab. For more information, visit the [official docs](https://fluxcd.io/docs/cmd/flux_bootstrap_gitlab/). Another popular GitOps tool is [ArgoCD](https://earthly.dev/blog/argocd-kubernetes/). Check out this [comprehensive guide](https://earthly.dev/blog/flux-vs-argo-cd/) to see how Flux and ArgoCD compare.
+If you're looking to further optimize your build automation, you might want to give [Earthly](https://www.earthly.dev/) a look! It's a powerful tool that can complement your use of Flux and other GitOps tools.
+
+Curious about more? Explore [ArgoCD](https://earthly.dev/blog/argocd-kubernetes/), another cool GitOps tool. Want to see how they stack up? Here's a [killer comparison guide](https://earthly.dev/blog/flux-vs-argo-cd/).
 
 {% include_html cta/bottom-cta.html %}

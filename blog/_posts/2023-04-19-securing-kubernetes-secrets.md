@@ -528,7 +528,9 @@ For securing ETCD, you need to limit access to ETCD by granting access only to t
 See the following [guide](https://github.com/justmeandopensource/kubernetes/blob/master/kubeadm-external-etcd/2%20simple-cluster-tls.md) to achieve this and also, the Kubernetes [docs](https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/) for more information.
 
 ## Conclusion
+<!--sgpt-->
+In this tutorial, we've covered Kubernetes secrets security. You now have the tools to safeguard your sensitive info, including enabling data encryption, setting up role-based access control, and securing ETCD. Now it's your turn to keep your secrets under wraps. You've totally got this! 
 
-In this tutorial, you've learned all about securing secrets in Kubernetes, and you now know how to protect your sensitive information. You learned and understood the importance of enabling [encryption](/blog/encrypting-data-with-ssh-keys-and-golang) at rest, implementing role-based access control, and securing ETCD to ensure that your secrets remain safe. So go ahead and take control of your secrets, and keep them secure with confidence.
+After mastering the security of your Kubernetes secrets, why not take the next step in streamlining your builds? Give [Earthly](https://www.earthly.dev/) a try. It could be the perfect tool to further enhance your development process.
 
 {% include_html cta/bottom-cta.html %}

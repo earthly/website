@@ -295,10 +295,12 @@ Last but not least, you can also opt for keeping multiple Bash sessions open in 
 But be careful! If you end up with dozens of open Bash sessions, consider using `pushd` and `popd` instead.
 
 ## Conclusion
+<!--sgpt-->
+`pushd` and `popd` can be real game-changers for working in Bash or any other compatible shell. Understand the stack concept and you'll zip through your directory trees like a breeze. 
 
-`pushd` and `popd` are powerful and versatile commands that can enhance your workflow when working in Bash or any shell that supports these commands. Once you get comfortable with the stack concept and the various ways of manipulating the directory stack, you can navigate more freely through the deepest of your directory trees.
+But why stop there? If you've just aced directory navigation, you can level up even more with your dev workflow using [Earthly](https://www.earthly.dev/) for efficient build automation. It's definitely worth checking out!
 
-If you're trying to get the hang of `pushd`, `popd`, and `dirs` commands and their various options, help is only a few keystrokes away. All three commands come with a concise help text:
+Getting stuck? These commands got you covered with handy help texts:
 
 ~~~
 $ pushd --help
@@ -306,6 +308,6 @@ $ popd --help
 $ dirs --help
 ~~~
 
-To learn more about Bash, check out our [Bash series](https://earthly.dev/blog/series/bash/).
+For more on Bash, do check out our [Bash series](https://earthly.dev/blog/series/bash/). Catch you there!
 
 {% include_html cta/bottom-cta.html %}

@@ -481,11 +481,11 @@ $ kubectl -n db exec db  -- curl backend-svc.backend ##denied
 ~~~
 
 ## Conclusion
+<!--sgpt-->
+In a nutshell, using network policies can beef up your Kubernetes workload security, but their implementation needs careful thought and testing. This post walked you through the basics of Kubernetes network policies and key concepts like Ingress, Egress, and CNI. Plus, you learned the ropes on setting up multiple policies for different needs. 
 
-By using network policies, organizations can ensure that their Kubernetes workloads are isolated, protected, and compliant with industry standards and best practices. However, implementing network policies can be complex and requires careful planning and testing. Overall, network policies are an essential component of any Kubernetes security strategy and should be carefully considered and implemented to ensure the safety and integrity of your cluster.
+If you're looking to further optimize your Kubernetes builds, you might want to give [Earthly](https://www.earthly.dev/) a spin. It's a tool that can help streamline your build process and make it more efficient.
 
-In this article, you have learned about network policies in Kubernetes and general network concepts like Ingress, Egress, and CNI. In addition, you've also learned how to apply multiple network policies with different conditions to fulfil certain network requirements.
-
-You can continue learning about other features available in Kubernetes, such as [Security Context in Kubernetes](https://earthly.dev/blog/k8s-cluster-security/) and [Mutual TLS over Kubernetes Nginx Ingress Controller](https://earthly.dev/blog/mutual-tls-kubernetes-nginx-ingress-controller/).
+For some extra knowledge boost, have a look at other Kubernetes features like [Security Context](https://earthly.dev/blog/k8s-cluster-security/) and [Mutual TLS over Kubernetes Nginx Ingress Controller](https://earthly.dev/blog/mutual-tls-kubernetes-nginx-ingress-controller/).
 
 {% include_html cta/bottom-cta.html %}

@@ -374,7 +374,9 @@ In summary, decorators can be used for performing type checking of function para
 You have seen multiple uses of decorators above. So it can be summarised that decorators are a powerful feature in Python that can be used for runtime modification of a function or class, allowing you to add or modify behavior without changing their source code.
 
 ## Conclusions
+<!--sgpt-->
+Closures and decorators in Python let you write flexible and potent code. Closures remember values from their outer scope even when that's done running. Decorators let you tweak functions or classes without messing with their source code. Put closures and decorators together for even more magic, boosting your code's functionality and reusability. 
 
-Closures and decorators are programming concepts in Python that enable developers to write more flexible and powerful code. Closures enable you to create functions that can retain access to the values in their outer scope, even after the execution of the outer function has finished. On the other hand, decorators allow you to modify the behavior of functions or classes without altering their source code. By combining closures and decorators, you can create even more powerful and flexible functions and classes that can further enhance the functionality and reusability of your code.
+If you're looking to further streamline your Python app builds, you might want to give [Earthly](https://www.earthly.dev/) a whirl! This tool can help optimize your build process, making it even more efficient and effective.
 
 {% include_html cta/bottom-cta.html %}
