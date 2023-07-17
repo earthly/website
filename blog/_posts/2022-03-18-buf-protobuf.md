@@ -172,9 +172,9 @@ plugins:
 Because of the nested nature of yaml, I find this much easier to understand than a lengthy `protoc` call. So then instead of `protoc` I call `buf generate`, and all the generated code is produced.
 
 ## Earthly CI Changes
-<!--sgpt-->
-To make my build process super consistent, I've packed all my build steps into an `Earthfile`. So, instead of using `buf lint`, `buf breaking`, or `buf generate` in CI or locally, I simply call `earthly +proto`. It's a more straightforward and predictable protocol buffer generation method. Plus, with `buf lint` and `buf breaking`, I can dodge some gRPC pitfalls. Everything gets neatly bundled in a reusable build script, ensuring no lint violations or breaking changes sneak into my main branch. 
 
-And this is just the tip of the iceberg with `buf` - it's super customizable and has some awesome features like schema registry and remote generation. It's been a positive change for sure. If you're looking for a smarter build process, give [Earthly](https://www.earthly.dev/) a go. Your Protobuf workflow will thank you.
+To make my build process super consistent, I've packed all my build steps into an `Earthfile`. So, instead of using `buf lint`, `buf breaking`, or `buf generate` in CI or locally, I simply call `earthly +proto`. It's a more straightforward and predictable protocol buffer generation method. Plus, with `buf lint` and `buf breaking`, I can dodge some gRPC pitfalls. Everything gets neatly bundled in a reusable build script, ensuring no lint violations or breaking changes sneak into my main branch. If you're looking for a smarter build process, give [Earthly](https://www.earthly.dev/) a go
+
+And this is just the tip of the iceberg with `buf` - it's super customizable and has some awesome features like schema registry and remote generation. It's been a positive change for sure. Your Protobuf workflow will thank you.
 
 {% include_html cta/bottom-cta.html %}

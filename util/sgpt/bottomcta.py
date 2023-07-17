@@ -308,14 +308,20 @@ def generate_better_tie_in(summary: str, conclusion : str, tie_in : str) -> str:
 def generate_better_conclusion(conclusion : str) -> str:
     examples = [
     {'before': dedent("""
-    Docker Slim works to optimize your Docker development process, utilizing both static and dynamic analysis to generate information about your Docker resources that can be used to optimize and secure your images. It does this by disposing of miscellaneous packages and files, and streamlining your container to reduce its attack surface and vulnerabilities.
+        Docker Slim works to optimize your Docker development process, utilizing both static and dynamic analysis to generate information about your Docker resources that can be used to optimize and secure your images. It does this by disposing of miscellaneous packages and files, and streamlining your container to reduce its attack surface and vulnerabilities.
 
-    The advent of containerized applications has helped scale up the development and production process for DevOps teams. However, Docker's containerization is not perfect, and improvements can be made.
+        The advent of containerized applications has helped scale up the development and production process for DevOps teams. However, Docker's containerization is not perfect, and improvements can be made.
 
-    In this article, you learned about Docker Slim and how it can be used to optimize your Docker resources, utilizing the `lint`, `xray`, `profile`, and `build` Docker Slim commands to optimize your Docker images and containers.
+        In this article, you learned about Docker Slim and how it can be used to optimize your Docker resources, utilizing the `lint`, `xray`, `profile`, and `build` Docker Slim commands to optimize your Docker images and containers.
                       """),
     'after': dedent("""
         Docker Slim serves as a handy tool to streamline your Docker development process. It acts like a cleaner for your Docker images, eliminating excess and thereby enhancing their efficiency and security. While Docker has revolutionized the world of DevOps, there's always room for refinement. In this article, we've explored how Docker Slim, with its lint, xray, profile, and build commands, can significantly optimize your Docker images and containers.
+                     """),
+    },{'before': dedent("""
+        Blogs are a great way to keep up on what is new and exciting in the Scala community, and I hope this list of some of my favorites is helpful. If you want to get notified about new Scala blog posts, [The Scala Times](http://scalatimes.com/) is a great option. It's how I found many of these articles.
+                      """),
+    'after': dedent("""
+        Blogs are a great way to keep up on what is new and exciting in the Scala community. I'm glad I could share a few of my favorite Scala resources with you all. For regular Scala updates, check out [The Scala Times](http://scalatimes.com/).It's how I found many of these articles. Take care.
                      """),
     }
 ]
@@ -323,6 +329,7 @@ def generate_better_conclusion(conclusion : str) -> str:
         {{#system~}}
         You are a friendly AI, helping to write coding tutorials.
         I will give you a tutorial conclusion and you make it shorter, more casual and more to the point?
+        A conclusion goes at the end of an article, so should have the perspective of having read the article and wanting a brief summary and next steps.
         {{~/system}}
         {{~#each examples}}
         {{#user~}}
@@ -339,7 +346,8 @@ def generate_better_conclusion(conclusion : str) -> str:
         {{gen 'options' n=7 temperature=0.9 max_tokens=500}}
         {{~/assistant}}
         {{#user~}}
-        Can you please comment on the pros and cons of each of these replacements?
+        Can you please comment on the pros and cons of each of these replacements? 
+        How do they work as tutorial conclusions?
         ---{{#each options}}
         Option {{@index}}: {{this}}{{/each}}
         ---
@@ -349,6 +357,7 @@ def generate_better_conclusion(conclusion : str) -> str:
         {{~/assistant}}
         {{#user~}} 
         Please return the text of the best option, based on above thinking.
+        Return just the text, not its option number.
         {{~/user}}
         {{#assistant~}}
         {{gen 'answer' temperature=0 max_tokens=500}}
@@ -377,7 +386,7 @@ def skip(fulltext : str, conclusion: str) -> bool:
     if 'Earthly' in conclusion:
         print("Skipping bc Earthly CTA exists")
         return True
-    if "funnel:" in fulltext or "News" in fulltext or " Write Outline" in fulltext or "topcta: false" in fulltext:
+    if "funnel:" in fulltext or "News" in fulltext or " Write Outline" in fulltext or "bottomcta: false" in fulltext:
         print("Skipping bc Funnel artile already")
         return True
     return False

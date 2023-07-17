@@ -86,11 +86,89 @@ This doesn't mean that everyone should always be able to see everyone in every m
 People find zoom meetings fatiguing, and I get that. The world contains too many meetings. But I'm shocked when I talk to someone on a remote team that never uses video. If you're not seeing your teammate's face when you describe a problem, who knows what you are missing[^2].
 
 ## The SQL Solution
-<!--sgpt-->
-Option 5: Isabella's sixth sense wrecked my SQL assumptions - that the results of my select statement should be concrete. Why? I was inserting sorted records but selecting without any order. Plus, I overlooked that I was removing duplicate keys from my report table. It turns out that inserting data in order can fill in the invisible gaps left by deleted rows, disrupting the insertion order. So my row wasn't missing, it just wasn't sorted right. Once I added `order by`, everything fell into place. 
 
-Here's a simple Postgres reproduction for you. We have summary data tables. I sort the data and put it in a report table, remove any duplicates, and return the results. But without `order by`, the results aren't guaranteed to be in the insertion order. So remember to make sure you're sorting your data correctly! 
-
-And if you're dealing with complex builds, you might want to try [Earthly](https://www.earthly.dev/) for a smoother experience. It's a tool that can help streamline your build process and make it more efficient.
-
+<div class="align-left">
  {% picture grid {{site.pimages}}{{page.slug}}/confused4.png --picture --img width="260px" --alt {{ Confused Women }} %}
+<figcaption>"the max message size in the queue<br/> is now 2 gigabytes"</figcaption>
+</div>
+
+So about the SQL. I got `the look` from Isabella because a select statement like I was describing should be deterministic. Isabella's spidey-sense told her either I was wrong about results changing or I was misusing SQL. It turned out to be the latter.  
+
+You see, I was inserting records sorted and selecting them out without an explicit order. Also, my simple recounting of the report's logic (and my code snippet above) was missing a critical detail -- one I had forgotten about[^3]. Sometimes I had to delete duplicate keys from the report table. Guess what happens when you insert things in-order into a table with deleted rows? Its implementation-specific, but sometimes, the invisible spaces left by the deleted rows will be filled in by the inserted data, undoing the insertion order. My row wasn't missing. My data just wasn't sorted correctly. Once I added in an `order by` everything worked.
+
+</div>
+<!-- markdownlint-disable MD046 -->
+
+[^1]: [Like everything](/blog/thought-leaders/), they work well in some contexts and not in others. If they aren't helpful, drop them and try something else.
+[^2]: I've run this idea by people I know who work remotely and never turn their camera on. Not everyone is convinced, and I find that genuinely confusing. Maybe they have a lot of useless meetings? Perhaps the local culture is against cameras? Or maybe they always know what they are doing, and I never do?
+[^3]: Here is a minimal reproduction in Postgres.
+      <div class="narrow-code">
+
+      I have some tables with summary data in it:
+    
+
+      ``` sql
+      -- simplified tables
+      CREATE TABLE Report (name varchar(13));
+      CREATE TABLE input1(name varchar(13), val bigint);
+      CREATE TABLE input2(name varchar(13), val bigint);
+
+      -- which, per user, had summary data something like this
+      INSERT INTO input1
+      VALUES
+          ('one', 1),
+          ('two', 2),
+          ('three', 3),
+          ('three', 3);
+
+      INSERT INTO input2
+      VALUES
+          ('four', 4),
+          ('five', 5),
+          ('six', 6);
+      ```      
+     
+     I sort it and put it in the report table then remove any duplicates:
+
+      ``` sql
+      -- sort and insert first partition
+      INSERT INTO Report
+      SELECT name FROM input1 
+      ORDER BY val;
+      
+      -- delete duplicate records 
+      DELETE FROM Report where name in ( 
+        select name
+        from Report 
+        group by name 
+        having count(*) > 1
+      );
+
+      -- sort and insert second partition
+      INSERT INTO Report
+      SELECT name FROM input2 
+      ORDER BY val;
+      ```
+
+      Then I return the N results as part of the report:
+
+      ``` sql
+      -- show Top N report
+      SELECT * FROM Report limit 3;
+      one
+      two
+      four
+      ```
+
+      The actual problem was more complex, involved abusing row_number() and was in SQL SERVER, but the solution is still the same: use an `order by`:
+
+    ``` sql
+      -- show Top N report
+      SELECT * FROM Report Order By name limit 3;
+      one
+      two
+      three
+      ```      
+      SQL makes no guarantees about tables being in insertion order. 
+      <!-- markdownlint-enable MD046 -->
+      </div>
