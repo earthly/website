@@ -11,6 +11,8 @@ internal-links:
 excerpt: |
     Learn about the different options for continuous integration with Bitbucket, including using Jenkins, integrating with cloud CI/CD tools like AWS, and utilizing Bitbucket's native CI/CD service, Bitbucket Pipelines. Discover the benefits and costs of each option to determine the best fit for your project.
 ---
+**We're [Earthly](https://earthly.dev/). We make building software simpler and quicker with containerization. If you're looking for a tool to optimize your CI workflows, Earthly could be a great open-source option for you. [Check it out](/).**
+
 How do you rapidly deliver new features without delivering bugs at the same rate? By running automatic builds and tests on all of your code before it gets into a release. And that's exactly what continuous integration is.
 
 To run these automated code checks, you'll need to keep your code in a repository. There are a lot of options, but if you're already using [Jira](https://www.atlassian.com/software/jira), then [Bitbucket](https://bitbucket.org/product) is a natural choice. Beyond good integration with Jira, Bitbucket offers integrations with a lot of build systems.

@@ -7,6 +7,8 @@ author: Adam
 excerpt: |
     Discover the frustrations and challenges faced by software developers in the world of "bullshit work." From pointless projects to busy work and executive pet projects, this article sheds light on the absurd tasks that developers often encounter in their careers.
 ---
+**We're [Earthly](https://earthly.dev/). We make building software simpler and faster using containerization. [Give it a whirl](/).**
+
 I was frying a couple of dozen walnut crunch when I first got in trouble at Tim Horton's.
 
 Tim Horton's is a donut and coffee place, and I worked there as a baker assistant around 2002, when I was in university.

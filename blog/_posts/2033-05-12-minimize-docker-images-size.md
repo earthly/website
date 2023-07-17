@@ -14,6 +14,7 @@ internal-links:
 excerpt: |
     Learn the best strategies and tips for minimizing Docker images and reducing their size in this informative article. Discover how to choose the right base images, use multi-stage builds, and leverage tools like DockerSlim to create smaller and more efficient Docker images.
 ---
+**We're [Earthly](https://earthly.dev/). We make building software simpler and faster with containerization. If you're deploying container images, Earthly can be a game-changer for building them reliably and quickly. [Give us a peek](/).**
 
 Docker images allow you to easily deploy your applications to different infrastructures such as [Kubernetes](/blog/automate-micsvcs-in-k8s) clusters, Cloud platforms and CI/CD pipelines. The size of these docker images matters when deploying and managing your applications. A large image imposes restrictions that necessitate enlarging storage capacity, resulting in expenses. The size of your application's Docker image impacts critical aspects such as performance, scalability, portability, and the [potential for security vulnerabilities](https://developers.redhat.com/blog/2016/03/09/more-about-docker-images-size) to arise.
 

@@ -13,6 +13,7 @@ internal-links:
 excerpt: |
     Learn how to automate the process of deploying Docker containers to AWS ECS using Terraform. This tutorial provides step-by-step instructions and code examples to help you set up the necessary infrastructure and launch your containers on AWS.
 ---
+**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. This article is about IO and file reading in bash. If you are looking for to move beyond bash scripts for building and deploying software then [check us out](/).**
 
 [Elastic Container Service](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/Welcome.html) (ECS) is a container orchestration service from AWS. It allows you to launch and manage container workloads. Recently, we published a [Deploying Docker Containers with ECS](https://earthly.dev/blog/deploy-dockercontainers-with-ecs/) guide that allows you to provision infrastructure on [ECS](/blog/how-to-setup-and-use-amazons-elastic-container-registry) . However, these steps are implemented manually.
 

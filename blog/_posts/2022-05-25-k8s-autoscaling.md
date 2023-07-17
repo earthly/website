@@ -11,6 +11,7 @@ internal-links:
 excerpt: |
     
 ---
+**We're [Earthly](https://earthly.dev/). We simplify and speed up software builds with containerization. While you're managing resources with Kubernetes autoscaling, we're here to make the build process efficient. [Check us out](/).**
 
 There are many reasons engineers look to [Kubernetes](https://kubernetes.io/) when running their workloads, like support for containers and orchestration. Another major reason for choosing Kubernetes, though, is being able to automatically scale the services found within a cluster.
 

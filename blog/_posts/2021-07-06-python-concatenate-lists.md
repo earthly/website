@@ -16,6 +16,8 @@ excerpt: |
 ---
 <iframe width="560" height="315" src="https://www.youtube.com/embed/Ko6OESfhxbw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
+**We're [Earthly](https://earthly.dev/). We make building software simpler and faster using containerization. If you're into Python, Earthly can optimize your build process. [Check it out](/).**
+
 <div class="narrow-code">
 
 ## Concatenate Two Lists in Python
