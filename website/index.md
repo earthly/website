@@ -1,8 +1,6 @@
 ---
 title: Earthly
 layout: default
-banner: <b>Earthly Satellites is now GA!</b> Remote build runners that are fast, super simple to use, and work seamlessly with any CI. <a href="https://earthly.dev/blog/earthly-satellites-ga/" onclick="bannerLinkClick()">Learn more</a>.
-mobileBanner: Earthly Satellites is now GA! <a href="https://earthly.dev/blog/earthly-satellites-ga/" onclick="bannerLinkClick()">Learn more</a>.
 ---
 
 {% include home/layout.html template='home/v2/hero.html' %}
