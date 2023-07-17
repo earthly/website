@@ -11,6 +11,7 @@ internal-links:
   - planning
   - project-management
 ---
+**We're [Earthly](https://earthly.dev/). We simplify software builds using containers, making your software projects more streamlined and efficient - just like city planning. [Take a peek](/).**
 
 Like many others, 2020 encouraged me to find some new interests and hobbies to fill the time spent at home. At risk of sounding terribly boring, one of my newfound interests is that of city planning.
 

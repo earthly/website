@@ -16,6 +16,8 @@ excerpt: |
 ---
 <iframe width="560" height="315" src="https://www.youtube.com/embed/z4uPHjxYyPs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
+**We're [Earthly](https://earthly.dev/). Ever struggled with complex Makefile variables? That's where we come in. We simplify your build processes for quicker, efficient results. [Check us out](/).**
+
 Since its appearance in 1976, [Make](https://www.make.com/en) has been helping developers automate complex processes for compiling code, building executables, and generating documentation.
 
 Like other programming languages, Make lets you define and use variables that facilitate [reusability](/blog/achieving-repeatability) of values.

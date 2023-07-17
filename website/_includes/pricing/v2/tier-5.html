@@ -1,0 +1,33 @@
+<div class="bg-white border-2 border-gray-300 px-8 py-5 rounded-lg shadow text-gray-900">
+  <div class="md:flex items-center">
+    <div>
+      <div class="font-semibold mb-1 text-3xl">Enterprise</div>
+      <div class="font-light text-gray-500 sm:text-lg dark:text-gray-400">
+        Contact us if you are interested in our Enterprise plan.
+      </div>
+    </div>
+
+    <a href="/contact-us" class="flex mt-2 md:ml-16 md:mt-0">
+      <div class="w-60 bg-green-700 hover:bg-green-800 inline-block py-3 rounded-lg text-center text-white text-xl">
+        Contact Us
+      </div>
+    </a>
+  </div>
+
+  <div class="grid lg:flex grid-cols-1 justify-between mt-6">
+    {% for item in site.data.tier-5-pricing %}
+      <div>
+        {% for point in item.points %}
+          <div class="flex pb-2">
+            <img
+              style="height: 24px"
+              src="./../../assets/svg/done-check.svg"
+              alt="Checked bullet"
+            />
+            <div class="px-2 tracking-tight">{{ point }}</div>
+          </div>
+        {% endfor %}
+      </div>
+    {% endfor %}
+  </div>
+</div>
