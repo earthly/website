@@ -83,14 +83,12 @@ To learn how to use the `argparse` module, you will start by building an applica
 Let's start by importing the `argparse` module; doing this will provide the various methods you will use for handling and parsing command line arguments.
 
 ~~~{.python caption="todo_cli.py"}
-# todo_cli.py
 import argparse
 ~~~
 
 Go ahead and define a `main` function that will be the entry point of your application. The function will define an empty list named `tasks`; it will hold tasks as they get added from the command line.
 
 ~~~{.python caption="todo_cli.py"}
-# todo_cli.py
 def main():
     tasks = []
     parser = argparse.ArgumentParser()
@@ -227,7 +225,6 @@ To create subcommands in `argparse` you use subparsers; you first create a subpa
 Creating the main subparser object can take an optional parameter `dest`. This parameter is used to specify the name of the attribute where a selected subcommand will be stored. In this case, set it to "command", this attribute is very beneficial in an application with different subcommands. Instead of checking all the command-line arguments, you directly access the attribute and determine which subcommand you executed.
 
 ~~~{.python caption="todo_2_cli.py"}
-# todo_2_cli.py
 import argparse
 
 parser = argparse.ArgumentParser()
@@ -239,8 +236,6 @@ Using the main subparser object, you can now create subcommands for the applicat
 The `add` subcommand takes in an argument describing the task you want to add to the list. You will add the argument to the `add` subcommand using the `add_parser.add_argument("task",metavar="task")`, and doing that defines a positional argument named "task"; hence it has to be supplied on the command-line after the `add` subcommand. Notice that it also has a `metavar` parameter with the value `task`; this specifies the name displayed for the argument in help and error messages.
 
 ~~~{.python caption="todo_2_cli.py"}
-# todo_2_cli.py
-
 add_parser = sub_parsers.add_parser("add")
 add_parser.add_argument("task", metavar="task") 
 
@@ -250,8 +245,6 @@ view_parser = sub_parsers.add_parser("view")
 Creating the two subcommands extends the functionality of the application; however, to view the tasks, the application has to persist them in some way, and this is not possible with the list since it is recreated for each run of the program, so you have to persist the tasks somewhere you can retrieve them. For simplicity, you will persist them in a JSON file. Therefore, apart from `argparse`, you will also need to import the `json` module; This will provide the functions required to work with a JSON file. You will also create a constant (`TASKS_JSON` ) that will hold the JSON file's path.
 
 ~~~{.python caption="todo_2_cli.py"}
-#todo_2_cli.py
-
 import json
 
 TASKS_FILE = 'tasks.json'
@@ -260,7 +253,6 @@ TASKS_FILE = 'tasks.json'
 To save tasks to the file, create the `save_task` function (it will take a tasks parameter). The function uses the `open` function to open the specified file ('TASKS_FILE') in write mode ('w'). Then, the `json.dump` function is used to write the tasks to the file in JSON format.
 
 ~~~{.python caption="todo_2_cli.py"}
-# todo_2_cli.py
 def save_task(tasks):
     with open(TASKS_FILE, 'w') as file:
             json.dump(tasks, file)
@@ -269,7 +261,6 @@ def save_task(tasks):
 To read the tasks from the file `read_tasks` function will open the `TASKS_FILE`  in read mode ('r') using the `open` function. It reads the file's contents using `json.load` function, which deserializes the JSON data from the file into a Python list. A `FileNotFoundError` will be raised if the file does not exist and an empty list is returned.
 
 ~~~{.python caption="todo_2_cli.py"}
-# todo_2_cli.py
 def read_tasks():
     try:
         with open(TASKS_FILE, 'r') as file:
@@ -367,8 +358,6 @@ To add a help message to a subcommand, add a `help` parameter with a string of t
 Let's see how by updating the application the following sections:
 
 ~~~{.python caption="todo_2_cli.py"}
-#todo_2_cli.py
-
 # add task command
 add_parser = sub_parsers.add_parser("add", \
 help="Add a new task to the todo list")
@@ -440,8 +429,6 @@ Let's enhance the application to add choices to the `add` subcommand:
 You will also need to change the task structure for these changes to work, so update the `add_task` function by adding a priority key-value pair to the `new_task` dictionary.
 
 ~~~{.python caption="todo_2_cli.py"}
-#todo_2_cli.py
-
 def add_task(args):
     priority = args.priority
     task_id = len(tasks) + 1
@@ -459,7 +446,6 @@ To add an optional argument to the `add` subcommand, use the `add_argument` meth
 The optional arguments will also take a choice value indicating the priority level.
 
 ~~~{.python caption="todo_2_cli.py"}
-# todo_2_cli.py
 def main():
     # add task command
     add_parser = sub_parsers.add_parser("add", 
@@ -492,8 +478,6 @@ Update your application in the following code sections to add `mark` and `remove
 For the `mark` subcommand to work, start by updating the `new_task` dictionary; this will add a `done` entry that will hold the status of the task.
 
 ~~~{.python caption="todo_2_cli.py"}
-# todo_2_cli.py
-
 def add_task(args):
 
     new_task = {
@@ -508,7 +492,6 @@ Then create the `mark_task_done` function, it will be called when a user invokes
 Once you have the `tasks` in a list, you can iterate through them and check if a task with an id equal to the one the user passed exists. If such a task exists, then you update the `done` status by marking it `True`, and if a task with a matching id is not found, you return a "Task not found" message to the user.
 
 ~~~{.python caption="todo_2_cli.py"}
-# todo_2_cli.py
 def mark_task_done(args):
     tasks = read_tasks()
     task_id = args.task_id
@@ -525,7 +508,6 @@ def mark_task_done(args):
 To remove a task, create the `remove_task` function. Regarding functionality, it is similar to the `mark_task_done`; the only difference is that once you find the task with an id as supplied by the user. You will use the `remove` function of the list object by passing it the `task`. This will consequently remove the task, and after that, you will call the `save_tasks` function to save the new list.
 
 ~~~{.python caption="todo_2_cli.py"}
-# todo_2_cli.py
 def remove_task(args):
     tasks = read_tasks()
 
@@ -544,7 +526,6 @@ def remove_task(args):
 Adding the `mark` subcommand also calls for an update of the `view_tasks` function by slightly changing the print function format string to accommodate `Priority` and `Done` statuses.
 
 ~~~{.python caption="todo_2_cli.py"}
-# todo_2_cli.py
 def view_tasks():
     tasks = read_tasks()
     print("ToDo List:")
@@ -556,7 +537,6 @@ def view_tasks():
 Update the `main` function by ensuring that each new subcommand has its own sub-parser object (`mark_parser`, `remove_parser`) created using `sub_parsers.add_parser()`. The respective arguments (`task_id` in this case) are added to the sub-parser objects to capture the necessary input with the  `type` specified as `int`, clearly indicating that the value expected for the `task_id` is an integer. This update also includes the `help` string for each subcommand.
 
 ~~~{.python caption="todo_2_cli.py"}
-# todo_2_cli.py
 def main():
     # Mark task as done command
     mark_parser = sub_parsers.add_parser("done", \
@@ -603,15 +583,12 @@ Update your code in the following places to add sorting, filtering, and setting 
 Let's start by importing `datetime` to enable you to work with dates that you will use to indicate a todo `due_date`.
 
 ~~~{.python caption="todo_2_cli.py"}
-#todo_2_cli.py
-
 from datetime import datetime
 ~~~
 
 Update the `add_task` function to include a variable to get a due date; also update the `new_task` dictionary to add a `due_date` key-value pair.
 
 ~~~{.python caption="todo_2_cli.py"}
-# todo_2_cli.py
 def add_task(args):
     
     due_date = args.due_date
@@ -630,7 +607,6 @@ def add_task(args):
 To sort and filter tasks, update the `view_tasks` function since they are optional commands, the `if args.sort:` checks if the user provided the `--sort` option. If the option is present, the code block inside the `if` statement is executed.
 
 ~~~{.python caption="todo_2_cli.py"}
-
 def view_tasks(args):
     tasks = read_tasks()
 
@@ -652,8 +628,6 @@ Inside the `if` code block, `tasks.sort(key=lambda task: task['due_date'])` sort
 By providing the lambda function as the key parameter, the sort method can sort the tasks based on their 'due_date' values. This will result in ‌tasks being rearranged in ascending order based on their due dates.
 
 ~~~{.python caption="todo_2_cli.py"}
-# todo_2_cli.py
-
 if args.sort:
             tasks.sort(key=lambda task: task['due_date'])
 ~~~
@@ -663,8 +637,6 @@ The `view_tasks` function will also filter tasks. If `args.filter` is not specif
 Overall, this code snippet allows filtering the tasks based on the `args.filter` value. Only ‌tasks with a matching 'priority' value will be displayed if a filter value is provided. If no filter value is provided, all tasks will be displayed.
 
 ~~~{.python caption="todo_2_cli.py"}
-# todo_2_cli.py
-
 print("ToDo List:")
 for task in tasks:
     if args.filter:
@@ -677,8 +649,6 @@ for task in tasks:
 Update the `print_task` function to print the tasks in a good format.
 
 ~~~{.python caption="todo_2_cli.py"}
-# todo_2_cli.py
-
 def print_task(task):
         status= "Done" if task['done'] else "Not Done"
         due_date=task['due_date'] if task['due_date'] else "N/A"
@@ -697,8 +667,6 @@ In the `main()` function, you will add the following options:
 **Filtering**: Add a `--filter` option to the `view` subcommand, which takes values from any of the following choices: "low", "medium", and "high". Only tasks with specified choices will be displayed when this option is specified.
 
 ~~~{.python caption="todo_2_cli.py"}
-# todo_2_cli.py
-
 def main():
     #...
     
@@ -791,26 +759,9 @@ Those new features give the user more choice and versatility in the ToDo applica
 
 ## Conclusion
 
-In this tutorial, we covered the development of a ToDo CLI application using the `argparse` module. Here are the main points we discussed:
+In this article, we covered the essential aspects of using `argparse` in Python CLI applications. We began by introducing `argparse` and its basic usage, including defining and parsing command-line arguments. Then, we built a ToDo CLI application, gradually adding features such as task storage, advanced arguments, error handling, and help messages.
 
-**Introduction to `argparse`**: We learned about the `argparse` module, which allows us to easily define and parse command-line arguments for our CLI application.
-
-**Basic usage**: We explored the `basic` usage of `argparse`, including defining positional and optional arguments, parsing command-line arguments, and accessing the parsed values.
-
-**Building the ToDo CLI**: We built a ToDo CLI application step by step, starting with defining the basic commands and their arguments, such as adding tasks and viewing tasks.
-
-**Storing tasks**: We added functionality to store the tasks in a file using JSON serialization. This allowed us to persist the tasks between different runs of the application.
-**Advanced command-line arguments**: We introduced advanced argument concepts, such as marking tasks as done and removing tasks. We implemented the parsing and handling of these advanced arguments using `argparse`.
-
-**Error handling and help messages**: We discussed error handling and how to customize error messages for missing or invalid arguments. We also explored how to display help messages to guide users.
-
-**Choices in command-line arguments**: We learned about the concept of choices in command-line arguments and how to enforce valid values using `argparse`. We applied this to the priority argument for tasks.
-
-**Enhancing the ToDo CLI**: We enhanced the ToDo CLI by adding features like sorting tasks, filtering tasks, and setting due dates. We used `argparse` to define and handle these new features and options.
-
-Throughout the tutorial, we provided code examples and explanations to help you understand the concepts and implement the features in your CLI applications.
-
-By following this tutorial, you should have understood how to develop command-line applications in Python using `argparse` and how to add various features and options to make your CLI applications more powerful and user-friendly.
+We explored advanced argument concepts like choices, enabling us to enforce valid values for arguments. By leveraging `argparse`, we enhanced our ToDo CLI with features like sorting, such as marking tasks as done and removing tasks.
 
 You can find the code examples used in this tutorial [in this GitHub repository](https://github.com/KabakiAntony/cli_with_argparse_tutorial).
 
