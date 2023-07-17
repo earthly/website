@@ -14,17 +14,17 @@ internal-links:
  - extensible software with go
 ---
 
-[Go](https://go.dev/), also known as Golang, is a simple and efficient programming language that's been adopted by many tech companies, including Uber, Twitch, and Microsoft. Similar to other programming languages such as Java and C++, Go supports interfaces, which provide a powerful mechanism for ensuring that class objects inherit a defined set of properties.
+Go, also known as Golang, is a simple and efficient programming language that's been adopted by many tech companies, including Uber, Twitch, and Microsoft. Similar to other programming languages such as Java and C++, Go supports interfaces, which provide a powerful mechanism for ensuring that class objects inherit a defined set of properties.
 
 In this article, you'll learn how to use interfaces in Go to design extensible, modular software. Moreover, you'll learn how to use interfaces to promote code reusability, flexible architecture, and an improved development experience.
 
-> **Please note:** Familiarity with object-oriented programming concepts is a prerequisite to walking through the article.
+**Please note:** Familiarity with object-oriented programming concepts is a prerequisite to walking through the article.
 
 ## Why You Need Interfaces
 
 ![Why]({{site.images}}{{page.slug}}/why.png)\
 
-Interfaces have played a fundamental role in programming since the need to abstract the definition of a function from the implementation arose in [object-oriented programming](https://www.geeksforgeeks.org/introduction-of-object-oriented-programming/). A great example of why you need interfaces can be found in Eric Freeman and Elisabeth Robson's book [*Head First Design Patterns*](https://a.co/d/bCjS9z5). In it, Freeman and Robson mention a scenario in which a software engineer, Joe, creates a `Duck` superclass that can `quack()`, `swim()`, and `display()`, something all ducks can do. A `MallardDuck` and a `RedheadDuck` class can, therefore, be created that inherits the `Duck` superclass. Although these two classes must have the `quack()`, `swim()`, and `display()` functions since they inherit the `Duck` superclass, they can customize how these functions work according to their class.
+A great example of why you need interfaces can be found in Eric Freeman and Elisabeth Robson's book [*Head First Design Patterns*](https://a.co/d/bCjS9z5). In it, Freeman and Robson mention a scenario in which a software engineer, Joe, creates a `Duck` superclass that can `quack()`, `swim()`, and `display()`, something all ducks can do. A `MallardDuck` and a `RedheadDuck` class can, therefore, be created that inherits the `Duck` superclass. Although these two classes must have the `quack()`, `swim()`, and `display()` functions since they inherit the `Duck` superclass, they can customize how these functions work according to their class.
 
 However, when Joe is asked by his boss to add a `fly()` function, he quickly realizes that he needs to customize his whole stack since not all ducks can fly.
 
@@ -49,12 +49,12 @@ type (
 )
 
 func requiresBath(d dog) bool {
-fmt.Printf("%s, needs a bath!", d.name)
-return true
+    fmt.Printf("%s, needs a bath!", d.name)
+    return true
 }
 
 func (d dog) walk() {
-fmt.Println("The dog is walking")
+    fmt.Println("The dog is walking")
 }
 
 func (c cat) walk() {
@@ -70,7 +70,7 @@ As you can see, while Go's type-safety system is helpful in most cases, it can s
 
 ~~~{.go caption="animals.go"}
 type walkable interface { 
-walk() 
+    walk() 
 }
 ~~~
 
@@ -102,7 +102,7 @@ Since both `cat` and `dog` have their own `walk()` methods, you can assume that 
 
 ~~~{.go caption="animals.go"}
 func requiresBath(i walkable) bool {
-return true
+    return true
 }
 ~~~
 
@@ -143,10 +143,10 @@ Suppose you're building a system that needs to store data. There are several dif
 
 ~~~{.go caption="storage.go"}
 type Storage interface { 
-ListValues(prefix string) ([]byte, error)
-GetValue(path string) (byte, error)
-PutValue(path string, value []byte) error
-DeleteValue(path string) error
+    ListValues(prefix string) ([]byte, error)
+    GetValue(path string) (byte, error)
+    PutValue(path string, value []byte) error
+    DeleteValue(path string) error
 }
 ~~~
 
@@ -173,7 +173,7 @@ However, when you actually call that function, you can pass a specific struct th
 ~~~{.go caption="storage.go"}
 func main() {
     db := &database{}
-           values := make([]byte, 0)
+    values := make([]byte, 0)
     saveToStorage(db, "path", values)
 }
 ~~~
@@ -186,7 +186,7 @@ Creating a logger interface is a common use case for interfaces in Go. A logger 
 
 ~~~{.go caption="logger.go"}
 type logger interface { 
-log(message string) 
+    log(message string) 
 }
 ~~~
 
