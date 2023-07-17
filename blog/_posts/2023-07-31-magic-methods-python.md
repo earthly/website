@@ -328,6 +328,7 @@ Output:
 ~~~
 
 <div class="notice">
+
 If you try to assign a new song that doesn't have an index in the songs attribute using `__setitem__`, it may not work as expected. By default, if the index doesn't exist, `__setitem__` will raise an `IndexError` indicating that the specified index is not found.
 </div>
 

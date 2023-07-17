@@ -13,8 +13,7 @@ funnel: 2
 excerpt: |
     Learn about the different monorepo build tools available, including Bazel, Pants, Nx, and Earthly. Discover their features, programming language support, learning curves, remote caching and execution capabilities, build introspection abilities, and versatility. Find the right tool for your organization's monorepo needs.
 ---
-
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about Monorepo build tools. Earthly is particularly useful if you're working with a Monorepo [check us out](/).**
+**We're [Earthly](https://earthly.dev/) and this article is about Monorepo build tools. Earthly is particularly useful if you're working with a Monorepo. [check us out](/).**
 
 <!-- markdownlint-disable-file MD001 -->
 <!-- vale HouseStyle.OxfordComma = NO -->
@@ -39,10 +38,8 @@ When choosing a monorepo build tool, there are a few different features that you
 
 - **Programming Language Support**: Make sure that the build tool you choose supports the programming languages you want to use now and in the future. Some build tools only support specific languages and that is fine as long as your monorepo will only ever have those languages in it.
 - **Learning Curve**: The learning difficulty of each tool varies. Some of them require a deep understanding of the underlying technologies and processes, making it difficult to get up and running quickly. Others are more user-friendly, with intuitive interfaces that allow users to quickly understand how to use the tool. Each tool's complexity should be considered when deciding which one best suits your needs.
-- **Caching**: An ideal build tool should never run the same build twice. To be more specific, with local caching, a machine should never run the same build step with the same inputs a second time, and with a remote cache, this should be true across an organization or build cluster.
-
-  Make sure that the build tool you choose has a good caching solution.
-Remote Execution: Remote execution can improve build times by allowing you to build the codebase on a remote server. And distributed execution is a further improvement where the build scheduler can distribute build steps across more than one machine. Make sure that the build tool you choose supports remote execution.
+- **Caching**: An ideal build tool should never run the same build twice. To be more specific, with local caching, a machine should never run the same build step with the same inputs a second time, and with a remote cache, this should be true across an organization or build cluster. Make sure that the build tool you choose has a good caching solution.
+- **Remote Execution:** Remote execution can improve build times by allowing you to build the codebase on a remote server. And distributed execution is a further improvement where the build scheduler can distribute build steps across more than one machine. Make sure that the build tool you choose supports remote execution.
 - **Build Introspection**: Build introspection refers to the ability of a build tool to provide insight into the processes and dependencies involved in building software. This allows engineers to view and query the build graph and ask questions like what part of the build is slowest or what projects depend upon this change.
 - **Versatility**: Build scripts are often used for things besides just purely producing artifacts. Most large organizations have at least one build pipeline with requirements that fall outside of the standard build and test stages. How are dependencies installed? How are integration tests run? Is there a staging database to restore or a production deploy to trigger? Make sure you consider how you will solve problems beyond producing an artifact from some source code.
 
