@@ -203,8 +203,9 @@ ReplicaSet requires ongoing communication with the Kubernetes API and Pods in or
 - After the containers are created, kubelet sends the request to the API server that the Pods are created.
 
 ## Conclusion
+<!--sgpt-->
+In this tutorial, we've covered how to build Pods using ReplicaSets in Kubernetes. ReplicaSets boost the fault tolerance of Pods, which is why they're commonly used instead of creating Pods directly. While ReplicationControllers are outmoded, you might still come across them. Also, remember other Controllers like StatefulSet for persistent storage apps and DaemonSet for running pod copies across the cluster. These insights are handy for building scalable, fault-tolerant systems. 
 
-In this tutorial, you have learned how to create Pods with ReplicaSets. Additionally, you gained knowledge of ReplicaSets' internal workings.
-Pods are rarely formed directly in a real-world context. ReplicaSets are employed in the creation of Pods because they give the Pods fault tolerance. It's crucial to understand ReplicaSets in Kubernetes. Kubernetes also has ReplicationControllers which are not generally used these days but you can still find them in some places. Kubernetes also has a variety of other Controllers like StatefulSet which are useful when working with applications that require persistent storage and DaemonSet to run a copy of the pod in the cluster. These are good to know when building a fault-tolerant and scalable system.
+As you scale your Kubernetes apps, you might find that [Earthly](https://www.earthly.dev/) could be your next step for efficient and reproducible builds. Check it out!
 
 {% include_html cta/bottom-cta.html %}

@@ -8,6 +8,7 @@ import yaml
 import guidance
 
 gpt4 = guidance.llms.OpenAI("gpt-4")
+gpt35turbo = guidance.llms.OpenAI("gpt-3.5-turbo-16k")
 
 # should_cache = True
 should_cache = False
@@ -30,7 +31,7 @@ def get_summary(lines: str) -> str:
     {{#assistant~}}
     {{gen 'answer' temperature=0 max_tokens=100}}
     {{~/assistant}}
-    '''), llm=gpt4, caching=should_cache)
+    '''), llm=gpt35turbo, caching=should_cache)
     out = run_llm_program(score, lines=lines)
     return out["answer"].strip() 
 
