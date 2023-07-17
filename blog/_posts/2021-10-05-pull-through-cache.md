@@ -12,6 +12,7 @@ internal-links:
 excerpt: |
     Learn how to save money and improve your developer workflow by setting up a pull-through cache for Docker Hub. This article provides step-by-step instructions and tips for configuring and hosting your own cache, helping you avoid rate limits and reduce costs.
 ---
+**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about setting up a pull-through cache for Docker Hub. Earthly is a powerful build tool that can greatly enhance your developer workflow when working with Docker containers. [Check us out](/).**
 
 On November 20, 2020 Docker began [rate limiting](https://docs.docker.com/docker-hub/download-rate-limit/) requests to its popular Docker Hub registry. This change applied to all users, anonymous or free. When this change was applied, developer workflows around the world screeched to a halt. Many were just fine after simply logging in (the rate limit is higher for logged-in accounts), but others found themselves needing to pay for a [service account](https://docs.docker.com/docker-hub/service-accounts/). Depending on usage, service accounts don't come cheap.
 

@@ -1,7 +1,7 @@
 ---
 title: "Mining Meaningful Methods from Large Language Models"
 categories:
-  - Tutorials
+  - Articles
 toc: true
 author: Adam
 
@@ -14,7 +14,11 @@ excerpt: |
   Learn strategies for working with LLMs, such managing context, framing the problem, thinking outloud and more in this newbs's guide to applying large language models.
 ---
 
-**We're [Earthly](https://earthly.dev/). We simplify building software with containerization. This article shares lessons from a POC Earthfile generator project. Curious about getting better build times by combining ideas from Makefile and Dockerfile? [Check us out](https://earthly.dev/).**
+**We're [Earthly](https://earthly.dev/). We simplify building software with containerization. This article shares lessons from a Proof-of-Concept [Earthfile generator](https://github.com/earthly/build-transpose/) project.**
+
+<!-- Curious about getting better build times by combining ideas from Makefile and Dockerfile? [Check us out](https://earthly.dev/). -->
+
+## A Newbs's Guide to Applying Large Language Models
 
 A month ago, the whole Earthly team was gathered in a board room at the Hilton Garden Inn in Minnesota. After a fun day of boating and then curling, we were getting down to planning. Our CEO was saying that one of the biggest adoption hurdles with Earthly is the time investment customers need to spend to change over their builds. The investment quickly pays off, but it's also not zero, and so represents an onboarding challenge.
 
@@ -25,6 +29,11 @@ This is hard because while I find Earthfiles easier to write than GHA workflows,
 But there was a plan for how to close this gap. The theory went that GPT-4 could fill in the details. Or at least that volunteer could find out if that was possible. And that poor volunteer, did I mention that was me?
 
 So my task was to build a translator using an LLM. It's not entirely done, but it works well so far, ([GitHub link](https://github.com/adamgordonbell/to-earthly)). Building it was different than I thought, and I learned some lessons that are generally helpful if you are thinking of building on top of an LLM. Let's go through them.
+
+<div class="wide">
+{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/4700.png --alt {{ A Three Stage conversion, where each stage uses few-show chain-of-thought prompting worked surprisingly well. }} %}
+<figcaption>A Three Stage conversion, where each stage uses few-show chain-of-thought prompting worked surprisingly well.</figcaption>
+</div>
 
 ## Context: A Scarcity in a Sea of Surplus
 
@@ -124,8 +133,8 @@ As a newcomer to working with large language models, I found the experience of b
 
 - Providing corrective feedback when the model struggled was an effective way for me to teach it appropriate approaches. Examples of input, reasoning, and the correct output I wanted helped the model learn.
 
-These techniques were invaluable in helping me understand how to apply LLMs to [real-world problems](https://github.com/adamgordonbell/to-earthly). The potential of these technologies, combined with thoughtful instructional approaches to overcome their limitations, is fantastic.
+These techniques were invaluable in helping me understand how to apply LLMs to [real-world problems](https://github.com/earthly/build-transpose/). The potential of these technologies, combined with thoughtful instructional approaches to overcome their limitations, is fantastic.
 
-If you're building things with LLMs, I'd love to hear about any tricks you've learned. Also, if you are using GitHub actions, you should [give Earthly a try](https://github.com/adamgordonbell/to-earthly). Earthly can improve the consistency of your build, so you never get a build failure you can't reproduce locally. It works great with GitHub actions. And want your GitHub Actions to be even faster? [Our satellites can make that happen](https://earthly.dev/pricing).
+If you're building things with LLMs, I'd love to hear about any tricks you've learned. Also, if you are using GitHub actions, you should [give Earthly a try](https://earthly.dev/earthly-github-actions). Earthly can improve the consistency of your build, so you never get a build failure you can't reproduce locally. It works great with GitHub actions. And want your GitHub Actions to be even faster? [Our satellites can make that happen](https://earthly.dev/pricing).
 
 {% include_html cta/bottom-cta.html %}

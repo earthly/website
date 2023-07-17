@@ -14,6 +14,7 @@ internal-links:
 excerpt: |
     
 ---
+**We're [Earthly](https://earthly.dev/). We simplify and speed up software builds with containerization. If you're wrestling with Python, Earthly can make your build process a breeze. [Give it a whirl](/).**
 
 If you are interested in working with relational databases in Python, then you need to know what SQLAlchemy is. It is a Python library that provides a high-level, SQL abstraction layer for relational databases. With SQLAlchemy, you can interact with databases using Python objects and methods, rather than writing raw SQL queries.
 In this tutorial, you will learn how to get started with SQLAlchemy and also learn how to interact with and query an [SQLite](https://sqlite.org/index.html) relational database with the SQLAlchemy library.

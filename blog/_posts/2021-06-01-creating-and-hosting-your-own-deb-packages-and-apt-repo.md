@@ -19,6 +19,7 @@ topic: packaging
 excerpt: |
     Learn how to create and host your own deb packages and apt repository in this tutorial. You'll discover the step-by-step process of creating a deb package, setting up an apt repository, signing it with a PGP key, and testing it with apt commands.
 ---
+**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. If you're creating and hosting your own deb packages, Earthly can help you build them. [Check it out](/).**
 
 <!-- vale HouseStyle.TLA = NO -->
 <!-- vale HouseStyle.ListStart = NO -->

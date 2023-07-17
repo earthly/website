@@ -11,6 +11,8 @@ internal-links:
 excerpt: |
     Learn how to simplify complex deployments with Octopus Deploy, a continuous deployment platform that automates releases, manages deployments, and handles routine procedures. Discover the benefits of using Octopus Deploy and follow step-by-step instructions to set it up and connect it to your application.
 ---
+**We're [Earthly](https://earthly.dev/). We make building software simpler and faster using containerization. Earthly complements tools like Octopus Deploy, enhancing the building phase of your CI pipeline. [Check it out](/).**
+
 Deployment is an integral part of the software development life cycle. It is the process where the application's codebase is compiled, run through a series of tests (such as unit, integration, and build tests), and then deployed to different environments (such as development, staging, or production). To speed up the process of deployments and ensure deployment reliability during software development, developers introduced the concept of automated deployment or continuous deployment (CD).
 
 Continuous deployment involves automating the process of validating new changes to a codebase, ensuring it passes all test cases, installing all dependencies, building a binary package from the codebase as the case may be, and then deploying into one or more environments. This process has many advantages, like eliminating repetitive deployment tasks, increasing focus on developing the product, and improving overall productivity.

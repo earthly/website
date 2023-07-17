@@ -17,6 +17,8 @@ excerpt: |
 topic: earthly
 funnel: 3
 ---
+**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. [Check us out](/).**
+
 <!-- vale WritingSuggestions.Cliches = NO -->
 <!-- vale HouseStyle.EG = NO -->
 

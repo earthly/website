@@ -12,6 +12,7 @@ internal-links:
  - Pip
  - Pandas
 ---
+**We're [Earthly](https://earthly.dev/). We simplify and speed up software building with containerization. Working with Python and Pandas for data analysis? Earthly can be a game-changer for your CI tests! [Give it a try](/).**
 
 How much have you spent on Amazon? Well, that's a kind of interesting question to find an answer to. And it's the type of question I like to answer using Python.
 

@@ -9,7 +9,6 @@ internal-links:
 excerpt: |
     Join Earthly in celebrating Hacktoberfest 2020! Contribute to open-source projects, win a free t-shirt, and get sticker rewards from Earthly. Don't miss out on this exciting opportunity to showcase your skills and support the open-source community.
 ---
-
 We're excited to announce that Earthly is participating in Hacktoberfest this October.
 
 Last year's fest saw more than 400,000 pull requests opened and this year should prove to be even larger.

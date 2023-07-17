@@ -14,6 +14,7 @@ internal-links:
 excerpt: |
     Learn how to work with zip files in Go, including creating, extracting, and modifying zip archives. This tutorial covers the basics of using the `archive/zip` package and demonstrates how to compress files, list the contents of a zip file, add files to an existing zip, and extract files from a zip archive. If you're a Go developer looking to work with zip files, this tutorial is a must-read.
 ---
+**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about working with zip files in Go. Earthly is a powerful build tool works great with golang. [Check us out](/).**
 
 As a programming language, Go is often used to build a variety of applications, both small and large. During the development process, you may encounter tasks that involve working with zip files. This could include creating new zip files, opening existing zip files, extracting the contents of zip files, or modifying the contents of zip files by adding or removing files or updating the contents of existing files.
 
