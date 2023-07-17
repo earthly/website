@@ -30,7 +30,7 @@ To follow along in this tutorial, you are required to have the following:
 - [Go](https://golang.org/doc/install) installed on your machine.
 - A PostgreSQL database is already set up, and a user is granted permission to interact with the database. You can check [this guide](https://itslinuxfoss.com/install-setup-postgresql-database-ubuntu-22-04/).
 
-**Note**: You can find the code snippets used in [this tutorial](https://github.com/mercybassey/gorm).
+**Note**: You can find the code snippets used in this tutorial [on github](https://github.com/mercybassey/gorm).
 
 ## Setting Up the Environment
 
@@ -68,7 +68,6 @@ Once you have installed the GORM library and the PostgreSQL database driver, you
 In this section, you will explore how the GORM library handles database connections. To begin, you need to import the GORM library and the PostgreSQL driver package like this:
 
 ~~~{.go caption="main.go"}
-# main.go
 package main
 
 import (
@@ -82,7 +81,6 @@ Next, you must provide the connection details to your PostgreSQL database, such 
 Add the following code in your `main.go` function to establish a connection:
 
 ~~~{.go caption="main.go"}
-# main.go
 func main() {
     //Create a new Postgresql database connection
     dsn := "host=<your_host> user=<your_user> \
@@ -112,10 +110,7 @@ In this case, be sure to replace the following placeholders - `<your_host>`, `<y
 
 Once you have established a connection to the database using the GORM library, the next step is to define a Go [struct](https://gorm.io/docs/models.html) that represents the model for the corresponding database table. This struct will serve as the schema or blueprint for interacting with the data in the table.
 
-Add the following code to your main function:
-
 ~~~{.go caption="main.go"}
-#main.go
 import (
   ...
     "time"
@@ -165,7 +160,6 @@ Once you have defined the Go struct that represents your data model, the next cr
 Add the following code snippets to your `main` function right after the database connection code:
 
 ~~~{.go caption="main.go"}
-# main.go
 // ... Main function ...
 // ... Database connection setup code ...
 
@@ -186,8 +180,6 @@ Creating records is a fundamental operation when working with databases, as it a
 Import the `fmt` package and add the following code snippet to your main function:
 
 ~~~{.go caption="main.go"}
-main.go
-
 import (
 ...
     "fmt"
@@ -252,7 +244,6 @@ You can use the `First` method when retrieving a single record.
 Let's start by retrieving the `User` record created in the previous section, `Jane Doe`. You can achieve this using the following code:
 
 ~~~{.go caption="main.go"}
-# main.go
 func main() {
         // ...AutoMigrate code ...
 
@@ -299,7 +290,6 @@ Additionally, you can retrieve a record using its primary key. The following exa
 For cases where you'd need to retrieve records based on certain conditions, you can use the [`Where`](https://gorm.io/docs/query.html#Conditions) method like this:
 
 ~~~{.go caption="main.go"}
-# main.go
 ...
 var users []User
 result := db.Where("ID = ?", 1).Find(&users)
@@ -319,7 +309,6 @@ Here, records are retrieved from the `User` table where the ID equals `1` using 
 If you'd like to chain multiple conditions, you can say:
 
 ~~~{.go caption="main.go"}
-# main.go
 ...
 var users []User
 result := db.Where("FirstName = ?", "Jane").Where("Country = ?", "Spain")/
@@ -349,7 +338,6 @@ For other condition types like [`Or`](https://gorm.io/docs/query.html#Or-Conditi
 Finally, using the `Find` method, you can retrieve multiple records without specific conditions. Here's an example code snippet:
 
 ~~~{.go caption="main.go"}
-# main.go
 var users []User
 result := db.Find(&users)
 if result.Error != nil {
@@ -373,7 +361,6 @@ When working with the GORM library, you can update records by modifying the fiel
 To update records with the GORM library, you typically retrieve the record, modify the record, save the changes, and handle errors. Here's an example:
 
 ~~~{.go caption="main.go"}
-# main.go
     // Retrieve the record you want to update
     var user User
     result := db.First(&user, 1)
@@ -430,7 +417,6 @@ User updated successfully
 Alternatively, you can update records using a struct `User` to define the changes. Here's an example:
 
 ~~~{.go caption="main.go"}
-# main.go
 // Update the record with ID 1
     result := db.Model(&User{}).Where("id = ?", 1).Updates(User{
         FirstName: "John",
@@ -457,7 +443,6 @@ The GORM library provides several methods to delete records based on different c
 To delete a single record, you can use the [`Delete`](https://gorm.io/docs/delete.html) method from the GORM library. The `Delete` method takes the model instance as an argument and deletes the corresponding record from the database. Here's an example:
 
 ~~~{.go caption="main.go"}
-# main.go
 var user User
 result := db.First(&user)
 if result.Error != nil {
@@ -484,7 +469,6 @@ In the given code, the condition `else if result.RowsAffected == 0` determines t
 You can use the `Delete` method with a condition to delete multiple records that match certain criteria. The condition is specified using the `Where` method as shown below:
 
 ~~~{.go caption="main.go"}
-# main.go
 // Delete the record where the country is "Spain"
 record := db.Where("country = ?", "Spain").Delete(&User{})
 if record.Error != nil {
@@ -512,7 +496,6 @@ The GORM library is used to perform basic CRUD operations and provides several a
 Transactions allow you to group a set of database operations into a unit of work. This ensures that all operations succeed or fail. You can use the GORM library transaction methods to begin a transaction, perform database operations within the transaction, and commit or roll back the transaction based on success or failure. Here's an example:
 
 ~~~{.go caption="main.go"}
-#main.go
 // ... Auto migration code ...
 // Begin a transaction
 tx := db.Begin()
@@ -563,7 +546,6 @@ The GORM library preloading feature enhances data fetching by automatically join
 Finally, hooks are callback functions executed at various stages of the ORM lifecycle. Hooks enable you to perform custom actions before or after specific database operations such as create, update, delete, or query. You can define hooks for your models to implement custom logic, validations, or trigger side effects based on specific events. Here's an example:
 
 ~~~{.go caption="main.go"}
-# main.go
 // ... User Struct ...
 func (u *User) BeforeCreate(tx *gorm.DB) error {
     // Perform some actions before creating a user
