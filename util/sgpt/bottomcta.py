@@ -41,7 +41,8 @@ def add_tie_in(summary: str, conclusion : str) -> str:
     print(f"Tie In:{tie_in}")
     combined = merge_tie_in(summary,conclusion, tie_in)
     print(f"Combined:{combined}")
-    return combined
+    comment = '<!--sgpt-->\n'
+    return comment+ combined
 
 def merge_tie_in(summary: str, conclusion : str, tie_in : str) -> str:
     examples = [
@@ -226,7 +227,7 @@ def add_comment_to_section(text_after_last_heading: str, excerpt : str) -> str:
 def update_text_after_last_heading(filename: str) -> Optional[None]:
     with open(filename, 'r') as f:
         content = f.read()
-        
+
     excerpt = get_summary(content)
     lines = content.split('\n')
     for i in reversed(range(len(lines))):
@@ -237,17 +238,21 @@ def update_text_after_last_heading(filename: str) -> Optional[None]:
             # If 'Earthly' is in the text, skip the file
             if 'Earthly' in text_after_last_heading:
                 return
-            # If the line starts with '{%', remove it
+            # Separate lines starting with '{%' (includes)
+            include_lines = [line for line in text_after_last_heading.split('\n') if line.strip().startswith('{%')]
+            # Remove include lines from the text after the last heading
             text_after_last_heading = '\n'.join(line for line in text_after_last_heading.split('\n') if not line.strip().startswith('{%'))
             # Add the comment to the beginning of the section
             text_after_last_heading = add_comment_to_section(text_after_last_heading, excerpt)
+            # Add the include lines back
+            text_after_last_heading += '\n\n' + '\n'.join(include_lines)
             lines[i+1:] = text_after_last_heading.split('\n')
             break
-            
-    # updated_content = '\n'.join(lines)
 
-    # with open(filename, 'w') as f:
-    #     f.write(updated_content)
+    updated_content = '\n'.join(lines)
+
+    with open(filename, 'w') as f:
+        f.write(updated_content)
 
 
 def main():
