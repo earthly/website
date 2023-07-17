@@ -41,9 +41,9 @@ def add_tie_in(summary: str, conclusion : str) -> str:
     print(f"betterconclusion:{betterconclusion}")
     tie_in = generate_tie_in(summary, betterconclusion)
     print(f"Tie In:{tie_in}")
-    better_tie_in = generate_better_tie_in(summary, conclusion, tie_in)
+    better_tie_in = generate_better_tie_in(summary, betterconclusion, tie_in)
     print(f"Better Tie In:{better_tie_in}")
-    combined = merge_tie_in(summary,conclusion, better_tie_in)
+    combined = merge_tie_in(summary,betterconclusion, better_tie_in)
     print(f"Combined:{combined}")
     comment = '<!--sgpt-->\n'
     return comment+ combined

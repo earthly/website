@@ -162,12 +162,10 @@ This lets you give users a chance to read important output; however, here, the s
 
 ## Conclusion
 <!--sgpt-->
-The `sleep` command is a simple but powerful tool. With it, you can control the rhythm of your scripts. It's useful for conserving resources, running tasks regularly, and making sure things happen when the rest of the system is ready. It's also useful for making scripts friendlier.
+The `sleep` command is your handy tool in script pacing. It's great for resource conservation, task scheduling, and timing tasks perfectly. But remember, it's more than just supplying an integer, so dive into all its features for max benefits. Also, be aware of other tools like `wait` and `read` for situations where `sleep` doesn't quite fit.
 
-However, there's more to it than just providing an integer, so explore its capabilities in full to get the most out of it. Be aware of its alternatives, too. Those can help you in conditions where `sleep` is not the precise tool for the job. The `wait` and `read` commands are both subtly different.
+Bash is powerful and can do wonders for Linux users. If you're looking to supercharge your Linux scripting even further, you might want to give [Earthly](https://earthly.dev/) a spin!
 
-Bash is a powerful language and can empower Linux users to do more with their systems. If you want to learn more about `sleep`, check out [its official documentation](https://man7.org/linux/man-pages/man1/sleep.1.html), or you can read more about Bash programming in general in our [bash series](https://earthly.dev/blog/series/bash/).
-
-And if you're looking to make your scripting tasks even simpler, you might want to give [Earthly](https://www.earthly.dev/) a whirl. It's an efficient tool for creating reproducible builds, which can be a great addition to your scripting toolkit.
+For more insights on `sleep`, check out the [official docs](https://man7.org/linux/man-pages/man1/sleep.1.html) or our [Bash series](https://earthly.dev/blog/series/bash/) for more Bash goodness.
 
 {% include_html cta/bottom-cta.html %}
