@@ -655,7 +655,7 @@ Wait a few minutes and Check the Slack channel you created, you should have rece
 </div>
 
 ## Conclusion
-<!--sgpt-->
+
 This guide walked you through creating a custom monitoring stack using Prometheus, Grafana, and Alertmanager, setting up alerting rules, as well as starting the stack using Docker Compose. You also learned to access and use Prometheus and Grafana web UIs and to import Grafana dashboards. 
 
 Looking for a boost in your build process? Give [Earthly](https://www.earthly.dev/) a go. It could be a perfect ally to your monitoring setup, enhancing your build automation and making your development process more efficient.

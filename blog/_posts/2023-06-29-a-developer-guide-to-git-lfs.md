@@ -433,11 +433,9 @@ This command sets the [`concurrenttransfers`](https://manpages.ubuntu.com/manpag
 The `--global` flag applies the option globally to all Git repositories on the user's system. If you just want to set the parameter for a single repository, drop the `--global` flag and run the command within the repository directory.
 
 ## Conclusion
-<!--sgpt-->
-Git LFS is a game changer for managing big files in Git repos. Instead of swallowing up storage with massive files, LFS swaps them for text pointers on a separate server, speeding up operations and saving space. You've learned how to set up Git LFS, add files to it, and the perks it provides. This tool's versatility makes it appealing across fields like software dev, game dev, and data science. 
 
-While you're optimizing your workflow, why not take a look at your build process too? [Earthly](https://www.earthly.dev/) can help streamline and simplify your builds, making your development process even more efficient. 
+Git LFS is a game changer for managing big files in Git repos. Instead of swallowing up storage with massive files, LFS swaps them for text pointers on a separate server, speeding up operations and saving space. You've learned how to set up Git LFS, add files to it, and the perks it provides. This tool's versatility makes it appealing across fields like software dev, game dev, and data science.
 
-To dig deeper into Git LFS, the [official docs](https://docs.github.com/en/repositories/working-with-files/managing-large-files/installing-git-large-file-storage) are worth a read.
+And while you're optimizing your workflow, why not take a look at your build process too? [Earthly](https://www.earthly.dev/) can help streamline and simplify your builds, making your development process even more efficient. 
 
 {% include_html cta/bottom-cta.html %}

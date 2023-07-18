@@ -302,9 +302,9 @@ Despite their flexibility and maintainability, Terraform variables have some lim
 - **Limited support for complex data types:** Although Terraform supports complex data types such as objects, they can be cumbersome to use, especially when debugging error messages, which can be cryptic. A workaround for this is to make the data structures as simple as possible or, in other words, make it in a flattened structure instead of in complex nested objects.
 
 ## Conclusion
-<!--sgpt-->
+
 In this article, you've learned about Terraform variables, their uses, and limitations. For a deeper understanding, check out the [official documentation](https://developer.hashicorp.com/terraform/language/values/variables) or [this detailed tutorial](https://upcloud.com/resources/tutorials/terraform-variables). 
 
-If you love automation and want to streamline your build processes even further, you might want to check out [Earthly](https://www.earthly.dev/). It's a powerful tool that can complement your Terraform knowledge and enhance your overall development workflow.
+And if you love automation and want to streamline your build processes even further, you might want to check out [Earthly](https://www.earthly.dev/). It's a powerful tool hat can complement your Terraform knowledge and enhance your overall development workflow.
 
 {% include_html cta/bottom-cta.html %}

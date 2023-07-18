@@ -661,8 +661,8 @@ Testing and continuous integration are crucial to ensure that your software func
 That's not the case anymore. With CDKTF, you can use your language's testing framework. Additionally, CDKTF provides an [assertion library](https://developer.hashicorp.com/terraform/cdktf/test/unit-testscloud%20testing) to test for the synth process.
 
 ## Conclusion
-<!--sgpt-->
-CDKTF offers a cool way to build Infrastructure as Code (IaC) using your favorite programming languages. It generates a JSON configuration that Terraform can use instead of the usual HCL. This article showed you basics of using CDKTF. While it may seem unnecessary for simple tasks, its true power shines in complex Terraform modules. 
+
+CDKTF offers a cool way to build Infrastructure as Code (IaC) using your favorite programming languages. It generates a JSON configuration that Terraform can use instead of the usual HCL. This article showed you basics of using CDKTF. While it may seem unnecessary for simple tasks, its true power shines in complex Terraform modules.
 
 To dig deeper into CDKTF, check out these HashiCorp articles about [integrating existing Terraform modules with CDKTF](https://developer.hashicorp.com/terraform/cdktf/concepts/modules) and [constructs building blocks](https://developer.hashicorp.com/terraform/cdktf/concepts/constructs). 
 

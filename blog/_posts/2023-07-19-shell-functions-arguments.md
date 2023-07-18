@@ -431,7 +431,7 @@ Or you can use `set -e` to stop execution on the first error. The [most recommen
 Finally, always make use of the exit codes. Remember to use `0` for successful execution and a nonzero value to denote an error.
 
 ## Conclusion
-<!--sgpt-->
+
 Scripting offers a significant boost to your work efficiency, but it's crucial to focus on usefulness and clarity in your scripts. This tutorial introduced you to the basics of Bash functions, defining and usage, passing arguments, returning values, and declaring variables, along with a few best practices.
 
 For further learning on scripting methodologies, check out these links:
@@ -440,6 +440,6 @@ For further learning on scripting methodologies, check out these links:
 * [Command line arguments in Bash scripts](https://www.baeldung.com/linux/use-command-line-arguments-in-bash-script)
 * [Bash scripts and function libraries](https://medium.com/swlh/bash-scripts-part-6-functions-and-library-development-2411adbf962) 
 
-And if you're eager to take your build automation up a notch, give [Earthly](https://www.earthly.dev/) a whirl! It's a powerful tool that can further enhance your command line scripting capabilities.
+And if you're eager to take your build automation up a notch, give [Earthly](https://www.earthly.dev/) a try! It's a powerful tool.
 
 {% include_html cta/bottom-cta.html %}

@@ -1,5 +1,5 @@
 ---
-title: "Infrastructure as Code with Pulumi and AWS EKS for GO Developers"
+title: "Infrastructure as Code with Pulumi and AWS EKS for Go Developers"
 categories:
   - Tutorials
 toc: true
@@ -732,11 +732,9 @@ pulumi stack rm <name-of-stack>
 </div>
 
 ## Conclusion
-<!--sgpt-->
+
 Pulumi is a super flexible tool for creating Infrastructure as Code. In this tutorial, we used it to handle AWS resources, including creating S3 buckets and provisioning an EKS cluster with Go. But that's just the start! Pulumi supports multiple cloud providers and programming languages, meaning you have a huge variety of possibilities for managing your cloud infrastructure. 
 
-Speaking of Go, if you're building with it and want a more streamlined workflow, you might want to give [Earthly](https://www.earthly.dev/) a whirl. It could be a valuable addition to your development toolkit.
-
-Why not try Pulumi with Google Cloud Platform next? Check out this [Google Cloud guide](https://www.pulumi.com/docs/clouds/gcp/get-started/). And if you wonder how Pulumi stacks up against Terraform, here's an article [Pulumi Vs Terraform](blog/pulumi-vs-terraform) for you. Remember, with Pulumi the sky's the limit!
+We used Go to write our Pulumi infrastructure and speaking of Go, if you're building with it and want a more streamlined build workflow, you might want to give [Earthly](https://www.earthly.dev/) a try. It could be a valuable addition to your development toolkit.
 
 {% include_html cta/bottom-cta.html %}
