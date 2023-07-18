@@ -41,3 +41,10 @@ gh
 jsii
 
 argparse
+
+ttl
+mtr
+tcpdump
+iftop
+iperf
+nmap
