@@ -40,6 +40,8 @@ gh
 
 jsii
 
+argparse
+
 ttl
 mtr
 tcpdump
