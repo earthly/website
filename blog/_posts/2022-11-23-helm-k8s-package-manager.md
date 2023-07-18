@@ -547,11 +547,9 @@ http://104-200-26-90-ip.linodeusercontent.com
 </div>
 
 ## Conclusion
-<!--sgpt-->
+
 That's Helm for you - a real lifesaver for Kubernetes. You've learned how to deploy a MongoDB database, come up with a mongo-express service for a UI, and use Helm to deploy an Nginx Ingress controller, all without the headaches of manual configuration. 
 
 If you've enjoyed the simplicity and consistency Helm brings to Kubernetes, you might also love [Earthly](https://www.earthly.dev/), a tool designed to make build automation even simpler and more consistent. It's definitely worth checking out.
-
-Next up, try creating and publishing your own Helm chart. Check out the [Helm documentation](https://helm.sh/docs/chart_template_guide/getting_started/) to dive in.
 
 {% include_html cta/bottom-cta.html %}

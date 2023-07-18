@@ -690,11 +690,11 @@ Now, return to Anvil, run the app, and try checking an image. Also, try adding a
 Finally, to share and test your app on another device, click the "Publish this app" button in the top right corner and copy the link.
 
 ## Conclusion
-<!--sgpt-->
+
 This tutorial guided you through leveraging Deepnote and Anvil to build a face recognition system using Python. The process highlights that mastering a framework isn't a prerequisite for rapidly developing or enhancing a tool. What you've learned here can be applied to any Python script running on a server. 
 
-If you're looking to optimize your Python builds further, you might want to give [Earthly](https://www.earthly.dev/) a shot. It's a tool designed for efficiency and reproducibility, which can be a great asset in your development process. 
+If you're looking to optimize your Python builds further, you might want to give [Earthly](https://www.earthly.dev/) a shot. It's designed for efficiency and reproducibility.
 
-Remember, you can upscale your Deepnote for more complex applications. Stay creative.
+And remember, you can upscale your Deepnote for more complex applications. Stay creative.
 
 {% include_html cta/bottom-cta.html %}

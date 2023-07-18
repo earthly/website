@@ -323,8 +323,8 @@ $ kube-bench --benchmark gke-1.2.0
 This will give you all the warnings, pass & failed checks with respect to your GKE cluster.
 
 ## Conclusion
-<!--sgpt-->
-Using kube-bench in production allows you to benchmark your Kubernetes cluster against CIS benchmarks effectively, helping you avoid misconfigurations. Following CIS benchmarks ensures you abide by best practices for running Kubernetes. This guide should equip you to understand and utilize kube-bench for benchmarking your cluster. 
+
+Using kube-bench in production allows you to benchmark your Kubernetes cluster against CIS benchmarks effectively, helping you avoid misconfigurations. Following CIS benchmarks ensures you abide by best practices for running Kubernetes. This guide should equip you to understand and utilize kube-bench for benchmarking your cluster.
 
 If you're looking to further enhance your Kubernetes workflows, consider giving [Earthly](https://www.earthly.dev/) a try. It offers efficient and reproducible builds, adding another layer of optimization to your development process.
 

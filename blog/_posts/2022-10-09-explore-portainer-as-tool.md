@@ -333,7 +333,7 @@ This Kubernetes environment can either be running on your local machine or a vir
 Viewing portainer agents for both Kubernetes via load balancer and Kubernetes via node port
 
 ## Conclusion
-<!--sgpt-->
+
 Portainer is a super handy tool for managing your Docker apps. You've now got the basics down on creating Docker containers and images, plus adding other environments to your Portainer server. But remember, this is just the beginning! Maybe dive into Role-Based Access next. There's a lot more to explore with Portainer. 
 
 And if you're enjoying Docker with Portainer, you'll love optimizing your builds with [Earthly](https://www.earthly.dev/). It's another tool that can significantly enhance your Docker experience. So, don't hesitate to have a look! Stay curious and keep exploring!

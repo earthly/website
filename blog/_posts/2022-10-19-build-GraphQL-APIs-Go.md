@@ -624,7 +624,13 @@ query GetOnePost{
 ~~~
 
 ## Conclusion
-<!--sgpt-->
-Go is a fast, evolving language for backend applications. This guide explored GraphQL implementation with Go. If you're building Go applications, consider automating your build process with [Earthly](https://www.earthly.dev/) for smoother consistency. It's worth giving it a go! The implemented code from this guide is available on this [GitHub repository](https://github.com/Rose-stack/go-mysql-graphql-api). Enjoy coding with Go!
+
+Go is a fast, evolving language for backend applications. This guide explored GraphQL implementation with Go. 
+
+Also if you're building Go applications, consider automating your build process with [Earthly](https://www.earthly.dev/) for a more consistent build process. Earthly is built it using Go.
+
+The implemented code from this guide is available on this [GitHub repository](https://github.com/Rose-stack/go-mysql-graphql-api). 
+
+Enjoy coding with Go!
 
 {% include_html cta/bottom-cta.html %}

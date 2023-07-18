@@ -278,8 +278,8 @@ The range `forloop` loops through the `bytes` slice and sets the values of the i
 The cryptographically secure random values are in a byte slice, and you can use the `string` function to convert it to a string for the function.
 
 ## Conclusion
-<!--sgpt-->
-In this tutorial, we explored how to bolster application security using cryptographic techniques. Using encryption, hashing algorithms, and secure random value generation, we've delved into how to construct more secure Go applications, even incorporating JWT for authentication. 
+
+In this tutorial, we looked at increasing application security using cryptographic techniques. Using encryption, hashing algorithms, and secure random value generation, we've delved into how to construct more secure Go applications, even incorporating JWT for authentication. 
 
 As you continue to build your secure Go app, you might also want to consider streamlining your build process. For that, you can give [Earthly](https://www.earthly.dev/) a go. It's an excellent tool for simplifying and optimizing your build automation.
 

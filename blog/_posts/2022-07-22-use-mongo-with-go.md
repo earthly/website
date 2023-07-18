@@ -429,8 +429,8 @@ if err = theCollection.Drop(ctx); err != nil {
 The collection must exist for you to delete it or get an error as handled above.
 
 ## Conclusion
-<!--sgpt-->
-This tutorial has equipped you with the basics of commonly used MongoDB operations using the Go driver. As you continue your learning journey, consider taking your efficiency up a notch with [Earthly](https://www.earthly.dev/), your new tool for optimized builds. 
+
+This tutorial has equipped you with the basics of commonly used MongoDB operations using the Go driver.
 
 Here are some additional resources to help you delve deeper:
 
@@ -439,5 +439,7 @@ Here are some additional resources to help you delve deeper:
 - [The Go.dev MongoDB Go Driver Documentation](https://pkg.go.dev/go.mongodb.org/mongo-driver).
 
 Using MongoDB with Go will prove beneficial across various fields including backend development, data science, machine learning, and DevOps. Remember, your MQL skills are crucial in conducting more complex operations with Go. So, keep exploring and happy coding!
+
+And as you continue your learning journey, consider taking your efficiency up a notch with [Earthly](https://www.earthly.dev/), your new tool for optimized builds.
 
 {% include_html cta/bottom-cta.html %}

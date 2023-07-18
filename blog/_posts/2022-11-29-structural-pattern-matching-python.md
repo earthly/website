@@ -764,9 +764,9 @@ The `__match_args__` allows us to order the attributes based on our preference.
 If positional patterns are present in a class, they are converted to keyword patterns based on the arrangement in the `__match_args__` attribute.
 
 ## Conclusion
-<!--sgpt-->
-In this tutorial, we delved into Python 3.10's *structural pattern matching* feature. You learned about various patterns, like literal, capture, wildcard, AS, OR, sequence, mapping, and class. The practicality of this feature isn't confined to API response matching in web development, it's useful in any scenario where value structure matching is required. 
 
-As you continue to explore Python's capabilities, you might also be interested in optimizing your builds. If so, give [Earthly](https://www.earthly.dev/) a try! This tool can be a great asset in your Python development toolkit.
+In this tutorial, we delved into Python 3.10's *structural pattern matching* feature. You learned about various patterns, like literal, capture, wildcard, AS, OR, sequence, mapping, and class. And the practicality of this feature isn't confined to API response matching in web development, it's useful in any scenario where value structure matching is required. 
+
+As you continue to explore Python's capabilities, you might also be interested in optimizing your builds. If so, give [Earthly](https://www.earthly.dev/) a try! Earthly can be a great asset in your Python development toolkit.
 
 {% include_html cta/bottom-cta.html %}

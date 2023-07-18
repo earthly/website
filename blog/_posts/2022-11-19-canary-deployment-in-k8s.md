@@ -232,7 +232,9 @@ For instance, the `nginx.ingress.kubernetes.io/canary-weight` annotation in the 
 Automating your Kubernetes process is especially helpful for large architectures with multiple  [deployments](/blog/deployment-strategies) that need frequent updates. A microservices architecture where applications run on different environments and need to be configured separately will benefit from an automated deployment process. Such automated deployments also help standardize configurations and their changes over time and improve the repeatability of the process.
 
 ## Conclusion
-<!--sgpt-->
-You've now got the lowdown on canary deployments in Kubernetes - why they matter, what they do, how they're different from standard deployments, and how to put them to work. If you're frequently updating apps in Kubernetes, canary deployments could be a real game-changer for you. To further supercharge your build process while working with Kubernetes, you might want to take a peek at [Earthly](https://www.earthly.dev/). This tool could be the next step in optimizing your development workflow.
+
+You've now got the lowdown on canary deployments in Kubernetes - why they matter, what they do, how they're different from standard deployments, and how to put them to work. If you're frequently updating apps in Kubernetes, canary deployments could be a real game-changer for you. 
+
+To further supercharge your build process while working with Kubernetes, you might want to take a peek at [Earthly](https://www.earthly.dev/). This tool could be the next step in optimizing your development workflow.
 
 {% include_html cta/bottom-cta.html %}

@@ -292,9 +292,9 @@ The effects of using concurrency may be negligible when you have a limited amoun
 Here's [an article by Tarun Kundhiya](https://medium.com/geekculture/concurrency-and-threads-part-2-51ddef68e364) that goes over many situations and scenarios where implementing concurrency in applications is advantageous.
 
 ## Conclusion
-<!--sgpt-->
-Go provides tools like `Mutex` and `Cond` from [the `sync` package](https://pkg.go.dev/sync) to aid in writing concurrent programs. While concurrent programming can introduce complexity and challenges, with correct implementation, it can boost speed and performance. Be mindful of its pros and cons as you continue your programming journey. 
 
-If our discussion about concurrency in Go has piqued your interest, you might want to explore [Earthly](https://www.earthly.dev/). It's a tool that can provide an extra boost in your build processes, further enhancing your programming capabilities.
+Go provides tools like `Mutex` and `Cond` from [the `sync` package](https://pkg.go.dev/sync) to aid in writing concurrent programs. While concurrent programming can introduce complexity and challenges, with correct implementation, it can boost speed and performance. Be mindful of its pros and cons as you continue your programming journey.
+
+If our discussion about concurrency in Go has piqued your interest, you might want to explore [Earthly](https://www.earthly.dev/). It's a tool that can increase the parallelism of your CI/CD build.
 
 {% include_html cta/bottom-cta.html %}
