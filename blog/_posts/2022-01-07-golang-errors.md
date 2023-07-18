@@ -4,7 +4,7 @@ categories:
   - Tutorials
 toc: true
 author: Brandon
-
+bottomcta: false
 internal-links:
  - just an example
 topic: go
@@ -369,15 +369,11 @@ I hope you found this guide to effective error handling useful. If you'd like to
 Also, checkout [Earthly](https://earthly.dev/). I work on it and its written in go and is open source.
 
 ## References
-<!--sgpt-->
-Here are some valuable resources for understanding error handling in Go:
 
 * [Error handling and Go](https://go.dev/blog/error-handling-and-go)
 * [Go 1.13 Errors](https://go.dev/blog/go1.13-errors)
 * [Go Error Doc](https://pkg.go.dev/errors@go1.17.5)
 * [Go By Example: Errors](https://gobyexample.com/errors)
 * [Go By Example: Panic](https://gobyexample.com/errors)
-
-As you delve deeper into Go programming, you might also find yourself building Go programs. In that case, [Earthly](https://www.earthly.dev/) could save you time and effort with streamlined, reproducible builds. It's definitely worth checking out!
 
 {% include_html cta/bottom-cta.html %}

@@ -106,7 +106,7 @@ Infrastructure stacks can get big and complex. As such, it's always best practic
 Both [Terraform](/blog/kubernetes-terraform) and Pulumi are updated frequently and have great support from their respective developer communities. However, Terraform is a more mature tool, and it has a significantly larger community. You'll likely have an easier time finding help for issues that you come across for Terraform compared to Pulumi. One data point that stands out at the time of this writing is the number of Stack Overflow questions tagged with [`terraform`](https://stackoverflow.com/questions/tagged/terraform) (12,983) versus [`pulumi`](https://stackoverflow.com/questions/tagged/pulumi) (317).  
 
 ## Conclusion
-<!--sgpt-->
+
 This article compared Terraform and Pulumi, two prominent Infrastructure as Code (IaC) tools. Key points to note are:
 
 * **Functionality:** Terraform uses HCL with strong troubleshooting features; Pulumi leverages familiar programming languages, allowing ease of adding libraries and testing.
@@ -117,6 +117,6 @@ This article compared Terraform and Pulumi, two prominent Infrastructure as Code
 
 In summary, [Terraform](/blog/kubernetes-terraform), as the industry leader, is ideal if you seek robust community support and are willing to learn HCL. Pulumi is an emerging player preferred for efficiency and the use of familiar languages. Both tools serve the same purpose - pick one that aligns best with your needs. 
 
-Looking to simplify your build automation further? Give [Earthly](https://www.earthly.dev/) a whirl. It could be the perfect complement to your chosen IaC tool.
+Looking to simplify your build automation further? Give [Earthly](https://www.earthly.dev/) a try. It could be the perfect complement to your chosen IaC tool.
 
 {% include_html cta/bottom-cta.html %}

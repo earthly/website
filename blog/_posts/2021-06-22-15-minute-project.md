@@ -90,7 +90,11 @@ In our software projects, there is also some form of "tax" to be paid for the sh
 By keeping this shared infrastructure well maintained and right-sized for the project, you can also keep your takes low and the benefits high.
 
 ## Conclusion
-<!--sgpt-->
-This analogy has been truly enlightening, showing how interconnected seemingly distinct domains can be. It's reshaped my approach to projects, and I hope it'll do the same for you. If you're looking to bring the same level of efficiency to your code builds as you would to city planning, you might want to give [Earthly](https://www.earthly.dev/) a try.
+
+This analogy has been truly enlightening, showing how interconnected seemingly distinct domains can be. It's reshaped my approach to projects, and I hope it'll do the same for you. 
+
+And if you're looking to bring the same level of efficiency to your code builds as you would to city planning, you might want to give [Earthly](https://www.earthly.dev/) a try.
+
+{% include_html cta/bottom-cta.html %}
 
 [^1]: You would be surprised at how many [beautiful](https://www.youtube.com/channel/UCGc8ZVCsrR3dAuhvUbkbToQ) [channels](https://www.youtube.com/channel/UC0intLFzLaudFG-xAvUEO-A) [there](https://www.youtube.com/channel/UCqdUXv9yQiIhspWPYgp8_XA) [are](https://www.youtube.com/user/strongtowns) in this space!

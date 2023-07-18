@@ -7,6 +7,7 @@ sidebar:
   nav: "thoughts"
 internal-links:
  - just an example
+bottomcta: false
 excerpt: |
     Learn how to balance social confidence and epistemic confidence in order to succeed in your career. Find out why being confidently uncertain can be a valuable mindset, and discover tips on how to navigate uncertainty with confidence.
 ---
@@ -105,10 +106,11 @@ This second step is what allows you to be socially confident in the face of the 
 In other words, share that the uncertainty is out there in that world, and that you have a plan to overcome it. And having a plan can be as simple as saying, "Let me look into that".
 
 ## Let Me Look Into That
-<!--sgpt-->
-Embrace uncertainty, communicate it effectively, and always have a plan. Instead of expressing frustration or blaming others when tasks fail, respond with, "Let me look into that". These concepts are taken from [The Scout Mindset](https://www.goodreads.com/book/show/42041926-the-scout-mindset), a recommended read to help you navigate uncertainty confidently. 
 
-Speaking of managing uncertainty, if you're dealing with unpredictability in your software builds, give [Earthly](https://www.earthly.dev/) a shot. It's designed to deliver consistent, stress-free results, making it a valuable tool in your uncertainty-busting arsenal.
+So that is how you can be confidently uncertain: Explain why things are uncertain and communicate that you have a plan.
+
+This brings me back to Alex and Amy: if I could go back in time, I would tell them that instead of saying "Oh God, why did my task fail again" or "How can you fail it when you don't know the requirements" they should have just said, "Let me look into that." I'd also bring them each a copy of [The Scout Mindset](https://www.goodreads.com/book/show/42041926-the-scout-mindset) - That's where I got this idea from.
 
 {% include_html cta/bottom-cta.html %}
+
 [^1]: I've changed Alex and Amy's names but, yeah, you probably know who you are. Hopefully you'll forgive me for the characterization. You are both solid developers and we should catch up.

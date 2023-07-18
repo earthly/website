@@ -124,9 +124,9 @@ With Terraform used to provision infrastructure and Kubernetes used to manage po
 There are plenty of guides to show you how to do this, including [the article "Use Kubernetes and Terraform together for cluster management"](https://www.techtarget.com/searchitoperations/tutorial/Use-Kubernetes-and-Terraform-together-for-cluster-management) from [Tech Target](https://www.techtarget.com/).
 
 ## Conclusion
-<!--sgpt-->
+
 Terraform and Kubernetes efficiently handle different areas: Terraform manages infrastructure, while Kubernetes deploys containers. As your infrastructure diversifies, for example running multiple Kubernetes setups, Terraform's automation becomes increasingly beneficial. Both platforms can significantly enhance productivity individually, even more so when used together. 
 
-Looking to simplify your build process even further? Give [Earthly](https://www.earthly.dev/) a whirl. This tool can be a great addition to your tech stack, complementing the capabilities of Terraform and Kubernetes by providing a streamlined and efficient build process.
+Looking to simplify your build process even further? Give [Earthly](https://www.earthly.dev/) a try. This tool can be a great addition to your tech stack, complementing the capabilities of Terraform and Kubernetes by providing a streamlined and efficient build process.
 
 {% include_html cta/bottom-cta.html %}

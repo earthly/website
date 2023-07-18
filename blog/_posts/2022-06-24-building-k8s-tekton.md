@@ -406,9 +406,9 @@ The `curl` command should output the following:
 ![Node.js deployment up and running]({{site.images}}{{page.slug}}/vG5LBSu.jpg)
 
 ## Conclusion
-<!--sgpt-->
-In this tutorial, you've learned how to use [Tekton](https://tekton.dev/) to streamline application building in Kubernetes. We covered setting up a basic Tekton workflow and deploying an application via Tekton CI/CD pipeline. Tekton not only speeds up your deployment process, but also enhances flexibility and scalability in your Kubernetes projects. 
 
-Looking to further fine-tune your app building process? Give [Earthly](https://www.earthly.dev/) a whirl for an even smoother development ride. This open-source build automation tool can complement your Tekton workflows, offering reproducible, portable, and parallel builds for modern applications.
+In this tutorial, you've learned how to use [Tekton](https://tekton.dev/) to streamline application building in Kubernetes. We covered setting up a basic Tekton workflow and deploying an application via Tekton CI/CD pipeline. Tekton not only speeds up your deployment process, but also enhances flexibility and scalability in your Kubernetes projects.
+
+Looking to further fine-tune your app building process? Give [Earthly](https://www.earthly.dev/) a try for an even smoother development process. This open-source build automation tool can complement your Tekton workflows, offering reproducible, portable, and parallel builds for modern applications.
 
 {% include_html cta/bottom-cta.html %}

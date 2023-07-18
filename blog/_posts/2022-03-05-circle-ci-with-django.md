@@ -403,9 +403,9 @@ workflows:
 Now we can run any of these steps locally and be sure it will run exactly the same way in CircleCi. For example we can run the build step with `earthly +build` on our local machine and it will produce the same output as it does on CircleCi.
 
 ## Conclusion
-<!--sgpt-->
+
 In this tutorial, we've gone through a simple demonstration of testing and linting a Django project with CircleCi. Depending on your specific needs, you may need to test different setups. I found CircleCi easy to use, with a comprehensive free tier which is suitable for side projects. Although I might not switch my media tracking app, I hope this guide shows how you can leverage CircleCi to maintain the quality of any project. 
 
-If you enjoyed reading about CI/CD with CircleCI, you might also love exploring [Earthly](https://www.earthly.dev/) for simpler build automation. It's definitely worth checking out!
+If you enjoyed reading about CI/CD with CircleCI, you might also love exploring [Earthly](https://www.earthly.dev/) for even simpler build automation. It's definitely worth checking out!
 
 {% include_html cta/bottom-cta.html %}

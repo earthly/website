@@ -320,8 +320,7 @@ If you are taking linting documentation seriously and can take the time to set u
 * [Grammarly Clone in Vale](https://github.com/testthedocs/Openly)
 
 ## Summary
-<!--sgpt-->
+
 There are several tools available for testing and linting English prose, ranging from simple spell-checks to comprehensive style guides for your software documentation. If you're open to investing time, `Vale` is a top choice due to its flexible rules. Coupling `Vale` with `markdownlint` in a CI build ensures correct spelling, grammar, and appropriate formatting. 
 
-On the note of automation, why not give your build processes an easy upgrade? Check out [Earthly](https://www.earthly.dev/). This blog, for instance, uses `Vale` and `markdownlint` in an [Earthfile](https://earthly.dev/) for every commit to avoid errors. If you need simpler options, `mdspell` combined with `markdownlint` is a good start. Remember, automation is key to maintaining high-quality software documentation.
-
+And while you're doing prose automation, why not give your build processes an easy upgrade? Check out [Earthly](https://www.earthly.dev/). This blog, for instance, uses `Vale` and `markdownlint` in an [Earthfile](https://earthly.dev/) for every commit to avoid errors. And if you need simpler options, `mdspell` combined with `markdownlint` is a good start. Remember, automation is key to maintaining high-quality software documentation.

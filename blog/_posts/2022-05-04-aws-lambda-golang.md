@@ -478,7 +478,9 @@ Then to test with caching, I just stop deleting stuff. The end result, making su
 It's surprising to me how much faster the Golang version is. Lynx and the readability lib do the majority of the work. Perhaps the native readability lib is just a lot faster but I'm not sure without digging in further.  
 
 ## Conclusion
-<!--sgpt-->
-In this tutorial, we've built a containerized serverless Golang program with OS level dependencies (lynx). We've run it on AWS Lambda, used S3 for caching, and set up a REST endpoint. If you enjoyed building a Golang Lambda service with AWS, you might want to simplify and speed up your build process with [Earthly](https://www.earthly.dev/)! You can [try it out](https://earthly-tools.com/text-mode) or use it for your needs. The full source code is accessible on [github](https://github.com/adamgordonbell/cloudservices/tree/aws-lambda-1).
+
+So there you go, containerized serverless Golang. We built a program in Go that has some OS level dependencies (lynx), we've wrapped it up into a container, ran it in an AWS Lambda, and then also used S3 get and puts for caching. And the whole up to a REST end point. You can [test it out](https://earthly-tools.com/text-mode) or use it for your own purposes and the complete source code is on [github](https://github.com/adamgordonbell/cloudservices/tree/aws-lambda-1).
+
+And if you liked how I put together this project, take a look at [Earthly](/).
 
 {% include_html cta/bottom-cta.html %}
