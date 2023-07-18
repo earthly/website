@@ -64,7 +64,7 @@ Let's explore the three common types of network interfaces:
 
 Linux systems store network configuration details in files like `/etc/network/interfaces` or `/etc/sysconfig/network-scripts/ifcfg-<interface>`. These files define IP addresses, netmask, gateway, DNS servers, and more.
 
-Although not covered in detail here you can [read up](https://www.dipolnet.com/what_is_the_ip_address_network_mask_gateway__bib538.htm) to gain more profound knowledge of netmasks, gateways, and DNS in the context of Linux systems.
+Although not covered in detail here you can [read up](https://www.dipolnet.com/what_is_the_ip_address_network_mask_gateway__bib538.htm) to gain more knowledge of netmasks, gateways, and DNS in the context of Linux systems.
 
 Understanding network interfaces and their configuration is crucial for setting up and managing network connectivity.
 
@@ -350,7 +350,7 @@ In this section, we will explore strategies and techniques for troubleshooting c
 
 ### Diagnose Connectivity Problems
 
-When faced with issues or difficulties in establishing and maintaining network connections between systems. You can follow these steps:
+When faced with issues or difficulties in establishing and maintaining network connections between systems, try following these steps:
 
 * Verify physical connections.
 
@@ -385,48 +385,6 @@ Firewall configurations refer to the settings and rules implemented within a fir
 Finally, common networking errors like "Destination Host Unreachable" or "Connection Refused" require checking IP configurations, service availability, and routing tables.
 
 You can effectively diagnose and resolve network issues by following these troubleshooting strategies and utilizing the appropriate commands and tools.
-
-## Tips and Best Practices
-
-This section will cover tips and best practices to enhance your Linux networking command proficiency.
-
-### Tab Completion
-
-Take advantage of tab completion by pressing the `Tab` key to auto-complete commands, filenames, or directory paths.
-
-### Command History
-
-Use the `history` command or Up and Down arrow keys to cycle through previously executed commands.
-
-### Command Output and Error Messages
-
-Pay close attention to command output and error messages, as they often provide valuable insights on the status of network configurations, connectivity, or errors.
-
-### Command Manuals
-
-Read the command's manual page (`man <command>`) or refer to online documentation to understand different output fields and error messages.
-
-### Pipe Commands
-
-Leverage pipes (`|`) to combine multiple commands, allowing you to filter, process, or analyze command output.
-
-### Output Redirection
-
-Redirect (`>`, `>>`, `<`) command output to files or read input from files.
-
-### Automation
-
-Create shell scripts to automate repetitive tasks or complex command sequences, saving time and ensuring consistency in network configurations.
-
-### Documentation
-
-Document and maintain accurate records of network configurations, including IP addresses, netmasks, gateways, DNS servers, and firewall rules.
-
-### Management Tools
-
-Use configuration management tools like Ansible to enforce consistent network configurations across multiple systems.
-
-These tips allow you to streamline your Linux networking workflows, improve productivity, and ensure a reliable and well-managed network environment.
 
 ## Conclusion
 
