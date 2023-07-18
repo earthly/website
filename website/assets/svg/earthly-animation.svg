@@ -391,6 +391,4 @@
     <animateTransform id="t9Logo" additive="sum" attributeName="transform" begin="t5.end" dur="4s" repeatCount="1" type="scale" values="1 1; 1.2 1.2; 1 1"/>   
     <animate attributeName="opacity" begin="t9Logo.end" dur="100ms" fill="freeze" from="1" to="0"/>
   </image>
-
-  <text x="150" y="400" fill="#636363" style="font-size: 18px">Rebuild only what has changed</text>
 </svg>

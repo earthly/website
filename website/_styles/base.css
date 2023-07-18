@@ -83,6 +83,26 @@ main.wave-main.homepage {
   top: 188px;
 }
 
+.earthly-animation-text {
+  color: #636363;
+  font-size: 12px;
+  margin-top: -34px;
+  padding-bottom: 16px;
+  text-align: center;
+}
+
+@media screen and (min-width: 640px) {
+  .earthly-animation-text {
+    font-size: 16px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .earthly-animation-text {
+    font-size: 18px;
+  }
+}
+
 @media screen and (min-width: 1280px) {
   .homepage .wave {
     animation: none;
@@ -90,6 +110,12 @@ main.wave-main.homepage {
 
   .earthly-animation {
     right: -108px;
+  }
+
+  .earthly-animation-text {
+    font-size: 18px;
+    margin-top: 400px;
+    margin-right: 330px;
   }
 }
 
@@ -102,6 +128,13 @@ main.wave-main.homepage {
 @media screen and (min-width: 1536px) {
   .earthly-animation {
     right: 0;
+  }
+}
+
+@media screen and (min-width: 1800px) {
+  .earthly-animation-text {
+    margin-top: 376px;
+    margin-right: 242px;
   }
 }
 
