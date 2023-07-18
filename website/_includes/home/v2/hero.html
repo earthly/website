@@ -19,14 +19,14 @@
     <div class="max-w-md mx-auto xl:mx-0">
       <a
         class="w-full bg-[#2d7e5d] hover:bg-[#2d7e5d] cursor-pointer inline-block my-0.5 lg:my-2 py-6 rounded-lg shadow-sm text-2xl text-center text-white"
-        href="/get-earthly"
+        href="https://cloud.earthly.dev/login"
         onclick="homepageGetEarthlyClick()"
       >
-        Install Earthly
+        Get Started Free
       </a>
     </div>
 
-    <p class="text-center xl:text-left text-slate-400">Earthly is Open Source</p>
+    <p class="text-center xl:text-left text-slate-400">Open Source on <a class="underline" href="https://github.com/earthly/earthly">GitHub</a></p>
 
     <div class="absolute bottom-0 right-0 top-12 hidden min-[1800px]:flex">
       {% svg assets/svg/earthly-animation.svg class="h-full absolute -right-20" %}
@@ -40,9 +40,9 @@
 
 <script>
   function homepageGetEarthlyClick() {
-    analytics.track("homepage-get-earthly-click", {
-      category: "Get Earthly Click",
-      label: "homepage-get-earthly-click",
+    analytics.track('homepage-get-started-free-click', {
+      category: 'Get Started Free Click',
+      label: 'homepage-get-started-free-click'
     });
   }
 </script>
