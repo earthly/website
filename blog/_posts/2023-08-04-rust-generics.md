@@ -7,7 +7,11 @@ author: Enoch Chejieh
 editor: Ubaydah Abdulwasiu
 
 internal-links:
- - just an example
+ - using rust generics
+ - write flexible and reusable code
+ - write code
+ - rust generics
+ - flexible and reusable code
 excerpt: |
     Learn how to write an engaging article with this checklist that covers everything from creating a catchy title to adding captivating images and incorporating internal links. Perfect for both new and experienced writers!
 ---
@@ -331,5 +335,4 @@ You can learn more about Rust and generics by visiting the official [Rust docume
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
+
