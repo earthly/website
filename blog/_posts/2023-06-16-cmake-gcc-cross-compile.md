@@ -279,7 +279,7 @@ During cross-compiling, common issues you may encounter include compiler incompa
 
 ## Conclusion
 
-This tutorial showed you the basics of cross-compiling a C++ program for ARM64 devices using CMake and GCC. Remember to install the right toolchain, check your CMake setup, make your code compatible with the target platform, and look out for required libraries to avoid build mishaps. 
+This tutorial showed you the basics of cross-compiling a C++ program for ARM64 devices using CMake and GCC. Remember to install the right toolchain, check your CMake setup, make your code compatible with the target platform, and look out for required libraries to avoid build mishaps.
 
 Want to delve deeper into cross-compiling? Check out the official [CMake](https://cmake.org/documentation/) and [GCC](https://gcc.gnu.org/onlinedocs/) docs, or explore [platform-specific resources](https://github.com/topics/cross-compilation?o=desc&s=stars) and [forums](https://stackoverflow.com/questions/tagged/cross-compiling?sort=MostVotes&edited=true). Happy cross-compiling!
 

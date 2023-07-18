@@ -438,7 +438,7 @@ For further learning on scripting methodologies, check out these links:
 
 * [Bash error handling](https://linuxhint.com/bash_error_handling/)
 * [Command line arguments in Bash scripts](https://www.baeldung.com/linux/use-command-line-arguments-in-bash-script)
-* [Bash scripts and function libraries](https://medium.com/swlh/bash-scripts-part-6-functions-and-library-development-2411adbf962) 
+* [Bash scripts and function libraries](https://medium.com/swlh/bash-scripts-part-6-functions-and-library-development-2411adbf962)
 
 And if you're eager to take your build automation up a notch, give [Earthly](https://www.earthly.dev/) a try! It's a powerful tool.
 

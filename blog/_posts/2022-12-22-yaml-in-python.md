@@ -475,7 +475,7 @@ Once converted successfully, you should have an `output.json` file in your worki
 
 ## Conclusion
 
-In this tutorial, you've learned how to handle YAML using Python and the PyYAML library. You've worked with functions like `safe_load()`, `safe_load_all()`, `dump()`, and `dump_all()` to manipulate YAML data and even convert it to JSON with Python's `json` library. 
+In this tutorial, you've learned how to handle YAML using Python and the PyYAML library. You've worked with functions like `safe_load()`, `safe_load_all()`, `dump()`, and `dump_all()` to manipulate YAML data and even convert it to JSON with Python's `json` library.
 
 As you continue to explore and expand your Python skills, you might find yourself in need a CI process. If that's the case, give [Earthly](https://www.earthly.dev/) a try. It's a great tool for automating Python builds and can significantly streamline your workflow.
 

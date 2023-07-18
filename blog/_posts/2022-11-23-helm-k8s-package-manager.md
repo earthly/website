@@ -548,7 +548,7 @@ http://104-200-26-90-ip.linodeusercontent.com
 
 ## Conclusion
 
-That's Helm for you - a real lifesaver for Kubernetes. You've learned how to deploy a MongoDB database, come up with a mongo-express service for a UI, and use Helm to deploy an Nginx Ingress controller, all without the headaches of manual configuration. 
+That's Helm for you - a real lifesaver for Kubernetes. You've learned how to deploy a MongoDB database, come up with a mongo-express service for a UI, and use Helm to deploy an Nginx Ingress controller, all without the headaches of manual configuration.
 
 If you've enjoyed the simplicity and consistency Helm brings to Kubernetes, you might also love [Earthly](https://www.earthly.dev/), a tool designed to make build automation even simpler and more consistent. It's definitely worth checking out.
 

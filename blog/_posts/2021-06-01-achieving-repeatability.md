@@ -121,14 +121,14 @@ The fastest way to fix a broken build is to roll back to the last known good com
 
 ## Conclusion
 
-Continuous integration (CI) is a game-changer! It helps find bugs quicker, speeds up the feedback loop, removes integration issues, and boosts team communication and pace. To ace your CI/CD pipeline, remember these principles: 
+Continuous integration (CI) is a game-changer! It helps find bugs quicker, speeds up the feedback loop, removes integration issues, and boosts team communication and pace. To ace your CI/CD pipeline, remember these principles:
 
-- Ensure your environments are **reliable** and **speedy** to keep development moving. 
-- Aim for **reproducible** builds for developer confidence. 
+- Ensure your environments are **reliable** and **speedy** to keep development moving.
+- Aim for **reproducible** builds for developer confidence.
 - **Reusability** allows us to leverage the tools, patterns, and environments for continuous integration across projects.
 
 Speaking of reproducible builds, if you're looking to improve your CI/CD pipeline, you might want to give [Earthly](https://www.earthly.dev/) a spin. It's a tool designed for speedy, reproducible builds, which can significantly enhance your CI/CD process.
 
-CI also paves the way for **continuous deployment** and combined with continuous delivery, it helps ship and test features faster. 
+CI also paves the way for **continuous deployment** and combined with continuous delivery, it helps ship and test features faster.
 
 Want to dive deeper into CI? Check out [Martin Fowler's book](https://www.martinfowler.com/books/duvall.html) on it!

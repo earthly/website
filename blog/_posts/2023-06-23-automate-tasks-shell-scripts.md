@@ -661,7 +661,7 @@ This task provides a guide for creating an automated deployment script using con
 
 ## Conclusion
 
-Shell scripts offer a powerful solution to automate various tasks, such as file backups, data processing, and system maintenance. This article has provided a hands-on understanding of scripting features like variables, loops, system calls, and more. Shell scripting can decrease errors, boost productivity, and enhance system stability, becoming a highly sought skill in the DevOps domain. 
+Shell scripts offer a powerful solution to automate various tasks, such as file backups, data processing, and system maintenance. This article has provided a hands-on understanding of scripting features like variables, loops, system calls, and more. Shell scripting can decrease errors, boost productivity, and enhance system stability, becoming a highly sought skill in the DevOps domain.
 
 While it's essential to select the right tool, shell scripting isn't a cure-all. If you've enjoyed learning about automation with shell scripts, you might want to explore [Earthly](https://www.earthly.dev/) for container-based build scripting and automation. It's super cool stuff and a great next step in your journey towards mastering automation tools.
 

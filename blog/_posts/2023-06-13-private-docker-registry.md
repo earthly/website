@@ -547,7 +547,7 @@ exit
 
 ## Conclusion
 
-In this guide, we've covered how to establish a private Docker registry server on Linux, including setting up basic authentication, enabling SSL, creating a custom image, and verifying the registry server. Docker registry is crucial for secure image storage and management in modern software development. 
+In this guide, we've covered how to establish a private Docker registry server on Linux, including setting up basic authentication, enabling SSL, creating a custom image, and verifying the registry server. Docker registry is crucial for secure image storage and management in modern software development.
 
 With the knowledge you've gained today, you're now prepared to implement security best practices for Docker containers and images in an enterprise setting.
 

@@ -383,7 +383,7 @@ By following these best practices, you can write more reliable, maintainable, an
 
 ## Conclusion
 
-This article provided insights on Python error handling, such as various error types, usage of 'try-except' and 'finally' blocks, raising exceptions, and the use of assert statements for debugging. We've also discussed best practices like writing clear error messages, testing, consistency, documentation, and logging. 
+This article provided insights on Python error handling, such as various error types, usage of 'try-except' and 'finally' blocks, raising exceptions, and the use of assert statements for debugging. We've also discussed best practices like writing clear error messages, testing, consistency, documentation, and logging.
 
 After reading, you should be adept at handling errors in Python to create more reliable code. All code discussed is available on [GitHub](https://github.com/Boadzie/error-handling-in-python).
 

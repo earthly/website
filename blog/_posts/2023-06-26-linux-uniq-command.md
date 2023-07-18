@@ -348,9 +348,9 @@ Again, you can see that there are differences between `sort` and `uniq`. While `
 
 ## Conclusion
 
-In this tutorial, you've learned how to use `uniq` to count distinct values in a file, and the importance of sorting and cleaning the file beforehand. We covered how `uniq` works best on well-structured, clean inputs. There are numerous Linux commands to help you tailor your output. 
+In this tutorial, you've learned how to use `uniq` to count distinct values in a file, and the importance of sorting and cleaning the file beforehand. We covered how `uniq` works best on well-structured, clean inputs. There are numerous Linux commands to help you tailor your output.
 
-For further exploration, refer to the additional resources linked in this guide, and [**Text Processing Commands** page](https://tldp.org/LDP/abs/html/textproc.html) from [The Linux Documentation Project](https://tldp.org). 
+For further exploration, refer to the additional resources linked in this guide, and [**Text Processing Commands** page](https://tldp.org/LDP/abs/html/textproc.html) from [The Linux Documentation Project](https://tldp.org).
 
 And after you've mastered `uniq` and are ready for more Linux tools, why not give [Earthly](https://www.earthly.dev/) a try? It's a fantastic tool for build tool that works great at the command line.
 

@@ -134,7 +134,7 @@ Kubernetes also has great support for monitoring, logging, and dashboarding acti
 
 ## Conclusion
 
-In this article, we've explored Docker Compose and Kubernetes, two powerful tools for orchestrating and managing containerized applications. While Docker Compose excels at managing multi-container Docker applications on a single host, Kubernetes offers high availability and scalability for large-scale deployments. 
+In this article, we've explored Docker Compose and Kubernetes, two powerful tools for orchestrating and managing containerized applications. While Docker Compose excels at managing multi-container Docker applications on a single host, Kubernetes offers high availability and scalability for large-scale deployments.
 
 But about containerized builds? To improve them, you might want to give [Earthly](https://www.earthly.dev/) a try. This open-source build automation tool can help optimize your build processes, making them more efficient and reproducible across different environments.
 

@@ -522,7 +522,7 @@ The other image below shows the "mailtrap" sandbox environment for simulating em
 
 ## Conclusion
 
-In this tutorial, we dove into Django signals, covering different types and how to use them in real-life applications. We unraveled the mystery of how Django internally creates and saves object instances using `save()` and `_init()_`. We explored ways to connect signals with receiver functions, and touched upon `post_init`, `pre_init`, `pre_save`, `post_save`, `pre_delete`, and `post_delete` signals with examples. We also learned about the `disconnect()` method. Finally, we built a feature using signals and threading to send emails. 
+In this tutorial, we dove into Django signals, covering different types and how to use them in real-life applications. We unraveled the mystery of how Django internally creates and saves object instances using `save()` and `_init()_`. We explored ways to connect signals with receiver functions, and touched upon `post_init`, `pre_init`, `pre_save`, `post_save`, `pre_delete`, and `post_delete` signals with examples. We also learned about the `disconnect()` method. Finally, we built a feature using signals and threading to send emails.
 
 As you continue to expand your knowledge of [Django signals](https://docs.djangoproject.com/en/4.1/topics/signals/), you might also want to streamline your Django build processes. If so, why not give [Earthly](https://www.earthly.dev/) a try? This tool can help you optimize your development workflow, making it even more efficient and effective.
 

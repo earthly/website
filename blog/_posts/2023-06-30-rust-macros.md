@@ -663,7 +663,7 @@ Here, assume that `my_macro.rs` invokes some macro in an invalid way. The `trybu
 
 ## Conclusion
 
-Macros are a high-powered feature in Rust for code manipulation and complexity reduction. In this tutorial, you learned about declarative and procedural macros, their syntax, real-life examples, and efficiency tips. 
+Macros are a high-powered feature in Rust for code manipulation and complexity reduction. In this tutorial, you learned about declarative and procedural macros, their syntax, real-life examples, and efficiency tips.
 
 If you're using Rust macros like a pro and looking for ways to further streamline your development process, you should check out [Earthly](https://www.earthly.dev/). It offers slicker, reproducible builds, making it a valuable tool in your Rust development toolbox.
 

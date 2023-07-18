@@ -169,7 +169,7 @@ The command does not display any output if everything went well, so the way to i
 
 ### Conclusion
 
-Keeping Dotfiles on platforms like [Github](/blog/ci-comparison) or [Gitlab](/blog/gitlab-ci) streamlines configuration syncing and makes setup and collaboration a breeze. Remember, _dotfile_ files aren't just for system admin geeks. They're great tools to fine-tune your dev environment and boost your productivity. 
+Keeping Dotfiles on platforms like [Github](/blog/ci-comparison) or [Gitlab](/blog/gitlab-ci) streamlines configuration syncing and makes setup and collaboration a breeze. Remember, _dotfile_ files aren't just for system admin geeks. They're great tools to fine-tune your dev environment and boost your productivity.
 
 Looking to further streamline your dev setup? Take a look at [Earthly](https://www.earthly.dev/), for your build automation needs! With Earthly, you can simplify your build configuration and ensure consistent builds across different environments. Let's get optimizing!
 

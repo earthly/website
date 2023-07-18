@@ -157,6 +157,6 @@ And if you've worked at both, let me know what you think.
 
 What did you find were the advantages and disadvantages?
 
-And no matter your coding career path, [Earthly](https://www.earthly.dev/) might just be your ticket to simpler, faster builds. Give it a try. 
+And no matter your coding career path, [Earthly](https://www.earthly.dev/) might just be your ticket to simpler, faster builds. Give it a try.
 
 {% include_html cta/bottom-cta.html %}

@@ -91,7 +91,7 @@ By keeping this shared infrastructure well maintained and right-sized for the pr
 
 ## Conclusion
 
-This analogy has been truly enlightening, showing how interconnected seemingly distinct domains can be. It's reshaped my approach to projects, and I hope it'll do the same for you. 
+This analogy has been truly enlightening, showing how interconnected seemingly distinct domains can be. It's reshaped my approach to projects, and I hope it'll do the same for you.
 
 And if you're looking to bring the same level of efficiency to your code builds as you would to city planning, you might want to give [Earthly](https://www.earthly.dev/) a try.
 

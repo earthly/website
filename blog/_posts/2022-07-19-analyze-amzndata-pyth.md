@@ -396,7 +396,7 @@ Awesome, now we have a beautiful bar chart representing how much we've spent on 
 
 ## Conclusion
 
-In this tutorial, we explored data analysis using Python libraries like Pandas and Matplotlib. Key learnings include:
+In this tutorial, we explored data analysis using Python libraries like Pandas and Matplotlib. Key lessons include:
 
 * Pandas can greatly simplify data analysis with its numerous built-in functionalities.
 * Pre-processing and cleaning data is a crucial step before performing any analysis.

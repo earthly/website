@@ -496,7 +496,7 @@ I hit a number of errors building this. If you hit them, here are the solutions.
 
 ### What's Next
 
-Next up, I'm building a command-line client for this service to make it more user-friendly. I've got other features brewing in my mind, but I'll save that for later. Tossed around a few other improvements like using `gojsonschema` for better JSON validation and `net/http/httptest` for testing. 
+Next up, I'm building a command-line client for this service to make it more user-friendly. I've got other features brewing in my mind, but I'll save that for later. Tossed around a few other improvements like using `gojsonschema` for better JSON validation and `net/http/httptest` for testing.
 
 Speaking of Golang projects, you might want to check out [Earthly](https://www.earthly.dev/) for efficient, reproducible builds. It could be a valuable tool to streamline your development process.
 

@@ -187,7 +187,7 @@ The Command Palette contains most of the commands for Docker images and containe
 
 ### Conclusion
 
-The VS Code docker extension enhances your productivity by streamlining terminal operations and offering features for faster, error-free Dockerfile creation. The added bonus is its ability to provide vital insights into your Docker environments, including debugging tools, logs, and visual mapping of running images and networks. 
+The VS Code docker extension enhances your productivity by streamlining terminal operations and offering features for faster, error-free Dockerfile creation. The added bonus is its ability to provide vital insights into your Docker environments, including debugging tools, logs, and visual mapping of running images and networks.
 
 And if you're enjoying this streamlined Docker workflow in VS Code, you'll likely appreciate [Earthly](https://www.earthly.dev/) for efficient and consistent container-based builds. Why not dive in and explore its capabilities?
 

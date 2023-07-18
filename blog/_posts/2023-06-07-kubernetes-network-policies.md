@@ -482,7 +482,7 @@ $ kubectl -n db exec db  -- curl backend-svc.backend ##denied
 
 ## Conclusion
 
-In a nutshell, using network policies can beef up your Kubernetes workload security, but their implementation needs careful thought and testing. This post walked you through the basics of Kubernetes network policies and key concepts like Ingress, Egress, and CNI. Plus, you learned the ropes on setting up multiple policies for different needs. 
+In a nutshell, using network policies can beef up your Kubernetes workload security, but their implementation needs careful thought and testing. This post walked you through the basics of Kubernetes network policies and key concepts like Ingress, Egress, and CNI. Plus, you learned the ropes on setting up multiple policies for different needs.
 
 For some extra knowledge boost, have a look at other Kubernetes features like [Security Context](https://earthly.dev/blog/k8s-cluster-security/) and [Mutual TLS over Kubernetes Nginx Ingress Controller](https://earthly.dev/blog/mutual-tls-kubernetes-nginx-ingress-controller/).
 

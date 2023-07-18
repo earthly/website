@@ -299,7 +299,7 @@ The following are the steps described in the documentation:
 
 ## Conclusion
 
-In this tutorial, we've covered the basics of Terraform workflow, including the init, plan, and apply stages, installation options, and syntax fundamentals. 
+In this tutorial, we've covered the basics of Terraform workflow, including the init, plan, and apply stages, installation options, and syntax fundamentals.
 
 Once you've mastered Terraform, you might want to take your build automation to the next level. Check out [Earthly](https://www.earthly.dev/) for an even smoother experience. You won't regret it!
 

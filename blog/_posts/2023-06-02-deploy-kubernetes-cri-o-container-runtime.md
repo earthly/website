@@ -669,7 +669,7 @@ You can see from the image above that both commands **`ping 10.85.0.4`** and **`
 
 In this tutorial, you've learned to set up and pair CRI-O with Kubernetes on an Ubuntu 22.04LTS server, initiate a Kubernetes cluster, and test an Nginx server deployment. CRI-O's focus on performance, security, and Kubernetes compatibility make it an excellent choice for large-scale containerized application deployment.
 
-As you continue to explore and optimize your containerized applications, you might want to streamline your build processes. For that, we recommend checking out [Earthly](https://www.earthly.dev/). 
+As you continue to explore and optimize your containerized applications, you might want to streamline your build processes. For that, we recommend checking out [Earthly](https://www.earthly.dev/).
 
 Enjoyed learning about CRI-O and Kubernetes? Then you'll definitely appreciate what Earthly has to offer.
 

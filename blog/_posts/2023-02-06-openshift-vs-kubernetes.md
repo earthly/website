@@ -144,7 +144,7 @@ In contrast, OpenShift lacks in this area and is still in an experimental stage 
 
 ## Conclusion
 
-Kubernetes and OpenShift both offer unique approaches to container orchestration. Kubernetes offers greater flexibility and customization, while OpenShift provides a more secure, plug-and-play experience, albeit at a cost. For beginners, or those in the Red Hat ecosystem, OpenShift might be a more comfortable choice. 
+Kubernetes and OpenShift both offer unique approaches to container orchestration. Kubernetes offers greater flexibility and customization, while OpenShift provides a more secure, plug-and-play experience, albeit at a cost. For beginners, or those in the Red Hat ecosystem, OpenShift might be a more comfortable choice.
 
 Your final decision should consider factors like deployment complexity, budget, and specific needs. If you need customization capabilities and have the resources, choose Kubernetes. For a faster cloud transition and if you're okay with the cost, OpenShift is a strong choice.
 

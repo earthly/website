@@ -946,7 +946,7 @@ The filter name is the name of the function in our **"titlecolor_filter.py"** mo
 
 ## Conclusion
 
-Django template filters spice up your HTML templates. We've dived into Django's built-in filters and how to create a custom one if you need something special. You're now equipped to use these filters and even make your own. 
+Django template filters spice up your HTML templates. We've dived into Django's built-in filters and how to create a custom one if you need something special. You're now equipped to use these filters and even make your own.
 
 Want to streamline your Django build process further? Give [Earthly](https://www.earthly.dev/) a go! It's a tool that can help optimize your build process, making it more efficient and less error-prone.
 

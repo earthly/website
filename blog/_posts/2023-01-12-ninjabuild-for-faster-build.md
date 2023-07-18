@@ -321,7 +321,7 @@ As you can see, Ninja is able to build the updated 1001-file project in only thr
 
 ## Conclusion
 
-So, we've dived deep into build systems and Ninja, covering how to install and use Ninja for your C++ projects. Remember, tools like build systems are your best pals for automating software building, testing, and deployment. Ninja is just one awesome tool that can save you heaps of time. 
+So, we've dived deep into build systems and Ninja, covering how to install and use Ninja for your C++ projects. Remember, tools like build systems are your best pals for automating software building, testing, and deployment. Ninja is just one awesome tool that can save you heaps of time.
 
 And if you loved Ninja, you might want to take a peek at [Earthly](https://earthly.dev/) for more build automation improvements.
 

@@ -390,7 +390,7 @@ The CURL request sends a DELETE request to the `api/v1/:company` endpoint to del
 
 ## Conclusion
 
-This tutorial guided you through building web applications using the Gin Framework, including creating an API with CRUD functionalities. To further your skills, explore the [Gin documentation](https://gin-gonic.com/docs/). It will help you implement more complex functionalities for your apps. 
+This tutorial guided you through building web applications using the Gin Framework, including creating an API with CRUD functionalities. To further your skills, explore the [Gin documentation](https://gin-gonic.com/docs/). It will help you implement more complex functionalities for your apps.
 
 And as you continue to develop your web applications, consider taking your build process up a notch with [Earthly](https://www.earthly.dev/). It's an efficient tool for creating reproducible builds, which can be a great addition to your development toolkit.
 

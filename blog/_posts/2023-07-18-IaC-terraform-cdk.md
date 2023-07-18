@@ -664,7 +664,7 @@ That's not the case anymore. With CDKTF, you can use your language's testing fra
 
 CDKTF offers a cool way to build Infrastructure as Code (IaC) using your favorite programming languages. It generates a JSON configuration that Terraform can use instead of the usual HCL. This article showed you basics of using CDKTF. While it may seem unnecessary for simple tasks, its true power shines in complex Terraform modules.
 
-To dig deeper into CDKTF, check out these HashiCorp articles about [integrating existing Terraform modules with CDKTF](https://developer.hashicorp.com/terraform/cdktf/concepts/modules) and [constructs building blocks](https://developer.hashicorp.com/terraform/cdktf/concepts/constructs). 
+To dig deeper into CDKTF, check out these HashiCorp articles about [integrating existing Terraform modules with CDKTF](https://developer.hashicorp.com/terraform/cdktf/concepts/modules) and [constructs building blocks](https://developer.hashicorp.com/terraform/cdktf/concepts/constructs).
 
 And if you're looking to streamline your build automation process further, you might want to give [Earthly](https://www.earthly.dev/) a try! It's a powerful tool that can complement your use of CDKTF by providing a consistent and efficient build environment.
 

@@ -303,7 +303,7 @@ Despite their flexibility and maintainability, Terraform variables have some lim
 
 ## Conclusion
 
-In this article, you've learned about Terraform variables, their uses, and limitations. For a deeper understanding, check out the [official documentation](https://developer.hashicorp.com/terraform/language/values/variables) or [this detailed tutorial](https://upcloud.com/resources/tutorials/terraform-variables). 
+In this article, you've learned about Terraform variables, their uses, and limitations. For a deeper understanding, check out the [official documentation](https://developer.hashicorp.com/terraform/language/values/variables) or [this detailed tutorial](https://upcloud.com/resources/tutorials/terraform-variables).
 
 And if you love automation and want to streamline your build processes even further, you might want to check out [Earthly](https://www.earthly.dev/). It's a powerful tool hat can complement your Terraform knowledge and enhance your overall development workflow.
 

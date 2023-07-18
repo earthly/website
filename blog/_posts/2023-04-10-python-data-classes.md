@@ -713,7 +713,7 @@ Though you can add methods to the data class, if you find yourself adding too ma
 
 ## Conclusion
 
-This tutorial provided insights into Python data classes, including their creation, setting default values, relevance of type hints, and immutable instances. You are now ready to refactor data-oriented Python classes into data classes. 
+This tutorial provided insights into Python data classes, including their creation, setting default values, relevance of type hints, and immutable instances. You are now ready to refactor data-oriented Python classes into data classes.
 
 The [next piece](/blog/more-on-python-data-classes/) expands on inheritance and performance optimizations in Python 3.10. Keep coding!
 

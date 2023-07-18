@@ -282,7 +282,7 @@ This will empty and remove the storage that was provisioned by your provider. Th
 
 ## Conclusion
 
-Persistent volumes in Kubernetes enable data storage independent of pods, interfacing with various types of storage through storage classes. This tutorial familiarized you with persistent volume use cases, their distinction from regular volumes, and their implementation inside a Kubernetes cluster. Additionally, you learned about kubectl commands to interact with volumes, allowing seamless running of stateful applications in Kubernetes without data loss post-container restarts. 
+Persistent volumes in Kubernetes enable data storage independent of pods, interfacing with various types of storage through storage classes. This tutorial familiarized you with persistent volume use cases, their distinction from regular volumes, and their implementation inside a Kubernetes cluster. Additionally, you learned about kubectl commands to interact with volumes, allowing seamless running of stateful applications in Kubernetes without data loss post-container restarts.
 
 As you continue to explore and enhance your Kubernetes workflows, you might want to give [Earthly](https://www.earthly.dev/), the efficient build automation tool, a shot. It could be a valuable addition to your development toolkit.
 
