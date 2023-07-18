@@ -12,8 +12,6 @@ internal-links:
  - write code
  - rust generics
  - flexible and reusable code
-excerpt: |
-    Learn how to write an engaging article with this checklist that covers everything from creating a catchy title to adding captivating images and incorporating internal links. Perfect for both new and experienced writers!
 ---
 
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster by using containerization. If you're interested in a different approach to building and packaging software, then [check us out](/).**
@@ -304,6 +302,8 @@ Type-level programming can be used for various purposes, including compile-time 
 
 ## Considerations When Using Generics
 
+![Using]({{site.images}}{{page.slug}}/using.png)\
+
 While generics can be a powerful tool for creating flexible and reusable code, there are some considerations to consider when using them.
 
 ### Strike a Balance between Generics and Concrete Types
@@ -333,8 +333,3 @@ In this article, you learned about the basics of generics in Rust, including gen
 You can learn more about Rust and generics by visiting the official [Rust documentation](https://doc.rust-lang.org/book/ch10-00-generics.html). Additionally, on the Rust website, you can find several Rust community resources, forums, and blogs that discuss Rust and its features, including generics, in more detail.
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-- [ ] Optional: Find ways to break up content with quotes or images
-
