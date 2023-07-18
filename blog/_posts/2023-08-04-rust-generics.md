@@ -322,6 +322,8 @@ In this article, you learned about the basics of generics in Rust, including gen
 
 You can learn more about Rust and generics by visiting the official [Rust documentation](https://doc.rust-lang.org/book/ch10-00-generics.html). Additionally, on the Rust website, you can find several Rust community resources, forums, and blogs that discuss Rust and its features, including generics, in more detail.
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
@@ -331,4 +333,3 @@ You can learn more about Rust and generics by visiting the official [Rust docume
 - [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
