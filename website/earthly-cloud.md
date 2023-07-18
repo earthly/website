@@ -1,6 +1,6 @@
 ---
 title: Earthly Cloud
-description: Earthly Cloud is a SaaS build automation platform with consistent builds; an instantly available build cache for ridiculous build speed; a better developer experience; and easy, incremental adoption, working seamlessly with any CI or as a standalone CI.
+description: Earthly Cloud is a SaaS build automation platform with consistent builds; an instantly available build cache for ridiculous build speed; a next-gen developer experience; and that works seamlessly with any CI or as a standalone CI.
 layout: default
 ---
 
