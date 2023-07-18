@@ -178,5 +178,4 @@ In this article, we reviewed platform engineers' mistakes, what they can lead to
 
 Platform engineering is critical for the smooth functioning of applications and services. Mistakes in platform engineering can have serious consequences. Platform engineers can avoid common mistakes by prioritizing the best practices stated in this article.
 
-
 {% include_html cta/bottom-cta.html %}
