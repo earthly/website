@@ -180,13 +180,9 @@ Certainly, Jupyter notebooks and REPLs are essential in some domains but unknown
 </div>
 
 ## Conclusion
+<!--sgpt-->
+Developer tooling significantly contributes to a language's usability and is constantly evolving. When a new tooling innovation emerges, new programming languages incorporate it, giving them an edge and thus improving the overall developer experience. As a result, newer languages often have a clear, well-considered approach for a task, while older ones may have multiple conflicting ways or none, making them seem outdated. 
 
-The tooling that enables developers to get work done is a massive part of what makes a language useable. Tooling is also a changing landscape where standards keep rising.
-
-It goes like this:
-
-When a new developer tooling innovation is discovered, newer programming languages get a chance to bake that innovation into their language tooling. Doing so gives them an incremental advantage, and these increments add up over time to a better developer experience.
-
-So newer languages have one clear, well thought out way to do something, and older languages will have either many contradictory ways, or no ways at all, to do the same thing. And this makes older languages feel old.
+In this context, if you're intrigued by modern tooling, you might want to level up your builds with [Earthly](https://www.earthly.dev/). Regardless of the language you're coding in, Earthly can be a game-changer, offering a fresh and efficient approach to build automation.
 
 {% include_html cta/bottom-cta.html %}

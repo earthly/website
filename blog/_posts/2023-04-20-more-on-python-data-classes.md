@@ -705,16 +705,13 @@ Access time without slots: 0.11
 Cool, the memory savings and attribute access times when using data classes with slots seem promising! Be sure to try out for a few different classes to understand performance gains.
 
 ## Conclusion
+<!--sgpt-->
+In this tutorial series on data classes, we've explored the `__post_init__` method, inheritance in data classes, and performance enhancements with `__slots__`. This foundation will set you up to succeed in creating functional data classes, which can save you significant coding time. 
 
-And that's a wrap! In this second (and final part) of the data classes tutorial series, we covered the `__post_init__` method, how inheritance works in data classes, and performance gains using `__slots__`.
+As you continue to build your Python projects, you might want to consider making your build automation more efficient with [Earthly](https://www.earthly.dev/). It's a tool that can help streamline your build process and ensure consistency across different environments.
 
-So did we cover *everything* about data classes? No. But what you've learned should help you hit the ground running when you start writing functional data classes. With less boilerplate code to write and promising performance gains, switching to data classes can save you hours per week.
-
-See you all soon in another tutorial. Until then, happy coding!
+Dive deeper into `__slots__` via this [StackOverflow thread](https://stackoverflow.com/questions/472000/usage-of-slots). Remember, setting `slots` to `True` prevents adding instance attributes dynamically, but you can manually add a `__dict__` to the `__slots__` to allow this. See you in our next tutorial and until then, keep coding!
 
 {% include_html cta/bottom-cta.html %}
-
 [^1]:
-I found [this StackOverFlow discussion thread](https://stackoverflow.com/questions/472000/usage-of-slots) super helpful to learn about `__slots__`. I recommend reading through it to further your understanding of `__slots__`.
 [^2]:
-When you set `slots` to `True`, you can no longer add instance attributes on the fly. But you can instead set `__slots__` manually and add a `__dict__` (in addition to the names of instance variables) to dynamically add fields. The memory footprint savings in this case may be lower.

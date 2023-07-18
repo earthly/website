@@ -287,9 +287,9 @@ spec:
 ~~~
 
 ## Conclusion
+<!--sgpt-->
+In this tutorial, we covered using Kubeval and ValidKube for file validation and YAML clean up in Kubernetes. Using these tools will bolster your Kubernetes security, simplify tasks, and catch cluster errors. They help uncover hidden flaws in your manifests which can significantly improve your cluster's health over time. Remember, in Kubernetes, security isn't an afterthought but a priority. 
 
-In this tutorial, you have learned how to validate files using Kubeval and how to clean YAML files using ValidKube.
-
-Kubernetes security should never be an afterthought; use these two tools to help you apply secure resources to your cluster. Kubernetes is dynamic and complex, using these security tools will help you simplify Kubernetes security tasks and catch Kubernetes cluster errors more easily. There are can be many errors and bugs that you do not know exist in your manifests; Kubescape and ValidKube will detect and show you flaws that you never knew before. Consistently applying valid manifests to your cluster will improve and maintain your cluster's health over time.
+If you're also looking for consistent build automation in your development process, you might want to give [Earthly](https://www.earthly.dev/) a shot. It could be the tool you need to streamline your builds and ensure consistency across different environments.
 
 {% include_html cta/bottom-cta.html %}

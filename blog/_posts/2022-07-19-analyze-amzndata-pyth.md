@@ -395,13 +395,13 @@ bar = df.plot.bar(x='Order Date', y='Item Total', rot=30, color="#36b6fa", figsi
 Awesome, now we have a beautiful bar chart representing how much we've spent on different dates!  
 
 ## Conclusion
+<!--sgpt-->
+In this tutorial, we explored data analysis using Python libraries like Pandas and Matplotlib. Key learnings include:
 
-In this tutorial, we learned some key points of data analysis. As you see, with libraries like [Pandas](/blog/stop-using-pie-charts), data analysis is more accessible. We also learned how to work with matpotlib, a library used to visualize data in Python.
+* Pandas can greatly simplify data analysis with its numerous built-in functionalities.
+* Pre-processing and cleaning data is a crucial step before performing any analysis.
+* Visualizations using Matplotlib can help to interpret data more effectively.
 
-The key takeaways of this tutorial are:
-
-* Pandas is a powerful data analysis library used very often in Python. It has many built-in functions for easier data analysis.
-* Cleaning data before starting analysis with calculations is very important, and it makes the work easier.
-* Visualizing data in a graph makes the data clear.
+As you continue to explore Python and its powerful libraries, you might also be interested in automating your build processes. If so, give [Earthly](https://www.earthly.dev/) a whirl. It's a tool that can help streamline your development workflow, especially if you're working with complex projects.
 
 {% include_html cta/bottom-cta.html %}

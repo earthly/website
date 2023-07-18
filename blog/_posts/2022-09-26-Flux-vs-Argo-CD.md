@@ -361,9 +361,9 @@ can use conventional tooling (such as kustomize overlays) to [generate GitOps ma
 |Multi-cluster support|✅|✅|
 
 ## Conclusion
+<!--sgpt-->
+In this article, we explored GitOps frameworks, focusing mainly on core capabilities, leaving out features like multi-tenancy, RBAC, notifications, image automation, etc. We found that Argo CD and Flux are comparably efficient, with each having its pros and cons. After careful deliberation, at Turbine.ai we chose Flux due to its superior support for OTS Helm charts and operational simplicity. 
 
-For those of you currently evaluating GitOps frameworks, I hope this article proved helpful. It's far from a complete evaluation though, as I concentrated on the core GitOps capabilities, there wasn't much word on additional features such as multi-tenancy, RBAC, notifications, image automation, event-driven automation or the nice graphical UI Argo CD offers.
-
-As we saw Argo CD and Flux are pretty much on-par regarding core functionality. Each of them has caveats, so you should ideally weigh the importance of each check box in your organization. For us at Turbine.ai, it was a very close call, but we settled with Flux in the end, mostly because of its better support for OTS Helm charts and operational simplicity compared to Argo CD, which we found important at our (small) size.
+As you prioritize your organization's specific needs when choosing between these platforms, you might also want to consider supercharging your build automation. If that's the case, give [Earthly](https://www.earthly.dev/) a try! It could be a valuable addition to your GitOps practices.
 
 {% include_html cta/bottom-cta.html %}

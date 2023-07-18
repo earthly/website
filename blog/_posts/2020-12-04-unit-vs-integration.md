@@ -116,7 +116,11 @@ Some very thoughtful developers think [unit tests can and should round trip to t
 The thing is that each situation is unique and advice that is written based on what works in other contexts should be not followed blindly. A question to keep in mind is what kind of defects would this test catch. If each test is written thoughtfully to improve software reliability, and if tests are removed when they no longer have value then the specific testing approach that delivers the most value for a particular project will be discovered over time.
 
 ## See Also
+<!--sgpt-->
+Check out these valuable resources: 
+- [Mistakes to avoid with Docker Compose](/blog/youre-using-docker-compose-wrong/)
+- [Guide on Integration Testing](https://docs.earthly.dev/guides/integration)
+- [Making Integration Tests Less Flaky](https://dev.to/adamgordonbell/how-to-make-integration-tests-less-flaky-bel)
 
-- [You are using Docker Compose wrong](/blog/youre-using-docker-compose-wrong/)
-- [Integration testing guide](https://docs.earthly.dev/guides/integration)
-- [Making Integration tests less flaky](https://dev.to/adamgordonbell/how-to-make-integration-tests-less-flaky-bel)
+Also, if you're looking to ensure your build processes are efficient and consistent, you might want to take a look at [Earthly](https://www.earthly.dev/).
+

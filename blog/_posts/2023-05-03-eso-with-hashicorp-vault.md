@@ -670,7 +670,9 @@ kubectl get secret -n namespace
 </div>
 
 ## Conclusion
+<!--sgpt-->
+In this tutorial, you've learned to enhance the security of your Kubernetes secrets using the External Secret Operator and integrating it with HashiCorp vault. You've been guided through setting up a ClusterSecretStore, SecretStore, and an ExternalSecret resource. Feel free to experiment with different key management systems as per your requirements. 
 
-I hope you understand how useful the External Secret Operator is in Kubernetes. You've learned how to use it with HashiCorp vault by configuring a ClusterSecretStore, SecretStore, and an ExternalSecret resource. You now know how to secure your Kubernetes secrets further. You can explore further using another key management system if you like.
+Now that you've boosted your Kubernetes security, why not level up your build automation too? Give [Earthly](https://www.earthly.dev/) a shot. It could be the next step in optimizing your development workflow.
 
 {% include_html cta/bottom-cta.html %}

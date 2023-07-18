@@ -199,23 +199,15 @@ In other words, Rust, Kotlin, and the other green languages may still be in a ho
 Some newer or historically less popular programming languages might be better than older or more mainstream languages, but our ability to judge seems quite biased. In particular, developers are giving a halo to languages that are newer or were not used commonly in the past, and they are giving horns to languages that have been around longer. I think this is because nobody likes maintaining someone else's code. And also, because of Joel's Law: reading real-world is code hard. Building something new is fun, and new languages are used for that more often.
 
 ## The Lifecycle of Programming Language Hype
+<!--sgpt-->
+Digging into language usage data to guide our [docs](https://docs.earthly.dev/) and [build examples](https://github.com/earthly/earthly/tree/main/examples), led to the observation of a programming language life cycle. Popular languages get widely used, leading to maintenance responsibilities and eventual dislike, motivating exploration of newer languages. Ruby's journey from being a hot language in 2007 to now being unloved supports this theory. Even the most loved languages of today like Rust, Kotlin, Julia, and Go might face the same cycle. 
 
-I originally started digging into these numbers to establish a ranking for what languages were most used and loved by software developers. I was going to use this to guide adding more examples to our [docs](https://docs.earthly.dev/) and our [build examples](https://github.com/earthly/earthly/tree/main/examples). What I came away with instead was the idea of a programming language life cycle: loved programming languages get used a lot, which leads to code maintenance, which causes people to dislike them, which leads to people looking for greener pastures and trying out a newer language. Popular frameworks probably follow this lifecycle as well.
+However, no matter what programming language you favor, [Earthly](https://www.earthly.dev/) can supercharge your build process. It's a tool that transcends language preferences and can be a valuable addition to your development toolkit. Give it a whirl!
 
-<div class="wide">
+This exploration was guided by criteria and not data hunting. TIOBE as a measure was also considered despite its paywall for historical data.
+
  {% picture {{site.pimages}}{{page.slug}}/hype-wide.png --alt A graph showing hype decreasing overtime for a language %}
-<figcaption>The lifecycle of programming language hype</figcaption>
-</div>
-
-I don't have data for this, but I distinctly remember Ruby being the hottest language back in 2007, and although it does have more competition today, Ruby is a better language now than it was then. Yet now it is dreaded. Part of the difference, it seems to me, is that now people have 14 years' worth of rails apps to maintain. That makes Ruby is a lot less fun than when it was all new projects. So watch out Rust and Kotlin and Julia and Go: you too will eventually lose your halo.[^4]
-
  [^1]: 2020 [Graphical](https://insights.stackoverflow.com/survey/2020) and [Raw](https://drive.google.com/file/d/1dfGerWeWkcyQ9GX9x20rdSGj7WtEpzBB/view) results.
  [^2]:
-     I came up with the criteria first. I didn't hunt for data to back up my original idea.
-
-     I did consider using language creation date to determine green vs. brown status, but some languages have been around for some time but only found usage relatively recently. 
-
-     TIOBE is measured like [this](https://www.tiobe.com/tiobe-index/programming-languages-definition/) and their historical data is only available if you pay, so I am using the Wayback Machine.  
  [^3]: TIOBE doesn't include HTML/CSS because it doesn't consider them Turing complete and therefore not a programming language.  [Shell scripts](/blog/understanding-bash) are measured separately by TIOBE, and VBA is not in the list of languages measured at all, as far as I can see.
-
  [^4]: Not all brown languages are dreaded however: Python, C#, Swift, JavaScript, and SQL remain loved and I would love to hear if anyone has theories on why. Also [Scala](/blog/top-5-scala-blogs) and Haskell, two languages I have a soft spot for, are the only green languages on the dreaded list. Is this just noise or is there something else going on there?

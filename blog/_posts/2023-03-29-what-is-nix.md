@@ -321,25 +321,12 @@ What I learned from talking to Nix users is that what really mattered to them, r
 From that single idea you get a whole [ecosystem](https://nixos.wiki/wiki/Nix_Ecosystem) of tools. We mainly covered the Nix language, the Nix Package Manager, and NixOS, but there's also a continuous build system called Hydra, nix shell, and a deployment and provisioning tool called NixOps. Probably, there's even more.
 
 ### Ok, Thanks. Now What?
+<!--sgpt-->
+Venturing into Nix? The package manager is a great entry point, requiring no prior knowledge of the Nix language and posing no interference with your existing package manager. It could be your answer to handling conflicting dependencies across multiple projects or dealing with build issues. 
 
-If you're looking to experiment with Nix, the package manager seems to be the easiest to adopt. You don't need to learn how to write the Nix language to start using it, and installing it on Linux or Mac won't interfere with your current package manager set up. If you're someone who's constantly jumping from project to project and worried about conflicting dependencies or if you're constantly running into build issues related to package versions, it could be a solution.
+If you're intrigued by Nix's dependency management, you should also check out [Earthly](https://www.earthly.dev/), another tool for reproducible and efficient builds. 
 
-Learning the Nix language seems like the biggest lift, especially if you don't already have a background in functional programming, but it also seems to offer the most reward (within the Nix ecosystem), as doing so makes working with other Nix tools much more intuitive.
-
-If you're interested in learning more about Nix here are some resources I found helpful while writing this article.
-
-- [The Nix wiki](https://nixos.wiki/wiki/Main_Page)
-
-- [Nix Pills](https://nixos.org/guides/nix-pills/)
-
-- [Nix Pkgs Repo](https://github.com/NixOS/nixpkgs)
-
-- [Zero to Nix](https://zero-to-nix.com/) - "An unofficial, opinionated, gentle introduction to Nix" created by Determinate Systems. It's a great resource, though it does heavily favor that you use their [Determinate Nix Installer](https://zero-to-nix.com/concepts/nix-installer), which I didn't mess with.
-
-- [This Graham Christensen talk](https://www.youtube.com/watch?v=pfIDYQ36X0k) about Nix and containers.
-
-- Check out how [Shopify](https://shopify.engineering/shipit-presents-how-shopify-uses-nix) and [Replit](https://blog.replit.com/nix) have started using Nix.
+Learning the Nix language, albeit challenging, can yield the most benefits within the Nix ecosystem. For further exploration, check out resources like [The Nix wiki](https://nixos.wiki/wiki/Main_Page), [Nix Pills](https://nixos.org/guides/nix-pills/), and others listed above, including real-life applications at companies like [Shopify](https://shopify.engineering/shipit-presents-how-shopify-uses-nix) and [Replit](https://blog.replit.com/nix).
 
 {% include_html cta/bottom-cta.html %}
-
 [^1]: Eelco Dolstra created Nix as part of his PhD Thesis in 2003.

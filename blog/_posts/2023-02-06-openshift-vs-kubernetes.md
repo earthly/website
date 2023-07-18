@@ -143,11 +143,11 @@ Kubernetes is a powerful container orchestrator that can easily handle hundreds 
 In contrast, OpenShift lacks in this area and is still in an experimental stage with major version upgrades. Upgrades are still manual and can be done by running the installation scripts again with a new version. Minor upgrades are relatively simpler with the help of [CLI](https://docs.openshift.com/container-platform/4.11/updating/updating-cluster-cli.html) or [web console](https://docs.openshift.com/container-platform/4.11/updating/updating-cluster-within-minor.html). But the process is a bit more involved in comparison to Kubernetes upgrades.
 
 ## Conclusion
+<!--sgpt-->
+Kubernetes and OpenShift both offer unique approaches to container orchestration. Kubernetes offers greater flexibility and customization, while OpenShift provides a more secure, plug-and-play experience, albeit at a cost. For beginners, or those in the Red Hat ecosystem, OpenShift might be a more comfortable choice. 
 
-Kubernetes offers a lot of flexibility to customize deployments and it has the whole [CNCF landscape](https://landscape.cncf.io/) integrated to support any pitfalls. On the other hand, OpenShift is a secure, ready-to-deploy, and preconfigured flavor of Kubernetes, and it charges a premium for its features with a wide range of ready-to-use internal integrations.
+However, if you're considering OpenShift or Kubernetes, why not also check out [Earthly](https://www.earthly.dev/)? It might just simplify your build automation process. 
 
-Due to its additional features, OpenShift may be a better option for those who are new to container orchestration, who want a simpler adoption path, or who are already familiar with the Red Hat ecosystem.
-
-Choosing the right container orchestration tool would require factoring in the complexity of deployments, budget, and customization requirements amongst others. Kubernetes is a good choice when you want customization and have the resources to support it. Opting for OpenShift will be a great choice when you want to be on the cloud quickly and are willing to pay for it.
+Your final decision should consider factors like deployment complexity, budget, and specific needs. If you need customization capabilities and have the resources, choose Kubernetes. For a faster cloud transition and if you're okay with the cost, OpenShift is a strong choice.
 
 {% include_html cta/bottom-cta.html %}

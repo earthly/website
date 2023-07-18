@@ -764,9 +764,7 @@ In this tutorial, we were able to configure two Postgresql databases for data re
 There is still a lot a long way to go forward from here. Using the same `secondary_db` configuration we could configure more replicas and connect them to the primary database. We could also configure one of the replicas to take over the role of the primary database and serve write operations when the primary database goes down.
 
 ## References
-
-° [Postgresql documentation on Replication Configuration](https://www.postgresql.org/docs/current/runtime-config-replication.html)
-
-° [Django official documentation on managing multiple databases](https://docs.djangoproject.com/en/4.1/topics/db/multi-db/#using-routers)
+<!--sgpt-->
+Check out Postgresql's documentation on [Replication Configuration](https://www.postgresql.org/docs/current/runtime-config-replication.html) and Django's guide on [managing multiple databases](https://docs.djangoproject.com/en/4.1/topics/db/multi-db/#using-routers) for more details. After you've set up your Django database replication, you might want to consider optimizing your build process too. For that, you can check out [Earthly](https://www.earthly.dev/), a tool that offers some cool build automation features.
 
 {% include_html cta/bottom-cta.html %}

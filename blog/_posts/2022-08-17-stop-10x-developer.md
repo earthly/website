@@ -85,15 +85,10 @@ You can't measure developer skill on a single axis like Leetcode scores or like 
 </div>
 
 ## On the Extremes of Software Development
+<!--sgpt-->
+The concept of a 10X developer is misleading, suggesting skill interchangeability and underestimating the value of expertise. Instead, we should use terms like 'expert' or 'specialist' to acknowledge specific skills. For instance, 'John is a video encoding expert' or 'What I learned working with a postgres internals specialist'. Recognize that skills differ widely and people can rapidly hone their craft. So, let's drop the '10x' and be more precise and appreciative of individual skills and talents. 
 
-The 10X meme is both too extreme, by implying that Fabrice Bellard[^4] could kick out simple crud tasks at 10X the speed I do, and not extreme enough, suggesting that I could build `ffmpeg` and `qemu` the same as Fabrice if I was just given more time.
-
-[^4]: [Fabrice](https://bellard.org/) has created so many [amazing pieces](https://smartbear.com/blog/fabrice-bellard-portrait-of-a-super-productive-pro/) of software.
-
-And also, the 10x meme, and how it's often used, implies that skills are interchangeable. Should a great database internals expert be able to build a great micro-services architecture?
-
-So what term should you use instead of 10x developer? Try expert. As in 'John is a video encoding expert'. Or specialist: 'What I learned working with a postgres internals specialist'. Or if you want to sound like an MBA, use talent: 'I really need some exceptional compiler-backend talent to help with the incremental-compilation design'.
-
-I guess what I'm saying is: terminology matters and we can do better than `10x`. We can be specific. Skills are not homogeneous, and people can quickly [improve their craft](https://danluu.com/p95-skill/) as long as we don't treat talent like some mythical quality.
+Speaking of honing skills, if you're looking to level up your build automation skills, you might want to give [Earthly](https://www.earthly.dev/) a whirl! It's a tool that can help you streamline your development process and focus on what you do best.
 
 {% include_html cta/bottom-cta.html %}
+[^4]: [Fabrice](https://bellard.org/) has created so many [amazing pieces](https://smartbear.com/blog/fabrice-bellard-portrait-of-a-super-productive-pro/) of software.

@@ -390,9 +390,9 @@ rules: \
 </table>
 
 ## Conclusion
+<!--sgpt-->
+In this tutorial, you've learned how to use RBAC for namespace and cluster-level implementations. RBAC is crucial for access control as it limits unauthorised service accounts and users, helping to prevent common issues like secret sprawling. Remember: a lost key is as good as a lost system. 
 
-This tutorial has equipped you with the skills and knowledge on how to implement RBAC at namespace level and cluster level.
-
-Role-based access control should not be optional as it enforces access restriction to specific unauthorized service accounts and users. Secret sprawling is very common and it can be controlled by who accesses secrets and public keys using RBAC. Losing keys to unauthorized users is the same as losing your system.
+Now that you've secured your Kubernetes with RBAC, the next step is to optimize your build process. For that, you might want to give [Earthly](https://www.earthly.dev/) a shot! It's an excellent tool for streamlining and enhancing your build process.
 
 {% include_html cta/bottom-cta.html %}

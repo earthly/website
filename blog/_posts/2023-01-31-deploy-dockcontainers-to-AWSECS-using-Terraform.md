@@ -683,7 +683,11 @@ terraform destroy
 ~~~
 
 ## Conclusion
+<!--sgpt-->
+In this tutorial, we explored using [Terraform](/blog/kubernetes-terraform) for automating cloud infrastructure tasks. We began with local application creation and then automated its deployment to the AWS ECS platform using Terraform. 
 
-In this tutorial, you've learned how to use [Terraform](/blog/kubernetes-terraform) to automate your cloud infrastructure tasks. You started by creating and running an application locally. Using the configured AWS, you used Terraform to automate the deployment of the same application to the AWS ECS platform. I hope you found this guide helpful.
+As you continue to refine your build process, you might want to consider other tools that can further streamline your workflow. If you're interested in efficient container-based builds, give [Earthly](https://www.earthly.dev/) a spin. It's designed to make your build process even smoother.
+
+I hope this guide proved useful to you and that it opens up new possibilities for your cloud infrastructure tasks.
 
 {% include_html cta/bottom-cta.html %}

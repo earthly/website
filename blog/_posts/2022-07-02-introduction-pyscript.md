@@ -270,11 +270,9 @@ Learn more about PyScript and Pyodide from these resources.
 - [PyScript Examples](https://pyscript.net/examples/)
 
 ### Conclusion
+<!--sgpt-->
+In this tutorial, we've explored PyScript, a tool that allows running Python code in HTML with functionalities like external packages, Python REPLs, and visualization of Python-generated images in a browser. PyScript, an alpha stage tool, makes it easier to use Python scripts in HTML and its scientific stack on the client side, though it's not yet production-ready. 
 
-In this tutorial, you learned how to use PyScript to run Python code in HTML, and how to implement various PyScript functionalities such as using external packages, running Python REPLs, and visualizing images generated in Python code in a browser.
-
-Before PyScript, it wasn't this easy to run Python REPL in the browser, run Python scripts in HTML, or use the Python scientific stack(Numpy, Pandas, MatPlotLib, Seaborn, e.t.c) on the client side.
-
-PyScript could become an important tool in your toolset. it's still very new, in its alpha stage ( so don't use it for production yet) but it looks very promising.
+As you continue to build your PyScript apps, consider boosting your efficiency with [Earthly](https://www.earthly.dev/), your new favorite tool for reproducible builds. This tool can be a game-changer in ensuring consistent and reliable results in your development process.
 
 {% include_html cta/bottom-cta.html %}

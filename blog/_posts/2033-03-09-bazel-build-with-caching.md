@@ -203,9 +203,11 @@ Remember that using the `--nocache` causes Bazel to rebuild the necessary depend
 - For debugging reasons, you need the full output of the build process.
 
 ## Conclusion
+<!--sgpt-->
+Leveraging Bazel's remote cache can greatly enhance your build performance and reliability, enabling efficient storage and access of build artifacts. This guide walked you through the process of setting up both local and remote caches for better Bazel build performance. 
 
-Using remote cache for Bazel significantly improves your builds' performance and reliability, making storing and accessing build artifacts from multiple machines and locations easy.
+Looking to level up your build process even more? Give [Earthly](https://www.earthly.dev/) a whirl for optimized, reproducible builds. It's a powerful tool that can further streamline your build process, ensuring consistency and efficiency.
 
-In this guide, you learned about the concept of [Bazel](/blog/bazel-build) cache builds. After reading, you should be able to set up the local and remote cache to improve Bazel build performance. For more information, check out [this guide for any command-line reference](https://bazel.build/reference/command-line-reference) you may need.
+For additional command-line references, check out [this guide](https://bazel.build/reference/command-line-reference).
 
 {% include_html cta/bottom-cta.html %}

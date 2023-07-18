@@ -167,15 +167,9 @@ The generator function yields a file object when it is called. When the `with` s
 When the code in the `with` statement block has finished executing, Python executes the `finally` block, which closes the file. This ensures that the file is always closed, even if an error occurs while writing to the file.
 
 ## Conclusion
+<!--sgpt-->
+The `with` statement in Python, used with context managers, provides a simpler way than 'try-finally' blocks to ensure resources are immediately closed after use. In this tutorial, you've learned its function, how to use it in your custom objects and how it manages resources even when exceptions arise. While it's commonly used in file handling, it has wider applications too. 
 
-The `with` statement in Python wraps the execution of a block of code with methods defined by a context manager. The `with` statement provides a concise shorthand for a `try-finally` block and ensures that resources are closed immediately after they are used. A context manager can be a function or a class that supports the `with` statement.
-
-Through the example of file handling in Python, you learned:
-
-- How the `with` statement works.
-- How you support the `with` statement in your own user-defined objects with the help of context managers.
-- How the `with` statement helps you manage resources by closing the resources when an exception is raised.
-
-The with statement is commonly used for reading from or writing to a file, but it can also be utilized for other purposes. You are welcome to further explore the capabilities of the `with` statement and context managers.
+As you continue to master Python efficiency with 'with', why not explore build efficiency too? Check out [Earthly](https://www.earthly.dev/). This tool could be your next step in optimizing your development process. Feel free to explore these capabilities further.
 
 {% include_html cta/bottom-cta.html %}

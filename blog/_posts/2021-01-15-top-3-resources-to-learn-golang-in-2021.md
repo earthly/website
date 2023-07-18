@@ -135,9 +135,11 @@ At the time of writing the book is only in beta and I have only read the free 1s
 - [Resources for new Go Programmers](https://dave.cheney.net/resources-for-new-go-programmers)
 
 ### Go Books
-
+<!--sgpt-->
+Here are some great resources for further learning:
 - [Concurrency in Go: Tools and Techniques for Developers](https://www.goodreads.com/en/book/show/30413199-concurrency-in-go)
 - [The Go Programming Language](https://www.goodreads.com/book/show/25080953-the-go-programming-language)
 - [Head First Go](https://www.goodreads.com/book/show/36800891-head-first-go)
 
-<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+Take advantage of them to deepen your understanding of Go. And if you're diving into Go, you might want to check out [Earthly](https://www.earthly.dev/) for efficient and consistent build automation. It could be a valuable tool in your Go development toolkit.
+

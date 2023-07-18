@@ -386,13 +386,9 @@ There are many other
 [features](https://demo-video-1.s3.us-east-2.amazonaws.com/SigNoz-Demo-Sept2-2022.mp4) like alerting, custom dashboard, and service mapping on [SigNoz](https://signoz.io/docs/) that you can use to better analyze and visualize your tracing data.
 
 ## Conclusion
+<!--sgpt-->
+In this tutorial, we've covered the definitions, importance, and workings of distributed tracing. We've also delved into its three components: spans, tags, and traces. Lastly, we have guided you through the setup process of distributed tracing on your cluster using Signoz and Application Performance Monitoring agents on each required microservice. 
 
-In this article, you learned about the definition of distributed tracing. Distributed tracing lets you see the flow of data. You understood why it's important and how it works. You learned about the three layers of a distributed tracing system, namely:
-
-- Span- The execution of a specific body of work.
-- Tags- These are key-value pairs that provide additional information about spans.
-- Trace- A trace represents all spans associated with each other within an interval.
-
-Finally, you learned how to set up distributed tracing on your [cluster](/blog/kube-bench) by installing Application Performance Monitoring agents (APM) on every microservices that is needed to be traced using Signoz.  
+As you continue to optimize your microservices, you might also want to consider improving your build processes. If that's the case, give [Earthly](https://www.earthly.dev/) a shot. It's a tool designed to streamline and enhance your build automation, making it an excellent companion for managing complex, multi-component projects.
 
 {% include_html cta/bottom-cta.html %}

@@ -347,14 +347,11 @@ Here, you've added the `-u` flag to sort. It now only displays the first occurre
 Again, you can see that there are differences between `sort` and `uniq`. While `sort` correctly removes the duplicates, you can't display a count of the distinct values.
 
 ## Conclusion
+<!--sgpt-->
+In this tutorial, you've learned how to use `uniq` to count distinct values in a file, and the importance of sorting and cleaning the file beforehand. We covered how `uniq` works best on well-structured, clean inputs. There are numerous Linux commands to help you tailor your output. 
 
-In this guide, you've learned the following:
+If you've mastered `uniq` and are ready for more Linux tools, why not give [Earthly](https://www.earthly.dev/) a whirl? It's a fantastic tool for automation magic that can further enhance your command line skills.
 
-* You can use the `uniq` command to count distinct values in a file.
-* You'll probably need to use other commands with `uniq` to sort and clean the file before counting with `uniq`.
-* There are many commands in the Linux ecosystem that can help you achieve the specific output you want.
-* `uniq` is pretty good at counting distinct values if the input text is reasonably structured and cleaned up first.
-
-As you continue experimenting with analyzing files and displaying the outputs you require, you'll continue to face challenges. Many of the commands used in this guide have links pointing to resources with more information. You can also peruse the [**Text Processing Commands** page](https://tldp.org/LDP/abs/html/textproc.html) of [The Linux Documentation Project](https://tldp.org), which lists even more text-processing commands that you can use to manipulate text output and files on your own system.
+For further exploration, refer to the additional resources linked in this guide, and [**Text Processing Commands** page](https://tldp.org/LDP/abs/html/textproc.html) from [The Linux Documentation Project](https://tldp.org). Keep experimenting and overcoming challenges that come your way!
 
 {% include_html cta/bottom-cta.html %}

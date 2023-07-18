@@ -468,11 +468,11 @@ class Student:
 ~~~
 
 ## Conclusion
+<!--sgpt-->
+In this tutorial, we explored Python's classes and objects, using classes as templates to make objects with instance attributes and methods. We learned about class variables and methods, which share values across all instances and serve as alternate constructors, respectively. We also discussed static methods not tied to a class or instance. 
 
-In this tutorial, we delved deep into how classes and objects work within the Python programming language. We created classes that serve as templates to create objects that have their own set of data (instance attributes) and functions (instance methods).
+As we continue to level up our Python skills, it's also worth considering how we can optimize our build automation. If you're interested in this, you might want to check out [Earthly](https://www.earthly.dev/). 
 
-We then learned how to use class variables for attributes that take the _same_ value across all instances of a particular class and how class methods can be used as alternative class constructors. We also covered the use of static methods to define related functions that are associated neither with the class nor a particular instance.
-
-In the next tutorial in the series, we'll go over how we can leverage and extend the functionality of existing classes using inheritance in Python.
+Next, we'll learn about extending class functionality with Python inheritance. Stay tuned!
 
 {% include_html cta/bottom-cta.html %}

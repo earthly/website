@@ -604,9 +604,11 @@ Let's review all that we've learned in this tutorial:
 - When you run queries using the database connection as a context manager, successful transactions are automatically committed to the database. And changes are rolled back in the event of errors.
 
 ## Conclusion
+<!--sgpt-->
+In this tutorial, you've learned the basics of querying PostgreSQL databases using psycopg2, including connection establishment, running queries, and exception handling. Now, you can expand your knowledge by adding more tables to your database, defining table relationships, and querying data from multiple tables. 
 
-In this tutorial, I used a simple example to walk you through the basics of querying PostgreSQL databases using psycopg2. I hope you learned how to connect to databases, run queries, and also handle exceptions during the process.
+As you continue to build and expand your Python applications, you might encounter the need for consistent builds across different environments. For this, don't forget to check out [Earthly](https://www.earthly.dev/), a tool designed to ensure reproducibility and efficiency in your build process.
 
-As a next step, you can add more tables to the database, define relationships among them, and query data from multiple tables. Also, try exploring other [features of psycopg2](https://www.psycopg.org/docs/index.html).
+For more on psycopg2 and its features, explore the [features of psycopg2](https://www.psycopg.org/docs/index.html).
 
 {% include_html cta/bottom-cta.html %}

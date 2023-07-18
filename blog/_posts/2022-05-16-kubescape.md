@@ -333,9 +333,9 @@ You will get the following output:
 ![Scan results of logger.yaml]({{site.images}}{{page.slug}}/UN40COM.jpg)
 
 ## Conclusion
+<!--sgpt-->
+Threat visibility is essential in security analysis, keeping you informed of potential risks in your cluster. Regular scanning of clusters and YAML files aids in identifying immediate vulnerabilities. Once your environment passes the Kubescape scan with 0% risk, your cluster achieves compliance with NSA, MITRE, etc., paving the way for various compliance badges. These badges enhance your business reputation, attracting client trust due to the assurance of high security standards. 
 
-Threat visibility is a key component in security analysis as it keeps you alert and informs you about all the risks available in your cluster that can be exploited by hackers. Scanning your clusters and YAML files consistently is the best way to start your security audit sessions as they show you all the vulnerabilities that need to be solved immediately.
-
-When your production environment has passed the Kubescape scan with a 0% risk, your cluster will be compliant with the NSA and MITRE and other frameworks. You can go ahead and apply for different compliance badges. These badges will boost your business's brand and many clients will trust your services because the security badge is a symbol of high security standards.
+Once you've secured your Kubernetes with Kubescape, why not step up your build process next? Check out [Earthly](https://www.earthly.dev/), a tool that can further streamline and enhance your tech operations.
 
 {% include_html cta/bottom-cta.html %}

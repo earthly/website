@@ -54,23 +54,18 @@ On the other hand, Richard Hipp -- who tests to 100% code coverage at the machin
 I hope you see where I'm going. This idiot to maniac gradient feels right, but it makes no sense[^2]. How can I be the only the person driving the right speed? Wherever you find yourself along the spectrum is more a reflection of the context in which you work than anything else.
 
 ## More Examples
+<!--sgpt-->
+Here are some exaggerated language biases:
 
-Here are some made-up and exaggerated examples:
+- **Typescript Developer:** Criticizes JavaScript for lack of error-catching type system and Elm for overusing types.
+- **Go Developer:** Finds JVM runtime heavy and memory-consuming, and Rust's manual memory management complex.
+- **Kotlin Developer:** Considers Java outdated and verbose while finding Scala's syntactic sugar and type system overwhelming.
 
-- **Typescript Developer:** JavaScript developers are **idiots**. Don't they know how many bugs the type system could have caught for them.  
-- **Typescript Developer:** Elm developers are obsessed with types. They are **maniacs** about using types to catch things at compile time.
-- **Go Developer:** The JVM is such a heavyweight runtime and uses so much memory.
-- **Go Developer:** Rust is so complex! Who wants to manage memory manually. Use a GC, you **maniacs**!
-- **Kotlin Developer:** Java is so verbose and ugly. Welcome to 2021. Kotlin has a lot of sugar and type improvements that make writing correct code simpler.
-- **Kotlin Developer:** Scala is for **maniacs**. There is so much syntactic sugar and type stuff that it's not worth learning about.
+These statements don't condemn Typescript, Go, or Kotlin; each language excels in its domain. However, it's crucial to remember that different contexts call for different tools and trade-offs. Undoubtedly, people sometimes pick the wrong tool for a task, but this can't be judged without understanding the situation. 
 
-I'm not trying to pick on any of these languages - Typescript, Go, and Kotlin are exceptionally well suited to their niche. But contexts vary[^3], and it takes mental effort to see that people making other trade-offs sometimes have good reasons for it.
-
-That doesn't mean that other people are never wrong, though. People choose the wrong tool for the job all the time. For example, if I were doing SQLite's level of testing for a low-reliability, low-traffic, state-less web service when a couple of integration tests would do, then that'd be a mistake, but you'd have to know the context to make that call.
+Speaking of tools, if you enjoyed our chat about language bias, consider checking out [Earthly](https://www.earthly.dev/). It's a tool that makes build automation simpler and more versatile, and it could be the right tool for your next project.
 
 {% include_html cta/bottom-cta.html %}
-
 [^1]: Richard is the creator of SQLite. See my [interview](https://corecursive.com/066-sqlite-with-richard-hipp/#billions-of-tests) with him for a discussion of his testing approach.
 [^2]: **Article Update:** Apparently I've unintentionally stolen this idiot to maniac spectrum idea from [George Carlin](https://www.youtube.com/watch?v=XWPCE2tTLZQ). Thanks to tjones21xx on Reddit for pointing this out. All credit for this idea goes to Carlin.
-
 [^3]: Personal and team familiarity can also be part of the context. PHP may not seem to be the best choice for building a command-line tool, but if it's a small tool used by a team of PHP developers, then it might be the best choice.

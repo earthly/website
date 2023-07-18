@@ -660,11 +660,9 @@ The steps below can be used to create an automated deployment script:
 This task provides a guide for creating an automated deployment script using containerization, which is a modern and widely-used approach to app deployment. Although the example demonstrates running the container locally, the principles can be applied to a production environment to ensure consistency and reliability.
 
 ## Conclusion
+<!--sgpt-->
+Shell scripts offer a powerful solution to automate various tasks, such as file backups, data processing, and system maintenance. This article has provided a hands-on understanding of scripting features like variables, loops, system calls, and more. Shell scripting can decrease errors, boost productivity, and enhance system stability, becoming a highly sought skill in the DevOps domain. 
 
-Scripting offers a powerful toolkit for automating everyday tasks in modern software development. This article explores several tasks including file backup, data processing, log analysis, system maintenance and local application deployment which can be automated using shell scripts. Through a practical approach, these tasks introduce concepts such as variables, conditional statements, loops, functions, system calls, regular expressions, command line tools, version control, environment variables, and containerization.
-
-Shell scripts can reduce errors, increase productivity, and improve system reliability. Additionally, scripting skills are highly valued in the DevOps community, where engineers can implement and maintain complex automation workflows and infrastructure as code.
-
-Choosing the correct tool for the job is critical since shell scripting has limitations, just like any tool. Despite this, mastering shell scripting can be an excellent way to improve your developer or system administrator skills. It can lead to new opportunities in DevOps and automation.
+While it's essential to select the right tool considering shell scripting isn't a cure-all, it certainly bolsters your credentials as a developer or system admin, opening new doors in DevOps and automation. If you've enjoyed learning about automation with shell scripts, you might want to explore [Earthly](https://www.earthly.dev/) for container-based build automation. It's super cool stuff and a great next step in your journey towards mastering automation tools.
 
 {% include_html cta/bottom-cta.html %}

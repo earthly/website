@@ -708,9 +708,11 @@ The command will publish the package to the Python Package Index (PyPI), making 
 After publishing the package, you can search for it on PyPI. For example, you can find the `weather-update` library [PYPI](https://pypi.org/project/weather-update/). You can then install it on your system and try using it.
 
 ## Conclusion
+<!--sgpt-->
+Managing dependencies is crucial in Python development. Poetry provides an efficient solution for this. This tutorial covered using Poetry for Python projects, including installation, managing dependencies, and publishing a package. You've learned about virtual environments, adding, removing, and synchronizing dependencies, and packaging Python project. 
 
-Managing dependencies in Python development is crucial for ensuring the stability and [reliability](/blog/achieving-repeatability) of your projects. Poetry offers a convenient and efficient solution for handling dependencies, making it a popular choice among Python developers.
+If you've breezed through managing Python dependencies with Poetry and are looking for ways to further streamline your build process, you might want to take it up a notch with [Earthly](https://www.earthly.dev/). It's a tool that can make your builds even smoother. Check it out!
 
-In this tutorial, you have explored the steps involved in using Poetry for managing dependencies in Python projects, from installation to publishing a package. Specifically, you have learned the creation of virtual environments, managing dependencies, including adding, removing, and synchronizing them, and publishing a Python project as a package. You can explore much more about Poetry in its [official documentation](https://python-poetry.org/).
+For more on Poetry, consult the [official Poetry documentation](https://python-poetry.org/).
 
 {% include_html cta/bottom-cta.html %}

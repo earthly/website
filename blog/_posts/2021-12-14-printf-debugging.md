@@ -60,25 +60,12 @@ That is, rather than reading and trying to understand the proofs of prominent ma
 But let's get back to debugging.
 
 ## `printf` Debugging
+<!--sgpt-->
+Many proficient software engineers choose not to use a debugger, because it forces them to deeply understand their code. Thinking about how the code executes and questioning assumptions are key to this method, known as 'printf' debugging. This approach encourages you to derive solutions from first principles and improves your ability to mentally simulate program execution. 
 
-> I don't use debuggers at all. I don't like debuggers.
->
-> I use printfs and ... and thinking
->
-> I sit back and run through the code in my head and think about 'how could this have happened'
->
-> [Mitchell Hashimoto](https://youtu.be/LA8KF9Fs2sk?t=3110)
+While using a debugger might be necessary for unfamiliar or complex problems, always aim to understand your code thoroughly. Before jumping into using a debugger or adding a print statement, take time to contemplate the potential causes of the issue you're facing. 
 
-So why do a lot of the best software engineers not use a debugger? Well, not using a debugger is harder. You have to think, think about how your program executes, think about under what circumstances that thing you are seeing could be true. What assumptions do you have? How might they be wrong?
-
-You need to deepen your understanding of the code to debug it without a debugger. And doing so is a skill -- a skill that doesn't get as much practice in a world with time-traveling, edit-and-continue debuggers.
-
-The secret to printf debugging isn't the printfs. I can use those just as mindlessly as a debugger. The secret is thinking, thinking through the execution of your program, and deepening your understanding of how your program works. Doing so gives you a better ability to simulate program execution in your head. You are debugging not just the program, but your understanding of the program.
-
-Debugging problems with careful thought and the odd printf statement is like deriving the proofs from first principles yourself. It's hard and sometimes it may be beyond your ability. But, when you can do it, when you can find problems in your code via careful thought, it will help make you a better software engineer.
-
-So I still reach for a debugger when a problem is too big to fit in my head or if I don't know the codebase well. But I try to remind myself to pause and spend some time thinking – I force myself to guess what conditions could have led to this problem – before I jump in and add a print statement or fire up a debugger.
-
-[^1]: With Visual Studio's edit and continue features, I could even write in the new code and try running it in the same session. And now Visual studio has time travel debugging, so you can move backward and forward in execution whenever you like. It's a fantastic feat of engineering.
+As you work on honing your debugging skills and strive to understand your code better, you might also want to level up your build process. For that, give [Earthly](https://www.earthly.dev/) a look. It could be a valuable tool in your software development toolkit.
 
 {% include_html cta/bottom-cta.html %}
+[^1]: With Visual Studio's edit and continue features, I could even write in the new code and try running it in the same session. And now Visual studio has time travel debugging, so you can move backward and forward in execution whenever you like. It's a fantastic feat of engineering.

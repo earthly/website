@@ -389,9 +389,9 @@ Here's the CURL request for the `DeleteCompany` handler function. Insert a compa
 The CURL request sends a DELETE request to the `api/v1/:company` endpoint to delete the matching row from the database.
 
 ## Conclusion
+<!--sgpt-->
+This tutorial guided you through building web applications using the Gin Framework, including creating an API with CRUD functionalities. To further your skills, explore the [Gin documentation](https://gin-gonic.com/docs/). It will help you implement more complex functionalities for your apps. 
 
-This tutorial has taught you how to use the popular and widely used Gin framework for building web applications. You learned how to build web applications by building an API with CRUD functionalities.
-
-You can check out the documentation of the [Gin](https://gin-gonic.com/docs/) framework to learn more about how you can build other specific functionalities for your web applications.
+As you continue to develop your web applications, consider taking your build process up a notch with [Earthly](https://www.earthly.dev/). It's an efficient tool for creating reproducible builds, which can be a great addition to your development toolkit. Enjoyed using Gin for web development? You'll likely appreciate what Earthly has to offer. Check it out!
 
 {% include_html cta/bottom-cta.html %}
