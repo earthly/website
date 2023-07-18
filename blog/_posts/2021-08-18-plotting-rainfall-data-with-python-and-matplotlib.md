@@ -519,13 +519,62 @@ And here we have it, 2021 has been a really dry year here in Victoria:
 
 ## Accounting for Snow
 
-Turns out, our previous plots goofed up - they only considered rainfall, leaving out snowfall. The fix isn't straight-up easy, cause snow varies - from wet to dry. For our scenario, let's say 13mm of snow equals 1mm of rain. 
+The previous plots have an error -- they were only plotting rainfall, and not accounting for snowfall.
+It's difficult to directly convert snowfall into an equivalent amount of precipitation due to the variety of snow crystal sizes -- some snow is wet, while other snow is fairly dry.
+On the west-coast (wet-coast as some call it); when we do get snow, it tends to be fairly wet. We will assume that 13mm of snow is equivalent to 1mm of rain [^1].
 
-So, I've revised our `split_data_by_year` function to factor this in. The updated code's on my [GitHub](https://github.com/earthly/example-plotting-precipitation).
+Let's revise our `split_data_by_year` function to calculate this.
 
-After correcting for snow, 2017 was actually wetter than 2014. Still, it's been pretty dry lately - my garden's parched, but hey, my tomatoes love it! Check out the updated graphs on my GitHub if you're into it. 
+```python
+def split_data_by_year(weather):
+    yearly_rainfall = []
+    yearly_days_since_jan1 = []
+    current_year = None
+    by_year = []
+    for i, row in weather.iterrows():
+        date = row['Date/Time']
+        rainfall = row['Total Precip (mm)']
 
-And if you enjoyed the Python data scripting and are interested in automating the entire process, give [Earthly](https://www.earthly.dev/) a shot! It could be a game-changer for your data analysis workflow.
+        # 1cm snow = 10mm snow; 13mm of snow = 1mm of rain
+        snowfall = row['Total Snow (cm)'] * 10.0 / 13.0
+        rainfall += snowfall
 
+        if current_year is None:
+            current_year = date.year
+        elif current_year != date.year:
+            by_year.append((current_year, pandas.DataFrame({
+                'days_since_jan1': yearly_days_since_jan1,
+                'rainfall': yearly_rainfall,
+                })))
+            yearly_days_since_jan1 = []
+            yearly_rainfall = []
+            current_year = date.year
+
+        yearly_rainfall.append(rainfall)
+        yearly_days_since_jan1.append(get_days_since_jan1(date))
+
+    if current_year is not None:
+        by_year.append((current_year, pandas.DataFrame({
+            'days_since_jan1': yearly_days_since_jan1,
+            'rainfall': yearly_rainfall,
+            })))
+
+    return by_year
+```
+
+If you look closely, once we adjust for snow, it turned out that 2017 was a wetter year compared to 2014:
+
+<div class="wide">
 {% picture content-nocrop {{site.pimages}}{{page.slug}}/cumulative-annual-precipitation-with-snow.png --picture --alt {{ Victoria BC cumulative annual precipitation v3 }} %}
+<figcaption>Victoria BC cumulative annual precipitation including snow</figcaption>
+</div>
+
+None of that however changes the fact that it's been a very dry year, and my garden is browner than ever.
+On the other hand, my tomatoes have been loving the heat.
+
+If you would like to try generating the above graphs, all the code (and data) can be found under
+[github.com/earthly/example-plotting-precipitation](https://github.com/earthly/example-plotting-precipitation).
+
 {% include_html cta/bottom-cta.html %}
+
+[^1]: https://www.nssl.noaa.gov/education/svrwx101/winter/faq/
