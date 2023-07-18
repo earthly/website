@@ -587,9 +587,9 @@ curl $service_ip
 The image above shows the response received after an HTTP request was sent to Nginx deployment in the Kubernetes [cluster](/blog/kube-bench). The response returns the home page of the Nginx server. Your Kubernetes cluster is now running a working application. You can now deploy applications to the cluster using the `kubectl apply` command. ✅
 
 ## Conclusion
-<!--sgpt-->
+
 In this article, we've explored how kubeadm makes cluster bootstrapping and upgrading seamless. While it shines for development and non-autoscaling workloads, it might not be the best fit for large-scale autoscaling production clusters. Kubeadm hands off hardware and infrastructure management, essential for node [autoscaling](/blog/k8s-autoscaling), to infrastructure providers. 
 
-As you continue to explore and level up your Kubernetes build process, you might want to give [Earthly](https://www.earthly.dev/) a spin. It's a definite game-changer, offering a new perspective on build automation and could be the next step in optimizing your development workflow.
+As you continue to explore and level up your Kubernetes build process, you might want to give [Earthly](https://www.earthly.dev/) a spin. It's a definite game-changer for builds and could be the next step in optimizing your development workflow.
 
 {% include_html cta/bottom-cta.html %}

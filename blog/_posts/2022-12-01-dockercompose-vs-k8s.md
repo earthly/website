@@ -133,9 +133,9 @@ Kubernetes can also be used to manage hybrid and multicloud deployments. To make
 Kubernetes also has great support for monitoring, logging, and dashboarding activities, which is useful for most businesses in tracking the performance of their applications. In summary, Kubernetes is primarily utilized in production environments and on a larger scale, whereas Docker Compose is better suited for local development and testing scenarios.
 
 ## Conclusion
-<!--sgpt-->
+
 In this article, we've explored Docker Compose and Kubernetes, two powerful tools for orchestrating and managing containerized applications. While Docker Compose excels at managing multi-container Docker applications on a single host, Kubernetes offers high availability and scalability for large-scale deployments. 
 
-But what if you want to streamline your containerized builds even further? In that case, you might want to give [Earthly](https://www.earthly.dev/) a whirl. This open-source build automation tool can help optimize your build processes, making them more efficient and reproducible across different environments.
+But about containerized builds? To improve them, you might want to give [Earthly](https://www.earthly.dev/) a try. This open-source build automation tool can help optimize your build processes, making them more efficient and reproducible across different environments.
 
 {% include_html cta/bottom-cta.html %}

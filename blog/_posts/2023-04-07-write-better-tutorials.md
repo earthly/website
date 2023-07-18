@@ -4,7 +4,7 @@ categories:
   - Tutorials
 toc: true
 author: Josh
-
+bottomcta: false
 internal-links:
  - just an example
 excerpt: |
@@ -394,11 +394,13 @@ This is starting to feel a lot better. We've slowed down our tutorial quite a bi
 Is this the perfect CSV tutorial? No. But I hope it helped illustrate how context, patience, and running code can help you write tutorials that teach instead of just show.
 
 ## Conclusion
-<!--sgpt-->
-Creating a tutorial is a lot like building an API - it's not one-size-fits-all and you'll need to tweak things to suit your needs. Writing a top-notch tutorial isn't just about patience, running code, and providing context. It's also about logical structure, engaging intros and conclusions, knowing your audience, and perfecting your writing style. 
 
-Speaking of running code, if you're writing your next tech tutorial, you might want to check out [Earthly](https://www.earthly.dev/) for a smoother build automation experience. It could be a great tool to include in your tutorial, especially if it involves complex build processes.
+You can think about writing a tutorial in a similar way to building an API. There are patterns that you can follow to make it easier to write and easier to use, but those patterns are never going to cover every use case. You'll need to make decisions along the way, alter, and even break patterns in some cases to achieve the desired outcome.
 
-These tips are some we often share with writers. Hope they'll come in handy for your next tech tutorial. Cheers!
+<!--vale off-->
+There's a lot more to writing a great tutorial than just Patience, running code, and providing context. We didn't cover everything. Structuring your tutorial in a logical way and learning how to write great introductions and conclusions, for example, could be articles on their own. So could choosing your audience, finding your writing voice, or learning how to write and rework multiple drafts.
+<!--vale on-->
+
+But I think these are three of the biggest pieces of advice we find ourselves given writers over and over again. I hope you'll find them useful next time you write a technical tutorial.
 
 {% include_html cta/bottom-cta.html %}

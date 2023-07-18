@@ -143,11 +143,11 @@ Kubernetes is a powerful container orchestrator that can easily handle hundreds 
 In contrast, OpenShift lacks in this area and is still in an experimental stage with major version upgrades. Upgrades are still manual and can be done by running the installation scripts again with a new version. Minor upgrades are relatively simpler with the help of [CLI](https://docs.openshift.com/container-platform/4.11/updating/updating-cluster-cli.html) or [web console](https://docs.openshift.com/container-platform/4.11/updating/updating-cluster-within-minor.html). But the process is a bit more involved in comparison to Kubernetes upgrades.
 
 ## Conclusion
-<!--sgpt-->
+
 Kubernetes and OpenShift both offer unique approaches to container orchestration. Kubernetes offers greater flexibility and customization, while OpenShift provides a more secure, plug-and-play experience, albeit at a cost. For beginners, or those in the Red Hat ecosystem, OpenShift might be a more comfortable choice. 
 
-However, if you're considering OpenShift or Kubernetes, why not also check out [Earthly](https://www.earthly.dev/)? It might just simplify your build automation process. 
-
 Your final decision should consider factors like deployment complexity, budget, and specific needs. If you need customization capabilities and have the resources, choose Kubernetes. For a faster cloud transition and if you're okay with the cost, OpenShift is a strong choice.
+
+And if you're considering OpenShift or Kubernetes, why not also check out [Earthly](https://www.earthly.dev/) for CI? It might just simplify your build automation process.
 
 {% include_html cta/bottom-cta.html %}

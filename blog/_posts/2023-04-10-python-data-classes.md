@@ -712,11 +712,11 @@ You'll see that `some_method()` has also been included in the list:
 Though you can add methods to the data class, if you find yourself adding too many methods, you should consider rewriting the data class as a regular Python class instead.
 
 ## Conclusion
-<!--sgpt-->
+
 This tutorial provided insights into Python data classes, including their creation, setting default values, relevance of type hints, and immutable instances. You are now ready to refactor data-oriented Python classes into data classes. 
 
-If you enjoyed streamlining your Python classes, you might want to streamline your builds next - check out [Earthly](https://www.earthly.dev/). It's a tool that can help you automate and optimize your build processes, much like how data classes can optimize your Python code.
-
 The [next piece](/blog/more-on-python-data-classes/) expands on inheritance and performance optimizations in Python 3.10. Keep coding!
+
+If you enjoyed streamlining your Python classes, you might want to streamline your builds next - check out [Earthly](https://www.earthly.dev/). It's a tool that can help you automate and optimize your build processes, much like how data classes can optimize your Python code.
 
 {% include_html cta/bottom-cta.html %}

@@ -945,11 +945,9 @@ Once the module is loaded, we can now apply our custom filter using the pipe ope
 The filter name is the name of the function in our **"titlecolor_filter.py"** module.
 
 ## Conclusion
-<!--sgpt-->
+
 Django template filters spice up your HTML templates. We've dived into Django's built-in filters and how to create a custom one if you need something special. You're now equipped to use these filters and even make your own. 
 
 Want to streamline your Django build process further? Give [Earthly](https://www.earthly.dev/) a go! It's a tool that can help optimize your build process, making it more efficient and less error-prone.
-
-To further your learning, hit up the [Django Documentation](https://docs.djangoproject.com/en/4.1/ref/templates/builtins/). Keep coding!
 
 {% include_html cta/bottom-cta.html %}

@@ -305,11 +305,9 @@ These notes are to be taken into consideration when you try the mutual TLS imple
 - Server certificate and CA certificate should be issued from a trusted certificate provider and you just need to apply them into Kubernetes as secrets.
 
 ## Conclusion
-<!--sgpt-->
+
 Mutual TLS offers comprehensive security for client-server communication, ensuring both parties are verified. We've explored the distinctions between TLS and mTLS, and illustrated how to secure Kubernetes Nginx Ingress Controller endpoints. 
 
 Once you've secured your Kubernetes environment, you might want to streamline your build process. Consider exploring [Earthly](https://www.earthly.dev/), your next favorite build automation tool, to make this process more efficient and reliable.
-
-For further learning, dive into Kubernetes' other security aspects like Security Context in Kubernetes and Kubernetes Compliance Scan.
 
 {% include_html cta/bottom-cta.html %}

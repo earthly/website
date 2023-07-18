@@ -529,7 +529,7 @@ Here are the ANSI escape color codes for some colors:
 |White|1;37|
 
 ## Conclusion
-<!--sgpt-->
+
 This tutorial equipped you with the know-how of using the `echo` command and its various options like `-n`, `-e`, and `-E`. We explored its uses in different scenarios including text manipulation, outputting variables, and filtering files. Also, we saw how it can be integrated with other commands using the pipe operator for customized output colors. 
 
 As you continue to explore and enhance your command line skills, you might be interested in powering up your Linux build automation. If so, give [Earthly](https://www.earthly.dev/) a shot. It's a tool that can significantly simplify and optimize your build processes.

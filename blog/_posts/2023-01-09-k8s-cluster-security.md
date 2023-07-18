@@ -291,7 +291,7 @@ total 0
 As you can see, that file has been created successfully with the configured UID and GID, which means that through these configurations, users running this container will only have write permission to the mounted file system /data/demo and will not be running as root and will run literally with 1000 user ID.
 
 ### Conclusion
-<!--sgpt-->
+
 In this article, we dove into Kubernetes security contexts, discussing what they are and their implementation. We flagged the dangers of running apps with default or misconfigured setups. We also showed how to apply security contexts to pods and containers to limit permissions. Remember, the security context has a [bunch of options](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.25/#securitycontext-v1-core) like `capabilities` or `seLinuxOptions` to bolster your K8s security. 
 
 As you continue to enhance your Kubernetes security, you might also be interested in improving your build automation. If so, why not check out [Earthly](https://www.earthly.dev/)? It could be the next step in optimizing your tech stack. Enjoy!

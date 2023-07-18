@@ -320,9 +320,11 @@ ninja-tutorial/incremental on  main [!+?] via 🐍 v3.9.13 on ☁️ took 3s
 As you can see, Ninja is able to build the updated 1001-file project in only three seconds, compared to the 35 seconds it took to build its predecessor project consisting of 1000 files. Because Ninja had already built the 1000-file variant of the same project, it only had to add one more file to the build.
 
 ## Conclusion
-<!--sgpt-->
+
 So, we've dived deep into build systems and Ninja, covering how to install and use Ninja for your C++ projects. Remember, tools like build systems are your best pals for automating software building, testing, and deployment. Ninja is just one awesome tool that can save you heaps of time. 
 
-If you loved Ninja, you might want to take a peek at [Earthly](https://earthly.dev/) for more cool build automation. Also, don't forget to explore other options like [Bazel](https://earthly.dev/blog/bazel-build/) too. Happy coding!
+And if you loved Ninja, you might want to take a peek at [Earthly](https://earthly.dev/) for more build automation improvements.
+
+Happy coding!
 
 {% include_html cta/bottom-cta.html %}

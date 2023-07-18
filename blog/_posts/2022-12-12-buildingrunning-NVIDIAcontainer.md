@@ -283,9 +283,9 @@ nvidia/cuda:11.4.0-base-ubuntu20.04 nvidia-smi
 Multiple constraints passed to the same environment variable are always combined with a logical *and* clause.
 
 ## Conclusion
-<!--sgpt-->
+
 Docker containers can't directly access your GPU, as they need a vendor-specific layer to expose GPUs. If you're rocking NVIDIA hardware, their container runtime helps connect your docker with NVIDIA drivers. You can then add GPU support to your images, either using NVIDIA CUDA image or by manually installing CUDA libraries in your Dockerfile. This makes your CI pipelines not only reproducible but also capable of handling AI and ML workloads. 
 
-Pretty cool, right? And if you're looking to streamline your build processes even more, give [Earthly](https://www.earthly.dev/) a whirl! It's a tool that can further enhance your command line experience and optimize your build automation.
+Pretty cool, right? And if you're looking to streamline your container build processese, give [Earthly](https://www.earthly.dev/) a look! It's a tool that can further enhance your build automation.
 
 {% include_html cta/bottom-cta.html %}

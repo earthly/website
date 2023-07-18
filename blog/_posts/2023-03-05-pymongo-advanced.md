@@ -808,7 +808,7 @@ In the code above:
 > Learn more about [MongoDB operators](https://www.mongodb.com/docs/manual/reference/operator/).
 
 ## Conclusion
-<!--sgpt-->
+
 This tutorial equipped you with key MongoDB collection concepts, including schema validation for structured, consistent data storage. You've also mastered bulk data insertion techniques, data modeling patterns for relationships, and advanced query operations. These skills will enable you to proficiently use [MongoDB](/blog/mongodb-docker) to develop robust and efficient applications. 
 
 As you continue to optimize your development process, consider taking it a step further – optimize your builds with [Earthly](https://www.earthly.dev/). If you enjoyed optimizing MongoDB, you'll appreciate the efficiency and consistency Earthly brings to your build process. Check it out!

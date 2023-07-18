@@ -353,7 +353,9 @@ While using capabilities in Kubernetes, you should drop the CAP word in the pref
 Even if you're using a multi-container pod, you can set the SecurityContext in each container. You can also use tools like [tracee](https://github.com/aquasecurity/tracee), [inspektor-gadget](https://www.inspektor-gadget.io/) and other [eBPF](https://ebpf.io/)-based tools to trace the capabilities of the container. This will be useful if you're not sure of the capabilities required by your application.
 
 ## Conclusion
-<!--sgpt-->
-Understanding Linux capabilities is crucial, especially when running containerized workloads. Check the privileges of your container and assign only the minimum necessary capabilities to minimize the attack surface. Remember, setting the right capabilities helps control damage in case of a breach. If you're looking to further optimize your containerized workloads, you might want to give [Earthly](https://www.earthly.dev/) a spin! For more in-depth information about Linux capabilities, don't forget to refer to the 'man' page.
+
+Understanding Linux capabilities is crucial, especially when running containerized workloads. Check the privileges of your container and assign only the minimum necessary capabilities to minimize the attack surface. Remember, setting the right capabilities helps control damage in case of a breach.
+
+And if you're looking to further optimize your containerized workloads, you might want to give [Earthly](https://www.earthly.dev/) a spin! 
 
 {% include_html cta/bottom-cta.html %}

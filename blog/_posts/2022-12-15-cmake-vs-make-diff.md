@@ -420,7 +420,9 @@ Another difference is that CMake has better dependency handling than Make. Parti
 More recently, CMake added the `FetchContent` module, which is a better way to fetch dependencies that have submodules. `FetchContent` allows getting the source code of the dependency, including it in the CMake project, and then having it compiled from the source with the rest of the project. In contrast, Make doesn't have this module, and the path to the dependency has to be explicitly set.
 
 ## Conclusion
-<!--sgpt-->
-You now know the differences between CMake and Make, and why CMake, with its ongoing development, dependency management, and suitability for multiple platforms, is a great pick. If you're enjoying the efficiency of CMake, you might want to take a look at [Earthly](https://www.earthly.dev/). It's a tool that takes build automation a step further, enhancing your coding experience. Keep coding!
+
+You now know the differences between CMake and Make, and why CMake, with its ongoing development, dependency management, and suitability for multiple platforms, is a great pick. If you're enjoying the efficiency of CMake, you might want to take a look at [Earthly](https://www.earthly.dev/). It's a tool that takes build automation a step further. 
+
+Keep coding!
 
 {% include_html cta/makefile-cta.html %}
