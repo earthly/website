@@ -16,6 +16,7 @@ internal-links:
   - private key
   - rsa
 topic: packaging
+bottomcta: false
 excerpt: |
     Learn how to create and host your own deb packages and apt repository in this tutorial. You'll discover the step-by-step process of creating a deb package, setting up an apt repository, signing it with a PGP key, and testing it with apt commands.
 ---
@@ -823,16 +824,15 @@ Oh no! we just leaked our private key. Now's the time to regenerate it but using
 Maybe you can store it in earthly's [secret store](https://docs.earthly.dev/docs/guides/cloud-secrets) instead?
 
 ## Appendix A: A Complete Example using Earthly
-<!--sgpt-->
-Post Conclusion:
 
-We've compiled an example for you at [github.com/earthly/example-apt-repo/Earthfile](https://github.com/earthly/example-apt-repo/blob/main/Earthfile). This Earthfile incorporates all tutorial steps and can be run in one go using:
+A complete example has been created under [github.com/earthly/example-apt-repo/Earthfile](https://github.com/earthly/example-apt-repo/blob/main/Earthfile).
+
+This Earthfile contains all the above steps from this tutorial in a single location, which can be run directly in a single shot with:
 
 ```bash
 earthly -P github.com/earthly/example-apt-repo:main+test
 ```
 
-Alternatively, clone the repo and run `+test` directly. 
-
-Once you've mastered creating your own apt repository, why not take your build automation further? Check out [Earthly](https://www.earthly.dev/), a tool designed to streamline and enhance your build processes.
-
+Alternatively, you can clone the repo and run `+test` directly.
+<!-- vale HouseStyle.TLA = YES -->
+<!-- vale HouseStyle.ListStart = YES -->

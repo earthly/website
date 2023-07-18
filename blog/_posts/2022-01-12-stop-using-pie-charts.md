@@ -5,7 +5,7 @@ categories:
 internal-links:
  - matplotlib
  - pandas
-
+bottomcta: false
 author: Alex
 excerpt: |
     Learn why you should stop using pie charts and discover alternative plots that are easier to interpret. This article provides examples and code for creating horizontal bar charts, lollipop charts, and box plots using Python and Matplotlib.
@@ -286,9 +286,19 @@ plot_horizontal_box_and_whisker(data, [''], output_path='box-plot.png',
 ```
 
 ### Generating the Plots Used in This Article
-<!--sgpt-->
-You can find all the code and data for generating the mentioned graphs on [this GitHub repository](https://github.com/earthly/example-dont-use-pie-charts). Here's a breakdown: For randomized bar and lollipop charts, see [`plotrandom.py`](https://github.com/earthly/example-dont-use-pie-charts/blob/main/dontusepiecharts/plotrandom.py); for box plots, check [`box-and-whisker-diagram.py`](https://github.com/earthly/example-dont-use-pie-charts/blob/main/dontusepiecharts/box-and-whisker-diagram.py); and for precipitation charts, refer to [`plotprecipitation.py`](https://github.com/earthly/example-dont-use-pie-charts/blob/main/dontusepiecharts/plotprecipitation.py). You'll find useful matplotlib functions wrapped under [plot.py](https://github.com/earthly/example-dont-use-pie-charts/blob/main/dontusepiecharts/plot.py). And remember, even though the [Pac-Man pie-chart](https://github.com/earthly/example-dont-use-pie-charts/blob/main/dontusepiecharts/pacman.py) code is there, avoid it! 
 
-Looking to streamline your Python build processes? Give [Earthly](https://www.earthly.dev/) a whirl! It could be a valuable tool to add to your development toolkit, especially if you're working with complex projects that require consistent and efficient builds.
+If you would like to try generating the above graphs, all the code (and data) can be found under
+[github.com/earthly/example-plotting-precipitation](https://github.com/earthly/example-dont-use-pie-charts).
+
+In particular, the code for generating the randomized bar charts and lollipop charts are under
+[`plotrandom.py`](https://github.com/earthly/example-dont-use-pie-charts/blob/main/dontusepiecharts/plotrandom.py),
+the code for generating the box plots (including annotations) are under
+[`box-and-whisker-diagram.py`](https://github.com/earthly/example-dont-use-pie-charts/blob/main/dontusepiecharts/box-and-whisker-diagram.py),
+and the code for precipitation charts under
+[`plotprecipitation.py`](https://github.com/earthly/example-dont-use-pie-charts/blob/main/dontusepiecharts/plotprecipitation.py).
+
+The code provides a minimal set of functions which wrap the matplotlib functions stored under [plot.py](https://github.com/earthly/example-dont-use-pie-charts/blob/main/dontusepiecharts/plot.py) which shows how to sort, reverse, and convert the values into percentages -- perhaps it will be valuable the next time you want to quickly plot some data.
+
+Even the code to generate the [Pac-Man pie-chart](https://github.com/earthly/example-dont-use-pie-charts/blob/main/dontusepiecharts/pacman.py) is included, but please don't use it.
 
 {% include_html cta/bottom-cta.html %}

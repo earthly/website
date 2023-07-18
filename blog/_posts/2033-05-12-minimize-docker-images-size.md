@@ -5,7 +5,7 @@ categories:
 toc: true
 author: Rose Chege
 editor: Mustapha Ahmad Ayodeji
-
+bottomcta: false
 internal-links:
  - Optimization
  - Docker
@@ -294,19 +294,15 @@ node_example   latest    b066d92ab741   1 minutes ago   162MB
 You can check out how to use [DockerSlim](https://earthly.dev/blog/docker-slim/) to further reduce the current image size (162) to approximately 91.5%.
 
 ## Conclusion
-<!--sgpt-->
-Docker facilitates application portability across numerous infrastructures, enhancing compatibility and ease of updates. Despite their usefulness, Docker images can consume large disk spaces. In this guide, you've learned several optimization strategies:
 
-- Utilizing `.dockerignore`
-- Minimizing Docker image layers 
-- Selecting suitable Docker base images
-- Employing multistage build to reduce Docker image size
-- Using specific tools for Docker image size reduction
+Docker ensures you package your applications for easier portability across different infrastructures such as Kubernetes clusters, Cloud platforms and CI/CD pipelines. This makes pushing changes to the existing application easier while sharing it with varying environments without affecting compatibility. Given that Docker image sizes can consume large disk sizes, in this guide, you learned the following Docker image optimization strategies:
 
-Implementing these strategies led to an impressive 85.86% reduction in Docker image size - from 1.16GB to 162MB. 
+- Using the `.dockerignore` file
+- Reducing Docker image layers
+- How to choose Docker base images
+- How to use multistage build to Docker reduce image size
+- Tools to reduce Docker image size
 
-But why stop there? If you've managed to reduce your Docker image size and are craving more efficiency, give [Earthly](https://www.earthly.dev/) a whirl. It's an excellent tool for optimized, containerized builds that can further streamline your development process.
-
-I trust you've found this tutorial beneficial and that it will inspire you to continue exploring ways to optimize your Docker usage.
+Using these strategies, you managed to reduce the Docker image of 1.16GB to 162MB. You have learned the tools and tips that you need to use to reduce [Docker](/blog/rails-with-docker) image size to approximately 85.86%. I hope you found this post helpful.
 
 {% include_html cta/bottom-cta.html %}

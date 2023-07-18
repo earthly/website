@@ -4,6 +4,7 @@ categories:
   - Tutorials
 toc: true
 author: Alex
+bottomcta: false
 internal-links:
   - rpm
   - yum
@@ -294,8 +295,15 @@ a directory containing your private key.
 </div>
 
 ## Appendix A: A Complete Example using Earthly
-<!--sgpt-->
-A full example of this tutorial can be found at [github.com/earthly/example-yum-repo/Earthfile](https://github.com/earthly/example-yum-repo/blob/main/Earthfile). You can run the complete tutorial directly with the given command or clone the repo and run `+test`. This Earthfile includes all the steps we've covered. 
 
-If you're craving more efficient build automation for your RPM packages, give [Earthly](https://www.earthly.dev/) a whirl. It could be the tool you need to streamline your build process and enhance your productivity.
+A complete example has been created under [github.com/earthly/example-yum-repo/Earthfile](https://github.com/earthly/example-yum-repo/blob/main/Earthfile).
 
+This Earthfile contains all the above steps from this tutorial in a single location, which can be run directly in a single shot with:
+
+```bash
+earthly -P github.com/earthly/example-yum-repo:main+test
+```
+
+Alternatively, you can clone the repo and run `+test` directly.
+
+</div>

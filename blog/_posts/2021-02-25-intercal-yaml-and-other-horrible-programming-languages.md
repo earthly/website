@@ -8,6 +8,7 @@ sidebar:
   nav: "thoughts"
 excerpt: |
     Discover the bizarre world of INTERCAL, a parody programming language that will leave you scratching your head. Then, delve into the blurred line between configuration and programming languages, and why YAML might not be the best choice for control flow.
+bottomcta: false
 internal-links:
   - intercal
 ---
@@ -210,11 +211,73 @@ In a vague way, this YAML problem is like the `COMEFROM` problem. If you know YA
 <!-- If it's `title: bla` that is easy enough, but once we hit conditionals and filters, it feels like we are using the wrong tool. -->
 
 ## I HAVE NO FILE AND I MUST SCREAM
-<!--sgpt-->
-The boundary between configuration and programming languages can blur easily, leading to complex config files that resemble programming languages. This isn't ideal and YAML often falls into this trap. While YAML beats XML, using it for control flow isn't the best. Anything, even joke languages like INTERCAL, could potentially be better. However, after seeing INTERCAL's FizzBuzz function, maybe we should reconsider that. So, perhaps not INTERCAL, but certainly something else. 
 
-If you're tired of complex configs and odd languages, you might want to give [Earthly](https://www.earthly.dev/) a shot. It offers a clearer and more straightforward approach to build automation, which could be the breath of fresh air you need in your development process.
+The line between configuration and programming languages is not some bright dividing line. It is easy to slowly drift into adding programming language constructs to a config file. Before you know it, you have a full unspecified programming language embedded in the interpretation of your config file.
+
+ That is the worst of both worlds, and so much YAML seems to drift into this area.  
+
+I like YAML more than XML, but for control flow, you know what would be better than YAML? Anything else! Maybe even INTERCAL? I mean, how bad could a joke programming language be?
+
+``` fortran
+(100)  PLEASE NOTE THIS IS THE FIZZBUZZ FUNCTION 
+
+ PLEASE NOTE: IS THE INPUT DIVISIBLE BY #15?
+ DO .1 <- .100 
+ DO .2 <- #15
+ DO (2030) NEXT
+ PLEASE NOTE: is .4 (remainder) == 0?
+ DO .4 <- '?"'.4~.4'~#1"$#1'~#3
+ DO (130) NEXT
+ 
+ PLEASE NOTE NUMBER IS NOT DIVISIBLE BY #15 => CHECK IF DIVISIBLE BY #3
+ DO .2 <- #3
+ DO (2030) NEXT
+ PLEASE NOTE: is .4 (remainder) == 0?
+ DO .4 <- '?"'.4~.4'~#1"$#1'~#3
+ DO (110) NEXT
+
+ PLEASE NOTE NUMBER IS NOT DIVISIBLE BY #3 => CHECK IF DIVISIBLE BY #5
+ DO .2 <- #5
+ DO (2030) NEXT
+ PLEASE NOTE: is .4 (remainder) == 0?
+ DO .4 <- '?"'.4~.4'~#1"$#1'~#3
+ DO (120) NEXT
+ 
+ PLEASE NOTE NUMBER IS REGULAR => RETURN THE INPUT
+ DO .101 <- .100
+ DO (199) NEXT
+
+(110) DO (111) NEXT
+ DO FORGET #1
+ PLEASE NOTE NUMBER IS DIVISIBLE BY #3 => RETURN FIZZ
+ DO .101 <- #61440
+ DO (199) NEXT
+
+
+(120) DO (111) NEXT
+ DO FORGET #1
+ PLEASE NOTE NUMBER IS DIVISIBLE BY #5 => RETURN BUZZ
+ DO .101 <- #45056
+ DO (199) NEXT
+
+(130) DO (111) NEXT
+ DO FORGET #1
+ PLEASE NOTE NUMBER IS DIVISIBLE BY #15 => RETURN FIZZ-BUZZ
+ DO .101 <- #64256
+ DO (199) NEXT
+
+(111) DO RESUME .4
+ 
+(199) DO FORGET #1
+ DO RESUME #1
+```
+
+Oh God.
+
+Well, ok, maybe not INTERCAL but anything else. [^3]
 
 [^1]: See my interview with [Gabriel Gonzalez on Configuration](https://www.se-radio.net/2019/08/episode-375-gabriel-gonzalez-on-configuration/) at Software Engineering Radio.
+
 [^2]: Ansible and Helm are actually templating languages built on top of YAML, which is better than embedded control flow, but the point still stands.
+
 [^3]: Practically, you may have to use tools that encode a DSL into config, but you can use them while recognizing that we can do better. I think something like [Dhall](https://dhall-lang.org/#) for complicated config and something like [Pulumi](https://www.pulumi.com/) for complex configuration as code should be where we aim for as an industry.

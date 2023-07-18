@@ -1,3 +1,6 @@
+bottomcta: false
+As you work on honing your debugging skills and strive to understand your code better, you might also want to level up your build process. For that, give [Earthly](https://www.earthly.dev/) a look. It could be a valuable tool in your software development toolkit.
+
 blog/_posts/2020-12-04-unit-vs-integration.md +7 -3
 blog/_posts/2021-01-15-top-3-resources-to-learn-golang-in-2021.md +4 -2
 blog/_posts/2021-02-25-intercal-yaml-and-other-horrible-programming-languages.md +4 -66

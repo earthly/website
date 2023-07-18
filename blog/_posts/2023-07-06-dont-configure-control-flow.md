@@ -5,6 +5,7 @@ categories:
 toc: true
 author: Adam
 topcta: false
+bottomcta: false
 internal-links:
  - YAML
 excerpt: |
@@ -283,9 +284,12 @@ YAML (or JSON or TOML) works fine when declaring something. `Name=Adam`, `ID=7`,
 If YAML shouldn't be used to 'declare' a program that later runs, then why is this pattern so prevalent in modern DevOps tooling? One reason is that there was a sense at some point that configuring something was less complicated than programming it. Hopefully, I've shown why that might not be true: You still need to understand the semantics of the 'code' even if you're embedding it in YAML. A second reason is that sometimes it's an excuse to save [the effort of writing a parser](https://buttondown.email/hillelwayne/archive/code-is-data-is-yaml/).
 
 ## Conclusion
-<!--sgpt-->
-In conclusion, tool authors should leverage existing programming languages or write a parser instead of using ill-defined languages whose AST is hand-written in YAML. For tool users, don't assume 'configuration only' tools won't require learning a partially-defined language embedded in configuration. 
 
-If you're tired of YAML's complexities in configuration, it might be time to rethink build automation. Consider options like Makefile, Earthfile, or Gradle over tools 'configured' in YAML like Ansible, GHA, Azure Pipelines, and more. In this context, you might want to check out [Earthly](https://www.earthly.dev/), a tool that simplifies build automation and reduces the complexities often associated with YAML configurations.
+![conclusion]({{site.images}}{{page.slug}}/conclusion.png)\
+So here is my conclusion.
+
+**Tool authors**: If you are trying to 'configure' the evaluation or control flow of something, use an existing programming language or write a parser. A packrat or PEG parser is not that much code. Try to avoid building ill-defined little languages whose AST is hand-written in YAML.
+
+**And tool users**: Don't assume that because something only requires configuration, you won't need to learn a partially-defined embedded-in-config programming language. You might be better off choosing a tool like a Makefile, an Earthfile, or even Gradle than one of the 100s of things that are 'configured' in YAML (Ansible, GHA, Azure Pipelines, and so on).
 
 {% include_html cta/bottom-cta.html %}

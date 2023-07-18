@@ -9,6 +9,7 @@ internal-links:
  - git merge
  - source control branch
  - git branch
+bottomcta: false
 excerpt: |
     Learn about the evolution of git branching strategies and how they have changed over time. Follow the story of Ashley, a software developer, as she navigates different branching models and discovers the benefits and challenges of each approach. Gain insights into the importance of continuous integration, deployment, and the impact of cloud-based workflows on branching strategies.
 ---
@@ -129,10 +130,23 @@ Ashely's story is fictional, and history didn't necessarily unfold this way for 
 Some software always had an extensive review process, and much software will never be cloud-based and will continue to deal with release branches and backporting fixes. But some software has moved to the cloud and yet hasn't embraced the simplified workflows that cloud deployment can enable.
 
 ## Appendix: Develop and The Greek Revival Style
-<!--sgpt-->
-The Parthenon was built with functional marble columns; likewise, if your software doesn't need to support multiple versions or only runs on your servers, you might not need a `develop` branch. It could be a decorative 'column', borrowed from other approaches without considering its purpose in your context. As GitFlow creator Vincent Driessen notes, simpler workflows, like GitHub flow, are better suited for continuous software delivery. Sticking closer to trunk-based or mainline development means less overhead and smaller, more manageable release batches. 
-
-In the spirit of simplifying and streamlining, why not consider [Earthly](https://www.earthly.dev/) for your build automation needs? Just as you've simplified your Git workflow, Earthly can help streamline your build process. Check it out!
 
 {% picture content-wide {{site.pimages}}{{page.slug}}/greek-columns.jpg --picture --alt {{ The Parthenon }} %}
+
+The Parthenon was built in ancient Greece using columns of marble. These columns of marble held it up.
+
 {% picture content-wide {{site.pimages}}{{page.slug}}/greek-revival.jpg --picture --alt {{ A Greek Revival House }} %}
+
+This is a greek-revival style house. These columns are not about function but form -- they are unnecessary and were chosen for aesthetic purposes.  
+
+If you don't need to maintain and support multiple versions of your software and it only runs on your servers, then you might have a purely decorative `develop` branch. You may be using a git branching model that is very effective for a software lifecycle that you yourself are not in fact practicing. Those might not be load-bearing functional columns -- you might be copying the visual appearance of the ancients without understanding the purpose they had in mind.
+
+The creator of GitFlow offers similar thoughts:
+
+> Web apps are typically continuously delivered, not rolled back, and you don't have to support multiple versions of the software running in the wild.
+>
+> If your team is doing continuous delivery of software, I would suggest to adopt a much simpler workflow (like GitHub flow) instead of trying to shoehorn git-flow into your team.
+>
+> GitFlow Creator Vincent Driessen
+
+The closer you can stay to trunk-based or mainline development, the less overhead you will have and the smaller the batches you'll be able to release.
