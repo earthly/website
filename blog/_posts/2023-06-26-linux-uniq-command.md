@@ -347,11 +347,13 @@ Here, you've added the `-u` flag to sort. It now only displays the first occurre
 Again, you can see that there are differences between `sort` and `uniq`. While `sort` correctly removes the duplicates, you can't display a count of the distinct values.
 
 ## Conclusion
-<!--sgpt-->
+
 In this tutorial, you've learned how to use `uniq` to count distinct values in a file, and the importance of sorting and cleaning the file beforehand. We covered how `uniq` works best on well-structured, clean inputs. There are numerous Linux commands to help you tailor your output. 
 
-If you've mastered `uniq` and are ready for more Linux tools, why not give [Earthly](https://www.earthly.dev/) a whirl? It's a fantastic tool for automation magic that can further enhance your command line skills.
+For further exploration, refer to the additional resources linked in this guide, and [**Text Processing Commands** page](https://tldp.org/LDP/abs/html/textproc.html) from [The Linux Documentation Project](https://tldp.org). 
 
-For further exploration, refer to the additional resources linked in this guide, and [**Text Processing Commands** page](https://tldp.org/LDP/abs/html/textproc.html) from [The Linux Documentation Project](https://tldp.org). Keep experimenting and overcoming challenges that come your way!
+And after you've mastered `uniq` and are ready for more Linux tools, why not give [Earthly](https://www.earthly.dev/) a try? It's a fantastic tool for build tool that works great at the command line.
+
+Keep experimenting and overcoming challenges that come your way!
 
 {% include_html cta/bottom-cta.html %}

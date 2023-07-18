@@ -278,11 +278,11 @@ During cross-compiling, common issues you may encounter include compiler incompa
 * Make sure you have the necessary permissions and access rights to write to the build directory and install the binary on your target platform.
 
 ## Conclusion
-<!--sgpt-->
+
 This tutorial showed you the basics of cross-compiling a C++ program for ARM64 devices using CMake and GCC. Remember to install the right toolchain, check your CMake setup, make your code compatible with the target platform, and look out for required libraries to avoid build mishaps. 
 
-If you enjoyed the process of cross-compiling and are looking for ways to further simplify your build process, you might want to check out [Earthly](https://www.earthly.dev/). It's a tool that can make your build automation even more efficient.
-
 Want to delve deeper into cross-compiling? Check out the official [CMake](https://cmake.org/documentation/) and [GCC](https://gcc.gnu.org/onlinedocs/) docs, or explore [platform-specific resources](https://github.com/topics/cross-compilation?o=desc&s=stars) and [forums](https://stackoverflow.com/questions/tagged/cross-compiling?sort=MostVotes&edited=true). Happy cross-compiling!
+
+And if you are looking for ways to further simplify your cross compile build process, you might want to check out [Earthly](https://www.earthly.dev/). It's a tool that can make cross complication simpler.
 
 {% include_html cta/makefile-cta.html %}

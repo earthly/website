@@ -236,7 +236,9 @@ bazel query "attr("tags", "[\[ ]node[,\]]", deps(//apps/node_web))"
 These are just a few examples of how to construct practical Bazel queries. Check out this [Bazel query guide](https://bazel.build/query/quickstart) to learn more query writing techniques.
 
 ## Conclusion
-<!--sgpt-->
-In summary, Bazel queries provide a potent tool for managing project dependencies. This tutorial has introduced their syntax and usage within your dependencies graph. Integrate Bazel queries in your builds to maximize their effectiveness in your development process. If you've enjoyed learning about Bazel queries and are looking for more ways to optimize your build processes, you might also enjoy exploring [Earthly](https://www.earthly.dev/). It's another great tool that can further enhance your development workflow. Check it out!
+
+In summary, Bazel queries provide a potent tool for managing project dependencies. This tutorial has introduced their syntax and usage within your dependencies graph. Integrate Bazel queries in your builds to maximize their effectiveness in your development process. 
+
+And if you've enjoyed learning about Bazel queries and are looking for more ways to optimize your build processes, you might also enjoy exploring [Earthly](https://www.earthly.dev/). It's an alternative to Bazel that's easy to use. Check it out!
 
 {% include_html cta/bottom-cta.html %}

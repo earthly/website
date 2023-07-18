@@ -660,9 +660,9 @@ The steps below can be used to create an automated deployment script:
 This task provides a guide for creating an automated deployment script using containerization, which is a modern and widely-used approach to app deployment. Although the example demonstrates running the container locally, the principles can be applied to a production environment to ensure consistency and reliability.
 
 ## Conclusion
-<!--sgpt-->
+
 Shell scripts offer a powerful solution to automate various tasks, such as file backups, data processing, and system maintenance. This article has provided a hands-on understanding of scripting features like variables, loops, system calls, and more. Shell scripting can decrease errors, boost productivity, and enhance system stability, becoming a highly sought skill in the DevOps domain. 
 
-While it's essential to select the right tool considering shell scripting isn't a cure-all, it certainly bolsters your credentials as a developer or system admin, opening new doors in DevOps and automation. If you've enjoyed learning about automation with shell scripts, you might want to explore [Earthly](https://www.earthly.dev/) for container-based build automation. It's super cool stuff and a great next step in your journey towards mastering automation tools.
+While it's essential to select the right tool, shell scripting isn't a cure-all. If you've enjoyed learning about automation with shell scripts, you might want to explore [Earthly](https://www.earthly.dev/) for container-based build scripting and automation. It's super cool stuff and a great next step in your journey towards mastering automation tools.
 
 {% include_html cta/bottom-cta.html %}

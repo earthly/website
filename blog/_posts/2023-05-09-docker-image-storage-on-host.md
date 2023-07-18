@@ -391,9 +391,11 @@ $ tree /var/lib/docker/overlay2/5b05639e794f7b0074d8d622843f8816d9e78ac25b6f6f97
 To sum up, the Docker images are stored in layers, each of which is identified by a unique ID called a DiffID. These layers are tied together with a ChainID. The location of the Docker image files on the host machine depends on the storage driver used by Docker. By default, Docker uses the Overlay2 driver, which stores images in a directory called `/var/lib/docker/overlay2`. However, other storage drivers may use different directories or file systems.
 
 ## Conclusion
-<!--sgpt-->
-Grasping how Docker images are stored on the host machine is essential for developers working with Docker daily. This knowledge provides insights into Docker's internal image management. A deeper understanding of how Docker images are stored can improve your Docker environment management and problem-solving. It can also help you maximize Docker's robustness and versatility in containerization. 
 
-If you're looking to further boost your Docker workflows, you might want to give [Earthly](https://www.earthly.dev/) a shot. It offers simpler, more reliable builds, enhancing your productivity and efficiency in managing Docker environments.
+In summary, understanding how Docker images are stored on the host machine is crucial for developers who work with Docker on a daily basis. They can also gain more insights on how Docker is handling image management internally.
+
+With this in-depth understanding of how [Docker](/blog/rails-with-docker) images are saved on the host machines, developers can better manage their Docker environments and resolve any problems that may arise. Further, developers may enhance their Docker processes and fully utilize the strength and adaptability of Docker containerization.
+
+And if you're looking to further boost your Docker workflows, you might want to give [Earthly](https://www.earthly.dev/) a shot. It offers simpler, more reliable builds, enhancing your productivity and efficiency in managing containerized environments.
 
 {% include_html cta/bottom-cta.html %}

@@ -61,9 +61,11 @@ But what do we do about it? Well, we don't profit from compute. We give that awa
 ![Profit]({{site.images}}{{page.slug}}/profit.png)\
 
 ## Incentives and Costs
-<!--sgpt-->
-In summary, enterprise software bloat isn't a business failure but a result of purchasing and development processes. The same applies to dev tools - aligned incentives yield positive results. For instance, while free users of Travis CI created cost issues, TailScale's free users contributed to word of mouth marketing. It's important to recognize such incentives, and to ensure mutually beneficial situations to avoid complications down the line. 
 
-Speaking of dev tools, if you're in search of a simple, user-focused solution, [Earthly](https://www.earthly.dev/) is worth a look. It leverages containerization to help you build software faster and easier, aligning with the need for efficiency and simplicity in the development process.
+Initially, I thought that the cause of enterprise software bloat was due to some kind of business failure. But now I see that it's a natural byproduct of the buying and product development processes.
+
+Similarly – for dev tools – aligned incentives lead to good outcomes, and everything else is a problem waiting to happen. For example, every free open-source user of Travis CI – back when Travis was the hot CI – cost Travis more money than the potential profit. And then people wonder why things go sour at some point and jump ship to another CI with the same growth model. Meanwhile, TailScale's free users cost them near zero and earn them word of mouth.
+
+So, now I see incentives everywhere, and I'm happy to work at a place that thought them through ahead of time because when free usage or product improvement isn't a win/win, things will eventually get messy.
 
 {% include_html cta/bottom-cta.html %}

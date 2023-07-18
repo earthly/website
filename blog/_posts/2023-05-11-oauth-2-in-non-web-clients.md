@@ -687,11 +687,9 @@ async def device_login(ctx) -> None:
 </div>
 
 ## Conclusion
-<!--sgpt-->
-In this tutorial, we delved into Heroku CLI's functionality, the Device Authorization Grant flow, and configuring Facebook app for device login. Use this knowledge to enhance the security and user experience of your non-web applications via OAuth 2.0 Device Authorization Grant flow. 
 
-Looking to boost your command-line apps even further? Give [Earthly](https://www.earthly.dev/), a nifty build automation tool, a shot! It could be a valuable addition to your toolkit.
+In this tutorial, we delved into Heroku CLI's functionality, the Device Authorization Grant flow, and configuring Facebook app for device login. Use this knowledge to enhance the security and user experience of your non-web applications via OAuth 2.0 Device Authorization Grant flow.
 
-Your next challenge? Try creating a CLI application using Google Login.
+And if you are looking to boost your command-line fu even further? Give [Earthly](https://www.earthly.dev/) a shot! It could be a valuable addition to your toolkit.
 
 {% include_html cta/bottom-cta.html %}

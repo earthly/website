@@ -623,9 +623,13 @@ The code above creates a **`join`** object that joins the **`User`**and **`Pet`*
 </div>
 
 ## Conclusion
-<!--sgpt-->
-You now know the magic of SQLAlchemy for managing databases in Python. You can create tables, form relationships between them, and even fetch data using the `query()` method. Exciting stuff, right? If you enjoyed tweaking databases with SQLAlchemy, you might also want to try [Earthly](https://www.earthly.dev/) for efficient and reproducible build automation. 
 
-Dive deeper into SQLAlchemy by checking out the [official documentation](https://docs.sqlalchemy.org/en/20/orm/queryguide/index.html). For all the code snippets, just visit this [GitHub repo](https://github.com/mercybassey/sqlalchemy-for-python.git). Happy coding!
+You now know the magic of SQLAlchemy for managing databases in Python. You can create tables, form relationships between them, and even fetch data using the `query()` method. Exciting stuff, right? 
+
+Dive deeper into SQLAlchemy by checking out the [official documentation](https://docs.sqlalchemy.org/en/20/orm/queryguide/index.html). For all the code snippets, just visit this [GitHub repo](https://github.com/mercybassey/sqlalchemy-for-python.git).
+
+And if you enjoyed tweaking databases with SQLAlchemy, you might also want to try [Earthly](https://www.earthly.dev/) for efficient and reproducible build automation. 
+
+Happy coding!
 
 {% include_html cta/bottom-cta.html %}

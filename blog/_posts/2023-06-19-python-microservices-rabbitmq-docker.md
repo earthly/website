@@ -532,10 +532,10 @@ Now we can go to the Django admin, and we will see that a recipe was created. An
 </div>
 
 ## Conclusion
-<!--sgpt-->
+
 So, today we went over how to connect Django and Flask microservices using RabbitMQ and Python's Pika library. We covered the basic setup for a message broker, producer, and consumer service, along with Dockerizing these microservices. 
 
-If you're working on a bigger application, try splitting it into smaller bits based on features and experiment with RabbitMQ to connect them. And if you're building microservices, you might want to make your build process a breeze with [Earthly](https://www.earthly.dev/). It's a tool worth checking out to streamline your development workflow.
+If you're working on a bigger application, try splitting it into smaller bits based on features and experiment with RabbitMQ to connect them. And if you're building microservices, you might want to make your build process a breeze with [Earthly](https://www.earthly.dev/). It's a build tool worth checking out.
 
 Happy coding!
 

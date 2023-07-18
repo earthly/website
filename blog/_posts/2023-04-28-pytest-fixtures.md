@@ -548,9 +548,11 @@ def your_fixture():
 > Note that using `autouse` fixtures can be risky, as they can potentially interfere with other fixtures or tests. So, use them with caution and only when necessary.
 
 ## Conclusion
-<!--sgpt-->
+
 PyTest fixtures are indeed a game-changer! They save time and make automated testing a breeze by handling test data creation, setup, and teardown operations. This tutorial covered the basics, like defining and using fixtures, their scopes, and some advanced stuff like yield fixtures, parameterizing fixtures, and `autouse` fixtures. 
 
-Having this knowledge in your toolkit is going to level up your testing game, ensuring your code is robust, efficient, and bug-free. And while you're nailing Python testing, consider exploring [Earthly](https://www.earthly.dev/) to boost your build game too. It's an excellent tool for those who want to further optimize their development process. Keep exploring and happy coding!
+Having this knowledge in your toolkit is going to level up your testing game, ensuring your code is robust, efficient, and bug-free. And while you're nailing Python testing, consider exploring [Earthly](https://www.earthly.dev/) to boost your build game too. It's an excellent tool for those who want to further optimize their development process. 
+
+Keep exploring and happy coding!
 
 {% include_html cta/bottom-cta.html %}

@@ -1022,12 +1022,10 @@ We have also discussed examples along with each command. As with everything in U
 If you're new to text processing, it is encouraged to experiment with these commands.
 
 ### Additional Resources
-<!--sgpt-->
-To continue improving your skills, consider these additional resources:
+
+Here are some more resources you can use to supplement your learning and fine-tune your skills.
 
 - [Man Pages](https://www.kernel.org/doc/man-pages/)
 - [Awk Guide by Adam](https://earthly.dev/blog/awk-examples/)
-
-And if you've enjoyed automating with Linux commands, you might want to take it up a notch with [Earthly](https://www.earthly.dev/), your next step in efficient build automation. This tool can further enhance your command line capabilities and streamline your build processes.
 
 {% include_html cta/bottom-cta.html %}
