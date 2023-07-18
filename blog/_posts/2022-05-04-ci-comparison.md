@@ -134,10 +134,14 @@ In this case, Github Actions had a slight advantage over Circle CI. GitLab CI wa
 
 ## Conclusion
 
-Here's the deal: if you're after speed and on a budget, Circle CI is your best bet. For a limited number of builds with your code already in Github, Github Actions is a handy one-stop-shop. Although we like Travis, it's not free after the first month, so GitLab grabs third place despite lagging in most categories. 
+![A summary of the results]({{site.images}}{{page.slug}}/summary.png)
 
-Remember, we only considered free tiers. Your mileage may vary as your project scales, needing more advanced features. Even if Github Actions seems convenient now, Travis CI might be a better deal for heavy-duty pipelines. 
+Overall, if speed is your primary concern and you're on a budget, then Circle CI is the clear choice. If you're not looking to run a ton of builds each month and your code is already in Github, then Github Actions can offer similar performance with the added convenience of having everything under one service. Even though we liked Travis better, our main criteria was value, and since you can't use Travis for free after the first month, GitLab was able to grab the third slot, despite it being weaker in almost every other category.
 
-And if you're looking to simplify your build automation further, you might want to give [Earthly](https://www.earthly.dev/) a spin. It's designed to play nice with your CI/CD platform of choice, making it a valuable addition to your development toolkit.
+![final rankings]({{site.images}}{{page.slug}}/rankings.png)\
+
+Remember, we only looked at the free tiers offered by these services. As your project grows, performance may vary. Also, each service scales differently so even though you may like the convenience of Github Actions, you may find that Travis CI becomes more cost-effective as you run larger and more complicated pipelines.
+
+And if you're looking to simplify your build automation further, you might want to give [Earthly](https://www.earthly.dev/) a spin. It's designed to play nice with your CI/CD platform of choice, so you can switch around as various free plans change.
 
 {% include_html cta/bottom-cta.html %}
