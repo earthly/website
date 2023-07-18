@@ -86,14 +86,6 @@ Overall, the decision to use local or shared caching with Bazel will depend on y
 
 Now that you know why you need Bazel caches and the difference between shared and local caching, let's discuss different approaches to setting up a Bazel remote cache and storing build artifacts and outputs in a centralized location.
 
-The following diagram summarizes the main points regarding Bazel shared cache:
-
-<div class="wide">
-![Bazel [remote caching](https://bazel.build/remote/caching)]({{site.images}}{{page.slug}}/Z4RAJcc.png)
-</div>
-
-In the following sections you'll explore some examples that show how to use remote cache in the main cloud vendors.
-
 ### Remote Cache With a Google Cloud Storage Bucket
 
 One option to set up a remote cache is to use a [Google Cloud Storage bucket](https://cloud.google.com/storage/docs/creating-buckets), a storage location in the cloud. By using a GCP bucket as a remote cache, Bazel will help improve the performance of your builds and make it easier to share artifacts among team members.
