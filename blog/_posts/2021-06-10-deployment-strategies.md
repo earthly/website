@@ -118,8 +118,7 @@ The cost of this approach is in the implementation. A service mesh like Istio is
 
 <div class="no_toc_section">
 ## Summary
-<!--sgpt-->
-There's a wide range of deployment methods, each with its pros and cons. The best strategy depends on your need to balance downtime cost and deployment complexity. If you're keen to streamline your build process before deployment, you might want to give [Earthly](https://www.earthly.dev/) a whirl. 
+
+There's a wide range of deployment methods, each with its pros and cons. The best strategy depends on your need to balance downtime cost and deployment complexity. If you're keen to streamline your build process before deployment, you might want to give [Earthly](https://www.earthly.dev/) a try. 
 
 If you'd like to learn about other deployment strategies or continuous deployment terms, feel free to contact us through [Twitter](https://twitter.com/earthlytech) or [email](adam@earthly.dev).
-

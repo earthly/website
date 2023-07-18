@@ -8,6 +8,7 @@ internal-links:
     - phoenix
     - elixir
     - liveview
+bottomcta: false
 excerpt: |
     Learn how to build a real-time crowdfunding application using the Phoenix Framework and Elixir. Discover the power of Phoenix LiveView and how to leverage PubSub to broadcast updates to all users in real time.
 ---
@@ -528,11 +529,7 @@ Of course, we've only begun to scratch the surface here of what you can do with 
 Both Ecto and the Phoenix project use [Earthly](https://earthly.dev) for defining their continuous integration process, so examining [those](https://github.com/elixir-ecto/ecto/blob/master/Earthfile) [projects](https://github.com/phoenixframework/phoenix/blob/master/Earthfile) can be a great way to learn more about Earthly.
 
 ### Additional Resources
-<!--sgpt-->
-Check out these resources to learn more about Phoenix LiveView: 
-- [The Pragmatic Studio's course](https://pragmaticstudio.com/phoenix-liveview)
-- The book [_Programming Phoenix LiveView_](https://pragprog.com/titles/liveview/programming-phoenix-liveview/)
-- [Full source code on GitHub](https://github.com/amacgregor/phoenix_fund)
 
-And if you're building Phoenix and Elixir apps, make your builds efficient and reproducible with [Earthly](https://www.earthly.dev/). It's definitely worth checking out!
-
+- [The Pragmatic Studio: Phoenix LiveView Course](https://pragmaticstudio.com/phoenix-liveview)
+- [_Programming Phoenix LiveView_](https://pragprog.com/titles/liveview/programming-phoenix-liveview/)
+- [Full source code](https://github.com/amacgregor/phoenix_fund)
