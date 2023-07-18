@@ -153,7 +153,7 @@ bazel clean
 ### Disabling the Cache
 
 It's possible to use Bazel without a cache; however, this may result in slower build times.
-To disable the Bazel cache, use the `no-cache` or `no-remote-cache` flags along the Bazel commands. This will prevent Bazel from using the in-memory or remote cache, respectively.
+To disable the Bazel cache, use the `no-cache` or `no-remote-cache` flags. This will prevent Bazel from using the in-memory or remote cache, respectively.
 
 Following is an example of how to use the `no-cache` when on a specific target:
 
