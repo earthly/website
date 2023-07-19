@@ -4,7 +4,7 @@ categories:
   - Tutorials
 toc: true
 author: Brandon
-
+bottomcta: false
 internal-links:
  - just an example
 topic: go

@@ -656,12 +656,10 @@ Wait a few minutes and Check the Slack channel you created, you should have rece
 
 ## Conclusion
 
-Setting up a monitoring stack can be a challenging task, but with the right tools and guidance, it can be accomplished effectively.
+This guide walked you through creating a custom monitoring stack using Prometheus, Grafana, and Alertmanager, setting up alerting rules, as well as starting the stack using Docker Compose. You also learned to access and use Prometheus and Grafana web UIs and to import Grafana dashboards.
 
-This guide has provided you with the necessary steps to create a custom monitoring stack using Prometheus, Grafana, and Alertmanager. You have learned how to configure the alerting rules, Prometheus, Alertmanager, Grafana, and how to start all the monitoring stacks using Docker Compose. Additionally, you learned how to access the Prometheus and Grafana web UI and import Grafana dashboards for visualization.
+Looking for a boost in your build process? Give [Earthly](https://www.earthly.dev/) a go. It could be a perfect ally to your monitoring setup, enhancing your build automation and making your development process more efficient.
 
-Now that you have successfully set up a custom monitoring stack, you can expand on this knowledge by exploring more advanced monitoring concepts and techniques, such as log aggregation, distributed tracing, and machine learning-based anomaly detection. You can also look into tools like [Loki](https://earthly.dev/blog/grafana-loki-log-aggregation-k8s/), [Fluentd](https://www.fluentd.org/), and [Jaeger](https://www.jaegertracing.io/) for further log and tracing analysis.
-
-Monitoring is an ongoing process, and as you continue to use your custom monitoring stack, it is essential to monitor its performance regularly, make necessary adjustments, and expand its capabilities as your needs evolve.
+To further expand your skills, explore concepts like log aggregation, distributed tracing, and machine learning-based anomaly detection. Consider tools like [Loki](https://earthly.dev/blog/grafana-loki-log-aggregation-k8s/), [Fluentd](https://www.fluentd.org/), and [Jaeger](https://www.jaegertracing.io/) for log and tracing analysis. Remember, monitoring needs continuous attention and tweaking for optimum performance.
 
 {% include_html cta/bottom-cta.html %}

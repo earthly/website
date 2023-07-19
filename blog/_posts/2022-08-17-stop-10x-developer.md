@@ -3,7 +3,7 @@ title: "Stop saying 10x developer"
 categories:
   - Articles
 author: Adam
-
+bottomcta: false
 internal-links:
  - 10x developer
  - 10x engineer

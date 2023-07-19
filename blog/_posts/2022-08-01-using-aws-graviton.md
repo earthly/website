@@ -211,8 +211,10 @@ If you've followed along, then you've just deployed a Go application to a Gravit
 
 ## Conclusion
 
-In this article, you've gotten an overview of the Graviton processor architecture. You now know the common use cases for Graviton, the services that run on Graviton, and the benefits and drawbacks of Graviton. You've also deployed a simple app on a Graviton EC2 instance.
+In this guide, we've explored the Graviton processor architecture, its common applications, the services it supports, and its pros and cons. We've also walked through deploying an app on a Graviton EC2 instance. Its high performance and energy-efficiency make Graviton a versatile choice for any cloud workflow.
 
-Companies around the world have used Graviton architecture to solve problems in their cloud workflows. Graviton isn't something that only benefits big companies, though—its high performance and low power consumption offer the flexibility to run cloud workflows of any size and take advantage of the savings Graviton provides.
+Looking to streamline your cloud workflow even further? Give [Earthly](https://www.earthly.dev/), the build automation tool, a try! It can complement your Graviton-powered applications by simplifying cross architecture builds.
+
+No matter your company's size, combining the power of Graviton with the efficiency of Earthly can offer significant savings and improvements in your development pipeline.
 
 {% include_html cta/bottom-cta.html %}

@@ -169,8 +169,8 @@ The command does not display any output if everything went well, so the way to i
 
 ### Conclusion
 
-Centralizing Dotfiles online via a version control tool like [Github](/blog/ci-comparison) or [Gitlab](/blog/gitlab-ci)makes it very easy to synchronize configurations, which helps simplify setup and collaborate, allowing a reference configuration that can be installed on each machine.
+Keeping Dotfiles on platforms like [Github](/blog/ci-comparison) or [Gitlab](/blog/gitlab-ci) streamlines configuration syncing and makes setup and collaboration a breeze. Remember, _dotfile_ files aren't just for system admin geeks. They're great tools to fine-tune your dev environment and boost your productivity.
 
-As you will have understood, taking an interest in _dotfile_ files is not only reserved for people who want to know the finer cogs of system administration. On the contrary, it can allow you to optimize your development environment(s) in order to increase productivity.
+Looking to further streamline your dev setup? Take a look at [Earthly](https://www.earthly.dev/), for your build automation needs! With Earthly, you can simplify your build configuration and ensure consistent builds across different environments. Let's get optimizing!
 
 {% include_html cta/bottom-cta.html %}
