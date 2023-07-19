@@ -17,13 +17,13 @@ excerpt: |
 
 The software release cycle has developed over time, from the days of moving code from one machine to another to see if it works (which was frequently error-prone), to the present day, where automated techniques ensure that software programs may be deployed quickly at any time.
 
-[Continuous deployment](/blog/deployment-strategies) is a software engineering strategy that involves automating the delivery of software features on a regular basis. [Jenkins](https://www.jenkins.io/) is a popular open-source continuous integration tool. It's written in Java and it can help you automate a variety of software development tasks. In Jenkins, you can create pipelines which are a sequence of tasks that processes a set of input data.
+[Continuous deployment](/blog/deployment-strategies) is a software engineering strategy that involves automating the delivery of software features on a regular basis. Jenkins is a popular open-source continuous integration tool. It's written in Java and it can help you automate a variety of software development tasks. In Jenkins, you can create pipelines which are a sequence of tasks that processes a set of input data.
 
 In this article, you will learn more about how Jenkins's deployment stages and pipeline tools can be used to help automate software development. You will learn how to leverage Jenkins's deployment phases and Pipeline features to help automate your software development. You'll leave with a better grasp on what a Jenkins Pipeline is and you'll know how to set up Jenkins and the Pipeline plug-in.
 
 ## What Is Jenkins Pipeline?
 
-A [Pipeline](https://www.jenkins.io/doc/book/pipeline/) in Jenkins is a series of tasks or events that are interconnected in a logical order to help develop CI/CD. In other words, a Jenkins Pipeline is a collection of code-based instructions for continuous delivery that employs automation techniques to get software from version control into the hands of end users.
+A `Pipeline` in Jenkins is a series of tasks or events that are interconnected in a logical order to help develop CI/CD. In other words, a Jenkins Pipeline is a collection of code-based instructions for continuous delivery that employs automation techniques to get software from version control into the hands of end users.
 
 ![Collection of Jenkins states]({{site.images}}{{page.slug}}/HrpJY8p.png)
 

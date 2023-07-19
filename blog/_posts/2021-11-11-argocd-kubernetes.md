@@ -17,7 +17,7 @@ excerpt: |
 
 Kubernetes has simplified the container management process for microservice applications, but developers often face challenges when using this notoriously complex platform to achieve constant software delivery.
 
-GitOps, a CD (continuous delivery) set of practices for Kubernetes, uses Git as a single source of truth for declarative infrastructure and applications, so that code versions can be more easily tracked and updated. One tool to help achieve GitOps is [ArgoCD, a declarative CD tool](https://argo-cd.readthedocs.io/en/stable/) designed to deploy apps to Kubernetes.
+GitOps, a CD (continuous delivery) set of practices for Kubernetes, uses Git as a single source of truth for declarative infrastructure and applications, so that code versions can be more easily tracked and updated. One tool to help achieve GitOps is ArgoCD. Argo is designed to deploy apps to Kubernetes.
 
 Among its other features, ArgoCD can help with managing and automating releases as well as assist with single sign-on (SSO) integration, auditing, and managing metric trackers such as Prometheus.
 
@@ -36,7 +36,7 @@ ArgoCD is a lightweight tool that reads an environment configuration (written as
 
 - It allows you to view an extensive audit of any changes made to your code as well as who made the changes and when. This is possible because the Git commit history provides a natural audit log system.
 
-- ArgoCD can also be used to gather application and API server [metrics](/blog/./blog/_devto/incident-management-metrics.md) . Application metrics monitor health status, sync history, and other data. The API server is a gRPC/REST server that exposes the API consumed by the Web UI. It can be used for collecting data on request and response activity.
+- ArgoCD can also be used to gather application and API server metrics. Application metrics monitor health status, sync history, and other data. The API server is a gRPC/REST server that exposes the API consumed by the Web UI. It can be used for collecting data on request and response activity.
 <!-- vale HouseStyle.OxfordComma = YES -->
 
 ## Implementing ArgoCD
@@ -222,12 +222,11 @@ ArgoCD integrates well with Kubernetes tools. Here are some examples:
 
 - Prometheus: With Prometheus, ArgoCD makes it easy to collect application and API server metrics. This can be useful when you need to keep track of your application logs and gain insights into what happens at each point. The metrics and logs can also be used for debugging.
 - Kube-Watch: ArgoCD allows you to integrate with [Kube-Watch](https://argo-cd.readthedocs.io/en/stable/operator-manual/notifications/) for notifications. This is handy when you need to send notifications to an environment such as Slack, generally through webhooks.
-- Git Webhook Configuration: The API server can be configured to listen to webhook events instead of pulling from the repository every three minutes. This is useful when you want to send frequent messages to the server or when you need to handle other custom edge cases in your application for deployment. It supports Git webhook notifications from GitHub, GitLab, Bitbucket, Bitbucket Server, and [Gogs](https://gogs.io/).
+- Git Webhook Configuration: The API server can be configured to listen to webhook events instead of pulling from the repository every three minutes. This is useful when you want to send frequent messages to the server or when you need to handle other custom edge cases in your application for deployment. It supports Git webhook notifications from GitHub, GitLab, Bitbucket, Bitbucket Server, and Gogs.
 
 ## Conclusion
 
-ArgoCD is a powerful tool that allows you to deploy your application by constantly checking the state of the environment configurations on Git and ensuring it matches that of the cluster. ArgoCD also provides an intuitive UI for managing applications and pipelines, which improves overall UX. You can learn more about ArgoCD on [Read the Docs
-](https://argo-cd.readthedocs.io/en/stable/).
+ArgoCD is a powerful tool that allows you to deploy your application by constantly checking the state of the environment configurations on Git and ensuring it matches that of the cluster. ArgoCD also provides an intuitive UI for managing applications and pipelines, which improves overall UX.
 
 To further improve your CI/CD workflow with ArgoCD, you can use [Earthly](https://earthly.dev/). Earthly allows you to execute builds in Docker containers and can also run on popular CI tools like Jenkins, CircleCI, GitHub Actions, and AWS CodeBuild. [Earthly](https://earthly.dev/) acts as an interface between language-specific tooling and build specification.
 

@@ -18,7 +18,7 @@ Deployment is an integral part of the software development life cycle. It is the
 Continuous deployment involves automating the process of validating new changes to a codebase, ensuring it passes all test cases, installing all dependencies, building a binary package from the codebase as the case may be, and then deploying into one or more environments. This process has many advantages, like eliminating repetitive deployment tasks, increasing focus on developing the product, and improving overall productivity.
 There are several tools that you can use for continuous deployment, and among such tools is [Octopus Deploy](https://octopus.com/).
 
-[Octopus Deploy](https://octopus.com/) is a continuous deployment platform that manages releases, automates deployments, and handles the routine procedures and operations that keep your software running all in one place. In this article, you will learn more about Octopus Deploy and how to use it to simplify your deployment pipeline.
+Octopus Deploy is a continuous deployment platform that manages releases, automates deployments, and handles the routine procedures and operations that keep your software running all in one place. In this article, you will learn more about Octopus Deploy and how to use it to simplify your deployment pipeline.
 
 ## Benefits of Octopus Deploy
 
@@ -26,11 +26,11 @@ There are several benefits to using Octopus Deploy—here's an overview of a few
 
 ### Ease in Configuring your Deployment Process
 
-Octopus Deploy allows you to set all your continuous deployment processes in its application rather than use multiple applications for your deployment processes. It gives you access to over 450 automation templates ranging across a variety of familiar technologies, such as [Terraform](https://www.terraform.io/), [Kubernetes](https://kubernetes.io/), and [Docker](https://www.docker.com/). Furthermore, it provides deployment patterns, such as [Canary](https://octopus.com/docs/deployments/patterns/canary-deployments) and [Blue-green](https://octopus.com/docs/deployments/patterns/blue-green-deployments), that allow you to roll out your releases in bits. Additionally, Octopus Deploy allows you to use the same deployment process across multiple environments with the help of variables. These variables can be secrets and passwords that are secured on the platform. Octopus Deploy uses these variables across multiple deployment targets, environments, channels, or tenants, thereby improving the ease of your deployment process configuration.
+Octopus Deploy allows you to set all your continuous deployment processes in its application rather than use multiple applications for your deployment processes. It gives you access to over 450 automation templates ranging across a variety of familiar technologies, such as Terraform, Kubernetes, and Docker. Furthermore, it provides deployment patterns, such as [Canary](/blog/canary-deployment/)) and [Blue-green](/blog/blue-green/), that allow you to roll out your releases in bits. Additionally, Octopus Deploy allows you to use the same deployment process across multiple environments with the help of variables. These variables can be secrets and passwords that are secured on the platform. Octopus Deploy uses these variables across multiple deployment targets, environments, channels, or tenants, thereby improving the ease of your deployment process configuration.
 
 ### Support for Numerous Integration Tools
 
-You can easily plug Octopus Deploy into any of the continuous integration ([ci](/blog/continuous-integration)) tools that your team uses. It supports CI tools, such as [Jenkins](https://www.jenkins.io/), [TeamCity](https://www.jetbrains.com/teamcity/), and [GitLab](https://about.gitlab.com/stages-devops-lifecycle/continuous-integration/). Furthermore, with Octopus Deploy, you can configure it to run SQL scripts, upload files, or run Bash scripts after a deployment. Octopus Deploy also integrates with many other popular CI tools that you might need in your development process.
+You can easily plug Octopus Deploy into any of the continuous integration ([ci](/blog/continuous-integration)) tools that your team uses. It supports CI tools, such as Jenkins, TeamCity, and GitLab. Furthermore, with Octopus Deploy, you can configure it to run SQL scripts, upload files, or run Bash scripts after a deployment. Octopus Deploy also integrates with many other popular CI tools that you might need in your development process.
 
 ### Automation of Deployment Routine
 
@@ -242,8 +242,6 @@ Click on the **Save** button to save your deployment process steps. Now you have
 ## Conclusion
 
 In this article, you have learned that Octopus Deploy can provide tremendous benefits when integrated into your software development life cycles. It eases the workload in managing deployment to multiple servers and allows your team to focus on other important things.
-
-Octopus Deploy contains numerous other features that cannot be covered in the scope of this article. For more resources on Octopus Deploy, visit its [documentation](https://octopus.com/docs/getting-started).
 
 If you want to take your continuous integration pipeline to the next level, consider a tool like [Earthly](https://earthly.dev). [Earthly](https://earthly.dev) allows you to execute your builds in containers, thereby making them self-contained, portable, and repeatable. Earthly can be easily used instead of, or in conjunction with, Octopus. And Earthly's caching and parallel mechanisms make your builds repeatable and fast.
 
