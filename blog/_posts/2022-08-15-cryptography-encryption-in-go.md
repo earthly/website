@@ -279,8 +279,8 @@ The cryptographically secure random values are in a byte slice, and you can use 
 
 ## Conclusion
 
-You'll be using cryptography and [encryption](/blog/encrypting-data-with-ssh-keys-and-golang) to build secure applications and services. Authentication mediums like JWT(JSON Web Token) rely on cryptography.
+In this tutorial, we looked at increasing application security using cryptographic techniques. Using encryption, hashing algorithms, and secure random value generation, we've delved into how to construct more secure Go applications, even incorporating JWT for authentication.
 
-In this article, you learned how to secure your applications and programs cryptographically using hashing and encryption algorithms and how to generate cryptographically secure random values for your Go programs.
+As you continue to build your secure Go app, you might also want to consider streamlining your build process. For that, you can give [Earthly](https://www.earthly.dev/) a go. It's an excellent tool for simplifying and optimizing your build automation.
 
 {% include_html cta/bottom-cta.html %}

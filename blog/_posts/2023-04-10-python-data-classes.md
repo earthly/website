@@ -713,10 +713,10 @@ Though you can add methods to the data class, if you find yourself adding too ma
 
 ## Conclusion
 
-I hope this tutorial helped you understand the basics of Python data classes. Let's review what we've learned in this tutorial.
+This tutorial provided insights into Python data classes, including their creation, setting default values, relevance of type hints, and immutable instances. You are now ready to refactor data-oriented Python classes into data classes.
 
-We covered how to create data classes (without much boilerplate code) and set default values for one or more fields. In addition, we looked at the usefulness of type hints and immutable data class instances. As a next step, you can try rewriting existing data-oriented Python classes as data classes.
+The [next piece](/blog/more-on-python-data-classes/) expands on inheritance and performance optimizations in Python 3.10. Keep coding!
 
-The [next article](/blog/more-on-python-data-classes/) in the series covers inheritance in Python data classes, performance optimizations that were introduced in Python 3.10, and much more. Happy coding!
+If you enjoyed streamlining your Python classes, you might want to streamline your builds next - check out [Earthly](https://www.earthly.dev/). It's a tool that can help you automate and optimize your build processes, much like how data classes can optimize your Python code.
 
 {% include_html cta/bottom-cta.html %}

@@ -421,6 +421,8 @@ More recently, CMake added the `FetchContent` module, which is a better way to f
 
 ## Conclusion
 
-In this article, you've learned the differences between CMake and Make, as well as the advantages of using CMake including its active development, dependency management, and cross-platform capabilities.
+You now know the differences between CMake and Make, and why CMake, with its ongoing development, dependency management, and suitability for multiple platforms, is a great pick. If you're enjoying the efficiency of CMake, you might want to take a look at [Earthly](https://www.earthly.dev/). It's a tool that takes build automation a step further.
+
+Keep coding!
 
 {% include_html cta/makefile-cta.html %}

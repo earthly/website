@@ -306,10 +306,8 @@ These notes are to be taken into consideration when you try the mutual TLS imple
 
 ## Conclusion
 
-Mutual TLS provides end-to-end security for communication between a client and server. It ensures that the client is talking to the intended server and vice versa which makes it a vital feature for applications that handle sensitive information.
+Mutual TLS offers comprehensive security for client-server communication, ensuring both parties are verified. We've explored the distinctions between TLS and mTLS, and illustrated how to secure Kubernetes Nginx Ingress Controller endpoints.
 
-In this article, we have discussed the differences between TLS and mTLS authentication methods, and demonstrated how to apply both methods to secure calling Kubernetes Nginx [Ingress](/blog/building-on-kubernetes-ingress) Controller endpoints.
-
-You can continue learning about other security features available in Kubernetes, such as [Security Context in Kubernetes](https://earthly.dev/blog/k8s-cluster-security/), and [Kubernetes Compliance Scan](https://earthly.dev/blog/kubescape/).
+Once you've secured your Kubernetes environment, you might want to streamline your build process. Consider exploring [Earthly](https://www.earthly.dev/), your next favorite build automation tool, to make this process more efficient and reliable.
 
 {% include_html cta/bottom-cta.html %}

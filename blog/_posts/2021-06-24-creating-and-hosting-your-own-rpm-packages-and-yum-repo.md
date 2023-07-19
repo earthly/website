@@ -4,6 +4,7 @@ categories:
   - Tutorials
 toc: true
 author: Alex
+bottomcta: false
 internal-links:
   - rpm
   - yum
