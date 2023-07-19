@@ -10,6 +10,7 @@ internal-links:
  - bash strings
  - bash substring
 topic: cli
+bottomcta: false
 last_modified_at: 2023-04-17
 excerpt: |
     Learn how to manipulate strings in bash with this informative tutorial. From concatenating strings to replacing parts of a string, you'll discover useful techniques for working with text in bash scripts.

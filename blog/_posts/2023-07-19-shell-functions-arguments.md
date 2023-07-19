@@ -432,14 +432,14 @@ Finally, always make use of the exit codes. Remember to use `0` for successful e
 
 ## Conclusion
 
-Scripting can make your work more efficient, but there are practical considerations that you should keep in mind. When you write scripts, concentrate on utility and efficiency. Name scripts and variables descriptively and use conventions that make it easier for others (and yourself) to understand.
+Scripting offers a significant boost to your work efficiency, but it's crucial to focus on usefulness and clarity in your scripts. This tutorial introduced you to the basics of Bash functions, defining and usage, passing arguments, returning values, and declaring variables, along with a few best practices.
 
-In this article, you learned about functions in Bash—how to define and use them, pass arguments, return values, and declare variables inside functions. You also learned about some best practices to implement when working with functions.
-
-If you want to learn more about what you can do with scripting and the methodology behind it, check out these resources:
+For further learning on scripting methodologies, check out these links:
 
 * [Bash error handling](https://linuxhint.com/bash_error_handling/)
 * [Command line arguments in Bash scripts](https://www.baeldung.com/linux/use-command-line-arguments-in-bash-script)
 * [Bash scripts and function libraries](https://medium.com/swlh/bash-scripts-part-6-functions-and-library-development-2411adbf962)
+
+And if you're eager to take your build automation up a notch, give [Earthly](https://www.earthly.dev/) a try! It's a powerful tool.
 
 {% include_html cta/bottom-cta.html %}

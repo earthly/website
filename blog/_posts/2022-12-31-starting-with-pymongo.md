@@ -457,7 +457,8 @@ The empty `filter` dictionary means you want to delete all the documents in the 
 
 ## Conclusion
 
-In this tutorial, you learned about the basics of MongoDB and how to set up a MongoDB Cluster. The tutorial mainly focussed on setting up PyMongo on your local system and explained how to perform basic CRUD operations on a MongoDB collection.
-If you want to further your learning, I suggest you look into Schema Validation, Advanced Queries, and how to perform a full-text search in MongoDB as the next steps.
+In this tutorial, we covered MongoDB fundamentals and cluster setup, including PyMongo installation and basic CRUD operations on MongoDB collections. To delve deeper, explore Schema Validation, Advanced Queries, and full-text search in MongoDB.
+
+And if you're building Python applications, you might want to streamline your build process. Check out [Earthly](https://www.earthly.dev/), a tool that can significantly enhance your productivity and make your builds more efficient.
 
 {% include_html cta/bottom-cta.html %}

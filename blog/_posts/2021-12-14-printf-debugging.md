@@ -4,6 +4,7 @@ categories:
   - Articles
 author: Adam
 newsletter_side: false
+bottomcta: false
 sidebar:
   nav: "thoughts"
 internal-links:

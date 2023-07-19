@@ -9,6 +9,7 @@ internal-links:
  - git merge
  - source control branch
  - git branch
+bottomcta: false
 excerpt: |
     Learn about the evolution of git branching strategies and how they have changed over time. Follow the story of Ashley, a software developer, as she navigates different branching models and discovers the benefits and challenges of each approach. Gain insights into the importance of continuous integration, deployment, and the impact of cloud-based workflows on branching strategies.
 ---
