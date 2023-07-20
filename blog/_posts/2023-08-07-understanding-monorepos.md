@@ -10,14 +10,13 @@ internal-links:
 ---
 
 
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about the pros and cons of working with monorepos. If you’re currently working with a monorepo, Earthly could be a great solution to help you improve build times and create a better developer experience.  [Check us out](/).**
+**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about the pros and cons of working with monorepos. If you're currently working with a monorepo, Earthly could be a great solution to help you improve build times and create a better developer experience.  [Check us out](/).**
 
-Monorepo is more than just a trendy buzzword today, thanks to its increasing popularity and game-changing advantages. But if you think they’ve only been around for a few years, think again. Big tech companies like Google have been using Monorepos since time immemorial. Google maintains more than 2 billion lines of code with more than hundreds of terabytes of data. They store all their code in a single monolithic repository and surprisingly they've been doing it since their inception. 
- 
-For most companies, the engineering overhead and extraordinary effort it takes to set up and maintain a monorepo system are not justified. Moreover, as they scale in size and complexity, their monorepos tend to become slow and increasingly difficult to work with. This is why it’s imperative to understand monorepos and how you can leverage them to have a high-performance build system that is easy to scale. 
+Monorepo is more than just a trendy buzzword today, thanks to its increasing popularity and game-changing advantages. But if you think they've only been around for a few years, think again. Big tech companies like Google have been using Monorepos since time immemorial. Google maintains more than 2 billion lines of code with more than hundreds of terabytes of data. They store all their code in a single monolithic repository and surprisingly they've been doing it since their inception.
+
+For most companies, the engineering overhead and extraordinary effort it takes to set up and maintain a monorepo system are not justified. Moreover, as they scale in size and complexity, their monorepos tend to become slow and increasingly difficult to work with. This is why it's imperative to understand monorepos and how you can leverage them to have a high-performance build system that is easy to scale.
 
 So in this blog post, we'll explore the benefits of monorepos and discuss high-performance build systems like NX and Turborepo that can help you operate at the speed of Google.
-
 
 Benefits of Monorepos
 
@@ -26,15 +25,15 @@ Benefits of Monorepos
 - Consistency in sharing tools and libraries
 - Streamlined continuous integration and automation
 
-# Understanding Monorepos and High-Performance Build Systems
+## Understanding Monorepos and High-Performance Build Systems
 
 Thanks to its growing popularity and game-changing nature, Monorepos are more than just a buzzword these days. However, as the codebase grows in size and complexity, it becomes increasingly difficult to scale a monorepo. Big tech companies like [Google have been using Monorepos](https://research.google/pubs/pub45424/) for a long time, but they have their own in-house version control system and a build tool called [Bazel](https://bazel.build/) (internally called Blaze) to help them easily scale their monorepo.
 
-However, building an in-house version control system and build tools is not feasible for teams of all sizes. As their monorepos start to scale in size and complexity, they tend to present many problems. Build times can start to skyrocket and the developer experience can become unwieldy. This is why it’s imperative to understand where monorepos are helpful and how you can leverage high-performance build systems and make it easy to scale your monorepo while keeping its performance intact.
+However, building an in-house version control system and build tools is not feasible for teams of all sizes. As their monorepos start to scale in size and complexity, they tend to present many problems. Build times can start to skyrocket and the developer experience can become unwieldy. This is why it's imperative to understand where monorepos are helpful and how you can leverage high-performance build systems and make it easy to scale your monorepo while keeping its performance intact.
 
 So in this blog post, we'll explore the benefits of monorepos and discuss high-performance build systems like Nx and Turborepo.
 
-## Monorepos in a nutshell
+## Monorepos in a Nutshell
 
 First, let's understand what Monorepos are. Monorepo is an architecture that governs how different applications are treated as a single project to streamline the development, testing and deployment of these applications.
 
@@ -68,11 +67,11 @@ As projects grow larger in size, it becomes increasingly complex to configure, m
 
 Monorepos allow you to streamline your CI/CD workflows and introduce automation that works the same way for all your applications. Since all your code is in one place, it's easier to test different builds together and deploy them at the same time via a single command.
 
-## Approaches to Monorepos
+## Approaches To Monorepos
 
 So let's first look at some of the common and simple approaches to establishing a monorepo architecture for your project. These approaches rely on existing tools that you already use for your projects.
 
-### Using package managers like Yarn or Npm
+### Using Package Managers Like Yarn Or Npm
 
 The most basic approach is to use package managers like [Npm](https://www.npmjs.com/) or [Yarn](https://yarnpkg.com/) to define workspaces. Anytime you create a new NodeJS project, a React project or a Vue project, you get a `package.json` file by default in the root directory. Inside the root directory, you already have a nested workspace like apps and packages which are linked to your project.
 
@@ -102,7 +101,7 @@ To address the performance challenge with Monorepos, you need a build tool that'
 
 Both Nx and Turborepo create a dependency tree between all of your apps and packages. They use this dependency tree to understand which part of the codebase has changed and what needs to be rebuilt. They also cache any files or artifacts that have already been built and use that to speed up your builds. Further, they can run parallel jobs to execute everything much faster.
 
-### How they create a dependency tree
+### How They Create a Dependency Tree
 
 Nx and Turborepo analyze the codebase inside our monorepo's workspace. Based on the import and export statements present in our files, they generate a dependency graph accordingly. This graph is then used to optimize the build process and ensure that only the necessary parts of the code are rebuilt when we make changes.
 
@@ -110,7 +109,7 @@ Let's understand this further with the help of an example. Let's say in our proj
 
 Using a tool like Nx or Turborepo, we can generate a dependency graph that shows the relationships between these different modules and libraries:
 
-![Monorepo-dependency-graph](https://imgur.com/BFzSfSS)
+![Monorepo-dependency-graph](https://i.imgur.com/BFzSfSS.png)
 
 With the above, it's much easier to understand that the `App Module` depends on `Lib 1` and `Lib 2`, which in turn depends on other libraries. This can help us identify potential issues such as circular dependencies, which can cause performance issues and make the code harder to maintain. We can also use this graph to optimize our build process and ensure that only the necessary parts of the code are rebuilt when changes are made.
 
@@ -140,7 +139,7 @@ Nx has been around for a while now. You're more likely to find enough resources,
 
 Nx provides a lot of features out of the box as compared to Turborepo. For instance, there's a [VS Code plugin](https://marketplace.visualstudio.com/items?itemName=nrwl.angular-console) that you can use to run test and build commands. Its CLI also generates boilerplates automatically for you. It also provides a feature called [Distributed Task Execution to distribute work across multiple CI servers.
 
-Turborepo, on the other hand, is relatively minimal. It doesn’t provide all the features that Nx does by default such as IDE integrations and plugins, built-in code generation and scaffolding and distributed task execution. It also integrates very easily with common package managers like Yarn or Npm. Thus with [minimum configurational changes,](https://turbo.build/repo/docs/core-concepts/monorepos/configuring-workspaces) you can create your existing JavaScript project into a blazingly fast monorepo. Tuborepo seems a good choice for smaller projects where you don't require too much configuration, unlike Nx.
+Turborepo, on the other hand, is relatively minimal. It doesn't provide all the features that Nx does by default such as IDE integrations and plugins, built-in code generation and scaffolding and distributed task execution. It also integrates very easily with common package managers like Yarn or Npm. Thus with [minimum configurational changes,](https://turbo.build/repo/docs/core-concepts/monorepos/configuring-workspaces) you can create your existing JavaScript project into a blazingly fast monorepo. Tuborepo seems a good choice for smaller projects where you don't require too much configuration, unlike Nx.
 
 ### Remote Caching
 
@@ -154,8 +153,7 @@ Let's say developer A in your team builds an application. Then, developer B conf
 
 Monorepos have become an increasingly popular concept in the context of distributed teams. Taking advantage of the enhanced visibility and efficient code sharing they afford, as well as the potential to test and build complex applications easily, more and more development teams are turning to monorepos. The introduction of high-performance build systems such as Nx and Turborepo can take the power of monorepo to a whole new level, equipping them with features like caching, parallel job execution, and more.
 
-If you’re currently looking for a build tool that works great with monorepos, consider checking out [Earthly](/). As an open source [CI/CD](/blog/ci-vs-cd) framework, Earthly allows you to develop locally and run anywhere. Builds are containerized and language agnostic, and tasks are executed in parallel, which makes it fast. Check out Earthly's detailed [documentation](https://docs.earthly.dev/) to see how you can get started with it easily.
-
+If you're currently looking for a build tool that works great with monorepos, consider checking out [Earthly](/). As an open source [CI/CD](/blog/ci-vs-cd) framework, Earthly allows you to develop locally and run anywhere. Builds are containerized and language agnostic, and tasks are executed in parallel, which makes it fast. Check out Earthly's detailed [documentation](https://docs.earthly.dev/) to see how you can get started with it easily.
 
 ## Outside Article Checklist
 
@@ -163,7 +161,6 @@ If you’re currently looking for a build tool that works great with monorepos, 
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
 - [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
