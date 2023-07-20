@@ -13,7 +13,7 @@ internal-links:
 ---
 
 
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about the pros and cons of working with monorepos. If you're currently working with a monorepo, Earthly could be a great solution to help you improve build times and create a better developer experience.  [Check us out](/).**
+**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about the pros and cons of working with monorepos. If you're currently working with a monorepo, Earthly could be a great solution to help you improve build times and create a better developer experience. [Check us out](/).**
 
 Monorepo is more than just a trendy buzzword today, thanks to its increasing popularity and game-changing advantages. But if you think they've only been around for a few years, think again. Big tech companies like Google have been using Monorepos since time immemorial. Google maintains more than 2 billion lines of code with more than hundreds of terabytes of data. They store all their code in a single monolithic repository and surprisingly they've been doing it since their inception.
 
@@ -112,7 +112,7 @@ Let's understand this further with the help of an example. Let's say in our proj
 
 Using a tool like Nx or Turborepo, we can generate a dependency graph that shows the relationships between these different modules and libraries:
 
-![Monorepo-dependency-graph](https://i.imgur.com/BFzSfSS.png)
+![Monorepo-dependency-graph]({{site.images}}{{page.slug}}/BFzSfSS.png)
 
 With the above, it's much easier to understand that the `App Module` depends on `Lib 1` and `Lib 2`, which in turn depends on other libraries. This can help us identify potential issues such as circular dependencies, which can cause performance issues and make the code harder to maintain. We can also use this graph to optimize our build process and ensure that only the necessary parts of the code are rebuilt when changes are made.
 
@@ -148,7 +148,7 @@ Turborepo, on the other hand, is relatively minimal. It doesn't provide all the 
 
 While both tools implement caching to generate builds faster, TubroRepo additionally has [remote caching](https://turbo.build/repo/docs/core-concepts/remote-caching). This allows local caches to be synced with a remote cache on a Vercel cloud server so that the entire cache can be downloaded remotely if you're on a different machine.
 
-![img](https://turbo.build/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flocal-caching.d097807f.png&w=3840&q=75)
+![Source: [Turbo.Build](https://turbo.build)](https://turbo.build/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flocal-caching.d097807f.png&w=3840&q=75)
 
 Let's say developer A in your team builds an application. Then, developer B configures the monorepo in their machine. The entire cache from Developer A's machine will be downloaded on Developer B's machine. This can save a huge amount of time for a large organization. Since now developer B can use the cached artefacts to create builds on the monorepo that other developers (like developer A) have used).
 
@@ -162,8 +162,6 @@ If you're currently looking for a build tool that works great with monorepos, co
 
 ## Outside Article Checklist
 
-- [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
+
 
