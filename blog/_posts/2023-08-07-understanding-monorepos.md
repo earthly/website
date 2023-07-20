@@ -1,12 +1,15 @@
 ---
-title: "Put Your Best Title Here"
+title: "Understanding Monorepos and High-Performance Build Systems"
 categories:
   - Tutorials
 toc: true
 author: Siddhant Varma
 
 internal-links:
- - just an example
+ - high-performance build systems
+ - build systems
+ - understanding monorepos
+ - monorepos and build systems
 ---
 
 
@@ -163,5 +166,4 @@ If you're currently looking for a build tool that works great with monorepos, co
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
+
