@@ -38,6 +38,8 @@ So in this blog post, we'll explore the benefits of monorepos and discuss high-p
 
 ## Monorepos in a Nutshell
 
+![Nutshell]({{site.images}}{{page.slug}}/nutshell.png)\
+
 First, let's understand what Monorepos are. Monorepo is an architecture that governs how different applications are treated as a single project to streamline the development, testing and deployment of these applications.
 
 Imagine you have a JavaScript web app, a NodeJS server, and a React Native mobile app that share a lot of common code and dependencies. One option is that you can have each of these apps in separate projects inside their own git repositories. That means you write code for these apps separately, test your changes and deploy them independently of each other.
@@ -89,6 +91,8 @@ Lerna can manage these packages as a monorepo. It will version your packages so 
 Finally, you can publish all your packages to npm with a single command using Lerna.
 
 ## Challenges of Monorepos
+
+![Challenges]({{site.images}}{{page.slug}}/challenges.png)\
 
 We've discussed several advantages of monorepos and some simple approaches you can take to implement it. However, size is a big problem with these approaches and Monorepos, in general.
 
@@ -159,9 +163,3 @@ Monorepos have become an increasingly popular concept in the context of distribu
 If you're currently looking for a build tool that works great with monorepos, consider checking out [Earthly](/). As an open source [CI/CD](/blog/ci-vs-cd) framework, Earthly allows you to develop locally and run anywhere. Builds are containerized and language agnostic, and tasks are executed in parallel, which makes it fast. Check out Earthly's detailed [documentation](https://docs.earthly.dev/) to see how you can get started with it easily.
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-- [ ] Optional: Find ways to break up content with quotes or images
-
-
