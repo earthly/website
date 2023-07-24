@@ -1,0 +1,13 @@
+<h1 class="font-medium pt-24 text-[#2d7e5d] text-5xl sm:text-7xl text-center tracking-tight">
+  Pricing Aligned with Your Satisfaction
+</h1>
+
+<div class="bg-white flex flex-col lg:flex-row gap-8 mb-16 mt-14 pb-14 pt-10 px-8 rounded shadow-xl">
+  {% for item in site.data.pricing-features %}
+    <div class="flex flex-1 flex-col items-center">
+      <img class="w-11 h-11" src="{{ item.image }}" alt="Clock Fast" />
+      <p class="font-bold m-0 mt-4 text-center text-xl tracking-tight">{{ item.title }}</p>
+      <p class="font-normal m-0 mt-4 text-base text-center tracking-tight">{{ item.description }}</p>
+    </div>
+  {% endfor %}
+</div>
