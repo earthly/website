@@ -317,6 +317,8 @@ To learn more about the `ripgrep` command line too, you can check out the follow
 <https://linuxhandbook.com/ripgrep/>
 <https://mariusschulz.com/blog/fast-searching-with-ripgrep>
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
@@ -324,4 +326,3 @@ To learn more about the `ripgrep` command line too, you can check out the follow
 
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
