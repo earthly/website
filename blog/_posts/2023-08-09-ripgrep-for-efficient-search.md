@@ -23,6 +23,8 @@ We intend this article for software professionals who work with large volumes of
 
 ## Features of the `ripgrep` Command-line Tool
 
+![Features]({{site.images}}{{page.slug}}/features.png)\
+
 Let's have a quick look into some of the essential features of `ripgrep` compared to other alternatives like [grep](https://linux.die.net/man/1/grep), [ack](https://linux.die.net/man/1/ack), and so on:
 Speed: This tool is highly optimized and uses an [advanced searching algorithm](https://cp-algorithms.com/string/aho_corasick.html) to perform quick searches across multiple large files and folders
 Compressed File Search: Beyond the traditional file search, the `ripgrep` command-line tool can search the patterns across the compressed zip files
@@ -353,13 +355,8 @@ In summary, The `ripgrep` command-line tool is an excellent tool for searching a
 
 To learn more about the `ripgrep` command line too, you can check out the following links:
 
-- [github](https://github.com/BurntSushi/ripgrep)
-- [linuxhandbook](https://linuxhandbook.com/ripgrep/)
-- [mariusschulz](https://mariusschulz.com/blog/fast-searching-with-ripgrep)
+- [Github](https://github.com/BurntSushi/ripgrep)
+- [Linuxhandbook](https://linuxhandbook.com/ripgrep/)
+- [Mariusschulz](https://mariusschulz.com/blog/fast-searching-with-ripgrep)
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
