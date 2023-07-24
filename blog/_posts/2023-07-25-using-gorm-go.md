@@ -30,7 +30,7 @@ To follow along in this tutorial, you are required to have the following:
 - [Go](https://golang.org/doc/install) installed on your machine.
 - A PostgreSQL database is already set up, and a user is granted permission to interact with the database. You can check [this guide](https://itslinuxfoss.com/install-setup-postgresql-database-ubuntu-22-04/).
 
-**Note**: You can find the code snippets used in this tutorial [on github](https://github.com/mercybassey/gorm).
+**Note**: You can find the code snippets used in this tutorial [on Github](https://github.com/mercybassey/gorm).
 
 ## Setting Up the Environment
 
