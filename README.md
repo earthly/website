@@ -71,10 +71,11 @@ For linting locally (and in vs code):
 
 ```
  brew install vale
- brew install markdownlint-cli
  brew install sponge
  brew install gawk
  brew install gnu-sed
+
+ npm install -g markdownlint-cli@0.32.0
 ```
 
 `gnu-sed` works different than the version of `sed` that comes with mac by default, so you need to add the line below to your `.bashrc` or `.zshrc` to get your system to use it.
