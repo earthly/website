@@ -292,8 +292,8 @@ As you can see, that file has been created successfully with the configured UID 
 
 ### Conclusion
 
-In this article, we discussed the security context as concept and as implementation and we demonstrated the risks behind running applications in Kubernetes with default configuration or mis-configuration.
-Also we demonstrated how to apply security contexts on the pod level and container level to guarantee running applications with minimum needed permissions.
-Securitycontext has a [whole list of options](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.25/#securitycontext-v1-core) you can configure to secure running pods like `capabilities` or `seLinuxOptions` which can enhance our K8s security level.
+In this article, we dove into Kubernetes security contexts, discussing what they are and their implementation. We flagged the dangers of running apps with default or misconfigured setups. We also showed how to apply security contexts to pods and containers to limit permissions. Remember, the security context has a [bunch of options](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.25/#securitycontext-v1-core) like `capabilities` or `seLinuxOptions` to bolster your K8s security.
+
+As you continue to enhance your Kubernetes security, you might also be interested in improving your build automation. If so, why not check out [Earthly](https://www.earthly.dev/)? It could be the next step in optimizing your tech stack. Enjoy!
 
 {% include_html cta/bottom-cta.html %}

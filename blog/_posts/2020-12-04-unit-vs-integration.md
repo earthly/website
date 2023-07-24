@@ -8,6 +8,7 @@ internal-links:
   - integration testing
   - unit test
   - unit testing
+bottomcta: false
 excerpt: |
     Learn the differences between unit testing and integration testing and when to use each approach. Discover how unit tests focus on small, isolated pieces of code, while integration tests ensure that different components of your software work together seamlessly.
 ---

@@ -386,10 +386,8 @@ A central repository for finding and deploying Kubernetes operators is provided 
 
 ## Conclusion
 
-In this article, we discussed what Kubernetes operators are, why they are useful for managing stateful applications, what benefits they can provide, their architecture, and how they work.
+In this quick read, we dug into Kubernetes operators—what they are, why they're great for handling stateful apps, their perks, architecture, and operation. In short, these operators automate and simplify managing trickier apps by customizing Kubernetes resources. They're a lifesaver for managing stateful apps in a Kubernetes cluster.
 
-Kubernetes operators, in particular, automate the deployment and management of complex, stateful applications by abstracting Kubernetes resources and simplifying the process of managing specific application operational requirements. They are a valuable tool for simplifying the management of stateful applications within a Kubernetes cluster.
-
-Next, you can explore the use of Kubernetes operators in your own projects and organizations, or you can [learn more](https://operatorhub.io/) about the various types of operators available and how they can be used to manage specific types of applications.
+As you continue to explore their application in your projects and learn more about the different operators available for your specific needs, you might also be interested in further streamlining your CI/CD process. If so, take a peek at [Earthly](https://www.earthly.dev/). It could be a game-changer for your Kubernetes workflow.
 
 {% include_html cta/bottom-cta.html %}

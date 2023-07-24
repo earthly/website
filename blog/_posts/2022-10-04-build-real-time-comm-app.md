@@ -1197,10 +1197,6 @@ The message is sent to the client and the chat log is updated.
 
 ## Conclusion
 
-There are still a lot of things you can do with the WebSocket protocol and a lot you can use the Django-channels package for, including communication with your IoT devices in real-time. This tutorial only gives a glimpse of the websocket protocol and what the `django-channels` package has to offer.
-
-In this tutorial, you were able to build a real-time communication application using the WebSocket protocol and Django Channels .
-
-[Code for the project](https://github.com/DrAnonymousNet/DiscussIt)
+WebSockets and Django-channels open up a world of possibilities, like real-time IoT device communication. This tutorial was just a sneak peek into their potential. You managed to build a real-time chat app using them. If you're looking to optimize your Django Channels build process, you might want to give [Earthly](https://www.earthly.dev/) a shot! It's a great tool for optimizing builds. Here's the [project code](https://github.com/DrAnonymousNet/DiscussIt) from today - keep experimenting, learning, and optimizing your build processes!
 
 {% include_html cta/bottom-cta.html %}

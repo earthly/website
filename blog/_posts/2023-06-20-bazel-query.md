@@ -237,8 +237,8 @@ These are just a few examples of how to construct practical Bazel queries. Check
 
 ## Conclusion
 
-In summary, Bazel queries are a powerful tool for understanding and managing project dependencies. In this article, you learned about their syntax and how they can be written within your dependencies graph.
+In summary, Bazel queries provide a potent tool for managing project dependencies. This tutorial has introduced their syntax and usage within your dependencies graph. Integrate Bazel queries in your builds to maximize their effectiveness in your development process.
 
-By using Bazel queries alongside your builds, you can fully leverage their usefulness in your development process.
+And if you've enjoyed learning about Bazel queries and are looking for more ways to optimize your build processes, you might also enjoy exploring [Earthly](https://www.earthly.dev/). It's an alternative to Bazel that's easy to use. Check it out!
 
 {% include_html cta/bottom-cta.html %}

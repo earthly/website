@@ -389,10 +389,8 @@ It's empty! The scratch keyword indicates a completely empty docker layer. The m
 
 ## Conclusion
 
-Alright, we have now covered some ways to use BuildKit directly. BuildKit is used internally by `docker build` in modern docker versions, but using it directly unlocks some extra options.
+So, we've gone over a few ways to use BuildKit directly, which offers more features than the modern `docker build`. With it, you can do cool stuff like changing the output type and monitoring process and network requests. But we've just scratched the surface! BuildKit aids in multi-platform builds, enables parallel builds, supports caching, and boosts multi-stage builds, among other things.
 
-One use we covered was changing the output type. We can use BuildKit to export tars and local file systems. We also use `pstree` and `mitmProxy` to watch how buildkitd forks processes and make network requests.  
+If you've enjoyed exploring BuildKit and are looking to take things up a notch, you might want to check out [Earthly](https://www.earthly.dev/). It offers an optimized build process and extends the functionality available in BuildKit.
 
-There is much more to learn, though. BuildKit is behind the `docker buildx` multi-platform build feature and supports the ability to have multiple workers execute builds in parallel. BuildKit also supports caching, different frontends, docker-compose builds, faster multi-stage builds, and several other features.
-
-In a future article, we will cover creating a custom frontend and leaving the Dockerfile syntax behind.
+Stay tuned for a future post where we'll ditch Dockerfile syntax and explore creating a custom frontend.

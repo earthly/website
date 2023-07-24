@@ -710,6 +710,8 @@ And that's a wrap! In this second (and final part) of the data classes tutorial 
 
 So did we cover *everything* about data classes? No. But what you've learned should help you hit the ground running when you start writing functional data classes. With less boilerplate code to write and promising performance gains, switching to data classes can save you hours per week.
 
+And one last thins: As you continue to build your Python projects, you might want to consider making your build automation more efficient with [Earthly](https://www.earthly.dev/). It's a tool that can help streamline your build process and ensure consistency across different environments.
+
 See you all soon in another tutorial. Until then, happy coding!
 
 {% include_html cta/bottom-cta.html %}

@@ -430,14 +430,16 @@ The collection must exist for you to delete it or get an error as handled above.
 
 ## Conclusion
 
-There are so many operations you can perform on MongoDB databases using the Go driver, and in this tutorial, you learned how to perform frequently used operations with Go.
+This tutorial has equipped you with the basics of commonly used MongoDB operations using the Go driver.
 
-You can refer to these resources to learn more about using [MongoDB](/blog/mongodb-docker) with the Go programing language.
+Here are some additional resources to help you delve deeper:
 
 - [Using MongoDB with Docker](https://earthly.dev/blog/mongodb-docker/).
 - [MongoDB & Go Quick Reference](https://www.mongodb.com/docs/drivers/go/current/quick-reference/#std-label-go-quick-reference).
 - [The Go.dev MongoDB Go Driver Documentation](https://pkg.go.dev/go.mongodb.org/mongo-driver).
 
-There are numerous cases where you'll want to use MongoDB with Go, like backend development, data science, machine learning, and DevOps. Your MQL skills still Go a long way as you perform MongoDB operations with Go, especially if you'll be performing more complex functions.
+Using MongoDB with Go will prove beneficial across various fields including backend development, data science, machine learning, and DevOps. Remember, your MQL skills are crucial in conducting more complex operations with Go. So, keep exploring and happy coding!
+
+And as you continue your learning journey, consider taking your efficiency up a notch with [Earthly](https://www.earthly.dev/), your new tool for optimized builds.
 
 {% include_html cta/bottom-cta.html %}
