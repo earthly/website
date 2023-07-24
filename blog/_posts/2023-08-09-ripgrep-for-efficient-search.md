@@ -4,6 +4,7 @@ categories:
   - Tutorials
 toc: true
 author: Sriram Ramanujam
+editor: Mustapha Ahmad Ayodeji
 
 internal-links:
  - just an example
@@ -263,7 +264,9 @@ $ rg 'ALERT' --colors 'path:fg:red' --colors 'path:bg:white' --colors 'match:fg:
 
 Output:
 
-![Img](https://i.imgur.com/hJiISas.png)\
+<div class="wide">
+![Img]({{site.images}}{{page.slug}}/hJiISas.png)\
+</div>
 
 The `ripgrep` command-line tool also allows us to perform search and replace operations. We can use the `--replace` option with the new and old strings as the arguments. This substitutes the new string with the old string found during the search.
 
@@ -318,8 +321,7 @@ To learn more about the `ripgrep` command line too, you can check out the follow
 
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
+
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
 - [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
