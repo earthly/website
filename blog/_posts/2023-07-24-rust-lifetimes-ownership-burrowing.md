@@ -795,6 +795,6 @@ Although Rust's approach to memory management through ownership and borrowing an
 
 In this article, you learned all about the basics of Rust lifetimes, including borrowing and references, lifetime syntax, and annotations. You also explored advanced topics, such as lifetime subtyping, higher-ranked trait bounds, and associated types and lifetimes. All the code samples for this tutorial are available in [this GitHub repo](https://github.com/ECJ222/rust-lifetimes).
 
-With the information and examples provided here, you should have a solid understanding of Rust’s lifetimes and their importance in writing safe and efficient code. If you want to keep learning, try exploring the [official Rust documentation and community resources](https://www.rust-lang.org/learn).
+With the information and examples provided here, you should have a solid understanding of Rust's lifetimes and their importance in writing safe and efficient code. If you want to keep learning, try exploring the [official Rust documentation and community resources](https://www.rust-lang.org/learn).
 
 {% include_html cta/bottom-cta.html %}
