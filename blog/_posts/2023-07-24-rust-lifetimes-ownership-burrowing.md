@@ -30,8 +30,6 @@ In comparison, borrowing refers to borrowing a reference to a resource from its 
 To demonstrate how borrowing works, take a look at the following example:
 
 ~~~{.rust caption="how_borrowing_works.rs"}
-// how_borrowing_works.rs
-
 fn main() {
   let a = 5;
   let b = &a;
@@ -56,8 +54,6 @@ Immutable references allow read-only access to a resource. Immutable references 
 Say you have a vector of integers, and you want to print each element in the vector. You can create an immutable reference to the vector using the following code:
 
 ~~~{.rust caption="immutable_references.rs"}
-// immutable_references.rs
-
 fn main()
    let vec = vec![10, 11];
    for i in &vec {
@@ -78,7 +74,6 @@ In comparison, mutable references are created using the [`&mut`](https://doc.rus
 For example, suppose you have a mutable vector of integers, and you want to modify its first element. In that case, you can create a mutable reference to the vector using the following code:
 
 ~~~{.rust caption="mutable_references.rs"}
-// mutable_references.rs
 fn main() {
    let mut vec = vec![10, 11];
    let first = &mut vec[0];
@@ -116,8 +111,6 @@ Lifetimes are a way of tracking the scope of a reference to an object in memory.
 In Rust, lifetimes are denoted using the `'a` syntax, where the `'a` is a placeholder for the actual lifetime. The lifetime can be defined as a generic parameter in a [function](https://web.mit.edu/rust-lang_v1.25/arch/amd64_ubuntu1404/share/doc/rust/html/book/first-edition/functions.html), [struct](https://web.mit.edu/rust-lang_v1.25/arch/amd64_ubuntu1404/share/doc/rust/html/book/first-edition/structs.html), or [trait](https://web.mit.edu/rust-lang_v1.25/arch/amd64_ubuntu1404/share/doc/rust/html/book/first-edition/traits.html) using angle brackets. The following is an example:
 
 ~~~{.rust caption="basic_lifetime_example.rs"}
-// basic_lifetime_example.rs
-
 struct Path<'a> {
     point_x: &'a i32,
     point_y: &'a i32,
@@ -203,8 +196,6 @@ By following these rules, the Rust compiler can automatically infer the correct 
 Here's an example of how the lifetime elision rules work:
 
 ~~~{.rust caption="lifetimes_elision.rs"}
-// lifetimes_elision.rs
-
 #[derive(Debug)]
 struct Num {
     x: i32,
@@ -291,8 +282,6 @@ A lifetime bound is a way to specify the minimum lifetime that a reference must 
 Here's an example:
 
 ~~~{.rust caption="lifetime_bounds.rs"}
-// lifetime_bounds.rs
-
 use std::fmt::Display;
 
 #[derive(Debug)]
@@ -372,8 +361,6 @@ Lifetime constraints are similar to lifetime bounds, but they specify an upper b
 Here's an example:
 
 ~~~{.rust caption="lifetime_constraints.rs"}
-// lifetime_constraints.rs
-
 // Declare the Movie struct with a title and a rating
 #[derive(Debug)]
 struct Movie<'a> {
@@ -473,8 +460,6 @@ In this modification, the `name` reference has the lifetime `'a`, while the movi
 The `'static` lifetime is a special lifetime that represents the entire duration of the program. Any reference with a `'static` lifetime can be used anywhere without worrying about its scope. Here's an example:
 
 ~~~{.rust caption="static_lifetime.rs"}
-// static_lifetime.rs
-
 const SECRET_PHRASE: &'static str = "Hello, world!";
 ~~~
 
@@ -491,8 +476,6 @@ To help solidify your understanding of the Rust lifetimes, explore practical exa
 Take a look at an example:
 
 ~~~{.rust caption="function_signatures_with_lifetimes.rs"}
-// function_signatures_with_lifetimes.rs
-
 fn shortest_route<'a>(a: &'a i32, b: &'a i32) -> &'a i32 {
     if a > b {
         b
@@ -521,8 +504,6 @@ Here, a function called `shortest_route` is created that takes two signed intege
 Lifetimes are often used when defining [structs](https://doc.rust-lang.org/book/ch05-01-defining-structs.html) in Rust, particularly when a struct contains references to other values. Consider the following example:
 
 ~~~{.rust caption="structs_with_lifetimes.rs"}
-// structs_with_lifetimes.rs
-
 struct ImportantExcerpt<'a> {
     part: &'a str,
 }
@@ -588,8 +569,6 @@ If the `ImportantExcerpt` struct were to hold a reference to a `String` with a s
 [Trait implementations](https://web.mit.edu/rust-lang_v1.25/arch/amd64_ubuntu1404/share/doc/rust/html/book/first-edition/traits.html) can also use lifetimes when dealing with references. Here's an example:
 
 ~~~{.rust caption="slifetimes_in_trait.rs"}
-// lifetimes_in_trait.rs
-
 trait Summary<'a> {
     fn summarize(&'a self) -> String;
 }
@@ -642,8 +621,6 @@ In addition to the core concepts of Rust lifetimes, there are some advanced topi
 For example, imagine a function that takes two references with different lifetimes and returns a reference with a lifetime that is a sub-lifetime of both inputs. To demonstrate lifetime subtyping, this relationship can be expressed using the `'a` and `'b` lifetime parameters:
 
 ~~~{.rust caption="lifetime_subtyping.rs"}
-// lifetime_subtyping.rs
-
 fn lifetime_subtyping<'a, 'b: 'a>(x: &'a str, y: &'b str) -> &'a str {
     if x.len() > y.len() { x } else { y }
 }
@@ -671,8 +648,6 @@ In this example, the returned reference has a lifetime of `'b`, which is a sub-l
 Consider the following example:
 
 ~~~{.rust caption="higher_rank_trait_bounds.rs"}
-// higher_rank_trait_bounds.rs
-
 // Define a trait with a method that takes a closure with a \
 // reference parameter.
 trait RefProcessor {
@@ -730,8 +705,6 @@ Here, a trait called `RefProcessor` is defined with a method called `process_ref
 For example, imagine a trait that defines a method for iterating over a data structure. You might want to associate the type of the iterator with the trait while also specifying a lifetime for the reference to the data structure:
 
 ~~~{.rust caption="associated_types_and_lifetimes.rs"}
-// associated_types_and_lifetimes.rs
-
 trait Iter<'a> {
     type Item;
     type Iter: Iterator<Item = Self::Item> + 'a;
@@ -822,6 +795,6 @@ Although Rust's approach to memory management through ownership and borrowing an
 
 In this article, you learned all about the basics of Rust lifetimes, including borrowing and references, lifetime syntax, and annotations. You also explored advanced topics, such as lifetime subtyping, higher-ranked trait bounds, and associated types and lifetimes. All the code samples for this tutorial are available in [this GitHub repo](https://github.com/ECJ222/rust-lifetimes).
 
-With the information and examples provided here, you should have a solid understanding of Rust's lifetimes and their importance in writing safe and efficient code. If you want to keep learning, try exploring the [official Rust documentation and community resources](<https://www.rust-lang.org/lea>
+With the information and examples provided here, you should have a solid understanding of Rust’s lifetimes and their importance in writing safe and efficient code. If you want to keep learning, try exploring the [official Rust documentation and community resources](https://www.rust-lang.org/learn).
 
 {% include_html cta/bottom-cta.html %}
