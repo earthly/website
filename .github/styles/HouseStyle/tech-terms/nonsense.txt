@@ -116,3 +116,6 @@ punkt
 Lequipe
 
 Akamai
+
+Linuxhandbook
+Mariusschulz
