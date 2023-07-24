@@ -7,7 +7,10 @@ author: Sriram Ramanujam
 editor: Mustapha Ahmad Ayodeji
 
 internal-links:
- - just an example
+ - how to use ripgrep
+ - improve search efficiency
+ - search efficiency
+ - ripgrep to improve search efficiency
 
 ---
 
@@ -360,6 +363,3 @@ To learn more about the `ripgrep` command line too, you can check out the follow
 
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
