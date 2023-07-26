@@ -11,7 +11,10 @@ internal-links:
  - Load Test
  - k6
  - Services
+excerpt: |
+    Learn how to implement load testing for your backend services using k6, a powerful performance testing tool. Discover how to create test scenarios, run load tests, and visualize the test metrics using InfluxDB and Grafana.
 ---
+**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about load testing backend services using K6. Earthly is a powerful build tool that could be helpful for a load testing build pipeline. [Check it out](/).**
 
 When it comes to software applications, ensuring your app works as expected is not enough. Users generally expect applications to work 24/7 – with minimal downtime – and especially when there's high traffic, say, during Black Friday sales. This is why implementing a load test for your application is crucial.
 
@@ -518,8 +521,10 @@ By having a visualization dashboard for load testing, you can monitor your load 
 
 ## Conclusion
 
-Ensuring your application works as expected is not enough. To retain users, you also need to make sure your application performance is good enough. This is why you need to perform a load test for your application. The article taught you how to implement load tests for a backend service using k6. This article acts as a stepping stone to help you get started to load testing.
+Your app isn't just about functionality; it needs to perform well to keep your users happy. We've shown you how to load test your backend service with k6 to ensure it can handle the heat. This is your launchpad into the world of load testing.
 
-To learn more about other types of testing that k6 provides such as [browser testing](https://k6.io/docs/testing-guides/load-testing-websites/) or [chaos testing](https://k6.io/blog/chaos-testing-microservices-with-xk6-disruptor/), please check out the [k6 documentation](https://k6.io/docs/).
+But what about streamlining your build process? If you're eager to optimize this aspect of your development, give [Earthly](https://www.earthly.dev/) a spin. It might be just what you need to make your builds more efficient and reliable.
+
+Want more on load testing? Dig into k6 docs for info on browser testing, chaos testing, and more.
 
 {% include_html cta/bottom-cta.html %}

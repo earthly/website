@@ -11,6 +11,8 @@ internal-links:
  - File Ownership
  - chown
  - Permissions
+excerpt: |
+    Learn how to change file and directory ownership in Linux using the `chown` command. This article explains the importance of ownership in Linux, how permissions work, and provides examples of using `chown` to change ownership.
 ---
 
 **We're [Earthly](https://earthly.dev/). We make building software simpler and, therefore, faster. This article is about Linux file permissions and ownership. If you enjoy doing things at the command line you might like [Earthly](https://earthly.dev/). It's a pretty great open-source build tool.**
@@ -329,8 +331,8 @@ Because the root user has unrestricted access to the system, it's highly recomme
 
 ## Conclusion
 
-In this guide, you've learned how to use the `ls` command to see the current owner and permissions that a file has; how to use the `chown` command to change the owner of a file and the group of a file; and how to use other permissions-related commands, such as `chgrp` and `chmod`.
+In this quick guide, you've got the hang of using `ls`, `chown`, `chgrp`, and `chmod` to manage Linux file permissions and ownership. Sure, it can be tricky, but there are loads of resources to help you out, like official docs, online tutorials, and forums. Some cool places to start could be [Linux Documentation Project](https://tldp.org), [LinuxQuestions.org](https://www.linuxquestions.org), or the [Ubuntu Community Help Wiki](https://help.ubuntu.com/community/CommunityHelpWiki).
 
-Linux file permissions and ownership can be very complex topics to navigate and master. However, there are additional resources available to help you learn more about Linux permissions, including the official documentation from your particular distribution's website, online tutorials, and user forums. Some popular resources include the [Linux Documentation Project](https://tldp.org), [LinuxQuestions.org](https://www.linuxquestions.org), and the [Ubuntu Community Help Wiki](https://help.ubuntu.com/community/CommunityHelpWiki).
+Now that you've mastered Linux permissions, why not level up your build automation game with [Earthly](https://www.earthly.dev/)? It's a great tool to streamline your development process.
 
 {% include_html cta/bottom-cta.html %}

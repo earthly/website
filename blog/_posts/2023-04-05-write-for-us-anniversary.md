@@ -7,8 +7,16 @@ author: Josh
 
 internal-links:
  - just an example
+excerpt: |
+    Join us in celebrating one year of Write With Us! We've had the pleasure of working with over 25 talented tech writers on over 70 technical tutorials. If you're an experienced writer looking to expand your audience or a beginner eager to learn and improve, we'd love to hear from you!
 ---
+<div class="notice--info notice--big">
 
+## Submissions Closed
+
+Write for Us submissions are temporarily closed.
+
+</div>
 
 It's been a year since we started [taking outside submissions](/blog/write-for-us) to the Earthly blog, and we just wanted to take the time to celebrate and say thank you to all the writers who've contributed!
 
@@ -22,9 +30,9 @@ If you're an **experienced technical writer** looking to expand your audience an
 
 If you're a **beginner writer** who is **eager to learn and improve**, we want to hear from you too! Our editors work hard with writers to help them level up their technical writing abilities.
 
-### Apply
+<!-- ### Apply
 
-If you're interested, please fill out this <a href="https://docs.google.com/forms/d/e/1FAIpQLSdgpU8oYXvRRnvtxt5ZruAvJ3RPa4sEXgvbaY1xDOA98G3ycw/viewform">application</a>. Be sure to include some relevant writing samples. Take a look at the list below and peruse our blog to get an idea of the type of content we like to publish.
+If you're interested, please fill out this application. Be sure to include some relevant writing samples. Take a look at the list below and peruse our blog to get an idea of the type of content we like to publish. -->
 
 ## Process
 
@@ -83,7 +91,7 @@ If you need help with invoicing or have other questions about payment, please fe
 </div>
 
 <!-- vale HouseStyle.Link = NO -->
-<a href="https://docs.google.com/forms/d/e/1FAIpQLSdgpU8oYXvRRnvtxt5ZruAvJ3RPa4sEXgvbaY1xDOA98G3ycw/viewform" class="btn btn--success">Apply Here</a>
+<!-- <a href="https://docs.google.com/forms/d/e/1FAIpQLSdgpU8oYXvRRnvtxt5ZruAvJ3RPa4sEXgvbaY1xDOA98G3ycw/viewform" class="btn btn--success">Apply Here</a> -->
 
 ## Topics We Like
 

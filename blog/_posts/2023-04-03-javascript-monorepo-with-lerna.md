@@ -5,14 +5,21 @@ categories:
 toc: true
 author: Cameron Pavey
 editor: Mustapha Ahmad Ayodeji
+last_modified_at: 2023-06-29
 
+sidebar:
+  nav: monorepos
 
 internal-links:
  - Javascript
  - Monorepo
  - Lerna
  - Packages
+excerpt: |
+    Learn how to set up a monorepo for JavaScript projects using Lerna. This tutorial covers the benefits of using Lerna, how to create packages, publish them to npm, and run CI workflows with GitHub Actions and Earthly.
 ---
+
+**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article discusses some of the benefits of using a Monorepo. Earthly is particularly useful if you're working with a Monorepo. [Check us out](/).**
 
 There are a lot of build tools in the JavaScript ecosystem. Some of them have overlaps in functionality, and others, like [Lerna](https://github.com/lerna/lerna), focus on solving a particular problem.
 
@@ -22,7 +29,7 @@ In this tutorial, you'll learn how to leverage Lerna to manage a simple TypeScri
 
 This article assumes you have a working understanding of JavaScript, knowledge of TypesScript, React, package management, and bundling with tools like [Rollup](https://rollupjs.org) is beneficial but not necessary.
 
-## Implementing a Lerna Monorepo for JavaScript Projects
+## How To Implement a Lerna Monorepo for JavaScript Projects
 
 Before you start the tutorial, you'll need to create free accounts (if you don't already have them) with each of the following services:
 
@@ -39,7 +46,7 @@ You also need to ensure that you have the following installed on your system:
 
 With the prerequisites out of the way, it's almost time to get started. However, before setting up the Lerna monorepo, it's important to understand how Lerna versioning works.
 
-### Understanding How Lerna Versioning Works
+### How Lerna Versioning Works
 
 Lerna has two different [versioning strategies](https://lerna.js.org/docs/features/version-and-publish#versioning-strategies): fixed mode (which is the default) and independent mode.
 

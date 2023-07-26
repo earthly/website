@@ -11,7 +11,10 @@ internal-links:
  - Kubernetes
  - Performance
  - Flask
+excerpt: |
+    Learn how to set up a reverse proxy in Kubernetes with Nginx and improve the performance and reliability of your application. This tutorial covers configuring the Nginx server, creating a Kubernetes deployment, and setting up a service to expose the deployment to the outside world.
 ---
+**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. Looking to streamline your container build? Earthly can help. [Check it out](/).**
 
 Setting up a reverse proxy in kubernetes can seem a bit overwhelming if it is your first time coming across them. However, it can greatly improve the performance and reliability of your application.
 
@@ -333,10 +336,8 @@ But when you visit the /flask route, you should see that your request is being h
 
 ## Conclusion
 
-In this article, we went over how to set up a reverse proxy in Kubernetes with Nginx. To do that, you created a Flask server, configured Nginx as a reverse proxy, created a docker image for the Flask server and Nginx, then deployed both the Nginx and the Flask server to Kubernetes.
+In this tutorial, we navigated through setting up a reverse proxy in Kubernetes using Nginx. We built a Flask server, configured Nginx, created Docker images for both, and deployed them to Kubernetes. You can find all the code on this [Github repository](https://github.com/somT-oss/flask-docker).
 
-The code used in this tutorial can be found in this [Github repository](https://github.com/somT-oss/flask-docker)
-
-I hope you found this article informative and helpful.
+And if you're looking to further streamline your build processes, you might want to give [Earthly](https://www.earthly.dev/) a try. It's a tool that simplifies build automation, making it a breeze to manage your builds.
 
 {% include_html cta/bottom-cta.html %}

@@ -18,6 +18,11 @@ jobs:
         uses: actions/checkout@v3
       - name: Download released earth
         run: "sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/download/v0.7.0/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly'"
+      - name: Perform nslookup and parse IP address
+        id: get-ip
+        run: |
+          IP=$(nslookup api.netlify.com | awk '/^Address: / { print $2 ; exit }')
+          sed -i 's/3.130.174.239/'"$IP"'/g' Earthfile
       - name: Build Site
         uses: mathiasvr/command-output@v1
         id: build-site

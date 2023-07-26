@@ -12,6 +12,8 @@ internal-links:
  - Autamating Tasks
  - Bash
  - Shell Scripts
+excerpt: |
+    Learn how to automate common tasks in software development using shell scripts. From file backups to log analysis and system maintenance, this article provides step-by-step guides and introduces key concepts like variables, loops, and regular expressions.
 ---
 
 **We're [Earthly.dev](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about how to automate common tasks with shell scripts. If you're interested in a different approach to building and packaging software then [check us out](/).**
@@ -659,10 +661,8 @@ This task provides a guide for creating an automated deployment script using con
 
 ## Conclusion
 
-Scripting offers a powerful toolkit for automating everyday tasks in modern software development. This article explores several tasks including file backup, data processing, log analysis, system maintenance and local application deployment which can be automated using shell scripts. Through a practical approach, these tasks introduce concepts such as variables, conditional statements, loops, functions, system calls, regular expressions, command line tools, version control, environment variables, and containerization.
+Shell scripts offer a powerful solution to automate various tasks, such as file backups, data processing, and system maintenance. This article has provided a hands-on understanding of scripting features like variables, loops, system calls, and more. Shell scripting can decrease errors, boost productivity, and enhance system stability, becoming a highly sought skill in the DevOps domain.
 
-Shell scripts can reduce errors, increase productivity, and improve system reliability. Additionally, scripting skills are highly valued in the DevOps community, where engineers can implement and maintain complex automation workflows and infrastructure as code.
-
-Choosing the correct tool for the job is critical since shell scripting has limitations, just like any tool. Despite this, mastering shell scripting can be an excellent way to improve your developer or system administrator skills. It can lead to new opportunities in DevOps and automation.
+While it's essential to select the right tool, shell scripting isn't a cure-all. If you've enjoyed learning about automation with shell scripts, you might want to explore [Earthly](https://www.earthly.dev/) for container-based build scripting and automation. It's super cool stuff and a great next step in your journey towards mastering automation tools.
 
 {% include_html cta/bottom-cta.html %}

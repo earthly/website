@@ -11,7 +11,10 @@ internal-links:
  - PostgreSQL
  - Database
  - YAML
+excerpt: |
+    Learn how to manage sensitive data in Kubernetes using secrets. This tutorial covers creating secrets, using them as environment variables or volume mounts, and pulling images from private Docker repositories using secrets.
 ---
+**We're [Earthly](https://earthly.dev/). We simplify and speed up software building with containerization. If you like Kubernetes for running containers and services, you might like Earthly for buildings them. [Check it out](/).**
 
 Generally, applications contain some sensitive data, like authentication tokens, passwords, usernames, and more. As you build in Kubernetes, some of these may go into pod specifications accidentally exposing some sensitive data. So how do we manage such data in Kubernetes? Secrets can help!
 
@@ -663,10 +666,8 @@ If you have the below output, then your Kubernetes [cluster](/blog/kube-bench) w
 
 ## Conclusion
 
-In this tutorial, you have learned about Kubernetes secrets. You have also learned how to use a secret as an environmental variable and as a volume mount. In addition, you know how to create a secret from a file, from the command line using `kubectl` , and from YAML manifest files.
+In this tutorial, you've gained a solid understanding of Kubernetes secrets and their implementation as environment variables and volume mounts. You've also learned creation of secrets from a file, via `kubectl`, and from YAML manifest files. We went over the process of authenticating a Kubernetes cluster for image pulling from a private DockerHub repository using a secret from the `.docker/config.json` file and the `imagePullSecrets` attribute. Now, you're equipped to deploy applications securely to Kubernetes using secrets.
 
-You then learned how to go through the process of authenticating your Kubernetes cluster to pull an image from your private repository on DockerHub by creating a secret from the `.docker/config.json` file, and pulling the image using the `imagePullSecrets` attribute.
-
-Now that you have a good knowledge of Kubernetes secrets, you can implement it in your application and deploy safely to Kubernetes.
+As you continue to enhance your Kubernetes skills, you might be interested in exploring more efficiency hacks in automating builds. In this regard, [Earthly](https://www.earthly.dev/) could be a valuable tool to consider.
 
 {% include_html cta/bottom-cta.html %}

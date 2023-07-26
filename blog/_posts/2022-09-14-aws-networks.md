@@ -12,7 +12,10 @@ internal-links:
  - Internet Gateway
  - Networks
  - EC2
+excerpt: |
+    Learn the basics of AWS networking and how to set up your own virtual private cloud (VPC) from scratch. This tutorial covers regions, availability zones, subnets, internet gateways, and route tables, and includes step-by-step instructions for creating an EC2 instance and deploying a web server using Nginx.
 ---
+**We're [Earthly](https://earthly.dev/). We make building software simpler and faster, which could be handy if you're working on AWS networking systems. Earthly can help automate your build process and make resource management easier. [Check it out](/).**
 
 When you first create an AWS account a lot of resources get created for you by default. For starters, you'll get a VPC in each region. In each of those you'll get subnets, a Route Table, an Internet Gateway, a CIDR range of IPs, and a Security Group. But what actually is all this stuff? If you're not someone who is super familiar with networking, it can be a little overwhelming.
 
@@ -315,8 +318,10 @@ That's it, no more setup is needed. Now you can paste the same IP address into y
 
 ## Conclusion
 
-There's still tons more to look into when it comes to setting up a secure AWS network, but hopefully this gave a you a better idea of how some of the basic building blocks work together.
+This tutorial has provided basic insights into setting up a secure AWS network. Remember, the default VPCs that AWS provides in each region are completely usable and free. You can use them without fully understanding them, but it's always better to know how things work.
 
-Again I want to point out that everything we've done so far is what AWS gives you for free with the default VPCs it sets up in each region, and you are fine to use those resources out of the box. I for one love when things are done for me, but hate not knowing how things are done. It's a real personal problem.
+Once you've got your AWS network up and running, you might want to consider making your builds smoother with [Earthly](https://www.earthly.dev/). It's a tool that can significantly enhance your build automation process. So, do check it out!
+
+There's plenty more to learn in this area, so keep exploring.
 
 {% include_html cta/bottom-cta.html %}

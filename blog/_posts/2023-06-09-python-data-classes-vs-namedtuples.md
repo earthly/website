@@ -7,7 +7,10 @@ author: Bala Priya C
 
 internal-links:
  - Python
+excerpt: |
+    In this article, we explore the differences between Python data classes and named tuples. We discuss their features, such as immutability, default values, type hints, comparison, memory efficiency, and maintainability. Whether you're a beginner or an experienced Python developer, understanding these differences can help you make informed decisions when choosing between data classes and named tuples for your projects.
 ---
+**We're [Earthly](https://earthly.dev/). We make building Python software simpler and faster using containerization. It's perfect for complex Python projects. [Check it out](/).**
 
 [Data classes](/blog/python-data-classes), introduced in Python 3.7, provide a convenient way to define classes that are a collection of fields. But for such use cases, named tuples, built into the collections module in the Python standard library, are good choices too. Named tuples have been around since Python 2.6, and several features have been added in the recent Python 3.x releases.
 
@@ -542,8 +545,6 @@ Let's wrap up our discussion by summarizing the key differences between data cla
 
 ## Conclusion
 
-In this article we explored how data classes and named tuples can both help us create classes that store attributes. We then compared them across a set of features: from immutability to memory efficiency.
+In this post, we dove into data classes and named tuples in Python, comparing their features like immutability and memory usage. These tools are handy for structured data, but don't forget about third-party packages like [Pydantic](https://docs.pydantic.dev/latest/) and [attrs](https://pypi.org/project/attrs/) too. They can automate some best practices, so feel free to explore and use them in your projects.
 
-We chose data classes and named tuples for this discussion as they are both built into the Python standard library, but there are popular third-party Python packages—data class alternatives—to build such classes.
-
-When sifting through Python codebases, you'll have likely come across Python packages like [Pydantic](https://docs.pydantic.dev/latest/) and [attrs](https://pypi.org/project/attrs/). These provide support for building such data classes while automating some best practices to work with Python classes. You may explore these packages and use them in your upcoming projects as needed.
+Speaking of automation, if you're looking to streamline your coding process even further, don't stop at Python. Try out [Earthly](https://www.earthly.dev/) for build automation. This tool can be a game-changer in managing your builds and ensuring consistency across different environments.

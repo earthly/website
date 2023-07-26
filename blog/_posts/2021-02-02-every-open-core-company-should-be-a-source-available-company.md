@@ -14,8 +14,9 @@ internal-links:
   - source-available
   - open core
 as_related: false
+excerpt: |
+    Earthly, a developer tooling and cloud infrastructure company, has announced a switch to the Business Source License 1.1 (BSL) in order to ensure a sustainable business model. While the code will be available for free immediately, it will become open-source after three years. This change will not impact users unless they intend to create a competing commercial offering based on Earthly.
 ---
-
 ## EDIT April 20, 2022
 
 This article is out of date as we have since switched back to an open-source license. While we still stand for the principles in this article, our thinking has evolved and we have decided that open-sourcing is the best decision for Earthly specifically. Read more about our [switch back to open-source in the official announcement](/blog/earthly-open-source).
@@ -44,7 +45,7 @@ You can continue to use Earthly like you always have. You may build unrelated co
 
 ## What Is Earthly's Business Model?
 
-Our business model will be based on the [open-core model](https://en.wikipedia.org/wiki/Open-core_model). An open-core model means that some amount of additional functionality is built around an open code-base. The core is free and the source is made available, while the additional functionality around the core is paid-for. Usually, the additional functionality is either targeted at large teams or enterprises, and/or is based on a managed service offering. Examples of open-core business models are [Kafka](https://kafka.apache.org/) ([Confluent](https://www.confluent.io/)), [Cassandra](https://cassandra.apache.org/) ([DataStax](https://www.datastax.com/)), the [ELK stack](https://www.elastic.co/what-is/elk-stack) ([Elastic](https://www.elastic.co/)), [Redis](https://redis.io/) ([Redis Labs](https://redislabs.com/)), [CockroachDB](https://github.com/cockroachdb/cockroach) ([Cockroach Labs](https://www.cockroachlabs.com/)) and many others.
+Our business model will be based on the [open-core model](https://en.wikipedia.org/wiki/Open-core_model). An open-core model means that some amount of additional functionality is built around an open code-base. The core is free and the source is made available, while the additional functionality around the core is paid-for. Usually, the additional functionality is either targeted at large teams or enterprises, and/or is based on a managed service offering. Examples of open-core business models are [Kafka](https://kafka.apache.org/) ([Confluent](https://www.confluent.io/)), [Cassandra](https://cassandra.apache.org/) ([DataStax](https://www.datastax.com/)), the [ELK stack](https://www.elastic.co/what-is/elk-stack) ([Elastic](https://www.elastic.co/)), [Redis](https://redis.io/) ([Redis](https://redis.com/)), [CockroachDB](https://github.com/cockroachdb/cockroach) ([Cockroach Labs](https://www.cockroachlabs.com/)) and many others.
 
 We believe that this model has been battle-tested and is becoming the norm in the world of open developer tooling and cloud infrastructure.
 

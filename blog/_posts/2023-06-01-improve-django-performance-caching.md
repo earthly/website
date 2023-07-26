@@ -10,7 +10,10 @@ internal-links:
  - Performance
  - Caching
  - Optimization
+excerpt: |
+    Learn how to improve the performance of your Django web application using caching techniques. This article covers everything from the basics of caching to advanced strategies, helping you optimize your application and provide a better user experience.
 ---
+**We're [Earthly](https://earthly.dev/). We make building software simpler and faster using containerization. Earthly could be your go-to tool for optimizing the build process of your Django application, ensuring faster and more efficient development. [Check it out](/).**
 
 Performance is a crucial aspect of web development that significantly impacts user experience. The speed and reliability of a website influence users' engagement and overall satisfaction with the site. Inadequate performance, such as slow page loading times or frequent crashes, can lead to reduced traffic and potential loss.
 
@@ -202,8 +205,8 @@ Cache optimization, commonly referred to as cache tuning, is an important techni
 
 ## Conclusion
 
-Django comes with a full set of caching framework out of the box which lets the developers build robust applications which are easier to scale. Caching is an essential aspect of optimizing web application performance, and Django provides excellent support for caching. In this article, we discussed the various caching strategies available in Django and explored how they can be used to improve application performance. We also discussed the benefits of caching, such as reducing the number of database queries and improving response times for users.
+Django's built-in caching framework allows developers to create scalable, high-performing web applications. In this article, we delved into Django's caching strategies and their impact on improving application performance through reduced database queries and faster response times. We also highlighted the importance of cache invalidation and performance optimization.
 
-Additionally, we looked at the importance of cache invalidation and explored strategies for optimizing cache performance. Overall, caching is a powerful tool that can significantly improve the performance of Django applications, and developers should leverage it to ensure their applications deliver the best possible user experience.
+In a nutshell, leveraging caching in Django is key to delivering outstanding user experience. And if you're looking to further level up your Django app's build process, you might want to give [Earthly](https://www.earthly.dev/) a try. This open-source build automation tool can help optimize your build performance and ensure consistent, repeatable builds across different environments.
 
 {% include_html cta/bottom-cta.html %}

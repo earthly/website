@@ -11,6 +11,7 @@ main:
   - title: "GitHub"
     url: https://github.com/earthly/earthly
 docker:
+  - title: Docker
   - title: Container Tutorials
     children:
       - title: "Docker Logging"
@@ -40,6 +41,7 @@ docker:
       - title: "Compiling Containers"
         url: /compiling-containers-dockerfiles-llvm-and-buildkit/
 makefile:
+  - title: Makefiles
   - title: Tutorials
     children:
       - title: Overview Tutorial
@@ -75,6 +77,7 @@ makefile:
       - title: "Makefile Variables"
         url: /makefile-variables
 bash:
+  - title: Linux
   - title: Bash
     children:
       - title: "Bash Basics" 
@@ -129,13 +132,25 @@ activity-tracker:
         url: /golang-grpc-gateway/
       - title: "Side Quest: Protobuf's"
         url: /buf-protobuf/
-pongo:
-  - title: "Building Pong in the Terminal"
+monorepos:
+  - title: Monorepos
     children:
-    - title: "Pongo Part One"
-      url: /pongo/
-    - title: "Pongo Part Two"
-      url: /pong-part2/
+      - title: "Building Your JavaScript Monorepo"
+        url: /building-js-monorepo/
+      - title: " Golang Workspaces"
+        url: /go-workspaces/
+      - title: "Building a Monorepo in Golang"
+        url: /golang-monorepo/
+      - title: "JavaScript Monorepo with Lerna"
+        url: /javascript-monorepo-with-lerna/
+      - title: Monorepo Build Tools
+        url: /monorepo-tools/
+      - title: Monorepo vs Polyrepo
+        url: /monorepo-vs-polyrepo/
+      - title: Building a Monorepo with Bazel
+        url: /monorepo-with-bazel/
+      - title: How to Set Up a TypeScript Monorepo
+        url: /setup-typescript-monorepo/
 deployment-strategies:
   - title: "Deployment Strategies"
     children:
@@ -182,3 +197,55 @@ lambdas:
         url: /aws-lambda-api-proxy/
       - title: "Terraform Import"
         url: /terraform-lambda/
+github-actions:
+  - title: GitHub Actions
+    children:
+      - title: "GHA Environment Variables and Secrets"
+        url: /github-actions-environment-variables-and-secrets/
+      - title: "Caching Dependencies with GHA"
+        url: /caching-dependencies-github-actions/
+      - title: "Using Terraform with GitHub Actions"
+        url: /terraform-with-github-actions/
+      - title: "Deploy to ECR with a GitHub Actions"
+        url: /aws-ecr-github-actions/
+      - title: "Using GitHub Actions to Deploy Containers"
+        url: /github-actions-and-docker/
+      - title: "Using Dockerhub with GitHub Actions"
+        url: /cicd-build-github-action-dockerhub/
+pongo:
+  - title: "Building Pong in the Terminal"
+    children:
+    - title: "Pongo Part One"
+      url: /pongo/
+    - title: "Pongo Part Two"
+      url: /pong-part2/
+bazel:
+  - title: "Big Builds"
+  - title: "Bazel"
+    children:
+    - title: "When to use Bazel?"
+      url: /bazel-build/
+    - title: "Building a Monorepo with Bazel"
+      url: /monorepo-with-bazel/
+    - title: "Using Bazel to Improve Your Automated Test Suite"
+      url: /bazel-and-automated-tests/
+    - title: "Pushing Docker Images With Bazel"
+      url: /push-docker-image-bazel/
+  - title: "Using Bazel"
+    children:
+    - title: "Bazel and Python"
+      url: /build-and-deploy-pyapp-with-bazel/
+    - title: "Bazel and Rust"
+      url: /bazel-with-rust/
+    - title: "Bazel and Node.js"
+      url: /build-nodejs-app-with-bazel/
+    - title: "Bazel and GoLang"
+      url: /build-golang-bazel-gazelle/
+    - title: "Bazel and TypeScript"
+      url: /using-bazel-with-typescript/
+  - title: "Large Scale Builds"
+    children:
+    - title: "Monorepo Build Tools"
+      url: /monorepo-tools/
+    - title: "Pants for Python - Interview"
+      url: /pants-build/

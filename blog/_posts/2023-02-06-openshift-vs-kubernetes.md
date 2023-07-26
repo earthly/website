@@ -11,7 +11,10 @@ internal-links:
  - OpenShift
  - Container
  - Deployment 
+excerpt: |
+    Learn the key differences between OpenShift and Kubernetes, two popular container orchestration tools, and discover which one is the best fit for your cloud-native strategy. Find out how these platforms compare in terms of ease of use, deployment, continuous integration, security, installation, and updates.
 ---
+**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. Whether you're team Kubernetes or OpenShift, Earthly can simplify your containerized application deployment and management. [Check it out](/).**
 
 The modern software delivery life cycle is filled with microservices packed into containers. Containers can lead to more flexible and scalable applications but often at the cost of additional complexity. Your application probably consists of many microservices that are built and deployed independently. Each microservice may have its own development and deployment cycle, and the dependencies between services can be complex.
 
@@ -141,10 +144,10 @@ In contrast, OpenShift lacks in this area and is still in an experimental stage 
 
 ## Conclusion
 
-Kubernetes offers a lot of flexibility to customize deployments and it has the whole [CNCF landscape](https://landscape.cncf.io/) integrated to support any pitfalls. On the other hand, OpenShift is a secure, ready-to-deploy, and preconfigured flavor of Kubernetes, and it charges a premium for its features with a wide range of ready-to-use internal integrations.
+Kubernetes and OpenShift both offer unique approaches to container orchestration. Kubernetes offers greater flexibility and customization, while OpenShift provides a more secure, plug-and-play experience, albeit at a cost. For beginners, or those in the Red Hat ecosystem, OpenShift might be a more comfortable choice.
 
-Due to its additional features, OpenShift may be a better option for those who are new to container orchestration, who want a simpler adoption path, or who are already familiar with the Red Hat ecosystem.
+Your final decision should consider factors like deployment complexity, budget, and specific needs. If you need customization capabilities and have the resources, choose Kubernetes. For a faster cloud transition and if you're okay with the cost, OpenShift is a strong choice.
 
-Choosing the right container orchestration tool would require factoring in the complexity of deployments, budget, and customization requirements amongst others. Kubernetes is a good choice when you want customization and have the resources to support it. Opting for OpenShift will be a great choice when you want to be on the cloud quickly and are willing to pay for it.
+And if you're considering OpenShift or Kubernetes, why not also check out [Earthly](https://www.earthly.dev/) for CI? It might just simplify your build automation process.
 
 {% include_html cta/bottom-cta.html %}

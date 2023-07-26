@@ -11,6 +11,8 @@ internal-links:
  - Troubleshooting
  - Debian
  - Raspbian
+excerpt: |
+    Learn how to cross-compile programs for Raspberry Pi using a more powerful PC with this step-by-step tutorial. Discover how to set up the development environment, write a C++ program, and debug it using GDB.
 ---
 
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article covers cross compiling. If you're someone who builds software often, you might want to [check us out](/) and see if Earthly can help you build faster and easier.**
@@ -563,10 +565,10 @@ gdb-multiarch ./build/fact
 
 ## Conclusion
 
-Raspberry Pi is an affordable general-purpose PC that is limited by its relatively simple architecture. But by using a cross-compilation toolchain, you can leverage a more powerful PC to compile programs for Raspberry Pi.
+Raspberry Pi's simplicity can be a limitation, but with a cross-compilation toolchain, you can utilize a stronger PC to compile programs for Raspberry Pi.
 
-In this article, you learned how to set up the development environment for cross-compilation, including setting up the sysroot and the toolchain. You also learned how to write a toolchain file for CMake and compile a C++ program and link it to a shared library. Finally, you learned how to debug the program running on Raspberry Pi using GDB.
+This article walked you through setting up a cross-compilation environment, creating a CMake toolchain file, compiling a C++ program, linking it to a shared library, and debugging using GDB.
 
-To learn more about cross-compilation with CMake, check out the [official documentation](https://cmake.org/cmake/help/book/mastering-cmake/chapter/Cross%20Compiling%20With%20CM).
+To delve deeper into cross-compilation with CMake, read the [official documentation](https://cmake.org/cmake/help/book/mastering-cmake/chapter/Cross%20Compiling%20With%20CM). And if you're looking to further fine-tune your cross compile process, you might want to give [Earthly](https://www.earthly.dev/) a try!
 
 {% include_html cta/bottom-cta.html %}

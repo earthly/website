@@ -12,7 +12,10 @@ internal-links:
  - Pipelines
  - Data Workflows
  - Apache
+excerpt: |
+    Learn how to automate your data pipelines and workflows using Apache Airflow. This powerful open-source platform simplifies task scheduling, monitoring, and collaboration, making it a must-have tool for data engineers.
 ---
+**We're [Earthly](https://earthly.dev/). We simplify and speed up software building with containerization. Earthly is a powerful tool that can automate and streamline data engineering CI processes. [Check it out](/).**
 
 Are you seeking a powerful, user-friendly platform to manage your data workflows? If so, Apache Airflow might be just what you need. Apache Airflow is a powerful, open-source platform for managing complex data workflows and machine learning tasks. Its Python-based architecture seamlessly integrates with other Python tools and its web-based interface simplifies monitoring and managing workflows. With features like task dependency management and retries, Airflow streamlines workflow management to improve efficiency for teams of any size.
 
@@ -482,8 +485,8 @@ The three download tasks can be executed in parallel since they don't have any d
 
 ## Conclusion
 
-In this article, you have learned about Apache Airflow's architecture and components, and its key features. Additionally, how to install and configure Apache Airflow and write DAG code. We have also covered best practices for using Apache Airflow.
+This article dove into the nitty-gritty of Apache Airflow, its strengths, and how to effectively install, configure, and write DAG code for it. We also explored some best practices for its use. Future upgrades might lead to better cloud integration, improved data streaming support, and cooler visualization & monitoring features. Airflow's versatility makes it a superb tool - and it's just going to keep getting better!
 
-Looking to the future, potential developments for Apache Airflow may include better integration with cloud platforms, improved support for streaming data, and enhanced visualization and monitoring features. Apache Airflow is a flexible tool with a wide range of use cases, and its continued improvement will only make it more valuable to users.
+As you continue to explore tools to streamline your data engineering processes, you might also be interested in [Earthly](https://www.earthly.dev/). It's an open-source build automation tool that could be a great addition to your toolkit, especially if you're looking to further optimize your build.
 
 {% include_html cta/bottom-cta.html %}

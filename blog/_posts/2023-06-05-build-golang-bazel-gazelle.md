@@ -5,15 +5,19 @@ categories:
 toc: true
 author: Amarachi Aso
 editor: Mustapha Ahmad Ayodeji
-
+sidebar:
+  nav: "bazel"
 internal-links:
  - Golang
  - Gazelle
  - Bazel
  - Builds
+excerpt: |
+    Learn how to build Go applications with Bazel and Gazelle, two powerful tools that automate the build process and significantly reduce build times. This tutorial covers the basics of setting up a workspace, running tests, and developing a basic application using Bazel and Gazelle.
 ---
+**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. This article is about when to reach for Bazel. If you are looking for a simpler approach to building monorepos then [check us out](/).**
 
-[Bazel](https://bazel.build/), an open source build system created by Google, offers fast and incremental builds for your project through advanced local and distributed caching. It's popular due to its built-in support for multiple languages, extensibility, and ability to scale alongside your codebase, organization, and continuous integration (CI) systems.
+[Bazel](https://earthly.dev/blog/bazel-build/), an open source build system created by Google, offers fast and incremental builds for your project through advanced local and distributed caching. It's popular due to its built-in support for multiple languages, extensibility, and ability to scale alongside your codebase, organization, and continuous integration (CI) systems.
 
 Meanwhile, [Gazelle](https://github.com/bazelbuild/bazel-gazelle) is a build file–generation tool specifically designed for Bazel projects. It has native support for Golang (Go) and it can be extended to support new languages and custom rule sets.
 
@@ -225,5 +229,9 @@ You can visit [http://localhost:5000/greet](http://localhost:5000/greet) and [ht
 In this tutorial, you learned how Bazel and Gazelle can be used to build a Go application. You learned how to prepare the workspace, how to run the test, and how to develop a basic application using Bazel.
 
 Bazel and Gazelle help simplify the build process in cases where there would have been multiple complex layers. In addition, it's also significantly faster to build with Bazel since it doesn't have to rebuild your whole project every time it runs.
+
+Yet, while Bazel is a fantastic tool for building apps, and Gazelle a great tool for generating those build files, the combination can also be complex and intricate. It may be overkill for smaller projects or for teams that aren't familiar with its intricacies. That's where [Earthly](/) comes into the picture.
+
+Earthly offers a simpler approach to building monorepos and containerization, focusing on streamlining the build process, maintaining a minimal setup, and promoting the use of best practices. It aims to simplify the build system and make it accessible for more developers, offering a potentially lower learning curve compared to Bazel. [Earthly](/) can handle both small and large projects, offering you scalability without the additional complexity.
 
 {% include_html cta/bottom-cta.html %}

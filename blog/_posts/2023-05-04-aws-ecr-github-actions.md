@@ -3,35 +3,22 @@ title: "Deploy Applications to AWS ECR with a GitHub Actions CI/CD Pipeline"
 categories:
   - Tutorials
 toc: true
+sidebar:
+  nav: github-actions
 author: Rose Chege
 editor: Bala Priya C
-
+last_modified_at: 2023-06-26
 internal-links:
  - CI/CD
  - GitHub
  - AWS
  - Deployment
+excerpt: |
+    Learn how to automate the testing, building, and deployment processes of your applications using GitHub Actions and Docker deployments with AWS ECR. This tutorial provides step-by-step instructions on setting up the necessary tools and configuring the workflow to seamlessly deploy your applications to AWS ECR.
 ---
+**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. This article is about GitHub Actions, if you'd like to see how Earthly can improve your GitHub Actions builds then [check us out](/earthly-github-actions).**
 
-CI/CD automates the application development pipeline. It eliminates manual deployments from your initial code commit to production deployment integrations. Deploying applications using [GitHub](/blog/ci-comparison) Actions as CI/CD pipeline provides a streamlined, secure approach to managing application releases.
-
-Its practice allows teams to build, test, and deploy applications quickly and reliably. This article will help you learn how to deploy applications to AWS ECR using [GitHub actions](/blog/continuous-integration) workflow.
-
-## The Role of CI/CD and GitHub Actions
-
-CI allows your teams to merge code changes into the shared repository. Each code change is integrated into the main branch of a shared source code repository. Each code commit triggers a CI process to automatically test and build the new changes. CD will then package the application changes and deploy them to your provisioned infrastructure environments.
-
-### GitHub Actions for CI/CD
-
-[GitHub Actions](https://docs.github.com/en/actions) is a perfect tool for automating your development workflows, such as CI/CD. GitHub allows you to host your application code. Any team member can contribute changes to a shared GitHub repository. The changes are merged and accepted as part of the main code. You need a pipeline that will test, build and create a new deployment for these changes. GitHub Actions allows you to set a channel that will automatically trigger such tasks.
-
-## Docker Deployments With AWS ECR
-
-You require a packaged application that is easily portable throughout the pipeline. Docker provides a consistent and isolated environment for building, testing, and deploying applications. It allows you to create Docker images that package an application and its dependencies into a single portable artifact. This makes it easier to trigger changes across different stages of the pipeline.
-
-To manage a [Docker](/blog/rails-with-docker) image, you need infrastructures allowing you to store and retrieve images while maintaining application scalability. AWS provides [ECR](https://aws.amazon.com/ecr/) as a fully managed container registry service to deploy your application using Docker.
-
-Let's dive in and create a GitHub Actions workflow that will automate deployments to [AWS ECR](https://docs.aws.amazon.com/AmazonECR/latest/userguide/what-is-ecr.html).
+In this tutorial, we will explore the seamless integration of CI/CD workflows using GitHub Actions and Docker deployments with AWS ECR. By leveraging these technologies, you can automate the testing, building, and deployment processes of your applications. GitHub Actions provides a powerful platform for orchestrating development workflows, while Docker offers a consistent and portable environment for packaging and deploying applications. AWS ECR serves as a managed container registry, allowing you to store and retrieve Docker images efficiently. Together, these tools enable streamlined and scalable deployments. Let's get started by creating a GitHub Actions workflow for automating deployments to AWS ECR.
 
 ### Prerequisites
 
@@ -39,10 +26,10 @@ To follow along with this guide, you require the following:
 
 - [Docker Engine](https://docs.docker.com/get-docker/) installed on your computer.
 - [AWS CLI](https://aws.amazon.com/cli/) installed.
-- [Git](https://git-scm.com/downloads) installed and [configured with GitHub](https://docs.github.com/en/get-started/quickstart/set-up-git).
+- [Git](https://git-scm.com/downloads) installed.
 - Basic knowledge of working with AWS and GitHub.
 
-Check the code used in this guide in [this GitHub repository](https://github.com/Rose-stack/nodes-app).
+The code used in this guide is on [GitHub](https://github.com/Rose-stack/nodes-app).
 
 ## Setting Up the AWS IAM
 
@@ -148,9 +135,9 @@ Review the above policy and enter the name of the policy; create the policy, and
 
 ## Creating a GitHub Repository
 
-[GitHub Actions](https://docs.github.com/en/actions/quickstart) requires a repository for hosting and sharing the code. It will trigger its workflow based on your current code on a GitHub repository. Navigate to your [GitHub account](https://github.com/) and create the GitHub Repository online.
+GitHub Actions requires a repository for hosting and sharing the code. It will trigger its workflow based on your current code on a GitHub repository.
 
-This Repository will host a simple sample [Node.js application](https://nodejs.org/en/docs/guides/getting-started-guide/). First, create the application locally as follows:
+This Repository will host a simple sample Node.js application. First, create the application locally as follows:
 
 From your terminal, initialize a Node.js application:
 
@@ -255,7 +242,7 @@ git push origin <branch_name>
 
 ## Setting Up AWS ECR
 
-You will require an [ECR](https://aws.amazon.com/ecr/) to store the image the GitHub Action will build and deploy. Navigate to your AWS Management Console, and from the dashboard section, search for [Elastic Container Registry](https://aws.amazon.com/ecr/), then click on **Create a repository**.
+You will require an [ECR instance](https://aws.amazon.com/ecr/) to store the image we will build and deploy. Navigate to your AWS Management Console, and from the dashboard section, search for `Elastic Container Registry`, then click on **Create a repository**.
 
 <div class="wide">
 ![Image guide]({{site.images}}{{page.slug}}/wnC3tR4.png)\
@@ -291,7 +278,7 @@ You should have two keys added as follows:
 
 The most important part is to create a workflow that will trigger builds and deployments. This will create, connect the pipeline and ensure every process works as expected. Let's discuss how to create a GitHub Actions workflow that deploys our sample Node.js application to ECR.
 
-The first step is to set up when the workflow should be triggered. In this case, a change to the main branch should always automatically triggers the workflow as follows:
+The first step is to set up is when the workflow should be triggered. In this case, a change to the main branch should always automatically triggers the workflow as follows:
 
 ~~~{.yml caption="deploy.yml"}
 # deploy.yml
@@ -430,8 +417,8 @@ Go ahead and refresh your ECR repository, and your application image will be dep
 
 ## Conclusion
 
-Deploying applications to AWS ECR with a GitHub Actions CI/CD creates a reliable pipeline that automates Docker builds and [deployment](/blog/deployment-strategies) cycles. This guide helped you learn how to deploy an application to AWS ECR using a GitHub Actions CI/CD pipeline. I hope you found the GitHub Actions workflow useful while leveraging automation to AWS resources.
+Deploying applications to AWS ECR with a GitHub Actions CI/CD creates a reliable pipeline that automates Docker builds and deployment cycles. This guide helped you learn how to deploy an application to AWS ECR using a GitHub Actions CI/CD pipeline. I hope you found the GitHub Actions workflow useful while leveraging automation to AWS resources.
 
-To further improve your [CI/CD pipelines](https://earthly.dev/blog/ci-vs-cd/), leverage other AWS services, such as [CodePipeline](https://aws.amazon.com/codedeploy/) and [CodeDeploy](https://aws.amazon.com/codepipeline/), and streamline your pipeline infrastructure.
+And if you're looking to continue building out your automation pipeline, consider using [Earthly](https://earthly.dev). Earthly runs everywhere, including GitHub Actions and can improve the reliability of your CI/CD pipelines. It works great with [GitHub Actions](/earthly-github-actions) and AWS.
 
-{% include_html cta/bottom-cta.html %}
+{% include_html cta/gha-cta1.html %}

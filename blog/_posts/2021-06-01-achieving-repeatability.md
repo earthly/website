@@ -8,7 +8,11 @@ internal-links:
  - repeatability
  - reusability
  - reliability
+excerpt: |
+    Learn how to achieve repeatability in your continuous integration pipeline and improve the reliability, reproducibility, reusability, and speed of your builds. Discover best practices for test automation, adopting continuous integration, and fixing broken builds immediately.
 ---
+**We're [Earthly](https://earthly.dev/). We simplify and speed up software building with containerization. Earthly is a powerful tool for achieving repeatability in your CI/CD pipeline. [Check it out](/).**
+
 <!-- vale HouseStyle.EG = NO -->
 > In software engineering, continuous integration is the practice of merging all developers' working copies to a shared mainline several times a day. Grady Booch first proposed the term CI in his 1991 method, although he did not advocate integrating several times a day. —[Wikipedia](https://en.wikipedia.org/wiki/Continuous_integration "Wikipedia article on continuous integration")
 
@@ -117,22 +121,14 @@ The fastest way to fix a broken build is to roll back to the last known good com
 
 ## Conclusion
 
-Continuous integration reduces risk by eliminating long integration efforts and reducing the feedback loops. To recap, there are many advantages to implementing continuous integration in your teams:
+Continuous integration (CI) is a game-changer! It helps find bugs quicker, speeds up the feedback loop, removes integration issues, and boosts team communication and pace. To ace your CI/CD pipeline, remember these principles:
 
-- Allows identifying bugs and software defects faster
-- Reduces the feedback loop for engineers
-- Removes blind spots that can occur with deferred integration
-- Improves communication and velocity of the engineering teams
-
-To achieve repeatability in a CI/CD pipeline, it's essential to keep in mind the following principles:
-
-- **Reliable** continuous integration environments help us avoid slowing down the feedback loops for the developers and maintain **speed** of development.
-- **Reproducible** builds give our developers confidence to keep momentum and keep building with confidence.
+- Ensure your environments are **reliable** and **speedy** to keep development moving.
+- Aim for **reproducible** builds for developer confidence.
 - **Reusability** allows us to leverage the tools, patterns, and environments for continuous integration across projects.
-- **Speed** reduces the feedback cycle for developers, allowing them to ship more features in a shorter time.
 
-Finally, having continuous integration and continuous delivery removes one of the biggest barriers to implementing **continuous deployment**. Continuous deployment extends this flow and enables fully automated deployments into production.
+Speaking of reproducible builds, if you're looking to improve your CI/CD pipeline, you might want to give [Earthly](https://www.earthly.dev/) a spin. It's a tool designed for speedy, reproducible builds, which can significantly enhance your CI/CD process.
 
-The combination of continuous integration, continuous delivery, and continuous deployment allows teams to ship features faster and get them in front of customers faster, shortening the feedback loop and increasing value generation.
+CI also paves the way for **continuous deployment** and combined with continuous delivery, it helps ship and test features faster.
 
-For anyone looking to learn more about continuous integration, I highly recommend [Martin Fowler's](https://martinfowler.com/) book [Continuous Integration](https://www.martinfowler.com/books/duvall.html "Continuous Integration by Martin Fowler").
+Want to dive deeper into CI? Check out [Martin Fowler's book](https://www.martinfowler.com/books/duvall.html) on it!

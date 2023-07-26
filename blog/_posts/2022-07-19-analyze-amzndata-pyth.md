@@ -4,13 +4,15 @@ categories:
   - Tutorials
 toc: true
 author: Mr. Unity Buddy
-excerpt: How much have you spent on Amazon?
+excerpt: |
+    Learn how to analyze your Amazon data using Python and Pandas. Find out how much you've spent, the most expensive and cheapest items you've ordered, your average expenses, and even visualize your spending habits in a graph.
 internal-links:
  - Amazon
  - Python
  - Pip
  - Pandas
 ---
+**We're [Earthly](https://earthly.dev/). We simplify and speed up software building with containerization. Working with Python and Pandas for data analysis? Earthly can be a game-changer for your CI tests! [Give it a try](/).**
 
 How much have you spent on Amazon? Well, that's a kind of interesting question to find an answer to. And it's the type of question I like to answer using Python.
 
@@ -394,12 +396,12 @@ Awesome, now we have a beautiful bar chart representing how much we've spent on 
 
 ## Conclusion
 
-In this tutorial, we learned some key points of data analysis. As you see, with libraries like [Pandas](/blog/stop-using-pie-charts), data analysis is more accessible. We also learned how to work with matpotlib, a library used to visualize data in Python.
+In this tutorial, we explored data analysis using Python libraries like Pandas and Matplotlib. Key lessons include:
 
-The key takeaways of this tutorial are:
+* Pandas can greatly simplify data analysis with its numerous built-in functionalities.
+* Pre-processing and cleaning data is a crucial step before performing any analysis.
+* Visualizations using Matplotlib can help to interpret data more effectively.
 
-* Pandas is a powerful data analysis library used very often in Python. It has many built-in functions for easier data analysis.
-* Cleaning data before starting analysis with calculations is very important, and it makes the work easier.
-* Visualizing data in a graph makes the data clear.
+As you continue to explore Python and its powerful libraries, you might also be interested in automating your build processes. If so, give [Earthly](https://www.earthly.dev/) a try. It can help streamline your development workflow, especially if you're working with complex projects.
 
 {% include_html cta/bottom-cta.html %}

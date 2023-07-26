@@ -12,6 +12,8 @@ internal-links:
  - Navigation
  - Terminal
  - Commands
+excerpt: |
+    Learn how to navigate directories like a pro with the bash commands pushd and popd. These commands allow you to easily switch between directories and keep track of your navigation history, making your terminal workflow more efficient.
 ---
 
 **We're [Earthly.dev](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article covers bash pushd and popd. If you want to know more about building in containers then [check us out](/).**
@@ -292,11 +294,9 @@ Last but not least, you can also opt for keeping multiple Bash sessions open in 
 
 But be careful! If you end up with dozens of open Bash sessions, consider using `pushd` and `popd` instead.
 
-## Conclusion
+## `pushd` Help
 
-`pushd` and `popd` are powerful and versatile commands that can enhance your workflow when working in Bash or any shell that supports these commands. Once you get comfortable with the stack concept and the various ways of manipulating the directory stack, you can navigate more freely through the deepest of your directory trees.
-
-If you're trying to get the hang of `pushd`, `popd`, and `dirs` commands and their various options, help is only a few keystrokes away. All three commands come with a concise help text:
+Getting stuck? These commands got you covered with handy help texts:
 
 ~~~
 $ pushd --help
@@ -304,6 +304,12 @@ $ popd --help
 $ dirs --help
 ~~~
 
-To learn more about Bash, check out our [Bash series](https://earthly.dev/blog/series/bash/).
+## Conclusion
+
+`pushd` and `popd` can be real game-changers for working in Bash or any other compatible shell. Understand the stack concept and you'll zip through your directory trees like a breeze.
+
+But why stop there? If you've just mastered directory navigation, you can level up even more with by checking out [Earthly](https://www.earthly.dev/) for efficient build automation.
+
+For more on Bash, do check out our [Bash series](https://earthly.dev/blog/series/bash/). Catch you there!
 
 {% include_html cta/bottom-cta.html %}

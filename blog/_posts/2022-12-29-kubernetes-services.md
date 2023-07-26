@@ -11,9 +11,12 @@ internal-links:
  - Yaml
  - Services
  - ClusterIP
+excerpt: |
+    Learn how to create and use services in Kubernetes to improve the communication and scalability of your containerized applications. This article covers the different types of services, such as ClusterIP, Headless, NodePort, and LoadBalancer, and provides step-by-step instructions on how to define and configure them using YAML files. Whether you're a beginner or an experienced developer, this guide will help you understand and leverage the power of services in Kubernetes.
 ---
+**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. This article is about when to reach for Kubernetes services. If you are looking for a simpler approach to building services then [check us out](/).**
 
-Kubernetes is a tool for managing containerized applications, designed to [make](/blog/using-cmake) it easy to deploy and scale applications. It is designed to work with a variety of container technologies like [Docker and containerd](https://earthly.dev/blog/containerd-vs-docker/). In a Kubernetes [cluster](/blog/kube-bench), your application runs in a **Pod**. In Kubernetes, Pods are *ephemeral*; they are temporary resources which are created and destroyed as needed .
+Kubernetes is a tool for managing containerized applications, designed to make it easy to deploy and scale applications. It is designed to work with a variety of container technologies like [Docker and containerd](https://earthly.dev/blog/containerd-vs-docker/). In a Kubernetes [cluster](/blog/kube-bench), your application runs in a **Pod**. In Kubernetes, Pods are *ephemeral*; they are temporary resources which are created and destroyed as needed .
 
 When pods need to interact with other resources in a Kubernetes cluster, they can use the IP addresses provided by the cluster. However, this approach has the drawback of requiring developers to manually configure the IP addresses for each pod. Because Pods are temporary resources in a cluster, it is practically impossible to configure IP tables whenever a new Pod is created or destroyed. As a result, it is challenging for Pods to communicate with one another using IP addresses.
 
@@ -435,10 +438,8 @@ It's important to be careful when setting up services in Kubernetes because they
 
 ## Conclusion
 
-By using services, you can specify a stable network endpoint for a set of pods. This makes it easy to build applications that can discover and communicate with each other without hardcoding IP addresses or hostnames. In this article you learned how to create and use services in Kubernetes. You've learned the most common types of services.
+Services in Kubernetes provide a steady network endpoint for a specific set of pods, simplifying inter-application communication. This article gave insights into creating and using such services, focusing on the most common types; ClusterIP, Headless, NodePort, and Load Balancer Services. Understanding and correctly configuring these services is crucial in Kubernetes, ensuring effective cluster communication.
 
-While ClusterIP Service type is used to expose the IP address of the Pods to be accessed from inside the cluster, Headless Service is used to provide a static IP to a Stateful Pod to prevent data inconsistencies. NodePort Services are used to expose Node IP addresses to be accessed from outside the cluster. And finally, Load Balancer Service handles the incoming traffic from outside the cluster and routes it to the Pods.
-
-It's important to properly configure services in Kubernetes and make sure they are working as expected.
+If you're looking to further simplify your build processes, you might want to give [Earthly](https://www.earthly.dev/) a try. It's efficient and super easy to use, and could be the next step in optimizing your Kubernetes workflow.
 
 {% include_html cta/bottom-cta.html %}

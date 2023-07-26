@@ -12,8 +12,9 @@ internal-links:
   - earthly open-source
 topic: earthly
 funnel: 3
+excerpt: |
+    Earthly, a CI/CD framework, has announced that it is switching to an open-source license, allowing for greater community involvement and integration with various CI/CD vendors. The decision was made after considering user feedback and the benefits of an open model for both users and the business.
 ---
-
 *TLDR We are switching from a source-available license, to an open-source license for Earthly.*
 
 We started Earthly with the mission of bringing better builds to the world and to become the standard CI/CD framework that allows pipeline development locally and running on any CI.
@@ -89,7 +90,7 @@ We have made this decision with careful consideration and although there are som
 
 As we are happy to embrace open-source whole-heartedly for the Earthly project and the Earthfile syntax, we will continue to pursue a commercialization strategy that relies on open-core and an Earthly-as-a-service CI/CD freemium product, which will have proprietary components[^3].
 
-[^3]: Some might question whether we should open up the cloud offering too. We have considered that and for now we don't have enough conviction to commit to that direction. The only company that was successful in leveraging that model is RedHat. Whereas the open-core model has significantly more data points: HashiCorp, GitLab, DataBricks, Confluent, Chef, Redis Labs and many others. That's not to say the model cannot work or that we wouldn't explore this at a later time - we just find it hard to commit to that direction now for such an important decision that we wouldn't be able to reverse later (it would be unfair to the community to ever reverse such a decision).
+[^3]: Some might question whether we should open up the cloud offering too. We have considered that and for now we don't have enough conviction to commit to that direction. The only company that was successful in leveraging that model is RedHat. Whereas the open-core model has significantly more data points: HashiCorp, GitLab, DataBricks, Confluent, Chef, Redis and many others. That's not to say the model cannot work or that we wouldn't explore this at a later time - we just find it hard to commit to that direction now for such an important decision that we wouldn't be able to reverse later (it would be unfair to the community to ever reverse such a decision).
 
 ## Conclusion
 

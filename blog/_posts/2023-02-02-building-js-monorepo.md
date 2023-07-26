@@ -4,29 +4,35 @@ categories:
   - Tutorials
 toc: true
 author: Paul Ibeabuchi
+sidebar:
+  nav: monorepos
 
 internal-links:
  - CI/CD
  - Monorepo
  - Ecosystem
  - Pipelines 
+excerpt: |
+    Learn about the different monorepo tools available for building JavaScript projects, including Bazel, Gradle, Lage, Lerna, and Rush. Discover their features, benefits, and drawbacks to determine which one is the best fit for your needs.
 ---
+
+**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about building a Monorepo with JavaScript. Earthly is particularly useful if you're working with a Monorepo [check us out](/).**
 
 Many engineers and organizations are beginning to adopt a monorepo architecture for their JavaScript projects, where a single repository contains multiple projects. However, ensuring that your pipelines run efficiently and that your builds are occurring in the right order are just a couple of the complexities that a monorepo introduces for your engineering team.
 
 A large JavaScript application has [multiple modules](/blog/go-workspaces) and dependencies; a monorepo tool can manage these dependencies and improve scalability. Fortunately, using a dedicated tool for your monorepo system means you're not spending valuable time away from your core competencies to implement this system yourself.
 
-To help you determine what tool would work best for your project, let's compare five monorepo tools—Bazel, Gradle, Lage, Lerna, and Rush—according to their features, benefits, and drawbacks. We'll analyze factors like:
+To help you determine what tool would work best for your project, let's compare five monorepo tools, Bazel, Gradle, Lage, Lerna, and Rush, according to their features, benefits, and drawbacks. We'll analyze factors like:
 
 * Speed
 * Learning curve
 * Ease of adoption
 * Build caching
-* Detect the scope of changes
+* How well they detect the scope of changes
 * Dependency graph visualization
 * Ability to constrain dependency relationships within the repository
 
-Let's dive in, shall we?
+Let's dive in.
 
 ## Bazel
 
@@ -158,7 +164,7 @@ Some of the drawbacks of Rush are:
 
 ## Conclusion
 
-These five common monorepo tools—Bazel, Gradle, Lage, Lerna, and Rush—all have their own features, benefits, and drawbacks for building JavaScript and TypeScript [monorepos](/blog/go-workspaces). The good news is that regardless of which one works best for your situation, you can still use [Earthly](https://earthly.dev/) with all of them.
+These five common monorepo tools — Bazel, Gradle, Lage, Lerna, and Rush — all have their own features, benefits, and drawbacks for building JavaScript and TypeScript [monorepos](/blog/go-workspaces). The good news is that regardless of which one works best for your situation, you can still use [Earthly](https://earthly.dev/) with all of them.
 
 As an open source [CI/CD](/blog/ci-vs-cd) framework, Earthly allows you to develop locally and run anywhere. Builds are containerized and language agnostic, and tasks are executed in parallel, which makes it fast. Check out Earthly's detailed [documentation](https://docs.earthly.dev/) to see how you can get started with it easily.
 

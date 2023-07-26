@@ -10,7 +10,10 @@ internal-links:
  - make
  - makefile
  - cmake
+excerpt: |
+    Learn how to use CMake, a popular tool for building applications in the C++ community. This tutorial provides a step-by-step guide on using CMake to configure a build pipeline and compile a simple C++ application.
 ---
+**We're [Earthly](https://earthly.dev/). We make building software simpler and faster using containerization. If you're using CMake for building your C++ apps, you'll love how Earthly manages dependencies and streamlines the build process. [Check it out](/).**
 
 When it comes to packaging an application, there are many ways to do it. However, with languages that have been around as long as C and C++, the community has converged around some de facto standards. Especially in the C++ community, the standard is to use [CMake](https://cmake.org) when building your applications.
 
@@ -126,6 +129,7 @@ A lot of the things you have to worry about when it comes to CMake have to do wi
 
 As you can see, CMake can be a great aid when you want to create a build process around your application. With CMake, you only have to write a `CMakeLists.txt` file to ensure that your application can be built and executed on any platform. This is a big advantage to many and, without a doubt, is one of the reasons the tool has gained popularity.
 
-If you like the format of using CMake and Makefiles, in general, but have a hard time seeing how to specifically fit it into your application, check out [Earthly](https://earthly.dev/). Earthly is a tool that takes the best parts of Makefiles and combines them with Docker to make builds easier.
+{% include_html cta/makefile-cta.html %}
 
-{% include_html cta/bottom-cta.html %}
+<!-- If you like the format of using CMake and Makefiles, in general, but have a hard time seeing how to specifically fit it into your application, check out [Earthly](https://earthly.dev/). Earthly is a tool that takes the best parts of Makefiles and combines them with Docker to make builds easier.
+ -->

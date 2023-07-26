@@ -8,7 +8,11 @@ sidebar:
   nav: "docker"
 internal-links:
  - chef
+excerpt: |
+    Learn the differences between Chef and Docker and how they can be used together in build and deployment pipelines. Discover the strengths of each tool and how they can enhance your infrastructure provisioning and containerization processes.
 ---
+**We're [Earthly](https://earthly.dev/). We streamline software builds with containerization. If you're into Chef and Docker, you'll love how Earthly enhances your build process. [Give us a look](/).**
+
 [Docker](https://www.docker.com) and [Chef](https://www.chef.io) are two popular tools in the development world and are used extensively in build and deployment pipelines. However, even though they are used in similar contexts, the two are very different tools.
 
 Chef is a configuration management tool that allows developers to specify how they'd like their infrastructure to be set up through a configuration file. This provides an advantage over traditional methods of provisioning infrastructure because the configuration file can be version controlled and shared easily across teams.

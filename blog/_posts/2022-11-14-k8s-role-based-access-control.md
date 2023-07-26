@@ -9,7 +9,10 @@ internal-links:
  - Kubernetes
  - Cluster
  - RBAC
+excerpt: |
+    Learn how to implement Role-Based Access Control (RBAC) in Kubernetes to secure resources and components from unauthorized access. This tutorial covers the creation of Roles and RoleBindings at both the cluster and namespace levels, as well as the differences between ClusterRoles and Roles.
 ---
+**We're [Earthly](https://earthly.dev/). We help simplify and speed up software builds using containerization. If you're working with Kubernetes, Earthly could be a game-changer for streamlining your container builds. [Check it out](/).**
 
 Kubernetes has many resources and components that must be kept out of reach of certain users and service accounts. Resources such as secrets have to be encrypted and have strict access. If everyone in a company who has access to the cluster is given limitless power when using the cluster; this is dangerous because Kubernetes secrets and keys can be stolen and used inappropriately. Mostly, anyone can change the cluster's configurations, and it will be hard to know who made changes in case of vulnerability detection.
 
@@ -388,8 +391,8 @@ rules: \
 
 ## Conclusion
 
-This tutorial has equipped you with the skills and knowledge on how to implement RBAC at namespace level and cluster level.
+In this tutorial, you've learned how to use RBAC for namespace and cluster-level implementations. RBAC is crucial for access control as it limits unauthorised service accounts and users, helping to prevent common issues like secret sprawling. Remember: a lost key is as good as a lost system.
 
-Role-based access control should not be optional as it enforces access restriction to specific unauthorized service accounts and users. Secret sprawling is very common and it can be controlled by who accesses secrets and public keys using RBAC. Losing keys to unauthorized users is the same as losing your system.
+Now that you've secured your Kubernetes with RBAC, the next step is to optimize your build process. For that, you might want to give [Earthly](https://www.earthly.dev/) a shot! It's an excellent tool for streamlining and enhancing your build process.
 
 {% include_html cta/bottom-cta.html %}

@@ -1,4 +1,4 @@
-VERSION 0.7
+VERSION 0.7 
 FROM alpine
 
 ## Dev Build

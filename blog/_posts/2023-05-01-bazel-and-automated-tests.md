@@ -6,12 +6,17 @@ toc: true
 author: Ali Mannan Tirmizi
 author2: Aniket Bhattacharyea
 editor: Bala Priya C
-
+sidebar:
+  nav: "bazel"
 internal-links:
  - Bazel
  - Automation
  - CI/CD
+excerpt: |
+    Learn how to improve your automated test suite using Bazel, an open source software tool. Bazel can speed up the testing process, save time and computing resources, and ensure reliable and scalable deployments.
 ---
+
+**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. This article is about when to reach for Bazel. If you are looking for a simpler approach to building monorepos then [check us out](/).**
 
 To ensure that your code works as expected even when you ship it to production, you need to integrate automated testing. Automated testing is critical for enterprise-grade software development and delivery. It saves you time and money by rapidly running tests and improves software quality by allowing engineers to run lengthy and time-consuming tests in the background.
 

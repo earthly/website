@@ -12,7 +12,10 @@ internal-links:
  - Abstract Class
  - Inheritance
  - Abstraction
+excerpt: |
+    Learn how to create Abstract Base Classes (ABCs) in Python to enforce the implementation of certain methods or attributes in subclasses. ABCs promote code reuse, consistency, and modularity, and can be used for type checking at runtime. Discover the benefits of using ABCs and explore real-world use cases for this powerful feature in Python programming.
 ---
+**We're [Earthly](https://earthly.dev/). We simplify and speed up software building using containerization. Earthly works great with Python projects. [Check it out](/).**
 
 Object-oriented programming (OOP) is a popular programming paradigm used in many modern programming languages, including Python. At the core of OOP are classes that allow us to create objects with attributes and methods. However, regular classes in Python have limitations that can make it challenging to create modular and maintainable code.
 
@@ -469,6 +472,8 @@ Throughout the article we have covered how to create ABCs and the application of
 
 ## Conclusion
 
-In this article, we have explained what abstract base classes are and how they differ from regular classes. We have also discussed the concept of abstraction in programming and how ABCs relate to interfaces in object-oriented programming. We provided step-by-step instructions on how to create and use ABCs and showed examples of how they can be used in real-world scenarios. Finally, we discussed the benefits of using ABCs in Python programming, including promoting code reuse and modularity, enforcing consistent behavior, and improving code organization.
+In this piece, we've covered the ins and outs of abstract base classes (ABCs) - what they are, how they differ from regular classes, and their relation to interfaces in object-oriented programming. We walked you through creating and using ABCs while sharing some practical examples. We also shed light on how ABCs in Python shape your code, making it more reusable, modular, consistent, and organized.
+
+Just as ABCs simplify and streamline your Python code, [Earthly](https://www.earthly.dev/) can simplify your build process. If you've enjoyed exploring Python's ABCs, you'll love how Earthly can make your build process more efficient and manageable. Give it a try!
 
 {% include_html cta/bottom-cta.html %}

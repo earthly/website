@@ -3,7 +3,7 @@ name: Publish Alerts
 on:
   # run everyday at 12:20 utf ( 8:20 am est) to alert on new posts
   schedule:
-    - cron: '20 12 * * *' 
+    - cron: '40 12 * * *' 
   workflow_dispatch:
 
 jobs:

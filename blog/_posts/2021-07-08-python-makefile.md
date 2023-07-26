@@ -11,6 +11,8 @@ internal-links:
  - make python
 topic: make
 last_modified_at: 2023-04-17
+excerpt: |
+    Learn how to use `make` with Python to automate tasks like running tests, installing dependencies, and cleaning builds. Discover the benefits of using `make` in your Python projects and how it can save you time and prevent errors.
 ---
 <iframe width="560" height="315" src="https://www.youtube.com/embed/w2UeLF7EEwk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
@@ -280,6 +282,10 @@ To overcome this, `make` has something called a Phony target. By declaring a tar
 
 Using `make` in your Python projects opens the door to lots of possibilities in terms of automation. You can use `make` to run linters like `flake8`, run tests using `pytest`, or run code coverage using `coverage`. If you wish to learn all the features of `make`, be sure to check out the [manual](http://www.gnu.org/software/make/manual/make.html) by GNU.
 
-Being full of features, and primarily targeted towards compiled languages, `make` can be difficult to use in a Python project, especially in large ones. If you are looking for a solution to avoid the complexities of Makefile, while still retaining the powerful automation capabilities, check out [Earthly](https://earthly.dev/). Earthly takes a modern approach towards project builds and combines the best of both Makefile and Dockerfile. Earthly provides understandable and repeatable build scripts without any complexity.
+Being full of features, and primarily targeted towards compiled languages, `make` can be difficult to use in a Python project, especially in large ones.
 
-[Better Dependency Management in Python](/blog/python-earthly/) is a great introduction to using Earthly with Python.
+{% include_html cta/makefile-cta.html %}
+
+<!-- If you are looking for a solution to avoid the complexities of Makefile, while still retaining the powerful automation capabilities, check out [Earthly](https://earthly.dev/). Earthly takes a modern approach towards project builds and combines the best of both Makefile and Dockerfile. Earthly provides understandable and repeatable build scripts without any complexity.
+
+[Better Dependency Management in Python](/blog/python-earthly/) is a great introduction to using Earthly with Python. -->

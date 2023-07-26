@@ -5,16 +5,20 @@ categories:
 toc: true
 author: Adeyinka Adegbenro
 editor: Mustapha Ahmad Ayodeji
-
+sidebar:
+  nav: "bazel"
 internal-links:
  - Bazel
  - Typescript
  - Automation
  - Jest
  - Caching
+excerpt: |
+    Learn how to use Bazel with TypeScript to build and test your projects faster and more efficiently. Discover the benefits of Bazel's advanced caching and parallelization features, and explore how to customize Bazel for your TypeScript project.
 ---
+**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. This article is about when to reach for Bazel. If you are looking for a simpler approach to building monorepos then [check us out](/).**
 
-[Bazel](https://bazel.build/) is an open source project originally created by Google, refined, and tested for years to run heavy-duty, mission-critical services, and applications. It is a great choice for building, and testing projects. Bazel's advanced distributed caching execution creates fast incremental and customizable builds by only rebuilding what is necessary. It works across several languages and platforms, such as Java, Go, and JavaScript, and across operating systems, such as IOS, Android, Linux, and Windows.
+[Bazel](https://earthly.dev/blog/bazel-build/) is an open source project originally created by Google, refined, and tested for years to run heavy-duty, mission-critical services, and applications. It is a great choice for building, and testing projects. Bazel's advanced distributed caching execution creates fast incremental and customizable builds by only rebuilding what is necessary. It works across several languages and platforms, such as Java, Go, and JavaScript, and across operating systems, such as IOS, Android, Linux, and Windows.
 
 Bazel automates software builds and tests for tasks like running compilers and linkers to produce executable programs and libraries, such as transforming a JAVA file into a JAR executable. Bazel can be compared to tools like [Apache Maven](https://maven.apache.org/), [Apache Ant](https://ant.apache.org/), [GNU Make](https://www.gnu.org/software/make/), or [Gradle](https://gradle.org/), but it rises above the crop due to its multilanguage and multiplatform support. It comes with a customizable high-level language, [Starlark](https://github.com/bazelbuild/starlark), that describes how a project should be built. Bazel's scalability allows it to grow along with your codebase and organization. It can handle codebases of any size, whether huge monolith repositories or multiple repositories.
 
@@ -394,6 +398,12 @@ If you'd like to see the complete source code from this tutorial, visit [this Gi
 
 You've now completed a basic build of a TypeScript application with Bazel. You learned how to define a workspace as well as a package. You also learned how to load dependencies, add rules, build, and test a project, and publish to npm, all using Bazel.
 
-Bazel is a powerful and flexible build system that can be used to manage projects of any size and complexity. By leveraging its caching and parallelization features, Bazel can provide significant speed improvements in building and testing large projects. To further enhance your knowledge of Bazel, it is recommended to explore its documentation in depth. The official Bazel documentation contains a vast collection of resources, including tutorials, guides, and reference materials that can help you become an expert in using Bazel for your projects. So, if you want to learn more about Bazel and its capabilities, visit [Bazel's docs](https://bazel.build/docs) for more resources.
+Bazel is indeed a powerful and flexible build system that can be used to manage projects of any size and complexity. By leveraging its caching and parallelization features, Bazel can provide significant speed improvements in building and testing large projects.
+
+However, despite all these advantages, Bazel's complex configuration and steep learning curve can sometimes be a hurdle for developers, especially when dealing with large monorepos. This is where Earthly comes into the picture. As a simpler, more intuitive alternative to Bazel, Earthly aims to make building software easier and faster. Our philosophy revolves around simplicity and usability without compromising on performance.
+
+Earthly supports most languages and CI systems, and it also works with monorepos, microservices, and everything in between. So, while you've explored the capabilities of Bazel through this tutorial, you might also want to consider checking out Earthly. It may just be the tool you need to streamline your software building process, irrespective of the scale and complexity of your projects.
+
+Remember, the right tool for your needs will always depend on your specific context, requirements, and constraints. Therefore, knowing your options will only make you more prepared to make the best choices for your software development endeavors. Happy building!
 
 {% include_html cta/bottom-cta.html %}

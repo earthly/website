@@ -9,7 +9,10 @@ internal-links:
  - Python
  - Context Manager
  - Handling
+excerpt: |
+    Learn how to use the `with` keyword in Python to handle exceptions and ensure proper resource management. This article explains the concept of context managers and provides examples of creating your own classes and functions that support the `with` statement. Whether you're working with files, locks, or other types of connections, understanding the `with` statement is essential for writing clean and efficient Python code.
 ---
+**We're [Earthly](https://earthly.dev/). We streamline software building with containerization. If you're wrestling with complex Python CI/CD pipelines, you'll find Earthly can make your life a lot easier. [Check it out](/).**
 
 The `with` keyword in python is used for exception handling when working with certain resources like files or database connections. These resources may need to have additional actions performed if an exception is raised.
 
@@ -165,14 +168,8 @@ When the code in the `with` statement block has finished executing, Python execu
 
 ## Conclusion
 
-The `with` statement in Python wraps the execution of a block of code with methods defined by a context manager. The `with` statement provides a concise shorthand for a `try-finally` block and ensures that resources are closed immediately after they are used. A context manager can be a function or a class that supports the `with` statement.
+The `with` statement in Python, used with context managers, provides a simpler way than 'try-finally' blocks to ensure resources are immediately closed after use. In this tutorial, you've learned its function, how to use it in your custom objects and how it manages resources even when exceptions arise. While it's commonly used in file handling, it has wider applications too.
 
-Through the example of file handling in Python, you learned:
-
-- How the `with` statement works.
-- How you support the `with` statement in your own user-defined objects with the help of context managers.
-- How the `with` statement helps you manage resources by closing the resources when an exception is raised.
-
-The with statement is commonly used for reading from or writing to a file, but it can also be utilized for other purposes. You are welcome to further explore the capabilities of the `with` statement and context managers.
+As you continue to master Python, why not explore build efficiency too? Check out [Earthly](https://www.earthly.dev/). This tool could be your next step in optimizing your development process.
 
 {% include_html cta/bottom-cta.html %}

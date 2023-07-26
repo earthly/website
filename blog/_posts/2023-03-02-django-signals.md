@@ -10,7 +10,10 @@ internal-links:
  - Django
  - Python
  - Signals
+excerpt: |
+    Learn all about Django signals and how to use them in your project. This article covers the different types of signals, methods in the Django Signals module, and how to send, receive, and listen to signals. Plus, you'll see a practical application of signals in designing a Forgot Password endpoint.
 ---
+**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about Django signals. Earthly is a powerful build tool that can be used to build and test Django projects and projects in any framework. [Check us out](/).**
 
 In Django, signals allow certain senders to inform a set of receivers that specific actions have occurred. Django signals are used to send and receive specific essential information whenever a data model is saved, changed, or even removed. This relates to specific past or present client-provided events that occur in real time.
 
@@ -519,12 +522,8 @@ The other image below shows the "mailtrap" sandbox environment for simulating em
 
 ## Conclusion
 
-In this article, you learned about Django signals. You went through various signal types, what they mean, and how to use them in practical applications.
+In this tutorial, we dove into Django signals, covering different types and how to use them in real-life applications. We unraveled the mystery of how Django internally creates and saves object instances using `save()` and `_init()_`. We explored ways to connect signals with receiver functions, and touched upon `post_init`, `pre_init`, `pre_save`, `post_save`, `pre_delete`, and `post_delete` signals with examples. We also learned about the `disconnect()` method. Finally, we built a feature using signals and threading to send emails.
 
-You learned how object instances are created and saved internally. The `save()` and `_init()_` Django's model methods were discussed as well.
-
-In addition, we discussed two ways of connecting signals with receiver functions. You also learned how signals like `post_init`, `pre_init`, `pre_save`, `post_save`, `pre_delete` and `post_delete` work with their examples. This led us to the discussion on the `disconnect()` method.
-
-Lastly, you developed a real-world application feature that showed you how to work with signals and threading to send emails. As a next step, try exploring more about [Django signals](https://docs.djangoproject.com/en/4.1/topics/signals/).
+As you continue to expand your knowledge of [Django signals](https://docs.djangoproject.com/en/4.1/topics/signals/), you might also want to streamline your Django build processes. If so, why not give [Earthly](https://www.earthly.dev/) a try? This tool can help you optimize your development workflow, making it even more efficient and effective.
 
 {% include_html cta/bottom-cta.html %}

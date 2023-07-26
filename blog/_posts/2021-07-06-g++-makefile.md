@@ -12,6 +12,8 @@ internal-links:
  - c\+\+
 topic: make
 last_modified_at: 2023-04-17
+excerpt: |
+    Learn how to compile C++ programs with the g++ compiler provided by GCC and automate the compilation process using Make. This tutorial covers the installation of GCC on Linux, Mac, and Windows, as well as the compilation process and the use of the make utility to simplify complex compilation tasks.
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article covers GNU's gcc compiler. If you're interested in an approach to builds that allows you to keep gcc and build everywhere then [check us out](/).**
 
@@ -373,6 +375,10 @@ clean:
 
 Makefile is one of the most important components of compiling C++ using `g++`. It makes compilation easy and predictable and also saves time and resources by compiling only the necessary files. In this tutorial you learned how to install `g++`, and compile C++ programs with `g++`. You also learned how to write Makefiles and utilize `make` for increased productivity and automation.
 
-Because `make` is a feature rich utility and supports a wide range of systems, it has a steep learning curve. As your project grows in size, the Makefile also grows in complexity. If you are looking for a solution to avoid the complexities of Makefile, check out [Earthly](https://earthly.dev/).
+Because `make` is a feature rich utility and supports a wide range of systems, it has a steep learning curve. As your project grows in size, the Makefile also grows in complexity.
 
-**[Earthly](https://earthly.dev/) takes the best ideas from Makefile and Dockerfile, and provides understandable and repeatable build scripts, minus the head-scratching parts of the Makefile.**
+{% include_html cta/makefile-cta.html %}
+
+<!-- If you are looking for a solution to avoid the complexities of Makefile, check out [Earthly](https://earthly.dev/).
+
+**[Earthly](https://earthly.dev/) takes the best ideas from Makefile and Dockerfile, and provides understandable and repeatable build scripts, minus the head-scratching parts of the Makefile.** -->

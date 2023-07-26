@@ -5,12 +5,14 @@ categories:
 toc: true
 author: Ubaydah Abdulwasiu
 editor: Bala Priya C
-
+excerpt: |
+    Learn how to use the `echo` command in Linux to display text, format output, add and overwrite text in files, display variables, search for files, and more. Discover the various options and practical examples of using the `echo` command, as well as how to change the output colors.
 internal-links:
  - Linux
  - Command
  - Echo
 ---
+**We're [Earthly](https://earthly.dev/). We make building software simpler and faster using containerization. If you're working with Linux commands like `echo`... `echo`, Earthly can automate your build process making it even more efficient. [Check it out](/).**
 
 **Linux** is one of the most popular operating systems. It has a powerful command-line interface that allows various commands to be passed as instructions to be executed by the computer. The `echo` command is one of the most commonly used Linux commands.
 
@@ -528,8 +530,8 @@ Here are the ANSI escape color codes for some colors:
 
 ## Conclusion
 
-You should now have working knowledge on how to use the `echo` command. In this tutorial, you learned about the `echo` command and its options, such as `-n` to omit trailing lines, `-e` to interpret escape characters, and `-E` to ignore escape characters.
+This tutorial equipped you with the know-how of using the `echo` command and its various options like `-n`, `-e`, and `-E`. We explored its uses in different scenarios including text manipulation, outputting variables, and filtering files. Also, we saw how it can be integrated with other commands using the pipe operator for customized output colors.
 
-The tutorial also explained the various scenarios in which the `echo` command can be used, such as adding and overwriting texts in a file, outputting declared variables to the terminal, and printing files of a specific kind in a directory. You've also learned how the command can be piped with other commands using the pipe operator and how to customize the output colors.
+As you continue to explore and enhance your command line skills, you might be interested in powering up your Linux build automation. If so, give [Earthly](https://www.earthly.dev/) a shot. It's a tool that can significantly simplify and optimize your build processes.
 
 {% include_html cta/bottom-cta.html %}

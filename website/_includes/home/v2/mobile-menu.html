@@ -22,7 +22,7 @@
 
 
     <div
-        class="flex-col justify-start items-center border-10 hidden mobile-nav-menu fixed top-1 right-0 left-0 h-full w-full bg-white ml-0 mt-0 px-10 pt-2 border rounded-xl">
+        class="flex-col justify-start items-center border-10 hidden mobile-nav-menu fixed top-1 right-0 left-0 h-full w-full bg-white ml-0 mt-0 px-10 py-2 border rounded-xl overflow-auto">
         <div class="flex w-full">
             <div class="siteHeader-logoAndMenuButton flex w-full justify-start pb-6">
                 <a class="siteHeader-logoLink " href="{{site.landingurl}}/">
@@ -38,18 +38,17 @@
 
 
         <div class="border-b w-full text-xl pt-4 flex flex-col pl-2">
-            <div> Products</div>
-            <a href="/earthly-ci" class="border-b pl-4 py-4 flex items-center hover:bg-[#f1fbff]">Earthly
-                CI</a>
-            <a href="/earthly-core" class="border-b pl-4 py-4 flex items-center hover:bg-[#f1fbff]">Earthly</a>
-            <a href="/earthly-satellites"
-                class="pl-4 py-4 flex items-center hover:bg-[#f1fbff]">Earthly Satellites
+            <div>Products</div>
 
-            </a>
+            <a href="/earthly-core" class="border-b pl-4 py-4 flex items-center hover:bg-[#f1fbff]">Earthly</a>
+            <a href="/earthly-cloud" class="border-b pl-4 py-4 flex items-center hover:bg-[#f1fbff]">Earthly Cloud</a>
+            <a href="/earthly-satellites" class="border-b ml-4 pl-4 py-4 flex items-center hover:bg-[#f1fbff]">Earthly Satellites</a>
+            <a href="/earthly-ci" class="ml-4 pl-4 py-4 flex items-center hover:bg-[#f1fbff]">Earthly CI</a>
         </div>
 
         <div class="border-b w-full text-xl pt-4 flex flex-col pl-2">
             <div> Resources</div>
+            <a href="/earthly-github-actions" class="border-b pl-4 py-4 flex items-center hover:bg-[#f1fbff]">Earthly + GitHub Actions</a>
             <a href="/faq" class="pl-4 py-4 flex items-center hover:bg-[#f1fbff]">FAQ</a>
         </div>
 
@@ -66,10 +65,10 @@
             Blog
         </a>
 
-        <a id="nav-mobile-cta-button-copy-control" href="/get-earthly"
+        <a id="nav-mobile-cta-button-copy-control" href="https://cloud.earthly.dev/login"
             class="h-10 px-4 my-10 items-center flex w-fit text-xl py-4 text-center text-white bg-[#2d7e5d] hover:bg-green-700 rounded-lg"
             onclick="navMobileGetEarthlyClick()">
-            Install Earthly
+            Get Started Free
         </a>
 
 
@@ -99,7 +98,7 @@
                 </g>
             </svg>
             <a href="/slack" onclick="navMobileSlackClick()">
-                <span class="font-bold underline ml-2 text-lg cursor-pointer">
+                <span class="font-semibold ml-2 text-lg cursor-pointer">
                     Slack
                 </span>
             </a>
@@ -111,9 +110,9 @@
 
 <script>
   function navMobileGetEarthlyClick() {
-    analytics.track('nav-mobile-get-earthly-click', {
-      category: 'Get Earthly Click',
-      label: 'nav-mobile-get-earthly-click'
+    analytics.track('nav-mobile-get-started-free-click', {
+      category: 'Get Started Free Click',
+      label: 'nav-mobile-get-started-free-click'
     });
   }
 

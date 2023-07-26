@@ -3,24 +3,30 @@ title: "Monorepo Build Tools"
 categories:
   - Articles
 author: Adam
+sidebar:
+  nav: monorepos
 internal-links:
  - monorepo tools
  - monorepo
 topic: monorepo
 funnel: 2
+excerpt: |
+    Learn about the different monorepo build tools available, including Bazel, Pants, Nx, and Earthly. Discover their features, programming language support, learning curves, remote caching and execution capabilities, build introspection abilities, and versatility. Find the right tool for your organization's monorepo needs.
 ---
+**We're [Earthly](https://earthly.dev/) and this article is about Monorepo build tools. Earthly is particularly useful if you're working with a Monorepo. [check us out](/).**
+
 <!-- markdownlint-disable-file MD001 -->
 <!-- vale HouseStyle.OxfordComma = NO -->
 
 In the software development world, there is a growing trend of using monorepos to manage codebases. A monorepo is a single repository that contains the code of many interrelated but distinct projects. While monorepos have their benefits, they also come with their own set of challenges. And guess what? The challenges are primarily around tooling. In this article, I'll compare some of the most popular monorepo build tools on the market and see how they stack up against each other.
 
-## Problems Presented by Monorepos
+## What Are the Problems Presented by Monorepos?
 
 Here is the situation. Building things is relatively simple if you have one build artifact per source repository: you have a build process, you rebuild when code changes, and you get a new artifact. Of course, this codebase can grow, and perhaps as it grows, caching steps will need to be introduced, but generally, every change will lead to one new build artifact.
 
 Things get more complex when code repositories contain multiple partially-independent pieces of software. For example, if a repo has tens or hundreds of services, many services likely depend on each other. Still, changes to one do not necessarily mean all others need to be retested, rebuilt, or redeployed. This is why monorepos build tools, to do a good job, need to track project dependencies.
 
-## Not Just for MonoRepos
+## Not Just for Monorepos
 
 The opposite of a monorepo is a collection of source code repositories, where each build artifact has its own repository. But this distinction can be a bit meaningless. Many monorepo shops have multiple monorepos, and many places with a polyrepo structure have repositories that produce multiple artifacts. So the code organization solution space is a gradient from maximally conjoined to maximally separated. However, large repos have pushed legacy build tools to a breaking point, and new tools and techniques are now needed. All the tools I'm covering today tightly track dependencies and aggressively cache build steps, but these tools shouldn't just be limited to just maximally homogeneous source code layouts. Caching and tracking dependencies benefits lots of build use cases.
 
@@ -32,10 +38,8 @@ When choosing a monorepo build tool, there are a few different features that you
 
 - **Programming Language Support**: Make sure that the build tool you choose supports the programming languages you want to use now and in the future. Some build tools only support specific languages and that is fine as long as your monorepo will only ever have those languages in it.
 - **Learning Curve**: The learning difficulty of each tool varies. Some of them require a deep understanding of the underlying technologies and processes, making it difficult to get up and running quickly. Others are more user-friendly, with intuitive interfaces that allow users to quickly understand how to use the tool. Each tool's complexity should be considered when deciding which one best suits your needs.
-- **Caching**: An ideal build tool should never run the same build twice. To be more specific, with local caching, a machine should never run the same build step with the same inputs a second time, and with a remote cache, this should be true across an organization or build cluster.
-
-  Make sure that the build tool you choose has a good caching solution.
-Remote Execution: Remote execution can improve build times by allowing you to build the codebase on a remote server. And distributed execution is a further improvement where the build scheduler can distribute build steps across more than one machine. Make sure that the build tool you choose supports remote execution.
+- **Caching**: An ideal build tool should never run the same build twice. To be more specific, with local caching, a machine should never run the same build step with the same inputs a second time, and with a remote cache, this should be true across an organization or build cluster. Make sure that the build tool you choose has a good caching solution.
+- **Remote Execution:** Remote execution can improve build times by allowing you to build the codebase on a remote server. And distributed execution is a further improvement where the build scheduler can distribute build steps across more than one machine. Make sure that the build tool you choose supports remote execution.
 - **Build Introspection**: Build introspection refers to the ability of a build tool to provide insight into the processes and dependencies involved in building software. This allows engineers to view and query the build graph and ask questions like what part of the build is slowest or what projects depend upon this change.
 - **Versatility**: Build scripts are often used for things besides just purely producing artifacts. Most large organizations have at least one build pipeline with requirements that fall outside of the standard build and test stages. How are dependencies installed? How are integration tests run? Is there a staging database to restore or a production deploy to trigger? Make sure you consider how you will solve problems beyond producing an artifact from some source code.
 
@@ -266,9 +270,11 @@ If your organization is Google-like – in terms of language use, workflow, and 
 
 If your monorepo is a frontend web dev monorepo, mainly full of JavaScript and Typescript, then Bazel is often a significant change, and Pants isn't ready for you. For those reasons and because of its popularity among front-end devs, NX is a great choice.
 
-If you are working with containerized microservices, or if your software has system-level dependencies, or if you'd like to use your language's existing build tools or need to do something a bit non-standard, then Earthly, with its containerized glue layer approach, can be a great choice to build in an efficient and reproducible way.
+If you are working with containerized microservices, or if your software has system-level dependencies, or if you'd like to use your language's existing build tools or need to do something a bit non-standard, then [Earthly](/), with its containerized glue layer approach, can be a great choice to build in an efficient and reproducible way.
 
 (Also, you can combine many of these tools together. Earlier I mentioned NX backed by Bazel, but Bazel inside of Earthly and Pants inside of Earthly has also been done. The only real way to find out what tool will work best for your specific use case is to give it a try with a small proof of concept.)
+
+{% include_html cta/bottom-cta.html %}
 
 [^1]:
    There are so many tools that can help build a monorepo. There are other Bazel-inspired tools like Amazon's Brazil and Facebook's Buck and Buck2. There are JS-only build tools like Lerna, Rush, Turborepo, Lage. There are traditional build tools like Gradle, CMake, ninja, and shake. And even package management languages like Nix, when you throw in its build system Hydra, could be considered for building a monorepo. So, I've only picked a few representative builds. If there are others you'd like to see covered, please let me know.

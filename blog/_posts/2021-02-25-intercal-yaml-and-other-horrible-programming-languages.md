@@ -6,10 +6,14 @@ featured: true
 author: Adam
 sidebar:
   nav: "thoughts"
-excerpt: In 1972, two students learning FORTRAN came up with a fantastic new programming language called INTERCAL. 
+excerpt: |
+    Discover the bizarre world of INTERCAL, a parody programming language that will leave you scratching your head. Then, delve into the blurred line between configuration and programming languages, and why YAML might not be the best choice for control flow.
+bottomcta: false
 internal-links:
   - intercal
 ---
+**We're [Earthly](https://earthly.dev/). We simplify and speed up software building with containerization. Earthly helps you avoid YAML hell. [Check it out](/).**
+
 ## PROGRAM REJECTED FOR MENTAL HEALTH REASONS
 
 In 1972, two students learning FORTRAN came up with a fantastic new programming language called INTERCAL. INTERCAL is a bit unusual. For example, single quotes are called *sparks*, and double quotes are called *rabbit ears*, less than (<) is an *angle*, and a dash (-) is a *worm*. This makes the manual read like a word puzzle combined with an extended in-joke.

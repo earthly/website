@@ -13,7 +13,11 @@ internal-links:
    - runc
    - docker daemon
 last_modified_at: 2022-11-17
+excerpt: |
+    Learn how to use BuildKit, an open-source project that turns Dockerfiles into Docker images. Discover its history, how to install it, and how to build images using BuildKit directly. Explore different output types and gain insights into the inner workings of BuildKit.
 ---
+**We're [Earthly](https://earthly.dev/). We simplify building software with containerization.[Check it out](/).**
+
 There is an excellent open-source project that you have probably used without realizing it. It's called BuildKit, and it is what turns a Dockerfile into a Docker image. And it doesn't just build Docker images; it can build OCI images and several other output formats. [OpenFasS](https://www.openfaas.com/) uses it to turn functions into full containers, and here at Earthly, we use it to create complete continuous integration pipelines.  
 
 You may not know you've used BuildKit because other applications wrap it. Modern versions of `docker build` can use BuildKit and it will soon be enabled by default. Today let's look at how to use BuildKit directly.
@@ -385,10 +389,8 @@ It's empty! The scratch keyword indicates a completely empty docker layer. The m
 
 ## Conclusion
 
-Alright, we have now covered some ways to use BuildKit directly. BuildKit is used internally by `docker build` in modern docker versions, but using it directly unlocks some extra options.
+So, we've gone over a few ways to use BuildKit directly, which offers more features than the modern `docker build`. With it, you can do cool stuff like changing the output type and monitoring process and network requests. But we've just scratched the surface! BuildKit aids in multi-platform builds, enables parallel builds, supports caching, and boosts multi-stage builds, among other things.
 
-One use we covered was changing the output type. We can use BuildKit to export tars and local file systems. We also use `pstree` and `mitmProxy` to watch how buildkitd forks processes and make network requests.  
+If you've enjoyed exploring BuildKit and are looking to take things up a notch, you might want to check out [Earthly](https://www.earthly.dev/). It offers an optimized build process and extends the functionality available in BuildKit.
 
-There is much more to learn, though. BuildKit is behind the `docker buildx` multi-platform build feature and supports the ability to have multiple workers execute builds in parallel. BuildKit also supports caching, different frontends, docker-compose builds, faster multi-stage builds, and several other features.
-
-In a future article, we will cover creating a custom frontend and leaving the Dockerfile syntax behind.
+Stay tuned for a future post where we'll ditch Dockerfile syntax and explore creating a custom frontend.

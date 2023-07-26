@@ -12,7 +12,10 @@ internal-links:
  - Command
  - Delays
  - Linux
+excerpt: |
+    Learn how to strategically use the `sleep` command in shell scripting to introduce delays and control the timing of actions in your Linux scripts. Discover its various use cases, alternatives, and how it can help you simulate delays and test your applications under different conditions.
 ---
+**We're [Earthly](https://earthly.dev/). We make building software simpler and faster using containerization. [Check it out](/).**
 
 Timing is key to many applications, but making things happen at the right time can be challenging. For instance, sometimes you need to introduce a delay to a script to make sure actions are taken precisely when you want them to. The good news is that the `sleep` command lets you do that. With it, you can pause your Linux scripts, ensuring everything happens when it should.
 
@@ -159,10 +162,10 @@ This lets you give users a chance to read important output; however, here, the s
 
 ## Conclusion
 
-The `sleep` command is a simple but powerful tool. With it, you can control the rhythm of your scripts. It's useful for conserving resources, running tasks regularly, and making sure things happen when the rest of the system is ready. It's also useful for making scripts friendlier.
+The `sleep` command is your handy tool in script pacing. It's great for resource conservation, task scheduling, and timing tasks perfectly. But remember, it's more than just supplying an integer, so dive into all its features for max benefits. Also, be aware of other tools like `wait` and `read` for situations where `sleep` doesn't quite fit.
 
-However, there's more to it than just providing an integer, so explore its capabilities in full to get the most out of it. Be aware of its alternatives, too. Those can help you in conditions where `sleep` is not the precise tool for the job. The `wait` and `read` commands are both subtly different.
+Bash is powerful and can do wonders for Linux users. If you're looking to supercharge your Linux scripting even further, you might want to give [Earthly](https://earthly.dev/) a spin!
 
-Bash is a powerful language and can empower Linux users to do more with their systems. If you want to learn more about `sleep`, check out [its official documentation](https://man7.org/linux/man-pages/man1/sleep.1.html), or you can read more about Bash programming in general in our [bash series](https://earthly.dev/blog/series/bash/).
+And for more insights on `sleep`, check out the [official docs](https://man7.org/linux/man-pages/man1/sleep.1.html) or our [Bash series](https://earthly.dev/blog/series/bash/) for more Bash goodness.
 
 {% include_html cta/bottom-cta.html %}

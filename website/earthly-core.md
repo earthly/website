@@ -1,5 +1,6 @@
 ---
 title: Earthly
+description: Super simple build framework with consistent builds that you write once and run anywhere – on your laptop, remote, and in any CI.
 layout: default
 ---
 

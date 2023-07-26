@@ -123,13 +123,13 @@ Keanan Koppenhaver:
     bio     : "Keanan is the CTO at Alpha Particle where he helps publishers modernize their technology platforms and build their developer teams."
     avatar  : "/assets/images/authors/keanan-koppenhaver.jpg"
 Charles Odili:
-    name    : "Charles Odili:"
+    name    : "Charles Odili"
     bio     : "I am a Senior Full-stack API Engineer who enjoys researching, experimenting, easing how sub-systems interconnect, building to solve tough problems, and writing to share my knowledge with others."
     avatar  : "/assets/images/authors/charles-odili.jpg"
 Mohammed Osman:
-    name    : "Mohammed Osman:"
-    bio     : ""
-    avatar  : "/assets/images/authors/person.jpg"
+    name    : "Mohammed Osman"
+    bio     : "Mohammed Osman is a senior software engineer who started coding at the age of thirteen. His core skill set is a .NET ecosystem with a strong focus on C#, Azure, and data science. He enjoys the soft side of software engineering and leads scrum teams, and he shares coding and career tips on his blog."
+    avatar  : "/assets/images/authors/mohammed-osman.jpg"
 Sanni Michael:
     name    : "Sanni Michael"
     bio     : "Sanni is a software engineer with a passion to build and understand how things work on a subliminal level. He has over 3 years of experience building applications that meet customer expectations."
@@ -195,7 +195,7 @@ Aveek Das:
     bio     : "Aveek is an experienced data and analytics engineer. His main areas of technical interest include data architectures, Python, Big Data tools like Apache Spark, Kafka, and cloud technologies such as AWS/Amazon and Azure."
     avatar  : "/assets/images/authors/aveek-das.jpg"
 Mdu Sibisi:
-    name    : "Mdu Sibisi "
+    name    : "Mdu Sibisi"
     bio     : "I've worked for over 10 years as a software developer and I primarily specialize in object-orientated languages. As a blogger, I've been writing for eight years."
     avatar  : "/assets/images/authors/mdu-sibisi.jpg"
 Gineesh Madapparambath:
@@ -362,7 +362,7 @@ Paul Ibeabuchi:
 Artem Oppermann:
     name    : "Artem Oppermann"
     bio     : "Artem is a research engineer with a focus on artificial intelligence and machine learning. He started his career during university as a freelance machine learning developer and consultant. After receiving his master's degree in physics, he began working in the autonomous driving industry. Artem shares his passion and expertise in the field of AI by writing technical articles on the subject."
-    avatar  : "/assets/images/authors/artem.jpg"
+    avatar  : "/assets/images/authors/person.jpg"
 Antonello Zanini:
     name    : "Antonello Zanini"
     bio     : "I'm a software engineer, but I prefer to call myself a Technology Bishop. Spreading knowledge through writing is my mission."
@@ -467,3 +467,27 @@ Christoph Berger:
     name    : "Christoph Berger"
     bio     : "Christoph is a technical writer specializing in Go (the language) and has a broad interest in IT. When he's not writing articles, he helps developers become successful with Go."
     avatar  : "/assets/images/authors/christoph-berger.jpg"
+Emediong Samuel:
+    name    : "Emediong Samuel"
+    bio     : " Emediong Samuel is an excellent technical writer. Hailing from a DevOps background, he now writes about the things he used to code ...and more. Be it good words, fewer words, or more impact, whatever message you want to convey, He knows the best way to say it."
+    avatar  : "/assets/images/authors/emediong-samuel.png"
+Rahul K:
+    name    : "Rahul K"
+    bio     : "Rahul is developer and tech enthusiast. He also writes for technology focused companies. He is interested in programming, learning, and sharing knowledge."
+    avatar  : "/assets/images/authors/rahul-k.png"
+Evan Pease:
+    name    : "Evan Pease"
+    bio     : "Sr. Solutions Architect at Earthly. Ex AWS, Couchbase, and Wavefront (acquired by VMWare). Passionate about coding, search/NLP and guitars."
+    avatar  : "/assets/images/authors/evan-pease.png"
+Ben Smitthimedhin:
+    name    : "Ben Smitthimedhin"
+    bio     : "Ben Smitthimedhin is a software developer at Compassion International. He holds an M.A. in English and lives in Forest, VA with his wife, Carrie, and his two kids, Kaia and Ayla."
+    avatar  : "/assets/images/authors/ben-smitthimedhin.png"
+Princewill Inyang:
+    name    : "Princewill Inyang"
+    bio     : "Princewill is an experienced backend developer whose expertise extends beyond coding. With a passion for DevOps and technical writing, he combines his technical prowess with exceptional communication skills to build seamless and efficient software solutions."
+    avatar  : "/assets/images/authors/princewill-inyang.jpg"
+Ikeh Akinyemi:
+    name    : "Ikeh Akinyemi"
+    bio     : "I’m a software engineer, technical writer, and open source evangelist. I have more than three years of professional experience building and writing web applications, focusing on the frontend and backend with Node.js and Python. I’m also an experienced technical writer with publications like Fauna, Adeva, and Smashing Magazine."
+    avatar  : "/assets/images/authors/ikeh-akinyemi.png"

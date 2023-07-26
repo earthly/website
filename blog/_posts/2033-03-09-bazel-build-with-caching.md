@@ -11,6 +11,8 @@ internal-links:
  - Bazel
  - Local Caching
  - Remote Caching
+excerpt: |
+    Learn how to improve your Bazel build times by using a cache. This article explains the benefits of caching, the different types of caches, and how to set up a local or remote cache with Bazel.
 ---
 
 [Bazel](https://bazel.build) is a tool that helps you automate the process of building and testing. For instance, with Bazel, you can automate the process of creating executables for [monorepo build systems](https://earthly.dev/blog/bazel-build/).
@@ -202,8 +204,10 @@ Remember that using the `--nocache` causes Bazel to rebuild the necessary depend
 
 ## Conclusion
 
-Using remote cache for Bazel significantly improves your builds' performance and reliability, making storing and accessing build artifacts from multiple machines and locations easy.
+Leveraging Bazel's remote cache can greatly enhance your build performance and reliability, enabling efficient storage and access of build artifacts. This guide walked you through the process of setting up both local and remote caches for better Bazel build performance.
 
-In this guide, you learned about the concept of [Bazel](/blog/bazel-build) cache builds. After reading, you should be able to set up the local and remote cache to improve Bazel build performance. For more information, check out [this guide for any command-line reference](https://bazel.build/reference/command-line-reference) you may need.
+Looking to level up your build process even more? Give [Earthly](https://www.earthly.dev/) a whirl for optimized, reproducible builds. It's a powerful tool that can further streamline your build process, ensuring consistency and efficiency.
+
+For additional command-line references, check out [this guide](https://bazel.build/reference/command-line-reference).
 
 {% include_html cta/bottom-cta.html %}

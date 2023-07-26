@@ -10,7 +10,10 @@ internal-links:
  - Error Handling
  - Debugging
  - Exceptions
+excerpt: |
+    Learn how to handle errors in Python with this comprehensive article. From syntax errors to runtime errors, you'll discover how to use the `try-except` block, raise custom exceptions, and implement best practices for error handling.
 ---
+**We're [Earthly](https://earthly.dev/). Our build automation tool makes building software simpler and faster using containerization. Earthly can make your Python projects easier to build and troubleshoot. [Check us out](/).**
 
 Error handling is a critical aspect of programming, and it involves detecting and resolving errors that occur during program execution. Python is a high-level programming language that provides built-in features and libraries for error handling, making it easier for developers to detect and handle errors in their programs. In Python, errors can occur due to dynamic typing and a lack of compile-time checks, making it even more important to properly handle exceptions.
 
@@ -380,10 +383,10 @@ By following these best practices, you can write more reliable, maintainable, an
 
 ## Conclusion
 
-In conclusion, this article has provided an overview of error handling in Python, including the different types of errors that can occur, how to handle errors using the `try-except` block and the `finally` block, how to raise exceptions, and how to use assert statements for debugging. We also covered best practices for error handling, including writing clear and informative error messages, testing error handling code, using consistent error handling throughout your code, documenting error handling, and using logging to track errors.
+This article provided insights on Python error handling, such as various error types, usage of 'try-except' and 'finally' blocks, raising exceptions, and the use of assert statements for debugging. We've also discussed best practices like writing clear error messages, testing, consistency, documentation, and logging.
 
-You should have a good understanding of how to handle errors in your Python projects and should feel confident in your ability to write more robust and reliable code.
+After reading, you should be adept at handling errors in Python to create more reliable code. All code discussed is available on [GitHub](https://github.com/Boadzie/error-handling-in-python).
 
-The code for this article can be found on [GitHub](https://github.com/Boadzie/error-handling-in-python).
+And as you continue to refine your Python skills, you might also be looking for ways to streamline your build process. If so, consider taking your workflow up a notch with [Earthly](https://www.earthly.dev/), a tool designed to simplify build automation.
 
 {% include_html cta/bottom-cta.html %}

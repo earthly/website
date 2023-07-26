@@ -12,7 +12,10 @@ internal-links:
  - Template Tags
  - Filters
  - Templates
+excerpt: |
+    Learn how to use Django template filters to transform and modify variable data in your HTML templates. Discover the built-in filters provided by Django and how to create your own custom filters.
 ---
+**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. Earthly can streamline your Django build process. [Check it out](/).**
 
 Django is a powerful Python web framework loaded with many useful built-in features that [make](/blog/using-cmake) building complex web-focused products a lot easier; one such feature is its **templating engine**.
 
@@ -943,11 +946,8 @@ The filter name is the name of the function in our **"titlecolor_filter.py"** mo
 
 ## Conclusion
 
-Django template filters give you the power to build reusable HTML templates by transforming and modifying variable data.
+Django template filters spice up your HTML templates. We've dived into Django's built-in filters and how to create a custom one if you need something special. You're now equipped to use these filters and even make your own.
 
-We have looked at the various built-in Django template filters that you can use in your project and we have covered how to create a custom filter if none of the built-in filters fits your needs.
-By now, you should be able to use various in-built filters and also create your own custom template filters and apply them anywhere they are needed in your Django application.
-
-To learn more about template filters, consider reading through the [Django Documentation](https://docs.djangoproject.com/en/4.1/ref/templates/builtins/).
+Want to streamline your Django build process further? Give [Earthly](https://www.earthly.dev/) a go! It's a tool that can help optimize your build process, making it more efficient and less error-prone.
 
 {% include_html cta/bottom-cta.html %}

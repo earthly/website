@@ -1,23 +1,17 @@
-
 <div class="text-3xl md:text-4xl font-bold">{{ include.name }} <span class="text-slate-500">series</span></div>
-<div class="p-4 pt-0  pl-0 {{include.style}}">
-  <!-- <div class="font-semibold text-3xl">{{ include.name }} <span class="text-slate-500">series</span></div> -->
+<div class="p-4 pt-0 pl-0 {{ include.style }}">
   {% for navigation in site.data.navigation[include.type] %}
-  <div class="mb-4 pb-2 mt-10 font-bold text-xl md:text-2xl border-b border-gray-400">{{ navigation.title }}</div>
-
-  <div class="entries-grid grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4">
-  {% for nav in navigation.children %}
-  {% assign post_slug = nav.url | replace: "/", "" %}
-
-
-  {% assign series_post = site.posts | where:"slug", post_slug %}
-  {% for post in series_post %}
-  {% include archive-single.html type="grid" %}
+    {% if navigation.children %}
+      <div class="mb-4 pb-2 mt-10 font-bold text-xl md:text-2xl border-b border-gray-400">{{ navigation.title }}</div>
+      <div class="entries-grid grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4">
+        {% for nav in navigation.children %}
+          {% assign post_slug = nav.url | replace: "/", "" %}
+          {% assign series_post = site.posts | where: "slug", post_slug %}
+          {% for post in series_post %}
+            {% include archive-single.html type="grid" %}
+          {% endfor %}
+        {% endfor %}
+      </div>
+    {% endif %}
   {% endfor %}
-
-
-  {% endfor %}
-</div>
-  {% endfor %}
-
 </div>

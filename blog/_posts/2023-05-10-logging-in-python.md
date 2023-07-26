@@ -11,7 +11,10 @@ internal-links:
  - Logging
  - Guide
  - Logs
+excerpt: |
+    Learn how to effectively use the Python logging module to track and analyze events in your application. This comprehensive guide covers everything from basic logging to advanced techniques like rotating log files and structured JSON logging.
 ---
+**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about mastering the art of logging in Python. Earthly is a powerful build tool that can be used with Python. [Check us out](/).**
 
 Logging is an essential part of software development, serving as a means to track and analyze events that occur within an application. By recording and storing these events, developers can gain valuable insight into the behavior of their code, identify, and diagnose issues, and optimize application performance. Effective logging is crucial for creating stable, reliable, and scalable applications.
 
@@ -852,10 +855,10 @@ In order to effectively use logging in Python, you should consider the following
 
 ## Conclusion
 
-Logging is an important aspect of software development that helps in monitoring, debugging, and analyzing the behavior of an application. Python provides a powerful and flexible logging module that allows developers to implement various logging features in their applications.
+Logging is a key part of software development, and Python's got a versatile logging module to help you monitor and debug your apps. In this article, we've covered logging fundamentals in Python, including setting up and customizing logs, and diving into loggers, handlers, formatters, and filters. We even got into advanced logging tricks, like rotating log files and JSON logging. We also touched on Python's logging hierarchy and shared some logging best practices.
 
-In this article, you learned the basics of logging in Python, including setting up logging, logging messages at different levels, and customizing logs. We also explored the concept of loggers, handlers, formatters, and filters, and how they work together to produce useful logs. You also explored more advanced logging techniques such as rotating log files and using the structured JSON logging library.
+Now that you've mastered Python logging, why not streamline your build process? Give [Earthly](https://www.earthly.dev/) a glance. By integrating Earthly into your development workflow, you can further enhance your productivity and efficiency.
 
-In addition, the article also discussed the Python logging hierarchy, which provides a way to organize loggers in a hierarchy and control how log messages are propagated up the hierarchy. The article also highlighted best practices for logging in Python, such as using meaningful log messages, logging at the appropriate level, using custom loggers, and rotating logs to save disk space. By following best practices and leveraging the advanced features of the logging module, developers can ensure that their applications are well-architected and easily maintainable.
+Stick to these logging practices and explore tools like Earthly, and you'll maintain your apps like a pro!
 
 {% include_html cta/bottom-cta.html %}

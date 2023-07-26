@@ -5,14 +5,18 @@ categories:
 toc: true
 author: Enoch Chejieh
 editor: Bala Priya C
-
+sidebar:
+  nav: "bazel"
 internal-links:
  - Rust
  - Bazel
  - Deploy
  - Applications
  - Build
+excerpt: |
+    Learn how to use Bazel with Rust to simplify the build and deployment process of your applications. This article provides a step-by-step guide on setting up Bazel, building a Rust application, and running tests, helping you streamline your development workflow and improve build efficiency.
 ---
+**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. This article is about when to reach for Bazel. If you are looking for a simpler approach to building monorepos then [check us out](/).**
 
 Building and deploying software can be a complicated and time-consuming process, especially as applications grow in size and complexity. One tool that can help simplify this process is [Bazel](https://bazel.build), an open-source build tool developed by Google. [Bazel](/blog/bazel-build) is designed to make it easy to build and test large and complex codebases and is particularly well-suited for monorepos, which are codebases that contain multiple projects or components.
 
@@ -480,6 +484,10 @@ New string: Hello, Rust!
 
 In this article, you learned how Bazel can be used to speed up the build and deployment process of a Rust application while still leveraging the features of the Rust language. You also saw how to set up a workspace and then run and test a Rust application using Bazel's rules for Rust.
 
-For more information and to check out other supported languages and platforms that [Bazel](/blog/bazel-build) offers, check out the official [documentation](https://bazel.build/).
+Yet, while Bazel is a fantastic tool for building Rust apps, it can also be complex and intricate. It may be overkill for smaller projects or for teams that aren't familiar with its intricacies. That's where [Earthly](/) comes into the picture.
+
+Earthly offers a simpler approach to building monorepos and containerization, focusing on streamlining the build process, maintaining a minimal setup, and promoting the use of best practices. It aims to simplify the build system and make it accessible for more developers, offering a potentially lower learning curve compared to Bazel.  [Earthly](/) can handle both small and large projects, offering you scalability without the additional complexity.
+
+Remember, the ultimate goal is to choose a tool that not only suits your current needs but also has the capacity to grow with you and your project, all the while ensuring a simpler, faster, and more efficient software development process. Be it Bazel, Docker, Earthly, or any other tool, the choice should make your build process a breeze, not a hurdle.
 
 {% include_html cta/bottom-cta.html %}

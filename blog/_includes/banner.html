@@ -1,0 +1,20 @@
+{% if page.banner or page.mobileBanner or site.banner or site.mobileBanner %}
+  <div class="announcement-banner">
+    {% if page.banner or page.mobileBanner %}
+      <div class="hidden sm:block">{{ page.banner | default: page.mobileBanner | markdownify }}</div>
+      <div class="sm:hidden">{{ page.mobileBanner | default: page.banner | markdownify }}</div>
+    {% else %}
+      <div class="hidden sm:block">{{ site.banner | default: site.mobileBanner | markdownify }}</div>
+      <div class="sm:hidden">{{ site.mobileBanner | default: site.banner | markdownify }}</div>
+    {% endif %}
+  </div>
+
+  <script>
+    function bannerLinkClick() {
+      analytics.track('banner-link-click', {
+        category: 'Banner Link Click',
+        label: 'banner-link-click'
+      });
+    }
+  </script>
+{% endif %}

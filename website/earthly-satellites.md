@@ -1,5 +1,6 @@
 ---
 title: Earthly Satellites
+description: Remote build runners that make builds fast, are super simple to use, and work seamlessly with any CI and your laptop.
 layout: default
 ---
 

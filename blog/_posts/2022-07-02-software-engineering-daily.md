@@ -3,6 +3,8 @@ title: "Earthly on Software Engineering Daily"
 categories:
   - News
 author: Earthly
+excerpt: |
+    Learn more about Earthly, a powerful tool for building software in a repeatable and understandable way, as Adam Gordon Bell discusses its features and the problems it solves in his interview on Software Engineering Daily. Discover how Earthly simplifies build scripts and why it's a valuable tool for developers.
 ---
 Adam was interviewed on [Software Engineering Daily](https://softwareengineeringdaily.com/2022/07/01/earthly-builds-with-adam-gordon-bell/) where the topics covered how Earthly works and what problems we are trying to solve.
 

@@ -12,7 +12,10 @@ internal-links:
  - Kubernetes
  - Security
  - Secret Management
+excerpt: |
+    Learn how to enhance the security of your Kubernetes cluster by using external secret operators (ESOs) with HashiCorp Vault. This tutorial will guide you through the process of setting up and configuring ESOs, allowing you to store your secrets securely outside of the cluster while still making them accessible to your applications.
 ---
+**We're [Earthly](https://earthly.dev/). We make building software simpler and faster using containerization. If you're using HashiCorp Vault, you might like Earthly. [Check it out](/).**
 
 Are you interested in learning more about Kubernetes security? While it's true that [Kubernetes](/blog/automate-micsvcs-in-k8s) secrets provide a secure way to manage sensitive data in your applications, it's also wise to consider additional security measures. In my previous articles, I've covered how to get started with [Kubernetes secrets](/blog/kubernetes-secrets/) and [how to secure them effectively](/blog/securing-kubernetes-secrets/) within the [cluster](/blog/kube-bench).
 
@@ -668,6 +671,8 @@ kubectl get secret -n namespace
 
 ## Conclusion
 
-I hope you understand how useful the External Secret Operator is in Kubernetes. You've learned how to use it with HashiCorp vault by configuring a ClusterSecretStore, SecretStore, and an ExternalSecret resource. You now know how to secure your Kubernetes secrets further. You can explore further using another key management system if you like.
+In this tutorial, you've learned to enhance the security of your Kubernetes secrets using the External Secret Operator and integrating it with HashiCorp vault. You've been guided through setting up a ClusterSecretStore, SecretStore, and an ExternalSecret resource. Feel free to experiment with different key management systems as per your requirements.
+
+And now that you've boosted your Kubernetes security, why not level up your build automation too? Give [Earthly](https://www.earthly.dev/) a shot. It could be the next step in optimizing your development workflow.
 
 {% include_html cta/bottom-cta.html %}

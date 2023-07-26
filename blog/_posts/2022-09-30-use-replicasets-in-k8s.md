@@ -10,7 +10,10 @@ internal-links:
  - Kubernetes
  - Pods
  - Cluster
+excerpt: |
+    Learn how to use ReplicaSets in Kubernetes to ensure fault tolerance and high availability for your applications. This tutorial explains what ReplicaSets are, how to create them using YAML, and how they work internally. If you want to build a fault-tolerant and scalable system with Kubernetes, understanding ReplicaSets is essential.
 ---
+**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about using ReplicaSets in Kubernetes. Earthly is a powerful tool that can be used streamline the build and deployment of containerized applications. [Check us out](/).**
 
 ## What Is Kubernetes?
 
@@ -201,7 +204,8 @@ ReplicaSet requires ongoing communication with the Kubernetes API and Pods in or
 
 ## Conclusion
 
-In this tutorial, you have learned how to create Pods with ReplicaSets. Additionally, you gained knowledge of ReplicaSets' internal workings.
-Pods are rarely formed directly in a real-world context. ReplicaSets are employed in the creation of Pods because they give the Pods fault tolerance. It's crucial to understand ReplicaSets in Kubernetes. Kubernetes also has ReplicationControllers which are not generally used these days but you can still find them in some places. Kubernetes also has a variety of other Controllers like StatefulSet which are useful when working with applications that require persistent storage and DaemonSet to run a copy of the pod in the cluster. These are good to know when building a fault-tolerant and scalable system.
+In this tutorial, we've covered how to build Pods using ReplicaSets in Kubernetes. ReplicaSets boost the fault tolerance of Pods, which is why they're commonly used instead of creating Pods directly. While ReplicationControllers are outmoded, you might still come across them. Also, remember other Controllers like StatefulSet for persistent storage apps and DaemonSet for running pod copies across the cluster. These insights are handy for building scalable, fault-tolerant systems.
+
+As you scale your Kubernetes apps, you might find that [Earthly](https://www.earthly.dev/) could be your next step for efficient and reproducible builds. Check it out!
 
 {% include_html cta/bottom-cta.html %}

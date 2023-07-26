@@ -11,7 +11,10 @@ internal-links:
  - Ingress
  - Cluster
  - Routing
+excerpt: |
+    Learn how to define application routing in a Kubernetes cluster with this comprehensive guide. Discover the key concepts of Ingress and Service, and how to use them effectively for routing. Plus, explore how to configure multiple paths and enable HTTPS forwarding for your applications.
 ---
+**We're [Earthly](https://earthly.dev/). We streamline software building with containerization. Earthly can help simplify your Kubernetes application builds during the CI/CD process. [Check it out](/).**
 
 ## Defining Application Routing in Kubernetes Cluster
 
@@ -293,8 +296,10 @@ Now apply the changes you made to the Ingress file. After that is done, when you
 
 ## Conclusion
 
-In this article, you learned how to make a deployment and create a service for the [NGINX](/blog/docker-slim) image and use [Ingress](/blog/k8s-networking) to forward requests from a domain name to our application. You also learned how to use Ingress to configure multiple paths for a particular domain. Finally, you saw how to configure your application to run on HTTPS.
+Through this guide, you've mastered deploying an NGINX image, setting a service, and using Ingress to redirect domain requests to your app. Plus, you've figured out multi-path configurations for a domain with Ingress and got your app running on HTTPS.
 
-You can build on what you have learned here by using a legit TLS certificate. Or you can build 2 applications and see if you can configure the routing for those applications on the same domain.
+Now that you've got a handle on Kubernetes routing, why not take the next step and optimize your build process too? Give [Earthly](https://www.earthly.dev/) a whirl. It could be the perfect tool to streamline your workflow.
+
+Looking ahead, consider scaling up your project - try a legit TLS certificate or manage routing for two apps on the same domain. The possibilities are endless!
 
 {% include_html cta/bottom-cta.html %}

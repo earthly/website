@@ -12,7 +12,10 @@ internal-links:
  - MongoDB
  - Database
  - Schema
+excerpt: |
+    Learn how to use advanced features of MongoDB with PyMongo, including schema validation, data modeling patterns, and advanced queries. This tutorial will help you optimize your MongoDB database and improve the efficiency of your applications.
 ---
+**We're [Earthly](https://earthly.dev/). We simplify and speed up software building using containers. It can even make Python CI a breeze. [Check it out](/).**
 
 [MongoDB](https://www.mongodb.com/) is a powerful and flexible NoSQL database that has become increasingly popular in recent years due to its ability to handle large amounts of data and its support for a wide range of data types. [PyMongo](https://pymongo.readthedocs.io/en/stable/) is a Python library that provides a simple and efficient way to interact with [MongoDB](/blog/mongodb-docker) using the Python programming language.
 
@@ -806,12 +809,8 @@ In the code above:
 
 ## Conclusion
 
-This tutorial covered important concepts for working with MongoDB collections. Specifically, it discussed how to validate the schema of your collections to ensure that the data being stored is structured and consistent.
+This tutorial equipped you with key MongoDB collection concepts, including schema validation for structured, consistent data storage. You've also mastered bulk data insertion techniques, data modeling patterns for relationships, and advanced query operations. These skills will enable you to proficiently use [MongoDB](/blog/mongodb-docker) to develop robust and efficient applications.
 
-Additionally, you learned the techniques for inserting data in bulk, which can be useful for inserting large amounts of data quickly. You also explored different data modeling patterns for relationships, which can help you effectively organize and query your data.
-
-Finally, you learned about some advanced MongoDB queries, which can be used to perform complex data retrieval operations.
-
-Overall, by mastering these concepts, you should be well-equipped to effectively work with [MongoDB](/blog/mongodb-docker) and build robust and efficient applications.
+As you continue to optimize your development process, consider taking it a step further – optimize your builds with [Earthly](https://www.earthly.dev/). If you enjoyed optimizing MongoDB, you'll appreciate the efficiency and consistency Earthly brings to your build process. Check it out!
 
 {% include_html cta/bottom-cta.html %}

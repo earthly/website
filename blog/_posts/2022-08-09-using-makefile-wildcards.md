@@ -11,7 +11,11 @@ internal-links:
  - Wildcard
  - Programming
  - Make
+excerpt: |
+    Learn how to use wildcards in Makefiles to create flexible and automated build processes. This tutorial provides examples and explanations of common wildcard use, the wildcard function, and rules with wildcards. Whether you're new to Make or looking to enhance your Makefile skills, this article is a must-read.
 ---
+**We're [Earthly](https://earthly.dev/). We're here to make your software builds simpler and faster using containerization. If you're using Makefiles, consider giving Earthly a spin for a more modern approach. [Check us out](/).**
+
 <iframe width="560" height="315" src="https://www.youtube.com/embed/z4uPHjxYyPs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 Although many of the new modern programming frameworks, like [Node.js](https://nodejs.org/en/) and [.NET](https://en.wikipedia.org/wiki/.NET), come with their own way of packaging and distributing their programs, there's no doubt that [Make](https://www.gnu.org/software/make/) originally created a lot of the founding principles for building and distributing software.
@@ -152,6 +156,6 @@ In this example, the relevant projects files are `foo.c bar.c foo.o bar.o`, but 
 
 Wildcards are a handy utility when creating your Makefiles. You can use them directly in your rules, however, you have to ensure that you're using them correctly and consider whether you need to use the `wildcard` function. Besides by using the wildcards directly in your targets, you can also use pattern matching in your rules to create more dynamic targets.
 
-While Make is a popular tool with many possibilities and some downsides. For a modern approach to builds, check out [Earthly](https://earthly.dev/), a tool that has combined the best parts of Makefiles and [Dockerfiles](https://docs.docker.com/engine/reference/builder/).
+{% include_html cta/makefile-cta.html %}
 
-{% include_html cta/bottom-cta.html %}
+<!-- While Make is a popular tool with many possibilities and some downsides. For a modern approach to builds, check out [Earthly](https://earthly.dev/), a tool that has combined the best parts of Makefiles and [Dockerfiles](https://docs.docker.com/engine/reference/builder/). -->

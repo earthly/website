@@ -10,7 +10,10 @@ internal-links:
  - API
  - Go
  - MySQL
+excerpt: |
+    Learn how to build GraphQL APIs using Go and MySQL. This tutorial covers the basics of GraphQL, setting up a Go GraphQL server using gqlgen, connecting to a MySQL database, and implementing resolvers for mutations and queries. If you're interested in building efficient and type-safe APIs with Go, this article is for you.
 ---
+**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. If you're into building GraphQL APIs using Go, you should definitely take a look. Earthly can streamline your build process and save you time. [Check it out](/).**
 
 ## Prerequisites
 
@@ -622,8 +625,12 @@ query GetOnePost{
 
 ## Conclusion
 
-Go is a speedy steady-growing language for building your backend applications. I hope this guide helped you learn more about GraphQL and how to implement it using Go. Check the implemented code on this [GitHub repository]( https://github.com/Rose-stack/go-mysql-graphql-api).
+Go is a fast, evolving language for backend applications. This guide explored GraphQL implementation with Go.
 
-I hope you found this guide helpful. Happy Go coding!
+Also if you're building Go applications, consider automating your build process with [Earthly](https://www.earthly.dev/) for a more consistent build process. Earthly is built it using Go.
+
+The implemented code from this guide is available on this [GitHub repository](https://github.com/Rose-stack/go-mysql-graphql-api).
+
+Enjoy coding with Go!
 
 {% include_html cta/bottom-cta.html %}

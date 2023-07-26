@@ -10,7 +10,10 @@ internal-links:
  - Tracing
  - Kubernetes
  - Cluster
+excerpt: |
+    Learn how to set up distributed tracing in Kubernetes with SigNoz, an open-source Metrics, Tracing, and Logging tool for distributed systems. This article explains what distributed tracing is, how it works, and provides step-by-step instructions on how to configure and use SigNoz on your Kubernetes cluster.
 ---
+**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. [Check it out](/).**
 
 Debugging an application can be stressful, especially when your application runs on a large distributed system with multiple separate components. Some of these components are written in different languages and use different frameworks with different [logging](/blog/understanding-docker-logging-and-log-files) mechanisms. This makes it hard to debug when something goes wrong. You have to jump between different tools, run each component in separate terminals, check their logs, and try to put everything together to understand what went wrong.
 This can be made easier with distributed tracing. Distributed tracing allows you to see the flow of data between the different components in your application and understand how they interact with each other. It provides insight into where things are going wrong and allows you to debug problems on a whole new level. In this article, you will learn what distributed tracing is, how it works, and how you can set it up in your kubernetes cluster.
@@ -384,12 +387,8 @@ There are many other
 
 ## Conclusion
 
-In this article, you learned about the definition of distributed tracing. Distributed tracing lets you see the flow of data. You understood why it's important and how it works. You learned about the three layers of a distributed tracing system, namely:
+In this tutorial, we've covered the definitions, importance, and workings of distributed tracing. We've also delved into its three components: spans, tags, and traces. Lastly, we have guided you through the setup process of distributed tracing on your cluster using Signoz and Application Performance Monitoring agents on each required microservice.
 
-- Span- The execution of a specific body of work.
-- Tags- These are key-value pairs that provide additional information about spans.
-- Trace- A trace represents all spans associated with each other within an interval.
-
-Finally, you learned how to set up distributed tracing on your [cluster](/blog/kube-bench) by installing Application Performance Monitoring agents (APM) on every microservices that is needed to be traced using Signoz.  
+As you continue to optimize your microservices, you might also want to consider improving your build processes. If that's the case, give [Earthly](https://www.earthly.dev/) a shot. It's a tool designed to streamline and enhance your build automation, making it an excellent companion for managing complex, multi-component projects.
 
 {% include_html cta/bottom-cta.html %}

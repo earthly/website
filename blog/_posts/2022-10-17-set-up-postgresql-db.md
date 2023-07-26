@@ -9,7 +9,10 @@ internal-links:
  - Postgresql
  - Django
  - Database
+excerpt: |
+    Learn how to configure Postgres database replication in Django and connect it to a Django application. This tutorial covers the steps to set up a primary database and a hot standby database, create a Django database router, and route queries to the appropriate databases.
 ---
+**We're [Earthly](https://earthly.dev/). We make building software simpler and faster using containerization. Earthly can make Django easier to build and deploy. [Give it a try](/).**
 
 ## Introduction
 
@@ -762,8 +765,8 @@ There is still a lot a long way to go forward from here. Using the same `seconda
 
 ## References
 
-° [Postgresql documentation on Replication Configuration](https://www.postgresql.org/docs/current/runtime-config-replication.html)
+Check out Postgresql's documentation on [Replication Configuration](https://www.postgresql.org/docs/current/runtime-config-replication.html) and Django's guide on [managing multiple databases](https://docs.djangoproject.com/en/4.1/topics/db/multi-db/#using-routers) for more details.
 
-° [Django official documentation on managing multiple databases](https://docs.djangoproject.com/en/4.1/topics/db/multi-db/#using-routers)
+And after you've set up your Django database replication, you might want to consider optimizing your build process too. For that, you can check out [Earthly](https://www.earthly.dev/), a tool that offers some cool build automation features.
 
 {% include_html cta/bottom-cta.html %}

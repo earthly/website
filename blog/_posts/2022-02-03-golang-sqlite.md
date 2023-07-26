@@ -12,6 +12,8 @@ internal-links:
  - sqlite-utils
  - "database/sql"
 last_modified_at: 2023-04-17
+excerpt: |
+    Learn how to use Golang's `database/sql` package to work with SQLite databases. This tutorial covers topics such as installing SQLite, creating a database schema, populating the database, inserting and retrieving data, and more. If you're interested in learning how to persist data using SQLite in Golang, this article is for you.
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. Earthly is open-source and written in go. So if you're interested in a simpler way to build then [check us out](/).**
 
@@ -621,11 +623,10 @@ Now my activity service has a persistence layer, and I learned quite a bit about
 
 ## What's Next
 
-My current plan is to next tackle gRPC and protocol buffers. I'm thinking about adding richer records and some reporting options, but I'll keep the specifics of those plans to myself for now.
+Next, I'm planning to explore gRPC and protocol buffers, along with considering richer records and reporting options. Also if you're building with Golang, consider giving [Earthly](https://www.earthly.dev/) a whirl for consistent and efficient builds.
 
-If you want to be notified about the next installment, sign up for the newsletter:
+And if you want to be notified about the next installment, sign up for the newsletter:
 
 {% include cta/embedded-newsletter.html %}
-
 [^1]: [`bbkane_`](https://www.reddit.com/user/bbkane_/) pointed out to me that SQlite now has a [STRICT mode](https://www.sqlite.org/stricttables.html). It doesn't support DateTime so far, but perhaps it one day will.
 [^2]: There is a machine translated pure Go SQLITE implementation that saves you from needing GCC, although it is slower and probably less extensively tested. Thanks again `bbkane_`

@@ -3,19 +3,24 @@ title: "Using Terraform with GitHub Actions"
 categories:
   - Tutorials
 toc: true
+sidebar:
+  nav: github-actions
 author: Keanan Koppenhaver
 editor: Mustapha Ahmad Ayodeji
-
+last_modified_at: 2023-06-26
 internal-links:
  - Terraform
  - Github Actions
  - CI/CD
  - Pipelines
+excerpt: |
+    Learn how to automate your Terraform pipelines using GitHub Actions, creating powerful and reliable workflows for managing infrastructure as code. This tutorial guides you through the process of setting up Terraform Cloud, configuring your GitHub repository, and running your GitHub Actions workflow to provision and maintain your infrastructure.
 ---
+**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. This article is about GitHub Actions, if you'd like to see how Earthly can improve your GitHub Actions builds then [check us out](/earthly-github-actions).**
 
-[GitHub Actions](https://github.com/features/actions) is a powerful tool that allows software developers to automate almost everything inside a GitHub repository. From running tests to linting your code, to automatically commenting on pull requests and issues, it's a complete solution that helps projects of all kinds to operate more efficiently.
+GitHub Actions is a powerful tool that allows software developers to automate almost everything inside a GitHub repository. From running tests to linting your code, to automatically commenting on pull requests and issues, it's a complete solution that helps projects of all kinds to operate more efficiently.
 
-If you're managing IT infrastructure, you're likely using [Terraform](https://www.terraform.io), a popular tool for managing infrastructure as code. Thankfully, GitHub Actions and Terraform can work together to create powerful, automated workflows for creating and maintaining even the most complicated deployments.
+If you're managing IT infrastructure, you're likely using Terraform, a popular tool for managing infrastructure as code. Thankfully, GitHub Actions and Terraform can work together to create powerful, automated workflows for creating and maintaining even the most complicated deployments.
 
 Using these tools together can help you automate your Terraform pipelines, which is important for making sure they run as frequently and consistently as you would like them to, making your pipelines more repeatable and reliable.
 
@@ -25,14 +30,14 @@ In this article, you'll learn how GitHub Actions and Terraform work together so 
 
 ![Together]({{site.images}}{{page.slug}}/together.png)\
 
-If you're an experienced developer looking to better understand how to use Terraform and GitHub Actions, this tutorial is for you. This means you should already have some knowledge about [what Terraform is](https://developer.hashicorp.com/terraform/intro) and how it works to provision infrastructure. In addition, you should have a basic idea of how GitHub Actions [helps developers automate tasks within their repos](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions).
+If you're an experienced developer looking to better understand how to use Terraform and GitHub Actions, this tutorial is for you. This means you should already have some knowledge about what Terraform is and how it works to provision infrastructure. In addition, you should have a basic idea of how GitHub Actions works.
 
 ### Prerequisites
 
 Before you begin, you'll need the following:
 
-- **A GitHub account:** GitHub is where you will store the code used for this project and where you will run your automation through GitHub Actions. If you don't already have an account, [sign up now](https://github.com/signup). You can take a look at the code that goes along with this tutorial in this [repository](https://github.com/kkoppenhaver/terraform-github-actions).
-- **An [Amazon Web Services (AWS) account](https://aws.amazon.com/account/) and credentials:** Here, you'll be using resources that fall under the [AWS free plan](https://aws.amazon.com/free/?all-free-tier.sort-by=item.additionalFields.SortRank&all-free-tier.sort-order=asc&awsf.Free%20Tier%20Types=*all&awsf.Free%20Tier%20Categories=*all); however, if your account does not qualify for the AWS free plan, following this tutorial might incur some charges in your AWS account, so proceed with care.
+- **A GitHub account:** GitHub is where you will store the code used for this project and where you will run your GitHub Actions workflow. You can take a look at the code that goes along with this tutorial in this [repository](https://github.com/kkoppenhaver/terraform-github-actions).
+- **An Amazon Web Services (AWS) account and credentials:** Here, you'll be using resources that fall under the AWS free plan; however, if your account does not qualify for the AWS free plan, following this tutorial might incur some charges in your AWS account, so proceed with care.
 - **[A Terraform Cloud account](https://app.terraform.io/public/signup/account):**  Since this tutorial uses Terraform Cloud to create your infrastructure configuration, you'll need to have a Terraform Cloud account before you begin.
 
 Once you have all these accounts set up, you're ready to get started.
@@ -59,7 +64,7 @@ Once you have all that configured, head over to the [**Tokens** page](https://ap
 
 ### Creating a GitHub Repository and Configuring Your Action
 
-Now that you've set up Terraform and your API tokens are stored somewhere, head over to [GitHub](/blog/ci-comparison) and [set up a new repository](https://github.com/new).
+Now that you've set up Terraform and your API tokens are stored somewhere, head over to GitHub and set up a new repository.
 
 Once you have your repository set up, go to **Settings > Secrets and Variables > Actions** and create a new secret. This is where you need to add the API key you retrieved from Terraform in the previous step. In this example, the secret is `TERRAFORM_API_KEY`, but you can name it whatever you like. If you're using the sample code as a reference, ensure that you replace the name of the secret with whatever you have named yours:
 
@@ -144,8 +149,8 @@ If you're using the infrastructure only for testing purposes and want to avoid c
 
 ## Conclusion
 
-Now that you have a taste for automatically provisioning infrastructure, you could make your `main.tf` file much more complicated and provision all sorts of different resources. Load balancers, databases, and more are now all within your reach using the combination of [GitHub Actions](https://github.com/features/actions) and [Terraform](https://www.terraform.io).
+Now that you have a taste for automatically provisioning infrastructure, you could make your `main.tf` file much more complicated and provision all sorts of different resources. Load balancers, databases, and more are now all within your reach using the combination of GitHub Actions and [Terraform](/terraform-lambda).
 
-And if you're looking to continue building out your automation pipeline, consider using [Earthly](https://earthly.dev), a continuous integration, continuous delivery (CI/CD) platform that runs everywhere. Earthly makes [CI/CD](/blog/ci-vs-cd) easy and [works natively with GitHub Actions](https://docs.earthly.dev/ci-integration/vendor-specific-guides/gh-actions-integration), so it couldn't be easier to get started.
+And if you're looking to continue building out your automation pipeline, consider using [Earthly](https://earthly.dev). Earthly runs everywhere, including GitHub Actions and can improve the reliability of your CI/CD pipelines. It works great with [GitHub Actions](/earthly-github-actions) and Terraform.
 
-{% include_html cta/bottom-cta.html %}
+{% include_html cta/gha-cta1.html %}

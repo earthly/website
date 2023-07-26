@@ -8,7 +8,11 @@ sidebar:
   nav: "lambdas"
 internal-links:
  - just an example
+excerpt: |
+    Learn how to combine GRPC, AWS Lambdas, and GoLang to create a powerful serverless architecture. Discover different approaches to proxying GRPC requests on Lambda and explore the limitations of running a GRPC service on an AWS Lambda.
 ---
+**We're [Earthly](https://earthly.dev/). We make building software simpler and faster with containerization. Earthly is a great tool that can streamline your build process. [Check it out](/).**
+
 <!-- vale HouseStyle.Link = NO -->
 
 Previously, I built some [GRPC things](/blog/golang-grpc-example), and some [AWS Lambda](/blog/aws-lambda-golang) things, but can both be combined together? That is can I set up a go service, that runs as lambda, and can respond to GRPC requests.
@@ -94,15 +98,13 @@ However, this endpoint can be used to make GRPCWeb requests. GRPCWeb is a differ
 
 ## Why No HTTP 2?
 
-The reason why none of this works, is that although you can make an HTTP/2 connection with AWS's API Gateway, the API Gateway won't call the lambda over HTTP/2, it will use HTTP/1.1. It seems like this should be easy to overcome, but my understanding is that GRPC is heavily integrated with HTTP/2.
+HTTP/2 and AWS's API Gateway don't play well when it comes to lambdas. Although you can connect via HTTP/2, the API Gateway sticks to HTTP/1.1 for lambda calls which is a bummer for GRPC, as it's bound with HTTP/2. You'd need to switch to GRPC-Web to work over HTTP/1.1, but its client support is limited.
 
-What you'd need is a different wire protocol than GRPC if you wanted to work over HTTP/1.1 and this protocol does exists. It's called GRPC-Web. Unfortunately, the GRPC-Web clients seems to be limited to JavaScript and TypeScript. There is a Golang client but the ["IMPLEMENTATION IS LACKING"](https://github.com/ktr0731/grpc-web-go-client). So, unless I missed something, its not possible to run a GRPC service on an AWS Lambda. GRPCWeb is a good compromise if you clients are going to written in JavaScript or if more GRPCWeb clients start appearing. Otherwise you're probably going to end up with REST or not using Lambdas.
+A GRPC service on an AWS Lambda might not be feasible unless more GRPCWeb clients emerge, or you're okay with JavaScript or not using Lambdas. If you find a workaround, hit me up! In the meantime, if you're struggling with build automation in your serverless architecture, [Earthly](https://www.earthly.dev/) could make things easier. Check it out!
 
-If you found a way to get around this limitation or I missed something then please let me know. My email is below.
+For more information on GRPC and GRPC Web, you can check out these resources:
 
-More Background:
-
-- [Relevant Stack Overflow Question](https://stackoverflow.com/questions/67281831/)
+- [Stack Overflow Question](https://stackoverflow.com/questions/67281831/)
 - [GRPC Web Explained](https://grpc.io/blog/state-of-grpc-web/)
 - [Envoy GRPC Bridge](https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/grpc_http1_bridge_filter)
 

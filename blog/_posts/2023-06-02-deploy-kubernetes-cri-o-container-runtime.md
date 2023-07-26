@@ -11,7 +11,10 @@ internal-links:
  - Container
  - CRI-O
  - Automation
+excerpt: |
+    Learn how to deploy a Kubernetes cluster using the CRI-O container runtime. This tutorial provides step-by-step instructions for setting up the necessary components, configuring the cluster, and deploying your first application.
 ---
+**We're [Earthly](https://earthly.dev/). We make building software simpler and faster with containerization. If you're using Kubernetes, Earthly could be your new best friend. It can streamline your container build process. [Check it out](/).**
 
 Are you tired of managing your containerized applications manually? Do you want a more efficient and automated way to deploy and manage your applications? Look no further than Kubernetes!
 
@@ -664,8 +667,10 @@ You can see from the image above that both commands **`ping 10.85.0.4`** and **`
 
 ## Conclusion
 
-In this article, you have seen how to get started with CRI-O, install it on an Ubuntu 22.04LTS server(s), and configure it to work with Kubernetes. You have seen how to initialize a Kubernetes cluster, deployed an Nginx web server for testing, and verified communication between nodes.
+In this tutorial, you've learned to set up and pair CRI-O with Kubernetes on an Ubuntu 22.04LTS server, initiate a Kubernetes cluster, and test an Nginx server deployment. CRI-O's focus on performance, security, and Kubernetes compatibility make it an excellent choice for large-scale containerized application deployment.
 
-There is no doubt that its focus on performance, security, and compatibility with Kubernetes makes it a great choice for organizations looking to deploy containerized applications at scale.
+As you continue to explore and optimize your containerized applications, you might want to streamline your build processes. For that, we recommend checking out [Earthly](https://www.earthly.dev/).
+
+Enjoyed learning about CRI-O and Kubernetes? Then you'll definitely appreciate what Earthly has to offer.
 
 {% include_html cta/bottom-cta.html %}

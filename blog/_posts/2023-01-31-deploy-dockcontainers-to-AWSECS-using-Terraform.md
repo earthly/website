@@ -10,7 +10,10 @@ internal-links:
  - Docker
  - AWS
  - Container
+excerpt: |
+    Learn how to automate the process of deploying Docker containers to AWS ECS using Terraform. This tutorial provides step-by-step instructions and code examples to help you set up the necessary infrastructure and launch your containers on AWS.
 ---
+**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. This article is about IO and file reading in bash. If you are looking for to move beyond bash scripts for building and deploying software then [check us out](/).**
 
 [Elastic Container Service](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/Welcome.html) (ECS) is a container orchestration service from AWS. It allows you to launch and manage container workloads. Recently, we published a [Deploying Docker Containers with ECS](https://earthly.dev/blog/deploy-dockercontainers-with-ecs/) guide that allows you to provision infrastructure on [ECS](/blog/how-to-setup-and-use-amazons-elastic-container-registry) . However, these steps are implemented manually.
 
@@ -681,6 +684,10 @@ terraform destroy
 
 ## Conclusion
 
-In this tutorial, you've learned how to use [Terraform](/blog/kubernetes-terraform) to automate your cloud infrastructure tasks. You started by creating and running an application locally. Using the configured AWS, you used Terraform to automate the deployment of the same application to the AWS ECS platform. I hope you found this guide helpful.
+In this tutorial, we explored using [Terraform](/blog/kubernetes-terraform) for automating cloud infrastructure tasks. We began with local application creation and then automated its deployment to the AWS ECS platform using Terraform.
+
+As you continue to refine your build process, you might want to consider other tools that can further streamline your workflow. If you're interested in efficient container-based builds, give [Earthly](https://www.earthly.dev/) a spin. It's designed to make your build process even smoother.
+
+I hope this guide proved useful to you and that it opens up new possibilities for your cloud infrastructure tasks.
 
 {% include_html cta/bottom-cta.html %}

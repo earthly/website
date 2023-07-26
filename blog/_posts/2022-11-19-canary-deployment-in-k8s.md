@@ -11,6 +11,8 @@ internal-links:
  - Canary
  - CI/CD
  - Deployments
+excerpt: |
+    Learn how to use canary deployments in Kubernetes to mitigate the risks of application updates and ensure zero downtime for your users. This article explains the concept of canary deployments, how they work in Kubernetes, and how to implement them in your CI/CD pipeline.
 ---
 
 Has a seemingly harmless update ever caused your application to fail in production? [Canary deployments](https://earthly.dev/blog/canary-deployment/), like the proverbial canary in a coal mine, can help you mitigate the chaotic outcomes of such updates that can potentially cause critical downtime.
@@ -231,6 +233,8 @@ Automating your Kubernetes process is especially helpful for large architectures
 
 ## Conclusion
 
-In this article, you learned about canary deployments in Kubernetes, why they're needed, how they work, how they differ from normal deployments, and how to utilize them. Canary deployments can be beneficial to your production process if you create and utilize application updates in Kubernetes often.
+You've now got the lowdown on canary deployments in Kubernetes - why they matter, what they do, how they're different from standard deployments, and how to put them to work. If you're frequently updating apps in Kubernetes, canary deployments could be a real game-changer for you.
+
+To further supercharge your build process while working with Kubernetes, you might want to take a peek at [Earthly](https://www.earthly.dev/). This tool could be the next step in optimizing your development workflow.
 
 {% include_html cta/bottom-cta.html %}

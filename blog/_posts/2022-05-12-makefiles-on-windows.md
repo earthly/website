@@ -13,6 +13,8 @@ internal-links:
  - cpp
 topic: make
 last_modified_at: 2023-04-17
+excerpt: |
+    Learn how to run Makefiles on Windows with different options like Chocolatey, Cygwin, NMAKE, CMake, and Windows Subsystem for Linux. Discover the strengths and weaknesses of each approach and find the best solution for your needs.
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. This article is about `make` and `Makefile`s but if you're interested in a different approach to building software then [check us out](/).**
 
@@ -106,6 +108,6 @@ You should look into WSL if what you care about most is having Windows as your r
 
 As you can see, there are a few different ways you can be successful in running Makefiles on Windows. However, you do need to be wary of the fact that it will never be a perfect solution. Every solution is in some way a workaround, and the closest you'll get to feeling like you're using native Makefiles while using Windows is to install something like WSL.
 
-If all this becomes too tedious for you and you're looking for an easier alternative to optimize your builds, then check out [Earthly](https://earthly.dev/). Earthly has taken all the best parts of Makefiles and combined them with the best parts of Dockerfiles to help make your build processes more streamlined and effective.
+{% include_html cta/makefile-cta.html %}
 
-{% include_html cta/bottom-cta.html %}
+<!-- If all this becomes too tedious for you and you're looking for an easier alternative to optimize your builds, then check out [Earthly](https://earthly.dev/). Earthly has taken all the best parts of Makefiles and combined them with the best parts of Dockerfiles to help make your build processes more streamlined and effective. -->

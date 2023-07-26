@@ -9,7 +9,10 @@ internal-links:
  - Tekton
  - Kubernetes
  - Pipelines
+excerpt: |
+    Learn how to build applications in Kubernetes using Tekton, an open-source framework that helps optimize CI/CD practices. This tutorial guides you through creating a customizable CI/CD workflow with Tekton to deploy a sample application to your Kubernetes cluster.
 ---
+**We're [Earthly](https://earthly.dev/). We make building software simpler and faster with containerization. If you're using Kubernetes, Earthly could be the perfect companion for your build pipeline. [Check it out](/).**
 
 Continuous integration/continuous delivery ([CI/CD](/blog/ci-vs-cd)) principles offer multiple benefits to software organizations, including faster time to market, higher-quality code, and simpler and faster fault isolation. Applications built using CI/CD pipeline best practices tend to see a huge increase in users over time, necessitating a migration from a large codebase and low-scalability monolithic architecture to a more manageable and efficient microservice architecture.
 
@@ -404,8 +407,8 @@ The `curl` command should output the following:
 
 ## Conclusion
 
-As you learned in this tutorial, [Tekton](https://tekton.dev/) can be a useful framework for building applications in Kubernetes. You set up a basic Tekton workflow and deployed an application to your Kubernetes cluster from your Tekton CI/CD pipeline. With Tekton, you were able to quickly build your pipeline so that you could deploy your application right away.
+In this tutorial, you've learned how to use [Tekton](https://tekton.dev/) to streamline application building in Kubernetes. We covered setting up a basic Tekton workflow and deploying an application via Tekton CI/CD pipeline. Tekton not only speeds up your deployment process, but also enhances flexibility and scalability in your Kubernetes projects.
 
-Tekton increases your flexibility and scalability, thus giving you major advantages when you're using Kubernetes for your projects.
+Looking to further fine-tune your app building process? Give [Earthly](https://www.earthly.dev/) a try for an even smoother development process. This open-source build automation tool can complement your Tekton workflows, offering reproducible, portable, and parallel builds for modern applications.
 
 {% include_html cta/bottom-cta.html %}

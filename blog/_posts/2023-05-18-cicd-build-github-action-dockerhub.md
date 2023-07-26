@@ -3,21 +3,22 @@ title: "Create Automated CI/CD Builds Using GitHub Actions and DockerHub"
 categories:
   - Tutorials
 toc: true
+sidebar:
+    nav: github-actions
 author: Rose Chege
 editor: Mustapha Ahmad Ayodeji
-
+last_modified_at: 2023-06-26
 internal-links:
  - CI/CD
  - Github Actions
  - DockerHub
  - Automation
+excerpt: |
+    In this tutorial, learn how to automate CI/CD builds using GitHub Actions and DockerHub. Discover how to create a GitHub Actions workflow that builds and deploys a Docker image to DockerHub, streamlining your development process and increasing productivity.
 ---
+**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. This article is about GitHub Actions, if you'd like to see how Earthly can improve your GitHub Actions builds then [check us out](/earthly-github-actions).**
 
-Continuous integration (CI) and continuous delivery (CD) incorporate the operating principles used by application development teams to deliver the application code changes through built-in automation, testing, and collaboration workflows. It eliminates the manual development workflows to create automated processes that are predictable and repeatable.
-
-This eliminates human interventions and reduces workflow errors while ensuring code quality. Teams can frequently implement small code changes that will be automatically tested and pushed for delivery and [deployment](/blog/deployment-strategies).
-
-You can streamline your workflow using GitHub Actions and automate CI/CD Builds. This guide will teach you how to leverage GitHub Action to automate Docker builds to DockerHub. You will build an automated CI/CD builds using GitHub Actions and DockerHub.
+To streamline your development workflow, in this tutorial, we will explore the power of GitHub Actions in automating CI/CD builds. Specifically, we will focus on leveraging GitHub Actions to automate Docker builds and facilitate seamless deployments to DockerHub. Join us as we construct an automated CI/CD pipeline using GitHub Actions and DockerHub.
 
 ## Prerequisites
 
@@ -25,24 +26,14 @@ To follow along with this article, it is essential to have the following:
 
 - [Node.js](https://nodejs.org/en/) installed on your computer.
 - [Docker](https://www.docker.com/) installed on your computer.
-- [GitHub](https://github.com/) and [DockerHub](https://hub.docker.com/) accounts.
+- GitHub and DockerHub accounts.
 - Basic knowledge of working with Docker.
 - Basic knowledge of how to use GitHub.
-- Familiarity with YAML file.
-
-## GitHub Actions and DockerHub
-
-CI/CD approach creates a pipeline between integrations and delivery cycles. The pipeline's packaged application is easily integrated with different tools to check code and automatically deploy to production.
-
-[GitHub Actions](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions) is one of the popular CI/CD tools. It allows you to automate workflows through code builds, tests, and code deployment through [GitHub](https://github.com/) repositories. GitHub Actions can run tests, build Docker images and deploy applications to cloud infrastructures.
-
-[DockerHub](https://hub.docker.com/) is a container registry service for storing and distributing Docker images. A Docker image packages the application setting, dependencies, and codebase to create a portable artifact that is easier to integrate between different CI/CD pipeline phases.
-
-By leveraging DockerHub and GitHub Actions, you can build, test, and deploy Docker-based applications and create a CI/CD pipeline. Let's dive and create a workflow to do exactly that.
+- Familiarity editing YAML files.
 
 ## Creating the Application and a Dockerfile to Build the Application Image
 
-To get started, you need an application that Docker will use to build an image. The same application should have the correct instructions to instruct Docker on how to package and build the application image. In this guide, you will develop a simple Node.js application with a single endpoint that just print `Hello World` to the screen. Alternatively, if you have an application you have already developed, you can use it along and achieve the same objective this guide aims for.
+To get started, you need an application to put into a Docker image. In this guide, you will develop a simple Node.js application with a single endpoint that just print `Hello World` to the screen. Alternatively, if you have an application you have already developed, you can use it along and achieve the same objective this guide aims for.
 
 The simple Node.js application will be created as follows:
 
@@ -123,7 +114,7 @@ From your browser, go to `http://localhost:4000` to check if the application wor
 ![A simple Node.js app showing Hello World]({{site.images}}{{page.slug}}/FjB1m1G.png)
 </div>
 
-To run this application with Docker, you need to provide the correct command for packaging it. To do this, you can use a Dockerfile, which specifies the instructions to build a Docker image. Once the image is built, it contains everything required to run the application, including the code, runtime, libraries, and settings. This results in a Docker executable package that can be used to run the application on any Docker-supported platform.
+To run this application with Docker, you need to provide the correct command for packaging it. To do this, you can use a Dockerfile, which specifies the instructions to build a Docker image. Once the image is built, it contains everything required to run the application, including the code, runtime, libraries, and settings. This results in a Docker container image that can be used to run the application on any Docker-supported platform.
 
 In your application directory, create a file named `Dockerfile`. In this `Dockerfile`, add the commands for building the image step by step as follows:
 
@@ -199,13 +190,11 @@ The results should remain the same as when you tested the application locally. O
 
 ## Creating a Github Repository and Pushing the Application to Github
 
-GitHub actions require you to host your application code on a remote repository, including the `Dockerfile` containing the Docker commands. A GitHub repository store and manage your code and related files. Teams can push changes to this repository to update the application codebase collaboratively.
+GitHub actions require you to host your application code on a remote repository, including the `Dockerfile` containing the Docker commands. A GitHub repository stores your code and related files.
 
-[Create a GitHub repository](https://docs.github.com/en/get-started/quickstart/create-a-repo) to add all your code.
+[Create a GitHub repository](https://docs.github.com/en/get-started/quickstart/create-a-repo) to add all your code and add you project so far to it.
 
-Once you create the repository, add your application files by uploading them using [Git commands](https://git-scm.com/docs) or [GitHub Desktop](https://desktop.github.com/).
-
-For simplicity, I recommend using a Git client with a graphical user interface (GUI), such as GitHub Desktop, [Sourcetree](https://www.sourcetreeapp.com/), or [GitKraken](https://www.gitkraken.com/), to make working with Git repositories on GitHub easier. Here's a brief overview of how to use GitHub Desktop to push code changes to your remote GitHub repository:
+If you're not familiar with Git then I recommend using a Git client with a graphical user interface (GUI), such as GitHub Desktop to make working with Git repositories on GitHub easier. Here's a brief overview of how to use GitHub Desktop to push code changes to your remote GitHub repository:
 
 - Open GitHub Desktop and log in using your GitHub account
 - Select the repository you have created on your GitHub page and open it with GithHub Desktop:
@@ -233,11 +222,9 @@ For simplicity, I recommend using a Git client with a graphical user interface (
 ![Pushing changes to GitHub]({{site.images}}{{page.slug}}/ATE8WYC.png)
 </div>
 
-If you get stuck, check this guide and learn more details on [how to use GitHub Desktop](https://docs.github.com/en/desktop/installing-and-configuring-github-desktop/overview/getting-started-with-github-desktop).
-
 ## Setting Up DockerHub
 
-The GitHub action that you will set up will push the application image to the DockerHub repository. Therefore, you must have the correct access token for GitHub Actions to access your DockerHub account. On your DockerHub, you will create an access key for GitHub to connect to your DockerHub account. You can create a new access key as follows:
+The GitHub action that you will set up will push the application image to the DockerHub repository. Therefore, you must have the correct access token for GitHub Actions to access your DockerHub account. In the DockerHub account portal, you will create an access key for GitHub to connect to your DockerHub account. You can create a new access key as follows:
 
 Navigate to your account **setting**, **security** and click on the **New Access Token**:
 
@@ -458,11 +445,10 @@ GitHub Actions and DockerHub integration streamline your development process. Au
 
 This article has shown you how to create an automated CI/CD build with GitHub and DockerHub. In this article, you have learned:
 
-- The concept of automated CI/CD builds using [GitHub Actions](/blog/continuous-integration) and DockerHub.
 - How to dockerize an application with Docker
-- How to create and deploy an application to GitHub
+- How to create and deploy an application from GitHub Actions
 - How to automatically build and push a Docker image DockerHub with GitHub action.
 
-The code used in this tutorial can be found in this [GitHub repository](https://github.com/Rose-stack/node_app)
+The code used in this tutorial can be found in this [GitHub repository](https://github.com/Rose-stack/node_app). And if you're looking to continue building out your GHA workflows, consider using [Earthly](https://earthly.dev). Earthly runs everywhere, including GitHub Actions and can improve the reliability of your CI/CD pipelines. It works great with [GitHub Actions](/earthly-github-actions) and docker.
 
-{% include_html cta/bottom-cta.html %}
+{% include_html cta/gha-cta1.html %}

@@ -5,12 +5,20 @@ categories:
 toc: true
 author: Ryan
 author2: Josh
+last_modified_at: 2023-06-29
+
+sidebar:
+  nav: monorepos
 
 internal-links:
  - go workspaces
  - monorepos
  - multiple modules
+excerpt: |
+    Learn how to simplify your Go development process with Golang Workspaces. This article explores the concept of workspaces and how they can help you manage dependencies across multiple modules in your project, without the need for manual editing of `go.mod` files. Discover how to set up a workspace, make local changes to modules, and ensure that your changes are reflected across all dependent modules.
 ---
+
+**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article mentions Monorepos as a great use case for Go Workspaces. Earthly is particularly useful if you're working with a Monorepo. [Check us out](/).**
 
 ## The Problem
 
@@ -32,7 +40,7 @@ replace github.com/jalletto/parserGo => ./local-path/parserGo
 
 This works for small projects, but you still need to remember to remove the replace before pushing your code since you can't be certain other devs will have the same local set up as you. And if you are working on a project with dozens of modules, you can see how this would become cumbersome. These are the problems Go workspaces aim to solve.
 
-## Workspaces
+## What Are Golang Workspaces?
 
 Go introduced the concept of workspaces in `1.18`. Workspaces allow you to create projects of several modules that share a common list of dependencies through a new file called `go.work`. The dependencies in this file can span multiple modules and anything declared in the `go.work` file will override dependencies in the modules' `go.mod`.
 
@@ -191,9 +199,8 @@ Now I can keep working on my adder library and test it in my service without hav
 
 ### Don't Push Your Workspace
 
-Workspaces are unique to each developer and should not be checked into source code. Make sure you add yours to your `.gitignore` or delete it before pushing any changes.
-</div>
+Remember, workspaces are personal to each developer and should be kept out of the source code. So, add it to your `.gitignore` or delete it before you push changes. Plus, the cool thing is, if I include modules in the workspace that require my `adder` library, they'll default to the local version I'm editing, no need to tweak anything in the `go.mod` of each module.
 
-The beauty is that if I add any other modules to this workspace that have my `adder` library listed as a requirement, they will also default to using this local version that I'm making changes to. All without having to edit anything in the `go.mod` for each module.
+If you're loving the efficiency of Golang Workspaces, you might want to take it up a notch. If so check out [Earthly](https://www.earthly.dev/) for more streamlined builds. It could be the next tool to add to your developer toolkit.
 
 {% include_html cta/bottom-cta.html %}

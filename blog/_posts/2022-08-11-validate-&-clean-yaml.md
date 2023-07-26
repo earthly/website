@@ -10,7 +10,10 @@ internal-links:
  - Kubeval
  - ValidKube
  - Linux
+excerpt: |
+    Learn how to validate and clean your YAML files using Kubeval and ValidKube. These tools help you spot misconfigurations and remove clutter from your files, ensuring the security and health of your Kubernetes cluster.
 ---
+**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. With Earthly there is less YAML and more working software. [Check it out](/).**
 
 [Kubeval](https://www.kubeval.com/) is a [command line tool](/blog/golang-command-line) that validates Kubernetes manifests and YAML files using the Kubernetes API schema. Behind the scenes, Kubeval compares API schemas with objects provided in your YAML file to find any errors. Cleaning and validating your files is imperative because it helps you to spot misconfigurations that can introduce flaws to your cluster. All you have to do is run the Kubeval command which specifies your YAML file. Kubeval is a free and open-source project developed by [instrumenta](https://instrumenta.dev/).
 
@@ -285,8 +288,8 @@ spec:
 
 ## Conclusion
 
-In this tutorial, you have learned how to validate files using Kubeval and how to clean YAML files using ValidKube.
+In this tutorial, we covered using Kubeval and ValidKube for file validation and YAML clean up in Kubernetes. Using these tools will bolster your Kubernetes security, simplify tasks, and catch cluster errors. They help uncover hidden flaws in your manifests which can significantly improve your cluster's health over time. Remember, in Kubernetes, security isn't an afterthought but a priority.
 
-Kubernetes security should never be an afterthought; use these two tools to help you apply secure resources to your cluster. Kubernetes is dynamic and complex, using these security tools will help you simplify Kubernetes security tasks and catch Kubernetes cluster errors more easily. There are can be many errors and bugs that you do not know exist in your manifests; Kubescape and ValidKube will detect and show you flaws that you never knew before. Consistently applying valid manifests to your cluster will improve and maintain your cluster's health over time.
+Also if you're also looking for consistent build automation in your development process, you might want to give [Earthly](https://www.earthly.dev/) a shot. It could be the tool you need to streamline your builds and ensure consistency across different environments.
 
 {% include_html cta/bottom-cta.html %}

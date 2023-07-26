@@ -10,10 +10,12 @@ internal-links:
  - makefile flags
 topic: make
 last_modified_at: 2023-04-17
+excerpt: |
+    Learn how to use `make` flags in your `Makefile` to customize the behavior of the compilation tools. Discover the benefits of using flags over hard-coded options and explore commonly used flags like `CFLAGS`, `CXXFLAGS`, and more.
 ---
 <iframe width="560" height="315" src="https://www.youtube.com/embed/z4uPHjxYyPs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. This article is about `make` and `Makefile`s but if you're interested in a different approach to building software then [check us out](/).**
+**We're [Earthly](https://earthly.dev/). We simplify software builds using containerization. If you're into Makefiles, Earthly might be your modern alternative to `make`, accelerating your build process. [Give us a try](/).**
 
 `make` is a commonplace utility in the development world. It automates the process of generating executables, documentations, and other non-source files from the source code by dividing the build process into separate interrelated steps. Using `make` eliminates the need for typing out long and complex commands to compile the source code. `make` also compiles only the modified files, thereby saving time and processing resources.
 
@@ -242,6 +244,8 @@ Note that the options `-C`, `-f`, `-o`, and `-W` are not put into `MAKEFLAGS` an
 
 Using `make` flags ensures your `makefile` follows the standard and offers an easy and powerful way to customize the behaviors of the compilation tools by providing them options. However, `make` flags are limited and require a deep understanding of the right tools to use.
 
-If you are looking for a powerful alternative to `make`, [Earthly](https://earthly.dev/) may be the right choice for you. It is a modern take on the `make` utility. Tailored for the container era, [Earthly](https://earthly.dev/) provides reproducible and understandable builds with minimal effort.
+{% include_html cta/makefile-cta.html %}
 
-{% include_html cta/bottom-cta.html %}
+<!-- If you are looking for a powerful alternative to `make`, [Earthly](https://earthly.dev/) may be the right choice for you. It is a modern take on the `make` utility. Tailored for the container era, [Earthly](https://earthly.dev/) provides reproducible and understandable builds with minimal effort.
+
+{% include_html cta/bottom-cta.html %} -->

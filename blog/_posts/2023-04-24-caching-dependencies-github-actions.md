@@ -3,23 +3,28 @@ title: "Caching Dependencies on GitHub Actions"
 categories:
   - Tutorials
 toc: true
+sidebar:
+  nav: github-actions
 author: Cameron Pavey
 editor: Bala Priya C
-
+last_modified_at: 2023-06-26
 internal-links:
- - Caching
- - Dependencies
- - Github Action
- - Continuous Integration
+ - cache github actions
+ - caching github actions
+ - github actions cache
+ - github actions caching
+excerpt: |
+    Learn how to cache your package manager dependencies in GitHub Actions to save time and improve the efficiency of your workflows. This article provides step-by-step instructions on using the `cache` action and explores how caching can be combined with Earthly for even more advanced caching capabilities.
 ---
+**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. This article is about GitHub Actions, if you'd like to see how Earthly can improve your GitHub Actions builds then [check us out](/earthly-github-actions).**
 
-[GitHub Actions](https://docs.github.com/en/actions) is a [continuous integration](/blog/continuous-integration), continuous delivery (CI/CD) platform that allows you to build, test, and deploy your code with simple YAML-based configurations. While [GitHub](/blog/ci-comparison) Actions, like many other CI/CD platforms, is powerful enough to handle most use cases,, it's important to consider the cost and time associated with frequently running workflows.
+GitHub Actions is a [continuous integration](/blog/continuous-integration), continuous delivery (CI/CD) platform that allows you to build, test, and deploy your code with simple YAML-based configurations. While GitHub Actions, like many other CI/CD platforms, is powerful enough to handle most use cases, it's important to consider the cost and time associated with frequently running workflows.
 
-These issues are especially impactful if you're on a large team with numerous developers and an already lengthy [CI/CD](/blog/ci-vs-cd) workflow. In cases like this, you need to try to save time in CI/CD wherever you can.
+These issues are especially impactful if you're on a large team with numerous developers and an already lengthy build workflow. In cases like this, you need to try to save time in CI/CD wherever you can.
 
 One way to save time is to cache your package manager dependencies in your GitHub Actions rather than download fresh packages for every workflow you run. In this article, you'll learn how to use the `cache` action to do this and improve the efficiency of your workflows.
 
-## How GitHub Actions Caching Works
+## How The GitHub Actions Cache Works
 
 ![How]({{site.images}}{{page.slug}}/how.png)\
 
@@ -51,7 +56,7 @@ In practice, this means that if you have a branch called `feature-b` that is bas
 
 This is because the cache access restrictions do not allow workflow runs to use caches created in sibling or child branches. Realistically, these restrictions shouldn't impede your use of the caching mechanism, as it's unlikely you would need to pull a cache from a branch other than your current, base, or default branch in most cases.
 
-## Using the Cache Action
+## Using the Cache Action: `actions/cache@v3`
 
 This section will show you how to configure the `cache` action for a GitHub workflow. As with any other action, there are a few input parameters that you can define to control the behavior of the action. These include the following:
 
@@ -163,7 +168,7 @@ git push
 
 #### Viewing the Workflow Run
 
-Once the push is complete, navigate to your repository on [GitHub](/blog/ci-comparison) and go to the **Actions** tab. You should see your workflow running (or completed). Click on it, and you should see something like this:
+Once the push is complete, navigate to your repository on GitHub and go to the **Actions** tab. You should see your workflow running (or completed). Click on it, and you should see something like this:
 
 <div class="wide">
 ![Initial workflow]({{site.images}}{{page.slug}}/TjBAYiw.png)
@@ -190,12 +195,46 @@ In your browser, view the new workflow run, and you should see something like th
 
 If you compare the cache keys, you will notice that it's restored from your previously created cache even though you added a new dependency. This is because of the aforementioned `restore-keys`. Notably, the `Install dependencies` step was much faster this time, as it only had to deal with one new dependency (and its subdependencies). You can see a new cache was created with a different cache key, confirming that the `yarn.lock` file did indeed change.
 
+## Next Level Caching
+
+GitHub Actions cache can do a great job of holding onto files from previous runs. As we've shown, this means that if your tools are cache aware they can often skip significant amounts of rework. But there are ways to get more aggressive caching done in your GitHub Actions without risky flaky builds from stale cache keys.
+
+You can transform your build to use Earthly.
+
+~~~{.dockerfile caption="Earthfile"}
+VERSION 0.7
+FROM alpine:latest
+WORKDIR /app
+
+build:
+  CACHE /app/cache/
+  COPY . .
+  RUN yarn list
+  RUN yarn install
+  RUN yarn run build
+~~~
+
+And then call Earthly from your Github Action:
+
+~~~{.diff caption="workflow.yml"}
+    steps:
+      - uses: FranzDiebold/github-env-vars-action@v2
+      - name: Checkout code
+        uses: actions/checkout@v3
++     - name: Download released earth
++       run: "sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/download/v0.7.0/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly'"
++     - name: Build Site
++       run: earthly +build
+~~~
+
+And with that, most of the GitHub Actions logic can be replaced with Earthly. You can then get caching of yarn dependencies and you'll be able to run the build locally as well.
+
 ## Conclusion
 
 In this article, you learned how to configure GitHub Actions workflows to use the `cache` action. This action allows you to save and restore files that don't change very often, like package dependencies, which enable you to speed up your workflow runs, saving you time and money.
 
 If you're using a language that GitHub maintains a `setup-*` action for, you can use that to get a low-config caching solution. Otherwise, if you want more control over the caching process or are using a language that doesn't have first-class support, you can use the `cache` action and get something up and running with a small amount of configuration.
 
-If you're looking for other ways to supercharge your CI workflows, consider [Earthly](https://earthly.dev/), a portable [CI/CD](/blog/ci-vs-cd) framework that runs everywhere. Earthly allows you to avoid vendor lock-in with your Git provider and gives you the tools to run your CI/CD workflows locally the same way they would run in the cloud, greatly simplifying the process of developing and testing workflows.
+If you're looking for ways to take your caching to the next level consider combining [Earthly with GitHub Actions](/earthly-github-actions). With Earthly you can run your GitHub workflows locally the same way they would run in the cloud, greatly simplifying the process of developing and testing. And you also get layer based caching that can help speed up your builds.
 
-{% include_html cta/bottom-cta.html %}
+{% include_html cta/gha-cta1.html %}

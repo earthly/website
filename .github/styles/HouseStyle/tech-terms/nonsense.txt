@@ -105,3 +105,14 @@ ga
 
 th
 ing
+
+Terragrunt
+projen
+
+Sklearn
+Ynet
+Punkt
+punkt
+Lequipe
+
+Akamai

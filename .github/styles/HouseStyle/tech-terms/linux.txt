@@ -114,3 +114,5 @@ chgrp
 
 pushd
 popd
+rpms
+systemctl

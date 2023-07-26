@@ -10,7 +10,10 @@ internal-links:
  - PyMongo
  - Python
  - Cluster
+excerpt: |
+    Learn how to get started with PyMongo, the official MongoDB driver for Python. This tutorial covers setting up a remote MongoDB database using MongoDB Atlas, connecting to the database with PyMongo, and performing CRUD operations on the database.
 ---
+**We're [Earthly](https://earthly.dev/). We simplify and speed up software builds using containerization. Working with Python? Earthly can streamline your MongoDB application development process. [Check it out](/).**
 
 In this article, you will learn about MongoDB and how to use it with Python. Specifically, you will learn how to set up a remote MongoDB database using a tool called Atlas and how to connect with that database using PyMongo, the official MongoDB driver for Python. The article explains the MongoDB document model and how to perform CRUD operations on the database. Finally, the article also discusses relationships using document embeddings and foreign keys.
 
@@ -454,7 +457,8 @@ The empty `filter` dictionary means you want to delete all the documents in the 
 
 ## Conclusion
 
-In this tutorial, you learned about the basics of MongoDB and how to set up a MongoDB Cluster. The tutorial mainly focussed on setting up PyMongo on your local system and explained how to perform basic CRUD operations on a MongoDB collection.
-If you want to further your learning, I suggest you look into Schema Validation, Advanced Queries, and how to perform a full-text search in MongoDB as the next steps.
+In this tutorial, we covered MongoDB fundamentals and cluster setup, including PyMongo installation and basic CRUD operations on MongoDB collections. To delve deeper, explore Schema Validation, Advanced Queries, and full-text search in MongoDB.
+
+And if you're building Python applications, you might want to streamline your build process. Check out [Earthly](https://www.earthly.dev/), a tool that can significantly enhance your productivity and make your builds more efficient.
 
 {% include_html cta/bottom-cta.html %}

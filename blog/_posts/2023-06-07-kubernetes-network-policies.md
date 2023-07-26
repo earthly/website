@@ -12,7 +12,10 @@ internal-links:
  - Network Policies
  - Rules
  - Namespaces
+excerpt: |
+    Learn how to secure your Kubernetes cluster with network policies, which allow you to control and secure communication between pods and services. Discover the benefits of using network policies, such as improved security, compliance, resource optimization, and troubleshooting capabilities. Apply network policies in a demo to control traffic between namespaces and ensure the safety and integrity of your cluster.
 ---
+**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. [Check it out](/).**
 
 Kubernetes Network Policy is a set of rules that define how network traffic flows within a Kubernetes cluster. It is used to control and secure communication between pods and services in a Kubernetes cluster.
 
@@ -479,10 +482,10 @@ $ kubectl -n db exec db  -- curl backend-svc.backend ##denied
 
 ## Conclusion
 
-By using network policies, organizations can ensure that their Kubernetes workloads are isolated, protected, and compliant with industry standards and best practices. However, implementing network policies can be complex and requires careful planning and testing. Overall, network policies are an essential component of any Kubernetes security strategy and should be carefully considered and implemented to ensure the safety and integrity of your cluster.
+In a nutshell, using network policies can beef up your Kubernetes workload security, but their implementation needs careful thought and testing. This post walked you through the basics of Kubernetes network policies and key concepts like Ingress, Egress, and CNI. Plus, you learned the ropes on setting up multiple policies for different needs.
 
-In this article, you have learned about network policies in Kubernetes and general network concepts like Ingress, Egress, and CNI. In addition, you've also learned how to apply multiple network policies with different conditions to fulfil certain network requirements.
+For some extra knowledge boost, have a look at other Kubernetes features like [Security Context](https://earthly.dev/blog/k8s-cluster-security/) and [Mutual TLS over Kubernetes Nginx Ingress Controller](https://earthly.dev/blog/mutual-tls-kubernetes-nginx-ingress-controller/).
 
-You can continue learning about other features available in Kubernetes, such as [Security Context in Kubernetes](https://earthly.dev/blog/k8s-cluster-security/) and [Mutual TLS over Kubernetes Nginx Ingress Controller](https://earthly.dev/blog/mutual-tls-kubernetes-nginx-ingress-controller/).
+And if you're looking to further optimize your Kubernetes builds, you might want to give [Earthly](https://www.earthly.dev/) a spin. It's a tool that can help streamline your build process and make it more efficient.
 
 {% include_html cta/bottom-cta.html %}

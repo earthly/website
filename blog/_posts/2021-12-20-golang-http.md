@@ -10,7 +10,11 @@ sidebar:
 internal-links:
  - golang json
  - golang http
+excerpt: |
+    Learn how to build a JSON HTTP server using Golang in this tutorial. Discover the basics of creating a Golang web service, handling HTTP requests, and working with JSON data.
 ---
+**We're [Earthly](https://earthly.dev/). We make building software simpler and faster using containerization. Earthly can streamline your Golang build process, making your HTTP server projects a breeze. [Give it a go](/).**
+
 If you want to build a simple JSON HTTP web service that runs natively on a Linux server, then Golang is a great choice. At least this is what I've been told, my coworkers are big fans and report having a small memory footprint, a shallow learning curve, and an excellent standard library.
 
 So in this article, I'm going to give it a try with a simple project I've been wanting to build: an activity tracker. You see, I'm a bit out of shape, and I'd like to start tracking my activity levels. It will be a bit of a toy application, but I'm hoping it will encourage me to start adding more activity to sedentary winter habits.
@@ -492,9 +496,9 @@ I hit a number of errors building this. If you hit them, here are the solutions.
 
 ### What's Next
 
-My current plan is to build a command-line client for this service next. This should make it a bit easier to use – and I also really want to develop a command-line client. After that, I'm thinking about adding other features, but I'll keep those to myself for now.
+Next up, I'm building a command-line client for this service to make it more user-friendly. I've got other features brewing in my mind, but I'll save that for later. Tossed around a few other improvements like using `gojsonschema` for better JSON validation and `net/http/httptest` for testing.
 
-Two minor improvements I explored but then abandoned were better validation of the JSON coming in using `gojsonschema` and testing with `net/http/httptest`, but if the solution grows, I might revisit those.
+Speaking of Golang projects, you might want to check out [Earthly](https://www.earthly.dev/) for efficient, reproducible builds. It could be a valuable tool to streamline your development process.
 
 If you want to be notified about the next installment, sign up for the newsletter:
 

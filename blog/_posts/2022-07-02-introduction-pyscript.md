@@ -4,7 +4,8 @@ categories:
   - Tutorials
 toc: true
 author: Ukeje Goodness
-excerpt: "Introduction Python is widely used in so many applications, from data science to machine learning, robotics, and artificial intelligence. On the we.."
+excerpt: |
+    Learn how to use PyScript, a Python-based front-end web framework, to build powerful browser applications using an HTML interface. Discover its features, such as browser support, ecosystem support, Python-Javascript interoperability, and flexibility, and see how you can run Python code in HTML, import files and libraries, and visualize data and images in the browser. Whether you're a beginner or an expert, PyScript offers a user-friendly experience for creating web applications with Python.
 internal-links:
  - Pyhton
  - Numpy
@@ -12,6 +13,8 @@ internal-links:
  - Pyodide
  - Django
 ---
+**We're [Earthly](https://earthly.dev/). We make building software simpler and faster using containerization. Earthly can help streamline your builds and amplify your productivity. [Give us a try](/).**
+
 <div class="wide">
 
 <img src="{{site.images}}{{page.slug}}/image 1.png" alt="Pyscript header image">
@@ -268,10 +271,8 @@ Learn more about PyScript and Pyodide from these resources.
 
 ### Conclusion
 
-In this tutorial, you learned how to use PyScript to run Python code in HTML, and how to implement various PyScript functionalities such as using external packages, running Python REPLs, and visualizing images generated in Python code in a browser.
+In this tutorial, we've explored PyScript, a tool that allows running Python code in HTML with functionalities like external packages, Python REPLs, and visualization of Python-generated images in a browser. PyScript, an alpha stage tool, makes it easier to use Python scripts in HTML and its scientific stack on the client side, though it's not yet production-ready.
 
-Before PyScript, it wasn't this easy to run Python REPL in the browser, run Python scripts in HTML, or use the Python scientific stack(Numpy, Pandas, MatPlotLib, Seaborn, e.t.c) on the client side.
-
-PyScript could become an important tool in your toolset. it's still very new, in its alpha stage ( so don't use it for production yet) but it looks very promising.
+As you continue to build your PyScript apps, consider boosting your build efficiency with [Earthly](https://www.earthly.dev/), your new favorite tool for reproducible builds. Earthly can be a game-changer in ensuring consistent and reliable results in your development process.
 
 {% include_html cta/bottom-cta.html %}

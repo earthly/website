@@ -4,25 +4,25 @@ categories:
   - Tutorials
 toc: true
 author: Artem Oppermann
-
+sidebar:
+  nav: "bazel"
 internal-links:
  - Python
  - Bazel
  - Deploy
  - Dependencies
+excerpt: |
+    Learn how to build and deploy a Python app with Bazel, a build automation tool. This article provides a step-by-step guide on implementing Bazel for building Python apps and demonstrates how to create a Flask app using Bazel. If you're interested in simplifying your software builds and deployments, this article is a must-read.
 ---
-
-[Bazel](https://bazel.build) is an open source software tool released by Google to automate software build processes and testing. It's a scalable and reliable tool that allows developers to quickly build and test software applications. Because Bazel supports multiple programming languages, it's ideal for projects with multilanguage dependencies.
-
-In this article you'll learn about Bazel, what it's used for, and what features make this build tool so special. You'll also learn how to develop and run a basic application using Python with Bazel.
+**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. This article is about Bazel. If you are looking for a simpler approach to monorepo builds then [check us out](/).**
 
 ## What Is Bazel
 
 ![What]({{site.images}}{{page.slug}}/what.jpg)\
 
-Bazel automates the build process and testing of software. In this respect, it can be compared to build tools like [Make](https://www.gnu.org/software/make/), [Apache Ant](https://ant.apache.org/), [Apache Maven](https://maven.apache.org/), and [Gradle](https://gradle.org/).
+Bazel automates the build process and testing of software. In this respect, it can be compared to build tools like `make`, Ant, Maven, and Gradle.
 
-Bazel grew out of the need for highly scalable builds. Developers who have worked on larger projects have probably experienced a problem between unit tests and a new feature. In this scenario, typically, several new files are added to a project in each sprint until the whole thing eventually becomes so inflated that the scaling of the builds, especially in larger projects, sometimes takes several seconds.
+Bazel grew out of the need for highly scalable builds. Developers who have worked on larger projects have probably experienced a problem between unit tests and a new feature. In this scenario, typically, several new files are added to a project in each sprint until the whole thing eventually becomes so large that the scaling of the builds, especially in larger projects, sometimes takes 15 minutes.
 
 Incremental builds are vital for better build performance. In an incremental build, code changes in small increments, and therefore, it doesn't make sense to rebuild the entire application every time something changes.
 
@@ -32,11 +32,13 @@ Since significantly less code has to be plowed through per build, builds in Baze
 
 The tool itself is written in Java, but it can be used in conjunction with several programming languages, including Java, C++, Objective-C, D, Groovy, JavaScript, Python, Rust, and Scala. Regardless of the programming language or platform, with Bazel, developers can create and test the entire source code with a single command.
 
+In this article you'll learn about Bazel, what it's used for, and what features make this build tool so special. You'll also learn how to develop and run a basic application using Python with Bazel.
+
 ## Implementing Bazel for Building Python Apps
 
 ![Implement]({{site.images}}{{page.slug}}/implement.png)\
 
-In the following tutorial, a simple application in [Bazel](/blog/monorepo-with-bazel) will be implemented and deployed using Python and [Flask](https://flask.palletsprojects.com/en/2.2.x/), which is a lightweight micro web framework for programming web applications. A calculator application will be created that sums up two random numbers and shows the sum in the browser. Then a unit test will be implemented to test the functionality of the app.
+In the following tutorial, a simple application in [Bazel](/blog/monorepo-with-bazel) will be implemented and deployed using Python and Flask, which is a lightweight micro web framework for programming web applications. A calculator application will be created that sums up two random numbers and shows the sum in the browser. Then a unit test will be implemented to test the functionality of the app.
 
 Before beginning, the following are needed:
 
@@ -47,6 +49,7 @@ Before beginning, the following are needed:
 ### Creating the Folder Structure
 
 The first step of creating the calculator app is to create the proper folder structure in VS Code.
+
 In Bazel, the software is built from source code that is organized in a directory tree called a workspace. In the workspace, the source files need to be organized in a nested package hierarchy. Here, each package is a directory that contains a number of source files and one `BUILD` file that specifies what software will be built from the source files.
 
 In this project, the folder `MY-PYTHON-APP` serves as the root directory for the workspace. In it, the package calculator, app, and third party are created. The package app will contain the source code of the calculator and the unit tests. In the app, the main code for the actual application will be stored. Additionally, a `third-party` folder will be created that will be responsible for any third-party dependencies:
@@ -79,7 +82,7 @@ http_archive(
 )
 ~~~
 
-Next, utilize the third-party dependency Flask. This is a [pip](https://pypi.org/project/pip/) dependency that is added to the `WORKSPACE` by loading the function `pip_install`. Then call this function to install the required dependency:
+Next, utilize the third-party dependency Flask. This is a `pip` dependency that is added to the `WORKSPACE` by loading the function `pip_install`. Then call this function to install the required dependency:
 
 ~~~{ caption="WORKSPACE.bazel"}
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
@@ -254,8 +257,27 @@ By running the command `bazel run //app:main`, the project is built, and the mai
 
 ## Conclusion
 
-In this article, the fundamentals of [Bazel](https://bazel.build), specifically what Bazel is, what it's used for, and how to prepare the `WORKSPACE` and `BUILD` files, were explained. In the practical part of the article, a simple application was implemented in Python and Flask. Bazel was then used to build the source code, run a unit test, and run the main application in the browser.
+In this article, the fundamentals of Bazel, specifically what Bazel is, what it's used for, and how to prepare the `WORKSPACE` and `BUILD` files, were explained. In the practical part of the article, a simple application was implemented in Python and Flask. Bazel was then used to build the source code, run a unit test, and run the main application in the browser.
 
-Bazel isn't the only solution for the automation of building and testing software. [Earthly](https://earthly.dev/) provides a convenient [CI/CD](/blog/ci-vs-cd) framework to build images or stand-alone artifacts by leveraging containers for the execution of pipelines. Earthly combines the best ideas from Dockerfiles and Makefiles into one specification, making the containers self-contained, repeatable, portable, and parallel.
+Bazel isn't the only solution for the automation of building and testing software. [Earthly](https://earthly.dev/) provides a convenient framework to build images or stand-alone artifacts by leveraging containers for the execution of pipelines.
+
+A Earthfile for testing our calculator app could look like this:
+
+~~~{.dockerfile caption="Earthfile"}
+VERSION 0.7
+FROM python:3.10.7
+WORKDIR /app
+
+deps:
+  RUN pip install -r ./third_party/requirements.txt
+  COPY ./calculator/calculator.py .
+
+unit_test:
+  FROM +deps
+  COPY ./calculator/calculator_test.py .
+  RUN python -m unittest discover
+~~~
+
+[Earthly](https://earthly.dev/) combines the best ideas from Dockerfiles and Makefiles into one specification, making the containers self-contained, repeatable, portable, and parallel.
 
 {% include_html cta/bottom-cta.html %}

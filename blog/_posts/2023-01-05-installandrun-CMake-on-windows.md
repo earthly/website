@@ -10,7 +10,10 @@ internal-links:
  - Windows
  - Visual Studio
  - Automation
+excerpt: |
+    Learn how to install and run CMake on Windows, a powerful tool for build automation, testing, packaging, and software installation. Discover the pros and cons of using CMake and how it can enhance your development workflow.
 ---
+**We're [Earthly](https://earthly.dev/). We make building software simpler and faster with containerization. If you're into CMake and automation, Earthly could be just the tool you need. [Check it out](/).**
 
 CMake is an open source multiplatform tool that you can use to help with build automation, testing, packaging, and the installation of software. One of the main advantages of CMake is that it supports generating build scripts for a wide variety of platforms including [Windows](/blog/makefiles-on-windows), macOS, and Linux. This gives developers the flexibility they need when building a new project and hopefully helps speed up the build.
 
@@ -191,8 +194,8 @@ The [`launch.vs.json`](https://learn.microsoft.com/cpp/build/configure-cmake-deb
 
 ## Conclusion
 
-In this article, you learned that CMake is a tool that can help with [build automation](/blog/introducing-earthly-build-automation-for-the-container-era), testing, packaging, and installation of software. It can be integrated into several IDE solutions, allowing developers the option of using their favorite IDE while taking advantage of CMake for their build solution.
+CMake is a versatile tool that aids in build automation, testing, packaging, and software installation. It integrates with many IDEs, giving developers the flexibility to stick with their preferred IDE. It ensures your application's compatibility across any platform. While CMake isn't for everyone, it can be a robust solution for the right developer or project.
 
-CMake gives you the flexibility to ensure your application can be built and executed on any platform. While [Cmake](/blog/using-cmake) might not be the right tool for everyone, for the right developer, team, or project, it can be a powerful solution.
+And if you're looking to optimize your builds further, you might want to give [Earthly](https://www.earthly.dev/) a shot for its efficient caching and straightforward syntax.
 
 {% include_html cta/bottom-cta.html %}

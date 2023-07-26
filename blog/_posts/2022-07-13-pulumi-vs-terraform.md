@@ -4,13 +4,16 @@ categories:
   - Tutorials
 toc: true
 author: Alexander Yu
-excerpt: "There once was a time when technicians manually provisioned application infrastructure. In recent years, as companies began rapidly expanding their infrastr..."
+excerpt: |
+    Learn about the differences between Pulumi and Terraform, two popular Infrastructure as Code (IaC) tools. Discover their functionality, learning curves, compatibility, modularity, and community support to help you decide which tool is best for your infrastructure needs.
 internal-links:
  - just an example
  - Pulumi
  - Terraform
  - IaC tools
 ---
+**We're [Earthly](https://earthly.dev/). We simplify and speed up the software building process using containerization. Earthly can seamlessly work with both Pulumi and Terraform to streamline your infra process. [Check it out](/).**
+
 There once was a time when technicians manually provisioned application infrastructure. In recent years, as companies began rapidly expanding their infrastructure stacks, they began to realize the shortcomings of manual provisioning:  
 
 * It's costly, since hiring a technician is expensive, and manual processes are time-consuming.
@@ -104,14 +107,16 @@ Both [Terraform](/blog/kubernetes-terraform) and Pulumi are updated frequently a
 
 ## Conclusion
 
-In this article, you've looked at a quick comparison of Terraform and Pulumi, two popular IaC tools. The following list summarizes the findings:
+This article compared Terraform and Pulumi, two prominent Infrastructure as Code (IaC) tools. Key points to note are:
 
-* **Functionality:** Terraform uses HCL and generally has better troubleshooting mechanisms to fix corrupted states. Pulumi uses familiar programming languages, which makes it easier for developers to add external libraries and implement built-in testing mechanisms.
-* **Learning Curve:** If you're new to Terraform, you'll need to learn HCL. If you're new to Pulumi, you can use a programming language that you're already familiar with. However, other Pulumi developers may not necessarily be familiar with that language. Terraform developers will not run into this issue.
-* **Compatibility:** Both Terraform and Pulumi are compatible with all major operating systems, cloud providers, and IDEs, though you'll need to install a plugin to use an IDE with Terraform.
-* **Modularity:** Both Terraform and Pulumi support modularity.
-* **Community Support:** Terraform has a larger developer base, but both tools have excellent documentation and many code examples.
+* **Functionality:** Terraform uses HCL with strong troubleshooting features; Pulumi leverages familiar programming languages, allowing ease of adding libraries and testing.
+* **Learning Curve:** Terraform requires learning HCL, while Pulumi might require learning a new language other developers may not be familiar with.
+* **Compatibility:** Both are compatible with all major operating systems, cloud providers, and IDEs. Terraform requires a plugin for IDE use.
+* **Modularity:** Both tools support modularity.
+* **Community Support:** Terraform has larger community support, but both tools have comprehensive documentation and code examples.
 
-So which tool should you use? [Terraform](/blog/kubernetes-terraform) is still considered the industry leader in IaC tools, but Pulumi is quickly rising in popularity. Both tools help you accomplish the same thing, so for most organizations and developers, this comes down to whether you're willing to invest your time and resources into learning HCL and Terraform. If you prefer the consistency of using HCL for your infrastructure and want a tool with a more robust community, Terraform is the way to go. If you need to optimize for efficiency and would prefer to use a language you're already comfortable with, Pulumi might be the better solution. Either tool will get you on the way to properly scaling your infrastructure code.
+In summary, [Terraform](/blog/kubernetes-terraform), as the industry leader, is ideal if you seek robust community support and are willing to learn HCL. Pulumi is an emerging player preferred for efficiency and the use of familiar languages. Both tools serve the same purpose - pick one that aligns best with your needs.
+
+Looking to simplify your build automation further? Give [Earthly](https://www.earthly.dev/) a try. It could be the perfect complement to your chosen IaC tool.
 
 {% include_html cta/bottom-cta.html %}

@@ -11,7 +11,10 @@ internal-links:
  - Dependencies
  - Poetry
  - Virtual Environments
+excerpt: |
+    Learn how to manage dependencies in Python projects using Poetry, a package manager that simplifies the process. From creating virtual environments to adding and removing dependencies, this tutorial covers all the essentials. Plus, discover how to publish your Python project as a package on PyPI.
 ---
+**We're [Earthly](https://earthly.dev/). We streamline software building using containerization. Earthly, combined with Poetry, can make your Python project builds smoother and faster. [Check it out](/).**
 
 Python is a versatile language used for various applications. However, managing dependencies, the [packages](/blog/setup-typescript-monorepo) a project relies on can be a complex and time-consuming task. With the growth of the Python ecosystem, developers need to manage a large number of packages and dependencies and ensure that they are compatible with each other.
 
@@ -706,8 +709,8 @@ After publishing the package, you can search for it on PyPI. For example, you ca
 
 ## Conclusion
 
-Managing dependencies in Python development is crucial for ensuring the stability and [reliability](/blog/achieving-repeatability) of your projects. Poetry offers a convenient and efficient solution for handling dependencies, making it a popular choice among Python developers.
+Managing dependencies is crucial in Python development. Poetry provides an efficient solution for this. This tutorial covered using Poetry for Python projects, including installation, managing dependencies, and publishing a package. You've learned about virtual environments, adding, removing, and synchronizing dependencies, and packaging Python project.
 
-In this tutorial, you have explored the steps involved in using Poetry for managing dependencies in Python projects, from installation to publishing a package. Specifically, you have learned the creation of virtual environments, managing dependencies, including adding, removing, and synchronizing them, and publishing a Python project as a package. You can explore much more about Poetry in its [official documentation](https://python-poetry.org/).
+If you've breezed through managing Python dependencies with Poetry and are looking for ways to further streamline your build process, you might want to take it up a notch with [Earthly](https://www.earthly.dev/). It's a tool that can make your builds even smoother. Check it out!
 
 {% include_html cta/bottom-cta.html %}

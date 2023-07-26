@@ -10,7 +10,11 @@ internal-links:
  - deployment strategies
  - deployment
  - continous deployment
+excerpt: |
+    Learn about different deployment strategies, their pros and cons, and how they can impact downtime and deployment complexity. Find the best approach for your application and gain insights into optimizing your deployment process.
 ---
+**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. If you're into deployment strategies, Earthly can streamline your build process. [Check it out](/).**
+
 There are many ways to deploy applications to a production server environment, and the terminology around deploy strategies is often confusing. In this short guide, I'll review software deployment options starting from the most basic and straightforward and moving towards the more complex.  
 
 ## Recreate Deployment Strategy
@@ -114,8 +118,7 @@ The cost of this approach is in the implementation. A service mesh like Istio is
 
 <div class="no_toc_section">
 ## Summary
-</div>
 
-There are many deployment methods, from the very simple to the very complex. The deployment strategy the works best for any given situation depends on many factors. When choosing a deployment strategy balancing the cost of downtime versus the cost of deployment complexity is essential.
+There's a wide range of deployment methods, each with its pros and cons. The best strategy depends on your need to balance downtime cost and deployment complexity. If you're keen to streamline your build process before deployment, you might want to give [Earthly](https://www.earthly.dev/) a try.
 
-If there are other deployment strategies or other continuous deployment terms you would like to see covered, please reach out to us on [Twitter](https://twitter.com/earthlytech) or via [email](adam@earthly.dev).
+If you'd like to learn about other deployment strategies or continuous deployment terms, feel free to contact us through [Twitter](https://twitter.com/earthlytech) or [email](adam@earthly.dev).

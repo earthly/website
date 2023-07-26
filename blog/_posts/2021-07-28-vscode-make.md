@@ -10,10 +10,12 @@ sidebar:
   nav: "makefile"
 topic: make
 last_modified_at: 2023-04-17
+excerpt: |
+    Learn how to use Makefiles in Visual Studio Code to simplify the build process for your software projects. This tutorial walks you through setting up a C++ project and demonstrates the power and flexibility of Makefiles.
 ---
-<iframe width="560" height="315" src="https://www.youtube.com/embed/vAS4R5P0Orc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+**We're [Earthly](https://earthly.dev/). We make building software simpler and faster using containers, a perfect alternative to dealing with Makefiles. [Check it out](/).**
 
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about using `make` and a `Makefile` in VS Code. If you're interested in a different approach to building and packaging software then [check us out](/).**
+<iframe width="560" height="315" src="https://www.youtube.com/embed/vAS4R5P0Orc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 Microsoft announced [recently](https://devblogs.microsoft.com/cppblog/now-announcing-makefile-support-in-visual-studio-code/) a new Visual Studio Code extension to handle Makefiles. This extension provides a set of commands to the editor that will facilitate working with projects that rely on a Makefile to speed up the build.
 
@@ -194,6 +196,8 @@ In the **Commands** section of the Makefile Tools Extension perspective, you can
 
 Large codebases need a build system to keep them under the development team's control, and Makefiles are one the most ubiquitous and flexible ways to define building these complex software projects.
 
-With the new [Makefile Tools Extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.makefile-tools), Visual Studio Code greatly simplifies access for new developers. Though it is still tagged as in preview, this extension has been thoroughly tested by the Microsoft Team, building over seventy open-source projects written in different languages (including C, C++, and Python) successfully.
+With the new Makefile Tools Extension, Visual Studio Code greatly simplifies access for new developers.
 
-If you want to learn about the power of make and Makefiles, consider checking out our [Makefile Series](/blog/series/makefile/), and if you want the simplicity of a Makefile with the isolation of containers take a look at [Earthly](https://earthly.dev/).
+{% include_html cta/makefile-cta.html %}
+
+<!-- If you want to learn about the power of make and Makefiles, consider checking out our [Makefile Series](/blog/series/makefile/), and if you want the simplicity of a Makefile with the isolation of containers take a look at [Earthly](https://earthly.dev/). -->

@@ -11,7 +11,10 @@ internal-links:
  - Heroku
  - Authorization
  - Clients
+excerpt: |
+    Learn how to implement OAuth 2.0 flow in non-web clients and create a seamless user experience with the Device Authorization Grant flow. Discover how to configure a Facebook app for device login and improve the security and usability of your non-web client applications.
 ---
+**We're [Earthly](https://earthly.dev/). We make building software simpler and faster with containerization. If you're implementing OAuth, Earthly can help streamline your build process. [Check it out](/).**
 
 It's easy and intuitive to implement OAuth 2.0 in web applications. However, when setting up OAuth 2.0 for non-web clients this becomes difficult as OAuth 2.0 requires redirect (callback) URLs.
 
@@ -685,8 +688,8 @@ async def device_login(ctx) -> None:
 
 ## Conclusion
 
-By exploring how Heroku CLI works behind the scenes, you've learned about the Device Authorization Grant flow and its benefits. You've also learned how to configure Facebook app for device login.
+In this tutorial, we delved into Heroku CLI's functionality, the Device Authorization Grant flow, and configuring Facebook app for device login. Use this knowledge to enhance the security and user experience of your non-web applications via OAuth 2.0 Device Authorization Grant flow.
 
-With this knowledge, you can apply OAuth 2.0 Device Authorization Grant flow to your non-web client applications and provide a more secure and user-friendly login experience for your users. As a next step, you can try creating a CLI application using Google Login.
+And if you are looking to boost your command-line fu even further? Give [Earthly](https://www.earthly.dev/) a shot! It could be a valuable addition to your toolkit.
 
 {% include_html cta/bottom-cta.html %}

@@ -4,9 +4,15 @@ categories:
   - Articles
 toc: true
 author: Adam
+sidebar:
+  nav: "bazel"
 internal-links:
  - bazel
+excerpt: |
+    Learn about the benefits and challenges of using Bazel, Google's open-source monorepo build system, from experts who have experience with it. Discover when to use Bazel, its history, case studies, migration tips, and the future of this powerful build tool.
 ---
+**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. This article is about when to reach for Bazel. If you are looking for a simpler approach to monorepos then [check us out](/).**
+
 ## Bazel Build?
 
 Here at Earthly, we care a lot about builds and talk to many people about their struggles with builds and CI. A frequent topic of conversation, especially if an organization has a monorepo and more than 500 developers, is Bazel, Google's open-sourced monorepo build system.
@@ -374,7 +380,7 @@ Like it does feel sometimes like I made a small change, you know, I'm making a r
 
 But then IntelliJ doesn't know about my build targets. And so like the build target got moved along with everything else. And I mean, sometimes that works, like sometimes in Google, the build target automatically gets updated if you use a tool.
 
-But when I'm working on [claro](clarolang.com) then, I have to like manually follow the Bazel error messages to update the targets of everything. And it'll become a thing that will prevent me from doing refactorings because I'll be like that's gonna be such a pain to update all my build targets. [So] I save it to be a project where I'm like: today the only thing I'm gonna do is just move build targets around.
+But when I'm working on [claro](http://clarolang.com) then, I have to like manually follow the Bazel error messages to update the targets of everything. And it'll become a thing that will prevent me from doing refactorings because I'll be like that's gonna be such a pain to update all my build targets. [So] I save it to be a project where I'm like: today the only thing I'm gonna do is just move build targets around.
 {% include quotes/end.html %}
 
 ## Migration Helper: Gazelle
@@ -440,6 +446,8 @@ So after talking to all of these Bazel experts, what have I learned? First, I've
 Second, I've learned you shouldn't overlook the education and training aspects either. You should plan to spend time initially getting developers up to speed on this approach. Make sure everyone understands the vision or expect some bumpy roads.
 
 But most importantly, I've learned - and all the people I talked to agreed: Bazel does deliver on its promise of fast and correct builds. Other tools like Pants and Buck exist, but Bazel is the clear category leader. If I had a mono-repo with several million lines of code in it, I'd want a consistent way to build things and a fast way to get feedback on those changes. Doing so would pay for itself over time because developer time is expensive. Bazel is the tool for that job.
+
+If I had less than a million lines of code or I was worried about the adoption costs or if wanted a more gradual approach to monorepo build performance, then I'd take a look at [Earthly](/). But then I work for Earthly so I'm a bit biased.
 
 {% include_html cta/bottom-cta.html %}
 
