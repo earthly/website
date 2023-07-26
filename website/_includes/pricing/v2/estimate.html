@@ -8,29 +8,35 @@
       <div id="num-users" class="absolute -bottom-14 -left-2.5 font-semibold text-lg tracking-tight">1 user</div>
     </div>
 
-    <input type="range" min="1" max="50" value="1" class="pricing-slider" id="pricing-slider">
+    <input type="range" min="1" max="51" value="1" class="pricing-slider" id="pricing-slider">
   </div>
 
   <div class="border-2 border-gray-300 bg-white p-4 pb-6 rounded-lg shadow text-gray-900">
     <div class="flex items-center justify-between">
-      <div id="plan-name" class="font-bold text-[#2d7e5d] text-2xl tracking-tight">Starter Plan</div>
-      <div id="plan-description" class="text-[#9CA3AF] text-lg tracking-tight">For small projects</div>
+      <div id="plan-name" class="font-bold text-[#2d7e5d] text-2xl tracking-tight">Free Plan</div>
+      <div id="plan-description" class="text-[#9CA3AF] text-lg tracking-tight">For hobby projects</div>
     </div>
 
-    <div class="flex justify-between">
+    <div id="cost-estimate" class="flex justify-between">
       <div>
         <div class="flex font-semibold mt-5 text-2xl">
           <span class="font-normal text-gray-600 text-sm">$</span>
-          <span id="plan-price" class="tracking-tight">9.17</span>
+          <span id="plan-price" class="tracking-tight">0</span>
         </div>
         <div class="text-gray-500">per month</div>
       </div>
 
       <div>
-        <div id="plan-minutes" class="font-semibold mt-5 text-2xl tracking-tight">12,000</div>
+        <div id="plan-minutes" class="font-semibold mt-5 text-2xl tracking-tight">6,000</div>
         <div class="text-gray-500">minutes/month</div>
       </div>
     </div>
+
+    <a id="contact-us-button" href="/contact-us" class="hidden mt-5">
+      <div class="w-60 bg-green-700 hover:bg-green-800 inline-block py-3 rounded-lg text-center text-white text-xl">
+        Contact Us
+      </div>
+    </a>
   </div>
 </div>
 
@@ -41,25 +47,32 @@
     var numUsers = document.getElementById("num-users")
 
     sliderInput.addEventListener("input", e => {
-      const value = e.target.value
-      e.target.style.backgroundSize = value * 2 + "% 100%"
-      numUsers.innerText = value + " user" + (value > 1 ? "s" : "")
+      const { min, max, value } = e.target
+      e.target.style.backgroundSize = (value - min) * 100 / (max - min) + '% 100%'
+      numUsers.innerText = (value > 50 ? '50+' : value) + " user" + (value > 1 ? "s" : "")
 
       const width = numUsers.getBoundingClientRect().width / 2
       if (value > 45) {
         numUsers.style.left = 'unset'
-        numUsers.style.right = `calc((13px * (50 - ${value}) - 20px)`
+        numUsers.style.right = `calc((13px * (50 - ${value}) - 12px)`
       } else {
-        numUsers.style.left = `calc(${value * 2}% - ${width}px - ${value * .3}px)`
+        numUsers.style.left = `calc(${value * 2}% - ${width}px - ${value * .5}px)`
         numUsers.style.right = 'unset'
       }
 
       var planName = document.getElementById("plan-name")
       var planDescription = document.getElementById("plan-description")
+      var costEstimate = document.getElementById("cost-estimate")
       var planPrice = document.getElementById("plan-price")
       var planMinutes = document.getElementById("plan-minutes")
+      var contactUsButton = document.getElementById("contact-us-button")
 
-      if (value <= 5) {
+      if (value == 1) {
+        planName.innerText = "Free Plan"
+        planDescription.innerText = "For hobby projects"
+        planPrice.innerText = 0
+        planMinutes.innerText = (6000).toLocaleString()
+      } else if (value <= 5) {
         planName.innerText = "Starter Plan"
         planDescription.innerText = "For small projects"
         planPrice.innerText = Number(((checkbox.checked ? 9.17 : 11)* value).toFixed(2)).toLocaleString()
@@ -69,16 +82,28 @@
         planDescription.innerText = "For small teams"
         planPrice.innerText = Number(((checkbox.checked ? 29.17 : 35)* value).toFixed(2)).toLocaleString()
         planMinutes.innerText = (20000 + 3000 * value).toLocaleString()
-      } else {
+      } else if (value <= 50) {
         planName.innerText = "Team Plan"
         planDescription.innerText = "For large teams"
         planPrice.innerText = Number(((checkbox.checked ? 49.17 : 59)* value).toFixed(2)).toLocaleString()
         planMinutes.innerText = (50000 + 4000 * value).toLocaleString()
+      } else {
+        planName.innerText = "Enterprise Plan"
+        planDescription.innerText = "For enterprises"
+      }
+
+      if (value > 50) {
+        costEstimate.style.display = 'none'
+        contactUsButton.style.display = 'flex'
+      } else {
+        costEstimate.style.display = 'flex'
+        contactUsButton.style.display = 'none'
       }
 
       var tier1 = document.getElementById("tier-1")
       var tier2 = document.getElementById("tier-2")
       var tier3 = document.getElementById("tier-3")
+      var tier4 = document.getElementById("tier-4")
 
       tier1.style.opacity = value <= 1 ? 1 : 0.5
       tier1.style.pointerEvents = value <= 1 ? "unset" : "none"
@@ -88,6 +113,9 @@
 
       tier3.style.opacity = value <= 15 ? 1 : 0.5
       tier3.style.pointerEvents = value <= 15 ? "unset" : "none"
+
+      tier4.style.opacity = value <= 50 ? 1 : 0.5
+      tier4.style.pointerEvents = value <= 50 ? "unset" : "none"
     })
   })
 </script>
