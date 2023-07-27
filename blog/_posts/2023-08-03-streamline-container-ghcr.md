@@ -25,13 +25,12 @@ This article will explore the capabilities of the GitHub Container Registry and 
 
 ## Prerequisites
 
-
 - A [GitHub account](https://docs.github.com/en/get-started/signing-up-for-github/signing-up-for-a-new-github-account) and a [GitHub repository](https://docs.github.com/en/get-started/quickstart/create-a-repo) already created -  this tutorial uses a GitHub repository called *hello-world-express-app*.
 - Familarity with [Docker](https://docs.docker.com/get-started/) and Docker [Engine](https://docs.docker.com/engine/install/) or [Desktop](https://www.docker.com/) installed on your machine.
 - A Kubernetes cluster that is already up and running.
 
-
 ## Configuring Access with GitHub Container Registry
+
 In this section, you will set up a personal access token, the authentication mechanism for accessing the GitHub Container Registry. This token ensures secure and controlled access to your container images, allowing you to push, pull, and manage them within your repositories.
 
 You must create a personal access token on your GitHub account to achieve this. The personal access token is a secure authentication method to access the container registry.
@@ -40,13 +39,12 @@ To create a personal access token, follow these steps:
 
 1. Navigate to your GitHub account settings.
 2. From the left panel, go to the *Developer settings* section and select *Personal access tokens*.
-3. In the *Tokens (classic)* drop-down menu, click on *Generate new token (classic)* to create a new token.
+3. In the *Tokens (classic)* drop-down menu, click on *Generate new token (classic)* to create a new token.  (Note: If your account configures two-factor authentication, you'll be prompted to enter your GitHub password to proceed.)
+
    <div class="wide">
    ![Generating a new token on GitHub]({{site.images}}{{page.slug}}/q75SJBo.png)
    </div>
-
- *Note: If your account configures two-factor authentication, you'll be prompted to enter your GitHub password to proceed.*
-
+   
 4. Provide a descriptive name for the token and select the necessary scopes for registry access. For this tutorial, select the **`write:packages`** , **`delete:packages`**, and **`workflow`** scopes to enable registry-related actions.
    <div class="wide">
    ![Configuring token scopes (write and delete packages and workflow)]({{site.images}}{{page.slug}}/e3CKQ1r.png)
