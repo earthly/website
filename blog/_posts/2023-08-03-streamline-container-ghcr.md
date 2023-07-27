@@ -44,7 +44,7 @@ To create a personal access token, follow these steps:
    <div class="wide">
    ![Generating a new token on GitHub]({{site.images}}{{page.slug}}/q75SJBo.png)
    </div>
-   
+
 4. Provide a descriptive name for the token and select the necessary scopes for registry access. For this tutorial, select the **`write:packages`** , **`delete:packages`**, and **`workflow`** scopes to enable registry-related actions.
    <div class="wide">
    ![Configuring token scopes (write and delete packages and workflow)]({{site.images}}{{page.slug}}/e3CKQ1r.png)
