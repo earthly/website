@@ -336,8 +336,8 @@ Wait while Portainer pulls your images and creates your containers. The containe
 
 ## Conclusion
 
-[Portainer](https://www.portainer.io) is a convenient and feature-rich interface for Docker containers and other environments. It brings almost all the capabilities of the Docker UI to your web browser, letting you perform management operations on any device.
+[Portainer](https://www.portainer.io) is a super handy web interface for managing Docker containers and other environments. You can use it on your local machine or even for keeping an eye on your production apps. It's also great for tracking containers and images in your CI/CD pipelines and build systems, keeping your Docker host clutter-free.
 
-Portainer is ideal for many different use cases, from your local development workstation to production app monitoring. You can also use it to track containers and images used by CI/CD pipelines and build systems, preventing excess resources from accumulating on your Docker host.
+While you're optimizing your Docker environment, you might also want to take a peek at [Earthly](https://www.earthly.dev/). It's a tool designed for efficient and consistent automation of your Docker builds. Give both of these powerful tools a try!
 
 {% include_html cta/bottom-cta.html %}

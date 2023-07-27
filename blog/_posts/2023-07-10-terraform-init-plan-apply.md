@@ -299,8 +299,8 @@ The following are the steps described in the documentation:
 
 ## Conclusion
 
-In this article, you learned about the Terraform workflow and its different stages: init, plan, and apply. Additionally, you learned about the available installation options and the key elements of the Terraform syntax.
+In this tutorial, we've covered the basics of Terraform workflow, including the init, plan, and apply stages, installation options, and syntax fundamentals.
 
-There is still much to learn about Terraform! That's why we recommend reviewing the [tutorials](https://developer.hashicorp.com/terraform/tutorials) or, better yet, trying [Terraform Cloud](https://app.terraform.io/session). You can practice everything you've learned about syntax and workflow in Terraform Cloud, with the added benefit of having the state backed up in the cloud and the convenience of managing providers, variables, and commands from the Terraform UI.
+Once you've mastered Terraform, you might want to take your build automation to the next level. Check out [Earthly](https://www.earthly.dev/) for an even smoother experience. You won't regret it!
 
 {% include_html cta/bottom-cta.html %}

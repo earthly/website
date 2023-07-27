@@ -109,6 +109,10 @@ post() { # active blog post
     echo "blog/_posts/$(ls -Art blog/_posts |  grep -v "checklist"  | tail -n 1)"; 
 }
 
+restorepost() { # restore post from git main
+    git checkout main -- "$(post)"
+}
+
 hide_posts() # Hide All posts
 # For faster blog rendering time
 (

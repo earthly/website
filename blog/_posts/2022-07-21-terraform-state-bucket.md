@@ -7,6 +7,7 @@ sidebar:
   nav: "lambdas"
 internal-links:
  - terraform backend
+bottomcta: false
 excerpt: |
     Learn how to store your Terraform state in an S3 bucket to avoid leaking sensitive information and manage changes made by multiple people.
 ---

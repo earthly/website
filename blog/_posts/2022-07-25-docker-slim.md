@@ -172,10 +172,8 @@ This command utilizes the created `apparmor` security profile in the working dir
 
 ## Conclusion
 
-Docker Slim works to optimize your Docker development process, utilizing both static and dynamic analysis to generate information about your Docker resources that can be used to optimize and secure your images. It does this by disposing of miscellaneous packages and files, and streamlining your container to reduce its attack surface and vulnerabilities.
+Docker Slim is a handy tool. It uses static and dynamic analysis to clear out unnecessary stuff from your Docker images, making them safer and more effective. Despite Docker's contribution to DevOps, it's not flawless and that's where Docker Slim can help. Through this tutorial, we've guided you on how to use Docker Slim and its commands: `lint`, `xray`, `profile`, and `build` to tweak your Docker images and containers.
 
-The advent of containerized applications has helped scale up the development and production process for DevOps teams. However, Docker's containerization is not perfect, and improvements can be made.
-
-In this article, you learned about Docker Slim and how it can be used to optimize your Docker resources, utilizing the `lint`, `xray`, `profile`, and `build` Docker Slim commands to optimize your Docker images and containers.
+Also if you're craving more efficiency in your build processes, you might want to give [Earthly](https://www.earthly.dev/) a spin! This open-source build automation tool could be the next step in optimizing your development workflow.
 
 {% include_html cta/bottom-cta.html %}

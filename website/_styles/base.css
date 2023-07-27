@@ -83,25 +83,58 @@ main.wave-main.homepage {
   top: 188px;
 }
 
+.earthly-animation-text {
+  color: #636363;
+  font-size: 12px;
+  margin-top: -34px;
+  padding-bottom: 16px;
+  text-align: center;
+}
+
+@media screen and (min-width: 640px) {
+  .earthly-animation-text {
+    font-size: 16px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .earthly-animation-text {
+    font-size: 18px;
+  }
+}
+
 @media screen and (min-width: 1280px) {
   .homepage .wave {
     animation: none;
   }
 
   .earthly-animation {
-    right: -148px;
+    right: -108px;
+  }
+
+  .earthly-animation-text {
+    font-size: 18px;
+    margin-top: 400px;
+    margin-right: 330px;
   }
 }
 
 @media screen and (min-width: 1366px) {
   .earthly-animation {
-    right: -96px;
+    right: -60px;
   }
 }
 
 @media screen and (min-width: 1536px) {
   .earthly-animation {
     right: 0;
+  }
+}
+
+@media screen and (min-width: 1800px) {
+  .earthly-animation-text {
+    margin-top: 370px;
+    margin-right: 242px;
   }
 }
 
@@ -216,4 +249,15 @@ main.wave-main.homepage {
 
 .announcement-banner a {
   text-decoration: underline;
+}
+
+.progress-bar {
+  --progress: calc(360deg - var(--progress-value) * 3.6deg);
+  width: calc(100% - 20px);
+  height: calc(100% - 20px);
+  align-items: center;
+  background: radial-gradient(closest-side, white 83%, transparent 84% 100%), conic-gradient(#D1D6D9 0deg, #D1D6D9 var(--progress), #2D7E5D var(--progress), #2D7E5D 1turn);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
 }

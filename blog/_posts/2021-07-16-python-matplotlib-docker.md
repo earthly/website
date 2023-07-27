@@ -5,6 +5,7 @@ categories:
 author: Adam
 internal-links:
  - matplotlib
+bottomcta: false
 excerpt: |
     Learn how to install `matplotlib` in a Docker container and quickly generate graphs and visualizations. Discover the differences between installing `matplotlib` in Alpine Linux and Ubuntu, and why the process can be slower in Alpine.
 ---

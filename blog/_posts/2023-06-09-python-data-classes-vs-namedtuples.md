@@ -545,8 +545,6 @@ Let's wrap up our discussion by summarizing the key differences between data cla
 
 ## Conclusion
 
-In this article we explored how data classes and named tuples can both help us create classes that store attributes. We then compared them across a set of features: from immutability to memory efficiency.
+In this post, we dove into data classes and named tuples in Python, comparing their features like immutability and memory usage. These tools are handy for structured data, but don't forget about third-party packages like [Pydantic](https://docs.pydantic.dev/latest/) and [attrs](https://pypi.org/project/attrs/) too. They can automate some best practices, so feel free to explore and use them in your projects.
 
-We chose data classes and named tuples for this discussion as they are both built into the Python standard library, but there are popular third-party Python packages—data class alternatives—to build such classes.
-
-When sifting through Python codebases, you'll have likely come across Python packages like [Pydantic](https://docs.pydantic.dev/latest/) and [attrs](https://pypi.org/project/attrs/). These provide support for building such data classes while automating some best practices to work with Python classes. You may explore these packages and use them in your upcoming projects as needed.
+Speaking of automation, if you're looking to streamline your coding process even further, don't stop at Python. Try out [Earthly](https://www.earthly.dev/) for build automation. This tool can be a game-changer in managing your builds and ensuring consistency across different environments.

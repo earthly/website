@@ -404,6 +404,8 @@ Now we can run any of these steps locally and be sure it will run exactly the sa
 
 ## Conclusion
 
-And there you have it, a complete though small example of testing and linting a Django project with CircleCi. You may need to experiment with different setups to find what's right for your project, but hopefully this tutorial was enough to get you started. Overall I found the service easy to set up with documentation that was clear and thorough. I was especially happy that they offer such of complete and robust free tier which makes using it for side projects an easy choice. Will I end up switching to my new media tracking app over MovieBuddy? That seems unlikely, but hopefully I've shown how you can use CircleCi to keep your code in good shape no matter what project you're working on.
+In this tutorial, we've gone through a simple demonstration of testing and linting a Django project with CircleCi. Depending on your specific needs, you may need to test different setups. I found CircleCi easy to use, with a comprehensive free tier which is suitable for side projects. Although I might not switch my media tracking app, I hope this guide shows how you can leverage CircleCi to maintain the quality of any project.
+
+If you enjoyed reading about CI/CD with CircleCI, you might also love exploring [Earthly](https://www.earthly.dev/) for even simpler build automation. It's definitely worth checking out!
 
 {% include_html cta/bottom-cta.html %}

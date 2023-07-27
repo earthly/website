@@ -479,6 +479,14 @@ Evan Pease:
     name    : "Evan Pease"
     bio     : "Sr. Solutions Architect at Earthly. Ex AWS, Couchbase, and Wavefront (acquired by VMWare). Passionate about coding, search/NLP and guitars."
     avatar  : "/assets/images/authors/evan-pease.png"
+Ben Smitthimedhin:
+    name    : "Ben Smitthimedhin"
+    bio     : "Ben Smitthimedhin is a software developer at Compassion International. He holds an M.A. in English and lives in Forest, VA with his wife, Carrie, and his two kids, Kaia and Ayla."
+    avatar  : "/assets/images/authors/ben-smitthimedhin.png"
+Princewill Inyang:
+    name    : "Princewill Inyang"
+    bio     : "Princewill is an experienced backend developer whose expertise extends beyond coding. With a passion for DevOps and technical writing, he combines his technical prowess with exceptional communication skills to build seamless and efficient software solutions."
+    avatar  : "/assets/images/authors/princewill-inyang.jpg"
 Ikeh Akinyemi:
     name    : "Ikeh Akinyemi"
     bio     : "I’m a software engineer, technical writer, and open source evangelist. I have more than three years of professional experience building and writing web applications, focusing on the frontend and backend with Node.js and Python. I’m also an experienced technical writer with publications like Fauna, Adeva, and Smashing Magazine."
