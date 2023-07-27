@@ -18,7 +18,7 @@ internal-links:
 
 Rust's use of generics enables developers to write flexible and reusable code. Generics allow functions, structs, and enums to be defined without specifying the type of data they will operate on. This means that a single implementation can work with various types of data, making the code more versatile. Additionally, generics provide better type safety and reduce the likelihood of errors.
 
-Generics were first introduced in the [Meta Language (ML) programming language](https://en.wikipedia.org/wiki/ML_(programming_language)) in the 1970s and has since become a common feature in many modern languages, such as Java, C#, and C++. Rust adopted generics from its inception in 2010, which enables developers to write code that works with any data type rather than being limited to a single type. This flexibility makes code more extensible and reusable because it can accommodate various data types without rewriting.
+Generics were first introduced in the [Meta Language (ML) programming language](https://en.wikipedia.org/wiki/ML_(programming_language)) in the 1970s and have since become a common feature in many modern languages, such as Java, C#, and C++. Rust adopted generics from its inception in 2010, which enables developers to write code that works with any data type rather than being limited to a single type. This flexibility makes code more extensible and reusable because it can accommodate various data types without rewriting.
 
 In this guide, you'll learn about the basics of generics in Rust, particularly generic functions, structs, and enums. Additionally, you'll learn about more advanced topics, including traits, generic lifetimes, phantom types, and type-level programming.
 
