@@ -32,7 +32,7 @@ One powerful way to use generics is to create generic functions that can work wi
 
 Generic functions operate on different types of data using placeholders for the data types they work with. These placeholders are called type parameters.
 
-To define a generic function in Rust, you use angle brackets (`<` and `>`) to specify a type parameter like this:
+To define a generic function in Rust, you use angle brackets (`<` and `>`) to specify a type parameter, like this:
 
 ~~~{.rust caption="main.rs"}
 fn print_type<T>(_arg: T) { 
