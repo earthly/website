@@ -22,7 +22,7 @@ Generics were first introduced in the [Meta Language (ML) programming language](
 
 In this guide, you'll learn about the basics of generics in Rust, particularly generic functions, structs, and enums. Additionally, you'll learn about more advanced topics, including traits, generic lifetimes, phantom types, and type-level programming.
 
-> **Please note:** Make sure you wrap all your codes in a `main` function so that you don't get any errors.
+**Please note:** Make sure you wrap all your codes in a `main` function so that you don't get any errors.
 
 ## Using Generics in Rust
 
