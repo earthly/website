@@ -46,9 +46,9 @@ You can call this function with any type:
 
 ~~~{.rust caption="main.rs"}
 fn main() {
-   print_type("hello"); // Type is &str 
-   print_type(42); // Type is i32
-   print_type(vec![1, 2, 3]); // Type is Vec<i32>
+   print_type("hello");
+   print_type(42);
+   print_type(vec![1, 2, 3]);
 }
 ~~~
 
