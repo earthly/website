@@ -189,7 +189,6 @@ p > a:visited {
   height: 54px;
   align-items: center;
   display: flex;
-  margin-top: 12px;
   position: relative;
   -webkit-tap-highlight-color: transparent;
 }
@@ -209,7 +208,7 @@ p > a:visited {
 }
 
 .toggle-switch .slider {
-  background-color: #fff;
+  background-color: #EAF8FF;
   border-radius: 25px;
   cursor: pointer;
   position: absolute;
@@ -246,19 +245,6 @@ p > a:visited {
   transform: translateX(117px);
   -ms-transform: translateX(117px);
   -webkit-transform: translateX(117px);
-}
-
-@media screen and (min-width: 640px) {
-  .toggle-switch {
-    margin-left: 20px;
-    margin-top: 0;
-  }
-}
-
-@media screen and (min-width: 1024px) {
-  .toggle-switch {
-    margin-left: 200px;
-  }
 }
 
 .agreement-list {
@@ -326,6 +312,81 @@ p > a:visited {
 
 .pricing-faq.open .answer {
   max-height: 1056px;
+}
+
+.pricing-slider {
+  width: 100%;
+  height: 6px;
+  appearance: none;
+  -webkit-appearance: none;
+  background: #D1D6D9;
+  background-image: linear-gradient(#2D7E5D, #2D7E5D);
+  background-repeat: no-repeat;
+  background-size: 0% 100%;
+  border-radius: 20px;
+  outline: none;
+}
+
+.pricing-slider::-webkit-slider-thumb {
+  width: 26px;
+  height: 26px;
+  background: url("/assets/svg/slider-thumb.svg");
+  cursor: pointer;
+  -webkit-appearance: none;
+}
+
+.pricing-slider::-moz-range-thumb {
+  width: 26px;
+  height: 26px;
+  background: url("/assets/svg/slider-thumb.svg");
+  border: none;
+  cursor: pointer;
+}
+
+.pricing-slider::-webkit-slider-runnable-track  {
+  background: transparent;
+  -webkit-appearance: none;
+}
+
+.included-minutes-tooltip span {
+  background-color: #fff;
+  border: 1.5px solid #D4D5D9;
+  border-radius: 8px;
+  padding: 3px 12px;
+  position: absolute;
+  top: calc(100% + 20px);
+  left: 10px;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  visibility: hidden;
+}
+
+.included-minutes-tooltip span:before {
+  width: 0;
+  height: 0;
+  border: 10px solid transparent;
+  border-bottom-color: #D4D5D9;
+  content: "";
+  display: block;  
+  position: absolute;
+  left: calc(50% - 10px);
+  bottom: 100%;
+}
+
+.included-minutes-tooltip span::after {
+  width: 0;
+  height: 0;
+  border: 9px solid transparent;
+  border-bottom-color: white;
+  content: "";
+  display: block;  
+  position: absolute;
+  left: calc(50% - 9px);
+  bottom: calc(100% - 1px);
+}
+
+.included-minutes-tooltip:hover span {
+  visibility: visible;
 }
 
 @media screen and (min-width: 640px) {
