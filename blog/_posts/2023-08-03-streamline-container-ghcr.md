@@ -21,32 +21,17 @@ If you have been using GitHub lately, you might have encountered the GitHub Cont
 
 To further enhance the container workflow, GitHub introduced its registry - [GitHub Container Registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry) (GHCR). This powerful tool integrates seamlessly with your GitHub repositories, providing a secure and efficient way to store, manage, and distribute container images.
 
-Conversely, this article will explore the capabilities of the GitHub Container Registry and dive into best practices and integration strategies that can revolutionize a container workflow. By the end, you'll have the knowledge and insights to effectively leverage the GitHub Container Registry, taking your container workflow to new heights.
+This article will explore the capabilities of the GitHub Container Registry and dive into best practices and integration strategies that can revolutionize a container workflow. By the end, you'll have the knowledge and insights to effectively leverage the GitHub Container Registry, taking your container workflow to new heights.
 
 ## Prerequisites
 
-To follow along in this tutorial, you are required to have the following:
 
 - A [GitHub account](https://docs.github.com/en/get-started/signing-up-for-github/signing-up-for-a-new-github-account) and a [GitHub repository](https://docs.github.com/en/get-started/quickstart/create-a-repo) already created -  this tutorial uses a GitHub repository called *hello-world-express-app*.
 - Familarity with [Docker](https://docs.docker.com/get-started/) and Docker [Engine](https://docs.docker.com/engine/install/) or [Desktop](https://www.docker.com/) installed on your machine.
 - A Kubernetes cluster that is already up and running.
 
-## What is the GitHub Container Registry?
-
-The GitHub Container Registry is a feature provided by GitHub that allows you to store, manage, and distribute container images directly within your GitHub repository. It offers seamless integration between source code and container images, streamlining the development and deployment processes. Using the GitHub Container Registry, you can leverage the power of containerization while harnessing the collaborative and version control capabilities of GitHub.
-Other than the fact that it acts as a central repository for hosting and managing container images, it does the following:
-
-- Eliminates the need for separate container registry services, providing a unified platform for source code and container artifacts.
-- Provide simplicity and familiarity in the sense that, as a developer that is already using GitHub for version control and collaboration, adopting the GitHub Container Registry feels natural as it leverages the same familiar interface and workflows, making it easy to manage both code and container images within the same environment.
-- Integrates well with GitHub repositories and workflows, so you can publish container images directly from your CI/CD pipelines, ensuring that the entire development lifecycle, from code changes to image deployments, can be managed within GitHub.
-- Provides a secure and efficient way to store and manage your container images alongside your code repositories. This means you can push, pull, and delete container images directly from your repository, maintaining a single source of truth for your application artifacts.
-- Integrate well with your CI/CD pipelines, like [GitHub Actions](https://docs.github.com/en/actions) in this case, thereby enabling automatic publishing and deployment of container images where you can build, test, and package your application code and then seamlessly push the resulting container images to the registry for further deployment.
-- Provide robust access control features that allow you to manage permissions, ensuring that only authorized collaborators or teams can access and use your container images. It also allows you to maintain security and control over your software artifacts. And so much more.
 
 ## Configuring Access with GitHub Container Registry
-
-Now that you understand the GitHub Container Registry and have seen how it seamlessly integrates with GitHub repositories and workflows, you are ready to take the next step and configure access to this powerful tool. By configuring access, you can fully leverage the capabilities of the GitHub Container Registry and start managing your container images effectively.
-
 In this section, you will set up a personal access token, the authentication mechanism for accessing the GitHub Container Registry. This token ensures secure and controlled access to your container images, allowing you to push, pull, and manage them within your repositories.
 
 You must create a personal access token on your GitHub account to achieve this. The personal access token is a secure authentication method to access the container registry.
@@ -60,7 +45,7 @@ To create a personal access token, follow these steps:
    ![Generating a new token on GitHub]({{site.images}}{{page.slug}}/q75SJBo.png)
    </div>
 
-   > Note: If your account configures two-factor authentication, you'll be prompted to enter your GitHub password to proceed.
+ *Note: If your account configures two-factor authentication, you'll be prompted to enter your GitHub password to proceed.*
 
 4. Provide a descriptive name for the token and select the necessary scopes for registry access. For this tutorial, select the **`write:packages`** , **`delete:packages`**, and **`workflow`** scopes to enable registry-related actions.
    <div class="wide">
@@ -75,7 +60,7 @@ To create a personal access token, follow these steps:
 
 Once you have your personal access token, you can authenticate with the GitHub Container Registry from your local machine. This authentication step ensures that you have permission to interact with the container registry, such as pushing and pulling container images.
 
-> To set up the demo application for this tutorial, clone the repository `hello-world-express-app` from the GitHub account `mercybassey` using the command `git clone git@github.com:mercybassey/hello-world-express-app.git`. Open the cloned repository in your preferred code editor, update the remote origin to your repository using the following commands, and proceed with the tutorial using this application as an example.
+To set up the demo application for this tutorial, clone the repository `hello-world-express-app` from the GitHub account `mercybassey` using the command `git clone git@github.com:mercybassey/hello-world-express-app.git`. Open the cloned repository in your preferred code editor, update the remote origin to your repository using the following commands, and proceed with the tutorial using this application as an example.
 
 ~~~{.bash caption=">_"}
 git remote remove origin
@@ -152,7 +137,7 @@ You also need to wait for the image to be pushed to the GitHub container registr
 
 The image above shows that the Docker image was pushed successfully to the GitHub container registry.
 
-> When you want to deploy an already built docker image to the GitHub container registry, be sure to tag the image appropriately using the following command `docker tag <image-name> [ghcr.io/USERNAME/REPOSITORY/IMAGE_NAME:TAG](http://ghcr.io/USERNAME/REPOSITORY/IMAGE_NAME:TAG)` otherwise, you won't be able to push the image to the GitHub container registry.
+When you want to deploy an already built docker image to the GitHub container registry, be sure to tag the image appropriately using the following command `docker tag <image-name> [ghcr.io/USERNAME/REPOSITORY/IMAGE_NAME:TAG](http://ghcr.io/USERNAME/REPOSITORY/IMAGE_NAME:TAG)` otherwise, you won't be able to push the image to the GitHub container registry.
 
 ## Integrating GitHub Container Registry with GitHub Actions
 
@@ -191,7 +176,7 @@ The code snippet above sets up a workflow named `Build and Push to GHCR` trigger
 1. **Checkout code**: This step uses the `actions/checkout@v3` action to fetch the source code of your repository.
 2. **Build and Push the Image to GHCR**: This step performs the actual build and push process. It starts by doing the following:
     1. logging into the GitHub Container Registry using your specified username (`<GITHUB_USERNAME>`) and a personal access token stored in the repository secrets (accessed via `${{ secrets.PERSONAL_ACCESS_TOKEN }}`).
-    2. Builds the Docker image using the current directory (`.`**) and tags it as `ghcr.io/<GITHUB_USERNAME>/hello-world:latest`.
+    2. Builds the Docker image using the current directory (`.`) and tags it as `ghcr.io/<GITHUB_USERNAME>/hello-world:latest`.
     3. Pushes the built image to the GitHub container registry.
 
 At the moment, this workflow will be triggered automatically when you make a commit to your remote repository. However, before proceeding, you must add your personal access token as a secret on your GitHub account. By following the steps below, you can securely store the token and make it accessible to the workflow:
@@ -282,13 +267,6 @@ The commands above will create a Docker registry secret in Kubernetes. Here's wh
 - `--docker-username=<YOUR_GITHUB_USERNAME>` sets the Docker registry username as your GitHub username.
 - `--docker-password=<YOUR_GITHUB_PERSONAL_ACCESS-TOKEN>` sets the Docker registry password as your GitHub Personal Access Token. This token is used for authentication and authorization with the GHCR.
 - `--docker-email=<YOUR_GITHUB_EMAIL>` sets the email associated with the Docker registry account as your GitHub email.
-
-Once the secret is created, you should have the following output:
-
-<div class="wide">
-![Creating and viewing secret *k8s-ghcr*]({{site.images}}{{page.slug}}/dwYNV7X.png)
-</div>
-
 Now, create a file `express-app.yaml` and paste in the following configuration settings:
 
 ~~~{.yml caption="express-app.yaml"}
@@ -377,7 +355,7 @@ If you have the following output, then you have successfully pulled a private im
 
 ## Conclusion
 
-You can now agree that integrating the GitHub Container Registry into your container workflow can streamline your development and deployment processes. By leveraging the power of GitHub Actions and Kubernetes, you can automate your workflows and ensure that your containerized applications are always up-to-date and readily deployable. You have seen how to:
+Integrating the GitHub Container Registry into your container workflow can streamline your development and deployment processes. By leveraging the power of GitHub Actions and Kubernetes, you can automate your workflows and ensure that your containerized applications are always up-to-date and readily deployable. You have seen how to:
 
 - Push docker images to the GitHub container registry.
 - Use GitHub actions for automatic deployment to GHCR.
