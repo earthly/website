@@ -1,47 +1,36 @@
+- name: Ses Goe
+  image: ses-goe.jpg
+  headline:
+    - Director of Internal Tools @
+    - NOCD
+  link: https://www.deepgenomics.com/
+  quote: It was love at first sight switching over to Earthly Satellites. It was the same kind of case as switching to Earthly for us. Switching to Earthly took us from 45 minutes to 20 minutes, and using Satellites took us from like 20 minutes to 4 or 5 on average. It’s been another 2x increase, literally just from using Satellites. It’s been astounding.
+  changeType: speed
+  changeValue: 9X
+
 - name: Jesús Valencia
   image: jesus-rodriguez-valencia.jpg
   headline:
-    - Principal Engineer at
+    - Principal Software Engineer @
     - Roche
   link: https://www.roche.com/
-  quote: We enabled developers to execute complex CI pipelines on their laptops!
+  quote: By using Earthly, we enabled developers to execute complex CI pipelines on their laptops without having to commit any code!
 
-- name: Florian Leibert
-  image: Florian-Leibert.jpg
+- name: Brian Bugh
+  image: brian-bugh.jpg
   headline:
-    - Founder of
-    - Mesosphere/D2IQ
-  link: https://d2iq.com/
-  quote: The first solution to bring the power of repeatable builds at scale to market
-
-- name: Spencer Kimball
-  image: spencer-kimball.png
-  headline:
-    - Founder of
-    - Cockroach Labs
-  link: https://www.cockroachlabs.com/
-  quote: Earthly reduces the context switching overhead in engineering organizations
-
-- name: Matt Klein
-  image: Matt-Klein.jpg
-  headline:
-    - Creator of
-    - Envoy proxy
-  link: https://www.envoyproxy.io/
-  quote: ... a pragmatic and incremental solution to a thorny problem that all organizations face
+    - CTO @
+    - Table Needs
+  link: https://tableneeds.com/
+  quote: Earthly CI reduced our average build time from 20 minutes to 3 minutes and was quick and straightforward to set up and use.
+  changeType: speed-percentage
+  changeValue: 85
 
 - name: Jesse Anger
   image: jesse-anger.jpg
   headline:
-    - Head of IT at
+    - Head of IT & Security Operations @
     - Deep Genomics
   link: https://www.deepgenomics.com/
-  quote: "... an essential element of a contemporary CI system: rapid build times, intelligent caching, and repeatability"
+  quote: By providing rapid build times, intelligent caching, and repeatability, Earthly enables a better approach to the coordination of development and deployment.
 
-- name: Ses Goe
-  image: ses-goe.jpg
-  headline:
-    - Director of Internal Tools at
-    - NOCD
-  link: https://www.deepgenomics.com/
-  quote: the most magical software experience I have ever had
