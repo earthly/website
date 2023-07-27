@@ -114,3 +114,5 @@ Ynet
 Punkt
 punkt
 Lequipe
+
+Akamai

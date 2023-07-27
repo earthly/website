@@ -611,4 +611,6 @@ func main() {
 
 There we have it. Rest to gRPC in three ways, with all the complicated bits documented in a runnable [Earthfile](https://github.com/adamgordonbell/cloudservices/blob/v5-grpc-gateway/Earthfile). All the code is on [GitHub](https://github.com/adamgordonbell/cloudservices/tree/v5-grpc-gateway). And with the certs in place, this gRPC + REST service is not even that big of a lift from a standard gRPC end-point. In fact, this approach is in use in [`etcd`](https://github.com/etcd-io/etcd/blob/main/server/embed/serve.go) and [Istio](https://github.com/istio/istio/blob/f46f821fb13b7fc24b5d29193e2ad7c5c0a46877/pilot/pkg/bootstrap/server.go#L469).
 
+And if you enjoyed the build process for your gRPC gateway, consider diving deeper with [Earthly](https://www.earthly.dev/) to further simplify your build process.
+
 {% include_html cta/bottom-cta.html %}

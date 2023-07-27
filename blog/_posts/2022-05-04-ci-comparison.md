@@ -142,4 +142,6 @@ Overall, if speed is your primary concern and you're on a budget, then Circle CI
 
 Remember, we only looked at the free tiers offered by these services. As your project grows, performance may vary. Also, each service scales differently so even though you may like the convenience of Github Actions, you may find that Travis CI becomes more cost-effective as you run larger and more complicated pipelines.
 
+And if you're looking to simplify your build automation further, you might want to give [Earthly](https://www.earthly.dev/) a spin. It's designed to play nice with your CI/CD platform of choice, so you can switch around as various free plans change.
+
 {% include_html cta/bottom-cta.html %}

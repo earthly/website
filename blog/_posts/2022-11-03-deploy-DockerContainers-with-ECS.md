@@ -427,6 +427,8 @@ With that, we have just successfully deployed our docker container.
 
 ## Conclusion
 
-In this article, we covered one solution to container [deployment](/blog/deployment-strategies). We got to understand the different container services that exist, and the benefits of using AWS ECS, and finally, we looked at how to deploy a simple docker container.
+In a nutshell, we dived into container deployment, explored various services, and checked out the perks of using AWS ECS. We even deployed a simple Docker container.
+
+Now, if you're looking to level up your build process efficiency, you might want to try [Earthly](https://www.earthly.dev/), especially if you're already working with Docker containers.
 
 {% include_html cta/bottom-cta.html %}

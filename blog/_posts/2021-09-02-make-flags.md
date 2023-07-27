@@ -13,11 +13,9 @@ last_modified_at: 2023-04-17
 excerpt: |
     Learn how to use `make` flags in your `Makefile` to customize the behavior of the compilation tools. Discover the benefits of using flags over hard-coded options and explore commonly used flags like `CFLAGS`, `CXXFLAGS`, and more.
 ---
-**We're [Earthly](https://earthly.dev/). We simplify software builds using containerization. If you're into Makefiles, Earthly might be your modern alternative to `make`, accelerating your build process. [Give us a try](/).**
-
 <iframe width="560" height="315" src="https://www.youtube.com/embed/z4uPHjxYyPs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. This article is about `make` and `Makefile`s but if you're interested in a different approach to building software then [check us out](/).**
+**We're [Earthly](https://earthly.dev/). We simplify software builds using containerization. If you're into Makefiles, Earthly might be your modern alternative to `make`, accelerating your build process. [Give us a try](/).**
 
 `make` is a commonplace utility in the development world. It automates the process of generating executables, documentations, and other non-source files from the source code by dividing the build process into separate interrelated steps. Using `make` eliminates the need for typing out long and complex commands to compile the source code. `make` also compiles only the modified files, thereby saving time and processing resources.
 

@@ -4,7 +4,7 @@ categories:
   - Articles
 toc: true
 author: Josh
-
+bottomcta: false
 internal-links:
  - Nix
  - Docker

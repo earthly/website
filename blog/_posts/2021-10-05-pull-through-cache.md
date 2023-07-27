@@ -246,4 +246,4 @@ If your mirror becomes unavailable, `docker` should start using the upstream dir
 
 ## Conclusion
 
-Configuring and maintaining our own pull-through cache has saved us tons of headache, and money. Our CI is no longer subject to rate limits. This means our builds are more consistent, reliable, and faster.
+Setting up our own pull-through cache has been a game-changer - it's not only saved us a bundle but also made our CI immune to rate limits. Our builds are now quicker, reliable, and super consistent. If you loved this caching hack, you might want to take it a step further and speed up your builds with [Earthly](https://www.earthly.dev/). It's a tool designed to optimize build performance and consistency. Give it a whirl!

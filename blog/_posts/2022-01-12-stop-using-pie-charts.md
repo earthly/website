@@ -5,7 +5,7 @@ categories:
 internal-links:
  - matplotlib
  - pandas
-
+bottomcta: false
 author: Alex
 excerpt: |
     Learn why you should stop using pie charts and discover alternative plots that are easier to interpret. This article provides examples and code for creating horizontal bar charts, lollipop charts, and box plots using Python and Matplotlib.

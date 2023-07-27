@@ -254,8 +254,8 @@ With Netlify, you can deploy your functions with a single command, while with AW
 
 ## Conclusion  
 
-Netlify Functions are a great way to add powerful serverless functionality to your web projects. They [make](/blog/makefiles-on-windows) it easy to spin up small APIs or add dynamic elements to your site without having to set up and manage a server. With a few simple steps, you can create a Netlify Function and quickly add powerful serverless functionality to your web project.
+Netlify Functions offer a convenient way to include serverless functionality in your web projects, simplifying the process of creating small APIs or dynamic site elements. Now that you're familiar with these Functions, delve deeper into Netlify's documentation and tutorials to enhance your usage.
 
-Now that you have a better understanding of what Netlify Functions are and how they work, you can explore more and integrate them into your own web projects. You can start by reading more about Netlify's documentation and tutorials to learn more about how to use and deploy your own functions. Additionally, you can also look into expanding your knowledge of [AWS Lambda](https://earthly.dev/blog/aws-lambda-node/) and exploring some of the other serverless technologies available.
+If you're looking to streamline your build processes for serverless apps, you might want to give [Earthly](https://www.earthly.dev/) a shot. It's an excellent tool that can help optimize your workflow.
 
 {% include_html cta/bottom-cta.html %}
