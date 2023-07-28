@@ -231,15 +231,16 @@ Now, execute the `go run` command and head to your Postgres database to confirm 
 New User Jane Doe was created successfully!
 ~~~
 
-```
+~~~
 
-```text
- id | 	created_at            	|   	updated_at          	| deleted_at | first_name | last_name | email          	|country | role | age
+~~~
+
+ id |created_at|updated_at| deleted_at | first_name | last_name | email|country | role | age
 ----+-------------------------------+-------------------------------+------------+------------+-----------+-------------------+---------+------+-----
-  1 | 2023-07-21 08:11:49.017357+01 | 2023-07-21 08:11:49.017357+01 |        	| Jane   	| Doe   	| janedoe@gmail.com | Spain   | Chef |  30
+  1 | 2023-07-21 08:11:49.017357+01 | 2023-07-21 08:11:49.017357+01 | | Jane | Doe | janedoe@gmail.com | Spain | Chef | 30
 (1 row)
 
-```
+~~~
 
 At this point, you have successfully created a record with the GORM library.
 
@@ -416,12 +417,12 @@ When you execute the code above, you should have the following output:
 User updated successfully
 ~~~
 
-```text
+~~~
 id |          created_at           |          updated_at           | deleted_at | first_name | last_name |        email         | country | role | age 
 ----+-------------------------------+-------------------------------+------------+------------+-----------+----------------------+---------+------+-----
   1 | 2023-07-21 08:11:49.017357+01 | 2023-07-21 08:18:11.986069+01 |            | Agnes      | Doe       | agnesdoe@example.com | Spain   | Chef |  30
 (1 row)
-```
+~~~
   
 Alternatively, you can update records using a struct `User` to define the changes. Here's an example:
 
@@ -494,12 +495,12 @@ Once you run this code, the following output is expected, meaning that one row h
 
 On your PostgreSQL database, you should have the following output:
 
-```text
+~~~
  id |          created_at           |          updated_at           |          deleted_at           | first_name | last_name |        email        | country | role | age 
 ----+-------------------------------+-------------------------------+-------------------------------+------------+-----------+---------------------+---------+------+-----
   1 | 2023-07-21 08:11:49.017357+01 | 2023-07-21 08:22:54.662504+01 | 2023-07-21 08:23:52.095621+01 | John       | Doe       | johndoe@example.com | Spain   | Chef |  30
 (1 row)
-```
+~~~
 
 ## Exploring Advanced Features with the GORM Library
 
@@ -549,13 +550,13 @@ Once you run this code, the following output is expected:
 User created and updated successfully
 ~~~
 
-```text
+~~~
  id |          created_at           |          updated_at           |          deleted_at           | first_name | last_name |        email        | country |        role        | age 
 ----+-------------------------------+-------------------------------+-------------------------------+------------+-----------+---------------------+---------+--------------------+-----
   1 | 2023-07-21 08:11:49.017357+01 | 2023-07-21 08:22:54.662504+01 | 2023-07-21 08:23:52.095621+01 | John       | Doe       | johndoe@example.com | Spain   | Chef               |  30
   2 | 2023-07-21 08:30:21.006221+01 | 2023-07-21 08:30:21.007037+01 |                               | Billy      | John      | billy56@gmail.com   | Morocco | Developer Advocate |  40
 (2 rows)
-```
+~~~
 
 The GORM library preloading feature enhances data fetching by automatically joining tables and fetching related data in a single query, improving efficiency. However, since this tutorial focuses on a single table scenario, exploring the preloading feature is beyond its scope. For a comprehensive understanding of this powerful feature, refer to the [official GORM library documentation](https://gorm.io/docs/preload.html).
 
