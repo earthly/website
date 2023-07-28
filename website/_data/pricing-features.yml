@@ -1,12 +1,12 @@
-- title: We don't profit from slow builds
+- title: No profit from slow builds
   description: We charge zero-margin on compute. Compute costs are passed directly to the customer. That means we invest heavily in making your builds faster, because that makes users happy.
   image: assets/svg/percentage.svg
-- title: Our build minutes are more effective
+- title: More effective build minutes
   description: Earthly Cloud's automatic caching and parallelism makes builds 2-20X faster than on traditional CI/CD platforms. You don’t need as many build minutes for the same work.
   image: assets/svg/clock-fast.svg
 - title: Build minutes for everyone
   description: Unlike other vendors, our included minutes scale with team size. They are designed to handle most workloads so customers don’t even have to think about additional build minutes.
   image: assets/svg/community.svg
-- title: We charge less than 10% of the value delivered
+- title: Productivity is our value-add
   description: Earthly Cloud's value-add is developer productivity. In a team of 30, a 2.8X speed boost to CI/CD means 2 FTEs worth of time saved.
   image: assets/svg/fastapi.svg
