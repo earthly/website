@@ -175,7 +175,7 @@ This will automatically migrate the `User` struct and ensure the necessary datab
 
 ### Creating Records with the GORM Library
 
-Creating records is a fundamental operation when working with databases, as it allows you to store new data in a database table. It involves defining a new instance of the corresponding struct, `User` in this case, and saving it to the database using the GORM library `[Create()](https://gorm.io/docs/create.html)` function. The GORM library simplifies the process by automatically generating the necessary SQL statements for insertion.
+Creating records is a fundamental operation when working with databases, as it allows you to store new data in a database table. It involves defining a new instance of the corresponding struct, `User` in this case, and saving it to the database using the GORM library `Create()` function. The GORM library simplifies the process by automatically generating the necessary SQL statements for insertion.
 
 Import the `fmt` package and add the following code snippet to your main function:
 
@@ -216,6 +216,8 @@ The code snippet above does the following:
 
 <div class="notice--info">
 
+### A Quick Note On Field Names
+
 When working with the GORM library, whether you define field names in your struct with uppercase or lowercase letters, the field names will be automatically converted to lowercase letters in the database. If a field name contains more than one word, an underscore (_) will separate it in the database.
 </div>
 
@@ -229,9 +231,15 @@ Now, execute the `go run` command and head to your Postgres database to confirm 
 New User Jane Doe was created successfully!
 ~~~
 
-<div class="wide">
-![Verifying the user record in a postgres database]({{site.images}}{{page.slug}}/7uHtxtu.png)
-</div>
+```
+
+```text
+ id | 	created_at            	|   	updated_at          	| deleted_at | first_name | last_name | email          	|country | role | age
+----+-------------------------------+-------------------------------+------------+------------+-----------+-------------------+---------+------+-----
+  1 | 2023-07-21 08:11:49.017357+01 | 2023-07-21 08:11:49.017357+01 |        	| Jane   	| Doe   	| janedoe@gmail.com | Spain   | Chef |  30
+(1 row)
+
+```
 
 At this point, you have successfully created a record with the GORM library.
 
@@ -358,8 +366,6 @@ The code above will retrieve a collection of users from the database using the `
 
 When working with the GORM library, you can update records by modifying the fields of a struct and then saving the changes to the database.
 
-To update records with the GORM library, you typically retrieve the record, modify the record, save the changes, and handle errors. Here's an example:
-
 ~~~{.go caption="main.go"}
     // Retrieve the record you want to update
     var user User
@@ -410,9 +416,12 @@ When you execute the code above, you should have the following output:
 User updated successfully
 ~~~
 
-<div class="wide">
-![Viewing a record (*Agnes Doe*)]({{site.images}}{{page.slug}}/U7Jix1x.png)
-</div>
+```text
+id |          created_at           |          updated_at           | deleted_at | first_name | last_name |        email         | country | role | age 
+----+-------------------------------+-------------------------------+------------+------------+-----------+----------------------+---------+------+-----
+  1 | 2023-07-21 08:11:49.017357+01 | 2023-07-21 08:18:11.986069+01 |            | Agnes      | Doe       | agnesdoe@example.com | Spain   | Chef |  30
+(1 row)
+```
   
 Alternatively, you can update records using a struct `User` to define the changes. Here's an example:
 
@@ -485,9 +494,12 @@ Once you run this code, the following output is expected, meaning that one row h
 
 On your PostgreSQL database, you should have the following output:
 
-<div class="wide">
-![Viewing record marked as deleted]({{site.images}}{{page.slug}}/RTIqD2d.png)
-</div>
+```text
+ id |          created_at           |          updated_at           |          deleted_at           | first_name | last_name |        email        | country | role | age 
+----+-------------------------------+-------------------------------+-------------------------------+------------+-----------+---------------------+---------+------+-----
+  1 | 2023-07-21 08:11:49.017357+01 | 2023-07-21 08:22:54.662504+01 | 2023-07-21 08:23:52.095621+01 | John       | Doe       | johndoe@example.com | Spain   | Chef |  30
+(1 row)
+```
 
 ## Exploring Advanced Features with the GORM Library
 
@@ -537,9 +549,13 @@ Once you run this code, the following output is expected:
 User created and updated successfully
 ~~~
 
-<div class="wide">
-![Viewing record (*Billy John)*]({{site.images}}{{page.slug}}/yhu18kH.png)
-</div>
+```text
+ id |          created_at           |          updated_at           |          deleted_at           | first_name | last_name |        email        | country |        role        | age 
+----+-------------------------------+-------------------------------+-------------------------------+------------+-----------+---------------------+---------+--------------------+-----
+  1 | 2023-07-21 08:11:49.017357+01 | 2023-07-21 08:22:54.662504+01 | 2023-07-21 08:23:52.095621+01 | John       | Doe       | johndoe@example.com | Spain   | Chef               |  30
+  2 | 2023-07-21 08:30:21.006221+01 | 2023-07-21 08:30:21.007037+01 |                               | Billy      | John      | billy56@gmail.com   | Morocco | Developer Advocate |  40
+(2 rows)
+```
 
 The GORM library preloading feature enhances data fetching by automatically joining tables and fetching related data in a single query, improving efficiency. However, since this tutorial focuses on a single table scenario, exploring the preloading feature is beyond its scope. For a comprehensive understanding of this powerful feature, refer to the [official GORM library documentation](https://gorm.io/docs/preload.html).
 
