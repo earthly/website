@@ -233,9 +233,9 @@ New User Jane Doe was created successfully!
 
 ~~~
 
- id |created_at|updated_at| deleted_at | first_name | last_name | email|country | role | age
+ id |           created_at              |           updated_at          | deleted_at    | first_name    | last_name | email              |country| role | age
 ----+-------------------------------+-------------------------------+------------+------------+-----------+-------------------+---------+------+-----
-  1 | 2023-07-21 08:11:49.017357+01 | 2023-07-21 08:11:49.017357+01 | | Jane | Doe | janedoe@gmail.com | Spain | Chef | 30
+  1 |   2023-07-21 08:11:49.017357+01   | 2023-07-21 08:11:49.017357+01 |               | Jane          | Doe       | janedoe@gmail.com  | Spain | Chef | 30
 (1 row)
 ~~~
 
@@ -415,9 +415,9 @@ User updated successfully
 ~~~
 
 ~~~
-id |          created_at           |          updated_at           | deleted_at | first_name | last_name |        email         | country | role | age 
+id  |          created_at           |          updated_at           | deleted_at | first_name | last_name |        email         | country | role | age 
 ----+-------------------------------+-------------------------------+------------+------------+-----------+----------------------+---------+------+-----
-  1 | 2023-07-21 08:11:49.017357+01 | 2023-07-21 08:18:11.986069+01 |            | Agnes      | Doe       | agnesdoe@example.com | Spain   | Chef |  30
+1   | 2023-07-21 08:11:49.017357+01 | 2023-07-21 08:18:11.986069+01 |            | Agnes      | Doe       | agnesdoe@example.com | Spain   | Chef |  30
 (1 row)
 ~~~
   
