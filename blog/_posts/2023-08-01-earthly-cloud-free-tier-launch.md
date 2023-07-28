@@ -72,3 +72,5 @@ Earthly Cloud includes the functionality of both [Earthly Satellites](https://ea
 ## Get Started With Earthly Cloud for Free
 
 You can use Earthly Cloud today. Its no time limit free tier gives you 6,000 build minutes per month to use across Satellites and CI. [Get started free](https://cloud.earthly.dev/login).
+
+{% include_html cta/bottom-cta.html %}
