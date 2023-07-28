@@ -467,6 +467,11 @@ substep
 substeps
 subproblems
 
+typings
+cloneable
+
+Familarity
+
 fu
 
 
@@ -479,4 +484,3 @@ netstat
 traceroute
 Traceroute
 netfilter
-

@@ -250,3 +250,14 @@ main.wave-main.homepage {
 .announcement-banner a {
   text-decoration: underline;
 }
+
+.progress-bar {
+  --progress: calc(360deg - var(--progress-value) * 3.6deg);
+  width: calc(100% - 20px);
+  height: calc(100% - 20px);
+  align-items: center;
+  background: radial-gradient(closest-side, white 83%, transparent 84% 100%), conic-gradient(#D1D6D9 0deg, #D1D6D9 var(--progress), #2D7E5D var(--progress), #2D7E5D 1turn);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+}
