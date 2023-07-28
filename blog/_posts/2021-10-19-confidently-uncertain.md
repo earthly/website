@@ -7,6 +7,7 @@ sidebar:
   nav: "thoughts"
 internal-links:
  - just an example
+bottomcta: false
 excerpt: |
     Learn how to balance social confidence and epistemic confidence in order to succeed in your career. Find out why being confidently uncertain can be a valuable mindset, and discover tips on how to navigate uncertainty with confidence.
 ---

@@ -481,15 +481,10 @@ When you are ready to resume the CronJob, you can simply set `suspend` to `false
 
 ## Conclusion
 
-In this tutorial, you have learned how to work with Jobs and CronJobs in Kubernetes. You have seen how to monitor and understand the specifications of Jobs and CronJobs.
+In this tutorial, you've learnt how to manage and monitor Jobs and CronJobs in Kubernetes. For reliable and efficient execution, always keep a check on their performance, control concurrent executions using a cluster-wide policy, configure restart policies for resilience, and assign appropriate resource requests and limits.
 
-Also, consider the following to ensure that your Jobs and CronJobs are reliable, efficient, and easy to manage in production environments:
+Equipped with these skills and tools, you can now schedule tasks in your Kubernetes cluster more efficiently.
 
-1. Monitor your Jobs and CronJobs regularly to ensure they are running as expected and not causing any performance issues.
-2. Use a cluster-wide policy to control the number of concurrent Job or CronJob executions to avoid overloading the cluster.
-3. Configure restart policies to ensure that Jobs and CronJobs are resilient to failures and can recover automatically.
-4. Use appropriate resource requests and limits to ensure that Jobs and CronJobs have enough resources to run and do not starve other applications running in the same cluster.
-
-With this skill, you can now go ahead to schedule tasks in your Kubernetes cluster.
+As you continue to work with Kubernetes, you might find yourself looking for ways to improve your container build process. If that's the case, you might want to check out [Earthly](https://www.earthly.dev/). It's a tool that can significantly enhance your build process, making it more efficient and reliable.
 
 {% include_html cta/bottom-cta.html %}

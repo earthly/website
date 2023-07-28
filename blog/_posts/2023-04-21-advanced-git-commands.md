@@ -385,9 +385,8 @@ The command forcefully removes the untracked directories in our example.
 
 ## Conclusion
 
-Git is a very powerful collaboration tool. If all you ever learn is push, pull, and merge, you can still go far. But mastering Git is worth the effort. It can increase your productivity and improve the quality of your collaborations with other developers.
+Git is a powerful tool that boosts productivity and collaboration quality. Even with basic commands like push, pull, and merge, it's highly effective. To take it a step further, explore more features such as [Git aliases](https://git-scm.com/book/en/v2/Git-Basics-Git-Aliases) and [git bisect](https://git-scm.com/docs/git-bisect).
 
-The commands covered in this tutorial are just the start. There are many more. You might want to check out [Git aliases
-](https://git-scm.com/book/en/v2/Git-Basics-Git-Aliases) and [git bisect](https://git-scm.com/docs/git-bisect), and other interesting commands.
+And if you're looking to supercharge your dev workflow even further, don't miss [Earthly](https://www.earthly.dev/) for efficient build automation.
 
 {% include_html cta/bottom-cta.html %}

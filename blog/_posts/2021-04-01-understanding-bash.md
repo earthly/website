@@ -326,8 +326,7 @@ For example, if you set `TEST="hello"` in your shell and run `echo $TEST` inside
 
 <div class="no_toc_section">
 ## Conclusion
-</div>
 
-At this point, you should be ready to venture into the exciting world of bash scripting. You've learned about common shebangs, what `set` does, and how it can improve the error handling of your scripts, as well as understanding some general pitfalls developers run into with bash.
+You're now equipped to dive into bash scripting. With knowledge of common shebangs, functions of `set`, improved error handling, and common developer pitfalls, you're armed and ready. Use your newfound skills to automate daily commands, parse the remote git URL, or batch rename files. With bash scripting, the possibilities are endless.
 
-So go ahead and automate those annoying commands you've been typing out every day. Tired of manually going into your browser and finding the git repository you're working on? Make a script to parse the remote git URL and open it automatically. Maybe you have to rename a bunch of files. Make a script that can loop through them and rename them. The world is your oyster.
+And once you've mastered bash scripting and are ready to level up your automation game, check out [Earthly](https://www.earthly.dev/). It's a tool designed for easier, more efficient builds, and it could be the next step in your development journey.

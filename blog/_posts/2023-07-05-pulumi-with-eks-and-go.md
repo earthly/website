@@ -1,5 +1,5 @@
 ---
-title: "Infrastructure as Code with Pulumi and AWS EKS for GO Developers"
+title: "Infrastructure as Code with Pulumi and AWS EKS for Go Developers"
 categories:
   - Tutorials
 toc: true
@@ -733,23 +733,8 @@ pulumi stack rm <name-of-stack>
 
 ## Conclusion
 
-As you've seen, Pulumi gives us much flexibility when performing Infrastructure as code. Throughout this tutorial, we've demonstrated this potential by leveraging Pulumi to manage resources on AWS by:
+Pulumi is a super flexible tool for creating Infrastructure as Code. In this tutorial, we used it to handle AWS resources, including creating S3 buckets and provisioning an EKS cluster with Go. But that's just the start! Pulumi supports multiple cloud providers and programming languages, meaning you have a huge variety of possibilities for managing your cloud infrastructure.
 
-- Creating an S3 bucket.
-- Creating multiple S3 buckets.
-- Provisioning an EKS cluster
-- Creating a namespace and a deployment in the EKS cluster using Go as our programming language.
-
-But our exploration has merely scratched the surface of what Pulumi can achieve.
-
-Pulumi isn't confined to just one cloud provider or a single programming language. It supports a variety of cloud platforms and programming languages, enabling a diverse set of use cases. This capacity opens up a world of possibilities for you to orchestrate and manage your cloud infrastructure with the same level of familiarity and efficiency as writing application code.
-
-Consider the possibilities of using Pulumi with the Google Cloud Platform (GCP). You could manage GCP resources as seamlessly as we've done with AWS in this tutorial. Pulumi provides robust support for GCP, adding another dimension to your cloud management toolbox.
-
-To expand your Pulumi knowledge and explore its adaptability to different cloud environments, take a look at this guide on using Pulumi with [Google Cloud](https://www.pulumi.com/docs/clouds/gcp/get-started/).
-
-To learn more about how Pulumi compares to Terraform, check out article [Pulumi Vs Terraform](blog/pulumi-vs-terraform).
-
-Remember, the possibilities with Pulumi are vast, so let your creativity run wild as you architect your cloud infrastructure.
+We used Go to write our Pulumi infrastructure and speaking of Go, if you're building with it and want a more streamlined build workflow, you might want to give [Earthly](https://www.earthly.dev/) a try. It could be a valuable addition to your development toolkit.
 
 {% include_html cta/bottom-cta.html %}

@@ -279,10 +279,10 @@ During cross-compiling, common issues you may encounter include compiler incompa
 
 ## Conclusion
 
-This tutorial covered the essentials of cross-compiling a C++ program for ARM64-based devices using CMake and GCC. This included learning how to set up the environment, build a simple C++ program, and cross-compile it with CMake and GCC.
+This tutorial showed you the basics of cross-compiling a C++ program for ARM64 devices using CMake and GCC. Remember to install the right toolchain, check your CMake setup, make your code compatible with the target platform, and look out for required libraries to avoid build mishaps.
 
-For successful cross-compilation using CMake and GCC, you need to make sure you have the appropriate toolchain installed, verify your CMake configuration, and make sure your code is compatible with the target platform. Additionally, double-check the required library dependencies to reduce build failures.
+Want to delve deeper into cross-compiling? Check out the official [CMake](https://cmake.org/documentation/) and [GCC](https://gcc.gnu.org/onlinedocs/) docs, or explore [platform-specific resources](https://github.com/topics/cross-compilation?o=desc&s=stars) and [forums](https://stackoverflow.com/questions/tagged/cross-compiling?sort=MostVotes&edited=true). Happy cross-compiling!
+
+And if you are looking for ways to further simplify your cross compile build process, you might want to check out [Earthly](https://www.earthly.dev/). It's a tool that can make cross complication simpler.
 
 {% include_html cta/makefile-cta.html %}
-
-<!-- For further reading, consult the official [CMake](https://cmake.org/documentation/) and [GCC](https://gcc.gnu.org/onlinedocs/) documentations, as well as [platform-specific resources](https://github.com/topics/cross-compilation?o=desc&s=stars) and [forums](https://stackoverflow.com/questions/tagged/cross-compiling?sort=MostVotes&edited=true). These resources provide more information and insights on your target platform's optimization, troubleshooting, and integration techniques. -->

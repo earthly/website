@@ -517,6 +517,8 @@ sample-service-2      1m
 
 ## Conclusion
 
-In this article, you learned how to use kubernetes `custom resources` and controllers to simplify your kubernetes configuration management. You made use of kubernetes `custom resources` to define microservice-specific configurations. Then you created a custom controller that used these configurations to generate your microservice configuration from the main configuration template. Lastly,you learned how to give your controller the right permission to your cluster using `ServiceAccount` and `ClusterRoleBinding`.
+This tutorial walked you through using Kubernetes `custom resources` and controllers for easy configuration management. We covered how to define configurations using `custom resources`, built a custom controller, and set up correct permissions with `ServiceAccount` and `ClusterRoleBinding`. All in all, a neat way to manage your microservice configurations.
+
+Now that you've got Kubernetes configuration down, you might be thinking about how to streamline your build process. If so, why not give [Earthly](https://www.earthly.dev/) a shot? It could be the next step in making your development process even smoother. Cheers to simpler Kubernetes management and efficient build processes!
 
 {% include_html cta/bottom-cta.html %}

@@ -16,11 +16,9 @@ last_modified_at: 2023-04-17
 excerpt: |
     Learn how to automate repetitive tasks in Golang development using Makefiles. This tutorial covers creating a Makefile to build, run, clean, test, and manage dependencies in your Go projects, making your development process faster and more efficient.
 ---
-**We're [Earthly](https://earthly.dev/). We simplify and speed up software building using containerization, which can be a game-changer for your Golang tasks. Ditch those Makefiles and give us a try. [Check it out](/).**
+**We're [Earthly](https://earthly.dev/). We simplify and speed up software building using containerization, which can be a game-changer for your Golang tasks. If you want to see what can be done by combining ideas from a `Makefile` and a `Dockerfile` then [check us out](/).**
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/QPfNopc6B_g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article covers using `make` as a go developer. If you want to see what can be done by combining ideas from a `Makefile` and a `Dockerfile` then [check us out](/).**
 
 Building and testing any large codebase is time-consuming, error-prone, and repetitive. Golang supports multi-platform builds, which is excellent, but it needs multiple commands to build the binaries for different platforms, which means more time-consuming and repetitive steps when building binaries. If that's not enough, most projects have some dependencies that need to be installed before building the binary, and you probably want to run tests and ensure the code quality with linters and code coverage tools.
 
