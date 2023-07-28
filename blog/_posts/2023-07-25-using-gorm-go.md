@@ -233,13 +233,10 @@ New User Jane Doe was created successfully!
 
 ~~~
 
-~~~
-
  id |created_at|updated_at| deleted_at | first_name | last_name | email|country | role | age
 ----+-------------------------------+-------------------------------+------------+------------+-----------+-------------------+---------+------+-----
   1 | 2023-07-21 08:11:49.017357+01 | 2023-07-21 08:11:49.017357+01 | | Jane | Doe | janedoe@gmail.com | Spain | Chef | 30
 (1 row)
-
 ~~~
 
 At this point, you have successfully created a record with the GORM library.
