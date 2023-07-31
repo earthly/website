@@ -6,11 +6,14 @@ toc: true
 author: Adam
 topcta: false
 bottomcta: false
+last_modified_at: 2023-07-28
 internal-links:
  - YAML
 excerpt: |
     Learn why using YAML for control flow configuration can lead to complex and hard-to-understand code, and why it's better to use existing programming languages or write a parser instead. Discover the pitfalls of using YAML as a programming language and explore alternative tools like Makefile or Earthfile.
 ---
+**We're [Earthly](https://earthly.dev/). Build scripts without YAML are possible. After reading this article about YAML hell maybe [check us out](/).**
+
 When I first worked with YAML config, it was a breath of fresh air. No more XML! No angle brackets. It was so plain and clear.
 
 But now, too often, when I see YAML, it's a complex mess of nested lists hundreds of lines long. So where did things go wrong?
@@ -189,9 +192,9 @@ jobs:
 
 ~~~
 
-Answer: It's indeterminate because the default stage is the last used stage, and so all three tasks run in parallel. It's an implicit parallelism approach but embedded in YAML.
+Answer: It's indeterminate! Because the default `stage` is the last used `stage` which was `parallel tasks`, and so `First`, `Second` and `Third` run in parallel.
 
-That's kind of neat!
+It's an implicit parallelism approach but embedded in YAML. That's kind of neat!
 
 But when you specify parallelism in YAML, it *doesn't* save you from understanding the semantics and the runtime execution that they influence and control. The valid syntax is a subset of YAML, but the semantics can be *anything*.
 
@@ -243,7 +246,9 @@ jobs:
               echo "Third thing"
 ~~~
 
-So, YAML is fine and all for config, but it's less fine when it's used as the way to write the AST for an unspecified programming language. Instead, maybe you just should use the bash script or – in the context of a larger runtime – take instructions in Lua or Python or whatever makes sense for your program.
+So, YAML is fine and all for config, but it's less fine when it's used as the way to write the AST for an unspecified programming language.
+
+Instead, maybe you just should use the bash script or – in the context of a larger runtime – take instructions in Lua or Python or whatever
 
 Or if you want the constraints that configuration offers, then it's also super easy to write your own parser for the little language you've built.
 
@@ -277,7 +282,7 @@ I wrote a Python implementation for this little job runner using a [PEG parser](
 
 YAML (or JSON or TOML) works fine when declaring something. `Name=Adam`, `ID=7`, or even `UseParallelGC=True`, but the more you need to know about what is done with those values, the less declarative your config is and the further you are drifting from configuration data to configuration code.
 
-**In my opinion, once you have to branch or have conditionals in your config, you are coding and should put the config file down and grab a better tool.**
+**Once you have to branch or have conditionals in your config, you are coding and should put the config file down and grab a better tool.**
 
 ### How Did We Get Here?
 
@@ -291,5 +296,7 @@ So here is my conclusion.
 **Tool authors**: If you are trying to 'configure' the evaluation or control flow of something, use an existing programming language or write a parser. A packrat or PEG parser is not that much code. Try to avoid building ill-defined little languages whose AST is hand-written in YAML.
 
 **And tool users**: Don't assume that because something only requires configuration, you won't need to learn a partially-defined embedded-in-config programming language. You might be better off choosing a tool like a Makefile, an Earthfile, or even Gradle than one of the 100s of things that are 'configured' in YAML (Ansible, GHA, Azure Pipelines, and so on).
+
+And if you're tired of YAML's complexities, you might like [Earthly](https://www.earthly.dev/), its like my python build script above but 1000x times better. And Earthly Cloud now was a free plan with 6000 free minutes per month. So you can ditch the Yaml and get faster builds at the same time.
 
 {% include_html cta/bottom-cta.html %}
