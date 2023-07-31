@@ -53,9 +53,11 @@ layout: default
         document.getElementById("tier-4-pricing").innerText = 59
       }
 
-      if (sliderInput.value <= 5) {
-        planPrice.innerText = Number(((checkbox.checked ? 9.17 : 11)* sliderInput.value).toFixed(2)).toLocaleString()
+      if (sliderInput.value == 1) {
+        planPrice.innerText = (0).toLocaleString()
       } else if (sliderInput.value <= 5) {
+        planPrice.innerText = Number(((checkbox.checked ? 9.17 : 11)* sliderInput.value).toFixed(2)).toLocaleString()
+      } else if (sliderInput.value <= 15) {
         planPrice.innerText = Number(((checkbox.checked ? 29.17 : 35)* sliderInput.value).toFixed(2)).toLocaleString()
       } else {
         planPrice.innerText = Number(((checkbox.checked ? 49.17 : 59)* sliderInput.value).toFixed(2)).toLocaleString()
