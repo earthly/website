@@ -1,5 +1,5 @@
 ---
-title: "Introducing Earthly Cloud: A History of CI, and Our Take on the Future"
+title: "Introducing Earthly Cloud"
 categories:
   - News
 toc: true
@@ -33,7 +33,7 @@ Proper management of Jenkins was left as an exercise to the user. So a major par
 
 But you could get Jenkins to do anything. That is its strength and also its weakness. A ton of freedom, little structure, and every build shares the same environment. What could go wrong? [^1]
 
-[^1]: Turns out [a lot can](https://blog.gitguardian.com/codecov-supply-chain-breach/). The Codecov vulnerability reminded everyone why a shared environment is less than ideal.
+[^1]: Turns out [a lot can](https://blog.gitguardian.com/codecov-supply-chain-breach/).
 
 CircleCI and Travis CI later came up with the idea of managing CI/CD for you in the cloud. You no longer had to deal with the quirks and lack of maintainability and scalability that plagued Jenkins. And yet many stuck to Jenkins, just because it could do anything. Plus, Jenkins runs in your VPC. So giving access to prod was safe and easy.
 
