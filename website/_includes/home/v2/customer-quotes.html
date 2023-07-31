@@ -5,24 +5,27 @@
         <div id="slide" class="w-full basis-full flex flex-col lg:flex-row flex-1 shrink-0">
           {% if item.changeType %}
             <div class="min-h-[194px] lg:w-[346px] bg-[#f1fbff] flex flex-col items-center justify-center">
-              <div class="w-[120px] h-[120px] bg-white flex items-center justify-center rounded-full shadow-xl">
-                {% if item.changeType == "speed-percentage" %}
+              {% if item.changeType == "speed-percentage" %}
+                <div class="w-[120px] h-[120px] bg-white flex items-center justify-center rounded-full shadow-xl">
                   <div class="progress-bar" style="--progress-value: {{ item.changeValue }}">
                     <p class="flex font-medium items-center text-4xl tracking-tighter">
                       {{ item.changeValue }}
                       <span class="text-lg">&nbsp;%</span>
                     </p>
                   </div>
-                {% elsif item.changeType == "speed" %}
+                </div>
+                <p class="font-medium mt-2 text-sm">Decrease in build time after Earthly</p>
+              {% elsif item.changeType == "speed" %}
+                <div class="w-[120px] h-[120px] bg-white flex items-center justify-center rounded-full shadow-xl">
                   <div class="border-2 border-[#2d7e5d] progress-bar">
                     <p class="flex font-medium items-center rounded-full text-4xl tracking-tighter">
                       {{ item.changeValue }}
                     </p>
                   </div>
-                {% endif %}
-              </div>
+                </div>
+                <p class="font-medium mt-2 text-sm">Increase in build speed after Earthly</p>
+              {% endif %}
 
-              <p class="font-medium mt-2 text-sm">Increase in build speed after Earthly</p>
             </div>
           {% endif %}
 
