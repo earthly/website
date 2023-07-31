@@ -11,13 +11,13 @@ internal-links:
     Introducing the future of CI/CD: Earthly Cloud. A SaaS build automation platform with consistent builds, ridiculous speed, a next-gen Developer Experience, and that works with any CI. Get 6,000 build min/month with our free tier.
 ---
 
-**TLDR: We think CI/CD is overdue for revolutionary improvements, in build consistency, speed, and ease of use. Today we launch Earthly Cloud with a 6000 build minutes/month free tier to get that revolution started. [Get started for free.](https://cloud.earthly.dev/login)**
+**TLDR: We believe CI/CD is overdue for revolutionary improvements, in build consistency, speed, and ease of use, and that everyone should have access to it. Today we launch Earthly Cloud with a 6,000 build minutes/month free tier to get that revolution started. [Get started for free.](https://cloud.earthly.dev/login)**
 
 ## The Birth of CI/CD:  From Manual Pushes to Jenkins and Beyond
 
-CI platforms became popular at a time when we had nothing else. We just had manual pushes, ssh to prod was the way to go, and only big tech could afford some sort of in-house testing and delivery automation. Of course, automating all this is crucial. So it didn't just stay in-house at big tech giants. The emergence of Jenkins (or Hudson!), and later, CircleCI and Travis CI, made it possible for everyone to also share in the benefits of CI/CD.
+CI/CD... the modern way of approaching software delivery. Or is it?...
 
-!["We've hit a bottleneck transferring data between the east and west data centers."]({{site.images}}{{page.slug}}/bvxhJDE.png)
+CI platforms became popular at a time when we had nothing else. We just had manual pushes, `ssh` to prod was the way to go, and only big tech could afford some sort of in-house testing and delivery automation. Of course, automating all this is crucial. So it didn't just stay in-house at big tech giants. The emergence of Jenkins (or Hudson!), and later, CircleCI and Travis CI, made it possible for everyone to also share in the benefits of CI/CD.
 
 It was like going from walking to the horse and carriage and then to the Model T. We now take CI/CD for granted, and perhaps it's hard to imagine what life would be like without it. Back then, though, it was a Godsend! As an industry, the median frequency of releases dramatically shifted: from quarterly or monthly to weekly or even daily. We were able to find bugs earlier in the development lifecycle, thus reducing integration time. We were also able to gain some basic consistency in the way the build ran, because it always executed in the same environment. Time to market and lead time were reduced significantly, and we were able to shorten the feedback loop between customer requests and engineering's execution of product features.
 
@@ -29,7 +29,11 @@ Back when CI/CD was taking off, things were very different. Open source wasn't a
 
 Proper management of Jenkins was left as an exercise to the user. So a major part of what the DevOps role has traditionally entailed has been managing CI/CD infrastructure. And if the product, Jenkins in this case, doesn't have a solution to manage it, then you have to come up with your own. And everyone did... Their own unique solution... And this required a lot of human capital.
 
-But you could get Jenkins to do anything. That is its strength and also its weakness. A ton of freedom, little structure, and every build shares the same environment. What could go wrong (footnote: codecov vulnerability)?
+!["We've hit a bottleneck transferring data between the east and west data centers."]({{site.images}}{{page.slug}}/bvxhJDE.png)
+
+But you could get Jenkins to do anything. That is its strength and also its weakness. A ton of freedom, little structure, and every build shares the same environment. What could go wrong? [^1]
+
+[^1] Turns out [a lot can](https://blog.gitguardian.com/codecov-supply-chain-breach/). The Codecov vulnerability reminded everyone why a shared environment is less than ideal.
 
 CircleCI and Travis CI later came up with the idea of managing CI/CD for you in the cloud. You no longer had to deal with the quirks and lack of maintainability and scalability that plagued Jenkins. And yet many stuck to Jenkins, just because it could do anything. Plus, Jenkins runs in your VPC. So giving access to prod was safe and easy.
 
@@ -47,6 +51,8 @@ The problem with these large-scale build systems is that they are incredibly dif
 
 For these reasons, these setups are inaccessible to mere mortals like you and me. They are only worth doing at a certain scale, because both the cost of switching and the cost of maintenance are high. The rest of us, just like before, are left out.
 
+We need technology that brings this kind of thing to the masses.
+
 ## The Rise of Developer Experience:  A Changing Perspective for CI/CD
 
 ![Developer Experience?]({{site.images}}{{page.slug}}/9hoyDo3.png)
@@ -61,11 +67,11 @@ No, it's not that.
 
 It's about making developers productive. It's about making dev tools friendly and accessible, such that the cost of adoption is low, and you don't need a whole army of people to maintain it. It's about lowering the barrier to entry. It's about allowing reusability, so that, again, maintenance is easy. It's about making it integrate with or reuse things you already know instead of ripping and replacing whole systems, reducing the time and effort of implementation and eliminating a lot of costly training. It's about allowing for incremental adoption, to make switching less risky and less costly. It's about making things consistent such that they run the same everywhere: on your laptop or in cloud-hosted CI. And finally, it's about speeding things up so developers can focus on what really matters: iterating tirelessly on the product and delivering value to the customer.
 
-Developer Experience isn't a nice-to-have. Done right, it becomes a critical strategic business need. And you don't have to be a huge corporation to be able to benefit from it. DevEx is for the masses now. There are hundreds of open source and commercial tools on the market that are built to make developers' jobs easier.
+Developer Experience isn't a nice-to-have. Done right, it becomes a critical strategic business need. And you shouldn't have to be a huge corporation to be able to benefit from it.
 
 ## Introducing Earthly Cloud
 
-I'm here to tell you that CI/CD needs rethinking. Its lack of innovation over the last decade, the inaccessibility of modern build systems, and the recent and needed emphasis on Developer Experience are all blaring, screaming signals that the way we CI/CD right now isn't going to last much longer. There will be a category-defining product (or products) that will change the way we do CI/CD.
+I'm here to tell you that CI/CD needs rethinking. Its lack of innovation over the last decade, the inaccessibility of modern build systems, and the recent and needed emphasis on Developer Experience are all blaring, screaming signals that the way we CI/CD right now isn't going to last much longer. There will be a category-defining product (or products) that will change the way we do CI/CD across big and small companies.
 
 We believe that everyone should have access to this – CI/CD that is modern like a build system, accessible like a SaaS tool, and that makes developers more productive. For this reason, we are announcing our newest offering,[Earthly Cloud](​​https://earthly.dev/earthly-cloud). Earthly Cloud is a SaaS build automation platform that gives you consistent builds, ridiculous speed, a next-gen developer experience, and it works with any CI (or as a standalone CI).
 
@@ -73,6 +79,6 @@ Earthly Cloud includes the functionality of both [Earthly Satellites](https://ea
 
 ## Get Started With Earthly Cloud for Free
 
-You can use Earthly Cloud today. Its no time limit free tier gives you 6,000 build minutes per month to use across Satellites and CI. [Get started free](https://cloud.earthly.dev/login).
+You can use Earthly Cloud today. Its no-time-limit free tier gives you 6,000 build minutes per month to use across Satellites and CI. [Get started free](https://cloud.earthly.dev/login).
 
 {% include_html cta/bottom-cta.html %}
