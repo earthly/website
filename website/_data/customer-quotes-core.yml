@@ -1,3 +1,13 @@
+- name: Ses Goe
+  image: ses-goe.jpg
+  headline:
+    - Director of Internal Tools @
+    - NOCD
+  link: https://www.treatmyocd.com/
+  quote: It took literally just going from Dockerfile to Earthfile to bring build times from 45-ish minutes down to probably 15 or 20.
+  changeType: speed
+  changeValue: 3X
+
 - name: Jesús Rodríguez Valencia
   image: jesus-rodriguez-valencia.jpg
   headline:
@@ -14,22 +24,10 @@
   link: https://www.deepgenomics.com/
   quote: By providing rapid build times, intelligent caching, and repeatability, Earthly enables a better approach to the coordination of development and deployment.
 
-- name: Brian Bugh
-  image: brian-bugh.jpg
+- name: Spencer Kimball
+  image: spencer-kimball.png
   headline:
-    - CTO @
-    - Table Needs
-  link: https://tableneeds.com/
-  quote: Earthly has completely transformed our build process. It makes container-based CI so much easier.
-  changeType: speed-percentage
-  changeValue: 85
-
-- name: Ses Goe
-  image: ses-goe.jpg
-  headline:
-    - Director of Internal Tools @
-    - NOCD
-  link: https://www.deepgenomics.com/
-  quote: Switching to Earthly took us from 45 minutes to 20 minutes, and using Satellites took us from like 20 minutes to 4 or 5 on average.
-  changeType: speed
-  changeValue: 9X
+    - Creator of CockroachDB and CEO @
+    - Cockroach Labs
+  link: https://www.cockroachlabs.com/
+  quote: By reducing the friction inherent in build tools, Earthly is enabling SaaS companies to move quickly and reduce the context switching overhead in their engineering organizations.
