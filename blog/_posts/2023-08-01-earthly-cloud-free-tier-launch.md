@@ -29,7 +29,7 @@ Back when CI/CD was taking off, things were very different. Open source wasn't a
 
 Proper management of Jenkins was left as an exercise to the user. So a major part of what the DevOps role has traditionally entailed has been managing CI/CD infrastructure. And if the product, Jenkins in this case, doesn't have a solution to manage it, then you have to come up with your own. And everyone did... Their own unique solution... And this required a lot of human capital.
 
-![We've hit a bottleneck transferring data between the east and west data centers.]({{site.images}}{{page.slug}}/bvxhJDE.png)
+![We've hit a bottleneck transferring data between the east and west data centers.]({{site.images}}{{page.slug}}/1.jpg)
 
 But you could get Jenkins to do anything. That is its strength and also its weakness. A ton of freedom, little structure, and every build shares the same environment. What could go wrong? [^1]
 
@@ -43,7 +43,7 @@ And yet, our needs as an industry have evolved, and a glorified bash-script runn
 
 ## Advanced Build Systems:  Powerful but Challenging to Implement
 
-![CI/CD has not kept pace with the industry]({{site.images}}{{page.slug}}/yeI1wm4.jpg)
+![CI/CD has not kept pace with the industry]({{site.images}}{{page.slug}}/2.jpg)
 
 And yet history repeats itself. Remember how in the past only the big tech companies had some sort of CI/CD-like automation? Now a different trend is taking place. Bazel. Pants. Buck. These are next-level build systems that have an inherent understanding of the interdependencies within large codebases. Why is that important? Caching. If you know what depends on what, and you know what has changed, then you know what to rebuild and (crucially) what to NOT rebuild. Plus, it allows you to heavily parallelize independent steps. This results in MASSIVE performance boosts. And once again, pretty much only big tech companies use these build systems.
 
@@ -55,7 +55,7 @@ We need technology that brings this kind of thing to the masses.
 
 ## The Rise of Developer Experience:  A Changing Perspective for CI/CD
 
-![Developer Experience?]({{site.images}}{{page.slug}}/9hoyDo3.png)
+![Developer Experience?]({{site.images}}{{page.slug}}/3.jpg)
 
 Gone are the days when CI/CD's primary concern is the infrastructure. That is a solved problem. The more important issues at hand are of a different nature: usability, productivity, interoperability, ease of adoption, and perhaps incremental adoption. We are in a different era now. It's the era of Developer Experience.
 
