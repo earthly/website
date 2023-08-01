@@ -1,5 +1,5 @@
 {% if page.banner or page.mobileBanner or site.banner or site.mobileBanner %}
-  <div class="announcement-banner">
+  <div class="announcement-banner text-sm">
     {% if page.banner or page.mobileBanner %}
       <div class="hidden sm:block">{{ page.banner | default: page.mobileBanner | markdownify }}</div>
       <div class="sm:hidden">{{ page.mobileBanner | default: page.banner | markdownify }}</div>
