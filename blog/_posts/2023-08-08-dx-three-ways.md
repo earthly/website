@@ -87,23 +87,23 @@ For Alice, DX might focus on these key elements of her company's API and CLI too
 
 For Alice, key metrics to watch might include:
 
-* Onboarding Duration - How long it takes new developers to use her product successfully.
-* Documentation Hit Rate / Findability: This is how developers find and access documentation.
-* Support Ticket Frequency: How often do developers need to contact you for help?
+* **Onboarding Duration** - How long it takes new developers to use her product successfully.
+* **Documentation Hit Rate / Findability**: This is how developers find and access documentation.
+* **Support Ticket Frequency**: How often do developers need to contact you for help?
 
 Carlos doesn't have the luxury of focusing on just one tool - he has to think of the whole experience of developers at his company. Key elements of DX for him include:
 
-* Standardizing tools and technologies to reduce complexity. This minimizes the learning burden as developers learn new systems.
-* Good collaboration practices via knowledge-sharing platforms and open communication to prevent duplicate efforts.
-* Documentation of key procedures and processes to help with onboarding
-* Continuous delivery pipelines and test automation so developers can ship faster with confidence.
+* **Standardizing tools and technologies** to reduce complexity. This minimizes the learning burden as developers learn new systems.
+* **Good collaboration practices** via knowledge-sharing platforms and open communication to prevent duplicate efforts.
+* **Documentation** of key procedures and processes to help with onboarding
+* **Continuous delivery pipelines** and test automation so developers can ship faster with confidence.
 
 For Carlos, key metrics to measure might include:
 
-* Onboarding Duration - How long it takes new developers to make their first successful code contribution.
-* Time To First Commit - Time from cloning repo to having a local commit ready. Includes time for getting dependencies, setting up the environment, and making a superficial change.
-* Build Time - The time required to complete a code build in CI. Includes build queue wait time, if any.
-* PR Turn Around Time: The total duration from submitting a PR until it's finally approved.
+* **Onboarding Duration** - How long it takes new developers to make their first successful code contribution.
+* **Time To First Commit** - Time from cloning repo to having a local commit ready. Includes time for getting dependencies, setting up the environment, and making a superficial change.
+* **Build Time** - The time required to complete a code build in CI. Includes build queue wait time, if any.
+* **PR Turn Around Time**: The total duration from submitting a PR until it's finally approved.
 
 Bob's concerns are somewhere between Carlo's and Alice's. He only needs to worry about developers in his Org, like Carlos, and only about the tools he owns, like Alice.
 
@@ -143,9 +143,9 @@ Six months later, the anonymous developer survey looked a lot better, and six mo
 
 So there you go. Developer Experience Design (DX) is not just a trendy concept but a fundamental pillar of success in modern software development. Alice, Carlos, and Bob underscore its wide-ranging impact.
 
-* For Alice, embracing DX, transformed her product's usability and popularity by prioritizing clear documentation and smooth onboarding.
-* Bob took DX to heart within his organization, turning a once-underused tool into a loved and valued resource by being attuned to his internal users' needs.
-* Meanwhile, Carlos leveraged DX to tackle rapid scaling challenges, using feedback to implement necessary changes that sped up development and improved team collaboration.
+* For **Alice**, embracing DX, transformed her product's usability and popularity by prioritizing clear documentation and smooth onboarding.
+* **Bob** took DX to heart within his organization, turning a once-underused tool into a loved and valued resource by being attuned to his internal users' needs.
+* Meanwhile, **Carlos** leveraged DX to tackle rapid scaling challenges, using feedback to implement necessary changes that sped up development and improved team collaboration.
 
 From public-facing APIs to internal tools and across entire organizations, DX defines the quality of the interaction developers have with the systems they use. Field testing and continuous feedback play a critical role in identifying pain points and areas of improvement. They drive adoption, nurture loyalty, and fosters success.
 
