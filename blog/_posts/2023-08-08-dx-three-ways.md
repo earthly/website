@@ -1,5 +1,5 @@
 ---
-title: "Put Your Best Title Here"
+title: "Three Ways to Do Developer Experience (DX)"
 categories:
   - Tutorials
 toc: true
@@ -11,6 +11,8 @@ internal-links:
 excerpt: |
     Learn about the importance of Developer Experience (DX) and how it can impact different roles within an organization. Discover how Alice, Bob, and Carlos each prioritize DX in their respective roles as a Product Manager, Internal Tools Lead, and Director of Engineering, and how it has transformed their products, improved team collaboration, and accelerated development.
 ---
+<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler. It's a nifty tool that could help enhance your team's DX. [Give it a shot](/).**
+
 Developer Experience is the User Experience of a Developer. Developer Experience Design (DX) is User Experience Design (UX Design), the work of improving a user's experience with a product where the user is a developer.
 
 ## Who Should Care About Developer Experience?
@@ -147,4 +149,4 @@ So there you go. Developer Experience Design (DX) is not just a trendy concept b
 
 From public-facing APIs to internal tools and across entire organizations, DX defines the quality of the interaction developers have with the systems they use. Field testing and continuous feedback play a critical role in identifying pain points and areas of improvement. They drive adoption, nurture loyalty, and fosters success.
 
-DX can transform an ignored tool into an essential one, facilitate a struggling product's rise to popularity, and turn a rapidly expanding team into a well-oiled machine. Whether you are an Alice, a Bob, or a Carlos, recognizing the importance of DX and continuously working to improve it is the key to ensuring developer satisfaction and, ultimately, your organization's success.
+DX can transform an ignored tool into an essential one, facilitate a struggling product's rise to popularity, and turn a rapidly expanding team into a well-oiled machine. Whether you are an Alice, a Bob, or a Carlos, recognizing the importance of DX and continuously working to improve it is the key to ensuring developer satisfaction and, ultimately, your organization's success. And if you're interested in improving your Developer Experience, you might want to check out [Earthly](https://www.earthly.dev/), a build automation tool designed to simplify and accelerate development workflows.
