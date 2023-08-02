@@ -11,7 +11,7 @@ internal-links:
 excerpt: |
     Learn about the importance of Developer Experience (DX) and how it can impact different roles within an organization. Discover how Alice, Bob, and Carlos each prioritize DX in their respective roles as a Product Manager, Internal Tools Lead, and Director of Engineering, and how it has transformed their products, improved team collaboration, and accelerated development.
 ---
-<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler. It's a nifty tool that could help enhance your team's DX. [Give it a shot](/).**
+**We're [Earthly](https://earthly.dev/). We make building software simpler. It's a nifty tool that could help enhance your team's DX. [Give it a shot](/).**
 
 Developer Experience is the User Experience of a Developer. Developer Experience Design (DX) is User Experience Design (UX Design), the work of improving a user's experience with a product where the user is a developer.
 
@@ -78,12 +78,12 @@ So for Alice, Bob, and Carlos, the tactics employed to improve the developer exp
 
 For Alice, DX might focus on these key elements of her company's API and CLI tool:
 
-* Intuitive, well-documented APIs. Easy discovery of API contracts.
-* Helper libraries and sample code accelerate building.
-* Extensive and intuitive documentation
-* Excellent technical support resources like chat and issue tracking, community management, and support.
-* Dashboards to provide visibility into API usage, performance, and errors.
-* Release notes, deprecation schedules, and migration guides help developers stay current with the product.
+* **Intuitive, well-documented APIs**. Easy discovery of API contracts.
+* **Helper libraries** and sample code accelerate building.
+* **Extensive and intuitive documentation**
+* **Excellent technical support** resources like chat and issue tracking, community management, and support.
+* **Dashboards** to provide visibility into API usage, performance, and errors.
+* **Release notes**, deprecation schedules, and migration guides help developers stay current with the product.
 
 For Alice, key metrics to watch might include:
 
