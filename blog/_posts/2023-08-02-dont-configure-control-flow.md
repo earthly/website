@@ -6,7 +6,6 @@ toc: true
 author: Adam
 topcta: false
 bottomcta: false
-last_modified_at: 2023-07-28
 internal-links:
  - YAML
 excerpt: |
