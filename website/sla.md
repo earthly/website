@@ -1,5 +1,5 @@
 ---
-title: Earthly Service Level Agreement
+title: Service Level Agreement
 layout: page
 ---
 
