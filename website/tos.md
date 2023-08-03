@@ -1,5 +1,5 @@
 ---
-title: Earthly Terms of Service
+title: Terms of Service
 layout: page
 ---
 
@@ -76,22 +76,6 @@ Welcome, and thank you for your interest in Earthly Technologies Inc. ("**Earthl
    9.1. **Email**. We may send you emails concerning our products and services, as well as those of third parties. You may opt out of promotional emails by following the unsubscribe instructions in the promotional email itself.
 
 10. **10. Prohibited Conduct**. BY USING THE SERVICE, YOU AGREE TO COMPLY WITH OUR [ACCEPTABLE USE POLICY](/acceptable-use-policy).
-
-    a. use the Service for any illegal purpose or in violation of any local, state, national, or international law;
-
-    b. harass, threaten, demean, embarrass, bully, or otherwise harm any other user of the Service;
-
-    c. violate, or encourage others to violate, any right of a third party, including by infringing or misappropriating any third-party intellectual property right;
-
-    d. interfere with security-related features of the Service, including by: (i) disabling or circumventing features that prevent or limit use or copying of any content; or (ii) reverse engineering or otherwise attempting to discover the source code of any portion of the Service except to the extent that the activity is expressly permitted by applicable law or expressly agreed to by us in writing;
-
-    e. interfere with the operation of the Service or any user’s enjoyment of the Service, including by: (i) uploading or otherwise disseminating any virus, adware, spyware, worm, or other malicious code; (ii) making any unsolicited offer or advertisement to another user of the Service; (iii) collecting personal information about another user or third party without consent; or (iv) interfering with or disrupting any network, equipment, or server connected to or used to provide the Service;
-
-    f. perform any fraudulent activity including impersonating any person or entity, claiming a false affiliation, accessing any other Service account without permission;
-
-    g. sell or otherwise transfer the access granted under these Terms or any Materials (as defined in Section 6) or any right or ability to view, access, or use any Materials; or
-
-    h. attempt to do any of the acts described in this Section 10 or assist or permit any person in engaging in any of the acts described in this Section 10.
 
 11. **11. Copyright and Intellectual Property Protection**
 
