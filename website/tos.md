@@ -4,18 +4,22 @@ layout: page
 ---
 
 <link rel="stylesheet" href="/assets/css/subpage.css">
+<style type="text/css">
+  ol { list-style: decimal; padding-left: 16px }
+  li::marker { font-size: 18px; }
+</style>
 
-*2020-12-01*
+*2023-08-02*
 
 Welcome, and thank you for your interest in Earthly Technologies Inc. ("**Earthly Technologies,**" "**we,**" "**us**" or "**our**") and our website at [https://www.earthly.dev/](https://www.earthly.dev/), along with our related websites (collectively, the "**Site**"), networks, interfaces, applications, and other products and services provided by us (collectively, the "**Service**"). These Terms of Service are a legally binding contract between you and Earthly Technologies regarding your use of the Service.
 
 **PLEASE READ THE FOLLOWING TERMS CAREFULLY:**
 
-**BY ANSWERING "Y" IN YOUR TERMINAL, CLICKING "I ACCEPT" (OR LANGUAGE TO SIMILAR EFFECT) OR BY DOWNLOADING, INSTALLING, OR OTHERWISE ACCESSING OR USING THE SERVICE**, YOU AGREE THAT YOU HAVE READ AND UNDERSTOOD, AND, AS A CONDITION TO YOUR USE OF THE SERVICE, YOU AGREE TO BE BOUND BY, THE FOLLOWING TERMS AND CONDITIONS, OUR PRIVACY POLICY [https://www.earthly.dev/privacy-policy](https://www.earthly.dev/privacy-policy), AND API TERMS [https://www.earthly.dev/api-terms](https://www.earthly.dev/api-terms) (TOGETHER, THESE "**TERMS**"). IF YOU ARE NOT ELIGIBLE, OR DO NOT AGREE TO THESE TERMS, THEN YOU DO NOT HAVE OUR PERMISSION TO USE THE SERVICE. YOUR USE OF THE SERVICE, AND OUR PROVISION OF THE SERVICE TO YOU, CONSTITUTES AN AGREEMENT BY EARTHLY TECHNOLOGIES AND BY YOU TO BE BOUND BY THESE TERMS.
+**BY ANSWERING "Y" IN YOUR TERMINAL, CLICKING "I ACCEPT" (OR LANGUAGE TO SIMILAR EFFECT) OR BY DOWNLOADING, INSTALLING, OR OTHERWISE ACCESSING OR USING THE SERVICE**, YOU AGREE THAT YOU HAVE READ AND UNDERSTOOD, AND, AS A CONDITION TO YOUR USE OF THE SERVICE, YOU AGREE TO BE BOUND BY, THE FOLLOWING TERMS AND CONDITIONS, OUR [PRIVACY POLICY](https://www.earthly.dev/privacy-policy), AND [API TERMS](https://www.earthly.dev/api-terms) (TOGETHER, THESE "**TERMS**"). IF YOU ARE NOT ELIGIBLE, OR DO NOT AGREE TO THESE TERMS, THEN YOU DO NOT HAVE OUR PERMISSION TO USE THE SERVICE. YOUR USE OF THE SERVICE, AND OUR PROVISION OF THE SERVICE TO YOU, CONSTITUTES AN AGREEMENT BY EARTHLY TECHNOLOGIES AND BY YOU TO BE BOUND BY THESE TERMS.
 
 **ARBITRATION NOTICE**. Except for certain kinds of disputes described in Section 17, you agree that disputes arising under these Terms will be resolved by binding, individual arbitration, and BY ACCEPTING THESE TERMS, YOU AND EARTHLY TECHNOLOGIES ARE EACH WAIVING THE RIGHT TO A TRIAL BY JURY OR TO PARTICIPATE IN ANY CLASS ACTION OR REPRESENTATIVE PROCEEDING. YOU AGREE TO GIVE UP YOUR RIGHT TO GO TO COURT to assert or defend your rights under this contract (except for matters that may be taken to small claims court). Your rights will be determined by a NEUTRAL ARBITRATOR and NOT a judge or jury. (See Section 17.)
 
-1. **Service Overview**. Earthly Technologies offers developer tooling. The Service may make available source-available products and services (the "**Source-Available Offering**"), application programming interface (the "**API**"), a Software-as-a-Service solution (the "**SaaS Offering**"), or any other products or services we choose to offer from time to time. The Service may also allow users to view, share, and use certain developer materials such as build logs or artifacts provided by other users (collectively, the "**Community Software Components**"). Your access to and use of the Service in connection with the Source-Available Offering may be subject to additional terms, such as open source or source-available license(s) (more information here: [https://github.com/earthly/earthly](https://github.com/earthly/earthly)) or our Contributor License Agreement [https://www.earthly.dev/cla-form](https://www.earthly.dev/cla-form). Your use of the API will be subject to our API Terms [https://www.earthly.dev/api-terms](https://www.earthly.dev/api-terms).
+1. **Service Overview**. Earthly Technologies offers developer tooling. The Service may make available source-available products and services (the "**Source-Available Offering**"), application programming interface (the "**API**"), a Software-as-a-Service solution (the "**SaaS Offering**"), or any other products or services we choose to offer from time to time. The Service may also allow users to view, share, and use certain developer materials such as build logs or artifacts provided by other users (collectively, the "**Community Software Components**"). Your access to and use of the Service in connection with the Source-Available Offering may be subject to additional terms, such as open source or source-available license(s) (more information here: [https://github.com/earthly/earthly](https://github.com/earthly/earthly)) or our [Contributor License Agreement](https://www.earthly.dev/cla-form). Your use of the API will be subject to our [API Terms](https://www.earthly.dev/api-terms).
 
 2. **Eligibility**. You must be at least 18 years old to use the Service. By agreeing to these Terms, you represent and warrant to us that: (a) you are at least 18 years old; (b) you have not previously been suspended or removed from the Service; and (c) your registration and your use of the Service is in compliance with any and all applicable laws and regulations. If you are an entity, organization, or company, the individual accepting these Terms on your behalf represents and warrants that they have authority to bind you to these Terms and you agree to be bound by these Terms. 
 
@@ -75,7 +79,7 @@ Welcome, and thank you for your interest in Earthly Technologies Inc. ("**Earthl
 
    9.1. **Email**. We may send you emails concerning our products and services, as well as those of third parties. You may opt out of promotional emails by following the unsubscribe instructions in the promotional email itself.
 
-10. **Prohibited Conduct**. BY USING THE SERVICE, YOU AGREE NOT TO:
+10. **Prohibited Conduct**. BY USING THE SERVICE, YOU AGREE TO COMPLY WITH OUR [ACCEPTABLE USE POLICY](/acceptable-use-policy).
 
     a. use the Service for any illegal purpose or in violation of any local, state, national, or international law;
 
@@ -181,7 +185,7 @@ Welcome, and thank you for your interest in Earthly Technologies Inc. ("**Earthl
 
     18.2. **Governing Law**. These Terms are governed by the laws of the State of California without regard to conflict of law principles. You and Earthly Technologies submit to the personal and exclusive jurisdiction of the state courts and federal courts located within San Mateo County, California for resolution of any lawsuit or court proceeding permitted under these Terms. We operate the Service from our offices in California, and we make no representation that Materials included in the Service are appropriate or available for use in other locations.
 
-    18.3. **Privacy Policy**. Please read the Earthly Technologies Privacy Policy [https://www.earthly.dev/privacy-policy](https://www.earthly.dev/privacy-policy) (the "**Privacy Policy**") carefully for information relating to our collection, use, storage, and disclosure of your personal information. The Privacy Policy is incorporated by this reference into, and made a part of, these Terms.
+    18.3. **Privacy Policy**. Please read the Earthly Technologies [Privacy Policy](https://www.earthly.dev/privacy-policy) (the "**Privacy Policy**") carefully for information relating to our collection, use, storage, and disclosure of your personal information. The Privacy Policy is incorporated by this reference into, and made a part of, these Terms.
 
     18.4. **Additional Terms**. Your use of the Service is subject to all additional terms, policies, rules, or guidelines applicable to the Service or certain features of the Service that we may post on or link to from the Service or these Terms (the "**Additional Terms**"). All Additional Terms are incorporated by this reference into, and made a part of, these Terms. In the event of conflict or inconsistency, product or service-specific terms will take precedence over these Terms solely to the extent applicable to such product or service and the remainder of these Terms will have full force and effect.
 
