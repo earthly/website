@@ -7,9 +7,11 @@ author: Prince Onyeanuna
 editor: Mustapha Ahmad Ayodeji
 
 internal-links:
- - just an example
-excerpt: |
-    Learn how to write an engaging article with this checklist that covers everything from creating a catchy title to adding captivating images and incorporating internal links. Perfect for both new and experienced writers!
+ - guide to debug
+ - debugging docker containers
+ - debugging docker
+ - docker containers
+ - encountering bugs
 ---
 
 **We're [Earthly](https://earthly.dev/). We simplify building software with containerization. This article discusses how you can debug Docker containers for different scenarios. However, if you are curious about getting better build times by combining ideas from Makefile and Dockerfile? [Check us out.](https://earthly.dev/)**
@@ -393,4 +395,3 @@ By following the techniques and commands outlined in this guide, developers can 
 - [ ] Add in Author page
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Add keywords for internal links to front-matter
