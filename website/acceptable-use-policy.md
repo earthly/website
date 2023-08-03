@@ -1,5 +1,5 @@
 ---
-title: Acceptable Use Policy
+title: Earthly Acceptable Use Policy
 layout: page
 ---
 
