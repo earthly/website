@@ -385,6 +385,8 @@ We began by understanding the challenges of debugging Docker containers, includi
 
 By following the techniques and commands outlined in this guide, developers can gain a comprehensive understanding of Docker debugging and enhance their troubleshooting skills. Remember to approach debugging systematically, using commands such as `docker ps`, `docker logs`, `docker exec`, `docker attach`, `docker stats`, `docker top`, `docker network inspect`, `docker exec -it ping`, and `docker exec -it nc`. With this knowledge, developers can confidently debug Docker containers, resolve issues efficiently, and ensure the smooth operation of their containerized applications.
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 - [ ] Add in Author page
@@ -392,4 +394,3 @@ By following the techniques and commands outlined in this guide, developers can 
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
