@@ -4,10 +4,6 @@ layout: page
 ---
 
 <link rel="stylesheet" href="/assets/css/subpage.css">
-<style type="text/css">
-  ol { list-style: decimal; padding-left: 16px }
-  li::marker { font-size: 18px; }
-</style>
 
 *2023-08-02*
 
@@ -19,11 +15,11 @@ Welcome, and thank you for your interest in Earthly Technologies Inc. ("**Earthl
 
 **ARBITRATION NOTICE**. Except for certain kinds of disputes described in Section 17, you agree that disputes arising under these Terms will be resolved by binding, individual arbitration, and BY ACCEPTING THESE TERMS, YOU AND EARTHLY TECHNOLOGIES ARE EACH WAIVING THE RIGHT TO A TRIAL BY JURY OR TO PARTICIPATE IN ANY CLASS ACTION OR REPRESENTATIVE PROCEEDING. YOU AGREE TO GIVE UP YOUR RIGHT TO GO TO COURT to assert or defend your rights under this contract (except for matters that may be taken to small claims court). Your rights will be determined by a NEUTRAL ARBITRATOR and NOT a judge or jury. (See Section 17.)
 
-1. **Service Overview**. Earthly Technologies offers developer tooling. The Service may make available source-available products and services (the "**Source-Available Offering**"), application programming interface (the "**API**"), a Software-as-a-Service solution (the "**SaaS Offering**"), or any other products or services we choose to offer from time to time. The Service may also allow users to view, share, and use certain developer materials such as build logs or artifacts provided by other users (collectively, the "**Community Software Components**"). Your access to and use of the Service in connection with the Source-Available Offering may be subject to additional terms, such as open source or source-available license(s) (more information here: [https://github.com/earthly/earthly](https://github.com/earthly/earthly)) or our [Contributor License Agreement](https://www.earthly.dev/cla-form). Your use of the API will be subject to our [API Terms](https://www.earthly.dev/api-terms).
+1. **1.Service Overview**. Earthly Technologies offers developer tooling. The Service may make available source-available products and services (the "**Source-Available Offering**"), application programming interface (the "**API**"), a Software-as-a-Service solution (the "**SaaS Offering**"), or any other products or services we choose to offer from time to time. The Service may also allow users to view, share, and use certain developer materials such as build logs or artifacts provided by other users (collectively, the "**Community Software Components**"). Your access to and use of the Service in connection with the Source-Available Offering may be subject to additional terms, such as open source or source-available license(s) (more information here: [https://github.com/earthly/earthly](https://github.com/earthly/earthly)) or our [Contributor License Agreement](https://www.earthly.dev/cla-form). Your use of the API will be subject to our [API Terms](https://www.earthly.dev/api-terms).
 
-2. **Eligibility**. You must be at least 18 years old to use the Service. By agreeing to these Terms, you represent and warrant to us that: (a) you are at least 18 years old; (b) you have not previously been suspended or removed from the Service; and (c) your registration and your use of the Service is in compliance with any and all applicable laws and regulations. If you are an entity, organization, or company, the individual accepting these Terms on your behalf represents and warrants that they have authority to bind you to these Terms and you agree to be bound by these Terms. 
+2. **2. Eligibility**. You must be at least 18 years old to use the Service. By agreeing to these Terms, you represent and warrant to us that: (a) you are at least 18 years old; (b) you have not previously been suspended or removed from the Service; and (c) your registration and your use of the Service is in compliance with any and all applicable laws and regulations. If you are an entity, organization, or company, the individual accepting these Terms on your behalf represents and warrants that they have authority to bind you to these Terms and you agree to be bound by these Terms. 
 
-3. **Accounts and Registration**
+3. **3. Accounts and Registration**
 
    3.1. **Individual Accounts**. To access certain features of the Service, including the SaaS Offering and the API, you must register for an account. When you register for an account, you may be required to provide us with some information about yourself, such as your email address or other contact information, and a username.
 
@@ -31,11 +27,11 @@ Welcome, and thank you for your interest in Earthly Technologies Inc. ("**Earthl
 
    3.3. **Your Responsibilities**. You agree that the information you provide to us is accurate and that you will keep it accurate and up to date at all times, including with respect to the assignment of any access, control, and permissions under your Org Account. When you register, you will be asked to provide a password. You (and your Org Users, if you have an Org Account) are solely responsible for maintaining the confidentiality of your account, password, and other access control mechanism pertaining to your use of certain features of the Service (such as API tokens), and you accept responsibility for all activities that occur under your account. If you believe that your account is no longer secure, then you must immediately notify us at support@earthly.dev.
 
-4. **General Payment Terms**
+4. **4.  Payment Terms**
 
    4.1. **Price**. We reserve the right to determine pricing for the Service. We may update our pricing for any feature of the Service or add paid features to the Service, in our sole discretion, if we give you advance notice of changes before they apply.
 
-5. **Licenses**
+5. **5. Licenses**
 
    5.1. **Site**. Subject to other terms and conditions of these Terms and your compliance with them, Earthly Technologies grants you, solely for your personal, non-commercial use, a limited, non-exclusive, non-transferable, non-sublicensable, revocable license to access and use the Site. 
 
@@ -45,15 +41,15 @@ Welcome, and thank you for your interest in Earthly Technologies Inc. ("**Earthl
 
    5.4. **Feedback**. If you choose to provide input and suggestions regarding problems with or proposed modifications or improvements to the Service ("**Feedback**"), then you hereby grant us an unrestricted, perpetual, irrevocable, non-exclusive, fully-paid, royalty-free right to exploit the Feedback in any manner and for any purpose, including to improve the Service and create other products and services.
 
-6. **Ownership; Proprietary Rights**. The Service is owned and operated by Earthly Technologies. The visual interfaces, graphics, design, compilation, information, data, computer code (including source code or object code), products, software, services, and all other elements of the Service ("**Materials**") provided by Earthly Technologies are protected by intellectual property and other laws. All Materials included in the Service are the property of Earthly Technologies or its third-party licensors. Except as expressly authorized by Earthly Technologies, you may not make use of the Materials. Earthly Technologies reserves all rights to the Materials not granted expressly in these Terms.
+6. **6. Ownership; Proprietary Rights**. The Service is owned and operated by Earthly Technologies. The visual interfaces, graphics, design, compilation, information, data, computer code (including source code or object code), products, software, services, and all other elements of the Service ("**Materials**") provided by Earthly Technologies are protected by intellectual property and other laws. All Materials included in the Service are the property of Earthly Technologies or its third-party licensors. Except as expressly authorized by Earthly Technologies, you may not make use of the Materials. Earthly Technologies reserves all rights to the Materials not granted expressly in these Terms.
 
-7. **Third-Party Terms**
+7. **7. Third-Party Terms**
 
    7.1. **Third-Party Services and Linked Websites**. Earthly Technologies may provide tools through the Service that enable you to export information, including User Content (defined below), to third-party services. By using one of these tools, you agree that Earthly Technologies may transfer that information to the applicable third-party service. Third-party services are not under our control, and, to the fullest extent permitted by law, we are not responsible for any third-party service’s use of your exported information. The Service may also contain links to third-party websites, such as GitHub. Linked websites are not under our control, and we are not responsible for their content. Additionally, your access to and use of any such third-party websites, products, or services may be subject to terms of the applicable third-party provider. You agree that we are not responsible and will not be liable for any disputes solely between you and any third-party provider that may arise in connection with or related to your activities on the applicable third-party website.
 
    7.2. **Third-Party Software**. The Service may include or incorporate third-party software components that are generally available free of charge under licenses granting recipients broad rights to copy, modify, and distribute those components ("**Third-Party Components**"). Although the Service is provided to you subject to these Terms, nothing in these Terms prevents, restricts, or is intended to prevent or restrict you from obtaining Third-Party Components under the applicable third-party licenses or to limit your use of Third-Party Components under those third-party licenses.
 
-8. **User Content**
+8. **8. User Content**
 
    8.1. **User Content Generally**. Certain features of the Service may permit users to submit or share content to or via the Service, including Community Software Components, messages, images, folders, data, text, and other types of works ("**User Content**") and to publish User Content on or via the Service. You retain any copyright and other proprietary rights that you may hold in the User Content that you post to or via the Service.
 
@@ -75,11 +71,11 @@ Welcome, and thank you for your interest in Earthly Technologies Inc. ("**Earthl
 
    8.7. **Monitoring Content**. We do not control and does not have any obligation to monitor: (a) User Content; (b) any content made available by third parties; or (c) the use of the Service by our users. You acknowledge and agree that we reserve the right to, and may from time to time, monitor any and all information transmitted or received through the Service for operational and other purposes. If at any time we choose to monitor the content, we still assume no responsibility or liability for any content or loss or damage incurred as a result of the use of the content. During monitoring, information may be examined, recorded, copied, and used in accordance with our Privacy Policy (defined below).
 
-9. **Communications**
+9. **9. Communications**
 
    9.1. **Email**. We may send you emails concerning our products and services, as well as those of third parties. You may opt out of promotional emails by following the unsubscribe instructions in the promotional email itself.
 
-10. **Prohibited Conduct**. BY USING THE SERVICE, YOU AGREE TO COMPLY WITH OUR [ACCEPTABLE USE POLICY](/acceptable-use-policy).
+10. **10. Prohibited Conduct**. BY USING THE SERVICE, YOU AGREE TO COMPLY WITH OUR [ACCEPTABLE USE POLICY](/acceptable-use-policy).
 
     a. use the Service for any illegal purpose or in violation of any local, state, national, or international law;
 
@@ -97,7 +93,7 @@ Welcome, and thank you for your interest in Earthly Technologies Inc. ("**Earthl
 
     h. attempt to do any of the acts described in this Section 10 or assist or permit any person in engaging in any of the acts described in this Section 10.
 
-11. **Copyright and Intellectual Property Protection**
+11. **11. Copyright and Intellectual Property Protection**
 
     11.1. **DMCA Notification**. We comply with the provisions of the Digital Millennium Copyright Act applicable to Internet service providers (17 U.S.C. § 512, as amended). If you have an intellectual property rights-related complaint about material posted on the Service, you may contact our designated agent at the following address:
 
@@ -127,9 +123,9 @@ Welcome, and thank you for your interest in Earthly Technologies Inc. ("**Earthl
 
     11.3. **Repeat Infringers**. We will promptly terminate the accounts of users that are determined by us to be repeat infringers in accordance with our repeat infringer policy.
 
-12. **Modification of Terms**. We reserve the right to change these Terms on a going-forward basis at any time upon 7 days’ notice. Please check these Terms periodically for changes. If a change to these Terms materially modifies your rights or obligations, we may require that you accept the modified Terms in order to continue to use the Service. To avoid interrupting your ongoing projects, we may choose not to disrupt your use of the Service to present you with the modified Terms. However, in that case, by continuing to run any ongoing project after we have notified you of the changes, you accept the modified Terms. Material modifications are effective upon the earliest of your receipt of notice or acceptance of the modified Terms. Immaterial modifications are effective upon publication. Except as expressly permitted in this Section 12, these Terms may be amended only by a written agreement signed by authorized representatives of the parties to these Terms. Disputes arising under these Terms will be resolved in accordance with the version of these Terms that was in effect at the time the dispute arose. 
+12. **12. Modification of Terms**. We reserve the right to change these Terms on a going-forward basis at any time upon 7 days’ notice. Please check these Terms periodically for changes. If a change to these Terms materially modifies your rights or obligations, we may require that you accept the modified Terms in order to continue to use the Service. To avoid interrupting your ongoing projects, we may choose not to disrupt your use of the Service to present you with the modified Terms. However, in that case, by continuing to run any ongoing project after we have notified you of the changes, you accept the modified Terms. Material modifications are effective upon the earliest of your receipt of notice or acceptance of the modified Terms. Immaterial modifications are effective upon publication. Except as expressly permitted in this Section 12, these Terms may be amended only by a written agreement signed by authorized representatives of the parties to these Terms. Disputes arising under these Terms will be resolved in accordance with the version of these Terms that was in effect at the time the dispute arose. 
 
-13. **Term, Termination, and Modification of the Service**
+13. **13. Term, Termination, and Modification of the Service**
 
     13.1. **Term**. These Terms are effective beginning when you accept the Terms or first download, install, access, or use the Service, and ending when terminated as described in Section 13.2.
 
@@ -139,9 +135,9 @@ Welcome, and thank you for your interest in Earthly Technologies Inc. ("**Earthl
 
     13.4. **Modification of the Service**. We reserve the right to modify or discontinue the Service at any time (including by limiting or discontinuing certain features of the Service), temporarily or permanently, without notice to you. Earthly Technologies will have no liability for any change to the Service or any suspension or termination of your access to or use of the Service.
 
-14. **Indemnity**. To the fullest extent permitted by law, you are responsible for your use of the Service, and you will defend and indemnify Earthly Technologies, its affiliates and their respective shareholders, directors, managers, members, officers, employees, consultants, and agents (together, the "**Earthly Technologies Entities**") from and against every claim brought by a third party, and any related liability, damage, loss, and expense, including attorneys’ fees and costs, arising out of or connected with: (a) your unauthorized use of, or misuse of, the Service; (b) your violation of any portion of these Terms, any representation, warranty, or agreement referenced in these Terms, or any applicable law or regulation; (c) your violation of any third-party right, including any intellectual property right or publicity, confidentiality, other property, or privacy right; or (d) any dispute or issue between you and any third party. We reserve the right, at our own expense, to assume the exclusive defense and control of any matter otherwise subject to indemnification by you (without limiting your indemnification obligations with respect to that matter), and in that case, you agree to cooperate with our defense of those claims.
+14. **14. Indemnity**. To the fullest extent permitted by law, you are responsible for your use of the Service, and you will defend and indemnify Earthly Technologies, its affiliates and their respective shareholders, directors, managers, members, officers, employees, consultants, and agents (together, the "**Earthly Technologies Entities**") from and against every claim brought by a third party, and any related liability, damage, loss, and expense, including attorneys’ fees and costs, arising out of or connected with: (a) your unauthorized use of, or misuse of, the Service; (b) your violation of any portion of these Terms, any representation, warranty, or agreement referenced in these Terms, or any applicable law or regulation; (c) your violation of any third-party right, including any intellectual property right or publicity, confidentiality, other property, or privacy right; or (d) any dispute or issue between you and any third party. We reserve the right, at our own expense, to assume the exclusive defense and control of any matter otherwise subject to indemnification by you (without limiting your indemnification obligations with respect to that matter), and in that case, you agree to cooperate with our defense of those claims.
 
-15. **Disclaimers; No Warranties**
+15. **15. Disclaimers; No Warranties**
 
     15.1. EXCEPT TO THE EXTENT OTHERWISE AGREED TO BY US IN WRITING, THE SERVICE AND ALL MATERIALS AND CONTENT AVAILABLE THROUGH THE SERVICE ARE PROVIDED "AS IS" AND ON AN "AS AVAILABLE" BASIS. EARTHLY TECHNOLOGIES DISCLAIMS ALL WARRANTIES OF ANY KIND, WHETHER EXPRESS OR IMPLIED, RELATING TO THE SERVICE, COMMUNITY SOFTWARE COMPONENTS, AND ALL OTHER MATERIALS AND CONTENT AVAILABLE THROUGH THE SERVICE, INCLUDING: (A) ANY IMPLIED WARRANTY OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, QUIET ENJOYMENT, OR NON-INFRINGEMENT; AND (B) ANY WARRANTY ARISING OUT OF COURSE OF DEALING, USAGE, OR TRADE. EARTHLY TECHNOLOGIES DOES NOT WARRANT THAT THE SERVICE OR ANY PORTION OF THE SERVICE, COMMUNITY SOFTWARE COMPONENTS, OR ANY OTHER MATERIALS OR CONTENT OFFERED THROUGH THE SERVICE, WILL BE UNINTERRUPTED, SECURE, OR FREE OF ERRORS, VIRUSES, OR OTHER HARMFUL COMPONENTS, AND EARTHLY TECHNOLOGIES DOES NOT WARRANT THAT ANY OF THOSE ISSUES WILL BE CORRECTED.
 
@@ -149,7 +145,7 @@ Welcome, and thank you for your interest in Earthly Technologies Inc. ("**Earthl
 
     15.3. THE LIMITATIONS, EXCLUSIONS, AND DISCLAIMERS IN THIS SECTION 15 APPLY TO THE FULLEST EXTENT PERMITTED BY LAW. We do not disclaim any warranty or other right that we are prohibited from disclaiming under applicable law.
 
-16. **Limitation of Liability**
+16. **16. Limitation of Liability**
 
     16.1. TO THE FULLEST EXTENT PERMITTED BY LAW, IN NO EVENT WILL THE EARTHLY TECHNOLOGIES ENTITIES BE LIABLE TO YOU FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL OR PUNITIVE DAMAGES (INCLUDING DAMAGES FOR LOSS OF PROFITS, GOODWILL, OR ANY OTHER INTANGIBLE LOSS) ARISING OUT OF OR RELATING TO YOUR ACCESS TO OR USE OF, OR YOUR INABILITY TO ACCESS OR USE, THE SERVICE OR ANY MATERIALS OR CONTENT ON THE SERVICE, WHETHER BASED ON WARRANTY, CONTRACT, TORT (INCLUDING NEGLIGENCE), STATUTE, OR ANY OTHER LEGAL THEORY, AND WHETHER OR NOT ANY EARTHLY TECHNOLOGIES ENTITY HAS BEEN INFORMED OF THE POSSIBILITY OF DAMAGE.
 
@@ -159,7 +155,7 @@ Welcome, and thank you for your interest in Earthly Technologies Inc. ("**Earthl
 
     16.4. EACH PROVISION OF THESE TERMS THAT PROVIDES FOR A LIMITATION OF LIABILITY, DISCLAIMER OF WARRANTIES, OR EXCLUSION OF DAMAGES IS INTENDED TO AND DOES ALLOCATE THE RISKS BETWEEN THE PARTIES UNDER THESE TERMS. THIS ALLOCATION IS AN ESSENTIAL ELEMENT OF THE BASIS OF THE BARGAIN BETWEEN THE PARTIES. EACH OF THESE PROVISIONS IS SEVERABLE AND INDEPENDENT OF ALL OTHER PROVISIONS OF THESE TERMS. THE LIMITATIONS IN THIS SECTION 16 WILL APPLY EVEN IF ANY LIMITED REMEDY FAILS OF ITS ESSENTIAL PURPOSE.
 
-17. **Dispute Resolution and Arbitration**
+17. **17. Dispute Resolution and Arbitration**
 
     17.1. **Generally**. In the interest of resolving disputes between you and Earthly Technologies in the most expedient and cost effective manner, and except as described in Section 17.2 and 17.4, you and Earthly Technologies agree that every dispute arising in connection with these Terms will be resolved by binding arbitration. Arbitration is less formal than a lawsuit in court. Arbitration uses a neutral arbitrator instead of a judge or jury, may allow for more limited discovery than in court, and can be subject to very limited review by courts. Arbitrators can award the same damages and relief that a court can award. This agreement to arbitrate disputes includes all claims arising out of or relating to any aspect of these Terms, whether based in contract, tort, statute, fraud, misrepresentation, or any other legal theory, and regardless of whether a claim arises during or after the termination of these Terms. YOU UNDERSTAND AND AGREE THAT, BY ENTERING INTO THESE TERMS, YOU AND EARTHLY TECHNOLOGIES ARE EACH WAIVING THE RIGHT TO A TRIAL BY JURY OR TO PARTICIPATE IN A CLASS ACTION.
 
@@ -179,7 +175,7 @@ Welcome, and thank you for your interest in Earthly Technologies Inc. ("**Earthl
 
     17.9. **Enforceability**. If Section 17.7 or the entirety of this Section 17 is found to be unenforceable, or if we receive an Opt-Out Notice from you, then the entirety of this Section 17 will be null and void and, in that case, the exclusive jurisdiction and venue described in Section 18.2 will govern any action arising out of or related to these Terms.
 
-18. **Miscellaneous**
+18. **18. Miscellaneous**
 
     18.1. **General Terms**. These Terms, including the Privacy Policy and API Terms, and any other agreements expressly incorporated by reference into these Terms, are the entire and exclusive understanding and agreement between you and Earthly Technologies regarding your use of the Service. You may not assign or transfer these Terms or your rights under these Terms, in whole or in part, by operation of law or otherwise, without our prior written consent. We may assign these Terms at any time without notice or consent. The failure to require performance of any provision will not affect our right to require performance at any other time after that, nor will a waiver by us of any breach or default of these Terms, or any provision of these Terms, be a waiver of any subsequent breach or default or a waiver of the provision itself. Use of Section headers in these Terms is for convenience only and will not have any impact on the interpretation of any provision. Throughout these Terms the use of the word "**including**" means "**including but not limited to.**" If any part of these Terms is held to be invalid or unenforceable, the unenforceable part will be given effect to the greatest extent possible, and the remaining parts will remain in full force and effect.
 
