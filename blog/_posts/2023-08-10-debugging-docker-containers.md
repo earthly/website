@@ -67,7 +67,7 @@ To inspect the status of running containers, we will use the following Docker co
 
   By simply running `docker ps`, you can easily see the details of all containers. You can also add an option `-a` or `--all` to see all containers (running and stopped containers).
 
-   ~~~
+   ~~~{.bash caption=">_"}
    docker ps # Only for running containers 
    docker ps -a # For all running or stopped containers
    ~~~
@@ -76,7 +76,7 @@ To inspect the status of running containers, we will use the following Docker co
   
    You can use this command by attaching the container ID to it:
 
-   ~~~
+   ~~~{.bash caption=">_"}
    docker logs [container]
    ~~~
 
@@ -84,7 +84,7 @@ To inspect the status of running containers, we will use the following Docker co
 
   The syntax to use this command is as follows:
 
-   ~~~
+   ~~~{.bash caption=">_"}
    docker docker_object inspect [OPTIONS] NAME|ID [NAME|ID...]
    ~~~
 
@@ -94,7 +94,7 @@ To inspect the status of running containers, we will use the following Docker co
 
 Since the focus is on debugging Docker containers, the syntax would be as follows:
 
-~~~
+~~~{.bash caption=">_"}
 docker container inspect [container]
 ~~~
 
@@ -110,7 +110,7 @@ You should replace the `container` placeholder with either the name or the ID of
 
 2. Use the `docker logs` command with the container ID to view the logs of the database container. Make sure to read slowly on each line for error messages from the database connection.
   
-   ~~~
+   ~~~{.bash caption=">_"}
    docker logs [container]
    ~~~
 
@@ -144,7 +144,7 @@ You can use the following commands to access the shell of any container:
 
         To execute a command directly within a container, use the following syntax:
 
-        ~~~
+        ~~~{.bash caption=">_"}
         docker exec [container] [command]
         ~~~
 
@@ -152,7 +152,7 @@ You can use the following commands to access the shell of any container:
 
         For example, you might use the following command to list the files in a container:
 
-        ~~~
+        ~~~{.bash caption=">_"}
         docker exec [container] ls
         ~~~
 
@@ -160,13 +160,13 @@ You can use the following commands to access the shell of any container:
 
         To begin an interactive shell in a container, use this syntax:
 
-        ~~~
+        ~~~{.bash caption=">_"}
         docker exec -it [container] [shell]
         ~~~
 
         For example, you might use the following command to start an interactive shell session in a container:
 
-        ~~~
+        ~~~{.bash caption=">_"}
         docker exec -it [container] sh
         ~~~
 
@@ -180,7 +180,7 @@ Both methods have advantages and can be utilized based on your specific debuggin
 
     To use `docker attach`, you need to know the ID or name of the container you want to connect to. Once you have that information, you can execute the following command:
 
-   ~~~
+   ~~~{.bash caption=">_"}
    docker attach [container]
    ~~~
 
@@ -190,7 +190,7 @@ Both methods have advantages and can be utilized based on your specific debuggin
 
 2. Observe the application output. To observe the application's output in real-time, you can attach it to the container using the `docker attach` command:
   
-   ~~~
+   ~~~{.bash caption=">_"}
    docker attach [container]
    ~~~
 
@@ -204,13 +204,13 @@ Both methods have advantages and can be utilized based on your specific debuggin
 
    You can execute commands within the attached shell to investigate further:
 
-   ~~~
+   ~~~{.bash caption=">_"}
    docker exec -it [container] /bin/sh
    ~~~
 
    **Output:**
 
-   ~~~
+   ~~~{.bash caption=">_"}
    # Is
    bin build cgi-bin conf error htdocs icons include logs modules
    ~~~
@@ -231,7 +231,7 @@ The following commands are essential in monitoring resource usage:
 
    By running `docker stats`, you can easily get this table. The syntax for this command is as follows:
 
-   ~~~
+   ~~~{.bash caption=">_"}
    docker stats
    ~~~
 
@@ -239,7 +239,7 @@ The following commands are essential in monitoring resource usage:
 
    To utilize this command, run:
 
-   ~~~
+   ~~~{.bash caption=">_"}
    docker top [container]
    ~~~
 
@@ -251,7 +251,8 @@ Below are the steps you would take to troubleshoot this issue:
 
 1. To keep track of the resource usage of your running containers, begin by entering the command `docker stats` into your terminal. This will display a continuously updating table showing the resource consumption of each container:
 
-   ~~~
+   ~~~{.bash caption="Output"}
+   
    CONTAINER ID  NAME               CPU %    MEM USAGE / LIMIT    MEM %    NET I/0      BLOCK I/O        PIDS
    97c26147f9a3  my-running-app    0.00%    8.742MiB / 965.7MiB   0.91%    3.28kB / 3.68kB   4.03MB / 4.1kB   82
    6891d44e253   optimistic_dubinsky  0.41%    352.1MiB / 965.7MiB  36.46%  2.04kB / 0B      83.5MB / 267MB  37
@@ -261,7 +262,7 @@ Below are the steps you would take to troubleshoot this issue:
 
    With the container name or ID in hand, execute the following command to inspect the processes inside the container.
 
-   ~~~
+   ~~~{.bash caption=">_"}
    docker top [container]
    ~~~
 
@@ -269,7 +270,7 @@ Below are the steps you would take to troubleshoot this issue:
 
    **Output:**
 
-   ~~~
+   ~~~{.bash caption="Output"}
    UID      PID   PPID  STIME  TTY  TIME      CMD
    lxd      2523  2502  21:06  -    00:00:38  mysqld
    ~~~
@@ -292,7 +293,7 @@ You can use the following commands to resolve network difficulties:
 
 - **[Docker network inspect](https://docs.docker.com/engine/reference/commandline/network_inspect/)**: The `docker network inspect` command allows you to analyze Docker networks and their configuration. It provides detailed information about network settings, IP addresses, and connected containers. To utilize this command, run:
   
-   ~~~
+   ~~~{.bash caption=">_"}
    docker network inspect [network]
    ~~~
 
@@ -302,7 +303,7 @@ You can use the following commands to resolve network difficulties:
 
    1. `docker exec -it [container] ping [host]`: The `docker exec` command, combined with the `ping` utility, allows you to verify network connectivity between containers and external hosts. With the following command:
 
-      ~~~
+      ~~~{.bash caption=">_"}
       docker exec -it [container] ping [host]
       ~~~
 
@@ -310,7 +311,7 @@ You can use the following commands to resolve network difficulties:
 
    2. `docker exec -it [container] nc -zv [host] [port]`: The `docker exec` command, combined with the [nc](https://www.tutorialspoint.com/unix_commands/nc.htm) utility, allows you to check connectivity to a specific port on a host. To perform a check on the connection between a container and a specific host and port, use the command below:
 
-      ~~~
+      ~~~{.bash caption=">_"}
       docker exec -it [container] nc -zv [host] [port]`
       ~~~
 
@@ -324,7 +325,7 @@ To troubleshoot and resolve the network problem, you can follow these steps:
 
 1. Verify Docker network configuration: Start by inspecting the Docker network associated with the containers using the following command:
   
-   ~~~
+   ~~~{.bash caption=">_"}
    docker network inspect [network]
    ~~~
 
@@ -338,39 +339,39 @@ To troubleshoot and resolve the network problem, you can follow these steps:
 
 2. Check host and port availability
   
-      ~~~
-      docker exec -it 192df0366472 nc 54.91.248.13 8080
-      ~~~
+   ~~~{.bash caption=">_"}
+   docker exec -it 192df0366472 nc 54.91.248.13 8080
+   ~~~
 
-      **Output:**
+   **Output:**
 
-      ~~~
-      Connection to 54.91.248.13 8080 port [tcp/*] succeeded!
-      ~~~
+   ~~~{.bash caption=">_"}
+   Connection to 54.91.248.13 8080 port [tcp/*] succeeded!
+   ~~~
 
-      Replace `container` with the name or ID of the frontend container, `host` with the IP address or hostname of the backend database container, and `port` with the port number the database is running on.
+   Replace `container` with the name or ID of the frontend container, `host` with the IP address or hostname of the backend database container, and `port` with the port number the database is running on.
 
-      This command will check if the frontend container can connect to the backend container on the specified host and port. It will provide information on whether the port is open and accessible.
+   This command will check if the frontend container can connect to the backend container on the specified host and port. It will provide information on whether the port is open and accessible.
 
-      Ensure that the host and port are correctly specified and that no firewall or network configuration issues block the connection.
+   Ensure that the host and port are correctly specified and that no firewall or network configuration issues block the connection.
 
 3. Verify Network Connectivity: Next, check the network connectivity between the containers by running the command:
   
-   ~~~
+   ~~~{.bash caption=">_"}
    docker exec -it [container] ping [host]
    ~~~
 
-      <div class="wide">
-      ![**Figure 5**. ping command]({{site.images}}{{page.slug}}/fTQij9Z.png)
-      </div>
+   <div class="wide">
+   ![**Figure 5**. ping command]({{site.images}}{{page.slug}}/fTQij9Z.png)
+    </div>
 
-      Replace `container` with the name or ID of the frontend container and `host` with the IP address or hostname of the backend database container.
+   Replace `container` with the name or ID of the frontend container and `host` with the IP address or hostname of the backend database container.
 
-      This command will send [ICMP echo](https://aws.amazon.com/what-is/icmp/) also known as ping requests, from the frontend container to the backend container. It helps determine if there are any network connectivity issues, such as packet loss or unreachable hosts.  
+   This command will send [ICMP echo](https://aws.amazon.com/what-is/icmp/) also known as ping requests, from the frontend container to the backend container. It helps determine if there are any network connectivity issues, such as packet loss or unreachable hosts.  
 
-      <div class="notice--info">
-      Internet Control Message Protocol (ICMP) is a network protocol used for troubleshooting purposes. When a device or computer sends an ICMP echo request (ping) to another device, it is essentially asking for a response to confirm the target device's availability and round-trip time.
-      </div>
+   <div class="notice--info">
+   Internet Control Message Protocol (ICMP) is a network protocol used for troubleshooting purposes. When a device or computer sends an ICMP echo request (ping) to another device, it is essentially asking for a response to confirm the target device's availability and round-trip time.
+   </div>
 
 4. Analyze the ping results to identify connectivity problems like high latency or timeouts. Ensure that the frontend container can reach the backend container through the network.
 
