@@ -67,10 +67,10 @@ To inspect the status of running containers, we will use the following Docker co
 
   By simply running `docker ps`, you can easily see the details of all containers. You can also add an option `-a` or `--all` to see all containers (running and stopped containers).
 
-~~~
-  docker ps # Only for running containers 
-  docker ps -a # For all running or stopped containers
-~~~
+   ~~~
+   docker ps # Only for running containers 
+   docker ps -a # For all running or stopped containers
+   ~~~
 
 - **[Docker logs](https://docs.docker.com/engine/reference/commandline/logs/)**: Using this command, you can retrieve important information such as application output, error messages, and other relevant details from a Docker container. During troubleshooting issues, it is crucial to examine these logs to identify errors and understand the application's behavior.
   
@@ -180,9 +180,9 @@ Both methods have advantages and can be utilized based on your specific debuggin
 
     To use `docker attach`, you need to know the ID or name of the container you want to connect to. Once you have that information, you can execute the following command:
 
-~~~
-    docker attach [container]
-~~~
+   ~~~
+   docker attach [container]
+   ~~~
 
 **Scenario**: Suppose you are running a Docker container hosting a web application but encounter issues due to misconfigured application settings or script errors. To troubleshoot and resolve this problem, you can utilize the `docker exec`, and `docker attach` commands. Follow the steps below:
 
@@ -338,15 +338,15 @@ To troubleshoot and resolve the network problem, you can follow these steps:
 
 2. Check host and port availability
   
-   ~~~
-   docker exec -it 192df0366472 nc 54.91.248.13 8080
-   ~~~
+      ~~~
+      docker exec -it 192df0366472 nc 54.91.248.13 8080
+      ~~~
 
-    **Output:**
+      **Output:**
 
-   ~~~
-   Connection to 54.91.248.13 8080 port [tcp/*] succeeded!
-   ~~~
+      ~~~
+      Connection to 54.91.248.13 8080 port [tcp/*] succeeded!
+      ~~~
 
       Replace `container` with the name or ID of the frontend container, `host` with the IP address or hostname of the backend database container, and `port` with the port number the database is running on.
 
@@ -368,9 +368,9 @@ To troubleshoot and resolve the network problem, you can follow these steps:
 
       This command will send [ICMP echo](https://aws.amazon.com/what-is/icmp/) also known as ping requests, from the frontend container to the backend container. It helps determine if there are any network connectivity issues, such as packet loss or unreachable hosts.  
 
-    <div class="notice--info">
-        Internet Control Message Protocol (ICMP) is a network protocol used for troubleshooting purposes. When a device or computer sends an ICMP echo request (ping) to another device, it is essentially asking for a response to confirm the target device's availability and round-trip time.
-    </div>
+      <div class="notice--info">
+      Internet Control Message Protocol (ICMP) is a network protocol used for troubleshooting purposes. When a device or computer sends an ICMP echo request (ping) to another device, it is essentially asking for a response to confirm the target device's availability and round-trip time.
+      </div>
 
 4. Analyze the ping results to identify connectivity problems like high latency or timeouts. Ensure that the frontend container can reach the backend container through the network.
 
