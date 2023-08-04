@@ -253,9 +253,9 @@ Below are the steps you would take to troubleshoot this issue:
 
    ~~~{.bash caption="Output"}
    
-   CONTAINER ID  NAME               CPU %    MEM USAGE / LIMIT    MEM %    NET I/0      BLOCK I/O        PIDS
-   97c26147f9a3  my-running-app    0.00%    8.742MiB / 965.7MiB   0.91%    3.28kB / 3.68kB   4.03MB / 4.1kB   82
-   6891d44e253   optimistic_dubinsky  0.41%    352.1MiB / 965.7MiB  36.46%  2.04kB / 0B      83.5MB / 267MB  37
+   CONTAINER ID  NAME                  CPU %    MEM USAGE / LIMIT    MEM %   NET I/0            BLOCK I/O             PIDS
+   97c26147f9a3  my-running-app        0.00%    8.742MiB / 965.7MiB  0.91%   3.28kB / 3.68kB    4.03MB / 4.1kB  82
+   6891d44e253   optimistic_dubinsky   0.41%    352.1MiB / 965.7MiB  36.46%  2.04kB / 0B        83.5MB / 267MB   37
    ~~~
 
 2. Identify the container exhibiting abnormal CPU or memory usage based on the information provided by `docker stats` command. Take note of the container's name or ID.
