@@ -7,7 +7,7 @@ layout: page
 
 *How to Use*: This Earthly Service Level Agreement (Version 1.0) (“**SLA**”) operates as an Attachment to the Earthly Cloud Terms. To use this SLA, Customer and Provider incorporate this SLA by reference on their Cover Page. The parties may modify any element of this SLA, including the SLA Key Terms Chart (see Section 7 below), by reference on their Cover Page. Capitalized terms not defined in this SLA have the meanings given in the Earthly Cloud Terms.
 
-**1. Service Levels**. Provider will use commercially reasonable efforts to provide the Cloud Service at or above Target Availability.
+**1. Service Levels**. Provider will use commercially reasonable efforts to provide the Cloud Service at or above Target Availability. The SLA will only apply to Provider’s “Team” and “Enterprise” tiers. If a lower tier was subscribed to, Provider will use commercially reasonable efforts to make the Cloud Service available for Customer’s use 99% of the time in each month.
 
 **2. Monitoring**. Provider will provide or otherwise make available to Customer, upon request, reports measuring the Monthly Uptime Percentage as against Target Availability.
 
@@ -19,11 +19,15 @@ layout: page
 
 **6. Definitions**.
 
+“<ins>Build</ins>” means execution of a CI/CD task on the Cloud Service, whether triggered manually by Users or automatically (including when triggered by an integration with a Third-Party Platform).
+
+“<ins>Compute Minute</ins>” has the definition given on our pricing page at [https://earthly.dev/pricing](https://earthly.dev/pricing).
+
 “<ins>Maintenance</ins>” means Provider’s routine maintenance of the Cloud Service conducted in accordance with its Maintenance Procedures or reasonable emergency maintenance.
 
 “<ins>Maintenance Procedures</ins>” means Provider’s standard Cloud Service maintenance schedule as posted or otherwise made available by Provider upon request by Customer.
 
-“<ins>Monthly Uptime Percentage</ins>” means the number of minutes the Cloud Service is accessible and not subject to an Outage during a calendar month divided by the total number of minutes in that calendar month.
+“<ins>Monthly Uptime Percentage</ins>” means the number of Builds executed by Customer on the Cloud Service that are not subject to an Outage during a calendar month divided by the total number of Build executed by Customer on the Cloud Service in that calendar month.
 
 “<ins>Multiple Failures</ins>” is defined in the SLA Key Terms Chart.
 
@@ -49,29 +53,29 @@ layout: page
       <td><b>Service Credit:</b></td>
     </tr>
     <tr>
-      <td><b>Target Availability:</b></td>
-      <td>99.9% or higher</td>
-      <td>None</td>
+      <td style="width: 18%"><b>Target Availability:</b></td>
+      <td style="width: 31%">99% or higher</td>
+      <td style="width: 51%">None</td>
     </tr>
     <tr>
       <td>Credit Tier 1</td>
-      <td>99.00% – 99.89%</td>
-      <td>5% of monthly fees</td>
+      <td>97% - 98.99%</td>
+      <td>5% of monthly recurring fees plus the value of the Compute Minutes applicable to Builds that are subject to an Outage.</td>
     </tr>
     <tr>
       <td>Credit Tier 2</td>
-      <td>97.00% – 98.99%</td>
-      <td>20% of monthly fees</td>
+      <td>94% - 96.99%</td>
+      <td>20% of monthly recurring fees plus the value of the Compute Minutes applicable to Builds that are subject to an Outage.</td>
     </tr>
     <tr>
       <td>Credit Tier 3</td>
-      <td>95.00% – 96.99%</td>
-      <td>35% of monthly fees</td>
+      <td>90% - 93.99%</td>
+      <td>35% of monthly recurring fees plus the value of the Compute Minutes applicable to Builds that are subject to an Outage.</td>
     </tr>
     <tr>
       <td>Credit Tier 4</td>
-      <td>&lt; 95.00%</td>
-      <td>50% of monthly fees</td>
+      <td>&lt; 90%</td>
+      <td>50% of monthly recurring fees plus the value of the Compute Minutes applicable to Builds that are subject to an Outage.</td>
     </tr>
     <tr>
       <td colspan="3"></td>
