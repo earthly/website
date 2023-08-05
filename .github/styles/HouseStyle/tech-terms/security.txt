@@ -4,3 +4,5 @@ keystore
 
 eso
 hashicorp
+
+plaintext

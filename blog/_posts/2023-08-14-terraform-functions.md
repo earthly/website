@@ -45,34 +45,34 @@ For instance, in the following example, the `split` function divides a string in
 
 In your Terraform playground window, add the following code:
 
-```terraform
+~~~
 variable "vm_data" {
     default = "north-B-08dh89"
 }
-```
+~~~
 
 In this code, a new variable, `vm-data`, is created. This stores the default value of `north-B-08dh89`. You can reference this variable in your code to use this value.
 
 Now, append the following lines of code in the previous snippet:
 
-```terraform
+~~~
 locals {
    vm_vals = split("-", var.vm_data)
 }
-```
+~~~
 
 This code defines a local value named `vm_vals` using the `locals` block. The value `vm_vals` is assigned to the result of the `split` function applied to the variable `var.vm_data`. In this case, the split function returns a list of strings `["north", "B", "08dh89"]`, which can be accessed using indexes.
 
 You can use this value in your resources in the Terraform configuration like this:
 
-```terraform
+~~~
 resource "aws_instance" "app"{
     region = local.vm_vals.value[0]
     branch = local.vm_vals.each.value[1]
     id     = local.vm_vals.each.value[2]
 
 }
-```
+~~~
 
 Here, a resource block is named `aws_instance` and labeled `app`. It creates an Amazon Web Services (AWS) instance whose configurations are defined using the element in the list `vm_vals`. You can see that utilizing the `split` function made it much easier to pull out each element from a hyphen-separated string.
 
@@ -84,32 +84,32 @@ Additionally, collection functions provide a convenient way to iterate over elem
 
 One of the scenarios in which collection functions are useful is when you want to sort the order of resources in your configuration using the `sort` collection function. Or you could reverse the order using the `reverse` function:
 
-```terraform
+~~~
 variable "servers" {
   type = list(string)
   default = ["ServerC", "ServerA", "ServerB"]
 }
-```
+~~~
 
 In this code, the `servers` variable is defined with a list type and provides a default value of `["ServerC", "ServerA", "ServerB"]`. To sort the elements in this variable, you can use the `sort` function:
 
-```terraform
+~~~
 locals {
     names = sort(var.servers)
 }
-```
+~~~
 
 Here, the local value `names` is assigned the sorted version of the `var.servers` variable. In this case, the `names` variable stores the value `["ServerA", "ServerB", "ServerC",]`.
 
 You can also use the built-in function `reverse` to reverse the order of server names. To do this, modify the previous code like this:
 
-```terraform
+~~~
 locals {
     names = sort(var.servers)
     reversed_names = reverse(local.names)
 }
 
-```
+~~~
 
 This code creates a different `reversed_names` variable that stores the value returned by the `reverse` function. In this case, the value is `["ServerC", "ServerB", "ServerA"]`.
 
@@ -121,29 +121,29 @@ If you have some secret data in the configuration, you can use the `base64encode
 
 Run the following code in your Terraform console:
 
-```bash
+~~~
 base64encode("secret_key")
-```
+~~~
 
 Running this code returns the following output:
 
-```bash
+~~~
 "c2VjcmV0X2tleQ=="
-```
+~~~
 
 Here, you can see that the original string, `secret_key`, gets encoded in Base64 encoded form.
 
 Terraform also has a `base64decode` function to decode the encoded string. Run the following code in your Terraform console:
 
-```bash
+~~~
 base64decode("c2VjcmV0X2tleQ==")
-```
+~~~
 
 With `base64decode`, you can see the original string:
 
-```bash
+~~~
 secret_key
-```
+~~~
 
 ### File System Functions
 
@@ -155,20 +155,20 @@ In the following example, the `file` function in Terraform reads the contents of
 
 In your Terraform console, run the following code:
 
-```bash
+~~~
 file("ip_addresses.txt")
-```
+~~~
 
 Running the previous code returns the contents of the file in the console:
 
-```bash
+~~~
 192.168.1.10
 10.0.0.22
 172.16.0.101
 203.0.113.55
 192.0.2.33
 198.51.100.77
-```
+~~~
 
 ### Numeric Functions
 
@@ -178,22 +178,22 @@ For instance, numeric functions like `min` and `max` allow for dynamic decision-
 
 Type the following code in your Terraform console:
 
-```terraform
+~~~
 variable "desired_capacity" {
   type        = number
   default     = 5
 }
-```
+~~~
 
 Here, you define a variable (*ie* `desired_capacity`) with a default value of `5`. You use this value to compare the autoscaling size after comparing it using the numeric functions. To do this, in the same console, write the following code:
 
-```terraform
+~~~
 resource "aws_autoscaling_group" "app" {
   name  = "my-autoscaling-group"
   min_size = min(var.desired_capacity, 2)
   max_size = max(var.desired_capacity * 2, 10)
 }
-```
+~~~
 
 In this code, a new resource (*ie* `aws_autoscaling_group`) is defined with two dynamically generated variables: `min_size` and `max_size`. The `min` function ensures the resource size does not exceed `2`. It returns the minimum value passed to the function as an argument. In comparison, the `max_size` variable does not go above `10`.
 
@@ -205,15 +205,15 @@ In the following example, the `formatdate` and `timestamp` functions are used to
 
 Run the following code in your Terraform console:
 
-```bash
+~~~
 formatdate("EEEE DD MMM YYYY", timestamp())
-```
+~~~
 
 Your output should look like this:
 
-```bash
+~~~
 "Thursday 15 Jun 2023"
-```
+~~~
 
 The `formatdate` function has a lot of specification syntax to make it highly customizable. These specifications are listed on the [Terraform website](https://developer.hashicorp.com/terraform/language/functions/formatdate#specification-syntax).
 
@@ -227,7 +227,7 @@ In production systems, hashing functions are used to encrypt sensitive data like
 
 For instance, in the following example, the `admin_password` value undergoes a secure transformation utilizing the `sha256` hashing algorithm:
 
-```terraform
+~~~
 variable "admin_password" {
   description = "User password"
   default = "secretpassword"
@@ -237,7 +237,7 @@ resource "aws_db_instance" "database" {
 
   master_password = sha256(var.admin_password)
 }
-```
+~~~
 
 The resulting hash value is then assigned to the `master_password` attribute, which ensures that the sensitive information remains protected through encryption.
 
@@ -247,7 +247,7 @@ When working with IP addresses and network-related operations within Terraform, 
 
 For instance, when you need to provision a set of virtual machines within a subnet with a specific [CIDR block](https://www.techtarget.com/searchnetworking/definition/CIDR), you can use `cidrsubnet` to calculate the individual IP addresses for each machine within the subnet. To do so, open the Terraform console and add the following code:
 
-```terraform
+~~~
 variable "subnet_cidr_block" {
   description = "CIDR block for the subnet"
   default     = "10.0.0.0/24"
@@ -260,7 +260,7 @@ resource "aws_instance" "example" {
   private_ip = cidrsubnet(var.subnet_cidr_block, 8, count.index)
 }
 
-```
+~~~
 
 Here, the `cidrsubnet` function allocates a unique IP address from the specified subnet CIDR block for each instance. The `count.index` value ensures each instance receives a distinct IP address within the subnet.
 
@@ -270,7 +270,7 @@ Terraform includes several built-in functions for performing [type conversions](
 
 The most common type conversion use case involves using `try`. The `try` function handles potential null or undefined values. In the following example, you can see how the `try` function attempts to convert the data to a string but also provides a fallback value `"NA"` in case the conversion fails:
 
-```terraform
+~~~
 variable "data" {
     default = 156
 }
@@ -278,7 +278,7 @@ variable "data" {
 locals {
     external_data = try(tostring(var.data), "NA")
 }
-```
+~~~
 
 ## Conclusion
 
@@ -293,7 +293,6 @@ In this article, you learned about the various built-in functions Terraform supp
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
 - [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
