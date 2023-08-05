@@ -300,10 +300,11 @@ Fortunately, you covered a lot of ground in this article! You learned about auth
 
 [Earthly](https://earthly.dev/) is a build automation tool that you can use in conjunction with CloudFormation. With Earthly, you create Earthfiles that define the steps to build, test, and package your CloudFormation template files. Then you can incorporate Earthly commands within your CI/CD scripts to automate deployments, which is all in line with the CloudFormation best practices you learned. Overall, Earthly gives you greater automation and control over your CloudFormation build workflows—install it and try it out today.
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 * [ ] Create header image in Canva
 * [ ] Optional: Find ways to break up content with quotes or images
 * [ ] Add keywords for internal links to front-matter
 * [ ] Run `link-opp` and find 1-5 places to incorporate links
-* [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
