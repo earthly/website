@@ -288,11 +288,8 @@ In this article, you learned about the various built-in functions Terraform supp
 
 ## Outside Article Checklist
 
-- [ ] Add in Author page
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
 
 
 {% include_html cta/bottom-cta.html %}
