@@ -23,6 +23,8 @@ In this article, you'll learn more about Terraform functions and their practical
 
 ## Why You Need Terraform Functions
 
+![Why]({{site.images}}{{page.slug}}/why.png)
+
 Terraform functions are crucial in dynamically determining values within your Terraform configurations at runtime. They enable you not only to calculate values and manipulate tasks but also to streamline repetitive tasks. Designed to be lightweight and efficient, Terraform functions are particularly well-suited for large-scale infrastructure automation projects.
 
 Moreover, Terraform functions provide powerful capabilities for manipulating and transforming data within your configurations. Whether it's performing numerical operations utilizing string functions or managing file systems, these functions provide the necessary tools for enhanced flexibility and control in your Terraform workflow.
@@ -34,6 +36,8 @@ Although predefined values can be fed into the configuration file, this approach
 To execute the code snippets in this article, you must install Terraform locally on your system by following the official [Terraform installation](https://developer.hashicorp.com/terraform/downloads) guide. Alternatively, you can utilize an online Terraform playground to run the code examples in your browser.
 
 ## Types of Terraform Functions
+
+![Types]({{site.images}}{{page.slug}}/types.png)
 
 Terraform functions are essential building blocks within the Terraform language that enable developers to express complex infrastructure requirements and automate infrastructure deployment. From mathematical operations to string manipulation and conditional logic, Terraform functions offer diverse capabilities, contributing to infrastructure automation's flexibility and extensibility. The following are types of terraform functions:
 
@@ -285,10 +289,5 @@ locals {
 Terraform's built-in functions provide a powerful and flexible way to enhance your infrastructure provisioning code. These functions allow you to perform calculations, manipulate data, and dynamically generate configuration values within your Terraform code. With many functions available, you can easily tailor your infrastructure provisioning process to meet your needs.
 
 In this article, you learned about the various built-in functions Terraform supports, including type conversion, hashing, and numeric. If you're looking to take your infrastructure provisioning to the next level, be sure to explore the many possibilities offered by Terraform's built-in functions. DevOps engineers can increase the efficiency of their workflows. Incorporating Terraform functions into infrastructure automation can significantly benefit the management and provisioning of resources.
-
-## Outside Article Checklist
-
-- [ ] Optional: Find ways to break up content with quotes or images
-
 
 {% include_html cta/bottom-cta.html %}
