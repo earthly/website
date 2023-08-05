@@ -37,7 +37,7 @@ In AWS CloudFormation, you create and manage stacks. A stack is simply a collect
 
 Understanding the ins and outs of CloudFormation templates is a must if you want to become a CloudFormation expert. A CloudFormation template is a JSON or YAML file that describes the desired state of your AWS infrastructure. It defines each of the AWS resources that you want to deploy, along with their configurations. For instance, here's a very simple template that contains just one resource, an Amazon Elastic Compute Cloud (Amazon EC2) instance, written in JSON:
 
-~~~
+~~~{.json caption=""}
 ---
 {
   "Description": "Simple CloudFormation Template with EC2 Instance",
@@ -59,9 +59,10 @@ As you can see from this example, the main component of any CloudFormation templ
 
 Take a look at a slightly more involved AWS CloudFormation template that defines the Amazon Virtual Private Cloud (Amazon VPC), subnet, and EC2 security group configurations alongside the instance. This time, using YAML. You'll use this template throughout this article, so save this template in a file called `cfn-template.yml` to follow along:
 
-~~~
+~~~{.yaml caption="cfn-template.yml"}
 ---
-Description: Simple CloudFormation Template with EC2 Instance, VPC, Subnet, and Security Group
+Description: Simple CloudFormation Template with EC2 Instance, \
+VPC, Subnet, and Security Group
 Resources:
   MyVPC:
     Type: AWS::EC2::VPC
@@ -127,7 +128,7 @@ CloudFormation then creates your stack while you sit back and relax! While Cloud
 
 So far, you haven't run into any hiccups. However, you may encounter a scenario where you provide CloudFormation with invalid configurations, which can cause issues during stack operations. To demonstrate what happens when CloudFormation encounters issues, as well as walk you through a sample update flow, substitute the `ImageId: ami-06a0cd9728546d178` property in the template with the following:
 
-~~~
+~~~{.bash caption=">_"}
 ImageId: ami-12345678
 ~~~
 
@@ -157,25 +158,28 @@ You can use CloudFormation to provision hundreds of different types of resources
 
 Earlier, we took a look at the [`AWS::EC2::Instance`](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-instance.html) resource. The key properties to pay attention to are the `ImageId`, `InstanceType`, and `KeyName`. While the `KeyName` isn't required, if you don't specify one, you won't be able to connect to your instance unless you choose an AMI with an alternative way of logging in.
 
-~~~
+~~~{.yaml caption="cfn-template.yml"}
 ---
 Description: CloudFormation Template for an EC2 Instance
 Resources:
   MyEC2Instance:
     Type: AWS::EC2::Instance
     Properties:
-      ImageId: ami-12345678  # Replace with the desired AMI ID
+      ImageId: ami-12345678  
+      # Replace with the desired AMI ID
       InstanceType: t2.micro
-      KeyName: my-keypair    # Replace with the name of an existing EC2 key pair
+      KeyName: my-keypair    
+      # Replace with the name of an existing EC2 key pair
       SecurityGroups:
-        - !Ref MySecurityGroup  # Replace with the logical name of an existing security group
+        - !Ref MySecurityGroup  
+        # Replace with the logical name of an existing security group
 ~~~
 
 ### VPCs and Subnets
 
 You'll also likely be working with virtual private clouds (VPCs) and associated subnets. Here's a definition of an [`AWS::EC2::VPC`](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-vpc.html) resource with a single public [`AWS::EC2::Subnet`](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-subnet.html):
 
-~~~
+~~~{.yaml caption="cfn-template.yml"}
 ---
 Description: CloudFormation Template for VPC with Subnets
 Resources:
@@ -204,7 +208,7 @@ Here, the `CidrBlock` property defines the CIDR block for the VPC, which is the 
 
 With EC2 instances and VPCs, you'll also definitely come across [`AWS::EC2::SecurityGroup`](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-security-group.html) resources. Here's an example of a template that configures a security group with inbound rules to allow SSH access and HTTP access (port 22 and port 80) to an EC2 instance:
 
-~~~
+~~~{.yaml caption="cfn-template.yml"}
 ---
 Description: CloudFormation Template for Security Group
 Resources:
@@ -230,7 +234,7 @@ The `SecurityGroupIngress` property specifies the inbound rules for the security
 
 For data storage, the [`AWS::RDS::DBInstance`](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbinstance.html) is a very popular option.
 
-~~~
+~~~{.yaml caption="cfn-template.yml"}
 ---
 Description: CloudFormation Template for RDS Database
 Resources:
@@ -253,7 +257,7 @@ This template defines important properties such as the `AllocatedStorage`, `DBIn
 
 Last but definitely not least, we have the [`AWS::S3::Bucket`](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket.html) resource.
 
-~~~
+~~~{.yaml caption="cfn-template.yml"}
 ---
 Description: CloudFormation Template for S3 Bucket
 Resources:
