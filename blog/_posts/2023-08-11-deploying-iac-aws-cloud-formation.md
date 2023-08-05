@@ -11,9 +11,6 @@ internal-links:
  - deployment with aws cloudformation
  - deploying infrastructure as code
  - code deployment
-
-excerpt: |
-    Learn how to write an engaging article with this checklist that covers everything from creating a catchy title to adding captivating images and incorporating internal links. Perfect for both new and experienced writers!
 ---
 
 **We're [Earthly](https://earthly.dev/). We simplify building software with containerization. This article shows you how to deploy Infrastructure as Code with AWS CloudFormation. However, if you are curious about getting better build times by combining ideas from Makefile and Dockerfile? [Check us out.](https://earthly.dev/)**
