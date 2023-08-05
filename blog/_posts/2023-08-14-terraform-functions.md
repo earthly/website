@@ -45,7 +45,7 @@ For instance, in the following example, the `split` function divides a string in
 
 In your Terraform playground window, add the following code:
 
-~~~
+~~~{.tf caption=""}
 variable "vm_data" {
     default = "north-B-08dh89"
 }
@@ -55,7 +55,7 @@ In this code, a new variable, `vm-data`, is created. This stores the default val
 
 Now, append the following lines of code in the previous snippet:
 
-~~~
+~~~{.tf caption=""}
 locals {
    vm_vals = split("-", var.vm_data)
 }
@@ -65,7 +65,7 @@ This code defines a local value named `vm_vals` using the `locals` block. The va
 
 You can use this value in your resources in the Terraform configuration like this:
 
-~~~
+~~~{.tf caption=""}
 resource "aws_instance" "app"{
     region = local.vm_vals.value[0]
     branch = local.vm_vals.each.value[1]
@@ -84,7 +84,7 @@ Additionally, collection functions provide a convenient way to iterate over elem
 
 One of the scenarios in which collection functions are useful is when you want to sort the order of resources in your configuration using the `sort` collection function. Or you could reverse the order using the `reverse` function:
 
-~~~
+~~~{.tf caption=""}
 variable "servers" {
   type = list(string)
   default = ["ServerC", "ServerA", "ServerB"]
@@ -93,7 +93,7 @@ variable "servers" {
 
 In this code, the `servers` variable is defined with a list type and provides a default value of `["ServerC", "ServerA", "ServerB"]`. To sort the elements in this variable, you can use the `sort` function:
 
-~~~
+~~~{.tf caption=""}
 locals {
     names = sort(var.servers)
 }
@@ -103,7 +103,7 @@ Here, the local value `names` is assigned the sorted version of the `var.servers
 
 You can also use the built-in function `reverse` to reverse the order of server names. To do this, modify the previous code like this:
 
-~~~
+~~~{.tf caption=""}
 locals {
     names = sort(var.servers)
     reversed_names = reverse(local.names)
@@ -121,13 +121,13 @@ If you have some secret data in the configuration, you can use the `base64encode
 
 Run the following code in your Terraform console:
 
-~~~
+~~~{.bash caption=">_"}
 base64encode("secret_key")
 ~~~
 
 Running this code returns the following output:
 
-~~~
+~~~{ caption="Output"}
 "c2VjcmV0X2tleQ=="
 ~~~
 
@@ -135,13 +135,13 @@ Here, you can see that the original string, `secret_key`, gets encoded in Base64
 
 Terraform also has a `base64decode` function to decode the encoded string. Run the following code in your Terraform console:
 
-~~~
+~~~{.bash caption=">_"}
 base64decode("c2VjcmV0X2tleQ==")
 ~~~
 
 With `base64decode`, you can see the original string:
 
-~~~
+~~~{ caption="Output"}
 secret_key
 ~~~
 
@@ -155,13 +155,13 @@ In the following example, the `file` function in Terraform reads the contents of
 
 In your Terraform console, run the following code:
 
-~~~
+~~~{.bash caption=">_"}
 file("ip_addresses.txt")
 ~~~
 
 Running the previous code returns the contents of the file in the console:
 
-~~~
+~~~{ caption="Output"}
 192.168.1.10
 10.0.0.22
 172.16.0.101
@@ -178,7 +178,7 @@ For instance, numeric functions like `min` and `max` allow for dynamic decision-
 
 Type the following code in your Terraform console:
 
-~~~
+~~~{.tf caption=""}
 variable "desired_capacity" {
   type        = number
   default     = 5
@@ -187,7 +187,7 @@ variable "desired_capacity" {
 
 Here, you define a variable (*ie* `desired_capacity`) with a default value of `5`. You use this value to compare the autoscaling size after comparing it using the numeric functions. To do this, in the same console, write the following code:
 
-~~~
+~~~{.tf caption=""}
 resource "aws_autoscaling_group" "app" {
   name  = "my-autoscaling-group"
   min_size = min(var.desired_capacity, 2)
@@ -205,13 +205,13 @@ In the following example, the `formatdate` and `timestamp` functions are used to
 
 Run the following code in your Terraform console:
 
-~~~
+~~~{.bash caption=">_"}
 formatdate("EEEE DD MMM YYYY", timestamp())
 ~~~
 
 Your output should look like this:
 
-~~~
+~~~{ caption="Output"}
 "Thursday 15 Jun 2023"
 ~~~
 
@@ -227,7 +227,7 @@ In production systems, hashing functions are used to encrypt sensitive data like
 
 For instance, in the following example, the `admin_password` value undergoes a secure transformation utilizing the `sha256` hashing algorithm:
 
-~~~
+~~~{.tf caption=""}
 variable "admin_password" {
   description = "User password"
   default = "secretpassword"
@@ -247,7 +247,7 @@ When working with IP addresses and network-related operations within Terraform, 
 
 For instance, when you need to provision a set of virtual machines within a subnet with a specific [CIDR block](https://www.techtarget.com/searchnetworking/definition/CIDR), you can use `cidrsubnet` to calculate the individual IP addresses for each machine within the subnet. To do so, open the Terraform console and add the following code:
 
-~~~
+~~~{.tf caption=""}
 variable "subnet_cidr_block" {
   description = "CIDR block for the subnet"
   default     = "10.0.0.0/24"
@@ -270,7 +270,7 @@ Terraform includes several built-in functions for performing [type conversions](
 
 The most common type conversion use case involves using `try`. The `try` function handles potential null or undefined values. In the following example, you can see how the `try` function attempts to convert the data to a string but also provides a fallback value `"NA"` in case the conversion fails:
 
-~~~
+~~~{.tf caption=""}
 variable "data" {
     default = 156
 }
