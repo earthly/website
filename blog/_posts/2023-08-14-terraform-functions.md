@@ -23,7 +23,7 @@ In this article, you'll learn more about Terraform functions and their practical
 
 ## Why You Need Terraform Functions
 
-![Why]({{site.images}}{{page.slug}}/why.png)
+![Why]({{site.images}}{{page.slug}}/why.png)\
 
 Terraform functions are crucial in dynamically determining values within your Terraform configurations at runtime. They enable you not only to calculate values and manipulate tasks but also to streamline repetitive tasks. Designed to be lightweight and efficient, Terraform functions are particularly well-suited for large-scale infrastructure automation projects.
 
@@ -37,7 +37,7 @@ To execute the code snippets in this article, you must install Terraform locally
 
 ## Types of Terraform Functions
 
-![Types]({{site.images}}{{page.slug}}/types.png)
+![Types]({{site.images}}{{page.slug}}/types.png)\
 
 Terraform functions are essential building blocks within the Terraform language that enable developers to express complex infrastructure requirements and automate infrastructure deployment. From mathematical operations to string manipulation and conditional logic, Terraform functions offer diverse capabilities, contributing to infrastructure automation's flexibility and extensibility. The following are types of terraform functions:
 
