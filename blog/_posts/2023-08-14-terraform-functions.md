@@ -295,4 +295,5 @@ In this article, you learned about the various built-in functions Terraform supp
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
+
+{% include_html cta/bottom-cta.html %}
