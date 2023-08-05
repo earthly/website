@@ -106,6 +106,8 @@ Apart from the `Resources` component, there are plenty of others that we didn't 
 
 ## Creating and Updating Stacks
 
+![stack]({{site.images}}{{page.slug}}/stack.png)\
+
 Once your template is saved, you're ready to deploy your stack. To do this, log into your AWS account and head over to the CloudFormation console. Select **Create stack**:
 
 <div class="wide">
@@ -151,6 +153,8 @@ A [rollback](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stac
 Finally, if you decide that you no longer need your stack, you can simply delete it by choosing **Delete**. This deletes all resources in the stack unless you enable termination protection settings on it (more on this later).
 
 ## Configuring AWS Resources in CloudFormation
+
+![Configuring]({{site.images}}{{page.slug}}/configure.png)\
 
 You can use CloudFormation to provision hundreds of different types of resources. In this section, we'll take a look at some examples of the most popular ones that you'll probably see in most production stacks.
 
@@ -276,6 +280,8 @@ The important properties here include the `BucketName`, `AccessControl` policy, 
 
 ## Tips for Managing AWS Resources
 
+![Tips]({{site.images}}{{page.slug}}/tips.png)\
+
 As you learn more about CloudFormation, you'll start to really expand your stacks. Whenever you add or update a resource in your stack, always use CloudFormation to make these changes. In other words, update your template instead of accidentally updating a resource's configuration directly in its service console. Making these out-of-band changes can cause resources to drift from their CloudFormation template configuration.
 
 If your stack has drifted, you can use CloudFormation's [drift detection feature](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/detect-drift-stack.html) to correct these differences.
@@ -309,7 +315,3 @@ Fortunately, you covered a lot of ground in this article! You learned about auth
 [Earthly](https://earthly.dev/) is a build automation tool that you can use in conjunction with CloudFormation. With Earthly, you create Earthfiles that define the steps to build, test, and package your CloudFormation template files. Then you can incorporate Earthly commands within your CI/CD scripts to automate deployments, which is all in line with the CloudFormation best practices you learned. Overall, Earthly gives you greater automation and control over your CloudFormation build workflows—install it and try it out today.
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-* [ ] Optional: Find ways to break up content with quotes or images
