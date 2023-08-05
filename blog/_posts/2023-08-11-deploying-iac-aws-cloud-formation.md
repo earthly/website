@@ -312,5 +312,4 @@ Fortunately, you covered a lot of ground in this article! You learned about auth
 
 ## Outside Article Checklist
 
-* [ ] Create header image in Canva
 * [ ] Optional: Find ways to break up content with quotes or images
