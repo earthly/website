@@ -7,7 +7,11 @@ author: Alexander Yu
 editor: Mustapha Ahmad Ayodeji
 
 internal-links:
- - just an example
+ - deploying infrastructure
+ - deployment with aws cloudformation
+ - deploying infrastructure as code
+ - code deployment
+
 excerpt: |
     Learn how to write an engaging article with this checklist that covers everything from creating a catchy title to adding captivating images and incorporating internal links. Perfect for both new and experienced writers!
 ---
@@ -306,5 +310,3 @@ Fortunately, you covered a lot of ground in this article! You learned about auth
 
 * [ ] Create header image in Canva
 * [ ] Optional: Find ways to break up content with quotes or images
-* [ ] Add keywords for internal links to front-matter
-* [ ] Run `link-opp` and find 1-5 places to incorporate links
