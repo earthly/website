@@ -7,7 +7,10 @@ author: Alexander Yu
 editor: Ubaydah Abdulwasiu
 
 internal-links:
- - just an example
+ - aws cloudwatch
+ - getting started with aws
+ - application performance with aws
+ - aws cloudwatch service
 ---
 
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. This article covers getting started with AWS CloudWatch, which is a great for monitoring applications. If you're interested in a simple and containerized approach to building software then [check us out](/).**
@@ -184,8 +187,5 @@ A service like CloudWatch is also great to use alongside a build automation tool
 
 * [ ] Create header image in Canva
 * [ ] Optional: Find ways to break up content with quotes or images
-
-* [ ] Add keywords for internal links to front-matter
-* [ ] Run `link-opp` and find 1-5 places to incorporate links
 
 {% include_html cta/bottom-cta.html %}
