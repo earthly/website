@@ -31,13 +31,13 @@ Before you begin, you need an [AWS account](https://aws.amazon.com/account/), an
 
 To check what version of the AWS CLI you have, run the following:
 
-~~~
+~~~{.bash caption=">_"}
 aws --version
 ~~~
 
 Output:
 
-~~~
+~~~{ caption="Output"}
 aws-cli/2.11.20 Python/3.11.3 Windows/10 exe/AMD64 prompt/off
 ~~~
 
@@ -49,13 +49,13 @@ You also need to install Terraform version 1.4.6 or newer. A list of the availab
 
 Once you've installed Terraform, run the following command to get the Terraform version and confirm that it is installed correctly:
 
-~~~
+~~~{.bash caption=">_"}
 terraform --version
 ~~~
 
 My version is 1.4.6, running on the Windows platform:
 
-~~~
+~~~{ caption="Output"}
 Terraform v1.4.6 on windows_amd64
 ~~~
 
@@ -157,7 +157,7 @@ Click on **Done** to close the **Retrieve access keys** page.
 
 After creating your new Terraform user, you need to set the credentials (*ie* access key and secret access key) to be used by Terraform to provision resources. To do so, open a new terminal, and run the `aws configure` command:
 
-~~~
+~~~{.bash caption=">_"}
 aws configure
 ~~~
 
@@ -186,7 +186,7 @@ Navigate to the project directory that you created previously (*ie* `terraform-v
 
 Add the following code to the `main.tf` file:
 
-~~~
+~~~{.tf caption="main.tf"}
 provider "aws" {
   region = "eu-west-1"  # Replace with your desired AWS region
 }
@@ -205,7 +205,7 @@ This code sets the provider as AWS. A provider is a plugin that lets Terraform m
 
 To initialize Terraform, run the following command in the working directory:
 
-~~~
+~~~{.bash caption=">_"}
 terraform init
 ~~~
 
@@ -213,7 +213,7 @@ Initialization plays a crucial role in Terraform, as it sets up essential compon
 
 You should get the following output, which signifies that Terraform was successfully initialized in the directory with the `main.tf` file:
 
-~~~
+~~~{ caption="Output"}
 Initializing the backend...
 
 Initializing provider plugins...
@@ -221,20 +221,20 @@ Initializing provider plugins...
 - Installing hashicorp/aws v4.67.0...
 - Installed hashicorp/aws v4.67.0 (signed by HashiCorp)
 
-Terraform has created a lock file .terraform.lock.hcl to record the provider
-selections it made above. Include this file in your version control repository
-so that Terraform can guarantee to make the same selections by default when
-you run "terraform init" in the future.
+Terraform has created a lock file .terraform.lock.hcl to record the 
+provider selections it made above. Include this file in your version 
+control repository so that Terraform can guarantee to make the same 
+selections by default when you run "terraform init" in the future.
 
 Terraform has been successfully initialized!
 
-You may now begin working with Terraform. Try running "terraform plan" to see
-any changes that are required for your infrastructure. All Terraform commands
-should now work.
+You may now begin working with Terraform. Try running "terraform plan" 
+to see any changes that are required for your infrastructure. All 
+Terraform commands should now work.
 
 If you ever set or change modules or backend configuration for Terraform,
-rerun this command to reinitialize your working directory. If you forget, other
-commands will detect it and remind you to do so if necessary.
+rerun this command to reinitialize your working directory. If you forget, 
+other commands will detect it and remind you to do so if necessary.
 ~~~
 
 ### Run the `terraform plan` Command
@@ -243,14 +243,15 @@ The [`terraform plan` command](https://developer.hashicorp.com/terraform/cli/com
 
 To run the command, run `terraform plan` within the project directory (*ie* the `terraform-vpc-demo` directory):
 
-~~~
+~~~{.bash caption=">_"}
 terraform plan
 ~~~
 
 Your output looks like this:
 
-~~~
-Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+~~~{ caption="Output"}
+Terraform used the selected providers to generate the following 
+execution plan. Resource actions are indicated with the following symbols:
   + create
 
 Terraform will perform the following actions:
@@ -285,9 +286,10 @@ Terraform will perform the following actions:
 
 Plan: 1 to add, 0 to change, 0 to destroy.
 
-───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+──────────────────────────────────────────────────────────────────────────
 
-Note: You didn't use the -out option to save this plan, so Terraform can't guarantee to take exactly these actions if you run "terraform apply" now.
+Note: You didn't use the -out option to save this plan, so Terraform can't 
+guarantee to take exactly these actions if you run "terraform apply" now.
 
 ~~~
 
@@ -303,14 +305,15 @@ Currently, you should have only the default VPC in the region:
 
 The `terraform plan` command only shows you what will change, you need to run `terraform apply` to actually apply the changes:
 
-~~~
+~~~{.bash caption=">_"}
 terraform apply
 ~~~
 
 This is what your output looks like:
 
-~~~
-Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+~~~{ caption="Output"}
+Terraform used the selected providers to generate the following execution 
+plan. Resource actions are indicated with the following symbols:
   + create
 
 Terraform will perform the following actions:
@@ -355,7 +358,7 @@ Do you want to perform these actions?
 
 Enter `yes` to approve the changes so Terraform starts creating the VPC. If the creation is successful, you'll get the following output:
 
-~~~
+~~~{.bash caption=">_"}
 Enter a value: yes
 
 aws_vpc.demo-vpc: Creating...
@@ -390,7 +393,7 @@ Subnets are created in an AWS VPC to segment the VPC's IP address range into sma
 
 To create subnets in the VPC `demo-vpc`, add the following configurations to the `main.tf` file:
 
-~~~
+~~~{.tf caption="main.tf"}
 resource "aws_subnet" "private-subnet-1" {
   vpc_id     = aws_vpc.demo-vpc.id
   cidr_block = "10.0.1.0/24"
@@ -443,7 +446,7 @@ Then run the plan command, and if all goes well, apply the changes:
 
 To provide internet access to the public subnets, you need to create an internet gateway. Add the following configuration to create an internet gateway called `demo-igw` in the `main.tf` file:
 
-~~~
+~~~{.tf caption="main.tf"}
 resource "aws_internet_gateway" "demo-igw" {
   vpc_id = aws_vpc.demo-vpc.id
   tags = {
@@ -480,7 +483,7 @@ In this case, you need to create a third route table and associate the public su
 
 To do so, add the following configuration in the `main.tf` file:
 
-~~~
+~~~{.tf caption="main.tf"}
 resource "aws_route_table" "public-route-table" {
   vpc_id = aws_vpc.demo-vpc.id
   tags = {
@@ -503,7 +506,7 @@ After applying the changes, you need to associate the public subnets with it. Cu
 
 To associate the public subnets with the `public-route-table`, add the following configuration to the `main.tf` file:
 
-~~~
+~~~{.tf caption="main.tf"}
 resource "aws_route" "public-route" {
   route_table_id         = aws_route_table.public-route-table.id
   destination_cidr_block = "0.0.0.0/0"
@@ -547,7 +550,7 @@ And there is no NAT gateway:
 
 To create the NAT gateway, add the following configuration in the `main.tf` file:
 
-~~~
+~~~{.tf caption="main.tf"}
 resource "aws_eip" "nat-eip" {
   vpc = true
    tags = {
@@ -585,7 +588,7 @@ We are going to create two security groups, `web-sg` and `db-sg`:
 
 To create the security groups, add the following configuration to the `main.tf` file:
 
-~~~
+~~~{.tf caption="main.tf"}
 resource "aws_security_group" "web-sg" {
   vpc_id = aws_vpc.demo-vpc.id
   name   = "web-sg"
@@ -617,7 +620,8 @@ resource "aws_security_group" "db-sg" {
     from_port   = 3306
     to_port     = 3306
     protocol    = "tcp"
-    cidr_blocks = ["10.0.1.0/24", "10.0.2.0/24"]  # Allow traffic from private subnets
+    cidr_blocks = ["10.0.1.0/24", "10.0.2.0/24"]  
+    # Allow traffic from private subnets
   }
 
   egress {
@@ -651,7 +655,7 @@ Now that you've finished building the VPC, move on to provisioning resources.
 
 Provisioning EC2 instances is necessary to create and manage virtual servers in the cloud within the AWS infrastructure. To create two EC2 instances, add the following configuration in the `resources.tf` file:
 
-~~~
+~~~{.tf caption="main.tf"}
 resource "aws_instance" "private-instance" {
   ami           = "ami-00aa9d3df94c6c354"FF
   instance_type = "t2.micro"
@@ -695,7 +699,7 @@ To update the VPC configuration, all you need to do is make changes to the confi
 
 In the `main.tf` file, edit the following configuration:
 
-~~~
+~~~{.tf caption="main.tf"}
 resource "aws_subnet" "private-subnet-1" {
   vpc_id     = aws_vpc.demo-vpc.id
   cidr_block = "10.0.1.0/24"
@@ -717,7 +721,7 @@ resource "aws_subnet" "private-subnet-2" {
 
 And update it with this:
 
-~~~
+~~~{.tf caption="main.tf"}
 resource "aws_subnet" "private-subnet-1" {
   vpc_id     = aws_vpc.demo-vpc.id
   cidr_block = "10.0.1.0/24"
@@ -747,7 +751,7 @@ Apply the changes and the private subnets' availability zones are updated. This 
 
 To destroy the VPC and its associated resources, you can use the `terraform destroy` command:
 
-~~~
+~~~{.bash caption=">_"}
 terraform destroy
 ~~~
 
@@ -771,4 +775,5 @@ To learn more about Terraform and VPCs, check out these resources:
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
+
+{% include_html cta/bottom-cta.html %}
