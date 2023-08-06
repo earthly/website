@@ -73,50 +73,51 @@ Need more than the metrics that AWS emits by default? With AWS CloudWatch, you c
 
 To see how powerful this can be, suppose you currently sell a product in three colors (`red`, `yellow`, and `blue`), and you have a Lambda function that handles incoming orders. If you wanted to keep track of how many units of each color you sell in CloudWatch, you might add the following lines into your Lambda function (you're using Python here, but you can insert similar code in any language and in any application code that consumes the AWS SDK):
 
-```python
+~~~
 def lambda_handler(event, context):
 
-	// application logic here
+    // application logic here
 
-	cloudwatch = boto3.client('cloudwatch')
-	color = event['color'] // String
-	units_sold = event['units_sold'] // String
+    cloudwatch = boto3.client('cloudwatch')
+    color = event['color'] // String
+    units_sold = event['units_sold'] // String
 
-	cloudwatch.put_metric_data(
-		MetricData=[
-			{
-				'MetricName': 'Units Sold By Color',
-				'Dimensions': [
-					{
-						'Name': 'Color',
-						'Value': color
-					}
-				],
-				'Value': int(units_sold),
-				'Unit': 'None'
-			}
-		],
-		Namespace='Products'
-	)
+    cloudwatch.put_metric_data(
+        MetricData=[
+            {
+                'MetricName': 'Units Sold By Color',
+                'Dimensions': [
+                    {
+                        'Name': 'Color',
+                        'Value': color
+                    }
+                ],
+                'Value': int(units_sold),
+                'Unit': 'None'
+            }
+        ],
+        Namespace='Products'
+    )
 
-	// more application logic here
-```
+    // more application logic here
+~~~
 
 This code initializes a CloudWatch client, and then obtains two fields from the input event: the `color` of the unit sold, and the number of `units_sold`. To put custom metric data into CloudWatch, the code then calls the CloudWatch [PutMetricData](https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_PutMetricData.html) API with the `color` and `units_sold` parameters.
 
-To test this function, you can invoke it with the following JSON event object (*ie* via the AWS Lambda console): 
+To test this function, you can invoke it with the following JSON event object (*ie* via the AWS Lambda console):
 
-
-```json
+~~~
 {
-	"color": "yellow",
-	"units_sold": "3"
+    "color": "yellow",
+    "units_sold": "3"
 }
-```
+~~~
 
 You should see the metric show up in CloudWatch, under the custom `Products` namespace:
 
-![A screenshot of a custom metric displayed in AWS CloudWatch](https://imgur.com/aUjUTcx.png)
+<div class="wide">
+![A screenshot of a custom metric displayed in AWS CloudWatch]({{site.images}}{{page.slug}}/aUjUTcx.png)
+</div>
 
 You can use custom metrics in many ways, including the following:
 
@@ -128,7 +129,9 @@ You can use custom metrics in many ways, including the following:
 
 Once you've set up metrics for your application, the next step is to set up CloudWatch alarms. Alarms allow you to automate actions based on custom thresholds and conditions. For instance, from the CloudWatch console, you can set up an alarm that sends a notification via Amazon SNS whenever your Lambda functions throttle more than five times in a minute:
 
-![A screenshot of a CloudWatch alarm that triggers on throttles](https://imgur.com/xl3L06V.png)
+<div class="wide">
+![A screenshot of a CloudWatch alarm that triggers on throttles]({{site.images}}{{page.slug}}/xl3L06V.png)
+</div>
 
 When setting up your alarm, note these configurations:
 
@@ -148,7 +151,9 @@ Now that you have metrics and alarms, why not put them all into a centralized da
 
 The components of a CloudWatch dashboard are called widgets. There are a couple of common widgets, such as line charts, stacked area charts, single value, and alarm status. For example, you can create a quick dashboard using the custom metric `Units Sold By Color` (line chart) and the alarm you created (alarm status) in the previous two sections:
 
-![A screenshot of a custom CloudWatch dashboard containing widgets for a custom metric and an alarm status](https://imgur.com/PaBugYl.png)
+<div class="wide">
+![A screenshot of a custom CloudWatch dashboard containing widgets for a custom metric and an alarm status]({{site.images}}{{page.slug}}/PaBugYl.png)
+</div>
 
 After creating a dashboard, you can share them with team members or stakeholders, allowing for collaborative analysis. A common workflow is sharing a dashboard snapshot to support troubleshooting or monitoring efforts. This generates a snapshot URL for your dashboard and grants specific users read-only access.
 
@@ -161,7 +166,9 @@ Some key features of CloudWatch Logs include the following:
 * **Log storage and retention:** CloudWatch Logs stores your log data securely and provides long-term retention options. You can choose retention periods ranging from a few days to indefinitely, depending on application and compliance requirements.
 * **Searching and filtering:** Within a log group, you can filter and search for specific logs. From the console, you can enter simple text-based searches or filter expressions using [CloudWatch Logs filter syntax](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/FilterAndPatternSyntax.html). For example, you could filter on the request ID if you're tracking logs for a specific request. The filtered logs are displayed in the console, and you can further refine the search criteria if you want.
 
-![A screenshot of the CloudWatch Log console with results filtered based on a specific request ID](https://imgur.com/XkDnK1D.png)
+<div class="wide">
+![A screenshot of the CloudWatch Log console with results filtered based on a specific request ID]({{site.images}}{{page.slug}}/XkDnK1D.png)
+</div>
 
 * [**CloudWatch Log Insights:**](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AnalyzingLogData.html) Log Insights is an extension of CloudWatch Logs that enables you to run advanced queries using a purpose-built query language. It automatically discovers fields from logs in AWS services such as `@timestamp` or `@message`, making it easy to write and execute queries on your log data. Log Insights leverage an optimized query engine to deliver fast results, making it ideal for large volumes of log data. You can also create custom visualizations from the results to gain deeper insights.
 
@@ -170,16 +177,14 @@ Some key features of CloudWatch Logs include the following:
 This article introduced AWS CloudWatch and some of its key concepts and features, including metrics, alarms, dashboards, and logs. In addition, you learned how to customize CloudWatch to fit your application needs by creating custom metrics and dashboards. This is all essential knowledge required for you to monitor and track the performance of your AWS applications effectively.
 
 As you continue using AWS CloudWatch, be mindful of best practices, such as choosing the correct monitoring granularity, which varies from metric to metric. In addition, be sure to keep your alarms and dashboards organized (*ie* via CloudFormation) since they can get overwhelming to manage as you continue to add them. Finally, remember to choose an appropriate retention policy for your logs, which may depend on local laws and regulations.
- 
+
 A service like CloudWatch is also great to use alongside a build automation tool like [Earthly](https://earthly.dev/), which helps developers create reproducible and efficient build procedures. While Earthly itself doesn't directly integrate with CloudWatch, it can be used with Earthly features to help you monitor deployment-related metrics. For instance, you can use the monitored data to drive decisions on modifying Earthfiles and other continuous integration, continuous delivery (CI/CD) scripts that you use to automate deployments.
 
 ## Outside Article Checklist
 
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
+* [ ] Create header image in Canva
+* [ ] Optional: Find ways to break up content with quotes or images
+
+* [ ] Add keywords for internal links to front-matter
+* [ ] Run `link-opp` and find 1-5 places to incorporate links
+* [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
