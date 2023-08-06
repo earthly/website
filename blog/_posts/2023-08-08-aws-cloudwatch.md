@@ -76,7 +76,7 @@ Need more than the metrics that AWS emits by default? With AWS CloudWatch, you c
 
 To see how powerful this can be, suppose you currently sell a product in three colors (`red`, `yellow`, and `blue`), and you have a Lambda function that handles incoming orders. If you wanted to keep track of how many units of each color you sell in CloudWatch, you might add the following lines into your Lambda function (you're using Python here, but you can insert similar code in any language and in any application code that consumes the AWS SDK):
 
-~~~
+~~~{.python caption=""}
 def lambda_handler(event, context):
 
     // application logic here
@@ -109,7 +109,7 @@ This code initializes a CloudWatch client, and then obtains two fields from the 
 
 To test this function, you can invoke it with the following JSON event object (*ie* via the AWS Lambda console):
 
-~~~
+~~~{.json caption=""}
 {
     "color": "yellow",
     "units_sold": "3"
@@ -185,7 +185,6 @@ A service like CloudWatch is also great to use alongside a build automation tool
 
 ## Outside Article Checklist
 
-* [ ] Create header image in Canva
 * [ ] Optional: Find ways to break up content with quotes or images
 
 {% include_html cta/bottom-cta.html %}
