@@ -21,6 +21,8 @@ You'll notice that almost every service emits valuable performance metrics in AW
 
 ## Setting Up CloudWatch
 
+![Setting]({{site.images}}{{page.slug}}/setup.png)\
+
 As you learn new CloudWatch concepts in this article, you should follow along in your AWS account, and accessing CloudWatch from the AWS Management Console is the first step. Once you log into the console, navigate to CloudWatch to get a feel for its intuitive web-based interface.
 
 Most AWS services emit metrics and logs to AWS automatically (given the right permissions). Optionally, if you are working with [Amazon Elastic Compute Cloud (Amazon EC2)](https://aws.amazon.com/ec2/) instances and want those instances to send metrics and log data to CloudWatch, be sure to [install the CloudWatch agent](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/install-CloudWatch-Agent-on-EC2-Instance.html) on them.
@@ -28,6 +30,8 @@ Most AWS services emit metrics and logs to AWS automatically (given the right pe
 Finally, you can also install the [AWS Software Development Kit (SDK)](https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/installing-jssdk.html) and [Command Line Interface (CLI)](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html). These tools provide programmatic access to CloudWatch, allowing you to integrate CloudWatch with your applications and automate certain tasks.
 
 ## Monitoring AWS Resources
+
+![Monitoring]({{site.images}}{{page.slug}}/monitor.png)\
 
 To get started with AWS CloudWatch, there are three key concepts that you need to understand—metrics, namespaces, and dimensions:
 
@@ -130,6 +134,8 @@ You can use custom metrics in many ways, including the following:
 
 ## Alarms and Notifications
 
+![Alarms]({{site.images}}{{page.slug}}/alarm.png)\
+
 Once you've set up metrics for your application, the next step is to set up CloudWatch alarms. Alarms allow you to automate actions based on custom thresholds and conditions. For instance, from the CloudWatch console, you can set up an alarm that sends a notification via Amazon SNS whenever your Lambda functions throttle more than five times in a minute:
 
 <div class="wide">
@@ -182,9 +188,5 @@ This article introduced AWS CloudWatch and some of its key concepts and features
 As you continue using AWS CloudWatch, be mindful of best practices, such as choosing the correct monitoring granularity, which varies from metric to metric. In addition, be sure to keep your alarms and dashboards organized (*ie* via CloudFormation) since they can get overwhelming to manage as you continue to add them. Finally, remember to choose an appropriate retention policy for your logs, which may depend on local laws and regulations.
 
 A service like CloudWatch is also great to use alongside a build automation tool like [Earthly](https://earthly.dev/), which helps developers create reproducible and efficient build procedures. While Earthly itself doesn't directly integrate with CloudWatch, it can be used with Earthly features to help you monitor deployment-related metrics. For instance, you can use the monitored data to drive decisions on modifying Earthfiles and other continuous integration, continuous delivery (CI/CD) scripts that you use to automate deployments.
-
-## Outside Article Checklist
-
-* [ ] Optional: Find ways to break up content with quotes or images
 
 {% include_html cta/bottom-cta.html %}
