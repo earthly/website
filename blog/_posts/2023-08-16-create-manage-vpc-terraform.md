@@ -772,9 +772,4 @@ To learn more about Terraform and VPCs, check out these resources:
 - The [AWS Provider documentation](https://registry.terraform.io/providers/hashicorp/aws/latest/docs) specifically focuses on how to use Terraform to manage AWS resources, including VPCs.
 - There's also a [GitHub repository](https://github.com/terraform-aws-modules/terraform-aws-examples) with a collection of Terraform example configurations for various AWS resources, including VPCs. This can help serve as a reference if you're looking to build more complex VPC configurations.
 
-## Outside Article Checklist
-
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-
 {% include_html cta/bottom-cta.html %}
