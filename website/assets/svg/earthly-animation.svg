@@ -9,7 +9,7 @@
 
     <g id="cacheText">
       <rect y="0.182617" width="60" height="21" rx="4" fill="white" fill-opacity="0.8"/>
-      <text x="7" y="15.5" fill="#2D7E5D" style="font-size: 14px; font-weight: 500; letter-spacing: -0.05em">Cached</text>
+      <text x="7" y="15.5" fill="#757E8F" style="font-size: 14px; font-weight: 500; letter-spacing: -0.05em">Cached</text>
     </g>
 
     <linearGradient id="gradient">
@@ -89,31 +89,31 @@
   </use>
 
   <!-- A2 -->
-  <rect width="12.8847" height="12.8847" rx="3.22117" fill="#2D7E5D" stroke="#2D7E5D" stroke-width="2.81841" transform="matrix(-1 0 0 1 402.5 221)"/>
+  <rect width="12.8847" height="12.8847" rx="3.22117" fill="#535E73" stroke="#535E73" stroke-width="2.81841" transform="matrix(-1 0 0 1 402.5 221)"/>
   <image href="assets/svg/cache.svg" style="opacity: 0; transform-origin: 13px 13px" transform="translate(383 214.5)">
     <animate attributeName="opacity" begin="a1.end" dur="1.5s" fill="freeze" keyTimes="0; 0.167; 0.667; 1" values="0; 1; 1; 0"/>
   </image>
 
   <!-- A5 -->
-  <rect width="12.8847" height="12.8847" rx="3.22117" fill="#2D7E5D" stroke="#2D7E5D" stroke-width="2.81841" transform="matrix(-1 0 0 1 346.25 170)"/>
+  <rect width="12.8847" height="12.8847" rx="3.22117" fill="#535E73" stroke="#535E73" stroke-width="2.81841" transform="matrix(-1 0 0 1 346.25 170)"/>
   <image href="assets/svg/cache.svg" style="opacity: 0; transform-origin: 13px 13px" transform="translate(326.8 163.5)">
     <animate attributeName="opacity" begin="a1.end" dur="1.5s" fill="freeze" keyTimes="0; 0.167; 0.667; 1" values="0; 1; 1; 0"/>
   </image>
 
   <!-- A6 -->
-  <rect width="12.8847" height="12.8847" rx="3.22117" fill="#2D7E5D" stroke="#2D7E5D" stroke-width="2.81841" transform="matrix(-1 0 0 1 298.5 170)"/>
+  <rect width="12.8847" height="12.8847" rx="3.22117" fill="#535E73" stroke="#535E73" stroke-width="2.81841" transform="matrix(-1 0 0 1 298.5 170)"/>
   <image href="assets/svg/cache.svg" style="opacity: 0; transform-origin: 13px 13px" transform="translate(278.8 163.5)">
     <animate attributeName="opacity" begin="a1.end" dur="1.5s" fill="freeze" keyTimes="0; 0.167; 0.667; 1" values="0; 1; 1; 0"/>
   </image>
 
   <!-- A7 -->
-  <rect width="12.8847" height="12.8847" rx="3.22117" fill="#2D7E5D" stroke="#2D7E5D" stroke-width="2.81841" transform="matrix(-1 0 0 1 315.969 201)"/>
+  <rect width="12.8847" height="12.8847" rx="3.22117" fill="#535E73" stroke="#535E73" stroke-width="2.81841" transform="matrix(-1 0 0 1 315.969 201)"/>
   <image href="assets/svg/cache.svg" style="opacity: 0; transform-origin: 13px 13px" transform="translate(296.3 194.8)">
     <animate attributeName="opacity" begin="a1.end" dur="1.5s" fill="freeze" keyTimes="0; 0.167; 0.667; 1" values="0; 1; 1; 0"/>
   </image>
 
   <!-- A8 -->
-  <rect width="12.8847" height="12.8847" rx="3.22117" fill="#2D7E5D" stroke="#2D7E5D" stroke-width="2.81841" transform="matrix(-1 0 0 1 332 252)"/>
+  <rect width="12.8847" height="12.8847" rx="3.22117" fill="#535E73" stroke="#535E73" stroke-width="2.81841" transform="matrix(-1 0 0 1 332 252)"/>
   <image href="assets/svg/cache.svg" style="opacity: 0; transform-origin: 13px 13px" transform="translate(312.3 245.7)">
     <animate attributeName="opacity" begin="a1.end" dur="1.5s" fill="freeze" keyTimes="0; 0.167; 0.667; 1" values="0; 1; 1; 0"/>
   </image>
@@ -130,9 +130,9 @@
   </use>
 
   <!-- A12 -->
-  <rect width="12.8847" height="12.8847" rx="3.22117" fill="white" stroke="#2D7E5D" stroke-width="2.81841" transform="matrix(-1 0 0 1 238 216.7)">
-    <animate attributeName="fill" begin="d6Logo.end + 2s" dur="400ms" fill="freeze" from="#2D7E5D" to="white"/>
-    <animate attributeName="fill" begin="a12Logo.end" dur="400ms" fill="freeze" from="white" to="#2D7E5D"/>
+  <rect width="12.8847" height="12.8847" rx="3.22117" fill="white" stroke="#535E73" stroke-width="2.81841" transform="matrix(-1 0 0 1 238 216.7)">
+    <animate attributeName="fill" begin="d6Logo.end + 2s" dur="400ms" fill="freeze" from="#535E73" to="white"/>
+    <animate attributeName="fill" begin="a12Logo.end" dur="400ms" fill="freeze" from="white" to="#535E73"/>
   </rect>
   <image href="assets/svg/rust.svg" style="opacity: 0; transform-origin: 29.5px 30px" transform="translate(203 192)">
     <animate attributeName="opacity" begin="a9.end" dur="100ms" fill="freeze" from="0" to="1"/>
@@ -141,13 +141,13 @@
   </image>
 
   <!-- A13 -->
-  <rect width="12.8847" height="12.8847" rx="3.22117" fill="#2D7E5D" stroke="#2D7E5D" stroke-width="2.81841" transform="matrix(-1 0 0 1 215.7 255.5)"/>
+  <rect width="12.8847" height="12.8847" rx="3.22117" fill="#535E73" stroke="#535E73" stroke-width="2.81841" transform="matrix(-1 0 0 1 215.7 255.5)"/>
   <image href="assets/svg/cache.svg" style="opacity: 0; transform-origin: 13px 13px" transform="translate(196 248.9)">
     <animate attributeName="opacity" begin="a9.end" dur="1.5s" fill="freeze" keyTimes="0; 0.167; 0.667; 1" values="0; 1; 1; 0"/>
   </image>
 
   <!-- A14 -->
-  <rect width="12.8847" height="12.8847" rx="3.22117" fill="#2D7E5D" stroke="#2D7E5D" stroke-width="2.81841" transform="matrix(-1 0 0 1 230.5 285)"/>
+  <rect width="12.8847" height="12.8847" rx="3.22117" fill="#535E73" stroke="#535E73" stroke-width="2.81841" transform="matrix(-1 0 0 1 230.5 285)"/>
   <image href="assets/svg/cache.svg" style="opacity: 0; transform-origin: 13px 13px" transform="translate(210.9 278.6)">
     <animate attributeName="opacity" begin="a9.end" dur="1.5s" fill="freeze" keyTimes="0; 0.167; 0.667; 1" values="0; 1; 1; 0"/>
   </image>
@@ -157,9 +157,9 @@
   </use>
 
   <!-- A15 -->
-  <rect width="12.8847" height="12.8847" rx="3.22117" fill="white" stroke="#2D7E5D" stroke-width="2.81841" transform="matrix(-1 0 0 1 279 322.5)">
-    <animate attributeName="fill" begin="d6Logo.end + 2s" dur="400ms" fill="freeze" from="#2D7E5D" to="white"/>
-    <animate attributeName="fill" begin="a15Logo.end" dur="400ms" fill="freeze" from="white" to="#2D7E5D"/>
+  <rect width="12.8847" height="12.8847" rx="3.22117" fill="white" stroke="#535E73" stroke-width="2.81841" transform="matrix(-1 0 0 1 279 322.5)">
+    <animate attributeName="fill" begin="d6Logo.end + 2s" dur="400ms" fill="freeze" from="#535E73" to="white"/>
+    <animate attributeName="fill" begin="a15Logo.end" dur="400ms" fill="freeze" from="white" to="#535E73"/>
   </rect>
   <image href="assets/svg/ruby.svg" style="opacity: 0; transform-origin: 29.5px 30px" transform="translate(243 298.4)">
     <animate attributeName="opacity" begin="a9.end" dur="100ms" fill="freeze" from="0" to="1"/>
@@ -189,9 +189,9 @@
   </use>
 
   <!-- B3 -->
-  <rect width="12.8847" height="12.8847" rx="3.22117" fill="white" stroke="#2D7E5D" stroke-width="2.81841" transform="matrix(-1 0 0 1 322 96)">
-    <animate attributeName="fill" begin="d6Logo.end + 2s" dur="400ms" fill="freeze" from="#2D7E5D" to="white"/>
-    <animate attributeName="fill" begin="b3Logo.end" dur="400ms" fill="freeze" from="white" to="#2D7E5D"/>
+  <rect width="12.8847" height="12.8847" rx="3.22117" fill="white" stroke="#535E73" stroke-width="2.81841" transform="matrix(-1 0 0 1 322 96)">
+    <animate attributeName="fill" begin="d6Logo.end + 2s" dur="400ms" fill="freeze" from="#535E73" to="white"/>
+    <animate attributeName="fill" begin="b3Logo.end" dur="400ms" fill="freeze" from="white" to="#535E73"/>
   </rect>
   <image href="assets/svg/python.svg" style="opacity: 0; transform-origin: 29.5px 30px" transform="translate(286 73)">
     <animate attributeName="opacity" begin="b2.end" dur="100ms" fill="freeze" from="0" to="1"/>
@@ -200,9 +200,9 @@
   </image>
 
   <!-- B6 -->
-  <rect width="12.8847" height="12.8847" rx="3.22117" fill="white" stroke="#2D7E5D" stroke-width="2.81841" transform="matrix(-1 0 0 1 251 53.8)">
-    <animate attributeName="fill" begin="d6Logo.end + 2s" dur="400ms" fill="freeze" from="#2D7E5D" to="white"/>
-    <animate attributeName="fill" begin="b3Logo.end" dur="400ms" fill="freeze" from="white" to="#2D7E5D"/>
+  <rect width="12.8847" height="12.8847" rx="3.22117" fill="white" stroke="#535E73" stroke-width="2.81841" transform="matrix(-1 0 0 1 251 53.8)">
+    <animate attributeName="fill" begin="d6Logo.end + 2s" dur="400ms" fill="freeze" from="#535E73" to="white"/>
+    <animate attributeName="fill" begin="b3Logo.end" dur="400ms" fill="freeze" from="white" to="#535E73"/>
   </rect>
   <image href="assets/svg/terraform.svg" style="opacity: 0; transform-origin: 29.5px 30px" transform="translate(215 30)">
     <animate attributeName="opacity" begin="b2.end" dur="100ms" fill="freeze" from="0" to="1"/>
@@ -211,9 +211,9 @@
   </image>
 
   <!-- B7 -->
-  <rect width="12.8847" height="12.8847" rx="3.22117" fill="white" stroke="#2D7E5D" stroke-width="2.81841" transform="matrix(-1 0 0 1 346 32)">
-    <animate attributeName="fill" begin="d6Logo.end + 2s" dur="400ms" fill="freeze" from="#2D7E5D" to="white"/>
-    <animate attributeName="fill" begin="b3Logo.end" dur="400ms" fill="freeze" from="white" to="#2D7E5D"/>
+  <rect width="12.8847" height="12.8847" rx="3.22117" fill="white" stroke="#535E73" stroke-width="2.81841" transform="matrix(-1 0 0 1 346 32)">
+    <animate attributeName="fill" begin="d6Logo.end + 2s" dur="400ms" fill="freeze" from="#535E73" to="white"/>
+    <animate attributeName="fill" begin="b3Logo.end" dur="400ms" fill="freeze" from="white" to="#535E73"/>
   </rect>
   <image href="assets/svg/docker.svg" style="opacity: 0; transform-origin: 29.5px 30px" transform="translate(309.5 7.5)">
     <animate attributeName="opacity" begin="b2.end" dur="100ms" fill="freeze" from="0" to="1"/>
@@ -222,37 +222,37 @@
   </image>
 
   <!-- B8 -->
-  <rect width="12.8847" height="12.8847" rx="3.22117" fill="#2D7E5D" stroke="#2D7E5D" stroke-width="2.81841" transform="matrix(-1 0 0 1 382 59)"/>
+  <rect width="12.8847" height="12.8847" rx="3.22117" fill="#535E73" stroke="#535E73" stroke-width="2.81841" transform="matrix(-1 0 0 1 382 59)"/>
   <image href="assets/svg/cache.svg" style="opacity: 0; transform-origin: 13px 13px" transform="translate(362.4 52.4)">
     <animate attributeName="opacity" begin="b2.end" dur="1.5s" fill="freeze" keyTimes="0; 0.167; 0.667; 1" values="0; 1; 1; 0"/>
   </image>
 
   <!-- B9 -->
-  <rect width="12.8847" height="12.8847" rx="3.22117" fill="#2D7E5D" stroke="#2D7E5D" stroke-width="2.81841" transform="matrix(-1 0 0 1 443 126)"/>
+  <rect width="12.8847" height="12.8847" rx="3.22117" fill="#535E73" stroke="#535E73" stroke-width="2.81841" transform="matrix(-1 0 0 1 443 126)"/>
   <image href="assets/svg/cache.svg" style="opacity: 0; transform-origin: 13px 13px" transform="translate(423.4 119.5)">
     <animate attributeName="opacity" begin="b1.end" dur="1.5s" fill="freeze" keyTimes="0; 0.167; 0.667; 1" values="0; 1; 1; 0"/>
   </image>
 
   <!-- B10 -->
-  <rect width="12.8847" height="12.8847" rx="3.22117" fill="#2D7E5D" stroke="#2D7E5D" stroke-width="2.81841" transform="matrix(-1 0 0 1 468.5 97)"/>
+  <rect width="12.8847" height="12.8847" rx="3.22117" fill="#535E73" stroke="#535E73" stroke-width="2.81841" transform="matrix(-1 0 0 1 468.5 97)"/>
   <image href="assets/svg/cache.svg" style="opacity: 0; transform-origin: 13px 13px" transform="translate(448.8 90.5)">
     <animate attributeName="opacity" begin="b1.end" dur="1.5s" fill="freeze" keyTimes="0; 0.167; 0.667; 1" values="0; 1; 1; 0"/>
   </image>
 
   <!-- B12 -->
-  <rect width="12.8847" height="12.8847" rx="3.22117" fill="#2D7E5D" stroke="#2D7E5D" stroke-width="2.81841" transform="matrix(-1 0 0 1 439 45)"/>
+  <rect width="12.8847" height="12.8847" rx="3.22117" fill="#535E73" stroke="#535E73" stroke-width="2.81841" transform="matrix(-1 0 0 1 439 45)"/>
   <image href="assets/svg/cache.svg" style="opacity: 0; transform-origin: 13px 13px" transform="translate(419.3 38.5)">
     <animate attributeName="opacity" begin="b1.end"  dur="1.5s" fill="freeze" keyTimes="0; 0.167; 0.667; 1" values="0; 1; 1; 0"/>
   </image>
 
   <!-- B14 -->
-  <rect width="12.8847" height="12.8847" rx="3.22117" fill="#2D7E5D" stroke="#2D7E5D" stroke-width="2.81841" transform="matrix(-1 0 0 1 499 45)"/>
+  <rect width="12.8847" height="12.8847" rx="3.22117" fill="#535E73" stroke="#535E73" stroke-width="2.81841" transform="matrix(-1 0 0 1 499 45)"/>
   <image href="assets/svg/cache.svg" style="opacity: 0; transform-origin: 13px 13px" transform="translate(479.3 38.5)">
     <animate attributeName="opacity" begin="b1.end" dur="1.5s" fill="freeze" keyTimes="0; 0.167; 0.667; 1" values="0; 1; 1; 0"/>
   </image>
 
   <!-- B16 -->
-  <rect width="12.8847" height="12.8847" rx="3.22117" fill="#2D7E5D" stroke="#2D7E5D" stroke-width="2.81841" transform="matrix(-1 0 0 1 469 5)"/>
+  <rect width="12.8847" height="12.8847" rx="3.22117" fill="#535E73" stroke="#535E73" stroke-width="2.81841" transform="matrix(-1 0 0 1 469 5)"/>
   <image href="assets/svg/cache.svg" style="opacity: 0; transform-origin: 13px 13px" transform="translate(449.3 -1.5)">
     <animate attributeName="opacity" begin="b1.end" dur="1.5s" fill="freeze" keyTimes="0; 0.167; 0.667; 1" values="0; 1; 1; 0"/>
   </image>
@@ -269,25 +269,25 @@
   </use>
 
   <!-- C1 -->
-  <rect width="12.8847" height="12.8847" rx="3.22117" fill="#2D7E5D" stroke="#2D7E5D" stroke-width="2.81841" transform="matrix(-1 0 0 1 171.5 185.7)"/>
+  <rect width="12.8847" height="12.8847" rx="3.22117" fill="#535E73" stroke="#535E73" stroke-width="2.81841" transform="matrix(-1 0 0 1 171.5 185.7)"/>
   <image href="assets/svg/cache.svg" style="opacity: 0; transform-origin: 13px 13px" transform="translate(151.7 179)">
     <animate attributeName="opacity" begin="t3.end" dur="1.5s" fill="freeze" keyTimes="0; 0.167; 0.667; 1" values="0; 1; 1; 0"/>
   </image>
 
   <!-- C3 -->
-  <rect width="12.8847" height="12.8847" rx="3.22117" fill="#2D7E5D" stroke="#2D7E5D" stroke-width="2.81841" transform="matrix(-1 0 0 1 133.5 227.5)"/>
+  <rect width="12.8847" height="12.8847" rx="3.22117" fill="#535E73" stroke="#535E73" stroke-width="2.81841" transform="matrix(-1 0 0 1 133.5 227.5)"/>
   <image href="assets/svg/cache.svg" style="opacity: 0; transform-origin: 13px 13px" transform="translate(113.8 221.2)">
     <animate attributeName="opacity" begin="t3.end" dur="1.5s" fill="freeze" keyTimes="0; 0.167; 0.667; 1" values="0; 1; 1; 0"/>
   </image>
 
   <!-- C5 -->
-  <rect width="12.8847" height="12.8847" rx="3.22117" fill="#2D7E5D" stroke="#2D7E5D" stroke-width="2.81841" transform="matrix(-1 0 0 1 107.5 255)"/>
+  <rect width="12.8847" height="12.8847" rx="3.22117" fill="#535E73" stroke="#535E73" stroke-width="2.81841" transform="matrix(-1 0 0 1 107.5 255)"/>
   <image href="assets/svg/cache.svg" style="opacity: 0; transform-origin: 13px 13px" transform="translate(88 248.6)">
     <animate attributeName="opacity" begin="t3.end" dur="1.5s" fill="freeze" keyTimes="0; 0.167; 0.667; 1" values="0; 1; 1; 0"/>
   </image>
 
   <!-- C7 -->
-  <rect width="12.8847" height="12.8847" rx="3.22117" fill="#2D7E5D" stroke="#2D7E5D" stroke-width="2.81841" transform="matrix(-1 0 0 1 41.5 262.5)"/>
+  <rect width="12.8847" height="12.8847" rx="3.22117" fill="#535E73" stroke="#535E73" stroke-width="2.81841" transform="matrix(-1 0 0 1 41.5 262.5)"/>
   <image href="assets/svg/cache.svg" style="opacity: 0; transform-origin: 13px 13px" transform="translate(21.8 256)">
     <animate attributeName="opacity" begin="t3.end" dur="1.5s" fill="freeze" keyTimes="0; 0.167; 0.667; 1" values="0; 1; 1; 0"/>
   </image>
@@ -297,9 +297,9 @@
   </use>
 
   <!-- C8 -->
-  <rect width="12.8847" height="12.8847" rx="3.22117" fill="white" stroke="#2D7E5D" stroke-width="2.81841" transform="matrix(-1 0 0 1 80 323)">
-    <animate attributeName="fill" begin="d6Logo.end + 2s" dur="400ms" fill="freeze" from="#2D7E5D" to="white"/>
-    <animate attributeName="fill" begin="c8Logo.end" dur="400ms" fill="freeze" from="white" to="#2D7E5D"/>
+  <rect width="12.8847" height="12.8847" rx="3.22117" fill="white" stroke="#535E73" stroke-width="2.81841" transform="matrix(-1 0 0 1 80 323)">
+    <animate attributeName="fill" begin="d6Logo.end + 2s" dur="400ms" fill="freeze" from="#535E73" to="white"/>
+    <animate attributeName="fill" begin="c8Logo.end" dur="400ms" fill="freeze" from="white" to="#535E73"/>
   </rect>
   <image href="assets/svg/vite.svg" style="opacity: 0; transform-origin: 29.5px 30px" transform="translate(44 299)">
     <animate attributeName="opacity" begin="t3.end" dur="100ms" fill="freeze" from="0" to="1"/>
@@ -322,19 +322,19 @@
   </use>
 
   <!-- D3 -->
-  <rect width="12.8847" height="12.8847" rx="3.22117" fill="#2D7E5D" stroke="#2D7E5D" stroke-width="2.81841" transform="matrix(-1 0 0 1 117 59)"/>
+  <rect width="12.8847" height="12.8847" rx="3.22117" fill="#535E73" stroke="#535E73" stroke-width="2.81841" transform="matrix(-1 0 0 1 117 59)"/>
   <image href="assets/svg/cache.svg" style="opacity: 0; transform-origin: 13px 13px" transform="translate(97.2 52.8)">
     <animate attributeName="opacity" begin="d1.end" dur="1.5s" fill="freeze" keyTimes="0; 0.167; 0.667; 1" values="0; 1; 1; 0"/>
   </image>
 
   <!-- D4 -->
-  <rect width="12.8847" height="12.8847" rx="3.22117" fill="#2D7E5D" stroke="#2D7E5D" stroke-width="2.81841" transform="matrix(-1 0 0 1 117 7)"/>
+  <rect width="12.8847" height="12.8847" rx="3.22117" fill="#535E73" stroke="#535E73" stroke-width="2.81841" transform="matrix(-1 0 0 1 117 7)"/>
   <image href="assets/svg/cache.svg" style="opacity: 0; transform-origin: 13px 13px" transform="translate(97.2 0.8)">
     <animate attributeName="opacity" begin="d1.end" dur="1.5s" fill="freeze" keyTimes="0; 0.167; 0.667; 1" values="0; 1; 1; 0"/>
   </image>
 
   <!-- D5 -->
-  <rect width="12.8847" height="12.8847" rx="3.22117" fill="#2D7E5D" stroke="#2D7E5D" stroke-width="2.81841" transform="matrix(-1 0 0 1 156 32)"/>
+  <rect width="12.8847" height="12.8847" rx="3.22117" fill="#535E73" stroke="#535E73" stroke-width="2.81841" transform="matrix(-1 0 0 1 156 32)"/>
   <image href="assets/svg/cache.svg" style="opacity: 0; transform-origin: 13px 13px" transform="translate(136.2 25.8)">
     <animate attributeName="opacity" begin="d1.end" dur="1.5s" fill="freeze" keyTimes="0; 0.167; 0.667; 1" values="0; 1; 1; 0"/>
   </image>
@@ -344,9 +344,9 @@
   </use>
 
   <!-- D6 -->
-  <rect width="12.8847" height="12.8847" rx="3.22117" fill="white" stroke="#2D7E5D" stroke-width="2.81841" transform="matrix(-1 0 0 1 80 87)">
-    <animate attributeName="fill" begin="d6Logo.end + 2s" dur="400ms" fill="freeze" from="#2D7E5D" to="white"/>
-    <animate attributeName="fill" begin="d6Logo.end" dur="400ms" fill="freeze" from="white" to="#2D7E5D"/>
+  <rect width="12.8847" height="12.8847" rx="3.22117" fill="white" stroke="#535E73" stroke-width="2.81841" transform="matrix(-1 0 0 1 80 87)">
+    <animate attributeName="fill" begin="d6Logo.end + 2s" dur="400ms" fill="freeze" from="#535E73" to="white"/>
+    <animate attributeName="fill" begin="d6Logo.end" dur="400ms" fill="freeze" from="white" to="#535E73"/>
   </rect>
   <image href="assets/svg/go.svg" style="opacity: 0; transform-origin: 29.5px 30px" transform="translate(44 63.8)">
     <animate attributeName="opacity" begin="d1.end" dur="100ms" fill="freeze" from="0" to="1"/>
@@ -355,7 +355,7 @@
   </image>
 
   <!-- T5 -->
-  <rect width="12.8847" height="12.8847" rx="3.22117" fill="#2D7E5D" stroke="#2D7E5D" stroke-width="2.81841" transform="matrix(-1 0 0 1 142.74 148)"/>
+  <rect width="12.8847" height="12.8847" rx="3.22117" fill="#535E73" stroke="#535E73" stroke-width="2.81841" transform="matrix(-1 0 0 1 142.74 148)"/>
   <use href="#dot" opacity="0">
     <animate attributeName="opacity" begin="t4.end" dur="50ms" fill="freeze" from="0" to="1"/>
     <animateMotion id="t5" begin="t4.end" dur="64.69975243198123ms" fill="freeze" path="M158.14 154.487H136"/>
@@ -370,21 +370,21 @@
   </use>
 
   <!-- T6 -->
-  <rect width="12.8847" height="12.8847" rx="3.22117" fill="#2D7E5D" stroke="#2D7E5D" stroke-width="2.81841" transform="matrix(-1 0 0 1 108.74 148)"/>
+  <rect width="12.8847" height="12.8847" rx="3.22117" fill="#535E73" stroke="#535E73" stroke-width="2.81841" transform="matrix(-1 0 0 1 108.74 148)"/>
   <image href="assets/svg/cache.svg" style="opacity: 0; transform-origin: 13px 13px" transform="translate(89 141.5)">
     <animate attributeName="opacity" begin="t5.end" dur="1.5s" fill="freeze" keyTimes="0; 0.167; 0.667; 1" values="0; 1; 1; 0"/>
   </image>
 
   <!-- T8 -->
-  <rect width="12.8847" height="12.8847" rx="3.22117" fill="#2D7E5D" stroke="#2D7E5D" stroke-width="2.81841" transform="matrix(-1 0 0 1 54.8 181)"/>
+  <rect width="12.8847" height="12.8847" rx="3.22117" fill="#535E73" stroke="#535E73" stroke-width="2.81841" transform="matrix(-1 0 0 1 54.8 181)"/>
   <image href="assets/svg/cache.svg" style="opacity: 0; transform-origin: 13px 13px" transform="translate(35 174.7)">
     <animate attributeName="opacity" begin="t5.end" dur="1.5s" fill="freeze" keyTimes="0; 0.167; 0.667; 1" values="0; 1; 1; 0"/>
   </image>
 
   <!-- T9 -->
-  <rect width="12.8847" height="12.8847" rx="3.22117" fill="white" stroke="#2D7E5D" stroke-width="2.81841" transform="matrix(-1 0 0 1 10.5 148)">
-    <animate attributeName="fill" begin="d6Logo.end + 2s" dur="400ms" fill="freeze" from="#2D7E5D" to="white"/>
-    <animate attributeName="fill" begin="t9Logo.end" dur="400ms" fill="freeze" from="white" to="#2D7E5D"/>
+  <rect width="12.8847" height="12.8847" rx="3.22117" fill="white" stroke="#535E73" stroke-width="2.81841" transform="matrix(-1 0 0 1 10.5 148)">
+    <animate attributeName="fill" begin="d6Logo.end + 2s" dur="400ms" fill="freeze" from="#535E73" to="white"/>
+    <animate attributeName="fill" begin="t9Logo.end" dur="400ms" fill="freeze" from="white" to="#535E73"/>
   </rect>
   <image href="assets/svg/java.svg" style="opacity: 0; transform-origin: 29.5px 30px" transform="translate(-25.5 125)">
     <animate attributeName="opacity" begin="t5.end" dur="100ms" fill="freeze" from="0" to="1"/>
