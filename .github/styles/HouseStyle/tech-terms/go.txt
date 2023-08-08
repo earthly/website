@@ -11,3 +11,8 @@ Logrus
 gocsv
 
 golang
+
+godotenv
+gomail
+docconv
+Gomail
