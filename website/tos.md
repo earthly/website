@@ -1,5 +1,5 @@
 ---
-title: Terms of Service
+title: Earthly Terms of Service
 layout: page
 ---
 
