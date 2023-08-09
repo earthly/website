@@ -1927,6 +1927,8 @@ The article comprehensively outlines the implementation of a concurrent mail ser
 
 The next steps involve enhancing functionality by adding features like email filtering, attachment handling, and advanced search capabilities, improving user experience through intuitive forms and real-time validation, optimizing load balancing and caching performance, and ensuring security measures.
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 - [ ] Add in Author page
@@ -1936,4 +1938,3 @@ The next steps involve enhancing functionality by adding features like email fil
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
