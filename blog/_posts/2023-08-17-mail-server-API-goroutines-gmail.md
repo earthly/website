@@ -7,10 +7,13 @@ author: Yusuf Akinleye
 editor: Muhammad Badawy
 
 internal-links:
- - just an example
-excerpt: |
-    Learn how to write an engaging article with this checklist that covers everything from creating a catchy title to adding captivating images and incorporating internal links. Perfect for both new and experienced writers!
+ - mail server api
+ - building mail server
+ - mail server with goroutines and gmail
+ - goroutines and gmail integration
+ - building concurrent mail server
 ---
+
 <!--sgpt-->**We're [Earthly](https://earthly.dev/). We simplify and speed up software building with containerization. Earthly is a powerful tool that enhances your CI/CD workflows. [Check it out](/).**
 
 It is fascinating to take full advantage of the multicore processor for executing and implementing concurrent processes or programs, and it's interesting doing so using the simplicity of [Go](https://go.dev/) and its abstractions.
@@ -1935,5 +1938,4 @@ The next steps involve enhancing functionality by adding features like email fil
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
+
