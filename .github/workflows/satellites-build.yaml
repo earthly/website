@@ -28,6 +28,8 @@ jobs:
         id: build-site
         env:
             EARTHLY_INSTALL_ID: "earthly-website-githubactions"
+            NETLIFY_STAGING_SITE_ID: ${{ secrets.NETLIFY_STAGING_SITE_ID }}
+            NETLIFY_STAGING_AUTH_TOKEN: ${{ secrets.NETLIFY_STAGING_AUTH_TOKEN }}
             NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
             NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
             EARTHLY_TOKEN: "${{ secrets.EARTHLY_TOKEN }}"
