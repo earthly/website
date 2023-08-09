@@ -1,5 +1,5 @@
 ---
-title: "Using Rust Generics to Write Flexible and Reusable Code"
+title: "An Introduction to Rust Generics"
 categories:
   - Tutorials
 toc: true
