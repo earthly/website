@@ -38,31 +38,26 @@ layout: default
     {% endif %}
 
     <div class="page__inner-wrap flex relative">
-      <div id="breadcrumbs" class="w-[1px] h-full text-md sticky top-[36px] z-50 hidden lg:block">
-        <div class="w-[250px] pt-6 pl-3">
+      <div id="breadcrumbs" class="w-[1px] h-full text-md sticky top-[36px] z-10 hidden lg:block">
+        <div class="w-[250px] pb-20 pt-6 pl-3">
           <div class="mt-6">
             <a href="/blog/" class="text-xl text-blue-600 hover:underline">Blog</a>
             <span class="text-slate-400 ml-1 mr-1">/</span>
             {% if page.sidebar %}
               <a href="/blog/series/" class="text-xl text-blue-600 font-semibold hover:underline">Series</a>
+              <span class="text-slate-400 ml-1 mr-1">/</span>
+              <span class="text-xl font-semibold">{{ site.data.navigation[page.sidebar.nav][0].title }}</span>
             {% else %}
               <a href="/blog/categories/{{ page.categories[0] | downcase }}/" class="text-xl text-blue-600 font-semibold hover:underline">{{ page.categories[0] }}</a>
             {% endif %}
           </div>
-
-          {% if page.sidebar %}
-            {% if page.sidebar.nav %}
-              {% include nav_list nav=page.sidebar.nav %}
-            {% endif %}
-          {% endif %}
 
           {% if page.toc %}
             <div class="group mt-4">
               <header>
                 <h4 class="font-semibold text-md mb-2">Table of contents</h4>
               </header>
-              <div class="border-gray-300 relative border bg-white rounded-md shadow-md mt-2 hidden group-hover:block">
-                <div class="arrow border-l border-t border-gray-300 absolute z-10"></div>
+              <div class="border-gray-300 relative border bg-white rounded-md mt-2">
                 <div class="relative z-50 pb-1 pt-1">
                   {% include toc.html sanitize=true html=content h_min=1 h_max=4 class="toc__menu" skip_no_ids=true %}
                 </div>
@@ -72,7 +67,15 @@ layout: default
         </div>
       </div>
 
-      <section class="page__content w-full p-2 pt-8 md:p-10 flex flex-1 flex-col items-center" itemprop="text">
+      <section class="page__content w-full p-2 pt-8 md:p-10 flex flex-1 flex-col items-center relative" itemprop="text">
+        {% if page.sidebar %}
+          {% if page.sidebar.nav %}
+            <div class="w-[1px] h-full text-md absolute right-0 z-10 hidden lg:block" style="height: calc(100% - 114px);">
+              {% include nav_list nav=page.sidebar.nav %}
+            </div>
+          {% endif %}
+        {% endif %}
+
         <div class="blog-article-wrap">
           <header class="blog-article-header">
             {% if page.title %}
@@ -82,6 +85,20 @@ layout: default
             {% endif %}
             {% include page__meta.html %}
           </header>
+
+          <div class="lg:hidden mb-4">
+            {% if page.sidebar %}
+              {% if page.sidebar.nav %}
+                <div class="border border-gray-400 flex items-center justify-between my-2 px-4 py-2 rounded-md" onclick="toggleSeriesContent()">
+                  <p>In this Series</p>
+                  {% svg assets/svg/chevron.svg id="dropdown-icon" width="16px" height="16px" class="transition-transform" %}
+                </div>
+                <div id="dropdown-list" class="border border-gray-300 bg-white text-md rounded-md shadow-md px-4 pb-2 hidden">
+                  {% include nav_list nav=page.sidebar.nav %}
+                </div>
+              {% endif %}
+            {% endif %}
+          </div>
 
           <div class="prose content-block">{{ content }}</div>
 
@@ -162,7 +179,22 @@ layout: default
   <script>
     var banner = document.getElementsByClassName('announcement-banner')
     var breadcrumbs = document.getElementById('breadcrumbs')
+    var seriesContent = document.getElementById('series-content')
     breadcrumbs.style.top = banner[0].scrollHeight + 36 + 'px'
+    seriesContent.style.top = banner[0].scrollHeight + 86 + 'px'
+
+    var dropdownList = document.getElementById('dropdown-list')
+    var dropdownIcon = document.getElementById( 'dropdown-icon')
+
+    function toggleSeriesContent() {
+      if (dropdownList.classList.contains('hidden')) {
+        dropdownList.classList.remove('hidden')
+        dropdownIcon.style.transform = 'rotate(180deg)'
+      } else {
+        dropdownList.classList.add('hidden')
+        dropdownIcon.style.transform = 'rotate(0deg)'
+      }
+    }
   </script>
 {% endif %}
 
