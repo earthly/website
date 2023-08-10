@@ -41,37 +41,37 @@
 
   <!-- A2 - A8 -->
   <path d="M395.94 256.5V227.7M395.94 227.505H374.808M374.808 227.505V208.969C374.808 208.002 374.025 207.219 373.058 207.219H339.871M339.871 207.219V176.659M339.871 176.42H291.691M339.871 207.219H309.16M325.501 257.934H351.927C352.893 257.934 353.677 257.151 353.677 256.184L353.677 229.255C353.677 228.288 354.46 227.505 355.427 227.505H374.808" stroke="#A5A5A5" stroke-width="2.8">
-    <animate attributeName="stroke" begin="a1.end" dur="1.5s" fill="freeze" keyTimes="0; 0.167; 0.667; 1" values="#A5A5A5; #34F8BB; #34F8BB; #A5A5A5"/>
+    <animate attributeName="stroke" begin="a1.end" dur="1.5s" fill="freeze" keyTimes="0; 0.167; 0.667; 1" values="#A5A5A5; #92BCF0; #92BCF0; #A5A5A5"/>
   </path>
 
   <!-- A10 - A15 -->
   <path d="M309.16 329.474V279.97C309.16 279.004 308.376 278.22 307.41 278.22H291.691M224.07 291.181H272.472C273.439 291.181 274.222 290.398 274.222 289.431V279.97C274.222 279.004 275.006 278.22 275.972 278.22H291.691M291.691 278.22V263.629C291.691 262.662 290.907 261.879 289.941 261.879H250.555M209.419 261.879H250.555M250.555 261.879L250.555 225.307C250.555 224.341 249.771 223.557 248.805 223.557H231.396M310.56 329.474H272" stroke="#A5A5A5" stroke-width="2.8">
-    <animate attributeName="stroke" begin="a9.end" dur="1.5s" fill="freeze" keyTimes="0; 0.167; 0.667; 1" values="#A5A5A5; #34F8BB; #34F8BB; #A5A5A5"/>
+    <animate attributeName="stroke" begin="a9.end" dur="1.5s" fill="freeze" keyTimes="0; 0.167; 0.667; 1" values="#A5A5A5; #92BCF0; #92BCF0; #A5A5A5"/>
   </path>
 
   <!-- B3 - B8 -->
   <path d="M375.653 82.9656H341.621C340.654 82.9656 339.871 82.1822 339.871 81.2157V60.2845M339.871 37.6034V60.2845M339.871 60.2845H244.076M375.653 102.407V82.9656M377.053 102.407H315.922M375.653 66.2823V82.9656" stroke="#A5A5A5" stroke-width="2.8">
-    <animate attributeName="stroke" begin="b2.end" dur="1.5s" fill="freeze" keyTimes="0; 0.167; 0.667; 1" values="#A5A5A5; #34F8BB; #34F8BB; #A5A5A5"/>
+    <animate attributeName="stroke" begin="b2.end" dur="1.5s" fill="freeze" keyTimes="0; 0.167; 0.667; 1" values="#A5A5A5; #92BCF0; #92BCF0; #A5A5A5"/>
   </path>
 
   <!-- B9 - B16 -->
   <path d="M414.925 132.554H460.12C461.086 132.554 461.87 131.771 461.87 130.804L461.87 73.5856M461.87 73.5856H490.549C491.516 73.5856 492.299 72.8022 492.299 71.8357L492.299 30.3373C492.299 29.3708 491.516 28.5873 490.549 28.5873H462.433M461.87 73.5856H434.317C433.351 73.5856 432.567 72.8021 432.567 71.8357L432.567 30.3373C432.567 29.3708 433.351 28.5873 434.317 28.5873H462.433M462.433 28.5873V11.4004" stroke="#A5A5A5" stroke-width="2.8">
-    <animate attributeName="stroke" begin="b1.end" dur="1.5s" fill="freeze" keyTimes="0; 0.167; 0.667; 1" values="#A5A5A5; #34F8BB; #34F8BB; #A5A5A5"/>
+    <animate attributeName="stroke" begin="b1.end" dur="1.5s" fill="freeze" keyTimes="0; 0.167; 0.667; 1" values="#A5A5A5; #92BCF0; #92BCF0; #A5A5A5"/>
   </path>
 
   <!-- C1 - C8 -->
   <path d="M191.95 155.6V190.254C191.95 191.221 191.167 192.004 190.201 192.004H128.897C127.931 192.004 127.147 192.788 127.147 193.754V213.135M127.147 234.267V213.135M127.147 213.135H102.976C102.01 213.135 101.226 213.919 101.226 214.885V237.507M101.226 261.879V237.507M101.226 237.507H75.3642C74.3977 237.507 73.6143 238.291 73.6143 239.257V268.852M73.6143 329.197V268.852M73.6143 268.852H35.2958" stroke="#A5A5A5" stroke-width="2.8">
-    <animate attributeName="stroke" begin="t3.end" dur="1.5s" fill="freeze" keyTimes="0; 0.167; 0.667; 1" values="#A5A5A5; #34F8BB; #34F8BB; #A5A5A5"/>
+    <animate attributeName="stroke" begin="t3.end" dur="1.5s" fill="freeze" keyTimes="0; 0.167; 0.667; 1" values="#A5A5A5; #92BCF0; #92BCF0; #A5A5A5"/>
   </path>
 
   <!-- D2 - D6 -->
   <path d="M73.6143 93.3905H99.4761C100.443 93.3905 101.226 94.174 101.226 95.1404V111.927C101.226 112.893 102.01 113.677 102.976 113.677H129.683M129.683 115.077V65.2152M130 65.2152H111.992C111.026 65.2152 110.242 64.4317 110.242 63.4653V12.8092M130 65.2152H148.008C148.974 65.2152 149.758 64.4317 149.758 63.4653V37.6034" stroke="#A5A5A5" stroke-width="2.8">
-    <animate attributeName="stroke" begin="d1.end" dur="1.5s" fill="freeze" keyTimes="0; 0.167; 0.667; 1" values="#A5A5A5; #34F8BB; #34F8BB; #A5A5A5"/>
+    <animate attributeName="stroke" begin="d1.end" dur="1.5s" fill="freeze" keyTimes="0; 0.167; 0.667; 1" values="#A5A5A5; #92BCF0; #92BCF0; #A5A5A5"/>
   </path>
 
   <!-- T6 - T9 -->
   <path d="M137 154.487H48.2565M48.2565 154.487V188M48.2565 154.487H3.73944" stroke="#A5A5A5" stroke-width="2.8">
-    <animate attributeName="stroke" begin="t5.end" dur="1.5s" fill="freeze" keyTimes="0; 0.167; 0.667; 1" values="#A5A5A5; #34F8BB; #34F8BB; #A5A5A5"/>
+    <animate attributeName="stroke" begin="t5.end" dur="1.5s" fill="freeze" keyTimes="0; 0.167; 0.667; 1" values="#A5A5A5; #92BCF0; #92BCF0; #A5A5A5"/>
   </path>
 
   <!-- T1 -->
