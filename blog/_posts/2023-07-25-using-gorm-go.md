@@ -11,7 +11,7 @@ internal-links:
  - go using gorm
  - database operations in go
  - database operations using gorm
- excerpt: |
+excerpt: |
     In Go, one library stands out when simplifying database interactions. This library is called GORM. This article will dive deep into using the GORM library to perform database operations in Go.
 ---
 
