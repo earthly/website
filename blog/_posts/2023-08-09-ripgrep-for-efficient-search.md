@@ -12,6 +12,9 @@ internal-links:
  - search efficiency
  - ripgrep to improve search efficiency
 
+excerpt: | 
+This article will cover what the ripgrep command-line tool does, what its key features are, how to install it, and how to use its basic and advanced options.
+
 ---
 
 **We're [Earthly](https://earthly.dev/). We simplify building software with containerization. This article discusses using the `ripgrep` command-line tool. However, if you are curious about getting better build times by combining ideas from Makefile and Dockerfile? [Check us out.](https://earthly.dev/)**
@@ -26,11 +29,16 @@ We intend this article for software professionals who work with large volumes of
 ![Features]({{site.images}}{{page.slug}}/features.png)\
 
 Let's have a quick look into some of the essential features of `ripgrep` compared to other alternatives like [grep](https://linux.die.net/man/1/grep), [ack](https://linux.die.net/man/1/ack), and so on:
-Speed: This tool is highly optimized and uses an [advanced searching algorithm](https://cp-algorithms.com/string/aho_corasick.html) to perform quick searches across multiple large files and folders
-Compressed File Search: Beyond the traditional file search, the `ripgrep` command-line tool can search the patterns across the compressed zip files
-Ease of Use: It has a simple and interactive command-line interface that can be customized as per our needs
-Color-Coded Output: The `ripgrep` command output has a customizable color-coded scheme. This makes it easier to identify the matches in the search results.
-Compatibility; `ripgrep` is available for Windows, Linux and Mac OS and works well across all platforms
+
+- **Speed**: `ripgrep` is highly optimized and uses an [advanced searching algorithm](https://cp-algorithms.com/string/aho_corasick.html) to perform quick searches across multiple large files and folders.
+
+- **Compressed File Search**: Beyond the traditional file search, the `ripgrep` command-line tool can search for patterns across compressed zip files.
+
+- **Ease of Use**: It has a simple and interactive command-line interface that can be customized as per our needs.
+
+- **Color-Coded Output**: The `ripgrep` command output has a customizable color-coded scheme. This makes it easier to identify the matches in the search results.
+
+- **Compatibility**: `ripgrep` is available for Windows, Linux, and Mac OS and works well across all platforms
 
 ## Installation of `ripgrep`
 
@@ -44,10 +52,8 @@ $ sudo apt-get upgrade -y
 Now, let's install the `ripgrep` command-line tool using the `apt-get install ripgrep` command:
 
 ~~~{.bash caption=">_"}
-$ sudo apt install `ripgrep` -y
+$ sudo apt install ripgrep -y
 ~~~
-
-Output:
 
 ~~~{ caption="Output"}
 Reading package lists... Done
@@ -63,13 +69,11 @@ Setting up `ripgrep` (13.0.0-2ubuntu0.1) ...
 Processing triggers for man-db (2.10.2-1) ...
 ~~~
 
-Now, let's use the `[which`](<https://linux.die.net/man/1/which>) command to get the installation path of the `rg` (ripgrep) binary:
+Now, let's use the [`which`](<https://linux.die.net/man/1/which>) command to get the installation path of the `rg` (ripgrep) binary:
 
 ~~~{.bash caption=">_"}
 $ which rg
 ~~~
-
-Output:
 
 ~~~{ caption="Output"}
 /usr/bin/rg
@@ -80,8 +84,6 @@ Also, we can get the installed version of `ripgrep` using the `--version` option
 ~~~{.bash caption=">_"}
 $ rg --version
 ~~~
-
-Output:
 
 ~~~{ caption="Output"}
 ripgrep 13.0.0
@@ -101,32 +103,24 @@ The basic syntax for using the `ripgrep` command-line tool is `rg <STRING> <PATH
 $ rg "EXT4" /var/log/syslog
 ~~~
 
-Here, we are searching for logs that contain the word `EXT4` from `/var/log/syslog`, which is the central repository for all system log messages
-
-Output:
+Here, we are searching for logs that contain the word `EXT4` from `/var/log/syslog`, which is the central repository for all system log messages:
 
 ~~~{ caption="Output"}
-3874:Apr  2 12:10:49 ubuntu-2204 kernel: [   15.040728] EXT4-fs \
-(sda3): mounted filesystem with ordered data mode. Quota mode: none.
-3932:Apr  2 12:10:49 ubuntu-2204 kernel: [   18.364213] EXT4-fs \
-(sda3): re-mounted. Quota mode: none.
+3874:Apr  2 12:10:49 ubuntu-2204 kernel: [   15.040728] EXT4-fs (sda3): mounted filesystem with ordered data mode. Quota mode: none.
+3932:Apr  2 12:10:49 ubuntu-2204 kernel: [   18.364213] EXT4-fs (sda3): re-mounted. Quota mode: none.
 ~~~
 
-Special characters in OS terminals have varying execution instructions. Consequently, when searching, specific characters like Backslash (\), Asterisk (*), Question Mark (?), Parenthesis (), Square brackets [], Double quotes "", and others in the search pattern should be masked with a single backslash (\). This prevents them from being treated as regular expression syntax:
+Special characters in OS terminals have varying execution instructions. Consequently, when searching, specific characters like Backslash (`\`), Asterisk (`*`), Question Mark (`?`), Parenthesis `()`, Square brackets `[]`, Double quotes `""`, and others in the search pattern should be masked with a single backslash (`\`). This prevents them from being treated as regular expression syntax:
 
 ~~~{.bash caption=">_"}
 $ rg "EXT4-fs \(sda3\):" /var/log/syslog
 ~~~
 
-Here, we are searching for logs related to the storage device sda3 in the EXT4 file system. The search is performed on the file /var/log/syslog, and parentheses around sda3 are escaped using a single backslash (\) to treat them as literal characters.
-
-Output:
+Here, we are searching for logs related to the storage device sda3. The search is performed on the file /var/log/syslog, and parentheses around sda3 are escaped using a single backslash (\) to treat them as literal characters.
 
 ~~~{ caption="Output"}
-3874:Apr  2 12:10:49 ubuntu-2204 kernel: [   15.040728] EXT4-fs \
-(sda3): mounted filesystem with ordered data mode. Quota mode: none.
-3932:Apr  2 12:10:49 ubuntu-2204 kernel: [   18.364213] EXT4-fs \
-(sda3): re-mounted. Quota mode: none.
+3874:Apr  2 12:10:49 ubuntu-2204 kernel: [   15.040728] EXT4-fs (sda3): mounted filesystem with ordered data mode. Quota mode: none.
+3932:Apr  2 12:10:49 ubuntu-2204 kernel: [   18.364213] EXT4-fs (sda3): re-mounted. Quota mode: none.
 ~~~
 
 We can search for patterns in multiple folders and files with a single command by giving the file or folder path.
@@ -137,19 +131,14 @@ Here, we are searching for logs that contain the text `EXT4-fs (sda3)` in the `/
 $ rg "EXT4-fs \(sda3\)" /var/log/ /var/backups/dpkg.arch.0
 ~~~
 
-Output:
-
 ~~~{ caption="Output"}
 /var/log/dmesg
-1360:[   11.694347] kernel: EXT4-fs (sda3): mounted filesystem with ordered \
-data mode. Quota mode: none.
+1360:[   11.694347] kernel: EXT4-fs (sda3): mounted filesystem with ordered data mode. Quota mode: none.
 1416:[   13.540628] kernel: EXT4-fs (sda3): re-mounted. Quota mode: none.
 
 /var/log/syslog.1
-1560:Mar 28 19:58:58 ubuntu-2204 kernel: [    9.511322] EXT4-fs \
-(sda3): mounted filesystem with ordered data mode. Quota mode: none.
-1618:Mar 28 19:58:58 ubuntu-2204 kernel: [   11.089191] EXT4-fs \
-(sda3): re-mounted. Quota mode: none.
+1560:Mar 28 19:58:58 ubuntu-2204 kernel: [    9.511322] EXT4-fs (sda3): mounted filesystem with ordered data mode. Quota mode: none.
+1618:Mar 28 19:58:58 ubuntu-2204 kernel: [   11.089191] EXT4-fs (sda3): re-mounted. Quota mode: none.
 ~~~
 
 Furthermore, the `--count` option of the  `ripgrep` command-line tool provides the number of matched lines instead of printing the matched lines. Here, the output indicates that there were ten matched lines in the `kern.log.1` file, two matched lines in `dmesg` and `dmesg.0`, and one matched line in the `syslog` file. It also shows that the search happens in the current folder and its subfolders:
@@ -157,8 +146,6 @@ Furthermore, the `--count` option of the  `ripgrep` command-line tool provides t
 ~~~{.bash caption=">_"}
 $ rg --count "EXT4-fs \(sda3\)" /var/log/ /var/backups/dpkg.arch.0
 ~~~
-
-Output:
 
 ~~~{ caption="Output"}
 /var/log/dmesg:2
@@ -173,13 +160,9 @@ The tool also allows us to perform a case-insensitive search using the `-i` or `
 $ rg -i "Error" /var/log/syslog
 ~~~
 
-Output:
-
 ~~~{ caption="Output"}
-6211:Apr  2 12:15:35 ubuntu-2204 kernel: [    1.986379] \
-RAS: Correctable Errors collector initialized.
-26819:Apr  5 19:07:51 ubuntu-2204 pipewire[8265]: \
-mod.rt: RTKit error: org.freedesktop.DBus.Error.AccessDenied
+6211:Apr  2 12:15:35 ubuntu-2204 kernel: [    1.986379] RAS: Correctable Errors collector initialized.
+26819:Apr  5 19:07:51 ubuntu-2204 pipewire[8265]: mod.rt: RTKit error: org.freedesktop.DBus.Error.AccessDenied
 ...
 ... output truncated ...
 ...
@@ -193,16 +176,10 @@ Here, we are getting the lines with matches either `EXT-fs (sda3)` or `Error`:
 $ rg "EXT4-fs \(sda3\)|Error: " /var/log/syslog
 ~~~
 
-Output:
-
 ~~~{ caption="Output"}
-3874:Apr  2 12:10:49 ubuntu-2204 kernel: [   15.040728] \
-EXT4-fs (sda3): mounted filesystem with ordered data mode. Quota mode: none.
-3932:Apr  2 12:10:49 ubuntu-2204 kernel: [   18.364213] \
-EXT4-fs (sda3): re-mounted. Quota mode: none.
-3978:Apr  2 12:10:49 ubuntu-2204 kernel: [   19.180410] \
-ACPI Error: No handler for Region [SYSI] (0000000012a1600a) \
-[IPMI] (20220331/evregion-130)
+3874:Apr  2 12:10:49 ubuntu-2204 kernel: [   15.040728] EXT4-fs (sda3): mounted filesystem with ordered data mode. Quota mode: none.
+3932:Apr  2 12:10:49 ubuntu-2204 kernel: [   18.364213] EXT4-fs (sda3): re-mounted. Quota mode: none.
+3978:Apr  2 12:10:49 ubuntu-2204 kernel: [   19.180410] ACPI Error: No handler for Region [SYSI] (0000000012a1600a) [IPMI] (20220331/evregion-130)
 ~~~
 
 ## Advanced Usage of `ripgrep`
@@ -217,17 +194,11 @@ The example below displays one line of context before and two lines after each m
 $rg "EXT4-fs \(sda3\)" /var/log/syslog -B 1 -A 2
 ~~~
 
-Output:
-
 ~~~{ caption="Output"}
-3931-Apr  2 12:10:49 ubuntu-2204 kernel: [   18.362418] \
-systemd[1]: Finished Load Kernel Module efi_pstore.
-3932:Apr  2 12:10:49 ubuntu-2204 kernel: [   18.364213] \
-EXT4-fs (sda3): re-mounted. Quota mode: none.
-3933-Apr  2 12:10:49 ubuntu-2204 kernel: [   18.365877] \
-systemd[1]: Finished Remount Root and Kernel File Systems.
-3934-Apr  2 12:10:49 ubuntu-2204 kernel: [   18.366819] \
-systemd[1]: Activating swap /swapfile
+3931-Apr  2 12:10:49 ubuntu-2204 kernel: [   18.362418] systemd[1]: Finished Load Kernel Module efi_pstore.
+3932:Apr  2 12:10:49 ubuntu-2204 kernel: [   18.364213] EXT4-fs (sda3): re-mounted. Quota mode: none.
+3933-Apr  2 12:10:49 ubuntu-2204 kernel: [   18.365877] systemd[1]: Finished Remount Root and Kernel File Systems.
+3934-Apr  2 12:10:49 ubuntu-2204 kernel: [   18.366819] systemd[1]: Activating swap /swapfile
 ---
 …
 … output truncated …
@@ -244,26 +215,27 @@ Consider the example below that searches for the pattern in the current folder a
 $rg "EXT4-fs \(sda3\)" /var/log/syslog -C 2
 ~~~
 
-Output:
-
 ~~~{ caption="Output"}
-3930-Apr  2 12:10:49 ubuntu-2204 kernel: [   18.362154] systemd[1]: \
-modprobe@efi_pstore.service: Deactivated successfully.
-3931-Apr  2 12:10:49 ubuntu-2204 kernel: [   18.362418] systemd[1]: \
-Finished Load Kernel Module efi_pstore.
-3932:Apr  2 12:10:49 ubuntu-2204 kernel: [   18.364213] EXT4-fs (sda3): \
-re-mounted. Quota mode: none.
-3933-Apr  2 12:10:49 ubuntu-2204 kernel: [   18.365877] systemd[1]: \
-Finished Remount Root and Kernel File Systems.
-3934-Apr  2 12:10:49 ubuntu-2204 kernel: [   18.366819] systemd[1]: \
-Activating swap /swapfile
+3930-Apr  2 12:10:49 ubuntu-2204 kernel: [   18.362154] systemd[1]: modprobe@efi_pstore.service: Deactivated successfully.
+3931-Apr  2 12:10:49 ubuntu-2204 kernel: [   18.362418] systemd[1]: Finished Load Kernel Module efi_pstore.
+3932:Apr  2 12:10:49 ubuntu-2204 kernel: [   18.364213] EXT4-fs (sda3): re-mounted. Quota mode: none.
+3933-Apr  2 12:10:49 ubuntu-2204 kernel: [   18.365877] systemd[1]: Finished Remount Root and Kernel File Systems.
+3934-Apr  2 12:10:49 ubuntu-2204 kernel: [   18.366819] systemd[1]: Activating swap /swapfile
 ---
 …
 … output truncated …
 …
 ~~~
 
-Although, the tool is primarily designed for the search of text in text files. However, it can also search for the text in compressed files. Currently, it supports lzma, bzip2, xz, lz4, gzip, zstd files.
+### Searching Compressed Files
+`ripgrep` can also search for the text in compressed files. As of this writing it supports the follow file formats:
+
+- lzma 
+- bzip2 
+- xz 
+- lz4 
+- gzip
+- zstd
 
 We will use the `--search-zip` or `-z` option to tell the `ripgrep` command-line tool to search for text in compressed files without extracting its contents:
 
@@ -271,15 +243,10 @@ We will use the `--search-zip` or `-z` option to tell the `ripgrep` command-line
 $ rg 'ERST' -z dmesg.1.gz
 ~~~
 
-Output:
-
 ~~~{ caption="Output"}
-65:[    0.012175] kernel: ACPI: ERST 0x000000007BAFB000 000230 \
-(v01 DELL   PE_SC3   00000002 DELL 00000001)
-86:[    0.012202] kernel: ACPI: Reserving ERST table memory at \
-[mem 0x7bafb000-0x7bafb22f]
-1075:[    1.842525] kernel: ERST: Error Record Serialization \
-Table (ERST) support is initialized.
+65:[    0.012175] kernel: ACPI: ERST 0x000000007BAFB000 000230 (v01 DELL   PE_SC3   00000002 DELL 00000001)
+86:[    0.012202] kernel: ACPI: Reserving ERST table memory at [mem 0x7bafb000-0x7bafb22f]
+1075:[    1.842525] kernel: ERST: Error Record Serialization Table (ERST) support is initialized.
 ~~~
 
 Also, the tool allows us to customise the color scheme used to highlight the matched text in the output. By default, the tool presents the matched text in red color. However, we can also customize the color using the `--color` option of the frpresentscommand-line tool. It provides color customization to line numbers, search matches, and file paths. The customization includes the background color, foreground color, and style.
@@ -294,8 +261,6 @@ $ rg 'ALERT' --colors 'path:fg:red' --colors 'path:bg:white' \
 --colors 'line:bg:yellow' --colors 'match:style:bold' -z messages-2022-04-2*.gz
 ~~~
 
-Output:
-
 <div class="wide">
 ![Img]({{site.images}}{{page.slug}}/hJiISas.png)\
 </div>
@@ -308,15 +273,10 @@ The following command replaces all occurrences of `ERST` in the `/var/log/dmesg.
 $ rg --replace 'EARTHLY' 'ERST' -z dmesg.2.gz
 ~~~
 
-Output:
-
 ~~~{ caption="Output"}
-65:[    0.012106] kernel: ACPI: EARTHLY 0x000000007BAFB000 000230 \
-(v01 DELL   PE_SC3   00000002 DELL 00000001)
-86:[    0.012134] kernel: ACPI: Reserving EARTHLY table memory at \
-[mem 0x7bafb000-0x7bafb22f]
-1075:[    1.846199] kernel: EARTHLY: Error Record Serialization Table \
-(EARTHLY) support is initialized.
+65:[    0.012106] kernel: ACPI: EARTHLY 0x000000007BAFB000 000230 (v01 DELL   PE_SC3   00000002 DELL 00000001)
+86:[    0.012134] kernel: ACPI: Reserving EARTHLY table memory at [mem 0x7bafb000-0x7bafb22f]
+1075:[    1.846199] kernel: EARTHLY: Error Record Serialization Table (EARTHLY) support is initialized.
 ~~~
 
 <div class="notice--info">
@@ -330,17 +290,9 @@ Further, we can also provide regular expressions to create a group pattern and c
 $ rg '^Apr.*ID=[0-9+][0-9+] \w+ ' /var/log/syslog
 ~~~
 
-Output:
-
 ~~~{ caption="Output"}
-482:Apr  2 02:33:26 ubuntu-2204 kernel: [325746.634509] [UFW BLOCK] \
-IN=eno1 OUT= MAC=18:66:da:b4:2c:2a:f4:cc:55:43:4f:c1:08:00 SRC=113.203.240.39 \
-DST=14.141.138.19 LEN=48 TOS=0x00 PREC=0x20 TTL=107 ID=43 DF PROTO=TCP \
-SPT=56379 DPT=3389 WINDOW=8192 RES=0x00 SYN URGP=0
-1042:Apr  2 05:35:04 ubuntu-2204 kernel: [336644.124908] [UFW BLOCK] IN=eno1 \
-OUT= MAC=18:66:da:b4:2c:2a:f4:cc:55:43:4f:c1:08:00 SRC=113.203.240.39 \
-DST=14.141.138.19 LEN=52 TOS=0x02 PREC=0x20 TTL=107 ID=91 DF PROTO=TCP \
-SPT=53749 DPT=3389 WINDOW=8192 RES=0x00 CWR ECE SYN URGP=0
+482:Apr  2 02:33:26 ubuntu-2204 kernel: [325746.634509] [UFW BLOCK] IN=eno1 OUT= MAC=18:66:da:b4:2c:2a:f4:cc:55:43:4f:c1:08:00 SRC=113.203.240.39 DST=14.141.138.19 LEN=48 TOS=0x00 PREC=0x20 TTL=107 ID=43 DF PROTO=TCP SPT=56379 DPT=3389 WINDOW=8192 RES=0x00 SYN URGP=0
+1042:Apr  2 05:35:04 ubuntu-2204 kernel: [336644.124908] [UFW BLOCK] IN=eno1 OUT= MAC=18:66:da:b4:2c:2a:f4:cc:55:43:4f:c1:08:00 SRC=113.203.240.39 DST=14.141.138.19 LEN=52 TOS=0x02 PREC=0x20 TTL=107 ID=91 DF PROTO=TCP SPT=53749 DPT=3389 WINDOW=8192 RES=0x00 CWR ECE SYN URGP=0
 ~~~
 
 Lastly, we can use `rg --help` to display a comprehensive list of all available options with descriptions. This information can help you understand the `rg` tool and its syntax effectively:
@@ -353,7 +305,7 @@ rg -help
 
 In summary, The `ripgrep` command-line tool is an excellent tool for searching a large set of data in a more customizable form. As we saw in the previous sections, it also has many inbuilt features like multi-pattern search, compressed file search, highlighting the search pattern with different color codes, search and replace options, etc. With its advanced features and highly optimized performance, The `ripgrep` looks a popular choice amongst IT professionals across the industry. If you haven't tried the `ripgrep` command-line tool yet, we highly recommend giving it a try!
 
-To learn more about the `ripgrep` command line too, you can check out the following links:
+To learn more about the `ripgrep` command line tool, you can check out the following links:
 
 - [Github](https://github.com/BurntSushi/ripgrep)
 - [Linuxhandbook](https://linuxhandbook.com/ripgrep/)
